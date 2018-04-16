@@ -7,6 +7,7 @@
   "description": "lightweight react starterkit with webpack, redux, react-router",
   "scripts": {
     "build": "webpack --config webpack/webpack.config.prod.js  --colors",
+    "deploy": "npm run build && netlify deploy",
     "start": "webpack-dev-server --config  webpack/webpack.config.dev.js"
   },
   "repository": {
