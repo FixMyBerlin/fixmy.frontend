@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "classnames": "^2.2.5",
     "normalize.css": "^7.0.0",
     "object-assign": "^4.1.1",
     "promise": "^7.3.1",
@@ -61,6 +62,8 @@
     "react-dev-utils": "^4.2.1",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   }
