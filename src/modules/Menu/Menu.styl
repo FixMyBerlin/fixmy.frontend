@@ -1,0 +1,21 @@
+$menuSize = 280px
+
+.menu
+  position: absolute
+  top: 0
+  left: 0
+  width: $menuSize
+  transform: translate3d(-($menuSize + 10px), 0, 0)
+  transition: transform .3s
+  height: 100vh
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75)
+
+.menu--open
+  transform: translate3d(0, 0, 0)
+
+.nav__item
+  display: block
+  width: 100%
+  padding: 15px
+  background: white
+  border-bottom: 1px solid #777
