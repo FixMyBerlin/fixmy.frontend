@@ -10,7 +10,8 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: Path.resolve(__dirname, 'build'),
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -71,8 +72,7 @@ module.exports = merge(common, {
                 Autoprefixer
               ]
             }
-          },
-          'stylus-loader'
+          }
         ]
       }
     ]

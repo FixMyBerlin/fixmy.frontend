@@ -8,7 +8,7 @@ import * as MenuActions from '~/modules/Menu/MenuState';
 import Menu from '~/modules/Menu';
 import Home from '~/modules/Home';
 import About from '~/modules/About';
-import Map from '~/modules/Map';
+import MapView from '~/modules/MapView';
 
 import './App.styl';
 
@@ -23,12 +23,13 @@ class App extends PureComponent {
     return (
       <Router>
         <div className={AppClasses}>
-          <button onClick={this.toggleMenu}>MENU</button>
           <Menu />
           <div className="app__content">
+            <button style={{ position: 'absolute', zIndex: 1000 }} onClick={this.toggleMenu}>MENU</button>
+
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
-            <Route path="/map" component={Map} />
+            <Route path="/map" component={MapView} />
           </div>
         </div>
       </Router>
