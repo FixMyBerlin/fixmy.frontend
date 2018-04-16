@@ -25,6 +25,14 @@ Builds a minified version of the application in the build folder.
 $ npm run build
 ```
 
+## Deploy
+
+Deploys a demo version at [https://fixmyberlin-app.netlify.com/](https://fixmyberlin-app.netlify.com/).
+
+```sh
+$ npm run deploy
+```
+
 ## Live Version
 
 You can check out the live version [here](https://fixmyberlin-app.netlify.com/).
