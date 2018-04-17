@@ -21,6 +21,7 @@ class Menu extends PureComponent {
         <div className="nav">
           <NavItem to="/" label="Home" />
           <NavItem to="/about" label="Worum geht es hier?" />
+          <NavItem to="/map" label="Karte anzeigen" />
         </div>
         <button onClick={this.toggleMenu}>CLOSE MENU</button>
       </div>

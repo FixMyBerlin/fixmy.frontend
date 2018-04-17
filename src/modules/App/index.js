@@ -1,7 +1,8 @@
+/*eslint-disable*/
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 import * as MenuActions from '~/modules/Menu/MenuState';
 
@@ -25,11 +26,9 @@ class App extends PureComponent {
         <div className={AppClasses}>
           <Menu />
           <div className="app__content">
-            <button style={{ position: 'absolute', zIndex: 1000 }} onClick={this.toggleMenu}>MENU</button>
-
             <Route exact path="/" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/map" component={MapView} />
+            <Route path="/info" component={About} />
+            <MapView />
           </div>
         </div>
       </Router>
