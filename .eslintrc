@@ -20,5 +20,8 @@
         "config": "./webpack/webpack.config.dev.js"
       }
     }
+  },
+  "globals": {
+    "config": true
   }
 }

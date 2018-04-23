@@ -1,0 +1,29 @@
+{
+  "menu": {
+    "items": [
+      {
+        "label": "Über FixMyBerlin",
+        "link": "/info"
+      },
+      {
+        "label": "Kontakt / Feedback",
+        "link": "/kontakt"
+      },
+      {
+        "label": "Presse",
+        "link": "/presse"
+      },
+      {
+        "label": "Datenschutzerklärung",
+        "link": "/datenschutz"
+      },
+      {
+        "label": "Impressum",
+        "link": "/impressum"
+      }
+    ]
+  },
+  "about": {
+    "markdownSource": "https://raw.githubusercontent.com/mxstbr/markdown-test-file/master/TEST.md"
+  }
+}

@@ -8,7 +8,6 @@ import FMBLogo from '~/components/FMBLogo';
 import NavItem from '~/components/NavItem';
 
 import * as MenuActions from './MenuState';
-import MenuConfig from './menu-config.json';
 
 import './Menu.styl';
 
@@ -33,8 +32,8 @@ class Menu extends PureComponent {
         <div className="nav">
           <div className="nav__header">Infos</div>
           <div className="nav__body">
-            {MenuConfig.items.map(menuItem =>
-              <NavItem to={menuItem.link} label={menuItem.label} />
+            {config.menu.items.map(menuItem =>
+              <NavItem to={menuItem.link} key={menuItem.label} label={menuItem.label} />
             )}
           </div>
         </div>
