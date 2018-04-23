@@ -2,10 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FixMyLogo from '~/images/logofmb@2x.png';
 
+import MenuButton from '~/components/MenuButton';
+
 import './Home.styl';
 
 export default () => (
   <div className="home app__content--overlay">
+    <MenuButton />
     <div className="home__content">
       <div className="logo__container">
         <img width="70" src={FixMyLogo} alt="logo" />
