@@ -11,7 +11,7 @@ class Map extends PureComponent {
 
     this.map = new MapboxGL.Map({
       container: this.root,
-      style: 'mapbox://styles/mapbox/streets-v9'
+      style: config.map.style
     });
 
     this.setView(this.props.view, false);

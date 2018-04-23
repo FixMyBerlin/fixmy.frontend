@@ -14,7 +14,7 @@ class MapView extends PureComponent {
     return (
       <div className="map-view">
         <Map
-          accessToken="pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q"
+          accessToken={config.map.accessToken}
           view={{
             center: [13, 52],
             zoom
