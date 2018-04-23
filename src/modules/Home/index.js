@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import FixMyLogo from '~/images/logofmb@2x.png';
 
 import MenuButton from '~/components/MenuButton';
+import SocialButtons from '~/components/SocialButtons';
 
 import './Home.styl';
 
@@ -24,6 +25,9 @@ export default () => (
       </form>
       <div className="intro__about">
         <Link to="/info">Worum geht es hier genau?</Link>
+      </div>
+      <div className="intro__social">
+        <SocialButtons />
       </div>
     </div>
   </div>
