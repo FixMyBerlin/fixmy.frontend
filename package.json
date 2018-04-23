@@ -62,6 +62,7 @@
     "normalize.css": "^7.0.0",
     "object-assign": "^4.1.1",
     "promise": "^7.3.1",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dev-utils": "^4.2.1",
     "react-dom": "^16.2.0",

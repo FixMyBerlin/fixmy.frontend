@@ -1,4 +1,6 @@
-$menuSize = 280px
+@import '../../styles/colors.styl';
+
+$menuSize = 310px
 
 .menu
   position: absolute
@@ -8,7 +10,7 @@ $menuSize = 280px
   transform: translate3d(-($menuSize + 10px), 0, 0)
   transition: transform .3s
   height: 100vh
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75)
+  box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.24)
   z-index: 1000000
   background: white
   overflow: auto
@@ -16,8 +18,36 @@ $menuSize = 280px
 .menu--open
   transform: translate3d(0, 0, 0)
 
-.nav__item
-  display: block
-  width: 100%
-  padding: 15px
-  border-bottom: 1px solid #777
+.menu__header
+  background: $interaction
+  position: relative
+  padding: .5rem 1rem
+
+.menu__header__container
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+
+  .fmb-logo
+    margin: 2rem 0
+
+.menu__close
+  position: absolute
+  top: 0
+  right: 0
+
+.nav__header
+  background: $lightgrey
+  text-transform: uppercase
+  font-weight: bold
+  font-size: 1rem
+  color: $darkgrey
+  letter-spacing: 1px
+  padding: 1.5rem 2rem
+
+.nav__body
+  padding: 0 2rem
+
+  .nav__item:last-child
+    border-bottom: none

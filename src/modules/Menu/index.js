@@ -2,9 +2,13 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 
-import * as MenuActions from './MenuState';
+import CloseIcon from '~/images/close.svg';
 
-import NavItem from './NavItem';
+import FMBLogo from '~/components/FMBLogo';
+import NavItem from '~/components/NavItem';
+
+import * as MenuActions from './MenuState';
+import MenuConfig from './menu-config.json';
 
 import './Menu.styl';
 
@@ -18,12 +22,22 @@ class Menu extends PureComponent {
 
     return (
       <div className={MenuClasses}>
-        <div className="nav">
-          <NavItem to="/" label="Home" />
-          <NavItem to="/about" label="Worum geht es hier?" />
-          <NavItem to="/map" label="Karte anzeigen" />
+        <div className="menu__header">
+          <div className="menu__header__container">
+            <FMBLogo width={67} />
+            <div onClick={this.toggleMenu} role="button" tabIndex={0} className="menu__close">
+              <img src={CloseIcon} alt="" />
+            </div>
+          </div>
         </div>
-        <button onClick={this.toggleMenu}>CLOSE MENU</button>
+        <div className="nav">
+          <div className="nav__header">Infos</div>
+          <div className="nav__body">
+            {MenuConfig.items.map(menuItem =>
+              <NavItem to={menuItem.link} label={menuItem.label} />
+            )}
+          </div>
+        </div>
       </div>
     );
   }
