@@ -1,9 +1,14 @@
 import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 import _isEqual from 'lodash.isequal';
+import styled from 'styled-components';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
-import './map.styl';
+
+const StyledMap = styled.div`
+  height: 100%;
+  width: 100%;
+`;
 
 class Map extends PureComponent {
   componentDidMount() {
@@ -34,7 +39,7 @@ class Map extends PureComponent {
 
   render() {
     return (
-      <div className="map" ref={(ref) => { this.root = ref; }} />
+      <StyledMap innerRef={(ref) => { this.root = ref; }} />
     );
   }
 }

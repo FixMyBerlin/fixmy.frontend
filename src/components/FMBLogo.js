@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import FixMyLogo from '~/images/logofmb@2x.png';
 
 const FMBLogo = props => (
-  <div className="fmb-logo">
+  <div className={props.className}>
     <img width={props.width} src={FixMyLogo} alt="logo" />
   </div>
 );

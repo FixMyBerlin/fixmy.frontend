@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
 import Axios from 'axios';
-import Markdown from 'react-markdown';
-import { If } from 'react-extras';
 
+import ContentOverlay from '~/components/ContentOverlay';
 import MenuButton from '~/components/MenuButton';
-
-import './About.styl';
+import AboutHeader from './AboutHeader';
+import AboutContent from './AboutContent';
 
 class About extends PureComponent {
   state = {
@@ -23,17 +22,11 @@ class About extends PureComponent {
 
   render() {
     return (
-      <div className="about app__content--overlay">
+      <ContentOverlay>
         <MenuButton />
-        <div className="about__header">
-          <h1>Worum geht es hier?</h1>
-        </div>
-        <div className="about__content">
-          <If condition={typeof this.state.content === 'string'}>
-            <Markdown source={this.state.content} />
-          </If>
-        </div>
-      </div>
+        <AboutHeader />
+        <AboutContent content={this.state.content} />
+      </ContentOverlay>
     );
   }
 }

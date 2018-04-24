@@ -53,6 +53,9 @@ module.exports = merge(common, {
     }),
     // compiling mode “scope hoisting”
     new Webpack.optimize.ModuleConcatenationPlugin(),
+    new Webpack.ProvidePlugin({
+      config: '~/../config.json'
+    })
   ],
   resolve: {
     alias: {
