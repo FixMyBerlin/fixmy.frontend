@@ -14,6 +14,8 @@ import Input from '~/components/Input';
 const HomeContent = styled.div`
   text-align: center;
   padding: 3rem 2rem 0 2rem;
+  max-width: 620px;
+  margin: 0 auto;
 `;
 
 const NewsletterForm = styled.form`
