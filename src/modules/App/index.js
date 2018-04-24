@@ -1,38 +1,15 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import styled, { injectGlobal } from 'styled-components';
+import styled from 'styled-components';
 
 import Menu from '~/modules/Menu';
 import Home from '~/modules/Home';
 import About from '~/modules/About';
 import MapView from '~/modules/MapView';
 
-injectGlobal([`
-  @import url("https://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans");
+import { init as initStyle } from './AppStyle';
 
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    height: 100%;
-    width: 100%;
-  }
-
-  body {
-    padding: 0;
-    margin: 0;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    font-family: 'Open Sans', sans-serif;
-  }
-
-  #root {
-    height: 100%;
-    position: relative;
-  }
-`]);
+initStyle();
 
 const App = styled.div`
   height: 100%;
