@@ -38,6 +38,20 @@
   },
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
-    "style": "mapbox://styles/hejco/cjfsi83s61rt82sn2bjoetjl3"
+    "style": "mapbox://styles/hejco/cjgf6abtd002x2ro5ipknqz3x",
+    "views": {
+      "/": {
+        "zoom": 17,
+        "bearing": 0,
+        "pitch": 60,
+        "center": [13.421025, 52.494004]
+      },
+      "default": {
+        "zoom": 14,
+        "bearing": 0,
+        "pitch": 0,
+        "center": [13.4237252, 52.5163494]
+      }
+    }
   }
 }

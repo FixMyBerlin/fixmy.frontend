@@ -14,16 +14,13 @@ const MapView = styled.div`
 
 class MapViewComponent extends PureComponent {
   render() {
-    const zoom = this.props.location.pathname === '/map' ? 8 : 10;
+    const view = Object.assign({}, config.map.views.default, config.map.views[this.props.location.pathname] || {});
 
     return (
       <MapView>
         <Map
           accessToken={config.map.accessToken}
-          view={{
-            center: [13, 52],
-            zoom
-          }}
+          view={view}
           animate
         />
       </MapView>

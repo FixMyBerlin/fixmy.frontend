@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+import { animateView, setView } from './map-utils';
+
 const StyledMap = styled.div`
   height: 100%;
   width: 100%;
@@ -20,6 +22,8 @@ class Map extends PureComponent {
     });
 
     this.setView(this.props.view, false);
+
+    window.map = this.map;
   }
 
   componentDidUpdate(prevProps) {
@@ -30,10 +34,9 @@ class Map extends PureComponent {
 
   setView = (view, animate) => {
     if (animate) {
-      this.map.flyTo({ center: view.center, zoom: view.zoom });
+      animateView(this.map, view);
     } else {
-      this.map.setZoom(view.zoom);
-      this.map.setCenter(view.center);
+      setView(this.map, view);
     }
   }
 
