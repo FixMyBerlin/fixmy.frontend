@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Axios from 'axios';
 
 import ContentOverlay from '~/components/ContentOverlay';
+import ContentWrapper from '~/components/ContentWrapper';
 import MenuButton from '~/components/MenuButton';
 import AboutHeader from './AboutHeader';
 import AboutContent from './AboutContent';
@@ -24,8 +25,10 @@ class About extends PureComponent {
     return (
       <ContentOverlay>
         <MenuButton />
-        <AboutHeader />
-        <AboutContent content={this.state.content} />
+        <ContentWrapper>
+          <AboutHeader />
+          <AboutContent content={this.state.content} />
+        </ContentWrapper>
       </ContentOverlay>
     );
   }

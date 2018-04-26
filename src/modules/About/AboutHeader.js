@@ -4,8 +4,9 @@ import styled from 'styled-components';
 import Headline from '~/components/Headline';
 
 const AboutHeader = styled.div`
-  padding: 4.5rem 0 .5rem 0;
-  margin: 0 2rem;
+  padding: 0;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
   text-align: center;
   border-bottom: 1px dashed ${config.colors.midgrey};
 `;

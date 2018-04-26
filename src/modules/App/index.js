@@ -7,6 +7,8 @@ import Home from '~/modules/Home';
 import About from '~/modules/About';
 import MapView from '~/modules/MapView';
 
+import Content from '~/modules/Content';
+
 import { init as initStyle } from './AppStyle';
 
 initStyle();
@@ -30,10 +32,10 @@ const AppWrapper = () => (
       <Route exact path="/" component={Home} />
       <Route path="/info" component={About} />
 
-      <Route path="/kontakt" component={Home} />
-      <Route path="/presse" component={Home} />
-      <Route path="/datenschutz" component={Home} />
-      <Route path="/impressum" component={Home} />
+      <Route path="/kontakt" render={() => <Content title="Kontakt" />} />
+      <Route path="/presse" render={() => <Content title="Presse" />} />
+      <Route path="/datenschutz" render={() => <Content title="Datenschutz" />} />
+      <Route path="/impressum" render={() => <Content title="Impressum" />} />
 
       <MapView />
     </AppContent>
