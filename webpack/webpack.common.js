@@ -16,7 +16,8 @@ module.exports = {
     new CleanWebpackPlugin(['build']),
     // copy data folder to make it available in redux loadData action
     new CopyWebpackPlugin([
-      { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' }
+      { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' },
+      { from: Path.resolve(__dirname, '../_redirects') }
     ])
   ],
   resolve: {
