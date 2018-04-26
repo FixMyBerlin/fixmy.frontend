@@ -16,11 +16,15 @@ const SocialButton = styled.div`
 
 export default () => (
   <SocialWrapper>
-    <SocialButton>
-      <img alt="" src={FbIcon} />
-    </SocialButton>
-    <SocialButton>
-      <img alt="" src={TwIcon} />
-    </SocialButton>
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/fixmyberlin">
+      <SocialButton>
+        <img alt="" src={FbIcon} />
+      </SocialButton>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/fixmyberlin">
+      <SocialButton>
+        <img alt="" src={TwIcon} />
+      </SocialButton>
+    </a>
   </SocialWrapper>
 );
