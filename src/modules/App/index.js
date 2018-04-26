@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import styled from 'styled-components';
 
 import Menu from '~/modules/Menu';
@@ -23,13 +24,15 @@ const AppContent = styled.div`
   display: flex;
 `;
 
-export default () => (
+const AppWrapper = props => (
   <App>
     <Menu />
     <AppContent>
       <Route exact path="/" component={Home} />
       <Route path="/info" component={About} />
-      <MapView />
+      { ['/'].includes(props.location.pathname) && <MapView /> }
     </AppContent>
   </App>
 );
+
+export default withRouter(AppWrapper);
