@@ -11,14 +11,12 @@ const NavHeader = styled.div`
   color: ${config.colors.darkgrey};
   letter-spacing: 1px;
   padding: 1.5rem 2rem;
+  border-top: 1px dashed ${config.colors.midgrey};
+  border-bottom: 1px dashed ${config.colors.midgrey};
 `;
 
 const NavBody = styled.div`
   padding: 0 2rem;
-  
-  .nav__item:last-child {
-    border-bottom: none;
-  }
 `;
 
 export default props => (

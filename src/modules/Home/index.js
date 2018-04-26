@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
+import Link from '~/components/Link';
 import ContentOverlay from '~/components/ContentOverlay';
 import FMBLogo from '~/components/FMBLogo';
 import Headline from '~/components/Headline';
@@ -20,6 +20,8 @@ const HomeContent = styled.div`
 
 const NewsletterForm = styled.form`
   padding: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
 `;
 
 const NewsletterSubmitWrapper = styled.div`

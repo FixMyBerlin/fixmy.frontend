@@ -12,9 +12,17 @@ const MapView = styled.div`
   width: 100%;
 `;
 
+const DisplayMapRoutes = ['/', '/zustand', '/planungen'];
+
 class MapViewComponent extends PureComponent {
   render() {
-    const view = Object.assign({}, config.map.views.default, config.map.views[this.props.location.pathname] || {});
+    const { pathname } = this.props.location;
+
+    if (!DisplayMapRoutes.includes(pathname)) {
+      return null;
+    }
+
+    const view = Object.assign({}, config.map.views.default, config.map.views[pathname] || {});
 
     return (
       <MapView>

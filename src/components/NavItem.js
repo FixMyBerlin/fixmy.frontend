@@ -15,9 +15,14 @@ const NavItem = styled(NavLink)`
   border-bottom: 1px solid ${config.colors.lightgrey};
   font-size: 1rem;
   color: ${config.colors.darkgrey};
+  text-decoration: none;
 
   &:visited {
     color: ${config.colors.darkgrey};
+  }
+
+  &:last-child {
+    border-bottom: none;
   }
 `;
 

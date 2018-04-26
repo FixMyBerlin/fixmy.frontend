@@ -34,7 +34,7 @@
     ]
   },
   "about": {
-    "markdownSource": "https://raw.githubusercontent.com/mxstbr/markdown-test-file/master/TEST.md"
+    "markdownSource": "markdown/about.md"
   },
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
