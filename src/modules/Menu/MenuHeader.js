@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 
 import FMBLogo from '~/components/FMBLogo';
+
+import Store from '~/redux/store';
+import { close } from './MenuState';
 
 import MenuCloseButton from './MenuCloseButton';
 
@@ -22,10 +27,16 @@ const StyledFMBLogo = styled(FMBLogo)`
   margin: 2rem 0;
 `;
 
+function handleLogoClick() {
+  Store.dispatch(close());
+}
+
 export default () => (
   <MenuHeader>
     <MenuHeaderContainer>
-      <StyledFMBLogo />
+      <Link onClick={handleLogoClick} to="/">
+        <StyledFMBLogo />
+      </Link>
       <MenuCloseButton />
     </MenuHeaderContainer>
   </MenuHeader>
