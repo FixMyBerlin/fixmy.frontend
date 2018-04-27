@@ -1,4 +1,6 @@
 {
+  "devUrl": "http://localhost:8080",
+  "prodUrl": "https://fixmyberlin-app.netlify.com",
   "colors": {
     "lightgrey": "#e8e8e8",
     "midgrey": "#999999",

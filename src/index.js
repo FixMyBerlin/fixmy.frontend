@@ -9,11 +9,15 @@ import App from './modules/App';
 
 if (module.hot) module.hot.accept();
 
-ReactDOM.render(
-  <Provider store={Store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
-  document.getElementById('root')
-);
+const root = document.getElementById('root');
+
+if (root) {
+  ReactDOM.render(
+    <Provider store={Store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>,
+    root
+  );
+}
