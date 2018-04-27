@@ -6,7 +6,7 @@ import ContentOverlay from '~/components/ContentOverlay';
 import FMBLogo from '~/components/FMBLogo';
 import Headline from '~/components/Headline';
 import MenuButton from '~/components/MenuButton';
-import SocialButtons from '~/components/SocialButtons';
+import SocialSharer from '~/components/Social/SocialSharer';
 import Button from '~/components/Button';
 import Text from '~/components/Text';
 import Input from '~/components/Input';
@@ -33,10 +33,6 @@ const AboutLinkWrapper = styled.div`
   font-size: 14px;
 `;
 
-const SocialWrapper = styled.div`
-  margin-top: 50px;
-`;
-
 export default () => (
   <ContentOverlay>
     <MenuButton />
@@ -55,9 +51,7 @@ export default () => (
       <AboutLinkWrapper>
         <Link to="/info">Worum geht es hier genau?</Link>
       </AboutLinkWrapper>
-      <SocialWrapper>
-        <SocialButtons />
-      </SocialWrapper>
+      <SocialSharer />
     </HomeContent>
   </ContentOverlay>
 );
