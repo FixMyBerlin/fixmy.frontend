@@ -1,9 +1,9 @@
 # Impressum
-FixMyBerlin GbR
-℅ Pulsraum
-Kottbusser Damm 25/26
-12049 Berlin
-E-Mail-Adresse: [hello@fixmyberlin.de](mailto:hello@fixmyberlin.de)
+FixMyBerlin GbR  
+℅ Pulsraum  
+Kottbusser Damm 25/26  
+12049 Berlin  
+E-Mail-Adresse: [hello@fixmyberlin.de](mailto:hello@fixmyberlin.de)  
 Telefon: 030 / 549 08 665
 
 Gesellschafter: Boris Hekele und Heiko Rintelen
