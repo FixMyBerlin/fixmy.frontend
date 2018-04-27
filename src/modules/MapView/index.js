@@ -10,6 +10,11 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 const MapView = styled.div`
   height: 100%;
   width: 100%;
+
+  .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
+    position: fixed;
+    z-index: 99999999;
+  }
 `;
 
 const DisplayMapRoutes = ['/', '/zustand', '/planungen'];
