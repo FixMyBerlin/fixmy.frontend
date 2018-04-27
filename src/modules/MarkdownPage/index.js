@@ -4,10 +4,10 @@ import Axios from 'axios';
 import ContentOverlay from '~/components/ContentOverlay';
 import ContentWrapper from '~/components/ContentWrapper';
 import MenuButton from '~/components/MenuButton';
-import AboutHeader from './AboutHeader';
-import AboutContent from './AboutContent';
+import ContentHeader from './ContentHeader';
+import MarkdownContent from './MarkdownContent';
 
-class About extends PureComponent {
+class MarkdownPage extends PureComponent {
   state = {
     content: false
   }
@@ -17,8 +17,14 @@ class About extends PureComponent {
   }
 
   async loadContent() {
-    const { data } = await Axios.get(config.about.markdownSource);
-    this.setState({ content: data });
+    const pageConfig = config[this.props.page];
+
+    if (!pageConfig) {
+      return false;
+    }
+
+    const { data } = await Axios.get(pageConfig.markdownSource);
+    return this.setState({ content: data });
   }
 
   render() {
@@ -26,12 +32,12 @@ class About extends PureComponent {
       <ContentOverlay>
         <MenuButton />
         <ContentWrapper>
-          <AboutHeader />
-          <AboutContent content={this.state.content} />
+          <ContentHeader />
+          <MarkdownContent content={this.state.content} />
         </ContentWrapper>
       </ContentOverlay>
     );
   }
 }
 
-export default About;
+export default MarkdownPage;

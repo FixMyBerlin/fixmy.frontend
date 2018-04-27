@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Headline from '~/components/Headline';
 
-const AboutHeader = styled.div`
+const ContentHeader = styled.div`
   padding: 0;
   margin-bottom: 2rem;
   margin-top: 2rem;
@@ -12,7 +12,7 @@ const AboutHeader = styled.div`
 `;
 
 export default () => (
-  <AboutHeader>
+  <ContentHeader>
     <Headline>Worum geht es hier?</Headline>
-  </AboutHeader>
+  </ContentHeader>
 );

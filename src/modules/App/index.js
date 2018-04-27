@@ -4,10 +4,8 @@ import styled from 'styled-components';
 
 import Menu from '~/modules/Menu';
 import Home from '~/modules/Home';
-import About from '~/modules/About';
+import MarkdownPage from '~/modules/MarkdownPage';
 import MapView from '~/modules/MapView';
-
-import Content from '~/modules/Content';
 
 import { init as initStyle } from './AppStyle';
 
@@ -30,12 +28,11 @@ const AppWrapper = () => (
     <Menu />
     <AppContent>
       <Route exact path="/" component={Home} />
-      <Route path="/info" component={About} />
+      <Route path="/info" render={() => <MarkdownPage page="about" />} />
 
-      <Route path="/kontakt" render={() => <Content title="Kontakt" />} />
-      <Route path="/presse" render={() => <Content title="Presse" />} />
-      <Route path="/datenschutz" render={() => <Content title="Datenschutz" />} />
-      <Route path="/impressum" render={() => <Content title="Impressum" />} />
+      <Route path="/kontakt" render={() => <MarkdownPage page="contact" />} />
+      <Route path="/datenschutz" render={() => <MarkdownPage page="privacy" />} />
+      <Route path="/impressum" render={() => <MarkdownPage page="imprint" />} />
 
       <MapView />
     </AppContent>

@@ -22,11 +22,7 @@
         "link": "/kontakt"
       },
       {
-        "label": "Presse",
-        "link": "/presse"
-      },
-      {
-        "label": "Datenschutzerklärung",
+        "label": "Datenschutz",
         "link": "/datenschutz"
       },
       {
@@ -37,6 +33,15 @@
   },
   "about": {
     "markdownSource": "markdown/about.md"
+  },
+  "contact": {
+    "markdownSource": "markdown/contact.md"
+  },
+  "privacy": {
+    "markdownSource": "markdown/privacy.md"
+  },
+  "imprint": {
+    "markdownSource": "markdown/imprint.md"
   },
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
