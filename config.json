@@ -7,8 +7,7 @@
     "darkgrey": "#545454",
     "black": "#222",
     "white": "#FFF",
-    "interaction": "#fabe28",
-    "interactionBg": "#f1c14c"
+    "interaction": "#fabe28"
   },
   "menu": {
     "size": 320,

@@ -6,7 +6,7 @@ export default styled.button`
   outline: none;
   display: inline-block;
   padding: 10px 15px;
-  background: ${config.colors.interactionBg};
+  background: ${config.colors.interaction};
   text-decoration: none;
   color: ${config.colors.white};
   font-family: 'Open Sans', sans-serif;
