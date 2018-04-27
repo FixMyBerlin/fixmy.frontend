@@ -2,7 +2,7 @@ import { injectGlobal } from 'styled-components';
 
 export function init() {
   injectGlobal([`
-    @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:500,700|Open+Sans");
+    @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:500,700|Open+Sans:300,500,700");
 
     * {
       box-sizing: border-box;

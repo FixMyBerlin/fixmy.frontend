@@ -4,7 +4,6 @@ import Axios from 'axios';
 import ContentOverlay from '~/components/ContentOverlay';
 import ContentWrapper from '~/components/ContentWrapper';
 import MenuButton from '~/components/MenuButton';
-import ContentHeader from './ContentHeader';
 import MarkdownContent from './MarkdownContent';
 
 class MarkdownPage extends PureComponent {
@@ -32,7 +31,6 @@ class MarkdownPage extends PureComponent {
       <ContentOverlay>
         <MenuButton />
         <ContentWrapper>
-          <ContentHeader />
           <MarkdownContent content={this.state.content} />
         </ContentWrapper>
       </ContentOverlay>

@@ -6,7 +6,7 @@ import Store from '~/redux/store';
 import { toggle } from '~/modules/Menu/MenuState';
 
 const MenuButton = styled.div`
-  position: absolute;
+  position: fixed;
   left: 2rem;
   top: 2rem;
   cursor: pointer;
