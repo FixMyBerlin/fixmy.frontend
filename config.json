@@ -1,6 +1,7 @@
 {
   "devUrl": "http://localhost:8080",
   "prodUrl": "https://fixmyberlin-app.netlify.com",
+  "newsletterWidgetUrl": "https://app.mailjet.com/widget/iframe/2YIa/6kW",
   "colors": {
     "lightgrey": "#e8e8e8",
     "midgrey": "#999999",
