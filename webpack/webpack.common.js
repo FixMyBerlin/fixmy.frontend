@@ -18,7 +18,7 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' },
       { from: Path.resolve(__dirname, '../_redirects') },
-      { from: Path.resolve(__dirname, '../favicon.ico') }
+      { from: Path.resolve(__dirname, '../favicons') }
     ])
   ],
   resolve: {
