@@ -12,7 +12,7 @@ Verantwortlicher i.S.v. § 55 Rundfunkstaatsvertrag (RStV): Heiko Rintelen
 Datenschutzbeauftragter: Boris Hekele (Kontakt: [datenschutz@fixmyberlin.de](mailto:datenschutz@fixmyberlin.de), Anschrift siehe oben)
 
 ## Entwicklung
-**Frontend & UX Beratung**  
+**Frontend & UX Beratung**<br/>
 Webkid GmbH, https://webkid.io/
 
 **Backend & Beratung**  

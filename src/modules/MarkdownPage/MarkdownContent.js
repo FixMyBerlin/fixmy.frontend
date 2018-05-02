@@ -40,7 +40,7 @@ export default props => (
   <If
     condition={typeof props.content === 'string'}
     render={() => (
-      <StyledMarkdown transformImageUri={loadImage} source={props.content} />
+      <StyledMarkdown escapeHtml={false} transformImageUri={loadImage} source={props.content} />
     )}
   />
 );
