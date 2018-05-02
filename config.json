@@ -28,6 +28,10 @@
       {
         "label": "Impressum",
         "link": "/impressum"
+      },
+      {
+        "label": "Zustands-Karte",
+        "link": "/zustand"
       }
     ]
   },

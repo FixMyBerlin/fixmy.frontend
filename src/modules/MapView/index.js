@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Map from '~/components/Map';
+import LocatorControl from '~/components/LocatorControl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -31,6 +32,12 @@ class MapViewComponent extends PureComponent {
 
     return (
       <MapView>
+        <Route
+          match="/zustand"
+          render={() => [
+            <LocatorControl key="LocatorControl" />
+          ]}
+        />
         <Map
           accessToken={config.map.accessToken}
           view={view}
