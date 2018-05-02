@@ -11,6 +11,12 @@ Gesellschafter: Boris Hekele und Heiko Rintelen
 Verantwortlicher i.S.v. § 55 Rundfunkstaatsvertrag (RStV): Heiko Rintelen
 Datenschutzbeauftragter: Boris Hekele (Kontakt: [datenschutz@fixmyberlin.de](mailto:datenschutz@fixmyberlin.de), Anschrift siehe oben)
 
+## Entwicklung
+**Frontend & UX Beratung**  
+Webkid GmbH, https://webkid.io/
+
+**Backend & Beratung**  
+Stefan Freudenberg
 
 ## Urheberrechte Fotos
 Wenn nicht anders angegeben stehen die auf fixmyberlin.de verwendeten Fotos unter Creative Commons-Lizenz (BY-NC 4.0). (Info zu CC Lizenzen)
