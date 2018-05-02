@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Markdown from 'react-markdown';
 import { getHeadlineStyle } from '~/components/Headline';
 
+const ImageContext = require.context('~/images', true);
+
 const StyledMarkdown = styled(Markdown)`
   h1 {
     ${getHeadlineStyle()};
@@ -30,11 +32,15 @@ const StyledMarkdown = styled(Markdown)`
   }
 `;
 
+function loadImage(mdSrc) {
+  return ImageContext(mdSrc);
+}
+
 export default props => (
   <If
     condition={typeof props.content === 'string'}
     render={() => (
-      <StyledMarkdown source={props.content} />
+      <StyledMarkdown transformImageUri={loadImage} source={props.content} />
     )}
   />
 );

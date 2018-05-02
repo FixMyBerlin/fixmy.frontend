@@ -17,5 +17,5 @@ Wenn nicht anders angegeben stehen die auf fixmyberlin.de verwendeten Fotos unte
 
 FixMyBerlin wird als forschungsbezogenes Start-Up durch Bundesmittel gefördert. [Projektsteckbrief](http://www.bmvi.de/SharedDocs/DE/Artikel/DG/mfund-projekte/fixmyberlin.html)
 
-[![Logo BMVI](/src/images/bmvi-logo.jpg "Logo BMVI")](http://www.bmvi.de/)
-[![Logo mFund](/src/images/mfund-logo.jpg "Logo mFund")](https://www.bmvi.de/DE/Themen/Digitales/mFund/Ueberblick/ueberblick.html)
+[![Logo BMVI](./bmvi-logo.jpg "Logo BMVI")](http://www.bmvi.de/)
+[![Logo mFund](./mfund-logo.jpg "Logo mFund")](https://www.bmvi.de/DE/Themen/Digitales/mFund/Ueberblick/ueberblick.html)
