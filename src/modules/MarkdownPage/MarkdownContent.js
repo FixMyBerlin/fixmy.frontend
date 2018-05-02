@@ -25,7 +25,7 @@ const StyledMarkdown = styled(Markdown)`
     margin: 20px 0;
   }
 
-  p {
+  p, li {
     font-size: 14px;
     color: ${config.colors.darkgrey};
     line-height: 1.4;
