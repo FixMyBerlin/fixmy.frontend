@@ -2,11 +2,11 @@
 ** Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten (nachfolgend kurz „Daten“) innerhalb unseres Onlineangebotes und der mit ihm verbundenen Webseiten, Funktionen und Inhalte sowie externen Onlinepräsenzen, wie z.B. unserer Social Media Profile auf. (nachfolgend gemeinsam bezeichnet als „Onlineangebot“). Im Hinblick auf die verwendeten Begrifflichkeiten, wie z.B. „Verarbeitung“ oder „Verantwortlicher“ verweisen wir auf die Definitionen im Art. 4 der Datenschutzgrundverordnung (DSGVO).**
 
 ## Verantwortlicher
-FixMyBerlin GbR  
-℅ Pulsraum  
-Kottbusser Damm 25/26  
-E-Mail-Adresse: [hello@fixmyberlin.de](mailto:hello@fixmyberlin.de)  
-Telefon: 030 / 549 08 665  
+FixMyBerlin GbR<br />
+℅ Pulsraum<br />
+Kottbusser Damm 25/26<br />
+E-Mail-Adresse: [hello@fixmyberlin.de](mailto:hello@fixmyberlin.de)<br />
+Telefon: 030 / 549 08 665<br />
 [Impressum](/impressum)
 
 ## Arten der verarbeiteten Daten:
