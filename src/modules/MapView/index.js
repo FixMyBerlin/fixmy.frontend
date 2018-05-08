@@ -18,30 +18,27 @@ const MapView = styled.div`
   }
 `;
 
-const DisplayMapRoutes = ['/', '/zustand', '/planungen'];
-
 class MapViewComponent extends PureComponent {
   render() {
     const { pathname } = this.props.location;
-
-    if (!DisplayMapRoutes.includes(pathname)) {
-      return null;
-    }
-
     const view = Object.assign({}, config.map.views.default, config.map.views[pathname] || {});
 
     return (
       <MapView>
         <Route
-          match="/zustand"
-          render={() => [
-            <LocatorControl key="LocatorControl" />
-          ]}
+          path="/zustand"
+          render={() => <LocatorControl key="LocatorControl" />}
         />
-        <Map
-          accessToken={config.map.accessToken}
-          view={view}
-          animate
+        <Route
+          path="(/|/zustand|/planungen)"
+          render={() => (
+            <Map
+              key="MapComponent"
+              accessToken={config.map.accessToken}
+              view={view}
+              animate
+            />
+          )}
         />
       </MapView>
     );
