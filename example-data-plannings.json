@@ -1,0 +1,97 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": []
+      },
+      "properties": {
+        "side": 0,
+        "id": 12345,
+        "progress": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": []
+      },
+      "properties": {
+        "side": 1,
+        "id": 12345,
+        "progress": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": []
+      },
+      "properties": {
+        "side": 2,
+        "id": 12345,
+        "progress": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": []
+      },
+      "properties": {
+        "id": 12345
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": []
+      },
+      "properties": {
+        "side": 0,
+        "id": 67890,
+        "progress": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": []
+      },
+      "properties": {
+        "side": 1,
+        "id": 67890,
+        "progress": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": []
+      },
+      "properties": {
+        "side": 2,
+        "id": 67890,
+        "progress": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": []
+      },
+      "properties": {
+        "id": 67890
+      }
+    }
+  ]
+}
