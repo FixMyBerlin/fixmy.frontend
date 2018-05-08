@@ -63,6 +63,7 @@
         "pitch": 0,
         "center": [13.4237252, 52.5163494]
       }
-    }
+    },
+    "zoomAfterGeocode": 16
   }
 }

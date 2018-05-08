@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -19,15 +18,34 @@ const MapView = styled.div`
 `;
 
 class MapViewComponent extends PureComponent {
+  state = {
+    center: null
+  }
+
+  handleLocationChange = (center) => {
+    this.setState({ center });
+  }
+
   render() {
     const { pathname } = this.props.location;
     const view = Object.assign({}, config.map.views.default, config.map.views[pathname] || {});
 
+    // we need to overwrite the current position when the user has done geolocation
+    if (this.state.center) {
+      view.center = this.state.center;
+      view.zoom = config.map.zoomAfterGeocode;
+    }
+
     return (
       <MapView>
         <Route
-          path="/zustand"
-          render={() => <LocatorControl key="LocatorControl" />}
+          path="(/zustand|/planungen)"
+          render={() => (
+            <LocatorControl
+              onChange={this.handleLocationChange}
+              position="top-right"
+            />
+          )}
         />
         <Route
           path="(/|/zustand|/planungen)"
@@ -45,4 +63,4 @@ class MapViewComponent extends PureComponent {
   }
 }
 
-export default withRouter(connect(state => state)(MapViewComponent));
+export default withRouter(MapViewComponent);
