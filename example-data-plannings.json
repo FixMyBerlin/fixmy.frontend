@@ -32,7 +32,7 @@
         "coordinates": []
       },
       "properties": {
-        "side": 2,
+        "side": 1,
         "id": 12345,
         "progress": 2
       }
@@ -78,7 +78,7 @@
         "coordinates": []
       },
       "properties": {
-        "side": 2,
+        "side": 1,
         "id": 67890,
         "progress": 0
       }
