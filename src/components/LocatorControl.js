@@ -6,8 +6,14 @@ import idx from 'idx';
 import { getGeoLocation } from '~/utils';
 import MapControl from './MapControl';
 
-const LocatorControl = styled(MapControl)`
+const LocatorButton = styled.button`
   background-color: ${config.colors.interaction};
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
 `;
 
 class Locator extends PureComponent {
@@ -43,7 +49,14 @@ class Locator extends PureComponent {
     const locatorIcon = this.state.isLoading ? 'X' : 'L';
 
     return (
-      <LocatorControl onClick={this.locate} position={this.props.position}>{locatorIcon}</LocatorControl>
+      <MapControl position={this.props.position}>
+        <LocatorButton
+          disabled={this.state.isLoading}
+          onClick={this.locate}
+        >
+          {locatorIcon}
+        </LocatorButton>
+      </MapControl>
     );
   }
 }

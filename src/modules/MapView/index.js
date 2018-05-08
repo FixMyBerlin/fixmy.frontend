@@ -3,6 +3,7 @@ import { Route, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Map from '~/components/Map';
+import SearchBar from '~/components/SearchBar';
 import LocatorControl from '~/components/LocatorControl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -38,6 +39,10 @@ class MapViewComponent extends PureComponent {
 
     return (
       <MapView>
+        <Route
+          path="(/zustand|/planungen)"
+          component={SearchBar}
+        />
         <Route
           path="(/zustand|/planungen)"
           render={() => (
