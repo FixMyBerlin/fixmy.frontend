@@ -129,7 +129,10 @@ Matomo verwendet Cookies, die auf dem Computer der Nutzer gespeichert werden und
 
 Nutzer können der anonymisierten Datenerhebung durch das Programm Matomo jederzeit mit Wirkung für die Zukunft widersprechen, indem sie auf den untenstehenden Link klicken. In diesem Fall wird in ihrem Browser ein sog. Opt-Out-Cookie abgelegt, was zur Folge hat, dass Matomo keinerlei Sitzungsdaten mehr erhebt. Wenn Nutzer ihre Cookies löschen, so hat dies jedoch zur Folge, dass auch das Opt-Out-Cookie gelöscht wird und daher von den Nutzern erneut aktiviert werden muss.
 
-[Bitte setzen Sie an dieser Stelle das IFRAME von Matomo mit dem opt-out cookie ein (und schalten die IP-Anonymisierung im Einstellungsbereich ein)].
+<iframe
+        style="border: 0; height: 200px; width: 600px;"
+        src="https://fixmyberlin.de/stats/index.php?module=CoreAdminHome&action=optOut&language=en&backgroundColor=&fontColor=545454&fontSize=14px&fontFamily=Open Sans,sans-serif"
+        ></iframe>
 
 ## Onlinepräsenzen in sozialen Medien
 Wir unterhalten Onlinepräsenzen innerhalb sozialer Netzwerke und Plattformen, um mit den dort aktiven Kunden, Interessenten und Nutzern kommunizieren und sie dort über unsere Leistungen informieren zu können. Beim Aufruf der jeweiligen Netzwerke und Plattformen gelten die Geschäftsbedingungen und die Datenverarbeitungsrichtlinien deren jeweiligen Betreiber.
