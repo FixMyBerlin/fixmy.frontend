@@ -20,11 +20,11 @@ const MapView = styled.div`
 
 class MapViewComponent extends PureComponent {
   state = {
-    center: null
+    userLocation: null
   }
 
-  handleLocationChange = (center) => {
-    this.setState({ center });
+  handleLocationChange = (userLocation) => {
+    this.setState({ userLocation });
   }
 
   render() {
@@ -32,8 +32,8 @@ class MapViewComponent extends PureComponent {
     const view = Object.assign({}, config.map.views.default, config.map.views[pathname] || {});
 
     // we need to overwrite the current position when the user has done geolocation
-    if (this.state.center) {
-      view.center = this.state.center;
+    if (this.state.userLocation) {
+      view.userLocation = this.state.userLocation;
       view.zoom = config.map.zoomAfterGeocode;
     }
 

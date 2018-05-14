@@ -4,16 +4,18 @@ import PropTypes from 'prop-types';
 import idx from 'idx';
 
 import { getGeoLocation } from '~/utils';
+import LocatorIcon from '~/images/location.svg';
 import MapControl from './MapControl';
 
 const LocatorButton = styled.button`
-  background-color: ${config.colors.interaction};
+  background-color: ${config.colors.white};
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
+  padding: 10px;
+  border: none;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 `;
 
 class Locator extends PureComponent {
@@ -46,15 +48,13 @@ class Locator extends PureComponent {
   }
 
   render() {
-    const locatorIcon = this.state.isLoading ? 'X' : 'L';
-
     return (
       <MapControl position={this.props.position}>
         <LocatorButton
           disabled={this.state.isLoading}
           onClick={this.locate}
         >
-          {locatorIcon}
+          <img src={LocatorIcon} alt="menu" />
         </LocatorButton>
       </MapControl>
     );
