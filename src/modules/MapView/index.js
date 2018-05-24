@@ -24,6 +24,7 @@ class MapViewComponent extends PureComponent {
   }
 
   handleLocationChange = (userLocation) => {
+    console.log(userLocation);
     this.setState({ userLocation });
   }
 
@@ -33,7 +34,7 @@ class MapViewComponent extends PureComponent {
 
     // we need to overwrite the current position when the user has done geolocation
     if (this.state.userLocation) {
-      view.userLocation = this.state.userLocation;
+      view.center = this.state.userLocation;
       view.zoom = config.map.zoomAfterGeocode;
     }
 
@@ -60,6 +61,7 @@ class MapViewComponent extends PureComponent {
               accessToken={config.map.accessToken}
               view={view}
               animate
+              handleLocationChange={this.handleLocationChange}
             />
           )}
         />

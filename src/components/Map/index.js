@@ -47,22 +47,25 @@ class Map extends PureComponent {
   }
 
   handleLoad = () => {
-    this.map.on('click', 'planning-sections-bg', this.handleClick);
-    this.map.on('click', 'planning-sections-bg-inactive', this.handleClick);
+    this.map.on('click', 'planungen-bg', this.handleClick);
+    this.map.on('click', 'planungen-bg-inactive', this.handleClick);
     this.setState({ loading: false });
   }
 
   handleClick = (e) => {
+    console.log(e);
     const properties = idx(e, _ => _.features[0].properties);
 
     if (properties) {
-      this.map.setFilter('planning-sections-bg', ['all', ['==', 'id', properties.id], ['==', 'side', 0]]);
-      this.map.setFilter('planning-sections-s1', ['all', ['==', 'id', properties.id], ['==', 'side', 0]]);
-      this.map.setFilter('planning-sections-s2', ['all', ['==', 'id', properties.id], ['==', 'side', 0]]);
+      this.map.setFilter('planungen-bg', ['all', ['==', 'ELEM_NR', properties.ELEM_NR]]);
+      this.map.setFilter('planungen-s1', ['all', ['==', 'ELEM_NR', properties.ELEM_NR]]);
+      this.map.setFilter('planungen-s2', ['all', ['==', 'ELEM_NR', properties.ELEM_NR]]);
 
-      this.map.setFilter('planning-sections-bg-inactive', ['all', ['!=', 'id', properties.id], ['==', 'side', 0]]);
-      this.map.setFilter('planning-sections-s1-inactive', ['all', ['!=', 'id', properties.id], ['==', 'side', 0]]);
-      this.map.setFilter('planning-sections-s2-inactive', ['all', ['!=', 'id', properties.id], ['==', 'side', 0]]);
+      this.map.setFilter('planungen-bg-inactive', ['all', ['!=', 'ELEM_NR', properties.ELEM_NR]]);
+      this.map.setFilter('planungen-s1-inactive', ['all', ['!=', 'ELEM_NR', properties.ELEM_NR]]);
+      this.map.setFilter('planungen-s2-inactive', ['all', ['!=', 'ELEM_NR', properties.ELEM_NR]]);
+
+      this.props.handleLocationChange([e.lngLat.lng, e.lngLat.lat]);
     }
   }
 
