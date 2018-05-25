@@ -9,7 +9,6 @@ Telefon: 030 / 549 08 665
 Gesellschafter: Boris Hekele und Heiko Rintelen
 
 Verantwortlicher i.S.v. § 55 Rundfunkstaatsvertrag (RStV): Heiko Rintelen<br />
-Datenschutzbeauftragter: Boris Hekele (Kontakt: [datenschutz@fixmyberlin.de](mailto:datenschutz@fixmyberlin.de), Anschrift siehe oben)
 
 ## Entwicklung
 **Frontend & UX Beratung**<br />
