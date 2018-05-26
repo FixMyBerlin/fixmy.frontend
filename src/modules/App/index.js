@@ -19,8 +19,6 @@ const App = styled.div`
 const AppContent = styled.div`
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  display: flex;
 `;
 
 const AppWrapper = () => (
@@ -34,7 +32,10 @@ const AppWrapper = () => (
       <Route path="/datenschutz" render={() => <MarkdownPage page="privacy" />} />
       <Route path="/impressum" render={() => <MarkdownPage page="imprint" />} />
 
-      <MapView />
+      <Route
+        path="(/zustand|/planungen|/)"
+        component={MapView}
+      />
     </AppContent>
   </App>
 );
