@@ -1,12 +1,17 @@
 import React, { PureComponent } from 'react';
 import { Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import Map from '~/components/Map';
 import SearchBar from '~/components/SearchBar';
 import LocatorControl from '~/components/LocatorControl';
 
+import Store from '~/redux/store';
+
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+import Map from './Map';
+import * as MapActions from './MapState';
 
 const MapView = styled.div`
   height: 100%;
@@ -23,21 +28,28 @@ class MapViewComponent extends PureComponent {
     userLocation: null
   }
 
-  handleLocationChange = (userLocation) => {
-    console.log(userLocation);
-    this.setState({ userLocation });
+  componentDidMount() {
+    const view = config.map.views[this.props.location.pathname];
+    if (view) {
+      Store.dispatch(MapActions.setView(Object.assign(view, { animate: false })));
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const prevPath = prevProps.location.pathname;
+    const thisPath = this.props.location.pathname;
+    const nextView = config.map.views[thisPath];
+
+    if (prevPath !== thisPath && nextView) {
+      Store.dispatch(MapActions.setView(nextView));
+    }
+  }
+
+  updateView = (view) => {
+    Store.dispatch(MapActions.setView(view));
   }
 
   render() {
-    const { pathname } = this.props.location;
-    const view = Object.assign({}, config.map.views.default, config.map.views[pathname] || {});
-
-    // we need to overwrite the current position when the user has done geolocation
-    if (this.state.userLocation) {
-      view.center = this.state.userLocation;
-      view.zoom = config.map.zoomAfterGeocode;
-    }
-
     return (
       <MapView>
         <Route
@@ -59,9 +71,13 @@ class MapViewComponent extends PureComponent {
             <Map
               key="MapComponent"
               accessToken={config.map.accessToken}
-              view={view}
-              animate
-              handleLocationChange={this.handleLocationChange}
+              zoom={this.props.zoom}
+              center={this.props.center}
+              bearing={this.props.bearing}
+              pitch={this.props.pitch}
+              show3dBuildings={this.props.show3dBuildings}
+              animate={this.props.animate}
+              updateView={this.updateView}
             />
           )}
         />
@@ -70,4 +86,4 @@ class MapViewComponent extends PureComponent {
   }
 }
 
-export default withRouter(MapViewComponent);
+export default withRouter(connect(state => state.MapState)(MapViewComponent));
