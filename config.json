@@ -28,14 +28,6 @@
       {
         "label": "Impressum",
         "link": "/impressum"
-      },
-      {
-        "label": "Zustands-Karte",
-        "link": "/zustand"
-      },
-      {
-        "label": "Planungs-Karte",
-        "link": "/planungen"
       }
     ]
   },
@@ -87,6 +79,6 @@
         "animate": false
       }
     },
-    "zoomAfterGeocode": 16
+    "zoomAfterGeocode": 17
   }
 }

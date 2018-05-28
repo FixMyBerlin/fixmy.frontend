@@ -149,7 +149,6 @@ class Map extends PureComponent {
 
   handleClick = (e) => {
     const properties = idx(e, _ => _.features[0].properties);
-    console.log(properties);
 
     if (properties) {
       Store.dispatch(MapActions.setSectionActive(properties.id));
@@ -157,7 +156,9 @@ class Map extends PureComponent {
       Store.dispatch(MapActions.setView({
         center: [e.lngLat.lng, e.lngLat.lat],
         animate: true,
-        zoom: config.map.zoomAfterGeocode
+        zoom: config.map.zoomAfterGeocode,
+        show3dBuildings: true,
+        pitch: 30
       }));
     }
   }
