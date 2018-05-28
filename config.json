@@ -61,19 +61,22 @@
         "pitch": 60,
         "center": [13.421025, 52.494004],
         "show3dBuildings": true,
-        "animate": true
+        "animate": false,
+        "activeLayer": null
       },
       "/zustand": {
         "zoom": 17,
         "show3dBuildings": false,
-        "animate": true,
-        "pitch": 0
+        "animate": false,
+        "pitch": 0,
+        "activeLayer": "zustand"
       },
       "/planungen": {
         "zoom": 10,
         "show3dBuildings": false,
-        "animate": true,
-        "pitch": 0
+        "animate": false,
+        "pitch": 0,
+        "activeLayer": "planungen"
       },
       "default": {
         "zoom": 16,
@@ -81,7 +84,7 @@
         "pitch": 0,
         "center": [13.4237252, 52.5163494],
         "show3dBuildings": true,
-        "animate": true
+        "animate": false
       }
     },
     "zoomAfterGeocode": 16

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 import _isEqual from 'lodash.isequal';
@@ -5,8 +6,11 @@ import styled from 'styled-components';
 import idx from 'idx';
 import PropTypes from 'prop-types';
 
+import Store from '~/redux/store';
+
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+import * as MapActions from './MapState';
 import { animateView, setView } from './map-utils';
 
 const StyledMap = styled.div`
@@ -23,6 +27,8 @@ class Map extends PureComponent {
     show3dBuildings: PropTypes.bool,
     animate: PropTypes.bool,
     updateView: PropTypes.func,
+    activeLayer: PropTypes.string,
+    activeSection: PropTypes.string,
     accessToken: PropTypes.string.isRequired
   }
 
@@ -33,6 +39,8 @@ class Map extends PureComponent {
     bearing: config.map.views.default.bearing,
     show3dBuildings: true,
     animate: true,
+    activeLayer: null,
+    activeSection: null,
     updateView: () => {}
   }
 
@@ -59,6 +67,8 @@ class Map extends PureComponent {
       return false;
     }
 
+    console.log(this.props);
+
     const viewChanged = prevProps.zoom !== this.props.zoom ||
       !_isEqual(prevProps.center, this.props.center) ||
       prevProps.pitch !== this.props.pitch ||
@@ -70,6 +80,13 @@ class Map extends PureComponent {
 
     if (prevProps.show3dBuildings !== this.props.show3dBuildings) {
       this.update3dBuildings();
+    }
+
+    const layerChanged = prevProps.activeLayer !== this.props.activeLayer ||
+      prevProps.activeSection !== this.props.activeSection;
+
+    if (layerChanged) {
+      this.updateLayers();
     }
 
     return true;
@@ -95,13 +112,16 @@ class Map extends PureComponent {
   handleLoad = () => {
     this.map.on('click', 'planungen-bg', this.handleClick);
     this.map.on('click', 'planungen-bg-inactive', this.handleClick);
+    this.map.on('click', 'zustand-bg', this.handleClick);
+    this.map.on('click', 'zustand-bg-inactive', this.handleClick);
+
     this.update3dBuildings();
+    this.updateLayers();
     this.setView(this.getViewFromProps(), this.props.animate);
     this.setState({ loading: false });
   }
 
   update3dBuildings = () => {
-    console.log(this.props.show3dBuildings);
     if (this.props.show3dBuildings) {
       this.map.setLayoutProperty('3d-buildings', 'visibility', 'visible');
     } else {
@@ -109,23 +129,36 @@ class Map extends PureComponent {
     }
   }
 
+  updateLayers = () => {
+    ['planungen', 'zustand'].forEach((prefix) => {
+      ['bg', 'side0', 'side1'].forEach((side) => {
+        ['active', 'inactive'].forEach((state) => {
+          const layerId = `${prefix}-${side}-${state}`;
+          const visibility = prefix === this.props.activeLayer ? 'visible' : 'none';
+          this.map.setLayoutProperty(layerId, 'visibility', visibility);
+
+          if (this.props.activeSection) {
+            this.map.setFilter(layerId, ['all', [state === 'active' ? '==' : '!=', 'id', this.props.activeSection]]);
+          } else {
+            this.map.setFilter(layerId, null);
+          }
+        });
+      });
+    });
+  }
+
   handleClick = (e) => {
     const properties = idx(e, _ => _.features[0].properties);
+    console.log(properties);
 
     if (properties) {
-      this.map.setFilter('planungen-bg', ['all', ['==', 'ELEM_NR', properties.ELEM_NR]]);
-      this.map.setFilter('planungen-s1', ['all', ['==', 'ELEM_NR', properties.ELEM_NR]]);
-      this.map.setFilter('planungen-s2', ['all', ['==', 'ELEM_NR', properties.ELEM_NR]]);
+      Store.dispatch(MapActions.setSectionActive(properties.id));
 
-      this.map.setFilter('planungen-bg-inactive', ['all', ['!=', 'ELEM_NR', properties.ELEM_NR]]);
-      this.map.setFilter('planungen-s1-inactive', ['all', ['!=', 'ELEM_NR', properties.ELEM_NR]]);
-      this.map.setFilter('planungen-s2-inactive', ['all', ['!=', 'ELEM_NR', properties.ELEM_NR]]);
-
-      this.props.updateView({
+      Store.dispatch(MapActions.setView({
         center: [e.lngLat.lng, e.lngLat.lat],
         animate: true,
         zoom: config.map.zoomAfterGeocode
-      });
+      }));
     }
   }
 

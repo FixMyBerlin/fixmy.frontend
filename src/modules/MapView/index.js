@@ -82,6 +82,8 @@ class MapViewComponent extends PureComponent {
               bearing={this.props.bearing}
               pitch={this.props.pitch}
               show3dBuildings={this.props.show3dBuildings}
+              activeLayer={this.props.activeLayer}
+              activeSection={this.props.activeSection}
               animate={this.props.animate}
               updateView={this.updateView}
             />
