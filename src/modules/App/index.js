@@ -7,6 +7,8 @@ import Home from '~/modules/Home';
 import MarkdownPage from '~/modules/MarkdownPage';
 import MapView from '~/modules/MapView';
 
+import MapModal from '~/components/MapModal';
+
 import { init as initStyle } from './AppStyle';
 
 initStyle();
@@ -35,6 +37,10 @@ const AppWrapper = () => (
       <Route
         path="(/zustand|/planungen|/)"
         component={MapView}
+      />
+      <Route
+        path="(/zustand|/planungen)"
+        component={MapModal}
       />
     </AppContent>
   </App>

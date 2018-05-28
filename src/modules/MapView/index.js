@@ -40,6 +40,8 @@ class MapViewComponent extends PureComponent {
     const thisPath = this.props.location.pathname;
     const nextView = config.map.views[thisPath];
 
+    console.log(nextView);
+
     if (prevPath !== thisPath && nextView) {
       Store.dispatch(MapActions.setView(nextView));
     }
@@ -47,6 +49,10 @@ class MapViewComponent extends PureComponent {
 
   updateView = (view) => {
     Store.dispatch(MapActions.setView(view));
+  }
+
+  handleLocationChange = (userLocation) => {
+    this.updateView({ center: userLocation });
   }
 
   render() {

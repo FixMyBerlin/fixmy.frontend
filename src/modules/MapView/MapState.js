@@ -5,7 +5,6 @@ const initialState = {
 };
 
 export function setView(view) {
-  console.log('set view', view);
   return { type: SET_VIEW, payload: view };
 }
 
