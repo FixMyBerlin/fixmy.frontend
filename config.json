@@ -1,12 +1,14 @@
 {
+  "devUrl": "http://localhost:8080",
+  "prodUrl": "https://fixmyberlin-app.netlify.com",
+  "newsletterWidgetUrl": "https://app.mailjet.com/widget/iframe/2YIa/6kW",
   "colors": {
     "lightgrey": "#e8e8e8",
     "midgrey": "#999999",
     "darkgrey": "#545454",
-    "black": "#222",
+    "black": "#0f0f0f",
     "white": "#FFF",
-    "interaction": "#fabe28",
-    "interactionBg": "#f1c14c"
+    "interaction": "#fabe28"
   },
   "menu": {
     "size": 320,
@@ -20,11 +22,7 @@
         "link": "/kontakt"
       },
       {
-        "label": "Presse",
-        "link": "/presse"
-      },
-      {
-        "label": "Datenschutzerklärung",
+        "label": "Datenschutz",
         "link": "/datenschutz"
       },
       {
@@ -36,22 +34,51 @@
   "about": {
     "markdownSource": "markdown/about.md"
   },
+  "contact": {
+    "markdownSource": "markdown/contact.md"
+  },
+  "privacy": {
+    "markdownSource": "markdown/privacy.md"
+  },
+  "imprint": {
+    "markdownSource": "markdown/imprint.md"
+  },
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
-    "style": "mapbox://styles/hejco/cjgf6abtd002x2ro5ipknqz3x",
+    "style": "mapbox://styles/hejco/cjhbofe9k08gc2ss4dly1zbir",
     "views": {
       "/": {
-        "zoom": 17,
+        "zoom": 16,
         "bearing": 0,
         "pitch": 60,
-        "center": [13.421025, 52.494004]
+        "center": [13.421025, 52.494004],
+        "show3dBuildings": true,
+        "animate": false,
+        "activeLayer": null
+      },
+      "/zustand": {
+        "zoom": 17,
+        "show3dBuildings": false,
+        "animate": false,
+        "pitch": 0,
+        "activeLayer": "zustand"
+      },
+      "/planungen": {
+        "zoom": 10,
+        "show3dBuildings": false,
+        "animate": false,
+        "pitch": 0,
+        "activeLayer": "planungen"
       },
       "default": {
-        "zoom": 14,
+        "zoom": 16,
         "bearing": 0,
         "pitch": 0,
-        "center": [13.4237252, 52.5163494]
+        "center": [13.4237252, 52.5163494],
+        "show3dBuildings": true,
+        "animate": false
       }
-    }
+    },
+    "zoomAfterGeocode": 17
   }
 }

@@ -17,7 +17,8 @@ module.exports = {
     // copy data folder to make it available in redux loadData action
     new CopyWebpackPlugin([
       { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' },
-      { from: Path.resolve(__dirname, '../_redirects') }
+      { from: Path.resolve(__dirname, '../_redirects') },
+      { from: Path.resolve(__dirname, '../favicons') }
     ])
   ],
   resolve: {

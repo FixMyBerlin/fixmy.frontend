@@ -2,8 +2,10 @@ import { combineReducers } from 'redux';
 
 import AppState from '~/modules/App/AppState';
 import MenuState from '~/modules/Menu/MenuState';
+import MapState from '~/modules/MapView/MapState';
 
 export default combineReducers({
   AppState,
-  MenuState
+  MenuState,
+  MapState
 });

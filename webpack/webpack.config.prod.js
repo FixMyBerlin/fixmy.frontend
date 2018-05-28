@@ -5,7 +5,8 @@ const Webpack = require('webpack');
 const Path = require('path');
 const Autoprefixer = require('autoprefixer');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const Config = require('../config.json');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -33,6 +34,7 @@ module.exports = merge(common, {
     }),
     new HtmlWebpackPlugin({
       inject: true,
+      siteUrl: Config.prodUrl,
       template: './src/index.html',
       minify: {
         removeComments: true,

@@ -7,13 +7,15 @@ import 'normalize.css';
 import Store from './redux/store';
 import App from './modules/App';
 
-if (module.hot) module.hot.accept();
+const root = document.getElementById('root');
 
-ReactDOM.render(
-  <Provider store={Store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
-  document.getElementById('root')
-);
+if (root) {
+  ReactDOM.render(
+    <Provider store={Store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>,
+    root
+  );
+}

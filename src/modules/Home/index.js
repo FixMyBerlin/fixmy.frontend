@@ -6,10 +6,9 @@ import ContentOverlay from '~/components/ContentOverlay';
 import FMBLogo from '~/components/FMBLogo';
 import Headline from '~/components/Headline';
 import MenuButton from '~/components/MenuButton';
-import SocialButtons from '~/components/SocialButtons';
-import Button from '~/components/Button';
+import SocialSharer from '~/components/Social/SocialSharer';
 import Text from '~/components/Text';
-import Input from '~/components/Input';
+import SubscribtionWidget from '~/components/SubscribtionWidget';
 
 const HomeContent = styled.div`
   text-align: center;
@@ -18,23 +17,19 @@ const HomeContent = styled.div`
   margin: 0 auto;
 `;
 
-const NewsletterForm = styled.form`
-  padding: 1rem;
-  max-width: 400px;
-  margin: 0 auto;
-`;
+// const NewsletterForm = styled.form`
+//   padding: 1rem;
+//   max-width: 400px;
+//   margin: 0 auto;
+// `;
 
-const NewsletterSubmitWrapper = styled.div`
-  margin-top: 10px;
-`;
+// const NewsletterSubmitWrapper = styled.div`
+//   margin-top: 10px;
+// `;
 
 const AboutLinkWrapper = styled.div`
   margin-top: 30px;
   font-size: 14px;
-`;
-
-const SocialWrapper = styled.div`
-  margin-top: 50px;
 `;
 
 export default () => (
@@ -46,18 +41,11 @@ export default () => (
         <Headline>Hi, das ist FixMyBerlin</Headline>
         <Text>Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Hier siehst du bald, was dafür geplant wird. Trage dich für Updates zum Newsletter ein.</Text>
       </div>
-      <NewsletterForm>
-        <Input type="text" placeholder="Deine Emailadresse" />
-        <NewsletterSubmitWrapper>
-          <Button type="submit">Newsletter abonnieren</Button>
-        </NewsletterSubmitWrapper>
-      </NewsletterForm>
+      <SubscribtionWidget />
       <AboutLinkWrapper>
         <Link to="/info">Worum geht es hier genau?</Link>
       </AboutLinkWrapper>
-      <SocialWrapper>
-        <SocialButtons />
-      </SocialWrapper>
+      <SocialSharer />
     </HomeContent>
   </ContentOverlay>
 );

@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Webpack = require('webpack');
 const Path = require('path');
 const Autoprefixer = require('autoprefixer');
+const Config = require('../config.json');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -16,6 +17,7 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
+      siteUrl: Config.devUrl,
       template: Path.resolve(__dirname, '../src/index.html')
     }),
     new Webpack.NamedModulesPlugin(),
