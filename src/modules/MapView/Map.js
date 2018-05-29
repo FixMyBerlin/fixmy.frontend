@@ -15,8 +15,8 @@ import * as MapActions from './MapState';
 import { animateView, setView } from './map-utils';
 
 const StyledMap = styled.div`
-  height: 100%;
   width: 100%;
+  flex: 1;
 `;
 
 class Map extends PureComponent {
@@ -90,7 +90,7 @@ class Map extends PureComponent {
       this.updateLayers();
     }
 
-    if (prevProps.location !== this.props.location) {
+    if (prevProps.location !== this.props.location || layerChanged) {
       this.map.resize();
     }
 

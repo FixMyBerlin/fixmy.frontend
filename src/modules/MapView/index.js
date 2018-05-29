@@ -15,13 +15,17 @@ import * as MapActions from './MapState';
 const MapView = styled.div`
   height: 100%;
   width: 100%;
-`;
-
-const MapViewInner = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 100%;
+  overflow: hidden
+`;
+
+const MapWrapper = styled.div`
+  flex: 1 1 auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 `;
 
 class MapViewComponent extends PureComponent {
@@ -58,20 +62,20 @@ class MapViewComponent extends PureComponent {
   render() {
     return (
       <MapView>
-        <Route
-          path="(/zustand|/planungen)"
-          component={SearchBar}
-        />
-        <Route
-          path="(/zustand|/planungen)"
-          render={() => (
-            <LocatorControl
-              onChange={this.handleLocationChange}
-              position="top-right"
-            />
-          )}
-        />
-        <MapViewInner>
+        <MapWrapper>
+          <Route
+            path="(/zustand|/planungen)"
+            component={SearchBar}
+          />
+          <Route
+            path="(/zustand|/planungen)"
+            render={() => (
+              <LocatorControl
+                onChange={this.handleLocationChange}
+                position="bottom-right"
+              />
+            )}
+          />
           <Route
             path="(/|/zustand|/planungen)"
             render={() => (
@@ -91,11 +95,11 @@ class MapViewComponent extends PureComponent {
               />
             )}
           />
-          <Route
-            path="(/zustand|/planungen)"
-            component={MapModal}
-          />
-        </MapViewInner>
+        </MapWrapper>
+        <Route
+          path="(/zustand|/planungen)"
+          component={MapModal}
+        />
       </MapView>
     );
   }
