@@ -28,6 +28,14 @@
       {
         "label": "Impressum",
         "link": "/impressum"
+      },
+      {
+        "label": "Zustand",
+        "link": "/zustand"
+      },
+      {
+        "label": "Planung",
+        "link": "/planungen"
       }
     ]
   },

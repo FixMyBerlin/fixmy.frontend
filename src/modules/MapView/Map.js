@@ -5,6 +5,7 @@ import _isEqual from 'lodash.isequal';
 import styled from 'styled-components';
 import idx from 'idx';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -67,8 +68,6 @@ class Map extends PureComponent {
       return false;
     }
 
-    console.log(this.props);
-
     const viewChanged = prevProps.zoom !== this.props.zoom ||
       !_isEqual(prevProps.center, this.props.center) ||
       prevProps.pitch !== this.props.pitch ||
@@ -87,6 +86,10 @@ class Map extends PureComponent {
 
     if (layerChanged) {
       this.updateLayers();
+    }
+
+    if (prevProps.location !== this.props.location) {
+      this.map.resize();
     }
 
     return true;
@@ -170,4 +173,4 @@ class Map extends PureComponent {
   }
 }
 
-export default Map;
+export default withRouter(Map);

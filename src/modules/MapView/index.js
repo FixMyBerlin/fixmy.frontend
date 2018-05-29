@@ -8,19 +8,20 @@ import LocatorControl from '~/components/LocatorControl';
 
 import Store from '~/redux/store';
 
-import 'mapbox-gl/dist/mapbox-gl.css';
-
 import Map from './Map';
+import MapModal from './MapModal';
 import * as MapActions from './MapState';
 
 const MapView = styled.div`
   height: 100%;
   width: 100%;
+`;
 
-  .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
-    position: fixed;
-    z-index: 99999999;
-  }
+const MapViewInner = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
 `;
 
 class MapViewComponent extends PureComponent {
@@ -39,8 +40,6 @@ class MapViewComponent extends PureComponent {
     const prevPath = prevProps.location.pathname;
     const thisPath = this.props.location.pathname;
     const nextView = config.map.views[thisPath];
-
-    console.log(nextView);
 
     if (prevPath !== thisPath && nextView) {
       Store.dispatch(MapActions.setView(nextView));
@@ -71,24 +70,30 @@ class MapViewComponent extends PureComponent {
             />
           )}
         />
-        <Route
-          path="(/|/zustand|/planungen)"
-          render={() => (
-            <Map
-              key="MapComponent"
-              accessToken={config.map.accessToken}
-              zoom={this.props.zoom}
-              center={this.props.center}
-              bearing={this.props.bearing}
-              pitch={this.props.pitch}
-              show3dBuildings={this.props.show3dBuildings}
-              activeLayer={this.props.activeLayer}
-              activeSection={this.props.activeSection}
-              animate={this.props.animate}
-              updateView={this.updateView}
-            />
-          )}
-        />
+        <MapViewInner>
+          <Route
+            path="(/|/zustand|/planungen)"
+            render={() => (
+              <Map
+                key="MapComponent"
+                accessToken={config.map.accessToken}
+                zoom={this.props.zoom}
+                center={this.props.center}
+                bearing={this.props.bearing}
+                pitch={this.props.pitch}
+                show3dBuildings={this.props.show3dBuildings}
+                activeLayer={this.props.activeLayer}
+                activeSection={this.props.activeSection}
+                animate={this.props.animate}
+                updateView={this.updateView}
+              />
+            )}
+          />
+          <Route
+            path="(/zustand|/planungen)"
+            component={MapModal}
+          />
+        </MapViewInner>
       </MapView>
     );
   }
