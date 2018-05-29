@@ -42,7 +42,8 @@ class MapViewComponent extends PureComponent {
     const nextView = config.map.views[thisPath];
 
     if (prevPath !== thisPath && nextView) {
-      Store.dispatch(MapActions.setView(nextView));
+      const view = this.props.hasMoved ? { activeLayer: nextView.activeLayer } : nextView;
+      Store.dispatch(MapActions.setView(view));
     }
   }
 
@@ -86,6 +87,7 @@ class MapViewComponent extends PureComponent {
                 activeSection={this.props.activeSection}
                 animate={this.props.animate}
                 updateView={this.updateView}
+                hasMoved={this.props.hasMoved}
               />
             )}
           />

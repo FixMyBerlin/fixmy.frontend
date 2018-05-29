@@ -29,8 +29,9 @@ class Map extends PureComponent {
     animate: PropTypes.bool,
     updateView: PropTypes.func,
     activeLayer: PropTypes.string,
-    activeSection: PropTypes.string,
-    accessToken: PropTypes.string.isRequired
+    activeSection: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    accessToken: PropTypes.string.isRequired,
+    hasMoved: PropTypes.bool
   }
 
   static defaultProps = {
@@ -42,7 +43,8 @@ class Map extends PureComponent {
     animate: true,
     activeLayer: null,
     activeSection: null,
-    updateView: () => {}
+    updateView: () => {},
+    hasMoved: false
   }
 
   state = {
@@ -118,6 +120,8 @@ class Map extends PureComponent {
     this.map.on('click', 'zustand-bg', this.handleClick);
     this.map.on('click', 'zustand-bg-inactive', this.handleClick);
 
+    this.map.on('dragend', this.handleMove);
+
     this.update3dBuildings();
     this.updateLayers();
     this.setView(this.getViewFromProps(), this.props.animate);
@@ -134,28 +138,33 @@ class Map extends PureComponent {
 
   updateLayers = () => {
     ['planungen', 'zustand'].forEach((prefix) => {
-      ['bg', 'side0', 'side1'].forEach((side) => {
+      ['bg', 'side0', 'side1', 'center'].forEach((side) => {
         ['active', 'inactive'].forEach((state) => {
           const layerId = `${prefix}-${side}-${state}`;
-          const visibility = prefix === this.props.activeLayer ? 'visible' : 'none';
-          this.map.setLayoutProperty(layerId, 'visibility', visibility);
-
-          if (this.props.activeSection) {
-            this.map.setFilter(layerId, ['all', [state === 'active' ? '==' : '!=', 'id', this.props.activeSection]]);
-          } else {
-            this.map.setFilter(layerId, null);
+          if (this.map.getLayer(layerId)) {
+            const visibility = prefix === this.props.activeLayer ? 'visible' : 'none';
+            this.map.setLayoutProperty(layerId, 'visibility', visibility);
+  
+            if (this.props.activeSection) {
+              this.map.setFilter(layerId, ['all', [state === 'active' ? '==' : '!=', 'id', this.props.activeSection]]);
+            } else {
+              this.map.setFilter(layerId, null);
+            }
           }
         });
       });
     });
+
+    if (this.map.getLayer('dimming')) {
+      this.map.setLayoutProperty('dimming', 'visibility', !!this.props.activeSection ? 'visible' : 'none');
+    }
   }
 
   handleClick = (e) => {
     const properties = idx(e, _ => _.features[0].properties);
 
     if (properties) {
-      Store.dispatch(MapActions.setSectionActive(properties.id));
-
+      Store.dispatch(MapActions.setSectionActive(properties));
       Store.dispatch(MapActions.setView({
         center: [e.lngLat.lng, e.lngLat.lat],
         animate: true,
@@ -163,6 +172,14 @@ class Map extends PureComponent {
         show3dBuildings: true,
         pitch: 30
       }));
+
+      this.handleMove();
+    }
+  }
+
+  handleMove = () => {
+    if (!this.props.hasMoved) {
+      Store.dispatch(MapActions.setHasMoved(true));
     }
   }
 
