@@ -15,4 +15,5 @@ export default styled.div`
   z-index: 1000000;
   background: white;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 `;
