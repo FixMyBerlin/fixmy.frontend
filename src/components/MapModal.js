@@ -2,10 +2,10 @@
 
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import Toggle from 'react-toggle';
+import RcSwitch from 'rc-switch';
 import { withRouter } from 'react-router';
 
-import 'react-toggle/style.css';
+import 'rc-switch/assets/index.css';
 
 const MapModal = styled.div`
   position: absolute;
@@ -16,22 +16,21 @@ const MapModal = styled.div`
   padding: 100px 0;
 `;
 
-const StyledToggle = styled(Toggle)`
+const Toggle = styled(RcSwitch)`
   .react-toggle-track {}
 `;
 
 class MapModalComponent extends PureComponent {
-  handleChange = (evt) => {
-    console.log(evt.target.checked);
-    const to = evt.target.checked ? '/planungen' : '/zustand';
-    console.log(to);
+  handleChange = (checked) => {
+    const to = checked ? '/planungen' : '/zustand';
     this.props.history.push(to);
   }
   
   render() {
+    const isChecked = this.props.location.pathname === '/planungen';
     return (
       <MapModal>
-        <StyledToggle onChange={this.handleChange} />
+        <Toggle checked={isChecked} onChange={this.handleChange} />
       </MapModal>
     );
   }

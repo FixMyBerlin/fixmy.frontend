@@ -6,9 +6,9 @@ import styled from 'styled-components';
 import idx from 'idx';
 import PropTypes from 'prop-types';
 
-import Store from '~/redux/store';
-
 import 'mapbox-gl/dist/mapbox-gl.css';
+
+import Store from '~/redux/store';
 
 import * as MapActions from './MapState';
 import { animateView, setView } from './map-utils';
