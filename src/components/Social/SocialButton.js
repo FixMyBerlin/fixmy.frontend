@@ -9,22 +9,22 @@ const SocialButton = styled.div`
 `;
 
 export default (props) => {
-  let iconSource;
+  let SocialIcon;
 
   switch (props.type) {
     case 'twitter':
-      iconSource = TwIcon;
+      SocialIcon = TwIcon;
       break;
     case 'facebook':
     default:
-      iconSource = FbIcon;
+      SocialIcon = FbIcon;
       break;
   }
 
   return (
     <a target="_blank" rel="noopener noreferrer" href={props.link}>
       <SocialButton>
-        <img alt="" src={iconSource} />
+        <SocialIcon />
       </SocialButton>
     </a>
   );
