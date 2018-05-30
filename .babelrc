@@ -6,9 +6,7 @@
   ],
   "plugins": [
     "transform-class-properties",
-    ["babel-plugin-styled-components", {
-      "displayName": true
-    }]
+    "styled-components"
   ],
   "env": {
     "production": {

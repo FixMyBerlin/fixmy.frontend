@@ -5,17 +5,18 @@ import _isEqual from 'lodash.isequal';
 import styled from 'styled-components';
 import idx from 'idx';
 import PropTypes from 'prop-types';
-
-import Store from '~/redux/store';
+import { withRouter } from 'react-router';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+import Store from '~/redux/store';
+
 import * as MapActions from './MapState';
-import { animateView, setView } from './map-utils';
+import MapUtils from './map-utils';
 
 const StyledMap = styled.div`
-  height: 100%;
   width: 100%;
+  flex: 1;
 `;
 
 class Map extends PureComponent {
@@ -28,8 +29,9 @@ class Map extends PureComponent {
     animate: PropTypes.bool,
     updateView: PropTypes.func,
     activeLayer: PropTypes.string,
-    activeSection: PropTypes.string,
-    accessToken: PropTypes.string.isRequired
+    activeSection: PropTypes.object,
+    accessToken: PropTypes.string.isRequired,
+    hasMoved: PropTypes.bool
   }
 
   static defaultProps = {
@@ -41,7 +43,8 @@ class Map extends PureComponent {
     animate: true,
     activeLayer: null,
     activeSection: null,
-    updateView: () => {}
+    updateView: () => {},
+    hasMoved: false
   }
 
   state = {
@@ -50,10 +53,12 @@ class Map extends PureComponent {
 
   componentDidMount() {
     MapboxGL.accessToken = this.props.accessToken;
+    
+    const mbStyleUrl = `${config.map.style}?fresh=true`
 
     this.map = new MapboxGL.Map({
       container: this.root,
-      style: config.map.style
+      style: mbStyleUrl
     });
 
     this.setView(this.getViewFromProps(), false);
@@ -67,8 +72,6 @@ class Map extends PureComponent {
       return false;
     }
 
-    console.log(this.props);
-
     const viewChanged = prevProps.zoom !== this.props.zoom ||
       !_isEqual(prevProps.center, this.props.center) ||
       prevProps.pitch !== this.props.pitch ||
@@ -78,15 +81,16 @@ class Map extends PureComponent {
       this.setView(this.getViewFromProps(), this.props.animate);
     }
 
-    if (prevProps.show3dBuildings !== this.props.show3dBuildings) {
-      this.update3dBuildings();
-    }
-
     const layerChanged = prevProps.activeLayer !== this.props.activeLayer ||
-      prevProps.activeSection !== this.props.activeSection;
+      prevProps.activeSection !== this.props.activeSection ||
+      prevProps.show3dBuildings !== this.props.show3dBuildings;
 
     if (layerChanged) {
       this.updateLayers();
+    }
+
+    if (prevProps.location !== this.props.location || layerChanged) {
+      this.map.resize();
     }
 
     return true;
@@ -103,56 +107,40 @@ class Map extends PureComponent {
 
   setView = (view, animate) => {
     if (animate) {
-      animateView(this.map, view);
+      MapUtils.animateView(this.map, view);
     } else {
-      setView(this.map, view);
+      MapUtils.setView(this.map, view);
     }
   }
 
   handleLoad = () => {
-    this.map.on('click', 'planungen-bg', this.handleClick);
+    this.map.on('click', 'planungen-bg-active', this.handleClick);
     this.map.on('click', 'planungen-bg-inactive', this.handleClick);
-    this.map.on('click', 'zustand-bg', this.handleClick);
+    this.map.on('click', 'zustand-bg-active', this.handleClick);
     this.map.on('click', 'zustand-bg-inactive', this.handleClick);
 
-    this.update3dBuildings();
+    this.map.on('dragend', this.handleMove);
+
     this.updateLayers();
+
     this.setView(this.getViewFromProps(), this.props.animate);
     this.setState({ loading: false });
   }
 
-  update3dBuildings = () => {
-    if (this.props.show3dBuildings) {
-      this.map.setLayoutProperty('3d-buildings', 'visibility', 'visible');
-    } else {
-      this.map.setLayoutProperty('3d-buildings', 'visibility', 'none');
-    }
-  }
-
   updateLayers = () => {
-    ['planungen', 'zustand'].forEach((prefix) => {
-      ['bg', 'side0', 'side1'].forEach((side) => {
-        ['active', 'inactive'].forEach((state) => {
-          const layerId = `${prefix}-${side}-${state}`;
-          const visibility = prefix === this.props.activeLayer ? 'visible' : 'none';
-          this.map.setLayoutProperty(layerId, 'visibility', visibility);
+    const filterId = idx(this.props, _ => _.activeSection.id);
 
-          if (this.props.activeSection) {
-            this.map.setFilter(layerId, ['all', [state === 'active' ? '==' : '!=', 'id', this.props.activeSection]]);
-          } else {
-            this.map.setFilter(layerId, null);
-          }
-        });
-      });
-    });
+    MapUtils.setActiveLayer(this.map, this.props.activeLayer, this.props.activeSection);
+    MapUtils.filterLayersById(this.map, filterId);
+    MapUtils.toggleLayer(this.map, '3d-buildings', this.props.show3dBuildings);
+    MapUtils.toggleLayer(this.map, 'dimming', !!this.props.activeSection);
   }
 
   handleClick = (e) => {
     const properties = idx(e, _ => _.features[0].properties);
 
     if (properties) {
-      Store.dispatch(MapActions.setSectionActive(properties.id));
-
+      Store.dispatch(MapActions.setSectionActive(properties));
       Store.dispatch(MapActions.setView({
         center: [e.lngLat.lng, e.lngLat.lat],
         animate: true,
@@ -160,6 +148,14 @@ class Map extends PureComponent {
         show3dBuildings: true,
         pitch: 30
       }));
+
+      this.handleMove();
+    }
+  }
+
+  handleMove = () => {
+    if (!this.props.hasMoved) {
+      Store.dispatch(MapActions.setHasMoved(true));
     }
   }
 
@@ -170,4 +166,4 @@ class Map extends PureComponent {
   }
 }
 
-export default Map;
+export default withRouter(Map);

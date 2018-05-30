@@ -19,6 +19,6 @@ function handleClick() {
 
 export default props => (
   <MenuButton role="button" tabIndex={0} onClick={handleClick} {...props} >
-    <img src={MenuIcon} alt="menu" />
+    <MenuIcon />
   </MenuButton>
 );

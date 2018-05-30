@@ -45,7 +45,6 @@ module.exports = merge(common, {
         removeStyleLinkTypeAttributes: true,
         keepClosingSlash: true,
         minifyJS: true,
-        minifyCSS: true,
         minifyURLs: true
       }
     }),
@@ -75,7 +74,9 @@ module.exports = merge(common, {
         test: /\.css$/,
         use: ExtractTextPlugin.extract(Object.assign({
           fallback: 'style-loader',
-          use: 'css-loader'
+          use: [
+            'css-loader'
+          ]
         }))
       },
       {
@@ -87,7 +88,7 @@ module.exports = merge(common, {
             {
               loader: 'postcss-loader',
               options: {
-                sourceMap: true,
+                sourceMap: false,
                 plugins: (loader) => [
                   Autoprefixer
                 ]
