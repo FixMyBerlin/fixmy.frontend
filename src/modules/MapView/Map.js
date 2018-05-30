@@ -29,7 +29,7 @@ class Map extends PureComponent {
     animate: PropTypes.bool,
     updateView: PropTypes.func,
     activeLayer: PropTypes.string,
-    activeSection: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    activeSection: PropTypes.object,
     accessToken: PropTypes.string.isRequired,
     hasMoved: PropTypes.bool
   }
@@ -141,12 +141,12 @@ class Map extends PureComponent {
       ['bg', 'side0', 'side1', 'center'].forEach((side) => {
         ['active', 'inactive'].forEach((state) => {
           const layerId = `${prefix}-${side}-${state}`;
-          if (this.map.getLayer(layerId)) {
+          if (!!this.map.getLayer(layerId)) {
             const visibility = prefix === this.props.activeLayer ? 'visible' : 'none';
             this.map.setLayoutProperty(layerId, 'visibility', visibility);
   
-            if (this.props.activeSection) {
-              this.map.setFilter(layerId, ['all', [state === 'active' ? '==' : '!=', 'id', this.props.activeSection]]);
+            if (!!this.props.activeSection) {
+              this.map.setFilter(layerId, ['all', [state === 'active' ? '==' : '!=', 'id', this.props.activeSection.id]]);
             } else {
               this.map.setFilter(layerId, null);
             }

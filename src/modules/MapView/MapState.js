@@ -5,6 +5,7 @@ const SET_HAS_MOVED = 'MapView/MapState/SET_HAS_MOVED';
 const initialState = {
   ...config.map.views.default,
   activeSection: null,
+  activeLocation: null,
   hasMoved: false
 };
 
@@ -12,8 +13,8 @@ export function setView(view) {
   return { type: SET_VIEW, payload: view };
 }
 
-export function setSectionActive(props) {
-  return { type: SET_SECTION_ACTIVE, payload: { activeSection: props.id } };
+export function setSectionActive(props = null) {
+  return { type: SET_SECTION_ACTIVE, payload: { activeSection: props } };
 }
 
 export function setHasMoved(hasMoved) {

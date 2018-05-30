@@ -5,11 +5,12 @@ import styled from 'styled-components';
 
 import SearchBar from '~/components/SearchBar';
 import LocatorControl from '~/components/LocatorControl';
+import MapModal from '~/components/MapModal';
 
 import Store from '~/redux/store';
 
 import Map from './Map';
-import MapModal from './MapModal';
+
 import * as MapActions from './MapState';
 
 const MapView = styled.div`
@@ -65,7 +66,9 @@ class MapViewComponent extends PureComponent {
         <MapWrapper>
           <Route
             path="(/zustand|/planungen)"
-            component={SearchBar}
+            render={() => (
+              <SearchBar isClosable={!!this.props.activeSection} />
+            )}
           />
           <Route
             path="(/zustand|/planungen)"

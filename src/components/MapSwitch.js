@@ -8,14 +8,13 @@ const MapSwitchWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 5px;
 `;
 
 const MapSwitchItem = styled.div`
   flex-basis: 0;
   flex-grow: 1;
   display: flex;
-  justify-content: center;
+  justify-content: ${props => (props.justify ? props.justify : 'flex-start')};
 `;
 
 const Switch = styled(RcSwitch)`
@@ -32,13 +31,13 @@ class MapSwitch extends PureComponent {
   render() {
     return (
       <MapSwitchWrapper>
-        <MapSwitchItem>
+        <MapSwitchItem justify="flex-start">
           <SwitchLabel isActive={this.props.checked}>Zustand</SwitchLabel>
         </MapSwitchItem>
-        <MapSwitchItem>
+        <MapSwitchItem justify="center">
           <Switch checked={this.props.checked} onChange={this.props.onChange} />
         </MapSwitchItem>
-        <MapSwitchItem>
+        <MapSwitchItem justify="flex-end">
           <SwitchLabel isActive={!this.props.checked}>Planung</SwitchLabel>
         </MapSwitchItem>
       </MapSwitchWrapper>

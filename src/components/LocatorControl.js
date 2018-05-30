@@ -16,6 +16,7 @@ const LocatorButton = styled.button`
   padding: 10px;
   border: none;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 `;
 
 class Locator extends PureComponent {
@@ -54,7 +55,7 @@ class Locator extends PureComponent {
           disabled={this.state.isLoading}
           onClick={this.locate}
         >
-          <img src={LocatorIcon} alt="menu" />
+          <LocatorIcon />
         </LocatorButton>
       </MapControl>
     );
