@@ -33,6 +33,7 @@ const AppWrapper = () => (
       <Route path="/impressum" render={() => <MarkdownPage page="imprint" />} />
 
       <Route
+        exact
         path="(/zustand|/planungen|/)"
         component={MapView}
       />

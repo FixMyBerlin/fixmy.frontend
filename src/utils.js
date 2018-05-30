@@ -10,6 +10,11 @@ export async function getGeoLocation() {
   });
 }
 
+export function numberFormat(num) {
+  return parseFloat(num).toFixed(1).toString().replace('.', ',');
+}
+
 export default {
-  getGeoLocation
+  getGeoLocation,
+  numberFormat
 };
