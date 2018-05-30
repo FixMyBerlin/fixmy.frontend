@@ -5,14 +5,16 @@
     "stage-0"
   ],
   "plugins": [
-    "transform-class-properties",
-    ["babel-plugin-styled-components", {
-      "displayName": true
-    }]
+    "transform-class-properties"
   ],
   "env": {
     "production": {
       "presets": ["minify"]
+    },
+    "development": {
+      "plugins": [["babel-plugin-styled-components", {
+        "displayName": true
+      }]]
     }
   }
 }
