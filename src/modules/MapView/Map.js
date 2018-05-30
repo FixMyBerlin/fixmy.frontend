@@ -12,7 +12,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import Store from '~/redux/store';
 
 import * as MapActions from './MapState';
-import { animateView, setView } from './map-utils';
+import MapUtils from './map-utils';
 
 const StyledMap = styled.div`
   width: 100%;
@@ -53,10 +53,12 @@ class Map extends PureComponent {
 
   componentDidMount() {
     MapboxGL.accessToken = this.props.accessToken;
+    
+    const mbStyleUrl = `${config.map.style}?fresh=true`
 
     this.map = new MapboxGL.Map({
       container: this.root,
-      style: config.map.style
+      style: mbStyleUrl
     });
 
     this.setView(this.getViewFromProps(), false);
@@ -79,12 +81,9 @@ class Map extends PureComponent {
       this.setView(this.getViewFromProps(), this.props.animate);
     }
 
-    if (prevProps.show3dBuildings !== this.props.show3dBuildings) {
-      this.update3dBuildings();
-    }
-
     const layerChanged = prevProps.activeLayer !== this.props.activeLayer ||
-      prevProps.activeSection !== this.props.activeSection;
+      prevProps.activeSection !== this.props.activeSection ||
+      prevProps.show3dBuildings !== this.props.show3dBuildings;
 
     if (layerChanged) {
       this.updateLayers();
@@ -108,56 +107,33 @@ class Map extends PureComponent {
 
   setView = (view, animate) => {
     if (animate) {
-      animateView(this.map, view);
+      MapUtils.animateView(this.map, view);
     } else {
-      setView(this.map, view);
+      MapUtils.setView(this.map, view);
     }
   }
 
   handleLoad = () => {
-    this.map.on('click', 'planungen-bg', this.handleClick);
+    this.map.on('click', 'planungen-bg-active', this.handleClick);
     this.map.on('click', 'planungen-bg-inactive', this.handleClick);
-    this.map.on('click', 'zustand-bg', this.handleClick);
+    this.map.on('click', 'zustand-bg-active', this.handleClick);
     this.map.on('click', 'zustand-bg-inactive', this.handleClick);
 
     this.map.on('dragend', this.handleMove);
 
-    this.update3dBuildings();
     this.updateLayers();
+
     this.setView(this.getViewFromProps(), this.props.animate);
     this.setState({ loading: false });
   }
 
-  update3dBuildings = () => {
-    if (this.props.show3dBuildings) {
-      this.map.setLayoutProperty('3d-buildings', 'visibility', 'visible');
-    } else {
-      this.map.setLayoutProperty('3d-buildings', 'visibility', 'none');
-    }
-  }
-
   updateLayers = () => {
-    ['planungen', 'zustand'].forEach((prefix) => {
-      ['bg', 'side0', 'side1', 'center'].forEach((side) => {
-        ['active', 'inactive'].forEach((state) => {
-          const layerId = `${prefix}-${side}-${state}`;
-          if (!!this.map.getLayer(layerId)) {
-            const visibility = prefix === this.props.activeLayer ? 'visible' : 'none';
-            this.map.setLayoutProperty(layerId, 'visibility', visibility);
-  
-            if (!!this.props.activeSection) {
-              this.map.setFilter(layerId, ['all', [state === 'active' ? '==' : '!=', 'id', this.props.activeSection.id]]);
-            } else {
-              this.map.setFilter(layerId, null);
-            }
-          }
-        });
-      });
-    });
+    const filterId = idx(this.props, _ => _.activeSection.id);
 
-    if (this.map.getLayer('dimming')) {
-      this.map.setLayoutProperty('dimming', 'visibility', !!this.props.activeSection ? 'visible' : 'none');
-    }
+    MapUtils.setActiveLayer(this.map, this.props.activeLayer, this.props.activeSection);
+    MapUtils.filterLayersById(this.map, filterId);
+    MapUtils.toggleLayer(this.map, '3d-buildings', this.props.show3dBuildings);
+    MapUtils.toggleLayer(this.map, 'dimming', !!this.props.activeSection);
   }
 
   handleClick = (e) => {
