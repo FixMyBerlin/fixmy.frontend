@@ -7,8 +7,10 @@ import { getHeadlineStyle } from '~/components/Headline';
 const ImageContext = require.context('~/images', true);
 
 const StyledMarkdown = styled(Markdown)`
+  padding-bottom: 100px;
+
   h1 {
-    ${getHeadlineStyle()};
+    ${getHeadlineStyle()}
     padding: 0;
     margin-bottom: 2rem;
     margin-top: 2rem;

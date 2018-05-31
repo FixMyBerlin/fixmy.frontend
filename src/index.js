@@ -7,8 +7,6 @@ import 'normalize.css';
 import Store from './redux/store';
 import App from './modules/App';
 
-if (module.hot) module.hot.accept();
-
 const root = document.getElementById('root');
 
 if (root) {

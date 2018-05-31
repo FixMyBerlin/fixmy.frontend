@@ -10,14 +10,15 @@ const MenuButton = styled.div`
   left: 2rem;
   top: 2rem;
   cursor: pointer;
+  z-index: 100;
 `;
 
 function handleClick() {
   Store.dispatch(toggle());
 }
 
-export default () => (
-  <MenuButton role="button" tabIndex={0} onClick={handleClick}>
-    <img src={MenuIcon} alt="menu" />
+export default props => (
+  <MenuButton role="button" tabIndex={0} onClick={handleClick} {...props} >
+    <MenuIcon />
   </MenuButton>
 );

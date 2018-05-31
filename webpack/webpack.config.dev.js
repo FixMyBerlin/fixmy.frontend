@@ -24,6 +24,10 @@ module.exports = merge(common, {
     new Webpack.HotModuleReplacementPlugin(),
     new Webpack.ProvidePlugin({
       config: '~/../config.json'
+    }),
+    new Webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.BABEL_ENV': JSON.stringify('development')
     })
   ],
 

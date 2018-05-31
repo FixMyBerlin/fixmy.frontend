@@ -22,6 +22,6 @@ export default props => (
     tabIndex={0}
     className={props.className}
   >
-    <img src={CloseIcon} alt="" />
+    <CloseIcon />
   </MenuCloseButton>
 );

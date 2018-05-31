@@ -23,6 +23,7 @@
     }
   },
   "globals": {
-    "config": true
+    "config": true,
+    "VERSION": true
   }
 }

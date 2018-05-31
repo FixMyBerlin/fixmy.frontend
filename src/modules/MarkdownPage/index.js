@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import Axios from 'axios';
 
-import ContentOverlay from '~/components/ContentOverlay';
 import ContentWrapper from '~/components/ContentWrapper';
 import MenuButton from '~/components/MenuButton';
 import MarkdownContent from './MarkdownContent';
@@ -28,12 +27,10 @@ class MarkdownPage extends PureComponent {
 
   render() {
     return (
-      <ContentOverlay>
+      <ContentWrapper>
         <MenuButton />
-        <ContentWrapper>
-          <MarkdownContent content={this.state.content} />
-        </ContentWrapper>
-      </ContentOverlay>
+        <MarkdownContent content={this.state.content} />
+      </ContentWrapper>
     );
   }
 }

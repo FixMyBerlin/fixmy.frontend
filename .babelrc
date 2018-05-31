@@ -1,13 +1,12 @@
 {
   "presets": [
     "react",
-    "es2015"
+    "es2015",
+    "stage-0"
   ],
   "plugins": [
     "transform-class-properties",
-    ["babel-plugin-styled-components", {
-      "displayName": true
-    }]
+    "styled-components"
   ],
   "env": {
     "production": {

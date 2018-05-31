@@ -1,7 +1,9 @@
 const Path = require('path');
+const Webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Autoprefixer = require('autoprefixer');
+const shortid = require('shortid');
 
 module.exports = {
   entry: {
@@ -10,7 +12,7 @@ module.exports = {
   },
   output: {
     path: Path.join(__dirname, '../build'),
-    filename:  'js/[name].js'
+    filename:  'js/[name].js',
   },
   plugins: [
     new CleanWebpackPlugin(['build']),
@@ -19,7 +21,10 @@ module.exports = {
       { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' },
       { from: Path.resolve(__dirname, '../_redirects') },
       { from: Path.resolve(__dirname, '../favicons') }
-    ])
+    ]),
+    new Webpack.DefinePlugin({
+      'VERSION': JSON.stringify(shortid.generate())
+    })
   ],
   resolve: {
     alias: {
@@ -29,12 +34,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
         use: {
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]'
           }
+        }
+      },
+      {
+        test: /\.svg$/,
+        use: {
+          loader: 'react-svg-loader'
         }
       }
     ]
