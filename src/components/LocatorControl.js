@@ -6,6 +6,7 @@ import idx from 'idx';
 import { getGeoLocation } from '~/utils';
 import LocatorIcon from '~/images/location.svg';
 import MapControl from './MapControl';
+import Loader from './Loader';
 
 const LocatorButton = styled.button`
   background-color: ${config.colors.white};
@@ -17,6 +18,11 @@ const LocatorButton = styled.button`
   border: none;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   cursor: pointer;
+
+  &[disabled] {
+    pointer-events: none;
+    background-color: ${config.colors.lightgrey};
+  }
 `;
 
 class Locator extends PureComponent {
@@ -37,25 +43,32 @@ class Locator extends PureComponent {
   locate = async () => {
     this.setState({ isLoading: true });
 
-    const position = await getGeoLocation();
-    const lat = idx(position, _ => _.coords.latitude);
-    const lng = idx(position, _ => _.coords.longitude);
+    try {
+      const position = await getGeoLocation();
+      const lat = idx(position, _ => _.coords.latitude);
+      const lng = idx(position, _ => _.coords.longitude);
 
-    if (typeof lat === 'number' && typeof lng === 'number') {
-      this.props.onChange([lng, lat]);
+      if (typeof lat === 'number' && typeof lng === 'number') {
+        this.props.onChange([lng, lat]);
+      }
+    } catch (e) {
+      alert(e.message); // eslint-disable-line
     }
+
 
     this.setState({ isLoading: false });
   }
 
   render() {
+    const Icon = this.state.isLoading ? <Loader size={24} /> : <LocatorIcon />;
+
     return (
       <MapControl position={this.props.position}>
         <LocatorButton
           disabled={this.state.isLoading}
           onClick={this.locate}
         >
-          <LocatorIcon />
+          { Icon }
         </LocatorButton>
       </MapControl>
     );
