@@ -80,6 +80,6 @@
         "animate": false
       }
     },
-    "zoomAfterGeocode": 17
+    "zoomAfterGeocode": 15
   }
 }
