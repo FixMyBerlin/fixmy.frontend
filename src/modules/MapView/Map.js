@@ -146,7 +146,7 @@ class Map extends PureComponent {
         animate: true,
         zoom: config.map.zoomAfterGeocode,
         show3dBuildings: true,
-        pitch: 30
+        pitch: 45
       }));
 
       this.handleMove();
