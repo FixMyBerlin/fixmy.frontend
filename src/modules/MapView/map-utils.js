@@ -37,6 +37,8 @@ export function toggleLayer(map, layer, isVisible) {
   }
 }
 
+// used to switch between activeLayer (zustand/planung)
+// we need activeSection (section id) when user has active section
 export function setActiveLayer(map, activeLayer, activeSection) {
   LAYERS.forEach((layer) => {
     const isCurrentLayer = layer.indexOf(activeLayer) >= 0;
@@ -46,6 +48,7 @@ export function setActiveLayer(map, activeLayer, activeSection) {
   });
 }
 
+// used to highlight a section by id
 export function filterLayersById(map, id) {
   LAYERS.forEach((layer) => {
     if (map.getLayer(layer)) {
