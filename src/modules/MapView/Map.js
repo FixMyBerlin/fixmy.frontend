@@ -13,6 +13,7 @@ import Store from '~/redux/store';
 
 import * as MapActions from './MapState';
 import MapUtils from './map-utils';
+import { arrayIsEqual } from '~/utils';
 
 const StyledMap = styled.div`
   width: 100%;
@@ -93,6 +94,10 @@ class Map extends PureComponent {
       this.map.resize();
     }
 
+    if (this.props.match.url === '/my-hbi' && !arrayIsEqual(prevProps.hbi_values, this.props.hbi_values)) {
+      MapUtils.customizeHBI(this.map, this.props.hbi_values);
+    }
+
     return true;
   }
 
@@ -134,6 +139,10 @@ class Map extends PureComponent {
     MapUtils.filterLayersById(this.map, filterId);
     MapUtils.toggleLayer(this.map, '3d-buildings', this.props.show3dBuildings);
     MapUtils.toggleLayer(this.map, 'dimming', !!this.props.activeSection);
+
+    if (this.props.match.url === '/my-hbi') {
+      MapUtils.customizeHBI(this.map, this.props.hbi_values);
+    }
   }
 
   handleClick = (e) => {

@@ -34,7 +34,7 @@ const AppWrapper = () => (
 
       <Route
         exact
-        path="(/zustand|/planungen|/)"
+        path="(/zustand|/planungen|/my-hbi|/)"
         component={MapView}
       />
     </AppContent>

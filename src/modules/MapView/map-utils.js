@@ -64,10 +64,34 @@ export function filterLayersById(map, id) {
   });
 }
 
+function getLineColorRules(property, index) {
+  return [
+    'case',
+    ['<', ['number', ['get', property]], index], 'hsl(22, 100%, 52%)',
+    ['<', ['number', ['get', property]], index], 'hsl(14, 83%, 74%)',
+    ['<', ['number', ['get', property]], index], '#a0ebe3',
+    ['<=', ['number', ['get', property]], index], 'hsl(174, 87%, 43%)',
+    'hsl(174, 87%, 43%)'
+  ];
+}
+
+export function customizeHBI(map, hbiValues) {
+  // @TODO: how to calculate the index
+  const index = (hbiValues[0] + hbiValues[1]) / 4;
+
+  const lineColorRules0 = getLineColorRules('side0_index', index);
+  const lineColorRules1 = getLineColorRules('side1_index', index);
+
+  // @TODO: always use this function to colorize the sides
+  map.setPaintProperty('zustand-side0-active', 'line-color', lineColorRules0);
+  map.setPaintProperty('zustand-side1-active', 'line-color', lineColorRules1);
+}
+
 export default {
   setView,
   animateView,
   setActiveLayer,
   filterLayersById,
-  toggleLayer
+  toggleLayer,
+  customizeHBI
 };

@@ -14,7 +14,12 @@ export function numberFormat(num) {
   return parseFloat(num).toFixed(1).toString().replace('.', ',');
 }
 
+export function arrayIsEqual(arrayA, arrayB) {
+  return arrayA.length === arrayB.length && arrayA.every((item, i) => item === arrayB[i]);
+}
+
 export default {
   getGeoLocation,
-  numberFormat
+  numberFormat,
+  arrayIsEqual
 };

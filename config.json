@@ -47,6 +47,10 @@
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
     "style": "mapbox://styles/hejco/cjhbofe9k08gc2ss4dly1zbir",
+    "hbi": [
+      { "label": "Geschwindgkeit", "type": "speed", "value": 5, "min": 0, "max": 10 },
+      { "label": "Sicherheit", "type": "safety", "value": 5, "min": 0, "max": 10 }
+    ],
     "views": {
       "/": {
         "zoom": 16,
@@ -69,6 +73,13 @@
         "animate": false,
         "pitch": 0,
         "activeLayer": "planungen"
+      },
+      "/my-hbi": {
+        "zoom": 14,
+        "show3dBuildings": false,
+        "animate": false,
+        "pitch": 0,
+        "activeLayer": "zustand"
       },
       "default": {
         "zoom": 16,

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import SearchBar from '~/components/SearchBar';
 // import LocatorControl from '~/components/LocatorControl';
 import MapModal from '~/components/MapModal';
+import HBIConfigurator from '~/components/HBIConfigurator';
 
 import Store from '~/redux/store';
 
@@ -65,7 +66,7 @@ class MapViewComponent extends PureComponent {
       <MapView>
         <MapWrapper>
           <Route
-            path="(/zustand|/planungen)"
+            path="(/zustand|/planungen|/my-hbi)"
             render={() => (
               <SearchBar isClosable={!!this.props.activeSection} />
             )}
@@ -80,7 +81,7 @@ class MapViewComponent extends PureComponent {
             )}
           /> */}
           <Route
-            path="(/|/zustand|/planungen)"
+            path="(/|/zustand|/planungen|/my-hbi)"
             render={() => (
               <Map
                 key="MapComponent"
@@ -95,6 +96,7 @@ class MapViewComponent extends PureComponent {
                 animate={this.props.animate}
                 updateView={this.updateView}
                 hasMoved={this.props.hasMoved}
+                hbi_values={this.props.hbi_values}
               />
             )}
           />
@@ -102,6 +104,14 @@ class MapViewComponent extends PureComponent {
         <Route
           path="(/zustand|/planungen)"
           component={MapModal}
+        />
+        <Route
+          path="(/my-hbi)"
+          render={() => (
+            <HBIConfigurator
+              hbi={this.state.hbi}
+            />
+          )}
         />
       </MapView>
     );
