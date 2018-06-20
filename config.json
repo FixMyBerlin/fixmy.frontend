@@ -2,6 +2,7 @@
   "devUrl": "http://localhost:8080",
   "prodUrl": "https://fixmyberlin-app.netlify.com",
   "newsletterWidgetUrl": "https://app.mailjet.com/widget/iframe/2YIa/6kW",
+  "apiUrl": "https://api.fixmyberlin.de",
   "colors": {
     "lightgrey": "#e8e8e8",
     "midgrey": "#999999",
@@ -44,13 +45,13 @@
   "imprint": {
     "markdownSource": "markdown/imprint.md"
   },
+  "hbi": [
+    { "label": "Geschwindgkeit", "type": "speed", "value": 5, "min": 0, "max": 10 },
+    { "label": "Sicherheit", "type": "security", "value": 5, "min": 0, "max": 10 }
+  ],
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
     "style": "mapbox://styles/hejco/cjhbofe9k08gc2ss4dly1zbir",
-    "hbi": [
-      { "label": "Geschwindgkeit", "type": "speed", "value": 5, "min": 0, "max": 10 },
-      { "label": "Sicherheit", "type": "safety", "value": 5, "min": 0, "max": 10 }
-    ],
     "views": {
       "/": {
         "zoom": 16,

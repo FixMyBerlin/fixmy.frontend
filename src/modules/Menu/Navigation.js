@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import Store from '~/redux/store';
 
+import { close } from '~/modules/Menu/MenuState';
 import NavItem from '~/components/NavItem';
 
 const NavHeader = styled.div`
@@ -24,7 +26,13 @@ export default props => (
     <NavHeader>Infos</NavHeader>
     <NavBody>
       {config.menu.items.map(menuItem =>
-        <NavItem to={menuItem.link} key={menuItem.label} label={menuItem.label} />
+        (<NavItem
+          key={menuItem.label}
+          to={menuItem.link}
+          onClick={() => Store.dispatch(close())}
+        >
+          {menuItem.label}
+        </NavItem>)
       )}
     </NavBody>
   </nav>

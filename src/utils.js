@@ -18,8 +18,15 @@ export function arrayIsEqual(arrayA, arrayB) {
   return arrayA.length === arrayB.length && arrayA.every((item, i) => item === arrayB[i]);
 }
 
+export function trackEvent(category = '', action = '', name = '') {
+  if (typeof _paq !== 'undefined') {
+    _paq.push(['trackEvent', category, action, name]);
+  }
+}
+
 export default {
   getGeoLocation,
   numberFormat,
-  arrayIsEqual
+  arrayIsEqual,
+  trackEvent
 };

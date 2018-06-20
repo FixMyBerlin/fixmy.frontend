@@ -4,7 +4,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 import Store from '~/redux/store';
-import { updateHBI } from '~/modules/MapView/MapState';
+import { updateHBI } from '~/modules/User/UserState';
 import Headline from '~/components/Headline';
 import Button from '~/components/Button';
 
@@ -60,7 +60,6 @@ const StyledSlider = styled(Slider)`
 `;
 
 class HBIConfigurator extends PureComponent {
-
   static onSliderChange(index) {
     return value => Store.dispatch(updateHBI(index, value));
   }
@@ -96,10 +95,10 @@ class HBIConfigurator extends PureComponent {
       <MapModal>
         <MapModalBody>
           <ModalHeadline>My Happy-Bike-Level</ModalHeadline>
-          {config.map.hbi.map(HBIConfigurator.renderSlider)}
+          {config.hbi.map(HBIConfigurator.renderSlider)}
         </MapModalBody>
         <ButtonWrapper>
-          <Button>Speichern</Button>
+          <Button onClick={this.props.onSave}>Speichern</Button>
         </ButtonWrapper>
       </MapModal>
     );

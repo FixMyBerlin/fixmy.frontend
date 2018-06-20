@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import SearchBar from '~/components/SearchBar';
 // import LocatorControl from '~/components/LocatorControl';
 import MapModal from '~/components/MapModal';
-import HBIConfigurator from '~/components/HBIConfigurator';
+import MyHBI from '~/modules/MyHBI';
 
 import Store from '~/redux/store';
 
@@ -106,16 +106,17 @@ class MapViewComponent extends PureComponent {
           component={MapModal}
         />
         <Route
-          path="(/my-hbi)"
-          render={() => (
-            <HBIConfigurator
-              hbi={this.state.hbi}
-            />
-          )}
+          path="/my-hbi"
+          component={MyHBI}
         />
       </MapView>
     );
   }
 }
 
-export default withRouter(connect(state => state.MapState)(MapViewComponent));
+export default withRouter(
+  connect(state => ({
+    ...state.MapState,
+    ...state.UserState
+  }))(MapViewComponent)
+);
