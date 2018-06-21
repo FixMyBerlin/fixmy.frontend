@@ -6,9 +6,14 @@ const ModalWrapper = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-  padding: 1.25em;
+  padding: 1em;
   z-index: 9000;
   background: rgba(0,0,0,.25);
+`;
+
+const ModalScroll = styled.div`
+  height: 100%;
+  overflow-y: auto;
 `;
 
 const ModalInner = styled.div`
@@ -64,8 +69,10 @@ class Modal extends PureComponent {
     return (
       <ModalWrapper>
         <ModalInner>
-          <Close onClick={this.props.onClose}>×</Close>
-          {this.props.children}
+          <ModalScroll>
+            <Close onClick={this.props.onClose}>×</Close>
+            {this.props.children}
+          </ModalScroll>
         </ModalInner>
       </ModalWrapper>
     );
