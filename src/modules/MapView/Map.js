@@ -140,6 +140,7 @@ class Map extends PureComponent {
     MapUtils.toggleLayer(this.map, '3d-buildings', this.props.show3dBuildings);
     MapUtils.toggleLayer(this.map, 'dimming', !!this.props.activeSection);
 
+    // @TODO: how could we put /my-hbi specific map actions into the MyHBI view?
     if (this.props.match.url === '/my-hbi') {
       MapUtils.customizeHBI(this.map, this.props.hbi_values);
     }

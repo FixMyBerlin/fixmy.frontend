@@ -83,6 +83,8 @@ export function customizeHBI(map, hbiValues) {
   const lineColorRules1 = getLineColorRules('side1_index', index);
 
   // @TODO: always use this function to colorize the sides
+  // @TODO: calculate index for zustand-center-active separately
+  map.setPaintProperty('zustand-center-active', 'line-color', lineColorRules0);
   map.setPaintProperty('zustand-side0-active', 'line-color', lineColorRules0);
   map.setPaintProperty('zustand-side1-active', 'line-color', lineColorRules1);
 }
