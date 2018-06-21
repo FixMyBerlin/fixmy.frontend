@@ -51,7 +51,7 @@
   ],
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
-    "style": "mapbox://styles/hejco/cjhbofe9k08gc2ss4dly1zbir",
+    "style": "mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h",
     "views": {
       "/": {
         "zoom": 16,
@@ -91,6 +91,9 @@
         "animate": false
       }
     },
-    "zoomAfterGeocode": 17
+    "zoomAfterGeocode": 17,
+    "geocoderUrl": "https://geocoder.cit.api.here.com/6.2/geocode.json",
+    "geocoderAppId": "MfbUA6oryxjvqtPmL8OG",
+    "geocoderAppCode": "TtjOtIepUqDKvw2Mi_ci-A"
   }
 }
