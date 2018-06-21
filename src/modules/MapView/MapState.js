@@ -38,7 +38,7 @@ export function geocodeAddress(searchtext) {
           return dispatch({ type: GEOCODE_FAIL, payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' } });
         }
 
-        return dispatch({ type: GEOCODE_DONE, payload: { center: [geocodeResult.Longitude, geocodeResult.Latitude] } });
+        return dispatch({ type: GEOCODE_DONE, payload: { center: [geocodeResult.Longitude, geocodeResult.Latitude], zoom: 17 } });
       });
   };
 }

@@ -13,6 +13,7 @@ module.exports = {
   output: {
     path: Path.join(__dirname, '../build'),
     filename:  'js/[name].js',
+    publicPath: '/'
   },
   plugins: [
     new CleanWebpackPlugin(['build']),

@@ -10,7 +10,8 @@
     "black": "#0f0f0f",
     "white": "#FFF",
     "interaction": "#fabe28",
-    "change_4": "#910055"
+    "change_4": "#910055",
+    "index": "#ff650c"
   },
   "menu": {
     "size": 320,

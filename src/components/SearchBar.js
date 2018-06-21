@@ -1,12 +1,10 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import { geocodeAddress } from '~/modules/MapView/MapState';
 import Store from '~/redux/store';
 
 import MenuButton from '~/components/MenuButton';
-import ResetMapButton from '~/components/ResetMapButton';
 
 const Form = styled.form`
   width: 100%;
@@ -43,12 +41,6 @@ const SearchMenuBtn = styled(MenuButton)`
   left: 12px;
 `;
 
-const SearchCloseBtn = styled(ResetMapButton)`
-  position: absolute;
-  top: 7px;
-  left: 10px;
-`;
-
 const closeSize = 20;
 
 const SearchReset = styled.div`
@@ -75,14 +67,6 @@ const SearchReset = styled.div`
 `;
 
 class SearchBar extends PureComponent {
-  static propTypes = {
-    isClosable: PropTypes.bool
-  }
-
-  static defaultProps = {
-    isClosable: false
-  }
-
   state = {
     inputValue: ''
   }
@@ -109,10 +93,7 @@ class SearchBar extends PureComponent {
     return (
       <SearchBarWrapper>
         <SearchBarInnerWrapper>
-          {this.props.isClosable ?
-            <SearchCloseBtn /> :
-            <SearchMenuBtn />
-          }
+          <SearchMenuBtn />
           <Form onSubmit={this.onSubmit}>
             <SearchInput
               value={this.state.inputValue}

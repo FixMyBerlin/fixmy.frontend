@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import RcSwitch from 'rc-switch';
+import { withRouter } from 'react-router';
 
 import 'rc-switch/assets/index.css';
 
@@ -8,6 +9,7 @@ const MapSwitchWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1em;
 `;
 
 const MapSwitchItem = styled.div`
@@ -28,21 +30,27 @@ const SwitchLabel = styled.div`
 `;
 
 class MapSwitch extends PureComponent {
+  handleChange = (checked) => {
+    const to = checked ? '/planungen' : '/zustand';
+    this.props.history.push(to);
+  }
+
   render() {
+    const checked = this.props.location.pathname === '/planungen';
     return (
       <MapSwitchWrapper>
         <MapSwitchItem justify="flex-start">
-          <SwitchLabel isActive={this.props.checked}>Zustand</SwitchLabel>
+          <SwitchLabel isActive={checked}>Zustand</SwitchLabel>
         </MapSwitchItem>
         <MapSwitchItem justify="center">
-          <Switch checked={this.props.checked} onChange={this.props.onChange} />
+          <Switch checked={checked} onChange={this.handleChange} />
         </MapSwitchItem>
         <MapSwitchItem justify="flex-end">
-          <SwitchLabel isActive={!this.props.checked}>Planung</SwitchLabel>
+          <SwitchLabel isActive={!checked}>Planung</SwitchLabel>
         </MapSwitchItem>
       </MapSwitchWrapper>
     );
   }
 }
 
-export default MapSwitch;
+export default withRouter(MapSwitch);

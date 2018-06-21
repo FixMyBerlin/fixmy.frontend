@@ -12,7 +12,7 @@ module.exports = merge(common, {
   devServer: {
     contentBase: Path.resolve(__dirname, 'build'),
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

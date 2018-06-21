@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { If } from 'react-extras';
 
-import MapSwitch from '~/components/MapSwitch';
+import ResetMapButton from '~/components/ResetMapButton';
 import PlanningStatus from './PlanningStatus';
 import BikeLevelStatus from './BikeLevelStatus';
 
@@ -13,11 +13,19 @@ const MapModal = styled.div`
   width: 100%;
   background: #fff;
   flex: 0 1 auto;
-  padding: 24px;
+  padding: 1rem;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  z-index:900;
 `;
 
 const MapModalLocation = styled.div`
   margin-bottom: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: ${config.colors.darkgrey};
 `;
 
 const MoreButton = styled(Link)`
@@ -31,26 +39,37 @@ const MoreButton = styled(Link)`
 `;
 
 const MoreButtonWrapper = styled.div`
-  margin-bottom: 15px;
   padding-bottom: 15px;
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #979797;
 `;
 
-class MapModalComponent extends PureComponent {
-  handleChange = (checked) => {
-    const to = checked ? '/planungen' : '/zustand';
-    this.props.history.push(to);
-  }
+const CloseBtn = styled(ResetMapButton)`
+  position: absolute;
+  top: -18px;
+  right: 10px;
+  z-index: 900;
+`;
 
+class MapModalComponent extends PureComponent {
   render() {
     const isBikeLevelMode = this.props.location.pathname === '/zustand';
     const isPlanningMode = this.props.location.pathname === '/planungen';
     const hasData = !!this.props.activeSection;
 
+    if (!hasData) {
+      return null;
+    }
+
     return (
       <MapModal>
+        <If
+          condition={hasData}
+          render={() => (
+            <CloseBtn />
+          )}
+        />
         <If
           condition={hasData}
           render={() => (
@@ -63,7 +82,7 @@ class MapModalComponent extends PureComponent {
         <If
           condition={isBikeLevelMode && hasData}
           render={() => (
-            <BikeLevelStatus level0={this.props.activeSection.side0_index} level1={this.props.activeSection.side1_index} />
+            <BikeLevelStatus section={this.props.activeSection} />
           )}
         />
         <If
@@ -76,7 +95,6 @@ class MapModalComponent extends PureComponent {
             </MoreButtonWrapper>
           )}
         />
-        <MapSwitch checked={isPlanningMode} onChange={this.handleChange} />
       </MapModal>
     );
   }
