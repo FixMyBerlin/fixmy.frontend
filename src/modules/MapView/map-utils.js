@@ -78,8 +78,8 @@ export function filterLayersById(map, id) {
 function getLineColorRules(sideKey, rs, rv) {
   // formula:
   // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)
-  const securityExpr = ['*', ['-', ['get', `${sideKey}_s`], rs], 1.6];
-  const speedExpr = ['*', ['-', ['get', `${sideKey}_v`], rv], 0.5];
+  const securityExpr = ['*', ['-', ['get', `${sideKey}s`], rs], 1.6];
+  const speedExpr = ['*', ['-', ['get', `${sideKey}v`], rv], 0.5];
   const hbi = ['number', ['+', securityExpr, speedExpr]];
 
   return [
@@ -96,12 +96,13 @@ export function colorizeLines(map, hbiValues) {
   const rv = (hbiValues[0] - 5) / 10;
   const rs = (hbiValues[1] - 5) / 10;
 
-  const lineColorRules0 = getLineColorRules('side0', rs, rv);
-  const lineColorRules1 = getLineColorRules('side1', rs, rv);
+  const lineColorRulesCenter = getLineColorRules('', rs, rv);
+  const lineColorRules0 = getLineColorRules('side0_', rs, rv);
+  const lineColorRules1 = getLineColorRules('side1_', rs, rv);
 
   // @TODO: always use this function to colorize the sides
   // @TODO: calculate index for zustand-center-active separately
-  map.setPaintProperty('zustand-center-active', 'line-color', lineColorRules0);
+  map.setPaintProperty('zustand-center-active', 'line-color', lineColorRulesCenter);
   map.setPaintProperty('zustand-side0-active', 'line-color', lineColorRules0);
   map.setPaintProperty('zustand-side1-active', 'line-color', lineColorRules1);
 }
