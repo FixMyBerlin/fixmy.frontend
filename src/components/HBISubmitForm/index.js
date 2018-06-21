@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Formik } from 'formik';
 import Axios from 'axios';
+import { trackEvent } from '~/utils';
 
 import Headline from '~/components/Headline';
 import Button from '~/components/Button';
@@ -22,9 +23,10 @@ class HBISubmitForm extends PureComponent {
     const cleanValues = cleanupFormValues(values);
 
     Axios
-      .post(`${config.apiUrl}/api/profiles`, { uuid: this.props.userid, ...cleanValues })
+      .put(`${config.apiUrl}/api/profiles/${this.props.userid}`, { ...cleanValues, id: this.props.userid })
       .then(() => {
         setSubmitting(false);
+        trackEvent('my-hbi', 'save-profile', 'details');
         this.props.onClose();
       })
       .catch(() => {
