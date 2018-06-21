@@ -55,7 +55,7 @@ class Map extends PureComponent {
   componentDidMount() {
     MapboxGL.accessToken = this.props.accessToken;
     
-    const mbStyleUrl = `${config.map.style}?fresh=true`
+    const mbStyleUrl = `${config.map.style}?fresh=true`;
 
     this.map = new MapboxGL.Map({
       container: this.root,
@@ -95,7 +95,7 @@ class Map extends PureComponent {
     }
 
     if (this.props.match.url === '/my-hbi' && !arrayIsEqual(prevProps.hbi_values, this.props.hbi_values)) {
-      MapUtils.customizeHBI(this.map, this.props.hbi_values);
+      MapUtils.colorizeLines(this.map, this.props.hbi_values);
     }
 
     return true;
@@ -140,10 +140,7 @@ class Map extends PureComponent {
     MapUtils.toggleLayer(this.map, '3d-buildings', this.props.show3dBuildings);
     MapUtils.toggleLayer(this.map, 'dimming', !!this.props.activeSection);
 
-    // @TODO: how could we put /my-hbi specific map actions into the MyHBI view?
-    if (this.props.match.url === '/my-hbi') {
-      MapUtils.customizeHBI(this.map, this.props.hbi_values);
-    }
+    MapUtils.colorizeLines(this.map, this.props.hbi_values);
   }
 
   handleClick = (e) => {

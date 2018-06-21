@@ -64,23 +64,40 @@ export function filterLayersById(map, id) {
   });
 }
 
-function getLineColorRules(property, index) {
+// function getLineColorRules(property, index) {
+//   return [
+//     'case',
+//     ['<', ['number', ['get', property]], index], 'hsl(22, 100%, 52%)',
+//     ['<', ['number', ['get', property]], index], 'hsl(14, 83%, 74%)',
+//     ['<', ['number', ['get', property]], index], '#a0ebe3',
+//     ['<=', ['number', ['get', property]], index], 'hsl(174, 87%, 43%)',
+//     'hsl(174, 87%, 43%)'
+//   ];
+// }
+
+function getLineColorRules(sideKey, rs, rv) {
+  // formula:
+  // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)
+  const securityExpr = ['*', ['-', ['get', `${sideKey}_s`], rs], 1.6];
+  const speedExpr = ['*', ['-', ['get', `${sideKey}_v`], rv], 0.5];
+  const hbi = ['number', ['+', securityExpr, speedExpr]];
+
   return [
     'case',
-    ['<', ['number', ['get', property]], index], 'hsl(22, 100%, 52%)',
-    ['<', ['number', ['get', property]], index], 'hsl(14, 83%, 74%)',
-    ['<', ['number', ['get', property]], index], '#a0ebe3',
-    ['<=', ['number', ['get', property]], index], 'hsl(174, 87%, 43%)',
+    ['<', hbi, 2.5], 'hsl(22, 100%, 52%)',
+    ['<', hbi, 5], 'hsl(14, 83%, 74%)',
+    ['<', hbi, 7.5], '#a0ebe3',
+    ['<=', hbi, 10], 'hsl(174, 87%, 43%)',
     'hsl(174, 87%, 43%)'
   ];
 }
 
-export function customizeHBI(map, hbiValues) {
-  // @TODO: how to calculate the index
-  const index = (hbiValues[0] + hbiValues[1]) / 4;
+export function colorizeLines(map, hbiValues) {
+  const rv = (hbiValues[0] - 5) / 10;
+  const rs = (hbiValues[1] - 5) / 10;
 
-  const lineColorRules0 = getLineColorRules('side0_index', index);
-  const lineColorRules1 = getLineColorRules('side1_index', index);
+  const lineColorRules0 = getLineColorRules('side0', rs, rv);
+  const lineColorRules1 = getLineColorRules('side1', rs, rv);
 
   // @TODO: always use this function to colorize the sides
   // @TODO: calculate index for zustand-center-active separately
@@ -95,5 +112,5 @@ export default {
   setActiveLayer,
   filterLayersById,
   toggleLayer,
-  customizeHBI
+  colorizeLines
 };
