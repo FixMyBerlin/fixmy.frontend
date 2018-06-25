@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import SearchBar from '~/components/SearchBar';
-// import LocatorControl from '~/components/LocatorControl';
 import MapSwitch from '~/components/MapSwitch';
+import LocatorControl from '~/components/LocatorControl';
 import MapModal from '~/components/MapModal';
 import MapLegend from '~/components/MapLegend';
 import MapContent from '~/components/MapContent';
@@ -75,7 +75,7 @@ class MapViewComponent extends PureComponent {
             path="(/zustand|/planungen|/my-hbi)"
             component={SearchBar}
           />
-          {/* <Route
+          <Route
             path="(/zustand|/planungen)"
             render={() => (
               <LocatorControl
@@ -83,7 +83,7 @@ class MapViewComponent extends PureComponent {
                 position="bottom-right"
               />
             )}
-          /> */}
+          />
           <Route
             path="(/|/zustand|/planungen|/my-hbi)"
             render={() => (
