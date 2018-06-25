@@ -5,6 +5,7 @@ import { geocodeAddress } from '~/modules/MapView/MapState';
 import Store from '~/redux/store';
 
 import MenuButton from '~/components/MenuButton';
+import { media } from '~/style-utils';
 
 const Form = styled.form`
   width: 100%;
@@ -17,6 +18,11 @@ const SearchBarWrapper = styled.div`
   left: 15px;
   right: 15px;
   margin: auto;
+
+  ${media.m`
+    max-width: 400px;
+    margin: 0;
+  `}
 `;
 
 const SearchBarInnerWrapper = styled.div`

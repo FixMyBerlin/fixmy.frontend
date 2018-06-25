@@ -24,6 +24,11 @@ const MapModal = styled.div`
 
   ${media.m`
     position: absolute;
+    width: 320px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: auto;
   `}
 `;
 
@@ -49,6 +54,11 @@ const MoreButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   border-bottom: 1px solid #979797;
+
+  ${media.m`
+    border-bottom: none;
+    padding-bottom: 0;
+  `}
 `;
 
 const CloseBtn = styled(ResetMapButton)`

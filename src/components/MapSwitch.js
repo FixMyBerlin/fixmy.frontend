@@ -10,6 +10,8 @@ const MapSwitchWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1em;
+  max-width: 400px;
+  margin: 0 auto;
 `;
 
 const MapSwitchItem = styled.div`
