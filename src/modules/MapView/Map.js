@@ -167,6 +167,8 @@ class Map extends PureComponent {
     if (!this.props.hasMoved) {
       Store.dispatch(MapActions.setHasMoved(true));
     }
+    const center = this.map.getCenter();
+    this.props.updateView({ center: [center.lng, center.lat] });
   }
 
   render() {

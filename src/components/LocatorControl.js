@@ -28,12 +28,14 @@ const LocatorButton = styled.button`
 class Locator extends PureComponent {
   static propTypes = {
     position: PropTypes.string,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    onStart: PropTypes.func
   }
 
   static defaultProps = {
     position: 'top-left',
-    onChange: () => {}
+    onChange: () => {},
+    onStart: () => {}
   }
 
   state = {
@@ -42,6 +44,7 @@ class Locator extends PureComponent {
 
   locate = async () => {
     this.setState({ isLoading: true });
+    this.props.onStart();
 
     try {
       const position = await getGeoLocation();
