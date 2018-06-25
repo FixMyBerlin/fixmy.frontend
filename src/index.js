@@ -4,12 +4,16 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import 'normalize.css';
 
+import { init as initStyle } from './style-utils';
+
 import Store from './redux/store';
 import App from './modules/App';
 
 const root = document.getElementById('root');
 
 if (root) {
+  initStyle();
+
   ReactDOM.render(
     <Provider store={Store}>
       <Router>

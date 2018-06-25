@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { If } from 'react-extras';
 
+import { media } from '~/style-utils';
+
 import ResetMapButton from '~/components/ResetMapButton';
 import PlanningStatus from './PlanningStatus';
 import BikeLevelStatus from './BikeLevelStatus';
@@ -19,6 +21,10 @@ const MapModal = styled.div`
   bottom: -1px;
   width: 100%;
   z-index:900;
+
+  ${media.m`
+    position: absolute;
+  `}
 `;
 
 const MapModalLocation = styled.div`

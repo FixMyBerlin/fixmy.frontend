@@ -1,4 +1,4 @@
-import { injectGlobal } from 'styled-components';
+import { css, injectGlobal } from 'styled-components';
 
 export function init() {
   injectGlobal([`
@@ -29,6 +29,23 @@ export function init() {
   `]);
 }
 
+// https://github.com/styled-components/styled-components/blob/master/docs/tips-and-tricks.md
+export function getMediaQuery(size) {
+  return (...args) => css`
+    @media (min-width: ${size}px) {
+      ${css(...args)}
+    }
+  `;
+}
+
+export const media = {
+  s: getMediaQuery(460),
+  m: getMediaQuery(768),
+  l: getMediaQuery(1024)
+};
+
 export default {
-  init
+  init,
+  media,
+  getMediaQuery
 };
