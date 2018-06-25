@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Store from '~/redux/store';
-import { setHbiFiler } from '~/modules/MapView/MapState';
+import { setHbiFilter, resetHbiFilter } from '~/modules/MapView/MapState';
 
 const HBILegend = styled.div`
   display: flex;
@@ -17,12 +17,21 @@ const LegendItem = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .9;
+  }
+`;
+
+const LegendIconWrapper = styled.div`
+  position: relative;
 `;
 
 const LegendIcon = styled.div`
   width: 55px;
   height: 35px;
-  background: #ddd;
+  background: ${props => props.color};
 `;
 
 const LegendLabel = styled.div`
@@ -31,27 +40,39 @@ const LegendLabel = styled.div`
   flex-shrink: 0;
 `;
 
-function filterHbi(min, max) {
-  Store.dispatch(setHbiFiler(min, max));
+const CloseLegendItem = styled.div`
+  display: ${props => (props.closable ? 'block' : 'none')};
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  font-size: 10px;
+  border: 1px solid ${config.colors.darkgrey};
+  border-radius: 50%;
+  text-align: center;
+`;
+
+function filterHbi(min, max, index) {
+  Store.dispatch(setHbiFilter(min, max, index));
 }
 
-export default () => (
+function resetHbi() {
+  Store.dispatch(resetHbiFilter());
+}
+
+export default props => (
   <HBILegend>
-    <LegendItem onClick={() => filterHbi(0, 2.5)}>
-      <LegendIcon />
-      <LegendLabel>sehr gefährlich</LegendLabel>
-    </LegendItem>
-    <LegendItem onClick={() => filterHbi(2.5, 5)}>
-      <LegendIcon />
-      <LegendLabel>gefährlich</LegendLabel>
-    </LegendItem>
-    <LegendItem onClick={() => filterHbi(5, 7.5)}>
-      <LegendIcon />
-      <LegendLabel>ok</LegendLabel>
-    </LegendItem>
-    <LegendItem onClick={() => filterHbi(7.5, Number.MAX_VALUE)}>
-      <LegendIcon />
-      <LegendLabel>sehr gut</LegendLabel>
-    </LegendItem>
+    {config.hbiStops.map((legendItem, i) => (
+      <LegendItem key={`LegendItem__${legendItem.label}`}>
+        <LegendIconWrapper>
+          <CloseLegendItem onClick={resetHbi} closable={props.filterHbiIndex === i}>×</CloseLegendItem>
+          <LegendIcon color={legendItem.color} onClick={() => filterHbi(legendItem.min, legendItem.max, i)} />
+        </LegendIconWrapper>
+        <LegendLabel>{legendItem.label}</LegendLabel>
+      </LegendItem>
+    ))
+    }
   </HBILegend>
 );

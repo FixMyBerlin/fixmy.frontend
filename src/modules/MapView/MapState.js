@@ -13,6 +13,7 @@ const initialState = {
   activeSection: null,
   activeLocation: null,
   filterHbi: null,
+  filterHbiIndex: null,
   filterPlannings: null,
   hasMoved: false,
   hbi_speed: 5,
@@ -31,8 +32,12 @@ export function setHasMoved(hasMoved) {
   return { type: SET_HAS_MOVED, payload: { hasMoved } };
 }
 
-export function setHbiFiler(min, max) {
-  return { type: SET_HBI_FILTER, payload: { filterHbi: [min, max] } };
+export function setHbiFilter(min, max, filterHbiIndex = null) {
+  return { type: SET_HBI_FILTER, payload: { filterHbi: [min, max], filterHbiIndex } };
+}
+
+export function resetHbiFilter() {
+  return { type: SET_HBI_FILTER, payload: { filterHbi: null, filterHbiIndex: null } };
 }
 
 export function geocodeAddress(searchtext) {

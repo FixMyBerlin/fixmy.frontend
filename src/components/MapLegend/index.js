@@ -34,7 +34,7 @@ class MapLegend extends PureComponent {
     const LegendComponent = this.getLegendComponent();
     return (
       <LegendWrapper>
-        <LegendComponent />
+        <LegendComponent {...this.props} />
       </LegendWrapper>
     );
   }

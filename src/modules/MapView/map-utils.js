@@ -55,11 +55,11 @@ function getHbiExpression(sideKey, rs, rv) {
 function getHbiLineColorRules(hbi) {
   return [
     'case',
-    ['<', hbi, 2.5], 'hsl(22, 100%, 52%)',
-    ['<', hbi, 5], 'hsl(14, 83%, 74%)',
-    ['<', hbi, 7.5], '#a0ebe3',
-    ['<=', hbi, 10], 'hsl(174, 87%, 43%)',
-    'hsl(174, 87%, 43%)'
+    ['<', hbi, config.hbiStops[0].max], config.hbiStops[0].color,
+    ['<', hbi, config.hbiStops[1].max], config.hbiStops[1].color,
+    ['<', hbi, config.hbiStops[2].max], config.hbiStops[2].color,
+    ['<=', hbi, config.hbiStops[3].max], config.hbiStops[3].color,
+    config.hbiStops[3].color
   ];
 }
 
@@ -95,6 +95,10 @@ export function colorizeHbiLines(map, hbiValues, filterHbi) {
     map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', getHbiFilterRules(hbiExprCenter, min, max));
     map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', getHbiFilterRules(hbiExprSide0, min, max));
     map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', getHbiFilterRules(hbiExprSide1, min, max));
+  } else {
+    map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', 1);
+    map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', 1);
+    map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', 1);
   }
 }
 

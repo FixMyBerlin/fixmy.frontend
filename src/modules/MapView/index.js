@@ -118,7 +118,12 @@ class MapViewComponent extends PureComponent {
                 exact
                 path="/zustand"
                 render={() => (
-                  !hasActiveSection && <MapLegend type="hbi" />
+                  !hasActiveSection && (
+                    <MapLegend
+                      type="hbi"
+                      filterHbiIndex={this.props.filterHbiIndex}
+                    />
+                  )
                 )}
               />
               <Route

@@ -50,6 +50,32 @@
     { "label": "Geschwindgkeit", "type": "speed", "value": 5, "min": 0, "max": 10 },
     { "label": "Sicherheit", "type": "security", "value": 5, "min": 0, "max": 10 }
   ],
+  "hbiStops": [
+    {
+      "min": 0,
+      "max": 2.5,
+      "color": "hsl(22, 100%, 52%)",
+      "label": "sehr gefährlich"
+    },
+    {
+      "min": 2.5,
+      "max": 5,
+      "color": "hsl(14, 83%, 74%)",
+      "label": "gefährlich"
+    },
+    {
+      "min": 5,
+      "max": 7.5,
+      "color": "#a0ebe3",
+      "label": "ok"
+    },
+    {
+      "min": 7.5,
+      "max": 100,
+      "color": "hsl(174, 87%, 43%)",
+      "label": "sehr gut"
+    }
+  ],
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
     "style": "mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h",
