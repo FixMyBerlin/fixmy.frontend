@@ -7,6 +7,8 @@ import SearchBar from '~/components/SearchBar';
 // import LocatorControl from '~/components/LocatorControl';
 import MapSwitch from '~/components/MapSwitch';
 import MapModal from '~/components/MapModal';
+import MapLegend from '~/components/MapLegend';
+import MapContent from '~/components/MapContent';
 
 import MyHBI from '~/modules/MyHBI';
 
@@ -64,6 +66,8 @@ class MapViewComponent extends PureComponent {
   }
 
   render() {
+    const hasActiveSection = !!this.props.activeSection;
+
     return (
       <MapView>
         <MapWrapper>
@@ -97,6 +101,7 @@ class MapViewComponent extends PureComponent {
                 updateView={this.updateView}
                 hasMoved={this.props.hasMoved}
                 hbi_values={this.props.hbi_values}
+                filterHbi={this.props.filterHbi}
               />
             )}
           />
@@ -107,7 +112,25 @@ class MapViewComponent extends PureComponent {
         </MapWrapper>
         <Route
           path="(/zustand|/planungen)"
-          component={MapSwitch}
+          render={() => (
+            <MapContent>
+              <Route
+                exact
+                path="/zustand"
+                render={() => (
+                  !hasActiveSection && <MapLegend type="hbi" />
+                )}
+              />
+              <Route
+                exact
+                path="/planungen"
+                render={() => (
+                  !hasActiveSection && <MapLegend type="plannings" />
+                )}
+              />
+              <MapSwitch />
+            </MapContent>
+          )}
         />
         <Route
           path="/my-hbi"

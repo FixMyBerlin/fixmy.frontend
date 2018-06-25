@@ -6,11 +6,14 @@ const SET_SECTION_ACTIVE = 'MapView/MapState/SET_SECTION_ACTIVE';
 const SET_HAS_MOVED = 'MapView/MapState/SET_HAS_MOVED';
 const GEOCODE_DONE = 'MapView/MapState/GEOCODE_SUCCESS';
 const GEOCODE_FAIL = 'MapView/MapState/GEOCODE_FAIL';
+const SET_HBI_FILTER = 'MapView/MapState/SET_HBI_FILTER';
 
 const initialState = {
   ...config.map.views.default,
   activeSection: null,
   activeLocation: null,
+  filterHbi: null,
+  filterPlannings: null,
   hasMoved: false,
   hbi_speed: 5,
   hbi_safety: 5
@@ -26,6 +29,10 @@ export function setSectionActive(props = null) {
 
 export function setHasMoved(hasMoved) {
   return { type: SET_HAS_MOVED, payload: { hasMoved } };
+}
+
+export function setHbiFiler(min, max) {
+  return { type: SET_HBI_FILTER, payload: { filterHbi: [min, max] } };
 }
 
 export function geocodeAddress(searchtext) {
@@ -49,6 +56,7 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case SET_SECTION_ACTIVE:
     case SET_HAS_MOVED:
     case GEOCODE_DONE:
+    case SET_HBI_FILTER:
       return Object.assign({}, state, action.payload);
     default:
       return Object.assign({}, state);

@@ -7,14 +7,9 @@ import Store from '~/redux/store';
 import { updateHBI } from '~/modules/User/UserState';
 import Headline from '~/components/Headline';
 import Button from '~/components/Button';
+import MapContent from '~/components/MapContent';
 
-const MapModal = styled.div`
-  width: 100%;
-  background: #fff;
-  flex: 0 1 auto;
-`;
-
-const MapModalBody = styled.div`
+const MapContentBody = styled.div`
   width: 100%;
   padding: 12px 24px;
 `;
@@ -92,15 +87,15 @@ class HBIConfigurator extends PureComponent {
 
   render() {
     return (
-      <MapModal>
-        <MapModalBody>
+      <MapContent>
+        <MapContentBody>
           <ModalHeadline>My Happy-Bike-Level</ModalHeadline>
           {config.hbi.map(HBIConfigurator.renderSlider)}
-        </MapModalBody>
+        </MapContentBody>
         <ButtonWrapper>
           <Button onClick={this.props.onSave}>Speichern</Button>
         </ButtonWrapper>
-      </MapModal>
+      </MapContent>
     );
   }
 }

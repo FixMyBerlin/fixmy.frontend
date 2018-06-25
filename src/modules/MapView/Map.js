@@ -84,7 +84,8 @@ class Map extends PureComponent {
 
     const layerChanged = prevProps.activeLayer !== this.props.activeLayer ||
       prevProps.activeSection !== this.props.activeSection ||
-      prevProps.show3dBuildings !== this.props.show3dBuildings;
+      prevProps.show3dBuildings !== this.props.show3dBuildings ||
+      !_isEqual(prevProps.filterHbi, this.props.filterHbi);
 
     if (layerChanged) {
       this.updateLayers();
@@ -131,9 +132,8 @@ class Map extends PureComponent {
   updateLayers = () => {
     const filterId = idx(this.props, _ => _.activeSection.id);
 
-    console.log(this.props.activeLayer);
     if (this.props.activeLayer === 'zustand') {
-      MapUtils.colorizeHbiLines(this.map, this.props.hbi_values);
+      MapUtils.colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
     }
 
     if (this.props.activeLayer === 'planungen') {
