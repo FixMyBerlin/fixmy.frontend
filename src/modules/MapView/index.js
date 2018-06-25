@@ -76,15 +76,6 @@ class MapViewComponent extends PureComponent {
             component={SearchBar}
           />
           <Route
-            path="(/zustand|/planungen)"
-            render={() => (
-              <LocatorControl
-                onChange={this.handleLocationChange}
-                position="bottom-right"
-              />
-            )}
-          />
-          <Route
             path="(/|/zustand|/planungen|/my-hbi)"
             render={() => (
               <Map
@@ -102,7 +93,17 @@ class MapViewComponent extends PureComponent {
                 hasMoved={this.props.hasMoved}
                 hbi_values={this.props.hbi_values}
                 filterHbi={this.props.filterHbi}
-              />
+              >
+                <Route
+                  path="(/zustand|/planungen)"
+                  render={() => (
+                    <LocatorControl
+                      onChange={this.handleLocationChange}
+                      position="bottom-right"
+                    />
+                  )}
+                />
+              </Map>
             )}
           />
           <Route

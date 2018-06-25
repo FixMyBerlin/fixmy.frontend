@@ -14,7 +14,7 @@ const MapModal = styled.div`
   background: #fff;
   flex: 0 1 auto;
   padding: 1rem;
-  position: absolute;
+  position: relative;
   left: 0;
   bottom: -1px;
   width: 100%;
@@ -47,7 +47,7 @@ const MoreButtonWrapper = styled.div`
 
 const CloseBtn = styled(ResetMapButton)`
   position: absolute;
-  top: -18px;
+  top: 0px;
   right: 10px;
   z-index: 900;
 `;
