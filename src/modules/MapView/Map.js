@@ -95,7 +95,7 @@ class Map extends PureComponent {
     }
 
     if (this.props.match.url === '/my-hbi' && !arrayIsEqual(prevProps.hbi_values, this.props.hbi_values)) {
-      MapUtils.colorizeLines(this.map, this.props.hbi_values);
+      MapUtils.colorizeHbiLines(this.map, this.props.hbi_values);
     }
 
     return true;
@@ -119,11 +119,7 @@ class Map extends PureComponent {
   }
 
   handleLoad = () => {
-    this.map.on('click', 'planungen-bg-active', this.handleClick);
-    this.map.on('click', 'planungen-bg-inactive', this.handleClick);
-    this.map.on('click', 'zustand-bg-active', this.handleClick);
-    this.map.on('click', 'zustand-bg-inactive', this.handleClick);
-
+    this.map.on('click', config.map.layers.bgLayer, this.handleClick);
     this.map.on('dragend', this.handleMove);
 
     this.updateLayers();
@@ -135,12 +131,19 @@ class Map extends PureComponent {
   updateLayers = () => {
     const filterId = idx(this.props, _ => _.activeSection.id);
 
-    MapUtils.setActiveLayer(this.map, this.props.activeLayer, this.props.activeSection);
-    MapUtils.filterLayersById(this.map, filterId);
-    MapUtils.toggleLayer(this.map, '3d-buildings', this.props.show3dBuildings);
-    MapUtils.toggleLayer(this.map, 'dimming', !!this.props.activeSection);
+    console.log(this.props.activeLayer);
+    if (this.props.activeLayer === 'zustand') {
+      MapUtils.colorizeHbiLines(this.map, this.props.hbi_values);
+    }
 
-    MapUtils.colorizeLines(this.map, this.props.hbi_values);
+    if (this.props.activeLayer === 'planungen') {
+      MapUtils.colorizePlanningLines(this.map);
+    }
+
+    MapUtils.filterLayersById(this.map, filterId);
+
+    MapUtils.toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
+    MapUtils.toggleLayer(this.map, config.map.layers.dimmingLayer, !!this.props.activeSection);
   }
 
   handleClick = (e) => {

@@ -1,20 +1,3 @@
-const LAYERS = [
-  'planungen-bg-inactive',
-  'planungen-bg-active',
-  'planungen-side0-active',
-  'planungen-side0-inactive',
-  'planungen-side1-active',
-  'planungen-side1-inactive',
-  'zustand-bg-active',
-  'zustand-bg-inactive',
-  'zustand-side0-active',
-  'zustand-side0-inactive',
-  'zustand-side1-active',
-  'zustand-side1-inactive',
-  'zustand-center-active',
-  'zustand-center-inactive'
-];
-
 export function setView(map, view) {
   map.setZoom(view.zoom);
   map.setCenter(view.center);
@@ -37,43 +20,23 @@ export function toggleLayer(map, layer, isVisible) {
   }
 }
 
-// used to switch between activeLayer (zustand/planung)
-// we need activeSection (section id) when user has active section
-export function setActiveLayer(map, activeLayer, activeSection) {
-  LAYERS.forEach((layer) => {
-    const isCurrentLayer = layer.indexOf(activeLayer) >= 0;
-    const isActiveLayer = layer.indexOf('inactive') < 0;
-    const isVisible = isCurrentLayer && (activeSection || isActiveLayer);
-    toggleLayer(map, layer, isVisible);
-  });
-}
-
 // used to highlight a section by id
 export function filterLayersById(map, id) {
-  LAYERS.forEach((layer) => {
-    if (map.getLayer(layer)) {
-      const isActiveLayer = layer.indexOf('inactive') < 0;
-      if (id) {
-        map.setFilter(layer, [isActiveLayer ? '==' : '!=', 'id', id]);
-      } else {
-        map.setFilter(layer, null);
-      }
-    } else {
-      console.log('layer does not exist:', layer);
-    }
-  });
-}
+  if (id) {
+    const OpacityRule = ['case',
+      ['!=', ['get', 'id'], id], 0,
+      1
+    ];
 
-// function getLineColorRules(property, index) {
-//   return [
-//     'case',
-//     ['<', ['number', ['get', property]], index], 'hsl(22, 100%, 52%)',
-//     ['<', ['number', ['get', property]], index], 'hsl(14, 83%, 74%)',
-//     ['<', ['number', ['get', property]], index], '#a0ebe3',
-//     ['<=', ['number', ['get', property]], index], 'hsl(174, 87%, 43%)',
-//     'hsl(174, 87%, 43%)'
-//   ];
-// }
+    map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', OpacityRule);
+    map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', OpacityRule);
+    map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', OpacityRule);
+  } else {
+    map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', 1);
+    map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', 1);
+    map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', 1);
+  }
+}
 
 function getLineColorRules(sideKey, rs, rv) {
   // formula:
@@ -92,7 +55,13 @@ function getLineColorRules(sideKey, rs, rv) {
   ];
 }
 
-export function colorizeLines(map, hbiValues) {
+export function colorizePlanningLines(map) {
+  map.setPaintProperty(config.map.layers.centerLayer, 'line-color', config.colors.change_4);
+  map.setPaintProperty(config.map.layers.side0Layer, 'line-color', config.colors.change_4);
+  map.setPaintProperty(config.map.layers.side1Layer, 'line-color', config.colors.change_4);
+}
+
+export function colorizeHbiLines(map, hbiValues) {
   const rv = (hbiValues[0] - 5) / 10;
   const rs = (hbiValues[1] - 5) / 10;
 
@@ -100,18 +69,16 @@ export function colorizeLines(map, hbiValues) {
   const lineColorRules0 = getLineColorRules('side0_', rs, rv);
   const lineColorRules1 = getLineColorRules('side1_', rs, rv);
 
-  // @TODO: always use this function to colorize the sides
-  // @TODO: calculate index for zustand-center-active separately
-  map.setPaintProperty('zustand-center-active', 'line-color', lineColorRulesCenter);
-  map.setPaintProperty('zustand-side0-active', 'line-color', lineColorRules0);
-  map.setPaintProperty('zustand-side1-active', 'line-color', lineColorRules1);
+  map.setPaintProperty(config.map.layers.centerLayer, 'line-color', lineColorRulesCenter);
+  map.setPaintProperty(config.map.layers.side0Layer, 'line-color', lineColorRules0);
+  map.setPaintProperty(config.map.layers.side1Layer, 'line-color', lineColorRules1);
 }
 
 export default {
   setView,
   animateView,
-  setActiveLayer,
   filterLayersById,
   toggleLayer,
-  colorizeLines
+  colorizeHbiLines,
+  colorizePlanningLines
 };

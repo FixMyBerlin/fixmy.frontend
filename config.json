@@ -92,6 +92,14 @@
         "animate": false
       }
     },
+    "layers": {
+      "bgLayer": "fmb-background",
+      "centerLayer": "fmb-center",
+      "side0Layer": "fmb-side-0",
+      "side1Layer": "fmb-side-1",
+      "buildings3d": "3d-buildings",
+      "dimmingLayer": "dimming"
+    },
     "zoomAfterGeocode": 17,
     "geocoderUrl": "https://geocoder.cit.api.here.com/6.2/geocode.json",
     "geocoderAppId": "MfbUA6oryxjvqtPmL8OG",
