@@ -43,7 +43,7 @@ export function resetHbiFilter() {
 export function geocodeAddress(searchtext) {
   return (dispatch) => {
     const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;
-    Axios.get(`${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU`)
+    Axios.get(`${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`)
       .then((result) => {
         const geocodeResult = idx(result.data, _ => _.Response.View[0].Result[0].Location.DisplayPosition);
         if (!geocodeResult) {
