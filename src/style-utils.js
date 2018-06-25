@@ -38,14 +38,26 @@ export function getMediaQuery(size) {
   `;
 }
 
-export const media = {
-  s: getMediaQuery(460),
-  m: getMediaQuery(768),
-  l: getMediaQuery(1024)
+export const breakpoints = {
+  s: 460,
+  m: 768,
+  l: 1024
 };
+
+export const media = {
+  s: getMediaQuery(breakpoints.s),
+  m: getMediaQuery(breakpoints.m),
+  l: getMediaQuery(breakpoints.l)
+};
+
+export function matchMediaSize(size) {
+  return window.matchMedia(`(min-width: ${size}px)`).matches;
+}
 
 export default {
   init,
   media,
-  getMediaQuery
+  breakpoints,
+  getMediaQuery,
+  matchMediaSize
 };

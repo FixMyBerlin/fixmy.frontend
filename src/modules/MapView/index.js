@@ -14,6 +14,8 @@ import MyHBI from '~/modules/MyHBI';
 
 import Store from '~/redux/store';
 
+import { matchMediaSize, breakpoints } from '~/style-utils';
+
 import Map from './Map';
 
 import * as MapActions from './MapState';
@@ -66,7 +68,7 @@ class MapViewComponent extends PureComponent {
   }
 
   render() {
-    const hasActiveSection = !!this.props.activeSection;
+    const displayLegend = !this.props.activeSection || matchMediaSize(breakpoints.m);
 
     return (
       <MapView>
@@ -119,7 +121,7 @@ class MapViewComponent extends PureComponent {
                 exact
                 path="/zustand"
                 render={() => (
-                  !hasActiveSection && (
+                  displayLegend && (
                     <MapLegend
                       type="hbi"
                       filterHbiIndex={this.props.filterHbiIndex}
@@ -131,7 +133,7 @@ class MapViewComponent extends PureComponent {
                 exact
                 path="/planungen"
                 render={() => (
-                  !hasActiveSection && <MapLegend type="plannings" />
+                  displayLegend && <MapLegend type="plannings" />
                 )}
               />
               <MapSwitch />
