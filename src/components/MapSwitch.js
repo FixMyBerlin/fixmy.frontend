@@ -3,9 +3,6 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import ToggleSwitch from 'react-toggle-switch';
 import { withRouter } from 'react-router';
-
-import 'react-toggle-switch/dist/css/switch.min.css';
-
 import BikeIcon from '~/images/bike.svg';
 
 const MapSwitchWrapper = styled.div`

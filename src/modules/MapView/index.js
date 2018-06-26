@@ -110,18 +110,22 @@ class MapViewComponent extends PureComponent {
               >
                 <Route
                   path="(/zustand|/planungen)"
-                  render={() => (
+                  render={() => [
                     <LocatorControl
+                      key="Map__LocatorControl"
                       onChange={this.handleLocationChange}
                       position="bottom-right"
-                    />
-                  )}
+                    />,
+                    <MediaQuery
+                      key="Map__FMBLogo"
+                      minDeviceWidth={breakpoints.m}
+                    >
+                      <MapControl position="top-right">
+                        <FMBLogo width={67} />
+                      </MapControl>
+                    </MediaQuery>
+                  ]}
                 />
-                <MediaQuery minDeviceWidth={breakpoints.m}>
-                  <MapControl position="top-right">
-                    <FMBLogo width={67} />
-                  </MapControl>
-                </MediaQuery>
               </Map>
             )}
           />

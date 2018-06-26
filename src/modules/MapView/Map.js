@@ -8,8 +8,6 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import turfCenter from '@turf/center';
 
-import 'mapbox-gl/dist/mapbox-gl.css';
-
 import Store from '~/redux/store';
 
 import * as MapActions from './MapState';
