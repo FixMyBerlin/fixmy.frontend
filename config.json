@@ -5,8 +5,10 @@
   "apiUrl": "https://api.fixmyberlin.de",
   "colors": {
     "lightgrey": "#e8e8e8",
+    "inactivegrey": "#cccccc",
     "midgrey": "#999999",
     "darkgrey": "#545454",
+    "darkbg": "#353535",
     "black": "#0f0f0f",
     "white": "#FFF",
     "interaction": "#fabe28",
@@ -89,7 +91,7 @@
         "activeLayer": null
       },
       "/zustand": {
-        "zoom": 17,
+        "zoom": 10,
         "show3dBuildings": false,
         "animate": false,
         "pitch": 0,
