@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Axios from 'axios';
 
-import ContentWrapper from '~/components/ContentWrapper';
+import ContentWrapper from '~/components/styled/ContentWrapper';
 import MenuButton from '~/components/MenuButton';
 import MarkdownContent from './MarkdownContent';
 

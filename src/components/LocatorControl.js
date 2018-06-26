@@ -6,7 +6,7 @@ import idx from 'idx';
 import { getGeoLocation } from '~/utils';
 import LocatorIcon from '~/images/location.svg';
 import MapControl from './MapControl';
-import Loader from './Loader';
+import Loader from './styled/Loader';
 
 const LocatorButton = styled.button`
   background-color: ${config.colors.white};

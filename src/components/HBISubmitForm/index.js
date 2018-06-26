@@ -3,9 +3,9 @@ import { Formik } from 'formik';
 import Axios from 'axios';
 import { trackEvent } from '~/utils';
 
-import Headline from '~/components/Headline';
-import Button from '~/components/Button';
-import Form from '~/components/Form';
+import Headline from '~/components/styled/Headline';
+import Button from '~/components/styled/Button';
+import Form from '~/components/styled/Form';
 
 import FormField from './FormField';
 import formConfig, { initialValues } from './config';

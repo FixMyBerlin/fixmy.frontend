@@ -5,9 +5,9 @@ import 'rc-slider/assets/index.css';
 
 import Store from '~/redux/store';
 import { updateHBI } from '~/modules/User/UserState';
-import Headline from '~/components/Headline';
-import Button from '~/components/Button';
-import MapContent from '~/components/MapContent';
+import Headline from '~/components/styled/Headline';
+import Button from '~/components/styled/Button';
+import MapContent from '~/components/styled/MapContent';
 
 const MapContentBody = styled.div`
   width: 100%;

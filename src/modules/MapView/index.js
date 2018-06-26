@@ -8,7 +8,7 @@ import MapSwitch from '~/components/MapSwitch';
 import LocatorControl from '~/components/LocatorControl';
 import MapModal from '~/components/MapModal';
 import MapLegend from '~/components/MapLegend';
-import MapContent from '~/components/MapContent';
+import MapContent from '~/components/styled/MapContent';
 
 import MyHBI from '~/modules/MyHBI';
 

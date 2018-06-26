@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Store from '~/redux/store';
 
 import { close } from '~/modules/Menu/MenuState';
-import NavItem from '~/components/NavItem';
+import NavItem from '~/components/styled/NavItem';
 
 const NavHeader = styled.div`
   background: ${config.colors.lightgrey};

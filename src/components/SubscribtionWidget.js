@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledWidget = styled.div`
-
-`;
+const StyledWidget = styled.div``;
 
 export default () => (
   <StyledWidget>

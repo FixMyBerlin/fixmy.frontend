@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Link from '~/components/Link';
-import ContentOverlay from '~/components/ContentOverlay';
+import Link from '~/components/styled/Link';
+import ContentOverlay from '~/components/styled/ContentOverlay';
 import FMBLogo from '~/components/FMBLogo';
-import Headline from '~/components/Headline';
+import Headline from '~/components/styled/Headline';
 import MenuButton from '~/components/MenuButton';
 import SocialSharer from '~/components/Social/SocialSharer';
-import Text from '~/components/Text';
+import Text from '~/components/styled/Text';
 import SubscribtionWidget from '~/components/SubscribtionWidget';
 
 const HomeContent = styled.div`
