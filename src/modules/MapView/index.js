@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import MediaQuery from 'react-responsive';
 
 import SearchBar from '~/components/SearchBar';
 import MapSwitch from '~/components/MapSwitch';
@@ -9,6 +10,8 @@ import LocatorControl from '~/components/LocatorControl';
 import MapModal from '~/components/MapModal';
 import MapLegend from '~/components/MapLegend';
 import MapContent from '~/components/styled/MapContent';
+import MapControl from '~/components/MapControl';
+import FMBLogo from '~/components/FMBLogo';
 
 import MyHBI from '~/modules/MyHBI';
 
@@ -73,8 +76,9 @@ class MapViewComponent extends PureComponent {
   }
 
   render() {
-    const displayLegend = !this.props.activeSection || matchMediaSize(breakpoints.m);
-    const calculatePopupPosition = matchMediaSize(breakpoints.m);
+    const isDesktopView = matchMediaSize(breakpoints.m);
+    const displayLegend = !this.props.activeSection || isDesktopView;
+    const calculatePopupPosition = isDesktopView;
 
     return (
       <MapView>
@@ -113,6 +117,11 @@ class MapViewComponent extends PureComponent {
                     />
                   )}
                 />
+                <MediaQuery minDeviceWidth={breakpoints.m}>
+                  <MapControl position="top-right">
+                    <FMBLogo width={67} />
+                  </MapControl>
+                </MediaQuery>
               </Map>
             )}
           />
