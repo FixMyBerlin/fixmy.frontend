@@ -38,7 +38,8 @@ const MapWrapper = styled.div`
 
 class MapViewComponent extends PureComponent {
   state = {
-    userLocation: null
+    userLocation: null,
+    map: null
   }
 
   componentDidMount() {
@@ -59,6 +60,10 @@ class MapViewComponent extends PureComponent {
     }
   }
 
+  setMapContext = (map) => {
+    this.setState({ map });
+  }
+
   updateView = (view) => {
     Store.dispatch(MapActions.setView(view));
   }
@@ -69,6 +74,7 @@ class MapViewComponent extends PureComponent {
 
   render() {
     const displayLegend = !this.props.activeSection || matchMediaSize(breakpoints.m);
+    const calculatePopupPosition = matchMediaSize(breakpoints.m);
 
     return (
       <MapView>
@@ -92,9 +98,11 @@ class MapViewComponent extends PureComponent {
                 activeSection={this.props.activeSection}
                 animate={this.props.animate}
                 updateView={this.updateView}
+                setMapContext={this.setMapContext}
                 hasMoved={this.props.hasMoved}
                 hbi_values={this.props.hbi_values}
                 filterHbi={this.props.filterHbi}
+                calculatePopupPosition={calculatePopupPosition}
               >
                 <Route
                   path="(/zustand|/planungen)"
@@ -110,7 +118,9 @@ class MapViewComponent extends PureComponent {
           />
           <Route
             path="(/zustand|/planungen)"
-            component={MapModal}
+            render={() => (
+              this.props.activeSection && <MapModal map={this.state.map} />
+            )}
           />
         </MapWrapper>
         <Route
@@ -151,7 +161,21 @@ class MapViewComponent extends PureComponent {
 
 export default withRouter(
   connect(state => ({
-    ...state.MapState,
+    activeSection: state.MapState.activeSection,
+    activeLocation: state.MapState.activeLocation,
+    activeLayer: state.MapState.activeLayer,
+    filterHbi: state.MapState.filterHbi,
+    filterHbiIndex: state.MapState.filterHbiIndex,
+    filterPlannings: state.MapState.filterPlannings,
+    hasMoved: state.MapState.hasMoved,
+    hbi_speed: state.MapState.hbi_speed,
+    hbi_safety: state.MapState.hbi_safety,
+    zoom: state.MapState.zoom,
+    bearing: state.MapState.bearing,
+    pitch: state.MapState.pitch,
+    center: state.MapState.center,
+    show3dBuildings: state.MapState.show3dBuildings,
+    animate: state.MapState.animate,
     ...state.UserState
   }))(MapViewComponent)
 );

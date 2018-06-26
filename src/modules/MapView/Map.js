@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import idx from 'idx';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
+import turfCenter from '@turf/center';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -29,10 +30,12 @@ class Map extends PureComponent {
     show3dBuildings: PropTypes.bool,
     animate: PropTypes.bool,
     updateView: PropTypes.func,
+    setMapContext: PropTypes.func,
     activeLayer: PropTypes.string,
     activeSection: PropTypes.object,
     accessToken: PropTypes.string.isRequired,
-    hasMoved: PropTypes.bool
+    hasMoved: PropTypes.bool,
+    calculatePopupPosition: PropTypes.bool
   }
 
   static defaultProps = {
@@ -45,11 +48,14 @@ class Map extends PureComponent {
     activeLayer: null,
     activeSection: null,
     updateView: () => {},
-    hasMoved: false
+    setMapContext: () => {},
+    hasMoved: false,
+    calculatePopupPosition: false
   }
 
   state = {
-    loading: true
+    loading: true,
+    popupLngLat: false
   }
 
   componentDidMount() {
@@ -66,6 +72,8 @@ class Map extends PureComponent {
     this.map.on('load', this.handleLoad);
 
     window.map = this.map;
+
+    this.props.setMapContext(this.map);
   }
 
   componentDidUpdate(prevProps) {
@@ -89,6 +97,10 @@ class Map extends PureComponent {
 
     if (layerChanged) {
       this.updateLayers();
+    }
+
+    if (prevProps.activeSection && !this.props.activeSection && this.state.popupLngLat) {
+      this.setState({ popupLngLat: null });
     }
 
     if (prevProps.location !== this.props.location || layerChanged) {
@@ -121,7 +133,8 @@ class Map extends PureComponent {
 
   handleLoad = () => {
     this.map.on('click', config.map.layers.bgLayer, this.handleClick);
-    this.map.on('dragend', this.handleMove);
+    this.map.on('dragend', this.handleMoveEnd);
+    this.map.on('move', this.handleMove);
 
     this.updateLayers();
 
@@ -147,12 +160,15 @@ class Map extends PureComponent {
   }
 
   handleClick = (e) => {
-    const properties = idx(e, _ => _.features[0].properties);
+    const properties = idx(e.features, _ => _[0].properties);
+    const geometry = idx(e.features, _ => _[0].properties);
+
+    const center = geometry ? turfCenter(e.features[0]).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
 
     if (properties) {
       Store.dispatch(MapActions.setSectionActive(properties));
       Store.dispatch(MapActions.setView({
-        center: [e.lngLat.lng, e.lngLat.lat],
+        center,
         animate: true,
         zoom: config.map.zoomAfterGeocode,
         show3dBuildings: true,
@@ -161,14 +177,25 @@ class Map extends PureComponent {
 
       this.handleMove();
     }
+
+    if (geometry && this.props.calculatePopupPosition) {
+      this.setState({ popupLngLat: center });
+      const projCenter = this.map.project(center);
+      Store.dispatch(MapActions.setPopupLocation(projCenter));
+    }
   }
 
-  handleMove = () => {
+  handleMoveEnd = () => {
     if (!this.props.hasMoved) {
       Store.dispatch(MapActions.setHasMoved(true));
     }
-    const center = this.map.getCenter();
-    this.props.updateView({ center: [center.lng, center.lat] });
+  }
+
+  handleMove = () => {
+    if (this.state.popupLngLat && this.props.calculatePopupPosition) {
+      const center = this.map.project(this.state.popupLngLat);
+      Store.dispatch(MapActions.setPopupLocation(center));
+    }
   }
 
   render() {
