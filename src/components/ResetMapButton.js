@@ -11,10 +11,10 @@ const ResetMapButton = styled.button`
   height: 36px;
   background: ${config.colors.white};
   border-radius: 50%;
-  border: 1px solid ${config.colors.darkgrey};
+  border: 1px solid ${config.colors.midgrey};
   cursor: pointer;
   font-size: 24px;
-  color: ${config.colors.darkgrey};
+  color: ${config.colors.midgrey};
 `;
 
 function handleClick() {

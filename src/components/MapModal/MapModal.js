@@ -42,7 +42,7 @@ const MoreButtonWrapper = styled.div`
   padding-bottom: 15px;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid #979797;
+  border-bottom: 1px solid ${config.colors.midgrey};
 
   ${media.m`
     border-bottom: none;
@@ -52,9 +52,10 @@ const MoreButtonWrapper = styled.div`
 
 const CloseBtn = styled(ResetMapButton)`
   position: absolute;
-  top: 0px;
+  top: -18px;
   right: 10px;
   z-index: 900;
+  color: ${config.colors.midgrey};
 `;
 
 class MapModalComponent extends PureComponent {
