@@ -57,25 +57,29 @@
       "min": 0,
       "max": 2.5,
       "color": "hsl(22, 100%, 52%)",
-      "label": "sehr gefährlich"
+      "label": "sehr gefährlich",
+      "image": "sehrgefaehrlich@2x.png"
     },
     {
       "min": 2.5,
       "max": 5,
       "color": "hsl(14, 83%, 74%)",
-      "label": "gefährlich"
+      "label": "gefährlich",
+      "image": "gefaehrlich@2x.png"
     },
     {
       "min": 5,
       "max": 7.5,
       "color": "#a0ebe3",
-      "label": "ok"
+      "label": "ok",
+      "image": "ok@2x.png"
     },
     {
       "min": 7.5,
       "max": 100,
       "color": "hsl(174, 87%, 43%)",
-      "label": "sehr gut"
+      "label": "sehr gut",
+      "image": "sehrgut@2x.png"
     }
   ],
   "map": {

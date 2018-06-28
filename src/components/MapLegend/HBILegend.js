@@ -1,3 +1,5 @@
+/* eslint import/no-dynamic-require: 0, global-require: 0 */
+
 import React from 'react';
 import styled from 'styled-components';
 
@@ -28,10 +30,8 @@ const LegendIconWrapper = styled.div`
   position: relative;
 `;
 
-const LegendIcon = styled.div`
+const LegendImage = styled.img`
   width: 55px;
-  height: 35px;
-  background: ${props => props.color};
 `;
 
 const LegendLabel = styled.div`
@@ -41,7 +41,7 @@ const LegendLabel = styled.div`
 `;
 
 const CloseLegendItem = styled.div`
-  display: ${props => (props.closable ? 'block' : 'none')};
+  display: ${props => (props.closable ? 'flex' : 'none')};
   position: absolute;
   right: -5px;
   top: -5px;
@@ -51,7 +51,8 @@ const CloseLegendItem = styled.div`
   font-size: 10px;
   border: 1px solid ${config.colors.darkgrey};
   border-radius: 50%;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
 `;
 
 function filterHbi(min, max, index) {
@@ -68,7 +69,10 @@ export default props => (
       <LegendItem key={`LegendItem__${legendItem.label}`}>
         <LegendIconWrapper>
           <CloseLegendItem onClick={resetHbi} closable={props.filterHbiIndex === i}>×</CloseLegendItem>
-          <LegendIcon color={legendItem.color} onClick={() => filterHbi(legendItem.min, legendItem.max, i)} />
+          <LegendImage
+            src={require(`~/images/hbi-stop-icons/${legendItem.image}`)}
+            onClick={() => filterHbi(legendItem.min, legendItem.max, i)}
+          />
         </LegendIconWrapper>
         <LegendLabel>{legendItem.label}</LegendLabel>
       </LegendItem>
