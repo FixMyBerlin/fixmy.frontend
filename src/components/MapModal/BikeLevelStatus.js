@@ -39,6 +39,9 @@ const HBISign = styled.div`
   border-radius: 50%;
   text-align: center;
   box-shadow: 0 0 2px 2px rgba(0,0,0,.18);
+  text-decoration: none;
+  color:  ${config.colors.darkgrey};
+  cursor: pointer;
 
   svg {
     path {
@@ -65,7 +68,7 @@ export default (props) => {
         <div>Ostseite: <LevelLabel>{numberFormat(level1)}</LevelLabel></div>
       </SectionLeft>
       <SectionCenter>
-        <HBISign>
+        <HBISign onClick={props.onClick}>
           <div>
             <BikeIcon />
             <div>{bikeLevelTotalFormatted}</div>

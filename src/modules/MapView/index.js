@@ -12,6 +12,7 @@ import MapLegend from '~/components/MapLegend';
 import MapContent from '~/components/styled/MapContent';
 import MapControl from '~/components/MapControl';
 import FMBLogo from '~/components/FMBLogo';
+import SectionDetail from '~/components/SectionDetail';
 
 import MyHBI from '~/modules/MyHBI';
 
@@ -130,39 +131,40 @@ class MapViewComponent extends PureComponent {
             )}
           />
           <Route
+            exact
             path="(/zustand|/planungen)"
             render={() => (
               this.props.activeSection && <MapModal map={this.state.map} />
             )}
           />
+          <Route
+            exact
+            path="/zustand/:id" // @TODO: why is this not working (/zustand/:id|/planungen/:id)
+            render={() => <SectionDetail map={this.state.map} />}
+          />
         </MapWrapper>
-        <Route
-          path="(/zustand|/planungen)"
-          render={() => (
-            <MapContent>
-              <Route
-                exact
-                path="/zustand"
-                render={() => (
-                  displayLegend && (
-                    <MapLegend
-                      type="hbi"
-                      filterHbiIndex={this.props.filterHbiIndex}
-                    />
-                  )
-                )}
-              />
-              <Route
-                exact
-                path="/planungen"
-                render={() => (
-                  displayLegend && <MapLegend type="plannings" />
-                )}
-              />
-              <MapSwitch />
-            </MapContent>
-          )}
-        />
+        <MapContent>
+          <Route
+            exact
+            path="/zustand"
+            render={() => (
+              displayLegend && (
+                <MapLegend
+                  type="hbi"
+                  filterHbiIndex={this.props.filterHbiIndex}
+                />
+              )
+            )}
+          />
+          <Route
+            exact
+            path="/planungen"
+            render={() => (
+              displayLegend && <MapLegend type="plannings" />
+            )}
+          />
+          <MapSwitch />
+        </MapContent>
         <Route
           path="/my-hbi"
           component={MyHBI}

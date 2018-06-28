@@ -38,22 +38,22 @@ const MapModalPositioner = styled(MapModal)`
     bottom: auto;
     transform: translate(-50%, -101%);
     box-shadow: 2px 2px 2px 3px rgba(0,0,0,.2);
+
+    &:after {
+      ${getArrowCSS({
+        size: arrowSize,
+        color: 'white',
+      })}
+    }
+
+    &:before {
+      ${getArrowCSS({
+        size: outerArrowSize,
+        color: config.colors.midgrey,
+        offset: 1
+      })}
+    }
   `}
-
-  &:after {
-    ${getArrowCSS({
-      size: arrowSize,
-      color: 'white',
-    })}
-  }
-
-  &:before {
-    ${getArrowCSS({
-      size: outerArrowSize,
-      color: config.colors.midgrey,
-      offset: 1
-    })}
-  }
 `;
 
 class MapModalWrapper extends PureComponent {

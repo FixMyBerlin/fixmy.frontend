@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { If } from 'react-extras';
 
 import { media } from '~/style-utils';
+import Store from '~/redux/store';
+import { setSectionActive } from '~/modules/MapView/MapState';
 
 import ResetMapButton from '~/components/ResetMapButton';
 import PlanningStatus from './PlanningStatus';
@@ -26,14 +27,16 @@ const MapModalLocation = styled.div`
   text-transform: uppercase;
   font-weight: 600;
   color: ${config.colors.darkgrey};
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
 `;
 
-const MoreButton = styled(Link)`
+const MoreButton = styled.button`
   background: ${config.colors.interaction};
   display: inline-block;
   margin: 0 auto;
   padding: 10px 20px;
-  text-decoration: none;
   color: ${config.colors.white};
   border-radius: 3px;
 `;
@@ -59,6 +62,13 @@ const CloseBtn = styled(ResetMapButton)`
 `;
 
 class MapModalComponent extends PureComponent {
+
+  onDetailClick = () => {
+    const detailRoute = `${this.props.location.pathname}/${this.props.activeSection.id}`;
+    Store.dispatch(setSectionActive(null));
+    this.props.history.push(detailRoute);
+  }
+
   render() {
     const isBikeLevelMode = this.props.location.pathname === '/zustand';
     const isPlanningMode = this.props.location.pathname === '/planungen';
@@ -79,7 +89,9 @@ class MapModalComponent extends PureComponent {
         <If
           condition={hasData}
           render={() => (
-            <MapModalLocation>{this.props.activeSection.name}</MapModalLocation>
+            <MapModalLocation onClick={this.onDetailClick}>
+              {this.props.activeSection.name}
+            </MapModalLocation>
           )}
         />
         <If condition={isPlanningMode && hasData}>
@@ -88,14 +100,14 @@ class MapModalComponent extends PureComponent {
         <If
           condition={isBikeLevelMode && hasData}
           render={() => (
-            <BikeLevelStatus section={this.props.activeSection} />
+            <BikeLevelStatus onClick={this.onDetailClick} section={this.props.activeSection} />
           )}
         />
         <If
           condition={hasData}
           render={() => (
             <MoreButtonWrapper>
-              <MoreButton to={`${this.props.location.pathname}/${this.props.activeSection.id}`}>
+              <MoreButton onClick={this.onDetailClick}>
                 mehr Infos
               </MoreButton>
             </MoreButtonWrapper>
