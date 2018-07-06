@@ -138,6 +138,35 @@ class Map extends PureComponent {
 
     this.setView(this.getViewFromProps(), this.props.animate);
     this.setState({ loading: false });
+
+    this.drawOverlayLine();
+  } 
+
+  drawOverlayLine() {
+    if (!config.map.drawOverlayLine) {
+      return false;
+    }
+
+    this.map.addLayer({
+      id: 'fmb',
+      source: 'composite',
+      'source-layer': 'planning-sections-4ncdov',
+      type: 'line',
+      layout: {
+        'line-cap': 'round'
+      },
+      paint: {
+        'line-color': 'white',
+        'line-width': [
+          'interpolate',
+          ['exponential', 1.21],
+          ['zoom'],
+          0,
+          0.8,
+          10,
+          14
+        ]
+      }});
   }
 
   updateLayers = () => {
