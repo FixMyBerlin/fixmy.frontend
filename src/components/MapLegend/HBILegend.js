@@ -55,12 +55,16 @@ const CloseLegendItem = styled.div`
   align-items: center;
 `;
 
-function filterHbi(min, max, index) {
-  Store.dispatch(setHbiFilter(min, max, index));
-}
-
 function resetHbi() {
   Store.dispatch(resetHbiFilter());
+}
+
+function filterHbi({ min, max, index, isActive }) {
+  if (isActive) {
+    return resetHbi();
+  }
+
+  return Store.dispatch(setHbiFilter(min, max, index));
 }
 
 export default props => (
@@ -71,7 +75,7 @@ export default props => (
           <CloseLegendItem onClick={resetHbi} closable={props.filterHbiIndex === i}>×</CloseLegendItem>
           <LegendImage
             src={require(`~/images/hbi-stop-icons/${legendItem.image}`)}
-            onClick={() => filterHbi(legendItem.min, legendItem.max, i)}
+            onClick={() => filterHbi({ min: legendItem.min, max: legendItem.max, index: i, isActive: props.filterHbiIndex === i})}
           />
         </LegendIconWrapper>
         <LegendLabel>{legendItem.label}</LegendLabel>
