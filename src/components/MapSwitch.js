@@ -5,7 +5,7 @@ import ToggleSwitch from 'react-toggle-switch';
 import { withRouter } from 'react-router';
 import BikeIcon from '~/images/bike.svg';
 
-import Tooltip from '~/components/Tooltip';
+import Tooltip from '~/components/styled/Tooltip';
 
 const MapSwitchWrapper = styled.div`
   display: flex;

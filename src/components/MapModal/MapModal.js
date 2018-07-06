@@ -8,7 +8,7 @@ import { media } from '~/style-utils';
 // import Store from '~/redux/store';
 // import { setSectionActive } from '~/modules/MapView/MapState';
 
-import Tooltip from '~/components/Tooltip';
+import Tooltip from '~/components/styled/Tooltip';
 import ResetMapButton from '~/components/ResetMapButton';
 import PlanningStatus from './PlanningStatus';
 import BikeLevelStatus from './BikeLevelStatus';
