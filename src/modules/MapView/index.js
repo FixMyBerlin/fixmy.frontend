@@ -30,7 +30,7 @@ const MapView = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden
+  overflow: hidden;
 `;
 
 const MapWrapper = styled.div`
@@ -49,7 +49,7 @@ class MapViewComponent extends PureComponent {
   componentDidMount() {
     const view = config.map.views[this.props.location.pathname];
     if (view) {
-      Store.dispatch(MapActions.setView(Object.assign(view, { animate: false })));
+      this.updateView(Object.assign(view, { animate: false }));
     }
   }
 
@@ -60,7 +60,7 @@ class MapViewComponent extends PureComponent {
 
     if (prevPath !== thisPath && nextView) {
       const view = this.props.hasMoved ? { activeLayer: nextView.activeLayer } : nextView;
-      Store.dispatch(MapActions.setView(view));
+      this.updateView(view);
     }
   }
 
@@ -80,7 +80,7 @@ class MapViewComponent extends PureComponent {
     const isDesktopView = matchMediaSize(breakpoints.m);
     const displayLegend = !this.props.activeSection || isDesktopView;
     const calculatePopupPosition = isDesktopView;
-
+    console.log(this.props.zoom)
     return (
       <MapView>
         <MapWrapper>
