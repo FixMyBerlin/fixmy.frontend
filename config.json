@@ -95,7 +95,7 @@
         "activeLayer": null
       },
       "/zustand": {
-        "zoom": 16,
+        "zoom": 15,
         "show3dBuildings": false,
         "animate": false,
         "pitch": 0,
@@ -116,7 +116,7 @@
         "activeLayer": "zustand"
       },
       "default": {
-        "zoom": 16,
+        "zoom": 15,
         "bearing": 0,
         "pitch": 0,
         "center": [13.415669, 52.513219],
