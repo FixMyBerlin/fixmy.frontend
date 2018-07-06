@@ -34,10 +34,16 @@ export function getHBIbyProps(props, sideKey) {
   return ((props[`${sideKey}_s`] - rs) * 1.6) + ((props[`${sideKey}_v`] - rv) * 0.5);
 }
 
+export function getHBIColorByIndex(index) {
+  const stop = config.hbiStops.find(s => index >= s.min && index <= s.max);
+  return stop ? stop.color : '#555';
+}
+
 export default {
   getGeoLocation,
   numberFormat,
   arrayIsEqual,
   trackEvent,
-  getHBIbyProps
+  getHBIbyProps,
+  getHBIColorByIndex
 };

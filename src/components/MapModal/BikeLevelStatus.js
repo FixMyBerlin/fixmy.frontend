@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import BikeIcon from '~/images/bike.svg';
-import { numberFormat, getHBIbyProps } from '~/utils';
+import { numberFormat, getHBIbyProps, getHBIColorByIndex } from '~/utils';
 
 const BikeLevelStatus = styled.div`
   margin-bottom: 15px;
@@ -30,7 +30,7 @@ const SectionLeft = Section.extend`
 `;
 
 const HBISign = styled.div`
-  border: 3px solid ${config.colors.index};
+  border: 3px solid ${props => props.color || config.colors.index};
   width: 62px;
   height: 62px;
   display: flex;
@@ -60,6 +60,7 @@ export default (props) => {
 
   const bikeLevelTotal = (level0 + level1) / 2;
   const bikeLevelTotalFormatted = numberFormat(bikeLevelTotal);
+  const hbiColor = getHBIColorByIndex(bikeLevelTotal);
 
   return (
     <BikeLevelStatus {...props}>
@@ -68,7 +69,7 @@ export default (props) => {
         <div>Ostseite: <LevelLabel>{numberFormat(level1)}</LevelLabel></div>
       </SectionLeft>
       <SectionCenter>
-        <HBISign onClick={props.onClick}>
+        <HBISign onClick={props.onClick} color={hbiColor}>
           <div>
             <BikeIcon />
             <div>{bikeLevelTotalFormatted}</div>
