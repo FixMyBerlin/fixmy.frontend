@@ -55,7 +55,7 @@ class Locator extends PureComponent {
         this.props.onChange([lng, lat]);
       }
     } catch (e) {
-      alert(e.message); // eslint-disable-line
+      alert('Um dich zu lokalisieren, benötigen wir deine Berechtigung.'); // eslint-disable-line
     }
 
 
