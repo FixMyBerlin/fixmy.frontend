@@ -5,6 +5,8 @@ import ToggleSwitch from 'react-toggle-switch';
 import { withRouter } from 'react-router';
 import BikeIcon from '~/images/bike.svg';
 
+import Tooltip from '~/components/Tooltip';
+
 const MapSwitchWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -25,12 +27,14 @@ const MapSwitchItem = styled.div`
 `;
 
 const Switch = styled(ToggleSwitch)`
+  
   &.switch {
     width: 105px;
     height: 50px;
     border-radius: 50px;
     box-shadow: inset 0 1px 3px 1px rgba(140, 140, 140, 0.23), inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
     background: ${config.colors.midgrey};
+    cursor: not-allowed;
   }
 
   .switch-toggle {
@@ -44,7 +48,8 @@ const Switch = styled(ToggleSwitch)`
     align-items: center;
     background: #353535;
     border: 1px solid #E8E8E8;
-
+    cursor: not-allowed;
+    
     path {
       stroke: #353535;
       fill: #fff;
@@ -75,8 +80,10 @@ const SwitchDescription = styled.div`
 class MapSwitch extends PureComponent {
   handleChange = (checked) => {
     return () => {
-      const to = checked ? '/zustand' : '/planungen';
-      this.props.history.push(to);
+      return false;
+      // @TODO: as soon as the feature is ready we can use this again
+      // const to = checked ? '/zustand' : '/planungen';
+      // this.props.history.push(to);
     }
   }
 
@@ -85,7 +92,7 @@ class MapSwitch extends PureComponent {
     const enabled = process.env.NODE_ENV === 'development';
     
     return (
-      <MapSwitchWrapper>
+      <MapSwitchWrapper data-tip data-for="new_feat_slider">
         <MapSwitchItem>
           <SwitchLabel isActive={!checked}>Happy-Bike-Level</SwitchLabel>
           <SwitchDescription isActive={!checked}>Zustand der Radwege</SwitchDescription>
@@ -99,6 +106,9 @@ class MapSwitch extends PureComponent {
           <SwitchLabel isActive={checked}>Planung</SwitchLabel>
           <SwitchDescription isActive={checked}>Das plant die Stadt</SwitchDescription>
         </MapSwitchItem>
+        <Tooltip place="top" type="info" effect="solid" id="new_feat_slider">
+          <span>Dieses Feature ist erst in der nächsten Version verfügbar.</span>
+        </Tooltip>
       </MapSwitchWrapper>
     );
   }

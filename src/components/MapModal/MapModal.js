@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 import { If } from 'react-extras';
 
 import { media } from '~/style-utils';
-import Store from '~/redux/store';
-import { setSectionActive } from '~/modules/MapView/MapState';
+// import Store from '~/redux/store';
+// import { setSectionActive } from '~/modules/MapView/MapState';
 
+import Tooltip from '~/components/Tooltip';
 import ResetMapButton from '~/components/ResetMapButton';
 import PlanningStatus from './PlanningStatus';
 import BikeLevelStatus from './BikeLevelStatus';
-import { SSL_OP_NO_QUERY_MTU } from 'constants';
 
 const MapModal = styled.div`
   width: 100%;
@@ -40,6 +40,11 @@ const MoreButton = styled.button`
   padding: 10px 20px;
   color: ${config.colors.white};
   border-radius: 3px;
+  cursor: not-allowed;
+
+  &:focus {
+    outline: 1px solid white;
+  }
 `;
 
 const MoreButtonWrapper = styled.div`
@@ -65,9 +70,12 @@ const CloseBtn = styled(ResetMapButton)`
 class MapModalComponent extends PureComponent {
 
   onDetailClick = () => {
-    const detailRoute = `${this.props.location.pathname}/${this.props.activeSection.id}`;
-    Store.dispatch(setSectionActive(null));
-    this.props.history.push(detailRoute);
+    return false;
+
+    // @TODO: as soon as the API is ready we can use this again
+    // const detailRoute = `${this.props.location.pathname}/${this.props.activeSection.id}`;
+    // Store.dispatch(setSectionActive(null));
+    // this.props.history.push(detailRoute);
   }
 
   render() {
@@ -108,12 +116,16 @@ class MapModalComponent extends PureComponent {
           condition={hasData}
           render={() => (
             <MoreButtonWrapper>
-              <MoreButton onClick={this.onDetailClick}>
+              <MoreButton onClick={this.onDetailClick} data-tip data-for="new_feat">
                 mehr Infos
               </MoreButton>
             </MoreButtonWrapper>
           )}
         />
+        <Tooltip place="top" type="info" effect="solid" id="new_feat">
+          <span>Das Feature ist erst in der nächsten Version verfügbar.</span>
+        </Tooltip>
+
       </MapModal>
     );
   }

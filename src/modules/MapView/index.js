@@ -80,7 +80,7 @@ class MapViewComponent extends PureComponent {
     const isDesktopView = matchMediaSize(breakpoints.m);
     const displayLegend = !this.props.activeSection || isDesktopView;
     const calculatePopupPosition = isDesktopView;
-    console.log(this.props.zoom)
+
     return (
       <MapView>
         <MapWrapper>

@@ -23,7 +23,7 @@ function getArrowCSS({ size = 20, color = 'white', offset = 0 }) {
     left: 50%;
     top: auto;
     bottom:-${size + offset - 1}px;
-    margin-left:-${size / 2}px;
+    margin-left:-${size}px;
   `;
 }
 
