@@ -57,7 +57,9 @@ export function geocodeAddress(searchtext) {
           return dispatch({ type: GEOCODE_FAIL, payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' } });
         }
 
-        return dispatch({ type: GEOCODE_DONE, payload: { center: [geocodeResult.Longitude, geocodeResult.Latitude], zoom: 17 } });
+        // we do + (Math.random() / 1000) in order to always get a slightly different center
+        const center = [geocodeResult.Longitude, geocodeResult.Latitude + (Math.random() / 1000)];
+        return dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
       });
   };
 }
