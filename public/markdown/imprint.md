@@ -20,7 +20,7 @@ Agaric e.K. Stefan Freudenberg
 ## Urheberrechte Fotos
 Wenn nicht anders angegeben stehen die auf fixmyberlin.de verwendeten Fotos unter Creative Commons-Lizenz (BY-NC 4.0). (Info zu CC Lizenzen)
 
-FixMyBerlin wird als forschungsbezogenes Start-Up durch Bundesmittel gefördert. [Projektsteckbrief](http://www.bmvi.de/SharedDocs/DE/Artikel/DG/mfund-projekte/fixmyberlin.html)
+FixMyBerlin wird als forschungsbezogenes Start-Up durch Bundesmittel gefördert (Förderkennzeichen 19F1039A). [Projektsteckbrief](http://www.bmvi.de/SharedDocs/DE/Artikel/DG/mfund-projekte/fixmyberlin.html)
 
 [![Logo BMVI](./bmvi-logo.jpg "Logo BMVI")](http://www.bmvi.de/)
 [![Logo mFund](./mfund-logo.jpg "Logo mFund")](https://www.bmvi.de/DE/Themen/Digitales/mFund/Ueberblick/ueberblick.html)
