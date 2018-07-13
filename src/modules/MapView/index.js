@@ -181,7 +181,11 @@ class MapViewComponent extends PureComponent {
               displayLegend && <MapLegend type="plannings" />
             )}
           />
-          <MapSwitch />
+          <Route
+            exact
+            path="(/zustand|/planungen)"
+            component={MapSwitch}
+          />
         </MapContent>
         <Route
           path="/my-hbi"

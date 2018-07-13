@@ -39,6 +39,7 @@ class ImageSlider extends PureComponent {
     return (
       <StyledSlider
         dots
+        arrows={false}
       >
         {this.props.images.map((image, i) => (
           <Slide key={`SliderImage_${i}`}>
