@@ -1,10 +1,19 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
+import { numberFormat } from '~/utils';
 import detailWrapped from '~/hocs/detailWrapped';
 import dummyImageSrc from '~/images/detail-dummy.png';
 import HBISign from '~/components/HBISign';
 import InfoSection from './InfoSection';
+import SwitchButton from './SwitchButton';
+
+const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 20px 0;
+  background: ${config.colors.lightbg};
+`;
 
 const DetailImage = styled.img`
   width: 100%;
@@ -42,18 +51,46 @@ const DetailTitle = styled.h1`
   margin-bottom: 20px;
 `;
 
+const DescriptionLink = styled.div`
+  color: ${config.colors.interaction};
+  text-align: center;
+  font-size: 14px;
+`;
+
 class SectionDetails extends PureComponent {
   state = {
     sideIndex: 0
   }
 
+  onSwitchSide = (sideIndex) => {
+    return () => this.setState({ sideIndex });
+  }
+
   render() {
     const { data } = this.props;
+    const { sideIndex } = this.state;
     const { name } = data;
-    const sideData = data.details[this.state.sideIndex];
+    const sideData = data.details[sideIndex];
 
     return (
       <React.Fragment>
+        <ButtonGroup>
+          <SwitchButton
+            activeSideIndex={sideIndex}
+            sideIndex={0}
+            title="Westseite"
+            side="left"
+            onClick={this.onSwitchSide}
+          />
+          <SwitchButton
+            activeSideIndex={sideIndex}
+            sideIndex={1}
+            title="Ostseite"
+            side="right"
+            onClick={this.onSwitchSide}
+          />
+        </ButtonGroup>
+
         <DetailImage src={dummyImageSrc} alt={name} />
 
         <HBISignWrapper>
@@ -73,7 +110,7 @@ class SectionDetails extends PureComponent {
 
             <div>Art der Straße: Hauptstraße</div>
             <div>Tempolimit: <strong>50km/h</strong></div>
-            <div>KFZ pro Tag: 11.000</div>
+            <div>KFZ pro Tag: {numberFormat(sideData.daily_traffic)}</div>
           </InfoSection>
 
           <InfoSection title="Qualität:" color="#f2b19d" label="schlecht ausgebaut">
@@ -85,6 +122,10 @@ class SectionDetails extends PureComponent {
           <InfoSection title="Zustand:" color="#0ecdba" label="gut">
             <div>sanierungsbedürftig: <strong>nein</strong></div>
           </InfoSection>
+
+          <DescriptionLink>
+            Wie wird der Happy-Bike-Level berechnet?
+          </DescriptionLink>
         </DetailInfoWrapper>
       </React.Fragment>
     );
