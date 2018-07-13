@@ -12,7 +12,7 @@ module.exports = merge(common, {
   devServer: {
     contentBase: Path.resolve(__dirname, 'build'),
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -37,7 +37,10 @@ module.exports = merge(common, {
         test: /\.(js|jsx)$/,
         include: Path.resolve(__dirname, '../src'),
         enforce: "pre",
-        loader: 'eslint-loader'
+        loader: 'eslint-loader',
+        options: {
+          emitWarning: true
+        }
       },
       {
         test: /\.styl$/i,

@@ -1,15 +1,9 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import Store from '~/redux/store';
-import { close } from '~/modules/Menu/MenuState';
-
-function closeMenu() {
-  Store.dispatch(close());
-}
-
-const NavItem = styled(NavLink)`
+const NavItem = styled(NavLink).attrs({
+  to: props => props.to
+})`
   display: block;
   padding: 1.2rem 0;
   border-bottom: 1px solid ${config.colors.lightgrey};
@@ -26,11 +20,4 @@ const NavItem = styled(NavLink)`
   }
 `;
 
-export default props => (
-  <NavItem
-    to={props.to}
-    onClick={closeMenu}
-  >
-    {props.label}
-  </NavItem>
-);
+export default NavItem;

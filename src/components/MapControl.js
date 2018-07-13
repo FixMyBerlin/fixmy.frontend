@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const marginTop = '10px';
-const marginRight = '10px';
-const marginBottom = '10px';
-const marginLeft = '10px';
+const marginTop = '16px';
+const marginRight = '16px';
+const marginBottom = '16px';
+const marginLeft = '16px';
 
 const MapControl = styled.div`
   position: absolute;
@@ -12,7 +12,7 @@ const MapControl = styled.div`
   right: ${props => props.margins.right};
   bottom: ${props => props.margins.bottom};
   left: ${props => props.margins.left};
-  z-index: 9999999;
+  z-index: 1000;
 `;
 
 const getMargins = (props) => {

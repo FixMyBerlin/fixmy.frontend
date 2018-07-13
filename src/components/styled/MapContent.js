@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  margin: 20px 0;
+  width: 100%;
+  background: #fff;
+  flex: 0 1 auto;
 `;

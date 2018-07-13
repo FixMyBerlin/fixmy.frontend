@@ -2,14 +2,18 @@
   "devUrl": "http://localhost:8080",
   "prodUrl": "https://fixmyberlin-app.netlify.com",
   "newsletterWidgetUrl": "https://app.mailjet.com/widget/iframe/2YIa/6kW",
+  "apiUrl": "https://api.fixmyberlin.de",
   "colors": {
     "lightgrey": "#e8e8e8",
-    "midgrey": "#999999",
+    "inactivegrey": "#cccccc",
+    "midgrey": "#9b9b9b",
     "darkgrey": "#545454",
+    "darkbg": "#353535",
     "black": "#0f0f0f",
     "white": "#FFF",
     "interaction": "#fabe28",
-    "change_4": "#910055"
+    "change_4": "#910055",
+    "index": "#ff650c"
   },
   "menu": {
     "size": 320,
@@ -44,21 +48,54 @@
   "imprint": {
     "markdownSource": "markdown/imprint.md"
   },
+  "hbi": [
+    { "label": "Geschwindgkeit", "type": "speed", "value": 5, "min": 0, "max": 10 },
+    { "label": "Sicherheit", "type": "security", "value": 5, "min": 0, "max": 10 }
+  ],
+  "hbiStops": [
+    {
+      "min": 0,
+      "max": 2.5,
+      "color": "hsl(22, 100%, 52%)",
+      "label": "sehr gefährlich",
+      "image": "sehrgefaehrlich@2x.png"
+    },
+    {
+      "min": 2.5,
+      "max": 5,
+      "color": "hsl(14, 83%, 74%)",
+      "label": "gefährlich",
+      "image": "gefaehrlich@2x.png"
+    },
+    {
+      "min": 5,
+      "max": 7.5,
+      "color": "#a0ebe3",
+      "label": "ok",
+      "image": "ok@2x.png"
+    },
+    {
+      "min": 7.5,
+      "max": 100,
+      "color": "hsl(174, 87%, 43%)",
+      "label": "sehr gut",
+      "image": "sehrgut@2x.png"
+    }
+  ],
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
-    "style": "mapbox://styles/hejco/cjhbofe9k08gc2ss4dly1zbir",
+    "style": "mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h",
     "views": {
       "/": {
         "zoom": 16,
         "bearing": 0,
         "pitch": 60,
-        "center": [13.421025, 52.494004],
         "show3dBuildings": true,
         "animate": false,
         "activeLayer": null
       },
       "/zustand": {
-        "zoom": 17,
+        "zoom": 15,
         "show3dBuildings": false,
         "animate": false,
         "pitch": 0,
@@ -71,15 +108,34 @@
         "pitch": 0,
         "activeLayer": "planungen"
       },
+      "/my-hbi": {
+        "zoom": 14,
+        "show3dBuildings": false,
+        "animate": false,
+        "pitch": 0,
+        "activeLayer": "zustand"
+      },
       "default": {
-        "zoom": 16,
+        "zoom": 15,
         "bearing": 0,
         "pitch": 0,
-        "center": [13.4237252, 52.5163494],
+        "center": [13.415669, 52.513219],
         "show3dBuildings": true,
         "animate": false
       }
     },
-    "zoomAfterGeocode": 17
+    "layers": {
+      "bgLayer": "fmb-background",
+      "centerLayer": "fmb-center",
+      "side0Layer": "fmb-side-0",
+      "side1Layer": "fmb-side-1",
+      "buildings3d": "3d-buildings",
+      "dimmingLayer": "dimming"
+    },
+    "zoomAfterGeocode": 15,
+    "geocoderUrl": "https://geocoder.cit.api.here.com/6.2/geocode.json",
+    "geocoderAppId": "MfbUA6oryxjvqtPmL8OG",
+    "geocoderAppCode": "TtjOtIepUqDKvw2Mi_ci-A",
+    "drawOverlayLine": true
   }
 }

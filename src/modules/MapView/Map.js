@@ -6,13 +6,13 @@ import styled from 'styled-components';
 import idx from 'idx';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
-
-import 'mapbox-gl/dist/mapbox-gl.css';
+import turfCenter from '@turf/center';
 
 import Store from '~/redux/store';
 
 import * as MapActions from './MapState';
 import MapUtils from './map-utils';
+import { arrayIsEqual } from '~/utils';
 
 const StyledMap = styled.div`
   width: 100%;
@@ -28,10 +28,12 @@ class Map extends PureComponent {
     show3dBuildings: PropTypes.bool,
     animate: PropTypes.bool,
     updateView: PropTypes.func,
+    setMapContext: PropTypes.func,
     activeLayer: PropTypes.string,
     activeSection: PropTypes.object,
     accessToken: PropTypes.string.isRequired,
-    hasMoved: PropTypes.bool
+    hasMoved: PropTypes.bool,
+    calculatePopupPosition: PropTypes.bool
   }
 
   static defaultProps = {
@@ -44,17 +46,20 @@ class Map extends PureComponent {
     activeLayer: null,
     activeSection: null,
     updateView: () => {},
-    hasMoved: false
+    setMapContext: () => {},
+    hasMoved: false,
+    calculatePopupPosition: false
   }
 
   state = {
-    loading: true
+    loading: true,
+    popupLngLat: false
   }
 
   componentDidMount() {
     MapboxGL.accessToken = this.props.accessToken;
     
-    const mbStyleUrl = `${config.map.style}?fresh=true`
+    const mbStyleUrl = `${config.map.style}?fresh=true`;
 
     this.map = new MapboxGL.Map({
       container: this.root,
@@ -65,6 +70,8 @@ class Map extends PureComponent {
     this.map.on('load', this.handleLoad);
 
     window.map = this.map;
+
+    this.props.setMapContext(this.map);
   }
 
   componentDidUpdate(prevProps) {
@@ -83,14 +90,23 @@ class Map extends PureComponent {
 
     const layerChanged = prevProps.activeLayer !== this.props.activeLayer ||
       prevProps.activeSection !== this.props.activeSection ||
-      prevProps.show3dBuildings !== this.props.show3dBuildings;
+      prevProps.show3dBuildings !== this.props.show3dBuildings ||
+      !_isEqual(prevProps.filterHbi, this.props.filterHbi);
 
     if (layerChanged) {
       this.updateLayers();
     }
 
+    if (prevProps.activeSection && !this.props.activeSection && this.state.popupLngLat) {
+      this.setState({ popupLngLat: null });
+    }
+
     if (prevProps.location !== this.props.location || layerChanged) {
       this.map.resize();
+    }
+
+    if (this.props.match.url === '/my-hbi' && !arrayIsEqual(prevProps.hbi_values, this.props.hbi_values)) {
+      MapUtils.colorizeHbiLines(this.map, this.props.hbi_values);
     }
 
     return true;
@@ -114,54 +130,106 @@ class Map extends PureComponent {
   }
 
   handleLoad = () => {
-    this.map.on('click', 'planungen-bg-active', this.handleClick);
-    this.map.on('click', 'planungen-bg-inactive', this.handleClick);
-    this.map.on('click', 'zustand-bg-active', this.handleClick);
-    this.map.on('click', 'zustand-bg-inactive', this.handleClick);
-
-    this.map.on('dragend', this.handleMove);
+    this.map.on('click', config.map.layers.bgLayer, this.handleClick);
+    this.map.on('dragend', this.handleMoveEnd);
+    this.map.on('move', this.handleMove);
 
     this.updateLayers();
 
     this.setView(this.getViewFromProps(), this.props.animate);
     this.setState({ loading: false });
+
+    this.drawOverlayLine();
+  } 
+
+  drawOverlayLine() {
+    if (!config.map.drawOverlayLine) {
+      return false;
+    }
+
+    this.map.addLayer({
+      id: 'fmb',
+      source: 'composite',
+      'source-layer': 'planning-sections-4ncdov',
+      type: 'line',
+      layout: {
+        'line-cap': 'round'
+      },
+      paint: {
+        'line-color': 'white',
+        'line-width': [
+          'interpolate',
+          ['exponential', 1.21],
+          ['zoom'],
+          0,
+          0.8,
+          10,
+          14
+        ]
+      }});
   }
 
   updateLayers = () => {
     const filterId = idx(this.props, _ => _.activeSection.id);
 
-    MapUtils.setActiveLayer(this.map, this.props.activeLayer, this.props.activeSection);
+    if (this.props.activeLayer === 'zustand') {
+      MapUtils.colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
+    }
+
+    if (this.props.activeLayer === 'planungen') {
+      MapUtils.colorizePlanningLines(this.map);
+    }
+
     MapUtils.filterLayersById(this.map, filterId);
-    MapUtils.toggleLayer(this.map, '3d-buildings', this.props.show3dBuildings);
-    MapUtils.toggleLayer(this.map, 'dimming', !!this.props.activeSection);
+
+    MapUtils.toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
+    MapUtils.toggleLayer(this.map, config.map.layers.dimmingLayer, !!this.props.activeSection);
   }
 
   handleClick = (e) => {
-    const properties = idx(e, _ => _.features[0].properties);
+    const properties = idx(e.features, _ => _[0].properties);
+    const geometry = idx(e.features, _ => _[0].properties);
+
+    const center = geometry ? turfCenter(e.features[0]).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
 
     if (properties) {
       Store.dispatch(MapActions.setSectionActive(properties));
       Store.dispatch(MapActions.setView({
-        center: [e.lngLat.lng, e.lngLat.lat],
+        center,
         animate: true,
         zoom: config.map.zoomAfterGeocode,
         show3dBuildings: true,
-        pitch: 30
+        pitch: 45
       }));
 
       this.handleMove();
     }
+
+    if (geometry && this.props.calculatePopupPosition) {
+      this.setState({ popupLngLat: center });
+      const projCenter = this.map.project(center);
+      Store.dispatch(MapActions.setPopupLocation(projCenter));
+    }
   }
 
-  handleMove = () => {
+  handleMoveEnd = () => {
     if (!this.props.hasMoved) {
       Store.dispatch(MapActions.setHasMoved(true));
     }
   }
 
+  handleMove = () => {
+    if (this.state.popupLngLat && this.props.calculatePopupPosition) {
+      const center = this.map.project(this.state.popupLngLat);
+      Store.dispatch(MapActions.setPopupLocation(center));
+    }
+  }
+
   render() {
     return (
-      <StyledMap innerRef={(ref) => { this.root = ref; }} />
+      <StyledMap innerRef={(ref) => { this.root = ref; }}>
+        {this.props.children}
+      </StyledMap>
     );
   }
 }

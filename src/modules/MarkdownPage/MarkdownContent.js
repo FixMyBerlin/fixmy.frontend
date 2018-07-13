@@ -2,7 +2,7 @@ import React from 'react';
 import { If } from 'react-extras';
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
-import { getHeadlineStyle } from '~/components/Headline';
+import { getHeadlineStyle } from '~/components/styled/Headline';
 
 const ImageContext = require.context('~/images', true);
 

@@ -1,9 +1,15 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+
+import { geocodeAddress } from '~/modules/MapView/MapState';
+import Store from '~/redux/store';
 
 import MenuButton from '~/components/MenuButton';
-import ResetMapButton from '~/components/ResetMapButton';
+import { media } from '~/style-utils';
+
+const Form = styled.form`
+  width: 100%;
+`;
 
 const SearchBarWrapper = styled.div`
   position: fixed;
@@ -12,6 +18,11 @@ const SearchBarWrapper = styled.div`
   left: 15px;
   right: 15px;
   margin: auto;
+
+  ${media.m`
+    max-width: 400px;
+    margin: 0;
+  `}
 `;
 
 const SearchBarInnerWrapper = styled.div`
@@ -36,30 +47,70 @@ const SearchMenuBtn = styled(MenuButton)`
   left: 12px;
 `;
 
-const SearchCloseBtn = styled(ResetMapButton)`
+const closeSize = 20;
+
+const SearchReset = styled.div`
   position: absolute;
-  top: 7px;
-  left: 10px;
+  right:10px;
+  top:12px;
+  border-radius: 50%;
+  width: ${closeSize}px;
+  height: ${closeSize}px;
+  background: #ddd;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  font-weight: 700;
+  font-size: 20px;
+  cursor:pointer;
+  box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.12);
+
+  &:hover {
+    background: #eee;
+  }
 `;
 
 class SearchBar extends PureComponent {
-  static propTypes = {
-    isClosable: PropTypes.bool
+  state = {
+    inputValue: ''
   }
 
-  static defaultProps = {
-    isClosable: false
+  onSubmit = (evt) => {
+    evt.preventDefault();
+
+    if (!this.state.inputValue) {
+      return false;
+    }
+
+    return Store.dispatch(geocodeAddress(this.state.inputValue));
+  }
+
+  onChange = (evt) => {
+    this.setState({ inputValue: evt.target.value });
+  }
+
+  onInputReset = () => {
+    this.setState({ inputValue: '' });
   }
 
   render() {
     return (
       <SearchBarWrapper>
         <SearchBarInnerWrapper>
-          {this.props.isClosable ?
-            <SearchCloseBtn /> :
-            <SearchMenuBtn />
-          }
-          <SearchInput type="text" placeholder="Suche einen Ort" />
+          <SearchMenuBtn />
+          <Form onSubmit={this.onSubmit}>
+            <SearchInput
+              value={this.state.inputValue}
+              type="text"
+              placeholder="Suche einen Ort"
+              onChange={this.onChange}
+            />
+          </Form>
+          {this.state.inputValue ? (
+            <SearchReset onClick={this.onInputReset}>×</SearchReset>
+          ) : null}
         </SearchBarInnerWrapper>
       </SearchBarWrapper>
     );

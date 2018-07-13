@@ -1,85 +1,76 @@
+/* eslint-disable */
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { If } from 'react-extras';
 
-import MapSwitch from '~/components/MapSwitch';
-import PlanningStatus from './PlanningStatus';
-import BikeLevelStatus from './BikeLevelStatus';
+import { media } from '~/style-utils';
 
-const MapModal = styled.div`
-  width: 100%;
-  background: #fff;
-  flex: 0 1 auto;
-  padding: 24px;
+import MapModal from './MapModal';
+
+const arrowSize = 19;
+const outerArrowSize = 21;
+
+function getArrowCSS({ size = 20, color = 'white', offset = 0 }) {
+  return `
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    position:absolute;
+    border-right: ${size}px solid transparent;
+    border-left: ${size}px solid transparent;
+    border-top: ${size}px solid ${color};
+    left: 50%;
+    top: auto;
+    bottom:-${size + offset - 1}px;
+    margin-left:-${size}px;
+  `;
+}
+
+const MapModalPositioner = styled(MapModal)`
+  position: relative;
+
+  ${media.m`
+    position: absolute;
+    top: ${props => props.y}px;
+    left: ${props => props.x}px;
+    max-width: 300px;
+    bottom: auto;
+    transform: translate(-50%, -101%);
+    box-shadow: 2px 2px 2px 3px rgba(0,0,0,.2);
+
+    &:after {
+      ${getArrowCSS({
+        size: arrowSize,
+        color: 'white',
+      })}
+    }
+
+    &:before {
+      ${getArrowCSS({
+        size: outerArrowSize,
+        color: config.colors.midgrey,
+        offset: 1
+      })}
+    }
+  `}
 `;
 
-const MapModalLocation = styled.div`
-  margin-bottom: 15px;
-`;
-
-const MoreButton = styled(Link)`
-  background: ${config.colors.interaction};
-  display: inline-block;
-  margin: 0 auto;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: ${config.colors.white};
-  border-radius: 3px;
-`;
-
-const MoreButtonWrapper = styled.div`
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid #979797;
-`;
-
-class MapModalComponent extends PureComponent {
-  handleChange = (checked) => {
-    const to = checked ? '/planungen' : '/zustand';
-    this.props.history.push(to);
-  }
-
+class MapModalWrapper extends PureComponent {
   render() {
-    const isBikeLevelMode = this.props.location.pathname === '/zustand';
-    const isPlanningMode = this.props.location.pathname === '/planungen';
-    const hasData = !!this.props.activeSection;
+    let x = 0, y = 0;
+
+    if (this.props.popupLocation) {
+      x = this.props.popupLocation.x;
+      y = this.props.popupLocation.y;
+    }
 
     return (
-      <MapModal>
-        <If
-          condition={hasData}
-          render={() => (
-            <MapModalLocation>{this.props.activeSection.name}</MapModalLocation>
-          )}
-        />
-        <If condition={isPlanningMode && hasData}>
-          <PlanningStatus />
-        </If>
-        <If
-          condition={isBikeLevelMode && hasData}
-          render={() => (
-            <BikeLevelStatus level0={this.props.activeSection.side0_index} level1={this.props.activeSection.side1_index} />
-          )}
-        />
-        <If
-          condition={hasData}
-          render={() => (
-            <MoreButtonWrapper>
-              <MoreButton to={`${this.props.location.pathname}/${this.props.activeSection.id}`}>
-                mehr Infos
-              </MoreButton>
-            </MoreButtonWrapper>
-          )}
-        />
-        <MapSwitch checked={isPlanningMode} onChange={this.handleChange} />
-      </MapModal>
+      <MapModalPositioner x={x} y={y - arrowSize} />
     );
   }
 }
 
-export default withRouter(connect(state => ({ activeSection: state.MapState.activeSection }))(MapModalComponent));
+export default connect(state => ({
+  popupLocation: state.MapState.popupLocation
+}))(MapModalWrapper);

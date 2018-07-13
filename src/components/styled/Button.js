@@ -12,4 +12,9 @@ export default styled.button`
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
 `;

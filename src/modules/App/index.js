@@ -7,10 +7,6 @@ import Home from '~/modules/Home';
 import MarkdownPage from '~/modules/MarkdownPage';
 import MapView from '~/modules/MapView';
 
-import { init as initStyle } from './AppStyle';
-
-initStyle();
-
 const App = styled.div`
   height: 100%;
   position: relative;
@@ -33,8 +29,7 @@ const AppWrapper = () => (
       <Route path="/impressum" render={() => <MarkdownPage page="imprint" />} />
 
       <Route
-        exact
-        path="(/zustand|/planungen|/)"
+        path="(/zustand|/planungen|/my-hbi|/)"
         component={MapView}
       />
     </AppContent>

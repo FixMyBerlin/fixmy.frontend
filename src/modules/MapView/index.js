@@ -2,12 +2,23 @@ import React, { PureComponent } from 'react';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import MediaQuery from 'react-responsive';
 
 import SearchBar from '~/components/SearchBar';
-// import LocatorControl from '~/components/LocatorControl';
+import MapSwitch from '~/components/MapSwitch';
+import LocatorControl from '~/components/LocatorControl';
 import MapModal from '~/components/MapModal';
+import MapLegend from '~/components/MapLegend';
+import MapContent from '~/components/styled/MapContent';
+import MapControl from '~/components/MapControl';
+import FMBLogo from '~/components/FMBLogo';
+import SectionDetail from '~/components/SectionDetail';
+
+import MyHBI from '~/modules/MyHBI';
 
 import Store from '~/redux/store';
+
+import { matchMediaSize, breakpoints } from '~/style-utils';
 
 import Map from './Map';
 
@@ -19,7 +30,7 @@ const MapView = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden
+  overflow: hidden;
 `;
 
 const MapWrapper = styled.div`
@@ -31,13 +42,14 @@ const MapWrapper = styled.div`
 
 class MapViewComponent extends PureComponent {
   state = {
-    userLocation: null
+    userLocation: null,
+    map: null
   }
 
   componentDidMount() {
     const view = config.map.views[this.props.location.pathname];
     if (view) {
-      Store.dispatch(MapActions.setView(Object.assign(view, { animate: false })));
+      this.updateView(Object.assign(view, { animate: false }));
     }
   }
 
@@ -48,8 +60,12 @@ class MapViewComponent extends PureComponent {
 
     if (prevPath !== thisPath && nextView) {
       const view = this.props.hasMoved ? { activeLayer: nextView.activeLayer } : nextView;
-      Store.dispatch(MapActions.setView(view));
+      this.updateView(view);
     }
+  }
+
+  setMapContext = (map) => {
+    this.setState({ map });
   }
 
   updateView = (view) => {
@@ -61,26 +77,19 @@ class MapViewComponent extends PureComponent {
   }
 
   render() {
+    const isDesktopView = matchMediaSize(breakpoints.m);
+    const displayLegend = !this.props.activeSection || isDesktopView;
+    const calculatePopupPosition = isDesktopView;
+
     return (
       <MapView>
         <MapWrapper>
           <Route
-            path="(/zustand|/planungen)"
-            render={() => (
-              <SearchBar isClosable={!!this.props.activeSection} />
-            )}
+            path="(/zustand|/planungen|/my-hbi)"
+            component={SearchBar}
           />
-          {/* <Route
-            path="(/zustand|/planungen)"
-            render={() => (
-              <LocatorControl
-                onChange={this.handleLocationChange}
-                position="bottom-right"
-              />
-            )}
-          /> */}
           <Route
-            path="(/|/zustand|/planungen)"
+            path="(/|/zustand|/planungen|/my-hbi)"
             render={() => (
               <Map
                 key="MapComponent"
@@ -94,18 +103,94 @@ class MapViewComponent extends PureComponent {
                 activeSection={this.props.activeSection}
                 animate={this.props.animate}
                 updateView={this.updateView}
+                setMapContext={this.setMapContext}
                 hasMoved={this.props.hasMoved}
-              />
+                hbi_values={this.props.hbi_values}
+                filterHbi={this.props.filterHbi}
+                calculatePopupPosition={calculatePopupPosition}
+              >
+                <Route
+                  path="(/zustand|/planungen)"
+                  render={() => [
+                    <LocatorControl
+                      key="Map__LocatorControl"
+                      onChange={this.handleLocationChange}
+                      position="bottom-right"
+                    />,
+                    <MediaQuery
+                      key="Map__FMBLogo"
+                      minDeviceWidth={breakpoints.m}
+                    >
+                      <MapControl position="top-right">
+                        <FMBLogo width={67} />
+                      </MapControl>
+                    </MediaQuery>
+                  ]}
+                />
+              </Map>
             )}
           />
+          <Route
+            exact
+            path="(/zustand|/planungen)"
+            render={() => (
+              this.props.activeSection && <MapModal map={this.state.map} />
+            )}
+          />
+          <Route
+            exact
+            path="/zustand/:id" // @TODO: why is this not working (/zustand/:id|/planungen/:id)
+            render={() => <SectionDetail map={this.state.map} />}
+          />
         </MapWrapper>
+        <MapContent>
+          <Route
+            exact
+            path="/zustand"
+            render={() => (
+              displayLegend && (
+                <MapLegend
+                  type="hbi"
+                  filterHbiIndex={this.props.filterHbiIndex}
+                />
+              )
+            )}
+          />
+          <Route
+            exact
+            path="/planungen"
+            render={() => (
+              displayLegend && <MapLegend type="plannings" />
+            )}
+          />
+          <MapSwitch />
+        </MapContent>
         <Route
-          path="(/zustand|/planungen)"
-          component={MapModal}
+          path="/my-hbi"
+          component={MyHBI}
         />
       </MapView>
     );
   }
 }
 
-export default withRouter(connect(state => state.MapState)(MapViewComponent));
+export default withRouter(
+  connect(state => ({
+    activeSection: state.MapState.activeSection,
+    activeLocation: state.MapState.activeLocation,
+    activeLayer: state.MapState.activeLayer,
+    filterHbi: state.MapState.filterHbi,
+    filterHbiIndex: state.MapState.filterHbiIndex,
+    filterPlannings: state.MapState.filterPlannings,
+    hasMoved: state.MapState.hasMoved,
+    hbi_speed: state.MapState.hbi_speed,
+    hbi_safety: state.MapState.hbi_safety,
+    zoom: state.MapState.zoom,
+    bearing: state.MapState.bearing,
+    pitch: state.MapState.pitch,
+    center: state.MapState.center,
+    show3dBuildings: state.MapState.show3dBuildings,
+    animate: state.MapState.animate,
+    ...state.UserState
+  }))(MapViewComponent)
+);
