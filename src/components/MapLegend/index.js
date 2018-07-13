@@ -4,10 +4,15 @@ import PropTypes from 'prop-types';
 
 import HBILegend from './HBILegend';
 import PlanningLegend from './PlanningLegend';
+import { media } from '~/style-utils';
 
 const LegendWrapper = styled.div`
-  display: flex;
-  justify-content: center;
+  display: none;
+
+  ${media.m`
+    display: flex;
+    justify-content: center;
+  `}
 `;
 
 class MapLegend extends PureComponent {
