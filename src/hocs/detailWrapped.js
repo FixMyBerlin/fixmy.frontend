@@ -33,7 +33,10 @@ const DetailSubtitle = styled.div`
   text-transform: uppercase;
 `;
 
-const DetailBody = styled.div``;
+const DetailBody = styled.div`
+  overflow-y: auto;
+  height: 100%;
+`;
 
 const Close = styled.button`
   align-items: center;

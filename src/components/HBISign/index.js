@@ -16,7 +16,9 @@ const HBISign = styled.div`
   box-shadow: 0 0 2px 2px rgba(0,0,0,.18);
   text-decoration: none;
   color:  ${config.colors.darkgrey};
+  font-weight: 600;
   cursor: pointer;
+  background: white;
 
   svg {
     path {
@@ -26,7 +28,11 @@ const HBISign = styled.div`
 `;
 
 const HBISignComp = props => (
-  <HBISign onClick={props.onClick} color={getHBIColorByIndex(props.hbi)}>
+  <HBISign
+    className={props.className}
+    onClick={props.onClick}
+    color={getHBIColorByIndex(props.hbi)}
+  >
     <div>
       <BikeIcon />
       <div>
