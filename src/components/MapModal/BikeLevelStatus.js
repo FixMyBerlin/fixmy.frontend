@@ -45,7 +45,7 @@ const HBISign = styled.div`
 
   svg {
     path {
-      fill: ${config.colors.index};
+      fill: ${props => props.color || config.colors.index};
     }
   }
 `;
