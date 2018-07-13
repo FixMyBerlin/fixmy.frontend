@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { withRouter } from 'react-router';
 import Axios from 'axios';
 
+import { media } from '~/style-utils';
+
 const DetailWrapper = styled.div`
   position: absolute;
   left: 0;
@@ -13,6 +15,12 @@ const DetailWrapper = styled.div`
   height: 100%;
   z-index: 3000;
   background: white;
+
+  ${media.m`
+    left: auto;
+    right: 0;
+    width: 400px;
+  `}
 `;
 
 const DetailHeader = styled.div`
@@ -36,6 +44,10 @@ const DetailSubtitle = styled.div`
 const DetailBody = styled.div`
   overflow-y: auto;
   height: 100%;
+
+  ${media.m`
+    height: auto;
+  `}
 `;
 
 const Close = styled.button`
@@ -111,7 +123,7 @@ function detailWrapped(Component) {
         <DetailWrapper>
           <DetailHeader>
             <div>
-              <DetailTitle>{data.name}</DetailTitle>
+              <DetailTitle>{data.name || 'Abschnittsname'}</DetailTitle>
               <DetailSubtitle>Abschnitt 1</DetailSubtitle>
             </div>
             <Close onClick={this.onClose}>×</Close>
