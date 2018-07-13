@@ -17,7 +17,7 @@ class MyHBIView extends PureComponent {
       res[item.type] = this.props.hbi_values[index];
       return res;
     }, {});
-    Axios.put(`${config.apiUrl}/api/profiles/${this.props.userid}`, { ...sliderValues, id: this.props.userid });
+    Axios.put(`${config.apiUrl}/profiles/${this.props.userid}`, { ...sliderValues, id: this.props.userid });
     trackEvent('my-hbi', 'save-profile', 'values');
     this.onToggleModal();
   }

@@ -1,48 +1,29 @@
-import React, { PureComponent } from 'react';
-import idx from 'idx';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router';
 
-const SectionDetailWrapper = styled.div`
-  position: absolute;
-  left: 0;
-  top:0;
-  width: 100%;
-  height: 100%;
-  z-index: 3000;
-  background: white;
-`;
+import detailWrapped from '~/hocs/detailWrapped';
+import dummyImageSrc from '~/images/detail-dummy.png';
 
-const SectionClose = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: ${config.colors.white};
-  border-radius: 50%;
-  border: 1px solid ${config.colors.midgrey};
-  cursor: pointer;
-  font-size: 24px;
-  color: ${config.colors.midgrey};
-`;
+const ImageWrapper = styled.div`
+  position: relative;
 
-class SectionDetail extends PureComponent {
-  onClose = () => {
-    this.props.history.push('/zustand');
+  img {
+    width: 100%;
   }
+`;
 
+class SectionDetails extends PureComponent {
   render() {
-    console.log(this.props);
-    const id = idx(this.props.match, _ => _.params.id);
+    const { name } = this.props;
 
     return (
-      <SectionDetailWrapper>
-        <SectionClose onClick={this.onClose}>×</SectionClose>
-        DETAILS {id}
-      </SectionDetailWrapper>
+      <React.Fragment>
+        <ImageWrapper>
+          <img src={dummyImageSrc} alt={name} />
+        </ImageWrapper>
+      </React.Fragment>
     );
   }
 }
 
-export default withRouter(SectionDetail);
+export default detailWrapped(SectionDetails);

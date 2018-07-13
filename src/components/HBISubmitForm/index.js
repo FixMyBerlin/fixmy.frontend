@@ -23,7 +23,7 @@ class HBISubmitForm extends PureComponent {
     const cleanValues = cleanupFormValues(values);
 
     Axios
-      .put(`${config.apiUrl}/api/profiles/${this.props.userid}`, { ...cleanValues, id: this.props.userid })
+      .put(`${config.apiUrl}/profiles/${this.props.userid}`, { ...cleanValues, id: this.props.userid })
       .then(() => {
         setSubmitting(false);
         trackEvent('my-hbi', 'save-profile', 'details');

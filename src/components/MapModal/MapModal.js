@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { If } from 'react-extras';
 
 import { media } from '~/style-utils';
-// import Store from '~/redux/store';
-// import { setSectionActive } from '~/modules/MapView/MapState';
+import Store from '~/redux/store';
+import { setSectionActive } from '~/modules/MapView/MapState';
 
 import Tooltip from '~/components/styled/Tooltip';
 import ResetMapButton from '~/components/ResetMapButton';
@@ -40,7 +40,6 @@ const MoreButton = styled.button`
   padding: 10px 20px;
   color: ${config.colors.white};
   border-radius: 3px;
-  cursor: not-allowed;
 
   &:focus {
     outline: 1px solid white;
@@ -68,14 +67,13 @@ const CloseBtn = styled(ResetMapButton)`
 `;
 
 class MapModalComponent extends PureComponent {
-
   onDetailClick = () => {
-    return false;
+    // return false;
 
     // @TODO: as soon as the API is ready we can use this again
-    // const detailRoute = `${this.props.location.pathname}/${this.props.activeSection.id}`;
-    // Store.dispatch(setSectionActive(null));
-    // this.props.history.push(detailRoute);
+    const detailRoute = `${this.props.location.pathname}/${this.props.activeSection.id}`;
+    Store.dispatch(setSectionActive(null));
+    this.props.history.push(detailRoute);
   }
 
   render() {
@@ -116,7 +114,7 @@ class MapModalComponent extends PureComponent {
           condition={hasData}
           render={() => (
             <MoreButtonWrapper>
-              <MoreButton onClick={this.onDetailClick} data-tip data-for="new_feat">
+              <MoreButton onClick={this.onDetailClick}>
                 mehr Infos
               </MoreButton>
             </MoreButtonWrapper>
@@ -125,10 +123,13 @@ class MapModalComponent extends PureComponent {
         <Tooltip place="top" type="info" effect="solid" id="new_feat">
           <span>Das Feature ist erst in der nächsten Version verfügbar.</span>
         </Tooltip>
-
       </MapModal>
     );
   }
 }
 
-export default withRouter(connect(state => ({ activeSection: state.MapState.activeSection }))(MapModalComponent));
+export default withRouter(
+  connect(state => ({
+    activeSection: state.MapState.activeSection
+  }))(MapModalComponent)
+);

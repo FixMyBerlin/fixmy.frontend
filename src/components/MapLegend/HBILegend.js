@@ -75,7 +75,12 @@ export default props => (
           <CloseLegendItem onClick={resetHbi} closable={props.filterHbiIndex === i}>×</CloseLegendItem>
           <LegendImage
             src={require(`~/images/hbi-stop-icons/${legendItem.image}`)}
-            onClick={() => filterHbi({ min: legendItem.min, max: legendItem.max, index: i, isActive: props.filterHbiIndex === i})}
+            onClick={() => filterHbi({
+              min: legendItem.min,
+              max: legendItem.max,
+              index: i,
+              isActive: props.filterHbiIndex === i
+            })}
           />
         </LegendIconWrapper>
         <LegendLabel>{legendItem.label}</LegendLabel>
