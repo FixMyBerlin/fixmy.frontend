@@ -36,15 +36,17 @@ const DetailSubtitle = styled.div`
 const DetailBody = styled.div``;
 
 const Close = styled.button`
-  display: flex;
   align-items: center;
-  justify-content: center;
-  width: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
   height: 36px;
+  justify-content: center;
   font-size: 24px;
   color: ${config.colors.midgrey};
+  width: 36px;
   margin-left: auto;
-  cursor: pointer;
 `;
 
 function detailWrapped(Component) {
