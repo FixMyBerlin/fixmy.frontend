@@ -88,7 +88,7 @@ class MapSwitch extends PureComponent {
   }
 
   render() {
-    const checked = this.props.location.pathname === '/planungen';
+    const checked = this.props.match.url === '/planungen';
     const enabled = process.env.NODE_ENV === 'development';
     
     return (

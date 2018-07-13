@@ -80,10 +80,12 @@
     "react-responsive": "^4.1.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
+    "react-slick": "^0.23.1",
     "react-toggle-switch": "^3.0.4",
     "react-tooltip": "^3.6.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^3.2.6",
     "uuid": "^3.2.1"
   }
