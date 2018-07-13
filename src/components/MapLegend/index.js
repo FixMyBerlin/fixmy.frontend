@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import { media } from '~/style-utils';
 import HBILegend from './HBILegend';
 import PlanningLegend from './PlanningLegend';
-import { media } from '~/style-utils';
 
 const LegendWrapper = styled.div`
   display: none;
