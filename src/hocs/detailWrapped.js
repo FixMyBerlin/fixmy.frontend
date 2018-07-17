@@ -15,6 +15,8 @@ const DetailWrapper = styled.div`
   height: 100%;
   z-index: 3000;
   background: white;
+  display: flex;
+  flex-direction: column;
 
   ${media.m`
     left: auto;
@@ -44,10 +46,6 @@ const DetailSubtitle = styled.div`
 const DetailBody = styled.div`
   overflow-y: auto;
   height: 100%;
-
-  ${media.m`
-    height: auto;
-  `}
 `;
 
 const Close = styled.button`
