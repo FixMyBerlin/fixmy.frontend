@@ -157,6 +157,8 @@ class Map extends PureComponent {
       layout: {
         'line-cap': 'round'
       },
+      minzoom: 13,
+      maxzoom: 20,
       paint: {
         'line-color': 'white',
         'line-width': [

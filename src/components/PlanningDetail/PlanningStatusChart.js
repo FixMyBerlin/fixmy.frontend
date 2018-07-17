@@ -62,7 +62,6 @@ class PlanningStatusChart extends PureComponent {
     const y = this.height / 3;
     const lineStroke = props.isFinished ? config.colors.change_4 : config.colors.inactivegrey;
     const circleColor = props.inProgress || props.isFinished ? props.color : config.colors.inactivegrey;
-    console.log(props);
 
     return (
       <g key={`ChartItem__${props.label}`}>
