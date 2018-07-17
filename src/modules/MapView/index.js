@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import withRouter from 'react-router-dom/withRouter';
+import Route from 'react-router-dom/Route';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import MediaQuery from 'react-responsive';

@@ -1,6 +1,7 @@
 /* eslint react/no-array-index-key: 0 */
 import React, { PureComponent } from 'react';
 import Styled from 'styled-components';
+import { Choose } from 'react-extras';
 
 import detailWrapped from '~/hocs/detailWrapped';
 
@@ -8,6 +9,7 @@ import Headline from '~/components/styled/Headline';
 import Text from '~/components/styled/Text';
 
 import ImageSlider from './ImageSlider';
+import PlanningStatus from './PlanningStatus';
 
 const DetailHead = Styled.div`
   padding: 14px 24px;
@@ -55,7 +57,7 @@ class PlanningDetails extends PureComponent {
   render() {
     console.log(this.props.data);
     const { data } = this.props;
-    const { title, draft, responsible, costs, faq } = data;
+    const { title, draft, responsible, costs, faq, phase } = data;
 
     const sliderImages = [
       { src: data.cross_section_photo },
@@ -70,13 +72,19 @@ class PlanningDetails extends PureComponent {
         <DetailHead>
           <Headline>{title}</Headline>
           <Subtitle>Fertigstellung: {draft || 'Unbekannt'}</Subtitle>
+          <PlanningStatus phase={phase} />
         </DetailHead>
 
         <DetailBody>
 
           <DetailBodySection>
             <Headline>Ziel & Hintergrund dieser Maßnahme?</Headline>
-            <Text>{this.state.descriptionExpanded ? data.description : data.short_description}</Text>
+            <Text>
+              <Choose>
+                <Choose.When condition={this.state.descriptionExpanded}>{data.description}</Choose.When>
+                <Choose.Otherwise>{data.short_description}</Choose.Otherwise>
+              </Choose>
+            </Text>
             <ExpandDescriptionButton onClick={this.toggleDescription}>{this.state.descriptionExpanded ? 'Weniger' : 'Mehr'}</ExpandDescriptionButton>
           </DetailBodySection>
 

@@ -83,6 +83,36 @@
       "image": "sehrgut@2x.png"
     }
   ],
+  "planningPhases": {
+    "Konzept": {
+      "color": "#fa96d0",
+      "icon": null
+    },
+    "Planung": {
+      "color": "#cf0a7d",
+      "icon": null
+    },
+    "im Bau": {
+      "color": "#910055",
+      "icon": null
+    },
+    "Fertig": {
+      "color": "#910055",
+      "icon": null
+    }
+  },
+  "planningPhasesMapping": {
+    "idea": "Konzept",
+    "preliminary": "Planung",
+    "blueprint planning": "Planung",
+    "approval planning": "Planung",
+    "execution planning": "Planung",
+    "preparation of awarding": "Planung",
+    "awarding": "Planung",
+    "execution of construction work": "im Bau",
+    "ready": "Fertig"
+  },
+  "planningPhasesOrder": ["Konzept", "Planung", "im Bau", "Fertig"],
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
     "style": "mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h",

@@ -110,11 +110,11 @@ function detailWrapped(Component) {
     render() {
       const { isLoading, isError, data } = this.state;
       if (isLoading) {
-        return <div>Daten werden geladen ...</div>;
+        return <DetailWrapper>Daten werden geladen ...</DetailWrapper>;
       }
 
       if (isError) {
-        return <div>Ein Fehler ist aufgetreten</div>;
+        return <DetailWrapper>Ein Fehler ist aufgetreten</DetailWrapper>;
       }
 
       return (

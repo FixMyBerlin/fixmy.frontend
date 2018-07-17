@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import Route from 'react-router-dom/Route';
 import styled from 'styled-components';
 
 import Menu from '~/modules/Menu';

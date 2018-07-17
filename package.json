@@ -60,6 +60,7 @@
     "@turf/center": "^6.0.1",
     "axios": "^0.16.2",
     "classnames": "^2.2.5",
+    "d3-scale": "^2.1.0",
     "formik": "^0.11.11",
     "history": "^4.7.2",
     "idx": "^1.5.0",

@@ -140,6 +140,8 @@ class Map extends PureComponent {
     this.setState({ loading: false });
 
     this.drawOverlayLine();
+
+    this.map.resize();
   } 
 
   drawOverlayLine() {
@@ -198,8 +200,8 @@ class Map extends PureComponent {
         center,
         animate: true,
         zoom: config.map.zoomAfterGeocode,
-        show3dBuildings: true,
-        pitch: 45
+        // show3dBuildings: true,
+        // pitch: 45
       }));
 
       this.handleMove();
