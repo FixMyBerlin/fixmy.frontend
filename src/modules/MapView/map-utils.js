@@ -1,3 +1,5 @@
+import matchPath from 'react-router/matchPath';
+
 export function setView(map, view) {
   map.setZoom(view.zoom);
   map.setCenter(view.center);
@@ -102,11 +104,22 @@ export function colorizeHbiLines(map, hbiValues, filterHbi) {
   }
 }
 
+export function getActiveLayerFromPath(path) {
+  if (path.includes('zustand')) {
+    return 'zustand';
+  }
+  if (path.includes('planungen')) {
+    return 'planungen';
+  }
+  return null;
+}
+
 export default {
   setView,
   animateView,
   filterLayersById,
   toggleLayer,
   colorizeHbiLines,
-  colorizePlanningLines
+  colorizePlanningLines,
+  getActiveLayerFromPath
 };

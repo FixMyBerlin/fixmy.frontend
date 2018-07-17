@@ -7,7 +7,12 @@ import Store from '~/redux/store';
 import { updateHBI } from '~/modules/User/UserState';
 import Headline from '~/components/styled/Headline';
 import Button from '~/components/styled/Button';
-import MapContent from '~/components/styled/MapContent';
+
+const MapContent = styled.div`
+  width: 100%;
+  background: #fff;
+  flex: 0 1 auto;
+`;
 
 const MapContentBody = styled.div`
   width: 100%;

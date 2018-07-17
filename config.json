@@ -122,27 +122,27 @@
         "bearing": 0,
         "pitch": 60,
         "show3dBuildings": true,
-        "animate": false,
+        "animate": true,
         "activeLayer": null
       },
       "/zustand": {
         "zoom": 15,
         "show3dBuildings": false,
-        "animate": false,
+        "animate": true,
         "pitch": 0,
         "activeLayer": "zustand"
       },
       "/planungen": {
         "zoom": 10,
         "show3dBuildings": false,
-        "animate": false,
+        "animate": true,
         "pitch": 0,
         "activeLayer": "planungen"
       },
       "/my-hbi": {
         "zoom": 14,
         "show3dBuildings": false,
-        "animate": false,
+        "animate": true,
         "pitch": 0,
         "activeLayer": "zustand"
       },
@@ -152,7 +152,7 @@
         "pitch": 0,
         "center": [13.415669, 52.513219],
         "show3dBuildings": true,
-        "animate": false
+        "animate": true
       }
     },
     "layers": {
