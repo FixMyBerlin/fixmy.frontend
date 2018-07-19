@@ -78,6 +78,8 @@ class Map extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
+    console.log(this.props.popupLngLat);
+
     if (this.state.loading) {
       return false;
     }
@@ -100,7 +102,9 @@ class Map extends PureComponent {
       this.updateLayers();
     }
 
-    if (prevProps.activeSection && !this.props.activeSection && this.state.popupLngLat) {
+    console.log(this.props.activeSection);
+
+    if (!this.props.activeSection && this.state.popupLngLat) {
       this.setState({ popupLngLat: null });
     }
 
@@ -144,6 +148,8 @@ class Map extends PureComponent {
   updateLayers = () => {
     const filterId = this.props.activeSection;
 
+    MapUtils.filterLayersById(this.map, filterId);
+
     if (this.props.activeLayer === 'zustand') {
       MapUtils.colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
     }
@@ -151,8 +157,6 @@ class Map extends PureComponent {
     if (this.props.activeLayer === 'planungen') {
       MapUtils.colorizePlanningLines(this.map);
     }
-
-    MapUtils.filterLayersById(this.map, filterId);
 
     MapUtils.toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
     MapUtils.toggleLayer(this.map, config.map.layers.dimmingLayer, !!this.props.activeSection);
@@ -172,9 +176,7 @@ class Map extends PureComponent {
       Store.dispatch(MapActions.setView({
         center,
         animate: true,
-        zoom: config.map.zoomAfterGeocode,
-        // show3dBuildings: true,
-        // pitch: 45
+        zoom: config.map.zoomAfterGeocode
       }));
 
       this.handleMove();

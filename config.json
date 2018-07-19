@@ -117,7 +117,7 @@
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
     "style": "mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h?fresh=false",
     "view": {
-      "zoom": 15,
+      "zoom": 10,
       "bearing": 0,
       "pitch": 0,
       "center": [13.415669, 52.513219],

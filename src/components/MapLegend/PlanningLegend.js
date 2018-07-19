@@ -2,10 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ConceptIcon from '~/images/planning-icons/konzept.svg';
-import PlanningIcon from '~/images/planning-icons/planung.svg';
-import ConstructionIcon from '~/images/planning-icons/bau.svg';
-
 const PlanningLegend = styled.div`
   display: flex;
   justify-content: space-between;
@@ -21,34 +17,26 @@ const LegendItemLabel = styled.div`
   font-size: 10px;
   color: ${config.colors.darkgrey};
 `;
-const LegendItemIcon = styled.div`
-  font-size: 20px;
+const LegendIcon = styled.img`
+  width: 30px;
 `;
 
 export default () => (
   <PlanningLegend>
     <LegendItem>
-      <LegendItemIcon>
-        <ConceptIcon width={32} height={35} />
-      </LegendItemIcon>
+      <LegendIcon src={require('~/images/planning-icons/konzept@3x.png')} />
       <LegendItemLabel>Konzept</LegendItemLabel>
     </LegendItem>
     <LegendItem>
-      <LegendItemIcon>
-        <PlanningIcon width={32} height={35} />
-      </LegendItemIcon>
+      <LegendIcon src={require('~/images/planning-icons/planung@3x.png')} />
       <LegendItemLabel>Planung</LegendItemLabel>
     </LegendItem>
     <LegendItem>
-      <LegendItemIcon>
-        <ConstructionIcon width={32} height={35} />
-      </LegendItemIcon>
+      <LegendIcon src={require('~/images/planning-icons/bau@3x.png')} />
       <LegendItemLabel>im Bau</LegendItemLabel>
     </LegendItem>
     <LegendItem>
-      <LegendItemIcon>
-        <ConstructionIcon width={32} height={35} />
-      </LegendItemIcon>
+      <LegendIcon src={require('~/images/planning-icons/fertig@3x.png')} />
       <LegendItemLabel>Fertig</LegendItemLabel>
     </LegendItem>
   </PlanningLegend>

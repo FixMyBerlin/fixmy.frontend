@@ -9,18 +9,24 @@ const initialState = {
   activeSection: null
 };
 
-export function updateHistory(props) {
+export const updateHistory = props => (dispatch, getState) => {
   const match = matchPath(props.pathname, {
     path: '/:activeView?/:activeSection?',
     exact: false,
     strict: false
   });
 
-  return {
+  const activeSection = match.params.activeSection || getState().AppState.activeSection;
+  const activeView = match.params.activeView;
+
+  dispatch({
     type: UPDATE_HISTORY,
-    payload: match.params
-  };
-}
+    payload: {
+      activeSection,
+      activeView
+    }
+  });
+};
 
 export function setActiveSection(activeSection) {
   return { type: SET_ACTIVE_SECTION, payload: { activeSection } };

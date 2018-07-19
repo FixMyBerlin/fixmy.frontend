@@ -8,8 +8,16 @@ const PlanningStatus = styled.div`
 `;
 
 export default (props) => {
-  console.log(props);
+  const { section } = props;
+  const planningTitle = section.side0_planning_title || section.sideNone_planning_title || section.side1_planning_title;
+
+  if (!section) {
+    return null;
+  }
+
+  const PlanningStatusLabel = planningTitle || 'Keine Planungen vorhanden.';
+
   return (
-    <PlanningStatus {...props}>Neubau eines geschützten Radfahrstreifens</PlanningStatus>
+    <PlanningStatus>{PlanningStatusLabel}</PlanningStatus>
   );
 };

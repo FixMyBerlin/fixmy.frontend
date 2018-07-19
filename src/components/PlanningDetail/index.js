@@ -55,7 +55,6 @@ class PlanningDetails extends PureComponent {
   }
 
   render() {
-    console.log(this.props.data);
     const { data } = this.props;
     const { title, draft, responsible, costs, faq, phase } = data;
 
