@@ -82,12 +82,16 @@ function detailWrapped(Component) {
     }
 
     componentDidMount() {
-      const id = idx(this.props.match, _ => _.params.id);
+      this.loadData();
+    }
 
-      Axios
-        .get(`${config.apiUrl}/${this.props.apiEndpoint}/${id}`)
-        .then(this.onDataLoaded)
-        .catch(this.onDataError);
+    componentDidUpdate(prevProps) {
+      const currId = idx(this.props.match, _ => _.params.id);
+      const prevId = idx(prevProps.match, _ => _.params.id);
+
+      if (currId !== prevId) {
+        this.loadData();
+      }
     }
 
     onDataLoaded = (res) => {
@@ -108,6 +112,17 @@ function detailWrapped(Component) {
     onClose = () => {
       this.props.history.push(this.props.onCloseRoute);
       resetMap();
+    }
+
+    loadData = () => {
+      const id = idx(this.props.match, _ => _.params.id);
+
+      this.setState({ isLoading: true });
+
+      Axios
+        .get(`${config.apiUrl}/${this.props.apiEndpoint}/${id}`)
+        .then(this.onDataLoaded)
+        .catch(this.onDataError);
     }
 
     render() {

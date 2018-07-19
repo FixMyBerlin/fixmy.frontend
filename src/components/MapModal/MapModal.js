@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 
 import { media } from '~/style-utils';
 
-import { resetMap } from '~/modules/MapView/map-utils';
+import Store from '~/redux/store';
+import * as MapActions from '~/modules/MapView/MapState';
+
 import ResetMapButton from '~/components/ResetMapButton';
 import PlanningStatus from './PlanningStatus';
 import BikeLevelStatus from './BikeLevelStatus';
@@ -63,11 +65,16 @@ const CloseBtn = styled(ResetMapButton)`
   color: ${config.colors.midgrey};
 `;
 
+const closePopup = () => {
+  Store.dispatch(MapActions.setPopupData(null));
+  Store.dispatch(MapActions.setPopupVisible(false));
+};
+
 class MapModalComponent extends PureComponent {
   onDetailClick = () => {
-    const detailRoute = `${this.props.activeView}/${this.props.activeSection}`;
+    const detailRoute = `/${this.props.activeView}/${this.props.activeSection}`;
     this.props.history.push(detailRoute);
-    resetMap();
+    closePopup();
   }
 
   render() {

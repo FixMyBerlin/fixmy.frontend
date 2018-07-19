@@ -1,5 +1,6 @@
 import Store from '~/redux/store';
 import * as MapActions from '~/modules/MapView/MapState';
+import * as AppActions from '~/modules/App/AppState';
 
 export function setView(map, view) {
   map.setZoom(view.zoom);
@@ -118,6 +119,7 @@ export function colorizeHbiLines(map, hbiValues, filterHbi) {
 }
 
 export function resetMap() {
+  Store.dispatch(AppActions.setActiveSection(null));
   Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
 }
