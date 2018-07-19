@@ -7,6 +7,8 @@ import Axios from 'axios';
 
 import { media } from '~/style-utils';
 
+import { resetMap } from '~/modules/MapView/map-utils';
+
 const DetailWrapper = styled.div`
   position: absolute;
   left: 0;
@@ -105,6 +107,7 @@ function detailWrapped(Component) {
 
     onClose = () => {
       this.props.history.push(this.props.onCloseRoute);
+      resetMap();
     }
 
     render() {
@@ -114,7 +117,16 @@ function detailWrapped(Component) {
       }
 
       if (isError) {
-        return <DetailWrapper>Ein Fehler ist aufgetreten</DetailWrapper>;
+        return (
+          <DetailWrapper>
+            <DetailHeader>
+              <div>
+                <DetailTitle>Ein Fehler ist aufgetreten.</DetailTitle>
+              </div>
+              <Close onClick={this.onClose}>×</Close>
+            </DetailHeader>
+          </DetailWrapper>
+        );
       }
 
       return (

@@ -37,12 +37,12 @@ class Map extends PureComponent {
   }
 
   static defaultProps = {
-    zoom: config.map.views.default.zoom,
-    center: config.map.views.default.center,
-    pitch: config.map.views.default.pitch,
-    bearing: config.map.views.default.bearing,
+    zoom: config.map.view.zoom,
+    center: config.map.view.center,
+    pitch: config.map.view.pitch,
+    bearing: config.map.view.bearing,
     show3dBuildings: true,
-    animate: true,
+    animate: false,
     activeLayer: null,
     activeSection: null,
     updateView: () => {},
@@ -101,15 +101,11 @@ class Map extends PureComponent {
       this.setState({ popupLngLat: null });
     }
 
-    if (prevProps.location !== this.props.location || layerChanged) {
-      this.map.resize();
-    }
-
     if (this.props.match.url === '/my-hbi' && !arrayIsEqual(prevProps.hbi_values, this.props.hbi_values)) {
       MapUtils.colorizeHbiLines(this.map, this.props.hbi_values);
     }
 
-    return true;
+    return this.map.resize();
   }
 
   getViewFromProps = () => (
@@ -197,8 +193,11 @@ class Map extends PureComponent {
 
     const center = geometry ? turfCenter(e.features[0]).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
 
+    console.log(e.features);
+
     if (properties) {
       Store.dispatch(MapActions.setSectionActive(properties));
+      Store.dispatch(MapActions.setPopupVisible(true));
       Store.dispatch(MapActions.setView({
         center,
         animate: true,

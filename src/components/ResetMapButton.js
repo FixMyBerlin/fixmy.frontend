@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Store from '~/redux/store';
-import * as MapActions from '~/modules/MapView/MapState';
+
+import { resetMap } from '~/modules/MapView/map-utils';
 
 const ResetMapButton = styled.button`
   display: flex;
@@ -17,12 +17,8 @@ const ResetMapButton = styled.button`
   color: ${config.colors.midgrey};
 `;
 
-function handleClick() {
-  Store.dispatch(MapActions.setSectionActive(null));
-}
-
 export default props => (
-  <ResetMapButton {...props} onClick={handleClick}>
+  <ResetMapButton {...props} onClick={resetMap}>
     ×
   </ResetMapButton>
 );

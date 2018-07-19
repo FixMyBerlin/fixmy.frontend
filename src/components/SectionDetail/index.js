@@ -109,7 +109,7 @@ class SectionDetails extends PureComponent {
             <div>20% kein Radweg vorhanden</div>
 
             <div>Art der Straße: Hauptstraße</div>
-            <div>Tempolimit: <strong>${sideData.speed_limit}km/h</strong></div>
+            <div>Tempolimit: <strong>{sideData.speed_limit}km/h</strong></div>
             <div>KFZ pro Tag: {numberFormat(sideData.daily_traffic)}</div>
           </InfoSection>
 

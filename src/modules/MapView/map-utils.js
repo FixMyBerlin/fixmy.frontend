@@ -1,3 +1,6 @@
+import Store from '~/redux/store';
+import * as MapActions from '~/modules/MapView/MapState';
+
 export function setView(map, view) {
   map.setZoom(view.zoom);
   map.setCenter(view.center);
@@ -123,6 +126,11 @@ export function getActiveLayerFromPath(path) {
   return null;
 }
 
+export function resetMap() {
+  Store.dispatch(MapActions.setSectionActive(null));
+  Store.dispatch(MapActions.setPopupVisible(false));
+}
+
 export default {
   setView,
   animateView,
@@ -130,5 +138,6 @@ export default {
   toggleLayer,
   colorizeHbiLines,
   colorizePlanningLines,
-  getActiveLayerFromPath
+  getActiveLayerFromPath,
+  resetMap
 };

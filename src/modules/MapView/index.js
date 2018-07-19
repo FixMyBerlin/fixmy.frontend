@@ -46,13 +46,6 @@ class MapViewComponent extends PureComponent {
     userLocation: null
   }
 
-  componentDidMount() {
-    const view = config.map.views[this.props.location.pathname];
-    if (view) {
-      this.updateView(Object.assign(view, { animate: false }));
-    }
-  }
-
   updateView = (view) => {
     Store.dispatch(MapActions.setView(view));
   }
@@ -83,7 +76,6 @@ class MapViewComponent extends PureComponent {
             show3dBuildings={this.props.show3dBuildings}
             activeLayer={activeLayer}
             activeSection={this.props.activeSection}
-            animate={this.props.animate}
             updateView={this.updateView}
             hasMoved={this.props.hasMoved}
             hbi_values={this.props.hbi_values}
@@ -105,18 +97,13 @@ class MapViewComponent extends PureComponent {
             </MediaQuery>
           </Map>
 
+          {this.props.displayPopup && <MapModal />}
+
           <MapContent
             filterHbiIndex={this.props.filterHbiIndex}
             displayLegend={displayLegend}
           />
 
-          <Route
-            exact
-            path="(/zustand|/planungen)"
-            render={() => (
-              this.props.activeSection && <MapModal />
-            )}
-          />
           <Route
             exact
             path="/zustand/:id"
@@ -164,6 +151,7 @@ export default withRouter(
     center: state.MapState.center,
     show3dBuildings: state.MapState.show3dBuildings,
     animate: state.MapState.animate,
+    displayPopup: state.MapState.displayPopup,
     ...state.UserState
   }))(MapViewComponent)
 );

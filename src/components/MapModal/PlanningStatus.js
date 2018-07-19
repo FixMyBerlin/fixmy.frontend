@@ -7,6 +7,9 @@ const PlanningStatus = styled.div`
   margin-bottom: 15px;
 `;
 
-export default props => (
-  <PlanningStatus {...props}>Neubau eines geschützten Radfahrstreifens</PlanningStatus>
-);
+export default (props) => {
+  console.log(props);
+  return (
+    <PlanningStatus {...props}>Neubau eines geschützten Radfahrstreifens</PlanningStatus>
+  );
+};

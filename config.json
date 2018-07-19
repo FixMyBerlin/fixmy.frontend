@@ -116,44 +116,13 @@
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
     "style": "mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h?fresh=true",
-    "views": {
-      "/": {
-        "zoom": 16,
-        "bearing": 0,
-        "pitch": 60,
-        "show3dBuildings": true,
-        "animate": true,
-        "activeLayer": null
-      },
-      "/zustand": {
-        "zoom": 10,
-        "show3dBuildings": false,
-        "animate": true,
-        "pitch": 0,
-        "activeLayer": "zustand"
-      },
-      "/planungen": {
-        "zoom": 10,
-        "show3dBuildings": false,
-        "animate": true,
-        "pitch": 0,
-        "activeLayer": "planungen"
-      },
-      "/my-hbi": {
-        "zoom": 14,
-        "show3dBuildings": false,
-        "animate": true,
-        "pitch": 0,
-        "activeLayer": "zustand"
-      },
-      "default": {
-        "zoom": 15,
-        "bearing": 0,
-        "pitch": 0,
-        "center": [13.415669, 52.513219],
-        "show3dBuildings": true,
-        "animate": true
-      }
+    "view": {
+      "zoom": 15,
+      "bearing": 0,
+      "pitch": 0,
+      "center": [13.415669, 52.513219],
+      "show3dBuildings": true,
+      "animate": true
     },
     "layers": {
       "bgLayer": "fmb-background",

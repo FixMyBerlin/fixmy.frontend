@@ -9,10 +9,11 @@ const MapContent = Styled.div`
   width: 100%;
   background: #fff;
   flex: 0 1 auto;
+  min-height: ${props => (props.hasLegend ? '200px' : 0)};
 `;
 
 export default props => (
-  <MapContent>
+  <MapContent hasLegend={props.displayLegend}>
     <Route
       exact
       path="/zustand"

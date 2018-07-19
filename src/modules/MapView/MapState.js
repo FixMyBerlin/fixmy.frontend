@@ -8,12 +8,14 @@ const GEOCODE_DONE = 'MapView/MapState/GEOCODE_SUCCESS';
 const GEOCODE_FAIL = 'MapView/MapState/GEOCODE_FAIL';
 const SET_HBI_FILTER = 'MapView/MapState/SET_HBI_FILTER';
 const SET_POPUP_LOCATION = 'MapView/MapState/SET_POPUP_LOCATION';
+const SET_POPUP_VISIBLE = 'MapView/MapState/SET_POPUP_VISIBLE';
 
 const initialState = {
-  ...config.map.views.default,
+  ...config.map.view,
   activeSection: null,
   activeLocation: null,
   activeLayer: null,
+  displayPopup: false,
   popupLocation: null,
   filterHbi: null,
   filterHbiIndex: null,
@@ -47,6 +49,10 @@ export function setPopupLocation(popupLocation) {
   return { type: SET_POPUP_LOCATION, payload: { popupLocation } };
 }
 
+export function setPopupVisible(isVisible) {
+  return { type: SET_POPUP_VISIBLE, payload: { displayPopup: isVisible } };
+}
+
 export function geocodeAddress(searchtext) {
   return (dispatch) => {
     const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;
@@ -72,6 +78,7 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case GEOCODE_DONE:
     case SET_HBI_FILTER:
     case SET_POPUP_LOCATION:
+    case SET_POPUP_VISIBLE:
       return Object.assign({}, state, action.payload);
     default:
       return Object.assign({}, state);

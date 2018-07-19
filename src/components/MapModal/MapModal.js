@@ -2,13 +2,11 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { If } from 'react-extras';
 
 import { media } from '~/style-utils';
 import Store from '~/redux/store';
-import { setSectionActive } from '~/modules/MapView/MapState';
+import { setSectionActive, setPopupVisible } from '~/modules/MapView/MapState';
 
-import Tooltip from '~/components/styled/Tooltip';
 import ResetMapButton from '~/components/ResetMapButton';
 import PlanningStatus from './PlanningStatus';
 import BikeLevelStatus from './BikeLevelStatus';
@@ -68,61 +66,37 @@ const CloseBtn = styled(ResetMapButton)`
 
 class MapModalComponent extends PureComponent {
   onDetailClick = () => {
-    // return false;
-
-    // @TODO: as soon as the API is ready we can use this again
     const detailRoute = `${this.props.location.pathname}/${this.props.activeSection.id}`;
     Store.dispatch(setSectionActive(null));
+    Store.dispatch(setPopupVisible(false));
     this.props.history.push(detailRoute);
   }
 
   render() {
     const isBikeLevelMode = this.props.location.pathname === '/zustand';
     const isPlanningMode = this.props.location.pathname === '/planungen';
-    const hasData = !!this.props.activeSection;
+    const data = this.props.activeSection;
+    const { displayPopup } = this.props;
 
-    if (!hasData) {
+    if (!data || !displayPopup) {
       return null;
     }
 
+    const { name } = data;
+
     return (
       <MapModal className={this.props.className} style={this.props.style}>
-        <If
-          condition={hasData}
-          render={() => (
-            <CloseBtn />
-          )}
-        />
-        <If
-          condition={hasData}
-          render={() => (
-            <MapModalLocation onClick={this.onDetailClick}>
-              {this.props.activeSection.name}
-            </MapModalLocation>
-          )}
-        />
-        <If condition={isPlanningMode && hasData}>
-          <PlanningStatus />
-        </If>
-        <If
-          condition={isBikeLevelMode && hasData}
-          render={() => (
-            <BikeLevelStatus onClick={this.onDetailClick} section={this.props.activeSection} />
-          )}
-        />
-        <If
-          condition={hasData}
-          render={() => (
-            <MoreButtonWrapper>
-              <MoreButton onClick={this.onDetailClick}>
-                mehr Infos
-              </MoreButton>
-            </MoreButtonWrapper>
-          )}
-        />
-        <Tooltip place="top" type="info" effect="solid" id="new_feat">
-          <span>Das Feature ist erst in der nächsten Version verfügbar.</span>
-        </Tooltip>
+        <CloseBtn />
+        <MapModalLocation onClick={this.onDetailClick}>
+          {name}
+        </MapModalLocation>
+        { isPlanningMode && <PlanningStatus section={data} /> }
+        { isBikeLevelMode && <BikeLevelStatus onClick={this.onDetailClick} section={data} /> }
+        <MoreButtonWrapper>
+          <MoreButton onClick={this.onDetailClick}>
+            mehr Infos
+          </MoreButton>
+        </MoreButtonWrapper>
       </MapModal>
     );
   }
@@ -130,6 +104,7 @@ class MapModalComponent extends PureComponent {
 
 export default withRouter(
   connect(state => ({
-    activeSection: state.MapState.activeSection
+    activeSection: state.MapState.activeSection,
+    displayPopup: state.MapState.displayPopup
   }))(MapModalComponent)
 );
