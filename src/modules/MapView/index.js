@@ -70,10 +70,8 @@ class MapViewComponent extends PureComponent {
     return (
       <MapView>
         <MapWrapper>
-          <Route
-            path="(/zustand|/planungen|/my-hbi)"
-            component={SearchBar}
-          />
+
+          <SearchBar />
 
           <Map
             key="MapComponent"
@@ -87,30 +85,24 @@ class MapViewComponent extends PureComponent {
             activeSection={this.props.activeSection}
             animate={this.props.animate}
             updateView={this.updateView}
-            setMapContext={this.setMapContext}
             hasMoved={this.props.hasMoved}
             hbi_values={this.props.hbi_values}
             filterHbi={this.props.filterHbi}
             calculatePopupPosition={calculatePopupPosition}
           >
-            <Route
-              path="(/zustand|/planungen)"
-              render={() => [
-                <LocatorControl
-                  key="Map__LocatorControl"
-                  onChange={this.handleLocationChange}
-                  position="bottom-right"
-                />,
-                <MediaQuery
-                  key="Map__FMBLogo"
-                  minDeviceWidth={breakpoints.m}
-                >
-                  <MapControl position="top-right">
-                    <FMBLogo width={67} />
-                  </MapControl>
-                </MediaQuery>
-              ]}
+            <LocatorControl
+              key="Map__LocatorControl"
+              onChange={this.handleLocationChange}
+              position="bottom-right"
             />
+            <MediaQuery
+              key="Map__FMBLogo"
+              minDeviceWidth={breakpoints.m}
+            >
+              <MapControl position="top-right">
+                <FMBLogo width={67} />
+              </MapControl>
+            </MediaQuery>
           </Map>
 
           <MapContent

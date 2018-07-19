@@ -13,22 +13,14 @@ import Button from '~/components/styled/Button';
 
 import SubscribtionWidget from '~/components/SubscribtionWidget';
 
+import Map from '~/modules/MapView/Map';
+
 const HomeContent = styled.div`
   text-align: center;
   padding: 3rem 1.5rem 0 1.5rem;
   max-width: 620px;
   margin: 0 auto;
 `;
-
-// const NewsletterForm = styled.form`
-//   padding: 1rem;
-//   max-width: 400px;
-//   margin: 0 auto;
-// `;
-
-// const NewsletterSubmitWrapper = styled.div`
-//   margin-top: 10px;
-// `;
 
 const AboutLinkWrapper = styled.div`
   margin: 10px 40px;
@@ -44,24 +36,32 @@ const MapButton = styled(Button)`
   }
 `;
 
-export default () => (
-  <ContentOverlay>
-    <MenuButton />
-    <HomeContent>
-      <FMBLogo />
-      <div>
-        <Headline>Hi, das ist FixMyBerlin</Headline>
-        <Text>Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Hier siehst du bald, was dafür geplant wird. Trage dich für Updates zum Newsletter ein.</Text>
-      </div>
-      <MapButton>
-        <Link to="/zustand">Karte anzeigen</Link>
-      </MapButton>
-      <AboutLinkWrapper>
-        <StyledLink to="/info">Worum geht es hier genau?</StyledLink>
-      </AboutLinkWrapper>
+const BackgroundMap = styled(Map)`
+  height: 100%;
+`;
 
-      <SubscribtionWidget />
-      <SocialSharer />
-    </HomeContent>
-  </ContentOverlay>
+export default () => (
+  <React.Fragment>
+    <ContentOverlay>
+      <MenuButton />
+      <HomeContent>
+        <FMBLogo />
+        <div>
+          <Headline>Hi, das ist FixMyBerlin</Headline>
+          <Text>Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Hier siehst du bald, was dafür geplant wird. Trage dich für Updates zum Newsletter ein.</Text>
+        </div>
+        <MapButton>
+          <Link to="/zustand">Karte anzeigen</Link>
+        </MapButton>
+        <AboutLinkWrapper>
+          <StyledLink to="/info">Worum geht es hier genau?</StyledLink>
+        </AboutLinkWrapper>
+        <SubscribtionWidget />
+        <SocialSharer />
+      </HomeContent>
+    </ContentOverlay>
+    <BackgroundMap
+      accessToken={config.map.accessToken}
+    />
+  </React.Fragment>
 );

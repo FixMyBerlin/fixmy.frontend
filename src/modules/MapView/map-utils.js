@@ -1,5 +1,3 @@
-import matchPath from 'react-router/matchPath';
-
 export function setView(map, view) {
   map.setZoom(view.zoom);
   map.setCenter(view.center);
@@ -36,7 +34,16 @@ export function filterLayersById(map, id) {
   }
 }
 
+function setMapFilter(map, filter) {
+  map.setFilter(config.map.layers.centerLayer, filter);
+  map.setFilter(config.map.layers.side0Layer, filter);
+  map.setFilter(config.map.layers.side1Layer, filter);
+  map.setFilter(config.map.layers.bgLayer, filter);
+}
+
 export function colorizePlanningLines(map) {
+  setMapFilter(map, ['any', ['has', 'side0_planning_phase'], ['has', 'side1_planning_phase'], ['has', 'sideNone_planning_phase']]);
+
   map.setPaintProperty(config.map.layers.centerLayer, 'line-color', config.colors.change_4);
   map.setPaintProperty(config.map.layers.side0Layer, 'line-color', config.colors.change_4);
   map.setPaintProperty(config.map.layers.side1Layer, 'line-color', config.colors.change_4);
@@ -49,8 +56,8 @@ export function colorizePlanningLines(map) {
 function getHbiExpression(sideKey, rs, rv) {
   // formula:
   // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)
-  const securityExpr = ['*', ['-', ['get', `${sideKey}s`], rs], 1.6];
-  const speedExpr = ['*', ['-', ['get', `${sideKey}v`], rv], 0.5];
+  const securityExpr = ['*', ['-', ['get', `${sideKey}safety`], rs], 1.6];
+  const speedExpr = ['*', ['-', ['get', `${sideKey}velocity`], rv], 0.5];
   return ['number', ['+', securityExpr, speedExpr]];
 }
 
@@ -75,6 +82,8 @@ function getHbiFilterRules(hbi, min, max) {
 }
 
 export function colorizeHbiLines(map, hbiValues, filterHbi) {
+  setMapFilter(map, null);
+
   const rv = (hbiValues[0] - 5) / 10;
   const rs = (hbiValues[1] - 5) / 10;
 

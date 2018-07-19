@@ -5,8 +5,6 @@ import ToggleSwitch from 'react-toggle-switch';
 import { withRouter } from 'react-router';
 import BikeIcon from '~/images/bike.svg';
 
-import Tooltip from '~/components/styled/Tooltip';
-
 const MapSwitchWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -34,7 +32,6 @@ const Switch = styled(ToggleSwitch)`
     border-radius: 50px;
     box-shadow: inset 0 1px 3px 1px rgba(140, 140, 140, 0.23), inset 0 1px 3px 0 rgba(0, 0, 0, 0.5);
     background: ${config.colors.midgrey};
-    cursor: not-allowed;
   }
 
   .switch-toggle {
@@ -48,7 +45,6 @@ const Switch = styled(ToggleSwitch)`
     align-items: center;
     background: #353535;
     border: 1px solid #E8E8E8;
-    cursor: not-allowed;
     
     path {
       stroke: #353535;
@@ -69,27 +65,27 @@ const SwitchLabel = styled.div`
   font-weight: 800;
   font-size: ${props => (props.isActive ? 19 : 14)}px;
   color: ${props => (props.isActive ? config.colors.darkbg : config.colors.inactivegrey)};
+  user-select: none;
 `;
 
 const SwitchDescription = styled.div`
   display: ${props => (props.isActive ? 'block' : 'none')};
   font-size: 10px;
   color: #635638;
+  user-select: none;
 `;
 
 class MapSwitch extends PureComponent {
   handleChange = (checked) => {
     return () => {
-      return false;
       // @TODO: as soon as the feature is ready we can use this again
-      // const to = checked ? '/zustand' : '/planungen';
-      // this.props.history.push(to);
+      const to = checked ? '/zustand' : '/planungen';
+      this.props.history.push(to);
     }
   }
 
   render() {
     const checked = this.props.match.url === '/planungen';
-    const enabled = process.env.NODE_ENV === 'development';
     
     return (
       <MapSwitchWrapper data-tip data-for="new_feat_slider">
@@ -98,7 +94,7 @@ class MapSwitch extends PureComponent {
           <SwitchDescription isActive={!checked}>Zustand der Radwege</SwitchDescription>
         </MapSwitchItem>
         <MapSwitchItem justify="center">
-          <Switch on={checked} onClick={this.handleChange(checked)} enabled={enabled}>
+          <Switch on={checked} onClick={this.handleChange(checked)} enabled={true}>
             <BikeIcon />
           </Switch>
         </MapSwitchItem>
@@ -106,9 +102,6 @@ class MapSwitch extends PureComponent {
           <SwitchLabel isActive={checked}>Planung</SwitchLabel>
           <SwitchDescription isActive={checked}>Das plant die Stadt</SwitchDescription>
         </MapSwitchItem>
-        <Tooltip place="top" type="info" effect="solid" id="new_feat_slider">
-          <span>Dieses Feature ist erst in der nächsten Version verfügbar.</span>
-        </Tooltip>
       </MapSwitchWrapper>
     );
   }

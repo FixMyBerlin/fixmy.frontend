@@ -51,7 +51,7 @@ const AppWrapper = () => (
       <Route path="/impressum" render={() => <MarkdownPage page="imprint" />} />
 
       <Route
-        path="(/zustand|/planungen|/my-hbi|/)"
+        path="(/zustand|/planungen|/my-hbi)"
         component={MapView}
       />
 

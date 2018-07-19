@@ -232,7 +232,7 @@ class Map extends PureComponent {
 
   render() {
     return (
-      <StyledMap innerRef={(ref) => { this.root = ref; }}>
+      <StyledMap className={this.props.className} innerRef={(ref) => { this.root = ref; }}>
         {this.props.children}
       </StyledMap>
     );

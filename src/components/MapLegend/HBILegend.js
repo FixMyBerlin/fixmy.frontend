@@ -10,7 +10,7 @@ const HBILegend = styled.div`
   display: flex;
   width: 100%;
   max-width: 340px;
-  padding: 20px 10px;
+  padding: 20px 10px 10px 10px;
 `;
 
 const LegendItem = styled.div`

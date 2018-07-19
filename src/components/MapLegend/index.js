@@ -1,18 +1,13 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import { media } from '~/style-utils';
 import HBILegend from './HBILegend';
 import PlanningLegend from './PlanningLegend';
 
-const LegendWrapper = styled.div`
-  display: none;
-
-  ${media.m`
-    display: flex;
-    justify-content: center;
-  `}
+const MapLegendWrapper = styled.div`
+  max-width: 300px;
+  margin: 0 auto;
 `;
 
 class MapLegend extends PureComponent {
@@ -38,9 +33,9 @@ class MapLegend extends PureComponent {
   render() {
     const LegendComponent = this.getLegendComponent();
     return (
-      <LegendWrapper>
+      <MapLegendWrapper>
         <LegendComponent {...this.props} />
-      </LegendWrapper>
+      </MapLegendWrapper>
     );
   }
 }
