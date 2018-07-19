@@ -42,6 +42,7 @@ function setMapFilter(map, filter) {
   map.setFilter(config.map.layers.side0Layer, filter);
   map.setFilter(config.map.layers.side1Layer, filter);
   map.setFilter(config.map.layers.bgLayer, filter);
+  map.setFilter(config.map.layers.overlayLine, filter);
 }
 
 export function colorizePlanningLines(map) {
@@ -116,18 +117,8 @@ export function colorizeHbiLines(map, hbiValues, filterHbi) {
   }
 }
 
-export function getActiveLayerFromPath(path) {
-  if (path.includes('zustand')) {
-    return 'zustand';
-  }
-  if (path.includes('planungen')) {
-    return 'planungen';
-  }
-  return null;
-}
-
 export function resetMap() {
-  Store.dispatch(MapActions.setSectionActive(null));
+  Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
 }
 
@@ -138,6 +129,5 @@ export default {
   toggleLayer,
   colorizeHbiLines,
   colorizePlanningLines,
-  getActiveLayerFromPath,
   resetMap
 };

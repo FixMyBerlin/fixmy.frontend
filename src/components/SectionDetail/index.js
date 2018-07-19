@@ -62,9 +62,7 @@ class SectionDetails extends PureComponent {
     sideIndex: 0
   }
 
-  onSwitchSide = (sideIndex) => {
-    return () => this.setState({ sideIndex });
-  }
+  onSwitchSide = sideIndex => () => this.setState({ sideIndex })
 
   render() {
     const { data } = this.props;

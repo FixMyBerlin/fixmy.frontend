@@ -13,30 +13,32 @@ const MapContent = Styled.div`
 `;
 
 export default props => (
-  <MapContent hasLegend={props.displayLegend}>
-    <Route
-      exact
-      path="/zustand"
-      render={() => (
-        props.displayLegend && (
-          <MapLegend
-            type="hbi"
-            filterHbiIndex={props.filterHbiIndex}
-          />
-        )
-      )}
-    />
-    <Route
-      exact
-      path="/planungen"
-      render={() => (
-        props.displayLegend && <MapLegend type="plannings" />
-      )}
-    />
-    <Route
-      exact
-      path="(/zustand|/planungen)"
-      component={MapSwitch}
-    />
-  </MapContent>
+  <Route
+    path="(/zustand|/planungen)"
+    exact
+    render={() => (
+      <MapContent hasLegend={props.displayLegend}>
+        <Route
+          exact
+          path="/zustand"
+          render={() => (
+            props.displayLegend && (
+              <MapLegend
+                type="hbi"
+                filterHbiIndex={props.filterHbiIndex}
+              />
+            )
+          )}
+        />
+        <Route
+          exact
+          path="/planungen"
+          render={() => (
+            props.displayLegend && <MapLegend type="plannings" />
+          )}
+        />
+        <MapSwitch />
+      </MapContent>
+    )}
+  />
 );

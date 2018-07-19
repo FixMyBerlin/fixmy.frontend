@@ -4,9 +4,8 @@ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 
 import { media } from '~/style-utils';
-import Store from '~/redux/store';
-import { setSectionActive, setPopupVisible } from '~/modules/MapView/MapState';
 
+import { resetMap } from '~/modules/MapView/map-utils';
 import ResetMapButton from '~/components/ResetMapButton';
 import PlanningStatus from './PlanningStatus';
 import BikeLevelStatus from './BikeLevelStatus';
@@ -66,32 +65,26 @@ const CloseBtn = styled(ResetMapButton)`
 
 class MapModalComponent extends PureComponent {
   onDetailClick = () => {
-    const detailRoute = `${this.props.location.pathname}/${this.props.activeSection.id}`;
-    Store.dispatch(setSectionActive(null));
-    Store.dispatch(setPopupVisible(false));
+    const detailRoute = `${this.props.activeView}/${this.props.activeSection}`;
     this.props.history.push(detailRoute);
+    resetMap();
   }
 
   render() {
-    const isBikeLevelMode = this.props.location.pathname === '/zustand';
-    const isPlanningMode = this.props.location.pathname === '/planungen';
-    const data = this.props.activeSection;
-    const { displayPopup } = this.props;
+    const { data, displayPopup, activeView } = this.props;
 
     if (!data || !displayPopup) {
       return null;
     }
 
-    const { name } = data;
-
     return (
       <MapModal className={this.props.className} style={this.props.style}>
         <CloseBtn />
         <MapModalLocation onClick={this.onDetailClick}>
-          {name}
+          {data.name}
         </MapModalLocation>
-        { isPlanningMode && <PlanningStatus section={data} /> }
-        { isBikeLevelMode && <BikeLevelStatus onClick={this.onDetailClick} section={data} /> }
+        { activeView === 'planungen' && <PlanningStatus section={data} /> }
+        { activeView === 'zustand' && <BikeLevelStatus onClick={this.onDetailClick} section={data} /> }
         <MoreButtonWrapper>
           <MoreButton onClick={this.onDetailClick}>
             mehr Infos
@@ -104,7 +97,9 @@ class MapModalComponent extends PureComponent {
 
 export default withRouter(
   connect(state => ({
-    activeSection: state.MapState.activeSection,
+    activeSection: state.AppState.activeSection,
+    activeView: state.AppState.activeView,
+    data: state.MapState.popupData,
     displayPopup: state.MapState.displayPopup
   }))(MapModalComponent)
 );

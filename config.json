@@ -115,7 +115,7 @@
   "planningPhasesOrder": ["Konzept", "Planung", "im Bau", "Fertig"],
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
-    "style": "mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h?fresh=true",
+    "style": "mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h?fresh=false",
     "view": {
       "zoom": 15,
       "bearing": 0,
@@ -130,7 +130,8 @@
       "side0Layer": "fmb-side-0",
       "side1Layer": "fmb-side-1",
       "buildings3d": "3d-buildings",
-      "dimmingLayer": "dimming"
+      "dimmingLayer": "fmb-dimming",
+      "overlayLine": "fmb-overlay-line"
     },
     "zoomAfterGeocode": 15,
     "geocoderUrl": "https://geocoder.cit.api.here.com/6.2/geocode.json",

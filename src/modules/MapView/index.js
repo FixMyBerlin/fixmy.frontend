@@ -18,7 +18,6 @@ import MyHBI from '~/modules/MyHBI';
 import Store from '~/redux/store';
 
 import { matchMediaSize, breakpoints } from '~/style-utils';
-import { getActiveLayerFromPath } from './map-utils';
 
 import Map from './Map';
 import MapContent from './MapContent';
@@ -58,7 +57,6 @@ class MapViewComponent extends PureComponent {
     const isDesktopView = matchMediaSize(breakpoints.m);
     const displayLegend = !this.props.activeSection || isDesktopView;
     const calculatePopupPosition = isDesktopView;
-    const activeLayer = getActiveLayerFromPath(this.props.location.pathname);
 
     return (
       <MapView>
@@ -74,7 +72,7 @@ class MapViewComponent extends PureComponent {
             bearing={this.props.bearing}
             pitch={this.props.pitch}
             show3dBuildings={this.props.show3dBuildings}
-            activeLayer={activeLayer}
+            activeLayer={this.props.activeLayer}
             activeSection={this.props.activeSection}
             updateView={this.updateView}
             hasMoved={this.props.hasMoved}
@@ -136,9 +134,10 @@ class MapViewComponent extends PureComponent {
 
 export default withRouter(
   connect(state => ({
-    activeSection: state.MapState.activeSection,
+    activeLayer: state.AppState.activeView,
+    activeSection: parseInt(state.AppState.activeSection, 0),
+
     activeLocation: state.MapState.activeLocation,
-    activeLayer: state.MapState.activeLayer,
     filterHbi: state.MapState.filterHbi,
     filterHbiIndex: state.MapState.filterHbiIndex,
     filterPlannings: state.MapState.filterPlannings,

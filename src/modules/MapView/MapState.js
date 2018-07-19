@@ -2,19 +2,17 @@ import Axios from 'axios';
 import idx from 'idx';
 
 const SET_VIEW = 'MapView/MapState/SET_VIEW';
-const SET_SECTION_ACTIVE = 'MapView/MapState/SET_SECTION_ACTIVE';
 const SET_HAS_MOVED = 'MapView/MapState/SET_HAS_MOVED';
 const GEOCODE_DONE = 'MapView/MapState/GEOCODE_SUCCESS';
 const GEOCODE_FAIL = 'MapView/MapState/GEOCODE_FAIL';
 const SET_HBI_FILTER = 'MapView/MapState/SET_HBI_FILTER';
+const SET_POPUP_DATA = 'MapView/MapState/SET_POPUP_DATA';
 const SET_POPUP_LOCATION = 'MapView/MapState/SET_POPUP_LOCATION';
 const SET_POPUP_VISIBLE = 'MapView/MapState/SET_POPUP_VISIBLE';
 
 const initialState = {
   ...config.map.view,
-  activeSection: null,
-  activeLocation: null,
-  activeLayer: null,
+  popupData: null,
   displayPopup: false,
   popupLocation: null,
   filterHbi: null,
@@ -29,8 +27,8 @@ export function setView(view) {
   return { type: SET_VIEW, payload: view };
 }
 
-export function setSectionActive(props = null) {
-  return { type: SET_SECTION_ACTIVE, payload: { activeSection: props } };
+export function setPopupData(popupData = null) {
+  return { type: SET_POPUP_DATA, payload: { popupData } };
 }
 
 export function setHasMoved(hasMoved) {
@@ -73,7 +71,7 @@ export function geocodeAddress(searchtext) {
 export default function MapStateReducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_VIEW:
-    case SET_SECTION_ACTIVE:
+    case SET_POPUP_DATA:
     case SET_HAS_MOVED:
     case GEOCODE_DONE:
     case SET_HBI_FILTER:

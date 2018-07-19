@@ -10,6 +10,7 @@ import turfCenter from '@turf/center';
 
 import Store from '~/redux/store';
 
+import * as AppActions from '~/modules/App/AppState';
 import * as MapActions from './MapState';
 import MapUtils from './map-utils';
 import { arrayIsEqual } from '~/utils';
@@ -30,10 +31,11 @@ class Map extends PureComponent {
     updateView: PropTypes.func,
     setMapContext: PropTypes.func,
     activeLayer: PropTypes.string,
-    activeSection: PropTypes.object,
+    activeSection: PropTypes.number,
     accessToken: PropTypes.string.isRequired,
     hasMoved: PropTypes.bool,
-    calculatePopupPosition: PropTypes.bool
+    calculatePopupPosition: PropTypes.bool,
+    drawOverlayLine: PropTypes.bool
   }
 
   static defaultProps = {
@@ -48,7 +50,8 @@ class Map extends PureComponent {
     updateView: () => {},
     setMapContext: () => {},
     hasMoved: false,
-    calculatePopupPosition: false
+    calculatePopupPosition: false,
+    drawOverlayLine: true
   }
 
   state = {
@@ -135,43 +138,11 @@ class Map extends PureComponent {
     this.setView(this.getViewFromProps(), this.props.animate);
     this.setState({ loading: false });
 
-    this.drawOverlayLine();
-
     this.map.resize();
   } 
 
-  drawOverlayLine() {
-    if (!config.map.drawOverlayLine) {
-      return false;
-    }
-
-    this.map.addLayer({
-      id: 'fmb',
-      source: 'composite',
-      'source-layer': 'planning-sections-4ncdov',
-      type: 'line',
-      layout: {
-        'line-cap': 'round'
-      },
-      minzoom: 13,
-      maxzoom: 20,
-      paint: {
-        'line-color': 'white',
-        'line-width': [
-          'interpolate',
-          ['exponential', 1.21],
-          ['zoom'],
-          0,
-          0.8,
-          10,
-          14
-        ]
-      }});
-  }
-
   updateLayers = () => {
-    const filterId = idx(this.props, _ => _.activeSection.id);
-    console.log(filterId, this.props.activeLayer);
+    const filterId = this.props.activeSection;
 
     if (this.props.activeLayer === 'zustand') {
       MapUtils.colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
@@ -185,6 +156,7 @@ class Map extends PureComponent {
 
     MapUtils.toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
     MapUtils.toggleLayer(this.map, config.map.layers.dimmingLayer, !!this.props.activeSection);
+    MapUtils.toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
   }
 
   handleClick = (e) => {
@@ -193,10 +165,9 @@ class Map extends PureComponent {
 
     const center = geometry ? turfCenter(e.features[0]).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
 
-    console.log(e.features);
-
     if (properties) {
-      Store.dispatch(MapActions.setSectionActive(properties));
+      Store.dispatch(AppActions.setActiveSection(properties.id));
+      Store.dispatch(MapActions.setPopupData(properties));
       Store.dispatch(MapActions.setPopupVisible(true));
       Store.dispatch(MapActions.setView({
         center,
