@@ -1,11 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
 import FixMyLogo from '~/images/logofmb@2x.png';
+import { media } from '~/style-utils';
+
+const FMBLogoWrapper = styled.div`
+  display: none;
+  ${media.m`
+    display: block;
+  `}
+`;
 
 const FMBLogo = props => (
-  <div className={props.className}>
+  <FMBLogoWrapper className={props.className}>
     <img width={props.width} src={FixMyLogo} alt="logo" />
-  </div>
+  </FMBLogoWrapper>
 );
 
 FMBLogo.propTypes = {

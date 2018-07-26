@@ -44,7 +44,8 @@ const Switch = styled(ToggleSwitch)`
     justify-content: center;
     align-items: center;
     background: #353535;
-    border: 1px solid #E8E8E8;
+    border: 2px solid #E8E8E8;
+    box-shadow: 0 0 4px 1px rgba(0,0,0,0.5);
     
     path {
       stroke: #353535;
@@ -71,7 +72,7 @@ const SwitchLabel = styled.div`
 const SwitchDescription = styled.div`
   display: ${props => (props.isActive ? 'block' : 'none')};
   font-size: 10px;
-  color: #635638;
+  color: ${config.colors.midgrey};
   user-select: none;
 `;
 
