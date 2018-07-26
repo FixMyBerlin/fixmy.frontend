@@ -22,7 +22,7 @@ export const updateHistory = props => (dispatch, getState) => {
   dispatch({
     type: UPDATE_HISTORY,
     payload: {
-      activeSection,
+      activeSection: isNaN(activeSection) ? null : activeSection,
       activeView
     }
   });

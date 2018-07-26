@@ -169,10 +169,22 @@ class Map extends PureComponent {
 
     const center = geometry ? turfCenter(e.features[0]).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
 
+    
+    console.log('as', isNaN(this.props.activeSection), this.props.activeSection);
+
+    // const detailRoute = `/${this.props.activeView}/${this.props.activeSection}`;
+    // this.props.history.push(detailRoute);
+
     if (properties) {
+      if (this.props.activeSection) {
+        const detailRoute = `/${this.props.activeView}/${properties.id}`;
+        this.props.history.push(detailRoute);
+      } else {
+        Store.dispatch(MapActions.setPopupData(properties));
+        Store.dispatch(MapActions.setPopupVisible(true));
+      }
+
       Store.dispatch(AppActions.setActiveSection(properties.id));
-      Store.dispatch(MapActions.setPopupData(properties));
-      Store.dispatch(MapActions.setPopupVisible(true));
       Store.dispatch(MapActions.setView({
         center,
         animate: true,

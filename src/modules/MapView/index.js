@@ -74,6 +74,7 @@ class MapViewComponent extends PureComponent {
             show3dBuildings={this.props.show3dBuildings}
             activeLayer={this.props.activeLayer}
             activeSection={this.props.activeSection}
+            activeView={this.props.activeLayer}
             updateView={this.updateView}
             hasMoved={this.props.hasMoved}
             hbi_values={this.props.hbi_values}
