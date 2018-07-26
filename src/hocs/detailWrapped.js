@@ -7,6 +7,7 @@ import Axios from 'axios';
 
 import { media } from '~/style-utils';
 
+import PinIcon from '~/images/pin.svg';
 import { resetMap } from '~/modules/MapView/map-utils';
 
 const DetailWrapper = styled.div`
@@ -24,7 +25,12 @@ const DetailWrapper = styled.div`
     left: auto;
     right: 0;
     width: 400px;
+    box-shadow: -1px 0 6px 1px rgba(0,0,0,.3);
   `}
+`;
+
+const StyledPinIcon = styled(PinIcon)`
+  margin-right: 10px;
 `;
 
 const DetailHeader = styled.div`
@@ -34,6 +40,7 @@ const DetailHeader = styled.div`
   color: ${config.colors.darkgrey};
   font-size: 12px;
   line-height: 1.5;
+  align-items: center;
 `;
 
 const DetailTitle = styled.div`
@@ -147,6 +154,7 @@ function detailWrapped(Component) {
       return (
         <DetailWrapper>
           <DetailHeader>
+            <StyledPinIcon />
             <div>
               <DetailTitle>{data.name || 'Abschnittsname'}</DetailTitle>
               <DetailSubtitle>Abschnitt 1</DetailSubtitle>

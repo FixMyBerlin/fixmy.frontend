@@ -139,5 +139,7 @@
     "geocoderAppCode": "TtjOtIepUqDKvw2Mi_ci-A",
     "drawOverlayLine": true,
     "dimmingOpacity": 0.3
-  }
+  },
+  "sectionIsBeta": true,
+  "planningIsBeta": true
 }

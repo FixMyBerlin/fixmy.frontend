@@ -53,9 +53,9 @@ export default props => (
         {props.children}
       </InfoSectionData>
     </InfoSectionContent>
-    <InfoSectionStatus>
+    {!config.sectionIsBeta && <InfoSectionStatus>
       <StatusSign color={props.color} />
       <StatusLabel>{props.label}</StatusLabel>
-    </InfoSectionStatus>
+    </InfoSectionStatus>}
   </InfoSection>
 );

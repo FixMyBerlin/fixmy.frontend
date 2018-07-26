@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="21px" viewBox="0 0 16 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <path d="M6.99195288,0 C3.13858558,0 0.00507810638,3.1827957 0.00507810638,7.09677419 C0.00507810638,7.09677419 -0.439541197,12.4731183 6.99195288,20 C13.2166231,13.6774194 13.9153106,8.88172043 13.9788277,7.50537634 C13.9788277,7.37634409 14,7.22580645 14,7.09677419 C13.9788277,3.16129032 10.8453202,0 6.99195288,0 Z" id="path-pin"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="map/Abschnitt/Planung" transform="translate(-26.000000, -332.000000)">
+            <g id="ort" transform="translate(27.000000, 327.000000)">
+                <g id="planung-Pin" transform="translate(0.000000, 6.000000)">
+                    <mask id="mask-pin" fill="white">
+                        <use xlink:href="#path-pin"></use>
+                    </mask>
+                    <use id="Shape" stroke="#353535" fill-rule="nonzero" xlink:href="#path-pin"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

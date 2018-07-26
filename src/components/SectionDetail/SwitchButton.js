@@ -6,15 +6,15 @@ function getBorderRadius(props) {
 }
 
 function getBG(props) {
-  return props.isActive ? config.colors.darkbg : config.colors.inactivegrey;
+  return props.isActive ? config.colors.inactivegrey : config.colors.darkbg;
 }
 
 function getColor(props) {
-  return props.isActive ? config.colors.darkgrey : 'white';
+  return props.isActive ? 'white' : config.colors.darkgrey;
 }
 
 function getBoxShadow(props) {
-  return props.isActive ? '0 0 2px 1px rgba(0, 0, 0, 0.2)' : 'inset 2px 1px rgba(0, 0, 0, 0.2)';
+  return props.isActive ? 'inset 2px 1px rgba(0, 0, 0, 0.3)' : '0 0 2px 1px rgba(0, 0, 0, 0.2)';
 }
 
 const Button = styled.button`

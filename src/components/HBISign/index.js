@@ -5,9 +5,9 @@ import BikeIcon from '~/images/bike.svg';
 import { numberFormat, getHBIColorByIndex } from '~/utils';
 
 const HBISign = styled.div`
-  border: 3px solid ${props => props.color || config.colors.index};
-  width: 62px;
-  height: 62px;
+  border: ${props => props.borderWeight}px solid ${props => props.color || config.colors.index};
+  width: ${props => props.size}px;
+  height: ${props => props.size}px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,8 +17,8 @@ const HBISign = styled.div`
   text-decoration: none;
   color:  ${config.colors.darkgrey};
   font-weight: 600;
-  cursor: pointer;
   background: white;
+  cursor: pointer;
 
   svg {
     path {
@@ -29,6 +29,8 @@ const HBISign = styled.div`
 
 const HBISignComp = props => (
   <HBISign
+    size={props.size}
+    borderWeight={props.borderWeight}
     className={props.className}
     onClick={props.onClick}
     color={getHBIColorByIndex(props.hbi)}
@@ -43,7 +45,9 @@ const HBISignComp = props => (
 );
 
 HBISignComp.defaultProps = {
-  onClick: () => {}
+  onClick: () => {},
+  borderWeight: 3,
+  size: 62
 };
 
 export default HBISignComp;

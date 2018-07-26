@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
+import DataProcessIcon from '~/images/data-process.svg';
+import BetaIcon from '~/images/beta.svg';
+import dummyImageSrc from '~/images/detail-dummy.png';
 import { numberFormat } from '~/utils';
 import detailWrapped from '~/hocs/detailWrapped';
-import dummyImageSrc from '~/images/detail-dummy.png';
 import HBISign from '~/components/HBISign';
 import InfoSection from './InfoSection';
 import SwitchButton from './SwitchButton';
@@ -13,6 +15,8 @@ const ButtonGroup = styled.div`
   justify-content: center;
   padding: 10px 0 20px 0;
   background: ${config.colors.lightbg};
+  box-shadow: 0 0px 8px 2px rgba(0, 0, 0, 0.5);
+  position: relative;
 `;
 
 const DetailImage = styled.img`
@@ -57,6 +61,32 @@ const DescriptionLink = styled.div`
   font-size: 14px;
 `;
 
+const BetaWrapper = styled.div`
+  position: relative;
+`;
+
+const BetaOverlay = styled.div`
+  position: absolute;
+  background: white;
+  opacity: 0.75;
+  height: 100%;
+  width:100%;
+  top:0;
+  left:0;
+`;
+
+const StyledBetaIcon = styled(BetaIcon)`
+  position: absolute;
+  transform: rotate(-6deg) translate(65px, 25px);
+`;
+
+const StyledDataProcessIcon = styled(DataProcessIcon)`
+  position: absolute;
+  z-index: 99;
+  right: 10px;
+  transform: rotate(-6deg);
+`;
+
 class SectionDetails extends PureComponent {
   state = {
     sideIndex: 0
@@ -92,7 +122,8 @@ class SectionDetails extends PureComponent {
         <DetailImage src={dummyImageSrc} alt={name} />
 
         <HBISignWrapper>
-          <HBISign hbi={1} />
+          <StyledBetaIcon />
+          <HBISign borderWeight={5} size={77} hbi={1} />
           <HBILabel>Happy-Bike-Level</HBILabel>
           <HBISubLabel>(max 10,0)</HBISubLabel>
         </HBISignWrapper>
@@ -111,15 +142,17 @@ class SectionDetails extends PureComponent {
             <div>KFZ pro Tag: {numberFormat(sideData.daily_traffic)}</div>
           </InfoSection>
 
-          <InfoSection title="Qualität:" color="#f2b19d" label="schlecht ausgebaut">
-            <div>Radinfrabedarf: hoch/niedrig</div>
-            <div>Breite: <strong>2,20 Meter</strong></div>
-            <div>Oberfläche: Asphalt</div>
-          </InfoSection>
+          <BetaWrapper>
+            <StyledDataProcessIcon />
+            <InfoSection title="Qualität:" color="#f2b19d" label="schlecht ausgebaut">
+              <div>Radinfrabedarf: ?</div>
+              <div>Breite: ?</div>
+              <div>Oberfläche: ?</div>
+            </InfoSection>
 
-          <InfoSection title="Zustand:" color="#0ecdba" label="gut">
-            <div>sanierungsbedürftig: <strong>nein</strong></div>
-          </InfoSection>
+            <InfoSection title="Zustand:" color="#0ecdba" label="gut" />
+            <BetaOverlay />
+          </BetaWrapper>
 
           <DescriptionLink>
             Wie wird der Happy-Bike-Level berechnet?
