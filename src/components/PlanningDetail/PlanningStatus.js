@@ -1,8 +1,26 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { If } from 'react-extras';
+import styled from 'styled-components';
 
 import PlanningStatusChart from './PlanningStatusChart';
 import PlanningChecklist from './PlanningChecklist';
+
+const DetailButton = styled.button`
+  border: 1px solid ${config.colors.interaction};
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  padding: 5px 20px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+`;
+
+const DetailButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0 10px 0;
+`;
 
 class PlanningStatus extends PureComponent {
   state = {
@@ -15,13 +33,15 @@ class PlanningStatus extends PureComponent {
 
   render() {
     return (
-      <div>
+      <Fragment>
         <PlanningStatusChart phase={this.props.phase} />
-        <button onClick={this.toggleExpand}>Details</button>
+        <DetailButtonWrapper>
+          <DetailButton onClick={this.toggleExpand}>Details +</DetailButton>
+        </DetailButtonWrapper>
         <If condition={this.state.isExpanded}>
           <PlanningChecklist />
         </If>
-      </div>
+      </Fragment>
     );
   }
 }

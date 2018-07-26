@@ -27,8 +27,11 @@ const Subtitle = Styled(Headline)`
   font-weight: 300;
 `;
 
-const ExpandDescriptionButton = Styled.button`
+const ExpandDescriptionButton = Styled.div`
   color: ${config.colors.interaction};
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
 `;
 
 const DetailBodySection = Styled.div`
@@ -43,6 +46,26 @@ const DetailItem = Styled(Text)`
 
 const DetailImage = Styled.img`
   width: 100%;
+`;
+
+const Shadow = Styled.div`
+  box-shadow: 0 0px 8px 2px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
+`;
+
+const Anchor = Styled.a`
+  color: ${config.colors.interaction};
+  text-decoration: none;
+
+  &:hover {
+    color: ${config.colors.interaction};
+    text-decoration: underline;
+  }
+
+  &:visited, &:active {
+    color: ${config.colors.interaction};
+  }
 `;
 
 class PlanningDetails extends PureComponent {
@@ -66,6 +89,7 @@ class PlanningDetails extends PureComponent {
 
     return (
       <React.Fragment>
+        <Shadow />
         <ImageSlider images={sliderImages} />
 
         <DetailHead>
@@ -77,26 +101,26 @@ class PlanningDetails extends PureComponent {
         <DetailBody>
 
           <DetailBodySection>
-            <Headline>Ziel & Hintergrund dieser Maßnahme?</Headline>
+            <Subtitle>Ziel & Hintergrund dieser Maßnahme?</Subtitle>
             <Text>
               <Choose>
                 <Choose.When condition={this.state.descriptionExpanded}>{data.description}</Choose.When>
                 <Choose.Otherwise>{data.short_description}</Choose.Otherwise>
               </Choose>
             </Text>
-            <ExpandDescriptionButton onClick={this.toggleDescription}>{this.state.descriptionExpanded ? 'Weniger' : 'Mehr'}</ExpandDescriptionButton>
+            <ExpandDescriptionButton onClick={this.toggleDescription}>{this.state.descriptionExpanded ? 'Weniger' : 'Mehr >'}</ExpandDescriptionButton>
           </DetailBodySection>
 
           <DetailBodySection>
-            <Headline>Projektdaten:</Headline>
+            <Subtitle>Projektdaten:</Subtitle>
             <DetailItem>Zuständigkeit: <strong>{responsible}</strong></DetailItem>
             <DetailItem>Projektvolumen: <strong>{costs}</strong></DetailItem>
-            <DetailItem>Link zur Planung: <a target="_blank" href={data.external_url}>{data.external_url}</a></DetailItem>
+            <DetailItem>Link zur Planung: <Anchor target="_blank" href={data.external_url}>{data.external_url}</Anchor></DetailItem>
             <DetailImage src={data.cross_section_photo} />
           </DetailBodySection>
 
           <DetailBodySection>
-            <Headline>Häufige Fragen:</Headline>
+            <Subtitle>Häufige Fragen:</Subtitle>
             {faq.map((f, i) => (
               <div key={`FAQ_Item_${i}`}>
                 <Text><strong>{f.text}</strong></Text>
