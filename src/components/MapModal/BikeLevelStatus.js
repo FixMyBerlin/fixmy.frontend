@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import BraceVertical from '~/images/brace-vertical.svg';
 import HBISign from '~/components/HBISign';
 import { numberFormat, getHBIbyProps, getHBIColorByIndex } from '~/utils';
 
@@ -11,6 +12,17 @@ const BikeLevelStatus = styled.div`
   font-size: 12px;
   line-height: 1.4;
   color: ${config.colors.darkgrey};
+`;
+
+const SidesWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const StyledBraceVertical = styled(BraceVertical)`
+  margin-left: auto;
+  align-self: center;
 `;
 
 const Section = styled.div`
@@ -26,6 +38,8 @@ const SectionCenter = Section.extend`
 
 const SectionLeft = Section.extend`
   font-weight: 300;
+  display: flex;
+  flex-direction: row;
 `;
 
 const LevelLabel = styled.span`
@@ -42,8 +56,11 @@ export default (props) => {
   return (
     <BikeLevelStatus {...props}>
       <SectionLeft>
-        <div>Westseite: <LevelLabel color={level0Color}>{numberFormat(level0)}</LevelLabel></div>
-        <div>Ostseite: <LevelLabel color={level1Color}>{numberFormat(level1)}</LevelLabel></div>
+        <SidesWrapper>
+          <div>Westseite: <LevelLabel color={level0Color}>{numberFormat(level0)}</LevelLabel></div>
+          <div>Ostseite: <LevelLabel color={level1Color}>{numberFormat(level1)}</LevelLabel></div>
+        </SidesWrapper>
+        <StyledBraceVertical />
       </SectionLeft>
       <SectionCenter>
         <HBISign isTooltip onClick={props.onClick} hbi={bikeLevelTotal} />

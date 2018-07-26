@@ -16,7 +16,7 @@ const HBISign = styled.div`
   text-align: center;
   box-shadow: 0 0 2px 2px rgba(0,0,0,.18);
   text-decoration: none;
-  color:  ${config.colors.darkgrey};
+  color: ${config.colors.darkgrey};
   font-weight: 600;
   background: white;
   position: relative;
@@ -29,26 +29,32 @@ const StyledBetaIcon = styled(BetaIcon)`
 `;
 
 const StyledBikeIcon = styled(BikeIcon)`
-  fill: ${props => props.color || config.colors.index};
+  path {
+    fill: ${props => props.color || config.colors.index};
+  }
 `;
 
-const HBISignComp = props => (
-  <HBISign
-    size={props.size}
-    borderWeight={props.borderWeight}
-    className={props.className}
-    onClick={props.onClick}
-    color={getHBIColorByIndex(props.hbi)}
-  >
-    <div>
-      <StyledBikeIcon />
+const HBISignComp = (props) => {
+  const color = getHBIColorByIndex(props.hbi);
+
+  return (
+    <HBISign
+      size={props.size}
+      borderWeight={props.borderWeight}
+      className={props.className}
+      onClick={props.onClick}
+      color={color}
+    >
       <div>
-        {numberFormat(props.hbi)}
+        <StyledBikeIcon color={color} />
+        <div>
+          {numberFormat(props.hbi)}
+        </div>
       </div>
-    </div>
-    <StyledBetaIcon isTooltip={props.isTooltip} />
-  </HBISign>
-);
+      <StyledBetaIcon isTooltip={props.isTooltip} />
+    </HBISign>
+  );
+};
 
 HBISignComp.defaultProps = {
   onClick: () => {},
