@@ -12,6 +12,7 @@ const MapSwitchWrapper = styled.div`
   padding: 10px;
   max-width: 400px;
   margin: 15px auto;
+  height: 75px;
 `;
 
 const MapSwitchItem = styled.div`
@@ -45,7 +46,7 @@ const Switch = styled(ToggleSwitch)`
     align-items: center;
     background: #353535;
     border: 2px solid #E8E8E8;
-    box-shadow: 0 0 4px 1px rgba(0,0,0,0.5);
+    box-shadow: 0 0 4px 1px rgba(0,0,0,0.5);g
     
     path {
       stroke: #353535;

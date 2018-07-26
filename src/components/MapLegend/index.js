@@ -8,6 +8,7 @@ import PlanningLegend from './PlanningLegend';
 const MapLegendWrapper = styled.div`
   max-width: 300px;
   margin: 0 auto;
+  height: 70px;
 `;
 
 class MapLegend extends PureComponent {
