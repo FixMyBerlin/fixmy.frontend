@@ -11,7 +11,7 @@ export default () => (
       scrolling="no"
       marginHeight="0"
       marginWidth="0"
-      src={config.newsletterWidgetUrl}
+      src={`${config.newsletterWidgetUrl}?v=4`}
       width="100%"
       height="120"
     />
