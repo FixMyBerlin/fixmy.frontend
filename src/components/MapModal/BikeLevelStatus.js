@@ -2,14 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import HBISign from '~/components/HBISign';
-import { numberFormat, getHBIbyProps } from '~/utils';
+import { numberFormat, getHBIbyProps, getHBIColorByIndex } from '~/utils';
 
 const BikeLevelStatus = styled.div`
   margin-bottom: 15px;
   display: flex;
   flex-direction: row;
   font-size: 12px;
-  font-weight: 600;
   line-height: 1.4;
   color: ${config.colors.darkgrey};
 `;
@@ -30,22 +29,24 @@ const SectionLeft = Section.extend`
 `;
 
 const LevelLabel = styled.span`
-  color: ${config.colors.index};
+  color: ${props => props.color || config.colors.darkbg};
 `;
 
 export default (props) => {
   const level0 = getHBIbyProps(props.section, 'side0');
   const level1 = getHBIbyProps(props.section, 'side1');
   const bikeLevelTotal = (level0 + level1) / 2;
+  const level0Color = getHBIColorByIndex(level0);
+  const level1Color = getHBIColorByIndex(level1);
 
   return (
     <BikeLevelStatus {...props}>
       <SectionLeft>
-        <div>Westseite: <LevelLabel>{numberFormat(level0)}</LevelLabel></div>
-        <div>Ostseite: <LevelLabel>{numberFormat(level1)}</LevelLabel></div>
+        <div>Westseite: <LevelLabel color={level0Color}>{numberFormat(level0)}</LevelLabel></div>
+        <div>Ostseite: <LevelLabel color={level1Color}>{numberFormat(level1)}</LevelLabel></div>
       </SectionLeft>
       <SectionCenter>
-        <HBISign onClick={props.onClick} hbi={bikeLevelTotal} />
+        <HBISign isTooltip onClick={props.onClick} hbi={bikeLevelTotal} />
       </SectionCenter>
       <Section>
         <div>Aktueller Happy-Bike-Index</div>

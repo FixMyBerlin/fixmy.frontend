@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
 import DataProcessIcon from '~/images/data-process.svg';
-import BetaIcon from '~/images/beta.svg';
 import dummyImageSrc from '~/images/detail-dummy.png';
 import { numberFormat } from '~/utils';
 import detailWrapped from '~/hocs/detailWrapped';
@@ -53,6 +52,7 @@ const DetailTitle = styled.h1`
   border-bottom: 1px dotted #c6c6c6;
   padding-bottom: 8px;
   margin-bottom: 20px;
+  min-height: 100px;
 `;
 
 const DescriptionLink = styled.div`
@@ -73,11 +73,6 @@ const BetaOverlay = styled.div`
   width:100%;
   top:0;
   left:0;
-`;
-
-const StyledBetaIcon = styled(BetaIcon)`
-  position: absolute;
-  transform: rotate(-6deg) translate(65px, 25px);
 `;
 
 const StyledDataProcessIcon = styled(DataProcessIcon)`
@@ -122,8 +117,7 @@ class SectionDetails extends PureComponent {
         <DetailImage src={dummyImageSrc} alt={name} />
 
         <HBISignWrapper>
-          <StyledBetaIcon />
-          <HBISign borderWeight={5} size={77} hbi={1} />
+          <HBISign hbi={1} />
           <HBILabel>Happy-Bike-Level</HBILabel>
           <HBISubLabel>(max 10,0)</HBISubLabel>
         </HBISignWrapper>

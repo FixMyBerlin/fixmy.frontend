@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import BikeIcon from '~/images/bike.svg';
 import { numberFormat, getHBIColorByIndex } from '~/utils';
+import BetaIcon from '~/images/beta.svg';
 
 const HBISign = styled.div`
   border: ${props => props.borderWeight}px solid ${props => props.color || config.colors.index};
@@ -18,13 +19,17 @@ const HBISign = styled.div`
   color:  ${config.colors.darkgrey};
   font-weight: 600;
   background: white;
+  position: relative;
   cursor: pointer;
+`;
 
-  svg {
-    path {
-      fill: ${props => props.color || config.colors.index};
-    }
-  }
+const StyledBetaIcon = styled(BetaIcon)`
+  position: absolute;
+  transform: ${props => (props.isTooltip ? 'rotate(-6deg) translate(65px, -33px)' : 'rotate(-6deg) translate(65px, 15px)')};
+`;
+
+const StyledBikeIcon = styled(BikeIcon)`
+  fill: ${props => props.color || config.colors.index};
 `;
 
 const HBISignComp = props => (
@@ -36,18 +41,20 @@ const HBISignComp = props => (
     color={getHBIColorByIndex(props.hbi)}
   >
     <div>
-      <BikeIcon />
+      <StyledBikeIcon />
       <div>
         {numberFormat(props.hbi)}
       </div>
     </div>
+    <StyledBetaIcon isTooltip={props.isTooltip} />
   </HBISign>
 );
 
 HBISignComp.defaultProps = {
   onClick: () => {},
-  borderWeight: 3,
-  size: 62
+  borderWeight: 5,
+  size: 77,
+  isTooltip: false
 };
 
 export default HBISignComp;

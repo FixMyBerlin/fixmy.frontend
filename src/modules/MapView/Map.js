@@ -169,14 +169,10 @@ class Map extends PureComponent {
 
     const center = geometry ? turfCenter(e.features[0]).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
 
-    
-    console.log('as', isNaN(this.props.activeSection), this.props.activeSection);
-
-    // const detailRoute = `/${this.props.activeView}/${this.props.activeSection}`;
-    // this.props.history.push(detailRoute);
-
     if (properties) {
-      if (this.props.activeSection) {
+      // when user is in detail mode, we don't want to show the tooltip again,
+      // but directly switch to another detail view
+      if (this.props.activeSection && !this.props.displayPopup) {
         const detailRoute = `/${this.props.activeView}/${properties.id}`;
         this.props.history.push(detailRoute);
       } else {

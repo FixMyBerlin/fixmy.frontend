@@ -8,6 +8,7 @@ import { media } from '~/style-utils';
 import Store from '~/redux/store';
 import * as MapActions from '~/modules/MapView/MapState';
 
+import PinIcon from '~/images/pin.svg';
 import ResetMapButton from '~/components/ResetMapButton';
 import PlanningStatus from './PlanningStatus';
 import BikeLevelStatus from './BikeLevelStatus';
@@ -22,23 +23,39 @@ const MapModal = styled.div`
   z-index:900;
 `;
 
+const StyledPinIcon = styled(PinIcon)`
+  margin-right: 10px;
+`;
+
 const MapModalLocation = styled.div`
+  display: flex;
   margin-bottom: 15px;
   text-transform: uppercase;
   font-weight: 600;
   color: ${config.colors.darkgrey};
-  display: block;
   text-decoration: none;
   cursor: pointer;
+  line-height: 1.2;
+`;
+
+const MapModalTitle = styled.div`
+  font-size: 17px;
+`;
+
+const MapModalSubtitle = styled.div`
+  font-size: 10px;
 `;
 
 const MoreButton = styled.button`
   background: ${config.colors.interaction};
   display: inline-block;
   margin: 0 auto;
-  padding: 10px 20px;
+  padding: 8px 30px;
   color: ${config.colors.white};
-  border-radius: 3px;
+  border-radius: 6px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  cursor: pointer;
 
   &:focus {
     outline: 1px solid white;
@@ -88,7 +105,11 @@ class MapModalComponent extends PureComponent {
       <MapModal className={this.props.className} style={this.props.style}>
         <CloseBtn />
         <MapModalLocation onClick={this.onDetailClick}>
-          {data.name}
+          <StyledPinIcon />
+          <div>
+            <MapModalTitle>{data.name || '-'}</MapModalTitle>
+            <MapModalSubtitle>Abschnitt 1</MapModalSubtitle>
+          </div>
         </MapModalLocation>
         { activeView === 'planungen' && <PlanningStatus section={data} /> }
         { activeView === 'zustand' && <BikeLevelStatus onClick={this.onDetailClick} section={data} /> }

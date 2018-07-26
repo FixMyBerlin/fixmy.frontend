@@ -80,6 +80,7 @@ class MapViewComponent extends PureComponent {
             hbi_values={this.props.hbi_values}
             filterHbi={this.props.filterHbi}
             calculatePopupPosition={calculatePopupPosition}
+            displayPopup={this.props.displayPopup}
           >
             <LocatorControl
               key="Map__LocatorControl"
