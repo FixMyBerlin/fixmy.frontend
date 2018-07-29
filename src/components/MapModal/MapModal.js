@@ -74,7 +74,7 @@ const MoreButtonWrapper = styled.div`
   `}
 `;
 
-const braceStyle = `
+const StyledBraceHorizontalZustand = styled(BraceHorizontalZustand)`
   display: block;
   width: 100%;
 
@@ -83,12 +83,13 @@ const braceStyle = `
   `}
 `;
 
-const StyledBraceHorizontalZustand = styled(BraceHorizontalZustand)`
-  ${braceStyle}
-`;
-
 const StyledBraceHorizontalPlanung = styled(BraceHorizontalPlanung)`
-  ${braceStyle}
+  display: block;
+  width: 100%;
+
+  ${media.m`
+    display: none;
+  `}
 `;
 
 const CloseBtn = styled(ResetMapButton)`

@@ -168,19 +168,23 @@ class Map extends PureComponent {
     const geometry = idx(e.features, _ => _[0].properties);
 
     const center = geometry ? turfCenter(e.features[0]).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
+    
+    // @TODO: how can we handle these planning urls/ ids better?
+    const sideNonePlanningUrl = properties.side0_planning_url || properties.side0_planning_url || properties.sideNone_planning_url;
+    const id = this.props.activeView === 'planungen' ? sideNonePlanningUrl.match(/\d/)[0] : properties.id;
 
     if (properties) {
       // when user is in detail mode, we don't want to show the tooltip again,
       // but directly switch to another detail view
       if (this.props.activeSection && !this.props.displayPopup) {
-        const detailRoute = `/${this.props.activeView}/${properties.id}`;
+        const detailRoute = `/${this.props.activeView}/${id}`;
         this.props.history.push(detailRoute);
       } else {
         Store.dispatch(MapActions.setPopupData(properties));
         Store.dispatch(MapActions.setPopupVisible(true));
       }
 
-      Store.dispatch(AppActions.setActiveSection(properties.id));
+      Store.dispatch(AppActions.setActiveSection(id));
       Store.dispatch(MapActions.setView({
         center,
         animate: true,
