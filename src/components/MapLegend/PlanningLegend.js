@@ -1,6 +1,10 @@
 /* eslint import/no-dynamic-require: 0, global-require: 0 */
 import React from 'react';
 import styled from 'styled-components';
+import ConceptIcon from '~/images/planning-icons/konzept.svg';
+import PlanningIcon from '~/images/planning-icons/planung.svg';
+import ConstructionIcon from '~/images/planning-icons/bau.svg';
+import DoneIcon from '~/images/planning-icons/fertig.svg';
 
 const PlanningLegend = styled.div`
   display: flex;
@@ -24,19 +28,19 @@ const LegendIcon = styled.img`
 export default () => (
   <PlanningLegend>
     <LegendItem>
-      <LegendIcon src={require('~/images/planning-icons/konzept@3x.png')} />
+      <ConceptIcon />
       <LegendItemLabel>Konzept</LegendItemLabel>
     </LegendItem>
     <LegendItem>
-      <LegendIcon src={require('~/images/planning-icons/planung@3x.png')} />
+      <PlanningIcon />
       <LegendItemLabel>Planung</LegendItemLabel>
     </LegendItem>
     <LegendItem>
-      <LegendIcon src={require('~/images/planning-icons/bau@3x.png')} />
+      <ConstructionIcon />
       <LegendItemLabel>im Bau</LegendItemLabel>
     </LegendItem>
     <LegendItem>
-      <LegendIcon src={require('~/images/planning-icons/fertig@3x.png')} />
+      <DoneIcon />
       <LegendItemLabel>Fertig</LegendItemLabel>
     </LegendItem>
   </PlanningLegend>

@@ -14,6 +14,7 @@ import * as AppActions from '~/modules/App/AppState';
 import * as MapActions from './MapState';
 import MapUtils from './map-utils';
 import { arrayIsEqual } from '~/utils';
+import { isSmallScreen } from '~/style-utils';
 
 const StyledMap = styled.div`
   width: 100%;
@@ -182,11 +183,13 @@ class Map extends PureComponent {
         Store.dispatch(MapActions.setPopupVisible(true));
       }
 
+      console.log(isSmallScreen());
+
       Store.dispatch(AppActions.setActiveSection(properties.id));
       Store.dispatch(MapActions.setView({
         center,
         animate: true,
-        zoom: config.map.zoomAfterGeocode,
+        zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom(),
       }));
 
       this.handleMove();
