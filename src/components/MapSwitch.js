@@ -1,9 +1,9 @@
-/* eslint-disable */
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import ToggleSwitch from 'react-toggle-switch';
 import { withRouter } from 'react-router';
 import BikeIcon from '~/images/bike.svg';
+import PylonIcon from '~/images/pylon.svg';
 
 const MapSwitchWrapper = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const MapSwitchItem = styled.div`
 `;
 
 const Switch = styled(ToggleSwitch)`
-  
+
   &.switch {
     width: 105px;
     height: 50px;
@@ -47,7 +47,7 @@ const Switch = styled(ToggleSwitch)`
     background: #353535;
     border: 2px solid #E8E8E8;
     box-shadow: 0 0 4px 1px rgba(0,0,0,0.5);g
-    
+
     path {
       stroke: #353535;
       fill: #fff;
@@ -78,17 +78,14 @@ const SwitchDescription = styled.div`
 `;
 
 class MapSwitch extends PureComponent {
-  handleChange = (checked) => {
-    return () => {
-      // @TODO: as soon as the feature is ready we can use this again
-      const to = checked ? '/zustand' : '/planungen';
-      this.props.history.push(to);
-    }
+  handleChange = checked => () => {
+    const to = checked ? '/zustand' : '/planungen';
+    this.props.history.push(to);
   }
 
   render() {
     const checked = this.props.match.url === '/planungen';
-    
+
     return (
       <MapSwitchWrapper data-tip data-for="new_feat_slider">
         <MapSwitchItem>
@@ -96,8 +93,8 @@ class MapSwitch extends PureComponent {
           <SwitchDescription isActive={!checked}>Zustand der Radwege</SwitchDescription>
         </MapSwitchItem>
         <MapSwitchItem justify="center">
-          <Switch on={checked} onClick={this.handleChange(checked)} enabled={true}>
-            <BikeIcon />
+          <Switch on={checked} onClick={this.handleChange(checked)}>
+            { checked ? <PylonIcon /> : <BikeIcon /> }
           </Switch>
         </MapSwitchItem>
         <MapSwitchItem>

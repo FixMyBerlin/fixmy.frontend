@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="32px" viewBox="0 0 24 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="happytrans" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="Group">
+                <path d="M15.635,7.344 L14.23,1.957 C13.9584927,0.943474573 13.0372435,0.240826855 11.988,0.247 C10.9383854,0.240370419 10.0166013,0.943112686 9.745,1.957 L8.341,7.344 L15.635,7.344 Z M17.309,13.767 L6.667,13.767 L7.543,10.402 L16.433,10.402 L17.309,13.767 Z M18.983,20.19 L4.993,20.19 L5.056,19.95 L5.594,17.884 L5.87,16.826 L18.105,16.826 L18.983,20.19 Z M23.26,29.169 C23.26,30.495 22.166,31.569 20.815,31.569 L3.16,31.569 C1.81,31.569 0.714,30.495 0.714,29.169 C0.714,27.844 1.809,26.769 3.16,26.769 L3.278,26.769 L4.196,23.249 L19.779,23.249 L20.697,26.769 L20.815,26.769 C22.166,26.769 23.261,27.844 23.261,29.169 L23.26,29.169 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

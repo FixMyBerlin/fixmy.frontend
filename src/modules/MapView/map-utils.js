@@ -26,11 +26,9 @@ export function toggleLayer(map, layer, isVisible) {
 
 // used to highlight a section by id
 export function filterLayersById(map, id) {
-  console.log(id);
-
   if (id) {
     const VisibilityFilter = ['case',
-      ['!=', ['get', 'id'], id], 0,
+      ['!=', ['get', 'id'], id], 0.1,
       1
     ];
 
