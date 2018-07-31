@@ -35,7 +35,8 @@ class Map extends PureComponent {
     accessToken: PropTypes.string.isRequired,
     hasMoved: PropTypes.bool,
     calculatePopupPosition: PropTypes.bool,
-    drawOverlayLine: PropTypes.bool
+    drawOverlayLine: PropTypes.bool,
+    dim: PropTypes.bool
   }
 
   static defaultProps = {
@@ -51,7 +52,8 @@ class Map extends PureComponent {
     setMapContext: () => {},
     hasMoved: false,
     calculatePopupPosition: false,
-    drawOverlayLine: true
+    drawOverlayLine: true,
+    dim: false
   }
 
   state = {
@@ -61,7 +63,7 @@ class Map extends PureComponent {
 
   componentDidMount() {
     MapboxGL.accessToken = this.props.accessToken;
-    
+
     const mbStyleUrl = `${config.map.style}?fresh=true`;
 
     this.map = new MapboxGL.Map({
@@ -139,12 +141,10 @@ class Map extends PureComponent {
     this.setState({ loading: false });
 
     this.map.resize();
-  } 
+  }
 
   updateLayers = () => {
     const filterId = this.props.activeSection;
-
-    MapUtils.filterLayersById(this.map, filterId);
 
     if (this.props.activeLayer === 'zustand') {
       MapUtils.colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
@@ -155,16 +155,18 @@ class Map extends PureComponent {
     }
 
     MapUtils.toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
-    MapUtils.toggleLayer(this.map, config.map.layers.dimmingLayer, !!this.props.activeSection);
+    MapUtils.toggleLayer(this.map, config.map.layers.dimmingLayer, this.props.dim);
     MapUtils.toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
+
+    MapUtils.filterLayersById(this.map, filterId);
   }
 
   handleClick = (e) => {
     const properties = idx(e.features, _ => _[0].properties);
-    const geometry = idx(e.features, _ => _[0].properties);
+    const geometry = idx(e.features, _ => _[0].geometry);
 
-    const center = geometry ? turfCenter(e.features[0]).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
-    
+    const center = geometry ? turfCenter(geometry).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
+
     // @TODO: how can we handle these planning urls/ ids better?
     const sideNonePlanningUrl = properties.side0_planning_url || properties.side0_planning_url || properties.sideNone_planning_url;
     const id = this.props.activeView === 'planungen' ? sideNonePlanningUrl.match(/\d/)[0] : properties.id;
@@ -180,11 +182,11 @@ class Map extends PureComponent {
         Store.dispatch(MapActions.setPopupVisible(true));
       }
 
-      Store.dispatch(AppActions.setActiveSection(id));
+      Store.dispatch(AppActions.setActiveSection(properties.id));
       Store.dispatch(MapActions.setView({
         center,
         animate: true,
-        zoom: config.map.zoomAfterGeocode
+        zoom: config.map.zoomAfterGeocode,
       }));
 
       this.handleMove();

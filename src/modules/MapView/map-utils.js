@@ -26,6 +26,8 @@ export function toggleLayer(map, layer, isVisible) {
 
 // used to highlight a section by id
 export function filterLayersById(map, id) {
+  console.log(id);
+
   if (id) {
     const VisibilityFilter = ['case',
       ['!=', ['get', 'id'], id], 0,
@@ -122,6 +124,7 @@ export function resetMap() {
   Store.dispatch(AppActions.setActiveSection(null));
   Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
+  Store.dispatch(MapActions.setView({ show3dBuildings: false, dim: false, pitch: 0, bearing: 0 }));
 }
 
 export default {

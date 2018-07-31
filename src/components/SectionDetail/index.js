@@ -95,6 +95,10 @@ class SectionDetails extends PureComponent {
     const { name } = data;
     const sideData = data.details[sideIndex];
 
+    if (!sideData) {
+      return <div>Keine Daten vorhanden.</div>;
+    }
+
     return (
       <React.Fragment>
         <ButtonGroup>

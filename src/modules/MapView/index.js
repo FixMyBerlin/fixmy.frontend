@@ -72,6 +72,7 @@ class MapViewComponent extends PureComponent {
             bearing={this.props.bearing}
             pitch={this.props.pitch}
             show3dBuildings={this.props.show3dBuildings}
+            dim={this.props.dim}
             activeLayer={this.props.activeLayer}
             activeSection={this.props.activeSection}
             activeView={this.props.activeLayer}
@@ -81,6 +82,7 @@ class MapViewComponent extends PureComponent {
             filterHbi={this.props.filterHbi}
             calculatePopupPosition={calculatePopupPosition}
             displayPopup={this.props.displayPopup}
+            animate={this.props.animate}
           >
             <LocatorControl
               key="Map__LocatorControl"
@@ -138,7 +140,6 @@ export default withRouter(
   connect(state => ({
     activeLayer: state.AppState.activeView,
     activeSection: parseInt(state.AppState.activeSection, 0),
-
     activeLocation: state.MapState.activeLocation,
     filterHbi: state.MapState.filterHbi,
     filterHbiIndex: state.MapState.filterHbiIndex,
@@ -151,6 +152,7 @@ export default withRouter(
     pitch: state.MapState.pitch,
     center: state.MapState.center,
     show3dBuildings: state.MapState.show3dBuildings,
+    dim: state.MapState.dim,
     animate: state.MapState.animate,
     displayPopup: state.MapState.displayPopup,
     ...state.UserState
