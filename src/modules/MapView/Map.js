@@ -78,8 +78,6 @@ class Map extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.props.popupLngLat);
-
     if (this.state.loading) {
       return false;
     }
@@ -101,8 +99,6 @@ class Map extends PureComponent {
     if (layerChanged) {
       this.updateLayers();
     }
-
-    console.log(this.props.activeSection);
 
     if (!this.props.activeSection && this.state.popupLngLat) {
       this.setState({ popupLngLat: null });

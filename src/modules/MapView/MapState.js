@@ -69,7 +69,6 @@ export function geocodeAddress(searchtext) {
 }
 
 export default function MapStateReducer(state = initialState, action = {}) {
-  console.log(action.type);
   switch (action.type) {
     case SET_VIEW:
     case SET_POPUP_DATA:

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Styled from 'styled-components';
 import Route from 'react-router/Route';
 
 import MapLegend from '~/components/MapLegend';
 import MapSwitch from '~/components/MapSwitch';
+import Brace from '~/components/styled/Brace';
 
 const MapContent = Styled.div`
   width: 100%;
@@ -23,10 +24,13 @@ export default props => (
           path="/zustand"
           render={() => (
             props.displayLegend && (
-              <MapLegend
-                type="hbi"
-                filterHbiIndex={props.filterHbiIndex}
-              />
+              <Fragment>
+                <MapLegend
+                  type="hbi"
+                  filterHbiIndex={props.filterHbiIndex}
+                />
+                <Brace type="zustand" />
+              </Fragment>
             )
           )}
         />
@@ -34,7 +38,12 @@ export default props => (
           exact
           path="/planungen"
           render={() => (
-            props.displayLegend && <MapLegend type="plannings" />
+            props.displayLegend && (
+              <Fragment>
+                <MapLegend type="plannings" />
+                <Brace type="planung" />
+              </Fragment>
+            )
           )}
         />
         <MapSwitch />

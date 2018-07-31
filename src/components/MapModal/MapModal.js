@@ -8,8 +8,6 @@ import { media } from '~/style-utils';
 import Store from '~/redux/store';
 import * as MapActions from '~/modules/MapView/MapState';
 
-import BraceHorizontalZustand from '~/images/brace-horizontal-zustand.svg';
-import BraceHorizontalPlanung from '~/images/brace-horizontal-planung.svg';
 import PinIcon from '~/images/pin.svg';
 import ResetMapButton from '~/components/ResetMapButton';
 import PlanningStatus from './PlanningStatus';
@@ -74,24 +72,6 @@ const MoreButtonWrapper = styled.div`
   `}
 `;
 
-const StyledBraceHorizontalZustand = styled(BraceHorizontalZustand)`
-  display: block;
-  width: 100%;
-
-  ${media.m`
-    display: none;
-  `}
-`;
-
-const StyledBraceHorizontalPlanung = styled(BraceHorizontalPlanung)`
-  display: block;
-  width: 100%;
-
-  ${media.m`
-    display: none;
-  `}
-`;
-
 const CloseBtn = styled(ResetMapButton)`
   position: absolute;
   top: -18px;
@@ -136,12 +116,6 @@ class MapModalComponent extends PureComponent {
             mehr Infos
           </MoreButton>
         </MoreButtonWrapper>
-
-        {this.props.activeView === 'zustand' ?
-          <StyledBraceHorizontalZustand /> :
-          <StyledBraceHorizontalPlanung />
-        }
-        
       </MapModal>
     );
   }
