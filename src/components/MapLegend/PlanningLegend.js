@@ -18,6 +18,7 @@ const LegendItem = styled.div`
   align-items: center;
   padding: 20px 10px 10px 10px;
 `;
+
 const LegendItemLabel = styled.div`
   font-size: 10px;
   color: ${config.colors.darkgrey};
