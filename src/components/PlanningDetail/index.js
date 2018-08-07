@@ -87,7 +87,7 @@ class PlanningDetails extends PureComponent {
 
   render() {
     const { data } = this.props;
-    const { title, draft, responsible, costs, faq, phase, start_of_construction, start_of_planing } = data;
+    const { title, draft, responsible, costs, faq, phase, construction_started, draft_submitted } = data;
 
     const sliderImages = [
       { src: data.cross_section_photo },
@@ -106,7 +106,7 @@ class PlanningDetails extends PureComponent {
             Fertigstellung: {draft || 'Unbekannt'}
           </Subtitle>
           <StatusInfo>
-            Planungsbeginn: {start_of_planing || 'Unbekannt'}, Baubeginn: {start_of_construction || 'Unbekannt'}
+            Planungsbeginn: {draft_submitted || 'Unbekannt'}, Baubeginn: {construction_started || 'Unbekannt'}
           </StatusInfo>
           <PlanningStatus phase={phase} />
         </DetailHead>

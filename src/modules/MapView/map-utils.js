@@ -46,12 +46,48 @@ function setMapFilter(map, filter) {
   map.setFilter(config.map.layers.overlayLine, filter);
 }
 
-export function colorizePlanningLines(map) {
-  setMapFilter(map, ['any', ['has', 'side0_planning_phase'], ['has', 'side1_planning_phase'], ['has', 'sideNone_planning_phase']]);
+function getPlanningLineColorRules(side) {
+  return [
+    'case',
+    ['==', 'idea', ['get', `${side}_planning_phase`]], config.planningPhases.Konzept.color,
+    ['==', 'preliminary planning', ['get', `${side}_planning_phase`]], config.planningPhases.Planung.color,
+    ['==', 'blueprint planning', ['get', `${side}_planning_phase`]], config.planningPhases.Planung.color,
+    ['==', 'approval planning', ['get', `${side}_planning_phase`]], config.planningPhases.Planung.color,
+    ['==', 'execution planning', ['get', `${side}_planning_phase`]], config.planningPhases.Planung.color,
+    ['==', 'preparation of awarding', ['get', `${side}_planning_phase`]], config.planningPhases.Planung.color,
+    ['==', 'awarding', ['get', `${side}_planning_phase`]], config.planningPhases.Planung.color,
+    ['==', 'execution of construction work', ['get', `${side}_planning_phase`]], config.planningPhases['im Bau'].color,
+    ['==', 'ready', ['get', `${side}_planning_phase`]], config.planningPhases.Fertig.color,
+    '#FFF'
+  ];
+}
 
-  map.setPaintProperty(config.map.layers.centerLayer, 'line-color', config.colors.change_4);
-  map.setPaintProperty(config.map.layers.side0Layer, 'line-color', config.colors.change_4);
-  map.setPaintProperty(config.map.layers.side1Layer, 'line-color', config.colors.change_4);
+function getPlanningOpacityRules(side) {
+  return [
+    'case',
+    ['==', true, ['has', ['get', `${side}_planning_phase`]]], 1,
+    0
+  ];
+}
+
+export function colorizePlanningLines(map) {
+  setMapFilter(map, ['any',
+    ['has', 'side0_planning_phase'],
+    ['has', 'side1_planning_phase'],
+    ['has', 'sideNone_planning_phase']
+  ]);
+
+  const paintRulesCenter = getPlanningLineColorRules('sideNone');
+  const paintRulesSide0 = getPlanningLineColorRules('side0');
+  const paintRulesSide1 = getPlanningLineColorRules('side1');
+
+  map.setPaintProperty(config.map.layers.centerLayer, 'line-color', paintRulesCenter);
+  map.setPaintProperty(config.map.layers.side0Layer, 'line-color', paintRulesSide0);
+  map.setPaintProperty(config.map.layers.side1Layer, 'line-color', paintRulesSide1);
+
+  // const opacityRulesCenter = getPlanningOpacityRules('sideNone');
+  // const opacityRulesSide0 = getPlanningOpacityRules('side0');
+  // const opacityRulesSide1 = getPlanningOpacityRules('side1');
 
   map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', 1);
   map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', 1);
