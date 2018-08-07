@@ -82,7 +82,7 @@ const CloseBtn = styled(ResetMapButton)`
 const closePopup = () => {
   Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
-  Store.dispatch(MapActions.setView({ show3dBuildings: true, pitch: 40, dim: true, animate: true }));
+  Store.dispatch(MapActions.setView({ show3dBuildings: true, pitch: 40, dim: true, animate: true, zoom: 16 }));
 };
 
 class MapPopupComponent extends PureComponent {

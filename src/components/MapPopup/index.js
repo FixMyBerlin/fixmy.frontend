@@ -1,5 +1,4 @@
 /* eslint indent: 0 */
-
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -27,7 +26,7 @@ function getArrowCSS({ size = 20, color = 'white', offset = 0 }) {
   `;
 }
 
-const MapPopupPositioner = styled(MapPopup)`
+const StyledMapPopup = styled(MapPopup)`
   position: relative;
 
   ${media.m`
@@ -62,7 +61,7 @@ class MapPopupWrapper extends PureComponent {
     const y = this.props.popupLocation ? this.props.popupLocation.y : 0;
 
     return (
-      <MapPopupPositioner x={x} y={y - arrowSize} />
+      <StyledMapPopup x={x} y={y - arrowSize} />
     );
   }
 }
