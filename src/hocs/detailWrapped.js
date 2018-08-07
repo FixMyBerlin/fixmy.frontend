@@ -121,13 +121,22 @@ function detailWrapped(Component) {
       resetMap();
     }
 
+    getJSONFallbackPath() {
+      const file = this.props.apiEndpoint === 'planungen' ? 'planning-sections-example.json' : 'plannings-example.json';
+      return `/data/${file}`;
+    }
+
     loadData = () => {
       const id = idx(this.props.match, _ => _.params.id);
 
       this.setState({ isLoading: true });
 
+      const dataUrl = config.offlineMode ?
+        this.getJSONFallbackPath() :
+        `${config.apiUrl}/${this.props.apiEndpoint}/${id}`;
+
       Axios
-        .get(`${config.apiUrl}/${this.props.apiEndpoint}/${id}`)
+        .get(dataUrl)
         .then(this.onDataLoaded)
         .catch(this.onDataError);
     }

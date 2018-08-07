@@ -99,6 +99,9 @@ class MapPopupComponent extends PureComponent {
       return null;
     }
 
+    const isPlaningView = activeView === 'planungen';
+    const isStatus = activeView === 'zustand';
+
     return (
       <MapPopup className={this.props.className} style={this.props.style}>
         <CloseBtn />
@@ -109,8 +112,8 @@ class MapPopupComponent extends PureComponent {
             <MapPopupSubtitle>Abschnitt 1</MapPopupSubtitle>
           </div>
         </MapPopupLocation>
-        { activeView === 'planungen' && <PlanningStatus section={data} /> }
-        { activeView === 'zustand' && <BikeLevelStatus onClick={this.onDetailClick} section={data} /> }
+        {isPlaningView && <PlanningStatus section={data} />}
+        {isStatus && <BikeLevelStatus onClick={this.onDetailClick} section={data} />}
         <MoreButtonWrapper>
           <MoreButton onClick={this.onDetailClick}>
             mehr Infos

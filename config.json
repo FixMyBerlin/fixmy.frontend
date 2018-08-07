@@ -142,5 +142,6 @@
     "dimmingOpacity": 0.3
   },
   "sectionIsBeta": true,
-  "planningIsBeta": true
+  "planningIsBeta": true,
+  "offlineMode": true
 }

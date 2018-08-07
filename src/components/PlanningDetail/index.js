@@ -14,6 +14,7 @@ import PlanningStatus from './PlanningStatus';
 const DetailHead = Styled.div`
   padding: 14px 24px;
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24);
+  position: relative;
 `;
 
 const DetailBody = Styled.div`
@@ -99,7 +100,6 @@ class PlanningDetails extends PureComponent {
         </DetailHead>
 
         <DetailBody>
-
           <DetailBodySection>
             <Subtitle>Ziel & Hintergrund dieser Maßnahme?</Subtitle>
             <Text>
