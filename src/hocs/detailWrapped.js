@@ -41,6 +41,13 @@ const DetailHeader = styled.div`
   font-size: 12px;
   line-height: 1.5;
   align-items: center;
+  z-index: 3;
+`;
+
+const Shadow = styled.div`
+  box-shadow: 0 0px 8px 2px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
 `;
 
 const DetailTitle = styled.div`
@@ -170,6 +177,7 @@ function detailWrapped(Component) {
             </div>
             <Close onClick={this.onClose}>×</Close>
           </DetailHeader>
+          <Shadow />
           <DetailBody>
             <Component
               data={data}

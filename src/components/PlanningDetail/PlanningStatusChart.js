@@ -44,7 +44,10 @@ const IconWrapper = Styled.div`
   }
 `;
 
-function getPhaseIcon(phase) {
+function getPhaseIcon(phase = {}) {
+  if (!phase.label) {
+    return false;
+  }
   const Icon = iconPaths[phase.label];
   return (
     <IconWrapper top={0} left={phase.x}>

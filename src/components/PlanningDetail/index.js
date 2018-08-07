@@ -56,12 +56,6 @@ const DetailImage = Styled.img`
   width: 100%;
 `;
 
-const Shadow = Styled.div`
-  box-shadow: 0 0px 8px 2px rgba(0, 0, 0, 0.5);
-  position: relative;
-  z-index: 2;
-`;
-
 const Anchor = Styled.a`
   color: ${config.colors.interaction};
   text-decoration: none;
@@ -97,7 +91,6 @@ class PlanningDetails extends PureComponent {
 
     return (
       <React.Fragment>
-        <Shadow />
         <ImageSlider images={sliderImages} />
 
         <DetailHead>
@@ -106,7 +99,7 @@ class PlanningDetails extends PureComponent {
             Fertigstellung: {draft || 'Unbekannt'}
           </Subtitle>
           <StatusInfo>
-            Planungsbeginn: {draft_submitted || 'Unbekannt'}, Baubeginn: {construction_started || 'Unbekannt'}
+            {draft_submitted ? `Planungsbeginn: ${draft_submitted}` : null} {construction_started ? `Baubeginn: ${construction_started}` : null}
           </StatusInfo>
           <PlanningStatus phase={phase} />
         </DetailHead>
