@@ -66,7 +66,6 @@ class MapViewComponent extends PureComponent {
 
           <Map
             key="MapComponent"
-            accessToken={config.map.accessToken}
             zoom={this.props.zoom}
             center={this.props.center}
             bearing={this.props.bearing}

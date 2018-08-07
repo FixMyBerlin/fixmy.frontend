@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 import _isEqual from 'lodash.isequal';
@@ -10,17 +9,21 @@ import turfCenter from '@turf/center';
 
 import Store from '~/redux/store';
 
-import * as AppActions from '~/modules/App/AppState';
-import * as MapActions from './MapState';
-import MapUtils from './map-utils';
 import { arrayIsEqual } from '~/utils';
 import { isSmallScreen } from '~/style-utils';
+import * as AppActions from '~/modules/App/AppState';
+import * as MapActions from './MapState';
+import {
+  colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer, filterLayersById
+} from './map-utils';
+
+const MB_STYLE_URL = `${config.map.style}?fresh=true`;
+MapboxGL.accessToken = config.map.accessToken;
 
 const StyledMap = styled.div`
   width: 100%;
   flex: 1;
 `;
-
 class Map extends PureComponent {
   static propTypes = {
     zoom: PropTypes.number,
@@ -29,11 +32,9 @@ class Map extends PureComponent {
     bearing: PropTypes.number,
     show3dBuildings: PropTypes.bool,
     animate: PropTypes.bool,
-    updateView: PropTypes.func,
     setMapContext: PropTypes.func,
     activeLayer: PropTypes.string,
     activeSection: PropTypes.number,
-    accessToken: PropTypes.string.isRequired,
     hasMoved: PropTypes.bool,
     calculatePopupPosition: PropTypes.bool,
     drawOverlayLine: PropTypes.bool,
@@ -49,7 +50,6 @@ class Map extends PureComponent {
     animate: false,
     activeLayer: null,
     activeSection: null,
-    updateView: () => {},
     setMapContext: () => {},
     hasMoved: false,
     calculatePopupPosition: false,
@@ -63,21 +63,16 @@ class Map extends PureComponent {
   }
 
   componentDidMount() {
-    MapboxGL.accessToken = this.props.accessToken;
-
-    const mbStyleUrl = `${config.map.style}?fresh=true`;
-
     this.map = new MapboxGL.Map({
       container: this.root,
-      style: mbStyleUrl
+      style: MB_STYLE_URL
     });
 
     this.setView(this.getViewFromProps(), false);
     this.map.on('load', this.handleLoad);
+    this.props.setMapContext(this.map);
 
     window.map = this.map;
-
-    this.props.setMapContext(this.map);
   }
 
   componentDidUpdate(prevProps) {
@@ -97,18 +92,18 @@ class Map extends PureComponent {
     const layerChanged = prevProps.activeLayer !== this.props.activeLayer ||
       prevProps.activeSection !== this.props.activeSection ||
       prevProps.show3dBuildings !== this.props.show3dBuildings ||
-      !_isEqual(prevProps.filterHbi, this.props.filterHbi)
+      !_isEqual(prevProps.filterHbi, this.props.filterHbi);
 
     if (layerChanged) {
       this.updateLayers();
     }
 
     if (!this.props.activeSection && this.state.popupLngLat) {
-      this.setState({ popupLngLat: null });
+      this.disablePopup();
     }
 
     if (this.props.match.url === '/my-hbi' && !arrayIsEqual(prevProps.hbi_values, this.props.hbi_values)) {
-      MapUtils.colorizeHbiLines(this.map, this.props.hbi_values);
+      colorizeHbiLines(this.map, this.props.hbi_values);
     }
 
     return this.map.resize();
@@ -125,10 +120,14 @@ class Map extends PureComponent {
 
   setView = (view, animate) => {
     if (animate) {
-      MapUtils.animateView(this.map, view);
+      animateView(this.map, view);
     } else {
-      MapUtils.setView(this.map, view);
+      setView(this.map, view);
     }
+  }
+
+  disablePopup() {
+    this.setState({ popupLngLat: null });
   }
 
   handleLoad = () => {
@@ -148,18 +147,18 @@ class Map extends PureComponent {
     const filterId = this.props.activeSection;
 
     if (this.props.activeLayer === 'zustand') {
-      MapUtils.colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
+      colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
     }
 
     if (this.props.activeLayer === 'planungen') {
-      MapUtils.colorizePlanningLines(this.map);
+      colorizePlanningLines(this.map);
     }
 
-    MapUtils.toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
-    MapUtils.toggleLayer(this.map, config.map.layers.dimmingLayer, this.props.dim);
-    MapUtils.toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
+    toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
+    toggleLayer(this.map, config.map.layers.dimmingLayer, this.props.dim);
+    toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
 
-    MapUtils.filterLayersById(this.map, filterId);
+    filterLayersById(this.map, filterId);
   }
 
   handleClick = (e) => {
@@ -182,8 +181,6 @@ class Map extends PureComponent {
         Store.dispatch(MapActions.setPopupData(properties));
         Store.dispatch(MapActions.setPopupVisible(true));
       }
-
-      console.log(isSmallScreen());
 
       Store.dispatch(AppActions.setActiveSection(properties.id));
       Store.dispatch(MapActions.setView({

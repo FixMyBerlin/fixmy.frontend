@@ -60,8 +60,6 @@ export default () => (
         <SocialSharer />
       </HomeContent>
     </ContentOverlay>
-    <BackgroundMap
-      accessToken={config.map.accessToken}
-    />
+    <BackgroundMap />
   </React.Fragment>
 );
