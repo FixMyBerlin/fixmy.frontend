@@ -4,7 +4,6 @@ import withRouter from 'react-router/withRouter';
 import { connect } from 'react-redux';
 
 import { media } from '~/style-utils';
-
 import Store from '~/redux/store';
 import * as MapActions from '~/modules/MapView/MapState';
 
@@ -13,7 +12,7 @@ import ResetMapButton from '~/components/ResetMapButton';
 import PlanningStatus from './PlanningStatus';
 import BikeLevelStatus from './BikeLevelStatus';
 
-const MapModal = styled.div`
+const MapPopup = styled.div`
   width: 100%;
   background: #fff;
   flex: 0 1 auto;
@@ -27,7 +26,7 @@ const StyledPinIcon = styled(PinIcon)`
   margin-right: 10px;
 `;
 
-const MapModalLocation = styled.div`
+const MapPopupLocation = styled.div`
   display: flex;
   margin-bottom: 15px;
   text-transform: uppercase;
@@ -38,11 +37,11 @@ const MapModalLocation = styled.div`
   line-height: 1.2;
 `;
 
-const MapModalTitle = styled.div`
+const MapPopupTitle = styled.div`
   font-size: 17px;
 `;
 
-const MapModalSubtitle = styled.div`
+const MapPopupSubtitle = styled.div`
   font-size: 10px;
 `;
 
@@ -86,7 +85,7 @@ const closePopup = () => {
   Store.dispatch(MapActions.setView({ show3dBuildings: true, pitch: 40, dim: true, animate: true }));
 };
 
-class MapModalComponent extends PureComponent {
+class MapPopupComponent extends PureComponent {
   onDetailClick = () => {
     const detailRoute = `/${this.props.activeView}/${this.props.activeSection}`;
     this.props.history.push(detailRoute);
@@ -101,15 +100,15 @@ class MapModalComponent extends PureComponent {
     }
 
     return (
-      <MapModal className={this.props.className} style={this.props.style}>
+      <MapPopup className={this.props.className} style={this.props.style}>
         <CloseBtn />
-        <MapModalLocation onClick={this.onDetailClick}>
+        <MapPopupLocation onClick={this.onDetailClick}>
           <StyledPinIcon />
           <div>
-            <MapModalTitle>{data.name || '-'}</MapModalTitle>
-            <MapModalSubtitle>Abschnitt 1</MapModalSubtitle>
+            <MapPopupTitle>{data.name || '-'}</MapPopupTitle>
+            <MapPopupSubtitle>Abschnitt 1</MapPopupSubtitle>
           </div>
-        </MapModalLocation>
+        </MapPopupLocation>
         { activeView === 'planungen' && <PlanningStatus section={data} /> }
         { activeView === 'zustand' && <BikeLevelStatus onClick={this.onDetailClick} section={data} /> }
         <MoreButtonWrapper>
@@ -117,7 +116,7 @@ class MapModalComponent extends PureComponent {
             mehr Infos
           </MoreButton>
         </MoreButtonWrapper>
-      </MapModal>
+      </MapPopup>
     );
   }
 }
@@ -128,5 +127,5 @@ export default withRouter(
     activeView: state.AppState.activeView,
     data: state.MapState.popupData,
     displayPopup: state.MapState.displayPopup
-  }))(MapModalComponent)
+  }))(MapPopupComponent)
 );

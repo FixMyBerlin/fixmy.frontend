@@ -8,7 +8,6 @@ import withRouter from 'react-router/withRouter';
 import turfCenter from '@turf/center';
 
 import Store from '~/redux/store';
-
 import { arrayIsEqual } from '~/utils';
 import { isSmallScreen } from '~/style-utils';
 import * as AppActions from '~/modules/App/AppState';
@@ -24,6 +23,7 @@ const StyledMap = styled.div`
   width: 100%;
   flex: 1;
 `;
+
 class Map extends PureComponent {
   static propTypes = {
     zoom: PropTypes.number,
@@ -168,7 +168,7 @@ class Map extends PureComponent {
     const center = geometry ? turfCenter(geometry).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
 
     // @TODO: how can we handle these planning urls/ ids better?
-    const sideNonePlanningUrl = properties.side0_planning_url || properties.side0_planning_url || properties.sideNone_planning_url;
+    const sideNonePlanningUrl = properties.side0_planning_url || properties.side0_planning_url || properties.sideNone_planning_url;
     const id = this.props.activeView === 'planungen' ? sideNonePlanningUrl.match(/\d/)[0] : properties.id;
 
     if (properties) {
@@ -186,7 +186,7 @@ class Map extends PureComponent {
       Store.dispatch(MapActions.setView({
         center,
         animate: true,
-        zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom(),
+        zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
       }));
 
       this.handleMove();

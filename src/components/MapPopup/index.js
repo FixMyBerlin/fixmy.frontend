@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import { media } from '~/style-utils';
-import MapModal from './MapModal';
+import MapPopup from './MapPopup';
 
 const arrowSize = 19;
 const outerArrowSize = 21;
@@ -27,7 +27,7 @@ function getArrowCSS({ size = 20, color = 'white', offset = 0 }) {
   `;
 }
 
-const MapModalPositioner = styled(MapModal)`
+const MapPopupPositioner = styled(MapPopup)`
   position: relative;
 
   ${media.m`
@@ -56,17 +56,17 @@ const MapModalPositioner = styled(MapModal)`
   `}
 `;
 
-class MapModalWrapper extends PureComponent {
+class MapPopupWrapper extends PureComponent {
   render() {
     const x = this.props.popupLocation ? this.props.popupLocation.x : 0;
     const y = this.props.popupLocation ? this.props.popupLocation.y : 0;
 
     return (
-      <MapModalPositioner x={x} y={y - arrowSize} />
+      <MapPopupPositioner x={x} y={y - arrowSize} />
     );
   }
 }
 
 export default connect(state => ({
   popupLocation: state.MapState.popupLocation
-}))(MapModalWrapper);
+}))(MapPopupWrapper);

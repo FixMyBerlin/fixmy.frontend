@@ -7,7 +7,7 @@ import MediaQuery from 'react-responsive';
 
 import SearchBar from '~/components/SearchBar';
 import LocatorControl from '~/components/LocatorControl';
-import MapModal from '~/components/MapModal';
+import MapPopup from '~/components/MapPopup';
 import MapControl from '~/components/MapControl';
 import FMBLogo from '~/components/FMBLogo';
 import SectionDetail from '~/components/SectionDetail';
@@ -94,7 +94,7 @@ class MapViewComponent extends PureComponent {
             </MediaQuery>
           </Map>
 
-          {this.props.displayPopup && <MapModal />}
+          {this.props.displayPopup && <MapPopup />}
 
           <MapContent
             filterHbiIndex={this.props.filterHbiIndex}
