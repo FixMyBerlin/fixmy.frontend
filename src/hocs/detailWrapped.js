@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import idx from 'idx';
 import styled from 'styled-components';
-import { withRouter } from 'react-router';
+import withRouter from 'react-router/withRouter';
 import Axios from 'axios';
 
 import { media } from '~/style-utils';

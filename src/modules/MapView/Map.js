@@ -5,7 +5,7 @@ import _isEqual from 'lodash.isequal';
 import styled from 'styled-components';
 import idx from 'idx';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
+import withRouter from 'react-router/withRouter';
 import turfCenter from '@turf/center';
 
 import Store from '~/redux/store';

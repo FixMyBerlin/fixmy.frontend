@@ -1,4 +1,4 @@
-import { matchPath } from 'react-router';
+import matchPath from 'react-router/matchPath';
 
 const UPDATE_HISTORY = 'App/AppState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'App/AppState/SET_ACTIVE_SECTION';

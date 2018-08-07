@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router';
+import withRouter from 'react-router/withRouter';
 import { connect } from 'react-redux';
 
 import { media } from '~/style-utils';
