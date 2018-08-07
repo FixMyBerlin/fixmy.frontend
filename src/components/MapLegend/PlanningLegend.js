@@ -1,6 +1,7 @@
 /* eslint import/no-dynamic-require: 0, global-require: 0 */
 import React from 'react';
 import styled from 'styled-components';
+
 import ConceptIcon from '~/images/planning-icons/konzept.svg';
 import PlanningIcon from '~/images/planning-icons/planung.svg';
 import ConstructionIcon from '~/images/planning-icons/bau.svg';
@@ -20,9 +21,6 @@ const LegendItem = styled.div`
 const LegendItemLabel = styled.div`
   font-size: 10px;
   color: ${config.colors.darkgrey};
-`;
-const LegendIcon = styled.img`
-  width: 30px;
 `;
 
 export default () => (

@@ -86,19 +86,19 @@
   "planningPhases": {
     "Konzept": {
       "color": "#fa96d0",
-      "icon": null
+      "icon": "konzept.svg"
     },
     "Planung": {
       "color": "#cf0a7d",
-      "icon": null
+      "icon": "planung.svg"
     },
     "im Bau": {
       "color": "#910055",
-      "icon": null
+      "icon": "bau.svg"
     },
     "Fertig": {
       "color": "#910055",
-      "icon": null
+      "icon": "fertig.svg"
     }
   },
   "planningPhasesMapping": {
