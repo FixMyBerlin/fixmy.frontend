@@ -143,5 +143,6 @@
   },
   "sectionIsBeta": true,
   "planningIsBeta": true,
-  "offlineMode": true
+  "offlineMode": true,
+  "isSwitchEnabled": true
 }

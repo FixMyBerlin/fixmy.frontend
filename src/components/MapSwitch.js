@@ -5,8 +5,6 @@ import withRouter from 'react-router/withRouter';
 import BikeIcon from '~/images/bike.svg';
 import PylonIcon from '~/images/pylon.svg';
 
-const IS_ENABLED = false;
-
 const MapSwitchWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -95,7 +93,7 @@ class MapSwitch extends PureComponent {
           <SwitchDescription isActive={!checked}>Zustand der Radwege</SwitchDescription>
         </MapSwitchItem>
         <MapSwitchItem justify="center">
-          <Switch on={checked} onClick={this.handleChange(checked)} enabled={IS_ENABLED}>
+          <Switch on={checked} onClick={this.handleChange(checked)} enabled={config.isSwitchEnabled}>
             { checked ? <PylonIcon /> : <BikeIcon /> }
           </Switch>
         </MapSwitchItem>
