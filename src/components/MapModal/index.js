@@ -1,10 +1,10 @@
-/* eslint-disable */
+/* eslint indent: 0 */
+
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import { media } from '~/style-utils';
-
 import MapModal from './MapModal';
 
 const arrowSize = 19;
@@ -22,7 +22,7 @@ function getArrowCSS({ size = 20, color = 'white', offset = 0 }) {
     border-top: ${size}px solid ${color};
     left: 50%;
     top: auto;
-    bottom:-${size + offset - 1}px;
+    bottom:-${(size + offset) - 1}px;
     margin-left:-${size}px;
   `;
 }
@@ -42,7 +42,7 @@ const MapModalPositioner = styled(MapModal)`
     &:after {
       ${getArrowCSS({
         size: arrowSize,
-        color: 'white',
+        color: 'white'
       })}
     }
 
@@ -58,12 +58,8 @@ const MapModalPositioner = styled(MapModal)`
 
 class MapModalWrapper extends PureComponent {
   render() {
-    let x = 0, y = 0;
-
-    if (this.props.popupLocation) {
-      x = this.props.popupLocation.x;
-      y = this.props.popupLocation.y;
-    }
+    const x = this.props.popupLocation ? this.props.popupLocation.x : 0;
+    const y = this.props.popupLocation ? this.props.popupLocation.y : 0;
 
     return (
       <MapModalPositioner x={x} y={y - arrowSize} />

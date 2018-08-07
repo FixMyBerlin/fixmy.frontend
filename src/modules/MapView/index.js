@@ -14,14 +14,10 @@ import SectionDetail from '~/components/SectionDetail';
 import PlanningDetail from '~/components/PlanningDetail';
 
 import MyHBI from '~/modules/MyHBI';
-
 import Store from '~/redux/store';
-
 import { matchMediaSize, breakpoints } from '~/style-utils';
-
 import Map from './Map';
 import MapContent from './MapContent';
-
 import * as MapActions from './MapState';
 
 const MapView = styled.div`
