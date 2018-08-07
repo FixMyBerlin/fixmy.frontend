@@ -1,4 +1,4 @@
-/* eslint react/no-array-index-key: 0 */
+/* eslint react/no-array-index-key: 0, camelcase: 0 */
 import React, { PureComponent } from 'react';
 import Styled from 'styled-components';
 import { Choose } from 'react-extras';
@@ -26,6 +26,13 @@ const Subtitle = Styled(Headline)`
   font-family: 'Open Sans', sans-serif;
   font-size: 22px;
   font-weight: 300;
+  margin-bottom: 0.4em;
+`;
+
+const StatusInfo = Styled.div`
+  color: ${config.colors.midgrey};
+  font-size: 10px;
+  margin-bottom: 2.5em;
 `;
 
 const ExpandDescriptionButton = Styled.div`
@@ -80,7 +87,7 @@ class PlanningDetails extends PureComponent {
 
   render() {
     const { data } = this.props;
-    const { title, draft, responsible, costs, faq, phase } = data;
+    const { title, draft, responsible, costs, faq, phase, start_of_construction, start_of_planing } = data;
 
     const sliderImages = [
       { src: data.cross_section_photo },
@@ -95,7 +102,12 @@ class PlanningDetails extends PureComponent {
 
         <DetailHead>
           <Headline>{title}</Headline>
-          <Subtitle>Fertigstellung: {draft || 'Unbekannt'}</Subtitle>
+          <Subtitle>
+            Fertigstellung: {draft || 'Unbekannt'}
+          </Subtitle>
+          <StatusInfo>
+            Planungsbeginn: {start_of_planing || 'Unbekannt'}, Baubeginn: {start_of_construction || 'Unbekannt'}
+          </StatusInfo>
           <PlanningStatus phase={phase} />
         </DetailHead>
 
