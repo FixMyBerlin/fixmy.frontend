@@ -84,35 +84,28 @@
     }
   ],
   "planningPhases": {
-    "Konzept": {
+    "draft": {
       "color": "#fa96d0",
-      "icon": null
+      "icon": null,
+      "name": "Konzept"
     },
-    "Planung": {
+    "planning": {
       "color": "#cf0a7d",
-      "icon": null
+      "icon": null,
+      "name": "Planung"
     },
-    "im Bau": {
+    "execution": {
       "color": "#910055",
-      "icon": null
+      "icon": null,
+      "name": "im Bau"
     },
-    "Fertig": {
-      "color": "#910055",
-      "icon": null
+    "ready": {
+      "color": "#0f0f0f",
+      "icon": null,
+      "name": "Fertig"
     }
   },
-  "planningPhasesMapping": {
-    "idea": "Konzept",
-    "preliminary": "Planung",
-    "blueprint planning": "Planung",
-    "approval planning": "Planung",
-    "execution planning": "Planung",
-    "preparation of awarding": "Planung",
-    "awarding": "Planung",
-    "execution of construction work": "im Bau",
-    "ready": "Fertig"
-  },
-  "planningPhasesOrder": ["Konzept", "Planung", "im Bau", "Fertig"],
+  "planningPhasesOrder": ["draft", "planning", "execution", "ready"],
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
     "style": "mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h?fresh=false",

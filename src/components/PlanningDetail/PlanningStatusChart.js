@@ -78,16 +78,15 @@ class PlanningStatusChart extends PureComponent {
   }
 
   getChartData = (phase) => {
-    const planningPhaseName = config.planningPhasesMapping[phase];
     let isFinished = true;
 
-    return config.planningPhasesOrder.map((planningPhase, i, data) => {
-      if (planningPhase === planningPhaseName) {
+    return config.planningPhasesOrder.map((planningPhase, i) => {
+      if (planningPhase === phase) {
         isFinished = false;
       }
 
       const planningPhaseConfig = config.planningPhases[planningPhase];
-      const inProgress = planningPhase === planningPhaseName;
+      const inProgress = planningPhase === phase;
       const innerWidth = this.state.width - this.padding.left - this.padding.right;
       const step = innerWidth / (config.planningPhasesOrder.length - 1);
       const r = inProgress ? 25 : 12.5;

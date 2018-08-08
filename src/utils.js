@@ -31,7 +31,7 @@ export function getHBIbyProps(props, sideKey) {
   const rv = (hbiValues[0] - 5) / 10;
   const rs = (hbiValues[1] - 5) / 10;
 
-  return ((props[`${sideKey}_safety`] - rs) * 1.6) + ((props[`${sideKey}_velocity`] - rv) * 0.5);
+  return ((+props[`${sideKey}_safety`] - rs) * 1.6) + ((+props[`${sideKey}_velocity`] - rv) * 0.5);
 }
 
 export function getHBIColorByIndex(index) {

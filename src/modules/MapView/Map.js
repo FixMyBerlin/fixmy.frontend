@@ -165,9 +165,10 @@ class Map extends PureComponent {
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = geometry ? turfCenter(geometry).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
+    console.log(properties);
 
     // @TODO: how can we handle these planning urls/ ids better?
-    const sideNonePlanningUrl = properties.side0_planning_url || properties.side0_planning_url || properties.sideNone_planning_url;
+    const sideNonePlanningUrl = properties.side0_planning_url || properties.side1_planning_url || properties.sideNone_planning_url;
     const id = this.props.activeView === 'planungen' ? sideNonePlanningUrl.match(/\d/)[0] : properties.id;
 
     if (properties) {
