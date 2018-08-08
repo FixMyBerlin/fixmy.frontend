@@ -81,7 +81,7 @@ class PlanningDetails extends PureComponent {
 
   render() {
     const { data } = this.props;
-    const { title, draft, responsible, costs, faq, phase, construction_started, draft_submitted } = data;
+    const { title, draft, responsible, costs, faq, phase, construction_started, draft_submitted, photos } = data;
 
     const sliderImages = [
       { src: data.cross_section_photo },

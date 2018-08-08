@@ -79,6 +79,10 @@ export function colorizePlanningLines(map) {
   map.setPaintProperty(config.map.layers.centerLayer, 'line-color', paintRulesCenter);
   map.setPaintProperty(config.map.layers.side0Layer, 'line-color', paintRulesSide0);
   map.setPaintProperty(config.map.layers.side1Layer, 'line-color', paintRulesSide1);
+
+  map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', 1);
+  map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', 1);
+  map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', 1);
 }
 
 function getHbiExpression(sideKey, rs, rv) {

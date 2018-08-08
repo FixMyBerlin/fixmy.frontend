@@ -94,14 +94,14 @@ class PlanningStatusChart extends PureComponent {
       const y = this.height / 3;
       const nextX = this.padding.left + (step * (i + 1));
       const lineStroke = isFinished ? config.colors.change_4 : config.colors.inactivegrey;
-      const circleColor = inProgress || isFinished ? planningPhaseConfig.color : config.colors.inactivegrey;
+      const circleColor = (inProgress || isFinished) ? planningPhaseConfig.color : config.colors.inactivegrey;
 
       return {
         isFinished,
         inProgress,
         color: planningPhaseConfig.color,
         icon: planningPhaseConfig.icon,
-        label: planningPhase,
+        label: planningPhaseConfig.name,
         r,
         x,
         y,

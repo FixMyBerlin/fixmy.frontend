@@ -165,11 +165,10 @@ class Map extends PureComponent {
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = geometry ? turfCenter(geometry).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
-    console.log(properties);
 
     // @TODO: how can we handle these planning urls/ ids better?
-    const sideNonePlanningUrl = properties.side0_planning_url || properties.side1_planning_url || properties.sideNone_planning_url;
-    const id = this.props.activeView === 'planungen' ? sideNonePlanningUrl.match(/\d/)[0] : properties.id;
+    const planningUrl = properties.side0_planning_url || properties.side1_planning_url || properties.planning_url;
+    const id = this.props.activeView === 'planungen' ? planningUrl.match(/\/(\d)/)[1] : properties.id;
 
     if (properties) {
       // when user is in detail mode, we don't want to show the tooltip again,
@@ -182,7 +181,7 @@ class Map extends PureComponent {
         Store.dispatch(MapActions.setPopupVisible(true));
       }
 
-      Store.dispatch(AppActions.setActiveSection(properties.id));
+      Store.dispatch(AppActions.setActiveSection(id));
       Store.dispatch(MapActions.setView({
         center,
         animate: true,
