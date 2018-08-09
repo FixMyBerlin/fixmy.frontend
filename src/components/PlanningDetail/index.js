@@ -80,13 +80,17 @@ class PlanningDetails extends PureComponent {
   }
 
   render() {
-    const { data } = this.props;
-    const { title, draft, responsible, costs, faq, phase, construction_started, draft_submitted, photos } = data;
+    const { plannings } = this.props.data;
+    const planning = plannings[0];
+    const {
+      title, description, draft, external_url, responsible, costs, faq,
+      phase, construction_started, draft_submitted, short_description, cross_section_photo
+    } = planning;
 
     const sliderImages = [
-      { src: data.cross_section_photo },
-      { src: data.cross_section_photo },
-      { src: data.cross_section_photo }
+      { src: cross_section_photo },
+      { src: cross_section_photo },
+      { src: cross_section_photo }
     ];
 
     return (
@@ -109,8 +113,8 @@ class PlanningDetails extends PureComponent {
             <Subtitle>Ziel & Hintergrund dieser Maßnahme?</Subtitle>
             <Text>
               <Choose>
-                <Choose.When condition={this.state.descriptionExpanded}>{data.description}</Choose.When>
-                <Choose.Otherwise>{data.short_description}</Choose.Otherwise>
+                <Choose.When condition={this.state.descriptionExpanded}>{description}</Choose.When>
+                <Choose.Otherwise>{short_description}</Choose.Otherwise>
               </Choose>
             </Text>
             <ExpandDescriptionButton onClick={this.toggleDescription}>{this.state.descriptionExpanded ? 'Weniger' : 'Mehr >'}</ExpandDescriptionButton>
@@ -120,8 +124,8 @@ class PlanningDetails extends PureComponent {
             <Subtitle>Projektdaten:</Subtitle>
             <DetailItem>Zuständigkeit: <strong>{responsible}</strong></DetailItem>
             <DetailItem>Projektvolumen: <strong>{costs}</strong></DetailItem>
-            <DetailItem>Link zur Planung: <Anchor target="_blank" href={data.external_url}>{data.external_url}</Anchor></DetailItem>
-            <DetailImage src={data.cross_section_photo} />
+            <DetailItem>Link zur Planung: <Anchor target="_blank" href={external_url}>{external_url}</Anchor></DetailItem>
+            <DetailImage src={cross_section_photo} />
           </DetailBodySection>
 
           <DetailBodySection>

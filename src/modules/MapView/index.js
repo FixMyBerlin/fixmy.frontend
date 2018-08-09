@@ -116,7 +116,7 @@ class MapViewComponent extends PureComponent {
             path="/planungen/:id"
             render={() => (
               <PlanningDetail
-                apiEndpoint="plannings"
+                apiEndpoint="planning-sections"
                 onCloseRoute="/planungen"
               />
             )}
