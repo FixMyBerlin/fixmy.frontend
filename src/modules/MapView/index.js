@@ -41,6 +41,10 @@ class MapViewComponent extends PureComponent {
     userLocation: null
   }
 
+  componentDidMount() {
+    Store.dispatch(MapActions.loadPlanningData());
+  }
+
   updateView = (view) => {
     Store.dispatch(MapActions.setView(view));
   }

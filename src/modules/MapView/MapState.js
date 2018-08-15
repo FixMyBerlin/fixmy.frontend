@@ -9,6 +9,7 @@ const SET_HBI_FILTER = 'MapView/MapState/SET_HBI_FILTER';
 const SET_POPUP_DATA = 'MapView/MapState/SET_POPUP_DATA';
 const SET_POPUP_LOCATION = 'MapView/MapState/SET_POPUP_LOCATION';
 const SET_POPUP_VISIBLE = 'MapView/MapState/SET_POPUP_VISIBLE';
+const SET_PLANNING_DATA = 'MapView/MapState/SET_PLANNING_DATA';
 
 const initialState = {
   ...config.map.view,
@@ -20,7 +21,8 @@ const initialState = {
   filterPlannings: null,
   hasMoved: false,
   hbi_speed: 5,
-  hbi_safety: 5
+  hbi_safety: 5,
+  planningData: false
 };
 
 export function setView(view) {
@@ -51,6 +53,18 @@ export function setPopupVisible(isVisible) {
   return { type: SET_POPUP_VISIBLE, payload: { displayPopup: isVisible } };
 }
 
+export function loadPlanningData() {
+  return async (dispatch, getState) => {
+    if (getState().MapState.planningData) {
+      return false;
+    }
+
+    const result = await Axios.get('https://api.fixmyberlin.de/api/plannings');
+
+    return dispatch({ type: SET_PLANNING_DATA, payload: { planningData: result.data } });
+  };
+}
+
 export function geocodeAddress(searchtext) {
   return (dispatch) => {
     const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;
@@ -77,6 +91,7 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case SET_HBI_FILTER:
     case SET_POPUP_LOCATION:
     case SET_POPUP_VISIBLE:
+    case SET_PLANNING_DATA:
       return Object.assign({}, state, action.payload);
     default:
       return Object.assign({}, state);
