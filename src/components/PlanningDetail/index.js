@@ -1,7 +1,6 @@
 /* eslint react/no-array-index-key: 0, camelcase: 0 */
 import React, { PureComponent } from 'react';
 import Styled from 'styled-components';
-import { Choose } from 'react-extras';
 
 import detailWrapped from '~/hocs/detailWrapped';
 
@@ -112,10 +111,7 @@ class PlanningDetails extends PureComponent {
           <DetailBodySection>
             <Subtitle>Ziel & Hintergrund dieser Maßnahme?</Subtitle>
             <Text>
-              <Choose>
-                <Choose.When condition={this.state.descriptionExpanded}>{description}</Choose.When>
-                <Choose.Otherwise>{short_description}</Choose.Otherwise>
-              </Choose>
+              {this.state.descriptionExpanded ? description : short_description}
             </Text>
             <ExpandDescriptionButton onClick={this.toggleDescription}>{this.state.descriptionExpanded ? 'Weniger' : 'Mehr >'}</ExpandDescriptionButton>
           </DetailBodySection>

@@ -1,5 +1,4 @@
 import React, { PureComponent, Fragment } from 'react';
-import { If } from 'react-extras';
 import styled from 'styled-components';
 
 import PlanningStatusChart from './PlanningStatusChart';
@@ -38,9 +37,7 @@ class PlanningStatus extends PureComponent {
         <DetailButtonWrapper>
           <DetailButton onClick={this.toggleExpand}>Details +</DetailButton>
         </DetailButtonWrapper>
-        <If condition={this.state.isExpanded}>
-          <PlanningChecklist />
-        </If>
+        {this.state.isExpanded ? <PlanningChecklist /> : null}
       </Fragment>
     );
   }

@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: {
+        use: ['babel-loader', {
           loader: 'react-svg-loader',
           options: {
             svgo: {
@@ -55,7 +55,7 @@ module.exports = {
               ]
             }
           }
-        }
+        }]
       }
     ]
   }

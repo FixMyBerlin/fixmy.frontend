@@ -1,5 +1,4 @@
 import React from 'react';
-import { If } from 'react-extras';
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
 import { getHeadlineStyle } from '~/components/styled/Headline';
@@ -39,10 +38,7 @@ function loadImage(mdSrc) {
 }
 
 export default props => (
-  <If
-    condition={typeof props.content === 'string'}
-    render={() => (
-      <StyledMarkdown escapeHtml={false} transformImageUri={loadImage} source={props.content} />
-    )}
-  />
+  typeof props.content === 'string' ?
+    <StyledMarkdown escapeHtml={false} transformImageUri={loadImage} source={props.content} /> :
+    null
 );
