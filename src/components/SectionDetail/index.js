@@ -9,7 +9,6 @@ import HBISign from '~/components/HBISign';
 import Label from '~/components/styled/Label';
 import Title from '~/components/styled/Title';
 import DetailSwitch, { ButtonGroup } from '~/components/DetailSwitch';
-
 import InfoSection from './InfoSection';
 
 const DetailImage = styled.img`

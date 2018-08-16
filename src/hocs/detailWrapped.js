@@ -162,7 +162,7 @@ function detailWrapped(Component) {
       if (this.props.activeView === 'zustand') {
         return false;
       } else if (
-        this.props.activeView === 'planungen' && 
+        this.props.activeView === 'planungen' &&
         (data.plannings && data.plannings.length > 1 && (data.plannings[0].url !== data.plannings[1].url))
       ) {
         return false;
