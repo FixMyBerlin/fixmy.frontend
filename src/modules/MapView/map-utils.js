@@ -10,7 +10,7 @@ export function setView(map, view) {
 }
 
 export function animateView(map, view) {
-  map.flyTo({
+  map.easeTo({
     center: view.center,
     zoom: view.zoom,
     bearing: view.bearing,
@@ -149,7 +149,7 @@ export function resetMap() {
   Store.dispatch(AppActions.setActiveSection(null));
   Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
-  Store.dispatch(MapActions.setView({ show3dBuildings: false, dim: false, pitch: 0, bearing: 0 }));
+  Store.dispatch(MapActions.setView({ show3dBuildings: false, dim: false, pitch: 0, bearing: 0, animate: true }));
 }
 
 export default {
