@@ -39,6 +39,7 @@ const ExpandDescriptionButton = Styled.div`
   cursor: pointer;
   font-size: 14px;
   text-align: center;
+  display: none; // for now we dont want to display the more button
 `;
 
 const DetailBodySection = Styled.div`
