@@ -5,7 +5,7 @@ import Link from 'react-router-dom/Link';
 import StyledLink from '~/components/styled/Link';
 import ContentOverlay from '~/components/styled/ContentOverlay';
 import FMBLogo from '~/components/FMBLogo';
-import Headline from '~/components/styled/Headline';
+import Title from '~/components/styled/Title';
 import MenuButton from '~/components/MenuButton';
 import SocialSharer from '~/components/Social/SocialSharer';
 import Text from '~/components/styled/Text';
@@ -47,7 +47,7 @@ export default () => (
       <HomeContent>
         <FMBLogo />
         <div>
-          <Headline>Hi, das ist FixMyBerlin</Headline>
+          <Title>Hi, das ist FixMyBerlin</Title>
           <Text>Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Hier siehst du bald, was dafür geplant wird. Trage dich für Updates zum Newsletter ein.</Text>
         </div>
         <Link to="/zustand">

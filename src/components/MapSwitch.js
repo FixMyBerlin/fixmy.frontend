@@ -2,8 +2,10 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import ToggleSwitch from 'react-toggle-switch';
 import withRouter from 'react-router/withRouter';
+
 import BikeIcon from '~/images/bike.svg';
 import PylonIcon from '~/images/pylon.svg';
+import Label from '~/components/styled/Label';
 
 const MapSwitchWrapper = styled.div`
   display: flex;
@@ -26,7 +28,6 @@ const MapSwitchItem = styled.div`
 `;
 
 const Switch = styled(ToggleSwitch)`
-
   &.switch {
     width: 105px;
     height: 50px;
@@ -90,7 +91,9 @@ class MapSwitch extends PureComponent {
       <MapSwitchWrapper data-tip data-for="new_feat_slider">
         <MapSwitchItem>
           <SwitchLabel isActive={!checked}>Happy-Bike-Level</SwitchLabel>
-          <SwitchDescription isActive={!checked}>Zustand der Radwege</SwitchDescription>
+          <SwitchDescription isActive={!checked}>
+            <Label light>Zustand der Radwege</Label>
+          </SwitchDescription>
         </MapSwitchItem>
         <MapSwitchItem justify="center">
           <Switch on={checked} onClick={this.handleChange(checked)} enabled={config.isSwitchEnabled}>
@@ -99,7 +102,9 @@ class MapSwitch extends PureComponent {
         </MapSwitchItem>
         <MapSwitchItem>
           <SwitchLabel isActive={checked}>Planung</SwitchLabel>
-          <SwitchDescription isActive={checked}>Das plant die Stadt</SwitchDescription>
+          <SwitchDescription isActive={checked}>
+            <Label light>Das plant die Stadt</Label>
+          </SwitchDescription>
         </MapSwitchItem>
       </MapSwitchWrapper>
     );

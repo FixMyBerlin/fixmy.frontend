@@ -2,16 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 import BraceVertical from '~/images/brace-vertical.svg';
-import HBISign from '~/components/HBISign';
 import { numberFormat, getHBIbyProps, getHBIColorByIndex } from '~/utils';
+
+import HBISign from '~/components/HBISign';
+import Label from '~/components/styled/Label';
 
 const BikeLevelStatus = styled.div`
   margin-bottom: 15px;
   display: flex;
   flex-direction: row;
-  font-size: 12px;
-  line-height: 1.4;
-  color: ${config.colors.darkgrey};
 `;
 
 const SidesWrapper = styled.div`
@@ -57,8 +56,8 @@ export default (props) => {
     <BikeLevelStatus {...props}>
       <SectionLeft>
         <SidesWrapper>
-          <div>Westseite: <LevelLabel color={level0Color}>{numberFormat(level0)}</LevelLabel></div>
-          <div>Ostseite: <LevelLabel color={level1Color}>{numberFormat(level1)}</LevelLabel></div>
+          <Label margin="0 0 10px 0">Westseite: <LevelLabel color={level0Color}>{numberFormat(level0)}</LevelLabel></Label>
+          <Label>Ostseite: <LevelLabel color={level1Color}>{numberFormat(level1)}</LevelLabel></Label>
         </SidesWrapper>
         <StyledBraceVertical />
       </SectionLeft>
@@ -66,7 +65,7 @@ export default (props) => {
         <HBISign isTooltip onClick={props.onClick} hbi={bikeLevelTotal} />
       </SectionCenter>
       <Section>
-        <div>Aktueller Happy-Bike-Index</div>
+        <Label>Aktueller Happy-Bike-Index</Label>
       </Section>
     </BikeLevelStatus>
   );

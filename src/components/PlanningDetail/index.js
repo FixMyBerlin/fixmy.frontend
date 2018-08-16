@@ -4,8 +4,10 @@ import Styled from 'styled-components';
 
 import detailWrapped from '~/hocs/detailWrapped';
 
-import Headline from '~/components/styled/Headline';
+import Title from '~/components/styled/Title';
+import SectionTitle from '~/components/styled/SectionTitle';
 import Text from '~/components/styled/Text';
+import Label from '~/components/styled/Label';
 
 import ImageSlider from './ImageSlider';
 import PlanningStatus from './PlanningStatus';
@@ -14,24 +16,13 @@ const DetailHead = Styled.div`
   padding: 14px 24px;
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24);
   position: relative;
+  background: white;
 `;
 
 const DetailBody = Styled.div`
-  padding: 50px 24px;
+  padding: 10px 24px;
   background: ${config.colors.lightbg};
-`;
-
-const Subtitle = Styled(Headline)`
-  font-family: 'Open Sans', sans-serif;
-  font-size: 22px;
-  font-weight: 300;
-  margin-bottom: 0.4em;
-`;
-
-const StatusInfo = Styled.div`
-  color: ${config.colors.midgrey};
-  font-size: 10px;
-  margin-bottom: 2.5em;
+  flex-grow: 1;
 `;
 
 const ExpandDescriptionButton = Styled.div`
@@ -94,19 +85,19 @@ class PlanningDetails extends PureComponent {
         <ImageSlider images={photos} />
 
         <DetailHead>
-          <Headline>{title}</Headline>
-          <Subtitle>
+          <Title>{title}</Title>
+          <SectionTitle>
             Fertigstellung: {draft || 'Unbekannt'}
-          </Subtitle>
-          <StatusInfo>
+          </SectionTitle>
+          <Label margin="-12px 0 25px 0">
             {draft_submitted ? `Planungsbeginn: ${draft_submitted}` : null} {construction_started ? `Baubeginn: ${construction_started}` : null}
-          </StatusInfo>
+          </Label>
           <PlanningStatus phase={phase} />
         </DetailHead>
 
         <DetailBody>
           <DetailBodySection>
-            <Subtitle>Ziel & Hintergrund dieser Maßnahme?</Subtitle>
+            <SectionTitle>Ziel & Hintergrund dieser Maßnahme?</SectionTitle>
             <Text>
               {this.state.descriptionExpanded ? description : short_description}
             </Text>
@@ -114,7 +105,7 @@ class PlanningDetails extends PureComponent {
           </DetailBodySection>
 
           <DetailBodySection>
-            <Subtitle>Projektdaten:</Subtitle>
+            <SectionTitle>Projektdaten:</SectionTitle>
             <DetailItem>Zuständigkeit: <strong>{responsible}</strong></DetailItem>
             <DetailItem>Projektvolumen: <strong>{costs || 'keine Angaben'}</strong></DetailItem>
             {external_url ? <DetailItem>Link zur Planung: <Anchor target="_blank" href={external_url}>{external_url}</Anchor></DetailItem> : null}
@@ -123,7 +114,7 @@ class PlanningDetails extends PureComponent {
 
           {showFaq ? (
             <DetailBodySection>
-              <Subtitle>Häufige Fragen:</Subtitle>
+              <SectionTitle>Häufige Fragen:</SectionTitle>
               {faq.map((f, i) => (
                 <div key={`FAQ_Item_${i}`}>
                   <Text><strong>{f.text}</strong></Text>

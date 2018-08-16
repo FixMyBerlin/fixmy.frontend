@@ -9,6 +9,7 @@ import { media } from '~/style-utils';
 
 import PinIcon from '~/images/pin.svg';
 import { resetMap } from '~/modules/MapView/map-utils';
+import Label from '~/components/styled/Label';
 
 const DetailWrapper = styled.div`
   position: absolute;
@@ -61,13 +62,11 @@ const DetailTitle = styled.div`
   font-weight: 600;
 `;
 
-const DetailSubtitle = styled.div`
-  text-transform: uppercase;
-`;
-
 const DetailBody = styled.div`
   overflow-y: auto;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Close = styled.button`
@@ -185,11 +184,11 @@ function detailWrapped(Component) {
             <StyledPinIcon />
             <div>
               <DetailTitle>{data.name || 'Abschnittsname'}</DetailTitle>
-              <DetailSubtitle>Abschnitt 1</DetailSubtitle>
+              <Label uppercase>Abschnitt 1</Label>
             </div>
             <Close onClick={this.onClose}>×</Close>
           </DetailHeader>
-          <Shadow />
+          {this.props.activeView === 'zustand' ? null : <Shadow />}
           <DetailBody>
             <Component
               data={data}

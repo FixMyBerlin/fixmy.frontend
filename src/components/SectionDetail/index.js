@@ -6,6 +6,9 @@ import dummyImageSrc from '~/images/detail-dummy.png';
 import { numberFormat } from '~/utils';
 import detailWrapped from '~/hocs/detailWrapped';
 import HBISign from '~/components/HBISign';
+import Label from '~/components/styled/Label';
+import Title from '~/components/styled/Title';
+
 import InfoSection from './InfoSection';
 import SwitchButton from './SwitchButton';
 
@@ -31,28 +34,14 @@ const HBISignWrapper = styled.div`
   flex-direction: column;
 `;
 
-const HBILabel = styled.div`
-  font-size: 14px;
-  margin: 10px 0 5px 0;
-`;
-
-const HBISubLabel = styled.div`
-  font-size: 10px;
-  color: ${config.colors.inactivegrey};
-`;
-
 const DetailInfoWrapper = styled.div`
   padding: 0 16px;
 `;
 
-const DetailTitle = styled.h1`
-  font-size: 22px;
-  color: ${config.colors.darkbg};
-  font-family: 'Roboto Slab', serif;
-  border-bottom: 1px dotted #c6c6c6;
-  padding-bottom: 8px;
-  margin-bottom: 20px;
-  min-height: 100px;
+const DetailTitle = Title.extend`
+  border-bottom: 2px dotted #c6c6c6;
+  padding-bottom: 15px;
+  margin: 10px 0 20px 0;
 `;
 
 const DescriptionLink = styled.div`
@@ -122,8 +111,8 @@ class SectionDetails extends PureComponent {
 
         <HBISignWrapper>
           <HBISign hbi={1} />
-          <HBILabel>Happy-Bike-Level</HBILabel>
-          <HBISubLabel>(max 10,0)</HBISubLabel>
+          <Label margin="10px 0 3px 0">Happy-Bike-Level</Label>
+          <Label light>(max 10,0)</Label>
         </HBISignWrapper>
 
         <DetailInfoWrapper>

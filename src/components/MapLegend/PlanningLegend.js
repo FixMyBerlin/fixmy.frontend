@@ -6,6 +6,7 @@ import ConceptIcon from '~/images/planning-icons/konzept.svg';
 import PlanningIcon from '~/images/planning-icons/planung.svg';
 import ConstructionIcon from '~/images/planning-icons/bau.svg';
 import DoneIcon from '~/images/planning-icons/fertig.svg';
+import Label from '~/components/styled/Label';
 
 const PlanningLegend = styled.div`
   display: flex;
@@ -19,28 +20,23 @@ const LegendItem = styled.div`
   padding: 20px 10px 10px 10px;
 `;
 
-const LegendItemLabel = styled.div`
-  font-size: 10px;
-  color: ${config.colors.darkgrey};
-`;
-
 export default () => (
   <PlanningLegend>
     <LegendItem>
       <ConceptIcon />
-      <LegendItemLabel>Konzept</LegendItemLabel>
+      <Label>Konzept</Label>
     </LegendItem>
     <LegendItem>
       <PlanningIcon />
-      <LegendItemLabel>Planung</LegendItemLabel>
+      <Label>Planung</Label>
     </LegendItem>
     <LegendItem>
       <ConstructionIcon />
-      <LegendItemLabel>im Bau</LegendItemLabel>
+      <Label>im Bau</Label>
     </LegendItem>
     <LegendItem>
       <DoneIcon />
-      <LegendItemLabel>Fertig</LegendItemLabel>
+      <Label>Fertig</Label>
     </LegendItem>
   </PlanningLegend>
 );
