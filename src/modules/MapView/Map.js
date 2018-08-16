@@ -86,7 +86,6 @@ class Map extends PureComponent {
       prevProps.bearing !== this.props.bearing;
 
     if (viewChanged) {
-      console.log(this.getViewFromProps(), this.props.animate);
       this.setView(this.getViewFromProps(), this.props.animate);
     }
 

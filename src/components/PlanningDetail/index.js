@@ -83,19 +83,13 @@ class PlanningDetails extends PureComponent {
     const { plannings } = this.props.data;
     const planning = plannings[0];
     const {
-      title, description, draft, external_url, responsible, costs, faq,
+      title, description, draft, external_url, responsible, costs, faq, photos,
       phase, construction_started, draft_submitted, short_description, cross_section_photo
     } = planning;
 
-    const sliderImages = [
-      { src: cross_section_photo },
-      { src: cross_section_photo },
-      { src: cross_section_photo }
-    ];
-
     return (
       <React.Fragment>
-        <ImageSlider images={sliderImages} />
+        <ImageSlider images={photos} />
 
         <DetailHead>
           <Headline>{title}</Headline>

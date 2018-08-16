@@ -22,10 +22,18 @@ const StyledSlider = Styled(Slider)`
 
 const Slide = Styled.div`
   width: 100%;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 const SliderImage = Styled.img`
   width: 100%;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 class ImageSlider extends PureComponent {
