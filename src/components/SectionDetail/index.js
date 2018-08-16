@@ -8,18 +8,9 @@ import detailWrapped from '~/hocs/detailWrapped';
 import HBISign from '~/components/HBISign';
 import Label from '~/components/styled/Label';
 import Title from '~/components/styled/Title';
+import DetailSwitch, { ButtonGroup } from '~/components/DetailSwitch';
 
 import InfoSection from './InfoSection';
-import SwitchButton from './SwitchButton';
-
-const ButtonGroup = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 10px 0 20px 0;
-  background: ${config.colors.lightbg};
-  box-shadow: 0 0px 8px 2px rgba(0, 0, 0, 0.5);
-  position: relative;
-`;
 
 const DetailImage = styled.img`
   width: 100%;
@@ -91,14 +82,14 @@ class SectionDetails extends PureComponent {
     return (
       <React.Fragment>
         <ButtonGroup>
-          <SwitchButton
+          <DetailSwitch
             activeSideIndex={sideIndex}
             sideIndex={0}
             title="Westseite"
             side="left"
             onClick={this.onSwitchSide}
           />
-          <SwitchButton
+          <DetailSwitch
             activeSideIndex={sideIndex}
             sideIndex={1}
             title="Ostseite"

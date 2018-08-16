@@ -153,8 +153,28 @@ function detailWrapped(Component) {
         .catch(this.onDataError);
     }
 
+    // we only show the shadow if there is no switch button
+    isShadowVisible(data) {
+      if (!data) {
+        return false;
+      }
+
+      if (this.props.activeView === 'zustand') {
+        return false;
+      } else if (
+        this.props.activeView === 'planungen' && 
+        (data.plannings && data.plannings.length > 1 && (data.plannings[0].url !== data.plannings[1].url))
+      ) {
+        return false;
+      }
+
+      return true;
+    }
+
     render() {
       const { isLoading, isError, data } = this.state;
+      const showShadow = this.isShadowVisible(data);
+
       if (isLoading) {
         return (
           <DetailWrapper>
@@ -188,7 +208,7 @@ function detailWrapped(Component) {
             </div>
             <Close onClick={this.onClose}>×</Close>
           </DetailHeader>
-          {this.props.activeView === 'zustand' ? null : <Shadow />}
+          {showShadow ? <Shadow /> : null}
           <DetailBody>
             <Component
               data={data}

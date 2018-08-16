@@ -8,9 +8,11 @@ import Title from '~/components/styled/Title';
 import SectionTitle from '~/components/styled/SectionTitle';
 import Text from '~/components/styled/Text';
 import Label from '~/components/styled/Label';
+import DetailSwitch, { ButtonGroup } from '~/components/DetailSwitch';
 
 import ImageSlider from './ImageSlider';
 import PlanningStatus from './PlanningStatus';
+
 
 const DetailHead = Styled.div`
   padding: 14px 24px;
@@ -63,25 +65,47 @@ const Anchor = Styled.a`
 
 class PlanningDetails extends PureComponent {
   state = {
-    descriptionExpanded: false
+    descriptionExpanded: false,
+    sideIndex: 0
   }
 
+  onSwitchSide = sideIndex => () => this.setState({ sideIndex })
   toggleDescription = () => {
     this.setState({ descriptionExpanded: !this.state.descriptionExpanded });
   }
 
   render() {
     const { plannings } = this.props.data;
-    const planning = plannings[0];
+    const { sideIndex } = this.state;
+    const planning = plannings[sideIndex];
     const {
       title, description, draft, external_url, responsible, costs, faq, photos,
       phase, construction_started, draft_submitted, short_description, cross_section_photo
     } = planning;
 
     const showFaq = faq && faq.length;
+    const showSwitchButton = plannings.length > 1 && (plannings[0].url !== plannings[1].url);
 
     return (
       <React.Fragment>
+        {showSwitchButton ? (
+          <ButtonGroup>
+            <DetailSwitch
+              activeSideIndex={sideIndex}
+              sideIndex={0}
+              title="Westseite"
+              side="left"
+              onClick={this.onSwitchSide}
+            />
+            <DetailSwitch
+              activeSideIndex={sideIndex}
+              sideIndex={1}
+              title="Ostseite"
+              side="right"
+              onClick={this.onSwitchSide}
+            />
+          </ButtonGroup>) : null
+        }
         <ImageSlider images={photos} />
 
         <DetailHead>
