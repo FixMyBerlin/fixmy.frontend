@@ -46,7 +46,7 @@ class MapViewComponent extends PureComponent {
   }
 
   handleLocationChange = (userLocation) => {
-    this.updateView({ center: userLocation });
+    this.updateView({ center: userLocation, zoom: config.map.zoomAfterGeocode });
   }
 
   render() {

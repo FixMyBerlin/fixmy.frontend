@@ -25,7 +25,7 @@ const LocatorButton = styled.button`
   }
 `;
 
-class Locator extends PureComponent {
+class LocatorControl extends PureComponent {
   static propTypes = {
     position: PropTypes.string,
     onChange: PropTypes.func,
@@ -58,7 +58,6 @@ class Locator extends PureComponent {
       alert('Um dich zu lokalisieren, benötigen wir deine Berechtigung.'); // eslint-disable-line
     }
 
-
     this.setState({ isLoading: false });
   }
 
@@ -78,4 +77,4 @@ class Locator extends PureComponent {
   }
 }
 
-export default Locator;
+export default LocatorControl;
