@@ -29,6 +29,12 @@ const DetailWrapper = styled.div`
   `}
 `;
 
+const InfoWrapper = styled.div`
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1rem;
+`;
+
 const StyledPinIcon = styled(PinIcon)`
   margin-right: 10px;
 `;
@@ -151,7 +157,11 @@ function detailWrapped(Component) {
     render() {
       const { isLoading, isError, data } = this.state;
       if (isLoading) {
-        return <DetailWrapper>Daten werden geladen ...</DetailWrapper>;
+        return (
+          <DetailWrapper>
+            <InfoWrapper>Daten werden geladen ...</InfoWrapper>
+          </DetailWrapper>
+        );
       }
 
       if (isError) {
@@ -159,7 +169,9 @@ function detailWrapped(Component) {
           <DetailWrapper>
             <DetailHeader>
               <div>
-                <DetailTitle>Ein Fehler ist aufgetreten.</DetailTitle>
+                <DetailTitle>
+                  Ein Fehler ist aufgetreten.
+                </DetailTitle>
               </div>
               <Close onClick={this.onClose}>×</Close>
             </DetailHeader>
