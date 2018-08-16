@@ -5,12 +5,12 @@ export default styled.button`
   border: none;
   outline: none;
   display: inline-block;
-  padding: 10px 15px;
+  padding: 10px 25px;
   background: ${config.colors.interaction};
   text-decoration: none;
   color: ${config.colors.white};
   font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 14px;
   cursor: pointer;
 

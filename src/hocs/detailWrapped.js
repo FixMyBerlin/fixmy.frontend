@@ -9,6 +9,7 @@ import { media } from '~/style-utils';
 
 import PinIcon from '~/images/pin.svg';
 import { resetMap } from '~/modules/MapView/map-utils';
+import Label from '~/components/styled/Label';
 
 const DetailWrapper = styled.div`
   position: absolute;
@@ -27,6 +28,12 @@ const DetailWrapper = styled.div`
     width: 400px;
     box-shadow: -1px 0 6px 1px rgba(0,0,0,.3);
   `}
+`;
+
+const InfoWrapper = styled.div`
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1rem;
 `;
 
 const StyledPinIcon = styled(PinIcon)`
@@ -55,13 +62,11 @@ const DetailTitle = styled.div`
   font-weight: 600;
 `;
 
-const DetailSubtitle = styled.div`
-  text-transform: uppercase;
-`;
-
 const DetailBody = styled.div`
   overflow-y: auto;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Close = styled.button`
@@ -148,10 +153,34 @@ function detailWrapped(Component) {
         .catch(this.onDataError);
     }
 
+    // we only show the shadow if there is no switch button
+    isShadowVisible(data) {
+      if (!data) {
+        return false;
+      }
+
+      if (this.props.activeView === 'zustand') {
+        return false;
+      } else if (
+        this.props.activeView === 'planungen' &&
+        (data.plannings && data.plannings.length > 1 && (data.plannings[0].url !== data.plannings[1].url))
+      ) {
+        return false;
+      }
+
+      return true;
+    }
+
     render() {
       const { isLoading, isError, data } = this.state;
+      const showShadow = this.isShadowVisible(data);
+
       if (isLoading) {
-        return <DetailWrapper>Daten werden geladen ...</DetailWrapper>;
+        return (
+          <DetailWrapper>
+            <InfoWrapper>Daten werden geladen ...</InfoWrapper>
+          </DetailWrapper>
+        );
       }
 
       if (isError) {
@@ -159,7 +188,9 @@ function detailWrapped(Component) {
           <DetailWrapper>
             <DetailHeader>
               <div>
-                <DetailTitle>Ein Fehler ist aufgetreten.</DetailTitle>
+                <DetailTitle>
+                  Ein Fehler ist aufgetreten.
+                </DetailTitle>
               </div>
               <Close onClick={this.onClose}>×</Close>
             </DetailHeader>
@@ -173,11 +204,11 @@ function detailWrapped(Component) {
             <StyledPinIcon />
             <div>
               <DetailTitle>{data.name || 'Abschnittsname'}</DetailTitle>
-              <DetailSubtitle>Abschnitt 1</DetailSubtitle>
+              <Label uppercase>Abschnitt 1</Label>
             </div>
             <Close onClick={this.onClose}>×</Close>
           </DetailHeader>
-          <Shadow />
+          {showShadow ? <Shadow /> : null}
           <DetailBody>
             <Component
               data={data}

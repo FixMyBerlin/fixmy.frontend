@@ -6,9 +6,9 @@
   "version": "3.0.0",
   "description": "lightweight react starterkit with webpack, redux, react-router",
   "scripts": {
-    "build": "webpack --config webpack/webpack.config.prod.js  --colors",
+    "build": "NODE_ENV=production webpack --config webpack/webpack.config.prod.js  --colors",
     "deploy": "npm run build && netlify deploy",
-    "start": "webpack-dev-server --config  webpack/webpack.config.dev.js"
+    "start": "NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js"
   },
   "repository": {
     "url": "git@github.com:wbkd/react-starter.git",
@@ -75,7 +75,6 @@
     "react": "^16.2.0",
     "react-dev-utils": "^4.2.1",
     "react-dom": "^16.2.0",
-    "react-extras": "^0.5.0",
     "react-markdown": "^3.3.0",
     "react-redux": "^5.0.7",
     "react-responsive": "^4.1.0",

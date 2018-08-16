@@ -1,5 +1,4 @@
 import React, { PureComponent, Fragment } from 'react';
-import { If } from 'react-extras';
 import styled from 'styled-components';
 
 import PlanningStatusChart from './PlanningStatusChart';
@@ -20,6 +19,7 @@ const DetailButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 25px 0 10px 0;
+  display: none; // for now we dont want to show the details button
 `;
 
 class PlanningStatus extends PureComponent {
@@ -38,9 +38,7 @@ class PlanningStatus extends PureComponent {
         <DetailButtonWrapper>
           <DetailButton onClick={this.toggleExpand}>Details +</DetailButton>
         </DetailButtonWrapper>
-        <If condition={this.state.isExpanded}>
-          <PlanningChecklist />
-        </If>
+        {this.state.isExpanded ? <PlanningChecklist /> : null}
       </Fragment>
     );
   }

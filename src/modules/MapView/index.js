@@ -50,7 +50,7 @@ class MapViewComponent extends PureComponent {
   }
 
   handleLocationChange = (userLocation) => {
-    this.updateView({ center: userLocation });
+    this.updateView({ center: userLocation, zoom: config.map.zoomAfterGeocode });
   }
 
   render() {
@@ -112,6 +112,7 @@ class MapViewComponent extends PureComponent {
               <SectionDetail
                 apiEndpoint="planning-sections"
                 onCloseRoute="/zustand"
+                activeView={this.props.activeLayer}
               />
             )}
           />
@@ -122,6 +123,7 @@ class MapViewComponent extends PureComponent {
               <PlanningDetail
                 apiEndpoint="planning-sections"
                 onCloseRoute="/planungen"
+                activeView={this.props.activeLayer}
               />
             )}
           />

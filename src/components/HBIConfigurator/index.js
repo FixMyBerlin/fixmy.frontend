@@ -5,7 +5,7 @@ import 'rc-slider/assets/index.css';
 
 import Store from '~/redux/store';
 import { updateHBI } from '~/modules/User/UserState';
-import Headline from '~/components/styled/Headline';
+import Title from '~/components/styled/Title';
 import Button from '~/components/styled/Button';
 
 const MapContent = styled.div`
@@ -26,7 +26,7 @@ const SliderLabel = styled.div`
   margin: .5em 0;
 `;
 
-const ModalHeadline = Headline.extend`
+const ModalHeadline = Title.extend`
   margin-top: 0;
   text-align: center;
 `;

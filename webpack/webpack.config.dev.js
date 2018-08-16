@@ -36,7 +36,7 @@ module.exports = merge(common, {
       {
         test: /\.(js|jsx)$/,
         include: Path.resolve(__dirname, '../src'),
-        enforce: "pre",
+        enforce: 'pre',
         loader: 'eslint-loader',
         options: {
           emitWarning: true
@@ -62,7 +62,7 @@ module.exports = merge(common, {
       },
       {
         test: /\.(js|jsx)$/,
-        include: Path.resolve(__dirname, '../src'),
+        exclude: /node_modules/,
         loader: 'babel-loader'
       },
       {

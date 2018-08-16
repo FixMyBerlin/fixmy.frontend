@@ -1,12 +1,14 @@
 /* eslint react/no-array-index-key: 0, camelcase: 0 */
 import React, { PureComponent } from 'react';
 import Styled from 'styled-components';
-import { Choose } from 'react-extras';
 
 import detailWrapped from '~/hocs/detailWrapped';
 
-import Headline from '~/components/styled/Headline';
+import Title from '~/components/styled/Title';
+import SectionTitle from '~/components/styled/SectionTitle';
 import Text from '~/components/styled/Text';
+import Label from '~/components/styled/Label';
+import DetailSwitch, { ButtonGroup } from '~/components/DetailSwitch';
 
 import ImageSlider from './ImageSlider';
 import PlanningStatus from './PlanningStatus';
@@ -15,24 +17,13 @@ const DetailHead = Styled.div`
   padding: 14px 24px;
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24);
   position: relative;
+  background: white;
 `;
 
 const DetailBody = Styled.div`
-  padding: 50px 24px;
+  padding: 10px 24px;
   background: ${config.colors.lightbg};
-`;
-
-const Subtitle = Styled(Headline)`
-  font-family: 'Open Sans', sans-serif;
-  font-size: 22px;
-  font-weight: 300;
-  margin-bottom: 0.4em;
-`;
-
-const StatusInfo = Styled.div`
-  color: ${config.colors.midgrey};
-  font-size: 10px;
-  margin-bottom: 2.5em;
+  flex-grow: 1;
 `;
 
 const ExpandDescriptionButton = Styled.div`
@@ -40,6 +31,7 @@ const ExpandDescriptionButton = Styled.div`
   cursor: pointer;
   font-size: 14px;
   text-align: center;
+  display: none; // for now we dont want to display the more button
 `;
 
 const DetailBodySection = Styled.div`
@@ -49,7 +41,7 @@ const DetailBodySection = Styled.div`
 `;
 
 const DetailItem = Styled(Text)`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
 const DetailImage = Styled.img`
@@ -72,71 +64,88 @@ const Anchor = Styled.a`
 
 class PlanningDetails extends PureComponent {
   state = {
-    descriptionExpanded: false
+    descriptionExpanded: false,
+    sideIndex: 0
   }
 
+  onSwitchSide = sideIndex => () => this.setState({ sideIndex })
   toggleDescription = () => {
     this.setState({ descriptionExpanded: !this.state.descriptionExpanded });
   }
 
   render() {
     const { plannings } = this.props.data;
-    const planning = plannings[0];
+    const { sideIndex } = this.state;
+    const planning = plannings[sideIndex];
     const {
-      title, description, draft, external_url, responsible, costs, faq,
+      title, description, draft, external_url, responsible, costs, faq, photos,
       phase, construction_started, draft_submitted, short_description, cross_section_photo
     } = planning;
 
-    const sliderImages = [
-      { src: cross_section_photo },
-      { src: cross_section_photo },
-      { src: cross_section_photo }
-    ];
+    const showFaq = faq && faq.length;
+    const showSwitchButton = plannings.length > 1 && (plannings[0].url !== plannings[1].url);
 
     return (
       <React.Fragment>
-        <ImageSlider images={sliderImages} />
+        {showSwitchButton ? (
+          <ButtonGroup>
+            <DetailSwitch
+              activeSideIndex={sideIndex}
+              sideIndex={0}
+              title="Westseite"
+              side="left"
+              onClick={this.onSwitchSide}
+            />
+            <DetailSwitch
+              activeSideIndex={sideIndex}
+              sideIndex={1}
+              title="Ostseite"
+              side="right"
+              onClick={this.onSwitchSide}
+            />
+          </ButtonGroup>) : null
+        }
+        <ImageSlider images={photos} />
 
         <DetailHead>
-          <Headline>{title}</Headline>
-          <Subtitle>
+          <Title>{title}</Title>
+          <SectionTitle>
             Fertigstellung: {draft || 'Unbekannt'}
-          </Subtitle>
-          <StatusInfo>
+          </SectionTitle>
+          <Label margin="-12px 0 25px 0">
             {draft_submitted ? `Planungsbeginn: ${draft_submitted}` : null} {construction_started ? `Baubeginn: ${construction_started}` : null}
-          </StatusInfo>
+          </Label>
           <PlanningStatus phase={phase} />
         </DetailHead>
 
         <DetailBody>
           <DetailBodySection>
-            <Subtitle>Ziel & Hintergrund dieser Maßnahme?</Subtitle>
+            <SectionTitle>Ziel & Hintergrund dieser Maßnahme?</SectionTitle>
             <Text>
-              <Choose>
-                <Choose.When condition={this.state.descriptionExpanded}>{description}</Choose.When>
-                <Choose.Otherwise>{short_description}</Choose.Otherwise>
-              </Choose>
+              {this.state.descriptionExpanded ? description : short_description}
             </Text>
             <ExpandDescriptionButton onClick={this.toggleDescription}>{this.state.descriptionExpanded ? 'Weniger' : 'Mehr >'}</ExpandDescriptionButton>
           </DetailBodySection>
 
           <DetailBodySection>
-            <Subtitle>Projektdaten:</Subtitle>
+            <SectionTitle>Projektdaten:</SectionTitle>
             <DetailItem>Zuständigkeit: <strong>{responsible}</strong></DetailItem>
-            <DetailItem>Projektvolumen: <strong>{costs}</strong></DetailItem>
-            <DetailItem>Link zur Planung: <Anchor target="_blank" href={external_url}>{external_url}</Anchor></DetailItem>
-            <DetailImage src={cross_section_photo} />
+            <DetailItem>Projektvolumen: <strong>{costs || 'keine Angaben'}</strong></DetailItem>
+            {external_url ? <DetailItem>Link zur Planung: <Anchor target="_blank" href={external_url}>{external_url}</Anchor></DetailItem> : null}
+            {cross_section_photo ? <DetailImage src={cross_section_photo} /> : null}
           </DetailBodySection>
 
-          <DetailBodySection>
-            <Subtitle>Häufige Fragen:</Subtitle>
-            {faq.map((f, i) => (
-              <div key={`FAQ_Item_${i}`}>
-                <Text><strong>{f.text}</strong></Text>
-                <Text>{f.answer}</Text>
-              </div>
-            ))}
-          </DetailBodySection>
+          {showFaq ? (
+            <DetailBodySection>
+              <SectionTitle>Häufige Fragen:</SectionTitle>
+              {faq.map((f, i) => (
+                <div key={`FAQ_Item_${i}`}>
+                  <Text><strong>{f.text}</strong></Text>
+                  <Text>{f.answer}</Text>
+                </div>
+              ))}
+            </DetailBodySection>
+          ) : null}
 
         </DetailBody>
       </React.Fragment>

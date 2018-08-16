@@ -9,6 +9,10 @@ import * as MapActions from '~/modules/MapView/MapState';
 
 import PinIcon from '~/images/pin.svg';
 import ResetMapButton from '~/components/ResetMapButton';
+import BigLabel from '~/components/styled/BigLabel';
+import Label from '~/components/styled/Label';
+import Button from '~/components/styled/Button';
+
 import PlanningStatus from './PlanningStatus';
 import BikeLevelStatus from './BikeLevelStatus';
 
@@ -35,30 +39,6 @@ const MapPopupLocation = styled.div`
   text-decoration: none;
   cursor: pointer;
   line-height: 1.2;
-`;
-
-const MapPopupTitle = styled.div`
-  font-size: 17px;
-`;
-
-const MapPopupSubtitle = styled.div`
-  font-size: 10px;
-`;
-
-const MoreButton = styled.button`
-  background: ${config.colors.interaction};
-  display: inline-block;
-  margin: 0 auto;
-  padding: 8px 30px;
-  color: ${config.colors.white};
-  border-radius: 6px;
-  font-family: "Open Sans", sans-serif;
-  font-size: 14px;
-  cursor: pointer;
-
-  &:focus {
-    outline: 1px solid white;
-  }
 `;
 
 const MoreButtonWrapper = styled.div`
@@ -108,16 +88,16 @@ class MapPopupComponent extends PureComponent {
         <MapPopupLocation onClick={this.onDetailClick}>
           <StyledPinIcon />
           <div>
-            <MapPopupTitle>{data.name || '-'}</MapPopupTitle>
-            <MapPopupSubtitle>Abschnitt 1</MapPopupSubtitle>
+            <BigLabel>{data.name || '-'}</BigLabel>
+            <Label light>Abschnitt 1</Label>
           </div>
         </MapPopupLocation>
         {isPlaningView && <PlanningStatus section={data} />}
         {isStatus && <BikeLevelStatus onClick={this.onDetailClick} section={data} />}
         <MoreButtonWrapper>
-          <MoreButton onClick={this.onDetailClick}>
+          <Button onClick={this.onDetailClick}>
             mehr Infos
-          </MoreButton>
+          </Button>
         </MoreButtonWrapper>
       </MapPopup>
     );

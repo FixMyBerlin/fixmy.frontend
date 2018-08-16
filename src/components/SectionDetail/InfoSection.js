@@ -1,21 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import SectionTitle from '~/components/styled/SectionTitle';
+
 const InfoSection = styled.div`
   display: flex;
   margin-bottom: 24px;
+  max-width: 80%;
 `;
 
 const InfoSectionContent = styled.div`
   flex-grow: 1;
 `;
 
-const InfoSectionTitle = styled.div`
-  color: ${config.colors.black}; 
-  font-size: 22px;
+const InfoSectionTitle = SectionTitle.extend`
   border-bottom: 1px solid ${config.colors.lightgrey};
-  padding-bottom: 12px;
-  margin-bottom: 10px;
+  padding-bottom: 16px;
 `;
 
 const InfoSectionData = styled.div`

@@ -1,13 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 
-const PlanningStatus = styled.div`
-  color: ${config.colors.change_4};
-  font-family: 'Roboto Slab', serif;
-  font-size: 22px;
-  margin-bottom: 15px;
-  font-weight: 600;
-`;
+import Title from '~/components/styled/Title';
 
 export default (props) => {
   const { section } = props;
@@ -20,6 +13,6 @@ export default (props) => {
   const PlanningStatusLabel = planningTitle || 'Keine Planungen vorhanden.';
 
   return (
-    <PlanningStatus>{PlanningStatusLabel}</PlanningStatus>
+    <Title>{PlanningStatusLabel}</Title>
   );
 };

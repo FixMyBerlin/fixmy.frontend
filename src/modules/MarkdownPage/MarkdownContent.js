@@ -1,8 +1,9 @@
 import React from 'react';
-import { If } from 'react-extras';
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
-import { getHeadlineStyle } from '~/components/styled/Headline';
+import { getTitleStyles } from '~/components/styled/Title';
+import { getSectionTitleStyles } from '~/components/styled/SectionTitle';
+import { getTextStyles } from '~/components/styled/Text';
 
 const ImageContext = require.context('~/images', true);
 
@@ -10,7 +11,7 @@ const StyledMarkdown = styled(Markdown)`
   padding-bottom: 100px;
 
   h1 {
-    ${getHeadlineStyle()}
+    ${getTitleStyles()}
     padding: 0;
     margin-bottom: 2rem;
     margin-top: 2rem;
@@ -20,17 +21,11 @@ const StyledMarkdown = styled(Markdown)`
   }
 
   h2, h3, h4, h5 {
-    font-weight: 300;
-    color: ${config.colors.black};
-    font-size: 22px;
-    line-height: 1.3;
-    margin: 20px 0;
+    ${getSectionTitleStyles()}
   }
 
   p, li {
-    font-size: 14px;
-    color: ${config.colors.darkgrey};
-    line-height: 1.4;
+    ${getTextStyles()}
   }
 `;
 
@@ -39,10 +34,7 @@ function loadImage(mdSrc) {
 }
 
 export default props => (
-  <If
-    condition={typeof props.content === 'string'}
-    render={() => (
-      <StyledMarkdown escapeHtml={false} transformImageUri={loadImage} source={props.content} />
-    )}
-  />
+  typeof props.content === 'string' ?
+    <StyledMarkdown escapeHtml={false} transformImageUri={loadImage} source={props.content} /> :
+    null
 );

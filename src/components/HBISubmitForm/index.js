@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 import Axios from 'axios';
 import { trackEvent } from '~/utils';
 
-import Headline from '~/components/styled/Headline';
+import Title from '~/components/styled/Title';
 import Button from '~/components/styled/Button';
 import Form from '~/components/styled/Form';
 
@@ -38,7 +38,7 @@ class HBISubmitForm extends PureComponent {
   render() {
     return (
       <div>
-        <Headline>Profil speichern</Headline>
+        <Title>Profil speichern</Title>
         <Formik
           initialValues={initialValues}
           onSubmit={this.onSubmit}

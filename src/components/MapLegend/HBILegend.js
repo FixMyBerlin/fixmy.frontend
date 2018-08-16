@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import Store from '~/redux/store';
 import { setHbiFilter, resetHbiFilter } from '~/modules/MapView/MapState';
+import Label from '~/components/styled/Label';
 
 const HBILegend = styled.div`
   display: flex;
@@ -34,9 +35,7 @@ const LegendImage = styled.img`
   width: 55px;
 `;
 
-const LegendLabel = styled.div`
-  font-size: 10px;
-  color: ${config.colors.darkgrey};
+const LegendLabel = Label.extend`
   flex-shrink: 0;
 `;
 
