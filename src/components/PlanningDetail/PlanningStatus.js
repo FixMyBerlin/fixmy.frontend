@@ -19,6 +19,7 @@ const DetailButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 25px 0 10px 0;
+  display: none; // for now we dont want to show the details button
 `;
 
 class PlanningStatus extends PureComponent {

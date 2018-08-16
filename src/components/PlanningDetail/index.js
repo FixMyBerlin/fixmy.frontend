@@ -49,7 +49,7 @@ const DetailBodySection = Styled.div`
 `;
 
 const DetailItem = Styled(Text)`
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
 const DetailImage = Styled.img`
@@ -87,6 +87,8 @@ class PlanningDetails extends PureComponent {
       phase, construction_started, draft_submitted, short_description, cross_section_photo
     } = planning;
 
+    const showFaq = faq && faq.length;
+
     return (
       <React.Fragment>
         <ImageSlider images={photos} />
@@ -114,20 +116,22 @@ class PlanningDetails extends PureComponent {
           <DetailBodySection>
             <Subtitle>Projektdaten:</Subtitle>
             <DetailItem>Zuständigkeit: <strong>{responsible}</strong></DetailItem>
-            <DetailItem>Projektvolumen: <strong>{costs}</strong></DetailItem>
-            <DetailItem>Link zur Planung: <Anchor target="_blank" href={external_url}>{external_url}</Anchor></DetailItem>
-            <DetailImage src={cross_section_photo} />
+            <DetailItem>Projektvolumen: <strong>{costs || 'keine Angaben'}</strong></DetailItem>
+            {external_url ? <DetailItem>Link zur Planung: <Anchor target="_blank" href={external_url}>{external_url}</Anchor></DetailItem> : null}
+            {cross_section_photo ? <DetailImage src={cross_section_photo} /> : null}
           </DetailBodySection>
 
-          <DetailBodySection>
-            <Subtitle>Häufige Fragen:</Subtitle>
-            {faq.map((f, i) => (
-              <div key={`FAQ_Item_${i}`}>
-                <Text><strong>{f.text}</strong></Text>
-                <Text>{f.answer}</Text>
-              </div>
-            ))}
-          </DetailBodySection>
+          {showFaq ? (
+            <DetailBodySection>
+              <Subtitle>Häufige Fragen:</Subtitle>
+              {faq.map((f, i) => (
+                <div key={`FAQ_Item_${i}`}>
+                  <Text><strong>{f.text}</strong></Text>
+                  <Text>{f.answer}</Text>
+                </div>
+              ))}
+            </DetailBodySection>
+          ) : null}
 
         </DetailBody>
       </React.Fragment>
