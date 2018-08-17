@@ -67,7 +67,7 @@ class Map extends PureComponent {
       style: MB_STYLE_URL
     });
 
-    if (!['planungen', 'zustand'].includes(this.props.activeLayer)) {
+    if (!this.props.activeSection) {
       this.setView(this.getViewFromProps(), false);
     }
 

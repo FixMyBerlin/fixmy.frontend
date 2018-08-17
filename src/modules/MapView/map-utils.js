@@ -1,5 +1,8 @@
+/* eslint no-param-reassign: 0 */
+
 import turfAlong from '@turf/along';
 import turfLength from '@turf/length';
+import { lineString as turfLineString } from '@turf/helpers';
 
 import Store from '~/redux/store';
 import * as MapActions from '~/modules/MapView/MapState';
@@ -118,6 +121,10 @@ function getHbiFilterRules(hbi, min, max) {
 
 export function colorizeHbiLines(map, hbiValues, filterHbi) {
   setMapFilter(map, null);
+  setMapFilter(map, ['any',
+    ['has', 'side0_safety'],
+    ['has', 'side0_velocity']
+  ]);
 
   const rv = (hbiValues[0] - 5) / 10;
   const rs = (hbiValues[1] - 5) / 10;
@@ -157,6 +164,10 @@ export function resetMap() {
 
 export function getCenterFromGeom(geometry, defaultCenter = null) {
   if (geometry && geometry.coordinates) {
+    if (geometry.type === 'MultiLineString') {
+      geometry = turfLineString(geometry.coordinates.reduce((res, coord) => res.concat(coord)), []);
+    }
+
     const length = turfLength(geometry);
     return turfAlong(geometry, length * 0.5).geometry.coordinates;
   }

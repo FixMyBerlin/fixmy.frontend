@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "@turf/along": "^6.0.1",
+    "@turf/helpers": "^6.1.4",
     "@turf/length": "^6.0.2",
     "axios": "^0.16.2",
     "classnames": "^2.2.5",
