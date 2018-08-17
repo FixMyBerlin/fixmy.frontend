@@ -170,7 +170,7 @@ class Map extends PureComponent {
     // const planningUrl = properties.side0_planning_url || properties.side1_planning_url || properties.planning_url;
     // const id = this.props.activeView === 'planungen' ? planningUrl.match(/\/(\d)/)[1] : properties.id;
     const id = properties.id;
-
+    console.log(properties);
     if (properties) {
       // when user is in detail mode, we don't want to show the tooltip again,
       // but directly switch to another detail view

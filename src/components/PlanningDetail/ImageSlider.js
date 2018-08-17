@@ -13,7 +13,7 @@ const StyledSlider = Styled(Slider)`
   min-height: 100px;
 
   .slick-dots {
-    bottom: 5px;
+    bottom: 10px;
 
     li {
       width: ${dotSize};
@@ -35,6 +35,7 @@ const StyledSlider = Styled(Slider)`
 
 const Slide = Styled.div`
   width: 100%;
+  position: relative;
 
   &:focus {
     outline: none;
@@ -47,6 +48,14 @@ const SliderImage = Styled.img`
   &:focus {
     outline: none;
   }
+`;
+
+const ImageSource = Styled.div`
+  position: absolute;
+  bottom: 2px;
+  font-size: 9px;
+  right:2px;
+  color: ${config.colors.lightgrey};
 `;
 
 class ImageSlider extends PureComponent {
@@ -66,7 +75,8 @@ class ImageSlider extends PureComponent {
       >
         {this.props.images.map((image, i) => (
           <Slide key={`SliderImage_${i}`}>
-            <SliderImage src={image.src} alt="" />
+            <SliderImage src={image.src} alt={image.copyright} />
+            {image.copyright && <ImageSource>{image.copyright}</ImageSource>}
           </Slide>
         ))}
       </StyledSlider>
