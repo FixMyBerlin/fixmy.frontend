@@ -8,9 +8,8 @@ import Axios from 'axios';
 import { media } from '~/style-utils';
 import Store from '~/redux/store';
 import { setView } from '~/modules/MapView/MapState';
-import { getCenterFromGeom } from '~/modules/MapView/map-utils';
+import { getCenterFromGeom, resetMap } from '~/modules/MapView/map-utils';
 import PinIcon from '~/images/pin.svg';
-import { resetMap } from '~/modules/MapView/map-utils';
 import Label from '~/components/styled/Label';
 
 const DetailWrapper = styled.div`

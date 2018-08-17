@@ -63,13 +63,13 @@ function getPlanningLineColorRules(side = '') {
   ];
 }
 
-function getPlanningOpacityRules(side = '') {
-  return [
-    'case',
-    ['==', true, ['has', ['get', `${side}planning_phase`]]], 1,
-    0
-  ];
-}
+// function getPlanningOpacityRules(side = '') {
+//   return [
+//     'case',
+//     ['==', true, ['has', ['get', `${side}planning_phase`]]], 1,
+//     0
+//   ];
+// }
 
 export function colorizePlanningLines(map) {
   setMapFilter(map, ['any',

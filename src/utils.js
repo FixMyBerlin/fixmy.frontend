@@ -39,13 +39,12 @@ export function getHBIColorByIndex(index) {
   return stop ? stop.color : '#555';
 }
 
-export function log(str) {
-  console.log(str)
+export function log(stuff) {
   if (config.debug) {
     return false;
   }
 
-  return console.log(str);
+  return console.log(stuff);
 }
 
 export default {

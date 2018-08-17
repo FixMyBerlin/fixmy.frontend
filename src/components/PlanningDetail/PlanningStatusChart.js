@@ -65,18 +65,6 @@ class PlanningStatusChart extends PureComponent {
     this.updateWidth();
   }
 
-  height = 80
-  padding = { top: 0, right: 30, bottom: 0, left: 30 }
-
-  updateWidth = () => {
-    if (!this.chartWrapper) {
-      return false;
-    }
-
-    const { width } = this.chartWrapper.getBoundingClientRect();
-    return this.setState({ width });
-  }
-
   getChartData = (phase) => {
     let isFinished = true;
 
@@ -111,6 +99,18 @@ class PlanningStatusChart extends PureComponent {
       };
     });
   }
+
+  updateWidth = () => {
+    if (!this.chartWrapper) {
+      return false;
+    }
+
+    const { width } = this.chartWrapper.getBoundingClientRect();
+    return this.setState({ width });
+  }
+
+  height = 80
+  padding = { top: 0, right: 30, bottom: 0, left: 30 }
 
   renderChartItem = (props, i, data) => (
     <g key={`ChartItem__${props.label}`}>
