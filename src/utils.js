@@ -39,11 +39,20 @@ export function getHBIColorByIndex(index) {
   return stop ? stop.color : '#555';
 }
 
+export function log(str) {
+  if (config.debug) {
+    return false;
+  }
+
+  return console.log(str);
+}
+
 export default {
   getGeoLocation,
   numberFormat,
   arrayIsEqual,
   trackEvent,
   getHBIbyProps,
-  getHBIColorByIndex
+  getHBIColorByIndex,
+  log
 };

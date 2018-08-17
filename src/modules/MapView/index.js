@@ -56,7 +56,7 @@ class MapViewComponent extends PureComponent {
   render() {
     const isDesktopView = matchMediaSize(breakpoints.m);
     const displayLegend = !this.props.activeSection || isDesktopView;
-    const calculatePopupPosition = isDesktopView;
+    const calculatePopupPosition = isDesktopView && this.props.displayPopup;
 
     return (
       <MapView>

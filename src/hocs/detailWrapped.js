@@ -6,7 +6,9 @@ import withRouter from 'react-router/withRouter';
 import Axios from 'axios';
 
 import { media } from '~/style-utils';
-
+import Store from '~/redux/store';
+import { setView } from '~/modules/MapView/MapState';
+import { getCenterFromGeom } from '~/modules/MapView/map-utils';
 import PinIcon from '~/images/pin.svg';
 import { resetMap } from '~/modules/MapView/map-utils';
 import Label from '~/components/styled/Label';
@@ -114,6 +116,13 @@ function detailWrapped(Component) {
     }
 
     onDataLoaded = (res) => {
+      const { geometry = null } = res.data;
+      const center = getCenterFromGeom(geometry);
+
+      if (center) {
+        Store.dispatch(setView({ center, zoom: 16, animate: true, pitch: 40, show3dBuildings: true }));
+      }
+
       this.setState({
         data: res.data,
         isLoading: false,

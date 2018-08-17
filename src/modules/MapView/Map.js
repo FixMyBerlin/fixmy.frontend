@@ -5,15 +5,14 @@ import styled from 'styled-components';
 import idx from 'idx';
 import PropTypes from 'prop-types';
 import withRouter from 'react-router/withRouter';
-import turfCenter from '@turf/center';
 
 import Store from '~/redux/store';
-import { arrayIsEqual } from '~/utils';
+import { arrayIsEqual, log } from '~/utils';
 import { isSmallScreen } from '~/style-utils';
 import * as AppActions from '~/modules/App/AppState';
 import * as MapActions from './MapState';
 import {
-  colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer, filterLayersById
+  colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer, filterLayersById, getCenterFromGeom
 } from './map-utils';
 
 const MB_STYLE_URL = `${config.map.style}?fresh=true`;
@@ -68,7 +67,10 @@ class Map extends PureComponent {
       style: MB_STYLE_URL
     });
 
-    this.setView(this.getViewFromProps(), false);
+    if (!['planungen', 'zustand'].includes(this.props.activeLayer)) {
+      this.setView(this.getViewFromProps(), false);
+    }
+
     this.map.on('load', this.handleLoad);
     this.props.setMapContext(this.map);
 
@@ -164,13 +166,15 @@ class Map extends PureComponent {
   handleClick = (e) => {
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
-    const center = geometry ? turfCenter(geometry).geometry.coordinates : [e.lngLat.lng, e.lngLat.lat];
+    const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
 
     // @TODO: how can we handle these planning urls/ ids better?
     // const planningUrl = properties.side0_planning_url || properties.side1_planning_url || properties.planning_url;
     // const id = this.props.activeView === 'planungen' ? planningUrl.match(/\/(\d)/)[1] : properties.id;
     const id = properties.id;
-    console.log(properties);
+
+    log(properties);
+
     if (properties) {
       // when user is in detail mode, we don't want to show the tooltip again,
       // but directly switch to another detail view

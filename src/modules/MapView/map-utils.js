@@ -1,3 +1,6 @@
+import turfAlong from '@turf/along';
+import turfLength from '@turf/length';
+
 import Store from '~/redux/store';
 import * as MapActions from '~/modules/MapView/MapState';
 import * as AppActions from '~/modules/App/AppState';
@@ -152,6 +155,15 @@ export function resetMap() {
   Store.dispatch(MapActions.setView({ show3dBuildings: false, dim: false, pitch: 0, bearing: 0, animate: true }));
 }
 
+export function getCenterFromGeom(geometry, defaultCenter = null) {
+  if (geometry && geometry.coordinates) {
+    const length = turfLength(geometry);
+    return turfAlong(geometry, length * 0.5).geometry.coordinates;
+  }
+
+  return defaultCenter;
+}
+
 export default {
   setView,
   animateView,
@@ -159,5 +171,6 @@ export default {
   toggleLayer,
   colorizeHbiLines,
   colorizePlanningLines,
-  resetMap
+  resetMap,
+  getCenterFromGeom
 };
