@@ -12,6 +12,14 @@ const StyledSlider = Styled(Slider)`
   background: white;
   min-height: 100px;
 
+  .slick-slide {
+    height: 250px;
+
+    >div {
+      height: 100%;
+    }
+  }
+
   .slick-dots {
     bottom: 10px;
 
@@ -36,6 +44,7 @@ const StyledSlider = Styled(Slider)`
 const Slide = Styled.div`
   width: 100%;
   position: relative;
+  height: 100%;
 
   &:focus {
     outline: none;
