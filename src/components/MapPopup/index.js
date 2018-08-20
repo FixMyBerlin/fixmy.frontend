@@ -26,13 +26,16 @@ function getArrowCSS({ size = 20, color = 'white', offset = 0 }) {
   `;
 }
 
-const StyledMapPopup = styled(MapPopup)`
+const StyledMapPopup = styled(MapPopup).attrs({
+  style: ({ x, y }) => ({
+    top: `${y}px`,
+    left: `${x}px`
+  })
+})`
   position: relative;
 
   ${media.m`
     position: absolute;
-    top: ${props => props.y}px;
-    left: ${props => props.x}px;
     max-width: 300px;
     bottom: auto;
     transform: translate(-50%, -101%);
