@@ -16,9 +16,8 @@ const initialState = {
   popupData: null,
   displayPopup: false,
   popupLocation: null,
-  filterHbi: null,
-  filterHbiIndex: null,
-  filterPlannings: null,
+  filterHbi: [true, true, true, true],
+  filterPlannings: [true, true, true, true],
   hasMoved: false,
   hbi_speed: 5,
   hbi_safety: 5,
@@ -37,12 +36,8 @@ export function setHasMoved(hasMoved) {
   return { type: SET_HAS_MOVED, payload: { hasMoved } };
 }
 
-export function setHbiFilter(min, max, filterHbiIndex = null) {
-  return { type: SET_HBI_FILTER, payload: { filterHbi: [min, max], filterHbiIndex } };
-}
-
-export function resetHbiFilter() {
-  return { type: SET_HBI_FILTER, payload: { filterHbi: null, filterHbiIndex: null } };
+export function toggleHbiFilter(filterIndex) {
+  return { type: SET_HBI_FILTER, filterIndex };
 }
 
 export function setPopupLocation(popupLocation) {
@@ -88,11 +83,14 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case SET_POPUP_DATA:
     case SET_HAS_MOVED:
     case GEOCODE_DONE:
-    case SET_HBI_FILTER:
     case SET_POPUP_LOCATION:
     case SET_POPUP_VISIBLE:
     case SET_PLANNING_DATA:
       return Object.assign({}, state, action.payload);
+    case SET_HBI_FILTER:
+      return Object.assign({}, state, {
+        filterHbi: state.filterHbi.map((filter, i) => (i === action.filterIndex ? !filter : filter))
+      });
     default:
       return Object.assign({}, state);
   }

@@ -27,7 +27,7 @@ export default props => (
               <Fragment>
                 <MapLegend
                   type="hbi"
-                  filterHbiIndex={props.filterHbiIndex}
+                  filterHbi={props.filterHbi}
                 />
                 <Brace type="zustand" />
               </Fragment>

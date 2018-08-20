@@ -103,7 +103,7 @@ class MapViewComponent extends PureComponent {
           {this.props.displayPopup && <MapPopup />}
 
           <MapContent
-            filterHbiIndex={this.props.filterHbiIndex}
+            filterHbi={this.props.filterHbi}
             displayLegend={displayLegend}
           />
 
@@ -145,7 +145,6 @@ export default withRouter(
     activeSection: parseInt(state.AppState.activeSection, 0),
     activeLocation: state.MapState.activeLocation,
     filterHbi: state.MapState.filterHbi,
-    filterHbiIndex: state.MapState.filterHbiIndex,
     filterPlannings: state.MapState.filterPlannings,
     hasMoved: state.MapState.hasMoved,
     hbi_speed: state.MapState.hbi_speed,

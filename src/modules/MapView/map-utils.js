@@ -110,17 +110,18 @@ function getHbiLineColorRules(hbi) {
   ];
 }
 
-function getHbiFilterRules(hbi, min, max) {
+function getHbiFilterRules(hbi, filter) {
   return [
     'case',
-    ['<=', hbi, min], 0,
-    ['>=', hbi, max], 0,
-    1
+    ['all', ['>', hbi, config.hbiStops[0].min], ['<', hbi, config.hbiStops[0].max]], filter[0] ? 1 : 0,
+    ['all', ['>', hbi, config.hbiStops[1].min], ['<', hbi, config.hbiStops[1].max]], filter[1] ? 1 : 0,
+    ['all', ['>', hbi, config.hbiStops[2].min], ['<', hbi, config.hbiStops[2].max]], filter[2] ? 1 : 0,
+    ['all', ['>', hbi, config.hbiStops[3].min], ['<', hbi, config.hbiStops[3].max]], filter[3] ? 1 : 0,
+    0
   ];
 }
 
-export function colorizeHbiLines(map, hbiValues, filterHbi) {
-  setMapFilter(map, null);
+export function colorizeHbiLines(map, hbiValues, hbiFilter) {
   setMapFilter(map, ['any',
     ['has', 'side0_safety'],
     ['has', 'side0_velocity']
@@ -141,18 +142,13 @@ export function colorizeHbiLines(map, hbiValues, filterHbi) {
   map.setPaintProperty(config.map.layers.side0Layer, 'line-color', lineColorRules0);
   map.setPaintProperty(config.map.layers.side1Layer, 'line-color', lineColorRules1);
 
-  if (filterHbi && typeof filterHbi[0] === 'number' && typeof filterHbi[1] === 'number') {
-    const min = filterHbi[0];
-    const max = filterHbi[1];
+  const lineOpacityRulesCenter = getHbiFilterRules(hbiExprCenter, hbiFilter);
+  const lineOpacityRulesSide0 = getHbiFilterRules(hbiExprSide0, hbiFilter);
+  const lineOpacityRulesSide1 = getHbiFilterRules(hbiExprSide1, hbiFilter);
 
-    map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', getHbiFilterRules(hbiExprCenter, min, max));
-    map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', getHbiFilterRules(hbiExprSide0, min, max));
-    map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', getHbiFilterRules(hbiExprSide1, min, max));
-  } else {
-    map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', 1);
-    map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', 1);
-    map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', 1);
-  }
+  map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', lineOpacityRulesCenter);
+  map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', lineOpacityRulesSide0);
+  map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', lineOpacityRulesSide1);
 }
 
 export function resetMap() {

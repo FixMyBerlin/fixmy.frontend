@@ -4,7 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Store from '~/redux/store';
-import { setHbiFilter, resetHbiFilter } from '~/modules/MapView/MapState';
+import { toggleHbiFilter } from '~/modules/MapView/MapState';
 import Label from '~/components/styled/Label';
 
 const HBILegend = styled.div`
@@ -27,61 +27,24 @@ const LegendItem = styled.div`
   }
 `;
 
-const LegendIconWrapper = styled.div`
-  position: relative;
-`;
-
 const LegendImage = styled.img`
   width: 55px;
+  filter: ${props => (props.isActive ? 'none' : 'grayscale(1)')};
 `;
 
 const LegendLabel = Label.extend`
   flex-shrink: 0;
 `;
 
-const CloseLegendItem = styled.div`
-  display: ${props => (props.closable ? 'flex' : 'none')};
-  position: absolute;
-  right: -5px;
-  top: -5px;
-  width: 15px;
-  height: 15px;
-  background: #fff;
-  font-size: 10px;
-  border: 1px solid ${config.colors.darkgrey};
-  border-radius: 50%;
-  justify-content: center;
-  align-items: center;
-`;
-
-function resetHbi() {
-  Store.dispatch(resetHbiFilter());
-}
-
-function filterHbi({ min, max, index, isActive }) {
-  if (isActive) {
-    return resetHbi();
-  }
-
-  return Store.dispatch(setHbiFilter(min, max, index));
-}
-
 export default props => (
   <HBILegend>
     {config.hbiStops.map((legendItem, i) => (
       <LegendItem key={`LegendItem__${legendItem.label}`}>
-        <LegendIconWrapper>
-          <CloseLegendItem onClick={resetHbi} closable={props.filterHbiIndex === i}>×</CloseLegendItem>
-          <LegendImage
-            src={require(`~/images/hbi-stop-icons/${legendItem.image}`)}
-            onClick={() => filterHbi({
-              min: legendItem.min,
-              max: legendItem.max,
-              index: i,
-              isActive: props.filterHbiIndex === i
-            })}
-          />
-        </LegendIconWrapper>
+        <LegendImage
+          src={require(`~/images/hbi-stop-icons/${legendItem.image}`)}
+          isActive={props.filterHbi[i]}
+          onClick={() => Store.dispatch(toggleHbiFilter(i))}
+        />
         <LegendLabel>{legendItem.label}</LegendLabel>
       </LegendItem>
     ))
