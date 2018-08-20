@@ -122,7 +122,7 @@ class PlanningDetails extends PureComponent {
           <DetailBodySection>
             <SectionTitle>Ziel & Hintergrund dieser Maßnahme?</SectionTitle>
             <Text>
-              {this.state.descriptionExpanded ? description : short_description}
+              {description}
             </Text>
             <ExpandDescriptionButton onClick={this.toggleDescription}>{this.state.descriptionExpanded ? 'Weniger' : 'Mehr >'}</ExpandDescriptionButton>
           </DetailBodySection>
