@@ -135,7 +135,8 @@
     "geocoderAppId": "MfbUA6oryxjvqtPmL8OG",
     "geocoderAppCode": "TtjOtIepUqDKvw2Mi_ci-A",
     "drawOverlayLine": true,
-    "dimmingOpacity": 0.3
+    "dimmingOpacity": 0.3,
+    "bounds": [[13.2826, 52.4615], [13.46391, 52.5544374]]
   },
   "sectionIsBeta": true,
   "planningIsBeta": true,

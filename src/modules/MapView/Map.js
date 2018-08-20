@@ -67,10 +67,6 @@ class Map extends PureComponent {
       style: MB_STYLE_URL
     });
 
-    if (!this.props.activeSection) {
-      this.setView(this.getViewFromProps(), false);
-    }
-
     this.map.on('load', this.handleLoad);
     this.props.setMapContext(this.map);
 
@@ -142,9 +138,13 @@ class Map extends PureComponent {
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
 
-    this.updateLayers();
+    if (!this.props.activeSection) {
+      this.map.fitBounds(config.map.bounds, { animate: false });
+    } else {
+      this.setView(this.getViewFromProps(), false);
+    }
 
-    this.setView(this.getViewFromProps(), this.props.animate);
+    this.updateLayers();
     this.setState({ loading: false });
 
     this.map.resize();
