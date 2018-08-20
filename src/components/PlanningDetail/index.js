@@ -79,7 +79,7 @@ class PlanningDetails extends PureComponent {
     const planning = plannings[sideIndex];
     const {
       title, description, draft, external_url, responsible, costs, faq, photos,
-      phase, construction_started, draft_submitted, short_description, cross_section_photo
+      phase, construction_started, draft_submitted, cross_section_photo
     } = planning;
 
     const showFaq = faq && faq.length;

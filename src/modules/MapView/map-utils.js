@@ -34,7 +34,7 @@ export function toggleLayer(map, layer, isVisible) {
 export function filterLayersById(map, id) {
   if (id) {
     const VisibilityFilter = ['case',
-      ['!=', ['get', 'id'], id], 0.1,
+      ['!=', ['get', 'id'], id], 0.2,
       1
     ];
 
