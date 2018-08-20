@@ -9,15 +9,19 @@ const initialState = {
   activeSection: null
 };
 
-export const updateHistory = props => (dispatch, getState) => {
+export const updateHistory = props => (dispatch) => {
+  console.log(props.pathname);
+
   const match = matchPath(props.pathname, {
     path: '/:activeView?/:activeSection?',
     exact: false,
     strict: false
   });
 
-  const activeSection = match.params.activeSection || getState().AppState.activeSection;
+  const activeSection = match.params.activeSection;
   const activeView = match.params.activeView;
+
+  console.log(activeSection, activeView);
 
   dispatch({
     type: UPDATE_HISTORY,

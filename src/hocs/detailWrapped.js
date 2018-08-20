@@ -8,7 +8,7 @@ import Axios from 'axios';
 import { media } from '~/style-utils';
 import Store from '~/redux/store';
 import { setView } from '~/modules/MapView/MapState';
-import { getCenterFromGeom, resetMap } from '~/modules/MapView/map-utils';
+import { getCenterFromGeom } from '~/modules/MapView/map-utils';
 import PinIcon from '~/images/pin.svg';
 import Label from '~/components/styled/Label';
 
@@ -119,7 +119,7 @@ function detailWrapped(Component) {
       const center = getCenterFromGeom(geometry);
 
       if (center) {
-        Store.dispatch(setView({ center, zoom: 16, animate: true, pitch: 40, show3dBuildings: true }));
+        Store.dispatch(setView({ center, zoom: 16, animate: true, pitch: 40, show3dBuildings: true, dim: true }));
       }
 
       this.setState({
@@ -138,7 +138,6 @@ function detailWrapped(Component) {
 
     onClose = () => {
       this.props.history.push(this.props.onCloseRoute);
-      resetMap();
     }
 
     getJSONFallbackPath() {

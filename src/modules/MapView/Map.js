@@ -12,7 +12,7 @@ import { isSmallScreen } from '~/style-utils';
 import * as AppActions from '~/modules/App/AppState';
 import * as MapActions from './MapState';
 import {
-  colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer, filterLayersById, getCenterFromGeom
+  colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer, filterLayersById, getCenterFromGeom, resetMap
 } from './map-utils';
 
 const MB_STYLE_URL = `${config.map.style}?fresh=true`;
@@ -108,6 +108,11 @@ class Map extends PureComponent {
       colorizeHbiLines(this.map, this.props.hbi_values);
     }
 
+    if (prevProps.activeSection && !this.props.activeSection) {
+      // back button triggered
+      resetMap();
+    }
+
     return this.map.resize();
   }
 
@@ -156,6 +161,10 @@ class Map extends PureComponent {
       colorizePlanningLines(this.map);
     }
 
+    toggleLayer(this.map, config.map.layers.bgLayer, true);
+    toggleLayer(this.map, config.map.layers.centerLayer, true);
+    toggleLayer(this.map, config.map.layers.side0Layer, true);
+    toggleLayer(this.map, config.map.layers.side1Layer, true);
     toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
     toggleLayer(this.map, config.map.layers.dimmingLayer, this.props.dim);
     toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
