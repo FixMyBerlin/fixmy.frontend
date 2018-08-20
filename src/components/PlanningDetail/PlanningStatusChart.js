@@ -68,28 +68,27 @@ class PlanningStatusChart extends PureComponent {
   getChartData = (phase) => {
     let isFinished = true;
 
-    return config.planningPhasesOrder.map((planningPhase, i) => {
-      if (planningPhase === phase) {
+    return config.planningPhases.map((planningPhase, i) => {
+      if (planningPhase.id === phase) {
         isFinished = false;
       }
 
-      const planningPhaseConfig = config.planningPhases[planningPhase];
-      const inProgress = planningPhase === phase;
+      const inProgress = planningPhase.id === phase;
       const innerWidth = this.state.width - this.padding.left - this.padding.right;
-      const step = innerWidth / (config.planningPhasesOrder.length - 1);
+      const step = innerWidth / (config.planningPhases.length - 1);
       const r = inProgress ? 25 : 12.5;
       const x = this.padding.left + (step * i);
       const y = this.height / 3;
       const nextX = this.padding.left + (step * (i + 1));
       const lineStroke = isFinished ? config.colors.change_4 : config.colors.inactivegrey;
-      const circleColor = (inProgress || isFinished) ? planningPhaseConfig.color : config.colors.inactivegrey;
+      const circleColor = (inProgress || isFinished) ? planningPhase.color : config.colors.inactivegrey;
 
       return {
         isFinished,
         inProgress,
-        color: planningPhaseConfig.color,
-        icon: planningPhaseConfig.icon,
-        label: planningPhaseConfig.name,
+        color: planningPhase.color,
+        icon: planningPhase.icon,
+        label: planningPhase.name,
         r,
         x,
         y,

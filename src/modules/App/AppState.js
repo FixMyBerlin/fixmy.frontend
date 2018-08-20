@@ -10,8 +10,6 @@ const initialState = {
 };
 
 export const updateHistory = props => (dispatch) => {
-  console.log(props.pathname);
-
   const match = matchPath(props.pathname, {
     path: '/:activeView?/:activeSection?',
     exact: false,
@@ -20,8 +18,6 @@ export const updateHistory = props => (dispatch) => {
 
   const activeSection = match.params.activeSection;
   const activeView = match.params.activeView;
-
-  console.log(activeSection, activeView);
 
   dispatch({
     type: UPDATE_HISTORY,

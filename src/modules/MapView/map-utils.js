@@ -3,10 +3,13 @@
 import turfAlong from '@turf/along';
 import turfLength from '@turf/length';
 import { lineString as turfLineString } from '@turf/helpers';
+import _keyBy from 'lodash.keyby';
 
 import Store from '~/redux/store';
 import * as MapActions from '~/modules/MapView/MapState';
 import * as AppActions from '~/modules/App/AppState';
+
+const planningPhases = _keyBy(config.planningPhases, phase => phase.id);
 
 export function setView(map, view) {
   map.setZoom(view.zoom);
@@ -55,23 +58,26 @@ function setMapFilter(map, filter) {
 function getPlanningLineColorRules(side = '') {
   return [
     'case',
-    ['==', 'draft', ['get', `${side}planning_phase`]], config.planningPhases.draft.color,
-    ['==', 'planning', ['get', `${side}planning_phase`]], config.planningPhases.planning.color,
-    ['==', 'execution', ['get', `${side}planning_phase`]], config.planningPhases.execution.color,
-    ['==', 'ready', ['get', `${side}planning_phase`]], config.planningPhases.ready.color,
+    ['==', 'draft', ['get', `${side}planning_phase`]], planningPhases.draft.color,
+    ['==', 'planning', ['get', `${side}planning_phase`]], planningPhases.planning.color,
+    ['==', 'execution', ['get', `${side}planning_phase`]], planningPhases.execution.color,
+    ['==', 'ready', ['get', `${side}planning_phase`]], planningPhases.ready.color,
     '#FFF'
   ];
 }
 
-// function getPlanningOpacityRules(side = '') {
-//   return [
-//     'case',
-//     ['==', true, ['has', ['get', `${side}planning_phase`]]], 1,
-//     0
-//   ];
-// }
+function getPlanningFilterRules(side = '', filter) {
+  return [
+    'case',
+    ['==', 'draft', ['get', `${side}planning_phase`]], filter[0] ? 1 : 0,
+    ['==', 'planning', ['get', `${side}planning_phase`]], filter[1] ? 1 : 0,
+    ['==', 'execution', ['get', `${side}planning_phase`]], filter[2] ? 1 : 0,
+    ['==', 'ready', ['get', `${side}planning_phase`]], filter[3] ? 1 : 0,
+    0
+  ];
+}
 
-export function colorizePlanningLines(map) {
+export function colorizePlanningLines(map, filter) {
   setMapFilter(map, ['any',
     ['has', 'side0_planning_phase'],
     ['has', 'side1_planning_phase'],
@@ -86,9 +92,13 @@ export function colorizePlanningLines(map) {
   map.setPaintProperty(config.map.layers.side0Layer, 'line-color', paintRulesSide0);
   map.setPaintProperty(config.map.layers.side1Layer, 'line-color', paintRulesSide1);
 
-  map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', 1);
-  map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', 1);
-  map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', 1);
+  const opacityRulesCenter = getPlanningFilterRules('', filter);
+  const opacityRulesSide0 = getPlanningFilterRules('side0_', filter);
+  const opacityRulesSide1 = getPlanningFilterRules('side1_', filter);
+
+  map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', opacityRulesCenter);
+  map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', opacityRulesSide0);
+  map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', opacityRulesSide1);
 }
 
 function getHbiExpression(sideKey, rs, rv) {

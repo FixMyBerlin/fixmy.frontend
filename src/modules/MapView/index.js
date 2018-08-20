@@ -86,6 +86,7 @@ class MapViewComponent extends PureComponent {
             hasMoved={this.props.hasMoved}
             hbi_values={this.props.hbi_values}
             filterHbi={this.props.filterHbi}
+            filterPlannings={this.props.filterPlannings}
             calculatePopupPosition={calculatePopupPosition}
             displayPopup={this.props.displayPopup}
             animate={this.props.animate}

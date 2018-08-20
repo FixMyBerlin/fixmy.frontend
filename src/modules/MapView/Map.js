@@ -158,7 +158,7 @@ class Map extends PureComponent {
     }
 
     if (this.props.activeLayer === 'planungen') {
-      colorizePlanningLines(this.map);
+      colorizePlanningLines(this.map, this.props.filterPlannings);
     }
 
     toggleLayer(this.map, config.map.layers.bgLayer, true);

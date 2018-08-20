@@ -6,6 +6,7 @@ const SET_HAS_MOVED = 'MapView/MapState/SET_HAS_MOVED';
 const GEOCODE_DONE = 'MapView/MapState/GEOCODE_SUCCESS';
 const GEOCODE_FAIL = 'MapView/MapState/GEOCODE_FAIL';
 const SET_HBI_FILTER = 'MapView/MapState/SET_HBI_FILTER';
+const SET_PLANNING_FILTER = 'MapView/MapState/SET_PLANNING_FILTER';
 const SET_POPUP_DATA = 'MapView/MapState/SET_POPUP_DATA';
 const SET_POPUP_LOCATION = 'MapView/MapState/SET_POPUP_LOCATION';
 const SET_POPUP_VISIBLE = 'MapView/MapState/SET_POPUP_VISIBLE';
@@ -38,6 +39,10 @@ export function setHasMoved(hasMoved) {
 
 export function toggleHbiFilter(filterIndex) {
   return { type: SET_HBI_FILTER, filterIndex };
+}
+
+export function togglePlanningFilter(filterIndex) {
+  return { type: SET_PLANNING_FILTER, filterIndex };
 }
 
 export function setPopupLocation(popupLocation) {
@@ -90,6 +95,10 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case SET_HBI_FILTER:
       return Object.assign({}, state, {
         filterHbi: state.filterHbi.map((filter, i) => (i === action.filterIndex ? !filter : filter))
+      });
+    case SET_PLANNING_FILTER:
+      return Object.assign({}, state, {
+        filterPlannings: state.filterPlannings.map((filter, i) => (i === action.filterIndex ? !filter : filter))
       });
     default:
       return Object.assign({}, state);

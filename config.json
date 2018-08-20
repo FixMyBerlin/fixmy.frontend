@@ -83,29 +83,32 @@
       "image": "sehrgut@2x.png"
     }
   ],
-  "planningPhases": {
-    "draft": {
+  "planningPhases": [
+    {
+      "id": "draft",
       "color": "#fa96d0",
-      "icon": null,
+      "icon": "konzept.svg",
       "name": "Konzept"
     },
-    "planning": {
+    {
+      "id": "planning",
       "color": "#cf0a7d",
-      "icon": null,
+      "icon": "planung.svg",
       "name": "Planung"
     },
-    "execution": {
+    {
+      "id": "execution",
       "color": "#910055",
-      "icon": null,
+      "icon": "bau.svg",
       "name": "im Bau"
     },
-    "ready": {
+    {
+      "id": "ready",
       "color": "#0f0f0f",
-      "icon": null,
+      "icon": "fertig.svg",
       "name": "Fertig"
     }
-  },
-  "planningPhasesOrder": ["draft", "planning", "execution", "ready"],
+  ],
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
     "style": "mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h?fresh=false",
@@ -138,5 +141,5 @@
   "planningIsBeta": true,
   "offlineMode": false,
   "isSwitchEnabled": false,
-  "debug": true
+  "debug": false
 }

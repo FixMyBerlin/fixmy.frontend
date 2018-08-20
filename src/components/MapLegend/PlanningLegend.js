@@ -1,12 +1,24 @@
 /* eslint import/no-dynamic-require: 0, global-require: 0 */
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import ConceptIcon from '~/images/planning-icons/konzept.svg';
 import PlanningIcon from '~/images/planning-icons/planung.svg';
 import ConstructionIcon from '~/images/planning-icons/bau.svg';
 import DoneIcon from '~/images/planning-icons/fertig.svg';
+
 import Label from '~/components/styled/Label';
+
+import Store from '~/redux/store';
+import { togglePlanningFilter } from '~/modules/MapView/MapState';
+
+const Icons = {
+  draft: ConceptIcon,
+  planning: PlanningIcon,
+  execution: ConstructionIcon,
+  ready: DoneIcon
+};
 
 const PlanningLegend = styled.div`
   display: flex;
@@ -20,23 +32,33 @@ const LegendItem = styled.div`
   padding: 20px 10px 10px 10px;
 `;
 
-export default () => (
+const LegendIconWrapper = styled.div`
+  filter: ${props => (props.isActive ? 'none' : 'grayscale(1)')};
+`;
+
+function handleClick(index) {
+  Store.dispatch(togglePlanningFilter(index));
+}
+
+function renderLegendItem(props, index, isActive) {
+  const Icon = Icons[props.id];
+
+  return (
+    <LegendItem onClick={() => handleClick(index)} key={`PlanningLegendItem__${props.id}`}>
+      <LegendIconWrapper isActive={isActive}>
+        <Icon />
+      </LegendIconWrapper>
+      <Label>{props.name}</Label>
+    </LegendItem>
+  );
+}
+
+const PlanningLegendComp = ({ filterPlannings }) => (
   <PlanningLegend>
-    <LegendItem>
-      <ConceptIcon />
-      <Label>Konzept</Label>
-    </LegendItem>
-    <LegendItem>
-      <PlanningIcon />
-      <Label>Planung</Label>
-    </LegendItem>
-    <LegendItem>
-      <ConstructionIcon />
-      <Label>im Bau</Label>
-    </LegendItem>
-    <LegendItem>
-      <DoneIcon />
-      <Label>Fertig</Label>
-    </LegendItem>
+    {config.planningPhases.map((item, index) => renderLegendItem(item, index, filterPlannings[index]))}
   </PlanningLegend>
 );
+
+export default connect(state => ({
+  filterPlannings: state.MapState.filterPlannings
+}))(PlanningLegendComp);
