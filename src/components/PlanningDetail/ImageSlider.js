@@ -10,7 +10,6 @@ import 'slick-carousel/slick/slick-theme.css';
 const dotSize = '10px';
 const StyledSlider = Styled(Slider)`
   background: white;
-  min-height: 100px;
 
   .slick-slide {
     height: 250px;
