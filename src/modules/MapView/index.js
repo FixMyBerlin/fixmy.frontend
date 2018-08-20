@@ -96,7 +96,7 @@ class MapViewComponent extends PureComponent {
               position="bottom-right"
             />
             <MapControl position="top-right">
-              <StyledFMBLogo width={67} />
+              <StyledFMBLogo showBetaIcon width={67} />
             </MapControl>
           </Map>
 
