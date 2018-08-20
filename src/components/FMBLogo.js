@@ -3,14 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import FixMyLogo from '~/images/logofmb@2x.png';
-import { media } from '~/style-utils';
 
-const FMBLogoWrapper = styled.div`
-  display: none;
-  ${media.m`
-    display: block;
-  `}
-`;
+const FMBLogoWrapper = styled.div``;
 
 const FMBLogo = props => (
   <FMBLogoWrapper className={props.className}>

@@ -3,7 +3,6 @@ import withRouter from 'react-router-dom/withRouter';
 import Route from 'react-router-dom/Route';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import MediaQuery from 'react-responsive';
 
 import SearchBar from '~/components/SearchBar';
 import LocatorControl from '~/components/LocatorControl';
@@ -15,7 +14,7 @@ import PlanningDetail from '~/components/PlanningDetail';
 
 import MyHBI from '~/modules/MyHBI';
 import Store from '~/redux/store';
-import { matchMediaSize, breakpoints } from '~/style-utils';
+import { matchMediaSize, breakpoints, media } from '~/style-utils';
 import Map from './Map';
 import MapContent from './MapContent';
 import * as MapActions from './MapState';
@@ -34,6 +33,14 @@ const MapWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+`;
+
+const StyledFMBLogo = styled(FMBLogo)`
+  display: none;
+
+  ${media.m`
+    display: block;
+  `}
 `;
 
 class MapViewComponent extends PureComponent {
@@ -88,14 +95,9 @@ class MapViewComponent extends PureComponent {
               onChange={this.handleLocationChange}
               position="bottom-right"
             />
-            <MediaQuery
-              key="Map__FMBLogo"
-              minDeviceWidth={breakpoints.m}
-            >
-              <MapControl position="top-right">
-                <FMBLogo width={67} />
-              </MapControl>
-            </MediaQuery>
+            <MapControl position="top-right">
+              <StyledFMBLogo width={67} />
+            </MapControl>
           </Map>
 
           {this.props.displayPopup && <MapPopup />}
