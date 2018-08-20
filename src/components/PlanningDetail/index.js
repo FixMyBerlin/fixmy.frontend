@@ -78,7 +78,7 @@ class PlanningDetails extends PureComponent {
     const { sideIndex } = this.state;
     const planning = plannings[sideIndex];
     const {
-      title, description, draft, external_url, responsible, costs, faq, photos,
+      title, description, construction_completed, external_url, responsible, costs, faq, photos,
       phase, construction_started, draft_submitted, cross_section_photo
     } = planning;
 
@@ -109,28 +109,32 @@ class PlanningDetails extends PureComponent {
 
         <DetailHead>
           <Title>{title}</Title>
-          <SectionTitle>
-            Fertigstellung: {draft || 'Unbekannt'}
-          </SectionTitle>
+          {construction_completed && (
+            <SectionTitle>
+              Fertigstellung: {construction_completed}
+            </SectionTitle>
+          )}
           <Label margin="-12px 0 25px 0">
             {draft_submitted ? `Planungsbeginn: ${draft_submitted}` : null} {construction_started ? `Baubeginn: ${construction_started}` : null}
           </Label>
-          <PlanningStatus phase={phase} />
+          {phase && <PlanningStatus phase={phase} />}
         </DetailHead>
 
         <DetailBody>
-          <DetailBodySection>
-            <SectionTitle>Ziel & Hintergrund dieser Maßnahme?</SectionTitle>
-            <Text>
-              {description}
-            </Text>
-            <ExpandDescriptionButton onClick={this.toggleDescription}>{this.state.descriptionExpanded ? 'Weniger' : 'Mehr >'}</ExpandDescriptionButton>
-          </DetailBodySection>
+          {description && (
+            <DetailBodySection>
+              <SectionTitle>Ziel & Hintergrund dieser Maßnahme?</SectionTitle>
+              <Text>
+                {description}
+              </Text>
+              <ExpandDescriptionButton onClick={this.toggleDescription}>{this.state.descriptionExpanded ? 'Weniger' : 'Mehr >'}</ExpandDescriptionButton>
+            </DetailBodySection>
+          )}
 
           <DetailBodySection>
             <SectionTitle>Projektdaten:</SectionTitle>
-            <DetailItem>Zuständigkeit: <strong>{responsible}</strong></DetailItem>
-            <DetailItem>Projektvolumen: <strong>{costs || 'keine Angaben'}</strong></DetailItem>
+            {responsible && <DetailItem>Zuständigkeit: <strong>{responsible}</strong></DetailItem>}
+            {costs && <DetailItem>Projektvolumen: <strong>{costs}</strong></DetailItem>}
             {external_url ? <DetailItem>Link zur Planung: <Anchor target="_blank" href={external_url}>{external_url}</Anchor></DetailItem> : null}
             {cross_section_photo ? <DetailImage src={cross_section_photo} /> : null}
           </DetailBodySection>

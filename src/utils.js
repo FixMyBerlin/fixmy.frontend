@@ -40,7 +40,7 @@ export function getHBIColorByIndex(index) {
 }
 
 export function log(stuff) {
-  if (config.debug) {
+  if (!config.debug) {
     return false;
   }
 
