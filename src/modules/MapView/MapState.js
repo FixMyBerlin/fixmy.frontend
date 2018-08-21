@@ -59,8 +59,7 @@ export function loadPlanningData() {
       return false;
     }
 
-    const result = await Axios.get('https://api.fixmyberlin.de/api/plannings');
-
+    const result = await Axios.get('https://api.fixmyberlin.de/api/plannings?page_size=200');
     return dispatch({ type: SET_PLANNING_DATA, payload: { planningData: result.data } });
   };
 }
