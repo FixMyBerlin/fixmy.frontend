@@ -69,6 +69,7 @@ class Map extends PureComponent {
 
     this.map.on('load', this.handleLoad);
     this.props.setMapContext(this.map);
+    this.setView(this.getViewFromProps(), false);
 
     window.map = this.map;
   }
