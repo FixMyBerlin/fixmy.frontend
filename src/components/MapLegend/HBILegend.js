@@ -21,15 +21,15 @@ const LegendItem = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  opacity: ${props => (props.isActive ? 1 : 0.4)};
 
   &:hover {
-    opacity: .9;
+    opacity: .4;
   }
 `;
 
 const LegendImage = styled.img`
   width: 55px;
-  filter: ${props => (props.isActive ? 'none' : 'grayscale(1)')};
 `;
 
 const LegendLabel = Label.extend`
@@ -39,11 +39,9 @@ const LegendLabel = Label.extend`
 export default props => (
   <HBILegend>
     {config.hbiStops.map((legendItem, i) => (
-      <LegendItem key={`LegendItem__${legendItem.label}`}>
+      <LegendItem onClick={() => Store.dispatch(toggleHbiFilter(i))} isActive={props.filterHbi[i]} key={`LegendItem__${legendItem.label}`}>
         <LegendImage
           src={require(`~/images/hbi-stop-icons/${legendItem.image}`)}
-          isActive={props.filterHbi[i]}
-          onClick={() => Store.dispatch(toggleHbiFilter(i))}
         />
         <LegendLabel>{legendItem.label}</LegendLabel>
       </LegendItem>

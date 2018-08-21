@@ -30,11 +30,15 @@ const LegendItem = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px 10px 10px 10px;
+  cursor: pointer;
+  opacity: ${props => (props.isActive ? 1 : 0.4)};
+
+  &:hover {
+    opacity: .4;
+  }
 `;
 
-const LegendIconWrapper = styled.div`
-  filter: ${props => (props.isActive ? 'none' : 'grayscale(1)')};
-`;
+const LegendIconWrapper = styled.div``;
 
 function handleClick(index) {
   Store.dispatch(togglePlanningFilter(index));
@@ -44,8 +48,8 @@ function renderLegendItem(props, index, isActive) {
   const Icon = Icons[props.id];
 
   return (
-    <LegendItem onClick={() => handleClick(index)} key={`PlanningLegendItem__${props.id}`}>
-      <LegendIconWrapper isActive={isActive}>
+    <LegendItem isActive={isActive} onClick={() => handleClick(index)} key={`PlanningLegendItem__${props.id}`}>
+      <LegendIconWrapper>
         <Icon />
       </LegendIconWrapper>
       <Label>{props.name}</Label>
