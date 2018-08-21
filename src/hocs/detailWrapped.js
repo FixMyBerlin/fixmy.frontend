@@ -66,8 +66,6 @@ const DetailTitle = styled.div`
 const DetailBody = styled.div`
   overflow-y: auto;
   height: 100%;
-  display: flex;
-  flex-direction: column;
 `;
 
 const Close = styled.button`

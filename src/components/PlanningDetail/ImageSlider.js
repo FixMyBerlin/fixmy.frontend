@@ -12,7 +12,6 @@ const StyledSlider = Styled(Slider)`
   background: white;
 
   .slick-slide {
-    height: 250px;
 
     >div {
       height: 100%;

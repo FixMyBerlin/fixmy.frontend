@@ -11,6 +11,7 @@ import { arrayIsEqual, log } from '~/utils';
 import { isSmallScreen } from '~/style-utils';
 import * as AppActions from '~/modules/App/AppState';
 import * as MapActions from './MapState';
+import PlanningMarkers from './PlanningMarkers';
 import {
   colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer, filterLayersById, getCenterFromGeom, resetMap
 } from './map-utils';
@@ -58,7 +59,8 @@ class Map extends PureComponent {
 
   state = {
     loading: true,
-    popupLngLat: false
+    popupLngLat: false,
+    map: false
   }
 
   componentDidMount() {
@@ -146,7 +148,7 @@ class Map extends PureComponent {
     }
 
     this.updateLayers();
-    this.setState({ loading: false });
+    this.setState({ loading: false, map: this.map });
 
     this.map.resize();
   }
@@ -177,15 +179,9 @@ class Map extends PureComponent {
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
-
-    // @TODO: how can we handle these planning urls/ ids better?
-    // const planningUrl = properties.side0_planning_url || properties.side1_planning_url || properties.planning_url;
-    // const id = this.props.activeView === 'planungen' ? planningUrl.match(/\/(\d)/)[1] : properties.id;
-    const id = properties.id;
-
-    log(properties);
-
+    
     if (properties) {
+      const id = properties.id;
       // when user is in detail mode, we don't want to show the tooltip again,
       // but directly switch to another detail view
       if (this.props.activeSection && !this.props.displayPopup) {
@@ -213,6 +209,10 @@ class Map extends PureComponent {
     }
   }
 
+  handleMarkerClick = (properties) => {
+    // this.zoomSection(properties);
+  }
+
   handleMoveEnd = () => {
     if (!this.props.hasMoved) {
       Store.dispatch(MapActions.setHasMoved(true));
@@ -227,9 +227,17 @@ class Map extends PureComponent {
   }
 
   render() {
+    const markerData = idx(this.props.planningData, _ => _.results);
+
     return (
       <StyledMap className={this.props.className} innerRef={(ref) => { this.root = ref; }}>
         {this.props.children}
+        <PlanningMarkers
+          map={this.state.map}
+          data={markerData}
+          active={this.props.activeLayer === 'planungen'}
+          onClick={this.handleMarkerClick}
+        />
       </StyledMap>
     );
   }

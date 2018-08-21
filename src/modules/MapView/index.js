@@ -90,6 +90,7 @@ class MapViewComponent extends PureComponent {
             calculatePopupPosition={calculatePopupPosition}
             displayPopup={this.props.displayPopup}
             animate={this.props.animate}
+            planningData={this.props.planningData}
           >
             <LocatorControl
               key="Map__LocatorControl"
@@ -158,6 +159,7 @@ export default withRouter(
     dim: state.MapState.dim,
     animate: state.MapState.animate,
     displayPopup: state.MapState.displayPopup,
+    planningData: state.MapState.planningData,
     ...state.UserState
   }))(MapViewComponent)
 );
