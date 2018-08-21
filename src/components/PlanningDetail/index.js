@@ -15,9 +15,9 @@ import PlanningStatus from './PlanningStatus';
 
 const DetailHead = Styled.div`
   padding: 14px 24px;
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.24);
   position: relative;
   background: white;
+  border-bottom: 1px solid #c4c4c4;
 `;
 
 const DetailBody = Styled.div`
