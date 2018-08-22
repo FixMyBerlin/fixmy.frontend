@@ -141,6 +141,6 @@
   "sectionIsBeta": true,
   "planningIsBeta": true,
   "offlineMode": false,
-  "isSwitchEnabled": true,
+  "isSwitchEnabled": false,
   "debug": false
 }
