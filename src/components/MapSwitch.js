@@ -15,6 +15,7 @@ const MapSwitchWrapper = styled.div`
   max-width: 400px;
   margin: 15px auto;
   height: 75px;
+  opacity: ${config.isSwitchEnabled ? 1 : 0.4}
 `;
 
 const MapSwitchItem = styled.div`

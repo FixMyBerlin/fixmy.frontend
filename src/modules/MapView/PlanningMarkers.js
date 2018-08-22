@@ -34,11 +34,11 @@ class PlanningMarkers extends PureComponent {
   }
 
   componentDidMount() {
-    this.updateMarkers();
+    // this.updateMarkers();
   }
 
   componentDidUpdate() {
-    this.updateMarkers();
+    // this.updateMarkers();
   }
 
   removeMarkers = () => {
