@@ -50,9 +50,6 @@ export default () => (
           <Title>Hi, das ist FixMyBerlin</Title>
           <Text>Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Hier siehst du bald, was dafür geplant wird. Trage dich für Updates zum Newsletter ein.</Text>
         </div>
-        <Link to="/planungen">
-          <MapButton>Karte anzeigen</MapButton>
-        </Link>
         <AboutLinkWrapper>
           <StyledLink to="/info">Worum geht es hier genau?</StyledLink>
         </AboutLinkWrapper>
