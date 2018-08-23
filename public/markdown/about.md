@@ -3,7 +3,7 @@
 
 
 ## Wer steckt hinter FixMyBerlin?
-FixMyBerlin ist eine Initiative aus der Berliner Zivilgesellschaft in Zusammenarbeit mit der Senatsverwaltung. Einige aus unserem Team haben als Mitinitiator des Volksentscheid Fahrrad das Mobilitätsgesetz mit angeschoben. Mittlerweile sind wir ein größer werdendes Team aus Entwicklern, Designern, Verkehrsplanerinnen und Datenspezialisten, die den Traum haben Berlin und in der Zukunft vielleicht auch anderen Städten auf dem Weg zur Fahrradstadt zu begleiten. Wenn du uns unterstützen willst nimm gerne mit uns [Kontakt](/kontakt/ "Kontakt") auf.
+FixMyBerlin ist eine Initiative aus der Berliner Zivilgesellschaft in Zusammenarbeit mit der Senatsverwaltung. Einige aus unserem Team haben als Mitinitiator des Volksentscheid Fahrrad das Mobilitätsgesetz mit angeschoben. Mittlerweile sind wir ein größer werdendes Team aus Entwicklern, Designern, Verkehrsplanerinnen und Datenspezialisten, die den Traum haben Berlin und in der Zukunft vielleicht auch anderen Städten auf dem Weg zur Fahrradstadt zu begleiten. Wenn du uns unterstützen willst nimm gerne mit uns [Kontakt](/contact/ "Kontakt") auf.
 
 Das Projekt wird gefördert aus Mitteln des Bundesverkehrsministerium. Die Senatsverwaltung für Umwelt, Verkehr und Klimaschutz, sowie viele der Berliner Bezirksämter unterstützen das Vorhaben. Viele Partner aus der Berliner Gesellschaft unterstützen uns, so arbeiten wir beispielsweise mit dem Tagesspiegel, der Technologiestiftung Berlin, der TU Berlin, ChangingCities e.V. oder dem ADFC e.V. zusammen.
 
