@@ -1,8 +1,6 @@
 # Wie wird Berlin zur Fahrradstadt?
 **Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Auf dieser Plattform begleiten wir das kommende Berliner [Mobilitätsgesetz](https://www.berlin.de/senuvk/verkehr/mobilitaetsgesetz/"Mobilitätsgesetz") und was es für den Radverkehr bedeutet. Auf der Karte siehst du, was die Stadt alles für den Radverkehr plant. Der von uns entwickelte [Happy-Bike-Index](/AboutHBI/"Happy-Bike-Index") zeigt dir wo du zur Zeit in Berlin schon entspannt und sicher Radfahrern kannst und wo es noch gefährlich ist. Nach und nach bereiten wir weitere Daten zum Radverkehr auf und veröffentlichen Sie hier auf der Plattform. In Zukunft wollen wir auch den Dialog zwischen Verwaltung und Bürger*innen stärken und konstruktiv gestalten. Denn gemeinsam kommen wir schneller zu einer Stadt, die nicht nur für Radfahrer*innen sondern für alle Berliner*innen lebenswerter ist.**
 
-[Woher kommen die Daten zu den Planungen?](/AboutPlanungen/"Woher kommen die Daten zu den Planungen?")
-
 ## Wer steckt hinter FixMyBerlin?
 FixMyBerlin ist eine Initiative aus der Berliner Zivilgesellschaft in Zusammenarbeit mit der Senatsverwaltung. Einige aus unserem Team haben als Mitinitiator des Volksentscheid Fahrrad das Mobilitätsgesetz mit angeschoben. Mittlerweile sind wir ein tolles kleines Team aus Entwicklern, Designern, Verkehrsplanerinnen und Datenspezialisten, die den Traum haben Berlin und in der Zukunft vielleicht auch anderen Städten auf dem Weg zur Fahrradstadt zu helfen. Wenn du uns unterstützen willst melde dich gerne nimm mit uns [Kontakt](/kontakt/"Kontakt") auf.
 
