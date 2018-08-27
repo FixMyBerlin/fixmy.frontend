@@ -179,7 +179,7 @@ class Map extends PureComponent {
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
-    
+
     if (properties) {
       const id = properties.id;
       // when user is in detail mode, we don't want to show the tooltip again,
@@ -209,8 +209,20 @@ class Map extends PureComponent {
     }
   }
 
-  handleMarkerClick = (properties) => {
-    // this.zoomSection(properties);
+  handleMarkerClick = (evt, properties) => {
+    evt.preventDefault();
+
+    const id = properties.planning_section_ids[0];
+    const center = getCenterFromGeom(properties.geometry);
+
+    Store.dispatch(MapActions.setPopupData(properties));
+    Store.dispatch(MapActions.setPopupVisible(true));
+    Store.dispatch(AppActions.setActiveSection(id));
+    Store.dispatch(MapActions.setView({
+      center,
+      animate: true,
+      zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
+    }));
   }
 
   handleMoveEnd = () => {
@@ -237,6 +249,7 @@ class Map extends PureComponent {
           data={markerData}
           active={this.props.activeLayer === 'planungen'}
           onClick={this.handleMarkerClick}
+          filterPlannings={this.props.filterPlannings}
         />
       </StyledMap>
     );

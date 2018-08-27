@@ -26,6 +26,8 @@ const Markers = {
   ready: ReadyMarker
 };
 
+const phasesOrder = Object.keys(Markers);
+
 class PlanningMarkers extends PureComponent {
   constructor() {
     super();
@@ -34,21 +36,24 @@ class PlanningMarkers extends PureComponent {
   }
 
   componentDidMount() {
-    // this.updateMarkers();
+    this.updateMarkers();
   }
 
   componentDidUpdate() {
-    // this.updateMarkers();
+    this.updateMarkers();
   }
 
   removeMarkers = () => {
-    this.markers.forEach(marker => marker && marker.remove());
+    this.markers.forEach((marker) => {
+      if (marker) {
+        marker.remove();
+      }
+    });
     this.markers = [];
   }
 
   updateMarkers = () => {
     const { active, data, map } = this.props;
-
     if (!data || !map) {
       return false;
     }
@@ -61,11 +66,17 @@ class PlanningMarkers extends PureComponent {
           return null;
         }
 
+        const phaseIndex = phasesOrder.indexOf(d.phase);
+        if (!this.props.filterPlannings[phaseIndex]) {
+          return null;
+        }
+
         const center = getCenterFromGeom(d.geometry);
         const el = document.createElement('div');
         el.className = 'marker';
         el.innerHTML = `<img class="marker-image" src="${Markers[d.phase]}" />`;
-        // el.addEventListener('click', () => this.props.onClick(d));
+        el.dataset.phase = d.phase;
+        el.addEventListener('click', evt => this.props.onClick(evt, d));
 
         return new MapboxGL.Marker(el)
           .setLngLat(center)
