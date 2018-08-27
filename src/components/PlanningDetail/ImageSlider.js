@@ -65,6 +65,15 @@ const ImageSource = Styled.div`
   color: ${config.colors.lightgrey};
 `;
 
+const PlaceholderLabel = Styled.div`
+  position: absolute;
+  left: 0;
+  top: 40%;
+  color: white;
+  width: 100%;
+  text-align: center;
+`;
+
 class ImageSlider extends PureComponent {
   static propTypes = {
     images: PropTypes.arrayOf(PropTypes.object)
@@ -83,6 +92,7 @@ class ImageSlider extends PureComponent {
         {this.props.images.map((image, i) => (
           <Slide key={`SliderImage_${i}`}>
             <SliderImage src={image.src} alt={image.copyright} />
+            {image.src.includes('Platzhalter') && <PlaceholderLabel>Noch kein Bild vorhanden</PlaceholderLabel>}
             {image.copyright && <ImageSource>{image.copyright}</ImageSource>}
           </Slide>
         ))}
