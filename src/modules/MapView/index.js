@@ -92,11 +92,13 @@ class MapViewComponent extends PureComponent {
             animate={this.props.animate}
             planningData={this.props.planningData}
           >
-            <LocatorControl
-              key="Map__LocatorControl"
-              onChange={this.handleLocationChange}
-              position="bottom-right"
-            />
+            {!this.props.displayPopup && (
+              <LocatorControl
+                key="Map__LocatorControl"
+                onChange={this.handleLocationChange}
+                position="bottom-right"
+              />
+            )}
             <MapControl position="top-right">
               <StyledFMBLogo showBetaIcon width={67} />
             </MapControl>
