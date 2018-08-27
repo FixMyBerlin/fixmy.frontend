@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react';
 import fetch from 'unfetch';
 
-import ContentWrapper from '~/components/styled/ContentWrapper';
-import MenuButton from '~/components/MenuButton';
+import ContentPageWrapper from '~/components/ContentPageWrapper';
 import MarkdownContent from './MarkdownContent';
 
 class MarkdownPage extends PureComponent {
@@ -12,6 +11,12 @@ class MarkdownPage extends PureComponent {
 
   componentDidMount() {
     this.loadContent();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.page !== this.props.page) {
+      this.loadContent();
+    }
   }
 
   async loadContent() {
@@ -27,10 +32,9 @@ class MarkdownPage extends PureComponent {
 
   render() {
     return (
-      <ContentWrapper>
-        <MenuButton />
+      <ContentPageWrapper>
         <MarkdownContent content={this.state.content} />
-      </ContentWrapper>
+      </ContentPageWrapper>
     );
   }
 }

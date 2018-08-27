@@ -1,3 +1,5 @@
+/* eslint class-methods-use-this: 0 */
+
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import idx from 'idx';
@@ -176,31 +178,39 @@ function detailWrapped(Component) {
       return true;
     }
 
+    renderLoading() {
+      return (
+        <DetailWrapper>
+          <InfoWrapper>Daten werden geladen ...</InfoWrapper>
+        </DetailWrapper>
+      );
+    }
+
+    renderError() {
+      return (
+        <DetailWrapper>
+          <DetailHeader>
+            <div>
+              <DetailTitle>
+                Ein Fehler ist aufgetreten.
+              </DetailTitle>
+            </div>
+            <Close onClick={this.onClose}>×</Close>
+          </DetailHeader>
+        </DetailWrapper>
+      );
+    }
+
     render() {
       const { isLoading, isError, data } = this.state;
       const showShadow = this.isShadowVisible(data);
 
       if (isLoading) {
-        return (
-          <DetailWrapper>
-            <InfoWrapper>Daten werden geladen ...</InfoWrapper>
-          </DetailWrapper>
-        );
+        return this.renderLoading();
       }
 
       if (isError) {
-        return (
-          <DetailWrapper>
-            <DetailHeader>
-              <div>
-                <DetailTitle>
-                  Ein Fehler ist aufgetreten.
-                </DetailTitle>
-              </div>
-              <Close onClick={this.onClose}>×</Close>
-            </DetailHeader>
-          </DetailWrapper>
-        );
+        return this.renderError();
       }
 
       return (

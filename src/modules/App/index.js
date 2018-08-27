@@ -1,11 +1,16 @@
 import React from 'react';
 import Route from 'react-router-dom/Route';
+import Switch from 'react-router-dom/Switch';
 import styled from 'styled-components';
 
 import Menu from '~/modules/Menu';
 import Home from '~/modules/Home';
 import MarkdownPage from '~/modules/MarkdownPage';
 import MapView from '~/modules/MapView';
+import Login from '~/modules/User/Login';
+import Signup from '~/modules/User/Signup';
+import PasswordReset from '~/modules/User/PasswordReset';
+import NoMatch from '~/modules/NoMatch';
 
 const App = styled.div`
   height: 100%;
@@ -21,17 +26,28 @@ const AppWrapper = () => (
   <App>
     <Menu />
     <AppContent>
-      <Route exact path="/" component={Home} />
-      <Route path="/info" render={() => <MarkdownPage page="about" />} />
+      <Switch>
+        <Route exact path="/" component={Home} />
 
-      <Route path="/kontakt" render={() => <MarkdownPage page="contact" />} />
-      <Route path="/datenschutz" render={() => <MarkdownPage page="privacy" />} />
-      <Route path="/impressum" render={() => <MarkdownPage page="imprint" />} />
+        {/* standard markdown pages */}
+        <Route path="/info" render={() => <MarkdownPage page="about" />} />
+        <Route path="/kontakt" render={() => <MarkdownPage page="contact" />} />
+        <Route path="/datenschutz" render={() => <MarkdownPage page="privacy" />} />
+        <Route path="/impressum" render={() => <MarkdownPage page="imprint" />} />
 
-      <Route
-        path="(/zustand|/planungen|/my-hbi)"
-        component={MapView}
-      />
+        {/* user pages */}
+        <Route path="/login" render={() => <Login />} />
+        <Route path="/signup" render={() => <Signup />} />
+        <Route path="/password-reset" render={() => <PasswordReset />} />
+
+        {/* map pages */}
+        <Route
+          path="(/zustand|/planungen|/my-hbi)"
+          component={MapView}
+        />
+
+        <Route component={NoMatch} />
+      </Switch>
     </AppContent>
   </App>
 );

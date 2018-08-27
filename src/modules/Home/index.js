@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import Link from 'react-router-dom/Link';
 
@@ -41,7 +41,7 @@ const BackgroundMap = styled(Map)`
 `;
 
 export default () => (
-  <React.Fragment>
+  <Fragment>
     <ContentOverlay>
       <MenuButton />
       <HomeContent>
@@ -58,5 +58,5 @@ export default () => (
       </HomeContent>
     </ContentOverlay>
     <BackgroundMap />
-  </React.Fragment>
+  </Fragment>
 );

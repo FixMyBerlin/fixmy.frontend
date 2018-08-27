@@ -17,7 +17,7 @@ function getBoxShadow(props) {
   return props.isActive ? 'inset 2px 1px rgba(0, 0, 0, 0.3)' : '0 0 2px 1px rgba(0, 0, 0, 0.2)';
 }
 
-const Button = styled.button`
+const SwitchButton = styled.button`
   border-radius: ${getBorderRadius};
   height: 50px;
   font-weight: 400;
@@ -45,12 +45,12 @@ export const ButtonGroup = styled.div`
 `;
 
 export default props => (
-  <Button
+  <SwitchButton
     className={props.className}
     side={props.side}
     isActive={props.sideIndex === props.activeSideIndex}
     onClick={props.onClick(props.sideIndex)}
   >
     {props.title}
-  </Button>
+  </SwitchButton>
 );

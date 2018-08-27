@@ -52,7 +52,14 @@ class HBISubmitForm extends PureComponent {
             isSubmitting
           }) => (
             <Form onSubmit={handleSubmit}>
-              {formConfig.map(d => <FormField key={`hbifield__${d.id}`} {...d} values={values} />)}
+              {formConfig.map(d => (
+                <FormField
+                  key={`hbifield__${d.id}`}
+                  {...d}
+                  values={values}
+                  errors={errors}
+                />
+              ))}
               {errors.server && <div>{errors.server}</div>}
               <Button type="submit" disabled={isSubmitting}>
                 Abschicken

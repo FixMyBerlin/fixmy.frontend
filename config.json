@@ -14,7 +14,8 @@
     "white": "#FFF",
     "interaction": "#fabe28",
     "change_4": "#910055",
-    "index": "#ff650c"
+    "index": "#ff650c",
+    "error": "#FF5050"
   },
   "menu": {
     "size": 320,

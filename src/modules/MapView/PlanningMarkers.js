@@ -60,30 +60,34 @@ class PlanningMarkers extends PureComponent {
 
     this.removeMarkers();
 
-    if (active) {
-      this.markers = data.map((d) => {
-        if (!Markers[d.phase]) {
-          return null;
-        }
-
-        const phaseIndex = phasesOrder.indexOf(d.phase);
-        if (!this.props.filterPlannings[phaseIndex]) {
-          return null;
-        }
-
-        const center = getCenterFromGeom(d.geometry);
-        const el = document.createElement('div');
-        el.className = 'marker';
-        el.innerHTML = `<img class="marker-image" src="${Markers[d.phase]}" />`;
-        el.dataset.phase = d.phase;
-        el.addEventListener('click', evt => this.props.onClick(evt, d));
-
-        return new MapboxGL.Marker(el)
-          .setLngLat(center)
-          .setOffset([0, -20])
-          .addTo(map);
-      });
+    if (!active) {
+      return false;
     }
+
+    this.markers = data.map((d) => {
+      if (!Markers[d.phase]) {
+        return null;
+      }
+
+      const phaseIndex = phasesOrder.indexOf(d.phase);
+      if (!this.props.filterPlannings[phaseIndex]) {
+        return null;
+      }
+
+      const center = getCenterFromGeom(d.geometry);
+      const el = document.createElement('div');
+      el.className = 'marker';
+      el.innerHTML = `<img class="marker-image" src="${Markers[d.phase]}" />`;
+      el.dataset.phase = d.phase;
+      el.addEventListener('click', evt => this.props.onClick(evt, d));
+
+      return new MapboxGL.Marker(el)
+        .setLngLat(center)
+        .setOffset([0, -20])
+        .addTo(map);
+    });
+
+    return true;
   }
 
   render() {
