@@ -8,7 +8,7 @@ import withRouter from 'react-router/withRouter';
 import slugify from 'slugify';
 
 import Store from '~/redux/store';
-import { arrayIsEqual, log } from '~/utils';
+import { arrayIsEqual } from '~/utils';
 import { isSmallScreen } from '~/style-utils';
 import * as AppActions from '~/modules/App/AppState';
 import * as MapActions from './MapState';

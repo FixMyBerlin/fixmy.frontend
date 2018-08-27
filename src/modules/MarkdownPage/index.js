@@ -21,7 +21,7 @@ class MarkdownPage extends PureComponent {
       return false;
     }
 
-    const content = await fetch(pageConfig.markdownSource);
+    const content = await fetch(pageConfig.markdownSource).then(r => r.text());
     return this.setState({ content });
   }
 
