@@ -1,16 +1,20 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Styled from 'styled-components';
 import Route from 'react-router/Route';
 
+import { orientation } from '~/style-utils';
 import MapLegend from '~/components/MapLegend';
 import MapSwitch from '~/components/MapSwitch';
-import Brace from '~/components/styled/Brace';
 
 const MapContent = Styled.div`
   width: 100%;
   background: #fff;
   flex: 0 1 auto;
   min-height: ${props => (props.hasLegend ? '180px' : 0)};
+
+  ${orientation.landscape`
+    min-height: 80px;
+  `}
 `;
 
 export default props => (
@@ -24,27 +28,17 @@ export default props => (
           path="/zustand"
           render={() => (
             props.displayLegend && (
-              <Fragment>
-                <MapLegend
-                  type="hbi"
-                  filterHbi={props.filterHbi}
-                />
-                <Brace type="zustand" />
-              </Fragment>
+              <MapLegend
+                type="hbi"
+                filterHbi={props.filterHbi}
+              />
             )
           )}
         />
         <Route
           exact
           path="/planungen"
-          render={() => (
-            props.displayLegend && (
-              <Fragment>
-                <MapLegend type="plannings" />
-                <Brace type="planung" />
-              </Fragment>
-            )
-          )}
+          render={() => props.displayLegend && <MapLegend type="plannings" />}
         />
         <MapSwitch />
       </MapContent>

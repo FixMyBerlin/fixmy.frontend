@@ -1,6 +1,9 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
+import { orientation } from '~/style-utils';
+import Brace from '~/components/styled/Brace';
 
 import HBILegend from './HBILegend';
 import PlanningLegend from './PlanningLegend';
@@ -9,6 +12,16 @@ const MapLegendWrapper = styled.div`
   max-width: 300px;
   margin: 0 auto;
   height: 70px;
+
+  ${orientation.landscape`
+    display: none;
+    `}
+`;
+
+const BraceWrapper = styled.div`
+  ${orientation.landscape`
+    display: none;
+  `}
 `;
 
 class MapLegend extends PureComponent {
@@ -34,9 +47,14 @@ class MapLegend extends PureComponent {
   render() {
     const LegendComponent = this.getLegendComponent();
     return (
-      <MapLegendWrapper>
-        <LegendComponent {...this.props} />
-      </MapLegendWrapper>
+      <Fragment>
+        <MapLegendWrapper>
+          <LegendComponent {...this.props} />
+        </MapLegendWrapper>
+        <BraceWrapper>
+          <Brace type={this.props.type === 'hbi' ? 'zustand' : 'planung'} />
+        </BraceWrapper>
+      </Fragment>
     );
   }
 }

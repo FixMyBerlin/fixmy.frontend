@@ -38,7 +38,7 @@ export function init() {
       cursor: pointer;
       display: inline-block;
     }
-    
+
     .switch-toggle {
       border: 1px solid #999;
       box-shadow: 1px 1px 1px #ccc;
@@ -50,15 +50,15 @@ export function init() {
       position: relative;
       transition: left .2s ease-in-out;
     }
-    
+
     .switch.on {
       background: green;
     }
-    
+
     .switch.on .switch-toggle {
       left: 23px;
     }
-    
+
     .switch.disabled {
       cursor: not-allowed;
     }
@@ -84,6 +84,19 @@ export const media = {
   s: getMediaQuery(breakpoints.s),
   m: getMediaQuery(breakpoints.m),
   l: getMediaQuery(breakpoints.l)
+};
+
+function getOrientationQuery(orientation) {
+  return (...args) => css`
+    @media (orientation: ${orientation}) {
+      ${typeof window.orientation !== 'undefined' ? css(...args) : ''}
+    }
+  `;
+}
+
+export const orientation = {
+  landscape: getOrientationQuery('landscape'),
+  portrait: getOrientationQuery('portrait')
 };
 
 export function matchMediaSize(size) {
