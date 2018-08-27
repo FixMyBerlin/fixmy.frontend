@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import idx from 'idx';
 import PropTypes from 'prop-types';
 import withRouter from 'react-router/withRouter';
+import slugify from 'slugify';
 
 import Store from '~/redux/store';
 import { arrayIsEqual, log } from '~/utils';
@@ -181,11 +182,12 @@ class Map extends PureComponent {
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
 
     if (properties) {
+      const name = slugify(properties.name || '').toLowerCase();
       const id = properties.id;
       // when user is in detail mode, we don't want to show the tooltip again,
       // but directly switch to another detail view
       if (this.props.activeSection && !this.props.displayPopup) {
-        const detailRoute = `/${this.props.activeView}/${id}`;
+        const detailRoute = `/${this.props.activeView}/${id}/${name}`;
         this.props.history.push(detailRoute);
       } else {
         Store.dispatch(MapActions.setPopupData(properties));
