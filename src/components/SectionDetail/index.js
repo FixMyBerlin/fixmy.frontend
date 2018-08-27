@@ -9,6 +9,7 @@ import HBISign from '~/components/HBISign';
 import Label from '~/components/styled/Label';
 import Title from '~/components/styled/Title';
 import DetailSwitch, { ButtonGroup } from '~/components/DetailSwitch';
+import FeedbackForm from '~/components/FeedbackForm';
 import InfoSection from './InfoSection';
 
 const DetailImage = styled.img`
@@ -135,6 +136,7 @@ class SectionDetails extends PureComponent {
             Wie wird der Happy-Bike-Level berechnet?
           </DescriptionLink>
         </DetailInfoWrapper>
+        <FeedbackForm />
       </React.Fragment>
     );
   }

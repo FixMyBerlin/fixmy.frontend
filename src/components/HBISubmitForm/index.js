@@ -6,8 +6,8 @@ import { trackEvent } from '~/utils';
 import Title from '~/components/styled/Title';
 import Button from '~/components/styled/Button';
 import Form from '~/components/styled/Form';
+import FormField from '~/components/FormField';
 
-import FormField from './FormField';
 import formConfig, { initialValues } from './config';
 
 // we need to set all unset values to null in order to satisfy the server
