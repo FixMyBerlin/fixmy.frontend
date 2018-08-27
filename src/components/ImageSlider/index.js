@@ -10,16 +10,16 @@ import 'slick-carousel/slick/slick-theme.css';
 const dotSize = '10px';
 const StyledSlider = Styled(Slider)`
   background: white;
+  min-height: 150px;
 
   .slick-slide {
-
     >div {
       height: 100%;
     }
   }
 
   .slick-dots {
-    bottom: 10px;
+    bottom: 16px;
 
     li {
       width: ${dotSize};

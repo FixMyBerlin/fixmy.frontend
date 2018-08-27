@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
 import DataProcessIcon from '~/images/data-process.svg';
-import dummyImageSrc from '~/images/detail-dummy.png';
 import { numberFormat } from '~/utils';
 import detailWrapped from '~/hocs/detailWrapped';
 import HBISign from '~/components/HBISign';
@@ -10,11 +9,9 @@ import Label from '~/components/styled/Label';
 import Title from '~/components/styled/Title';
 import DetailSwitch, { ButtonGroup } from '~/components/DetailSwitch';
 import FeedbackForm from '~/components/FeedbackForm';
-import InfoSection from './InfoSection';
+import ImageSlider from '~/components/ImageSlider';
 
-const DetailImage = styled.img`
-  width: 100%;
-`;
+import InfoSection from './InfoSection';
 
 const HBISignWrapper = styled.div`
   position: relative;
@@ -72,12 +69,14 @@ class SectionDetails extends PureComponent {
   render() {
     const { data } = this.props;
     const { sideIndex } = this.state;
-    const { name } = data;
+    const { name, details } = data;
     const sideData = data.details[sideIndex];
 
     if (!sideData) {
       return <div>Keine Daten vorhanden.</div>;
     }
+
+    const photos = details.length > 2 ? details[sideIndex + 2].photos : details[sideIndex].photos;
 
     return (
       <React.Fragment>
@@ -98,7 +97,7 @@ class SectionDetails extends PureComponent {
           />
         </ButtonGroup>
 
-        <DetailImage src={dummyImageSrc} alt={name} />
+        <ImageSlider images={photos} />
 
         <HBISignWrapper>
           <HBISign hbi={1} />

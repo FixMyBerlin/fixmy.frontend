@@ -9,8 +9,8 @@ import SectionTitle from '~/components/styled/SectionTitle';
 import Text from '~/components/styled/Text';
 import Label from '~/components/styled/Label';
 import DetailSwitch, { ButtonGroup } from '~/components/DetailSwitch';
+import ImageSlider from '~/components/ImageSlider';
 
-import ImageSlider from './ImageSlider';
 import PlanningStatus from './PlanningStatus';
 
 const DetailHead = Styled.div`
