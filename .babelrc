@@ -7,5 +7,10 @@
   "plugins": [
     "transform-class-properties",
     "styled-components"
-  ]
+  ],
+  "env": {
+    "production": {
+      "plugins": ["babel-plugin-transform-react-remove-prop-types"]
+    }
+  }
 }
