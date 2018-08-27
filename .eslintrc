@@ -24,7 +24,6 @@
   },
   "globals": {
     "config": true,
-    "VERSION": true,
     "_paq": true
   }
 }
