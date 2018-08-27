@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
 import { connect } from 'react-redux';
+import slugify from 'slugify';
 
 import { media } from '~/style-utils';
 import Store from '~/redux/store';
@@ -77,7 +78,8 @@ const closePopup = () => {
 
 class MapPopupComponent extends PureComponent {
   onDetailClick = () => {
-    const detailRoute = `/${this.props.activeView}/${this.props.activeSection}`;
+    const name = slugify(this.props.data.name || '').toLowerCase();
+    const detailRoute = `/${this.props.activeView}/${this.props.activeSection}/${name}`;
     this.props.history.push(detailRoute);
     closePopup();
   }

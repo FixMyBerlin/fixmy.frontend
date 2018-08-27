@@ -113,7 +113,7 @@ class MapViewComponent extends PureComponent {
 
           <Route
             exact
-            path="/zustand/:id"
+            path="/zustand/:id/:name?"
             render={() => (
               <SectionDetail
                 apiEndpoint="planning-sections"
@@ -124,7 +124,7 @@ class MapViewComponent extends PureComponent {
           />
           <Route
             exact
-            path="/planungen/:id"
+            path="/planungen/:id/:name?"
             render={() => (
               <PlanningDetail
                 apiEndpoint="planning-sections"
