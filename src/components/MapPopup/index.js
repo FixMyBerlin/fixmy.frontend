@@ -60,11 +60,12 @@ const StyledMapPopup = styled(MapPopup).attrs({
 
 class MapPopupWrapper extends PureComponent {
   render() {
-    const x = this.props.popupLocation ? this.props.popupLocation.x : 0;
-    const y = this.props.popupLocation ? this.props.popupLocation.y : 0;
+    const isSmallScreen = window.innerWidth <= 768;
+    const x = this.props.popupLocation && !isSmallScreen ? this.props.popupLocation.x : 0;
+    const y = this.props.popupLocation && !isSmallScreen ? this.props.popupLocation.y - arrowSize : 0;
 
     return (
-      <StyledMapPopup x={x} y={y - arrowSize} />
+      <StyledMapPopup x={x} y={y} />
     );
   }
 }

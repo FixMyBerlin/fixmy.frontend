@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ToggleSwitch from 'react-toggle-switch';
 import withRouter from 'react-router/withRouter';
 
+import { media } from '~/style-utils';
 import BikeIcon from '~/images/bike.svg';
 import PylonIcon from '~/images/pylon.svg';
 import Label from '~/components/styled/Label';
@@ -11,11 +12,15 @@ const MapSwitchWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 15px;
   max-width: 400px;
-  margin: 15px auto;
+  margin: 0 auto;
   height: 75px;
-  opacity: ${config.isSwitchEnabled ? 1 : 0.4}
+  opacity: ${config.isSwitchEnabled ? 1 : 0.4};
+
+  ${media.m`
+    padding: 25px 15px;
+  `}
 `;
 
 const MapSwitchItem = styled.div`
@@ -48,7 +53,7 @@ const Switch = styled(ToggleSwitch)`
     align-items: center;
     background: #353535;
     border: 2px solid #E8E8E8;
-    box-shadow: 0 0 4px 1px rgba(0,0,0,0.5);g
+    box-shadow: 0 0 4px 1px rgba(0,0,0,0.5);
 
     path {
       stroke: #353535;

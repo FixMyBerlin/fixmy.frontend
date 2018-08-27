@@ -12,6 +12,7 @@ import ResetMapButton from '~/components/ResetMapButton';
 import BigLabel from '~/components/styled/BigLabel';
 import Label from '~/components/styled/Label';
 import Button from '~/components/styled/Button';
+import Brace from '~/components/styled/Brace';
 
 import PlanningStatus from './PlanningStatus';
 import BikeLevelStatus from './BikeLevelStatus';
@@ -20,10 +21,14 @@ const MapPopup = styled.div`
   width: 100%;
   background: #fff;
   flex: 0 1 auto;
-  padding: 1rem;
+  padding: 16px 16px 0 16px;
   bottom: -1px;
   width: 100%;
   z-index:900;
+
+  ${media.m`
+    padding: 16px;
+  `}
 `;
 
 const StyledPinIcon = styled(PinIcon)`
@@ -42,7 +47,6 @@ const MapPopupLocation = styled.div`
 `;
 
 const MoreButtonWrapper = styled.div`
-  padding-bottom: 15px;
   display: flex;
   justify-content: center;
 
@@ -57,6 +61,12 @@ const CloseBtn = styled(ResetMapButton)`
   right: 10px;
   z-index: 900;
   color: ${config.colors.midgrey};
+`;
+
+const BraceWrapper = styled.div`
+  ${media.m`
+    display: none;
+  `}
 `;
 
 const closePopup = () => {
@@ -99,6 +109,9 @@ class MapPopupComponent extends PureComponent {
             mehr Infos
           </Button>
         </MoreButtonWrapper>
+        <BraceWrapper>
+          <Brace type={activeView} />
+        </BraceWrapper>
       </MapPopup>
     );
   }

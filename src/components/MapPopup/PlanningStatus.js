@@ -2,6 +2,10 @@ import React from 'react';
 
 import Title from '~/components/styled/Title';
 
+const StyledTitle = Title.extend`
+  margin: 16px 0 24px 0;
+`;
+
 export default (props) => {
   const { section } = props;
   const planningTitle = section.side0_planning_title || section.sideNone_planning_title || section.side1_planning_title;
@@ -13,6 +17,6 @@ export default (props) => {
   const PlanningStatusLabel = planningTitle || 'Keine Planungen vorhanden.';
 
   return (
-    <Title>{PlanningStatusLabel}</Title>
+    <StyledTitle>{PlanningStatusLabel}</StyledTitle>
   );
 };
