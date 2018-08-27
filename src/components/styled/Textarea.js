@@ -8,4 +8,5 @@ export default styled.textarea`
   font-family: 'Open Sans', sans-serif;
   width: 100%;
   height: 200px;
+  resize: vertical;
 `;

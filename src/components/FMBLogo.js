@@ -16,7 +16,7 @@ const StyledBetaIcon = styled(BetaIcon).attrs({
   position: absolute;
   top: -18px;
 
-  #Rectangle-6 {
+  #Rectangle-beta-6 {
     fill: ${config.colors.darkgrey};
   }
 `;

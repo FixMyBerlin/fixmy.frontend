@@ -10,7 +10,7 @@ function getBG(props) {
 }
 
 function getColor(props) {
-  return props.isActive ? 'white' : config.colors.darkgrey;
+  return props.isActive ? 'white' : config.colors.midgrey;
 }
 
 function getBoxShadow(props) {
@@ -41,6 +41,7 @@ export const ButtonGroup = styled.div`
   background: ${config.colors.lightbg};
   box-shadow: 0 0px 8px 2px rgba(0, 0, 0, 0.5);
   position: relative;
+  z-index: 2;
 `;
 
 export default props => (

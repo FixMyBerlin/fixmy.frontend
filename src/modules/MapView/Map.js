@@ -105,7 +105,7 @@ class Map extends PureComponent {
     }
 
     if (this.props.match.url === '/my-hbi' && !arrayIsEqual(prevProps.hbi_values, this.props.hbi_values)) {
-      colorizeHbiLines(this.map, this.props.hbi_values);
+      colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
     }
 
     if (prevProps.activeSection && !this.props.activeSection) {

@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Axios from 'axios';
+import fetch from 'unfetch';
 
 import ContentWrapper from '~/components/styled/ContentWrapper';
 import MenuButton from '~/components/MenuButton';
@@ -21,8 +21,8 @@ class MarkdownPage extends PureComponent {
       return false;
     }
 
-    const { data } = await Axios.get(pageConfig.markdownSource);
-    return this.setState({ content: data });
+    const content = await fetch(pageConfig.markdownSource);
+    return this.setState({ content });
   }
 
   render() {

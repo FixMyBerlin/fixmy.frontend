@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Formik } from 'formik';
-import Axios from 'axios';
+import fetch from 'unfetch';
 import { trackEvent } from '~/utils';
 
 import Title from '~/components/styled/Title';
@@ -22,8 +22,11 @@ class HBISubmitForm extends PureComponent {
   onSubmit = (values, { setSubmitting, setErrors }) => {
     const cleanValues = cleanupFormValues(values);
 
-    Axios
-      .put(`${config.apiUrl}/profiles/${this.props.userid}`, { ...cleanValues, id: this.props.userid })
+    fetch(`${config.apiUrl}/profiles/${this.props.userid}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...cleanValues, id: this.props.userid })
+    })
       .then(() => {
         setSubmitting(false);
         trackEvent('my-hbi', 'save-profile', 'details');

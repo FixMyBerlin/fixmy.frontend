@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import idx from 'idx';
 import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
-import Axios from 'axios';
+import fetch from 'unfetch';
 
 import { media } from '~/style-utils';
 import Store from '~/redux/store';
@@ -112,8 +112,8 @@ function detailWrapped(Component) {
       }
     }
 
-    onDataLoaded = (res) => {
-      const { geometry = null } = res.data;
+    onDataLoaded = (data) => {
+      const { geometry = null } = data;
       const center = getCenterFromGeom(geometry);
 
       if (center) {
@@ -121,7 +121,7 @@ function detailWrapped(Component) {
       }
 
       this.setState({
-        data: res.data,
+        data,
         isLoading: false,
         isError: false
       });
@@ -152,8 +152,8 @@ function detailWrapped(Component) {
         this.getJSONFallbackPath() :
         `${config.apiUrl}/${this.props.apiEndpoint}/${id}`;
 
-      Axios
-        .get(dataUrl)
+      fetch(dataUrl)
+        .then(r => r.json())
         .then(this.onDataLoaded)
         .catch(this.onDataError);
     }

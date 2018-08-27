@@ -1,4 +1,4 @@
-import Axios from 'axios';
+import fetch from 'unfetch';
 import idx from 'idx';
 
 const SET_VIEW = 'MapView/MapState/SET_VIEW';
@@ -59,7 +59,7 @@ export function loadPlanningData() {
       return false;
     }
 
-    const result = await Axios.get('https://api.fixmyberlin.de/api/plannings?page_size=200');
+    const result = await fetch('https://api.fixmyberlin.de/api/plannings?page_size=200').then(r => r.json());
     return dispatch({ type: SET_PLANNING_DATA, payload: { planningData: result.data } });
   };
 }
@@ -67,9 +67,10 @@ export function loadPlanningData() {
 export function geocodeAddress(searchtext) {
   return (dispatch) => {
     const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;
-    Axios.get(`${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`)
-      .then((result) => {
-        const geocodeResult = idx(result.data, _ => _.Response.View[0].Result[0].Location.DisplayPosition);
+    fetch(`${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`)
+      .then(r => r.json())
+      .then((data) => {
+        const geocodeResult = idx(data, _ => _.Response.View[0].Result[0].Location.DisplayPosition);
         if (!geocodeResult) {
           return dispatch({ type: GEOCODE_FAIL, payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' } });
         }

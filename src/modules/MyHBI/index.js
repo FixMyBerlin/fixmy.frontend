@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import Axios from 'axios';
+import fetch from 'unfetch';
 
 import HBIConfigurator from '~/components/HBIConfigurator';
 import HBISubmitForm from '~/components/HBISubmitForm';
@@ -17,7 +17,11 @@ class MyHBIView extends PureComponent {
       res[item.type] = this.props.hbi_values[index];
       return res;
     }, {});
-    Axios.put(`${config.apiUrl}/profiles/${this.props.userid}`, { ...sliderValues, id: this.props.userid });
+    fetch(`${config.apiUrl}/profiles/${this.props.userid}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...sliderValues, id: this.props.userid })
+    });
     trackEvent('my-hbi', 'save-profile', 'values');
     this.onToggleModal();
   }
