@@ -165,7 +165,7 @@ export function resetMap() {
   Store.dispatch(AppActions.setActiveSection(null));
   Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
-  Store.dispatch(MapActions.setView({ show3dBuildings: false, dim: false, pitch: 0, bearing: 0, animate: true }));
+  Store.dispatch(MapActions.setView({ show3dBuildings: false, dim: false, pitch: 0, bearing: 0, animate: true, center: null }));
 }
 
 export function getCenterFromGeom(geometry, defaultCenter = null) {

@@ -11,11 +11,11 @@ module.exports = {
     path: Path.join(__dirname, '../build'),
     filename:  'js/[name].js',
     publicPath: '/',
-    chunkFilename : `[name]-${new Date().getTime()}.js`,
+    chunkFilename : `[name].[chunkhash].js`,
   },
   plugins: [
     new CleanWebpackPlugin(['build'], { root: Path.resolve(__dirname, '..') }),
-    // copy data folder to make it available in redux loadData action
+    // copy data fo1lder to make it available in redux loadData action
     new CopyWebpackPlugin([
       { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' },
       { from: Path.resolve(__dirname, '../_redirects') },

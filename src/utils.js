@@ -48,7 +48,7 @@ export function log(stuff) {
 }
 
 export function byKey(arr = [], key = 'id') {
-  arr.reduce((res, item) => {
+  return arr.reduce((res, item) => {
     res[item[key]] = item;
     return res;
   }, {});
