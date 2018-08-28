@@ -10,6 +10,7 @@ import MapView from '~/modules/MapView';
 import Login from '~/modules/User/Login';
 import Signup from '~/modules/User/Signup';
 import PasswordReset from '~/modules/User/PasswordReset';
+import EmailVerification from '~/modules/User/EmailVerification';
 import NoMatch from '~/modules/NoMatch';
 
 const App = styled.div`
@@ -39,6 +40,7 @@ const AppWrapper = () => (
         <Route path="/login" render={() => <Login />} />
         <Route path="/signup" render={() => <Signup />} />
         <Route path="/password-reset" render={() => <PasswordReset />} />
+        <Route path="/email-verification" render={() => <EmailVerification />} />
 
         {/* map pages */}
         <Route

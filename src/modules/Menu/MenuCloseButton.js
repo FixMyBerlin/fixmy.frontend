@@ -13,6 +13,15 @@ const MenuCloseButton = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export default props => (

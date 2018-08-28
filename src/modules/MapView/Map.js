@@ -218,11 +218,8 @@ class Map extends PureComponent {
       name: '-' // @TODO: name is not part of the data
     };
 
-    if (!this.props.displayPopup) {
-      Store.dispatch(MapActions.setPopupData(properties));
-      Store.dispatch(MapActions.setPopupVisible(true));
-    }
-
+    Store.dispatch(MapActions.setPopupData(properties));
+    Store.dispatch(MapActions.setPopupVisible(true));
     Store.dispatch(AppActions.setActiveSection(id));
     Store.dispatch(MapActions.setView({
       center,
@@ -231,7 +228,6 @@ class Map extends PureComponent {
     }));
 
     this.handleMove();
-
     this.updatePopupPos(center);
   }
 
