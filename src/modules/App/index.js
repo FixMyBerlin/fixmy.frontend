@@ -75,7 +75,7 @@ const AppWrapper = () => (
           component={MapView}
         />
 
-        <Route component={NoMatch} />
+        <Route render={() => <MarkdownPage page="nomatch" />} />
       </Switch>
     </AppContent>
   </App>

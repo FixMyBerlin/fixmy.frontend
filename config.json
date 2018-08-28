@@ -51,6 +51,9 @@
   "imprint": {
     "markdownSource": "markdown/imprint.md"
   },
+  "nomatch": {
+    "markdownSource": "markdown/nomatch.md"
+  },
   "hbi": [
     { "label": "Geschwindgkeit", "type": "speed", "value": 5, "min": 0, "max": 10 },
     { "label": "Sicherheit", "type": "security", "value": 5, "min": 0, "max": 10 }
