@@ -144,5 +144,6 @@
   "planningIsBeta": true,
   "offlineMode": false,
   "isSwitchEnabled": false,
-  "debug": false
+  "debug": false,
+  "showLikeButton": true
 }

@@ -13,7 +13,6 @@ import ImageSlider from '~/components/ImageSlider';
 import PlanningStatus from './PlanningStatus';
 import PlanningLike from './PlanningLike';
 
-
 const DetailHead = Styled.div`
   padding: 14px 24px;
   position: relative;
@@ -152,7 +151,7 @@ class PlanningDetails extends PureComponent {
             </DetailBodySection>
           ) : null}
         </DetailBody>
-        <PlanningLike />
+        {config.showLikeButton && <PlanningLike />}
       </Fragment>
     );
   }
