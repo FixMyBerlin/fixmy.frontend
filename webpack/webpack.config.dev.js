@@ -2,6 +2,7 @@ const Path = require('path');
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
@@ -11,7 +12,7 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: Path.resolve(__dirname, 'build'),
+    contentBase: Path.resolve(__dirname, '..', 'build'),
     hot: true,
     historyApiFallback: true,
     host: '0.0.0.0'
@@ -30,7 +31,8 @@ module.exports = merge(common, {
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
       'process.env.BABEL_ENV': JSON.stringify('development')
-    })
+    }),
+    // new BundleAnalyzerPlugin()
   ],
   module: {
     rules: [

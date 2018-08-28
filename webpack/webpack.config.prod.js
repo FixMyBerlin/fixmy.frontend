@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
@@ -12,21 +13,6 @@ module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
   stats: 'errors-only',
-  optimization: {
-    minimize: true,
-    splitChunks: {
-      cacheGroups: {
-        default: false,
-        commons: {
-          test: /react/,
-          name: 'vendor',
-          chunks: 'initial',
-          minSize: 1,
-          reuseExistingChunk: true
-        }
-      }
-    }
-  },
   plugins: [
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
@@ -53,7 +39,8 @@ module.exports = merge(common, {
     new Webpack.optimize.ModuleConcatenationPlugin(),
     new Webpack.ProvidePlugin({
       config: '~/../config.json'
-    })
+    }),
+    // new BundleAnalyzerPlugin()
   ],
   module: {
     rules: [
