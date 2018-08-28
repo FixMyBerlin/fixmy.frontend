@@ -1,4 +1,3 @@
-const Path = require('path');
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -20,8 +19,8 @@ module.exports = merge(common, {
         default: false,
         commons: {
           test: /react/,
-          name: "vendor",
-          chunks: "initial",
+          name: 'vendor',
+          chunks: 'initial',
           minSize: 1,
           reuseExistingChunk: true
         }
@@ -50,10 +49,7 @@ module.exports = merge(common, {
       }
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
-    new UglifyJSPlugin({
-      sourceMap: true,
-    }),
-    // compiling mode “scope hoisting”
+    new UglifyJSPlugin({ sourceMap: true }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
     new Webpack.ProvidePlugin({
       config: '~/../config.json'
@@ -63,7 +59,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.(js)$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         use: 'babel-loader'
       },
       {
