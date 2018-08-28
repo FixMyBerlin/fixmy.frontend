@@ -204,27 +204,43 @@ class Map extends PureComponent {
       this.handleMove();
     }
 
-    if (geometry && this.props.calculatePopupPosition) {
-      this.setState({ popupLngLat: center });
-      const projCenter = this.map.project(center);
-      Store.dispatch(MapActions.setPopupLocation(projCenter));
-    }
+    this.updatePopupPos(center);
   }
 
-  handleMarkerClick = (evt, properties) => {
+  handleMarkerClick = (evt, data) => {
     evt.preventDefault();
 
-    const id = properties.planning_section_ids[0];
-    const center = getCenterFromGeom(properties.geometry);
+    const id = data.planning_section_ids[0];
+    const center = data.center.coordinates;
 
-    Store.dispatch(MapActions.setPopupData(properties));
-    Store.dispatch(MapActions.setPopupVisible(true));
+    const properties = {
+      sideNone_planning_title: data.title,
+      name: '-' // @TODO: name is not part of the data
+    };
+
+    if (!this.props.displayPopup) {
+      Store.dispatch(MapActions.setPopupData(properties));
+      Store.dispatch(MapActions.setPopupVisible(true));
+    }
+
     Store.dispatch(AppActions.setActiveSection(id));
     Store.dispatch(MapActions.setView({
       center,
       animate: true,
       zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
     }));
+
+    this.handleMove();
+
+    this.updatePopupPos(center);
+  }
+
+  updatePopupPos(center) {
+    if (center && this.props.calculatePopupPosition) {
+      this.setState({ popupLngLat: center });
+      const projCenter = this.map.project(center);
+      Store.dispatch(MapActions.setPopupLocation(projCenter));
+    }
   }
 
   handleMoveEnd = () => {

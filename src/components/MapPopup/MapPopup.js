@@ -100,7 +100,7 @@ class MapPopupComponent extends PureComponent {
         <MapPopupLocation onClick={this.onDetailClick}>
           <StyledPinIcon />
           <div>
-            <BigLabel>{data.name || '-'}</BigLabel>
+            <BigLabel>{data.name || '-'}</BigLabel>
             <Label light>Abschnitt 1</Label>
           </div>
         </MapPopupLocation>
