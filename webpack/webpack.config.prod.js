@@ -1,11 +1,12 @@
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Webpack = require('webpack');
 const Path = require('path');
-const Autoprefixer = require('autoprefixer');
+const Webpack = require('webpack');
+const merge = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Autoprefixer = require('autoprefixer');
+
+const common = require('./webpack.common.js');
 const Config = require('../config.json');
 
 module.exports = merge(common, {
@@ -48,7 +49,7 @@ module.exports = merge(common, {
         minifyURLs: true
       }
     }),
-    new ExtractTextPlugin({ filename: 'bundle.css' }),
+    new MiniCssExtractPlugin({ filename: 'bundle.css' }),
     new UglifyJSPlugin({
       sourceMap: true,
     }),
@@ -58,11 +59,6 @@ module.exports = merge(common, {
       config: '~/../config.json'
     })
   ],
-  resolve: {
-    alias: {
-      '~': Path.resolve(__dirname, '../src')
-    }
-  },
   module: {
     rules: [
       {
@@ -72,31 +68,20 @@ module.exports = merge(common, {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract(Object.assign({
-          fallback: 'style-loader',
-          use: [
-            'css-loader'
-          ]
-        }))
-      },
-      {
-        test: /\.styl$/i,
-        use: ExtractTextPlugin.extract(Object.assign({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: false,
-                plugins: (loader) => [
-                  Autoprefixer
-                ]
-              }
-            },
-            'stylus-loader'
-          ]
-        }))
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              ident: 'postcss',
+              plugins: () => [
+                Autoprefixer
+              ]
+            }
+          }
+        ]
       }
     ]
   }

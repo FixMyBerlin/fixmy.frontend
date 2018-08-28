@@ -1,9 +1,10 @@
-const merge = require('webpack-merge');
-const common = require('./webpack.common.js');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Webpack = require('webpack');
 const Path = require('path');
+const Webpack = require('webpack');
+const merge = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Autoprefixer = require('autoprefixer');
+
+const common = require('./webpack.common.js');
 const Config = require('../config.json');
 
 module.exports = merge(common, {
@@ -30,7 +31,6 @@ module.exports = merge(common, {
       'process.env.BABEL_ENV': JSON.stringify('development')
     })
   ],
-
   module: {
     rules: [
       {
@@ -41,24 +41,6 @@ module.exports = merge(common, {
         options: {
           emitWarning: true
         }
-      },
-      {
-        test: /\.styl$/i,
-        enforce: 'pre',
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              plugins: (loader) => [
-                Autoprefixer
-              ]
-            }
-          },
-          'stylus-loader'
-        ]
       },
       {
         test: /\.(js|jsx)$/,
