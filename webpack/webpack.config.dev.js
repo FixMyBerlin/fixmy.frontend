@@ -13,7 +13,6 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: Path.resolve(__dirname, '..', 'build'),
-    hot: true,
     historyApiFallback: true,
     host: '0.0.0.0'
   },
@@ -24,7 +23,6 @@ module.exports = merge(common, {
       template: Path.resolve(__dirname, '../src/index.html')
     }),
     new Webpack.NamedModulesPlugin(),
-    new Webpack.HotModuleReplacementPlugin(),
     new Webpack.ProvidePlugin({
       config: '~/../config.json'
     }),

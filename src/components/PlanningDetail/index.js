@@ -1,9 +1,8 @@
 /* eslint react/no-array-index-key: 0, camelcase: 0 */
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import Styled from 'styled-components';
 
 import detailWrapped from '~/hocs/detailWrapped';
-
 import Title from '~/components/styled/Title';
 import SectionTitle from '~/components/styled/SectionTitle';
 import Text from '~/components/styled/Text';
@@ -12,6 +11,8 @@ import DetailSwitch, { ButtonGroup } from '~/components/DetailSwitch';
 import ImageSlider from '~/components/ImageSlider';
 
 import PlanningStatus from './PlanningStatus';
+import PlanningLike from './PlanningLike';
+
 
 const DetailHead = Styled.div`
   padding: 14px 24px;
@@ -86,7 +87,7 @@ class PlanningDetails extends PureComponent {
     const showSwitchButton = plannings.length > 1 && (plannings[0].url !== plannings[1].url);
 
     return (
-      <React.Fragment>
+      <Fragment>
         {showSwitchButton ? (
           <ButtonGroup>
             <DetailSwitch
@@ -150,9 +151,9 @@ class PlanningDetails extends PureComponent {
               ))}
             </DetailBodySection>
           ) : null}
-
         </DetailBody>
-      </React.Fragment>
+        <PlanningLike />
+      </Fragment>
     );
   }
 }

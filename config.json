@@ -15,7 +15,8 @@
     "interaction": "#fabe28",
     "change_4": "#910055",
     "index": "#ff650c",
-    "error": "#FF5050"
+    "error": "#FF5050",
+    "likebg": "#FFF9EC"
   },
   "menu": {
     "size": 320,
