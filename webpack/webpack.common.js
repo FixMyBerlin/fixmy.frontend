@@ -10,7 +10,8 @@ module.exports = {
   output: {
     path: Path.join(__dirname, '../build'),
     filename:  'js/[name].js',
-    publicPath: '/'
+    publicPath: '/',
+    chunkFilename : `[name]-${new Date().getTime()}.js`,
   },
   plugins: [
     new CleanWebpackPlugin(['build'], { root: Path.resolve(__dirname, '..') }),

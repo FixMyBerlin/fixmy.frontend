@@ -47,6 +47,13 @@ export function log(stuff) {
   return console.log(stuff);
 }
 
+export function byKey(arr = [], key = 'id') {
+  arr.reduce((res, item) => {
+    res[item[key]] = item;
+    return res;
+  }, {});
+}
+
 export default {
   getGeoLocation,
   numberFormat,
@@ -54,5 +61,6 @@ export default {
   trackEvent,
   getHBIbyProps,
   getHBIColorByIndex,
-  log
+  log,
+  byKey
 };

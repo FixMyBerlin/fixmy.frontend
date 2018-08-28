@@ -3,13 +3,13 @@
 import turfAlong from '@turf/along';
 import turfLength from '@turf/length';
 import { lineString as turfLineString } from '@turf/helpers';
-import _keyBy from 'lodash.keyby';
 
 import Store from '~/redux/store';
 import * as MapActions from '~/modules/MapView/MapState';
 import * as AppActions from '~/modules/App/AppState';
+import { byKey } from '~/utils';
 
-const planningPhases = _keyBy(config.planningPhases, phase => phase.id);
+const planningPhases = byKey(config.planningPhases, 'id');
 
 export function setView(map, view) {
   map.setZoom(view.zoom);

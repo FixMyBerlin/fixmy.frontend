@@ -5,13 +5,40 @@ import styled from 'styled-components';
 
 import Menu from '~/modules/Menu';
 import Home from '~/modules/Home';
-import MarkdownPage from '~/modules/MarkdownPage';
-import MapView from '~/modules/MapView';
-import Login from '~/modules/User/Login';
-import Signup from '~/modules/User/Signup';
-import PasswordReset from '~/modules/User/PasswordReset';
-import EmailVerification from '~/modules/User/EmailVerification';
 import NoMatch from '~/modules/NoMatch';
+import Loadable from 'react-loadable';
+
+const loading = () => null;
+
+const MarkdownPage = Loadable({
+  loader: () => import('~/modules/MarkdownPage'),
+  loading
+});
+
+const MapView = Loadable({
+  loader: () => import('~/modules/MapView'),
+  loading
+});
+
+const Login = Loadable({
+  loader: () => import('~/modules/User/Login'),
+  loading
+});
+
+const Signup = Loadable({
+  loader: () => import('~/modules/User/Signup'),
+  loading
+});
+
+const PasswordReset = Loadable({
+  loader: () => import('~/modules/User/PasswordReset'),
+  loading
+});
+
+const EmailVerification = Loadable({
+  loader: () => import('~/modules/User/EmailVerification'),
+  loading
+});
 
 const App = styled.div`
   height: 100%;
