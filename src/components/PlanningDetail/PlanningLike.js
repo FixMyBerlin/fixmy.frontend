@@ -15,7 +15,7 @@ const bounce = keyframes`
     animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   0% {
-    transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.5, 0.5, 0.5);
   }
   20% {
     transform: scale3d(1.1, 1.1, 1.1);
