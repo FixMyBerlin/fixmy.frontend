@@ -62,6 +62,12 @@ const Anchor = Styled.a`
   }
 `;
 
+const NoDataLabel = Styled.div`
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1rem;
+`;
+
 class PlanningDetails extends PureComponent {
   state = {
     descriptionExpanded: false,
@@ -76,11 +82,17 @@ class PlanningDetails extends PureComponent {
   render() {
     const { plannings } = this.props.data;
     const { sideIndex } = this.state;
+
+    if (!plannings || plannings.length === 0) {
+      return <NoDataLabel>Keine Planung vorhanden</NoDataLabel>;
+    }
+
     const planning = plannings[sideIndex];
     const {
       title, description, construction_completed, external_url, responsible, costs, faq, photos,
       phase, construction_started, draft_submitted, cross_section_photo
     } = planning;
+
 
     const showFaq = faq && faq.length;
     const showSwitchButton = plannings.length > 1 && (plannings[0].url !== plannings[1].url);
