@@ -64,7 +64,8 @@ const LikeButton = styled.button`
   transition: box-shadow .15s;
   cursor: pointer;
   animation: ${props => (props.bouncy ? `${bounce} 0.8s` : 'none')};
-
+  border: none;
+  
   svg {
     g {
       fill: white;
