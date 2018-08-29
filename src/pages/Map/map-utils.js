@@ -7,7 +7,7 @@ import { lineString as turfLineString } from '@turf/helpers';
 import Store from '~/store';
 import * as MapActions from '~/pages/Map/MapState';
 import * as AppActions from '~/AppState';
-import { byKey } from '~/general/utils';
+import { byKey } from '~/utils/utils';
 
 const planningPhases = byKey(config.planningPhases, 'id');
 
@@ -181,6 +181,19 @@ export function getCenterFromGeom(geometry, defaultCenter = null) {
   return defaultCenter;
 }
 
+export async function getGeoLocation() {
+  return new Promise((resolve, reject) => {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        resolve(position);
+      }, reject);
+    } else {
+      reject();
+    }
+  });
+}
+
+
 export default {
   setView,
   animateView,
@@ -189,5 +202,6 @@ export default {
   colorizeHbiLines,
   colorizePlanningLines,
   resetMap,
-  getCenterFromGeom
+  getCenterFromGeom,
+  getGeoLocation
 };

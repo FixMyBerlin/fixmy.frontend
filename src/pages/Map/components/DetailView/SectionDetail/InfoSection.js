@@ -13,7 +13,7 @@ const InfoSectionContent = styled.div`
   flex-grow: 1;
 `;
 
-const InfoSectionTitle = SectionTitle.extend`
+const InfoSectionTitle = styled(SectionTitle)`
   border-bottom: 1px solid ${config.colors.lightgrey};
   padding-bottom: 16px;
 `;

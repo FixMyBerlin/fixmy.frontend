@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import { media } from '~/general/style-utils';
+import { media } from '~/utils/style-utils';
 import MapPopup from './MapPopup';
 
 const arrowSize = 19;

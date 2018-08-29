@@ -26,7 +26,7 @@ const SliderLabel = styled.div`
   margin: .5em 0;
 `;
 
-const ModalHeadline = Title.extend`
+const ModalHeadline = styled(Title)`
   margin-top: 0;
   text-align: center;
 `;

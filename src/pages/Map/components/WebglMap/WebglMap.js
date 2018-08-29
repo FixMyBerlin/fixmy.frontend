@@ -8,8 +8,7 @@ import withRouter from 'react-router/withRouter';
 import slugify from 'slugify';
 
 import Store from '~/store';
-import { arrayIsEqual } from '~/general/utils';
-import { isSmallScreen } from '~/general/style-utils';
+import { isSmallScreen } from '~/utils/style-utils';
 import * as AppActions from '~/AppState';
 import * as MapActions from '~/pages/Map/MapState';
 import PlanningMarkers from '~/pages/Map/components/PlanningMarkers';
@@ -105,7 +104,7 @@ class Map extends PureComponent {
       this.disablePopup();
     }
 
-    if (this.props.match.url === '/my-hbi' && !arrayIsEqual(prevProps.hbi_values, this.props.hbi_values)) {
+    if (this.props.match.url === '/my-hbi' && !_isEqual(prevProps.hbi_values, this.props.hbi_values)) {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
     }
 

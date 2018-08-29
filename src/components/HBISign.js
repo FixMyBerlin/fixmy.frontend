@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 import BikeIcon from '~/images/bike.svg';
 import BetaIcon from '~/images/beta.svg';
-import { numberFormat, getHBIColorByIndex } from '~/general/utils';
+import { numberFormat } from '~/utils/utils';
+import { getHBIColorByIndex } from '~/utils/hbi-utils';
 
 const HBISign = styled.div`
   border: ${props => props.borderWeight}px solid ${props => props.color || config.colors.index};

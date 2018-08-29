@@ -17,7 +17,7 @@ import Signup from '~/pages/User/pages/Signup';
 import PasswordReset from '~/pages/User/pages/PasswordReset';
 import EmailVerification from '~/pages/User/pages/EmailVerification';
 
-import { init as initStyle } from '~/general/style-utils';
+import { init as initStyle } from '~/utils/style-utils';
 
 import Store from './store';
 

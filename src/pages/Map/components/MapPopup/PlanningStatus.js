@@ -1,8 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Title from '~/components/Title';
 
-const StyledTitle = Title.extend`
+const StyledTitle = styled(Title)`
   margin: 16px 0 24px 0;
 `;
 

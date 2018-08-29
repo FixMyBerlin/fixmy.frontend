@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { orientation } from '~/general/style-utils';
+import { orientation } from '~/utils/style-utils';
 import Brace from '~/pages/Map/components/Brace';
 
 import HBILegend from './HBILegend';

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
 import DataProcessIcon from '~/images/data-process.svg';
-import { numberFormat } from '~/general/utils';
+import { numberFormat } from '~/utils/utils';
 import HBISign from '~/components/HBISign';
 import Label from '~/components/Label';
 import Title from '~/components/Title';
@@ -26,7 +26,7 @@ const DetailInfoWrapper = styled.div`
   padding: 0 16px;
 `;
 
-const DetailTitle = Title.extend`
+const DetailTitle = styled(Title)`
   border-bottom: 2px dotted #c6c6c6;
   padding-bottom: 15px;
   margin: 10px 0 20px 0;

@@ -32,7 +32,7 @@ const LegendImage = styled.img`
   width: 55px;
 `;
 
-const LegendLabel = Label.extend`
+const LegendLabel = styled(Label)`
   flex-shrink: 0;
 `;
 

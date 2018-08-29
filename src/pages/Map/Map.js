@@ -13,7 +13,7 @@ import MapContent from '~/pages/Map/components/MapContent';
 import SearchBar from '~/components/SearchBar';
 import FMBLogo from '~/components/FMBLogo';
 import Store from '~/store';
-import { matchMediaSize, breakpoints, media } from '~/general/style-utils';
+import { matchMediaSize, breakpoints, media } from '~/utils/style-utils';
 import WebglMap from '~/pages/Map/components/WebglMap';
 import MyHBI from '~/pages/MyHBI';
 

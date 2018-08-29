@@ -2,7 +2,7 @@ import React from 'react';
 import Styled from 'styled-components';
 import Route from 'react-router/Route';
 
-import { orientation } from '~/general/style-utils';
+import { orientation } from '~/utils/style-utils';
 import MapLegend from '~/pages/Map/components/MapLegend';
 import MapSwitch from '~/pages/Map/components/MapSwitch';
 

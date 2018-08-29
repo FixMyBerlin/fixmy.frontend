@@ -4,7 +4,7 @@ import withRouter from 'react-router/withRouter';
 import { connect } from 'react-redux';
 import slugify from 'slugify';
 
-import { media } from '~/general/style-utils';
+import { media } from '~/utils/style-utils';
 import Store from '~/store';
 import * as MapActions from '~/pages/Map/MapState';
 

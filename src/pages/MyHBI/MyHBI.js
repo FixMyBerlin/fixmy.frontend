@@ -5,7 +5,7 @@ import fetch from 'unfetch';
 import HBIConfigurator from '~/pages/MyHBI/components/HBIConfigurator';
 import HBISubmitForm from '~/pages/MyHBI/components/HBISubmitForm';
 import Modal from '~/components/Modal';
-import { trackEvent } from '~/general/utils';
+import { trackEvent } from '~/utils/utils';
 
 class MyHBIView extends PureComponent {
   state = {

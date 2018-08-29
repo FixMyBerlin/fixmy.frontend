@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import idx from 'idx';
 
-import { getGeoLocation } from '~/general/utils';
 import LocatorIcon from '~/images/location.svg';
-import MapControl from '~/pages/Map/components/MapControl';
 import Loader from '~/components/Loader';
+import { getGeoLocation } from '~/pages/Map/map-utils';
+import MapControl from '~/pages/Map/components/MapControl';
 
 const LocatorButton = styled.button`
   background-color: ${config.colors.white};

@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import BraceVertical from '~/images/brace-vertical.svg';
-import { numberFormat, getHBIbyProps, getHBIColorByIndex } from '~/general/utils';
+import { numberFormat } from '~/utils/utils';
+import { getHBIbyProps, getHBIColorByIndex } from '~/utils/hbi-utils';
 
 import HBISign from '~/components/HBISign';
 import Label from '~/components/Label';
@@ -31,11 +32,11 @@ const Section = styled.div`
   justify-content: center;
 `;
 
-const SectionCenter = Section.extend`
+const SectionCenter = styled(Section)`
   align-items: center;
 `;
 
-const SectionLeft = Section.extend`
+const SectionLeft = styled(Section)`
   font-weight: 300;
   display: flex;
   flex-direction: row;

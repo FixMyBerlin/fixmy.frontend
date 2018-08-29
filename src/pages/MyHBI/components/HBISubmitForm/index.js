@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Formik } from 'formik';
 import fetch from 'unfetch';
-import { trackEvent } from '~/general/utils';
+import { trackEvent } from '~/utils/utils';
 
 import Title from '~/components/Title';
 import Button from '~/components/Button';

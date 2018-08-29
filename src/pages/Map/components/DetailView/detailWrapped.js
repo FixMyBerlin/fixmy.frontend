@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
 import fetch from 'unfetch';
 
-import { media } from '~/general/style-utils';
+import { media } from '~/utils/style-utils';
 import Store from '~/store';
 import { setView } from '~/pages/Map/MapState';
 import { getCenterFromGeom } from '~/pages/Map/map-utils';
