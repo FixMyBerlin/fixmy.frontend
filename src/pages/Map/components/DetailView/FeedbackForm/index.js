@@ -46,6 +46,8 @@ class FeedbackForm extends PureComponent {
           initialValues={initialValues}
           onSubmit={this.onSubmit}
           validate={this.validate}
+          validateOnChange={false}
+          validateOnBlur={false}
           render={({
             values,
             errors,

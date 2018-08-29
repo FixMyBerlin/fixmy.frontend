@@ -21,7 +21,7 @@ export default ({ id, type, label, options, placeholder = '', values, handleChan
   } else if (type === 'checkbox') {
     Result = <Field type="checkbox" name={id} checked={values[id]} />;
   } else if (type === 'textarea') {
-    Result = <textarea name={id} placeholder={placeholder} onChange={handleChange}>{values[id]}</textarea>;
+    Result = <textarea name={id} placeholder={placeholder} onChange={handleChange} value={values[id]} />;
   } else if (type === 'select') {
     Result = (
       <Field component="select" name={id}>
