@@ -43,19 +43,24 @@ export const EmailVerification = Loadable({
   loading: Loading
 });
 
-const SectionDetail = Loadable({
+export const SectionDetail = Loadable({
   loader: () => import('~/components/SectionDetail'),
-  loading: Loading
+  loading: () => null
 });
 
-const PlanningDetail = Loadable({
+export const PlanningDetail = Loadable({
   loader: () => import('~/components/PlanningDetail'),
-  loading: Loading
+  loading: () => null
 });
 
-const MyHBI = Loadable({
+export const MyHBI = Loadable({
   loader: () => import('~/modules/MyHBI'),
-  loading: Loading
+  loading: () => null
+});
+
+export const Map = Loadable({
+  loader: () => import('~/modules/MapView/Map'),
+  loading: () => null
 });
 
 export default {
@@ -68,5 +73,5 @@ export default {
   EmailVerification,
   SectionDetail,
   PlanningDetail,
-  MyHBI
+  Map
 };

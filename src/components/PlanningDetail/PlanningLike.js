@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 // @TODO: use heart icon
-import BetaIcon from '~/images/pin.svg';
+import HeartIcon from '~/images/heart.svg';
 import Label from '~/components/styled/Label';
 
 const bounce = keyframes`
@@ -108,7 +108,7 @@ class PlanningLike extends PureComponent {
         <LikeButtonWrapper>
           <Counter>{this.state.count}</Counter>
           <LikeButton onClick={this.inc} bouncy={this.state.bouncy}>
-            <BetaIcon />
+            <HeartIcon />
           </LikeButton>
           <Label>gefällt mir</Label>
         </LikeButtonWrapper>

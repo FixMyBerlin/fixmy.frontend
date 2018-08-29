@@ -14,10 +14,10 @@ import { matchMediaSize, breakpoints, media } from '~/style-utils';
 import {
   SectionDetail,
   PlanningDetail,
-  MyHBI
+  MyHBI,
+  Map
 } from '~/loadables';
 
-import Map from './Map';
 import MapContent from './MapContent';
 import * as MapActions from './MapState';
 
