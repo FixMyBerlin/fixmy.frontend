@@ -4,41 +4,15 @@ import Switch from 'react-router-dom/Switch';
 import styled from 'styled-components';
 
 import Menu from '~/modules/Menu';
-import Home from '~/modules/Home';
-import NoMatch from '~/modules/NoMatch';
-import Loadable from 'react-loadable';
-
-const loading = () => null;
-
-const MarkdownPage = Loadable({
-  loader: () => import('~/modules/MarkdownPage'),
-  loading
-});
-
-const MapView = Loadable({
-  loader: () => import('~/modules/MapView'),
-  loading
-});
-
-const Login = Loadable({
-  loader: () => import('~/modules/User/Login'),
-  loading
-});
-
-const Signup = Loadable({
-  loader: () => import('~/modules/User/Signup'),
-  loading
-});
-
-const PasswordReset = Loadable({
-  loader: () => import('~/modules/User/PasswordReset'),
-  loading
-});
-
-const EmailVerification = Loadable({
-  loader: () => import('~/modules/User/EmailVerification'),
-  loading
-});
+import {
+  Home,
+  MarkdownPage,
+  MapView,
+  Login,
+  Signup,
+  PasswordReset,
+  EmailVerification
+} from '~/loadables';
 
 const App = styled.div`
   height: 100%;

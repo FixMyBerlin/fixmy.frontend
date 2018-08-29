@@ -3,34 +3,23 @@ import withRouter from 'react-router-dom/withRouter';
 import Route from 'react-router-dom/Route';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import Loadable from 'react-loadable';
 
 import SearchBar from '~/components/SearchBar';
 import LocatorControl from '~/components/LocatorControl';
 import MapPopup from '~/components/MapPopup';
 import MapControl from '~/components/MapControl';
 import FMBLogo from '~/components/FMBLogo';
-
 import Store from '~/redux/store';
 import { matchMediaSize, breakpoints, media } from '~/style-utils';
+import {
+  SectionDetail,
+  PlanningDetail,
+  MyHBI
+} from '~/loadables';
+
 import Map from './Map';
 import MapContent from './MapContent';
 import * as MapActions from './MapState';
-
-const SectionDetail = Loadable({
-  loader: () => import('~/components/SectionDetail'),
-  loading: () => null
-});
-
-const PlanningDetail = Loadable({
-  loader: () => import('~/components/PlanningDetail'),
-  loading: () => null
-});
-
-const MyHBI = Loadable({
-  loader: () => import('~/modules/MyHBI'),
-  loading: () => null
-});
 
 const MapView = styled.div`
   height: 100%;
@@ -81,9 +70,7 @@ class MapViewComponent extends PureComponent {
     return (
       <MapView>
         <MapWrapper>
-
           <SearchBar />
-
           <Map
             key="MapComponent"
             zoom={this.props.zoom}

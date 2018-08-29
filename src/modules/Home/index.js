@@ -12,8 +12,7 @@ import Text from '~/components/styled/Text';
 import Button from '~/components/styled/Button';
 
 import SubscribtionWidget from '~/components/SubscribtionWidget';
-
-import Map from '~/modules/MapView/Map';
+import bgImage from '~/images/background.jpg';
 
 const HomeContent = styled.div`
   text-align: center;
@@ -36,8 +35,11 @@ const MapButton = styled(Button)`
   }
 `;
 
-const BackgroundMap = styled(Map)`
+const BackgroundMap = styled.div`
   height: 100%;
+  background-image: url(${bgImage});
+  background-size: cover;
+  background-position: center center;
 `;
 
 export default () => (
