@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import { geocodeAddress } from '~/modules/MapView/MapState';
-import Store from '~/redux/store';
+import { geocodeAddress } from '~/pages/Map/MapState';
+import Store from '~/store';
 
 import MenuButton from '~/components/MenuButton';
-import { media } from '~/style-utils';
+import { media } from '~/general/style-utils';
 
 const Form = styled.form`
   width: 100%;

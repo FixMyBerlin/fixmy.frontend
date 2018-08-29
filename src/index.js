@@ -2,17 +2,38 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import Router from 'react-router-dom/Router';
+import Route from 'react-router-dom/Route';
+import Switch from 'react-router-dom/Switch';
 import createBrowserHistory from 'history/createBrowserHistory';
+import styled from 'styled-components';
 
-import { updateHistory } from '~/modules/App/AppState';
+import { updateHistory } from '~/AppState';
+import Menu from '~/components/Menu';
+import {
+  Home,
+  MarkdownPage,
+  MapView,
+  Login,
+  Signup,
+  PasswordReset,
+  EmailVerification
+} from '~/general/loadables';
+import { init as initStyle } from '~/general/style-utils';
 
-import { init as initStyle } from './style-utils';
-
-import Store from './redux/store';
-import App from './modules/App';
+import Store from './store';
 
 const root = document.getElementById('root');
 const history = createBrowserHistory();
+
+const App = styled.div`
+  height: 100%;
+  position: relative;
+`;
+
+const AppContent = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 history.listen(location => Store.dispatch(updateHistory(location)));
 Store.dispatch(updateHistory(history.location));
@@ -23,7 +44,33 @@ if (root) {
   ReactDOM.render(
     <Provider store={Store}>
       <Router history={history}>
-        <App />
+        <App>
+          <Menu />
+          <AppContent>
+            <Switch>
+              <Route exact path="/" component={Home} />
+
+              {/* standard markdown pages */}
+              <Route path="/info" render={() => <MarkdownPage page="about" />} />
+              <Route path="/kontakt" render={() => <MarkdownPage page="contact" />} />
+              <Route path="/datenschutz" render={() => <MarkdownPage page="privacy" />} />
+              <Route path="/impressum" render={() => <MarkdownPage page="imprint" />} />
+
+              {/* user pages */}
+              <Route path="/login" render={() => <Login />} />
+              <Route path="/signup" render={() => <Signup />} />
+              <Route path="/password-reset" render={() => <PasswordReset />} />
+              <Route path="/email-verification" render={() => <EmailVerification />} />
+
+              {/* map pages */}
+              <Route
+                path="(/zustand|/planungen|/my-hbi)"
+                component={MapView}
+              />
+              <Route render={() => <MarkdownPage page="nomatch" />} />
+            </Switch>
+          </AppContent>
+        </App>
       </Router>
     </Provider>,
     root

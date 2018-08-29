@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MenuIcon from '~/images/hamburger.svg';
-import Store from '~/redux/store';
-import { toggle } from '~/modules/Menu/MenuState';
+import Store from '~/store';
+import { toggle } from '~/AppState';
 
 const MenuButton = styled.div`
   position: fixed;
