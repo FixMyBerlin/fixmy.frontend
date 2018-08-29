@@ -11,6 +11,26 @@ import { byKey } from '~/utils/utils';
 
 const planningPhases = byKey(config.planningPhases, 'id');
 
+export const intersectionLayers = [
+  'intersections', 'intersectionsSide0', 'intersectionsSide1', 'intersectionsOverlay'
+];
+
+export const standardLayers = [
+  'centerLayer', 'side0Layer', 'side1Layer'
+];
+
+export const standardLayersWithOverlay = [
+  ...standardLayers, 'overlayLine'
+];
+
+export const smallStreetLayers = [
+  'centerLayerSmall', 'side0LayerSmall', 'side1LayerSmall'
+];
+
+export const smallStreetLayersWithOverlay = [
+  ...smallStreetLayers, 'overlayLineSmall'
+];
+
 export function setView(map, view) {
   map.setZoom(view.zoom);
   map.setCenter(view.center);
@@ -41,9 +61,9 @@ export function filterLayersById(map, id) {
       1
     ];
 
-    map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', VisibilityFilter);
-    map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', VisibilityFilter);
-    map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', VisibilityFilter);
+    standardLayers.forEach(layerName =>
+      map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter)
+    );
   }
 }
 
@@ -58,24 +78,21 @@ export function handleSmallStreets(map, isVisible) {
     1
   ];
 
-  map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', VisibilityFilter);
-  map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', VisibilityFilter);
-  map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', VisibilityFilter);
-  map.setPaintProperty(config.map.layers.overlayLine, 'line-opacity', VisibilityFilter);
+  standardLayersWithOverlay.forEach(layerName =>
+    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter)
+  );
 
   // always hide all features with id > 9000 for small street layers
-  map.setPaintProperty(config.map.layers.side0LayerSmall, 'line-opacity', VisibilityFilterSmall);
-  map.setPaintProperty(config.map.layers.side1LayerSmall, 'line-opacity', VisibilityFilterSmall);
-  map.setPaintProperty(config.map.layers.centerLayerSmall, 'line-opacity', VisibilityFilterSmall);
-  map.setPaintProperty(config.map.layers.overlayLineSmall, 'line-opacity', VisibilityFilterSmall);
+  smallStreetLayersWithOverlay.forEach(layerName =>
+    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilterSmall)
+  );
 }
 
 function setMapFilter(map, filter) {
-  map.setFilter(config.map.layers.centerLayer, filter);
-  map.setFilter(config.map.layers.side0Layer, filter);
-  map.setFilter(config.map.layers.side1Layer, filter);
+  standardLayersWithOverlay.forEach(layerName =>
+    map.setFilter(config.map.layers[layerName], filter)
+  );
   map.setFilter(config.map.layers.bgLayer, filter);
-  map.setFilter(config.map.layers.overlayLine, filter);
 }
 
 function getPlanningLineColorRules(side = '') {
@@ -107,29 +124,33 @@ export function colorizePlanningLines(map, filter) {
     ['has', 'planning_phase']
   ]);
 
-  const paintRulesCenter = getPlanningLineColorRules();
-  const paintRulesSide0 = getPlanningLineColorRules('side0_');
-  const paintRulesSide1 = getPlanningLineColorRules('side1_');
+  const paintRules = [
+    getPlanningLineColorRules(),
+    getPlanningLineColorRules('side0_'),
+    getPlanningLineColorRules('side1_')
+  ];
 
-  map.setPaintProperty(config.map.layers.centerLayer, 'line-color', paintRulesCenter);
-  map.setPaintProperty(config.map.layers.side0Layer, 'line-color', paintRulesSide0);
-  map.setPaintProperty(config.map.layers.side1Layer, 'line-color', paintRulesSide1);
+  standardLayers.forEach((layerName, i) =>
+    map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i])
+  );
 
-  map.setPaintProperty(config.map.layers.side0LayerSmall, 'line-color', paintRulesSide0);
-  map.setPaintProperty(config.map.layers.side1LayerSmall, 'line-color', paintRulesSide1);
-  map.setPaintProperty(config.map.layers.centerLayerSmall, 'line-color', paintRulesCenter);
+  smallStreetLayers.forEach((layerName, i) =>
+    map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i])
+  );
 
-  const opacityRulesCenter = getPlanningFilterRules('', filter);
-  const opacityRulesSide0 = getPlanningFilterRules('side0_', filter);
-  const opacityRulesSide1 = getPlanningFilterRules('side1_', filter);
+  const opacityRules = [
+    getPlanningFilterRules('', filter),
+    getPlanningFilterRules('side0_', filter),
+    getPlanningFilterRules('side1_', filter)
+  ];
 
-  map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', opacityRulesCenter);
-  map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', opacityRulesSide0);
-  map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', opacityRulesSide1);
+  standardLayers.forEach((layerName, i) =>
+    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i])
+  );
 
-  map.setPaintProperty(config.map.layers.centerLayerSmall, 'line-opacity', opacityRulesCenter);
-  map.setPaintProperty(config.map.layers.side0LayerSmall, 'line-opacity', opacityRulesSide0);
-  map.setPaintProperty(config.map.layers.side1LayerSmall, 'line-opacity', opacityRulesSide1);
+  smallStreetLayers.forEach((layerName, i) =>
+    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i])
+  );
 }
 
 function getHbiExpression(sideKey, rs, rv) {
@@ -175,21 +196,25 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
   const hbiExprSide0 = getHbiExpression('side0_', rs, rv);
   const hbiExprSide1 = getHbiExpression('side1_', rs, rv);
 
-  const lineColorRulesCenter = getHbiLineColorRules(hbiExprCenter);
-  const lineColorRules0 = getHbiLineColorRules(hbiExprSide0);
-  const lineColorRules1 = getHbiLineColorRules(hbiExprSide1);
+  const lineColorRules = [
+    getHbiLineColorRules(hbiExprCenter),
+    getHbiLineColorRules(hbiExprSide0),
+    getHbiLineColorRules(hbiExprSide1)
+  ];
 
-  map.setPaintProperty(config.map.layers.centerLayer, 'line-color', lineColorRulesCenter);
-  map.setPaintProperty(config.map.layers.side0Layer, 'line-color', lineColorRules0);
-  map.setPaintProperty(config.map.layers.side1Layer, 'line-color', lineColorRules1);
+  standardLayers.forEach((layerName, i) =>
+    map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i])
+  );
 
-  const lineOpacityRulesCenter = getHbiFilterRules(hbiExprCenter, hbiFilter);
-  const lineOpacityRulesSide0 = getHbiFilterRules(hbiExprSide0, hbiFilter);
-  const lineOpacityRulesSide1 = getHbiFilterRules(hbiExprSide1, hbiFilter);
+  const lineOpacityRules = [
+    getHbiFilterRules(hbiExprCenter, hbiFilter),
+    getHbiFilterRules(hbiExprSide0, hbiFilter),
+    getHbiFilterRules(hbiExprSide1, hbiFilter)
+  ];
 
-  map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', lineOpacityRulesCenter);
-  map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', lineOpacityRulesSide0);
-  map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', lineOpacityRulesSide1);
+  standardLayers.forEach((layerName, i) =>
+    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i])
+  );
 }
 
 export function resetMap() {

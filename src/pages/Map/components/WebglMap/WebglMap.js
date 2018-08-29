@@ -14,7 +14,7 @@ import * as MapActions from '~/pages/Map/MapState';
 import PlanningMarkers from '~/pages/Map/components/PlanningMarkers';
 import {
   colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer,
-  filterLayersById, getCenterFromGeom, resetMap, handleSmallStreets
+  filterLayersById, getCenterFromGeom, resetMap, handleSmallStreets, intersectionLayers, smallStreetLayersWithOverlay
 } from '~/pages/Map/map-utils';
 
 const MB_STYLE_URL = `${config.map.style}`;
@@ -156,28 +156,23 @@ class Map extends PureComponent {
 
   updateLayers = () => {
     const filterId = this.props.activeSection;
+    const isZustand = this.props.activeLayer === 'zustand';
+    const isPlanungen = this.props.activeLayer === 'planungen';
 
-    if (this.props.activeLayer === 'zustand') {
+    intersectionLayers.forEach(layerName =>
+      toggleLayer(this.map, config.map.layers[layerName], isZustand)
+    );
+
+    smallStreetLayersWithOverlay.forEach(layerName =>
+      toggleLayer(this.map, config.map.layers[layerName], isPlanungen)
+    );
+
+    if (isZustand) {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
-
-      toggleLayer(this.map, config.map.layers.intersections, true);
-      toggleLayer(this.map, config.map.layers.intersectionsSide0, true);
-      toggleLayer(this.map, config.map.layers.intersectionsSide1, true);
-      toggleLayer(this.map, config.map.layers.intersectionsSideOverlay, true);
     }
 
-    if (this.props.activeLayer === 'planungen') {
+    if (isPlanungen) {
       colorizePlanningLines(this.map, this.props.filterPlannings);
-
-      toggleLayer(this.map, config.map.layers.centerLayerSmall, true);
-      toggleLayer(this.map, config.map.layers.side0LayerSmall, true);
-      toggleLayer(this.map, config.map.layers.side1LayerSmall, true);
-      toggleLayer(this.map, config.map.layers.overlayLineSmall, true);
-
-      toggleLayer(this.map, config.map.layers.intersections, false);
-      toggleLayer(this.map, config.map.layers.intersectionsSide0, false);
-      toggleLayer(this.map, config.map.layers.intersectionsSide1, false);
-      toggleLayer(this.map, config.map.layers.intersectionsSideOverlay, false);
     }
 
     toggleLayer(this.map, config.map.layers.bgLayer, true);
@@ -196,7 +191,7 @@ class Map extends PureComponent {
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
-    console.log(e.features);
+
     if (properties) {
       const name = slugify(properties.name || '').toLowerCase();
       const id = properties.id;
