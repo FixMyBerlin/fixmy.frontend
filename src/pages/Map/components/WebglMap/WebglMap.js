@@ -14,10 +14,10 @@ import * as MapActions from '~/pages/Map/MapState';
 import PlanningMarkers from '~/pages/Map/components/PlanningMarkers';
 import {
   colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer,
-  filterLayersById, getCenterFromGeom, resetMap
+  filterLayersById, getCenterFromGeom, resetMap, handleSmallStreets
 } from '~/pages/Map/map-utils';
 
-const MB_STYLE_URL = `${config.map.style}?fresh=true`;
+const MB_STYLE_URL = `${config.map.style}`;
 MapboxGL.accessToken = config.map.accessToken;
 
 const StyledMap = styled.div`
@@ -163,6 +163,11 @@ class Map extends PureComponent {
 
     if (this.props.activeLayer === 'planungen') {
       colorizePlanningLines(this.map, this.props.filterPlannings);
+
+      toggleLayer(this.map, config.map.layers.centerLayerSmall, true);
+      toggleLayer(this.map, config.map.layers.side0LayerSmall, true);
+      toggleLayer(this.map, config.map.layers.side1LayerSmall, true);
+      toggleLayer(this.map, config.map.layers.overlayLineSmall, true);
     }
 
     toggleLayer(this.map, config.map.layers.bgLayer, true);
@@ -174,13 +179,14 @@ class Map extends PureComponent {
     toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
 
     filterLayersById(this.map, filterId);
+    handleSmallStreets(this.map, false);
   }
 
   handleClick = (e) => {
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
-
+    console.log(e.features);
     if (properties) {
       const name = slugify(properties.name || '').toLowerCase();
       const id = properties.id;

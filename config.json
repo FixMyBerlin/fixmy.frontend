@@ -116,7 +116,7 @@
   ],
   "map": {
     "accessToken": "pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q",
-    "style": "mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h?fresh=false",
+    "style": "mapbox://styles/hejco/cjlf6wid28wpo2rqn2qneujx9",
     "view": {
       "zoom": 12,
       "bearing": 0,
@@ -133,7 +133,11 @@
       "side1Layer": "fmb-side-1",
       "buildings3d": "3d-buildings",
       "dimmingLayer": "fmb-dimming",
-      "overlayLine": "fmb-overlay-line"
+      "overlayLine": "fmb-overlay-line",
+      "centerLayerSmall": "fmb-center-NVS",
+      "side0LayerSmall": "fmb-side-0-NVS",
+      "side1LayerSmall": "fmb-side-1-NVS",
+      "overlayLineSmall": "fmb-overlay-line-HVS"
     },
     "zoomAfterGeocode": 15,
     "geocoderUrl": "https://geocoder.cit.api.here.com/6.2/geocode.json",

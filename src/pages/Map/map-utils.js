@@ -47,6 +47,29 @@ export function filterLayersById(map, id) {
   }
 }
 
+export function handleSmallStreets(map, isVisible) {
+  const VisibilityFilter = ['case',
+    ['>=', ['number', ['get', 'id']], 9000], isVisible ? 1 : 0,
+    isVisible ? 0 : 1
+  ];
+
+  const VisibilityFilterSmall = ['case',
+    ['<', ['number', ['get', 'id']], 9000], 0,
+    1
+  ];
+
+  map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', VisibilityFilter);
+  map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', VisibilityFilter);
+  map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', VisibilityFilter);
+  map.setPaintProperty(config.map.layers.overlayLine, 'line-opacity', VisibilityFilter);
+
+  // always hide all features with id > 9000 for small street layers
+  map.setPaintProperty(config.map.layers.side0LayerSmall, 'line-opacity', VisibilityFilterSmall);
+  map.setPaintProperty(config.map.layers.side1LayerSmall, 'line-opacity', VisibilityFilterSmall);
+  map.setPaintProperty(config.map.layers.centerLayerSmall, 'line-opacity', VisibilityFilterSmall);
+  map.setPaintProperty(config.map.layers.overlayLineSmall, 'line-opacity', VisibilityFilterSmall);
+}
+
 function setMapFilter(map, filter) {
   map.setFilter(config.map.layers.centerLayer, filter);
   map.setFilter(config.map.layers.side0Layer, filter);
@@ -92,6 +115,10 @@ export function colorizePlanningLines(map, filter) {
   map.setPaintProperty(config.map.layers.side0Layer, 'line-color', paintRulesSide0);
   map.setPaintProperty(config.map.layers.side1Layer, 'line-color', paintRulesSide1);
 
+  map.setPaintProperty(config.map.layers.side0LayerSmall, 'line-color', paintRulesSide0);
+  map.setPaintProperty(config.map.layers.side1LayerSmall, 'line-color', paintRulesSide1);
+  map.setPaintProperty(config.map.layers.centerLayerSmall, 'line-color', paintRulesCenter);
+
   const opacityRulesCenter = getPlanningFilterRules('', filter);
   const opacityRulesSide0 = getPlanningFilterRules('side0_', filter);
   const opacityRulesSide1 = getPlanningFilterRules('side1_', filter);
@@ -99,6 +126,10 @@ export function colorizePlanningLines(map, filter) {
   map.setPaintProperty(config.map.layers.centerLayer, 'line-opacity', opacityRulesCenter);
   map.setPaintProperty(config.map.layers.side0Layer, 'line-opacity', opacityRulesSide0);
   map.setPaintProperty(config.map.layers.side1Layer, 'line-opacity', opacityRulesSide1);
+
+  map.setPaintProperty(config.map.layers.centerLayerSmall, 'line-opacity', opacityRulesCenter);
+  map.setPaintProperty(config.map.layers.side0LayerSmall, 'line-opacity', opacityRulesSide0);
+  map.setPaintProperty(config.map.layers.side1LayerSmall, 'line-opacity', opacityRulesSide1);
 }
 
 function getHbiExpression(sideKey, rs, rv) {
