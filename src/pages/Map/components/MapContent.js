@@ -1,12 +1,12 @@
 import React from 'react';
-import Styled from 'styled-components';
+import styled from 'styled-components';
 import Route from 'react-router/Route';
 
 import { orientation } from '~/utils/style-utils';
 import MapLegend from '~/pages/Map/components/MapLegend';
 import MapSwitch from '~/pages/Map/components/MapSwitch';
 
-const MapContent = Styled.div`
+const MapContent = styled.div`
   width: 100%;
   background: #fff;
   flex: 0 1 auto;

@@ -2,21 +2,21 @@
 
 import React, { PureComponent } from 'react';
 import { Formik } from 'formik';
-import Styled from 'styled-components';
+import styled from 'styled-components';
 
 import Form from '~/components/Form';
 import FormField from '~/components/FormField';
 import Button from '~/components/Button';
 import formConfig, { initialValues } from './config';
 
-const FormWrapper = Styled.div`
+const FormWrapper = styled.div`
   background: ${config.colors.lightbg};
   padding: 16px;
   margin-top: 16px;
   box-shadow: -1px 0 6px 1px rgba(0, 0, 0, 0.2);
 `;
 
-const ButtonWrapper = Styled.div`
+const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;

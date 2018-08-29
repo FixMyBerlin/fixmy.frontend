@@ -10,7 +10,7 @@ import LocatorControl from '~/pages/Map/components/LocatorControl';
 import MapPopup from '~/pages/Map/components/MapPopup';
 import MapControl from '~/pages/Map/components/MapControl';
 import MapContent from '~/pages/Map/components/MapContent';
-import SearchBar from '~/components/SearchBar';
+import SearchBar from '~/pages/Map/components/SearchBar';
 import FMBLogo from '~/components/FMBLogo';
 import Store from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/utils/style-utils';

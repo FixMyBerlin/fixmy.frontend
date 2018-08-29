@@ -1,6 +1,6 @@
 /* eslint react/no-array-index-key: 0, camelcase: 0 */
 import React, { PureComponent, Fragment } from 'react';
-import Styled from 'styled-components';
+import styled from 'styled-components';
 
 import Title from '~/components/Title';
 import SectionTitle from '~/components/SectionTitle';
@@ -13,20 +13,20 @@ import ImageSlider from '~/pages/Map/components/DetailView/ImageSlider';
 import PlanningStatus from './PlanningStatus';
 import PlanningLike from './PlanningLike';
 
-const DetailHead = Styled.div`
+const DetailHead = styled.div`
   padding: 14px 24px;
   position: relative;
   background: white;
   border-bottom: 1px solid #c4c4c4;
 `;
 
-const DetailBody = Styled.div`
+const DetailBody = styled.div`
   padding: 10px 24px;
   background: ${config.colors.lightbg};
   flex-grow: 1;
 `;
 
-const ExpandDescriptionButton = Styled.div`
+const ExpandDescriptionButton = styled.div`
   color: ${config.colors.interaction};
   cursor: pointer;
   font-size: 14px;
@@ -34,21 +34,21 @@ const ExpandDescriptionButton = Styled.div`
   display: none; // for now we dont want to display the more button
 `;
 
-const DetailBodySection = Styled.div`
+const DetailBodySection = styled.div`
   border-bottom: 1px dashed #c6c6c6;
   padding-bottom: 20px;
   margin-bottom: 20px;
 `;
 
-const DetailItem = Styled(Text)`
+const DetailItem = styled(Text)`
   margin-bottom: 10px;
 `;
 
-const DetailImage = Styled.img`
+const DetailImage = styled.img`
   width: 100%;
 `;
 
-const Anchor = Styled.a`
+const Anchor = styled.a`
   color: ${config.colors.interaction};
   text-decoration: none;
 
@@ -62,7 +62,7 @@ const Anchor = Styled.a`
   }
 `;
 
-const NoDataLabel = Styled.div`
+const NoDataLabel = styled.div`
   font-weight: 700;
   text-align: center;
   margin-top: 1rem;

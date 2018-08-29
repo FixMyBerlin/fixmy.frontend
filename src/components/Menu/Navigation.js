@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Store from '~/store';
 
 import { close } from '~/AppState';
-import NavItem from '~/components/NavItem';
+import NavItem from '~/components/Menu/NavItem';
 
 const NavHeader = styled.div`
   background: ${config.colors.lightgrey};

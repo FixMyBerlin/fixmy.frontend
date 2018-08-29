@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Styled from 'styled-components';
+import styled from 'styled-components';
 
 import ConceptIcon from '~/images/planning-icons/konzept.svg';
 import PlanningIcon from '~/images/planning-icons/planung.svg';
@@ -13,15 +13,15 @@ const iconPaths = {
   Planung: PlanningIcon
 };
 
-const ChartWrapper = Styled.div`
+const ChartWrapper = styled.div`
   position: relative;
 `;
 
-const ChartLine = Styled.line`
+const ChartLine = styled.line`
   shape-rendering: crispEdges;
 `;
 
-const ChartLabel = Styled.text`
+const ChartLabel = styled.text`
   font-size: 10px;
   user-select: none;
   font-weight: ${props => (props.inProgress ? 700 : 400)};
@@ -29,7 +29,7 @@ const ChartLabel = Styled.text`
 
 const iconSize = 50;
 
-const IconWrapper = Styled.div`
+const IconWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

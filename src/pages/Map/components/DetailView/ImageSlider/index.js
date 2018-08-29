@@ -1,6 +1,6 @@
 /* eslint react/no-array-index-key: 0 */
 import React, { PureComponent } from 'react';
-import Styled from 'styled-components';
+import styled from 'styled-components';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 
@@ -8,7 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const dotSize = '10px';
-const StyledSlider = Styled(Slider)`
+const StyledSlider = styled(Slider)`
   background: white;
   min-height: 150px;
 
@@ -39,7 +39,7 @@ const StyledSlider = Styled(Slider)`
   }
 `;
 
-const Slide = Styled.div`
+const Slide = styled.div`
   width: 100%;
   position: relative;
   height: 100%;
@@ -49,7 +49,7 @@ const Slide = Styled.div`
   }
 `;
 
-const SliderImage = Styled.img`
+const SliderImage = styled.img`
   width: 100%;
 
   &:focus {
@@ -57,7 +57,7 @@ const SliderImage = Styled.img`
   }
 `;
 
-const ImageSource = Styled.div`
+const ImageSource = styled.div`
   position: absolute;
   bottom: 2px;
   font-size: 9px;
@@ -65,7 +65,7 @@ const ImageSource = Styled.div`
   color: ${config.colors.lightgrey};
 `;
 
-const PlaceholderLabel = Styled.div`
+const PlaceholderLabel = styled.div`
   position: absolute;
   left: 0;
   top: 40%;

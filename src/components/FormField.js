@@ -2,8 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { Field } from 'formik';
 
-import Textarea from '~/components/Textarea';
-
 const FormFieldSection = styled.div`
   margin-bottom: 1em;
 `;
@@ -23,7 +21,7 @@ export default ({ id, type, label, options, placeholder = '', values, handleChan
   } else if (type === 'checkbox') {
     Result = <Field type="checkbox" name={id} checked={values[id]} />;
   } else if (type === 'textarea') {
-    Result = <Textarea name={id} placeholder={placeholder} onChange={handleChange}>{values[id]}</Textarea>;
+    Result = <textarea name={id} placeholder={placeholder} onChange={handleChange}>{values[id]}</textarea>;
   } else if (type === 'select') {
     Result = (
       <Field component="select" name={id}>
