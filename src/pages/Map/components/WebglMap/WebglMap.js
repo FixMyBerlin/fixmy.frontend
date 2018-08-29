@@ -159,6 +159,11 @@ class Map extends PureComponent {
 
     if (this.props.activeLayer === 'zustand') {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
+
+      toggleLayer(this.map, config.map.layers.intersections, true);
+      toggleLayer(this.map, config.map.layers.intersectionsSide0, true);
+      toggleLayer(this.map, config.map.layers.intersectionsSide1, true);
+      toggleLayer(this.map, config.map.layers.intersectionsSideOverlay, true);
     }
 
     if (this.props.activeLayer === 'planungen') {
@@ -168,6 +173,11 @@ class Map extends PureComponent {
       toggleLayer(this.map, config.map.layers.side0LayerSmall, true);
       toggleLayer(this.map, config.map.layers.side1LayerSmall, true);
       toggleLayer(this.map, config.map.layers.overlayLineSmall, true);
+
+      toggleLayer(this.map, config.map.layers.intersections, false);
+      toggleLayer(this.map, config.map.layers.intersectionsSide0, false);
+      toggleLayer(this.map, config.map.layers.intersectionsSide1, false);
+      toggleLayer(this.map, config.map.layers.intersectionsSideOverlay, false);
     }
 
     toggleLayer(this.map, config.map.layers.bgLayer, true);
