@@ -133,8 +133,8 @@ class PlanningDetails extends PureComponent {
 
           <DetailBodySection>
             <SectionTitle>Projektdaten:</SectionTitle>
-            {responsible && <DetailItem>Zuständigkeit: <strong>{responsible}</strong></DetailItem>}
-            {costs && <DetailItem>Projektvolumen: <strong>{costs}</strong></DetailItem>}
+            {typeof responsible !== 'undefined' ? <DetailItem>Zuständigkeit: <strong>{responsible}</strong></DetailItem> : null}
+            {typeof costs !== 'undefined' ? <DetailItem>Projektvolumen: <strong>{costs}</strong></DetailItem> : null}
             {external_url ? <DetailItem>Link zur Planung: <Anchor target="_blank" href={external_url}>{external_url}</Anchor></DetailItem> : null}
             {cross_section_photo ? <DetailImage src={cross_section_photo} /> : null}
           </DetailBodySection>

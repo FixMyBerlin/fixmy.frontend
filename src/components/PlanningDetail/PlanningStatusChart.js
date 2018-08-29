@@ -39,7 +39,7 @@ const IconWrapper = Styled.div`
   top: ${props => `${props.top}px` || 0};
   position: absolute;
 
-  g, svg, use {
+  g, svg, use, path {
     fill: white;
   }
 `;
