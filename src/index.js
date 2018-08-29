@@ -9,15 +9,14 @@ import styled from 'styled-components';
 
 import { updateHistory } from '~/AppState';
 import Menu from '~/components/Menu';
-import {
-  Home,
-  MarkdownPage,
-  MapView,
-  Login,
-  Signup,
-  PasswordReset,
-  EmailVerification
-} from '~/general/loadables';
+import Home from '~/pages/Home';
+import Markdown from '~/pages/Markdown';
+import Map from '~/pages/Map';
+import Login from '~/pages/User/pages/Login';
+import Signup from '~/pages/User/pages/Signup';
+import PasswordReset from '~/pages/User/pages/PasswordReset';
+import EmailVerification from '~/pages/User/pages/EmailVerification';
+
 import { init as initStyle } from '~/general/style-utils';
 
 import Store from './store';
@@ -51,10 +50,10 @@ if (root) {
               <Route exact path="/" component={Home} />
 
               {/* standard markdown pages */}
-              <Route path="/info" render={() => <MarkdownPage page="about" />} />
-              <Route path="/kontakt" render={() => <MarkdownPage page="contact" />} />
-              <Route path="/datenschutz" render={() => <MarkdownPage page="privacy" />} />
-              <Route path="/impressum" render={() => <MarkdownPage page="imprint" />} />
+              <Route path="/info" render={() => <Markdown page="about" />} />
+              <Route path="/kontakt" render={() => <Markdown page="contact" />} />
+              <Route path="/datenschutz" render={() => <Markdown page="privacy" />} />
+              <Route path="/impressum" render={() => <Markdown page="imprint" />} />
 
               {/* user pages */}
               <Route path="/login" render={() => <Login />} />
@@ -65,9 +64,9 @@ if (root) {
               {/* map pages */}
               <Route
                 path="(/zustand|/planungen|/my-hbi)"
-                component={MapView}
+                component={Map}
               />
-              <Route render={() => <MarkdownPage page="nomatch" />} />
+              <Route render={() => <Markdown page="nomatch" />} />
             </Switch>
           </AppContent>
         </App>

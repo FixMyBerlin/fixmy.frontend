@@ -1,6 +1,6 @@
 import Loadable from 'react-loadable';
 
 export default Loadable({
-  loader: () => import('./Markdown'),
+  loader: () => import('./Login'),
   loading: () => null
 });
