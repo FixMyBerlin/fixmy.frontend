@@ -184,7 +184,7 @@ class Map extends PureComponent {
     toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
 
     filterLayersById(this.map, filterId);
-    handleSmallStreets(this.map, false);
+    handleSmallStreets(this.map);
   }
 
   handleClick = (e) => {
@@ -223,10 +223,11 @@ class Map extends PureComponent {
 
     const id = data.planning_section_ids[0];
     const center = data.center.coordinates;
+    const name = idx(data, _ => _.planning_sections[0].name);
 
     const properties = {
       sideNone_planning_title: data.title,
-      name: '-' // @TODO: name is not part of the data
+      name: name || '-'
     };
 
     Store.dispatch(MapActions.setPopupData(properties));

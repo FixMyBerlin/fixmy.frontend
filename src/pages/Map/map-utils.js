@@ -67,10 +67,10 @@ export function filterLayersById(map, id) {
   }
 }
 
-export function handleSmallStreets(map, isVisible) {
+export function handleSmallStreets(map) {
   const VisibilityFilter = ['case',
-    ['>=', ['number', ['get', 'id']], 9000], isVisible ? 1 : 0,
-    isVisible ? 0 : 1
+    ['>=', ['number', ['get', 'id']], 9000], 0,
+    1
   ];
 
   const VisibilityFilterSmall = ['case',
