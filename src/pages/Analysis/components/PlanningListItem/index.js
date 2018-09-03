@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import idx from 'idx';
 import styled from 'styled-components';
 
+import { numberFormat } from '~/utils/utils';
 import Label from '~/components/Label';
 import Button from '~/components/Button';
 import HeartIcon from '~/images/heart.svg';
@@ -146,7 +147,7 @@ class PlanningListItem extends PureComponent {
               {name}
             </ItemTitle>
             <Label>
-              Abschnitt 1 {length && `| ${(+length / 1000).toFixed(0)} km`}
+              Abschnitt 1 {length && `| ${numberFormat((+length / 1000), 1)} km`}
             </Label>
           </ItemHeader>
           <ItemSubTitle>
