@@ -47,18 +47,25 @@ const LevelLabel = styled.span`
 `;
 
 export default (props) => {
-  const level0 = getHBIbyProps(props.section, 'side0');
-  const level1 = getHBIbyProps(props.section, 'side1');
+  let level0 = getHBIbyProps(props.section, 'side0');
+  let level1 = getHBIbyProps(props.section, 'side1');
+  const isLevel0Valid = !isNaN(level0);
+  const isLevel1Valid = !isNaN(level1);
+  level0 = isLevel0Valid ? level0 : 0;
+  level1 = isLevel1Valid ? level1 : 0;
+
   const bikeLevelTotal = (level0 + level1) / 2;
   const level0Color = getHBIColorByIndex(level0);
   const level1Color = getHBIColorByIndex(level1);
+
+  console.log(isLevel0Valid, isLevel1Valid);
 
   return (
     <BikeLevelStatus {...props}>
       <SectionLeft>
         <SidesWrapper>
-          <Label margin="0 0 10px 0">Westseite: <LevelLabel color={level0Color}>{numberFormat(level0)}</LevelLabel></Label>
-          <Label>Ostseite: <LevelLabel color={level1Color}>{numberFormat(level1)}</LevelLabel></Label>
+          {isLevel0Valid && <Label margin="0 0 10px 0">Westseite: <LevelLabel color={level0Color}>{numberFormat(level0)}</LevelLabel></Label>}
+          {isLevel1Valid && <Label>Ostseite: <LevelLabel color={level1Color}>{numberFormat(level1)}</LevelLabel></Label>}
         </SidesWrapper>
         <StyledBraceVertical />
       </SectionLeft>

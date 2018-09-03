@@ -57,7 +57,9 @@ class MapViewComponent extends PureComponent {
   }
 
   componentDidMount() {
-    Store.dispatch(MapActions.loadPlanningData());
+    if (this.props.location.pathname.includes('planungen')) {
+      Store.dispatch(MapActions.loadPlanningData());
+    }
   }
 
   updateView = (view) => {

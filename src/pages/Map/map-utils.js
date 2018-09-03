@@ -156,14 +156,15 @@ export function colorizePlanningLines(map, filter) {
 function getHbiExpression(sideKey, rs, rv) {
   // formula:
   // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)
-  const securityExpr = ['*', ['-', ['to-number', ['get', `${sideKey}safety`]], rs], 1.6];
-  const speedExpr = ['*', ['-', ['to-number', ['get', `${sideKey}velocity`]], rv], 0.5];
+  const securityExpr = ['*', ['-', ['to-number', ['get', `${sideKey}safety`], -1000], rs], 1.6];
+  const speedExpr = ['*', ['-', ['to-number', ['get', `${sideKey}velocity`], -1000], rv], 0.5];
   return ['number', ['+', securityExpr, speedExpr]];
 }
 
 function getHbiLineColorRules(hbi) {
   return [
     'case',
+    ['<', hbi, 0], 'white', // we set a negative default value in order to recognize invalid sections. see function above
     ['<', hbi, config.hbiStops[0].max], config.hbiStops[0].color,
     ['<', hbi, config.hbiStops[1].max], config.hbiStops[1].color,
     ['<', hbi, config.hbiStops[2].max], config.hbiStops[2].color,
