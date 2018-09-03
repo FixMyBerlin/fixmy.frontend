@@ -4,6 +4,14 @@ import { VictoryPie } from 'victory';
 
 import Label from '~/components/Label';
 
+const Wrapper = styled.div`
+  background: #fffaed;
+  padding: 16px;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
+  max-width: 650px;
+  margin: 0 auto;
+`;
+
 const PieChartWrapper = styled.div`
   width: 300px;
   margin: 0 auto;
@@ -44,16 +52,18 @@ class PieChart extends PureComponent {
     const colorScale = chartData.map(d => d.color);
 
     return (
-      <PieChartWrapper>
-        <VictoryPie
-          innerRadius={80}
-          radius={120}
-          data={chartData}
-          colorScale={colorScale}
-          style={chartStyle}
-        />
-        <ChartInnerLabel>{this.props.data.length} Planungen</ChartInnerLabel>
-      </PieChartWrapper>
+      <Wrapper>
+        <PieChartWrapper>
+          <VictoryPie
+            innerRadius={80}
+            radius={120}
+            data={chartData}
+            colorScale={colorScale}
+            style={chartStyle}
+          />
+          <ChartInnerLabel>{this.props.data.length} Planungen</ChartInnerLabel>
+        </PieChartWrapper>
+      </Wrapper>
     );
   }
 }

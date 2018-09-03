@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { loadPlanningData } from '~/pages/Analysis/AnalysisState';
 import Card from '~/pages/Analysis/components/Card';
 import PieChart from '~/pages/Analysis/components/PieChart';
+import BigLabel from '~/components/BigLabel';
+import MenuButton from '~/components/MenuButton';
 import PlanningList from './components/PlanningList';
 
 const AnalysisWrapper = styled.div`
@@ -12,6 +14,15 @@ const AnalysisWrapper = styled.div`
   padding: 8px;
 `;
 
+const AnalysisHeader = styled.div`
+  text-align: center;
+  position: relative;
+  padding: 16px 0;
+`;
+
+const StyledMenuButton = styled(MenuButton)`
+  top: auto;
+`;
 class Analysis extends PureComponent {
   componentDidMount() {
     this.props.loadPlanningData();
@@ -21,9 +32,11 @@ class Analysis extends PureComponent {
     const { data, isLoading } = this.props;
     return (
       <AnalysisWrapper>
-        <Card>
-          <PieChart data={data} isLoading={isLoading} />
-        </Card>
+        <AnalysisHeader>
+          <StyledMenuButton />
+          <BigLabel>Analyse</BigLabel>
+        </AnalysisHeader>
+        <PieChart data={data} isLoading={isLoading} />
         <PlanningList
           data={data}
           isLoading={isLoading}
