@@ -52,6 +52,8 @@ ReactDOM.render(
             <Route path="/kontakt" render={() => <Markdown page="contact" />} />
             <Route path="/datenschutz" render={() => <Markdown page="privacy" />} />
             <Route path="/impressum" render={() => <Markdown page="imprint" />} />
+            <Route path="/presse" render={() => <Markdown page="press" />} />
+            <Route path="/faq" render={() => <Markdown page="faq" />} />
 
             {/* user pages */}
             <Route path="/login" render={() => <Login />} />

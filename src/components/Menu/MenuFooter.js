@@ -8,6 +8,15 @@ import { close } from '~/AppState';
 import FMBLogo from '~/components/FMBLogo';
 import SocialLinks from '~/components/Social/SocialLinks';
 
+function getTextAlign(index) {
+  switch (index % 3) {
+    case 0: return 'left';
+    case 1: return 'center';
+    case 2: return 'right';
+    default: return 'center';
+  }
+}
+
 const Footer = styled.div`
   background: ${config.colors.lightgrey};
   color: ${config.colors.darkgrey};
@@ -25,23 +34,26 @@ const FooterLinks = styled.div`
   font-size: 14px;
   display: flex;
   margin-top: 1rem;
+  flex-wrap: wrap;
 `;
 
 const StyledLink = styled(NavLink).attrs({
   to: props => props.to
 })`
-  width: ${props => props.width}%;
+  width: 33.3333%;
+  padding: 4px 8px;
   text-align: center;
   text-decoration: none;
   color: #635638;
+  text-align: ${props => getTextAlign(props.index)};
 `;
 
-function renderItem(item, index, items) {
+function renderItem(item, index) {
   return (
     <StyledLink
       key={item.label}
       to={item.link}
-      width={100 / items.length}
+      index={index}
     >
       {item.label}
     </StyledLink>
@@ -56,7 +68,7 @@ class MenuFooter extends PureComponent {
           <StyledFMBLogo />
         </Link>
         <FooterLinks>
-          {config.menu.footeritems.map((item, i, items) => renderItem(item, i, items))}
+          {config.menu.footeritems.map((item, i) => renderItem(item, i))}
         </FooterLinks>
         <SocialLinks title="Folge uns" />
       </Footer>

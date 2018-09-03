@@ -66,6 +66,10 @@
       {
         "label": "Impressum",
         "link": "/impressum"
+      },
+      {
+        "label": "Datenschutz",
+        "link": "/datenschutz"
       }
     ]
   },
@@ -80,6 +84,12 @@
   },
   "imprint": {
     "markdownSource": "markdown/imprint.md"
+  },
+  "faq": {
+    "markdownSource": "markdown/faq.md"
+  },
+  "press": {
+    "markdownSource": "markdown/press.md"
   },
   "nomatch": {
     "markdownSource": "/markdown/nomatch.md"
