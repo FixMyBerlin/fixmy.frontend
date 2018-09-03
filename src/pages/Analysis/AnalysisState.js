@@ -14,7 +14,9 @@ export function loadPlanningData() {
     dispatch({ type: LOAD_DATA, payload: { isLoading: true } });
 
     try {
-      const data = await fetch('https://api.fixmyberlin.de/api/plannings?page_size=25').then(r => r.json()).then(json => json.results);
+      const data = await fetch('https://api.fixmyberlin.de/api/plannings?page_size=100')
+        .then(r => r.json())
+        .then(json => json.results);
       return dispatch({ type: LOAD_DATA_SUCCESS, payload: { data, isLoading: false } });
     } catch (e) {
       return dispatch({ type: LOAD_DATA_FAIL, payload: { isLoading: false } });

@@ -1,8 +1,13 @@
 import React, { PureComponent } from 'react';
+import idx from 'idx';
 import styled from 'styled-components';
 import { VictoryPie } from 'victory';
 
-import Label from '~/components/Label';
+import Text from '~/components/Text';
+
+const StyledLabel = styled(Text)`
+  text-align: center;
+`;
 
 const Wrapper = styled.div`
   background: #fffaed;
@@ -26,42 +31,84 @@ const ChartInnerLabel = styled.div`
   width: 100%;
   text-align: center;
   line-height: 1;
-  margin-top: -10px;
+  margin-top: -25px;
+`;
+
+const ChartTitle = styled.div`
+  margin-bottom: 4px;
+`;
+
+const ChartSubtitle = styled.div`
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Roboto Slab', serif;
+  color: ${config.colors.darkbg};
+  max-width: 100px;
+  display: inline-block;
 `;
 
 const chartStyle = {
   labels: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: 700,
     fontFamily: '"Open Sans", sans-serif'
+  },
+  data: {
+    stroke: config.colors.interaction, strokeWidth: 1
   }
 };
+
+function sumLengths(planningPhaseName = null) {
+  return (res, item) => {
+    if (planningPhaseName === null || item.phase === planningPhaseName) {
+      let length0 = idx(item, _ => _.planning_sections[0].details[0].length);
+      let length1 = idx(item, _ => _.planning_sections[0].details[1].length);
+
+      length0 = length0 ? +length0 : 0;
+      length1 = length1 ? +length1 : 0;
+
+      return res + length0 + length1;
+    }
+
+    return res;
+  };
+}
 
 class PieChart extends PureComponent {
   render() {
     if (this.props.isLoading) {
-      return <Label>Lade Daten ...</Label>;
+      return (
+        <Wrapper>
+          <PieChartWrapper>
+            <StyledLabel bold>Lade Daten ...</StyledLabel>
+          </PieChartWrapper>
+        </Wrapper>
+      );
     }
 
     const chartData = config.planningPhases.map(planningPhase => ({
       x: planningPhase.name,
-      y: this.props.data.filter(d => d.phase === planningPhase.id).length,
+      y: this.props.data.reduce(sumLengths(planningPhase.id), 0),
       color: planningPhase.color
     })).filter(d => d.y > 0);
 
     const colorScale = chartData.map(d => d.color);
+    const lengthSum = this.props.data.reduce(sumLengths(), 0);
 
     return (
       <Wrapper>
         <PieChartWrapper>
           <VictoryPie
-            innerRadius={80}
-            radius={120}
+            innerRadius={100}
+            radius={130}
             data={chartData}
             colorScale={colorScale}
             style={chartStyle}
           />
-          <ChartInnerLabel>{this.props.data.length} Planungen</ChartInnerLabel>
+          <ChartInnerLabel>
+            <ChartTitle>{this.props.data.length} Planungen</ChartTitle>
+            <ChartSubtitle>gesamte Länge: {(lengthSum / 1000).toFixed(0)} km</ChartSubtitle>
+          </ChartInnerLabel>
         </PieChartWrapper>
       </Wrapper>
     );

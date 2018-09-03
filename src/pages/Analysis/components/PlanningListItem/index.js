@@ -3,6 +3,7 @@ import idx from 'idx';
 import styled from 'styled-components';
 
 import Label from '~/components/Label';
+import HeartIcon from '~/images/heart.svg';
 import DraftMarker from '~/images/planning-icons/konzept-marker.png';
 import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
@@ -52,25 +53,79 @@ const ItemSubTitle = styled.div`
   margin-top: 16px;
 `;
 
+const ItemFooter = styled.div`
+  display: flex;
+`;
+
+const Likes = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 5x;
+
+  svg {
+    width: 16px;
+    margin-right: 4px;
+  }
+
+  path {
+    fill: ${config.colors.interaction};
+  }
+`;
+
+const DateWrapper = styled.div`
+  margin-left: auto;
+  font-size: 14px;
+  align-self: center;
+  color: ${config.colors.darkgrey};
+`;
+
+const Expansion = styled.div``;
+
 class PlanningListItem extends PureComponent {
+  state = {
+    isExpanded: false
+  }
+
+  toggleExpanded = () => {
+    this.setState(prevState => ({
+      isExpanded: !prevState.isExpanded
+    }));
+  }
+
   render() {
+    const { construction_completed: constructionCompleted } = this.props;
     const name = idx(this.props, _ => _.planning_sections[0].name);
+    const length = idx(this.props, _ => _.planning_sections[0].details[0].length);
     const iconSrc = icons[this.props.phase];
 
     return (
-      <ItemWrapper>
+      <ItemWrapper onClick={this.toggleExpanded}>
         <ItemImage src={iconSrc} />
         <ItemHeader>
           <ItemTitle>
             {name}
           </ItemTitle>
           <Label>
-            Abschnitt 1 | xx km
+            Abschnitt 1 {length && `| ${(+length / 1000).toFixed(0)} km`}
           </Label>
         </ItemHeader>
         <ItemSubTitle>
           {this.props.title}
         </ItemSubTitle>
+        <ItemFooter>
+          <Likes>
+            <HeartIcon />
+            <Label light>0</Label>
+          </Likes>
+          <DateWrapper>
+            Fertigstellung: {constructionCompleted}
+          </DateWrapper>
+        </ItemFooter>
+        {this.state.isExpanded && (
+          <Expansion>
+            Yooo
+          </Expansion>
+        )}
       </ItemWrapper>
     );
   }

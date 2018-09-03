@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import { loadPlanningData } from '~/pages/Analysis/AnalysisState';
-import Card from '~/pages/Analysis/components/Card';
 import PieChart from '~/pages/Analysis/components/PieChart';
 import BigLabel from '~/components/BigLabel';
 import MenuButton from '~/components/MenuButton';
