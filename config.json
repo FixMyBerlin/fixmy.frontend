@@ -29,13 +29,6 @@
         "border": true
       },
       {
-        "type": "link",
-        "label": "Analyse",
-        "link": "/analyse/planungen",
-        "icon": "analysis",
-        "border": false
-      },
-      {
         "type": "separator",
         "label": "Weiteres"
       },
