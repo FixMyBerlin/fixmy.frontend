@@ -1,48 +1,43 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import MenuButton from '~/components/MenuButton';
-import BigLabel from '~/components/BigLabel';
+import { connect } from 'react-redux';
+
+import { loadPlanningData } from '~/pages/Analysis/AnalysisState';
+import Card from '~/pages/Analysis/components/Card';
+import PieChart from '~/pages/Analysis/components/PieChart';
+import PlanningList from './components/PlanningList';
 
 const AnalysisWrapper = styled.div`
   background: ${config.colors.lightgrey};
   padding: 8px;
 `;
 
-const Card = styled.div`
-  background: #fffaed;
-  padding: 16px;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
-`;
-
-const StyledMenuButton = styled(MenuButton)`
-  top: auto;
-`;
-
-const CardHeader = styled.div`
-  text-align: center;
-  position: relative;
-`;
-
-const CardContent = styled.div`
-  max-width: 650px;
-  margin: 0 auto;
-`;
-
 class Analysis extends PureComponent {
+  componentDidMount() {
+    this.props.loadPlanningData();
+  }
+
   render() {
+    const { data, isLoading } = this.props;
     return (
       <AnalysisWrapper>
         <Card>
-          <CardHeader>
-            <StyledMenuButton />
-            <BigLabel>Planungsanalyse</BigLabel>
-          </CardHeader>
-          <CardContent>
-          </CardContent>
+          <PieChart data={data} isLoading={isLoading} />
         </Card>
+        <PlanningList
+          data={data}
+          isLoading={isLoading}
+          sorting={this.props.sorting}
+          filter={this.props.filter}
+        />
       </AnalysisWrapper>
     );
   }
 }
 
-export default Analysis;
+export default connect(
+  state => state.AnalysisState,
+  dispatch => ({
+    loadPlanningData: () => dispatch(loadPlanningData())
+  })
+)(Analysis);
