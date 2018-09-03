@@ -1,6 +1,6 @@
 import Loadable from 'react-loadable';
 
 export default Loadable({
-  loader: () => import('./Login'),
+  loader: () => import(/* webpackChunkName: "Login" */ './Login'),
   loading: () => null
 });

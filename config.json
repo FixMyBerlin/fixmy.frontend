@@ -22,16 +22,46 @@
     "size": 320,
     "items": [
       {
+        "type": "link",
+        "label": "Karte",
+        "link": "/planungen",
+        "icon": "map",
+        "border": true
+      },
+      {
+        "type": "link",
+        "label": "Analyse",
+        "link": "/anaylse/planungen",
+        "icon": "analysis",
+        "border": false
+      },
+      {
+        "type": "separator",
+        "label": "Weiteres"
+      },
+      {
+        "type": "link",
         "label": "Über FixMyBerlin",
-        "link": "/info"
+        "link": "/info",
+        "icon": "info",
+        "border": true
       },
       {
-        "label": "Kontakt / Feedback",
+        "type": "link",
+        "label": "FAQ",
+        "link": "/faq",
+        "icon": "question",
+        "border": false
+      }
+    ],
+    "footeritems": [
+      {
+        "label": "Presse",
+        "link": "/presse"
+      },
+      {
+        "label": "Kontakt",
         "link": "/kontakt"
-      },
-      {
-        "label": "Datenschutz",
-        "link": "/datenschutz"
       },
       {
         "label": "Impressum",

@@ -1,41 +1,50 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from 'react-router-dom/Link';
-
-import FMBLogo from '~/components/FMBLogo';
+import NavLink from 'react-router-dom/NavLink';
 
 import Store from '~/store';
-import { close } from '~/AppState';
-
+import { toggle } from '~/AppState';
+import AccountIcon from '~/images/account.svg';
 import MenuCloseButton from './MenuCloseButton';
 
 const MenuHeader = styled.div`
   background: ${config.colors.interaction};
   position: relative;
-  padding: .5rem 1rem;
+  padding: 2rem 0;
 `;
 
 const MenuHeaderContainer = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  color: white;
 `;
 
-const StyledFMBLogo = styled(FMBLogo)`
-  margin: 2rem 0;
-`;
+const AccountLink = styled(NavLink).attrs({
+  to: props => props.to
+})`
+  display: flex;
+  font-size: 1rem;
+  text-decoration: none;
+  color: white;
+  padding: 0 2rem;
 
-function handleLogoClick() {
-  Store.dispatch(close());
-}
+  &:visited {
+    color: white;
+  }
+
+  svg {
+    margin-right: 16px;
+  }
+`;
 
 export default () => (
   <MenuHeader>
     <MenuHeaderContainer>
-      <Link onClick={handleLogoClick} to="/">
-        <StyledFMBLogo />
-      </Link>
+      <AccountLink to="login" onClick={() => Store.dispatch(toggle())}>
+        <AccountIcon />
+        Anmelden
+      </AccountLink>
       <MenuCloseButton />
     </MenuHeaderContainer>
   </MenuHeader>

@@ -18,12 +18,12 @@ import WebglMap from '~/pages/Map/components/WebglMap';
 import MyHBI from '~/pages/MyHBI';
 
 export const SectionDetail = Loadable({
-  loader: () => import('~/pages/Map/components/DetailView/SectionDetail'),
+  loader: () => import(/* webpackChunkName: "SectionDetail" */ '~/pages/Map/components/DetailView/SectionDetail'),
   loading: () => null
 });
 
 export const PlanningDetail = Loadable({
-  loader: () => import('~/pages/Map/components/DetailView/PlanningDetail'),
+  loader: () => import(/* webpackChunkName: "PlanningDetail" */ '~/pages/Map/components/DetailView/PlanningDetail'),
   loading: () => null
 });
 

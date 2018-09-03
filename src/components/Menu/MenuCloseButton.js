@@ -5,14 +5,10 @@ import Store from '~/store';
 import CloseIcon from '~/images/close.svg';
 import { toggle } from '~/AppState';
 
-function toggleMenu() {
-  Store.dispatch(toggle());
-}
-
 const MenuCloseButton = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -1.5rem;
+  right: 0.5rem;
   cursor: pointer;
 
   &:hover {
@@ -26,7 +22,7 @@ const MenuCloseButton = styled.div`
 
 export default props => (
   <MenuCloseButton
-    onClick={toggleMenu}
+    onClick={() => Store.dispatch(toggle())}
     role="button"
     tabIndex={0}
     className={props.className}

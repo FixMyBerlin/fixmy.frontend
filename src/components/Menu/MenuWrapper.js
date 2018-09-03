@@ -16,4 +16,6 @@ export default styled.div`
   background: white;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
 `;

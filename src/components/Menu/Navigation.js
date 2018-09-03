@@ -4,36 +4,35 @@ import Store from '~/store';
 
 import { close } from '~/AppState';
 import NavItem from '~/components/Menu/NavItem';
+import SvgIcon from '~/components/SvgIcon';
+import Separator from './Separator';
 
-const NavHeader = styled.div`
-  background: ${config.colors.lightgrey};
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1rem;
-  color: ${config.colors.darkgrey};
-  letter-spacing: 1px;
-  padding: 1.5rem 2rem;
-  border-top: 1px dashed ${config.colors.midgrey};
-  border-bottom: 1px dashed ${config.colors.midgrey};
+const NavBody = styled.nav`
+  flex-grow: 1;
 `;
 
-const NavBody = styled.div`
-  padding: 0 2rem;
-`;
+function renderItem(item) {
+  switch (item.type) {
+    case 'link': return (
+      <NavItem
+        key={item.label}
+        to={item.link}
+        onClick={() => Store.dispatch(close())}
+        border={item.border}
+      >
+        {item.icon ? <SvgIcon type={item.icon} /> : null}
+        <NavItem.Label>{item.label}</NavItem.Label>
+      </NavItem>
+    );
+    case 'separator': return (
+      <Separator key={item.label} label={item.label} />
+    );
+    default: return null;
+  }
+}
 
 export default props => (
-  <nav className={props.className}>
-    <NavHeader>Infos</NavHeader>
-    <NavBody>
-      {config.menu.items.map(menuItem =>
-        (<NavItem
-          key={menuItem.label}
-          to={menuItem.link}
-          onClick={() => Store.dispatch(close())}
-        >
-          {menuItem.label}
-        </NavItem>)
-      )}
-    </NavBody>
-  </nav>
+  <NavBody className={props.className}>
+    {config.menu.items.map(item => renderItem(item))}
+  </NavBody>
 );
