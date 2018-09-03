@@ -49,10 +49,6 @@
     ],
     "footeritems": [
       {
-        "label": "Presse",
-        "link": "/presse"
-      },
-      {
         "label": "Kontakt",
         "link": "/kontakt"
       },
