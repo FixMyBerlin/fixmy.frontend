@@ -11,17 +11,16 @@ import { updateHistory } from '~/AppState';
 import Menu from '~/components/Menu';
 import Home from '~/pages/Home';
 import Markdown from '~/pages/Markdown';
-import Map from '~/pages/Map';
+import MapView from '~/pages/Map';
 import Login from '~/pages/User/pages/Login';
 import Signup from '~/pages/User/pages/Signup';
+import Analysis from '~/pages/Analysis';
 import PasswordReset from '~/pages/User/pages/PasswordReset';
 import EmailVerification from '~/pages/User/pages/EmailVerification';
 
 import { init as initStyle } from '~/utils/style-utils';
-
 import Store from './store';
 
-const root = document.getElementById('root');
 const history = createBrowserHistory();
 
 const App = styled.div`
@@ -37,41 +36,46 @@ const AppContent = styled.div`
 history.listen(location => Store.dispatch(updateHistory(location)));
 Store.dispatch(updateHistory(history.location));
 
-if (root) {
-  initStyle();
+initStyle();
 
-  ReactDOM.render(
-    <Provider store={Store}>
-      <Router history={history}>
-        <App>
-          <Menu />
-          <AppContent>
-            <Switch>
-              <Route exact path="/" component={Home} />
+ReactDOM.render(
+  <Provider store={Store}>
+    <Router history={history}>
+      <App>
+        <Menu />
+        <AppContent>
+          <Switch>
+            <Route exact path="/" component={Home} />
 
-              {/* standard markdown pages */}
-              <Route path="/info" render={() => <Markdown page="about" />} />
-              <Route path="/kontakt" render={() => <Markdown page="contact" />} />
-              <Route path="/datenschutz" render={() => <Markdown page="privacy" />} />
-              <Route path="/impressum" render={() => <Markdown page="imprint" />} />
+            {/* standard markdown pages */}
+            <Route path="/info" render={() => <Markdown page="about" />} />
+            <Route path="/kontakt" render={() => <Markdown page="contact" />} />
+            <Route path="/datenschutz" render={() => <Markdown page="privacy" />} />
+            <Route path="/impressum" render={() => <Markdown page="imprint" />} />
 
-              {/* user pages */}
-              <Route path="/login" render={() => <Login />} />
-              <Route path="/signup" render={() => <Signup />} />
-              <Route path="/password-reset" render={() => <PasswordReset />} />
-              <Route path="/email-verification" render={() => <EmailVerification />} />
+            {/* user pages */}
+            <Route path="/login" render={() => <Login />} />
+            <Route path="/signup" render={() => <Signup />} />
+            <Route path="/password-reset" render={() => <PasswordReset />} />
+            <Route path="/email-verification" render={() => <EmailVerification />} />
 
-              {/* map pages */}
-              <Route
-                path="(/zustand|/planungen|/my-hbi)"
-                component={Map}
-              />
-              <Route render={() => <Markdown page="nomatch" />} />
-            </Switch>
-          </AppContent>
-        </App>
-      </Router>
-    </Provider>,
-    root
-  );
-}
+            {/* map pages */}
+            <Route
+              path="(/zustand|/planungen|/my-hbi)"
+              component={MapView}
+            />
+
+            {/* analysis pages */}
+            <Route
+              path="/analyse/planungen"
+              component={Analysis}
+            />
+
+            <Route render={() => <Markdown page="nomatch" />} />
+          </Switch>
+        </AppContent>
+      </App>
+    </Router>
+  </Provider>,
+  document.getElementById('root')
+);
