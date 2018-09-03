@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import withRouter from 'react-router/withRouter';
 import styled from 'styled-components';
 
 import PlanningListItem from '~/pages/Analysis/components/PlanningListItem';
@@ -19,10 +20,10 @@ class PlanningList extends PureComponent {
     return (
       <PlanningListWrapper>
         <Sorter>Sortieren:</Sorter>
-        {this.props.data.map(d => <PlanningListItem key={d.url} {...d} />)}
+        {this.props.data.map(d => <PlanningListItem key={d.url} {...d} history={this.props.history} />)}
       </PlanningListWrapper>
     );
   }
 }
 
-export default PlanningList;
+export default withRouter(PlanningList);

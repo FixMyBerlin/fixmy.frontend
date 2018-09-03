@@ -3,6 +3,7 @@ import idx from 'idx';
 import styled from 'styled-components';
 
 import Label from '~/components/Label';
+import Button from '~/components/Button';
 import HeartIcon from '~/images/heart.svg';
 import DraftMarker from '~/images/planning-icons/konzept-marker.png';
 import PlanningMarker from '~/images/planning-icons/planung-marker.png';
@@ -18,7 +19,7 @@ const icons = {
 
 const ItemWrapper = styled.div`
   margin: 8px 0;
-  padding: 16px;
+
   background: ${config.colors.lightbg};
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
   cursor: pointer;
@@ -27,6 +28,10 @@ const ItemWrapper = styled.div`
   &:hover {
     box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.25);
   }
+`;
+
+const ItemContent = styled.div`
+  padding: 16px;
 `;
 
 const ItemHeader = styled.div``;
@@ -79,11 +84,43 @@ const DateWrapper = styled.div`
   color: ${config.colors.darkgrey};
 `;
 
-const Expansion = styled.div``;
+const Expansion = styled.div`
+  position: relative;
+  img {
+    width: 100%;
+  }
+`;
+
+const Copyright = styled.div`
+  color: white;
+  bottom: 5px;
+  right: 5px;
+  font-size: 10px;
+  position: absolute;
+`;
+
+const MapButton = styled(Button)`
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  width: 200px;
+  top: 45%;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.4);
+    opacity: 1;
+  }
+`;
 
 class PlanningListItem extends PureComponent {
   state = {
     isExpanded: false
+  }
+
+  onClick = () => {
+    const id = idx(this.props, _ => _.planning_section_ids[0]);
+    this.props.history.push(`/planungen/${id}`);
   }
 
   toggleExpanded = () => {
@@ -93,37 +130,43 @@ class PlanningListItem extends PureComponent {
   }
 
   render() {
-    const { construction_completed: constructionCompleted } = this.props;
+    const { construction_completed: constructionCompleted, photos } = this.props;
     const name = idx(this.props, _ => _.planning_sections[0].name);
     const length = idx(this.props, _ => _.planning_sections[0].details[0].length);
     const iconSrc = icons[this.props.phase];
+    const photo = photos.length ? photos[0] : false;
+    const id = idx(this.props, _ => _.planning_section_ids[0]);
 
     return (
       <ItemWrapper onClick={this.toggleExpanded}>
-        <ItemImage src={iconSrc} />
-        <ItemHeader>
-          <ItemTitle>
-            {name}
-          </ItemTitle>
-          <Label>
-            Abschnitt 1 {length && `| ${(+length / 1000).toFixed(0)} km`}
-          </Label>
-        </ItemHeader>
-        <ItemSubTitle>
-          {this.props.title}
-        </ItemSubTitle>
-        <ItemFooter>
-          <Likes>
-            <HeartIcon />
-            <Label light>0</Label>
-          </Likes>
-          <DateWrapper>
-            Fertigstellung: {constructionCompleted}
-          </DateWrapper>
-        </ItemFooter>
+        <ItemContent>
+          <ItemImage src={iconSrc} />
+          <ItemHeader>
+            <ItemTitle>
+              {name}
+            </ItemTitle>
+            <Label>
+              Abschnitt 1 {length && `| ${(+length / 1000).toFixed(0)} km`}
+            </Label>
+          </ItemHeader>
+          <ItemSubTitle>
+            {this.props.title}
+          </ItemSubTitle>
+          <ItemFooter>
+            <Likes>
+              <HeartIcon />
+              <Label light>0</Label>
+            </Likes>
+            <DateWrapper>
+              Fertigstellung: {constructionCompleted}
+            </DateWrapper>
+          </ItemFooter>
+        </ItemContent>
         {this.state.isExpanded && (
           <Expansion>
-            Yooo
+            <img src={photo.src} />
+            <Copyright>{photo.copyright}</Copyright>
+            {id && <MapButton onClick={this.onClick}>Zur Karte</MapButton>}
           </Expansion>
         )}
       </ItemWrapper>
