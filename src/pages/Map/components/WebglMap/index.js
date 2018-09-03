@@ -163,9 +163,9 @@ class Map extends PureComponent {
       toggleLayer(this.map, config.map.layers[layerName], isZustand)
     );
 
-    smallStreetLayersWithOverlay.forEach(layerName =>
-      toggleLayer(this.map, config.map.layers[layerName], isPlanungen)
-    );
+    // smallStreetLayersWithOverlay.forEach(layerName =>
+    //   toggleLayer(this.map, config.map.layers[layerName], isPlanungen)
+    // );
 
     if (isZustand) {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
@@ -184,7 +184,7 @@ class Map extends PureComponent {
     toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
 
     filterLayersById(this.map, filterId);
-    handleSmallStreets(this.map);
+    // handleSmallStreets(this.map);
   }
 
   handleClick = (e) => {
