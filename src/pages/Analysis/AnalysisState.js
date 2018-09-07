@@ -1,12 +1,13 @@
 const LOAD_DATA = 'Analysis/AnalysisState/LOAD_DATA';
 const LOAD_DATA_SUCCESS = 'Analysis/AnalysisState/LOAD_DATA_SUCCESS';
 const LOAD_DATA_FAIL = 'Analysis/AnalysisState/LOAD_DATA_FAIL';
+const SET_FILTER = 'Analysis/AnalysisState/SET_FILTER';
 
 const initialState = {
   data: null,
   isLoading: true,
   sorting: null,
-  filter: null
+  selectedDistrict: false
 };
 
 export function loadPlanningData() {
@@ -24,11 +25,19 @@ export function loadPlanningData() {
   };
 }
 
+export function setDistrictFilter(districtName = '') {
+  const showAll = districtName.toLowerCase().includes('bezirke');
+  const selectedDistrict = showAll ? false : districtName;
+
+  return { type: SET_FILTER, payload: { selectedDistrict } };
+}
+
 export default function MapStateReducer(state = initialState, action = {}) {
   switch (action.type) {
     case LOAD_DATA:
     case LOAD_DATA_SUCCESS:
     case LOAD_DATA_FAIL:
+    case SET_FILTER:
       return Object.assign({}, state, action.payload);
     default:
       return Object.assign({}, state);

@@ -25,6 +25,10 @@ export function init() {
       font-family: 'Open Sans', sans-serif;
     }
 
+    input, button, select, textarea {
+      font-family: 'Open Sans', sans-serif;
+    }
+
     #root {
       height: 100%;
       position: relative;

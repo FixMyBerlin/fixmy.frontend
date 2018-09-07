@@ -9,14 +9,6 @@ const StyledLabel = styled(Text)`
   text-align: center;
 `;
 
-const Wrapper = styled.div`
-  background: #fffaed;
-  padding: 16px;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
-  max-width: 650px;
-  margin: 0 auto;
-`;
-
 const PieChartWrapper = styled.div`
   width: 300px;
   margin: 0 auto;
@@ -78,11 +70,9 @@ class PieChart extends PureComponent {
   render() {
     if (this.props.isLoading) {
       return (
-        <Wrapper>
-          <PieChartWrapper>
-            <StyledLabel bold>Lade Daten ...</StyledLabel>
-          </PieChartWrapper>
-        </Wrapper>
+        <PieChartWrapper>
+          <StyledLabel bold>Lade Daten ...</StyledLabel>
+        </PieChartWrapper>
       );
     }
 
@@ -96,21 +86,19 @@ class PieChart extends PureComponent {
     const lengthSum = this.props.data.reduce(sumLengths(), 0);
 
     return (
-      <Wrapper>
-        <PieChartWrapper>
-          <VictoryPie
-            innerRadius={100}
-            radius={130}
-            data={chartData}
-            colorScale={colorScale}
-            style={chartStyle}
-          />
-          <ChartInnerLabel>
-            <ChartTitle>{this.props.data.length} Planungen</ChartTitle>
-            <ChartSubtitle>gesamte Länge: {(lengthSum / 1000).toFixed(0)} km</ChartSubtitle>
-          </ChartInnerLabel>
-        </PieChartWrapper>
-      </Wrapper>
+      <PieChartWrapper>
+        <VictoryPie
+          innerRadius={100}
+          radius={130}
+          data={chartData}
+          colorScale={colorScale}
+          style={chartStyle}
+        />
+        <ChartInnerLabel>
+          <ChartTitle>{this.props.data.length} Planungen</ChartTitle>
+          <ChartSubtitle>gesamte Länge: {(lengthSum / 1000).toFixed(0)} km</ChartSubtitle>
+        </ChartInnerLabel>
+      </PieChartWrapper>
     );
   }
 }
