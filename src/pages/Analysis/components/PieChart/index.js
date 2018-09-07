@@ -73,9 +73,9 @@ function renderNoData() {
 
 function getSvgOffsetY(orientation) {
   switch (orientation) {
-    case 'top': return -40 ;
+    case 'top': return -40;
     case 'bottom': return -25;
-    case 'left': return -50;
+    case 'left': return -35;
     case 'right': return -35;
     default: return 0;
   }
@@ -85,16 +85,16 @@ function getSvgOffsetX(textAnchor) {
   switch (textAnchor) {
     case 'start': return 10;
     case 'middle': return 0;
-    case 'end': return 0;
+    case 'end': return -20;
     default: return 0;
   }
 }
 
 const Label = ({ x, y, dy, ...props }) => {
-  console.log(props)
   const phase = config.planningPhases.find(p => p.name === props.text);
   const offsetX = getSvgOffsetX(props.textAnchor);
   const offsetY = getSvgOffsetY(props.orientation);
+  console.log(props)
   return (
     <g style={{ transform: `translate(${x}px,${y}px)` }}>
       <SvgIcon type={phase.icon.replace('.svg', '')} y={offsetY} x={offsetX} />
