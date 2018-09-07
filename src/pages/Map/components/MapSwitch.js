@@ -98,7 +98,7 @@ class MapSwitch extends PureComponent {
         <MapSwitchItem>
           <SwitchLabel isActive={!checked}>Happy-Bike-Level</SwitchLabel>
           <SwitchDescription isActive={!checked}>
-            <Label light>Zustand der Radwege</Label>
+            <Label light>Wie radfreundlich sind Berlins Straßen?</Label>
           </SwitchDescription>
         </MapSwitchItem>
         <MapSwitchItem justify="center">
