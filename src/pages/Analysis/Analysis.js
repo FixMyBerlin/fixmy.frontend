@@ -31,14 +31,18 @@ const StyledMenuButton = styled(MenuButton)`
 
 const districts = [
   'Alle Bezirke anzeigen',
-  'Mitte',
+  'Charlottenburg-Wilmersdorf',
   'Friedrichshain-Kreuzberg',
-  'Tempelhof-Schöneberg',
-  'Treptow-Köpenick',
+  'Lichtenberg-Hohenschönhausen',
+  'Marzahn-Hellersdorf',
+  'Mitte',
   'Neukölln',
   'Pankow',
-  'Marzahn-Hellersdorf',
-  'Spandau'
+  'Reinickendorf',
+  'Spandau',
+  'Steglitz-Zehlendorf',
+  'Tempelhof-Schöneberg',
+  'Treptow-Köpenick'
 ];
 
 function filterByDistrict(districtName) {

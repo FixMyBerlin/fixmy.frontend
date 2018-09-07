@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import idx from 'idx';
 import styled from 'styled-components';
 import { VictoryPie } from 'victory';
@@ -67,6 +67,23 @@ function sumLengths(planningPhaseName = null) {
 }
 
 class PieChart extends PureComponent {
+
+  renderChartLabel() {
+    const lengthSum = this.props.data.reduce(sumLengths(), 0);
+    return (
+      <Fragment>
+        <ChartTitle>{this.props.data.length} Planungen</ChartTitle>
+        <ChartSubtitle>gesamte Länge: {(lengthSum / 1000).toFixed(0)} km</ChartSubtitle>
+      </Fragment>
+    );
+  }
+
+  renderNoData() {
+    return (
+      <ChartTitle>Keine Planungen vorhanden.</ChartTitle>
+    );
+  }
+
   render() {
     if (this.props.isLoading) {
       return (
@@ -95,8 +112,10 @@ class PieChart extends PureComponent {
           style={chartStyle}
         />
         <ChartInnerLabel>
-          <ChartTitle>{this.props.data.length} Planungen</ChartTitle>
-          <ChartSubtitle>gesamte Länge: {(lengthSum / 1000).toFixed(0)} km</ChartSubtitle>
+          {this.props.data.length === 0 ?
+            this.renderNoData() :
+            this.renderChartLabel()
+          }
         </ChartInnerLabel>
       </PieChartWrapper>
     );
