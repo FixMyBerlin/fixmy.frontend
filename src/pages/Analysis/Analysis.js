@@ -32,6 +32,7 @@ const AnalysisHeader = styled.div`
 
 const AnalysisControls = styled.div`
   margin: 16px 0;
+  display: ${props => (props.isVisible ? 'block' : 'none')};
 `;
 
 const StyledMenuButton = styled(MenuButton)`
@@ -87,6 +88,7 @@ class Analysis extends PureComponent {
   render() {
     const { data, isLoading, selectedDistrict, selectedPhase } = this.props;
     const filteredData = data.filter(filter(selectedDistrict, selectedPhase));
+    const hasData = filteredData.length > 0;
 
     return (
       <AnalysisWrapper>
@@ -102,11 +104,12 @@ class Analysis extends PureComponent {
               onChange={this.onDistrictChange}
               disabled={isLoading}
               value={selectedDistrict || 'all'}
+              isVisible={!isLoading}
             />
             <PieChart data={filteredData} isLoading={isLoading} />
           </Card>
 
-          <AnalysisControls>
+          <AnalysisControls isVisible={!isLoading && hasData}>
             <Select
               title="Phase filtern:"
               options={phaseOptions}

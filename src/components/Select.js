@@ -23,11 +23,16 @@ class Select extends PureComponent {
     options: [],
     onChange: () => {},
     title: false,
-    disabled: false
+    disabled: false,
+    isVisible: true
   }
 
   render() {
-    const { title, options, onChange, disabled, value } = this.props;
+    const { title, options, onChange, disabled, value, isVisible } = this.props;
+
+    if (!isVisible) {
+      return null;
+    }
 
     return (
       <SelectWrapper>

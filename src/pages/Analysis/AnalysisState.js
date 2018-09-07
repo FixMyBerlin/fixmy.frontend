@@ -13,7 +13,7 @@ const initialState = {
 };
 
 export function setDistrictFilter(selectedDistrict) {
-  return { type: SET_DISTRICT_FILTER, payload: { selectedDistrict } };
+  return { type: SET_DISTRICT_FILTER, payload: { selectedDistrict, selectedPhase: false } };
 }
 export function setPhaseFilter(selectedPhase) {
   return { type: SET_PHASE_FILTER, payload: { selectedPhase } };

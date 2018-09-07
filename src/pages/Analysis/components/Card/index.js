@@ -4,6 +4,7 @@ const Card = styled.div`
   background: #fffaed;
   padding: 16px;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
+  min-height: 200px;
 `;
 
 export default Card;

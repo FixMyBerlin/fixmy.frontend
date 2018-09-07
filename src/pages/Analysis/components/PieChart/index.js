@@ -45,9 +45,7 @@ const chartStyle = {
     fontWeight: 700,
     fontFamily: '"Open Sans", sans-serif'
   },
-  data: {
-    stroke: config.colors.interaction, strokeWidth: 1
-  }
+  data: {}
 };
 
 function sumLengths(planningPhaseName = null) {
