@@ -94,7 +94,7 @@ const Label = ({ x, y, dy, ...props }) => {
   const phase = config.planningPhases.find(p => p.name === props.text);
   const offsetX = getSvgOffsetX(props.textAnchor);
   const offsetY = getSvgOffsetY(props.orientation);
-  console.log(props)
+
   return (
     <g style={{ transform: `translate(${x}px,${y}px)` }}>
       <SvgIcon type={phase.icon.replace('.svg', '')} y={offsetY} x={offsetX} />

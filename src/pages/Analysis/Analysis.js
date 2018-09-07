@@ -53,6 +53,12 @@ const phaseOptions = [
   )
 ];
 
+const sortOptions = [
+  { value: 'likes', label: 'Likes' },
+  { value: 'length', label: 'Länge' },
+  { value: 'year', label: 'Fertigstellung' }
+];
+
 function filter(districtName, phaseName) {
   return (d) => {
     const districtVisible = !districtName ? true : d.planning_sections[0].borough.toLowerCase() === districtName.toLowerCase();
@@ -83,6 +89,11 @@ class Analysis extends PureComponent {
     const showAll = phaseValue === 'all';
     const selectedPhase = showAll ? false : phaseValue;
     this.props.setPhaseFilter(selectedPhase);
+  }
+
+  onSort = (evt) => {
+    const sortValue = idx(evt, _ => _.target.selectedOptions[0].value);
+    console.log(sortValue);
   }
 
   render() {
@@ -117,6 +128,13 @@ class Analysis extends PureComponent {
               disabled={isLoading}
               value={selectedPhase || 'all'}
             />
+            {/* <Select
+              title="Sortieren:"
+              options={sortOptions}
+              onChange={this.onSort}
+              disabled={isLoading}
+              value={sortOptions[0].value}
+            /> */}
           </AnalysisControls>
 
           <PlanningList
