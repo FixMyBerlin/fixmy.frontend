@@ -17,7 +17,7 @@ import {
   filterLayersById, getCenterFromGeom, resetMap, handleSmallStreets, intersectionLayers, smallStreetLayersWithOverlay
 } from '~/pages/Map/map-utils';
 
-const MB_STYLE_URL = `${config.map.style}`;
+const MB_STYLE_URL = `${config.map.style}?fresh=true`;
 MapboxGL.accessToken = config.map.accessToken;
 
 const StyledMap = styled.div`
@@ -191,6 +191,10 @@ class Map extends PureComponent {
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
+
+    if (config.debug) {
+      console.log(properties);
+    }
 
     if (properties) {
       const name = slugify(properties.name || '').toLowerCase();

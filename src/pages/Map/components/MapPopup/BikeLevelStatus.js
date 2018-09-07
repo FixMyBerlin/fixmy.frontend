@@ -47,6 +47,7 @@ const LevelLabel = styled.span`
 `;
 
 export default (props) => {
+  console.log(props)
   let level0 = getHBIbyProps(props.section, 'side0');
   let level1 = getHBIbyProps(props.section, 'side1');
   const isLevel0Valid = !isNaN(level0);
@@ -57,8 +58,6 @@ export default (props) => {
   const bikeLevelTotal = (level0 + level1) / 2;
   const level0Color = getHBIColorByIndex(level0);
   const level1Color = getHBIColorByIndex(level1);
-
-  console.log(isLevel0Valid, isLevel1Valid);
 
   return (
     <BikeLevelStatus {...props}>
