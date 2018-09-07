@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import DataProcessIcon from '~/images/data-process.svg';
 import { numberFormat } from '~/utils/utils';
+import { getOrientationNames } from '~/utils/hbi-utils';
 import HBISign from '~/components/HBISign';
 import Label from '~/components/Label';
 import Title from '~/components/Title';
@@ -72,6 +73,7 @@ class SectionDetails extends PureComponent {
     const { name, details } = data;
     const sideData = data.details[sideIndex];
     const hasSwitchButton = data.details && data.details.length > 1;
+    const orientationNames = getOrientationNames(sideData);
 
     if (!sideData) {
       return <div>Keine Daten vorhanden.</div>;
@@ -86,14 +88,14 @@ class SectionDetails extends PureComponent {
             <DetailSwitch
               activeSideIndex={sideIndex}
               sideIndex={0}
-              title="Westseite"
+              title={orientationNames.side0}
               side="left"
               onClick={this.onSwitchSide}
             />
             <DetailSwitch
               activeSideIndex={sideIndex}
               sideIndex={1}
-              title="Ostseite"
+              title={orientationNames.side1}
               side="right"
               onClick={this.onSwitchSide}
             />

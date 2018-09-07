@@ -17,7 +17,23 @@ export function getHBIColorByIndex(index) {
   return stop ? stop.color : '#555';
 }
 
+export function getOrientationNames(props) {
+  const orientationKey = props.orientation ? 'orientation' : 'side0_orientation';
+  if (!props[orientationKey] || props[orientationKey] === 'O') {
+    return {
+      side0: 'Ostseite',
+      side1: 'Westseite'
+    };
+  }
+
+  return {
+    side0: 'Südseite',
+    side1: 'Nordseite'
+  };
+}
+
 export default {
   getHBIbyProps,
-  getHBIColorByIndex
+  getHBIColorByIndex,
+  getOrientationNames
 };
