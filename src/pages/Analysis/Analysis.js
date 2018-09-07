@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import idx from 'idx';
 import { connect } from 'react-redux';
-import withRouter from 'react-router/withRouter';
 
-import { loadPlanningData, setDistrictFilter } from '~/pages/Analysis/AnalysisState';
+import { districts } from '~/labels';
+import { loadPlanningData, setDistrictFilter, setPhaseFilter } from '~/pages/Analysis/AnalysisState';
 import PieChart from '~/pages/Analysis/components/PieChart';
 import BigLabel from '~/components/BigLabel';
 import MenuButton from '~/components/MenuButton';
@@ -19,6 +19,11 @@ const AnalysisWrapper = styled.div`
   overflow-y: scroll;
 `;
 
+const AnalysisContent = styled.div`
+  max-width: 650px;
+  margin: 0 auto;
+`;
+
 const AnalysisHeader = styled.div`
   text-align: center;
   position: relative;
@@ -29,24 +34,27 @@ const StyledMenuButton = styled(MenuButton)`
   top: auto;
 `;
 
-const districts = [
-  'Alle Bezirke anzeigen',
-  'Charlottenburg-Wilmersdorf',
-  'Friedrichshain-Kreuzberg',
-  'Lichtenberg-Hohenschönhausen',
-  'Marzahn-Hellersdorf',
-  'Mitte',
-  'Neukölln',
-  'Pankow',
-  'Reinickendorf',
-  'Spandau',
-  'Steglitz-Zehlendorf',
-  'Tempelhof-Schöneberg',
-  'Treptow-Köpenick'
+const districtOptions = [
+  { label: 'Alle Bezirke anzeigen', value: 'all' },
+  ...districts.map(districtName =>
+    ({ label: districtName, value: districtName.toLowerCase() })
+  )
 ];
 
-function filterByDistrict(districtName) {
-  return d => d.planning_sections[0].borough.toLowerCase() === districtName.toLowerCase();
+const phaseOptions = [
+  { label: 'Alle Phasen anzeigen', value: 'all' },
+  ...config.planningPhases.map(phase =>
+    ({ label: phase.name, value: phase.id })
+  )
+];
+
+function filter(districtName, phaseName) {
+  return (d) => {
+    const districtVisible = !districtName ? true : d.planning_sections[0].borough.toLowerCase() === districtName.toLowerCase();
+    const phaseVisible = !phaseName ? true : d.phase === phaseName.toLowerCase();
+
+    return districtVisible && phaseVisible;
+  };
 }
 
 class Analysis extends PureComponent {
@@ -57,7 +65,7 @@ class Analysis extends PureComponent {
 
   onDistrictChange = (evt) => {
     const districtName = idx(evt, _ => _.target.selectedOptions[0].value);
-    const showAll = districtName.toLowerCase().includes('bezirke');
+    const showAll = districtName === 'all';
     const selectedDistrict = showAll ? false : districtName;
     const nextRoute = selectedDistrict ? `/${selectedDistrict}` : '';
 
@@ -65,32 +73,50 @@ class Analysis extends PureComponent {
     this.props.setDistrictFilter(selectedDistrict);
   }
 
+  onPhaseFilterChange = (evt) => {
+    const phaseValue = idx(evt, _ => _.target.selectedOptions[0].value);
+    const showAll = phaseValue === 'all';
+    const selectedPhase = showAll ? false : phaseValue;
+    this.props.setPhaseFilter(selectedPhase);
+  }
+
   render() {
-    const { data, isLoading, selectedDistrict } = this.props;
-    const filteredData = selectedDistrict ? data.filter(filterByDistrict(selectedDistrict)) : data;
+    const { data, isLoading, selectedDistrict, selectedPhase } = this.props;
+    const filteredData = data.filter(filter(selectedDistrict, selectedPhase));
 
     return (
       <AnalysisWrapper>
-        <AnalysisHeader>
-          <StyledMenuButton />
-          <BigLabel>Analyse</BigLabel>
-        </AnalysisHeader>
-        <Card>
+        <AnalysisContent>
+          <AnalysisHeader>
+            <StyledMenuButton />
+            <BigLabel>Analyse</BigLabel>
+          </AnalysisHeader>
+          <Card>
+            <Select
+              title="Wähle einen Bezirk:"
+              options={districtOptions}
+              onChange={this.onDistrictChange}
+              disabled={isLoading}
+              value={selectedDistrict || 'all'}
+            />
+            <PieChart data={filteredData} isLoading={isLoading} />
+          </Card>
+
           <Select
-            title="Wähle einen Bezirk:"
-            options={districts}
-            onChange={this.onDistrictChange}
+            title="Phase filtern:"
+            options={phaseOptions}
+            onChange={this.onPhaseFilterChange}
             disabled={isLoading}
-            value={selectedDistrict || 'Alle Bezirke anzeigen'}
+            value={selectedPhase || 'all'}
           />
-          <PieChart data={filteredData} isLoading={isLoading} />
-        </Card>
-        <PlanningList
-          data={filteredData}
-          isLoading={isLoading}
-          sorting={this.props.sorting}
-          filter={this.props.filter}
-        />
+
+          <PlanningList
+            data={filteredData}
+            isLoading={isLoading}
+            sorting={this.props.sorting}
+            filter={this.props.filter}
+          />
+        </AnalysisContent>
       </AnalysisWrapper>
     );
   }
@@ -100,6 +126,7 @@ export default connect(
   state => state.AnalysisState,
   dispatch => ({
     loadPlanningData: districtName => dispatch(loadPlanningData(districtName)),
-    setDistrictFilter: districtName => dispatch(setDistrictFilter(districtName))
+    setDistrictFilter: districtName => dispatch(setDistrictFilter(districtName)),
+    setPhaseFilter: districtName => dispatch(setPhaseFilter(districtName))
   })
 )(Analysis);

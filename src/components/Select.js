@@ -33,7 +33,9 @@ class Select extends PureComponent {
       <SelectWrapper>
         {title && <Label>{title}</Label>}
         <StyledSelect onChange={onChange} disabled={disabled} value={value}>
-          {options.map(o => <option key={o} value={o.toLowerCase()}>{o}</option>)}
+          {options.map(o => (
+            <option key={o.value} value={o.value}>{o.label}</option>
+          ))}
         </StyledSelect>
       </SelectWrapper>
     );

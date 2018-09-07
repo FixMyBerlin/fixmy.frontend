@@ -131,7 +131,7 @@ class PlanningListItem extends PureComponent {
   }
 
   render() {
-    const { construction_completed: constructionCompleted, photos } = this.props;
+    const { construction_completed: constructionCompleted, photos = [] } = this.props;
     const name = idx(this.props, _ => _.planning_sections[0].name);
     const length = idx(this.props, _ => _.planning_sections[0].details[0].length);
     const iconSrc = icons[this.props.phase];
