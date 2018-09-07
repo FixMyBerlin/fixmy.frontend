@@ -47,7 +47,6 @@ const LevelLabel = styled.span`
 `;
 
 export default (props) => {
-  console.log(props)
   let level0 = getHBIbyProps(props.section, 'side0');
   let level1 = getHBIbyProps(props.section, 'side1');
   const isLevel0Valid = !isNaN(level0);

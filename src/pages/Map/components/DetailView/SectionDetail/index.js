@@ -71,6 +71,7 @@ class SectionDetails extends PureComponent {
     const { sideIndex } = this.state;
     const { name, details } = data;
     const sideData = data.details[sideIndex];
+    const hasSwitchButton = data.details && data.details.length > 1;
 
     if (!sideData) {
       return <div>Keine Daten vorhanden.</div>;
@@ -80,22 +81,24 @@ class SectionDetails extends PureComponent {
 
     return (
       <React.Fragment>
-        <ButtonGroup>
-          <DetailSwitch
-            activeSideIndex={sideIndex}
-            sideIndex={0}
-            title="Westseite"
-            side="left"
-            onClick={this.onSwitchSide}
-          />
-          <DetailSwitch
-            activeSideIndex={sideIndex}
-            sideIndex={1}
-            title="Ostseite"
-            side="right"
-            onClick={this.onSwitchSide}
-          />
-        </ButtonGroup>
+        {hasSwitchButton && (
+          <ButtonGroup>
+            <DetailSwitch
+              activeSideIndex={sideIndex}
+              sideIndex={0}
+              title="Westseite"
+              side="left"
+              onClick={this.onSwitchSide}
+            />
+            <DetailSwitch
+              activeSideIndex={sideIndex}
+              sideIndex={1}
+              title="Ostseite"
+              side="right"
+              onClick={this.onSwitchSide}
+            />
+          </ButtonGroup>)
+        }
 
         <ImageSlider images={photos} />
 
