@@ -66,8 +66,13 @@ function sumLengths(planningPhaseName = null) {
   };
 }
 
-class PieChart extends PureComponent {
+function renderNoData() {
+  return (
+    <ChartTitle>Keine Planungen vorhanden.</ChartTitle>
+  );
+}
 
+class PieChart extends PureComponent {
   renderChartLabel() {
     const lengthSum = this.props.data.reduce(sumLengths(), 0);
     return (
@@ -75,12 +80,6 @@ class PieChart extends PureComponent {
         <ChartTitle>{this.props.data.length} Planungen</ChartTitle>
         <ChartSubtitle>gesamte Länge: {(lengthSum / 1000).toFixed(0)} km</ChartSubtitle>
       </Fragment>
-    );
-  }
-
-  renderNoData() {
-    return (
-      <ChartTitle>Keine Planungen vorhanden.</ChartTitle>
     );
   }
 
@@ -99,8 +98,8 @@ class PieChart extends PureComponent {
       color: planningPhase.color
     })).filter(d => d.y > 0);
 
+    const hasData = this.props.data.length > 0;
     const colorScale = chartData.map(d => d.color);
-    const lengthSum = this.props.data.reduce(sumLengths(), 0);
 
     return (
       <PieChartWrapper>
@@ -112,10 +111,7 @@ class PieChart extends PureComponent {
           style={chartStyle}
         />
         <ChartInnerLabel>
-          {this.props.data.length === 0 ?
-            this.renderNoData() :
-            this.renderChartLabel()
-          }
+          {hasData ? this.renderChartLabel() : renderNoData()}
         </ChartInnerLabel>
       </PieChartWrapper>
     );

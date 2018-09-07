@@ -19,7 +19,7 @@ class PlanningList extends PureComponent {
 
     return (
       <PlanningListWrapper>
-        <Sorter>Sortieren:</Sorter>
+        {/* <Sorter>Sortieren:</Sorter> */}
         {this.props.data.map(d => <PlanningListItem key={d.url} {...d} history={this.props.history} />)}
       </PlanningListWrapper>
     );
