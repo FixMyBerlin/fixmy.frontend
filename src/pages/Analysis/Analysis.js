@@ -30,6 +30,10 @@ const AnalysisHeader = styled.div`
   padding: 16px 0;
 `;
 
+const AnalysisControls = styled.div`
+  margin: 16px 0;
+`;
+
 const StyledMenuButton = styled(MenuButton)`
   top: auto;
 `;
@@ -102,13 +106,15 @@ class Analysis extends PureComponent {
             <PieChart data={filteredData} isLoading={isLoading} />
           </Card>
 
-          <Select
-            title="Phase filtern:"
-            options={phaseOptions}
-            onChange={this.onPhaseFilterChange}
-            disabled={isLoading}
-            value={selectedPhase || 'all'}
-          />
+          <AnalysisControls>
+            <Select
+              title="Phase filtern:"
+              options={phaseOptions}
+              onChange={this.onPhaseFilterChange}
+              disabled={isLoading}
+              value={selectedPhase || 'all'}
+            />
+          </AnalysisControls>
 
           <PlanningList
             data={filteredData}
