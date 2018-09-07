@@ -1,8 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
 import idx from 'idx';
 import styled from 'styled-components';
-import { VictoryPie } from 'victory';
+import { VictoryPie, VictoryLabel } from 'victory';
 
+import SvgIcon from '~/components/SvgIcon';
 import Text from '~/components/Text';
 
 const StyledLabel = styled(Text)`
@@ -70,6 +71,38 @@ function renderNoData() {
   );
 }
 
+function getSvgOffsetY(orientation) {
+  switch (orientation) {
+    case 'top': return -40 ;
+    case 'bottom': return -25;
+    case 'left': return -50;
+    case 'right': return -35;
+    default: return 0;
+  }
+}
+
+function getSvgOffsetX(textAnchor) {
+  switch (textAnchor) {
+    case 'start': return 10;
+    case 'middle': return 0;
+    case 'end': return 0;
+    default: return 0;
+  }
+}
+
+const Label = ({ x, y, dy, ...props }) => {
+  console.log(props)
+  const phase = config.planningPhases.find(p => p.name === props.text);
+  const offsetX = getSvgOffsetX(props.textAnchor);
+  const offsetY = getSvgOffsetY(props.orientation);
+  return (
+    <g style={{ transform: `translate(${x}px,${y}px)` }}>
+      <SvgIcon type={phase.icon.replace('.svg', '')} y={offsetY} x={offsetX} />
+      <VictoryLabel {...props} x={0} y={0} dy={0} />
+    </g>
+  );
+};
+
 class PieChart extends PureComponent {
   renderChartLabel() {
     const lengthSum = this.props.data.reduce(sumLengths(), 0);
@@ -107,6 +140,7 @@ class PieChart extends PureComponent {
           data={chartData}
           colorScale={colorScale}
           style={chartStyle}
+          labelComponent={<Label />}
         />
         <ChartInnerLabel>
           {hasData ? this.renderChartLabel() : renderNoData()}
@@ -115,5 +149,7 @@ class PieChart extends PureComponent {
     );
   }
 }
+
+
 
 export default PieChart;
