@@ -69,7 +69,7 @@ ReactDOM.render(
 
             {/* analysis pages */}
             <Route
-              path="/analyse/planungen"
+              path="/analyse/planungen/:districtName?"
               component={Analysis}
             />
 

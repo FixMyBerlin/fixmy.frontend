@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import idx from 'idx';
 import { connect } from 'react-redux';
+import withRouter from 'react-router/withRouter';
 
 import { loadPlanningData, setDistrictFilter } from '~/pages/Analysis/AnalysisState';
 import PieChart from '~/pages/Analysis/components/PieChart';
@@ -37,23 +38,32 @@ const districts = [
   'Neukölln',
   'Pankow',
   'Marzahn-Hellersdorf',
-  'Spandau',
-  'lol'
+  'Spandau'
 ];
+
+function filterByDistrict(districtName) {
+  return d => d.planning_sections[0].borough.toLowerCase() === districtName.toLowerCase();
+}
 
 class Analysis extends PureComponent {
   componentDidMount() {
-    this.props.loadPlanningData();
+    const selectedDistrict = idx(this.props, _ => _.match.params.districtName);
+    this.props.loadPlanningData(selectedDistrict);
   }
 
   onDistrictChange = (evt) => {
     const districtName = idx(evt, _ => _.target.selectedOptions[0].value);
-    this.props.setDistrictFilter(districtName);
+    const showAll = districtName.toLowerCase().includes('bezirke');
+    const selectedDistrict = showAll ? false : districtName;
+    const nextRoute = selectedDistrict ? `/${selectedDistrict}` : '';
+
+    this.props.history.push(`/analyse/planungen${nextRoute}`);
+    this.props.setDistrictFilter(selectedDistrict);
   }
 
   render() {
     const { data, isLoading, selectedDistrict } = this.props;
-    const filteredData = selectedDistrict ? data.filter(d => d.planning_sections[0].borough === selectedDistrict) : data;
+    const filteredData = selectedDistrict ? data.filter(filterByDistrict(selectedDistrict)) : data;
 
     return (
       <AnalysisWrapper>
@@ -67,6 +77,7 @@ class Analysis extends PureComponent {
             options={districts}
             onChange={this.onDistrictChange}
             disabled={isLoading}
+            value={selectedDistrict || 'Alle Bezirke anzeigen'}
           />
           <PieChart data={filteredData} isLoading={isLoading} />
         </Card>
@@ -84,7 +95,7 @@ class Analysis extends PureComponent {
 export default connect(
   state => state.AnalysisState,
   dispatch => ({
-    loadPlanningData: () => dispatch(loadPlanningData()),
+    loadPlanningData: districtName => dispatch(loadPlanningData(districtName)),
     setDistrictFilter: districtName => dispatch(setDistrictFilter(districtName))
   })
 )(Analysis);

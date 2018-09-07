@@ -27,12 +27,13 @@ class Select extends PureComponent {
   }
 
   render() {
-    const { title, options, onChange, disabled } = this.props;
+    const { title, options, onChange, disabled, value } = this.props;
+
     return (
       <SelectWrapper>
         {title && <Label>{title}</Label>}
-        <StyledSelect onChange={onChange} disabled={disabled}>
-          {options.map(o => <option key={o} value={o}>{o}</option>)}
+        <StyledSelect onChange={onChange} disabled={disabled} value={value}>
+          {options.map(o => <option key={o} value={o.toLowerCase()}>{o}</option>)}
         </StyledSelect>
       </SelectWrapper>
     );

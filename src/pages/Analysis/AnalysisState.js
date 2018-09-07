@@ -4,15 +4,23 @@ const LOAD_DATA_FAIL = 'Analysis/AnalysisState/LOAD_DATA_FAIL';
 const SET_FILTER = 'Analysis/AnalysisState/SET_FILTER';
 
 const initialState = {
-  data: null,
+  data: [],
   isLoading: true,
   sorting: null,
   selectedDistrict: false
 };
 
-export function loadPlanningData() {
+export function setDistrictFilter(selectedDistrict) {
+  return { type: SET_FILTER, payload: { selectedDistrict } };
+}
+
+export function loadPlanningData(selectedDistrict = false) {
   return async (dispatch) => {
     dispatch({ type: LOAD_DATA, payload: { isLoading: true } });
+
+    if (selectedDistrict) {
+      dispatch(setDistrictFilter(selectedDistrict));
+    }
 
     try {
       const data = await fetch('https://api.fixmyberlin.de/api/plannings?page_size=100')
@@ -23,13 +31,6 @@ export function loadPlanningData() {
       return dispatch({ type: LOAD_DATA_FAIL, payload: { isLoading: false } });
     }
   };
-}
-
-export function setDistrictFilter(districtName = '') {
-  const showAll = districtName.toLowerCase().includes('bezirke');
-  const selectedDistrict = showAll ? false : districtName;
-
-  return { type: SET_FILTER, payload: { selectedDistrict } };
 }
 
 export default function MapStateReducer(state = initialState, action = {}) {
