@@ -49,8 +49,8 @@
     ],
     "footeritems": [
       {
-        "label": "Kontakt",
-        "link": "/kontakt"
+        "label": "Presse",
+        "link": "/presse"
       },
       {
         "label": "Impressum",
@@ -183,7 +183,7 @@
   "sectionIsBeta": true,
   "planningIsBeta": true,
   "offlineMode": false,
-  "isSwitchEnabled": false,
+  "isSwitchEnabled": true,
   "debug": false,
-  "showLikeButton": false
+  "showLikeButton": true
 }
