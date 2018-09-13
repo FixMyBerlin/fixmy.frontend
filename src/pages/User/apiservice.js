@@ -1,12 +1,14 @@
 import ky from 'ky';
 
-export async function apiSignup(values, { setSubmitting, setErrors }) {
+// helper function that handles form errors and loading state
+async function handleRequest(route, { method, json }, { setSubmitting, setErrors }) {
   let response = {};
   setSubmitting(true);
 
   try {
-    response = await ky.post(`${config.apiUrl}/users/`, { json: values }).json();
+    response = await ky(route, { method, json }).json();
   } catch (e) {
+    console.log(e, route, { method, json })
     const error = await e.response.json();
     setErrors(error);
     response.error = error;
@@ -16,36 +18,28 @@ export async function apiSignup(values, { setSubmitting, setErrors }) {
   return response;
 }
 
-export async function apiLogin(values, { setSubmitting, setErrors }) {
-  let response = {};
-  setSubmitting(true);
-
-  try {
-    response = await ky.post(`${config.apiUrl}/jwt/create/`, { json: values }).json();
-  } catch (e) {
-    const error = await e.response.json();
-    setErrors(error);
-    response.error = error;
-  }
-
-  setSubmitting(false);
-  return response;
+export async function apiSignup(json, formFunctions) {
+  return handleRequest(
+    `${config.apiUrl}/users/`,
+    { method: 'POST', json },
+    formFunctions
+  );
 }
 
-export async function apiUpdate(values, { setSubmitting, setErrors }) {
-  let response = {};
-  setSubmitting(true);
+export async function apiLogin(json, formFunctions) {
+  return handleRequest(
+    `${config.apiUrl}/jwt/create/`,
+    { method: 'POST', json },
+    formFunctions
+  );
+}
 
-  try {
-    response = await ky.put(`${config.apiUrl}/users/create/`, { json: values }).json();
-  } catch (e) {
-    const error = await e.response.json();
-    setErrors(error);
-    response.error = error;
-  }
-
-  setSubmitting(false);
-  return response;
+export async function apiUpdate(json, formFunctions) {
+  return handleRequest(
+    `${config.apiUrl}/users/create/`,
+    { method: 'PUT', json },
+    formFunctions
+  );
 }
 
 export default {

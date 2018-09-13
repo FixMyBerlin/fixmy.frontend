@@ -2,14 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Field } from 'formik';
 
+import FormFieldError from '~/components/FormFieldError';
+
 const FormFieldSection = styled.div`
   margin-bottom: 1em;
-`;
-
-const FormFieldError = styled.div`
-  color: ${config.colors.error};
-  font-size: 12px;
-  margin-top: 5px;
 `;
 
 // returns the formfiled thats specified by the passed "type"

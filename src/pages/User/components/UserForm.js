@@ -6,6 +6,7 @@ import Title from '~/components/Title';
 import Form from '~/components/Form';
 import Button from '~/components/Button';
 import FormField from '~/components/FormField';
+import FormFieldError from '~/components/FormFieldError';
 
 class UserForm extends PureComponent {
   static defaultProps = {
@@ -57,7 +58,7 @@ class UserForm extends PureComponent {
                   errors={errors}
                 />
               ))}
-              {errors.server && <div>{errors.server}</div>}
+              {errors.non_field_errors && <FormFieldError>{errors.non_field_errors}</FormFieldError>}
               <Button type="submit" disabled={isSubmitting}>
                 {buttonLabel}
               </Button>

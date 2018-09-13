@@ -7,19 +7,14 @@ import history from '~/history';
 const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
 const SIGNUP = 'User/UserState/SIGNUP';
 const SIGNUP_SUCCESS = 'User/UserState/SIGNUP_SUCCESS';
-const SIGNUP_FAIL = 'User/UserState/SIGNUP_FAIL';
 const LOGIN = 'User/UserState/LOGIN';
 const LOGIN_SUCCESS = 'User/UserState/LOGIN_SUCCESS';
-const LOGIN_FAIL = 'User/UserState/LOGIN_FAIL';
 const LOGOUT = 'User/UserState/LOGOUT';
 const LOGOUT_SUCCESS = 'User/UserState/LOGOUT_SUCCESS';
-const LOGOUT_FAIL = 'User/UserState/LOGOUT_FAIL';
 const RESET_PASSWORD = 'User/UserState/RESET_PASSWORD';
 const RESET_PASSWORD_SUCCESS = 'User/UserState/RESET_PASSWORD_SUCCESS';
-const RESET_PASSWORD_FAIL = 'User/UserState/RESET_PASSWORD_FAIL';
 const UPDATE = 'User/UserState/UPDATE';
 const UPDATE_SUCCESS = 'User/UserState/UPDATE_SUCCESS';
-const UPDATE_FAIL = 'User/UserState/UPDATE_FAIL';
 
 const initialState = {
   userid: uuidv4(),
@@ -43,13 +38,10 @@ export function signup(values, formFunctions) {
 
     const data = await apiSignup(extendedValues, formFunctions);
 
-    if (data.error) {
-      return dispatch({ type: SIGNUP_FAIL });
+    if (!data.error) {
+      history.push('/anmelden');
+      dispatch({ type: SIGNUP_SUCCESS });
     }
-
-    history.push('/anmelden');
-
-    dispatch({ type: SIGNUP_SUCCESS });
   };
 }
 
@@ -64,14 +56,12 @@ export function login(values, formFunctions) {
 
     const data = await apiLogin(extendedValues, formFunctions);
 
-    if (data.error) {
-      return dispatch({ type: LOGIN_FAIL });
+    if (!data.error) {
+      set('token', data.token);
+      history.push('/');
+
+      dispatch({ type: LOGIN_SUCCESS, payload: { token: data.token } });
     }
-
-    set('token', data.token);
-    history.push('/');
-
-    dispatch({ type: LOGIN_SUCCESS, payload: { token: data.token } });
   };
 }
 
@@ -93,11 +83,9 @@ export function update(values, formFunctions) {
 
     const data = await apiUpdate(values, formFunctions);
 
-    if (data.error) {
-      return dispatch({ type: UPDATE_FAIL });
+    if (!data.error) {
+      dispatch({ type: UPDATE_SUCCESS });
     }
-
-    dispatch({ type: UPDATE_SUCCESS });
   }
 }
 
@@ -126,16 +114,12 @@ export default function MapStateReducer(state = initialState, action = {}) {
     }
     case SIGNUP:
     case SIGNUP_SUCCESS:
-    case SIGNUP_FAIL:
     case LOGIN:
     case LOGIN_SUCCESS:
-    case LOGIN_FAIL:
     case LOGOUT:
     case LOGOUT_SUCCESS:
-    case LOGOUT_FAIL:
     case RESET_PASSWORD:
     case RESET_PASSWORD_SUCCESS:
-    case RESET_PASSWORD_FAIL:
       return Object.assign({}, state, action.payload);
     default:
       return Object.assign({}, state);

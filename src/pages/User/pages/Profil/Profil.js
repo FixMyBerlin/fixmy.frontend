@@ -9,7 +9,6 @@ import { update, logout } from '~/pages/User/UserState';
 
 const formConfig = [
   { id: 'email', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' },
-  { id: 'username', value: '', type: 'text', label: 'Nutzername', placeholder: 'Nutzernamen eingeben...', validateError: 'Bitte geben Sie einen Nutzernamen an.' },
   { id: 'password', value: '', type: 'password', label: 'Passwort', placeholder: 'Passwort eingeben...', validateError: 'Bitte geben Sie Ihr Passwort an.' }
 ];
 
