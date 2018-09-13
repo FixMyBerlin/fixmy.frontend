@@ -1,7 +1,7 @@
 import uuidv4 from 'uuid/v4';
 
 import { set, remove, get } from '~/services/storage';
-import { apiSignup, apiLogin, apiUpdate, apiUser, apiVerify } from '~/pages/User/apiservice';
+import { apiSignup, apiLogin, apiUpdate, apiUser, apiVerify, apiPasswordReset } from '~/pages/User/apiservice';
 import history from '~/history';
 
 const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
@@ -124,13 +124,15 @@ export function verify() {
 }
 
 export function resetPassword(values, formFunctions) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch({ type: RESET_PASSWORD });
 
-    console.log('user password reset', values);
+    const data = await apiPasswordReset(values, formFunctions);
 
-    // ... login api call
-    dispatch({ type: RESET_PASSWORD_SUCCESS, payload: { isLoggedIn: true } });
+    if (!data.error) {
+      history.push('/');
+      dispatch({ type: RESET_PASSWORD_SUCCESS });
+    }
   };
 }
 

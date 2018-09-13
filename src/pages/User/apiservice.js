@@ -56,9 +56,15 @@ export async function apiUser(token) {
   return response;
 }
 
+export async function apiPasswordReset(json, formFunctions) {
+  return handleRequest('password/reset/', { method: 'POST', json }, formFunctions);
+}
+
 export default {
   apiSignup,
   apiLogin,
   apiUpdate,
-  apiUser
+  apiUser,
+  apiVerify,
+  apiPasswordReset
 };
