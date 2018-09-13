@@ -119,7 +119,14 @@ function detailWrapped(Component) {
       const center = getCenterFromGeom(geometry);
 
       if (center) {
-        Store.dispatch(setView({ center, zoom: 16, animate: true, pitch: 40, show3dBuildings: true, dim: true }));
+        Store.dispatch(setView({
+          center,
+          zoom: 16,
+          animate: true,
+          pitch: 40,
+          show3dBuildings: true,
+          dim: true
+        }));
       }
 
       this.setState({

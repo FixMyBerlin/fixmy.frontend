@@ -110,7 +110,7 @@ class Map extends PureComponent {
 
     if (prevProps.activeSection && !this.props.activeSection) {
       // back button triggered
-      resetMap();
+      resetMap({ zoom: this.map.getZoom() });
     }
 
     return this.map.resize();

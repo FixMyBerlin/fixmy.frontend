@@ -222,11 +222,25 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
   );
 }
 
-export function resetMap() {
+export function resetMap({ zoom = null }) {
   Store.dispatch(AppActions.setActiveSection(null));
   Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
-  Store.dispatch(MapActions.setView({ show3dBuildings: false, dim: false, pitch: 0, bearing: 0, animate: true, center: null }));
+
+  const nextMapView = {
+    show3dBuildings: false,
+    dim: false,
+    pitch: 0,
+    bearing: 0,
+    animate: true,
+    center: null
+  };
+
+  if (zoom) {
+    nextMapView.zoom = zoom;
+  }
+
+  Store.dispatch(MapActions.setView(nextMapView));
 }
 
 export function getCenterFromGeom(geometry, defaultCenter = null) {
