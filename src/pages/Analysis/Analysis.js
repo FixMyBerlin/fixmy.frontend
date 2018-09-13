@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import idx from 'idx';
 import { connect } from 'react-redux';
 
+import { sortByKey } from '~/utils/utils';
 import { districts } from '~/labels';
-import { loadPlanningData, setDistrictFilter, setPhaseFilter } from '~/pages/Analysis/AnalysisState';
+import { loadPlanningData, setDistrictFilter, setPhaseFilter, setSort } from '~/pages/Analysis/AnalysisState';
 import PieChart from '~/pages/Analysis/components/PieChart';
 import BigLabel from '~/components/BigLabel';
 import MenuButton from '~/components/MenuButton';
@@ -32,7 +33,8 @@ const AnalysisHeader = styled.div`
 
 const AnalysisControls = styled.div`
   margin: 16px 0;
-  display: ${props => (props.isVisible ? 'block' : 'none')};
+  display: ${props => (props.isVisible ? 'flex' : 'none')};
+  justify-content: space-between;
 `;
 
 const StyledMenuButton = styled(MenuButton)`
@@ -56,7 +58,7 @@ const phaseOptions = [
 const sortOptions = [
   { value: 'likes', label: 'Likes' },
   { value: 'length', label: 'Länge' },
-  { value: 'year', label: 'Fertigstellung' }
+  { value: 'construction_completed', label: 'Fertigstellung' }
 ];
 
 function filter(districtName, phaseName) {
@@ -93,13 +95,14 @@ class Analysis extends PureComponent {
 
   onSort = (evt) => {
     const sortValue = idx(evt, _ => _.target.selectedOptions[0].value);
-    console.log(sortValue);
+    this.props.setSort(sortValue);
   }
 
   render() {
-    const { data, isLoading, selectedDistrict, selectedPhase } = this.props;
+    const { data, isLoading, selectedDistrict, selectedPhase, selectedSort } = this.props;
     const filteredData = data.filter(filter(selectedDistrict, selectedPhase));
     const hasData = filteredData.length > 0;
+    const sortedData = filteredData.sort(sortByKey(selectedSort));
 
     return (
       <AnalysisWrapper>
@@ -128,17 +131,17 @@ class Analysis extends PureComponent {
               disabled={isLoading}
               value={selectedPhase || 'all'}
             />
-            {/* <Select
+            <Select
               title="Sortieren:"
               options={sortOptions}
               onChange={this.onSort}
               disabled={isLoading}
-              value={sortOptions[0].value}
-            /> */}
+              value={selectedSort || 'likes'}
+            />
           </AnalysisControls>
 
           <PlanningList
-            data={filteredData}
+            data={sortedData}
             isLoading={isLoading}
             sorting={this.props.sorting}
             filter={this.props.filter}
@@ -154,6 +157,7 @@ export default connect(
   dispatch => ({
     loadPlanningData: districtName => dispatch(loadPlanningData(districtName)),
     setDistrictFilter: districtName => dispatch(setDistrictFilter(districtName)),
-    setPhaseFilter: districtName => dispatch(setPhaseFilter(districtName))
+    setPhaseFilter: districtName => dispatch(setPhaseFilter(districtName)),
+    setSort: sort => dispatch(setSort(sort))
   })
 )(Analysis);

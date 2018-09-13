@@ -35,9 +35,22 @@ export function byKey(arr = [], key = 'id') {
   }, {});
 }
 
+export function sortByKey(key = 'id', isAsc = false) {
+  return (a, b) => {
+    if (a[key] < b[key]) {
+      return isAsc ? 1 : -1;
+    } else if (a[key] > b[key]) {
+      return isAsc ? -1 : 1;
+    }
+
+    return 0;
+  };
+}
+
 export default {
   numberFormat,
   trackEvent,
   log,
-  byKey
+  byKey,
+  sortByKey
 };
