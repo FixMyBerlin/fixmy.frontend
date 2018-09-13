@@ -1,4 +1,6 @@
 import uuidv4 from 'uuid/v4';
+
+import { set, remove, get } from '~/services/storage';
 import { apiSignup, apiLogin, apiUpdate } from '~/pages/User/apiservice';
 import history from '~/history';
 
@@ -19,10 +21,12 @@ const UPDATE = 'User/UserState/UPDATE';
 const UPDATE_SUCCESS = 'User/UserState/UPDATE_SUCCESS';
 const UPDATE_FAIL = 'User/UserState/UPDATE_FAIL';
 
+console.log(get('token'))
+
 const initialState = {
   userid: uuidv4(),
   hbi_values: config.hbi.map(d => d.value),
-  token: false
+  token: get('token')
 };
 
 // updates custome hbi config values
@@ -56,6 +60,7 @@ export function login(values, formFunctions) {
       return dispatch({ type: LOGIN_FAIL });
     }
 
+    set('token', data.token);
     history.push('/');
 
     dispatch({ type: LOGIN_SUCCESS, payload: { token: data.token } });
@@ -65,6 +70,9 @@ export function login(values, formFunctions) {
 export function logout() {
   return (dispatch) => {
     dispatch({ type: LOGOUT });
+
+    remove('token');
+    history.push('/');
 
     // ... logout api call
     dispatch({ type: LOGOUT_SUCCESS, payload: { token: false } });

@@ -49,9 +49,9 @@ class App extends PureComponent {
               {/* user pages */}
               <Route path="/registrieren" render={() => <Signup />} />
               <Route path="/anmelden" render={() => <Login />} />
-              <PrivateRoute path="/profil" token={this.props.token} component={Profil} />
               <Route path="/passwort-vergessen" render={() => <PasswordReset />} />
               <Route path="/email-verification" render={() => <EmailVerification />} />
+              <PrivateRoute path="/profil" token={this.props.token} component={Profil} />
 
               {/* map pages */}
               <Route
