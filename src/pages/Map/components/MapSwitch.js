@@ -7,13 +7,14 @@ import { media } from '~/utils/style-utils';
 import BikeIcon from '~/images/bike.svg';
 import PylonIcon from '~/images/pylon.svg';
 import Label from '~/components/Label';
+import SvgIcon from '~/components/SvgIcon';
 
 const MapSwitchWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  max-width: 400px;
+  max-width: 550px;
   margin: 0 auto;
   height: 75px;
   opacity: ${config.isSwitchEnabled ? 1 : 0.4};
@@ -31,6 +32,11 @@ const MapSwitchItem = styled.div`
   flex-direction: column;
   width: 33.3%;
   text-align: center;
+  position: relative;
+`;
+
+const MapSwitchItemRight = styled(MapSwitchItem)`
+  text-align: left;
 `;
 
 const Switch = styled(ToggleSwitch)`
@@ -84,6 +90,13 @@ const SwitchDescription = styled.div`
   user-select: none;
 `;
 
+const VorlaeufigIcon = styled(SvgIcon)`
+  position: absolute;
+  top: -35px;
+  left: 25px;
+  transform: rotate(-5deg);
+`;
+
 class MapSwitch extends PureComponent {
   handleChange = checked => () => {
     const to = checked ? '/zustand' : '/planungen';
@@ -91,27 +104,32 @@ class MapSwitch extends PureComponent {
   }
 
   render() {
-    const checked = this.props.match.url === '/planungen';
+    const isPlanningView = this.props.match.url === '/planungen';
 
     return (
       <MapSwitchWrapper>
         <MapSwitchItem>
-          <SwitchLabel isActive={!checked}>Happy-Bike-Level</SwitchLabel>
-          <SwitchDescription isActive={!checked}>
+          {!isPlanningView && <VorlaeufigIcon type="vorlaeufig" />}
+          <SwitchLabel isActive={!isPlanningView}>Happy-Bike-Level</SwitchLabel>
+          <SwitchDescription isActive={!isPlanningView}>
             <Label light>Wie radfreundlich sind Berlins Straßen?</Label>
           </SwitchDescription>
         </MapSwitchItem>
         <MapSwitchItem justify="center">
-          <Switch on={checked} onClick={this.handleChange(checked)} enabled={config.isSwitchEnabled}>
-            { checked ? <PylonIcon /> : <BikeIcon /> }
+          <Switch
+            on={isPlanningView}
+            onClick={this.handleChange(isPlanningView)}
+            enabled={config.isSwitchEnabled}
+          >
+            {isPlanningView ? <PylonIcon /> : <BikeIcon />}
           </Switch>
         </MapSwitchItem>
-        <MapSwitchItem>
-          <SwitchLabel isActive={checked}>Planung</SwitchLabel>
-          <SwitchDescription isActive={checked}>
+        <MapSwitchItemRight>
+          <SwitchLabel isActive={isPlanningView}>Planung</SwitchLabel>
+          <SwitchDescription isActive={isPlanningView}>
             <Label light>Das plant die Stadt</Label>
           </SwitchDescription>
-        </MapSwitchItem>
+        </MapSwitchItemRight>
       </MapSwitchWrapper>
     );
   }
