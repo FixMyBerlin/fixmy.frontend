@@ -109,7 +109,7 @@ class SectionDetails extends PureComponent {
         <ImageSlider images={photos} />
 
         <HBISignWrapper>
-          <HBISign hbi={1} />
+          <HBISign hbi={sideData.happy_bike_index} />
           <Label margin="10px 0 3px 0">Happy-Bike-Level</Label>
           <Label light>(max 10,0)</Label>
         </HBISignWrapper>
@@ -124,7 +124,7 @@ class SectionDetails extends PureComponent {
             <div>20% kein Radweg vorhanden</div>
 
             <div>Art der Straße: Hauptstraße</div>
-            <div>Tempolimit: <strong>{sideData.speed_limit}km/h</strong></div>
+            <div>Tempolimit: <strong>{sideData.speed_limit} km/h</strong></div>
             <div>KFZ pro Tag: {numberFormat(sideData.daily_traffic)}</div>
           </InfoSection>
 
