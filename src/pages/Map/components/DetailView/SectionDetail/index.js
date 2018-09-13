@@ -144,7 +144,7 @@ class SectionDetails extends PureComponent {
             Wie wird der Happy-Bike-Level berechnet?
           </DescriptionLink>
         </DetailInfoWrapper>
-        <FeedbackForm />
+        {config.showFeedbackForm && <FeedbackForm />}
       </React.Fragment>
     );
   }

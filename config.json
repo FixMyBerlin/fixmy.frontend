@@ -192,5 +192,6 @@
   "offlineMode": false,
   "isSwitchEnabled": true,
   "debug": false,
-  "showLikeButton": true
+  "showLikeButton": true,
+  "showFeedBackForm": false
 }
