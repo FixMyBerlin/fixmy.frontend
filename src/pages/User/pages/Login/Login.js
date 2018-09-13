@@ -9,12 +9,11 @@ import { login } from '~/pages/User/UserState';
 
 const StyledLink = styled(Link)`
   margin-top: 16px;
-  display: inline-block;
+  display: block;
 `;
 
 const formConfig = [
   { id: 'email', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' },
-  { id: 'username', value: '', type: 'text', label: 'Nutzername', placeholder: 'Nutzernamen eingeben...', validateError: 'Bitte geben Sie einen Nutzernamen an.' },
   { id: 'password', value: '', type: 'password', label: 'Passwort', placeholder: 'Passwort eingeben...', validateError: 'Bitte geben Sie Ihr Passwort an.' }
 ];
 
@@ -34,6 +33,9 @@ class Login extends PureComponent {
         />
         <StyledLink to="/password-reset">
           Passwort vergessen?
+        </StyledLink>
+        <StyledLink to="/registrieren">
+          Ich habe noch keinen einen Account
         </StyledLink>
       </ContentPageWrapper>
     );

@@ -2,8 +2,6 @@ import store from 'store/dist/store.modern';
 
 const PREFIX = 'fixmy:';
 
-window.store = store;
-
 export function set(key, data) {
   store.set(`${PREFIX}${key}`, data);
 }

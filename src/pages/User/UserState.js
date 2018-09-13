@@ -21,8 +21,6 @@ const UPDATE = 'User/UserState/UPDATE';
 const UPDATE_SUCCESS = 'User/UserState/UPDATE_SUCCESS';
 const UPDATE_FAIL = 'User/UserState/UPDATE_FAIL';
 
-console.log(get('token'))
-
 const initialState = {
   userid: uuidv4(),
   hbi_values: config.hbi.map(d => d.value),
@@ -38,7 +36,12 @@ export function signup(values, formFunctions) {
   return async (dispatch) => {
     dispatch({ type: SIGNUP });
 
-    const data = await apiSignup(values, formFunctions);
+    const extendedValues = {
+      ...values,
+      username: values.email
+    };
+
+    const data = await apiSignup(extendedValues, formFunctions);
 
     if (data.error) {
       return dispatch({ type: SIGNUP_FAIL });
@@ -54,7 +57,12 @@ export function login(values, formFunctions) {
   return async (dispatch) => {
     dispatch({ type: LOGIN });
 
-    const data = await apiLogin(values, formFunctions);
+    const extendedValues = {
+      ...values,
+      username: values.email
+    };
+
+    const data = await apiLogin(extendedValues, formFunctions);
 
     if (data.error) {
       return dispatch({ type: LOGIN_FAIL });
@@ -74,7 +82,7 @@ export function logout() {
     remove('token');
     history.push('/');
 
-    // ... logout api call
+    // ... logout api call?
     dispatch({ type: LOGOUT_SUCCESS, payload: { token: false } });
   };
 }

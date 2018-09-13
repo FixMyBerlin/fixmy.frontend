@@ -9,7 +9,7 @@ export const PrivateRoute = ({ component: Component, token = false, ...rest }) =
       token ? <Component {...props} /> : (
         <Redirect
           to={{
-            pathname: 'anmelden',
+            pathname: 'registrieren',
             state: { from: props.location }
           }}
         />

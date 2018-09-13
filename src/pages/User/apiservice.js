@@ -1,14 +1,15 @@
 import ky from 'ky';
 
 export async function apiSignup(values, { setSubmitting, setErrors }) {
-  let response = null;
+  let response = {};
   setSubmitting(true);
 
   try {
     response = await ky.post(`${config.apiUrl}/users/`, { json: values }).json();
   } catch (e) {
-    response = await e.response.json();
-    setErrors(response);
+    const error = await e.response.json();
+    setErrors(error);
+    response.error = error;
   }
 
   setSubmitting(false);
@@ -16,14 +17,15 @@ export async function apiSignup(values, { setSubmitting, setErrors }) {
 }
 
 export async function apiLogin(values, { setSubmitting, setErrors }) {
-  let response = null;
+  let response = {};
   setSubmitting(true);
 
   try {
     response = await ky.post(`${config.apiUrl}/jwt/create/`, { json: values }).json();
   } catch (e) {
-    response = await e.response.json();
-    setErrors(response);
+    const error = await e.response.json();
+    setErrors(error);
+    response.error = error;
   }
 
   setSubmitting(false);
@@ -31,14 +33,15 @@ export async function apiLogin(values, { setSubmitting, setErrors }) {
 }
 
 export async function apiUpdate(values, { setSubmitting, setErrors }) {
-  let response = null;
+  let response = {};
   setSubmitting(true);
 
   try {
     response = await ky.put(`${config.apiUrl}/users/create/`, { json: values }).json();
   } catch (e) {
-    response = await e.response.json();
-    setErrors(response);
+    const error = await e.response.json();
+    setErrors(error);
+    response.error = error;
   }
 
   setSubmitting(false);
