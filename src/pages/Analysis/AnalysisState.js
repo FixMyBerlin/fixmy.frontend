@@ -28,7 +28,7 @@ export function loadPlanningData(selectedDistrict = false) {
     }
 
     try {
-      const data = await fetch('https://api.fixmyberlin.de/api/plannings?page_size=100')
+      const data = await fetch(`${config.apiUrl}/plannings?page_size=300`)
         .then(r => r.json())
         .then(json => json.results);
       return dispatch({ type: LOAD_DATA_SUCCESS, payload: { data, isLoading: false } });

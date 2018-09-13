@@ -59,7 +59,7 @@ export function loadPlanningData() {
       return false;
     }
 
-    const planningData = await fetch('https://api.fixmyberlin.de/api/plannings?page_size=200').then(r => r.json());
+    const planningData = await fetch(`${config.apiUrl}/plannings?page_size=200`).then(r => r.json());
     return dispatch({ type: SET_PLANNING_DATA, payload: { planningData } });
   };
 }
