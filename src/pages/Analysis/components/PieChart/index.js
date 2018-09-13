@@ -141,7 +141,7 @@ class PieChart extends PureComponent {
           colorScale={colorScale}
           style={chartStyle}
           labelComponent={<Label />}
-          dataComponent={<Slice active={Math.random() > .6}/>}
+          dataComponent={<Slice active={Math.random() > 0.6} />}
         />
         <ChartInnerLabel>
           {hasData ? this.renderChartLabel() : renderNoData()}
@@ -150,7 +150,5 @@ class PieChart extends PureComponent {
     );
   }
 }
-
-
 
 export default PieChart;

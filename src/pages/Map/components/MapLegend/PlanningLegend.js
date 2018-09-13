@@ -1,6 +1,5 @@
 /* eslint import/no-dynamic-require: 0, global-require: 0 */
 import React from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import ConceptIcon from '~/images/planning-icons/konzept.svg';

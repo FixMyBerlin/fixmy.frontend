@@ -165,7 +165,7 @@ class PlanningListItem extends PureComponent {
         </ItemContent>
         {this.state.isExpanded && (
           <Expansion>
-            <img src={photo.src} />
+            <img src={photo.src} alt={this.props.title} />
             <Copyright>{photo.copyright}</Copyright>
             {id && <MapButton onClick={this.onClick}>Zur Karte</MapButton>}
           </Expansion>

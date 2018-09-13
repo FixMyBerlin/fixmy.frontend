@@ -135,7 +135,7 @@ export function colorizePlanningLines(map, filter) {
   );
 }
 
-function getHbiExpression(sideKey, rs, rv) {
+function getHbiExpression(sideKey) {
   // formula:
   // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)
   // const securityExpr = ['*', ['-', ['to-number', ['get', `${sideKey}safety`], -1000], rs], 1.6];

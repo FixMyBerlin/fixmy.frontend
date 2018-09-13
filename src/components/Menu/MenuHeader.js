@@ -52,5 +52,5 @@ export default (props) => {
         <MenuCloseButton />
       </MenuHeaderContainer>
     </MenuHeader>
-  )
+  );
 };
