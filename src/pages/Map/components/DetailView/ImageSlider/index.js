@@ -74,6 +74,17 @@ const PlaceholderLabel = styled.div`
   text-align: center;
 `;
 
+function renderImage(image) {
+  const showPlaceholderLabel = image.src.includes('Platzhalter') || image.src.includes('emil-bruckner');
+  return (
+    <Slide key={`SliderImage_${image.src}`}>
+      <SliderImage src={image.src} alt={image.copyright} />
+      {showPlaceholderLabel && <PlaceholderLabel>Noch kein Bild vorhanden</PlaceholderLabel>}
+      {image.copyright && <ImageSource>{image.copyright}</ImageSource>}
+    </Slide>
+  );
+}
+
 class ImageSlider extends PureComponent {
   static propTypes = {
     images: PropTypes.arrayOf(PropTypes.object)
@@ -89,13 +100,7 @@ class ImageSlider extends PureComponent {
         dots
         arrows={false}
       >
-        {this.props.images.map((image, i) => (
-          <Slide key={`SliderImage_${i}`}>
-            <SliderImage src={image.src} alt={image.copyright} />
-            {image.src.includes('Platzhalter') && <PlaceholderLabel>Noch kein Bild vorhanden</PlaceholderLabel>}
-            {image.copyright && <ImageSource>{image.copyright}</ImageSource>}
-          </Slide>
-        ))}
+        {this.props.images.map(renderImage)}
       </StyledSlider>
     );
   }
