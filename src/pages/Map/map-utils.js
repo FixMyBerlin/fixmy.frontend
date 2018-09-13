@@ -64,28 +64,11 @@ export function filterLayersById(map, id) {
     standardLayers.forEach(layerName =>
       map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter)
     );
+
+    smallStreetLayers.forEach(layerName =>
+      map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter)
+    );
   }
-}
-
-export function handleSmallStreets(map) {
-  const VisibilityFilter = ['case',
-    ['>=', ['number', ['get', 'id']], 9000], 0,
-    1
-  ];
-
-  const VisibilityFilterSmall = ['case',
-    ['<', ['number', ['get', 'id']], 9000], 0,
-    1
-  ];
-
-  standardLayersWithOverlay.forEach(layerName =>
-    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter)
-  );
-
-  // always hide all features with id > 9000 for small street layers
-  smallStreetLayersWithOverlay.forEach(layerName =>
-    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilterSmall)
-  );
 }
 
 function setMapFilter(map, filter) {
@@ -211,6 +194,10 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
     map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i])
   );
 
+  smallStreetLayers.forEach((layerName, i) =>
+    map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i])
+  );
+
   const lineOpacityRules = [
     getHbiFilterRules(hbiExprCenter, hbiFilter),
     getHbiFilterRules(hbiExprSide0, hbiFilter),
@@ -218,6 +205,10 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
   ];
 
   standardLayers.forEach((layerName, i) =>
+    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i])
+  );
+
+  smallStreetLayers.forEach((layerName, i) =>
     map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i])
   );
 }
