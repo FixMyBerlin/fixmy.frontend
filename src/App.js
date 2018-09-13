@@ -17,6 +17,7 @@ import Signup from '~/pages/User/pages/Signup';
 import Profil from '~/pages/User/pages/Profil';
 import PasswordReset from '~/pages/User/pages/PasswordReset';
 import EmailVerification from '~/pages/User/pages/EmailVerification';
+import { verify } from '~/pages/User/UserState';
 
 const AppContent = styled.div`
   width: 100%;
@@ -29,6 +30,10 @@ const AppWrapper = styled.div`
 `;
 
 class App extends PureComponent {
+  componentDidMount() {
+    this.props.dispatch(verify());
+  }
+
   render() {
     return (
       <Router history={history}>
@@ -38,30 +43,29 @@ class App extends PureComponent {
             <Switch>
               <Route exact path="/" component={Home} />
 
-              {/* standard markdown pages */}
-              <Route path="/info" render={() => <Markdown page="about" />} />
-              <Route path="/kontakt" render={() => <Markdown page="contact" />} />
-              <Route path="/datenschutz" render={() => <Markdown page="privacy" />} />
-              <Route path="/impressum" render={() => <Markdown page="imprint" />} />
-              <Route path="/presse" render={() => <Markdown page="press" />} />
-              <Route path="/faq" render={() => <Markdown page="faq" />} />
+              {
+                /* standard markdown pages */
+                config.staticpages.map(page =>
+                  <Route key={page} path={page.route} render={() => <Markdown page={page.key} />} />
+                )
+              }
 
               {/* user pages */}
-              <Route path="/registrieren" render={() => <Signup />} />
-              <Route path="/anmelden" render={() => <Login />} />
-              <Route path="/passwort-vergessen" render={() => <PasswordReset />} />
-              <Route path="/email-verification" render={() => <EmailVerification />} />
-              <PrivateRoute path="/profil" token={this.props.token} component={Profil} />
+              <Route path={config.routes.signup} component={Signup} />
+              <Route path={config.routes.login} component={Login} />
+              <Route path={config.routes.passwordReset} component={PasswordReset} />
+              <Route path={config.routes.emailVerification} component={EmailVerification} />
+              <PrivateRoute path={config.routes.profile} token={this.props.token} component={Profil} />
 
               {/* map pages */}
               <Route
-                path="(/zustand|/planungen|/my-hbi)"
+                path={`(${config.routes.status}|${config.routes.plannings}|/my-hbi)`}
                 component={MapView}
               />
 
               {/* analysis pages */}
               <Route
-                path="/analyse/planungen/:districtName?"
+                path={`${config.routes.analyse}/planungen/:districtName?`}
                 component={Analysis}
               />
 

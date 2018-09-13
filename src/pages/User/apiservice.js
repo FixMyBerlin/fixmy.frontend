@@ -29,12 +29,25 @@ export async function apiUpdate(json, formFunctions) {
   return handleRequest('users/create/', { method: 'PUT', json }, formFunctions);
 }
 
+export async function apiVerify(token) {
+  let response = {};
+
+  try {
+    response = await ky.post(`${config.apiUrl}/jwt/verify/`, { json: { token } }).json();
+  } catch (e) {
+    const error = await e.response.json();
+    response.error = error;
+  }
+
+  return response;
+}
+
 export async function apiUser(token) {
   let response = {};
 
   try {
     const headers = { Authorization: `JWT ${token}` };
-    response = await ky.get(`${config.apiUrl}/users/create/`, { headers }).json();
+    response = await ky.get(`${config.apiUrl}/users/me/`, { headers }).json();
   } catch (e) {
     const error = await e.response.json();
     response.error = error;

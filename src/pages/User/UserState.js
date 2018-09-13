@@ -1,7 +1,7 @@
 import uuidv4 from 'uuid/v4';
 
 import { set, remove, get } from '~/services/storage';
-import { apiSignup, apiLogin, apiUpdate, apiUser } from '~/pages/User/apiservice';
+import { apiSignup, apiLogin, apiUpdate, apiUser, apiVerify } from '~/pages/User/apiservice';
 import history from '~/history';
 
 const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
@@ -15,6 +15,8 @@ const RESET_PASSWORD = 'User/UserState/RESET_PASSWORD';
 const RESET_PASSWORD_SUCCESS = 'User/UserState/RESET_PASSWORD_SUCCESS';
 const UPDATE = 'User/UserState/UPDATE';
 const UPDATE_SUCCESS = 'User/UserState/UPDATE_SUCCESS';
+const VERIFY = 'User/UserState/VERIFY';
+const VERIFY_SUCCESS = 'User/UserState/VERIFY_SUCCESS';
 
 const initialState = {
   userid: uuidv4(),
@@ -98,6 +100,25 @@ export function profile() {
 
     if (!data.error) {
       dispatch({ type: UPDATE_SUCCESS });
+    }
+  };
+}
+
+// when token is not valid anymore we reset the token
+export function verify() {
+  return async (dispatch, getState) => {
+    dispatch({ type: VERIFY });
+
+    const token = getState().UserState.token;
+    if (!token) {
+      return false;
+    }
+
+    const data = await apiVerify(token);
+
+    if (data.error) {
+      remove('token');
+      dispatch({ type: VERIFY_SUCCESS, payload: { token: false } });
     }
   };
 }

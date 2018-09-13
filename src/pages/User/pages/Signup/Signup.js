@@ -32,7 +32,7 @@ class Signup extends PureComponent {
           formConfig={formConfig}
           onSubmit={this.onSubmit}
         />
-        <StyledLink to="/anmelden">
+        <StyledLink to={config.routes.login}>
           Ich habe bereits einen Account
         </StyledLink>
       </ContentPageWrapper>

@@ -69,26 +69,41 @@
       }
     ]
   },
-  "about": {
-    "markdownSource": "markdown/about.md"
-  },
-  "contact": {
-    "markdownSource": "markdown/contact.md"
-  },
-  "privacy": {
-    "markdownSource": "markdown/privacy.md"
-  },
-  "imprint": {
-    "markdownSource": "markdown/imprint.md"
-  },
-  "faq": {
-    "markdownSource": "markdown/faq.md"
-  },
-  "press": {
-    "markdownSource": "markdown/press.md"
-  },
-  "nomatch": {
-    "markdownSource": "/markdown/nomatch.md"
+  "staticpages": [
+    {
+      "key": "about",
+      "route": "/info"
+    },
+    {
+      "key": "contact",
+      "route": "/kontakt"
+    },
+    {
+      "key": "privacy",
+      "route": "/datenschutz"
+    },
+    {
+      "key": "imprint",
+      "route": "/impressum"
+    },
+    {
+      "key": "press",
+      "route": "/presse"
+    },
+    {
+      "key": "faq",
+      "route": "/faq"
+    }
+  ],
+  "routes": {
+    "plannings": "/planungen",
+    "status": "/zustand",
+    "analyse": "/analyse",
+    "signup": "/registrieren",
+    "login": "/anmelden",
+    "passwordReset": "/passwort-vergessen",
+    "emailVerification": "/email-verification",
+    "profile": "/profil"
   },
   "hbi": [
     { "label": "Geschwindgkeit", "type": "speed", "value": 5, "min": 0, "max": 10 },

@@ -20,13 +20,8 @@ class MarkdownPage extends PureComponent {
   }
 
   async loadContent() {
-    const pageConfig = config[this.props.page];
-
-    if (!pageConfig) {
-      return false;
-    }
-
-    const content = await fetch(pageConfig.markdownSource).then(r => r.text());
+    const { page } = this.props;
+    const content = await fetch(`markdown/${page}.md`).then(r => r.text());
     return this.setState({ content });
   }
 
