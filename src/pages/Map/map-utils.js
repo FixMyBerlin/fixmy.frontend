@@ -1,5 +1,4 @@
 /* eslint no-param-reassign: 0 */
-
 import turfAlong from '@turf/along';
 import turfLength from '@turf/length';
 import { lineString as turfLineString } from '@turf/helpers';
@@ -258,7 +257,6 @@ export async function getGeoLocation() {
     }
   });
 }
-
 
 export default {
   setView,

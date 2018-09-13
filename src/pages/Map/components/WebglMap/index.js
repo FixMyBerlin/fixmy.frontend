@@ -139,6 +139,7 @@ class Map extends PureComponent {
 
   handleLoad = () => {
     this.map.on('click', config.map.layers.bgLayer, this.handleClick);
+    this.map.on('click', config.map.layers.intersectionsOverlay, this.handleIntersectionClick);
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
 
@@ -219,6 +220,20 @@ class Map extends PureComponent {
     }
 
     this.updatePopupPos(center);
+  }
+
+  handleIntersectionClick = (evt) => {
+    Store.dispatch(MapActions.setPopupData({ isIntersection: true }));
+    Store.dispatch(MapActions.setPopupVisible(true));
+    Store.dispatch(AppActions.setActiveSection(1));
+    Store.dispatch(MapActions.setView({
+      center: evt.lngLat,
+      animate: true,
+      zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
+    }));
+
+    this.handleMove();
+    this.updatePopupPos(evt.lngLat);
   }
 
   handleMarkerClick = (evt, data) => {

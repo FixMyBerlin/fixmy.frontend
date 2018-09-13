@@ -95,6 +95,7 @@ const VorlaeufigIcon = styled(SvgIcon)`
   top: -35px;
   left: 25px;
   transform: rotate(-5deg);
+  z-index: 999;
 `;
 
 class MapSwitch extends PureComponent {

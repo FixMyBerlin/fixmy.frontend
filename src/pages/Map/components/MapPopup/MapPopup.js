@@ -70,6 +70,13 @@ const BraceWrapper = styled.div`
   `}
 `;
 
+const IntersectionContent = styled.div`
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  min-height: 80px;
+`;
+
 const closePopup = () => {
   Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
@@ -84,6 +91,28 @@ class MapPopupComponent extends PureComponent {
     closePopup();
   }
 
+  renderIntersection() {
+    return (
+      <MapPopup className={this.props.className} style={this.props.style}>
+        <CloseBtn />
+        <MapPopupLocation onClick={this.onDetailClick}>
+          <StyledPinIcon />
+          <div>
+            <BigLabel uppercase>Kreuzung</BigLabel>
+          </div>
+        </MapPopupLocation>
+        <IntersectionContent>
+          <Label>
+            Zu den Kreuzungen gibt es noch keine Informationen
+          </Label>
+        </IntersectionContent>
+        <BraceWrapper>
+          <Brace type={this.props.activeView} />
+        </BraceWrapper>
+      </MapPopup>
+    );
+  }
+
   render() {
     const { data, displayPopup, activeView } = this.props;
 
@@ -93,6 +122,11 @@ class MapPopupComponent extends PureComponent {
 
     const isPlaningView = activeView === 'planungen';
     const isStatus = activeView === 'zustand';
+    const isIntersection = data.isIntersection;
+
+    if (isIntersection) {
+      return this.renderIntersection();
+    }
 
     return (
       <MapPopup className={this.props.className} style={this.props.style}>
