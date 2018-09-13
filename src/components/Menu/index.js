@@ -10,7 +10,7 @@ class Menu extends PureComponent {
   render() {
     return (
       <MenuWrapper isActive={this.props.isMenuOpen}>
-        <MenuHeader />
+        <MenuHeader token={this.props.token} />
         <Navigation />
         <MenuFooter />
       </MenuWrapper>
@@ -18,4 +18,7 @@ class Menu extends PureComponent {
   }
 }
 
-export default connect(state => state.AppState)(Menu);
+export default connect(state => ({
+  ...state.AppState,
+  token: state.UserState.token
+}))(Menu);

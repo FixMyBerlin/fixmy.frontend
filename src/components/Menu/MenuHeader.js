@@ -38,14 +38,19 @@ const AccountLink = styled(NavLink).attrs({
   }
 `;
 
-export default () => (
-  <MenuHeader>
-    <MenuHeaderContainer>
-      <AccountLink to="login" onClick={() => Store.dispatch(toggle())}>
-        <AccountIcon />
-        Anmelden
-      </AccountLink>
-      <MenuCloseButton />
-    </MenuHeaderContainer>
-  </MenuHeader>
-);
+export default (props) => {
+  const profileLink = props.token ? 'profil' : 'anmelden';
+  const profileLabel = props.token ? 'Zum Profil' : 'Anmelden';
+
+  return (
+    <MenuHeader>
+      <MenuHeaderContainer>
+        <AccountLink to={profileLink} onClick={() => Store.dispatch(toggle())}>
+          <AccountIcon />
+          {profileLabel}
+        </AccountLink>
+        <MenuCloseButton />
+      </MenuHeaderContainer>
+    </MenuHeader>
+  )
+};

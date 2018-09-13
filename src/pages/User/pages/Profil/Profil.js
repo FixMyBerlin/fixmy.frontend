@@ -1,41 +1,30 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 
-import Link from '~/components/Link';
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import UserForm from '~/pages/User/components/UserForm';
-import { signup } from '~/pages/User/UserState';
-
-const StyledLink = styled(Link)`
-  margin-top: 16px;
-  display: inline-block;
-`;
+import { update } from '~/pages/User/UserState';
 
 const formConfig = [
   { id: 'email', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' },
   { id: 'username', value: '', type: 'text', label: 'Nutzername', placeholder: 'Nutzernamen eingeben...', validateError: 'Bitte geben Sie einen Nutzernamen an.' },
-  { id: 'password', value: '', type: 'password', label: 'Passwort', placeholder: 'Passwort eingeben...', validateError: 'Bitte geben Sie Ihr Passwort an.' },
-  { id: 'newsletter', value: false, type: 'checkbox', label: 'Newsletter bestellen' }
+  { id: 'password', value: '', type: 'password', label: 'Passwort', placeholder: 'Passwort eingeben...', validateError: 'Bitte geben Sie Ihr Passwort an.' }
 ];
 
 class Signup extends PureComponent {
   onSubmit = (values, params) => {
-    this.props.dispatch(signup(values, params));
+    this.props.dispatch(update(values, params));
   }
 
   render() {
     return (
       <ContentPageWrapper>
         <UserForm
-          title="Anmelden"
-          buttonLabel="Anmelden"
+          title="Profil"
+          buttonLabel="Änderungen speichern"
           formConfig={formConfig}
           onSubmit={this.onSubmit}
         />
-        <StyledLink to="/login">
-          Ich habe bereits einen Account
-        </StyledLink>
       </ContentPageWrapper>
     );
   }
