@@ -117,7 +117,7 @@ class Analysis extends PureComponent {
               value={selectedDistrict || 'all'}
               isVisible={!isLoading}
             />
-            <PieChart data={filteredData} isLoading={isLoading} />
+            <PieChart data={data} isLoading={isLoading} />
           </Card>
 
           <AnalysisControls isVisible={!isLoading && hasData}>

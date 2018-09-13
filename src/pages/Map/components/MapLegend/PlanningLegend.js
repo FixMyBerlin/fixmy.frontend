@@ -8,10 +8,12 @@ import PlanningIcon from '~/images/planning-icons/planung.svg';
 import ConstructionIcon from '~/images/planning-icons/bau.svg';
 import DoneIcon from '~/images/planning-icons/fertig.svg';
 
-import Label from '~/components/Label';
-
 import Store from '~/store';
+import Label from '~/components/Label';
 import { togglePlanningFilter } from '~/pages/Map/MapState';
+import LegendWrapper from './LegendWrapper';
+import LegendImageWrapper from './LegendImageWrapper';
+import LegendItem from './LegendItem';
 
 const Icons = {
   draft: ConceptIcon,
@@ -19,26 +21,6 @@ const Icons = {
   execution: ConstructionIcon,
   ready: DoneIcon
 };
-
-const PlanningLegend = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const LegendItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 10px 10px 10px;
-  cursor: pointer;
-  opacity: ${props => (props.isActive ? 1 : 0.4)};
-
-  &:hover {
-    opacity: .4;
-  }
-`;
-
-const LegendIconWrapper = styled.div``;
 
 function handleClick(index) {
   Store.dispatch(togglePlanningFilter(index));
@@ -49,18 +31,18 @@ function renderLegendItem(props, index, isActive) {
 
   return (
     <LegendItem isActive={isActive} onClick={() => handleClick(index)} key={`PlanningLegendItem__${props.id}`}>
-      <LegendIconWrapper>
+      <LegendImageWrapper>
         <Icon />
-      </LegendIconWrapper>
+      </LegendImageWrapper>
       <Label>{props.name}</Label>
     </LegendItem>
   );
 }
 
 const PlanningLegendComp = ({ filterPlannings }) => (
-  <PlanningLegend>
+  <LegendWrapper>
     {config.planningPhases.map((item, index) => renderLegendItem(item, index, filterPlannings[index]))}
-  </PlanningLegend>
+  </LegendWrapper>
 );
 
 export default connect(state => ({

@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import idx from 'idx';
 import styled from 'styled-components';
-import { VictoryPie, VictoryLabel } from 'victory';
+import { VictoryPie, VictoryLabel, Slice } from 'victory';
 
 import SvgIcon from '~/components/SvgIcon';
 import Text from '~/components/Text';
@@ -141,6 +141,7 @@ class PieChart extends PureComponent {
           colorScale={colorScale}
           style={chartStyle}
           labelComponent={<Label />}
+          dataComponent={<Slice active={Math.random() > .6}/>}
         />
         <ChartInnerLabel>
           {hasData ? this.renderChartLabel() : renderNoData()}
