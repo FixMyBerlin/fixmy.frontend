@@ -1,7 +1,7 @@
 import uuidv4 from 'uuid/v4';
 
 import { set, remove, get } from '~/services/storage';
-import { apiSignup, apiLogin, apiUpdate } from '~/pages/User/apiservice';
+import { apiSignup, apiLogin, apiUpdate, apiUser } from '~/pages/User/apiservice';
 import history from '~/history';
 
 const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
@@ -86,7 +86,20 @@ export function update(values, formFunctions) {
     if (!data.error) {
       dispatch({ type: UPDATE_SUCCESS });
     }
-  }
+  };
+}
+
+export function profile() {
+  return async (dispatch, getState) => {
+    dispatch({ type: UPDATE });
+
+    const token = getState().UserState.token;
+    const data = await apiUser(token);
+
+    if (!data.error) {
+      dispatch({ type: UPDATE_SUCCESS });
+    }
+  };
 }
 
 export function resetPassword(values, formFunctions) {

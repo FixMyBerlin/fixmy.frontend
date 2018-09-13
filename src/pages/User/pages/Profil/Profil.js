@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import Button from '~/components/Button';
 import UserForm from '~/pages/User/components/UserForm';
-import { update, logout } from '~/pages/User/UserState';
+import { update, logout, profile } from '~/pages/User/UserState';
 
 const formConfig = [
   { id: 'email', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' },
@@ -17,6 +17,10 @@ const StyledButton = styled(Button)`
 `;
 
 class Signup extends PureComponent {
+  componentDidMount() {
+    this.props.dispatch(profile());
+  }
+
   onSubmit = (values, params) => {
     this.props.dispatch(update(values, params));
   }
