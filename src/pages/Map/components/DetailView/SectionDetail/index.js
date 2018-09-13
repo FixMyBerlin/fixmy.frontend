@@ -21,6 +21,10 @@ const HBISignWrapper = styled.div`
   align-items: center;
   width: 100%;
   flex-direction: column;
+
+  > div {
+    cursor: default;
+  }
 `;
 
 const DetailInfoWrapper = styled.div`
