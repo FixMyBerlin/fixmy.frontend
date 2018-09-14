@@ -5,7 +5,7 @@ import withRouter from 'react-router/withRouter';
 
 import { media } from '~/utils/style-utils';
 import BikeIcon from '~/images/bike.svg';
-import PylonIcon from '~/images/pylon.svg';
+import PylonIcon from '~/images/poempel.svg';
 import Label from '~/components/Label';
 import SvgIcon from '~/components/SvgIcon';
 
@@ -59,7 +59,7 @@ const Switch = styled(ToggleSwitch)`
     align-items: center;
     background: #353535;
     border: 2px solid #E8E8E8;
-    box-shadow: 0 0 4px 1px rgba(0,0,0,0.5);
+    box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.6);
 
     path {
       stroke: #353535;
