@@ -35,7 +35,7 @@ class Login extends PureComponent {
           Passwort vergessen?
         </StyledLink>
         <StyledLink to={config.routes.signup}>
-          Ich habe noch keinen einen Account
+          Ich habe noch keinen Account
         </StyledLink>
       </ContentPageWrapper>
     );
