@@ -1,3 +1,6 @@
+/* eslint no-param-reassign: 0 */
+import ky from 'ky';
+
 const LOAD_DATA = 'Analysis/AnalysisState/LOAD_DATA';
 const LOAD_DATA_SUCCESS = 'Analysis/AnalysisState/LOAD_DATA_SUCCESS';
 const LOAD_DATA_FAIL = 'Analysis/AnalysisState/LOAD_DATA_FAIL';
@@ -59,11 +62,8 @@ export function loadPlanningData(selectedDistrict = false) {
     }
 
     try {
-      const data = await fetch(`${config.apiUrl}/plannings?page_size=300`)
-        .then(r => r.json())
-        .then(json => json.results);
-
-      const dataExtended = data.map(parseData);
+      const { results } = await ky.get(`${config.apiUrl}/plannings?page_size=300`).json();
+      const dataExtended = results.map(parseData);
 
       return dispatch({ type: LOAD_DATA_SUCCESS, payload: { data: dataExtended, isLoading: false } });
     } catch (e) {

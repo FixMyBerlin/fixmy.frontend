@@ -28,6 +28,7 @@ const AccountLink = styled(NavLink).attrs({
   text-decoration: none;
   color: white;
   padding: 0 2rem;
+  align-items: center;
 
   &:visited {
     color: white;
@@ -40,7 +41,7 @@ const AccountLink = styled(NavLink).attrs({
 
 export default (props) => {
   const profileLink = props.token ? config.routes.profile : config.routes.login;
-  const profileLabel = props.token ? 'Zum Profil' : 'Anmelden';
+  const profileLabel = props.token ? config.menu.profileLabel : config.menu.loginLabel;
 
   return (
     <MenuHeader>

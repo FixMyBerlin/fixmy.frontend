@@ -20,6 +20,8 @@
   },
   "menu": {
     "size": 320,
+    "profileLabel": "Zum Profil",
+    "loginLabel": "Anmelden",
     "items": [
       {
         "type": "link",

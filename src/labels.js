@@ -13,6 +13,16 @@ export const districts = [
   'Treptow-Köpenick'
 ];
 
+export const homeLabels = {
+  title: 'Hi, das ist FixMyBerlin',
+  intro: `
+    Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird.
+    Hier siehst du bald, was dafür geplant wird. Trage dich für Updates zum Newsletter ein.
+  `,
+  button: 'Worum geht es hier genau?'
+};
+
 export default {
-  districts
+  districts,
+  homeLabels
 };

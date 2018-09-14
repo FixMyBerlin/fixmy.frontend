@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 // import Link from 'react-router-dom/Link';
 
+import { homeLabels } from '~/labels';
 import StyledLink from '~/components/Link';
 import ContentOverlay from '~/components/ContentOverlay';
 import FMBLogo from '~/components/FMBLogo';
@@ -9,7 +10,6 @@ import Title from '~/components/Title';
 import MenuButton from '~/components/MenuButton';
 import SocialSharer from '~/components/Social/SocialSharer';
 import Text from '~/components/Text';
-// import Button from '~/components/Button';
 
 import SubscribtionWidget from '~/pages/Home/components/SubscribtionWidget';
 import bgImage from '~/images/background.jpg';
@@ -49,11 +49,11 @@ export default () => (
       <HomeContent>
         <FMBLogo />
         <div>
-          <Title>Hi, das ist FixMyBerlin</Title>
-          <Text>Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Hier siehst du bald, was dafür geplant wird. Trage dich für Updates zum Newsletter ein.</Text>
+          <Title>{homeLabels.title}</Title>
+          <Text>{homeLabels.intro}</Text>
         </div>
         <AboutLinkWrapper>
-          <StyledLink to="/info">Worum geht es hier genau?</StyledLink>
+          <StyledLink to="/info">{homeLabels.button}</StyledLink>
         </AboutLinkWrapper>
         <SubscribtionWidget />
         <SocialSharer />
