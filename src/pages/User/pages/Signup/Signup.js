@@ -13,9 +13,9 @@ const StyledLink = styled(Link)`
 `;
 
 const formConfig = [
-  { id: 'email', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' },
+  { id: 'username', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' },
   { id: 'password', value: '', type: 'password', label: 'Passwort', placeholder: 'Passwort eingeben...', validateError: 'Bitte geben Sie Ihr Passwort an.' },
-  { id: 'newsletter', value: false, type: 'checkbox', label: 'Newsletter bestellen' }
+  // { id: 'newsletter', value: false, type: 'checkbox', label: 'Newsletter bestellen' }
 ];
 
 class Signup extends PureComponent {

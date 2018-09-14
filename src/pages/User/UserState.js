@@ -17,11 +17,14 @@ const UPDATE = 'User/UserState/UPDATE';
 const UPDATE_SUCCESS = 'User/UserState/UPDATE_SUCCESS';
 const VERIFY = 'User/UserState/VERIFY';
 const VERIFY_SUCCESS = 'User/UserState/VERIFY_SUCCESS';
+const PROFILE = 'User/UserState/PROFILE';
+const PROFILE_SUCCESS = 'User/UserState/PROFILE_SUCCESS';
 
 const initialState = {
   userid: uuidv4(),
   hbi_values: config.hbi.map(d => d.value),
-  token: get('token')
+  token: get('token'),
+  userData: false
 };
 
 // updates custome hbi config values
@@ -33,12 +36,7 @@ export function signup(values, formFunctions) {
   return async (dispatch) => {
     dispatch({ type: SIGNUP });
 
-    const extendedValues = {
-      ...values,
-      username: values.email
-    };
-
-    const data = await apiSignup(extendedValues, formFunctions);
+    const data = await apiSignup(values, formFunctions);
 
     if (!data.error) {
       history.push('/anmelden');
@@ -51,12 +49,7 @@ export function login(values, formFunctions) {
   return async (dispatch) => {
     dispatch({ type: LOGIN });
 
-    const extendedValues = {
-      ...values,
-      username: values.email
-    };
-
-    const data = await apiLogin(extendedValues, formFunctions);
+    const data = await apiLogin(values, formFunctions);
 
     if (!data.error) {
       set('token', data.token);
@@ -79,27 +72,30 @@ export function logout() {
   };
 }
 
-export function update(values, formFunctions) {
-  return async (dispatch) => {
-    dispatch({ type: UPDATE });
+export function profile() {
+  return async (dispatch, getState) => {
+    dispatch({ type: PROFILE });
 
-    const data = await apiUpdate(values, formFunctions);
+    const { token } = getState().UserState;
+    const userData = await apiUser(token);
 
-    if (!data.error) {
-      dispatch({ type: UPDATE_SUCCESS });
+    if (!userData.error) {
+      dispatch({ type: PROFILE_SUCCESS, payload: { userData } });
     }
   };
 }
 
-export function profile() {
+export function update(values, formFunctions) {
   return async (dispatch, getState) => {
     dispatch({ type: UPDATE });
 
-    const token = getState().UserState.token;
-    const data = await apiUser(token);
+    const { token } = getState().UserState;
+    const userData = await apiUpdate(values, token, formFunctions);
 
-    if (!data.error) {
-      dispatch({ type: UPDATE_SUCCESS });
+    console.log(userData);
+
+    if (!userData.error) {
+      dispatch(profile());
     }
   };
 }
@@ -109,7 +105,7 @@ export function verify() {
   return async (dispatch, getState) => {
     dispatch({ type: VERIFY });
 
-    const token = getState().UserState.token;
+    const { token } = getState().UserState;
     if (!token) {
       return false;
     }
@@ -156,6 +152,10 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case LOGOUT_SUCCESS:
     case RESET_PASSWORD:
     case RESET_PASSWORD_SUCCESS:
+    case VERIFY:
+    case VERIFY_SUCCESS:
+    case PROFILE:
+    case PROFILE_SUCCESS:
       return Object.assign({}, state, action.payload);
     default:
       return Object.assign({}, state);

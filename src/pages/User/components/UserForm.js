@@ -1,12 +1,18 @@
 // used for signup and login
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
+import styled from 'styled-components';
 import { Formik } from 'formik';
 
 import Title from '~/components/Title';
+import SectionTitle from '~/components/SectionTitle';
 import Form from '~/components/Form';
 import Button from '~/components/Button';
 import FormField from '~/components/FormField';
 import FormFieldError from '~/components/FormFieldError';
+
+const UserFormWrapper = styled.div`
+  margin-bottom: 16px;
+`;
 
 class UserForm extends PureComponent {
   static defaultProps = {
@@ -33,12 +39,14 @@ class UserForm extends PureComponent {
     }, {})
 
   render() {
-    const { title, formConfig, buttonLabel } = this.props;
+    const { title, subtitle, formConfig, buttonLabel } = this.props;
     return (
-      <Fragment>
-        <Title>{title}</Title>
+      <UserFormWrapper>
+        {title && <Title>{title}</Title>}
+        {subtitle && <SectionTitle>{subtitle}</SectionTitle>}
         <Formik
           initialValues={this.initialValues}
+          enableReinitialize
           onSubmit={this.props.onSubmit}
           validate={this.validate}
           validateOnChange={false}
@@ -65,7 +73,7 @@ class UserForm extends PureComponent {
             </Form>
           )}
         />
-      </Fragment>
+      </UserFormWrapper>
     );
   }
 }

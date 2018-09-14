@@ -1,12 +1,14 @@
 import ky from 'ky';
 
 // helper function that handles form errors and loading state
-async function handleRequest(route, { method = 'POST', json = {} }, { setSubmitting, setErrors }) {
+async function handleRequest(route, { method = 'POST', json = {}, token = false }, { setSubmitting, setErrors }, respType = 'json') {
   let response = {};
   setSubmitting(true);
 
+  const headers = token ? { Authorization: `JWT ${token}` } : {};
+
   try {
-    response = await ky(`${config.apiUrl}/${route}`, { method, json }).json();
+    response = await ky(`${config.apiUrl}/${route}`, { method, json, headers })[respType]();
   } catch (e) {
     const error = await e.response.json();
     setErrors(error);
@@ -25,8 +27,14 @@ export async function apiLogin(json, formFunctions) {
   return handleRequest('jwt/create/', { json }, formFunctions);
 }
 
-export async function apiUpdate(json, formFunctions) {
-  return handleRequest('users/create/', { method: 'PUT', json }, formFunctions);
+export async function apiUpdate(json, token, formFunctions) {
+  if (json.new_username) {
+    return handleRequest('users/change_username/', { json, token }, formFunctions, 'text');
+  } else if (json.new_password) {
+    return handleRequest('password/', { json, token }, formFunctions, 'text');
+  }
+
+  // here we can handle standard field updates like name, last name etc.
 }
 
 export async function apiVerify(token) {
