@@ -91,10 +91,11 @@ export function update(values, formFunctions) {
     const { token } = getState().UserState;
     const userData = await apiUpdate(values, token, formFunctions);
 
-    console.log(userData);
-
     if (!userData.error) {
-      dispatch(profile());
+      if (values.new_username) {
+        remove('token');
+        history.push(config.routes.login);
+      }
     }
   };
 }
