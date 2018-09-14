@@ -85,6 +85,57 @@ class SectionDetails extends PureComponent {
 
     const photos = details.length > 2 ? details[sideIndex + 2].photos : details[sideIndex].photos;
 
+    // safetyLabel
+    if (sideData.safety_index >= 6) {
+      var safetyLabel = 'sehr sicher';
+    } else if (sideData.safety_index >= 4) {
+      var safetyLabel = 'ok';
+    } else if (sideData.safety_index >= 2) {
+      var safetyLabel = 'gefährlich';
+    } else {
+      var safetyLabel = 'sehr gefährlich';
+    }
+
+    // roadTypeLabel
+    if (sideData.road_type >= 3) {
+      var roadTypeLabel = 'ruhiger Verkehr';
+    } else if (sideData.road_type >= 2) {
+      var roadTypeLabel = 'mittlerer Verkehr';
+    } else if (sideData.road_type >= 1) {
+      var roadTypeLabel = 'starker Verkehr';
+    } else {
+      var roadTypeLabel = 'sehr starker Verkehr';
+    }
+
+    // streetCategoryLabel
+    if (data.street_category >= 5) {
+      var streetCategoryLabel = 'Nebenstraße';
+    } else {
+      var streetCategoryLabel = 'Hauptstraße';
+    }
+
+    // infrastructureLabel
+    if (sideData.cycling_infrastructure_safety >= 3) {
+      var infrastructureLabel = 'sehr gut';
+    } else if (sideData.cycling_infrastructure_safety >= 2) {
+      var infrastructureLabel = 'gut';
+    } else if (sideData.cycling_infrastructure_safety >= 1) {
+      var infrastructureLabel = 'schwach';
+    } else {
+      var infrastructureLabel = 'keine';
+    }
+
+    // infrastructureDesc
+    if (sideData.cycling_infrastructure_ratio >= 1) {
+      var infrastructureDesc = '';
+    } else if (sideData.cycling_infrastructure_ratio >= 0.65) {
+      var infrastructureDesc = 'Radinfrastruktur überwiegend vorhanden';
+    } else if (sideData.cycling_infrastructure_ratio >= 0.1) {
+      var infrastructureDesc = 'Teilweise Radinfrastruktur vorhanden';
+    } else {
+      var infrastructureDesc = 'Keine oder ungenügende Radinfrastruktur vorhanden';
+    }
+
     return (
       <React.Fragment>
         {hasSwitchButton && (
@@ -119,13 +170,17 @@ class SectionDetails extends PureComponent {
             Daten zu: {name}
           </DetailTitle>
 
-          <InfoSection title="Sicherheit:" color="#ff650c" label="gefährlich">
-            <div><strong>80% Schutzstreifen</strong></div>
-            <div>20% kein Radweg vorhanden</div>
+          <InfoSection title="Sicherheit:" color="#ff650c" label="{safetyLabel}">
+            <div>Sicherheit: <strong>{sideData.safety_index}</strong></div>
+            <div>Wie sicher ist es hier für Radfahrende? <strong>{safetyLabel}</strong></div>
 
-            <div>Art der Straße: Hauptstraße</div>
+            <div>Situation KFZ-Verkehr <strong>{roadTypeLabel}</strong></div>
+            <div>Straßentyp: <strong>{streetCategoryLabel}</strong></div>
             <div>Tempolimit: <strong>{sideData.speed_limit} km/h</strong></div>
-            <div>KFZ pro Tag: {numberFormat(sideData.daily_traffic)}</div>
+            <div>KFZ pro Tag: <strong>{numberFormat(sideData.daily_traffic)}</strong></div>
+            <div>Schutzfunktion der Radwege <strong>{infrastructureLabel}</strong></div>
+            <div><strong>{infrastructureDesc}</strong></div>
+            <div><a href="#">Wie wird der Happy-Bike-Level gerechnet?</a></div>
           </InfoSection>
 
           <BetaWrapper>
