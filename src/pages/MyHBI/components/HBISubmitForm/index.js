@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Formik } from 'formik';
-import fetch from 'unfetch';
+import ky from 'ky';
 import { trackEvent } from '~/utils/utils';
 
 import Title from '~/components/Title';
@@ -19,23 +19,21 @@ function cleanupFormValues(values) {
 }
 
 class HBISubmitForm extends PureComponent {
-  onSubmit = (values, { setSubmitting, setErrors }) => {
+  onSubmit = async (values, { setSubmitting, setErrors }) => {
     const cleanValues = cleanupFormValues(values);
 
-    fetch(`${config.apiUrl}/profiles/${this.props.userid}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...cleanValues, id: this.props.userid })
-    })
-      .then(() => {
-        setSubmitting(false);
-        trackEvent('my-hbi', 'save-profile', 'details');
-        this.props.onClose();
-      })
-      .catch(() => {
-        setSubmitting(false);
-        setErrors({ server: 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.' });
-      });
+    const json = { ...cleanValues, id: this.props.userid };
+
+    try {
+      await ky.put(`${config.apiUrl}/profiles/${this.props.userid}`, { json }).json();
+    } catch (err) {
+      setSubmitting(false);
+      return setErrors({ server: 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.' });
+    }
+
+    setSubmitting(false);
+    trackEvent('my-hbi', 'save-profile', 'details');
+    this.props.onClose();
   }
 
   render() {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import idx from 'idx';
 import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
-import fetch from 'unfetch';
+import ky from 'ky';
 
 import { media } from '~/utils/style-utils';
 import Store from '~/store';
@@ -151,7 +151,7 @@ function detailWrapped(Component) {
       return `/data/${file}`;
     }
 
-    loadData = () => {
+    loadData = async () => {
       const id = idx(this.props.match, _ => _.params.id);
 
       this.setState({ isLoading: true });
@@ -160,10 +160,12 @@ function detailWrapped(Component) {
         this.getJSONFallbackPath() :
         `${config.apiUrl}/${this.props.apiEndpoint}/${id}`;
 
-      fetch(dataUrl)
-        .then(r => r.json())
-        .then(this.onDataLoaded)
-        .catch(this.onDataError);
+      try {
+        const data = await ky.get(dataUrl).json();
+        this.onDataLoaded(data);
+      } catch (error) {
+        this.onDataError(error);
+      }
     }
 
     // we only show the shadow if there is no switch button

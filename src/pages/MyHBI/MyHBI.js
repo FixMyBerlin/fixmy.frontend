@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import fetch from 'unfetch';
+import ky from 'ky';
 
 import HBIConfigurator from '~/pages/MyHBI/components/HBIConfigurator';
 import HBISubmitForm from '~/pages/MyHBI/components/HBISubmitForm';
@@ -17,11 +17,10 @@ class MyHBIView extends PureComponent {
       res[item.type] = this.props.hbi_values[index];
       return res;
     }, {});
-    fetch(`${config.apiUrl}/profiles/${this.props.userid}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...sliderValues, id: this.props.userid })
-    });
+
+    const json = { ...sliderValues, id: this.props.userid };
+    ky.put(`${config.apiUrl}/profiles/${this.props.userid}`, { json });
+
     trackEvent('my-hbi', 'save-profile', 'values');
     this.onToggleModal();
   }

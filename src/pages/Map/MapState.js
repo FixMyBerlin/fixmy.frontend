@@ -1,4 +1,4 @@
-import fetch from 'unfetch';
+import ky from 'ky';
 import idx from 'idx';
 
 const SET_VIEW = 'Map/MapState/SET_VIEW';
@@ -65,20 +65,23 @@ export function loadPlanningData() {
 }
 
 export function geocodeAddress(searchtext) {
-  return (dispatch) => {
+  return async (dispatch) => {
     const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;
-    fetch(`${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`)
-      .then(r => r.json())
-      .then((data) => {
-        const geocodeResult = idx(data, _ => _.Response.View[0].Result[0].Location.DisplayPosition);
-        if (!geocodeResult) {
-          return dispatch({ type: GEOCODE_FAIL, payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' } });
-        }
 
-        // we do + (Math.random() / 1000) in order to always get a slightly different center
-        const center = [geocodeResult.Longitude, geocodeResult.Latitude + (Math.random() / 1000)];
-        return dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
-      });
+    try {
+      const searchUrl = `${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;
+      const data = await ky.get(searchUrl).json();
+      const geocodeResult = idx(data, _ => _.Response.View[0].Result[0].Location.DisplayPosition);
+      if (!geocodeResult) {
+        return dispatch({ type: GEOCODE_FAIL, payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' } });
+      }
+
+      // we do + (Math.random() / 1000) in order to always get a slightly different center
+      const center = [geocodeResult.Longitude, geocodeResult.Latitude + (Math.random() / 1000)];
+      dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
+    } catch (error) {
+      dispatch({ type: GEOCODE_FAIL, payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' } });
+    }
   };
 }
 

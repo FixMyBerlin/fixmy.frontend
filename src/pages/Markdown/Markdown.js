@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import fetch from 'unfetch';
+import ky from 'ky';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import MarkdownContent from '~/pages/Markdown/components/MarkdownContent';
@@ -21,7 +21,7 @@ class MarkdownPage extends PureComponent {
 
   async loadContent() {
     const { page } = this.props;
-    const content = await fetch(`markdown/${page}.md`).then(r => r.text());
+    const content = await ky.get(`markdown/${page}.md`).text();
     return this.setState({ content });
   }
 
