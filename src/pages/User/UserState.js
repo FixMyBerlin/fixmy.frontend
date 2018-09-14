@@ -14,7 +14,6 @@ const LOGOUT_SUCCESS = 'User/UserState/LOGOUT_SUCCESS';
 const RESET_PASSWORD = 'User/UserState/RESET_PASSWORD';
 const RESET_PASSWORD_SUCCESS = 'User/UserState/RESET_PASSWORD_SUCCESS';
 const UPDATE = 'User/UserState/UPDATE';
-const UPDATE_SUCCESS = 'User/UserState/UPDATE_SUCCESS';
 const VERIFY = 'User/UserState/VERIFY';
 const VERIFY_SUCCESS = 'User/UserState/VERIFY_SUCCESS';
 const PROFILE = 'User/UserState/PROFILE';
@@ -39,7 +38,7 @@ export function signup(values, formFunctions) {
     const data = await apiSignup(values, formFunctions);
 
     if (!data.error) {
-      history.push('/anmelden');
+      history.push(config.routes.login);
       dispatch({ type: SIGNUP_SUCCESS });
     }
   };

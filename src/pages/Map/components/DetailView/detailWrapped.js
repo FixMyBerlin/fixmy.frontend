@@ -1,5 +1,4 @@
 /* eslint class-methods-use-this: 0 */
-
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import idx from 'idx';

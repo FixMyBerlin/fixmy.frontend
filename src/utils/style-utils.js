@@ -1,4 +1,4 @@
-import { css, injectGlobal } from 'styled-components';
+import { css, injectGlobal, keyframes } from 'styled-components';
 
 import 'normalize.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -115,11 +115,41 @@ export function isSmallScreen() {
   return window.matchMedia(`screen and (max-width: ${breakpoints.m}px)`).matches;
 }
 
+export const bounce = keyframes`
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    transform: scale3d(0.5, 0.5, 0.5);
+  }
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  60% {
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+`;
+
 export default {
   init,
   media,
   breakpoints,
   getMediaQuery,
   matchMediaSize,
-  isSmallScreen
+  isSmallScreen,
+  bounce
 };

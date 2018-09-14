@@ -93,7 +93,6 @@ class PlanningDetails extends PureComponent {
       phase, construction_started, draft_submitted, cross_section_photo
     } = planning;
 
-
     const showFaq = faq && faq.length;
     const showSwitchButton = plannings.length > 1 && (plannings[0].url !== plannings[1].url);
 
@@ -163,7 +162,7 @@ class PlanningDetails extends PureComponent {
             </DetailBodySection>
           ) : null}
         </DetailBody>
-        {config.showLikeButton && <PlanningLike />}
+        {config.showLikeButton && <PlanningLike token={this.props.token} id={this.props.match.params.id} />}
       </Fragment>
     );
   }

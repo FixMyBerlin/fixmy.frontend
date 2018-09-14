@@ -127,6 +127,7 @@ class MapViewComponent extends PureComponent {
                 apiEndpoint="planning-sections"
                 onCloseRoute="/zustand"
                 activeView={this.props.activeLayer}
+                token={this.props.token}
               />
             )}
           />
@@ -138,6 +139,7 @@ class MapViewComponent extends PureComponent {
                 apiEndpoint="planning-sections"
                 onCloseRoute="/planungen"
                 activeView={this.props.activeLayer}
+                token={this.props.token}
               />
             )}
           />

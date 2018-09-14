@@ -1,38 +1,10 @@
 import React, { PureComponent } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
-// @TODO: use heart icon
 import HeartIcon from '~/images/heart.svg';
+import { bounce } from '~/utils/style-utils';
 import Label from '~/components/Label';
-
-const bounce = keyframes`
-  from,
-  20%,
-  40%,
-  60%,
-  80%,
-  to {
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-  0% {
-    transform: scale3d(0.5, 0.5, 0.5);
-  }
-  20% {
-    transform: scale3d(1.1, 1.1, 1.1);
-  }
-  40% {
-    transform: scale3d(0.9, 0.9, 0.9);
-  }
-  60% {
-    transform: scale3d(1.03, 1.03, 1.03);
-  }
-  80% {
-    transform: scale3d(0.97, 0.97, 0.97);
-  }
-  to {
-    transform: scale3d(1, 1, 1);
-  }
-`;
+import { likeDetail } from '~/pages/Map/apiservice';
 
 const PlanningLikeWrapper = styled.div`
   background: ${config.colors.likebg};
@@ -51,20 +23,23 @@ const LikeButtonWrapper = styled.div`
   user-select: none;
 `;
 
+const buttonBoxShadow = '0 1px 5px 2px rgba(0, 0, 0, 0.25)';
+const buttonBoxShadowActive = '0 1px 7px 3px rgba(0, 0, 0, 0.25)';
+
 const LikeButton = styled.button`
   background: ${config.colors.interaction};
   width: 62px;
   height: 62px;
   display: flex;
-  border-radius:50%;
+  border-radius: 50%;
   justify-content: center;
   align-items: center;
   margin: 8px 0;
-  box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: ${buttonBoxShadow};
   transition: box-shadow .15s;
-  cursor: pointer;
   animation: ${props => (props.bouncy ? `${bounce} 0.8s` : 'none')};
   border: none;
+  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
 
   svg {
     g {
@@ -78,12 +53,8 @@ const LikeButton = styled.button`
   }
 
   &:hover {
-    box-shadow: 0 1px 7px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: ${props => (props.disabled ? buttonBoxShadow : buttonBoxShadowActive)};
   }
-`;
-
-const Counter = styled(Label)`
-  font-weight: 700;
 `;
 
 class PlanningLike extends PureComponent {
@@ -92,11 +63,9 @@ class PlanningLike extends PureComponent {
     bouncy: false
   }
 
-  inc = () => {
-    this.setState({
-      count: this.state.count + 1,
-      bouncy: false
-    });
+  inc = async () => {
+    const count = await likeDetail(this.props.id, this.props.token);
+    this.setState({ count, bouncy: false });
 
     setTimeout(() => {
       this.setState({ bouncy: true });
@@ -104,14 +73,17 @@ class PlanningLike extends PureComponent {
   }
 
   render() {
+    const { token } = this.props;
+    const label = token ? 'gefällt mir' : 'Um eine Planung zu liken, musst du eingeloggt sein.';
+
     return (
       <PlanningLikeWrapper>
         <LikeButtonWrapper>
-          <Counter>{this.state.count}</Counter>
-          <LikeButton onClick={this.inc} bouncy={this.state.bouncy}>
+          <Label bold>{this.state.count === 0 ? ' ' : this.state.count}</Label>
+          <LikeButton disabled={!token} onClick={this.inc} bouncy={this.state.bouncy}>
             <HeartIcon />
           </LikeButton>
-          <Label>gefällt mir</Label>
+          <Label>{label}</Label>
         </LikeButtonWrapper>
       </PlanningLikeWrapper>
     );

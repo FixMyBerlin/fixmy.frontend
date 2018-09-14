@@ -39,7 +39,7 @@ const AccountLink = styled(NavLink).attrs({
 `;
 
 export default (props) => {
-  const profileLink = props.token ? 'profil' : 'anmelden';
+  const profileLink = props.token ? config.routes.profile : config.routes.login;
   const profileLabel = props.token ? 'Zum Profil' : 'Anmelden';
 
   return (
