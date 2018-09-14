@@ -49,7 +49,7 @@ const HBISignComp = (props) => {
       <div>
         <StyledBikeIcon color={color} />
         <div>
-          {numberFormat(props.hbi)}
+          {numberFormat(props.hbi, 1)}
         </div>
       </div>
       <StyledBetaIcon isTooltip={props.isTooltip} />
