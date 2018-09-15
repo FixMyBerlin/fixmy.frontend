@@ -18,6 +18,8 @@ const VERIFY = 'User/UserState/VERIFY';
 const VERIFY_SUCCESS = 'User/UserState/VERIFY_SUCCESS';
 const PROFILE = 'User/UserState/PROFILE';
 const PROFILE_SUCCESS = 'User/UserState/PROFILE_SUCCESS';
+const UPDATE_USERNAME_SUCCESS = 'User/UserState/UPDATE_USERNAME_SUCCESS';
+const UPDATE_PASSWORD_SUCCESS = 'User/UserState/UPDATE_PASSWORD_SUCCESS';
 
 const initialState = {
   userid: uuidv4(),
@@ -38,7 +40,8 @@ export function signup(values, formFunctions) {
     const data = await apiSignup(values, formFunctions);
 
     if (!data.error) {
-      history.push(config.routes.login);
+      formFunctions.setStatus('signupsuccess');
+      setTimeout(() => history.push(config.routes.login), 3000);
       dispatch({ type: SIGNUP_SUCCESS });
     }
   };
@@ -52,22 +55,24 @@ export function login(values, formFunctions) {
 
     if (!data.error) {
       set('token', data.token);
-      history.push('/');
-
+      formFunctions.setStatus('loginsuccess');
       dispatch({ type: LOGIN_SUCCESS, payload: { token: data.token } });
     }
   };
 }
 
-export function logout() {
+export function logout(setLogoutStatus) {
   return (dispatch) => {
     dispatch({ type: LOGOUT });
 
     remove('token');
-    history.push('/');
+    setLogoutStatus(true);
 
     // ... logout api call?
-    dispatch({ type: LOGOUT_SUCCESS, payload: { token: false } });
+    setTimeout(() => {
+      history.push('/');
+      dispatch({ type: LOGOUT_SUCCESS, payload: { token: false } });
+    }, 3000);
   };
 }
 
@@ -88,13 +93,17 @@ export function update(values, formFunctions) {
   return async (dispatch, getState) => {
     dispatch({ type: UPDATE });
 
-    const { token } = getState().UserState;
-    const userData = await apiUpdate(values, token, formFunctions);
+    const { token, userData } = getState().UserState;
+    const response = await apiUpdate(values, token, formFunctions);
 
-    if (!userData.error) {
+    if (!response.error) {
       if (values.new_username) {
         remove('token');
-        history.push(config.routes.login);
+        formFunctions.setStatus('usernamesuccess');
+        dispatch({ type: UPDATE_USERNAME_SUCCESS, payload: { userData: { ...userData, username: values.new_username } } });
+      } else if (values.new_password) {
+        formFunctions.setStatus('passwordsuccess');
+        dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: { userData: { ...userData, password: '' } } });
       }
     }
   };
@@ -156,6 +165,8 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case VERIFY_SUCCESS:
     case PROFILE:
     case PROFILE_SUCCESS:
+    case UPDATE_USERNAME_SUCCESS:
+    case UPDATE_PASSWORD_SUCCESS:
       return Object.assign({}, state, action.payload);
     default:
       return Object.assign({}, state);

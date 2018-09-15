@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { connect as formikConnect, getIn } from 'formik';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import Title from '~/components/Title';
@@ -25,16 +26,28 @@ const StyledButton = styled(Button)`
 `;
 
 class Signup extends PureComponent {
+  state = {
+    logoutstatus: false
+  }
+
   componentDidMount() {
     this.props.dispatch(profile());
   }
+
 
   onSubmit = (values, params) => {
     this.props.dispatch(update(values, params));
   }
 
   onLogout = () => {
-    this.props.dispatch(logout());
+    this.props.dispatch(logout(this.setLogoutStatus));
+  }
+
+  // @TODO: we need to refactor the form state handling
+  // problem: here we can't access formiks internal status/ setStatus props
+  // we might need to use withFormik HOC in a level above
+  setLogoutStatus = (logoutstatus) => {
+    this.setState({ logoutstatus });
   }
 
   render() {
@@ -66,9 +79,10 @@ class Signup extends PureComponent {
         <StyledButton onClick={this.onLogout}>
           Ausloggen
         </StyledButton>
+        {this.state.logoutstatus && <Text>Du hast Dich erfolgreich ausgeloggt.</Text>}
       </ContentPageWrapper>
     );
   }
 }
 
-export default connect(state => state.UserState)(Signup);
+export default connect(state => state.UserState)(formikConnect(Signup));

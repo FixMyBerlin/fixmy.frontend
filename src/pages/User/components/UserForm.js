@@ -3,7 +3,9 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { Formik } from 'formik';
 
+import Text from '~/components/Text';
 import Title from '~/components/Title';
+import Link from '~/components/Link';
 import SectionTitle from '~/components/SectionTitle';
 import Form from '~/components/Form';
 import Button from '~/components/Button';
@@ -13,6 +15,17 @@ import FormFieldError from '~/components/FormFieldError';
 const UserFormWrapper = styled.div`
   margin-bottom: 16px;
 `;
+
+function renderStatus(status) {
+  switch (status) {
+    case 'loginsuccess': return <Text>Du hast dich erfolgreich eingeloggt. <Link to="/">Hier</Link> gelangst du zum Start.</Text>;
+    case 'signupsuccess': return <Text>Du hast dich erfolgreich registriert.</Text>;
+    case 'usernamesuccess': return <Text>Du hast Deine E-Mail-Adresse geändert, <Link to={config.routes.login}>bitte logge Dich neu ein</Link></Text>;
+    case 'passwordsuccess': return <Text>Du hast Dein Passwort erfolgreich geändert.</Text>;
+    case 'logoutsuccess': return <Text>Du hast dich erfolgreich ausgeloggt.</Text>;
+    default: return null;
+  }
+}
 
 class UserForm extends PureComponent {
   static defaultProps = {
@@ -55,7 +68,8 @@ class UserForm extends PureComponent {
             values,
             errors,
             handleSubmit,
-            isSubmitting
+            isSubmitting,
+            status
           }) => (
             <Form onSubmit={handleSubmit}>
               {formConfig.map(d => (
@@ -70,6 +84,7 @@ class UserForm extends PureComponent {
               <Button type="submit" disabled={isSubmitting}>
                 {buttonLabel}
               </Button>
+              {status && renderStatus(status)}
             </Form>
           )}
         />
