@@ -9,6 +9,7 @@ import { loadPlanningData, setDistrictFilter, setPhaseFilter, setSort } from '~/
 import PieChart from '~/pages/Analysis/components/PieChart';
 import BigLabel from '~/components/BigLabel';
 import MenuButton from '~/components/MenuButton';
+import Flex from '~/components/Flex';
 import Select from '~/components/Select';
 import PlanningList from './components/PlanningList';
 import Card from './components/Card';
@@ -58,16 +59,15 @@ const phaseOptions = [
 const sortOptions = [
   { value: 'likes', label: 'Likes' },
   { value: 'length', label: 'Länge' },
-  { value: 'construction_completed', label: 'Fertigstellung' }
+  // { value: 'construction_completed', label: 'Fertigstellung' }
 ];
 
-function filter(districtName, phaseName) {
-  return (d) => {
-    const districtVisible = !districtName ? true : d.planning_sections[0].borough.toLowerCase() === districtName.toLowerCase();
-    const phaseVisible = !phaseName ? true : d.phase === phaseName.toLowerCase();
+function filterDistrict(districtName) {
+  return d => (!districtName ? true : d.planning_sections[0].borough.toLowerCase() === districtName.toLowerCase())
+}
 
-    return districtVisible && phaseVisible;
-  };
+function filterPhase(phaseName) {
+  return d => (!phaseName ? true : d.phase === phaseName.toLowerCase());
 }
 
 class Analysis extends PureComponent {
@@ -100,9 +100,14 @@ class Analysis extends PureComponent {
 
   render() {
     const { data, isLoading, selectedDistrict, selectedPhase, selectedSort } = this.props;
-    const filteredData = data.filter(filter(selectedDistrict, selectedPhase));
+
+    // for the pie chart we only filter by district
+    const filteredDataDistrict = data.filter(filterDistrict(selectedDistrict));
+    // for the list we filter by district AND phase
+    const filteredData = filteredDataDistrict.filter(filterPhase(selectedPhase));
     const hasData = filteredData.length > 0;
-    const sortedData = filteredData.sort(sortByKey(selectedSort));
+    const sortDirection = selectedSort === 'length' ? 'DESC' : 'ASC';
+    const sortedData = filteredData.sort(sortByKey(selectedSort, sortDirection));
 
     return (
       <AnalysisWrapper>
@@ -112,25 +117,27 @@ class Analysis extends PureComponent {
             <BigLabel>Analyse</BigLabel>
           </AnalysisHeader>
           <Card>
-            <Select
-              title="Wähle einen Bezirk:"
-              options={districtOptions}
-              onChange={this.onDistrictChange}
-              disabled={isLoading}
-              value={selectedDistrict || 'all'}
-              isVisible={!isLoading}
-            />
-            <PieChart data={data} isLoading={isLoading} />
+            <Flex justifyContent="space-between">
+              <Select
+                title="Wähle einen Bezirk:"
+                options={districtOptions}
+                onChange={this.onDistrictChange}
+                disabled={isLoading}
+                value={selectedDistrict || 'all'}
+                isVisible={!isLoading}
+              />
+              <Select
+                title="Phase filtern:"
+                options={phaseOptions}
+                onChange={this.onPhaseFilterChange}
+                disabled={isLoading}
+                value={selectedPhase || 'all'}
+              />
+            </Flex>
+            <PieChart data={filteredDataDistrict} isLoading={isLoading} />
           </Card>
 
           <AnalysisControls isVisible={!isLoading && hasData}>
-            <Select
-              title="Phase filtern:"
-              options={phaseOptions}
-              onChange={this.onPhaseFilterChange}
-              disabled={isLoading}
-              value={selectedPhase || 'all'}
-            />
             <Select
               title="Sortieren:"
               options={sortOptions}

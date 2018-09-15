@@ -35,12 +35,13 @@ export function byKey(arr = [], key = 'id') {
   }, {});
 }
 
-export function sortByKey(key = 'id', isAsc = false) {
+export function sortByKey(key = 'id', sortDirection = 'ASC') {
+  const isAsc = sortDirection === 'ASC';
   return (a, b) => {
     if (a[key] < b[key]) {
-      return isAsc ? 1 : -1;
-    } else if (a[key] > b[key]) {
       return isAsc ? -1 : 1;
+    } else if (a[key] > b[key]) {
+      return isAsc ? 1 : -1;
     }
 
     return 0;
