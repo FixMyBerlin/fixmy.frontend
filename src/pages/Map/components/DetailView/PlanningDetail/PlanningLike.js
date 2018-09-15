@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import HeartIcon from '~/images/heart.svg';
 import { bounce } from '~/utils/style-utils';
 import Label from '~/components/Label';
-import { likeDetail } from '~/pages/Map/apiservice';
+import Link from '~/components/Link';
+import { likeDetail, getLikes } from '~/pages/Map/apiservice';
 
 const PlanningLikeWrapper = styled.div`
   background: ${config.colors.likebg};
@@ -63,9 +64,20 @@ class PlanningLike extends PureComponent {
     bouncy: false
   }
 
+  componentDidMount() {
+    this.updateLikes();
+  }
+
+  updateLikes = async () => {
+    // @TODO: api route doesnt exist
+    // const count = await getLikes(this.props.id, this.props.token);
+    this.setState({ count: 0 });
+  }
+
   inc = async () => {
-    const count = await likeDetail(this.props.id, this.props.token);
-    this.setState({ count, bouncy: false });
+    // @TODO: api route doesnt exist
+    // const count = await likeDetail(this.props.id, this.props.token);
+    this.setState({ count: this.state.count + 1, bouncy: false });
 
     setTimeout(() => {
       this.setState({ bouncy: true });
@@ -74,16 +86,18 @@ class PlanningLike extends PureComponent {
 
   render() {
     const { token } = this.props;
-    const label = token ? 'gefällt mir' : 'Um eine Planung zu liken, musst du eingeloggt sein.';
+    const label = token ?
+      <Label>gefällt mir</Label> :
+      <Label>Um eine Planung zu liken, musst du <Link to={config.routes.login}>eingeloggt sein</Link>.</Label>;
 
     return (
       <PlanningLikeWrapper>
         <LikeButtonWrapper>
-          <Label bold>{this.state.count === 0 ? ' ' : this.state.count}</Label>
+          <Label bold>{this.state.count}</Label>
           <LikeButton disabled={!token} onClick={this.inc} bouncy={this.state.bouncy}>
             <HeartIcon />
           </LikeButton>
-          <Label>{label}</Label>
+          {label}
         </LikeButtonWrapper>
       </PlanningLikeWrapper>
     );

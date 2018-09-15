@@ -11,6 +11,22 @@ export async function likeDetail(id, token, model = 'plannings') {
     const error = await e.response.json();
     response.error = error;
   }
+
+  return response;
+}
+
+export async function getLikes(id, token, model = 'plannings') {
+  let response = {};
+
+  const headers = { Authorization: `JWT ${token}` };
+
+  try {
+    response = await ky.get(`${config.apiUrl}/${model}/${id}/likes/`, { headers }).json();
+  } catch (e) {
+    const error = await e.response.json();
+    response.error = error;
+  }
+
   return response;
 }
 
