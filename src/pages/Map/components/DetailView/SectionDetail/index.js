@@ -11,8 +11,10 @@ import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
 import DetailSwitch, { ButtonGroup } from '~/pages/Map/components/DetailView/DetailSwitch';
 import FeedbackForm from '~/pages/Map/components/DetailView/FeedbackForm';
 import ImageSlider from '~/pages/Map/components/DetailView/ImageSlider';
-
 import InfoSection from './InfoSection';
+import {
+  getSafetyLabel, getSafetyColor, getRoadTypeLabel, getStreetCategoryLabel, getInfrastructureLabel, getInfrastructureDesc
+} from './status-utils';
 
 const HBISignWrapper = styled.div`
   position: relative;
@@ -33,7 +35,6 @@ const DetailInfoWrapper = styled.div`
 
 const DetailTitle = styled(Title)`
   border-bottom: 2px dotted #c6c6c6;
-  padding-bottom: 15px;
   margin: 10px 0 20px 0;
 `;
 
@@ -60,8 +61,28 @@ const BetaOverlay = styled.div`
 const StyledDataProcessIcon = styled(DataProcessIcon)`
   position: absolute;
   z-index: 99;
-  right: 10px;
+  left: 50%;
+  top: 10px;
+  margin-left: -100px;
   transform: rotate(-6deg);
+`;
+
+const InfoSectionTextWrapper = styled.div`
+  margin: 16px 0;
+`;
+
+const InfoSectionText = styled.div`
+  display: flex;
+  font-weight: ${props => (props.bold ? 700 : 500)};
+`;
+
+const InfoSectionTextLeft = styled.div`
+  min-width: ${props => (props.grow ? 'none' : '150px')};
+  flex-grow: ${props => (props.grow ? 1 : 'unset')};
+`;
+
+const InfoSectionTextRight = styled.div`
+  margin-left: auto;
 `;
 
 class SectionDetails extends PureComponent {
@@ -84,57 +105,12 @@ class SectionDetails extends PureComponent {
     }
 
     const photos = details.length > 2 ? details[sideIndex + 2].photos : details[sideIndex].photos;
-
-    // safetyLabel
-    if (sideData.safety_index >= 6) {
-      var safetyLabel = 'sehr sicher';
-    } else if (sideData.safety_index >= 4) {
-      var safetyLabel = 'ok';
-    } else if (sideData.safety_index >= 2) {
-      var safetyLabel = 'gefährlich';
-    } else {
-      var safetyLabel = 'sehr gefährlich';
-    }
-
-    // roadTypeLabel
-    if (sideData.road_type >= 3) {
-      var roadTypeLabel = 'ruhiger Verkehr';
-    } else if (sideData.road_type >= 2) {
-      var roadTypeLabel = 'mittlerer Verkehr';
-    } else if (sideData.road_type >= 1) {
-      var roadTypeLabel = 'starker Verkehr';
-    } else {
-      var roadTypeLabel = 'sehr starker Verkehr';
-    }
-
-    // streetCategoryLabel
-    if (data.street_category >= 5) {
-      var streetCategoryLabel = 'Nebenstraße';
-    } else {
-      var streetCategoryLabel = 'Hauptstraße';
-    }
-
-    // infrastructureLabel
-    if (sideData.cycling_infrastructure_safety >= 3) {
-      var infrastructureLabel = 'sehr gut';
-    } else if (sideData.cycling_infrastructure_safety >= 2) {
-      var infrastructureLabel = 'gut';
-    } else if (sideData.cycling_infrastructure_safety >= 1) {
-      var infrastructureLabel = 'schwach';
-    } else {
-      var infrastructureLabel = 'keine';
-    }
-
-    // infrastructureDesc
-    if (sideData.cycling_infrastructure_ratio >= 1) {
-      var infrastructureDesc = '';
-    } else if (sideData.cycling_infrastructure_ratio >= 0.65) {
-      var infrastructureDesc = 'Radinfrastruktur überwiegend vorhanden';
-    } else if (sideData.cycling_infrastructure_ratio >= 0.1) {
-      var infrastructureDesc = 'Teilweise Radinfrastruktur vorhanden';
-    } else {
-      var infrastructureDesc = 'Keine oder ungenügende Radinfrastruktur vorhanden';
-    }
+    const safetyLabel = getSafetyLabel(sideData);
+    const safetyColor = getSafetyColor(sideData);
+    const roadTypeLabel = getRoadTypeLabel(sideData);
+    const streetCategoryLabel = getStreetCategoryLabel(data);
+    const infrastructureLabel = getInfrastructureLabel(sideData);
+    const infrastructureDesc = getInfrastructureDesc(sideData);
 
     return (
       <React.Fragment>
@@ -170,34 +146,58 @@ class SectionDetails extends PureComponent {
             Daten zu: {name}
           </DetailTitle>
 
-          <InfoSection title="Sicherheit:" color="#ff650c" label="{safetyLabel}">
-            <div>Sicherheit: <strong>{sideData.safety_index}</strong></div>
-            <div>Wie sicher ist es hier für Radfahrende? <strong>{safetyLabel}</strong></div>
+          <InfoSection
+            title="Sicherheit:"
+            color={safetyColor}
+            label={safetyLabel}
+            value={sideData.safety_index}
+            info="Wie sicher ist es hier für Radfahrende?"
+          >
+            <InfoSectionTextWrapper>
+              <InfoSectionText bold>
+                <InfoSectionTextLeft grow>Situation KFZ-Verkehr</InfoSectionTextLeft>
+                <InfoSectionTextRight>{roadTypeLabel}</InfoSectionTextRight>
+              </InfoSectionText>
+              <InfoSectionText>
+                <InfoSectionTextLeft>Straßentyp:</InfoSectionTextLeft>
+                {streetCategoryLabel}
+              </InfoSectionText>
+              <InfoSectionText>
+                <InfoSectionTextLeft>Tempolimit:</InfoSectionTextLeft>
+                {sideData.speed_limit}
+              </InfoSectionText>
+              <InfoSectionText>
+                <InfoSectionTextLeft>KFZ pro Tag:</InfoSectionTextLeft>
+                {numberFormat(sideData.daily_traffic)}
+              </InfoSectionText>
+            </InfoSectionTextWrapper>
 
-            <div>Situation KFZ-Verkehr <strong>{roadTypeLabel}</strong></div>
-            <div>Straßentyp: <strong>{streetCategoryLabel}</strong></div>
-            <div>Tempolimit: <strong>{sideData.speed_limit} km/h</strong></div>
-            <div>KFZ pro Tag: <strong>{numberFormat(sideData.daily_traffic)}</strong></div>
-            <div>Schutzfunktion der Radwege <strong>{infrastructureLabel}</strong></div>
-            <div><strong>{infrastructureDesc}</strong></div>
-            <div><a href="#">Wie wird der Happy-Bike-Level gerechnet?</a></div>
+            <InfoSectionTextWrapper>
+              <InfoSectionText bold>
+                <InfoSectionTextLeft grow>Schutzfunktion der Radwege</InfoSectionTextLeft>
+                <InfoSectionTextRight>{infrastructureLabel}</InfoSectionTextRight>
+              </InfoSectionText>
+              <InfoSectionText>
+                {infrastructureDesc}
+              </InfoSectionText>
+            </InfoSectionTextWrapper>
           </InfoSection>
+
+          <DescriptionLink>
+            Wie wird der Happy-Bike-Level berechnet?
+          </DescriptionLink>
 
           <BetaWrapper>
             <StyledDataProcessIcon />
-            <InfoSection title="Qualität:" color="#f2b19d" label="schlecht ausgebaut">
+            <InfoSection title="Qualität:" color="" label="">
               <div>Radinfrabedarf: ?</div>
               <div>Breite: ?</div>
               <div>Oberfläche: ?</div>
             </InfoSection>
 
-            <InfoSection title="Zustand:" color="#0ecdba" label="gut" />
+            <InfoSection title="Zustand:" color="" label="" />
             <BetaOverlay />
           </BetaWrapper>
-
-          <DescriptionLink>
-            Wie wird der Happy-Bike-Level berechnet?
-          </DescriptionLink>
         </DetailInfoWrapper>
         {config.showFeedbackForm && <FeedbackForm />}
       </React.Fragment>
