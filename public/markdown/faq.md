@@ -2,9 +2,10 @@
 
 **[Wie wird der Happy-Bike-Index berechnet?](#Wie-wird-der-Happy-Bike-Index-berechnet?)**  
 
-**[Woher kommen die Daten zu den Planungen? ](#Woher-kommen-die-Daten-zu-den-Planungen?)**  
+**[Woher kommen die Daten zu den Planungen?](#Woher-kommen-die-Daten-zu-den-Planungen?)**  
 
----
+<br> 
+<br>
 
 ## Wie wird der Happy-Bike-Index berechnet?
 
@@ -26,7 +27,8 @@ Diese beiden Faktoren werden miteinander verrechnet. Eine besonders viel und sch
 *Da viele der Daten noch in der Aufbereitung sind, enthält der Index einen kleinen Faktor, der eine grobe Korrektur zu Komfort Geschwindigkeit einer Radinfrastruktur vornimmt. Dabei gilt ein selbstständiger Radweg wird positiv bewertet, ein Gehweg, der für Radfahrer freigegeben ist, wird negativ bewertet.
 Wenn die Daten vollständig aufbereitet sind, werden wir hier auch detaillierte Informationen zum Algorhithmus hinter dem Happy-Bike-Index veröffentlichen.*
 
-## 
+
+<br>
 
 ## Woher kommen die Daten zu den Planungen? 
 
