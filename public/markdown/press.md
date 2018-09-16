@@ -1,7 +1,10 @@
 # Presse
 
-## Ansprechpartner
+### Ansprechpartner
+Ansprechpartner für die Presse: Heiko Rintelen presse@fixmyberlin.de
 
-## Hintergrund
+### Archiv Pressemitteilungen
++ 16.09.2018 - Launch FixMyBerlin
 
-## Bildmaterial
+### Bildmaterial
+Screenshots zur freien Verwendung durch die Presse:
