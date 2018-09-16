@@ -1,6 +1,6 @@
 # FAQs
 
-[Dies ist ein Ankertext](#hier-ist-eine-überschrift)
+[Dies ist ein Ankertext](#hier-ist-eine-Überschrift)
 
 
 ## [Wie wird der Happy-Bike-Index berechnet?](/hbi)
