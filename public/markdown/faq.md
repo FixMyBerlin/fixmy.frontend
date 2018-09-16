@@ -5,7 +5,6 @@
 **[Woher kommen die Daten zu den Planungen?](#Woher-kommen-die-Daten-zu-den-Planungen?)**  
 
 <br> 
-<br>
 
 ## Wie wird der Happy-Bike-Index berechnet?
 
