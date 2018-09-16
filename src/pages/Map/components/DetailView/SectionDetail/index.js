@@ -184,7 +184,7 @@ class SectionDetails extends PureComponent {
           </InfoSection>
 
           <DescriptionLink>
-            Wie wird der Happy-Bike-Level berechnet?
+            <a href="/faq">Wie wird der Happy-Bike-Level berechnet?</a>
           </DescriptionLink>
 
           <BetaWrapper>
