@@ -1,14 +1,9 @@
 # Häufige Fragen
 
-**[Wie wird der Happy-Bike-Index berechnet?](#Wie-wird-der-Happy-Bike-Index-berechnet?)**  
-
-**[Woher kommen die Daten zu den Planungen?](#Woher-kommen-die-Daten-zu-den-Planungen?)**  
-
-<br> 
 
 ## Wie wird der Happy-Bike-Index berechnet?
 
-**Bitte beachten: Der Happy-Bike-Index(HBI) ist aktuell noch in einer vorläufigen Beta-Version, weitere Daten zu Belag, Breite, Konfliktpotential mit Fußgänger\*innen müssen noch ausgewertet werden, damit eine Aussagekraft zur Beurteilung der vorhandenen Radwege entsteht.**
+**\*Der Happy-Bike-Index(HBI) ist aktuell noch in einer vorläufigen Beta-Version, weitere Daten zu Breite, Oberfläche, Zustand und Konfliktfreiheit mit Fußgänger\*innen müssen noch ausgewertet werden, damit eine Aussagekraft zur Beurteilung der vorhandenen Radwege entsteht.\***
 
 In dieser ersten Beta-Version wird nur die Sicherheit der Radfahrenden gegenüber dem Kfz-Verkehr ausgewertet. Dabei wird auch die empfundene Sicherheit mit einbezogen. Etwas vereinfacht ausgedrückt, die Frage ob sich auf dem Radweg sowohl ein 8 jähriges Kind als auch ein 80 jähriger Senior sicher fühlen. (Orientierung für die Annahmen und Berechnungen  sind die Vorgaben der ERA 2012 - Empfehlungen für die Anlage von Radverkehrsanlagen.)
 
