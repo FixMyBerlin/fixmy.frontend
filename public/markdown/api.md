@@ -7,4 +7,4 @@ Zur [API für Planungsabschnitte](https://api.fixmyberlin.de/api/planning-sectio
 
 Genaue Dokumentation aller Werte folgt.
 
-Bei gesonderter Lizenzierung schreib bitte an hello@fixmyberlin.de
+Bei gesonderter Lizenzierung schreib bitte an <a href="mailto:hello@fixmyberlin.de">hello@fixmyberlin.de</a>
