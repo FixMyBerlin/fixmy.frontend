@@ -21,6 +21,10 @@ const AnalysisWrapper = styled.div`
   overflow-y: scroll;
 `;
 
+const StyledSelect = styled(Select)`
+  max-width: 50%;
+`;
+
 const AnalysisContent = styled.div`
   max-width: 650px;
   margin: 0 auto;
@@ -59,7 +63,7 @@ const phaseOptions = [
 const sortOptions = [
   { value: 'likes', label: 'Likes' },
   { value: 'length', label: 'Länge' },
-  // { value: 'construction_completed', label: 'Fertigstellung' }
+  { value: 'construction_completed', label: 'Fertigstellung' }
 ];
 
 function filterDistrict(districtName) {
@@ -118,7 +122,7 @@ class Analysis extends PureComponent {
           </AnalysisHeader>
           <Card>
             <Flex justifyContent="space-between">
-              <Select
+              <StyledSelect
                 title="Wähle einen Bezirk:"
                 options={districtOptions}
                 onChange={this.onDistrictChange}
@@ -126,7 +130,7 @@ class Analysis extends PureComponent {
                 value={selectedDistrict || 'all'}
                 isVisible={!isLoading}
               />
-              <Select
+              <StyledSelect
                 title="Phase filtern:"
                 options={phaseOptions}
                 onChange={this.onPhaseFilterChange}
@@ -134,7 +138,7 @@ class Analysis extends PureComponent {
                 value={selectedPhase || 'all'}
               />
             </Flex>
-            <PieChart data={filteredDataDistrict} isLoading={isLoading} />
+            <PieChart data={filteredData} isLoading={isLoading} />
           </Card>
 
           <AnalysisControls isVisible={!isLoading && hasData}>

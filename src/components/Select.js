@@ -12,6 +12,7 @@ const StyledSelect = styled.select`
   text-transform: uppercase;
   color: ${config.colors.darkgrey};
   margin-top: 8px;
+  max-width: 100%;
 
   &:focus {
     outline: none;
@@ -28,14 +29,14 @@ class Select extends PureComponent {
   }
 
   render() {
-    const { title, options, onChange, disabled, value, isVisible } = this.props;
+    const { title, options, onChange, disabled, value, isVisible, className } = this.props;
 
     if (!isVisible) {
       return null;
     }
 
     return (
-      <SelectWrapper>
+      <SelectWrapper className={className}>
         {title && <Label>{title}</Label>}
         <StyledSelect onChange={onChange} disabled={disabled} value={value}>
           {options.map(o => (

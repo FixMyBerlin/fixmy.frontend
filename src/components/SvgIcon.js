@@ -6,6 +6,16 @@ class SvgIcon extends PureComponent {
   }
 
   componentDidMount() {
+    this.loadIcon();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.type !== this.props.type) {
+      this.loadIcon();
+    }
+  }
+
+  loadIcon = () => {
     import(`~/images/${this.props.type}.svg`).then((Icon) => {
       this.setState({ icon: Icon.default(this.props) });
     });
