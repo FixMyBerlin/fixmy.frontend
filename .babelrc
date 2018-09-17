@@ -6,7 +6,8 @@
   "plugins": [
     "@babel/plugin-proposal-class-properties",
     "babel-plugin-styled-components",
-    "@babel/plugin-syntax-dynamic-import"
+    "@babel/plugin-syntax-dynamic-import",
+    "babel-plugin-idx"
   ],
   "env": {
     "production": {

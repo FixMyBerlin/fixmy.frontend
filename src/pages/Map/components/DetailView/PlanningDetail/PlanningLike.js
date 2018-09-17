@@ -70,14 +70,14 @@ class PlanningLike extends PureComponent {
 
   updateLikes = async () => {
     // @TODO: api route doesnt exist
-    // const count = await getLikes(this.props.id, this.props.token);
-    this.setState({ count: 0 });
+    const count = await getLikes(this.props.id, this.props.token);
+    this.setState({ count });
   }
 
   inc = async () => {
     // @TODO: api route doesnt exist
-    // const count = await likeDetail(this.props.id, this.props.token);
-    this.setState({ count: this.state.count + 1, bouncy: false });
+    const count = await likeDetail(this.props.id, this.props.token);
+    this.setState({ count, bouncy: false });
 
     setTimeout(() => {
       this.setState({ bouncy: true });

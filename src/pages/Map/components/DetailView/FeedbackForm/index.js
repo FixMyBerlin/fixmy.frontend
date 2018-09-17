@@ -23,8 +23,6 @@ const ButtonWrapper = styled.div`
 
 class FeedbackForm extends PureComponent {
   onSubmit(values, { setSubmitting, setErrors }) {
-    console.log('submit form', values);
-
     setSubmitting(false);
     setErrors(false);
   }

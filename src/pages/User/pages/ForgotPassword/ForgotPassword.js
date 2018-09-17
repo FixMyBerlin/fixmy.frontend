@@ -9,7 +9,7 @@ const formConfig = [
   { id: 'email', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' }
 ];
 
-class Login extends PureComponent {
+class ForgotPassword extends PureComponent {
   onSubmit = (values, params) => {
     this.props.dispatch(resetPassword(values, params));
   }
@@ -27,4 +27,4 @@ class Login extends PureComponent {
   }
 }
 
-export default connect(state => state.UserState)(Login);
+export default connect(state => state.UserState)(ForgotPassword);

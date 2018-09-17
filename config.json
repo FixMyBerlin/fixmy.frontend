@@ -114,7 +114,8 @@
     "analyse": "/analyse",
     "signup": "/registrieren",
     "login": "/anmelden",
-    "passwordReset": "/passwort-vergessen",
+    "forgotPassword": "/passwort-vergessen",
+    "resetPassword": "/reset",
     "emailVerification": "/email-verification",
     "profile": "/profil"
   },

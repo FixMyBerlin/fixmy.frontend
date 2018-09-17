@@ -15,7 +15,8 @@ import Analysis from '~/pages/Analysis';
 import Login from '~/pages/User/pages/Login';
 import Signup from '~/pages/User/pages/Signup';
 import Profil from '~/pages/User/pages/Profil';
-import PasswordReset from '~/pages/User/pages/PasswordReset';
+import ForgotPassword from '~/pages/User/pages/ForgotPassword';
+import ResetPassword from '~/pages/User/pages/ResetPassword';
 import EmailVerification from '~/pages/User/pages/EmailVerification';
 import { verify } from '~/pages/User/UserState';
 
@@ -53,7 +54,8 @@ class App extends PureComponent {
               {/* user pages */}
               <Route path={config.routes.signup} component={Signup} />
               <Route path={config.routes.login} component={Login} />
-              <Route path={config.routes.passwordReset} component={PasswordReset} />
+              <Route path={config.routes.forgotPassword} component={ForgotPassword} />
+              <Route path={`${config.routes.resetPassword}/:uid/:token`} component={ResetPassword} />
               <Route path={config.routes.emailVerification} component={EmailVerification} />
               <PrivateRoute path={config.routes.profile} token={this.props.token} component={Profil} />
 

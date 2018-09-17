@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { connect as formikConnect, getIn } from 'formik';
+import { connect as formikConnect } from 'formik';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import Title from '~/components/Title';
