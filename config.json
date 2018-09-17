@@ -54,6 +54,13 @@
         "link": "/faq",
         "icon": "question",
         "border": false
+      },
+      {
+        "type": "link",
+        "label": "API",
+        "link": "/api",
+        "icon": "api",
+        "border": false
       }
     ],
     "footeritems": [
@@ -95,7 +102,11 @@
     {
       "key": "faq",
       "route": "/faq"
-    }
+    },
+    {
+      "key": "api",
+      "route": "/api"
+    },
   ],
   "routes": {
     "plannings": "/planungen",
