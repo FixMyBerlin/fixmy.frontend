@@ -5,7 +5,7 @@
 
 **\*Der Happy-Bike-Index(HBI) ist aktuell noch in einer vorläufigen Beta-Version, weitere Daten zu Breite, Oberfläche, Zustand und Konfliktfreiheit mit Fußgänger\*innen müssen noch ausgewertet werden, damit eine Aussagekraft zur Beurteilung der vorhandenen Radwege entsteht.\***
 
-In dieser ersten Beta-Version wird nur die Sicherheit der Radfahrenden gegenüber dem Kfz-Verkehr ausgewertet. Dabei wird auch die empfundene Sicherheit mit einbezogen. Etwas vereinfacht ausgedrückt, die Frage ob sich auf dem Radweg sowohl ein 8 jähriges Kind als auch ein 80 jähriger Senior sicher fühlen. (Orientierung für die Annahmen und Berechnungen  sind die Vorgaben der ERA 2012 - Empfehlungen für die Anlage von Radverkehrsanlagen.)
+In dieser ersten Version wird nur die Sicherheit der Radfahrenden gegenüber dem Kfz-Verkehr ausgewertet. Also die Frage, wieviel Schutz bietet der Radweg vor dem Autoverkehr, dabei wird auch die empfundene Sicherheit mit einbezogen, so wie es das [Mobilitätsgesetz](https://www.berlin.de/senuvk/verkehr/mobilitaetsgesetz/ "Mobilitätsgesetz") vorsieht. Der Index sagt etwas vereinfacht ausgedrückt ob sich auf dem Radweg sowohl ein achtjähriges Kind als auch ein 80-jähriger Senior noch sicher fühlen. 
 
 Wir betrachten dafür zwei Faktoren:
 <br> 
@@ -18,7 +18,7 @@ Die Infrastruktur für den Radverkehr kann sehr unterschiedlich sein. Sie variie
 
 Diese beiden Faktoren werden miteinander verrechnet. Eine besonders viel und schnell befahrene Straße braucht eine Infrastruktur die einen hohen Schutz bietet und eine wenig befahrene Straße mit Tempo 30 ist z.B. mit einem Radfahrstreifen ausreichend sicher für Radfahrer\*innen..
 
-*Da viele der Daten noch in der Aufbereitung sind, enthält der Index einen kleinen Faktor, der eine grobe Korrektur zu Komfort und Geschwindigkeit der Radinfrastruktur vornimmt. Dabei gilt ein selbstständiger Radweg wird positiv bewertet, ein Gehweg, der für Radfahrer freigegeben ist, wird negativ bewertet.
+*Orientierung für die Annahmen und Berechnungen sind die Vorgaben der ERA 2012 - Empfehlungen für die Anlage von Radverkehrsanlagen. Da viele der Daten noch in der Aufbereitung sind, enthält der Index einen kleinen Faktor, der eine grobe Korrektur zu Komfort und Geschwindigkeit der Radinfrastruktur vornimmt. Dabei gilt ein selbstständiger Radweg wird positiv bewertet, ein Gehweg, der für Radfahrer freigegeben ist, wird negativ bewertet.
 Wenn die Daten vollständig aufbereitet sind, werden wir hier auch detaillierte Informationen zum Algorhithmus hinter dem Happy-Bike-Index veröffentlichen.*
 
 
