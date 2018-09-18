@@ -19,7 +19,8 @@ export const homeLabels = {
     Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird.
     Hier siehst du bald, was dafür geplant wird. Trage dich für Updates zum Newsletter ein.
   `,
-  button: 'Worum geht es hier genau?'
+  button: 'Worum geht es hier genau?',
+  mapButton: 'zeige die Karte'
 };
 
 export default {

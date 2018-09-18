@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
-// import Link from 'react-router-dom/Link';
+import Link from 'react-router-dom/Link';
 
 import { homeLabels } from '~/labels';
 import StyledLink from '~/components/Link';
@@ -8,6 +8,7 @@ import ContentOverlay from '~/components/ContentOverlay';
 import FMBLogo from '~/components/FMBLogo';
 import Title from '~/components/Title';
 import MenuButton from '~/components/MenuButton';
+import Button from '~/components/Button';
 import SocialSharer from '~/components/Social/SocialSharer';
 import Text from '~/components/Text';
 
@@ -24,6 +25,10 @@ const HomeContent = styled.div`
 const AboutLinkWrapper = styled.div`
   margin: 10px 40px;
   font-size: 14px;
+`;
+
+const MapLinkWrapper = styled.div`
+  margin: 10px;
 `;
 
 // const MapButton = styled(Button)`
@@ -55,6 +60,11 @@ export default () => (
         <AboutLinkWrapper>
           <StyledLink to="/info">{homeLabels.button}</StyledLink>
         </AboutLinkWrapper>
+        <MapLinkWrapper>
+          <Link to="/planungen">
+            <Button>{homeLabels.mapButton}</Button>
+          </Link>
+        </MapLinkWrapper>
         <SubscribtionWidget />
         <SocialSharer />
       </HomeContent>
