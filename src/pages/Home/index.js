@@ -57,9 +57,6 @@ export default () => (
           <Title>{homeLabels.title}</Title>
           <Text>{homeLabels.intro}</Text>
         </div>
-        <AboutLinkWrapper>
-          <StyledLink to="/info">{homeLabels.button}</StyledLink>
-        </AboutLinkWrapper>
         <MapLinkWrapper>
           <Link to="/planungen">
             <Button>{homeLabels.mapButton}</Button>
