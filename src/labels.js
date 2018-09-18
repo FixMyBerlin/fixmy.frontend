@@ -1,7 +1,7 @@
 export const districts = [
   'Charlottenburg-Wilmersdorf',
   'Friedrichshain-Kreuzberg',
-  'Lichtenberg-Hohenschönhausen',
+  'Lichtenberg',
   'Marzahn-Hellersdorf',
   'Mitte',
   'Neukölln',
