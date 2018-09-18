@@ -27,7 +27,7 @@ class Signup extends PureComponent {
     return (
       <ContentPageWrapper>
         <UserForm
-          title="Anmelden"
+          title="Registrieren"
           buttonLabel="Anmelden"
           formConfig={formConfig}
           onSubmit={this.onSubmit}
