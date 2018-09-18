@@ -8,12 +8,12 @@ Ansprechpartner für die Presse: Heiko Rintelen presse@fixmyberlin.de
 
 ### Bildmaterial
 Screenshots zur freien Verwendung durch die Presse: <br>
-[![Sc_Planung-Uebersicht](https://fixmyberlin.de/uploads/Planungsansicht_fixmyberlin.jpg "Screenshot-Planungen")]
-[![Sc_Planung-Holzmarkt](https://fixmyberlin.de/uploads/Planung_Holzmarkt_fixmyberlin.jpg "Screenshot-Planung-Holzmarkt")]
-[![Sc_Happy-Bike-Level](https://fixmyberlin.de/uploads/Happy-Bike-Level_gesamt_fixmyberlin.jpg "Screenshot-Happy-Bike-Level")]
-[![Sc_Happy-Bike-Level-sehrgut+ok](https://fixmyberlin.de/uploads/Happy-Bike-Level_gut_fixmyberlin.jpg "Screenshot-Happy-Bike-Level-gut")]
-[![Sc_Happy-Bike-Level-schlecht+sehrschlecht](https://fixmyberlin.de/uploads/Happy-Bike-Level_schlecht_fixmyberlin.jpg "Screenshot-Happy-Bike-Level-gut")]
+[Sc_Planung-Uebersicht](https://fixmyberlin.de/uploads/Planungsansicht_fixmyberlin.jpg "Screenshot-Planungen")
+[Sc_Planung-Holzmarkt](https://fixmyberlin.de/uploads/Planung_Holzmarkt_fixmyberlin.jpg "Screenshot-Planung-Holzmarkt")
+[Sc_Happy-Bike-Level](https://fixmyberlin.de/uploads/Happy-Bike-Level_gesamt_fixmyberlin.jpg "Screenshot-Happy-Bike-Level")
+[Sc_Happy-Bike-Level-sehrgut+ok](https://fixmyberlin.de/uploads/Happy-Bike-Level_gut_fixmyberlin.jpg "Screenshot-Happy-Bike-Level-gut")
+[Sc_Happy-Bike-Level-schlecht+sehrschlecht](https://fixmyberlin.de/uploads/Happy-Bike-Level_schlecht_fixmyberlin.jpg "Screenshot-Happy-Bike-Level-gut")
 
 ## Auswertungen
-- [![Durchschnittliche Happy Bike Index pro Bezirk sowie die Anzahl / Kilometer Hauptstraßen](https://fixmyberlin.de/uploads/planning-sections.hbi.csv)]
-- [![Happy Bike Index übersetzt anhand von Schwellenwerten (7.5 => save|sicher, 5 => ok, 2.5 => bad|unsicher, 0 => mad|sehr unsicher)](https://fixmyberlin.de/uploads/planning-sections.analyse.csv)]
+- [Durchschnittliche Happy Bike Index pro Bezirk sowie die Anzahl / Kilometer Hauptstraßen](https://fixmyberlin.de/uploads/planning-sections.hbi.csv)
+- [Happy Bike Index übersetzt anhand von Schwellenwerten (7.5 => save|sicher, 5 => ok, 2.5 => bad|unsicher, 0 => mad|sehr unsicher)](https://fixmyberlin.de/uploads/planning-sections.analyse.csv)
