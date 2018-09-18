@@ -4,7 +4,6 @@ FixMyBerlin GbR<br />
 Kottbusser Damm 25/26<br />
 10967 Berlin<br />
 E-Mail-Adresse: [hello@fixmyberlin.de](mailto:hello@fixmyberlin.de)<br />
-Telefon: 030 / 549 08 665
 
 Gesellschafter: Boris Hekele und Heiko Rintelen
 
