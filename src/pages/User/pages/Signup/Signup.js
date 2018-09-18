@@ -20,7 +20,12 @@ const formConfig = [
 
 class Signup extends PureComponent {
   onSubmit = (values, params) => {
-    this.props.dispatch(signup(values, params));
+    const post = {
+      ...values,
+      email: values.username
+    };
+
+    this.props.dispatch(signup(post, params));
   }
 
   render() {
