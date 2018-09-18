@@ -3,7 +3,7 @@
 Alle API Inhalte stehen unter der [ODbL Lizenz](https://opendatacommons.org/licenses/odbl/) zur Verfügung. 
 
 Zur [API für Planungen](https://api.fixmyberlin.de/api/plannings)<br />
-Zur [API für Planungsabschnitte inkl. Happy-Bike-Index](https://api.fixmyberlin.de/api/planning-sections)
+Zur [API für Planungsabschnitte inkl. Happy-Bike-Index](https://api.fixmyberlin.de/api/planning-sections) ([Happy... was?](/faq))
 -   "cycling_infrastructure_ratio": 1 // Gesamt
 -   "bike_path_ratio": 0 // Radweg
 -   "shared_use_path_ratio": 0.512 // Fahren auf Gehweg erlaubt
