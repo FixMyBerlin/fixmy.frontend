@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import UserForm from '~/pages/User/components/UserForm';
-import { resetPassword } from '~/pages/User/UserState';
+import { forgotPassword } from '~/pages/User/UserState';
 
 const formConfig = [
   { id: 'email', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' }
@@ -11,7 +11,7 @@ const formConfig = [
 
 class ForgotPassword extends PureComponent {
   onSubmit = (values, params) => {
-    this.props.dispatch(resetPassword(values, params));
+    this.props.dispatch(forgotPassword(values, params));
   }
 
   render() {

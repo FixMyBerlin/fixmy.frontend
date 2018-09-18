@@ -1,7 +1,7 @@
 import uuidv4 from 'uuid/v4';
 
 import { set, remove, get } from '~/services/storage';
-import { apiSignup, apiLogin, apiUpdate, apiUser, apiVerify, apiPasswordReset } from '~/pages/User/apiservice';
+import { apiSignup, apiLogin, apiUpdate, apiUser, apiVerify, apiPasswordReset, apiPasswordForgot } from '~/pages/User/apiservice';
 import history from '~/history';
 
 const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
@@ -13,6 +13,8 @@ const LOGOUT = 'User/UserState/LOGOUT';
 const LOGOUT_SUCCESS = 'User/UserState/LOGOUT_SUCCESS';
 const RESET_PASSWORD = 'User/UserState/RESET_PASSWORD';
 const RESET_PASSWORD_SUCCESS = 'User/UserState/RESET_PASSWORD_SUCCESS';
+const FORGOT_PASSWORD = 'User/UserState/FORGOT_PASSWORD';
+const FORGOT_PASSWORD_SUCCESS = 'User/UserState/FORGOT_PASSWORD_SUCCESS';
 const UPDATE = 'User/UserState/UPDATE';
 const VERIFY = 'User/UserState/VERIFY';
 const VERIFY_SUCCESS = 'User/UserState/VERIFY_SUCCESS';
@@ -141,6 +143,19 @@ export function resetPassword(values, formFunctions) {
   };
 }
 
+export function forgotPassword(values, formFunctions) {
+  return async (dispatch) => {
+    dispatch({ type: FORGOT_PASSWORD });
+
+    const data = await apiPasswordForgot(values, formFunctions);
+
+    if (!data.error) {
+      history.push('/');
+      dispatch({ type: FORGOT_PASSWORD_SUCCESS });
+    }
+  };
+}
+
 export default function MapStateReducer(state = initialState, action = {}) {
   switch (action.type) {
     case UPDATE_HBI: {
@@ -161,6 +176,8 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case LOGOUT_SUCCESS:
     case RESET_PASSWORD:
     case RESET_PASSWORD_SUCCESS:
+    case FORGOT_PASSWORD:
+    case FORGOT_PASSWORD_SUCCESS:
     case VERIFY:
     case VERIFY_SUCCESS:
     case PROFILE:

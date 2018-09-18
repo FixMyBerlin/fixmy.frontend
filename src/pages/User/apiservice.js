@@ -8,7 +8,11 @@ async function handleRequest(route, { method = 'POST', json = {}, token = false 
   const headers = token ? { Authorization: `JWT ${token}` } : {};
 
   try {
-    response = await ky(`${config.apiUrl}/${route}`, { method, json, headers })[respType]();
+    if (respType) {
+      response = await ky(`${config.apiUrl}/${route}`, { method, json, headers })[respType]();
+    } else {
+      await ky(`${config.apiUrl}/${route}`, { method, json, headers });
+    }
   } catch (e) {
     const error = await e.response.json();
     setErrors(error);
@@ -65,7 +69,11 @@ export async function apiUser(token) {
 }
 
 export async function apiPasswordReset(json, formFunctions) {
-  return handleRequest('password/reset/', { method: 'POST', json }, formFunctions);
+  return handleRequest('password/reset/confirm', { method: 'POST', json }, formFunctions, false);
+}
+
+export async function apiPasswordForgot(json, formFunctions) {
+  return handleRequest('password/reset', { method: 'POST', json }, formFunctions, false);
 }
 
 export default {
