@@ -4,7 +4,7 @@
 Ansprechpartner für die Presse: Heiko Rintelen presse@fixmyberlin.de
 
 ### Archiv Pressemitteilungen
-+ 19.09.2018 - [Launch FixMyBerlin - Ab heute zeigt fixmyberlin.de, wo in Berlin neue Radwege entstehen und wie sicher die Berliner Hauptstraßen für Radfahrende sind.](/uploads/pressemitteilung_fixmyberlin_20180919.pdf "PM-Launch-FixMyBerlin")
++ 19.09.2018 - [Launch FixMyBerlin - Ab heute zeigt fixmyberlin.de, wo in Berlin neue Radwege entstehen und wie sicher die Berliner Hauptstraßen für Radfahrende sind.](/uploads/pressemitteilung_launch_fixmyberlin_20180919.pdf "PM-Launch-FixMyBerlin")
 
 ### Bildmaterial
 Screenshots zur freien Verwendung durch die Presse: <br>
