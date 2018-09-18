@@ -1,12 +1,12 @@
 import ky from 'ky';
 
-export async function likeDetail(id, token, model = 'plannings') {
+export async function likeDetail(apiUrl, token) {
   let response = {};
 
   const headers = { Authorization: `JWT ${token}` };
 
   try {
-    response = await ky.post(`${config.apiUrl}/${model}/${id}/likes`, { headers }).json();
+    response = await ky.post(`${apiUrl}/likes`, { headers }).json();
   } catch (e) {
     const error = await e.response.json();
     response.error = error;
@@ -15,13 +15,13 @@ export async function likeDetail(id, token, model = 'plannings') {
   return response;
 }
 
-export async function getLikes(id, token, model = 'plannings') {
+export async function getLikes(apiUrl, token) {
   let response = {};
 
   const headers = { Authorization: `JWT ${token}` };
 
   try {
-    response = await ky.get(`${config.apiUrl}/${model}/${id}/likes`, { headers }).json();
+    response = await ky.get(`${apiUrl}/likes`, { headers }).json();
   } catch (e) {
     const error = await e.response.json();
     response.error = error;

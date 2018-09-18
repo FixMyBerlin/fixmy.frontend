@@ -88,9 +88,10 @@ class PlanningDetails extends PureComponent {
     }
 
     const planning = plannings[sideIndex];
+
     const {
       title, description, construction_completed, external_url, responsible, costs, faq, photos,
-      phase, construction_started, draft_submitted, cross_section_photo
+      phase, construction_started, draft_submitted, cross_section_photo, url
     } = planning;
 
     const showFaq = faq && faq.length;
@@ -162,7 +163,7 @@ class PlanningDetails extends PureComponent {
             </DetailBodySection>
           ) : null}
         </DetailBody>
-        {config.showLikeButton && <PlanningLike token={this.props.token} id={this.props.match.params.id} />}
+        {config.showLikeButton && <PlanningLike token={this.props.token} url={url} id={this.props.match.params.id} />}
       </Fragment>
     );
   }
