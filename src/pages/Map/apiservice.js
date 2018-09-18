@@ -6,7 +6,7 @@ export async function likeDetail(id, token, model = 'plannings') {
   const headers = { Authorization: `JWT ${token}` };
 
   try {
-    response = await ky.post(`${config.apiUrl}/${model}/${id}/likes/`, { headers }).json();
+    response = await ky.post(`${config.apiUrl}/${model}/${id}/likes`, { headers }).json();
   } catch (e) {
     const error = await e.response.json();
     response.error = error;
@@ -21,7 +21,7 @@ export async function getLikes(id, token, model = 'plannings') {
   const headers = { Authorization: `JWT ${token}` };
 
   try {
-    response = await ky.get(`${config.apiUrl}/${model}/${id}/likes/`, { headers }).json();
+    response = await ky.get(`${config.apiUrl}/${model}/${id}/likes`, { headers }).json();
   } catch (e) {
     const error = await e.response.json();
     response.error = error;
