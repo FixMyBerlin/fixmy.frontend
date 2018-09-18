@@ -21,7 +21,7 @@
   "menu": {
     "size": 320,
     "profileLabel": "Zum Profil",
-    "loginLabel": "Anmelden",
+    "loginLabel": "Login",
     "items": [
       {
         "type": "link",
@@ -221,6 +221,6 @@
   "offlineMode": false,
   "isSwitchEnabled": true,
   "debug": false,
-  "showLikeButton": true,
+  "showLikeButton": false,
   "showFeedBackForm": false
 }

@@ -67,11 +67,6 @@ class Signup extends PureComponent {
         <Title>Profil</Title>
         <Text>Hier kannst du deine E-Mail Adresse und Passwort ändern.</Text>
         <UserForm
-          buttonLabel="E-Mail ändern"
-          formConfig={formConfigUserName}
-          onSubmit={this.onSubmit}
-        />
-        <UserForm
           buttonLabel="Passwort ändern"
           formConfig={formConfigPasswordCleared}
           onSubmit={this.onSubmit}
