@@ -27,6 +27,10 @@ const StyledMarkdown = styled(Markdown)`
   p, li {
     ${getTextStyles()}
   }
+
+  img {
+    max-width: 250px;
+  }
 `;
 
 function loadImage(mdSrc) {
