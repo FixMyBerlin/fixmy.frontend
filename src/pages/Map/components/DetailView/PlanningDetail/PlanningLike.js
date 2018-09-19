@@ -97,16 +97,17 @@ class PlanningLike extends PureComponent {
 
   render() {
     const { token } = this.props;
+    const { userLike, count, bouncy } = this.state;
 
     const label = token ?
-      <Label>gefällt mir</Label> :
+      <Label>{userLike ? 'Diese Planung gefällt mir' : 'gefällt dir die Planung?'}</Label> :
       <Label>Um eine Planung zu liken, musst du <Link to={config.routes.login}>eingeloggt sein</Link>.</Label>;
 
     return (
       <PlanningLikeWrapper>
         <LikeButtonWrapper>
-          <Label bold>{this.state.count}</Label>
-          <LikeButton isLiked={this.state.userLike} disabled={!token} onClick={this.handleClick} bouncy={this.state.bouncy}>
+          <Label bold>{count}</Label>
+          <LikeButton isLiked={userLike} disabled={!token} onClick={this.handleClick} bouncy={bouncy}>
             <HeartIcon />
           </LikeButton>
           {label}
