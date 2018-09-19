@@ -53,7 +53,7 @@
         "label": "FAQ",
         "link": "/faq",
         "icon": "question",
-        "border": false
+        "border": true
       },
       {
         "type": "link",
