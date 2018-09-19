@@ -39,7 +39,9 @@ const LikeButton = styled.button`
   box-shadow: ${buttonBoxShadow};
   transition: box-shadow .15s;
   animation: ${props => (props.bouncy ? `${bounce} 0.8s` : 'none')};
-  border: none;
+  border-style: solid;
+  border-color: #cf0a7d; 
+  border-width: ${props => (props.isLiked ? '2px' : '0')};
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
 
   svg {
@@ -50,7 +52,6 @@ const LikeButton = styled.button`
 
   &:focus {
     outline: none;
-    border: none;
   }
 
   &:hover {
@@ -62,7 +63,7 @@ class PlanningLike extends PureComponent {
   state = {
     count: 0,
     bouncy: false,
-    enabled: false
+    userLike: false
   }
 
   componentDidMount() {
@@ -74,11 +75,11 @@ class PlanningLike extends PureComponent {
     this.handleLikeResponse(res);
   }
 
-  inc = async () => {
+  handleClick = async () => {
     this.setState({ bouncy: false });
 
     setTimeout(() => {
-      this.setState({ bouncy: true, enabled: false });
+      this.setState({ bouncy: true });
     }, 1);
 
     const res = await likeDetail(this.props.url, this.props.token);
@@ -89,24 +90,24 @@ class PlanningLike extends PureComponent {
     if (typeof res.likes !== 'undefined' && typeof res.user_has_liked !== 'undefined' && !res.error) {
       this.setState({
         count: res.likes,
-        enabled: !res.user_has_liked
+        userLike: res.user_has_liked
       });
     }
   }
 
   render() {
     const { token } = this.props;
-    const disabled = !token || !this.state.enabled;
+    const { userLike, count, bouncy } = this.state;
 
     const label = token ?
-      <Label>gefällt mir</Label> :
+      <Label>{userLike ? 'Diese Planung gefällt mir' : 'gefällt dir die Planung?'}</Label> :
       <Label>Um eine Planung zu liken, musst du <Link to={config.routes.login}>eingeloggt sein</Link>.</Label>;
 
     return (
       <PlanningLikeWrapper>
         <LikeButtonWrapper>
-          <Label bold>{this.state.count}</Label>
-          <LikeButton disabled={disabled} onClick={this.inc} bouncy={this.state.bouncy}>
+          <Label bold>{count}</Label>
+          <LikeButton isLiked={userLike} disabled={!token} onClick={this.handleClick} bouncy={bouncy}>
             <HeartIcon />
           </LikeButton>
           {label}
