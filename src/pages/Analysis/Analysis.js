@@ -61,7 +61,6 @@ const phaseOptions = [
 ];
 
 const sortOptions = [
-  { value: 'likes', label: 'Likes' },
   { value: 'length', label: 'Länge' },
   { value: 'construction_completed', label: 'Fertigstellung' }
 ];
@@ -147,7 +146,7 @@ class Analysis extends PureComponent {
               options={sortOptions}
               onChange={this.onSort}
               disabled={isLoading}
-              value={selectedSort || 'likes'}
+              value={selectedSort || 'construction_completed'}
             />
           </AnalysisControls>
 

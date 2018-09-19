@@ -154,10 +154,6 @@ class PlanningListItem extends PureComponent {
             {this.props.title}
           </ItemSubTitle>
           <ItemFooter>
-            <Likes>
-              <HeartIcon />
-              <Label light>0</Label>
-            </Likes>
             <DateWrapper>
               Fertigstellung: {constructionCompleted}
             </DateWrapper>
