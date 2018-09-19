@@ -16,5 +16,5 @@ Screenshots zur freien Verwendung durch die Presse: <br>
 - [Screenshot_Happy-Bike-Level-schlecht+sehrschlecht](https://fixmyberlin.de/uploads/Happy-Bike-Level_schlecht_fixmyberlin.jpg "Screenshot-Happy-Bike-Level-gut")
 
 ## Auswertungen
-- [Durchschnittliche Happy Bike Index pro Bezirk sowie die Anzahl / Kilometer Hauptstraßen](https://fixmyberlin.de/uploads/planning-sections.hbi.csv)
+- [Durchschnittlicher Happy Bike Index pro Bezirk sowie die Anzahl / Kilometer Hauptstraßen](https://fixmyberlin.de/uploads/planning-sections.hbi.csv)
 - [Happy Bike Index übersetzt anhand von Schwellenwerten (7.5 => save|sicher, 5 => ok, 2.5 => bad|unsicher, 0 => mad|sehr unsicher)](https://fixmyberlin.de/uploads/planning-sections.analyse.csv)
