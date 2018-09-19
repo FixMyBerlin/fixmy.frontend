@@ -6,7 +6,7 @@ export default styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, .8);
+  background: rgba(255, 255, 255, .9);
   z-index: 100000;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
