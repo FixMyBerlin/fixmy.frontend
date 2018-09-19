@@ -30,5 +30,5 @@ Wenn nicht anders angegeben stehen die auf fixmyberlin.de verwendeten Fotos unte
 
 FixMyBerlin wird als forschungsbezogenes Start-Up durch Bundesmittel gefördert (Förderkennzeichen 19F1039A). [Projektsteckbrief](http://www.bmvi.de/SharedDocs/DE/Artikel/DG/mfund-projekte/fixmyberlin.html)
 
-<img src="./bmvi-logo.jpg" width="199" height="115"><br>
-<img src="./mfund-logo.jpg" width="200" height="100">
+[![Logo BMVI](./bmvi-logo.jpg "Logo BMVI")](http://www.bmvi.de/)
+[![Logo mFund](./mfund-logo.jpg "Logo mFund")](https://www.bmvi.de/DE/Themen/Digitales/mFund/Ueberblick/ueberblick.html)
