@@ -6,7 +6,6 @@ FixMyBerlin GbR<br />
 ℅ Pulsraum<br />
 Kottbusser Damm 25/26<br />
 E-Mail-Adresse: [hello@fixmyberlin.de](mailto:hello@fixmyberlin.de)<br />
-Telefon: 030 / 549 08 665<br />
 [Impressum](/impressum)
 
 ## Arten der verarbeiteten Daten:
