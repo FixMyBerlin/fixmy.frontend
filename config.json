@@ -21,7 +21,7 @@
   "menu": {
     "size": 320,
     "profileLabel": "Zum Profil",
-    "loginLabel": "Anmelden",
+    "loginLabel": "Login",
     "items": [
       {
         "type": "link",
@@ -106,6 +106,10 @@
     {
       "key": "api",
       "route": "/api"
+    },
+    {
+      "key": "newsletter-thank-you",
+      "route": "/newsletter-danke"
     }
   ],
   "routes": {

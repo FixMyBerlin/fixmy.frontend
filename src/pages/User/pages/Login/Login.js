@@ -31,9 +31,6 @@ class Login extends PureComponent {
           formConfig={formConfig}
           onSubmit={this.onSubmit}
         />
-        <StyledLink to={config.routes.forgotPassword}>
-          Passwort vergessen?
-        </StyledLink>
         <StyledLink to={config.routes.signup}>
           Ich habe noch keinen Account
         </StyledLink>
