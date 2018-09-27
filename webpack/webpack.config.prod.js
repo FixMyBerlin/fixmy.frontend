@@ -1,5 +1,6 @@
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');

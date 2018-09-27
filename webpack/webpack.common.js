@@ -25,7 +25,8 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      '~': Path.resolve(__dirname, '../src')
+      '~': Path.resolve(__dirname, '../src'),
+      'ky': Path.resolve(__dirname, '../src/utils/ky.js')
     }
   },
   module: {
