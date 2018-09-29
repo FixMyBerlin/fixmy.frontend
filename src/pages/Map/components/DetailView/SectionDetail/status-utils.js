@@ -24,14 +24,14 @@ export function getSafetyColor(sideData) {
 
 export function getRoadTypeLabel(sideData) {
   if (sideData.road_type >= 3) {
-    return 'ruhiger Verkehr';
+    return 'sehr starker Verkehr';
   } else if (sideData.road_type >= 2) {
-    return 'mittlerer Verkehr';
-  } else if (sideData.road_type >= 1) {
     return 'starker Verkehr';
+  } else if (sideData.road_type >= 1) {
+    return 'mittlerer Verkehr';
   }
 
-  return 'sehr starker Verkehr';
+  return 'ruhiger Verkehr';
 }
 
 export function getStreetCategoryLabel(data) {
