@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import idx from 'idx';
 import styled from 'styled-components';
+import slugify from 'slugify';
 
 import { numberFormat } from '~/utils/utils';
 import Label from '~/components/Label';
@@ -121,7 +122,9 @@ class PlanningListItem extends PureComponent {
 
   onClick = () => {
     const id = idx(this.props, _ => _.planning_section_ids[0]);
-    this.props.history.push(`/planungen/${id}`);
+    const name = idx(this.props, _ => _.planning_sections[0].name);
+    const slug = name ? slugify(name) : '';
+    this.props.history.push(`/planungen/${id}/${slug.toLowerCase()}`);
   }
 
   toggleExpanded = () => {
