@@ -98,7 +98,7 @@ class SectionDetails extends PureComponent {
     const { name, details } = data;
     const sideData = data.details[sideIndex];
     const hasSwitchButton = data.details && data.details.length > 1;
-    const orientationNames = getOrientationNames(sideData);
+    const orientationNames = getOrientationNames(data.details[0].orientation, data.details[1].orientation);
 
     if (!sideData) {
       return <div>Keine Daten vorhanden.</div>;

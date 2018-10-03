@@ -6,7 +6,7 @@ import slugify from 'slugify';
 import { numberFormat } from '~/utils/utils';
 import Label from '~/components/Label';
 import Button from '~/components/Button';
-import HeartIcon from '~/images/heart.svg';
+// import HeartIcon from '~/images/heart.svg';
 import DraftMarker from '~/images/planning-icons/konzept-marker.png';
 import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
@@ -64,20 +64,20 @@ const ItemFooter = styled.div`
   display: flex;
 `;
 
-const Likes = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 5x;
+// const Likes = styled.div`
+//   display: flex;
+//   align-items: center;
+//   margin-top: 5x;
 
-  svg {
-    width: 16px;
-    margin-right: 4px;
-  }
+//   svg {
+//     width: 16px;
+//     margin-right: 4px;
+//   }
 
-  path {
-    fill: ${config.colors.interaction};
-  }
-`;
+//   path {
+//     fill: ${config.colors.interaction};
+//   }
+// `;
 
 const DateWrapper = styled.div`
   margin-left: auto;

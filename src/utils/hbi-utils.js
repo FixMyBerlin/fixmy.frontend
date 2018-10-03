@@ -17,19 +17,41 @@ export function getHBIColorByIndex(index) {
   return stop ? stop.color : '#555';
 }
 
-export function getOrientationNames(props) {
-  const orientationKey = props.orientation ? 'orientation' : 'side0_orientation';
-  if (!props[orientationKey] || props[orientationKey] === 'O') {
-    return {
-      side0: 'Ostseite',
-      side1: 'Westseite'
-    };
+export function translateOrientationName(name) {
+  switch (name) {
+    case 'O':
+      return 'Ostseite';
+    case 'W':
+      return 'Westseite';
+    case 'N':
+      return 'Nordseite';
+    case 'S':
+      return 'Südseite';
+    default:
+      return '';
   }
+}
 
+export function getOrientationNames(side0, side1) {
   return {
-    side0: 'Südseite',
-    side1: 'Nordseite'
+    side0: translateOrientationName(side0),
+    side1: translateOrientationName(side1)
   };
+
+  // console.log(props);
+
+  // const orientationKey = props.orientation ? 'orientation' : 'side0_orientation';
+  // if (!props[orientationKey] || props[orientationKey] === 'O') {
+  //   return {
+  //     side0: 'Ostseite',
+  //     side1: 'Westseite'
+  //   };
+  // }
+
+  // return {
+  //   side0: 'Südseite',
+  //   side1: 'Nordseite'
+  // };
 }
 
 export default {

@@ -58,7 +58,7 @@ export default (props) => {
   const level0Color = getHBIColorByIndex(level0);
   const level1Color = getHBIColorByIndex(level1);
 
-  const orientationNames = getOrientationNames(props.section);
+  const orientationNames = getOrientationNames(props.section.side0_orientation, props.section.side1_orientation);
 
   return (
     <BikeLevelStatus {...props}>
