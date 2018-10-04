@@ -136,13 +136,10 @@ export function resetPassword(values, formFunctions) {
 
     const data = await apiPasswordReset(values, formFunctions);
 
-    console.log(data);
-
     if (!data.error) {
-      setTimeout(() => {
-        history.push('/');
-        dispatch({ type: RESET_PASSWORD_SUCCESS });
-      }, 3000);
+      formFunctions.setStatus('resetsuccess');
+    } else {
+      formFunctions.setStatus('reseterror');
     }
   };
 }
@@ -155,6 +152,9 @@ export function forgotPassword(values, formFunctions) {
 
     if (!data.error) {
       dispatch({ type: FORGOT_PASSWORD_SUCCESS });
+      formFunctions.setStatus('forgotsuccess');
+    } else {
+      formFunctions.setStatus('forgoterror');
     }
   };
 }

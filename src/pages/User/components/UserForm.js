@@ -25,6 +25,10 @@ function renderStatus(status) {
     case 'usernamesuccess': return <Text>Du hast Deine E-Mail-Adresse geändert, <Link to={config.routes.login}>bitte logge Dich neu ein</Link></Text>;
     case 'passwordsuccess': return <Text>Du hast Dein Passwort erfolgreich geändert.</Text>;
     case 'logoutsuccess': return <Text>Du hast dich erfolgreich ausgeloggt.</Text>;
+    case 'forgotsuccess': return <Text>Wir haben eine E-Mail zum zurücksetzen des Passworts geschickt. <Link to="/anmelden">Zurück zum Login</Link></Text>;
+    case 'forgoterror': return <FormFieldError>Beim zurücksetzen des Passworts ist ein Fehler aufgetreten.</FormFieldError>;
+    case 'resetsuccess': return <Text>Dein Passwort wurde zurückgesetzt. <Link to="/anmelden">Zum Login</Link></Text>;
+    case 'reseterror': return <FormFieldError>Beim zurücksetzen des Passworts ist ein Fehler aufgetretetn. <Link to="/anmelden">Zum Login</Link></FormFieldError>;
     default: return null;
   }
 }
