@@ -11,6 +11,7 @@ import MapPopup from '~/pages/Map/components/MapPopup';
 import MapControl from '~/pages/Map/components/MapControl';
 import MapContent from '~/pages/Map/components/MapContent';
 import SearchBar from '~/pages/Map/components/SearchBar';
+import FMBCredits from '~/pages/Map/components/FMBCredits';
 import FMBLogo from '~/components/FMBLogo';
 import Store from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/utils/style-utils';
@@ -149,6 +150,7 @@ class MapViewComponent extends PureComponent {
           path="/my-hbi"
           component={MyHBI}
         />
+        {isEmbedMode && <FMBCredits />}
       </MapView>
     );
   }
