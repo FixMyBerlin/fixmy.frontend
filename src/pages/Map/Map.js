@@ -74,6 +74,7 @@ class MapViewComponent extends PureComponent {
     const isDesktopView = matchMediaSize(breakpoints.m);
     const displayLegend = !this.props.activeSection || isDesktopView;
     const calculatePopupPosition = isDesktopView && this.props.displayPopup;
+    const { isEmbedMode } = this.props;
 
     return (
       <MapView>
@@ -107,9 +108,9 @@ class MapViewComponent extends PureComponent {
                 position="bottom-right"
               />
             )}
-            <MapControl position="top-right">
+            {!isEmbedMode && <MapControl position="top-right">
               <StyledFMBLogo showBetaIcon width={67} />
-            </MapControl>
+            </MapControl>}
           </WebglMap>
 
           {this.props.displayPopup && <MapPopup />}
@@ -172,6 +173,7 @@ export default withRouter(
     animate: state.MapState.animate,
     displayPopup: state.MapState.displayPopup,
     planningData: state.MapState.planningData,
+    isEmbedMode: state.AppState.isEmbedMode,
     ...state.UserState
   }))(MapViewComponent)
 );

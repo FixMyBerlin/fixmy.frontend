@@ -36,10 +36,12 @@ class App extends PureComponent {
   }
 
   render() {
+    const { isEmbedMode } = this.props;
+
     return (
       <Router history={history}>
         <AppWrapper>
-          <Menu />
+          {!isEmbedMode && <Menu />}
           <AppContent>
             <Switch>
               <Route exact path="/" component={Home} />
@@ -81,5 +83,6 @@ class App extends PureComponent {
 }
 
 export default connect(state => ({
-  token: state.UserState.token
+  token: state.UserState.token,
+  isEmbedMode: state.AppState.isEmbedMode
 }))(App);

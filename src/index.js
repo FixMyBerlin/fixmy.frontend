@@ -4,12 +4,13 @@ import { Provider } from 'react-redux';
 
 import { init as initStyle } from '~/utils/style-utils';
 import history from '~/history';
-import { updateHistory } from '~/AppState';
+import { updateHistory, detectEmbedMode } from '~/AppState';
 import Store from '~/store';
 import App from '~/App';
 
 history.listen(location => Store.dispatch(updateHistory(location)));
 Store.dispatch(updateHistory(history.location));
+Store.dispatch(detectEmbedMode(history.location));
 
 initStyle();
 

@@ -1,4 +1,5 @@
 import matchPath from 'react-router/matchPath';
+import qs from 'qs';
 
 const UPDATE_HISTORY = 'App/AppState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'App/AppState/SET_ACTIVE_SECTION';
@@ -9,7 +10,19 @@ const CLOSE_MENU = 'App/AppState/CLOSE_MENU';
 const initialState = {
   activeView: null,
   activeSection: null,
-  isMenuOpen: false
+  isMenuOpen: false,
+  isEmbedMode: false
+};
+
+export const detectEmbedMode = props => (dispatch) => {
+  const isEmbedMode = !!(qs.parse(props.search, { ignoreQueryPrefix: true }).embed) || window.location.host === 'embed.fixmyberlin.de';
+
+  dispatch({
+    type: UPDATE_HISTORY,
+    payload: {
+      isEmbedMode
+    }
+  });
 };
 
 export const updateHistory = props => (dispatch) => {

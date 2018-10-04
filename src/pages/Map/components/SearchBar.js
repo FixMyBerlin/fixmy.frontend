@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import { geocodeAddress } from '~/pages/Map/MapState';
 import Store from '~/store';
@@ -99,7 +100,7 @@ class SearchBar extends PureComponent {
     return (
       <SearchBarWrapper>
         <SearchBarInnerWrapper>
-          <SearchMenuBtn />
+          {!this.props.isEmbedMode && <SearchMenuBtn />}
           <Form onSubmit={this.onSubmit}>
             <SearchInput
               value={this.state.inputValue}
@@ -117,4 +118,6 @@ class SearchBar extends PureComponent {
   }
 }
 
-export default SearchBar;
+export default connect(state => ({
+  isEmbedMode: state.AppState.isEmbedMode
+}))(SearchBar);
