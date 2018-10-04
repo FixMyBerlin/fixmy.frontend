@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
 import DataProcessIcon from '~/images/data-process.svg';
-import { numberFormat } from '~/utils/utils';
+import { numberFormat, percentageFormat } from '~/utils/utils';
 import { getOrientationNames } from '~/utils/hbi-utils';
 import HBISign from '~/components/HBISign';
 import Label from '~/components/Label';
@@ -74,6 +74,10 @@ const InfoSectionTextWrapper = styled.div`
 const InfoSectionText = styled.div`
   display: flex;
   font-weight: ${props => (props.bold ? 700 : 500)};
+`;
+
+const InfoSectionTextSmall = styled(InfoSectionText)`
+  font-size: 10px;
 `;
 
 const InfoSectionTextLeft = styled.div`
@@ -177,9 +181,21 @@ class SectionDetails extends PureComponent {
                 <InfoSectionTextLeft grow>Schutzfunktion der Radwege</InfoSectionTextLeft>
                 <InfoSectionTextRight>{infrastructureLabel}</InfoSectionTextRight>
               </InfoSectionText>
+
               <InfoSectionText>
-                {infrastructureDesc}
+                <InfoSectionTextLeft>Gesamt:</InfoSectionTextLeft>
+                {percentageFormat(sideData.cycling_infrastructure_ratio)}
               </InfoSectionText>
+
+              {sideData.bike_path_ratio > 0 && <InfoSectionText>{percentageFormat(sideData.bike_path_ratio)} Radweg</InfoSectionText>}
+              {sideData.shared_use_path_ratio > 0 && <InfoSectionText>{percentageFormat(sideData.shared_use_path_ratio)} Fahren auf Gehweg erlaubt</InfoSectionText>}
+              {sideData.bike_lane_ratio > 0 && <InfoSectionText>{percentageFormat(sideData.bike_lane_ratio)} Radfahrstreifen</InfoSectionText>}
+              {sideData.protected_bike_lane_ratio > 0 && <InfoSectionText>{percentageFormat(sideData.protected_bike_lane_ratio)} geschützter Radfahrstreifen</InfoSectionText>}
+              {sideData.advisory_bike_lane_ratio > 0 && <InfoSectionText>{percentageFormat(sideData.advisory_bike_lane_ratio)} Schutzstreifen</InfoSectionText>}
+
+              <InfoSectionTextSmall>
+                {infrastructureDesc}
+              </InfoSectionTextSmall>
             </InfoSectionTextWrapper>
           </InfoSection>
 
