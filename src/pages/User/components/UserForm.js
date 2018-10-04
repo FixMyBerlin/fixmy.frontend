@@ -12,6 +12,8 @@ import Button from '~/components/Button';
 import FormField from '~/components/FormField';
 import FormFieldError from '~/components/FormFieldError';
 
+import { translateError } from '~/utils/error-utils';
+
 const UserFormWrapper = styled.div`
   margin-bottom: 16px;
 `;
@@ -80,7 +82,7 @@ class UserForm extends PureComponent {
                   errors={errors}
                 />
               ))}
-              {errors.non_field_errors && <FormFieldError>{errors.non_field_errors}</FormFieldError>}
+              {errors.non_field_errors && <FormFieldError>{translateError(errors.non_field_errors)}</FormFieldError>}
               <Button type="submit" disabled={isSubmitting}>
                 {buttonLabel}
               </Button>

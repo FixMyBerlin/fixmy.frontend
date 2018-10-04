@@ -23,7 +23,12 @@ export const homeLabels = {
   mapButton: 'zeige die Karte'
 };
 
+export const errorLabels = {
+  'Unable to log in with provided credentials.': 'Ungültiges Passwort.'
+};
+
 export default {
   districts,
-  homeLabels
+  homeLabels,
+  errorLabels
 };
