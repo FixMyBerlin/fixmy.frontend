@@ -184,7 +184,7 @@ class SectionDetails extends PureComponent {
                 <InfoSectionTextRight>{infrastructureLabel}</InfoSectionTextRight>
               </InfoSectionText>
 
-              <InfoSectionText>
+              {/* <InfoSectionText>
                 <InfoSectionTextLeft>Gesamt:</InfoSectionTextLeft>
                 {percentageFormat(sideData.cycling_infrastructure_ratio)}
               </InfoSectionText>
@@ -222,7 +222,7 @@ class SectionDetails extends PureComponent {
                   <InfoSectionTextLeft>Schutzstreifen:</InfoSectionTextLeft>
                   {percentageFormat(sideData.advisory_bike_lane_ratio)}
                 </InfoSectionText>
-              )}
+              )} */}
 
               <InfoSectionTextSmall>
                 {infrastructureDesc}
