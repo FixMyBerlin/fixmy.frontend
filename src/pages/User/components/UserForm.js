@@ -19,6 +19,7 @@ const UserFormWrapper = styled.div`
 
   input[type="checkbox"] {
     width: auto;
+    display: inline-block;
   }
 `;
 

@@ -16,6 +16,13 @@ export default ({ id, type, label, options, placeholder = '', values, handleChan
     Result = <Field type={type} name={id} placeholder={placeholder} />;
   } else if (type === 'checkbox') {
     Result = <Field type="checkbox" name={id} checked={values[id]} />;
+
+    return (
+      <FormFieldSection>
+        {Result}<span> {label}</span>
+        {errors[id] && <FormFieldError>{errors[id]}</FormFieldError>}
+      </FormFieldSection>
+    );
   } else if (type === 'textarea') {
     Result = <textarea name={id} placeholder={placeholder} onChange={handleChange} value={values[id]} />;
   } else if (type === 'select') {
