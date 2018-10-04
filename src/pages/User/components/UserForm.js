@@ -16,6 +16,10 @@ import { translateError } from '~/utils/error-utils';
 
 const UserFormWrapper = styled.div`
   margin-bottom: 16px;
+
+  input[type="checkbox"] {
+    width: auto;
+  }
 `;
 
 function renderStatus(status) {
