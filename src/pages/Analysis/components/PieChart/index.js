@@ -1,7 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
 import idx from 'idx';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { VictoryPie, VictoryLabel, Slice } from 'victory';
+
+import { setPhaseFilter } from '~/pages/Analysis/AnalysisState';
 
 import SvgIcon from '~/components/SvgIcon';
 import Text from '~/components/Text';
@@ -104,6 +107,10 @@ const Label = ({ x, y, dy, ...props }) => {
 };
 
 class PieChart extends PureComponent {
+  handleClick = (evt, data) => {
+    this.props.setPhaseFilter(data.datum.x);
+  }
+
   renderChartLabel() {
     const lengthSum = this.props.data.reduce(sumLengths(), 0);
     return (
@@ -124,7 +131,8 @@ class PieChart extends PureComponent {
     }
 
     const chartData = config.planningPhases.map(planningPhase => ({
-      x: planningPhase.name,
+      x: planningPhase.id,
+      xName: planningPhase.name,
       y: this.props.data.reduce(sumLengths(planningPhase.id), 0),
       color: planningPhase.color
     })).filter(d => d.y > 0);
@@ -142,6 +150,14 @@ class PieChart extends PureComponent {
           style={chartStyle}
           labelComponent={<Label />}
           dataComponent={<Slice active={Math.random() > 0.6} />}
+          events={[
+            {
+              target: 'data',
+              eventHandlers: {
+                onClick: this.handleClick
+              }
+            }
+          ]}
         />
         <ChartInnerLabel>
           {hasData ? this.renderChartLabel() : renderNoData()}
@@ -151,4 +167,6 @@ class PieChart extends PureComponent {
   }
 }
 
-export default PieChart;
+export default connect(null, dispatch => ({
+  setPhaseFilter: filter => dispatch(setPhaseFilter(filter))
+}))(PieChart);
