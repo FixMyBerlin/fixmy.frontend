@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
+import idx from 'idx';
 
 import DataProcessIcon from '~/images/data-process.svg';
 import { numberFormat, percentageFormat } from '~/utils/utils';
@@ -102,7 +103,7 @@ class SectionDetails extends PureComponent {
     const { name, details } = data;
     const sideData = data.details[sideIndex];
     const hasSwitchButton = data.details && data.details.length > 1;
-    const orientationNames = getOrientationNames(data.details[0].orientation, data.details[1].orientation);
+    const orientationNames = getOrientationNames(idx(data, _ => _.details[0].orientation), idx(data, _ => _.details[1].orientation));
 
     if (!sideData) {
       return <div>Keine Daten vorhanden.</div>;
@@ -115,6 +116,7 @@ class SectionDetails extends PureComponent {
     const streetCategoryLabel = getStreetCategoryLabel(data);
     const infrastructureLabel = getInfrastructureLabel(sideData);
     const infrastructureDesc = getInfrastructureDesc(sideData);
+    const currentSideName = orientationNames[`side${sideIndex}`];
 
     return (
       <React.Fragment>
@@ -141,7 +143,7 @@ class SectionDetails extends PureComponent {
 
         <HBISignWrapper>
           <HBISign hbi={sideData.happy_bike_index} />
-          <Label margin="10px 0 3px 0">Happy-Bike-Level</Label>
+          <Label margin="10px 0 3px 0">Happy-Bike-Level - {currentSideName}</Label>
           <Label light>(max 10,0)</Label>
         </HBISignWrapper>
 
@@ -187,11 +189,40 @@ class SectionDetails extends PureComponent {
                 {percentageFormat(sideData.cycling_infrastructure_ratio)}
               </InfoSectionText>
 
-              {sideData.bike_path_ratio > 0 && <InfoSectionText>{percentageFormat(sideData.bike_path_ratio)} Radweg</InfoSectionText>}
-              {sideData.shared_use_path_ratio > 0 && <InfoSectionText>{percentageFormat(sideData.shared_use_path_ratio)} Fahren auf Gehweg erlaubt</InfoSectionText>}
-              {sideData.bike_lane_ratio > 0 && <InfoSectionText>{percentageFormat(sideData.bike_lane_ratio)} Radfahrstreifen</InfoSectionText>}
-              {sideData.protected_bike_lane_ratio > 0 && <InfoSectionText>{percentageFormat(sideData.protected_bike_lane_ratio)} geschützter Radfahrstreifen</InfoSectionText>}
-              {sideData.advisory_bike_lane_ratio > 0 && <InfoSectionText>{percentageFormat(sideData.advisory_bike_lane_ratio)} Schutzstreifen</InfoSectionText>}
+              {sideData.bike_path_ratio > 0 && (
+                <InfoSectionText>
+                  <InfoSectionTextLeft>Radweg:</InfoSectionTextLeft>
+                  {percentageFormat(sideData.bike_path_ratio)}
+                </InfoSectionText>
+              )}
+
+              {sideData.shared_use_path_ratio > 0 && (
+                <InfoSectionText>
+                  <InfoSectionTextLeft>Fahren auf Gehweg erlaubt:</InfoSectionTextLeft>
+                  {percentageFormat(sideData.shared_use_path_ratio)}
+                </InfoSectionText>
+              )}
+
+              {sideData.bike_lane_ratio > 0 && (
+                <InfoSectionText>
+                  <InfoSectionTextLeft>Radfahrstreifen:</InfoSectionTextLeft>
+                  {percentageFormat(sideData.bike_lane_ratio)}
+                </InfoSectionText>
+              )}
+
+              {sideData.protected_bike_lane_ratio > 0 && (
+                <InfoSectionText>
+                  <InfoSectionTextLeft>geschützter Radfahrstreifen:</InfoSectionTextLeft>
+                  {percentageFormat(sideData.protected_bike_lane_ratio)}
+                </InfoSectionText>
+              )}
+
+              {sideData.advisory_bike_lane_ratio > 0 && (
+                <InfoSectionText>
+                  <InfoSectionTextLeft>Schutzstreifen:</InfoSectionTextLeft>
+                  {percentageFormat(sideData.advisory_bike_lane_ratio)}
+                </InfoSectionText>
+              )}
 
               <InfoSectionTextSmall>
                 {infrastructureDesc}
