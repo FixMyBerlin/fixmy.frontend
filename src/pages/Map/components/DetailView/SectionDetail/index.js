@@ -184,11 +184,6 @@ class SectionDetails extends PureComponent {
                 <InfoSectionTextRight>{infrastructureLabel}</InfoSectionTextRight>
               </InfoSectionText>
 
-              <InfoSectionText>
-                <InfoSectionTextLeft>Gesamt:</InfoSectionTextLeft>
-                {percentageFormat(sideData.cycling_infrastructure_ratio)}
-              </InfoSectionText>
-
               {sideData.bike_path_ratio > 0 && (
                 <InfoSectionText>
                   <InfoSectionTextLeft>Radweg:</InfoSectionTextLeft>
