@@ -4,9 +4,6 @@
 Ansprechpartner für die Presse: <br>
 Heiko Rintelen [presse@fixmyberlin.de](mailto:presse@fixmyberlin.de)
 
-### Archiv Pressemitteilungen
-+ 19.09.2018 - [Launch FixMyBerlin - Ab heute zeigt fixmyberlin.de, wo in Berlin neue Radwege entstehen und wie sicher die Berliner Hauptstraßen für Radfahrende sind.](https://fixmyberlin.de/uploads/pressemitteilung_launch_fixmyberlin_20180919.pdf "PM-Launch-FixMyBerlin")
-
 ### Einbettung der Seite (kostenfrei)
 https://embed.fixmyberlin.de
 
@@ -21,3 +18,13 @@ Screenshots zur freien Verwendung durch die Presse: <br>
 ## Auswertungen
 - [Durchschnittlicher Happy Bike Index pro Bezirk sowie die Anzahl / Kilometer Hauptstraßen](https://fixmyberlin.de/uploads/planning-sections.hbi.csv)
 - [Happy Bike Index übersetzt anhand von Schwellenwerten (7.5 => save|sicher, 5 => ok, 2.5 => bad|unsicher, 0 => mad|sehr unsicher)](https://fixmyberlin.de/uploads/planning-sections.analyse.csv)
+
+### Archiv Pressemitteilungen
++ 19.09.2018 - [Launch FixMyBerlin - Ab heute zeigt fixmyberlin.de, wo in Berlin neue Radwege entstehen und wie sicher die Berliner Hauptstraßen für Radfahrende sind.](https://fixmyberlin.de/uploads/pressemitteilung_launch_fixmyberlin_20180919.pdf "PM-Launch-FixMyBerlin")
+
+### Pressespiegel
++ 19.09.2018 - [Tagesspiegel - Berlins Straßen im Sicherheitscheck für Radfahrer](https://digitalpresent.tagesspiegel.de/berliner-strassen-im-sicherheitscheck-fuer-radfahrer)
++ 19.09.2018 - [Berliner Zeitung - FixMyBerlin Neue Plattform zeigt, wie sicher Berlins Hauptstraßen für Radler sind ](https://www.berliner-zeitung.de/berlin/verkehr/fixmyberlin-neue-plattform-zeigt--wie-sicher-berlins-hauptstrassen-fuer-radler-sind-31317724)
++ 23.09.2018 - [Radioeins, Die Sonntagsfahrer - FixMyBerlin: Plattform zeigt Umsetzung des Fahrradgesetzes](https://www.radioeins.de/programm/sendungen/die_sonntagsfahrer/_/fixmyberlin--plattform-zeigt-umsetzung-des-fahrradgesetzes.html)
++ 01.10.2018 - [Neues Deutschland - Sichere Radwege? Fehlanzeige](https://www.neues-deutschland.de/artikel/1101941.sichere-radwege-fehlanzeige.html)
+
