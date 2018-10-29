@@ -59,7 +59,7 @@ export function loadPlanningData() {
       return false;
     }
 
-    const planningData = await fetch(`${config.apiUrl}/plannings?page_size=200`).then(r => r.json());
+    const planningData = await ky.get(`${config.apiUrl}/plannings?page_size=200`, { timeout: 50000 }).json();
     return dispatch({ type: SET_PLANNING_DATA, payload: { planningData } });
   };
 }
@@ -71,6 +71,7 @@ export function geocodeAddress(searchtext) {
     try {
       const searchUrl = `${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;
       const data = await ky.get(searchUrl).json();
+
       const geocodeResult = idx(data, _ => _.Response.View[0].Result[0].Location.DisplayPosition);
       if (!geocodeResult) {
         return dispatch({ type: GEOCODE_FAIL, payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' } });

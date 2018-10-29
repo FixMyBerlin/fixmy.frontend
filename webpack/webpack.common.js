@@ -42,6 +42,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
+        exclude: /node_modules/,
         use: ['babel-loader', {
           loader: 'react-svg-loader',
           options: {
@@ -52,6 +53,10 @@ module.exports = {
             }
           }
         }]
+      },
+      {
+        test: /node_modules\/(.*)\.svg$/,
+        use: 'file-loader'
       }
     ]
   }

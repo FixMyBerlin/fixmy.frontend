@@ -95,6 +95,7 @@
     "store": "^2.0.12",
     "styled-components": "^3.4.5",
     "uuid": "^3.2.1",
-    "victory": "^30.3.1"
+    "victory": "^30.3.1",
+    "whatwg-fetch": "^3.0.0"
   }
 }

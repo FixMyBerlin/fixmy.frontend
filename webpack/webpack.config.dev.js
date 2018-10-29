@@ -22,7 +22,6 @@ module.exports = merge(common, {
       siteUrl: Config.devUrl,
       template: Path.resolve(__dirname, '../src/index.html')
     }),
-    new Webpack.NamedModulesPlugin(),
     new Webpack.ProvidePlugin({
       config: '~/../config.json'
     }),
@@ -44,7 +43,7 @@ module.exports = merge(common, {
         }
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js)$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },

@@ -1,4 +1,6 @@
 /* eslint-disable */
+require('whatwg-fetch');
+
 const isObject = value => value !== null && typeof value === 'object';
 
 const deepMerge = (...sources) => {
