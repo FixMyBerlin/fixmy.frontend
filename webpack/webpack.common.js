@@ -54,21 +54,27 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', {
-          loader: 'react-svg-loader',
-          options: {
-            svgo: {
-              plugins: [
-                { cleanupIDs: false }
-              ]
+        oneOf: [{
+          exclude: /node_modules/,
+          use: ['babel-loader', {
+            loader: 'react-svg-loader',
+            options: {
+              svgo: {
+                plugins: [
+                  { cleanupIDs: false }
+                ]
+              }
+            }
+          }]
+        }, {
+          include: /node_modules/,
+          use: {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]'
             }
           }
         }]
-      },
-      {
-        test: /node_modules\/(.*)\.svg$/,
-        use: 'file-loader'
       }
     ]
   }
