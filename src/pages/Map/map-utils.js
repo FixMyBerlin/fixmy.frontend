@@ -6,7 +6,7 @@ import { lineString as turfLineString } from '@turf/helpers';
 import Store from '~/store';
 import * as MapActions from '~/pages/Map/MapState';
 import * as AppActions from '~/AppState';
-import { byKey } from '~/utils/utils';
+import { byKey, isNumeric, getParameterByName } from '~/utils/utils';
 
 const planningPhases = byKey(config.planningPhases, 'id');
 
@@ -31,10 +31,10 @@ export const smallStreetLayersWithOverlay = [
 ];
 
 export function setView(map, view) {
-  map.setZoom(view.zoom);
-  map.setCenter(view.center);
-  map.setPitch(view.pitch);
-  map.setBearing(view.bearing);
+  if (view.zoom) map.setZoom(view.zoom);
+  if (view.center) map.setCenter(view.center);
+  if (view.pitch) map.setPitch(view.pitch);
+  if (view.bearing) map.setBearing(view.bearing);
 }
 
 export function animateView(map, view) {
@@ -231,6 +231,22 @@ export async function getGeoLocation() {
   });
 }
 
+export function parseUrlOptions() {
+  const lat = getParameterByName('lat');
+  const lng = getParameterByName('lng');
+  const zoom = getParameterByName('zoom');
+  const validZoom = zoom && isNumeric(+zoom);
+
+  if (!lat || !lng || !isNumeric(+lat) || !isNumeric(+lng)) {
+    return false;
+  }
+
+  return {
+    center: [+lng, +lat] || config.map.view.center,
+    zoom: validZoom ? +zoom : config.map.view.zoom
+  };
+}
+
 export default {
   setView,
   animateView,
@@ -240,5 +256,6 @@ export default {
   colorizePlanningLines,
   resetMap,
   getCenterFromGeom,
-  getGeoLocation
+  getGeoLocation,
+  parseUrlOptions
 };

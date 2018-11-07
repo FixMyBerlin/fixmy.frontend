@@ -14,7 +14,8 @@ import * as MapActions from '~/pages/Map/MapState';
 import PlanningMarkers from '~/pages/Map/components/PlanningMarkers';
 import {
   colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer,
-  filterLayersById, getCenterFromGeom, resetMap, intersectionLayers, smallStreetLayersWithOverlay
+  filterLayersById, getCenterFromGeom, resetMap, intersectionLayers, smallStreetLayersWithOverlay,
+  parseUrlOptions
 } from '~/pages/Map/map-utils';
 
 const MB_STYLE_URL = `${config.map.style}?fresh=true`;
@@ -72,7 +73,6 @@ class Map extends PureComponent {
 
     this.map.on('load', this.handleLoad);
     this.props.setMapContext(this.map);
-    this.setView(this.getViewFromProps(), false);
 
     window.map = this.map;
   }
@@ -125,7 +125,7 @@ class Map extends PureComponent {
     }
   )
 
-  setView = (view, animate) => {
+  setView = (view, animate = false) => {
     if (animate) {
       animateView(this.map, view);
     } else {
@@ -139,7 +139,12 @@ class Map extends PureComponent {
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
 
-    if (!this.props.activeSection) {
+    const urlMapOptions = parseUrlOptions();
+
+    if (urlMapOptions) {
+      console.log(urlMapOptions);
+      this.setView(urlMapOptions, false);
+    } else if (!this.props.activeSection) {
       this.map.fitBounds(config.map.bounds, { animate: false });
     } else {
       this.setView(this.getViewFromProps(), false);
@@ -157,7 +162,6 @@ class Map extends PureComponent {
     const isPlanungen = this.props.activeLayer === 'planungen';
 
     intersectionLayers.forEach(layerName => toggleLayer(this.map, config.map.layers[layerName], isZustand));
-
     smallStreetLayersWithOverlay.forEach(layerName => toggleLayer(this.map, config.map.layers[layerName], isPlanungen));
 
     if (isZustand) {

@@ -23,6 +23,10 @@ export function percentageFormat(num) {
   return germanNumberFormat.format('~%')(num);
 }
 
+export function isNumeric(val) {
+  return !Number.isNaN(val) && Number.isFinite(val);
+}
+
 export function trackEvent(category = '', action = '', name = '') {
   if (typeof _paq !== 'undefined') {
     _paq.push(['trackEvent', category, action, name]);
@@ -59,10 +63,17 @@ export function sortByKey(key = 'id', sortDirection = 'ASC') {
   };
 }
 
+export function getParameterByName(name) {
+  const match = RegExp(`[?&]${name}=([^&]*)`).exec(window.location.search);
+  return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
 export default {
   numberFormat,
   trackEvent,
   log,
   byKey,
-  sortByKey
+  sortByKey,
+  isNumeric,
+  getParameterByName
 };
