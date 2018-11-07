@@ -28,7 +28,7 @@ const buttonBoxShadow = '0 1px 5px 2px rgba(0, 0, 0, 0.25)';
 const buttonBoxShadowActive = '0 1px 7px 3px rgba(0, 0, 0, 0.25)';
 
 const animation = () => css`
-  ${bounce} 0.8s;
+  ${bounce} .8s;
 `;
 
 const LikeButton = styled.button`

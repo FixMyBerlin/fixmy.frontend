@@ -6,7 +6,7 @@ import slugify from 'slugify';
 import { numberFormat } from '~/utils/utils';
 import Label from '~/components/Label';
 import Button from '~/components/Button';
-// import HeartIcon from '~/images/heart.svg';
+import HeartIcon from '~/images/heart.svg';
 import DraftMarker from '~/images/planning-icons/konzept-marker.png';
 import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
@@ -86,6 +86,22 @@ const DateWrapper = styled.div`
   color: ${config.colors.darkgrey};
 `;
 
+const Likes = styled.div`
+  display: flex;
+  margin-top: 5px;
+
+  svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    align-items: center;
+
+    path {
+      fill: ${config.colors.interaction};
+    }
+  }
+`;
+
 const Expansion = styled.div`
   position: relative;
   img {
@@ -157,6 +173,10 @@ class PlanningListItem extends PureComponent {
             {this.props.title}
           </ItemSubTitle>
           <ItemFooter>
+            <Likes>
+              <HeartIcon />
+              <Label>{this.props.likes}</Label>
+            </Likes>
             <DateWrapper>
               Fertigstellung: {constructionCompleted}
             </DateWrapper>
