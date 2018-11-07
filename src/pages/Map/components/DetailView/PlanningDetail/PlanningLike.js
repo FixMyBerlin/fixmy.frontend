@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import HeartIcon from '~/images/heart.svg';
 import { bounce } from '~/styles/utils';
@@ -27,6 +27,10 @@ const LikeButtonWrapper = styled.div`
 const buttonBoxShadow = '0 1px 5px 2px rgba(0, 0, 0, 0.25)';
 const buttonBoxShadowActive = '0 1px 7px 3px rgba(0, 0, 0, 0.25)';
 
+const animation = () => css`
+  ${bounce} 0.8s;
+`;
+
 const LikeButton = styled.button`
   background: ${props => (props.disabled ? config.colors.inactivegrey : config.colors.interaction)};
   width: 62px;
@@ -38,9 +42,9 @@ const LikeButton = styled.button`
   margin: 8px 0;
   box-shadow: ${buttonBoxShadow};
   transition: box-shadow .15s;
-  animation: ${props => (props.bouncy ? `${bounce} 0.8s` : 'none')};
+  animation: ${props => (props.bouncy ? animation : 'none')};
   border-style: solid;
-  border-color: #cf0a7d; 
+  border-color: #cf0a7d;
   border-width: ${props => (props.isLiked ? '2px' : '0')};
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
 
