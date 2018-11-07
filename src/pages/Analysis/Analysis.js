@@ -59,8 +59,9 @@ const phaseOptions = [
 ];
 
 const sortOptions = [
-  { value: 'length', label: 'Länge' },
-  { value: 'construction_completed', label: 'Fertigstellung' }
+  { value: 'length', label: 'Länge', sortDirection: 'DESC' },
+  { value: 'likes', label: 'Likes', sortDirection: 'DESC' },
+  { value: 'construction_completed', label: 'Fertigstellung', sortDirection: 'ASC' }
 ];
 
 function filterDistrict(districtName) {
@@ -109,7 +110,7 @@ class Analysis extends PureComponent {
     // for the list we filter by district AND phase
     const filteredData = filteredDataDistrict.filter(filterPhase(selectedPhase));
     const hasData = filteredData.length > 0;
-    const sortDirection = selectedSort === 'length' ? 'DESC' : 'ASC';
+    const { sortDirection } = selectedSort ? sortOptions.find(s => s.value === selectedSort) : 'ASC';
     const sortedData = filteredData.sort(sortByKey(selectedSort, sortDirection));
 
     return (
@@ -146,7 +147,7 @@ class Analysis extends PureComponent {
               options={sortOptions}
               onChange={this.onSort}
               disabled={isLoading}
-              value={selectedSort || 'construction_completed'}
+              value={selectedSort || 'likes'}
             />
           </AnalysisControls>
 

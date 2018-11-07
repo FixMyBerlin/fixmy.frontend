@@ -64,21 +64,6 @@ const ItemFooter = styled.div`
   display: flex;
 `;
 
-// const Likes = styled.div`
-//   display: flex;
-//   align-items: center;
-//   margin-top: 5x;
-
-//   svg {
-//     width: 16px;
-//     margin-right: 4px;
-//   }
-
-//   path {
-//     fill: ${config.colors.interaction};
-//   }
-// `;
-
 const DateWrapper = styled.div`
   margin-left: auto;
   font-size: 14px;
@@ -89,12 +74,12 @@ const DateWrapper = styled.div`
 const Likes = styled.div`
   display: flex;
   margin-top: 5px;
+  align-items: center;
 
   svg {
     width: 12px;
     height: 12px;
-    margin-right: 5px;
-    align-items: center;
+    margin-right: 4px;
 
     path {
       fill: ${config.colors.interaction};
