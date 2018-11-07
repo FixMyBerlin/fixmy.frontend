@@ -24,7 +24,7 @@ module.exports = merge(common, {
       siteUrl: Config.prodUrl,
       template: './src/index.html',
       minify: {
-        removeComments: true,
+        removeComments: false,
         collapseWhitespace: true,
         removeRedundantAttributes: true,
         useShortDoctype: true,
