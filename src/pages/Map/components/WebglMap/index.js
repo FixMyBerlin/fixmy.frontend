@@ -142,7 +142,6 @@ class Map extends PureComponent {
     const urlMapOptions = parseUrlOptions();
 
     if (urlMapOptions) {
-      console.log(urlMapOptions);
       this.setView(urlMapOptions, false);
     } else if (!this.props.activeSection) {
       this.map.fitBounds(config.map.bounds, { animate: false });
