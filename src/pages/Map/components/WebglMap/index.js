@@ -8,7 +8,7 @@ import withRouter from 'react-router/withRouter';
 import slugify from 'slugify';
 
 import Store from '~/store';
-import { isSmallScreen } from '~/utils/style-utils';
+import { isSmallScreen } from '~/styles/utils';
 import * as AppActions from '~/AppState';
 import * as MapActions from '~/pages/Map/MapState';
 import PlanningMarkers from '~/pages/Map/components/PlanningMarkers';
@@ -286,7 +286,7 @@ class Map extends PureComponent {
     const markerData = idx(this.props.planningData, _ => _.results);
 
     return (
-      <StyledMap className={this.props.className} innerRef={(ref) => { this.root = ref; }}>
+      <StyledMap className={this.props.className} ref={(ref) => { this.root = ref; }}>
         {this.props.children}
         <PlanningMarkers
           map={this.state.map}

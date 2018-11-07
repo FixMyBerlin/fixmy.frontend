@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
 import HeartIcon from '~/images/heart.svg';
-import { bounce } from '~/utils/style-utils';
+import { bounce } from '~/styles/utils';
 import Label from '~/components/Label';
 import Link from '~/components/Link';
 import { likeDetail, getLikes } from '~/pages/Map/apiservice';

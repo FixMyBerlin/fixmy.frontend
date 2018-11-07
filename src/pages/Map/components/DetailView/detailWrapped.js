@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
 import ky from 'ky';
 
-import { media } from '~/utils/style-utils';
+import { media } from '~/styles/utils';
 import Store from '~/store';
 import { setView } from '~/pages/Map/MapState';
 import { getCenterFromGeom } from '~/pages/Map/map-utils';

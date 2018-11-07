@@ -1,6 +1,5 @@
 import { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
-import { injectGlobal } from 'styled-components';
 
 import DraftMarker from '~/images/planning-icons/konzept-marker.png';
 import PlanningMarker from '~/images/planning-icons/planung-marker.png';
@@ -8,16 +7,6 @@ import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
 
 import { getCenterFromGeom } from '~/pages/Map/map-utils';
-
-injectGlobal([`
-  .marker {
-    width: 32px;
-
-    .marker-image {
-      width: 100%;
-    }
-  }
-`]);
 
 const Markers = {
   draft: DraftMarker,

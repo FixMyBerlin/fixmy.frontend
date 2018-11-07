@@ -131,7 +131,7 @@ class PlanningStatusChart extends PureComponent {
     const currentPhaseIcon = getPhaseIcon(progressPhase);
 
     return (
-      <ChartWrapper innerRef={(ref) => { this.chartWrapper = ref; }}>
+      <ChartWrapper ref={(ref) => { this.chartWrapper = ref; }}>
         <svg width={this.state.width} height={this.height}>
           {chartData.map(this.renderChartItem)}
         </svg>

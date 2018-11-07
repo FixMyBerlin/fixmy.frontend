@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import { init as initStyle } from '~/utils/style-utils';
+import GlobalStyles from '~/styles/Global';
 import history from '~/history';
 import { updateHistory, detectEmbedMode } from '~/AppState';
 import Store from '~/store';
@@ -12,11 +12,12 @@ history.listen(location => Store.dispatch(updateHistory(location)));
 Store.dispatch(updateHistory(history.location));
 Store.dispatch(detectEmbedMode(history.location));
 
-initStyle();
-
 ReactDOM.render(
   <Provider store={Store}>
-    <App />
+    <Fragment>
+      <GlobalStyles />
+      <App />
+    </Fragment>
   </Provider>,
   document.getElementById('root')
 );

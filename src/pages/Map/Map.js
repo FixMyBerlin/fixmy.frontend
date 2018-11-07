@@ -14,7 +14,7 @@ import SearchBar from '~/pages/Map/components/SearchBar';
 import FMBCredits from '~/pages/Map/components/FMBCredits';
 import FMBLogo from '~/components/FMBLogo';
 import Store from '~/store';
-import { matchMediaSize, breakpoints, media } from '~/utils/style-utils';
+import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from '~/pages/Map/components/WebglMap';
 import MyHBI from '~/pages/MyHBI';
 

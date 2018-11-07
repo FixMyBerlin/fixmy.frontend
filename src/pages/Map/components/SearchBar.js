@@ -6,7 +6,7 @@ import { geocodeAddress } from '~/pages/Map/MapState';
 import Store from '~/store';
 
 import MenuButton from '~/components/MenuButton';
-import { media } from '~/utils/style-utils';
+import { media } from '~/styles/utils';
 
 const Form = styled.form`
   width: 100%;
