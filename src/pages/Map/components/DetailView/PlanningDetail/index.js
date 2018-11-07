@@ -12,6 +12,7 @@ import ImageSlider from '~/pages/Map/components/DetailView/ImageSlider';
 
 import PlanningStatus from './PlanningStatus';
 import PlanningLike from './PlanningLike';
+import categoryMapping from './categoryMapping';
 
 const DetailHead = styled.div`
   padding: 14px 24px;
@@ -92,9 +93,10 @@ class PlanningDetails extends PureComponent {
 
     const {
       title, description, construction_completed, external_url, responsible, costs, faq, photos,
-      phase, construction_started, draft_submitted, cross_section_photo, url
+      phase, construction_started, draft_submitted, cross_section_photo, url, category
     } = planning;
 
+    const translatedCategory = categoryMapping[category];
     const showFaq = faq && faq.length;
     const showSwitchButton = plannings.length > 1 && (plannings[0].url !== plannings[1].url);
 
@@ -147,6 +149,7 @@ class PlanningDetails extends PureComponent {
           <DetailBodySection>
             <SectionTitle>Projektdaten:</SectionTitle>
             {typeof responsible !== 'undefined' && responsible !== null ? <DetailItem>Zuständigkeit: <strong>{responsible}</strong></DetailItem> : null}
+            {typeof translatedCategory !== 'undefined' && translatedCategory !== null ? <DetailItem>Art der Maßnahme: <strong>{translatedCategory}</strong></DetailItem> : null}
             {typeof costs !== 'undefined' && costs !== null ? <DetailItem>Projektvolumen: <strong>{costs}</strong></DetailItem> : null}
             {external_url ? <DetailItem>Link zur Planung: <Anchor target="_blank" href={external_url}>{external_url}</Anchor></DetailItem> : null}
             {cross_section_photo ? <DetailImage src={cross_section_photo} /> : null}
