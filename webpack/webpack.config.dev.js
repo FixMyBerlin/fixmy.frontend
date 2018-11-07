@@ -16,36 +16,30 @@ module.exports = merge(common, {
     historyApiFallback: true,
     host: '0.0.0.0'
   },
+  output: {
+    chunkFilename: 'js/[name].chunk.js'
+  },
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
       siteUrl: Config.devUrl,
       template: Path.resolve(__dirname, '../src/index.html')
     }),
-    new Webpack.ProvidePlugin({
-      config: '~/../config.json'
-    }),
     new Webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
-      'process.env.BABEL_ENV': JSON.stringify('development')
+      'process.env.NODE_ENV': JSON.stringify('development')
     }),
     // new BundleAnalyzerPlugin()
   ],
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         include: Path.resolve(__dirname, '../src'),
         enforce: 'pre',
         loader: 'eslint-loader',
         options: {
           emitWarning: true
         }
-      },
-      {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
       },
       {
         test: /\.css$/,

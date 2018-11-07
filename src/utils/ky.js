@@ -1,5 +1,5 @@
 /* eslint-disable */
-require('whatwg-fetch');
+import 'whatwg-fetch';
 
 const isObject = value => value !== null && typeof value === 'object';
 
@@ -63,7 +63,7 @@ const retryStatusCodes = new Set([
 	504
 ]);
 
-class HTTPError extends Error {
+export class HTTPError extends Error {
 	constructor(response) {
 		super(response.statusText);
 		this.name = 'HTTPError';
@@ -71,7 +71,7 @@ class HTTPError extends Error {
 	}
 }
 
-class TimeoutError extends Error {
+export class TimeoutError extends Error {
 	constructor() {
 		super('Request timed out');
 		this.name = 'TimeoutError';
@@ -176,7 +176,7 @@ const createInstance = (defaults = {}) => {
 	return ky;
 };
 
-module.exports = createInstance();
-module.exports.extend = defaults => createInstance(defaults);
-module.exports.HTTPError = HTTPError;
-module.exports.TimeoutError = TimeoutError;
+
+export const extend = defaults => createInstance(defaults);
+
+export default createInstance();

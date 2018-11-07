@@ -1,6 +1,5 @@
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -14,42 +13,27 @@ module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
   stats: 'errors-only',
+  bail: true,
+  output: {
+    filename: 'js/[name].[chunkhash:8].js',
+    chunkFilename: 'js/[name].[chunkhash:8].chunk.js'
+  },
   plugins: [
     new Webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-      'process.env.BABEL_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new HtmlWebpackPlugin({
       inject: true,
       siteUrl: Config.prodUrl,
-      template: './src/index.html',
-      minify: {
-        removeComments: false,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyURLs: true
-      }
+      template: './src/index.html'
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
     new UglifyJSPlugin({ sourceMap: true }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
-    new Webpack.ProvidePlugin({
-      config: '~/../config.json'
-    }),
     // new BundleAnalyzerPlugin()
   ],
   module: {
     rules: [
-      {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: 'babel-loader'
-      },
       {
         test: /\.css$/,
         use: [

@@ -1,17 +1,22 @@
 const Path = require('path');
+const Webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: [require.resolve('./polyfills'), Path.resolve(__dirname, '../src/index.js')],
-    vendor: ['react', 'react-dom']
+    app: Path.resolve(__dirname, '../src/index.js'),
   },
   output: {
     path: Path.join(__dirname, '../build'),
     filename:  'js/[name].js',
     publicPath: '/',
-    chunkFilename : `[name].js`,
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      name: false
+    }
   },
   plugins: [
     new CleanWebpackPlugin(['build'], { root: Path.resolve(__dirname, '..') }),
@@ -21,7 +26,10 @@ module.exports = {
       { from: Path.resolve(__dirname, '../_redirects') },
       { from: Path.resolve(__dirname, '../favicons') },
       { from: Path.resolve(__dirname, '../public/data'), to: 'data' }
-    ])
+    ]),
+    new Webpack.ProvidePlugin({
+      config: '~/../config.json'
+    }),
   ],
   resolve: {
     alias: {
@@ -31,6 +39,16 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto'
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader'
+      },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
         use: {
