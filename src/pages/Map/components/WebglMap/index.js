@@ -116,6 +116,10 @@ class Map extends PureComponent {
       resetMap({ zoom: this.map.getZoom() });
     }
 
+    if (this.props.activeLayer === 'planungen') {
+      Store.dispatch(MapActions.loadPlanningData());
+    }
+
     return this.map.resize();
   }
 

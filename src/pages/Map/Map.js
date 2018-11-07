@@ -53,10 +53,6 @@ const StyledFMBLogo = styled(FMBLogo)`
 `;
 
 class MapViewComponent extends PureComponent {
-  componentDidMount() {
-    Store.dispatch(MapActions.loadPlanningData());
-  }
-
   updateView = (view) => {
     Store.dispatch(MapActions.setView(view));
   }
