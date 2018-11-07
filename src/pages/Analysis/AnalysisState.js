@@ -14,13 +14,12 @@ const initialState = {
   sorting: null,
   selectedDistrict: false,
   selectedPhase: false,
-  selectedSort: false
+  selectedSort: 'likes'
 };
 
 function parseData(d) {
   const hasSections = d.planning_sections.length;
   let length = 0;
-  const likes = 0;
 
   if (hasSections) {
     length = d.planning_sections.reduce((res, item) => {
@@ -36,8 +35,7 @@ function parseData(d) {
 
   return {
     ...d,
-    length,
-    likes
+    length
   };
 }
 

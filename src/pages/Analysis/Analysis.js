@@ -59,8 +59,8 @@ const phaseOptions = [
 ];
 
 const sortOptions = [
-  { value: 'length', label: 'Länge', sortDirection: 'DESC' },
   { value: 'likes', label: 'Likes', sortDirection: 'DESC' },
+  { value: 'length', label: 'Länge', sortDirection: 'DESC' },
   { value: 'construction_completed', label: 'Fertigstellung', sortDirection: 'ASC' }
 ];
 
