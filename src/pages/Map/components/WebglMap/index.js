@@ -71,6 +71,9 @@ class Map extends PureComponent {
       style: MB_STYLE_URL
     });
 
+    const nav = new MapboxGL.NavigationControl({ showCompass: false });
+    this.map.addControl(nav, 'bottom-left');
+
     this.map.on('load', this.handleLoad);
     this.props.setMapContext(this.map);
 
