@@ -53,14 +53,13 @@ class UserForm extends PureComponent {
     }, {});
   }
 
-  validate = values =>
-    this.props.formConfig.reduce((res, item) => {
-      if (!values[item.id] && item.validateError) {
-        res[item.id] = item.validateError;
-      }
+  validate = values => this.props.formConfig.reduce((res, item) => {
+    if (!values[item.id] && item.validateError) {
+      res[item.id] = item.validateError;
+    }
 
-      return res;
-    }, {})
+    return res;
+  }, {})
 
   render() {
     const { title, subtitle, formConfig, buttonLabel } = this.props;

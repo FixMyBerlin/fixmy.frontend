@@ -170,13 +170,11 @@ function detailWrapped(Component) {
 
     // we only show the shadow if there is no switch button
     isShadowVisible(data) {
-      if (!data) {
+      if (!data || this.props.activeView === 'zustand') {
         return false;
       }
 
-      if (this.props.activeView === 'zustand') {
-        return false;
-      } else if (
+      if (
         this.props.activeView === 'planungen' &&
         (data.plannings && data.plannings.length > 1 && (data.plannings[0].url !== data.plannings[1].url))
       ) {

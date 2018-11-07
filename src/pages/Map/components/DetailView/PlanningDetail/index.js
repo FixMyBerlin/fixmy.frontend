@@ -75,8 +75,9 @@ class PlanningDetails extends PureComponent {
   }
 
   onSwitchSide = sideIndex => () => this.setState({ sideIndex })
+
   toggleDescription = () => {
-    this.setState({ descriptionExpanded: !this.state.descriptionExpanded });
+    this.setState(prevState => ({ descriptionExpanded: !prevState.descriptionExpanded }));
   }
 
   render() {

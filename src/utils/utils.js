@@ -49,7 +49,9 @@ export function sortByKey(key = 'id', sortDirection = 'ASC') {
   return (a, b) => {
     if (a[key] < b[key]) {
       return isAsc ? -1 : 1;
-    } else if (a[key] > b[key]) {
+    }
+
+    if (a[key] > b[key]) {
       return isAsc ? 1 : -1;
     }
 

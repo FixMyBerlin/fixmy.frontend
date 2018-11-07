@@ -133,10 +133,6 @@ class Map extends PureComponent {
     }
   }
 
-  disablePopup() {
-    this.setState({ popupLngLat: null });
-  }
-
   handleLoad = () => {
     this.map.on('click', config.map.layers.bgLayer, this.handleClick);
     this.map.on('click', config.map.layers.intersectionsOverlay, this.handleIntersectionClick);
@@ -160,13 +156,9 @@ class Map extends PureComponent {
     const isZustand = this.props.activeLayer === 'zustand';
     const isPlanungen = this.props.activeLayer === 'planungen';
 
-    intersectionLayers.forEach(layerName =>
-      toggleLayer(this.map, config.map.layers[layerName], isZustand)
-    );
+    intersectionLayers.forEach(layerName => toggleLayer(this.map, config.map.layers[layerName], isZustand));
 
-    smallStreetLayersWithOverlay.forEach(layerName =>
-      toggleLayer(this.map, config.map.layers[layerName], isPlanungen)
-    );
+    smallStreetLayersWithOverlay.forEach(layerName => toggleLayer(this.map, config.map.layers[layerName], isPlanungen));
 
     if (isZustand) {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
@@ -198,7 +190,7 @@ class Map extends PureComponent {
 
     if (properties) {
       const name = slugify(properties.name || '').toLowerCase();
-      const id = properties.id;
+      const { id } = properties;
       // when user is in detail mode, we don't want to show the tooltip again,
       // but directly switch to another detail view
       if (this.props.activeSection && !this.props.displayPopup) {
@@ -261,14 +253,6 @@ class Map extends PureComponent {
     this.updatePopupPos(center);
   }
 
-  updatePopupPos(center) {
-    if (center && this.props.calculatePopupPosition) {
-      this.setState({ popupLngLat: center });
-      const projCenter = this.map.project(center);
-      Store.dispatch(MapActions.setPopupLocation(projCenter));
-    }
-  }
-
   handleMoveEnd = () => {
     if (!this.props.hasMoved) {
       Store.dispatch(MapActions.setHasMoved(true));
@@ -280,6 +264,18 @@ class Map extends PureComponent {
       const center = this.map.project(this.state.popupLngLat);
       Store.dispatch(MapActions.setPopupLocation(center));
     }
+  }
+
+  updatePopupPos(center) {
+    if (center && this.props.calculatePopupPosition) {
+      this.setState({ popupLngLat: center });
+      const projCenter = this.map.project(center);
+      Store.dispatch(MapActions.setPopupLocation(projCenter));
+    }
+  }
+
+  disablePopup() {
+    this.setState({ popupLngLat: null });
   }
 
   render() {

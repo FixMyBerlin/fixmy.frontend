@@ -26,9 +26,7 @@ class MyHBIView extends PureComponent {
   }
 
   onToggleModal = () => {
-    this.setState({
-      isSubmitFormOpen: !this.state.isSubmitFormOpen
-    });
+    this.setState(prevState => ({ isSubmitFormOpen: !prevState.isSubmitFormOpen }));
   }
 
   render() {

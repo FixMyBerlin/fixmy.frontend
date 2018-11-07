@@ -12,9 +12,9 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: Path.resolve(__dirname, '..', 'build'),
     historyApiFallback: true,
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    publicPath: '/'
   },
   output: {
     chunkFilename: 'js/[name].chunk.js'

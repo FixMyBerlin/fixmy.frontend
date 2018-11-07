@@ -93,7 +93,9 @@ function getSvgOffsetX(textAnchor) {
   }
 }
 
-const Label = ({ x, y, dy, ...props }) => {
+const Label = ({
+  x, y, dy, ...props
+}) => {
   const phase = config.planningPhases.find(p => p.name === props.text);
   const offsetX = getSvgOffsetX(props.textAnchor);
   const offsetY = getSvgOffsetY(props.orientation);

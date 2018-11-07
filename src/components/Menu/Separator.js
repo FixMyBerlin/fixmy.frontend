@@ -12,4 +12,3 @@ const Separator = styled.div`
 export default ({ label }) => (
   <Separator>{label}</Separator>
 );
-

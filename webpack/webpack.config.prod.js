@@ -18,6 +18,12 @@ module.exports = merge(common, {
     filename: 'js/[name].[chunkhash:8].js',
     chunkFilename: 'js/[name].[chunkhash:8].chunk.js'
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      name: false
+    }
+  },
   plugins: [
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')

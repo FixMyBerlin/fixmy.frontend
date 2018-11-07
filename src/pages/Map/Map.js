@@ -53,10 +53,6 @@ const StyledFMBLogo = styled(FMBLogo)`
 `;
 
 class MapViewComponent extends PureComponent {
-  state = {
-    userLocation: null
-  }
-
   componentDidMount() {
     Store.dispatch(MapActions.loadPlanningData());
   }
@@ -107,9 +103,11 @@ class MapViewComponent extends PureComponent {
                 position="bottom-right"
               />
             )}
-            {!isEmbedMode && <MapControl position="top-right">
-              <StyledFMBLogo showBetaIcon width={67} />
-            </MapControl>}
+            {!isEmbedMode && (
+              <MapControl position="top-right">
+                <StyledFMBLogo showBetaIcon width={67} />
+              </MapControl>
+            )}
           </WebglMap>
 
           {this.props.displayPopup && <MapPopup />}

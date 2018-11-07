@@ -12,12 +12,6 @@ module.exports = {
     filename:  'js/[name].js',
     publicPath: '/',
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      name: false
-    }
-  },
   plugins: [
     new CleanWebpackPlugin(['build'], { root: Path.resolve(__dirname, '..') }),
     // copy data fo1lder to make it available in redux loadData action

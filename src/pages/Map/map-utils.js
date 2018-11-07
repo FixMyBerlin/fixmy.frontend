@@ -60,20 +60,13 @@ export function filterLayersById(map, id) {
       1
     ];
 
-    standardLayers.forEach(layerName =>
-      map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter)
-    );
-
-    smallStreetLayers.forEach(layerName =>
-      map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter)
-    );
+    standardLayers.forEach(layerName => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter));
+    smallStreetLayers.forEach(layerName => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter));
   }
 }
 
 function setMapFilter(map, filter) {
-  standardLayersWithOverlay.forEach(layerName =>
-    map.setFilter(config.map.layers[layerName], filter)
-  );
+  standardLayersWithOverlay.forEach(layerName => map.setFilter(config.map.layers[layerName], filter));
   map.setFilter(config.map.layers.bgLayer, filter);
 }
 
@@ -112,13 +105,8 @@ export function colorizePlanningLines(map, filter) {
     getPlanningLineColorRules('side1_')
   ];
 
-  standardLayers.forEach((layerName, i) =>
-    map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i])
-  );
-
-  smallStreetLayers.forEach((layerName, i) =>
-    map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i])
-  );
+  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i]));
+  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i]));
 
   const opacityRules = [
     getPlanningFilterRules('', filter),
@@ -126,13 +114,8 @@ export function colorizePlanningLines(map, filter) {
     getPlanningFilterRules('side1_', filter)
   ];
 
-  standardLayers.forEach((layerName, i) =>
-    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i])
-  );
-
-  smallStreetLayers.forEach((layerName, i) =>
-    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i])
-  );
+  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i]));
+  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i]));
 }
 
 function getHbiExpression(sideKey) {
@@ -189,13 +172,8 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
     getHbiLineColorRules(hbiExprSide1)
   ];
 
-  standardLayers.forEach((layerName, i) =>
-    map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i])
-  );
-
-  smallStreetLayers.forEach((layerName, i) =>
-    map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i])
-  );
+  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i]));
+  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i]));
 
   const lineOpacityRules = [
     getHbiFilterRules(hbiExprCenter, hbiFilter),
@@ -203,13 +181,8 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
     getHbiFilterRules(hbiExprSide1, hbiFilter)
   ];
 
-  standardLayers.forEach((layerName, i) =>
-    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i])
-  );
-
-  smallStreetLayers.forEach((layerName, i) =>
-    map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i])
-  );
+  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i]));
+  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i]));
 }
 
 export function resetMap({ zoom = null }) {

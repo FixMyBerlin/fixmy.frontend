@@ -28,7 +28,7 @@ class PlanningStatus extends PureComponent {
   }
 
   toggleExpand = () => {
-    this.setState({ isExpanded: !this.state.isExpanded });
+    this.setState(prevState => ({ isExpanded: !prevState.isExpanded }));
   }
 
   render() {

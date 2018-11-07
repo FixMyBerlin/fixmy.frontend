@@ -1,9 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
 import Router from 'react-router-dom/Router';
+import GlobalStyles from '~/styles/Global';
 
 import history from '~/history';
 import { PrivateRoute } from '~/utils/router-utils';
@@ -36,48 +37,49 @@ class App extends PureComponent {
   }
 
   render() {
-    const { isEmbedMode } = this.props;
+    const { isEmbedMode, token } = this.props;
 
     return (
-      <Router history={history}>
-        <AppWrapper>
-          {!isEmbedMode && <Menu />}
-          <AppContent>
-            <Switch>
-              <Route exact path="/" component={Home} />
+      <Fragment>
+        <GlobalStyles />
+        <Router history={history}>
+          <AppWrapper>
+            {!isEmbedMode && <Menu />}
+            <AppContent>
+              <Switch>
+                <Route exact path="/" component={Home} />
 
-              {
-                /* standard markdown pages */
-                config.staticpages.map(page =>
-                  <Route key={page} path={page.route} render={() => <Markdown page={page.key} />} />
-                )
-              }
+                {
+                  /* standard markdown pages */
+                  config.staticpages.map(page => <Route key={page} path={page.route} render={() => <Markdown page={page.key} />} />)
+                }
 
-              {/* user pages */}
-              <Route path={config.routes.signup} component={Signup} />
-              <Route path={config.routes.login} component={Login} />
-              <Route path={config.routes.forgotPassword} component={ForgotPassword} />
-              <Route path={`${config.routes.resetPassword}/:uid/:token`} component={ResetPassword} />
-              <Route path={config.routes.emailVerification} component={EmailVerification} />
-              <PrivateRoute path={config.routes.profile} token={this.props.token} component={Profil} />
+                {/* user pages */}
+                <Route path={config.routes.signup} component={Signup} />
+                <Route path={config.routes.login} component={Login} />
+                <Route path={config.routes.forgotPassword} component={ForgotPassword} />
+                <Route path={`${config.routes.resetPassword}/:uid/:token`} component={ResetPassword} />
+                <Route path={config.routes.emailVerification} component={EmailVerification} />
+                <PrivateRoute path={config.routes.profile} token={token} component={Profil} />
 
-              {/* map pages */}
-              <Route
-                path={`(${config.routes.status}|${config.routes.plannings}|/my-hbi)`}
-                component={MapView}
-              />
+                {/* map pages */}
+                <Route
+                  path={`(${config.routes.status}|${config.routes.plannings}|/my-hbi)`}
+                  component={MapView}
+                />
 
-              {/* analysis pages */}
-              <Route
-                path={`${config.routes.analyse}/planungen/:districtName?`}
-                component={Analysis}
-              />
+                {/* analysis pages */}
+                <Route
+                  path={`${config.routes.analyse}/planungen/:districtName?`}
+                  component={Analysis}
+                />
 
-              <Route render={() => <Markdown page="nomatch" />} />
-            </Switch>
-          </AppContent>
-        </AppWrapper>
-      </Router>
+                <Route render={() => <Markdown page="nomatch" />} />
+              </Switch>
+            </AppContent>
+          </AppWrapper>
+        </Router>
+      </Fragment>
     );
   }
 }

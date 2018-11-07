@@ -15,13 +15,21 @@ const MapControl = styled.div`
 const getMargins = (props) => {
   switch (props.position) {
     case 'top-right':
-      return { top: margin, right: margin, bottom: 'auto', left: 'auto' };
+      return {
+        top: margin, right: margin, bottom: 'auto', left: 'auto'
+      };
     case 'bottom-right':
-      return { top: 'auto', right: margin, bottom: margin, left: 'auto' };
+      return {
+        top: 'auto', right: margin, bottom: margin, left: 'auto'
+      };
     case 'bottom-left':
-      return { top: 'auto', right: 'auto', bottom: margin, left: margin };
+      return {
+        top: 'auto', right: 'auto', bottom: margin, left: margin
+      };
     default:
-      return { top: margin, right: 'auto', bottom: 'auto', left: margin };
+      return {
+        top: margin, right: 'auto', bottom: 'auto', left: margin
+    };
   }
 };
 

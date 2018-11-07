@@ -61,6 +61,12 @@ class PlanningStatusChart extends PureComponent {
     width: 0
   }
 
+  height = 80
+
+  padding = {
+    top: 0, right: 30, bottom: 0, left: 30
+  }
+
   componentDidMount() {
     this.updateWidth();
   }
@@ -107,9 +113,6 @@ class PlanningStatusChart extends PureComponent {
     const { width } = this.chartWrapper.getBoundingClientRect();
     return this.setState({ width });
   }
-
-  height = 80
-  padding = { top: 0, right: 30, bottom: 0, left: 30 }
 
   renderChartItem = (props, i, data) => (
     <g key={`ChartItem__${props.label}`}>

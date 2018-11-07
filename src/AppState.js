@@ -32,13 +32,12 @@ export const updateHistory = props => (dispatch) => {
     strict: false
   });
 
-  const activeSection = match.params.activeSection;
-  const activeView = match.params.activeView;
+  const { activeSection, activeView } = match.params;
 
   dispatch({
     type: UPDATE_HISTORY,
     payload: {
-      activeSection: isNaN(activeSection) ? null : activeSection,
+      activeSection: Number.isNaN(activeSection) ? null : activeSection,
       activeView
     }
   });

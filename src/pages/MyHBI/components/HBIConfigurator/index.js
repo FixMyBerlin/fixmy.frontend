@@ -65,7 +65,9 @@ class HBIConfigurator extends PureComponent {
   }
 
   static renderHandle(props) {
-    const { value, dragging, index, ...restProps } = props;
+    const {
+      value, dragging, index, ...restProps
+    } = props;
 
     return (
       <Slider.Handle value={value} {...restProps}>

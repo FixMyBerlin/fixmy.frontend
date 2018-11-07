@@ -34,7 +34,9 @@ export async function apiLogin(json, formFunctions) {
 export async function apiUpdate(json, token, formFunctions) {
   if (json.new_username) {
     return handleRequest('users/change_username/', { json, token }, formFunctions, 'text');
-  } else if (json.new_password) {
+  }
+
+  if (json.new_password) {
     return handleRequest('password/', { json, token }, formFunctions, 'text');
   }
 

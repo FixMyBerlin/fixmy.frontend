@@ -9,7 +9,9 @@ const FormFieldSection = styled.div`
 `;
 
 // returns the formfiled thats specified by the passed "type"
-export default ({ id, type, label, options, placeholder = '', values, handleChange, errors = {} }) => {
+export default ({
+  id, type, label, options, placeholder = '', values, handleChange, errors = {}
+}) => {
   let Result = null;
 
   if (['text', 'number', 'email', 'password'].includes(type)) {
@@ -35,7 +37,7 @@ export default ({ id, type, label, options, placeholder = '', values, handleChan
 
   return (
     <FormFieldSection>
-      <label htmlFor={id}>{label}</label>
+      <span>{label}</span>
       {Result}
       {errors[id] && <FormFieldError>{errors[id]}</FormFieldError>}
     </FormFieldSection>

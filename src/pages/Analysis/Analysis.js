@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 
 import { sortByKey } from '~/utils/utils';
 import { districts } from '~/labels';
-import { loadPlanningData, setDistrictFilter, setPhaseFilter, setSort } from '~/pages/Analysis/AnalysisState';
+import {
+  loadPlanningData, setDistrictFilter, setPhaseFilter, setSort
+} from '~/pages/Analysis/AnalysisState';
 import PieChart from '~/pages/Analysis/components/PieChart';
 import BigLabel from '~/components/BigLabel';
 import MenuButton from '~/components/MenuButton';
@@ -48,16 +50,12 @@ const StyledMenuButton = styled(MenuButton)`
 
 const districtOptions = [
   { label: 'Alle Bezirke anzeigen', value: 'all' },
-  ...districts.map(districtName =>
-    ({ label: districtName, value: districtName.toLowerCase() })
-  )
+  ...districts.map(districtName => ({ label: districtName, value: districtName.toLowerCase() }))
 ];
 
 const phaseOptions = [
   { label: 'Alle Phasen anzeigen', value: 'all' },
-  ...config.planningPhases.map(phase =>
-    ({ label: phase.name, value: phase.id })
-  )
+  ...config.planningPhases.map(phase => ({ label: phase.name, value: phase.id }))
 ];
 
 const sortOptions = [
@@ -102,7 +100,9 @@ class Analysis extends PureComponent {
   }
 
   render() {
-    const { data, isLoading, selectedDistrict, selectedPhase, selectedSort } = this.props;
+    const {
+      data, isLoading, selectedDistrict, selectedPhase, selectedSort
+    } = this.props;
 
     // for the pie chart we only filter by district
     const filteredDataDistrict = data.filter(filterDistrict(selectedDistrict));
