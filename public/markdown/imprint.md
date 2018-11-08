@@ -25,6 +25,9 @@ Webkid GmbH, https://webkid.io/
 **Backend & Beratung**<br />
 Agaric e.K. Stefan Freudenberg
 
+## Quellenvermerk
+Die von FixMyBerlin entwickelten Karten basieren auf Daten des Geoportal Berlin /  Detailnetz Berlin und wurden für die Dienste von FixMyBerlin entsprechend angepasst.
+
 ## Urheberrechte Fotos
 Wenn nicht anders angegeben stehen die auf fixmyberlin.de verwendeten Fotos unter Creative Commons-Lizenz (BY-NC 4.0). (Info zu CC Lizenzen)
 
