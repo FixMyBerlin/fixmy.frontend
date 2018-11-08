@@ -1,6 +1,6 @@
 <p align="center">🚲 🚲 🚲</p>
 
-<h1 align="center">FixMyBerlin - A Bicycle Lane Platform for Berlin</h1>
+<h1 align="center">FixMyBerlin - A Mobility Platform for Berlin</h1>
 
 You can check out the live version [here](https://fixmyberlin.de/).
 
