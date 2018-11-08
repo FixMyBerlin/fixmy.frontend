@@ -31,7 +31,8 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       inject: true,
       siteUrl: Config.prodUrl,
-      template: './src/index.html'
+      template: './src/index.html',
+      minify: false
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
     new UglifyJSPlugin({ sourceMap: true }),

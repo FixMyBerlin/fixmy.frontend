@@ -1,6 +1,6 @@
 {
   "devUrl": "http://localhost:8080",
-  "prodUrl": "https://fixmyberlin-app.netlify.com",
+  "prodUrl": "https://fixmyberlin.de",
   "newsletterWidgetUrl": "https://app.mailjet.com/widget/iframe/2YIa/6kW",
   "apiUrl": "https://api.fixmyberlin.de/api",
   "colors": {
