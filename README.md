@@ -1,6 +1,10 @@
-# 🚲  FixMyBerlin - A bicycle lane platform for Berlin
+<p align="center">🚲 🚲 🚲</p>
+
+<h1 align="center">FixMyBerlin - A Bicycle Lane Platform for Berlin</h1>
 
 You can check out the live version [here](https://fixmyberlin.de/).
+
+![fixmy screenshot](/fixmy-screenshot.jpg)
 
 ## Installation
 
