@@ -1,7 +1,7 @@
 # Impressum
 FixMyBerlin GbR<br />
 Karlsgartenstraße 12<br />
-10967 Berlin<br />
+12049 Berlin<br />
 E-Mail-Adresse: [hello@fixmyberlin.de](mailto:hello@fixmyberlin.de)<br />
 
 Gesellschafter: Boris Hekele und Heiko Rintelen
