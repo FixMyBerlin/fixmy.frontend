@@ -27,4 +27,5 @@ Screenshots zur freien Verwendung durch die Presse: <br>
 + 19.09.2018 - [Berliner Zeitung - FixMyBerlin Neue Plattform zeigt, wie sicher Berlins Hauptstraßen für Radler sind ](https://www.berliner-zeitung.de/berlin/verkehr/fixmyberlin-neue-plattform-zeigt--wie-sicher-berlins-hauptstrassen-fuer-radler-sind-31317724)
 + 23.09.2018 - [Radioeins, Die Sonntagsfahrer - FixMyBerlin: Plattform zeigt Umsetzung des Fahrradgesetzes](https://www.radioeins.de/programm/sendungen/die_sonntagsfahrer/_/fixmyberlin--plattform-zeigt-umsetzung-des-fahrradgesetzes.html)
 + 01.10.2018 - [Neues Deutschland - Sichere Radwege? Fehlanzeige](https://www.neues-deutschland.de/artikel/1101941.sichere-radwege-fehlanzeige.html)
++ 01.10.2018 - [Fahrradportal Nationaler Radverkehrsplan - Plattform "fixmyberlin" zeigt, wo in Berlin neue Radverkehrsinfrastruktur entsteht](https://nationaler-radverkehrsplan.de/de/aktuell/nachrichten/radwegebau-den-bundeslaendern-32)
 
