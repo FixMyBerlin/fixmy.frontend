@@ -1,0 +1,25 @@
+[
+  {
+    "subject": "PARKING",
+    "enhancement_suggestion": {
+      "amenityId": "IRONING",
+      "amenities_needed": 5,
+      "amenity_placement_id": "SIDEWALK"
+    },
+    "lonLat": [
+      13.3436042082487,
+      52.52898476869447
+    ],
+    "photoUrl": "https://downloads.intercomcdn.com/i/o/35348220/da2265aceff94516305d654a/Screen+Shot+2017-10-02+at+12.57.58+PM.png",
+    "description": "Immer allet voll hier"
+  },
+  {
+    "subject": "BAD_SURFACE",
+    "lonLat": [
+      13.34375540636318,
+      52.52905990333657
+    ],
+    "photoUrl": "https://downloads.intercomcdn.com/i/o/35348220/da2265aceff94516305d654a/Screen+Shot+2017-10-02+at+12.57.58+PM.png",
+    "description": "Voll die Buckelpiste!"
+  }
+]
