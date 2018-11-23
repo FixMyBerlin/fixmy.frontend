@@ -37,6 +37,12 @@
         "icon": "analysis",
         "border": false
       },
+      { "type": "link",
+        "label": "Mängel melden",
+        "link": "/meldungen",
+        "icon": "schraubenschluessel",
+        "border": false
+      },
       {
         "type": "separator",
         "label": "Weiteres"
@@ -116,6 +122,7 @@
     "plannings": "/planungen",
     "status": "/zustand",
     "analyse": "/analyse",
+    "reports": "/meldungen",
     "signup": "/registrieren",
     "login": "/anmelden",
     "forgotPassword": "/passwort-vergessen",
