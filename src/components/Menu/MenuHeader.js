@@ -20,9 +20,9 @@ const MenuHeaderContainer = styled.div`
   color: white;
 `;
 
-const AccountLink = styled(NavLink).attrs({
-  to: props => props.to
-})`
+const AccountLink = styled(NavLink).attrs(
+  props => ({ to: props.to })
+)`
   display: flex;
   font-size: 1rem;
   text-decoration: none;

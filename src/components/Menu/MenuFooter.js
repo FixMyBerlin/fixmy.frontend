@@ -37,9 +37,9 @@ const FooterLinks = styled.div`
   flex-wrap: wrap;
 `;
 
-const StyledLink = styled(NavLink).attrs({
-  to: props => props.to
-})`
+const StyledLink = styled(NavLink).attrs(
+  props => ({ to: props.to })
+)`
   width: 33.3333%;
   padding: 4px 8px;
   text-align: center;

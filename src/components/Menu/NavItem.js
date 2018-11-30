@@ -1,9 +1,9 @@
 import NavLink from 'react-router-dom/NavLink';
 import styled from 'styled-components';
 
-const NavItem = styled(NavLink).attrs({
-  to: props => props.to
-})`
+const NavItem = styled(NavLink).attrs(
+  props => ({ to: props.to })
+)`
   display: flex;
   padding: 1.2rem 0;
   margin: 0 2rem;
