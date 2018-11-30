@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Link from 'react-router-dom/Link';
 
 import { homeLabels } from '~/labels';
@@ -47,6 +47,33 @@ const BackgroundMap = styled.div`
   background-position: center center;
 `;
 
+const bounce = keyframes`
+  0% {
+      transform: translateY(0);
+  }
+  5% {
+      transform: translateY(5%);
+  }
+  10% {
+      transform: translateY(0%);
+  }
+  15% {
+    transform: translateY(0%);
+  }
+  20% {
+      transform: translateY(5%);
+  }
+  25% {
+      transform: translateY(0);
+  }
+`;
+
+const MapButton = styled(Button)`
+  font-weight: 700;
+  margin: 1em 0 2em 0;
+  animation: ${bounce} 4s ease-in infinite;
+`;
+
 export default () => (
   <Fragment>
     <ContentOverlay>
@@ -59,7 +86,7 @@ export default () => (
         </div>
         <MapLinkWrapper>
           <Link to="/planungen">
-            <Button>{homeLabels.mapButton}</Button>
+            <MapButton>{homeLabels.mapButton}</MapButton>
           </Link>
         </MapLinkWrapper>
         <SubscribtionWidget />

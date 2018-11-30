@@ -16,11 +16,10 @@ export const districts = [
 export const homeLabels = {
   title: 'Hi, das ist FixMyBerlin',
   intro: `
-    Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Auf der Karte mit den Planungen siehst du was die Stadt dafür plant. Der Happy-Bike-Index zeigt dir wo du zur Zeit an den Berliner Hauptstraßen sicher radfahren kannst und wo es noch gefährlich ist. Bitte beachte, dass die Plattform derzeit noch ‚beta’ ist und weitere Daten noch in der Aufbereitung sind. Oben links im Menü kannst du dich anmelden, um Planungen zu ‚liken’. Dort findest du auch weitere Informationen.
-    Trage dich für Updates zum Newsletter ein.
+    Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Auf der Karte mit den Planungen siehst du was Berlin dafür plant.
   `,
   button: 'Worum geht es hier genau?',
-  mapButton: 'zeige die Karte'
+  mapButton: 'Gehe zur Karte'
 };
 
 export const errorLabels = {
