@@ -142,9 +142,6 @@ class PlanningListItem extends PureComponent {
     const photo = photos.length ? photos[0] : false;
     const id = idx(this.props, _ => _.planning_section_ids[0]);
 
-
-    console.log(this.props.likes);
-
     return (
       <ItemWrapper onClick={this.toggleExpanded}>
         <ItemContent>
