@@ -31,15 +31,6 @@ const MapLinkWrapper = styled.div`
   margin: 10px;
 `;
 
-// const MapButton = styled(Button)`
-//   margin-top: 20px;
-//   a {
-//     text-decoration: none;
-//     color: white;
-//     font-weight: 500;
-//   }
-// `;
-
 const BackgroundMap = styled.div`
   height: 100%;
   background-image: url(${bgImage});
