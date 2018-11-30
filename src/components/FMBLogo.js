@@ -9,9 +9,9 @@ const FMBLogoWrapper = styled.div`
   position: relative;
 `;
 
-const StyledBetaIcon = styled(BetaIcon).attrs({
-  width: 60
-})`
+const StyledBetaIcon = styled(BetaIcon).attrs(
+  () => ({ width: 60 })
+)`
   transform: rotate(-4deg);
   position: absolute;
   top: -18px;
