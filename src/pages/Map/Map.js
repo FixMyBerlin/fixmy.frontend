@@ -104,6 +104,7 @@ class MapViewComponent extends PureComponent {
                 <StyledFMBLogo showBetaIcon width={67} />
               </MapControl>
             )}
+            {isEmbedMode && <FMBCredits />}
           </WebglMap>
 
           {this.props.displayPopup && <MapPopup />}
@@ -111,6 +112,7 @@ class MapViewComponent extends PureComponent {
           <MapContent
             filterHbi={this.props.filterHbi}
             displayLegend={displayLegend}
+            isEmbedMode={isEmbedMode}
           />
 
           <Route
@@ -142,7 +144,6 @@ class MapViewComponent extends PureComponent {
           path="/my-hbi"
           component={MyHBI}
         />
-        {isEmbedMode && <FMBCredits />}
       </MapView>
     );
   }

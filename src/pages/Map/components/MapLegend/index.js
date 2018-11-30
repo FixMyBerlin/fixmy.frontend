@@ -51,9 +51,11 @@ class MapLegend extends PureComponent {
         <MapLegendWrapper>
           <LegendComponent {...this.props} />
         </MapLegendWrapper>
-        <BraceWrapper>
-          <Brace type={this.props.type === 'hbi' ? 'zustand' : 'planung'} />
-        </BraceWrapper>
+        {!this.props.isEmbedMode && (
+          <BraceWrapper>
+            <Brace type={this.props.type === 'hbi' ? 'zustand' : 'planung'} />
+          </BraceWrapper>
+        )}
       </Fragment>
     );
   }

@@ -4,12 +4,16 @@ import ExternalLink from '~/components/ExternalLink';
 
 const FMBCredits = styled.div`
   position: absolute;
-  bottom: 215px;
-  left: 8px;
+  bottom: 0;
+  left: 50%;
+  margin-left: -90px;
+  width: 180px;
   background: #fff;
-  border-radius: 4px;
+  border-radius: 4px 4px 0 0;
   padding: 5px;
   font-size: 12px;
+  z-index: 1000;
+  text-align: center;
 `;
 
 export default () => (
