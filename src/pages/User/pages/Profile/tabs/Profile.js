@@ -1,9 +1,7 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
+import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
 import { connect as formikConnect } from 'formik';
 
-import ContentPageWrapper from '~/components/ContentPageWrapper';
 import Title from '~/components/Title';
 import Text from '~/components/Text';
 import Button from '~/components/Button';
@@ -25,7 +23,7 @@ const StyledButton = styled(Button)`
   background: ${config.colors.change_4};
 `;
 
-class Signup extends PureComponent {
+class Profil extends PureComponent {
   state = {
     logoutstatus: false
   }
@@ -33,7 +31,6 @@ class Signup extends PureComponent {
   componentDidMount() {
     this.props.dispatch(profile());
   }
-
 
   onSubmit = (values, params) => {
     this.props.dispatch(update(values, params));
@@ -63,7 +60,7 @@ class Signup extends PureComponent {
     const formConfigPasswordCleared = formConfigPassword.map(d => ({ ...d, value: '' }));
 
     return (
-      <ContentPageWrapper>
+      <Fragment>
         <Title>Profil</Title>
         <Text>Hier kannst du dein Passwort ändern.</Text>
         <UserForm
@@ -75,9 +72,9 @@ class Signup extends PureComponent {
           Ausloggen
         </StyledButton>
         {this.state.logoutstatus && <Text>Du hast Dich erfolgreich ausgeloggt.</Text>}
-      </ContentPageWrapper>
+      </Fragment>
     );
   }
 }
 
-export default connect(state => state.UserState)(formikConnect(Signup));
+export default formikConnect(Profil);

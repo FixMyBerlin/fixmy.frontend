@@ -15,7 +15,7 @@ import MapView from '~/pages/Map';
 import Analysis from '~/pages/Analysis';
 import Login from '~/pages/User/pages/Login';
 import Signup from '~/pages/User/pages/Signup';
-import Profil from '~/pages/User/pages/Profil';
+import Profile from '~/pages/User/pages/Profile';
 import ForgotPassword from '~/pages/User/pages/ForgotPassword';
 import ResetPassword from '~/pages/User/pages/ResetPassword';
 import EmailVerification from '~/pages/User/pages/EmailVerification';
@@ -60,7 +60,7 @@ class App extends PureComponent {
                 <Route path={config.routes.forgotPassword} component={ForgotPassword} />
                 <Route path={`${config.routes.resetPassword}/:uid/:token`} component={ResetPassword} />
                 <Route path={config.routes.emailVerification} component={EmailVerification} />
-                <PrivateRoute path={config.routes.profile} token={token} component={Profil} />
+                <PrivateRoute path={config.routes.profile} token={token} component={Profile} />
 
                 {/* map pages */}
                 <Route

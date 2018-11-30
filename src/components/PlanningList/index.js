@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import withRouter from 'react-router/withRouter';
 
-import PlanningListItem from '~/pages/Analysis/components/PlanningListItem';
+import PlanningListItem from '~/components/PlanningListItem';
 
 class PlanningList extends PureComponent {
   render() {

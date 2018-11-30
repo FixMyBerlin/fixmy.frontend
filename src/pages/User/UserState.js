@@ -1,7 +1,7 @@
 import uuidv4 from 'uuid/v4';
 
 import { set, remove, get } from '~/services/storage';
-import { apiSignup, apiLogin, apiUpdate, apiUser, apiVerify, apiPasswordReset, apiPasswordForgot } from '~/pages/User/apiservice';
+import { apiSignup, apiLogin, apiUpdate, apiUser, apiVerify, apiPasswordReset, apiPasswordForgot, apiLikes } from '~/pages/User/apiservice';
 import history from '~/history';
 
 const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
@@ -22,12 +22,16 @@ const PROFILE = 'User/UserState/PROFILE';
 const PROFILE_SUCCESS = 'User/UserState/PROFILE_SUCCESS';
 const UPDATE_USERNAME_SUCCESS = 'User/UserState/UPDATE_USERNAME_SUCCESS';
 const UPDATE_PASSWORD_SUCCESS = 'User/UserState/UPDATE_PASSWORD_SUCCESS';
+const LOAD_LIKES = 'User/UserState/LOAD_LIKES';
+const LOAD_LIKES_SUCCESS = 'User/UserState/LOAD_LIKES_SUCCESS';
+const LOAD_LIKES_FAIL = 'User/UserState/LOAD_LIKES_FAIL';
 
 const initialState = {
   userid: uuidv4(),
   hbi_values: config.hbi.map(d => d.value),
   token: get('token'),
-  userData: false
+  userData: false,
+  userLikes: false
 };
 
 // updates custome hbi config values
@@ -165,6 +169,22 @@ export function forgotPassword(values, formFunctions) {
   };
 }
 
+export function loadLikes() {
+  return async (dispatch, getState) => {
+    dispatch({ type: LOAD_LIKES, payload: { isLoading: true } });
+
+    const { token } = getState().UserState;
+    const plannings = await apiLikes(token);
+
+    if (!plannings.error) {
+      const userLikes = plannings.results.filter(d => d.liked_by_user);
+      dispatch({ type: LOAD_LIKES_SUCCESS, payload: { isLoading: false, userLikes } });
+    } else {
+      dispatch({ type: LOAD_LIKES_FAIL, payload: { isLoading: false } });
+    }
+  };
+}
+
 export default function MapStateReducer(state = initialState, action = {}) {
   switch (action.type) {
     case UPDATE_HBI: {
@@ -193,6 +213,9 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case PROFILE_SUCCESS:
     case UPDATE_USERNAME_SUCCESS:
     case UPDATE_PASSWORD_SUCCESS:
+    case LOAD_LIKES:
+    case LOAD_LIKES_SUCCESS:
+    case LOAD_LIKES_FAIL:
       return Object.assign({}, state, action.payload);
     default:
       return Object.assign({}, state);

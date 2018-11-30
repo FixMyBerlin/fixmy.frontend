@@ -21,7 +21,6 @@ const icons = {
 
 const ItemWrapper = styled.div`
   margin: 8px 0;
-
   background: ${config.colors.lightbg};
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
   cursor: pointer;
@@ -42,7 +41,7 @@ const ItemImage = styled.img`
   position: absolute;
   right: 16px;
   top: 16px;
-  width: 32px;
+  width: 32px !important;
 `;
 
 const ItemTitle = styled.div`
