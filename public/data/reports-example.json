@@ -1,10 +1,10 @@
 [
   {
-    "subject": "PARKING",
+    "subject": "parking",
     "enhancement_suggestion": {
-      "amenityId": "IRONING",
+      "type": "IRONING",
       "amenities_needed": 5,
-      "amenity_placement_id": "SIDEWALK"
+      "amenity_placement": "SIDEWALK"
     },
     "lonLat": [
       13.3436042082487,
@@ -14,12 +14,21 @@
     "description": "Immer allet voll hier"
   },
   {
-    "subject": "BAD_SURFACE",
+    "subject": "bad_surface",
     "lonLat": [
-      13.34375540636318,
-      52.52905990333657
+      13.34635540636318,
+      52.52565990333657
     ],
     "photoUrl": "https://downloads.intercomcdn.com/i/o/35348220/da2265aceff94516305d654a/Screen+Shot+2017-10-02+at+12.57.58+PM.png",
     "description": "Voll die Buckelpiste!"
+  },
+  {
+    "subject": "black_spot",
+    "lonLat": [
+      13.34325540636318,
+      52.52980990333657
+    ],
+    "photoUrl": "https://www.w3schools.com/css/paris.jpg",
+    "description": "Achtung! Vulkanische Aktivitäten"
   }
 ]
