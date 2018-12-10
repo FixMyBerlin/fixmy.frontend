@@ -31,6 +31,8 @@ const StyledMarkdown = styled(Markdown)`
 
   a {
     ${getLinkStyles()}
+    color: #fabe28;
+    text-decoration: none;
   }
 
   img {
