@@ -4,6 +4,7 @@ import Markdown from 'react-markdown';
 import { getTitleStyles } from '~/components/Title';
 import { getSectionTitleStyles } from '~/components/SectionTitle';
 import { getTextStyles } from '~/components/Text';
+import { getLinkStyles } from '~/components/Link';
 
 const ImageContext = require.context('~/images', true);
 
@@ -26,6 +27,10 @@ const StyledMarkdown = styled(Markdown)`
 
   p, li {
     ${getTextStyles()}
+  }
+
+  a {
+    ${getLinkStyles()}
   }
 
   img {
