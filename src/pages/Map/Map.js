@@ -13,6 +13,7 @@ import MapContent from '~/pages/Map/components/MapContent';
 import SearchBar from '~/pages/Map/components/SearchBar';
 import FMBCredits from '~/pages/Map/components/FMBCredits';
 import FMBLogo from '~/components/FMBLogo';
+import FloatingButton from '~/components/FloatingButton';
 import Store from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from '~/pages/Map/components/WebglMap';
@@ -61,6 +62,10 @@ class MapViewComponent extends PureComponent {
     this.updateView({ center: userLocation, zoom: config.map.zoomAfterGeocode, animate: true });
   }
 
+  handleSubmitReportBtnTab = () => {
+    this.props.history.push(config.routes.submitReport);
+  }
+
   render() {
     const isDesktopView = matchMediaSize(breakpoints.m);
     const displayLegend = !this.props.activeSection || isDesktopView;
@@ -87,6 +92,7 @@ class MapViewComponent extends PureComponent {
             hbi_values={this.props.hbi_values}
             filterHbi={this.props.filterHbi}
             filterPlannings={this.props.filterPlannings}
+            filterReports={this.props.filterReports}
             calculatePopupPosition={calculatePopupPosition}
             displayPopup={this.props.displayPopup}
             animate={this.props.animate}
@@ -144,7 +150,15 @@ class MapViewComponent extends PureComponent {
           path="/my-hbi"
           component={MyHBI}
         />
+        <Route
+          path="/meldungen"
+          render={() => (
+            <FloatingButton onTab={this.handleSubmitReportBtnTab} />
+          )}
+        />
+        {isEmbedMode && <FMBCredits />}
       </MapView>
+
     );
   }
 }
@@ -156,6 +170,7 @@ export default withRouter(
     activeLocation: state.MapState.activeLocation,
     filterHbi: state.MapState.filterHbi,
     filterPlannings: state.MapState.filterPlannings,
+    filterReports: state.MapState.filterReports,
     hasMoved: state.MapState.hasMoved,
     hbi_speed: state.MapState.hbi_speed,
     hbi_safety: state.MapState.hbi_safety,

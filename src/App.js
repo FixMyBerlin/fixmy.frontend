@@ -20,6 +20,7 @@ import ForgotPassword from '~/pages/User/pages/ForgotPassword';
 import ResetPassword from '~/pages/User/pages/ResetPassword';
 import EmailVerification from '~/pages/User/pages/EmailVerification';
 import { verify } from '~/pages/User/UserState';
+import SubmitReport from '~/pages/SubmitReport';
 
 const AppContent = styled.div`
   width: 100%;
@@ -66,6 +67,12 @@ class App extends PureComponent {
                 <Route
                   path={`(${config.routes.status}|${config.routes.plannings}|/my-hbi)`}
                   component={MapView}
+                />
+
+                {/* reports page */}
+                <Route
+                  path={`${config.routes.submitReport}`}
+                  component={SubmitReport}
                 />
 
                 {/* analysis pages */}
