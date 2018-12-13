@@ -28,4 +28,5 @@ Screenshots zur freien Verwendung durch die Presse: <br>
 + 23.09.2018 - Radioeins, Die Sonntagsfahrer [FixMyBerlin: Plattform zeigt Umsetzung des Fahrradgesetzes](https://www.radioeins.de/programm/sendungen/die_sonntagsfahrer/_/fixmyberlin--plattform-zeigt-umsetzung-des-fahrradgesetzes.html)
 + 01.10.2018 - Neues Deutschland [Sichere Radwege? Fehlanzeige](https://www.neues-deutschland.de/artikel/1101941.sichere-radwege-fehlanzeige.html)
 + 01.10.2018 - Fahrradportal Nationaler Radverkehrsplan - [Plattform "fixmyberlin" zeigt, wo in Berlin neue Radverkehrsinfrastruktur entsteht](https://nationaler-radverkehrsplan.de/de/aktuell/nachrichten/radwegebau-den-bundeslaendern-32)
++ 13.12.2018 - finanzen.de - [Berliner Radwege mit besseren Daten sicherer machen](https://www.finanzen.de/news/18949/mit-besseren-daten-die-berliner-radwege-sicherer-machen)
 
