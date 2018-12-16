@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
-class SubmitReport extends PureComponent {
+class Reports extends PureComponent {
   render() {
     return (
       <div>
@@ -11,4 +11,4 @@ class SubmitReport extends PureComponent {
   }
 }
 
-export default connect(state => state.SubmitReportState)(SubmitReport);
+export default connect(state => state.ReportsState)(Reports);

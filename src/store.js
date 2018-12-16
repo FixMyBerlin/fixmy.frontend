@@ -5,14 +5,14 @@ import AppState from '~/AppState';
 import MapState from '~/pages/Map/MapState';
 import UserState from '~/pages/User/UserState';
 import AnalysisState from '~/pages/Analysis/AnalysisState';
-import SubmitReportState from '~/pages/SubmitReport/SubmitReportState';
+import ReportsState from '~/pages/Reports/ReportsState';
 
 const Reducer = combineReducers({
   AppState,
   MapState,
   UserState,
   AnalysisState,
-  SubmitReportState
+  ReportsState
 });
 
 const enhancers = compose(

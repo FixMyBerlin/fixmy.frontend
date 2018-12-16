@@ -20,7 +20,7 @@ import ForgotPassword from '~/pages/User/pages/ForgotPassword';
 import ResetPassword from '~/pages/User/pages/ResetPassword';
 import EmailVerification from '~/pages/User/pages/EmailVerification';
 import { verify } from '~/pages/User/UserState';
-import SubmitReport from '~/pages/SubmitReport';
+import Reports from '~/pages/Reports';
 
 const AppContent = styled.div`
   width: 100%;
@@ -71,8 +71,8 @@ class App extends PureComponent {
 
                 {/* reports page */}
                 <Route
-                  path={`${config.routes.submitReport}`}
-                  component={SubmitReport}
+                  path={`${config.routes.reports}`}
+                  component={Reports}
                 />
 
                 {/* analysis pages */}

@@ -1,6 +1,6 @@
 import Loadable from 'react-loadable';
 
 export default Loadable({
-  loader: () => import(/* webpackChunkName: "SubmitReport" */ './SubmitReport'),
+  loader: () => import(/* webpackChunkName: "Reports" */ './Reports'),
   loading: () => null
 });

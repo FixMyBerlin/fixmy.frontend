@@ -22,7 +22,7 @@ export function loadReportData() {
 }
 
 
-export default function MeldungenReducer(state = initialState, action = {}) {
+export default function ReportsReducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_REPORT_FILTER:
       return {
