@@ -4,7 +4,17 @@ const SET_REPORT_DATA = 'Map/MapState/SET_REPORT_DATA';
 const SET_REPORT_FILTER = 'Map/MapState/SET_REPORT_FILTER';
 
 const initialState = {
-  filterReports: [true, false, false]
+  navStep: 1, // increments while stepping through the dialog
+  // reportItem: {
+  //   lonLat: [11.2, 52.3],
+  //   subject: config.reportSubjects[0].subject, // parking
+  //   enhancement_suggestion: {
+  //     type: config.reportSubjects[0].enhancement_suggestions.type, // Fahrradbügel
+  //     specifications: {
+  //     }
+  //   }
+  // },
+  error: null // holds an error message to which displaying components can bind to
 };
 
 
