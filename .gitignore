@@ -14,4 +14,6 @@ yarn.lock
 .yarnclean
 package-lock.json
 
+# IDEs
 .vscode
+.idea/
