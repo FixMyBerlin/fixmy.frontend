@@ -19,7 +19,8 @@
     "jsx-a11y/label-has-associated-control": 0,
     "react/jsx-one-expression-per-line": 0,
     "operator-linebreak": 0,
-    "object-curly-newline": 0
+    "object-curly-newline": 0,
+    "linebreak-style": 0
   },
   "env": {
     "browser": true
