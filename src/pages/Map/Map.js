@@ -13,7 +13,6 @@ import MapContent from '~/pages/Map/components/MapContent';
 import SearchBar from '~/pages/Map/components/SearchBar';
 import FMBCredits from '~/pages/Map/components/FMBCredits';
 import FMBLogo from '~/components/FMBLogo';
-import FloatingButton from '~/components/FloatingButton';
 import Store from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from '~/pages/Map/components/WebglMap';
@@ -60,10 +59,6 @@ class MapViewComponent extends PureComponent {
 
   handleLocationChange = (userLocation) => {
     this.updateView({ center: userLocation, zoom: config.map.zoomAfterGeocode, animate: true });
-  }
-
-  handleSubmitReportBtnTab = () => {
-    this.props.history.push(config.routes.submitReport);
   }
 
   render() {
@@ -149,12 +144,6 @@ class MapViewComponent extends PureComponent {
         <Route
           path="/my-hbi"
           component={MyHBI}
-        />
-        <Route
-          path="/meldungen"
-          render={() => (
-            <FloatingButton onTab={this.handleSubmitReportBtnTab} />
-          )}
         />
         {isEmbedMode && <FMBCredits />}
       </MapView>

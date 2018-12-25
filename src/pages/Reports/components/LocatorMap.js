@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 import withRouter from 'react-router/withRouter';
+import FloatingButton from '~/pages/Reports/components/FloatingButton';
 
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -57,14 +58,20 @@ class LocatorMap extends PureComponent {
     // display coordinates or better geocode them to show an adress
   }
 
+  handleSubmitReportBtnTab = () => {
+    this.props.history.push(config.routes.submitReport);
+  }
+
+
   render() {
     const { className } = this.props;
     return (
       // TODO: render ReportMarkers
       <StyledMap
         className={className}
-        ref={(ref) => { this.root = ref; }}
-      />
+        ref={(ref) => { this.root = ref; }} >
+        <FloatingButton onTab={this.handleSubmitReportBtnTab} />
+      </StyledMap>
     );
   }
 }
