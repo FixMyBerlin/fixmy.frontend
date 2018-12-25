@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
-import Landing from '~/pages/Reports/components/Landing';
+import Landing from '~/pages/Reports/components/Landing/index';
 import LocatorMap from './components/LocatorMap';
 
 /**

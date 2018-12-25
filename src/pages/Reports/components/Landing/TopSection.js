@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import FixMyLogo from '~/images/logofmb@2x.png';
 import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.jpg';
@@ -35,18 +34,15 @@ const StyledHeading = styled.h2`
 
 const StyledButton = styled(Button)`
   width: 167px;
-`
+`;
+
 
 export default () => (
-  <div>
-    <TopSection>
-      <img width="92px" src={FixMyLogo} alt="logo" />
-      <StyledHeading>Neue Fahrradbügel für Friedrichshain-Kreuzberg</StyledHeading>
-      <StyledButton>
-        <strong>Sag uns wo</strong><br /> in 30 Sekunden
-      </StyledButton>
-    </TopSection>
-
-    <Link to="/meldungen/wo">Zur Karte</Link>
-  </div>
+  <TopSection>
+    <img width="92px" src={FixMyLogo} alt="logo" />
+    <StyledHeading>Neue Fahrradbügel für Friedrichshain-Kreuzberg</StyledHeading>
+    <StyledButton>
+      <strong>Sag uns wo</strong><br /> in 30 Sekunden
+    </StyledButton>
+  </TopSection>
 );
