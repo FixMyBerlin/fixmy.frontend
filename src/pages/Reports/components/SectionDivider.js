@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {ChevronDown} from 'react-feather';
+import { ChevronDown } from 'react-feather';
 
 
 const SectionDivider = styled.div`
@@ -18,12 +18,12 @@ const StyledChevron = styled(ChevronDown)`
   border-radius: 48px;
   color: white;
   position: relative;
-  box-shadow: 0 4px 8px #353535;
+  box-shadow: 0 3px 4px rgba(53,53,53, 0.8);
 `;
 
 
 export default () => (
   <SectionDivider>
-    <StyledChevron/>
+    <StyledChevron />
   </SectionDivider>
 );

@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 // TODO: styling for desktop
 
-const Section = styled.section`
+const StyledSection = styled.section`
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -17,10 +17,11 @@ const Section = styled.section`
   background-image: url(${BycicleParkingBgImg});
   background-size: cover;
   background-position: center center;
+  padding-left: 34px;
+  padding-right: 34px;
 `;
 
 const StyledHeading = styled.h2`
-  width: 310px;
   height: 120px;
   font-family: "Roboto Slab";
   font-size: 32px;
@@ -32,6 +33,7 @@ const StyledHeading = styled.h2`
   text-align: center;
   color: white;
   margin-bottom: 39px;
+ 
 `;
 
 const StyledButton = styled(Button)`
@@ -50,15 +52,15 @@ const StyledLink = styled(Link)`
 
 
 const TopSection = ({ toUrl }) => (
-  <Section>
+  <StyledSection>
     <img width="92px" src={FixMyLogo} alt="logo" />
     <StyledHeading>Neue Fahrradbügel für Friedrichshain-Kreuzberg</StyledHeading>
     <StyledButton>
       <StyledLink to={toUrl}>
-        <strong>Sag uns wo</strong><br /> in 30 Sekunden
+        <strong>Sagt uns wo</strong><br /> in 30 Sekunden
       </StyledLink>
     </StyledButton>
-  </Section>
+  </StyledSection>
 );
 
 TopSection.propTypes = {
