@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import FixMyLogo from '~/images/logofmb@2x.png';
-import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.jpg';
+import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.jpg'; // TODO: pick image size depending on screen size
 import Button from '~/components/Button';
 import Link from '~/components/Link';
 import PropTypes from 'prop-types';
