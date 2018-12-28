@@ -19,22 +19,18 @@ class FaqSection extends Component {
         },
         {
           heading: 'Wie kann ich mitmachen?',
-          text: null,
           collapsed: true // initially collapse all items but the first one
         },
         {
           heading: 'Was genau passiert mit den Meldungen?',
-          text: null,
           collapsed: true // initially collapse all items but the first one
         },
         {
           heading: 'Werden alle Meldungen umgesetzt?',
-          text: null,
           collapsed: true // initially collapse all items but the first one
         },
         {
           heading: 'Warum ist mein Bezirk nicht dabei?',
-          text: null,
           collapsed: true // initially collapse all items but the first one
         }
       ]
