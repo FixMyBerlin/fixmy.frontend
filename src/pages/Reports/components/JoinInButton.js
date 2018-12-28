@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '~/components/Button';
 import Link from '~/components/Link';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const StyledButton = styled(Button)`
   display: block;
@@ -15,19 +15,19 @@ const StyledButton = styled(Button)`
 
 const StyledLink = styled(Link)`
   color: white;
-  font-size: 18px;
-  font-weight: 200;
+  font-size: 17px;
+  font-weight: bold;
   &:visited {
     color: white;
   }
 `;
 
 const JoinInButton = ({ toUrl }) => (
-    <StyledButton>
-      <StyledLink to={toUrl}>
+  <StyledButton>
+    <StyledLink to={toUrl}>
         Jetzt mitmachen
-      </StyledLink>
-    </StyledButton>
+    </StyledLink>
+  </StyledButton>
 );
 
 JoinInButton.propTypes = {
@@ -38,4 +38,4 @@ JoinInButton.defaultProps = {
   toUrl: '/meldungen/wo'
 };
 
-export default JoinInButton
+export default JoinInButton;
