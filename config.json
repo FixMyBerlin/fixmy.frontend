@@ -38,9 +38,9 @@
         "border": false
       },
       { "type": "link",
-        "label": "Mängelmeldungen",
+        "label": "Fahrradbügel in Fhain-Xberg",
         "link": "/meldungen",
-        "icon": "schraubenschluessel",
+        "icon": "noun-bycicle",
         "border": false
       },
       {
