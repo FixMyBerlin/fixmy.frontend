@@ -1,19 +1,10 @@
 import ky from 'ky';
 
-const SET_REPORT_DATA = 'Map/MapState/SET_REPORT_DATA';
-const SET_REPORT_FILTER = 'Map/MapState/SET_REPORT_FILTER';
+const SET_REPORT_DATA = 'OverviewMap/MapState/SET_REPORT_DATA';
 
 const initialState = {
-  navStep: 1, // increments while stepping through the dialog
-  // reportItem: {
-  //   lonLat: [11.2, 52.3],
-  //   subject: config.reportSubjects[0].subject, // parking
-  //   enhancement_suggestion: {
-  //     type: config.reportSubjects[0].enhancement_suggestions.type, // Fahrradbügel
-  //     specifications: {
-  //     }
-  //   }
-  // },
+  reports: [], // existing reports, fetched via API
+  newReport: null, // the new report object, populated while stepping through the dialog
   error: null // holds an error message to which displaying components can bind to
 };
 
@@ -34,11 +25,6 @@ export function loadReportData() {
 
 export default function ReportsReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case SET_REPORT_FILTER:
-      return {
-        ...state,
-        filterReports: state.filterReports.map((filter, i) => (i === action.filterIndex ? !filter : filter))
-      };
     default:
       return { ...state };
   }

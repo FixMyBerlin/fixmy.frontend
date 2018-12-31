@@ -35,7 +35,7 @@ JoinInButton.propTypes = {
 };
 
 JoinInButton.defaultProps = {
-  toUrl: '/meldungen/wo'
+  toUrl: '/meldungen/karte'
 };
 
 export default JoinInButton;

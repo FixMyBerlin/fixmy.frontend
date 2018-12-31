@@ -1,16 +1,20 @@
-import React, { PureComponent, Fragment } from 'react';
+/**
+ * Designated Responsibilities:
+ * - Routing: Seperates landing page and map/dialog from another, loads landing page on route enter. TODO: make route names configurable
+ * - initial API calls to fetch reports data.
+ * - connected to state node which holds existing reports and the new report item which is populated in stages
+ */
+
+
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
-import Landing from '~/pages/Reports/components/Landing/index';
-import LocatorMap from './components/LocatorMap';
+import Landing from './components/Landing';
+import Map from './components/Map';
 
-/**
- * Wires routes and components together
- * TODO: make sure that when meldungen route is entered, the landing page is loaded
- * TODO: make route names configurable
- */
+
 class Reports extends PureComponent {
   render() {
     return (
@@ -18,16 +22,10 @@ class Reports extends PureComponent {
         <Switch>
           <Route exact path="/meldungen/landing" component={Landing} />
           <Route
+            path="(/meldungen/karte|/meldungen/meldung-machen)"
             exact
-            path="/meldungen/wo"
-            render={() => (
-              <Fragment>
-                <LocatorMap />
-                <div>Next component</div>
-              </Fragment>
-            )}
+            render={() => <Map {...this.props} />}
           />
-
           <Route exact path="/meldungen" render={() => (<Redirect to="/meldungen/landing" />)} />
           <Route render={() => <Markdown page="nomatch" />} />
         </Switch>

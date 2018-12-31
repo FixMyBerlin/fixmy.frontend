@@ -5,10 +5,10 @@ import styled from 'styled-components';
 const Button = styled.div`
   position: absolute;
   display: flex;
-  width: 40px;
-  height: 40px;
-  bottom: 24px;
-  right: 26px;
+  width: 64px;
+  height: 64px;
+  bottom: 23px;
+  right: 11px;
   justify-content: center;
   align-items: center;
   line-height: 1;
@@ -17,10 +17,11 @@ const Button = styled.div`
   background: ${config.colors.interaction};
   font-size:30px;
   cursor: pointer;
+   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 `;
 
 export default ({ onTab }) => (
   <Button onClick={onTab}>
-      +
+    +
   </Button>
 );

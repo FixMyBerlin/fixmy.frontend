@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import FaqItem from '~/pages/Reports/components/Landing/FaqItem';
+import FaqItem from './FaqItem';
 
 const FaqSectionWrapper = styled.div`
   margin-bottom: 72px;
