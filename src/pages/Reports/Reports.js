@@ -14,6 +14,25 @@ import history from '~/history';
 import Landing from './components/Landing';
 import Map from './components/Map';
 
+/*
+  The first aproach was to only use one map to prevent deduplication and page refreshes when going from
+  /karte to /meldung machen. Since
+  - the latter happens now anyways
+  - I have no good clue on how to design the map state so that it can follow two responsibilities (overview, locating),
+  - I have no good Idea on how to use Redux state for navigating through a dialog (step1, step2) without making a mess
+  I would propose to
+  - use two maps (overview, locator) with seperate state
+  - use the wollowing routes
+  /karte
+  /karte/:MeldungId      // detail dialog
+  /meldung-machen --> Rewrite to
+  /meldung-machen/wo    // --> can be used to directly enter this step
+  /meldung-machen/was   // gets the location as a route param
+  /meldung-machen/zusatz-infos
+  /meldung-machen/danke
+
+
+ */
 
 class Reports extends PureComponent {
   render() {
