@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link} from 'react-router-dom';
-import TopSection from './components/TopSection';
-import SectionDivider from './components/SectionDivider';
-import JoinInButton from './components/JoinInButton';
-import HowItWorksSection from './components/HowItWorksSection';
-import QuoteSection from './components/QuoteSection';
-import FaqSection from './components/FaqSection';
+import TopSection from './TopSection';
+import SectionDivider from './SectionDivider';
+import JoinInButton from './JoinInButton';
+import HowItWorksSection from './HowItWorksSection';
+import QuoteSection from './QuoteSection';
+import FaqSection from './FaqSection';
 import Footer from '~/components/Menu/MenuFooter';
 
 const StyledReportsMapLink = styled(Link)`

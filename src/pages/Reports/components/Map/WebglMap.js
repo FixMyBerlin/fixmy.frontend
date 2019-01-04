@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
-import withRouter from 'react-router/withRouter';
-import FloatingButton from '~/pages/Reports/components/Map/components/AddButton';
-
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import withRouter from 'react-router/withRouter';
+import FloatingButton from './AddButton';
 
 const StyledMap = styled.div`
   width: 100%;

@@ -8,11 +8,11 @@
 
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import WebglMap from './components/WebglMap';
+import WebglMap from './WebglMap';
 import Route from 'react-router-dom/Route';
-import OverviewMapNavBar from './components/OverviewMapNavBar';
-import AddButton from './components/AddButton';
-import LocateModeChooser from './components/LocateModeChooser';
+import OverviewMapNavBar from './OverviewMapNavBar';
+import AddButton from './AddButton';
+import LocateModeChooser from './LocateModeChooser';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 
 const StyledLocatorControl = styled(LocatorControl)`
