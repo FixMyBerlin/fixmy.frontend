@@ -21,8 +21,8 @@ import Map from './components/Map';
   - I have no good clue on how to design the map state so that it can follow two responsibilities (overview, locating),
   - I have no good Idea on how to use Redux state for navigating through a dialog (step1, step2) without making a mess
   I would propose to
-  - use two maps (overview, locator) with seperate state
-  - use the wollowing routes
+  - use two maps (overview, locator) with separate state
+  - use the following routes
   /karte
   /karte/:MeldungId      // detail dialog
   /meldung-machen --> Rewrite to
