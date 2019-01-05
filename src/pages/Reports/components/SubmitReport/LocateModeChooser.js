@@ -15,6 +15,8 @@ const Wrapper = styled.div`
   position: absolute;
   top: 77px;
   height: calc(100% - 77px);
+  width: 100%;
+  width: 100%;
   background-color: #fabe28;
   border: 1px solid #979797;
   padding: 12px;
@@ -30,7 +32,8 @@ const Heading = styled.h2`
   margin-bottom: 58px;
 `;
 
-const LinkButton = styled(Link)`
+const Button = styled.div`
+  border: none;
   display: flex;
   width: 100%;
   max-width: 360px;
@@ -45,10 +48,10 @@ const LinkButton = styled(Link)`
   padding: 14px;
   -webkit-box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.6);
 `;
 
-const LinkButtonIcon = styled.div`
+const ButtonIcon = styled.div`
   display: block;
   padding-right: 18px;
 `;
@@ -65,24 +68,27 @@ const CloseButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  display: none; // TODO: show close Icon only if the dialog can be re-entered by a UI action
 `;
 
 const CloseIcon = styled(X)`
   color: #fff;
 `;
 
-const LocateModeChooser = ({ heading, useCurrentPositionRoute, onUseGeocodingRoute, onClose }) => (
+// TODO; execute passed dispatch functions onTab
+const LocateModeChooser = ({ heading, onUseDevicePosition, onUseGeocoding, onClose }) => (
   <Wrapper>
     <Heading>{heading}</Heading>
 
-    <LinkButton to={useCurrentPositionRoute}>
-      <LinkButtonIcon><LocateIcon /></LinkButtonIcon>
+    <Button onClick={onUseDevicePosition}>
+      <ButtonIcon><LocateIcon /></ButtonIcon>
       An meiner aktuellen Position
-    </LinkButton>
-    <LinkButton to={onUseGeocodingRoute}>
-      <LinkButtonIcon><MapIcon /></LinkButtonIcon>
+    </Button>
+    <Button onClick={onUseGeocoding}>
+      <ButtonIcon><MapIcon /></ButtonIcon>
       Ich möchte eine Adresse auf der Karte eingeben
-    </LinkButton>
+    </Button>
+
     <CloseButton onClick={onClose}>
       <CloseIcon />
     </CloseButton>
@@ -91,16 +97,17 @@ const LocateModeChooser = ({ heading, useCurrentPositionRoute, onUseGeocodingRou
 
 LocateModeChooser.propTypes = {
   heading: PropTypes.string,
-  useCurrentPositionRoute: PropTypes.string,
-  onUseGeocodingRoute: PropTypes.string,
+  onUseDevicePosition: PropTypes.func,
+  onUseGeocoding: PropTypes.func,
   onClose: PropTypes.func
 };
 
 LocateModeChooser.defaultProps = {
   heading: 'Wo benötigst du neue Fahrradbügel?',
-  useCurrentPositionRoute: 'please/state/a/route',
-  onUseGeocodingRoute: 'please/state/a/route',
+  onUseDevicePosition: () => console.log('LocateModeChooser.onUseDevicePosition says implement me'),
+  onUseGeocoding: () => console.log('LocateModeChooser.useGeocodingRoute says implement me'),
   onClose: () => console.log('LocateModeChooser.onClose says implement me')
+  // TODO: closing this makes no sense when the component is within the SubmitReport dialog, only  the dialog is a popup in the OverViewMap
 };
 
 export default LocateModeChooser;

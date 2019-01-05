@@ -3,7 +3,6 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import withRouter from 'react-router/withRouter';
-import FloatingButton from './AddButton';
 
 const StyledMap = styled.div`
   width: 100%;
@@ -54,8 +53,6 @@ class WebglMap extends PureComponent {
     if (this.state.loading) {
       return false;
     }
-
-
   }
 
   handleMoveEnd = () => {
@@ -67,10 +64,6 @@ class WebglMap extends PureComponent {
     // display coordinates or better geocode them to show an adress
   };
 
-  handleSubmitReportBtnTab = () => {
-    this.props.history.push(config.routes.submitReport);
-  };
-
 
   render() {
     const { className, center } = this.props;
@@ -78,9 +71,7 @@ class WebglMap extends PureComponent {
       <StyledMap
         className={className}
         ref={(ref) => { this.root = ref; }}
-      >
-        <FloatingButton onTab={this.handleSubmitReportBtnTab} />
-      </StyledMap>
+      />
     );
   }
 }

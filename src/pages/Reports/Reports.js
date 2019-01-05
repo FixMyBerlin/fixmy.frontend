@@ -12,10 +12,12 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
 import Landing from './components/Landing';
-import Map from './components/Map';
+import OverviewMap from './components/OverviewMap';
+import SubmitReport from './components/SubmitReport';
+
 
 /*
-  The first aproach was to only use one map to prevent deduplication and page refreshes when going from
+  The first approach was to only use one map to prevent deduplication and page refreshes when going from
   /karte to /meldung machen. Since
   - the latter happens now anyways
   - I have no good clue on how to design the map state so that it can follow two responsibilities (overview, locating),
@@ -25,11 +27,9 @@ import Map from './components/Map';
   - use the following routes
   /karte
   /karte/:MeldungId      // detail dialog
-  /meldung-machen --> Rewrite to
-  /meldung-machen/wo    // --> can be used to directly enter this step
-  /meldung-machen/was   // gets the location as a route param
-  /meldung-machen/zusatz-infos
-  /meldung-machen/danke
+  /meldung-machen
+
+  The dialog step is determined by the state item "newReport":
 
 
  */
@@ -41,10 +41,16 @@ class Reports extends PureComponent {
         <Switch>
           <Route exact path="/meldungen/landing" component={Landing} />
           <Route
-            path="(/meldungen/karte|/meldungen/meldung-machen)"
+            path="/meldungen/karte"
             exact
-            render={() => <Map {...this.props} />}
+            render={() => <OverviewMap {...this.props} />}
           />
+          <Route
+            path="/meldungen/meldung-machen"
+            exact
+            render={() => <SubmitReport {...this.props} />}
+          />
+
           <Route exact path="/meldungen" render={() => (<Redirect to="/meldungen/landing" />)} />
           <Route render={() => <Markdown page="nomatch" />} />
         </Switch>
