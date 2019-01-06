@@ -9,7 +9,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import WebglMap from './WebglMap';
-import LocateModeChooser from '../LocateModeChooser';
 
 const MapView = styled.div`
   height: 100%;
@@ -39,12 +38,11 @@ class LocateMeMap extends Component {
   //   // this.updateView({ center: userLocation, zoom: config.map.zoomAfterGeocode, animate: true });
   // };
 
-
   render() {
     return (
       <MapView>
         <MapWrapper>
-          <StyledWebGlMap />
+          <StyledWebGlMap {...this.props} />
         </MapWrapper>
       </MapView>
     );

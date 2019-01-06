@@ -15,9 +15,9 @@ import { setLocationMode, LOCATION_MODE_DEVICE, LOCATION_MODE_GEOCODING } from '
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
 import LocateMeMap from './LocateMeMap';
+import SearchBar from './SearchBar';
+import HelpText from './HelpText';
 
-
-// TODO: find a way to omit /meldungen when stating subroutes
 class SubmitReport extends PureComponent {
   render() {
     return (
@@ -34,7 +34,14 @@ class SubmitReport extends PureComponent {
         </Fragment>
       )}
 
-        <LocateMeMap />
+        {this.props.location_mode === LOCATION_MODE_GEOCODING && (
+          <Fragment>
+            <SearchBar />
+            <HelpText />
+          </Fragment>
+        )}
+
+        <LocateMeMap center={this.props.geocodeResult && this.props.geocodeResult.center} zoom={this.props.geocodeResult && this.props.geocodeResult.zoom}/>
       </Fragment>
 );
   }

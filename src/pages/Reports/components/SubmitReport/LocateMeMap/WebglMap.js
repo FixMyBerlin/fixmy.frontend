@@ -1,8 +1,10 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
+import withRouter from 'react-router/withRouter';
 import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import withRouter from 'react-router/withRouter';
+import _isEqual from 'lodash.isequal';
+import { animateView, setView } from '~/pages/Map/map-utils';
 
 const StyledMap = styled.div`
   width: 100%;
@@ -17,12 +19,14 @@ MapboxGL.accessToken = MapboxGL.accessToken || config.map.accessToken;
 class WebglMap extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
-    center: PropTypes.arrayOf(PropTypes.number)
+    center: PropTypes.arrayOf(PropTypes.number),
+    zoom: PropTypes.number
   };
 
   static defaultProps = {
     className: 'locator-map',
-    center: config.map.view.center
+    center: config.map.view.center,
+    zoom: config.map.view.zoom,
   };
 
   state = {
@@ -37,23 +41,49 @@ class WebglMap extends PureComponent {
       style: MB_STYLE_URL
     });
 
-    const nav = new MapboxGL.NavigationControl({ showCompass: false });
+    const nav = new MapboxGL.NavigationControl({showCompass: false});
     this.map.addControl(nav, 'bottom-left');
     this.map.on('load', this.handleLoad);
   }
-
-  handleLoad = () => {
-    this.setState({ loading: false, map: this.map });
-
-    this.map.on('dragend', this.handleMoveEnd);
-    this.map.on('move', this.handleMove);
-  };
 
   componentDidUpdate(prevProps) {
     if (this.state.loading) {
       return false;
     }
+
+    const viewChanged = prevProps.zoom !== this.props.zoom ||
+      !_isEqual(prevProps.center, this.props.center) ||
+      prevProps.pitch !== this.props.pitch ||
+      prevProps.bearing !== this.props.bearing;
+
+    if (viewChanged) {
+      this.setView(this.getViewFromProps(), this.props.animate);
+    }
   }
+
+  handleLoad = () => {
+    this.setState({loading: false, map: this.map});
+
+    this.map.on('dragend', this.handleMoveEnd);
+    this.map.on('move', this.handleMove);
+  };
+
+  setView = (view, animate = false) => {
+    if (animate) {
+      animateView(this.map, view);
+    } else {
+      setView(this.map, view);
+    }
+  }
+
+  getViewFromProps = () => (
+    {
+      zoom: this.props.zoom,
+      center: this.props.center,
+      bearing: this.props.bearing,
+      pitch: this.props.pitch
+    }
+  )
 
   handleMoveEnd = () => {
     // use the new coords
@@ -66,11 +96,13 @@ class WebglMap extends PureComponent {
 
 
   render() {
-    const { className, center } = this.props;
+    const { className } = this.props;
     return (
       <StyledMap
         className={className}
-        ref={(ref) => { this.root = ref; }}
+        ref={(ref) => {
+          this.root = ref;
+        }}
       />
     );
   }

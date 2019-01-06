@@ -1,15 +1,42 @@
 import ky from 'ky';
+import idx from 'idx/lib/idx';
 
 const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
 const SET_LOCATION = 'Reports/ReportsDialogState/SET_LONG_LAT';
 const SET_LOCATION_MODE = 'Reports/ReportsDialogState/SET_LOCATION_MODE';
 export const LOCATION_MODE_DEVICE = 'device'; // not an action type, keeping this here to prevent typos
 export const LOCATION_MODE_GEOCODING = 'geocoding'; // not an action type, keeping this here to prevent typos
+const GEOCODE_DONE = 'Map/MapState/GEOCODE_SUCCESS';
+const GEOCODE_FAIL = 'Map/MapState/GEOCODE_FAIL';
+
+export function geocodeAddress(searchtext) {
+  return async (dispatch) => {
+    const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;
+
+    try {
+      const searchUrl = `${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;
+      const data = await ky.get(searchUrl).json();
+
+      const geocodeResult = idx(data, _ => _.Response.View[0].Result[0].Location.DisplayPosition);
+      if (!geocodeResult) {
+        return dispatch({ type: GEOCODE_FAIL, payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' } });
+      }
+
+      // we do + (Math.random() / 1000) in order to always get a slightly different center
+      const center = [geocodeResult.Longitude, geocodeResult.Latitude + (Math.random() / 1000)];
+      dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
+    } catch (error) {
+      dispatch({ type: GEOCODE_FAIL, payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' } });
+    }
+  };
+}
 
 const initialState = {
   reports: [], // existing reports, fetched via API
   newReport: null, // the new report object, populated while stepping through the dialog
-  error: null // holds an error message to which displaying components can bind to
+  error: null, // holds an error message to which displaying components can bind to // TODO: set up rendering a toast
+  location_mode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
+  geocodeResult: null // object containing center and zoom
 };
 
 /* eslint-disable no-tabs */
@@ -57,6 +84,8 @@ export function setLocationMode(mode) {
 
 export default function ReportsReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case GEOCODE_DONE:
+      return { ...state, geocodeResult: action.payload };
     case SET_LOCATION:
       return { ...state,
         newReport: {
@@ -68,7 +97,12 @@ export default function ReportsReducer(state = initialState, action = {}) {
       const modeStatedProperly = action.mode && [LOCATION_MODE_DEVICE, LOCATION_MODE_GEOCODING].includes(action.mode);
       if (!modeStatedProperly) throw new Error(`use either ${LOCATION_MODE_DEVICE} or ${LOCATION_MODE_GEOCODING} to state the location mode`);
       return { ...state, location_mode: action.mode };
-    default:
+    case GEOCODE_FAIL:
+      return { ...state,
+        error: {
+        message: action.payload.geocodeError
+      } };
+      default:
       return { ...state };
   }
 }
