@@ -11,7 +11,7 @@ const SectionDivider = styled.div`
 `;
 
 const StyledChevron = styled(ChevronDown)`
-  background-color: #353535;
+  background-color: ${config.colors.darkbg};
   width: 48px;
   height: 48px;
   bottom: 24px;

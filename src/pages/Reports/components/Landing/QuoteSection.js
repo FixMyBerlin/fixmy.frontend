@@ -19,13 +19,13 @@ const StyledPlannerImg = styled.img`
 
 const StyledBlockQuote = styled.blockquote`
   font-style: italic;
-  color: #545454;
+  color: ${config.colors.darkgrey};
   margin: 0 0 28px;
 `;
 
 const StyledFooter = styled.footer`
   font-style: italic;
-  color: #545454;
+  color: ${config.colors.darkgrey};
   font-size: 14px;
   margin-bottom: 52px;
 `;

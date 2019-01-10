@@ -11,7 +11,7 @@ const Box = styled.div`
   right: 25px;
   margin: auto;
   border-radius: 3px;
-  background-color: #353535;
+  background-color: ${config.colors.darkbg};
   opacity: 0.7;
   font-size: 16px;
   font-weight: bold;

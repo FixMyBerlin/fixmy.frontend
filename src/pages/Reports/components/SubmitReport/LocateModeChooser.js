@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   height: calc(100% - 77px);
   width: 100%;
   width: 100%;
-  background-color: #fabe28;
+  background-color: ${config.colors.interaction};
   border: 1px solid #979797;
   padding: 12px;
   z-index: 999999;
@@ -42,7 +42,7 @@ const Button = styled.div`
   line-height: 1.33;
   background-color: white;
   border-radius: 6px;
-  color: #0f0f0f;
+  color: ${config.colors.black};
   text-decoration: none;
   padding: 14px;
   -webkit-box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
@@ -63,7 +63,7 @@ const CloseButton = styled.div`
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: #545454;
+  background-color: ${config.colors.darkgrey};
   display: flex;
   justify-content: center;
   align-items: center;

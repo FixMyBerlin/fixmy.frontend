@@ -13,7 +13,7 @@ const StyledReportsMapLink = styled(Link)`
   display: block;
   margin: 18px auto 32px;
   width: 182px;
-  color: #fabe28;
+  color: ${config.colors.interaction};
   font-size: 14px;
   font-weight: bold;
   line-height: 1.4;

@@ -25,7 +25,7 @@ const TextWrapper = styled.div`
 
 const Heading = styled.h2`
   font-size: 16px;
-  color: #545454;
+  color: ${config.colors.darkgrey};
   letter-spacing: 0.8px;
   margin: 0;
 `;

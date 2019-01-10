@@ -39,7 +39,7 @@ const StyledHowItWorkslist = styled.ul`
   
   li {
     font-size: 14px;
-    color: #545454;
+    color: ${config.colors.darkgrey};
     margin-bottom: 30.2px;
     line-height: 1.4;
     
