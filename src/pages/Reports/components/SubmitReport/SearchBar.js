@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import SearchIcon from '~/images/reports/search.svg'
+import SearchIcon from '~/images/reports/search.svg';
 
-import { geocodeAddress } from '~/pages/Map/MapState';
+import { geocodeAddress } from '~/pages/Reports/ReportsState';
 import Store from '~/store';
 
 import { media } from '~/styles/utils';
