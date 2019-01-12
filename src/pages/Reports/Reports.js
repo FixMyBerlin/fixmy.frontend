@@ -14,7 +14,8 @@ import history from '~/history';
 import Landing from './components/Landing';
 import OverviewMap from './components/OverviewMap';
 import SubmitReport from './components/SubmitReport';
-
+import { resetDialogState } from './ReportsState';
+import { withLastLocation } from 'react-router-last-location';
 
 /*
   The first approach was to only use one map to prevent deduplication and page refreshes when going from
@@ -36,6 +37,7 @@ import SubmitReport from './components/SubmitReport';
 
 class Reports extends PureComponent {
   render() {
+    const { lastLocation } = this.props;
     return (
       <Router history={history}>
         <Switch>
@@ -48,7 +50,13 @@ class Reports extends PureComponent {
           <Route
             path="/meldungen/meldung-machen"
             exact
-            render={() => <SubmitReport {...this.props} />}
+            render={() => {
+              // reset dialog if this route is (re-entered)
+              if (lastLocation && lastLocation.pathname !== this.props.history.location.pathname) {
+                this.props.resetDialogState();
+              }
+              return <SubmitReport {...this.props} />;
+            }}
           />
 
           <Route exact path="/meldungen" render={() => (<Redirect to="/meldungen/landing" />)} />
@@ -59,4 +67,7 @@ class Reports extends PureComponent {
   }
 }
 
-export default connect(state => state.ReportsState)(Reports);
+
+export default withLastLocation(
+  connect(state => state.ReportsState, { resetDialogState })(Reports)
+);

@@ -7,6 +7,7 @@ import Router from 'react-router-dom/Router';
 import GlobalStyles from '~/styles/Global';
 
 import history from '~/history';
+import { LastLocationProvider } from 'react-router-last-location';
 import { PrivateRoute } from '~/utils/router-utils';
 import Menu from '~/components/Menu';
 import Home from '~/pages/Home';
@@ -44,6 +45,7 @@ class App extends PureComponent {
       <Fragment>
         <GlobalStyles />
         <Router history={history}>
+          <LastLocationProvider>
           <AppWrapper>
             {!isEmbedMode && <Menu />}
             <AppContent>
@@ -85,6 +87,7 @@ class App extends PureComponent {
               </Switch>
             </AppContent>
           </AppWrapper>
+          </LastLocationProvider>
         </Router>
       </Fragment>
     );

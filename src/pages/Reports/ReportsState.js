@@ -1,6 +1,7 @@
 import ky from 'ky';
 import idx from 'idx/lib/idx';
 
+const RESET_DIALOG_STATE = 'Reports/OverviewMapState/RESET_DIALOG_STATE';
 const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
 const SET_LOCATION = 'Reports/ReportsDialogState/SET_LONG_LAT';
 const SET_LOCATION_MODE = 'Reports/ReportsDialogState/SET_LOCATION_MODE';
@@ -8,6 +9,7 @@ export const LOCATION_MODE_DEVICE = 'device'; // not an action type, keeping thi
 export const LOCATION_MODE_GEOCODING = 'geocoding'; // not an action type, keeping this here to prevent typos
 const GEOCODE_DONE = 'Map/MapState/GEOCODE_SUCCESS';
 const GEOCODE_FAIL = 'Map/MapState/GEOCODE_FAIL';
+
 
 export function geocodeAddress(searchtext) {
   return async (dispatch) => {
@@ -74,6 +76,10 @@ export function loadReportData() {
   };
 }
 
+export function resetDialogState() {
+  return { type: RESET_DIALOG_STATE };
+}
+
 export function setLocation({ lngLat, address }) {
   return { type: SET_LOCATION, payload: { lngLat, address } };
 }
@@ -84,6 +90,9 @@ export function setLocationMode(mode) {
 
 export default function ReportsReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case RESET_DIALOG_STATE:
+      // set to default state, except for reports to not be forced to fetch data again
+      return { ...initialState, reports: state.reports }
     case GEOCODE_DONE:
       return { ...state, geocodeResult: action.payload };
     case SET_LOCATION:
