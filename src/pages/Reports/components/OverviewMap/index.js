@@ -54,8 +54,7 @@ class OverviewMap extends Component {
           <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
 
           <StyledLocatorControl
-            className="Test"
-            key="Map__LocatorControl"
+            key="ReportsOverviewMap__LocatorControl"
             onChange={this.handleLocationChange}
             position="bottom-right"
           />

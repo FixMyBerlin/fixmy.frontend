@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import SearchIcon from '~/images/reports/search.svg';
 
 import { geocodeAddress } from '~/pages/Reports/ReportsState';
-import Store from '~/store';
-
 import { media } from '~/styles/utils';
 
 const Form = styled.form`
@@ -77,14 +75,14 @@ class SearchBar extends PureComponent {
     inputValue: ''
   }
 
-  onSubmit = (evt) => {
+  onFormSubmit = (evt) => {
     evt.preventDefault();
 
     if (!this.state.inputValue) {
       return false;
     }
 
-    return Store.dispatch(geocodeAddress(this.state.inputValue));
+    return this.props.onSubmit(this.state.inputValue);
   }
 
   onChange = (evt) => {
@@ -99,7 +97,7 @@ class SearchBar extends PureComponent {
     return (
       <SearchBarWrapper>
         <SearchBarInnerWrapper>
-          <Form onSubmit={this.onSubmit}>
+          <Form onSubmit={this.onFormSubmit}>
             <SearchInput
               value={this.state.inputValue}
               type="text"

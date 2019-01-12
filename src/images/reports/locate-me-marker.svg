@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="101px" height="137px" viewBox="0 0 101 137" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>C621C002-102D-4A67-852C-25DF22572268</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <filter x="-177.3%" y="-141.9%" width="454.7%" height="383.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="40" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="9.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25317029 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <circle id="path-2" cx="32" cy="32" r="27"></circle>
+    </defs>
+    <g id="Meldedialog" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Meldung-1a" transform="translate(-133.000000, -243.000000)">
+            <g id="Group-3" filter="url(#filter-1)" transform="translate(152.000000, 243.000000)">
+                <g id="pina">
+                    <path d="M58.5221091,49.9174572 C62.0041569,44.9195423 64,38.437817 64,32 C64,14.326888 49.673112,1.38777878e-16 32,1.38777878e-16 C14.326888,1.38777878e-16 0,14.326888 0,32 C0,38.211397 1.40216829,44.420455 4.83244436,49.9174572 C7.11929507,53.5821253 16.1751469,63.6096396 32,80 C47.3600409,63.2769148 56.2007439,53.2494005 58.5221091,49.9174572 Z" id="Oval" fill="#FABE28" fill-rule="evenodd"></path>
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Oval-2" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

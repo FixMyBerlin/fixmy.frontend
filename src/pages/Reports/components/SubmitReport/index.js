@@ -8,17 +8,23 @@
  * /meldung-machen/danke
  */
 
-
 import React, { Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { setLocationMode, LOCATION_MODE_DEVICE, LOCATION_MODE_GEOCODING } from '~/pages/Reports/ReportsState';
+import { setLocationMode, LOCATION_MODE_DEVICE, LOCATION_MODE_GEOCODING, geocodeAddress } from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
 import LocateMeMap from './LocateMeMap';
 import SearchBar from './SearchBar';
 import HelpText from './HelpText';
+import StaticMarker from './StaticMarker';
+import LocatorControl from '~/pages/Map/components/LocatorControl';
 
 class SubmitReport extends PureComponent {
+
+  handleLocationChange = () => {
+    console.log('implement me')
+  }
+
   render() {
     return (
       <Fragment>
@@ -34,20 +40,31 @@ class SubmitReport extends PureComponent {
         </Fragment>
       )}
 
+        {this.props.location_mode && <StaticMarker pinned />}
+
         {this.props.location_mode === LOCATION_MODE_GEOCODING && (
           <Fragment>
-            <SearchBar />
+            <SearchBar onSubmit={this.props.geocodeAddress} />
             <HelpText />
           </Fragment>
         )}
 
-        <LocateMeMap center={this.props.geocodeResult && this.props.geocodeResult.center} zoom={this.props.geocodeResult && this.props.geocodeResult.zoom}/>
+        <LocateMeMap
+          center={this.props.geocodeResult && this.props.geocodeResult.center}
+          zoom={this.props.geocodeResult && this.props.geocodeResult.zoom}
+        />
+        <LocatorControl
+          key="ReportsLocateMap__LocatorControl"
+          onChange={this.handleLocationChange}
+          position="bottom-right"
+        />
       </Fragment>
 );
   }
 }
 const mapDispatchToPros = { // shorthand
   onUseDevicePosition: () => setLocationMode(LOCATION_MODE_DEVICE),
-  onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING)
+  onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
+  geocodeAddress
 };
 export default connect(state => state.ReportsState, mapDispatchToPros)(SubmitReport);
