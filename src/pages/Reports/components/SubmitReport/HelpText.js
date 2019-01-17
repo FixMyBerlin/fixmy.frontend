@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { media } from '~/styles/utils';
 
 const Box = styled.div`
   height: 82px;
@@ -23,6 +24,12 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
+  
+  ${media.m`
+    max-width: 400px;
+    margin-left: -10px; // TODO: find a clean way to position this under the search bar
+    margin-right: auto;
+  `}
 `;
 
 const HelpText = ({ text }) => (
