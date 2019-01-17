@@ -15,7 +15,9 @@ const Wrapper = styled.div`
   top: 77px;
   height: calc(100% - 77px);
   width: 100%;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: ${config.colors.interaction};
   border: 1px solid #979797;
   padding: 12px;
@@ -34,6 +36,7 @@ const Heading = styled.h2`
 const Button = styled.div`
   border: none;
   display: flex;
+  cursor: pointer;
   width: 100%;
   max-width: 360px;
   height: 74.5px;
