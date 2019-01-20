@@ -9,31 +9,14 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { withLastLocation } from 'react-router-last-location';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
 import Landing from './components/Landing';
 import OverviewMap from './components/OverviewMap';
 import SubmitReport from './components/SubmitReport';
 import { resetDialogState } from './ReportsState';
-import { withLastLocation } from 'react-router-last-location';
 
-/*
-  The first approach was to only use one map to prevent deduplication and page refreshes when going from
-  /karte to /meldung machen. Since
-  - the latter happens now anyways
-  - I have no good clue on how to design the map state so that it can follow two responsibilities (overview, locating),
-  - I have no good Idea on how to use Redux state for navigating through a dialog (step1, step2) without making a mess
-  I would propose to
-  - use two maps (overview, locator) with separate state
-  - use the following routes
-  /karte
-  /karte/:MeldungId      // detail dialog
-  /meldung-machen
-
-  The dialog step is determined by the state item "newReport":
-
-
- */
 
 class Reports extends PureComponent {
   render() {
@@ -45,17 +28,18 @@ class Reports extends PureComponent {
           <Route
             path="/meldungen/karte"
             exact
-            render={() => <OverviewMap {...this.props} />}
+            render={() => <OverviewMap  />}
           />
           <Route
             path="/meldungen/meldung-machen"
             exact
             render={() => {
-              // reset dialog if this route is (re-entered)
+              // reset dialog if this route is (re-entered) TODO: do this in a HOC
               if (lastLocation && lastLocation.pathname !== this.props.history.location.pathname) {
                 this.props.resetDialogState();
               }
-              return <SubmitReport {...this.props} />;
+
+              return <SubmitReport />;
             }}
           />
 

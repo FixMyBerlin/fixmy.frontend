@@ -20,13 +20,15 @@ class WebglMap extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     center: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number
+    zoom: PropTypes.number,
+    onMapDrag: PropTypes.func
   };
 
   static defaultProps = {
     className: 'locator-map',
     center: config.map.view.center,
     zoom: config.map.view.zoom,
+    onMapDrag: () => console.log('onMapDrag says implement me')
   };
 
   state = {
@@ -86,8 +88,9 @@ class WebglMap extends PureComponent {
   )
 
   handleMoveEnd = () => {
-    // use the new coords
-    console.log('moveend says implement me');
+    const mapCenter = this.map.getCenter();
+    const { lat, lng } = mapCenter;
+    this.props.onMapDrag({lat, lng});
   };
 
   handleMove = () => {

@@ -19,22 +19,28 @@ const MapcenterIndicator = styled(X)`
 // TODO: do proper dimensioning and positioning
 
 const Wrapper = styled.div`
-z-index: 99999999;
   position: absolute;
-  height: 164px;
-  width: 64px; 
-  top: calc(50% - 137px); // TODO: leave positioning to parent component
-  left: calc(50% - 64px);
+  z-index: 99999999;
+  height: 114px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 `;
 
+const StyledLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`
+  flex-shrink: 0; // prevent svg from scaling so that the wrapper clip the viewbox
+`
+
+const StyledMapCenterIndicator = styled(MapcenterIndicator)`
+  position: absolute;
+  bottom: -17px;
+`
+
 const StaticMarker = ({ pinned }) => (
   <Wrapper>
-    {pinned ? <LocateMeMarkerIcon /> : <LocateMeMarkerPinnedIcon />}
-    <MapcenterIndicator>+</MapcenterIndicator>
+    {pinned ? <StyledLocateMeMarkerIcon /> : <LocateMeMarkerPinnedIcon />}
+    <StyledMapCenterIndicator>+</StyledMapCenterIndicator>
   </Wrapper>
 );
 

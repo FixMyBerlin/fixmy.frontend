@@ -9,6 +9,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import WebglMap from './WebglMap';
+import StaticMarker from '../StaticMarker';
 
 const MapView = styled.div`
   height: 100%;
@@ -24,6 +25,8 @@ const MapWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledWebGlMap = styled(WebglMap)`
@@ -39,10 +42,19 @@ class LocateMeMap extends Component {
   // };
 
   render() {
+    const { showMarker, pinMarker, onMapDrag } = this.props;
     return (
       <MapView>
         <MapWrapper>
-          <StyledWebGlMap {...this.props} />
+          {showMarker && (
+          <StaticMarker
+            pinned={pinMarker}
+          />
+          )}
+          <StyledWebGlMap
+            className="locate-me-map"
+            onMapDrag={onMapDrag}
+          />
         </MapWrapper>
       </MapView>
     );

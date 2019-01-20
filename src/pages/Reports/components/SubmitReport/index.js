@@ -10,26 +10,31 @@
 
 import React, { Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { setLocationMode, LOCATION_MODE_DEVICE, LOCATION_MODE_GEOCODING, geocodeAddress } from '~/pages/Reports/ReportsState';
+import {
+  setLocationMode,
+  LOCATION_MODE_DEVICE,
+  LOCATION_MODE_GEOCODING,
+  geocodeAddress,
+  reverseGeocodeAddress
+} from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
 import LocateMeMap from './LocateMeMap';
 import SearchBar from './SearchBar';
 import HelpText from './HelpText';
-import StaticMarker from './StaticMarker';
+
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 
 class SubmitReport extends PureComponent {
-
   handleLocationChange = () => {
-    console.log('implement me')
+    console.log('implement me');
   }
 
   render() {
     return (
       <Fragment>
 
-        {!this.props.location_mode && (
+        {!this.props.locationMode && (
         <Fragment>
           <OverviewMapNavBar />
           <LocateModeChooser
@@ -40,18 +45,19 @@ class SubmitReport extends PureComponent {
         </Fragment>
       )}
 
-        {this.props.location_mode && <StaticMarker pinned />}
-
-        {this.props.location_mode === LOCATION_MODE_GEOCODING && (
+        {this.props.locationMode === LOCATION_MODE_GEOCODING && (
           <Fragment>
-            <SearchBar onSubmit={this.props.geocodeAddress} />
+            <SearchBar onSubmit={geocodeAddress} />
             <HelpText />
           </Fragment>
         )}
 
         <LocateMeMap
+          showMarker={!!this.props.locationMode}
+          pinMarker={!!this.props.location}
           center={this.props.geocodeResult && this.props.geocodeResult.center}
           zoom={this.props.geocodeResult && this.props.geocodeResult.zoom}
+          onMapDrag={this.props.reverseGeocodeAddress}
         />
         <LocatorControl
           key="ReportsLocateMap__LocatorControl"
@@ -62,9 +68,10 @@ class SubmitReport extends PureComponent {
 );
   }
 }
-const mapDispatchToPros = { // shorthand
+const mapDispatchToPros = {
   onUseDevicePosition: () => setLocationMode(LOCATION_MODE_DEVICE),
   onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
-  geocodeAddress
+  geocodeAddress,
+  reverseGeocodeAddress
 };
 export default connect(state => state.ReportsState, mapDispatchToPros)(SubmitReport);
