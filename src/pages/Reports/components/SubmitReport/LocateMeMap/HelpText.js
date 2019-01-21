@@ -36,7 +36,7 @@ const HelpText = ({ text }) => (
   <Box><span>{text}</span></Box>
 );
 
-HelpText.proptypes = {
+HelpText.propTypes = {
   text: PropTypes.string
 };
 

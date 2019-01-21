@@ -30,12 +30,12 @@ const Wrapper = styled.div`
 
 const StyledLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`
   flex-shrink: 0; // prevent svg from scaling so that the wrapper clip the viewbox
-`
+`;
 
 const StyledMapCenterIndicator = styled(MapcenterIndicator)`
   position: absolute;
   bottom: -17px;
-`
+`;
 
 const StaticMarker = ({ pinned }) => (
   <Wrapper>
@@ -50,6 +50,6 @@ StaticMarker.propTypes = {
 
 StaticMarker.defaultProps = {
   pinned: false
-}
+};
 
 export default StaticMarker;

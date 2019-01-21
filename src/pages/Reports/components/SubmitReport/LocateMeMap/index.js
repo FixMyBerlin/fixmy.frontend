@@ -7,9 +7,22 @@
  */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import WebglMap from './WebglMap';
-import StaticMarker from '../StaticMarker';
+import StaticMarker from './StaticMarker';
+import ConfirmButton from './ConfirmButton';
+import SearchBar from './SearchBar';
+import HelpText from './HelpText';
+import {
+  geocodeAddress,
+  reverseGeocodeAddress,
+  setTempLocationLngLat,
+  confirmLocation
+} from '~/pages/Reports/ReportsState';
+
+import LocatorControl from '~/pages/Map/components/LocatorControl';
+
 
 const MapView = styled.div`
   height: 100%;
@@ -37,28 +50,47 @@ const StyledWebGlMap = styled(WebglMap)`
 class LocateMeMap extends Component {
   state = {};
 
-  // onLocate = ({ lng, lat }) => {
-  //   // this.updateView({ center: userLocation, zoom: config.map.zoomAfterGeocode, animate: true });
-  // };
-
   render() {
-    const { showMarker, pinMarker, onMapDrag } = this.props;
     return (
       <MapView>
+        <SearchBar onSubmit={geocodeAddress} />
+        <HelpText />
+
         <MapWrapper>
-          {showMarker && (
+          {!!this.props.locationMode && (
           <StaticMarker
-            pinned={pinMarker}
+            pinned={!!this.props.location}
           />
           )}
           <StyledWebGlMap
+            center={this.props.geocodeResult && this.props.geocodeResult.center}
+            zoom={this.props.geocodeResult && this.props.geocodeResult.zoom}
             className="locate-me-map"
-            onMapDrag={onMapDrag}
+            onMapDrag={this.props.reverseGeocodeAddress}
           />
         </MapWrapper>
+
+        <LocatorControl
+          key="ReportsLocateMap__LocatorControl"
+          onChange={this.props.setTempLocationLngLat}
+          position="bottom-right"
+        />
+
+        <ConfirmButton
+          onConfirm={this.props.confirmLocation}
+          text="Diese Position bestätigen"
+          disabled={!(this.props.tempLocation && this.props.tempLocation.address)}
+        />
+
       </MapView>
     );
   }
 }
 
-export default LocateMeMap;
+const mapDispatchToPros = {
+  geocodeAddress,
+  reverseGeocodeAddress,
+  setTempLocationLngLat,
+  confirmLocation
+};
+export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);

@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import withRouter from 'react-router/withRouter';
 import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
@@ -43,8 +43,7 @@ class WebglMap extends PureComponent {
       style: MB_STYLE_URL
     });
 
-    const nav = new MapboxGL.NavigationControl({showCompass: false});
-    this.map.addControl(nav, 'bottom-left');
+    const nav = new MapboxGL.NavigationControl({ showCompass: false });
     this.map.on('load', this.handleLoad);
   }
 
@@ -64,7 +63,7 @@ class WebglMap extends PureComponent {
   }
 
   handleLoad = () => {
-    this.setState({loading: false, map: this.map});
+    this.setState({ loading: false, map: this.map });
 
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
@@ -90,7 +89,7 @@ class WebglMap extends PureComponent {
   handleMoveEnd = () => {
     const mapCenter = this.map.getCenter();
     const { lat, lng } = mapCenter;
-    this.props.onMapDrag({lat, lng});
+    this.props.onMapDrag({ lat, lng });
   };
 
   handleMove = () => {

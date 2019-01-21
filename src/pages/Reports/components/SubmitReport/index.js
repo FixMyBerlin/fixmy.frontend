@@ -1,11 +1,6 @@
 /**
- * Wires together dialog components to compile a report.
- * Routes:
- * /meldung-machen --> Rewrite to
- * /meldung-machen/wo    // --> can be used to directly enter this step
- * /meldung-machen/was   // gets the location as a route param
- * /meldung-machen/zusatz-infos
- * /meldung-machen/danke
+ * Renders different components of the dialog to submit a report based on
+ * the successively populated reports state
  */
 
 import React, { Fragment, PureComponent } from 'react';
@@ -13,28 +8,19 @@ import { connect } from 'react-redux';
 import {
   setLocationMode,
   LOCATION_MODE_DEVICE,
-  LOCATION_MODE_GEOCODING,
-  geocodeAddress,
-  reverseGeocodeAddress
+  LOCATION_MODE_GEOCODING
 } from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
 import LocateMeMap from './LocateMeMap';
-import SearchBar from './SearchBar';
-import HelpText from './HelpText';
 
-import LocatorControl from '~/pages/Map/components/LocatorControl';
 
 class SubmitReport extends PureComponent {
-  handleLocationChange = () => {
-    console.log('implement me');
-  }
-
   render() {
-    return (
-      <Fragment>
+    const { locationMode, newReport, reportCompiled } = this.props;
 
-        {!this.props.locationMode && (
+    if (!locationMode) {
+      return (
         <Fragment>
           <OverviewMapNavBar />
           <LocateModeChooser
@@ -43,35 +29,32 @@ class SubmitReport extends PureComponent {
             onUseGeocoding={this.props.onUseGeocoding}
           />
         </Fragment>
-      )}
+      );
+    }
 
-        {this.props.locationMode === LOCATION_MODE_GEOCODING && (
-          <Fragment>
-            <SearchBar onSubmit={geocodeAddress} />
-            <HelpText />
-          </Fragment>
-        )}
+    if (!(newReport.location && newReport.location.address)) {
+      return (
+        <LocateMeMap />
+      );
+    }
 
-        <LocateMeMap
-          showMarker={!!this.props.locationMode}
-          pinMarker={!!this.props.location}
-          center={this.props.geocodeResult && this.props.geocodeResult.center}
-          zoom={this.props.geocodeResult && this.props.geocodeResult.zoom}
-          onMapDrag={this.props.reverseGeocodeAddress}
-        />
-        <LocatorControl
-          key="ReportsLocateMap__LocatorControl"
-          onChange={this.handleLocationChange}
-          position="bottom-right"
-        />
-      </Fragment>
-);
+    if (!newReport.what) {
+      // render mainform
+    }
+
+    if (!newReport.additionalInfo) {
+      // render additionalInfo form
+    }
+
+    if (reportCompiled) {
+      // render "Meldung fertig"
+    }
   }
 }
-const mapDispatchToPros = {
+
+const mapDispatchToProps = {
   onUseDevicePosition: () => setLocationMode(LOCATION_MODE_DEVICE),
-  onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
-  geocodeAddress,
-  reverseGeocodeAddress
+  onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING)
 };
-export default connect(state => state.ReportsState, mapDispatchToPros)(SubmitReport);
+
+export default connect(state => state.ReportsState, mapDispatchToProps)(SubmitReport);

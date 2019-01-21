@@ -81,15 +81,15 @@ class SearchBar extends PureComponent {
     }
 
     return this.props.onSubmit(this.state.inputValue);
-  }
+  };
 
   onChange = (evt) => {
     this.setState({ inputValue: evt.target.value });
-  }
+  };
 
   onInputReset = () => {
     this.setState({ inputValue: '' });
-  }
+  };
 
   render() {
     return (

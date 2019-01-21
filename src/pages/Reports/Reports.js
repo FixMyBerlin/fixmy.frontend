@@ -28,7 +28,7 @@ class Reports extends PureComponent {
           <Route
             path="/meldungen/karte"
             exact
-            render={() => <OverviewMap  />}
+            render={() => <OverviewMap />}
           />
           <Route
             path="/meldungen/meldung-machen"
