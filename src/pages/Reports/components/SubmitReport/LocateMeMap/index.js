@@ -49,7 +49,7 @@ const StyledWebGlMap = styled(WebglMap)`
 
 const AddressIndicator = styled.div`
   font-size: 12px;
-  width: 120px;
+  width: 200px;
   color: ${config.colors.black};
   z-index: 99999999999999;
   text-align: center;
@@ -58,8 +58,10 @@ const AddressIndicator = styled.div`
   left: 0;
   right: 0;
   margin: auto;
-  bottom: 40%; // TODO: proper positioning
+  bottom: 30%; // TODO: proper positioning
 `
+
+// TODO: make sure the StaticMarker anchor is really at the map center
 
 class LocateMeMap extends Component {
   state = {};
