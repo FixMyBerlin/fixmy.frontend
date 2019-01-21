@@ -13,6 +13,7 @@ const REVERSE_GEOCODE_DONE = 'Reports/ReportsDialogState/REVERSE_GEOCODE_SUCCESS
 const REVERSE_GEOCODE_FAIL = 'Reports/ReportsDialogState/REVERSE_GEOCODE_FAIL';
 const SET_TEMP_LOCATION_LNG_LAT = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_LNG_LAT';
 const SET_TEMP_LOCATION_ADDRESS = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_ADDRESS';
+const PIN_LOCATION = 'Reports/ReportsDialogState/PIN_LOCATION';
 const CONFIRM_LOCATION = 'Reports/ReportsDialogState/CONFIRM_LOCATION';
 
 const initialState = {
@@ -22,7 +23,7 @@ const initialState = {
   locationMode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
   geocodeResult: null, // object containing center and zoom
   reverseGeocodeResult: null, // An address,
-  tempLocation: {}, // holds lngLat
+  tempLocation: {}, // holds lngLat, address and a "pinned" property which indicates the location as submittable
   reportCompiled: false // completion flag
 };
 
@@ -96,6 +97,7 @@ export function reverseGeocodeAddress({ lat, lng }) {
       return dispatch({ type: REVERSE_GEOCODE_FAIL, payload: { geocodeError: 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden' } });
     }
     dispatch({ type: REVERSE_GEOCODE_DONE, payload: { result } });
+    dispatch({ type: SET_TEMP_LOCATION_ADDRESS, address: result });
   };
 }
 
@@ -107,12 +109,16 @@ export function setLocationMode(mode) {
   return { type: SET_LOCATION_MODE, mode };
 }
 
-export function setTempLocationLngLat({ lng, Lat }) {
-  return { type: SET_TEMP_LOCATION_LNG_LAT, lngLat: { lng, Lat } };
+export function setTempLocationLngLat({ lng, lat }) {
+  return { type: SET_TEMP_LOCATION_LNG_LAT, payload: { lng, lat } };
 }
 
 export function setTempLocationAddress(address) {
   return { type: SET_TEMP_LOCATION_ADDRESS, address };
+}
+
+export function pinLocation() {
+  return { type: PIN_LOCATION };
 }
 
 export function confirmLocation() {
@@ -131,20 +137,32 @@ export default function ReportsReducer(state = initialState, action = {}) {
     case SET_TEMP_LOCATION_LNG_LAT:
       return { ...state,
         tempLocation: {
-          lngLat: action.lngLat
+          ...state.tempLocation,
+          lngLat: action.payload
          }
       };
     case SET_TEMP_LOCATION_ADDRESS:
       return { ...state,
         tempLocation: {
+          ...state.tempLocation,
           address: action.address
+        }
+      };
+    case PIN_LOCATION:
+      return { ...state,
+        tempLocation: {
+          ...state.tempLocation,
+          pinned: true
         }
       };
     case CONFIRM_LOCATION:
       return { ...state,
         newReport: {
           ...state.newReport,
-          location: state.tempLocation
+          location: {
+            address: state.tempLocation.address,
+            lngLat: state.tempLocation.lngLat
+          }
         } };
     case SET_LOCATION_MODE:
       // TODO: move error handling to action creator

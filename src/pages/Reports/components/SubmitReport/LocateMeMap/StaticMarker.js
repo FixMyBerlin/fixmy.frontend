@@ -37,6 +37,7 @@ const StyledMapCenterIndicator = styled(MapcenterIndicator)`
   bottom: -17px;
 `;
 
+// TODO: use a proper icon for pinned "state"
 const StaticMarker = ({ pinned }) => (
   <Wrapper>
     {pinned ? <StyledLocateMeMarkerIcon /> : <LocateMeMarkerPinnedIcon />}

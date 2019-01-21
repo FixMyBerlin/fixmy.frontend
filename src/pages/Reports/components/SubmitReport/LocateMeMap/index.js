@@ -11,14 +11,15 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import WebglMap from './WebglMap';
 import StaticMarker from './StaticMarker';
-import ConfirmButton from './ConfirmButton';
+import PinLocationButton from './PinLocationButton';
 import SearchBar from './SearchBar';
 import HelpText from './HelpText';
 import {
   geocodeAddress,
   reverseGeocodeAddress,
   setTempLocationLngLat,
-  confirmLocation
+  confirmLocation,
+  pinLocation
 } from '~/pages/Reports/ReportsState';
 
 import LocatorControl from '~/pages/Map/components/LocatorControl';
@@ -46,9 +47,27 @@ const StyledWebGlMap = styled(WebglMap)`
   order: 2; // this makes sure that the NavBar is on top
 `;
 
+const AddressIndicator = styled.div`
+  font-size: 12px;
+  width: 120px;
+  color: ${config.colors.black};
+  z-index: 99999999999999;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 40%; // TODO: proper positioning
+`
 
 class LocateMeMap extends Component {
   state = {};
+
+  onMapMove = ({ lat, lng }) => {
+    this.props.reverseGeocodeAddress({ lng, lat });
+    this.props.setTempLocationLngLat({ lng, lat });
+  };
 
   render() {
     return (
@@ -58,15 +77,20 @@ class LocateMeMap extends Component {
 
         <MapWrapper>
           {!!this.props.locationMode && (
-          <StaticMarker
-            pinned={!!this.props.location}
-          />
+              <StaticMarker
+                pinned={this.props.tempLocation && this.props.tempLocation.pinned}
+              />
           )}
+
+          {this.props.tempLocation && this.props.tempLocation.address && (
+            <AddressIndicator>{this.props.tempLocation.address}</AddressIndicator>
+          )}
+
           <StyledWebGlMap
             center={this.props.geocodeResult && this.props.geocodeResult.center}
             zoom={this.props.geocodeResult && this.props.geocodeResult.zoom}
             className="locate-me-map"
-            onMapDrag={this.props.reverseGeocodeAddress}
+            onMapDrag={this.onMapMove}
           />
         </MapWrapper>
 
@@ -76,8 +100,8 @@ class LocateMeMap extends Component {
           position="bottom-right"
         />
 
-        <ConfirmButton
-          onConfirm={this.props.confirmLocation}
+        <PinLocationButton
+          onConfirm={this.props.pinLocation}
           text="Diese Position bestätigen"
           disabled={!(this.props.tempLocation && this.props.tempLocation.address)}
         />
@@ -91,6 +115,7 @@ const mapDispatchToPros = {
   geocodeAddress,
   reverseGeocodeAddress,
   setTempLocationLngLat,
-  confirmLocation
+  confirmLocation,
+  pinLocation
 };
 export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);

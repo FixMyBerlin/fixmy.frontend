@@ -27,7 +27,7 @@ const Button = styled.button`
   }
 `;
 
-const ConfirmButton = ({ onConfirm, text, disabled }) => (
+const PinLocationButton = ({ onConfirm, text, disabled }) => (
   <Button
     className="confirm-location-button"
     onClick={onConfirm}
@@ -36,16 +36,16 @@ const ConfirmButton = ({ onConfirm, text, disabled }) => (
   </Button>
 );
 
-ConfirmButton.propTypes = {
+PinLocationButton.propTypes = {
   onConfirm: PropTypes.func,
   text: PropTypes.string,
   disabled: PropTypes.bool
 };
 
-ConfirmButton.defaultProps = {
+PinLocationButton.defaultProps = {
   onConfirm: () => console.log('onConfirm says implement me'),
   text: () => 'Diese Position bestätigen',
   disabled: false
 };
 
-export default ConfirmButton;
+export default PinLocationButton;
