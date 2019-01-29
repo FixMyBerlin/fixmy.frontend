@@ -52,15 +52,17 @@ const StyledWebGlMap = styled(WebglMap)`
 const AddressIndicator = styled.div`
   font-size: 12px;
   width: 200px;
+  height: 100px;
   color: ${config.colors.black};
   z-index: 99999999999999;
   text-align: center;
   font-weight: bold;
   position: absolute;
+  margin: auto;
+  top: 184px;
   left: 0;
   right: 0;
-  margin: auto;
-  bottom: 30%; // TODO: proper positioning
+  bottom: 0; // TODO: proper positioning
 `;
 
 // TODO: make sure the StaticMarker anchor is really at the map center

@@ -20,8 +20,14 @@ const MapcenterIndicator = styled(X)`
 
 const Wrapper = styled.div`
   position: absolute;
+  margin: auto;
+  top: 0; 
+  left: 0;  
+  right: 0;
+  bottom: calc(114px / 2);
   z-index: 99999999;
   height: 114px;
+  width: 82px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,12 +35,12 @@ const Wrapper = styled.div`
 `;
 
 const StyledLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`
-  flex-shrink: 0; // prevent svg from scaling so that the wrapper clip the viewbox
+  // flex-shrink: 0; // prevent svg from scaling so that the wrapper clip the viewbox
 `;
 
 const StyledMapCenterIndicator = styled(MapcenterIndicator)`
   position: absolute;
-  bottom: -17px;
+  bottom: -10px;
 `;
 
 // TODO: use a proper icon for pinned "state"
