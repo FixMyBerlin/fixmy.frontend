@@ -7,8 +7,8 @@ import React, { Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import {
   setLocationMode,
-  LOCATION_MODE_DEVICE,
-  LOCATION_MODE_GEOCODING
+  LOCATION_MODE_GEOCODING,
+  useDevicePosition
 } from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
@@ -53,7 +53,7 @@ class SubmitReport extends PureComponent {
 }
 
 const mapDispatchToProps = {
-  onUseDevicePosition: () => setLocationMode(LOCATION_MODE_DEVICE),
+  onUseDevicePosition: useDevicePosition,
   onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING)
 };
 

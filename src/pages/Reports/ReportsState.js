@@ -1,19 +1,21 @@
 import ky from 'ky';
 import idx from 'idx/lib/idx';
 import reverseGeocode from '~/services/reverseGeocode';
+import { getGeoLocation } from '~/pages/Map/map-utils';
 
 const RESET_DIALOG_STATE = 'Reports/OverviewMapState/RESET_DIALOG_STATE';
 const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
 const SET_LOCATION_MODE = 'Reports/ReportsDialogState/SET_LOCATION_MODE';
 export const LOCATION_MODE_DEVICE = 'device'; // not an action type, keeping this here to prevent typos
 export const LOCATION_MODE_GEOCODING = 'geocoding'; // not an action type, keeping this here to prevent typos
+const SET_DEVICE_LOCATION = 'Reports/ReportsDialogState/SET_DEVICE_LOCATION';
 const GEOCODE_DONE = 'Reports/ReportsDialogState/GEOCODE_SUCCESS';
 const GEOCODE_FAIL = 'Reports/ReportsDialogState/GEOCODE_FAIL';
 const REVERSE_GEOCODE_DONE = 'Reports/ReportsDialogState/REVERSE_GEOCODE_SUCCESS';
 const REVERSE_GEOCODE_FAIL = 'Reports/ReportsDialogState/REVERSE_GEOCODE_FAIL';
 const SET_TEMP_LOCATION_LNG_LAT = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_LNG_LAT';
 const SET_TEMP_LOCATION_ADDRESS = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_ADDRESS';
-const PIN_LOCATION = 'Reports/ReportsDialogState/PIN_LOCATION';
+const PIN_LOCATION = 'Reports/ReportsDialogState/PIN_LOCATION'; // sort of intermediate step, to ask "are you sure"?
 const CONFIRM_LOCATION = 'Reports/ReportsDialogState/CONFIRM_LOCATION';
 
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
   newReport: {}, // the new report object, populated while stepping through the dialog
   error: null, // holds an error message to which displaying components can bind to // TODO: set up rendering a toast
   locationMode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
+  deviceLocation: null, // {lng, lat}
   geocodeResult: null, // object containing center and zoom
   reverseGeocodeResult: null, // An address,
   tempLocation: {}, // holds lngLat, address and a "pinned" property which indicates the location as submittable
@@ -48,6 +51,29 @@ It starts with step 1, a separate locatorMap component
 
  */
 
+export function resetDialogState() {
+  return { type: RESET_DIALOG_STATE };
+}
+
+export function setTempLocationLngLat({ lng, lat }) {
+  return { type: SET_TEMP_LOCATION_LNG_LAT, payload: { lng, lat } };
+}
+
+export function setTempLocationAddress(address) {
+  return { type: SET_TEMP_LOCATION_ADDRESS, address };
+}
+
+export function pinLocation() {
+  return { type: PIN_LOCATION };
+}
+
+export function confirmLocation() {
+  return { type: CONFIRM_LOCATION };
+}
+
+export function setDeviceLocation({ lng, lat }) {
+  return { type: SET_DEVICE_LOCATION, payload: { lng, lat } };
+}
 
 export function loadReportData() {
   return async (dispatch, getState) => {
@@ -62,7 +88,7 @@ export function loadReportData() {
   };
 }
 
-// TODO: factor logic out to service
+// TODO: factor bigger logic pieces out to services, only keep action creators here
 export function geocodeAddress(searchtext) {
   return async (dispatch) => {
     const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;
@@ -100,29 +126,18 @@ export function reverseGeocodeAddress({ lat, lng }) {
     dispatch({ type: SET_TEMP_LOCATION_ADDRESS, address: result });
   };
 }
-
-export function resetDialogState() {
-  return { type: RESET_DIALOG_STATE };
-}
-
 export function setLocationMode(mode) {
   return { type: SET_LOCATION_MODE, mode };
 }
 
-export function setTempLocationLngLat({ lng, lat }) {
-  return { type: SET_TEMP_LOCATION_LNG_LAT, payload: { lng, lat } };
-}
-
-export function setTempLocationAddress(address) {
-  return { type: SET_TEMP_LOCATION_ADDRESS, address };
-}
-
-export function pinLocation() {
-  return { type: PIN_LOCATION };
-}
-
-export function confirmLocation() {
-  return { type: CONFIRM_LOCATION };
+export function useDevicePosition() {
+  return async (dispatch) => {
+    const { coords } = await getGeoLocation();
+    dispatch(
+      setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })
+    );
+    dispatch(setLocationMode(LOCATION_MODE_DEVICE));
+  };
 }
 
 export default function ReportsReducer(state = initialState, action = {}) {
@@ -130,6 +145,8 @@ export default function ReportsReducer(state = initialState, action = {}) {
     case RESET_DIALOG_STATE:
       // set to default state, except for reports to not be forced to fetch data again
       return { ...initialState, reports: state.reports };
+    case SET_DEVICE_LOCATION:
+      return { ...state, deviceLocation: action.payload };
     case GEOCODE_DONE:
       return { ...state, geocodeResult: action.payload };
     case REVERSE_GEOCODE_DONE:

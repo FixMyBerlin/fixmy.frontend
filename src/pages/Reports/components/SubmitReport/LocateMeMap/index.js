@@ -6,7 +6,7 @@
  *  The location can be adjusted by moving the map around.
  */
 
-import React, { Component } from 'react';
+import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import WebglMap from './WebglMap';
@@ -15,6 +15,8 @@ import PinLocationButton from './PinLocationButton';
 import SearchBar from './SearchBar';
 import HelpText from './HelpText';
 import {
+  LOCATION_MODE_GEOCODING,
+  setDeviceLocation,
   geocodeAddress,
   reverseGeocodeAddress,
   setTempLocationLngLat,
@@ -59,29 +61,38 @@ const AddressIndicator = styled.div`
   right: 0;
   margin: auto;
   bottom: 30%; // TODO: proper positioning
-`
+`;
 
 // TODO: make sure the StaticMarker anchor is really at the map center
 
 class LocateMeMap extends Component {
-  state = {};
-
   onMapMove = ({ lat, lng }) => {
     this.props.reverseGeocodeAddress({ lng, lat });
     this.props.setTempLocationLngLat({ lng, lat });
   };
 
+  getCenter = () => {
+    const centerObj = this.props.deviceLocation || (this.props.geocodeResult && this.props.geocodeResult.center);
+    if (centerObj) return [centerObj.lng, centerObj.lat];
+  };
+
   render() {
     return (
       <MapView>
-        <SearchBar onSubmit={geocodeAddress} />
-        <HelpText />
+        {this.props.locationMode === LOCATION_MODE_GEOCODING && (
+          <Fragment>
+            <SearchBar onSubmit={geocodeAddress} />
+            {/* TODO: do not show after initial map move */}
+            <HelpText />
+          </Fragment>
+        )}
+
 
         <MapWrapper>
-          {!!this.props.locationMode && (
-              <StaticMarker
-                pinned={this.props.tempLocation && this.props.tempLocation.pinned}
-              />
+          {this.props.locationMode && (
+          <StaticMarker
+            pinned={this.props.tempLocation && this.props.tempLocation.pinned}
+          />
           )}
 
           {this.props.tempLocation && this.props.tempLocation.address && (
@@ -89,8 +100,7 @@ class LocateMeMap extends Component {
           )}
 
           <StyledWebGlMap
-            center={this.props.geocodeResult && this.props.geocodeResult.center}
-            zoom={this.props.geocodeResult && this.props.geocodeResult.zoom}
+            center={this.getCenter()}
             className="locate-me-map"
             onMapDrag={this.onMapMove}
           />
@@ -98,7 +108,7 @@ class LocateMeMap extends Component {
 
         <LocatorControl
           key="ReportsLocateMap__LocatorControl"
-          onChange={this.props.setTempLocationLngLat}
+          onChange={this.props.setDeviceLocation}
           position="bottom-right"
         />
 
@@ -118,6 +128,7 @@ const mapDispatchToPros = {
   reverseGeocodeAddress,
   setTempLocationLngLat,
   confirmLocation,
-  pinLocation
+  pinLocation,
+  setDeviceLocation
 };
 export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);

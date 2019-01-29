@@ -27,7 +27,7 @@ class WebglMap extends PureComponent {
   static defaultProps = {
     className: 'locator-map',
     center: config.map.view.center,
-    zoom: config.map.view.zoom,
+    zoom: 18, // TODO: make this configurable
     onMapDrag: () => console.log('onMapDrag says implement me')
   };
 
@@ -64,6 +64,13 @@ class WebglMap extends PureComponent {
 
   handleLoad = () => {
     this.setState({ loading: false, map: this.map });
+
+    // center prop might have been set by getting the device´s geolocation before the component sets up
+    if (this.props.center !== config.map.view.center) {
+      this.map.setZoom(this.props.zoom);
+      this.map.setCenter(this.props.center);
+      this.handleMoveEnd();
+    }
 
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
