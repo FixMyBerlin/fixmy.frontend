@@ -8,7 +8,8 @@ import { connect } from 'react-redux';
 import {
   setLocationMode,
   LOCATION_MODE_GEOCODING,
-  useDevicePosition
+  useDevicePosition,
+  resetDialogState
 } from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
@@ -16,6 +17,10 @@ import LocateMeMap from './LocateMeMap';
 
 
 class SubmitReport extends PureComponent {
+  componentDidMount() {
+    this.props.resetDialogState();
+  }
+
   render() {
     const { locationMode, newReport, reportCompiled } = this.props;
 
@@ -54,7 +59,8 @@ class SubmitReport extends PureComponent {
 
 const mapDispatchToProps = {
   onUseDevicePosition: useDevicePosition,
-  onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING)
+  onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
+  resetDialogState
 };
 
 export default connect(state => state.ReportsState, mapDispatchToProps)(SubmitReport);
