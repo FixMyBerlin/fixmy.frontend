@@ -2,11 +2,11 @@
  * Marker image to indicate current center of mapView.
  */
 
-import React from 'react';
+import React, {Fragment} from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import LocateMeMarkerIcon from '~/images/reports/locate-me-marker.svg';
-import LocateMeMarkerPinnedIcon from '~/images/reports/locate-me-marker-pinned.svg';
+import TickIcon from '~/images/reports/locate-me-marker-tick.svg';
 import { X } from 'react-feather';
 
 const MapcenterIndicator = styled(X)`
@@ -34,8 +34,14 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const StyledLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`
-  // flex-shrink: 0; // prevent svg from scaling so that the wrapper clip the viewbox
+const StyledPinnedLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`
+  position: relative;
+  top: 28px;
+`;
+
+const StyledTickIcon = styled(TickIcon)`
+  position: relative;
+  bottom: 40px;
 `;
 
 const StyledMapCenterIndicator = styled(MapcenterIndicator)`
@@ -46,8 +52,15 @@ const StyledMapCenterIndicator = styled(MapcenterIndicator)`
 // TODO: use a proper icon for pinned "state"
 const StaticMarker = ({ pinned }) => (
   <Wrapper>
-    {pinned ? <StyledLocateMeMarkerIcon /> : <LocateMeMarkerPinnedIcon />}
-    <StyledMapCenterIndicator>+</StyledMapCenterIndicator>
+
+    {pinned ? (
+      <Fragment>
+        <StyledPinnedLocateMeMarkerIcon />
+        <StyledTickIcon />
+      </Fragment>
+    ) : <LocateMeMarkerIcon />}
+
+    {!pinned && <StyledMapCenterIndicator>+</StyledMapCenterIndicator>}
   </Wrapper>
 );
 
