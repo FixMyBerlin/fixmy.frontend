@@ -8,8 +8,7 @@ const FaqItemWrapper = styled.div`
 
   padding-left: 8px;
   padding-right: 23px;
- 
-  
+
   &:hover {
     cursor: pointer;
   }
@@ -24,6 +23,7 @@ const FaqItemWrapper = styled.div`
   }
    
   p {
+    padding: 8px 0;
     margin: 0;
      -webkit-transform: scaleY(1);
     -ms-transform: scaleY(1);

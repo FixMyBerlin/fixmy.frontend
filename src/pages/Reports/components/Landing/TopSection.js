@@ -5,8 +5,7 @@ import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.jpg'; // TO
 import Button from '~/components/Button';
 import Link from '~/components/Link';
 import PropTypes from 'prop-types';
-
-// TODO: styling for desktop
+import { media } from '~/styles/utils';
 
 const StyledSection = styled.section`
   height: 100vh;
@@ -19,6 +18,25 @@ const StyledSection = styled.section`
   background-position: center center;
   padding-left: 34px;
   padding-right: 34px;
+  
+  // image is too pixelated for big screens, make it almost transparent TODO: use a better image
+  ${media.m`
+    background-image: none;
+    
+    &&:after {
+       content: "";
+       opacity: 0.1;
+       background-image: url(${BycicleParkingBgImg});
+       background-size: cover;
+       background-position: center center;
+       top: 0;
+       left: 0;
+       bottom: 0;
+       right: 0;
+       position: absolute;
+       z-index: -1;
+    }
+  `}
 `;
 
 const StyledHeading = styled.h2`
@@ -34,6 +52,9 @@ const StyledHeading = styled.h2`
   color: white;
   margin-bottom: 39px;
  
+  ${media.m`
+   color: ${config.colors.black};
+  `}
 `;
 
 const StyledButton = styled(Button)`

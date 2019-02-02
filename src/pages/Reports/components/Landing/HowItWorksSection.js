@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import NounBycicleIcon from '~/images/reports/noun-bicycle.svg';
+import {  media } from '~/styles/utils';
 
 const StyledSection = styled.section`
   display: flex;
@@ -17,12 +18,19 @@ const StyledEssenceText = styled.p`
    font-weight: bold;
    line-height: 1.5;
    text-align: center;
-   margin-bottom: 43px;
+   margin-bottom: 44px;
+   
+   ${media.m`
+    margin-top: 88px;
+    margin-bottom: 88px;
+  `}
 `;
 
 const StyledNounBycicleIcon = styled(NounBycicleIcon)`
   width: 144px;
   margin-bottom: 32px;
+  
+  
 `;
 
 const StyledQuestion = styled.p`

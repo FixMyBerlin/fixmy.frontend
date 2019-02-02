@@ -8,6 +8,7 @@ const SectionDivider = styled.div`
   height: 0;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 `;
 
 const StyledChevron = styled(ChevronDown)`
@@ -21,9 +22,12 @@ const StyledChevron = styled(ChevronDown)`
   box-shadow: 0 3px 4px rgba(53,53,53, 0.8);
 `;
 
+function scrollDown() {
+  window.scroll({ top: window.innerHeight, behavior: 'smooth' });
+}
 
 export default () => (
-  <SectionDivider>
+  <SectionDivider onClick={scrollDown}>
     <StyledChevron />
   </SectionDivider>
 );
