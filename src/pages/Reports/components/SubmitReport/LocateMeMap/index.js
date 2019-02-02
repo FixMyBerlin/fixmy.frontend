@@ -6,7 +6,7 @@
  *  The location can be adjusted by moving the map around.
  */
 
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import WebglMap from './WebglMap';
@@ -68,14 +68,38 @@ const AddressIndicator = styled.div`
 // TODO: make sure the StaticMarker anchor is really at the map center
 
 class LocateMeMap extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mapHasMoved: false
+    };
+  }
+
   onMapMove = ({ lat, lng }) => {
     this.props.reverseGeocodeAddress({ lng, lat });
     this.props.setTempLocationLngLat({ lng, lat });
+    if (!this.state.mapHasMoved) {
+      this.state.mapHasMoved = true;
+    }
   };
 
   getCenter = () => {
-    const centerObj = this.props.deviceLocation || (this.props.geocodeResult && this.props.geocodeResult.center);
-    if (centerObj) return [centerObj.lng, centerObj.lat];
+    // either device location or geocodeResult will be set
+    if (this.props.deviceLocation) {
+      const centerObj = this.props.deviceLocation;
+      return [centerObj.lng, centerObj.lat];
+    }
+    if (this.props.geocodeResult) {
+      return this.props.geocodeResult.center;
+    }
+  };
+
+  onSearchAddress = (text) => {
+    this.props.geocodeAddress(text)
+      .then(() => {
+        const [lng, lat] = this.props.geocodeResult.center;
+        this.onMapMove({lng, lat});
+      });
   };
 
   render() {
@@ -83,9 +107,10 @@ class LocateMeMap extends Component {
       <MapView>
         {this.props.locationMode === LOCATION_MODE_GEOCODING && (
           <Fragment>
-            <SearchBar onSubmit={geocodeAddress} />
-            {/* TODO: do not show after initial map move */}
-            <HelpText />
+            <SearchBar onSubmit={this.onSearchAddress} />
+            {!this.state.mapHasMoved && (
+              <HelpText />
+            )}
           </Fragment>
         )}
 
