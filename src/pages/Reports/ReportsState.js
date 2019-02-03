@@ -33,10 +33,10 @@ const initialState = {
 /* eslint-disable no-tabs */
 /*
 
-newReport is used to a) compile a new object to submit to the API and b) to step through the dialog
+newReport is used to a) compile a new object to submit to the API and b) to step through the dialog.
 
-It starts with step 1, a separate locatorMap component
-  locationMode: device | geolocation
+Content of newReport (TODO: use some sort of interface/type/shape)
+
 	location  --> when this is set, go to step 2
     lngLat
     address
@@ -176,10 +176,10 @@ export default function ReportsReducer(state = initialState, action = {}) {
       return { ...state,
         newReport: {
           ...state.newReport,
-          location: {
-            address: state.tempLocation.address,
-            lngLat: state.tempLocation.lngLat
-          }
+            location: {
+              address: state.tempLocation.address,
+              lngLat: state.tempLocation.lngLat
+            }
         } };
     case SET_LOCATION_MODE:
       // TODO: move error handling to action creator

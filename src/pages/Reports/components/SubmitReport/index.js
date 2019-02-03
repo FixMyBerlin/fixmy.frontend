@@ -44,7 +44,11 @@ class SubmitReport extends PureComponent {
     }
 
     if (!newReport.what) {
-      // render mainform
+      return (
+        <div>
+          <h2>This will be the form</h2>
+        </div>
+      )
     }
 
     if (!newReport.additionalInfo) {

@@ -14,6 +14,8 @@ import StaticMarker from './StaticMarker';
 import PinLocationButton from './PinLocationButton';
 import SearchBar from './SearchBar';
 import HelpText from './HelpText';
+import ConfirmLocationDialog from './ConfirmLocationDialog';
+
 import {
   LOCATION_MODE_GEOCODING,
   setDeviceLocation,
@@ -21,7 +23,8 @@ import {
   reverseGeocodeAddress,
   setTempLocationLngLat,
   confirmLocation,
-  pinLocation
+  pinLocation,
+  resetDialogState
 } from '~/pages/Reports/ReportsState';
 
 import LocatorControl from '~/pages/Map/components/LocatorControl';
@@ -94,11 +97,13 @@ class LocateMeMap extends Component {
     }
   };
 
+  getPinned = () => this.props.tempLocation && this.props.tempLocation.pinned;
+
   onSearchAddress = (text) => {
     this.props.geocodeAddress(text)
       .then(() => {
         const [lng, lat] = this.props.geocodeResult.center;
-        this.onMapMove({lng, lat});
+        this.onMapMove({ lng, lat });
       });
   };
 
@@ -118,7 +123,7 @@ class LocateMeMap extends Component {
         <MapWrapper>
           {this.props.locationMode && (
           <StaticMarker
-            pinned={this.props.tempLocation && this.props.tempLocation.pinned}
+            pinned={this.getPinned()}
           />
           )}
 
@@ -133,17 +138,30 @@ class LocateMeMap extends Component {
           />
         </MapWrapper>
 
+        {!this.getPinned() && (
         <LocatorControl
           key="ReportsLocateMap__LocatorControl"
           onChange={this.props.setDeviceLocation}
           position="bottom-right"
         />
+        )}
 
+        {!this.getPinned() && (
         <PinLocationButton
           onConfirm={this.props.pinLocation}
           text="Diese Position bestätigen"
           disabled={!(this.props.tempLocation && this.props.tempLocation.address)}
         />
+        )}
+
+        {this.getPinned() && (
+          <ConfirmLocationDialog
+            onConfirm={this.props.confirmLocation}
+            onDecline={this.props.resetDialogState}
+            address={this.props.tempLocation.address}
+          />
+        )}
+
 
       </MapView>
     );
@@ -156,6 +174,7 @@ const mapDispatchToPros = {
   setTempLocationLngLat,
   confirmLocation,
   pinLocation,
-  setDeviceLocation
+  setDeviceLocation,
+  resetDialogState
 };
 export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);
