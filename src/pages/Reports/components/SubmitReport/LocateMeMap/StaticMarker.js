@@ -2,7 +2,7 @@
  * Marker image to indicate current center of mapView.
  */
 
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import LocateMeMarkerIcon from '~/images/reports/locate-me-marker.svg';
@@ -49,16 +49,18 @@ const StyledMapCenterIndicator = styled(MapcenterIndicator)`
   bottom: -10px;
 `;
 
-// TODO: use a proper icon for pinned "state"
+
 const StaticMarker = ({ pinned }) => (
   <Wrapper>
 
-    {pinned ? (
-      <Fragment>
-        <StyledPinnedLocateMeMarkerIcon />
-        <StyledTickIcon />
-      </Fragment>
-    ) : <LocateMeMarkerIcon />}
+    {pinned ?
+      (
+        <Fragment>
+          <StyledPinnedLocateMeMarkerIcon />
+          <StyledTickIcon />
+        </Fragment>
+      ) :
+        <LocateMeMarkerIcon />}
 
     {!pinned && <StyledMapCenterIndicator>+</StyledMapCenterIndicator>}
   </Wrapper>
