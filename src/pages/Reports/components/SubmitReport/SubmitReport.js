@@ -13,7 +13,7 @@ import {
 } from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
-import LocateMeMap from './LocateMeMap';
+import LocateMeMap from './LocateMeMap/LocateMeMap';
 
 
 class SubmitReport extends PureComponent {

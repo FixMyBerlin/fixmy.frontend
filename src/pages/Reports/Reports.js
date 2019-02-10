@@ -12,8 +12,8 @@ import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
 import Landing from './components/Landing';
-import OverviewMap from './components/OverviewMap';
-import SubmitReport from './components/SubmitReport';
+import OverviewMap from './components/OverviewMap/OverviewMap';
+import SubmitReport from './components/SubmitReport/SubmitReport';
 
 
 class Reports extends PureComponent {
