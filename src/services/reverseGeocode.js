@@ -24,5 +24,5 @@ export default async ({ lat, lng }) => {
 
   const data = await ky.get(searchUrl).json();
   const { road, house_number, postcode, city } = data.address;
-  return `${road} ${house_number}, ${postcode} ${city}`;
+  return `${road} ${house_number || ''}, ${postcode} ${city}`;
 };
