@@ -15,6 +15,7 @@ import PinLocationButton from './PinLocationButton';
 import SearchBar from './SearchBar';
 import HelpText from './HelpText';
 import ConfirmLocationDialog from './ConfirmLocationDialog';
+import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 
 import {
   LOCATION_MODE_GEOCODING,
@@ -24,7 +25,8 @@ import {
   setTempLocationLngLat,
   confirmLocation,
   pinLocation,
-  resetDialogState
+  resetDialogState,
+  removeError
 } from '~/pages/Reports/ReportsState';
 
 import LocatorControl from '~/pages/Map/components/LocatorControl';
@@ -110,6 +112,16 @@ class LocateMeMap extends Component {
   render() {
     return (
       <MapView>
+
+        {
+          this.props.error.message && (
+            <ErrorMessage
+              message={this.props.error.message}
+              onDismiss={this.props.removeError}
+            />
+          )
+        }
+
         {this.props.locationMode === LOCATION_MODE_GEOCODING && (
           <Fragment>
             <SearchBar onSubmit={this.onSearchAddress} />
@@ -175,6 +187,7 @@ const mapDispatchToPros = {
   confirmLocation,
   pinLocation,
   setDeviceLocation,
-  resetDialogState
+  resetDialogState,
+  removeError
 };
 export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);

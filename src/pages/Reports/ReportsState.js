@@ -1,3 +1,4 @@
+// TODO: add unit tests for reducer
 import ky from 'ky';
 import idx from 'idx/lib/idx';
 import reverseGeocode from '~/services/reverseGeocode';
@@ -17,11 +18,15 @@ const SET_TEMP_LOCATION_LNG_LAT = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_
 const SET_TEMP_LOCATION_ADDRESS = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_ADDRESS';
 const PIN_LOCATION = 'Reports/ReportsDialogState/PIN_LOCATION'; // sort of intermediate step, to ask "are you sure"?
 const CONFIRM_LOCATION = 'Reports/ReportsDialogState/CONFIRM_LOCATION';
+const ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
+const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
 
 const initialState = {
   reports: [], // existing reports, fetched via API
   newReport: {}, // the new report object, populated while stepping through the dialog
-  error: null, // holds an error message to which displaying components can bind to // TODO: set up rendering a toast
+  error: {
+    message: null
+  }, // holds an error message to which displaying components can bind to
   locationMode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
   deviceLocation: null, // {lng, lat}
   geocodeResult: null, // object containing center and zoom
@@ -50,7 +55,6 @@ Content of newReport (TODO: use some sort of interface/type/shape)
     description
 
  */
-
 export function resetDialogState() {
   return { type: RESET_DIALOG_STATE };
 }
@@ -75,6 +79,16 @@ export function setDeviceLocation({ lng, lat }) {
   return { type: SET_DEVICE_LOCATION, payload: { lng, lat } };
 }
 
+export const addError = error => ({
+  type: ADD_ERROR,
+  error
+});
+
+export const removeError = () => ({
+  type: REMOVE_ERROR
+});
+
+
 export function loadReportData() {
   return async (dispatch, getState) => {
     const state = getState();
@@ -88,7 +102,6 @@ export function loadReportData() {
   };
 }
 
-// TODO: factor bigger logic pieces out to services, only keep action creators here
 export function geocodeAddress(searchtext) {
   return async (dispatch) => {
     const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;
@@ -127,6 +140,8 @@ export function reverseGeocodeAddress({ lat, lng }) {
   };
 }
 export function setLocationMode(mode) {
+  const modeStatedProperly = [LOCATION_MODE_DEVICE, LOCATION_MODE_GEOCODING].includes(mode);
+  if (!modeStatedProperly) throw new Error(`use either ${LOCATION_MODE_DEVICE} or ${LOCATION_MODE_GEOCODING} to state the location mode`);
   return { type: SET_LOCATION_MODE, mode };
 }
 
@@ -182,16 +197,23 @@ export default function ReportsReducer(state = initialState, action = {}) {
             }
         } };
     case SET_LOCATION_MODE:
-      // TODO: move error handling to action creator
-      // eslint-disable-next-line no-case-declarations
-      const modeStatedProperly = action.mode && [LOCATION_MODE_DEVICE, LOCATION_MODE_GEOCODING].includes(action.mode);
-      if (!modeStatedProperly) throw new Error(`use either ${LOCATION_MODE_DEVICE} or ${LOCATION_MODE_GEOCODING} to state the location mode`);
       return { ...state, locationMode: action.mode };
     case GEOCODE_FAIL:
     case REVERSE_GEOCODE_FAIL:
       return { ...state,
         error: {
         message: action.payload.geocodeError
+      } };
+      // generic Error handlers
+    case ADD_ERROR:
+      return { ...state,
+        error: {
+          message: action.error
+        } };
+    case REMOVE_ERROR:
+      return { ...state,
+        error: {
+          message: null
       } };
       default:
       return { ...state };
