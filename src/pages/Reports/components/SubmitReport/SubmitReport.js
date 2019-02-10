@@ -14,7 +14,7 @@ import {
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
 import LocateMeMap from './LocateMeMap/LocateMeMap';
-
+import WhatsNeeded from './WhatsNeeded';
 
 class SubmitReport extends PureComponent {
   componentDidMount() {
@@ -45,10 +45,8 @@ class SubmitReport extends PureComponent {
 
     if (!newReport.what) {
       return (
-        <div>
-          <h2>This will be the form</h2>
-        </div>
-      )
+        <WhatsNeeded />
+      );
     }
 
     if (!newReport.additionalInfo) {
