@@ -13,16 +13,39 @@ const Wrapper = styled.div`
 `;
 
 const Question = styled.p`
+  margin-top: 32px;
+  margin-bottom: 8px;
   font-size: 22px;
   font-weight: bold;
   color: ${config.colors.black};
   text-align: center;
 `;
 
-const StyledSlider = styled(Slider)`
+const Explaination = styled.p`
+  margin-top: 0;
+  font-size: 14px;
+  color: ${config.colors.darkgrey};
+  text-align: center;
+  line-height: 1.4;
+`;
 
+const WeiterButton = styled(Button)`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 84px;
+  height: 48px;
+  width: 167px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+`;
+
+
+const StyledSlider = styled(Slider)`
+    
    && {
       height: 6px;
+      margin-bottom: 72px;
+      margin-top: 64px;
     }
   
    &&  .rangeslider__fill {
@@ -51,6 +74,12 @@ const StyledSlider = styled(Slider)`
   }
 `;
 
+const CostSlider = styled(StyledSlider)`
+  &&  .rangeslider__fill {
+     background-color: ${config.colors.lightgrey};
+   }
+`;
+
 
 class WhatsNeeded extends PureComponent {
   static propTypes = {
@@ -65,10 +94,13 @@ class WhatsNeeded extends PureComponent {
     super(props);
     this.state = {
       ironingsNeeded: 3,
-      amenityPlacement: null
+      amenityPlacement: null,
+      paymentReservesBikePark: 1
     };
   }
 
+  // TODO: render the second slider only if the first option has been chosen
+  // TODO: checkout this fiddle how radio buttons can be reactified
 
   render() {
     return (
@@ -82,12 +114,27 @@ class WhatsNeeded extends PureComponent {
             name="ironingsNeeded"
             value={this.state.ironingsNeeded}
             tooltip={false}
-            handleLabel={this.state.ironingsNeeded.toString()}
+            handleLabel={this.state.ironingsNeeded}
             onChange={ironingsNeeded => this.setState({ ironingsNeeded })}
           />
         </div>
 
-        <Button onClick={this.props.onConfirm}>Weiter</Button>
+        <Question>..und wo könnten diese aufgestellt werden?</Question>
+        <Explaination>Ein Bügel benötigt ungefähr 2 qm Fläche</Explaination>
+
+
+        <CostSlider
+          min={0}
+          max={5}
+          name="paymentReservesBikePark"
+          labels={{ 0: '0 €', 5: '5 €' }}
+          value={this.state.paymentReservesBikePark}
+          tooltip={false}
+          handleLabel={`${this.state.paymentReservesBikePark} €`}
+          onChange={paymentReservesBikePark => this.setState({ paymentReservesBikePark })}
+        />
+
+        <WeiterButton onClick={this.props.onConfirm}>Weiter</WeiterButton>
 
       </Wrapper>
 
