@@ -5,11 +5,18 @@ import Slider from 'react-rangeslider';
 // include the default range slider styles
 import 'react-rangeslider/lib/index.css';
 import Button from '~/components/Button';
+import { breakpoints } from '~/styles/utils';
 
 // TODO: customize sliders
 
 const Wrapper = styled.div`
   padding: 11px;
+  max-width: ${breakpoints.m}px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Question = styled.p`
@@ -18,30 +25,33 @@ const Question = styled.p`
   font-size: 22px;
   font-weight: bold;
   color: ${config.colors.black};
-  text-align: center;
 `;
 
-const Explaination = styled.p`
+const Explanation = styled.p`
   margin-top: 0;
   font-size: 14px;
   color: ${config.colors.darkgrey};
-  text-align: center;
   line-height: 1.4;
 `;
 
 const WeiterButton = styled(Button)`
   display: block;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 84px;
   height: 48px;
   width: 167px;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
 `;
 
+const StyledHr = styled.hr`
+  width: 100%;
+  border: 0.5px dashed rgba(162, 162, 162, 0.87);
+`;
 
 const StyledSlider = styled(Slider)`
-    
+
+  width: 100%;
+  max-width: ${breakpoints.s}px;
+
    && {
       height: 6px;
       margin-bottom: 72px;
@@ -100,28 +110,29 @@ class WhatsNeeded extends PureComponent {
   }
 
   // TODO: render the second slider only if the first option has been chosen
-  // TODO: checkout this fiddle how radio buttons can be reactified
+  // TODO: checkout this fiddle how radio buttons can be reactified and how form validation works https://codesandbox.io/s/pjqp3xxq7q?from-embed
 
   render() {
     return (
       <Wrapper>
 
         <Question>Wie viele Bügel werden benötigt?</Question>
-        <div className="slider">
-          <StyledSlider
-            min={0}
-            max={20}
-            name="ironingsNeeded"
-            value={this.state.ironingsNeeded}
-            tooltip={false}
-            handleLabel={this.state.ironingsNeeded}
-            onChange={ironingsNeeded => this.setState({ ironingsNeeded })}
-          />
-        </div>
+        <StyledSlider
+          min={0}
+          max={20}
+          name="ironingsNeeded"
+          value={this.state.ironingsNeeded}
+          tooltip={false}
+          handleLabel={this.state.ironingsNeeded.toString()}
+          onChange={ironingsNeeded => this.setState({ ironingsNeeded })}
+        />
 
         <Question>..und wo könnten diese aufgestellt werden?</Question>
-        <Explaination>Ein Bügel benötigt ungefähr 2 qm Fläche</Explaination>
+        <Explanation>Ein Bügel benötigt ungefähr 2 qm Fläche</Explanation>
 
+        <div style={{ backgroundColor: 'rgba(162, 162, 162, 0.87)', height: 300, width: '100%', color: 'white' }}>Placeholder</div>
+
+        <StyledHr />
 
         <CostSlider
           min={0}
