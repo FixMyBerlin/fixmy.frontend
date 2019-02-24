@@ -7,8 +7,8 @@ import { getGeoLocation } from '~/pages/Map/map-utils';
 const RESET_DIALOG_STATE = 'Reports/OverviewMapState/RESET_DIALOG_STATE';
 const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
 const SET_LOCATION_MODE = 'Reports/ReportsDialogState/SET_LOCATION_MODE';
-export const LOCATION_MODE_DEVICE = 'device'; // not an action type, keeping this here to prevent typos
-export const LOCATION_MODE_GEOCODING = 'geocoding'; // not an action type, keeping this here to prevent typos
+export const LOCATION_MODE_DEVICE = 'DEVICE'; // not an action type, keeping this here to prevent typos
+export const LOCATION_MODE_GEOCODING = 'GEOCODING'; // not an action type, keeping this here to prevent typos
 const SET_DEVICE_LOCATION = 'Reports/ReportsDialogState/SET_DEVICE_LOCATION';
 const GEOCODE_DONE = 'Reports/ReportsDialogState/GEOCODE_SUCCESS';
 const GEOCODE_FAIL = 'Reports/ReportsDialogState/GEOCODE_FAIL';
@@ -20,6 +20,8 @@ const PIN_LOCATION = 'Reports/ReportsDialogState/PIN_LOCATION'; // sort of inter
 const CONFIRM_LOCATION = 'Reports/ReportsDialogState/CONFIRM_LOCATION';
 const ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
 const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
+export const AMENITY_PLACEMENT_SIDEWALK = 'SIDEWALK';
+export const AMENITY_PLACEMENT_STREET = 'STREET';
 
 const initialState = {
   reports: [], // existing reports, fetched via API
@@ -47,7 +49,7 @@ Content of newReport (TODO: use some sort of interface/type/shape)
     address
 	what     --> when this is set, go to step 3
     ironing
-    	amenitiesNeeded
+    	ironingsNeeded
     	amenityPlacement
     	paymentReservesBikePark
 	additionalInfo --> when this is set, go to step 4
