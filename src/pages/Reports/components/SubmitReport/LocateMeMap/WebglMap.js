@@ -21,20 +21,21 @@ class WebglMap extends PureComponent {
     className: PropTypes.string,
     center: PropTypes.arrayOf(PropTypes.number),
     zoom: PropTypes.number,
-    onMapDrag: PropTypes.func
+    onMapDrag: PropTypes.func,
+    allowDrag: PropTypes.bool
   };
 
   static defaultProps = {
     className: 'locator-map',
     center: config.map.view.center,
     zoom: 18, // TODO: make this configurable
-    onMapDrag: () => console.log('onMapDrag says implement me')
+    onMapDrag: () => console.log('onMapDrag says implement me'),
+    allowDrag: true
   };
 
   state = {
-    loading: true,
-    map: false
-  }
+    loading: true
+  };
 
   componentDidMount() {
     // set up mapbox-gl js map
@@ -43,7 +44,6 @@ class WebglMap extends PureComponent {
       style: MB_STYLE_URL
     });
 
-    const nav = new MapboxGL.NavigationControl({ showCompass: false });
     this.map.on('load', this.handleLoad);
   }
 
@@ -60,10 +60,18 @@ class WebglMap extends PureComponent {
     if (viewChanged) {
       this.setView(this.getViewFromProps(), this.props.animate);
     }
+
+
+    const allowDragChanged = prevProps.allowDrag !== this.props.allowDrag;
+    if (allowDragChanged && this.map) {
+      const dragPanHandler = this.map.dragPan;
+      const updateDragPanFunc = this.props.allowDrag ? dragPanHandler.enable : dragPanHandler.disable;
+      updateDragPanFunc.call(dragPanHandler);
+    }
   }
 
   handleLoad = () => {
-    this.setState({ loading: false, map: this.map });
+    this.setState({ loading: false });
 
     // center prop might have been set by getting the device´s geolocation before the component sets up
     if (this.props.center !== config.map.view.center) {
@@ -82,7 +90,7 @@ class WebglMap extends PureComponent {
     } else {
       setView(this.map, view);
     }
-  }
+  };
 
   getViewFromProps = () => (
     {
@@ -91,7 +99,7 @@ class WebglMap extends PureComponent {
       bearing: this.props.bearing,
       pitch: this.props.pitch
     }
-  )
+  );
 
   handleMoveEnd = () => {
     const mapCenter = this.map.getCenter();
@@ -100,7 +108,7 @@ class WebglMap extends PureComponent {
   };
 
   handleMove = () => {
-    // display coordinates or better geocode them to show an adress
+
   };
 
 

@@ -70,7 +70,7 @@ const AddressIndicator = styled.div`
   bottom: 0; // TODO: proper positioning
 `;
 
-// TODO: make sure the StaticMarker anchor is really at the map center
+// TODO: when location is pinned: 1. do not allow map drag
 
 class LocateMeMap extends Component {
   constructor(props) {
@@ -124,7 +124,9 @@ class LocateMeMap extends Component {
 
         {this.props.locationMode === LOCATION_MODE_GEOCODING && (
           <Fragment>
-            <SearchBar onSubmit={this.onSearchAddress} />
+            {!this.getPinned() && (
+              <SearchBar onSubmit={this.onSearchAddress} />
+            )}
             {!this.state.mapHasMoved && (
               <HelpText />
             )}
@@ -147,6 +149,7 @@ class LocateMeMap extends Component {
             center={this.getCenter()}
             className="locate-me-map"
             onMapDrag={this.onMapMove}
+            allowDrag={!this.getPinned()}
           />
         </MapWrapper>
 

@@ -45,7 +45,7 @@ const initialState = {
 
 newReport is used to a) compile a new object to submit to the API and b) to step through the dialog.
 
-Content of newReport (TODO: use some sort of interface/type/shape) --> e.g. https://github.com/jquense/yup
+Content of newReport (TODO: use some sort of interface/type/shape) --> e.g. https://github.com/jquense/yup or even PropTypes
 
 	location  --> when this is set, go to step 2
     lngLat
