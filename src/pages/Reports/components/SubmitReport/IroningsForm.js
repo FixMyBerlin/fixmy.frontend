@@ -6,11 +6,11 @@ import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css';
 import Button from '~/components/Button';
 import { breakpoints } from '~/styles/utils';
-import { AMENITY_PLACEMENT_SIDEWALK, AMENITY_PLACEMENT_STREET } from '../../ReportsState';
-import SidwalkBgImage from '~/images/reports/amenety-placement-sidewalk.png';
-import StreetBgImage from '~/images/reports/amenety-placement-street.png';
+import { IRONING_PLACEMENT_SIDEWALK, IRONING_PLACEMENT_STREET } from '../../ReportsState';
+import SidwalkBgImage from '~/images/reports/ironing-placement-sidewalk.png';
+import StreetBgImage from '~/images/reports/ironing-placement-street.png';
 
-// TODO: customize sliders
+// TODO: Move styled components to extra file(s) to not bloat up the file
 
 const Wrapper = styled.div`
   padding: 11px;
@@ -116,37 +116,36 @@ const StyledRadioButton = styled.input`
   display: inline-block;
 `;
 
-const AmenetyPlacementContainer = styled.div`
+const IroningPlacementContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   max-width: 400px;
 `;
 
-const AmenetyPlacementItem = styled.div`
+const IroningPlacementItem = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const AmenityPlacementImageLabel = styled.label`
+const IroningPlacementImageLabel = styled.label`
   order: -1;
-  display: block;
   height: 93px;
   width: 156.7px;
   border-radius: 6px;
   border: solid 1.5px ${config.colors.interaction};
-  background-position: -30px -30px;
-  padding: 20px;
+  background-size: cover;
   color: white;
   font-size: 18px;
   font-weight: bold;
-  line-height: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center;
 `;
 
-const AmenityPlacementRadioButton = styled(StyledRadioButton)`
+const IroningPlacementRadioButton = styled(StyledRadioButton)`
     margin: 8px auto;
-`
+`;
 
 const CostSlider = styled(StyledSlider)`
   &&  .rangeslider__fill {
@@ -155,7 +154,7 @@ const CostSlider = styled(StyledSlider)`
 `;
 
 
-class WhatsNeeded extends PureComponent {
+class IroningsForm extends PureComponent {
   static propTypes = {
     onConfirm: PropTypes.func
   };
@@ -168,11 +167,22 @@ class WhatsNeeded extends PureComponent {
     super(props);
     this.state = {
       ironingsNeeded: 3,
-      amenityPlacement: null,
+      ironingsPlacement: null,
       chargedBikeParkConceivable: null,
       paymentReservesBikePark: 1
     };
   }
+
+  submit = () => {
+    // marshall form data before submit
+    const stateToSubmit = { ...this.state };
+    if (!stateToSubmit.chargedBikeParkConceivable) {
+      stateToSubmit.paymentReservesBikePark = 0;
+    }
+    delete stateToSubmit.chargedBikeParkConceivable;
+
+    this.props.onConfirm(stateToSubmit);
+  };
 
   // TODO: use formik for standardized form validation
   // TODO: factor out formik-ified radio buttons (see https://codesandbox.io/s/pjqp3xxq7q?from-embed for how that works) for re-usage
@@ -195,40 +205,42 @@ class WhatsNeeded extends PureComponent {
         <Question>..und wo könnten diese aufgestellt werden?</Question>
         <Explanation>Ein Bügel benötigt ungefähr 2 qm Fläche</Explanation>
 
-        <AmenetyPlacementContainer>
-          <AmenetyPlacementItem>
-            <AmenityPlacementImageLabel
+        <IroningPlacementContainer>
+          <IroningPlacementItem>
+            <IroningPlacementImageLabel
+              htmlFor="amenityPlacement-sidewalk"
               style={{ backgroundImage: `url(${SidwalkBgImage})` }}
             >
               Auf dem <br /> Gehweg
-            </AmenityPlacementImageLabel>
-            <AmenityPlacementRadioButton
+            </IroningPlacementImageLabel>
+            <IroningPlacementRadioButton
               type="radio"
-              id="amenityPlacement-sidwalk"
+              id="amenityPlacement-sidewalk"
               name="amenity-placement"
-              value={AMENITY_PLACEMENT_SIDEWALK}
-              checked={this.state.amenityPlacement === AMENITY_PLACEMENT_SIDEWALK}
-              onChange={() => this.setState({ amenityPlacement: AMENITY_PLACEMENT_SIDEWALK })}
+              value={IRONING_PLACEMENT_SIDEWALK}
+              checked={this.state.ironingsPlacement === IRONING_PLACEMENT_SIDEWALK}
+              onChange={() => this.setState({ ironingsPlacement: IRONING_PLACEMENT_SIDEWALK })}
             />
-          </AmenetyPlacementItem>
+          </IroningPlacementItem>
 
-          <AmenetyPlacementItem>
-            <AmenityPlacementImageLabel
+          <IroningPlacementItem>
+            <IroningPlacementImageLabel
+              htmlFor="amenityPlacement-street"
               style={{ backgroundImage: `url(${StreetBgImage})` }}
             >
               Auf der Straße
-            </AmenityPlacementImageLabel>
-            <AmenityPlacementRadioButton
+            </IroningPlacementImageLabel>
+            <IroningPlacementRadioButton
               type="radio"
               id="amenityPlacement-street"
               name="amenity-placement"
-              value={AMENITY_PLACEMENT_STREET}
-              checked={this.state.amenityPlacement === AMENITY_PLACEMENT_STREET}
-              onChange={() => this.setState({ amenityPlacement: AMENITY_PLACEMENT_STREET })}
+              value={IRONING_PLACEMENT_STREET}
+              checked={this.state.ironingsPlacement === IRONING_PLACEMENT_STREET}
+              onChange={() => this.setState({ ironingsPlacement: IRONING_PLACEMENT_STREET })}
             />
-          </AmenetyPlacementItem>
+          </IroningPlacementItem>
 
-        </AmenetyPlacementContainer>
+        </IroningPlacementContainer>
 
 
         <StyledHr />
@@ -276,7 +288,7 @@ class WhatsNeeded extends PureComponent {
           Nein, so etwas brauche ich nicht.
         </StyledRadioButtonLabel>
 
-        <WeiterButton onClick={this.props.onConfirm}>Weiter</WeiterButton>
+        <WeiterButton onClick={this.submit}>Weiter</WeiterButton>
 
       </Wrapper>
 
@@ -284,4 +296,4 @@ class WhatsNeeded extends PureComponent {
   }
 }
 
-export default WhatsNeeded;
+export default IroningsForm;

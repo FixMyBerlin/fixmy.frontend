@@ -1,4 +1,6 @@
 // TODO: add unit tests for reducer
+// TODO: heavily reduce boiler plate https://redux.js.org/recipes/reducing-boilerplate
+// TODO: split uo reducer into subreducers based on the structure of the newReport object
 import ky from 'ky';
 import idx from 'idx/lib/idx';
 import reverseGeocode from '~/services/reverseGeocode';
@@ -20,8 +22,9 @@ const PIN_LOCATION = 'Reports/ReportsDialogState/PIN_LOCATION'; // sort of inter
 const CONFIRM_LOCATION = 'Reports/ReportsDialogState/CONFIRM_LOCATION';
 const ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
 const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
-export const AMENITY_PLACEMENT_SIDEWALK = 'SIDEWALK';
-export const AMENITY_PLACEMENT_STREET = 'STREET';
+export const IRONING_PLACEMENT_SIDEWALK = 'SIDEWALK';
+export const IRONING_PLACEMENT_STREET = 'STREET';
+const SET_IRONING_NEEDS = 'Reports/ReportsDialogState/SET_IRONING_NEEDS';
 
 const initialState = {
   reports: [], // existing reports, fetched via API
@@ -42,19 +45,19 @@ const initialState = {
 
 newReport is used to a) compile a new object to submit to the API and b) to step through the dialog.
 
-Content of newReport (TODO: use some sort of interface/type/shape)
+Content of newReport (TODO: use some sort of interface/type/shape) --> e.g. https://github.com/jquense/yup
 
 	location  --> when this is set, go to step 2
     lngLat
     address
 	what     --> when this is set, go to step 3
-    ironing
+    ironings
     	ironingsNeeded
-    	amenityPlacement
+    	ironingsPlacement
     	paymentReservesBikePark
-	additionalInfo --> when this is set, go to step 4
-    photoUploadUrl
-    description
+    additionalInfo --> when this is set, go to step 4
+      photoUploadUrl
+      description
 
  */
 export function resetDialogState() {
@@ -81,6 +84,7 @@ export function setDeviceLocation({ lng, lat }) {
   return { type: SET_DEVICE_LOCATION, payload: { lng, lat } };
 }
 
+// TODO: unify syntax used here
 export const addError = error => ({
   type: ADD_ERROR,
   error
@@ -88,6 +92,11 @@ export const addError = error => ({
 
 export const removeError = () => ({
   type: REMOVE_ERROR
+});
+
+export const setIroningNeeds = formData => ({
+  type: SET_IRONING_NEEDS,
+  payload: formData
 });
 
 
@@ -216,6 +225,14 @@ export default function ReportsReducer(state = initialState, action = {}) {
       return { ...state,
         error: {
           message: null
+      } };
+    case SET_IRONING_NEEDS:
+      return { ...state,
+        newReport: {
+          ...state.newReport,
+          what: { ...state.newReport.what,
+            ironings: action.payload
+          }
       } };
       default:
       return { ...state };

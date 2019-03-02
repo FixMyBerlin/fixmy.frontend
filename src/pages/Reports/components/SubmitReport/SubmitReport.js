@@ -9,12 +9,14 @@ import {
   setLocationMode,
   LOCATION_MODE_GEOCODING,
   useDevicePosition,
-  resetDialogState
+  resetDialogState,
+  setIroningNeeds
 } from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
 import LocateMeMap from './LocateMeMap/LocateMeMap';
-import WhatsNeeded from './WhatsNeeded';
+import IroningsForm from './IroningsForm';
+import AdditionalDataForm from './AdditionalDataForm';
 
 class SubmitReport extends PureComponent {
   componentDidMount() {
@@ -45,12 +47,14 @@ class SubmitReport extends PureComponent {
 
     if (!newReport.what) {
       return (
-        <WhatsNeeded />
+        <IroningsForm onConfirm={this.props.setIroningNeeds} />
       );
     }
 
     if (!newReport.additionalInfo) {
-      // render additionalInfo form
+     return (
+       <AdditionalDataForm myProp="TODO" />
+     )
     }
 
     if (reportCompiled) {
@@ -62,7 +66,8 @@ class SubmitReport extends PureComponent {
 const mapDispatchToProps = {
   onUseDevicePosition: useDevicePosition,
   onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
-  resetDialogState
+  resetDialogState,
+  setIroningNeeds
 };
 
 export default connect(state => state.ReportsState, mapDispatchToProps)(SubmitReport);
