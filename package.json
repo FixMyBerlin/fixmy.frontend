@@ -61,6 +61,7 @@
     "common-tags": "^1.8.0",
     "d3-format": "^1.3.2",
     "d3-scale": "^2.1.2",
+    "dot-prop-immutable": "^1.5.0",
     "formik": "^1.3.2",
     "history": "^4.7.2",
     "idx": "^2.5.2",

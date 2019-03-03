@@ -1,8 +1,10 @@
 // TODO: add unit tests for reducer
 // TODO: heavily reduce boiler plate https://redux.js.org/recipes/reducing-boilerplate
+// TODO: use immutability helpers like https://github.com/mweststrate/immer
 // TODO: split uo reducer into subreducers based on the structure of the newReport object
 import ky from 'ky';
 import idx from 'idx/lib/idx';
+import * as dotProp from 'dot-prop-immutable';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
 
@@ -25,6 +27,7 @@ const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
 export const IRONING_PLACEMENT_SIDEWALK = 'SIDEWALK';
 export const IRONING_PLACEMENT_STREET = 'STREET';
 const SET_IRONING_NEEDS = 'Reports/ReportsDialogState/SET_IRONING_NEEDS';
+const STEP_BACK_DIALOG = 'Reports/ReportsDialogState/STEP_BACK_DIALOG';
 
 const initialState = {
   reports: [], // existing reports, fetched via API
@@ -97,6 +100,21 @@ export const removeError = () => ({
 export const setIroningNeeds = formData => ({
   type: SET_IRONING_NEEDS,
   payload: formData
+});
+
+// TODO: re-think this solution or at least document it
+const stateNodesToUnsetPerStep = new Map();
+stateNodesToUnsetPerStep.set(1, 'newReport.location');
+stateNodesToUnsetPerStep.set(2, 'newReport.what.ironings');
+stateNodesToUnsetPerStep.set(3, 'newReport.what.additionalInfo');
+/**
+ * Takes a dialog step number (used in the NavBar to show the dialog progress)
+ * and returns a path to a node in this state object, e.g. newReport.what, that can be unset to roll back the dialog.
+ * @param toStep
+ */
+export const stepBackDialog = toStep => ({
+  type: STEP_BACK_DIALOG,
+  stateNodeToUnset: stateNodesToUnsetPerStep.get(toStep)
 });
 
 
@@ -234,6 +252,8 @@ export default function ReportsReducer(state = initialState, action = {}) {
             ironings: action.payload
           }
       } };
+    case STEP_BACK_DIALOG:
+      return dotProp.delete(state, action.stateNodeToUnset);
       default:
       return { ...state };
   }

@@ -11,7 +11,8 @@ import {
   LOCATION_MODE_GEOCODING,
   useDevicePosition,
   resetDialogState,
-  setIroningNeeds
+  setIroningNeeds,
+  stepBackDialog
 } from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
@@ -25,6 +26,8 @@ const SubmitReportWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+// TODO: dedupe-logic in FormProgressBar Element creation, factor out to function
 
 class SubmitReport extends PureComponent {
   componentDidMount() {
@@ -53,11 +56,12 @@ class SubmitReport extends PureComponent {
     }
 
     if (!(newReport.location && newReport.location.address)) {
+      const navStep = 1;
       return (
         <Fragment>
           {tempLocation && tempLocation.pinned && (
             <FormProgressBar
-              stepNumber={1}
+              stepNumber={navStep}
               stepCaption="Ort"
               onBackButtonTap={this.props.resetDialogState}
             />
@@ -67,13 +71,14 @@ class SubmitReport extends PureComponent {
       );
     }
 
-    if (!newReport.what) {
+    if (!(newReport.what && newReport.what.ironings)) {
+      const navStep = 2;
       return (
         <Fragment>
           <FormProgressBar
-            stepNumber={2}
+            stepNumber={navStep}
             stepCaption="Details"
-            onBackButtonTap={this.props.resetDialogState} // W.I.P., TODO: only reset ironings data
+            onBackButtonTap={() => this.props.stepBackDialog(navStep - 1)}
           />
           <IroningsForm onConfirm={this.props.setIroningNeeds} />
         </Fragment>
@@ -81,8 +86,16 @@ class SubmitReport extends PureComponent {
     }
 
     if (!newReport.additionalInfo) {
+      const navStep = 3;
       return (
-        <AdditionalDataForm myProp="TODO" />
+        <Fragment>
+          <FormProgressBar
+            stepNumber={3}
+            stepCaption="Fotos und Beschreibung"
+            onBackButtonTap={() => this.props.stepBackDialog(navStep - 1)}
+          />
+          <AdditionalDataForm myProp="TODO" />
+        </Fragment>
       );
     }
 
@@ -104,7 +117,8 @@ const mapDispatchToProps = {
   onUseDevicePosition: useDevicePosition,
   onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
   resetDialogState,
-  setIroningNeeds
+  setIroningNeeds,
+  stepBackDialog
 };
 
 export default connect(state => state.ReportsState, mapDispatchToProps)(SubmitReport);
