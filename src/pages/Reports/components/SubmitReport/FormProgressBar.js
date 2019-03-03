@@ -76,7 +76,6 @@ const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => (
       {stepNumber > 2 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 2 ? 'active' : ''}>2</StepIndicator>}
       {stepNumber > 3 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 3 ? 'active' : ''}>3</StepIndicator>}
 
-
     </NavBar>
   </Wrapper>
 );

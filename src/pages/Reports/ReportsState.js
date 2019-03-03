@@ -105,7 +105,7 @@ export const setIroningNeeds = formData => ({
 // TODO: re-think this solution or at least document it
 const stateNodesToUnsetPerStep = new Map();
 stateNodesToUnsetPerStep.set(1, 'newReport.location');
-stateNodesToUnsetPerStep.set(2, 'newReport.what.ironings');
+stateNodesToUnsetPerStep.set(2, 'newReport.what.ironings'); // TODO: this does not work well, component state is not reset (mapHasBeenDragged)
 stateNodesToUnsetPerStep.set(3, 'newReport.what.additionalInfo');
 /**
  * Takes a dialog step number (used in the NavBar to show the dialog progress)
