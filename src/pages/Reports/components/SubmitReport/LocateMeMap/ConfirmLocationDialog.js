@@ -7,7 +7,7 @@ import { media } from '~/styles/utils';
 const Wrapper = styled.div`
 z-index: 9999999999;
   background-color: white;
-  padding: 8px;
+  padding: 14px;
   position: absolute;
   margin: auto;
   bottom: 0; 

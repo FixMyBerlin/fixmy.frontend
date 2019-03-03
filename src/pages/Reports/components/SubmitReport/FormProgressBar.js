@@ -5,8 +5,6 @@ import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 
 const Wrapper = styled.div`
   border-bottom: solid 1px ${config.colors.inactivegrey};
-  background-color: white;
-  width: 100vw;
 `;
 
 const BackButton = styled.p`
@@ -26,8 +24,8 @@ const StyledBikeParkIcon = styled(BikeParkIcon)`
 `;
 
 // TODO: remove style prop when a cleaner solution is found
-const FormProgressBar = ({stepNumber, stepCaption, onBackButtonTap, style}) => (
-  <Wrapper style={style}>
+const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => (
+  <Wrapper>
     <BackButton onClick={onBackButtonTap}>&lt; zurück</BackButton>
     <NavBar>
       {stepNumber} | {stepCaption}
@@ -48,6 +46,6 @@ FormProgressBar.defaultProps = {
   stepNumber: 1,
   stepCaption: 'Ort',
   onBackButtonTap: () => console.log('onBackButtonTap() says implement me')
-}
+};
 
 export default FormProgressBar;

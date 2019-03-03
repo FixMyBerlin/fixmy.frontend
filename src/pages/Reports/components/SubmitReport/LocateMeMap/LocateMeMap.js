@@ -33,7 +33,7 @@ import LocatorControl from '~/pages/Map/components/LocatorControl';
 
 
 const MapView = styled.div`
-  height: 100%;
+  flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -76,15 +76,15 @@ class LocateMeMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mapHasMoved: false
+      mapHasBeenDragged: false
     };
   }
 
   onMapMove = ({ lat, lng }) => {
     this.props.reverseGeocodeAddress({ lng, lat });
     this.props.setTempLocationLngLat({ lng, lat });
-    if (!this.state.mapHasMoved) {
-      this.state.mapHasMoved = true;
+    if (!this.state.mapHasBeenDragged) {
+      this.state.mapHasBeenDragged = true;
     }
   };
 
@@ -127,7 +127,7 @@ class LocateMeMap extends Component {
             {!this.getPinned() && (
               <SearchBar onSubmit={this.onSearchAddress} />
             )}
-            {!this.state.mapHasMoved && (
+            {!this.state.mapHasBeenDragged && (
               <HelpText />
             )}
           </Fragment>

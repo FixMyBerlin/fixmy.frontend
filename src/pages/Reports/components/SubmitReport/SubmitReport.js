@@ -5,6 +5,7 @@
 
 import React, { Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import {
   setLocationMode,
   LOCATION_MODE_GEOCODING,
@@ -19,12 +20,18 @@ import IroningsForm from './IroningsForm';
 import AdditionalDataForm from './AdditionalDataForm';
 import FormProgressBar from './FormProgressBar';
 
+const SubmitReportWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
 class SubmitReport extends PureComponent {
   componentDidMount() {
     this.props.resetDialogState();
   }
 
-  render() {
+  getContentByDialogProgress = () => {
     const {
       locationMode,
       newReport,
@@ -49,12 +56,11 @@ class SubmitReport extends PureComponent {
       return (
         <Fragment>
           {tempLocation && tempLocation.pinned && (
-          <FormProgressBar
-            stepNumber={1}
-            stepCaption="Ort"
-            onBackButtonTap={this.props.resetDialogState}
-            style={{ position: 'absolute', zIndex: 999999999999 }} // this is a quick fix. TODO: find a clean solution to not push the mapview down. e.g. using display: note
-          />
+            <FormProgressBar
+              stepNumber={1}
+              stepCaption="Ort"
+              onBackButtonTap={this.props.resetDialogState}
+            />
           )}
           <LocateMeMap />
         </Fragment>
@@ -75,14 +81,22 @@ class SubmitReport extends PureComponent {
     }
 
     if (!newReport.additionalInfo) {
-     return (
-       <AdditionalDataForm myProp="TODO" />
-     );
+      return (
+        <AdditionalDataForm myProp="TODO" />
+      );
     }
 
     if (reportCompiled) {
       // render "Meldung fertig"
     }
+  };
+
+  render() {
+    return (
+      <SubmitReportWrapper>
+        {this.getContentByDialogProgress()}
+      </SubmitReportWrapper>
+    );
   }
 }
 
