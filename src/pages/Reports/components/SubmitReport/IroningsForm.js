@@ -47,6 +47,7 @@ const Explanation = styled.p`
 const WeiterButton = styled(Button)`
   display: block;
   margin-top: 84px;
+  margin-bottom: 42px;
   height: 48px;
   width: 167px;
   font-size: 18px;

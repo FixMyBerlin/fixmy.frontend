@@ -22,7 +22,7 @@ import AdditionalDataForm from './AdditionalDataForm';
 import FormProgressBar from './FormProgressBar';
 
 const SubmitReportWrapper = styled.div`
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
 `;
