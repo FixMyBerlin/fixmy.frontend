@@ -176,11 +176,18 @@ export function setLocationMode(mode) {
 
 export function useDevicePosition() {
   return async (dispatch) => {
-    const { coords } = await getGeoLocation();
-    dispatch(
-      setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })
-    );
-    dispatch(setLocationMode(LOCATION_MODE_DEVICE));
+    let coords;
+    try {
+      const position = await getGeoLocation();
+      if (!position.coords) throw new Error('Getting device geolocation failed');
+      coords = position.coords;
+      dispatch(
+        setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })
+      );
+      dispatch(setLocationMode(LOCATION_MODE_DEVICE));
+    } catch (err) {
+      dispatch(addError('Standortbestimmung fehlgeschlagen. Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.'));
+    }
   };
 }
 

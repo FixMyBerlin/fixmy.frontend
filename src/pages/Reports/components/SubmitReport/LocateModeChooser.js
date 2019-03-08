@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { X } from 'react-feather';
 import LocateIcon from '~/images/reports/location-button.svg';
 import MapIcon from '~/images/reports/noun-map-1909219.svg';
-
+import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -51,6 +51,14 @@ const Button = styled.div`
   -webkit-box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.6);
+  // TODO: factor this out in a globally accessible .noselect class
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 `;
 
 const ButtonIcon = styled.div`
@@ -78,15 +86,16 @@ const CloseIcon = styled(X)`
 `;
 
 // TODO; execute passed dispatch functions onTab
-const LocateModeChooser = ({ heading, onUseDevicePosition, onUseGeocoding, onClose }) => (
+const LocateModeChooser = ({ heading, onUseDevicePosition, onUseGeocoding, onClose, error, removeError }) => (
   <Wrapper>
     <Heading>{heading}</Heading>
 
-    <Button onClick={onUseDevicePosition}>
+    <Button onClick={onUseDevicePosition} notranslate> {/* TODO: eventually disable page-translate site-wide */}
       <ButtonIcon><LocateIcon /></ButtonIcon>
       An meiner aktuellen Position
     </Button>
-    <Button onClick={onUseGeocoding}>
+
+    <Button onClick={onUseGeocoding} notranslate>
       <ButtonIcon><MapIcon /></ButtonIcon>
       Ich möchte eine Adresse auf der Karte eingeben
     </Button>
@@ -94,6 +103,18 @@ const LocateModeChooser = ({ heading, onUseDevicePosition, onUseGeocoding, onClo
     <CloseButton onClick={onClose}>
       <CloseIcon />
     </CloseButton>
+
+    {
+      error.message && (
+        <ErrorMessage
+          message={error.message}
+          onDismiss={() => {
+            removeError();
+            onUseGeocoding();
+          }}
+        />
+      )
+    }
   </Wrapper>
 );
 

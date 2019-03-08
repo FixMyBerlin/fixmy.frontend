@@ -12,7 +12,8 @@ import {
   useDevicePosition,
   resetDialogState,
   setIroningNeeds,
-  stepBackDialog
+  stepBackDialog,
+  removeError
 } from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
@@ -39,7 +40,8 @@ class SubmitReport extends PureComponent {
       locationMode,
       newReport,
       reportCompiled,
-      tempLocation
+      tempLocation,
+      error
     } = this.props;
 
     if (!locationMode) {
@@ -50,6 +52,8 @@ class SubmitReport extends PureComponent {
             heading="Wo benötigst du neue Fahrradbügel?"
             onUseDevicePosition={this.props.onUseDevicePosition}
             onUseGeocoding={this.props.onUseGeocoding}
+            error={error}
+            removeError={this.props.removeError}
           />
         </Fragment>
       );
@@ -118,7 +122,8 @@ const mapDispatchToProps = {
   onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
   resetDialogState,
   setIroningNeeds,
-  stepBackDialog
+  stepBackDialog,
+  removeError
 };
 
 export default connect(state => state.ReportsState, mapDispatchToProps)(SubmitReport);
