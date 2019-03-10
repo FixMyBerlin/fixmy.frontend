@@ -81,6 +81,7 @@ class AdditionalDataForm extends PureComponent {
     return (
       <Wrapper>
         <Heading>Hier kannst du noch ein Foto ergänzen</Heading>
+        <Hint>Das hilft den Planer*innen die Situation vor Ort besser zu verstehen.</Hint>
         <PhotoInputLabel htmlFor="photo-file-input">
           <PhotoInput
             type="file"
@@ -91,7 +92,7 @@ class AdditionalDataForm extends PureComponent {
             onChange={e => this.photoTaken(e.target.files)}
           />
         </PhotoInputLabel>
-        <Hint>Das hilft den Planer*innen die Situation vor Ort besser zu verstehen.</Hint>
+
         <Heading>…oder eine Beschreibung eingeben</Heading>
 
         <div>

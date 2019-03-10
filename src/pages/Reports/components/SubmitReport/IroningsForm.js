@@ -2,8 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Slider from 'react-rangeslider';
-// include the default range slider styles
-import 'react-rangeslider/lib/index.css';
+import 'react-rangeslider/lib/index.css'; // include the default range slider styles
 import Button from '~/components/Button';
 import { breakpoints } from '~/styles/utils';
 import { IRONING_PLACEMENT_SIDEWALK, IRONING_PLACEMENT_STREET } from '../../ReportsState';
@@ -11,6 +10,7 @@ import SidwalkBgImage from '~/images/reports/ironing-placement-sidewalk.png';
 import StreetBgImage from '~/images/reports/ironing-placement-street.png';
 
 // TODO: Move styled components to extra file(s) to not bloat up the file
+// TODO: scroll to bottom when radio button in first group has been checked
 
 const Wrapper = styled.div`
   padding: 11px;
@@ -53,6 +53,14 @@ const WeiterButton = styled(Button)`
   font-size: 18px;
   font-weight: bold;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+  
+  &&[disabled] {
+    background-color: ${config.colors.lightgrey};
+    cursor: default;
+    &:hover {
+      opacity: 1;
+    }
+  }
 `;
 
 const StyledHr = styled.hr`
@@ -127,6 +135,7 @@ const IroningPlacementContainer = styled.div`
 const IroningPlacementItem = styled.div`
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 `;
 
 const IroningPlacementImageLabel = styled.label`
@@ -142,6 +151,16 @@ const IroningPlacementImageLabel = styled.label`
   display: flex;
   justify-content: center; /* align horizontal */
   align-items: center;
+  
+  &:not(.picked) {
+     filter: grayscale(100%);
+  }
+  
+  &:hover {
+    filter: saturate(120%);
+    box-shadow: inset 0 0 12px ${config.colors.interaction};
+    transition: filter 0.4s ease-in, box-shadow 0.4s ease-in;
+  }
 `;
 
 const IroningPlacementRadioButton = styled(StyledRadioButton)`
@@ -185,8 +204,11 @@ class IroningsForm extends PureComponent {
     this.props.onConfirm(stateToSubmit);
   };
 
+  isSubmittable = () => this.state.ironingsPlacement !== null && this.state.chargedBikeParkConceivable !== null;
+
   // TODO: use formik for standardized form validation
   // TODO: factor out formik-ified radio buttons (see https://codesandbox.io/s/pjqp3xxq7q?from-embed for how that works) for re-usage
+  // TODO: target the UI quirk that images are loaded after the component is shown
 
   render() {
     return (
@@ -211,6 +233,7 @@ class IroningsForm extends PureComponent {
             <IroningPlacementImageLabel
               htmlFor="amenityPlacement-sidewalk"
               style={{ backgroundImage: `url(${SidwalkBgImage})` }}
+              className={this.state.ironingsPlacement === IRONING_PLACEMENT_SIDEWALK ? 'picked' : ''}
             >
               Auf dem <br /> Gehweg
             </IroningPlacementImageLabel>
@@ -228,6 +251,7 @@ class IroningsForm extends PureComponent {
             <IroningPlacementImageLabel
               htmlFor="amenityPlacement-street"
               style={{ backgroundImage: `url(${StreetBgImage})` }}
+              className={this.state.ironingsPlacement === IRONING_PLACEMENT_STREET ? 'picked' : ''}
             >
               Auf der Straße
             </IroningPlacementImageLabel>
@@ -259,7 +283,7 @@ class IroningsForm extends PureComponent {
             onChange={() => this.setState({ chargedBikeParkConceivable: true })}
           />
           {this.state.chargedBikeParkConceivable ?
-          `Ja klar, und ich würde dafür ${this.state.paymentReservesBikePark} € am Tag zahlen.` :
+          `Ja klar, und ich würde dafür ${this.state.paymentReservesBikePark}€ am Tag zahlen.` :
           'Ja klar!'
         }
         </StyledRadioButtonLabel>
@@ -283,16 +307,19 @@ class IroningsForm extends PureComponent {
             id="charged-bikepark-noz-conceivable"
             name="charged-bikepark-conceivable"
             value="false"
-            checked={!!this.state.chargedBikeParkConceivable === false}
+            checked={this.state.chargedBikeParkConceivable === false}
             onChange={() => this.setState({ chargedBikeParkConceivable: false })}
           />
           Nein, so etwas brauche ich nicht.
         </StyledRadioButtonLabel>
 
-        <WeiterButton onClick={this.submit}>Weiter</WeiterButton>
+        <WeiterButton
+          onClick={this.submit}
+          disabled={!this.isSubmittable()}
+        >Weiter
+        </WeiterButton>
 
       </Wrapper>
-
     );
   }
 }
