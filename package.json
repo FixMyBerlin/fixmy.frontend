@@ -75,6 +75,7 @@
     "rc-tooltip": "^3.7.3",
     "react": "^16.6.3",
     "react-animations": "^1.0.0",
+    "react-autosize-textarea": "^6.0.0",
     "react-dev-utils": "^6.1.1",
     "react-dom": "^16.6.3",
     "react-feather": "^1.1.5",

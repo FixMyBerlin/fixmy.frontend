@@ -61,7 +61,7 @@ Content of newReport (TODO: use some sort of interface/type/shape) --> e.g. http
     	ironingsPlacement
     	paymentReservesBikePark
     additionalInfo --> when this is set, go to step 4
-      photoUploadUrl
+      photo
       description
 
  */
