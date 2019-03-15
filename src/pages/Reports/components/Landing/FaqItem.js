@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-// TODO: Refactor (Split up in single components)
+// TODO: use https://www.npmjs.com/package/react-collapsible
+// TODO: Refactor (Split up in single components#
+// TODO: Follow convenventions on how styled components are used elsewhere)
 
 const FaqItemWrapper = styled.div`
 
-  padding-left: 8px;
-  padding-right: 23px;
+  padding: 0 23px 8px 8px;
 
   &:hover {
     cursor: pointer;
@@ -23,7 +24,7 @@ const FaqItemWrapper = styled.div`
   }
    
   p {
-    padding: 8px 0;
+    padding: 8px 0 24px 0;
     margin: 0;
      -webkit-transform: scaleY(1);
     -ms-transform: scaleY(1);
@@ -80,16 +81,21 @@ const FaqItemWrapper = styled.div`
  }
 `;
 
+const StyledHr = styled.hr`
+  width: 100%;
+  border: 0.5px solid ${config.colors.inactivegrey};
+`;
+
 const FaqItem = ({ heading, text, collapsed, onTab }) => (
-  <FaqItemWrapper onClick={onTab} className={collapsed ? 'collapsed' : ''}>
+  <FaqItemWrapper onClick={onTab} className={collapsed && 'collapsed'}>
     <h3>{heading}
       {
         // only show arrow if there is text to show/hide
         text && <i className="triangle" />
       }
     </h3>
-    <hr />
     <p>{text}</p>
+    {!collapsed && (<StyledHr />)}
   </FaqItemWrapper>
 );
 
