@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import FixMyLogo from '~/images/logofmb@2x.png';
-import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.jpg'; // TODO: pick image size depending on screen size
+import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png'; // TODO: pick image size depending on screen size
 import Button from '~/components/Button';
 import Link from '~/components/Link';
 import PropTypes from 'prop-types';
-import { media } from '~/styles/utils';
 
 const StyledSection = styled.section`
   height: 100vh;
@@ -18,25 +17,15 @@ const StyledSection = styled.section`
   background-position: center center;
   padding-left: 34px;
   padding-right: 34px;
-  
-  // image is too pixelated for big screens, make it almost transparent TODO: use a better image
-  ${media.m`
-    background-image: none;
-    
-    &&:after {
-       content: "";
-       opacity: 0.1;
-       background-image: url(${BycicleParkingBgImg});
-       background-size: cover;
-       background-position: center center;
-       top: 0;
-       left: 0;
-       bottom: 0;
-       right: 0;
-       position: absolute;
-       z-index: -1;
-    }
-  `}
+`;
+
+const StyledCredits = styled.p`
+  font-size: 10px;
+  letter-spacing: 0.2px;
+  color: ${config.colors.lightgrey};
+  position: absolute;
+  bottom: 8px;
+  right: 4px;
 `;
 
 const StyledHeading = styled.h2`
@@ -51,10 +40,6 @@ const StyledHeading = styled.h2`
   text-align: center;
   color: white;
   margin-bottom: 39px;
- 
-  ${media.m`
-   color: ${config.colors.black};
-  `}
 `;
 
 const StyledButton = styled(Button)`
@@ -75,6 +60,7 @@ const StyledLink = styled(Link)`
 const TopSection = ({ toUrl }) => (
   <StyledSection>
     <img width="92px" src={FixMyLogo} alt="logo" />
+    <StyledCredits>Photo by Trae Gould on Unsplash</StyledCredits>
     <StyledHeading>Neue Fahrradbügel für Friedrichshain-Kreuzberg</StyledHeading>
     <StyledButton>
       <StyledLink to={toUrl}>
