@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 // TODO: use https://www.npmjs.com/package/react-collapsible
 // TODO: Refactor (Split up in single components#
 // TODO: Follow convenventions on how styled components are used elsewhere)
+// TODO: check of styled-components can do autoprefixing to un-bloat styles
 
 const FaqItemWrapper = styled.div`
 

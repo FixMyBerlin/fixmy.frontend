@@ -39,7 +39,6 @@ const PhotoInput = styled.input`
   overflow: hidden;
   position: absolute;
   z-index: 1;
-  
 `;
 
 const PhotoInputImageLabel = styled.label`
@@ -174,7 +173,10 @@ class AdditionalDataForm extends PureComponent {
       <Wrapper>
         <Heading>Hier kannst du noch ein Foto ergänzen</Heading>
         <Hint>Das hilft den Planer*innen die Situation vor Ort besser zu verstehen.</Hint>
-        <PhotoInputImageLabel htmlFor="photo-file-input">
+        <PhotoInputImageLabel
+          htmlFor="photo-file-input"
+          style={{ backgroundImage: `url(${this.state.photo || PhotoControlImage})` }}
+        >
           <PhotoInput
             type="file"
             accept="image/*"
