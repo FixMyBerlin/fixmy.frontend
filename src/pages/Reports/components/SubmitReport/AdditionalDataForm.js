@@ -71,6 +71,30 @@ const StyledCheckbox = styled.input`
   &&[disabled] {
     cursor: default;
   }
+  
+  &&.wiggle {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    backface-visibility: hidden;
+    perspective: 1000px;
+    
+    @keyframes shake {
+      10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+  
+      20%, 80% {
+        transform: translate3d(2px, 0, 0);
+      }
+
+      30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+
+      40%, 60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
+  }
 `;
 
 const StyledCheckboxLabel = styled.label`
@@ -196,6 +220,7 @@ class AdditionalDataForm extends PureComponent {
               name="photo-disclaimer-tick"
               value="true"
               disabled={!this.state.photo}
+              className={this.state.photo && 'wiggle'}
               checked={this.state.photoDisclaimerTicked}
               onChange={this.togglePhotoDisclaimerTicked}
             />
