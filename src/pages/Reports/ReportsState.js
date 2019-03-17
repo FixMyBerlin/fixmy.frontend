@@ -182,6 +182,7 @@ export function useDevicePosition() {
     try {
       const position = await getGeoLocation();
       if (!position.coords) throw new Error('Getting device geolocation failed');
+      // eslint-disable-next-line prefer-destructuring
       coords = position.coords;
       dispatch(
         setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })

@@ -16,18 +16,15 @@ MapboxGL.accessToken = MapboxGL.accessToken || config.map.accessToken;
 
 class WebglMap extends PureComponent {
   static propTypes = {
-    className: PropTypes.string,
-    center: PropTypes.arrayOf(PropTypes.number)
+    className: PropTypes.string
   };
 
   static defaultProps = {
-    className: 'locator-map',
-    center: config.map.view.center
+    className: 'locator-map'
   };
 
   state = {
-    loading: true,
-    map: false
+    loading: true
   }
 
   componentDidMount() {
@@ -42,15 +39,15 @@ class WebglMap extends PureComponent {
     this.map.on('load', this.handleLoad);
   }
 
-  handleLoad = () => {
-    this.setState({ loading: false, map: this.map });
-  };
-
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     if (this.state.loading) {
       return false;
     }
   }
+
+  handleLoad = () => {
+    this.setState({ loading: false });
+  };
 
   handleSubmitReportBtnTab = () => {
     this.props.history.push(config.routes.submitReport);
@@ -58,13 +55,12 @@ class WebglMap extends PureComponent {
 
 
   render() {
-    const { className, center } = this.props;
+    const { className } = this.props;
     return (
       <StyledMap
         className={className}
         ref={(ref) => { this.root = ref; }}
-      >
-      </StyledMap>
+      />
     );
   }
 }
