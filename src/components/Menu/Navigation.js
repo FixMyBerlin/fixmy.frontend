@@ -18,7 +18,7 @@ function renderItem(item) {
         key={item.label}
         to={item.link}
         onClick={() => Store.dispatch(close())}
-        border={item.border}
+        border={item.border.toString()}
       >
         {item.icon ? <SvgIcon type={item.icon} /> : null}
         <NavItem.Label>{item.label}</NavItem.Label>
