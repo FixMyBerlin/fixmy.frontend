@@ -12,6 +12,7 @@ import {
   useDevicePosition,
   resetDialogState,
   setIroningNeeds,
+  setAdditionalData,
   stepBackDialog,
   removeError
 } from '~/pages/Reports/ReportsState';
@@ -98,7 +99,7 @@ class SubmitReport extends PureComponent {
             stepCaption="Fotos und Beschreibung"
             onBackButtonTap={() => this.props.stepBackDialog(navStep - 1)}
           />
-          <AdditionalDataForm myProp="TODO" />
+          <AdditionalDataForm onConfirm={this.props.setAdditionalData}/>
         </Fragment>
       );
     }
@@ -122,6 +123,7 @@ const mapDispatchToProps = {
   onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
   resetDialogState,
   setIroningNeeds,
+  setAdditionalData,
   stepBackDialog,
   removeError
 };

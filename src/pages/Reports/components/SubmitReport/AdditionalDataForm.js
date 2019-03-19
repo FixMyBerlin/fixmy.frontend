@@ -168,7 +168,7 @@ class AdditionalDataForm extends PureComponent {
 
     // TODO: when a photo has been taken but the disclaimer has not been ticked, show a (unintrusive) error hint
 
-    this.props.onConfirm(this.state);
+    this.props.onConfirm(stateToSubmit);
   };
 
   isSubmittable = () => (this.state.photo !== null && this.state.photoDisclaimerTicked) ||

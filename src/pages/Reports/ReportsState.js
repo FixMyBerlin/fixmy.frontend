@@ -29,6 +29,7 @@ const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
 export const IRONING_PLACEMENT_SIDEWALK = 'SIDEWALK';
 export const IRONING_PLACEMENT_STREET = 'STREET';
 const SET_IRONING_NEEDS = 'Reports/ReportsDialogState/SET_IRONING_NEEDS';
+const SET_ADDITIONAL_DATA = 'Reports/ReportsDialogState/SET_ADDITIONAL_DATA';
 const STEP_BACK_DIALOG = 'Reports/ReportsDialogState/STEP_BACK_DIALOG';
 
 const initialState = {
@@ -101,6 +102,11 @@ export const removeError = () => ({
 
 export const setIroningNeeds = formData => ({
   type: SET_IRONING_NEEDS,
+  payload: formData
+});
+
+export const setAdditionalData = formData => ({
+  type: SET_ADDITIONAL_DATA,
   payload: formData
 });
 
@@ -262,6 +268,14 @@ export default function ReportsReducer(state = initialState, action = {}) {
             ironings: action.payload
           }
       } };
+    case SET_ADDITIONAL_DATA:
+      return { ...state,
+        newReport: {
+          ...state.newReport,
+          what: { ...state.newReport.what,
+            additionalInfo: action.payload
+          }
+        } };
     case STEP_BACK_DIALOG:
       return dotProp.delete(state, action.stateNodeToUnset);
       default:
