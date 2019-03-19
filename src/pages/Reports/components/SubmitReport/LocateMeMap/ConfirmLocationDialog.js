@@ -40,7 +40,7 @@ const ButtonsWrapper = styled.div`
 
 const StyledButton = styled(Button)`
   min-width: 100px;
-  max-width: 45%;
+  max-width: 400px;
   flex-grow: 1;
   border-radius: 6px;
 `;
