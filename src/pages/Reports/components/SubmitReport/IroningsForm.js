@@ -216,7 +216,7 @@ class IroningsForm extends PureComponent {
 
         <Question>Wie viele Bügel werden benötigt?</Question>
         <StyledSlider
-          min={0}
+          min={1}
           max={20}
           name="ironingsNeeded"
           value={this.state.ironingsNeeded}
