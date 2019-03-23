@@ -9,6 +9,8 @@ import idx from 'idx/lib/idx';
 import * as dotProp from 'dot-prop-immutable';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
+import { apiSubmitReport } from '~/pages/Reports/apiservice';
+import {set} from "~/services/storage";
 
 const RESET_DIALOG_STATE = 'Reports/OverviewMapState/RESET_DIALOG_STATE';
 const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
@@ -31,6 +33,9 @@ export const IRONING_PLACEMENT_STREET = 'STREET';
 const SET_IRONING_NEEDS = 'Reports/ReportsDialogState/SET_IRONING_NEEDS';
 const SET_ADDITIONAL_DATA = 'Reports/ReportsDialogState/SET_ADDITIONAL_DATA';
 const STEP_BACK_DIALOG = 'Reports/ReportsDialogState/STEP_BACK_DIALOG';
+const SUBMIT_REPORT = 'Reports/ReportsDialogState/SUBMIT_REPORT';
+const SUBMIT_REPORT_SUCCESS = 'Reports/ReportsDialogState/SUBMIT_REPORT_SUCCESS';
+const SUBMIT_REPORT_ERROR = 'Reports/ReportsDialogState/SUBMIT_REPORT_ERROR';
 
 const initialState = {
   reports: [], // existing reports, fetched via API
@@ -115,6 +120,7 @@ const stateNodesToUnsetPerStep = new Map();
 stateNodesToUnsetPerStep.set(1, 'newReport.location');
 stateNodesToUnsetPerStep.set(2, 'newReport.what.ironings'); // TODO: this does not work well, component state is not reset (mapHasBeenDragged)
 stateNodesToUnsetPerStep.set(3, 'newReport.what.additionalInfo');
+
 /**
  * Takes a dialog step number (used in the NavBar to show the dialog progress)
  * and returns a path to a node in this state object, e.g. newReport.what, that can be unset to roll back the dialog.
@@ -200,6 +206,17 @@ export function useDevicePosition() {
   };
 }
 
+export function submitReport() {
+  return async (dispatch, getState) => {
+    dispatch({ type: SUBMIT_REPORT });
+    const reportPayload = getState().ReportsState.newReport;
+    const submitReportResponse = await apiSubmitReport(reportPayload);
+    if (!submitReportResponse.error) {
+      dispatch({ type: SUBMIT_REPORT_SUCCESS });
+    }
+  };
+}
+
 export default function ReportsReducer(state = initialState, action = {}) {
   switch (action.type) {
     case RESET_DIALOG_STATE:
@@ -276,6 +293,8 @@ export default function ReportsReducer(state = initialState, action = {}) {
             additionalInfo: action.payload
           }
         } };
+    case SUBMIT_REPORT_SUCCESS:
+      return {...state, reportCompiled: true};
     case STEP_BACK_DIALOG:
       return dotProp.delete(state, action.stateNodeToUnset);
       default:

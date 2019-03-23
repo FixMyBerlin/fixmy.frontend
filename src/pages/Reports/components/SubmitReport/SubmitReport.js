@@ -14,7 +14,8 @@ import {
   setIroningNeeds,
   setAdditionalData,
   stepBackDialog,
-  removeError
+  removeError,
+  submitReport
 } from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
@@ -43,7 +44,7 @@ class SubmitReport extends PureComponent {
       reportCompiled,
       tempLocation,
       error
-    } = this.props;
+    } = this.props.reportsState;
 
     if (!locationMode) {
       return (
@@ -99,7 +100,10 @@ class SubmitReport extends PureComponent {
             stepCaption="Fotos und Beschreibung"
             onBackButtonTap={() => this.props.stepBackDialog(navStep - 1)}
           />
-          <AdditionalDataForm onConfirm={this.props.setAdditionalData}/>
+          <AdditionalDataForm onConfirm={() => {
+            this.props.setAdditionalData();
+            this.props.submitReport(this.props.token)
+          }}/>
         </Fragment>
       );
     }
@@ -125,7 +129,11 @@ const mapDispatchToProps = {
   setIroningNeeds,
   setAdditionalData,
   stepBackDialog,
-  removeError
+  removeError,
+  submitReport
 };
 
-export default connect(state => state.ReportsState, mapDispatchToProps)(SubmitReport);
+export default connect(state => ({
+  reportsState: state.ReportsState,
+  token: state.UserState.token
+}), mapDispatchToProps)(SubmitReport);
