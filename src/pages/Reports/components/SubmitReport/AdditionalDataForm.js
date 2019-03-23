@@ -180,6 +180,7 @@ class AdditionalDataForm extends PureComponent {
   };
 
   handleConvertedPhoto = (evt) => {
+    // TODO: eventually resize image
     const photoInBase64 = evt.target.result;
     this.setState({ photo: photoInBase64 });
   };
