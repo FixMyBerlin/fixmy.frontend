@@ -91,7 +91,7 @@ class SubmitReport extends PureComponent {
       );
     }
 
-    if (!newReport.additionalInfo) {
+    if (!newReport.what.additionalInfo) {
       const navStep = 3;
       return (
         <Fragment>
@@ -100,16 +100,18 @@ class SubmitReport extends PureComponent {
             stepCaption="Fotos und Beschreibung"
             onBackButtonTap={() => this.props.stepBackDialog(navStep - 1)}
           />
-          <AdditionalDataForm onConfirm={() => {
-            this.props.setAdditionalData();
-            this.props.submitReport(this.props.token)
-          }}/>
+          <AdditionalDataForm onConfirm={(formData) => {
+            this.props.setAdditionalData(formData);
+            this.props.submitReport(this.props.token);
+          }}
+          />
         </Fragment>
       );
     }
 
     if (reportCompiled) {
       // render "Meldung fertig"
+      return 'done';
     }
   };
 

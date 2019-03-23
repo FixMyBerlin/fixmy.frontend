@@ -10,7 +10,6 @@ import * as dotProp from 'dot-prop-immutable';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
 import { apiSubmitReport } from '~/pages/Reports/apiservice';
-import {set} from "~/services/storage";
 
 const RESET_DIALOG_STATE = 'Reports/OverviewMapState/RESET_DIALOG_STATE';
 const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
@@ -294,7 +293,8 @@ export default function ReportsReducer(state = initialState, action = {}) {
           }
         } };
     case SUBMIT_REPORT_SUCCESS:
-      return {...state, reportCompiled: true};
+      debugger;
+      return { ...state, reportCompiled: true };
     case STEP_BACK_DIALOG:
       return dotProp.delete(state, action.stateNodeToUnset);
       default:
