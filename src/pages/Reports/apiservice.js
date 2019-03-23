@@ -6,7 +6,9 @@ async function handleRequest(route, { method = 'POST', json = {}, token = false 
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   try {
     if (respType) {
-      response = await ky(`${config.apiUrl}/${route}`, { method, json, headers })[respType]();
+      // response = await ky(`${'http://localhost'}/${route}`, { method, json, headers })[respType]();
+      // response = await ky(`${config.apiUrl}/${route}`, { method, json, headers })[respType]();
+      response = json;
     } else {
       await ky(`${config.apiUrl}/${route}`, { method, json, headers });
     }
