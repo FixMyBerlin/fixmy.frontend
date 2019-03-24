@@ -47,7 +47,8 @@ const initialState = {
   geocodeResult: null, // object containing center and zoom
   reverseGeocodeResult: null, // An address,
   tempLocation: {}, // holds lngLat, address and a "pinned" property which indicates the location as submittable
-  reportCompiled: false // completion flag
+  submitting: false,
+  submitted: false
 };
 
 /* eslint-disable no-tabs */
@@ -292,9 +293,16 @@ export default function ReportsReducer(state = initialState, action = {}) {
             additionalInfo: action.payload
           }
         } };
+    case SUBMIT_REPORT:
+      return { ...state, submitting: true };
     case SUBMIT_REPORT_SUCCESS:
-      debugger;
-      return { ...state, reportCompiled: true };
+      return { ...state, submitting: false, submitted: true };
+    case SUBMIT_REPORT_ERROR:
+      return { ...state,
+      submitting: false,
+      error: {
+          message: action.error
+        } };
     case STEP_BACK_DIALOG:
       return dotProp.delete(state, action.stateNodeToUnset);
       default:

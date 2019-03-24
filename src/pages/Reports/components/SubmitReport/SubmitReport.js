@@ -6,6 +6,9 @@
 import React, { Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { css } from '@emotion/core';
+// eslint-disable-next-line no-unused-vars
+import { PropagateLoader } from 'react-spinners';
 import {
   setLocationMode,
   LOCATION_MODE_GEOCODING,
@@ -30,6 +33,14 @@ const SubmitReportWrapper = styled.div`
   flex-direction: column;
 `;
 
+const LoaderWrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 // TODO: dedupe-logic in FormProgressBar Element creation, factor out to function
 
 class SubmitReport extends PureComponent {
@@ -41,7 +52,8 @@ class SubmitReport extends PureComponent {
     const {
       locationMode,
       newReport,
-      reportCompiled,
+      submitting,
+      submitted,
       tempLocation,
       error
     } = this.props.reportsState;
@@ -109,9 +121,26 @@ class SubmitReport extends PureComponent {
       );
     }
 
-    if (reportCompiled) {
+    if (submitting) {
+
+      return (
+        <LoaderWrapper>
+          <PropagateLoader
+            color={`${config.colors.interaction}`}
+            loading={submitting}
+          />
+        </LoaderWrapper>
+      );
+    }
+
+    if (submitted) {
       // render "Meldung fertig"
-      return 'done';
+      return (
+        <div>
+          <h1>DONE!</h1>
+          <p>Working on the component..</p>
+        </div>
+      )
     }
   };
 
