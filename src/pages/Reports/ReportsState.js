@@ -213,6 +213,8 @@ export function submitReport() {
     const submitReportResponse = await apiSubmitReport(reportPayload);
     if (!submitReportResponse.error) {
       dispatch({ type: SUBMIT_REPORT_SUCCESS });
+    } else {
+      dispatch({ type: SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.'});
     }
   };
 }
