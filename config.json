@@ -234,5 +234,6 @@
   "isSwitchEnabled": true,
   "debug": false,
   "showLikeButton": true,
-  "showFeedBackForm": false
+  "showFeedBackForm": false,
+  "mockReportsApi": true
 }

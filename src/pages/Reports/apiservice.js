@@ -1,4 +1,8 @@
 import ky from 'ky';
+import { setUpMocking } from './fixtures';
+
+// mock api responses if configured
+if (config.mockReportsApi) setUpMocking();
 
 // copied from User\apiservice TODO: factor out, de-dupe
 async function handleRequest(route, { method = 'POST', json = {}, token = false }, respType = 'json') {
@@ -6,9 +10,7 @@ async function handleRequest(route, { method = 'POST', json = {}, token = false 
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   try {
     if (respType) {
-      // response = await ky(`${'http://localhost'}/${route}`, { method, json, headers })[respType]();
-      // response = await ky(`${config.apiUrl}/${route}`, { method, json, headers })[respType]();
-      response = json;
+      response = await ky(`${config.apiUrl}/${route}`, { method, json, headers })[respType]();
     } else {
       await ky(`${config.apiUrl}/${route}`, { method, json, headers });
     }
