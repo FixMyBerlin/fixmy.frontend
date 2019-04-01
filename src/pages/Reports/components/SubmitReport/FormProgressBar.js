@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
+import TickIcon from '~/images/reports/tick-icon.svg';
 
 const Wrapper = styled.div`
   border-bottom: solid 1px ${config.colors.inactivegrey};
@@ -64,6 +65,13 @@ const DoneStep = styled(StepIndicator)`
  order: -1;
 `;
 
+const StyledTickIcon = styled(TickIcon)`
+  order: 3;
+  position: absolute;
+  top: 34px;
+  left: 166px;
+`;
+
 const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => (
   <Wrapper>
     <BackButton onClick={onBackButtonTap}>&lt; zurück</BackButton>
@@ -75,6 +83,8 @@ const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => (
       {stepNumber > 1 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 1 ? 'active' : ''}>1</StepIndicator>}
       {stepNumber > 2 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 2 ? 'active' : ''}>2</StepIndicator>}
       {stepNumber > 3 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 3 ? 'active' : ''}>3</StepIndicator>}
+
+      {stepNumber === 4 && <StyledTickIcon />}
 
     </NavBar>
   </Wrapper>

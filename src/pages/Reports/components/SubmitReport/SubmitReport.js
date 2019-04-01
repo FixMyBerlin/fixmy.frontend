@@ -73,12 +73,11 @@ class SubmitReport extends PureComponent {
     }
 
     if (!(newReport.location && newReport.location.address)) {
-      const navStep = 1;
       return (
         <Fragment>
           {tempLocation && tempLocation.pinned && (
             <FormProgressBar
-              stepNumber={navStep}
+              stepNumber={1}
               stepCaption="Ort"
               onBackButtonTap={this.props.resetDialogState}
             />
@@ -89,13 +88,12 @@ class SubmitReport extends PureComponent {
     }
 
     if (!(newReport.what && newReport.what.ironings)) {
-      const navStep = 2;
       return (
         <Fragment>
           <FormProgressBar
-            stepNumber={navStep}
+            stepNumber={2}
             stepCaption="Details"
-            onBackButtonTap={() => this.props.stepBackDialog(navStep - 1)}
+            onBackButtonTap={() => this.props.stepBackDialog(1)}
           />
           <IroningsForm onConfirm={this.props.setIroningNeeds} />
         </Fragment>
@@ -103,13 +101,12 @@ class SubmitReport extends PureComponent {
     }
 
     if (!newReport.what.additionalInfo) {
-      const navStep = 3;
       return (
         <Fragment>
           <FormProgressBar
             stepNumber={3}
             stepCaption="Fotos und Beschreibung"
-            onBackButtonTap={() => this.props.stepBackDialog(navStep - 1)}
+            onBackButtonTap={() => this.props.stepBackDialog(2)}
           />
           <AdditionalDataForm onConfirm={(formData) => {
             this.props.setAdditionalData(formData);
@@ -132,7 +129,14 @@ class SubmitReport extends PureComponent {
 
     // finally
     return (
-      <ReportSubmitted error={error} />
+      <Fragment>
+        <FormProgressBar
+          stepNumber={4}
+          stepCaption="Fertig"
+          onBackButtonTap={() => this.props.stepBackDialog(3)}
+        />
+        <ReportSubmitted error={error} />
+      </Fragment>
     );
   };
 

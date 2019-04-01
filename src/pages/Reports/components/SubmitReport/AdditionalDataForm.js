@@ -102,7 +102,6 @@ const StyledCheckboxLabel = styled.label`
    letter-spacing: 0.2px;
    line-height: 1.4;
    color: ${config.colors.darkgrey};
-   
    cursor: pointer;
 `;
 
