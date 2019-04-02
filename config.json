@@ -221,7 +221,7 @@
     },
     "zoomAfterGeocode": 15,
     "geocoderUrl": "https://geocoder.cit.api.here.com/6.2/geocode.json",
-    "reverseGeocoderUrl": "https://reverse.geocoder.cit.api.here.com/6.2/geocode.json",
+    "reverseGeocoderUrl": "https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json",
     "geocoderAppId": "MfbUA6oryxjvqtPmL8OG",
     "geocoderAppCode": "TtjOtIepUqDKvw2Mi_ci-A",
     "drawOverlayLine": true,

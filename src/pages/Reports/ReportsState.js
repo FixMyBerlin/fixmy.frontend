@@ -214,7 +214,7 @@ export function submitReport() {
     if (!submitReportResponse.error) {
       dispatch({ type: SUBMIT_REPORT_SUCCESS });
     } else {
-      dispatch({ type: SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.'});
+      dispatch({ type: SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.' });
     }
   };
 }
