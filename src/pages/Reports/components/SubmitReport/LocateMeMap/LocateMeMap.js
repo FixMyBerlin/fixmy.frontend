@@ -109,6 +109,14 @@ class LocateMeMap extends Component {
       });
   };
 
+  onlocateMeMarkerUse = (coords) => {
+    // TODO: make this work. drag the map
+    this.props.setDeviceLocation({
+      lng: coords[0],
+      lat: coords[1]
+    });
+  };
+
   render() {
     return (
       <MapView>
@@ -153,10 +161,10 @@ class LocateMeMap extends Component {
           />
         </MapWrapper>
 
-        {!this.getPinned() && (
+        {(this.props.locationMode === LOCATION_MODE_GEOCODING && !this.getPinned()) && (
         <LocatorControl
           key="ReportsLocateMap__LocatorControl"
-          onChange={this.props.setDeviceLocation}
+          onChange={this.onlocateMeMarkerUse}
           position="bottom-right"
         />
         )}
