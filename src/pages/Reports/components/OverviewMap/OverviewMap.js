@@ -11,10 +11,6 @@ import OverviewMapNavBar from './OverviewMapNavBar';
 import AddButton from './AddButton';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 
-const StyledLocatorControl = styled(LocatorControl)`
-  // TODO: fix positioning. won't move through relative positioning
-`;
-
 const MapView = styled.div`
   height: 100%;
   width: 100%;
@@ -53,10 +49,10 @@ class OverviewMap extends Component {
           <StyledWebGlMap />
           <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
 
-          <StyledLocatorControl
+          <LocatorControl
             key="ReportsOverviewMap__LocatorControl"
             onChange={this.handleLocationChange}
-            position="bottom-right"
+            customPosition={{ bottom: '42px', right: '7px' }}
           />
           <AddButton onTab={this.onAddButtonTab} />
 

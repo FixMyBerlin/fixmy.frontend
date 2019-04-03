@@ -28,14 +28,20 @@ const LocatorButton = styled.button`
 class LocatorControl extends PureComponent {
   static propTypes = {
     position: PropTypes.string,
+    customPosition: PropTypes.shape({
+      top: PropTypes.string,
+      bottom: PropTypes.string,
+      left: PropTypes.string,
+      right: PropTypes.string }),
     onChange: PropTypes.func,
     onStart: PropTypes.func
-  }
+  };
 
   static defaultProps = {
     position: 'top-left',
     onChange: () => {},
-    onStart: () => {}
+    onStart: () => {},
+    customPosition: undefined
   }
 
   state = {
@@ -65,7 +71,7 @@ class LocatorControl extends PureComponent {
     const Icon = this.state.isLoading ? <Loader size={24} /> : <LocatorIcon />;
 
     return (
-      <MapControl position={this.props.position}>
+      <MapControl position={this.props.position} customPosition={this.props.customPosition}>
         <LocatorButton
           disabled={this.state.isLoading}
           onClick={this.locate}
