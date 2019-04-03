@@ -9,7 +9,7 @@ import idx from 'idx/lib/idx';
 import * as dotProp from 'dot-prop-immutable';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
-import { apiSubmitReport } from '~/pages/Reports/apiservice';
+import { apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
 
 const RESET_DIALOG_STATE = 'Reports/OverviewMapState/RESET_DIALOG_STATE';
 const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
@@ -208,7 +208,7 @@ export function useDevicePosition() {
 export function submitReport() {
   return async (dispatch, getState) => {
     dispatch({ type: SUBMIT_REPORT });
-    const reportPayload = getState().ReportsState.newReport;
+    const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.newReport);
     const submitReportResponse = await apiSubmitReport(reportPayload);
     if (!submitReportResponse.error) {
       dispatch({ type: SUBMIT_REPORT_SUCCESS });

@@ -47,7 +47,8 @@ const PhotoInputImageLabel = styled.label`
   height: 83px;
   width: 109px;
   background-image: url(${PhotoControlImage});
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
   cursor: pointer;
 `;
 
