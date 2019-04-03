@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Report",
+  "definitions": {
+    "Report": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "A new report object compiled using a dialog within FixMy Berlin",
+      "properties": {
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "photo": {
+          "type": "string",
+          "contentEncoding": "base64",
+          "contentMediaType": "image/jpg"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 140,
+          "description": "Further comment on the location or subject"
+        },
+        "details": {
+          "oneOf": [
+            {"$ref": "#/definitions/BikeStands"}
+          ]
+        }
+      },
+      "required": [
+        "location",
+        "details"
+      ],
+      "title": "Report"
+    },
+    "Location": {
+      "type": "object",
+      "description": "Address and geographical coordinates on a WGS 84 ellipsoid (EPSG:4326).",
+      "additionalProperties": false,
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "coordinates": {
+          "type": "array",
+          "description": "The two elements of the coordinates are longitude and latitude, precisely in that order.",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "address",
+        "coordinates"
+      ],
+      "title": "Location"
+    },
+    "BikeStands": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "subject": {
+          "type": "string",
+          "const": "BIKE_STANDS"
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "placement": {
+          "type": "string",
+          "enum": [
+            "SIDEWALK",
+            "STREET"
+          ],
+          "description": "Where bike stands shall be placed"
+        },
+        "fee": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5,
+          "description": "How much the person is willing to spend per day in EUR"
+        }
+      },
+      "required": [
+        "subject",
+        "number",
+        "placement",
+        "fee"
+      ],
+      "title": "Bike stands"
+    }
+  }
+}
