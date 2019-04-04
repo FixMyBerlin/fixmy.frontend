@@ -15,17 +15,32 @@ import fetchMock from 'fetch-mock';
 fetchMock.config.fallbackToNetwork = true;
 fetchMock.config.warnOnFallback = false;
 
-const DELAY = 3000;
-const delay = () => new Promise(res => setTimeout(res, DELAY));
+const delay = (time = 3000) => new Promise(res => setTimeout(res, time));
 
-export const setUpMocking = () => fetchMock.post(/\/reports/, (url, fetchOptions) => {
-  console.log(`Mocking api call to /reports using a delay of ${DELAY}`);
-  const res = {
-    body: { ...fetchOptions, id: 1 },
-    status: 200,
-    headers: { 'Content-Type': 'application/json' }
-  };
-  return delay().then(() => res);
-});
+
+export const setUpMocking = () => {
+  // const REPORTS_ROUTE_SEARCH_PATTERN = /^\/(?!data)(reports)/;
+  const ROUTE = 'reports/';
+  const REPORTS_ROUTE_SEARCH_PATTERN = `${config.apiUrl}/${ROUTE}`;
+
+  fetchMock.get(REPORTS_ROUTE_SEARCH_PATTERN, () => {
+    const DELAY = 1000;
+    console.log(`Mocking GET request call to /reports using a delay of ${DELAY}`);
+    return delay(1000)
+      .then(() => fetch('/data/reports-example.json'))
+      .then(res => res.json());
+  });
+
+  fetchMock.post(REPORTS_ROUTE_SEARCH_PATTERN, (url, fetchOptions) => {
+    const DELAY = 3000;
+    console.log(`Mocking POST request to /reports using a delay of ${DELAY}`);
+    const res = {
+      body: { ...fetchOptions, id: 1 },
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    };
+    return delay().then(() => res);
+  });
+};
 
 export { setUpMocking as default };

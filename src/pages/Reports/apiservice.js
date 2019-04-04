@@ -1,4 +1,4 @@
-/* eslint-disable prefer-destructuring */
+/* eslint-disable prefer-destructuring,no-use-before-define */
 import ky from 'ky';
 import validateNewReport from './test/schemaValidation/validateNewReport';
 import { setUpMocking } from './fixtures';
@@ -6,26 +6,42 @@ import { setUpMocking } from './fixtures';
 // mock api responses if configured
 if (config.mockReportsApi) setUpMocking();
 
+const ROUTE = 'reports/';
+
+export async function apiSubmitReport(json) {
+  return handleSubmitRequest({ json });
+}
+
+export async function apiFetchReports() {
+  return handleFetchReports({});
+}
+
 // copied from User\apiservice TODO: factor out, de-dupe
-async function handleRequest(route, { method = 'POST', json = {}, token = false }, respType = 'json') {
+async function handleSubmitRequest({ method = 'POST', json = {}, token = false }, respType = 'json') {
   let response = {};
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   try {
     if (respType) {
-      response = await ky(`${config.apiUrl}/${route}`, { method, json, headers })[respType]();
+      response = await ky(`${config.apiUrl}/${ROUTE}`, { method, json, headers })[respType]();
     } else {
-      await ky(`${config.apiUrl}/${route}`, { method, json, headers });
+      await ky(`${config.apiUrl}/${ROUTE}`, { method, json, headers });
     }
   } catch (e) {
-    const error = await e.response.json();
-    response.error = error;
+    response.error = await e.response.json();
   }
 
   return response;
 }
 
-export async function apiSubmitReport(json) {
-  return handleRequest('reports/', { json });
+async function handleFetchReports({ method = 'GET', token = false }, respType = 'json') {
+  let response = {};
+  const headers = token ? { Authorization: `JWT ${token}` } : {};
+  try {
+      response = await ky(`${config.apiUrl}/${ROUTE}`, { method, headers })[respType]();
+  } catch (e) {
+    response.error = await e.response.json();
+  }
+  return response;
 }
 
 /**
@@ -51,9 +67,9 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
   if (photo) {
     const splitResult = photo.split('base64,')[1];
     if (!splitResult[1]) {
-      throw new Error(`Failed to remove base 64 prefix "data:image/jpg;base64,". ${ e}`);
+      throw new Error('Failed to remove base 64 prefix "data:image/jpg;base64,"');
     }
-    obj.photo = splitResult[1]
+    obj.photo = splitResult[1];
   }
 
 

@@ -3,6 +3,7 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import withRouter from 'react-router/withRouter';
+import ReportMarkers from '~/pages/Reports/components/ReportMarkers';
 
 const StyledMap = styled.div`
   width: 100%;
@@ -16,15 +17,19 @@ MapboxGL.accessToken = MapboxGL.accessToken || config.map.accessToken;
 
 class WebglMap extends PureComponent {
   static propTypes = {
-    className: PropTypes.string
+    className: PropTypes.string,
+    // eslint-disable-next-line react/forbid-prop-types
+    reportsData: PropTypes.array  // TODO: state type properly
   };
 
   static defaultProps = {
-    className: 'locator-map'
+    className: 'locator-map',
+    reportsData: []
   };
 
   state = {
-    loading: true
+    loading: true,
+    map: null
   }
 
   componentDidMount() {
@@ -35,7 +40,7 @@ class WebglMap extends PureComponent {
       bounds: config.reportsOverViewMap.bounds,
       maxBounds: config.reportsOverViewMap.maxBounds
     });
-    window.overviewMap = this.map;
+    this.setState({ map: this.map });
 
     const nav = new MapboxGL.NavigationControl({ showCompass: false });
     this.map.addControl(nav, 'bottom-left');
@@ -52,18 +57,21 @@ class WebglMap extends PureComponent {
     this.setState({ loading: false });
   };
 
-  handleSubmitReportBtnTab = () => {
-    this.props.history.push(config.routes.submitReport);
-  };
-
-
   render() {
-    const { className } = this.props;
+    const { className, reportsData } = this.props;
     return (
       <StyledMap
         className={className}
         ref={(ref) => { this.root = ref; }}
-      />
+      >
+        {this.props.children}
+        <ReportMarkers
+          map={this.state.map}
+          data={reportsData}
+          onClick={this.handleMarkerClick}
+        />
+      </StyledMap>
+
     );
   }
 }

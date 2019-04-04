@@ -9,7 +9,7 @@ import idx from 'idx/lib/idx';
 import * as dotProp from 'dot-prop-immutable';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
-import { apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
+import { apiFetchReports, apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
 
 const RESET_DIALOG_STATE = 'Reports/OverviewMapState/RESET_DIALOG_STATE';
 const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
@@ -132,16 +132,15 @@ export const stepBackDialog = toStep => ({
 });
 
 
-export function loadReportData() {
-  return async (dispatch, getState) => {
-    const state = getState();
-    const { filterReports } = state.MapState;
-    if (filterReports) {
-      return false;
+export function loadReportsData() {
+  return async (dispatch) => {
+    try {
+      const reportData = await apiFetchReports();
+      dispatch({ type: SET_REPORT_DATA, payload: reportData });
+    } catch (e) {
+      console.error(`Failed to fetch reports: ${e}`);
+      dispatch(ADD_ERROR, 'Fehler beim Laden der Meldungen');
     }
-    const reportData = await ky.get('/data/reports-example.json');
-    console.log(SET_REPORT_DATA, reportData);
-    // TODO:  Implement further
   };
 }
 
@@ -220,6 +219,8 @@ export function submitReport() {
 
 export default function ReportsReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case SET_REPORT_DATA:
+      return { ...state, reports: action.payload };
     case RESET_DIALOG_STATE:
       // set to default state, except for reports to not be forced to fetch data again
       return { ...initialState, reports: state.reports };

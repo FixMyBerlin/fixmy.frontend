@@ -1,22 +1,13 @@
 import { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 
-import DraftMarker from '~/images/planning-icons/konzept-marker.png';
-import PlanningMarker from '~/images/planning-icons/planung-marker.png';
-import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
-import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
-
-import { getCenterFromGeom } from '~/pages/Map/map-utils';
+import BikeStandMarker from '~/images/reports/pin-meldung.png';
 
 const Markers = {
-  draft: DraftMarker,
-  planning: PlanningMarker,
-  execution: ExecutionMarker,
-  ready: ReadyMarker
+  BIKE_STANDS: BikeStandMarker
 };
 
-const phasesOrder = Object.keys(Markers);
-
+// TODO: Establish a base Marker class that contains generic lifecycle logic to de-dupe
 class PlanningMarkers extends PureComponent {
   constructor() {
     super();
@@ -39,45 +30,35 @@ class PlanningMarkers extends PureComponent {
       }
     });
     this.markers = [];
-  }
+  };
 
   updateMarkers = () => {
-    const { active, data, map } = this.props;
+    const { data, map } = this.props;
     if (!data || !map) {
       return false;
     }
 
     this.removeMarkers();
 
-    if (!active) {
-      return false;
-    }
-
     this.markers = data.map((d) => {
-      if (!Markers[d.phase]) {
+      if (!Markers[d.details.subject]) {
         return null;
       }
 
-      const phaseIndex = phasesOrder.indexOf(d.phase);
-      if (!this.props.filterPlannings[phaseIndex]) {
-        return null;
-      }
-
-      const center = getCenterFromGeom(d.geometry);
+      const lngLat = d.location.coordinates;
       const el = document.createElement('div');
       el.className = 'marker';
-      el.innerHTML = `<img class="marker-image" src="${Markers[d.phase]}" />`;
-      el.dataset.phase = d.phase;
+      el.innerHTML = `<img class="marker-image" src="${Markers[d.details.subject]}" />`;
       el.addEventListener('click', evt => this.props.onClick(evt, d));
 
       return new MapboxGL.Marker(el)
-        .setLngLat(center)
+        .setLngLat(lngLat)
         .setOffset([0, -20])
         .addTo(map);
     });
 
     return true;
-  }
+  };
 
   render() {
     return null;

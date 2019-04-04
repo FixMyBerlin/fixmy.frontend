@@ -5,11 +5,16 @@
  */
 
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import WebglMap from './WebglMap';
 import OverviewMapNavBar from './OverviewMapNavBar';
 import AddButton from './AddButton';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
+import {
+  removeError,
+  loadReportsData
+} from '~/pages/Reports/ReportsState';
 
 const MapView = styled.div`
   height: 100%;
@@ -33,20 +38,33 @@ const StyledWebGlMap = styled(WebglMap)`
 
 
 class OverviewMap extends Component {
-  onLocate = ({ lng, lat }) => {
-    console.log([lng, lat]);
-    // this.updateView({ center: userLocation, zoom: config.map.zoomAfterGeocode, animate: true });
+  componentWillMount() {
+    this.fetchRequest = this.props.loadReportsData()
+      .then(() => {
+          this.fetchRequest = null;
+        });
+  }
+
+  componentWillUnmount() {
+    if (this.fetchRequest) {
+      this.fetchRequest.cancel();
+    }
+  }
+
+  handleLocationChange = ({ lng, lat }) => {
+    console.log([lng, lat]); // TODO: pass new center to map
   };
 
   onAddButtonTab = () => {
-    this.props.history.push('/meldungen/meldung-machen');
+    this.props.history.push('/meldungen/meldung-machen'); // TODO: do not hardcode, keep route urls in config
   };
 
   render() {
     return (
       <MapView>
         <MapWrapper>
-          <StyledWebGlMap />
+
+          <StyledWebGlMap reportsData={this.props.reports} />
           <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
 
           <LocatorControl
@@ -62,4 +80,11 @@ class OverviewMap extends Component {
   }
 }
 
-export default OverviewMap;
+
+const mapDispatchToPros = {
+  loadReportsData,
+  removeError
+};
+export default connect(state => ({
+  reports: state.ReportsState.reports
+}), mapDispatchToPros)(OverviewMap);
