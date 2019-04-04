@@ -13,7 +13,7 @@ import {
   LOCATION_MODE_GEOCODING,
   useDevicePosition,
   resetDialogState,
-  setIroningNeeds,
+  setBikestandNeeds,
   setAdditionalData,
   stepBackDialog,
   removeError,
@@ -22,7 +22,7 @@ import {
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
 import LocateModeChooser from './LocateModeChooser';
 import LocateMeMap from './LocateMeMap/LocateMeMap';
-import IroningsForm from './IroningsForm';
+import BikestandsForm from './BikestandsForm';
 import AdditionalDataForm from './AdditionalDataForm';
 import FormProgressBar from './FormProgressBar';
 import ReportSubmitted from './ReportSubmitted';
@@ -87,7 +87,7 @@ class SubmitReport extends PureComponent {
       );
     }
 
-    if (!(newReport.what && newReport.what.ironings)) {
+    if (!(newReport.what && newReport.what.bikestands)) {
       return (
         <Fragment>
           <FormProgressBar
@@ -95,7 +95,7 @@ class SubmitReport extends PureComponent {
             stepCaption="Details"
             onBackButtonTap={() => this.props.stepBackDialog(1)}
           />
-          <IroningsForm onConfirm={this.props.setIroningNeeds} />
+          <BikestandsForm onConfirm={this.props.setBikestandNeeds} />
         </Fragment>
       );
     }
@@ -153,7 +153,7 @@ const mapDispatchToProps = {
   onUseDevicePosition: useDevicePosition,
   onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
   resetDialogState,
-  setIroningNeeds,
+  setBikestandNeeds,
   setAdditionalData,
   stepBackDialog,
   removeError,

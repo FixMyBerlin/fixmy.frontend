@@ -5,9 +5,9 @@ import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'; // include the default range slider styles
 import Button from '~/components/Button';
 import { breakpoints } from '~/styles/utils';
-import { IRONING_PLACEMENT_SIDEWALK, IRONING_PLACEMENT_STREET } from '../../ReportsState';
-import SidwalkBgImage from '~/images/reports/ironing-placement-sidewalk.png';
-import StreetBgImage from '~/images/reports/ironing-placement-street.png';
+import { BIKESTAND_PLACEMENT_SIDEWALK, BIKESTAND_PLACEMENT_STREET } from '../../ReportsState';
+import SidwalkBgImage from '~/images/reports/bikestand-placement-sidewalk.png';
+import StreetBgImage from '~/images/reports/bikestand-placement-street.png';
 
 // TODO: Move styled components to extra file(s) to not bloat up the file
 // TODO: scroll to bottom when radio button in first group has been checked
@@ -126,20 +126,20 @@ const StyledRadioButton = styled.input`
   display: inline-block;
 `;
 
-const IroningPlacementContainer = styled.div`
+const BikestandPlacementContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
   max-width: 400px;
 `;
 
-const IroningPlacementItem = styled.div`
+const BikestandPlacementItem = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
 `;
 
-const IroningPlacementImageLabel = styled.label`
+const BikestandPlacementImageLabel = styled.label`
   order: -1;
   height: 93px;
   width: 156.7px;
@@ -164,7 +164,7 @@ const IroningPlacementImageLabel = styled.label`
   }
 `;
 
-const IroningPlacementRadioButton = styled(StyledRadioButton)`
+const BikestandPlacementRadioButton = styled(StyledRadioButton)`
     margin: 8px auto;
 `;
 
@@ -175,7 +175,7 @@ const CostSlider = styled(StyledSlider)`
 `;
 
 
-class IroningsForm extends PureComponent {
+class BikestandsForm extends PureComponent {
   static propTypes = {
     onConfirm: PropTypes.func
   };
@@ -187,8 +187,8 @@ class IroningsForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      ironingsNeeded: 3,
-      ironingsPlacement: null,
+      bikestandsNeeded: 3,
+      bikestandsPlacement: null,
       chargedBikeParkConceivable: null,
       paymentReservesBikePark: 1
     };
@@ -205,7 +205,7 @@ class IroningsForm extends PureComponent {
     this.props.onConfirm(stateToSubmit);
   };
 
-  isSubmittable = () => this.state.ironingsPlacement !== null && this.state.chargedBikeParkConceivable !== null;
+  isSubmittable = () => this.state.bikestandsPlacement !== null && this.state.chargedBikeParkConceivable !== null;
 
   // TODO: use formik for standardized form validation
   // TODO: factor out formik-ified radio buttons (see https://codesandbox.io/s/pjqp3xxq7q?from-embed for how that works) for re-usage
@@ -219,54 +219,54 @@ class IroningsForm extends PureComponent {
         <StyledSlider
           min={1}
           max={20}
-          name="ironingsNeeded"
-          value={this.state.ironingsNeeded}
+          name="bikestandsNeeded"
+          value={this.state.bikestandsNeeded}
           tooltip={false}
-          handleLabel={this.state.ironingsNeeded.toString()}
-          onChange={ironingsNeeded => this.setState({ ironingsNeeded })}
+          handleLabel={this.state.bikestandsNeeded.toString()}
+          onChange={bikestandsNeeded => this.setState({ bikestandsNeeded })}
         />
 
         <Question>..und wo könnten diese aufgestellt werden?</Question>
         <Explanation>Ein Bügel benötigt ungefähr 2 qm Fläche</Explanation>
 
-        <IroningPlacementContainer>
-          <IroningPlacementItem>
-            <IroningPlacementImageLabel
+        <BikestandPlacementContainer>
+          <BikestandPlacementItem>
+            <BikestandPlacementImageLabel
               htmlFor="amenityPlacement-sidewalk"
               style={{ backgroundImage: `url(${SidwalkBgImage})` }}
-              className={this.state.ironingsPlacement === IRONING_PLACEMENT_SIDEWALK ? 'picked' : ''}
+              className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_SIDEWALK ? 'picked' : ''}
             >
               Auf dem <br /> Gehweg
-            </IroningPlacementImageLabel>
-            <IroningPlacementRadioButton
+            </BikestandPlacementImageLabel>
+            <BikestandPlacementRadioButton
               type="radio"
               id="amenityPlacement-sidewalk"
               name="amenity-placement"
-              value={IRONING_PLACEMENT_SIDEWALK}
-              checked={this.state.ironingsPlacement === IRONING_PLACEMENT_SIDEWALK}
-              onChange={() => this.setState({ ironingsPlacement: IRONING_PLACEMENT_SIDEWALK })}
+              value={BIKESTAND_PLACEMENT_SIDEWALK}
+              checked={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_SIDEWALK}
+              onChange={() => this.setState({ bikestandsPlacement: BIKESTAND_PLACEMENT_SIDEWALK })}
             />
-          </IroningPlacementItem>
+          </BikestandPlacementItem>
 
-          <IroningPlacementItem>
-            <IroningPlacementImageLabel
+          <BikestandPlacementItem>
+            <BikestandPlacementImageLabel
               htmlFor="amenityPlacement-street"
               style={{ backgroundImage: `url(${StreetBgImage})` }}
-              className={this.state.ironingsPlacement === IRONING_PLACEMENT_STREET ? 'picked' : ''}
+              className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_STREET ? 'picked' : ''}
             >
               Auf der Straße
-            </IroningPlacementImageLabel>
-            <IroningPlacementRadioButton
+            </BikestandPlacementImageLabel>
+            <BikestandPlacementRadioButton
               type="radio"
               id="amenityPlacement-street"
               name="amenity-placement"
-              value={IRONING_PLACEMENT_STREET}
-              checked={this.state.ironingsPlacement === IRONING_PLACEMENT_STREET}
-              onChange={() => this.setState({ ironingsPlacement: IRONING_PLACEMENT_STREET })}
+              value={BIKESTAND_PLACEMENT_STREET}
+              checked={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_STREET}
+              onChange={() => this.setState({ bikestandsPlacement: BIKESTAND_PLACEMENT_STREET })}
             />
-          </IroningPlacementItem>
+          </BikestandPlacementItem>
 
-        </IroningPlacementContainer>
+        </BikestandPlacementContainer>
 
 
         <StyledHr />
@@ -325,4 +325,4 @@ class IroningsForm extends PureComponent {
   }
 }
 
-export default IroningsForm;
+export default BikestandsForm;

@@ -118,7 +118,7 @@ const DescriptionTextArea = styled(TextareaAutosize)`
   }
 `;
 
-// TODO: D.R.Y. -> this is just copied from Ironingsform. Factor this out
+// TODO: D.R.Y. -> this is just copied from bikestandsform. Factor this out
 const WeiterButton = styled(Button)`
   display: block;
   margin-top: 51px;

@@ -27,9 +27,9 @@ const PIN_LOCATION = 'Reports/ReportsDialogState/PIN_LOCATION'; // sort of inter
 const CONFIRM_LOCATION = 'Reports/ReportsDialogState/CONFIRM_LOCATION';
 const ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
 const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
-export const IRONING_PLACEMENT_SIDEWALK = 'SIDEWALK';
-export const IRONING_PLACEMENT_STREET = 'STREET';
-const SET_IRONING_NEEDS = 'Reports/ReportsDialogState/SET_IRONING_NEEDS';
+export const BIKESTAND_PLACEMENT_SIDEWALK = 'SIDEWALK';
+export const BIKESTAND_PLACEMENT_STREET = 'STREET';
+const SET_BIKESTAND_NEEDS = 'Reports/ReportsDialogState/SET_BIKESTAND_NEEDS';
 const SET_ADDITIONAL_DATA = 'Reports/ReportsDialogState/SET_ADDITIONAL_DATA';
 const STEP_BACK_DIALOG = 'Reports/ReportsDialogState/STEP_BACK_DIALOG';
 const SUBMIT_REPORT = 'Reports/ReportsDialogState/SUBMIT_REPORT';
@@ -62,9 +62,9 @@ Content of newReport (TODO: use some sort of interface/type/shape) --> e.g. http
     lngLat
     address
 	what     --> when this is set, go to step 3
-    ironings
-    	ironingsNeeded
-    	ironingsPlacement
+    bikestands
+    	bikestandsNeeded
+    	bikestandsPlacement
     	paymentReservesBikePark
     additionalInfo --> when this is set, go to step 4
       photo
@@ -105,8 +105,8 @@ export const removeError = () => ({
   type: REMOVE_ERROR
 });
 
-export const setIroningNeeds = formData => ({
-  type: SET_IRONING_NEEDS,
+export const setBikestandNeeds = formData => ({
+  type: SET_BIKESTAND_NEEDS,
   payload: formData
 });
 
@@ -118,7 +118,7 @@ export const setAdditionalData = formData => ({
 // TODO: re-think this solution or at least document it
 const stateNodesToUnsetPerStep = new Map();
 stateNodesToUnsetPerStep.set(1, 'newReport.location');
-stateNodesToUnsetPerStep.set(2, 'newReport.what.ironings'); // TODO: this does not work well, component state is not reset (mapHasBeenDragged)
+stateNodesToUnsetPerStep.set(2, 'newReport.what.bikestands'); // TODO: this does not work well, component state is not reset (mapHasBeenDragged)
 stateNodesToUnsetPerStep.set(3, 'newReport.what.additionalInfo');
 
 /**
@@ -279,12 +279,12 @@ export default function ReportsReducer(state = initialState, action = {}) {
         error: {
           message: null
       } };
-    case SET_IRONING_NEEDS:
+    case SET_BIKESTAND_NEEDS:
       return { ...state,
         newReport: {
           ...state.newReport,
           what: { ...state.newReport.what,
-            ironings: action.payload
+            bikestands: action.payload
           }
       } };
     case SET_ADDITIONAL_DATA:

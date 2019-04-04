@@ -73,12 +73,12 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
   }
 
 
-  // keep remaining data under top level node "details", talk of "bike stands" instead of ironings
+  // keep remaining data under top level node "details"
   obj.details = {};
   obj.details.subject = 'BIKE_STANDS';
-  obj.details.number = newReportObject.what.ironings.ironingsNeeded;
-  obj.details.placement = newReportObject.what.ironings.ironingsPlacement;
-  obj.details.fee = newReportObject.what.ironings.paymentReservesBikePark;
+  obj.details.number = newReportObject.what.bikestands.bikestandsNeeded;
+  obj.details.placement = newReportObject.what.bikestands.bikestandsPlacement;
+  obj.details.fee = newReportObject.what.bikestands.paymentReservesBikePark;
 
   // validate object
   const validationResult = validateNewReport(obj);
