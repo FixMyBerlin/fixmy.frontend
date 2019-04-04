@@ -122,7 +122,12 @@
     "plannings": "/planungen",
     "status": "/zustand",
     "analyse": "/analyse",
-    "reports": "/meldungen",
+    "reports": {
+      "index": "/meldungen",
+      "landing": "/meldungen/landing",
+      "map": "/meldungen/karte",
+      "new": "/meldungen/meldung-machen"
+    },
     "signup": "/registrieren",
     "login": "/anmelden",
     "forgotPassword": "/passwort-vergessen",

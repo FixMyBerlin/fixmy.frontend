@@ -6,6 +6,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import withRouter from 'react-router/withRouter';
 import styled from 'styled-components';
 import WebglMap from './WebglMap';
 import OverviewMapNavBar from './OverviewMapNavBar';
@@ -56,7 +57,7 @@ class OverviewMap extends Component {
   };
 
   onAddButtonTab = () => {
-    this.props.history.push('/meldungen/meldung-machen'); // TODO: do not hardcode, keep route urls in config
+    this.props.history.push(config.routes.reports.new);
   };
 
   render() {
@@ -85,6 +86,6 @@ const mapDispatchToPros = {
   loadReportsData,
   removeError
 };
-export default connect(state => ({
+export default withRouter(connect(state => ({
   reports: state.ReportsState.reports
-}), mapDispatchToPros)(OverviewMap);
+}), mapDispatchToPros)(OverviewMap));

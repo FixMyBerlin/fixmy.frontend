@@ -31,16 +31,16 @@ const ContentWrapper = styled.div`
 
 export default () => (
   <div>
-    <TopSection toUrl="/meldungen/meldung-machen" />
+    <TopSection toUrl={`${config.routes.reports.new}`} />
     <ContentWrapper>
       <SectionDivider />
       <HowItWorksSection />
-      <JoinInButton toUrl="/meldungen/meldung-machen" />
+      <JoinInButton toUrl={`${config.routes.reports.new}`} />
 
       <QuoteSection />
       <FaqSection />
-      <JoinInButton toUrl="/meldungen/meldung-machen" />
-      <StyledReportsMapLink to="/meldungen/karte">
+      <JoinInButton toUrl={`${config.routes.reports.new}`} />
+      <StyledReportsMapLink to={`${config.routes.reports.map}`}>
           Hier geht’s zum aktuellen Stand der Umfrage &gt;
       </StyledReportsMapLink>
     </ContentWrapper>

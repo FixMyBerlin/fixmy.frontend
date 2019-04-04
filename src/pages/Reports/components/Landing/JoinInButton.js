@@ -35,7 +35,7 @@ JoinInButton.propTypes = {
 };
 
 JoinInButton.defaultProps = {
-  toUrl: '/meldungen/karte'
+  toUrl: `${config.routes.reports.map}`
 };
 
 export default JoinInButton;

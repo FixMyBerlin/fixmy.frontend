@@ -12,19 +12,19 @@ class Reports extends PureComponent {
     return (
       <Router history={history}>
         <Switch>
-          <Route exact path="/meldungen/landing" component={Landing} />
+          <Route exact path={config.routes.reports.landing} component={Landing} />
           <Route
-            path="/meldungen/karte"
+            path={config.routes.reports.map}
             exact
             render={() => <OverviewMap />}
           />
           <Route
-            path="/meldungen/meldung-machen"
+            path={config.routes.reports.new}
             exact
             render={() => <SubmitReport />}
           />
 
-          <Route exact path="/meldungen" render={() => (<Redirect to="/meldungen/landing" />)} />
+          <Route exact path={config.routes.reports.index} render={() => (<Redirect to={config.routes.reports.landing} />)} />
           <Route render={() => <Markdown page="nomatch" />} />
         </Switch>
       </Router>

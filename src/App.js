@@ -73,7 +73,7 @@ class App extends PureComponent {
 
                 {/* reports page */}
                 <Route
-                  path={`${config.routes.reports}`}
+                  path={`${config.routes.reports.index}`}
                   component={Reports}
                 />
 
