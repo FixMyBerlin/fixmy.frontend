@@ -7,15 +7,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import withRouter from 'react-router/withRouter';
+import { Router, Route } from 'react-router-dom';
+import history from '~/history';
 import styled from 'styled-components';
 import WebglMap from './WebglMap';
 import OverviewMapNavBar from './OverviewMapNavBar';
 import AddButton from './AddButton';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
+import ReportsPopup from './ReportsPopup';
 import {
   removeError,
   loadReportsData
 } from '~/pages/Reports/ReportsState';
+
 
 const MapView = styled.div`
   height: 100%;
@@ -60,23 +64,31 @@ class OverviewMap extends Component {
     this.props.history.push(config.routes.reports.new);
   };
 
+  handleMarkerClick = (el, reportItem) => {
+    this.props.history.push(`${config.routes.reports.map}/${reportItem.id}`);
+  };
+
   render() {
     return (
-      <MapView>
-        <MapWrapper>
+      <Router history={history}>
+        <MapView>
+          <MapWrapper>
+            <StyledWebGlMap reportsData={this.props.reports} onMarkerClick={this.handleMarkerClick} />
+            <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
 
-          <StyledWebGlMap reportsData={this.props.reports} />
-          <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
+            <LocatorControl
+              key="ReportsOverviewMap__LocatorControl"
+              onChange={this.handleLocationChange}
+              customPosition={{ bottom: '42px', right: '7px' }}
+            />
+            <AddButton onTab={this.onAddButtonTab} />
 
-          <LocatorControl
-            key="ReportsOverviewMap__LocatorControl"
-            onChange={this.handleLocationChange}
-            customPosition={{ bottom: '42px', right: '7px' }}
-          />
-          <AddButton onTab={this.onAddButtonTab} />
+          </MapWrapper>
 
-        </MapWrapper>
-      </MapView>
+          <Route path={`${config.routes.reports.map}/:id`} component={ReportsPopup} />
+
+        </MapView>
+      </Router>
     );
   }
 }

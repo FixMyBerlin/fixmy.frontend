@@ -3,7 +3,7 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import withRouter from 'react-router/withRouter';
-import ReportMarkers from '~/pages/Reports/components/ReportMarkers';
+import ReportMarkers from '~/pages/Reports/components/OverviewMap/ReportMarkers';
 
 const StyledMap = styled.div`
   width: 100%;
@@ -19,7 +19,7 @@ class WebglMap extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     // eslint-disable-next-line react/forbid-prop-types
-    reportsData: PropTypes.array  // TODO: state type properly
+    reportsData: PropTypes.array // TODO: state type properly
   };
 
   static defaultProps = {
@@ -58,7 +58,7 @@ class WebglMap extends PureComponent {
   };
 
   render() {
-    const { className, reportsData } = this.props;
+    const { className, reportsData, onMarkerClick } = this.props;
     return (
       <StyledMap
         className={className}
@@ -68,7 +68,7 @@ class WebglMap extends PureComponent {
         <ReportMarkers
           map={this.state.map}
           data={reportsData}
-          onClick={this.handleMarkerClick}
+          onClick={onMarkerClick}
         />
       </StyledMap>
 

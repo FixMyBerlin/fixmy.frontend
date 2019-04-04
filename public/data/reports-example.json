@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "location": {
       "address": "Skalitzer Straße 132, 10999 Berlin",
       "coordinates": [
@@ -17,6 +18,7 @@
     "description": "Hier sieht man den schreienden Mangel an Parkmöglichkeiten sowie eine Fläche, die sich für den Bau neuer Bügel eignen würde."
   },
   {
+    "id": 2,
     "location": {
       "address": "Skalitzer Straße 132, 10999 Berlin",
       "coordinates": [

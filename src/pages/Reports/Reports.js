@@ -15,7 +15,6 @@ class Reports extends PureComponent {
           <Route exact path={config.routes.reports.landing} component={Landing} />
           <Route
             path={config.routes.reports.map}
-            exact
             render={() => <OverviewMap />}
           />
           <Route

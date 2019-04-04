@@ -9,6 +9,8 @@ const Markers = {
 
 // TODO: Establish a base Marker class that contains generic lifecycle logic to de-dupe
 class PlanningMarkers extends PureComponent {
+
+
   constructor() {
     super();
 
@@ -47,7 +49,9 @@ class PlanningMarkers extends PureComponent {
 
       const lngLat = d.location.coordinates;
       const el = document.createElement('div');
-      el.className = 'marker';
+      el.className = 'reports-marker';
+      el.dataset.id = d.id;
+      el.style = 'cursor: pointer';
       el.innerHTML = `<img class="marker-image" src="${Markers[d.details.subject]}" />`;
       el.addEventListener('click', evt => this.props.onClick(evt, d));
 

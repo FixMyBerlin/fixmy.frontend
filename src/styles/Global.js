@@ -79,4 +79,12 @@ export default createGlobalStyle`
         width: 100%;
       }
     }
+    
+    .reports-marker {
+      width: 47px;
+
+      .marker-image {
+        width: 100%;
+      }
+    }
 `;
