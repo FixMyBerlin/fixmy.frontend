@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */ // TODO: state props types properly,
 import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
@@ -18,13 +19,14 @@ MapboxGL.accessToken = MapboxGL.accessToken || config.map.accessToken;
 class WebglMap extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
-    // eslint-disable-next-line react/forbid-prop-types
-    reportsData: PropTypes.array // TODO: state type properly
+    reportsData: PropTypes.array,
+    center: PropTypes.array
   };
 
   static defaultProps = {
     className: 'locator-map',
-    reportsData: []
+    reportsData: [],
+    center: null
   };
 
   state = {
@@ -50,6 +52,11 @@ class WebglMap extends PureComponent {
   componentDidUpdate() {
     if (this.state.loading) {
       return false;
+    }
+    if (this.props.center) {
+      this.map.easeTo({ center: this.props.center, zoom: 14 });
+    } else {
+      this.map.fitBounds(config.reportsOverViewMap.bounds);
     }
   }
 

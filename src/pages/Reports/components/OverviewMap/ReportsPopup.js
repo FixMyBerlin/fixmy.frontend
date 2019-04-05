@@ -1,13 +1,11 @@
 import React, { PureComponent } from 'react';
 import withRouter from 'react-router-dom/withRouter';
-import { Router, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints } from '~/styles/utils';
 import { X } from 'react-feather';
 import history from '~/history';
 import ReportDetails from './ReportDetails';
-import { Link } from '../../../../../node_modules_bak/react-router-dom/es';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -99,15 +97,14 @@ class ReportsPopup extends PureComponent {
 
   close = () => {
     this.props.history.push(config.routes.reports.map);
-  }
+  };
 
-  getDetailsRoute = () => `${this.props.history.location.pathname}/details`
+  getDetailsRoute = () => `${this.props.history.location.pathname}/details`;
+
 
   render() {
-    if (!this.props.reports.length) return null;
-
-    const id = Number(this.props.match.params.id);
-    const reportItem = this.props.reports.find(report => report.id === id);
+    if (!this.props.report) return null;
+    const reportItem = this.props.report;
     return (
       <Router history={history}>
 
@@ -132,4 +129,4 @@ class ReportsPopup extends PureComponent {
 }
 
 
-export default withRouter(connect(state => ({ reports: state.ReportsState.reports }))(ReportsPopup));
+export default withRouter(ReportsPopup);

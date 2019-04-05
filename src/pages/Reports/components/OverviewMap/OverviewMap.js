@@ -15,6 +15,7 @@ import OverviewMapNavBar from './OverviewMapNavBar';
 import AddButton from './AddButton';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 import ReportsPopup from './ReportsPopup';
+
 import {
   removeError,
   loadReportsData
@@ -43,11 +44,22 @@ const StyledWebGlMap = styled(WebglMap)`
 
 
 class OverviewMap extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedReport: null
+    };
+  }
+
   componentWillMount() {
     this.fetchRequest = this.props.loadReportsData()
       .then(() => {
-          this.fetchRequest = null;
-        });
+        this.fetchRequest = null;
+      });
+  }
+
+  componentDidUpdate() {
+    this.setSelectedReport();
   }
 
   componentWillUnmount() {
@@ -56,16 +68,33 @@ class OverviewMap extends Component {
     }
   }
 
-  handleLocationChange = ({ lng, lat }) => {
-    console.log([lng, lat]); // TODO: pass new center to map
-  };
-
   onAddButtonTab = () => {
     this.props.history.push(config.routes.reports.new);
   };
 
+  /**
+   * Bit hacky solution to check if a subroute /:id has been entered, to get the report from the pool of loaded reports
+   * and set it as state prop.
+   */
+  setSelectedReport = () => {
+    if (!this.props.match.isExact) {
+      const reportId = Number(this.props.history.location.pathname.split('/').slice(-1));
+      const reportItem = this.props.reports.find(report => report.id === reportId);
+      if (!reportItem) this.props.history.push('/unbekannte-meldung'); // TODO: eventually give a nicer error feedback
+      if (!this.state.selectedReport) {
+        this.setState({ selectedReport: reportItem });
+      }
+    } else if (this.state.selectedReport) {
+          this.setState({ selectedReport: null });
+        }
+  };
+
   handleMarkerClick = (el, reportItem) => {
     this.props.history.push(`${config.routes.reports.map}/${reportItem.id}`);
+  };
+
+  handleLocationChange = ({ lng, lat }) => {
+    console.log([lng, lat]); // TODO: pass new center to map
   };
 
   render() {
@@ -73,7 +102,11 @@ class OverviewMap extends Component {
       <Router history={history}>
         <MapView>
           <MapWrapper>
-            <StyledWebGlMap reportsData={this.props.reports} onMarkerClick={this.handleMarkerClick} />
+            <StyledWebGlMap
+              reportsData={this.props.reports}
+              center={this.state.selectedReport && this.state.selectedReport.location.coordinates}
+              onMarkerClick={this.handleMarkerClick}
+            />
             <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
 
             <LocatorControl
@@ -85,7 +118,7 @@ class OverviewMap extends Component {
 
           </MapWrapper>
 
-          <Route path={`${config.routes.reports.map}/:id`} component={ReportsPopup} />
+          <Route path={`${config.routes.reports.map}/:id`} render={() => (<ReportsPopup report={this.state.selectedReport} />)} />
 
         </MapView>
       </Router>
