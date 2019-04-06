@@ -10,6 +10,7 @@ import * as dotProp from 'dot-prop-immutable';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
 import { apiFetchReports, apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
+import booleanWithin from '@turf/boolean-within';
 
 const RESET_DIALOG_STATE = 'Reports/OverviewMapState/RESET_DIALOG_STATE';
 const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
@@ -19,6 +20,8 @@ export const LOCATION_MODE_GEOCODING = 'GEOCODING'; // not an action type, keepi
 const SET_DEVICE_LOCATION = 'Reports/ReportsDialogState/SET_DEVICE_LOCATION';
 const GEOCODE_DONE = 'Reports/ReportsDialogState/GEOCODE_SUCCESS';
 const GEOCODE_FAIL = 'Reports/ReportsDialogState/GEOCODE_FAIL';
+const VALIDATE_POSITION = 'Reports/ReportsDialogState/VALIDATE_POSITION';
+const INVALIDATE_POSITION = 'Reports/ReportsDialogState/INVALIDATE_POSITION';
 const REVERSE_GEOCODE_DONE = 'Reports/ReportsDialogState/REVERSE_GEOCODE_SUCCESS';
 const REVERSE_GEOCODE_FAIL = 'Reports/ReportsDialogState/REVERSE_GEOCODE_FAIL';
 const SET_TEMP_LOCATION_LNG_LAT = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_LNG_LAT';
@@ -46,12 +49,13 @@ const initialState = {
   deviceLocation: null, // {lng, lat}
   geocodeResult: null, // object containing center and zoom
   reverseGeocodeResult: null, // An address,
-  tempLocation: {}, // holds lngLat, address and a "pinned" property which indicates the location as submittable
+  tempLocation: null, // holds lngLat, address, a "pinned" property (which indicates the location as submittable) and a "valid" property
   submitting: false,
   submitted: false
 };
 
 /* eslint-disable no-tabs */
+
 /*
 
 newReport is used to a) compile a new object to submit to the API and b) to step through the dialog.
@@ -165,21 +169,58 @@ export function geocodeAddress(searchtext) {
   };
 }
 
-export function reverseGeocodeAddress({ lat, lng }) {
+
+function validateCoordinates(polygonGeoJson, { lng, lat }) {
+  const pointFeature = {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [lng, lat]
+    }
+  };
+  return booleanWithin(pointFeature, polygonGeoJson);
+}
+
+/**
+ * If a validationBoundary is passed, it is made sure that the points is within the given geomery
+ */
+export function reverseGeocodeCoordinates({ lat, lng }, validationBoundary) {
   return async (dispatch) => {
+    // validate geometry. if center is within a given boundary, do not fire a request
+    if (validationBoundary) {
+      const isValidGeometry = validateCoordinates(validationBoundary, { lat, lng });
+      if (isValidGeometry) {
+        dispatch({
+          type: VALIDATE_POSITION
+        });
+      } else {
+        return dispatch({
+          type: INVALIDATE_POSITION
+        });
+      }
+    }
+
+    // if geometry is valid, go on
     let result;
     try {
       result = await reverseGeocode({ lat, lng });
     } catch (e) {
-      return dispatch({ type: REVERSE_GEOCODE_FAIL, payload: { geocodeError: 'Fehler beim Auflösen der Koordinaten in eine Adresse' } });
+      return dispatch({
+        type: REVERSE_GEOCODE_FAIL,
+        payload: { geocodeError: 'Fehler beim Auflösen der Koordinaten in eine Adresse' }
+      });
     }
     if (!result) {
-      return dispatch({ type: REVERSE_GEOCODE_FAIL, payload: { geocodeError: 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden' } });
+      return dispatch({
+        type: REVERSE_GEOCODE_FAIL,
+        payload: { geocodeError: 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden' }
+      });
     }
     dispatch({ type: REVERSE_GEOCODE_DONE, payload: { result } });
     dispatch({ type: SET_TEMP_LOCATION_ADDRESS, address: result });
   };
 }
+
 export function setLocationMode(mode) {
   const modeStatedProperly = [LOCATION_MODE_DEVICE, LOCATION_MODE_GEOCODING].includes(mode);
   if (!modeStatedProperly) throw new Error(`use either ${LOCATION_MODE_DEVICE} or ${LOCATION_MODE_GEOCODING} to state the location mode`);
@@ -228,86 +269,121 @@ export default function ReportsReducer(state = initialState, action = {}) {
       return { ...state, deviceLocation: action.payload };
     case GEOCODE_DONE:
       return { ...state, geocodeResult: action.payload };
+    case INVALIDATE_POSITION:
+      return {
+        ...state,
+        tempLocation: {
+          ...state.tempLocation,
+          valid: false
+        }
+      };
+    case VALIDATE_POSITION:
+      return {
+        ...state,
+        tempLocation: {
+          ...state.tempLocation,
+          valid: true
+        }
+      };
     case REVERSE_GEOCODE_DONE:
       return { ...state, reverseGeocodeResult: action.payload };
     case SET_TEMP_LOCATION_LNG_LAT:
-      return { ...state,
+      return {
+        ...state,
         tempLocation: {
           ...state.tempLocation,
           lngLat: action.payload
-         }
+        }
       };
     case SET_TEMP_LOCATION_ADDRESS:
-      return { ...state,
+      return {
+        ...state,
         tempLocation: {
           ...state.tempLocation,
           address: action.address
         }
       };
     case PIN_LOCATION:
-      return { ...state,
+      return {
+        ...state,
         tempLocation: {
           ...state.tempLocation,
           pinned: true
         }
       };
     case CONFIRM_LOCATION:
-      return { ...state,
+      return {
+        ...state,
         newReport: {
           ...state.newReport,
-            location: {
-              address: state.tempLocation.address,
-              lngLat: state.tempLocation.lngLat
-            }
-        } };
+          location: {
+            address: state.tempLocation.address,
+            lngLat: state.tempLocation.lngLat
+          }
+        }
+      };
     case SET_LOCATION_MODE:
       return { ...state, locationMode: action.mode };
     case GEOCODE_FAIL:
     case REVERSE_GEOCODE_FAIL:
-      return { ...state,
+      return {
+        ...state,
         error: {
-        message: action.payload.geocodeError
-      } };
-      // generic Error handlers
+          message: action.payload.geocodeError
+        }
+      };
+    // generic Error handlers
     case ADD_ERROR:
-      return { ...state,
+      return {
+        ...state,
         error: {
           message: action.error
-        } };
+        }
+      };
     case REMOVE_ERROR:
-      return { ...state,
+      return {
+        ...state,
         error: {
           message: null
-      } };
+        }
+      };
     case SET_BIKESTAND_NEEDS:
-      return { ...state,
+      return {
+        ...state,
         newReport: {
           ...state.newReport,
-          what: { ...state.newReport.what,
+          what: {
+            ...state.newReport.what,
             bikestands: action.payload
           }
-      } };
+        }
+      };
     case SET_ADDITIONAL_DATA:
-      return { ...state,
+      return {
+        ...state,
         newReport: {
           ...state.newReport,
-          what: { ...state.newReport.what,
+          what: {
+            ...state.newReport.what,
             additionalInfo: action.payload
           }
-        } };
+        }
+      };
     case SUBMIT_REPORT:
       return { ...state, submitting: true };
     case SUBMIT_REPORT_SUCCESS:
       return { ...state, submitting: false, submitted: true };
     case SUBMIT_REPORT_ERROR:
-      return { ...state,
-      submitting: false,
-      error: {
+      return {
+        ...state,
+        submitting: false,
+        error: {
           message: action.error
-        } };
+        }
+      };
     case STEP_BACK_DIALOG:
       return dotProp.delete(state, action.stateNodeToUnset);
-      default:
+    default:
       return { ...state };
   }
 }

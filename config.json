@@ -238,6 +238,8 @@
     "maxBounds": [[13.3151, 52.4158],[13.5445, 52.5979]]
   },
   "reportsLocateMeMap": {
+    "boundaryGeodataUrl": "/data/Fhain-Xberg-trimmed.json",
+    "outofBoundaryText": "Diese Adresse liegt außerhalb Friedrichshain-Kreuzbergs",
     "reverseGeocoderUrl": "https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json"
   },
   "sectionIsBeta": true,

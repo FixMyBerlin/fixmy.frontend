@@ -12,7 +12,7 @@ const StyledMap = styled.div`
   flex: 1;
 `;
 
-const MB_STYLE_URL = `${config.map.style}?fresh=true`;
+const MB_STYLE_URL = `${config.reportsOverViewMap.style}?fresh=true`;
 MapboxGL.accessToken = MapboxGL.accessToken || config.map.accessToken;
 
 
@@ -41,7 +41,9 @@ class WebglMap extends PureComponent {
     // set up mapbox-gl js map
     this.map = new MapboxGL.Map({
       container: this.root,
-      style: MB_STYLE_URL
+      style: MB_STYLE_URL,
+      bounds: config.reportsOverViewMap.bounds,
+      maxBounds: config.reportsOverViewMap.maxBounds
     });
 
     this.map.on('load', this.handleLoad);

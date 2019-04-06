@@ -21,7 +21,7 @@ import {
   LOCATION_MODE_GEOCODING,
   setDeviceLocation,
   geocodeAddress,
-  reverseGeocodeAddress,
+  reverseGeocodeCoordinates,
   setTempLocationLngLat,
   confirmLocation,
   pinLocation,
@@ -30,6 +30,7 @@ import {
 } from '~/pages/Reports/ReportsState';
 
 import LocatorControl from '~/pages/Map/components/LocatorControl';
+import ky from '~/utils/ky';
 
 
 const MapView = styled.div`
@@ -70,18 +71,33 @@ const AddressIndicator = styled.div`
   bottom: 0; // TODO: proper positioning
 `;
 
+const InvalidAdressIndicator = styled(AddressIndicator)`
+  color: ${config.colors.error}
+`;
+
 // TODO: when location is pinned: 1. do not allow map drag
 
 class LocateMeMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mapHasBeenDragged: false
+      mapHasBeenDragged: false,
+      validationDataLoaded: false
     };
   }
 
+  async componentDidMount() {
+    await this.getValidationGeodata();
+  }
+
+  async getValidationGeodata() {
+    this.validationBoundary = await ky.get(`${config.reportsLocateMeMap.boundaryGeodataUrl}`).json();
+    this.setState({ validationDataLoaded: true });
+  }
+
   onMapMove = ({ lat, lng }) => {
-    this.props.reverseGeocodeAddress({ lng, lat });
+    if (!this.state.validationDataLoaded) return;
+    this.props.reverseGeocodeCoordinates({ lng, lat }, this.validationBoundary);
     this.props.setTempLocationLngLat({ lng, lat });
     if (!this.state.mapHasBeenDragged) {
       this.state.mapHasBeenDragged = true;
@@ -111,10 +127,12 @@ class LocateMeMap extends Component {
 
   onlocateMeMarkerUse = (coords) => {
     // TODO: make this work. drag the map
-    this.props.setDeviceLocation({
+    const coordsObj = {
       lng: coords[0],
       lat: coords[1]
-    });
+    };
+    this.props.setDeviceLocation(coordsObj);
+    this.onMapMove(coordsObj);
   };
 
   render() {
@@ -149,9 +167,12 @@ class LocateMeMap extends Component {
           />
           )}
 
-          {this.props.tempLocation && this.props.tempLocation.address && (
+          {this.props.tempLocation && this.props.tempLocation.address && this.props.tempLocation.valid && (
             <AddressIndicator>{this.props.tempLocation.address}</AddressIndicator>
           )}
+          {this.props.tempLocation && !this.props.tempLocation.valid && (
+            <InvalidAdressIndicator>{config.reportsLocateMeMap.outofBoundaryText}</InvalidAdressIndicator>
+            )}
 
           <StyledWebGlMap
             center={this.getCenter()}
@@ -173,7 +194,7 @@ class LocateMeMap extends Component {
         <PinLocationButton
           onConfirm={this.props.pinLocation}
           text="Diese Position bestätigen"
-          disabled={!(this.props.tempLocation && this.props.tempLocation.address)}
+          disabled={!(this.props.tempLocation && this.props.tempLocation.valid && this.props.tempLocation.address)}
         />
         )}
 
@@ -193,7 +214,7 @@ class LocateMeMap extends Component {
 
 const mapDispatchToPros = {
   geocodeAddress,
-  reverseGeocodeAddress,
+  reverseGeocodeCoordinates,
   setTempLocationLngLat,
   confirmLocation,
   pinLocation,
