@@ -58,10 +58,6 @@ class OverviewMap extends Component {
       });
   }
 
-  componentDidUpdate() {
-    this.setSelectedReport();
-  }
-
   componentWillUnmount() {
     if (this.fetchRequest) {
       this.fetchRequest.cancel();
@@ -72,22 +68,6 @@ class OverviewMap extends Component {
     this.props.history.push(config.routes.reports.new);
   };
 
-  /**
-   * Bit hacky solution to check if a subroute /:id has been entered, to get the report from the pool of loaded reports
-   * and set it as state prop.
-   */
-  setSelectedReport = () => {
-    if (!this.props.match.isExact) {
-      const reportId = Number(this.props.history.location.pathname.split('/').slice(-1));
-      const reportItem = this.props.reports.find(report => report.id === reportId);
-      if (!reportItem) this.props.history.push('/unbekannte-meldung'); // TODO: eventually give a nicer error feedback
-      if (!this.state.selectedReport) {
-        this.setState({ selectedReport: reportItem });
-      }
-    } else if (this.state.selectedReport) {
-          this.setState({ selectedReport: null });
-        }
-  };
 
   handleMarkerClick = (el, reportItem) => {
     this.props.history.push(`${config.routes.reports.map}/${reportItem.id}`);
@@ -118,7 +98,15 @@ class OverviewMap extends Component {
 
           </MapWrapper>
 
-          <Route path={`${config.routes.reports.map}/:id`} render={() => (<ReportsPopup report={this.state.selectedReport} />)} />
+          <Route
+            path={`${this.props.match.path}/:reportId`}
+            render={() => (
+              <ReportsPopup
+                onClose={() => history.push(this.props.match.path)}
+                reports={this.props.reports}
+              />
+)}
+          />
 
         </MapView>
       </Router>

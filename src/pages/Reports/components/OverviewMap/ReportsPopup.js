@@ -1,10 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment } from 'react';
 import withRouter from 'react-router-dom/withRouter';
 import { Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints } from '~/styles/utils';
 import { X } from 'react-feather';
 import history from '~/history';
+import PropTypes from 'prop-types';
 import ReportDetails from './ReportDetails';
 
 const Wrapper = styled.div`
@@ -93,40 +94,53 @@ const NumberStatement = styled.p`
   line-height: 1.32;
 `;
 
-class ReportsPopup extends PureComponent {
+const ReportsPopup = ({ reports, onClose, match }) => {
+  if (!reports.length) return null;
+  const reportItem = reports.find(report => report.id === parseInt(match.params.reportId, 10));
+  if (!reportItem) history.push('/unbekannte-meldung'); // TODO: give a more explicit error feedback
 
-  close = () => {
-    this.props.history.push(config.routes.reports.map);
-  };
+  return (
+    <Router history={history}>
 
-  getDetailsRoute = () => `${this.props.history.location.pathname}/details`;
+      <Fragment>
+        {
+          match.isExact && (
+            <Wrapper>
+              <PopupWrapper
+                style={reportItem.photo ? { backgroundImage: `url(data:image/jpg;base64,${reportItem.photo})` } : {}}
+              >
+                <CloseButton onClick={onClose}>
+                  <CloseIcon />
+                </CloseButton>
+                <MainSection>
+                  <Address>{reportItem.location.address}</Address>
+                  <NumberStatement>{`${reportItem.details.number} neue Fahrradbügel benötigt`}</NumberStatement>
+                  <DetailsLink to={`${match.url}${config.routes.reports.reportDetails}`}>Details</DetailsLink>
+                </MainSection>
+              </PopupWrapper>
+            </Wrapper>
+          )
+        }
 
 
-  render() {
-    if (!this.props.report) return null;
-    const reportItem = this.props.report;
-    return (
-      <Router history={history}>
+        <Route
+          path={`${match.path}${config.routes.reports.reportDetails}`}
+          render={() => (
+            <ReportDetails
+              onClose={() => history.push(match.url)}
+              reportItem={reportItem}
+            />
+          )}
+        />
+      </Fragment>
+    </Router>
+  );
+};
 
-        <Wrapper>
-          <PopupWrapper style={reportItem.photo ? { backgroundImage: `url(data:image/jpg;base64,${reportItem.photo})` } : {}}>
-            <CloseButton onClick={this.close}>
-              <CloseIcon />
-            </CloseButton>
-            <MainSection>
-              <Address>{reportItem.location.address}</Address>
-              <NumberStatement>{`${reportItem.details.number} neue Fahrradbügel benötigt`}</NumberStatement>
-              <DetailsLink to={this.getDetailsRoute()}>Details</DetailsLink>
-            </MainSection>
-          </PopupWrapper>
-
-          <Route path={`${config.routes.reports.map}/:id/details`} render={() => (<ReportDetails myProp="This will be the details component" />)} />
-
-        </Wrapper>
-      </Router>
-    );
-  }
-}
+ReportsPopup.propTypes = {
+  reports: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
+  onClose: PropTypes.func.isRequired
+};
 
 
 export default withRouter(ReportsPopup);
