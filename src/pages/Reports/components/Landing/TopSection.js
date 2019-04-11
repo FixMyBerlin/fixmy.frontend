@@ -30,7 +30,7 @@ const StyledCredits = styled.p`
 
 const StyledHeading = styled.h2`
   height: 120px;
-  font-family: "Roboto Slab";
+  font-family: "Roboto Slab", sans-serif;
   font-size: 32px;
   font-weight: bold;
   font-style: normal;
