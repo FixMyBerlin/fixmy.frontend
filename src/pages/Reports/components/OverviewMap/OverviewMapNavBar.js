@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import PropTypes from 'prop-types';
+import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`
   height: 77px;
@@ -24,10 +25,15 @@ const TextWrapper = styled.div`
 `;
 
 const Heading = styled.h2`
-  font-size: 16px;
+   font-size: 14px;
   color: ${config.colors.darkgrey};
   letter-spacing: 0.8px;
   margin: 0;
+  
+  ${media.m`
+    font-size: 16px;
+  `}
+  
 `;
 
 const BikeParkImg = styled(BikeParkIcon)`
