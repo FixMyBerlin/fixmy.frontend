@@ -8,6 +8,8 @@ import history from '~/history';
 import PropTypes from 'prop-types';
 import ReportDetails from './ReportDetails';
 
+// TODO: add like feature
+
 const Wrapper = styled.div`
   position: absolute;
   width: 100%;
@@ -20,12 +22,13 @@ const Wrapper = styled.div`
 `;
 
 const PopupWrapper = styled.div`
+  background-color: white;
   position: relative;
   border-radius: 2px;
+  box-shadow: 0 12px 11px 0 rgba(0, 0, 0, 0.3), 0 0 19px 0 rgba(0, 0, 0, 0.22);
+  // TODO: add little kink in the bottom like in specified zeplin
   width: 90%;
   max-width: ${breakpoints.s}px;
-  height: 400px;
-  background: white no-repeat top;
   pointer-events: auto;
   display: flex;
   flex-direction: column;
@@ -33,16 +36,14 @@ const PopupWrapper = styled.div`
 `;
 
 const MainSection = styled.div`
-  background-color: white;
-  border-radius: 2px;
-  box-shadow: 0 12px 11px 0 rgba(0, 0, 0, 0.3), 0 0 19px 0 rgba(0, 0, 0, 0.22);
-  border-style: solid;
-  border-width: 0.5px;
-  border-image-source: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4) 5%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0));
-  border-image-slice: 1;
-  background-image: #ffffff, linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4) 5%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0));
-  background-origin: border-box;
   padding: 11px;
+`;
+
+const PreviewImageContainer = styled.div`
+  height: 200px;
+  width: 100%;
+  background-size: cover;
+  background: no-repeat center;
 `;
 
 const CloseButton = styled.div`
@@ -106,9 +107,14 @@ const ReportsPopup = ({ reports, onClose, match }) => {
         {
           match.isExact && (
             <Wrapper>
-              <PopupWrapper
-                style={reportItem.photo ? { backgroundImage: `url(data:image/jpg;base64,${reportItem.photo})` } : {}}
-              >
+              <PopupWrapper>
+                {reportItem.photo && (
+                <PreviewImageContainer
+                  style={reportItem.photo ? {
+                    backgroundImage: `url(data:image/jpg;base64,${reportItem.photo})`
+                  } : {}}
+                />
+)}
                 <CloseButton onClick={onClose}>
                   <CloseIcon />
                 </CloseButton>
