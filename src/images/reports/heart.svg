@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="82px" height="82px" viewBox="0 0 82 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>32CDB321-85F2-4756-B9B6-B1BF66A9588B</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M32,63.0841653 C41.8365197,63.0841653 50.6078363,58.5234884 56.3147552,51.4013291 C60.5860477,46.0708126 63.1407748,39.3054458 63.1407748,31.9433905 C63.1407748,14.7448155 49.198575,0.802615664 32,0.802615664 C14.801425,0.802615664 0.859225163,14.7448155 0.859225163,31.9433905 C0.859225163,49.1419655 14.801425,63.0841653 32,63.0841653 Z" id="path-1"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="interaction/like" transform="translate(-139.000000, -26.000000)">
+            <g id="interaction">
+                <g id="button/action/heart" transform="translate(148.000000, 35.000000)">
+                    <g id="Group">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Oval-2" fill="#FAC928" transform="translate(32.000000, 31.943391) scale(-1, -1) translate(-32.000000, -31.943391) " xlink:href="#path-1"></use>
+                        <g id="color/interaction" mask="url(#mask-2)" fill="#FABE28">
+                            <g transform="translate(-14.545455, -15.515152)" id="Rectangle">
+                                <rect x="0" y="0" width="97" height="97"></rect>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="hearts" transform="translate(17.000000, 21.000000)" fill="#FFFFFF" stroke="#FFFFFF">
+                        <path d="M8.4020755,0.011756394 C10.6349784,0.128648032 12.8820907,1.08911371 14.645027,2.82955111 L15.0011542,3.18071776 L15.3572814,2.82955111 C18.8835063,-0.651323473 24.4163102,-0.997262353 27.7144631,2.25837647 C31.0127676,5.51424644 30.6706725,10.9825592 27.1438029,14.4645888 L26.0153516,15.5773216 L15.7777687,25.6849968 C15.3493011,26.1050011 14.6572978,26.1050011 14.2288303,25.6849968 L3.98695696,15.5773216 L2.85850585,14.4645888 C-0.668203843,10.9825592 -1.01475832,5.51424644 2.28355371,2.25837647 C3.93229383,0.630903549 6.17034657,-0.103749072 8.4020755,0.011756394 Z" id="Shape" stroke-width="0.9" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
