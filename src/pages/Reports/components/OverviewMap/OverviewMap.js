@@ -47,7 +47,8 @@ class OverviewMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedReport: null
+      // [lng, lat]
+      mapCenter: null
     };
   }
 
@@ -70,11 +71,23 @@ class OverviewMap extends Component {
 
 
   handleMarkerClick = (el, reportItem) => {
-    this.props.history.push(`${config.routes.reports.map}/${reportItem.id}`);
+    this.showPopup(reportItem.id);
+    this.setState({ mapCenter: reportItem.location.coordinates });
   };
 
-  handleLocationChange = ({ lng, lat }) => {
-    console.log([lng, lat]); // TODO: pass new center to map
+  showPopup = (reportId) => {
+    this.props.history.push(`${config.routes.reports.map}/${reportId}`);
+  };
+
+
+  handleLocationChange = (coords) => {
+    this.setState({ mapCenter: coords });
+  };
+
+  handlePopupClose = () => {
+    // show map by returning to the map route
+    history.push(this.props.match.path);
+    this.setState({ mapCenter: null });
   };
 
   render() {
@@ -84,7 +97,7 @@ class OverviewMap extends Component {
           <MapWrapper>
             <StyledWebGlMap
               reportsData={this.props.reports}
-              center={this.state.selectedReport && this.state.selectedReport.location.coordinates}
+              center={this.state.mapCenter}
               onMarkerClick={this.handleMarkerClick}
             />
             <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
@@ -102,8 +115,8 @@ class OverviewMap extends Component {
             path={`${this.props.match.path}/:reportId`}
             render={() => (
               <ReportsPopup
-                onClose={() => history.push(this.props.match.path)}
-                reports={this.props.reports}
+                onClose={this.handlePopupClose}
+                reports={this.props.reports} // TODO: re-organize. The popup should only get one report Item
               />
 )}
           />
