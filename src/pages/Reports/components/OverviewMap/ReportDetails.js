@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { X } from 'react-feather';
+import {X} from 'react-feather';
 import ReportDetailsShape from '~/images/reports/report-details-shape.png';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
 import HeartIcon from '~/images/reports/heart.svg';
@@ -12,8 +12,11 @@ const Wrapper = styled.div`
   position: absolute;
   width: 100vw;
   height: 100vh;
+  max-height: 100vh;
   z-index: 999999999999999;
   background-color: white;
+  display: flex;
+  flex-direction: column;
 `;
 
 const TopBar = styled.div`
@@ -27,7 +30,7 @@ const TopBar = styled.div`
 const CloseIcon = styled(X)`
   color: ${config.colors.black};
   cursor: pointer;
-      margin: auto 0;
+  margin: auto 0;
 `;
 
 const TopBarContent = styled.div`
@@ -62,14 +65,11 @@ const ReportImage = styled.img`
   width: 100%;
 `;
 
-const MainSection = styled.div`
-  padding: 16px;
-`;
-
 const HeadlineSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 16px;
 `;
 
 // TODO: copied, de-dupe
@@ -95,18 +95,19 @@ const BikeStandsCount = styled.p`
 `;
 
 const Description = styled.p`
- color: rgba(0, 0, 0, 0.54);
- line-height: 1.71;
- font-size: 14px;
- margin: 20px 0;
+  padding: 16px;
+  color: rgba(0, 0, 0, 0.54);
+  line-height: 1.71;
+  font-size: 14px;
+  margin: 20px 0;
+  flex:1;
+   overflow:auto;
 `;
 
 const LikeSection = styled.div`
   width: 100%;
   height: 140px;
   background-color: ${config.colors.likebg};
-  position: absolute;
-  bottom: 0;
   padding: 35px 0 44px 0;
   display: flex;
   justify-content: center;
@@ -117,6 +118,7 @@ const StyledHeartIcon = styled(HeartIcon)`
   width: 64px;
   height: 64px;
   object-fit: contain;
+  border-radius: 50%;
 `;
 
 // TODO: replace with image already containing the drop shadow
@@ -130,10 +132,10 @@ const formatAddressString = address => address
   .replace(',', '')
   .trim();
 
-const ReportDetails = ({ reportItem, onClose }) => (
+const ReportDetails = ({reportItem, onClose}) => (
   <Wrapper>
     <TopBar>
-      <TopBarIcon src={ReportDetailsShape} alt="Report Details" />
+      <TopBarIcon src={ReportDetailsShape} alt="Report Details"/>
       <TopBarContent>
         <Address>{
           formatAddressString(reportItem.location.address)
@@ -141,21 +143,19 @@ const ReportDetails = ({ reportItem, onClose }) => (
         </Address>
         <ReportId>Meldung {reportItem.id}</ReportId>
       </TopBarContent>
-      <CloseIcon onClick={onClose} />
+      <CloseIcon onClick={onClose}/>
     </TopBar>
 
-    {reportItem.photo && (<ReportImage src={`data:image/jpg;base64,${reportItem.photo}`} />)}
+    {reportItem.photo && (<ReportImage src={`data:image/jpg;base64,${reportItem.photo}`}/>)}
 
-    <MainSection>
-      <HeadlineSection>
-        <Heading>{`${reportItem.details.number} neue Fahrradbügel benötigt`}</Heading>
-        <BikeStandsCountSection>
-          <BikestandsIcon />
-          <BikeStandsCount>x{reportItem.details.number}</BikeStandsCount>
-        </BikeStandsCountSection>
-      </HeadlineSection>
-      <Description>{reportItem.description}</Description>
-    </MainSection>
+    <HeadlineSection>
+      <Heading>{`${reportItem.details.number} neue Fahrradbügel benötigt`}</Heading>
+      <BikeStandsCountSection>
+        <BikestandsIcon/>
+        <BikeStandsCount>x{reportItem.details.number}</BikeStandsCount>
+      </BikeStandsCountSection>
+    </HeadlineSection>
+    <Description>{reportItem.description}</Description>
 
     <LikeSection>
       <StyledHeartIcon/>
