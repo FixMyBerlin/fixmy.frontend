@@ -38,9 +38,12 @@ const STEP_BACK_DIALOG = 'Reports/ReportsDialogState/STEP_BACK_DIALOG';
 const SUBMIT_REPORT = 'Reports/ReportsDialogState/SUBMIT_REPORT';
 const SUBMIT_REPORT_SUCCESS = 'Reports/ReportsDialogState/SUBMIT_REPORT_SUCCESS';
 const SUBMIT_REPORT_ERROR = 'Reports/ReportsDialogState/SUBMIT_REPORT_ERROR';
+const SET_SELECTED_REPORT = 'Reports/ReportsDialogState/SET_SELECTED_REPORT';
+const UNSET_SELECTED_REPORT = 'Reports/ReportsDialogState/UNSET_SELECTED_REPORT';
 
 const initialState = {
   reports: [], // existing reports, fetched via API
+  selectedReport: null, // currently displayed report item (e.g. on overview map)
   newReport: {}, // the new report object, populated while stepping through the dialog
   error: {
     message: null
@@ -135,18 +138,34 @@ export const stepBackDialog = toStep => ({
   stateNodeToUnset: stateNodesToUnsetPerStep.get(toStep)
 });
 
+async function loadReportsDataInner(dispatch) {
+  try {
+    const reportData = await apiFetchReports();
+    dispatch({ type: SET_REPORT_DATA, payload: reportData });
+  } catch (e) {
+    console.error(`Failed to fetch reports: ${e}`);
+    dispatch(ADD_ERROR, 'Fehler beim Laden der Meldungen');
+  }
+}
 
 export function loadReportsData() {
   return async (dispatch) => {
-    try {
-      const reportData = await apiFetchReports();
-      dispatch({ type: SET_REPORT_DATA, payload: reportData });
-    } catch (e) {
-      console.error(`Failed to fetch reports: ${e}`);
-      dispatch(ADD_ERROR, 'Fehler beim Laden der Meldungen');
-    }
+    await loadReportsDataInner(dispatch);
   };
 }
+
+export function setSelectedReport(id) {
+  return async (dispatch, getState) => {
+    const { reports } = getState().ReportsState;
+    if (!reports.length) {
+      await loadReportsDataInner(dispatch);
+    }
+    dispatch({ type: SET_SELECTED_REPORT, id });
+  };
+}
+
+export const unsetSelectedReport = () => ({type: UNSET_SELECTED_REPORT});
+
 
 export function geocodeAddress(searchtext) {
   return async (dispatch) => {
@@ -383,6 +402,14 @@ export default function ReportsReducer(state = initialState, action = {}) {
       };
     case STEP_BACK_DIALOG:
       return dotProp.delete(state, action.stateNodeToUnset);
+    case SET_SELECTED_REPORT:
+      return {
+        ...state, selectedReport: state.reports.find(r => r.id === action.id) || null
+      };
+    case UNSET_SELECTED_REPORT:
+      return {
+        ...state, selectedReport: null
+      }
     default:
       return { ...state };
   }
