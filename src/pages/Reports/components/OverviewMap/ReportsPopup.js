@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import ReportDetails from './ReportDetails';
 import { setSelectedReport, unsetSelectedReport } from '../../ReportsState';
 
-
 // TODO: add like feature
 
 const Wrapper = styled.div`
@@ -103,7 +102,7 @@ class ReportsPopup extends PureComponent {
   }
 
   componentWillUnmount() {
-    this.props.unsetSelectedReport()
+    this.props.unsetSelectedReport();
   }
 
   render() {

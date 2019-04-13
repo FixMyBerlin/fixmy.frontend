@@ -2,11 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import {X} from 'react-feather';
+import { media } from '~/styles/utils';
 import ReportDetailsShape from '~/images/reports/report-details-shape.png';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
 import HeartIcon from '~/images/reports/heart.svg';
 
 // TODO: split up in subcomponents (Topbar etc.) just like Reports/Landing
+
+
+const centerBoxWithUnknownDims = `
+ margin: auto;
+ top:0;
+ left:0;
+ right:0;
+ Bottom: 0;
+`;
+
+const boxShadow = 'box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -17,6 +29,23 @@ const Wrapper = styled.div`
   background-color: white;
   display: flex;
   flex-direction: column;
+  ${media.m`
+    width: 80%;
+    height: 80%;
+    ${centerBoxWithUnknownDims}
+    border-radius: 4px;
+    overflow:hidden;
+    ${boxShadow}
+  `}
+  
+  ${media.l`
+    width: 50%;
+    height: 50%;
+    ${centerBoxWithUnknownDims}
+    border-radius: 8px;
+    overflow:hidden;
+    ${boxShadow}
+  `}
 `;
 
 const TopBar = styled.div`
