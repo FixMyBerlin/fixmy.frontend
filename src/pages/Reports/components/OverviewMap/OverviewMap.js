@@ -52,33 +52,33 @@ class OverviewMap extends Component {
     };
   }
 
-  componentWillMount() {
-    this.fetchRequest = this.props.loadReportsData()
-      .then(() => {
-        this.fetchRequest = null;
-      });
+  componentDidMount() {
+    this.props.loadReportsData();
   }
 
-  componentWillUnmount() {
-    if (this.fetchRequest) {
-      this.fetchRequest.cancel();
+  componentWillReceiveProps(nextProps) {
+    const { selectedReport } = nextProps;
+    if (selectedReport && selectedReport.location.coordinates !== this.state.mapCenter) {
+      this.setState({
+        mapCenter: selectedReport.location.coordinates
+      });
     }
+    if (!nextProps.selectedReport && this.props.selectedReport) {
+      this.setState({
+        mapCenter: null
+      });
+    }
+    return null;
   }
+
 
   onAddButtonTab = () => {
     this.props.history.push(config.routes.reports.new);
   };
 
-
   handleMarkerClick = (el, reportItem) => {
-    this.showPopup(reportItem.id);
-    this.setState({ mapCenter: reportItem.location.coordinates });
+    this.props.history.push(`${config.routes.reports.map}/${reportItem.id}`);
   };
-
-  showPopup = (reportId) => {
-    this.props.history.push(`${config.routes.reports.map}/${reportId}`);
-  };
-
 
   handleLocationChange = (coords) => {
     this.setState({ mapCenter: coords });
@@ -87,16 +87,17 @@ class OverviewMap extends Component {
   handlePopupClose = () => {
     // show map by returning to the map route
     history.push(this.props.match.path);
-    this.setState({ mapCenter: null });
   };
 
   render() {
+    const { reports, selectedReport, match } = this.props;
     return (
       <Router history={history}>
         <MapView>
+
           <MapWrapper>
             <StyledWebGlMap
-              reportsData={this.props.reports}
+              reportsData={reports}
               center={this.state.mapCenter}
               onMarkerClick={this.handleMarkerClick}
             />
@@ -112,11 +113,11 @@ class OverviewMap extends Component {
           </MapWrapper>
 
           <Route
-            path={`${this.props.match.path}/:reportId`}
+            path={`${match.path}/:reportId`}
             render={() => (
               <ReportsPopup
                 onClose={this.handlePopupClose}
-                reports={this.props.reports} // TODO: re-organize. The popup should only get one report Item
+                reportItem={selectedReport}
               />
 )}
           />
@@ -133,5 +134,6 @@ const mapDispatchToPros = {
   removeError
 };
 export default withRouter(connect(state => ({
+  selectedReport: state.ReportsState.selectedReport,
   reports: state.ReportsState.reports
 }), mapDispatchToPros)(OverviewMap));

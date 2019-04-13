@@ -1,12 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import withRouter from 'react-router-dom/withRouter';
 import { Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { breakpoints } from '~/styles/utils';
 import { X } from 'react-feather';
 import history from '~/history';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import ReportDetails from './ReportDetails';
+import { setSelectedReport, unsetSelectedReport } from '../../ReportsState';
+
 
 // TODO: add like feature
 
@@ -95,58 +97,67 @@ const NumberStatement = styled.p`
   line-height: 1.32;
 `;
 
-const ReportsPopup = ({ reports, onClose, match }) => {
-  if (!reports.length) return null;
-  const reportItem = reports.find(report => report.id === parseInt(match.params.reportId, 10));
-  if (!reportItem) history.push('/unbekannte-meldung'); // TODO: give a more explicit error feedback
+class ReportsPopup extends PureComponent {
+  async componentDidMount() {
+    this.props.setSelectedReport(Number(this.props.match.params.reportId));
+  }
 
-  return (
-    <Router history={history}>
+  componentWillUnmount() {
+    this.props.unsetSelectedReport()
+  }
 
-      <Fragment>
-        {
-          match.isExact && (
-            <Wrapper>
-              <PopupWrapper>
-                {reportItem.photo && (
-                <PreviewImageContainer
-                  style={reportItem.photo ? {
-                    backgroundImage: `url(data:image/jpg;base64,${reportItem.photo})`
-                  } : {}}
-                />
-)}
-                <CloseButton onClick={onClose}>
-                  <CloseIcon />
-                </CloseButton>
-                <MainSection>
-                  <Address>{reportItem.location.address}</Address>
-                  <NumberStatement>{`${reportItem.details.number} neue Fahrradbügel benötigt`}</NumberStatement>
-                  <DetailsLink to={`${match.url}${config.routes.reports.reportDetails}`}>Details</DetailsLink>
-                </MainSection>
-              </PopupWrapper>
-            </Wrapper>
-          )
-        }
+  render() {
+    const { selectedReport, onClose, match } = this.props;
+    if (!selectedReport) return null;
 
+    return (
+      <Router history={history}>
 
-        <Route
-          path={`${match.path}${config.routes.reports.reportDetails}`}
-          render={() => (
-            <ReportDetails
-              onClose={() => history.push(match.url)}
-              reportItem={reportItem}
-            />
-          )}
-        />
-      </Fragment>
-    </Router>
-  );
-};
-
-ReportsPopup.propTypes = {
-  reports: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
-  onClose: PropTypes.func.isRequired
-};
+        <Fragment>
+          {
+            match.isExact && (
+              <Wrapper>
+                <PopupWrapper>
+                  {selectedReport.photo && (
+                    <PreviewImageContainer
+                      style={selectedReport.photo ? {
+                        backgroundImage: `url(data:image/jpg;base64,${selectedReport.photo})`
+                      } : {}}
+                    />
+                  )}
+                  <CloseButton onClick={onClose}>
+                    <CloseIcon />
+                  </CloseButton>
+                  <MainSection>
+                    <Address>{selectedReport.location.address}</Address>
+                    <NumberStatement>{`${selectedReport.details.number} neue Fahrradbügel benötigt`}</NumberStatement>
+                    <DetailsLink to={`${match.url}${config.routes.reports.reportDetails}`}>Details</DetailsLink>
+                  </MainSection>
+                </PopupWrapper>
+              </Wrapper>
+            )
+          }
 
 
-export default withRouter(ReportsPopup);
+          <Route
+            path={`${match.path}${config.routes.reports.reportDetails}`}
+            render={() => (
+              <ReportDetails
+                onClose={() => history.push(match.url)}
+                reportItem={selectedReport}
+              />
+            )}
+          />
+        </Fragment>
+      </Router>
+    );
+  }
+}
+
+
+export default withRouter(
+  connect(state => ({
+    selectedReport: state.ReportsState.selectedReport,
+    reports: state.ReportsState.reports
+  }), { setSelectedReport, unsetSelectedReport })(ReportsPopup)
+);
