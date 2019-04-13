@@ -32,7 +32,9 @@ class WebglMap extends PureComponent {
   state = {
     loading: true,
     map: null
-  }
+  };
+
+  nav = new MapboxGL.NavigationControl({ showCompass: false });
 
   componentDidMount() {
     // set up mapbox-gl js map
@@ -44,8 +46,7 @@ class WebglMap extends PureComponent {
     });
     this.setState({ map: this.map });
 
-    const nav = new MapboxGL.NavigationControl({ showCompass: false });
-    this.map.addControl(nav, 'bottom-left');
+    this.toggleZoomControl();
     this.map.on('load', this.handleLoad);
   }
 
@@ -58,11 +59,31 @@ class WebglMap extends PureComponent {
     } else {
       this.map.fitBounds(config.reportsOverViewMap.bounds);
     }
+
+
+    this.toggleMapInteractivity(this.props.disabled);
   }
 
   handleLoad = () => {
     this.setState({ loading: false });
   };
+
+  toggleZoomControl = (isActive) => {
+    if (isActive) {
+      this.map.addControl(this.nav, 'bottom-left');
+    } else {
+      this.map.removeControl(this.nav);
+    }
+  };
+
+  toggleMapInteractivity(isInteractive) {
+    if (isInteractive) {
+      this.map.dragPan.enable();
+    } else {
+      this.map.dragPan.disable();
+    }
+    this.toggleZoomControl(isInteractive);
+  }
 
   render() {
     const { className, reportsData, onMarkerClick } = this.props;

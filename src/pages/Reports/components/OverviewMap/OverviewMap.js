@@ -100,6 +100,7 @@ class OverviewMap extends Component {
               reportsData={reports}
               center={this.state.mapCenter}
               onMarkerClick={this.handleMarkerClick}
+              disabled={match.isExact}
             />
             <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
 
