@@ -11,10 +11,7 @@ import MapIcon from '~/images/reports/noun-map-1909219.svg';
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 
 const Wrapper = styled.div`
-  position: absolute;
-  top: 77px;
-  height: calc(100% - 77px);
-  width: 100%;
+  flex: 2 ;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,7 +72,6 @@ const CloseButton = styled.div`
   height: 44px;
   border-radius: 50%;
   background-color: ${config.colors.darkgrey};
-  display: flex;
   justify-content: center;
   align-items: center;
   display: none; // TODO: show close Icon only if the dialog can be re-entered by a UI action
