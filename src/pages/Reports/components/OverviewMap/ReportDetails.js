@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import {X} from 'react-feather';
+import { X } from 'react-feather';
 import { media } from '~/styles/utils';
 import ReportDetailsShape from '~/images/reports/report-details-shape.png';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
@@ -143,14 +143,29 @@ const LikeSection = styled.div`
 `;
 
 const StyledHeartIcon = styled(HeartIcon)`
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  border-radius: 50%;
+  display: block;
 `;
 
-// TODO: replace with image already containing the drop shadow
+// TODO: add functionality
+const LikeButton = styled.div`
+  background-color: ${config.colors.interaction};
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 auto;
+`;
+
+const LikeButtonCaption = styled.p`
+  font-size: 10px;
+  letter-spacing: 0.2px;
+  color: ${config.colors.black};
+`;
+
 // TODO: add share button that uses the SocialSharer
 
 
@@ -161,10 +176,10 @@ const formatAddressString = address => address
   .replace(',', '')
   .trim();
 
-const ReportDetails = ({reportItem, onClose}) => (
+const ReportDetails = ({ reportItem, onClose }) => (
   <Wrapper>
     <TopBar>
-      <TopBarIcon src={ReportDetailsShape} alt="Report Details"/>
+      <TopBarIcon src={ReportDetailsShape} alt="Report Details" />
       <TopBarContent>
         <Address>{
           formatAddressString(reportItem.location.address)
@@ -172,22 +187,30 @@ const ReportDetails = ({reportItem, onClose}) => (
         </Address>
         <ReportId>Meldung {reportItem.id}</ReportId>
       </TopBarContent>
-      <CloseIcon onClick={onClose}/>
+      <CloseIcon onClick={onClose} />
     </TopBar>
 
-    {reportItem.photo && (<ReportImage src={`data:image/jpg;base64,${reportItem.photo}`}/>)}
+    {reportItem.photo && (<ReportImage src={`data:image/jpg;base64,${reportItem.photo}`} />)}
 
     <HeadlineSection>
       <Heading>{`${reportItem.details.number} neue Fahrradbügel benötigt`}</Heading>
       <BikeStandsCountSection>
-        <BikestandsIcon/>
+        <BikestandsIcon />
         <BikeStandsCount>x{reportItem.details.number}</BikeStandsCount>
       </BikeStandsCountSection>
     </HeadlineSection>
     <Description>{reportItem.description}</Description>
 
     <LikeSection>
-      <StyledHeartIcon/>
+      <div>
+        <LikeButton>
+          <StyledHeartIcon />
+        </LikeButton>
+        <LikeButtonCaption>
+          Unterstütze diese Meldung
+        </LikeButtonCaption>
+      </div>
+
     </LikeSection>
   </Wrapper>
 );
