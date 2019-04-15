@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
+import withRouter from 'react-router/withRouter';
 import ErrorMessage from '../ErrorMessage';
 import Button from '~/components/Button';
 import { breakpoints } from '~/styles/utils';
-import MeldungAnzeigenMockImg from '~/images/reports/meldunganzeigen-mocked.png';
-
 
 const Wrapper = styled.div`
   padding: 8px 8px 62px 8px;
@@ -43,10 +42,19 @@ const StyledHr = styled.hr`
   margin-bottom: 12px;
 `;
 
-// TODO: Do not use an image, show the overview map with the actual new marker in the background, allow an instant navigation to the map on marker tap
-const MeldungAnzeigenImage = styled.img`
-  margin-bottom: 6px;
+// TODO: if possible, actually show the overviewMap ine the background like in Zeplin
+// TO-dedupe, buttons are declared and styled a million times within /reports
+const MeldungAnzeigenButton = styled(Button)`
+  display: block;
+  height: 48px;
+  width: 80%;
+  max-width: 240px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 24px 0;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
 `;
+
 
 const StyledInput = styled.input`
   width:100%;
@@ -90,7 +98,7 @@ const StyledCheckboxLabel = styled.label`
 `;
 
 // TODO: same here
-const WeiterButton = styled(Button)`
+const AbsendenButton = styled(Button)`
   display: block;
   margin-top: 36px;
   height: 48px;
@@ -137,6 +145,15 @@ class ReportSubmitted extends PureComponent {
     console.log(`do something with the email ${ this.state.email}`);
   };
 
+  revealReportOnMap = () => {
+    const { reportId } = this.props;
+    if (!reportId) {
+      console.error('No id was passed to reveal the report on the map');
+      return;
+    }
+    this.props.history.push(`${config.routes.reports.map}/${reportId}`);
+  }
+
   render() {
     const { error } = this.props;
 
@@ -148,7 +165,8 @@ class ReportSubmitted extends PureComponent {
       <Wrapper>
         <Heading>Danke, dass du mithilfst Friedrichshain-Kreuzberg radfreundlicher zu machen!</Heading>
         <Text>Deine Meldung ist nun online und wird am 31. Januar dem Bezirksamt übergeben.</Text>
-        <MeldungAnzeigenImage src={MeldungAnzeigenMockImg} />
+
+        <MeldungAnzeigenButton onClick={this.revealReportOnMap}>Meldung Anzeigen</MeldungAnzeigenButton>
         <Text>Schau dir Deine Meldung an und erzähle anderen davon</Text>
 
         <StyledHr />
@@ -192,15 +210,15 @@ class ReportSubmitted extends PureComponent {
           </StyledCheckboxLabel>
         </StyledCheckboxItem>
 
-        <WeiterButton
+        <AbsendenButton
           onClick={this.submitEmail}
           disabled={!this.state.confirmsDataUsage}
         >Absenden
-        </WeiterButton>
+        </AbsendenButton>
 
       </Wrapper>
     );
   }
 }
 
-export default ReportSubmitted;
+export default withRouter(ReportSubmitted);

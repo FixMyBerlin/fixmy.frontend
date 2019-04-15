@@ -35,7 +35,7 @@ export const setUpMocking = () => {
     const DELAY = 3000;
     console.log(`Mocking POST request to /reports using a delay of ${DELAY}`);
     const res = {
-      body: { ...fetchOptions, id: 1 },
+      body: { ...JSON.parse(fetchOptions.body), id: 999 },
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     };

@@ -135,7 +135,7 @@ class SubmitReport extends PureComponent {
           stepCaption="Fertig"
           onBackButtonTap={() => this.props.stepBackDialog(3)}
         />
-        <ReportSubmitted error={error} />
+        <ReportSubmitted reportId={newReport.id} error={error} />
       </Fragment>
     );
   };

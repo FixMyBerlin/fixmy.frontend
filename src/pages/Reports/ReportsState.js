@@ -164,7 +164,7 @@ export function setSelectedReport(id) {
   };
 }
 
-export const unsetSelectedReport = () => ({type: UNSET_SELECTED_REPORT});
+export const unsetSelectedReport = () => ({ type: UNSET_SELECTED_REPORT });
 
 
 export function geocodeAddress(searchtext) {
@@ -268,10 +268,11 @@ export function submitReport() {
   return async (dispatch, getState) => {
     dispatch({ type: SUBMIT_REPORT });
     const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.newReport);
-    const submitReportResponse = await apiSubmitReport(reportPayload);
-    if (!submitReportResponse.error) {
-      dispatch({ type: SUBMIT_REPORT_SUCCESS });
-    } else {
+    let submittedReport;
+    try {
+      submittedReport = await apiSubmitReport(reportPayload);
+      dispatch({ type: SUBMIT_REPORT_SUCCESS, submittedReport });
+    } catch (e) {
       dispatch({ type: SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.' });
     }
   };
@@ -391,7 +392,17 @@ export default function ReportsReducer(state = initialState, action = {}) {
     case SUBMIT_REPORT:
       return { ...state, submitting: true };
     case SUBMIT_REPORT_SUCCESS:
-      return { ...state, submitting: false, submitted: true };
+      return { ...state,
+        submitting: false,
+        submitted: true,
+        newReport: {
+          ...state.newReport,
+          id: action.submittedReport.id
+        },
+        reports: [...state.reports, {
+          ...action.submittedReport
+        }]
+      };
     case SUBMIT_REPORT_ERROR:
       return {
         ...state,
@@ -409,7 +420,7 @@ export default function ReportsReducer(state = initialState, action = {}) {
     case UNSET_SELECTED_REPORT:
       return {
         ...state, selectedReport: null
-      }
+      };
     default:
       return { ...state };
   }
