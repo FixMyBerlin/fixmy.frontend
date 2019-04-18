@@ -8,7 +8,7 @@ const Markers = {
 };
 
 // TODO: Establish a base Marker class that contains generic lifecycle logic to de-dupe
-class PlanningMarkers extends PureComponent {
+class ReportMarkers extends PureComponent {
 
 
   constructor() {
@@ -46,8 +46,7 @@ class PlanningMarkers extends PureComponent {
       if (!Markers[d.details.subject]) {
         return null;
       }
-
-      const lngLat = d.location.coordinates;
+      const lngLat = d.geometry.coordinates;
       const el = document.createElement('div');
       el.className = 'reports-marker';
       el.dataset.id = d.id;
@@ -69,4 +68,4 @@ class PlanningMarkers extends PureComponent {
   }
 }
 
-export default PlanningMarkers;
+export default ReportMarkers;

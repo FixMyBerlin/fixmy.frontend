@@ -239,7 +239,7 @@ class ReportDetails extends PureComponent {
           <TopBarIcon src={ReportDetailsShape} alt="Report Details" />
           <TopBarContent>
             <Address>{
-              this.formatAddressString(reportItem.location.address)
+              this.formatAddressString(reportItem.address)
             }
             </Address>
             <ReportId>Meldung {reportItem.id}</ReportId>

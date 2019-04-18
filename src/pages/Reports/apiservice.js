@@ -54,11 +54,11 @@ async function handleFetchReports({ method = 'GET', token = false }, respType = 
 export function marshallNewReportObjectFurSubmit(newReportObject) {
   const obj = {};
 
-  // pass location coordinates as array instead of object
-  obj.location = {};
-  obj.location.address = newReportObject.location.address;
+  // keep address in root, wrap coords in GeoJSON geometry
+  obj.address = newReportObject.location.address;
+  obj.geometry = { type: 'Point' };
   const coords = newReportObject.location.lngLat;
-  obj.location.coordinates = [coords.lng, coords.lat];
+  obj.geometry.coordinates = [coords.lng, coords.lat];
 
   // keep photo and description in top level of object
   obj.description = newReportObject.what.additionalInfo.description;
