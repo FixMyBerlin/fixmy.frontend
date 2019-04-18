@@ -2,6 +2,7 @@
 import ky from 'ky';
 import validateNewReport from './test/schemaValidation/validateNewReport';
 import { setUpMocking } from './fixtures';
+import oneLine from "common-tags/es/oneLine/oneLine";
 
 // mock api responses if configured
 if (config.mockReportsApi) setUpMocking();
@@ -63,15 +64,19 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
   obj.description = newReportObject.what.additionalInfo.description;
 
   // omit base64 prefix in photo string
-  const photo = newReportObject.what.additionalInfo.photo;
+  let photo = newReportObject.what.additionalInfo.photo;
   if (photo) {
-    const splitResult = photo.split('base64,')[1];
-    if (!splitResult[1]) {
-      throw new Error('Failed to remove base 64 prefix "data:image/jpg;base64,"');
+    const BASE64_PREFIXES = ['data:image/jpg;base64,', 'data:image/jpeg;base64,'];
+    if (!BASE64_PREFIXES.some(prefix => photo.includes(prefix))) {
+      throw new Error(oneLine`Failed to remove base 64 prefix. 
+      Expected prefix to be '${BASE64_PREFIXES.join(' or ')}',
+      found photo string starts with ${photo.slice(0, photo.indexOf(',') || 25)}`);
     }
-    obj.photo = splitResult[1];
+    BASE64_PREFIXES.forEach((prefix) => {
+      photo = photo.replace(prefix, '');
+    });
   }
-
+  obj.photo = photo;
 
   // keep remaining data under top level node "details"
   obj.details = {};

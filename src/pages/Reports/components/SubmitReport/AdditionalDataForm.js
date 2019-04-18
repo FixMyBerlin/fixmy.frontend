@@ -137,9 +137,8 @@ const WeiterButton = styled(Button)`
   }
 `;
 
-// TODO: Factor out photo input
-// TODO: checkout https://github.com/odysseyscience/react-s3-uploader for upload component
 
+// TODO: Factor out photo input
 
 class AdditionalDataForm extends PureComponent {
   static propTypes = {
@@ -149,6 +148,13 @@ class AdditionalDataForm extends PureComponent {
   static defaultProps = {
     onConfirm: () => console.log('onConfirm() says implement me')
   };
+
+  static validatePhoto(photo) {
+    if (!['image/jpg', 'image/jpeg'].includes(photo.type)) {
+      // TODO: Error feedback in UI
+      throw new Error('Sorry! Nur Photos im Format JPG werden unterstützt.');
+    }
+  }
 
   constructor(props) {
     super(props);
@@ -162,12 +168,10 @@ class AdditionalDataForm extends PureComponent {
   }
 
   submit = () => {
+    // TODO: when a photo has been taken but the disclaimer has not been ticked, show a (unintrusive) error hint
     // marshall form data before submit
     const stateToSubmit = { ...this.state };
     delete stateToSubmit.photoDisclaimerTicked;
-
-    // TODO: when a photo has been taken but the disclaimer has not been ticked, show a (unintrusive) error hint
-
     this.props.onConfirm(stateToSubmit);
   };
 
@@ -176,11 +180,12 @@ class AdditionalDataForm extends PureComponent {
 
   processTakenPhoto = (fileList) => {
     const photo = fileList[0];
+    AdditionalDataForm.validatePhoto(photo);
     this.fileReader.readAsDataURL(photo);
   };
 
   handleConvertedPhoto = (evt) => {
-    // TODO: eventually resize image
+    // TODO: resize image
     const photoInBase64 = evt.target.result;
     this.setState({ photo: photoInBase64 });
   };

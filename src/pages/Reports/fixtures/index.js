@@ -17,6 +17,8 @@ fetchMock.config.warnOnFallback = false;
 
 const delay = (time = 3000) => new Promise(res => setTimeout(res, time));
 
+const reportsCompiledInSession = [];
+
 
 export const setUpMocking = () => {
   // const REPORTS_ROUTE_SEARCH_PATTERN = /^\/(?!data)(reports)/;
@@ -28,14 +30,20 @@ export const setUpMocking = () => {
     console.log(`Mocking GET request call to /reports using a delay of ${DELAY}`);
     return delay(1000)
       .then(() => fetch('/data/reports-example.json'))
-      .then(res => res.json());
+      .then(res => res.json())
+      .then(reportList => reportList.concat(reportsCompiledInSession));
   });
 
   fetchMock.post(REPORTS_ROUTE_SEARCH_PATTERN, (url, fetchOptions) => {
     const DELAY = 3000;
     console.log(`Mocking POST request to /reports using a delay of ${DELAY}`);
+    const newReportObj = JSON.parse(fetchOptions.body);
+    // add random id between 1000 and 2000 to simulate assignment of entity ID in backend
+    newReportObj.id = Math.random() * (2000 - 1000) + 1000;
+    // cache object for usage in get request
+    reportsCompiledInSession.push(newReportObj);
     const res = {
-      body: { ...JSON.parse(fetchOptions.body), id: 999 },
+      body: newReportObj,
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     };
