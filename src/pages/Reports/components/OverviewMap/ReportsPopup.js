@@ -143,7 +143,11 @@ class ReportsPopup extends PureComponent {
             render={() => (
               <ReportDetails
                 onClose={() => history.push(match.url)}
-                reportItem={selectedReport}
+                reportId={selectedReport.id}
+                address={selectedReport.address}
+                photo={selectedReport.photo}
+                number={selectedReport.details.number}
+                description={selectedReport.description}
               />
             )}
           />

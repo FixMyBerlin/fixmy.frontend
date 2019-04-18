@@ -193,8 +193,17 @@ const ShareButton = styled(ShareIcon)`
 
 class ReportDetails extends PureComponent {
   static propTypes = {
-    reportItem: PropTypes.objectOf(PropTypes.any).isRequired, // TODO: fix other propType declarations where an object is used
-    onClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired,
+    reportId: PropTypes.number.isRequired,
+    address: PropTypes.string.isRequired,
+    number: PropTypes.number.isRequired,
+    photo: PropTypes.string,
+    description: PropTypes.string
+  };
+
+  static defaultProps = {
+    photo: '',
+    description: ''
   };
 
   /**
@@ -216,7 +225,7 @@ class ReportDetails extends PureComponent {
   shareReport = () => {
     const { reportItem } = this.props;
     if (!navigator.share) {
-      console.warn('Share API not present')
+      console.warn('Share API not present');
       return;
     }
     if (navigator.share) {
@@ -232,31 +241,39 @@ class ReportDetails extends PureComponent {
   };
 
   render() {
-    const { reportItem, onClose } = this.props;
+    const {
+      reportItem,
+      onClose,
+      reportId,
+      address,
+      photo,
+      description,
+      number
+    } = this.props;
     return (
       <Wrapper>
         <TopBar>
           <TopBarIcon src={ReportDetailsShape} alt="Report Details" />
           <TopBarContent>
             <Address>{
-              this.formatAddressString(reportItem.address)
+              this.formatAddressString(address)
             }
             </Address>
-            <ReportId>Meldung {reportItem.id}</ReportId>
+            <ReportId>Meldung {reportId}</ReportId>
           </TopBarContent>
           <CloseIcon onClick={onClose} />
         </TopBar>
 
-        {reportItem.photo && (<ReportImage src={`data:image/jpg;base64,${reportItem.photo}`} />)}
+        {photo && (<ReportImage src={`data:image/jpg;base64,${photo}`} />)}
 
         <HeadlineSection>
-          <Heading>{`${reportItem.details.number} neue Fahrradbügel benötigt`}</Heading>
+          <Heading>{`${number} neue Fahrradbügel benötigt`}</Heading>
           <BikeStandsCountSection>
             <BikestandsIcon />
-            <BikeStandsCount>x{reportItem.details.number}</BikeStandsCount>
+            <BikeStandsCount>x{number}</BikeStandsCount>
           </BikeStandsCountSection>
         </HeadlineSection>
-        <Description>{reportItem.description}</Description>
+        <Description>{description}</Description>
 
         <LikeSection>
           <Fill />
