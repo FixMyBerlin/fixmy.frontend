@@ -242,7 +242,6 @@ class ReportDetails extends PureComponent {
 
   render() {
     const {
-      reportItem,
       onClose,
       reportId,
       address,

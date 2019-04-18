@@ -1,13 +1,13 @@
-import React, {PureComponent, Fragment} from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import withRouter from 'react-router-dom/withRouter';
-import {Router, Route, Link} from 'react-router-dom';
+import { Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import {breakpoints} from '~/styles/utils';
-import {X} from 'react-feather';
+import { breakpoints } from '~/styles/utils';
+import { X } from 'react-feather';
 import history from '~/history';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import ReportDetails from './ReportDetails';
-import {setSelectedReport, unsetSelectedReport} from '../../ReportsState';
+import { setSelectedReport, unsetSelectedReport } from '../../ReportsState';
 
 // TODO: add like feature
 
@@ -106,7 +106,7 @@ class ReportsPopup extends PureComponent {
   }
 
   render() {
-    const {selectedReport, onClose, match} = this.props;
+    const { selectedReport, onClose, match } = this.props;
     if (!selectedReport) return null;
 
     return (
@@ -128,7 +128,7 @@ class ReportsPopup extends PureComponent {
                     />
                   )}
                   <CloseButton onClick={onClose}>
-                    <CloseIcon/>
+                    <CloseIcon />
                   </CloseButton>
                   <MainSection>
                     <Address>{selectedReport.address}</Address>
@@ -165,5 +165,5 @@ export default withRouter(
   connect(state => ({
     selectedReport: state.ReportsState.selectedReport,
     reports: state.ReportsState.reports
-  }), {setSelectedReport, unsetSelectedReport})(ReportsPopup)
+  }), { setSelectedReport, unsetSelectedReport })(ReportsPopup)
 );
