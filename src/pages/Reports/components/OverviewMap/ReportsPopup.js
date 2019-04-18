@@ -128,7 +128,7 @@ class ReportsPopup extends PureComponent {
                     <CloseIcon />
                   </CloseButton>
                   <MainSection>
-                    <Address>{selectedReport.location.address}</Address>
+                    <Address>{selectedReport.address}</Address>
                     <NumberStatement>{`${selectedReport.details.number} neue Fahrradbügel benötigt`}</NumberStatement>
                     <DetailsLink to={`${match.url}${config.routes.reports.reportDetails}`}>Details</DetailsLink>
                   </MainSection>

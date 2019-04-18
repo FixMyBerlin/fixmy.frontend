@@ -7,13 +7,8 @@
       "additionalProperties": false,
       "description": "A new report object compiled using a dialog within FixMy Berlin",
       "properties": {
-        "location": {
-          "$ref": "#/definitions/Location"
-        },
-        "photo": {
-          "type": "string",
-          "contentEncoding": "base64",
-          "contentMediaType": "image/jpg"
+        "address": {
+          "type": "string"
         },
         "description": {
           "type": "string",
@@ -22,23 +17,35 @@
         },
         "details": {
           "oneOf": [
-            {"$ref": "#/definitions/BikeStands"}
+            {
+              "$ref": "#/definitions/BikeStands"
+            }
           ]
+        },
+        "geometry": {
+          "$ref": "#/definitions/Geometry"
+        },
+        "photo": {
+          "type": "string",
+          "contentEncoding": "base64",
+          "contentMediaType": "image/jpg"
         }
       },
       "required": [
-        "location",
-        "details"
+        "address",
+        "details",
+        "geometry"
       ],
       "title": "Report"
     },
-    "Location": {
+    "Geometry": {
       "type": "object",
-      "description": "Address and geographical coordinates on a WGS 84 ellipsoid (EPSG:4326).",
+      "description": "A GeoJSON Geometry Object (https://tools.ietf.org/html/rfc7946#section-3.1)",
       "additionalProperties": false,
       "properties": {
-        "address": {
-          "type": "string"
+        "type": {
+          "type": "string",
+          "const": "Point"
         },
         "coordinates": {
           "type": "array",
@@ -51,10 +58,10 @@
         }
       },
       "required": [
-        "address",
+        "type",
         "coordinates"
       ],
-      "title": "Location"
+      "title": "Geometry"
     },
     "BikeStands": {
       "type": "object",

@@ -58,9 +58,9 @@ class OverviewMap extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { selectedReport } = nextProps;
-    if (selectedReport && selectedReport.location.coordinates !== this.state.mapCenter) {
+    if (selectedReport && selectedReport.geometry.coordinates !== this.state.mapCenter) {
       this.setState({
-        mapCenter: selectedReport.location.coordinates
+        mapCenter: selectedReport.geometry.coordinates
       });
     }
     if (!nextProps.selectedReport && this.props.selectedReport) {
