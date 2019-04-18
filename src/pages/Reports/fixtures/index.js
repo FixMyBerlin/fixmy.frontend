@@ -38,8 +38,13 @@ export const setUpMocking = () => {
     const DELAY = 3000;
     console.log(`Mocking POST request to /reports using a delay of ${DELAY}`);
     const newReportObj = JSON.parse(fetchOptions.body);
+
     // add random id between 1000 and 2000 to simulate assignment of entity ID in backend
     newReportObj.id = Math.random() * (2000 - 1000) + 1000;
+
+    // add base64 prefix to photo. In production, the service answers with a normal URL
+    newReportObj.photo = `data:image/jpg;base64,${newReportObj.photo}`;
+
     // cache object for usage in get request
     reportsCompiledInSession.push(newReportObj);
     const res = {
