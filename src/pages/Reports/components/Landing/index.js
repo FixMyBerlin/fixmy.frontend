@@ -31,7 +31,7 @@ const ContentWrapper = styled.div`
 
 export default () => (
   <div>
-    <TopSection toUrl={`${config.routes.reports.new}`} />
+    <TopSection toUrl={`${config.routes.reports.map}`} />
     <ContentWrapper>
       <SectionDivider />
       <HowItWorksSection />
