@@ -17,11 +17,12 @@ const Button = styled.div`
   background: ${config.colors.interaction};
   font-size:30px;
   cursor: pointer;
-   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  }
 `;
 
 export default ({ onTab }) => (
-  <Button onClick={onTab}>
+  <Button onClick={onTab} className="wiggle">
     +
   </Button>
 );
