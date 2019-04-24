@@ -22,7 +22,7 @@ const reportsCompiledInSession = [];
 
 export const setUpMocking = () => {
   // const REPORTS_ROUTE_SEARCH_PATTERN = /^\/(?!data)(reports)/;
-  const ROUTE = 'reports/';
+  const ROUTE = 'reports';
   const REPORTS_ROUTE_SEARCH_PATTERN = `${config.apiUrl}/${ROUTE}`;
 
   fetchMock.get(REPORTS_ROUTE_SEARCH_PATTERN, () => {
@@ -43,7 +43,10 @@ export const setUpMocking = () => {
     newReportObj.id = Math.random() * (2000 - 1000) + 1000;
 
     // add base64 prefix to photo. In production, the service answers with a normal URL
-    newReportObj.photo = `data:image/jpg;base64,${newReportObj.photo}`;
+    const photoSource = `data:image/jpg;base64,${newReportObj.photo}`;
+    // answered photo is an object with a src property.
+    newReportObj.photo = {};
+    newReportObj.photo.src = photoSource;
 
     // cache object for usage in get request
     reportsCompiledInSession.push(newReportObj);

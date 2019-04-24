@@ -108,7 +108,6 @@ class ReportsPopup extends PureComponent {
   render() {
     const { selectedReport, onClose, match } = this.props;
     if (!selectedReport) return null;
-
     return (
       <Router history={history}>
 
@@ -117,14 +116,11 @@ class ReportsPopup extends PureComponent {
             match.isExact && (
               <Wrapper>
                 <PopupWrapper>
-                  {selectedReport.photo && (
+                  {selectedReport.photo.src && (
                     <PreviewImageContainer
-                      style={
-                        // during development, urls are base64 encoded. In production, normal URLs are used
-                        {
-                          backgroundImage: selectedReport.photo.startsWith('data:image/') ? `url(${selectedReport.photo})` : selectedReport.photo
-                        }
-                      }
+                      style={{
+                          backgroundImage: `url(${selectedReport.photo.src})`
+                        }}
                     />
                   )}
                   <CloseButton onClick={onClose}>
@@ -148,7 +144,7 @@ class ReportsPopup extends PureComponent {
                 onClose={() => history.push(match.url)}
                 reportId={selectedReport.id}
                 address={selectedReport.address}
-                photo={selectedReport.photo}
+                photo={selectedReport.photo.src}
                 number={selectedReport.details.number}
                 description={selectedReport.description}
               />

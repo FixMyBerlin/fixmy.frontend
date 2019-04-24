@@ -1,13 +1,13 @@
 /* eslint-disable prefer-destructuring,no-use-before-define */
 import ky from 'ky';
+import oneLine from 'common-tags/es/oneLine/oneLine';
 import validateNewReport from './test/schemaValidation/validateNewReport';
 import { setUpMocking } from './fixtures';
-import oneLine from "common-tags/es/oneLine/oneLine";
 
 // mock api responses if configured
 if (config.mockReportsApi) setUpMocking();
 
-const ROUTE = 'reports/';
+const ROUTE = 'reports';
 
 export async function apiSubmitReport(json) {
   return handleSubmitRequest({ json });

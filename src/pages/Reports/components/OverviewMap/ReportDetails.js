@@ -263,7 +263,7 @@ class ReportDetails extends PureComponent {
           <CloseIcon onClick={onClose} />
         </TopBar>
 
-        {photo && (<ReportImage src={`data:image/jpg;base64,${photo}`} />)}
+        {photo && (<ReportImage src={photo} />)}
 
         <HeadlineSection>
           <Heading>{`${number} neue Fahrradbügel benötigt`}</Heading>
