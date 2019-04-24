@@ -43,7 +43,8 @@ class WebglMap extends PureComponent {
       container: this.root,
       style: MB_STYLE_URL,
       bounds: config.reportsOverViewMap.bounds,
-      maxBounds: config.reportsOverViewMap.maxBounds
+      // add enough padding to allow mapCenter to be moved to the outer boundary of the area of interest
+      maxBounds: this.addPaddingToBounds(config.reportsOverViewMap.maxBounds)
     });
 
     this.map.on('load', this.handleLoad);
@@ -71,6 +72,14 @@ class WebglMap extends PureComponent {
       updateDragPanFunc.call(dragPanHandler);
     }
   }
+
+  addPaddingToBounds = (bounds) => {
+    const PADDING_IN_DEG = config.reportsLocateMeMap.paddingInDegree || 0.2;
+    const [sw, ne] = bounds;
+    const moreSw = sw.map(coord => coord - PADDING_IN_DEG);
+    const moreNe = ne.map(coord => coord + PADDING_IN_DEG);
+    return [moreSw, moreNe];
+  };
 
   handleLoad = () => {
     this.setState({ loading: false });
