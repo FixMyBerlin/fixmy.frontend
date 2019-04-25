@@ -92,39 +92,35 @@ class OverviewMap extends Component {
   render() {
     const { reports, selectedReport, match } = this.props;
     return (
-      <Router history={history}>
-        <MapView>
-
-          <MapWrapper>
-            <StyledWebGlMap
-              reportsData={reports}
-              center={this.state.mapCenter}
-              onMarkerClick={this.handleMarkerClick}
-              disabled={match.isExact}
-            />
-            <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
-
-            <LocatorControl
-              key="ReportsOverviewMap__LocatorControl"
-              onChange={this.handleLocationChange}
-              customPosition={{ bottom: '42px', right: '7px' }}
-            />
-            <AddButton onTab={this.onAddButtonTab} />
-
-          </MapWrapper>
-
-          <Route
-            path={`${match.path}/:reportId`}
-            render={() => (
-              <ReportsPopup
-                onClose={this.handlePopupClose}
-                reportItem={selectedReport}
-              />
-)}
+      <MapView>
+        <MapWrapper>
+          <StyledWebGlMap
+            reportsData={reports}
+            center={this.state.mapCenter}
+            onMarkerClick={this.handleMarkerClick}
+            disabled={match.isExact}
           />
+          <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
 
-        </MapView>
-      </Router>
+          <LocatorControl
+            key="ReportsOverviewMap__LocatorControl"
+            onChange={this.handleLocationChange}
+            customPosition={{ bottom: '42px', right: '7px' }}
+          />
+          <AddButton onTab={this.onAddButtonTab} />
+
+        </MapWrapper>
+
+        <Route
+          path={`${match.path}/:reportId`}
+          render={() => (
+            <ReportsPopup
+              onClose={this.handlePopupClose}
+              reportItem={selectedReport}
+            />
+            )}
+        />
+      </MapView>
     );
   }
 }
@@ -134,6 +130,7 @@ const mapDispatchToPros = {
   loadReportsData,
   removeError
 };
+
 export default withRouter(connect(state => ({
   selectedReport: state.ReportsState.selectedReport,
   reports: state.ReportsState.reports

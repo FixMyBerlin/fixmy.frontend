@@ -114,49 +114,44 @@ class ReportsPopup extends PureComponent {
     const photoSrc = idx(selectedReport, _ => _.photo.src);
 
     return (
-      <Router history={history}>
-
-        <Fragment>
-          {
-            match.isExact && (
-              <Wrapper>
-                <PopupWrapper>
-                  {photoSrc && (
-                    <PreviewImageContainer
-                      style={{
-                          backgroundImage: `url(${photoSrc})`
-                        }}
-                    />
-                  )}
-                  <CloseButton onClick={onClose}>
-                    <CloseIcon />
-                  </CloseButton>
-                  <MainSection>
-                    <Address>{selectedReport.address}</Address>
-                    <NumberStatement>{`${selectedReport.details.number} neue Fahrradbügel benötigt`}</NumberStatement>
-                    <DetailsLink to={`${match.url}${config.routes.reports.reportDetails}`}>Details</DetailsLink>
-                  </MainSection>
-                </PopupWrapper>
-              </Wrapper>
-            )
-          }
-
-
-          <Route
-            path={`${match.path}${config.routes.reports.reportDetails}`}
-            render={() => (
-              <ReportDetails
-                onClose={() => history.push(match.url)}
-                reportId={selectedReport.id}
-                address={selectedReport.address}
-                photo={photoSrc}
-                number={selectedReport.details.number}
-                description={selectedReport.description}
-              />
-            )}
-          />
-        </Fragment>
-      </Router>
+      <Fragment>
+        {
+          match.isExact && (
+            <Wrapper>
+              <PopupWrapper>
+                {photoSrc && (
+                  <PreviewImageContainer
+                    style={{
+                        backgroundImage: `url(${photoSrc})`
+                      }}
+                  />
+                )}
+                <CloseButton onClick={onClose}>
+                  <CloseIcon />
+                </CloseButton>
+                <MainSection>
+                  <Address>{selectedReport.address}</Address>
+                  <NumberStatement>{`${selectedReport.details.number} neue Fahrradbügel benötigt`}</NumberStatement>
+                  <DetailsLink to={`${match.url}${config.routes.reports.reportDetails}`}>Details</DetailsLink>
+                </MainSection>
+              </PopupWrapper>
+            </Wrapper>
+          )
+        }
+        <Route
+          path={`${match.path}${config.routes.reports.reportDetails}`}
+          render={() => (
+            <ReportDetails
+              onClose={() => history.push(match.url)}
+              reportId={selectedReport.id}
+              address={selectedReport.address}
+              photo={photoSrc}
+              number={selectedReport.details.number}
+              description={selectedReport.description}
+            />
+          )}
+        />
+      </Fragment>
     );
   }
 }
