@@ -1,57 +1,30 @@
 import React, { PureComponent } from 'react';
 import withRouter from 'react-router/withRouter';
-import MapboxGL from 'mapbox-gl';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import _isEqual from 'lodash.isequal';
+
 import { animateView, setView } from '~/pages/Map/map-utils';
-
-const StyledMap = styled.div`
-  width: 100%;
-  height: 100%;
-  flex: 1;
-`;
-
-const MB_STYLE_URL = `${config.reportsOverViewMap.style}?fresh=true`;
-MapboxGL.accessToken = MapboxGL.accessToken || config.map.accessToken;
-
+import BaseMap from '~/pages/Reports/components/BaseMap';
 
 class WebglMap extends PureComponent {
   static propTypes = {
-    className: PropTypes.string,
     center: PropTypes.arrayOf(PropTypes.number),
     zoom: PropTypes.number,
     onMapDrag: PropTypes.func,
     allowDrag: PropTypes.bool
-  };
+  }
 
   static defaultProps = {
-    className: 'locator-map',
     center: config.map.view.center,
     zoom: 18, // TODO: make this configurable
     onMapDrag: () => console.log('onMapDrag says implement me'),
     allowDrag: true
-  };
-
-  state = {
-    loading: true
-  };
-
-  componentDidMount() {
-    // set up mapbox-gl js map
-    this.map = new MapboxGL.Map({
-      container: this.root,
-      style: MB_STYLE_URL,
-      bounds: config.reportsOverViewMap.bounds,
-      // add enough padding to allow mapCenter to be moved to the outer boundary of the area of interest
-      maxBounds: this.addPaddingToBounds(config.reportsOverViewMap.maxBounds)
-    });
-
-    this.map.on('load', this.handleLoad);
   }
 
+  map = null
+
   componentDidUpdate(prevProps) {
-    if (this.state.loading) {
+    if (!this.map) {
       return false;
     }
 
@@ -63,7 +36,6 @@ class WebglMap extends PureComponent {
     if (viewChanged) {
       this.setView(this.getViewFromProps(), this.props.animate);
     }
-
 
     const allowDragChanged = prevProps.allowDrag !== this.props.allowDrag;
     if (allowDragChanged && this.map) {
@@ -78,11 +50,12 @@ class WebglMap extends PureComponent {
     const [sw, ne] = bounds;
     const moreSw = sw.map(coord => coord - PADDING_IN_DEG);
     const moreNe = ne.map(coord => coord + PADDING_IN_DEG);
-    return [moreSw, moreNe];
-  };
 
-  handleLoad = () => {
-    this.setState({ loading: false });
+    return [moreSw, moreNe];
+  }
+
+  onLoad = (map) => {
+    this.map = map;
 
     // center prop might have been set by getting the device´s geolocation before the component sets up
     if (this.props.center !== config.map.view.center) {
@@ -93,7 +66,7 @@ class WebglMap extends PureComponent {
 
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
-  };
+  }
 
   setView = (view, animate = false) => {
     if (animate) {
@@ -101,7 +74,7 @@ class WebglMap extends PureComponent {
     } else {
       setView(this.map, view);
     }
-  };
+  }
 
   getViewFromProps = () => (
     {
@@ -110,27 +83,21 @@ class WebglMap extends PureComponent {
       bearing: this.props.bearing,
       pitch: this.props.pitch
     }
-  );
+  )
 
   handleMoveEnd = () => {
     const mapCenter = this.map.getCenter();
     const { lat, lng } = mapCenter;
     this.props.onMapDrag({ lat, lng });
-  };
+  }
 
-  handleMove = () => {
-
-  };
-
+  handleMove = () => {}
 
   render() {
-    const { className } = this.props;
     return (
-      <StyledMap
-        className={className}
-        ref={(ref) => {
-          this.root = ref;
-        }}
+      <BaseMap
+        maxBounds={this.addPaddingToBounds(config.reportsMap.maxBounds)}
+        onLoad={map => this.onLoad(map)}
       />
     );
   }

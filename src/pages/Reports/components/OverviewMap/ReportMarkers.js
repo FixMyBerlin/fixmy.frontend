@@ -9,8 +9,6 @@ const Markers = {
 
 // TODO: Establish a base Marker class that contains generic lifecycle logic to de-dupe
 class ReportMarkers extends PureComponent {
-
-
   constructor() {
     super();
 

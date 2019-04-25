@@ -69,6 +69,7 @@ const AddressIndicator = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
+  user-select: none;
 `;
 
 const InvalidAdressIndicator = styled(AddressIndicator)`
@@ -191,11 +192,11 @@ class LocateMeMap extends Component {
         )}
 
         {!this.getPinned() && (
-        <PinLocationButton
-          onConfirm={this.props.pinLocation}
-          text="Diese Position bestätigen"
-          disabled={!(this.props.tempLocation && this.props.tempLocation.valid && this.props.tempLocation.address)}
-        />
+          <PinLocationButton
+            onConfirm={this.props.pinLocation}
+            text="Diese Position bestätigen"
+            disabled={!(this.props.tempLocation && this.props.tempLocation.valid && this.props.tempLocation.address)}
+          />
         )}
 
         {this.getPinned() && (
@@ -205,8 +206,6 @@ class LocateMeMap extends Component {
             address={this.props.tempLocation.address}
           />
         )}
-
-
       </MapView>
     );
   }

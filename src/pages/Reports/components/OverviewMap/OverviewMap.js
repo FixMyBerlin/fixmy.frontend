@@ -39,9 +39,6 @@ const MapWrapper = styled.div`
   flex-direction: column;
 `;
 
-const StyledWebGlMap = styled(WebglMap)`
-  order: 2; // this makes sure that the NavBar is on top
-`;
 
 class OverviewMap extends Component {
   constructor(props) {
@@ -95,13 +92,13 @@ class OverviewMap extends Component {
     return (
       <MapView>
         <MapWrapper>
-          <StyledWebGlMap
+          <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
+          <WebglMap
             reportsData={reports}
             center={this.state.mapCenter}
             onMarkerClick={this.handleMarkerClick}
             disabled={match.isExact}
           />
-          <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
 
           <LocatorControl
             key="ReportsOverviewMap__LocatorControl"
