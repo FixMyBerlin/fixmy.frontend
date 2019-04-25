@@ -68,11 +68,11 @@ const AddressIndicator = styled.div`
   top: 184px;
   left: 0;
   right: 0;
-  bottom: 0; // TODO: proper positioning
+  bottom: 0;
 `;
 
 const InvalidAdressIndicator = styled(AddressIndicator)`
-  color: ${config.colors.error}
+  color: ${config.colors.error};
 `;
 
 // TODO: when location is pinned: 1. do not allow map drag

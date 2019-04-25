@@ -5,13 +5,13 @@ import Button from '~/components/Button';
 import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`
-z-index: 9999999999;
+  z-index: 9999999999;
   background-color: white;
   padding: 14px;
   position: absolute;
   margin: auto;
-  bottom: 0; 
-  left: 0;  
+  bottom: 0;
+  left: 0;
   right: 0;
 `;
 
@@ -20,20 +20,20 @@ const Heading = styled.h2`
   font-size: 22px;
   font-weight: bold;
   text-align: center;
-  color: ${config.colors.black}
+  color: ${config.colors.black};
 `;
 
 const AddressIndicator = styled.p`
   margin-top: 3px;
   margin-bottom: 24px;
-   text-align: center;
+  text-align: center;
 `;
 
 const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  
-   ${media.m`
+
+  ${media.m`
      justify-content: space-around;
   `}
 `;
