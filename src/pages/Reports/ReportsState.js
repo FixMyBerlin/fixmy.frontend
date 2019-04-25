@@ -166,9 +166,6 @@ export function setSelectedReport(selectedReport) {
   };
 }
 
-export const unsetSelectedReport = () => ({ type: UNSET_SELECTED_REPORT });
-
-
 export function geocodeAddress(searchtext) {
   return async (dispatch) => {
     const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;

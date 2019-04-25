@@ -234,17 +234,14 @@ class ReportDetails extends PureComponent {
   render() {
     const {
       onClose,
-      reports,
-      match
+      reportItem
     } = this.props;
 
-    if (reports.length === 0) {
+    if (typeof reportItem === 'undefined') {
       return null;
     }
 
-    const { reportId } = match.params;
-    const report = reports.find(r => r.id === +reportId);
-    const { address, photo, number, description } = report;
+    const { address, photo, number, description, id } = reportItem;
 
     return (
       <Wrapper>
@@ -254,7 +251,7 @@ class ReportDetails extends PureComponent {
             <Address>
               {this.formatAddressString(address)}
             </Address>
-            <ReportId>Meldung {reportId}</ReportId>
+            <ReportId>Meldung {id}</ReportId>
           </TopBarContent>
           <CloseIcon onClick={onClose} />
         </TopBar>

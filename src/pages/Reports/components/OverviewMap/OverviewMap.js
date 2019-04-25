@@ -121,9 +121,8 @@ class OverviewMap extends Component {
           path={`${config.routes.reports.reportDetails}/:reportId`}
           render={props => (
             <ReportDetails
-              onClose={() => this.props.history.push(match.url)}
-              reports={reports}
-              {...props}
+              onClose={() => props.history.push(match.url)}
+              reportItem={reports.find(r => r.id === +props.match.params.reportId)}
             />
           )}
         />

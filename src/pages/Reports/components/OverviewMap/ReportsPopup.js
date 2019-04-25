@@ -7,7 +7,7 @@ import idx from 'idx';
 import { breakpoints } from '~/styles/utils';
 import { X } from 'react-feather';
 import { connect } from 'react-redux';
-import { setSelectedReport, unsetSelectedReport } from '../../ReportsState';
+import { setSelectedReport } from '../../ReportsState';
 
 // TODO: add like feature
 
@@ -131,5 +131,5 @@ export default withRouter(
   connect(state => ({
     selectedReport: state.ReportsState.selectedReport,
     reports: state.ReportsState.reports
-  }), { setSelectedReport, unsetSelectedReport })(ReportsPopup)
+  }), { setSelectedReport })(ReportsPopup)
 );
