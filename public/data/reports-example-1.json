@@ -1,0 +1,19 @@
+{
+  "address": "Alexandrinenstraße 118, 10969 Berlin",
+  "description": "",
+  "details": {
+    "fee": 2,
+    "number": 18,
+    "subject": "BIKE_STANDS",
+    "placement": "SIDEWALK"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [13.40061834673159, 52.50075090458924]
+  },
+  "id": 2,
+  "photo": {
+    "copyright": null,
+    "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/4598b3b2-3c4.jpg"
+  }
+}

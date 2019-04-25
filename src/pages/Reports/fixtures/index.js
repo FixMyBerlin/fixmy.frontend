@@ -24,14 +24,23 @@ export const setUpMocking = () => {
   // const REPORTS_ROUTE_SEARCH_PATTERN = /^\/(?!data)(reports)/;
   const ROUTE = 'reports';
   const REPORTS_ROUTE_SEARCH_PATTERN = `${config.apiUrl}/${ROUTE}`;
+  const REPORTS_ROUTE_SEARCH_PATTERN_ID = new RegExp(`${config.apiUrl}/${ROUTE}/[0-9]+`);
 
   fetchMock.get(REPORTS_ROUTE_SEARCH_PATTERN, () => {
     const DELAY = 1000;
     console.log(`Mocking GET request call to /reports using a delay of ${DELAY}`);
-    return delay(1000)
+    return delay(DELAY)
       .then(() => fetch('/data/reports-example.json'))
       .then(res => res.json())
       .then(reportList => reportList.concat(reportsCompiledInSession));
+  });
+
+  fetchMock.get(REPORTS_ROUTE_SEARCH_PATTERN_ID, () => {
+    const DELAY = 600;
+    console.log(`Mocking GET request call to /reports/:id using a delay of ${DELAY}`);
+    return delay(DELAY)
+      .then(() => fetch('/data/reports-example-1.json'))
+      .then(res => res.json());
   });
 
   fetchMock.post(REPORTS_ROUTE_SEARCH_PATTERN, (url, fetchOptions) => {
