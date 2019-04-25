@@ -154,13 +154,15 @@ export function loadReportsData() {
   };
 }
 
-export function setSelectedReport(id) {
+export function setSelectedReport(selectedReport) {
   return async (dispatch, getState) => {
     const { reports } = getState().ReportsState;
+
     if (!reports.length) {
       await loadReportsDataInner(dispatch);
     }
-    dispatch({ type: SET_SELECTED_REPORT, id });
+
+    dispatch({ type: SET_SELECTED_REPORT, selectedReport });
   };
 }
 
@@ -415,7 +417,7 @@ export default function ReportsReducer(state = initialState, action = {}) {
       return dotProp.delete(state, action.stateNodeToUnset);
     case SET_SELECTED_REPORT:
       return {
-        ...state, selectedReport: state.reports.find(r => r.id === action.id) || null
+        ...state, selectedReport: action.selectedReport || null
       };
     case UNSET_SELECTED_REPORT:
       return {

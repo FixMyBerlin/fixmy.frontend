@@ -7,20 +7,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import withRouter from 'react-router/withRouter';
-import { Router, Route } from 'react-router-dom';
-import history from '~/history';
+import { Route } from 'react-router-dom';
 import styled from 'styled-components';
+
 import WebglMap from './WebglMap';
 import OverviewMapNavBar from './OverviewMapNavBar';
 import AddButton from './AddButton';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 import ReportsPopup from './ReportsPopup';
+import ReportDetails from './ReportDetails';
 
 import {
   removeError,
-  loadReportsData
+  loadReportsData,
+  setSelectedReport
 } from '~/pages/Reports/ReportsState';
-
 
 const MapView = styled.div`
   height: 100%;
@@ -42,10 +43,10 @@ const StyledWebGlMap = styled(WebglMap)`
   order: 2; // this makes sure that the NavBar is on top
 `;
 
-
 class OverviewMap extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       // [lng, lat]
       mapCenter: null
@@ -71,26 +72,26 @@ class OverviewMap extends Component {
     return null;
   }
 
-
   onAddButtonTab = () => {
     this.props.history.push(config.routes.reports.new);
-  };
+  }
 
   handleMarkerClick = (el, reportItem) => {
-    this.props.history.push(`${config.routes.reports.map}/${reportItem.id}`);
-  };
+    this.props.setSelectedReport(reportItem);
+  }
 
   handleLocationChange = (coords) => {
     this.setState({ mapCenter: coords });
-  };
+  }
 
   handlePopupClose = () => {
     // show map by returning to the map route
-    history.push(this.props.match.path);
-  };
+    this.props.setSelectedReport(null);
+  }
 
   render() {
     const { reports, selectedReport, match } = this.props;
+
     return (
       <MapView>
         <MapWrapper>
@@ -110,25 +111,31 @@ class OverviewMap extends Component {
           <AddButton onTab={this.onAddButtonTab} />
 
         </MapWrapper>
-
+        {selectedReport && (
+          <ReportsPopup
+            onClose={this.handlePopupClose}
+            reportItem={selectedReport}
+          />
+        )}
         <Route
-          path={`${match.path}/:reportId`}
-          render={() => (
-            <ReportsPopup
-              onClose={this.handlePopupClose}
-              reportItem={selectedReport}
+          path={`${config.routes.reports.reportDetails}/:reportId`}
+          render={props => (
+            <ReportDetails
+              onClose={() => this.props.history.push(match.url)}
+              reports={reports}
+              {...props}
             />
-            )}
+          )}
         />
       </MapView>
     );
   }
 }
 
-
 const mapDispatchToPros = {
   loadReportsData,
-  removeError
+  removeError,
+  setSelectedReport
 };
 
 export default withRouter(connect(state => ({

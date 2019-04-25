@@ -38,7 +38,7 @@ const Wrapper = styled.div`
     overflow:hidden;
     ${boxShadow}
   `}
-  
+
   ${media.l`
     width: 50%;
     height: 50%;
@@ -121,7 +121,7 @@ const BikeStandsCount = styled.p`
   text-align: center;
   font-size: 10px;
   color: #999999;
-  
+
 `;
 
 const Description = styled.p`
@@ -168,7 +168,7 @@ const LikeButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
- 
+
   margin: 0 auto;
 `;
 
@@ -193,18 +193,8 @@ const ShareButton = styled(ShareIcon)`
 
 class ReportDetails extends PureComponent {
   static propTypes = {
-    onClose: PropTypes.func.isRequired,
-    reportId: PropTypes.number.isRequired,
-    address: PropTypes.string.isRequired,
-    number: PropTypes.number.isRequired,
-    photo: PropTypes.string,
-    description: PropTypes.string
-  };
-
-  static defaultProps = {
-    photo: '',
-    description: ''
-  };
+    onClose: PropTypes.func.isRequired
+  }
 
   /**
    * Removes zipcode and city
@@ -224,49 +214,55 @@ class ReportDetails extends PureComponent {
    */
   shareReport = () => {
     const { reportItem } = this.props;
+
     if (!navigator.share) {
       console.warn('Share API not present');
       return;
     }
+
     if (navigator.share) {
       navigator.share({
         title: `${reportItem.details.number} neue Fahrradbügel benötigt`,
-        text: `${reportItem.description} 
-        Eine Meldung auf FixMyBerlin.`,
+        text: `${reportItem.description} Eine Meldung auf FixMyBerlin.`,
         url: window.location
       })
         .then(() => console.log('Successful share'))
         .catch(error => console.log('Error sharing', error)); // TODO: show error feedback
     }
-  };
+  }
 
   render() {
     const {
       onClose,
-      reportId,
-      address,
-      photo,
-      description,
-      number
+      reports,
+      match
     } = this.props;
+
+    if (reports.length === 0) {
+      return null;
+    }
+
+    const { reportId } = match.params;
+    const report = reports.find(r => r.id === +reportId);
+    const { address, photo, number, description } = report;
+
     return (
       <Wrapper>
         <TopBar>
           <TopBarIcon src={ReportDetailsShape} alt="Report Details" />
           <TopBarContent>
-            <Address>{
-              this.formatAddressString(address)
-            }
+            <Address>
+              {this.formatAddressString(address)}
             </Address>
             <ReportId>Meldung {reportId}</ReportId>
           </TopBarContent>
           <CloseIcon onClick={onClose} />
         </TopBar>
 
-        {photo && (<ReportImage src={photo} />)}
+        {photo.src && (<ReportImage src={photo.src} />)}
 
         <HeadlineSection>
-          <Heading>{`${number} neue Fahrradbügel benötigt`}</Heading>
+          <Heading>{number} neue Fahrradbügel benötigt</Heading>
           <BikeStandsCountSection>
             <BikestandsIcon />
             <BikeStandsCount>x{number}</BikeStandsCount>
