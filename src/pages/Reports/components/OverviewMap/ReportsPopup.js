@@ -2,6 +2,8 @@ import React, { PureComponent, Fragment } from 'react';
 import withRouter from 'react-router-dom/withRouter';
 import { Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import idx from 'idx';
+
 import { breakpoints } from '~/styles/utils';
 import { X } from 'react-feather';
 import history from '~/history';
@@ -108,6 +110,9 @@ class ReportsPopup extends PureComponent {
   render() {
     const { selectedReport, onClose, match } = this.props;
     if (!selectedReport) return null;
+
+    const photoSrc = idx(selectedReport, _ => _.photo.src);
+
     return (
       <Router history={history}>
 
@@ -116,10 +121,10 @@ class ReportsPopup extends PureComponent {
             match.isExact && (
               <Wrapper>
                 <PopupWrapper>
-                  {selectedReport.photo.src && (
+                  {photoSrc && (
                     <PreviewImageContainer
                       style={{
-                          backgroundImage: `url(${selectedReport.photo.src})`
+                          backgroundImage: `url(${photoSrc})`
                         }}
                     />
                   )}
@@ -144,7 +149,7 @@ class ReportsPopup extends PureComponent {
                 onClose={() => history.push(match.url)}
                 reportId={selectedReport.id}
                 address={selectedReport.address}
-                photo={selectedReport.photo.src}
+                photo={photoSrc}
                 number={selectedReport.details.number}
                 description={selectedReport.description}
               />
