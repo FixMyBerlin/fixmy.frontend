@@ -224,7 +224,9 @@ export async function getGeoLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         resolve(position);
-      }, reject);
+      }, (err) => {
+        reject(err);
+      }, { timeout: 10000 });
     } else {
       reject();
     }

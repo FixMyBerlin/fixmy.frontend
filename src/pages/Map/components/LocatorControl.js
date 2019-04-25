@@ -60,8 +60,9 @@ class LocatorControl extends PureComponent {
       if (typeof lat === 'number' && typeof lng === 'number') {
         this.props.onChange([lng, lat]);
       }
-    } catch (e) {
+    } catch (err) {
       alert('Um dich zu lokalisieren, benötigen wir deine Berechtigung.'); // eslint-disable-line
+      throw err;
     }
 
     this.setState({ isLoading: false });
