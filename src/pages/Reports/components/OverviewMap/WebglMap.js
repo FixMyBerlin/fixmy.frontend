@@ -30,7 +30,7 @@ class WebglMap extends PureComponent {
     if (this.props.center) {
       this.map.easeTo({ center: this.props.center, zoom: 14 });
     } else {
-      this.map.fitBounds(config.reportsOverViewMap.bounds);
+      this.map.fitBounds(config.reportsMap.bounds);
     }
 
     this.toggleMapInteractivity(this.props.disabled);
