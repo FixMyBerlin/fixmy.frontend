@@ -6,8 +6,7 @@
 import React, { Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-// eslint-disable-next-line no-unused-vars
-import { PropagateLoader } from 'react-spinners';
+
 import {
   setLocationMode,
   LOCATION_MODE_GEOCODING,
@@ -26,19 +25,12 @@ import BikestandsForm from './BikestandsForm';
 import AdditionalDataForm from './AdditionalDataForm';
 import FormProgressBar from './FormProgressBar';
 import ReportSubmitted from './ReportSubmitted';
+import BigLoader from '~/components/BigLoader';
 
 const SubmitReportWrapper = styled.div`
   min-height: 100%;
   display: flex;
   flex-direction: column;
-`;
-
-const LoaderWrapper = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 // TODO: dedupe-logic in FormProgressBar Element creation, factor out to function
@@ -119,11 +111,7 @@ class SubmitReport extends PureComponent {
 
     if (submitting) {
       return (
-        <LoaderWrapper>
-          <PropagateLoader
-            color={`${config.colors.interaction}`}
-          />
-        </LoaderWrapper>
+        <BigLoader />
       );
     }
 
