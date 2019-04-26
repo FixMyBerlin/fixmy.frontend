@@ -4,7 +4,7 @@
  *  TODO: fetch/mock marker data and pass as prop to WebGl OverviewMap
  */
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import withRouter from 'react-router/withRouter';
 import { Route } from 'react-router-dom';
@@ -46,7 +46,8 @@ class OverviewMap extends Component {
 
     this.state = {
       // [lng, lat]
-      mapCenter: null
+      mapCenter: null,
+      isLoading: true
     };
   }
 
@@ -92,8 +93,24 @@ class OverviewMap extends Component {
     this.props.setSelectedReport(null);
   }
 
+  onMapLoad = () => {
+    this.setState({ isLoading: false });
+  }
+
   render() {
     const { reports, selectedReport, match } = this.props;
+
+    const mapControls = (
+      <Fragment>
+        <LocatorControl
+          key="ReportsOverviewMap__LocatorControl"
+          onChange={this.handleLocationChange}
+          customPosition={{ bottom: '42px', right: '7px' }}
+        />
+        <AddButton onTab={this.onAddButtonTab} />
+      </Fragment>
+    );
+
     return (
       <MapView>
         <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
@@ -103,14 +120,9 @@ class OverviewMap extends Component {
             center={this.state.mapCenter}
             onMarkerClick={this.handleMarkerClick}
             disabled={match.isExact}
+            onLoad={this.onMapLoad}
           />
-
-          <LocatorControl
-            key="ReportsOverviewMap__LocatorControl"
-            onChange={this.handleLocationChange}
-            customPosition={{ bottom: '42px', right: '7px' }}
-          />
-          <AddButton onTab={this.onAddButtonTab} />
+          { this.state.isLoading ? null : mapControls }
           {selectedReport && (
             <Route
               path={match.path}
@@ -136,7 +148,6 @@ class OverviewMap extends Component {
             )}
           />
         </MapWrapper>
-
       </MapView>
     );
   }
