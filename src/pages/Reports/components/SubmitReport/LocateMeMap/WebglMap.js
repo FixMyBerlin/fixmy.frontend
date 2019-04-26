@@ -12,6 +12,7 @@ class WebglMap extends PureComponent {
     zoom: PropTypes.number,
     onMapDrag: PropTypes.func,
     allowDrag: PropTypes.bool,
+    onLoad: PropTypes.func,
     zoomedOut: PropTypes.bool
   }
 
@@ -20,6 +21,7 @@ class WebglMap extends PureComponent {
     zoom: 18, // TODO: make this configurable
     onMapDrag: () => console.log('onMapDrag says implement me'),
     allowDrag: true,
+    onLoad: () => {},
     zoomedOut: false
   }
 
@@ -79,6 +81,9 @@ class WebglMap extends PureComponent {
 
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
+
+    // notify containers that map has been initialized
+    this.props.onLoad();
   }
 
   setView = (view, animate = false) => {

@@ -77,7 +77,6 @@ const InvalidAdressIndicator = styled(AddressIndicator)`
   color: ${config.colors.error};
 `;
 
-// TODO: when location is pinned: 1. do not allow map drag
 
 let validationBoundary = null; // kept here for caching
 
@@ -95,7 +94,8 @@ class LocateMeMap extends Component {
     super(props);
     this.state = {
       mapHasBeenDragged: false,
-      locationPinned: false
+      locationPinned: false,
+      isLoading: true
     };
   }
 
@@ -166,10 +166,14 @@ class LocateMeMap extends Component {
   }
 
   togglePinned = () => {
-    this.setState((state) => ({
+    this.setState(state => ({
       locationPinned: !state.locationPinned
     }));
   };
+
+  onMapLoad = () => {
+    this.setState({ isLoading: false });
+  }
 
   render() {
     return (
@@ -184,7 +188,7 @@ class LocateMeMap extends Component {
           )
         }
 
-        {this.props.locationMode === LOCATION_MODE_GEOCODING && (
+        {!this.state.isLoading && this.props.locationMode === LOCATION_MODE_GEOCODING && (
           <Fragment>
             {!this.state.locationPinned && (
               <SearchBar onSubmit={this.onSearchAddress} />
@@ -197,29 +201,37 @@ class LocateMeMap extends Component {
 
 
         <MapWrapper>
-          {this.props.locationMode && (
-          <StaticMarker
-            pinned={this.state.locationPinned}
-          />
-          )}
-
-          {this.props.tempLocation && this.props.tempLocation.address && this.props.tempLocation.valid && (
-            <AddressIndicator>{this.props.tempLocation.address}</AddressIndicator>
-          )}
-          {this.props.tempLocation && !this.props.tempLocation.valid && (
-            <InvalidAdressIndicator>{config.reportsLocateMeMap.outofBoundaryText}</InvalidAdressIndicator>
-            )}
-
           <StyledWebGlMap
             zoomedOut={this.props.tempLocation && !this.props.tempLocation.valid}
             center={this.getCenter()}
             className="locate-me-map"
             onMapDrag={this.onMapMove}
             allowDrag={!this.state.locationPinned}
+            onLoad={this.onMapLoad}
           />
+
+          {
+            !this.state.isLoading && (
+              <Fragment>
+                {this.props.locationMode && (
+                  <StaticMarker
+                    pinned={this.state.locationPinned}
+                  />
+                )}
+
+                {this.props.tempLocation && this.props.tempLocation.address && this.props.tempLocation.valid && (
+                  <AddressIndicator>{this.props.tempLocation.address}</AddressIndicator>
+                )}
+                {this.props.tempLocation && !this.props.tempLocation.valid && (
+                  <InvalidAdressIndicator>{config.reportsLocateMeMap.outofBoundaryText}</InvalidAdressIndicator>
+                )}
+              </Fragment>
+            )
+          }
+
         </MapWrapper>
 
-        {(this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
+        {!this.state.isLoading && (this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
         <LocatorControl
           key="ReportsLocateMap__LocatorControl"
           onChange={this.onlocateMeMarkerUse}
@@ -227,7 +239,7 @@ class LocateMeMap extends Component {
         />
         )}
 
-        {!this.state.locationPinned && (
+        {!this.state.isLoading && !this.state.locationPinned && (
           <PinLocationButton
             onConfirm={this.togglePinned}
             text="Diese Position bestätigen"
@@ -256,4 +268,5 @@ const mapDispatchToPros = {
   resetDialogState,
   removeError
 };
+
 export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);

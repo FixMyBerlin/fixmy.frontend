@@ -45,6 +45,7 @@ class WebglMap extends PureComponent {
     // in order to rerender Report Markers
     this.forceUpdate();
 
+    // notify containers that map has been initialized
     this.props.onLoad();
   }
 
