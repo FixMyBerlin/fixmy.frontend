@@ -1,7 +1,9 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MapboxGL from 'mapbox-gl';
+
+import BigLoader from '~/components/BigLoader';
 
 const MB_STYLE_URL = `${config.reportsMap.style}?fresh=true`;
 MapboxGL.accessToken = MapboxGL.accessToken || config.map.accessToken;
@@ -20,7 +22,8 @@ class BaseMap extends PureComponent {
 
   static defaultProps = {
     maxBounds: config.reportsMap.maxBounds,
-    onLoad: () => {}
+    onLoad: () => {
+    }
   }
 
   state = {
@@ -36,20 +39,25 @@ class BaseMap extends PureComponent {
     });
 
     this.map.on('load', () => {
-      this.setState({ isLoading: false });
+      this.setState({isLoading: false});
       this.props.onLoad(this.map);
     });
   }
 
   render() {
+    const Loader = this.state.isLoading ? (<BigLoader />) : null;
     return (
       <StyledMap
         className={this.props.className}
-        ref={(ref) => { this.root = ref; }}
+        ref={(ref) => {
+          this.root = ref;
+        }}
       >
+        {Loader}
         {this.props.children}
       </StyledMap>
     );
+
   }
 }
 
