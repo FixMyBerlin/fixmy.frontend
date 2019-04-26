@@ -10,12 +10,14 @@ import BaseMap from '~/pages/Reports/components/BaseMap';
 class WebglMap extends PureComponent {
   static propTypes = {
     reportsData: PropTypes.array,
-    center: PropTypes.array
+    center: PropTypes.array,
+    onLoad: PropTypes.func
   }
 
   static defaultProps = {
     reportsData: [],
-    center: null
+    center: null,
+    onLoad: () => {}
   }
 
   nav = new MapboxGL.NavigationControl({ showCompass: false })
@@ -42,6 +44,8 @@ class WebglMap extends PureComponent {
 
     // in order to rerender Report Markers
     this.forceUpdate();
+
+    this.props.onLoad();
   }
 
   toggleZoomControl = (isActive) => {
