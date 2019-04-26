@@ -89,7 +89,7 @@ export default createGlobalStyle`
     }
     
     .wiggle {
-      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) 0.4s both;
       backface-visibility: hidden;
       perspective: 1000px;
       
