@@ -11,14 +11,16 @@ class WebglMap extends PureComponent {
     center: PropTypes.arrayOf(PropTypes.number),
     zoom: PropTypes.number,
     onMapDrag: PropTypes.func,
-    allowDrag: PropTypes.bool
+    allowDrag: PropTypes.bool,
+    onLoad: PropTypes.func
   }
 
   static defaultProps = {
     center: config.map.view.center,
     zoom: 18, // TODO: make this configurable
     onMapDrag: () => console.log('onMapDrag says implement me'),
-    allowDrag: true
+    allowDrag: true,
+    onLoad: () => {}
   }
 
   map = null
@@ -66,6 +68,9 @@ class WebglMap extends PureComponent {
 
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
+
+    // notify containers that map has been initialized
+    this.props.onLoad();
   }
 
   setView = (view, animate = false) => {
