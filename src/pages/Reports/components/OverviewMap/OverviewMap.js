@@ -109,17 +109,26 @@ class OverviewMap extends Component {
 
         </MapWrapper>
         {selectedReport && (
-          <ReportsPopup
-            onClose={this.handlePopupClose}
-            reportItem={selectedReport}
+          <Route
+            path={config.routes.reports.reportDetails}
+            exact
+            render={() => (
+              <ReportsPopup
+                onClose={this.handlePopupClose}
+                reportItem={selectedReport}
+              />
+            )}
           />
         )}
         <Route
-          path={`${config.routes.reports.reportDetails}/:reportId`}
+          path={`${config.routes.reports.reportDetails}/:id`}
           render={props => (
             <ReportDetails
-              onClose={() => props.history.push(match.url)}
-              reportItem={reports.find(r => r.id === +props.match.params.reportId)}
+              apiEndpoint="reports"
+              onCloseRoute={match.url}
+              onClose={() => this.props.setSelectedReport(null)}
+              token={this.props.token}
+              reportItem={reports.find(r => r.id === +props.match.params.id)}
             />
           )}
         />
