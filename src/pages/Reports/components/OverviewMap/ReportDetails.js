@@ -1,94 +1,16 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { X } from 'react-feather';
-import { media } from '~/styles/utils';
-import ReportDetailsShape from '~/images/reports/report-details-shape.png';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
 import HeartIcon from '~/images/reports/heart.svg';
 import ShareIcon from '~/images/reports/share.svg';
 
+import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
+
 // TODO: split up in subcomponents (Topbar etc.) just like Reports/Landing
 
-
-const centerBoxWithUnknownDims = `
- margin: auto;
- top:0;
- left:0;
- right:0;
- Bottom: 0;
-`;
-
-const boxShadow = 'box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);';
-
 const Wrapper = styled.div`
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  max-height: 100vh;
-  z-index: 999999999999999;
-  background-color: white;
   display: flex;
   flex-direction: column;
-  ${media.m`
-    width: 80%;
-    height: 80%;
-    ${centerBoxWithUnknownDims}
-    border-radius: 4px;
-    overflow:hidden;
-    ${boxShadow}
-  `}
-
-  ${media.l`
-    width: 50%;
-    height: 50%;
-    ${centerBoxWithUnknownDims}
-    border-radius: 8px;
-    overflow:hidden;
-    ${boxShadow}
-  `}
-`;
-
-const TopBar = styled.div`
-  width: 100%;
-  display: flex;
-  padding: 10px 16px;
-  min-height: 52px;
-  background-color: ${config.colors.lightgrey};
-`;
-
-const CloseIcon = styled(X)`
-  color: ${config.colors.black};
-  cursor: pointer;
-  margin: auto 0;
-`;
-
-const TopBarContent = styled.div`
-  flex-grow: 2;
-  margin-left: 24px;
-`;
-
-const TopBarIcon = styled.img`
-  width: 26px;
-  height: 31px;
-`;
-
-const Address = styled.p`
- font-size: 14px;
- color: ${config.colors.darkgrey};
- font-weight: 600;
- text-transform: uppercase;
- letter-spacing: 0.2px;
- margin: 0 0 3px;
-
-`;
-
-const ReportId = styled.p`
-  color: #999999;
-  font-size: 10px;
-  line-height: 1.2;
-  letter-spacing: 0.2px;
-  margin: 0;
 `;
 
 const ReportImage = styled.img`
@@ -168,7 +90,6 @@ const LikeButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin: 0 auto;
 `;
 
@@ -192,21 +113,6 @@ const ShareButton = styled(ShareIcon)`
 
 
 class ReportDetails extends PureComponent {
-  static propTypes = {
-    onClose: PropTypes.func.isRequired
-  }
-
-  /**
-   * Removes zipcode and city
-   * @param {string} address
-   * @returns {string} Only street and number
-   */
-  formatAddressString = address => address
-    .replace('Berlin', '')
-    .replace(/\b\d{5}\b/g, '')
-    .replace(',', '')
-    .trim();
-
   /**
    * Shares Report using the Share API. TODO: discuss how a shared post looks like
    * Will only work when app is served over HTTPs https://developers.google.com/web/updates/2016/09/navigator-share
@@ -232,37 +138,23 @@ class ReportDetails extends PureComponent {
   }
 
   render() {
-    const {
-      onClose,
-      reportItem
-    } = this.props;
+    const { reportItem } = this.props;
 
     if (typeof reportItem === 'undefined') {
       return null;
     }
 
-    const { address, photo, number, description, id } = reportItem;
+    const { photo, details, description } = reportItem;
 
     return (
       <Wrapper>
-        <TopBar>
-          <TopBarIcon src={ReportDetailsShape} alt="Report Details" />
-          <TopBarContent>
-            <Address>
-              {this.formatAddressString(address)}
-            </Address>
-            <ReportId>Meldung {id}</ReportId>
-          </TopBarContent>
-          <CloseIcon onClick={onClose} />
-        </TopBar>
-
-        {photo.src && (<ReportImage src={photo.src} />)}
+        {photo && photo.src && (<ReportImage src={photo.src} />)}
 
         <HeadlineSection>
-          <Heading>{number} neue Fahrradbügel benötigt</Heading>
+          <Heading>{details.number} neue Fahrradbügel benötigt</Heading>
           <BikeStandsCountSection>
             <BikestandsIcon />
-            <BikeStandsCount>x{number}</BikeStandsCount>
+            <BikeStandsCount>x{details.number}</BikeStandsCount>
           </BikeStandsCountSection>
         </HeadlineSection>
         <Description>{description}</Description>
@@ -289,4 +181,4 @@ class ReportDetails extends PureComponent {
   }
 }
 
-export default ReportDetails;
+export default detailWrapped(ReportDetails);

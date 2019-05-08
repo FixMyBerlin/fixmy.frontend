@@ -83,15 +83,30 @@ const Close = styled.button`
   margin-left: auto;
 `;
 
+/**
+ * Removes zipcode and city
+ * @param {string} address
+ * @returns {string} Only street and number
+ */
+function formatAddressString(address) {
+  return address
+    .replace('Berlin', '')
+    .replace(/\b\d{5}\b/g, '')
+    .replace(',', '')
+    .trim();
+}
+
 function detailWrapped(Component) {
   class DetailWrapperComp extends PureComponent {
     static propTypes = {
       apiEndpoint: PropTypes.string.isRequired,
-      onCloseRoute: PropTypes.string
+      onCloseRoute: PropTypes.string,
+      onClose: PropTypes.func
     }
 
     static defaultProps = {
-      onCloseRoute: '/'
+      onCloseRoute: '/',
+      onClose: () => {}
     }
 
     state = {
@@ -144,6 +159,7 @@ function detailWrapped(Component) {
 
     onClose = () => {
       this.props.history.push(this.props.onCloseRoute);
+      this.props.onClose();
     }
 
     getJSONFallbackPath() {
@@ -182,6 +198,18 @@ function detailWrapped(Component) {
       }
 
       return true;
+    }
+
+    renderName(data) {
+      if (data.name) {
+        return data.name;
+      }
+
+      if (data.address) {
+        return formatAddressString(data.address);
+      }
+
+      return 'Abschnittsname';
     }
 
     renderLoading() {
@@ -224,7 +252,7 @@ function detailWrapped(Component) {
           <DetailHeader>
             <StyledPinIcon />
             <div>
-              <DetailTitle>{data.name || 'Abschnittsname'}</DetailTitle>
+              <DetailTitle>{this.renderName(data)}</DetailTitle>
               <Label uppercase>Abschnitt 1</Label>
             </div>
             <Close onClick={this.onClose}>×</Close>
