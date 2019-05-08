@@ -148,7 +148,7 @@ class ReportDetails extends PureComponent {
 
     return (
       <Wrapper>
-        {photo.src && (<ReportImage src={photo.src} />)}
+        {photo && photo.src && (<ReportImage src={photo.src} />)}
 
         <HeadlineSection>
           <Heading>{details.number} neue Fahrradbügel benötigt</Heading>
