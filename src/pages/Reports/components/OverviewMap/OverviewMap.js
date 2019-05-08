@@ -88,7 +88,6 @@ class OverviewMap extends Component {
 
   render() {
     const { reports, selectedReport, match } = this.props;
-
     return (
       <MapView>
         <MapWrapper>
@@ -110,7 +109,7 @@ class OverviewMap extends Component {
         </MapWrapper>
         {selectedReport && (
           <Route
-            path={config.routes.reports.reportDetails}
+            path={match.path}
             exact
             render={() => (
               <ReportsPopup
@@ -121,7 +120,7 @@ class OverviewMap extends Component {
           />
         )}
         <Route
-          path={`${config.routes.reports.reportDetails}/:id`}
+          path={`${match.path}/:id`}
           render={props => (
             <ReportDetails
               apiEndpoint="reports"

@@ -126,7 +126,6 @@
       "index": "/meldungen",
       "landing": "/meldungen/landing",
       "map": "/meldungen/karte",
-      "reportDetails": "/meldungen/karte",
       "new": "/meldungen/meldung-machen"
     },
     "signup": "/registrieren",

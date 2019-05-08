@@ -119,7 +119,7 @@ class ReportsPopup extends PureComponent {
           <MainSection>
             <Address>{selectedReport.address}</Address>
             <NumberStatement>{`${selectedReport.details.number} neue Fahrradbügel benötigt`}</NumberStatement>
-            <DetailsLink to={`${config.routes.reports.reportDetails}/${selectedReport.id}`}>Details</DetailsLink>
+            <DetailsLink to={`${config.routes.reports.map}/${selectedReport.id}`}>Details</DetailsLink>
           </MainSection>
         </PopupWrapper>
       </Wrapper>
