@@ -4,8 +4,10 @@ import oneLine from 'common-tags/es/oneLine/oneLine';
 import validateNewReport from './test/schemaValidation/validateNewReport';
 import { setUpMocking } from './fixtures';
 
-// mock api responses if configured
-if (config.mockReportsApi) setUpMocking();
+// mock api responses during development if configured
+if (process.env === 'development' && config.mockReportsApi) {
+  setUpMocking();
+}
 
 const ROUTE = 'reports';
 
