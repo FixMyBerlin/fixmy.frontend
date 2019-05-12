@@ -39,7 +39,7 @@
       },
       { "type": "link",
         "label": "Fahrradbügel in Fhain-Xberg",
-        "link": "/meldungen",
+        "link": "/meldungen/radbuegel/friedrichshain-kreuzberg",
         "icon": "noun-bycicle",
         "border": false
       },
@@ -123,10 +123,10 @@
     "status": "/zustand",
     "analyse": "/analyse",
     "reports": {
-      "index": "/meldungen",
-      "landing": "/meldungen/landing",
-      "map": "/meldungen/karte",
-      "new": "/meldungen/meldung-machen"
+      "index": "/meldungen/radbuegel/friedrichshain-kreuzberg",
+      "landing": "/meldungen/radbuegel/friedrichshain-kreuzberg/landing",
+      "map": "/meldungen/radbuegel/friedrichshain-kreuzberg/karte",
+      "new": "/meldungen/radbuegel/friedrichshain-kreuzberg/neu"
     },
     "signup": "/registrieren",
     "login": "/anmelden",
