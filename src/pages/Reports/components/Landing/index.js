@@ -24,7 +24,7 @@ const StyledReportsMapLink = styled(Link)`
 
 const ContentWrapper = styled.div`
   width: 100%;
-  max-width: ${breakpoints.m}px;
+  max-width: 568px;
   margin-left: auto;
   margin-right: auto;
 `;
