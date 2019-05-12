@@ -6,15 +6,15 @@ import 'react-rangeslider/lib/index.css'; // include the default range slider st
 import Button from '~/components/Button';
 import { breakpoints } from '~/styles/utils';
 import { BIKESTAND_PLACEMENT_SIDEWALK, BIKESTAND_PLACEMENT_STREET } from '../../ReportsState';
-import SidwalkBgImage from '~/images/reports/bikestand-placement-sidewalk.png';
-import StreetBgImage from '~/images/reports/bikestand-placement-street.png';
+import SidwalkBgImage from '~/images/reports/bikestand-placement-sidewalk.jpg';
+import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
 
 // TODO: Move styled components to extra file(s) to not bloat up the file
 // TODO: scroll to bottom when radio button in first group has been checked
 
 const Wrapper = styled.div`
   padding: 11px;
-  max-width: ${breakpoints.m}px;
+  max-width: 568px;
   margin-left: auto;
   margin-right: auto;
   display: flex;
