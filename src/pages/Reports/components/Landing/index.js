@@ -8,7 +8,6 @@ import HowItWorksSection from './HowItWorksSection';
 import QuoteSection from './QuoteSection';
 import FaqSection from './FaqSection';
 import Footer from '~/components/Menu/MenuFooter';
-import { breakpoints } from '~/styles/utils';
 
 const StyledReportsMapLink = styled(Link)`
   display: block;
