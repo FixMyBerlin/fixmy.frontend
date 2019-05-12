@@ -25,6 +25,10 @@ const Button = styled.button`
      box-shadow: none;
      background-color: ${config.colors.inactivegrey};
   }
+  
+  &:focus {
+    outline: none;
+  }
 `;
 
 const PinLocationButton = ({ onConfirm, text, disabled }) => (
