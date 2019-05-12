@@ -14,7 +14,7 @@ const StyledSection = styled.section`
   align-items: center;
   background-image: url(${BycicleParkingBgImg});
   background-size: cover;
-  background-position: center center;
+  background-position: center 80%;
   padding-left: 34px;
   padding-right: 34px;
 `;
