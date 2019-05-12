@@ -17,7 +17,7 @@ class FaqSection extends Component {
           heading: 'Warum solltest du mitmachen?',
           text: 'Im Rahmen des Mobilitätsgesetzes sollen in ganz Berlin 100.000 neue Abstellplätze für den Radverkehr geschaffen werden. Friedrichshain-Kreuzberg setzt sich für sicheres Fahrradparken im Bezirk ein und möchte möglichst viele der Meldungen umsetzen. \n' +
           'Ihr könnt mit eurer Bedarfsmeldung aktiv an einer Verbesserung der Rad-Infrastruktur des Bezirks mithelfen indem ihr beschreibt wo neue Fahrradbügel benötigt werden.',
-          open: true // initially uncollapsed
+          // open: true // initially uncollapsed
         },
         {
           heading: 'Wie kann ich mitmachen?',
