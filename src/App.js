@@ -22,6 +22,7 @@ import ResetPassword from '~/pages/User/pages/ResetPassword';
 import EmailVerification from '~/pages/User/pages/EmailVerification';
 import { verify } from '~/pages/User/UserState';
 import Reports from '~/pages/Reports';
+import { Redirect } from 'react-router-dom';
 
 const AppContent = styled.div`
   width: 100%;
@@ -46,47 +47,50 @@ class App extends PureComponent {
         <GlobalStyles />
         <Router history={history}>
           <LastLocationProvider>
-          <AppWrapper>
-            {!isEmbedMode && <Menu />}
-            <AppContent>
-              <Switch>
-                <Route exact path="/" component={Home} />
+            <AppWrapper>
+              {!isEmbedMode && <Menu />}
+              <AppContent>
+                <Switch>
+                  <Route exact path="/" component={Home} />
 
-                {
+                  {
                   /* standard markdown pages */
                   config.staticpages.map(page => <Route key={page} path={page.route} render={() => <Markdown page={page.key} />} />)
                 }
 
-                {/* user pages */}
-                <Route path={config.routes.signup} component={Signup} />
-                <Route path={config.routes.login} component={Login} />
-                <Route path={config.routes.forgotPassword} component={ForgotPassword} />
-                <Route path={`${config.routes.resetPassword}/:uid/:token`} component={ResetPassword} />
-                <Route path={config.routes.emailVerification} component={EmailVerification} />
-                <PrivateRoute path={config.routes.profile} token={token} component={Profile} />
+                  {/* user pages */}
+                  <Route path={config.routes.signup} component={Signup} />
+                  <Route path={config.routes.login} component={Login} />
+                  <Route path={config.routes.forgotPassword} component={ForgotPassword} />
+                  <Route path={`${config.routes.resetPassword}/:uid/:token`} component={ResetPassword} />
+                  <Route path={config.routes.emailVerification} component={EmailVerification} />
+                  <PrivateRoute path={config.routes.profile} token={token} component={Profile} />
 
-                {/* map pages */}
-                <Route
-                  path={`(${config.routes.status}|${config.routes.plannings}|/my-hbi)`}
-                  component={MapView}
-                />
+                  {/* map pages */}
+                  <Route
+                    path={`(${config.routes.status}|${config.routes.plannings}|/my-hbi)`}
+                    component={MapView}
+                  />
 
-                {/* reports page */}
-                <Route
-                  path={`${config.routes.reports.index}`}
-                  component={Reports}
-                />
+                  {/* reports page */}
+                  <Route
+                    path={`${config.routes.reports.index}`}
+                    component={Reports}
+                  />
 
-                {/* analysis pages */}
-                <Route
-                  path={`${config.routes.analyse}/planungen/:districtName?`}
-                  component={Analysis}
-                />
+                  {/* analysis pages */}
+                  <Route
+                    path={`${config.routes.analyse}/planungen/:districtName?`}
+                    component={Analysis}
+                  />
 
-                <Route render={() => <Markdown page="nomatch" />} />
-              </Switch>
-            </AppContent>
-          </AppWrapper>
+                  {/* reports page */}
+                  <Route exact path={config.routes.reports.temporarily_forward_from_this_to_index} render={() => (<Redirect to={config.routes.reports.index} />)} />
+
+                  <Route render={() => <Markdown page="nomatch" />} />
+                </Switch>
+              </AppContent>
+            </AppWrapper>
           </LastLocationProvider>
         </Router>
       </Fragment>

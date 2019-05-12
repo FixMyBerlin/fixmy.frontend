@@ -123,6 +123,7 @@
     "status": "/zustand",
     "analyse": "/analyse",
     "reports": {
+      "temporarily_forward_from_this_to_index": "/meldungen",
       "index": "/meldungen/radbuegel/friedrichshain-kreuzberg",
       "landing": "/meldungen/radbuegel/friedrichshain-kreuzberg/landing",
       "map": "/meldungen/radbuegel/friedrichshain-kreuzberg/karte",
