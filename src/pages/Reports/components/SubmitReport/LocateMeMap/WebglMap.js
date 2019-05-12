@@ -11,21 +11,34 @@ class WebglMap extends PureComponent {
     center: PropTypes.arrayOf(PropTypes.number),
     zoom: PropTypes.number,
     onMapDrag: PropTypes.func,
-    allowDrag: PropTypes.bool
+    allowDrag: PropTypes.bool,
+    zoomedOut: PropTypes.bool
   }
 
   static defaultProps = {
     center: config.map.view.center,
     zoom: 18, // TODO: make this configurable
     onMapDrag: () => console.log('onMapDrag says implement me'),
-    allowDrag: true
+    allowDrag: true,
+    zoomedOut: false
   }
 
   map = null
 
+  maxExtent = null
+
+  constructor(props) {
+    super(props);
+    this.maxExtent = this.addPaddingToBounds(config.reportsMap.maxBounds);
+  }
+
   componentDidUpdate(prevProps) {
     if (!this.map) {
       return false;
+    }
+
+    if (this.props.zoomedOut) {
+       this.map.easeTo({zoom: 12, duration: 3000 })
     }
 
     const viewChanged = prevProps.zoom !== this.props.zoom ||
@@ -96,7 +109,7 @@ class WebglMap extends PureComponent {
   render() {
     return (
       <BaseMap
-        maxBounds={this.addPaddingToBounds(config.reportsMap.maxBounds)}
+        maxBounds={this.maxExtent}
         onLoad={map => this.onLoad(map)}
       />
     );

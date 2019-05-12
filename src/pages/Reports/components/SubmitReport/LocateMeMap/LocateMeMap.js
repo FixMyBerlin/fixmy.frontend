@@ -176,6 +176,7 @@ class LocateMeMap extends Component {
             )}
 
           <StyledWebGlMap
+            zoomedOut={this.props.tempLocation && !this.props.tempLocation.valid}
             center={this.getCenter()}
             className="locate-me-map"
             onMapDrag={this.onMapMove}
