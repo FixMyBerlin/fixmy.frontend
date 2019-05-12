@@ -45,13 +45,17 @@ const StyledHeading = styled.h2`
 const StyledButton = styled(Button)`
   width: 167px;
   padding: 10px 18px;
+  
+   &:hover {
+    opacity: 1;
+  }
 `;
 
 const StyledLink = styled(Link)`
   color: white;
   font-size: 18px;
   
-  &:visited {
+  &:visited, &:hover {
     color: white;
   }
 `;
