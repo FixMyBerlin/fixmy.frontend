@@ -5,7 +5,7 @@ import validateNewReport from './test/schemaValidation/validateNewReport';
 import { setUpMocking } from './fixtures';
 
 // mock api responses during development if configured
-if (process.env === 'development' && config.mockReportsApi) {
+if (process.env.NODE_ENV === 'development' && config.mockReportsApi) {
   setUpMocking();
 }
 
