@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import FixMyLogo from '~/images/logofmb@2x.png';
-import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png'; // TODO: pick image size depending on screen size
+import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
+import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 import Button from '~/components/Button';
 import Link from '~/components/Link';
 import PropTypes from 'prop-types';
+import { media } from '~/styles/utils';
 
 const StyledSection = styled.section`
   height: 100vh;
@@ -17,6 +19,10 @@ const StyledSection = styled.section`
   background-position: center 80%;
   padding-left: 34px;
   padding-right: 34px;
+  
+  ${media.m`
+    background-image: url(${BycicleParkingBgImgLargeScreen});
+  `}
 `;
 
 const StyledCredits = styled.p`
