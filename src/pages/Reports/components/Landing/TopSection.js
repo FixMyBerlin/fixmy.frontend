@@ -22,6 +22,7 @@ const StyledSection = styled.section`
   
   ${media.m`
     background-image: url(${BycicleParkingBgImgLargeScreen});
+    background-position: top;
   `}
 `;
 
@@ -32,6 +33,10 @@ const StyledCredits = styled.p`
   position: absolute;
   bottom: 8px;
   right: 4px;
+  
+  ${media.m`
+    display: none;
+  `}
 `;
 
 const StyledHeading = styled.h2`

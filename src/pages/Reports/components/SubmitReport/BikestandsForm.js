@@ -146,21 +146,15 @@ const BikestandPlacementImageLabel = styled.label`
   border-radius: 6px;
   border: solid 1.5px ${config.colors.interaction};
   background-size: cover;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center; /* align horizontal */
-  align-items: center;
+  bac
   
   &:not(.picked) {
      filter: grayscale(100%);
   }
   
   &:hover {
-    filter: saturate(120%);
-    box-shadow: inset 0 0 12px ${config.colors.interaction};
-    transition: filter 0.4s ease-in, box-shadow 0.4s ease-in;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.4s ease-in;
   }
 `;
 
@@ -207,10 +201,6 @@ class BikestandsForm extends PureComponent {
 
   isSubmittable = () => this.state.bikestandsPlacement !== null && this.state.chargedBikeParkConceivable !== null;
 
-  // TODO: use formik for standardized form validation
-  // TODO: factor out formik-ified radio buttons (see https://codesandbox.io/s/pjqp3xxq7q?from-embed for how that works) for re-usage
-  // TODO: target the UI quirk that images are loaded after the component is shown
-
   render() {
     return (
       <Wrapper>
@@ -236,7 +226,7 @@ class BikestandsForm extends PureComponent {
               style={{ backgroundImage: `url(${SidwalkBgImage})` }}
               className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_SIDEWALK ? 'picked' : ''}
             >
-              Auf dem <br /> Gehweg
+              Auf dem Gehweg
             </BikestandPlacementImageLabel>
             <BikestandPlacementRadioButton
               type="radio"
