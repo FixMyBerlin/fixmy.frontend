@@ -4,6 +4,7 @@ import withRouter from 'react-router/withRouter';
 import ErrorMessage from '../ErrorMessage';
 import Button from '~/components/Button';
 import { breakpoints } from '~/styles/utils';
+import history from '~/history';
 
 const Wrapper = styled.div`
   padding: 8px 8px 62px 8px;
@@ -127,6 +128,19 @@ class ReportSubmitted extends PureComponent {
       confirmsDataUsage: false,
       wantsNewsletter: true
     };
+  }
+
+  componentDidMount = () => {
+    this.unlistenToHistory = history.listen((location, action) => {
+      if (action === 'POP') { // if this is an attempt to navigate backwards ..
+        // do not allow navigating back within the dialog, instead route somewhere safe
+        this.props.history.push(`${config.routes.reports.map}`);
+      }
+    });
+  };
+
+  componentWillUnmount() {
+    this.unlistenToHistory();
   }
 
   updateEmail = (e) => {
