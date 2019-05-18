@@ -27,7 +27,6 @@ import AdditionalDataForm from './AdditionalDataForm';
 import FormProgressBar from './FormProgressBar';
 import ReportSubmitted from './ReportSubmitted';
 import history from '~/history';
-import OverviewMap from '../../Reports';
 import Markdown from '~/pages/Markdown/Markdown';
 
 const SubmitReportWrapper = styled.div`
@@ -57,7 +56,6 @@ class SubmitReport extends PureComponent {
     const {
       locationMode,
       newReport,
-      submitting,
       tempLocation,
       error
     } = this.props.reportsState;
@@ -134,6 +132,9 @@ class SubmitReport extends PureComponent {
             <ReportSubmitted reportId={newReport.id} error={error} />
           </Fragment>
         );
+        break;
+      default:
+        content = (<div>Hier hat etwas nicht geklappt</div>);
     } // end of switch statement
 
     return content;
