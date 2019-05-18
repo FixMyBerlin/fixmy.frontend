@@ -4,7 +4,7 @@ import FaqItem from './FaqItem';
 
 const FaqSectionWrapper = styled.div`
   margin-bottom: 62px;
-  padding: 8px;
+  padding: 8px 34px;
 `;
 
 class FaqSection extends Component {
