@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Slider from 'react-rangeslider';
+import RangeSlider from '~/components/RangeSlider';
 import 'react-rangeslider/lib/index.css'; // include the default range slider styles
 import Button from '~/components/Button';
-import { breakpoints } from '~/styles/utils';
+
 import { BIKESTAND_PLACEMENT_SIDEWALK, BIKESTAND_PLACEMENT_STREET } from '../../ReportsState';
 import SidwalkBgImage from '~/images/reports/bikestand-placement-sidewalk.jpg';
 import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
@@ -14,6 +14,7 @@ import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
 
 const Wrapper = styled.div`
   padding: 11px;
+  width: 100%;
   max-width: 568px;
   margin-left: auto;
   margin-right: auto;
@@ -69,49 +70,6 @@ const StyledHr = styled.hr`
   border: 0.5px dashed rgba(162, 162, 162, 0.87);
 `;
 
-const StyledSlider = styled(Slider)`
-
-  width: 100%;
-  max-width: ${breakpoints.s}px;
-
-   && {
-      height: 6px;
-      margin-bottom: 72px;
-      margin-top: 64px;
-    }
-  
-   &&  .rangeslider__fill {
-     background-color: ${config.colors.interaction};
-   }
-  
-  && .rangeslider__handle {
-     width: 48px;
-     height: 48px;
-     background-color: ${config.colors.interaction};
-     border: none;
-     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
-     cursor: pointer;
-     user-select: none;
-     
-     &:focus {
-      outline: none;
-     }
-     
-     &:after {
-      content: none;
-     }
-  }
-  
-  && .rangeslider__handle-label {
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 48px;
-    vertical-align: center;
-  }
-`;
-
 const StyledRadioButtonLabel = styled.label`
    font-size: 14px;
    line-height: 1.4;
@@ -130,24 +88,31 @@ const BikestandPlacementContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 400px;
 `;
 
 const BikestandPlacementItem = styled.div`
   display: flex;
+  width: 46%;
+  height: auto;
   flex-direction: column;
   cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #353535;
 `;
 
-const BikestandPlacementImageLabel = styled.label`
-  order: -1;
-  height: 93px;
-  width: 156.7px;
+const BikestandPlacementLabel = styled.label`
+  display: block;
+`
+
+const BikestandPlacementImage = styled.img`
   border-radius: 6px;
   border: solid 1.5px ${config.colors.interaction};
-  background-size: cover;
-  bac
-  
+  background-size: contain;
+  margin-bottom: 10px;
+  width: 100%;
+
   &:not(.picked) {
      filter: grayscale(100%);
   }
@@ -162,7 +127,7 @@ const BikestandPlacementRadioButton = styled(StyledRadioButton)`
     margin: 8px auto;
 `;
 
-const CostSlider = styled(StyledSlider)`
+const CostSlider = styled(RangeSlider)`
   &&  .rangeslider__fill {
      background-color: ${config.colors.lightgrey};
    }
@@ -206,9 +171,10 @@ class BikestandsForm extends PureComponent {
       <Wrapper>
 
         <Question>Wie viele Bügel werden benötigt?</Question>
-        <StyledSlider
+        <RangeSlider
           min={1}
           max={20}
+          labels={{ 1: 1, 20: 20 }}
           name="bikestandsNeeded"
           value={this.state.bikestandsNeeded}
           tooltip={false}
@@ -221,13 +187,15 @@ class BikestandsForm extends PureComponent {
 
         <BikestandPlacementContainer>
           <BikestandPlacementItem>
-            <BikestandPlacementImageLabel
+            <BikestandPlacementLabel
               htmlFor="amenityPlacement-sidewalk"
-              style={{ backgroundImage: `url(${SidwalkBgImage})` }}
-              className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_SIDEWALK ? 'picked' : ''}
             >
-              Auf dem Gehweg
-            </BikestandPlacementImageLabel>
+              <BikestandPlacementImage
+                src={SidwalkBgImage}
+                className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_SIDEWALK ? 'picked' : ''}
+              />
+            </BikestandPlacementLabel>
+            Auf dem Gehweg
             <BikestandPlacementRadioButton
               type="radio"
               id="amenityPlacement-sidewalk"
@@ -239,13 +207,15 @@ class BikestandsForm extends PureComponent {
           </BikestandPlacementItem>
 
           <BikestandPlacementItem>
-            <BikestandPlacementImageLabel
+            <BikestandPlacementLabel
               htmlFor="amenityPlacement-street"
-              style={{ backgroundImage: `url(${StreetBgImage})` }}
-              className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_STREET ? 'picked' : ''}
             >
-              Auf der Straße
-            </BikestandPlacementImageLabel>
+            <BikestandPlacementImage
+              src={StreetBgImage}
+              className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_STREET ? 'picked' : ''}
+            />
+            </BikestandPlacementLabel>
+            Auf der Straße
             <BikestandPlacementRadioButton
               type="radio"
               id="amenityPlacement-street"

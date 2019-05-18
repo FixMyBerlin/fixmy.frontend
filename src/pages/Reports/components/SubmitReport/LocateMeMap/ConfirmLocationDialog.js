@@ -40,9 +40,13 @@ const ButtonsWrapper = styled.div`
 
 const StyledButton = styled(Button)`
   min-width: 100px;
-  max-width: 250px;
+  max-width: 48%;
   flex-grow: 1;
   border-radius: 6px;
+  
+  ${media.m`
+     max-width: 25%;
+  `}
 `;
 
 const BackButton = styled(StyledButton)`
