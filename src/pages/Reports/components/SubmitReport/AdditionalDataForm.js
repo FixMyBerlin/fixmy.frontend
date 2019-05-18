@@ -48,13 +48,15 @@ const PhotoInputImageLabel = styled.label`
   width: 109px;
   background-image: url(${PhotoControlImage});
   background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
   
   &.has-photo {
-    height: 166px;
-    width: 218px;
-    transform-origin: top;
+    max-width: 218px;
+    max-height: 166px;
+    width: 100vw;
+    height: 100vh;
   }
 `;
 
