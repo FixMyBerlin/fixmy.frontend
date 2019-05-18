@@ -47,7 +47,7 @@ const PhotoInputImageLabel = styled.label`
   height: 83px;
   width: 109px;
   background-image: url(${PhotoControlImage});
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
   
@@ -238,7 +238,9 @@ class AdditionalDataForm extends PureComponent {
             onChange={e => this.processTakenPhoto(e.target.files)}
           />
         </PhotoInputImageLabel>
-        <PhotoInputLabel>{`Foto ${this.state.photo ? 'neu' : ''} aufnehmen`}</PhotoInputLabel>
+        <PhotoInputLabel
+          htmlFor="photo-file-input"
+        >{`Foto ${this.state.photo ? 'neu' : ''} aufnehmen`}</PhotoInputLabel>
 
         <PhotoDisclaimerWrapper>
           <StyledCheckboxLabel htmlFor="photo-disclaimer-tick" style={{ alignSelf: 'flex-start' }}>
