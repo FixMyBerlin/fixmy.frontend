@@ -80,6 +80,7 @@ export default () => (
       <li>Meldet uns bis zum 31. Januar 2018 wo Fahrradbügel benötigt sind (das dauert ca. 30 Sekunden)</li>
       <li>Wir sammeln alle Meldungen und übergeben diese dem Bezirk.</li>
       <li>Die Meldungen werden geprüft und sofern umsetzbar nach und nach vom Bezirk abgearbeitet.</li>
+      <li>Alle Meldungen bekommen öffentliches Feedback auf der Plattform</li>
     </StyledHowItWorkslist>
   </StyledSection>
 );
