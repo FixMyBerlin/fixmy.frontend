@@ -25,7 +25,6 @@ const REVERSE_GEOCODE_DONE = 'Reports/ReportsDialogState/REVERSE_GEOCODE_SUCCESS
 const REVERSE_GEOCODE_FAIL = 'Reports/ReportsDialogState/REVERSE_GEOCODE_FAIL';
 const SET_TEMP_LOCATION_LNG_LAT = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_LNG_LAT';
 const SET_TEMP_LOCATION_ADDRESS = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_ADDRESS';
-const PIN_LOCATION = 'Reports/ReportsDialogState/PIN_LOCATION'; // sort of intermediate step, to ask "are you sure"?
 const CONFIRM_LOCATION = 'Reports/ReportsDialogState/CONFIRM_LOCATION';
 const ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
 const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
@@ -67,10 +66,6 @@ export function setTempLocationLngLat({ lng, lat }) {
 
 export function setTempLocationAddress(address) {
   return { type: SET_TEMP_LOCATION_ADDRESS, address };
-}
-
-export function pinLocation() {
-  return { type: PIN_LOCATION };
 }
 
 export function confirmLocation() {
@@ -286,22 +281,18 @@ export default function ReportsReducer(state = initialState, action = {}) {
           address: action.address
         }
       };
-    case PIN_LOCATION:
-      return {
-        ...state,
-        tempLocation: {
-          ...state.tempLocation,
-          pinned: true
-        }
-      };
     case CONFIRM_LOCATION:
       return {
         ...state,
+        reverseGeocodeResult: null,
+        deviceLocation: null,
         newReport: {
-          ...state.newReport,
           location: {
             address: state.tempLocation.address,
-            lngLat: state.tempLocation.lngLat
+            lngLat: { ...state.tempLocation.lngLat }
+          },
+          tempLocation: {
+            ...state.tempLocation,
           }
         }
       };
