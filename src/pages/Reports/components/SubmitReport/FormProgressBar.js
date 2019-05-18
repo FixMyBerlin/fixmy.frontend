@@ -5,24 +5,28 @@ import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import TickIcon from '~/images/reports/tick-icon.svg';
 import history from '~/history';
 
-const Wrapper = styled.div`
-  border-bottom: solid 1px ${config.colors.inactivegrey};
-`;
-
-const BackButton = styled.p`
-  padding-left: 8px;
+const BackLink = styled.a`
+  position: absolute;
+  top: 10px;
+  left: 8px;
   cursor: pointer;
   font-size: 10px;
   font-weight: bold;
   color: ${config.colors.darkgrey};
+  
+  &.hidden:after {
+    content: '' 
+  }
 `;
 
 const NavBar = styled.div`
   height: 54px;
+  box-sizing: unset;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0 4px 4px 8px;
+  padding: 31px 4px 4px 8px;
+  border-bottom: solid 1px ${config.colors.inactivegrey};
 `;
 
 const StyledBikeParkIcon = styled(BikeParkIcon)`
@@ -73,11 +77,14 @@ const StyledTickIcon = styled(TickIcon)`
   left: 166px;
 `;
 
-const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => (
-  <Wrapper>
-    <BackButton onClick={onBackButtonTap}>&lt; zurück</BackButton>
-    <NavBar>
+const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => {
+  const isLastStep = stepNumber === 4;
 
+  return (
+    <NavBar>
+      {!isLastStep && (
+        <BackLink onClick={onBackButtonTap} className={isLastStep ? 'hidden' : ''}>&lt; zurück</BackLink>
+      )}
       <StepCaption>{stepCaption}</StepCaption>
       <StyledBikeParkIcon />
 
@@ -85,11 +92,11 @@ const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => (
       {stepNumber > 2 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 2 ? 'active' : ''}>2</StepIndicator>}
       {stepNumber > 3 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 3 ? 'active' : ''}>3</StepIndicator>}
 
-      {stepNumber === 4 && <StyledTickIcon />}
+      {isLastStep && <StyledTickIcon />}
 
     </NavBar>
-  </Wrapper>
-);
+  );
+};
 
 FormProgressBar.propTypes = {
   stepNumber: PropTypes.number,
