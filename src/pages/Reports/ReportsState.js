@@ -55,29 +55,7 @@ const initialState = {
   submitted: false
 };
 
-/* eslint-disable no-tabs */
-
-/*
-
-newReport is used to a) compile a new object to submit to the API and b) to step through the dialog.
-
-Content of newReport (TODO: use some sort of interface/type/shape) --> e.g. https://github.com/jquense/yup or even PropTypes
-
-	location  --> when this is set, go to step 2
-    lngLat
-    address
-	what     --> when this is set, go to step 3
-    bikestands
-    	bikestandsNeeded
-    	bikestandsPlacement
-    	paymentReservesBikePark
-    additionalInfo --> when this is set, go to step 4
-      photo
-      description
-
- */
-
-// TODO: factor out Reducer for newReport, use combineReducers
+// FIXME: write tests!
 
 export function resetDialogState() {
   return { type: RESET_DIALOG_STATE };
