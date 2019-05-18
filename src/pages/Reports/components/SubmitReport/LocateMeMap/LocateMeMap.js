@@ -8,6 +8,7 @@
 
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import WebglMap from './WebglMap';
 import StaticMarker from './StaticMarker';
@@ -79,6 +80,15 @@ const InvalidAdressIndicator = styled(AddressIndicator)`
 // TODO: when location is pinned: 1. do not allow map drag
 
 class LocateMeMap extends Component {
+
+  static propTypes = {
+    onProceed: PropTypes.func
+  };
+
+  static defaultProps = {
+    onProceed: () => console.log('implement me')
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -135,6 +145,11 @@ class LocateMeMap extends Component {
     this.props.setDeviceLocation(coordsObj);
     this.onMapMove(coordsObj);
   };
+
+  confirmLocation = () => {
+    this.props.confirmLocation(); // update state
+    this.props.onProceed();       // update route
+  }
 
   render() {
     return (
@@ -202,7 +217,7 @@ class LocateMeMap extends Component {
 
         {this.getPinned() && (
           <ConfirmLocationDialog
-            onConfirm={this.props.confirmLocation}
+            onConfirm={this.confirmLocation}
             onDecline={this.props.resetDialogState}
             address={this.props.tempLocation.address}
           />
@@ -223,3 +238,4 @@ const mapDispatchToPros = {
   removeError
 };
 export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);
+

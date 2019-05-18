@@ -19,8 +19,7 @@ class Reports extends PureComponent {
           />
           <Route
             path={config.routes.reports.new}
-            exact
-            render={() => <SubmitReport />}
+            component={SubmitReport}
           />
 
           <Route exact path={config.routes.reports.index} render={() => (<Redirect to={config.routes.reports.landing} />)} />

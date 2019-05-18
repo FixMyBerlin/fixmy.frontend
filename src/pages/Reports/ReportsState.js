@@ -6,7 +6,6 @@
 // TODO: split uo reducer into subreducers based on the structure of the newReport object
 import ky from 'ky';
 import idx from 'idx/lib/idx';
-import * as dotProp from 'dot-prop-immutable';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
 import { apiFetchReports, apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
@@ -34,7 +33,6 @@ export const BIKESTAND_PLACEMENT_SIDEWALK = 'SIDEWALK';
 export const BIKESTAND_PLACEMENT_STREET = 'STREET';
 const SET_BIKESTAND_NEEDS = 'Reports/ReportsDialogState/SET_BIKESTAND_NEEDS';
 const SET_ADDITIONAL_DATA = 'Reports/ReportsDialogState/SET_ADDITIONAL_DATA';
-const STEP_BACK_DIALOG = 'Reports/ReportsDialogState/STEP_BACK_DIALOG';
 const SUBMIT_REPORT = 'Reports/ReportsDialogState/SUBMIT_REPORT';
 const SUBMIT_REPORT_SUCCESS = 'Reports/ReportsDialogState/SUBMIT_REPORT_SUCCESS';
 const SUBMIT_REPORT_ERROR = 'Reports/ReportsDialogState/SUBMIT_REPORT_ERROR';
@@ -78,6 +76,9 @@ Content of newReport (TODO: use some sort of interface/type/shape) --> e.g. http
       description
 
  */
+
+// TODO: factor out Reducer for newReport, use combineReducers
+
 export function resetDialogState() {
   return { type: RESET_DIALOG_STATE };
 }
@@ -120,22 +121,6 @@ export const setBikestandNeeds = formData => ({
 export const setAdditionalData = formData => ({
   type: SET_ADDITIONAL_DATA,
   payload: formData
-});
-
-// TODO: re-think this solution or at least document it
-const stateNodesToUnsetPerStep = new Map();
-stateNodesToUnsetPerStep.set(1, 'newReport.location');
-stateNodesToUnsetPerStep.set(2, 'newReport.what.bikestands'); // TODO: this does not work well, component state is not reset (mapHasBeenDragged)
-stateNodesToUnsetPerStep.set(3, 'newReport.what.additionalInfo');
-
-/**
- * Takes a dialog step number (used in the NavBar to show the dialog progress)
- * and returns a path to a node in this state object, e.g. newReport.what, that can be unset to roll back the dialog.
- * @param toStep
- */
-export const stepBackDialog = toStep => ({
-  type: STEP_BACK_DIALOG,
-  stateNodeToUnset: stateNodesToUnsetPerStep.get(toStep)
 });
 
 async function loadReportsDataInner(dispatch) {
@@ -411,8 +396,6 @@ export default function ReportsReducer(state = initialState, action = {}) {
           message: action.error
         }
       };
-    case STEP_BACK_DIALOG:
-      return dotProp.delete(state, action.stateNodeToUnset);
     case SET_SELECTED_REPORT:
       return {
         ...state, selectedReport: action.selectedReport || null

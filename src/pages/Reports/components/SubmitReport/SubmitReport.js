@@ -15,17 +15,20 @@ import {
   resetDialogState,
   setBikestandNeeds,
   setAdditionalData,
-  stepBackDialog,
   removeError,
   submitReport
 } from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
+import { Redirect, Route, Router, Switch } from 'react-router-dom';
 import LocateModeChooser from './LocateModeChooser';
 import LocateMeMap from './LocateMeMap/LocateMeMap';
 import BikestandsForm from './BikestandsForm';
 import AdditionalDataForm from './AdditionalDataForm';
 import FormProgressBar from './FormProgressBar';
 import ReportSubmitted from './ReportSubmitted';
+import history from '~/history';
+import OverviewMap from '../../Reports';
+import Markdown from '~/pages/Markdown/Markdown';
 
 const SubmitReportWrapper = styled.div`
   min-height: 100%;
@@ -41,14 +44,16 @@ const LoaderWrapper = styled.div`
   align-items: center;
 `;
 
-// TODO: dedupe-logic in FormProgressBar Element creation, factor out to function
+// TODO: dedupe-logic in FormProgressBar Element creation, factor out to function or use some sort of DialogStep HOC
 
 class SubmitReport extends PureComponent {
   componentDidMount() {
     this.props.resetDialogState();
   }
 
-  getContentByDialogProgress = () => {
+  getStep = (step) => {
+    let content;
+
     const {
       locationMode,
       newReport,
@@ -57,67 +62,87 @@ class SubmitReport extends PureComponent {
       error
     } = this.props.reportsState;
 
-    if (!locationMode) {
-      return (
-        <Fragment>
-          <OverviewMapNavBar />
-          <LocateModeChooser
-            heading="Wo benötigst du neue Fahrradbügel?"
-            onUseDevicePosition={this.props.onUseDevicePosition}
-            onUseGeocoding={this.props.onUseGeocoding}
-            error={error}
-            removeError={this.props.removeError}
-          />
-        </Fragment>
-      );
-    }
+    const proceed = () => this.props.history.push(`${this.props.match.path}/${step + 1}`);
 
-    if (!(newReport.location && newReport.location.address)) {
-      return (
-        <Fragment>
-          {tempLocation && tempLocation.pinned && (
-            <FormProgressBar
-              stepNumber={1}
-              stepCaption="Ort"
-              onBackButtonTap={this.props.resetDialogState}
+    switch (step) {
+      case 1:
+        content = !locationMode ? (
+          <Fragment>
+            <OverviewMapNavBar />
+            <LocateModeChooser
+              heading="Wo benötigst du neue Fahrradbügel?"
+              onUseDevicePosition={this.props.onUseDevicePosition}
+              onUseGeocoding={this.props.onUseGeocoding}
+              error={error}
+              removeError={this.props.removeError}
             />
-          )}
-          <LocateMeMap />
-        </Fragment>
-      );
-    }
+          </Fragment>
+          )
+          : (
+            <Fragment>
+              {tempLocation && tempLocation.pinned && (
+                <FormProgressBar
+                  stepNumber={1}
+                  stepCaption="Ort"
+                />
+              )}
+              <LocateMeMap onProceed={proceed} />
+            </Fragment>
+          );
+        break;
 
-    if (!(newReport.what && newReport.what.bikestands)) {
-      return (
-        <Fragment>
-          <FormProgressBar
-            stepNumber={2}
-            stepCaption="Details"
-            onBackButtonTap={() => this.props.stepBackDialog(1)}
-          />
-          <BikestandsForm onConfirm={this.props.setBikestandNeeds} />
-        </Fragment>
-      );
-    }
+      case 2:
+        content = (
+          <Fragment>
+            <FormProgressBar
+              stepNumber={2}
+              stepCaption="Details"
+            />
+            <BikestandsForm onConfirm={(stateNode) => {
+              this.props.setBikestandNeeds(stateNode);
+              proceed();
+            }}
+            />
+          </Fragment>
+        );
+        break;
 
-    if (!newReport.what.additionalInfo) {
-      return (
-        <Fragment>
-          <FormProgressBar
-            stepNumber={3}
-            stepCaption="Fotos und Beschreibung"
-            onBackButtonTap={() => this.props.stepBackDialog(2)}
-          />
-          <AdditionalDataForm onConfirm={(formData) => {
-            this.props.setAdditionalData(formData);
-            this.props.submitReport(this.props.token);
-          }}
-          />
-        </Fragment>
-      );
-    }
+      case 3:
+        content = (
+          <Fragment>
+            <FormProgressBar
+              stepNumber={3}
+              stepCaption="Fotos und Beschreibung"
+            />
+            <AdditionalDataForm onConfirm={(formData) => {
+              this.props.setAdditionalData(formData);
+              this.props.submitReport(this.props.token);
+              proceed();
+            }}
+            />
+          </Fragment>
+        );
+        break;
 
-    if (submitting) {
+      case 4:
+        content = (
+          <Fragment>
+            <FormProgressBar
+              stepNumber={4}
+              stepCaption="Fertig"
+            />
+            <ReportSubmitted reportId={newReport.id} error={error} />
+          </Fragment>
+        );
+    } // end of switch statement
+
+    return content;
+  };
+
+  render() {
+    const { match, reportsState } = this.props;
+
+    if (reportsState.submitting) {
       return (
         <LoaderWrapper>
           <PropagateLoader
@@ -127,23 +152,19 @@ class SubmitReport extends PureComponent {
       );
     }
 
-    // finally
-    return (
-      <Fragment>
-        <FormProgressBar
-          stepNumber={4}
-          stepCaption="Fertig"
-          onBackButtonTap={() => this.props.stepBackDialog(3)}
-        />
-        <ReportSubmitted reportId={newReport.id} error={error} />
-      </Fragment>
-    );
-  };
-
-  render() {
     return (
       <SubmitReportWrapper>
-        {this.getContentByDialogProgress()}
+        <Router history={history}>
+          <Switch>
+            <Route
+              path={`${match.path}/:step`}
+              render={props => this.getStep(+props.match.params.step)}
+            />
+
+            <Redirect to={`${match.path}/1`} />
+            <Route render={() => <Markdown page="nomatch" />} />
+          </Switch>
+        </Router>
       </SubmitReportWrapper>
     );
   }
@@ -155,7 +176,6 @@ const mapDispatchToProps = {
   resetDialogState,
   setBikestandNeeds,
   setAdditionalData,
-  stepBackDialog,
   removeError,
   submitReport
 };
