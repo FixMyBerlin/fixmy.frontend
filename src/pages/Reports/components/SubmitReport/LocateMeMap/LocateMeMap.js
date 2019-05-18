@@ -8,6 +8,7 @@
 
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import WebglMap from './WebglMap';
 import StaticMarker from './StaticMarker';
@@ -24,13 +25,13 @@ import {
   reverseGeocodeCoordinates,
   setTempLocationLngLat,
   confirmLocation,
-  pinLocation,
   resetDialogState,
   removeError
 } from '~/pages/Reports/ReportsState';
 
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 import ky from '~/utils/ky';
+import idx from "idx";
 
 
 const MapView = styled.div`
@@ -78,27 +79,47 @@ const InvalidAdressIndicator = styled(AddressIndicator)`
 
 // TODO: when location is pinned: 1. do not allow map drag
 
+let validationBoundary = null; // kept here for caching
+
 class LocateMeMap extends Component {
+
+  static propTypes = {
+    onProceed: PropTypes.func
+  };
+
+  static defaultProps = {
+    onProceed: () => console.log('implement me')
+  };
+
+
   constructor(props) {
     super(props);
     this.state = {
       mapHasBeenDragged: false,
-      validationDataLoaded: false
+      locationPinned: false
     };
   }
 
   async componentDidMount() {
-    await this.getValidationGeodata();
+    if (!validationBoundary) {
+      await this.getValidationGeodata();
+    }
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      mapHasBeenDragged: false,
+      locationPinned: false
+    });
   }
 
   async getValidationGeodata() {
-    this.validationBoundary = await ky.get(`${config.reportsLocateMeMap.boundaryGeodataUrl}`).json();
-    this.setState({ validationDataLoaded: true });
+    validationBoundary = await ky.get(`${config.reportsLocateMeMap.boundaryGeodataUrl}`).json();
   }
 
   onMapMove = ({ lat, lng }) => {
-    if (!this.state.validationDataLoaded) return;
-    this.props.reverseGeocodeCoordinates({ lng, lat }, this.validationBoundary);
+    if (!validationBoundary) return;
+    this.props.reverseGeocodeCoordinates({ lng, lat }, validationBoundary);
     this.props.setTempLocationLngLat({ lng, lat });
     if (!this.state.mapHasBeenDragged) {
       this.state.mapHasBeenDragged = true;
@@ -106,6 +127,12 @@ class LocateMeMap extends Component {
   };
 
   getCenter = () => {
+    // if component is shown because of backwards navigation, use the center already determined
+    const alreadyPickedLocation = idx(this.props, _ => _.newReport.location.lngLat);
+    if (alreadyPickedLocation) {
+      return [alreadyPickedLocation.lng, alreadyPickedLocation.lat];
+    };
+
     // either device location or geocodeResult will be set
     if (this.props.deviceLocation) {
       const centerObj = this.props.deviceLocation;
@@ -115,8 +142,6 @@ class LocateMeMap extends Component {
       return this.props.geocodeResult.center;
     }
   };
-
-  getPinned = () => this.props.tempLocation && this.props.tempLocation.pinned;
 
   onSearchAddress = (text) => {
     this.props.geocodeAddress(text)
@@ -136,6 +161,17 @@ class LocateMeMap extends Component {
     this.onMapMove(coordsObj);
   };
 
+  confirmLocation = () => {
+    this.props.confirmLocation(); // update state
+    this.props.onProceed();       // update route
+  }
+
+  pinLocation = () => {
+    this.setState({
+      locationPinned: true
+    });
+  };
+
   render() {
     return (
       <MapView>
@@ -151,7 +187,7 @@ class LocateMeMap extends Component {
 
         {this.props.locationMode === LOCATION_MODE_GEOCODING && (
           <Fragment>
-            {!this.getPinned() && (
+            {!this.state.locationPinned && (
               <SearchBar onSubmit={this.onSearchAddress} />
             )}
             {!this.state.mapHasBeenDragged && (
@@ -164,7 +200,7 @@ class LocateMeMap extends Component {
         <MapWrapper>
           {this.props.locationMode && (
           <StaticMarker
-            pinned={this.getPinned()}
+            pinned={this.state.locationPinned}
           />
           )}
 
@@ -180,11 +216,11 @@ class LocateMeMap extends Component {
             center={this.getCenter()}
             className="locate-me-map"
             onMapDrag={this.onMapMove}
-            allowDrag={!this.getPinned()}
+            allowDrag={!this.state.locationPinned}
           />
         </MapWrapper>
 
-        {(this.props.locationMode === LOCATION_MODE_GEOCODING && !this.getPinned()) && (
+        {(this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
         <LocatorControl
           key="ReportsLocateMap__LocatorControl"
           onChange={this.onlocateMeMarkerUse}
@@ -192,17 +228,17 @@ class LocateMeMap extends Component {
         />
         )}
 
-        {!this.getPinned() && (
+        {!this.state.locationPinned && (
           <PinLocationButton
-            onConfirm={this.props.pinLocation}
+            onConfirm={this.pinLocation}
             text="Diese Position bestätigen"
             disabled={!(this.props.tempLocation && this.props.tempLocation.valid && this.props.tempLocation.address)}
           />
         )}
 
-        {this.getPinned() && (
+        {this.state.locationPinned && (
           <ConfirmLocationDialog
-            onConfirm={this.props.confirmLocation}
+            onConfirm={this.confirmLocation}
             onDecline={this.props.resetDialogState}
             address={this.props.tempLocation.address}
           />
@@ -217,9 +253,9 @@ const mapDispatchToPros = {
   reverseGeocodeCoordinates,
   setTempLocationLngLat,
   confirmLocation,
-  pinLocation,
   setDeviceLocation,
   resetDialogState,
   removeError
 };
 export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);
+
