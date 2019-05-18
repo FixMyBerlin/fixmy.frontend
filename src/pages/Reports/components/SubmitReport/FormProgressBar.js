@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import TickIcon from '~/images/reports/tick-icon.svg';
+import history from '~/history';
 
 const Wrapper = styled.div`
   border-bottom: solid 1px ${config.colors.inactivegrey};
@@ -99,7 +100,7 @@ FormProgressBar.propTypes = {
 FormProgressBar.defaultProps = {
   stepNumber: 1,
   stepCaption: 'Ort',
-  onBackButtonTap: () => console.log('onBackButtonTap() says implement me')
+  onBackButtonTap: history.goBack
 };
 
 export default FormProgressBar;
