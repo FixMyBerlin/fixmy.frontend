@@ -43,7 +43,7 @@ const MainSection = styled.div`
 const PreviewImageContainer = styled.div`
   height: 200px;
   width: 100%;
-  background-size: cover;
+  background-size: contain;
   background: no-repeat center;
 `;
 
