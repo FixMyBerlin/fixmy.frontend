@@ -10,6 +10,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import idx from 'idx';
 import WebglMap from './WebglMap';
 import StaticMarker from './StaticMarker';
 import PinLocationButton from './PinLocationButton';
@@ -31,7 +32,6 @@ import {
 
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 import ky from '~/utils/ky';
-import idx from "idx";
 
 
 const MapView = styled.div`
@@ -82,7 +82,6 @@ const InvalidAdressIndicator = styled(AddressIndicator)`
 let validationBoundary = null; // kept here for caching
 
 class LocateMeMap extends Component {
-
   static propTypes = {
     onProceed: PropTypes.func
   };
@@ -131,7 +130,7 @@ class LocateMeMap extends Component {
     const alreadyPickedLocation = idx(this.props, _ => _.newReport.location.lngLat);
     if (alreadyPickedLocation) {
       return [alreadyPickedLocation.lng, alreadyPickedLocation.lat];
-    };
+    }
 
     // either device location or geocodeResult will be set
     if (this.props.deviceLocation) {
@@ -163,13 +162,13 @@ class LocateMeMap extends Component {
 
   confirmLocation = () => {
     this.props.confirmLocation(); // update state
-    this.props.onProceed();       // update route
+    this.props.onProceed(); // update route
   }
 
-  pinLocation = () => {
-    this.setState({
-      locationPinned: true
-    });
+  togglePinned = () => {
+    this.setState((state) => ({
+      locationPinned: !state.locationPinned
+    }));
   };
 
   render() {
@@ -230,7 +229,7 @@ class LocateMeMap extends Component {
 
         {!this.state.locationPinned && (
           <PinLocationButton
-            onConfirm={this.pinLocation}
+            onConfirm={this.togglePinned}
             text="Diese Position bestätigen"
             disabled={!(this.props.tempLocation && this.props.tempLocation.valid && this.props.tempLocation.address)}
           />
@@ -239,7 +238,7 @@ class LocateMeMap extends Component {
         {this.state.locationPinned && (
           <ConfirmLocationDialog
             onConfirm={this.confirmLocation}
-            onDecline={this.props.resetDialogState}
+            onDecline={this.togglePinned} // TODO: set pinned to false
             address={this.props.tempLocation.address}
           />
         )}
@@ -258,4 +257,3 @@ const mapDispatchToPros = {
   removeError
 };
 export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);
-
