@@ -290,9 +290,6 @@ export default function ReportsReducer(state = initialState, action = {}) {
           location: {
             address: state.tempLocation.address,
             lngLat: { ...state.tempLocation.lngLat }
-          },
-          tempLocation: {
-            ...state.tempLocation,
           }
         }
       };
