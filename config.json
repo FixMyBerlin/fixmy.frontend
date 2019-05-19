@@ -251,5 +251,6 @@
   "debug": false,
   "showLikeButton": true,
   "showFeedBackForm": false,
-  "mockReportsApi": true
+  "mockReportsApi": true,
+  "useReduxLogger": true
 }
