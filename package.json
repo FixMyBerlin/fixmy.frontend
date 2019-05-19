@@ -45,8 +45,6 @@
     "mini-css-extract-plugin": "^0.4.5",
     "postcss-loader": "^3.0.0",
     "react-svg-loader": "^2.1.0",
-    "redux-immutable-state-invariant": "^2.1.0",
-    "redux-logger": "^3.0.6",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^1.2.3",
     "webpack": "^4.26.1",
