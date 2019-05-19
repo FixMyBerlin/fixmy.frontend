@@ -36,12 +36,12 @@ const Wrapper = styled.div`
 
 const StyledPinnedLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`
   position: relative;
-  top: 28px;
+  top: 33px;
 `;
 
 const StyledTickIcon = styled(TickIcon)`
   position: relative;
-  bottom: 40px;
+  bottom: 35px;
 `;
 
 const StyledMapCenterIndicator = styled(MapcenterIndicator)`
