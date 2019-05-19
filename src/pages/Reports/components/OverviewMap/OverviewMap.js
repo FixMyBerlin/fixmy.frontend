@@ -69,6 +69,13 @@ class OverviewMap extends Component {
     return null;
   }
 
+  componentWillUnmount() {
+    debugger
+    if (this.props.selectedReport) {
+      this.props.setSelectedReport(null);
+    }
+  }
+
   onAddButtonTab = () => {
     this.props.history.push(config.routes.reports.new);
   }
