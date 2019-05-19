@@ -6,18 +6,18 @@ import PropTypes from 'prop-types';
 import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`
-  height: 77px;
+  height: 60px;
   margin: 0;
   padding: 18px 8px 8px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  border: 0.5px solid #979797;
+  border-bottom: 0.5px solid #979797;
 `;
 
 const StyledMenuButton = styled(MenuButton)`
   position: static;
-`
+`;
 
 const TextWrapper = styled.div`
   padding-left: 16px;
@@ -25,15 +25,14 @@ const TextWrapper = styled.div`
 `;
 
 const Heading = styled.h2`
-   font-size: 14px;
+  font-size: 14px;
   color: ${config.colors.darkgrey};
   letter-spacing: 0.8px;
   margin: 0;
-  
+
   ${media.m`
     font-size: 16px;
   `}
-  
 `;
 
 const BikeParkImg = styled(BikeParkIcon)`

@@ -96,8 +96,8 @@ class OverviewMap extends Component {
     const { reports, selectedReport, match } = this.props;
     return (
       <MapView>
+        <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
         <MapWrapper>
-          <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
           <WebglMap
             reportsData={reports}
             center={this.state.mapCenter}
@@ -111,32 +111,32 @@ class OverviewMap extends Component {
             customPosition={{ bottom: '42px', right: '7px' }}
           />
           <AddButton onTab={this.onAddButtonTab} />
-
-        </MapWrapper>
-        {selectedReport && (
+          {selectedReport && (
+            <Route
+              path={match.path}
+              exact
+              render={() => (
+                <ReportsPopup
+                  onClose={this.handlePopupClose}
+                  reportItem={selectedReport}
+                />
+              )}
+            />
+          )}
           <Route
-            path={match.path}
-            exact
-            render={() => (
-              <ReportsPopup
-                onClose={this.handlePopupClose}
-                reportItem={selectedReport}
+            path={`${match.path}/:id`}
+            render={props => (
+              <ReportDetails
+                apiEndpoint="reports"
+                onCloseRoute={match.url}
+                onClose={() => this.props.setSelectedReport(null)}
+                token={this.props.token}
+                reportItem={reports.find(r => r.id === +props.match.params.id)}
               />
             )}
           />
-        )}
-        <Route
-          path={`${match.path}/:id`}
-          render={props => (
-            <ReportDetails
-              apiEndpoint="reports"
-              onCloseRoute={match.url}
-              onClose={() => this.props.setSelectedReport(null)}
-              token={this.props.token}
-              reportItem={reports.find(r => r.id === +props.match.params.id)}
-            />
-          )}
-        />
+        </MapWrapper>
+
       </MapView>
     );
   }

@@ -24,9 +24,9 @@ const LikeButtonWrapper = styled.div`
   user-select: none;
 `;
 
+
 const buttonBoxShadow = '0 1px 5px 2px rgba(0, 0, 0, 0.25)';
 const buttonBoxShadowActive = '0 1px 7px 3px rgba(0, 0, 0, 0.25)';
-
 const animation = () => css`
   ${bounce} .8s;
 `;
