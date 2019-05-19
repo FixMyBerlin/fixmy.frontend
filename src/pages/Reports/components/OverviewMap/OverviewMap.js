@@ -70,7 +70,6 @@ class OverviewMap extends Component {
   }
 
   componentWillUnmount() {
-    debugger
     if (this.props.selectedReport) {
       this.props.setSelectedReport(null);
     }
