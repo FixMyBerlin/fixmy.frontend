@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
+
 import FaqItem from './FaqItem';
 
-const FaqSectionWrapper = styled.div`
+const FaqWrapper = styled.div`
   margin-bottom: 62px;
-  padding: 8px 16px;
 `;
 
 const content = [
@@ -50,32 +50,24 @@ const content = [
   }
 ];
 
-class FaqSection extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      content
-    };
+class FaqSection extends PureComponent {
+  state = {
+    content
   }
 
   render() {
     const faqItems = this.state.content
-      .map((item) => {
-        const { heading, text, open } = item;
-        return (
-          <FaqItem
-            heading={heading}
-            text={text}
-            open={open}
-            key={heading.replace(/ /g, '')} // not sure what to use here besides the array index
-          />
-        );
-      });
+      .map(item => (
+        <FaqItem
+          key={item.heading.replace(/ /g, '')} // not sure what to use here besides the array index
+          {...item}
+        />
+      ));
 
     return (
-      <FaqSectionWrapper>
+      <FaqWrapper>
         {faqItems}
-      </FaqSectionWrapper>
+      </FaqWrapper>
     );
   }
 }

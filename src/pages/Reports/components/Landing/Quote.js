@@ -6,7 +6,7 @@ import PlannerImg from '~/images/reports/planner@3x.jpg';
 const blockQuoteText = `„Um Friedrichshain-Kreuzberg zu einem besseren Radbezirk zu machen,
 brauchen wir zu allererst gute Daten als Ausgangslage für die Planungen.“`;
 
-const Wrapper = styled.div`
+const Quote = styled.div`
   text-align: center;
   line-height: 1.37;
   color: ${config.colors.darkgrey};
@@ -28,12 +28,12 @@ const Footer = styled.footer`
 `;
 
 export default () => (
-  <Wrapper>
+  <Quote>
     <Img src={PlannerImg} alt="Planner Icon" />
     <BlockQuote>{blockQuoteText}</BlockQuote>
     <Footer>
       Olaf Rabe<br />
       Radplaner Bezirk Friedrichshain-Kreuzberg
     </Footer>
-  </Wrapper>
+  </Quote>
 );
