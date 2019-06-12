@@ -11,13 +11,15 @@ class WebglMap extends PureComponent {
   static propTypes = {
     reportsData: PropTypes.array,
     center: PropTypes.array,
-    onLoad: PropTypes.func
+    onLoad: PropTypes.func,
+    disabled: PropTypes.bool
   }
 
   static defaultProps = {
     reportsData: [],
     center: null,
-    onLoad: () => {}
+    onLoad: () => {},
+    disabled: false
   }
 
   nav = new MapboxGL.NavigationControl({ showCompass: false })
@@ -57,13 +59,14 @@ class WebglMap extends PureComponent {
     }
   }
 
-  toggleMapInteractivity(isInteractive) {
-    if (isInteractive) {
-      this.map.dragPan.enable();
-    } else {
+  toggleMapInteractivity(disabled) {
+    if (disabled) {
       this.map.dragPan.disable();
+    } else {
+      this.map.dragPan.enable();
     }
-    this.toggleZoomControl(isInteractive);
+
+    this.toggleZoomControl(!disabled);
   }
 
   render() {

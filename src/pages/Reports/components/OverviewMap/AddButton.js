@@ -17,7 +17,6 @@ const Button = styled.div`
   font-size:30px;
   cursor: pointer;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-  }
 `;
 
 export default ({ onTab }) => (

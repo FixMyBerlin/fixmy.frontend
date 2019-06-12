@@ -119,7 +119,6 @@ class OverviewMap extends Component {
             reportsData={reports}
             center={this.state.mapCenter}
             onMarkerClick={this.handleMarkerClick}
-            disabled={match.isExact}
             onLoad={this.onMapLoad}
           />
           { this.state.isLoading ? null : mapControls }
