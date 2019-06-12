@@ -17,6 +17,7 @@ const StyledLink = styled(Link)`
   color: white;
   font-size: 17px;
   font-weight: bold;
+
   &:visited {
     color: white;
   }

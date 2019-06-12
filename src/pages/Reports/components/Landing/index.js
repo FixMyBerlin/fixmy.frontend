@@ -21,10 +21,10 @@ export default () => (
     <ContentWrapper>
       <SectionDivider />
       <HowItWorksSection />
-      <JoinInButton toUrl={`${config.routes.reports.new}`} />
+      <JoinInButton toUrl={`${config.routes.reports.map}`} />
       <QuoteSection />
       <FaqSection />
-      <JoinInButton toUrl={`${config.routes.reports.new}`} />
+      <JoinInButton toUrl={`${config.routes.reports.map}`} />
     </ContentWrapper>
     <Footer />
   </div>
