@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
-import HeartIcon from '~/images/reports/heart.svg';
 import ShareIcon from '~/images/reports/share.svg';
 
 import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
+import PlanningLike from '~/pages/Map/components/DetailView/PlanningDetail/PlanningLike';
+import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
 
 // TODO: split up in subcomponents (Topbar etc.) just like Reports/Landing
 
@@ -43,7 +44,6 @@ const BikeStandsCount = styled.p`
   text-align: center;
   font-size: 10px;
   color: #999999;
-
 `;
 
 const Description = styled.p`
@@ -53,17 +53,7 @@ const Description = styled.p`
   font-size: 14px;
   margin: 20px 0;
   flex:1;
-   overflow:auto;
-`;
-
-const LikeSection = styled.div`
-  width: 100%;
-  height: 140px;
-  background-color: ${config.colors.likebg};
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 20px;
+  overflow:auto;
 `;
 
 // using an invisible item to align the LikeButton in the middle and the share button right using justify-content: space-between;
@@ -72,29 +62,8 @@ const Fill = styled.div`
   height: 20%;
 `;
 
-const StyledHeartIcon = styled(HeartIcon)`
-  display: block;
-`;
-
-// TODO: add functionality
-const LikeButtonWrapper = styled.div`
-  cursor: pointer;
-`;
-
-const LikeButton = styled.div`
-  background-color: ${config.colors.interaction};
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-`;
-
 const LikeButtonCaption = styled.p`
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.2px;
   color: ${config.colors.black};
   text-align: center;
@@ -144,7 +113,7 @@ class ReportDetails extends PureComponent {
       return null;
     }
 
-    const { photo, details, description } = reportItem;
+    const { photo, details, description, id } = reportItem;
 
     return (
       <Wrapper>
@@ -159,23 +128,18 @@ class ReportDetails extends PureComponent {
         </HeadlineSection>
         <Description>{description}</Description>
 
-        <LikeSection>
+        <DetailFooter>
           <Fill />
-          <LikeButtonWrapper>
-            <LikeButton>
-              <StyledHeartIcon />
-            </LikeButton>
-            <LikeButtonCaption>
-              Unterstütze diese Meldung
-            </LikeButtonCaption>
-          </LikeButtonWrapper>
-          <ShareButtonWrapper>
-            <ShareButton onClick={this.shareReport} />
-            <LikeButtonCaption>
-              Teilen
-            </LikeButtonCaption>
-          </ShareButtonWrapper>
-        </LikeSection>
+          <PlanningLike token={this.props.token} url={""} id={id} />
+          {navigator.share ? (
+            <ShareButtonWrapper>
+              <ShareButton onClick={this.shareReport} />
+              <LikeButtonCaption>
+                Teilen
+              </LikeButtonCaption>
+            </ShareButtonWrapper>
+          ) : <Fill />}
+        </DetailFooter>
       </Wrapper>
     );
   }

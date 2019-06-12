@@ -236,6 +236,7 @@ function detailWrapped(Component) {
     }
 
     render() {
+      const { subtitle } = this.props;
       const { isLoading, isError, data } = this.state;
       const showShadow = this.isShadowVisible(data);
 
@@ -253,7 +254,7 @@ function detailWrapped(Component) {
             <StyledPinIcon />
             <div>
               <DetailTitle>{this.renderName(data)}</DetailTitle>
-              <Label uppercase>Abschnitt 1</Label>
+              <Label uppercase>{subtitle || 'Abschnitt 1'}</Label>
             </div>
             <Close onClick={this.onClose}>×</Close>
           </DetailHeader>

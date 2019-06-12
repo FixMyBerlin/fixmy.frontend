@@ -13,6 +13,7 @@ import ImageSlider from '~/pages/Map/components/DetailView/ImageSlider';
 import PlanningStatus from './PlanningStatus';
 import PlanningLike from './PlanningLike';
 import categoryMapping from './categoryMapping';
+import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
 
 const DetailHead = styled.div`
   padding: 14px 24px;
@@ -167,7 +168,11 @@ class PlanningDetails extends PureComponent {
             </DetailBodySection>
           ) : null}
         </DetailBody>
-        {config.showLikeButton && <PlanningLike token={this.props.token} url={url} id={this.props.match.params.id} />}
+        {config.showLikeButton && (
+          <DetailFooter>
+           <PlanningLike token={this.props.token} url={url} id={this.props.match.params.id} />}
+          </DetailFooter>
+        )}
       </Fragment>
     );
   }
