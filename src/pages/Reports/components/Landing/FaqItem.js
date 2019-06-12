@@ -56,7 +56,7 @@ const CollapsibleWrapper = styled.div`
 const FaqItem = ({ heading, text, open }) => (
   <CollapsibleWrapper>
     <Collapsible trigger={heading} open={open}>
-      <p>{text}</p>
+      <p dangerouslySetInnerHTML={{ __html: text }} />
     </Collapsible>
   </CollapsibleWrapper>
 );

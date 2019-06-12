@@ -73,7 +73,6 @@ const StyledLink = styled(Link)`
   }
 `;
 
-
 const TopSection = ({ toUrl }) => (
   <StyledSection>
     <img width="92px" src={FixMyLogo} alt="logo" />

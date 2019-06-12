@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MapboxGL from 'mapbox-gl';
@@ -22,8 +22,7 @@ class BaseMap extends PureComponent {
 
   static defaultProps = {
     maxBounds: config.reportsMap.maxBounds,
-    onLoad: () => {
-    }
+    onLoad: () => {}
   }
 
   state = {
@@ -39,7 +38,7 @@ class BaseMap extends PureComponent {
     });
 
     this.map.on('load', () => {
-      this.setState({isLoading: false});
+      this.setState({ isLoading: false });
       this.props.onLoad(this.map);
     });
   }
@@ -57,7 +56,6 @@ class BaseMap extends PureComponent {
         {this.props.children}
       </StyledMap>
     );
-
   }
 }
 

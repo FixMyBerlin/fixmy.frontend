@@ -55,7 +55,7 @@ class WebglMap extends PureComponent {
     } else {
       this.map.removeControl(this.nav);
     }
-  };
+  }
 
   toggleMapInteractivity(isInteractive) {
     if (isInteractive) {
