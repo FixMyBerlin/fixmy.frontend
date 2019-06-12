@@ -39,7 +39,6 @@ const MapWrapper = styled.div`
   flex-direction: column;
 `;
 
-
 class OverviewMap extends Component {
   constructor(props) {
     super(props);
@@ -57,16 +56,19 @@ class OverviewMap extends Component {
 
   componentWillReceiveProps(nextProps) {
     const { selectedReport } = nextProps;
+
     if (selectedReport && selectedReport.geometry.coordinates !== this.state.mapCenter) {
       this.setState({
         mapCenter: selectedReport.geometry.coordinates
       });
     }
+
     if (!nextProps.selectedReport && this.props.selectedReport) {
       this.setState({
         mapCenter: null
       });
     }
+
     return null;
   }
 
@@ -81,7 +83,12 @@ class OverviewMap extends Component {
   }
 
   handleMarkerClick = (el, reportItem) => {
+    const { selectedReport } = this.props;
     this.props.setSelectedReport(reportItem);
+
+    if (selectedReport && (selectedReport.id !== reportItem.id)) {
+      this.props.history.push(`${config.routes.reports.map}/${reportItem.id}`);
+    }
   }
 
   handleLocationChange = (coords) => {
@@ -121,7 +128,7 @@ class OverviewMap extends Component {
             onMarkerClick={this.handleMarkerClick}
             onLoad={this.onMapLoad}
           />
-          { this.state.isLoading ? null : mapControls }
+          {this.state.isLoading ? null : mapControls}
           {selectedReport && (
             <Route
               path={match.path}
