@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import NounBycicleIcon from '~/images/reports/noun-bicycle.svg';
+import BikeIcon from '~/images/reports/noun-bicycle.svg';
 import { media } from '~/styles/utils';
 import List from '~/components/List';
 
@@ -9,28 +9,28 @@ const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 34px;
-  padding-right: 34px;
-`;
-
-const StyledEssenceText = styled.p`
-  margin-top: 44px;
-  color: black;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 1.5;
-  text-align: center;
-  margin-bottom: 44px;
+  padding: 40px 16px;
 
   ${media.m`
-    margin-top: 88px;
-    margin-bottom: 88px;
+    padding: 80px 24px;
   `}
 `;
 
-const StyledNounBycicleIcon = styled(NounBycicleIcon)`
+const Headline = styled.p`
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.4;
+  text-align: center;
+`;
+
+const StyledIcon = styled(BikeIcon)`
   width: 144px;
-  margin-bottom: 32px;
+  margin: 20px 0;
+
+  ${media.m`
+    margin: 40px 0;
+  `}
 `;
 
 const StyledQuestion = styled.p`
@@ -42,11 +42,11 @@ const StyledQuestion = styled.p`
 
 export default () => (
   <StyledSection>
-    <StyledEssenceText>
+    <Headline>
       Gemeinsam mit dem Bezirksamt Friedrichshain-Kreuzberg versuchen wir herauszufinden: <br />
       Wo genau im Bezirk werden Radabstellplätze gebraucht?
-    </StyledEssenceText>
-    <StyledNounBycicleIcon alt="Icon Fahrradparkplätze" />
+    </Headline>
+    <StyledIcon alt="Icon Fahrradparkplätze" />
     <StyledQuestion>Wie läuft das ab?</StyledQuestion>
     <List>
       <List.ListItem>Meldet uns bis zum 31. Januar 2018 wo Fahrradbügel benötigt sind (das dauert ca. 30 Sekunden)</List.ListItem>
