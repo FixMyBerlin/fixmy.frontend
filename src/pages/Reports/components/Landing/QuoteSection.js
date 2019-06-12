@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PlannerImg from '~/images/reports/planner@3x.jpg';
 
-const blockQuoteText = `„Um Friedrichshain-Kreuzberg zu einem besseren Radbezirk zu machen, 
+const blockQuoteText = `„Um Friedrichshain-Kreuzberg zu einem besseren Radbezirk zu machen,
 brauchen wir zu allererst gute Daten als Ausgangslage für die Planungen.“`;
 
 const StyledQuoteSectionWrapper = styled.div`
@@ -10,12 +10,13 @@ const StyledQuoteSectionWrapper = styled.div`
   padding-left: 34px;
   padding-right: 34px;
   text-align: center;
+  line-height: 1.37;
 `;
 
 const StyledPlannerImg = styled.img`
   width: 118px;
   margin-bottom: 21px;
-`
+`;
 
 const StyledBlockQuote = styled.blockquote`
   font-style: italic;

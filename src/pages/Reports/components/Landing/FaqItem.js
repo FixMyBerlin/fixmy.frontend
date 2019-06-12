@@ -8,14 +8,14 @@ import PropTypes from 'prop-types';
 // helper to customize collapsible,
 // following https://github.com/glennflanagan/react-collapsible/blob/develop/example/_src/sass/components/_Collapsible.scss
 const CollapsibleWrapper = styled.div`
-
   .Collapsible__contentInner {
     p {
-       font-size: 16px;
-       color: ${config.colors.darkgrey};
+      font-size: 16px;
+      line-height: 1.37;
+      color: ${config.colors.darkgrey};
     }
   }
-  
+
   //The link which when clicked opens the collapsable area
   .Collapsible__trigger {
     display: block;
@@ -24,7 +24,7 @@ const CollapsibleWrapper = styled.div`
     position: relative;
     line-height: 2.5;
     color: ${config.colors.black};
- 
+
     &:after {
       font-family: 'Open Sans', sans-serif;
       content: '';
@@ -38,13 +38,13 @@ const CollapsibleWrapper = styled.div`
       display: block;
       transition: transform 300ms;
     }
-  
+
     &.is-open {
       &:after {
         transform: rotateZ(0);
       }
     }
-  
+
     &.is-disabled {
       opacity: 0.5;
       background-color: grey;

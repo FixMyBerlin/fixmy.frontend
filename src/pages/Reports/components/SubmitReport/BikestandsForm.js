@@ -30,6 +30,7 @@ const Question = styled.p`
   font-size: 22px;
   font-weight: bold;
   color: ${config.colors.black};
+  line-height: 1.37;
 `;
 
 const LightQuestion = styled(Question)`
@@ -54,7 +55,7 @@ const WeiterButton = styled(Button)`
   font-size: 18px;
   font-weight: bold;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
-  
+
   &&[disabled] {
     background-color: ${config.colors.lightgrey};
     cursor: default;
@@ -116,7 +117,7 @@ const BikestandPlacementImage = styled.img`
   &:not(.picked) {
      filter: grayscale(100%);
   }
-  
+
   &:hover {
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.4s ease-in;
