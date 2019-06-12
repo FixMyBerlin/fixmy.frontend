@@ -9,10 +9,10 @@ const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 16px;
+  padding: 40px 0;
 
   ${media.m`
-    padding: 80px 24px;
+    padding: 80px 0;
   `}
 `;
 
