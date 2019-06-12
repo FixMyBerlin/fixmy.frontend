@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import TopSection from './TopSection';
 import SectionDivider from './SectionDivider';
-import JoinInButton from './JoinInButton';
+import JoinButton from './JoinButton';
 import HowItWorksSection from './HowItWorksSection';
 import QuoteSection from './QuoteSection';
 import FaqSection from './FaqSection';
@@ -20,10 +20,10 @@ export default () => (
     <ContentWrapper>
       <SectionDivider />
       <HowItWorksSection />
-      <JoinInButton toUrl={`${config.routes.reports.map}`} />
+      <JoinButton />
       <QuoteSection />
       <FaqSection />
-      <JoinInButton toUrl={`${config.routes.reports.map}`} />
+      <JoinButton />
     </ContentWrapper>
     <Footer />
   </Fragment>
