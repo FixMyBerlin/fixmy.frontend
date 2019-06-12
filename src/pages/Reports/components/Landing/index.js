@@ -39,9 +39,6 @@ export default () => (
       <QuoteSection />
       <FaqSection />
       <JoinInButton toUrl={`${config.routes.reports.new}`} />
-      <StyledReportsMapLink to={`${config.routes.reports.map}`}>
-          Hier geht’s zum aktuellen Stand der Umfrage &gt;
-      </StyledReportsMapLink>
     </ContentWrapper>
     <Footer />
   </div>
