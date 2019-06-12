@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import NounBycicleIcon from '~/images/reports/noun-bicycle.svg';
 import { media } from '~/styles/utils';
+import List from '~/components/List';
 
 const StyledSection = styled.section`
   display: flex;
@@ -39,46 +40,19 @@ const StyledQuestion = styled.p`
   line-height: 1.37;
 `;
 
-const StyledHowItWorkslist = styled.ul`
-  padding: 0 0 0 22px;
-  margin: 0 0 19px;
-  list-style: none;
-
-  li {
-    font-size: 14px;
-    color: ${config.colors.darkgrey};
-    margin-bottom: 30.2px;
-    line-height: 1.37;
-
-   &:before {
-     content: "•";
-     color: white;
-     display: block;
-     width: 10.4px;
-     background-color: #D8D8D6;
-     height: 10.4px;
-     border-radius: 11px;
-     position: relative;
-     right: 25px;
-     top: 16px;
-   }
-  }
-`;
-
-
 export default () => (
   <StyledSection>
     <StyledEssenceText>
-      Gemeinsam mit dem Bezirksamt Friedrichshain-Kreuzberg versuchen wir herauszufinden: <br/>
+      Gemeinsam mit dem Bezirksamt Friedrichshain-Kreuzberg versuchen wir herauszufinden: <br />
       Wo genau im Bezirk werden Radabstellplätze gebraucht?
     </StyledEssenceText>
-    <StyledNounBycicleIcon alt="Icon Fahrradparkplätze"/>
+    <StyledNounBycicleIcon alt="Icon Fahrradparkplätze" />
     <StyledQuestion>Wie läuft das ab?</StyledQuestion>
-    <StyledHowItWorkslist>
-      <li>Meldet uns bis zum 31. Januar 2018 wo Fahrradbügel benötigt sind (das dauert ca. 30 Sekunden)</li>
-      <li>Wir sammeln alle Meldungen und übergeben diese dem Bezirk.</li>
-      <li>Die Meldungen werden geprüft und sofern umsetzbar nach und nach vom Bezirk abgearbeitet.</li>
-      <li>Alle Meldungen bekommen öffentliches Feedback auf der Plattform</li>
-    </StyledHowItWorkslist>
+    <List>
+      <List.ListItem>Meldet uns bis zum 31. Januar 2018 wo Fahrradbügel benötigt sind (das dauert ca. 30 Sekunden)</List.ListItem>
+      <List.ListItem>Wir sammeln alle Meldungen und übergeben diese dem Bezirk.</List.ListItem>
+      <List.ListItem>Die Meldungen werden geprüft und sofern umsetzbar nach und nach vom Bezirk abgearbeitet.</List.ListItem>
+      <List.ListItem>Alle Meldungen bekommen öffentliches Feedback auf der Plattform</List.ListItem>
+    </List>
   </StyledSection>
 );

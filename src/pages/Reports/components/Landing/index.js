@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import TopSection from './TopSection';
 import SectionDivider from './SectionDivider';
@@ -11,12 +11,11 @@ import Footer from '~/components/Menu/MenuFooter';
 const ContentWrapper = styled.div`
   width: 100%;
   max-width: 568px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 20px auto;
 `;
 
 export default () => (
-  <div>
+  <Fragment>
     <TopSection toUrl={`${config.routes.reports.map}`} />
     <ContentWrapper>
       <SectionDivider />
@@ -27,5 +26,5 @@ export default () => (
       <JoinInButton toUrl={`${config.routes.reports.map}`} />
     </ContentWrapper>
     <Footer />
-  </div>
+  </Fragment>
 );

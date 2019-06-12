@@ -3,19 +3,14 @@ import styled from 'styled-components';
 import Collapsible from 'react-collapsible';
 import PropTypes from 'prop-types';
 
+import Text from '~/components/Text';
+
+
 // TODO: find a good solution to re-append the <hr /> to opened collapsibles. must be done animated to look good
 
 // helper to customize collapsible,
 // following https://github.com/glennflanagan/react-collapsible/blob/develop/example/_src/sass/components/_Collapsible.scss
 const CollapsibleWrapper = styled.div`
-  .Collapsible__contentInner {
-    p {
-      font-size: 16px;
-      line-height: 1.37;
-      color: ${config.colors.darkgrey};
-    }
-  }
-
   //The link which when clicked opens the collapsable area
   .Collapsible__trigger {
     display: block;
@@ -56,7 +51,7 @@ const CollapsibleWrapper = styled.div`
 const FaqItem = ({ heading, text, open }) => (
   <CollapsibleWrapper>
     <Collapsible trigger={heading} open={open}>
-      <p dangerouslySetInnerHTML={{ __html: text }} />
+      <Text dangerouslySetInnerHTML={{ __html: text }} />
     </Collapsible>
   </CollapsibleWrapper>
 );
