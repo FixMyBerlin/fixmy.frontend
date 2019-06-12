@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import idx from 'idx';
+
 import WebglMap from './WebglMap';
 import StaticMarker from './StaticMarker';
 import PinLocationButton from './PinLocationButton';

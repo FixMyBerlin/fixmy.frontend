@@ -130,7 +130,7 @@ class ReportDetails extends PureComponent {
 
         <DetailFooter>
           <Fill />
-          <PlanningLike token={this.props.token} url={""} id={id} />
+          <PlanningLike token={this.props.token} url={null} id={id} />
           {navigator.share ? (
             <ShareButtonWrapper>
               <ShareButton onClick={this.shareReport} />

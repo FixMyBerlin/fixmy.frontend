@@ -5,6 +5,8 @@
 
 import React, { Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { PropagateLoader } from 'react-spinners';
+import styled from 'styled-components';
 
 import {
   setLocationMode,
@@ -16,16 +18,14 @@ import {
   removeError,
   submitReport
 } from '~/pages/Reports/ReportsState';
-import OverviewMapNavBar from '~/pages/Reports/components/OverviewMap/OverviewMapNavBar';
-import { PropagateLoader } from 'react-spinners';
-import styled from 'styled-components';
+import OverviewMapNavBar from '~/pages/Reports/pages/OverviewMap/components/OverviewMapNavBar';
+import Markdown from '~/pages/Markdown/Markdown';
 import LocateModeChooser from './LocateModeChooser';
 import LocateMeMap from './LocateMeMap/LocateMeMap';
 import BikestandsForm from './BikestandsForm';
 import AdditionalDataForm from './AdditionalDataForm';
 import FormProgressBar from './FormProgressBar';
 import ReportSubmitted from './ReportSubmitted';
-import Markdown from '~/pages/Reports/Reports';
 
 const LoaderWrapper = styled.div`
   width: 100%;

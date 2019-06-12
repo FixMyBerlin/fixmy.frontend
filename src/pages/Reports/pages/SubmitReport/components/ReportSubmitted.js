@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
-import ErrorMessage from '../ErrorMessage';
+
+import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import Button from '~/components/Button';
 import { breakpoints } from '~/styles/utils';
 import history from '~/history';
@@ -66,7 +67,7 @@ const StyledInput = styled.input`
   padding: 0;
   margin: 26px 0;
   height: 32px;
-  
+
   &:focus {
     border-bottom:2px solid ${config.colors.interaction};
   }
@@ -107,7 +108,7 @@ const AbsendenButton = styled(Button)`
   font-size: 18px;
   font-weight: bold;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
-  
+
   &&[disabled] {
     background-color: white;
     color: ${config.colors.darkgrey};

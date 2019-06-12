@@ -4,7 +4,7 @@ import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
 import withRouter from 'react-router/withRouter';
 
-import ReportMarkers from '~/pages/Reports/components/OverviewMap/ReportMarkers';
+import ReportMarkers from './ReportMarkers';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 
 class WebglMap extends PureComponent {
@@ -73,9 +73,7 @@ class WebglMap extends PureComponent {
     const { reportsData, onMarkerClick } = this.props;
 
     return (
-      <BaseMap
-        onLoad={map => this.onLoad(map)}
-      >
+      <BaseMap onLoad={map => this.onLoad(map)}>
         <ReportMarkers
           map={this.map}
           data={reportsData}

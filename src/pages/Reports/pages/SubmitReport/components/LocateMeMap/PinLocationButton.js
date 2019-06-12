@@ -20,12 +20,12 @@ const Button = styled.button`
   right: 0;
   margin: auto;
   width: 280px;
-  
+
   &[disabled] {
      box-shadow: none;
      background-color: ${config.colors.inactivegrey};
   }
-  
+
   &:focus {
     outline: none;
   }

@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
-import withRouter from 'react-router-dom/withRouter';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import idx from 'idx';
-
-import { breakpoints } from '~/styles/utils';
 import { X } from 'react-feather';
 import { connect } from 'react-redux';
-import { setSelectedReport } from '../../ReportsState';
+
+import { breakpoints } from '~/styles/utils';
+import { setSelectedReport } from '~/pages/Reports/ReportsState';
 
 // TODO: add like feature
 

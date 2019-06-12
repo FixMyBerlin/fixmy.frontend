@@ -1,17 +1,16 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
+
 import history from '~/history';
 import Markdown from '~/pages/Markdown/Markdown';
-
-import SubmitReportDialog from './SubmitReportDialog';
+import SubmitReportDialog from './components/SubmitReportDialog';
 
 const SubmitReportWrapper = styled.div`
   min-height: 100%;
   display: flex;
   flex-direction: column;
 `;
-
 
 class SubmitReport extends PureComponent {
   render() {
@@ -33,5 +32,5 @@ class SubmitReport extends PureComponent {
     );
   }
 }
-export default SubmitReport;
 
+export default SubmitReport;

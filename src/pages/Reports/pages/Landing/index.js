@@ -1,22 +1,22 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
-import TopSection from './TopSection';
-import SectionDivider from './SectionDivider';
-import JoinButton from './JoinButton';
-import HowItWorksSection from './HowItWorksSection';
-import Quote from './Quote';
-import FaqSection from './FaqSection';
+import TopSection from './components/TopSection';
+import Divider from './components/Divider';
+import JoinButton from './components/JoinButton';
+import HowItWorksSection from './components/HowItWorksSection';
+import Quote from './components/Quote';
+import Faq from './components/Faq';
 import Footer from '~/components/Menu/MenuFooter';
 import { media } from '~/styles/utils';
 
 const ContentWrapper = styled.div`
   max-width: 568px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 16px 20px 16px;
 
   ${media.m`
-    padding: 0 24px;
+    padding: 0 24px 40px 24px;
   `}
 `;
 
@@ -24,11 +24,11 @@ export default () => (
   <Fragment>
     <TopSection toUrl={`${config.routes.reports.map}`} />
     <ContentWrapper>
-      <SectionDivider />
+      <Divider />
       <HowItWorksSection />
       <JoinButton />
       <Quote />
-      <FaqSection />
+      <Faq />
       <JoinButton />
     </ContentWrapper>
     <Footer />

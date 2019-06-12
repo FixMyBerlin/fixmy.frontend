@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+
 import Button from '~/components/Button';
 import { media } from '~/styles/utils';
 
@@ -43,7 +44,7 @@ const StyledButton = styled(Button)`
   max-width: 48%;
   flex-grow: 1;
   border-radius: 6px;
-  
+
   ${media.m`
      max-width: 25%;
   `}

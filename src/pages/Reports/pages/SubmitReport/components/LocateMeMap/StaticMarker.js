@@ -5,9 +5,10 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { X } from 'react-feather';
+
 import LocateMeMarkerIcon from '~/images/reports/locate-me-marker.svg';
 import TickIcon from '~/images/reports/locate-me-marker-tick.svg';
-import { X } from 'react-feather';
 
 const MapcenterIndicator = styled(X)`
   font-weight: bold;
@@ -21,8 +22,8 @@ const MapcenterIndicator = styled(X)`
 const Wrapper = styled.div`
   position: absolute;
   margin: auto;
-  top: 0; 
-  left: 0;  
+  top: 0;
+  left: 0;
   right: 0;
   bottom: calc(114px / 2);
   z-index: 99999999;
@@ -49,19 +50,15 @@ const StyledMapCenterIndicator = styled(MapcenterIndicator)`
   bottom: -10px;
 `;
 
-
 const StaticMarker = ({ pinned }) => (
   <Wrapper>
-
-    {pinned ?
-      (
-        <Fragment>
-          <StyledPinnedLocateMeMarkerIcon />
-          <StyledTickIcon />
-        </Fragment>
-      ) :
-        <LocateMeMarkerIcon />}
-
+    {pinned ? (
+      <Fragment>
+        <StyledPinnedLocateMeMarkerIcon />
+        <StyledTickIcon />
+      </Fragment>
+    ) : <LocateMeMarkerIcon />
+    }
     {!pinned && <StyledMapCenterIndicator>+</StyledMapCenterIndicator>}
   </Wrapper>
 );

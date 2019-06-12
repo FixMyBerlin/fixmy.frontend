@@ -10,12 +10,12 @@ import withRouter from 'react-router/withRouter';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 
-import WebglMap from './WebglMap';
-import OverviewMapNavBar from './OverviewMapNavBar';
-import AddButton from './AddButton';
+import WebglMap from './components/WebglMap';
+import OverviewMapNavBar from './components/OverviewMapNavBar';
+import AddButton from './components/AddButton';
+import ReportsPopup from './components/ReportsPopup';
+import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
-import ReportsPopup from './ReportsPopup';
-import ReportDetails from './ReportDetails';
 
 import {
   removeError,

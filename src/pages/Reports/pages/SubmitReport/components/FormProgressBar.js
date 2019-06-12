@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import TickIcon from '~/images/reports/tick-icon.svg';
 import history from '~/history';
@@ -13,9 +14,9 @@ const BackLink = styled.a`
   font-size: 10px;
   font-weight: bold;
   color: ${config.colors.darkgrey};
-  
+
   &.hidden:after {
-    content: '' 
+    content: ''
   }
 `;
 
@@ -56,9 +57,9 @@ const StepIndicator = styled.span`
   font-size: 13px;
   font-weight: bold;
   // put at the end
-  order: 10; 
+  order: 10;
   margin-right: 12px;
- 
+
   &.active {
     margin-right: unset;
     order: 0;

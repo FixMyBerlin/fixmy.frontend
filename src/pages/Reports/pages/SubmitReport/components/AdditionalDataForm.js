@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
 import TextareaAutosize from 'react-autosize-textarea';
+
 import PhotoControlImage from '~/images/reports/photo-control.png';
 import Button from '~/components/Button';
 import { breakpoints } from '~/styles/utils';
@@ -51,7 +52,7 @@ const PhotoInputImageLabel = styled.label`
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
-  
+
   &.has-photo {
     max-width: 218px;
     max-height: 166px;
@@ -97,7 +98,7 @@ const DescriptionTextArea = styled(TextareaAutosize)`
   max-width: ${breakpoints.s}px;
   font-size: 14px;
   padding: 8px;
-  
+
   &:focus {
     outline-color: ${config.colors.interaction};
   }
@@ -112,7 +113,7 @@ const WeiterButton = styled(Button)`
   font-size: 18px;
   font-weight: bold;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
-  
+
   &&[disabled] {
     background-color: ${config.colors.lightgrey};
     cursor: default;
@@ -242,7 +243,9 @@ class AdditionalDataForm extends PureComponent {
         </PhotoInputImageLabel>
         <PhotoInputLabel
           htmlFor="photo-file-input"
-        >{`Foto ${this.state.photo ? 'neu' : ''} aufnehmen`}</PhotoInputLabel>
+        >
+          {`Foto ${this.state.photo ? 'neu' : ''} aufnehmen`}
+        </PhotoInputLabel>
 
         <PhotoDisclaimerWrapper>
           <StyledCheckboxLabel htmlFor="photo-disclaimer-tick" style={{ alignSelf: 'flex-start' }}>

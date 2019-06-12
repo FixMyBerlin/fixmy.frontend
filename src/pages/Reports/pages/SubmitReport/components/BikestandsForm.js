@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import RangeSlider from '~/components/RangeSlider';
-import 'react-rangeslider/lib/index.css'; // include the default range slider styles
-import Button from '~/components/Button';
 
-import { BIKESTAND_PLACEMENT_SIDEWALK, BIKESTAND_PLACEMENT_STREET } from '../../ReportsState';
+import { BIKESTAND_PLACEMENT_SIDEWALK, BIKESTAND_PLACEMENT_STREET } from '~/pages/Reports/ReportsState';
+import RangeSlider from '~/components/RangeSlider';
+import Button from '~/components/Button';
 import SidwalkBgImage from '~/images/reports/bikestand-placement-sidewalk.jpg';
 import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
+
+// include the default range slider styles
+import 'react-rangeslider/lib/index.css';
 
 // TODO: Move styled components to extra file(s) to not bloat up the file
 // TODO: scroll to bottom when radio button in first group has been checked
@@ -211,10 +213,10 @@ class BikestandsForm extends PureComponent {
             <BikestandPlacementLabel
               htmlFor="amenityPlacement-street"
             >
-            <BikestandPlacementImage
-              src={StreetBgImage}
-              className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_STREET ? 'picked' : ''}
-            />
+              <BikestandPlacementImage
+                src={StreetBgImage}
+                className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_STREET ? 'picked' : ''}
+              />
             </BikestandPlacementLabel>
             Auf der Straße
             <BikestandPlacementRadioButton

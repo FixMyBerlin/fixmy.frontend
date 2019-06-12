@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ChevronDown } from 'react-feather';
 
-const SectionDivider = styled.div`
+const Divider = styled.div`
   width: 100%;
   height: 0;
   display: flex;
@@ -26,7 +26,7 @@ function scrollDown() {
 }
 
 export default () => (
-  <SectionDivider onClick={scrollDown}>
+  <Divider onClick={scrollDown}>
     <StyledChevron />
-  </SectionDivider>
+  </Divider>
 );

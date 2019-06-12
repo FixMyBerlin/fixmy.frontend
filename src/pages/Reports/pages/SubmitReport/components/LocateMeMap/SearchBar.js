@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
+
 import SearchIcon from '~/images/reports/search.svg';
 import { media } from '~/styles/utils';
 

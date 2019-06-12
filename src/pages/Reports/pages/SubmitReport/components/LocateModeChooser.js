@@ -6,6 +6,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { X } from 'react-feather';
+
 import LocateIcon from '~/images/reports/location-button.svg';
 import MapIcon from '~/images/reports/noun-map-1909219.svg';
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
