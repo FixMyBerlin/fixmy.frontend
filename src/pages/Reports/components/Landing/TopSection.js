@@ -19,7 +19,7 @@ const StyledSection = styled.section`
   background-position: center 80%;
   padding-left: 34px;
   padding-right: 34px;
-  
+
   ${media.m`
     background-image: url(${BycicleParkingBgImgLargeScreen});
     background-position: top;
@@ -33,7 +33,7 @@ const StyledCredits = styled.p`
   position: absolute;
   bottom: 8px;
   right: 4px;
-  
+
   ${media.m`
     display: none;
   `}
@@ -56,8 +56,10 @@ const StyledHeading = styled.h2`
 const StyledButton = styled(Button)`
   width: 167px;
   padding: 10px 18px;
-  
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
+
    &:hover {
+    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.4);
     opacity: 1;
   }
 `;
@@ -65,7 +67,7 @@ const StyledButton = styled(Button)`
 const StyledLink = styled(Link)`
   color: white;
   font-size: 18px;
-  
+
   &:visited, &:hover {
     color: white;
   }
