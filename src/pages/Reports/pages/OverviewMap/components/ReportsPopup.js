@@ -39,7 +39,8 @@ const MainSection = styled.div`
   padding: 11px;
 `;
 
-const PreviewImageContainer = styled.div`
+const PreviewImage = styled.a`
+  display: block;
   height: 200px;
   width: 100%;
   background-size: contain;
@@ -106,7 +107,9 @@ class ReportsPopup extends PureComponent {
       <Wrapper>
         <PopupWrapper>
           {photoSrc && (
-            <PreviewImageContainer
+            <PreviewImage
+              href={photoSrc}
+              target="_blank"
               style={{
                 backgroundImage: `url(${photoSrc})`
               }}
