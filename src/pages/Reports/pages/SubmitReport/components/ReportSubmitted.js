@@ -126,7 +126,7 @@ class ReportSubmitted extends PureComponent {
     this.state = {
       email: '',
       confirmsDataUsage: false,
-      wantsNewsletter: true
+      wantsNewsletter: false
     };
   }
 
