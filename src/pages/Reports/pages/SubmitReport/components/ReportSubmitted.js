@@ -76,7 +76,7 @@ const StyledInput = styled.input`
 // TODO: de-dupe
 const StyledCheckbox = styled.input`
   cursor: pointer;
-  margin-right: 16px;
+  margin-right: 32px;
   display: inline-block;
   transform: scale(1.5);
   transform-origin: top left;
@@ -84,7 +84,6 @@ const StyledCheckbox = styled.input`
 
 const StyledCheckboxItem = styled.div`
   display: flex;
-  justify-content: space-between;
   width: 100%;
   max-width: ${breakpoints.m}px;
   margin-bottom: 16px;
