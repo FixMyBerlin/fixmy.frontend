@@ -33,6 +33,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  pointer-events: none;
 `;
 
 const StyledPinnedLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`

@@ -72,6 +72,7 @@ const AddressIndicator = styled.div`
   right: 0;
   bottom: 0;
   user-select: none;
+  pointer-events: none;
 `;
 
 const InvalidAdressIndicator = styled(AddressIndicator)`
@@ -221,10 +222,10 @@ class LocateMeMap extends Component {
                 )}
 
                 {this.props.tempLocation && this.props.tempLocation.address && this.props.tempLocation.valid && (
-                  <AddressIndicator>{this.props.tempLocation.address}</AddressIndicator>
+                  <AddressIndicator className="pass-touch">{this.props.tempLocation.address}</AddressIndicator>
                 )}
                 {this.props.tempLocation && !this.props.tempLocation.valid && (
-                  <InvalidAdressIndicator>{config.reportsLocateMeMap.outofBoundaryText}</InvalidAdressIndicator>
+                  <InvalidAdressIndicator className="pass-touch">{config.reportsLocateMeMap.outofBoundaryText}</InvalidAdressIndicator>
                 )}
               </Fragment>
             )
