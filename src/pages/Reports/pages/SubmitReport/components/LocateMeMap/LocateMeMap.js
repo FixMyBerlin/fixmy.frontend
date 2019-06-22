@@ -91,6 +91,9 @@ class LocateMeMap extends Component {
     onProceed: () => console.log('implement me')
   };
 
+  static async getValidationGeodata() {
+    validationBoundary = await ky.get(`${config.reportsLocateMeMap.boundaryGeodataUrl}`).json();
+  }
 
   constructor(props) {
     super(props);
@@ -103,7 +106,7 @@ class LocateMeMap extends Component {
 
   async componentDidMount() {
     if (!validationBoundary) {
-      await this.getValidationGeodata();
+      await LocateMeMap.getValidationGeodata();
     }
   }
 
@@ -114,9 +117,6 @@ class LocateMeMap extends Component {
     });
   }
 
-  async getValidationGeodata() {
-    validationBoundary = await ky.get(`${config.reportsLocateMeMap.boundaryGeodataUrl}`).json();
-  }
 
   onMapMove = ({ lat, lng }) => {
     if (!validationBoundary) return;
