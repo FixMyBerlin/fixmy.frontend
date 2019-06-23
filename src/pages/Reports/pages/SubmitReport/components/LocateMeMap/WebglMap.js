@@ -40,7 +40,7 @@ class WebglMap extends PureComponent {
     }
 
     if (this.props.zoomedOut) {
-       this.map.easeTo({zoom: 12, duration: 3000 })
+       this.map.easeTo({ zoom: 12, duration: 3000 });
     }
 
     const viewChanged = prevProps.zoom !== this.props.zoom ||
@@ -81,6 +81,7 @@ class WebglMap extends PureComponent {
 
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
+    this.map.on('zoomEnd', this.handleMoveEnd);
 
     // notify containers that map has been initialized
     this.props.onLoad();
@@ -109,6 +110,7 @@ class WebglMap extends PureComponent {
     this.props.onMapDrag({ lat, lng });
   }
 
+  // in case we need it later on
   handleMove = () => {}
 
   render() {
