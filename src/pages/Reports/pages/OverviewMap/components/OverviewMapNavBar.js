@@ -3,12 +3,10 @@ import styled from 'styled-components';
 import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import PropTypes from 'prop-types';
-import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`
-  height: 60px;
   margin: 0;
-  padding: 18px 8px 8px;
+  padding: 18px 8px 12px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -16,6 +14,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledMenuButton = styled(MenuButton)`
+  padding-top: 1px;
   position: static;
 `;
 
@@ -25,20 +24,17 @@ const TextWrapper = styled.div`
 `;
 
 const Heading = styled.h2`
-  font-size: 14px;
+  font-size: 16px;
   color: ${config.colors.darkgrey};
   letter-spacing: 0.8px;
   margin: 0;
-
-  ${media.m`
-    font-size: 16px;
-  `}
 `;
 
 const BikeParkImg = styled(BikeParkIcon)`
   width: 65px;
   height: 40px;
   display: block;
+  align-self: center;
 `;
 
 // TODO: find out what this is supposed to do
