@@ -39,8 +39,7 @@ const MainSection = styled.div`
   padding: 11px;
 `;
 
-const PreviewImage = styled.a`
-  display: block;
+const PreviewImageContainer = styled(Link)`
   height: 200px;
   width: 100%;
   background-size: contain;
@@ -97,6 +96,11 @@ const NumberStatement = styled.p`
 `;
 
 class ReportsPopup extends PureComponent {
+  getDetailsUrl = () => {
+    const { selectedReport } = this.props;
+    return `${config.routes.reports.map}/${selectedReport.id}`;
+  }
+
   render() {
     const { selectedReport, onClose } = this.props;
     const photoSrc = idx(selectedReport, _ => _.photo.src);
@@ -107,9 +111,8 @@ class ReportsPopup extends PureComponent {
       <Wrapper>
         <PopupWrapper>
           {photoSrc && (
-            <PreviewImage
-              href={photoSrc}
-              target="_blank"
+            <PreviewImageContainer
+              to={this.getDetailsUrl()}
               style={{
                 backgroundImage: `url(${photoSrc})`
               }}
@@ -121,7 +124,7 @@ class ReportsPopup extends PureComponent {
           <MainSection>
             <Address>{selectedReport.address}</Address>
             <NumberStatement>{`${selectedReport.details.number} neue Fahrradbügel benötigt`}</NumberStatement>
-            <DetailsLink to={`${config.routes.reports.map}/${selectedReport.id}`}>Details</DetailsLink>
+            <DetailsLink to={this.getDetailsUrl()}>Details</DetailsLink>
           </MainSection>
         </PopupWrapper>
       </Wrapper>
