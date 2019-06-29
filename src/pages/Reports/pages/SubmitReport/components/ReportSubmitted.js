@@ -38,11 +38,11 @@ const Text = styled.p`
 `;
 
 // TODO: factor out, used multiple times in other places
-const StyledHr = styled.hr`
-  width: 100%;
-  border: 0.5px dashed rgba(162, 162, 162, 0.87);
-  margin-bottom: 12px;
-`;
+// const StyledHr = styled.hr`
+//   width: 100%;
+//   border: 0.5px dashed rgba(162, 162, 162, 0.87);
+//   margin-bottom: 12px;
+// `;
 
 // TODO: if possible, actually show the overviewMap ine the background like in Zeplin
 // TO-dedupe, buttons are declared and styled a million times within /reports
@@ -58,67 +58,67 @@ const MeldungAnzeigenButton = styled(Button)`
 `;
 
 
-const StyledInput = styled.input`
-  width:100%;
-  font-size: 16px;
-  border:0;
-  border-bottom:1px solid #979797;
-  outline: none;
-  padding: 0;
-  margin: 26px 0;
-  height: 32px;
+// const StyledInput = styled.input`
+//   width:100%;
+//   font-size: 16px;
+//   border:0;
+//   border-bottom:1px solid #979797;
+//   outline: none;
+//   padding: 0;
+//   margin: 26px 0;
+//   height: 32px;
 
-  &:focus {
-    border-bottom:2px solid ${config.colors.interaction};
-  }
-`;
+//   &:focus {
+//     border-bottom:2px solid ${config.colors.interaction};
+//   }
+// `;
 
-// TODO: de-dupe
-const StyledCheckbox = styled.input`
-  cursor: pointer;
-  margin-right: 32px;
-  display: inline-block;
-  transform: scale(1.5);
-  transform-origin: top left;
-`;
+// // TODO: de-dupe
+// const StyledCheckbox = styled.input`
+//   cursor: pointer;
+//   margin-right: 32px;
+//   display: inline-block;
+//   transform: scale(1.5);
+//   transform-origin: top left;
+// `;
 
-const StyledCheckboxItem = styled.div`
-  display: flex;
-  width: 100%;
-  max-width: ${breakpoints.m}px;
-  margin-bottom: 16px;
-`;
+// const StyledCheckboxItem = styled.div`
+//   display: flex;
+//   width: 100%;
+//   max-width: ${breakpoints.m}px;
+//   margin-bottom: 16px;
+// `;
 
-// TODO: same here
-const StyledCheckboxLabel = styled.label`
-   font-size: 10px;
-   letter-spacing: 0.2px;
-   line-height: 1.4;
-   color: ${config.colors.darkgrey};
-   cursor: pointer;
-`;
+// // TODO: same here
+// const StyledCheckboxLabel = styled.label`
+//    font-size: 10px;
+//    letter-spacing: 0.2px;
+//    line-height: 1.4;
+//    color: ${config.colors.darkgrey};
+//    cursor: pointer;
+// `;
 
-// TODO: same here
-const AbsendenButton = styled(Button)`
-  display: block;
-  margin-top: 36px;
-  height: 48px;
-  width: 167px;
-  font-size: 18px;
-  font-weight: bold;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+// // TODO: same here
+// const AbsendenButton = styled(Button)`
+//   display: block;
+//   margin-top: 36px;
+//   height: 48px;
+//   width: 167px;
+//   font-size: 18px;
+//   font-weight: bold;
+//   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
 
-  &&[disabled] {
-    background-color: white;
-    color: ${config.colors.darkgrey};
-    font-weight: bold;
-    cursor: default;
-    border: 1px solid ${config.colors.interaction};
-    &:hover {
-     background-color: ${config.colors.lightgrey};
-    }
-  }
-`;
+//   &&[disabled] {
+//     background-color: white;
+//     color: ${config.colors.darkgrey};
+//     font-weight: bold;
+//     cursor: default;
+//     border: 1px solid ${config.colors.interaction};
+//     &:hover {
+//      background-color: ${config.colors.lightgrey};
+//     }
+//   }
+// `;
 
 class ReportSubmitted extends PureComponent {
   constructor(props) {
@@ -183,6 +183,7 @@ class ReportSubmitted extends PureComponent {
         <MeldungAnzeigenButton onClick={this.revealReportOnMap}>Meldung Anzeigen</MeldungAnzeigenButton>
         <Text>Schau dir Deine Meldung an und erzähle anderen davon</Text>
 
+        {/*
         <StyledHr />
 
         <Heading>Gib deine Emailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung
@@ -229,6 +230,8 @@ class ReportSubmitted extends PureComponent {
           disabled={!this.state.confirmsDataUsage}
         >Absenden
         </AbsendenButton>
+
+        */}
 
       </Wrapper>
     );
