@@ -5,17 +5,17 @@
  *  This location mode is passed in as prop.
  *  The location can be adjusted by moving the map around.
  */
-
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import idx from 'idx';
 
+import { media } from '~/styles/utils';
 import WebglMap from './WebglMap';
 import StaticMarker from './StaticMarker';
 import PinLocationButton from './PinLocationButton';
-import SearchBar from './SearchBar';
+import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import HelpText from './HelpText';
 import ConfirmLocationDialog from './ConfirmLocationDialog';
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
@@ -55,6 +55,20 @@ const MapWrapper = styled.div`
 
 const StyledWebGlMap = styled(WebglMap)`
   order: 2; // this makes sure that the NavBar is on top
+`;
+
+const SearchBarWrapper = styled.div`
+  position: fixed;
+  z-index: 1000;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  margin: auto;
+
+  ${media.m`
+    max-width: 400px;
+    margin: 0;
+  `}
 `;
 
 const AddressIndicator = styled.div`
@@ -99,6 +113,7 @@ class LocateMeMap extends Component {
     super(props);
     this.state = {
       mapHasBeenDragged: false,
+      geocoderUsed: false,
       locationPinned: false,
       isLoading: true
     };
@@ -144,13 +159,18 @@ class LocateMeMap extends Component {
     }
   };
 
-  onSearchAddress = (text) => {
-    this.props.geocodeAddress(text)
-      .then(() => {
-        const [lng, lat] = this.props.geocodeResult.center;
-        this.onMapMove({ lng, lat });
-      });
+  ongeocodeUse = () => this.setState({
+    geocoderUsed: true
+  })
+
+  ongeocodeSuccess = ({ lng, lat }) => {
+    this.onMapMove({ lng, lat });
   };
+
+  ongeocodeError = (e) => {
+    // TODO: provoke errors, display them to user
+    debugger;
+  }
 
   onlocateMeMarkerUse = (coords) => {
     // TODO: make this work. drag the map
@@ -193,9 +213,15 @@ class LocateMeMap extends Component {
         {!this.state.isLoading && this.props.locationMode === LOCATION_MODE_GEOCODING && (
           <Fragment>
             {!this.state.locationPinned && (
-              <SearchBar onSubmit={this.onSearchAddress} />
+              <SearchBarWrapper>
+                <AutocompleteGeocoder
+                  onLocationPick={this.ongeocodeSuccess}
+                  onSearchStart={this.ongeocodeUse}
+                  onError={this.ongeocodeError}
+                />
+              </SearchBarWrapper>
             )}
-            {!this.state.mapHasBeenDragged && (
+            {(this.state.mapHasBeenDragged || this.state.geocoderUsed) ? null : (
               <HelpText />
             )}
           </Fragment>
