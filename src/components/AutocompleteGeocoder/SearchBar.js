@@ -56,12 +56,14 @@ class SearchBar extends PureComponent {
   static propTypes = {
     onSearchEnter: PropTypes.func.isRequired,
     onSearchStart: PropTypes.func,
+    onSearchReset: PropTypes.func,
     searchStringMinLength: PropTypes.number,
     debounceTime: PropTypes.number
   }
 
   static defaultProps = {
     onSearchStart: () => { },
+    onSearchReset: () => { },
     searchStringMinLength: 3,
     debounceTime: 1000
   }
@@ -91,8 +93,11 @@ class SearchBar extends PureComponent {
         searchStarted: true
       });
     }
+
     if (inputValue.length >= this.props.searchStringMinLength) {
       this.props.onSearchEnter(inputValue);
+    } else {
+      this.props.onSearchReset();
     }
   };
 

@@ -31,12 +31,17 @@ class AutocompleteGeocoder extends PureComponent {
     });
   }
 
+  onSearchReset = () => {
+    this.setState({ suggestions: [] });
+  }
+
   render() {
     return (
       <Fragment>
         <SearchBar
           onSearchEnter={this.geocodeSearchPhrase}
           onSearchStart={this.props.onSearchStart}
+          onSearchReset={this.onSearchReset}
         />
 
         {this.state.error && (
