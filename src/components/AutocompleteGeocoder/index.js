@@ -1,10 +1,12 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import SearchBar from './SearchBar';
 import SuggestionList from './SuggestionList';
 import Error from './Error';
-import api from './api';
+import { getCoordinatesByLocationId, fetchSuggestions } from './api';
+import { addError, handleGeocodeSuccess } from '~/pages/Reports/ReportsState';
 
 class AutocompleteGeocoder extends PureComponent {
   static propTypes = {
@@ -23,16 +25,25 @@ class AutocompleteGeocoder extends PureComponent {
   }
 
   geocodeSearchPhrase = (searchPhrase) => {
-    api.fetchSuggestions(searchPhrase)
-    .then(({ suggestions }) => this.setState({ suggestions }))
-    .catch((error) => {
-      this.setState({ error, suggestions: null });
-      this.props.onError(error);
-    });
+    fetchSuggestions(searchPhrase)
+      .then(({ suggestions }) => this.setState({ suggestions }))
+      .catch(this.handleError);
   }
 
   onSearchReset = () => {
     this.setState({ suggestions: [] });
+  }
+
+  onSuggestionPick = ({ locationId }) => {
+    this.setState({ suggestions: [] });
+    getCoordinatesByLocationId(locationId)
+      .then(this.props.onLocationPick)
+      .catch(this.handleError);
+  }
+
+  handleError = (error) => {
+    this.setState({ error, suggestions: [] });
+    this.props.onError(error);
   }
 
   render() {
@@ -50,11 +61,14 @@ class AutocompleteGeocoder extends PureComponent {
 
         <SuggestionList
           suggestions={this.state.suggestions}
-          onSuggestionPick={this.props.onLocationPick}
+          onSuggestionPick={this.onSuggestionPick}
         />
       </Fragment>
     );
   }
 }
 
-export default AutocompleteGeocoder;
+export default connect(null, {
+  onError: addError,
+  onLocationPick: handleGeocodeSuccess
+})(AutocompleteGeocoder);

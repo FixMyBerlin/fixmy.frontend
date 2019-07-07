@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import SearchIcon from '~/images/reports/search.svg';
-import util from './util';
 
 const SearchBarWrapper = styled.div`
   position: relative;

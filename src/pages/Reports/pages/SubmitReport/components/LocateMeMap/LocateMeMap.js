@@ -23,7 +23,6 @@ import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import {
   LOCATION_MODE_GEOCODING,
   setDeviceLocation,
-  geocodeAddress,
   reverseGeocodeCoordinates,
   setTempLocationLngLat,
   confirmLocation,
@@ -150,13 +149,14 @@ class LocateMeMap extends Component {
     }
 
     // either device location or geocodeResult will be set
+    let centerObj;
     if (this.props.deviceLocation) {
-      const centerObj = this.props.deviceLocation;
-      return [centerObj.lng, centerObj.lat];
+      centerObj = this.props.deviceLocation;
     }
     if (this.props.geocodeResult) {
-      return this.props.geocodeResult.center;
+      centerObj = this.props.geocodeResult;
     }
+    return centerObj && [centerObj.lng, centerObj.lat];
   };
 
   ongeocodeUse = () => this.setState({
@@ -166,11 +166,6 @@ class LocateMeMap extends Component {
   ongeocodeSuccess = ({ lng, lat }) => {
     this.onMapMove({ lng, lat });
   };
-
-  ongeocodeError = (e) => {
-    // TODO: provoke errors, display them to user
-    debugger;
-  }
 
   onlocateMeMarkerUse = (coords) => {
     // TODO: make this work. drag the map
@@ -288,7 +283,6 @@ class LocateMeMap extends Component {
 }
 
 const mapDispatchToPros = {
-  geocodeAddress,
   reverseGeocodeCoordinates,
   setTempLocationLngLat,
   confirmLocation,

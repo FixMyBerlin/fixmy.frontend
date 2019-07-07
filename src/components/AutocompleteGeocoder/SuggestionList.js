@@ -12,17 +12,13 @@ const List = styled.ul`
     padding: 0;
 `;
 
-// TODO: it would be cleaner to use the locationId
-
 const Suggestionlist = ({ suggestions, onSuggestionPick }) => {
   const suggestionItems = suggestions
-    .map(s => (
+    .map(suggestion => (
       <Suggestion
-        key={s.locationId}
-        address={s.label}
-        onSuggestionPick={() => onSuggestionPick(
-          s.label.replace(`${config.map.geocoderHighlightSeperator}`, '')
-        )}
+        key={suggestion.locationId}
+        address={suggestion.label}
+        onSuggestionPick={() => onSuggestionPick(suggestion)}
       />
     ));
 
