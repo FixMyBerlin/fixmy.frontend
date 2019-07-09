@@ -12,11 +12,15 @@ class AutocompleteGeocoder extends PureComponent {
   static propTypes = {
     onSearchStart: PropTypes.func,
     onLocationPick: PropTypes.func.isRequired,
-    onError: PropTypes.func.isRequired
+    onError: PropTypes.func.isRequired,
+    searchStringMinLength: PropTypes.number,
+    debounceTime: PropTypes.number
   }
 
   static defaultProps = {
-    onSearchStart: () => { }
+    onSearchStart: () => { },
+    searchStringMinLength: 3,
+    debounceTime: 1000
   }
 
   state = {
@@ -53,6 +57,8 @@ class AutocompleteGeocoder extends PureComponent {
           onSearchEnter={this.geocodeSearchPhrase}
           onSearchStart={this.props.onSearchStart}
           onSearchReset={this.clearSuggestions}
+          searchStringMinLength={this.props.searchStringMinLength}
+          debounceTime={this.props.debounceTime}
         />
 
         {this.state.error && (

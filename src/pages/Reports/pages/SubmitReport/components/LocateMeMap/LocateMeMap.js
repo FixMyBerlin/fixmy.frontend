@@ -218,6 +218,8 @@ class LocateMeMap extends Component {
                 <AutocompleteGeocoder
                   onLocationPick={this.ongeocodeSuccess}
                   onSearchStart={this.ongeocodeUse}
+                  searchStringMinLength={config.reportsLocateMeMap.autocompleteReverseGeocode.searchStringMinLength}
+                  debounceTime={config.reportsLocateMeMap.autocompleteReverseGeocode.debounceTime}
                 />
               </SearchBarWrapper>
             )}
