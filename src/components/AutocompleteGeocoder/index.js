@@ -24,25 +24,25 @@ class AutocompleteGeocoder extends PureComponent {
     suggestions: []
   }
 
+  clearSuggestions = () => this.setState({ suggestions: [] });
+
   geocodeSearchPhrase = (searchPhrase) => {
+    this.clearSuggestions();
     fetchSuggestions(searchPhrase)
       .then(({ suggestions }) => this.setState({ suggestions }))
       .catch(this.handleError);
   }
 
-  onSearchReset = () => {
-    this.setState({ suggestions: [] });
-  }
-
   onSuggestionPick = ({ locationId }) => {
-    this.setState({ suggestions: [] });
+    this.clearSuggestions();
     getCoordinatesByLocationId(locationId)
       .then(this.props.onLocationPick)
       .catch(this.handleError);
   }
 
   handleError = (error) => {
-    this.setState({ error, suggestions: [] });
+    this.clearSuggestions();
+    this.setState({ error });
     this.props.onError(error);
   }
 
@@ -52,8 +52,7 @@ class AutocompleteGeocoder extends PureComponent {
         <SearchBar
           onSearchEnter={this.geocodeSearchPhrase}
           onSearchStart={this.props.onSearchStart}
-          onSearchReset={this.onSearchReset}
-          onSearchRequest={this.onSearchReset}
+          onSearchReset={this.clearSuggestions}
         />
 
         {this.state.error && (
