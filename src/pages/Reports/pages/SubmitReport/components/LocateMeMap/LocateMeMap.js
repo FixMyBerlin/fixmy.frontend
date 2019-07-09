@@ -27,7 +27,8 @@ import {
   setTempLocationLngLat,
   confirmLocation,
   resetDialogState,
-  removeError
+  removeError,
+  handleGeocodeSuccess
 } from '~/pages/Reports/ReportsState';
 
 import LocatorControl from '~/pages/Map/components/LocatorControl';
@@ -132,14 +133,18 @@ class LocateMeMap extends Component {
   }
 
 
-  onMapMove = ({ lat, lng }) => {
+  onMapMove = (coords) => {
     if (!validationBoundary) return;
-    this.props.reverseGeocodeCoordinates({ lng, lat }, validationBoundary);
-    this.props.setTempLocationLngLat({ lng, lat });
+    this.reverseGeocodeCoords(coords);
     if (!this.state.mapHasBeenDragged) {
       this.state.mapHasBeenDragged = true;
     }
   };
+
+  reverseGeocodeCoords = (coords) => {
+    this.props.reverseGeocodeCoordinates(coords, validationBoundary);
+    this.props.setTempLocationLngLat(coords);
+  }
 
   getCenter = () => {
     // if component is shown because of backwards navigation, use the center already determined
@@ -148,7 +153,7 @@ class LocateMeMap extends Component {
       return [alreadyPickedLocation.lng, alreadyPickedLocation.lat];
     }
 
-    // either device location or geocodeResult will be set
+    // either device location or geocodeResult will be used
     let centerObj;
     if (this.props.deviceLocation) {
       centerObj = this.props.deviceLocation;
@@ -163,12 +168,13 @@ class LocateMeMap extends Component {
     geocoderUsed: true
   })
 
-  ongeocodeSuccess = ({ lng, lat }) => {
-    this.onMapMove({ lng, lat });
+  ongeocodeSuccess = (coords) => {
+    this.props.handleGeocodeSuccess(coords);
+    // FIXME: it would be cleaner to use the adress returned from the HERE geocoding request
+    this.reverseGeocodeCoords(coords);
   };
 
   onlocateMeMarkerUse = (coords) => {
-    // TODO: make this work. drag the map
     const coordsObj = {
       lng: coords[0],
       lat: coords[1]
@@ -212,7 +218,6 @@ class LocateMeMap extends Component {
                 <AutocompleteGeocoder
                   onLocationPick={this.ongeocodeSuccess}
                   onSearchStart={this.ongeocodeUse}
-                  onError={this.ongeocodeError}
                 />
               </SearchBarWrapper>
             )}
@@ -288,7 +293,8 @@ const mapDispatchToPros = {
   confirmLocation,
   setDeviceLocation,
   resetDialogState,
-  removeError
+  removeError,
+  handleGeocodeSuccess
 };
 
 export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);

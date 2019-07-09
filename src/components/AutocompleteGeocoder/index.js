@@ -6,7 +6,7 @@ import SearchBar from './SearchBar';
 import SuggestionList from './SuggestionList';
 import Error from './Error';
 import { getCoordinatesByLocationId, fetchSuggestions } from './api';
-import { addError, handleGeocodeSuccess } from '~/pages/Reports/ReportsState';
+import { addError } from '~/pages/Reports/ReportsState';
 
 class AutocompleteGeocoder extends PureComponent {
   static propTypes = {
@@ -69,6 +69,5 @@ class AutocompleteGeocoder extends PureComponent {
 }
 
 export default connect(null, {
-  onError: addError,
-  onLocationPick: handleGeocodeSuccess
+  onError: addError
 })(AutocompleteGeocoder);
