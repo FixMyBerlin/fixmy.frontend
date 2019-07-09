@@ -53,6 +53,7 @@ class AutocompleteGeocoder extends PureComponent {
           onSearchEnter={this.geocodeSearchPhrase}
           onSearchStart={this.props.onSearchStart}
           onSearchReset={this.onSearchReset}
+          onSearchRequest={this.onSearchReset}
         />
 
         {this.state.error && (

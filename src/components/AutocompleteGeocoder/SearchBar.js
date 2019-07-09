@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import SearchIcon from '~/images/reports/search.svg';
 
+const debounce = require('lodash.debounce');
+
 const SearchBarWrapper = styled.div`
   position: relative;
   width: 100%;
@@ -53,9 +55,11 @@ const SearchReset = styled.div`
 
 class SearchBar extends PureComponent {
   static propTypes = {
+    // TODO: document meaning
     onSearchEnter: PropTypes.func.isRequired,
     onSearchStart: PropTypes.func,
     onSearchReset: PropTypes.func,
+    onSearchRequest: PropTypes.func,
     searchStringMinLength: PropTypes.number,
     debounceTime: PropTypes.number
   }
@@ -63,6 +67,7 @@ class SearchBar extends PureComponent {
   static defaultProps = {
     onSearchStart: () => { },
     onSearchReset: () => { },
+    onSearchRequest: () => { },
     searchStringMinLength: 3,
     debounceTime: 1000
   }
@@ -71,6 +76,11 @@ class SearchBar extends PureComponent {
     searchStarted: false,
     inputValue: ''
   }
+
+  delayedonSearchEnterCallback = debounce(
+    this.props.onSearchEnter,
+    this.props.debounceTime
+    );
 
   onFormSubmit = (evt) => {
     evt.preventDefault();
@@ -83,6 +93,7 @@ class SearchBar extends PureComponent {
   };
 
   onChange = (evt) => {
+    evt.persist();
     const inputValue = evt.target.value;
     this.setState({ inputValue });
 
@@ -93,8 +104,10 @@ class SearchBar extends PureComponent {
       });
     }
 
+
     if (inputValue.length >= this.props.searchStringMinLength) {
-      this.props.onSearchEnter(inputValue);
+      this.props.onSearchRequest();
+      this.delayedonSearchEnterCallback(inputValue);
     } else {
       this.props.onSearchReset();
     }
