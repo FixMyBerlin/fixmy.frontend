@@ -130,6 +130,7 @@ class SearchBar extends PureComponent {
 
   resetInput = () => {
     this.setState({ inputValue: '' });
+    this.props.onSearchReset();
   };
 
   render() {
