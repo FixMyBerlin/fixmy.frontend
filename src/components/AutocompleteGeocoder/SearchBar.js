@@ -70,6 +70,11 @@ class SearchBar extends PureComponent {
      */
     onSearchReset: PropTypes.func,
     /**
+     * Callback invoked when enter is pressed,
+     * e.g. to e.g. to use the first item in the list.
+     */
+    onEnterKeyPress: PropTypes.func,
+    /**
      * Minimum input length that triggers this.props.onSearchEnter()
      * e.g. to clear the results list.
      */
@@ -84,7 +89,7 @@ class SearchBar extends PureComponent {
   static defaultProps = {
     onSearchStart: () => { },
     onSearchReset: () => { },
-
+    onEnterKeyPress: () => { },
     searchStringMinLength: 3,
     debounceTime: 1000
   }
@@ -133,6 +138,12 @@ class SearchBar extends PureComponent {
     this.props.onSearchReset();
   };
 
+  onKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      this.props.onEnterKeyPress();
+    }
+  }
+
   render() {
     return (
       <SearchBarWrapper>
@@ -143,6 +154,7 @@ class SearchBar extends PureComponent {
           spellCheck="false"
           autoCapitalize="words"
           onChange={this.onChange}
+          onKeyDown={this.onKeyDown}
         />
         {this.state.inputValue ? (
           <SearchReset onClick={this.resetInput}>×</SearchReset>

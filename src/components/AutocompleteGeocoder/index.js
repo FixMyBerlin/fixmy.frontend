@@ -50,6 +50,17 @@ class AutocompleteGeocoder extends PureComponent {
     this.props.onError(error);
   }
 
+  onEnterPress = () => {
+    if (this.state.suggestions.length === 1) {
+      this.takeFirstSuggestion();
+    }
+  }
+
+  takeFirstSuggestion = () => {
+    const { locationId } = this.state.suggestions[0];
+    this.onSuggestionPick({ locationId });
+  }
+
   render() {
     return (
       <Fragment>
@@ -57,6 +68,7 @@ class AutocompleteGeocoder extends PureComponent {
           onSearchEnter={this.geocodeSearchPhrase}
           onSearchStart={this.props.onSearchStart}
           onSearchReset={this.clearSuggestions}
+          onEnterKeyPress={this.onEnterPress}
           searchStringMinLength={this.props.searchStringMinLength}
           debounceTime={this.props.debounceTime}
         />
