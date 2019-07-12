@@ -10,10 +10,28 @@ import { addError } from '~/pages/Reports/ReportsState';
 
 class AutocompleteGeocoder extends PureComponent {
   static propTypes = {
+     /**
+     * Called when the first search String is compiled. Ment to set a flag in the consuming component,
+     * e.g. to hide a Tooltip.
+     */
     onSearchStart: PropTypes.func,
+     /**
+     * Called with the coordinates object {lat, lng} of the picked location.
+     */
     onLocationPick: PropTypes.func.isRequired,
+    /**
+     * Error callback.
+     */
     onError: PropTypes.func.isRequired,
+    /**
+     * Minimum input length that triggers this.props.onSearchEnter()
+     * e.g. to clear the results list.
+     */
     searchStringMinLength: PropTypes.number,
+     /**
+     * Amount of milliseconds the invokation of this.props.onSearchEnter() isdelayed
+     * since its last invocation.
+     */
     debounceTime: PropTypes.number
   }
 
