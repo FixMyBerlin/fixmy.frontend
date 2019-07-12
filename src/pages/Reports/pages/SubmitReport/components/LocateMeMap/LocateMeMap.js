@@ -28,6 +28,7 @@ import {
   confirmLocation,
   resetDialogState,
   removeError,
+  addError,
   handleGeocodeSuccess
 } from '~/pages/Reports/ReportsState';
 
@@ -220,6 +221,7 @@ class LocateMeMap extends Component {
                   onSearchStart={this.ongeocodeUse}
                   searchStringMinLength={config.reportsLocateMeMap.autocompleteReverseGeocode.searchStringMinLength}
                   debounceTime={config.reportsLocateMeMap.autocompleteReverseGeocode.debounceTime}
+                  onError={this.props.addError}
                 />
               </SearchBarWrapper>
             )}
@@ -296,6 +298,7 @@ const mapDispatchToPros = {
   setDeviceLocation,
   resetDialogState,
   removeError,
+  addError,
   handleGeocodeSuccess
 };
 

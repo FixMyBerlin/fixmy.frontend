@@ -1,12 +1,9 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import SearchBar from './SearchBar';
 import SuggestionList from './SuggestionList';
-import Error from './Error';
 import { getCoordinatesByLocationId, fetchSuggestions } from './api';
-import { addError } from '~/pages/Reports/ReportsState';
 
 class AutocompleteGeocoder extends PureComponent {
   static propTypes = {
@@ -42,7 +39,6 @@ class AutocompleteGeocoder extends PureComponent {
   }
 
   state = {
-    error: null,
     suggestions: []
   }
 
@@ -64,8 +60,8 @@ class AutocompleteGeocoder extends PureComponent {
 
   handleError = (error) => {
     this.clearSuggestions();
-    this.setState({ error });
-    this.props.onError(error);
+    console.error(`Error in AutocompleteGeocoder: ${error}`);
+    this.props.onError('Service nicht erreichbar. Bitte versuch den Standort über die Karte zu finden.');
   }
 
   onEnterPress = () => {
@@ -91,10 +87,6 @@ class AutocompleteGeocoder extends PureComponent {
           debounceTime={this.props.debounceTime}
         />
 
-        {this.state.error && (
-          <Error message={this.state.error.message} />
-        )}
-
         <SuggestionList
           suggestions={this.state.suggestions}
           onSuggestionPick={this.onSuggestionPick}
@@ -104,6 +96,4 @@ class AutocompleteGeocoder extends PureComponent {
   }
 }
 
-export default connect(null, {
-  onError: addError
-})(AutocompleteGeocoder);
+export default AutocompleteGeocoder;
