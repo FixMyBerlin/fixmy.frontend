@@ -140,7 +140,9 @@ class SearchBar extends PureComponent {
 
   onKeyDown = (e) => {
     if (e.key === 'Enter') {
+      this.setState({ inputValue: '' });
       this.props.onEnterKeyPress();
+      e.target.blur();
     }
   }
 
