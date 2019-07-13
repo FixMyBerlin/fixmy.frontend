@@ -44,7 +44,7 @@ const initialState = {
   }, // holds an error message to which displaying components can bind to
   locationMode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
   deviceLocation: null, // {lng, lat}
-  geocodeResult: null, // object containing center and zoom
+  geocodeResult: null, // { coords, address }
   reverseGeocodeResult: null, // An address,
   tempLocation: null, // holds lngLat, address, a "pinned" property (which indicates the location as submittable) and a "valid" property
   submitting: false,
@@ -73,8 +73,8 @@ export function setDeviceLocation({ lng, lat }) {
   return { type: SET_DEVICE_LOCATION, payload: { lng, lat } };
 }
 
-export function handleGeocodeSuccess({ lng, lat }) {
-  return { type: GEOCODE_DONE, payload: { lng, lat } };
+export function handleGeocodeSuccess({ coords, address }) {
+  return { type: GEOCODE_DONE, payload: { coords, address } };
 }
 
 // TODO: unify syntax used here
@@ -125,37 +125,30 @@ export function setSelectedReport(selectedReport) {
   };
 }
 
-function validateCoordinates(polygonGeoJson, { lng, lat }) {
-  const pointFeature = {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [lng, lat]
+export function validateCoordinates(polygonGeoJson, { lng, lat }) {
+  return async (dispatch) => {
+    const pointFeature = {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [lng, lat]
+      }
+    };
+    if (booleanWithin(pointFeature, polygonGeoJson)) {
+      dispatch({
+        type: VALIDATE_POSITION
+      });
+      return true;
     }
+    dispatch({
+      type: INVALIDATE_POSITION
+    });
+    return false;
   };
-  return booleanWithin(pointFeature, polygonGeoJson);
 }
 
-/**
- * If a validationBoundary is passed, it is made sure that the points is within the given geomery
- */
-export function reverseGeocodeCoordinates({ lat, lng }, validationBoundary) {
+export function reverseGeocodeCoordinates({ lat, lng }) {
   return async (dispatch) => {
-    // validate geometry. if center is within a given boundary, do not fire a request
-    if (validationBoundary) {
-      const isValidGeometry = validateCoordinates(validationBoundary, { lat, lng });
-      if (isValidGeometry) {
-        dispatch({
-          type: VALIDATE_POSITION
-        });
-      } else {
-        return dispatch({
-          type: INVALIDATE_POSITION
-        });
-      }
-    }
-
-    // if geometry is valid, go on
     let result;
     try {
       result = await reverseGeocode({ lat, lng });
@@ -225,7 +218,14 @@ export default function ReportsReducer(state = initialState, action = {}) {
     case SET_DEVICE_LOCATION:
       return { ...state, deviceLocation: action.payload };
     case GEOCODE_DONE:
-      return { ...state, geocodeResult: action.payload };
+      return {
+        ...state,
+        geocodeResult: action.payload.coords,
+        tempLocation: {
+          ...state.tempLocation,
+          address: action.payload.address
+        }
+      };
     case INVALIDATE_POSITION:
       return {
         ...state,
@@ -321,7 +321,8 @@ export default function ReportsReducer(state = initialState, action = {}) {
     case SUBMIT_REPORT:
       return { ...state, submitting: true };
     case SUBMIT_REPORT_SUCCESS:
-      return { ...state,
+      return {
+        ...state,
         submitting: false,
         submitted: true,
         newReport: {

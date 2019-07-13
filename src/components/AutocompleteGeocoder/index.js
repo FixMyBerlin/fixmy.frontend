@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import SearchBar from './SearchBar';
 import SuggestionList from './SuggestionList';
-import { getCoordinatesByLocationId, fetchSuggestions } from './api';
+import { fetchSuggestions } from './apiService';
 
 class AutocompleteGeocoder extends PureComponent {
   static propTypes = {
@@ -13,7 +13,7 @@ class AutocompleteGeocoder extends PureComponent {
      */
     onSearchStart: PropTypes.func,
      /**
-     * Called with the coordinates object {lat, lng} of the picked location.
+     * Called with the coordinates object {lat, lng} and address string of the picked location.
      */
     onLocationPick: PropTypes.func.isRequired,
     /**
@@ -47,15 +47,13 @@ class AutocompleteGeocoder extends PureComponent {
   geocodeSearchPhrase = (searchPhrase) => {
     this.clearSuggestions();
     fetchSuggestions(searchPhrase)
-      .then(({ suggestions }) => this.setState({ suggestions }))
+      .then(suggestions => this.setState({ suggestions }))
       .catch(this.handleError);
   }
 
-  onSuggestionPick = ({ locationId }) => {
+  onSuggestionPick = ({ coords, address }) => {
     this.clearSuggestions();
-    getCoordinatesByLocationId(locationId)
-      .then(this.props.onLocationPick)
-      .catch(this.handleError);
+    this.props.onLocationPick({ coords, address });
   }
 
   handleError = (error) => {
@@ -71,8 +69,7 @@ class AutocompleteGeocoder extends PureComponent {
   }
 
   takeFirstSuggestion = () => {
-    const { locationId } = this.state.suggestions[0];
-    this.onSuggestionPick({ locationId });
+    this.onSuggestionPick(this.state.suggestions[0]);
   }
 
   render() {

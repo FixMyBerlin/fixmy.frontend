@@ -24,6 +24,7 @@ import {
   LOCATION_MODE_GEOCODING,
   setDeviceLocation,
   reverseGeocodeCoordinates,
+  validateCoordinates,
   setTempLocationLngLat,
   confirmLocation,
   resetDialogState,
@@ -143,8 +144,13 @@ class LocateMeMap extends Component {
   };
 
   reverseGeocodeCoords = (coords) => {
-    this.props.reverseGeocodeCoordinates(coords, validationBoundary);
-    this.props.setTempLocationLngLat(coords);
+    this.props.validateCoordinates(validationBoundary, coords)
+      .then((isValid) => {
+        if (isValid) {
+          this.props.reverseGeocodeCoordinates(coords);
+          this.props.setTempLocationLngLat(coords);
+        }
+      });
   }
 
   getCenter = () => {
@@ -169,10 +175,9 @@ class LocateMeMap extends Component {
     geocoderUsed: true
   })
 
-  ongeocodeSuccess = (coords) => {
-    this.props.handleGeocodeSuccess(coords);
-    // FIXME: it would be cleaner to use the adress returned from the HERE geocoding request
-    this.reverseGeocodeCoords(coords);
+  ongeocodeSuccess = ({ coords, address }) => {
+    this.props.validateCoordinates(validationBoundary, coords)
+      .then(() => this.props.handleGeocodeSuccess({ coords, address }));
   };
 
   onlocateMeMarkerUse = (coords) => {
@@ -264,11 +269,11 @@ class LocateMeMap extends Component {
         </MapWrapper>
 
         {!this.state.isLoading && (this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
-        <LocatorControl
-          key="ReportsLocateMap__LocatorControl"
-          onChange={this.onlocateMeMarkerUse}
-          position="bottom-right"
-        />
+          <LocatorControl
+            key="ReportsLocateMap__LocatorControl"
+            onChange={this.onlocateMeMarkerUse}
+            position="bottom-right"
+          />
         )}
 
         {!this.state.isLoading && !this.state.locationPinned && (
@@ -293,6 +298,7 @@ class LocateMeMap extends Component {
 
 const mapDispatchToPros = {
   reverseGeocodeCoordinates,
+  validateCoordinates,
   setTempLocationLngLat,
   confirmLocation,
   setDeviceLocation,

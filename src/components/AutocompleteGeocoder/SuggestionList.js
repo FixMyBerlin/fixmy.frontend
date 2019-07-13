@@ -16,8 +16,8 @@ const Suggestionlist = ({ suggestions, onSuggestionPick }) => {
   const suggestionItems = suggestions
     .map(suggestion => (
       <Suggestion
-        key={suggestion.locationId}
-        address={suggestion.label}
+        key={suggestion.id}
+        address={suggestion.address}
         onSuggestionPick={() => onSuggestionPick(suggestion)}
       />
     ));
