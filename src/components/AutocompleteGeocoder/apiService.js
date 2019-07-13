@@ -19,14 +19,20 @@ export async function fetchSuggestions(searchString) {
   return fetch(url, { signal })
     .then(res => res.json())
     .then(res => res.features)
-    .then(features => features.map(parseSuggestion))
-    .then(filterSuggestions)
+    .then((fetchedSuggestions) => {
+        if (!fetchedSuggestions.length) return [];
+        const parsedSuggestions = fetchedSuggestions.map(parseSuggestion);
+        const filteredSuggestions = filterSuggestions(parsedSuggestions);
+        return filteredSuggestions;
+    })
     .catch((error) => {
       // if (error.name === 'AbortError') { FIXME: documented way of detecting an abortError won't work
       if (error.message.includes('aborted')) { // workaround
         console.log('cancelled');
-        return { suggestions: [] };
+        return [];
       }
+      // else re-throw
+      throw error;
     });
 }
 
@@ -34,7 +40,9 @@ function compileSearchUrl(searchString) {
   const { accessToken, geocoderBounds } = config.map;
   return `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchString}.json?` +
     `access_token=${accessToken}&autocomplete=true&language=de&` +
-    `bbox=${geocoderBounds}&types=address`; // maybe using "poi" would also be a good idea
+    `bbox=${geocoderBounds}&` +
+    'limit=3&' +
+    'types=address'; // maybe using "poi" would also be a good idea
 }
 
 /**
