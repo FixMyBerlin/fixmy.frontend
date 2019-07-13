@@ -63,10 +63,8 @@ export const parseSuggestion = ({
  * If result set contains an item with relevance=1 and accuracy=point, clear the rest.
  */
 function filterSuggestions(suggestions) {
-  return suggestions;
-  // TODO: tweak this
-  // const [firstSuggestion] = suggestions;
-  // const { accuracy, relevance } = firstSuggestion;
-  // const firstSuggestionMatches = relevance === 1 && accuracy === 'point';
-  // return firstSuggestionMatches ? [firstSuggestion] : suggestions;
+  const [firstSuggestion] = suggestions;
+  const { accuracy, relevance } = firstSuggestion;
+  const firstSuggestionMatches = relevance === 1 && accuracy === 'point';
+  return firstSuggestionMatches ? [firstSuggestion] : suggestions;
 }
