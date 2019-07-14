@@ -116,6 +116,7 @@ class LocateMeMap extends Component {
     this.state = {
       mapHasBeenDragged: false,
       geocoderUsed: false,
+      autocompleteHasFocus: false,
       locationPinned: false,
       isLoading: true
     };
@@ -134,6 +135,11 @@ class LocateMeMap extends Component {
     });
   }
 
+  toggleAutocompleteHasFocus = () => {
+    this.setState(({ autocompleteHasFocus }) => (
+      { autocompleteHasFocus: !autocompleteHasFocus }
+      ));
+  }
 
   onMapMove = (coords) => {
     if (!validationBoundary) return;
@@ -222,6 +228,8 @@ class LocateMeMap extends Component {
             {!this.state.locationPinned && (
               <SearchBarWrapper>
                 <AutocompleteGeocoder
+                  onInputFocus={this.toggleAutocompleteHasFocus}
+                  onInputBlur={this.toggleAutocompleteHasFocus}
                   onLocationPick={this.ongeocodeSuccess}
                   onSearchStart={this.ongeocodeUse}
                   searchStringMinLength={config.reportsLocateMeMap.autocompleteReverseGeocode.searchStringMinLength}
@@ -248,7 +256,7 @@ class LocateMeMap extends Component {
           />
 
           {
-            !this.state.isLoading && (
+            !this.state.isLoading && !this.state.autocompleteHasFocus && (
               <Fragment>
                 {this.props.locationMode && (
                   <StaticMarker
@@ -268,7 +276,9 @@ class LocateMeMap extends Component {
 
         </MapWrapper>
 
-        {!this.state.isLoading && (this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
+        {!this.state.isLoading &&
+        !this.state.autocompleteHasFocus &&
+        (this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
           <LocatorControl
             key="ReportsLocateMap__LocatorControl"
             onChange={this.onlocateMeMarkerUse}
@@ -276,7 +286,7 @@ class LocateMeMap extends Component {
           />
         )}
 
-        {!this.state.isLoading && !this.state.locationPinned && (
+        {!this.state.isLoading && !this.state.autocompleteHasFocus && !this.state.locationPinned && (
           <PinLocationButton
             onConfirm={this.togglePinned}
             text="Diese Position bestätigen"

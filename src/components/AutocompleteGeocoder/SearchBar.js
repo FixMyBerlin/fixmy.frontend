@@ -56,6 +56,14 @@ const SearchReset = styled.div`
 class SearchBar extends PureComponent {
   static propTypes = {
     /**
+     * Called when search Input gets Focus.
+     */
+    onInputFocus: PropTypes.func,
+/**
+     *Called when search Input looses Focus.
+     */
+    onInputBlur: PropTypes.func,
+    /**
      * Callback that gets the current search string in order to fetch suggestions.
      */
     onSearchEnter: PropTypes.func.isRequired,
@@ -87,6 +95,8 @@ class SearchBar extends PureComponent {
   }
 
   static defaultProps = {
+    onInputFocus: () => { },
+    onInputBlur: () => { },
     onSearchStart: () => { },
     onSearchReset: () => { },
     onEnterKeyPress: () => { },
@@ -157,6 +167,8 @@ class SearchBar extends PureComponent {
           autoCapitalize="words"
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
+          onFocus={this.props.onInputFocus}
+          onBlur={this.props.onInputBlur}
         />
         {this.state.inputValue ? (
           <SearchReset onClick={this.resetInput}>×</SearchReset>

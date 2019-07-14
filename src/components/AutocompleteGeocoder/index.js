@@ -7,6 +7,14 @@ import { fetchSuggestions } from './apiService';
 
 class AutocompleteGeocoder extends PureComponent {
   static propTypes = {
+    /**
+     * Called when search Input gets Focus.
+     */
+    onInputFocus: PropTypes.func,
+/**
+     *Called when search Input looses Focus.
+     */
+    onInputBlur: PropTypes.func,
      /**
      * Called when the first search String is compiled. Ment to set a flag in the consuming component,
      * e.g. to hide a Tooltip.
@@ -33,6 +41,8 @@ class AutocompleteGeocoder extends PureComponent {
   }
 
   static defaultProps = {
+    onInputFocus: () => { },
+    onInputBlur: () => { },
     onSearchStart: () => { },
     searchStringMinLength: 3,
     debounceTime: 1000
@@ -76,6 +86,8 @@ class AutocompleteGeocoder extends PureComponent {
     return (
       <Fragment>
         <SearchBar
+          onInputFocus={this.props.onInputFocus}
+          onInputBlur={this.props.onInputBlur}
           onSearchEnter={this.geocodeSearchPhrase}
           onSearchStart={this.props.onSearchStart}
           onSearchReset={this.clearSuggestions}
