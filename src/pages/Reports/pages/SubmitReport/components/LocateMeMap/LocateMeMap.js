@@ -135,11 +135,7 @@ class LocateMeMap extends Component {
     });
   }
 
-  toggleAutocompleteHasFocus = () => {
-    this.setState(({ autocompleteHasFocus }) => (
-      { autocompleteHasFocus: !autocompleteHasFocus }
-      ));
-  }
+  setAutocompleteHasFocus = hasFocus => this.setState({ autocompleteHasFocus: hasFocus })
 
   onMapMove = (coords) => {
     if (!validationBoundary) return;
@@ -228,8 +224,8 @@ class LocateMeMap extends Component {
             {!this.state.locationPinned && (
               <SearchBarWrapper>
                 <AutocompleteGeocoder
-                  onInputFocus={this.toggleAutocompleteHasFocus}
-                  onInputBlur={this.toggleAutocompleteHasFocus}
+                  onInputFocus={() => this.setAutocompleteHasFocus(true)}
+                  onInputBlur={() => this.setAutocompleteHasFocus(false)}
                   onLocationPick={this.ongeocodeSuccess}
                   onSearchStart={this.ongeocodeUse}
                   searchStringMinLength={config.reportsLocateMeMap.autocompleteReverseGeocode.searchStringMinLength}
