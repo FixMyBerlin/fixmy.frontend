@@ -35,6 +35,7 @@ const BikeParkImg = styled(BikeParkIcon)`
   height: 40px;
   display: block;
   align-self: center;
+  flex-shrink: 0;
 `;
 
 // TODO: find out what this is supposed to do
