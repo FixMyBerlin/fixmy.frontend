@@ -237,7 +237,7 @@ class LocateMeMap extends Component {
         <LocatorControl
           key="ReportsLocateMap__LocatorControl"
           onChange={this.onlocateMeMarkerUse}
-          position="bottom-right"
+          customPosition={{ bottom: '100px', right: '15px' }}
         />
         )}
 
