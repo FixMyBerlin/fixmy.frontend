@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import PropTypes from 'prop-types';
+import Link from 'react-router-dom/Link';
 
 const Wrapper = styled.div`
   margin: 0;
@@ -21,6 +22,8 @@ const StyledMenuButton = styled(MenuButton)`
 const TextWrapper = styled.div`
   padding-left: 16px;
   padding-right: 8px;
+  margin-top: -3px; /* due to increased line height */
+  line-height: 1.3;
 `;
 
 const Heading = styled.h2`
@@ -38,11 +41,13 @@ const BikeParkImg = styled(BikeParkIcon)`
   flex-shrink: 0;
 `;
 
-// TODO: find out what this is supposed to do
-const AllDetailsLink = styled.p`
+const AllDetailsLink = styled(Link)`
+  display: block;
+  margin-top: 2px;
   font-size: 10px;
   color: #999999;
   margin: 0;
+  text-decoration: none;
 `;
 
 const OverviewMapNavBar = ({ heading }) => (
@@ -50,7 +55,7 @@ const OverviewMapNavBar = ({ heading }) => (
     <StyledMenuButton />
     <TextWrapper>
       <Heading>{heading}</Heading>
-      <AllDetailsLink>Alle Details &gt;</AllDetailsLink>
+      <AllDetailsLink to={config.routes.reports.landing}>Alle Details &gt;</AllDetailsLink>
     </TextWrapper>
     <BikeParkImg alt="Icon Fahrradparkplätze" />
   </Wrapper>
