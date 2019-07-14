@@ -243,6 +243,7 @@ class LocateMeMap extends Component {
 
         <MapWrapper>
           <StyledWebGlMap
+            newLocationZoomLevel={config.reportsLocateMeMap.zoomOnGeocodedLocation}
             zoomedOut={this.props.tempLocation && !this.props.tempLocation.valid}
             center={this.getCenter()}
             className="locate-me-map"
