@@ -4,8 +4,6 @@
 // TODO: heavily reduce boiler plate https://redux.js.org/recipes/reducing-boilerplate
 // TODO: use immutability helpers like https://github.com/mweststrate/immer
 // TODO: split uo reducer into subreducers based on the structure of the newReport object
-import ky from 'ky';
-import idx from 'idx/lib/idx';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
 import { apiFetchReports, apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
@@ -18,7 +16,6 @@ export const LOCATION_MODE_DEVICE = 'DEVICE'; // not an action type, keeping thi
 export const LOCATION_MODE_GEOCODING = 'GEOCODING'; // not an action type, keeping this here to prevent typos
 const SET_DEVICE_LOCATION = 'Reports/ReportsDialogState/SET_DEVICE_LOCATION';
 const GEOCODE_DONE = 'Reports/ReportsDialogState/GEOCODE_SUCCESS';
-const GEOCODE_FAIL = 'Reports/ReportsDialogState/GEOCODE_FAIL';
 const VALIDATE_POSITION = 'Reports/ReportsDialogState/VALIDATE_POSITION';
 const INVALIDATE_POSITION = 'Reports/ReportsDialogState/INVALIDATE_POSITION';
 const REVERSE_GEOCODE_DONE = 'Reports/ReportsDialogState/REVERSE_GEOCODE_SUCCESS';
@@ -47,7 +44,7 @@ const initialState = {
   }, // holds an error message to which displaying components can bind to
   locationMode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
   deviceLocation: null, // {lng, lat}
-  geocodeResult: null, // object containing center and zoom
+  geocodeResult: null, // { coords, address }
   reverseGeocodeResult: null, // An address,
   tempLocation: null, // holds lngLat, address, a "pinned" property (which indicates the location as submittable) and a "valid" property
   submitting: false,
@@ -74,6 +71,10 @@ export function confirmLocation() {
 
 export function setDeviceLocation({ lng, lat }) {
   return { type: SET_DEVICE_LOCATION, payload: { lng, lat } };
+}
+
+export function handleGeocodeSuccess({ coords, address }) {
+  return { type: GEOCODE_DONE, payload: { coords, address } };
 }
 
 // TODO: unify syntax used here
@@ -124,59 +125,30 @@ export function setSelectedReport(selectedReport) {
   };
 }
 
-export function geocodeAddress(searchtext) {
+export function validateCoordinates(polygonGeoJson, { lng, lat }) {
   return async (dispatch) => {
-    const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;
-
-    try {
-      const searchUrl = `${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;
-      const data = await ky.get(searchUrl).json();
-
-      const geocodeResult = idx(data, _ => _.Response.View[0].Result[0].Location.DisplayPosition);
-      if (!geocodeResult) {
-        return dispatch({ type: GEOCODE_FAIL, payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' } });
+    const pointFeature = {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [lng, lat]
       }
-
-      const center = [geocodeResult.Longitude, geocodeResult.Latitude];
-      dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
-    } catch (error) {
-      dispatch({ type: GEOCODE_FAIL, payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' } });
+    };
+    if (booleanWithin(pointFeature, polygonGeoJson)) {
+      dispatch({
+        type: VALIDATE_POSITION
+      });
+      return true;
     }
+    dispatch({
+      type: INVALIDATE_POSITION
+    });
+    return false;
   };
 }
 
-
-function validateCoordinates(polygonGeoJson, { lng, lat }) {
-  const pointFeature = {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [lng, lat]
-    }
-  };
-  return booleanWithin(pointFeature, polygonGeoJson);
-}
-
-/**
- * If a validationBoundary is passed, it is made sure that the points is within the given geomery
- */
-export function reverseGeocodeCoordinates({ lat, lng }, validationBoundary) {
+export function reverseGeocodeCoordinates({ lat, lng }) {
   return async (dispatch) => {
-    // validate geometry. if center is within a given boundary, do not fire a request
-    if (validationBoundary) {
-      const isValidGeometry = validateCoordinates(validationBoundary, { lat, lng });
-      if (isValidGeometry) {
-        dispatch({
-          type: VALIDATE_POSITION
-        });
-      } else {
-        return dispatch({
-          type: INVALIDATE_POSITION
-        });
-      }
-    }
-
-    // if geometry is valid, go on
     let result;
     try {
       result = await reverseGeocode({ lat, lng });
@@ -246,7 +218,14 @@ export default function ReportsReducer(state = initialState, action = {}) {
     case SET_DEVICE_LOCATION:
       return { ...state, deviceLocation: action.payload };
     case GEOCODE_DONE:
-      return { ...state, geocodeResult: action.payload };
+      return {
+        ...state,
+        geocodeResult: action.payload.coords,
+        tempLocation: {
+          ...state.tempLocation,
+          address: action.payload.address
+        }
+      };
     case INVALIDATE_POSITION:
       return {
         ...state,
@@ -295,7 +274,6 @@ export default function ReportsReducer(state = initialState, action = {}) {
       };
     case SET_LOCATION_MODE:
       return { ...state, locationMode: action.mode };
-    case GEOCODE_FAIL:
     case REVERSE_GEOCODE_FAIL:
       return {
         ...state,
@@ -343,7 +321,8 @@ export default function ReportsReducer(state = initialState, action = {}) {
     case SUBMIT_REPORT:
       return { ...state, submitting: true };
     case SUBMIT_REPORT_SUCCESS:
-      return { ...state,
+      return {
+        ...state,
         submitting: false,
         submitted: true,
         newReport: {

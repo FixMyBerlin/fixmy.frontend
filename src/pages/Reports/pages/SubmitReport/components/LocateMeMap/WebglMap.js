@@ -9,7 +9,7 @@ import BaseMap from '~/pages/Reports/components/BaseMap';
 class WebglMap extends PureComponent {
   static propTypes = {
     center: PropTypes.arrayOf(PropTypes.number),
-    zoom: PropTypes.number,
+    newLocationZoomLevel: PropTypes.number,
     onMapDrag: PropTypes.func,
     allowDrag: PropTypes.bool,
     onLoad: PropTypes.func,
@@ -18,7 +18,7 @@ class WebglMap extends PureComponent {
 
   static defaultProps = {
     center: config.map.view.center,
-    zoom: 18, // TODO: make this configurable
+    newLocationZoomLevel: 18,
     onMapDrag: () => console.log('onMapDrag says implement me'),
     allowDrag: true,
     onLoad: () => {},
@@ -43,12 +43,9 @@ class WebglMap extends PureComponent {
        this.map.easeTo({ zoom: 12, duration: 3000 });
     }
 
-    const viewChanged = prevProps.zoom !== this.props.zoom ||
-      !_isEqual(prevProps.center, this.props.center) ||
-      prevProps.pitch !== this.props.pitch ||
-      prevProps.bearing !== this.props.bearing;
+    const isNewLocation = !_isEqual(prevProps.center, this.props.center);
 
-    if (viewChanged) {
+    if (isNewLocation) {
       this.setView(this.getViewFromProps(), this.props.animate);
     }
 
@@ -74,13 +71,12 @@ class WebglMap extends PureComponent {
 
     // center prop might have been set by getting the device´s geolocation before the component sets up
     if (this.props.center !== config.map.view.center) {
-      this.map.setZoom(this.props.zoom);
+      this.map.setZoom(this.props.newLocationZoomLevel);
       this.map.setCenter(this.props.center);
       this.handleMoveEnd();
     }
 
     this.map.on('dragend', this.handleMoveEnd);
-    this.map.on('move', this.handleMove);
     this.map.on('zoomEnd', this.handleMoveEnd);
 
     // notify containers that map has been initialized
@@ -97,10 +93,8 @@ class WebglMap extends PureComponent {
 
   getViewFromProps = () => (
     {
-      zoom: this.props.zoom,
-      center: this.props.center,
-      bearing: this.props.bearing,
-      pitch: this.props.pitch
+      zoom: this.props.newLocationZoomLevel,
+      center: this.props.center
     }
   )
 
@@ -109,9 +103,6 @@ class WebglMap extends PureComponent {
     const { lat, lng } = mapCenter;
     this.props.onMapDrag({ lat, lng });
   }
-
-  // in case we need it later on
-  handleMove = () => {}
 
   render() {
     return (
