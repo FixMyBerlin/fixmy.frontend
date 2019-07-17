@@ -98,6 +98,7 @@ class OverviewMap extends Component {
   handlePopupClose = () => {
     // show map by returning to the map route
     this.props.setSelectedReport(null);
+    this.props.history.push(config.routes.reports.map);
   }
 
   onMapLoad = () => {
@@ -106,6 +107,7 @@ class OverviewMap extends Component {
 
   render() {
     const { reports, selectedReport, match } = this.props;
+    const hasDetailId = match.params.id;
 
     const mapControls = (
       <Fragment>
@@ -129,16 +131,10 @@ class OverviewMap extends Component {
             onLoad={this.onMapLoad}
           />
           {this.state.isLoading ? null : mapControls}
-          {selectedReport && (
-            <Route
-              path={match.path}
-              exact
-              render={() => (
-                <ReportsPopup
-                  onClose={this.handlePopupClose}
-                  reportItem={selectedReport}
-                />
-              )}
+          {(selectedReport && !hasDetailId) && (
+            <ReportsPopup
+              onClose={this.handlePopupClose}
+              reportItem={selectedReport}
             />
           )}
           <Route
@@ -154,7 +150,7 @@ class OverviewMap extends Component {
                 <ReportDetails
                   apiEndpoint="reports"
                   onCloseRoute={match.url}
-                  onClose={() => this.props.setSelectedReport(null)}
+                  onClose={() => this.handlePopupClose()}
                   token={this.props.token}
                   reportItem={reportItem}
                   subtitle={`Meldung ${reportItem.id}`}

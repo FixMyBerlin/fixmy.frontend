@@ -18,7 +18,7 @@ class Reports extends PureComponent {
             component={Landing}
           />
           <Route
-            path={config.routes.reports.map}
+            path={`${config.routes.reports.map}/:id?`}
             component={OverviewMap}
           />
           <Route
