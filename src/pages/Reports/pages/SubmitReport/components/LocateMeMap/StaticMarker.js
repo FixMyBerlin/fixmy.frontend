@@ -39,6 +39,11 @@ const Wrapper = styled.div`
 const StyledPinnedLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`
   position: relative;
   top: 33px;
+  filter: drop-shadow(0px 1px 4px rgba(0,0,0,0.4));
+`;
+
+const StyledUnpinnedLocateMeMarker = styled(LocateMeMarkerIcon)`
+  filter: drop-shadow(0px 20px 8px rgba(0, 0, 0, 0.25));
 `;
 
 const StyledTickIcon = styled(TickIcon)`
@@ -58,7 +63,7 @@ const StaticMarker = ({ pinned }) => (
         <StyledPinnedLocateMeMarkerIcon />
         <StyledTickIcon />
       </Fragment>
-    ) : <LocateMeMarkerIcon />
+    ) : <StyledUnpinnedLocateMeMarker />
     }
     {!pinned && <StyledMapCenterIndicator>+</StyledMapCenterIndicator>}
   </Wrapper>

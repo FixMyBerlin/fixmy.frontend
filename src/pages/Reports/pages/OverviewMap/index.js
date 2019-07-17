@@ -119,7 +119,7 @@ class OverviewMap extends Component {
   }
 
   updateSelectedReportPosition() {
-    if (!this.map) {
+    if (!this.map || !this.props.selectedReport) {
       return false;
     }
 
