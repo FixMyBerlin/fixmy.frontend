@@ -54,8 +54,11 @@ class ReportMarkers extends PureComponent {
 
       if (selectedReport || detailId) {
         const activeId = selectedReport ? selectedReport.id : detailId;
-        const opacity = d.id === activeId ? 1 : 0.5;
-        el.style.opacity = opacity;
+        const isActive = d.id.toString() === activeId.toString();
+
+        if (!isActive) {
+          el.style.filter = 'brightness(1.1) grayscale(0.4) opacity(0.8)';
+        }
       }
 
       el.innerHTML = `<img class="marker-image" src="${Markers[d.details.subject]}" />`;
@@ -68,7 +71,7 @@ class ReportMarkers extends PureComponent {
     });
 
     return true;
-  };
+  }
 
   render() {
     return null;
