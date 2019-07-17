@@ -96,7 +96,7 @@ const DescriptionTextArea = styled(TextareaAutosize)`
   margin-top: 26px;
   width: 90%;
   max-width: ${breakpoints.s}px;
-  font-size: 14px;
+  font-size: 16px;
   padding: 8px;
 
   &:focus {
