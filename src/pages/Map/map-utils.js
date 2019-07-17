@@ -185,7 +185,7 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
   smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i]));
 }
 
-export function resetMap({ zoom = null }) {
+export function resetMap({ zoom = null } = {}) {
   Store.dispatch(AppActions.setActiveSection(null));
   Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
