@@ -228,8 +228,8 @@ class LocateMeMap extends Component {
                   onInputBlur={() => this.setAutocompleteHasFocus(false)}
                   onLocationPick={this.ongeocodeSuccess}
                   onSearchStart={this.ongeocodeUse}
-                  searchStringMinLength={config.reportsLocateMeMap.autocompleteReverseGeocode.searchStringMinLength}
-                  debounceTime={config.reportsLocateMeMap.autocompleteReverseGeocode.debounceTime}
+                  searchStringMinLength={config.reportsLocateMeMap.geocoder.searchStringMinLength}
+                  debounceTime={config.reportsLocateMeMap.geocoder.debounceTime}
                   onError={this.props.addError}
                 />
               </SearchBarWrapper>

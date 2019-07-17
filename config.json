@@ -245,7 +245,7 @@
     "outofBoundaryText": "Diese Adresse liegt außerhalb Friedrichshain-Kreuzbergs",
     "reverseGeocoderUrl": "https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json",
     "paddingInDegree": 0.1,
-    "autocompleteReverseGeocode": {
+    "geocoder": {
       "debounceTime": 1000,
       "searchStringMinLength": 3
     }
