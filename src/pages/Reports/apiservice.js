@@ -70,15 +70,16 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
   if (photo) {
     const BASE64_PREFIXES = ['data:image/jpg;base64,', 'data:image/jpeg;base64,'];
     if (!BASE64_PREFIXES.some(prefix => photo.includes(prefix))) {
-      throw new Error(oneLine`Failed to remove base 64 prefix. 
+      throw new Error(oneLine`Failed to remove base 64 prefix.
       Expected prefix to be '${BASE64_PREFIXES.join(' or ')}',
       found photo string starts with ${photo.slice(0, photo.indexOf(',') || 25)}`);
     }
     BASE64_PREFIXES.forEach((prefix) => {
       photo = photo.replace(prefix, '');
     });
+
+    obj.photo = photo;
   }
-  obj.photo = photo;
 
   // keep remaining data under top level node "details"
   obj.details = {};
