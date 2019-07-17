@@ -14,12 +14,11 @@ const SearchBarWrapper = styled.div`
 const SearchInput = styled.input`
   border: none;
   width: 100%;
-  padding: 15px 50px;
+  padding: 15px 16px;
   color: ${config.colors.darkgrey};
   font-size: 16px;
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
-  text-align: center;
 `;
 
 const StyledSearchIcon = styled(SearchIcon)`
@@ -112,7 +111,7 @@ class SearchBar extends PureComponent {
   delayedonSearchEnterCallback = debounce(
     this.props.onSearchEnter,
     this.props.debounceTime
-    );
+  );
 
   onFormSubmit = (evt) => {
     evt.preventDefault();

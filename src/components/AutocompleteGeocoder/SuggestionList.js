@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import Suggestion from './Suggestion';
 
 const List = styled.ul`
-    display: block;
-    margin: 0;
-    z-index: 1000;
-    background-color: white;
-    padding: 0;
+  display: block;
+  margin: 0;
+  z-index: 1000;
+  background-color: white;
+  padding: 0;
 `;
 
 const Suggestionlist = ({ suggestions, onSuggestionPick }) => {

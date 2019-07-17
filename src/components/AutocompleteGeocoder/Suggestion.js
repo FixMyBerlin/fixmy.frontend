@@ -7,6 +7,10 @@ const ListItem = styled.li`
   cursor: pointer;
   list-style-type: none;
   padding: 1em;
+
+  &:hover {
+    background: #f2f2f2;
+  }
 `;
 
 const Suggestion = ({ address, onSuggestionPick }) => {
