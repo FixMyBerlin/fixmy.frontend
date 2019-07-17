@@ -45,6 +45,7 @@ class ReportsPopup extends PureComponent {
         data={selectedReport}
         onClick={() => this.onDetailClick()}
         onClose={() => onClose()}
+        showSubline={false}
       >
         <Fragment>
           {photoSrc && (

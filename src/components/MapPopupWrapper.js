@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import PinIcon from '~/images/pin.svg';
@@ -115,6 +116,24 @@ function renderName(data) {
 }
 
 class MapPopupWrapper extends PureComponent {
+  static propTypes = {
+    x: PropTypes.number,
+    y: PropTypes.number,
+    onClose: PropTypes.func,
+    onClick: PropTypes.func,
+    showSubline: PropTypes.bool,
+    data: PropTypes.object
+  }
+
+  static defaultProps = {
+    x: 0,
+    y: 0,
+    onClose: () => {},
+    onClick: () => {},
+    showSubline: true,
+    data: {}
+  }
+
   render() {
     return (
       <MapPopup x={this.props.x} y={this.props.y}>
@@ -123,7 +142,7 @@ class MapPopupWrapper extends PureComponent {
           <StyledPinIcon />
           <div>
             <BigLabel uppercase>{renderName(this.props.data)}</BigLabel>
-            {!this.props.data.isIntersection && <Label light>Abschnitt 1</Label>}
+            {(!this.props.data.isIntersection && this.props.showSubline) && <Label light>Abschnitt 1</Label>}
           </div>
         </MapPopupLocation>
         {this.props.children}
