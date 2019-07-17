@@ -129,7 +129,7 @@ class OverviewMap extends Component {
   }
 
   render() {
-    const { reports, selectedReport, match } = this.props;
+    const { reports, selectedReport, match, token } = this.props;
     const hasDetailId = match.params.id;
 
     const mapControls = (
@@ -176,7 +176,7 @@ class OverviewMap extends Component {
                   apiEndpoint="reports"
                   onCloseRoute={match.url}
                   onClose={() => this.onPopupClose()}
-                  token={this.props.token}
+                  token={token}
                   reportItem={reportItem}
                   subtitle={`Meldung ${reportItem.id}`}
                 />
@@ -198,5 +198,6 @@ const mapDispatchToPros = {
 
 export default withRouter(connect(state => ({
   selectedReport: state.ReportsState.selectedReport,
-  reports: state.ReportsState.reports
+  reports: state.ReportsState.reports,
+  token: state.UserState.token
 }), mapDispatchToPros)(OverviewMap));

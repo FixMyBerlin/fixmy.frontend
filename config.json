@@ -257,5 +257,5 @@
   "debug": false,
   "showLikeButton": true,
   "showFeedBackForm": false,
-  "mockReportsApi": true
+  "mockReportsApi": false
 }
