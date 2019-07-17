@@ -35,17 +35,22 @@ class ReportsPopup extends PureComponent {
   render() {
     const { selectedReport, onClose, position } = this.props;
     const photoSrc = idx(selectedReport, _ => _.photo.src);
+    const isSmallScreen = window.innerWidth <= 768;
 
     if (!selectedReport) return null;
 
+    const x = isSmallScreen ? 0 : position.x;
+    const y = isSmallScreen ? 0 : position.y;
+
     return (
       <MapPopupWrapper
-        x={position.x}
-        y={position.y}
+        x={x}
+        y={y}
         data={selectedReport}
         onClick={() => this.onDetailClick()}
         onClose={() => onClose()}
         showSubline={false}
+        style={{ padding: 16 }}
       >
         <Fragment>
           {photoSrc && (

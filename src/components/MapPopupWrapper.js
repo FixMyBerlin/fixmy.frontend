@@ -41,7 +41,7 @@ const MapPopup = styled.div.attrs(props => ({
   padding: 16px 16px 0 16px;
   bottom: -1px;
   width: 100%;
-  z-index:900;
+  z-index: 1001;
 
   ${media.m`
     position: absolute;
@@ -136,7 +136,7 @@ class MapPopupWrapper extends PureComponent {
 
   render() {
     return (
-      <MapPopup x={this.props.x} y={this.props.y}>
+      <MapPopup x={this.props.x} y={this.props.y} style={this.props.style}>
         <CloseBtn onClick={this.props.onClose} />
         <MapPopupLocation onClick={this.props.onClick}>
           <StyledPinIcon />
