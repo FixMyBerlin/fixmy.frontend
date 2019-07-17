@@ -8,7 +8,7 @@ export const ListComponent = styled.ul`
   list-style: none;
 `;
 
-export const ListItem = styled(Text).attrs({ as: 'li' })`
+export const ListItem = styled(Text).attrs(() => ({ as: 'li' }))`
   margin: 0;
 
   &:before {

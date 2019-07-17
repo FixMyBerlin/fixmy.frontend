@@ -28,12 +28,12 @@ function getArrowCSS({ size = 20, color = 'white', offset = 0 }) {
   `;
 }
 
-const MapPopup = styled.div.attrs({
-  style: props => ({
+const MapPopup = styled.div.attrs(props => ({
+  style: {
     top: `${props.y}px`,
     left: `${props.x}px`
-  })
-})`
+  }
+}))`
   position: relative;
   width: 100%;
   background: #fff;
