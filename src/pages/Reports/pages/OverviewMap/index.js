@@ -20,7 +20,8 @@ import LocatorControl from '~/pages/Map/components/LocatorControl';
 import {
   removeError,
   loadReportsData,
-  setSelectedReport
+  setSelectedReport,
+  setSelectedReportPosition
 } from '~/pages/Reports/ReportsState';
 
 const MapView = styled.div`
@@ -46,7 +47,8 @@ class OverviewMap extends Component {
     this.state = {
       // [lng, lat]
       mapCenter: null,
-      isLoading: true
+      isLoading: true,
+      selectedReportsPosition: []
     };
   }
 
@@ -82,27 +84,48 @@ class OverviewMap extends Component {
     this.props.history.push(config.routes.reports.new);
   }
 
-  handleMarkerClick = (el, reportItem) => {
+  onMarkerClick = (el, reportItem) => {
     const { selectedReport } = this.props;
     this.props.setSelectedReport(reportItem);
+
+    this.updateSelectedReportPosition();
 
     if (selectedReport && (selectedReport.id !== reportItem.id)) {
       this.props.history.push(`${config.routes.reports.map}/${reportItem.id}`);
     }
   }
 
-  handleLocationChange = (coords) => {
+  onLocationChange = (coords) => {
     this.setState({ mapCenter: coords });
   }
 
-  handlePopupClose = () => {
+  onPopupClose = () => {
     // show map by returning to the map route
     this.props.setSelectedReport(null);
     this.props.history.push(config.routes.reports.map);
   }
 
-  onMapLoad = () => {
+  onMapLoad = (map) => {
+    this.map = map;
     this.setState({ isLoading: false });
+  }
+
+  onMapMove() {
+    if (!this.props.selectedReport) {
+      return null;
+    }
+
+    this.updateSelectedReportPosition();
+  }
+
+  updateSelectedReportPosition() {
+    if (!this.map) {
+      return false;
+    }
+
+    const selectedReportsPosition = this.map.project(this.props.selectedReport.geometry.coordinates);
+
+    this.props.setSelectedReportPosition(selectedReportsPosition);
   }
 
   render() {
@@ -113,7 +136,7 @@ class OverviewMap extends Component {
       <Fragment>
         <LocatorControl
           key="ReportsOverviewMap__LocatorControl"
-          onChange={this.handleLocationChange}
+          onChange={this.onLocationChange}
           customPosition={{ bottom: '42px', right: '7px' }}
         />
         <AddButton onTab={this.onAddButtonTab} />
@@ -127,14 +150,16 @@ class OverviewMap extends Component {
           <WebglMap
             reportsData={reports}
             center={this.state.mapCenter}
-            onMarkerClick={this.handleMarkerClick}
-            onLoad={this.onMapLoad}
+            onMarkerClick={this.onMarkerClick}
+            onLoad={m => this.onMapLoad(m)}
+            onMove={() => this.onMapMove()}
           />
           {this.state.isLoading ? null : mapControls}
           {(selectedReport && !hasDetailId) && (
             <ReportsPopup
-              onClose={this.handlePopupClose}
+              onClose={this.onPopupClose}
               reportItem={selectedReport}
+              position={this.state.selectedReportsPosition}
             />
           )}
           <Route
@@ -150,7 +175,7 @@ class OverviewMap extends Component {
                 <ReportDetails
                   apiEndpoint="reports"
                   onCloseRoute={match.url}
-                  onClose={() => this.handlePopupClose()}
+                  onClose={() => this.onPopupClose()}
                   token={this.props.token}
                   reportItem={reportItem}
                   subtitle={`Meldung ${reportItem.id}`}
@@ -167,7 +192,8 @@ class OverviewMap extends Component {
 const mapDispatchToPros = {
   loadReportsData,
   removeError,
-  setSelectedReport
+  setSelectedReport,
+  setSelectedReportPosition
 };
 
 export default withRouter(connect(state => ({

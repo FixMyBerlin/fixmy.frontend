@@ -17,12 +17,14 @@ const StyledMap = styled.div`
 class BaseMap extends PureComponent {
   static propTypes = {
     maxBounds: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
-    onLoad: PropTypes.func
+    onLoad: PropTypes.func,
+    onMove: PropTypes.func
   }
 
   static defaultProps = {
     maxBounds: config.reportsMap.maxBounds,
-    onLoad: () => {}
+    onLoad: () => {},
+    onMove: () => {}
   }
 
   state = {
@@ -40,6 +42,10 @@ class BaseMap extends PureComponent {
     this.map.on('load', () => {
       this.setState({ isLoading: false });
       this.props.onLoad(this.map);
+    });
+
+    this.map.on('move', () => {
+      this.props.onMove();
     });
   }
 

@@ -12,6 +12,7 @@ class WebglMap extends PureComponent {
     reportsData: PropTypes.array,
     center: PropTypes.array,
     onLoad: PropTypes.func,
+    onMove: PropTypes.func,
     disabled: PropTypes.bool
   }
 
@@ -19,6 +20,7 @@ class WebglMap extends PureComponent {
     reportsData: [],
     center: null,
     onLoad: () => {},
+    onMove: () => {},
     disabled: false
   }
 
@@ -48,7 +50,7 @@ class WebglMap extends PureComponent {
     this.forceUpdate();
 
     // notify containers that map has been initialized
-    this.props.onLoad();
+    this.props.onLoad(map);
   }
 
   toggleZoomControl = (isActive) => {
@@ -73,7 +75,10 @@ class WebglMap extends PureComponent {
     const { reportsData, onMarkerClick } = this.props;
 
     return (
-      <BaseMap onLoad={map => this.onLoad(map)}>
+      <BaseMap
+        onLoad={map => this.onLoad(map)}
+        onMove={() => this.props.onMove()}
+      >
         <ReportMarkers
           map={this.map}
           data={reportsData}

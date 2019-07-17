@@ -33,11 +33,13 @@ const SUBMIT_REPORT = 'Reports/ReportsDialogState/SUBMIT_REPORT';
 const SUBMIT_REPORT_SUCCESS = 'Reports/ReportsDialogState/SUBMIT_REPORT_SUCCESS';
 const SUBMIT_REPORT_ERROR = 'Reports/ReportsDialogState/SUBMIT_REPORT_ERROR';
 const SET_SELECTED_REPORT = 'Reports/ReportsDialogState/SET_SELECTED_REPORT';
+const SET_SELECTED_REPORT_POS = 'Reports/ReportsDialogState/SET_SELECTED_REPORT_POS';
 const UNSET_SELECTED_REPORT = 'Reports/ReportsDialogState/UNSET_SELECTED_REPORT';
 
 const initialState = {
   reports: [], // existing reports, fetched via API
   selectedReport: null, // currently displayed report item (e.g. on overview map)
+  selectedReportPosition: { x: 0, y: 0 }, // projected position of report popup
   newReport: {}, // the new report object, populated while stepping through the dialog
   error: {
     message: null
@@ -123,6 +125,10 @@ export function setSelectedReport(selectedReport) {
 
     dispatch({ type: SET_SELECTED_REPORT, selectedReport });
   };
+}
+
+export function setSelectedReportPosition(selectedReportPosition) {
+  return { type: SET_SELECTED_REPORT_POS, selectedReportPosition };
 }
 
 export function validateCoordinates(polygonGeoJson, { lng, lat }) {
@@ -344,6 +350,10 @@ export default function ReportsReducer(state = initialState, action = {}) {
     case SET_SELECTED_REPORT:
       return {
         ...state, selectedReport: action.selectedReport || null
+      };
+    case SET_SELECTED_REPORT_POS:
+      return {
+        ...state, selectedReportPosition: action.selectedReportPosition || { x: 0, y: 0 }
       };
     case UNSET_SELECTED_REPORT:
       return {
