@@ -72,7 +72,7 @@ class WebglMap extends PureComponent {
   }
 
   render() {
-    const { reportsData, onMarkerClick } = this.props;
+    const { reportsData, onMarkerClick, selectedReport, detailId } = this.props;
 
     return (
       <BaseMap
@@ -83,6 +83,8 @@ class WebglMap extends PureComponent {
           map={this.map}
           data={reportsData}
           onClick={onMarkerClick}
+          selectedReport={selectedReport}
+          detailId={detailId}
         />
       </BaseMap>
     );

@@ -153,6 +153,8 @@ class OverviewMap extends Component {
             onMarkerClick={this.onMarkerClick}
             onLoad={m => this.onMapLoad(m)}
             onMove={() => this.onMapMove()}
+            selectedReport={selectedReport}
+            detailId={match.params.id}
           />
           {this.state.isLoading ? null : mapControls}
           {(selectedReport && !hasDetailId) && (

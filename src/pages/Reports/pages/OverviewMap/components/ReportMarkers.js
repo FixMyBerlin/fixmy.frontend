@@ -23,17 +23,17 @@ class ReportMarkers extends PureComponent {
     this.updateMarkers();
   }
 
-  removeMarkers = () => {
+  removeMarkers() {
     this.markers.forEach((marker) => {
       if (marker) {
         marker.remove();
       }
     });
     this.markers = [];
-  };
+  }
 
-  updateMarkers = () => {
-    const { data, map } = this.props;
+  updateMarkers() {
+    const { data, map, selectedReport, detailId } = this.props;
     if (!data || !map) {
       return false;
     }
@@ -44,11 +44,20 @@ class ReportMarkers extends PureComponent {
       if (!Markers[d.details.subject]) {
         return null;
       }
+
       const lngLat = d.geometry.coordinates;
       const el = document.createElement('div');
       el.className = 'reports-marker';
       el.dataset.id = d.id;
-      el.style = 'cursor: pointer';
+      el.style.cursor = 'pointer';
+      el.style.opacity = 1;
+
+      if (selectedReport || detailId) {
+        const activeId = selectedReport ? selectedReport.id : detailId;
+        const opacity = d.id === activeId ? 1 : 0.5;
+        el.style.opacity = opacity;
+      }
+
       el.innerHTML = `<img class="marker-image" src="${Markers[d.details.subject]}" />`;
       el.addEventListener('click', evt => this.props.onClick(evt, d));
 
