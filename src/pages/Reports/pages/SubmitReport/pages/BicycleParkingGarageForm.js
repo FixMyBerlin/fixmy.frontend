@@ -29,7 +29,7 @@ const CostSlider = styled(RangeSlider)`
 
 const BicycleParkingGarageForm = ({ onConfirm }) => {
   const [wouldPay, setWouldPay] = useState(null);
-  const [dailyRent, setDailyRent] = useState(1);
+  const [dailyRent, setDailyRent] = useState(0);
 
   return (
     <Wrapper>
