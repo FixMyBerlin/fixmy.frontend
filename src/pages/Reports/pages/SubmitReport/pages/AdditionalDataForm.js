@@ -5,7 +5,7 @@ import { oneLine } from 'common-tags';
 import TextareaAutosize from 'react-autosize-textarea';
 
 import PhotoControlImage from '~/images/reports/photo-control.png';
-import Button from '~/components/Button';
+import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import { breakpoints } from '~/styles/utils';
 
 
@@ -103,26 +103,6 @@ const DescriptionTextArea = styled(TextareaAutosize)`
     outline-color: ${config.colors.interaction};
   }
 `;
-
-// TODO: D.R.Y. -> this is just copied from bikestandsform. Factor this out
-const WeiterButton = styled(Button)`
-  display: block;
-  margin-top: 51px;
-  height: 48px;
-  width: 167px;
-  font-size: 18px;
-  font-weight: bold;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
-
-  &&[disabled] {
-    background-color: ${config.colors.lightgrey};
-    cursor: default;
-    &:hover {
-      opacity: 1;
-    }
-  }
-`;
-
 
 // TODO: Factor out photo input
 // TODO: keep photo props (max dimension, quality) in config

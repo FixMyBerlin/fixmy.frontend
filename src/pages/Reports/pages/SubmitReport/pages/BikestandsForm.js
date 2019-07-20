@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { BIKESTAND_PLACEMENT_SIDEWALK, BIKESTAND_PLACEMENT_STREET } from '~/pages/Reports/ReportsState';
 import RangeSlider from '~/components/RangeSlider';
-import Button from '~/components/Button';
+import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import SidwalkBgImage from '~/images/reports/bikestand-placement-sidewalk.jpg';
 import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
 
@@ -46,25 +46,6 @@ const Explanation = styled.p`
   font-size: 14px;
   color: ${config.colors.darkgrey};
   line-height: 1.4;
-`;
-
-const WeiterButton = styled(Button)`
-  display: block;
-  margin-top: 84px;
-  margin-bottom: 42px;
-  height: 48px;
-  width: 167px;
-  font-size: 18px;
-  font-weight: bold;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
-
-  &&[disabled] {
-    background-color: ${config.colors.lightgrey};
-    cursor: default;
-    &:hover {
-      opacity: 1;
-    }
-  }
 `;
 
 // TODO: factor out, used multiple times in other places
