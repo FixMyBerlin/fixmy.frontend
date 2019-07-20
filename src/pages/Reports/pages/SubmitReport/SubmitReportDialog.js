@@ -20,12 +20,12 @@ import {
 } from '~/pages/Reports/ReportsState';
 import OverviewMapNavBar from '~/pages/Reports/pages/OverviewMap/components/OverviewMapNavBar';
 import Markdown from '~/pages/Markdown/Markdown';
-import LocateModeChooser from './LocateModeChooser';
-import LocateMeMap from './LocateMeMap/LocateMeMap';
-import BikestandsForm from './BikestandsForm';
-import AdditionalDataForm from './AdditionalDataForm';
-import FormProgressBar from './FormProgressBar';
-import ReportSubmitted from './ReportSubmitted';
+import LocateModeChooser from './pages/LocateModeChooser';
+import LocateMeMap from './components/LocateMeMap/LocateMeMap';
+import BikestandsForm from './pages/BikestandsForm';
+import AdditionalDataForm from './pages/AdditionalDataForm';
+import FormProgressBar from './components/FormProgressBar';
+import ReportSubmitted from './pages/ReportSubmitted';
 
 const LoaderWrapper = styled.div`
   width: 100%;
@@ -127,7 +127,25 @@ class SubmitReportDialog extends PureComponent {
         );
         break;
 
-      case 4:
+        case 4:
+        content = (
+          <Fragment>
+            <FormProgressBar
+              stepNumber={4}
+              stepCaption="Fotos und Beschreibung"
+            />
+            <AdditionalDataForm onConfirm={(formData) => {
+              proceed();
+              this.props.setAdditionalData(formData);
+              this.props.submitReport(this.props.token);
+              proceed();
+            }}
+            />
+          </Fragment>
+        );
+        break;
+
+      case 5:
         content = submitting ? (
           <LoaderWrapper>
             <PropagateLoader
@@ -137,7 +155,7 @@ class SubmitReportDialog extends PureComponent {
         ) : (
           <Fragment>
             <FormProgressBar
-              stepNumber={4}
+              stepNumber={5}
               stepCaption="Fertig"
             />
             <ReportSubmitted reportId={newReport.id} error={error} />
