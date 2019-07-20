@@ -4,6 +4,8 @@ import withRouter from 'react-router/withRouter';
 
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import Button from '~/components/Button';
+import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
+import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import { breakpoints } from '~/styles/utils';
 import history from '~/history';
 
@@ -17,22 +19,12 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-// TODO: factor this out!. This exact same View is used multiple times within /Reports
-const Heading = styled.h3`
+const StyledHeading = styled(Heading)`
   margin-top: 6px;
-  font-size: 22px;
-  font-weight: bold;
-  color: ${config.colors.black};
-  text-align: center;
   margin-bottom: 8px;
 `;
 
-// TODO: also de-dupe
-const Text = styled.p`
-  font-size: 14px;
-  line-height: 1.4;
-  text-align: center;
-  color: ${config.colors.darkgrey};
+const Text = styled(Paragraph)`
   margin-top: 0;
   margin-bottom: 32px;
 `;
@@ -177,7 +169,7 @@ class ReportSubmitted extends PureComponent {
 
     return (
       <Wrapper>
-        <Heading>Danke, dass du mithilfst Friedrichshain-Kreuzberg radfreundlicher zu machen!</Heading>
+        <StyledHeading>Danke, dass du mithilfst Friedrichshain-Kreuzberg radfreundlicher zu machen!</StyledHeading>
         <Text>Deine Meldung ist nun online und wird am 31. Januar dem Bezirksamt übergeben.</Text>
 
         <MeldungAnzeigenButton onClick={this.revealReportOnMap}>Meldung Anzeigen</MeldungAnzeigenButton>

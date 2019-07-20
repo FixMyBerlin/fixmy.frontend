@@ -1,15 +1,17 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+// include the default range slider styles
+import 'react-rangeslider/lib/index.css';
 
 import { BIKESTAND_PLACEMENT_SIDEWALK, BIKESTAND_PLACEMENT_STREET } from '~/pages/Reports/ReportsState';
 import RangeSlider from '~/components/RangeSlider';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
+import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
+import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
+import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
 import SidwalkBgImage from '~/images/reports/bikestand-placement-sidewalk.jpg';
 import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
-
-// include the default range slider styles
-import 'react-rangeslider/lib/index.css';
 
 // TODO: Move styled components to extra file(s) to not bloat up the file
 // TODO: scroll to bottom when radio button in first group has been checked
@@ -25,13 +27,9 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const Question = styled.p`
-  text-align: center;
+const Question = styled(Heading)`
   margin-top: 32px;
   margin-bottom: 8px;
-  font-size: 22px;
-  font-weight: bold;
-  color: ${config.colors.black};
   line-height: 1.37;
 `;
 
@@ -40,18 +38,9 @@ const LightQuestion = styled(Question)`
   margin-bottom: 32px;
 `;
 
-const Explanation = styled.p`
+const Explanation = styled(Paragraph)`
   margin-top: 0;
-  margin-bottom: 52px;
-  font-size: 14px;
-  color: ${config.colors.darkgrey};
-  line-height: 1.4;
-`;
-
-// TODO: factor out, used multiple times in other places
-const StyledHr = styled.hr`
-  width: 100%;
-  border: 0.5px dashed rgba(162, 162, 162, 0.87);
+  margin-bottom: 25px;
 `;
 
 const StyledRadioButtonLabel = styled.label`
@@ -170,6 +159,9 @@ class BikestandsForm extends PureComponent {
           onChange={bikestandsNeeded => this.setState({ bikestandsNeeded })}
         />
 
+        {/* // FIXME: add margin here */}
+
+
         <Question>..und wo könnten diese aufgestellt werden?</Question>
         <Explanation>Ein Bügel benötigt ungefähr 2 qm Fläche</Explanation>
 
@@ -217,7 +209,7 @@ class BikestandsForm extends PureComponent {
         </BikestandPlacementContainer>
 
 
-        <StyledHr />
+        <HorizontalRuler />
 
         <LightQuestion>Würdest du an dieser Stelle auch ein kostenpflichtiges Fahrradparkhaus nutzen?</LightQuestion>
 

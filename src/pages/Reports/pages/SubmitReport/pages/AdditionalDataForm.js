@@ -6,6 +6,8 @@ import TextareaAutosize from 'react-autosize-textarea';
 
 import PhotoControlImage from '~/images/reports/photo-control.png';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
+import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
+import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import { breakpoints } from '~/styles/utils';
 
 
@@ -16,21 +18,13 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const Heading = styled.h3`
+const StyledHeading = styled(Heading)`
   margin: 0;
-  font-size: 22px;
-  font-weight: bold;
-  color: ${config.colors.black};
-  text-align: center;
 `;
 
-const Hint = styled.p`
+const Hint = styled(Paragraph)`
   margin-top: 12px;
   margin-bottom: 0;
-  font-size: 14px;
-  color: ${config.colors.darkgrey};
-  text-align: center;
-  line-height: 1.4;
 `;
 
 const PhotoInput = styled.input`
@@ -205,8 +199,8 @@ class AdditionalDataForm extends PureComponent {
   render() {
     return (
       <Wrapper>
-        <Heading>Hier kannst du noch ein Foto ergänzen</Heading>
-        <Hint>Das hilft den Planer*innen die Situation vor Ort besser zu verstehen.</Hint>
+        <StyledHeading>Ein Foto des Ortes hilft den Planer*innen deine Meldung schneller zu bearbeiten.</StyledHeading>
+        <Hint>Ein Foto des Ortes hilft den Planer*innen deine Meldung schneller zu bearbeiten.</Hint>
         <PhotoInputImageLabel
           htmlFor="photo-file-input"
           style={{ backgroundImage: `url(${this.state.photo || PhotoControlImage})` }}
@@ -243,7 +237,7 @@ class AdditionalDataForm extends PureComponent {
           </StyledCheckboxLabel>
         </PhotoDisclaimerWrapper>
 
-        <Heading>…oder eine Beschreibung eingeben</Heading>
+        <StyledHeading>Vor dem Kindergarten ist morgens immer viel los besonders Stellplätze für Lastenräder wären hier wichtig. Platz wäre direkt an der Hauswand.</StyledHeading>
 
         <DescriptionTextArea
           rows={4}
@@ -251,8 +245,8 @@ class AdditionalDataForm extends PureComponent {
           maxLength={140}
           value={this.state.description}
           onChange={this.updateDescription}
-          placeholder={oneLine`z.B.: Vor dem Kindergarten ist morgens immer viel
-        los besonders Stellplätze für Lastenräder wären hier wichtig. Platz wäre direkt an der Hauswand.`}
+          placeholder={oneLine`Vor dem Kindergarten ist morgens immer viel los. Besonders 
+          Stellplätze für Lastenräder wären hier wichtig. Platz wäre direkt an der Hauswand.`}
         />
 
         <WeiterButton
