@@ -107,7 +107,7 @@ const BikestandPlacementItem = styled.div`
 
 const BikestandPlacementLabel = styled.label`
   display: block;
-`
+`;
 
 const BikestandPlacementImage = styled.img`
   border-radius: 6px;
@@ -149,7 +149,7 @@ class BikestandsForm extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      bikestandsNeeded: 3,
+      bikestandsNeeded: 0,
       bikestandsPlacement: null,
       chargedBikeParkConceivable: null,
       paymentReservesBikePark: 1
@@ -167,7 +167,11 @@ class BikestandsForm extends PureComponent {
     this.props.onConfirm(stateToSubmit);
   };
 
-  isSubmittable = () => this.state.bikestandsPlacement !== null && this.state.chargedBikeParkConceivable !== null;
+  isSubmittable = () => (
+    this.state.bikestandsNeeded &&
+    this.state.bikestandsPlacement !== null &&
+    this.state.chargedBikeParkConceivable !== null
+  )
 
   render() {
     return (
