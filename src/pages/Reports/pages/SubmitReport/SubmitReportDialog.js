@@ -15,6 +15,7 @@ import {
   resetDialogState,
   setBikestandNeeds,
   setAdditionalData,
+  setDailyRent,
   removeError,
   submitReport
 } from '~/pages/Reports/ReportsState';
@@ -26,6 +27,7 @@ import BikestandsForm from './pages/BikestandsForm';
 import AdditionalDataForm from './pages/AdditionalDataForm';
 import FormProgressBar from './components/FormProgressBar';
 import ReportSubmitted from './pages/ReportSubmitted';
+import BicycleParkingGarageForm from './pages/BicycleParkingGarageForm';
 
 const LoaderWrapper = styled.div`
   width: 100%;
@@ -79,7 +81,7 @@ class SubmitReportDialog extends PureComponent {
               removeError={this.props.removeError}
             />
           </Fragment>
-          )
+        )
           : (
             <Fragment>
               {tempLocation && tempLocation.pinned && (
@@ -117,26 +119,24 @@ class SubmitReportDialog extends PureComponent {
               stepCaption="Fotos und Beschreibung"
             />
             <AdditionalDataForm onConfirm={(formData) => {
-              proceed();
               this.props.setAdditionalData(formData);
-              this.props.submitReport(this.props.token);
               proceed();
             }}
+
             />
           </Fragment>
         );
         break;
 
-        case 4:
+      case 4:
         content = (
           <Fragment>
             <FormProgressBar
               stepNumber={4}
-              stepCaption="Fotos und Beschreibung"
+              stepCaption="Parkhaus"
             />
-            <AdditionalDataForm onConfirm={(formData) => {
-              proceed();
-              this.props.setAdditionalData(formData);
+            <BicycleParkingGarageForm onConfirm={(dailyRent) => {
+              this.props.setDailyRent(dailyRent);
               this.props.submitReport(this.props.token);
               proceed();
             }}
@@ -160,7 +160,7 @@ class SubmitReportDialog extends PureComponent {
             />
             <ReportSubmitted reportId={newReport.id} error={error} />
           </Fragment>
-        );
+          );
         break;
       default:
         content = (<Markdown page="nomatch" />);
@@ -176,6 +176,7 @@ const mapDispatchToProps = {
   resetDialogState,
   setBikestandNeeds,
   setAdditionalData,
+  setDailyRent,
   removeError,
   submitReport
 };

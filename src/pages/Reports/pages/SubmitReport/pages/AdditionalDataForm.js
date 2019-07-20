@@ -10,8 +10,10 @@ import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import { breakpoints } from '~/styles/utils';
 
-
+// TODO: factor out
 const Wrapper = styled.div`
+  max-width: 568px;
+  margin: 0 auto;
   padding: 32px 8px 72px 8px;
   display: flex;
   flex-direction: column;
@@ -237,7 +239,7 @@ class AdditionalDataForm extends PureComponent {
           </StyledCheckboxLabel>
         </PhotoDisclaimerWrapper>
 
-        <StyledHeading>Vor dem Kindergarten ist morgens immer viel los besonders Stellplätze für Lastenräder wären hier wichtig. Platz wäre direkt an der Hauswand.</StyledHeading>
+        <StyledHeading>Beschreibung des Ortes eingeben</StyledHeading>
 
         <DescriptionTextArea
           rows={4}

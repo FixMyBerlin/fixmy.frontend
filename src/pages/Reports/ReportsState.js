@@ -29,6 +29,7 @@ export const BIKESTAND_PLACEMENT_SIDEWALK = 'SIDEWALK';
 export const BIKESTAND_PLACEMENT_STREET = 'STREET';
 const SET_BIKESTAND_NEEDS = 'Reports/ReportsDialogState/SET_BIKESTAND_NEEDS';
 const SET_ADDITIONAL_DATA = 'Reports/ReportsDialogState/SET_ADDITIONAL_DATA';
+const SET_DAILY_RENT = 'Reports/ReportsDialogState/SET_DAILY_RENT';
 const SUBMIT_REPORT = 'Reports/ReportsDialogState/SUBMIT_REPORT';
 const SUBMIT_REPORT_SUCCESS = 'Reports/ReportsDialogState/SUBMIT_REPORT_SUCCESS';
 const SUBMIT_REPORT_ERROR = 'Reports/ReportsDialogState/SUBMIT_REPORT_ERROR';
@@ -97,6 +98,11 @@ export const setBikestandNeeds = formData => ({
 export const setAdditionalData = formData => ({
   type: SET_ADDITIONAL_DATA,
   payload: formData
+});
+
+export const setDailyRent = dailyRent => ({
+  type: SET_DAILY_RENT,
+  dailyRent
 });
 
 async function loadReportsDataInner(dispatch) {
@@ -324,6 +330,20 @@ export default function ReportsReducer(state = initialState, action = {}) {
           }
         }
       };
+      case SET_DAILY_RENT:
+          return {
+            ...state,
+            newReport: {
+              ...state.newReport,
+              what: {
+                ...state.newReport.what,
+                bikestands: {
+                    ...state.newReport.what.bikestands,
+                    paymentReservesBikePark: action.dailyRent
+                }
+              }
+            }
+          };
     case SUBMIT_REPORT:
       return { ...state, submitting: true };
     case SUBMIT_REPORT_SUCCESS:

@@ -9,12 +9,10 @@ import RangeSlider from '~/components/RangeSlider';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
-import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
+import { RadioButton } from '~/pages/Reports/pages/SubmitReport/components/RadioButton';
 import SidwalkBgImage from '~/images/reports/bikestand-placement-sidewalk.jpg';
 import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
 
-// TODO: Move styled components to extra file(s) to not bloat up the file
-// TODO: scroll to bottom when radio button in first group has been checked
 
 const Wrapper = styled.div`
   padding: 11px;
@@ -33,28 +31,13 @@ const Question = styled(Heading)`
   line-height: 1.37;
 `;
 
-const LightQuestion = styled(Question)`
-  font-weight: 300;
-  margin-bottom: 32px;
+const BikeStandsSlider = styled(RangeSlider)`
+  margin-bottom: 90px !important;
 `;
 
 const Explanation = styled(Paragraph)`
   margin-top: 0;
   margin-bottom: 25px;
-`;
-
-const StyledRadioButtonLabel = styled.label`
-   font-size: 14px;
-   line-height: 1.4;
-   color: ${config.colors.darkgrey};
-   align-self: flex-start;
-   cursor: pointer;
-`;
-
-const StyledRadioButton = styled.input`
-  cursor: pointer;
-  margin-right: 12px;
-  display: inline-block;
 `;
 
 const BikestandPlacementContainer = styled.div`
@@ -96,16 +79,9 @@ const BikestandPlacementImage = styled.img`
   }
 `;
 
-const BikestandPlacementRadioButton = styled(StyledRadioButton)`
+const BikestandPlacementRadioButton = styled(RadioButton)`
     margin: 8px auto;
 `;
-
-const CostSlider = styled(RangeSlider)`
-  &&  .rangeslider__fill {
-     background-color: ${config.colors.lightgrey};
-   }
-`;
-
 
 class BikestandsForm extends PureComponent {
   static propTypes = {
@@ -120,27 +96,13 @@ class BikestandsForm extends PureComponent {
     super(props);
     this.state = {
       bikestandsNeeded: 0,
-      bikestandsPlacement: null,
-      chargedBikeParkConceivable: null,
-      paymentReservesBikePark: 1
+      bikestandsPlacement: null
     };
   }
 
-  submit = () => {
-    // marshall form data before submit
-    const stateToSubmit = { ...this.state };
-    if (!stateToSubmit.chargedBikeParkConceivable) {
-      stateToSubmit.paymentReservesBikePark = 0;
-    }
-    delete stateToSubmit.chargedBikeParkConceivable;
-
-    this.props.onConfirm(stateToSubmit);
-  };
-
   isSubmittable = () => (
     this.state.bikestandsNeeded &&
-    this.state.bikestandsPlacement !== null &&
-    this.state.chargedBikeParkConceivable !== null
+    this.state.bikestandsPlacement !== null
   )
 
   render() {
@@ -148,7 +110,7 @@ class BikestandsForm extends PureComponent {
       <Wrapper>
 
         <Question>Wie viele Bügel werden benötigt?</Question>
-        <RangeSlider
+        <BikeStandsSlider
           min={1}
           max={20}
           labels={{ 1: 1, 20: 20 }}
@@ -208,54 +170,8 @@ class BikestandsForm extends PureComponent {
 
         </BikestandPlacementContainer>
 
-
-        <HorizontalRuler />
-
-        <LightQuestion>Würdest du an dieser Stelle auch ein kostenpflichtiges Fahrradparkhaus nutzen?</LightQuestion>
-
-
-        <StyledRadioButtonLabel htmlFor="charged-bikepark-conceivable" style={{ alignSelf: 'flex-start' }}>
-          <StyledRadioButton
-            type="radio"
-            id="charged-bikepark-conceivable"
-            name="charged-bikepark-conceivable"
-            value="true"
-            checked={!!this.state.chargedBikeParkConceivable}
-            onChange={() => this.setState({ chargedBikeParkConceivable: true })}
-          />
-          {this.state.chargedBikeParkConceivable ?
-          `Ja klar, und ich würde dafür ${this.state.paymentReservesBikePark}€ am Tag zahlen.` :
-          'Ja klar!'
-        }
-        </StyledRadioButtonLabel>
-
-        {this.state.chargedBikeParkConceivable && (
-        <CostSlider
-          min={0}
-          max={5}
-          name="paymentReservesBikePark"
-          labels={{ 0: '0 €', 5: '5 €' }}
-          value={this.state.paymentReservesBikePark}
-          tooltip={false}
-          handleLabel={`${this.state.paymentReservesBikePark} €`}
-          onChange={paymentReservesBikePark => this.setState({ paymentReservesBikePark })}
-        />
-        )}
-
-        <StyledRadioButtonLabel htmlFor="charged-bikepark-noz-conceivable" style={{ marginTop: 18 }}>
-          <StyledRadioButton
-            type="radio"
-            id="charged-bikepark-noz-conceivable"
-            name="charged-bikepark-conceivable"
-            value="false"
-            checked={this.state.chargedBikeParkConceivable === false}
-            onChange={() => this.setState({ chargedBikeParkConceivable: false })}
-          />
-          Nein, so etwas brauche ich nicht.
-        </StyledRadioButtonLabel>
-
         <WeiterButton
-          onClick={this.submit}
+          onClick={() => this.props.onConfirm(this.state)}
           disabled={!this.isSubmittable()}
         >Weiter
         </WeiterButton>

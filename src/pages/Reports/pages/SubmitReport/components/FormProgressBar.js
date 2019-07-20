@@ -75,11 +75,11 @@ const StyledTickIcon = styled(TickIcon)`
   order: 3;
   position: absolute;
   top: 34px;
-  left: 166px;
+  left: 191px;
 `;
 
 const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => {
-  const isLastStep = stepNumber === 4;
+  const isLastStep = stepNumber === 5;
 
   return (
     <NavBar>
@@ -92,6 +92,7 @@ const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => {
       {stepNumber > 1 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 1 ? 'active' : ''}>1</StepIndicator>}
       {stepNumber > 2 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 2 ? 'active' : ''}>2</StepIndicator>}
       {stepNumber > 3 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 3 ? 'active' : ''}>3</StepIndicator>}
+      {stepNumber > 4 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 4 ? 'active' : ''}>4</StepIndicator>}
 
       {isLastStep && <StyledTickIcon />}
 
