@@ -2,20 +2,11 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import RangeSlider from '~/components/RangeSlider';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import { RadioButton, RadioButtonLabel } from '~/pages/Reports/pages/SubmitReport/components/RadioButton';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
-
-// TODO: de-dupe, facot out
-const Wrapper = styled.div`
-  max-width: 568px;
-  margin: 0 auto;
-  padding: 32px 8px 72px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const StyledHeading = styled(Heading)`
   margin-bottom: 75px;
@@ -32,7 +23,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
   const [dailyRent, setDailyRent] = useState(0);
 
   return (
-    <Wrapper>
+    <DialogStepWrapper>
 
       <StyledHeading>Würdest du hier auch ein kostenpflichtiges Fahrradparkhaus nutzen?</StyledHeading>
 
@@ -82,7 +73,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
       >Weiter
       </WeiterButton>
 
-    </Wrapper>
+    </DialogStepWrapper>
   );
 };
 

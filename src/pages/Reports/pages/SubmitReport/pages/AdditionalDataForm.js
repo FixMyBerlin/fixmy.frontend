@@ -5,20 +5,11 @@ import { oneLine } from 'common-tags';
 import TextareaAutosize from 'react-autosize-textarea';
 
 import PhotoControlImage from '~/images/reports/photo-control.png';
+import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import { breakpoints } from '~/styles/utils';
-
-// TODO: factor out
-const Wrapper = styled.div`
-  max-width: 568px;
-  margin: 0 auto;
-  padding: 32px 8px 72px 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const StyledHeading = styled(Heading)`
   margin: 0;
@@ -200,7 +191,7 @@ class AdditionalDataForm extends PureComponent {
 
   render() {
     return (
-      <Wrapper>
+      <DialogStepWrapper>
         <StyledHeading>Ein Foto des Ortes hilft den Planer*innen deine Meldung schneller zu bearbeiten.</StyledHeading>
         <Hint>Ein Foto des Ortes hilft den Planer*innen deine Meldung schneller zu bearbeiten.</Hint>
         <PhotoInputImageLabel
@@ -257,7 +248,7 @@ class AdditionalDataForm extends PureComponent {
         >Weiter
         </WeiterButton>
 
-      </Wrapper>
+      </DialogStepWrapper>
     );
   }
 }

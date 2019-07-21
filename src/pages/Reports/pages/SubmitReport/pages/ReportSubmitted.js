@@ -2,22 +2,12 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
 
+import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import Button from '~/components/Button';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
-import { breakpoints } from '~/styles/utils';
 import history from '~/history';
-
-const Wrapper = styled.div`
-  padding: 8px 8px 62px 8px;
-  max-width: ${breakpoints.s}px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const StyledHeading = styled(Heading)`
   margin-top: 6px;
@@ -168,7 +158,7 @@ class ReportSubmitted extends PureComponent {
     if (error.message) return <ErrorMessage message={error.message} />;
 
     return (
-      <Wrapper>
+      <DialogStepWrapper>
         <StyledHeading>Danke, dass du mithilfst Friedrichshain-Kreuzberg radfreundlicher zu machen!</StyledHeading>
         <Text>Deine Meldung ist nun online und wird am 31. Januar dem Bezirksamt übergeben.</Text>
 
@@ -225,7 +215,7 @@ class ReportSubmitted extends PureComponent {
 
         */}
 
-      </Wrapper>
+      </DialogStepWrapper>
     );
   }
 }

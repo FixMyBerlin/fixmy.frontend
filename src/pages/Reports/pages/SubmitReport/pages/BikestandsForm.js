@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import 'react-rangeslider/lib/index.css';
 
 import { BIKESTAND_PLACEMENT_SIDEWALK, BIKESTAND_PLACEMENT_STREET } from '~/pages/Reports/ReportsState';
+import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import RangeSlider from '~/components/RangeSlider';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
@@ -12,18 +13,6 @@ import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import { RadioButton } from '~/pages/Reports/pages/SubmitReport/components/RadioButton';
 import SidwalkBgImage from '~/images/reports/bikestand-placement-sidewalk.jpg';
 import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
-
-
-const Wrapper = styled.div`
-  padding: 11px;
-  width: 100%;
-  max-width: 568px;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const Question = styled(Heading)`
   margin-top: 32px;
@@ -107,7 +96,7 @@ class BikestandsForm extends PureComponent {
 
   render() {
     return (
-      <Wrapper>
+      <DialogStepWrapper>
 
         <Question>Wie viele Bügel werden benötigt?</Question>
         <BikeStandsSlider
@@ -176,7 +165,7 @@ class BikestandsForm extends PureComponent {
         >Weiter
         </WeiterButton>
 
-      </Wrapper>
+      </DialogStepWrapper>
     );
   }
 }
