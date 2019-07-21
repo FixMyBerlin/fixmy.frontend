@@ -33,7 +33,7 @@ const NavBar = styled.div`
 const StyledBikeParkIcon = styled(BikeParkIcon)`
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-  padding-bottom: 8px; // quick fix. svg icon is smaller than viewBox, TODO: ask for fixed icon
+  margin: 0 1px 0 12px;
   order: 1;
 `;
 
