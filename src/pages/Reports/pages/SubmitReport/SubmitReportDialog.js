@@ -66,7 +66,12 @@ class SubmitReportDialog extends PureComponent {
       submitting
     } = this.props.reportsState;
 
-    const proceed = () => this.navigateDialog(step + 1);
+    const proceed = () => {
+      // route change
+      this.navigateDialog(step + 1);
+      // scroll to top
+      window.scroll(0, 0);
+    };
 
     switch (step) {
       case 1:
