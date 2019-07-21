@@ -69,7 +69,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
 
       <WeiterButton
         onClick={() => onConfirm(wouldPay ? dailyRent : 0)}
-        disabled={!wouldPay}
+        disabled={wouldPay === null}
       >Weiter
       </WeiterButton>
 
