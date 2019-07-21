@@ -250,6 +250,15 @@
       "searchStringMinLength": 3
     }
   },
+  "reports": {
+    "dialog": {
+      "imageResizeOptions": {
+        "maxWidth": 800,
+        "maxHeight": 800,
+        "quality": 0.9
+      }
+    }
+  },
   "sectionIsBeta": true,
   "planningIsBeta": true,
   "offlineMode": false,
@@ -257,5 +266,5 @@
   "debug": false,
   "showLikeButton": true,
   "showFeedBackForm": false,
-  "mockReportsApi": false
+  "mockReportsApi": true
 }

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
@@ -9,7 +10,12 @@ import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterBu
 import UploadPhotoInput from '~/pages/Reports/pages/SubmitReport/components/UploadPhotoInput';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
-import { breakpoints } from '~/styles/utils';
+import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
+import { matchMediaSize, breakpoints } from '~/styles/utils';
+import {
+  removeError,
+  addError
+} from '~/pages/Reports/ReportsState';
 
 const StyledHeading = styled(Heading)`
   margin: 0;
@@ -75,7 +81,13 @@ class AdditionalDataForm extends PureComponent {
     };
   }
 
-  onPhotoResized = photo => this.setState({ photo })
+  onPhotoUpload = photo => this.setState({ photo })
+
+  onPhotoUploadError = (errorMsg) => {
+    const isDesktopView = matchMediaSize(breakpoints.m);
+    this.props.addError(`Fehler beim ${isDesktopView ? 'hochladen' : 'aufnehmen'} des Photos: 
+    ${errorMsg}`);
+  }
 
   submit = () => {
     // marshall form data before submit
@@ -103,7 +115,8 @@ class AdditionalDataForm extends PureComponent {
 
         <UploadPhotoInput
           resizeOptions={config.reports.dialog.imageResizeOptions}
-          onPhotoResized={this.onPhotoResized}
+          onPhotoResized={this.onPhotoUpload}
+          onError={this.onPhotoUploadError}
         />
 
         <PhotoDisclaimerWrapper>
@@ -140,9 +153,21 @@ class AdditionalDataForm extends PureComponent {
         >Weiter
         </WeiterButton>
 
+        {
+          this.props.error.message && (
+            <ErrorMessage
+              message={this.props.error.message}
+              onDismiss={this.props.removeError}
+            />
+          )
+        }
+
       </DialogStepWrapper>
     );
   }
 }
 
-export default AdditionalDataForm;
+export default connect(
+  state => ({ error: state.ReportsState.error }),
+  { addError, removeError }
+)(AdditionalDataForm);

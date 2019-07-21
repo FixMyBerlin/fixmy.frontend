@@ -42,6 +42,7 @@ const PhotoInputLabel = styled.label`
 class UploadPhotoInput extends PureComponent {
   static propTypes = {
     onPhotoResized: PropTypes.func.isRequired,
+    onError: PropTypes.func,
     resizeOptions: PropTypes.shape({
       maxWidth: PropTypes.number,
       maxHeight: PropTypes.number,
@@ -50,6 +51,7 @@ class UploadPhotoInput extends PureComponent {
   };
 
   static defaultProps = {
+    onError: () => {},
     resizeOptions: {
       maxWidth: 800,
       maxHeight: 800,
@@ -69,7 +71,7 @@ class UploadPhotoInput extends PureComponent {
   onImageFileSelect = (fileList) => {
     const photo = fileList[0];
     if (!['image/jpg', 'image/jpeg'].includes(photo.type)) {
-      alert('Sorry! Nur Photos im Format JPG werden unterstützt.');
+      this.props.onError('Sorry! Nur Photos im Format JPG werden unterstützt.');
       return;
     }
     // trigger handleConvertedPhoto()
@@ -116,14 +118,13 @@ class UploadPhotoInput extends PureComponent {
   }
 
   handleConvertedPhoto(evt) {
-    const me = this;
     const photoInBase64 = evt.target.result;
     this.resizeImage(photoInBase64)
       .then((photo) => {
         // update state for UI update
-        me.setState({ photo });
+        this.setState({ photo });
         // pass photo to container
-        me.props.onPhotoResized(photo);
+        this.props.onPhotoResized(photo);
       });
   }
 
