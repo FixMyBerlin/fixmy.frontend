@@ -56,6 +56,31 @@ const Description = styled.p`
   overflow:auto;
 `;
 
+const BikeParkingNeedSection = styled.div`
+  padding: 18px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const BikeParkingTitle = styled.p`
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.32;
+  color: ${config.colors.black};
+  flex-flow: 2;
+`;
+
+const BikeParkingIndicator = styled.div`
+  flex-flow: 1;
+  font-size: 14px;
+  line-height: 1.71;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.54);
+`;
+
 // using an invisible item to align the LikeButton in the middle and the share button right using justify-content: space-between;
 const Fill = styled.div`
   width: 20%;
@@ -127,6 +152,14 @@ class ReportDetails extends PureComponent {
           </BikeStandsCountSection>
         </HeadlineSection>
         <Description>{description}</Description>
+        <BikeParkingNeedSection>
+          <BikeParkingTitle>Bedarf Fahrradparkhaus</BikeParkingTitle>
+          <BikeParkingIndicator>{
+            details.fee ? `ja,
+            ${details.fee} € / Tag` : 'nein'
+          }
+          </BikeParkingIndicator>
+        </BikeParkingNeedSection>
 
         <DetailFooter>
           <Fill />
