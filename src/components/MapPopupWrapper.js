@@ -122,7 +122,7 @@ class MapPopupWrapper extends PureComponent {
     onClose: PropTypes.func,
     onClick: PropTypes.func,
     showSubline: PropTypes.bool,
-    data: PropTypes.objectOf(PropTypes.object)
+    data: PropTypes.object
   }
 
   static defaultProps = {
