@@ -125,8 +125,8 @@ class BikestandsForm extends PureComponent {
                 src={SidwalkBgImage}
                 className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_SIDEWALK ? 'picked' : ''}
               />
+              Auf dem Gehweg
             </BikestandPlacementLabel>
-            Auf dem Gehweg
             <BikestandPlacementRadioButton
               type="radio"
               id="amenityPlacement-sidewalk"
@@ -145,8 +145,9 @@ class BikestandsForm extends PureComponent {
                 src={StreetBgImage}
                 className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_STREET ? 'picked' : ''}
               />
-            </BikestandPlacementLabel>
             Auf der Straße
+            </BikestandPlacementLabel>
+
             <BikestandPlacementRadioButton
               type="radio"
               id="amenityPlacement-street"
