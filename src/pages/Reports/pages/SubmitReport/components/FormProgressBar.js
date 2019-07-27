@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import TickIcon from '~/images/reports/tick-icon.svg';
 import history from '~/history';
+import CloseButton from '~/components/CloseButton';
 
 const BackLink = styled.a`
   position: absolute;
@@ -78,7 +79,14 @@ const StyledTickIcon = styled(TickIcon)`
   left: 191px;
 `;
 
-const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => {
+const AbortButton = styled(CloseButton)`
+  position: absolute;
+  top: 3px;
+  right: 10px;
+  transform: scale(0.7);
+`;
+
+const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap, onAbortButtonTap }) => {
   const isLastStep = stepNumber === 5;
 
   return (
@@ -96,6 +104,8 @@ const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => {
 
       {isLastStep && <StyledTickIcon />}
 
+      <AbortButton onClick={onAbortButtonTap} />
+
     </NavBar>
   );
 };
@@ -103,7 +113,8 @@ const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap }) => {
 FormProgressBar.propTypes = {
   stepNumber: PropTypes.number,
   stepCaption: PropTypes.string,
-  onBackButtonTap: PropTypes.func
+  onBackButtonTap: PropTypes.func,
+  onAbortButtonTap: PropTypes.func.isRequired
 };
 
 FormProgressBar.defaultProps = {
