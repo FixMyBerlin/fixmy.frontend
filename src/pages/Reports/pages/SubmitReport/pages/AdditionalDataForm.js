@@ -110,8 +110,8 @@ class AdditionalDataForm extends PureComponent {
   render() {
     return (
       <DialogStepWrapper>
-        <StyledHeading>Ein Foto des Ortes hilft den Planer*innen deine Meldung schneller zu bearbeiten.</StyledHeading>
-        <Hint>Ein Foto des Ortes hilft den Planer*innen deine Meldung schneller zu bearbeiten.</Hint>
+        <StyledHeading>Ein Foto des Ortes hilft den Planer:innen deine Meldung schneller zu bearbeiten.</StyledHeading>
+        <Hint>Ein Foto des Ortes hilft den Planer:innen deine Meldung schneller zu bearbeiten.</Hint>
 
         <UploadPhotoInput
           resizeOptions={config.reports.dialog.imageResizeOptions}
