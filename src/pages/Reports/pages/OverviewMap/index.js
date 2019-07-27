@@ -57,7 +57,12 @@ class OverviewMap extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { selectedReport } = nextProps;
+    const { selectedReport, match, reports } = nextProps;
+
+    // handle deeplink load
+    if (!selectedReport && match.params.id) {
+      this.props.setSelectedReport(reports.find(r => r.id === +match.params.id));
+    }
 
     if (selectedReport && selectedReport.geometry.coordinates !== this.state.mapCenter) {
       this.setState({
