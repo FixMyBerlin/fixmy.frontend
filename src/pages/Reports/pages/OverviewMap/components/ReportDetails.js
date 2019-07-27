@@ -6,6 +6,7 @@ import ShareIcon from '~/images/reports/share.svg';
 import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
 import PlanningLike from '~/pages/Map/components/DetailView/PlanningDetail/PlanningLike';
 import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
+import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 
 // TODO: split up in subcomponents (Topbar etc.) just like Reports/Landing
 
@@ -23,6 +24,11 @@ const HeadlineSection = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 16px;
+`;
+
+const Hr = styled.hr`
+  width: 100%;
+  border: 1px solid ${config.colors.inactivegrey}
 `;
 
 // TODO: copied, de-dupe
@@ -56,7 +62,7 @@ const Description = styled.p`
   overflow:auto;
 `;
 
-const BikeParkingNeedSection = styled.div`
+const IndicatorSection = styled.div`
   padding: 18px 16px;
   display: flex;
   justify-content: space-between;
@@ -139,7 +145,7 @@ class ReportDetails extends PureComponent {
       return null;
     }
 
-    const { photo, details, description, id } = reportItem;
+    const { photo, details, description, id, status } = reportItem;
 
     return (
       <Wrapper>
@@ -153,14 +159,25 @@ class ReportDetails extends PureComponent {
           </BikeStandsCountSection>
         </HeadlineSection>
         <Description>{description}</Description>
-        <BikeParkingNeedSection>
+        <IndicatorSection>
           <IndicatorTitle>Bedarf Fahrradparkhaus</IndicatorTitle>
           <BikeParkingIndicator>{
             details.fee ? `ja,
 ${details.fee} € / Tag` : 'nein'
           }
           </BikeParkingIndicator>
-        </BikeParkingNeedSection>
+        </IndicatorSection>
+
+        <Hr />
+
+        <IndicatorSection>
+          <IndicatorTitle>Status: {getReportStatusCaption(status)}</IndicatorTitle>
+          {
+            reportItem.status_reason && (
+              <Description>{reportItem.status_reason}</Description>
+            )
+          }
+        </IndicatorSection>
 
         <DetailFooter>
           <Fill />

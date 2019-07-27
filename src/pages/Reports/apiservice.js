@@ -97,3 +97,24 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
 
   return obj;
 }
+
+/**
+ * Maps report status codes to meaningful descriptions.
+ * @param {string} status
+ */
+export function getReportStatusCaption(status) {
+  const caption = {
+    new: 'neue Meldung',
+    verification: 'wird geprüft',
+    accepted: 'wird umgesetzt',
+    rejected: 'wird nicht umgesetzt',
+    done: 'wurde umgesetzt'
+  }[status];
+
+  if (!caption) {
+    console.error(`Failed to resolve status ${status} to a caption`);
+    return status;
+  }
+
+  return caption;
+}
