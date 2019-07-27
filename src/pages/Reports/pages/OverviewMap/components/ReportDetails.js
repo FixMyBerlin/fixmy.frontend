@@ -63,8 +63,11 @@ const Description = styled.p`
   line-height: 1.71;
   font-size: 14px;
   margin: 20px 0;
-  flex:1;
   overflow:auto;
+`;
+
+const IndicatorsWrapper = styled.div`
+  margin-bottom: 1em;
 `;
 
 const IndicatorSection = styled.div`
@@ -165,30 +168,34 @@ class ReportDetails extends PureComponent {
         </HeadlineSection>
 
         {
-        description && (
-          <Description>{description}</Description>
-        )
-      }
+          description && (
+            <Description>{description}</Description>
+          )
+        }
 
-        <IndicatorSection>
-          <IndicatorTitle>Bedarf Fahrradparkhaus</IndicatorTitle>
-          <BikeParkingIndicator>{
-            details.fee ? `ja,
+        <IndicatorsWrapper>
+
+          <IndicatorSection>
+            <IndicatorTitle>Bedarf Fahrradparkhaus</IndicatorTitle>
+            <BikeParkingIndicator>{
+              details.fee ? `ja,
 ${details.fee} € / Tag` : 'nein'
-          }
-          </BikeParkingIndicator>
-        </IndicatorSection>
+            }
+            </BikeParkingIndicator>
+          </IndicatorSection>
 
-        <Hr />
+          <Hr />
 
-        <IndicatorSection>
-          <IndicatorTitle>Status: {getReportStatusCaption(status)}</IndicatorTitle>
-          {
-            reportItem.status_reason && (
-              <Description>{reportItem.status_reason}</Description>
-            )
-          }
-        </IndicatorSection>
+          <IndicatorSection>
+            <IndicatorTitle>Status: {getReportStatusCaption(status)}</IndicatorTitle>
+            {
+              reportItem.status_reason && (
+                <Description>{reportItem.status_reason}</Description>
+              )
+            }
+          </IndicatorSection>
+
+        </IndicatorsWrapper>
 
         <Footer>
           <Fill />
