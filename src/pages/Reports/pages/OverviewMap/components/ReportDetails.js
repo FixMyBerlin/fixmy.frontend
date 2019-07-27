@@ -13,6 +13,11 @@ import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 100%;
+`;
+
+const Footer = styled(DetailFooter)`
+  margin-top: auto;
 `;
 
 const ReportImage = styled.img`
@@ -158,7 +163,13 @@ class ReportDetails extends PureComponent {
             <BikeStandsCount>x{details.number}</BikeStandsCount>
           </BikeStandsCountSection>
         </HeadlineSection>
-        <Description>{description}</Description>
+
+        {
+        description && (
+          <Description>{description}</Description>
+        )
+      }
+
         <IndicatorSection>
           <IndicatorTitle>Bedarf Fahrradparkhaus</IndicatorTitle>
           <BikeParkingIndicator>{
@@ -179,7 +190,7 @@ ${details.fee} € / Tag` : 'nein'
           }
         </IndicatorSection>
 
-        <DetailFooter>
+        <Footer>
           <Fill />
           <PlanningLike
             token={this.props.token}
@@ -194,7 +205,7 @@ ${details.fee} € / Tag` : 'nein'
               </LikeButtonCaption>
             </ShareButtonWrapper>
           ) : <Fill />}
-        </DetailFooter>
+        </Footer>
       </Wrapper>
     );
   }
