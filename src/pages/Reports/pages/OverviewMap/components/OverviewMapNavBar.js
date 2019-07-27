@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
 import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
-import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
   margin: 0;
@@ -37,19 +38,11 @@ const BikeParkImg = styled(BikeParkIcon)`
   align-self: center;
 `;
 
-// TODO: find out what this is supposed to do
-const AllDetailsLink = styled.p`
-  font-size: 10px;
-  color: #999999;
-  margin: 0;
-`;
-
 const OverviewMapNavBar = ({ heading }) => (
   <Wrapper>
     <StyledMenuButton />
     <TextWrapper>
       <Heading>{heading}</Heading>
-      <AllDetailsLink>Alle Details &gt;</AllDetailsLink>
     </TextWrapper>
     <BikeParkImg alt="Icon Fahrradparkplätze" />
   </Wrapper>
