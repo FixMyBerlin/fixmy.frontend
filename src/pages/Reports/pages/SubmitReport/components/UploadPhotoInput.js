@@ -71,7 +71,7 @@ class UploadPhotoInput extends PureComponent {
   onImageFileSelect = (fileList) => {
     const photo = fileList[0];
     if (!['image/jpg', 'image/jpeg'].includes(photo.type)) {
-      this.props.onError('Sorry! Nur Photos im Format JPG werden unterstützt.');
+      this.props.onError('Sorry! Nur Fotos im Format JPG werden unterstützt.');
       return;
     }
     // trigger handleConvertedPhoto()

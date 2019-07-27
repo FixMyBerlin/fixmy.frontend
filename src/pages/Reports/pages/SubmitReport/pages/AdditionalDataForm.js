@@ -85,7 +85,7 @@ class AdditionalDataForm extends PureComponent {
 
   onPhotoUploadError = (errorMsg) => {
     const isDesktopView = matchMediaSize(breakpoints.m);
-    this.props.addError(`Fehler beim ${isDesktopView ? 'hochladen' : 'aufnehmen'} des Photos: 
+    this.props.addError(`Fehler beim ${isDesktopView ? 'hochladen' : 'aufnehmen'} des Fotos: 
     ${errorMsg}`);
   }
 
