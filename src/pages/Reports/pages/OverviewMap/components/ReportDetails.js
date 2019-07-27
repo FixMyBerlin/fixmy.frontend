@@ -63,10 +63,10 @@ const BikeParkingNeedSection = styled.div`
   align-items: center;
 `;
 
-const BikeParkingTitle = styled.p`
+const IndicatorTitle = styled.p`
   margin: 0;
   padding: 0;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 300;
   line-height: 1.32;
   color: ${config.colors.black};
@@ -79,6 +79,7 @@ const BikeParkingIndicator = styled.div`
   line-height: 1.71;
   text-align: center;
   color: rgba(0, 0, 0, 0.54);
+  white-space: pre-wrap;
 `;
 
 // using an invisible item to align the LikeButton in the middle and the share button right using justify-content: space-between;
@@ -153,10 +154,10 @@ class ReportDetails extends PureComponent {
         </HeadlineSection>
         <Description>{description}</Description>
         <BikeParkingNeedSection>
-          <BikeParkingTitle>Bedarf Fahrradparkhaus</BikeParkingTitle>
+          <IndicatorTitle>Bedarf Fahrradparkhaus</IndicatorTitle>
           <BikeParkingIndicator>{
             details.fee ? `ja,
-            ${details.fee} € / Tag` : 'nein'
+${details.fee} € / Tag` : 'nein'
           }
           </BikeParkingIndicator>
         </BikeParkingNeedSection>
