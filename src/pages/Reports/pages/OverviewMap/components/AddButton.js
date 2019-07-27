@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { Plus } from 'react-feather';
 
 const Button = styled.button`
@@ -7,7 +8,7 @@ const Button = styled.button`
   bottom: 50px;
   left: 0;
   right: 0;
-  margin: auto;
+  margin: ${props => (props.shiftLeft ? '0 auto 0 15%' : 'auto')};
   width: 220px;
   height: 48px;
   border: none;
@@ -41,8 +42,19 @@ const PlusIcon = styled(Plus)`
   box-sizing: content-box;
 `;
 
-export default ({ onTab }) => (
-  <Button onClick={onTab} className="wiggle">
+const AddButton = ({ onTab, shiftLeft }) => (
+  <Button onClick={onTab} className="wiggle" shiftLeft={shiftLeft}>
     <PlusIcon /> Neue Meldung
   </Button>
 );
+
+AddButton.propTypes = {
+  onTab: PropTypes.func.isRequired,
+  shiftLeft: PropTypes.bool // if true, position more to the left to leave space for foldout
+};
+
+AddButton.defaultProps = {
+  shiftLeft: false
+};
+
+export default AddButton;

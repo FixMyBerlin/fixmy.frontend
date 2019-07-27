@@ -10,6 +10,7 @@ import withRouter from 'react-router/withRouter';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';
 import AddButton from './components/AddButton';
@@ -134,8 +135,11 @@ class OverviewMap extends Component {
   }
 
   render() {
-    const { reports, selectedReport, match, token } = this.props;
+    const { reports, selectedReport, match, token, isMenuOpen } = this.props;
     const hasDetailId = match.params.id;
+    const isDesktopView = matchMediaSize(breakpoints.m);
+    const isAddButtonShifted = isDesktopView && hasDetailId && !isMenuOpen;
+    const isAddButtonHidden = isDesktopView && hasDetailId && isMenuOpen;
 
     const mapControls = (
       <Fragment>
@@ -144,7 +148,15 @@ class OverviewMap extends Component {
           onChange={this.onLocationChange}
           customPosition={{ bottom: '105px', right: '7px' }}
         />
-        <AddButton onTab={this.onAddButtonTab} />
+        {
+        !isAddButtonHidden && (
+          <AddButton
+            onTab={this.onAddButtonTab}
+            shiftLeft={isAddButtonShifted}
+          />
+        )
+      }
+
       </Fragment>
     );
 
@@ -207,5 +219,6 @@ const mapDispatchToPros = {
 export default withRouter(connect(state => ({
   selectedReport: state.ReportsState.selectedReport,
   reports: state.ReportsState.reports,
-  token: state.UserState.token
+  token: state.UserState.token,
+  isMenuOpen: state.AppState.isMenuOpen
 }), mapDispatchToPros)(OverviewMap));
