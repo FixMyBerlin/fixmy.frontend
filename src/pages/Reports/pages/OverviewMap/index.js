@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';
 import AddButton from './components/AddButton';
+import FixMyAttribution from './components/FixMyAttribution';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
@@ -142,7 +143,7 @@ class OverviewMap extends Component {
         <LocatorControl
           key="ReportsOverviewMap__LocatorControl"
           onChange={this.onLocationChange}
-          customPosition={{ bottom: '42px', right: '7px' }}
+          customPosition={{ bottom: '105px', right: '7px' }}
         />
         <AddButton onTab={this.onAddButtonTab} />
       </Fragment>
@@ -160,6 +161,7 @@ class OverviewMap extends Component {
             onMove={() => this.onMapMove()}
             selectedReport={selectedReport}
             detailId={match.params.id}
+            zoomControlPosition="top-left"
           />
           {this.state.isLoading ? null : mapControls}
           {(selectedReport && !hasDetailId) && (
@@ -191,6 +193,7 @@ class OverviewMap extends Component {
             }}
           />
         </MapWrapper>
+        <FixMyAttribution>Ein Angebot von FixMyBerlin</FixMyAttribution>
       </MapView>
     );
   }

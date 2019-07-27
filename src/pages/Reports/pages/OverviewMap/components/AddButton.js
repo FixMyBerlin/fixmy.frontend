@@ -18,7 +18,7 @@ const Button = styled.button`
   color: white;
   font-weight: bold;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   padding: 0 20px 0 8px;
   align-items: center;
 
@@ -37,6 +37,8 @@ const Button = styled.button`
 const PlusIcon = styled(Plus)`
   height: 30px;
   width: 30px;
+  padding-right: 14px;
+  box-sizing: content-box;
 `;
 
 export default ({ onTab }) => (

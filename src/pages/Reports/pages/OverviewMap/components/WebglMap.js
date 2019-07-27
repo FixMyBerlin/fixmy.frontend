@@ -13,7 +13,8 @@ class WebglMap extends PureComponent {
     center: PropTypes.array,
     onLoad: PropTypes.func,
     onMove: PropTypes.func,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    zoomControlPosition: PropTypes.string
   }
 
   static defaultProps = {
@@ -21,7 +22,8 @@ class WebglMap extends PureComponent {
     center: null,
     onLoad: () => {},
     onMove: () => {},
-    disabled: false
+    disabled: false,
+    zoomControlPosition: 'bottom-left'
   }
 
   nav = new MapboxGL.NavigationControl({ showCompass: false })
@@ -55,7 +57,7 @@ class WebglMap extends PureComponent {
 
   toggleZoomControl = (isActive) => {
     if (isActive) {
-      this.map.addControl(this.nav, 'bottom-left');
+      this.map.addControl(this.nav, this.props.zoomControlPosition);
     } else {
       this.map.removeControl(this.nav);
     }
