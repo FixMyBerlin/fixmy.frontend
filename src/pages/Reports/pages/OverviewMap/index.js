@@ -13,7 +13,6 @@ import styled from 'styled-components';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';
 import AddButton from './components/AddButton';
-import FixMyAttribution from './components/FixMyAttribution';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
@@ -193,7 +192,6 @@ class OverviewMap extends Component {
             }}
           />
         </MapWrapper>
-        <FixMyAttribution>Ein Angebot von FixMyBerlin</FixMyAttribution>
       </MapView>
     );
   }
