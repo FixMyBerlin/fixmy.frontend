@@ -131,7 +131,7 @@ class AdditionalDataForm extends PureComponent {
               checked={this.state.photoDisclaimerTicked}
               onChange={this.togglePhotoDisclaimerTicked}
             />
-            Hiermit bestätige, dich, dass auf den von mir eingestellten Fotos keine Personen abgebildet sind
+            Hiermit bestätige ich, dass auf den von mir eingestellten Fotos keine Personen abgebildet sind
           </StyledCheckboxLabel>
         </PhotoDisclaimerWrapper>
 
