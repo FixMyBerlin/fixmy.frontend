@@ -49,7 +49,7 @@ class WebglMap extends PureComponent {
     if (center) {
       this.map.easeTo({ center, zoom: selectedMarkerZoomLevel });
     } else if (fitExtentOnPopupClose) {
-        this.map.fitBounds(config.reportsMap.bounds);
+        this.map.fitBounds(config.reports.overviewMap.bounds);
       }
 
     this.toggleMapInteractivity(disabled);

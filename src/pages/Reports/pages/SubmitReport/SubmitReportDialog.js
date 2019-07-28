@@ -37,8 +37,6 @@ const LoaderWrapper = styled.div`
   align-items: center;
 `;
 
-// TODO: dedupe-logic in FormProgressBar Element creation, factor out to function or use some sort of DialogStep HOC
-
 class SubmitReportDialog extends PureComponent {
   componentDidMount() {
     this.props.resetDialogState();

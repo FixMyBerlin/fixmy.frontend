@@ -2,7 +2,7 @@ import ky from 'ky';
 
 export default async ({ lat, lng }) => {
   // form a url following the docs https://docs.mapbox.com/api/search/#reverse-geocoding
-  const searchUrl = config.reportsLocateMeMap.reverseGeocoderUrl
+  const searchUrl = config.reports.locateMeMap.reverseGeocoderUrl
     .replace('{long}', lng)
     .replace('{lat}', lat)
     .concat(`?access_token=${config.map.accessToken}&`)

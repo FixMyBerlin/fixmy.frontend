@@ -108,7 +108,7 @@ class LocateMeMap extends Component {
   };
 
   static async getValidationGeodata() {
-    validationBoundary = await ky.get(`${config.reportsLocateMeMap.boundaryGeodataUrl}`).json();
+    validationBoundary = await ky.get(`${config.reports.locateMeMap.boundaryGeodataUrl}`).json();
   }
 
   constructor(props) {
@@ -228,8 +228,8 @@ class LocateMeMap extends Component {
                   onInputBlur={() => this.setAutocompleteHasFocus(false)}
                   onLocationPick={this.ongeocodeSuccess}
                   onSearchStart={this.ongeocodeUse}
-                  searchStringMinLength={config.reportsLocateMeMap.geocoder.searchStringMinLength}
-                  debounceTime={config.reportsLocateMeMap.geocoder.debounceTime}
+                  searchStringMinLength={config.reports.locateMeMap.geocoder.searchStringMinLength}
+                  debounceTime={config.reports.locateMeMap.geocoder.debounceTime}
                   onError={this.props.addError}
                 />
               </SearchBarWrapper>
@@ -243,7 +243,7 @@ class LocateMeMap extends Component {
 
         <MapWrapper>
           <StyledWebGlMap
-            newLocationZoomLevel={config.reportsLocateMeMap.zoomOnGeocodedLocation}
+            newLocationZoomLevel={config.reports.locateMeMap.zoomOnGeocodedLocation}
             zoomedOut={this.props.tempLocation && !this.props.tempLocation.valid}
             center={this.getCenter()}
             className="locate-me-map"
@@ -265,7 +265,7 @@ class LocateMeMap extends Component {
                   <AddressIndicator className="pass-touch">{this.props.tempLocation.address}</AddressIndicator>
                 )}
                 {this.props.tempLocation && !this.props.tempLocation.valid && (
-                  <InvalidAdressIndicator className="pass-touch">{config.reportsLocateMeMap.outofBoundaryText}</InvalidAdressIndicator>
+                  <InvalidAdressIndicator className="pass-touch">{config.reports.locateMeMap.outofBoundaryText}</InvalidAdressIndicator>
                 )}
               </Fragment>
             )

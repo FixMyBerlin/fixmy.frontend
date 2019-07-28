@@ -31,7 +31,7 @@ class WebglMap extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.maxExtent = this.addPaddingToBounds(config.reportsMap.maxBounds);
+    this.maxExtent = this.addPaddingToBounds(config.reports.overviewMap.maxBounds);
   }
 
   componentDidUpdate(prevProps) {
@@ -58,7 +58,7 @@ class WebglMap extends PureComponent {
   }
 
   addPaddingToBounds = (bounds) => {
-    const PADDING_IN_DEG = config.reportsLocateMeMap.paddingInDegree || 0.2;
+    const PADDING_IN_DEG = config.reports.locateMeMap.paddingInDegree || 0.2;
     const [sw, ne] = bounds;
     const moreSw = sw.map(coord => coord - PADDING_IN_DEG);
     const moreNe = ne.map(coord => coord + PADDING_IN_DEG);

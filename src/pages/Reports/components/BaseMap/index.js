@@ -5,7 +5,7 @@ import MapboxGL from 'mapbox-gl';
 
 import BigLoader from '~/components/BigLoader';
 
-const MB_STYLE_URL = `${config.reportsMap.style}?fresh=true`;
+const MB_STYLE_URL = `${config.reports.overviewMap.style}?fresh=true`;
 MapboxGL.accessToken = MapboxGL.accessToken || config.map.accessToken;
 
 const StyledMap = styled.div`
@@ -22,7 +22,7 @@ class BaseMap extends PureComponent {
   }
 
   static defaultProps = {
-    maxBounds: config.reportsMap.maxBounds,
+    maxBounds: config.reports.overviewMap.maxBounds,
     onLoad: () => {},
     onMove: () => {}
   }
@@ -35,7 +35,7 @@ class BaseMap extends PureComponent {
     this.map = new MapboxGL.Map({
       container: this.root,
       style: MB_STYLE_URL,
-      bounds: config.reportsMap.bounds,
+      bounds: config.reports.overviewMap.bounds,
       maxBounds: this.props.maxBounds
     });
 
