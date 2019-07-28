@@ -22,7 +22,7 @@ import {
 import OverviewMapNavBar from '~/pages/Reports/pages/OverviewMap/components/OverviewMapNavBar';
 import Markdown from '~/pages/Markdown/Markdown';
 import LocateModeChooser from './pages/LocateModeChooser';
-import LocateMeMap from './components/LocateMeMap/LocateMeMap';
+import LocateMeMap from './components/LocateMeMap';
 import BikestandsForm from './pages/BikestandsForm';
 import AdditionalDataForm from './pages/AdditionalDataForm';
 import FormProgressBar from './components/FormProgressBar';
