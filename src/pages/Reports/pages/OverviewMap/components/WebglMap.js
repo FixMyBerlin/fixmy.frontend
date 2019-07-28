@@ -14,7 +14,9 @@ class WebglMap extends PureComponent {
     onLoad: PropTypes.func,
     onMove: PropTypes.func,
     disabled: PropTypes.bool,
-    zoomControlPosition: PropTypes.string
+    zoomControlPosition: PropTypes.string,
+    selectedMarkerZoomLevel: PropTypes.number,
+    fitExtentOnPopupClose: PropTypes.bool
   }
 
   static defaultProps = {
@@ -23,7 +25,9 @@ class WebglMap extends PureComponent {
     onLoad: () => {},
     onMove: () => {},
     disabled: false,
-    zoomControlPosition: 'bottom-left'
+    zoomControlPosition: 'bottom-left',
+    selectedMarkerZoomLevel: 14,
+    fitExtentOnPopupClose: true
   }
 
   nav = new MapboxGL.NavigationControl({ showCompass: false })
@@ -35,13 +39,20 @@ class WebglMap extends PureComponent {
       return false;
     }
 
-    if (this.props.center) {
-      this.map.easeTo({ center: this.props.center, zoom: 14 });
-    } else {
-      this.map.fitBounds(config.reportsMap.bounds);
-    }
+    const {
+      center,
+      disabled,
+      fitExtentOnPopupClose,
+      selectedMarkerZoomLevel
+    } = this.props;
 
-    this.toggleMapInteractivity(this.props.disabled);
+    if (center) {
+      this.map.easeTo({ center, zoom: selectedMarkerZoomLevel });
+    } else if (fitExtentOnPopupClose) {
+        this.map.fitBounds(config.reportsMap.bounds);
+      }
+
+    this.toggleMapInteractivity(disabled);
   }
 
   onLoad(map) {

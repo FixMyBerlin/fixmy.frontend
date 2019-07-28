@@ -173,6 +173,7 @@ class OverviewMap extends Component {
             selectedReport={selectedReport}
             detailId={match.params.id}
             zoomControlPosition="top-left"
+            fitExtentOnPopupClose={false}
           />
           {this.state.isLoading ? null : mapControls}
           {(selectedReport && !hasDetailId) && (
