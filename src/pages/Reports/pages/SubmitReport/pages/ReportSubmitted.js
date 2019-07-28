@@ -162,7 +162,7 @@ class ReportSubmitted extends PureComponent {
         <StyledHeading>Danke, dass du mithilfst Friedrichshain-Kreuzberg radfreundlicher zu machen!</StyledHeading>
         <Text>Deine Meldung ist nun online und wird am 31. Januar dem Bezirksamt übergeben.</Text>
 
-        <MeldungAnzeigenButton onClick={this.revealReportOnMap}>Meldung Anzeigen</MeldungAnzeigenButton>
+        <MeldungAnzeigenButton onClick={this.revealReportOnMap}>Meldung anzeigen</MeldungAnzeigenButton>
         <Text>Schau dir Deine Meldung an und erzähle anderen davon</Text>
 
         {/*
