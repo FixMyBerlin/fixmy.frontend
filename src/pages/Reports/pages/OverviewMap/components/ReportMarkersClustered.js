@@ -42,7 +42,7 @@ function getPinMarker({ markerData, lngLat, selectedReport, detailId }) {
     const isActive = markerData.id.toString() === activeId.toString();
 
     if (!isActive) {
-      el.style.filter = 'brightness(1.1) grayscale(0.4)';
+      el.style.filter = 'brightness(1.15) grayscale(0.7)';
     }
   }
 
