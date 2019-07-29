@@ -71,7 +71,7 @@
     "jsonschema": "^1.2.4",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
-    "mapbox-gl": "^0.51.0",
+    "mapbox-gl": "^1.1.1",
     "object-assign": "^4.1.1",
     "promise": "^8.0.2",
     "prop-types": "^15.6.2",
