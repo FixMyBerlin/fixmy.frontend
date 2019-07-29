@@ -57,7 +57,7 @@ class ReportMarkers extends PureComponent {
         const isActive = d.id.toString() === activeId.toString();
 
         if (!isActive) {
-          el.style.filter = 'brightness(1.1) grayscale(0.4) opacity(0.8)';
+          el.style.filter = 'brightness(1.1) grayscale(0.4)';
         }
       }
 
