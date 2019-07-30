@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import idx from 'idx';
 
-import { media } from '~/styles/utils';
+import { media, matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './WebglMap';
 import StaticMarker from './StaticMarker';
 import PinLocationButton from './PinLocationButton';
@@ -206,7 +206,14 @@ class LocateMeMap extends Component {
     this.setState({ isLoading: false });
   }
 
+  getLocatorControlPosition = ({ isDesktopView }) => (isDesktopView ?
+    { bottom: '100px', right: '15px' } :
+    { bottom: '100px', right: '8px' })
+
   render() {
+    // TODO: simplify usage by keeping getIsDesktopView() within styles util
+    const isDesktopView = matchMediaSize(breakpoints.m);
+
     return (
       <MapView>
 
@@ -250,6 +257,7 @@ class LocateMeMap extends Component {
             onMapDrag={this.onMapMove}
             allowDrag={!this.state.locationPinned}
             onLoad={this.onMapLoad}
+            zoomControlPosition={isDesktopView && 'bottom-right'}
           />
 
           {
@@ -274,14 +282,14 @@ class LocateMeMap extends Component {
         </MapWrapper>
 
         {!this.state.isLoading &&
-        !this.state.autocompleteHasFocus &&
-        (this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
-          <LocatorControl
-            key="ReportsLocateMap__LocatorControl"
-            onChange={this.onlocateMeMarkerUse}
-            customPosition={{ bottom: '100px', right: '15px' }}
-          />
-        )}
+          !this.state.autocompleteHasFocus &&
+          (this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
+            <LocatorControl
+              key="ReportsLocateMap__LocatorControl"
+              onChange={this.onlocateMeMarkerUse}
+              customPosition={this.getLocatorControlPosition(isDesktopView)}
+            />
+          )}
 
         {!this.state.isLoading && !this.state.autocompleteHasFocus && !this.state.locationPinned && (
           <PinLocationButton
