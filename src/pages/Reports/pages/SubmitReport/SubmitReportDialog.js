@@ -25,7 +25,7 @@ import LocateModeChooser from './pages/LocateModeChooser';
 import LocateMeMap from './components/LocateMeMap';
 import BikestandsForm from './pages/BikestandsForm';
 import AdditionalDataForm from './pages/AdditionalDataForm';
-import FormProgressBar from './components/FormProgressBar';
+import FormProgressBar from '~/pages/Reports/pages/SubmitReport/components/FormProgressBar';
 import ReportSubmitted from './pages/ReportSubmitted';
 import BicycleParkingGarageForm from './pages/BicycleParkingGarageForm';
 
@@ -98,7 +98,6 @@ class SubmitReportDialog extends PureComponent {
                 <FormProgressBar
                   stepNumber={1}
                   stepCaption="Ort"
-                  onAbortButtonTap={this.abortDialog}
                 />
               )}
               <LocateMeMap onProceed={proceed} />
@@ -112,7 +111,6 @@ class SubmitReportDialog extends PureComponent {
             <FormProgressBar
               stepNumber={2}
               stepCaption="Details"
-              onAbortButtonTap={this.abortDialog}
             />
             <BikestandsForm onConfirm={(stateNode) => {
               this.props.setBikestandNeeds(stateNode);
@@ -129,7 +127,6 @@ class SubmitReportDialog extends PureComponent {
             <FormProgressBar
               stepNumber={3}
               stepCaption="Fotos und Beschreibung"
-              onAbortButtonTap={this.abortDialog}
             />
             <AdditionalDataForm onConfirm={(formData) => {
               this.props.setAdditionalData(formData);
@@ -147,7 +144,6 @@ class SubmitReportDialog extends PureComponent {
             <FormProgressBar
               stepNumber={4}
               stepCaption="Parkhaus"
-              onAbortButtonTap={this.abortDialog}
             />
             <BicycleParkingGarageForm onConfirm={(dailyRent) => {
               this.props.setDailyRent(dailyRent);
@@ -171,6 +167,7 @@ class SubmitReportDialog extends PureComponent {
             <FormProgressBar
               stepNumber={5}
               stepCaption="Fertig"
+              isLastStep
             />
             <ReportSubmitted reportId={newReport.id} error={error} />
           </Fragment>
