@@ -4,6 +4,7 @@
 // TODO: heavily reduce boiler plate https://redux.js.org/recipes/reducing-boilerplate
 // TODO: use immutability helpers like https://github.com/mweststrate/immer
 // TODO: split uo reducer into subreducers based on the structure of the newReport object
+import { dispatch } from 'redux';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
 import { apiFetchReports, apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
@@ -37,7 +38,7 @@ const SET_SELECTED_REPORT = 'Reports/ReportsDialogState/SET_SELECTED_REPORT';
 const SET_SELECTED_REPORT_POS = 'Reports/ReportsDialogState/SET_SELECTED_REPORT_POS';
 const UNSET_SELECTED_REPORT = 'Reports/ReportsDialogState/UNSET_SELECTED_REPORT';
 
-const initialState = {
+const initialStateBak = {
   reports: [], // existing reports, fetched via API
   selectedReport: null, // currently displayed report item (e.g. on overview map)
   selectedReportPosition: { x: 0, y: 0 }, // projected position of report popup
@@ -53,6 +54,48 @@ const initialState = {
   submitting: false,
   submitted: false
 };
+
+const initialState = {
+  error: { // TODO: use extra reducer that has this object as initialstate and uses its props as default values if none is provided, e.g. if the buttonText is not specified
+    message: null,
+    proceedButton: {
+      buttonText: 'Weiter',
+      callback: dispatch(removeError)
+    }
+  }, 
+  overviewMap: {
+    reports: [], // report items fetched from api
+    selectedReport: null, // an entry within reports
+    selectedReportPosition: { x: 0, y: 0 }, // projected position of report popup
+  },
+  reportDialog: {
+    submitting: false,
+    submitted: false,
+    locationMode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
+    deviceLocation: null, // {lng, lat}
+    geocodeResult: null, // { coords, address }
+    location: null  // holds lngLat, address, a "pinned" property (which indicates the location as submittable) and a "valid" property
+  },
+  reportItem: {
+    address: "Alexandrinenstraße 118, 10969 Berlin",
+    description: "",
+    details: {
+      fee: 2,
+      number: 18,
+      subject: "BIKE_STANDS",
+      placement: "SIDEWALK"
+    },
+    geometry: {
+      type: "Point",
+      coordinates: [13.40061834673159, 52.50075090458924]
+    },
+    id: 2,
+    photo: {
+      copyright: null,
+      src: "https://fmb-aws-bucket.s3.amazonaws.com/photos/4598b3b2-3c4.jpg"
+    }
+  }
+}
 
 // FIXME: write tests!
 
@@ -80,15 +123,15 @@ export function handleGeocodeSuccess({ coords, address }) {
   return { type: GEOCODE_DONE, payload: { coords, address } };
 }
 
-// TODO: unify syntax used here
+// TODO: unify syntax used here, use functions
 export const addError = error => ({
   type: ADD_ERROR,
   error
 });
 
-export const removeError = () => ({
-  type: REMOVE_ERROR
-});
+export function removeError() {
+  return { type: REMOVE_ERROR };
+}
 
 export const setBikestandNeeds = formData => ({
   type: SET_BIKESTAND_NEEDS,
