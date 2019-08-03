@@ -62,37 +62,44 @@ const initialState = {
       buttonText: 'Weiter',
       callback: dispatch(removeError)
     }
-  }, 
+  },
   overviewMap: {
     reports: [], // report items fetched from api
     selectedReport: null, // an entry within reports
     selectedReportPosition: { x: 0, y: 0 }, // projected position of report popup
   },
   reportDialog: {
-    submitting: false,
-    submitted: false,
     locationMode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
     deviceLocation: null, // {lng, lat}
     geocodeResult: null, // { coords, address }
-    location: null  // holds lngLat, address, a "pinned" property (which indicates the location as submittable) and a "valid" property
-  },
-  reportItem: {
-    address: "Alexandrinenstraße 118, 10969 Berlin",
-    description: "",
-    details: {
-      fee: 2,
-      number: 18,
-      subject: "BIKE_STANDS",
-      placement: "SIDEWALK"
+    location: {
+      lngLat: null,
+      adress: '',
+      pinned: false,
+      valid
     },
-    geometry: {
-      type: "Point",
-      coordinates: [13.40061834673159, 52.50075090458924]
+    submitStatus: {
+      submitting: false,
+      submitted: false,
     },
-    id: 2,
-    photo: {
-      copyright: null,
-      src: "https://fmb-aws-bucket.s3.amazonaws.com/photos/4598b3b2-3c4.jpg"
+    reportItem: {
+      address: "Alexandrinenstraße 118, 10969 Berlin",
+      description: "",
+      details: {
+        fee: 2,
+        number: 18,
+        subject: "BIKE_STANDS",
+        placement: "SIDEWALK"
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [13.40061834673159, 52.50075090458924]
+      },
+      id: 2,
+      photo: {
+        copyright: null,
+        src: "https://fmb-aws-bucket.s3.amazonaws.com/photos/4598b3b2-3c4.jpg"
+      }
     }
   }
 }
@@ -373,20 +380,20 @@ export default function ReportsReducer(state = initialState, action = {}) {
           }
         }
       };
-      case SET_DAILY_RENT:
-          return {
-            ...state,
-            newReport: {
-              ...state.newReport,
-              what: {
-                ...state.newReport.what,
-                bikestands: {
-                    ...state.newReport.what.bikestands,
-                    paymentReservesBikePark: action.dailyRent
-                }
-              }
+    case SET_DAILY_RENT:
+      return {
+        ...state,
+        newReport: {
+          ...state.newReport,
+          what: {
+            ...state.newReport.what,
+            bikestands: {
+              ...state.newReport.what.bikestands,
+              paymentReservesBikePark: action.dailyRent
             }
-          };
+          }
+        }
+      };
     case SUBMIT_REPORT:
       return { ...state, submitting: true };
     case SUBMIT_REPORT_SUCCESS:
