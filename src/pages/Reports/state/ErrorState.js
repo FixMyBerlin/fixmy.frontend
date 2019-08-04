@@ -1,57 +1,44 @@
-// TODO: add unit tests for reducer
-// TODO: keep and submit address elements (street, number, ..) in seperate attributes
-// TODO: heavily reduce boiler plate https://redux.js.org/recipes/reducing-boilerplate
-// TODO: use immutability helpers like https://github.com/mweststrate/immer
+// action types
 
-
-// action constants
-
-const ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
-const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
+export const ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
+export const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
 
 // action creators
 
-export function addError(error){
+export const addError = ({
+  message = 'Ein Fehler ist aufgetreten',
+  proceedButtonText = null,
+  proceedButtonCallback = null
+} = {}) => ({
   type: ADD_ERROR,
-  error
-};
+  error: { message, proceedButtonText, proceedButtonCallback }
+});
+
+export const removeError = () => ({
+  type: REMOVE_ERROR
+})
 
 // reducer
 
 const initialState = {
-  error: { // TODO: use extra reducer that has this object as initialstate and uses its props as default values if none is provided, e.g. if the buttonText is not specified
-    message: null,
-    proceedButton: {
-      buttonText: 'Weiter',
-      callback: dispatch(removeError)
-    }
-  },
+  message: null,
+  proceedButtonText: null,
+  proceedButtonCallback: null
 }
 
-function ReportsReducer(state = initialState, action = {}) {
+export default function ReportsReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case SUBMIT_REPORT_ERROR:
+    case ADD_ERROR:
       return {
         ...state,
-        submitting: false,
-        error: {
-          message: action.error
-        }
+        message: action.error.message,
+        proceedButtonText: action.error.proceedButtonText,
+        proceedButtonCallback: action.error.proceedButtonCallback
       };
-      case ADD_ERROR:
-        return {
-          ...state,
-          error: {
-            message: action.error
-          }
-        };
-      case REMOVE_ERROR:
-        return {
-          ...state,
-          error: {
-            message: null
-          }
-        };
+    case REMOVE_ERROR:
+      return {
+        ...initialState
+      };
     default:
       return { ...state };
   }
