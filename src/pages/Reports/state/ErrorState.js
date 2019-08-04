@@ -1,10 +1,3 @@
-import { combineReducers } from 'redux';
-
-/**
- * Manages page-wide state (e.g. for errors that occur anywhere within the
- * Reports feature) and combines reducers for subpages (SubmitReoprt, OverviewMap).
- */
-
 // TODO: add unit tests for reducer
 // TODO: keep and submit address elements (street, number, ..) in seperate attributes
 // TODO: heavily reduce boiler plate https://redux.js.org/recipes/reducing-boilerplate
