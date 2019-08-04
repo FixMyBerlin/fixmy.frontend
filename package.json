@@ -5,7 +5,9 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
     "deploy": "npm run build && netlify deploy",
-    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "repository": {
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
@@ -22,6 +24,7 @@
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.3.1",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-idx": "^2.4.0",
     "babel-plugin-styled-components": "^1.9.2",
@@ -42,6 +45,7 @@
     "fetch-mock": "^7.3.1",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^4.0.0-beta.2",
+    "jest": "^24.8.0",
     "mini-css-extract-plugin": "^0.4.5",
     "postcss-loader": "^3.0.0",
     "react-svg-loader": "^2.1.0",
