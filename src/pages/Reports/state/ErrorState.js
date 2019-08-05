@@ -11,7 +11,8 @@ export const addError = ({
   proceedButtonCallback = null
 } = {}) => ({
   type: ADD_ERROR,
-  error: { message, proceedButtonText, proceedButtonCallback }
+  error: true,
+  payload: { message, proceedButtonText, proceedButtonCallback }
 });
 
 export const removeError = () => ({
@@ -26,14 +27,14 @@ const initialState = {
   proceedButtonCallback: null
 }
 
-export default function ReportsReducer(state = initialState, action = {}) {
-  switch (action.type) {
+export default function ReportsReducer(state = initialState, { type, payload } = {}) {
+  switch (type) {
     case ADD_ERROR:
       return {
         ...state,
-        message: action.error.message,
-        proceedButtonText: action.error.proceedButtonText,
-        proceedButtonCallback: action.error.proceedButtonCallback
+        message: payload.message,
+        proceedButtonText: payload.proceedButtonText,
+        proceedButtonCallback: payload.proceedButtonCallback
       };
     case REMOVE_ERROR:
       return {
