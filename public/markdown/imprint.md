@@ -2,7 +2,7 @@
 FixMyCity GmbH<br />
 Karlsgartenstraße 12<br />
 12049 Berlin<br />
-E-Mail-Adresse: [hello@fixmycity.de](mailto:hello@fixmyberlin.de)<br />
+E-Mail-Adresse: [hello@fixmycity.de](mailto:hello@fixmycity.de)<br />
 
 Gesellschafter: Boris Hekele und Heiko Rintelen
 
