@@ -2,7 +2,7 @@
 
 ### Ansprechpartner
 Ansprechpartner für die Presse: <br>
-Heiko Rintelen [presse@fixmyberlin.de](mailto:presse@fixmyberlin.de)
+Heiko Rintelen [presse@fixmycity.de](mailto:presse@fixmycity.de)
 
 ### Einbettung der Website (kostenfrei)
 https://embed.fixmyberlin.de

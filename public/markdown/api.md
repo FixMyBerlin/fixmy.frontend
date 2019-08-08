@@ -23,4 +23,4 @@ Zur [API für Planungsabschnitte inkl. Happy-Bike-Index](https://api.fixmyberlin
 
 Genaue Dokumentation aller Werte folgt.
 
-Bei gesonderter Lizenzierung schreib bitte an [hello@fixmyberlin.de](mailto:hello@fixmyberlin.de)
+Bei gesonderter Lizenzierung schreib bitte an [hello@fixmycity.de](mailto:hello@fixmycity.de)

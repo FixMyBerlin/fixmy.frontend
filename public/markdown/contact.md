@@ -1,7 +1,7 @@
 # Feedback / Kontakt
 
 Wir freuen uns über Kommentare Anregungen und Unterstützung:
-schick uns ein Nachricht an [feedback@fixmyberlin.de](mailto:feedback@fixmyberlin.de)
+schick uns ein Nachricht an [feedback@fixmycity.de](mailto:feedback@fixmycity.de)
 
 Oder folge uns auf [Twitter](https://twitter.com/fixmyberlin)
 

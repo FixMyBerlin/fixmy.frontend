@@ -2,10 +2,10 @@
 ** Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von personenbezogenen Daten (nachfolgend kurz „Daten“) innerhalb unseres Onlineangebotes und der mit ihm verbundenen Webseiten, Funktionen und Inhalte sowie externen Onlinepräsenzen, wie z.B. unserer Social Media Profile auf. (nachfolgend gemeinsam bezeichnet als „Onlineangebot“). Im Hinblick auf die verwendeten Begrifflichkeiten, wie z.B. „Verarbeitung“ oder „Verantwortlicher“ verweisen wir auf die Definitionen im Art. 4 der Datenschutzgrundverordnung (DSGVO).**
 
 ## Verantwortlicher
-FixMyBerlin GbR<br />
-℅ Pulsraum<br />
-Kottbusser Damm 25/26<br />
-E-Mail-Adresse: [hello@fixmyberlin.de](mailto:hello@fixmyberlin.de)<br />
+FixMyCity GmbH<br />
+Karlsgartenstraße 12<br />
+12049 Berlin<br />
+E-Mail-Adresse: [hello@fixmycity.de](mailto:hello@fixmycity.de)<br />
 [Impressum](/impressum)
 
 ## Arten der verarbeiteten Daten:
