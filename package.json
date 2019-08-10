@@ -6,10 +6,10 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
     "deploy": "npm run build && netlify deploy",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js",
-    "test": "jest --verbose --coverage",
-    "test:update": "jest --verbose --coverage --updateSnapshot",
-    "test:watch": "jest --verbose --watch",
-    "coverage": "jest --verbose --coverage && open ./coverage/lcov-report/index.html"
+    "test": "jest --verbose --config=jest/jest.config.js",
+    "test:update": "npm run test -- --coverage --updateSnapshot",
+    "test:watch": "npm run test  -- --watch",
+    "coverage": "npm run test -- --coverage && open ./coverage/lcov-report/index.html"
   },
   "repository": {
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
@@ -43,6 +43,7 @@
     "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-loader": "^2.1.1",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.15.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "fetch-mock": "^7.3.1",
@@ -52,6 +53,7 @@
     "mini-css-extract-plugin": "^0.4.5",
     "postcss-loader": "^3.0.0",
     "react-svg-loader": "^2.1.0",
+    "redux-mock-store": "^1.5.3",
     "style-loader": "^0.23.1",
     "terser-webpack-plugin": "^1.2.3",
     "webpack": "^4.26.1",
