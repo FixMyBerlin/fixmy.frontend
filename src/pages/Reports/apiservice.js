@@ -9,8 +9,6 @@ if (process.env.NODE_ENV === 'development' && config.mockReportsApi) {
   setUpMocking();
 }
 
-const ROUTE = 'reports';
-
 export async function apiSubmitReport(json) {
   return handleSubmitRequest({ json });
 }
@@ -19,15 +17,18 @@ export async function apiFetchReports() {
   return handleFetchReports({});
 }
 
+
+export const reportsEndpointUrl = config.apiUrl + config.reports.apiRoute || '/reports';
+
 // copied from User\apiservice TODO: factor out, de-dupe
 async function handleSubmitRequest({ method = 'POST', json = {}, token = false }, respType = 'json') {
   let response = {};
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   try {
     if (respType) {
-      response = await ky(`${config.apiUrl}/${ROUTE}`, { method, json, headers })[respType]();
+      response = await ky(reportsEndpointUrl, { method, json, headers })[respType]();
     } else {
-      await ky(`${config.apiUrl}/${ROUTE}`, { method, json, headers });
+      await ky(reportsEndpointUrl, { method, json, headers });
     }
   } catch (e) {
     response.error = await e.response.json();
@@ -40,7 +41,7 @@ async function handleFetchReports({ method = 'GET', token = false }, respType = 
   let response = {};
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   try {
-      response = await ky(`${config.apiUrl}/${ROUTE}`, { method, headers })[respType]();
+      response = await ky(reportsEndpointUrl, { method, headers })[respType]();
   } catch (e) {
     response.error = await e.response.json();
   }
