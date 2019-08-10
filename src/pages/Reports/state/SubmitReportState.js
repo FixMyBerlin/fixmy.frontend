@@ -1,7 +1,6 @@
-import { dispatch } from 'redux';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
-import { apiFetchReports, apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
+import { apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
 import booleanWithin from '@turf/boolean-within';
 
 // action constants
@@ -40,8 +39,6 @@ export function setLocationMode(mode) {
   return { type: SET_LOCATION_MODE, mode };
 }
 
-
-
 export function setTempLocationLngLat({ lng, lat }) {
   return { type: SET_TEMP_LOCATION_LNG_LAT, payload: { lng, lat } };
 }
@@ -62,11 +59,8 @@ export function handleGeocodeSuccess({ coords, address }) {
   return { type: GEOCODE_DONE, payload: { coords, address } };
 }
 
-
-
-export function removeError() {
-  return { type: REMOVE_ERROR };
-}
+// TODO: unify syntac
+// TODO: 
 
 export const setBikestandNeeds = formData => ({
   type: SET_BIKESTAND_NEEDS,

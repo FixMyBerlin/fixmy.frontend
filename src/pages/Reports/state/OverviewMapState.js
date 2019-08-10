@@ -1,30 +1,34 @@
 import { dispatch } from 'redux';
 
-// actions constants
+import { asyncActionCreator } from './utils';
+import { apiFetchReports } from '../apiService';
+import { ADD_ERROR } from './ErrorState';
 
-const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
-const SET_SELECTED_REPORT_POS = 'Reports/OverviewMapState/SET_SELECTED_REPORT_POS';
-const UNSET_SELECTED_REPORT = 'Reports/OverviewMapState/UNSET_SELECTED_REPORT';
-const SET_SELECTED_REPORT = 'Reports/OverviewMapState/SET_SELECTED_REPORT';
-
-// action creators
-
-
-
-export function setSelectedReportPosition(selectedReportPosition) {
-    return { type: SET_SELECTED_REPORT_POS, selectedReportPosition };
+const types = {
+    REPORTS_FETCH_PENDING: 'Reports/OverviewMapState/REPORTS_FETCH_PENDING',
+    REPORTS_FETCH_COMPLETE: 'Reports/OverviewMapState/REPORTS_FETCH_COMPLETE',
+    SET_SELECTED_REPORT: 'Reports/OverviewMapState/SET_SELECTED_REPORT',
+    SET_SELECTED_REPORT_POS: 'Reports/OverviewMapState/SET_SELECTED_REPORT_POS',
 }
 
 
+
+const actions = {}
+
+actions.setSelectedReportPosition = ({ x = 0, y = 0 }) => ({
+    type: SET_SELECTED_REPORT_POS,
+    payload: { x, y }
+})
+
 // thunks
 
-export function loadReportsData() {
+actions.loadReportsData = () => {
     return async (dispatch) => {
         await loadReportsDataInner(dispatch);
     };
 }
 
-export function setSelectedReport(selectedReport) {
+actions.setSelectedReport = (selectedReport) => {
     return async (dispatch, getState) => {
         const { reports } = getState().ReportsState;
 
@@ -32,9 +36,19 @@ export function setSelectedReport(selectedReport) {
             await loadReportsDataInner(dispatch);
         }
 
-        dispatch({ type: SET_SELECTED_REPORT, selectedReport });
+        dispatch({
+            type: SET_SELECTED_REPORT,
+            payload: selectedReport || null
+        });
     };
 }
+
+const loadReportsDataInner = asyncActionCreator({
+    pending: types.REPORTS_FETCH_PENDING,
+    complete: types.REPORTS_FETCH_COMPLETE,
+    error: types.ADD_ERROR,
+},
+    () => apiFetchReports)
 
 // reducer
 
@@ -44,23 +58,24 @@ const initialState = {
     selectedReportPosition: { x: 0, y: 0 }, // projected position of report popup
 }
 
-export default function (state = initialState, action = {}) {
-    switch (action.type) {
-        case SET_REPORT_DATA:
-            return { ...state, reports: action.payload };
-        case SET_SELECTED_REPORT:
+export default function (state = initialState, { type, payload } = {}) {
+    switch (type) {
+        case types.REPORTS_FETCH_COMPLETE:
+            return { ...state, reports: payload };
+        case types.SET_SELECTED_REPORT:
             return {
-                ...state, selectedReport: action.selectedReport || null
+                ...state, selectedReport: payload
             };
-        case SET_SELECTED_REPORT_POS:
+        case types.SET_SELECTED_REPORT_POS:
             return {
-                ...state, selectedReportPosition: action.selectedReportPosition || { x: 0, y: 0 }
-            };
-        case UNSET_SELECTED_REPORT:
-            return {
-                ...state, selectedReport: null
+                ...state, selectedReportPosition: payload
             };
         default:
             return { ...state };
     }
+}
+
+export {
+    actions, 
+    types
 }
