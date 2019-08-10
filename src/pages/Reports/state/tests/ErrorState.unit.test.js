@@ -1,16 +1,16 @@
-import reducer, * as actions from './ErrorState';
+import reducer, * as actions from '../ErrorState';
 
 const initialState = {
   message: null,
   proceedButtonText: null,
   proceedButtonCallback: null
-}
+};
 
 describe('error reducer', () => {
   it('returs the initial state for an empty action', () => {
     expect(reducer(undefined, {}))
-    .toMatchObject(initialState)
-  })
+    .toMatchObject(initialState);
+  });
 
   it('adds an error with a default message ' +
     'with no further details about the error', () => {
@@ -22,8 +22,8 @@ describe('error reducer', () => {
           proceedButtonText: null,
           proceedButtonCallback: null
         }
-      )
-    })
+      );
+    });
 
   it('adds an error with a custom message', () => {
     const MESSAGE = 'Standortsuche fehlgeschlagen';
@@ -37,8 +37,8 @@ describe('error reducer', () => {
         proceedButtonText: null,
         proceedButtonCallback: null
       }
-    )
-  })
+    );
+  });
 
   it('adds an error with a custom ProceedButton spec', () => {
     const MESSAGE = 'Standortsuche fehlgeschlagen';
@@ -56,8 +56,8 @@ describe('error reducer', () => {
         proceedButtonText: LABEL,
         proceedButtonCallback: FUNC
       }
-    )
-  })
+    );
+  });
 
   it('adds an error with a custom ProceedButton spec', () => {
     const MESSAGE = 'Standortsuche fehlgeschlagen';
@@ -75,12 +75,12 @@ describe('error reducer', () => {
         proceedButtonText: LABEL,
         proceedButtonCallback: FUNC
       }
-    )
-  })
+    );
+  });
 
   it('removes an error', () => {
     expect(
       reducer(undefined, actions.removeError())
-    ).toMatchObject(initialState)
-  })
-})
+    ).toMatchObject(initialState);
+  });
+});

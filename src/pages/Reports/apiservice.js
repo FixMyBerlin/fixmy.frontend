@@ -45,9 +45,7 @@ async function handleFetchReports({ method = 'GET', token = false }, respType = 
   } catch (e) {
     response.error = await e.response.json();
   }
-  return {
-    payload: response
-  };
+  return response;
 }
 
 /**
