@@ -6,8 +6,10 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
     "deploy": "npm run build && netlify deploy",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js",
-    "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test": "jest --verbose --coverage",
+    "test:update": "jest --verbose --coverage --updateSnapshot",
+    "test:watch": "jest --verbose --watch",
+    "coverage": "jest --verbose --coverage && open ./coverage/lcov-report/index.html"
   },
   "repository": {
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
@@ -28,6 +30,7 @@
     "babel-loader": "^8.0.4",
     "babel-plugin-idx": "^2.4.0",
     "babel-plugin-styled-components": "^1.9.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.20",
     "babel-preset-minify": "^0.5.0",
     "clean-webpack-plugin": "^1.0.0",
