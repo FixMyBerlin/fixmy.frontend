@@ -74,9 +74,12 @@ const SearchBarWrapper = styled.div`
 `;
 
 const AddressIndicator = styled.div`
+  background-color: rgba(255,255,255,0.7);
+  padding: 6px;
+  border-radius: 2px;
   font-size: 12px;
   width: 200px;
-  height: 100px;
+  height: fit-content;
   color: ${config.colors.black};
   z-index: 99999999999999;
   text-align: center;
