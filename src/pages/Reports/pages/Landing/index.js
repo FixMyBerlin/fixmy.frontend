@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
-import TopSection from './components/TopSection';
-import Divider from './components/Divider';
+import TopSection from './components/TopSection/index';
 import JoinButton from './components/JoinButton';
 import HowItWorksSection from './components/HowItWorksSection';
 import Quote from './components/Quote';
@@ -24,7 +23,6 @@ export default () => (
   <Fragment>
     <TopSection toUrl={`${config.routes.reports.map}`} />
     <ContentWrapper>
-      <Divider />
       <HowItWorksSection />
       <JoinButton />
       <Quote />
