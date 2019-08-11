@@ -8,23 +8,30 @@ import { types as errorStateTypes } from '../ErrorState';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import reportSample from './mocks/reportsSample';
 
-
+// mocking
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-const initialState = {
-  reports: [],
-  selectedReport: null,
-  selectedReportPosition: { x: 0, y: 0 }
+const mockedReportsData = reportSample.slice(0, 5);
+const mockFetchReports = () => {
+  fetchMock.getOnce(reportsEndpointUrl, {
+    body: mockedReportsData,
+    headers: { 'content-type': 'application/json' }
+  });
 };
 
 describe('overviewMapState reducer', () => {
+  const initialState = {
+    reports: [],
+    selectedReport: null,
+    selectedReportPosition: { x: 0, y: 0 }
+  };
   it('returs the initial state for an empty action', () => {
     expect(reducer(undefined, {}))
       .toMatchObject(initialState);
   });
 
-  it('sets the position of a selected report', () => {
+  it('sets the popup display position of a selected report', () => {
     const pixelPositxion = { x: 50, y: 100 };
     expect(reducer({}, actions.setSelectedReportPosition(pixelPositxion)))
       .toEqual(
@@ -41,14 +48,9 @@ describe('overviewMapState reducer', () => {
       fetchMock.restore();
     });
 
-    const mockedReportsData = reportSample.slice(0, 5);
 
+    mockFetchReports();
     it('fetches reports and creates REPORTS_FETCH_COMPLETE', () => {
-      // set up mocked api response
-      fetchMock.getOnce(reportsEndpointUrl, {
-        body: mockedReportsData,
-        headers: { 'content-type': 'application/json' }
-      });
       const expectedActions = [
         { type: types.REPORTS_FETCH_PENDING },
         {
@@ -64,17 +66,49 @@ describe('overviewMapState reducer', () => {
     });
 
     it('fails to fetch reports and creates ADD_ERROR', () => {
+      console.error = jest.fn(); // mute provoked console.error
+
       fetchMock.getOnce(reportsEndpointUrl, { throws: new HTTPError('some error') });
       const expectedActionTypes = [ // do not mind the action payloads here
         types.REPORTS_FETCH_PENDING,
         errorStateTypes.ADD_ERROR
       ];
       const store = mockStore({});
-      return store.dispatch(actions.loadReportsData()).then(() => {
-        expect(
-          store.getActions()
-            .map(action => action.type)
-        )
+      return store.dispatch(actions.loadReportsData())
+      .then(() => {
+        expect(store.getActions().map(action => action.type))
+        .toEqual(expectedActionTypes);
+      });
+    });
+
+    it('sets the selectedReport if reports have been fetched already', () => {
+      const reportItem = { some: 'content' };
+      const expectedActions = [{
+        type: types.SET_SELECTED_REPORT,
+        payload: reportItem
+      }];
+
+      const store = mockStore({ reports: [reportItem] });
+      return store.dispatch(actions.setSelectedReport(reportItem))
+      .then(() => {
+        expect(store.getActions())
+        .toEqual(expectedActions);
+      });
+    });
+
+    it('sets the selectedReport and - if no reports have been fetched yet - fetches the reports before', () => {
+      const reportItem = { some: 'other content' };
+      const expectedActionTypes = [
+        types.REPORTS_FETCH_PENDING,
+        types.REPORTS_FETCH_COMPLETE,
+        types.SET_SELECTED_REPORT
+      ];
+
+      mockFetchReports();
+      const store = mockStore({ reports: [] });
+      return store.dispatch(actions.setSelectedReport(reportItem))
+      .then(() => {
+        expect(store.getActions().map(action => action.type))
         .toEqual(expectedActionTypes);
       });
     });

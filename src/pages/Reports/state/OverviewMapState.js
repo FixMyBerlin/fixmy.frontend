@@ -26,7 +26,7 @@ actions.loadReportsData = () => async (dispatch) => {
   };
 
 actions.setSelectedReport = selectedReport => async (dispatch, getState) => {
-  const { reports } = getState().ReportsState;
+  const { reports } = getState();
 
   if (!reports.length) {
     await loadReportsThunk(dispatch);
