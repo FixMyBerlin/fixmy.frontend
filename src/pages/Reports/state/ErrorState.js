@@ -1,23 +1,26 @@
+const actions = {};
+const types = {};
+
 // action types
 
-export const ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
-export const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
+types.ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
+types.REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
 
 // action creators
 
-export const addError = ({
+actions.addError = ({
   message = 'Ein Fehler ist aufgetreten',
   proceedButtonText = null,
   proceedButtonCallback = null
 } = {}) => ({
-  type: ADD_ERROR,
+  type: types.ADD_ERROR,
   error: true,
   payload: { message, proceedButtonText, proceedButtonCallback }
 });
 
-export const removeError = () => ({
-  type: REMOVE_ERROR
-})
+actions.removeError = () => ({
+  type: types.REMOVE_ERROR
+});
 
 // reducer
 
@@ -25,18 +28,18 @@ const initialState = {
   message: null,
   proceedButtonText: null,
   proceedButtonCallback: null
-}
+};
 
-export default function ReportsReducer(state = initialState, { type, payload } = {}) {
+function reducer(state = initialState, { type, payload } = {}) {
   switch (type) {
-    case ADD_ERROR:
+    case types.ADD_ERROR:
       return {
         ...state,
         message: payload.message,
         proceedButtonText: payload.proceedButtonText,
         proceedButtonCallback: payload.proceedButtonCallback
       };
-    case REMOVE_ERROR:
+    case types.REMOVE_ERROR:
       return {
         ...initialState
       };
@@ -44,3 +47,10 @@ export default function ReportsReducer(state = initialState, { type, payload } =
       return { ...state };
   }
 }
+
+export {
+  actions,
+  types
+};
+
+export default reducer;

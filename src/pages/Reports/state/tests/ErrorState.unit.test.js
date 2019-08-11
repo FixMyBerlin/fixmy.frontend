@@ -1,4 +1,4 @@
-import reducer, * as actions from '../ErrorState';
+import reducer, { actions } from '../ErrorState';
 
 const initialState = {
   message: null,
@@ -7,7 +7,7 @@ const initialState = {
 };
 
 describe('error reducer', () => {
-  it('returs the initial state for an empty action', () => {
+  it('returns the initial state for an empty action', () => {
     expect(reducer(undefined, {}))
     .toMatchObject(initialState);
   });
@@ -59,28 +59,9 @@ describe('error reducer', () => {
     );
   });
 
-  it('adds an error with a custom ProceedButton spec', () => {
-    const MESSAGE = 'Standortsuche fehlgeschlagen';
-    const LABEL = 'Ort erneut eingeben';
-    const FUNC = () => 1 + 2;
-    expect(
-      reducer(undefined, actions.addError({
-        message: MESSAGE,
-        proceedButtonText: LABEL,
-        proceedButtonCallback: FUNC
-      }))
-    ).toEqual(
-      {
-        message: MESSAGE,
-        proceedButtonText: LABEL,
-        proceedButtonCallback: FUNC
-      }
-    );
-  });
-
   it('removes an error', () => {
     expect(
-      reducer(undefined, actions.removeError())
+      reducer({ message: 'some error' }, actions.removeError())
     ).toMatchObject(initialState);
   });
 });

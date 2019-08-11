@@ -2,8 +2,8 @@ import fetchMock from 'fetch-mock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import reducer, { types, actions } from '../OverviewMapState'; // TODO: unify reducer structure
-import { ADD_ERROR } from '../ErrorState';
+import reducer, { types, actions } from '../OverviewMapState';
+import { types as errorStateTypes } from '../ErrorState';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import reportSample from './mocks/reportsSample';
 

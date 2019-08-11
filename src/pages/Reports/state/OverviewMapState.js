@@ -5,12 +5,14 @@ import { ADD_ERROR } from './ErrorState';
 const actions = {};
 const types = {};
 
+// action types
 
 types.REPORTS_FETCH_PENDING = 'Reports/OverviewMapState/REPORTS_FETCH_PENDING';
 types.REPORTS_FETCH_COMPLETE = 'Reports/OverviewMapState/REPORTS_FETCH_COMPLETE';
 types.SET_SELECTED_REPORT = 'Reports/OverviewMapState/SET_SELECTED_REPORT';
 types.SET_SELECTED_REPORT_POS = 'Reports/OverviewMapState/SET_SELECTED_REPORT_POS';
 
+// action creators
 
 actions.setSelectedReportPosition = ({ x = 0, y = 0 }) => ({
   type: types.SET_SELECTED_REPORT_POS,
@@ -54,7 +56,7 @@ const initialState = {
   selectedReportPosition: { x: 0, y: 0 } // projected position of report popup
 };
 
-export default function (state = initialState, { type, payload } = {}) {
+function reducer(state = initialState, { type, payload } = {}) {
   switch (type) {
     case types.REPORTS_FETCH_COMPLETE:
       return { ...state, reports: payload };
@@ -75,3 +77,5 @@ export {
   actions,
   types
 };
+
+export default reducer;
