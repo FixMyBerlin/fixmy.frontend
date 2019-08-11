@@ -1,11 +1,13 @@
 import fetchMock from 'fetch-mock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { HTTPError } from 'ky';
 
 import reducer, { types, actions } from '../OverviewMapState';
 import { types as errorStateTypes } from '../ErrorState';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import reportSample from './mocks/reportsSample';
+
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -61,8 +63,20 @@ describe('overviewMapState reducer', () => {
       });
     });
 
-    it('fails to fetch reports and creates REPORTS_FETCH_COMPLETE', () => {
-
+    it('fails to fetch reports and creates ADD_ERROR', () => {
+      fetchMock.getOnce(reportsEndpointUrl, { throws: new HTTPError('some error') });
+      const expectedActionTypes = [ // do not mind the action payloads here
+        types.REPORTS_FETCH_PENDING,
+        errorStateTypes.ADD_ERROR
+      ];
+      const store = mockStore({});
+      return store.dispatch(actions.loadReportsData()).then(() => {
+        expect(
+          store.getActions()
+            .map(action => action.type)
+        )
+        .toEqual(expectedActionTypes);
+      });
     });
   });
 });

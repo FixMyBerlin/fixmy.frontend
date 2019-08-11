@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import { apiFetchReports } from '../apiService';
-import { ADD_ERROR } from './ErrorState';
+import { actions as errorStateActions } from './ErrorState';
 
 const actions = {};
 const types = {};
@@ -45,7 +45,11 @@ async function loadReportsThunk(dispatch) {
     const reportData = await apiFetchReports();
     dispatch({ type: types.REPORTS_FETCH_COMPLETE, payload: reportData });
   } catch (e) {
-    dispatch(ADD_ERROR, 'Fehler beim Laden der Meldungen');
+    const message = 'Fehler beim Laden der Meldungen';
+    console.error(`${message}: ${e}`);
+    dispatch(errorStateActions.addError({
+      message
+    }));
   }
 }
 // reducer
