@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import TopSection from './components/TopSection/index';
 import JoinButton from './components/JoinButton';
-import HowItWorksSection from './components/HowItWorksSection';
+import HowItWorksSection from './components/HowItWorksSecion';
 import Quote from './components/Quote';
 import Faq from './components/Faq';
 import Footer from '~/components/Menu/MenuFooter';

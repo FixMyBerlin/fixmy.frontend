@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import BikeIcon from '~/images/reports/noun-bicycle.svg';
 import { media } from '~/styles/utils';
-import List from '~/components/List';
+import Steps from './Steps';
 
 const StyledSection = styled.section`
   display: flex;
@@ -40,6 +40,26 @@ const StyledQuestion = styled.p`
   line-height: 1.37;
 `;
 
+const stepsConfig = [
+  {
+    step: 1,
+    text: 'Alle Berliner:innen können melden wo neue Bügel benötigt werden.',
+    color: config.colors.interaction // TODO: use actual colors
+  }, {
+    step: 2,
+    text: 'Alle Meldungen, die bis zum 15. September eingehen, übergeben wir gesammelt an den Bezirk.',
+    color: '#ff99d5' // TODO: add to colors config
+  }, {
+    step: 3,
+    text: 'Die Meldungen werden vom Bezirksamt geprüft.',
+    color: '#cf0a7d' // TODO: add to colors config
+  }, {
+    step: 4,
+    text: 'Sofern sie umsetzbar sind, werden sie noch in diesem Jahr installiert.',
+    color: config.colors.black
+  }
+];
+
 export default () => (
   <StyledSection>
     <Headline>
@@ -48,11 +68,6 @@ export default () => (
     </Headline>
     <StyledIcon alt="Icon Fahrradparkplätze" />
     <StyledQuestion>Wie läuft das ab?</StyledQuestion>
-    <List>
-      <List.ListItem>Meldet uns bis zum 31. Januar 2018 wo Fahrradbügel benötigt sind (das dauert ca. 30 Sekunden)</List.ListItem>
-      <List.ListItem>Wir sammeln alle Meldungen und übergeben diese dem Bezirk.</List.ListItem>
-      <List.ListItem>Die Meldungen werden geprüft und sofern umsetzbar nach und nach vom Bezirk abgearbeitet.</List.ListItem>
-      <List.ListItem>Alle Meldungen bekommen öffentliches Feedback auf der Plattform</List.ListItem>
-    </List>
+    <Steps steps={stepsConfig} />
   </StyledSection>
 );
