@@ -86,7 +86,7 @@ const AddressIndicator = styled.div`
   font-weight: bold;
   position: absolute;
   margin: auto;
-  top: 184px;
+  top: 100px;
   left: 0;
   right: 0;
   bottom: 0;

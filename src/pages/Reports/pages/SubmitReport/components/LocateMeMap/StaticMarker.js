@@ -25,25 +25,21 @@ const Wrapper = styled.div`
   top: 0;
   left: 0;
   right: 0;
-  bottom: calc(114px / 2);
+  bottom: 114px;
   z-index: 99999999;
   height: 114px;
   width: 82px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   pointer-events: none;
 `;
 
 const StyledPinnedLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`
   position: relative;
-  top: 33px;
+  top: 23px;
   filter: drop-shadow(0px 1px 4px rgba(0,0,0,0.4));
-`;
-
-const StyledUnpinnedLocateMeMarker = styled(LocateMeMarkerIcon)`
-  filter: drop-shadow(0px 20px 8px rgba(0, 0, 0, 0.25));
 `;
 
 const StyledTickIcon = styled(TickIcon)`
@@ -58,13 +54,12 @@ const StyledMapCenterIndicator = styled(MapcenterIndicator)`
 
 const StaticMarker = ({ pinned }) => (
   <Wrapper>
-    {pinned ? (
+    {pinned && (
       <Fragment>
         <StyledPinnedLocateMeMarkerIcon />
         <StyledTickIcon />
       </Fragment>
-    ) : <StyledUnpinnedLocateMeMarker />
-    }
+    )}
     {!pinned && <StyledMapCenterIndicator>+</StyledMapCenterIndicator>}
   </Wrapper>
 );
