@@ -70,7 +70,7 @@ const CloseButton = styled(CloseIcon)`
   right: 17px;
   justify-content: center;
   align-items: center;
-  cursor: pointerM
+  cursor: pointer;
 `;
 
 
@@ -107,17 +107,13 @@ const LocateModeChooser = ({ heading, onUseDevicePosition, onUseGeocoding, onClo
 
 LocateModeChooser.propTypes = {
   heading: PropTypes.string,
-  onUseDevicePosition: PropTypes.func,
-  onUseGeocoding: PropTypes.func,
-  onClose: PropTypes.func
+  onUseDevicePosition: PropTypes.func.isRequired,
+  onUseGeocoding: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired
 };
 
 LocateModeChooser.defaultProps = {
-  heading: 'Wo benötigst du neue Fahrradbügel?',
-  onUseDevicePosition: () => console.log('LocateModeChooser.onUseDevicePosition says implement me'),
-  onUseGeocoding: () => console.log('LocateModeChooser.useGeocodingRoute says implement me'),
-  onClose: () => console.log('LocateModeChooser.onClose says implement me')
-  // TODO: closing this makes no sense when the component is within the SubmitReport dialog, only  the dialog is a popup in the OverViewMap
+  heading: 'Wo benötigst du neue Fahrradbügel?'
 };
 
 export default LocateModeChooser;

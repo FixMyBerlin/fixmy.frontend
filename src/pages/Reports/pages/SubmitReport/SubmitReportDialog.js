@@ -89,6 +89,7 @@ class SubmitReportDialog extends PureComponent {
               onUseGeocoding={this.props.onUseGeocoding}
               error={error}
               removeError={this.props.removeError}
+              onClose={this.abortDialog}
             />
           </Fragment>
         )
