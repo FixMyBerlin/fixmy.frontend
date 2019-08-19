@@ -49,14 +49,6 @@ const Button = styled.div`
   -webkit-box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.6);
-  // TODO: factor this out in a globally accessible .noselect class
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
 `;
 
 const ButtonIcon = styled.div`
@@ -64,7 +56,6 @@ const ButtonIcon = styled.div`
   padding-right: 18px;
 `;
 
-// TODO: factor out
 const CloseButton = styled(CloseIcon)`
   position: absolute;
   right: 17px;
@@ -74,7 +65,6 @@ const CloseButton = styled(CloseIcon)`
 `;
 
 
-// TODO; execute passed dispatch functions onTab
 const LocateModeChooser = ({ heading, onUseDevicePosition, onUseGeocoding, onClose, error, removeError }) => (
   <Wrapper>
     <Heading>{heading}</Heading>
