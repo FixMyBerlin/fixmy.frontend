@@ -5,7 +5,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { X } from 'react-feather';
+import CloseIcon from '~/images/close.svg';
 
 import LocateIcon from '~/images/reports/location-button.svg';
 import MapIcon from '~/images/reports/noun-map-1909219.svg';
@@ -64,23 +64,15 @@ const ButtonIcon = styled.div`
   padding-right: 18px;
 `;
 
-// again, because of propbles using SVGs, feather icons are used
-const CloseButton = styled.div`
+// TODO: factor out
+const CloseButton = styled(CloseIcon)`
   position: absolute;
-  top: -21.5px;
-  right: 21px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: ${config.colors.darkgrey};
+  right: 17px;
   justify-content: center;
   align-items: center;
-  display: none; // TODO: show close Icon only if the dialog can be re-entered by a UI action
+  cursor: pointerM
 `;
 
-const CloseIcon = styled(X)`
-  color: #fff;
-`;
 
 // TODO; execute passed dispatch functions onTab
 const LocateModeChooser = ({ heading, onUseDevicePosition, onUseGeocoding, onClose, error, removeError }) => (
@@ -96,11 +88,9 @@ const LocateModeChooser = ({ heading, onUseDevicePosition, onUseGeocoding, onClo
       <ButtonIcon><MapIcon /></ButtonIcon>
       Ich möchte eine Adresse auf der Karte eingeben
     </Button>
-
     <CloseButton onClick={onClose}>
       <CloseIcon />
     </CloseButton>
-
     {
       error.message && (
         <ErrorMessage
