@@ -225,8 +225,7 @@ export default function ReportsReducer(state = initialState, action = {}) {
       return { ...state, reports: action.payload };
     case RESET_DIALOG_STATE:
       // set to default state, except for reports to not be forced to fetch data again
-      // and keep locationMode in order to display the map after user clicked "Ort ändern"
-      return { ...initialState, locationMode: state.locationMode, reports: state.reports };
+      return { ...initialState, reports: state.reports };
     case SET_DEVICE_LOCATION:
       return { ...state, deviceLocation: action.payload };
     case GEOCODE_DONE:
