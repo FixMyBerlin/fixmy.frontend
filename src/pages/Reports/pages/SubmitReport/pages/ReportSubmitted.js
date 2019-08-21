@@ -1,18 +1,35 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
+import { Formik } from 'formik';
+import ky from 'ky';
 
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
-import Button from '~/components/Button';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
-import { breakpoints } from '~/styles/utils';
-
+import Button from '~/components/Button';
+import Form from '~/components/Form';
+import FormField from '~/components/FormField';
 import history from '~/history';
 
 import thanksImageSrc from '~/images/reports/reports-thanks.png';
+
+const formConfig = [{
+    id: 'email', value: '', type: 'email', label: '', placeholder: 'Deine E-Mailadresse', validateError: 'Bitte geben Sie eine E-Mail an.'
+  }, {
+    id: 'login', value: false, type: 'checkbox', labelUser: 'Ich möchte über den Fortschritt meiner Meldung informiert werden.', labelNoUser: 'Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.'
+  }, {
+    id: 'newsletter', value: false, type: 'checkbox', label: 'Ich möchte den FixMyBerlin Newsletter mit Updates zu Planungen erhalten'
+  }
+];
+
+export const initialValues = formConfig.reduce((res, item) => {
+  res[item.id] = item.value;
+  return res;
+}, {});
+
 
 const StyledHeading = styled(Heading)`
   margin-top: 6px;
@@ -31,6 +48,10 @@ const ThanksImg = styled.img`
   display: block;
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 // TODO: if possible, actually show the overviewMap ine the background like in Zeplin
 // TO-dedupe, buttons are declared and styled a many times within /reports
@@ -45,79 +66,25 @@ const MeldungAnzeigenButton = styled(Button)`
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
 `;
 
-
-const StyledInput = styled.input`
-  width:100%;
-  font-size: 16px;
-  border:0;
-  border-bottom:1px solid #979797;
-  outline: none;
-  padding: 0;
-  margin: 26px 0;
-  height: 32px;
-
-  &:focus {
-    border-bottom:2px solid ${config.colors.interaction};
-  }
-`;
-
-// TODO: de-dupe
-const StyledCheckbox = styled.input`
-  cursor: pointer;
-  margin-right: 32px;
-  display: inline-block;
-  transform: scale(1.5);
-  transform-origin: top left;
-`;
-
-const StyledCheckboxItem = styled.div`
-  display: flex;
-  width: 100%;
-  max-width: ${breakpoints.m}px;
+const FormWrapper = styled.div`
   margin-bottom: 16px;
-`;
 
-// TODO: same here
-const StyledCheckboxLabel = styled.label`
-   font-size: 10px;
-   letter-spacing: 0.2px;
-   line-height: 1.4;
-   color: ${config.colors.darkgrey};
-   cursor: pointer;
-`;
+  .formtype-checkbox {
+    display: flex;
 
-// TODO: same here
-const AbsendenButton = styled(Button)`
-  display: block;
-  margin-top: 36px;
-  height: 48px;
-  width: 167px;
-  font-size: 18px;
-  font-weight: bold;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+    span {
+      font-size: 12px;
+    }
 
-  &&[disabled] {
-    background-color: white;
-    color: ${config.colors.darkgrey};
-    font-weight: bold;
-    cursor: default;
-    border: 1px solid ${config.colors.interaction};
-    &:hover {
-     background-color: ${config.colors.lightgrey};
+    input {
+      width: auto;
+      margin-right: 10px;
     }
   }
 `;
 
-class ReportSubmitted extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      confirmsDataUsage: false,
-      wantsNewsletter: false
-    };
-  }
 
+class ReportSubmitted extends PureComponent {
   componentDidMount = () => {
     this.unlistenToHistory = history.listen((location, action) => {
       if (action === 'POP') { // if this is an attempt to navigate backwards ..
@@ -131,21 +98,49 @@ class ReportSubmitted extends PureComponent {
     this.unlistenToHistory();
   }
 
-  updateEmail = (e) => {
-    this.setState({ email: e.target.value });
-  };
+  onSubmitLoggedIn(values, { setSubmitting, setErrors }) {
+    // @TODO handle logged in user
+    console.log('handle logged in user');
 
-  toggleByTick = (e) => {
-    const stateProperty = e.target.name;
-    this.setState(prevState => ({
-      [stateProperty]: !prevState[stateProperty]
-    }));
-  };
+    setErrors(false);
+    setSubmitting(false);
+  }
 
-  // TODO: wire to endpoint
-  submitEmail = () => {
-    console.log(`do something with the email ${ this.state.email}`);
-  };
+  onSubmit = async (values, { setSubmitting, setErrors }) => {
+    if (this.props.token) {
+      return this.onSubmitLoggedIn(values, { setSubmitting, setErrors });
+    }
+
+    if (!values.login && values.newsletter) {
+      // @TODO handle news letter api request
+      console.log('handle news letter api request');
+      setErrors(false);
+      setSubmitting(false);
+      return false;
+    }
+
+    if (values.login) {
+      const userData = {
+        email: values.email,
+        username: values.email,
+        password: 'fixmyberlin!',
+        newsletter: values.newsletter
+      };
+
+      try {
+        const user = await ky.post(`${config.apiUrl}/users/create`, { json: userData }).json();
+        const reportPatch = await ky(`${config.apiUrl}/reports/${this.props.reportId}`, { method: 'PATCH', json: { user_id: user.id } }).json();
+
+        console.log(user, reportPatch);
+      } catch (err) {
+        setSubmitting(false);
+        return setErrors({ server: 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.' });
+      }
+    }
+
+    setErrors(false);
+    setSubmitting(false);
+  }
 
   revealReportOnMap = () => {
     const { reportId } = this.props;
@@ -156,12 +151,26 @@ class ReportSubmitted extends PureComponent {
     this.props.history.push(`${config.routes.reports.map}/${reportId}`);
   }
 
+  validate = values => formConfig.reduce((res, item) => {
+    if (!values[item.id] && item.validateError) {
+      res[item.id] = item.validateError;
+    }
+
+    return res;
+  }, {})
+
   render() {
-    const { error } = this.props;
+    const { error, token } = this.props;
 
     // TODO: extend error handling. The user should be able to retry the request or at least be navigated back somewhere
     // TODO: factor out leave-email section as component
     if (error.message) return <ErrorMessage message={error.message} />;
+
+    formConfig.forEach((c) => {
+      if (c.id === 'login') {
+        c.label = token ? c.labelUser : c.labelNoUser;
+      }
+    });
 
     return (
       <DialogStepWrapper>
@@ -176,52 +185,51 @@ class ReportSubmitted extends PureComponent {
 
         <HorizontalRuler />
 
-        <Heading>Gib deine Emailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung
-          schicken können
+        <Heading>
+          Gib deine Emailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung schicken können
         </Heading>
 
-        <StyledInput
-          name="email"
-          type="email"
-          placeholder="deine Emailadresse"
-          value={this.state.email}
-          onChange={this.updateEmail}
-        />
-        <StyledCheckboxItem>
-          <StyledCheckbox
-            type="checkbox"
-            id="data-usage-tick"
-            name="confirmsDataUsage"
-            value="true"
-            checked={this.state.confirmsDataUsage}
-            onChange={this.toggleByTick}
+        <FormWrapper>
+          <Formik
+            initialValues={initialValues}
+            onSubmit={this.onSubmit}
+            validate={this.validate}
+            validateOnChange={false}
+            validateOnBlur={false}
+            render={({
+              values,
+              errors,
+              handleSubmit,
+              isSubmitting,
+              handleChange
+            }) => (
+              <Form onSubmit={handleSubmit}>
+                {formConfig.map(d => (
+                  <FormField
+                    key={`feedbackfield__${d.id}`}
+                    className={`formtype-${d.type}`}
+                    {...d}
+                    values={values}
+                    errors={errors}
+                    handleChange={handleChange}
+                  />
+                ))}
+                {errors.server && <div>{errors.server}</div>}
+                <ButtonWrapper>
+                  <Button type="submit" disabled={isSubmitting}>
+                    Absenden
+                  </Button>
+                </ButtonWrapper>
+              </Form>
+            )}
           />
-          <StyledCheckboxLabel htmlFor="photo-disclaimer-tick" style={{ alignSelf: 'flex-start' }}>
-            Ich willige in die Speicherung meiner Daten zu Zwecken der Benachrichtigung über Projektfortschritte ein.
-          </StyledCheckboxLabel>
-        </StyledCheckboxItem>
+        </FormWrapper>
 
-        <StyledCheckboxItem>
-          <StyledCheckbox
-            type="checkbox"
-            id="newsletter-tick"
-            name="wantsNewsletter"
-            value="true"
-            checked={this.state.wantsNewsletter}
-            onChange={this.toggleByTick}
-          />
-          <StyledCheckboxLabel htmlFor="photo-disclaimer-tick" style={{ alignSelf: 'flex-start' }}>
-            Ich möchte den FixMyBerlin Newsletter mit Updates zu Planungen erhalten
-          </StyledCheckboxLabel>
-        </StyledCheckboxItem>
-
-        <AbsendenButton
-          onClick={this.submitEmail}
-          disabled={!this.state.confirmsDataUsage}
-        >Absenden
-        </AbsendenButton>
-
-        <MeldungAnzeigenButton onClick={this.revealReportOnMap}>Meldung anzeigen</MeldungAnzeigenButton>
+        <MeldungAnzeigenButton
+          onClick={this.revealReportOnMap}
+        >
+          Meldung anzeigen
+        </MeldungAnzeigenButton>
       </DialogStepWrapper>
     );
   }

@@ -169,7 +169,11 @@ class SubmitReportDialog extends PureComponent {
               stepCaption="Fertig"
               isLastStep
             />
-            <ReportSubmitted reportId={newReport.id} error={error} />
+            <ReportSubmitted
+              reportId={newReport.id}
+              error={error}
+              token={this.props.token}
+            />
           </Fragment>
           );
         break;
