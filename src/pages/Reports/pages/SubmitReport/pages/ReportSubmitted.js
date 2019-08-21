@@ -10,8 +10,9 @@ import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
 import { breakpoints } from '~/styles/utils';
 
-
 import history from '~/history';
+
+import thanksImageSrc from '~/images/reports/reports-thanks.png';
 
 const StyledHeading = styled(Heading)`
   margin-top: 6px;
@@ -21,6 +22,13 @@ const StyledHeading = styled(Heading)`
 const Text = styled(Paragraph)`
   margin-top: 0;
   margin-bottom: 32px;
+  line-height: 1.4;
+`;
+
+const ThanksImg = styled.img`
+  width: 50%;
+  margin: 20px auto;
+  display: block;
 `;
 
 
@@ -157,12 +165,14 @@ class ReportSubmitted extends PureComponent {
 
     return (
       <DialogStepWrapper>
-        <StyledHeading>Danke, dass du mithilfst Friedrichshain-Kreuzberg radfreundlicher zu machen!</StyledHeading>
-        <Text>Deine Meldung ist nun online und wird am 31. Januar dem Bezirksamt übergeben.</Text>
+        <StyledHeading>Du hilfst mit Friedrichshain-Kreuzberg radfreundlicher zu machen!</StyledHeading>
 
-        <MeldungAnzeigenButton onClick={this.revealReportOnMap}>Meldung anzeigen</MeldungAnzeigenButton>
-        <Text>Schau dir Deine Meldung an und erzähle anderen davon</Text>
+        <ThanksImg src={thanksImageSrc} />
 
+        <Text>
+          Deine Meldung ist nun online, alle Meldungen werden gesammelt und dem Bezirksamt am XX. XXX übergeben.
+          Die Planer*innen im Tiefbauamt prüfen dann welche Meldungen umgesetzt werden können. Die Ergebnisse siehst du hier auf der Karte.
+        </Text>
 
         <HorizontalRuler />
 
@@ -211,6 +221,7 @@ class ReportSubmitted extends PureComponent {
         >Absenden
         </AbsendenButton>
 
+        <MeldungAnzeigenButton onClick={this.revealReportOnMap}>Meldung anzeigen</MeldungAnzeigenButton>
       </DialogStepWrapper>
     );
   }
