@@ -61,7 +61,7 @@ class SubmitReportDialog extends PureComponent {
     let content;
 
     const { match } = this.props;
-    const step = 5 // +match.params.step;
+    const step = +match.params.step;
 
     const {
       locationMode,

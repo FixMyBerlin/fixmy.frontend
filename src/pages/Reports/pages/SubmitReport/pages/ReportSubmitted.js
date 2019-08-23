@@ -119,7 +119,7 @@ class ReportSubmitted extends PureComponent {
         const user = await ky.post(`${config.apiUrl}/users/create`, { json: userData }).json();
         const reportPatch = await ky(`${config.apiUrl}/reports/${this.props.reportId}`, { method: 'PATCH', json: { user: user.id } }).json();
 
-        console.log(user, reportPatch);
+        this.props.history.push(`${config.routes.reports.map}/${this.props.reportId}`);
       } catch (err) {
         setSubmitting(false);
         return setErrors({ server: 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.' });
