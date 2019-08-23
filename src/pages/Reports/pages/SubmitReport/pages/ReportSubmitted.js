@@ -15,6 +15,7 @@ import FormField from '~/components/FormField';
 import GhostButton from '~/components/GhostButton';
 import history from '~/history';
 import { addUserToReport } from '~/pages/Reports/apiservice';
+import { apiUpdate } from '~/pages/User/apiservice';
 
 import thanksImageSrc from '~/images/reports/reports-thanks.png';
 
@@ -91,8 +92,7 @@ class ReportSubmitted extends PureComponent {
     }
 
     if (values.newsletter) {
-      // @TODO handle news letter api request
-      console.log('handle news letter api request');
+      await apiUpdate({ newsletter: true }, this.props.token);
     }
 
     setErrors(false);
@@ -131,6 +131,10 @@ class ReportSubmitted extends PureComponent {
         return setErrors({ server: 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.' });
       }
 
+      if (values.newsletter) {
+        await apiUpdate({ newsletter: true }, this.props.token);
+      }
+
       setErrors(false);
       setSubmitting(false);
 
@@ -150,7 +154,7 @@ class ReportSubmitted extends PureComponent {
   }
 
   validate = values => formConfig.reduce((res, item) => {
-    if (!values[item.id] && item.validateError) {
+    if (!values.email && !this.props.token) {
       res[item.id] = item.validateError;
     }
 

@@ -40,7 +40,7 @@ export async function apiUpdate(json, token, formFunctions) {
     return handleRequest('password/', { json, token }, formFunctions, 'text');
   }
 
-  // here we can handle standard field updates like name, last name etc.
+  handleRequest('users/me/', { json, token, method: 'PUT' }, { setSubmitting: () => {}, setErrors: () => {} }, 'json');
 }
 
 export async function apiVerify(token) {
