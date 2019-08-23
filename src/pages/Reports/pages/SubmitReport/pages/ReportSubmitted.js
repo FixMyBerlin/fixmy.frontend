@@ -12,6 +12,7 @@ import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/Horiz
 import Button from '~/components/Button';
 import Form from '~/components/Form';
 import FormField from '~/components/FormField';
+import GhostButton from '~/components/GhostButton';
 import history from '~/history';
 
 import thanksImageSrc from '~/images/reports/reports-thanks.png';
@@ -51,19 +52,6 @@ const ThanksImg = styled.img`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
-`;
-
-// TODO: if possible, actually show the overviewMap ine the background like in Zeplin
-// TO-dedupe, buttons are declared and styled a many times within /reports
-const MeldungAnzeigenButton = styled(Button)`
-  display: block;
-  height: 48px;
-  width: 80%;
-  max-width: 240px;
-  font-size: 16px;
-  font-weight: bold;
-  margin: 24px 0;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
 `;
 
 const FormWrapper = styled.div`
@@ -129,7 +117,7 @@ class ReportSubmitted extends PureComponent {
 
       try {
         const user = await ky.post(`${config.apiUrl}/users/create`, { json: userData }).json();
-        const reportPatch = await ky(`${config.apiUrl}/reports/${this.props.reportId}`, { method: 'PATCH', json: { user_id: user.id } }).json();
+        const reportPatch = await ky(`${config.apiUrl}/reports/${this.props.reportId}`, { method: 'PATCH', json: { user: user.id } }).json();
 
         console.log(user, reportPatch);
       } catch (err) {
@@ -225,11 +213,13 @@ class ReportSubmitted extends PureComponent {
           />
         </FormWrapper>
 
-        <MeldungAnzeigenButton
+        <GhostButton
           onClick={this.revealReportOnMap}
+          style={{ marginTop: 25 }}
         >
-          Meldung anzeigen
-        </MeldungAnzeigenButton>
+          Meldung anzeigen<br />
+          (weiter ohne Login)
+        </GhostButton>
       </DialogStepWrapper>
     );
   }
