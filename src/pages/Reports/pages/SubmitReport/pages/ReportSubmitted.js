@@ -14,6 +14,7 @@ import Form from '~/components/Form';
 import FormField from '~/components/FormField';
 import GhostButton from '~/components/GhostButton';
 import history from '~/history';
+import { addUserToReport } from '~/pages/Reports/apiservice';
 
 import thanksImageSrc from '~/images/reports/reports-thanks.png';
 
@@ -33,8 +34,7 @@ export const initialValues = formConfig.reduce((res, item) => {
 
 
 const StyledHeading = styled(Heading)`
-  margin-top: 6px;
-  margin-bottom: 8px;
+  margin: 6px 0 8px 0;
 `;
 
 const Text = styled(Paragraph)`
@@ -71,7 +71,6 @@ const FormWrapper = styled.div`
   }
 `;
 
-
 class ReportSubmitted extends PureComponent {
   componentDidMount = () => {
     this.unlistenToHistory = history.listen((location, action) => {
@@ -86,17 +85,26 @@ class ReportSubmitted extends PureComponent {
     this.unlistenToHistory();
   }
 
-  onSubmitLoggedIn(values, { setSubmitting, setErrors }) {
-    // @TODO handle logged in user
-    console.log('handle logged in user');
+  async onSubmitLoggedIn(values, { setSubmitting, setErrors }) {
+    if (values.login) {
+      await addUserToReport(this.props.reportId, this.props.user.id);
+    }
+
+    if (values.newsletter) {
+      // @TODO handle news letter api request
+      console.log('handle news letter api request');
+    }
 
     setErrors(false);
     setSubmitting(false);
+
+    this.goToMap();
   }
 
   onSubmit = async (values, { setSubmitting, setErrors }) => {
     if (this.props.token) {
-      return this.onSubmitLoggedIn(values, { setSubmitting, setErrors });
+      await this.onSubmitLoggedIn(values, { setSubmitting, setErrors });
+      return false;
     }
 
     if (!values.login && values.newsletter) {
@@ -117,25 +125,27 @@ class ReportSubmitted extends PureComponent {
 
       try {
         const user = await ky.post(`${config.apiUrl}/users/create`, { json: userData }).json();
-        const reportPatch = await ky(`${config.apiUrl}/reports/${this.props.reportId}`, { method: 'PATCH', json: { user: user.id } }).json();
-
-        this.props.history.push(`${config.routes.reports.map}/${this.props.reportId}`);
+        await addUserToReport(this.props.reportId, user.id);
       } catch (err) {
         setSubmitting(false);
         return setErrors({ server: 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.' });
       }
-    }
 
-    setErrors(false);
-    setSubmitting(false);
+      setErrors(false);
+      setSubmitting(false);
+
+      this.goToMap();
+    }
   }
 
-  revealReportOnMap = () => {
+  goToMap = () => {
     const { reportId } = this.props;
+
     if (!reportId) {
       console.error('No id was passed to reveal the report on the map');
       return;
     }
+
     this.props.history.push(`${config.routes.reports.map}/${reportId}`);
   }
 
@@ -154,11 +164,17 @@ class ReportSubmitted extends PureComponent {
     // TODO: factor out leave-email section as component
     if (error.message) return <ErrorMessage message={error.message} />;
 
-    formConfig.forEach((c) => {
-      if (c.id === 'login') {
-        c.label = token ? c.labelUser : c.labelNoUser;
-      }
-    });
+    const formConfigParsed = formConfig
+      // change checkbox label for logged in users
+      .map((c) => {
+        if (c.id === 'login') {
+          c.label = token ? c.labelUser : c.labelNoUser;
+        }
+
+        return c;
+      })
+      // don't show email field for logged in users
+      .filter(c => (token ? c.id !== 'email' : true));
 
     return (
       <DialogStepWrapper>
@@ -174,7 +190,10 @@ class ReportSubmitted extends PureComponent {
         <HorizontalRuler />
 
         <Heading>
-          Gib deine Emailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung schicken können
+          {token ?
+            'Erhalte Updates zu deiner Meldung und trage dich beim Newsletter ein.' :
+            'Gib deine Emailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung schicken können.'
+          }
         </Heading>
 
         <FormWrapper>
@@ -192,7 +211,7 @@ class ReportSubmitted extends PureComponent {
               handleChange
             }) => (
               <Form onSubmit={handleSubmit}>
-                {formConfig.map(d => (
+                {formConfigParsed.map(d => (
                   <FormField
                     key={`feedbackfield__${d.id}`}
                     className={`formtype-${d.type}`}
@@ -214,7 +233,7 @@ class ReportSubmitted extends PureComponent {
         </FormWrapper>
 
         <GhostButton
-          onClick={this.revealReportOnMap}
+          onClick={this.goToMap}
           style={{ marginTop: 25 }}
         >
           Meldung anzeigen<br />

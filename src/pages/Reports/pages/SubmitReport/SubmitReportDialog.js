@@ -173,6 +173,7 @@ class SubmitReportDialog extends PureComponent {
               reportId={newReport.id}
               error={error}
               token={this.props.token}
+              user={this.props.user}
             />
           </Fragment>
           );
@@ -198,5 +199,6 @@ const mapDispatchToProps = {
 
 export default connect(state => ({
   reportsState: state.ReportsState,
-  token: state.UserState.token
+  token: state.UserState.token,
+  user: state.UserState.userData
 }), mapDispatchToProps)(SubmitReportDialog);
