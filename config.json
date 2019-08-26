@@ -19,28 +19,38 @@
     "likebg": "#FFF9EC"
   },
   "menu": {
-    "size": 320,
+    "size": 325,
     "profileLabel": "Zum Profil",
     "loginLabel": "Login",
     "items": [
       {
         "type": "link",
-        "label": "Karte",
+        "label": "Planungen für den Radverkehr",
         "link": "/planungen",
         "icon": "map",
         "border": true
       },
       {
         "type": "link",
-        "label": "Analyse",
+        "label": "Happy-Bike-Index (beta)",
+        "link": "/zustand",
+        "icon": "hbi-icon",
+        "border": true
+      },
+      { "type": "plus",
+        "label": "MITMACHEN",
+        "icon": "fixhere",
+        "children": [{
+          "link": "/meldungen/radbuegel/friedrichshain-kreuzberg",
+          "label": "Radbügelin X-Hain"
+        }],
+        "border": true
+      },
+      {
+        "type": "link",
+        "label": "Analyse Planungen",
         "link": "/analyse/planungen",
         "icon": "analysis",
-        "border": false
-      },
-      { "type": "link",
-        "label": "Fahrradbügel in Fhain-Xberg",
-        "link": "/meldungen/radbuegel/friedrichshain-kreuzberg",
-        "icon": "noun-bycicle",
         "border": false
       },
       {
