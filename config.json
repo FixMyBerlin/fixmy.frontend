@@ -252,6 +252,7 @@
   },
   "reports": {
     "dialog": {
+      "maxBikeStands": 12,
       "imageResizeOptions": {
         "maxWidth": 800,
         "maxHeight": 800,

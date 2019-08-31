@@ -16,6 +16,8 @@ const BikeStandsSlider = styled(RangeSlider)`
   margin-bottom: 90px !important;
 `;
 
+const MAX_STANDS = config.reports.dialog.maxBikeStands || 12;
+
 export default ({ onConfirm }) => {
   const [bikestandCount, setBikestandCount] = useState(1);
 
@@ -25,8 +27,8 @@ export default ({ onConfirm }) => {
       <Question>Wie viele Bügel werden benötigt?</Question>
       <BikeStandsSlider
         min={1}
-        max={20}
-        labels={{ 1: 1, 20: 20 }}
+        max={MAX_STANDS}
+        labels={{ 1: 1, [MAX_STANDS]: MAX_STANDS }}
         name="bikestandsNeeded"
         value={bikestandCount}
         tooltip={false}
