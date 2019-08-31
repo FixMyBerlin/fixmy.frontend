@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -19,6 +19,11 @@ const BackLink = styled.a`
   &.hidden:after {
     content: ''
   }
+`;
+
+const AbortLink = styled(BackLink)`
+  right: 38px;
+  left: unset;
 `;
 
 const NavBar = styled.div`
@@ -82,7 +87,10 @@ const StyledTickIcon = styled(TickIcon)`
 const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap, onAbortButtonTap, isLastStep }) => (
   <NavBar>
     {!isLastStep && (
-      <BackLink onClick={onBackButtonTap} className={isLastStep ? 'hidden' : ''}>&lt; zurück</BackLink>
+      <Fragment>
+        <BackLink onClick={onBackButtonTap} className={isLastStep ? 'hidden' : ''}>&lt; zurück</BackLink>
+        <AbortLink onClick={onAbortButtonTap} className={isLastStep ? 'hidden' : ''}>abbrechen</AbortLink>
+      </Fragment>
     )}
     <StepCaption>{stepCaption}</StepCaption>
     <StyledBikeParkIcon />
@@ -104,6 +112,7 @@ FormProgressBar.propTypes = {
   stepNumber: PropTypes.number,
   stepCaption: PropTypes.string,
   onBackButtonTap: PropTypes.func,
+  onAbortButtonTap: PropTypes.func.isRequired,
   isLastStep: PropTypes.bool
 };
 
