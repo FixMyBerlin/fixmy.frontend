@@ -76,26 +76,15 @@
           "minimum": 1,
           "maximum": 20
         },
-        "placement": {
-          "type": "string",
-          "enum": [
-            "SIDEWALK",
-            "STREET"
-          ],
-          "description": "Where bike stands shall be placed"
-        },
-        "fee": {
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 5,
-          "description": "How much the person is willing to spend per day in EUR"
+        "fee_acceptable": {
+          "type": "boolean",
+          "description": "Is the person willing to pay for bicycle parking"
         }
       },
       "required": [
         "subject",
         "number",
-        "placement",
-        "fee"
+        "fee_acceptable"
       ],
       "title": "Bike stands"
     }
