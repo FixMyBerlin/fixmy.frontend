@@ -5,6 +5,8 @@ import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/Dia
 import RangeSlider from '~/components/RangeSlider';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
+import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
+import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
 
 const Question = styled(Heading)`
   margin-top: 32px;
@@ -12,8 +14,13 @@ const Question = styled(Heading)`
   line-height: 1.37;
 `;
 
-const BikeStandsSlider = styled(RangeSlider)`
-  margin-bottom: 90px !important;
+const StyledWeiterButton = styled(WeiterButton)`
+  margin: 60px 0;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  margin-top: 1em;
 `;
 
 const MAX_STANDS = config.reports.dialog.maxBikeStands || 12;
@@ -24,8 +31,10 @@ export default ({ onConfirm }) => {
   return (
     <DialogStepWrapper>
 
-      <Question>Wie viele Bügel werden benötigt?</Question>
-      <BikeStandsSlider
+      <Question>Wie viele Bügel werden aus deiner Sicht an diesem Ort benötigt?</Question>
+      <Paragraph>An einen Bügel können zwei Fahrräder angeschlossen werden.</Paragraph>
+
+      <RangeSlider
         min={1}
         max={MAX_STANDS}
         labels={{ 1: 1, [MAX_STANDS]: MAX_STANDS }}
@@ -36,8 +45,17 @@ export default ({ onConfirm }) => {
         onChange={count => setBikestandCount(count)}
       />
 
-      <WeiterButton onClick={() => onConfirm(bikestandCount)}>Weiter
-      </WeiterButton>
+      <StyledWeiterButton onClick={() => onConfirm(bikestandCount)}>Weiter
+      </StyledWeiterButton>
+
+      <Paragraph>
+        Hinweis: Neue Fahrradbügel werden in Friedrichshain-Kreuzberg in der Regel
+        auf der Straße installiert,
+        damit der Platz für Fußgänger:innen auf dem Gehweg nicht eingeschränkt wird.
+      </Paragraph>
+
+      <Image src={StreetBgImage} alt="Straßenseitige Fahrradständer" />
+
 
     </DialogStepWrapper>
   );
