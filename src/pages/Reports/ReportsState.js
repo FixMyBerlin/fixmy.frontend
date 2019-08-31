@@ -25,9 +25,7 @@ const SET_TEMP_LOCATION_ADDRESS = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_
 const CONFIRM_LOCATION = 'Reports/ReportsDialogState/CONFIRM_LOCATION';
 const ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
 const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
-export const BIKESTAND_PLACEMENT_SIDEWALK = 'SIDEWALK';
-export const BIKESTAND_PLACEMENT_STREET = 'STREET';
-const SET_BIKESTAND_NEEDS = 'Reports/ReportsDialogState/SET_BIKESTAND_NEEDS';
+const SET_BIKESTAND_COUNT = 'Reports/ReportsDialogState/SET_BIKESTAND_COUNT';
 const SET_ADDITIONAL_DATA = 'Reports/ReportsDialogState/SET_ADDITIONAL_DATA';
 const SET_DAILY_RENT = 'Reports/ReportsDialogState/SET_DAILY_RENT';
 const SUBMIT_REPORT = 'Reports/ReportsDialogState/SUBMIT_REPORT';
@@ -90,9 +88,9 @@ export const removeError = () => ({
   type: REMOVE_ERROR
 });
 
-export const setBikestandNeeds = formData => ({
-  type: SET_BIKESTAND_NEEDS,
-  payload: formData
+export const setBikestandCount = amount => ({
+  type: SET_BIKESTAND_COUNT,
+  payload: amount
 });
 
 export const setAdditionalData = formData => ({
@@ -307,14 +305,17 @@ export default function ReportsReducer(state = initialState, action = {}) {
           message: null
         }
       };
-    case SET_BIKESTAND_NEEDS:
+    case SET_BIKESTAND_COUNT:
       return {
         ...state,
         newReport: {
           ...state.newReport,
           what: {
             ...state.newReport.what,
-            bikestands: action.payload
+            bikestands: {
+              ...(state.newReport.what && state.newReport.what.bikestands),
+              number: action.payload
+            }
           }
         }
       };

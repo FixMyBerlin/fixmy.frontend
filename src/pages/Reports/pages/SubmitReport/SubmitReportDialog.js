@@ -13,7 +13,7 @@ import {
   LOCATION_MODE_GEOCODING,
   useDevicePosition,
   resetDialogState,
-  setBikestandNeeds,
+  setBikestandCount,
   setAdditionalData,
   setDailyRent,
   removeError,
@@ -114,7 +114,7 @@ class SubmitReportDialog extends PureComponent {
               stepCaption="Details"
             />
             <BikestandsForm onConfirm={(stateNode) => {
-              this.props.setBikestandNeeds(stateNode);
+              this.props.setBikestandCount(stateNode);
               proceed();
             }}
             />
@@ -186,7 +186,7 @@ const mapDispatchToProps = {
   onUseDevicePosition: useDevicePosition,
   onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
   resetDialogState,
-  setBikestandNeeds,
+  setBikestandCount,
   setAdditionalData,
   setDailyRent,
   removeError,
