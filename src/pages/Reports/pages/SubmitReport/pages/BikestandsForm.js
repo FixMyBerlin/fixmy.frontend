@@ -20,6 +20,7 @@ const StyledWeiterButton = styled(WeiterButton)`
 
 const Image = styled.img`
   width: 100%;
+  max-width: 486px;
   margin-top: 1em;
 `;
 
