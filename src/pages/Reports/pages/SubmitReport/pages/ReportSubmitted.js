@@ -41,12 +41,13 @@ const MeldungAnzeigenButton = styled(Button)`
 const StyledInput = styled.input`
   width:100%;
   font-size: 16px;
-  border:0;
-  border-bottom:1px solid #979797;
+  border: 0.5px solid ${config.colors.lightgrey};
+  border-radius: 2px;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   outline: none;
-  padding: 0;
+  padding: 0 0 0 10px
   margin: 26px 0;
-  height: 32px;
+  height: 48px;
 
   &:focus {
     border-bottom:2px solid ${config.colors.interaction};
@@ -164,7 +165,7 @@ class ReportSubmitted extends PureComponent {
           Die Ergebnisse siehst du hier auf der Karte.
         </Text>
 
-        <MeldungAnzeigenButton onClick={this.revealReportOnMap}>Meldung anzeigen</MeldungAnzeigenButton>
+
         <Text>Schau dir Deine Meldung an und erzähle anderen davon</Text>
 
 
@@ -214,6 +215,10 @@ class ReportSubmitted extends PureComponent {
           disabled={!this.state.confirmsDataUsage}
         >Absenden
         </AbsendenButton>
+
+        TODO: Ich habe bereits einen Login
+
+        <MeldungAnzeigenButton onClick={this.revealReportOnMap}>Meine Meldung anzeigen (weiter ohne Login)</MeldungAnzeigenButton>
 
       </DialogStepWrapper>
     );
