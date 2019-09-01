@@ -158,7 +158,11 @@ class ReportSubmitted extends PureComponent {
     return (
       <DialogStepWrapper>
         <StyledHeading>Danke, dass du mithilfst Friedrichshain-Kreuzberg radfreundlicher zu machen!</StyledHeading>
-        <Text>Deine Meldung ist nun online und wird am 31. Januar dem Bezirksamt übergeben.</Text>
+        <Text>
+          Deine Meldung ist nun online, alle Meldungen werden gesammt und dem Bezirksamt am 31.Januar übergeben.
+          Die Planer:innen im Straßen- und Grünflächenamt prüfen dann, welche Meldungen umgesetzt werden können.
+          Die Ergebnisse siehst du hier auf der Karte.
+        </Text>
 
         <MeldungAnzeigenButton onClick={this.revealReportOnMap}>Meldung anzeigen</MeldungAnzeigenButton>
         <Text>Schau dir Deine Meldung an und erzähle anderen davon</Text>
@@ -166,8 +170,8 @@ class ReportSubmitted extends PureComponent {
 
         <HorizontalRuler />
 
-        <Heading>Gib deine Emailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung
-          schicken können
+        <Heading>
+          Gib hier deine Emailadresse an, dann senden wir dir eine Nachricht, sobald deine Meldung bearbeitet wurden.
         </Heading>
 
         <StyledInput
@@ -186,8 +190,8 @@ class ReportSubmitted extends PureComponent {
             checked={this.state.confirmsDataUsage}
             onChange={this.toggleByTick}
           />
-          <StyledCheckboxLabel htmlFor="photo-disclaimer-tick" style={{ alignSelf: 'flex-start' }}>
-            Ich willige in die Speicherung meiner Daten zu Zwecken der Benachrichtigung über Projektfortschritte ein.
+          <StyledCheckboxLabel htmlFor="data-usage-tick" style={{ alignSelf: 'flex-start' }}>
+            Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.
           </StyledCheckboxLabel>
         </StyledCheckboxItem>
 
@@ -200,7 +204,7 @@ class ReportSubmitted extends PureComponent {
             checked={this.state.wantsNewsletter}
             onChange={this.toggleByTick}
           />
-          <StyledCheckboxLabel htmlFor="photo-disclaimer-tick" style={{ alignSelf: 'flex-start' }}>
+          <StyledCheckboxLabel htmlFor="newsletter-tick" style={{ alignSelf: 'flex-start' }}>
             Ich möchte den FixMyBerlin Newsletter mit Updates zu Planungen erhalten
           </StyledCheckboxLabel>
         </StyledCheckboxItem>
