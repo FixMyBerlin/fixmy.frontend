@@ -124,7 +124,7 @@ FormProgressBar.defaultProps = {
   stepCaption: 'Ort',
   onBackButtonTap: history.goBack,
   isLastStep: false,
-  onAbortButtonTap: history.push(config.routes.reports.map)
+  onAbortButtonTap: () => history.push(config.routes.reports.map)
 };
 
 export default FormProgressBar;
