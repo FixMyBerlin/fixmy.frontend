@@ -8,9 +8,6 @@ const ClickableArea = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
   cursor: pointer;
 `;
 
