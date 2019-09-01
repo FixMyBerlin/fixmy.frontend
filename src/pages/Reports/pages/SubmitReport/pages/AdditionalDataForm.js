@@ -87,7 +87,7 @@ class AdditionalDataForm extends PureComponent {
     const isDesktopView = matchMediaSize(breakpoints.m);
     this.props.addError(`Fehler beim ${isDesktopView ? 'hochladen' : 'aufnehmen'} des Fotos: 
     ${errorMsg}`);
-  }
+  };
 
   submit = () => {
     // marshall form data before submit
@@ -108,6 +108,8 @@ class AdditionalDataForm extends PureComponent {
   };
 
   render() {
+    const isDesktopView = matchMediaSize(breakpoints.m);
+
     return (
       <DialogStepWrapper>
         <StyledHeading>Hier kannst du noch ein Foto von dem Ort und Hinweise an die Verwaltung ergänzen.</StyledHeading>
@@ -138,8 +140,7 @@ class AdditionalDataForm extends PureComponent {
         <StyledHeading>Hinweise an die Verwaltung</StyledHeading>
 
         <DescriptionTextArea
-          rows={4}
-          maxRows={8}
+          rows={isDesktopView ? 6 : 8}
           maxLength={140}
           value={this.state.description}
           onChange={this.updateDescription}
