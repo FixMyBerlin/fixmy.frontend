@@ -66,6 +66,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
 
       <StyledWeiterButton
         onClick={() => onConfirm(wouldPay)}
+        disabled={typeof wouldPay !== 'boolean'}
       >Meldung Abschließen
       </StyledWeiterButton>
 
