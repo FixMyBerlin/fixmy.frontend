@@ -33,6 +33,7 @@ const PhotoInputImageLabel = styled.label`
 `;
 
 const PhotoInputLabel = styled.label`
+  font-weight: bold;
   display: block;
   margin-top: 12px;
   font-size: 14px;

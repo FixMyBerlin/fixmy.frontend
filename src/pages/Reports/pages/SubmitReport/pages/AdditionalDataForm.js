@@ -28,8 +28,7 @@ const Hint = styled(Paragraph)`
 
 
 const PhotoDisclaimerWrapper = styled.div`
-  margin-top: 82px;
-  margin-bottom: 52px;
+  margin: 42px 14px 90px;
 `;
 
 const StyledCheckbox = styled.input`
