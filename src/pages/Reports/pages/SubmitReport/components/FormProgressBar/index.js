@@ -107,7 +107,6 @@ const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap, onAbortButt
     {isLastStep && <StyledTickIcon />}
 
     {!isLastStep && <AbortButton onClick={onAbortButtonTap} />}
-    {<AbortButton />}
 
   </NavBar>
 );
@@ -116,7 +115,7 @@ FormProgressBar.propTypes = {
   stepNumber: PropTypes.number,
   stepCaption: PropTypes.string,
   onBackButtonTap: PropTypes.func,
-  onAbortButtonTap: PropTypes.func.isRequired,
+  onAbortButtonTap: PropTypes.func,
   isLastStep: PropTypes.bool
 };
 
@@ -124,7 +123,8 @@ FormProgressBar.defaultProps = {
   stepNumber: 1,
   stepCaption: 'Ort',
   onBackButtonTap: history.goBack,
-  isLastStep: false
+  isLastStep: false,
+  onAbortButtonTap: history.push(config.routes.reports.map)
 };
 
 export default FormProgressBar;
