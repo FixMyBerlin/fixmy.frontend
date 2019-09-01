@@ -9,7 +9,7 @@ const Anchor = styled(Link)`
   line-height: 1.4;
   display: block;
   text-align: center;
-  margin: 1em;
+  margin: 1em auto 2em auto;
 `;
 
 export default () => (

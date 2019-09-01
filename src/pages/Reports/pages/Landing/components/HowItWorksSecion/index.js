@@ -4,15 +4,16 @@ import styled from 'styled-components';
 import BikeIcon from '~/images/reports/noun-bicycle.svg';
 import { media } from '~/styles/utils';
 import Steps from './Steps';
+import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
 
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 0;
+  padding: 40px 0 0 0;
 
   ${media.m`
-    padding: 80px 0;
+    padding: 80px 0 0 0;
   `}
 `;
 
@@ -34,9 +35,9 @@ const StyledIcon = styled(BikeIcon)`
 `;
 
 const StyledQuestion = styled.p`
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
-  margin-bottom: 19px;
+  margin: 32px 0 19px 0;
   line-height: 1.37;
 `;
 
@@ -68,6 +69,7 @@ export default () => (
       kannst du hier melden, wo genau im Bezirk du neue Bügel benötigst.
     </Headline>
     <StyledIcon alt="Icon Fahrradparkplätze" />
+    <HorizontalRuler className="light"  />
     <StyledQuestion>Wie läuft das ab?</StyledQuestion>
     <Steps steps={stepsConfig} />
   </StyledSection>

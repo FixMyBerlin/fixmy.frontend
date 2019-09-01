@@ -1,9 +1,11 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
 import FaqItem from './FaqItem';
+import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 
 const FaqWrapper = styled.div`
+  padding-top: 48px;
   margin-bottom: 62px;
 `;
 
@@ -59,7 +61,7 @@ const content = [
 class FaqSection extends PureComponent {
   state = {
     content
-  }
+  };
 
   render() {
     const faqItems = this.state.content
@@ -72,6 +74,7 @@ class FaqSection extends PureComponent {
 
     return (
       <FaqWrapper>
+        <Heading>Häufige Fragen</Heading>
         {faqItems}
       </FaqWrapper>
     );
