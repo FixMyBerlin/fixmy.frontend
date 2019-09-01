@@ -89,7 +89,7 @@ const TopSection = ({ toUrl }) => (
     <StyledMenuButton whiteFill="true" />
     <img width="92px" src={FixMyLogo} alt="logo" />
     <Credits>Photo by Trae Gould on Unsplash</Credits>
-    <StyledHeading>Neue Fahrradbügel für Friedrichshain-Kreuzberg</StyledHeading>
+    <StyledHeading>Melde neue Fahrradbügel für Friedrichshain-Kreuzberg</StyledHeading>
     <StyledButton className="wiggle">
       <StyledLink to={toUrl}>
         <strong>Sagt uns wo</strong><br /> in 30 Sekunden

@@ -63,8 +63,9 @@ const stepsConfig = [
 export default () => (
   <StyledSection>
     <Headline>
-      Gemeinsam mit dem Bezirksamt Friedrichshain-Kreuzberg versuchen wir herauszufinden: <br />
-      Wo genau im Bezirk werden Radabstellplätze gebraucht?
+      Damit du dein Fahrrad überall sicher abschließen kannst, installiert das Bezirksamt Friedrichshain-Kreuzberg
+      neue Fahrradbügel. Da du als Bürger:in am besten weißt, wo du dein Fahrrad abstellst,
+      kannst du hier melden, wo genau im Bezirk du neue Bügel benötigst.
     </Headline>
     <StyledIcon alt="Icon Fahrradparkplätze" />
     <StyledQuestion>Wie läuft das ab?</StyledQuestion>
