@@ -2,7 +2,7 @@
   "devUrl": "http://localhost:8080",
   "prodUrl": "https://fixmyberlin.de",
   "newsletterWidgetUrl": "https://app.mailjet.com/widget/iframe/2YIa/6kW",
-  "apiUrl": "https://api.fixmyberlin.de/api",
+  "apiUrl": "https://fixmyplatform-develop.herokuapp.com/api",
   "colors": {
     "lightbg": "#f5f5f5",
     "lightgrey": "#e8e8e8",

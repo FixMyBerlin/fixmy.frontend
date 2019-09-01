@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Field } from 'formik';
+import classnames from 'classnames';
 
 import FormFieldError from '~/components/FormFieldError';
 
@@ -10,9 +11,12 @@ const FormFieldSection = styled.div`
 
 // returns the formfiled thats specified by the passed "type"
 export default ({
-  id, type, label, options, placeholder = '', values, handleChange, errors = {}
+  id, type, label, options,
+  placeholder = '', values, handleChange, errors = {},
+  className = ''
 }) => {
   let Result = null;
+  const formFieldClasses = classnames('formfield', className);
 
   if (['text', 'number', 'email', 'password'].includes(type)) {
     Result = <Field type={type} name={id} placeholder={placeholder} />;
@@ -20,7 +24,7 @@ export default ({
     Result = <Field type="checkbox" name={id} checked={values[id]} />;
 
     return (
-      <FormFieldSection>
+      <FormFieldSection className={formFieldClasses}>
         {Result}<span> {label}</span>
         {errors[id] && <FormFieldError>{errors[id]}</FormFieldError>}
       </FormFieldSection>
@@ -36,7 +40,7 @@ export default ({
   }
 
   return (
-    <FormFieldSection>
+    <FormFieldSection className={formFieldClasses}>
       <span>{label}</span>
       {Result}
       {errors[id] && <FormFieldError>{errors[id]}</FormFieldError>}

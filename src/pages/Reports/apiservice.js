@@ -117,3 +117,15 @@ export function getReportStatusCaption(status) {
 
   return caption;
 }
+
+export async function addUserToReport(reportId, userId) {
+  let reportPatch = null;
+
+  try {
+    reportPatch = await ky(`${config.apiUrl}/reports/${reportId}`, { method: 'PATCH', json: { user: userId } }).json();
+  } catch (err) {
+    throw new Error(`Can't connect reportId ${reportId} with user ${userId}`);
+  }
+
+  return reportPatch;
+}
