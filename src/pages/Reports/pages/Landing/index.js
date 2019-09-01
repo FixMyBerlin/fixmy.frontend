@@ -5,6 +5,7 @@ import TopSection from './components/TopSection/index';
 import JoinButton from './components/JoinButton';
 import HowItWorksSection from './components/HowItWorksSecion';
 import Quote from './components/Quote';
+import MapLink from './components/MapLink';
 import Faq from './components/Faq';
 import Footer from '~/components/Menu/MenuFooter';
 import { media } from '~/styles/utils';
@@ -25,9 +26,11 @@ export default () => (
     <ContentWrapper>
       <HowItWorksSection />
       <JoinButton />
+      <MapLink />
       <Quote />
       <Faq />
       <JoinButton />
+      <MapLink />
     </ContentWrapper>
     <Footer />
   </Fragment>
