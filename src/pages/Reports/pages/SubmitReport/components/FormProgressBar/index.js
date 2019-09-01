@@ -22,7 +22,7 @@ const BackLink = styled.a`
 `;
 
 const AbortLink = styled(BackLink)`
-  right: 38px;
+  right: 34px;
   left: unset;
 `;
 
@@ -71,6 +71,10 @@ const StepIndicator = styled.span`
     order: 0;
     background-color: ${config.colors.interaction};
   }
+  
+  &.last-step-indicator {
+    margin-right: 0;
+  }
 `;
 
 const DoneStep = styled(StepIndicator)`
@@ -98,7 +102,7 @@ const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap, onAbortButt
     {stepNumber > 1 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 1 ? 'active' : ''}>1</StepIndicator>}
     {stepNumber > 2 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 2 ? 'active' : ''}>2</StepIndicator>}
     {stepNumber > 3 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 3 ? 'active' : ''}>3</StepIndicator>}
-    {stepNumber > 4 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 4 ? 'active' : ''}>4</StepIndicator>}
+    {stepNumber > 4 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={`last-step-indicator ${stepNumber === 4 ? 'active' : ''}`}>4</StepIndicator>}
 
     {isLastStep && <StyledTickIcon />}
 

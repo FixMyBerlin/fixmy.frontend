@@ -12,7 +12,7 @@ import { resetDialogState } from '~/pages/Reports/ReportsState';
 const Button = styled(CloseIcon)`
   position: absolute;
   top: 3px;
-  right: 8px;
+  right: 4px;
   width: 24px;
   height: 24px;
   cursor: pointer;
