@@ -149,7 +149,7 @@ class UploadPhotoInput extends PureComponent {
         <PhotoInputLabel
           htmlFor="photo-file-input"
         >
-          {`Foto ${this.state.photo ? 'neu' : ''} aufnehmen`}
+          {`Foto ${this.state.photo ? 'neu' : ''} aufnehmen oder hochladen`}
         </PhotoInputLabel>
 
       </Fragment>
