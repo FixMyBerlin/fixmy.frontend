@@ -18,14 +18,27 @@ import { addUserToReport } from '~/pages/Reports/apiservice';
 import { apiUpdate } from '~/pages/User/apiservice';
 
 import thanksImageSrc from '~/images/reports/reports-thanks.png';
+import Link from '~/components/Link';
 
 const formConfig = [{
-    id: 'email', value: '', type: 'email', label: '', placeholder: 'Deine E-Mailadresse', validateError: 'Bitte geben Sie eine E-Mail an.'
-  }, {
-    id: 'login', value: false, type: 'checkbox', labelUser: 'Ich möchte über den Fortschritt meiner Meldung informiert werden.', labelNoUser: 'Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.'
-  }, {
-    id: 'newsletter', value: false, type: 'checkbox', label: 'Ich möchte den FixMyBerlin Newsletter mit Updates zu Planungen erhalten'
-  }
+  id: 'email',
+  value: '',
+  type: 'email',
+  label: '',
+  placeholder: 'Deine E-Mailadresse',
+  validateError: 'Bitte geben Sie eine E-Mail an.'
+}, {
+  id: 'login',
+  value: false,
+  type: 'checkbox',
+  labelUser: 'Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.',
+  labelNoUser: 'Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.'
+}, {
+  id: 'newsletter',
+  value: false,
+  type: 'checkbox',
+  label: 'Ich möchte den FixMyBerlin Newsletter mit Updates zu Planungen erhalten'
+}
 ];
 
 export const initialValues = formConfig.reduce((res, item) => {
@@ -50,9 +63,23 @@ const ThanksImg = styled.img`
   display: block;
 `;
 
+const SubmitButton = styled(Button)`
+  margin-top: 32px;
+  width: 168px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+`;
+
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const LoginLink = styled(Link)`
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 48px;
 `;
 
 const FormWrapper = styled.div`
@@ -169,7 +196,7 @@ class ReportSubmitted extends PureComponent {
     if (error.message) return <ErrorMessage message={error.message} />;
 
     const formConfigParsed = formConfig
-      // change checkbox label for logged in users
+    // change checkbox label for logged in users
       .map((c) => {
         if (c.id === 'login') {
           c.label = token ? c.labelUser : c.labelNoUser;
@@ -182,13 +209,17 @@ class ReportSubmitted extends PureComponent {
 
     return (
       <DialogStepWrapper>
-        <StyledHeading>Du hilfst mit Friedrichshain-Kreuzberg radfreundlicher zu machen!</StyledHeading>
+        <StyledHeading>Du hilfst mit, Friedrichshain-
+          Kreuzberg radfreundlicher
+          zu machen!
+        </StyledHeading>
 
         <ThanksImg src={thanksImageSrc} />
 
         <Text>
           Deine Meldung ist nun online, alle Meldungen werden gesammelt und dem Bezirksamt am XX. XXX übergeben.
-          Die Planer*innen im Tiefbauamt prüfen dann welche Meldungen umgesetzt werden können. Die Ergebnisse siehst du hier auf der Karte.
+          Die Planer*innen im Tiefbauamt prüfen dann welche Meldungen umgesetzt werden können. Die Ergebnisse siehst du
+          hier auf der Karte.
         </Text>
 
         <HorizontalRuler />
@@ -208,33 +239,35 @@ class ReportSubmitted extends PureComponent {
             validateOnChange={false}
             validateOnBlur={false}
             render={({
-              values,
-              errors,
-              handleSubmit,
-              isSubmitting,
-              handleChange
-            }) => (
-              <Form onSubmit={handleSubmit}>
-                {formConfigParsed.map(d => (
-                  <FormField
-                    key={`feedbackfield__${d.id}`}
-                    className={`formtype-${d.type}`}
-                    {...d}
-                    values={values}
-                    errors={errors}
-                    handleChange={handleChange}
-                  />
+                       values,
+                       errors,
+                       handleSubmit,
+                       isSubmitting,
+                       handleChange
+                     }) => (
+                       <Form onSubmit={handleSubmit}>
+                         {formConfigParsed.map(d => (
+                           <FormField
+                             key={`feedbackfield__${d.id}`}
+                             className={`formtype-${d.type}`}
+                             {...d}
+                             values={values}
+                             errors={errors}
+                             handleChange={handleChange}
+                           />
                 ))}
-                {errors.server && <div>{errors.server}</div>}
-                <ButtonWrapper>
-                  <Button type="submit" disabled={isSubmitting}>
+                         {errors.server && <div>{errors.server}</div>}
+                         <ButtonWrapper>
+                           <SubmitButton type="submit" disabled={isSubmitting}>
                     Absenden
-                  </Button>
-                </ButtonWrapper>
-              </Form>
+                           </SubmitButton>
+                         </ButtonWrapper>
+                       </Form>
             )}
           />
         </FormWrapper>
+
+        <LoginLink to={config.routes.login}>Ich habe bereits einen Login</LoginLink>
 
         <GhostButton
           onClick={this.goToMap}
@@ -243,6 +276,7 @@ class ReportSubmitted extends PureComponent {
           Meldung anzeigen<br />
           (weiter ohne Login)
         </GhostButton>
+
       </DialogStepWrapper>
     );
   }
