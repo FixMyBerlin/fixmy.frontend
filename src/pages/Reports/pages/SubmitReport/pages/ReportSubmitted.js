@@ -9,7 +9,7 @@ import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
 import { breakpoints } from '~/styles/utils';
-
+import ThanksImage from '~/images/reports/fmc-kataster-ki-meldedialog-dankescreen-01.jpg'
 
 import history from '~/history';
 
@@ -23,20 +23,23 @@ const Text = styled(Paragraph)`
   margin-bottom: 32px;
 `;
 
-
-// TODO: if possible, actually show the overviewMap ine the background like in Zeplin
-// TO-dedupe, buttons are declared and styled a many times within /reports
-const MeldungAnzeigenButton = styled(Button)`
+const ThanksImg = styled.img`
+  max-width: 274px;
   display: block;
-  height: 48px;
-  width: 80%;
-  max-width: 240px;
-  font-size: 16px;
-  font-weight: bold;
-  margin: 24px 0;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+  margin: 6px auto 20px auto;
 `;
 
+const MeldungAnzeigenButton = styled(Button)`
+  display: block;
+  padding: 12px 24px 8px 24px;
+  width: 275px;
+  margin-top: 72px;
+  font-size: 18px;
+  color: ${config.colors.darkgrey};
+  border-radius: 6px;
+  background-color: white;
+  border: solid 1.5px ${config.colors.interaction}
+`;
 
 const StyledInput = styled.input`
   width:100%;
@@ -45,7 +48,7 @@ const StyledInput = styled.input`
   border-radius: 2px;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   outline: none;
-  padding: 0 0 0 10px
+  padding: 0 0 0 10px;
   margin: 26px 0;
   height: 48px;
 
@@ -159,15 +162,14 @@ class ReportSubmitted extends PureComponent {
     return (
       <DialogStepWrapper>
         <StyledHeading>Danke, dass du mithilfst Friedrichshain-Kreuzberg radfreundlicher zu machen!</StyledHeading>
+
+        <ThanksImg src={ThanksImage} alt="Ein Shiny Emblem zur Danksagung"/>
+
         <Text>
           Deine Meldung ist nun online, alle Meldungen werden gesammt und dem Bezirksamt am 31.Januar übergeben.
           Die Planer:innen im Straßen- und Grünflächenamt prüfen dann, welche Meldungen umgesetzt werden können.
           Die Ergebnisse siehst du hier auf der Karte.
         </Text>
-
-
-        <Text>Schau dir Deine Meldung an und erzähle anderen davon</Text>
-
 
         <HorizontalRuler />
 
