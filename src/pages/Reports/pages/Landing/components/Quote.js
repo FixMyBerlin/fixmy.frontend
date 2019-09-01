@@ -1,20 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PlannerImg from '~/images/reports/planner@3x.jpg';
-
-const blockQuoteText = `„Um Friedrichshain-Kreuzberg zu einem besseren Radbezirk zu machen,
-brauchen wir zu allererst gute Daten als Ausgangslage für die Planungen.“`;
+import PlannerImg from '~/images/reports/planner.jpg';
+import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
+import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 
 const Quote = styled.div`
   text-align: center;
   line-height: 1.37;
   color: ${config.colors.darkgrey};
   margin: 50px 0;
+  max-width: 320px;
+  padding: 4px 8px;
 `;
 
 const Img = styled.img`
-  width: 118px;
+  width: 144px;
 `;
 
 const BlockQuote = styled.blockquote`
@@ -22,18 +23,24 @@ const BlockQuote = styled.blockquote`
   margin: 20px 0 28px 0;
 `;
 
-const Footer = styled.footer`
-  font-style: italic;
-  font-size: 14px;
+const SourcePerson = styled(SubHeading)`
+  margin-bottom: 0;
+`;
+
+const SourceFunction = styled(Paragraph)`
+  margin-top: 0;
+  font-size: 12px;
 `;
 
 export default () => (
   <Quote>
     <Img src={PlannerImg} alt="Planner Icon" />
-    <BlockQuote>{blockQuoteText}</BlockQuote>
-    <Footer>
-      Olaf Rabe<br />
-      Radplaner Bezirk Friedrichshain-Kreuzberg
-    </Footer>
+    {/* TODO: use designated font "Palatino" */}
+    <BlockQuote>
+      „Wir wollen Friedrichshain-Kreuzberg zusammen mit den Bürger:innen zu einem fahrradfreundlichen Bezirk machen.
+      Ihre Meldungen helfen uns dabei, noch schneller zu werden.“
+    </BlockQuote>
+    <SourcePerson>Felix Weisbrich</SourcePerson>
+    <SourceFunction>Leiter des Straßen- und Grünflächenamtes Friedrichshain-Kreuzberg</SourceFunction>
   </Quote>
 );
