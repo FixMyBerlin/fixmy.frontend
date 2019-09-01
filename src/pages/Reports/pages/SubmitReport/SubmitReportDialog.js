@@ -15,7 +15,7 @@ import {
   resetDialogState,
   setBikestandCount,
   setAdditionalData,
-  setDailyRent,
+  setFeeAcceptable,
   removeError,
   submitReport
 } from '~/pages/Reports/ReportsState';
@@ -150,8 +150,8 @@ class SubmitReportDialog extends PureComponent {
               stepCaption="Parkhaus"
               onAbortButtonTap={this.abortDialog}
             />
-            <BicycleParkingGarageForm onConfirm={(dailyRent) => {
-              this.props.setDailyRent(dailyRent);
+            <BicycleParkingGarageForm onConfirm={(bool) => {
+              this.props.setFeeAcceptable(bool);
               this.props.submitReport(this.props.token);
               proceed();
             }}
@@ -192,7 +192,7 @@ const mapDispatchToProps = {
   resetDialogState,
   setBikestandCount,
   setAdditionalData,
-  setDailyRent,
+  setFeeAcceptable,
   removeError,
   submitReport
 };
