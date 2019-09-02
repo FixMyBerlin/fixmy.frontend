@@ -85,11 +85,10 @@ const AddressIndicator = styled.div`
   text-align: center;
   font-weight: bold;
   position: absolute;
-  margin: auto;
-  top: 100px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: calc(50% + 40px);
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%) }
   user-select: none;
   pointer-events: none;
 `;
