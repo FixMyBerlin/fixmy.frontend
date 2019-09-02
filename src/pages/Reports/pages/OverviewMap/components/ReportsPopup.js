@@ -61,7 +61,7 @@ class ReportsPopup extends PureComponent {
               }}
             />
           )}
-          <Title>{`${selectedReport.details.number} neue Fahrradbügel benötigt`}</Title>
+          <Title>{`${selectedReport.details.number} neue Fahrradbügel gewünscht`}</Title>
           <ButtonWrapper>
             <Button onClick={() => this.onDetailClick()}>
               mehr Infos
