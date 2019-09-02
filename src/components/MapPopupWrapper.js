@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import PinIcon from '~/images/pin.svg';
 import { media } from '~/styles/utils';
-import CloseButton from '~/components/CloseButton';
+import CloseButton from '~/components/NewCloseButton';
 import BigLabel from '~/components/BigLabel';
 import Label from '~/components/Label';
 
