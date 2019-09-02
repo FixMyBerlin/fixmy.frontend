@@ -14,7 +14,7 @@ import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/Horiz
 const ContentWrapper = styled.div`
   max-width: 568px;
   margin: 0 auto;
-  padding: 0 16px 20px 0;
+  padding: 0 16px 20px 16px;
 
   ${media.m`
     padding: 0 24px 40px 24px;
