@@ -53,7 +53,7 @@ const BikeStandsCount = styled.p`
   margin-top: 4px;
   margin-bottom: 0;
   text-align: center;
-  font-size: 10px;
+  font-size: 14px;
   color: #999999;
 `;
 
