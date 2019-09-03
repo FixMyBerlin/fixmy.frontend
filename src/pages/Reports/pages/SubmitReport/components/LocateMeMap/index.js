@@ -35,6 +35,7 @@ import {
 
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 import ky from '~/utils/ky';
+import FMBCredits from '~/pages/Map/components/FMBCredits';
 
 
 const MapView = styled.div`
@@ -310,6 +311,8 @@ class LocateMeMap extends Component {
             address={this.props.tempLocation.address}
           />
         )}
+
+        <FMBCredits />
       </MapView>
     );
   }
