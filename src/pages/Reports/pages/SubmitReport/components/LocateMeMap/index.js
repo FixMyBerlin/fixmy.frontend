@@ -62,14 +62,16 @@ const StyledWebGlMap = styled(WebglMap)`
 const SearchBarWrapper = styled.div`
   position: fixed;
   z-index: 1000;
-  top: 15px;
-  left: 15px;
+  top: 11px;
+  left: 68px; /* leave space for zoom controls */
   right: 15px;
   margin: auto;
 
   ${media.m`
     max-width: 400px;
     margin: 0;
+    left: 15px;
+    top: 15px;
   `}
 `;
 
@@ -259,7 +261,7 @@ class LocateMeMap extends Component {
             onMapDrag={this.onMapMove}
             allowDrag={!this.state.locationPinned}
             onLoad={this.onMapLoad}
-            zoomControlPosition={isDesktopView && 'bottom-right'}
+            zoomControlPosition={isDesktopView ? 'bottom-right' : 'top-left'}
           />
 
           {
