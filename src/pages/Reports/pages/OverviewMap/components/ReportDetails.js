@@ -137,7 +137,7 @@ class ReportDetails extends PureComponent {
 
     if (navigator.share) {
       navigator.share({
-        title: `${reportItem.details.number} neue Fahrradbügel benötigt`,
+        title: `${reportItem.details.number} neue Fahrradbügel gewünscht`,
         text: `${reportItem.description} Eine Meldung auf FixMyBerlin.`,
         url: window.location
       })
@@ -160,7 +160,7 @@ class ReportDetails extends PureComponent {
         {photo && photo.src && (<ReportImage src={photo.src} />)}
 
         <HeadlineSection>
-          <Heading>{details.number} neue Fahrradbügel benötigt</Heading>
+          <Heading>{details.number} neue Fahrradbügel gewünscht</Heading>
           <BikeStandsCountSection>
             <BikestandsIcon />
             <BikeStandsCount>x{details.number}</BikeStandsCount>
