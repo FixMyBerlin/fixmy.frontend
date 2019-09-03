@@ -8,9 +8,9 @@ const Box = styled.div`
   height: 82px;
   position: fixed;
   z-index: 1000;
-  top: 58px;
-  left: 68px; /* leave space for zoom controls */
-  right: 15px;
+  top: 59px;
+  left: 77px; /* leave space for zoom controls */
+  right: 22px;
   margin: auto;
   border-radius: 3px;
   background-color: ${config.colors.darkbg};
@@ -27,11 +27,11 @@ const Box = styled.div`
   text-align: center;
 
   ${media.m`
-    max-width: 400px;
-    margin-left: -10px; // TODO: find a clean way to position this under the search bar
+    max-width: 374px;
+    margin-left: 0
     margin-right: auto;
-    left: 25px;
-    top: 62px;
+    left: 28px;
+    top: 64px;
   `}
 `;
 
