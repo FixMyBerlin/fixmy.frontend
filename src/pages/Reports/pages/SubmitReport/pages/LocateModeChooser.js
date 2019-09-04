@@ -5,7 +5,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { X } from 'react-feather';
+import CloseIcon from '~/images/close.svg';
 
 import LocateIcon from '~/images/reports/location-button.svg';
 import MapIcon from '~/images/reports/noun-map-1909219.svg';
@@ -49,14 +49,6 @@ const Button = styled.div`
   -webkit-box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 15px -2px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 12px -2px rgba(0,0,0,0.6);
-  // TODO: factor this out in a globally accessible .noselect class
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
 `;
 
 const ButtonIcon = styled.div`
@@ -64,25 +56,15 @@ const ButtonIcon = styled.div`
   padding-right: 18px;
 `;
 
-// again, because of propbles using SVGs, feather icons are used
-const CloseButton = styled.div`
+const CloseButton = styled(CloseIcon)`
   position: absolute;
-  top: -21.5px;
-  right: 21px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: ${config.colors.darkgrey};
+  right: 17px;
   justify-content: center;
   align-items: center;
-  display: none; // TODO: show close Icon only if the dialog can be re-entered by a UI action
+  cursor: pointer;
 `;
 
-const CloseIcon = styled(X)`
-  color: #fff;
-`;
 
-// TODO; execute passed dispatch functions onTab
 const LocateModeChooser = ({ heading, onUseDevicePosition, onUseGeocoding, onClose, error, removeError }) => (
   <Wrapper>
     <Heading>{heading}</Heading>
@@ -96,11 +78,9 @@ const LocateModeChooser = ({ heading, onUseDevicePosition, onUseGeocoding, onClo
       <ButtonIcon><MapIcon /></ButtonIcon>
       Ich möchte eine Adresse auf der Karte eingeben
     </Button>
-
     <CloseButton onClick={onClose}>
       <CloseIcon />
     </CloseButton>
-
     {
       error.message && (
         <ErrorMessage
@@ -117,17 +97,13 @@ const LocateModeChooser = ({ heading, onUseDevicePosition, onUseGeocoding, onClo
 
 LocateModeChooser.propTypes = {
   heading: PropTypes.string,
-  onUseDevicePosition: PropTypes.func,
-  onUseGeocoding: PropTypes.func,
-  onClose: PropTypes.func
+  onUseDevicePosition: PropTypes.func.isRequired,
+  onUseGeocoding: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired
 };
 
 LocateModeChooser.defaultProps = {
-  heading: 'Wo benötigst du neue Fahrradbügel?',
-  onUseDevicePosition: () => console.log('LocateModeChooser.onUseDevicePosition says implement me'),
-  onUseGeocoding: () => console.log('LocateModeChooser.useGeocodingRoute says implement me'),
-  onClose: () => console.log('LocateModeChooser.onClose says implement me')
-  // TODO: closing this makes no sense when the component is within the SubmitReport dialog, only  the dialog is a popup in the OverViewMap
+  heading: 'Wo benötigst du neue Fahrradbügel?'
 };
 
 export default LocateModeChooser;

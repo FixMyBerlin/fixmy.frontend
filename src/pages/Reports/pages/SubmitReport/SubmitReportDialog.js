@@ -13,9 +13,9 @@ import {
   LOCATION_MODE_GEOCODING,
   useDevicePosition,
   resetDialogState,
-  setBikestandNeeds,
+  setBikestandCount,
   setAdditionalData,
-  setDailyRent,
+  setFeeAcceptable,
   removeError,
   submitReport
 } from '~/pages/Reports/ReportsState';
@@ -89,6 +89,7 @@ class SubmitReportDialog extends PureComponent {
               onUseGeocoding={this.props.onUseGeocoding}
               error={error}
               removeError={this.props.removeError}
+              onClose={this.abortDialog}
             />
           </Fragment>
         )
@@ -98,6 +99,7 @@ class SubmitReportDialog extends PureComponent {
                 <FormProgressBar
                   stepNumber={1}
                   stepCaption="Ort"
+                  onAbortButtonTap={this.abortDialog}
                 />
               )}
               <LocateMeMap onProceed={proceed} />
@@ -111,9 +113,10 @@ class SubmitReportDialog extends PureComponent {
             <FormProgressBar
               stepNumber={2}
               stepCaption="Details"
+              onAbortButtonTap={this.abortDialog}
             />
             <BikestandsForm onConfirm={(stateNode) => {
-              this.props.setBikestandNeeds(stateNode);
+              this.props.setBikestandCount(stateNode);
               proceed();
             }}
             />
@@ -127,6 +130,7 @@ class SubmitReportDialog extends PureComponent {
             <FormProgressBar
               stepNumber={3}
               stepCaption="Fotos und Beschreibung"
+              onAbortButtonTap={this.abortDialog}
             />
             <AdditionalDataForm onConfirm={(formData) => {
               this.props.setAdditionalData(formData);
@@ -144,9 +148,10 @@ class SubmitReportDialog extends PureComponent {
             <FormProgressBar
               stepNumber={4}
               stepCaption="Parkhaus"
+              onAbortButtonTap={this.abortDialog}
             />
-            <BicycleParkingGarageForm onConfirm={(dailyRent) => {
-              this.props.setDailyRent(dailyRent);
+            <BicycleParkingGarageForm onConfirm={(bool) => {
+              this.props.setFeeAcceptable(bool);
               this.props.submitReport(this.props.token);
               proceed();
             }}
@@ -169,7 +174,12 @@ class SubmitReportDialog extends PureComponent {
               stepCaption="Fertig"
               isLastStep
             />
-            <ReportSubmitted reportId={newReport.id} error={error} />
+            <ReportSubmitted
+              reportId={newReport.id}
+              error={error}
+              token={this.props.token}
+              user={this.props.user}
+            />
           </Fragment>
           );
         break;
@@ -185,14 +195,15 @@ const mapDispatchToProps = {
   onUseDevicePosition: useDevicePosition,
   onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
   resetDialogState,
-  setBikestandNeeds,
+  setBikestandCount,
   setAdditionalData,
-  setDailyRent,
+  setFeeAcceptable,
   removeError,
   submitReport
 };
 
 export default connect(state => ({
   reportsState: state.ReportsState,
-  token: state.UserState.token
+  token: state.UserState.token,
+  user: state.UserState.userData
 }), mapDispatchToProps)(SubmitReportDialog);

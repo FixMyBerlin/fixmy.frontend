@@ -44,6 +44,7 @@ const StyledButton = styled(Button)`
   max-width: 48%;
   flex-grow: 1;
   border-radius: 6px;
+  font-size: 18px;
 
   ${media.m`
      max-width: 25%;
@@ -51,13 +52,14 @@ const StyledButton = styled(Button)`
 `;
 
 const BackButton = styled(StyledButton)`
-  border: 1px solid ${config.colors.interaction};
+  border: 1.5px solid ${config.colors.interaction};
   background-color: white;
   color: ${config.colors.darkgrey};
 `;
 
 const ConfirmButton = styled(StyledButton)`
     color: white;
+    font-weight: bold;
     background-color: ${config.colors.interaction};
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.24);
 `;

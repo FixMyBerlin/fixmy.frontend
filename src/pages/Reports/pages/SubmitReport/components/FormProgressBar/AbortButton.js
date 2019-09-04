@@ -4,16 +4,18 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import CloseButton from '~/components/CloseButton';
+import CloseIcon from '~/images/close.svg';
 import history from '~/history';
 import { resetDialogState } from '~/pages/Reports/ReportsState';
 
 
-const Button = styled(CloseButton)`
+const Button = styled(CloseIcon)`
   position: absolute;
   top: 3px;
-  right: 10px;
-  transform: scale(0.7);
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 `;
 
 const clickHandler = (abortDialog) => {

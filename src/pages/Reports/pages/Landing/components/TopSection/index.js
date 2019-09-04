@@ -8,24 +8,30 @@ import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
 import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 import Button from '~/components/Button';
 import Link from '~/components/Link';
-import { media } from '~/styles/utils';
+import ScrollLink from './ScrollLink';
+import {media} from '~/styles/utils';
 
 const Section = styled.section`
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-image: url(${BycicleParkingBgImg});
   background-size: cover;
   background-position: center 80%;
-  padding-left: 34px;
-  padding-right: 34px;
-
+  display: flex;
+  flex-direction: column; 
+  
   ${media.m`
     background-image: url(${BycicleParkingBgImgLargeScreen});
     background-position: top;
   `}
+`;
+
+const FlexWrapper = styled.div`
+  flex: 1;
+  padding: 0 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledMenuButton = styled(MenuButton)`
@@ -50,7 +56,6 @@ const Credits = styled.p`
 `;
 
 const StyledHeading = styled.h2`
-  height: 120px;
   font-family: "Roboto Slab", sans-serif;
   font-size: 32px;
   font-weight: bold;
@@ -83,17 +88,20 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const TopSection = ({ toUrl }) => (
+const TopSection = ({toUrl}) => (
   <Section>
-    <StyledMenuButton whiteFill="true" />
-    <img width="92px" src={FixMyLogo} alt="logo" />
-    <Credits>Photo by Trae Gould on Unsplash</Credits>
-    <StyledHeading>Neue Fahrradbügel für Friedrichshain-Kreuzberg</StyledHeading>
-    <StyledButton className="wiggle">
-      <StyledLink to={toUrl}>
-        <strong>Sagt uns wo</strong><br /> in 30 Sekunden
-      </StyledLink>
-    </StyledButton>
+    <FlexWrapper>
+      <StyledMenuButton whiteFill="true"/>
+      <img width="92px" src={FixMyLogo} alt="logo"/>
+      <Credits>Photo by Trae Gould on Unsplash</Credits>
+      <StyledHeading>Melde neue Fahrradbügel für Friedrichshain-Kreuzberg</StyledHeading>
+      <StyledButton className="wiggle">
+        <StyledLink to={toUrl}>
+          <strong>Sagt uns wo</strong><br/> in 30 Sekunden
+        </StyledLink>
+      </StyledButton>
+    </FlexWrapper>
+    <ScrollLink />
   </Section>
 );
 

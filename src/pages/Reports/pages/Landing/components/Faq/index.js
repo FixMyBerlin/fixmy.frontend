@@ -2,14 +2,16 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
 import FaqItem from './FaqItem';
+import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 
 const FaqWrapper = styled.div`
+  padding-top: 48px;
   margin-bottom: 62px;
 `;
 
 const content = [
   {
-    heading: 'Warum solltest du mitmachen?',
+    heading: 'Warum sollte ich mitmachen?',
     text: `
       Im Rahmen des Mobilitätsgesetzes sollen in ganz Berlin 100.000 neue Abstellplätze für den Radverkehr geschaffen werden.
       Friedrichshain-Kreuzberg setzt sich für sicheres Fahrradparken im Bezirk ein und möchte möglichst viele der Meldungen umsetzen.<br />
@@ -19,33 +21,39 @@ const content = [
   {
     heading: 'Wie kann ich mitmachen?',
     text: `
-      Klicke unten auf den Button „Jetzt Mitmachen“ dann kommst du zur Karte mit allen bisherigen Meldungen. Klicke dort auf das Plus-Zeichen um eine neue Meldung zu erstellen.
-      Anschliessend wirst du einen kurzen Dialog geführt. Am einfachsten kannst du eine Meldung unterwegs von deinem Smartphone machen, du kannst aber auch von zuhause am PC einen Eintrag erstellen.
-      Für die Meldung brauchst du nichts weiter als eine Emailadresse.
+      Klicke unten auf den Button „Sag uns, wo du Radbügel benötigst“, oder schaue dir zunächst die Karte mit den
+      vorhandenen Meldungen an. Für eine neue Meldung wirst du durch einen kurzen Dialog geführt,
+      bei dem du den Ort und weitere Informationen zu deiner Meldung angeben musst.
+      Am einfachsten kannst du eine Meldung unterwegs von deinem Smartphone machen,
+      du kannst aber auch von zu Hause am PC einen Eintrag erstellen.
     `
   },
   {
-    heading: 'Was genau passiert mit den Meldungen?',
+    heading: 'Was passiert mit den Meldungen?',
     text: `
-      Nach Abschluss des Meldezeitraums werden die Mitarbeiter und Mitarbeiterinnen des Tiefbauamtes in Friedrichshain-Kreuzberg alle Meldungen anschauen und auswerten,
-      welche umsetzbar sind. Du bekommst dann auf jeden Fall eine Rückmeldung, ob dein Wunsch realisiert werden kann.
-      Wenn es Rückfragen gibt, wird sich das Bezirksamt ebenfalls bei dir melden. Zusätzlich wird auf FixMyBerlin veröffentlicht, welche Standorte bald neue Fahrradbügel bekommen.
+      Nach Abschluss des Meldezeitraums werden die Mitarbeiter und Mitarbeiterinnen des Straßen- und Grünflächenamtes 
+      in Friedrichshain-Kreuzberg alle Meldungen anschauen und auswerten, welche umsetzbar sind. 
+      Wenn du deine Mailadresse hinterlegt hast, bekommst du auf jeden Fall eine Rückmeldung, 
+      ob dein Wunsch realisiert werden kann. Wenn es Rückfragen gibt, wird sich das Bezirksamt ebenfalls bei dir melden. 
+      Zusätzlich wird auf FixMyBerlin veröffentlicht, an welchen Orten neue Fahrradbügel installiert werden.
     `
   },
   {
     heading: 'Werden alle Meldungen umgesetzt?',
     text: `
-      Nach Abschluss des Meldezeitraums werden die Mitarbeiter und Mitarbeiterinnen des Tiefbauamtes in Friedrichshain-Kreuzberg alle Meldungen anschauen und auswerten,
-      welche umsetzbar sind. Du bekommst dann auf jeden Fall eine Rückmeldung, ob dein Wunsch realisiert werden kann. Wenn es Rückfragen gibt, wird sich das Bezirksamt ebenfalls bei dir melden.
-      Zusätzlich wird auf FixMyBerlin veröffentlicht, welche Standorte bald neue Fahrradbügel bekommen.
+      Zunächst muss geprüft werden, ob an der gemeldeten Stelle Bügel aufgestellt werden können oder ob andere Aspekte dagegen sprechen. 
+      Ggf. wird der Ort besichtigt, oder eine Rückfrage gestellt. Außerdem gibt es natürlich eine Grenze, 
+      wie viele Bügel finanzierbar sind und von den beauftragten Fachfirmen pro Jahr aufgestellt werden können. 
+      Mehrere Meldungen an einem Ort werden zusammengefasst und gemeinsam betrachtet. 
     `
   },
   {
     heading: 'Warum ist mein Bezirk nicht dabei?',
     text: `
-      Nach Abschluss des Meldezeitraums werden die Mitarbeiter und Mitarbeiterinnen des Tiefbauamtes in Friedrichshain-Kreuzberg alle Meldungen anschauen und auswerten, welche umsetzbar sind.
-      Du bekommst dann auf jeden Fall eine Rückmeldung, ob dein Wunsch realisiert werden kann. Wenn es Rückfragen gibt, wird sich das Bezirksamt ebenfalls bei dir melden.
-      Zusätzlich wird auf FixMyBerlin veröffentlicht, welche Standorte bald neue Fahrradbügel bekommen.
+      Dieses Pilotprojekt wird zunächst nur in Friedrichshain-Kreuzberg durchgeführt.
+      Wenn es erfolgreich läuft, soll es auch in anderen Bezirken gestartet werden.
+      Unter feedback@fixmyberlin.de kannst du uns gerne eine Rückmeldung geben,
+      was wir noch verbessern können und in welchem Bezirk du diesen Dialog gerne sehen würdest.
     `
   }
 ];
@@ -53,7 +61,7 @@ const content = [
 class FaqSection extends PureComponent {
   state = {
     content
-  }
+  };
 
   render() {
     const faqItems = this.state.content
@@ -66,6 +74,7 @@ class FaqSection extends PureComponent {
 
     return (
       <FaqWrapper>
+        <Heading>Häufige Fragen</Heading>
         {faqItems}
       </FaqWrapper>
     );

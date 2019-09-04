@@ -33,6 +33,7 @@ const PhotoInputImageLabel = styled.label`
 `;
 
 const PhotoInputLabel = styled.label`
+  font-weight: bold;
   display: block;
   margin-top: 12px;
   font-size: 14px;
@@ -149,7 +150,7 @@ class UploadPhotoInput extends PureComponent {
         <PhotoInputLabel
           htmlFor="photo-file-input"
         >
-          {`Foto ${this.state.photo ? 'neu' : ''} aufnehmen`}
+          {`Foto ${this.state.photo ? 'neu' : ''} aufnehmen oder hochladen`}
         </PhotoInputLabel>
 
       </Fragment>

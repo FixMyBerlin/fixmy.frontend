@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import RangeSlider from 'react-rangeslider';
-import {breakpoints} from '~/styles/utils';
+import 'react-rangeslider/lib/index.css'; // default styles
+import { breakpoints } from '~/styles/utils';
 
 export default styled(RangeSlider)`
 

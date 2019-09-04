@@ -28,8 +28,7 @@ const Hint = styled(Paragraph)`
 
 
 const PhotoDisclaimerWrapper = styled.div`
-  margin-top: 82px;
-  margin-bottom: 52px;
+  margin: 42px 14px 90px;
 `;
 
 const StyledCheckbox = styled.input`
@@ -87,7 +86,7 @@ class AdditionalDataForm extends PureComponent {
     const isDesktopView = matchMediaSize(breakpoints.m);
     this.props.addError(`Fehler beim ${isDesktopView ? 'hochladen' : 'aufnehmen'} des Fotos: 
     ${errorMsg}`);
-  }
+  };
 
   submit = () => {
     // marshall form data before submit
@@ -108,10 +107,12 @@ class AdditionalDataForm extends PureComponent {
   };
 
   render() {
+    const isDesktopView = matchMediaSize(breakpoints.m);
+
     return (
       <DialogStepWrapper>
-        <StyledHeading>Ein Foto des Ortes hilft den Planer:innen deine Meldung schneller zu bearbeiten.</StyledHeading>
-        <Hint>Ein Foto des Ortes hilft den Planer:innen deine Meldung schneller zu bearbeiten.</Hint>
+        <StyledHeading>Hier kannst du noch ein Foto von dem Ort und Hinweise an die Verwaltung ergänzen.</StyledHeading>
+        <Hint>Ein Foto des Ortes hilft der Verwaltung, die Situation vor Ort besser zu beurteilen und die Meldung schneller zu bearbeiten.</Hint>
 
         <UploadPhotoInput
           resizeOptions={config.reports.dialog.imageResizeOptions}
@@ -131,20 +132,21 @@ class AdditionalDataForm extends PureComponent {
               checked={this.state.photoDisclaimerTicked}
               onChange={this.togglePhotoDisclaimerTicked}
             />
-            Hiermit bestätige ich, dass auf den von mir eingestellten Fotos keine Personen abgebildet sind
+            Hiermit bestätige ich, dass auf den von mir eingestellten Fotos keine Personen abgebildet sind.
           </StyledCheckboxLabel>
         </PhotoDisclaimerWrapper>
 
-        <StyledHeading>Beschreibung des Ortes eingeben</StyledHeading>
+        <StyledHeading>Hinweise an die Verwaltung</StyledHeading>
 
         <DescriptionTextArea
-          rows={4}
-          maxRows={8}
+          rows={isDesktopView ? 6 : 8}
           maxLength={140}
           value={this.state.description}
           onChange={this.updateDescription}
-          placeholder={oneLine`Vor dem Kindergarten ist morgens immer viel los. Besonders 
-          Stellplätze für Lastenräder wären hier wichtig. Platz wäre direkt an der Hauswand.`}
+          placeholder={oneLine`
+          Beschreibe hier die Situation an dem Ort deiner 
+          Meldung oder nenne besondere Anforderungen, 
+          z.B. Stellplätze für Lastenräder, die Nähe einer Kita oder Ähnliches.`}
         />
 
         <WeiterButton

@@ -25,11 +25,9 @@ const SET_TEMP_LOCATION_ADDRESS = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_
 const CONFIRM_LOCATION = 'Reports/ReportsDialogState/CONFIRM_LOCATION';
 const ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
 const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
-export const BIKESTAND_PLACEMENT_SIDEWALK = 'SIDEWALK';
-export const BIKESTAND_PLACEMENT_STREET = 'STREET';
-const SET_BIKESTAND_NEEDS = 'Reports/ReportsDialogState/SET_BIKESTAND_NEEDS';
+const SET_BIKESTAND_COUNT = 'Reports/ReportsDialogState/SET_BIKESTAND_COUNT';
 const SET_ADDITIONAL_DATA = 'Reports/ReportsDialogState/SET_ADDITIONAL_DATA';
-const SET_DAILY_RENT = 'Reports/ReportsDialogState/SET_DAILY_RENT';
+const SET_FEE_ACCEPTABLE = 'Reports/ReportsDialogState/SET_FEE_ACCEPTABLE';
 const SUBMIT_REPORT = 'Reports/ReportsDialogState/SUBMIT_REPORT';
 const SUBMIT_REPORT_SUCCESS = 'Reports/ReportsDialogState/SUBMIT_REPORT_SUCCESS';
 const SUBMIT_REPORT_ERROR = 'Reports/ReportsDialogState/SUBMIT_REPORT_ERROR';
@@ -90,9 +88,9 @@ export const removeError = () => ({
   type: REMOVE_ERROR
 });
 
-export const setBikestandNeeds = formData => ({
-  type: SET_BIKESTAND_NEEDS,
-  payload: formData
+export const setBikestandCount = amount => ({
+  type: SET_BIKESTAND_COUNT,
+  payload: amount
 });
 
 export const setAdditionalData = formData => ({
@@ -100,9 +98,9 @@ export const setAdditionalData = formData => ({
   payload: formData
 });
 
-export const setDailyRent = dailyRent => ({
-  type: SET_DAILY_RENT,
-  dailyRent
+export const setFeeAcceptable = bool => ({
+  type: SET_FEE_ACCEPTABLE,
+  bool
 });
 
 async function loadReportsDataInner(dispatch) {
@@ -225,8 +223,7 @@ export default function ReportsReducer(state = initialState, action = {}) {
       return { ...state, reports: action.payload };
     case RESET_DIALOG_STATE:
       // set to default state, except for reports to not be forced to fetch data again
-      // and keep locationMode in order to display the map after user clicked "Ort ändern"
-      return { ...initialState, locationMode: state.locationMode, reports: state.reports };
+      return { ...initialState, reports: state.reports };
     case SET_DEVICE_LOCATION:
       return { ...state, deviceLocation: action.payload };
     case GEOCODE_DONE:
@@ -308,14 +305,17 @@ export default function ReportsReducer(state = initialState, action = {}) {
           message: null
         }
       };
-    case SET_BIKESTAND_NEEDS:
+    case SET_BIKESTAND_COUNT:
       return {
         ...state,
         newReport: {
           ...state.newReport,
           what: {
             ...state.newReport.what,
-            bikestands: action.payload
+            bikestands: {
+              ...(state.newReport.what && state.newReport.what.bikestands),
+              number: action.payload
+            }
           }
         }
       };
@@ -330,7 +330,7 @@ export default function ReportsReducer(state = initialState, action = {}) {
           }
         }
       };
-      case SET_DAILY_RENT:
+      case SET_FEE_ACCEPTABLE:
           return {
             ...state,
             newReport: {
@@ -339,7 +339,7 @@ export default function ReportsReducer(state = initialState, action = {}) {
                 ...state.newReport.what,
                 bikestands: {
                     ...state.newReport.what.bikestands,
-                    paymentReservesBikePark: action.dailyRent
+                    feeAcceptable: action.bool
                 }
               }
             }

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export default styled.h3`
-  font-size: 22px;
+export default styled.h4`
+  font-size: 16px;
   font-weight: bold;
-  color: ${config.colors.black};
+  color: ${config.colors.darkbg};
   text-align: ${props => props.alignLeft ? 'left' : 'center'};
 `;
