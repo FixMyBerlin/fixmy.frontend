@@ -14,7 +14,7 @@ const MapcenterIndicator = styled(X)`
   font-weight: bold;
   font-size: 34px;
   color: #cf0a7d;
-  transform: rotate(45deg);
+  transform: scale(1.5) rotate(45deg);
 `;
 
 // TODO: do proper dimensioning and positioning
