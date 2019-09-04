@@ -212,8 +212,8 @@ class LocateMeMap extends Component {
   }
 
   getLocatorControlPosition = ({ isDesktopView }) => (isDesktopView ?
-    { bottom: '100px', right: '15px' } :
-    { bottom: '100px', right: '8px' })
+    { bottom: '128px', right: '15px' } :
+    { bottom: '128px', right: '8px' })
 
   render() {
     // TODO: simplify usage by keeping getIsDesktopView() within styles util

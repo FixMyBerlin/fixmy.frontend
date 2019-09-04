@@ -15,7 +15,7 @@ const Button = styled.button`
   border-radius: 4px;
   // TODO: make the wrapping component take care of positioning
   position: absolute;
-  bottom: 37px;
+  bottom: 55px;
   left: 0;
   right: 0;
   margin: auto;
