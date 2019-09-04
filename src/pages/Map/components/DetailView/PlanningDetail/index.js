@@ -170,7 +170,7 @@ class PlanningDetails extends PureComponent {
         </DetailBody>
         {config.showLikeButton && (
           <DetailFooter>
-           <PlanningLike token={this.props.token} url={url} id={this.props.match.params.id} />}
+            <PlanningLike token={this.props.token} url={url} id={this.props.match.params.id} />
           </DetailFooter>
         )}
       </Fragment>
