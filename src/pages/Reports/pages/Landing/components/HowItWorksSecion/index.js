@@ -44,11 +44,11 @@ const StyledQuestion = styled.p`
 const stepsConfig = [
   {
     step: 1,
-    text: 'Alle Berliner:innen können melden wo neue Bügel benötigt werden.',
-    color: config.colors.interaction // TODO: use actual colors
+    text: 'Du meldest, wo neue Bügel benötigt werden.',
+    color: config.colors.interaction
   }, {
     step: 2,
-    text: 'Alle Meldungen, die bis zum 15. September eingehen, übergeben wir gesammelt an den Bezirk.',
+    text: 'Alle Meldungen, die bis zum 10. Oktober eingehen, übergeben wir gesammelt an den Bezirk.',
     color: '#ff99d5' // TODO: add to colors config
   }, {
     step: 3,
@@ -56,7 +56,7 @@ const stepsConfig = [
     color: '#cf0a7d' // TODO: add to colors config
   }, {
     step: 4,
-    text: 'Sofern sie umsetzbar sind, werden sie noch in diesem Jahr installiert.',
+    text: 'Sofern sie umsetzbar sind, werden die Bügel noch in diesem Jahr installiert.',
     color: config.colors.black
   }
 ];
