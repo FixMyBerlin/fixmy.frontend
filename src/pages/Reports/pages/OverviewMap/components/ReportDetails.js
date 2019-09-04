@@ -1,12 +1,13 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import styled from 'styled-components';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
 import ShareIcon from '~/images/reports/share.svg';
+import ReportPinIcon from '~/images/reports/pin-meldung-yellow.png';
 
 import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
 import PlanningLike from '~/pages/Map/components/DetailView/PlanningDetail/PlanningLike';
 import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
-import { getReportStatusCaption } from '~/pages/Reports/apiservice';
+import {getReportStatusCaption} from '~/pages/Reports/apiservice';
 
 import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
 import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
@@ -110,6 +111,21 @@ const ShareButton = styled(ShareIcon)`
   margin: 0 25px 30px 25px;
 `;
 
+const StatusIndicatorWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: bottom;
+`;
+
+const ReportPin = styled.img.attrs({
+  src: ReportPinIcon,
+  alt: 'A marker icon'
+})`
+  display: block;
+  width: 40px;
+  height: 51px;
+`;
+
 
 class ReportDetails extends PureComponent {
   /**
@@ -118,7 +134,7 @@ class ReportDetails extends PureComponent {
    * TODO: test
    */
   shareReport = () => {
-    const { reportItem } = this.props;
+    const {reportItem} = this.props;
 
     if (!navigator.share) {
       console.warn('Share API not present');
@@ -140,31 +156,34 @@ class ReportDetails extends PureComponent {
     .toLocaleDateString('de-DE', {month: '2-digit', day: '2-digit', year: 'numeric'})
 
   render() {
-    const { reportItem } = this.props;
+    const {reportItem} = this.props;
 
     if (typeof reportItem === 'undefined') {
       return null;
     }
 
-    const { photo, details, description, id, status, created_date } = reportItem;
+    const {photo, details, description, id, status, created_date} = reportItem;
 
     return (
       <Wrapper>
-        {photo && photo.src && (<ReportImage src={photo.src} />)}
+        {photo && photo.src && (<ReportImage src={photo.src}/>)}
 
         <Main>
 
           <HeadlineSection>
             <Heading alignLeft>{details.number} neue Fahrradbügel gewünscht</Heading>
             <BikeStandsCountSection>
-              <BikestandsIcon />
+              <BikestandsIcon/>
               <BikeStandsCount>x{details.number}</BikeStandsCount>
             </BikeStandsCountSection>
           </HeadlineSection>
 
-          <StatusIndicator>Status: {getReportStatusCaption(status)}</StatusIndicator>
+          <StatusIndicatorWrapper>
+            <StatusIndicator>Status: {getReportStatusCaption(status)}</StatusIndicator>
+            <ReportPin />
+          </StatusIndicatorWrapper>
 
-          <HorizontalRuler className="light " />
+          <HorizontalRuler className="light "/>
 
           {
             description && (
@@ -181,14 +200,14 @@ class ReportDetails extends PureComponent {
             </IndicatorValue>
           </IndicatorSection>
 
-          <HorizontalRuler className="light" />
+          <HorizontalRuler className="light"/>
 
           {created_date && (<Text>Meldung vom: {this.formatDate(created_date)}</Text>)}
 
         </Main>
 
         <SocialFooter>
-          <Fill />
+          <Fill/>
           <PlanningLike
             token={this.props.token}
             url={`${config.apiUrl}/reports/${id}`}
@@ -196,12 +215,12 @@ class ReportDetails extends PureComponent {
           />
           {navigator.share ? (
             <ShareButtonWrapper>
-              <ShareButton onClick={this.shareReport} />
+              <ShareButton onClick={this.shareReport}/>
               <LikeButtonCaption>
                 Teilen
               </LikeButtonCaption>
             </ShareButtonWrapper>
-          ) : <Fill />}
+          ) : <Fill/>}
         </SocialFooter>
 
       </Wrapper>
