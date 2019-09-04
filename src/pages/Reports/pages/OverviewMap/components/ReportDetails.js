@@ -59,7 +59,7 @@ const StatusIndicator = styled.p`
   color: ${config.colors.black};
 `;
 
-const Description = styled.p`
+const Text = styled.p`
   color: ${config.colors.darkgrey};
   font-size: 16px;
 `;
@@ -80,7 +80,7 @@ const IndicatorTitle = styled.p`
   flex-flow: 2;
 `;
 
-const IndicatorValue = styled(Description)`
+const IndicatorValue = styled(Text)`
   flex-flow: 1;
   text-align: center;
   white-space: pre-wrap;
@@ -136,6 +136,9 @@ class ReportDetails extends PureComponent {
     }
   }
 
+  formatDate = dateString => new Date(dateString)
+    .toLocaleDateString('de-DE', {month: '2-digit', day: '2-digit', year: 'numeric'})
+
   render() {
     const { reportItem } = this.props;
 
@@ -143,7 +146,7 @@ class ReportDetails extends PureComponent {
       return null;
     }
 
-    const { photo, details, description, id, status } = reportItem;
+    const { photo, details, description, id, status, created_date } = reportItem;
 
     return (
       <Wrapper>
@@ -167,7 +170,7 @@ class ReportDetails extends PureComponent {
             description && (
               <>
                 <SubHeading alignLeft>Hinweise an die Verwaltung</SubHeading>
-                <Description>{description}</Description>
+                <Text>{description}</Text>
               </>
             )
           }
@@ -179,6 +182,8 @@ class ReportDetails extends PureComponent {
           </IndicatorSection>
 
           <HorizontalRuler className="light" />
+
+          {created_date && (<Text>Meldung vom: {this.formatDate(created_date)}</Text>)}
 
         </Main>
 
