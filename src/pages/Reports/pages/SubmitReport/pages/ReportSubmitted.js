@@ -217,9 +217,9 @@ class ReportSubmitted extends PureComponent {
         <ThanksImg src={thanksImageSrc} />
 
         <Text>
-          Deine Meldung ist nun online, alle Meldungen werden gesammelt und dem Bezirksamt am 10. Oktober 2019 übergeben.
-          Die Planer*innen im Tiefbauamt prüfen dann welche Meldungen umgesetzt werden können. Die Ergebnisse siehst du
-          hier auf der Karte.
+          Deine Meldung ist nun online, alle Meldungen werden gesammt und dem Bezirksamt am 10. Oktober 2019 übergeben.
+          Die Planer:innen im Straßen- und Grünflächenamt prüfen dann, welche Meldungen umgesetzt werden können.
+          Die Ergebnisse siehst du hier auf der Karte.
         </Text>
 
         <HorizontalRuler />
