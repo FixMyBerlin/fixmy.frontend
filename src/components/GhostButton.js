@@ -9,8 +9,6 @@ export default styled(Button)`
   border-radius: 6px;
   display: block;
   padding: 12px 24px 8px 24px;
-  width: 275px;
-  font-size: 18px;
 
   &:hover {
     opacity: 0.8;

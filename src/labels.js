@@ -16,10 +16,11 @@ export const districts = [
 export const homeLabels = {
   title: 'Hi, das ist FixMyBerlin',
   intro: `
-    Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Auf der Karte mit den Planungen siehst du was Berlin dafür plant.
+    <strong>News!</strong> Am 11. Oktober starten wir gemeinsam mit dem Bezirksamt Friedrichshain-Kreuzberg einen Meldedialog für Fahrradbügel.
   `,
   button: 'Worum geht es hier genau?',
-  mapButton: 'Gehe zur Karte'
+  reportsButton: 'Jetzt Radbügel melden',
+  mapButton: 'Gehe zur Planungskarte'
 };
 
 export const errorLabels = {
