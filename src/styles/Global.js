@@ -89,15 +89,23 @@ export default createGlobalStyle`
     }
 
     .reports-cluster {
-      width: 26px;
-      height: 26px;
+      width: 40px;
+      height: 40px;
       border: 3px solid rgb(38, 204, 186);
       background: white;
+      border-radius: 50%;
+    }
+
+    .reports-cluster__inner {
+      border: 3px solid rgba(38, 204, 186, 0.3);
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 50%;
-      font-size: 12px;
+      font-size: 16px;
+      font-weight: 700;
     }
 
     .wiggle {
