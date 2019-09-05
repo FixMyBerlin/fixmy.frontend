@@ -14,11 +14,14 @@ import Form from '~/components/Form';
 import FormField from '~/components/FormField';
 import GhostButton from '~/components/GhostButton';
 import history from '~/history';
+import Store from '~/store';
 import { addUserToReport } from '~/pages/Reports/apiservice';
 import { apiUpdate } from '~/pages/User/apiservice';
+import UserForm from '~/pages/User/components/UserForm';
+import { login } from '~/pages/User/UserState';
 
 import thanksImageSrc from '~/images/reports/reports-thanks.png';
-import Link from '~/components/Link';
+
 
 const formConfig = [{
   id: 'email',
@@ -31,7 +34,7 @@ const formConfig = [{
   id: 'login',
   value: false,
   type: 'checkbox',
-  labelUser: 'Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.',
+  labelUser: 'Ich möchte über den Fortschritt meiner Meldung informiert zu werden.',
   labelNoUser: 'Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.'
 }, {
   id: 'newsletter',
@@ -76,10 +79,11 @@ const ButtonWrapper = styled.div`
   justify-content: center;
 `;
 
-const LoginLink = styled(Link)`
+const LoginExpand = styled.div`
   font-size: 14px;
   font-weight: bold;
-  margin-bottom: 48px;
+  color: ${config.colors.interaction};
+  cursor: pointer;
 `;
 
 const FormWrapper = styled.div`
@@ -104,7 +108,17 @@ const ErrorLabel = styled.div`
   font-weight: 700;
 `;
 
+const loginFormConfig = [
+  { id: 'username', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' },
+  { id: 'password', value: '', type: 'password', label: 'Passwort', placeholder: 'Passwort eingeben...', validateError: 'Bitte geben Sie Ihr Passwort an.' }
+];
+
 class ReportSubmitted extends PureComponent {
+
+  state = {
+    showLoginForm: false
+  }
+
   componentDidMount = () => {
     this.unlistenToHistory = history.listen((location, action) => {
       if (action === 'POP') { // if this is an attempt to navigate backwards ..
@@ -146,8 +160,6 @@ class ReportSubmitted extends PureComponent {
       setSubmitting(false);
       return false;
     }
-
-    console.log(values);
 
     if (values.login) {
       const userData = {
@@ -205,6 +217,14 @@ class ReportSubmitted extends PureComponent {
     return res;
   }, {})
 
+  onLoginExpand = () => {
+    this.setState(prevState => ({ showLoginForm: !prevState.showLoginForm }));
+  }
+
+  onLoginFormSubmit = (values, params) => {
+    Store.dispatch(login(values, params));
+  }
+
   render() {
     const { error, token } = this.props;
 
@@ -256,35 +276,50 @@ class ReportSubmitted extends PureComponent {
             validateOnChange={false}
             validateOnBlur={false}
             render={({
-                       values,
-                       errors,
-                       handleSubmit,
-                       isSubmitting,
-                       handleChange
-                     }) => (
-                       <Form onSubmit={handleSubmit}>
-                         {formConfigParsed.map(d => (
-                           <FormField
-                             key={`feedbackfield__${d.id}`}
-                             className={`formtype-${d.type}`}
-                             {...d}
-                             values={values}
-                             errors={errors}
-                             handleChange={handleChange}
-                           />
+              values,
+              errors,
+              handleSubmit,
+              isSubmitting,
+              handleChange
+            }) => (
+              <Form onSubmit={handleSubmit}>
+                {formConfigParsed.map(d => (
+                  <FormField
+                    key={`feedbackfield__${d.id}`}
+                    className={`formtype-${d.type}`}
+                    {...d}
+                    values={values}
+                    errors={errors}
+                    handleChange={handleChange}
+                  />
                 ))}
-                         {errors.server && <ErrorLabel>{errors.server}</ErrorLabel>}
-                         <ButtonWrapper>
-                           <SubmitButton type="submit" disabled={isSubmitting}>
+                {errors.server && <ErrorLabel>{errors.server}</ErrorLabel>}
+                <ButtonWrapper>
+                  <SubmitButton type="submit" disabled={isSubmitting}>
                     Absenden
-                           </SubmitButton>
-                         </ButtonWrapper>
-                       </Form>
+                  </SubmitButton>
+                </ButtonWrapper>
+              </Form>
             )}
           />
         </FormWrapper>
 
-        <LoginLink to={config.routes.login}>Ich habe bereits einen Login</LoginLink>
+        {!token && (
+          <LoginExpand
+            onClick={this.onLoginExpand}
+          >
+            Ich habe bereits einen Login
+          </LoginExpand>
+        )}
+
+        {(this.state.showLoginForm && !token) && (
+          <UserForm
+            title="Login"
+            buttonLabel="Einloggen"
+            formConfig={loginFormConfig}
+            onSubmit={this.onLoginFormSubmit}
+          />
+        )}
 
         <GhostButton
           onClick={this.goToMap}
