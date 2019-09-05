@@ -99,6 +99,11 @@ const FormWrapper = styled.div`
   }
 `;
 
+const ErrorLabel = styled.div`
+  color: ${config.colors.error};
+  font-weight: 700;
+`;
+
 class ReportSubmitted extends PureComponent {
   componentDidMount = () => {
     this.unlistenToHistory = history.listen((location, action) => {
@@ -142,6 +147,8 @@ class ReportSubmitted extends PureComponent {
       return false;
     }
 
+    console.log(values);
+
     if (values.login) {
       const userData = {
         email: values.email,
@@ -155,7 +162,17 @@ class ReportSubmitted extends PureComponent {
         await addUserToReport(this.props.reportId, user.id);
       } catch (err) {
         setSubmitting(false);
-        return setErrors({ server: 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.' });
+        let errorMessage = 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.';
+
+        if (err.response && err.response.json) {
+          const errResponse = await err.response.json();
+
+          if (errResponse.username) {
+            errorMessage = 'Du hast bereits einen Login, bitte melde Dich an.';
+          }
+        }
+
+        return setErrors({ server: errorMessage });
       }
 
       if (values.newsletter) {
@@ -227,7 +244,7 @@ class ReportSubmitted extends PureComponent {
         <Heading>
           {token ?
             'Erhalte Updates zu deiner Meldung und trage dich beim Newsletter ein.' :
-            'Gib deine Emailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung schicken können.'
+            'Gib deine E-Mailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung schicken können.'
           }
         </Heading>
 
@@ -256,7 +273,7 @@ class ReportSubmitted extends PureComponent {
                              handleChange={handleChange}
                            />
                 ))}
-                         {errors.server && <div>{errors.server}</div>}
+                         {errors.server && <ErrorLabel>{errors.server}</ErrorLabel>}
                          <ButtonWrapper>
                            <SubmitButton type="submit" disabled={isSubmitting}>
                     Absenden
