@@ -144,7 +144,7 @@ class ReportSubmitted extends PureComponent {
     setErrors(false);
     setSubmitting(false);
 
-    this.goToMap();
+    this.props.nextStep();
   }
 
   onSubmit = async (values, { setSubmitting, setErrors }) => {
@@ -194,7 +194,7 @@ class ReportSubmitted extends PureComponent {
       setErrors(false);
       setSubmitting(false);
 
-      this.goToMap();
+      this.props.nextStep();
     }
   }
 
