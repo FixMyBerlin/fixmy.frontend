@@ -8,10 +8,23 @@ const Markers = {
 };
 
 
-function getClusterMarker({ html, map, clusterSource, id, lngLat }) {
+function getClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   const el = document.createElement('div');
   el.className = 'reports-cluster';
-  el.innerHTML = html;
+
+  const elInner = document.createElement('div');
+  elInner.className = 'reports-cluster__inner';
+  elInner.innerHTML = pointCount;
+
+  el.appendChild(elInner);
+
+  if (pointCount >= 10) {
+    el.style.width = '50px';
+    el.style.height = '50px';
+  } else if (pointCount > 24) {
+    el.style.width = '60px';
+    el.style.height = '60px';
+  }
 
   el.addEventListener('click', () => {
     clusterSource.getClusterExpansionZoom(id, (err, zoom) => {
@@ -36,6 +49,8 @@ function getPinMarker({ markerData, lngLat, selectedReport, detailId }) {
   el.dataset.id = markerData.id;
   el.style.cursor = 'pointer';
   el.style.opacity = 1;
+  el.style.width = '40px';
+  el.style.height = 'auto';
 
   if (selectedReport || detailId) {
     const activeId = selectedReport ? selectedReport.id : detailId;
@@ -46,7 +61,7 @@ function getPinMarker({ markerData, lngLat, selectedReport, detailId }) {
     }
   }
 
-  el.innerHTML = `<img class="marker-image" src="${Markers[details.subject]}" />`;
+  el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${Markers[details.subject]}" />`;
   el.addEventListener('click', evt => this.props.onClick(evt, markerData));
 
   return new MapboxGL.Marker(el)
@@ -97,7 +112,7 @@ class ReportMarkers extends PureComponent {
 
       if (isCluster && !marker) {
         const { point_count } = markerData.properties;
-        marker = getClusterMarker({ html: point_count, lngLat, clusterSource, id: markerData.properties.cluster_id, map });
+        marker = getClusterMarker({ pointCount: point_count, lngLat, clusterSource, id: markerData.properties.cluster_id, map });
       } else if (!isCluster && !marker) {
         marker = getPinMarker({ markerData: markerData.properties, lngLat, selectedReport, detailId });
       }

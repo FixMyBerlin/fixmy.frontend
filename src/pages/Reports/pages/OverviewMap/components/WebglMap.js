@@ -113,14 +113,14 @@ class WebglMap extends PureComponent {
         onLoad={map => this.onLoad(map)}
         onMove={() => this.props.onMove()}
       >
-        <ReportMarkers
+        {/*<ReportMarkers
           map={this.map}
           data={reportsData}
           onClick={onMarkerClick}
           selectedReport={selectedReport}
           detailId={detailId}
-        />
-        {/* reportsData.length && (
+        />*/}
+        {reportsData.length && (
           <ClusterWrapper
             name="reports-cluster"
             map={this.map}
@@ -138,7 +138,7 @@ class WebglMap extends PureComponent {
               />
             )}
           />
-        ) */}
+        )}
       </BaseMap>
     );
   }
