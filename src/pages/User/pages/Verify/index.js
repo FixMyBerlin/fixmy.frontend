@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
 import Link from 'react-router-dom/Link';
+import ky from 'ky';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
@@ -22,7 +23,7 @@ const Text = styled(Paragraph)`
 
 const VerifyImage = styled.img`
   max-width: 250px;
-  margin: 20px auto;
+  margin: 20px auto 30px auto;
   display: block;
 `;
 
@@ -32,29 +33,61 @@ const ButtonWrapper = styled.div`
   align-items: center;
 `;
 
-const UserVerify = () => {
+const ErrorMessage = styled.div`
+  margin: 10px 0;
+  color: ${config.colors.error};
+  font-weight: bold;
+  text-align: center;
+`;
+
+const UserVerify = ({ match }) => {
+  const [serverError, serServerError] = useState(null);
+
+  useEffect(() => {
+    const confirmUser = async () => {
+      const { uid, token } = match.params;
+
+      try {
+        await ky(`${config.apiUrl}/users/confirm/`, { method: 'POST', json: { uid, token } }).text();
+      } catch (e) {
+        console.log(e);
+        serServerError('Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden.');
+      }
+    };
+
+    confirmUser();
+  }, []);
+
   return (
     <ContentPageWrapper>
       <StyledHeading>
-        Super, dein Account ist aktiviert. Du kannst jetzt Meldungen und Planungen ‚Liken‘.
+        {serverError ?
+          'Dein Account konnte leider nicht aktiviert werden!' :
+          'Super, dein Account ist aktiviert. Du kannst jetzt Meldungen und Planungen ‚Liken‘.'
+        }
       </StyledHeading>
 
       <VerifyImage src={verifyImageSrc} />
 
-      <Text>
-      Links oben im Menu kannst du dich an- und abmelden.
-      Unter deinem Profil kannst du von dir gelikte Planungen und Meldungen sehen, sowie dein Passwort ändern.
-      </Text>
+      {!serverError && (
+        <Fragment>
+          <Text>
+            Links oben im Menu kannst du dich an- und abmelden.
+            Unter deinem Profil kannst du von dir gelikte Planungen und Meldungen sehen, sowie dein Passwort ändern.
+          </Text>
+          <ButtonWrapper>
+            <Link to={config.routes.login}>
+              <Button
+                style={{ marginTop: 25, marginBottom: 10 }}
+              >
+                Zum Login
+              </Button>
+            </Link>
+          </ButtonWrapper>
+        </Fragment>
+      )}
 
-      <ButtonWrapper>
-        <Link to={config.routes.login}>
-          <Button
-            style={{ marginTop: 25, marginBottom: 10 }}
-          >
-            Zum Login
-          </Button>
-        </Link>
-      </ButtonWrapper>
+      {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
     </ContentPageWrapper>
   );
 };
