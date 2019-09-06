@@ -7,7 +7,6 @@ import withRouter from 'react-router/withRouter';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusterWrapper from './ClusterWrapper';
 import ReportMarkersClustered from './ReportMarkersClustered';
-import ReportMarkers from './ReportMarkers';
 
 function toFeature(d) {
   const { geometry, ...properties } = d;
@@ -113,13 +112,6 @@ class WebglMap extends PureComponent {
         onLoad={map => this.onLoad(map)}
         onMove={() => this.props.onMove()}
       >
-        {/*<ReportMarkers
-          map={this.map}
-          data={reportsData}
-          onClick={onMarkerClick}
-          selectedReport={selectedReport}
-          detailId={detailId}
-        />*/}
         {reportsData.length && (
           <ClusterWrapper
             name="reports-cluster"

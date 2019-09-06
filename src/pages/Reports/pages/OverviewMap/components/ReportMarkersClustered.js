@@ -42,7 +42,7 @@ function getClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
     .setOffset([-10, -10]);
 }
 
-function getPinMarker({ markerData, lngLat, selectedReport, detailId }) {
+function getPinMarker({ markerData, geometry, lngLat, selectedReport, detailId, onClick }) {
   const details = JSON.parse(markerData.details || {});
   const el = document.createElement('div');
 
@@ -61,8 +61,11 @@ function getPinMarker({ markerData, lngLat, selectedReport, detailId }) {
     }
   }
 
+  markerData.geometry = geometry;
+  markerData.details = details;
+
   el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${Markers[details.subject]}" />`;
-  el.addEventListener('click', evt => this.props.onClick(evt, markerData));
+  el.addEventListener('click', evt => onClick(evt, markerData));
 
   return new MapboxGL.Marker(el)
     .setLngLat(lngLat)
@@ -114,7 +117,14 @@ class ReportMarkers extends PureComponent {
         const { point_count } = markerData.properties;
         marker = getClusterMarker({ pointCount: point_count, lngLat, clusterSource, id: markerData.properties.cluster_id, map });
       } else if (!isCluster && !marker) {
-        marker = getPinMarker({ markerData: markerData.properties, lngLat, selectedReport, detailId });
+        marker = getPinMarker({
+          markerData: markerData.properties,
+          geometry: markerData._geometry,
+          lngLat,
+          selectedReport,
+          detailId,
+          onClick: this.props.onClick
+        });
       }
 
       this.markerCache[id] = marker;
