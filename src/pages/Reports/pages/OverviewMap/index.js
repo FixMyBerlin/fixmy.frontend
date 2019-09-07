@@ -163,7 +163,9 @@ class OverviewMap extends Component {
 
     return (
       <MapView>
-        <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
+        <OverviewMapNavBar
+          heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg"
+        />
         <MapWrapper>
           <WebglMap
             reportsData={reports}

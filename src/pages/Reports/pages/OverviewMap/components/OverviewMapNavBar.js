@@ -4,6 +4,7 @@ import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import PropTypes from 'prop-types';
 import Link from 'react-router-dom/Link';
+import {breakpoints, matchMediaSize} from "~/styles/utils";
 
 const Wrapper = styled.div`
   margin: 0;
@@ -59,8 +60,12 @@ const TinyLink = styled(Link)`
   }
 `;
 
-const TinyEmailLink = TinyLink.withComponent('a');
+const TinyEmailLink = styled(TinyLink)`
+  position: ${({ isMobile }) => isMobile && 'absolute'};
+  right: ${({ isMobile }) => isMobile && '8px'};
+`;
 
+const getIsDesktop = () => matchMediaSize(breakpoints.m);
 
 const OverviewMapNavBar = ({ heading }) => (
   <Wrapper>
@@ -68,8 +73,12 @@ const OverviewMapNavBar = ({ heading }) => (
     <TextWrapper>
       <Heading>{heading}</Heading>
       <LinkSection>
-        <TinyLink to={config.routes.reports.landing}>Alle Details &gt;</TinyLink>
-        <TinyEmailLink href={`mailto:${config.feedbackMail}?subject=Feedback zum Meldedialog`}>Feedback zum Meldedialog?
+        <TinyLink to={config.routes.reports.landing}>Alle Details</TinyLink>
+        <TinyEmailLink
+          as="a"
+          isMobile={!getIsDesktop()}
+          href={`mailto:${config.feedbackMail}?subject=Feedback zum Meldedialog`}
+        >Feedback zum Meldedialog?
         </TinyEmailLink>
       </LinkSection>
 
