@@ -67,7 +67,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
       <StyledWeiterButton
         onClick={() => onConfirm(wouldPay)}
         disabled={typeof wouldPay !== 'boolean'}
-      >Meldung Abschließen
+      >Meldung abschließen
       </StyledWeiterButton>
 
       <StyledSubHeading>Was sind Fahrradparkhäuser?</StyledSubHeading>
