@@ -9,6 +9,11 @@ const FaqWrapper = styled.div`
   margin-bottom: 62px;
 `;
 
+const linkStyle = `
+  color: ${config.colors.interaction};
+  text-decoration: none;
+ `;
+
 const content = [
   {
     heading: 'Warum sollte ich mitmachen?',
@@ -52,7 +57,10 @@ const content = [
     text: `
       Dieses Pilotprojekt wird zunächst nur in Friedrichshain-Kreuzberg durchgeführt.
       Wenn es erfolgreich läuft, soll es auch in anderen Bezirken gestartet werden.
-      Unter feedback@fixmyberlin.de kannst du uns gerne eine Rückmeldung geben,
+      Unter <a style="${linkStyle}"
+      href="mailto:${config.feedbackMail}?subject=Feedback zum Meldedialog"
+      >${config.feedbackMail}</a>
+      kannst du uns gerne eine Rückmeldung geben,
       was wir noch verbessern können und in welchem Bezirk du diesen Dialog gerne sehen würdest.
     `
   }
