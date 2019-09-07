@@ -50,12 +50,35 @@ const StyledCheckboxLabel = styled.label`
    cursor: pointer;
 `;
 
+const PLACEHOLDER_COLOR = config.colors.midgrey;
+
 const DescriptionTextArea = styled(TextareaAutosize)`
   margin-top: 26px;
   width: 90%;
   max-width: ${breakpoints.s}px;
   font-size: 16px;
   padding: 8px;
+  
+  /* placeholder color */
+ &&::-webkit-input-placeholder {
+    color: ${PLACEHOLDER_COLOR};
+  }
+  
+ &&:-moz-placeholder { /* Firefox 18- */
+    color: ${PLACEHOLDER_COLOR};  
+  }
+  
+ &&::-moz-placeholder {  /* Firefox 19+ */
+    color: ${PLACEHOLDER_COLOR};  
+  }
+  
+ &&:-ms-input-placeholder {
+    color: ${PLACEHOLDER_COLOR};  
+  }
+  
+ &&::placeholder {
+    color: ${PLACEHOLDER_COLOR};  
+  }
 
   &:focus {
     outline-color: ${config.colors.interaction};
