@@ -209,8 +209,7 @@ class ReportSubmitted extends PureComponent {
 
     return (
       <DialogStepWrapper>
-        <StyledHeading>Du hilfst mit, Friedrichshain-
-          Kreuzberg radfreundlicher
+        <StyledHeading>Du hilfst mit, Friedrichshain-Kreuzberg radfreundlicher
           zu machen!
         </StyledHeading>
 
