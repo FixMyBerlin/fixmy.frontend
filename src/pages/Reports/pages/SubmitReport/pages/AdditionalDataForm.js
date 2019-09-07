@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
+import React, {PureComponent} from 'react';
+import {connect} from 'react-redux';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { oneLine } from 'common-tags';
+import {oneLine} from 'common-tags';
 import TextareaAutosize from 'react-autosize-textarea';
 
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
@@ -11,7 +11,7 @@ import UploadPhotoInput from '~/pages/Reports/pages/SubmitReport/components/Uplo
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
-import { matchMediaSize, breakpoints } from '~/styles/utils';
+import {matchMediaSize, breakpoints} from '~/styles/utils';
 import {
   removeError,
   addError
@@ -103,7 +103,7 @@ class AdditionalDataForm extends PureComponent {
     };
   }
 
-  onPhotoUpload = photo => this.setState({ photo })
+  onPhotoUpload = photo => this.setState({photo})
 
   onPhotoUploadError = (errorMsg) => {
     const isDesktopView = matchMediaSize(breakpoints.m);
@@ -113,20 +113,29 @@ class AdditionalDataForm extends PureComponent {
 
   submit = () => {
     // marshall form data before submit
-    const stateToSubmit = { ...this.state };
+    const stateToSubmit = {...this.state};
     delete stateToSubmit.photoDisclaimerTicked;
     this.props.onConfirm(stateToSubmit);
   };
 
-  isSubmittable = () => (this.state.photo !== null && this.state.photoDisclaimerTicked) ||
-    this.state.description.length;
+  isSubmittable = () => {
+    let isSubmittable;
+    const { photo, photoDisclaimerTicked, description } = this.state;
+
+    isSubmittable = photo || description;
+
+    if (photo && !photoDisclaimerTicked) {
+      isSubmittable = false;
+    }
+    return isSubmittable;
+  };
 
   togglePhotoDisclaimerTicked = () => {
-    this.setState(prevState => ({ photoDisclaimerTicked: !prevState.photoDisclaimerTicked }));
+    this.setState(prevState => ({photoDisclaimerTicked: !prevState.photoDisclaimerTicked}));
   };
 
   updateDescription = (evt) => {
-    this.setState({ description: evt.target.value });
+    this.setState({description: evt.target.value});
   };
 
   render() {
@@ -135,7 +144,8 @@ class AdditionalDataForm extends PureComponent {
     return (
       <DialogStepWrapper>
         <StyledHeading>Hier kannst du noch ein Foto von dem Ort und Hinweise an die Verwaltung ergänzen.</StyledHeading>
-        <Hint>Ein Foto des Ortes hilft der Verwaltung, die Situation vor Ort besser zu beurteilen und die Meldung schneller zu bearbeiten.</Hint>
+        <Hint>Ein Foto des Ortes hilft der Verwaltung, die Situation vor Ort besser zu beurteilen und die Meldung
+          schneller zu bearbeiten.</Hint>
 
         <UploadPhotoInput
           resizeOptions={config.reports.dialog.imageResizeOptions}
@@ -144,7 +154,7 @@ class AdditionalDataForm extends PureComponent {
         />
 
         <PhotoDisclaimerWrapper>
-          <StyledCheckboxLabel htmlFor="photo-disclaimer-tick" style={{ alignSelf: 'flex-start' }}>
+          <StyledCheckboxLabel htmlFor="photo-disclaimer-tick" style={{alignSelf: 'flex-start'}}>
             <StyledCheckbox
               type="checkbox"
               id="photo-disclaimer-tick"
@@ -193,6 +203,6 @@ class AdditionalDataForm extends PureComponent {
 }
 
 export default connect(
-  state => ({ error: state.ReportsState.error }),
-  { addError, removeError }
+  state => ({error: state.ReportsState.error}),
+  {addError, removeError}
 )(AdditionalDataForm);
