@@ -41,21 +41,38 @@ const BikeParkImg = styled(BikeParkIcon)`
   flex-shrink: 0;
 `;
 
-const AllDetailsLink = styled(Link)`
+const LinkSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const TinyLink = styled(Link)`
   display: block;
   margin-top: 2px;
   font-size: 10px;
   color: #999999;
   margin: 0;
   text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+  }
 `;
+
+const TinyEmailLink = TinyLink.withComponent('a');
+
 
 const OverviewMapNavBar = ({ heading }) => (
   <Wrapper>
     <StyledMenuButton />
     <TextWrapper>
       <Heading>{heading}</Heading>
-      <AllDetailsLink to={config.routes.reports.landing}>Alle Details &gt;</AllDetailsLink>
+      <LinkSection>
+        <TinyLink to={config.routes.reports.landing}>Alle Details &gt;</TinyLink>
+        <TinyEmailLink href={`mailto:${config.feedbackMail}?subject=Feedback zum Meldedialog`}>Feedback zum Meldedialog?
+        </TinyEmailLink>
+      </LinkSection>
+
     </TextWrapper>
     <BikeParkImg alt="Icon Fahrradparkplätze" />
   </Wrapper>
