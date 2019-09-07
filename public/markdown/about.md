@@ -1,5 +1,5 @@
 # Wie wird Berlin zur Fahrradstadt?
-FixMyBerlin setzt sich für nachhaltige Mobilität und insbesondere für den Radverkehr ein. FixMyBerlin begleitet Berlin bei der Umsetzung des [Mobilitätsgesetzes](https://www.berlin.de/senuvk/verkehr/mobilitaetsgesetz/ "Mobilitätsgesetzes") mit dem Zweck der lebenswerten Stadt von morgen.
+FixMyBerlin begleitet Berlin bei der Umsetzung des [Mobilitätsgesetzes](https://www.berlin.de/senuvk/verkehr/mobilitaetsgesetz/ "Mobilitätsgesetzes") und entwickelt digitale Werkzeuge für die Verkehrswende.
 
 Die Transformation zur Fahrradstadt Berlin wird auf der Plattform von FixMyBerlin verständlich und nachvollziehbar auf Karten darstellt. Hierfür stimmt sich FixMyBerlin mit den Bezirken und der Senatsverwaltung ab und bereitet [deren Radverkehrsplanungen](/zustand "Karte mit Planungen") auf und stellt die aufbereiteten Daten wiederum [zum Download bereit](/api "API von FixMyBerlin"). Der von FixMyBerlin entwickelte [Happy-Bike-Index](/zustand "Karte zum Happy-Bike-Index") zeigt außerdem, wo schon entspannt und sicher Rad gefahren werden kann (grün) bzw. wo es noch gefährlich ist (rot).
 
