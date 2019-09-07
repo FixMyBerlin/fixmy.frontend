@@ -3,7 +3,7 @@ FixMyBerlin setzt sich für nachhaltige Mobilität und insbesondere für den Rad
 
 Die Transformation zur Fahrradstadt Berlin wird auf der Plattform von FixMyBerlin verständlich und nachvollziehbar auf Karten darstellt. Hierfür stimmt sich FixMyBerlin mit den Bezirken und der Senatsverwaltung ab und bereitet [deren Radverkehrsplanungen](/zustand "Karte mit Planungen") auf und stellt die aufbereiteten Daten wiederum [zum Download bereit](/api "API von FixMyBerlin"). Der von FixMyBerlin entwickelte [Happy-Bike-Index](/zustand "Karte zum Happy-Bike-Index") zeigt außerdem, wo schon entspannt und sicher Rad gefahren werden kann (grün) bzw. wo es noch gefährlich ist (rot).
 
-Ziel ist eine datenbasierte Grundlage für einen kontruktiven Dialog zwischen Verwaltung und Bürger:innen zu schaffen.
+Ziel ist eine datenbasierte Grundlage für einen konstruktiven Dialog zwischen Verwaltung und Bürger:innen zu schaffen.
 
 
 ## Wer steckt hinter FixMyBerlin?
@@ -11,7 +11,7 @@ FixMyBerlin ist aus einer Initiative aus der Berliner Zivilgesellschaft heraus e
 
 Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministerium sowie der Berliner Senatskanzlei. Die für Verkehr zuständige Senatsverwaltung sowie 11 von 12 der Berliner Bezirksämter unterstützen die Plattform durch Bereitstellung von Daten.
 
-## Team von FixMyBerlin
+## Team von FixMyBerlin [[Kontakt]](/impressum)
 <div class="teamportrait">
   <img src="/uploads/team/FixMyBerlin_Boris Hekele.png" alt="Boris Hekele" title="Boris Hekele" style="width: 160px" /><br />
   <strong>Boris Hekele</strong><br />
@@ -43,6 +43,8 @@ Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministerium sowie
   Fullstack-Entwicklung (ab Mitte September 2019)
 </div>
 <div style="clear: left;"></div>
+
+Unsere **Kontaktdaten** befinden sich im [Impressum](/impressum "Zum Impressum").
 
 ## Partner
 <style type="text/css">

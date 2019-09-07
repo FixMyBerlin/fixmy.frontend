@@ -3,10 +3,11 @@
 
 ## Verantwortlicher
 FixMyCity GmbH<br />
-Karlsgartenstraße 12<br />
-12049 Berlin<br />
-E-Mail-Adresse: [hello@fixmycity.de](mailto:hello@fixmycity.de)<br />
-[Impressum](/impressum)
+c/o Platz der Luftbrücke 4<br />
+12021 Berlin<br />
+E-Mail-Adresse: [hello@fixmycity.de](mailto:hello@fixmycity.de)
+
+Zum [Impressum](/impressum)
 
 ## Arten der verarbeiteten Daten:
 - Bestandsdaten (z.B., Namen, Adressen).
