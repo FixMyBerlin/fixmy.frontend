@@ -1,7 +1,7 @@
 # Wie wird Berlin zur Fahrradstadt?
-FixMyBerlin setzt sich für nachhaltige Mobilität ein und begleitet Berlin dazu bei der Umsetzung des [Mobilitätsgesetzes](https://www.berlin.de/senuvk/verkehr/mobilitaetsgesetz/ "Mobilitätsgesetzes") hin zur lebenswerteren Stadt von morgen.
+FixMyBerlin setzt sich für nachhaltige Mobilität und insbesondere für den Radverkehr ein. FixMyBerlin begleitet Berlin bei der Umsetzung des [Mobilitätsgesetzes](https://www.berlin.de/senuvk/verkehr/mobilitaetsgesetz/ "Mobilitätsgesetzes") mit dem Zweck der lebenswerten Stadt von morgen.
 
-Die Transformation zur Fahrradstadt Berlin wird auf der Plattform von FixMyBerlin verständlich und nachvollziehbar auf Karten darstellt. Hierfür stimmt sich FixMyBerlin mit den Bezirken und der Senatsverwaltung ab und bereitet [deren Radverkehrsplanungen](/zustand "Karte mit Planungen") für die Karten auf und stellt die aufbereiteten Daten [zu Download bereit](/api "API von FixMyBerlin"). Der von FixMyBerlin entwickelte [Happy-Bike-Index](/zustand "Karte zum Happy-Bike-Index") zeigt außerdem, wo schon entspannt und sicher Rad gefahren werden kann (grün) bzw. wo es noch gefährlich ist (rot).
+Die Transformation zur Fahrradstadt Berlin wird auf der Plattform von FixMyBerlin verständlich und nachvollziehbar auf Karten darstellt. Hierfür stimmt sich FixMyBerlin mit den Bezirken und der Senatsverwaltung ab und bereitet [deren Radverkehrsplanungen](/zustand "Karte mit Planungen") auf und stellt die aufbereiteten Daten wiederum [zum Download bereit](/api "API von FixMyBerlin"). Der von FixMyBerlin entwickelte [Happy-Bike-Index](/zustand "Karte zum Happy-Bike-Index") zeigt außerdem, wo schon entspannt und sicher Rad gefahren werden kann (grün) bzw. wo es noch gefährlich ist (rot).
 
 Ziel ist eine datenbasierte Grundlage für einen kontruktiven Dialog zwischen Verwaltung und Bürger:innen zu schaffen.
 
@@ -15,7 +15,7 @@ Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministerium sowie
 <div class="teamportrait">
   <img src="/uploads/team/FixMyBerlin_Boris Hekele.png" alt="Boris Hekele" title="Boris Hekele" style="width: 160px" /><br />
   <strong>Boris Hekele</strong><br />
-  Geschäftsführung, Technische Leitung, Netzwerk
+  Geschäftsführung, Netzwerk, Technische Leitung
 </div>
 <div class="teamportrait">
   <img src="/uploads/team/HeikoRintelen_hell.jpg" alt="Heiko Rintelen" title="Heiko Rintelen" style="width: 160px" /><br />
