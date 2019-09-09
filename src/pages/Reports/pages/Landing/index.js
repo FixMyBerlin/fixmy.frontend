@@ -7,7 +7,6 @@ import HowItWorksSection from './components/HowItWorksSecion';
 import Quote from './components/QuoteSection';
 import MapLink from './components/MapLink';
 import Faq from './components/Faq';
-import Footer from '~/components/Menu/MenuFooter';
 import { media } from '~/styles/utils';
 import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
 
@@ -35,6 +34,5 @@ export default () => (
       <JoinButton />
       <MapLink />
     </ContentWrapper>
-    <Footer />
   </Fragment>
 );
