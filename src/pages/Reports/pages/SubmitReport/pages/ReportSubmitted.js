@@ -209,17 +209,17 @@ class ReportSubmitted extends PureComponent {
 
     return (
       <DialogStepWrapper>
-        <StyledHeading>Du hilfst mit, Friedrichshain-
-          Kreuzberg radfreundlicher
+        <StyledHeading>Du hilfst mit, Friedrichshain-Kreuzberg radfreundlicher
           zu machen!
         </StyledHeading>
 
         <ThanksImg src={thanksImageSrc} />
 
         <Text>
-          Deine Meldung ist nun online, alle Meldungen werden gesammt und dem Bezirksamt am 10. Oktober 2019 übergeben.
-          Die Planer:innen im Straßen- und Grünflächenamt prüfen dann, welche Meldungen umgesetzt werden können.
-          Die Ergebnisse siehst du hier auf der Karte.
+          Deine Meldung ist nun online! Alle Meldungen werden gesammelt und dann dem Bezirksamt am 10. Oktober 2019 übergeben.
+          Die Planer:innen im Straßen- und Grünflächenamt prüfen, welche Meldungen umgesetzt werden können.
+          Die Ergebnisse siehst du anschließend hier auf der Karte und wenn du deine E-Mail-Adresse eingibst,
+          benachrichtigen wir dich auch per E-Mail.
         </Text>
 
         <HorizontalRuler />
