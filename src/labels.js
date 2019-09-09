@@ -16,7 +16,7 @@ export const districts = [
 export const homeLabels = {
   title: 'Hi, das ist FixMyBerlin',
   intro: `
-    <strong>News!</strong> Am 11. Oktober starten wir gemeinsam mit dem Bezirksamt Friedrichshain-Kreuzberg einen Meldedialog für Fahrradbügel.
+    <strong>News!</strong> Am 11. September starten wir gemeinsam mit dem Bezirksamt Friedrichshain-Kreuzberg einen Meldedialog für Fahrradbügel.
   `,
   button: 'Worum geht es hier genau?',
   reportsButton: 'Jetzt Radbügel melden',
