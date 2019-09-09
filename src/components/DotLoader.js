@@ -4,13 +4,13 @@ import PropagateLoader from 'react-spinners/PropagateLoader';
 
 const LoaderWrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  margin: 15px auto;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const BigLoader = () => (
+const DotLoader = () => (
   <LoaderWrapper>
     <PropagateLoader
       color={`${config.colors.interaction}`}
@@ -18,4 +18,4 @@ const BigLoader = () => (
   </LoaderWrapper>
 );
 
-export default BigLoader;
+export default DotLoader;

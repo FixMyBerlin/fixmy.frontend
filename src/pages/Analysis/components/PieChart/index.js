@@ -7,11 +7,7 @@ import { VictoryPie, VictoryLabel, Slice } from 'victory';
 import { setPhaseFilter } from '~/pages/Analysis/AnalysisState';
 
 import SvgIcon from '~/components/SvgIcon';
-import Text from '~/components/Text';
-
-const StyledLabel = styled(Text)`
-  text-align: center;
-`;
+import DotLoader from '~/components/DotLoader';
 
 const PieChartWrapper = styled.div`
   width: 300px;
@@ -127,7 +123,7 @@ class PieChart extends PureComponent {
     if (this.props.isLoading) {
       return (
         <PieChartWrapper>
-          <StyledLabel bold>Lade Daten ...</StyledLabel>
+          <DotLoader />
         </PieChartWrapper>
       );
     }

@@ -154,6 +154,7 @@ class Analysis extends PureComponent {
           <PlanningList
             data={sortedData}
             isLoading={isLoading}
+            showLoadingIndicator={false}
           />
         </AnalysisContent>
       </AnalysisWrapper>
