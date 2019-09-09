@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
 import { Formik } from 'formik';
@@ -16,12 +16,11 @@ import GhostButton from '~/components/GhostButton';
 import history from '~/history';
 import Store from '~/store';
 import { addUserToReport } from '~/pages/Reports/apiservice';
-import { apiUpdate } from '~/pages/User/apiservice';
+import { apiUser } from '~/pages/User/apiservice';
 import UserForm from '~/pages/User/components/UserForm';
 import { login } from '~/pages/User/UserState';
 
 import thanksImageSrc from '~/images/reports/reports-thanks.png';
-
 
 const formConfig = [{
   id: 'email',
@@ -34,8 +33,7 @@ const formConfig = [{
   id: 'login',
   value: false,
   type: 'checkbox',
-  labelUser: 'Ich möchte über den Fortschritt meiner Meldung informiert zu werden.',
-  labelNoUser: 'Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.'
+  label: 'Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.'
 }, {
   id: 'newsletter',
   value: false,
@@ -119,43 +117,26 @@ class ReportSubmitted extends PureComponent {
     showLoginForm: false
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     this.unlistenToHistory = history.listen((location, action) => {
       if (action === 'POP') { // if this is an attempt to navigate backwards ..
         // do not allow navigating back within the dialog, instead route somewhere safe
         this.props.history.push(`${config.routes.reports.map}`);
       }
     });
+
+    if (this.props.token) {
+      const userData = await apiUser(this.props.token);
+      await addUserToReport(this.props.reportId, userData.id);
+    }
   };
 
   componentWillUnmount() {
     this.unlistenToHistory();
   }
 
-  async onSubmitLoggedIn(values, { setSubmitting, setErrors }) {
-    if (values.login) {
-      await addUserToReport(this.props.reportId, this.props.user.id);
-    }
-
-    if (values.newsletter) {
-      await apiUpdate({ newsletter: true }, this.props.token);
-    }
-
-    setErrors(false);
-    setSubmitting(false);
-
-    this.props.nextStep();
-  }
-
   onSubmit = async (values, { setSubmitting, setErrors }) => {
-    if (this.props.token) {
-      await this.onSubmitLoggedIn(values, { setSubmitting, setErrors });
-      return false;
-    }
-
-    if (!values.login && values.newsletter) {
-      // @TODO handle news letter api request
-      console.log('handle news letter api request');
+    if (!values.login || !values.email) {
       setErrors(false);
       setSubmitting(false);
       return false;
@@ -185,10 +166,6 @@ class ReportSubmitted extends PureComponent {
         }
 
         return setErrors({ server: errorMessage });
-      }
-
-      if (values.newsletter) {
-        await apiUpdate({ newsletter: true }, this.props.token);
       }
 
       setErrors(false);
@@ -229,20 +206,7 @@ class ReportSubmitted extends PureComponent {
     const { error, token } = this.props;
 
     // TODO: extend error handling. The user should be able to retry the request or at least be navigated back somewhere
-    // TODO: factor out leave-email section as component
     if (error.message) return <ErrorMessage message={error.message} />;
-
-    const formConfigParsed = formConfig
-    // change checkbox label for logged in users
-      .map((c) => {
-        if (c.id === 'login') {
-          c.label = token ? c.labelUser : c.labelNoUser;
-        }
-
-        return c;
-      })
-      // don't show email field for logged in users
-      .filter(c => (token ? c.id !== 'email' : true));
 
     return (
       <DialogStepWrapper>
@@ -255,80 +219,85 @@ class ReportSubmitted extends PureComponent {
         <Text>
           Deine Meldung ist nun online! Alle Meldungen werden gesammelt und dann dem Bezirksamt am 10. Oktober 2019 übergeben.
           Die Planer:innen im Straßen- und Grünflächenamt prüfen, welche Meldungen umgesetzt werden können.
-          Die Ergebnisse siehst du anschließend hier auf der Karte und wenn du deine E-Mail-Adresse eingibst,
-          benachrichtigen wir dich auch per E-Mail.
+          Die Ergebnisse siehst du anschließend hier auf der Karte {
+            token ?
+            'und wir benachrichtigen dich an deine im Login hinterlegte E-Mail-Adresse.' :
+            'und wenn du deine E-Mail-Adresse eingibst, benachrichtigen wir dich auch per E-Mail.'
+          }
         </Text>
 
-        <HorizontalRuler />
+        {token ? (
+          <Button onClick={() => this.goToMap()}>
+            Meldung jetzt anzeigen
+          </Button>
+        ) : (
+          <Fragment>
+            <HorizontalRuler />
+            <Heading>
+              Gib deine E-Mailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung schicken können.
+            </Heading>
 
-        <Heading>
-          {token ?
-            'Erhalte Updates zu deiner Meldung und trage dich beim Newsletter ein.' :
-            'Gib deine E-Mailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung schicken können.'
-          }
-        </Heading>
+            <FormWrapper>
+              <Formik
+                initialValues={initialValues}
+                onSubmit={this.onSubmit}
+                validate={this.validate}
+                validateOnChange={false}
+                validateOnBlur={false}
+                render={({
+                  values,
+                  errors,
+                  handleSubmit,
+                  isSubmitting,
+                  handleChange
+                }) => (
+                  <Form onSubmit={handleSubmit}>
+                    {formConfig.map(d => (
+                      <FormField
+                        key={`feedbackfield__${d.id}`}
+                        className={`formtype-${d.type}`}
+                        {...d}
+                        values={values}
+                        errors={errors}
+                        handleChange={handleChange}
+                        disabled={d.id === 'newsletter' && (!values.login || values.email === '')}
+                      />
+                    ))}
+                    {errors.server && <ErrorLabel>{errors.server}</ErrorLabel>}
+                    <ButtonWrapper>
+                      <SubmitButton type="submit" disabled={isSubmitting}>
+                        Absenden
+                      </SubmitButton>
+                    </ButtonWrapper>
+                  </Form>
+                )}
+              />
+            </FormWrapper>
 
-        <FormWrapper>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={this.onSubmit}
-            validate={this.validate}
-            validateOnChange={false}
-            validateOnBlur={false}
-            render={({
-              values,
-              errors,
-              handleSubmit,
-              isSubmitting,
-              handleChange
-            }) => (
-              <Form onSubmit={handleSubmit}>
-                {formConfigParsed.map(d => (
-                  <FormField
-                    key={`feedbackfield__${d.id}`}
-                    className={`formtype-${d.type}`}
-                    {...d}
-                    values={values}
-                    errors={errors}
-                    handleChange={handleChange}
-                  />
-                ))}
-                {errors.server && <ErrorLabel>{errors.server}</ErrorLabel>}
-                <ButtonWrapper>
-                  <SubmitButton type="submit" disabled={isSubmitting}>
-                    Absenden
-                  </SubmitButton>
-                </ButtonWrapper>
-              </Form>
+            <LoginExpand
+              onClick={this.onLoginExpand}
+            >
+              Ich habe bereits einen Login
+            </LoginExpand>
+
+            {this.state.showLoginForm && (
+              <UserForm
+                title="Login"
+                buttonLabel="Einloggen"
+                formConfig={loginFormConfig}
+                onSubmit={this.onLoginFormSubmit}
+              />
             )}
-          />
-        </FormWrapper>
 
-        {!token && (
-          <LoginExpand
-            onClick={this.onLoginExpand}
-          >
-            Ich habe bereits einen Login
-          </LoginExpand>
+            <GhostButton
+              onClick={this.goToMap}
+              style={{ marginTop: 25 }}
+            >
+              Meldung anzeigen<br />
+              (weiter ohne Login)
+            </GhostButton>
+          </Fragment>
         )}
-
-        {(this.state.showLoginForm && !token) && (
-          <UserForm
-            title="Login"
-            buttonLabel="Einloggen"
-            formConfig={loginFormConfig}
-            onSubmit={this.onLoginFormSubmit}
-          />
-        )}
-
-        <GhostButton
-          onClick={this.goToMap}
-          style={{ marginTop: 25 }}
-        >
-          Meldung anzeigen<br />
-          (weiter ohne Login)
-        </GhostButton>
-
       </DialogStepWrapper>
     );
   }
