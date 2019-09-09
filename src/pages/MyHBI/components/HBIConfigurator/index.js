@@ -20,7 +20,6 @@ const MapContentBody = styled.div`
 `;
 
 const SliderLabel = styled.div`
-  font-weight: 500;
   text-align: center;
   font-size: 14px;
   margin: .5em 0;
