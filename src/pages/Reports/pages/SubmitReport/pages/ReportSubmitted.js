@@ -166,9 +166,10 @@ class ReportSubmitted extends PureComponent {
 
       if (err.response && err.response.json) {
         const errResponse = await err.response.json();
+        const errKeys = Object.keys(errResponse);
 
-        if (errResponse.username) {
-          errorMessage = { server: 'Du hast bereits einen Login, bitte melde Dich an.' };
+        if (errKeys.length && errResponse[errKeys[0]][0]) {
+          errorMessage = { server: errResponse[errKeys[0]][0] };
         }
       }
     }
