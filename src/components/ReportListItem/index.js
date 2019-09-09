@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
-import idx from 'idx';
 import styled from 'styled-components';
-import slugify from 'slugify';
 
 import Label from '~/components/Label';
 import Button from '~/components/Button';
 import HeartIcon from '~/images/heart.svg';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
+import DefaultPhotoSrc from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 
 const ItemWrapper = styled.div`
   margin: 8px 0;
@@ -125,6 +124,9 @@ class PlanningListItem extends PureComponent {
     const count = details.number;
     const subtitle = `${count} ${count === 1 ? 'neuer' : 'neue'} Fahrradbügel gewünscht`;
 
+    const photoSrc = photo ? photo.src : DefaultPhotoSrc;
+    const photoCopyright = photo ? photo.copyright : '';
+
     return (
       <ItemWrapper onClick={this.toggleExpanded}>
         <ItemContent>
@@ -152,8 +154,8 @@ class PlanningListItem extends PureComponent {
         </ItemContent>
         {this.state.isExpanded && (
           <Expansion>
-            <img src={photo.src} alt={subtitle} />
-            <Copyright>{photo.copyright}</Copyright>
+            <img src={photoSrc} alt={subtitle} />
+            <Copyright>{photoCopyright}</Copyright>
             {id && <MapButton onClick={this.onClick}>Zur Karte</MapButton>}
           </Expansion>
         )}
