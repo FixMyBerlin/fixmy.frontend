@@ -208,6 +208,7 @@ class ReportDetails extends PureComponent {
             token={this.props.token}
             url={`${config.apiUrl}/reports/${id}`}
             id={id}
+            itemType="Meldung"
           />
           {navigator.share ? (
             <ShareButtonWrapper>
