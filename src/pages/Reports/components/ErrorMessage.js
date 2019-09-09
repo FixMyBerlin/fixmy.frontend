@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Button from '~/components/Button';
 
 const Div = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   background-color: ${config.colors.darkbg};
