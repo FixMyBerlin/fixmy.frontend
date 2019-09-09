@@ -30,6 +30,13 @@ const formConfig = [{
   placeholder: 'Deine E-Mailadresse',
   validateError: 'Bitte geben Sie eine E-Mail an.'
 }, {
+  id: 'password',
+  value: '',
+  type: 'password',
+  label: '',
+  placeholder: 'Deine Passwort',
+  validateError: 'Bitte geben Sie ein Passwort an.'
+}, {
   id: 'login',
   value: false,
   type: 'checkbox',
@@ -136,7 +143,7 @@ class ReportSubmitted extends PureComponent {
   }
 
   onSubmit = async (values, { setSubmitting, setErrors }) => {
-    if (!values.login || !values.email) {
+    if (!values.login || !values.email || !values.password) {
       setErrors(false);
       setSubmitting(false);
       return false;
@@ -146,7 +153,7 @@ class ReportSubmitted extends PureComponent {
       const userData = {
         email: values.email,
         username: values.email,
-        password: 'fixmyberlin!',
+        password: values.password,
         newsletter: values.newsletter
       };
 
@@ -187,7 +194,7 @@ class ReportSubmitted extends PureComponent {
   }
 
   validate = values => formConfig.reduce((res, item) => {
-    if (!values.email && !this.props.token) {
+    if (!values.email || !values.password) {
       res[item.id] = item.validateError;
     }
 
