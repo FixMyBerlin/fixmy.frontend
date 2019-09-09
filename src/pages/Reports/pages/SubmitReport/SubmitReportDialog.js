@@ -28,6 +28,7 @@ import AdditionalDataForm from './pages/AdditionalDataForm';
 import FormProgressBar from '~/pages/Reports/pages/SubmitReport/components/FormProgressBar';
 import ReportSubmitted from './pages/ReportSubmitted';
 import BicycleParkingGarageForm from './pages/BicycleParkingGarageForm';
+import ThanksPage from './pages/ThanksPage';
 
 const LoaderWrapper = styled.div`
   width: 100%;
@@ -179,10 +180,26 @@ class SubmitReportDialog extends PureComponent {
               error={error}
               token={this.props.token}
               user={this.props.user}
+              nextStep={proceed}
             />
           </Fragment>
           );
         break;
+      case 6:
+        content = (
+          <Fragment>
+            <FormProgressBar
+              stepNumber={6}
+              stepCaption="Danke"
+              isLastStep
+            />
+            <ThanksPage
+              reportId={newReport.id}
+            />
+          </Fragment>
+        );
+        break;
+
       default:
         content = (<Markdown page="nomatch" />);
     } // end of switch statement

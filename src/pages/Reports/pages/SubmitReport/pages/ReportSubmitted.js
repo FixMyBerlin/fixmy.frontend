@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
 import { Formik } from 'formik';
@@ -14,11 +14,14 @@ import Form from '~/components/Form';
 import FormField from '~/components/FormField';
 import GhostButton from '~/components/GhostButton';
 import history from '~/history';
+import Store from '~/store';
 import { addUserToReport } from '~/pages/Reports/apiservice';
-import { apiUpdate } from '~/pages/User/apiservice';
+import { apiUser } from '~/pages/User/apiservice';
+import UserForm from '~/pages/User/components/UserForm';
+import { login } from '~/pages/User/UserState';
+import ExternalLink from '~/components/ExternalLink';
 
 import thanksImageSrc from '~/images/reports/reports-thanks.png';
-import Link from '~/components/Link';
 
 const formConfig = [{
   id: 'email',
@@ -28,11 +31,23 @@ const formConfig = [{
   placeholder: 'Deine E-Mailadresse',
   validateError: 'Bitte geben Sie eine E-Mail an.'
 }, {
+  id: 'password',
+  value: '',
+  type: 'password',
+  label: '',
+  placeholder: 'Deine Passwort',
+  validateError: 'Bitte geben Sie ein Passwort an.'
+}, {
   id: 'login',
   value: false,
   type: 'checkbox',
-  labelUser: 'Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.',
-  labelNoUser: 'Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.'
+  label: (
+    <span>
+      Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.
+      Die <ExternalLink href="https://fixmyberlin.de/datenschutz" rel="noopener noreferrer" target="_blank">Datenschutzerklärung</ExternalLink> habe ich gelesen.
+    </span>
+  ),
+  validateError: 'Bitte bestätigen Sie, dass Sie einen Account erstellen wollen.'
 }, {
   id: 'newsletter',
   value: false,
@@ -76,17 +91,17 @@ const ButtonWrapper = styled.div`
   justify-content: center;
 `;
 
-const LoginLink = styled(Link)`
+const LoginExpand = styled.div`
   font-size: 14px;
   font-weight: bold;
-  margin-bottom: 48px;
+  color: ${config.colors.interaction};
+  cursor: pointer;
 `;
 
 const FormWrapper = styled.div`
   margin-bottom: 16px;
 
   .formtype-checkbox {
-    display: flex;
 
     span {
       font-size: 12px;
@@ -99,73 +114,70 @@ const FormWrapper = styled.div`
   }
 `;
 
+const ErrorLabel = styled.div`
+  color: ${config.colors.error};
+  font-weight: 700;
+`;
+
+const loginFormConfig = [
+  { id: 'username', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' },
+  { id: 'password', value: '', type: 'password', label: 'Passwort', placeholder: 'Passwort eingeben...', validateError: 'Bitte geben Sie Ihr Passwort an.' }
+];
+
 class ReportSubmitted extends PureComponent {
-  componentDidMount = () => {
+
+  state = {
+    showLoginForm: false
+  }
+
+  componentDidMount = async () => {
     this.unlistenToHistory = history.listen((location, action) => {
       if (action === 'POP') { // if this is an attempt to navigate backwards ..
         // do not allow navigating back within the dialog, instead route somewhere safe
         this.props.history.push(`${config.routes.reports.map}`);
       }
     });
+
+    if (this.props.token) {
+      const userData = await apiUser(this.props.token);
+      await addUserToReport(this.props.reportId, userData.id);
+    }
   };
 
   componentWillUnmount() {
     this.unlistenToHistory();
   }
 
-  async onSubmitLoggedIn(values, { setSubmitting, setErrors }) {
-    if (values.login) {
-      await addUserToReport(this.props.reportId, this.props.user.id);
+  onSubmit = async (values, { setSubmitting, setErrors }) => {
+    const userData = {
+      email: values.email,
+      username: values.email,
+      password: values.password,
+      newsletter: values.newsletter
+    };
+
+    let errorMessage = false;
+
+    try {
+      const user = await ky.post(`${config.apiUrl}/users/create`, { json: userData }).json();
+      await addUserToReport(this.props.reportId, user.id);
+    } catch (err) {
+      errorMessage = { server: 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.' };
+
+      if (err.response && err.response.json) {
+        const errResponse = await err.response.json();
+
+        if (errResponse.username) {
+          errorMessage = { server: 'Du hast bereits einen Login, bitte melde Dich an.' };
+        }
+      }
     }
 
-    if (values.newsletter) {
-      await apiUpdate({ newsletter: true }, this.props.token);
-    }
-
-    setErrors(false);
+    setErrors(errorMessage);
     setSubmitting(false);
 
-    this.goToMap();
-  }
-
-  onSubmit = async (values, { setSubmitting, setErrors }) => {
-    if (this.props.token) {
-      await this.onSubmitLoggedIn(values, { setSubmitting, setErrors });
-      return false;
-    }
-
-    if (!values.login && values.newsletter) {
-      // @TODO handle news letter api request
-      console.log('handle news letter api request');
-      setErrors(false);
-      setSubmitting(false);
-      return false;
-    }
-
-    if (values.login) {
-      const userData = {
-        email: values.email,
-        username: values.email,
-        password: 'fixmyberlin!',
-        newsletter: values.newsletter
-      };
-
-      try {
-        const user = await ky.post(`${config.apiUrl}/users/create`, { json: userData }).json();
-        await addUserToReport(this.props.reportId, user.id);
-      } catch (err) {
-        setSubmitting(false);
-        return setErrors({ server: 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.' });
-      }
-
-      if (values.newsletter) {
-        await apiUpdate({ newsletter: true }, this.props.token);
-      }
-
-      setErrors(false);
-      setSubmitting(false);
-
-      this.goToMap();
+    if (!errorMessage) {
+      this.props.nextStep();
     }
   }
 
@@ -181,31 +193,26 @@ class ReportSubmitted extends PureComponent {
   }
 
   validate = values => formConfig.reduce((res, item) => {
-    if (!values.email && !this.props.token) {
+    if (item.validateError && !values[item.id]) {
       res[item.id] = item.validateError;
     }
 
     return res;
   }, {})
 
+  onLoginExpand = () => {
+    this.setState(prevState => ({ showLoginForm: !prevState.showLoginForm }));
+  }
+
+  onLoginFormSubmit = (values, params) => {
+    Store.dispatch(login(values, params));
+  }
+
   render() {
     const { error, token } = this.props;
 
     // TODO: extend error handling. The user should be able to retry the request or at least be navigated back somewhere
-    // TODO: factor out leave-email section as component
     if (error.message) return <ErrorMessage message={error.message} />;
-
-    const formConfigParsed = formConfig
-    // change checkbox label for logged in users
-      .map((c) => {
-        if (c.id === 'login') {
-          c.label = token ? c.labelUser : c.labelNoUser;
-        }
-
-        return c;
-      })
-      // don't show email field for logged in users
-      .filter(c => (token ? c.id !== 'email' : true));
 
     return (
       <DialogStepWrapper>
@@ -218,65 +225,85 @@ class ReportSubmitted extends PureComponent {
         <Text>
           Deine Meldung ist nun online! Alle Meldungen werden gesammelt und dann dem Bezirksamt am 10. Oktober 2019 übergeben.
           Die Planer:innen im Straßen- und Grünflächenamt prüfen, welche Meldungen umgesetzt werden können.
-          Die Ergebnisse siehst du anschließend hier auf der Karte und wenn du deine E-Mail-Adresse eingibst,
-          benachrichtigen wir dich auch per E-Mail.
+          Die Ergebnisse siehst du anschließend hier auf der Karte {
+            token ?
+            'und wir benachrichtigen dich an deine im Login hinterlegte E-Mail-Adresse.' :
+            'und wenn du deine E-Mail-Adresse eingibst, benachrichtigen wir dich auch per E-Mail.'
+          }
         </Text>
 
-        <HorizontalRuler />
+        {token ? (
+          <Button onClick={() => this.goToMap()}>
+            Meldung jetzt anzeigen
+          </Button>
+        ) : (
+          <Fragment>
+            <HorizontalRuler />
+            <Heading>
+              Gib deine E-Mailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung schicken können.
+            </Heading>
 
-        <Heading>
-          {token ?
-            'Erhalte Updates zu deiner Meldung und trage dich beim Newsletter ein.' :
-            'Gib deine Emailadresse an, damit die Verwaltungsmitarbeiter dir Informationen zum Status deiner Meldung schicken können.'
-          }
-        </Heading>
+            <FormWrapper>
+              <Formik
+                initialValues={initialValues}
+                onSubmit={this.onSubmit}
+                validate={this.validate}
+                validateOnChange={false}
+                validateOnBlur={false}
+                render={({
+                  values,
+                  errors,
+                  handleSubmit,
+                  isSubmitting,
+                  handleChange
+                }) => (
+                  <Form onSubmit={handleSubmit}>
+                    {formConfig.map(d => (
+                      <FormField
+                        key={`feedbackfield__${d.id}`}
+                        className={`formtype-${d.type}`}
+                        {...d}
+                        values={values}
+                        errors={errors}
+                        handleChange={handleChange}
+                        disabled={d.id === 'newsletter' && (!values.login || values.email === '')}
+                      />
+                    ))}
+                    {errors.server && <ErrorLabel>{errors.server}</ErrorLabel>}
+                    <ButtonWrapper>
+                      <SubmitButton type="submit" disabled={isSubmitting}>
+                        Absenden
+                      </SubmitButton>
+                    </ButtonWrapper>
+                  </Form>
+                )}
+              />
+            </FormWrapper>
 
-        <FormWrapper>
-          <Formik
-            initialValues={initialValues}
-            onSubmit={this.onSubmit}
-            validate={this.validate}
-            validateOnChange={false}
-            validateOnBlur={false}
-            render={({
-                       values,
-                       errors,
-                       handleSubmit,
-                       isSubmitting,
-                       handleChange
-                     }) => (
-                       <Form onSubmit={handleSubmit}>
-                         {formConfigParsed.map(d => (
-                           <FormField
-                             key={`feedbackfield__${d.id}`}
-                             className={`formtype-${d.type}`}
-                             {...d}
-                             values={values}
-                             errors={errors}
-                             handleChange={handleChange}
-                           />
-                ))}
-                         {errors.server && <div>{errors.server}</div>}
-                         <ButtonWrapper>
-                           <SubmitButton type="submit" disabled={isSubmitting}>
-                    Absenden
-                           </SubmitButton>
-                         </ButtonWrapper>
-                       </Form>
+            <LoginExpand
+              onClick={this.onLoginExpand}
+            >
+              Ich habe bereits einen Login
+            </LoginExpand>
+
+            {this.state.showLoginForm && (
+              <UserForm
+                title="Login"
+                buttonLabel="Einloggen"
+                formConfig={loginFormConfig}
+                onSubmit={this.onLoginFormSubmit}
+              />
             )}
-          />
-        </FormWrapper>
 
-        <LoginLink to={config.routes.login}>Ich habe bereits einen Login</LoginLink>
-
-        <GhostButton
-          onClick={this.goToMap}
-          style={{ marginTop: 25 }}
-        >
-          Meldung anzeigen<br />
-          (weiter ohne Login)
-        </GhostButton>
-
+            <GhostButton
+              onClick={this.goToMap}
+              style={{ marginTop: 25 }}
+            >
+              Meldung anzeigen<br />
+              (weiter ohne Login)
+            </GhostButton>
+          </Fragment>
+        )}
       </DialogStepWrapper>
     );
   }
