@@ -6,6 +6,7 @@ import idx from 'idx';
 import PropTypes from 'prop-types';
 import withRouter from 'react-router/withRouter';
 import slugify from 'slugify';
+import { matchPath } from 'react-router';
 
 import Store from '~/store';
 import { isSmallScreen } from '~/styles/utils';
@@ -244,11 +245,21 @@ class Map extends PureComponent {
     const id = data.planning_section_ids[0];
     const center = data.center.coordinates;
     const name = idx(data, _ => _.planning_sections[0].name);
+    const match = matchPath(this.props.location.pathname, {
+      path: '/(zustand|planungen)/:id/:name?',
+      exact: true
+    });
 
     const properties = {
       sideNone_planning_title: data.title,
       name: name || '-'
     };
+
+    if (idx(match, _ => _.params.id)) {
+      const slugifiedName = slugify(name || '').toLowerCase();
+      const detailRoute = `/${this.props.activeView}/${id}/${slugifiedName}`;
+      return this.props.history.push(detailRoute);
+    }
 
     Store.dispatch(MapActions.setPopupData(properties));
     Store.dispatch(MapActions.setPopupVisible(true));

@@ -2,7 +2,8 @@
   "devUrl": "http://localhost:8080",
   "prodUrl": "https://fixmyberlin.de",
   "newsletterWidgetUrl": "https://app.mailjet.com/widget/iframe/2YIa/6kW",
-  "apiUrl": "https://api.fixmyberlin.de/api",
+  "apiUrl": "https://fixmyplatform-develop.herokuapp.com/api",
+  "feedbackMail": "feedback@fixmyberlin.de",
   "colors": {
     "lightbg": "#f5f5f5",
     "lightgrey": "#e8e8e8",
@@ -19,20 +20,36 @@
     "likebg": "#FFF9EC"
   },
   "menu": {
-    "size": 320,
+    "size": 325,
     "profileLabel": "Zum Profil",
     "loginLabel": "Login",
     "items": [
       {
         "type": "link",
-        "label": "Karte",
+        "label": "Planungen für den Radverkehr",
         "link": "/planungen",
         "icon": "map",
         "border": true
       },
       {
         "type": "link",
-        "label": "Analyse",
+        "label": "Happy-Bike-Index (beta)",
+        "link": "/zustand",
+        "icon": "hbi-icon",
+        "border": true
+      },
+      { "type": "plus",
+        "label": "MITMACHEN",
+        "icon": "fixhere",
+        "children": [{
+          "link": "/meldungen/radbuegel/friedrichshain-kreuzberg",
+          "label": "Radbügel in X-Hain"
+        }],
+        "border": true
+      },
+      {
+        "type": "link",
+        "label": "Analyse Planungen",
         "link": "/analyse/planungen",
         "icon": "analysis",
         "border": false
@@ -116,12 +133,20 @@
     "plannings": "/planungen",
     "status": "/zustand",
     "analyse": "/analyse",
+    "reports": {
+      "temporarily_forward_from_this_to_index": "/meldungen",
+      "index": "/meldungen/radbuegel/friedrichshain-kreuzberg",
+      "landing": "/meldungen/radbuegel/friedrichshain-kreuzberg/landing",
+      "map": "/meldungen/radbuegel/friedrichshain-kreuzberg/karte",
+      "new": "/meldungen/radbuegel/friedrichshain-kreuzberg/neu"
+    },
     "signup": "/registrieren",
     "login": "/anmelden",
     "forgotPassword": "/passwort-vergessen",
     "resetPassword": "/reset",
     "emailVerification": "/email-verification",
-    "profile": "/profil"
+    "profile": "/profil",
+    "userVerify": "/bestaetigen"
   },
   "hbi": [
     { "label": "Geschwindgkeit", "type": "speed", "value": 5, "min": 0, "max": 10 },
@@ -216,9 +241,36 @@
     "geocoderUrl": "https://geocoder.cit.api.here.com/6.2/geocode.json",
     "geocoderAppId": "WOhEXnd20kbhT8Lxx4n4",
     "geocoderAppCode": "uFkDYK0WKXBPZgG8mRb9Rg",
+    "geocoderBounds": "13.3651,52.4658,13.4945,52.5479",
     "drawOverlayLine": true,
     "dimmingOpacity": 0.3,
     "bounds": [[13.2826, 52.4615], [13.46391, 52.5544374]]
+  },
+  "reportsMap": {
+    "style": "mapbox://styles/hejco/cjpnt0cc41ipy2rlpu19jgt7a",
+    "bounds": [[13.3651, 52.4658],[13.4945, 52.5479]],
+    "maxBounds": [[13.2, 52.4158],[13.6, 52.5979]]
+  },
+  "reportsLocateMeMap": {
+    "zoomOnGeocodedLocation": 15.5,
+    "boundaryGeodataUrl": "/data/Fhain-Xberg-trimmed.json",
+    "outofBoundaryText": "Diese Adresse liegt außerhalb Friedrichshain-Kreuzbergs",
+    "reverseGeocoderUrl": "https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json",
+    "paddingInDegree": 0.1,
+    "geocoder": {
+      "debounceTime": 1000,
+      "searchStringMinLength": 3
+    }
+  },
+  "reports": {
+    "dialog": {
+      "maxBikeStands": 12,
+      "imageResizeOptions": {
+        "maxWidth": 800,
+        "maxHeight": 800,
+        "quality": 0.9
+      }
+    }
   },
   "sectionIsBeta": true,
   "planningIsBeta": true,
@@ -226,5 +278,6 @@
   "isSwitchEnabled": true,
   "debug": false,
   "showLikeButton": true,
-  "showFeedBackForm": false
+  "showFeedBackForm": false,
+  "mockReportsApi": false
 }

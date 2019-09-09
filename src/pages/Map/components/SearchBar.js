@@ -36,7 +36,7 @@ const SearchInput = styled.input`
   width: 100%;
   padding: 15px 50px;
   color: ${config.colors.black};
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   text-align: center;

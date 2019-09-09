@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/Report",
+  "definitions": {
+    "Report": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "A new report object compiled using a dialog within FixMy Berlin",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 140,
+          "description": "Further comment on the location or subject"
+        },
+        "details": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/BikeStands"
+            }
+          ]
+        },
+        "geometry": {
+          "$ref": "#/definitions/Geometry"
+        },
+        "photo": {
+          "type": "string",
+          "contentEncoding": "base64",
+          "contentMediaType": "image/jpg"
+        }
+      },
+      "required": [
+        "address",
+        "details",
+        "geometry"
+      ],
+      "title": "Report"
+    },
+    "Geometry": {
+      "type": "object",
+      "description": "A GeoJSON Geometry Object (https://tools.ietf.org/html/rfc7946#section-3.1)",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "Point"
+        },
+        "coordinates": {
+          "type": "array",
+          "description": "The two elements of the coordinates are longitude and latitude, precisely in that order.",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "title": "Geometry"
+    },
+    "BikeStands": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "subject": {
+          "type": "string",
+          "const": "BIKE_STANDS"
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20
+        },
+        "fee_acceptable": {
+          "type": "boolean",
+          "description": "Is the person willing to pay for bicycle parking"
+        }
+      },
+      "required": [
+        "subject",
+        "number",
+        "fee_acceptable"
+      ],
+      "title": "Bike stands"
+    }
+  }
+}

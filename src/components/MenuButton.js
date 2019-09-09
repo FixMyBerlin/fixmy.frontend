@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import MenuIcon from '~/images/hamburger.svg';
+import MenuIconWhite from '~/images/hamburgerWhite.svg';
 import Store from '~/store';
 import { toggle } from '~/AppState';
 
@@ -19,6 +20,6 @@ function handleClick() {
 
 export default props => (
   <MenuButton role="button" tabIndex={0} onClick={handleClick} {...props}>
-    <MenuIcon />
+    {props.whiteFill ? <MenuIconWhite /> : <MenuIcon />}
   </MenuButton>
 );

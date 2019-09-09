@@ -12,6 +12,7 @@ import { setView } from '~/pages/Map/MapState';
 import { getCenterFromGeom } from '~/pages/Map/map-utils';
 import PinIcon from '~/images/pin.svg';
 import Label from '~/components/Label';
+import NewCloseButton from "~/components/NewCloseButton";
 
 const DetailWrapper = styled.div`
   position: absolute;
@@ -69,29 +70,34 @@ const DetailBody = styled.div`
   height: 100%;
 `;
 
-const Close = styled.button`
-  align-items: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  height: 36px;
-  justify-content: center;
-  font-size: 24px;
-  color: ${config.colors.midgrey};
-  width: 36px;
-  margin-left: auto;
+const Close = styled(NewCloseButton)`
+   margin-left: auto;
 `;
+
+/**
+ * Removes zipcode and city
+ * @param {string} address
+ * @returns {string} Only street and number
+ */
+function formatAddressString(address) {
+  return address
+    .replace('Berlin', '')
+    .replace(/\b\d{5}\b/g, '')
+    .replace(',', '')
+    .trim();
+}
 
 function detailWrapped(Component) {
   class DetailWrapperComp extends PureComponent {
     static propTypes = {
       apiEndpoint: PropTypes.string.isRequired,
-      onCloseRoute: PropTypes.string
+      onCloseRoute: PropTypes.string,
+      onClose: PropTypes.func
     }
 
     static defaultProps = {
-      onCloseRoute: '/'
+      onCloseRoute: '/',
+      onClose: () => {}
     }
 
     state = {
@@ -144,6 +150,7 @@ function detailWrapped(Component) {
 
     onClose = () => {
       this.props.history.push(this.props.onCloseRoute);
+      this.props.onClose();
     }
 
     getJSONFallbackPath() {
@@ -184,6 +191,18 @@ function detailWrapped(Component) {
       return true;
     }
 
+    renderName(data) {
+      if (data.name) {
+        return data.name;
+      }
+
+      if (data.address) {
+        return formatAddressString(data.address);
+      }
+
+      return 'Abschnittsname';
+    }
+
     renderLoading() {
       return (
         <DetailWrapper>
@@ -201,13 +220,14 @@ function detailWrapped(Component) {
                 Ein Fehler ist aufgetreten.
               </DetailTitle>
             </div>
-            <Close onClick={this.onClose}>×</Close>
+            <Close onClick={this.onClose} />
           </DetailHeader>
         </DetailWrapper>
       );
     }
 
     render() {
+      const { subtitle } = this.props;
       const { isLoading, isError, data } = this.state;
       const showShadow = this.isShadowVisible(data);
 
@@ -224,10 +244,10 @@ function detailWrapped(Component) {
           <DetailHeader>
             <StyledPinIcon />
             <div>
-              <DetailTitle>{data.name || 'Abschnittsname'}</DetailTitle>
-              <Label uppercase>Abschnitt 1</Label>
+              <DetailTitle>{this.renderName(data)}</DetailTitle>
+              <Label uppercase>{subtitle || 'Abschnitt 1'}</Label>
             </div>
-            <Close onClick={this.onClose}>×</Close>
+            <Close onClick={this.onClose} />
           </DetailHeader>
           {showShadow ? <Shadow /> : null}
           <DetailBody>

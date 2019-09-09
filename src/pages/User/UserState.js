@@ -169,15 +169,18 @@ export function forgotPassword(values, formFunctions) {
   };
 }
 
-export function loadLikes() {
+export function loadLikes(itemType) {
   return async (dispatch, getState) => {
-    dispatch({ type: LOAD_LIKES, payload: { isLoading: true } });
+    dispatch({ type: LOAD_LIKES, payload: { isLoading: true, userLikes: [] } });
 
     const { token } = getState().UserState;
-    const plannings = await apiLikes(token);
+    const items = await apiLikes(token, itemType);
 
-    if (!plannings.error) {
-      const userLikes = plannings.results.filter(d => d.liked_by_user);
+    if (!items.error) {
+      // @TODO: why is the API different for reports and plannings?
+      const result = itemType === 'plannings' ? items.results : items;
+      const userLikes = result.filter(d => d.liked_by_user);
+
       dispatch({ type: LOAD_LIKES_SUCCESS, payload: { isLoading: false, userLikes } });
     } else {
       dispatch({ type: LOAD_LIKES_FAIL, payload: { isLoading: false } });
