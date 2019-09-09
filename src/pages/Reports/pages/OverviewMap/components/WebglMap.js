@@ -60,15 +60,14 @@ class WebglMap extends PureComponent {
     const {
       center,
       disabled,
-      fitExtentOnPopupClose,
-      selectedMarkerZoomLevel
+      fitExtentOnPopupClose
     } = this.props;
 
     if (center) {
-      this.map.easeTo({ center, zoom: selectedMarkerZoomLevel });
+      this.map.easeTo({ center });
     } else if (fitExtentOnPopupClose) {
-        this.map.fitBounds(config.reportsMap.bounds);
-      }
+      this.map.fitBounds(config.reportsMap.bounds);
+    }
 
     this.toggleMapInteractivity(disabled);
   }
