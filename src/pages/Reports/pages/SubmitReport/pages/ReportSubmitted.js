@@ -19,6 +19,7 @@ import { addUserToReport } from '~/pages/Reports/apiservice';
 import { apiUser } from '~/pages/User/apiservice';
 import UserForm from '~/pages/User/components/UserForm';
 import { login } from '~/pages/User/UserState';
+import ExternalLink from '~/components/ExternalLink';
 
 import thanksImageSrc from '~/images/reports/reports-thanks.png';
 
@@ -40,7 +41,13 @@ const formConfig = [{
   id: 'login',
   value: false,
   type: 'checkbox',
-  label: 'Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.'
+  label: (
+    <span>
+      Ich möchte einen Login bei FixMyBerlin erstellen, um über den Fortschritt meiner Meldung informiert zu werden.
+      Die <ExternalLink href="https://fixmyberlin.de/datenschutz" rel="noopener noreferrer" target="_blank">Datenschutzerklärung</ExternalLink> habe ich gelesen.
+    </span>
+  ),
+  validateError: 'Bitte bestätigen Sie, dass Sie einen Account erstellen wollen.'
 }, {
   id: 'newsletter',
   value: false,
@@ -95,7 +102,6 @@ const FormWrapper = styled.div`
   margin-bottom: 16px;
 
   .formtype-checkbox {
-    display: flex;
 
     span {
       font-size: 12px;
@@ -143,41 +149,34 @@ class ReportSubmitted extends PureComponent {
   }
 
   onSubmit = async (values, { setSubmitting, setErrors }) => {
-    if (!values.login || !values.email || !values.password) {
-      setErrors(false);
-      setSubmitting(false);
-      return false;
+    const userData = {
+      email: values.email,
+      username: values.email,
+      password: values.password,
+      newsletter: values.newsletter
+    };
+
+    let errorMessage = false;
+
+    try {
+      const user = await ky.post(`${config.apiUrl}/users/create`, { json: userData }).json();
+      await addUserToReport(this.props.reportId, user.id);
+    } catch (err) {
+      errorMessage = { server: 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.' };
+
+      if (err.response && err.response.json) {
+        const errResponse = await err.response.json();
+
+        if (errResponse.username) {
+          errorMessage = { server: 'Du hast bereits einen Login, bitte melde Dich an.' };
+        }
+      }
     }
 
-    if (values.login) {
-      const userData = {
-        email: values.email,
-        username: values.email,
-        password: values.password,
-        newsletter: values.newsletter
-      };
+    setErrors(errorMessage);
+    setSubmitting(false);
 
-      try {
-        const user = await ky.post(`${config.apiUrl}/users/create`, { json: userData }).json();
-        await addUserToReport(this.props.reportId, user.id);
-      } catch (err) {
-        setSubmitting(false);
-        let errorMessage = 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.';
-
-        if (err.response && err.response.json) {
-          const errResponse = await err.response.json();
-
-          if (errResponse.username) {
-            errorMessage = 'Du hast bereits einen Login, bitte melde Dich an.';
-          }
-        }
-
-        return setErrors({ server: errorMessage });
-      }
-
-      setErrors(false);
-      setSubmitting(false);
-
+    if (!errorMessage) {
       this.props.nextStep();
     }
   }
@@ -194,7 +193,7 @@ class ReportSubmitted extends PureComponent {
   }
 
   validate = values => formConfig.reduce((res, item) => {
-    if (!values.email || !values.password) {
+    if (item.validateError && !values[item.id]) {
       res[item.id] = item.validateError;
     }
 

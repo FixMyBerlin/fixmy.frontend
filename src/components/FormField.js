@@ -13,6 +13,10 @@ const FormFieldSection = styled.div`
   }
 `;
 
+const CheckboxWrapper = styled.div`
+  display: flex;
+`;
+
 // returns the formfiled thats specified by the passed "type"
 export default ({
   id, type, label, options,
@@ -29,7 +33,9 @@ export default ({
 
     return (
       <FormFieldSection className={formFieldClasses}>
-        {Result}<span> {label}</span>
+        <CheckboxWrapper>
+          {Result}<span> {label}</span>
+        </CheckboxWrapper>
         {errors[id] && <FormFieldError>{errors[id]}</FormFieldError>}
       </FormFieldSection>
     );
