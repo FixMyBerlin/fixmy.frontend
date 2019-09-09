@@ -145,7 +145,8 @@
     "forgotPassword": "/passwort-vergessen",
     "resetPassword": "/reset",
     "emailVerification": "/email-verification",
-    "profile": "/profil"
+    "profile": "/profil",
+    "userVerify": "/bestaetigen"
   },
   "hbi": [
     { "label": "Geschwindgkeit", "type": "speed", "value": 5, "min": 0, "max": 10 },

@@ -19,7 +19,7 @@ import Signup from '~/pages/User/pages/Signup';
 import Profile from '~/pages/User/pages/Profile';
 import ForgotPassword from '~/pages/User/pages/ForgotPassword';
 import ResetPassword from '~/pages/User/pages/ResetPassword';
-import EmailVerification from '~/pages/User/pages/EmailVerification';
+import UserVerify from '~/pages/User/pages/Verify';
 import { verify } from '~/pages/User/UserState';
 import Reports from '~/pages/Reports';
 import { Redirect } from 'react-router-dom';
@@ -63,7 +63,7 @@ class App extends PureComponent {
                   <Route path={config.routes.login} component={Login} />
                   <Route path={config.routes.forgotPassword} component={ForgotPassword} />
                   <Route path={`${config.routes.resetPassword}/:uid/:token`} component={ResetPassword} />
-                  <Route path={config.routes.emailVerification} component={EmailVerification} />
+                  <Route path={`${config.routes.userVerify}/:uid/:token`} component={UserVerify} />
                   <PrivateRoute path={config.routes.profile} token={token} component={Profile} />
 
                   {/* map pages */}
