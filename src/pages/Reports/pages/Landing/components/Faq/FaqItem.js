@@ -23,6 +23,11 @@ const CollapsibleWrapper = styled.div`
     line-height: 2.5;
     text-align: center;
     color: ${config.colors.black};
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
 
     &:after {
       font-family: 'Open Sans', sans-serif;
