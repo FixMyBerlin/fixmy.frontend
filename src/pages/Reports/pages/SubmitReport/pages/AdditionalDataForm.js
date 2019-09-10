@@ -145,7 +145,7 @@ class AdditionalDataForm extends PureComponent {
 
     return (
       <DialogStepWrapper>
-        <StyledHeading>Hier kannst du noch ein Foto von dem Ort und Hinweise an die Verwaltung ergänzen.</StyledHeading>
+        <StyledHeading>Bitte entweder noch ein Foto von dem Ort oder Hinweise zum Ort ergänzen.</StyledHeading>
         <Hint>Ein Foto des Ortes hilft der Verwaltung, die Situation vor Ort besser zu beurteilen und die Meldung
           schneller zu bearbeiten.</Hint>
 

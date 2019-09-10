@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import PhotoControlImage from '~/images/reports/photo-control.png';
 import NewCloseButton from '~/components/NewCloseButton';
 import Text from '~/components/Text';
+import { getLinkStyles } from '~/components/Link';
 
 const PhotoInput = styled.input`
   width: 0.1px;
@@ -39,7 +40,7 @@ const PhotoInputLabel = styled.label`
   display: block;
   margin-top: 48px;
   font-size: 14px;
-  color: ${config.colors.darkgrey};
+  ${getLinkStyles()}
 `;
 
 const BUTTON_HEIGHT = '20px';
