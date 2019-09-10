@@ -45,16 +45,9 @@ export function signup(values, formFunctions) {
 
     const data = await apiSignup(values, formFunctions);
 
-    // we automatically login the user after signup
     if (!data.error) {
       formFunctions.setStatus('signupsuccess');
-
-      const loginData = await apiLogin(values, formFunctions);
-      if (!loginData.error) {
-        set('token', loginData.token);
-        setTimeout(() => history.push(config.routes.plannings), 3000);
-        dispatch({ type: SIGNUP_SUCCESS, payload: { token: loginData.token } });
-      }
+      setTimeout(() => history.push(config.routes.plannings), 3000);
     }
   };
 }

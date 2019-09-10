@@ -102,14 +102,12 @@ const FormWrapper = styled.div`
   margin-bottom: 16px;
 
   .formtype-checkbox {
-
     span {
       font-size: 12px;
     }
 
     input {
       width: auto;
-      margin-right: 10px;
     }
   }
 `;
