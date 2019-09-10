@@ -126,6 +126,7 @@ const ReportPin = styled.img.attrs({
   height: 51px;
 `;
 
+const showShareButton = false;
 
 class ReportDetails extends PureComponent {
   /**
@@ -210,7 +211,7 @@ class ReportDetails extends PureComponent {
             id={id}
             itemType="Meldung"
           />
-          {navigator.share ? (
+          {(navigator.share && showShareButton) ? (
             <ShareButtonWrapper>
               <ShareButton onClick={this.shareReport} />
               <LikeButtonCaption>

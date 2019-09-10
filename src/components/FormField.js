@@ -34,7 +34,7 @@ export default ({
     return (
       <FormFieldSection className={formFieldClasses}>
         <CheckboxWrapper>
-          {Result}<span> {label}</span>
+          {Result}<span style={{ marginLeft: 10 }}>{label}</span>
         </CheckboxWrapper>
         {errors[id] && <FormFieldError>{errors[id]}</FormFieldError>}
       </FormFieldSection>

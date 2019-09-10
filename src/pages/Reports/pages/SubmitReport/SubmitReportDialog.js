@@ -181,6 +181,7 @@ class SubmitReportDialog extends PureComponent {
               token={this.props.token}
               user={this.props.user}
               nextStep={proceed}
+              removeError={this.props.removeError}
             />
           </Fragment>
           );

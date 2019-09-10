@@ -19,10 +19,18 @@ const StyledWeiterButton = styled(WeiterButton)`
   width: 240px;
 `;
 
-const Image = styled.img`
-  width: 100%;
+const ImageWrapper = styled.div`
   max-width: 486px;
   margin-bottom: 2em;
+`;
+
+const Image = styled.img`
+  width: 100%;
+`;
+
+const ImageSource = styled.div`
+  font-size: 10px;
+  text-align: right;
 `;
 
 const StyledSubHeading = styled(SubHeading)`
@@ -37,7 +45,10 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
 
       <StyledHeading>Würdest du an diesem Ort auch ein kostenpflichtiges Fahrradparkhaus nutzen?</StyledHeading>
 
-      <Image src={BrBoxImg} alt="Bike-and-Ride-Box bzw. E-Ladestation" />
+      <ImageWrapper>
+        <Image src={BrBoxImg} alt="Bike-and-Ride-Box bzw. E-Ladestation" />
+        <ImageSource>Foto: Kienzler Stadtmobiliar GmbH</ImageSource>
+      </ImageWrapper>
 
       <RadioButtonLabel htmlFor="charged-bikepark-conceivable" style={{ alignSelf: 'flex-start' }}>
         <RadioButton

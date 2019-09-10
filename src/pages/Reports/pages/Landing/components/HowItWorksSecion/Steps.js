@@ -9,13 +9,13 @@ const Wrapper = styled.div`
 
 const Item = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
   padding-bottom: 2em;
-  border-left: 2px solid lightgray;
-  &:last-child{
-        border: 0;
-    }
+  border-left: 2px solid ${config.colors.lightgrey};
 
+  &:last-child {
+    border-left: 2px solid white;
+  }
 `;
 
 const Text = styled.p`
@@ -28,19 +28,19 @@ const Text = styled.p`
 
 const StepIndicator = styled.span`
   flex-shrink: 0;
-  display: block;
   margin-right: 8px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
   border: 2px solid white;
   color: white;
-  background-color: ${props => props.color};;
+  background-color: ${props => props.color};
   position: relative;
-  right: 1em;
+  right: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
+  line-height: 1;
 `;
 
 const StepNumber = styled.span`
@@ -53,15 +53,12 @@ const StepNumber = styled.span`
 export default ({ steps }) => (
   <Wrapper>
     {steps.map(({ step, text, color }) => (
-
-      <Item key={text.split(' ').slice(0, 5).join()}>
+      <Item key={`step__${step}`}>
         <StepIndicator color={color}>
           <StepNumber>{step}</StepNumber>
         </StepIndicator>
         <Text>{text}</Text>
       </Item>
-
-    ))
-    }
+    ))}
   </Wrapper>
 );

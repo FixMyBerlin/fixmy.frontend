@@ -9,7 +9,7 @@ import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hu
 import Button from '~/components/Button';
 import Link from '~/components/Link';
 import ScrollLink from './ScrollLink';
-import {media} from '~/styles/utils';
+import { media } from '~/styles/utils';
 
 const Section = styled.section`
   height: 100vh;
@@ -19,9 +19,23 @@ const Section = styled.section`
   display: flex;
   flex-direction: column; 
   
+  &:after {
+    content: "Photo by Trae Gould on Unsplash";
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    color: ${config.colors.lightgrey};
+    position: absolute;
+    bottom: 8px;
+    right: 4px;
+  }
+
   ${media.m`
     background-image: url(${BycicleParkingBgImgLargeScreen});
     background-position: top;
+
+    &:after {
+      content: "Photo by Christin Hume on Unsplash";
+    }
   `}
 `;
 
@@ -39,20 +53,6 @@ const StyledMenuButton = styled(MenuButton)`
   background-color: #353535; /*TODO: factor out color to config */
   border-radius: 2px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
-`;
-
-
-const Credits = styled.p`
-  font-size: 10px;
-  letter-spacing: 0.2px;
-  color: ${config.colors.lightgrey};
-  position: absolute;
-  bottom: 8px;
-  right: 4px;
-
-  ${media.m`
-    display: none;
-  `}
 `;
 
 const StyledHeading = styled.h2`
@@ -88,16 +88,15 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const TopSection = ({toUrl}) => (
+const TopSection = ({ toUrl }) => (
   <Section>
     <FlexWrapper>
-      <StyledMenuButton whiteFill="true"/>
-      <img width="92px" src={FixMyLogo} alt="logo"/>
-      <Credits>Photo by Trae Gould on Unsplash</Credits>
+      <StyledMenuButton whiteFill="true" />
+      <img width="92px" src={FixMyLogo} alt="logo" />
       <StyledHeading>Melde neue Fahrradbügel für Friedrichshain-Kreuzberg</StyledHeading>
       <StyledButton className="wiggle">
         <StyledLink to={toUrl}>
-          <strong>Sagt uns wo</strong><br/> in 30 Sekunden
+          <strong>Sagt uns wo</strong><br /> in 30 Sekunden
         </StyledLink>
       </StyledButton>
     </FlexWrapper>
