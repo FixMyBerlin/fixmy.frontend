@@ -207,11 +207,15 @@ class ReportSubmitted extends PureComponent {
     Store.dispatch(login(values, params));
   }
 
+  onErrorClick = () => {
+    this.props.history.push(config.routes.reports.landing);
+    this.props.removeError();
+  }
+
   render() {
     const { error, token } = this.props;
 
-    // TODO: extend error handling. The user should be able to retry the request or at least be navigated back somewhere
-    if (error.message) return <ErrorMessage message={error.message} />;
+    if (error.message) return <ErrorMessage message={error.message} onDismiss={this.onErrorClick} />;
 
     return (
       <DialogStepWrapper>
