@@ -35,7 +35,7 @@ const formConfig = [{
   value: '',
   type: 'password',
   label: '',
-  placeholder: 'Deine Passwort',
+  placeholder: 'Wähle ein Passwort',
   validateError: 'Bitte geben Sie ein Passwort an.'
 }, {
   id: 'login',
