@@ -62,6 +62,7 @@ class UploadPhotoInput extends PureComponent {
   static propTypes = {
     onPhotoResized: PropTypes.func.isRequired,
     onError: PropTypes.func,
+    onReset: PropTypes.func,
     resizeOptions: PropTypes.shape({
       maxWidth: PropTypes.number,
       maxHeight: PropTypes.number,
@@ -71,6 +72,8 @@ class UploadPhotoInput extends PureComponent {
 
   static defaultProps = {
     onError: () => {
+    },
+    onReset: () => {
     },
     resizeOptions: {
       maxWidth: 800,
@@ -103,6 +106,7 @@ class UploadPhotoInput extends PureComponent {
 
   resetState = () => {
     this.setState({ photo: null });
+    this.props.onReset();
   }
 
   handleFilePickSuccess = (photo) => {
@@ -196,10 +200,8 @@ class UploadPhotoInput extends PureComponent {
             <AbortText onClick={this.resetState}>Foto entfernen
               <AbortButton onClick={this.resetState} />
             </AbortText>
-
           </>
           )}
-
       </Fragment>
     );
   }

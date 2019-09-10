@@ -103,7 +103,9 @@ class AdditionalDataForm extends PureComponent {
     };
   }
 
-  onPhotoUpload = photo => this.setState({photo})
+  onPhotoUpload = photo => this.setState({ photo });
+
+  onPhotoDelete = () => this.setState({ photo: null, photoDisclaimerTicked: false });
 
   onPhotoUploadError = (errorMsg) => {
     const isDesktopView = matchMediaSize(breakpoints.m);
@@ -113,7 +115,7 @@ class AdditionalDataForm extends PureComponent {
 
   submit = () => {
     // marshall form data before submit
-    const stateToSubmit = {...this.state};
+    const stateToSubmit = { ...this.state };
     delete stateToSubmit.photoDisclaimerTicked;
     this.props.onConfirm(stateToSubmit);
   };
@@ -151,6 +153,7 @@ class AdditionalDataForm extends PureComponent {
           resizeOptions={config.reports.dialog.imageResizeOptions}
           onPhotoResized={this.onPhotoUpload}
           onError={this.onPhotoUploadError}
+          onReset={this.onPhotoDelete}
         />
 
         <PhotoDisclaimerWrapper>
