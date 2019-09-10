@@ -48,14 +48,10 @@ const stepsConfig = [
     color: config.colors.interaction
   }, {
     step: 2,
-    text: 'Alle Meldungen, die bis zum 10. Oktober eingehen, übergeben wir gesammelt an den Bezirk.',
+    text: 'Alle Meldungen, die bis zum 10. Oktober eingegangen sind, werden vom Bezirksamt geprüft.',
     color: '#ff99d5' // TODO: add to colors config
   }, {
     step: 3,
-    text: 'Die Meldungen werden vom Bezirksamt geprüft.',
-    color: '#cf0a7d' // TODO: add to colors config
-  }, {
-    step: 4,
     text: 'Sofern sie umsetzbar sind, werden die Bügel noch in diesem Jahr installiert.',
     color: config.colors.black
   }
@@ -69,7 +65,7 @@ export default () => (
       kannst du hier melden, wo genau im Bezirk du neue Bügel benötigst.
     </Headline>
     <StyledIcon alt="Icon Fahrradparkplätze" />
-    <HorizontalRuler className="light"  />
+    <HorizontalRuler className="light" />
     <StyledQuestion>Wie läuft das ab?</StyledQuestion>
     <Steps steps={stepsConfig} />
   </StyledSection>
