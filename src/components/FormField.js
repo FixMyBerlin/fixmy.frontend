@@ -1,27 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Field } from 'formik';
+import classnames from 'classnames';
 
 import FormFieldError from '~/components/FormFieldError';
 
 const FormFieldSection = styled.div`
   margin-bottom: 1em;
+
+  &.disabled {
+    color: #777;
+  }
+`;
+
+const CheckboxWrapper = styled.div`
+  display: flex;
 `;
 
 // returns the formfiled thats specified by the passed "type"
 export default ({
-  id, type, label, options, placeholder = '', values, handleChange, errors = {}
+  id, type, label, options,
+  placeholder = '', values, handleChange, errors = {},
+  className = '', disabled = false
 }) => {
   let Result = null;
+  const formFieldClasses = classnames('formfield', { disabled }, className);
 
   if (['text', 'number', 'email', 'password'].includes(type)) {
-    Result = <Field type={type} name={id} placeholder={placeholder} />;
+    Result = <Field type={type} name={id} placeholder={placeholder} disabled={disabled} />;
   } else if (type === 'checkbox') {
-    Result = <Field type="checkbox" name={id} checked={values[id]} />;
+    Result = <Field type="checkbox" name={id} checked={values[id]} disabled={disabled} />;
 
     return (
-      <FormFieldSection>
-        {Result}<span> {label}</span>
+      <FormFieldSection className={formFieldClasses}>
+        <CheckboxWrapper>
+          {Result}<span style={{ marginLeft: 10 }}>{label}</span>
+        </CheckboxWrapper>
         {errors[id] && <FormFieldError>{errors[id]}</FormFieldError>}
       </FormFieldSection>
     );
@@ -36,7 +50,7 @@ export default ({
   }
 
   return (
-    <FormFieldSection>
+    <FormFieldSection className={formFieldClasses}>
       <span>{label}</span>
       {Result}
       {errors[id] && <FormFieldError>{errors[id]}</FormFieldError>}

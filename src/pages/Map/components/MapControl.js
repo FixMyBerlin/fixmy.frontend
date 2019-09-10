@@ -13,6 +13,10 @@ const MapControl = styled.div`
 `;
 
 const getMargins = (props) => {
+  if (props.customPosition) {
+    return props.customPosition;
+  }
+
   switch (props.position) {
     case 'top-right':
       return {

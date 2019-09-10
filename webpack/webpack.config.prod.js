@@ -1,8 +1,8 @@
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const Autoprefixer = require('autoprefixer');
 
@@ -22,7 +22,10 @@ module.exports = merge(common, {
     splitChunks: {
       chunks: 'all',
       name: false
-    }
+    },
+    minimizer: [
+      new TerserPlugin()
+    ],
   },
   plugins: [
     new Webpack.DefinePlugin({
@@ -35,7 +38,6 @@ module.exports = merge(common, {
       minify: false
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
-    new UglifyJSPlugin({ sourceMap: true }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
     // new BundleAnalyzerPlugin()
   ],

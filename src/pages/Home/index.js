@@ -11,6 +11,7 @@ import MenuButton from '~/components/MenuButton';
 import Button from '~/components/Button';
 import SocialSharer from '~/components/Social/SocialSharer';
 import Text from '~/components/Text';
+import GhostButton from '~/components/GhostButton';
 
 import SubscribtionWidget from '~/pages/Home/components/SubscribtionWidget';
 import bgImage from '~/images/background.jpg';
@@ -29,6 +30,18 @@ const HomeContent = styled.div`
 
 const MapLinkWrapper = styled.div`
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  a {
+    display: block;
+    text-decoration: none;
+  }
+
+  button {
+    width: 250px;
+  }
 `;
 
 const BackgroundMap = styled.div`
@@ -72,12 +85,15 @@ export default () => (
       <HomeContent>
         <FMBLogo />
         <div>
-          <Title>{homeLabels.title}</Title>
-          <Text>{homeLabels.intro}</Text>
+          <Title dangerouslySetInnerHTML={{ __html: homeLabels.title }} />
+          <Text dangerouslySetInnerHTML={{ __html: homeLabels.intro }} />
         </div>
         <MapLinkWrapper>
-          <Link to="/planungen">
-            <MapButton>{homeLabels.mapButton}</MapButton>
+          <Link to={config.routes.reports.index}>
+            <MapButton>{homeLabels.reportsButton}</MapButton>
+          </Link>
+          <Link to={config.routes.plannings}>
+            <GhostButton>{homeLabels.mapButton}</GhostButton>
           </Link>
         </MapLinkWrapper>
         <SubscribtionWidget />

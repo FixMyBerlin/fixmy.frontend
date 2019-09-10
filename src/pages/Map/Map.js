@@ -87,6 +87,7 @@ class MapViewComponent extends PureComponent {
             hbi_values={this.props.hbi_values}
             filterHbi={this.props.filterHbi}
             filterPlannings={this.props.filterPlannings}
+            filterReports={this.props.filterReports}
             calculatePopupPosition={calculatePopupPosition}
             displayPopup={this.props.displayPopup}
             animate={this.props.animate}
@@ -118,24 +119,26 @@ class MapViewComponent extends PureComponent {
           <Route
             exact
             path="/zustand/:id/:name?"
-            render={() => (
+            render={props => (
               <SectionDetail
                 apiEndpoint="planning-sections"
                 onCloseRoute="/zustand"
                 activeView={this.props.activeLayer}
                 token={this.props.token}
+                match={props.match}
               />
             )}
           />
           <Route
             exact
             path="/planungen/:id/:name?"
-            render={() => (
+            render={props => (
               <PlanningDetail
                 apiEndpoint="planning-sections"
                 onCloseRoute="/planungen"
                 activeView={this.props.activeLayer}
                 token={this.props.token}
+                match={props.match}
               />
             )}
           />
@@ -144,7 +147,9 @@ class MapViewComponent extends PureComponent {
           path="/my-hbi"
           component={MyHBI}
         />
+        {isEmbedMode && <FMBCredits />}
       </MapView>
+
     );
   }
 }
@@ -156,6 +161,7 @@ export default withRouter(
     activeLocation: state.MapState.activeLocation,
     filterHbi: state.MapState.filterHbi,
     filterPlannings: state.MapState.filterPlannings,
+    filterReports: state.MapState.filterReports,
     hasMoved: state.MapState.hasMoved,
     hbi_speed: state.MapState.hbi_speed,
     hbi_safety: state.MapState.hbi_safety,

@@ -9,13 +9,16 @@ const StyledSelect = styled.select`
   background: transparent;
   height: 34px;
   font-size: 14px;
-  text-transform: uppercase;
   color: ${config.colors.darkgrey};
   margin-top: 8px;
   max-width: 100%;
 
   &:focus {
     outline: none;
+  }
+
+  &:disabled {
+    opacity: 0.7;
   }
 `;
 

@@ -7,16 +7,6 @@ import Label from '~/components/Label';
 import Link from '~/components/Link';
 import { likeDetail, getLikes } from '~/pages/Map/apiservice';
 
-const PlanningLikeWrapper = styled.div`
-  background: ${config.colors.likebg};
-  padding: 24px 16px;
-  box-shadow: 0 -1px 6px 1px rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  bottom: 0;
-`;
-
 const LikeButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -26,7 +16,6 @@ const LikeButtonWrapper = styled.div`
 
 const buttonBoxShadow = '0 1px 5px 2px rgba(0, 0, 0, 0.25)';
 const buttonBoxShadowActive = '0 1px 7px 3px rgba(0, 0, 0, 0.25)';
-
 const animation = () => css`
   ${bounce} .8s;
 `;
@@ -100,23 +89,26 @@ class PlanningLike extends PureComponent {
   }
 
   render() {
-    const { token } = this.props;
+    const { token, itemType = 'Planung' } = this.props;
     const { userLike, count, bouncy } = this.state;
 
     const label = token ?
-      <Label>{userLike ? 'Diese Planung gefällt mir' : 'gefällt dir die Planung?'}</Label> :
-      <Label>Um eine Planung zu liken, musst du <Link to={config.routes.login}>eingeloggt sein</Link>.</Label>;
+      <Label>{userLike ? `Diese ${itemType} gefällt mir` : `Gefällt dir die ${itemType}?`}</Label> :
+      <Label>Um eine {itemType} zu liken, musst du <Link to={config.routes.login}>eingeloggt sein</Link>.</Label>;
 
     return (
-      <PlanningLikeWrapper>
-        <LikeButtonWrapper>
-          <Label bold>{count}</Label>
-          <LikeButton isLiked={userLike} disabled={!token} onClick={this.handleClick} bouncy={bouncy}>
-            <HeartIcon />
-          </LikeButton>
-          {label}
-        </LikeButtonWrapper>
-      </PlanningLikeWrapper>
+      <LikeButtonWrapper>
+        <Label bold>{count}</Label>
+        <LikeButton
+          isLiked={userLike}
+          disabled={!token}
+          onClick={this.handleClick}
+          bouncy={bouncy}
+        >
+          <HeartIcon />
+        </LikeButton>
+        {label}
+      </LikeButtonWrapper>
     );
   }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>36768C5B-72FD-4EB0-8676-36B9E89A793C</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <circle id="path-1" cx="21.6" cy="21.6" r="21.6"></circle>
+    </defs>
+    <g id="Meldedialog" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Meldung-1" transform="translate(-296.000000, -45.000000)">
+            <g id="Group-3" transform="translate(296.000000, 45.000000)">
+                <g id="button/map/exitfix">
+                    <g id="Location-Button-Copy" stroke-width="1" fill-rule="evenodd">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Oval" fill="#545454" xlink:href="#path-1"></use>
+                    </g>
+                    <path d="M21.9483871,11.8451613 L21.9483871,31.9061305" id="Path-17" stroke="#FFFFFF" stroke-width="2.7" transform="translate(21.948387, 21.875646) rotate(45.000000) translate(-21.948387, -21.875646) "></path>
+                    <path d="M21.9483871,11.8451613 L21.9483871,31.9061305" id="Path-17" stroke="#FFFFFF" stroke-width="2.7" transform="translate(21.948387, 21.875646) rotate(135.000000) translate(-21.948387, -21.875646) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

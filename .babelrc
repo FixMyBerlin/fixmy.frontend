@@ -19,7 +19,8 @@
         [
           "babel-plugin-styled-components",
           { "displayName": false }
-        ]
+        ],
+        "emotion"
       ]
     }
   }
