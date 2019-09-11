@@ -59,7 +59,7 @@ const UserVerify = ({ match, location }) => {
 
       if (newsletter === 'yes') {
         try {
-          await ky(`${config.apiUrl}/api/newsletter-signup/`, { method: 'POST', json: { uid, token }, headers: { Authorization: `JWT ${token}` } }).text();
+          await ky(`${config.apiUrl}/newsletter-signup/`, { method: 'POST', json: { uid, token }, headers: { Authorization: `JWT ${token}` } }).text();
         } catch (e) {
           console.log(e);
         }
