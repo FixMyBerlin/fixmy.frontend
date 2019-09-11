@@ -45,6 +45,18 @@ const UserVerify = ({ match, location }) => {
   const [serverError, serServerError] = useState(null);
 
   useEffect(() => {
+    const signupNewsletter = async () => {
+      const { newsletter } = qs.parse(location.search, { ignoreQueryPrefix: true });
+
+      if (newsletter === 'yes') {
+        try {
+          // await ky(`${config.apiUrl}/newsletter-signup`, { method: 'POST', json: { uid, token }, headers: { Authorization: `JWT ${token}` } }).text();
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    };
+
     const confirmUser = async () => {
       const { uid, token } = match.params;
 
@@ -52,18 +64,10 @@ const UserVerify = ({ match, location }) => {
         await ky(`${config.apiUrl}/users/confirm/`, { method: 'POST', json: { uid, token } }).text();
       } catch (e) {
         console.log(e);
-        serServerError('Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden.');
+        return serServerError('Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden.');
       }
 
-      const { newsletter } = qs.parse(location.search, { ignoreQueryPrefix: true });
-
-      if (newsletter === 'yes') {
-        try {
-          await ky(`${config.apiUrl}/newsletter-signup/`, { method: 'POST', json: { uid, token }, headers: { Authorization: `JWT ${token}` } }).text();
-        } catch (e) {
-          console.log(e);
-        }
-      }
+      signupNewsletter();
     };
 
     confirmUser();
