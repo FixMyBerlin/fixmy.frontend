@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import withRouter from 'react-router/withRouter';
 import Link from 'react-router-dom/Link';
 import ky from 'ky';
+import qs from 'qs';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
@@ -40,7 +41,7 @@ const ErrorMessage = styled.div`
   text-align: center;
 `;
 
-const UserVerify = ({ match }) => {
+const UserVerify = ({ match, location }) => {
   const [serverError, serServerError] = useState(null);
 
   useEffect(() => {
@@ -52,6 +53,16 @@ const UserVerify = ({ match }) => {
       } catch (e) {
         console.log(e);
         serServerError('Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden.');
+      }
+
+      const { newsletter } = qs.parse(location.search, { ignoreQueryPrefix: true });
+
+      if (newsletter === 'yes') {
+        try {
+          await ky(`${config.apiUrl}/api/newsletter-signup/`, { method: 'POST', json: { uid, token }, headers: { Authorization: `JWT ${token}` } }).text();
+        } catch (e) {
+          console.log(e);
+        }
       }
     };
 
