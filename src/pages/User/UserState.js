@@ -52,7 +52,7 @@ export function signup(values, formFunctions) {
   };
 }
 
-export function login(values, formFunctions) {
+export function login(values, formFunctions, cb = () => {}) {
   return async (dispatch) => {
     dispatch({ type: LOGIN });
 
@@ -62,6 +62,8 @@ export function login(values, formFunctions) {
       set('token', data.token);
       formFunctions.setStatus('loginsuccess');
       dispatch({ type: LOGIN_SUCCESS, payload: { token: data.token } });
+
+      cb(data);
     }
   };
 }

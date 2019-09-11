@@ -204,7 +204,10 @@ class ReportSubmitted extends PureComponent {
   }
 
   onLoginFormSubmit = (values, params) => {
-    Store.dispatch(login(values, params));
+    Store.dispatch(login(values, params, async (data) => {
+      const userData = await apiUser(data.token);
+      addUserToReport(this.props.reportId, userData.id);
+    }));
   }
 
   onErrorClick = () => {
