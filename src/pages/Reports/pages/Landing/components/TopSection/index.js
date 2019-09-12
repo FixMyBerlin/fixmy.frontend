@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import FixMyLogo from '~/images/logofmb@2x.png';
 import MenuButton from '~/components/MenuButton';
-import BycicleParkingBgImg from '~/images/reports/bycicle-parking.png';
+import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
 import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 import Button from '~/components/Button';
 import Link from '~/components/Link';
@@ -17,8 +17,8 @@ const Section = styled.section`
   background-size: cover;
   background-position: center 80%;
   display: flex;
-  flex-direction: column;
-
+  flex-direction: column; 
+  
   &:after {
     content: "Photo by Trae Gould on Unsplash";
     font-size: 10px;
