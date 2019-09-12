@@ -121,9 +121,13 @@ export function getReportStatusCaption(status) {
 export async function addUserToReport(reportId, userId) {
   let reportPatch = null;
 
+  if (typeof reportId === 'undefined') {
+    throw new Error('You need to pass a report id.');
+  }
+
   try {
     reportPatch = await ky(`${config.apiUrl}/reports/${reportId}`, { method: 'PATCH', json: { user: userId } }).json();
-  } catch (err) {
+  } catch (err) {
     throw new Error(`Can't connect reportId ${reportId} with user ${userId}`);
   }
 

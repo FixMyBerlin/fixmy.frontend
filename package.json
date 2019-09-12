@@ -75,7 +75,7 @@
     "object-assign": "^4.1.1",
     "promise": "^8.0.2",
     "prop-types": "^15.6.2",
-    "qs": "^6.6.0",
+    "qs": "^6.8.0",
     "rc-slider": "^8.6.3",
     "rc-tooltip": "^3.7.3",
     "react": "^16.8.6",
