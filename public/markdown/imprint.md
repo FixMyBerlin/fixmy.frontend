@@ -17,7 +17,7 @@ Du findest uns auch auf [twitter](https://twitter.com/fixmyberlin).
 
 Sofern du Bugs oder Verbesserungsvorschläge hast, gib uns gerne [auf github.com Feedback](https://github.com/FixMyBerlin/fixmy.frontend).
 
-## Entwicklung
+## Dienstleister
 Frontend & UX Beratung: Webkid GmbH, https://webkid.io/
 
 Backend & Beratung: Agaric e.K. Stefan Freudenberg
@@ -32,6 +32,8 @@ Wenn nicht anders angegeben stehen die auf fixmyberlin.de verwendeten Fotos unte
 FixMyCity wird als forschungsbezogenes Start-Up durch Bundesmittel gefördert (Förderkennzeichen VB1907). [Projektsteckbrief](https://nationaler-radverkehrsplan.de/de/praxis/radinfrastrukturdaten-erfassen-und "Projektsteckbrief beim BMVI")
 
 FixMyCity wird im Rahmen der CityLAB-Förderlinie der Senatskanzlei Berlin durch Landesmittel gefördert.
+
+FixMyBerlin wird im Rahmen des Berlin Startup Stipendiums gefördert. [Projektsteckbrief](https://entrepreneurship.htw-berlin.de/unsere-startups/stipendiat-innen/fixmyberlin/ "Projektsteckbrief bei der HTW")
 
 FixMyBerlin wurde als forschungsbezogenes Start-Up durch Bundesmittel gefördert (Förderkennzeichen 19F1039A). [Projektsteckbrief](http://www.bmvi.de/SharedDocs/DE/Artikel/DG/mfund-projekte/fixmyberlin.html "Projektsteckbrief beim BMVI")
 

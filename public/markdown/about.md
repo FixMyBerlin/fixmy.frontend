@@ -1,15 +1,15 @@
 # Wie wird Berlin zur Fahrradstadt?
 FixMyBerlin begleitet Berlin bei der Umsetzung des [Mobilitätsgesetzes](https://www.berlin.de/senuvk/verkehr/mobilitaetsgesetz/ "Mobilitätsgesetzes") und entwickelt digitale Werkzeuge für die Verkehrswende.
 
-Die Transformation zur Fahrradstadt Berlin wird auf der Plattform von FixMyBerlin verständlich und nachvollziehbar auf Karten darstellt. Hierfür stimmt sich FixMyBerlin mit den Bezirken und der Senatsverwaltung ab und bereitet [deren Radverkehrsplanungen](/zustand "Karte mit Planungen") auf und stellt die aufbereiteten Daten wiederum [zum Download bereit](/api "API von FixMyBerlin"). Der von FixMyBerlin entwickelte [Happy-Bike-Index](/zustand "Karte zum Happy-Bike-Index") zeigt außerdem, wo schon entspannt und sicher Rad gefahren werden kann (grün) bzw. wo es noch gefährlich ist (rot).
+Die Transformation zur Fahrradstadt Berlin wird auf der Plattform von FixMyBerlin verständlich und nachvollziehbar auf Karten darstellt. Hierfür stimmt sich FixMyBerlin mit den Bezirken und der Senatsverwaltung ab und bereitet [deren Radverkehrsplanungen](/zustand "Karte mit Planungen") auf und stellt die aufbereiteten Daten wiederum [zum Download bereit](/api "API von FixMyBerlin"). Der von FixMyBerlin entwickelte [Happy-Bike-Index](/zustand "Karte zum Happy-Bike-Index") (derzeit noch in einer Beta-Version) zeigt außerdem, wo schon entspannt und sicher Rad gefahren werden kann (grün) bzw. wo es noch gefährlich ist (rot).
 
 Ziel ist eine datenbasierte Grundlage für einen konstruktiven Dialog zwischen Verwaltung und Bürger:innen zu schaffen.
 
 
 ## Wer steckt hinter FixMyBerlin?
-FixMyBerlin ist aus einer Initiative aus der Berliner Zivilgesellschaft heraus entstanden. Mittlerweile sind wir ein größer werdendes Team aus Entwickler:innen, Designer:innen, Verkehrsplaner:innen sowie Datenspezialist:innen, die Berlin und andere Städte bei der Transformation zur Fahrradstadt unterstützen wollen.
+FixMyBerlin ist aus einer Initiative der Berliner Zivilgesellschaft heraus entstanden. Mittlerweile sind wir ein größer werdendes Team aus Entwickler:innen, Designer:innen, Verkehrsplaner:innen sowie Datenspezialist:innen, die Berlin und andere Städte bei der Transformation zur Fahrradstadt unterstützen und Lösungen für die offene Verwaltung entwickeln.
 
-Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministerium sowie der Berliner Senatskanzlei. Die für Verkehr zuständige Senatsverwaltung sowie 11 von 12 der Berliner Bezirksämter unterstützen die Plattform durch Bereitstellung von Daten.
+Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministeriums, der Berliner Senatskanzlei und dem Berliner StartUp Stipendium. Die für Verkehr zuständige Senatsverwaltung sowie 11 von 12 der Berliner Bezirksämter nutzen die Plattform und veröffentlichen dort ihre Planungen.
 
 ## Team von FixMyBerlin [[Kontakt]](/impressum)
 <div class="teamportrait">
@@ -28,7 +28,12 @@ Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministerium sowie
   Leitung Datenredaktion, Datenstrategie, Koordination Bezirke
 </div>
 <div class="teamportrait">
-  <img src="/uploads/team/tobiasmueller_q.jpg" alt="Tobias Müller" title="Tobias Müller" style="width: 160px" /><br />
+  <img src="/uploads/team/sascha_picard.jpg" alt="Sascha Picard" title="Sascha Picard" style="width: 160px" /><br />
+  <strong>Sascha Picard</strong><br />
+  Frontend-Entwicklung, GIS-Datenbank, Testing
+</div>
+<div class="teamportrait">
+  <img src="/uploads/team/Tobi-350x400.jpg" alt="Tobias Müller" title="Tobias Müller" style="width: 160px" /><br />
   <strong>Tobias Müller</strong><br />
   Städtische Kontakte, Ausschreibungen, Präsentationen
 </div>
@@ -36,6 +41,11 @@ Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministerium sowie
   <img src="/uploads/team/Andrea.png" alt="Andrea Knabe-Schönemann" title="Andrea Knabe-Schönemann" style="width: 160px" /><br />
   <strong>Andrea Knabe-Schönemann</strong><br />
   Controlling, Open Data, Community
+</div>
+<div class="teamportrait">
+  <img src="/uploads/team/Felix_350x400.jpg" alt="Felix Sistenich" title="Felix Sistenich" style="width: 160px" /><br />
+  <strong>Felix Sistenich</strong><br />
+  Datenredaktion, Literaturrecherche, Umfagedesign
 </div>
 <div class="teamportrait">
   <img src="/uploads/team/VincentArendt.png" alt="Vincent Ahrend" title="Vincent Ahrend" style="width: 160px" /><br />
@@ -50,6 +60,7 @@ Unsere **Kontaktdaten** befinden sich im [Impressum](/impressum "Zum Impressum")
 <style type="text/css">
   .teamportrait {
     width: 190px;
+    height: 290px;
     padding: 0 30px 30px 0;
     float: left;
   }
@@ -77,22 +88,19 @@ Unsere **Kontaktdaten** befinden sich im [Impressum](/impressum "Zum Impressum")
   <a href="https://www.citylab-berlin.org/" target="_blank"><img src="/uploads/partner/citylab-berlin.png" /></a>
 </div>
 <div class="partner">
-  <a href="https://www.cyface.de/" target="_blank"><img src="/uploads/partner/cyface.png" /></a>
-</div>
-<br clear="both" />
-<div class="partner">
   <a href="https://www.htw.de/" target="_blank"><img src="/uploads/partner/htw.jpg" /></a>
 </div>
+<br clear="both" />
 <div class="partner">
   <a href="https://prototypefund.de/" target="_blank"><img src="/uploads/partner/prototype-fund.jpg" /></a>
 </div>
 <div class="partner">
   <a href="https://www.berlin.de/rbmskzl/" target="_blank"><img src="/uploads/partner/senatskanzlei-berlin.png" /></a>
 </div>
-<br clear="both" />
 <div class="partner">
   <a href="https://www.berlin.de/sen/uvk/" target="_blank"><img src="/uploads/partner/senat-verkehr-berlin.png" /></a>
 </div>
+<br clear="both" />
 <div class="partner">
   <a href="https://www.tu-berlin.de/" target="_blank"><img src="/uploads/partner/tu-berlin.png" /></a>
 </div>
