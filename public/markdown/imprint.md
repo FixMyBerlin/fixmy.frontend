@@ -17,7 +17,7 @@ Du findest uns auch auf [twitter](https://twitter.com/fixmyberlin).
 
 Sofern du Bugs oder Verbesserungsvorschläge hast, gib uns gerne [auf github.com Feedback](https://github.com/FixMyBerlin/fixmy.frontend).
 
-## Externe Entwicklung
+## Dienstleister
 Frontend & UX Beratung: Webkid GmbH, https://webkid.io/
 
 Backend & Beratung: Agaric e.K. Stefan Freudenberg
