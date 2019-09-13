@@ -21,6 +21,7 @@ const StyledHeading = styled(Heading)`
 const Hint = styled(Paragraph)`
   margin-top: 12px;
   margin-bottom: 0;
+  font-weight: ${({ emphasize }) => emphasize ? 'bold' : 'normal'}
 `;
 
 const PhotoDisclaimerWrapper = styled.div`
@@ -69,11 +70,13 @@ const DescriptionTextArea = styled(TextareaAutosize)`
 
 class AdditionalDataForm extends PureComponent {
   static propTypes = {
-    onConfirm: PropTypes.func
+    onConfirm: PropTypes.func,
+    maxDescriptionLength: PropTypes.number
   };
 
   static defaultProps = {
-    onConfirm: () => console.log('onConfirm() says implement me')
+    onConfirm: () => console.log('onConfirm() says implement me'),
+    maxDescriptionLength: 400
   };
 
   constructor(props) {
@@ -161,7 +164,7 @@ class AdditionalDataForm extends PureComponent {
 
         <DescriptionTextArea
           rows={isDesktopView ? 6 : 8}
-          maxLength={140}
+          maxLength={this.props.maxDescriptionLength}
           value={this.state.description}
           onChange={this.updateDescription}
           placeholder={oneLine`
@@ -169,6 +172,7 @@ class AdditionalDataForm extends PureComponent {
           Meldung oder nenne besondere Anforderungen,
           z.B. Stellplätze für Lastenräder, die Nähe einer Kita oder Ähnliches.`}
         />
+        <Hint emphasize={this.state.description.length === this.props.maxDescriptionLength}>Max. {this.props.maxDescriptionLength} Zeichen</Hint>
 
         <WeiterButton
           onClick={this.submit}

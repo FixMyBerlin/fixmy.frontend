@@ -12,7 +12,7 @@
         },
         "description": {
           "type": "string",
-          "maxLength": 140,
+          "maxLength": 400,
           "description": "Further comment on the location or subject"
         },
         "details": {
