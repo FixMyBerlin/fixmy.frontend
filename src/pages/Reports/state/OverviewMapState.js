@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { apiFetchReports } from '../apiService';
+import { apiFetchReports } from '../apiservice';
 import { actions as errorStateActions } from './ErrorState';
 
 const actions = {};
