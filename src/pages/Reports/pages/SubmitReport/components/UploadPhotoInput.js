@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import PhotoControlImage from '~/images/reports/photo-control.png';
+import NewCloseButton from '~/components/NewCloseButton';
+import Text from '~/components/Text';
+import { getLinkStyles } from '~/components/Link';
 
 const PhotoInput = styled.input`
   width: 0.1px;
@@ -33,16 +36,34 @@ const PhotoInputImageLabel = styled.label`
 `;
 
 const PhotoInputLabel = styled.label`
+  font-weight: bold;
   display: block;
-  margin-top: 12px;
+  margin-top: 48px;
   font-size: 14px;
-  color: ${config.colors.darkgrey};
+  ${getLinkStyles()}
+`;
+
+const BUTTON_HEIGHT = '20px';
+const AbortButton = styled(NewCloseButton)`
+  display: inline-block;
+  height: ${BUTTON_HEIGHT};
+  width: 30px;
+  vertical-align: middle;
+`;
+
+const AbortText = styled(Text)`
+  line-height:  ${BUTTON_HEIGHT};
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7;
+  }
 `;
 
 class UploadPhotoInput extends PureComponent {
   static propTypes = {
     onPhotoResized: PropTypes.func.isRequired,
     onError: PropTypes.func,
+    onReset: PropTypes.func,
     resizeOptions: PropTypes.shape({
       maxWidth: PropTypes.number,
       maxHeight: PropTypes.number,
@@ -51,7 +72,10 @@ class UploadPhotoInput extends PureComponent {
   };
 
   static defaultProps = {
-    onError: () => {},
+    onError: () => {
+    },
+    onReset: () => {
+    },
     resizeOptions: {
       maxWidth: 800,
       maxHeight: 800,
@@ -68,21 +92,39 @@ class UploadPhotoInput extends PureComponent {
     this.fileReader.onload = this.handleConvertedPhoto.bind(this);
   }
 
-  onImageFileSelect = (fileList) => {
+  handleFilePickAction = (fileList) => {
     const photo = fileList[0];
+    if (!photo) {
+      this.handleFilePickAbort();
+    } else {
+      this.handleFilePickSuccess(photo);
+    }
+  }
+
+  handleFilePickAbort = () => {
+    // do nothing
+  }
+
+  resetState = () => {
+    this.setState({ photo: null });
+    this.props.onReset();
+  }
+
+  handleFilePickSuccess = (photo) => {
     if (!['image/jpg', 'image/jpeg'].includes(photo.type)) {
       this.props.onError('Sorry! Nur Fotos im Format JPG werden unterstützt.');
+      this.resetState();
       return;
     }
     // trigger handleConvertedPhoto()
     this.fileReader.readAsDataURL(photo);
-  };
+  }
 
   resizeImage = dataUrl => new Promise(((resolve) => {
-      const image = new Image();
-      image.src = dataUrl;
-      image.onload = this.resizeImageInner.bind(this, image, dataUrl, resolve);
-    }))
+    const image = new Image();
+    image.src = dataUrl;
+    image.onload = this.resizeImageInner.bind(this, image, dataUrl, resolve);
+  }));
 
   resizeImageInner = (image, photoDataUrl, resolve) => {
     const { maxWidth, maxHeight, quality } = this.props.resizeOptions;
@@ -129,13 +171,20 @@ class UploadPhotoInput extends PureComponent {
   }
 
   render() {
+    const { photo } = this.state;
     return (
       <Fragment>
 
+        <PhotoInputLabel
+          htmlFor="photo-file-input"
+        >
+          {`Foto ${photo ? 'neu' : ''} aufnehmen oder hochladen`}
+        </PhotoInputLabel>
+
         <PhotoInputImageLabel
           htmlFor="photo-file-input"
-          style={{ backgroundImage: `url(${this.state.photo || PhotoControlImage})` }}
-          className={this.state.photo ? 'has-photo' : ''}
+          style={{ backgroundImage: `url(${photo || PhotoControlImage})` }}
+          className={photo ? 'has-photo' : ''}
         >
           <PhotoInput
             type="file"
@@ -143,15 +192,17 @@ class UploadPhotoInput extends PureComponent {
             capture="environment"
             id="photo-file-input"
             name="photo-file-input"
-            onChange={e => this.onImageFileSelect(e.target.files)}
+            onChange={e => this.handleFilePickAction(e.target.files)}
           />
         </PhotoInputImageLabel>
-        <PhotoInputLabel
-          htmlFor="photo-file-input"
-        >
-          {`Foto ${this.state.photo ? 'neu' : ''} aufnehmen`}
-        </PhotoInputLabel>
 
+        {photo && (
+          <>
+            <AbortText onClick={this.resetState}>Foto entfernen
+              <AbortButton onClick={this.resetState} />
+            </AbortText>
+          </>
+          )}
       </Fragment>
     );
   }

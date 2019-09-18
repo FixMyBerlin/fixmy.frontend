@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import withRouter from 'react-router/withRouter';
 import PropTypes from 'prop-types';
 import _isEqual from 'lodash.isequal';
+import MapboxGL from 'mapbox-gl';
 
 import { animateView, setView } from '~/pages/Map/map-utils';
 import BaseMap from '~/pages/Reports/components/BaseMap';
@@ -13,7 +14,11 @@ class WebglMap extends PureComponent {
     onMapDrag: PropTypes.func,
     allowDrag: PropTypes.bool,
     onLoad: PropTypes.func,
-    zoomedOut: PropTypes.bool
+    zoomedOut: PropTypes.bool,
+    zoomControlPosition: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.bool
+    ])
   }
 
   static defaultProps = {
@@ -22,12 +27,15 @@ class WebglMap extends PureComponent {
     onMapDrag: () => console.log('onMapDrag says implement me'),
     allowDrag: true,
     onLoad: () => {},
-    zoomedOut: false
+    zoomedOut: false,
+    zoomControlPosition: false
   }
 
   map = null
 
   maxExtent = null
+
+  nav = new MapboxGL.NavigationControl({ showCompass: false })
 
   constructor(props) {
     super(props);
@@ -78,6 +86,10 @@ class WebglMap extends PureComponent {
 
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('zoomEnd', this.handleMoveEnd);
+
+    // add controls
+    const { zoomControlPosition } = this.props;
+    if (zoomControlPosition) this.map.addControl(this.nav, this.props.zoomControlPosition);
 
     // notify containers that map has been initialized
     this.props.onLoad();

@@ -1,12 +1,17 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import styled from 'styled-components';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
 import ShareIcon from '~/images/reports/share.svg';
+import ReportPinIcon from '~/images/reports/pin-meldung-yellow.png';
 
 import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
 import PlanningLike from '~/pages/Map/components/DetailView/PlanningDetail/PlanningLike';
 import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
+
+import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
+import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
+import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 
 // TODO: split up in subcomponents (Topbar etc.) just like Reports/Landing
 
@@ -16,8 +21,14 @@ const Wrapper = styled.div`
   min-height: 100%;
 `;
 
-const Footer = styled(DetailFooter)`
-  margin-top: auto;
+const Main = styled.div`
+  padding: 16px 16px 180px 16px;
+`;
+
+const SocialFooter = styled(DetailFooter)`
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 `;
 
 const ReportImage = styled.img`
@@ -28,21 +39,6 @@ const HeadlineSection = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
-`;
-
-const Hr = styled.hr`
-  width: 100%;
-  border: 1px solid ${config.colors.inactivegrey}
-`;
-
-// TODO: copied, de-dupe
-const Heading = styled.h3`
-  font-size: 22px;
-  font-weight: bold;
-  color: ${config.colors.black};
-  line-height: 1.32;
-  margin: 0;
 `;
 
 const BikeStandsCountSection = styled.div`
@@ -53,25 +49,23 @@ const BikeStandsCount = styled.p`
   margin-top: 4px;
   margin-bottom: 0;
   text-align: center;
-  font-size: 10px;
+  font-size: 14px;
   color: #999999;
 `;
 
-const Description = styled.p`
-  padding: 16px;
-  color: rgba(0, 0, 0, 0.54);
-  line-height: 1.71;
-  font-size: 14px;
-  margin: 20px 0;
-  overflow:auto;
+const StatusIndicator = styled.p`
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.32;
+  color: ${config.colors.black};
 `;
 
-const IndicatorsWrapper = styled.div`
-  margin-bottom: 1em;
+const Text = styled.p`
+  color: ${config.colors.darkgrey};
+  font-size: 16px;
 `;
 
 const IndicatorSection = styled.div`
-  padding: 18px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -87,12 +81,9 @@ const IndicatorTitle = styled.p`
   flex-flow: 2;
 `;
 
-const BikeParkingIndicator = styled.div`
+const IndicatorValue = styled(Text)`
   flex-flow: 1;
-  font-size: 14px;
-  line-height: 1.71;
   text-align: center;
-  color: rgba(0, 0, 0, 0.54);
   white-space: pre-wrap;
 `;
 
@@ -120,6 +111,22 @@ const ShareButton = styled(ShareIcon)`
   margin: 0 25px 30px 25px;
 `;
 
+const StatusIndicatorWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: bottom;
+`;
+
+const ReportPin = styled.img.attrs({
+  src: ReportPinIcon,
+  alt: 'A marker icon'
+})`
+  display: block;
+  width: 40px;
+  height: 51px;
+`;
+
+const showShareButton = false;
 
 class ReportDetails extends PureComponent {
   /**
@@ -137,7 +144,7 @@ class ReportDetails extends PureComponent {
 
     if (navigator.share) {
       navigator.share({
-        title: `${reportItem.details.number} neue Fahrradbügel benötigt`,
+        title: `${reportItem.details.number} neue Fahrradbügel gewünscht`,
         text: `${reportItem.description} Eine Meldung auf FixMyBerlin.`,
         url: window.location
       })
@@ -146,6 +153,9 @@ class ReportDetails extends PureComponent {
     }
   }
 
+  formatDate = dateString => new Date(dateString)
+    .toLocaleDateString('de-DE', {month: '2-digit', day: '2-digit', year: 'numeric'})
+
   render() {
     const { reportItem } = this.props;
 
@@ -153,58 +163,55 @@ class ReportDetails extends PureComponent {
       return null;
     }
 
-    const { photo, details, description, id, status } = reportItem;
+    const { photo, details, description, id, status, created_date } = reportItem;
 
     return (
       <Wrapper>
         {photo && photo.src && (<ReportImage src={photo.src} />)}
 
-        <HeadlineSection>
-          <Heading>{details.number} neue Fahrradbügel benötigt</Heading>
-          <BikeStandsCountSection>
-            <BikestandsIcon />
-            <BikeStandsCount>x{details.number}</BikeStandsCount>
-          </BikeStandsCountSection>
-        </HeadlineSection>
+        <Main>
+          <HeadlineSection>
+            <Heading alignLeft>{details.number} neue Fahrradbügel gewünscht</Heading>
+            <BikeStandsCountSection>
+              <BikestandsIcon />
+              <BikeStandsCount>x{details.number}</BikeStandsCount>
+            </BikeStandsCountSection>
+          </HeadlineSection>
 
-        {
-          description && (
-            <Description>{description}</Description>
-          )
-        }
+          <StatusIndicatorWrapper>
+            <StatusIndicator>Status: {getReportStatusCaption(status)}</StatusIndicator>
+            <ReportPin />
+          </StatusIndicatorWrapper>
 
-        <IndicatorsWrapper>
+          <HorizontalRuler className="light "/>
+
+          {description && (
+            <Fragment>
+              <SubHeading alignLeft>Hinweise an die Verwaltung</SubHeading>
+              <Text>{description}</Text>
+            </Fragment>
+          )}
 
           <IndicatorSection>
             <IndicatorTitle>Bedarf Fahrradparkhaus</IndicatorTitle>
-            <BikeParkingIndicator>{
-              details.fee ? `ja,
-${details.fee} € / Tag` : 'nein'
-            }
-            </BikeParkingIndicator>
+            <IndicatorValue>{details.fee_acceptable ? 'ja' : 'nein'}
+            </IndicatorValue>
           </IndicatorSection>
 
-          <Hr />
+          <HorizontalRuler className="light" />
 
-          <IndicatorSection>
-            <IndicatorTitle>Status: {getReportStatusCaption(status)}</IndicatorTitle>
-            {
-              reportItem.status_reason && (
-                <Description>{reportItem.status_reason}</Description>
-              )
-            }
-          </IndicatorSection>
+          {created_date && (<Text>Meldung vom: {this.formatDate(created_date)}</Text>)}
+        </Main>
 
-        </IndicatorsWrapper>
-
-        <Footer>
+        <SocialFooter>
           <Fill />
           <PlanningLike
             token={this.props.token}
             url={`${config.apiUrl}/reports/${id}`}
             id={id}
+            itemType="Meldung"
           />
-          {navigator.share ? (
+          {(navigator.share && showShareButton) ? (
             <ShareButtonWrapper>
               <ShareButton onClick={this.shareReport} />
               <LikeButtonCaption>
@@ -212,7 +219,7 @@ ${details.fee} € / Tag` : 'nein'
               </LikeButtonCaption>
             </ShareButtonWrapper>
           ) : <Fill />}
-        </Footer>
+        </SocialFooter>
       </Wrapper>
     );
   }

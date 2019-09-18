@@ -47,6 +47,8 @@ class BaseMap extends PureComponent {
     this.map.on('move', () => {
       this.props.onMove();
     });
+
+    window.map = this.map;
   }
 
   render() {

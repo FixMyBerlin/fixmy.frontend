@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import history from '~/history';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import TickIcon from '~/images/reports/tick-icon.svg';
-import history from '~/history';
-import CloseButton from '~/components/CloseButton';
+import AbortButton from './AbortButton';
 
 const BackLink = styled.a`
   position: absolute;
@@ -19,6 +19,11 @@ const BackLink = styled.a`
   &.hidden:after {
     content: ''
   }
+`;
+
+const AbortLink = styled(BackLink)`
+  right: 34px;
+  left: unset;
 `;
 
 const NavBar = styled.div`
@@ -66,6 +71,10 @@ const StepIndicator = styled.span`
     order: 0;
     background-color: ${config.colors.interaction};
   }
+  
+  &.last-step-indicator {
+    margin-right: 0;
+  }
 `;
 
 const DoneStep = styled(StepIndicator)`
@@ -79,49 +88,43 @@ const StyledTickIcon = styled(TickIcon)`
   left: 191px;
 `;
 
-const AbortButton = styled(CloseButton)`
-  position: absolute;
-  top: 3px;
-  right: 10px;
-  transform: scale(0.7);
-`;
-
-const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap, onAbortButtonTap }) => {
-  const isLastStep = stepNumber === 5;
-
-  return (
-    <NavBar>
-      {!isLastStep && (
+const FormProgressBar = ({ stepNumber, stepCaption, onBackButtonTap, onAbortButtonTap, isLastStep }) => (
+  <NavBar>
+    {!isLastStep && (
+      <Fragment>
         <BackLink onClick={onBackButtonTap} className={isLastStep ? 'hidden' : ''}>&lt; zurück</BackLink>
-      )}
-      <StepCaption>{stepCaption}</StepCaption>
-      <StyledBikeParkIcon />
+        <AbortLink onClick={onAbortButtonTap} className={isLastStep ? 'hidden' : ''}>abbrechen</AbortLink>
+      </Fragment>
+    )}
+    <StepCaption>{stepCaption}</StepCaption>
+    <StyledBikeParkIcon />
 
-      {stepNumber > 1 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 1 ? 'active' : ''}>1</StepIndicator>}
-      {stepNumber > 2 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 2 ? 'active' : ''}>2</StepIndicator>}
-      {stepNumber > 3 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 3 ? 'active' : ''}>3</StepIndicator>}
-      {stepNumber > 4 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 4 ? 'active' : ''}>4</StepIndicator>}
+    {stepNumber > 1 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 1 ? 'active' : ''}>1</StepIndicator>}
+    {stepNumber > 2 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 2 ? 'active' : ''}>2</StepIndicator>}
+    {stepNumber > 3 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={stepNumber === 3 ? 'active' : ''}>3</StepIndicator>}
+    {stepNumber > 4 ? <DoneStep>&#10004;</DoneStep> : <StepIndicator className={`last-step-indicator ${stepNumber === 4 ? 'active' : ''}`}>4</StepIndicator>}
 
-      {isLastStep && <StyledTickIcon />}
+    {isLastStep && <StyledTickIcon />}
 
-      {onAbortButtonTap && <AbortButton onClick={onAbortButtonTap} />}
+    {!isLastStep && <AbortButton onClick={onAbortButtonTap} />}
 
-    </NavBar>
-  );
-};
+  </NavBar>
+);
 
 FormProgressBar.propTypes = {
   stepNumber: PropTypes.number,
   stepCaption: PropTypes.string,
   onBackButtonTap: PropTypes.func,
-  onAbortButtonTap: PropTypes.func
+  onAbortButtonTap: PropTypes.func,
+  isLastStep: PropTypes.bool
 };
 
 FormProgressBar.defaultProps = {
   stepNumber: 1,
   stepCaption: 'Ort',
   onBackButtonTap: history.goBack,
-  onAbortButtonTap: null
+  isLastStep: false,
+  onAbortButtonTap: () => history.push(config.routes.reports.map)
 };
 
 export default FormProgressBar;

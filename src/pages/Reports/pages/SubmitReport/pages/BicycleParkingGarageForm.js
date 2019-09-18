@@ -3,29 +3,52 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
-import RangeSlider from '~/components/RangeSlider';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
+import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
+import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import { RadioButton, RadioButtonLabel } from '~/pages/Reports/pages/SubmitReport/components/RadioButton';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
+import BrBoxImg from '~/images/reports/b_r_box.jpg';
 
 const StyledHeading = styled(Heading)`
-  margin-bottom: 75px;
+  margin-bottom: 29px;
 `;
 
-const CostSlider = styled(RangeSlider)`
-  &&  .rangeslider__fill {
-     background-color: ${config.colors.lightgrey};
-   }
+const StyledWeiterButton = styled(WeiterButton)`
+  font-size: 16px;
+  width: 240px;
+`;
+
+const ImageWrapper = styled.div`
+  max-width: 486px;
+  margin-bottom: 2em;
+`;
+
+const Image = styled.img`
+  width: 100%;
+`;
+
+const ImageSource = styled.div`
+  font-size: 10px;
+  text-align: right;
+`;
+
+const StyledSubHeading = styled(SubHeading)`
+  margin: 68px 0 0 0;
 `;
 
 const BicycleParkingGarageForm = ({ onConfirm }) => {
   const [wouldPay, setWouldPay] = useState(null);
-  const [dailyRent, setDailyRent] = useState(0);
 
   return (
     <DialogStepWrapper>
 
-      <StyledHeading>Würdest du hier auch ein kostenpflichtiges Fahrradparkhaus nutzen?</StyledHeading>
+      <StyledHeading>Würdest du an diesem Ort auch ein kostenpflichtiges Fahrradparkhaus nutzen?</StyledHeading>
+
+      <ImageWrapper>
+        <Image src={BrBoxImg} alt="Bike-and-Ride-Box bzw. E-Ladestation" />
+        <ImageSource>Foto: Kienzler Stadtmobiliar GmbH</ImageSource>
+      </ImageWrapper>
 
       <RadioButtonLabel htmlFor="charged-bikepark-conceivable" style={{ alignSelf: 'flex-start' }}>
         <RadioButton
@@ -36,24 +59,9 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
           checked={wouldPay === true}
           onChange={() => setWouldPay(true)}
         />
-        {wouldPay ?
-          `Ja klar, und ich würde dafür ${dailyRent}€ am Tag zahlen.` :
-          'Ja klar!'
-        }
+        Ja, das wäre ein interessantes Angebot.
       </RadioButtonLabel>
 
-      {wouldPay && (
-        <CostSlider
-          min={0}
-          max={5}
-          name="paymentReservesBikePark"
-          labels={{ 0: '0 €', 5: '5 €' }}
-          value={dailyRent}
-          tooltip={false}
-          handleLabel={`${dailyRent} €`}
-          onChange={(...args) => setDailyRent(args[0])}
-        />
-      )}
 
       <RadioButtonLabel htmlFor="charged-bikepark-not-conceivable" style={{ marginTop: 18 }}>
         <RadioButton
@@ -67,11 +75,20 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
         Nein, so etwas brauche ich nicht.
       </RadioButtonLabel>
 
-      <WeiterButton
-        onClick={() => onConfirm(wouldPay ? dailyRent : 0)}
-        disabled={wouldPay === null}
-      >Weiter
-      </WeiterButton>
+      <StyledWeiterButton
+        onClick={() => onConfirm(wouldPay)}
+        disabled={typeof wouldPay !== 'boolean'}
+      >Meldung abschließen
+      </StyledWeiterButton>
+
+      <StyledSubHeading>Was sind Fahrradparkhäuser?</StyledSubHeading>
+      <Paragraph>
+        Fahrradparkhäuser sind abschließbare Stationen,
+        in denen Fahrräder gegen Gebühr besonders sicher untergebracht werden können.
+        Teilweise sind sie auch mit Ladestationen für E-Bikes ausgerüstet.
+        Berlin will in den nächsten Jahren viele solcher Angebote errichten und
+        sucht derzeit nach geeigeneten Standorten.
+      </Paragraph>
 
     </DialogStepWrapper>
   );

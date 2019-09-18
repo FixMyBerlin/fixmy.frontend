@@ -45,21 +45,14 @@ export function signup(values, formFunctions) {
 
     const data = await apiSignup(values, formFunctions);
 
-    // we automatically login the user after signup
     if (!data.error) {
       formFunctions.setStatus('signupsuccess');
-
-      const loginData = await apiLogin(values, formFunctions);
-      if (!loginData.error) {
-        set('token', loginData.token);
-        setTimeout(() => history.push(config.routes.plannings), 3000);
-        dispatch({ type: SIGNUP_SUCCESS, payload: { token: loginData.token } });
-      }
+      setTimeout(() => history.push(config.routes.plannings), 3000);
     }
   };
 }
 
-export function login(values, formFunctions) {
+export function login(values, formFunctions, cb = () => {}) {
   return async (dispatch) => {
     dispatch({ type: LOGIN });
 
@@ -69,6 +62,8 @@ export function login(values, formFunctions) {
       set('token', data.token);
       formFunctions.setStatus('loginsuccess');
       dispatch({ type: LOGIN_SUCCESS, payload: { token: data.token } });
+
+      cb(data);
     }
   };
 }
@@ -169,15 +164,18 @@ export function forgotPassword(values, formFunctions) {
   };
 }
 
-export function loadLikes() {
+export function loadLikes(itemType) {
   return async (dispatch, getState) => {
-    dispatch({ type: LOAD_LIKES, payload: { isLoading: true } });
+    dispatch({ type: LOAD_LIKES, payload: { isLoading: true, userLikes: [] } });
 
     const { token } = getState().UserState;
-    const plannings = await apiLikes(token);
+    const items = await apiLikes(token, itemType);
 
-    if (!plannings.error) {
-      const userLikes = plannings.results.filter(d => d.liked_by_user);
+    if (!items.error) {
+      // @TODO: why is the API different for reports and plannings?
+      const result = itemType === 'plannings' ? items.results : items;
+      const userLikes = result.filter(d => d.liked_by_user);
+
       dispatch({ type: LOAD_LIKES_SUCCESS, payload: { isLoading: false, userLikes } });
     } else {
       dispatch({ type: LOAD_LIKES_FAIL, payload: { isLoading: false } });

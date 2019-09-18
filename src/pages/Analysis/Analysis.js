@@ -113,6 +113,8 @@ class Analysis extends PureComponent {
     const { sortDirection } = selectedSort ? sortOptions.find(s => s.value === selectedSort) : 'ASC';
     const sortedData = filteredData.sort(sortByKey(selectedSort, sortDirection));
 
+    console.log(sortedData);
+
     return (
       <AnalysisWrapper>
         <AnalysisContent>
@@ -154,6 +156,7 @@ class Analysis extends PureComponent {
           <PlanningList
             data={sortedData}
             isLoading={isLoading}
+            showLoadingIndicator={false}
           />
         </AnalysisContent>
       </AnalysisWrapper>

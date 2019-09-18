@@ -6,8 +6,6 @@ import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
 
-import { getCenterFromGeom } from '~/pages/Map/map-utils';
-
 const Markers = {
   draft: DraftMarker,
   planning: PlanningMarker,
@@ -54,6 +52,9 @@ class PlanningMarkers extends PureComponent {
     }
 
     this.markers = data.map((d) => {
+      // @TODO remove when api has all the data
+      d.phase = d.phase || 'draft';
+
       if (!Markers[d.phase]) {
         return null;
       }
@@ -63,7 +64,7 @@ class PlanningMarkers extends PureComponent {
         return null;
       }
 
-      const center = getCenterFromGeom(d.geometry);
+      const center = d.center.coordinates;
       const el = document.createElement('div');
       el.className = 'marker';
       el.innerHTML = `<img class="marker-image" src="${Markers[d.phase]}" />`;

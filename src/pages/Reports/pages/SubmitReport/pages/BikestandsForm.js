@@ -1,17 +1,11 @@
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-// include the default range slider styles
-import 'react-rangeslider/lib/index.css';
 
-import { BIKESTAND_PLACEMENT_SIDEWALK, BIKESTAND_PLACEMENT_STREET } from '~/pages/Reports/ReportsState';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import RangeSlider from '~/components/RangeSlider';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
-import { RadioButton } from '~/pages/Reports/pages/SubmitReport/components/RadioButton';
-import SidwalkBgImage from '~/images/reports/bikestand-placement-sidewalk.jpg';
 import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
 
 const Question = styled(Heading)`
@@ -20,155 +14,50 @@ const Question = styled(Heading)`
   line-height: 1.37;
 `;
 
-const BikeStandsSlider = styled(RangeSlider)`
-  margin-bottom: 90px !important;
+const StyledWeiterButton = styled(WeiterButton)`
+  margin: 60px 0;
 `;
 
-const Explanation = styled(Paragraph)`
-  margin-top: 0;
-  margin-bottom: 25px;
-`;
-
-const BikestandPlacementContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+const Image = styled.img`
   width: 100%;
+  max-width: 486px;
+  margin-top: 1em;
 `;
 
-const BikestandPlacementItem = styled.div`
-  display: flex;
-  width: 46%;
-  height: auto;
-  flex-direction: column;
-  cursor: pointer;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  color: #353535;
-`;
+const MAX_STANDS = config.reports.dialog.maxBikeStands || 12;
 
-const BikestandPlacementLabel = styled.label`
-  display: block;
-`;
+export default ({ onConfirm }) => {
+  const [bikestandCount, setBikestandCount] = useState(1);
 
-const BikestandPlacementImage = styled.img`
-  border-radius: 6px;
-  border: solid 1.5px ${config.colors.interaction};
-  background-size: contain;
-  margin-bottom: 10px;
-  width: 100%;
+  return (
+    <DialogStepWrapper>
 
-  &:not(.picked) {
-     filter: grayscale(100%);
-  }
+      <Question>Wie viele Bügel werden aus deiner Sicht an diesem Ort benötigt?</Question>
+      <Paragraph>An einen Bügel können zwei Fahrräder angeschlossen werden.</Paragraph>
 
-  &:hover {
-    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.4s ease-in;
-  }
-`;
+      <RangeSlider
+        min={1}
+        max={MAX_STANDS}
+        labels={{ 1: 1, [MAX_STANDS]: MAX_STANDS }}
+        name="bikestandsNeeded"
+        value={bikestandCount}
+        tooltip={false}
+        handleLabel={bikestandCount.toString()}
+        onChange={count => setBikestandCount(count)}
+      />
 
-const BikestandPlacementRadioButton = styled(RadioButton)`
-    margin: 8px auto;
-`;
+      <StyledWeiterButton onClick={() => onConfirm(bikestandCount)}>Weiter
+      </StyledWeiterButton>
 
-class BikestandsForm extends PureComponent {
-  static propTypes = {
-    onConfirm: PropTypes.func
-  };
+      <Paragraph>
+        Hinweis: Neue Fahrradbügel werden in Friedrichshain-Kreuzberg in der Regel
+        auf der Straße installiert,
+        damit der Platz für Fußgänger:innen auf dem Gehweg nicht eingeschränkt wird.
+      </Paragraph>
 
-  static defaultProps = {
-    onConfirm: () => console.log('onConfirm() says implement me')
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      bikestandsNeeded: 0,
-      bikestandsPlacement: null
-    };
-  }
-
-  isSubmittable = () => (
-    this.state.bikestandsNeeded &&
-    this.state.bikestandsPlacement !== null
-  )
-
-  render() {
-    return (
-      <DialogStepWrapper>
-
-        <Question>Wie viele Bügel werden benötigt?</Question>
-        <BikeStandsSlider
-          min={1}
-          max={20}
-          labels={{ 1: 1, 20: 20 }}
-          name="bikestandsNeeded"
-          value={this.state.bikestandsNeeded}
-          tooltip={false}
-          handleLabel={this.state.bikestandsNeeded.toString()}
-          onChange={bikestandsNeeded => this.setState({ bikestandsNeeded })}
-        />
-
-        {/* // FIXME: add margin here */}
+      <Image src={StreetBgImage} alt="Straßenseitige Fahrradständer" />
 
 
-        <Question>..und wo könnten diese aufgestellt werden?</Question>
-        <Explanation>Ein Bügel benötigt ungefähr 2 qm Fläche</Explanation>
-
-        <BikestandPlacementContainer>
-          <BikestandPlacementItem>
-            <BikestandPlacementLabel
-              htmlFor="amenityPlacement-sidewalk"
-            >
-              <BikestandPlacementImage
-                src={SidwalkBgImage}
-                className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_SIDEWALK ? 'picked' : ''}
-              />
-              Auf dem Gehweg
-            </BikestandPlacementLabel>
-            <BikestandPlacementRadioButton
-              type="radio"
-              id="amenityPlacement-sidewalk"
-              name="amenity-placement"
-              value={BIKESTAND_PLACEMENT_SIDEWALK}
-              checked={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_SIDEWALK}
-              onChange={() => this.setState({ bikestandsPlacement: BIKESTAND_PLACEMENT_SIDEWALK })}
-            />
-          </BikestandPlacementItem>
-
-          <BikestandPlacementItem>
-            <BikestandPlacementLabel
-              htmlFor="amenityPlacement-street"
-            >
-              <BikestandPlacementImage
-                src={StreetBgImage}
-                className={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_STREET ? 'picked' : ''}
-              />
-            Auf der Straße
-            </BikestandPlacementLabel>
-
-            <BikestandPlacementRadioButton
-              type="radio"
-              id="amenityPlacement-street"
-              name="amenity-placement"
-              value={BIKESTAND_PLACEMENT_STREET}
-              checked={this.state.bikestandsPlacement === BIKESTAND_PLACEMENT_STREET}
-              onChange={() => this.setState({ bikestandsPlacement: BIKESTAND_PLACEMENT_STREET })}
-            />
-          </BikestandPlacementItem>
-
-        </BikestandPlacementContainer>
-
-        <WeiterButton
-          onClick={() => this.props.onConfirm(this.state)}
-          disabled={!this.isSubmittable()}
-        >Weiter
-        </WeiterButton>
-
-      </DialogStepWrapper>
-    );
-  }
-}
-
-export default BikestandsForm;
+    </DialogStepWrapper>
+  );
+};

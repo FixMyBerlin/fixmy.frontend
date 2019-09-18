@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import idx from 'idx';
 
-import { media } from '~/styles/utils';
+import { media, matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './WebglMap';
 import StaticMarker from './StaticMarker';
 import PinLocationButton from './PinLocationButton';
@@ -35,6 +35,7 @@ import {
 
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 import ky from '~/utils/ky';
+import FMBCredits from '~/pages/Map/components/FMBCredits';
 
 
 const MapView = styled.div`
@@ -62,31 +63,35 @@ const StyledWebGlMap = styled(WebglMap)`
 const SearchBarWrapper = styled.div`
   position: fixed;
   z-index: 1000;
-  top: 15px;
-  left: 15px;
+  top: 11px;
+  left: 68px; /* leave space for zoom controls */
   right: 15px;
   margin: auto;
 
   ${media.m`
     max-width: 400px;
     margin: 0;
+    left: 15px;
+    top: 15px;
   `}
 `;
 
 const AddressIndicator = styled.div`
+  background-color: rgba(255,255,255,0.7);
+  padding: 6px;
+  border-radius: 2px;
   font-size: 12px;
   width: 200px;
-  height: 100px;
+  height: fit-content;
   color: ${config.colors.black};
   z-index: 99999999999999;
   text-align: center;
   font-weight: bold;
   position: absolute;
-  margin: auto;
-  top: 184px;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: calc(50% + 40px);
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%) }
   user-select: none;
   pointer-events: none;
 `;
@@ -206,7 +211,14 @@ class LocateMeMap extends Component {
     this.setState({ isLoading: false });
   }
 
+  getLocatorControlPosition = ({ isDesktopView }) => (isDesktopView ?
+    { bottom: '128px', right: '15px' } :
+    { bottom: '128px', right: '8px' })
+
   render() {
+    // TODO: simplify usage by keeping getIsDesktopView() within styles util
+    const isDesktopView = matchMediaSize(breakpoints.m);
+
     return (
       <MapView>
 
@@ -250,6 +262,7 @@ class LocateMeMap extends Component {
             onMapDrag={this.onMapMove}
             allowDrag={!this.state.locationPinned}
             onLoad={this.onMapLoad}
+            zoomControlPosition={isDesktopView ? 'bottom-right' : 'top-left'}
           />
 
           {
@@ -274,14 +287,14 @@ class LocateMeMap extends Component {
         </MapWrapper>
 
         {!this.state.isLoading &&
-        !this.state.autocompleteHasFocus &&
-        (this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
-          <LocatorControl
-            key="ReportsLocateMap__LocatorControl"
-            onChange={this.onlocateMeMarkerUse}
-            customPosition={{ bottom: '100px', right: '15px' }}
-          />
-        )}
+          !this.state.autocompleteHasFocus &&
+          (this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
+            <LocatorControl
+              key="ReportsLocateMap__LocatorControl"
+              onChange={this.onlocateMeMarkerUse}
+              customPosition={this.getLocatorControlPosition(isDesktopView)}
+            />
+          )}
 
         {!this.state.isLoading && !this.state.autocompleteHasFocus && !this.state.locationPinned && (
           <PinLocationButton
@@ -298,6 +311,8 @@ class LocateMeMap extends Component {
             address={this.props.tempLocation.address}
           />
         )}
+
+        <FMBCredits />
       </MapView>
     );
   }

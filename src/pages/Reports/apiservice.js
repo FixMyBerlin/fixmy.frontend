@@ -85,9 +85,8 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
   // keep remaining data under top level node "details"
   obj.details = {};
   obj.details.subject = 'BIKE_STANDS';
-  obj.details.number = newReportObject.what.bikestands.bikestandsNeeded;
-  obj.details.placement = newReportObject.what.bikestands.bikestandsPlacement;
-  obj.details.fee = newReportObject.what.bikestands.paymentReservesBikePark;
+  obj.details.number = newReportObject.what.bikestands.number;
+  obj.details.fee_acceptable = newReportObject.what.bikestands.feeAcceptable;
 
   // validate object
   const validationResult = validateNewReport(obj);
@@ -118,4 +117,20 @@ export function getReportStatusCaption(status) {
   }
 
   return caption;
+}
+
+export async function addUserToReport(reportId, userId) {
+  let reportPatch = null;
+
+  if (typeof reportId === 'undefined') {
+    throw new Error('You need to pass a report id.');
+  }
+
+  try {
+    reportPatch = await ky(`${config.apiUrl}/reports/${reportId}`, { method: 'PATCH', json: { user: userId } }).json();
+  } catch (err) {
+    throw new Error(`Can't connect reportId ${reportId} with user ${userId}`);
+  }
+
+  return reportPatch;
 }

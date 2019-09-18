@@ -7,7 +7,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
-const Config = require('../config.json');
+const Config = require('../config.js');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -28,9 +28,7 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    new Webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
+    new Webpack.EnvironmentPlugin(['NODE_ENV', 'CONFIG_ENV']),
     new HtmlWebpackPlugin({
       inject: true,
       siteUrl: Config.prodUrl,

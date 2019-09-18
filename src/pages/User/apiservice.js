@@ -40,7 +40,7 @@ export async function apiUpdate(json, token, formFunctions) {
     return handleRequest('password/', { json, token }, formFunctions, 'text');
   }
 
-  // here we can handle standard field updates like name, last name etc.
+  handleRequest('users/me/', { json, token, method: 'PUT' }, { setSubmitting: () => {}, setErrors: () => {} }, 'json');
 }
 
 export async function apiVerify(token) {
@@ -78,12 +78,12 @@ export async function apiPasswordForgot(json, formFunctions) {
   return handleRequest('password/reset', { method: 'POST', json }, formFunctions, false);
 }
 
-export async function apiLikes(token) {
+export async function apiLikes(token, itemType = 'projects') {
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   let response = {};
 
   try {
-    response = await ky(`${config.apiUrl}/plannings?page_size=200`, { method: 'GET', headers, timeout: 20000 }).json();
+    response = await ky(`${config.apiUrl}/${itemType}?page_size=250`, { method: 'GET', headers, timeout: 20000 }).json();
   } catch (e) {
     const error = await e.response.json();
     response.error = error;

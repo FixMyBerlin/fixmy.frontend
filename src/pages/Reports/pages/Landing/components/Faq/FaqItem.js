@@ -5,8 +5,11 @@ import PropTypes from 'prop-types';
 
 import Text from '~/components/Text';
 
-
-// TODO: find a good solution to re-append the <hr /> to opened collapsibles. must be done animated to look good
+const StyledText = styled(Text)`
+  font-size: 16px;
+  border-bottom: 0.5px solid ${config.colors.lightgrey};
+  padding-bottom: 1em;
+`;
 
 // helper to customize collapsible,
 // following https://github.com/glennflanagan/react-collapsible/blob/develop/example/_src/sass/components/_Collapsible.scss
@@ -18,7 +21,13 @@ const CollapsibleWrapper = styled.div`
     font-weight: bold;
     position: relative;
     line-height: 2.5;
+    text-align: center;
     color: ${config.colors.black};
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
 
     &:after {
       font-family: 'Open Sans', sans-serif;
@@ -51,7 +60,7 @@ const CollapsibleWrapper = styled.div`
 const FaqItem = ({ heading, text, open }) => (
   <CollapsibleWrapper>
     <Collapsible trigger={heading} open={open}>
-      <Text dangerouslySetInnerHTML={{ __html: text }} />
+      <StyledText dangerouslySetInnerHTML={{ __html: text }} />
     </Collapsible>
   </CollapsibleWrapper>
 );

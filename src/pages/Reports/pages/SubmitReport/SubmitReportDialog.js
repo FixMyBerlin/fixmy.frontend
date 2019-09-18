@@ -5,7 +5,7 @@
 
 import React, { Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { PropagateLoader } from 'react-spinners';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 import styled from 'styled-components';
 
 import {
@@ -13,9 +13,9 @@ import {
   LOCATION_MODE_GEOCODING,
   useDevicePosition,
   resetDialogState,
-  setBikestandNeeds,
+  setBikestandCount,
   setAdditionalData,
-  setDailyRent,
+  setFeeAcceptable,
   removeError,
   submitReport
 } from '~/pages/Reports/ReportsState';
@@ -25,9 +25,10 @@ import LocateModeChooser from './pages/LocateModeChooser';
 import LocateMeMap from './components/LocateMeMap';
 import BikestandsForm from './pages/BikestandsForm';
 import AdditionalDataForm from './pages/AdditionalDataForm';
-import FormProgressBar from './components/FormProgressBar';
+import FormProgressBar from '~/pages/Reports/pages/SubmitReport/components/FormProgressBar';
 import ReportSubmitted from './pages/ReportSubmitted';
 import BicycleParkingGarageForm from './pages/BicycleParkingGarageForm';
+import ThanksPage from './pages/ThanksPage';
 
 const LoaderWrapper = styled.div`
   width: 100%;
@@ -87,6 +88,7 @@ class SubmitReportDialog extends PureComponent {
               onUseGeocoding={this.props.onUseGeocoding}
               error={error}
               removeError={this.props.removeError}
+              onClose={this.abortDialog}
             />
           </Fragment>
         )
@@ -113,7 +115,7 @@ class SubmitReportDialog extends PureComponent {
               onAbortButtonTap={this.abortDialog}
             />
             <BikestandsForm onConfirm={(stateNode) => {
-              this.props.setBikestandNeeds(stateNode);
+              this.props.setBikestandCount(stateNode);
               proceed();
             }}
             />
@@ -147,8 +149,8 @@ class SubmitReportDialog extends PureComponent {
               stepCaption="Parkhaus"
               onAbortButtonTap={this.abortDialog}
             />
-            <BicycleParkingGarageForm onConfirm={(dailyRent) => {
-              this.props.setDailyRent(dailyRent);
+            <BicycleParkingGarageForm onConfirm={(bool) => {
+              this.props.setFeeAcceptable(bool);
               this.props.submitReport(this.props.token);
               proceed();
             }}
@@ -169,11 +171,34 @@ class SubmitReportDialog extends PureComponent {
             <FormProgressBar
               stepNumber={5}
               stepCaption="Fertig"
+              isLastStep
             />
-            <ReportSubmitted reportId={newReport.id} error={error} />
+            <ReportSubmitted
+              reportId={newReport.id}
+              error={error}
+              token={this.props.token}
+              user={this.props.user}
+              nextStep={proceed}
+              removeError={this.props.removeError}
+            />
           </Fragment>
           );
         break;
+      case 6:
+        content = (
+          <Fragment>
+            <FormProgressBar
+              stepNumber={6}
+              stepCaption="Danke"
+              isLastStep
+            />
+            <ThanksPage
+              reportId={newReport.id}
+            />
+          </Fragment>
+        );
+        break;
+
       default:
         content = (<Markdown page="nomatch" />);
     } // end of switch statement
@@ -186,14 +211,15 @@ const mapDispatchToProps = {
   onUseDevicePosition: useDevicePosition,
   onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
   resetDialogState,
-  setBikestandNeeds,
+  setBikestandCount,
   setAdditionalData,
-  setDailyRent,
+  setFeeAcceptable,
   removeError,
   submitReport
 };
 
 export default connect(state => ({
   reportsState: state.ReportsState,
-  token: state.UserState.token
+  token: state.UserState.token,
+  user: state.UserState.userData
 }), mapDispatchToProps)(SubmitReportDialog);

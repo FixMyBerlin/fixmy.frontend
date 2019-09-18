@@ -10,7 +10,6 @@ export default styled.button`
   text-decoration: none;
   color: ${config.colors.white};
   font-family: 'Open Sans', sans-serif;
-  font-weight: 500;
   font-size: 14px;
   cursor: pointer;
 

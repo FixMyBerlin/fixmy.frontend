@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26" height="26" viewBox="0 0 26 26">
+    <defs>
+        <circle id="fixhere" cx="12" cy="12" r="12"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd" transform="translate(1 1)">
+        <use fill="#0F0F0F" stroke="#0F0F0F" stroke-width=".5" xlink:href="#fixhere"/>
+        <path stroke="#FFF" stroke-width="2" d="M12.194 6.58v11.146M17.766 12.153H6.621"/>
+    </g>
+</svg>

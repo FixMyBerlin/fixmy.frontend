@@ -91,12 +91,13 @@ class OverviewMap extends Component {
   }
 
   onMarkerClick = (el, reportItem) => {
-    const { selectedReport } = this.props;
-    this.props.setSelectedReport(reportItem);
+    const { selectedReport, match } = this.props;
+    const hasDetailId = match.params.id;
 
+    this.props.setSelectedReport(reportItem);
     this.updateSelectedReportPosition();
 
-    if (selectedReport && (selectedReport.id !== reportItem.id)) {
+    if (hasDetailId && (selectedReport.id !== reportItem.id)) {
       this.props.history.push(`${config.routes.reports.map}/${reportItem.id}`);
     }
   }
@@ -162,7 +163,9 @@ class OverviewMap extends Component {
 
     return (
       <MapView>
-        <OverviewMapNavBar heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg" />
+        <OverviewMapNavBar
+          heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg"
+        />
         <MapWrapper>
           <WebglMap
             reportsData={reports}

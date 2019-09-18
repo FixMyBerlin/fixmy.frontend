@@ -12,6 +12,7 @@ import { setView } from '~/pages/Map/MapState';
 import { getCenterFromGeom } from '~/pages/Map/map-utils';
 import PinIcon from '~/images/pin.svg';
 import Label from '~/components/Label';
+import NewCloseButton from '~/components/NewCloseButton';
 
 const DetailWrapper = styled.div`
   position: absolute;
@@ -69,18 +70,8 @@ const DetailBody = styled.div`
   height: 100%;
 `;
 
-const Close = styled.button`
-  align-items: center;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  height: 36px;
-  justify-content: center;
-  font-size: 24px;
-  color: ${config.colors.midgrey};
-  width: 36px;
-  margin-left: auto;
+const Close = styled(NewCloseButton)`
+   margin-left: auto;
 `;
 
 /**
@@ -201,8 +192,8 @@ function detailWrapped(Component) {
     }
 
     renderName(data) {
-      if (data.name) {
-        return data.name;
+      if (data.street_name) {
+        return data.street_name;
       }
 
       if (data.address) {
@@ -229,7 +220,7 @@ function detailWrapped(Component) {
                 Ein Fehler ist aufgetreten.
               </DetailTitle>
             </div>
-            <Close onClick={this.onClose}>×</Close>
+            <Close onClick={this.onClose} />
           </DetailHeader>
         </DetailWrapper>
       );
@@ -256,7 +247,7 @@ function detailWrapped(Component) {
               <DetailTitle>{this.renderName(data)}</DetailTitle>
               <Label uppercase>{subtitle || 'Abschnitt 1'}</Label>
             </div>
-            <Close onClick={this.onClose}>×</Close>
+            <Close onClick={this.onClose} />
           </DetailHeader>
           {showShadow ? <Shadow /> : null}
           <DetailBody>

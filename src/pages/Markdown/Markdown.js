@@ -21,7 +21,7 @@ class MarkdownPage extends PureComponent {
 
   async loadContent() {
     const { page } = this.props;
-    const content = await ky.get(`${process.env.NODE_ENV === 'development' ? config.devUrl : config.prodUrl}/markdown/${page}.md`).text();
+    const content = await ky.get(`/markdown/${page}.md`).text();
     return this.setState({ content });
   }
 

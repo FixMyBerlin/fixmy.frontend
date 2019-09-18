@@ -1,6 +1,6 @@
 # API (beta)
 
-Alle API Inhalte stehen unter der [ODbL Lizenz](https://opendatacommons.org/licenses/odbl/) zur Verfügung. 
+Alle API Inhalte stehen unter der [ODbL Lizenz](https://opendatacommons.org/licenses/odbl/) zur Verfügung.
 
 Zur [API für Planungen](https://api.fixmyberlin.de/api/plannings)<br />
 Zur [API für Planungsabschnitte inkl. Happy-Bike-Index](https://api.fixmyberlin.de/api/planning-sections) ([Happy... was?](/faq))
@@ -21,6 +21,4 @@ Zur [API für Planungsabschnitte inkl. Happy-Bike-Index](https://api.fixmyberlin
 -   "daily_traffic_cargo": 2250.0 // Transport
 -   "daily_traffic_bus": 32.0 // Bus
 
-Genaue Dokumentation aller Werte folgt.
-
-Bei gesonderter Lizenzierung schreib bitte an [hello@fixmyberlin.de](mailto:hello@fixmyberlin.de)
+Bei gesonderter Lizenzierung schreib bitte an [hello@fixmycity.de](mailto:hello@fixmycity.de)

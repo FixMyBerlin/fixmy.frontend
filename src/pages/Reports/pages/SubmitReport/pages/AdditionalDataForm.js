@@ -12,10 +12,7 @@ import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import { matchMediaSize, breakpoints } from '~/styles/utils';
-import {
-  removeError,
-  addError
-} from '~/pages/Reports/ReportsState';
+import { removeError, addError } from '~/pages/Reports/ReportsState';
 
 const StyledHeading = styled(Heading)`
   margin: 0;
@@ -24,32 +21,36 @@ const StyledHeading = styled(Heading)`
 const Hint = styled(Paragraph)`
   margin-top: 12px;
   margin-bottom: 0;
+  font-weight: ${({ emphasize }) => emphasize ? 'bold' : 'normal'}
 `;
 
-
 const PhotoDisclaimerWrapper = styled.div`
-  margin-top: 82px;
-  margin-bottom: 52px;
+  margin: 42px 14px 90px;
+  display: flex;
 `;
 
 const StyledCheckbox = styled.input`
   cursor: pointer;
   margin-right: 12px;
-  display: inline-block;
+  display: block;
   transform: scale(1.5);
   transform-origin: top left;
+
   &&[disabled] {
     cursor: default;
   }
 `;
 
 const StyledCheckboxLabel = styled.label`
-   font-size: 10px;
+   font-size: 12px;
    letter-spacing: 0.2px;
    line-height: 1.4;
-   color: ${config.colors.darkgrey};
-   cursor: pointer;
+   color: ${props => (props.disabled ? '#777' : config.colors.darkgrey)};
+   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
+   display: block;
 `;
+
+const PLACEHOLDER_COLOR = config.colors.midgrey;
 
 const DescriptionTextArea = styled(TextareaAutosize)`
   margin-top: 26px;
@@ -58,6 +59,10 @@ const DescriptionTextArea = styled(TextareaAutosize)`
   font-size: 16px;
   padding: 8px;
 
+  &&::placeholder {
+    color: ${PLACEHOLDER_COLOR};
+  }
+
   &:focus {
     outline-color: ${config.colors.interaction};
   }
@@ -65,11 +70,13 @@ const DescriptionTextArea = styled(TextareaAutosize)`
 
 class AdditionalDataForm extends PureComponent {
   static propTypes = {
-    onConfirm: PropTypes.func
+    onConfirm: PropTypes.func,
+    maxDescriptionLength: PropTypes.number
   };
 
   static defaultProps = {
-    onConfirm: () => console.log('onConfirm() says implement me')
+    onConfirm: () => console.log('onConfirm() says implement me'),
+    maxDescriptionLength: 400
   };
 
   constructor(props) {
@@ -81,13 +88,15 @@ class AdditionalDataForm extends PureComponent {
     };
   }
 
-  onPhotoUpload = photo => this.setState({ photo })
+  onPhotoUpload = photo => this.setState({ photo });
+
+  onPhotoDelete = () => this.setState({ photo: null, photoDisclaimerTicked: false });
 
   onPhotoUploadError = (errorMsg) => {
     const isDesktopView = matchMediaSize(breakpoints.m);
-    this.props.addError(`Fehler beim ${isDesktopView ? 'hochladen' : 'aufnehmen'} des Fotos: 
+    this.props.addError(`Fehler beim ${isDesktopView ? 'hochladen' : 'aufnehmen'} des Fotos:
     ${errorMsg}`);
-  }
+  };
 
   submit = () => {
     // marshall form data before submit
@@ -96,8 +105,17 @@ class AdditionalDataForm extends PureComponent {
     this.props.onConfirm(stateToSubmit);
   };
 
-  isSubmittable = () => (this.state.photo !== null && this.state.photoDisclaimerTicked) ||
-    this.state.description.length;
+  isSubmittable = () => {
+    let isSubmittable;
+    const { photo, photoDisclaimerTicked, description } = this.state;
+
+    isSubmittable = photo || description;
+
+    if (photo && !photoDisclaimerTicked) {
+      isSubmittable = false;
+    }
+    return isSubmittable;
+  };
 
   togglePhotoDisclaimerTicked = () => {
     this.setState(prevState => ({ photoDisclaimerTicked: !prevState.photoDisclaimerTicked }));
@@ -108,60 +126,67 @@ class AdditionalDataForm extends PureComponent {
   };
 
   render() {
+    const isDesktopView = matchMediaSize(breakpoints.m);
+
     return (
       <DialogStepWrapper>
-        <StyledHeading>Ein Foto des Ortes hilft den Planer:innen deine Meldung schneller zu bearbeiten.</StyledHeading>
-        <Hint>Ein Foto des Ortes hilft den Planer:innen deine Meldung schneller zu bearbeiten.</Hint>
+        <StyledHeading>Bitte entweder noch ein Foto von dem Ort oder Hinweise zum Ort ergänzen.</StyledHeading>
+        <Hint>
+          Ein Foto des Ortes hilft der Verwaltung, die Situation vor Ort besser zu beurteilen und die Meldung schneller zu bearbeiten.
+        </Hint>
 
         <UploadPhotoInput
           resizeOptions={config.reports.dialog.imageResizeOptions}
           onPhotoResized={this.onPhotoUpload}
           onError={this.onPhotoUploadError}
+          onReset={this.onPhotoDelete}
         />
 
         <PhotoDisclaimerWrapper>
-          <StyledCheckboxLabel htmlFor="photo-disclaimer-tick" style={{ alignSelf: 'flex-start' }}>
-            <StyledCheckbox
-              type="checkbox"
-              id="photo-disclaimer-tick"
-              name="photo-disclaimer-tick"
-              value="true"
-              disabled={!this.state.photo}
-              className={this.state.photo && 'wiggle'}
-              checked={this.state.photoDisclaimerTicked}
-              onChange={this.togglePhotoDisclaimerTicked}
-            />
-            Hiermit bestätige ich, dass auf den von mir eingestellten Fotos keine Personen abgebildet sind
+          <StyledCheckbox
+            type="checkbox"
+            id="photo-disclaimer-tick"
+            name="photo-disclaimer-tick"
+            disabled={!this.state.photo}
+            className={this.state.photo && 'wiggle'}
+            checked={this.state.photoDisclaimerTicked}
+            onChange={this.togglePhotoDisclaimerTicked}
+          />
+          <StyledCheckboxLabel
+            htmlFor="photo-disclaimer-tick"
+            disabled={!this.state.photo}
+          >
+            Hiermit bestätige ich, dass auf den von mir eingestellten Fotos keine Personen abgebildet sind.
           </StyledCheckboxLabel>
         </PhotoDisclaimerWrapper>
 
-        <StyledHeading>Beschreibung des Ortes eingeben</StyledHeading>
+        <StyledHeading>Hinweise an die Verwaltung</StyledHeading>
 
         <DescriptionTextArea
-          rows={4}
-          maxRows={8}
-          maxLength={140}
+          rows={isDesktopView ? 6 : 8}
+          maxLength={this.props.maxDescriptionLength}
           value={this.state.description}
           onChange={this.updateDescription}
-          placeholder={oneLine`Vor dem Kindergarten ist morgens immer viel los. Besonders 
-          Stellplätze für Lastenräder wären hier wichtig. Platz wäre direkt an der Hauswand.`}
+          placeholder={oneLine`
+          Beschreibe hier die Situation an dem Ort deiner
+          Meldung oder nenne besondere Anforderungen,
+          z.B. Stellplätze für Lastenräder, die Nähe einer Kita oder Ähnliches.`}
         />
+        <Hint emphasize={this.state.description.length === this.props.maxDescriptionLength}>Max. {this.props.maxDescriptionLength} Zeichen</Hint>
 
         <WeiterButton
           onClick={this.submit}
           disabled={!this.isSubmittable()}
-        >Weiter
+        >
+          Weiter
         </WeiterButton>
 
-        {
-          this.props.error.message && (
-            <ErrorMessage
-              message={this.props.error.message}
-              onDismiss={this.props.removeError}
-            />
-          )
-        }
-
+        {this.props.error.message && (
+          <ErrorMessage
+            message={this.props.error.message}
+            onDismiss={this.props.removeError}
+          />
+        )}
       </DialogStepWrapper>
     );
   }

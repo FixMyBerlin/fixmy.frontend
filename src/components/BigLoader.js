@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PropagateLoader } from 'react-spinners';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 
 const LoaderWrapper = styled.div`
   width: 100%;

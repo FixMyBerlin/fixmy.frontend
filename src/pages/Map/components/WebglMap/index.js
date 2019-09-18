@@ -6,6 +6,7 @@ import idx from 'idx';
 import PropTypes from 'prop-types';
 import withRouter from 'react-router/withRouter';
 import slugify from 'slugify';
+import { matchPath } from 'react-router';
 
 import Store from '~/store';
 import { isSmallScreen } from '~/styles/utils';
@@ -18,7 +19,7 @@ import {
   parseUrlOptions
 } from '~/pages/Map/map-utils';
 
-const MB_STYLE_URL = `${config.map.style}?fresh=true`;
+const MB_STYLE_URL = `${config.map.style}?fresh=asdas`;
 MapboxGL.accessToken = config.map.accessToken;
 
 const StyledMap = styled.div`
@@ -241,14 +242,27 @@ class Map extends PureComponent {
   handleMarkerClick = (evt, data) => {
     evt.preventDefault();
 
-    const id = data.planning_section_ids[0];
+    const { id, street_name: name } = data;
+
     const center = data.center.coordinates;
-    const name = idx(data, _ => _.planning_sections[0].name);
+
+    console.log(data.center);
+
+    const match = matchPath(this.props.location.pathname, {
+      path: '/(zustand|planungen)/:id/:name?',
+      exact: true
+    });
 
     const properties = {
       sideNone_planning_title: data.title,
       name: name || '-'
     };
+
+    if (idx(match, _ => _.params.id)) {
+      const slugifiedName = slugify(name || '').toLowerCase();
+      const detailRoute = `/${this.props.activeView}/${id}/${slugifiedName}`;
+      return this.props.history.push(detailRoute);
+    }
 
     Store.dispatch(MapActions.setPopupData(properties));
     Store.dispatch(MapActions.setPopupVisible(true));

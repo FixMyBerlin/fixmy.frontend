@@ -4,8 +4,26 @@ import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
 import withRouter from 'react-router/withRouter';
 
-import ReportMarkers from './ReportMarkers';
 import BaseMap from '~/pages/Reports/components/BaseMap';
+import ClusterWrapper from './ClusterWrapper';
+import ReportMarkersClustered from './ReportMarkersClustered';
+
+function toFeature(d) {
+  const { geometry, ...properties } = d;
+
+  return {
+    type: 'Feature',
+    geometry,
+    properties
+  };
+}
+
+function toGeojson(data) {
+  return {
+    type: 'FeatureCollection',
+    features: data.map(toFeature)
+  };
+}
 
 class WebglMap extends PureComponent {
   static propTypes = {
@@ -42,15 +60,14 @@ class WebglMap extends PureComponent {
     const {
       center,
       disabled,
-      fitExtentOnPopupClose,
-      selectedMarkerZoomLevel
+      fitExtentOnPopupClose
     } = this.props;
 
     if (center) {
-      this.map.easeTo({ center, zoom: selectedMarkerZoomLevel });
+      this.map.easeTo({ center });
     } else if (fitExtentOnPopupClose) {
-        this.map.fitBounds(config.reports.overviewMap.bounds);
-      }
+      this.map.fitBounds(config.reportsMap.bounds);
+    }
 
     this.toggleMapInteractivity(disabled);
   }
@@ -66,11 +83,13 @@ class WebglMap extends PureComponent {
     this.props.onLoad(map);
   }
 
-  toggleZoomControl = (isActive) => {
+  toggleZoomControl = (isActive = false) => {
     if (isActive) {
       this.map.addControl(this.nav, this.props.zoomControlPosition);
     } else {
-      this.map.removeControl(this.nav);
+      try {
+        this.map.removeControl(this.nav);
+      } catch(e) {}
     }
   }
 
@@ -92,13 +111,25 @@ class WebglMap extends PureComponent {
         onLoad={map => this.onLoad(map)}
         onMove={() => this.props.onMove()}
       >
-        <ReportMarkers
-          map={this.map}
-          data={reportsData}
-          onClick={onMarkerClick}
-          selectedReport={selectedReport}
-          detailId={detailId}
-        />
+        {reportsData.length && (
+          <ClusterWrapper
+            name="reports-cluster"
+            map={this.map}
+            data={toGeojson(reportsData)}
+            radius={60}
+            render={({ clusters, clusterSource }) => (
+              <ReportMarkersClustered
+                map={this.map}
+                data={reportsData}
+                onClick={onMarkerClick}
+                selectedReport={selectedReport}
+                detailId={detailId}
+                clusters={clusters}
+                clusterSource={clusterSource}
+              />
+            )}
+          />
+        )}
       </BaseMap>
     );
   }

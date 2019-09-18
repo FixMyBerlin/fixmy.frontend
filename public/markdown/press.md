@@ -2,13 +2,15 @@
 
 ### Ansprechpartner
 Ansprechpartner für die Presse: <br>
-Heiko Rintelen [presse@fixmyberlin.de](mailto:presse@fixmyberlin.de)
+Heiko Rintelen [presse@fixmycity.de](mailto:presse@fixmycity.de)
 
 ### Einbettung der Website (kostenfrei)
 https://embed.fixmyberlin.de
 
 ### Bildmaterial
-Screenshots zur freien Verwendung durch die Presse: <br>
+Bildmaterial zur freien Verwendung durch die Presse: <br>
+- [Mock-Up Meldedialog XHain Handheld](https://fixmyberlin.de/uploads/Meldedialog_MockUp_FixMyBerlin.png "MockUp-Meldedialog XHain Handheld")
+- [Mock-Up Meldedialog XHain Screens](https://fixmyberlin.de/uploads/MockUp_4screens_Meldedialog.jpg "MockUp-Meldedialog XHain Screens")
 - [Screenshot_Planung-Uebersicht](https://fixmyberlin.de/uploads/Planungsansicht_fixmyberlin.jpg "Screenshot-Planungen")
 - [Screenshot_Planung-Holzmarkt](https://fixmyberlin.de/uploads/Planung_Holzmarkt_fixmyberlin.jpg "Screenshot-Planung-Holzmarkt")
 - [Screenshot_Happy-Bike-Level](https://fixmyberlin.de/uploads/Happy-Bike-Level_gesamt_fixmyberlin.jpg "Screenshot-Happy-Bike-Level")
@@ -20,6 +22,7 @@ Screenshots zur freien Verwendung durch die Presse: <br>
 - Happy Bike Index übersetzt anhand von Schwellenwerten (7.5 => save|sicher, 5 => ok, 2.5 => bad|unsicher, 0 => mad|sehr unsicher)[download cvs-Datei](https://fixmyberlin.de/uploads/planning-sections.analyse.csv)
 
 ### Archiv Pressemitteilungen
++ 11.09.2019 - [Launch Meldedialog XHain](https://fixmyberlin.de/uploads/2019_09_02_PM_Kooperation_FixMyBerlin_XHain.pdf "PM-Launch-Meldedialog XHain") Bezirksamt Friedrichshain-Kreuzberg und FixMyBerlin starten digitalen Meldedialog für bessere Fahrradstellplätze.
 + 19.09.2018 - [Launch FixMyBerlin](https://fixmyberlin.de/uploads/pressemitteilung_launch_fixmyberlin_20180919.pdf "PM-Launch-FixMyBerlin") Ab heute zeigt fixmyberlin.de, wo in Berlin neue Radwege entstehen und wie sicher die Berliner Hauptstraßen für Radfahrende sind.
 
 ### Pressespiegel

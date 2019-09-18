@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import PinIcon from '~/images/pin.svg';
 import { media } from '~/styles/utils';
-import CloseButton from '~/components/CloseButton';
+import CloseButton from '~/components/NewCloseButton';
 import BigLabel from '~/components/BigLabel';
 import Label from '~/components/Label';
 
@@ -128,6 +128,7 @@ class MapPopupWrapper extends PureComponent {
   static defaultProps = {
     x: 0,
     y: 0,
+    style: {},
     onClose: () => {},
     onClick: () => {},
     showSubline: true,
@@ -135,6 +136,7 @@ class MapPopupWrapper extends PureComponent {
   }
 
   render() {
+    // console.log(this.props.x, this.props.y);
     return (
       <MapPopup x={this.props.x} y={this.props.y} style={this.props.style}>
         <CloseBtn onClick={this.props.onClose} />
