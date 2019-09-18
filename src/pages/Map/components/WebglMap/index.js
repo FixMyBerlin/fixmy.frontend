@@ -19,7 +19,7 @@ import {
   parseUrlOptions
 } from '~/pages/Map/map-utils';
 
-const MB_STYLE_URL = `${config.map.style}?fresh=true`;
+const MB_STYLE_URL = `${config.map.style}?fresh=asdas`;
 MapboxGL.accessToken = config.map.accessToken;
 
 const StyledMap = styled.div`
@@ -242,13 +242,11 @@ class Map extends PureComponent {
   handleMarkerClick = (evt, data) => {
     evt.preventDefault();
 
-    // @TODO take id from data
-    const id = data.id || 1;
+    const { id, street_name: name } = data;
 
     const center = data.center.coordinates;
 
-    // @TODO take name from data
-    const name = 'TODO Street Name';
+    console.log(data.center);
 
     const match = matchPath(this.props.location.pathname, {
       path: '/(zustand|planungen)/:id/:name?',
