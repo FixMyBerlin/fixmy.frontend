@@ -12,7 +12,7 @@ import { setView } from '~/pages/Map/MapState';
 import { getCenterFromGeom } from '~/pages/Map/map-utils';
 import PinIcon from '~/images/pin.svg';
 import Label from '~/components/Label';
-import NewCloseButton from "~/components/NewCloseButton";
+import NewCloseButton from '~/components/NewCloseButton';
 
 const DetailWrapper = styled.div`
   position: absolute;

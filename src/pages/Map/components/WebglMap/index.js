@@ -195,8 +195,6 @@ class Map extends PureComponent {
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
 
-    console.log(properties);
-
     if (config.debug) {
       console.log(properties);
     }
@@ -244,12 +242,14 @@ class Map extends PureComponent {
   handleMarkerClick = (evt, data) => {
     evt.preventDefault();
 
-    const id = data.planning_section_ids[0];
-
-    console.log(data);
+    // @TODO take id from data
+    const id = data.id || 1;
 
     const center = data.center.coordinates;
-    const name = idx(data, _ => _.planning_sections[0].name);
+
+    // @TODO take name from data
+    const name = 'TODO Street Name';
+
     const match = matchPath(this.props.location.pathname, {
       path: '/(zustand|planungen)/:id/:name?',
       exact: true
