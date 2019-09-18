@@ -59,7 +59,7 @@ export function loadPlanningData() {
       return false;
     }
 
-    const planningData = await ky.get(`${config.apiUrl}/plannings?page_size=200`, { timeout: 50000 }).json();
+    const planningData = await ky.get(`${config.apiUrl}/projects?page_size=200`, { timeout: 50000 }).json();
     return dispatch({ type: SET_PLANNING_DATA, payload: { planningData } });
   };
 }

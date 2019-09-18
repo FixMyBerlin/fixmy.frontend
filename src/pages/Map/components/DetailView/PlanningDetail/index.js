@@ -83,6 +83,7 @@ class PlanningDetails extends PureComponent {
   }
 
   render() {
+    console.log(this.props.data);
     const { plannings } = this.props.data;
     const { sideIndex } = this.state;
 

@@ -22,7 +22,7 @@ module.exports = {
       { from: Path.resolve(__dirname, '../public/data'), to: 'data' }
     ]),
     new Webpack.ProvidePlugin({
-      config: '~/../config.json'
+      config: '~/../config.js'
     }),
   ],
   resolve: {

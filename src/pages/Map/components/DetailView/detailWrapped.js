@@ -192,8 +192,8 @@ function detailWrapped(Component) {
     }
 
     renderName(data) {
-      if (data.name) {
-        return data.name;
+      if (data.street_name) {
+        return data.street_name;
       }
 
       if (data.address) {

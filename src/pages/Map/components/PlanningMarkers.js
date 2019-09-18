@@ -53,7 +53,11 @@ class PlanningMarkers extends PureComponent {
       return false;
     }
 
+    console.log(data);
+
     this.markers = data.map((d) => {
+      d.phase = 'draft';
+
       if (!Markers[d.phase]) {
         return null;
       }

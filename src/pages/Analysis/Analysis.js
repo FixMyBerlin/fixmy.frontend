@@ -113,6 +113,8 @@ class Analysis extends PureComponent {
     const { sortDirection } = selectedSort ? sortOptions.find(s => s.value === selectedSort) : 'ASC';
     const sortedData = filteredData.sort(sortByKey(selectedSort, sortDirection));
 
+    console.log(sortedData);
+
     return (
       <AnalysisWrapper>
         <AnalysisContent>
