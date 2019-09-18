@@ -1,7 +1,9 @@
+/* eslint-disable  no-multi-spaces */
+import booleanWithin from '@turf/boolean-within';
+
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
 import { apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
-import booleanWithin from '@turf/boolean-within';
 
 // action constants
 
@@ -159,39 +161,21 @@ export function submitReport() {
 
 // reducer
 
-const initialState = {
-  locationMode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
-  deviceLocation: null, // {lng, lat}
-  geocodeResult: null, // { coords, address }
-  location: {
-    lngLat: null,
-    adress: '',
-    pinned: false,
-    valid
+export const initialState = {
+  locationMode: null,   // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
+  deviceLocation: null, // { lng, lat}
+  geocodeResult: null,  // { coords, address}
+  location: {           // fostered when the user searches a suitable location for a report. when confirmed, props get attached to the reportItem
+    lngLat: null,         // { lng, lat}
+    adress: '',           // reverse-geocoding result
+    pinned: false,        // true when the user has confirmed the location he set using the map
+    valid: true           // set to false when a location is outside the area of interest
   },
   submitStatus: {
-    submitting: false,
-    submitted: false,
+    submitting: false,  // set true during submission of the report item to the api
+    submitted: false   // set true on submit success
   },
-  reportItem: {
-    address: "Alexandrinenstraße 118, 10969 Berlin",
-    description: "",
-    details: {
-      fee: 2,
-      number: 18,
-      subject: "BIKE_STANDS",
-      placement: "SIDEWALK"
-    },
-    geometry: {
-      type: "Point",
-      coordinates: [13.40061834673159, 52.50075090458924]
-    },
-    id: 2,
-    photo: {
-      copyright: null,
-      src: "https://fmb-aws-bucket.s3.amazonaws.com/photos/4598b3b2-3c4.jpg"
-    }
-  }
+  reportItem: {}        // instance of json schema agreed upon, see newReport-jsonSchema.json
 }
 
 export default function (state = initialState, action = {}) {
@@ -199,8 +183,6 @@ export default function (state = initialState, action = {}) {
     case RESET_DIALOG_STATE:
       //  keep locationMode in order to display the map after user clicked "Ort ändern"
       return { ...initialState, locationMode: state.locationMode };
-    case SET_REPORT_DATA:
-      return { ...state, reports: action.payload };
     case SET_DEVICE_LOCATION:
       return { ...state, deviceLocation: action.payload };
     case GEOCODE_DONE:
