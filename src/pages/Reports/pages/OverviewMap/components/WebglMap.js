@@ -1,4 +1,4 @@
-/* eslint-disable react/forbid-prop-types */ // TODO: state props types properly,
+  /* eslint-disable react/forbid-prop-types */ // TODO: state props types properly,
 import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
@@ -33,7 +33,6 @@ class WebglMap extends PureComponent {
     onMove: PropTypes.func,
     disabled: PropTypes.bool,
     zoomControlPosition: PropTypes.string,
-    selectedMarkerZoomLevel: PropTypes.number,
     fitExtentOnPopupClose: PropTypes.bool
   }
 
@@ -44,7 +43,6 @@ class WebglMap extends PureComponent {
     onMove: () => {},
     disabled: false,
     zoomControlPosition: 'bottom-left',
-    selectedMarkerZoomLevel: 14,
     fitExtentOnPopupClose: true
   }
 
@@ -87,9 +85,7 @@ class WebglMap extends PureComponent {
     if (isActive) {
       this.map.addControl(this.nav, this.props.zoomControlPosition);
     } else {
-      try {
-        this.map.removeControl(this.nav);
-      } catch(e) {}
+      this.map.removeControl(this.nav);
     }
   }
 
