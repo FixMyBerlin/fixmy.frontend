@@ -226,6 +226,7 @@ const config = {
     },
     layers: {
       bgLayer: 'fmb-background',
+      projectsLayer: 'fmb-projects',
       centerLayer: 'fmb-center',
       side0Layer: 'fmb-side-0',
       side1Layer: 'fmb-side-1',

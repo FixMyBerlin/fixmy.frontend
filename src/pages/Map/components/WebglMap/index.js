@@ -142,8 +142,9 @@ class Map extends PureComponent {
   }
 
   handleLoad = () => {
-    this.map.on('click', config.map.layers.bgLayer, this.handleClick);
-    this.map.on('click', config.map.layers.intersectionsOverlay, this.handleIntersectionClick);
+    // this.map.on('click', config.map.layers.bgLayer, this.handleClick);
+    this.map.on('click', config.map.layers.projectsLayer, this.handleClick);
+    // this.map.on('click', config.map.layers.intersectionsOverlay, this.handleIntersectionClick);
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
 
@@ -179,10 +180,11 @@ class Map extends PureComponent {
       colorizePlanningLines(this.map, this.props.filterPlannings);
     }
 
+    toggleLayer(this.map, config.map.layers.projectsLayer, isPlanungen);
     toggleLayer(this.map, config.map.layers.bgLayer, true);
-    toggleLayer(this.map, config.map.layers.centerLayer, true);
-    toggleLayer(this.map, config.map.layers.side0Layer, true);
-    toggleLayer(this.map, config.map.layers.side1Layer, true);
+    toggleLayer(this.map, config.map.layers.centerLayer, isZustand);
+    toggleLayer(this.map, config.map.layers.side0Layer, isZustand);
+    toggleLayer(this.map, config.map.layers.side1Layer, isZustand);
     toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
     toggleLayer(this.map, config.map.layers.dimmingLayer, this.props.dim);
     toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
@@ -192,6 +194,7 @@ class Map extends PureComponent {
 
   handleClick = (e) => {
     const properties = idx(e.features, _ => _[0].properties);
+    console.log(properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
 
