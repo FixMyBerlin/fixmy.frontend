@@ -1,10 +1,9 @@
-const IS_STAGING = process.env.CONFIG_ENV === 'staging';
-
 const config = {
   devUrl: 'http://localhost:8080',
   prodUrl: 'https://fixmyberlin.de',
   newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/6kW',
   api: {
+    dev: 'http://localhost:8000/api',
     staging: 'https://fixmyplatform-develop.herokuapp.com/api',
     production: 'https://api.fixmyberlin.de/api'
   },
@@ -287,6 +286,15 @@ const config = {
   mockReportsApi: false
 };
 
-config.apiUrl = IS_STAGING ? config.api.staging : config.api.production;
+if (process.env.CONFIG_ENV === 'dev') {
+  config.apiUrl = config.api.dev;
+} else if (process.env.CONFIG_ENV === 'staging') {
+  config.apiUrl = config.api.staging;
+} else if (process.env.CONFIG_ENV === 'production') {
+  config.apiUrl = config.api.production;
+} else {
+  config.apiUrl = config.api.production;
+  console.warn('No CONFIG_ENV defined. Using production API by default.');
+}
 
 module.exports = config;
