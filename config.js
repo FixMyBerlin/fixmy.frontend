@@ -286,15 +286,10 @@ const config = {
   mockReportsApi: false
 };
 
-if (process.env.CONFIG_ENV === 'dev') {
-  config.apiUrl = config.api.dev;
-} else if (process.env.CONFIG_ENV === 'staging') {
-  config.apiUrl = config.api.staging;
-} else if (process.env.CONFIG_ENV === 'production') {
-  config.apiUrl = config.api.production;
-} else {
-  config.apiUrl = config.api.production;
-  console.warn('No CONFIG_ENV defined. Using production API by default.');
+config.apiUrl = config.api[process.env.CONFIG_ENV] || config.api.production;
+
+if (!process.env.CONFIG_ENV) {
+console.warn('No CONFIG_ENV defined. Using production API by default.');
 }
 
 module.exports = config;
