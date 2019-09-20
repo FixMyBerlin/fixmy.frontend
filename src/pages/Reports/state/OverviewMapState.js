@@ -79,7 +79,8 @@ function reducer(state = initialState, {type, payload} = {}) {
 
 export {
   actions,
-  types
+  types,
+  initialState
 };
 
 export default reducer;

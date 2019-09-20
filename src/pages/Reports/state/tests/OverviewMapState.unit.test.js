@@ -3,7 +3,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { HTTPError } from 'ky';
 
-import reducer, { types, actions } from '../OverviewMapState';
+import reducer, { types, actions, initialState } from '../OverviewMapState';
 import { types as errorStateTypes } from '../ErrorState';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import reportSample from './mocks/reportsSample';
@@ -21,11 +21,6 @@ const mockFetchReports = () => {
 };
 
 describe('overviewMapState reducer', () => {
-  const initialState = {
-    reports: [],
-    selectedReport: null,
-    selectedReportPosition: { x: 0, y: 0 }
-  };
   it('returs the initial state for an empty action', () => {
     expect(reducer(undefined, {}))
       .toMatchObject(initialState);
