@@ -9,7 +9,7 @@
     "test": "jest --verbose --config=jest/jest.config.js",
     "test:update": "npm run test -- --coverage --updateSnapshot",
     "test:watch": "npm run test  -- --watch",
-    "coverage": "npm run test -- --coverage && open ./coverage/lcov-report/index.html"
+    "test:coverage": "npm run test -- --coverage && open ./coverage/lcov-report/index.html"
   },
   "repository": {
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
