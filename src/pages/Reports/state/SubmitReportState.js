@@ -2,86 +2,92 @@
 import booleanWithin from '@turf/boolean-within';
 
 import reverseGeocode from '~/services/reverseGeocode';
-import { getGeoLocation } from '~/pages/Map/map-utils';
-import { apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
+import {getGeoLocation} from '~/pages/Map/map-utils';
+import {apiSubmitReport, marshallNewReportObjectFurSubmit} from '~/pages/Reports/apiservice';
 
 // action constants
 
-const RESET_DIALOG_STATE = 'Reports/SubmitReport/RESET_DIALOG_STATE';
-const SET_LOCATION_MODE = 'Reports/SubmitReport/SET_LOCATION_MODE';
-export const LOCATION_MODE_DEVICE = 'DEVICE'; // not an action type, keeping this here to prevent typos
-export const LOCATION_MODE_GEOCODING = 'GEOCODING'; // not an action type, keeping this here to prevent typos
-const SET_DEVICE_LOCATION = 'Reports/SubmitReport/SET_DEVICE_LOCATION';
-const GEOCODE_DONE = 'Reports/SubmitReport/GEOCODE_SUCCESS';
-const VALIDATE_POSITION = 'Reports/SubmitReport/VALIDATE_POSITION';
-const INVALIDATE_POSITION = 'Reports/SubmitReport/INVALIDATE_POSITION';
-const REVERSE_GEOCODE_DONE = 'Reports/SubmitReport/REVERSE_GEOCODE_SUCCESS';
-const REVERSE_GEOCODE_FAIL = 'Reports/SubmitReport/REVERSE_GEOCODE_FAIL';
-const SET_TEMP_LOCATION_LNG_LAT = 'Reports/SubmitReport/SET_TEMP_LOCATION_LNG_LAT';
-const SET_TEMP_LOCATION_ADDRESS = 'Reports/SubmitReport/SET_TEMP_LOCATION_ADDRESS';
-const CONFIRM_LOCATION = 'Reports/SubmitReport/CONFIRM_LOCATION';
-const SET_BIKESTAND_NEEDS = 'Reports/SubmitReport/SET_BIKESTAND_NEEDS';
-const SET_ADDITIONAL_DATA = 'Reports/SubmitReport/SET_ADDITIONAL_DATA';
-const SET_DAILY_RENT = 'Reports/SubmitReport/SET_DAILY_RENT';
-const SUBMIT_REPORT = 'Reports/SubmitReport/SUBMIT_REPORT';
-const SUBMIT_REPORT_SUCCESS = 'Reports/SubmitReport/SUBMIT_REPORT_SUCCESS';
-const SUBMIT_REPORT_ERROR = 'Reports/SubmitReport/SUBMIT_REPORT_ERROR';
+const types = {};
 
-// other constants 
+types.RESET_DIALOG_STATE = 'Reports/SubmitReport/RESET_DIALOG_STATE';
+types.SET_LOCATION_MODE = 'Reports/SubmitReport/SET_LOCATION_MODE';
+types.SET_DEVICE_LOCATION = 'Reports/SubmitReport/SET_DEVICE_LOCATION';
+types.GEOCODE_DONE = 'Reports/SubmitReport/GEOCODE_SUCCESS';
+types.VALIDATE_POSITION = 'Reports/SubmitReport/VALIDATE_POSITION';
+types.INVALIDATE_POSITION = 'Reports/SubmitReport/INVALIDATE_POSITION';
+types.REVERSE_GEOCODE_DONE = 'Reports/SubmitReport/REVERSE_GEOCODE_SUCCESS';
+types.REVERSE_GEOCODE_FAIL = 'Reports/SubmitReport/REVERSE_GEOCODE_FAIL';
+types.SET_TEMP_LOCATION_COORDS = 'Reports/SubmitReport/SET_TEMP_LOCATION_COORDS';
+types.SET_TEMP_LOCATION_ADDRESS = 'Reports/SubmitReport/SET_TEMP_LOCATION_ADDRESS';
+types.CONFIRM_LOCATION = 'Reports/SubmitReport/CONFIRM_LOCATION';
+types.SET_BIKESTAND_NEEDS = 'Reports/SubmitReport/SET_BIKESTAND_NEEDS';
+types.SET_ADDITIONAL_DATA = 'Reports/SubmitReport/SET_ADDITIONAL_DATA';
+types.SET_DAILY_RENT = 'Reports/SubmitReport/SET_DAILY_RENT';
+types.SUBMIT_REPORT = 'Reports/SubmitReport/SUBMIT_REPORT';
+types.SUBMIT_REPORT_SUCCESS = 'Reports/SubmitReport/SUBMIT_REPORT_SUCCESS';
+types.SUBMIT_REPORT_ERROR = 'Reports/SubmitReport/SUBMIT_REPORT_ERROR';
 
-export const BIKESTAND_PLACEMENT_SIDEWALK = 'SIDEWALK';
-export const BIKESTAND_PLACEMENT_STREET = 'STREET';
+// other constants
+
+const LOCATION_MODE_DEVICE = 'DEVICE'; // not an action type, keeping this here to prevent typos
+const LOCATION_MODE_GEOCODING = 'GEOCODING';
 
 // action creators
-export function resetDialogState() {
-  return { type: RESET_DIALOG_STATE };
-}
 
-export function setLocationMode(mode) {
-  return { type: SET_LOCATION_MODE, mode };
-}
+const actions = {};
 
-export function setTempLocationLngLat({ lng, lat }) {
-  return { type: SET_TEMP_LOCATION_LNG_LAT, payload: { lng, lat } };
-}
+actions.resetDialogState = () => ({
+  type: types.RESET_DIALOG_STATE
+});
 
-export function setTempLocationAddress(address) {
-  return { type: SET_TEMP_LOCATION_ADDRESS, address };
-}
+actions.setLocationMode = mode => ({
+  type: types.SET_LOCATION_MODE,
+  mode
+});
 
-export function confirmLocation() {
-  return { type: CONFIRM_LOCATION };
-}
+// TODO: adapt consumption, used to be setTempLocationLngLat
+actions.setTempLocationCoords = ({lng, lat}) => ({
+  type: types.SET_TEMP_LOCATION_COORDS,
+  payload: {lng, lat}
+});
 
-export function setDeviceLocation({ lng, lat }) {
-  return { type: SET_DEVICE_LOCATION, payload: { lng, lat } };
-}
+actions.setTempLocationAddress = address => ({
+  type: types.SET_TEMP_LOCATION_ADDRESS,
+  address
+});
 
-export function handleGeocodeSuccess({ coords, address }) {
-  return { type: GEOCODE_DONE, payload: { coords, address } };
-}
+actions.confirmLocation = () => ({
+  type: types.CONFIRM_LOCATION
+});
 
-// TODO: unify syntac
-// TODO: 
+actions.setDeviceLocation = ({lng, lat}) => ({
+  type: types.SET_DEVICE_LOCATION,
+  payload: {lng, lat}
+});
 
-export const setBikestandNeeds = formData => ({
-  type: SET_BIKESTAND_NEEDS,
+actions.handleGeocodeSuccess = ({coords, address}) => ({
+  type: types.GEOCODE_DONE,
+  payload: {coords, address}
+});
+
+types.setBikestandNeeds = formData => ({
+  type: types.SET_BIKESTAND_NEEDS,
   payload: formData
 });
 
-export const setAdditionalData = formData => ({
-  type: SET_ADDITIONAL_DATA,
+types.setAdditionalData = formData => ({
+  type: types.SET_ADDITIONAL_DATA,
   payload: formData
 });
 
-export const setDailyRent = dailyRent => ({
-  type: SET_DAILY_RENT,
+types.setDailyRent = dailyRent => ({
+  type: types.SET_DAILY_RENT,
   dailyRent
 });
 
 // thunks
 
-export function validateCoordinates(polygonGeoJson, { lng, lat }) {
+export function validateCoordinates(polygonGeoJson, {lng, lat}) {
   return async (dispatch) => {
     const pointFeature = {
       type: 'Feature',
@@ -92,39 +98,38 @@ export function validateCoordinates(polygonGeoJson, { lng, lat }) {
     };
     if (booleanWithin(pointFeature, polygonGeoJson)) {
       dispatch({
-        type: VALIDATE_POSITION
+        type: types.VALIDATE_POSITION
       });
       return true;
     }
     dispatch({
-      type: INVALIDATE_POSITION
+      type: types.INVALIDATE_POSITION
     });
     return false;
   };
 }
 
-export function reverseGeocodeCoordinates({ lat, lng }) {
+export function reverseGeocodeCoordinates({lat, lng}) {
   return async (dispatch) => {
     let result;
     try {
-      result = await reverseGeocode({ lat, lng });
+      result = await reverseGeocode({lat, lng});
     } catch (e) {
       return dispatch({
-        type: REVERSE_GEOCODE_FAIL,
-        payload: { geocodeError: 'Fehler beim Auflösen der Koordinaten in eine Adresse' }
+        type: types.REVERSE_GEOCODE_FAIL,
+        payload: {geocodeError: 'Fehler beim Auflösen der Koordinaten in eine Adresse'}
       });
     }
     if (!result) {
       return dispatch({
-        type: REVERSE_GEOCODE_FAIL,
-        payload: { geocodeError: 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden' }
+        type: types.REVERSE_GEOCODE_FAIL,
+        payload: {geocodeError: 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden'}
       });
     }
-    dispatch({ type: REVERSE_GEOCODE_DONE, payload: { result } });
-    dispatch({ type: SET_TEMP_LOCATION_ADDRESS, address: result });
+    dispatch({type: types.REVERSE_GEOCODE_DONE, payload: {result}});
+    dispatch({type: types.SET_TEMP_LOCATION_ADDRESS, address: result});
   };
 }
-
 
 
 export function useDevicePosition() {
@@ -136,7 +141,7 @@ export function useDevicePosition() {
       // eslint-disable-next-line prefer-destructuring
       coords = position.coords;
       dispatch(
-        setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })
+        setDeviceLocation({lng: coords.longitude, lat: coords.latitude})
       );
       dispatch(setLocationMode(LOCATION_MODE_DEVICE));
     } catch (err) {
@@ -147,27 +152,28 @@ export function useDevicePosition() {
 
 export function submitReport() {
   return async (dispatch, getState) => {
-    dispatch({ type: SUBMIT_REPORT });
+    dispatch({type: types.SUBMIT_REPORT});
     const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.newReport);
     let submittedReport;
     try {
       submittedReport = await apiSubmitReport(reportPayload);
-      dispatch({ type: SUBMIT_REPORT_SUCCESS, submittedReport });
+      dispatch({type: types.SUBMIT_REPORT_SUCCESS, submittedReport});
     } catch (e) {
-      dispatch({ type: SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.' });
+      dispatch({type: types.SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.'});
     }
   };
 }
 
 // reducer
 
-export const initialState = {
+const initialState = {
   locationMode: null,   // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
   deviceLocation: null, // { lng, lat}
   geocodeResult: null,  // { coords, address}
-  location: {           // fostered when the user searches a suitable location for a report. when confirmed, props get attached to the reportItem
+  reverseGeocodeResult: null,
+  tempLocation: {       // fostered when the user searches a suitable location for a report. when confirmed, props get attached to the reportItem
     lngLat: null,         // { lng, lat}
-    adress: '',           // reverse-geocoding result
+    address: '',           // reverse-geocoding result
     pinned: false,        // true when the user has confirmed the location he set using the map
     valid: true           // set to false when a location is outside the area of interest
   },
@@ -178,14 +184,16 @@ export const initialState = {
   reportItem: {}        // instance of json schema agreed upon, see newReport-jsonSchema.json
 }
 
-export default function (state = initialState, action = {}) {
+// TODO: the newReport item's structure has been adapted to the backend-model. remove marshalling before submit
+
+function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case RESET_DIALOG_STATE:
+    case types.RESET_DIALOG_STATE:
       //  keep locationMode in order to display the map after user clicked "Ort ändern"
-      return { ...initialState, locationMode: state.locationMode };
-    case SET_DEVICE_LOCATION:
-      return { ...state, deviceLocation: action.payload };
-    case GEOCODE_DONE:
+      return {...initialState, locationMode: state.locationMode};
+    case types.SET_DEVICE_LOCATION:
+      return {...state, deviceLocation: action.payload};
+    case types.GEOCODE_DONE:
       return {
         ...state,
         geocodeResult: action.payload.coords,
@@ -194,7 +202,7 @@ export default function (state = initialState, action = {}) {
           address: action.payload.address
         }
       };
-    case INVALIDATE_POSITION:
+    case types.INVALIDATE_POSITION:
       return {
         ...state,
         tempLocation: {
@@ -202,7 +210,7 @@ export default function (state = initialState, action = {}) {
           valid: false
         }
       };
-    case VALIDATE_POSITION:
+    case types.VALIDATE_POSITION:
       return {
         ...state,
         tempLocation: {
@@ -210,9 +218,9 @@ export default function (state = initialState, action = {}) {
           valid: true
         }
       };
-    case REVERSE_GEOCODE_DONE:
-      return { ...state, reverseGeocodeResult: action.payload };
-    case SET_TEMP_LOCATION_LNG_LAT:
+    case types.REVERSE_GEOCODE_DONE:
+      return {...state, reverseGeocodeResult: action.payload};
+    case types.SET_TEMP_LOCATION_COORDS:
       return {
         ...state,
         tempLocation: {
@@ -220,7 +228,7 @@ export default function (state = initialState, action = {}) {
           lngLat: action.payload
         }
       };
-    case SET_TEMP_LOCATION_ADDRESS:
+    case types.SET_TEMP_LOCATION_ADDRESS:
       return {
         ...state,
         tempLocation: {
@@ -228,21 +236,25 @@ export default function (state = initialState, action = {}) {
           address: action.address
         }
       };
-    case CONFIRM_LOCATION:
+    case types.CONFIRM_LOCATION:
       return {
         ...state,
-        reverseGeocodeResult: null,
+        reverseGeocodeResult: null, // TODO: move to own action
         deviceLocation: null,
         newReport: {
-          location: {
-            address: state.tempLocation.address,
-            lngLat: { ...state.tempLocation.lngLat }
+          address: state.tempLocation.address,
+          geometry: {
+            type: 'Point',
+            coordinates: [
+              state.tempLocation.lngLat.lng,
+              state.tempLocation.lngLat.lat
+            ]
           }
         }
       };
-    case SET_LOCATION_MODE:
-      return { ...state, locationMode: action.mode };
-    case REVERSE_GEOCODE_FAIL:
+    case types.SET_LOCATION_MODE:
+      return {...state, locationMode: action.mode};
+    case types.REVERSE_GEOCODE_FAIL:
       return {
         ...state,
         error: {
@@ -250,7 +262,7 @@ export default function (state = initialState, action = {}) {
         }
       };
 
-    case SET_BIKESTAND_NEEDS:
+    case types.SET_BIKESTAND_NEEDS:
       return {
         ...state,
         newReport: {
@@ -261,7 +273,7 @@ export default function (state = initialState, action = {}) {
           }
         }
       };
-    case SET_ADDITIONAL_DATA:
+    case types.SET_ADDITIONAL_DATA:
       return {
         ...state,
         newReport: {
@@ -272,7 +284,7 @@ export default function (state = initialState, action = {}) {
           }
         }
       };
-    case SET_DAILY_RENT:
+    case types.SET_DAILY_RENT:
       return {
         ...state,
         newReport: {
@@ -286,9 +298,9 @@ export default function (state = initialState, action = {}) {
           }
         }
       };
-    case SUBMIT_REPORT:
-      return { ...state, submitting: true };
-    case SUBMIT_REPORT_SUCCESS:
+    case types.SUBMIT_REPORT:
+      return {...state, submitting: true};
+    case types.SUBMIT_REPORT_SUCCESS:
       return {
         ...state,
         submitting: false,
@@ -302,6 +314,16 @@ export default function (state = initialState, action = {}) {
         }]
       };
     default:
-      return { ...state };
+      return {...state};
   }
 }
+
+export {
+  actions,
+  types,
+  LOCATION_MODE_DEVICE,
+  LOCATION_MODE_GEOCODING,
+  initialState
+};
+
+export default reducer;
