@@ -38,7 +38,7 @@ const LoaderWrapper = styled.div`
   align-items: center;
 `;
 
-class SubmitReportDialog extends PureComponent {
+class ReportDialog extends PureComponent {
   componentDidMount() {
     this.props.resetDialogState();
     // prevent loading the dialog with a step > 1
@@ -222,4 +222,4 @@ export default connect(state => ({
   reportsState: state.ReportsState,
   token: state.UserState.token,
   user: state.UserState.userData
-}), mapDispatchToProps)(SubmitReportDialog);
+}), mapDispatchToProps)(ReportDialog);

@@ -4,7 +4,7 @@ import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
 import history from '~/history';
 import Markdown from '~/pages/Markdown/Markdown';
-import SubmitReportDialog from './SubmitReportDialog';
+import SubmitReportDialog from './ReportDialog';
 
 const SubmitReportWrapper = styled.div`
   min-height: 100%;
