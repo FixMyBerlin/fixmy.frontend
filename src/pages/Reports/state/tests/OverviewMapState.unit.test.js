@@ -20,7 +20,7 @@ const mockFetchReports = () => {
   });
 };
 
-describe('overviewMapState reducer', () => {
+describe('OverviewMapState reducer and actions', () => {
   it('returs the initial state for an empty action', () => {
     expect(reducer(undefined, {}))
       .toMatchObject(initialState);

@@ -6,7 +6,7 @@ const initialState = {
   proceedButtonCallback: null
 };
 
-describe('error reducer', () => {
+describe('ErrorState reducer and actions', () => {
   it('returns the initial state for an empty action', () => {
     expect(reducer(undefined, {}))
     .toMatchObject(initialState);

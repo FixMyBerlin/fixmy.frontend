@@ -6,7 +6,7 @@ import reducer, { actions, initialState, LOCATION_MODE_DEVICE } from '../SubmitR
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe('overviewMapState reducer', () => {
+describe('SubmitReportState reducer and actions', () => {
   it('returs the initial state for an empty action', () => {
     expect(reducer(undefined, {}))
       .toMatchObject(initialState);
