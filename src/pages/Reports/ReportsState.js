@@ -109,7 +109,7 @@ async function loadReportsDataInner(dispatch) {
     dispatch({ type: SET_REPORT_DATA, payload: reportData });
   } catch (e) {
     console.error(`Failed to fetch reports: ${e}`);
-    dispatch(ADD_ERROR, 'Fehler beim Laden der Meldungen');
+    dispatch(addError('Meldungen konnten nicht geladen werden'));
   }
 }
 
