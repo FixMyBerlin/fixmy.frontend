@@ -36,6 +36,19 @@ describe('OverviewMapState reducer and actions', () => {
       );
   });
 
+  it('Unsets a popup display position', () => {
+    const pixelPositxion = { x: 50, y: 100 };
+    const stateBefore = {
+      selectedReportPosition: pixelPositxion
+    }
+    expect(reducer(stateBefore, actions.setSelectedReportPosition(pixelPositxion)))
+      .toEqual(
+        {
+          selectedReportPosition: null
+        }
+      );
+  });
+
   it('sets the selectedReport', () => { });
 
   describe('async actions', () => {

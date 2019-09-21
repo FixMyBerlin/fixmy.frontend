@@ -11,6 +11,7 @@ types.REPORTS_FETCH_PENDING = 'Reports/OverviewMapState/REPORTS_FETCH_PENDING';
 types.REPORTS_FETCH_COMPLETE = 'Reports/OverviewMapState/REPORTS_FETCH_COMPLETE';
 types.SET_SELECTED_REPORT = 'Reports/OverviewMapState/SET_SELECTED_REPORT';
 types.SET_SELECTED_REPORT_POS = 'Reports/OverviewMapState/SET_SELECTED_REPORT_POS';
+// TODO: ReportState.js had an action called UNSET_SELECTED_REPORT, for which I did not find a consumption. make sure that omitting the action is OK
 
 // action creators
 
@@ -26,7 +27,7 @@ actions.loadReportsData = () => async (dispatch) => {
 };
 
 actions.setSelectedReport = selectedReport => async (dispatch, getState) => {
-  const { reports } = getState();
+  const { reports } = getState().ReportsState.OverviewMapState;
 
   if (!reports.length) {
     await loadReportsThunk(dispatch);

@@ -75,8 +75,8 @@ class ReportsPopup extends PureComponent {
 
 export default withRouter(
   connect(state => ({
-    selectedReport: state.ReportsState.selectedReport,
-    reports: state.ReportsState.reports,
-    position: state.ReportsState.selectedReportPosition
+    selectedReport: state.ReportsState.OverviewMapState.selectedReport,
+    reports: state.ReportsState.OverviewMapState.reports,
+    position: state.ReportsState.OverviewMapState.selectedReportPosition
   }), { setSelectedReport })(ReportsPopup)
 );

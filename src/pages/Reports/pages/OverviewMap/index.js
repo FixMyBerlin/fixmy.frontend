@@ -18,12 +18,7 @@ import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 
-import {
-  removeError,
-  loadReportsData,
-  setSelectedReport,
-  setSelectedReportPosition
-} from '~/pages/Reports/ReportsState';
+import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
 
 const MapView = styled.div`
   height: 100%;
@@ -213,16 +208,22 @@ class OverviewMap extends Component {
   }
 }
 
+// TODO: check if passing of actions object to the connect call can be done easier
+const {
+  loadReportsData,
+  setSelectedReport,
+  setSelectedReportPosition
+} = overviewMapStateActions;
+
 const mapDispatchToPros = {
   loadReportsData,
-  removeError,
   setSelectedReport,
   setSelectedReportPosition
 };
 
 export default withRouter(connect(state => ({
-  selectedReport: state.ReportsState.selectedReport,
-  reports: state.ReportsState.reports,
+  selectedReport: state.ReportsState.OverviewMapState.selectedReport,
+  reports: state.ReportsState.OverviewMapState.reports,
   token: state.UserState.token,
   isMenuOpen: state.AppState.isMenuOpen
 }), mapDispatchToPros)(OverviewMap));
