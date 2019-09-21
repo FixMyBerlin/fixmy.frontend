@@ -111,7 +111,7 @@ class WebglMap extends PureComponent {
         onLoad={map => this.onLoad(map)}
         onMove={() => this.props.onMove()}
       >
-        {reportsData.length && (
+        {reportsData.length > 0 && (
           <ClusterWrapper
             name="reports-cluster"
             map={this.map}
