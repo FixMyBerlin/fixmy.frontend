@@ -2,8 +2,8 @@
 import booleanWithin from '@turf/boolean-within';
 
 import reverseGeocode from '~/services/reverseGeocode';
-import {getGeoLocation} from '~/pages/Map/map-utils';
-import {apiSubmitReport, marshallNewReportObjectFurSubmit} from '~/pages/Reports/apiservice';
+import { getGeoLocation } from '~/pages/Map/map-utils';
+import { apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
 
 // action constants
 
@@ -46,9 +46,9 @@ actions.setLocationMode = mode => ({
 });
 
 // TODO: adapt consumption, used to be setTempLocationLngLat
-actions.setTempLocationCoords = ({lng, lat}) => ({
+actions.setTempLocationCoords = ({ lng, lat }) => ({
   type: types.SET_TEMP_LOCATION_COORDS,
-  payload: {lng, lat}
+  payload: { lng, lat }
 });
 
 actions.setTempLocationAddress = address => ({
@@ -60,14 +60,14 @@ actions.confirmLocation = () => ({
   type: types.CONFIRM_LOCATION
 });
 
-actions.setDeviceLocation = ({lng, lat}) => ({
+actions.setDeviceLocation = ({ lng, lat }) => ({
   type: types.SET_DEVICE_LOCATION,
-  payload: {lng, lat}
+  payload: { lng, lat }
 });
 
-actions.handleGeocodeSuccess = ({coords, address}) => ({
+actions.handleGeocodeSuccess = ({ coords, address }) => ({
   type: types.GEOCODE_DONE,
-  payload: {coords, address}
+  payload: { coords, address }
 });
 
 types.setBikestandNeeds = formData => ({
@@ -87,7 +87,7 @@ types.setDailyRent = dailyRent => ({
 
 // thunks
 
-export function validateCoordinates(polygonGeoJson, {lng, lat}) {
+export function validateCoordinates(polygonGeoJson, { lng, lat }) {
   return async (dispatch) => {
     const pointFeature = {
       type: 'Feature',
@@ -109,25 +109,25 @@ export function validateCoordinates(polygonGeoJson, {lng, lat}) {
   };
 }
 
-export function reverseGeocodeCoordinates({lat, lng}) {
+export function reverseGeocodeCoordinates({ lat, lng }) {
   return async (dispatch) => {
     let result;
     try {
-      result = await reverseGeocode({lat, lng});
+      result = await reverseGeocode({ lat, lng });
     } catch (e) {
       return dispatch({
         type: types.REVERSE_GEOCODE_FAIL,
-        payload: {geocodeError: 'Fehler beim Auflösen der Koordinaten in eine Adresse'}
+        payload: { geocodeError: 'Fehler beim Auflösen der Koordinaten in eine Adresse' }
       });
     }
     if (!result) {
       return dispatch({
         type: types.REVERSE_GEOCODE_FAIL,
-        payload: {geocodeError: 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden'}
+        payload: { geocodeError: 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden' }
       });
     }
-    dispatch({type: types.REVERSE_GEOCODE_DONE, payload: {result}});
-    dispatch({type: types.SET_TEMP_LOCATION_ADDRESS, address: result});
+    dispatch({ type: types.REVERSE_GEOCODE_DONE, payload: { result } });
+    dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
   };
 }
 
@@ -141,7 +141,7 @@ export function useDevicePosition() {
       // eslint-disable-next-line prefer-destructuring
       coords = position.coords;
       dispatch(
-        setDeviceLocation({lng: coords.longitude, lat: coords.latitude})
+        setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })
       );
       dispatch(setLocationMode(LOCATION_MODE_DEVICE));
     } catch (err) {
@@ -152,14 +152,14 @@ export function useDevicePosition() {
 
 export function submitReport() {
   return async (dispatch, getState) => {
-    dispatch({type: types.SUBMIT_REPORT});
+    dispatch({ type: types.SUBMIT_REPORT });
     const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.newReport);
     let submittedReport;
     try {
       submittedReport = await apiSubmitReport(reportPayload);
-      dispatch({type: types.SUBMIT_REPORT_SUCCESS, submittedReport});
+      dispatch({ type: types.SUBMIT_REPORT_SUCCESS, submittedReport });
     } catch (e) {
-      dispatch({type: types.SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.'});
+      dispatch({ type: types.SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.' });
     }
   };
 }
@@ -182,7 +182,7 @@ const initialState = {
     submitted: false   // set true on submit success
   },
   reportItem: {}        // instance of json schema agreed upon, see newReport-jsonSchema.json
-}
+};
 
 // TODO: the newReport item's structure has been adapted to the backend-model. remove marshalling before submit
 
@@ -190,9 +190,9 @@ function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case types.RESET_DIALOG_STATE:
       //  keep locationMode in order to display the map after user clicked "Ort ändern"
-      return {...initialState, locationMode: state.locationMode};
+      return { ...initialState, locationMode: state.locationMode };
     case types.SET_DEVICE_LOCATION:
-      return {...state, deviceLocation: action.payload};
+      return { ...state, deviceLocation: action.payload };
     case types.GEOCODE_DONE:
       return {
         ...state,
@@ -219,7 +219,7 @@ function reducer(state = initialState, action = {}) {
         }
       };
     case types.REVERSE_GEOCODE_DONE:
-      return {...state, reverseGeocodeResult: action.payload};
+      return { ...state, reverseGeocodeResult: action.payload };
     case types.SET_TEMP_LOCATION_COORDS:
       return {
         ...state,
@@ -253,7 +253,7 @@ function reducer(state = initialState, action = {}) {
         }
       };
     case types.SET_LOCATION_MODE:
-      return {...state, locationMode: action.mode};
+      return { ...state, locationMode: action.mode };
     case types.REVERSE_GEOCODE_FAIL:
       return {
         ...state,
@@ -299,7 +299,7 @@ function reducer(state = initialState, action = {}) {
         }
       };
     case types.SUBMIT_REPORT:
-      return {...state, submitting: true};
+      return { ...state, submitting: true };
     case types.SUBMIT_REPORT_SUCCESS:
       return {
         ...state,
@@ -314,7 +314,7 @@ function reducer(state = initialState, action = {}) {
         }]
       };
     default:
-      return {...state};
+      return { ...state };
   }
 }
 

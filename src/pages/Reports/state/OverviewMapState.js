@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
-import {apiFetchReports} from '../apiservice';
-import {actions as errorStateActions} from './ErrorState';
+import { apiFetchReports } from '../apiservice';
+import { actions as errorStateActions } from './ErrorState';
 
 const actions = {};
 const types = {};
@@ -14,9 +14,9 @@ types.SET_SELECTED_REPORT_POS = 'Reports/OverviewMapState/SET_SELECTED_REPORT_PO
 
 // action creators
 
-actions.setSelectedReportPosition = ({x = 0, y = 0}) => ({
+actions.setSelectedReportPosition = ({ x = 0, y = 0 }) => ({
   type: types.SET_SELECTED_REPORT_POS,
-  payload: {x, y}
+  payload: { x, y }
 });
 
 // thunks
@@ -26,7 +26,7 @@ actions.loadReportsData = () => async (dispatch) => {
 };
 
 actions.setSelectedReport = selectedReport => async (dispatch, getState) => {
-  const {reports} = getState();
+  const { reports } = getState();
 
   if (!reports.length) {
     await loadReportsThunk(dispatch);
@@ -40,9 +40,9 @@ actions.setSelectedReport = selectedReport => async (dispatch, getState) => {
 
 async function loadReportsThunk(dispatch) {
   try {
-    dispatch({type: types.REPORTS_FETCH_PENDING});
+    dispatch({ type: types.REPORTS_FETCH_PENDING });
     const reportData = await apiFetchReports();
-    dispatch({type: types.REPORTS_FETCH_COMPLETE, payload: reportData});
+    dispatch({ type: types.REPORTS_FETCH_COMPLETE, payload: reportData });
   } catch (e) {
     const message = 'Fehler beim Laden der Meldungen';
     console.error(`${message}: ${e}`);
@@ -57,13 +57,13 @@ async function loadReportsThunk(dispatch) {
 const initialState = {
   reports: [], // report items fetched from api
   selectedReport: null, // an entry within reports
-  selectedReportPosition: {x: 0, y: 0} // projected position of report popup
+  selectedReportPosition: { x: 0, y: 0 } // projected position of report popup
 };
 
-function reducer(state = initialState, {type, payload} = {}) {
+function reducer(state = initialState, { type, payload } = {}) {
   switch (type) {
     case types.REPORTS_FETCH_COMPLETE:
-      return {...state, reports: payload};
+      return { ...state, reports: payload };
     case types.SET_SELECTED_REPORT:
       return {
         ...state, selectedReport: payload
@@ -73,7 +73,7 @@ function reducer(state = initialState, {type, payload} = {}) {
         ...state, selectedReportPosition: payload
       };
     default:
-      return {...state};
+      return { ...state };
   }
 }
 
