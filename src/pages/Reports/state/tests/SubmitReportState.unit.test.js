@@ -58,22 +58,25 @@ describe('SubmitReportState reducer and actions', () => {
   it('moves props of a confirmed (former temporary) location to the newReport item ' +
     'and keeps the temporary location', () => {
     const stateBefore = {
-      lngLat: { lng: 1, lat: 2 },
-      address: 'Teststreet 1, 1337 Testplace'
+      tempLocation: {
+        deviceLocation: { lng: 1, lat: 2 },
+        lngLat: { lng: 1, lat: 2 },
+        address: 'Teststreet 1, 1337 Testplace'
+      }
     };
     expect(reducer(stateBefore, actions.confirmLocation()))
       .toEqual(
         {
           ...stateBefore,
-          reverseGeocodeResult: null,
-          deviceLocation: null,
+          reverseGeocodeResult: null, // TODO: do we still use this? check if it can be removed
+          deviceLocation: null, // TODO: check if this is necessary
           newReport: {
-            address: stateBefore.address,
+            address: stateBefore.tempLocation.address,
             geometry: {
               type: 'Point',
               coordinates: [
-                stateBefore.lngLat.lng,
-                stateBefore.lngLat.lat
+                stateBefore.tempLocation.lngLat.lng,
+                stateBefore.tempLocation.lngLat.lat
               ]
             }
           }
