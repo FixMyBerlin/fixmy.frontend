@@ -9,23 +9,25 @@ import { apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Repor
 
 const types = {};
 
-types.RESET_DIALOG_STATE = 'Reports/SubmitReport/RESET_DIALOG_STATE';
-types.SET_LOCATION_MODE = 'Reports/SubmitReport/SET_LOCATION_MODE';
-types.SET_DEVICE_LOCATION = 'Reports/SubmitReport/SET_DEVICE_LOCATION';
-types.GEOCODE_DONE = 'Reports/SubmitReport/GEOCODE_SUCCESS';
-types.VALIDATE_POSITION = 'Reports/SubmitReport/VALIDATE_POSITION';
-types.INVALIDATE_POSITION = 'Reports/SubmitReport/INVALIDATE_POSITION';
-types.REVERSE_GEOCODE_DONE = 'Reports/SubmitReport/REVERSE_GEOCODE_SUCCESS';
-types.REVERSE_GEOCODE_FAIL = 'Reports/SubmitReport/REVERSE_GEOCODE_FAIL';
-types.SET_TEMP_LOCATION_COORDS = 'Reports/SubmitReport/SET_TEMP_LOCATION_COORDS';
-types.SET_TEMP_LOCATION_ADDRESS = 'Reports/SubmitReport/SET_TEMP_LOCATION_ADDRESS';
-types.CONFIRM_LOCATION = 'Reports/SubmitReport/CONFIRM_LOCATION';
-types.SET_BIKESTAND_NEEDS = 'Reports/SubmitReport/SET_BIKESTAND_NEEDS';
-types.SET_ADDITIONAL_DATA = 'Reports/SubmitReport/SET_ADDITIONAL_DATA';
-types.SET_DAILY_RENT = 'Reports/SubmitReport/SET_DAILY_RENT';
-types.SUBMIT_REPORT = 'Reports/SubmitReport/SUBMIT_REPORT';
-types.SUBMIT_REPORT_SUCCESS = 'Reports/SubmitReport/SUBMIT_REPORT_SUCCESS';
-types.SUBMIT_REPORT_ERROR = 'Reports/SubmitReport/SUBMIT_REPORT_ERROR';
+const PREFIX = 'Reports/SubmitReportState/';
+types.RESET_DIALOG_STATE = `${PREFIX}RESET_DIALOG_STATE`;
+types.SET_LOCATION_MODE = `${PREFIX}SET_LOCATION_MODE`;
+types.SET_DEVICE_LOCATION = `${PREFIX}SET_DEVICE_LOCATION`;
+types.GEOCODE_DONE = `${PREFIX}GEOCODE_SUCCESS`;
+types.VALIDATE_POSITION = `${PREFIX}VALIDATE_POSITION`;
+types.INVALIDATE_POSITION = `${PREFIX}INVALIDATE_POSITION`;
+types.REVERSE_GEOCODE_DONE = `${PREFIX}REVERSE_GEOCODE_SUCCESS`;
+types.REVERSE_GEOCODE_FAIL = `${PREFIX}REVERSE_GEOCODE_FAIL`;
+types.SET_TEMP_LOCATION_COORDS = `${PREFIX}SET_TEMP_LOCATION_COORDS`;
+types.SET_TEMP_LOCATION_ADDRESS = `${PREFIX}SET_TEMP_LOCATION_ADDRESS`;
+types.CONFIRM_LOCATION = `${PREFIX}CONFIRM_LOCATION`;
+types.SET_BIKESTAND_COUNT = `${PREFIX}/SET_BIKESTAND_COUNT`;
+types.SET_ADDITIONAL_DATA = `${PREFIX}/SET_ADDITIONAL_DATA`;
+types.SET_FEE_ACCEPTABLE = `${PREFIX}/SET_FEE_ACCEPTABLE`;
+types.SUBMIT_REPORT = `${PREFIX}/SUBMIT_REPORT`;
+types.SUBMIT_REPORT = `${PREFIX}SUBMIT_REPORT`;
+types.SUBMIT_REPORT_SUCCESS = `${PREFIX}SUBMIT_REPORT_SUCCESS`;
+types.SUBMIT_REPORT_ERROR = `${PREFIX}SUBMIT_REPORT_ERROR`;
 
 // other constants
 
@@ -70,19 +72,19 @@ actions.handleGeocodeSuccess = ({ coords, address }) => ({
   payload: { coords, address }
 });
 
-types.setBikestandNeeds = formData => ({
-  type: types.SET_BIKESTAND_NEEDS,
-  payload: formData
+actions.setBikestandCount = amount => ({
+  type: types.SET_BIKESTAND_COUNT,
+  payload: amount
 });
 
-types.setAdditionalData = formData => ({
+actions.setAdditionalData = ({ photo, description }) => ({
   type: types.SET_ADDITIONAL_DATA,
-  payload: formData
+  payload: { photo, description }
 });
 
-types.setDailyRent = dailyRent => ({
-  type: types.SET_DAILY_RENT,
-  dailyRent
+actions.setFeeAcceptable = isFeeAcceptable => ({
+  type: types.SET_FEE_ACCEPTABLE,
+  isFeeAcceptable
 });
 
 // thunks
@@ -141,11 +143,11 @@ export function useDevicePosition() {
       // eslint-disable-next-line prefer-destructuring
       coords = position.coords;
       dispatch(
-        setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })
+        actions.setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })
       );
-      dispatch(setLocationMode(LOCATION_MODE_DEVICE));
+      dispatch(actions.setLocationMode(LOCATION_MODE_DEVICE));
     } catch (err) {
-      dispatch(addError('Standortbestimmung fehlgeschlagen. Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.'));
+      dispatch(actions.addError('Standortbestimmung fehlgeschlagen. Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.'));
     }
   };
 }
@@ -167,21 +169,31 @@ export function submitReport() {
 // reducer
 
 const initialState = {
-  locationMode: null,   // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
-  deviceLocation: null, // { lng, lat}
-  geocodeResult: null,  // { coords, address}
+  locationMode: null,           // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
+  deviceLocation: null,         // { lng, lat}
+  geocodeResult: null,          // { coords, address}
   reverseGeocodeResult: null,
-  tempLocation: {       // fostered when the user searches a suitable location for a report. when confirmed, props get attached to the reportItem
-    lngLat: null,         // { lng, lat}
-    address: '',           // reverse-geocoding result
-    pinned: false,        // true when the user has confirmed the location he set using the map
-    valid: true           // set to false when a location is outside the area of interest
+  tempLocation: {               // fostered when the user searches a suitable location for a report. when confirmed, props get attached to the newReport item
+    lngLat: null,               // { lng, lat}
+    address: '',                // reverse-geocoding result
+    pinned: false,              // true when the user has confirmed the location he set using the map
+    valid: true                 // set to false when a location is outside the area of interest
   },
   submitStatus: {
-    submitting: false,  // set true during submission of the report item to the api
-    submitted: false   // set true on submit success
+    submitting: false,          // set true during submission of the report item to the api
+    submitted: false            // set true on submit success
   },
-  reportItem: {}        // instance of json schema agreed upon, see newReport-jsonSchema.json
+  newReport: {                 // instance of json schema agreed upon
+    address: null,              // address string
+    geometry: {},               // GeoJson point feature
+    details: {
+      subject: 'BIKE_STANDS',
+      number: null,             // number of bikestands
+      fee_acceptable: null      // if the user would pay for managed parking
+    },
+    photo: null,                // jpeg in base64
+    description: null           // textual description of the problem / potential site
+  }
 };
 
 // TODO: the newReport item's structure has been adapted to the backend-model. remove marshalling before submit
@@ -239,7 +251,7 @@ function reducer(state = initialState, action = {}) {
     case types.CONFIRM_LOCATION:
       return {
         ...state,
-        reverseGeocodeResult: null, // TODO: move to own action
+        reverseGeocodeResult: null, // TODO: do we even need this anymore?
         deviceLocation: null,
         newReport: {
           address: state.tempLocation.address,
@@ -261,15 +273,25 @@ function reducer(state = initialState, action = {}) {
           message: action.payload.geocodeError
         }
       };
-
-    case types.SET_BIKESTAND_NEEDS:
+    case types.SET_BIKESTAND_COUNT:
       return {
         ...state,
         newReport: {
           ...state.newReport,
-          what: {
-            ...state.newReport.what,
-            bikestands: action.payload
+          details: {
+              ...state.newReport.details,
+              number: action.payload
+            }
+        }
+      };
+    case types.SET_FEE_ACCEPTABLE:
+      return {
+        ...state,
+        newReport: {
+          ...state.newReport,
+          details: {
+            ...state.newReport.details,
+            fee_acceptable: action.isFeeAcceptable
           }
         }
       };
@@ -278,24 +300,7 @@ function reducer(state = initialState, action = {}) {
         ...state,
         newReport: {
           ...state.newReport,
-          what: {
-            ...state.newReport.what,
-            additionalInfo: action.payload
-          }
-        }
-      };
-    case types.SET_DAILY_RENT:
-      return {
-        ...state,
-        newReport: {
-          ...state.newReport,
-          what: {
-            ...state.newReport.what,
-            bikestands: {
-              ...state.newReport.what.bikestands,
-              paymentReservesBikePark: action.dailyRent
-            }
-          }
+          ...action.payload
         }
       };
     case types.SUBMIT_REPORT:

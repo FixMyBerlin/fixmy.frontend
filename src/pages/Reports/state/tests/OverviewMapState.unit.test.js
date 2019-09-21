@@ -36,19 +36,6 @@ describe('OverviewMapState reducer and actions', () => {
       );
   });
 
-  it('Unsets a popup display position', () => {
-    const pixelPositxion = { x: 50, y: 100 };
-    const stateBefore = {
-      selectedReportPosition: pixelPositxion
-    }
-    expect(reducer(stateBefore, actions.setSelectedReportPosition(pixelPositxion)))
-      .toEqual(
-        {
-          selectedReportPosition: null
-        }
-      );
-  });
-
   it('sets the selectedReport', () => { });
 
   describe('async actions', () => {
@@ -96,7 +83,13 @@ describe('OverviewMapState reducer and actions', () => {
         payload: reportItem
       }];
 
-      const store = mockStore({ reports: [reportItem] });
+      const store = mockStore({
+        ReportsState: {
+          OverviewMapState: {
+            reports: [reportItem]
+          }
+        }
+      });
       return store.dispatch(actions.setSelectedReport(reportItem))
       .then(() => {
         expect(store.getActions())
@@ -113,7 +106,13 @@ describe('OverviewMapState reducer and actions', () => {
       ];
 
       mockFetchReports();
-      const store = mockStore({ reports: [] });
+      const store = mockStore({
+        ReportsState: {
+          OverviewMapState: {
+            reports: []
+          }
+        }
+      });
       return store.dispatch(actions.setSelectedReport(reportItem))
       .then(() => {
         expect(store.getActions().map(action => action.type))
