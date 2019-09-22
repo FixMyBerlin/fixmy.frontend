@@ -208,18 +208,7 @@ class OverviewMap extends Component {
   }
 }
 
-// TODO: check if passing of actions object to the connect call can be done easier
-const {
-  loadReportsData,
-  setSelectedReport,
-  setSelectedReportPosition
-} = overviewMapStateActions;
-
-const mapDispatchToPros = {
-  loadReportsData,
-  setSelectedReport,
-  setSelectedReportPosition
-};
+const mapDispatchToPros = overviewMapStateActions;
 
 export default withRouter(connect(state => ({
   selectedReport: state.ReportsState.OverviewMapState.selectedReport,
