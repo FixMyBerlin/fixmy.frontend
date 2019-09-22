@@ -89,8 +89,7 @@ actions.setFeeAcceptable = isFeeAcceptable => ({
 
 // thunks
 
-export function validateCoordinates(polygonGeoJson, { lng, lat }) {
-  return async (dispatch) => {
+actions.validateCoordinates = (polygonGeoJson, { lng, lat }) => async (dispatch) => {
     const pointFeature = {
       type: 'Feature',
       geometry: {
@@ -98,21 +97,20 @@ export function validateCoordinates(polygonGeoJson, { lng, lat }) {
         coordinates: [lng, lat]
       }
     };
+
     if (booleanWithin(pointFeature, polygonGeoJson)) {
       dispatch({
         type: types.VALIDATE_POSITION
       });
       return true;
     }
-    dispatch({
-      type: types.INVALIDATE_POSITION
-    });
-    return false;
+      dispatch({
+        type: types.INVALIDATE_POSITION
+      });
+      return false;
   };
-}
 
-export function reverseGeocodeCoordinates({ lat, lng }) {
-  return async (dispatch) => {
+actions.reverseGeocodeCoordinates = ({ lat, lng }) => async (dispatch) => {
     let result;
     try {
       result = await reverseGeocode({ lat, lng });
@@ -131,11 +129,9 @@ export function reverseGeocodeCoordinates({ lat, lng }) {
     dispatch({ type: types.REVERSE_GEOCODE_DONE, payload: { result } });
     dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
   };
-}
 
 
-export function useDevicePosition() {
-  return async (dispatch) => {
+actions.useDevicePosition = () => async (dispatch) => {
     let coords;
     try {
       const position = await getGeoLocation();
@@ -150,10 +146,8 @@ export function useDevicePosition() {
       dispatch(actions.addError('Standortbestimmung fehlgeschlagen. Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.'));
     }
   };
-}
 
-export function submitReport() {
-  return async (dispatch, getState) => {
+actions.submitReport = () => async (dispatch, getState) => {
     dispatch({ type: types.SUBMIT_REPORT });
     const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.newReport);
     let submittedReport;
@@ -164,7 +158,6 @@ export function submitReport() {
       dispatch({ type: types.SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.' });
     }
   };
-}
 
 // reducer
 

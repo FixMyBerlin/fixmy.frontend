@@ -12,51 +12,56 @@ import reportSample from './mocks/reportsSample';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-const mockedReportsData = reportSample.slice(0, 5);
+const mockedReportsList = reportSample.slice(0, 5);
 const mockFetchReports = () => {
   fetchMock.getOnce(reportsEndpointUrl, {
-    body: mockedReportsData,
+    body: mockedReportsList,
     headers: { 'content-type': 'application/json' }
   });
 };
 
 describe('OverviewMapState reducer and actions', () => {
-  it('returs the initial state for an empty action', () => {
+  it('returns the initial state for an empty action', () => {
     expect(reducer(undefined, {}))
       .toMatchObject(initialState);
   });
 
   it('sets the popup display position of a selected report', () => {
+    const stateBefore = {
+      reports: mockedReportsList,
+      selectedReport: mockedReportsList[0]
+    };
     const pixelPositxion = { x: 50, y: 100 };
-    expect(reducer({}, actions.setSelectedReportPosition(pixelPositxion)))
+    expect(reducer(stateBefore, actions.setSelectedReportPosition(pixelPositxion)))
       .toEqual(
         {
+          ...stateBefore,
           selectedReportPosition: pixelPositxion
         }
       );
   });
 
-  it('sets the selectedReport', () => { });
-
   describe('async actions', () => {
+    // we are only testing action-related object here TODO: look for a mock library that allows thesting the state
+
     afterEach(() => {
       fetchMock.restore();
     });
 
-
-    mockFetchReports();
     it('fetches reports and creates REPORTS_FETCH_COMPLETE', () => {
+      mockFetchReports();
       const expectedActions = [
         { type: types.REPORTS_FETCH_PENDING },
         {
           type: types.REPORTS_FETCH_COMPLETE,
-          payload: mockedReportsData
+          payload: mockedReportsList
         }
       ];
       const store = mockStore({});
       return store.dispatch(actions.loadReportsData()).then(() => {
         // return of async actions
-        expect(store.getActions()).toEqual(expectedActions);
+        expect(store.getActions())
+          .toEqual(expectedActions);
       });
     });
 
@@ -70,31 +75,33 @@ describe('OverviewMapState reducer and actions', () => {
       ];
       const store = mockStore({});
       return store.dispatch(actions.loadReportsData())
-      .then(() => {
-        expect(store.getActions().map(action => action.type))
-        .toEqual(expectedActionTypes);
-      });
+        .then(() => {
+          expect(store.getActions().map(action => action.type))
+            .toEqual(expectedActionTypes);
+        });
     });
 
     it('sets the selectedReport if reports have been fetched already', () => {
-      const reportItem = { some: 'content' };
+      const reportItem = mockedReportsList[0];
       const expectedActions = [{
         type: types.SET_SELECTED_REPORT,
         payload: reportItem
       }];
 
-      const store = mockStore({
+      const stateBefore = {
         ReportsState: {
           OverviewMapState: {
-            reports: [reportItem]
+            reports: mockedReportsList
           }
         }
-      });
+      };
+      const store = mockStore(stateBefore);
+
       return store.dispatch(actions.setSelectedReport(reportItem))
-      .then(() => {
-        expect(store.getActions())
-        .toEqual(expectedActions);
-      });
+        .then(() => {
+          expect(store.getActions())
+            .toEqual(expectedActions);
+        });
     });
 
     it('sets the selectedReport and - if no reports have been fetched yet - fetches the reports before', () => {
@@ -114,10 +121,10 @@ describe('OverviewMapState reducer and actions', () => {
         }
       });
       return store.dispatch(actions.setSelectedReport(reportItem))
-      .then(() => {
-        expect(store.getActions().map(action => action.type))
-        .toEqual(expectedActionTypes);
-      });
+        .then(() => {
+          expect(store.getActions().map(action => action.type))
+            .toEqual(expectedActionTypes);
+        });
     });
   });
 });
