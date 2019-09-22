@@ -1,7 +1,7 @@
 /* eslint-disable prefer-destructuring,no-use-before-define */
 import ky from 'ky';
 import oneLine from 'common-tags/es/oneLine/oneLine';
-import validateNewReport from './test/schemaValidation/validateNewReport';
+import validateNewReport from './state/tests/schemaValidation/validateNewReport';
 import { setUpMocking } from './fixtures';
 
 // mock api responses during development if configured
@@ -49,25 +49,15 @@ async function handleFetchReports({ method = 'GET', token = false }, respType = 
 }
 
 /**
- * TODO: Refactor files and store entry props to use the corrected wording in-code so that less marshalling needs to be done.
  * Takes a newReport store item and restructures it as the API expects the new entity to be formed like.
  * @param newReportObject
  * @returns marshalledNewReportObject
  */
 export function marshallNewReportObjectFurSubmit(newReportObject) {
-  const obj = {};
-
-  // keep address in root, wrap coords in GeoJSON geometry
-  obj.address = newReportObject.location.address;
-  obj.geometry = { type: 'Point' };
-  const coords = newReportObject.location.lngLat;
-  obj.geometry.coordinates = [coords.lng, coords.lat];
-
-  // keep photo and description in top level of object
-  obj.description = newReportObject.what.additionalInfo.description;
+  const reportItemCopy = JSON.parse(JSON.stringify(newReportObject));
 
   // omit base64 prefix in photo string
-  let photo = newReportObject.what.additionalInfo.photo;
+  const { photo } = newReportObject;
   if (photo) {
     const BASE64_PREFIXES = ['data:image/jpg;base64,', 'data:image/jpeg;base64,'];
     if (!BASE64_PREFIXES.some(prefix => photo.includes(prefix))) {
@@ -76,26 +66,18 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
       found photo string starts with ${photo.slice(0, photo.indexOf(',') || 25)}`);
     }
     BASE64_PREFIXES.forEach((prefix) => {
-      photo = photo.replace(prefix, '');
+      reportItemCopy.photo = photo.replace(prefix, '');
     });
-
-    obj.photo = photo;
   }
 
-  // keep remaining data under top level node "details"
-  obj.details = {};
-  obj.details.subject = 'BIKE_STANDS';
-  obj.details.number = newReportObject.what.bikestands.number;
-  obj.details.fee_acceptable = newReportObject.what.bikestands.feeAcceptable;
-
   // validate object
-  const validationResult = validateNewReport(obj);
+  const validationResult = validateNewReport(reportItemCopy);
   if (validationResult.errors.length) {
     throw new Error(`Marshalled newReport object is not structured as stated in json schema: ${
       validationResult.errors}`);
   }
 
-  return obj;
+  return reportItemCopy;
 }
 
 /**

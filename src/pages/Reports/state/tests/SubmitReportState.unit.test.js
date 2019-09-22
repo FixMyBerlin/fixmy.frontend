@@ -2,10 +2,10 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import fetchMock from 'fetch-mock';
-import reducer, { actions, types, initialState, LOCATION_MODE_DEVICE } from '../SubmitReportState';
-import { worldWidePolygon, nullIslandPolygonFeature } from './mocks/geometries';
-
-// mocking
+import reducer, {actions, types, initialState, LOCATION_MODE_DEVICE} from '../SubmitReportState';
+import {worldWidePolygon, nullIslandPolygonFeature} from './mocks/geometries';
+import mockedReportItem from './schemaValidation/newReport-jsonSchema-testObject';
+import {reportsEndpointUrl} from '~/pages/Reports/apiservice';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -18,7 +18,7 @@ describe('SubmitReportState reducer and actions', () => {
     });
 
     it('resets the state but keeps the location mode selected for the session', () => {
-      expect(reducer({ locationMode: LOCATION_MODE_DEVICE }, actions.resetDialogState()))
+      expect(reducer({locationMode: LOCATION_MODE_DEVICE}, actions.resetDialogState()))
         .toEqual(
           {
             ...initialState,
@@ -49,7 +49,7 @@ describe('SubmitReportState reducer and actions', () => {
     });
 
     it('sets the temporary location\'s coordinates', () => {
-      const lngLat = { lng: 1, lat: 2 };
+      const lngLat = {lng: 1, lat: 2};
       expect(reducer({}, actions.setTempLocationCoords(lngLat)))
         .toEqual(
           {
@@ -64,8 +64,8 @@ describe('SubmitReportState reducer and actions', () => {
       'and keeps the temporary location', () => {
       const stateBefore = {
         tempLocation: {
-          deviceLocation: { lng: 1, lat: 2 },
-          lngLat: { lng: 1, lat: 2 },
+          deviceLocation: {lng: 1, lat: 2},
+          lngLat: {lng: 1, lat: 2},
           address: 'Teststreet 1, 1337 Testplace'
         }
       };
@@ -101,90 +101,134 @@ describe('SubmitReportState reducer and actions', () => {
       //
       // });
 
-      it('dispatches VALIDATE_POSITION when a passed latLon is within a given polygon', () => {
-        const expectedAction = { type: types.VALIDATE_POSITION};
+      it(`dispatches ${types.VALIDATE_POSITION} when a passed latLon is within a given polygon`, () => {
         const store = mockStore({});
-        const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
+        const berlinLatLng = {lat: 52.520008, lng: 13.404954};
+        const expectedAction = {type: types.VALIDATE_POSITION};
         return store.dispatch(
           actions.validateCoordinates(worldWidePolygon, berlinLatLng)
         ).then(() => {
           expect(store.getActions()).toEqual([expectedAction]);
         });
       });
-      it('dispatches INVALIDATE_POSITION when a passed latLon is outside a given polygon', () => {
-        const expectedAction = { type: types.INVALIDATE_POSITION };
+
+      it(`dispatches ${types.INVALIDATE_POSITION} when a passed latLon is outside a given polygon`, () => {
         const store = mockStore({});
-        const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
+        const berlinLatLng = {lat: 52.520008, lng: 13.404954};
+        const expectedAction = {type: types.INVALIDATE_POSITION};
         return store.dispatch(
           actions.validateCoordinates(nullIslandPolygonFeature, berlinLatLng)
         ).then(() => {
-            expect(store.getActions()).toEqual([expectedAction]);
-          });
+          expect(store.getActions()).toEqual([expectedAction]);
+        });
       });
-    });
 
-    describe('ReportDialog', () => {
-      it('adds the bikestands count to the new report item\'s details', () => {
-        const ammount = 5;
-        const stateBefore = {
-          newReport: initialState.newReport
-        };
-        expect(reducer(stateBefore, actions.setBikestandCount(ammount)))
-          .toEqual(
-            {
-              newReport: {
-                ...stateBefore.newReport,
-                details: {
-                  ...stateBefore.newReport.details,
-                  number: ammount
+      describe('ReportDialog', () => {
+        it('adds the bikestands count to the new report item\'s details', () => {
+          const ammount = 5;
+          const stateBefore = {
+            newReport: initialState.newReport
+          };
+          expect(reducer(stateBefore, actions.setBikestandCount(ammount)))
+            .toEqual(
+              {
+                newReport: {
+                  ...stateBefore.newReport,
+                  details: {
+                    ...stateBefore.newReport.details,
+                    number: ammount
+                  }
                 }
               }
+            );
+        });
+        it('appends info about the conceivable fee to the new report item\'s details', () => {
+          const isFeeAcceptable = true;
+          const stateBefore = {
+            newReport: {
+              details: {
+                subject: 'BIKE_STANDS',
+                number: 3,
+                fee_acceptable: null
+              }
             }
-          );
-      });
-      it('appends info about the conceivable fee to the new report item\'s details', () => {
-        const isFeeAcceptable = true;
-        const stateBefore = {
-          newReport: {
-            details: {
-              subject: 'BIKE_STANDS',
-              number: 3,
-              fee_acceptable: null
-            }
-          }
-        };
-        expect(reducer(stateBefore, actions.setFeeAcceptable(isFeeAcceptable)))
-          .toEqual(
-            {
-              newReport: {
-                ...stateBefore.newReport,
-                details: {
-                  ...stateBefore.newReport.details,
-                  fee_acceptable: isFeeAcceptable
+          };
+          expect(reducer(stateBefore, actions.setFeeAcceptable(isFeeAcceptable)))
+            .toEqual(
+              {
+                newReport: {
+                  ...stateBefore.newReport,
+                  details: {
+                    ...stateBefore.newReport.details,
+                    fee_acceptable: isFeeAcceptable
+                  }
                 }
               }
+            );
+        });
+        it('appends additional data (photo, description) to the new report item\'s details', () => {
+          const photo = 'base64string';
+          const description = 'someText';
+          const stateBefore = {
+            newReport: {
+              address: 'Teststreet 1'
             }
-          );
+          };
+          expect(reducer(stateBefore, actions.setAdditionalData({photo, description})))
+            .toEqual(
+              {
+                ...stateBefore,
+                newReport: {
+                  ...stateBefore.newReport,
+                  photo,
+                  description
+                }
+              }
+            );
+        });
       });
-      it('appends additional data (photo, description) to the new report item\'s details', () => {
-        const photo = 'base64string';
-        const description = 'someText';
-        const stateBefore = {
-          newReport: {
-            address: 'Teststreet 1'
-          }
-        };
-        expect(reducer(stateBefore, actions.setAdditionalData({ photo, description })))
-          .toEqual(
-            {
-              ...stateBefore,
-              newReport: {
-                ...stateBefore.newReport,
-                photo,
-                description
+
+      describe('thunks', () => {
+
+        it(`dispatches ${types.SUBMIT_REPORT_PENDING}, json-schema validates a report and dispatches
+       ${types.SUBMIT_REPORT_COMPLETE} for a valid new report item`, () => {
+          // prepare initial mock store
+
+          // reverse marshalling of a report item as the api expects it.
+          // as of now this only means adding the base64 prefix to the photo.
+          const base64prefix = 'data:image/jpg;base64,';
+          const mockedReportsItemCopy = JSON.parse(JSON.stringify(mockedReportItem));
+          mockedReportsItemCopy.photo = `${base64prefix}${mockedReportItem.photo}`;
+          const stateBefore = {
+            ReportsState: {
+              SubmitReportState: {
+                newReport: mockedReportsItemCopy
               }
             }
-          );
+          };
+          const store = mockStore(stateBefore);
+
+          // mock api request
+
+          fetchMock.postOnce(reportsEndpointUrl, mockedReportItem);
+
+          const expectedActions = [
+            types.SUBMIT_REPORT_PENDING,
+            types.SUBMIT_REPORT_COMPLETE
+          ];
+          return store.dispatch(actions.submitReport()).then(() => {
+            expect(
+              store.getActions().map(dispatchedActions => dispatchedActions.type)
+            ).toEqual(expectedActions);
+          });
+        });
+
+        // test.todo('it dispatches SUBMIT_REPORT_ERROR if the request leads to an http error', () => {
+        //
+        // });
+        // test.todo('it throws if schema validation fails', () => {
+        //
+        // });
       });
     });
   });

@@ -21,12 +21,11 @@ types.REVERSE_GEOCODE_FAIL = `${PREFIX}REVERSE_GEOCODE_FAIL`;
 types.SET_TEMP_LOCATION_COORDS = `${PREFIX}SET_TEMP_LOCATION_COORDS`;
 types.SET_TEMP_LOCATION_ADDRESS = `${PREFIX}SET_TEMP_LOCATION_ADDRESS`;
 types.CONFIRM_LOCATION = `${PREFIX}CONFIRM_LOCATION`;
-types.SET_BIKESTAND_COUNT = `${PREFIX}/SET_BIKESTAND_COUNT`;
-types.SET_ADDITIONAL_DATA = `${PREFIX}/SET_ADDITIONAL_DATA`;
-types.SET_FEE_ACCEPTABLE = `${PREFIX}/SET_FEE_ACCEPTABLE`;
-types.SUBMIT_REPORT = `${PREFIX}/SUBMIT_REPORT`;
-types.SUBMIT_REPORT = `${PREFIX}SUBMIT_REPORT`;
-types.SUBMIT_REPORT_SUCCESS = `${PREFIX}SUBMIT_REPORT_SUCCESS`;
+types.SET_BIKESTAND_COUNT = `${PREFIX}SET_BIKESTAND_COUNT`;
+types.SET_ADDITIONAL_DATA = `${PREFIX}SET_ADDITIONAL_DATA`;
+types.SET_FEE_ACCEPTABLE = `${PREFIX}SET_FEE_ACCEPTABLE`;
+types.SUBMIT_REPORT_PENDING = `${PREFIX}SUBMIT_REPORT_PENDING`;
+types.SUBMIT_REPORT_COMPLETE = `${PREFIX}SUBMIT_REPORT_COMPLETE`;
 types.SUBMIT_REPORT_ERROR = `${PREFIX}SUBMIT_REPORT_ERROR`;
 
 // other constants
@@ -115,15 +114,17 @@ actions.reverseGeocodeCoordinates = ({ lat, lng }) => async (dispatch) => {
     try {
       result = await reverseGeocode({ lat, lng });
     } catch (e) {
+      const technicalErrMsg = 'Fehler beim Auflösen der Koordinaten in eine Adresse';
       return dispatch({
         type: types.REVERSE_GEOCODE_FAIL,
-        payload: { geocodeError: 'Fehler beim Auflösen der Koordinaten in eine Adresse' }
+        payload: { geocodeError: technicalErrMsg }
       });
     }
     if (!result) {
+      const noResultErrMsg = 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden';
       return dispatch({
         type: types.REVERSE_GEOCODE_FAIL,
-        payload: { geocodeError: 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden' }
+        payload: { geocodeError: noResultErrMsg }
       });
     }
     dispatch({ type: types.REVERSE_GEOCODE_DONE, payload: { result } });
@@ -143,19 +144,22 @@ actions.useDevicePosition = () => async (dispatch) => {
       );
       dispatch(actions.setLocationMode(LOCATION_MODE_DEVICE));
     } catch (err) {
-      dispatch(actions.addError('Standortbestimmung fehlgeschlagen. Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.'));
+      const errMsg = 'Standortbestimmung fehlgeschlagen. ' +
+        'Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.';
+      dispatch(actions.addError(errMsg));
     }
   };
 
 actions.submitReport = () => async (dispatch, getState) => {
-    dispatch({ type: types.SUBMIT_REPORT });
-    const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.newReport);
+    dispatch({ type: types.SUBMIT_REPORT_PENDING });
+    const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.SubmitReportState.newReport);
     let submittedReport;
     try {
       submittedReport = await apiSubmitReport(reportPayload);
-      dispatch({ type: types.SUBMIT_REPORT_SUCCESS, submittedReport });
+      dispatch({ type: types.SUBMIT_REPORT_COMPLETE, submittedReport });
     } catch (e) {
-      dispatch({ type: types.SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.' });
+      const errMsg = 'Beim übermitteln der Meldung ist etwas schiefgelaufen.';
+      dispatch({ type: types.SUBMIT_REPORT_ERROR, error: errMsg });
     }
   };
 
@@ -172,7 +176,7 @@ const initialState = {
     pinned: false,              // true when the user has confirmed the location he set using the map
     valid: true                 // set to false when a location is outside the area of interest
   },
-  submitStatus: {
+  apiRequestStatus: {
     submitting: false,          // set true during submission of the report item to the api
     submitted: false            // set true on submit success
   },
@@ -188,8 +192,6 @@ const initialState = {
     description: null           // textual description of the problem / potential site
   }
 };
-
-// TODO: the newReport item's structure has been adapted to the backend-model. remove marshalling before submit
 
 function reducer(state = initialState, action = {}) {
   switch (action.type) {
@@ -296,13 +298,21 @@ function reducer(state = initialState, action = {}) {
           ...action.payload
         }
       };
-    case types.SUBMIT_REPORT:
-      return { ...state, submitting: true };
-    case types.SUBMIT_REPORT_SUCCESS:
+    case types.SUBMIT_REPORT_PENDING:
       return {
         ...state,
-        submitting: false,
-        submitted: true,
+        apiRequestStatus: {
+          ...state.apiRequestStatus,
+          submitting: true
+        }
+      };
+    case types.SUBMIT_REPORT_COMPLETE:
+      return {
+        ...state,
+        apiRequestStatus: {
+          submitting: false,
+          submitted: true
+        },
         newReport: {
           ...state.newReport,
           id: action.submittedReport.id
