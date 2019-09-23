@@ -6,6 +6,7 @@ import withRouter from 'react-router/withRouter';
 
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusterWrapper from './ClusterWrapper';
+import FMCPropTypes from '~/propTypes';
 import ReportMarkersClustered from './ReportMarkersClustered';
 
 function toFeature(d) {
@@ -27,7 +28,7 @@ function toGeojson(data) {
 
 class WebglMap extends PureComponent {
   static propTypes = {
-    reportsData: PropTypes.array,
+    reportsData: PropTypes.arrayOf(FMCPropTypes.report),
     center: PropTypes.array,
     onLoad: PropTypes.func,
     onMove: PropTypes.func,

@@ -1,9 +1,10 @@
 import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import FMCPropTypes from '~/propTypes';
 
 class ClusterWrapper extends PureComponent {
   static propTypes = {
-    data: PropTypes.object,
+    data: PropTypes.arrayOf(FMCPropTypes.report),
     map: PropTypes.object,
     name: PropTypes.string,
     render: PropTypes.func,
@@ -13,7 +14,8 @@ class ClusterWrapper extends PureComponent {
   static defaultProps = {
     name: 'cluster',
     radius: 50,
-    render: () => null
+    render: () => null,
+    data: []
   }
 
   state = {
