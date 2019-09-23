@@ -40,8 +40,24 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        include: [
+          Path.resolve(__dirname, '../src')
+        ],
         use: 'babel-loader'
+      },
+      {
+        test: /\.js$/,
+        include: [
+          Path.resolve(__dirname, '../node_modules/tr46'),
+          Path.resolve(__dirname, '../node_modules/webidl-conversions'),
+          Path.resolve(__dirname, '../node_modules/whatwg-url')
+        ],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
