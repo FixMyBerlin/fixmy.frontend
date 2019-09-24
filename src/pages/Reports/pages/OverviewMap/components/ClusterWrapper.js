@@ -4,7 +4,17 @@ import FMCPropTypes from '~/propTypes';
 
 class ClusterWrapper extends PureComponent {
   static propTypes = {
-    data: PropTypes.arrayOf(FMCPropTypes.report),
+    data: PropTypes.shape({
+      type: PropTypes.string,
+      features: PropTypes.arrayOf(PropTypes.shape({
+        type: PropTypes.string,
+        geometry: PropTypes.shape({
+          type: PropTypes.string,
+          coordinates: PropTypes.arrayOf(PropTypes.number)
+        }),
+        properties: FMCPropTypes.report
+      }))
+    }),
     map: FMCPropTypes.map,
     name: PropTypes.string,
     render: PropTypes.func,
