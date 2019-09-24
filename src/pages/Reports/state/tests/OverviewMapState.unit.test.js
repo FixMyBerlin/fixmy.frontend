@@ -42,7 +42,7 @@ describe('OverviewMapState reducer and actions', () => {
   });
 
   describe('async actions', () => {
-    // we are only testing action-related object here TODO: look for a mock library that allows thesting the state
+    // we are only testing action-related object here TODO: also test reducer logic like it is done in SubmitReportState
 
     afterEach(() => {
       fetchMock.restore();
@@ -59,7 +59,7 @@ describe('OverviewMapState reducer and actions', () => {
       ];
       const store = mockStore({});
       return store.dispatch(actions.loadReportsData()).then(() => {
-        // return of async actions
+        // test action sequence
         expect(store.getActions())
           .toEqual(expectedActions);
       });
