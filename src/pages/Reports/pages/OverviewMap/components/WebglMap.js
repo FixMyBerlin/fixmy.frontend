@@ -1,4 +1,3 @@
-  /* eslint-disable react/forbid-prop-types */ // TODO: state props types properly,
 import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
@@ -29,7 +28,7 @@ function toGeojson(data) {
 class WebglMap extends PureComponent {
   static propTypes = {
     reportsData: PropTypes.arrayOf(FMCPropTypes.report),
-    center: PropTypes.array,
+    center: PropTypes.arrayOf(PropTypes.number),
     onLoad: PropTypes.func,
     onMove: PropTypes.func,
     disabled: PropTypes.bool,

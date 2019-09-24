@@ -32,6 +32,14 @@ async function handleFetchReports({ method = 'GET', token = false }, respType = 
   return response;
 }
 
+export async function apiSubmitReport(json) {
+  return handleSubmitRequest({ json });
+}
+
+export async function apiFetchReports() {
+  return handleFetchReports({});
+}
+
 /**
  * TODO: Refactor files and store entry props to use the corrected wording in-code so that less marshalling needs to be done.
  * Takes a newReport store item and restructures it as the API expects the new entity to be formed like.
@@ -51,7 +59,7 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
   obj.description = newReportObject.what.additionalInfo.description;
 
   // omit base64 prefix in photo string
-  let photo = newReportObject.what.additionalInfo.photo;
+  let { what: { additionalInfo: { photo } } } = newReportObject;
   if (photo) {
     const BASE64_PREFIXES = ['data:image/jpg;base64,', 'data:image/jpeg;base64,'];
     if (!BASE64_PREFIXES.some(prefix => photo.includes(prefix))) {

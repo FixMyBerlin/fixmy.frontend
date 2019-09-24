@@ -28,7 +28,7 @@ const report = PropTypes.shape({
     subject: PropTypes.oneOf(['BIKE_STANDS']).isRequired,
     fee_acceptable: PropTypes.bool.isRequired
   }),
-  geometry: geometry.isRequired,
+  geometry,
   id: PropTypes.number.isRequired,
   likes: PropTypes.number.isRequired,
   liked_by_user: PropTypes.bool.isRequired,
