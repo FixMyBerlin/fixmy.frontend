@@ -10,7 +10,7 @@ const geometry = PropTypes.shape({
 
 /**
  * PropType for a Mapbox WebGL map
- * 
+ *
  * This is an object with properties as defined on
  * https://docs.mapbox.com/mapbox-gl-js/api/
  */
@@ -46,7 +46,6 @@ const report = PropTypes.shape({
   ]),
   status_reason: PropTypes.string,
   url: PropTypes.string.isRequired
-  // TODO: add user field
 });
 
 export default {
