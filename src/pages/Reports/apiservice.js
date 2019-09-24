@@ -1,23 +1,8 @@
-/* eslint-disable prefer-destructuring,no-use-before-define */
 import ky from 'ky';
 import oneLine from 'common-tags/es/oneLine/oneLine';
 import validateNewReport from './test/schemaValidation/validateNewReport';
-import { setUpMocking } from './fixtures';
-
-// mock api responses during development if configured
-if (process.env.NODE_ENV === 'development' && config.mockReportsApi) {
-  setUpMocking();
-}
 
 const ROUTE = 'reports';
-
-export async function apiSubmitReport(json) {
-  return handleSubmitRequest({ json });
-}
-
-export async function apiFetchReports() {
-  return handleFetchReports({});
-}
 
 // copied from User\apiservice TODO: factor out, de-dupe
 async function handleSubmitRequest({ method = 'POST', json = {}, token = false }, respType = 'json') {

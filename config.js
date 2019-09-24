@@ -282,8 +282,7 @@ const config = {
   isSwitchEnabled: true,
   debug: false,
   showLikeButton: true,
-  showFeedBackForm: false,
-  mockReportsApi: false
+  showFeedBackForm: false
 };
 
 config.apiUrl = config.api[process.env.CONFIG_ENV] || config.api.production;
