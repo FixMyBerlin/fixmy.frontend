@@ -223,9 +223,41 @@ describe('SubmitReportState reducer and actions', () => {
           });
         });
 
-        // test.todo('it dispatches SUBMIT_REPORT_ERROR if the request leads to an http error', () => {
-        //
-        // });
+        it(`dispatches ${
+          types.SUBMIT_REPORT_PENDING
+        }, and ${
+          types.SUBMIT_REPORT_ERROR
+        } if the POST request fails`, () => {
+          const mockedReportsItemCopy = JSON.parse(JSON.stringify(mockedReportItem));
+
+          // compile valid state to submit
+          delete mockedReportsItemCopy.photo;
+          const stateBefore = {
+            ReportsState: {
+              SubmitReportState: {
+                newReport: mockedReportsItemCopy
+              }
+            }
+          };
+          const store = mockStore(stateBefore);
+
+          // mock failing request
+
+          fetchMock.postOnce(reportsEndpointUrl, {
+            throws: 'failed to submit'
+          });
+
+          const expectedActions = [
+            types.SUBMIT_REPORT_PENDING,
+            types.SUBMIT_REPORT_ERROR
+          ];
+          return store.dispatch(actions.submitReport()).then(() => {
+            expect(
+              store.getActions().map(dispatchedActions => dispatchedActions.type)
+            ).toEqual(expectedActions);
+          });
+        });
+
         // test.todo('it throws if schema validation fails', () => {
         //
         // });
