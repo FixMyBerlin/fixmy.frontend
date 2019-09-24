@@ -2,10 +2,10 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import fetchMock from 'fetch-mock';
-import reducer, {actions, types, initialState, LOCATION_MODE_DEVICE} from '../SubmitReportState';
-import {worldWidePolygon, nullIslandPolygonFeature} from './mocks/geometries';
+import reducer, { actions, types, initialState, LOCATION_MODE_DEVICE } from '../SubmitReportState';
+import { worldWidePolygon, nullIslandPolygonFeature } from './mocks/geometries';
 import mockedReportItem from './schemaValidation/newReport-jsonSchema-testObject';
-import {reportsEndpointUrl} from '~/pages/Reports/apiservice';
+import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -18,7 +18,7 @@ describe('SubmitReportState reducer and actions', () => {
     });
 
     it('resets the state but keeps the location mode selected for the session', () => {
-      expect(reducer({locationMode: LOCATION_MODE_DEVICE}, actions.resetDialogState()))
+      expect(reducer({ locationMode: LOCATION_MODE_DEVICE }, actions.resetDialogState()))
         .toEqual(
           {
             ...initialState,
@@ -49,7 +49,7 @@ describe('SubmitReportState reducer and actions', () => {
     });
 
     it('sets the temporary location\'s coordinates', () => {
-      const lngLat = {lng: 1, lat: 2};
+      const lngLat = { lng: 1, lat: 2 };
       expect(reducer({}, actions.setTempLocationCoords(lngLat)))
         .toEqual(
           {
@@ -64,8 +64,8 @@ describe('SubmitReportState reducer and actions', () => {
       'and keeps the temporary location', () => {
       const stateBefore = {
         tempLocation: {
-          deviceLocation: {lng: 1, lat: 2},
-          lngLat: {lng: 1, lat: 2},
+          deviceLocation: { lng: 1, lat: 2 },
+          lngLat: { lng: 1, lat: 2 },
           address: 'Teststreet 1, 1337 Testplace'
         }
       };
@@ -103,8 +103,8 @@ describe('SubmitReportState reducer and actions', () => {
 
       it(`dispatches ${types.VALIDATE_POSITION} when a passed latLon is within a given polygon`, () => {
         const store = mockStore({});
-        const berlinLatLng = {lat: 52.520008, lng: 13.404954};
-        const expectedAction = {type: types.VALIDATE_POSITION};
+        const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
+        const expectedAction = { type: types.VALIDATE_POSITION };
         return store.dispatch(
           actions.validateCoordinates(worldWidePolygon, berlinLatLng)
         ).then(() => {
@@ -114,8 +114,8 @@ describe('SubmitReportState reducer and actions', () => {
 
       it(`dispatches ${types.INVALIDATE_POSITION} when a passed latLon is outside a given polygon`, () => {
         const store = mockStore({});
-        const berlinLatLng = {lat: 52.520008, lng: 13.404954};
-        const expectedAction = {type: types.INVALIDATE_POSITION};
+        const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
+        const expectedAction = { type: types.INVALIDATE_POSITION };
         return store.dispatch(
           actions.validateCoordinates(nullIslandPolygonFeature, berlinLatLng)
         ).then(() => {
@@ -174,7 +174,7 @@ describe('SubmitReportState reducer and actions', () => {
               address: 'Teststreet 1'
             }
           };
-          expect(reducer(stateBefore, actions.setAdditionalData({photo, description})))
+          expect(reducer(stateBefore, actions.setAdditionalData({ photo, description })))
             .toEqual(
               {
                 ...stateBefore,
@@ -189,7 +189,6 @@ describe('SubmitReportState reducer and actions', () => {
       });
 
       describe('thunks', () => {
-
         it(`dispatches ${types.SUBMIT_REPORT_PENDING}, json-schema validates a report and dispatches
        ${types.SUBMIT_REPORT_COMPLETE} for a valid new report item`, () => {
           // prepare initial mock store
@@ -222,6 +221,32 @@ describe('SubmitReportState reducer and actions', () => {
             ).toEqual(expectedActions);
           });
         });
+
+        // todo('throws if schema validation fails', () => {
+        //   const mockedReportsItemCopy = JSON.parse(JSON.stringify(mockedReportItem));
+        //
+        //   // compile invalid state to submit
+        //   mockedReportsItemCopy.photo = 123;
+        //   delete mockedReportsItemCopy.photo;
+        //   const stateBefore = {
+        //     ReportsState: {
+        //       SubmitReportState: {
+        //         newReport: mockedReportsItemCopy
+        //       }
+        //     }
+        //   };
+        //   const store = mockStore(stateBefore);
+        //
+        //   // mock request just in case validation accidentally succeeds
+        //   fetchMock.postOnce(reportsEndpointUrl, {
+        //     throws: 'failed to submit'
+        //   });
+        //
+        //   return store.dispatch(actions.submitReport())
+        //     .then(() => {
+        //       expect(1).toBe(2)
+        //     })
+        // });
 
         it(`dispatches ${
           types.SUBMIT_REPORT_PENDING
@@ -257,10 +282,6 @@ describe('SubmitReportState reducer and actions', () => {
             ).toEqual(expectedActions);
           });
         });
-
-        // test.todo('it throws if schema validation fails', () => {
-        //
-        // });
       });
     });
   });
