@@ -10,6 +10,14 @@ import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
+// Utility func to wrap the state of the SubmitReportState subreducer in the structure of the global redux store.
+// This is necessary in thunks, where the reducer is tested indirectly.
+const getGlobalState = submitReportState => ({
+  ReportsState: {
+    SubmitReportState: submitReportState
+  }
+});
+
 describe('SubmitReportState reducer and actions', () => {
   describe('LocateMeMap', () => {
     it('returns the initial state for an empty action', () => {
@@ -103,15 +111,11 @@ describe('SubmitReportState reducer and actions', () => {
 
       it(`dispatches ${types.VALIDATE_POSITION} when a passed latLon is within a given polygon`, () => {
         const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
-        const stateBefore = {
-          ReportsState: {
-            SubmitReportState: {
-              tempLocation: {
-                lngLat: berlinLatLng
-              }
-            }
+        const stateBefore = getGlobalState({
+          tempLocation: {
+            lngLat: berlinLatLng
           }
-        };
+        });
         const store = mockStore(stateBefore);
         const expectedAction = { type: types.VALIDATE_POSITION };
         return store.dispatch(
@@ -134,15 +138,11 @@ describe('SubmitReportState reducer and actions', () => {
 
       it(`dispatches ${types.INVALIDATE_POSITION} when a passed latLon is outside a given polygon`, () => {
         const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
-        const stateBefore = {
-          ReportsState: {
-            SubmitReportState: {
-              tempLocation: {
-                lngLat: berlinLatLng
-              }
-            }
+        const stateBefore = getGlobalState({
+          tempLocation: {
+            lngLat: berlinLatLng
           }
-        };
+        });
         const store = mockStore(stateBefore);
         const expectedAction = { type: types.INVALIDATE_POSITION };
         return store.dispatch(
@@ -238,14 +238,10 @@ describe('SubmitReportState reducer and actions', () => {
           const base64prefix = 'data:image/jpg;base64,';
           const mockedReportsItemCopy = JSON.parse(JSON.stringify(mockedReportItem));
           mockedReportsItemCopy.photo = `${base64prefix}${mockedReportItem.photo}`;
-          const stateBefore = {
-            ReportsState: {
-              SubmitReportState: {
-                reports: [],
-                newReport: mockedReportsItemCopy
-              }
-            }
-          };
+          const stateBefore = getGlobalState({
+              reports: [],
+              newReport: mockedReportsItemCopy
+          });
           const store = mockStore(stateBefore);
 
           // mock api request
@@ -309,13 +305,9 @@ describe('SubmitReportState reducer and actions', () => {
 
           // compile valid state to submit
           delete mockedReportsItemCopy.photo;
-          const stateBefore = {
-            ReportsState: {
-              SubmitReportState: {
-                newReport: mockedReportsItemCopy
-              }
-            }
-          };
+          const stateBefore = getGlobalState({
+            newReport: mockedReportsItemCopy
+          });
           const store = mockStore(stateBefore);
 
           // mock failing request
