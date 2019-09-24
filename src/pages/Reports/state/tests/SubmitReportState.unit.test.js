@@ -222,31 +222,6 @@ describe('SubmitReportState reducer and actions', () => {
           });
         });
 
-        // todo('throws if schema validation fails', () => {
-        //   const mockedReportsItemCopy = JSON.parse(JSON.stringify(mockedReportItem));
-        //
-        //   // compile invalid state to submit
-        //   mockedReportsItemCopy.photo = 123;
-        //   delete mockedReportsItemCopy.photo;
-        //   const stateBefore = {
-        //     ReportsState: {
-        //       SubmitReportState: {
-        //         newReport: mockedReportsItemCopy
-        //       }
-        //     }
-        //   };
-        //   const store = mockStore(stateBefore);
-        //
-        //   // mock request just in case validation accidentally succeeds
-        //   fetchMock.postOnce(reportsEndpointUrl, {
-        //     throws: 'failed to submit'
-        //   });
-        //
-        //   return store.dispatch(actions.submitReport())
-        //     .then(() => {
-        //       expect(1).toBe(2)
-        //     })
-        // });
 
         it(`dispatches ${
           types.SUBMIT_REPORT_PENDING
