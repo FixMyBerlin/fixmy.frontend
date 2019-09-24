@@ -189,7 +189,8 @@ const initialState = {
       fee_acceptable: null      // if the user would pay for managed parking
     },
     photo: null,                // jpeg in base64
-    description: null           // textual description of the problem / potential site
+    description: null,          // textual description of the problem / potential site
+    error: null                 // any errors, e.g. during submit. TODO: evaluate if using ErrorState is an option. If not, if this is only used during submit, maybe move it to apiRequestStatus
   }
 };
 
@@ -320,6 +321,16 @@ function reducer(state = initialState, action = {}) {
         reports: [...state.reports, {
           ...action.submittedReport
         }]
+      };
+    case types.SUBMIT_REPORT_ERROR:
+      return {
+        ...state,
+        apiRequestStatus: {
+          submitting: false
+        },
+        error: {
+          message: action.error
+        }
       };
     default:
       return { ...state };

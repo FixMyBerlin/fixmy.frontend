@@ -102,24 +102,64 @@ describe('SubmitReportState reducer and actions', () => {
       // });
 
       it(`dispatches ${types.VALIDATE_POSITION} when a passed latLon is within a given polygon`, () => {
-        const store = mockStore({});
         const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
+        const stateBefore = {
+          ReportsState: {
+            SubmitReportState: {
+              tempLocation: {
+                lngLat: berlinLatLng
+              }
+            }
+          }
+        };
+        const store = mockStore(stateBefore);
         const expectedAction = { type: types.VALIDATE_POSITION };
         return store.dispatch(
           actions.validateCoordinates(worldWidePolygon, berlinLatLng)
         ).then(() => {
+          // test action sequence
           expect(store.getActions()).toEqual([expectedAction]);
+
+          // test reducer
+          expect(reducer({}, {
+            type: types.VALIDATE_POSITION
+          })).toEqual({
+            tempLocation: {
+              ...stateBefore.tempLocation,
+              valid: true
+            }
+          });
         });
       });
 
       it(`dispatches ${types.INVALIDATE_POSITION} when a passed latLon is outside a given polygon`, () => {
-        const store = mockStore({});
         const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
+        const stateBefore = {
+          ReportsState: {
+            SubmitReportState: {
+              tempLocation: {
+                lngLat: berlinLatLng
+              }
+            }
+          }
+        };
+        const store = mockStore(stateBefore);
         const expectedAction = { type: types.INVALIDATE_POSITION };
         return store.dispatch(
           actions.validateCoordinates(nullIslandPolygonFeature, berlinLatLng)
         ).then(() => {
+          // test action sequence
           expect(store.getActions()).toEqual([expectedAction]);
+
+          // test reducer
+          expect(reducer({}, {
+            type: types.INVALIDATE_POSITION
+          })).toEqual({
+            tempLocation: {
+              ...stateBefore.tempLocation,
+              valid: false
+            }
+          });
         });
       });
 
@@ -201,6 +241,7 @@ describe('SubmitReportState reducer and actions', () => {
           const stateBefore = {
             ReportsState: {
               SubmitReportState: {
+                reports: [],
                 newReport: mockedReportsItemCopy
               }
             }
@@ -216,9 +257,45 @@ describe('SubmitReportState reducer and actions', () => {
             types.SUBMIT_REPORT_COMPLETE
           ];
           return store.dispatch(actions.submitReport()).then(() => {
+            // test action sequence
             expect(
               store.getActions().map(dispatchedActions => dispatchedActions.type)
             ).toEqual(expectedActions);
+
+            // test reducer
+            expect(
+              reducer(stateBefore.ReportsState.SubmitReportState, { type: types.SUBMIT_REPORT_PENDING })
+            ).toEqual({
+              ...stateBefore.ReportsState.SubmitReportState,
+              apiRequestStatus: {
+                ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
+                submitting: true
+              }
+            });
+
+            const mockId = 999;
+            expect(
+              reducer(stateBefore.ReportsState.SubmitReportState, {
+                type: types.SUBMIT_REPORT_COMPLETE,
+                submittedReport: {
+                  id: mockId
+                }
+              })
+            ).toEqual({
+              ...stateBefore.ReportsState.SubmitReportState,
+              apiRequestStatus: {
+                ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
+                submitting: false,
+                submitted: true
+              },
+              newReport: {
+                ...stateBefore.ReportsState.SubmitReportState.newReport,
+                id: mockId
+              },
+              reports: [{
+                id: mockId
+              }]
+            });
           });
         });
 
@@ -255,6 +332,24 @@ describe('SubmitReportState reducer and actions', () => {
             expect(
               store.getActions().map(dispatchedActions => dispatchedActions.type)
             ).toEqual(expectedActions);
+
+            // test reducer
+            const errMessage = 'TEST_ERR';
+            expect(
+              reducer(stateBefore.ReportsState.SubmitReportState, {
+                type: types.SUBMIT_REPORT_ERROR,
+                error: errMessage
+              })
+            ).toEqual({
+              ...stateBefore.ReportsState.SubmitReportState,
+              error: {
+                message: errMessage
+              },
+              apiRequestStatus: {
+                ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
+                submitting: false
+              }
+            });
           });
         });
       });
