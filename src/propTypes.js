@@ -9,6 +9,14 @@ const geometry = PropTypes.shape({
 });
 
 /**
+ * PropType for a Mapbox WebGL map
+ * 
+ * This is an object with properties as defined on
+ * https://docs.mapbox.com/mapbox-gl-js/api/
+ */
+const map = PropTypes.object;
+
+/**
  * PropType for a single report as returned from the backend
  */
 const report = PropTypes.shape({
@@ -43,5 +51,6 @@ const report = PropTypes.shape({
 
 export default {
   geometry,
+  map,
   report
 };

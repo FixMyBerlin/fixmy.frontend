@@ -5,7 +5,7 @@ import FMCPropTypes from '~/propTypes';
 class ClusterWrapper extends PureComponent {
   static propTypes = {
     data: PropTypes.arrayOf(FMCPropTypes.report),
-    map: PropTypes.object,
+    map: FMCPropTypes.map,
     name: PropTypes.string,
     render: PropTypes.func,
     radius: PropTypes.number
@@ -15,7 +15,8 @@ class ClusterWrapper extends PureComponent {
     name: 'cluster',
     radius: 50,
     render: () => null,
-    data: []
+    data: [],
+    map: null
   }
 
   state = {
