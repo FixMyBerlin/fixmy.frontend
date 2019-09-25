@@ -122,7 +122,13 @@ class MapPopupWrapper extends PureComponent {
     onClose: PropTypes.func,
     onClick: PropTypes.func,
     showSubline: PropTypes.bool,
-    data: PropTypes.object
+    data: PropTypes.shape({
+      name: PropTypes.string,
+      address: PropTypes.string,
+      isIntersection: PropTypes.bool
+    }),
+    // eslint-disable-next-line react/forbid-prop-types
+    style: PropTypes.object
   }
 
   static defaultProps = {
@@ -136,7 +142,11 @@ class MapPopupWrapper extends PureComponent {
   }
 
   render() {
-    // console.log(this.props.x, this.props.y);
+    const toggleSubLine = (
+      !this.props.data.isIntersection &&
+      this.props.showSubline
+    );
+
     return (
       <MapPopup x={this.props.x} y={this.props.y} style={this.props.style}>
         <CloseBtn onClick={this.props.onClose} />
@@ -144,7 +154,7 @@ class MapPopupWrapper extends PureComponent {
           <StyledPinIcon />
           <div>
             <BigLabel uppercase>{renderName(this.props.data)}</BigLabel>
-            {(!this.props.data.isIntersection && this.props.showSubline) && <Label light>Abschnitt 1</Label>}
+            {toggleSubLine && <Label light>Abschnitt 1</Label>}
           </div>
         </MapPopupLocation>
         {this.props.children}
