@@ -24,6 +24,7 @@ import {
   setSelectedReport,
   setSelectedReportPosition
 } from '~/pages/Reports/ReportsState';
+import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 
 const MapView = styled.div`
   height: 100%;
@@ -163,6 +164,15 @@ class OverviewMap extends Component {
 
     return (
       <MapView>
+        {
+          this.props.error.message && (
+            <ErrorMessage
+              message={this.props.error.message}
+              onDismiss={this.props.removeError}
+            />
+          )
+        }
+
         <OverviewMapNavBar
           heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg"
         />
@@ -224,5 +234,6 @@ export default withRouter(connect(state => ({
   selectedReport: state.ReportsState.selectedReport,
   reports: state.ReportsState.reports,
   token: state.UserState.token,
-  isMenuOpen: state.AppState.isMenuOpen
+  isMenuOpen: state.AppState.isMenuOpen,
+  error: state.ReportsState.error
 }), mapDispatchToPros)(OverviewMap));
