@@ -72,7 +72,7 @@ class WebglMap extends PureComponent {
 
   onLoad(map) {
     this.map = map;
-    this.toggleZoomControl();
+    this.toggleZoomControl(true);
 
     // in order to rerender Report Markers
     this.forceUpdate();
