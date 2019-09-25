@@ -154,7 +154,7 @@ class ReportDetails extends PureComponent {
   }
 
   formatDate = dateString => new Date(dateString)
-    .toLocaleDateString('de-DE', {month: '2-digit', day: '2-digit', year: 'numeric'})
+    .toLocaleDateString('de-DE', { month: '2-digit', day: '2-digit', year: 'numeric' })
 
   render() {
     const { reportItem } = this.props;
@@ -183,7 +183,7 @@ class ReportDetails extends PureComponent {
             <ReportPin />
           </StatusIndicatorWrapper>
 
-          <HorizontalRuler className="light "/>
+          <HorizontalRuler className="light " />
 
           {description && (
             <Fragment>

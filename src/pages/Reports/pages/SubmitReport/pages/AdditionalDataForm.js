@@ -21,7 +21,7 @@ const StyledHeading = styled(Heading)`
 const Hint = styled(Paragraph)`
   margin-top: 12px;
   margin-bottom: 0;
-  font-weight: ${({ emphasize }) => emphasize ? 'bold' : 'normal'}
+  font-weight: ${({ emphasize }) => (emphasize ? 'bold' : 'normal')}
 `;
 
 const PhotoDisclaimerWrapper = styled.div`

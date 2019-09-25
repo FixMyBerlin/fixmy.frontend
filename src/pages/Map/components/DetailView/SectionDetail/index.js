@@ -136,7 +136,8 @@ class SectionDetails extends PureComponent {
               side="right"
               onClick={this.onSwitchSide}
             />
-          </ButtonGroup>)
+          </ButtonGroup>
+)
         }
 
         <ImageSlider images={photos} />
