@@ -142,8 +142,8 @@ class Map extends PureComponent {
   }
 
   handleLoad = () => {
-    // this.map.on('click', config.map.layers.bgLayer, this.handleClick);
-    this.map.on('click', config.map.layers.projectsLayer, this.handleClick);
+    this.map.on('click', config.map.layers.bgLayer, this.handleClick);
+    // this.map.on('click', config.map.layers.projectsLayer, this.handleClick);
     // this.map.on('click', config.map.layers.intersectionsOverlay, this.handleIntersectionClick);
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
@@ -194,7 +194,6 @@ class Map extends PureComponent {
 
   handleClick = (e) => {
     const properties = idx(e.features, _ => _[0].properties);
-    console.log(properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
 
@@ -245,11 +244,14 @@ class Map extends PureComponent {
   handleMarkerClick = (evt, data) => {
     evt.preventDefault();
 
-    const { id, street_name: name } = data;
+    const {
+      planning_sections: planningSections,
+      planning_section_ids: planningSectionIds
+    } = data;
 
     const center = data.center.coordinates;
-
-    console.log(data.center);
+    const { name } = planningSections[0];
+    const [id] = planningSectionIds;
 
     const match = matchPath(this.props.location.pathname, {
       path: '/(zustand|planungen)/:id/:name?',
