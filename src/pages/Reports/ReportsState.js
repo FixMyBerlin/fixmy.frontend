@@ -4,10 +4,10 @@
 // TODO: heavily reduce boiler plate https://redux.js.org/recipes/reducing-boilerplate
 // TODO: use immutability helpers like https://github.com/mweststrate/immer
 // TODO: split uo reducer into subreducers based on the structure of the newReport object
+import booleanWithin from '@turf/boolean-within';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
 import { apiFetchReports, apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
-import booleanWithin from '@turf/boolean-within';
 
 const RESET_DIALOG_STATE = 'Reports/OverviewMapState/RESET_DIALOG_STATE';
 const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
