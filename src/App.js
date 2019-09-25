@@ -4,10 +4,11 @@ import styled from 'styled-components';
 import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
 import Router from 'react-router-dom/Router';
+import { LastLocationProvider } from 'react-router-last-location';
+import { Redirect } from 'react-router-dom';
 import GlobalStyles from '~/styles/Global';
 
 import history from '~/history';
-import { LastLocationProvider } from 'react-router-last-location';
 import { PrivateRoute } from '~/utils/router-utils';
 import Menu from '~/components/Menu';
 import Home from '~/pages/Home';
@@ -22,7 +23,6 @@ import ResetPassword from '~/pages/User/pages/ResetPassword';
 import UserVerify from '~/pages/User/pages/Verify';
 import { verify } from '~/pages/User/UserState';
 import Reports from '~/pages/Reports';
-import { Redirect } from 'react-router-dom';
 
 const AppContent = styled.div`
   width: 100%;

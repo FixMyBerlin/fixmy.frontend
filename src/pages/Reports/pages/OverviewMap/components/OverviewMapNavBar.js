@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import MenuButton from '~/components/MenuButton';
-import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import PropTypes from 'prop-types';
 import Link from 'react-router-dom/Link';
-import {breakpoints, matchMediaSize} from "~/styles/utils";
+import MenuButton from '~/components/MenuButton';
+import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
+import { breakpoints, matchMediaSize } from '~/styles/utils';
 
 const Wrapper = styled.div`
   margin: 0;

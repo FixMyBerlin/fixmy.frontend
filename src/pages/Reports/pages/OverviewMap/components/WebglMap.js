@@ -89,7 +89,7 @@ class WebglMap extends PureComponent {
     } else {
       try {
         this.map.removeControl(this.nav);
-      } catch(e) {}
+      } catch (e) {}
     }
   }
 
