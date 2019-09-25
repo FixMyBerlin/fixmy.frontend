@@ -245,11 +245,14 @@ class Map extends PureComponent {
   handleMarkerClick = (evt, data) => {
     evt.preventDefault();
 
-    const { id, street_name: name } = data;
+    const {
+      planning_sections: planningSections,
+      planning_section_ids: planningSectionIds
+    } = data;
 
     const center = data.center.coordinates;
-
-    console.log(data.center);
+    const { name } = planningSections[0];
+    const [id] = planningSectionIds;
 
     const match = matchPath(this.props.location.pathname, {
       path: '/(zustand|planungen)/:id/:name?',

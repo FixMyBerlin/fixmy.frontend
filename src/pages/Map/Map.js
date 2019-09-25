@@ -134,7 +134,7 @@ class MapViewComponent extends PureComponent {
             path="/planungen/:id/:name?"
             render={props => (
               <PlanningDetail
-                apiEndpoint="projects"
+                apiEndpoint="plannings"
                 onCloseRoute="/planungen"
                 activeView={this.props.activeLayer}
                 token={this.props.token}
