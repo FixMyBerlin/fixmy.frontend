@@ -1,10 +1,21 @@
 import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import FMCPropTypes from '~/propTypes';
 
 class ClusterWrapper extends PureComponent {
   static propTypes = {
-    data: PropTypes.object,
-    map: PropTypes.object,
+    data: PropTypes.shape({
+      type: PropTypes.string,
+      features: PropTypes.arrayOf(PropTypes.shape({
+        type: PropTypes.string,
+        geometry: PropTypes.shape({
+          type: PropTypes.string,
+          coordinates: PropTypes.arrayOf(PropTypes.number)
+        }),
+        properties: FMCPropTypes.report
+      }))
+    }),
+    map: FMCPropTypes.map,
     name: PropTypes.string,
     render: PropTypes.func,
     radius: PropTypes.number
@@ -13,7 +24,9 @@ class ClusterWrapper extends PureComponent {
   static defaultProps = {
     name: 'cluster',
     radius: 50,
-    render: () => null
+    render: () => null,
+    data: [],
+    map: null
   }
 
   state = {
