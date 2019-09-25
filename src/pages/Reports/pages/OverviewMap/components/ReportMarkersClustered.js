@@ -61,11 +61,13 @@ function getPinMarker({ markerData, geometry, lngLat, selectedReport, detailId, 
     }
   }
 
-  markerData.geometry = geometry;
-  markerData.details = details;
+  const updatedMarkerData = Object.assign({}, markerData, {
+    geometry,
+    details
+  });
 
   el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${Markers[details.subject]}" />`;
-  el.addEventListener('click', evt => onClick(evt, markerData));
+  el.addEventListener('click', evt => onClick(evt, updatedMarkerData));
 
   return new MapboxGL.Marker(el)
     .setLngLat(lngLat)
@@ -100,7 +102,15 @@ class ReportMarkers extends PureComponent {
   }
 
   updateMarkers() {
-    const { data, map, clusters, selectedReport, detailId, clusterSource } = this.props;
+    const {
+      clusters,
+      clusterSource,
+      data,
+      detailId,
+      map,
+      selectedReport
+    } = this.props;
+
     if (!data || !map) {
       return false;
     }
@@ -110,15 +120,23 @@ class ReportMarkers extends PureComponent {
     clusters.forEach((markerData) => {
       const lngLat = markerData.geometry.coordinates;
       const isCluster = markerData.properties.cluster;
-      const id = isCluster ? `cluster_${markerData.properties.cluster_id}` : markerData.properties.id;
+      const id = isCluster
+        ? `cluster_${markerData.properties.cluster_id}`
+        : markerData.properties.id;
       let marker = this.markerCache[id];
 
       if (isCluster && !marker) {
-        const { point_count } = markerData.properties;
-        marker = getClusterMarker({ pointCount: point_count, lngLat, clusterSource, id: markerData.properties.cluster_id, map });
+        marker = getClusterMarker({
+          id: markerData.properties.cluster_id,
+          pointCount: markerData.properties.point_count,
+          lngLat,
+          clusterSource,
+          map
+        });
       } else if (!isCluster && !marker) {
         marker = getPinMarker({
           markerData: markerData.properties,
+          // eslint-disable-next-line no-underscore-dangle
           geometry: markerData._geometry,
           lngLat,
           selectedReport,
