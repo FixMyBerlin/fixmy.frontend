@@ -9,7 +9,7 @@ function compileSearchUrl(searchString) {
     `bbox=${geocoderBounds}&` +
     'limit=3&' +
     'types=address'; // maybe using "poi" would also be a good idea
-};
+}
 
 /**
  * The mapbox Geocoder sometimes adds an unplausible address to the list of addresses

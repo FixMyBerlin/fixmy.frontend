@@ -52,7 +52,6 @@ class PlanningMarkers extends PureComponent {
     }
 
     this.markers = data.map((marker) => {
-
       if (!Markers[marker.phase]) {
         return null;
       }
