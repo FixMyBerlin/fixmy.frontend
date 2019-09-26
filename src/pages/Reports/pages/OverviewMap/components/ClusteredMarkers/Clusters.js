@@ -7,8 +7,7 @@ const Markers = {
   BIKE_STANDS: BikeStandMarker
 };
 
-
-function getClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
+function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   const el = document.createElement('div');
   el.className = 'reports-cluster';
 
@@ -37,12 +36,17 @@ function getClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
     });
   });
 
-  return new MapboxGL.Marker(el)
-    .setLngLat(lngLat)
-    .setOffset([-10, -10]);
+  return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([-10, -10]);
 }
 
-function getPinMarker({ markerData, geometry, lngLat, selectedReport, detailId, onClick }) {
+function createPinMarker({
+  markerData,
+  geometry,
+  lngLat,
+  selectedReport,
+  detailId,
+  onClick
+}) {
   const details = JSON.parse(markerData.details || {});
   const el = document.createElement('div');
 
@@ -66,16 +70,16 @@ function getPinMarker({ markerData, geometry, lngLat, selectedReport, detailId, 
     details
   });
 
-  el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${Markers[details.subject]}" />`;
-  el.addEventListener('click', evt => onClick(evt, updatedMarkerData));
+  el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${
+    Markers[details.subject]
+  }" />`;
+  el.addEventListener('click', (evt) => onClick(evt, updatedMarkerData));
 
-  return new MapboxGL.Marker(el)
-    .setLngLat(lngLat)
-    .setOffset([0, -20]);
+  return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -20]);
 }
 
 // TODO: Establish a base Marker class that contains generic lifecycle logic to de-dupe
-class ReportMarkers extends PureComponent {
+class Clusters extends PureComponent {
   constructor() {
     super();
 
@@ -126,7 +130,7 @@ class ReportMarkers extends PureComponent {
       let marker = this.markerCache[id];
 
       if (isCluster && !marker) {
-        marker = getClusterMarker({
+        marker = createClusterMarker({
           id: markerData.properties.cluster_id,
           pointCount: markerData.properties.point_count,
           lngLat,
@@ -134,7 +138,7 @@ class ReportMarkers extends PureComponent {
           map
         });
       } else if (!isCluster && !marker) {
-        marker = getPinMarker({
+        marker = createPinMarker({
           markerData: markerData.properties,
           // eslint-disable-next-line no-underscore-dangle
           geometry: markerData._geometry,
@@ -169,4 +173,4 @@ class ReportMarkers extends PureComponent {
   }
 }
 
-export default ReportMarkers;
+export default Clusters;

@@ -6,20 +6,22 @@ class ClusterWrapper extends PureComponent {
   static propTypes = {
     data: PropTypes.shape({
       type: PropTypes.string,
-      features: PropTypes.arrayOf(PropTypes.shape({
-        type: PropTypes.string,
-        geometry: PropTypes.shape({
+      features: PropTypes.arrayOf(
+        PropTypes.shape({
           type: PropTypes.string,
-          coordinates: PropTypes.arrayOf(PropTypes.number)
-        }),
-        properties: FMCPropTypes.report
-      }))
+          geometry: PropTypes.shape({
+            type: PropTypes.string,
+            coordinates: PropTypes.arrayOf(PropTypes.number)
+          }),
+          properties: FMCPropTypes.report
+        })
+      )
     }),
     map: FMCPropTypes.map,
     name: PropTypes.string,
     render: PropTypes.func,
     radius: PropTypes.number
-  }
+  };
 
   static defaultProps = {
     name: 'cluster',
@@ -27,11 +29,11 @@ class ClusterWrapper extends PureComponent {
     render: () => null,
     data: [],
     map: null
-  }
+  };
 
   state = {
     clusters: []
-  }
+  };
 
   constructor() {
     super();
@@ -50,7 +52,7 @@ class ClusterWrapper extends PureComponent {
 
   createCluster() {
     if (this.clusterCreated || !this.props.map) {
-      return false;
+      return;
     }
 
     const { map, name, data } = this.props;

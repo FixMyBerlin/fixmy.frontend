@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import withRouter from 'react-router/withRouter';
 
 import BaseMap from '~/pages/Reports/components/BaseMap';
-import ClusterWrapper from './ClusterWrapper';
+import { ClusterWrapper, Clusters } from './Markers';
 import FMCPropTypes from '~/propTypes';
-import ReportMarkersClustered from './ReportMarkersClustered';
 
 function toFeature(d) {
   const { geometry, ...properties } = d;
@@ -34,7 +33,7 @@ class WebglMap extends PureComponent {
     disabled: PropTypes.bool,
     zoomControlPosition: PropTypes.string,
     fitExtentOnPopupClose: PropTypes.bool
-  }
+  };
 
   static defaultProps = {
     reportsData: [],
@@ -44,22 +43,18 @@ class WebglMap extends PureComponent {
     disabled: false,
     zoomControlPosition: 'bottom-left',
     fitExtentOnPopupClose: true
-  }
+  };
 
-  nav = new MapboxGL.NavigationControl({ showCompass: false })
+  nav = new MapboxGL.NavigationControl({ showCompass: false });
 
-  map = null
+  map = null;
 
   componentDidUpdate() {
     if (!this.map) {
       return false;
     }
 
-    const {
-      center,
-      disabled,
-      fitExtentOnPopupClose
-    } = this.props;
+    const { center, disabled, fitExtentOnPopupClose } = this.props;
 
     if (center) {
       this.map.easeTo({ center });
@@ -87,7 +82,7 @@ class WebglMap extends PureComponent {
     } else {
       this.map.removeControl(this.nav);
     }
-  }
+  };
 
   toggleMapInteractivity(disabled) {
     if (disabled) {
@@ -104,7 +99,7 @@ class WebglMap extends PureComponent {
 
     return (
       <BaseMap
-        onLoad={map => this.onLoad(map)}
+        onLoad={(map) => this.onLoad(map)}
         onMove={() => this.props.onMove()}
       >
         {reportsData.length > 0 && (
@@ -114,7 +109,7 @@ class WebglMap extends PureComponent {
             data={toGeojson(reportsData)}
             radius={60}
             render={({ clusters, clusterSource }) => (
-              <ReportMarkersClustered
+              <Clusters
                 map={this.map}
                 data={reportsData}
                 onClick={onMarkerClick}
