@@ -67,6 +67,7 @@
     "d3-scale": "^2.1.2",
     "dot-prop-immutable": "^1.5.0",
     "formik": "^1.3.2",
+    "geojson-prop-types": "^0.2.0",
     "history": "^4.7.2",
     "idx": "^2.5.2",
     "jsonschema": "^1.2.4",

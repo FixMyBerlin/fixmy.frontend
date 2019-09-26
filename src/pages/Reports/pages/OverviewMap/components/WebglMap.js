@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import withRouter from 'react-router/withRouter';
 
 import BaseMap from '~/pages/Reports/components/BaseMap';
-import { ClusterWrapper, Clusters } from './Markers';
+import ClusteredMarkers from './ClusteredMarkers';
 import FMCPropTypes from '~/propTypes';
 
 function toFeature(d) {
@@ -26,13 +26,17 @@ function toGeojson(data) {
 
 class WebglMap extends PureComponent {
   static propTypes = {
-    reportsData: PropTypes.arrayOf(FMCPropTypes.report),
     center: PropTypes.arrayOf(PropTypes.number),
-    onLoad: PropTypes.func,
-    onMove: PropTypes.func,
+    detailId: PropTypes.string,
     disabled: PropTypes.bool,
-    zoomControlPosition: PropTypes.string,
-    fitExtentOnPopupClose: PropTypes.bool
+    error: PropTypes.shape({ message: PropTypes.string }),
+    fitExtentOnPopupClose: PropTypes.bool,
+    onLoad: PropTypes.func,
+    onMarkerClick: PropTypes.func.isRequired,
+    onMove: PropTypes.func,
+    reportsData: PropTypes.arrayOf(FMCPropTypes.report),
+    selectedReport: FMCPropTypes.report,
+    zoomControlPosition: PropTypes.string
   };
 
   static defaultProps = {
@@ -40,9 +44,12 @@ class WebglMap extends PureComponent {
     center: null,
     onLoad: () => {},
     onMove: () => {},
+    detailId: null,
     disabled: false,
     zoomControlPosition: 'bottom-left',
-    fitExtentOnPopupClose: true
+    fitExtentOnPopupClose: true,
+    selectedReport: null,
+    error: null
   };
 
   nav = new MapboxGL.NavigationControl({ showCompass: false });
@@ -51,7 +58,7 @@ class WebglMap extends PureComponent {
 
   componentDidUpdate() {
     if (!this.map) {
-      return false;
+      return;
     }
 
     const { center, disabled, fitExtentOnPopupClose } = this.props;
@@ -103,22 +110,14 @@ class WebglMap extends PureComponent {
         onMove={() => this.props.onMove()}
       >
         {reportsData.length > 0 && (
-          <ClusterWrapper
-            name="reports-cluster"
-            map={this.map}
+          <ClusteredMarkers
             data={toGeojson(reportsData)}
+            map={this.map}
+            name="reports-cluster"
             radius={60}
-            render={({ clusters, clusterSource }) => (
-              <Clusters
-                map={this.map}
-                data={reportsData}
-                onClick={onMarkerClick}
-                selectedReport={selectedReport}
-                detailId={detailId}
-                clusters={clusters}
-                clusterSource={clusterSource}
-              />
-            )}
+            detailId={detailId}
+            onClick={onMarkerClick}
+            selectedReport={selectedReport}
           />
         )}
       </BaseMap>
