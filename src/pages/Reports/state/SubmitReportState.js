@@ -2,8 +2,9 @@
 import booleanWithin from '@turf/boolean-within';
 
 import reverseGeocode from '~/services/reverseGeocode';
-import { getGeoLocation } from '~/pages/Map/map-utils';
+import { getGeoLocation } from '~/pages/Map/map-utils'; // TODO: handle eslint warning regarding dependency circle
 import { apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
+import { actions as errorStateActions } from './ErrorState';
 
 // action constants
 
@@ -17,7 +18,6 @@ types.GEOCODE_DONE = `${PREFIX}GEOCODE_SUCCESS`;
 types.VALIDATE_POSITION = `${PREFIX}VALIDATE_POSITION`;
 types.INVALIDATE_POSITION = `${PREFIX}INVALIDATE_POSITION`;
 types.REVERSE_GEOCODE_DONE = `${PREFIX}REVERSE_GEOCODE_SUCCESS`;
-types.REVERSE_GEOCODE_FAIL = `${PREFIX}REVERSE_GEOCODE_FAIL`;
 types.SET_TEMP_LOCATION_COORDS = `${PREFIX}SET_TEMP_LOCATION_COORDS`;
 types.SET_TEMP_LOCATION_ADDRESS = `${PREFIX}SET_TEMP_LOCATION_ADDRESS`;
 types.CONFIRM_LOCATION = `${PREFIX}CONFIRM_LOCATION`;
@@ -46,7 +46,6 @@ actions.setLocationMode = mode => ({
   mode
 });
 
-// TODO: adapt consumption, used to be setTempLocationLngLat
 actions.setTempLocationCoords = ({ lng, lat }) => ({
   type: types.SET_TEMP_LOCATION_COORDS,
   payload: { lng, lat }
@@ -111,22 +110,22 @@ actions.validateCoordinates = (polygonGeoJson, { lng, lat }) => async (dispatch)
 
 actions.reverseGeocodeCoordinates = ({ lat, lng }) => async (dispatch) => {
     let result;
+    let errorMsg;
     try {
       result = await reverseGeocode({ lat, lng });
     } catch (e) {
-      const technicalErrMsg = 'Fehler beim Auflösen der Koordinaten in eine Adresse';
-      return dispatch({
-        type: types.REVERSE_GEOCODE_FAIL,
-        payload: { geocodeError: technicalErrMsg }
-      });
+      errorMsg = 'Fehler beim Auflösen der Koordinaten in eine Adresse';
     }
     if (!result) {
-      const noResultErrMsg = 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden';
-      return dispatch({
-        type: types.REVERSE_GEOCODE_FAIL,
-        payload: { geocodeError: noResultErrMsg }
-      });
+      errorMsg = 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden';
     }
+
+    if (errorMsg) {
+      return dispatch(errorStateActions.addError({
+        message: errorMsg
+      }));
+    }
+
     dispatch({ type: types.REVERSE_GEOCODE_DONE, payload: { result } });
     dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
   };
@@ -262,13 +261,6 @@ function reducer(state = initialState, action = {}) {
       };
     case types.SET_LOCATION_MODE:
       return { ...state, locationMode: action.mode };
-    case types.REVERSE_GEOCODE_FAIL:
-      return {
-        ...state,
-        error: {
-          message: action.payload.geocodeError
-        }
-      };
     case types.SET_BIKESTAND_COUNT:
       return {
         ...state,

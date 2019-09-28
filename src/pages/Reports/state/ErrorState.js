@@ -10,12 +10,12 @@ types.REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
 
 actions.addError = ({
   message = 'Ein Fehler ist aufgetreten',
-  proceedButtonText = null,
-  proceedButtonCallback = null
+  proceedMessage = null,
+  proceedFunc = null
 } = {}) => ({
   type: types.ADD_ERROR,
   error: true,
-  payload: { message, proceedButtonText, proceedButtonCallback }
+  payload: { message, proceedMessage, proceedFunc }
 });
 
 actions.removeError = () => ({
@@ -26,8 +26,8 @@ actions.removeError = () => ({
 
 const initialState = {
   message: null,
-  proceedButtonText: null,
-  proceedButtonCallback: null
+  proceedMessage: null,
+  proceedFunc: null
 };
 
 function reducer(state = initialState, { type, payload } = {}) {
@@ -36,8 +36,8 @@ function reducer(state = initialState, { type, payload } = {}) {
       return {
         ...state,
         message: payload.message,
-        proceedButtonText: payload.proceedButtonText,
-        proceedButtonCallback: payload.proceedButtonCallback
+        proceedMessage: payload.proceedMessage,
+        proceedFunc: payload.proceedFunc
       };
     case types.REMOVE_ERROR:
       return {

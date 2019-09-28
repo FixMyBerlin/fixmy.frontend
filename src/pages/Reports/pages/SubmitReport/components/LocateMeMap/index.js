@@ -19,23 +19,14 @@ import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import HelpText from './HelpText';
 import ConfirmLocationDialog from './ConfirmLocationDialog';
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
-
-import {
-  LOCATION_MODE_GEOCODING,
-  setDeviceLocation,
-  reverseGeocodeCoordinates,
-  validateCoordinates,
-  setTempLocationLngLat,
-  confirmLocation,
-  resetDialogState,
-  removeError,
-  addError,
-  handleGeocodeSuccess
-} from '~/pages/Reports/ReportsState';
-
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 import ky from '~/utils/ky';
 import FMBCredits from '~/pages/Map/components/FMBCredits';
+import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
+import {
+  LOCATION_MODE_GEOCODING,
+  actions as submitReportStateActions
+} from '~/pages/Reports/state/SubmitReportState';
 
 
 const MapView = styled.div`
@@ -155,7 +146,7 @@ class LocateMeMap extends Component {
       .then((isValid) => {
         if (isValid) {
           this.props.reverseGeocodeCoordinates(coords);
-          this.props.setTempLocationLngLat(coords);
+          this.props.setTempLocationCoords(coords);
         }
       });
   }
@@ -318,16 +309,12 @@ class LocateMeMap extends Component {
   }
 }
 
-const mapDispatchToPros = {
-  reverseGeocodeCoordinates,
-  validateCoordinates,
-  setTempLocationLngLat,
-  confirmLocation,
-  setDeviceLocation,
-  resetDialogState,
-  removeError,
-  addError,
-  handleGeocodeSuccess
+const mapStateToProps = state => ({
+  ...state.ReportsState.SubmitReportState,
+  error: state.ReportsState.ErrorState
+});
+const mapDispatchToProps = {
+  ...errorStateActions,
+  ...submitReportStateActions
 };
-
-export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);
+export default connect(mapStateToProps, mapDispatchToProps)(LocateMeMap);

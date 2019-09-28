@@ -7,18 +7,13 @@ import React, { Fragment, PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import styled from 'styled-components';
-
+import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import {
-  setLocationMode,
   LOCATION_MODE_GEOCODING,
-  useDevicePosition,
-  resetDialogState,
-  setBikestandCount,
-  setAdditionalData,
-  setFeeAcceptable,
-  removeError,
-  submitReport
-} from '~/pages/Reports/ReportsState';
+  actions as submitReportStateActions
+} from '~/pages/Reports/state/SubmitReportState';
+
+
 import OverviewMapNavBar from '~/pages/Reports/pages/OverviewMap/components/OverviewMapNavBar';
 import Markdown from '~/pages/Markdown/Markdown';
 import LocateModeChooser from './pages/LocateModeChooser';
@@ -63,12 +58,14 @@ class ReportDialog extends PureComponent {
     const step = +match.params.step;
 
     const {
+      token,
+      user,
       locationMode,
       newReport,
       tempLocation,
       error,
-      submitting
-    } = this.props.reportsState;
+      submitting,
+    } = this.props;
 
     const proceed = () => {
       // route change
@@ -84,8 +81,8 @@ class ReportDialog extends PureComponent {
             <OverviewMapNavBar />
             <LocateModeChooser
               heading="Wo benötigst du neue Fahrradbügel?"
-              onUseDevicePosition={this.props.onUseDevicePosition}
-              onUseGeocoding={this.props.onUseGeocoding}
+              onUseDevicePosition={this.props.useDevicePosition}
+              onUseGeocoding={() => this.props.setLocationMode(LOCATION_MODE_GEOCODING)}
               error={error}
               removeError={this.props.removeError}
               onClose={this.abortDialog}
@@ -176,8 +173,8 @@ class ReportDialog extends PureComponent {
             <ReportSubmitted
               reportId={newReport.id}
               error={error}
-              token={this.props.token}
-              user={this.props.user}
+              token={token}
+              user={user}
               nextStep={proceed}
               removeError={this.props.removeError}
             />
@@ -208,18 +205,13 @@ class ReportDialog extends PureComponent {
 }
 
 const mapDispatchToProps = {
-  onUseDevicePosition: useDevicePosition,
-  onUseGeocoding: () => setLocationMode(LOCATION_MODE_GEOCODING),
-  resetDialogState,
-  setBikestandCount,
-  setAdditionalData,
-  setFeeAcceptable,
-  removeError,
-  submitReport
+  ...errorStateActions,
+  ...submitReportStateActions
 };
 
 export default connect(state => ({
-  reportsState: state.ReportsState,
+  ...state.ReportsState.SubmitReportState,
+  error: state.ReportsState.ErrorState,
   token: state.UserState.token,
   user: state.UserState.userData
 }), mapDispatchToProps)(ReportDialog);

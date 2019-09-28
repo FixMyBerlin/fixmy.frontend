@@ -12,7 +12,7 @@ import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import { matchMediaSize, breakpoints } from '~/styles/utils';
-import { removeError, addError } from '~/pages/Reports/ReportsState';
+import { actions as errorStateActions } from "~/pages/Reports/state/ErrorState";
 
 const StyledHeading = styled(Heading)`
   margin: 0;
@@ -193,6 +193,6 @@ class AdditionalDataForm extends PureComponent {
 }
 
 export default connect(
-  state => ({ error: state.ReportsState.error }),
-  { addError, removeError }
+  state => ({ error: state.ReportsState.ErrorState }),
+  { errorStateActions }
 )(AdditionalDataForm);

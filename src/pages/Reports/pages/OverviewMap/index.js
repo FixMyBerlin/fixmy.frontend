@@ -19,6 +19,7 @@ import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
+import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 
 const MapView = styled.div`
   height: 100%;
@@ -131,7 +132,7 @@ class OverviewMap extends Component {
   }
 
   render() {
-    const { reports, selectedReport, match, token, isMenuOpen } = this.props;
+    const { reports, selectedReport, match, token, isMenuOpen, errorMessage } = this.props;
     const hasDetailId = match.params.id;
     const isDesktopView = matchMediaSize(breakpoints.m);
     const isAddButtonShifted = isDesktopView && hasDetailId && !isMenuOpen;
@@ -159,9 +160,9 @@ class OverviewMap extends Component {
     return (
       <MapView>
         {
-          this.props.error.message && (
+          errorMessage && (
             <ErrorMessage
-              message={this.props.error.message}
+              message={this.props.errorMessage}
               onDismiss={this.props.removeError}
             />
           )
@@ -217,12 +218,15 @@ class OverviewMap extends Component {
   }
 }
 
-const mapDispatchToPros = overviewMapStateActions;
+const mapDispatchToPros = {
+  ...overviewMapStateActions,
+  ...errorStateActions
+};
 
 export default withRouter(connect(state => ({
   selectedReport: state.ReportsState.OverviewMapState.selectedReport,
   reports: state.ReportsState.OverviewMapState.reports,
   token: state.UserState.token,
   isMenuOpen: state.AppState.isMenuOpen,
-  error: state.ReportsState.error
+  errorMessage: state.ReportsState.ErrorState.message
 }), mapDispatchToPros)(OverviewMap));

@@ -2,8 +2,8 @@ import reducer, { actions } from '../ErrorState';
 
 const initialState = {
   message: null,
-  proceedButtonText: null,
-  proceedButtonCallback: null
+  proceedMessage: null,
+  proceedFunc: null
 };
 
 describe('ErrorState reducer and actions', () => {
@@ -19,8 +19,8 @@ describe('ErrorState reducer and actions', () => {
       ).toEqual(
         {
           message: 'Ein Fehler ist aufgetreten',
-          proceedButtonText: null,
-          proceedButtonCallback: null
+          proceedMessage: null,
+          proceedFunc: null
         }
       );
     });
@@ -34,8 +34,8 @@ describe('ErrorState reducer and actions', () => {
     ).toEqual(
       {
         message: MESSAGE,
-        proceedButtonText: null,
-        proceedButtonCallback: null
+        proceedMessage: null,
+        proceedFunc: null
       }
     );
   });
@@ -47,14 +47,14 @@ describe('ErrorState reducer and actions', () => {
     expect(
       reducer(undefined, actions.addError({
         message: MESSAGE,
-        proceedButtonText: LABEL,
-        proceedButtonCallback: FUNC
+        proceedMessage: LABEL,
+        proceedFunc: FUNC
       }))
     ).toEqual(
       {
         message: MESSAGE,
-        proceedButtonText: LABEL,
-        proceedButtonCallback: FUNC
+        proceedMessage: LABEL,
+        proceedFunc: FUNC
       }
     );
   });
