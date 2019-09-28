@@ -154,7 +154,11 @@ class ReportDetails extends PureComponent {
   }
 
   formatDate = dateString => new Date(dateString)
-    .toLocaleDateString('de-DE', {month: '2-digit', day: '2-digit', year: 'numeric'})
+    .toLocaleDateString('de-DE', {
+      month: '2-digit',
+      day: '2-digit',
+      year: 'numeric'
+    })
 
   render() {
     const { reportItem } = this.props;
@@ -163,7 +167,14 @@ class ReportDetails extends PureComponent {
       return null;
     }
 
-    const { photo, details, description, id, status, created_date } = reportItem;
+    const {
+      photo,
+      details,
+      description,
+      id,
+      status,
+      created_date: createdDate
+    } = reportItem;
 
     return (
       <Wrapper>
@@ -183,7 +194,7 @@ class ReportDetails extends PureComponent {
             <ReportPin />
           </StatusIndicatorWrapper>
 
-          <HorizontalRuler className="light "/>
+          <HorizontalRuler className="light " />
 
           {description && (
             <Fragment>
@@ -200,7 +211,7 @@ class ReportDetails extends PureComponent {
 
           <HorizontalRuler className="light" />
 
-          {created_date && (<Text>Meldung vom: {this.formatDate(created_date)}</Text>)}
+          {createdDate && (<Text>Meldung vom: {this.formatDate(createdDate)}</Text>)}
         </Main>
 
         <SocialFooter>

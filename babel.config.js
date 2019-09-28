@@ -1,20 +1,24 @@
-module.exports = {
-  presets: [
+module.exports = (api) => {
+  api.cache(true);
+
+  const presets = [
     '@babel/preset-react',
     [
       '@babel/preset-env',
       {
-        useBuiltIns: 'usage'
+        useBuiltIns: 'usage',
+        corejs: 3
       }
     ]
-  ],
-  plugins: [
-    '@babel/plugin-proposal-class-properties',
+  ];
+
+  const plugins = [
     '@babel/plugin-syntax-dynamic-import',
-    'babel-plugin-styled-components',
-    'babel-plugin-idx'
-  ],
-  env: {
+    '@babel/plugin-proposal-class-properties',
+    'babel-plugin-styled-components'
+  ];
+
+  const env = {
     test: {
       plugins: [
         'transform-es2015-modules-commonjs'
@@ -22,15 +26,19 @@ module.exports = {
     },
     production: {
       plugins: [
-        'babel-plugin-transform-react-remove-prop-types',
         [
           'babel-plugin-styled-components',
           {
             displayName: false
           }
-        ],
-        'emotion'
+        ]
       ]
     }
-  }
+  };
+
+  return {
+    presets,
+    plugins,
+    env
+  };
 };

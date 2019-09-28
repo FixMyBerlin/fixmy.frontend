@@ -78,7 +78,7 @@ export async function apiPasswordForgot(json, formFunctions) {
   return handleRequest('password/reset', { method: 'POST', json }, formFunctions, false);
 }
 
-export async function apiLikes(token, itemType = 'projects') {
+export async function apiLikes(token, itemType = 'plannings') {
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   let response = {};
 

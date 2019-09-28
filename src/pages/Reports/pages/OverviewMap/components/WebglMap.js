@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */ // TODO: state props types properly,
 import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
@@ -6,6 +5,7 @@ import withRouter from 'react-router/withRouter';
 
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusterWrapper from './ClusterWrapper';
+import FMCPropTypes from '~/propTypes';
 import ReportMarkersClustered from './ReportMarkersClustered';
 
 function toFeature(d) {
@@ -27,13 +27,12 @@ function toGeojson(data) {
 
 class WebglMap extends PureComponent {
   static propTypes = {
-    reportsData: PropTypes.array,
-    center: PropTypes.array,
+    reportsData: PropTypes.arrayOf(FMCPropTypes.report),
+    center: PropTypes.arrayOf(PropTypes.number),
     onLoad: PropTypes.func,
     onMove: PropTypes.func,
     disabled: PropTypes.bool,
     zoomControlPosition: PropTypes.string,
-    selectedMarkerZoomLevel: PropTypes.number,
     fitExtentOnPopupClose: PropTypes.bool
   }
 
@@ -44,7 +43,6 @@ class WebglMap extends PureComponent {
     onMove: () => {},
     disabled: false,
     zoomControlPosition: 'bottom-left',
-    selectedMarkerZoomLevel: 14,
     fitExtentOnPopupClose: true
   }
 
@@ -74,7 +72,7 @@ class WebglMap extends PureComponent {
 
   onLoad(map) {
     this.map = map;
-    this.toggleZoomControl();
+    this.toggleZoomControl(true);
 
     // in order to rerender Report Markers
     this.forceUpdate();
@@ -87,9 +85,7 @@ class WebglMap extends PureComponent {
     if (isActive) {
       this.map.addControl(this.nav, this.props.zoomControlPosition);
     } else {
-      try {
-        this.map.removeControl(this.nav);
-      } catch(e) {}
+      this.map.removeControl(this.nav);
     }
   }
 
@@ -111,7 +107,7 @@ class WebglMap extends PureComponent {
         onLoad={map => this.onLoad(map)}
         onMove={() => this.props.onMove()}
       >
-        {reportsData.length && (
+        {reportsData.length > 0 && (
           <ClusterWrapper
             name="reports-cluster"
             map={this.map}

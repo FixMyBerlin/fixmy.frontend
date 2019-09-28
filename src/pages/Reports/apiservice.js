@@ -1,22 +1,6 @@
-/* eslint-disable prefer-destructuring,no-use-before-define */
 import ky from 'ky';
 import oneLine from 'common-tags/es/oneLine/oneLine';
 import validateNewReport from './state/tests/schemaValidation/validateNewReport';
-import { setUpMocking } from './fixtures';
-
-// mock api responses during development if configured
-if (process.env.NODE_ENV === 'development' && config.mockReportsApi) {
-  setUpMocking();
-}
-
-export async function apiSubmitReport(json) {
-  return handleSubmitRequest({ json });
-}
-
-export async function apiFetchReports() {
-  return handleFetchReports({});
-}
-
 
 export const reportsEndpointUrl = config.apiUrl + config.reports.apiRoute || '/reports';
 
@@ -46,6 +30,14 @@ async function handleFetchReports({ method = 'GET', token = false }, respType = 
     response.error = await e.response.json();
   }
   return response;
+}
+
+export async function apiSubmitReport(json) {
+  return handleSubmitRequest({ json });
+}
+
+export async function apiFetchReports() {
+  return handleFetchReports({});
 }
 
 /**

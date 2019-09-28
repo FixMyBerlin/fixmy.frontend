@@ -51,25 +51,22 @@ class PlanningMarkers extends PureComponent {
       return false;
     }
 
-    this.markers = data.map((d) => {
-      // @TODO remove when api has all the data
-      d.phase = d.phase || 'draft';
-
-      if (!Markers[d.phase]) {
+    this.markers = data.map((marker) => {
+      if (!Markers[marker.phase]) {
         return null;
       }
 
-      const phaseIndex = phasesOrder.indexOf(d.phase);
+      const phaseIndex = phasesOrder.indexOf(marker.phase);
       if (!this.props.filterPlannings[phaseIndex]) {
         return null;
       }
 
-      const center = d.center.coordinates;
+      const center = marker.center.coordinates;
       const el = document.createElement('div');
       el.className = 'marker';
-      el.innerHTML = `<img class="marker-image" src="${Markers[d.phase]}" />`;
-      el.dataset.phase = d.phase;
-      el.addEventListener('click', evt => this.props.onClick(evt, d));
+      el.innerHTML = `<img class="marker-image" src="${Markers[marker.phase]}" />`;
+      el.dataset.phase = marker.phase;
+      el.addEventListener('click', evt => this.props.onClick(evt, marker));
 
       return new MapboxGL.Marker(el)
         .setLngLat(center)

@@ -123,7 +123,6 @@ const loginFormConfig = [
 ];
 
 class ReportSubmitted extends PureComponent {
-
   state = {
     showLoginForm: false
   }

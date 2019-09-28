@@ -17,7 +17,7 @@ import AddButton from './components/AddButton';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
-
+import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
 
 const MapView = styled.div`
@@ -158,6 +158,15 @@ class OverviewMap extends Component {
 
     return (
       <MapView>
+        {
+          this.props.error.message && (
+            <ErrorMessage
+              message={this.props.error.message}
+              onDismiss={this.props.removeError}
+            />
+          )
+        }
+
         <OverviewMapNavBar
           heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg"
         />
@@ -214,5 +223,6 @@ export default withRouter(connect(state => ({
   selectedReport: state.ReportsState.OverviewMapState.selectedReport,
   reports: state.ReportsState.OverviewMapState.reports,
   token: state.UserState.token,
-  isMenuOpen: state.AppState.isMenuOpen
+  isMenuOpen: state.AppState.isMenuOpen,
+  error: state.ReportsState.error
 }), mapDispatchToPros)(OverviewMap));
