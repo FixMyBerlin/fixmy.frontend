@@ -65,8 +65,10 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
   // validate object
   const validationResult = validateNewReport(reportItemCopy);
   if (validationResult.errors.length) {
-    throw new Error(`Marshalled newReport object is not structured as stated in json schema: ${
-      validationResult.errors}`);
+    console.error('Marshalled newReport object is not structured as stated in json schema');
+    validationResult.errors.forEach(({property, message}) => {
+      throw new Error(`Property ${property} ${message}`);
+    });
   }
 
   return reportItemCopy;
