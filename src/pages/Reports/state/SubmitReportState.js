@@ -1,10 +1,12 @@
 /* eslint-disable  no-multi-spaces */
 import booleanWithin from '@turf/boolean-within';
+import idx from 'idx';
 
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils'; // TODO: handle eslint warning regarding dependency circle
 import { apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
 import { actions as errorStateActions } from './ErrorState';
+
 
 // action constants
 
@@ -32,8 +34,8 @@ types.SUBMIT_REPORT_ERROR = `${PREFIX}SUBMIT_REPORT_ERROR`;
 
 // other constants
 
-const LOCATION_MODE_DEVICE = 'DEVICE'; // not an action type, keeping this here to prevent typos
-const LOCATION_MODE_GEOCODING = 'GEOCODING';
+export const LOCATION_MODE_DEVICE = 'DEVICE'; // not an action type, keeping this here to prevent typos
+export const LOCATION_MODE_GEOCODING = 'GEOCODING';
 
 // action creators
 
@@ -42,8 +44,6 @@ const actions = {};
 actions.resetDialogState = () => ({
   type: types.RESET_DIALOG_STATE
 });
-
-
 
 actions.setLocationMode = mode => ({
   type: types.SET_LOCATION_MODE,
@@ -354,7 +354,7 @@ function reducer(state = initialState, action = {}) {
 const selectors = {};
 
 selectors.getLocationIsModeGeocoding = state => state.locationMode === LOCATION_MODE_GEOCODING;
-
+selectors.getAlreadyPicketLocation = state => idx(state, _ => _.newReport.geometry.coordinates);
 
 export {
   actions,

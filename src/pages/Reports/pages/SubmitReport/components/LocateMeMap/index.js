@@ -9,7 +9,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import idx from 'idx';
 
 import { media, matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './WebglMap';
@@ -153,9 +152,9 @@ class LocateMeMap extends Component {
 
   getCenter = () => {
     // if component is shown because of backwards navigation, use the center already determined
-    const alreadyPickedLocation = idx(this.props, _ => _.newReport.location.lngLat);
+    const alreadyPickedLocation = this.props.getAlreadyPicketLocation();
     if (alreadyPickedLocation) {
-      return [alreadyPickedLocation.lng, alreadyPickedLocation.lat];
+      return alreadyPickedLocation;
     }
 
     // either device location or geocodeResult will be used
@@ -311,8 +310,10 @@ class LocateMeMap extends Component {
 
 const mapStateToProps = state => ({
   ...state.ReportsState.SubmitReportState,
-  getLocationIsModeGeocoding: () => submitReportStateSelectors.getLocationIsModeGeocoding(state),
-  error: state.ReportsState.ErrorState
+  error: state.ReportsState.ErrorState,
+  // selectors
+  getLocationIsModeGeocoding: () => submitReportStateSelectors.getLocationIsModeGeocoding(state.ReportsState.SubmitReportState),
+  getAlreadyPicketLocation: () => submitReportStateSelectors.getAlreadyPicketLocation(state.ReportsState.SubmitReportState)
 });
 const mapDispatchToProps = {
   ...errorStateActions,

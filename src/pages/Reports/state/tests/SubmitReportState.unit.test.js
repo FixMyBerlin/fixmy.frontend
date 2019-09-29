@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import fetchMock from 'fetch-mock';
-import reducer, { actions, types, initialState } from '../SubmitReportState';
+import reducer, { actions, types, selectors, initialState, LOCATION_MODE_GEOCODING } from '../SubmitReportState';
 import { worldWidePolygon, nullIslandPolygonFeature } from './mocks/geometries';
 import mockedReportItem from './schemaValidation/newReport-jsonSchema-testObject';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
@@ -19,6 +19,7 @@ const getGlobalState = submitReportState => ({
   }
 });
 
+
 describe('SubmitReportState reducer and actions', () => {
   describe('LocateMeMap', () => {
     it('returns the initial state for an empty action', () => {
@@ -28,22 +29,21 @@ describe('SubmitReportState reducer and actions', () => {
 
     it('resets the state but keeps the location mode selected for the session', () => {
       expect(reducer({
-        locationMode: 'MODE' // exact string does not matter here
+        locationMode: LOCATION_MODE_GEOCODING
       }, actions.resetDialogState()))
         .toEqual(
           {
             ...initialState,
-            locationMode: 'MODE'
+            locationMode: LOCATION_MODE_GEOCODING
           }
         );
     });
 
     it('sets the location mode', () => {
-      const MODE = 'MODE'; // exact string does not matter here
-      expect(reducer({}, actions.setLocationMode(MODE)))
+      expect(reducer({}, actions.setLocationMode(LOCATION_MODE_GEOCODING)))
         .toEqual(
           {
-            locationMode: MODE
+            locationMode: LOCATION_MODE_GEOCODING
           }
         );
     });
@@ -353,6 +353,29 @@ describe('SubmitReportState reducer and actions', () => {
           });
         });
       });
+    });
+  });
+
+  describe('selectors', () => {
+    it(`selects true if the locationMode is ${LOCATION_MODE_GEOCODING}`, () => {
+        const stateBefore = {
+          locationMode: LOCATION_MODE_GEOCODING
+        };
+        expect(selectors.getLocationIsModeGeocoding(stateBefore)).toBe(true);
+      });
+
+    it('selects the coordinates of location that has been picked already', () => {
+      const coords = [ 1, 2 ];
+      const stateBefore = {
+        newReport: {
+          address: 'some address',
+          geometry: {
+            type: 'Point',
+            coordinates: coords
+          }
+        }
+      };
+      expect(selectors.getAlreadyPicketLocation(stateBefore)).toBe(coords);
     });
   });
 });
