@@ -105,7 +105,8 @@ describe('OverviewMapState reducer and actions', () => {
         });
     });
 
-    it('sets the selectedReport and - if no reports have been fetched yet - fetches the reports before', () => {
+    it('sets the selectedReport and - if no reports have been fetched yet - ' +
+      'fetches the reports before', () => {
       const reportItem = { some: 'other content' };
       const expectedActionTypes = [
         types.REPORTS_FETCH_PENDING,
@@ -126,6 +127,18 @@ describe('OverviewMapState reducer and actions', () => {
           expect(store.getActions().map(action => action.type))
             .toEqual(expectedActionTypes);
         });
+    });
+
+    it('resets the map state', () => {
+      const stateBefore = {
+        reports: mockedReportsList,
+        selectedReport: mockedReportsList[1],
+        selectedReportPosition: {
+          x: 180.01016568411143,
+          y: 319.9945452428112
+        }
+      };
+      expect(reducer(stateBefore, actions.resetMapState())).toEqual(initialState);
     });
   });
 });

@@ -11,12 +11,17 @@ types.REPORTS_FETCH_PENDING = 'Reports/OverviewMapState/REPORTS_FETCH_PENDING';
 types.REPORTS_FETCH_COMPLETE = 'Reports/OverviewMapState/REPORTS_FETCH_COMPLETE';
 types.SET_SELECTED_REPORT = 'Reports/OverviewMapState/SET_SELECTED_REPORT';
 types.SET_SELECTED_REPORT_POS = 'Reports/OverviewMapState/SET_SELECTED_REPORT_POS';
+types.RESET_MAP_STATE = 'Reports/OverviewMapState/RESET_MAP_STATE';
 
 // action creators
 
 actions.setSelectedReportPosition = ({ x = 0, y = 0 }) => ({
   type: types.SET_SELECTED_REPORT_POS,
   payload: { x, y }
+});
+
+actions.resetMapState = () => ({
+  type: types.RESET_MAP_STATE
 });
 
 // thunks
@@ -62,6 +67,9 @@ const initialState = {
 
 function reducer(state = initialState, { type, payload } = {}) {
   switch (type) {
+    case types.RESET_MAP_STATE: {
+      return initialState;
+    }
     case types.REPORTS_FETCH_COMPLETE:
       return { ...state, reports: payload };
     case types.SET_SELECTED_REPORT:

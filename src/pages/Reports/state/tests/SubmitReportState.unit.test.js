@@ -298,10 +298,7 @@ describe('SubmitReportState reducer and actions', () => {
             newReport: {
               ...stateBefore.ReportsState.SubmitReportState.newReport,
               id: mockId
-            },
-            reports: [{
-              id: mockId
-            }]
+            }
           });
         });
       });

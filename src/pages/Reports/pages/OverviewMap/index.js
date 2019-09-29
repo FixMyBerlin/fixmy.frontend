@@ -1,7 +1,5 @@
 /**
  *  Displays report items fetched from backend.
- *  TODO: set up routing for meldungen/karte/#meldungenId, render detailDialog
- *  TODO: fetch/mock marker data and pass as prop to WebGl OverviewMap
  */
 
 import React, { Component, Fragment } from 'react';
@@ -77,9 +75,7 @@ class OverviewMap extends Component {
   }
 
   componentWillUnmount() {
-    if (this.props.selectedReport) {
-      this.props.setSelectedReport(null);
-    }
+    this.props.resetMapState();
   }
 
   onAddButtonTab = () => {

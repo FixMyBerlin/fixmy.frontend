@@ -169,10 +169,10 @@ actions.useDevicePosition = () => async (dispatch) => {
 
 actions.submitReport = () => async (dispatch, getState) => {
   dispatch({ type: types.SUBMIT_REPORT_PENDING });
-  const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.SubmitReportState.newReport);
-  let submittedReport;
+
   try {
-    submittedReport = await apiSubmitReport(reportPayload);
+    const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.SubmitReportState.newReport);
+    const submittedReport = await apiSubmitReport(reportPayload);
     dispatch({ type: types.SUBMIT_REPORT_COMPLETE, submittedReport });
   } catch (e) {
     const errMsg = 'Beim übermitteln der Meldung ist etwas schiefgelaufen.';
@@ -335,10 +335,7 @@ function reducer(state = initialState, action = {}) {
         newReport: {
           ...state.newReport,
           id: action.submittedReport.id
-        },
-        reports: [...state.reports, {
-          ...action.submittedReport
-        }]
+        }
       };
     case types.SUBMIT_REPORT_ERROR:
       return {
