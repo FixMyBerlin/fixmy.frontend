@@ -9,7 +9,6 @@ import PropagateLoader from 'react-spinners/PropagateLoader';
 import styled from 'styled-components';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import {
-  LOCATION_MODE_GEOCODING,
   actions as submitReportStateActions
 } from '~/pages/Reports/state/SubmitReportState';
 
@@ -82,7 +81,7 @@ class ReportDialog extends PureComponent {
             <LocateModeChooser
               heading="Wo benötigst du neue Fahrradbügel?"
               onUseDevicePosition={this.props.useDevicePosition}
-              onUseGeocoding={() => this.props.setLocationMode(LOCATION_MODE_GEOCODING)}
+              onUseGeocoding={this.props.setLocationModeGeocoding}
               error={error}
               removeError={this.props.removeError}
               onClose={this.abortDialog}

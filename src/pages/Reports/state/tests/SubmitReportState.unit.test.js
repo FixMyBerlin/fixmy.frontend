@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
 import fetchMock from 'fetch-mock';
-import reducer, { actions, types, initialState, LOCATION_MODE_DEVICE } from '../SubmitReportState';
+import reducer, { actions, types, initialState } from '../SubmitReportState';
 import { worldWidePolygon, nullIslandPolygonFeature } from './mocks/geometries';
 import mockedReportItem from './schemaValidation/newReport-jsonSchema-testObject';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
@@ -27,20 +27,23 @@ describe('SubmitReportState reducer and actions', () => {
     });
 
     it('resets the state but keeps the location mode selected for the session', () => {
-      expect(reducer({ locationMode: LOCATION_MODE_DEVICE }, actions.resetDialogState()))
+      expect(reducer({
+        locationMode: 'MODE' // exact string does not matter here
+      }, actions.resetDialogState()))
         .toEqual(
           {
             ...initialState,
-            locationMode: LOCATION_MODE_DEVICE
+            locationMode: 'MODE'
           }
         );
     });
 
     it('sets the location mode', () => {
-      expect(reducer({}, actions.setLocationMode(LOCATION_MODE_DEVICE)))
+      const MODE = 'MODE'; // exact string does not matter here
+      expect(reducer({}, actions.setLocationMode(MODE)))
         .toEqual(
           {
-            locationMode: LOCATION_MODE_DEVICE
+            locationMode: MODE
           }
         );
     });
@@ -233,7 +236,6 @@ describe('SubmitReportState reducer and actions', () => {
     });
 
     describe('thunks', () => {
-
       afterEach(() => {
         fetchMock.restore();
       });

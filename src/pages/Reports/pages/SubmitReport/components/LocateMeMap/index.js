@@ -24,9 +24,9 @@ import ky from '~/utils/ky';
 import FMBCredits from '~/pages/Map/components/FMBCredits';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import {
-  LOCATION_MODE_GEOCODING,
-  actions as submitReportStateActions
-} from '~/pages/Reports/state/SubmitReportState';
+  actions as submitReportStateActions,
+  selectors as submitReportStateSelectors }
+  from '~/pages/Reports/state/SubmitReportState';
 
 
 const MapView = styled.div`
@@ -222,7 +222,7 @@ class LocateMeMap extends Component {
           )
         }
 
-        {!this.state.isLoading && this.props.locationMode === LOCATION_MODE_GEOCODING && (
+        {!this.state.isLoading && this.props.getLocationIsModeGeocoding && (
           <Fragment>
             {!this.state.locationPinned && (
               <SearchBarWrapper>
@@ -279,7 +279,7 @@ class LocateMeMap extends Component {
 
         {!this.state.isLoading &&
           !this.state.autocompleteHasFocus &&
-          (this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
+          (this.props.getLocationIsModeGeocoding && !this.state.locationPinned) && (
             <LocatorControl
               key="ReportsLocateMap__LocatorControl"
               onChange={this.onlocateMeMarkerUse}
@@ -311,6 +311,7 @@ class LocateMeMap extends Component {
 
 const mapStateToProps = state => ({
   ...state.ReportsState.SubmitReportState,
+  getLocationIsModeGeocoding: () => submitReportStateSelectors.getLocationIsModeGeocoding(state),
   error: state.ReportsState.ErrorState
 });
 const mapDispatchToProps = {

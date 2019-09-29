@@ -13,6 +13,8 @@ const types = {};
 const PREFIX = 'Reports/SubmitReportState/';
 types.RESET_DIALOG_STATE = `${PREFIX}RESET_DIALOG_STATE`;
 types.SET_LOCATION_MODE = `${PREFIX}SET_LOCATION_MODE`;
+types.SET_LOCATION_MODE_GEOCODING = `${PREFIX}SET_LOCATION_MODE_GEOCODING`;
+types.SET_LOCATION_MODE_DEVICE = `${PREFIX}SET_LOCATION_MODE_DEVICE`;
 types.SET_DEVICE_LOCATION = `${PREFIX}SET_DEVICE_LOCATION`;
 types.GEOCODE_DONE = `${PREFIX}GEOCODE_SUCCESS`;
 types.VALIDATE_POSITION = `${PREFIX}VALIDATE_POSITION`;
@@ -41,9 +43,21 @@ actions.resetDialogState = () => ({
   type: types.RESET_DIALOG_STATE
 });
 
+
+
 actions.setLocationMode = mode => ({
   type: types.SET_LOCATION_MODE,
   mode
+});
+
+actions.setLocationModeGeocoding = () => ({
+  type: types.SET_LOCATION_MODE,
+  mode: LOCATION_MODE_GEOCODING
+});
+
+actions.setLocationModeDevice = () => ({
+  type: types.SET_LOCATION_MODE,
+  mode: LOCATION_MODE_DEVICE
 });
 
 actions.setTempLocationCoords = ({ lng, lat }) => ({
@@ -141,7 +155,7 @@ actions.useDevicePosition = () => async (dispatch) => {
     dispatch(
       actions.setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })
     );
-    dispatch(actions.setLocationMode(LOCATION_MODE_DEVICE));
+    dispatch(actions.setLocationModeDevice());
   } catch (err) {
     const errMsg = 'Standortbestimmung fehlgeschlagen. ' +
       'Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.';
@@ -335,11 +349,17 @@ function reducer(state = initialState, action = {}) {
   }
 }
 
+// selectors
+
+const selectors = {};
+
+selectors.getLocationIsModeGeocoding = state => state.locationMode === LOCATION_MODE_GEOCODING;
+
+
 export {
   actions,
   types,
-  LOCATION_MODE_DEVICE,
-  LOCATION_MODE_GEOCODING,
+  selectors,
   initialState
 };
 
