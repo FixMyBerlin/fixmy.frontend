@@ -60,6 +60,8 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
     BASE64_PREFIXES.forEach((prefix) => {
       reportItemCopy.photo = photo.replace(prefix, '');
     });
+  } else {
+    delete reportItemCopy.photo; // to prevent json-validate error
   }
 
   // validate object
