@@ -246,7 +246,7 @@ class LocateMeMap extends Component {
         <MapWrapper>
           <StyledWebGlMap
             newLocationZoomLevel={config.reports.locateMeMap.zoomOnGeocodedLocation}
-            zoomedOut={this.props.tempLocation && !this.props.tempLocation.valid}
+            zoomedOut={!this.props.tempLocation.valid}
             center={this.getCenter()}
             className="locate-me-map"
             onMapDrag={this.onMapMove}
@@ -264,10 +264,10 @@ class LocateMeMap extends Component {
                   />
                 )}
 
-                {this.props.tempLocation && this.props.tempLocation.address && this.props.tempLocation.valid && (
+                {this.props.tempLocation.address && this.props.tempLocation.valid && (
                   <AddressIndicator className="pass-touch">{this.props.tempLocation.address}</AddressIndicator>
                 )}
-                {this.props.tempLocation && !this.props.tempLocation.valid && (
+                {!this.props.tempLocation.valid && (
                   <InvalidAdressIndicator className="pass-touch">{config.reports.locateMeMap.outofBoundaryText}</InvalidAdressIndicator>
                 )}
               </Fragment>
@@ -290,7 +290,7 @@ class LocateMeMap extends Component {
           <PinLocationButton
             onConfirm={this.togglePinned}
             text="Diese Position bestätigen"
-            disabled={!(this.props.tempLocation && this.props.tempLocation.valid && this.props.tempLocation.address)}
+            disabled={!(this.props.tempLocation.valid && this.props.tempLocation.address)}
           />
         )}
 
