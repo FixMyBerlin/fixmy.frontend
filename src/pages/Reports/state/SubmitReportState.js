@@ -18,10 +18,10 @@ types.SET_LOCATION_MODE = `${PREFIX}SET_LOCATION_MODE`;
 types.SET_LOCATION_MODE_GEOCODING = `${PREFIX}SET_LOCATION_MODE_GEOCODING`;
 types.SET_LOCATION_MODE_DEVICE = `${PREFIX}SET_LOCATION_MODE_DEVICE`;
 types.SET_DEVICE_LOCATION = `${PREFIX}SET_DEVICE_LOCATION`;
-types.GEOCODE_DONE = `${PREFIX}GEOCODE_SUCCESS`;
+types.GEOCODE_COMPLETE = `${PREFIX}GEOCODE_COMPLETE`;
 types.VALIDATE_POSITION = `${PREFIX}VALIDATE_POSITION`;
 types.INVALIDATE_POSITION = `${PREFIX}INVALIDATE_POSITION`;
-types.REVERSE_GEOCODE_DONE = `${PREFIX}REVERSE_GEOCODE_SUCCESS`;
+types.REVERSE_GEOCODE_COMPLETE = `${PREFIX}REVERSE_GEOCODE_COMPLETE`;
 types.SET_TEMP_LOCATION_COORDS = `${PREFIX}SET_TEMP_LOCATION_COORDS`;
 types.SET_TEMP_LOCATION_ADDRESS = `${PREFIX}SET_TEMP_LOCATION_ADDRESS`;
 types.CONFIRM_LOCATION = `${PREFIX}CONFIRM_LOCATION`;
@@ -80,7 +80,7 @@ actions.setDeviceLocation = ({ lng, lat }) => ({
 });
 
 actions.handleGeocodeSuccess = ({ coords, address }) => ({
-  type: types.GEOCODE_DONE,
+  type: types.GEOCODE_COMPLETE,
   payload: { coords, address }
 });
 
@@ -140,7 +140,7 @@ actions.reverseGeocodeCoordinates = ({ lat, lng }) => async (dispatch) => {
     }));
   }
 
-  dispatch({ type: types.REVERSE_GEOCODE_DONE, payload: { result } });
+  dispatch({ type: types.REVERSE_GEOCODE_COMPLETE, payload: { result } });
   dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
 };
 
@@ -222,13 +222,14 @@ function reducer(state = initialState, action = {}) {
       return { ...initialState, locationMode: state.locationMode };
     case types.SET_DEVICE_LOCATION:
       return { ...state, deviceLocation: action.payload };
-    case types.GEOCODE_DONE:
+    case types.GEOCODE_COMPLETE:
       return {
         ...state,
         geocodeResult: action.payload.coords,
         tempLocation: {
           ...state.tempLocation,
-          address: action.payload.address
+          address: action.payload.address,
+          lngLat: action.payload.coords
         }
       };
     case types.INVALIDATE_POSITION:
@@ -247,8 +248,10 @@ function reducer(state = initialState, action = {}) {
           valid: true
         }
       };
-    case types.REVERSE_GEOCODE_DONE:
-      return { ...state, reverseGeocodeResult: action.payload };
+    case types.REVERSE_GEOCODE_COMPLETE:
+      return { ...state,
+        reverseGeocodeResult: action.payload
+      };
     case types.SET_TEMP_LOCATION_COORDS:
       return {
         ...state,
@@ -354,7 +357,9 @@ function reducer(state = initialState, action = {}) {
 const selectors = {};
 
 selectors.getLocationIsModeGeocoding = state => state.locationMode === LOCATION_MODE_GEOCODING;
-selectors.getAlreadyPicketLocation = state => idx(state, _ => _.newReport.geometry.coordinates);
+selectors.getAlreadyPicketLocation = function (state) {
+  return idx(state, _ => _.newReport.geometry.coordinates);
+}
 
 export {
   actions,
