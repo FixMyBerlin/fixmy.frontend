@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import CloseIcon from '~/images/close.svg';
 import history from '~/history';
-import { resetDialogState } from '~/pages/Reports/ReportsState';
+import { actions } from '~/pages/Reports/state/SubmitReportState';
 
 
 const Button = styled(CloseIcon)`
@@ -27,4 +27,4 @@ const AbortButton = ({ abortDialog }) => (
   <Button onClick={clickHandler.bind(this, abortDialog)} />
 );
 
-export default connect(null, { abortDialog: resetDialogState })(AbortButton);
+export default connect(null, { abortDialog: actions.resetDialogState })(AbortButton);
