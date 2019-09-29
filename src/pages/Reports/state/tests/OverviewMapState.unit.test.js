@@ -48,6 +48,7 @@ describe('OverviewMapState reducer and actions', () => {
       fetchMock.restore();
     });
 
+    // TODO: reference type
     it('fetches reports and creates REPORTS_FETCH_COMPLETE', () => {
       mockFetchReports();
       const expectedActions = [

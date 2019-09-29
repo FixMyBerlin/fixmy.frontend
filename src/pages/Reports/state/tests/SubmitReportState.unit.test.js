@@ -6,6 +6,7 @@ import reducer, { actions, types, initialState, LOCATION_MODE_DEVICE } from '../
 import { worldWidePolygon, nullIslandPolygonFeature } from './mocks/geometries';
 import mockedReportItem from './schemaValidation/newReport-jsonSchema-testObject';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
+import { types as errorStateTypes } from '../ErrorState';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -75,7 +76,8 @@ describe('SubmitReportState reducer and actions', () => {
           deviceLocation: { lng: 1, lat: 2 },
           lngLat: { lng: 1, lat: 2 },
           address: 'Teststreet 1, 1337 Testplace'
-        }
+        },
+        newReport: initialState.newReport
       };
       expect(reducer(stateBefore, actions.confirmLocation()))
         .toEqual(
@@ -84,6 +86,7 @@ describe('SubmitReportState reducer and actions', () => {
             reverseGeocodeResult: null,
             deviceLocation: null,
             newReport: {
+              ...initialState.newReport,
               address: stateBefore.tempLocation.address,
               geometry: {
                 type: 'Point',
@@ -162,186 +165,189 @@ describe('SubmitReportState reducer and actions', () => {
           });
         });
       });
+    });
+  });
 
-      describe('ReportDialog', () => {
-        it('adds the bikestands count to the new report item\'s details', () => {
-          const ammount = 5;
-          const stateBefore = {
-            newReport: initialState.newReport
-          };
-          expect(reducer(stateBefore, actions.setBikestandCount(ammount)))
-            .toEqual(
-              {
-                newReport: {
-                  ...stateBefore.newReport,
-                  details: {
-                    ...stateBefore.newReport.details,
-                    number: ammount
-                  }
-                }
-              }
-            );
-        });
-        it('appends info about the conceivable fee to the new report item\'s details', () => {
-          const isFeeAcceptable = true;
-          const stateBefore = {
+  describe('ReportDialog', () => {
+    it('adds the bikestands count to the new report item\'s details', () => {
+      const ammount = 5;
+      const stateBefore = {
+        newReport: initialState.newReport
+      };
+      expect(reducer(stateBefore, actions.setBikestandCount(ammount)))
+        .toEqual(
+          {
             newReport: {
+              ...stateBefore.newReport,
               details: {
-                subject: 'BIKE_STANDS',
-                number: 3,
-                fee_acceptable: null
+                ...stateBefore.newReport.details,
+                number: ammount
               }
             }
-          };
-          expect(reducer(stateBefore, actions.setFeeAcceptable(isFeeAcceptable)))
-            .toEqual(
-              {
-                newReport: {
-                  ...stateBefore.newReport,
-                  details: {
-                    ...stateBefore.newReport.details,
-                    fee_acceptable: isFeeAcceptable
-                  }
-                }
-              }
-            );
-        });
-        it('appends additional data (photo, description) to the new report item\'s details', () => {
-          const photo = 'base64string';
-          const description = 'someText';
-          const stateBefore = {
+          }
+        );
+    });
+    it('appends info about the conceivable fee to the new report item\'s details', () => {
+      const isFeeAcceptable = true;
+      const stateBefore = {
+        newReport: {
+          details: {
+            subject: 'BIKE_STANDS',
+            number: 3,
+            fee_acceptable: null
+          }
+        }
+      };
+      expect(reducer(stateBefore, actions.setFeeAcceptable(isFeeAcceptable)))
+        .toEqual(
+          {
             newReport: {
-              address: 'Teststreet 1'
-            }
-          };
-          expect(reducer(stateBefore, actions.setAdditionalData({ photo, description })))
-            .toEqual(
-              {
-                ...stateBefore,
-                newReport: {
-                  ...stateBefore.newReport,
-                  photo,
-                  description
-                }
+              ...stateBefore.newReport,
+              details: {
+                ...stateBefore.newReport.details,
+                fee_acceptable: isFeeAcceptable
               }
-            );
+            }
+          }
+        );
+    });
+    it('appends additional data (photo, description) to the new report item\'s details', () => {
+      const photo = 'base64string';
+      const description = 'someText';
+      const stateBefore = {
+        newReport: {
+          address: 'Teststreet 1'
+        }
+      };
+      expect(reducer(stateBefore, actions.setAdditionalData({ photo, description })))
+        .toEqual(
+          {
+            ...stateBefore,
+            newReport: {
+              ...stateBefore.newReport,
+              photo,
+              description
+            }
+          }
+        );
+    });
+
+    describe('thunks', () => {
+
+      afterEach(() => {
+        fetchMock.restore();
+      });
+
+      it(`dispatches ${types.SUBMIT_REPORT_PENDING}, json-schema validates a report and dispatches
+       ${types.SUBMIT_REPORT_COMPLETE} for a valid new report item`, () => {
+        // prepare initial mock store
+
+        // reverse marshalling of a report item as the api expects it.
+        // as of now this only means adding the base64 prefix to the photo.
+        const base64prefix = 'data:image/jpg;base64,';
+        const mockedReportsItemCopy = JSON.parse(JSON.stringify(mockedReportItem));
+        mockedReportsItemCopy.photo = `${base64prefix}${mockedReportItem.photo}`;
+        const stateBefore = getGlobalState({
+          reports: [],
+          newReport: mockedReportsItemCopy
+        });
+        const store = mockStore(stateBefore);
+
+        // mock api request
+
+        fetchMock.postOnce(reportsEndpointUrl, mockedReportItem);
+
+        const expectedActions = [
+          types.SUBMIT_REPORT_PENDING,
+          types.SUBMIT_REPORT_COMPLETE
+        ];
+        return store.dispatch(actions.submitReport()).then(() => {
+          // test action sequence
+          expect(
+            store.getActions().map(dispatchedActions => dispatchedActions.type)
+          ).toEqual(expectedActions);
+
+          // test reducer
+          expect(
+            reducer(stateBefore.ReportsState.SubmitReportState, { type: types.SUBMIT_REPORT_PENDING })
+          ).toEqual({
+            ...stateBefore.ReportsState.SubmitReportState,
+            apiRequestStatus: {
+              ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
+              submitting: true
+            }
+          });
+
+          const mockId = 999;
+          expect(
+            reducer(stateBefore.ReportsState.SubmitReportState, {
+              type: types.SUBMIT_REPORT_COMPLETE,
+              submittedReport: {
+                id: mockId
+              }
+            })
+          ).toEqual({
+            ...stateBefore.ReportsState.SubmitReportState,
+            apiRequestStatus: {
+              ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
+              submitting: false,
+              submitted: true
+            },
+            newReport: {
+              ...stateBefore.ReportsState.SubmitReportState.newReport,
+              id: mockId
+            },
+            reports: [{
+              id: mockId
+            }]
+          });
         });
       });
 
-      describe('thunks', () => {
-        it(`dispatches ${types.SUBMIT_REPORT_PENDING}, json-schema validates a report and dispatches
-       ${types.SUBMIT_REPORT_COMPLETE} for a valid new report item`, () => {
-          // prepare initial mock store
 
-          // reverse marshalling of a report item as the api expects it.
-          // as of now this only means adding the base64 prefix to the photo.
-          const base64prefix = 'data:image/jpg;base64,';
-          const mockedReportsItemCopy = JSON.parse(JSON.stringify(mockedReportItem));
-          mockedReportsItemCopy.photo = `${base64prefix}${mockedReportItem.photo}`;
-          const stateBefore = getGlobalState({
-              reports: [],
-              newReport: mockedReportsItemCopy
-          });
-          const store = mockStore(stateBefore);
+      it(`dispatches ${
+        types.SUBMIT_REPORT_PENDING
+      }, and then ${
+        types.SUBMIT_REPORT_ERROR
+      } and ${
+        errorStateTypes.ADD_ERROR
+      } if the POST request fails`, () => {
+        const mockedReportsItemCopy = JSON.parse(JSON.stringify(mockedReportItem));
 
-          // mock api request
+        // compile valid state to submit
+        delete mockedReportsItemCopy.photo;
+        const stateBefore = getGlobalState({
+          newReport: mockedReportsItemCopy
+        });
+        const store = mockStore(stateBefore);
 
-          fetchMock.postOnce(reportsEndpointUrl, mockedReportItem);
+        // mock failing request
 
-          const expectedActions = [
-            types.SUBMIT_REPORT_PENDING,
-            types.SUBMIT_REPORT_COMPLETE
-          ];
-          return store.dispatch(actions.submitReport()).then(() => {
-            // test action sequence
-            expect(
-              store.getActions().map(dispatchedActions => dispatchedActions.type)
-            ).toEqual(expectedActions);
-
-            // test reducer
-            expect(
-              reducer(stateBefore.ReportsState.SubmitReportState, { type: types.SUBMIT_REPORT_PENDING })
-            ).toEqual({
-              ...stateBefore.ReportsState.SubmitReportState,
-              apiRequestStatus: {
-                ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
-                submitting: true
-              }
-            });
-
-            const mockId = 999;
-            expect(
-              reducer(stateBefore.ReportsState.SubmitReportState, {
-                type: types.SUBMIT_REPORT_COMPLETE,
-                submittedReport: {
-                  id: mockId
-                }
-              })
-            ).toEqual({
-              ...stateBefore.ReportsState.SubmitReportState,
-              apiRequestStatus: {
-                ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
-                submitting: false,
-                submitted: true
-              },
-              newReport: {
-                ...stateBefore.ReportsState.SubmitReportState.newReport,
-                id: mockId
-              },
-              reports: [{
-                id: mockId
-              }]
-            });
-          });
+        fetchMock.postOnce(reportsEndpointUrl, {
+          throws: 'failed to submit'
         });
 
+        const expectedActions = [
+          types.SUBMIT_REPORT_PENDING,
+          types.SUBMIT_REPORT_ERROR,
+          errorStateTypes.ADD_ERROR
+        ];
+        return store.dispatch(actions.submitReport()).then(() => {
+          expect(
+            store.getActions().map(dispatchedActions => dispatchedActions.type)
+          ).toEqual(expectedActions);
 
-        it(`dispatches ${
-          types.SUBMIT_REPORT_PENDING
-        }, and ${
-          types.SUBMIT_REPORT_ERROR
-        } if the POST request fails`, () => {
-          const mockedReportsItemCopy = JSON.parse(JSON.stringify(mockedReportItem));
-
-          // compile valid state to submit
-          delete mockedReportsItemCopy.photo;
-          const stateBefore = getGlobalState({
-            newReport: mockedReportsItemCopy
-          });
-          const store = mockStore(stateBefore);
-
-          // mock failing request
-
-          fetchMock.postOnce(reportsEndpointUrl, {
-            throws: 'failed to submit'
-          });
-
-          const expectedActions = [
-            types.SUBMIT_REPORT_PENDING,
-            types.SUBMIT_REPORT_ERROR
-          ];
-          return store.dispatch(actions.submitReport()).then(() => {
-            expect(
-              store.getActions().map(dispatchedActions => dispatchedActions.type)
-            ).toEqual(expectedActions);
-
-            // test reducer
-            const errMessage = 'TEST_ERR';
-            expect(
-              reducer(stateBefore.ReportsState.SubmitReportState, {
-                type: types.SUBMIT_REPORT_ERROR,
-                error: errMessage
-              })
-            ).toEqual({
-              ...stateBefore.ReportsState.SubmitReportState,
-              error: {
-                message: errMessage
-              },
-              apiRequestStatus: {
-                ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
-                submitting: false
-              }
-            });
+          // test reducer (ErrorState reducer logic is not tested here)
+          expect(
+            reducer(stateBefore.ReportsState.SubmitReportState, {
+              type: types.SUBMIT_REPORT_ERROR
+            })
+          ).toEqual({
+            ...stateBefore.ReportsState.SubmitReportState,
+            apiRequestStatus: {
+              ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
+              submitting: false
+            }
           });
         });
       });

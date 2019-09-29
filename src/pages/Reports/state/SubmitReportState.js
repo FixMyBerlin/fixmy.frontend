@@ -88,79 +88,88 @@ actions.setFeeAcceptable = isFeeAcceptable => ({
 // thunks
 
 actions.validateCoordinates = (polygonGeoJson, { lng, lat }) => async (dispatch) => {
-    const pointFeature = {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [lng, lat]
-      }
-    };
-
-    if (booleanWithin(pointFeature, polygonGeoJson)) {
-      dispatch({
-        type: types.VALIDATE_POSITION
-      });
-      return true;
+  const pointFeature = {
+    type: 'Feature',
+    geometry: {
+      type: 'Point',
+      coordinates: [lng, lat]
     }
-      dispatch({
-        type: types.INVALIDATE_POSITION
-      });
-      return false;
   };
+
+  if (booleanWithin(pointFeature, polygonGeoJson)) {
+    dispatch({
+      type: types.VALIDATE_POSITION
+    });
+    return true;
+  }
+  dispatch({
+    type: types.INVALIDATE_POSITION
+  });
+  return false;
+};
 
 actions.reverseGeocodeCoordinates = ({ lat, lng }) => async (dispatch) => {
-    let result;
-    let errorMsg;
-    try {
-      result = await reverseGeocode({ lat, lng });
-    } catch (e) {
-      errorMsg = 'Fehler beim Auflösen der Koordinaten in eine Adresse';
-    }
-    if (!result) {
-      errorMsg = 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden';
-    }
+  let result;
+  let errorMsg;
+  try {
+    result = await reverseGeocode({ lat, lng });
+  } catch (e) {
+    errorMsg = 'Fehler beim Auflösen der Koordinaten in eine Adresse';
+  }
+  if (!result) {
+    errorMsg = 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden';
+  }
 
-    if (errorMsg) {
-      return dispatch(errorStateActions.addError({
-        message: errorMsg
-      }));
-    }
+  if (errorMsg) {
+    return dispatch(errorStateActions.addError({
+      message: errorMsg
+    }));
+  }
 
-    dispatch({ type: types.REVERSE_GEOCODE_DONE, payload: { result } });
-    dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
-  };
+  dispatch({ type: types.REVERSE_GEOCODE_DONE, payload: { result } });
+  dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
+};
 
 
 actions.useDevicePosition = () => async (dispatch) => {
-    let coords;
-    try {
-      const position = await getGeoLocation();
-      if (!position.coords) throw new Error('Getting device geolocation failed');
-      // eslint-disable-next-line prefer-destructuring
-      coords = position.coords;
-      dispatch(
-        actions.setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })
-      );
-      dispatch(actions.setLocationMode(LOCATION_MODE_DEVICE));
-    } catch (err) {
-      const errMsg = 'Standortbestimmung fehlgeschlagen. ' +
-        'Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.';
-      dispatch(actions.addError(errMsg));
-    }
-  };
+  let coords;
+  try {
+    const position = await getGeoLocation();
+    if (!position.coords) throw new Error('Getting device geolocation failed');
+    // eslint-disable-next-line prefer-destructuring
+    coords = position.coords;
+    dispatch(
+      actions.setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })
+    );
+    dispatch(actions.setLocationMode(LOCATION_MODE_DEVICE));
+  } catch (err) {
+    const errMsg = 'Standortbestimmung fehlgeschlagen. ' +
+      'Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.';
+    dispatch(
+      errorStateActions.addError({
+        message: errMsg
+      })
+    );
+  }
+};
 
 actions.submitReport = () => async (dispatch, getState) => {
-    dispatch({ type: types.SUBMIT_REPORT_PENDING });
-    const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.SubmitReportState.newReport);
-    let submittedReport;
-    try {
-      submittedReport = await apiSubmitReport(reportPayload);
-      dispatch({ type: types.SUBMIT_REPORT_COMPLETE, submittedReport });
-    } catch (e) {
-      const errMsg = 'Beim übermitteln der Meldung ist etwas schiefgelaufen.';
-      dispatch({ type: types.SUBMIT_REPORT_ERROR, error: errMsg });
-    }
-  };
+  dispatch({ type: types.SUBMIT_REPORT_PENDING });
+  const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.SubmitReportState.newReport);
+  let submittedReport;
+  try {
+    submittedReport = await apiSubmitReport(reportPayload);
+    dispatch({ type: types.SUBMIT_REPORT_COMPLETE, submittedReport });
+  } catch (e) {
+    const errMsg = 'Beim übermitteln der Meldung ist etwas schiefgelaufen.';
+    dispatch({ type: types.SUBMIT_REPORT_ERROR }); // update UI
+    dispatch(
+      errorStateActions.addError({ // show ErrorMessage using the generic component
+        message: errMsg
+      })
+    );
+  }
+};
 
 // reducer
 
@@ -188,8 +197,7 @@ const initialState = {
       fee_acceptable: null      // if the user would pay for managed parking
     },
     photo: null,                // jpeg in base64
-    description: null,          // textual description of the problem / potential site
-    error: null                 // any errors, e.g. during submit. TODO: evaluate if using ErrorState is an option. If not, if this is only used during submit, maybe move it to apiRequestStatus
+    description: null          // textual description of the problem / potential site
   }
 };
 
@@ -249,6 +257,7 @@ function reducer(state = initialState, action = {}) {
         reverseGeocodeResult: null, // TODO: do we even need this anymore?
         deviceLocation: null,
         newReport: {
+          ...state.newReport,
           address: state.tempLocation.address,
           geometry: {
             type: 'Point',
@@ -267,9 +276,9 @@ function reducer(state = initialState, action = {}) {
         newReport: {
           ...state.newReport,
           details: {
-              ...state.newReport.details,
-              number: action.payload
-            }
+            ...state.newReport.details,
+            number: action.payload
+          }
         }
       };
     case types.SET_FEE_ACCEPTABLE:
@@ -319,9 +328,6 @@ function reducer(state = initialState, action = {}) {
         ...state,
         apiRequestStatus: {
           submitting: false
-        },
-        error: {
-          message: action.error
         }
       };
     default:

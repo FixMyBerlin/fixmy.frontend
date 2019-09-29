@@ -3,11 +3,12 @@ const types = {};
 
 // action types
 
-types.ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
-types.REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
+types.ADD_ERROR = 'Reports/ReportsDialogState/ErrorState/ADD_ERROR';
+types.REMOVE_ERROR = 'Reports/ReportsDialogState/ErrorState/REMOVE_ERROR';
 
 // action creators
 
+// TODO: overload method to also just accept an errorMessage as string
 actions.addError = ({
   message = 'Ein Fehler ist aufgetreten',
   proceedMessage = null,
