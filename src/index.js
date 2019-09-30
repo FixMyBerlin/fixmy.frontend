@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+import '~/utils/polyfills';
 import history from '~/history';
 import { updateHistory, detectEmbedMode } from '~/AppState';
 import Store from '~/store';
