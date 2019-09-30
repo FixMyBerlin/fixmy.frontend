@@ -1,4 +1,5 @@
 {
   "semicolons": true,
-  "singleQuote": true
+  "singleQuote": true,
+  "arrowParens": "always"
 }
