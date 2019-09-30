@@ -27,8 +27,7 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      '~': Path.resolve(__dirname, '../src'),
-      'ky': Path.resolve(__dirname, '../src/utils/ky.js')
+      '~': Path.resolve(__dirname, '../src')
     }
   },
   module: {
@@ -41,23 +40,13 @@ module.exports = {
       {
         test: /\.js$/,
         include: [
-          Path.resolve(__dirname, '../src')
-        ],
-        use: 'babel-loader'
-      },
-      {
-        test: /\.js$/,
-        include: [
+          Path.resolve(__dirname, '../src'),
           Path.resolve(__dirname, '../node_modules/tr46'),
           Path.resolve(__dirname, '../node_modules/webidl-conversions'),
-          Path.resolve(__dirname, '../node_modules/whatwg-url')
+          Path.resolve(__dirname, '../node_modules/whatwg-url'),
+          Path.resolve(__dirname, '../node_modules/ky')
         ],
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+        use: 'babel-loader'
       },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
