@@ -64,19 +64,6 @@ export function loadPlanningData() {
   };
 }
 
-export function loadReportData() {
-  return async (dispatch, getState) => {
-    const state = getState();
-    const { filterReports } = state.MapState;
-    if (filterReports) {
-      return false;
-    }
-    const reportData = await ky.get('/data/reports-example.json');
-    console.log('fetched local report data ', reportData);
-    // TODO: Implement further
-  };
-}
-
 export function geocodeAddress(searchtext) {
   return async (dispatch) => {
     const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;
