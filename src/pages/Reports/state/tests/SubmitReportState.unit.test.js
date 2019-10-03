@@ -116,6 +116,15 @@ describe('SubmitReportState reducer and actions', () => {
       //
       // });
 
+      // test.todo('it handles an exeption during reverse Geocoding service call', () => {
+      //
+      // });
+
+      // test.todo('it handles an contentwise unsuccessfull reverseGeocoding', () => {
+      //
+      // });
+
+
       it(`dispatches ${
         formatActionType(types.VALIDATE_POSITION)
       } when a passed latLon is within a given polygon`, () => {
