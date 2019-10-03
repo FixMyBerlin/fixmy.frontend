@@ -271,7 +271,7 @@ function reducer(state = initialState, action = {}) {
     case types.CONFIRM_LOCATION:
       return {
         ...state,
-        reverseGeocodeResult: null, // TODO: do we even need this anymore?
+        reverseGeocodeResult: null,
         deviceLocation: null,
         newReport: {
           ...state.newReport,
