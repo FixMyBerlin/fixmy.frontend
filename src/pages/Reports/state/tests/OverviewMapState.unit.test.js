@@ -7,6 +7,7 @@ import reducer, { types, actions, initialState } from '../OverviewMapState';
 import { types as errorStateTypes } from '../ErrorState';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import reportSample from './mocks/reportsSample';
+import { formatActionType } from '~/utils/test-utils';
 
 // mocking
 const middlewares = [thunk];
@@ -48,8 +49,8 @@ describe('OverviewMapState reducer and actions', () => {
       fetchMock.restore();
     });
 
-    // TODO: reference type
-    it('fetches reports and creates REPORTS_FETCH_COMPLETE', () => {
+
+    it(`fetches reports and creates ${formatActionType(types.REPORTS_FETCH_COMPLETE)}`, () => {
       mockFetchReports();
       const expectedActions = [
         { type: types.REPORTS_FETCH_PENDING },
@@ -66,7 +67,7 @@ describe('OverviewMapState reducer and actions', () => {
       });
     });
 
-    it('fails to fetch reports and creates ADD_ERROR', () => {
+    it(`fails to fetch reports and creates ${formatActionType(errorStateTypes.ADD_ERROR)}`, () => {
       console.error = jest.fn(); // mute provoked console.error
 
       fetchMock.getOnce(reportsEndpointUrl, { throws: new HTTPError('some error') });

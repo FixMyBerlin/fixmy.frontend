@@ -7,6 +7,7 @@ import { worldWidePolygon, nullIslandPolygonFeature } from './mocks/geometries';
 import mockedReportItem from './schemaValidation/newReport-jsonSchema-testObject';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import { types as errorStateTypes } from '../ErrorState';
+import { formatActionType } from '~/utils/test-utils';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -115,7 +116,9 @@ describe('SubmitReportState reducer and actions', () => {
       //
       // });
 
-      it(`dispatches ${types.VALIDATE_POSITION} when a passed latLon is within a given polygon`, () => {
+      it(`dispatches ${
+        formatActionType(types.VALIDATE_POSITION)
+      } when a passed latLon is within a given polygon`, () => {
         const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
         const stateBefore = getGlobalState({
           tempLocation: {
@@ -142,7 +145,9 @@ describe('SubmitReportState reducer and actions', () => {
         });
       });
 
-      it(`dispatches ${types.INVALIDATE_POSITION} when a passed latLon is outside a given polygon`, () => {
+      it(`dispatches ${
+        formatActionType(types.INVALIDATE_POSITION)
+      } when a passed latLon is outside a given polygon`, () => {
         const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
         const stateBefore = getGlobalState({
           tempLocation: {
