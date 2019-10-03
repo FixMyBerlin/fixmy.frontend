@@ -42,9 +42,19 @@ describe('OverviewMapState reducer and actions', () => {
       );
   });
 
-  describe('async actions', () => {
-    // we are only testing action-related object here TODO: also test reducer logic like it is done in SubmitReportState
+  it('resets the map state', () => {
+    const stateBefore = {
+      reports: mockedReportsList,
+      selectedReport: mockedReportsList[1],
+      selectedReportPosition: {
+        x: 180.01016568411143,
+        y: 319.9945452428112
+      }
+    };
+    expect(reducer(stateBefore, actions.resetMapState())).toEqual(initialState);
+  });
 
+  describe('async actions', () => {
     afterEach(() => {
       fetchMock.restore();
     });
@@ -64,6 +74,16 @@ describe('OverviewMapState reducer and actions', () => {
         // test action sequence
         expect(store.getActions())
           .toEqual(expectedActions);
+
+        // test reducer
+        expect(reducer(initialState, {
+          type: types.REPORTS_FETCH_COMPLETE,
+          payload: mockedReportsList
+        }))
+        .toEqual({
+          ...initialState,
+          reports: mockedReportsList
+        });
       });
     });
 
@@ -78,6 +98,7 @@ describe('OverviewMapState reducer and actions', () => {
       const store = mockStore({});
       return store.dispatch(actions.loadReportsData())
         .then(() => {
+          // only test action sequence
           expect(store.getActions().map(action => action.type))
             .toEqual(expectedActionTypes);
         });
@@ -101,8 +122,17 @@ describe('OverviewMapState reducer and actions', () => {
 
       return store.dispatch(actions.setSelectedReport(reportItem))
         .then(() => {
+          // test action sequence
           expect(store.getActions())
             .toEqual(expectedActions);
+
+          // test reducer
+          const overviewMapStateBefore = stateBefore.ReportsState.OverviewMapState;
+          expect(reducer(overviewMapStateBefore, expectedActions[0]))
+            .toEqual({
+              ...overviewMapStateBefore,
+              selectedReport: reportItem
+            });
         });
     });
 
@@ -125,21 +155,10 @@ describe('OverviewMapState reducer and actions', () => {
       });
       return store.dispatch(actions.setSelectedReport(reportItem))
         .then(() => {
+          // only test action sequence
           expect(store.getActions().map(action => action.type))
             .toEqual(expectedActionTypes);
         });
-    });
-
-    it('resets the map state', () => {
-      const stateBefore = {
-        reports: mockedReportsList,
-        selectedReport: mockedReportsList[1],
-        selectedReportPosition: {
-          x: 180.01016568411143,
-          y: 319.9945452428112
-        }
-      };
-      expect(reducer(stateBefore, actions.resetMapState())).toEqual(initialState);
     });
   });
 });
