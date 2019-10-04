@@ -6,7 +6,7 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
     "deploy": "npm run build && netlify deploy",
     "start": "cross-env NODE_ENV=development CONFIG_ENV=staging webpack-dev-server --config webpack/webpack.config.dev.js",
-    "test": " CONFIG_ENV=staging jest --verbose --config=jest/jest.config.js",
+    "test": "jest --verbose --config=jest/jest.config.js",
     "test:update": "npm run test -- --coverage --updateSnapshot",
     "test:watch": "npm run test  -- --watch",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=**/state/*",
