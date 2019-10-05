@@ -9,6 +9,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import ky from 'ky';
 
 import { media, matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './WebglMap';
@@ -19,7 +20,6 @@ import HelpText from './HelpText';
 import ConfirmLocationDialog from './ConfirmLocationDialog';
 import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
-import ky from '~/utils/ky';
 import FMBCredits from '~/pages/Map/components/FMBCredits';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import {

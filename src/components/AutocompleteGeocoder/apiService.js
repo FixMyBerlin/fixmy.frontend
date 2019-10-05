@@ -1,5 +1,3 @@
-import 'abortcontroller-polyfill/dist/polyfill-patch-fetch';
-
 let abortController = new window.AbortController();
 
 function compileSearchUrl(searchString) {
