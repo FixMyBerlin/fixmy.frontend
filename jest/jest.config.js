@@ -1,6 +1,9 @@
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
 
+// Some vendors publish their sources without transpiling. You need to say jest to transpile such files
+const esModules = ['common-tags'];
+
 module.exports = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
@@ -61,9 +64,9 @@ module.exports = {
   // globals: {},
 
   // An array of directory names to be searched recursively up from the requiring module's location
-   moduleDirectories: [
-     'node_modules'
-   ],
+  moduleDirectories: [
+    'node_modules'
+  ],
 
   // An array of file extensions your modules use
   // moduleFileExtensions: [
@@ -82,8 +85,9 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$': '<rootDir>/jest/mocks/fileMock.js',
     'images/hbi-stop-icons': '<rootDir>/jest/mocks/fileMock.js',
     // handle webpack aliases
-    '^ky$': '<rootDir>/src/utils/ky.js',
-    '^~/(.*)$': '<rootDir>/src/$1'
+    '^~/(.*)$': '<rootDir>/src/$1',
+    // handle ky, see https://github.com/sindresorhus/ky/issues/170
+    '^ky$': require.resolve('ky').replace('index.js', 'umd.js'),
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -117,7 +121,7 @@ module.exports = {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-   rootDir: '../', // since config is not stored in project root
+  rootDir: '../', // since config is not stored in project root
 
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
@@ -177,9 +181,7 @@ module.exports = {
   // transform: null,
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: [
-     '/node_modules/(?!common-tags).+\\.js$' // es6 library
-  ]
+  transformIgnorePatterns: [`<rootDir>/node_modules/(?!${esModules})`]
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
