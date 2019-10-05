@@ -5,7 +5,7 @@ import idx from 'idx';
 import { connect } from 'react-redux';
 
 import { media } from '~/styles/utils';
-import { setSelectedReport } from '~/pages/Reports/ReportsState';
+import { actions } from '~/pages/Reports/state/OverviewMapState';
 import MapPopupWrapper from '~/components/MapPopupWrapper';
 import Button from '~/components/Button';
 import Title from '~/components/Title';
@@ -78,5 +78,5 @@ export default withRouter(
     selectedReport: state.ReportsState.OverviewMapState.selectedReport,
     reports: state.ReportsState.OverviewMapState.reports,
     position: state.ReportsState.OverviewMapState.selectedReportPosition
-  }), { setSelectedReport })(ReportsPopup)
+  }), { setSelectedReport: actions.setSelectedReport })(ReportsPopup)
 );
