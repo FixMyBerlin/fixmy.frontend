@@ -12,6 +12,7 @@ import { formatActionType } from '~/utils/test-utils';
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
+
 // Utility func to wrap the state of the SubmitReportState subreducer in the structure of the global redux store.
 // This is necessary in thunks, where the reducer is tested indirectly.
 const getGlobalState = submitReportState => ({
@@ -254,8 +255,12 @@ describe('SubmitReportState reducer and actions', () => {
         fetchMock.restore();
       });
 
-      it(`dispatches ${types.SUBMIT_REPORT_PENDING}, json-schema validates a report and dispatches
-       ${types.SUBMIT_REPORT_COMPLETE} for a valid new report item`, () => {
+      it(`dispatches ${
+        formatActionType(types.SUBMIT_REPORT_PENDING)
+      }, json-schema validates a report and dispatches
+       ${
+        formatActionType(types.SUBMIT_REPORT_COMPLETE)
+      } for a valid new report item`, () => {
         // prepare initial mock store
 
         // reverse marshalling of a report item as the api expects it.
@@ -319,11 +324,11 @@ describe('SubmitReportState reducer and actions', () => {
 
 
       it(`dispatches ${
-        types.SUBMIT_REPORT_PENDING
+        formatActionType(types.SUBMIT_REPORT_PENDING)
       }, and then ${
-        types.SUBMIT_REPORT_ERROR
+        formatActionType(types.SUBMIT_REPORT_ERROR)
       } and ${
-        errorStateTypes.ADD_ERROR
+        formatActionType(errorStateTypes.ADD_ERROR)
       } if the POST request fails`, () => {
         const mockedReportsItemCopy = JSON.parse(JSON.stringify(mockedReportItem));
 
