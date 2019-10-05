@@ -31,7 +31,7 @@ actions.loadReportsData = () => async (dispatch) => {
 };
 
 actions.setSelectedReport = selectedReport => async (dispatch, getState) => {
-  const { reports } = getState().ReportsState.OverviewMapState; // TODO: is this even used anymore?
+  const { reports } = getState().ReportsState.OverviewMapState;
 
   if (!reports.length) {
     await loadReportsThunk(dispatch);

@@ -8,7 +8,6 @@ types.REMOVE_ERROR = 'Reports/ReportsDialogState/ErrorState/REMOVE_ERROR';
 
 // action creators
 
-// TODO: overload method to also just accept an errorMessage as string
 actions.addError = ({
   message = 'Ein Fehler ist aufgetreten',
   proceedMessage = null,
