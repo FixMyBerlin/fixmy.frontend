@@ -7,6 +7,10 @@ import FMCPropTypes from '~/propTypes';
 import { createPinMarker, createClusterMarker } from './marker-utils';
 import { setupClusters } from './cluster-utils';
 
+/**
+ * This component does not render to the dom but clusters report markers
+ * once they are loaded into the map through the Mapbox API
+ */
 class ClusterWrapper extends React.Component {
   static propTypes = {
     data: GeoPropTypes.FeatureCollection,
@@ -37,15 +41,15 @@ class ClusterWrapper extends React.Component {
   }
 
   componentDidMount() {
-    this.createCluster();
+    this.createClusters();
     this.updateMarkers();
   }
 
   componentDidUpdate() {
-    this.createCluster();
+    this.createClusters();
   }
 
-  createCluster() {
+  createClusters() {
     if (this.state.clusterCreated || !this.props.map) {
       return;
     }
