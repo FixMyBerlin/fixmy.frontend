@@ -14,6 +14,7 @@ import { matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';
 import AddButton from './components/AddButton';
+import ErrorMessage from '~/components/ErrorMessage';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
@@ -24,7 +25,6 @@ import {
   setSelectedReport,
   setSelectedReportPosition
 } from '~/pages/Reports/ReportsState';
-import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 
 const MapView = styled.div`
   height: 100%;

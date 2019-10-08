@@ -5,6 +5,8 @@ import DraftMarker from '~/images/planning-icons/konzept-marker.png';
 import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
+import Store from '~/store';
+import * as MapActions from '../MapState';
 
 const Markers = {
   draft: DraftMarker,
@@ -37,7 +39,7 @@ class PlanningMarkers extends PureComponent {
       }
     });
     this.markers = [];
-  }
+  };
 
   updateMarkers = () => {
     const { active, data, map } = this.props;
@@ -61,12 +63,24 @@ class PlanningMarkers extends PureComponent {
         return null;
       }
 
+      if (marker.center == null) {
+        console.error('Marker center missing');
+        Store.dispatch(
+          MapActions.setError(
+            'Leider konnten keine vollständigen Planungsdaten geladen werden.'
+          )
+        );
+        return null;
+      }
+
       const center = marker.center.coordinates;
       const el = document.createElement('div');
       el.className = 'marker';
-      el.innerHTML = `<img class="marker-image" src="${Markers[marker.phase]}" />`;
+      el.innerHTML = `<img class="marker-image" src="${
+        Markers[marker.phase]
+      }" />`;
       el.dataset.phase = marker.phase;
-      el.addEventListener('click', evt => this.props.onClick(evt, marker));
+      el.addEventListener('click', (evt) => this.props.onClick(evt, marker));
 
       return new MapboxGL.Marker(el)
         .setLngLat(center)
@@ -75,7 +89,7 @@ class PlanningMarkers extends PureComponent {
     });
 
     return true;
-  }
+  };
 
   render() {
     return null;

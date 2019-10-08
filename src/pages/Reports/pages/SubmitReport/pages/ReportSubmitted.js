@@ -5,11 +5,11 @@ import { Formik } from 'formik';
 import ky from 'ky';
 
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
-import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
 import Button from '~/components/Button';
+import ErrorMessage from '~/components/ErrorMessage';
 import Form from '~/components/Form';
 import FormField from '~/components/FormField';
 import GhostButton from '~/components/GhostButton';

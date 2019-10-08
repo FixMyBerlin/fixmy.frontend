@@ -17,9 +17,9 @@ import WebglMap from './WebglMap';
 import StaticMarker from './StaticMarker';
 import PinLocationButton from './PinLocationButton';
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
+import ErrorMessage from '~/components/ErrorMessage';
 import HelpText from './HelpText';
 import ConfirmLocationDialog from './ConfirmLocationDialog';
-import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 
 import {
   LOCATION_MODE_GEOCODING,
