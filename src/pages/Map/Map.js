@@ -12,7 +12,7 @@ import MapControl from '~/pages/Map/components/MapControl';
 import MapContent from '~/pages/Map/components/MapContent';
 import SearchBar from '~/pages/Map/components/SearchBar';
 import FMBCredits from '~/pages/Map/components/FMBCredits';
-import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
+import ErrorMessage from '~/components/ErrorMessage';
 import FMBLogo from '~/components/FMBLogo';
 import Store from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
