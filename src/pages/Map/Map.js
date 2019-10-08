@@ -12,6 +12,7 @@ import MapControl from '~/pages/Map/components/MapControl';
 import MapContent from '~/pages/Map/components/MapContent';
 import SearchBar from '~/pages/Map/components/SearchBar';
 import FMBCredits from '~/pages/Map/components/FMBCredits';
+import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import FMBLogo from '~/components/FMBLogo';
 import Store from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
@@ -19,12 +20,18 @@ import WebglMap from '~/pages/Map/components/WebglMap';
 import MyHBI from '~/pages/MyHBI';
 
 export const SectionDetail = Loadable({
-  loader: () => import(/* webpackChunkName: "SectionDetail" */ '~/pages/Map/components/DetailView/SectionDetail'),
+  loader: () =>
+    import(
+      /* webpackChunkName: "SectionDetail" */ '~/pages/Map/components/DetailView/SectionDetail'
+    ),
   loading: () => null
 });
 
 export const PlanningDetail = Loadable({
-  loader: () => import(/* webpackChunkName: "PlanningDetail" */ '~/pages/Map/components/DetailView/PlanningDetail'),
+  loader: () =>
+    import(
+      /* webpackChunkName: "PlanningDetail" */ '~/pages/Map/components/DetailView/PlanningDetail'
+    ),
   loading: () => null
 });
 
@@ -52,23 +59,32 @@ const StyledFMBLogo = styled(FMBLogo)`
   `}
 `;
 
+const dismissErrorMessage = () => Store.dispatch(MapActions.unsetError());
+
 class MapViewComponent extends PureComponent {
   updateView = (view) => {
     Store.dispatch(MapActions.setView(view));
-  }
+  };
 
   handleLocationChange = (userLocation) => {
-    this.updateView({ center: userLocation, zoom: config.map.zoomAfterGeocode, animate: true });
-  }
+    this.updateView({
+      center: userLocation,
+      zoom: config.map.zoomAfterGeocode,
+      animate: true
+    });
+  };
 
   render() {
     const isDesktopView = matchMediaSize(breakpoints.m);
     const displayLegend = !this.props.activeSection || isDesktopView;
     const calculatePopupPosition = isDesktopView && this.props.displayPopup;
-    const { isEmbedMode } = this.props;
+    const { isEmbedMode, error } = this.props;
 
     return (
       <MapView>
+        {error != null && (
+          <ErrorMessage message={error} onDismiss={dismissErrorMessage} />
+        )}
         <MapWrapper>
           <SearchBar />
           <WebglMap
@@ -119,7 +135,7 @@ class MapViewComponent extends PureComponent {
           <Route
             exact
             path="/zustand/:id/:name?"
-            render={props => (
+            render={(props) => (
               <SectionDetail
                 apiEndpoint="planning-sections"
                 onCloseRoute="/zustand"
@@ -132,7 +148,7 @@ class MapViewComponent extends PureComponent {
           <Route
             exact
             path="/planungen/:id/:name?"
-            render={props => (
+            render={(props) => (
               <PlanningDetail
                 apiEndpoint="planning-sections"
                 onCloseRoute="/planungen"
@@ -143,38 +159,35 @@ class MapViewComponent extends PureComponent {
             )}
           />
         </MapWrapper>
-        <Route
-          path="/my-hbi"
-          component={MyHBI}
-        />
+        <Route path="/my-hbi" component={MyHBI} />
         {isEmbedMode && <FMBCredits />}
       </MapView>
-
     );
   }
 }
 
 export default withRouter(
-  connect(state => ({
+  connect((state) => ({
     activeLayer: state.AppState.activeView,
     activeSection: parseInt(state.AppState.activeSection, 0),
     activeLocation: state.MapState.activeLocation,
+    animate: state.MapState.animate,
+    bearing: state.MapState.bearing,
+    center: state.MapState.center,
+    dim: state.MapState.dim,
+    displayPopup: state.MapState.displayPopup,
+    error: state.MapState.error,
     filterHbi: state.MapState.filterHbi,
     filterPlannings: state.MapState.filterPlannings,
     filterReports: state.MapState.filterReports,
     hasMoved: state.MapState.hasMoved,
-    hbi_speed: state.MapState.hbi_speed,
     hbi_safety: state.MapState.hbi_safety,
-    zoom: state.MapState.zoom,
-    bearing: state.MapState.bearing,
-    pitch: state.MapState.pitch,
-    center: state.MapState.center,
-    show3dBuildings: state.MapState.show3dBuildings,
-    dim: state.MapState.dim,
-    animate: state.MapState.animate,
-    displayPopup: state.MapState.displayPopup,
-    planningData: state.MapState.planningData,
+    hbi_speed: state.MapState.hbi_speed,
     isEmbedMode: state.AppState.isEmbedMode,
+    pitch: state.MapState.pitch,
+    planningData: state.MapState.planningData,
+    show3dBuildings: state.MapState.show3dBuildings,
+    zoom: state.MapState.zoom,
     ...state.UserState
   }))(MapViewComponent)
 );
