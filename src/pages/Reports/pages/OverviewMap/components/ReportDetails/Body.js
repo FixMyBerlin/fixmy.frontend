@@ -23,6 +23,8 @@ const IndicatorTitle = styled.p`
 const Text = styled.p`
   color: ${config.colors.darkgrey};
   font-size: 16px;
+  line-height: 1.25em;
+  margin-top: 0;
 `;
 
 const IndicatorValue = styled(Text)`
