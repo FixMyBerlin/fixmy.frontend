@@ -10,15 +10,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import idx from 'idx';
+import ky from 'ky';
 
 import { media, matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './WebglMap';
 import StaticMarker from './StaticMarker';
 import PinLocationButton from './PinLocationButton';
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
+import ErrorMessage from '~/components/ErrorMessage';
 import HelpText from './HelpText';
 import ConfirmLocationDialog from './ConfirmLocationDialog';
-import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 
 import {
   LOCATION_MODE_GEOCODING,
@@ -34,7 +35,6 @@ import {
 } from '~/pages/Reports/ReportsState';
 
 import LocatorControl from '~/pages/Map/components/LocatorControl';
-import ky from '~/utils/ky';
 import FMBCredits from '~/pages/Map/components/FMBCredits';
 
 
