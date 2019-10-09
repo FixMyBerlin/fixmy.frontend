@@ -5,12 +5,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: Path.resolve(__dirname, '../src/index.js'),
+    app: Path.resolve(__dirname, '../src/index.js')
   },
   output: {
     path: Path.join(__dirname, '../build'),
-    filename:  'js/[name].js',
-    publicPath: '/',
+    filename: 'js/[name].js',
+    publicPath: '/'
   },
   plugins: [
     new CleanWebpackPlugin(['build'], { root: Path.resolve(__dirname, '..') }),
@@ -23,9 +23,10 @@ module.exports = {
     ]),
     new Webpack.ProvidePlugin({
       config: '~/../config.js'
-    }),
+    })
   ],
   resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
     alias: {
       '~': Path.resolve(__dirname, '../src')
     }
@@ -49,6 +50,11 @@ module.exports = {
         use: 'babel-loader'
       },
       {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        include: [Path.resolve(__dirname, '../src')]
+      },
+      {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
         use: {
           loader: 'file-loader',
@@ -59,27 +65,31 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        oneOf: [{
-          exclude: /node_modules/,
-          use: ['babel-loader', {
-            loader: 'react-svg-loader',
-            options: {
-              svgo: {
-                plugins: [
-                  { cleanupIDs: false }
-                ]
+        oneOf: [
+          {
+            exclude: /node_modules/,
+            use: [
+              'babel-loader',
+              {
+                loader: 'react-svg-loader',
+                options: {
+                  svgo: {
+                    plugins: [{ cleanupIDs: false }]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            include: /node_modules/,
+            use: {
+              loader: 'file-loader',
+              options: {
+                name: '[path][name].[ext]'
               }
             }
-          }]
-        }, {
-          include: /node_modules/,
-          use: {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]'
-            }
           }
-        }]
+        ]
       }
     ]
   }

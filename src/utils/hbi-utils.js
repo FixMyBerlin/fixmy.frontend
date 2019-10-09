@@ -13,7 +13,7 @@ export function getHBIbyProps(props, sideKey) {
 }
 
 export function getHBIColorByIndex(index) {
-  const stop = config.hbiStops.find(s => index >= s.min && index <= s.max);
+  const stop = config.hbiStops.find((s) => index >= s.min && index <= s.max);
   return stop ? stop.color : '#555';
 }
 
