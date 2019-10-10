@@ -1,6 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
 import styled from 'styled-components';
-import withRouter from 'react-router/withRouter';
+import { withRouter} from 'react-router-dom';
 import { Formik } from 'formik';
 import ky from 'ky';
 
