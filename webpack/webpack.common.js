@@ -1,6 +1,6 @@
 const Path = require('path');
 const Webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
     publicPath: '/',
   },
   plugins: [
-    new CleanWebpackPlugin(['build'], { root: Path.resolve(__dirname, '..') }),
+    new CleanWebpackPlugin(),
     // copy data folder to make it available in redux loadData action
     new CopyWebpackPlugin([
       { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' },
@@ -44,7 +44,8 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/tr46'),
           Path.resolve(__dirname, '../node_modules/webidl-conversions'),
           Path.resolve(__dirname, '../node_modules/whatwg-url'),
-          Path.resolve(__dirname, '../node_modules/ky')
+          Path.resolve(__dirname, '../node_modules/ky'),
+          Path.resolve(__dirname, '../node_modules/d3-scale')
         ],
         use: 'babel-loader'
       },
@@ -66,7 +67,8 @@ module.exports = {
             options: {
               svgo: {
                 plugins: [
-                  { cleanupIDs: false }
+                  { cleanupIDs: false },
+                  { removeViewBox: false }
                 ]
               }
             }

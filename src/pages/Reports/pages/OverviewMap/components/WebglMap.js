@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
-import withRouter from 'react-router/withRouter';
+import { withRouter } from 'react-router-dom';
 
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusterWrapper from './ClusterWrapper';
