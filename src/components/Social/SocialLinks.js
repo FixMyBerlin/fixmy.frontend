@@ -4,7 +4,7 @@ import SocialTitle from './SocialTitle';
 import SocialButtonWrapper from './SocialButtonWrapper';
 import SocialButton from './SocialButton';
 
-export default props => (
+export default (props) => (
   <SocialWrapper>
     <SocialTitle>{props.title}</SocialTitle>
     <SocialButtonWrapper>

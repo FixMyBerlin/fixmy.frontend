@@ -22,8 +22,8 @@ const Button = styled.button`
   width: 280px;
 
   &[disabled] {
-     box-shadow: none;
-     background-color: ${config.colors.inactivegrey};
+    box-shadow: none;
+    background-color: ${config.colors.inactivegrey};
   }
 
   &:focus {
@@ -36,7 +36,8 @@ const PinLocationButton = ({ onConfirm, text, disabled }) => (
     className="confirm-location-button"
     onClick={onConfirm}
     disabled={disabled}
-  >{text}
+  >
+    {text}
   </Button>
 );
 

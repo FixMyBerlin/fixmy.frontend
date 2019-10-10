@@ -26,7 +26,7 @@ const TradeMark = styled.span`
 export default () => (
   <Wrapper>
     <ContentContainer>
-    Ein Angebot von <TradeMark>FixMyBerlin</TradeMark>
+      Ein Angebot von <TradeMark>FixMyBerlin</TradeMark>
     </ContentContainer>
   </Wrapper>
 );

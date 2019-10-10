@@ -2,18 +2,24 @@ import React from 'react';
 import Route from 'react-router-dom/Route';
 import Redirect from 'react-router-dom/Redirect';
 
-export const PrivateRoute = ({ component: Component, token = false, ...rest }) => (
+export const PrivateRoute = ({
+  component: Component,
+  token = false,
+  ...rest
+}) => (
   <Route
     {...rest}
-    render={props => (
-      token ? <Component {...props} /> : (
+    render={(props) =>
+      token ? (
+        <Component {...props} />
+      ) : (
         <Redirect
           to={{
             pathname: config.routes.signup,
             state: { from: props.location }
           }}
         />
-      ))
+      )
     }
   />
 );

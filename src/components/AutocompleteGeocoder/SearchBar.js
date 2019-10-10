@@ -31,8 +31,8 @@ const closeSize = 20;
 
 const SearchReset = styled.div`
   position: absolute;
-  right:10px;
-  top:12px;
+  right: 10px;
+  top: 12px;
   border-radius: 50%;
   width: ${closeSize}px;
   height: ${closeSize}px;
@@ -44,7 +44,7 @@ const SearchReset = styled.div`
   line-height: 1;
   font-weight: 700;
   font-size: 20px;
-  cursor:pointer;
+  cursor: pointer;
   box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.12);
 
   &:hover {
@@ -58,7 +58,7 @@ class SearchBar extends PureComponent {
      * Called when search Input gets Focus.
      */
     onInputFocus: PropTypes.func,
-/**
+    /**
      *Called when search Input looses Focus.
      */
     onInputBlur: PropTypes.func,
@@ -91,22 +91,22 @@ class SearchBar extends PureComponent {
      * since its last invocation.
      */
     debounceTime: PropTypes.number
-  }
+  };
 
   static defaultProps = {
-    onInputFocus: () => { },
-    onInputBlur: () => { },
-    onSearchStart: () => { },
-    onSearchReset: () => { },
-    onEnterKeyPress: () => { },
+    onInputFocus: () => {},
+    onInputBlur: () => {},
+    onSearchStart: () => {},
+    onSearchReset: () => {},
+    onEnterKeyPress: () => {},
     searchStringMinLength: 3,
     debounceTime: 1000
-  }
+  };
 
   state = {
     searchStarted: false,
     inputValue: ''
-  }
+  };
 
   delayedonSearchEnterCallback = debounce(
     this.props.onSearchEnter,
@@ -153,7 +153,7 @@ class SearchBar extends PureComponent {
       this.props.onEnterKeyPress();
       e.target.blur();
     }
-  }
+  };
 
   render() {
     return (
@@ -171,7 +171,9 @@ class SearchBar extends PureComponent {
         />
         {this.state.inputValue ? (
           <SearchReset onClick={this.resetInput}>×</SearchReset>
-        ) : <StyledSearchIcon />}
+        ) : (
+          <StyledSearchIcon />
+        )}
       </SearchBarWrapper>
     );
   }

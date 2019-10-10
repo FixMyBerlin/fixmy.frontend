@@ -13,18 +13,15 @@ const List = styled.ul`
 `;
 
 const Suggestionlist = ({ suggestions, onSuggestionPick }) => {
-  const suggestionItems = suggestions
-    .map(suggestion => (
-      <Suggestion
-        key={suggestion.id}
-        address={suggestion.address}
-        onSuggestionPick={() => onSuggestionPick(suggestion)}
-      />
-    ));
+  const suggestionItems = suggestions.map((suggestion) => (
+    <Suggestion
+      key={suggestion.id}
+      address={suggestion.address}
+      onSuggestionPick={() => onSuggestionPick(suggestion)}
+    />
+  ));
 
-  return (
-    <List>{suggestionItems}</List>
-  );
+  return <List>{suggestionItems}</List>;
 };
 
 Suggestionlist.propTypes = {

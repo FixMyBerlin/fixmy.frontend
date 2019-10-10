@@ -25,16 +25,19 @@ const MapContent = styled.div`
   `}
 `;
 
-export default props => (
+export default (props) => (
   <Route
     path="(/zustand|/planungen)"
     exact
     render={() => (
-      <MapContent hasLegend={props.displayLegend} isEmbedMode={props.isEmbedMode}>
+      <MapContent
+        hasLegend={props.displayLegend}
+        isEmbedMode={props.isEmbedMode}
+      >
         <Route
           exact
           path="/zustand"
-          render={() => (
+          render={() =>
             props.displayLegend && (
               <MapLegend
                 type="hbi"
@@ -42,17 +45,16 @@ export default props => (
                 isEmbedMode={props.isEmbedMode}
               />
             )
-          )}
+          }
         />
         <Route
           exact
           path="/planungen"
-          render={() => props.displayLegend && (
-            <MapLegend
-              type="plannings"
-              isEmbedMode={props.isEmbedMode}
-            />
-          )}
+          render={() =>
+            props.displayLegend && (
+              <MapLegend type="plannings" isEmbedMode={props.isEmbedMode} />
+            )
+          }
         />
         {!props.isEmbedMode && <MapSwitch />}
       </MapContent>

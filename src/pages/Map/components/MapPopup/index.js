@@ -43,9 +43,15 @@ const IntersectionContent = styled.div`
 const closePopup = () => {
   Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
-  Store.dispatch(MapActions.setView({
-    show3dBuildings: true, pitch: 40, dim: true, animate: true, zoom: 16
-  }));
+  Store.dispatch(
+    MapActions.setView({
+      show3dBuildings: true,
+      pitch: 40,
+      dim: true,
+      animate: true,
+      zoom: 16
+    })
+  );
 };
 
 class MapPopup extends PureComponent {
@@ -54,7 +60,7 @@ class MapPopup extends PureComponent {
     const detailRoute = `/${this.props.activeView}/${this.props.activeSection}/${name}`;
     this.props.history.push(detailRoute);
     closePopup();
-  }
+  };
 
   render() {
     const { data, displayPopup, activeView, popupLocation } = this.props;
@@ -80,9 +86,7 @@ class MapPopup extends PureComponent {
         {data.isIntersection ? (
           <Fragment>
             <IntersectionContent>
-              <Label>
-                Zu den Kreuzungen gibt es noch keine Informationen
-              </Label>
+              <Label>Zu den Kreuzungen gibt es noch keine Informationen</Label>
             </IntersectionContent>
             <BraceWrapper>
               <Brace type={this.props.activeView} />
@@ -91,11 +95,11 @@ class MapPopup extends PureComponent {
         ) : (
           <Fragment>
             {isPlaningView && <PlanningStatus section={data} />}
-            {isStatus && <BikeLevelStatus onClick={this.onDetailClick} section={data} />}
+            {isStatus && (
+              <BikeLevelStatus onClick={this.onDetailClick} section={data} />
+            )}
             <MoreButtonWrapper>
-              <Button onClick={this.onDetailClick}>
-                mehr Infos
-              </Button>
+              <Button onClick={this.onDetailClick}>mehr Infos</Button>
             </MoreButtonWrapper>
             <BraceWrapper>
               <Brace type={activeView} />
@@ -108,7 +112,7 @@ class MapPopup extends PureComponent {
 }
 
 export default withRouter(
-  connect(state => ({
+  connect((state) => ({
     popupLocation: state.MapState.popupLocation,
     activeSection: state.AppState.activeSection,
     activeView: state.AppState.activeView,

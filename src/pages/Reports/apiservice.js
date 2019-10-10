@@ -5,12 +5,19 @@ import validateNewReport from './test/schemaValidation/validateNewReport';
 const ROUTE = 'reports';
 
 // copied from User\apiservice TODO: factor out, de-dupe
-async function handleSubmitRequest({ method = 'POST', json = {}, token = false }, respType = 'json') {
+async function handleSubmitRequest(
+  { method = 'POST', json = {}, token = false },
+  respType = 'json'
+) {
   let response = {};
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   try {
     if (respType) {
-      response = await ky(`${config.apiUrl}/${ROUTE}`, { method, json, headers })[respType]();
+      response = await ky(`${config.apiUrl}/${ROUTE}`, {
+        method,
+        json,
+        headers
+      })[respType]();
     } else {
       await ky(`${config.apiUrl}/${ROUTE}`, { method, json, headers });
     }
@@ -21,11 +28,16 @@ async function handleSubmitRequest({ method = 'POST', json = {}, token = false }
   return response;
 }
 
-async function handleFetchReports({ method = 'GET', token = false }, respType = 'json') {
+async function handleFetchReports(
+  { method = 'GET', token = false },
+  respType = 'json'
+) {
   let response = {};
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   try {
-      response = await ky(`${config.apiUrl}/${ROUTE}`, { method, headers })[respType]();
+    response = await ky(`${config.apiUrl}/${ROUTE}`, { method, headers })[
+      respType
+    ]();
   } catch (e) {
     response.error = await e.response.json();
   }
@@ -59,13 +71,23 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
   obj.description = newReportObject.what.additionalInfo.description;
 
   // omit base64 prefix in photo string
-  let { what: { additionalInfo: { photo } } } = newReportObject;
+  let {
+    what: {
+      additionalInfo: { photo }
+    }
+  } = newReportObject;
   if (photo) {
-    const BASE64_PREFIXES = ['data:image/jpg;base64,', 'data:image/jpeg;base64,'];
-    if (!BASE64_PREFIXES.some(prefix => photo.includes(prefix))) {
+    const BASE64_PREFIXES = [
+      'data:image/jpg;base64,',
+      'data:image/jpeg;base64,'
+    ];
+    if (!BASE64_PREFIXES.some((prefix) => photo.includes(prefix))) {
       throw new Error(oneLine`Failed to remove base 64 prefix.
       Expected prefix to be '${BASE64_PREFIXES.join(' or ')}',
-      found photo string starts with ${photo.slice(0, photo.indexOf(',') || 25)}`);
+      found photo string starts with ${photo.slice(
+        0,
+        photo.indexOf(',') || 25
+      )}`);
     }
     BASE64_PREFIXES.forEach((prefix) => {
       photo = photo.replace(prefix, '');
@@ -83,8 +105,9 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
   // validate object
   const validationResult = validateNewReport(obj);
   if (validationResult.errors.length) {
-    throw new Error(`Marshalled newReport object is not structured as stated in json schema: ${
-      validationResult.errors}`);
+    throw new Error(
+      `Marshalled newReport object is not structured as stated in json schema: ${validationResult.errors}`
+    );
   }
 
   return obj;
@@ -119,7 +142,10 @@ export async function addUserToReport(reportId, userId) {
   }
 
   try {
-    reportPatch = await ky(`${config.apiUrl}/reports/${reportId}`, { method: 'PATCH', json: { user: userId } }).json();
+    reportPatch = await ky(`${config.apiUrl}/reports/${reportId}`, {
+      method: 'PATCH',
+      json: { user: userId }
+    }).json();
   } catch (err) {
     throw new Error(`Can't connect reportId ${reportId} with user ${userId}`);
   }

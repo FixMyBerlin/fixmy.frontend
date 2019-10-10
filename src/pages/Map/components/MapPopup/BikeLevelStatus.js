@@ -3,7 +3,11 @@ import styled from 'styled-components';
 
 import BraceVertical from '~/images/brace-vertical.svg';
 import { numberFormat } from '~/utils/utils';
-import { getHBIbyProps, getHBIColorByIndex, getOrientationNames } from '~/utils/hbi-utils';
+import {
+  getHBIbyProps,
+  getHBIColorByIndex,
+  getOrientationNames
+} from '~/utils/hbi-utils';
 
 import HBISign from '~/components/HBISign';
 import Label from '~/components/Label';
@@ -43,7 +47,7 @@ const SectionLeft = styled(Section)`
 `;
 
 const LevelLabel = styled.span`
-  color: ${props => props.color || config.colors.darkbg};
+  color: ${(props) => props.color || config.colors.darkbg};
 `;
 
 export default (props) => {
@@ -58,14 +62,31 @@ export default (props) => {
   const level0Color = getHBIColorByIndex(level0);
   const level1Color = getHBIColorByIndex(level1);
 
-  const orientationNames = getOrientationNames(props.section.side0_orientation, props.section.side1_orientation);
+  const orientationNames = getOrientationNames(
+    props.section.side0_orientation,
+    props.section.side1_orientation
+  );
 
   return (
     <BikeLevelStatus {...props}>
       <SectionLeft>
         <SidesWrapper>
-          {isLevel0Valid && <Label margin="0 0 10px 0">{orientationNames.side0}: <LevelLabel color={level0Color}>{numberFormat(level0)}</LevelLabel></Label>}
-          {isLevel1Valid && <Label>{orientationNames.side1}: <LevelLabel color={level1Color}>{numberFormat(level1)}</LevelLabel></Label>}
+          {isLevel0Valid && (
+            <Label margin="0 0 10px 0">
+              {orientationNames.side0}:{' '}
+              <LevelLabel color={level0Color}>
+                {numberFormat(level0)}
+              </LevelLabel>
+            </Label>
+          )}
+          {isLevel1Valid && (
+            <Label>
+              {orientationNames.side1}:{' '}
+              <LevelLabel color={level1Color}>
+                {numberFormat(level1)}
+              </LevelLabel>
+            </Label>
+          )}
         </SidesWrapper>
         <StyledBraceVertical />
       </SectionLeft>

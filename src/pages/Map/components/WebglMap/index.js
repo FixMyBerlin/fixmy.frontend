@@ -14,8 +14,16 @@ import * as AppActions from '~/AppState';
 import * as MapActions from '~/pages/Map/MapState';
 import PlanningMarkers from '~/pages/Map/components/PlanningMarkers';
 import {
-  colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer,
-  filterLayersById, getCenterFromGeom, resetMap, intersectionLayers, smallStreetLayersWithOverlay,
+  colorizeHbiLines,
+  animateView,
+  setView,
+  colorizePlanningLines,
+  toggleLayer,
+  filterLayersById,
+  getCenterFromGeom,
+  resetMap,
+  intersectionLayers,
+  smallStreetLayersWithOverlay,
   parseUrlOptions
 } from '~/pages/Map/map-utils';
 
@@ -42,7 +50,7 @@ class Map extends PureComponent {
     calculatePopupPosition: PropTypes.bool,
     drawOverlayLine: PropTypes.bool,
     dim: PropTypes.bool
-  }
+  };
 
   static defaultProps = {
     zoom: config.map.view.zoom,
@@ -58,13 +66,13 @@ class Map extends PureComponent {
     calculatePopupPosition: false,
     drawOverlayLine: true,
     dim: false
-  }
+  };
 
   state = {
     loading: true,
     popupLngLat: false,
     map: false
-  }
+  };
 
   componentDidMount() {
     this.map = new MapboxGL.Map({
@@ -86,7 +94,8 @@ class Map extends PureComponent {
       return false;
     }
 
-    const viewChanged = prevProps.zoom !== this.props.zoom ||
+    const viewChanged =
+      prevProps.zoom !== this.props.zoom ||
       !_isEqual(prevProps.center, this.props.center) ||
       prevProps.pitch !== this.props.pitch ||
       prevProps.bearing !== this.props.bearing;
@@ -95,7 +104,8 @@ class Map extends PureComponent {
       this.setView(this.getViewFromProps(), this.props.animate);
     }
 
-    const layerChanged = prevProps.activeLayer !== this.props.activeLayer ||
+    const layerChanged =
+      prevProps.activeLayer !== this.props.activeLayer ||
       prevProps.activeSection !== this.props.activeSection ||
       prevProps.show3dBuildings !== this.props.show3dBuildings ||
       !_isEqual(prevProps.filterHbi, this.props.filterHbi);
@@ -108,7 +118,10 @@ class Map extends PureComponent {
       this.disablePopup();
     }
 
-    if (this.props.match.url === '/my-hbi' && !_isEqual(prevProps.hbi_values, this.props.hbi_values)) {
+    if (
+      this.props.match.url === '/my-hbi' &&
+      !_isEqual(prevProps.hbi_values, this.props.hbi_values)
+    ) {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
     }
 
@@ -124,14 +137,12 @@ class Map extends PureComponent {
     return this.map.resize();
   }
 
-  getViewFromProps = () => (
-    {
-      zoom: this.props.zoom,
-      center: this.props.center,
-      bearing: this.props.bearing,
-      pitch: this.props.pitch
-    }
-  )
+  getViewFromProps = () => ({
+    zoom: this.props.zoom,
+    center: this.props.center,
+    bearing: this.props.bearing,
+    pitch: this.props.pitch
+  });
 
   setView = (view, animate = false) => {
     if (animate) {
@@ -139,7 +150,7 @@ class Map extends PureComponent {
     } else {
       setView(this.map, view);
     }
-  }
+  };
 
   handleLoad = () => {
     this.map.on('click', config.map.layers.bgLayer, this.handleClick);
@@ -162,15 +173,19 @@ class Map extends PureComponent {
     this.setState({ loading: false, map: this.map });
 
     this.map.resize();
-  }
+  };
 
   updateLayers = () => {
     const filterId = this.props.activeSection;
     const isZustand = this.props.activeLayer === 'zustand';
     const isPlanungen = this.props.activeLayer === 'planungen';
 
-    intersectionLayers.forEach(layerName => toggleLayer(this.map, config.map.layers[layerName], isZustand));
-    smallStreetLayersWithOverlay.forEach(layerName => toggleLayer(this.map, config.map.layers[layerName], isPlanungen));
+    intersectionLayers.forEach((layerName) =>
+      toggleLayer(this.map, config.map.layers[layerName], isZustand)
+    );
+    smallStreetLayersWithOverlay.forEach((layerName) =>
+      toggleLayer(this.map, config.map.layers[layerName], isPlanungen)
+    );
 
     if (isZustand) {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
@@ -185,16 +200,24 @@ class Map extends PureComponent {
     toggleLayer(this.map, config.map.layers.centerLayer, isZustand);
     toggleLayer(this.map, config.map.layers.side0Layer, isZustand);
     toggleLayer(this.map, config.map.layers.side1Layer, isZustand);
-    toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
+    toggleLayer(
+      this.map,
+      config.map.layers.buildings3d,
+      this.props.show3dBuildings
+    );
     toggleLayer(this.map, config.map.layers.dimmingLayer, this.props.dim);
-    toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
+    toggleLayer(
+      this.map,
+      config.map.layers.overlayLine,
+      this.props.drawOverlayLine
+    );
 
     filterLayersById(this.map, filterId);
-  }
+  };
 
   handleClick = (e) => {
-    const properties = idx(e.features, _ => _[0].properties);
-    const geometry = idx(e.features, _ => _[0].geometry);
+    const properties = idx(e.features, (_) => _[0].properties);
+    const geometry = idx(e.features, (_) => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
 
     if (config.debug) {
@@ -215,31 +238,37 @@ class Map extends PureComponent {
       }
 
       Store.dispatch(AppActions.setActiveSection(id));
-      Store.dispatch(MapActions.setView({
-        center,
-        animate: true,
-        zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
-      }));
+      Store.dispatch(
+        MapActions.setView({
+          center,
+          animate: true,
+          zoom: isSmallScreen()
+            ? config.map.zoomAfterGeocode
+            : this.map.getZoom()
+        })
+      );
 
       this.handleMove();
     }
 
     this.updatePopupPos(center);
-  }
+  };
 
   handleIntersectionClick = (evt) => {
     Store.dispatch(MapActions.setPopupData({ isIntersection: true }));
     Store.dispatch(MapActions.setPopupVisible(true));
     Store.dispatch(AppActions.setActiveSection(1));
-    Store.dispatch(MapActions.setView({
-      center: evt.lngLat,
-      animate: true,
-      zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
-    }));
+    Store.dispatch(
+      MapActions.setView({
+        center: evt.lngLat,
+        animate: true,
+        zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
+      })
+    );
 
     this.handleMove();
     this.updatePopupPos(evt.lngLat);
-  }
+  };
 
   handleMarkerClick = (evt, data) => {
     evt.preventDefault();
@@ -263,7 +292,7 @@ class Map extends PureComponent {
       name: name || '-'
     };
 
-    if (idx(match, _ => _.params.id)) {
+    if (idx(match, (_) => _.params.id)) {
       const slugifiedName = slugify(name || '').toLowerCase();
       const detailRoute = `/${this.props.activeView}/${id}/${slugifiedName}`;
       return this.props.history.push(detailRoute);
@@ -272,28 +301,30 @@ class Map extends PureComponent {
     Store.dispatch(MapActions.setPopupData(properties));
     Store.dispatch(MapActions.setPopupVisible(true));
     Store.dispatch(AppActions.setActiveSection(id));
-    Store.dispatch(MapActions.setView({
-      center,
-      animate: true,
-      zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
-    }));
+    Store.dispatch(
+      MapActions.setView({
+        center,
+        animate: true,
+        zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
+      })
+    );
 
     this.handleMove();
     this.updatePopupPos(center);
-  }
+  };
 
   handleMoveEnd = () => {
     if (!this.props.hasMoved) {
       Store.dispatch(MapActions.setHasMoved(true));
     }
-  }
+  };
 
   handleMove = () => {
     if (this.state.popupLngLat && this.props.calculatePopupPosition) {
       const center = this.map.project(this.state.popupLngLat);
       Store.dispatch(MapActions.setPopupLocation(center));
     }
-  }
+  };
 
   updatePopupPos(center) {
     if (center && this.props.calculatePopupPosition) {
@@ -308,10 +339,15 @@ class Map extends PureComponent {
   }
 
   render() {
-    const markerData = idx(this.props.planningData, _ => _.results);
+    const markerData = idx(this.props.planningData, (_) => _.results);
 
     return (
-      <StyledMap className={this.props.className} ref={(ref) => { this.root = ref; }}>
+      <StyledMap
+        className={this.props.className}
+        ref={(ref) => {
+          this.root = ref;
+        }}
+      >
         {this.props.children}
         <PlanningMarkers
           map={this.state.map}

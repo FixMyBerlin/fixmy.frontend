@@ -50,13 +50,15 @@ class SubmitReportDialog extends PureComponent {
   }
 
   navigateDialog = (stepNr) => {
-    this.props.history.push(`${this.props.match.path.replace(':step', stepNr)}`);
-  }
+    this.props.history.push(
+      `${this.props.match.path.replace(':step', stepNr)}`
+    );
+  };
 
   abortDialog = () => {
     this.props.resetDialogState();
     this.props.history.push(config.routes.reports.map);
-  }
+  };
 
   render = () => {
     let content;
@@ -93,19 +95,18 @@ class SubmitReportDialog extends PureComponent {
               onClose={this.abortDialog}
             />
           </Fragment>
-        )
-          : (
-            <Fragment>
-              {tempLocation && tempLocation.pinned && (
-                <FormProgressBar
-                  stepNumber={1}
-                  stepCaption="Ort"
-                  onAbortButtonTap={this.abortDialog}
-                />
-              )}
-              <LocateMeMap onProceed={proceed} />
-            </Fragment>
-          );
+        ) : (
+          <Fragment>
+            {tempLocation && tempLocation.pinned && (
+              <FormProgressBar
+                stepNumber={1}
+                stepCaption="Ort"
+                onAbortButtonTap={this.abortDialog}
+              />
+            )}
+            <LocateMeMap onProceed={proceed} />
+          </Fragment>
+        );
         break;
 
       case 2:
@@ -116,10 +117,11 @@ class SubmitReportDialog extends PureComponent {
               stepCaption="Details"
               onAbortButtonTap={this.abortDialog}
             />
-            <BikestandsForm onConfirm={(stateNode) => {
-              this.props.setBikestandCount(stateNode);
-              proceed();
-            }}
+            <BikestandsForm
+              onConfirm={(stateNode) => {
+                this.props.setBikestandCount(stateNode);
+                proceed();
+              }}
             />
           </Fragment>
         );
@@ -133,11 +135,11 @@ class SubmitReportDialog extends PureComponent {
               stepCaption="Fotos und Beschreibung"
               onAbortButtonTap={this.abortDialog}
             />
-            <AdditionalDataForm onConfirm={(formData) => {
-              this.props.setAdditionalData(formData);
-              proceed();
-            }}
-
+            <AdditionalDataForm
+              onConfirm={(formData) => {
+                this.props.setAdditionalData(formData);
+                proceed();
+              }}
             />
           </Fragment>
         );
@@ -151,11 +153,12 @@ class SubmitReportDialog extends PureComponent {
               stepCaption="Parkhaus"
               onAbortButtonTap={this.abortDialog}
             />
-            <BicycleParkingGarageForm onConfirm={(bool) => {
-              this.props.setFeeAcceptable(bool);
-              this.props.submitReport(this.props.token);
-              proceed();
-            }}
+            <BicycleParkingGarageForm
+              onConfirm={(bool) => {
+                this.props.setFeeAcceptable(bool);
+                this.props.submitReport(this.props.token);
+                proceed();
+              }}
             />
           </Fragment>
         );
@@ -164,17 +167,11 @@ class SubmitReportDialog extends PureComponent {
       case 5:
         content = submitting ? (
           <LoaderWrapper>
-            <PropagateLoader
-              color={`${config.colors.interaction}`}
-            />
+            <PropagateLoader color={`${config.colors.interaction}`} />
           </LoaderWrapper>
         ) : (
           <Fragment>
-            <FormProgressBar
-              stepNumber={5}
-              stepCaption="Fertig"
-              isLastStep
-            />
+            <FormProgressBar stepNumber={5} stepCaption="Fertig" isLastStep />
             <ReportSubmitted
               reportId={newReport.id}
               error={error}
@@ -184,25 +181,19 @@ class SubmitReportDialog extends PureComponent {
               removeError={this.props.removeError}
             />
           </Fragment>
-          );
+        );
         break;
       case 6:
         content = (
           <Fragment>
-            <FormProgressBar
-              stepNumber={6}
-              stepCaption="Danke"
-              isLastStep
-            />
-            <ThanksPage
-              reportId={newReport.id}
-            />
+            <FormProgressBar stepNumber={6} stepCaption="Danke" isLastStep />
+            <ThanksPage reportId={newReport.id} />
           </Fragment>
         );
         break;
 
       default:
-        content = (<Markdown page="nomatch" />);
+        content = <Markdown page="nomatch" />;
     } // end of switch statement
 
     return content;
@@ -220,8 +211,11 @@ const mapDispatchToProps = {
   submitReport
 };
 
-export default connect(state => ({
-  reportsState: state.ReportsState,
-  token: state.UserState.token,
-  user: state.UserState.userData
-}), mapDispatchToProps)(SubmitReportDialog);
+export default connect(
+  (state) => ({
+    reportsState: state.ReportsState,
+    token: state.UserState.token,
+    user: state.UserState.userData
+  }),
+  mapDispatchToProps
+)(SubmitReportDialog);

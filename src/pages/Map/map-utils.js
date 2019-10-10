@@ -11,23 +11,25 @@ import { byKey, isNumeric, getParameterByName } from '~/utils/utils';
 const planningPhases = byKey(config.planningPhases, 'id');
 
 export const intersectionLayers = [
-  'intersections', 'intersectionsSide0', 'intersectionsSide1', 'intersectionsOverlay'
+  'intersections',
+  'intersectionsSide0',
+  'intersectionsSide1',
+  'intersectionsOverlay'
 ];
 
-export const standardLayers = [
-  'centerLayer', 'side0Layer', 'side1Layer'
-];
+export const standardLayers = ['centerLayer', 'side0Layer', 'side1Layer'];
 
-export const standardLayersWithOverlay = [
-  ...standardLayers, 'overlayLine'
-];
+export const standardLayersWithOverlay = [...standardLayers, 'overlayLine'];
 
 export const smallStreetLayers = [
-  'centerLayerSmall', 'side0LayerSmall', 'side1LayerSmall'
+  'centerLayerSmall',
+  'side0LayerSmall',
+  'side1LayerSmall'
 ];
 
 export const smallStreetLayersWithOverlay = [
-  ...smallStreetLayers, 'overlayLineSmall'
+  ...smallStreetLayers,
+  'overlayLineSmall'
 ];
 
 export function setView(map, view) {
@@ -55,28 +57,43 @@ export function toggleLayer(map, layer, isVisible) {
 // used to highlight a section by id
 export function filterLayersById(map, id) {
   if (id) {
-    const VisibilityFilter = ['case',
-      ['!=', ['get', 'id'], id], 0.2,
-      1
-    ];
+    const VisibilityFilter = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
 
-    standardLayers.forEach(layerName => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter));
-    smallStreetLayers.forEach(layerName => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter));
+    standardLayers.forEach((layerName) =>
+      map.setPaintProperty(
+        config.map.layers[layerName],
+        'line-opacity',
+        VisibilityFilter
+      )
+    );
+    smallStreetLayers.forEach((layerName) =>
+      map.setPaintProperty(
+        config.map.layers[layerName],
+        'line-opacity',
+        VisibilityFilter
+      )
+    );
   }
 }
 
 function setMapFilter(map, filter) {
-  standardLayersWithOverlay.forEach(layerName => map.setFilter(config.map.layers[layerName], filter));
+  standardLayersWithOverlay.forEach((layerName) =>
+    map.setFilter(config.map.layers[layerName], filter)
+  );
   map.setFilter(config.map.layers.bgLayer, filter);
 }
 
 function getPlanningLineColorRules(side = '') {
   return [
     'case',
-    ['==', 'draft', ['get', `${side}planning_phase`]], planningPhases.draft.color,
-    ['==', 'planning', ['get', `${side}planning_phase`]], planningPhases.planning.color,
-    ['==', 'execution', ['get', `${side}planning_phase`]], planningPhases.execution.color,
-    ['==', 'ready', ['get', `${side}planning_phase`]], planningPhases.ready.color,
+    ['==', 'draft', ['get', `${side}planning_phase`]],
+    planningPhases.draft.color,
+    ['==', 'planning', ['get', `${side}planning_phase`]],
+    planningPhases.planning.color,
+    ['==', 'execution', ['get', `${side}planning_phase`]],
+    planningPhases.execution.color,
+    ['==', 'ready', ['get', `${side}planning_phase`]],
+    planningPhases.ready.color,
     '#FFF'
   ];
 }
@@ -84,16 +101,21 @@ function getPlanningLineColorRules(side = '') {
 function getPlanningFilterRules(side = '', filter) {
   return [
     'case',
-    ['==', 'draft', ['get', `${side}planning_phase`]], filter[0] ? 1 : 0,
-    ['==', 'planning', ['get', `${side}planning_phase`]], filter[1] ? 1 : 0,
-    ['==', 'execution', ['get', `${side}planning_phase`]], filter[2] ? 1 : 0,
-    ['==', 'ready', ['get', `${side}planning_phase`]], filter[3] ? 1 : 0,
+    ['==', 'draft', ['get', `${side}planning_phase`]],
+    filter[0] ? 1 : 0,
+    ['==', 'planning', ['get', `${side}planning_phase`]],
+    filter[1] ? 1 : 0,
+    ['==', 'execution', ['get', `${side}planning_phase`]],
+    filter[2] ? 1 : 0,
+    ['==', 'ready', ['get', `${side}planning_phase`]],
+    filter[3] ? 1 : 0,
     0
   ];
 }
 
 export function colorizePlanningLines(map, filter) {
-  setMapFilter(map, ['any',
+  setMapFilter(map, [
+    'any',
     ['has', 'side0_planning_phase'],
     ['has', 'side1_planning_phase'],
     ['has', 'planning_phase']
@@ -105,8 +127,20 @@ export function colorizePlanningLines(map, filter) {
     getPlanningLineColorRules('side1_')
   ];
 
-  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i]));
-  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i]));
+  standardLayers.forEach((layerName, i) =>
+    map.setPaintProperty(
+      config.map.layers[layerName],
+      'line-color',
+      paintRules[i]
+    )
+  );
+  smallStreetLayers.forEach((layerName, i) =>
+    map.setPaintProperty(
+      config.map.layers[layerName],
+      'line-color',
+      paintRules[i]
+    )
+  );
 
   const opacityRules = [
     getPlanningFilterRules('', filter),
@@ -114,8 +148,20 @@ export function colorizePlanningLines(map, filter) {
     getPlanningFilterRules('side1_', filter)
   ];
 
-  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i]));
-  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i]));
+  standardLayers.forEach((layerName, i) =>
+    map.setPaintProperty(
+      config.map.layers[layerName],
+      'line-opacity',
+      opacityRules[i]
+    )
+  );
+  smallStreetLayers.forEach((layerName, i) =>
+    map.setPaintProperty(
+      config.map.layers[layerName],
+      'line-opacity',
+      opacityRules[i]
+    )
+  );
 }
 
 function getHbiExpression(sideKey) {
@@ -133,11 +179,16 @@ function getHbiExpression(sideKey) {
 function getHbiLineColorRules(hbi) {
   return [
     'case',
-    ['<', hbi, 0], 'white', // we set a negative default value in order to recognize invalid sections. see function above
-    ['<', hbi, config.hbiStops[0].max], config.hbiStops[0].color,
-    ['<', hbi, config.hbiStops[1].max], config.hbiStops[1].color,
-    ['<', hbi, config.hbiStops[2].max], config.hbiStops[2].color,
-    ['<=', hbi, config.hbiStops[3].max], config.hbiStops[3].color,
+    ['<', hbi, 0],
+    'white', // we set a negative default value in order to recognize invalid sections. see function above
+    ['<', hbi, config.hbiStops[0].max],
+    config.hbiStops[0].color,
+    ['<', hbi, config.hbiStops[1].max],
+    config.hbiStops[1].color,
+    ['<', hbi, config.hbiStops[2].max],
+    config.hbiStops[2].color,
+    ['<=', hbi, config.hbiStops[3].max],
+    config.hbiStops[3].color,
     config.hbiStops[3].color
   ];
 }
@@ -145,16 +196,37 @@ function getHbiLineColorRules(hbi) {
 function getHbiFilterRules(hbi, filter) {
   return [
     'case',
-    ['all', ['>', hbi, config.hbiStops[0].min], ['<', hbi, config.hbiStops[0].max]], filter[0] ? 1 : 0,
-    ['all', ['>', hbi, config.hbiStops[1].min], ['<', hbi, config.hbiStops[1].max]], filter[1] ? 1 : 0,
-    ['all', ['>', hbi, config.hbiStops[2].min], ['<', hbi, config.hbiStops[2].max]], filter[2] ? 1 : 0,
-    ['all', ['>', hbi, config.hbiStops[3].min], ['<', hbi, config.hbiStops[3].max]], filter[3] ? 1 : 0,
+    [
+      'all',
+      ['>', hbi, config.hbiStops[0].min],
+      ['<', hbi, config.hbiStops[0].max]
+    ],
+    filter[0] ? 1 : 0,
+    [
+      'all',
+      ['>', hbi, config.hbiStops[1].min],
+      ['<', hbi, config.hbiStops[1].max]
+    ],
+    filter[1] ? 1 : 0,
+    [
+      'all',
+      ['>', hbi, config.hbiStops[2].min],
+      ['<', hbi, config.hbiStops[2].max]
+    ],
+    filter[2] ? 1 : 0,
+    [
+      'all',
+      ['>', hbi, config.hbiStops[3].min],
+      ['<', hbi, config.hbiStops[3].max]
+    ],
+    filter[3] ? 1 : 0,
     0
   ];
 }
 
 export function colorizeHbiLines(map, hbiValues, hbiFilter) {
-  setMapFilter(map, ['any',
+  setMapFilter(map, [
+    'any',
     ['has', 'side0_safety'],
     ['has', 'side0_velocity']
   ]);
@@ -172,8 +244,20 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
     getHbiLineColorRules(hbiExprSide1)
   ];
 
-  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i]));
-  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i]));
+  standardLayers.forEach((layerName, i) =>
+    map.setPaintProperty(
+      config.map.layers[layerName],
+      'line-color',
+      lineColorRules[i]
+    )
+  );
+  smallStreetLayers.forEach((layerName, i) =>
+    map.setPaintProperty(
+      config.map.layers[layerName],
+      'line-color',
+      lineColorRules[i]
+    )
+  );
 
   const lineOpacityRules = [
     getHbiFilterRules(hbiExprCenter, hbiFilter),
@@ -181,8 +265,20 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
     getHbiFilterRules(hbiExprSide1, hbiFilter)
   ];
 
-  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i]));
-  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i]));
+  standardLayers.forEach((layerName, i) =>
+    map.setPaintProperty(
+      config.map.layers[layerName],
+      'line-opacity',
+      lineOpacityRules[i]
+    )
+  );
+  smallStreetLayers.forEach((layerName, i) =>
+    map.setPaintProperty(
+      config.map.layers[layerName],
+      'line-opacity',
+      lineOpacityRules[i]
+    )
+  );
 }
 
 export function resetMap({ zoom = null } = {}) {
@@ -209,7 +305,10 @@ export function resetMap({ zoom = null } = {}) {
 export function getCenterFromGeom(geometry, defaultCenter = null) {
   if (geometry && geometry.coordinates) {
     if (geometry.type === 'MultiLineString') {
-      geometry = turfLineString(geometry.coordinates.reduce((res, coord) => res.concat(coord)), []);
+      geometry = turfLineString(
+        geometry.coordinates.reduce((res, coord) => res.concat(coord)),
+        []
+      );
     }
 
     const length = turfLength(geometry);
@@ -222,11 +321,15 @@ export function getCenterFromGeom(geometry, defaultCenter = null) {
 export async function getGeoLocation() {
   return new Promise((resolve, reject) => {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        resolve(position);
-      }, (err) => {
-        reject(err);
-      }, { timeout: 10000 });
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve(position);
+        },
+        (err) => {
+          reject(err);
+        },
+        { timeout: 10000 }
+      );
     } else {
       reject();
     }

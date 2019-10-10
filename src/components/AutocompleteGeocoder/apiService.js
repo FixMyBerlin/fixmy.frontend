@@ -2,11 +2,13 @@ let abortController = new window.AbortController();
 
 function compileSearchUrl(searchString) {
   const { accessToken, geocoderBounds } = config.map;
-  return `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchString}.json?` +
+  return (
+    `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchString}.json?` +
     `access_token=${accessToken}&autocomplete=true&language=de&` +
     `bbox=${geocoderBounds}&` +
     'limit=3&' +
-    'types=address'; // maybe using "poi" would also be a good idea
+    'types=address'
+  ); // maybe using "poi" would also be a good idea
 }
 
 /**
@@ -33,7 +35,7 @@ export const parseSuggestion = ({
   id,
   relevance,
   properties
- }) => ({
+}) => ({
   id,
   coords: { lng: center[0], lat: center[1] },
   address: address.split(', Deutschland')[0], // omit statement of country
@@ -54,17 +56,18 @@ export async function fetchSuggestions(searchString) {
 
   const url = compileSearchUrl(searchString);
   return fetch(url, { signal })
-    .then(res => res.json())
-    .then(res => res.features)
+    .then((res) => res.json())
+    .then((res) => res.features)
     .then((fetchedSuggestions) => {
-        if (!fetchedSuggestions.length) return [];
-        const parsedSuggestions = fetchedSuggestions.map(parseSuggestion);
-        const filteredSuggestions = filterSuggestions(parsedSuggestions);
-        return filteredSuggestions;
+      if (!fetchedSuggestions.length) return [];
+      const parsedSuggestions = fetchedSuggestions.map(parseSuggestion);
+      const filteredSuggestions = filterSuggestions(parsedSuggestions);
+      return filteredSuggestions;
     })
     .catch((error) => {
       // if (error.name === 'AbortError') { FIXME: documented way of detecting an abortError won't work
-      if (error.message.includes('aborted')) { // workaround
+      if (error.message.includes('aborted')) {
+        // workaround
         console.log('cancelled');
         return [];
       }

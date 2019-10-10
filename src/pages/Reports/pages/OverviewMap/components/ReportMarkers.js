@@ -61,8 +61,10 @@ class ReportMarkers extends PureComponent {
         }
       }
 
-      el.innerHTML = `<img class="marker-image" src="${Markers[d.details.subject]}" />`;
-      el.addEventListener('click', evt => this.props.onClick(evt, d));
+      el.innerHTML = `<img class="marker-image" src="${
+        Markers[d.details.subject]
+      }" />`;
+      el.addEventListener('click', (evt) => this.props.onClick(evt, d));
 
       return new MapboxGL.Marker(el)
         .setLngLat(lngLat)

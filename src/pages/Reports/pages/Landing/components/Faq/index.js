@@ -72,13 +72,12 @@ class FaqSection extends PureComponent {
   };
 
   render() {
-    const faqItems = this.state.content
-      .map(item => (
-        <FaqItem
-          key={item.heading.replace(/ /g, '')} // not sure what to use here besides the array index
-          {...item}
-        />
-      ));
+    const faqItems = this.state.content.map((item) => (
+      <FaqItem
+        key={item.heading.replace(/ /g, '')} // not sure what to use here besides the array index
+        {...item}
+      />
+    ));
 
     return (
       <FaqWrapper>

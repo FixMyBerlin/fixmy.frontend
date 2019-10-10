@@ -7,7 +7,11 @@
 import booleanWithin from '@turf/boolean-within';
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils';
-import { apiFetchReports, apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
+import {
+  apiFetchReports,
+  apiSubmitReport,
+  marshallNewReportObjectFurSubmit
+} from '~/pages/Reports/apiservice';
 
 const RESET_DIALOG_STATE = 'Reports/OverviewMapState/RESET_DIALOG_STATE';
 const SET_REPORT_DATA = 'Reports/OverviewMapState/SET_REPORT_DATA';
@@ -18,10 +22,13 @@ const SET_DEVICE_LOCATION = 'Reports/ReportsDialogState/SET_DEVICE_LOCATION';
 const GEOCODE_DONE = 'Reports/ReportsDialogState/GEOCODE_SUCCESS';
 const VALIDATE_POSITION = 'Reports/ReportsDialogState/VALIDATE_POSITION';
 const INVALIDATE_POSITION = 'Reports/ReportsDialogState/INVALIDATE_POSITION';
-const REVERSE_GEOCODE_DONE = 'Reports/ReportsDialogState/REVERSE_GEOCODE_SUCCESS';
+const REVERSE_GEOCODE_DONE =
+  'Reports/ReportsDialogState/REVERSE_GEOCODE_SUCCESS';
 const REVERSE_GEOCODE_FAIL = 'Reports/ReportsDialogState/REVERSE_GEOCODE_FAIL';
-const SET_TEMP_LOCATION_LNG_LAT = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_LNG_LAT';
-const SET_TEMP_LOCATION_ADDRESS = 'Reports/ReportsDialogState/SET_TEMP_LOCATION_ADDRESS';
+const SET_TEMP_LOCATION_LNG_LAT =
+  'Reports/ReportsDialogState/SET_TEMP_LOCATION_LNG_LAT';
+const SET_TEMP_LOCATION_ADDRESS =
+  'Reports/ReportsDialogState/SET_TEMP_LOCATION_ADDRESS';
 const CONFIRM_LOCATION = 'Reports/ReportsDialogState/CONFIRM_LOCATION';
 const ADD_ERROR = 'Reports/ReportsDialogState/ADD_ERROR'; // generic error
 const REMOVE_ERROR = 'Reports/ReportsDialogState/REMOVE_ERROR';
@@ -29,11 +36,14 @@ const SET_BIKESTAND_COUNT = 'Reports/ReportsDialogState/SET_BIKESTAND_COUNT';
 const SET_ADDITIONAL_DATA = 'Reports/ReportsDialogState/SET_ADDITIONAL_DATA';
 const SET_FEE_ACCEPTABLE = 'Reports/ReportsDialogState/SET_FEE_ACCEPTABLE';
 const SUBMIT_REPORT = 'Reports/ReportsDialogState/SUBMIT_REPORT';
-const SUBMIT_REPORT_SUCCESS = 'Reports/ReportsDialogState/SUBMIT_REPORT_SUCCESS';
+const SUBMIT_REPORT_SUCCESS =
+  'Reports/ReportsDialogState/SUBMIT_REPORT_SUCCESS';
 const SUBMIT_REPORT_ERROR = 'Reports/ReportsDialogState/SUBMIT_REPORT_ERROR';
 const SET_SELECTED_REPORT = 'Reports/ReportsDialogState/SET_SELECTED_REPORT';
-const SET_SELECTED_REPORT_POS = 'Reports/ReportsDialogState/SET_SELECTED_REPORT_POS';
-const UNSET_SELECTED_REPORT = 'Reports/ReportsDialogState/UNSET_SELECTED_REPORT';
+const SET_SELECTED_REPORT_POS =
+  'Reports/ReportsDialogState/SET_SELECTED_REPORT_POS';
+const UNSET_SELECTED_REPORT =
+  'Reports/ReportsDialogState/UNSET_SELECTED_REPORT';
 
 const initialState = {
   reports: [], // existing reports, fetched via API
@@ -79,7 +89,7 @@ export function handleGeocodeSuccess({ coords, address }) {
 }
 
 // TODO: unify syntax used here
-export const addError = error => ({
+export const addError = (error) => ({
   type: ADD_ERROR,
   error
 });
@@ -88,17 +98,17 @@ export const removeError = () => ({
   type: REMOVE_ERROR
 });
 
-export const setBikestandCount = amount => ({
+export const setBikestandCount = (amount) => ({
   type: SET_BIKESTAND_COUNT,
   payload: amount
 });
 
-export const setAdditionalData = formData => ({
+export const setAdditionalData = (formData) => ({
   type: SET_ADDITIONAL_DATA,
   payload: formData
 });
 
-export const setFeeAcceptable = bool => ({
+export const setFeeAcceptable = (bool) => ({
   type: SET_FEE_ACCEPTABLE,
   bool
 });
@@ -165,13 +175,18 @@ export function reverseGeocodeCoordinates({ lat, lng }) {
     } catch (e) {
       return dispatch({
         type: REVERSE_GEOCODE_FAIL,
-        payload: { geocodeError: 'Fehler beim Auflösen der Koordinaten in eine Adresse' }
+        payload: {
+          geocodeError: 'Fehler beim Auflösen der Koordinaten in eine Adresse'
+        }
       });
     }
     if (!result) {
       return dispatch({
         type: REVERSE_GEOCODE_FAIL,
-        payload: { geocodeError: 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden' }
+        payload: {
+          geocodeError:
+            'Die Geokoordinaten konnten in keine Adresse aufgelöst werden'
+        }
       });
     }
     dispatch({ type: REVERSE_GEOCODE_DONE, payload: { result } });
@@ -180,8 +195,14 @@ export function reverseGeocodeCoordinates({ lat, lng }) {
 }
 
 export function setLocationMode(mode) {
-  const modeStatedProperly = [LOCATION_MODE_DEVICE, LOCATION_MODE_GEOCODING].includes(mode);
-  if (!modeStatedProperly) throw new Error(`use either ${LOCATION_MODE_DEVICE} or ${LOCATION_MODE_GEOCODING} to state the location mode`);
+  const modeStatedProperly = [
+    LOCATION_MODE_DEVICE,
+    LOCATION_MODE_GEOCODING
+  ].includes(mode);
+  if (!modeStatedProperly)
+    throw new Error(
+      `use either ${LOCATION_MODE_DEVICE} or ${LOCATION_MODE_GEOCODING} to state the location mode`
+    );
   return { type: SET_LOCATION_MODE, mode };
 }
 
@@ -190,14 +211,19 @@ export function useDevicePosition() {
     let coords;
     try {
       const position = await getGeoLocation();
-      if (!position.coords) throw new Error('Getting device geolocation failed');
+      if (!position.coords)
+        throw new Error('Getting device geolocation failed');
       ({ coords } = position);
       dispatch(
         setDeviceLocation({ lng: coords.longitude, lat: coords.latitude })
       );
       dispatch(setLocationMode(LOCATION_MODE_DEVICE));
     } catch (err) {
-      dispatch(addError('Standortbestimmung fehlgeschlagen. Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.'));
+      dispatch(
+        addError(
+          'Standortbestimmung fehlgeschlagen. Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.'
+        )
+      );
     }
   };
 }
@@ -205,13 +231,18 @@ export function useDevicePosition() {
 export function submitReport() {
   return async (dispatch, getState) => {
     dispatch({ type: SUBMIT_REPORT });
-    const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.newReport);
+    const reportPayload = marshallNewReportObjectFurSubmit(
+      getState().ReportsState.newReport
+    );
     let submittedReport;
     try {
       submittedReport = await apiSubmitReport(reportPayload);
       dispatch({ type: SUBMIT_REPORT_SUCCESS, submittedReport });
     } catch (e) {
-      dispatch({ type: SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.' });
+      dispatch({
+        type: SUBMIT_REPORT_ERROR,
+        error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.'
+      });
     }
   };
 }
@@ -329,20 +360,20 @@ export default function ReportsReducer(state = initialState, action = {}) {
           }
         }
       };
-      case SET_FEE_ACCEPTABLE:
-          return {
-            ...state,
-            newReport: {
-              ...state.newReport,
-              what: {
-                ...state.newReport.what,
-                bikestands: {
-                    ...state.newReport.what.bikestands,
-                    feeAcceptable: action.bool
-                }
-              }
+    case SET_FEE_ACCEPTABLE:
+      return {
+        ...state,
+        newReport: {
+          ...state.newReport,
+          what: {
+            ...state.newReport.what,
+            bikestands: {
+              ...state.newReport.what.bikestands,
+              feeAcceptable: action.bool
             }
-          };
+          }
+        }
+      };
     case SUBMIT_REPORT:
       return { ...state, submitting: true };
     case SUBMIT_REPORT_SUCCESS:
@@ -354,9 +385,12 @@ export default function ReportsReducer(state = initialState, action = {}) {
           ...state.newReport,
           id: action.submittedReport.id
         },
-        reports: [...state.reports, {
-          ...action.submittedReport
-        }]
+        reports: [
+          ...state.reports,
+          {
+            ...action.submittedReport
+          }
+        ]
       };
     case SUBMIT_REPORT_ERROR:
       return {
@@ -368,15 +402,18 @@ export default function ReportsReducer(state = initialState, action = {}) {
       };
     case SET_SELECTED_REPORT:
       return {
-        ...state, selectedReport: action.selectedReport || null
+        ...state,
+        selectedReport: action.selectedReport || null
       };
     case SET_SELECTED_REPORT_POS:
       return {
-        ...state, selectedReportPosition: action.selectedReportPosition || { x: 0, y: 0 }
+        ...state,
+        selectedReportPosition: action.selectedReportPosition || { x: 0, y: 0 }
       };
     case UNSET_SELECTED_REPORT:
       return {
-        ...state, selectedReport: null
+        ...state,
+        selectedReport: null
       };
     default:
       return { ...state };

@@ -39,7 +39,7 @@ const Wrapper = styled.div`
 const StyledPinnedLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`
   position: relative;
   top: 23px;
-  filter: drop-shadow(0px 1px 4px rgba(0,0,0,0.4));
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.4));
 `;
 
 const StyledTickIcon = styled(TickIcon)`
