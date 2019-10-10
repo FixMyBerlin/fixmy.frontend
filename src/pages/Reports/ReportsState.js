@@ -211,7 +211,7 @@ export function submitReport() {
       submittedReport = await apiSubmitReport(reportPayload);
       dispatch({ type: SUBMIT_REPORT_SUCCESS, submittedReport });
     } catch (e) {
-      dispatch({ type: SUBMIT_REPORT_ERROR, error: 'Beim übermitteln der Meldung ist etwas schiefgelaufen.' });
+      dispatch({ type: SUBMIT_REPORT_ERROR, error: 'Beim Übermitteln der Meldung ist etwas schiefgelaufen.' });
     }
   };
 }
