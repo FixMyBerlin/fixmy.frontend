@@ -14,7 +14,7 @@ const Div = styled.div`
 `;
 
 const Heading = styled.h2`
- color: ${config.colors.error};
+  color: ${config.colors.error};
 `;
 
 const StyledDismissButton = styled(Button)`
@@ -25,7 +25,9 @@ const ErrorMessage = ({ message, onDismiss, dismissMessage }) => (
   <Div>
     <Heading>Fehler!</Heading>
     <p>{message}</p>
-    <StyledDismissButton onClick={onDismiss}>{dismissMessage}</StyledDismissButton>
+    <StyledDismissButton onClick={onDismiss}>
+      {dismissMessage}
+    </StyledDismissButton>
   </Div>
 );
 

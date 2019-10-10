@@ -3,7 +3,7 @@ import withRouter from 'react-router/withRouter';
 
 import Button from '~/components/Button';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
-import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
+import ErrorMessage from '~/components/ErrorMessage';
 import history from '~/history';
 import { addUserToReport } from '~/pages/Reports/apiservice';
 import { apiUser } from '~/pages/User/apiservice';
