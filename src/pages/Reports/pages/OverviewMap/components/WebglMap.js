@@ -34,7 +34,7 @@ class WebglMap extends PureComponent {
     disabled: PropTypes.bool,
     zoomControlPosition: PropTypes.string,
     fitExtentOnPopupClose: PropTypes.bool
-  };
+  }
 
   static defaultProps = {
     reportsData: [],
@@ -44,18 +44,22 @@ class WebglMap extends PureComponent {
     disabled: false,
     zoomControlPosition: 'bottom-left',
     fitExtentOnPopupClose: true
-  };
+  }
 
-  nav = new MapboxGL.NavigationControl({ showCompass: false });
+  nav = new MapboxGL.NavigationControl({ showCompass: false })
 
-  map = null;
+  map = null
 
   componentDidUpdate() {
     if (!this.map) {
       return false;
     }
 
-    const { center, disabled, fitExtentOnPopupClose } = this.props;
+    const {
+      center,
+      disabled,
+      fitExtentOnPopupClose
+    } = this.props;
 
     if (center) {
       this.map.easeTo({ center });
@@ -83,7 +87,7 @@ class WebglMap extends PureComponent {
     } else {
       this.map.removeControl(this.nav);
     }
-  };
+  }
 
   toggleMapInteractivity(disabled) {
     if (disabled) {
@@ -100,7 +104,7 @@ class WebglMap extends PureComponent {
 
     return (
       <BaseMap
-        onLoad={(map) => this.onLoad(map)}
+        onLoad={map => this.onLoad(map)}
         onMove={() => this.props.onMove()}
       >
         {reportsData.length > 0 && (

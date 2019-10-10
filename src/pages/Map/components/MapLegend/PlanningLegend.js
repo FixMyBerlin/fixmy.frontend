@@ -29,11 +29,7 @@ function renderLegendItem(props, index, isActive) {
   const Icon = Icons[props.id];
 
   return (
-    <LegendItem
-      isActive={isActive}
-      onClick={() => handleClick(index)}
-      key={`PlanningLegendItem__${props.id}`}
-    >
+    <LegendItem isActive={isActive} onClick={() => handleClick(index)} key={`PlanningLegendItem__${props.id}`}>
       <LegendImageWrapper>
         <Icon />
       </LegendImageWrapper>
@@ -44,12 +40,10 @@ function renderLegendItem(props, index, isActive) {
 
 const PlanningLegendComp = ({ filterPlannings }) => (
   <LegendWrapper>
-    {config.planningPhases.map((item, index) =>
-      renderLegendItem(item, index, filterPlannings[index])
-    )}
+    {config.planningPhases.map((item, index) => renderLegendItem(item, index, filterPlannings[index]))}
   </LegendWrapper>
 );
 
-export default connect((state) => ({
+export default connect(state => ({
   filterPlannings: state.MapState.filterPlannings
 }))(PlanningLegendComp);

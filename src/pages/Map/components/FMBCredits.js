@@ -17,10 +17,5 @@ const FMBCredits = styled.div`
 `;
 
 export default () => (
-  <FMBCredits>
-    Ein Angebot von{' '}
-    <ExternalLink href="https://fixmycity.de" target="_blank">
-      FixMyCity
-    </ExternalLink>
-  </FMBCredits>
+  <FMBCredits>Ein Angebot von <ExternalLink href="https://fixmycity.de" target="_blank">FixMyCity</ExternalLink></FMBCredits>
 );

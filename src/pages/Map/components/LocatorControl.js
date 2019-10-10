@@ -32,8 +32,7 @@ class LocatorControl extends PureComponent {
       top: PropTypes.string,
       bottom: PropTypes.string,
       left: PropTypes.string,
-      right: PropTypes.string
-    }),
+      right: PropTypes.string }),
     onChange: PropTypes.func,
     onStart: PropTypes.func
   };
@@ -43,11 +42,11 @@ class LocatorControl extends PureComponent {
     onChange: () => {},
     onStart: () => {},
     customPosition: undefined
-  };
+  }
 
   state = {
     isLoading: false
-  };
+  }
 
   locate = async () => {
     this.setState({ isLoading: true });
@@ -55,8 +54,8 @@ class LocatorControl extends PureComponent {
 
     try {
       const position = await getGeoLocation();
-      const lat = idx(position, (_) => _.coords.latitude);
-      const lng = idx(position, (_) => _.coords.longitude);
+      const lat = idx(position, _ => _.coords.latitude);
+      const lng = idx(position, _ => _.coords.longitude);
 
       if (typeof lat === 'number' && typeof lng === 'number') {
         this.props.onChange([lng, lat]);
@@ -67,17 +66,17 @@ class LocatorControl extends PureComponent {
     }
 
     this.setState({ isLoading: false });
-  };
+  }
 
   render() {
     const Icon = this.state.isLoading ? <Loader size={24} /> : <LocatorIcon />;
 
     return (
-      <MapControl
-        position={this.props.position}
-        customPosition={this.props.customPosition}
-      >
-        <LocatorButton disabled={this.state.isLoading} onClick={this.locate}>
+      <MapControl position={this.props.position} customPosition={this.props.customPosition}>
+        <LocatorButton
+          disabled={this.state.isLoading}
+          onClick={this.locate}
+        >
           {Icon}
         </LocatorButton>
       </MapControl>

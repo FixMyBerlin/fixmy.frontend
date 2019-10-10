@@ -12,7 +12,9 @@ const LoaderWrapper = styled.div`
 
 const BigLoader = () => (
   <LoaderWrapper>
-    <PropagateLoader color={`${config.colors.interaction}`} />
+    <PropagateLoader
+      color={`${config.colors.interaction}`}
+    />
   </LoaderWrapper>
 );
 

@@ -8,14 +8,10 @@ import LegendWrapper from './LegendWrapper';
 import LegendImageWrapper from './LegendImageWrapper';
 import LegendItem from './LegendItem';
 
-export default (props) => (
+export default props => (
   <LegendWrapper>
     {config.hbiStops.map((legendItem, i) => (
-      <LegendItem
-        onClick={() => Store.dispatch(toggleHbiFilter(i))}
-        isActive={props.filterHbi[i]}
-        key={`LegendItem__${legendItem.label}`}
-      >
+      <LegendItem onClick={() => Store.dispatch(toggleHbiFilter(i))} isActive={props.filterHbi[i]} key={`LegendItem__${legendItem.label}`}>
         <LegendImageWrapper>
           <img
             alt={`Legende - ${legendItem.label}`}
@@ -24,6 +20,7 @@ export default (props) => (
         </LegendImageWrapper>
         <Label>{legendItem.label}</Label>
       </LegendItem>
-    ))}
+    ))
+    }
   </LegendWrapper>
 );

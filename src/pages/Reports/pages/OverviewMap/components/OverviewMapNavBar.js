@@ -54,7 +54,7 @@ const TinyLink = styled(Link)`
   color: #999999;
   margin: 0;
   text-decoration: none;
-
+  
   &:hover {
     text-decoration: underline;
   }
@@ -78,13 +78,14 @@ const OverviewMapNavBar = ({ heading }) => (
           as="a"
           isMobile={!getIsDesktop()}
           href={`mailto:${config.feedbackMail}?subject=Feedback zum Meldedialog`}
-        >
-          Feedback zum Meldedialog?
+        >Feedback zum Meldedialog?
         </TinyEmailLink>
       </LinkSection>
+
     </TextWrapper>
     <BikeParkImg alt="Icon Fahrradparkplätze" />
   </Wrapper>
+
 );
 
 OverviewMapNavBar.propTypes = {

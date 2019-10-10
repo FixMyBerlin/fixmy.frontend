@@ -34,7 +34,7 @@ const StepIndicator = styled.span`
   border-radius: 50%;
   border: 2px solid white;
   color: white;
-  background-color: ${(props) => props.color};
+  background-color: ${props => props.color};
   position: relative;
   right: 13px;
   display: flex;

@@ -143,23 +143,22 @@ class ReportDetails extends PureComponent {
     }
 
     if (navigator.share) {
-      navigator
-        .share({
-          title: `${reportItem.details.number} neue Fahrradbügel gewünscht`,
-          text: `${reportItem.description} Eine Meldung auf FixMyBerlin.`,
-          url: window.location
-        })
+      navigator.share({
+        title: `${reportItem.details.number} neue Fahrradbügel gewünscht`,
+        text: `${reportItem.description} Eine Meldung auf FixMyBerlin.`,
+        url: window.location
+      })
         .then(() => console.log('Successful share'))
-        .catch((error) => console.log('Error sharing', error)); // TODO: show error feedback
+        .catch(error => console.log('Error sharing', error)); // TODO: show error feedback
     }
-  };
+  }
 
-  formatDate = (dateString) =>
-    new Date(dateString).toLocaleDateString('de-DE', {
+  formatDate = dateString => new Date(dateString)
+    .toLocaleDateString('de-DE', {
       month: '2-digit',
       day: '2-digit',
       year: 'numeric'
-    });
+    })
 
   render() {
     const { reportItem } = this.props;
@@ -179,13 +178,11 @@ class ReportDetails extends PureComponent {
 
     return (
       <Wrapper>
-        {photo && photo.src && <ReportImage src={photo.src} />}
+        {photo && photo.src && (<ReportImage src={photo.src} />)}
 
         <Main>
           <HeadlineSection>
-            <Heading alignLeft>
-              {details.number} neue Fahrradbügel gewünscht
-            </Heading>
+            <Heading alignLeft>{details.number} neue Fahrradbügel gewünscht</Heading>
             <BikeStandsCountSection>
               <BikestandsIcon />
               <BikeStandsCount>x{details.number}</BikeStandsCount>
@@ -193,9 +190,7 @@ class ReportDetails extends PureComponent {
           </HeadlineSection>
 
           <StatusIndicatorWrapper>
-            <StatusIndicator>
-              Status: {getReportStatusCaption(status)}
-            </StatusIndicator>
+            <StatusIndicator>Status: {getReportStatusCaption(status)}</StatusIndicator>
             <ReportPin />
           </StatusIndicatorWrapper>
 
@@ -210,16 +205,13 @@ class ReportDetails extends PureComponent {
 
           <IndicatorSection>
             <IndicatorTitle>Bedarf Fahrradparkhaus</IndicatorTitle>
-            <IndicatorValue>
-              {details.fee_acceptable ? 'ja' : 'nein'}
+            <IndicatorValue>{details.fee_acceptable ? 'ja' : 'nein'}
             </IndicatorValue>
           </IndicatorSection>
 
           <HorizontalRuler className="light" />
 
-          {createdDate && (
-            <Text>Meldung vom: {this.formatDate(createdDate)}</Text>
-          )}
+          {createdDate && (<Text>Meldung vom: {this.formatDate(createdDate)}</Text>)}
         </Main>
 
         <SocialFooter>
@@ -230,14 +222,14 @@ class ReportDetails extends PureComponent {
             id={id}
             itemType="Meldung"
           />
-          {navigator.share && showShareButton ? (
+          {(navigator.share && showShareButton) ? (
             <ShareButtonWrapper>
               <ShareButton onClick={this.shareReport} />
-              <LikeButtonCaption>Teilen</LikeButtonCaption>
+              <LikeButtonCaption>
+                Teilen
+              </LikeButtonCaption>
             </ShareButtonWrapper>
-          ) : (
-            <Fill />
-          )}
+          ) : <Fill />}
         </SocialFooter>
       </Wrapper>
     );

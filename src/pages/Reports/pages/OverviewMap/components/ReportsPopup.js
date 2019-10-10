@@ -29,14 +29,12 @@ const ButtonWrapper = styled.div`
 class ReportsPopup extends PureComponent {
   onDetailClick() {
     const { selectedReport } = this.props;
-    this.props.history.push(
-      `${config.routes.reports.map}/${selectedReport.id}`
-    );
+    this.props.history.push(`${config.routes.reports.map}/${selectedReport.id}`);
   }
 
   render() {
     const { selectedReport, onClose, position } = this.props;
-    const photoSrc = idx(selectedReport, (_) => _.photo.src);
+    const photoSrc = idx(selectedReport, _ => _.photo.src);
     const isSmallScreen = window.innerWidth <= 768;
 
     if (!selectedReport) return null;
@@ -65,7 +63,9 @@ class ReportsPopup extends PureComponent {
           )}
           <Title>{`${selectedReport.details.number} neue Fahrradbügel gewünscht`}</Title>
           <ButtonWrapper>
-            <Button onClick={() => this.onDetailClick()}>mehr Infos</Button>
+            <Button onClick={() => this.onDetailClick()}>
+              mehr Infos
+            </Button>
           </ButtonWrapper>
         </Fragment>
       </MapPopupWrapper>
@@ -74,12 +74,9 @@ class ReportsPopup extends PureComponent {
 }
 
 export default withRouter(
-  connect(
-    (state) => ({
-      selectedReport: state.ReportsState.selectedReport,
-      reports: state.ReportsState.reports,
-      position: state.ReportsState.selectedReportPosition
-    }),
-    { setSelectedReport }
-  )(ReportsPopup)
+  connect(state => ({
+    selectedReport: state.ReportsState.selectedReport,
+    reports: state.ReportsState.reports,
+    position: state.ReportsState.selectedReportPosition
+  }), { setSelectedReport })(ReportsPopup)
 );

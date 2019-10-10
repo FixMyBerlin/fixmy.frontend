@@ -14,44 +14,10 @@ const StyledLink = styled(Link)`
 `;
 
 const formConfig = [
-  {
-    id: 'username',
-    value: '',
-    type: 'email',
-    label: 'E-Mail',
-    placeholder: 'E-Mail eingeben...',
-    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.'
-  },
-  {
-    id: 'password',
-    value: '',
-    type: 'password',
-    label: 'Passwort',
-    placeholder: 'Passwort eingeben...',
-    validateError: 'Bitte geben Sie Ihr Passwort an.'
-  },
+  { id: 'username', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' },
+  { id: 'password', value: '', type: 'password', label: 'Passwort', placeholder: 'Passwort eingeben...', validateError: 'Bitte geben Sie Ihr Passwort an.' },
   // { id: 'newsletter', value: false, type: 'checkbox', label: 'Newsletter bestellen' }
-  {
-    id: 'privacy',
-    value: false,
-    type: 'checkbox',
-    label: (
-      <span>
-        Ja, ich stimme zu, dass FixMyBerlin meine Daten speichert und verwendet.
-        Die{' '}
-        <ExternalLink
-          href="https://fixmyberlin.de/datenschutz"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Datenschutzerklärung
-        </ExternalLink>{' '}
-        habe ich gelesen.
-      </span>
-    ),
-    validateError:
-      'Sie müssen die Datenschutzbedingungen akzeptieren um sich zu registrieren.'
-  }
+  { id: 'privacy', value: false, type: 'checkbox', label: <span>Ja, ich stimme zu, dass FixMyBerlin meine Daten speichert und verwendet. Die <ExternalLink href="https://fixmyberlin.de/datenschutz" rel="noopener noreferrer" target="_blank">Datenschutzerklärung</ExternalLink> habe ich gelesen.</span>, validateError: 'Sie müssen die Datenschutzbedingungen akzeptieren um sich zu registrieren.' }
 ];
 
 class Signup extends PureComponent {
@@ -62,7 +28,7 @@ class Signup extends PureComponent {
     };
 
     this.props.dispatch(signup(post, params));
-  };
+  }
 
   render() {
     return (
@@ -81,4 +47,4 @@ class Signup extends PureComponent {
   }
 }
 
-export default connect((state) => state.UserState)(Signup);
+export default connect(state => state.UserState)(Signup);

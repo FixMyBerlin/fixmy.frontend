@@ -19,4 +19,8 @@ const CloseButton = styled.button`
   }
 `;
 
-export default (props) => <CloseButton {...props}>×</CloseButton>;
+export default props => (
+  <CloseButton {...props}>
+    ×
+  </CloseButton>
+);

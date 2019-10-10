@@ -20,7 +20,9 @@ const MenuHeaderContainer = styled.div`
   color: white;
 `;
 
-const AccountLink = styled(NavLink).attrs((props) => ({ to: props.to }))`
+const AccountLink = styled(NavLink).attrs(
+  props => ({ to: props.to })
+)`
   display: flex;
   font-size: 1rem;
   text-decoration: none;
@@ -39,9 +41,7 @@ const AccountLink = styled(NavLink).attrs((props) => ({ to: props.to }))`
 
 export default (props) => {
   const profileLink = props.token ? config.routes.profile : config.routes.login;
-  const profileLabel = props.token
-    ? config.menu.profileLabel
-    : config.menu.loginLabel;
+  const profileLabel = props.token ? config.menu.profileLabel : config.menu.loginLabel;
 
   return (
     <MenuHeader>

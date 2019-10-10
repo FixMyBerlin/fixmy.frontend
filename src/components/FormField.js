@@ -19,65 +19,32 @@ const CheckboxWrapper = styled.div`
 
 // returns the formfiled thats specified by the passed "type"
 export default ({
-  id,
-  type,
-  label,
-  options,
-  placeholder = '',
-  values,
-  handleChange,
-  errors = {},
-  className = '',
-  disabled = false
+  id, type, label, options,
+  placeholder = '', values, handleChange, errors = {},
+  className = '', disabled = false
 }) => {
   let Result = null;
   const formFieldClasses = classnames('formfield', { disabled }, className);
 
   if (['text', 'number', 'email', 'password'].includes(type)) {
-    Result = (
-      <Field
-        type={type}
-        name={id}
-        placeholder={placeholder}
-        disabled={disabled}
-      />
-    );
+    Result = <Field type={type} name={id} placeholder={placeholder} disabled={disabled} />;
   } else if (type === 'checkbox') {
-    Result = (
-      <Field
-        type="checkbox"
-        name={id}
-        checked={values[id]}
-        disabled={disabled}
-      />
-    );
+    Result = <Field type="checkbox" name={id} checked={values[id]} disabled={disabled} />;
 
     return (
       <FormFieldSection className={formFieldClasses}>
         <CheckboxWrapper>
-          {Result}
-          <span style={{ marginLeft: 10 }}>{label}</span>
+          {Result}<span style={{ marginLeft: 10 }}>{label}</span>
         </CheckboxWrapper>
         {errors[id] && <FormFieldError>{errors[id]}</FormFieldError>}
       </FormFieldSection>
     );
   } else if (type === 'textarea') {
-    Result = (
-      <textarea
-        name={id}
-        placeholder={placeholder}
-        onChange={handleChange}
-        value={values[id]}
-      />
-    );
+    Result = <textarea name={id} placeholder={placeholder} onChange={handleChange} value={values[id]} />;
   } else if (type === 'select') {
     Result = (
       <Field component="select" name={id}>
-        {options.map((o) => (
-          <option key={`${id}__${o.key}`} value={o.key}>
-            {o.value}
-          </option>
-        ))}
+        {options.map(o => <option key={`${id}__${o.key}`} value={o.key}>{o.value}</option>)}
       </Field>
     );
   }

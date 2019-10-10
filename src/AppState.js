@@ -14,10 +14,8 @@ const initialState = {
   isEmbedMode: false
 };
 
-export const detectEmbedMode = (props) => (dispatch) => {
-  const isEmbedMode =
-    !!qs.parse(props.search, { ignoreQueryPrefix: true }).embed ||
-    window.location.host === 'embed.fixmyberlin.de';
+export const detectEmbedMode = props => (dispatch) => {
+  const isEmbedMode = !!(qs.parse(props.search, { ignoreQueryPrefix: true }).embed) || window.location.host === 'embed.fixmyberlin.de';
 
   dispatch({
     type: UPDATE_HISTORY,
@@ -27,7 +25,7 @@ export const detectEmbedMode = (props) => (dispatch) => {
   });
 };
 
-export const updateHistory = (props) => (dispatch) => {
+export const updateHistory = props => (dispatch) => {
   const match = matchPath(props.pathname, {
     path: '/:activeView?/:activeSection?',
     exact: false,

@@ -51,8 +51,8 @@ const chartStyle = {
 function sumLengths(planningPhaseName = null) {
   return (res, item) => {
     if (planningPhaseName === null || item.phase === planningPhaseName) {
-      let length0 = idx(item, (_) => _.planning_sections[0].details[0].length);
-      let length1 = idx(item, (_) => _.planning_sections[0].details[1].length);
+      let length0 = idx(item, _ => _.planning_sections[0].details[0].length);
+      let length1 = idx(item, _ => _.planning_sections[0].details[1].length);
 
       length0 = length0 ? +length0 : 0;
       length1 = length1 ? +length1 : 0;
@@ -65,39 +65,34 @@ function sumLengths(planningPhaseName = null) {
 }
 
 function renderNoData() {
-  return <ChartTitle>Keine Planungen vorhanden.</ChartTitle>;
+  return (
+    <ChartTitle>Keine Planungen vorhanden.</ChartTitle>
+  );
 }
 
 function getSvgOffsetY(orientation) {
   switch (orientation) {
-    case 'top':
-      return -40;
-    case 'bottom':
-      return -25;
-    case 'left':
-      return -35;
-    case 'right':
-      return -35;
-    default:
-      return 0;
+    case 'top': return -40;
+    case 'bottom': return -25;
+    case 'left': return -35;
+    case 'right': return -35;
+    default: return 0;
   }
 }
 
 function getSvgOffsetX(textAnchor) {
   switch (textAnchor) {
-    case 'start':
-      return 10;
-    case 'middle':
-      return 0;
-    case 'end':
-      return -20;
-    default:
-      return 0;
+    case 'start': return 10;
+    case 'middle': return 0;
+    case 'end': return -20;
+    default: return 0;
   }
 }
 
-const Label = ({ x, y, dy, ...props }) => {
-  const phase = config.planningPhases.find((p) => p.name === props.text);
+const Label = ({
+  x, y, dy, ...props
+}) => {
+  const phase = config.planningPhases.find(p => p.name === props.text);
   const offsetX = getSvgOffsetX(props.textAnchor);
   const offsetY = getSvgOffsetY(props.orientation);
 
@@ -112,16 +107,14 @@ const Label = ({ x, y, dy, ...props }) => {
 class PieChart extends PureComponent {
   handleClick = (evt, data) => {
     this.props.setPhaseFilter(data.datum.x);
-  };
+  }
 
   renderChartLabel() {
     const lengthSum = this.props.data.reduce(sumLengths(), 0);
     return (
       <Fragment>
         <ChartTitle>{this.props.data.length} Planungen</ChartTitle>
-        <ChartSubtitle>
-          gesamte Länge: {(lengthSum / 1000).toFixed(0)} km
-        </ChartSubtitle>
+        <ChartSubtitle>gesamte Länge: {(lengthSum / 1000).toFixed(0)} km</ChartSubtitle>
       </Fragment>
     );
   }
@@ -135,17 +128,15 @@ class PieChart extends PureComponent {
       );
     }
 
-    const chartData = config.planningPhases
-      .map((planningPhase) => ({
-        x: planningPhase.id,
-        xName: planningPhase.name,
-        y: this.props.data.reduce(sumLengths(planningPhase.id), 0),
-        color: planningPhase.color
-      }))
-      .filter((d) => d.y > 0);
+    const chartData = config.planningPhases.map(planningPhase => ({
+      x: planningPhase.id,
+      xName: planningPhase.name,
+      y: this.props.data.reduce(sumLengths(planningPhase.id), 0),
+      color: planningPhase.color
+    })).filter(d => d.y > 0);
 
     const hasData = this.props.data.length > 0;
-    const colorScale = chartData.map((d) => d.color);
+    const colorScale = chartData.map(d => d.color);
 
     return (
       <PieChartWrapper>
@@ -174,9 +165,6 @@ class PieChart extends PureComponent {
   }
 }
 
-export default connect(
-  null,
-  (dispatch) => ({
-    setPhaseFilter: (filter) => dispatch(setPhaseFilter(filter))
-  })
-)(PieChart);
+export default connect(null, dispatch => ({
+  setPhaseFilter: filter => dispatch(setPhaseFilter(filter))
+}))(PieChart);

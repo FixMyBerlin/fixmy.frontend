@@ -23,12 +23,12 @@ function getArrowCSS({ size = 20, color = 'white', offset = 0 }) {
     border-top: ${size}px solid ${color};
     left: 50%;
     top: auto;
-    bottom:-${size + offset - 1}px;
+    bottom:-${(size + offset) - 1}px;
     margin-left:-${size}px;
   `;
 }
 
-const MapPopup = styled.div.attrs((props) => ({
+const MapPopup = styled.div.attrs(props => ({
   style: {
     top: `${props.y}px`,
     left: `${props.x}px`
@@ -144,8 +144,10 @@ class MapPopupWrapper extends PureComponent {
   };
 
   render() {
-    const toggleSubLine =
-      !this.props.data.isIntersection && this.props.showSubline;
+    const toggleSubLine = (
+      !this.props.data.isIntersection &&
+      this.props.showSubline
+    );
 
     return (
       <MapPopup x={this.props.x} y={this.props.y} style={this.props.style}>

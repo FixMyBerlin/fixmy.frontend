@@ -45,7 +45,7 @@ const StatusSign = styled.div`
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: ${(props) => props.color || '#eee'};
+  background: ${props => props.color || '#eee'};
   margin-bottom: 5px;
   color: white;
   font-size: 12px;
@@ -61,7 +61,7 @@ const StatusLabel = styled.div`
   color: ${config.colors.mediumgrey};
 `;
 
-export default (props) => (
+export default props => (
   <InfoSection className={props.className}>
     <InfoSectionHeader>
       <InfoSectionTitleWrapper>
@@ -75,6 +75,9 @@ export default (props) => (
         <StatusLabel>{props.label}</StatusLabel>
       </InfoSectionStatus>
     </InfoSectionHeader>
-    <InfoSectionContent>{props.children}</InfoSectionContent>
+    <InfoSectionContent>
+      {props.children}
+    </InfoSectionContent>
+
   </InfoSection>
 );

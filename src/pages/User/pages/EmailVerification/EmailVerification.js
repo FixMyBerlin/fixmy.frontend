@@ -17,7 +17,9 @@ class EmailVerification extends PureComponent {
       <ContentPageWrapper>
         <Title>Willkommen bei FixMyBerlin!</Title>
         <Text>Ihre E-Mail wurde erfolgreich verifiziert.</Text>
-        <StyledLink to="/login">Zum Login</StyledLink>
+        <StyledLink to="/login">
+          Zum Login
+        </StyledLink>
       </ContentPageWrapper>
     );
   }

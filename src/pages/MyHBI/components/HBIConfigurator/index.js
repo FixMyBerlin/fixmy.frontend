@@ -22,7 +22,7 @@ const MapContentBody = styled.div`
 const SliderLabel = styled.div`
   text-align: center;
   font-size: 14px;
-  margin: 0.5em 0;
+  margin: .5em 0;
 `;
 
 const ModalHeadline = styled(Title)`
@@ -60,11 +60,13 @@ const StyledSlider = styled(Slider)`
 
 class HBIConfigurator extends PureComponent {
   static onSliderChange(index) {
-    return (value) => Store.dispatch(updateHBI(index, value));
+    return value => Store.dispatch(updateHBI(index, value));
   }
 
   static renderHandle(props) {
-    const { value, dragging, index, ...restProps } = props;
+    const {
+      value, dragging, index, ...restProps
+    } = props;
 
     return (
       <Slider.Handle value={value} {...restProps}>

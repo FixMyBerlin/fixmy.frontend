@@ -31,12 +31,9 @@ export default ({ onConfirm }) => {
 
   return (
     <DialogStepWrapper>
-      <Question>
-        Wie viele Bügel werden aus deiner Sicht an diesem Ort benötigt?
-      </Question>
-      <Paragraph>
-        An einen Bügel können zwei Fahrräder angeschlossen werden.
-      </Paragraph>
+
+      <Question>Wie viele Bügel werden aus deiner Sicht an diesem Ort benötigt?</Question>
+      <Paragraph>An einen Bügel können zwei Fahrräder angeschlossen werden.</Paragraph>
 
       <RangeSlider
         min={1}
@@ -46,20 +43,21 @@ export default ({ onConfirm }) => {
         value={bikestandCount}
         tooltip={false}
         handleLabel={bikestandCount.toString()}
-        onChange={(count) => setBikestandCount(count)}
+        onChange={count => setBikestandCount(count)}
       />
 
-      <StyledWeiterButton onClick={() => onConfirm(bikestandCount)}>
-        Weiter
+      <StyledWeiterButton onClick={() => onConfirm(bikestandCount)}>Weiter
       </StyledWeiterButton>
 
       <Paragraph>
-        Hinweis: Neue Fahrradbügel werden in Friedrichshain-Kreuzberg in der
-        Regel auf der Straße installiert, damit der Platz für Fußgänger:innen
-        auf dem Gehweg nicht eingeschränkt wird.
+        Hinweis: Neue Fahrradbügel werden in Friedrichshain-Kreuzberg in der Regel
+        auf der Straße installiert,
+        damit der Platz für Fußgänger:innen auf dem Gehweg nicht eingeschränkt wird.
       </Paragraph>
 
       <Image src={StreetBgImage} alt="Straßenseitige Fahrradständer" />
+
+
     </DialogStepWrapper>
   );
 };

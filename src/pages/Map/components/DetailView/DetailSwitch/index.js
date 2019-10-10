@@ -14,9 +14,7 @@ function getColor(props) {
 }
 
 function getBoxShadow(props) {
-  return props.isActive
-    ? 'inset 2px 1px rgba(0, 0, 0, 0.3)'
-    : '0 0 2px 1px rgba(0, 0, 0, 0.2)';
+  return props.isActive ? 'inset 2px 1px rgba(0, 0, 0, 0.3)' : '0 0 2px 1px rgba(0, 0, 0, 0.2)';
 }
 
 const SwitchButton = styled.button`
@@ -46,7 +44,7 @@ export const ButtonGroup = styled.div`
   z-index: 2;
 `;
 
-export default (props) => (
+export default props => (
   <SwitchButton
     className={props.className}
     side={props.side}

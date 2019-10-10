@@ -13,7 +13,5 @@ const Anchor = styled(Link)`
 `;
 
 export default () => (
-  <Anchor to={config.routes.reports.map}>
-    Schau dir die Meldungen anderer an
-  </Anchor>
+  <Anchor to={config.routes.reports.map}>Schau dir die Meldungen anderer an</Anchor>
 );

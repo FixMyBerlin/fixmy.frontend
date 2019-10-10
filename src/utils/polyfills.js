@@ -1,6 +1,6 @@
 /*
- * All necessary polyfills should be required here
- * */
+* All necessary polyfills should be required here
+* */
 
 // we need this because the ky package needs fetch and it does not get added automatically with @babel/preset-env
 import 'whatwg-fetch';

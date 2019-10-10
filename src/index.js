@@ -8,7 +8,7 @@ import { updateHistory, detectEmbedMode } from '~/AppState';
 import Store from '~/store';
 import App from '~/App';
 
-history.listen((location) => Store.dispatch(updateHistory(location)));
+history.listen(location => Store.dispatch(updateHistory(location)));
 Store.dispatch(updateHistory(history.location));
 Store.dispatch(detectEmbedMode(history.location));
 

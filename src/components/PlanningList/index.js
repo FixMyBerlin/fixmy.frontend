@@ -9,7 +9,7 @@ class PlanningList extends PureComponent {
   static defaultProps = {
     showLoadingIndicator: true,
     itemType: 'plannings'
-  };
+  }
 
   render() {
     const isPlanning = this.props.itemType === 'plannings';
@@ -19,16 +19,20 @@ class PlanningList extends PureComponent {
     }
 
     if (!this.props.isLoading && this.props.data.length === 0) {
-      return `Es sind noch keine ${
-        isPlanning ? 'Planungen' : 'Meldungen'
-      } gelikt worden.`;
+      return `Es sind noch keine ${isPlanning ? 'Planungen' : 'Meldungen'} gelikt worden.`;
     }
 
     const Item = isPlanning ? PlanningListItem : ReportListItem;
 
-    return this.props.data.map((d) => (
-      <Item key={d.url} history={this.props.history} {...d} />
-    ));
+    return (
+      this.props.data.map(d => (
+        <Item
+          key={d.url}
+          history={this.props.history}
+          {...d}
+        />
+      ))
+    );
   }
 }
 

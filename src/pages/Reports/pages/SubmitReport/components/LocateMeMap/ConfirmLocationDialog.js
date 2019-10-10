@@ -58,10 +58,10 @@ const BackButton = styled(StyledButton)`
 `;
 
 const ConfirmButton = styled(StyledButton)`
-  color: white;
-  font-weight: bold;
-  background-color: ${config.colors.interaction};
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.24);
+    color: white;
+    font-weight: bold;
+    background-color: ${config.colors.interaction};
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.24);
 `;
 
 const ConfirmLocationDialog = ({ heading, address, onConfirm, onDecline }) => (

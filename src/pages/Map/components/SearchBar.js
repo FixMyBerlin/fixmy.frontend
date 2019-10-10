@@ -52,8 +52,8 @@ const closeSize = 20;
 
 const SearchReset = styled.div`
   position: absolute;
-  right: 10px;
-  top: 12px;
+  right:10px;
+  top:12px;
   border-radius: 50%;
   width: ${closeSize}px;
   height: ${closeSize}px;
@@ -65,7 +65,7 @@ const SearchReset = styled.div`
   line-height: 1;
   font-weight: 700;
   font-size: 20px;
-  cursor: pointer;
+  cursor:pointer;
   box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.12);
 
   &:hover {
@@ -76,7 +76,7 @@ const SearchReset = styled.div`
 class SearchBar extends PureComponent {
   state = {
     inputValue: ''
-  };
+  }
 
   onSubmit = (evt) => {
     evt.preventDefault();
@@ -86,15 +86,15 @@ class SearchBar extends PureComponent {
     }
 
     return Store.dispatch(geocodeAddress(this.state.inputValue));
-  };
+  }
 
   onChange = (evt) => {
     this.setState({ inputValue: evt.target.value });
-  };
+  }
 
   onInputReset = () => {
     this.setState({ inputValue: '' });
-  };
+  }
 
   render() {
     return (
@@ -118,6 +118,6 @@ class SearchBar extends PureComponent {
   }
 }
 
-export default connect((state) => ({
+export default connect(state => ({
   isEmbedMode: state.AppState.isEmbedMode
 }))(SearchBar);

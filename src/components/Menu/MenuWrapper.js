@@ -8,9 +8,8 @@ export default styled.div`
   top: 0;
   left: 0;
   width: ${config.menu.size}px;
-  transform: ${(props) =>
-    props.isActive ? MenuActiveTransform : MenuTransform};
-  transition: transform 0.3s;
+  transform: ${props => (props.isActive ? MenuActiveTransform : MenuTransform)};
+  transition: transform .3s;
   height: 100%;
   box-shadow: 1px 2px 3px 0 rgba(0, 0, 0, 0.24);
   z-index: 1000000;

@@ -6,20 +6,13 @@ import UserForm from '~/pages/User/components/UserForm';
 import { forgotPassword } from '~/pages/User/UserState';
 
 const formConfig = [
-  {
-    id: 'email',
-    value: '',
-    type: 'email',
-    label: 'E-Mail',
-    placeholder: 'E-Mail eingeben...',
-    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.'
-  }
+  { id: 'email', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' }
 ];
 
 class ForgotPassword extends PureComponent {
   onSubmit = (values, params) => {
     this.props.dispatch(forgotPassword(values, params));
-  };
+  }
 
   render() {
     return (
@@ -34,4 +27,4 @@ class ForgotPassword extends PureComponent {
   }
 }
 
-export default connect((state) => state.UserState)(ForgotPassword);
+export default connect(state => state.UserState)(ForgotPassword);

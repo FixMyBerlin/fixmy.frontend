@@ -7,6 +7,7 @@ const Markers = {
   BIKE_STANDS: BikeStandMarker
 };
 
+
 function getClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   const el = document.createElement('div');
   el.className = 'reports-cluster';
@@ -36,17 +37,12 @@ function getClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
     });
   });
 
-  return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([-10, -10]);
+  return new MapboxGL.Marker(el)
+    .setLngLat(lngLat)
+    .setOffset([-10, -10]);
 }
 
-function getPinMarker({
-  markerData,
-  geometry,
-  lngLat,
-  selectedReport,
-  detailId,
-  onClick
-}) {
+function getPinMarker({ markerData, geometry, lngLat, selectedReport, detailId, onClick }) {
   const details = JSON.parse(markerData.details || {});
   const el = document.createElement('div');
 
@@ -70,12 +66,12 @@ function getPinMarker({
     details
   });
 
-  el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${
-    Markers[details.subject]
-  }" />`;
-  el.addEventListener('click', (evt) => onClick(evt, updatedMarkerData));
+  el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${Markers[details.subject]}" />`;
+  el.addEventListener('click', evt => onClick(evt, updatedMarkerData));
 
-  return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -20]);
+  return new MapboxGL.Marker(el)
+    .setLngLat(lngLat)
+    .setOffset([0, -20]);
 }
 
 // TODO: Establish a base Marker class that contains generic lifecycle logic to de-dupe

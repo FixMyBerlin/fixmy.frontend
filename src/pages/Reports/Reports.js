@@ -21,13 +21,18 @@ class Reports extends PureComponent {
             path={`${config.routes.reports.map}/:id?`}
             component={OverviewMap}
           />
-          <Route path={config.routes.reports.new} component={SubmitReport} />
+          <Route
+            path={config.routes.reports.new}
+            component={SubmitReport}
+          />
           <Route
             exact
             path={config.routes.reports.index}
-            render={() => <Redirect to={config.routes.reports.landing} />}
+            render={() => (<Redirect to={config.routes.reports.landing} />)}
           />
-          <Route render={() => <Markdown page="nomatch" />} />
+          <Route
+            render={() => <Markdown page="nomatch" />}
+          />
         </Switch>
       </Router>
     );

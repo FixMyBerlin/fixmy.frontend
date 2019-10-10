@@ -25,11 +25,11 @@ const DetailButtonWrapper = styled.div`
 class PlanningStatus extends PureComponent {
   state = {
     isExpanded: false
-  };
+  }
 
   toggleExpand = () => {
-    this.setState((prevState) => ({ isExpanded: !prevState.isExpanded }));
-  };
+    this.setState(prevState => ({ isExpanded: !prevState.isExpanded }));
+  }
 
   render() {
     return (

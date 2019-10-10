@@ -8,7 +8,7 @@ const Button = styled.button`
   bottom: 50px;
   left: 0;
   right: 0;
-  margin: ${(props) => (props.shiftLeft ? '0 auto 0 15%' : 'auto')};
+  margin: ${props => (props.shiftLeft ? '0 auto 0 15%' : 'auto')};
   width: 220px;
   height: 48px;
   border: none;
@@ -24,9 +24,10 @@ const Button = styled.button`
   align-items: center;
 
   cursor: pointer;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5) &[disabled] {
-    box-shadow: none;
-    background-color: ${config.colors.inactivegrey};
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5)
+  &[disabled] {
+     box-shadow: none;
+     background-color: ${config.colors.inactivegrey};
   }
 
   &:focus {

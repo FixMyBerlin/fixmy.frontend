@@ -39,8 +39,7 @@ export function matchMediaSize(size) {
 }
 
 export function isSmallScreen() {
-  return window.matchMedia(`screen and (max-width: ${breakpoints.m}px)`)
-    .matches;
+  return window.matchMedia(`screen and (max-width: ${breakpoints.m}px)`).matches;
 }
 
 export const bounce = keyframes`

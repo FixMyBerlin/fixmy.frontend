@@ -6,10 +6,7 @@ import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/Dia
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
-import {
-  RadioButton,
-  RadioButtonLabel
-} from '~/pages/Reports/pages/SubmitReport/components/RadioButton';
+import { RadioButton, RadioButtonLabel } from '~/pages/Reports/pages/SubmitReport/components/RadioButton';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import BrBoxImg from '~/images/reports/b_r_box.jpg';
 
@@ -45,20 +42,15 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
 
   return (
     <DialogStepWrapper>
-      <StyledHeading>
-        Würdest du an diesem Ort auch ein kostenpflichtiges Fahrradparkhaus
-        nutzen?
-      </StyledHeading>
+
+      <StyledHeading>Würdest du an diesem Ort auch ein kostenpflichtiges Fahrradparkhaus nutzen?</StyledHeading>
 
       <ImageWrapper>
         <Image src={BrBoxImg} alt="Bike-and-Ride-Box bzw. E-Ladestation" />
         <ImageSource>Foto: Kienzler Stadtmobiliar GmbH</ImageSource>
       </ImageWrapper>
 
-      <RadioButtonLabel
-        htmlFor="charged-bikepark-conceivable"
-        style={{ alignSelf: 'flex-start' }}
-      >
+      <RadioButtonLabel htmlFor="charged-bikepark-conceivable" style={{ alignSelf: 'flex-start' }}>
         <RadioButton
           type="radio"
           id="charged-bikepark-conceivable"
@@ -70,10 +62,8 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
         Ja, das wäre ein interessantes Angebot.
       </RadioButtonLabel>
 
-      <RadioButtonLabel
-        htmlFor="charged-bikepark-not-conceivable"
-        style={{ marginTop: 18 }}
-      >
+
+      <RadioButtonLabel htmlFor="charged-bikepark-not-conceivable" style={{ marginTop: 18 }}>
         <RadioButton
           type="radio"
           id="charged-bikepark-not-conceivable"
@@ -88,18 +78,18 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
       <StyledWeiterButton
         onClick={() => onConfirm(wouldPay)}
         disabled={typeof wouldPay !== 'boolean'}
-      >
-        Meldung abschließen
+      >Meldung abschließen
       </StyledWeiterButton>
 
       <StyledSubHeading>Was sind Fahrradparkhäuser?</StyledSubHeading>
       <Paragraph>
-        Fahrradparkhäuser sind abschließbare Stationen, in denen Fahrräder gegen
-        Gebühr besonders sicher untergebracht werden können. Teilweise sind sie
-        auch mit Ladestationen für E-Bikes ausgerüstet. Berlin will in den
-        nächsten Jahren viele solcher Angebote errichten und sucht derzeit nach
-        geeigeneten Standorten.
+        Fahrradparkhäuser sind abschließbare Stationen,
+        in denen Fahrräder gegen Gebühr besonders sicher untergebracht werden können.
+        Teilweise sind sie auch mit Ladestationen für E-Bikes ausgerüstet.
+        Berlin will in den nächsten Jahren viele solcher Angebote errichten und
+        sucht derzeit nach geeigeneten Standorten.
       </Paragraph>
+
     </DialogStepWrapper>
   );
 };

@@ -7,36 +7,22 @@ import UserForm from '~/pages/User/components/UserForm';
 import { resetPassword } from '~/pages/User/UserState';
 
 const formConfig = [
-  {
-    id: 'password',
-    value: '',
-    type: 'password',
-    label: 'Passwort',
-    placeholder: 'Neues Passwort eigeben...',
-    validateError: 'Bitte geben Sie ein neues Passwort an.'
-  }
+  { id: 'password', value: '', type: 'password', label: 'Passwort', placeholder: 'Neues Passwort eigeben...', validateError: 'Bitte geben Sie ein neues Passwort an.' }
 ];
 
 class ResetPassword extends PureComponent {
   onSubmit = (values, params) => {
-    const matchParams = idx(this.props, (_) => _.match.params);
+    const matchParams = idx(this.props, _ => _.match.params);
 
-    if (
-      !matchParams ||
-      !matchParams.token ||
-      !matchParams.uid ||
-      !values.password
-    ) {
+    if (!matchParams || !matchParams.token || !matchParams.uid || !values.password) {
       return false;
     }
 
     const { password } = values;
     const { uid, token } = matchParams;
 
-    this.props.dispatch(
-      resetPassword({ new_password: password, uid, token }, params)
-    );
-  };
+    this.props.dispatch(resetPassword({ new_password: password, uid, token }, params));
+  }
 
   render() {
     return (
@@ -51,4 +37,4 @@ class ResetPassword extends PureComponent {
   }
 }
 
-export default connect((state) => state.UserState)(ResetPassword);
+export default connect(state => state.UserState)(ResetPassword);

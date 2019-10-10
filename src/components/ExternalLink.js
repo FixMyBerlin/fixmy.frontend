@@ -4,8 +4,7 @@ export default styled.a`
   color: ${config.colors.interaction};
   text-decoration: none;
 
-  &:visited,
-  &:hover {
+  &:visited, &:hover {
     color: ${config.colors.interaction};
     text-decoration: none;
   }

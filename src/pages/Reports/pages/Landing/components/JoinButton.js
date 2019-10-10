@@ -14,8 +14,7 @@ const CenteredButton = styled(Button)`
   text-align: center;
   box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
 
-  &:visited,
-  &:hover {
+  &:visited, &:hover {
     color: white;
     text-decoration: none;
   }

@@ -10,18 +10,17 @@ import BraceHorizontalPlanung from '~/images/planung-brace.svg';
 const StyledBraceHorizontalZustand = styled(BraceHorizontalZustand)`
   display: block;
   width: 100%;
-  margin: 0.5em 0;
+  margin: .5em 0;
 `;
 
 const StyledBraceHorizontalPlanung = styled(BraceHorizontalPlanung)`
   display: block;
   width: 100%;
-  margin: 0.5em 0;
+  margin: .5em 0;
 `;
 
-export default (props) =>
-  props.type === 'zustand' ? (
-    <StyledBraceHorizontalZustand />
-  ) : (
+export default props => (
+  props.type === 'zustand' ?
+    <StyledBraceHorizontalZustand /> :
     <StyledBraceHorizontalPlanung />
-  );
+);

@@ -12,7 +12,7 @@ export default styled.form`
   }
 
   label {
-    margin-bottom: 0.25em;
+    margin-bottom: .25em;
   }
 
   input,
@@ -20,7 +20,7 @@ export default styled.form`
   textarea {
     background: white;
     padding: 5px 10px;
-    border: 1px solid #ddd;
+    border:1px solid #ddd;
     color: ${config.colors.darkbg};
     font-family: 'Open Sans', sans-serif;
   }

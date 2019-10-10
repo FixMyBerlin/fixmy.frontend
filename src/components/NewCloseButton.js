@@ -1,3 +1,4 @@
+
 import React from 'react';
 import styled from 'styled-components';
 import CloseIcon from '~/images/close.svg';
@@ -9,4 +10,6 @@ const Button = styled(CloseIcon)`
   }
 `;
 
-export default (props) => <Button {...props} />;
+export default props => (
+  <Button {...props} />
+);

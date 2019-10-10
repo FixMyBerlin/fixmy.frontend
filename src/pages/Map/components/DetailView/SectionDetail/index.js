@@ -9,19 +9,12 @@ import HBISign from '~/components/HBISign';
 import Label from '~/components/Label';
 import Title from '~/components/Title';
 import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
-import DetailSwitch, {
-  ButtonGroup
-} from '~/pages/Map/components/DetailView/DetailSwitch';
+import DetailSwitch, { ButtonGroup } from '~/pages/Map/components/DetailView/DetailSwitch';
 import FeedbackForm from '~/pages/Map/components/DetailView/FeedbackForm';
 import ImageSlider from '~/pages/Map/components/DetailView/ImageSlider';
 import InfoSection from './InfoSection';
 import {
-  getSafetyLabel,
-  getSafetyColor,
-  getRoadTypeLabel,
-  getStreetCategoryLabel,
-  getInfrastructureLabel,
-  getInfrastructureDesc
+  getSafetyLabel, getSafetyColor, getRoadTypeLabel, getStreetCategoryLabel, getInfrastructureLabel, getInfrastructureDesc
 } from './status-utils';
 
 const HBISignWrapper = styled.div`
@@ -61,9 +54,9 @@ const BetaOverlay = styled.div`
   background: white;
   opacity: 0.75;
   height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
+  width:100%;
+  top:0;
+  left:0;
 `;
 
 const StyledDataProcessIcon = styled(DataProcessIcon)`
@@ -81,7 +74,7 @@ const InfoSectionTextWrapper = styled.div`
 
 const InfoSectionText = styled.div`
   display: flex;
-  font-weight: ${(props) => (props.bold ? 700 : 500)};
+  font-weight: ${props => (props.bold ? 700 : 500)};
 `;
 
 const InfoSectionTextSmall = styled(InfoSectionText)`
@@ -89,8 +82,8 @@ const InfoSectionTextSmall = styled(InfoSectionText)`
 `;
 
 const InfoSectionTextLeft = styled.div`
-  min-width: ${(props) => (props.grow ? 'none' : '150px')};
-  flex-grow: ${(props) => (props.grow ? 1 : 'unset')};
+  min-width: ${props => (props.grow ? 'none' : '150px')};
+  flex-grow: ${props => (props.grow ? 1 : 'unset')};
 `;
 
 const InfoSectionTextRight = styled.div`
@@ -100,9 +93,9 @@ const InfoSectionTextRight = styled.div`
 class SectionDetails extends PureComponent {
   state = {
     sideIndex: 0
-  };
+  }
 
-  onSwitchSide = (sideIndex) => () => this.setState({ sideIndex });
+  onSwitchSide = sideIndex => () => this.setState({ sideIndex })
 
   render() {
     const { data } = this.props;
@@ -110,19 +103,13 @@ class SectionDetails extends PureComponent {
     const { name, details } = data;
     const sideData = data.details[sideIndex];
     const hasSwitchButton = data.details && data.details.length > 1;
-    const orientationNames = getOrientationNames(
-      idx(data, (_) => _.details[0].orientation),
-      idx(data, (_) => _.details[1].orientation)
-    );
+    const orientationNames = getOrientationNames(idx(data, _ => _.details[0].orientation), idx(data, _ => _.details[1].orientation));
 
     if (!sideData) {
       return <div>Keine Daten vorhanden.</div>;
     }
 
-    const photos =
-      details.length > 2
-        ? details[sideIndex + 2].photos
-        : details[sideIndex].photos;
+    const photos = details.length > 2 ? details[sideIndex + 2].photos : details[sideIndex].photos;
     const safetyLabel = getSafetyLabel(sideData);
     const safetyColor = getSafetyColor(sideData);
     const roadTypeLabel = getRoadTypeLabel(sideData);
@@ -150,20 +137,21 @@ class SectionDetails extends PureComponent {
               onClick={this.onSwitchSide}
             />
           </ButtonGroup>
-        )}
+)
+        }
 
         <ImageSlider images={photos} />
 
         <HBISignWrapper>
           <HBISign hbi={sideData.happy_bike_index} />
-          <Label margin="10px 0 3px 0">
-            Happy-Bike-Level - {currentSideName}
-          </Label>
+          <Label margin="10px 0 3px 0">Happy-Bike-Level - {currentSideName}</Label>
           <Label light>(max 10,0)</Label>
         </HBISignWrapper>
 
         <DetailInfoWrapper>
-          <DetailTitle>Daten zu: {name}</DetailTitle>
+          <DetailTitle>
+            Daten zu: {name}
+          </DetailTitle>
 
           <InfoSection
             title="Sicherheit:"
@@ -174,9 +162,7 @@ class SectionDetails extends PureComponent {
           >
             <InfoSectionTextWrapper>
               <InfoSectionText bold>
-                <InfoSectionTextLeft grow>
-                  Situation KFZ-Verkehr
-                </InfoSectionTextLeft>
+                <InfoSectionTextLeft grow>Situation KFZ-Verkehr</InfoSectionTextLeft>
                 <InfoSectionTextRight>{roadTypeLabel}</InfoSectionTextRight>
               </InfoSectionText>
               <InfoSectionText>
@@ -195,12 +181,8 @@ class SectionDetails extends PureComponent {
 
             <InfoSectionTextWrapper>
               <InfoSectionText bold>
-                <InfoSectionTextLeft grow>
-                  Schutzfunktion der Radwege
-                </InfoSectionTextLeft>
-                <InfoSectionTextRight>
-                  {infrastructureLabel}
-                </InfoSectionTextRight>
+                <InfoSectionTextLeft grow>Schutzfunktion der Radwege</InfoSectionTextLeft>
+                <InfoSectionTextRight>{infrastructureLabel}</InfoSectionTextRight>
               </InfoSectionText>
 
               {sideData.bike_path_ratio > 0 && (
@@ -212,9 +194,7 @@ class SectionDetails extends PureComponent {
 
               {sideData.shared_use_path_ratio > 0 && (
                 <InfoSectionText>
-                  <InfoSectionTextLeft>
-                    Fahren auf Gehweg erlaubt:
-                  </InfoSectionTextLeft>
+                  <InfoSectionTextLeft>Fahren auf Gehweg erlaubt:</InfoSectionTextLeft>
                   {percentageFormat(sideData.shared_use_path_ratio)}
                 </InfoSectionText>
               )}
@@ -228,9 +208,7 @@ class SectionDetails extends PureComponent {
 
               {sideData.protected_bike_lane_ratio > 0 && (
                 <InfoSectionText>
-                  <InfoSectionTextLeft>
-                    geschützter Radfahrstreifen:
-                  </InfoSectionTextLeft>
+                  <InfoSectionTextLeft>geschützter Radfahrstreifen:</InfoSectionTextLeft>
                   {percentageFormat(sideData.protected_bike_lane_ratio)}
                 </InfoSectionText>
               )}
@@ -242,7 +220,9 @@ class SectionDetails extends PureComponent {
                 </InfoSectionText>
               )}
 
-              <InfoSectionTextSmall>{infrastructureDesc}</InfoSectionTextSmall>
+              <InfoSectionTextSmall>
+                {infrastructureDesc}
+              </InfoSectionTextSmall>
             </InfoSectionTextWrapper>
           </InfoSection>
 
