@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import withRouter from 'react-router/withRouter';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _isEqual from 'lodash.isequal';
 import MapboxGL from 'mapbox-gl';

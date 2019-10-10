@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Route from 'react-router/Route';
+import { Route } from 'react-router-dom';
 
 import { orientation } from '~/styles/utils';
 import MapLegend from '~/pages/Map/components/MapLegend';

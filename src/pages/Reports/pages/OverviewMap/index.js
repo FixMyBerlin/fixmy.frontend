@@ -6,7 +6,7 @@
 
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import withRouter from 'react-router/withRouter';
+import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 

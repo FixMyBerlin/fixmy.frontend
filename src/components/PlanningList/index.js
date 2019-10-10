@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import withRouter from 'react-router/withRouter';
+import { withRouter } from 'react-router-dom';
 
 import PlanningListItem from '~/components/PlanningListItem';
 import ReportListItem from '~/components/ReportListItem';

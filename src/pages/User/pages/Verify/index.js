@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import withRouter from 'react-router/withRouter';
-import Link from 'react-router-dom/Link';
+import { Link, withRouter } from 'react-router-dom';
 import ky from 'ky';
 import qs from 'qs';
 

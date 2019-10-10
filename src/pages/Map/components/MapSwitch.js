@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import ToggleSwitch from 'react-toggle-switch';
-import withRouter from 'react-router/withRouter';
+import { withRouter } from 'react-router-dom';
 
 import { media } from '~/styles/utils';
 import BikeIcon from '~/images/bike.svg';

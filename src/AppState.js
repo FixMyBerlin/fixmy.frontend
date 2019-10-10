@@ -1,4 +1,4 @@
-import matchPath from 'react-router/matchPath';
+import { matchPath } from 'react-router-dom';
 import qs from 'qs';
 
 const UPDATE_HISTORY = 'App/AppState/UPDATE_HISTORY';

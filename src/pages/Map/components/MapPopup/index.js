@@ -2,7 +2,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import withRouter from 'react-router/withRouter';
+import { withRouter } from 'react-router-dom';
 import slugify from 'slugify';
 
 import Store from '~/store';

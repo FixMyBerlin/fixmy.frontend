@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import NavLink from 'react-router-dom/NavLink';
-import Link from 'react-router-dom/Link';
+import { Link, NavLink } from 'react-router-dom';
 
 import Store from '~/store';
 import { close } from '~/AppState';
