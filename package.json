@@ -6,7 +6,8 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
     "deploy": "npm run build && netlify deploy",
     "start": "cross-env NODE_ENV=development CONFIG_ENV=staging webpack-dev-server --config webpack/webpack.config.dev.js",
-    "dev": "cross-env NODE_ENV=development CONFIG_ENV=dev webpack-dev-server --config webpack/webpack.config.dev.js"
+    "dev": "cross-env NODE_ENV=development CONFIG_ENV=dev webpack-dev-server --config webpack/webpack.config.dev.js",
+    "lint": "eslint src"
   },
   "repository": {
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
