@@ -128,7 +128,8 @@ class MapPopupWrapper extends PureComponent {
       isIntersection: PropTypes.bool
     }),
     // eslint-disable-next-line react/forbid-prop-types
-    style: PropTypes.object
+    style: PropTypes.object,
+    children: PropTypes.node
   };
 
   static defaultProps = {
@@ -138,7 +139,8 @@ class MapPopupWrapper extends PureComponent {
     onClose: () => {},
     onClick: () => {},
     showSubline: true,
-    data: {}
+    data: {},
+    children: null
   };
 
   render() {

@@ -19,19 +19,23 @@ const StyledBetaIcon = styled(BetaIcon).attrs(() => ({ width: 60 }))`
   }
 `;
 
-const FMBLogo = (props) => (
-  <FMBLogoWrapper className={props.className}>
-    {props.showBetaIcon && <StyledBetaIcon />}
-    <img width={props.width} src={FixMyLogo} alt="logo" />
+const FMBLogo = ({ className, showBetaIcon, width }) => (
+  <FMBLogoWrapper className={className}>
+    {showBetaIcon && <StyledBetaIcon />}
+    <img width={width} src={FixMyLogo} alt="logo" />
   </FMBLogoWrapper>
 );
 
 FMBLogo.propTypes = {
-  width: PropTypes.number
+  width: PropTypes.number,
+  className: PropTypes.string,
+  showBetaIcon: PropTypes.bool
 };
 
 FMBLogo.defaultProps = {
-  width: 70
+  width: 70,
+  className: null,
+  showBetaIcon: false
 };
 
 export default FMBLogo;
