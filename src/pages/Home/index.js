@@ -89,11 +89,8 @@ export default () => (
           <Text dangerouslySetInnerHTML={{ __html: homeLabels.intro }} />
         </div>
         <MapLinkWrapper>
-          <Link to={config.routes.reports.index}>
-            <MapButton>{homeLabels.reportsButton}</MapButton>
-          </Link>
           <Link to={config.routes.plannings}>
-            <GhostButton>{homeLabels.mapButton}</GhostButton>
+            <MapButton>{homeLabels.mapButton}</MapButton>
           </Link>
         </MapLinkWrapper>
         <SubscribtionWidget />
