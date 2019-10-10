@@ -4,7 +4,6 @@
     "airbnb",
     "plugin:prettier/recommended",
     "prettier",
-    "prettier/flowtype",
     "prettier/react"
   ],
   "plugins": ["prettier"],
