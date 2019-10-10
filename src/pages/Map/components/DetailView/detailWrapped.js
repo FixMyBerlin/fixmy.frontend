@@ -1,8 +1,9 @@
 /* eslint class-methods-use-this: 0 */
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import idx from 'idx';
 import styled from 'styled-components';
-import { withRouter, RouteComponentProps } from 'react-router';
+import { withRouter } from 'react-router';
 import ky from 'ky';
 
 import { media } from '~/styles/utils';
@@ -86,22 +87,14 @@ function formatAddressString(address) {
     .trim();
 }
 
-type Props = RouteComponentProps & {
-  apiEndpoint: string;
-  onCloseRoute?: string;
-  onClose?: () => any;
-  activeView?: string;
-  subtitle?: string;
-};
-
-type State = {
-  data: any;
-  isLoading: boolean;
-  isError: boolean;
-};
-
 function detailWrapped(Component) {
-  class DetailWrapperComp extends PureComponent<Props, State> {
+  class DetailWrapperComp extends PureComponent {
+    static propTypes = {
+      apiEndpoint: PropTypes.string.isRequired,
+      onCloseRoute: PropTypes.string,
+      onClose: PropTypes.func
+    };
+
     static defaultProps = {
       onCloseRoute: '/',
       onClose: () => {}
@@ -258,7 +251,7 @@ function detailWrapped(Component) {
             <StyledPinIcon />
             <div>
               <DetailTitle>{this.renderName(data)}</DetailTitle>
-              <Label uppercase>{subtitle || 'Abschnitt xxx'}</Label>
+              <Label uppercase>{subtitle || ''}</Label>
             </div>
             <Close onClick={this.onClose} />
           </DetailHeader>
