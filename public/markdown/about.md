@@ -45,12 +45,12 @@ Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministeriums, der
 <div class="teamportrait">
   <img src="/uploads/team/Felix_350x400.jpg" alt="Felix Sistenich" title="Felix Sistenich" style="width: 160px" /><br />
   <strong>Felix Sistenich</strong><br />
-  Datenredaktion, Literaturrecherche, Umfagedesign
+  Datenredaktion, Literaturrecherche, Umfragedesign
 </div>
 <div class="teamportrait">
   <img src="/uploads/team/VincentArendt.png" alt="Vincent Ahrend" title="Vincent Ahrend" style="width: 160px" /><br />
   <strong>Vincent Ahrend</strong><br />
-  Fullstack-Entwicklung (ab Mitte September 2019)
+  Fullstack-Entwicklung
 </div>
 <div style="clear: left;"></div>
 
