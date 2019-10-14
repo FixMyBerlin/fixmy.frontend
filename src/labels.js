@@ -19,7 +19,7 @@ export const homeLabels = {
     Auf der Planungskarte von FixMyBerlin siehst Du, was Berlin an Radwegen plant.
   `,
   button: 'Worum geht es hier genau?',
-  reportsButton: 'Radbügel melden',
+  reportsButton: 'Jetzt Radbügel melden',
   mapButton: 'Gehe zur Planungskarte'
 };
 
