@@ -93,29 +93,31 @@ function getPlanningFilterRules(side = '', filter) {
 }
 
 export function colorizePlanningLines(map, filter) {
-  setMapFilter(map, ['any',
-    ['has', 'side0_planning_phase'],
-    ['has', 'side1_planning_phase'],
-    ['has', 'planning_phase']
-  ]);
+  // setMapFilter(map, ['any',
+  //   ['has', 'side0_planning_phase'],
+  //   ['has', 'side1_planning_phase'],
+  //   ['has', 'planning_phase']
+  // ]);
 
-  const paintRules = [
-    getPlanningLineColorRules(),
-    getPlanningLineColorRules('side0_'),
-    getPlanningLineColorRules('side1_')
-  ];
+  // const paintRules = [
+  //   getPlanningLineColorRules(),
+  //   getPlanningLineColorRules('side0_'),
+  //   getPlanningLineColorRules('side1_')
+  // ];
 
-  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i]));
-  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i]));
+  // console.log(paintRules);
 
-  const opacityRules = [
-    getPlanningFilterRules('', filter),
-    getPlanningFilterRules('side0_', filter),
-    getPlanningFilterRules('side1_', filter)
-  ];
+  // standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i]));
+  // smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i]));
 
-  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i]));
-  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i]));
+  // const opacityRules = [
+  //   getPlanningFilterRules('', filter),
+  //   getPlanningFilterRules('side0_', filter),
+  //   getPlanningFilterRules('side1_', filter)
+  // ];
+
+  // standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i]));
+  // smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i]));
 }
 
 function getHbiExpression(sideKey) {
