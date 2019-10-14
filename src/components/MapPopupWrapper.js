@@ -112,6 +112,10 @@ function renderName(data) {
     return formatAddressString(data.address);
   }
 
+  if (data.street_name) {
+    return data.street_name;
+  }
+
   return 'Abschnittsname';
 }
 

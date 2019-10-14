@@ -22,14 +22,6 @@ export const standardLayersWithOverlay = [
   ...standardLayers, 'overlayLine'
 ];
 
-export const smallStreetLayers = [
-  'centerLayerSmall', 'side0LayerSmall', 'side1LayerSmall'
-];
-
-export const smallStreetLayersWithOverlay = [
-  ...smallStreetLayers, 'overlayLineSmall'
-];
-
 export function setView(map, view) {
   if (view.zoom) map.setZoom(view.zoom);
   if (view.center) map.setCenter(view.center);
@@ -61,7 +53,6 @@ export function filterLayersById(map, id) {
     ];
 
     standardLayers.forEach(layerName => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter));
-    smallStreetLayers.forEach(layerName => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter));
   }
 }
 
@@ -175,7 +166,6 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
   ];
 
   standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i]));
-  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i]));
 
   const lineOpacityRules = [
     getHbiFilterRules(hbiExprCenter, hbiFilter),
@@ -184,7 +174,6 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
   ];
 
   standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i]));
-  smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i]));
 }
 
 export function resetMap({ zoom = null } = {}) {

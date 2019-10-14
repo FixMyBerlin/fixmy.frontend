@@ -14,7 +14,7 @@ import * as MapActions from '~/pages/Map/MapState';
 import PlanningMarkers from '~/pages/Map/components/PlanningMarkers';
 import {
   colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer,
-  filterLayersById, getCenterFromGeom, resetMap, intersectionLayers, smallStreetLayersWithOverlay,
+  filterLayersById, getCenterFromGeom, resetMap, intersectionLayers,
   parseUrlOptions
 } from '~/pages/Map/map-utils';
 
@@ -147,6 +147,7 @@ class Map extends PureComponent {
 
   handleLoad = () => {
     this.map.on('click', config.map.layers.projectsLayer, this.handleClick);
+    this.map.on('click', config.map.layers.bgLayer, this.handleClick);
     // this.map.on('click', config.map.layers.intersectionsOverlay, this.handleIntersectionClick);
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
@@ -204,10 +205,12 @@ class Map extends PureComponent {
   }
 
   handleClick = (e) => {
+    console.log(e);
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
 
+    console.log(properties);
     if (config.debug) {
       console.log(properties);
     }
@@ -263,10 +266,10 @@ class Map extends PureComponent {
       exact: true
     });
 
-    const properties = {
-      sideNone_planning_title: data.title,
-      name: name || '-'
-    };
+    // const properties = {
+    //   title: data.title,
+    //   name: name || '-'
+    // };
 
     if (idx(match, _ => _.params.id)) {
       const slugifiedName = slugify(name || '').toLowerCase();
@@ -274,7 +277,7 @@ class Map extends PureComponent {
       return this.props.history.push(detailRoute);
     }
 
-    Store.dispatch(MapActions.setPopupData(properties));
+    Store.dispatch(MapActions.setPopupData(data));
     Store.dispatch(MapActions.setPopupVisible(true));
     Store.dispatch(AppActions.setActiveSection(id));
     Store.dispatch(MapActions.setView({
