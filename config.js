@@ -46,8 +46,8 @@ const config = {
         label: 'MITMACHEN',
         icon: 'fixhere',
         children: [{
-          link: '/meldungen/radbuegel/friedrichshain-kreuzberg',
-          label: 'Radbügel in X-Hain'
+          link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
+          label: 'Radbügel für X-Hain (Meldungen nicht mehr möglich)'
         }],
         border: true
       },
