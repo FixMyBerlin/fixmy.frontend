@@ -174,7 +174,7 @@ class OverviewMap extends Component {
         }
 
         <OverviewMapNavBar
-          heading="Neue Fahrradbügel für Friedrichshain-Kreuzberg"
+          heading="Fahrradbügel für Friedrichshain-Kreuzberg (Status: In Bearbeitung durch den Bezirk)"
         />
         <MapWrapper>
           <WebglMap

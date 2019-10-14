@@ -1,6 +1,7 @@
 # Impressum
 FixMyCity GmbH<br />
-c/o Platz der Luftbrücke 4<br />
+c/o CityLAB<br />
+Platz der Luftbrücke 4<br />
 12021 Berlin<br />
 E-Mail-Adresse: [hello@fixmycity.de](mailto:hello@fixmycity.de)<br />
 Telefon: 030 / 549 08 665<br />
@@ -26,7 +27,7 @@ Backend & Beratung: Agaric e.K. Stefan Freudenberg
 Die von FixMyCity entwickelten Karten basieren auf Daten des Geoportal Berlin /  Detailnetz Berlin und wurden für die Dienste von FixMyCity entsprechend angepasst.
 
 ## Urheberrechte Fotos
-Wenn nicht anders angegeben stehen die auf fixmyberlin.de verwendeten Fotos unter Creative Commons-Lizenz (BY-NC 4.0). (Info zu CC Lizenzen)
+Wenn nicht anders angegeben stehen die auf fixmyberlin.de verwendeten Fotos unter [Creative Commons-Lizenz BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.de "Infos zu CC-Lizenz BY-NC 4.0").
 
 ## Förderungen
 FixMyCity wird als forschungsbezogenes Start-Up durch Bundesmittel gefördert (Förderkennzeichen VB1907). [Projektsteckbrief](https://nationaler-radverkehrsplan.de/de/praxis/radinfrastrukturdaten-erfassen-und "Projektsteckbrief beim BMVI")
