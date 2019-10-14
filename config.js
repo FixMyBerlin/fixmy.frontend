@@ -214,7 +214,7 @@ const config = {
   ],
   map: {
     accessToken: 'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
-    style: 'mapbox://styles/hejco/ck0pec5vf02wa1cmn02or0190',
+    style: 'mapbox://styles/hejco/ck0nzclbk0ey01ct9ilwefpzc',
     view: {
       zoom: 12,
       bearing: 0,
