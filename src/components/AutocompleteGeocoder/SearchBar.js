@@ -113,16 +113,6 @@ class SearchBar extends PureComponent {
     this.props.debounceTime
   );
 
-  onFormSubmit = (evt) => {
-    evt.preventDefault();
-
-    if (!this.state.inputValue) {
-      return false;
-    }
-
-    return this.props.onSubmit(this.state.inputValue);
-  };
-
   onChange = (evt) => {
     evt.persist();
     const inputValue = evt.target.value;

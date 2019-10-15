@@ -54,7 +54,7 @@ const TinyLink = styled(Link)`
   color: #999999;
   margin: 0;
   text-decoration: none;
-
+  
   &:hover {
     text-decoration: underline;
   }
