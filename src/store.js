@@ -5,7 +5,7 @@ import AppState from '~/AppState';
 import MapState from '~/pages/Map/MapState';
 import UserState from '~/pages/User/UserState';
 import AnalysisState from '~/pages/Analysis/AnalysisState';
-import ReportsState from '~/pages/Reports/ReportsState';
+import ReportsState from '~/pages/Reports/state';
 
 const Reducer = combineReducers({
   AppState,

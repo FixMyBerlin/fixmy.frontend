@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import withRouter from 'react-router/withRouter';
+import { withRouter } from 'react-router-dom';
 
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';

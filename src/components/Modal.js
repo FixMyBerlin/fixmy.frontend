@@ -53,13 +53,15 @@ const Close = styled.div`
 class Modal extends PureComponent {
   static propTypes = {
     isOpen: PropTypes.bool,
-    onClose: PropTypes.func
-  }
+    onClose: PropTypes.func,
+    children: PropTypes.node
+  };
 
   static defaultProps = {
     isOpen: false,
-    onClose: () => {}
-  }
+    onClose: () => {},
+    children: ''
+  };
 
   render() {
     if (!this.props.isOpen) {
