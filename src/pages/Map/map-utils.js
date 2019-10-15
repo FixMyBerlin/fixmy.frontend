@@ -46,12 +46,13 @@ export function toggleLayer(map, layer, isVisible) {
 // used to highlight a section by id
 export function filterLayersById(map, id) {
   if (id) {
-    const VisibilityFilter = ['case',
-      ['!=', ['get', 'id'], id], 0.2,
-      1
-    ];
+    const VisibilityFilter = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
 
-    standardLayers.forEach(layerName => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', VisibilityFilter));
+    map.setPaintProperty(
+      config.map.layers.projectsLayer,
+      'line-opacity',
+      VisibilityFilter
+    );
   }
 }
 
@@ -78,7 +79,6 @@ function getPlanningFilterRules(side = '', filter) {
 }
 
 export function colorizePlanningLines(map, filter) {
-
   // Set line color depending on planning phase
   map.setPaintProperty(config.map.layers.projectsLayer, 'line-color', [
     'case',
@@ -93,11 +93,7 @@ export function colorizePlanningLines(map, filter) {
     '#FFF'
   ]);
 
-  // map.setPaintProperty(
-  //   config.map.layers.projectsLayer,
-  //   'line-opacity',
-  //   filter
-  // )
+  map.setPaintProperty(config.map.layers.projectsLayer, 'line-opacity', 1);
 }
 
 function getHbiExpression(sideKey) {
@@ -180,7 +176,13 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
     getHbiLineColorRules(hbiExprSide1)
   ];
 
-  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', lineColorRules[i]));
+  standardLayers.forEach((layerName, i) =>
+    map.setPaintProperty(
+      config.map.layers[layerName],
+      'line-color',
+      lineColorRules[i]
+    )
+  );
 
   const lineOpacityRules = [
     getHbiFilterRules(hbiExprCenter, hbiFilter),
@@ -188,7 +190,13 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
     getHbiFilterRules(hbiExprSide1, hbiFilter)
   ];
 
-  standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', lineOpacityRules[i]));
+  standardLayers.forEach((layerName, i) =>
+    map.setPaintProperty(
+      config.map.layers[layerName],
+      'line-opacity',
+      lineOpacityRules[i]
+    )
+  );
 }
 
 export function resetMap({ zoom = null } = {}) {
