@@ -230,6 +230,8 @@ function detailWrapped(Component) {
       const { subtitle } = this.props;
       const { isLoading, isError, data } = this.state;
       const showShadow = this.isShadowVisible(data);
+      const borough = idx(this.state, (_) => _.data.borough);
+
 
       if (isLoading) {
         return this.renderLoading();
@@ -245,7 +247,7 @@ function detailWrapped(Component) {
             <StyledPinIcon />
             <div>
               <DetailTitle>{this.renderName(data)}</DetailTitle>
-              <Label uppercase>{subtitle || 'Abschnitt 1'}</Label>
+              <Label uppercase>{subtitle || borough }</Label>
             </div>
             <Close onClick={this.onClose} />
           </DetailHeader>

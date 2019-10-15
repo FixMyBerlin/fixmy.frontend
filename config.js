@@ -214,7 +214,7 @@ const config = {
   ],
   map: {
     accessToken: 'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
-    style: 'mapbox://styles/hejco/ck0pec5vf02wa1cmn02or0190',
+    style: 'mapbox://styles/hejco/ck0nzclbk0ey01ct9ilwefpzc',
     view: {
       zoom: 12,
       bearing: 0,
@@ -233,10 +233,6 @@ const config = {
       buildings3d: '3d-buildings',
       dimmingLayer: 'fmb-dimming',
       overlayLine: 'fmb-overlay-line',
-      centerLayerSmall: 'fmb-center-NVS',
-      side0LayerSmall: 'fmb-side-0-NVS',
-      side1LayerSmall: 'fmb-side-1-NVS',
-      overlayLineSmall: 'fmb-overlay-line-HVS',
       intersections: 'intersections',
       intersectionsSide0: 'intersections-side-0',
       intersectionsSide1: 'intersections-side-1',

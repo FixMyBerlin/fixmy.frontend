@@ -112,6 +112,10 @@ function renderName(data) {
     return formatAddressString(data.address);
   }
 
+  if (data.street_name) {
+    return data.street_name;
+  }
+
   return 'Abschnittsname';
 }
 
@@ -144,6 +148,8 @@ class MapPopupWrapper extends PureComponent {
   render() {
     const toggleSubLine = (
       !this.props.data.isIntersection &&
+      this.props.data &&
+      this.props.data.borough != null &&
       this.props.showSubline
     );
 
@@ -154,7 +160,7 @@ class MapPopupWrapper extends PureComponent {
           <StyledPinIcon />
           <div>
             <BigLabel uppercase>{renderName(this.props.data)}</BigLabel>
-            {toggleSubLine && <Label light>Abschnitt 1</Label>}
+            {toggleSubLine && <Label light>{ this.props.data.borough }</Label>}
           </div>
         </MapPopupLocation>
         {this.props.children}

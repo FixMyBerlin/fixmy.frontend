@@ -14,17 +14,22 @@ import * as MapActions from '~/pages/Map/MapState';
 import PlanningMarkers from '~/pages/Map/components/PlanningMarkers';
 import {
   colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer,
-  filterLayersById, getCenterFromGeom, resetMap, intersectionLayers, smallStreetLayersWithOverlay,
+  filterLayersById, getCenterFromGeom, resetMap, intersectionLayers,
   parseUrlOptions
 } from '~/pages/Map/map-utils';
 
-const MB_STYLE_URL = `${config.map.style}?fresh=asdas`;
+const MB_STYLE_URL = `${config.map.style}?fresh=true`;
+
 MapboxGL.accessToken = config.map.accessToken;
 
 const StyledMap = styled.div`
   width: 100%;
   flex: 1;
 `;
+
+MapboxGL.clearStorage(err => {
+  console.log(err);
+});
 
 class Map extends PureComponent {
   static propTypes = {
@@ -141,8 +146,8 @@ class Map extends PureComponent {
   }
 
   handleLoad = () => {
+    this.map.on('click', config.map.layers.projectsLayer, this.handleClick);
     this.map.on('click', config.map.layers.bgLayer, this.handleClick);
-    // this.map.on('click', config.map.layers.projectsLayer, this.handleClick);
     // this.map.on('click', config.map.layers.intersectionsOverlay, this.handleIntersectionClick);
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
@@ -169,33 +174,43 @@ class Map extends PureComponent {
     const isPlanungen = this.props.activeLayer === 'planungen';
 
     intersectionLayers.forEach(layerName => toggleLayer(this.map, config.map.layers[layerName], isZustand));
-    smallStreetLayersWithOverlay.forEach(layerName => toggleLayer(this.map, config.map.layers[layerName], isPlanungen));
 
     if (isZustand) {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
     }
 
     if (isPlanungen) {
-      colorizePlanningLines(this.map, this.props.filterPlannings);
+      colorizePlanningLines(this.map);
     }
 
+    // project layers
     toggleLayer(this.map, config.map.layers.projectsLayer, isPlanungen);
-    toggleLayer(this.map, config.map.layers.bgLayer, true);
+
+    // hbl layers
+    toggleLayer(this.map, config.map.layers.bgLayer, isZustand);
     toggleLayer(this.map, config.map.layers.centerLayer, isZustand);
     toggleLayer(this.map, config.map.layers.side0Layer, isZustand);
     toggleLayer(this.map, config.map.layers.side1Layer, isZustand);
+    toggleLayer(this.map, config.map.layers.intersections, isZustand);
+    toggleLayer(this.map, config.map.layers.intersectionsSide0, isZustand);
+    toggleLayer(this.map, config.map.layers.intersectionsSide1, isZustand);
+    toggleLayer(this.map, config.map.layers.intersectionsOverlay, isZustand);
+
+    // other layers
+    toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
     toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
     toggleLayer(this.map, config.map.layers.dimmingLayer, this.props.dim);
-    toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
 
     filterLayersById(this.map, filterId);
   }
 
   handleClick = (e) => {
+    console.log(e);
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
 
+    console.log(properties);
     if (config.debug) {
       console.log(properties);
     }
@@ -243,24 +258,18 @@ class Map extends PureComponent {
   handleMarkerClick = (evt, data) => {
     evt.preventDefault();
 
-    const {
-      planning_sections: planningSections,
-      planning_section_ids: planningSectionIds
-    } = data;
-
+    const { id, street_name: name } = data;
     const center = data.center.coordinates;
-    const { name } = planningSections[0];
-    const [id] = planningSectionIds;
 
     const match = matchPath(this.props.location.pathname, {
       path: '/(zustand|planungen)/:id/:name?',
       exact: true
     });
 
-    const properties = {
-      sideNone_planning_title: data.title,
-      name: name || '-'
-    };
+    // const properties = {
+    //   title: data.title,
+    //   name: name || '-'
+    // };
 
     if (idx(match, _ => _.params.id)) {
       const slugifiedName = slugify(name || '').toLowerCase();
@@ -268,7 +277,7 @@ class Map extends PureComponent {
       return this.props.history.push(detailRoute);
     }
 
-    Store.dispatch(MapActions.setPopupData(properties));
+    Store.dispatch(MapActions.setPopupData(data));
     Store.dispatch(MapActions.setPopupVisible(true));
     Store.dispatch(AppActions.setActiveSection(id));
     Store.dispatch(MapActions.setView({

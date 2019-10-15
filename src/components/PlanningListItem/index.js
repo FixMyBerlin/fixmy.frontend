@@ -56,7 +56,7 @@ const ItemSubTitle = styled.div`
   font-weight: 700;
   font-family: 'Roboto Slab', serif;
   color: ${config.colors.darkbg};
-  margin-top: 16px;
+  margin-top: 4px;
 `;
 
 const ItemFooter = styled.div`
@@ -141,16 +141,18 @@ class PlanningListItem extends PureComponent {
     const photo = photos.length ? photos[0] : false;
     const id = idx(this.props, _ => _.planning_section_ids[0]);
 
+    const borough = this.props.borough
+
     return (
       <ItemWrapper onClick={this.toggleExpanded}>
         <ItemContent>
-          <ItemImage src={iconSrc} />
+          <ItemImage   src={iconSrc} />
           <ItemHeader>
             <ItemTitle>
               {name}
             </ItemTitle>
             <Label>
-              Abschnitt 1 {length && `| ${numberFormat((+length / 1000), 1)} km`}
+              {borough} {length && `| ${numberFormat((+length / 1000), 1)} km`}
             </Label>
           </ItemHeader>
           <ItemSubTitle>

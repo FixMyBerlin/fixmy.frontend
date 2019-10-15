@@ -64,12 +64,12 @@ class PlanningMarkers extends PureComponent {
       }
 
       if (marker.center == null) {
-        console.error('Marker center missing');
-        Store.dispatch(
-          MapActions.setError(
-            'Leider konnten keine vollständigen Planungsdaten geladen werden.'
-          )
-        );
+        // console.error('Marker center missing');
+        // Store.dispatch(
+        //   MapActions.setError(
+        //     'Leider konnten keine vollständigen Planungsdaten geladen werden.'
+        //   )
+        // );
         return null;
       }
 
