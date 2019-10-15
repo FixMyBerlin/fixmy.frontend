@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import withRouter from 'react-router/withRouter';
+import { withRouter } from 'react-router';
 
 import Button from '~/components/Button';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
