@@ -5,12 +5,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: Path.resolve(__dirname, '../src/index.js'),
+    app: Path.resolve(__dirname, '../src/index.js')
   },
   output: {
     path: Path.join(__dirname, '../build'),
-    filename:  'js/[name].js',
-    publicPath: '/',
+    filename: 'js/[name].js',
+    publicPath: '/'
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -23,9 +23,10 @@ module.exports = {
     ]),
     new Webpack.ProvidePlugin({
       config: '~/../config.js'
-    }),
+    })
   ],
   resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
     alias: {
       '~': Path.resolve(__dirname, '../src')
     }
@@ -48,6 +49,11 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/d3-scale')
         ],
         use: 'babel-loader'
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        include: [Path.resolve(__dirname, '../src')]
       },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
