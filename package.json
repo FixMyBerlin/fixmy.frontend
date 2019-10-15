@@ -86,7 +86,7 @@
     "ky": "^0.15.0",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
-    "mapbox-gl": "^1.4.0",
+    "mapbox-gl": "^1.4.1",
     "promise": "^8.0.3",
     "prop-types": "^15.7.2",
     "qs": "^6.9.0",
