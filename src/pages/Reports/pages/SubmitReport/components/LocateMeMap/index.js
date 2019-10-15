@@ -19,7 +19,6 @@ import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import ErrorMessage from '~/components/ErrorMessage';
 import HelpText from './HelpText';
 import ConfirmLocationDialog from './ConfirmLocationDialog';
-import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 import FMBCredits from '~/pages/Map/components/FMBCredits';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
