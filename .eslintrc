@@ -14,7 +14,8 @@
     "react/destructuring-assignment": 0
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "settings": {
     "import/resolver": {

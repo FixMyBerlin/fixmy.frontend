@@ -9,7 +9,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import idx from 'idx';
 import ky from 'ky';
 
 import { media, matchMediaSize, breakpoints } from '~/styles/utils';
@@ -20,22 +19,14 @@ import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import ErrorMessage from '~/components/ErrorMessage';
 import HelpText from './HelpText';
 import ConfirmLocationDialog from './ConfirmLocationDialog';
-
-import {
-  LOCATION_MODE_GEOCODING,
-  setDeviceLocation,
-  reverseGeocodeCoordinates,
-  validateCoordinates,
-  setTempLocationLngLat,
-  confirmLocation,
-  resetDialogState,
-  removeError,
-  addError,
-  handleGeocodeSuccess
-} from '~/pages/Reports/ReportsState';
-
+import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
 import FMBCredits from '~/pages/Map/components/FMBCredits';
+import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
+import {
+  actions as submitReportStateActions,
+  selectors as submitReportStateSelectors }
+  from '~/pages/Reports/state/SubmitReportState';
 
 
 const MapView = styled.div`
@@ -113,7 +104,7 @@ class LocateMeMap extends Component {
   };
 
   static async getValidationGeodata() {
-    validationBoundary = await ky.get(`${config.reportsLocateMeMap.boundaryGeodataUrl}`).json();
+    validationBoundary = await ky.get(`${config.reports.locateMeMap.boundaryGeodataUrl}`).json();
   }
 
   constructor(props) {
@@ -155,16 +146,16 @@ class LocateMeMap extends Component {
       .then((isValid) => {
         if (isValid) {
           this.props.reverseGeocodeCoordinates(coords);
-          this.props.setTempLocationLngLat(coords);
+          this.props.setTempLocationCoords(coords);
         }
       });
   }
 
   getCenter = () => {
     // if component is shown because of backwards navigation, use the center already determined
-    const alreadyPickedLocation = idx(this.props, _ => _.newReport.location.lngLat);
+    const alreadyPickedLocation = this.props.getAlreadyPicketLocation();
     if (alreadyPickedLocation) {
-      return [alreadyPickedLocation.lng, alreadyPickedLocation.lat];
+      return alreadyPickedLocation;
     }
 
     // either device location or geocodeResult will be used
@@ -231,7 +222,7 @@ class LocateMeMap extends Component {
           )
         }
 
-        {!this.state.isLoading && this.props.locationMode === LOCATION_MODE_GEOCODING && (
+        {!this.state.isLoading && this.props.getLocationIsModeGeocoding && (
           <Fragment>
             {!this.state.locationPinned && (
               <SearchBarWrapper>
@@ -240,8 +231,8 @@ class LocateMeMap extends Component {
                   onInputBlur={() => this.setAutocompleteHasFocus(false)}
                   onLocationPick={this.ongeocodeSuccess}
                   onSearchStart={this.ongeocodeUse}
-                  searchStringMinLength={config.reportsLocateMeMap.geocoder.searchStringMinLength}
-                  debounceTime={config.reportsLocateMeMap.geocoder.debounceTime}
+                  searchStringMinLength={config.reports.locateMeMap.geocoder.searchStringMinLength}
+                  debounceTime={config.reports.locateMeMap.geocoder.debounceTime}
                   onError={this.props.addError}
                 />
               </SearchBarWrapper>
@@ -255,8 +246,8 @@ class LocateMeMap extends Component {
 
         <MapWrapper>
           <StyledWebGlMap
-            newLocationZoomLevel={config.reportsLocateMeMap.zoomOnGeocodedLocation}
-            zoomedOut={this.props.tempLocation && !this.props.tempLocation.valid}
+            newLocationZoomLevel={config.reports.locateMeMap.zoomOnGeocodedLocation}
+            zoomedOut={!this.props.tempLocation.valid}
             center={this.getCenter()}
             className="locate-me-map"
             onMapDrag={this.onMapMove}
@@ -274,11 +265,11 @@ class LocateMeMap extends Component {
                   />
                 )}
 
-                {this.props.tempLocation && this.props.tempLocation.address && this.props.tempLocation.valid && (
+                {this.props.tempLocation.address && this.props.tempLocation.valid && (
                   <AddressIndicator className="pass-touch">{this.props.tempLocation.address}</AddressIndicator>
                 )}
-                {this.props.tempLocation && !this.props.tempLocation.valid && (
-                  <InvalidAdressIndicator className="pass-touch">{config.reportsLocateMeMap.outofBoundaryText}</InvalidAdressIndicator>
+                {!this.props.tempLocation.valid && (
+                  <InvalidAdressIndicator className="pass-touch">{config.reports.locateMeMap.outofBoundaryText}</InvalidAdressIndicator>
                 )}
               </Fragment>
             )
@@ -288,7 +279,7 @@ class LocateMeMap extends Component {
 
         {!this.state.isLoading &&
           !this.state.autocompleteHasFocus &&
-          (this.props.locationMode === LOCATION_MODE_GEOCODING && !this.state.locationPinned) && (
+          (this.props.getLocationIsModeGeocoding && !this.state.locationPinned) && (
             <LocatorControl
               key="ReportsLocateMap__LocatorControl"
               onChange={this.onlocateMeMarkerUse}
@@ -300,7 +291,7 @@ class LocateMeMap extends Component {
           <PinLocationButton
             onConfirm={this.togglePinned}
             text="Diese Position bestätigen"
-            disabled={!(this.props.tempLocation && this.props.tempLocation.valid && this.props.tempLocation.address)}
+            disabled={!(this.props.tempLocation.valid && this.props.tempLocation.address)}
           />
         )}
 
@@ -318,16 +309,15 @@ class LocateMeMap extends Component {
   }
 }
 
-const mapDispatchToPros = {
-  reverseGeocodeCoordinates,
-  validateCoordinates,
-  setTempLocationLngLat,
-  confirmLocation,
-  setDeviceLocation,
-  resetDialogState,
-  removeError,
-  addError,
-  handleGeocodeSuccess
+const mapStateToProps = state => ({
+  ...state.ReportsState.SubmitReportState,
+  error: state.ReportsState.ErrorState,
+  // selectors
+  getLocationIsModeGeocoding: () => submitReportStateSelectors.getLocationIsModeGeocoding(state.ReportsState.SubmitReportState),
+  getAlreadyPicketLocation: () => submitReportStateSelectors.getAlreadyPicketLocation(state.ReportsState.SubmitReportState)
+});
+const mapDispatchToProps = {
+  ...errorStateActions,
+  ...submitReportStateActions
 };
-
-export default connect(state => state.ReportsState, mapDispatchToPros)(LocateMeMap);
+export default connect(mapStateToProps, mapDispatchToProps)(LocateMeMap);
