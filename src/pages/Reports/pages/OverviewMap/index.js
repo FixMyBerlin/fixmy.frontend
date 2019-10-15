@@ -16,7 +16,6 @@ import ErrorMessage from '~/components/ErrorMessage';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/pages/Map/components/LocatorControl';
-import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
 import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 

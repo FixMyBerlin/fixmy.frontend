@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
 import BaseMap from '~/pages/Reports/components/BaseMap';
-import ClusterWrapper from './ClusterWrapper';
+import ClusteredMarkers from './ClusteredMarkers';
 import FMCPropTypes from '~/propTypes';
-import ReportMarkersClustered from './ReportMarkersClustered';
 
 function toFeature(d) {
   const { geometry, ...properties } = d;
@@ -27,39 +26,42 @@ function toGeojson(data) {
 
 class WebglMap extends PureComponent {
   static propTypes = {
-    reportsData: PropTypes.arrayOf(FMCPropTypes.report),
     center: PropTypes.arrayOf(PropTypes.number),
-    onLoad: PropTypes.func,
-    onMove: PropTypes.func,
+    detailId: PropTypes.string,
     disabled: PropTypes.bool,
-    zoomControlPosition: PropTypes.string,
-    fitExtentOnPopupClose: PropTypes.bool
-  }
+    error: PropTypes.shape({ message: PropTypes.string }),
+    fitExtentOnPopupClose: PropTypes.bool,
+    onLoad: PropTypes.func,
+    onMarkerClick: PropTypes.func.isRequired,
+    onMove: PropTypes.func,
+    reportsData: PropTypes.arrayOf(FMCPropTypes.report),
+    selectedReport: FMCPropTypes.report,
+    zoomControlPosition: PropTypes.string
+  };
 
   static defaultProps = {
     reportsData: [],
     center: null,
     onLoad: () => {},
     onMove: () => {},
+    detailId: null,
     disabled: false,
     zoomControlPosition: 'bottom-left',
-    fitExtentOnPopupClose: true
-  }
+    fitExtentOnPopupClose: true,
+    selectedReport: null,
+    error: null
+  };
 
-  nav = new MapboxGL.NavigationControl({ showCompass: false })
+  nav = new MapboxGL.NavigationControl({ showCompass: false });
 
-  map = null
+  map = null;
 
   componentDidUpdate() {
     if (!this.map) {
-      return false;
+      return;
     }
 
-    const {
-      center,
-      disabled,
-      fitExtentOnPopupClose
-    } = this.props;
+    const { center, disabled, fitExtentOnPopupClose } = this.props;
 
     if (center) {
       this.map.easeTo({ center });
@@ -87,7 +89,7 @@ class WebglMap extends PureComponent {
     } else {
       this.map.removeControl(this.nav);
     }
-  }
+  };
 
   toggleMapInteractivity(disabled) {
     if (disabled) {
@@ -104,26 +106,18 @@ class WebglMap extends PureComponent {
 
     return (
       <BaseMap
-        onLoad={map => this.onLoad(map)}
+        onLoad={(map) => this.onLoad(map)}
         onMove={() => this.props.onMove()}
       >
         {reportsData.length > 0 && (
-          <ClusterWrapper
-            name="reports-cluster"
-            map={this.map}
+          <ClusteredMarkers
             data={toGeojson(reportsData)}
+            map={this.map}
+            name="reports-cluster"
             radius={60}
-            render={({ clusters, clusterSource }) => (
-              <ReportMarkersClustered
-                map={this.map}
-                data={reportsData}
-                onClick={onMarkerClick}
-                selectedReport={selectedReport}
-                detailId={detailId}
-                clusters={clusters}
-                clusterSource={clusterSource}
-              />
-            )}
+            detailId={detailId}
+            onClick={onMarkerClick}
+            selectedReport={selectedReport}
           />
         )}
       </BaseMap>
