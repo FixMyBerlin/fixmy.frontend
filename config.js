@@ -3,7 +3,7 @@ const config = {
   prodUrl: 'https://fixmyberlin.de',
   newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/6kW',
   api: {
-    dev: 'http://localhost:8000/api',
+    dev: 'https://fixmyplatform-develop.herokuapp.com/api',
     staging: 'https://fixmyplatform-develop.herokuapp.com/api',
     production: 'https://api.fixmyberlin.de/api'
   },
@@ -227,16 +227,16 @@ const config = {
     layers: {
       bgLayer: 'fmb-background',
       projectsLayer: 'fmb-projects',
-      centerLayer: 'fmb-center',
-      side0Layer: 'fmb-side-0',
-      side1Layer: 'fmb-side-1',
+      centerLayer: 'fmb-HBI-center',
+      side0Layer: 'fmb-HBI-side-0',
+      side1Layer: 'fmb-HBI-side-1',
+      overlayLine: 'fmb-HBI-overlay-line',
       buildings3d: '3d-buildings',
       dimmingLayer: 'fmb-dimming',
-      overlayLine: 'fmb-overlay-line',
-      intersections: 'intersections',
-      intersectionsSide0: 'intersections-side-0',
-      intersectionsSide1: 'intersections-side-1',
-      intersectionsOverlay: 'intersections-overlay'
+      intersections: 'fmb-HBI-intersections',
+      intersectionsSide0: 'fmb-HBI-intersections-side-0',
+      intersectionsSide1: 'fmb-HBI-intersections-side-1',
+      intersectionsOverlay: 'fmb-HBI-intersections-overlay'
     },
     zoomAfterGeocode: 15,
     geocoderUrl: 'https://geocoder.cit.api.here.com/6.2/geocode.json',
