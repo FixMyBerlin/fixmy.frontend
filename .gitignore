@@ -17,3 +17,4 @@ yarn.lock
 # IDEs
 .vscode
 .idea/
+/coverage/
