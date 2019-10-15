@@ -180,7 +180,7 @@ class Map extends PureComponent {
     }
 
     if (isPlanungen) {
-      colorizePlanningLines(this.map);
+      colorizePlanningLines(this.map, this.props.filterPlannings);
     }
 
     // project layers

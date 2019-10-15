@@ -11,16 +11,15 @@ import { byKey, isNumeric, getParameterByName } from '~/utils/utils';
 const planningPhases = byKey(config.planningPhases, 'id');
 
 export const intersectionLayers = [
-  'intersections', 'intersectionsSide0', 'intersectionsSide1', 'intersectionsOverlay'
+  'intersections',
+  'intersectionsSide0',
+  'intersectionsSide1',
+  'intersectionsOverlay'
 ];
 
-export const standardLayers = [
-  'centerLayer', 'side0Layer', 'side1Layer'
-];
+export const standardLayers = ['centerLayer', 'side0Layer', 'side1Layer'];
 
-export const standardLayersWithOverlay = [
-  ...standardLayers, 'overlayLine'
-];
+export const standardLayersWithOverlay = [...standardLayers, 'overlayLine'];
 
 export function setView(map, view) {
   if (view.zoom) map.setZoom(view.zoom);
@@ -57,58 +56,48 @@ export function filterLayersById(map, id) {
 }
 
 function setMapFilter(map, filter) {
-  standardLayersWithOverlay.forEach(layerName => map.setFilter(config.map.layers[layerName], filter));
+  standardLayersWithOverlay.forEach((layerName) =>
+    map.setFilter(config.map.layers[layerName], filter)
+  );
   map.setFilter(config.map.layers.bgLayer, filter);
-}
-
-function getPlanningLineColorRules(side = '') {
-  return [
-    'case',
-    ['==', 'draft', ['get', `${side}planning_phase`]], planningPhases.draft.color,
-    ['==', 'planning', ['get', `${side}planning_phase`]], planningPhases.planning.color,
-    ['==', 'execution', ['get', `${side}planning_phase`]], planningPhases.execution.color,
-    ['==', 'ready', ['get', `${side}planning_phase`]], planningPhases.ready.color,
-    '#FFF'
-  ];
 }
 
 function getPlanningFilterRules(side = '', filter) {
   return [
     'case',
-    ['==', 'draft', ['get', `${side}planning_phase`]], filter[0] ? 1 : 0,
-    ['==', 'planning', ['get', `${side}planning_phase`]], filter[1] ? 1 : 0,
-    ['==', 'execution', ['get', `${side}planning_phase`]], filter[2] ? 1 : 0,
-    ['==', 'ready', ['get', `${side}planning_phase`]], filter[3] ? 1 : 0,
+    ['==', 'draft', ['get', `${side}planning_phase`]],
+    filter[0] ? 1 : 0,
+    ['==', 'planning', ['get', `${side}planning_phase`]],
+    filter[1] ? 1 : 0,
+    ['==', 'execution', ['get', `${side}planning_phase`]],
+    filter[2] ? 1 : 0,
+    ['==', 'ready', ['get', `${side}planning_phase`]],
+    filter[3] ? 1 : 0,
     0
   ];
 }
 
 export function colorizePlanningLines(map, filter) {
-  // setMapFilter(map, ['any',
-  //   ['has', 'side0_planning_phase'],
-  //   ['has', 'side1_planning_phase'],
-  //   ['has', 'planning_phase']
-  // ]);
 
-  // const paintRules = [
-  //   getPlanningLineColorRules(),
-  //   getPlanningLineColorRules('side0_'),
-  //   getPlanningLineColorRules('side1_')
-  // ];
+  // Set line color depending on planning phase
+  map.setPaintProperty(config.map.layers.projectsLayer, 'line-color', [
+    'case',
+    ['==', 'draft', ['get', `phase`]],
+    planningPhases.draft.color,
+    ['==', 'planning', ['get', `phase`]],
+    planningPhases.planning.color,
+    ['==', 'execution', ['get', `phase`]],
+    planningPhases.execution.color,
+    ['==', 'ready', ['get', `phase`]],
+    planningPhases.ready.color,
+    '#FFF'
+  ]);
 
-  // console.log(paintRules);
-
-  // standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i]));
-  // smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-color', paintRules[i]));
-
-  // const opacityRules = [
-  //   getPlanningFilterRules('', filter),
-  //   getPlanningFilterRules('side0_', filter),
-  //   getPlanningFilterRules('side1_', filter)
-  // ];
-
-  // standardLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i]));
-  // smallStreetLayers.forEach((layerName, i) => map.setPaintProperty(config.map.layers[layerName], 'line-opacity', opacityRules[i]));
+  // map.setPaintProperty(
+  //   config.map.layers.projectsLayer,
+  //   'line-opacity',
+  //   filter
+  // )
 }
 
 function getHbiExpression(sideKey) {
@@ -126,11 +115,16 @@ function getHbiExpression(sideKey) {
 function getHbiLineColorRules(hbi) {
   return [
     'case',
-    ['<', hbi, 0], 'white', // we set a negative default value in order to recognize invalid sections. see function above
-    ['<', hbi, config.hbiStops[0].max], config.hbiStops[0].color,
-    ['<', hbi, config.hbiStops[1].max], config.hbiStops[1].color,
-    ['<', hbi, config.hbiStops[2].max], config.hbiStops[2].color,
-    ['<=', hbi, config.hbiStops[3].max], config.hbiStops[3].color,
+    ['<', hbi, 0],
+    'white', // we set a negative default value in order to recognize invalid sections. see function above
+    ['<', hbi, config.hbiStops[0].max],
+    config.hbiStops[0].color,
+    ['<', hbi, config.hbiStops[1].max],
+    config.hbiStops[1].color,
+    ['<', hbi, config.hbiStops[2].max],
+    config.hbiStops[2].color,
+    ['<=', hbi, config.hbiStops[3].max],
+    config.hbiStops[3].color,
     config.hbiStops[3].color
   ];
 }
@@ -138,16 +132,37 @@ function getHbiLineColorRules(hbi) {
 function getHbiFilterRules(hbi, filter) {
   return [
     'case',
-    ['all', ['>', hbi, config.hbiStops[0].min], ['<', hbi, config.hbiStops[0].max]], filter[0] ? 1 : 0,
-    ['all', ['>', hbi, config.hbiStops[1].min], ['<', hbi, config.hbiStops[1].max]], filter[1] ? 1 : 0,
-    ['all', ['>', hbi, config.hbiStops[2].min], ['<', hbi, config.hbiStops[2].max]], filter[2] ? 1 : 0,
-    ['all', ['>', hbi, config.hbiStops[3].min], ['<', hbi, config.hbiStops[3].max]], filter[3] ? 1 : 0,
+    [
+      'all',
+      ['>', hbi, config.hbiStops[0].min],
+      ['<', hbi, config.hbiStops[0].max]
+    ],
+    filter[0] ? 1 : 0,
+    [
+      'all',
+      ['>', hbi, config.hbiStops[1].min],
+      ['<', hbi, config.hbiStops[1].max]
+    ],
+    filter[1] ? 1 : 0,
+    [
+      'all',
+      ['>', hbi, config.hbiStops[2].min],
+      ['<', hbi, config.hbiStops[2].max]
+    ],
+    filter[2] ? 1 : 0,
+    [
+      'all',
+      ['>', hbi, config.hbiStops[3].min],
+      ['<', hbi, config.hbiStops[3].max]
+    ],
+    filter[3] ? 1 : 0,
     0
   ];
 }
 
 export function colorizeHbiLines(map, hbiValues, hbiFilter) {
-  setMapFilter(map, ['any',
+  setMapFilter(map, [
+    'any',
     ['has', 'side0_safety'],
     ['has', 'side0_velocity']
   ]);
@@ -200,7 +215,10 @@ export function resetMap({ zoom = null } = {}) {
 export function getCenterFromGeom(geometry, defaultCenter = null) {
   if (geometry && geometry.coordinates) {
     if (geometry.type === 'MultiLineString') {
-      geometry = turfLineString(geometry.coordinates.reduce((res, coord) => res.concat(coord)), []);
+      geometry = turfLineString(
+        geometry.coordinates.reduce((res, coord) => res.concat(coord)),
+        []
+      );
     }
 
     const length = turfLength(geometry);
@@ -213,11 +231,15 @@ export function getCenterFromGeom(geometry, defaultCenter = null) {
 export async function getGeoLocation() {
   return new Promise((resolve, reject) => {
     if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        resolve(position);
-      }, (err) => {
-        reject(err);
-      }, { timeout: 10000 });
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve(position);
+        },
+        (err) => {
+          reject(err);
+        },
+        { timeout: 10000 }
+      );
     } else {
       reject();
     }
