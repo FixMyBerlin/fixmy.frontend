@@ -15,10 +15,16 @@ module.exports = (api) => {
   const plugins = [
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-class-properties',
-    'babel-plugin-styled-components'
+    'babel-plugin-styled-components',
+    'babel-plugin-idx'
   ];
 
   const env = {
+    test: {
+      plugins: [
+        'transform-es2015-modules-commonjs'
+      ]
+    },
     production: {
       plugins: [
         [

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Link from 'react-router-dom/Link';
+import { Link } from 'react-router-dom';
 
 import { homeLabels } from '~/labels';
 // import StyledLink from '~/components/Link';

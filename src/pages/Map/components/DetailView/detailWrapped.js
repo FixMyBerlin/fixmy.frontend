@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import idx from 'idx';
 import styled from 'styled-components';
-import withRouter from 'react-router/withRouter';
+import { withRouter } from 'react-router-dom';
 import ky from 'ky';
 
 import { media } from '~/styles/utils';

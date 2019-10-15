@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Link from 'react-router-dom/Link';
+import { Link } from 'react-router-dom';
 
 export function getLinkStyles() {
   return `
