@@ -4,9 +4,8 @@ import _isEqual from 'lodash.isequal';
 import styled from 'styled-components';
 import idx from 'idx';
 import PropTypes from 'prop-types';
-import withRouter from 'react-router/withRouter';
+import { withRouter, matchPath } from 'react-router-dom';
 import slugify from 'slugify';
-import { matchPath } from 'react-router';
 
 import Store from '~/store';
 import { isSmallScreen } from '~/styles/utils';

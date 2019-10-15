@@ -4,7 +4,7 @@
 
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import withRouter from 'react-router/withRouter';
+import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -12,6 +12,7 @@ import { matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';
 import AddButton from './components/AddButton';
+import ErrorMessage from '~/components/ErrorMessage';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/pages/Map/components/LocatorControl';

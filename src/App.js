@@ -1,11 +1,8 @@
 import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import Route from 'react-router-dom/Route';
-import Switch from 'react-router-dom/Switch';
-import Router from 'react-router-dom/Router';
+import { Route, Switch, Router, Redirect } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
-import { Redirect } from 'react-router-dom';
 import GlobalStyles from '~/styles/Global';
 
 import history from '~/history';

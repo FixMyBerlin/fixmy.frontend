@@ -10,7 +10,7 @@ import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterBu
 import UploadPhotoInput from '~/pages/Reports/pages/SubmitReport/components/UploadPhotoInput';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
-import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
+import ErrorMessage from '~/components/ErrorMessage';
 import { matchMediaSize, breakpoints } from '~/styles/utils';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 

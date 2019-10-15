@@ -53,7 +53,7 @@ export function loadPlanningData(selectedDistrict = false) {
     }
 
     try {
-      const { results } = await ky.get(`${config.apiUrl}/projects?page_size=200`, { timeout: 200000 }).json();
+      const { results } = await ky.get(`${config.apiUrl}/plannings?page_size=200`, { timeout: 200000 }).json();
       const dataExtended = results.map(parseData);
 
       console.log(dataExtended);

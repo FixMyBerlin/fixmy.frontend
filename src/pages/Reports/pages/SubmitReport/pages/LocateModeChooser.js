@@ -9,7 +9,7 @@ import CloseIcon from '~/images/close.svg';
 
 import LocateIcon from '~/images/reports/location-button.svg';
 import MapIcon from '~/images/reports/noun-map-1909219.svg';
-import ErrorMessage from '~/pages/Reports/components/ErrorMessage';
+import ErrorMessage from '~/components/ErrorMessage';
 
 const Wrapper = styled.div`
   flex: 2 ;

@@ -1,4 +1,4 @@
-import NavLink from 'react-router-dom/NavLink';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const NavItem = styled(NavLink).attrs(
