@@ -58,11 +58,9 @@ export function loadPlanningData(selectedDistrict = false) {
         .json();
       const dataExtended = results.map(parseData);
 
-      console.log(dataExtended);
-
       return dispatch({ type: LOAD_DATA_SUCCESS, payload: { data: dataExtended, isLoading: false } });
     } catch (e) {
-      console.log(e);
+      console.error(e);
       return dispatch({ type: LOAD_DATA_FAIL, payload: { isLoading: false } });
     }
   };
