@@ -108,6 +108,10 @@ class Map extends PureComponent {
       this.updateLayers();
     }
 
+    if (prevProps.activeLayer !== this.props.activeLayer) {
+      this.registerClickHandler()
+    }
+
     if (!this.props.activeSection && this.state.popupLngLat) {
       this.disablePopup();
     }
@@ -146,8 +150,7 @@ class Map extends PureComponent {
   }
 
   handleLoad = () => {
-    // this.map.on('click', config.map.layers.projectsLayer, this.handleClick);
-    this.map.on('click', config.map.layers.bgLayer, this.handleClick);
+    this.registerClickHandler();
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
 
@@ -165,6 +168,19 @@ class Map extends PureComponent {
     this.setState({ loading: false, map: this.map });
 
     this.map.resize();
+  }
+
+  registerClickHandler = () => {
+    const projectsTarget = config.map.layers.projects.overlayLine
+    const hbiTarget = config.map.layers.hbi.overlayLine
+
+    if(this.props.activeLayer === 'zustand') {
+      this.map.off('click', projectsTarget, this.handleClick)
+      this.map.on('click', hbiTarget, this.handleClick)
+    } else {
+      this.map.off('click', hbiTarget, this.handleClick)
+      this.map.on('click', projectsTarget, this.handleClick)
+    }
   }
 
   updateLayers = () => {
@@ -196,14 +212,15 @@ class Map extends PureComponent {
     toggleLayer(this.map, hbiLayers.center, isZustand);
     toggleLayer(this.map, hbiLayers.side0, isZustand);
     toggleLayer(this.map, hbiLayers.side1, isZustand);
+    toggleLayer(this.map, hbiLayers.overlayLine, this.props.drawOverlayLine);
     toggleLayer(this.map, hbiLayers.intersections, isZustand);
     toggleLayer(this.map, hbiLayers.intersectionsSide0, isZustand);
     toggleLayer(this.map, hbiLayers.intersectionsSide1, isZustand);
     toggleLayer(this.map, hbiLayers.intersectionsOverlay, isZustand);
+    // This layer is used to register a click handler for hbi
+    toggleLayer(this.map, config.map.layers.bgLayer, true);
 
     // other layers
-    toggleLayer(this.map, config.map.layers.bgLayer, true);
-    toggleLayer(this.map, hbiLayers.overlayLine, this.props.drawOverlayLine);
     toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
     toggleLayer(this.map, config.map.layers.dimmingLayer, this.props.dim);
 
@@ -214,8 +231,6 @@ class Map extends PureComponent {
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
-
-    console.log(properties);
 
     if (properties) {
       const name = slugify(properties.name || '').toLowerCase();
