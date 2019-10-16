@@ -17,8 +17,7 @@ export const intersectionLayers = [
   'intersectionsOverlay'
 ];
 
-export const standardLayers = ['centerLayer', 'side0Layer', 'side1Layer'];
-
+export const standardLayers = ['center', 'side0', 'side1'];
 export const standardLayersWithOverlay = [...standardLayers, 'overlayLine'];
 
 export function setView(map, view) {
@@ -49,51 +48,72 @@ export function filterLayersById(map, id) {
     const VisibilityFilter = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
 
     map.setPaintProperty(
-      config.map.layers.projectsLayer,
+      config.map.layers.projects.center,
       'line-opacity',
       VisibilityFilter
     );
   }
 }
 
-function setMapFilter(map, filter) {
+function setMapFilter(map, subMap, filter) {
   standardLayersWithOverlay.forEach((layerName) =>
-    map.setFilter(config.map.layers[layerName], filter)
+    map.setFilter(config.map.layers[subMap][layerName], filter)
   );
   map.setFilter(config.map.layers.bgLayer, filter);
 }
 
-function getPlanningFilterRules(side = '', filter) {
-  return [
-    'case',
-    ['==', 'draft', ['get', `${side}planning_phase`]],
-    filter[0] ? 1 : 0,
-    ['==', 'planning', ['get', `${side}planning_phase`]],
-    filter[1] ? 1 : 0,
-    ['==', 'execution', ['get', `${side}planning_phase`]],
-    filter[2] ? 1 : 0,
-    ['==', 'ready', ['get', `${side}planning_phase`]],
-    filter[3] ? 1 : 0,
-    0
-  ];
-}
-
+/**
+ * Set color and opacity rules for the project layers depending on planning
+ * phase and street side-association of plannings
+ *
+ * @param {Object} Mapbox instance
+ * @param {Array<Boolean>} filter For each layer whether it should be visible
+ */
 export function colorizePlanningLines(map, filter) {
-  // Set line color depending on planning phase
-  map.setPaintProperty(config.map.layers.projectsLayer, 'line-color', [
-    'case',
-    ['==', 'draft', ['get', `phase`]],
-    planningPhases.draft.color,
-    ['==', 'planning', ['get', `phase`]],
-    planningPhases.planning.color,
-    ['==', 'execution', ['get', `phase`]],
-    planningPhases.execution.color,
-    ['==', 'ready', ['get', `phase`]],
-    planningPhases.ready.color,
-    '#FFF'
-  ]);
+  const layers = config.map.layers.projects;
 
-  map.setPaintProperty(config.map.layers.projectsLayer, 'line-opacity', 1);
+  // const mapPhasesToColors = [
+  //   'case',
+  //   ['==', 'draft', ['get', `phase`]],
+  //   planningPhases.draft.color,
+  //   ['==', 'planning', ['get', `phase`]],
+  //   planningPhases.planning.color,
+  //   ['==', 'execution', ['get', `phase`]],
+  //   planningPhases.execution.color,
+  //   ['==', 'ready', ['get', `phase`]],
+  //   planningPhases.ready.color,
+  //   '#FFF'
+  // ];
+
+  // // All layers except for the overlay line are colored according
+  // // to their associated project's phase.
+  // map.setPaintProperty(layers.center, 'line-color', mapPhasesToColors);
+  // map.setPaintProperty(layers.side0, 'line-color', mapPhasesToColors);
+  // map.setPaintProperty(layers.side1, 'line-color', mapPhasesToColors);
+
+  // // The `center` and `overlayLine` layers should be visible everywhere
+  // map.setPaintProperty(layers.center, 'line-opacity', 1);
+  // map.setPaintProperty(layers.overlayLine, 'line-opacity', 1);
+
+  // // The opacity of the two street sides is changed depending on whether
+  // // a project is planned on that side, so that sides with no planned projects
+  // // are invisble.
+  // //
+  // // sides:
+  // //   right: 0
+  // //   left: 1
+  // //   both: 2
+  // const planningSideOpacity = (side) => [
+  //   'case',
+  //   ['==', side, ['get', 'side']],
+  //   1,
+  //   ['==', 2, ['get', 'side']],
+  //   1,
+  //   0
+  // ];
+
+  // map.setPaintProperty(layers.side0, 'line-opacity', planningSideOpacity(0));
+  // map.setPaintProperty(layers.side1, 'line-opacity', planningSideOpacity(1));
 }
 
 function getHbiExpression(sideKey) {
@@ -157,7 +177,7 @@ function getHbiFilterRules(hbi, filter) {
 }
 
 export function colorizeHbiLines(map, hbiValues, hbiFilter) {
-  setMapFilter(map, [
+  setMapFilter(map, 'hbi', [
     'any',
     ['has', 'side0_safety'],
     ['has', 'side0_velocity']
@@ -178,7 +198,7 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
 
   standardLayers.forEach((layerName, i) =>
     map.setPaintProperty(
-      config.map.layers[layerName],
+      config.map.layers.hbi[layerName],
       'line-color',
       lineColorRules[i]
     )
@@ -192,7 +212,7 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
 
   standardLayers.forEach((layerName, i) =>
     map.setPaintProperty(
-      config.map.layers[layerName],
+      config.map.layers.hbi[layerName],
       'line-opacity',
       lineOpacityRules[i]
     )
