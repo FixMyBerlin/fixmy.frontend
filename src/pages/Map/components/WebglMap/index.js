@@ -27,9 +27,9 @@ const StyledMap = styled.div`
   flex: 1;
 `;
 
-MapboxGL.clearStorage(err => {
-  console.log(err);
-});
+// MapboxGL.clearStorage(err => {
+//   console.log('Error clearing Mapbox', err);
+// });
 
 class Map extends PureComponent {
   static propTypes = {
