@@ -13,7 +13,7 @@ import * as AppActions from '~/AppState';
 import * as MapActions from '~/pages/Map/MapState';
 import PlanningMarkers from '~/pages/Map/components/PlanningMarkers';
 import {
-  colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer,
+  colorizeHbiLines, animateView, setView, toggleLayer,
   filterLayersById, getCenterFromGeom, resetMap, intersectionLayers,
   parseUrlOptions
 } from '~/pages/Map/map-utils';
@@ -191,10 +191,6 @@ class Map extends PureComponent {
 
     if (isZustand) {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
-    }
-
-    if (isPlanungen) {
-      colorizePlanningLines(this.map, this.props.filterPlannings);
     }
     
     // project layers

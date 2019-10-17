@@ -69,60 +69,6 @@ function setMapFilter(map, subMap, filter) {
   );
 }
 
-/**
- * Set color and opacity rules for the project layers depending on planning
- * phase and street side-association of plannings
- *
- * @param {Object} Mapbox instance
- * @param {Array<Boolean>} filter For each layer whether it should be visible
- */
-export function colorizePlanningLines(map, filter) {
-  const layers = config.map.layers.projects;
-
-  // const mapPhasesToColors = [
-  //   'case',
-  //   ['==', 'draft', ['get', `phase`]],
-  //   planningPhases.draft.color,
-  //   ['==', 'planning', ['get', `phase`]],
-  //   planningPhases.planning.color,
-  //   ['==', 'execution', ['get', `phase`]],
-  //   planningPhases.execution.color,
-  //   ['==', 'ready', ['get', `phase`]],
-  //   planningPhases.ready.color,
-  //   '#FFF'
-  // ];
-
-  // // All layers except for the overlay line are colored according
-  // // to their associated project's phase.
-  // map.setPaintProperty(layers.center, 'line-color', mapPhasesToColors);
-  // map.setPaintProperty(layers.side0, 'line-color', mapPhasesToColors);
-  // map.setPaintProperty(layers.side1, 'line-color', mapPhasesToColors);
-
-  // // The `center` and `overlayLine` layers should be visible everywhere
-  // map.setPaintProperty(layers.center, 'line-opacity', 1);
-  // map.setPaintProperty(layers.overlayLine, 'line-opacity', 1);
-
-  // // The opacity of the two street sides is changed depending on whether
-  // // a project is planned on that side, so that sides with no planned projects
-  // // are invisble.
-  // //
-  // // sides:
-  // //   right: 0
-  // //   left: 1
-  // //   both: 2
-  // const planningSideOpacity = (side) => [
-  //   'case',
-  //   ['==', side, ['get', 'side']],
-  //   1,
-  //   ['==', 2, ['get', 'side']],
-  //   1,
-  //   0
-  // ];
-
-  // map.setPaintProperty(layers.side0, 'line-opacity', planningSideOpacity(0));
-  // map.setPaintProperty(layers.side1, 'line-opacity', planningSideOpacity(1));
-}
-
 function getHbiExpression(sideKey) {
   // formula:
   // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)
@@ -303,7 +249,6 @@ export default {
   filterLayersById,
   toggleLayer,
   colorizeHbiLines,
-  colorizePlanningLines,
   resetMap,
   getCenterFromGeom,
   getGeoLocation,
