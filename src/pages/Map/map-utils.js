@@ -42,15 +42,23 @@ export function toggleLayer(map, layer, isVisible) {
   }
 }
 
-// used to highlight a section by id
-export function filterLayersById(map, id) {
+/**
+ * Change opacity of all non-active sections to highlight a specific one
+ * 
+ * @param {Object} map Mapbox instance
+ * @param {String} subMap either `projects` or `hbi`
+ * @param {Number} id Identifier of the active section 
+ */
+export function filterLayersById(map, subMap, id) {
   if (id) {
     const VisibilityFilter = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
 
-    map.setPaintProperty(
-      config.map.layers.projects.center,
-      'line-opacity',
-      VisibilityFilter
+    standardLayers.forEach((layer) =>
+      map.setPaintProperty(
+        config.map.layers[subMap][layer],
+        'line-opacity',
+        VisibilityFilter
+      )
     );
   }
 }

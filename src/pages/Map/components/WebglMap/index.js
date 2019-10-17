@@ -184,7 +184,6 @@ class Map extends PureComponent {
   }
 
   updateLayers = () => {
-    const filterId = this.props.activeSection;
     const isZustand = this.props.activeLayer === 'zustand';
     const isPlanungen = this.props.activeLayer === 'planungen';
 
@@ -222,7 +221,8 @@ class Map extends PureComponent {
     toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
     toggleLayer(this.map, config.map.layers.dimmingLayer, this.props.dim);
 
-    filterLayersById(this.map, filterId);
+    const subMap = isZustand ? 'hbi' : 'projects'
+    filterLayersById(this.map, subMap, this.props.activeSection);
   }
 
   handleClick = (e) => {
