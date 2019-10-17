@@ -140,6 +140,8 @@ class PlanningListItem extends PureComponent {
       photos = [],
       id,
       length,
+      likes,
+      street_name: streetName,
       title,
       borough,
       phase
@@ -153,23 +155,23 @@ class PlanningListItem extends PureComponent {
         <ItemContent>
           <ItemImage src={iconSrc} />
           <ItemHeader>
-            <ItemTitle>{title}</ItemTitle>
+            <ItemTitle>{streetName}</ItemTitle>
             <Label>
               {borough} {length && `| ${numberFormat(+length / 1000, 1)} km`}
             </Label>
           </ItemHeader>
-          <ItemSubTitle>{this.props.title}</ItemSubTitle>
+          <ItemSubTitle>{title}</ItemSubTitle>
           <ItemFooter>
             <Likes>
               <HeartIcon />
-              <Label>{this.props.likes}</Label>
+              <Label>{likes}</Label>
             </Likes>
             <DateWrapper>Fertigstellung: {constructionCompleted}</DateWrapper>
           </ItemFooter>
         </ItemContent>
         {this.state.isExpanded && (
           <Expansion>
-            <img src={photo.src} alt={this.props.title} />
+            <img src={photo.src} alt={title} />
             <Copyright>{photo.copyright}</Copyright>
             {id && <MapButton onClick={this.onClick}>Zur Karte</MapButton>}
           </Expansion>

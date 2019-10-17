@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { sortByKey } from '~/utils/utils';
 import { districts } from '~/labels';
 import {
-  loadPlanningData, setDistrictFilter, setPhaseFilter, setSort
+  loadProjectData, setDistrictFilter, setPhaseFilter, setSort
 } from '~/pages/Analysis/AnalysisState';
 import PieChart from '~/pages/Analysis/components/PieChart';
 import BigLabel from '~/components/BigLabel';
@@ -75,7 +75,7 @@ function filterPhase(phaseName) {
 class Analysis extends PureComponent {
   componentDidMount() {
     const selectedDistrict = idx(this.props, _ => _.match.params.districtName);
-    this.props.loadPlanningData(selectedDistrict);
+    this.props.loadProjectData(selectedDistrict);
   }
 
   onDistrictChange = (evt) => {
@@ -165,7 +165,7 @@ class Analysis extends PureComponent {
 export default connect(
   state => state.AnalysisState,
   dispatch => ({
-    loadPlanningData: districtName => dispatch(loadPlanningData(districtName)),
+    loadProjectData: districtName => dispatch(loadProjectData(districtName)),
     setDistrictFilter: districtName => dispatch(setDistrictFilter(districtName)),
     setPhaseFilter: districtName => dispatch(setPhaseFilter(districtName)),
     setSort: sort => dispatch(setSort(sort))
