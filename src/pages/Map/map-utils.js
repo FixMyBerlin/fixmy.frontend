@@ -43,24 +43,28 @@ export function toggleLayer(map, layer, isVisible) {
 }
 
 /**
- * Change opacity of all non-active sections to highlight a specific one
+ * Change opacity of all non-active sections to highlight a specific one or
+ * reset filter when no section is selected
  * 
  * @param {Object} map Mapbox instance
  * @param {String} subMap either `projects` or `hbi`
- * @param {Number} id Identifier of the active section 
+ * @param {Number} id Identifier of the active section (null for reset)
  */
 export function filterLayersById(map, subMap, id) {
+  let VisibilityFilter
   if (id) {
-    const VisibilityFilter = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
-
-    standardLayers.forEach((layer) =>
-      map.setPaintProperty(
-        config.map.layers[subMap][layer],
-        'line-opacity',
-        VisibilityFilter
-      )
-    );
+    VisibilityFilter = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
+  } else {
+    VisibilityFilter = 1
   }
+
+  standardLayers.forEach((layer) =>
+    map.setPaintProperty(
+      config.map.layers[subMap][layer],
+      'line-opacity',
+      VisibilityFilter
+    )
+  );
 }
 
 function getHbiExpression(sideKey) {
