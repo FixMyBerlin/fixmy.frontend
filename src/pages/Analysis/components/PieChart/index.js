@@ -6,6 +6,7 @@ import { VictoryPie, VictoryLabel, Slice } from 'victory';
 
 import { setPhaseFilter } from '~/pages/Analysis/AnalysisState';
 
+import { numberFormat } from '~/utils/utils';
 import SvgIcon from '~/components/SvgIcon';
 import DotLoader from '~/components/DotLoader';
 
@@ -48,27 +49,22 @@ const chartStyle = {
   data: {}
 };
 
-function sumLengths(planningPhaseName = null) {
-  return (res, item) => {
-    if (planningPhaseName === null || item.phase === planningPhaseName) {
-      let length0 = idx(item, _ => _.planning_sections[0].details[0].length);
-      let length1 = idx(item, _ => _.planning_sections[0].details[1].length);
-
-      length0 = length0 ? +length0 : 0;
-      length1 = length1 ? +length1 : 0;
-
-      return res + length0 + length1;
+/**
+ * Return the summed length of projects in an array, optionally filtered by phase
+ * 
+ * @param {Array<Object>} projects Project objects with `length` field
+ * @param {String} phase Name of the phase to filter for or `null` for all
+ */
+const lengthByPhase = (projects, phase) => {
+  let curLen
+  return projects.reduce((acc, cur)  => {
+    curLen = 0;
+    if (phase == null || cur.phase === phase) {
+      curLen = cur.length
     }
-
-    return res;
-  };
-}
-
-function renderNoData() {
-  return (
-    <ChartTitle>Keine Planungen vorhanden.</ChartTitle>
-  );
-}
+    return acc + curLen
+  }, 0)
+} 
 
 function getSvgOffsetY(orientation) {
   switch (orientation) {
@@ -104,23 +100,33 @@ const Label = ({
   );
 };
 
+
+const NoData = () => <ChartTitle>Keine Planungen <br />vorhanden.</ChartTitle>
+
 class PieChart extends PureComponent {
   handleClick = (evt, data) => {
     this.props.setPhaseFilter(data.datum.x);
   }
 
   renderChartLabel() {
-    const lengthSum = this.props.data.reduce(sumLengths(), 0);
+    const { data } = this.props
+    const lengthSum = lengthByPhase(this.props.data, null) / 1000.0
+    const numProjects = data.length
+
     return (
       <Fragment>
-        <ChartTitle>{this.props.data.length} Planungen</ChartTitle>
-        <ChartSubtitle>gesamte Länge: {(lengthSum / 1000).toFixed(0)} km</ChartSubtitle>
+        <ChartTitle>{numProjects} Planungen</ChartTitle>
+        <ChartSubtitle>
+          gesamte Länge: {numberFormat(lengthSum, 0)} km
+        </ChartSubtitle>
       </Fragment>
     );
   }
 
   render() {
-    if (this.props.isLoading) {
+    const { isLoading, data } = this.props
+
+    if (isLoading) {
       return (
         <PieChartWrapper>
           <DotLoader />
@@ -128,14 +134,16 @@ class PieChart extends PureComponent {
       );
     }
 
-    const chartData = config.planningPhases.map(planningPhase => ({
-      x: planningPhase.id,
-      xName: planningPhase.name,
-      y: this.props.data.reduce(sumLengths(planningPhase.id), 0),
-      color: planningPhase.color
-    })).filter(d => d.y > 0);
+    const chartData = config.planningPhases
+      .map((planningPhase) => ({
+        x: planningPhase.id,
+        xName: planningPhase.name,
+        y: lengthByPhase(data, planningPhase.id) / 1000.0,
+        color: planningPhase.color
+      }))
+      .filter((d) => d.y > 0);
 
-    const hasData = this.props.data.length > 0;
+    const hasData = data.length > 0
     const colorScale = chartData.map(d => d.color);
 
     return (
@@ -158,7 +166,7 @@ class PieChart extends PureComponent {
           ]}
         />
         <ChartInnerLabel>
-          {hasData ? this.renderChartLabel() : renderNoData()}
+          {hasData ? this.renderChartLabel() : <NoData />}
         </ChartInnerLabel>
       </PieChartWrapper>
     );
