@@ -201,7 +201,7 @@ class Map extends PureComponent {
     toggleLayer(this.map, projectsLayers.center, isPlanungen);
     toggleLayer(this.map, projectsLayers.side0, isPlanungen);
     toggleLayer(this.map, projectsLayers.side1, isPlanungen);
-    // toggleLayer(this.map, projectsLayers.overlayLine, this.props.drawOverlayLine));
+    toggleLayer(this.map, projectsLayers.overlayLine, this.props.drawOverlayLine);
 
     // hbi layers
     toggleLayer(this.map, hbiLayers.center, isZustand);
