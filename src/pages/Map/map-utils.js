@@ -59,7 +59,6 @@ function setMapFilter(map, subMap, filter) {
   standardLayersWithOverlay.forEach((layerName) =>
     map.setFilter(config.map.layers[subMap][layerName], filter)
   );
-  map.setFilter(config.map.layers.bgLayer, filter);
 }
 
 /**

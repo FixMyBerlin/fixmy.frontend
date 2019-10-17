@@ -241,7 +241,6 @@ const config = {
         intersectionsSide1: 'fmb-HBI-intersections-side-1',
         intersectionsOverlay: 'fmb-HBI-intersections-overlay'
       },
-      bgLayer: 'fmb-background',
       buildings3d: '3d-buildings',
       dimmingLayer: 'fmb-dimming',
     },

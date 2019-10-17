@@ -217,8 +217,6 @@ class Map extends PureComponent {
     toggleLayer(this.map, hbiLayers.intersectionsSide0, isZustand);
     toggleLayer(this.map, hbiLayers.intersectionsSide1, isZustand);
     toggleLayer(this.map, hbiLayers.intersectionsOverlay, isZustand);
-    // This layer is used to register a click handler for hbi
-    toggleLayer(this.map, config.map.layers.bgLayer, true);
 
     // other layers
     toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
