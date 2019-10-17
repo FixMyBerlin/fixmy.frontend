@@ -225,18 +225,24 @@ const config = {
       dim: false
     },
     layers: {
-      bgLayer: 'fmb-background',
-      projectsLayer: 'fmb-projects',
-      centerLayer: 'fmb-HBI-center',
-      side0Layer: 'fmb-HBI-side-0',
-      side1Layer: 'fmb-HBI-side-1',
-      overlayLine: 'fmb-HBI-overlay-line',
+      projects: {
+        center: 'fmb-projects-center',
+        side0: 'fmb-projects-side-0',
+        side1: 'fmb-projects-side-1',
+        overlayLine: 'fmb-projects-overlay-line ',
+      },
+      hbi: {
+        center: 'fmb-HBI-center',
+        side0: 'fmb-HBI-side-0',
+        side1: 'fmb-HBI-side-1',
+        overlayLine: 'fmb-HBI-overlay-line',
+        intersections: 'fmb-HBI-intersections',
+        intersectionsSide0: 'fmb-HBI-intersections-side-0',
+        intersectionsSide1: 'fmb-HBI-intersections-side-1',
+        intersectionsOverlay: 'fmb-HBI-intersections-overlay'
+      },
       buildings3d: '3d-buildings',
       dimmingLayer: 'fmb-dimming',
-      intersections: 'fmb-HBI-intersections',
-      intersectionsSide0: 'fmb-HBI-intersections-side-0',
-      intersectionsSide1: 'fmb-HBI-intersections-side-1',
-      intersectionsOverlay: 'fmb-HBI-intersections-overlay'
     },
     zoomAfterGeocode: 15,
     geocoderUrl: 'https://geocoder.cit.api.here.com/6.2/geocode.json',

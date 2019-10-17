@@ -17,8 +17,7 @@ export const intersectionLayers = [
   'intersectionsOverlay'
 ];
 
-export const standardLayers = ['centerLayer', 'side0Layer', 'side1Layer'];
-
+export const standardLayers = ['center', 'side0', 'side1'];
 export const standardLayersWithOverlay = [...standardLayers, 'overlayLine'];
 
 export function setView(map, view) {
@@ -43,57 +42,25 @@ export function toggleLayer(map, layer, isVisible) {
   }
 }
 
-// used to highlight a section by id
-export function filterLayersById(map, id) {
+/**
+ * Change opacity of all non-active sections to highlight a specific one
+ * 
+ * @param {Object} map Mapbox instance
+ * @param {String} subMap either `projects` or `hbi`
+ * @param {Number} id Identifier of the active section 
+ */
+export function filterLayersById(map, subMap, id) {
   if (id) {
     const VisibilityFilter = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
 
-    map.setPaintProperty(
-      config.map.layers.projectsLayer,
-      'line-opacity',
-      VisibilityFilter
+    standardLayers.forEach((layer) =>
+      map.setPaintProperty(
+        config.map.layers[subMap][layer],
+        'line-opacity',
+        VisibilityFilter
+      )
     );
   }
-}
-
-function setMapFilter(map, filter) {
-  standardLayersWithOverlay.forEach((layerName) =>
-    map.setFilter(config.map.layers[layerName], filter)
-  );
-  map.setFilter(config.map.layers.bgLayer, filter);
-}
-
-function getPlanningFilterRules(side = '', filter) {
-  return [
-    'case',
-    ['==', 'draft', ['get', `${side}planning_phase`]],
-    filter[0] ? 1 : 0,
-    ['==', 'planning', ['get', `${side}planning_phase`]],
-    filter[1] ? 1 : 0,
-    ['==', 'execution', ['get', `${side}planning_phase`]],
-    filter[2] ? 1 : 0,
-    ['==', 'ready', ['get', `${side}planning_phase`]],
-    filter[3] ? 1 : 0,
-    0
-  ];
-}
-
-export function colorizePlanningLines(map, filter) {
-  // Set line color depending on planning phase
-  map.setPaintProperty(config.map.layers.projectsLayer, 'line-color', [
-    'case',
-    ['==', 'draft', ['get', `phase`]],
-    planningPhases.draft.color,
-    ['==', 'planning', ['get', `phase`]],
-    planningPhases.planning.color,
-    ['==', 'execution', ['get', `phase`]],
-    planningPhases.execution.color,
-    ['==', 'ready', ['get', `phase`]],
-    planningPhases.ready.color,
-    '#FFF'
-  ]);
-
-  map.setPaintProperty(config.map.layers.projectsLayer, 'line-opacity', 1);
 }
 
 function getHbiExpression(sideKey) {
@@ -157,11 +124,11 @@ function getHbiFilterRules(hbi, filter) {
 }
 
 export function colorizeHbiLines(map, hbiValues, hbiFilter) {
-  setMapFilter(map, [
-    'any',
-    ['has', 'side0_safety'],
-    ['has', 'side0_velocity']
-  ]);
+  const mapFilter = ['any', ['has', 'side0_safety'], ['has', 'side0_velocity']];
+
+  standardLayersWithOverlay.forEach((layerName) =>
+    map.setFilter(config.map.layers.hbi[layerName], mapFilter)
+  );
 
   const rv = (hbiValues[0] - 5) / 10;
   const rs = (hbiValues[1] - 5) / 10;
@@ -178,7 +145,7 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
 
   standardLayers.forEach((layerName, i) =>
     map.setPaintProperty(
-      config.map.layers[layerName],
+      config.map.layers.hbi[layerName],
       'line-color',
       lineColorRules[i]
     )
@@ -192,7 +159,7 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
 
   standardLayers.forEach((layerName, i) =>
     map.setPaintProperty(
-      config.map.layers[layerName],
+      config.map.layers.hbi[layerName],
       'line-opacity',
       lineOpacityRules[i]
     )
@@ -276,7 +243,6 @@ export default {
   filterLayersById,
   toggleLayer,
   colorizeHbiLines,
-  colorizePlanningLines,
   resetMap,
   getCenterFromGeom,
   getGeoLocation,
