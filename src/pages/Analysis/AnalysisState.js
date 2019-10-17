@@ -17,21 +17,6 @@ const initialState = {
   selectedSort: 'likes'
 };
 
-function parseData(d) {
-  let length = 1000;
-
-  if (d.details) {
-    d.details.forEach((detail) => {
-      length += detail.length;
-    });
-  }
-
-  return {
-    ...d,
-    length
-  };
-}
-
 export function setDistrictFilter(selectedDistrict) {
   return { type: SET_DISTRICT_FILTER, payload: { selectedDistrict, selectedPhase: false } };
 }
@@ -44,7 +29,7 @@ export function setSort(selectedSort) {
   return { type: SET_SORT, payload: { selectedSort } };
 }
 
-export function loadPlanningData(selectedDistrict = false) {
+export function loadProjectData(selectedDistrict = false) {
   return async (dispatch) => {
     dispatch({ type: LOAD_DATA, payload: { isLoading: true } });
 
@@ -53,14 +38,15 @@ export function loadPlanningData(selectedDistrict = false) {
     }
 
     try {
-      const { results } = await ky.get(`${config.apiUrl}/projects?page_size=200`, { timeout: 200000 }).json();
-      const dataExtended = results.map(parseData);
+      const endPoint = `${config.apiUrl}/projects?page_size=200`;
+      const { results } = await ky.get(endPoint, { timeout: 200000 }).json();
 
-      console.log(dataExtended);
-
-      return dispatch({ type: LOAD_DATA_SUCCESS, payload: { data: dataExtended, isLoading: false } });
+      return dispatch({
+        type: LOAD_DATA_SUCCESS,
+        payload: { data: results, isLoading: false }
+      });
     } catch (e) {
-      console.log(e);
+      console.error('Error loading project data', e);
       return dispatch({ type: LOAD_DATA_FAIL, payload: { isLoading: false } });
     }
   };
