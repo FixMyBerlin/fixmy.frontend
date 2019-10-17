@@ -63,12 +63,6 @@ export function filterLayersById(map, subMap, id) {
   }
 }
 
-function setMapFilter(map, subMap, filter) {
-  standardLayersWithOverlay.forEach((layerName) =>
-    map.setFilter(config.map.layers[subMap][layerName], filter)
-  );
-}
-
 function getHbiExpression(sideKey) {
   // formula:
   // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)
@@ -130,11 +124,11 @@ function getHbiFilterRules(hbi, filter) {
 }
 
 export function colorizeHbiLines(map, hbiValues, hbiFilter) {
-  setMapFilter(map, 'hbi', [
-    'any',
-    ['has', 'side0_safety'],
-    ['has', 'side0_velocity']
-  ]);
+  const mapFilter = ['any', ['has', 'side0_safety'], ['has', 'side0_velocity']];
+
+  standardLayersWithOverlay.forEach((layerName) =>
+    map.setFilter(config.map.layers.hbi[layerName], mapFilter)
+  );
 
   const rv = (hbiValues[0] - 5) / 10;
   const rs = (hbiValues[1] - 5) / 10;
