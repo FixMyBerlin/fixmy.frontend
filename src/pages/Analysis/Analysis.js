@@ -65,7 +65,7 @@ const sortOptions = [
 ];
 
 function filterDistrict(districtName) {
-  return d => (!districtName ? true : d.planning_sections[0].borough.toLowerCase() === districtName.toLowerCase());
+  return d => (!districtName ? true : d.borough.toLowerCase() === districtName.toLowerCase());
 }
 
 function filterPhase(phaseName) {
