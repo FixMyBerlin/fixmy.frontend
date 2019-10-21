@@ -70,7 +70,7 @@ const NoDataLabel = styled.div`
   margin-top: 1rem;
 `;
 
-class PlanningDetails extends PureComponent {
+class ProjectDetail extends PureComponent {
   state = {
     descriptionExpanded: false,
     sideIndex: 0
@@ -157,4 +157,4 @@ class PlanningDetails extends PureComponent {
   }
 }
 
-export default detailWrapped(PlanningDetails);
+export default detailWrapped(ProjectDetail);

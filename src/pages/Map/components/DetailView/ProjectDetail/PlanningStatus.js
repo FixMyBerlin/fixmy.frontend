@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
 
 import PlanningStatusChart from './PlanningStatusChart';
-import PlanningChecklist from './PlanningChecklist';
+import ProjectChecklist from './ProjectChecklist';
 
 const DetailButton = styled.button`
   border: 1px solid ${config.colors.interaction};
@@ -38,7 +38,7 @@ class PlanningStatus extends PureComponent {
         <DetailButtonWrapper>
           <DetailButton onClick={this.toggleExpand}>Details +</DetailButton>
         </DetailButtonWrapper>
-        {this.state.isExpanded ? <PlanningChecklist /> : null}
+        {this.state.isExpanded ? <ProjectChecklist /> : null}
       </Fragment>
     );
   }

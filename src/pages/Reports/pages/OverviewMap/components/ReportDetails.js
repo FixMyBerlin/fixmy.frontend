@@ -5,7 +5,7 @@ import ShareIcon from '~/images/reports/share.svg';
 import ReportPinIcon from '~/images/reports/pin-meldung-yellow.png';
 
 import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
-import PlanningLike from '~/pages/Map/components/DetailView/PlanningDetail/PlanningLike';
+import PlanningLike from '~/pages/Map/components/DetailView/ProjectDetail/PlanningLike';
 import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 
