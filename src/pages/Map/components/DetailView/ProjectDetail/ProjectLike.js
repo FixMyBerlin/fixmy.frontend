@@ -52,7 +52,7 @@ const LikeButton = styled.button`
   }
 `;
 
-class PlanningLike extends PureComponent {
+class ProjectLike extends PureComponent {
   state = {
     count: 0,
     bouncy: false,
@@ -113,4 +113,4 @@ class PlanningLike extends PureComponent {
   }
 }
 
-export default PlanningLike;
+export default ProjectLike;

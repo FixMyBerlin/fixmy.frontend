@@ -17,7 +17,7 @@ const Markers = {
 
 const phasesOrder = Object.keys(Markers);
 
-class PlanningMarkers extends PureComponent {
+class ProjectMarkers extends PureComponent {
   constructor() {
     super();
 
@@ -96,4 +96,4 @@ class PlanningMarkers extends PureComponent {
   }
 }
 
-export default PlanningMarkers;
+export default ProjectMarkers;

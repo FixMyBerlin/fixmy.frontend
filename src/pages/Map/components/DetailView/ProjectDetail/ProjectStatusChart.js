@@ -56,7 +56,7 @@ function getPhaseIcon(phase = {}) {
   );
 }
 
-class PlanningStatusChart extends PureComponent {
+class ProjectStatusChart extends PureComponent {
   state = {
     width: 0
   }
@@ -144,4 +144,4 @@ class PlanningStatusChart extends PureComponent {
   }
 }
 
-export default PlanningStatusChart;
+export default ProjectStatusChart;

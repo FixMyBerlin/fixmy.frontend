@@ -47,7 +47,7 @@ export function signup(values, formFunctions) {
 
     if (!data.error) {
       formFunctions.setStatus('signupsuccess');
-      setTimeout(() => history.push(config.routes.plannings), 3000);
+      setTimeout(() => history.push(config.routes.projects), 3000);
     }
   };
 }

@@ -65,7 +65,7 @@ class App extends PureComponent {
 
                   {/* map pages */}
                   <Route
-                    path={`(${config.routes.status}|${config.routes.plannings}|/my-hbi)`}
+                    path={`(${config.routes.status}|${config.routes.projects}|/my-hbi)`}
                     component={MapView}
                   />
 
