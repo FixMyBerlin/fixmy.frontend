@@ -137,7 +137,7 @@ const config = {
     }
   ],
   routes: {
-    plannings: '/planungen',
+    projects: '/planungen',
     status: '/zustand',
     analyse: '/analyse',
     reports: {
