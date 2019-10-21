@@ -115,7 +115,7 @@ const MapButton = styled(Button)`
   }
 `;
 
-class PlanningListItem extends PureComponent {
+class ProjectListItem extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -181,4 +181,4 @@ class PlanningListItem extends PureComponent {
   }
 }
 
-export default PlanningListItem;
+export default ProjectListItem;

@@ -4,12 +4,12 @@ import idx from 'idx';
 import Title from '~/components/Title';
 import Text from '~/components/Text';
 import { loadLikes } from '~/pages/User/UserState';
-import PlanningList from '~/components/PlanningList';
+import ProjectList from '~/components/ProjectList';
 import Select from '~/components/Select';
 
 class UserLikes extends PureComponent {
   state = {
-    itemType: 'plannings'
+    itemType: 'projects'
   }
 
   componentDidMount() {
@@ -33,7 +33,7 @@ class UserLikes extends PureComponent {
           title=""
           onChange={val => this.onSelect(val)}
           options={[{
-            value: 'plannings',
+            value: 'projects',
             label: 'Planungen'
           }, {
             value: 'reports',
@@ -42,7 +42,7 @@ class UserLikes extends PureComponent {
           disabled={this.props.isLoading}
         />
 
-        <PlanningList
+        <ProjectList
           data={this.props.userLikes || []}
           isLoading={this.props.isLoading}
           itemType={this.state.itemType}

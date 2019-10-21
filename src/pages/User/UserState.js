@@ -173,7 +173,7 @@ export function loadLikes(itemType) {
 
     if (!items.error) {
       // @TODO: why is the API different for reports and plannings?
-      const result = itemType === 'plannings' ? items.results : items;
+      const result = itemType === 'projects' ? items.results : items;
       const userLikes = result.filter(d => d.liked_by_user);
 
       dispatch({ type: LOAD_LIKES_SUCCESS, payload: { isLoading: false, userLikes } });

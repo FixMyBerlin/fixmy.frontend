@@ -103,7 +103,7 @@ const MapButton = styled(Button)`
   }
 `;
 
-class PlanningListItem extends PureComponent {
+class ReportListItem extends PureComponent {
   state = {
     isExpanded: false
   }
@@ -164,4 +164,4 @@ class PlanningListItem extends PureComponent {
   }
 }
 
-export default PlanningListItem;
+export default ReportListItem;
