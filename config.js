@@ -3,7 +3,7 @@ const config = {
   prodUrl: 'https://fixmyberlin.de',
   newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/6kW',
   api: {
-    dev: 'https://fixmyplatform-develop.herokuapp.com/api',
+    dev: 'http://localhost:8000/api',
     staging: 'https://fixmyplatform-develop.herokuapp.com/api',
     production: 'https://api.fixmyberlin.de/api'
   },
