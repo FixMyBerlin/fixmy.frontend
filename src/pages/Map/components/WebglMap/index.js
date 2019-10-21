@@ -278,23 +278,24 @@ class Map extends PureComponent {
     //   name: name || '-'
     // };
 
-    if (idx(match, _ => _.params.id)) {
+    const isDetailViewOpen = idx(match, _ => _.params.id) != null
+    if (isDetailViewOpen) {
       const slugifiedName = slugify(name || '').toLowerCase();
       const detailRoute = `/${this.props.activeView}/${id}/${slugifiedName}`;
-      return this.props.history.push(detailRoute);
+      this.props.history.push(detailRoute);
+    } else {
+      Store.dispatch(MapActions.setPopupData(data));
+      Store.dispatch(MapActions.setPopupVisible(true));
+      Store.dispatch(AppActions.setActiveSection(id));
+      Store.dispatch(MapActions.setView({
+        center,
+        animate: true,
+        zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
+      }));
+
+      this.handleMove();
+      this.updatePopupPos(center);
     }
-
-    Store.dispatch(MapActions.setPopupData(data));
-    Store.dispatch(MapActions.setPopupVisible(true));
-    Store.dispatch(AppActions.setActiveSection(id));
-    Store.dispatch(MapActions.setView({
-      center,
-      animate: true,
-      zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
-    }));
-
-    this.handleMove();
-    this.updatePopupPos(center);
   }
 
   handleMoveEnd = () => {

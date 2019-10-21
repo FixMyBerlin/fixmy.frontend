@@ -124,8 +124,10 @@ class ProjectListItem extends PureComponent {
   }
 
   onClick = () => {
-    const { id } = this.props;
-    this.props.history.push(`/planungen/${id}`);
+    const { id, street_name: name } = this.props
+    const slug = name ? slugify(name) : '';
+    const url = `${config.routes.projects}/${id}/${slug.toLowerCase()}`
+    this.props.history.push(url);
   };
 
   toggleExpanded = () => {

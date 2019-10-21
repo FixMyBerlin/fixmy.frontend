@@ -50,7 +50,7 @@ const closePopup = () => {
 
 class MapPopup extends PureComponent {
   onDetailClick = () => {
-    const name = slugify(this.props.data.name || '').toLowerCase();
+    const name = slugify(this.props.data.street_name || '').toLowerCase();
     const detailRoute = `/${this.props.activeView}/${this.props.activeSection}/${name}`;
     this.props.history.push(detailRoute);
     closePopup();
