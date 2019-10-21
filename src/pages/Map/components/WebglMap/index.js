@@ -264,6 +264,7 @@ class Map extends PureComponent {
 
   handleMarkerClick = (evt, data) => {
     evt.preventDefault();
+    evt.stopPropagation();
 
     const { id, street_name: name } = data;
     const center = data.center.coordinates;
