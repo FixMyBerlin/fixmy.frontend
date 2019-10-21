@@ -8,7 +8,7 @@ import slugify from 'slugify';
 import Store from '~/store';
 import * as MapActions from '~/pages/Map/MapState';
 import { media } from '~/styles/utils';
-import PlanningStatus from './PlanningStatus';
+import ProjectStatus from './ProjectStatus';
 import BikeLevelStatus from './BikeLevelStatus';
 import MapPopupWrapper from '~/components/MapPopupWrapper';
 import Button from '~/components/Button';
@@ -90,7 +90,7 @@ class MapPopup extends PureComponent {
           </Fragment>
         ) : (
           <Fragment>
-            {isPlaningView && <PlanningStatus section={data} />}
+            {isPlaningView && <ProjectStatus section={data} />}
             {isStatus && <BikeLevelStatus onClick={this.onDetailClick} section={data} />}
             <MoreButtonWrapper>
               <Button onClick={this.onDetailClick}>

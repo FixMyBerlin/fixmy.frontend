@@ -11,7 +11,7 @@ import Store from '~/store';
 import { isSmallScreen } from '~/styles/utils';
 import * as AppActions from '~/AppState';
 import * as MapActions from '~/pages/Map/MapState';
-import PlanningMarkers from '~/pages/Map/components/PlanningMarkers';
+import ProjectMarkers from '~/pages/Map/components/ProjectMarkers';
 import {
   colorizeHbiLines, animateView, setView, toggleLayer,
   filterLayersById, getCenterFromGeom, resetMap, intersectionLayers,
@@ -328,7 +328,7 @@ class Map extends PureComponent {
     return (
       <StyledMap className={this.props.className} ref={(ref) => { this.root = ref; }}>
         {this.props.children}
-        <PlanningMarkers
+        <ProjectMarkers
           map={this.state.map}
           data={markerData}
           active={this.props.activeLayer === 'planungen'}

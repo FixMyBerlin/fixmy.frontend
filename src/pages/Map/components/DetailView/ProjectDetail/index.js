@@ -10,8 +10,8 @@ import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
 import DetailSwitch, { ButtonGroup } from '~/pages/Map/components/DetailView/DetailSwitch';
 import ImageSlider from '~/pages/Map/components/DetailView/ImageSlider';
 
-import PlanningStatus from './PlanningStatus';
-import PlanningLike from './PlanningLike';
+import ProjectStatus from './ProjectStatus';
+import ProjectLike from './ProjectLike';
 import categoryMapping from './categoryMapping';
 import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
 
@@ -112,7 +112,7 @@ class ProjectDetail extends PureComponent {
           <Label margin="-12px 0 25px 0">
             {draft_submitted ? `Planungsbeginn: ${draft_submitted}` : null} {construction_started ? `Baubeginn: ${construction_started}` : null}
           </Label>
-          {phase && <PlanningStatus phase={phase} />}
+          {phase && <ProjectStatus phase={phase} />}
         </DetailHead>
 
         <DetailBody>
@@ -149,7 +149,7 @@ class ProjectDetail extends PureComponent {
         </DetailBody>
         {config.showLikeButton && (
           <DetailFooter>
-            <PlanningLike token={this.props.token} url={url} id={this.props.match.params.id} />
+            <ProjectLike token={this.props.token} url={url} id={this.props.match.params.id} />
           </DetailFooter>
         )}
       </Fragment>

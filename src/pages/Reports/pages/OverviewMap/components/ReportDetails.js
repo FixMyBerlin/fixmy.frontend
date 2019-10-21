@@ -5,7 +5,7 @@ import ShareIcon from '~/images/reports/share.svg';
 import ReportPinIcon from '~/images/reports/pin-meldung-yellow.png';
 
 import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
-import PlanningLike from '~/pages/Map/components/DetailView/ProjectDetail/PlanningLike';
+import ProjectLike from '~/pages/Map/components/DetailView/ProjectDetail/ProjectLike';
 import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 
@@ -216,7 +216,7 @@ class ReportDetails extends PureComponent {
 
         <SocialFooter>
           <Fill />
-          <PlanningLike
+          <ProjectLike
             token={this.props.token}
             url={`${config.apiUrl}/reports/${id}`}
             id={id}

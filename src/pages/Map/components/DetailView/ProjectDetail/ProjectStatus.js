@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
 
-import PlanningStatusChart from './PlanningStatusChart';
+import ProjectStatusChart from './ProjectStatusChart';
 import ProjectChecklist from './ProjectChecklist';
 
 const DetailButton = styled.button`
@@ -22,7 +22,7 @@ const DetailButtonWrapper = styled.div`
   display: none; // for now we dont want to show the details button
 `;
 
-class PlanningStatus extends PureComponent {
+class ProjectStatus extends PureComponent {
   state = {
     isExpanded: false
   }
@@ -34,7 +34,7 @@ class PlanningStatus extends PureComponent {
   render() {
     return (
       <Fragment>
-        <PlanningStatusChart phase={this.props.phase} />
+        <ProjectStatusChart phase={this.props.phase} />
         <DetailButtonWrapper>
           <DetailButton onClick={this.toggleExpand}>Details +</DetailButton>
         </DetailButtonWrapper>
@@ -44,4 +44,4 @@ class PlanningStatus extends PureComponent {
   }
 }
 
-export default PlanningStatus;
+export default ProjectStatus;
