@@ -27,7 +27,7 @@
     "@babel/preset-react": "^7.6.3",
     "@types/prop-types": "^15.7.3",
     "@types/react-router": "^5.1.1",
-    "@types/react": "^16.9.5",
+    "@types/react": "^16.9.9",
     "@types/styled-components": "^4.1.19",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
