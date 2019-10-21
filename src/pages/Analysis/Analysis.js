@@ -13,7 +13,7 @@ import BigLabel from '~/components/BigLabel';
 import MenuButton from '~/components/MenuButton';
 import Flex from '~/components/Flex';
 import Select from '~/components/Select';
-import PlanningList from '~/components/PlanningList';
+import ProjectList from '~/components/ProjectList';
 import Card from './components/Card';
 
 const AnalysisWrapper = styled.div`
@@ -151,7 +151,7 @@ class Analysis extends PureComponent {
             />
           </AnalysisControls>
 
-          <PlanningList
+          <ProjectList
             data={sortedData}
             isLoading={isLoading}
             showLoadingIndicator={false}
