@@ -89,7 +89,7 @@ export default () => (
           <Text dangerouslySetInnerHTML={{ __html: homeLabels.intro }} />
         </div>
         <MapLinkWrapper>
-          <Link to={config.routes.plannings}>
+          <Link to={config.routes.projects}>
             <MapButton>{homeLabels.mapButton}</MapButton>
           </Link>
         </MapLinkWrapper>

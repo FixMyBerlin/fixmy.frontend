@@ -11,14 +11,15 @@ import Store from '~/store';
 import { isSmallScreen } from '~/styles/utils';
 import * as AppActions from '~/AppState';
 import * as MapActions from '~/pages/Map/MapState';
-import PlanningMarkers from '~/pages/Map/components/PlanningMarkers';
+import ProjectMarkers from '~/pages/Map/components/ProjectMarkers';
 import {
-  colorizeHbiLines, animateView, setView, colorizePlanningLines, toggleLayer,
-  filterLayersById, getCenterFromGeom, resetMap, intersectionLayers, smallStreetLayersWithOverlay,
+  colorizeHbiLines, animateView, setView, toggleLayer,
+  filterLayersById, getCenterFromGeom, resetMap, intersectionLayers,
   parseUrlOptions
 } from '~/pages/Map/map-utils';
 
-const MB_STYLE_URL = `${config.map.style}?fresh=asdas`;
+const MB_STYLE_URL = `${config.map.style}?fresh=true`;
+
 MapboxGL.accessToken = config.map.accessToken;
 
 const StyledMap = styled.div`
@@ -103,6 +104,10 @@ class Map extends PureComponent {
       this.updateLayers();
     }
 
+    if (prevProps.activeLayer !== this.props.activeLayer) {
+      this.registerClickHandler()
+    }
+
     if (!this.props.activeSection && this.state.popupLngLat) {
       this.disablePopup();
     }
@@ -141,9 +146,7 @@ class Map extends PureComponent {
   }
 
   handleLoad = () => {
-    this.map.on('click', config.map.layers.bgLayer, this.handleClick);
-    // this.map.on('click', config.map.layers.projectsLayer, this.handleClick);
-    // this.map.on('click', config.map.layers.intersectionsOverlay, this.handleIntersectionClick);
+    this.registerClickHandler();
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
 
@@ -163,42 +166,61 @@ class Map extends PureComponent {
     this.map.resize();
   }
 
+  registerClickHandler = () => {
+    const projectsTarget = config.map.layers.projects.overlayLine
+    const hbiTarget = config.map.layers.hbi.overlayLine
+
+    if(this.props.activeLayer === 'zustand') {
+      this.map.off('click', projectsTarget, this.handleClick)
+      this.map.on('click', hbiTarget, this.handleClick)
+    } else {
+      this.map.off('click', hbiTarget, this.handleClick)
+      this.map.on('click', projectsTarget, this.handleClick)
+    }
+  }
+
   updateLayers = () => {
-    const filterId = this.props.activeSection;
     const isZustand = this.props.activeLayer === 'zustand';
     const isPlanungen = this.props.activeLayer === 'planungen';
 
-    intersectionLayers.forEach(layerName => toggleLayer(this.map, config.map.layers[layerName], isZustand));
-    smallStreetLayersWithOverlay.forEach(layerName => toggleLayer(this.map, config.map.layers[layerName], isPlanungen));
+    const hbiLayers = config.map.layers.hbi
+    const projectsLayers = config.map.layers.projects
+
+    intersectionLayers
+      .forEach(layerName => toggleLayer(this.map, hbiLayers[layerName], isZustand));
 
     if (isZustand) {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
     }
+    
+    // project layers
+    toggleLayer(this.map, projectsLayers.center, isPlanungen);
+    toggleLayer(this.map, projectsLayers.side0, isPlanungen);
+    toggleLayer(this.map, projectsLayers.side1, isPlanungen);
+    toggleLayer(this.map, projectsLayers.overlayLine, this.props.drawOverlayLine);
 
-    if (isPlanungen) {
-      colorizePlanningLines(this.map, this.props.filterPlannings);
-    }
+    // hbi layers
+    toggleLayer(this.map, hbiLayers.center, isZustand);
+    toggleLayer(this.map, hbiLayers.side0, isZustand);
+    toggleLayer(this.map, hbiLayers.side1, isZustand);
+    toggleLayer(this.map, hbiLayers.overlayLine, this.props.drawOverlayLine);
+    toggleLayer(this.map, hbiLayers.intersections, isZustand);
+    toggleLayer(this.map, hbiLayers.intersectionsSide0, isZustand);
+    toggleLayer(this.map, hbiLayers.intersectionsSide1, isZustand);
+    toggleLayer(this.map, hbiLayers.intersectionsOverlay, isZustand);
 
-    toggleLayer(this.map, config.map.layers.projectsLayer, isPlanungen);
-    toggleLayer(this.map, config.map.layers.bgLayer, true);
-    toggleLayer(this.map, config.map.layers.centerLayer, isZustand);
-    toggleLayer(this.map, config.map.layers.side0Layer, isZustand);
-    toggleLayer(this.map, config.map.layers.side1Layer, isZustand);
+    // other layers
     toggleLayer(this.map, config.map.layers.buildings3d, this.props.show3dBuildings);
     toggleLayer(this.map, config.map.layers.dimmingLayer, this.props.dim);
-    toggleLayer(this.map, config.map.layers.overlayLine, this.props.drawOverlayLine);
 
-    filterLayersById(this.map, filterId);
+    const subMap = isZustand ? 'hbi' : 'projects'
+    filterLayersById(this.map, subMap, this.props.activeSection);
   }
 
   handleClick = (e) => {
     const properties = idx(e.features, _ => _[0].properties);
     const geometry = idx(e.features, _ => _[0].geometry);
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
-
-    if (config.debug) {
-      console.log(properties);
-    }
 
     if (properties) {
       const name = slugify(properties.name || '').toLowerCase();
@@ -242,43 +264,39 @@ class Map extends PureComponent {
 
   handleMarkerClick = (evt, data) => {
     evt.preventDefault();
+    evt.stopPropagation();
 
-    const {
-      planning_sections: planningSections,
-      planning_section_ids: planningSectionIds
-    } = data;
-
+    const { id, street_name: name } = data;
     const center = data.center.coordinates;
-    const { name } = planningSections[0];
-    const [id] = planningSectionIds;
 
     const match = matchPath(this.props.location.pathname, {
       path: '/(zustand|planungen)/:id/:name?',
       exact: true
     });
 
-    const properties = {
-      sideNone_planning_title: data.title,
-      name: name || '-'
-    };
+    // const properties = {
+    //   title: data.title,
+    //   name: name || '-'
+    // };
 
-    if (idx(match, _ => _.params.id)) {
+    const isDetailViewOpen = idx(match, _ => _.params.id) != null
+    if (isDetailViewOpen) {
       const slugifiedName = slugify(name || '').toLowerCase();
       const detailRoute = `/${this.props.activeView}/${id}/${slugifiedName}`;
-      return this.props.history.push(detailRoute);
+      this.props.history.push(detailRoute);
+    } else {
+      Store.dispatch(MapActions.setPopupData(data));
+      Store.dispatch(MapActions.setPopupVisible(true));
+      Store.dispatch(AppActions.setActiveSection(id));
+      Store.dispatch(MapActions.setView({
+        center,
+        animate: true,
+        zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
+      }));
+
+      this.handleMove();
+      this.updatePopupPos(center);
     }
-
-    Store.dispatch(MapActions.setPopupData(properties));
-    Store.dispatch(MapActions.setPopupVisible(true));
-    Store.dispatch(AppActions.setActiveSection(id));
-    Store.dispatch(MapActions.setView({
-      center,
-      animate: true,
-      zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
-    }));
-
-    this.handleMove();
-    this.updatePopupPos(center);
   }
 
   handleMoveEnd = () => {
@@ -312,7 +330,7 @@ class Map extends PureComponent {
     return (
       <StyledMap className={this.props.className} ref={(ref) => { this.root = ref; }}>
         {this.props.children}
-        <PlanningMarkers
+        <ProjectMarkers
           map={this.state.map}
           data={markerData}
           active={this.props.activeLayer === 'planungen'}

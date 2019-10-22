@@ -56,7 +56,7 @@ const ItemSubTitle = styled.div`
   font-weight: 700;
   font-family: 'Roboto Slab', serif;
   color: ${config.colors.darkbg};
-  margin-top: 16px;
+  margin-top: 4px;
 `;
 
 const ItemFooter = styled.div`
@@ -115,60 +115,65 @@ const MapButton = styled(Button)`
   }
 `;
 
-class PlanningListItem extends PureComponent {
-  state = {
-    isExpanded: false
+class ProjectListItem extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isExpanded: false
+    };
   }
 
   onClick = () => {
-    const id = idx(this.props, _ => _.planning_section_ids[0]);
-    const name = idx(this.props, _ => _.planning_sections[0].name);
+    const { id, street_name: name } = this.props
     const slug = name ? slugify(name) : '';
-    this.props.history.push(`/planungen/${id}/${slug.toLowerCase()}`);
-  }
+    const url = `${config.routes.projects}/${id}/${slug.toLowerCase()}`
+    this.props.history.push(url);
+  };
 
   toggleExpanded = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       isExpanded: !prevState.isExpanded
     }));
-  }
+  };
 
   render() {
-    const { construction_completed: constructionCompleted, photos = [] } = this.props;
-    const name = idx(this.props, _ => _.planning_sections[0].name);
-    const length = idx(this.props, _ => _.planning_sections[0].details[0].length);
-    const iconSrc = icons[this.props.phase];
+    const {
+      construction_completed: constructionCompleted,
+      photos = [],
+      id,
+      length,
+      likes,
+      street_name: streetName,
+      title,
+      borough,
+      phase
+    } = this.props;
+
+    const iconSrc = icons[phase];
     const photo = photos.length ? photos[0] : false;
-    const id = idx(this.props, _ => _.planning_section_ids[0]);
 
     return (
       <ItemWrapper onClick={this.toggleExpanded}>
         <ItemContent>
           <ItemImage src={iconSrc} />
           <ItemHeader>
-            <ItemTitle>
-              {name}
-            </ItemTitle>
+            <ItemTitle>{streetName}</ItemTitle>
             <Label>
-              Abschnitt 1 {length && `| ${numberFormat((+length / 1000), 1)} km`}
+              {borough} {length && `| ${numberFormat(+length / 1000, 1)} km`}
             </Label>
           </ItemHeader>
-          <ItemSubTitle>
-            {this.props.title}
-          </ItemSubTitle>
+          <ItemSubTitle>{title}</ItemSubTitle>
           <ItemFooter>
             <Likes>
               <HeartIcon />
-              <Label>{this.props.likes}</Label>
+              <Label>{likes}</Label>
             </Likes>
-            <DateWrapper>
-              Fertigstellung: {constructionCompleted}
-            </DateWrapper>
+            <DateWrapper>Fertigstellung: {constructionCompleted}</DateWrapper>
           </ItemFooter>
         </ItemContent>
         {this.state.isExpanded && (
           <Expansion>
-            <img src={photo.src} alt={this.props.title} />
+            <img src={photo.src} alt={title} />
             <Copyright>{photo.copyright}</Copyright>
             {id && <MapButton onClick={this.onClick}>Zur Karte</MapButton>}
           </Expansion>
@@ -178,4 +183,4 @@ class PlanningListItem extends PureComponent {
   }
 }
 
-export default PlanningListItem;
+export default ProjectListItem;

@@ -26,10 +26,10 @@ export const SectionDetail = Loadable({
   loading: () => null
 });
 
-export const PlanningDetail = Loadable({
+export const ProjectDetail = Loadable({
   loader: () =>
     import(
-      /* webpackChunkName: "PlanningDetail" */ '~/pages/Map/components/DetailView/PlanningDetail'
+      /* webpackChunkName: "ProjectDetail" */ '~/pages/Map/components/DetailView/ProjectDetail'
     ),
   loading: () => null
 });
@@ -136,7 +136,7 @@ class MapViewComponent extends PureComponent {
             path="/zustand/:id/:name?"
             render={(props) => (
               <SectionDetail
-                apiEndpoint="planning-sections"
+                apiEndpoint="sections"
                 onCloseRoute="/zustand"
                 activeView={this.props.activeLayer}
                 token={this.props.token}
@@ -148,8 +148,8 @@ class MapViewComponent extends PureComponent {
             exact
             path="/planungen/:id/:name?"
             render={(props) => (
-              <PlanningDetail
-                apiEndpoint="planning-sections"
+              <ProjectDetail
+                apiEndpoint="projects"
                 onCloseRoute="/planungen"
                 activeView={this.props.activeLayer}
                 token={this.props.token}

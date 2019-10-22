@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PlanningLike from '~/pages/Map/components/DetailView/PlanningDetail/PlanningLike';
+import ProjectLike from '~/pages/Map/components/DetailView/ProjectDetail/ProjectLike';
 import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
 
 const Footer = styled(DetailFooter)`
@@ -12,7 +12,7 @@ const Footer = styled(DetailFooter)`
 
 const DetailsFooter = ({ token, reportId }) => (
   <Footer>
-    <PlanningLike
+    <ProjectLike
       token={token}
       url={`${config.apiUrl}/reports/${reportId}`}
       id={reportId}

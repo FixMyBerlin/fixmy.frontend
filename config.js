@@ -132,7 +132,7 @@ const config = {
     }
   ],
   routes: {
-    plannings: '/planungen',
+    projects: '/planungen',
     status: '/zustand',
     analyse: '/analyse',
     reports: {
@@ -213,7 +213,7 @@ const config = {
   map: {
     accessToken:
       'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
-    style: 'mapbox://styles/hejco/ck0pec5vf02wa1cmn02or0190',
+    style: 'mapbox://styles/hejco/ck0nzclbk0ey01ct9ilwefpzc',
     view: {
       zoom: 12,
       bearing: 0,
@@ -224,22 +224,24 @@ const config = {
       dim: false
     },
     layers: {
-      bgLayer: 'fmb-background',
-      projectsLayer: 'fmb-projects',
-      centerLayer: 'fmb-center',
-      side0Layer: 'fmb-side-0',
-      side1Layer: 'fmb-side-1',
+      projects: {
+        center: 'fmb-projects-center',
+        side0: 'fmb-projects-side-0',
+        side1: 'fmb-projects-side-1',
+        overlayLine: 'fmb-projects-overlay-line '
+      },
+      hbi: {
+        center: 'fmb-HBI-center',
+        side0: 'fmb-HBI-side-0',
+        side1: 'fmb-HBI-side-1',
+        overlayLine: 'fmb-HBI-overlay-line',
+        intersections: 'fmb-HBI-intersections',
+        intersectionsSide0: 'fmb-HBI-intersections-side-0',
+        intersectionsSide1: 'fmb-HBI-intersections-side-1',
+        intersectionsOverlay: 'fmb-HBI-intersections-overlay'
+      },
       buildings3d: '3d-buildings',
-      dimmingLayer: 'fmb-dimming',
-      overlayLine: 'fmb-overlay-line',
-      centerLayerSmall: 'fmb-center-NVS',
-      side0LayerSmall: 'fmb-side-0-NVS',
-      side1LayerSmall: 'fmb-side-1-NVS',
-      overlayLineSmall: 'fmb-overlay-line-HVS',
-      intersections: 'intersections',
-      intersectionsSide0: 'intersections-side-0',
-      intersectionsSide1: 'intersections-side-1',
-      intersectionsOverlay: 'intersections-overlay'
+      dimmingLayer: 'fmb-dimming'
     },
     zoomAfterGeocode: 15,
     geocoderUrl: 'https://geocoder.cit.api.here.com/6.2/geocode.json',
@@ -282,7 +284,7 @@ const config = {
   planningIsBeta: true,
   offlineMode: false,
   isSwitchEnabled: true,
-  debug: false,
+  debug: process.env.NODE_ENV !== 'production',
   showLikeButton: true,
   showFeedBackForm: false
 };

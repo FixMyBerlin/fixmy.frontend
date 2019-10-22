@@ -78,12 +78,14 @@ export async function apiPasswordForgot(json, formFunctions) {
   return handleRequest('password/reset', { method: 'POST', json }, formFunctions, false);
 }
 
-export async function apiLikes(token, itemType = 'plannings') {
+export async function apiLikes(token, itemType = 'projects') {
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   let response = {};
+  const endpoint = `${config.apiUrl}/${itemType}?page_size=250`
+  const kyConfig = { method: 'GET', headers, timeout: 20000 }
 
   try {
-    response = await ky(`${config.apiUrl}/${itemType}?page_size=250`, { method: 'GET', headers, timeout: 20000 }).json();
+    response = await ky(endpoint, kyConfig).json();
   } catch (e) {
     const error = await e.response.json();
     response.error = error;

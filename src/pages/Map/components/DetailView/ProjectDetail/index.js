@@ -10,8 +10,8 @@ import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
 import DetailSwitch, { ButtonGroup } from '~/pages/Map/components/DetailView/DetailSwitch';
 import ImageSlider from '~/pages/Map/components/DetailView/ImageSlider';
 
-import PlanningStatus from './PlanningStatus';
-import PlanningLike from './PlanningLike';
+import ProjectStatus from './ProjectStatus';
+import ProjectLike from './ProjectLike';
 import categoryMapping from './categoryMapping';
 import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
 
@@ -70,7 +70,7 @@ const NoDataLabel = styled.div`
   margin-top: 1rem;
 `;
 
-class PlanningDetails extends PureComponent {
+class ProjectDetail extends PureComponent {
   state = {
     descriptionExpanded: false,
     sideIndex: 0
@@ -83,46 +83,23 @@ class PlanningDetails extends PureComponent {
   }
 
   render() {
-    const { plannings } = this.props.data;
+    const { data } = this.props;
     const { sideIndex } = this.state;
 
-    if (!plannings || plannings.length === 0) {
-      return <NoDataLabel>Keine Planung vorhanden</NoDataLabel>;
+    if (!data) {
+      return <NoDataLabel>Keine Projekte vorhanden</NoDataLabel>;
     }
-
-    const planning = plannings[sideIndex];
 
     const {
       title, description, construction_completed, external_url, responsible, costs, faq, photos,
       phase, construction_started, draft_submitted, cross_section_photo, url, category
-    } = planning;
+    } = data;
 
     const translatedCategory = categoryMapping[category];
     const showFaq = faq && faq.length;
-    const showSwitchButton = plannings.length > 1 && (plannings[0].url !== plannings[1].url);
 
     return (
       <Fragment>
-        {showSwitchButton ? (
-          <ButtonGroup>
-            <DetailSwitch
-              activeSideIndex={sideIndex}
-              sideIndex={0}
-              title="Westseite"
-              side="left"
-              onClick={this.onSwitchSide}
-            />
-            <DetailSwitch
-              activeSideIndex={sideIndex}
-              sideIndex={1}
-              title="Ostseite"
-              side="right"
-              onClick={this.onSwitchSide}
-            />
-          </ButtonGroup>
-) : null
-        }
-
         <ImageSlider images={photos} />
 
         <DetailHead>
@@ -135,7 +112,7 @@ class PlanningDetails extends PureComponent {
           <Label margin="-12px 0 25px 0">
             {draft_submitted ? `Planungsbeginn: ${draft_submitted}` : null} {construction_started ? `Baubeginn: ${construction_started}` : null}
           </Label>
-          {phase && <PlanningStatus phase={phase} />}
+          {phase && <ProjectStatus phase={phase} />}
         </DetailHead>
 
         <DetailBody>
@@ -172,7 +149,7 @@ class PlanningDetails extends PureComponent {
         </DetailBody>
         {config.showLikeButton && (
           <DetailFooter>
-            <PlanningLike token={this.props.token} url={url} id={this.props.match.params.id} />
+            <ProjectLike token={this.props.token} url={url} id={this.props.match.params.id} />
           </DetailFooter>
         )}
       </Fragment>
@@ -180,4 +157,4 @@ class PlanningDetails extends PureComponent {
   }
 }
 
-export default detailWrapped(PlanningDetails);
+export default detailWrapped(ProjectDetail);
