@@ -289,7 +289,7 @@ const config = {
   planningIsBeta: true,
   offlineMode: false,
   isSwitchEnabled: true,
-  debug: false,
+  debug: process.env.NODE_ENV !== 'production',
   showLikeButton: true,
   showFeedBackForm: false
 };
