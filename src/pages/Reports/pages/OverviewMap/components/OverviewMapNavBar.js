@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import { breakpoints, matchMediaSize } from '~/styles/utils';
@@ -54,7 +54,7 @@ const TinyLink = styled(Link)`
   color: #999999;
   margin: 0;
   text-decoration: none;
-  
+
   &:hover {
     text-decoration: underline;
   }
@@ -73,19 +73,17 @@ const OverviewMapNavBar = ({ heading }) => (
     <TextWrapper>
       <Heading>{heading}</Heading>
       <LinkSection>
-        <TinyLink to={config.routes.reports.landing}>Alle Details</TinyLink>
         <TinyEmailLink
           as="a"
           isMobile={!getIsDesktop()}
           href={`mailto:${config.feedbackMail}?subject=Feedback zum Meldedialog`}
-        >Feedback zum Meldedialog?
+        >
+          Feedback zum Meldedialog?
         </TinyEmailLink>
       </LinkSection>
-
     </TextWrapper>
     <BikeParkImg alt="Icon Fahrradparkplätze" />
   </Wrapper>
-
 );
 
 OverviewMapNavBar.propTypes = {
