@@ -42,13 +42,11 @@ const config = {
         icon: 'hbi-icon',
         border: true
       },
-      { type: 'plus',
-        label: 'MITMACHEN',
+      {
+        type: 'link',
+        label: 'Radbügel in X-Hain (Meldungen nicht mehr möglich)',
         icon: 'fixhere',
-        children: [{
-          link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
-          label: 'Radbügel in X-Hain (Meldungen nicht mehr möglich)'
-        }],
+        link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
         border: true
       },
       {
@@ -213,7 +211,8 @@ const config = {
     }
   ],
   map: {
-    accessToken: 'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
+    accessToken:
+      'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
     style: 'mapbox://styles/hejco/ck0pec5vf02wa1cmn02or0190',
     view: {
       zoom: 12,
@@ -268,8 +267,10 @@ const config = {
     locateMeMap: {
       zoomOnGeocodedLocation: 15.5,
       boundaryGeodataUrl: '/data/Fhain-Xberg-trimmed.json',
-      outofBoundaryText: 'Diese Adresse liegt außerhalb Friedrichshain-Kreuzbergs',
-      reverseGeocoderUrl: 'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json',
+      outofBoundaryText:
+        'Diese Adresse liegt außerhalb Friedrichshain-Kreuzbergs',
+      reverseGeocoderUrl:
+        'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json',
       paddingInDegree: 0.1,
       geocoder: {
         debounceTime: 1000,
