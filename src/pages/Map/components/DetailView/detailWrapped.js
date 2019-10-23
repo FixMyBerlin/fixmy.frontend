@@ -175,22 +175,6 @@ function detailWrapped(Component) {
       }
     }
 
-    // we only show the shadow if there is no switch button
-    isShadowVisible(data) {
-      if (!data || this.props.activeView === 'zustand') {
-        return false;
-      }
-
-      if (
-        this.props.activeView === 'planungen' &&
-        (data.plannings && data.plannings.length > 1 && (data.plannings[0].url !== data.plannings[1].url))
-      ) {
-        return false;
-      }
-
-      return true;
-    }
-
     renderName(data) {
       if (data.street_name) {
         return data.street_name;
@@ -229,7 +213,8 @@ function detailWrapped(Component) {
     render() {
       const { subtitle } = this.props;
       const { isLoading, isError, data } = this.state;
-      const showShadow = this.isShadowVisible(data);
+      // we only show the shadow if there is no switch button
+      const showShadow = data != null && this.props.activeView === 'planungen';
       const borough = idx(this.state, (_) => _.data.borough);
 
 
