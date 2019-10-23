@@ -253,7 +253,6 @@ const config = {
     geocoderAppId: 'WOhEXnd20kbhT8Lxx4n4',
     geocoderAppCode: 'uFkDYK0WKXBPZgG8mRb9Rg',
     geocoderBounds: '13.3651,52.4658,13.4945,52.5479',
-    drawOverlayLine: true,
     dimmingOpacity: 0.3,
     bounds: [[13.2826, 52.4615], [13.46391, 52.5544374]]
   },

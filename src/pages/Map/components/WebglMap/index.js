@@ -45,7 +45,6 @@ class Map extends PureComponent {
     activeSection: PropTypes.number,
     hasMoved: PropTypes.bool,
     calculatePopupPosition: PropTypes.bool,
-    drawOverlayLine: PropTypes.bool,
     dim: PropTypes.bool
   }
 
@@ -61,7 +60,6 @@ class Map extends PureComponent {
     setMapContext: () => {},
     hasMoved: false,
     calculatePopupPosition: false,
-    drawOverlayLine: true,
     dim: false
   }
 
@@ -203,13 +201,13 @@ class Map extends PureComponent {
     toggleLayer(this.map, projectsLayers.center, isPlanungen);
     toggleLayer(this.map, projectsLayers.side0, isPlanungen);
     toggleLayer(this.map, projectsLayers.side1, isPlanungen);
-    toggleLayer(this.map, projectsLayers.overlayLine, this.props.drawOverlayLine);
+    toggleLayer(this.map, projectsLayers.overlayLine, isPlanungen);
 
     // hbi layers
     toggleLayer(this.map, hbiLayers.center, isZustand);
     toggleLayer(this.map, hbiLayers.side0, isZustand);
     toggleLayer(this.map, hbiLayers.side1, isZustand);
-    toggleLayer(this.map, hbiLayers.overlayLine, this.props.drawOverlayLine);
+    toggleLayer(this.map, hbiLayers.overlayLine, isZustand);
     toggleLayer(this.map, hbiLayers.intersections, isZustand);
     toggleLayer(this.map, hbiLayers.intersectionsSide0, isZustand);
     toggleLayer(this.map, hbiLayers.intersectionsSide1, isZustand);
