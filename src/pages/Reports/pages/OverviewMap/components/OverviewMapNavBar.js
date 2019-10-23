@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Link from 'react-router-dom/Link';
+import { Link } from 'react-router-dom';
 import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import { breakpoints, matchMediaSize } from '~/styles/utils';
