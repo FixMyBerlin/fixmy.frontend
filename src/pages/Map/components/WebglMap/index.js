@@ -194,6 +194,7 @@ class Map extends PureComponent {
     }
     
     // project layers
+    toggleLayer(this.map, 'fmb-projects', false)
     toggleLayer(this.map, projectsLayers.center, isPlanungen);
     toggleLayer(this.map, projectsLayers.side0, isPlanungen);
     toggleLayer(this.map, projectsLayers.side1, isPlanungen);
