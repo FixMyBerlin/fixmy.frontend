@@ -60,7 +60,7 @@ const lengthByPhase = (projects, phase) => {
   return projects.reduce((acc, cur)  => {
     curLen = 0;
     if (phase == null || cur.phase === phase) {
-      curLen = cur.length
+      curLen = cur.length || 0
     }
     return acc + curLen
   }, 0)
