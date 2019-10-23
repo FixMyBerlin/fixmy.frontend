@@ -18,7 +18,12 @@ import {
   parseUrlOptions
 } from '~/pages/Map/map-utils';
 
-const MB_STYLE_URL = `${config.map.style}?fresh=true`;
+let MB_STYLE_URL
+if (config.debug) {
+  MB_STYLE_URL = `${config.map.style}?fresh=true`;
+} else {
+  MB_STYLE_URL = config.map.style;
+}
 
 MapboxGL.accessToken = config.map.accessToken;
 
