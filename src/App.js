@@ -20,6 +20,7 @@ import ResetPassword from '~/pages/User/pages/ResetPassword';
 import UserVerify from '~/pages/User/pages/Verify';
 import { verify } from '~/pages/User/UserState';
 import Reports from '~/pages/Reports';
+import KatasterKI from '~/pages/KatasterKI';
 
 const AppContent = styled.div`
   width: 100%;
@@ -73,6 +74,12 @@ class App extends PureComponent {
                   <Route
                     path={`${config.routes.reports.index}`}
                     component={Reports}
+                  />
+
+                  {/* reports page */}
+                  <Route
+                    path={`${config.routes.katasterKI.landing}`}
+                    component={KatasterKI}
                   />
 
                   {/* analysis pages */}

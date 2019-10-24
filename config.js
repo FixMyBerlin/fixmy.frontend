@@ -142,6 +142,10 @@ const config = {
       map: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
       new: '/meldungen/radbuegel/friedrichshain-kreuzberg/neu'
     },
+    katasterKI: {
+      landing: '/strassencheck',
+      introQuestions: '/strassencheck/intro'
+    },
     signup: '/registrieren',
     login: '/anmelden',
     forgotPassword: '/passwort-vergessen',

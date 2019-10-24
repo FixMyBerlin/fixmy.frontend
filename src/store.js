@@ -6,13 +6,15 @@ import MapState from '~/pages/Map/MapState';
 import UserState from '~/pages/User/UserState';
 import AnalysisState from '~/pages/Analysis/AnalysisState';
 import ReportsState from '~/pages/Reports/state';
+import KatasterKIState from '~/pages/KatasterKI/state'
 
 const Reducer = combineReducers({
   AppState,
   MapState,
   UserState,
   AnalysisState,
-  ReportsState
+  ReportsState,
+  KatasterKIState
 });
 
 const enhancers = compose(
