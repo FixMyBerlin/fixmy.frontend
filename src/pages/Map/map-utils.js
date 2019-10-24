@@ -67,6 +67,25 @@ export function filterLayersById(map, subMap, id) {
   );
 }
 
+/**
+ * Set a filter on projects to display only those of a certain phase
+ * 
+ * @param {Object} map Mapbox instance
+ * @param {Array<boolean>} filters Four booleans descibe which phases are visible
+ */
+export function setPlanningLegendFilter(map, selected) {
+  const phases = config.planningPhases.map(phase => phase.id)
+  const filters = selected.map(
+    (isSelected, phaseIndex) => isSelected === true 
+      ? ['==', phases[phaseIndex], ['get', 'phase']]
+      : null
+    ).filter(entry => entry !== null)
+  Object.values(config.map.layers.projects).forEach(layer => {
+      map.setFilter(layer, ['any', ...filters])
+    }
+  )
+}
+
 function getHbiExpression(sideKey) {
   // formula:
   // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)

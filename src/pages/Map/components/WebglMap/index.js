@@ -15,7 +15,7 @@ import ProjectMarkers from '~/pages/Map/components/ProjectMarkers';
 import {
   colorizeHbiLines, animateView, setView, toggleLayer,
   filterLayersById, getCenterFromGeom, resetMap, intersectionLayers,
-  parseUrlOptions
+  parseUrlOptions, setPlanningLegendFilter
 } from '~/pages/Map/map-utils';
 
 let MB_STYLE_URL
@@ -195,6 +195,8 @@ class Map extends PureComponent {
     if (isZustand) {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
     }
+
+    setPlanningLegendFilter(this.map, this.props.filterPlannings)
     
     // project layers
     toggleLayer(this.map, 'fmb-projects', false)
