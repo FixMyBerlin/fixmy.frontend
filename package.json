@@ -87,7 +87,7 @@
     "d3-format": "^1.4.1",
     "d3-scale": "^3.1.0",
     "dot-prop-immutable": "^1.5.0",
-    "formik": "^1.5.8",
+    "formik": "^2.0.2",
     "geojson-prop-types": "^0.2.0",
     "history": "^4.10.1",
     "idx": "^2.5.6",
