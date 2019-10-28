@@ -144,7 +144,12 @@ const config = {
     },
     katasterKI: {
       landing: '/strassencheck',
-      introQuestions: '/strassencheck/intro'
+      intro: '/strassencheck/einleitung/:question',
+      perspective: '/strassencheck/perspektive/',
+      changePerspective: '/strassencheck/perspektive-wechseln',
+      rating: '/strassencheck/bewertung/:question',
+      demographics: '/strassencheck/demografie/:question',
+      share: '/strassencheck/teilen'
     },
     signup: '/registrieren',
     login: '/anmelden',
