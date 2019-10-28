@@ -25,32 +25,30 @@ class HBISubmitForm extends PureComponent {
     const json = { ...cleanValues, id: this.props.userid };
 
     try {
-      await ky.put(`${config.apiUrl}/profiles/${this.props.userid}`, { json }).json();
+      await ky
+        .put(`${config.apiUrl}/profiles/${this.props.userid}`, { json })
+        .json();
     } catch (err) {
       setSubmitting(false);
-      return setErrors({ server: 'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.' });
+      return setErrors({
+        server:
+          'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.'
+      });
     }
 
     setSubmitting(false);
     trackEvent('my-hbi', 'save-profile', 'details');
     this.props.onClose();
-  }
+  };
 
   render() {
     return (
       <div>
         <Title>Profil speichern</Title>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={this.onSubmit}
-          render={({
-            values,
-            errors,
-            handleSubmit,
-            isSubmitting
-          }) => (
+        <Formik initialValues={initialValues} onSubmit={this.onSubmit}>
+          {({ values, errors, handleSubmit, isSubmitting }) => (
             <Form onSubmit={handleSubmit}>
-              {formConfig.map(d => (
+              {formConfig.map((d) => (
                 <FormField
                   key={`hbifield__${d.id}`}
                   {...d}
@@ -64,7 +62,7 @@ class HBISubmitForm extends PureComponent {
               </Button>
             </Form>
           )}
-        />
+        </Formik>
       </div>
     );
   }
