@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { Formik } from 'formik';
 import ky from 'ky';
 import PropTypes from 'prop-types';
@@ -162,7 +162,7 @@ class AuthForm extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <HorizontalRuler />
         <Heading>
           Gib deine E-Mailadresse an, damit die Verwaltungsmitarbeiter dir
@@ -176,13 +176,8 @@ class AuthForm extends Component {
             validate={this.validate}
             validateOnChange={false}
             validateOnBlur={false}
-            render={({
-              values,
-              errors,
-              handleSubmit,
-              isSubmitting,
-              handleChange
-            }) => (
+          >
+            {({ values, errors, handleSubmit, isSubmitting, handleChange }) => (
               <Form onSubmit={handleSubmit}>
                 {signupFormConfig.map((d) => (
                   <FormField
@@ -206,7 +201,7 @@ class AuthForm extends Component {
                 </ButtonWrapper>
               </Form>
             )}
-          />
+          </Formik>
         </FormWrapper>
 
         <LoginExpand onClick={this.onLoginExpand}>
@@ -227,7 +222,7 @@ class AuthForm extends Component {
           <br />
           (weiter ohne Login)
         </GhostButton>
-      </Fragment>
+      </>
     );
   }
 }

@@ -46,15 +46,10 @@ class FeedbackForm extends PureComponent {
           validate={this.validate}
           validateOnChange={false}
           validateOnBlur={false}
-          render={({
-            values,
-            errors,
-            handleSubmit,
-            isSubmitting,
-            handleChange
-          }) => (
+        >
+          {({ values, errors, handleSubmit, isSubmitting, handleChange }) => (
             <Form onSubmit={handleSubmit}>
-              {formConfig.map(d => (
+              {formConfig.map((d) => (
                 <FormField
                   key={`feedbackfield__${d.id}`}
                   {...d}
@@ -71,7 +66,7 @@ class FeedbackForm extends PureComponent {
               </ButtonWrapper>
             </Form>
           )}
-        />
+        </Formik>
       </FormWrapper>
     );
   }
