@@ -261,6 +261,11 @@ const config = {
     dimmingOpacity: 0.3,
     bounds: [[13.2826, 52.4615], [13.46391, 52.5544374]]
   },
+  katasterKI: {
+    postcodeDistricts: {
+      '0000': ['Testbezirk', 'Testbezirk 2', 'Testbezirk 3']
+    }
+  },
   reports: {
     apiRoute: '/reports',
     dialog: {
