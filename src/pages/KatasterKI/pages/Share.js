@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '~/components/Button';
 
-const Landing = ({ isAgbAccepted }) => (
+const Share = ({ isAgbAccepted }) => (
   <>
-    <h1>Wie empfinden Sie den Verkehr in Berlin insgesamt?</h1>
+    <h1>Hier kannst du die Umfrage teilen</h1>
     <div>
       <Button disabled={!isAgbAccepted}>Einfach super!</Button>
     </div>
@@ -13,4 +13,4 @@ const Landing = ({ isAgbAccepted }) => (
 
 const mapStateToProps = () => ({});
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps)(Share);

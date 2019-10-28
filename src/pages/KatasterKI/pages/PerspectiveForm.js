@@ -2,15 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '~/components/Button';
 
-const Landing = ({ isAgbAccepted }) => (
+const PerspectiveForm = ({ transportRating }) => (
   <>
-    <h1>Wie empfinden Sie den Verkehr in Berlin insgesamt?</h1>
+    <h1>Bewertung der Transportarten</h1>
     <div>
       <Button disabled={!isAgbAccepted}>Einfach super!</Button>
     </div>
   </>
 );
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({
+  transportRating: state.katasterKI.transportRating
+});
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps)(PerspectiveForm);

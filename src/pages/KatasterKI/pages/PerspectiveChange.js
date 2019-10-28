@@ -2,15 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '~/components/Button';
 
-const Landing = ({ isAgbAccepted }) => (
+const PerspectiveChange = ({ perspective }) => (
   <>
-    <h1>Wie empfinden Sie den Verkehr in Berlin insgesamt?</h1>
+    <h1>Perspektivwechsel</h1>
     <div>
-      <Button disabled={!isAgbAccepted}>Einfach super!</Button>
+      <Button>Weiter</Button>
     </div>
   </>
 );
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({
+  perspective: state.katasterKI.perspective
+});
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps)(PerspectiveChange);

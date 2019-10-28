@@ -2,15 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '~/components/Button';
 
-const Landing = ({ isAgbAccepted }) => (
+const Demographics = ({ demographics }) => (
   <>
-    <h1>Wie empfinden Sie den Verkehr in Berlin insgesamt?</h1>
+    <h1>Soziodemografische Fragen</h1>
     <div>
-      <Button disabled={!isAgbAccepted}>Einfach super!</Button>
+      <Button>Weiter</Button>
     </div>
   </>
 );
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state) => ({
+  demographics: state.KatasterKI.demographics
+});
 
-export default connect(mapStateToProps)(Landing);
+export default connect(mapStateToProps)(Demographics);
