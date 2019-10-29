@@ -9,7 +9,7 @@ const SET_DISTRICT_OPTIONS = 'KatasterKI/SET_DISTRICT_OPTIONS';
 const SET_SUBMISSION_STATE = 'KatasterKI/SET_SUBMISSION_STATE';
 const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
 
-interface State {
+interface Submission {
   answers: {
     [question: string]: {
       rating: Rating;
@@ -19,16 +19,29 @@ interface State {
   demographics: {
     postcode: string;
     district?: string;
+    ageGroup?: 0 | 1 | 2 | 3;
+    hasChildren?: boolean;
+    bicycleAccident?: 0 | 1 | 2 | 3;
+    gender?: 'm' | 'w' | 'd';
+    bicycleUse?: 0 | 1 | 2 | 3;
+    vehiclesOwned?: Array<VehicleKind>;
   };
-  districtOptions?: Array<string>;
   isAgbAccepted: boolean;
-  intro: {};
+  intro: {
+    [question: string]: string | Array<string>;
+  };
+  transportRating: {
+    [mode: string]: TransportRating;
+  };
+}
+
+interface State extends Submission {
+  districtOptions?: Array<string>;
   perspective?: Perspective;
   submission: {
     state: SubmissionState;
     message?: string;
   };
-  transportRating: {};
 }
 
 interface Answer {
@@ -68,32 +81,49 @@ interface Action {
 }
 
 const enum TransportMode {
-  pedestrian,
-  bicycle,
-  motorbike,
-  public,
-  car
+  pedestrian = 'pedestrian',
+  bicycle = 'bicycle',
+  motorbike = 'motorbike',
+  public = 'public',
+  car = 'car'
+}
+
+const enum VehicleKind {
+  pedelec = 'pedelec',
+  car = 'car',
+  public = 'public',
+  motorbike = 'motorbike',
+  bicycle = 'bicycle'
+}
+
+const enum TransportRating {
+  never,
+  monthly,
+  monthlyPlus,
+  weekly,
+  weeklyPlus,
+  daily
 }
 
 const enum Perspective {
-  bicycle,
-  car,
-  pedestrian
+  bicycle = 'bicycle',
+  car = 'car',
+  pedestrian = 'pedestrian'
 }
 
 const enum Rating {
-  unsafe,
-  mostlyUnsafe,
-  mostlySafe,
-  safe
+  unsafe = 'unsafe',
+  mostlyUnsafe = 'mostlyUnsafe',
+  mostlySafe = 'mostlySafe',
+  safe = 'safe'
 }
 
 const enum SubmissionState {
-  waiting,
-  pending,
-  delayed,
-  success,
-  error
+  waiting = 'waiting',
+  pending = 'pending',
+  delayed = 'delayed',
+  success = 'success',
+  error = 'error'
 }
 
 const defaultState = {

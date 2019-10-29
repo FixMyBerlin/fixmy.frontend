@@ -6,7 +6,7 @@ import Landing from './pages/Landing';
 import Intro from './pages/Intro';
 import PerspectiveForm from './pages/PerspectiveForm';
 import PerspectiveChange from './pages/PerspectiveChange';
-import Rating from './pages/Rating';
+import Scene from './pages/Scene';
 import Demographics from './pages/Demographics';
 import Share from './pages/Share';
 
@@ -33,7 +33,7 @@ const KatasterKI = () => (
         component={PerspectiveChange}
       />
 
-      <Route exact path={config.routes.katasterKI.rating} component={Rating} />
+      <Route exact path={config.routes.katasterKI.scene} component={Scene} />
 
       <Route
         exact

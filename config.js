@@ -147,7 +147,7 @@ const config = {
       intro: '/strassencheck/einleitung/:question',
       perspective: '/strassencheck/perspektive/',
       changePerspective: '/strassencheck/perspektive-wechseln',
-      rating: '/strassencheck/bewertung/:question',
+      scene: '/strassencheck/szene/:question',
       demographics: '/strassencheck/demografie/:question',
       share: '/strassencheck/teilen'
     },
