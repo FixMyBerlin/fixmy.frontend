@@ -74,7 +74,7 @@ const sideFilter1 = ['match', ['get', 'side'], [2, 1], true, false];
  * Set a filter on projects to display only those of a certain phase
  *
  * @param {Object} map Mapbox instance
- * @param {Array<boolean>} filters Four booleans descibe which phases are visible
+ * @param {Array<boolean>} filters Four booleans describe which phases are visible
  */
 export function setPlanningLegendFilter(map, selected) {
   const phases = config.planningPhases.map((phase) => phase.id);
@@ -108,57 +108,24 @@ function getHbiExpression(sideKey) {
   // const speedExpr = ['*', ['-', ['to-number', ['get', `${sideKey}velocity`], -1000], rv], 0.5];
   // return ['number', ['+', securityExpr, speedExpr]];
   const safety = ['to-number', ['get', `${sideKey}safety`], -1000];
-  const velociy = ['to-number', ['get', `${sideKey}velocity`], -1000];
+  const velocity = ['to-number', ['get', `${sideKey}velocity`], -1000];
 
-  return ['number', ['+', safety, velociy]];
+  return ['number', ['+', safety, velocity]];
 }
 
-function getHbiLineColorRules(hbi) {
-  return [
-    'case',
-    ['<', hbi, 0],
-    'white', // we set a negative default value in order to recognize invalid sections. see function above
-    ['<', hbi, config.hbiStops[0].max],
-    config.hbiStops[0].color,
-    ['<', hbi, config.hbiStops[1].max],
-    config.hbiStops[1].color,
-    ['<', hbi, config.hbiStops[2].max],
-    config.hbiStops[2].color,
-    ['<=', hbi, config.hbiStops[3].max],
-    config.hbiStops[3].color,
-    config.hbiStops[3].color
-  ];
-}
-
-function getHbiFilterRules(hbi, filter) {
-  return [
-    'case',
-    [
-      'all',
-      ['>', hbi, config.hbiStops[0].min],
-      ['<', hbi, config.hbiStops[0].max]
-    ],
-    filter[0] ? 1 : 0,
-    [
-      'all',
-      ['>', hbi, config.hbiStops[1].min],
-      ['<', hbi, config.hbiStops[1].max]
-    ],
-    filter[1] ? 1 : 0,
-    [
-      'all',
-      ['>', hbi, config.hbiStops[2].min],
-      ['<', hbi, config.hbiStops[2].max]
-    ],
-    filter[2] ? 1 : 0,
-    [
-      'all',
-      ['>', hbi, config.hbiStops[3].min],
-      ['<', hbi, config.hbiStops[3].max]
-    ],
-    filter[3] ? 1 : 0,
-    0
-  ];
+/**
+ * Returns active filters for hbi state colorization
+ *
+ * @param {Object} map Mapbox instance
+ * @param {Array<boolean>} filters Four booleans describe which hbi states are visible
+ */
+function getHbiFilterRules(hbi, hbiFilters) {
+  const activeHbiStops = config.hbiStops.filter((d, i) => hbiFilters[i]);
+  return activeHbiStops.map((hbiStop) => [
+    'all',
+    ['>', hbi, hbiStop.min],
+    ['<', hbi, hbiStop.max]
+  ]);
 }
 
 export function colorizeHbiLines(map, hbiValues, hbiFilter) {
@@ -168,40 +135,19 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
     map.setFilter(config.map.layers.hbi[layerName], mapFilter)
   );
 
-  const rv = (hbiValues[0] - 5) / 10;
-  const rs = (hbiValues[1] - 5) / 10;
+  const hbiExprCenter = getHbiExpression('');
+  const hbiExprSide0 = getHbiExpression('side0_');
+  const hbiExprSide1 = getHbiExpression('side1_');
 
-  const hbiExprCenter = getHbiExpression('', rs, rv);
-  const hbiExprSide0 = getHbiExpression('side0_', rs, rv);
-  const hbiExprSide1 = getHbiExpression('side1_', rs, rv);
-
-  const lineColorRules = [
-    getHbiLineColorRules(hbiExprCenter),
-    getHbiLineColorRules(hbiExprSide0),
-    getHbiLineColorRules(hbiExprSide1)
-  ];
-
-  standardLayers.forEach((layerName, i) =>
-    map.setPaintProperty(
-      config.map.layers.hbi[layerName],
-      'line-color',
-      lineColorRules[i]
-    )
-  );
-
-  const lineOpacityRules = [
+  const mapFilters = [
     getHbiFilterRules(hbiExprCenter, hbiFilter),
     getHbiFilterRules(hbiExprSide0, hbiFilter),
     getHbiFilterRules(hbiExprSide1, hbiFilter)
   ];
 
-  standardLayers.forEach((layerName, i) =>
-    map.setPaintProperty(
-      config.map.layers.hbi[layerName],
-      'line-opacity',
-      lineOpacityRules[i]
-    )
-  );
+  standardLayers.forEach((layerName, i) => {
+    map.setFilter(config.map.layers.hbi[layerName], ['any', ...mapFilters[i]]);
+  });
 }
 
 export function resetMap({ zoom = null } = {}) {
