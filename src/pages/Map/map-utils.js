@@ -119,12 +119,9 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
     map.setFilter(config.map.layers.hbi[layerName], mapFilter)
   );
 
-  const rv = (hbiValues[0] - 5) / 10;
-  const rs = (hbiValues[1] - 5) / 10;
-
-  const hbiExprCenter = getHbiExpression('', rs, rv);
-  const hbiExprSide0 = getHbiExpression('side0_', rs, rv);
-  const hbiExprSide1 = getHbiExpression('side1_', rs, rv);
+  const hbiExprCenter = getHbiExpression('');
+  const hbiExprSide0 = getHbiExpression('side0_');
+  const hbiExprSide1 = getHbiExpression('side1_');
 
   const mapFilters = [
     getHbiFilterRules(hbiExprCenter, hbiFilter),
