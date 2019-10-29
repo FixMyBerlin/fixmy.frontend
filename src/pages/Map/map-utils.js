@@ -45,17 +45,17 @@ export function toggleLayer(map, layer, isVisible) {
 /**
  * Change opacity of all non-active sections to highlight a specific one or
  * reset filter when no section is selected
- * 
+ *
  * @param {Object} map Mapbox instance
  * @param {String} subMap either `projects` or `hbi`
  * @param {Number} id Identifier of the active section (null for reset)
  */
 export function filterLayersById(map, subMap, id) {
-  let VisibilityFilter
+  let VisibilityFilter;
   if (id) {
     VisibilityFilter = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
   } else {
-    VisibilityFilter = 1
+    VisibilityFilter = 1;
   }
 
   standardLayers.forEach((layer) =>
@@ -67,23 +67,38 @@ export function filterLayersById(map, subMap, id) {
   );
 }
 
+const sideFilter0 = ['match', ['get', 'side'], [2, 0], true, false];
+const sideFilter1 = ['match', ['get', 'side'], [2, 1], true, false];
+
 /**
  * Set a filter on projects to display only those of a certain phase
- * 
+ *
  * @param {Object} map Mapbox instance
  * @param {Array<boolean>} filters Four booleans descibe which phases are visible
  */
 export function setPlanningLegendFilter(map, selected) {
-  const phases = config.planningPhases.map(phase => phase.id)
-  const filters = selected.map(
-    (isSelected, phaseIndex) => isSelected === true 
-      ? ['==', phases[phaseIndex], ['get', 'phase']]
-      : null
-    ).filter(entry => entry !== null)
-  Object.values(config.map.layers.projects).forEach(layer => {
-      map.setFilter(layer, ['any', ...filters])
-    }
-  )
+  const phases = config.planningPhases.map((phase) => phase.id);
+  const filters = selected
+    .map((isSelected, phaseIndex) =>
+      isSelected === true ? ['==', phases[phaseIndex], ['get', 'phase']] : null
+    )
+    .filter((entry) => entry !== null);
+
+  // Planning legend filter can be directly set for center and overlayLine
+  // layer, but need  to be concatenated with side filter for the side layers
+
+  map.setFilter(config.map.layers.projects.center, ['any', ...filters]);
+  map.setFilter(config.map.layers.projects.overlayLine, ['any', ...filters]);
+  map.setFilter(config.map.layers.projects.side0, [
+    'all',
+    sideFilter0,
+    ['any', ...filters]
+  ]);
+  map.setFilter(config.map.layers.projects.side1, [
+    'all',
+    sideFilter1,
+    ['any', ...filters]
+  ]);
 }
 
 function getHbiExpression(sideKey) {
