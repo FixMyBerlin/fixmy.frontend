@@ -67,6 +67,9 @@ export function filterLayersById(map, subMap, id) {
   );
 }
 
+const sideFilter0 = ['match', ['get', 'side'], [2, 0], true, false];
+const sideFilter1 = ['match', ['get', 'side'], [2, 1], true, false];
+
 /**
  * Set a filter on projects to display only those of a certain phase
  *
@@ -80,9 +83,22 @@ export function setPlanningLegendFilter(map, selected) {
       isSelected === true ? ['==', phases[phaseIndex], ['get', 'phase']] : null
     )
     .filter((entry) => entry !== null);
-  Object.values(config.map.layers.projects).forEach((layer) => {
-    map.setFilter(layer, ['any', ...filters]);
-  });
+
+  // Planning legend filter can be directly set for center and overlayLine
+  // layer, but need  to be concatenated with side filter for the side layers
+
+  map.setFilter(config.map.layers.projects.center, ['any', ...filters]);
+  map.setFilter(config.map.layers.projects.overlayLine, ['any', ...filters]);
+  map.setFilter(config.map.layers.projects.side0, [
+    'all',
+    sideFilter0,
+    ['any', ...filters]
+  ]);
+  map.setFilter(config.map.layers.projects.side1, [
+    'all',
+    sideFilter1,
+    ['any', ...filters]
+  ]);
 }
 
 function getHbiExpression(sideKey) {
