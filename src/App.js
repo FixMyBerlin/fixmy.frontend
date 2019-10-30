@@ -51,18 +51,35 @@ class App extends PureComponent {
                 <Switch>
                   <Route exact path="/" component={Home} />
 
-                  {
-                  /* standard markdown pages */
-                  config.staticpages.map(page => <Route key={page} path={page.route} render={() => <Markdown page={page.key} />} />)
-                }
+                  {/* standard markdown pages */
+                  config.staticpages.map((page) => (
+                    <Route
+                      key={page}
+                      path={page.route}
+                      render={() => <Markdown page={page.key} />}
+                    />
+                  ))}
 
                   {/* user pages */}
                   <Route path={config.routes.signup} component={Signup} />
                   <Route path={config.routes.login} component={Login} />
-                  <Route path={config.routes.forgotPassword} component={ForgotPassword} />
-                  <Route path={`${config.routes.resetPassword}/:uid/:token`} component={ResetPassword} />
-                  <Route path={`${config.routes.userVerify}/:uid/:token`} component={UserVerify} />
-                  <PrivateRoute path={config.routes.profile} token={token} component={Profile} />
+                  <Route
+                    path={config.routes.forgotPassword}
+                    component={ForgotPassword}
+                  />
+                  <Route
+                    path={`${config.routes.resetPassword}/:uid/:token`}
+                    component={ResetPassword}
+                  />
+                  <Route
+                    path={`${config.routes.userVerify}/:uid/:token`}
+                    component={UserVerify}
+                  />
+                  <PrivateRoute
+                    path={config.routes.profile}
+                    token={token}
+                    component={Profile}
+                  />
 
                   {/* map pages */}
                   <Route
@@ -76,9 +93,9 @@ class App extends PureComponent {
                     component={Reports}
                   />
 
-                  {/* reports page */}
+                  {/* kataster survey page */}
                   <Route
-                    path={`${config.routes.katasterKI.landing}`}
+                    path={config.routes.katasterKI.landing}
                     component={KatasterKI}
                   />
 
@@ -89,7 +106,14 @@ class App extends PureComponent {
                   />
 
                   {/* reports page */}
-                  <Route exact path={config.routes.reports.temporarily_forward_from_this_to_index} render={() => (<Redirect to={config.routes.reports.index} />)} />
+                  <Route
+                    exact
+                    path={
+                      config.routes.reports
+                        .temporarily_forward_from_this_to_index
+                    }
+                    render={() => <Redirect to={config.routes.reports.index} />}
+                  />
 
                   <Route render={() => <Markdown page="nomatch" />} />
                 </Switch>
@@ -102,7 +126,7 @@ class App extends PureComponent {
   }
 }
 
-export default connect(state => ({
+export default connect((state) => ({
   token: state.UserState.token,
   isEmbedMode: state.AppState.isEmbedMode
 }))(App);

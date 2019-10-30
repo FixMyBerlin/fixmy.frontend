@@ -149,7 +149,8 @@ const config = {
       changePerspective: '/strassencheck/perspektive-wechseln',
       scene: '/strassencheck/szene/:question',
       demographics: '/strassencheck/demografie/:question',
-      share: '/strassencheck/teilen'
+      share: '/strassencheck/teilen',
+      iframe: '/strassencheck/iFrame-test'
     },
     signup: '/registrieren',
     login: '/anmelden',

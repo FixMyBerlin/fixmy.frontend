@@ -1,130 +1,92 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "definitions": {
-        "Rating": {
-            "enum": [
-                "mostlySafe",
-                "mostlyUnsafe",
-                "safe",
-                "unsafe"
-            ],
-            "type": "string"
-        },
-        "TransportRating": {
-            "enum": [
-                0,
-                1,
-                2,
-                3,
-                4,
-                5
-            ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Rating": {
+      "enum": ["mostlySafe", "mostlyUnsafe", "safe", "unsafe"],
+      "type": "string"
+    },
+    "TransportRating": {
+      "enum": [0, 1, 2, 3, 4, 5],
+      "type": "number"
+    }
+  },
+  "properties": {
+    "answers": {
+      "additionalProperties": {
+        "properties": {
+          "duration": {
             "type": "number"
-        }
+          },
+          "rating": {
+            "$ref": "#/definitions/Rating"
+          }
+        },
+        "type": "object"
+      },
+      "type": "object"
     },
-    "properties": {
-        "answers": {
-            "additionalProperties": {
-                "properties": {
-                    "duration": {
-                        "type": "number"
-                    },
-                    "rating": {
-                        "$ref": "#/definitions/Rating"
-                    }
-                },
-                "type": "object"
-            },
-            "type": "object"
+    "demographics": {
+      "properties": {
+        "ageGroup": {
+          "enum": [0, 1, 2, 3],
+          "type": "number"
         },
-        "demographics": {
-            "properties": {
-                "ageGroup": {
-                    "enum": [
-                        0,
-                        1,
-                        2,
-                        3
-                    ],
-                    "type": "number"
-                },
-                "bicycleAccident": {
-                    "enum": [
-                        0,
-                        1,
-                        2,
-                        3
-                    ],
-                    "type": "number"
-                },
-                "bicycleUse": {
-                    "enum": [
-                        0,
-                        1,
-                        2,
-                        3
-                    ],
-                    "type": "number"
-                },
-                "district": {
-                    "type": "string"
-                },
-                "gender": {
-                    "enum": [
-                        "d",
-                        "m",
-                        "w"
-                    ],
-                    "type": "string"
-                },
-                "hasChildren": {
-                    "type": "boolean"
-                },
-                "postcode": {
-                    "type": "string"
-                },
-                "vehiclesOwned": {
-                    "items": {
-                        "enum": [
-                            "bicycle",
-                            "car",
-                            "motorbike",
-                            "pedelec",
-                            "public"
-                        ],
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
+        "bicycleAccident": {
+          "enum": [0, 1, 2, 3],
+          "type": "number"
         },
-        "intro": {
-            "additionalProperties": {
-                "anyOf": [
-                    {
-                        "items": {
-                            "type": "string"
-                        },
-                        "type": "array"
-                    },
-                    {
-                        "type": "string"
-                    }
-                ]
-            },
-            "type": "object"
+        "bicycleUse": {
+          "enum": [0, 1, 2, 3],
+          "type": "number"
         },
-        "isAgbAccepted": {
-            "type": "boolean"
+        "district": {
+          "type": "string"
         },
-        "transportRating": {
-            "additionalProperties": {
-                "$ref": "#/definitions/TransportRating"
-            },
-            "type": "object"
+        "gender": {
+          "enum": ["d", "m", "w"],
+          "type": "string"
+        },
+        "hasChildren": {
+          "type": "boolean"
+        },
+        "postcode": {
+          "type": "string"
+        },
+        "vehiclesOwned": {
+          "items": {
+            "enum": ["bicycle", "car", "motorbike", "pedelec", "public"],
+            "type": "string"
+          },
+          "type": "array"
         }
+      },
+      "type": "object"
     },
-    "type": "object"
+    "intro": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "type": "object"
+    },
+    "isAgbAccepted": {
+      "type": "boolean"
+    },
+    "transportRating": {
+      "additionalProperties": {
+        "$ref": "#/definitions/TransportRating"
+      },
+      "type": "object"
+    }
+  },
+  "type": "object"
 }
-
