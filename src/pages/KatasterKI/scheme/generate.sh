@@ -1,0 +1,1 @@
+npx typescript-json-schema src/pages/KatasterKI/state.ts Submission --ignoreErrors -o src/pages/KatasterKI/scheme/submission.schema.json
