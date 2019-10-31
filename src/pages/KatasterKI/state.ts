@@ -11,7 +11,7 @@ const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
 
 interface Submission {
   answers: {
-    [question: string]: {
+    [sceneID: string]: {
       rating: Rating;
       duration: number;
     };
@@ -28,16 +28,17 @@ interface Submission {
   };
   isAgbAccepted: boolean;
   intro: {
-    [question: string]: string | Array<string>;
+    bikeReasons?: Array<boolean>;
+    berlinTraffic?: number;
   };
-  transportRating: {
+  transportRatings: {
     [mode: string]: TransportRating;
   };
 }
 
 interface State extends Submission {
   districtOptions?: Array<string>;
-  perspective?: Perspective;
+  currentPerspective?: Perspective;
   submission: {
     state: SubmissionState;
     message?: string;
@@ -54,11 +55,11 @@ interface Action {
   type: string;
   value?: any;
   demographics?: {
-    question: number;
+    question: string;
     value: number;
   };
   introAnswer?: {
-    question: number;
+    question: string;
     value: number;
   };
   transportRating?: {
@@ -72,12 +73,18 @@ interface Action {
     districtOptions: Array<string>;
   };
   answer?: {
-    question: number;
+    sceneID: string;
     rating: Rating;
     duration: number;
   };
   submissionState?: SubmissionState;
   message?: string;
+}
+
+const enum Experiment {
+  MainStreet = 'MS',
+  CyclePath = 'CP',
+  SideStreet = 'SS'
 }
 
 const enum TransportMode {
@@ -106,9 +113,9 @@ const enum TransportRating {
 }
 
 const enum Perspective {
-  bicycle = 'bicycle',
-  car = 'car',
-  pedestrian = 'pedestrian'
+  bicycle = 'C',
+  car = 'A',
+  pedestrian = 'P'
 }
 
 const enum Rating {
@@ -126,10 +133,10 @@ const enum SubmissionState {
   error = 'error'
 }
 
-const defaultState = {
+const defaultState: State = {
   isAgbAccepted: false,
   intro: {},
-  transportRating: {},
+  transportRatings: {},
   demographics: {
     postcode: ''
   },
@@ -148,12 +155,12 @@ export default function reducer(state: State = defaultState, action: Action) {
       };
 
     case SET_ANSWER:
-      const { question, rating, duration } = action.answer;
+      const { sceneID, rating, duration } = action.answer;
       return {
         ...state,
         answers: {
           ...state.answers,
-          [question]: {
+          [sceneID]: {
             rating,
             duration
           }
@@ -177,11 +184,11 @@ export default function reducer(state: State = defaultState, action: Action) {
       return { ...state, ...intro };
 
     case SET_TRANSPORT_RATING:
-      const transportRating = {
-        ...state.transportRating,
+      const transportRatings = {
+        ...state.transportRatings,
         [action.transportRating.type]: action.transportRating.rating
       };
-      return { ...state, ...transportRating };
+      return { ...state, ...transportRatings };
 
     case SET_PERSPECTIVE:
       return { ...state, perspective: action.perspective };
@@ -209,6 +216,7 @@ export default function reducer(state: State = defaultState, action: Action) {
       };
 
     case SUBMIT_SURVEY:
+      console.error('not implemented');
 
     default:
       return state;
@@ -220,18 +228,18 @@ export function setAGBAccepted(value: boolean): Action {
 }
 
 export function setAnswer(
-  question: number,
+  sceneID: string,
   rating: Rating,
   duration: number
 ): Action {
-  return { type: SET_ANSWER, answer: { question, rating, duration } };
+  return { type: SET_ANSWER, answer: { sceneID, rating, duration } };
 }
 
-export function setDemographicsAnswer(question: number, value: any): Action {
+export function setDemographicsAnswer(question: string, value: any): Action {
   return { type: SET_DEMOGRAPHICS_ANSWER, demographics: { question, value } };
 }
 
-export function setIntroAnswer(question: number, value: any): Action {
+export function setIntroAnswer(question: string, value: any): Action {
   return { type: SET_INTRO_ANSWER, introAnswer: { question, value } };
 }
 

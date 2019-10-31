@@ -100,25 +100,23 @@
             "type": "object"
         },
         "intro": {
-            "additionalProperties": {
-                "anyOf": [
-                    {
-                        "items": {
-                            "type": "string"
-                        },
-                        "type": "array"
+            "properties": {
+                "berlinTraffic": {
+                    "type": "number"
+                },
+                "bikeReasons": {
+                    "items": {
+                        "type": "boolean"
                     },
-                    {
-                        "type": "string"
-                    }
-                ]
+                    "type": "array"
+                }
             },
             "type": "object"
         },
         "isAgbAccepted": {
             "type": "boolean"
         },
-        "transportRating": {
+        "transportRatings": {
             "additionalProperties": {
                 "$ref": "#/definitions/TransportRating"
             },
