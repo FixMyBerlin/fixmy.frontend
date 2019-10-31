@@ -142,6 +142,16 @@ const config = {
       map: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
       new: '/meldungen/radbuegel/friedrichshain-kreuzberg/neu'
     },
+    katasterKI: {
+      landing: '/strassencheck',
+      intro: '/strassencheck/einleitung/:question',
+      perspective: '/strassencheck/perspektive/',
+      changePerspective: '/strassencheck/perspektive-wechseln',
+      scene: '/strassencheck/szene/:question',
+      demographics: '/strassencheck/demografie/:question',
+      share: '/strassencheck/teilen',
+      iframe: '/strassencheck/iFrame-test'
+    },
     signup: '/registrieren',
     login: '/anmelden',
     forgotPassword: '/passwort-vergessen',
@@ -251,6 +261,11 @@ const config = {
     drawOverlayLine: true,
     dimmingOpacity: 0.3,
     bounds: [[13.2826, 52.4615], [13.46391, 52.5544374]]
+  },
+  katasterKI: {
+    postcodeDistricts: {
+      '0000': ['Testbezirk', 'Testbezirk 2', 'Testbezirk 3']
+    }
   },
   reports: {
     apiRoute: '/reports',

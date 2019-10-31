@@ -10,7 +10,8 @@
     "lint": "eslint src",
     "test": "jest --verbose --config=jest/jest.config.js",
     "test:watch": "npm run test  -- --watch",
-    "test:coverage": "npm run test -- --coverage --collectCoverageFrom=**/state/*"
+    "test:coverage": "npm run test -- --coverage --collectCoverageFrom=**/state/*",
+    "generate-kataster-schema": "./src/pages/KatasterKI/scheme/generate.sh"
   },
   "repository": {
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
