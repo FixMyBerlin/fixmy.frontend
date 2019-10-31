@@ -1,6 +1,6 @@
 const SET_AGB_ACCEPTED = 'KatasterKI/SET_AGB_ACCEPTED';
 const SET_ANSWER = 'KatasterKI/SET_ANSWER';
-const SET_DEMOGRAPHICS_ANSWER = 'KatasterKI/SET_DEMOGRAPHICS_ANSWER';
+const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
 const SET_INTRO_ANSWER = 'KatasterKI/SET_INTRO_ANSWER';
 const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
 const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
@@ -16,7 +16,7 @@ interface Submission {
       duration: number;
     };
   };
-  demographics: {
+  profile: {
     postcode: string;
     district?: string;
     ageGroup?: 0 | 1 | 2 | 3;
@@ -54,7 +54,7 @@ interface Answer {
 interface Action {
   type: string;
   value?: any;
-  demographics?: {
+  profile?: {
     question: string;
     value: number;
   };
@@ -137,7 +137,7 @@ const defaultState: State = {
   isAgbAccepted: false,
   intro: {},
   transportRatings: {},
-  demographics: {
+  profile: {
     postcode: ''
   },
   submission: {
@@ -167,12 +167,12 @@ export default function reducer(state: State = defaultState, action: Action) {
         }
       };
 
-    case SET_DEMOGRAPHICS_ANSWER:
+    case SET_PROFILE_ANSWER:
       return {
         ...state,
-        demographics: {
-          ...state.demographics,
-          ...action.demographics
+        profile: {
+          ...state.profile,
+          ...action.profile
         }
       };
 
@@ -198,8 +198,8 @@ export default function reducer(state: State = defaultState, action: Action) {
       return {
         ...state,
         districtOptions,
-        demographics: {
-          ...state.demographics,
+        profile: {
+          ...state.profile,
           postcode,
           district
         }
@@ -236,7 +236,7 @@ export function setAnswer(
 }
 
 export function setDemographicsAnswer(question: string, value: any): Action {
-  return { type: SET_DEMOGRAPHICS_ANSWER, demographics: { question, value } };
+  return { type: SET_PROFILE_ANSWER, profile: { question, value } };
 }
 
 export function setIntroAnswer(question: string, value: any): Action {

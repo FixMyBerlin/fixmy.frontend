@@ -37,7 +37,24 @@
             },
             "type": "object"
         },
-        "demographics": {
+        "intro": {
+            "properties": {
+                "berlinTraffic": {
+                    "type": "number"
+                },
+                "bikeReasons": {
+                    "items": {
+                        "type": "boolean"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "isAgbAccepted": {
+            "type": "boolean"
+        },
+        "profile": {
             "properties": {
                 "ageGroup": {
                     "enum": [
@@ -98,23 +115,6 @@
                 }
             },
             "type": "object"
-        },
-        "intro": {
-            "properties": {
-                "berlinTraffic": {
-                    "type": "number"
-                },
-                "bikeReasons": {
-                    "items": {
-                        "type": "boolean"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "isAgbAccepted": {
-            "type": "boolean"
         },
         "transportRatings": {
             "additionalProperties": {
