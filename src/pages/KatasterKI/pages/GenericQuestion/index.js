@@ -33,7 +33,6 @@ const GenericQuestion = (props) => {
     ? `${config.routes.katasterKI.sceneBase}/1`
     : `${config.routes.katasterKI.introBase}/${questionIndex + 2}`;
 
-  console.log(question);
   if (
     typeof question === 'undefined' ||
     typeof QuestionComponent === 'undefined'
