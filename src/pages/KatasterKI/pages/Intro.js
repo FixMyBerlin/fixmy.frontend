@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Button from '~/components/Button';
 
-const Intro = ({ intro }) => (
+const Intro = ({ intro } = {}) => (
   <>
     <h1>Eingangsfragen</h1>
     <div>
