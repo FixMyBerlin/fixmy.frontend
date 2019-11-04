@@ -21,6 +21,8 @@ export default styled.button`
   box-shadow: ${(props) => (props.disabled ? 'none' : boxShadow)};
   width: 100%;
   max-width: 400px;
+  display: block;
+  text-align: center;
 
   &:hover {
     box-shadow: ${(props) => (props.disabled ? 'none' : boxShadowHover)};

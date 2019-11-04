@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import Store from '~/store';
-import history from '~/history';
 import { setAGBAccepted } from '../state';
 import Button from '~/pages/KatasterKI/components/Button';
 import ExternalLink from '~/pages/KatasterKI/components/ExternalLink';
@@ -18,7 +17,7 @@ const IntroHeadline = styled.h1`
 `;
 
 const ButtonWrapper = styled.div`
-  margin: 15px auto;
+  margin: 15px 0 0 0;
   display: flex;
   justify-content: center;
 `;
@@ -59,6 +58,12 @@ const ExtendButton = styled.button`
   cursor: pointer;
 `;
 
+const CheckboxWrapper = styled.div`
+  input {
+    margin-right: 10px;
+  }
+`;
+
 const landingText = `
   Diese Umfrage untersucht: Wie können die Berliner Straßen sicher für
   alle Menschen werden. Wir fragen Sie als Radfahrer, Fußgänger oder
@@ -72,7 +77,6 @@ const landingText = `
 `;
 
 const onAcceptTOS = (ev) => Store.dispatch(setAGBAccepted(ev.target.checked));
-const onStartSurvey = () => history.push(config.routes.katasterKI.introStart);
 
 const Landing = ({ isAgbAccepted }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -90,18 +94,32 @@ const Landing = ({ isAgbAccepted }) => {
           </ExtendButton>
         )}
       </ParagraphWrapper>
-      <input type="checkbox" checked={isAgbAccepted} onChange={onAcceptTOS} />{' '}
-      Ich habe die{' '}
-      <ExternalLink
-        href="https://fixmyberlin.de/datenschutz"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Datenschutzerklärung
-      </ExternalLink>{' '}
-      gelesen und stimme ihr zu
+
+      <CheckboxWrapper>
+        <input
+          type="checkbox"
+          checked={isAgbAccepted}
+          onChange={onAcceptTOS}
+          id="check_agb"
+        />
+        <label htmlFor="check_agb">
+          Ich habe die{' '}
+          <ExternalLink
+            href="https://fixmyberlin.de/datenschutz"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Datenschutzerklärung
+          </ExternalLink>{' '}
+          gelesen und stimme ihr zu
+        </label>
+      </CheckboxWrapper>
       <ButtonWrapper>
-        <Button disabled={!isAgbAccepted} onClick={onStartSurvey}>
+        <Button
+          as={Link}
+          to={`${config.routes.katasterKI.introBase}/1`}
+          disabled={!isAgbAccepted}
+        >
           Umfrage beginnen
         </Button>
       </ButtonWrapper>

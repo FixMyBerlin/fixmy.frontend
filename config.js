@@ -145,10 +145,11 @@ const config = {
     },
     katasterKI: {
       landing: '/strassencheck',
-      introStart: '/strassencheck/einleitung/1',
+      introBase: '/strassencheck/einleitung',
       intro: '/strassencheck/einleitung/:question',
       perspective: '/strassencheck/perspektive/',
       changePerspective: '/strassencheck/perspektive-wechseln',
+      sceneBase: '/strassencheck/szene',
       scene: '/strassencheck/szene/:question',
       demographics: '/strassencheck/demografie/:question',
       share: '/strassencheck/teilen',
