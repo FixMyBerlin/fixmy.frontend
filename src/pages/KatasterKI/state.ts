@@ -8,14 +8,20 @@ const SET_POSTCODE = 'KatasterKI/SET_POSTCODE';
 const SET_DISTRICT_OPTIONS = 'KatasterKI/SET_DISTRICT_OPTIONS';
 const SET_SUBMISSION_STATE = 'KatasterKI/SET_SUBMISSION_STATE';
 const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
+import {
+  Answer,
+  Experiment,
+  Perspective,
+  Rating,
+  SubmissionState,
+  SurveySubmission,
+  TransportMode,
+  TransportRating,
+  VehicleKind
+} from './types';
 
-interface Submission {
-  answers: {
-    [sceneID: string]: {
-      rating: Rating;
-      duration: number;
-    };
-  };
+interface State {
+  answers: Array<Answer>;
   profile: {
     postcode: string;
     district?: string;
@@ -28,15 +34,12 @@ interface Submission {
   };
   isAgbAccepted: boolean;
   intro: {
-    bikeReasons?: Array<boolean>;
-    berlinTraffic?: number;
+    bikeReasons?: Array<string>;
+    berlinTraffic?: string;
   };
   transportRatings: {
     [mode: string]: TransportRating;
   };
-}
-
-interface State extends Submission {
   districtOptions?: Array<string>;
   currentPerspective?: Perspective;
   submission: {
@@ -45,22 +48,12 @@ interface State extends Submission {
   };
 }
 
-interface Answer {
-  question: string;
-  rating: Rating;
-  duration: number;
-}
-
 interface Action {
   type: string;
   value?: any;
   profile?: {
     question: string;
-    value: number;
-  };
-  introAnswer?: {
-    question: string;
-    value: number;
+    value: number | string;
   };
   transportRating?: {
     type: TransportMode;
@@ -81,58 +74,6 @@ interface Action {
   message?: string;
 }
 
-const enum Experiment {
-  MainStreet = 'MS',
-  CyclePath = 'CP',
-  SideStreet = 'SS'
-}
-
-const enum TransportMode {
-  pedestrian = 'pedestrian',
-  bicycle = 'bicycle',
-  motorbike = 'motorbike',
-  public = 'public',
-  car = 'car'
-}
-
-const enum VehicleKind {
-  pedelec = 'pedelec',
-  car = 'car',
-  public = 'public',
-  motorbike = 'motorbike',
-  bicycle = 'bicycle'
-}
-
-const enum TransportRating {
-  never,
-  monthly,
-  monthlyPlus,
-  weekly,
-  weeklyPlus,
-  daily
-}
-
-const enum Perspective {
-  bicycle = 'C',
-  car = 'A',
-  pedestrian = 'P'
-}
-
-const enum Rating {
-  unsafe = 'unsafe',
-  mostlyUnsafe = 'mostlyUnsafe',
-  mostlySafe = 'mostlySafe',
-  safe = 'safe'
-}
-
-const enum SubmissionState {
-  waiting = 'waiting',
-  pending = 'pending',
-  delayed = 'delayed',
-  success = 'success',
-  error = 'error'
-}
-
 const defaultState: State = {
   isAgbAccepted: false,
   intro: {},
@@ -143,7 +84,7 @@ const defaultState: State = {
   submission: {
     state: SubmissionState.waiting
   },
-  answers: {}
+  answers: []
 };
 
 export default function reducer(state: State = defaultState, action: Action) {
@@ -179,7 +120,7 @@ export default function reducer(state: State = defaultState, action: Action) {
     case SET_INTRO_ANSWER:
       const intro = {
         ...state.intro,
-        [action.introAnswer.question]: action.introAnswer.value
+        [action.profile.question]: action.profile.value
       };
       return { ...state, ...intro };
 
@@ -240,7 +181,7 @@ export function setDemographicsAnswer(question: string, value: any): Action {
 }
 
 export function setIntroAnswer(question: string, value: any): Action {
-  return { type: SET_INTRO_ANSWER, introAnswer: { question, value } };
+  return { type: SET_INTRO_ANSWER, profile: { question, value } };
 }
 
 export function setPerspective(perspective: Perspective): Action {
