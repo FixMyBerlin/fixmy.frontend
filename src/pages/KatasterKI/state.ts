@@ -1,13 +1,3 @@
-const SET_AGB_ACCEPTED = 'KatasterKI/SET_AGB_ACCEPTED';
-const SET_ANSWER = 'KatasterKI/SET_ANSWER';
-const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
-const SET_INTRO_ANSWER = 'KatasterKI/SET_INTRO_ANSWER';
-const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
-const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
-const SET_POSTCODE = 'KatasterKI/SET_POSTCODE';
-const SET_DISTRICT_OPTIONS = 'KatasterKI/SET_DISTRICT_OPTIONS';
-const SET_SUBMISSION_STATE = 'KatasterKI/SET_SUBMISSION_STATE';
-const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
 import {
   Answer,
   Experiment,
@@ -17,11 +7,24 @@ import {
   SurveySubmission,
   TransportMode,
   TransportRating,
-  VehicleKind
+  VehicleKind,
+  UserGroup
 } from './types';
+import { getUserGroup } from './utils';
+
+const SET_AGB_ACCEPTED = 'KatasterKI/SET_AGB_ACCEPTED';
+const SET_ANSWER = 'KatasterKI/SET_ANSWER';
+const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
+const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
+const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
+const SET_POSTCODE = 'KatasterKI/SET_POSTCODE';
+const SET_DISTRICT_OPTIONS = 'KatasterKI/SET_DISTRICT_OPTIONS';
+const SET_SUBMISSION_STATE = 'KatasterKI/SET_SUBMISSION_STATE';
+const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
+const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
 
 interface State {
-  answers: Array<Answer>;
+  scenes: Array<Answer>;
   profile: {
     postcode: string;
     district?: string;
@@ -40,8 +43,13 @@ interface State {
   transportRatings: {
     [mode: string]: TransportRating;
   };
+  userGroup: UserGroup;
   districtOptions?: Array<string>;
   currentPerspective?: Perspective;
+  progressBar: {
+    current: number;
+    total: number;
+  };
   submission: {
     state: SubmissionState;
     message?: string;
@@ -65,11 +73,7 @@ interface Action {
     district: string;
     districtOptions: Array<string>;
   };
-  answer?: {
-    sceneID: string;
-    rating: Rating;
-    duration: number;
-  };
+  answer?: Answer;
   submissionState?: SubmissionState;
   message?: string;
 }
@@ -81,63 +85,49 @@ const defaultState: State = {
   profile: {
     postcode: ''
   },
+  progressBar: {
+    current: 0,
+    total: 0
+  },
   submission: {
     state: SubmissionState.waiting
   },
-  answers: []
+  userGroup: UserGroup.bicycle,
+  scenes: []
 };
 
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {
     case SET_AGB_ACCEPTED:
-      return {
-        ...state,
-        isAgbAccepted: action.value
-      };
+      return { isAgbAccepted: action.value };
 
     case SET_ANSWER:
-      const { sceneID, rating, duration } = action.answer;
-      return {
-        ...state,
-        answers: {
-          ...state.answers,
-          [sceneID]: {
-            rating,
-            duration
-          }
-        }
-      };
+      const scenes = state.scenes.concat(action.answer);
+      return { scenes };
 
     case SET_PROFILE_ANSWER:
       return {
-        ...state,
         profile: {
           ...state.profile,
           ...action.profile
         }
       };
 
-    case SET_INTRO_ANSWER:
-      const intro = {
-        ...state.intro,
-        [action.profile.question]: action.profile.value
-      };
-      return { ...state, ...intro };
-
     case SET_TRANSPORT_RATING:
       const transportRatings = {
         ...state.transportRatings,
         [action.transportRating.type]: action.transportRating.rating
       };
-      return { ...state, ...transportRatings };
+      const userGroup = getUserGroup(transportRatings);
+
+      return { transportRatings, userGroup };
 
     case SET_PERSPECTIVE:
-      return { ...state, perspective: action.perspective };
+      return { perspective: action.perspective };
 
     case SET_POSTCODE:
       const { postcode, district, districtOptions } = action.area;
       return {
-        ...state,
         districtOptions,
         profile: {
           ...state.profile,
@@ -148,7 +138,6 @@ export default function reducer(state: State = defaultState, action: Action) {
 
     case SET_SUBMISSION_STATE:
       return {
-        ...state,
         submission: {
           ...state.submission,
           state: action.submissionState,
@@ -158,6 +147,16 @@ export default function reducer(state: State = defaultState, action: Action) {
 
     case SUBMIT_SURVEY:
       console.error('not implemented');
+
+    case UPDATE_PROGRESS_BAR:
+      const { current, total } = action.value;
+      const newTotal = total == null ? state.progressBar.total : total;
+      return {
+        progressBar: {
+          current,
+          total: newTotal
+        }
+      };
 
     default:
       return state;
@@ -176,12 +175,8 @@ export function setAnswer(
   return { type: SET_ANSWER, answer: { sceneID, rating, duration } };
 }
 
-export function setDemographicsAnswer(question: string, value: any): Action {
+export function setProfileAnswer(question: string, value: any): Action {
   return { type: SET_PROFILE_ANSWER, profile: { question, value } };
-}
-
-export function setIntroAnswer(question: string, value: any): Action {
-  return { type: SET_INTRO_ANSWER, profile: { question, value } };
 }
 
 export function setPerspective(perspective: Perspective): Action {
@@ -192,6 +187,10 @@ export function setPostcode(postcode: string, district?: string): Action {
   // @ts-ignore
   const districtOptions = config.postcodeDistricts[postcode];
   return { type: SET_POSTCODE, area: { postcode, district, districtOptions } };
+}
+
+export function updateProgressBar(current: number, total?: number) {
+  return { type: UPDATE_PROGRESS_BAR, value: { current, total } };
 }
 
 export function setSubmissionState(

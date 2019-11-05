@@ -1,5 +1,5 @@
 export interface Answer {
-  question: string;
+  sceneID: string;
   rating: Rating;
   duration: number;
 }
