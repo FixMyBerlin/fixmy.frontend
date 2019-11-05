@@ -25,8 +25,6 @@ const userGroupToPerspective = {
   [UserGroup.pedestrian]: Perspective.pedestrian
 };
 
-console.log(userGroupToPerspective);
-
 /**
  * Determine the initial perspetive for users in a given usergroup
  *
