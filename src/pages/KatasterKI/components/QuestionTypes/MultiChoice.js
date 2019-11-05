@@ -14,7 +14,10 @@ const CheckboxWrapper = styled.div`
   }
 `;
 
-export default ({ title, options, handleChange, nextRoute }) => (
+const isChecked = (currentValues, option) =>
+  currentValues != null && currentValues[option.name] === true;
+
+export default ({ title, options, currentValue, handleChange, nextRoute }) => (
   <Flex flexDirection="column" css={{ flexGrow: 1 }}>
     <QuestionTitle>{title}</QuestionTitle>
     {options.map((option) => (
@@ -23,7 +26,13 @@ export default ({ title, options, handleChange, nextRoute }) => (
           type="checkbox"
           name={option.name}
           id={option.name}
-          onChange={(evt) => handleChange(option.name, evt.target.checked)}
+          checked={isChecked(currentValue, option)}
+          onChange={(evt) =>
+            handleChange({
+              ...currentValue,
+              [option.name]: evt.target.checked
+            })
+          }
         />
         <label htmlFor={option.name}>{option.label}</label>
       </CheckboxWrapper>

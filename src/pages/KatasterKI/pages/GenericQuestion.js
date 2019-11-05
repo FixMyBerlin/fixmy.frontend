@@ -40,25 +40,14 @@ const GenericQuestion = ({ match, isAgbAccepted, profile, dispatch }) => {
     throw new Error("Error: Question or question type doesn't exist.");
   }
 
-  const onChange = (value, isChecked) => {
-    if (isChecked == null) {
-      // single choice
-      dispatch(setProfileAnswer(question.name, value));
-    } else {
-      // multi choice
-      const newValue = {
-        ...profile[question.name],
-        [value]: isChecked
-      };
-      dispatch(setProfileAnswer(question.name, newValue));
-    }
-  };
+  const onChange = (value) => dispatch(setProfileAnswer(question.name, value));
 
   return (
     <>
       <ProgressBar steps={questions.length} currentStep={questionIndex} />
       <QuestionComponent
         {...question}
+        currentValue={profile[question.name]}
         nextRoute={nextRoute}
         handleChange={onChange}
       />

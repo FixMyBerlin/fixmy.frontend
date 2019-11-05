@@ -4,7 +4,13 @@ import history from '~/history';
 import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 
-const SingleChoiceInput = ({ title, options, handleChange, nextRoute }) => {
+const SingleChoiceInput = ({
+  title,
+  options,
+  currentValue,
+  handleChange,
+  nextRoute
+}) => {
   const onClick = (option) => {
     handleChange(option.value);
     history.push(nextRoute);
