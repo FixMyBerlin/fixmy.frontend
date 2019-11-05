@@ -107,17 +107,19 @@ const defaultState: State = {
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {
     case SET_AGB_ACCEPTED:
-      return { isAgbAccepted: action.value };
+      return { ...state, isAgbAccepted: action.value };
 
     case SET_ANSWER:
       const scenes = state.scenes.concat(action.answer);
-      return { scenes };
+      return { ...state, scenes };
 
     case SET_PROFILE_ANSWER:
+      const { question, value } = action.profile;
       return {
+        ...state,
         profile: {
           ...state.profile,
-          ...action.profile
+          [question]: value
         }
       };
 
@@ -128,14 +130,15 @@ export default function reducer(state: State = defaultState, action: Action) {
       };
       const userGroup = getUserGroup(transportRatings);
 
-      return { transportRatings, userGroup };
+      return { ...state, transportRatings, userGroup };
 
     case SET_PERSPECTIVE:
-      return { perspective: action.perspective };
+      return { ...state, perspective: action.perspective };
 
     case SET_POSTCODE:
       const { postcode, district, districtOptions } = action.area;
       return {
+        ...state,
         districtOptions,
         profile: {
           ...state.profile,
@@ -147,6 +150,7 @@ export default function reducer(state: State = defaultState, action: Action) {
     case SET_REQUEST_STATE:
       const { type, state: requestState, message } = action.requestInfo;
       return {
+        ...state,
         [type]: { state: requestState, message }
       };
 
@@ -157,6 +161,7 @@ export default function reducer(state: State = defaultState, action: Action) {
       const { current, total } = action.value;
       const newTotal = total == null ? state.progressBar.total : total;
       return {
+        ...state,
         progressBar: {
           current,
           total: newTotal
