@@ -4,18 +4,18 @@ import history from '~/history';
 import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 
-export default (props) => {
+const SingleChoiceInput = ({ title, options, handleChange, nextRoute }) => {
   const onClick = (option) => {
-    console.log('set store value', option.value);
-    history.push(props.nextRoute);
+    handleChange(option.value);
+    history.push(nextRoute);
   };
 
   return (
     <>
-      <QuestionTitle>{props.title}</QuestionTitle>
-      {props.options.map((option) => (
+      <QuestionTitle>{title}</QuestionTitle>
+      {options.map((option) => (
         <GhostButton
-          key={`singlechioce__${option.value}`}
+          key={`singlechoice__${option.value}`}
           onClick={() => onClick(option)}
           css={{ textAlign: 'left', marginBottom: 10 }}
         >
@@ -25,3 +25,5 @@ export default (props) => {
     </>
   );
 };
+
+export default SingleChoiceInput;
