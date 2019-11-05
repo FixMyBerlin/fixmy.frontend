@@ -6,16 +6,14 @@ export interface Answer {
 
 export interface ProfileSubmission {
   ageGroup: 0 | 1 | 2 | 3;
+  berlinTraffic?: string;
   bicycleAccident: 0 | 1 | 2 | 3;
   bicycleUse: 0 | 1 | 2 | 3;
+  bikeReasons?: Array<string>;
   district: string;
   gender: 'm' | 'w' | 'd';
   hasChildren: boolean;
   isAgbAccepted: boolean;
-  intro: {
-    bikeReasons?: Array<string>;
-    berlinTraffic?: string;
-  };
   postcode: string;
   transportRatings: {
     [mode: string]: TransportRating;

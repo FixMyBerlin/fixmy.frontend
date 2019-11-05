@@ -24,36 +24,34 @@ const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
 const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
 
 interface State {
-  scenes: Array<Answer>;
+  currentPerspective?: Perspective;
+  districtOptions?: Array<string>;
+  isAgbAccepted: boolean;
   profile: {
-    postcode: string;
-    district?: string;
     ageGroup?: 0 | 1 | 2 | 3;
-    hasChildren?: boolean;
+    berlinTraffic?: string;
     bicycleAccident?: 0 | 1 | 2 | 3;
-    gender?: 'm' | 'w' | 'd';
     bicycleUse?: 0 | 1 | 2 | 3;
+    bikeReasons?: Array<string>;
+    district?: string;
+    gender?: 'm' | 'w' | 'd';
+    hasChildren?: boolean;
+    postcode: string;
     vehiclesOwned?: Array<VehicleKind>;
   };
-  isAgbAccepted: boolean;
-  intro: {
-    bikeReasons?: Array<string>;
-    berlinTraffic?: string;
+  progressBar: {
+    current: number;
+    total: number;
+  };
+  scenes: Array<Answer>;
+  submission: {
+    state: SubmissionState;
+    message?: string;
   };
   transportRatings: {
     [mode: string]: TransportRating;
   };
   userGroup: UserGroup;
-  districtOptions?: Array<string>;
-  currentPerspective?: Perspective;
-  progressBar: {
-    current: number;
-    total: number;
-  };
-  submission: {
-    state: SubmissionState;
-    message?: string;
-  };
 }
 
 interface Action {
@@ -80,7 +78,6 @@ interface Action {
 
 const defaultState: State = {
   isAgbAccepted: false,
-  intro: {},
   transportRatings: {},
   profile: {
     postcode: ''
