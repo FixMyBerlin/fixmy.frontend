@@ -63,7 +63,7 @@ interface Action {
   value?: any;
   profile?: {
     question: string;
-    value: number | string;
+    value: number | string | boolean | { [option: string]: boolean };
   };
   transportRating?: {
     type: TransportMode;
