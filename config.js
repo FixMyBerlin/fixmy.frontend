@@ -21,7 +21,8 @@ const config = {
     change_4: '#910055',
     index: '#ff650c',
     error: '#FF5050',
-    likebg: '#FFF9EC'
+    likebg: '#FFF9EC',
+    katasterHighlight: '#fabe28'
   },
   menu: {
     size: 325,
@@ -144,9 +145,11 @@ const config = {
     },
     katasterKI: {
       landing: '/strassencheck',
+      introBase: '/strassencheck/einleitung',
       intro: '/strassencheck/einleitung/:question',
       perspective: '/strassencheck/perspektive/',
       changePerspective: '/strassencheck/perspektive-wechseln',
+      sceneBase: '/strassencheck/szene',
       scene: '/strassencheck/szene/:question',
       demographics: '/strassencheck/demografie/:question',
       share: '/strassencheck/teilen',
