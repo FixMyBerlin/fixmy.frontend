@@ -4,7 +4,7 @@ export interface Answer {
   duration: number;
 }
 
-export interface ProfileSubmission {
+export interface ProfileRequest {
   ageGroup: 0 | 1 | 2 | 3;
   berlinTraffic?: string;
   bicycleAccident: 0 | 1 | 2 | 3;
@@ -27,9 +27,9 @@ export interface ProfileResponse {
   ratings_total: number;
 }
 
-export interface SurveySubmission extends Answer {}
+export interface AnswerRequest extends Answer {}
 
-export interface PerspectiveChangeSubmission {
+export interface PerspectiveChangeRequest {
   perspective: Perspective;
 }
 
@@ -54,7 +54,7 @@ export const enum Rating {
   safe
 }
 
-export const enum SubmissionState {
+export const enum RequestState {
   waiting = 'waiting',
   pending = 'pending',
   delayed = 'delayed',

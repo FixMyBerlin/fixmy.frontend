@@ -1,10 +1,10 @@
 import {
   Answer,
+  AnswerRequest,
   Experiment,
   Perspective,
   Rating,
-  SubmissionState,
-  SurveySubmission,
+  RequestState,
   TransportMode,
   TransportRating,
   VehicleKind,
@@ -19,7 +19,7 @@ const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
 const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
 const SET_POSTCODE = 'KatasterKI/SET_POSTCODE';
 const SET_DISTRICT_OPTIONS = 'KatasterKI/SET_DISTRICT_OPTIONS';
-const SET_SUBMISSION_STATE = 'KatasterKI/SET_SUBMISSION_STATE';
+const SET_REQUEST_STATE = 'KatasterKI/SET_REQUEST_STATE';
 const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
 const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
 
@@ -44,8 +44,12 @@ interface State {
     total: number;
   };
   scenes: Array<Answer>;
-  submission: {
-    state: SubmissionState;
+  profileRequest: {
+    state: RequestState;
+    message?: string;
+  };
+  perspectiveChangeRequest: {
+    state: RequestState;
     message?: string;
   };
   transportRatings: {
@@ -72,7 +76,11 @@ interface Action {
     districtOptions: Array<string>;
   };
   answer?: Answer;
-  submissionState?: SubmissionState;
+  requestInfo?: {
+    type: 'profileRequest' | 'perspectiveChangeRequest';
+    state: RequestState;
+    message?: string;
+  };
   message?: string;
 }
 
@@ -86,8 +94,11 @@ const defaultState: State = {
     current: 0,
     total: 0
   },
-  submission: {
-    state: SubmissionState.waiting
+  profileRequest: {
+    state: RequestState.waiting
+  },
+  perspectiveChangeRequest: {
+    state: RequestState.waiting
   },
   userGroup: UserGroup.bicycle,
   scenes: []
@@ -133,13 +144,10 @@ export default function reducer(state: State = defaultState, action: Action) {
         }
       };
 
-    case SET_SUBMISSION_STATE:
+    case SET_REQUEST_STATE:
+      const { type, state: requestState, message } = action.requestInfo;
       return {
-        submission: {
-          ...state.submission,
-          state: action.submissionState,
-          message: action.message
-        }
+        [type]: { state: requestState, message }
       };
 
     case SUBMIT_SURVEY:
@@ -190,11 +198,8 @@ export function updateProgressBar(current: number, total?: number) {
   return { type: UPDATE_PROGRESS_BAR, value: { current, total } };
 }
 
-export function setSubmissionState(
-  state: SubmissionState,
-  message?: string
-): Action {
-  return { type: SET_SUBMISSION_STATE, submissionState: state, message };
+export function setRequestState(props): Action {
+  return { type: SET_REQUEST_STATE, requestInfo: props };
 }
 
 export function setTransportRating(
