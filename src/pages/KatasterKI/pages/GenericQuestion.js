@@ -19,13 +19,13 @@ const questionTypes = {
   zip: ZipInput
 };
 
-const GenericQuestion = (props) => {
+const GenericQuestion = ({ match, isAgbAccepted }) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
-  if ((!config.debug && !props.isAgbAccepted) || !props.match.params.question) {
+  if ((!config.debug && !isAgbAccepted) || !match.params.question) {
     return <Redirect to={config.routes.katasterKI.landing} />;
   }
 
-  const questionIndex = +props.match.params.question - 1;
+  const questionIndex = +match.params.question - 1;
   const question = questions[questionIndex];
   const QuestionComponent = questionTypes[question.type];
   const isLastQuestion = questionIndex === questions.length - 1;
@@ -49,7 +49,6 @@ const GenericQuestion = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  intro: state.KatasterKIState.intro,
   isAgbAccepted: state.KatasterKIState.isAgbAccepted
 });
 
