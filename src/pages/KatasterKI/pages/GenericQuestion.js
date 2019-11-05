@@ -5,11 +5,11 @@ import { Redirect } from 'react-router-dom';
 
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
 import questions from '~/pages/KatasterKI/config/questions';
-import Info from '~/pages/KatasterKI/pages/GenericQuestion/Types/Info';
-import MultiChoice from '~/pages/KatasterKI/pages/GenericQuestion/Types/MultiChoice';
-import SingleChoice from '~/pages/KatasterKI/pages/GenericQuestion/Types/SingleChoice';
-import Sliders from '~/pages/KatasterKI/pages/GenericQuestion/Types/Sliders';
-import ZipInput from '~/pages/KatasterKI/pages/GenericQuestion/Types/ZipInput';
+import Info from '~/pages/KatasterKI/components/QuestionTypes/Info';
+import MultiChoice from '~/pages/KatasterKI/components/QuestionTypes/MultiChoice';
+import SingleChoice from '~/pages/KatasterKI/components/QuestionTypes/SingleChoice';
+import Sliders from '~/pages/KatasterKI/components/QuestionTypes/Sliders';
+import ZipInput from '~/pages/KatasterKI/components/QuestionTypes/ZipInput';
 
 const questionTypes = {
   info: Info,
