@@ -1,3 +1,9 @@
+import PedelecIcon from '~/images/kataster-icons/icon-transportation-1.svg';
+import BikeIcon from '~/images/kataster-icons/icon-transportation-2.svg';
+import MotorbikeIcon from '~/images/kataster-icons/icon-transportation-5.svg';
+import PublicIcon from '~/images/kataster-icons/icon-transportation-3.svg';
+import CarIcon from '~/images/kataster-icons/icon-transportation-4.svg';
+
 export default [
   {
     type: 'info',
@@ -40,33 +46,32 @@ export default [
       step: 1,
       start: 0,
       marks: {
-        0: 'nie',
-        5: '(fast) täglich'
+        0: 'Nie'
       }
     },
     sliders: [
       {
-        icon: null,
+        icon: PedelecIcon,
         name: 'pedelec',
         label: 'Zu Fuß'
       },
       {
-        icon: null,
+        icon: BikeIcon,
         name: 'bicycle',
         label: 'Fahrrad'
       },
       {
-        icon: null,
+        icon: MotorbikeIcon,
         name: 'motorbike',
         label: 'Roller / Motorrad'
       },
       {
-        icon: null,
+        icon: PublicIcon,
         name: 'public',
         label: 'Bus & Bahn'
       },
       {
-        icon: null,
+        icon: CarIcon,
         name: 'car',
         label: 'Auto'
       }
