@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
@@ -32,7 +32,11 @@ const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
   }
 
   const page = +match.params.page - 1;
-  dispatch(updateProgressBar(page, profileConfig.length));
+
+  useEffect(() => dispatch(updateProgressBar(page, profileConfig.length)), [
+    page,
+    profileConfig.length
+  ]);
 
   const section = profileConfig[page];
   const SectionComponent = sectionTypes[section.type];

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
@@ -86,7 +86,11 @@ const Scenes = ({ match, scenes, perspective, dispatch }) => {
   const page = +match.params.page - 1;
 
   const sectionConfig = makeSection(scenes, perspective);
-  dispatch(updateProgressBar(page, sectionConfig.length));
+
+  useEffect(() => dispatch(updateProgressBar(page, sectionConfig.length)), [
+    page,
+    sectionConfig.length
+  ]);
 
   const section = sectionConfig[page];
   const SectionComponent = sectionTypes[section.type];
