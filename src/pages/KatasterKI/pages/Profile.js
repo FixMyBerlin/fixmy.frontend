@@ -9,7 +9,7 @@ import MultiChoice from '~/pages/KatasterKI/components/QuestionTypes/MultiChoice
 import SingleChoice from '~/pages/KatasterKI/components/QuestionTypes/SingleChoice';
 import Sliders from '~/pages/KatasterKI/components/QuestionTypes/Sliders';
 import ZipInput from '~/pages/KatasterKI/components/QuestionTypes/ZipInput';
-import { setProfileAnswer } from '../state';
+import { setProfileAnswer, updateProgressBar } from '../state';
 
 const sectionTypes = {
   info: Info,
@@ -26,6 +26,8 @@ const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
   }
 
   const page = +match.params.page - 1;
+  dispatch(updateProgressBar(page, profileConfig.length));
+
   const section = profileConfig[page];
   const SectionComponent = sectionTypes[section.type];
   const isLastSection = page === profileConfig.length - 1;
@@ -44,7 +46,7 @@ const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
 
   return (
     <>
-      <ProgressBar steps={profileConfig.length} currentStep={page} />
+      <ProgressBar />
       <SectionComponent
         {...section}
         currentValue={profile[section.name]}

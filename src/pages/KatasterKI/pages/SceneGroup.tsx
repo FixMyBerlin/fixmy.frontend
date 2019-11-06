@@ -10,7 +10,7 @@ import SingleChoice from '~/pages/KatasterKI/components/QuestionTypes/SingleChoi
 import Scene from '~/pages/KatasterKI/components/QuestionTypes/Scene';
 import Sliders from '~/pages/KatasterKI/components/QuestionTypes/Sliders';
 import ZipInput from '~/pages/KatasterKI/components/QuestionTypes/ZipInput';
-import { setAnswer } from '../state';
+import { setAnswer, updateProgressBar } from '../state';
 import { Answer, Perspective, Section } from '../types';
 
 const sectionTypes = {
@@ -82,10 +82,11 @@ const SceneGroup = ({ match, scenes, perspective, dispatch }) => {
   if ((!config.debug && !isProfileComplete) || !match.params.page) {
     return <Redirect to={config.routes.katasterKI.profileBase} />;
   }
+  const page = +match.params.page - 1;
 
   const sectionConfig = makeSection(scenes, perspective);
+  dispatch(updateProgressBar(page, sectionConfig.length));
 
-  const page = +match.params.page - 1;
   const section = sectionConfig[page];
   const SectionComponent = sectionTypes[section.type];
   const isLastSection = page === sectionConfig.length - 1;
@@ -107,7 +108,7 @@ const SceneGroup = ({ match, scenes, perspective, dispatch }) => {
 
   return (
     <>
-      <ProgressBar steps={sectionConfig.length} currentStep={page} />
+      <ProgressBar />
       <SectionComponent
         {...section}
         currentValue={getCurrentValue(section, scenes)}
