@@ -9,7 +9,8 @@ import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice'
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import Scene from '~/pages/KatasterKI/components/SectionTypes/Scene';
 import { setAnswer, updateProgressBar } from '../state';
-import { Answer, Perspective, Section } from '../types';
+import { Answer, Section } from '../types';
+import { makeSection } from '~/pages/KatasterKI/scene-utils';
 
 const sectionTypes = {
   info: Info,
@@ -21,55 +22,8 @@ const sectionTypes = {
 // TODO: Replace with function
 const isProfileComplete = true;
 
-const perspectiveNames = {
-  C: 'Fahrradfahrerperspektive',
-  A: 'Autofahrerperspektive',
-  P: 'Fußgängerperspektive'
-};
-
-const agentNames = {
-  C: 'Fahrradfahrer:in',
-  A: 'Autofahrer:in',
-  P: 'Fußgänger:in'
-};
-
-const ratingNames = ['unsicher', 'eher unsicher', 'eher sicher', 'sicher'];
-
-const makeSection = (
-  scenes: Array<Answer>,
-  perspective: Perspective
-): Array<Section> => {
-  const perspectiveName = perspectiveNames[perspective];
-
-  const titleScreen = {
-    type: 'info',
-    title: `Wir zeigen ihnen nun Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen:`,
-    name: 'info'
-  };
-  const perspectiveChangeScreen = {
-    type: 'single_choice',
-    name: 'perspectiveChange',
-    title:
-      'Danke für Ihre Bewertungen. Sie können weiter machen oder die Perspektive wechseln.',
-    options: Object.keys(perspectiveNames).map((p) => ({
-      label: perspectiveNames[p],
-      value: p
-    }))
-  };
-  const sceneScreens = scenes.map((scene) => ({
-    type: 'scene',
-    name: scene.sceneID,
-    title: `Fühlen Sie sich hier als ${agentNames[perspective]} sicher?`,
-    options: ratingNames.map((r, i) => ({
-      label: r,
-      value: i
-    }))
-  }));
-  return [titleScreen, ...sceneScreens, perspectiveChangeScreen];
-};
-
 const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
-  section.name === 'scene'
+  section.type === 'scene'
     ? scenes.find((s) => s.sceneID === section.name)
     : null;
 
@@ -78,16 +32,15 @@ const Scenes = ({ match, scenes, perspective, dispatch }) => {
   if ((!config.debug && !isProfileComplete) || !match.params.page) {
     return <Redirect to={config.routes.katasterKI.profileBase} />;
   }
-  const page = +match.params.page - 1;
 
+  const page = +match.params.page - 1;
   const sectionConfig = makeSection(scenes, perspective);
+  const section = sectionConfig[page];
+  const SectionComponent = sectionTypes[section.type];
 
   useEffect(() => {
     dispatch(updateProgressBar(page, sectionConfig.length));
   }, [page, sectionConfig.length]);
-
-  const section = sectionConfig[page];
-  const SectionComponent = sectionTypes[section.type];
 
   if (
     typeof section === 'undefined' ||
