@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-
 import React from 'react';
 import styled from 'styled-components';
 import Slider from 'rc-slider';
@@ -27,15 +26,6 @@ const getTranslateX = (props) => {
 
   return props.value === props.max ? `-${SLIDER_HEIGHT}px` : '-50%';
 };
-
-const tooltipLabels = [
-  'Nie',
-  'Selten',
-  '1 mal im Monat',
-  'Mehrmals im Monat',
-  '1 mal wöchentlich',
-  '(fast) täglich'
-];
 
 const StyledSlider = styled(Slider)`
 
@@ -86,7 +76,7 @@ const StyledSlider = styled(Slider)`
       border: 3px solid ${config.colors.katasterHighlight};
 
       &:after {
-        content: "${(props) => tooltipLabels[props.value || 0]}";
+        content: "${(props) => props.ratingLabels[props.value || 0]}";
         display: block;
         user-select: none;
         color: ${config.colors.darkbg};
@@ -145,6 +135,7 @@ export default (props) => {
           {...props.sliderOptions}
           value={props.value}
           onChange={(value) => props.onChange(value, props)}
+          ratingLabels={props.ratingLabels}
         />
       </Flex>
     </SliderWrapper>

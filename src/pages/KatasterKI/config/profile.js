@@ -37,19 +37,24 @@ export default [
     title: 'Erzählen Sie uns nun etwas zu Ihrer Person: (9 Fragen)'
   },
   {
-    type: 'sliders',
+    type: 'transportRatings',
     title: 'Wie häufig nutzen Sie diese Verkehrsmittel?',
     name: 'transportRatings',
     sliderOptions: {
       min: 0,
       max: 5,
       step: 1,
-      start: 0,
-      marks: {
-        0: 'Nie'
-      }
+      marks: { 0: 'Nie' }
     },
-    sliders: [
+    ratingLabels: [
+      'Nie',
+      'Selten',
+      '1 mal im Monat',
+      'Mehrmals im Monat',
+      '1 mal wöchentlich',
+      '(fast) täglich'
+    ],
+    ratings: [
       {
         icon: PedelecIcon,
         name: 'pedelec',

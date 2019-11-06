@@ -5,12 +5,13 @@ import { connect } from 'react-redux';
 import Flex from '~/components/Flex';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Button from '~/pages/KatasterKI/components//Button';
-import Slider from './Slider';
+import RatingSlider from './RatingSlider';
 
 const Sliders = ({
   title,
-  sliders,
+  ratings,
   sliderOptions,
+  ratingLabels,
   handleChange,
   transportRatings,
   next
@@ -18,20 +19,21 @@ const Sliders = ({
   <Flex flexDirection="column" css={{ flexGrow: 1 }}>
     <QuestionTitle>{title}</QuestionTitle>
 
-    {sliders.map((slider) => {
+    {ratings.map((rating) => {
       const currentValue =
-        typeof transportRatings[slider.name] !== 'undefined'
-          ? transportRatings[slider.name]
-          : slider.start;
+        typeof transportRatings[rating.name] !== 'undefined'
+          ? transportRatings[rating.name]
+          : 0;
       return (
-        <Slider
-          key={`slider_${slider.name}`}
+        <RatingSlider
+          key={`slider_${rating.name}`}
           sliderOptions={sliderOptions}
+          ratingLabels={ratingLabels}
           onChange={(value) =>
-            handleChange({ type: slider.name, rating: value })
+            handleChange({ type: rating.name, rating: value })
           }
           value={currentValue}
-          {...slider}
+          {...rating}
         />
       );
     })}

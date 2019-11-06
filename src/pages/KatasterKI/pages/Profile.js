@@ -9,7 +9,7 @@ import profileConfig from '~/pages/KatasterKI/config/profile';
 import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
 import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
-import Sliders from '~/pages/KatasterKI/components/SectionTypes/Sliders';
+import TransportRatings from '~/pages/KatasterKI/components/SectionTypes/TransportRatings';
 import ZipInput from '~/pages/KatasterKI/components/SectionTypes/ZipInput';
 import {
   setProfileAnswer,
@@ -22,7 +22,7 @@ const sectionTypes = {
   info: Info,
   multi_choice: MultiChoice,
   single_choice: SingleChoice,
-  sliders: Sliders,
+  transportRatings: TransportRatings,
   zip: ZipInput
 };
 

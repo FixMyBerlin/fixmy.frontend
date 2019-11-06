@@ -8,8 +8,6 @@ import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
 import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import Scene from '~/pages/KatasterKI/components/SectionTypes/Scene';
-import Sliders from '~/pages/KatasterKI/components/SectionTypes/Sliders';
-import ZipInput from '~/pages/KatasterKI/components/SectionTypes/ZipInput';
 import { setAnswer, updateProgressBar } from '../state';
 import { Answer, Perspective, Section } from '../types';
 
@@ -17,9 +15,7 @@ const sectionTypes = {
   info: Info,
   multi_choice: MultiChoice,
   single_choice: SingleChoice,
-  scene: Scene,
-  sliders: Sliders,
-  zip: ZipInput
+  scene: Scene
 };
 
 // TODO: Replace with function
