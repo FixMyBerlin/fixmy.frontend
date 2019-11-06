@@ -4,13 +4,12 @@ import { Redirect } from 'react-router-dom';
 
 import history from '~/history';
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
-import profileConfig from '~/pages/KatasterKI/config/profile';
-import Info from '~/pages/KatasterKI/components/QuestionTypes/Info';
-import MultiChoice from '~/pages/KatasterKI/components/QuestionTypes/MultiChoice';
-import SingleChoice from '~/pages/KatasterKI/components/QuestionTypes/SingleChoice';
-import Scene from '~/pages/KatasterKI/components/QuestionTypes/Scene';
-import Sliders from '~/pages/KatasterKI/components/QuestionTypes/Sliders';
-import ZipInput from '~/pages/KatasterKI/components/QuestionTypes/ZipInput';
+import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
+import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
+import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
+import Scene from '~/pages/KatasterKI/components/SectionTypes/Scene';
+import Sliders from '~/pages/KatasterKI/components/SectionTypes/Sliders';
+import ZipInput from '~/pages/KatasterKI/components/SectionTypes/ZipInput';
 import { setAnswer, updateProgressBar } from '../state';
 import { Answer, Perspective, Section } from '../types';
 
@@ -88,11 +87,8 @@ const Scenes = ({ match, scenes, perspective, dispatch }) => {
   const sectionConfig = makeSection(scenes, perspective);
 
   useEffect(() => {
-    dispatch(updateProgressBar(page, sectionConfig.length))
-  }, [
-    page,
-    sectionConfig.length
-  ]);
+    dispatch(updateProgressBar(page, sectionConfig.length));
+  }, [page, sectionConfig.length]);
 
   const section = sectionConfig[page];
   const SectionComponent = sectionTypes[section.type];

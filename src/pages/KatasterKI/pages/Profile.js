@@ -5,11 +5,11 @@ import { Redirect } from 'react-router-dom';
 import history from '~/history';
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
 import profileConfig from '~/pages/KatasterKI/config/profile';
-import Info from '~/pages/KatasterKI/components/QuestionTypes/Info';
-import MultiChoice from '~/pages/KatasterKI/components/QuestionTypes/MultiChoice';
-import SingleChoice from '~/pages/KatasterKI/components/QuestionTypes/SingleChoice';
-import Sliders from '~/pages/KatasterKI/components/QuestionTypes/Sliders';
-import ZipInput from '~/pages/KatasterKI/components/QuestionTypes/ZipInput';
+import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
+import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
+import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
+import Sliders from '~/pages/KatasterKI/components/SectionTypes/Sliders';
+import ZipInput from '~/pages/KatasterKI/components/SectionTypes/ZipInput';
 import {
   setProfileAnswer,
   updateProgressBar,
