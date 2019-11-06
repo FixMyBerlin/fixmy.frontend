@@ -1,7 +1,7 @@
 export default [
   {
     type: 'info',
-    title: 'Zunächst drei Fragen zum Verkehr in Berlin:'
+    title: 'Zunächst drei allgemeine Fragen zum Verkehr in Berlin:'
   },
   {
     type: 'single_choice',
@@ -28,7 +28,7 @@ export default [
   },
   {
     type: 'info',
-    title: 'Erzählen Sie uns nun etwas zu Ihrer Person: (neun Fragen)'
+    title: 'Erzählen Sie uns nun etwas zu Ihrer Person: (9 Fragen)'
   },
   {
     type: 'sliders',

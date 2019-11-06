@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
@@ -28,29 +27,23 @@ const SliderComponent = (props) => (
   </SliderWrapper>
 );
 
-export default (props) => {
-  const onChange = (value, sliderProps) => {
-    console.log('set store value', value, sliderProps);
-  };
+export default ({ title, sliders, sliderOptions, handleChange, next }) => (
+  <Flex flexDirection="column" css={{ flexGrow: 1 }}>
+    <QuestionTitle>{title}</QuestionTitle>
 
-  return (
-    <Flex flexDirection="column" css={{ flexGrow: 1 }}>
-      <QuestionTitle>{props.title}</QuestionTitle>
+    {sliders.map((slider) => (
+      <SliderComponent
+        key={`slider_${slider.name}`}
+        sliderOptions={sliderOptions}
+        onChange={(value) => handleChange({ type: slider.name, rating: value })}
+        {...slider}
+      />
+    ))}
 
-      {props.sliders.map((slider) => (
-        <SliderComponent
-          key={`slider_${slider.name}`}
-          sliderOptions={props.sliderOptions}
-          onChange={onChange}
-          {...slider}
-        />
-      ))}
-
-      <Flex css={{ flexGrow: 1 }} justifyContent="center">
-        <Button as={Link} to={props.nextRoute} css={{ alignSelf: 'flex-end' }}>
-          weiter
-        </Button>
-      </Flex>
+    <Flex css={{ flexGrow: 1 }} justifyContent="center">
+      <Button onClick={next} css={{ alignSelf: 'flex-end' }}>
+        weiter
+      </Button>
     </Flex>
-  );
-};
+  </Flex>
+);

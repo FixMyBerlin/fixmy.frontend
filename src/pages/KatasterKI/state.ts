@@ -17,7 +17,7 @@ const SET_ANSWER = 'KatasterKI/SET_ANSWER';
 const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
 const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
 const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
-const SET_POSTCODE = 'KatasterKI/SET_POSTCODE';
+const SET_ZIPCODE = 'KatasterKI/SET_ZIPCODE';
 const SET_DISTRICT_OPTIONS = 'KatasterKI/SET_DISTRICT_OPTIONS';
 const SET_REQUEST_STATE = 'KatasterKI/SET_REQUEST_STATE';
 const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
@@ -36,7 +36,7 @@ interface State {
     district?: string;
     gender?: 'm' | 'w' | 'd';
     hasChildren?: boolean;
-    postcode: string;
+    zipcode: string;
     vehiclesOwned?: Array<VehicleKind>;
   };
   progressBar: {
@@ -63,7 +63,7 @@ interface Action {
   value?: any;
   profile?: {
     question: string;
-    value: number | string;
+    value: number | string | boolean | { [option: string]: boolean };
   };
   transportRating?: {
     type: TransportMode;
@@ -71,7 +71,7 @@ interface Action {
   };
   perspective?: Perspective;
   area?: {
-    postcode: string;
+    zipcode: string;
     district: string;
     districtOptions: Array<string>;
   };
@@ -88,7 +88,7 @@ const defaultState: State = {
   isAgbAccepted: false,
   transportRatings: {},
   profile: {
-    postcode: ''
+    zipcode: ''
   },
   progressBar: {
     current: 0,
@@ -101,23 +101,33 @@ const defaultState: State = {
     state: RequestState.waiting
   },
   userGroup: UserGroup.bicycle,
-  scenes: []
+  scenes: [
+    { sceneID: '01_SE_A_5312', duration: null, rating: null },
+    { sceneID: '01_CP_C_5', duration: null, rating: null }
+  ],
+  currentPerspective: Perspective.bicycle
 };
 
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {
     case SET_AGB_ACCEPTED:
-      return { isAgbAccepted: action.value };
+      return { ...state, isAgbAccepted: action.value };
 
     case SET_ANSWER:
-      const scenes = state.scenes.concat(action.answer);
-      return { scenes };
+      const scenes = Array.from(state.scenes);
+      const answerPos = scenes.findIndex(
+        (sc) => sc.sceneID === action.answer.sceneID
+      );
+      scenes[answerPos] = action.answer;
+      return { ...state, scenes };
 
     case SET_PROFILE_ANSWER:
+      const { question, value } = action.profile;
       return {
+        ...state,
         profile: {
           ...state.profile,
-          ...action.profile
+          [question]: value
         }
       };
 
@@ -128,18 +138,19 @@ export default function reducer(state: State = defaultState, action: Action) {
       };
       const userGroup = getUserGroup(transportRatings);
 
-      return { transportRatings, userGroup };
+      return { ...state, transportRatings, userGroup };
 
     case SET_PERSPECTIVE:
-      return { perspective: action.perspective };
+      return { ...state, perspective: action.perspective };
 
-    case SET_POSTCODE:
-      const { postcode, district, districtOptions } = action.area;
+    case SET_ZIPCODE:
+      const { zipcode, district, districtOptions } = action.area;
       return {
+        ...state,
         districtOptions,
         profile: {
           ...state.profile,
-          postcode,
+          zipcode,
           district
         }
       };
@@ -147,6 +158,7 @@ export default function reducer(state: State = defaultState, action: Action) {
     case SET_REQUEST_STATE:
       const { type, state: requestState, message } = action.requestInfo;
       return {
+        ...state,
         [type]: { state: requestState, message }
       };
 
@@ -157,6 +169,7 @@ export default function reducer(state: State = defaultState, action: Action) {
       const { current, total } = action.value;
       const newTotal = total == null ? state.progressBar.total : total;
       return {
+        ...state,
         progressBar: {
           current,
           total: newTotal
@@ -188,10 +201,10 @@ export function setPerspective(perspective: Perspective): Action {
   return { type: SET_PERSPECTIVE, perspective };
 }
 
-export function setPostcode(postcode: string, district?: string): Action {
+export function setZipcode(zipcode: string, district?: string): Action {
   // @ts-ignore
-  const districtOptions = config.postcodeDistricts[postcode];
-  return { type: SET_POSTCODE, area: { postcode, district, districtOptions } };
+  const districtOptions = config.katasterKI.zipcodeDistricts[zipcode];
+  return { type: SET_ZIPCODE, area: { zipcode, district, districtOptions } };
 }
 
 export function updateProgressBar(current: number, total?: number) {

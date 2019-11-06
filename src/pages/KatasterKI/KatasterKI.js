@@ -4,11 +4,8 @@ import styled from 'styled-components';
 
 import history from '~/history';
 import Landing from './pages/Landing';
-import PerspectiveForm from './pages/PerspectiveForm';
-import PerspectiveChange from './pages/PerspectiveChange';
-import Scene from './pages/Scene';
-import Share from './pages/Share';
-import GenericQuestion from './pages/GenericQuestion';
+import Scenes from './pages/Scenes';
+import Profile from './pages/Profile';
 
 const ContentWrapper = styled.div`
   padding: 1rem;
@@ -35,31 +32,15 @@ const KatasterKI = () => (
 
         <Route
           exact
-          path={config.routes.katasterKI.intro}
-          component={GenericQuestion}
+          path={config.routes.katasterKI.profile}
+          component={Profile}
         />
 
         <Route
           exact
-          path={config.routes.katasterKI.perspective}
-          component={PerspectiveForm}
+          path={config.routes.katasterKI.scenes}
+          component={Scenes}
         />
-
-        <Route
-          exact
-          path={config.routes.katasterKI.changePerspective}
-          component={PerspectiveChange}
-        />
-
-        <Route exact path={config.routes.katasterKI.scene} component={Scene} />
-
-        <Route
-          exact
-          path={config.routes.katasterKI.demographics}
-          component={GenericQuestion}
-        />
-
-        <Route exact path={config.routes.katasterKI.share} component={Share} />
 
         {/* Fallback: redirect to landing page */}
         <Route

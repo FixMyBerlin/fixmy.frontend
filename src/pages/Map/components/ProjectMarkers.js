@@ -84,7 +84,6 @@ class ProjectMarkers extends PureComponent {
       }" />`;
       el.dataset.phase = marker.phase;
       el.addEventListener('click', (evt) => this.props.onClick(evt, marker));
-
       return new MapboxGL.Marker(el)
         .setLngLat(center)
         .setOffset([0, -20])

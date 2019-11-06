@@ -145,13 +145,10 @@ const config = {
     },
     katasterKI: {
       landing: '/strassencheck',
-      introBase: '/strassencheck/einleitung',
-      intro: '/strassencheck/einleitung/:question',
-      perspective: '/strassencheck/perspektive/',
-      changePerspective: '/strassencheck/perspektive-wechseln',
-      sceneBase: '/strassencheck/szene',
-      scene: '/strassencheck/szene/:question',
-      demographics: '/strassencheck/demografie/:question',
+      profileBase: '/strassencheck/profil',
+      profile: '/strassencheck/profil/:page',
+      scenesBase: '/strassencheck/szenen',
+      scenes: '/strassencheck/szenen/:page',
       share: '/strassencheck/teilen',
       iframe: '/strassencheck/iFrame-test'
     },
@@ -266,7 +263,7 @@ const config = {
     bounds: [[13.2826, 52.4615], [13.46391, 52.5544374]]
   },
   katasterKI: {
-    postcodeDistricts: {
+    zipcodeDistricts: {
       '0000': ['Testbezirk', 'Testbezirk 2', 'Testbezirk 3']
     }
   },

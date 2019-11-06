@@ -4,13 +4,7 @@ import history from '~/history';
 import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 
-const SingleChoiceInput = ({
-  title,
-  options,
-  currentValue,
-  handleChange,
-  next
-}) => {
+const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
   const onClick = (option) => {
     handleChange(option.value);
     next();
@@ -19,6 +13,7 @@ const SingleChoiceInput = ({
   return (
     <>
       <QuestionTitle>{title}</QuestionTitle>
+      <p>Szenenbild {name} </p>
       {options.map((option) => (
         <GhostButton
           key={`singlechoice__${option.value}`}
@@ -32,4 +27,4 @@ const SingleChoiceInput = ({
   );
 };
 
-export default SingleChoiceInput;
+export default Scene;

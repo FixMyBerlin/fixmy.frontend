@@ -10,12 +10,12 @@ const Headline = styled.h1`
   flex-grow: 1;
 `;
 
-export default (props) => {
+export default ({ title, next }) => {
   return (
     <Flex flexDirection="column" css={{ flexGrow: 1 }}>
-      <Headline>{props.title}</Headline>
+      <Headline>{title}</Headline>
       <Flex justifyContent="center">
-        <Button as={Link} to={props.nextRoute}>
+        <Button as={Link} onClick={next}>
           weiter
         </Button>
       </Flex>
