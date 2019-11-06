@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Flex from '~/components/Flex';
@@ -17,7 +16,7 @@ const CheckboxWrapper = styled.div`
 const isChecked = (currentValues, option) =>
   currentValues != null && currentValues[option.name] === true;
 
-export default ({ title, options, currentValue, handleChange, nextRoute }) => (
+export default ({ title, options, currentValue, handleChange, next }) => (
   <Flex flexDirection="column" css={{ flexGrow: 1 }}>
     <QuestionTitle>{title}</QuestionTitle>
     {options.map((option) => (
@@ -38,7 +37,7 @@ export default ({ title, options, currentValue, handleChange, nextRoute }) => (
       </CheckboxWrapper>
     ))}
     <Flex css={{ flexGrow: 1 }} justifyContent="center">
-      <Button as={Link} to={nextRoute} css={{ alignSelf: 'flex-end' }}>
+      <Button onClick={next} css={{ alignSelf: 'flex-end' }}>
         weiter
       </Button>
     </Flex>

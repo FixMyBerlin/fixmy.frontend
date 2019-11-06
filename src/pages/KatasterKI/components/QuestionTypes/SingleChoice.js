@@ -9,11 +9,11 @@ const SingleChoiceInput = ({
   options,
   currentValue,
   handleChange,
-  nextRoute
+  next
 }) => {
   const onClick = (option) => {
     handleChange(option.value);
-    history.push(nextRoute);
+    next();
   };
 
   return (

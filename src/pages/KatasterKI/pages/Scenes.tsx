@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+import history from '~/history';
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
 import profileConfig from '~/pages/KatasterKI/config/profile';
 import Info from '~/pages/KatasterKI/components/QuestionTypes/Info';
@@ -77,7 +78,7 @@ const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
     ? scenes.find((s) => s.sceneID === section.name)
     : null;
 
-const SceneGroup = ({ match, scenes, perspective, dispatch }) => {
+const Scenes = ({ match, scenes, perspective, dispatch }) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
   if ((!config.debug && !isProfileComplete) || !match.params.page) {
     return <Redirect to={config.routes.katasterKI.profileBase} />;
@@ -89,10 +90,6 @@ const SceneGroup = ({ match, scenes, perspective, dispatch }) => {
 
   const section = sectionConfig[page];
   const SectionComponent = sectionTypes[section.type];
-  const isLastSection = page === sectionConfig.length - 1;
-  const nextRoute = isLastSection
-    ? `${config.routes.katasterKI.scenesBase}/1`
-    : `${config.routes.katasterKI.scenesBase}/${page + 2}`;
 
   if (
     typeof section === 'undefined' ||
@@ -106,13 +103,22 @@ const SceneGroup = ({ match, scenes, perspective, dispatch }) => {
       ? dispatch(setAnswer(section.name, rating, duration))
       : null;
 
+  const next = () => {
+    const isLastSection = page === sectionConfig.length - 1;
+    if (isLastSection) {
+      history.push(`${config.routes.katasterKI.scenesBase}/1`);
+    } else {
+      history.push(`${config.routes.katasterKI.scenesBase}/${page + 2}`);
+    }
+  };
+
   return (
     <>
       <ProgressBar />
       <SectionComponent
         {...section}
         currentValue={getCurrentValue(section, scenes)}
-        nextRoute={nextRoute}
+        next={next}
         handleChange={onChange}
       />
     </>
@@ -125,4 +131,4 @@ const mapStateToProps = (state) => ({
   perspective: state.KatasterKIState.currentPerspective
 });
 
-export default connect(mapStateToProps)(SceneGroup);
+export default connect(mapStateToProps)(Scenes);

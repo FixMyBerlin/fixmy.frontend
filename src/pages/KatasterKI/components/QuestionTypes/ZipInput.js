@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Flex from '~/components/Flex';
@@ -19,7 +18,11 @@ const ZipInput = styled.input`
 
 export default (props) => {
   const onChange = (evt) => {
-    console.log('set store value', props.name, evt.target.value);
+    const district = null;
+    props.handleChange({
+      zipcode: evt.target.value,
+      district
+    });
   };
 
   return (
@@ -29,7 +32,7 @@ export default (props) => {
       <ZipInput type="text" placeholder="PLZ" onChange={onChange} />
 
       <Flex css={{ flexGrow: 1 }} justifyContent="center">
-        <Button as={Link} to={props.nextRoute} css={{ alignSelf: 'flex-end' }}>
+        <Button onClick={props.next} css={{ alignSelf: 'flex-end' }}>
           weiter
         </Button>
       </Flex>

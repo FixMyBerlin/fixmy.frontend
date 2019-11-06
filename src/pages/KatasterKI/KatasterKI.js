@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import history from '~/history';
 import Landing from './pages/Landing';
-import SceneGroup from './pages/SceneGroup';
+import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
 
 const ContentWrapper = styled.div`
@@ -39,7 +39,7 @@ const KatasterKI = () => (
         <Route
           exact
           path={config.routes.katasterKI.scenes}
-          component={SceneGroup}
+          component={Scenes}
         />
 
         {/* Fallback: redirect to landing page */}

@@ -14,7 +14,7 @@ export interface ProfileRequest {
   gender: 'm' | 'w' | 'd';
   hasChildren: boolean;
   isAgbAccepted: boolean;
-  postcode: string;
+  zipcode: string;
   transportRatings: {
     [mode: string]: TransportRating;
   };

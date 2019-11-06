@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+import history from '~/history';
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
 import profileConfig from '~/pages/KatasterKI/config/profile';
 import Info from '~/pages/KatasterKI/components/QuestionTypes/Info';
@@ -9,7 +10,12 @@ import MultiChoice from '~/pages/KatasterKI/components/QuestionTypes/MultiChoice
 import SingleChoice from '~/pages/KatasterKI/components/QuestionTypes/SingleChoice';
 import Sliders from '~/pages/KatasterKI/components/QuestionTypes/Sliders';
 import ZipInput from '~/pages/KatasterKI/components/QuestionTypes/ZipInput';
-import { setProfileAnswer, updateProgressBar } from '../state';
+import {
+  setProfileAnswer,
+  updateProgressBar,
+  setZipcode,
+  setTransportRating
+} from '../state';
 
 const sectionTypes = {
   info: Info,
@@ -30,10 +36,6 @@ const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
 
   const section = profileConfig[page];
   const SectionComponent = sectionTypes[section.type];
-  const isLastSection = page === profileConfig.length - 1;
-  const nextRoute = isLastSection
-    ? `${config.routes.katasterKI.scenesBase}/1`
-    : `${config.routes.katasterKI.profileBase}/${page + 2}`;
 
   if (
     typeof section === 'undefined' ||
@@ -42,7 +44,26 @@ const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
     throw new Error("Error: Section or section type doesn't exist.");
   }
 
-  const onChange = (value) => dispatch(setProfileAnswer(section.name, value));
+  const onChange = (value) => {
+    if (section.name === 'transportRatings') {
+      const { type, rating } = value;
+      dispatch(setTransportRating(type, rating));
+    } else if (section.name === 'zipcode') {
+      const { zipcode, district } = value;
+      dispatch(setZipcode(zipcode, district));
+    } else {
+      dispatch(setProfileAnswer(section.name, value));
+    }
+  };
+
+  const next = () => {
+    const isLastSection = page === profileConfig.length - 1;
+    if (isLastSection) {
+      history.push(`${config.routes.katasterKI.scenesBase}/1`);
+    } else {
+      history.push(`${config.routes.katasterKI.profileBase}/${page + 2}`);
+    }
+  };
 
   return (
     <>
@@ -50,7 +71,7 @@ const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
       <SectionComponent
         {...section}
         currentValue={profile[section.name]}
-        nextRoute={nextRoute}
+        next={next}
         handleChange={onChange}
       />
     </>
