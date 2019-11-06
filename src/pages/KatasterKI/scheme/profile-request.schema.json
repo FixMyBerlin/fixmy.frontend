@@ -1,0 +1,107 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "TransportRating": {
+            "enum": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "type": "number"
+        },
+        "UserGroup": {
+            "enum": [
+                "bicycle",
+                "car",
+                "pedestrian",
+                "potentialBicycle"
+            ],
+            "type": "string"
+        }
+    },
+    "properties": {
+        "ageGroup": {
+            "enum": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "type": "number"
+        },
+        "berlinTraffic": {
+            "type": "string"
+        },
+        "bicycleAccident": {
+            "enum": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "type": "number"
+        },
+        "bicycleUse": {
+            "enum": [
+                0,
+                1,
+                2,
+                3
+            ],
+            "type": "number"
+        },
+        "bikeReasons": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "district": {
+            "type": "string"
+        },
+        "gender": {
+            "enum": [
+                "d",
+                "m",
+                "w"
+            ],
+            "type": "string"
+        },
+        "hasChildren": {
+            "type": "boolean"
+        },
+        "isAgbAccepted": {
+            "type": "boolean"
+        },
+        "postcode": {
+            "type": "string"
+        },
+        "transportRatings": {
+            "additionalProperties": {
+                "$ref": "#/definitions/TransportRating"
+            },
+            "type": "object"
+        },
+        "userGroup": {
+            "$ref": "#/definitions/UserGroup"
+        },
+        "vehiclesOwned": {
+            "items": {
+                "enum": [
+                    "bicycle",
+                    "car",
+                    "motorbike",
+                    "pedelec",
+                    "public"
+                ],
+                "type": "string"
+            },
+            "type": "array"
+        }
+    },
+    "type": "object"
+}
+
