@@ -87,7 +87,9 @@ const Scenes = ({ match, scenes, perspective, dispatch }) => {
 
   const sectionConfig = makeSection(scenes, perspective);
 
-  useEffect(() => dispatch(updateProgressBar(page, sectionConfig.length)), [
+  useEffect(() => {
+    dispatch(updateProgressBar(page, sectionConfig.length))
+  }, [
     page,
     sectionConfig.length
   ]);
