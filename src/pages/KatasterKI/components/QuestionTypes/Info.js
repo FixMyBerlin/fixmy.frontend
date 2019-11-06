@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
@@ -15,9 +14,7 @@ export default ({ title, next }) => {
     <Flex flexDirection="column" css={{ flexGrow: 1 }}>
       <Headline>{title}</Headline>
       <Flex justifyContent="center">
-        <Button as={Link} onClick={next}>
-          weiter
-        </Button>
+        <Button onClick={next}>weiter</Button>
       </Flex>
     </Flex>
   );
