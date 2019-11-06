@@ -16,6 +16,8 @@ const SingleChoiceInput = ({
     next();
   };
 
+  console.log(currentValue);
+
   return (
     <>
       <QuestionTitle>{title}</QuestionTitle>
@@ -24,6 +26,7 @@ const SingleChoiceInput = ({
           key={`singlechoice__${option.value}`}
           onClick={() => onClick(option)}
           css={{ textAlign: 'left', marginBottom: 10 }}
+          isActive={option.value === currentValue}
         >
           {option.label}
         </GhostButton>
