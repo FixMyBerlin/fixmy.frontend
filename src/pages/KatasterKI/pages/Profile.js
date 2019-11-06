@@ -33,10 +33,9 @@ const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
 
   const page = +match.params.page - 1;
 
-  useEffect(() => dispatch(updateProgressBar(page, profileConfig.length)), [
-    page,
-    profileConfig.length
-  ]);
+  useEffect(() => {
+    dispatch(updateProgressBar(page, profileConfig.length));
+  }, [page, profileConfig.length]);
 
   const section = profileConfig[page];
   const SectionComponent = sectionTypes[section.type];
