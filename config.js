@@ -145,13 +145,10 @@ const config = {
     },
     katasterKI: {
       landing: '/strassencheck',
-      introBase: '/strassencheck/einleitung',
-      intro: '/strassencheck/einleitung/:question',
-      perspective: '/strassencheck/perspektive/',
-      changePerspective: '/strassencheck/perspektive-wechseln',
-      sceneBase: '/strassencheck/szene',
-      scene: '/strassencheck/szene/:question',
-      demographics: '/strassencheck/demografie/:question',
+      profileBase: '/strassencheck/profil',
+      profile: '/strassencheck/profil/:page',
+      scenesBase: '/strassencheck/szenen',
+      scenes: '/strassencheck/szenen/:page',
       share: '/strassencheck/teilen',
       iframe: '/strassencheck/iFrame-test'
     },

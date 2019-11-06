@@ -117,7 +117,7 @@ const Landing = ({ isAgbAccepted }) => {
       <ButtonWrapper>
         <Button
           as={Link}
-          to={`${config.routes.katasterKI.introBase}/1`}
+          to={`${config.routes.katasterKI.profileBase}/1`}
           disabled={!isAgbAccepted}
         >
           Umfrage beginnen

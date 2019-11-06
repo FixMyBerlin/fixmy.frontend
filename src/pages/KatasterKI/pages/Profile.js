@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
-import questions from '~/pages/KatasterKI/config/questions';
+import profileConfig from '~/pages/KatasterKI/config/profile';
 import Info from '~/pages/KatasterKI/components/QuestionTypes/Info';
 import MultiChoice from '~/pages/KatasterKI/components/QuestionTypes/MultiChoice';
 import SingleChoice from '~/pages/KatasterKI/components/QuestionTypes/SingleChoice';
@@ -11,7 +11,7 @@ import Sliders from '~/pages/KatasterKI/components/QuestionTypes/Sliders';
 import ZipInput from '~/pages/KatasterKI/components/QuestionTypes/ZipInput';
 import { setProfileAnswer } from '../state';
 
-const questionTypes = {
+const sectionTypes = {
   info: Info,
   multi_choice: MultiChoice,
   single_choice: SingleChoice,
@@ -19,35 +19,35 @@ const questionTypes = {
   zip: ZipInput
 };
 
-const GenericQuestion = ({ match, isAgbAccepted, profile, dispatch }) => {
+const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
-  if ((!config.debug && !isAgbAccepted) || !match.params.question) {
+  if ((!config.debug && !isAgbAccepted) || !match.params.page) {
     return <Redirect to={config.routes.katasterKI.landing} />;
   }
 
-  const questionIndex = +match.params.question - 1;
-  const question = questions[questionIndex];
-  const QuestionComponent = questionTypes[question.type];
-  const isLastQuestion = questionIndex === questions.length - 1;
-  const nextRoute = isLastQuestion
-    ? `${config.routes.katasterKI.sceneBase}/1`
-    : `${config.routes.katasterKI.introBase}/${questionIndex + 2}`;
+  const page = +match.params.page - 1;
+  const section = profileConfig[page];
+  const SectionComponent = sectionTypes[section.type];
+  const isLastSection = page === profileConfig.length - 1;
+  const nextRoute = isLastSection
+    ? `${config.routes.katasterKI.scenesBase}/1`
+    : `${config.routes.katasterKI.profileBase}/${page + 2}`;
 
   if (
-    typeof question === 'undefined' ||
-    typeof QuestionComponent === 'undefined'
+    typeof section === 'undefined' ||
+    typeof SectionComponent === 'undefined'
   ) {
-    throw new Error("Error: Question or question type doesn't exist.");
+    throw new Error("Error: Section or section type doesn't exist.");
   }
 
-  const onChange = (value) => dispatch(setProfileAnswer(question.name, value));
+  const onChange = (value) => dispatch(setProfileAnswer(section.name, value));
 
   return (
     <>
-      <ProgressBar steps={questions.length} currentStep={questionIndex} />
-      <QuestionComponent
-        {...question}
-        currentValue={profile[question.name]}
+      <ProgressBar steps={profileConfig.length} currentStep={page} />
+      <SectionComponent
+        {...section}
+        currentValue={profile[section.name]}
         nextRoute={nextRoute}
         handleChange={onChange}
       />
@@ -60,4 +60,4 @@ const mapStateToProps = (state) => ({
   profile: state.KatasterKIState.profile
 });
 
-export default connect(mapStateToProps)(GenericQuestion);
+export default connect(mapStateToProps)(Profile);

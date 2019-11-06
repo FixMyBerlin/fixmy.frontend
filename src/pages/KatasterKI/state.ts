@@ -101,7 +101,8 @@ const defaultState: State = {
     state: RequestState.waiting
   },
   userGroup: UserGroup.bicycle,
-  scenes: []
+  scenes: [{ sceneID: 'a', duration: null, rating: null }],
+  currentPerspective: Perspective.bicycle
 };
 
 export default function reducer(state: State = defaultState, action: Action) {
@@ -110,7 +111,11 @@ export default function reducer(state: State = defaultState, action: Action) {
       return { ...state, isAgbAccepted: action.value };
 
     case SET_ANSWER:
-      const scenes = state.scenes.concat(action.answer);
+      const scenes = Array.from(state.scenes);
+      const answerPos = scenes.findIndex(
+        (sc) => sc.sceneID === action.answer.sceneID
+      );
+      scenes[answerPos] = action.answer;
       return { ...state, scenes };
 
     case SET_PROFILE_ANSWER:

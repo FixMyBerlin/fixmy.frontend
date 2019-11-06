@@ -35,6 +35,16 @@ export interface PerspectiveChangeRequest {
 
 export interface PerspectiveChangeResponse extends ProfileResponse {}
 
+export interface Section {
+  type: string;
+  title: string;
+  name: string;
+  options?: Array<{
+    label: string;
+    value: any;
+  }>;
+}
+
 export const enum Experiment {
   MainStreet = 'MS',
   CyclePath = 'CP',
