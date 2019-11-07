@@ -19,6 +19,7 @@ export interface ProfileRequest {
     [mode: string]: TransportRating;
   };
   userGroup: UserGroup;
+  perspective: Perspective;
   vehiclesOwned: Array<VehicleKind>;
 }
 

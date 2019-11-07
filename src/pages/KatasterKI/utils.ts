@@ -77,6 +77,7 @@ export const marshallProfileForUpload = (state: State): ProfileRequest => {
     vehiclesOwned: profile.vehiclesOwned,
     userGroup: state.userGroup,
     isTosAccepted: state.isTosAccepted,
-    transportRatings: state.transportRatings
+    transportRatings: state.transportRatings,
+    perspective: state.currentPerspective
   };
 };
