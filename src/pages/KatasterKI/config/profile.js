@@ -208,7 +208,7 @@ export default [
       },
       {
         label: 'Fahrrad (ohne Motor)',
-        name: 'bicylce'
+        name: 'bicycle'
       },
       {
         label: 'Carsharing',
@@ -224,7 +224,7 @@ export default [
   },
   {
     type: 'multi_choice',
-    name: 'noname',
+    name: 'bikeReasons',
     title: 'Welcher dieser Aussagen würden sie zustimmen?',
     options: [
       {

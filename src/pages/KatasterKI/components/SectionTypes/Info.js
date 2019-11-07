@@ -14,7 +14,7 @@ export default ({ title, next }) => {
     <Flex flexDirection="column" css={{ flexGrow: 1 }}>
       <Headline>{title}</Headline>
       <Flex justifyContent="center">
-        <Button onClick={next}>weiter</Button>
+        <Button onClick={next}>Weiter</Button>
       </Flex>
     </Flex>
   );
