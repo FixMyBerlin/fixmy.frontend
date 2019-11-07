@@ -27,11 +27,11 @@ const ratingIcons = [
 ];
 
 export const getSceneImageSrc = (id) => {
-  if (config.debug) {
-    return `/src/images/404-weg-zu-ende.jpg`;
-  }
+  // if (config.debug) {
+  //   return `/src/images/404-weg-zu-ende.jpg`;
+  // }
 
-  return `${config.prodUrl}/images/kataster/${id}`;
+  return `https://fmb-aws-bucket.s3.eu-central-1.amazonaws.com/KatasterKI/scenes/${id}.jpg`;
 };
 
 export const makeSection = (

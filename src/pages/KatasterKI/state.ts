@@ -102,8 +102,9 @@ const defaultState: State = {
   },
   userGroup: UserGroup.bicycle,
   scenes: [
-    { sceneID: '01_SE_A_5312', duration: null, rating: null },
-    { sceneID: '01_CP_C_5', duration: null, rating: null }
+    { sceneID: '01_MS_C_139', duration: null, rating: null },
+    { sceneID: '01_MS_C_27', duration: null, rating: null },
+    { sceneID: '01_MS_C_73', duration: null, rating: null }
   ],
   currentPerspective: Perspective.bicycle
 };
