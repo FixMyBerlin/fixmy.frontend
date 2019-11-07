@@ -200,20 +200,43 @@ export function setAnswer(
   return { type: SET_ANSWER, answer: { sceneID, rating, duration } };
 }
 
+/**
+ * Record answers pertaining to the participants profile such as demographics
+ *
+ * @param question identifier as spelled in the State and ProfileRequest types
+ * @param value value may be a literal or a simple object
+ */
 export function setProfileAnswer(question: string, value: any): Action {
   return { type: SET_PROFILE_ANSWER, profile: { question, value } };
 }
 
+/**
+ * Change the perspective from which SceneGroups will be fetched for the user
+ *
+ * @param perspective the new perspective
+ */
 export function setPerspective(perspective: Perspective): Action {
   return { type: SET_PERSPECTIVE, perspective };
 }
 
+/**
+ * Set the user's zipcode and an optional district
+ *
+ * @param zipcode
+ * @param district optional for some zipcodes that are defined in global config
+ */
 export function setZipcode(zipcode: string, district?: string): Action {
   // @ts-ignore
   const districtOptions = config.katasterKI.zipcodeDistricts[zipcode];
   return { type: SET_ZIPCODE, area: { zipcode, district, districtOptions } };
 }
 
+/**
+ * Update the progress bar
+ *
+ * @param current one-indexed
+ * @param total number of panes in the progress bar
+ */
 export function updateProgressBar(current: number, total?: number) {
   return { type: UPDATE_PROGRESS_BAR, value: { current, total } };
 }
@@ -222,6 +245,12 @@ export function setRequestState(props): Action {
   return { type: SET_REQUEST_STATE, requestInfo: props };
 }
 
+/**
+ * Set the user's frequency of use for a transport kind
+ *
+ * @param type a kind of vehicle as defined in types
+ * @param rating a rating from 0-5
+ */
 export function setTransportRating(
   type: TransportMode,
   rating: number
