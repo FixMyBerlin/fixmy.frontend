@@ -23,7 +23,7 @@ const SET_REQUEST_STATE = 'KatasterKI/SET_REQUEST_STATE';
 const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
 const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
 
-interface State {
+export interface State {
   currentPerspective?: Perspective;
   districtOptions?: Array<string>;
   isAgbAccepted: boolean;
