@@ -77,7 +77,7 @@ const Scenes = ({ match, scenes, perspective, dispatch }) => {
 };
 
 const mapStateToProps = (state) => ({
-  isAgbAccepted: state.KatasterKIState.isAgbAccepted,
+  isTosAccepted: state.KatasterKIState.isTosAccepted,
   scenes: state.KatasterKIState.scenes,
   perspective: state.KatasterKIState.currentPerspective
 });

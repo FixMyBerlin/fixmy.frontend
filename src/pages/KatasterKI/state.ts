@@ -12,7 +12,7 @@ import {
 } from './types';
 import { getUserGroup } from './utils';
 
-const SET_AGB_ACCEPTED = 'KatasterKI/SET_AGB_ACCEPTED';
+const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
 const SET_ANSWER = 'KatasterKI/SET_ANSWER';
 const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
 const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
@@ -26,7 +26,7 @@ const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
 export interface State {
   currentPerspective?: Perspective;
   districtOptions?: Array<string>;
-  isAgbAccepted: boolean;
+  isTosAccepted: boolean;
   profile: {
     ageGroup?: 0 | 1 | 2 | 3;
     berlinTraffic?: string;
@@ -85,7 +85,7 @@ interface Action {
 }
 
 const defaultState: State = {
-  isAgbAccepted: false,
+  isTosAccepted: false,
   transportRatings: {},
   profile: {
     zipcode: ''
@@ -111,8 +111,8 @@ const defaultState: State = {
 
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {
-    case SET_AGB_ACCEPTED:
-      return { ...state, isAgbAccepted: action.value };
+    case SET_TOS_ACCEPTED:
+      return { ...state, isTosAccepted: action.value };
 
     case SET_ANSWER:
       const scenes = Array.from(state.scenes);
@@ -182,8 +182,14 @@ export default function reducer(state: State = defaultState, action: Action) {
   }
 }
 
-export function setAGBAccepted(value: boolean): Action {
-  return { type: SET_AGB_ACCEPTED, value };
+/**
+ * Record when the user accepts the TOS and PP
+ *
+ * @param value whether the user has accepted the terms of service and
+ *    recognized the privacy policy
+ */
+export function setTOSAccepted(value: boolean): Action {
+  return { type: SET_TOS_ACCEPTED, value };
 }
 
 export function setAnswer(

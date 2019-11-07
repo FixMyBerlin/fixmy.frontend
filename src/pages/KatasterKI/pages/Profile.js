@@ -26,9 +26,9 @@ const sectionTypes = {
   zip: ZipInput
 };
 
-const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
+const Profile = ({ match, isTosAccepted, profile, dispatch }) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
-  if ((!config.debug && !isAgbAccepted) || !match.params.page) {
+  if ((!config.debug && !isTosAccepted) || !match.params.page) {
     return <Redirect to={config.routes.katasterKI.landing} />;
   }
 
@@ -83,7 +83,7 @@ const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
 };
 
 const mapStateToProps = (state) => ({
-  isAgbAccepted: state.KatasterKIState.isAgbAccepted,
+  isTosAccepted: state.KatasterKIState.isTosAccepted,
   profile: state.KatasterKIState.profile
 });
 

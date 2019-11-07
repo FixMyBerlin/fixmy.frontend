@@ -61,7 +61,7 @@ export const marshallProfileForUpload = (state: State): ProfileRequest => {
   ].every((val) => val != null);
 
   if (!isComplete) throw new Error('Trying to marshall incomplete profile');
-  if (!state.isAgbAccepted === true)
+  if (!state.isTosAccepted === true)
     throw new Error('Trying to marshall profile without accepted TOS');
 
   return {
@@ -76,7 +76,7 @@ export const marshallProfileForUpload = (state: State): ProfileRequest => {
     zipcode: profile.zipcode,
     vehiclesOwned: profile.vehiclesOwned,
     userGroup: state.userGroup,
-    isAgbAccepted: state.isAgbAccepted,
+    isTosAccepted: state.isTosAccepted,
     transportRatings: state.transportRatings
   };
 };

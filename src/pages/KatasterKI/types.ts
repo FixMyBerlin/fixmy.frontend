@@ -13,7 +13,7 @@ export interface ProfileRequest {
   district?: string;
   gender: 'm' | 'w' | 'd';
   hasChildren: boolean;
-  isAgbAccepted: boolean;
+  isTosAccepted: boolean;
   zipcode: string;
   transportRatings: {
     [mode: string]: TransportRating;
