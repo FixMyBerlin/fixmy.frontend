@@ -1,3 +1,9 @@
+import PedelecIcon from '~/images/kataster-icons/icon-transportation-1.svg';
+import BikeIcon from '~/images/kataster-icons/icon-transportation-2.svg';
+import MotorbikeIcon from '~/images/kataster-icons/icon-transportation-5.svg';
+import PublicIcon from '~/images/kataster-icons/icon-transportation-3.svg';
+import CarIcon from '~/images/kataster-icons/icon-transportation-4.svg';
+
 export default [
   {
     type: 'info',
@@ -31,42 +37,46 @@ export default [
     title: 'Erzählen Sie uns nun etwas zu Ihrer Person: (9 Fragen)'
   },
   {
-    type: 'sliders',
+    type: 'transportRatings',
     title: 'Wie häufig nutzen Sie diese Verkehrsmittel?',
     name: 'transportRatings',
     sliderOptions: {
       min: 0,
       max: 5,
       step: 1,
-      start: 0,
-      marks: {
-        0: 'nie',
-        5: '(fast) täglich'
-      }
+      marks: { 0: 'Nie' }
     },
-    sliders: [
+    ratingLabels: [
+      'Nie',
+      'Selten',
+      '1 mal im Monat',
+      'Mehrmals im Monat',
+      '1 mal wöchentlich',
+      '(fast) täglich'
+    ],
+    ratings: [
       {
-        icon: null,
+        icon: PedelecIcon,
         name: 'pedelec',
         label: 'Zu Fuß'
       },
       {
-        icon: null,
+        icon: BikeIcon,
         name: 'bicycle',
         label: 'Fahrrad'
       },
       {
-        icon: null,
+        icon: MotorbikeIcon,
         name: 'motorbike',
         label: 'Roller / Motorrad'
       },
       {
-        icon: null,
+        icon: PublicIcon,
         name: 'public',
         label: 'Bus & Bahn'
       },
       {
-        icon: null,
+        icon: CarIcon,
         name: 'car',
         label: 'Auto'
       }

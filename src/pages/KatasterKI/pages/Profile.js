@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -5,11 +6,11 @@ import { Redirect } from 'react-router-dom';
 import history from '~/history';
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
 import profileConfig from '~/pages/KatasterKI/config/profile';
-import Info from '~/pages/KatasterKI/components/QuestionTypes/Info';
-import MultiChoice from '~/pages/KatasterKI/components/QuestionTypes/MultiChoice';
-import SingleChoice from '~/pages/KatasterKI/components/QuestionTypes/SingleChoice';
-import Sliders from '~/pages/KatasterKI/components/QuestionTypes/Sliders';
-import ZipInput from '~/pages/KatasterKI/components/QuestionTypes/ZipInput';
+import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
+import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
+import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
+import TransportRatings from '~/pages/KatasterKI/components/SectionTypes/TransportRatings';
+import ZipInput from '~/pages/KatasterKI/components/SectionTypes/ZipInput';
 import {
   setProfileAnswer,
   updateProgressBar,
@@ -21,7 +22,7 @@ const sectionTypes = {
   info: Info,
   multi_choice: MultiChoice,
   single_choice: SingleChoice,
-  sliders: Sliders,
+  transportRatings: TransportRatings,
   zip: ZipInput
 };
 
