@@ -1,11 +1,15 @@
+import { Validator, ValidatorResult } from 'jsonschema';
+
 import {
-  TransportRating,
-  TransportMode,
-  UserGroup,
   Perspective,
-  ProfileRequest
+  ProfileRequest,
+  TransportMode,
+  TransportRating,
+  UserGroup
 } from './types';
 import { State } from './state';
+
+const profileRequestSchema = require('./scheme/profile-request.schema');
 
 interface TransportRatings {
   [mode: string]: TransportRating;
@@ -43,7 +47,7 @@ export const getInitialPerspective = (userGroup: UserGroup): Perspective =>
  *    or the TOS are not accepted
  */
 export const marshallProfileForUpload = (state: State): ProfileRequest => {
-  const profile = state.profile;
+  const { profile } = state;
 
   // profile.district is optional, everything else is required
   const isComplete = [
@@ -64,7 +68,7 @@ export const marshallProfileForUpload = (state: State): ProfileRequest => {
   if (!state.isAgbAccepted === true)
     throw new Error('Trying to marshall profile without accepted TOS');
 
-  return {
+  const profileRequest = {
     ageGroup: profile.ageGroup,
     berlinTraffic: profile.berlinTraffic,
     bicycleAccident: profile.bicycleAccident,
@@ -79,4 +83,21 @@ export const marshallProfileForUpload = (state: State): ProfileRequest => {
     isAgbAccepted: state.isAgbAccepted,
     transportRatings: state.transportRatings
   };
+
+  const schemaValidationResult: ValidatorResult = new Validator().validate(
+    profileRequest,
+    profileRequestSchema
+  );
+
+  if (schemaValidationResult.errors.length) {
+    let errorMsg = 'Marshalled profileRequest object is not ' +
+      'structured as stated in json schema';
+    schemaValidationResult.errors.forEach(({ property, message }) => {
+      errorMsg += `
+      Property ${property} ${message}`;
+    });
+    throw new Error(errorMsg);
+  }
+
+  return profileRequest;
 };
