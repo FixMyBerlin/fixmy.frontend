@@ -6,6 +6,21 @@
 const esModules = ['common-tags'];
 
 module.exports = {
+  roots: ['<rootDir>/src'],
+  testMatch: [
+    '**/__tests__/**/*.+(ts|tsx|js)',
+    '**/?(*.)+(spec|test).+(ts|tsx|js)'
+  ],
+  transform: {
+    '^.+\\.(js|jsx)?$': 'babel-jest',
+    '^.+\\.(ts|tsx)?$': 'ts-jest'
+  },
+  globals: {
+    'ts-jest': {
+      tsConfig: './jest/tsconfig.jest.json'
+    }
+  },
+
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
 
