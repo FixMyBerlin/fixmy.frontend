@@ -14,7 +14,7 @@ export interface ProfileRequest {
   gender: 'm' | 'w' | 'd';
   hasChildren: boolean;
   isAgbAccepted: boolean;
-  zipcode: string;
+  zipcode: string; // TODO: consider using numbers with a fixed length of five here
   transportRatings: {
     [mode: string]: TransportRating;
   };

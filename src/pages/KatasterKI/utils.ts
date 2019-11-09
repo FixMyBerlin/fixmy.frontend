@@ -1,12 +1,6 @@
 import { Validator, ValidatorResult } from 'jsonschema';
 
-import {
-  Perspective,
-  ProfileRequest,
-  TransportMode,
-  TransportRating,
-  UserGroup
-} from './types';
+import { Perspective, ProfileRequest, TransportMode, TransportRating, UserGroup } from './types';
 import { State } from './state';
 
 const profileRequestSchema = require('./scheme/profile-request.schema');
@@ -84,13 +78,31 @@ export const marshallProfileForUpload = (state: State): ProfileRequest => {
     transportRatings: state.transportRatings
   };
 
+  try {
+    // TODO: consider adapting eslint-config. keeping the util func below this call is fine IMHO
+    // eslint-disable-next-line no-use-before-define
+    validateProfileRequest(profileRequest);
+  } catch (e) {
+    throw new Error(`Marshalled profileRequest failed: ${e.message}`);
+  }
+
+  return profileRequest;
+};
+
+/**
+ * JSON-validates a profileRequest.
+ *
+ * @param profileRequest
+ * @throws will throw an error describing the difference between instance and
+ *    schema.
+ */
+export function validateProfileRequest(profileRequest: ProfileRequest) {
   const schemaValidationResult: ValidatorResult = new Validator().validate(
     profileRequest,
     profileRequestSchema
   );
-
   if (schemaValidationResult.errors.length) {
-    let errorMsg = 'Marshalled profileRequest object is not ' +
+    let errorMsg = 'ProfileRequest object is not ' +
       'structured as stated in json schema';
     schemaValidationResult.errors.forEach(({ property, message }) => {
       errorMsg += `
@@ -98,6 +110,5 @@ export const marshallProfileForUpload = (state: State): ProfileRequest => {
     });
     throw new Error(errorMsg);
   }
-
-  return profileRequest;
-};
+  return schemaValidationResult.valid;
+}
