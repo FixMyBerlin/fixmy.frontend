@@ -1,0 +1,21 @@
+{
+    "ageGroup": 1,
+    "berlinTraffic": "CCCC",
+    "bicycleAccident": 1,
+    "bicycleUse": 0,
+    "bikeReasons": [
+        "DD"
+    ],
+    "district": "aaaaa",
+    "gender": "d",
+    "hasChildren": true,
+    "isAgbAccepted": true,
+    "transportRatings": {
+        "": 1
+    },
+    "userGroup": "pedestrian",
+    "vehiclesOwned": [
+        "car"
+    ],
+    "zipcode": "BBBB"
+}
