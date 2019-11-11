@@ -8,9 +8,10 @@ import {
   TransportMode,
   TransportRating,
   VehicleKind,
-  UserGroup
+  UserGroup, ProfileRequest, ProfileResponse
 } from './types';
-import { getUserGroup } from './utils';
+import { getUserGroup, marshallProfileForUpload } from './utils';
+import { apiSubmitProfile } from './apiService';
 
 const SET_AGB_ACCEPTED = 'KatasterKI/SET_AGB_ACCEPTED';
 const SET_ANSWER = 'KatasterKI/SET_ANSWER';
@@ -22,6 +23,9 @@ const SET_DISTRICT_OPTIONS = 'KatasterKI/SET_DISTRICT_OPTIONS';
 const SET_REQUEST_STATE = 'KatasterKI/SET_REQUEST_STATE';
 const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
 const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
+export const SUBMIT_PROFILE_PENDING = 'KatasterKI/SUBMIT_PROFILE_PENDING';
+export const SUBMIT_PROFILE_ERROR = 'KatasterKI/SUBMIT_PROFILE_ERROR';
+export const SUBMIT_PROFILE_COMPLETE = 'KatasterKI/SUBMIT_PROFILE_COMPLETE';
 
 export interface State {
   currentPerspective?: Perspective;
@@ -82,6 +86,8 @@ interface Action {
     message?: string;
   };
   message?: string;
+  error?: string; // an error message to display to the user,
+  profileResponse?: ProfileResponse
 }
 
 const defaultState: State = {
@@ -225,3 +231,43 @@ export function setTransportRating(
 export function submitSurvey(): Action {
   return { type: SUBMIT_SURVEY };
 }
+
+// TODO: handle actions in reducer
+export function submitProfilePending(): Action {
+  return { type: SUBMIT_PROFILE_PENDING };
+}
+export function submitProfileError(errorMessage: string): Action {
+  return { type: SUBMIT_PROFILE_ERROR, error: errorMessage };
+}
+export function submitProfileComplete(profileResponse: ProfileResponse): Action {
+  return { type: SUBMIT_PROFILE_COMPLETE, profileResponse };
+}
+
+// thunks
+
+export const submitProfile = () => async (dispatch, getState) => {
+  let profileToSubmit;
+
+  dispatch(submitProfilePending());
+
+  try {
+    profileToSubmit = marshallProfileForUpload(getState());
+    const profileResponse = await apiSubmitProfile(profileToSubmit);
+    dispatch(submitProfileComplete(profileResponse));
+  } catch (e) {
+    // dispatch error message to update UI
+    dispatch(submitProfileError(
+        'Beim Übermitteln des Profils ist etwas schiefgelaufen'
+    ));
+    // log an error to inspect in dev tools.
+    // Throwing an error would break unit tests. If this is a test run, don't log the error.
+    const cachedConsoleErrorFunc = console.error;
+    if ( process.env.NODE_ENV === 'test') {
+      console.error = () => {}
+    }
+    console.error(`Failed to submit profile: ${e.message}`);
+    if ( process.env.NODE_ENV === 'test') {
+      console.error = cachedConsoleErrorFunc
+    }
+  }
+};
