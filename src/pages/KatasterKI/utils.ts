@@ -41,7 +41,7 @@ export const getInitialPerspective = (userGroup: UserGroup): Perspective =>
  *    or the TOS are not accepted
  */
 export const marshallProfileForUpload = (state: State): ProfileRequest => {
-  const { profile } = state;
+  const { profile, userGroup, transportRatings, isAgbAccepted } = state;
 
   // profile.district is optional, everything else is required
   const isComplete = [
@@ -54,12 +54,12 @@ export const marshallProfileForUpload = (state: State): ProfileRequest => {
     profile.hasChildren,
     profile.zipcode,
     profile.vehiclesOwned,
-    state.userGroup,
-    state.transportRatings
+    userGroup,
+    transportRatings
   ].every((val) => val != null);
 
   if (!isComplete) throw new Error('Trying to marshall incomplete profile');
-  if (!state.isAgbAccepted === true)
+  if (!isAgbAccepted === true)
     throw new Error('Trying to marshall profile without accepted TOS');
 
   const profileRequest = {
@@ -73,9 +73,9 @@ export const marshallProfileForUpload = (state: State): ProfileRequest => {
     hasChildren: profile.hasChildren,
     zipcode: profile.zipcode,
     vehiclesOwned: profile.vehiclesOwned,
-    userGroup: state.userGroup,
-    isAgbAccepted: state.isAgbAccepted,
-    transportRatings: state.transportRatings
+    userGroup,
+    isAgbAccepted,
+    transportRatings
   };
 
   try {
@@ -102,8 +102,8 @@ export function validateProfileRequest(profileRequest: ProfileRequest) {
     profileRequestSchema
   );
   if (schemaValidationResult.errors.length) {
-    let errorMsg = 'ProfileRequest object is not ' +
-      'structured as stated in json schema';
+    let errorMsg =
+      'ProfileRequest object is not ' + 'structured as stated in json schema';
     schemaValidationResult.errors.forEach(({ property, message }) => {
       errorMsg += `
       Property ${property} ${message}`;
