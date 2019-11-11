@@ -4,12 +4,14 @@ import styled from 'styled-components';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import Checkbox from '~/pages/KatasterKI/components/Checkbox';
 
 const CheckboxWrapper = styled.div`
   margin-bottom: 1em;
 
-  input {
-    margin-right: 10px;
+  label {
+    cursor: pointer;
+    user-select: none;
   }
 `;
 
@@ -39,19 +41,21 @@ export default ({ title, options, currentValue, handleChange, next }) => (
     {options.map((option) => (
       <Fragment key={`multichoice_${option.name}`}>
         <CheckboxWrapper>
-          <input
-            type="checkbox"
-            name={option.name}
-            id={option.name}
-            checked={isChecked(currentValue, option)}
-            onChange={(evt) =>
-              handleChange({
-                ...currentValue,
-                [option.name]: evt.target.checked
-              })
-            }
-          />
-          <label htmlFor={option.name}>{option.label}</label>
+          <label htmlFor={option.name}>
+            <Checkbox
+              type="checkbox"
+              name={option.name}
+              id={option.name}
+              checked={isChecked(currentValue, option)}
+              onChange={(evt) =>
+                handleChange({
+                  ...currentValue,
+                  [option.name]: evt.target.checked
+                })
+              }
+            />
+            {option.label}
+          </label>
         </CheckboxWrapper>
         <OptionInput
           option={option}
