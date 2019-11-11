@@ -5,6 +5,7 @@ import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import QuestionInfo from '~/pages/KatasterKI/components/QuestionInfo';
+import Radio from '~/pages/KatasterKI/components/Radio';
 
 const RadioGroupWrapper = styled.div`
   margin-bottom: 1em;
@@ -91,22 +92,20 @@ export default ({
                 key={`${option.label}_${radiogroup.name}`}
                 width={100 / radiogroup.options.length}
               >
-                <input
-                  type="radio"
-                  id={id}
-                  checked={isRadioChecked}
-                  onChange={() =>
-                    handleChange({
-                      ...currentValue,
-                      [radiogroup.name]: option.value
-                    })
-                  }
-                />
-                {isLabelVisible && (
-                  <RadioLabel isChecked={isRadioChecked} htmlFor={id}>
-                    {option.label}
-                  </RadioLabel>
-                )}
+                <RadioLabel isChecked={isRadioChecked} htmlFor={id}>
+                  <Radio
+                    type="radio"
+                    id={id}
+                    checked={isRadioChecked}
+                    onChange={() =>
+                      handleChange({
+                        ...currentValue,
+                        [radiogroup.name]: option.value
+                      })
+                    }
+                  />
+                  {isLabelVisible && option.label}
+                </RadioLabel>
               </RadioItem>
             );
           })}
