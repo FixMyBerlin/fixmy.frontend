@@ -258,7 +258,8 @@ export default [
       },
       {
         label: 'Sonstiges',
-        type: 'input',
+        input: true,
+        placeholder: 'Geben Sie hier Ihre Antwort ein ...',
         name: 8
       }
     ]
