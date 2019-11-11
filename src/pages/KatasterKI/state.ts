@@ -260,7 +260,8 @@ export const submitProfile = () => async (dispatch, getState) => {
         'Beim Übermitteln des Profils ist etwas schiefgelaufen'
     ));
     // log an error to inspect in dev tools.
-    // Throwing an error would break unit tests. If this is a test run, don't log the error.
+    // Throwing an error would break unit tests.
+    // If this is a test run, don't log the error. TODO: factor out to util method
     const cachedConsoleErrorFunc = console.error;
     if ( process.env.NODE_ENV === 'test') {
       console.error = () => {}
