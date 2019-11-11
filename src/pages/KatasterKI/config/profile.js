@@ -88,20 +88,36 @@ export default [
     title: 'Wie alt sind Sie?',
     options: [
       {
-        label: 'unter 16 Jahre',
+        label: 'unter 18 Jahre',
         value: 0
       },
       {
-        label: '16 bis 39 Jahre',
+        label: '18 bis 24 Jahre',
         value: 1
       },
       {
-        label: '40 bis 65 Jahre',
+        label: '25 bis 29 Jahre',
         value: 2
       },
       {
-        label: 'stressig',
+        label: '30 bis 39 Jahre',
         value: 3
+      },
+      {
+        label: '40 bis 49 Jahre',
+        value: 4
+      },
+      {
+        label: '50 bis 64 Jahre',
+        value: 5
+      },
+      {
+        label: '65 bis 74 Jahre',
+        value: 6
+      },
+      {
+        label: 'über 74',
+        value: 7
       }
     ]
   },
@@ -122,29 +138,6 @@ export default [
   },
   {
     type: 'single_choice',
-    name: 'bicycleAccident',
-    title: 'Hatten Sie schon mal einen Fahrradunfall?',
-    options: [
-      {
-        label: 'Nein, zum Glück nicht',
-        value: 0
-      },
-      {
-        label: 'Ja, ohne Verletzung',
-        value: 1
-      },
-      {
-        label: 'Ja, mit leichter Verletzung',
-        value: 2
-      },
-      {
-        label: 'Ja, mit schwerer Verletzung',
-        value: 3
-      }
-    ]
-  },
-  {
-    type: 'single_choice',
     name: 'gender',
     title: 'Ihr Geschlecht?',
     options: [
@@ -159,29 +152,6 @@ export default [
       {
         label: 'Divers',
         value: 'd'
-      }
-    ]
-  },
-  {
-    type: 'single_choice',
-    name: 'bicycleUse',
-    title: 'Das Fahrrad nutze ich ...',
-    options: [
-      {
-        label: 'In der Freizeit',
-        value: 0
-      },
-      {
-        label: 'Im Alltag',
-        value: 1
-      },
-      {
-        label: 'Im Alltag und in  der Freizeit',
-        value: 2
-      },
-      {
-        label: 'weder noch',
-        value: 3
       }
     ]
   },
@@ -215,6 +185,89 @@ export default [
         name: 'carsharing'
       }
     ]
+  },
+  {
+    type: 'single_choice',
+    name: 'bicycleUsage',
+    title:
+      'Wie lange dauert der Weg, den Sie am häufigsten mit dem Fahrrad zurücklegen (ohne Rückweg)?',
+    options: [
+      {
+        label: '10 Minuten',
+        value: 0
+      },
+      {
+        label: '20 Minuten',
+        value: 1
+      },
+      {
+        label: '30 Minuten',
+        value: 2
+      },
+      {
+        label: '40 Minuten',
+        value: 3
+      },
+      {
+        label: 'Mehr als 40 Minuten',
+        value: 4
+      },
+      {
+        label: 'Weiß ich nicht',
+        value: 5
+      }
+    ]
+  },
+  {
+    type: 'multi_choice',
+    name: 'bikeReasons',
+    title:
+      'Aus welchen Gründen können, dürfen oder wollen Sie nicht häufiger Fahrrad fahren?',
+    options: [
+      {
+        label: 'Ich kann nicht Fahrrad fahren (fehlende Fertigkeit)',
+        name: 0
+      },
+      {
+        label: 'Es gibt keine angemessene Infrastruktur',
+        name: 1
+      },
+      {
+        label: 'Es sind zu viele Autos unterwegs',
+        name: 2
+      },
+      {
+        label: 'Der Zielort ist zu weit entfernt',
+        name: 3
+      },
+      {
+        label: 'In meinem Umfeld fahren wenige Personen Fahrrad',
+        name: 4
+      },
+      {
+        label: 'Radfahren ist mir zu anstrengend',
+        name: 5
+      },
+      {
+        label: 'Ich habe kein (gutes) Fahrrad',
+        name: 6
+      },
+      {
+        label: 'Ich kann meine Kinder nicht mitnehmen',
+        name: 7
+      },
+      {
+        label: 'Sonstiges',
+        type: 'input',
+        name: 8
+      }
+    ]
+  },
+  {
+    type: 'multi_choice',
+    name: 'bikeReasons',
+    title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
+    options: []
   },
   {
     type: 'zip',
