@@ -265,6 +265,59 @@ export default [
     ]
   },
   {
+    type: 'radiogroups',
+    name: 'reasons',
+    title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
+    info:
+      'Die folgenden Fragen sind für unsere Forschung sehr wichtig. Sie handeln von all jenen Faktoren, die Sie möglicherweise motivieren, Fahrrad zu fahren - oder Sie davon abhalten.',
+    radiogroups: [
+      {
+        label: '„Ich fahre Fahrrad weil es mir Spaß macht.“',
+        name: 'bikefun',
+        options: [
+          { label: 'trifft nicht zu', value: 0 },
+          { label: 'trifft eher nicht zu', value: 1 },
+          { label: 'teils-teils', value: 2 },
+          { label: 'trifft eher zu', value: 3 },
+          { label: 'trifft zu', value: 4 }
+        ]
+      },
+      {
+        label: '„Mit dem Fahrrad bin ich schneller und flexibler.“',
+        name: 'faster',
+        options: [
+          { label: 'trifft nicht zu', value: 0 },
+          { label: 'trifft eher nicht zu', value: 1 },
+          { label: 'teils-teils', value: 2 },
+          { label: 'trifft eher zu', value: 3 },
+          { label: 'trifft zu', value: 4 }
+        ]
+      },
+      {
+        label: '„Bei schlechtem Wetter fahre ich kein Fahrrad.“',
+        name: 'weather',
+        options: [
+          { label: 'trifft nicht zu', value: 0 },
+          { label: 'trifft eher nicht zu', value: 1 },
+          { label: 'teils-teils', value: 2 },
+          { label: 'trifft eher zu', value: 3 },
+          { label: 'trifft zu', value: 4 }
+        ]
+      },
+      {
+        label: '„Ich fühle mich sicher auf dem Fahrrad im Verkehr.“',
+        name: 'safe',
+        options: [
+          { label: 'trifft nicht zu', value: 0 },
+          { label: 'trifft eher nicht zu', value: 1 },
+          { label: 'teils-teils', value: 2 },
+          { label: 'trifft eher zu', value: 3 },
+          { label: 'trifft zu', value: 4 }
+        ]
+      }
+    ]
+  },
+  {
     type: 'multi_choice',
     name: 'bikeReasons',
     title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',

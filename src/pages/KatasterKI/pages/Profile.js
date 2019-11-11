@@ -11,6 +11,7 @@ import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice'
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import TransportRatings from '~/pages/KatasterKI/components/SectionTypes/TransportRatings';
 import ZipInput from '~/pages/KatasterKI/components/SectionTypes/ZipInput';
+import Radiogroups from '~/pages/KatasterKI/components/SectionTypes/Radiogroups';
 import {
   setProfileAnswer,
   updateProgressBar,
@@ -23,7 +24,8 @@ const sectionTypes = {
   multi_choice: MultiChoice,
   single_choice: SingleChoice,
   transportRatings: TransportRatings,
-  zip: ZipInput
+  zip: ZipInput,
+  radiogroups: Radiogroups
 };
 
 const Profile = ({ match, isTosAccepted, profile, dispatch }) => {
@@ -68,6 +70,8 @@ const Profile = ({ match, isTosAccepted, profile, dispatch }) => {
       history.push(`${config.routes.katasterKI.profileBase}/${page + 2}`);
     }
   };
+
+  console.log(section.name, profile[section.name]);
 
   return (
     <>
