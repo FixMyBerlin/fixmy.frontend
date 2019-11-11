@@ -1,7 +1,7 @@
 import { ProfileRequest } from '../types';
 import { validateProfileRequest } from '../utils';
 
-const profileRequestSample: ProfileRequest = require('../scheme/profile-request-sample-instance.json');
+const profileRequestSample: ProfileRequest = require('../scheme/sample-instances/profile-request-sample-instance.json');
 
 describe('Kataster utils', () => {
   it(
