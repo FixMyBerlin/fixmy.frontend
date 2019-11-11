@@ -103,6 +103,7 @@ export default ({
                         [radiogroup.name]: option.value
                       })
                     }
+                    css={{ display: 'block' }}
                   />
                   {isLabelVisible && option.label}
                 </RadioLabel>

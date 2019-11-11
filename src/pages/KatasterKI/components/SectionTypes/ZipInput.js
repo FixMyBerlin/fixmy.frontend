@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components/Button';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import Radio from '~/pages/KatasterKI/components/Radio';
 
 const Input = styled.input`
   border: none;
@@ -93,15 +94,18 @@ const ZipInput = (props) => {
           </DistrictInfo>
           {props.districtOptions.map((option) => (
             <DistrictWrapper key={option}>
-              <DistrictInput
-                type="radio"
-                name="district"
-                value={option}
-                id={option}
-                onChange={onDistrictChange}
-                checked={option === props.district}
-              />
-              <DistrictLabel htmlFor={option}>{option}</DistrictLabel>
+              <DistrictLabel htmlFor={option}>
+                <Radio
+                  type="radio"
+                  name="district"
+                  value={option}
+                  id={option}
+                  onChange={onDistrictChange}
+                  checked={option === props.district}
+                  css={{ marginRight: 10 }}
+                />
+                {option}
+              </DistrictLabel>
             </DistrictWrapper>
           ))}
         </DistrictChooser>

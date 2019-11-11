@@ -2,6 +2,11 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+const Radio = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+`;
+
 const HiddenRadio = styled.input.attrs({ type: 'radio' })`
   border: 0;
   opacity: 0;
@@ -43,10 +48,10 @@ const StyledRadio = styled.div`
 `;
 
 const Checkbox = ({ className, checked, ...props }) => (
-  <div className={className}>
+  <Radio className={className}>
     <HiddenRadio checked={checked} {...props} />
     <StyledRadio checked={checked} />
-  </div>
+  </Radio>
 );
 
 export default Checkbox;
