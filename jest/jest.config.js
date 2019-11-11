@@ -17,7 +17,8 @@ module.exports = {
   },
   globals: {
     'ts-jest': {
-      tsConfig: './jest/tsconfig.jest.json'
+      tsConfig: './jest/tsconfig.jest.json',
+      diagnostics: false // do not type check in unit tests. https://github.com/kulshekhar/ts-jest/issues/822#issue-372232259
     }
   },
 
