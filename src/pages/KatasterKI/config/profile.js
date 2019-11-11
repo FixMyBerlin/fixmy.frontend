@@ -43,8 +43,7 @@ export default [
     sliderOptions: {
       min: 0,
       max: 5,
-      step: 1,
-      marks: { 0: 'Nie' }
+      step: 1
     },
     ratingLabels: [
       'Nie',
@@ -316,12 +315,6 @@ export default [
         ]
       }
     ]
-  },
-  {
-    type: 'multi_choice',
-    name: 'bikeReasons',
-    title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
-    options: []
   },
   {
     type: 'zip',

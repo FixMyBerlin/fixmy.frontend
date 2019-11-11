@@ -71,8 +71,6 @@ const Profile = ({ match, isTosAccepted, profile, dispatch }) => {
     }
   };
 
-  console.log(section.name, profile[section.name]);
-
   return (
     <>
       <ProgressBar />
