@@ -75,7 +75,7 @@ export const marshallProfile = (state: State): ProfileRequest => {
  * @throws will throw an error describing the difference between instance and
  *    schema.
  */
-export function validateProfileRequest(profileRequest: ProfileRequest) {
+export const validateProfileRequest = (profileRequest: ProfileRequest) => {
   const schemaValidationResult: ValidatorResult = new Validator().validate(
     profileRequest,
     profileRequestSchema
@@ -90,4 +90,4 @@ export function validateProfileRequest(profileRequest: ProfileRequest) {
     throw new Error(errorMsg);
   }
   return schemaValidationResult.valid;
-}
+};
