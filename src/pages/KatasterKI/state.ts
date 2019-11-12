@@ -8,10 +8,12 @@ import {
   TransportMode,
   TransportRating,
   VehicleKind,
-  UserGroup, ProfileRequest, ProfileResponse
+  UserGroup,
+  ProfileRequest,
+  ProfileResponse
 } from './types';
-import { getUserGroup, marshallProfileForUpload } from './utils';
-import { apiSubmitProfile } from './apiService';
+import { getUserGroup } from './utils';
+import api from './api';
 
 const SET_AGB_ACCEPTED = 'KatasterKI/SET_AGB_ACCEPTED';
 const SET_ANSWER = 'KatasterKI/SET_ANSWER';
@@ -87,7 +89,7 @@ interface Action {
   };
   message?: string;
   error?: string; // an error message to display to the user,
-  profileResponse?: ProfileResponse
+  profileResponse?: ProfileResponse;
 }
 
 const defaultState: State = {
@@ -239,36 +241,40 @@ export function submitProfilePending(): Action {
 export function submitProfileError(errorMessage: string): Action {
   return { type: SUBMIT_PROFILE_ERROR, error: errorMessage };
 }
-export function submitProfileComplete(profileResponse: ProfileResponse): Action {
+export function submitProfileComplete(
+  profileResponse: ProfileResponse
+): Action {
   return { type: SUBMIT_PROFILE_COMPLETE, profileResponse };
 }
 
 // thunks
 
 export const submitProfile = () => async (dispatch, getState) => {
-  let profileToSubmit;
+  let profileToSubmit: ProfileRequest;
 
   dispatch(submitProfilePending());
 
   try {
-    profileToSubmit = marshallProfileForUpload(getState());
-    const profileResponse = await apiSubmitProfile(profileToSubmit);
+    profileToSubmit = api.marshallProfile(getState());
+    const profileResponse = await api.submitProfile(profileToSubmit);
     dispatch(submitProfileComplete(profileResponse));
   } catch (e) {
     // dispatch error message to update UI
-    dispatch(submitProfileError(
+    dispatch(
+      submitProfileError(
         'Beim Übermitteln des Profils ist etwas schiefgelaufen'
-    ));
+      )
+    );
     // log an error to inspect in dev tools.
     // Throwing an error would break unit tests.
     // If this is a test run, don't log the error. TODO: factor out to util method
     const cachedConsoleErrorFunc = console.error;
-    if ( process.env.NODE_ENV === 'test') {
-      console.error = () => {}
+    if (process.env.NODE_ENV === 'test') {
+      console.error = () => {};
     }
     console.error(`Failed to submit profile: ${e.message}`);
-    if ( process.env.NODE_ENV === 'test') {
-      console.error = cachedConsoleErrorFunc
+    if (process.env.NODE_ENV === 'test') {
+      console.error = cachedConsoleErrorFunc;
     }
   }
 };
