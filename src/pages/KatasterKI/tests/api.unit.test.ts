@@ -3,19 +3,17 @@ import { validateProfileRequest } from '../api/utils';
 
 const profileRequestSample: ProfileRequest = require('../scheme/sample-instances/profile-request-sample-instance.json');
 
-describe('Kataster utils', () => {
+describe('API bindings', () => {
   it(
     'Successfully validates an error free instance of the ProfileRequest' +
       ' Json Schema',
     () => {
-      // Lacking better tools, I used "JSONBuddy" to auto-generate an instance from the schema.
       const validInstance = profileRequestSample;
       expect(validateProfileRequest(validInstance)).toBe(true);
     }
   );
 
   it('Throws if an invalid ProfileRequest instance is json-validated', () => {
-    // Lacking better tools, I used "JSONBuddy" to auto-generate an instance from the schema.
     const invalidInstance = {
       ageGroup: 'BBB',
       isAgbAccepted: {},
