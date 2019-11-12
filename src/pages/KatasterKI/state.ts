@@ -1,3 +1,4 @@
+import { Dispatch } from 'redux';
 import {
   Answer,
   AnswerRequest,
@@ -22,8 +23,6 @@ const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
 const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
 const SET_ZIPCODE = 'KatasterKI/SET_ZIPCODE';
 const SET_DISTRICT_OPTIONS = 'KatasterKI/SET_DISTRICT_OPTIONS';
-const SET_REQUEST_STATE = 'KatasterKI/SET_REQUEST_STATE';
-const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
 const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
 export const SUBMIT_PROFILE_PENDING = 'KatasterKI/SUBMIT_PROFILE_PENDING';
 export const SUBMIT_PROFILE_ERROR = 'KatasterKI/SUBMIT_PROFILE_ERROR';
@@ -58,6 +57,7 @@ export interface State {
     state: RequestState;
     message?: string;
   };
+  statisticsCounter?: number; // total count of ratings as reported by backend
   transportRatings: {
     [mode: string]: TransportRating;
   };
@@ -139,6 +139,35 @@ export default function reducer(state: State = defaultState, action: Action) {
         }
       };
 
+    case SUBMIT_PROFILE_PENDING:
+      return {
+        ...state,
+        profileRequest: { state: RequestState.pending }
+      };
+
+    case SUBMIT_PROFILE_ERROR:
+      return {
+        ...state,
+        profileRequest: { state: RequestState.error, message: action.error }
+      };
+
+    case SUBMIT_PROFILE_COMPLETE:
+      return {
+        ...state,
+        scenes: [
+          ...state.scenes,
+          ...action.value.scenes.map(
+            (sceneID: string): Answer => ({
+              sceneID,
+              rating: null,
+              duration: null
+            })
+          )
+        ],
+        statisticsCounter: action.value.ratings_total,
+        profileRequest: { state: RequestState.success }
+      };
+
     case SET_TRANSPORT_RATING:
       const transportRatings = {
         ...state.transportRatings,
@@ -162,16 +191,6 @@ export default function reducer(state: State = defaultState, action: Action) {
           district
         }
       };
-
-    case SET_REQUEST_STATE:
-      const { type, state: requestState, message } = action.requestInfo;
-      return {
-        ...state,
-        [type]: { state: requestState, message }
-      };
-
-    case SUBMIT_SURVEY:
-      console.error('not implemented');
 
     case UPDATE_PROGRESS_BAR:
       const { current, total } = action.value;
@@ -219,10 +238,6 @@ export function updateProgressBar(current: number, total?: number) {
   return { type: UPDATE_PROGRESS_BAR, value: { current, total } };
 }
 
-export function setRequestState(props): Action {
-  return { type: SET_REQUEST_STATE, requestInfo: props };
-}
-
 export function setTransportRating(
   type: TransportMode,
   rating: number
@@ -230,11 +245,6 @@ export function setTransportRating(
   return { type: SET_TRANSPORT_RATING, transportRating: { type, rating } };
 }
 
-export function submitSurvey(): Action {
-  return { type: SUBMIT_SURVEY };
-}
-
-// TODO: handle actions in reducer
 export function submitProfilePending(): Action {
   return { type: SUBMIT_PROFILE_PENDING };
 }
@@ -244,12 +254,12 @@ export function submitProfileError(errorMessage: string): Action {
 export function submitProfileComplete(
   profileResponse: ProfileResponse
 ): Action {
-  return { type: SUBMIT_PROFILE_COMPLETE, profileResponse };
+  return { type: SUBMIT_PROFILE_COMPLETE, value: profileResponse };
 }
 
 // thunks
 
-export const submitProfile = () => async (dispatch, getState) => {
+export const submitProfile = () => async (dispatch: Dispatch, getState) => {
   let profileToSubmit: ProfileRequest;
 
   dispatch(submitProfilePending());
