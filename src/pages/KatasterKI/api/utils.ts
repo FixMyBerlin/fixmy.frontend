@@ -14,6 +14,28 @@ const profileRequestSchema = require('../scheme/profile-request.schema.json');
 
 type marshallProfileStateParam = { KatasterKIState: State };
 
+const marshallBikeReasons = (
+  stateBikeReasons: State['profile']['bikeReasons']
+): {
+  bikeReasons: ProfileRequest['bikeReasons'];
+  bikeReasonsVar: ProfileRequest['bikeReasonsVar'];
+} => {
+  let bikeReasonsVar = '';
+  const bikeReasons = Object.keys(stateBikeReasons)
+    .map((reason) => {
+      if (reason.endsWith('-input')) {
+        bikeReasonsVar = stateBikeReasons[reason].toString();
+      } else {
+        return stateBikeReasons[reason] ? reason : null;
+      }
+    })
+    .filter((val) => val != null);
+  return {
+    bikeReasons,
+    bikeReasonsVar
+  };
+};
+
 /**
  * Marshall and validate all data required for profile request
  *
@@ -52,18 +74,23 @@ export const marshallProfile = (
   if (!isTosAccepted === true)
     throw new Error('Trying to marshall profile without accepted TOS');
 
+  const { bikeReasons, bikeReasonsVar } = marshallBikeReasons(
+    profile.bikeReasons
+  );
+
   const profileRequest = {
     ageGroup: profile.ageGroup,
     berlinTraffic: profile.berlinTraffic,
     bicycleAccident: profile.bicycleAccident,
     bicycleUse: profile.bicycleUse,
-    bikeReasons: profile.bikeReasons,
     district: profile.district,
     gender: profile.gender,
     hasChildren: profile.hasChildren,
     zipcode: profile.zipcode,
     vehiclesOwned: profile.vehiclesOwned,
     perspective: currentPerspective,
+    bikeReasons,
+    bikeReasonsVar,
     userGroup,
     isTosAccepted,
     transportRatings

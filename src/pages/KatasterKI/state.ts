@@ -37,7 +37,9 @@ export interface State {
     berlinTraffic?: string;
     bicycleAccident?: 0 | 1 | 2 | 3;
     bicycleUse?: 0 | 1 | 2 | 3;
-    bikeReasons?: Array<string>;
+    bikeReasons?: {
+      [reason: string]: boolean | string;
+    };
     district?: string;
     gender?: 'm' | 'w' | 'd';
     hasChildren?: boolean;
@@ -128,7 +130,7 @@ const testingDefaultState: State = {
     berlinTraffic: '3',
     bicycleAccident: 1,
     bicycleUse: 0,
-    bikeReasons: ['1', '5', '3'],
+    bikeReasons: {},
     district: 'Mitte',
     gender: 'd',
     hasChildren: true,

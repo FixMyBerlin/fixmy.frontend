@@ -10,6 +10,7 @@ export interface ProfileRequest {
   bicycleAccident: 0 | 1 | 2 | 3;
   bicycleUse: 0 | 1 | 2 | 3;
   bikeReasons?: Array<string>;
+  bikeReasonsVar?: string;
   district?: string;
   gender: 'm' | 'w' | 'd';
   hasChildren: boolean;

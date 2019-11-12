@@ -27,12 +27,18 @@ const TextArea = styled.textarea`
 const isChecked = (currentValues, option) =>
   currentValues != null && currentValues[option.name] === true;
 
-const OptionInput = ({ option, checked, onChange }) => {
+const OptionInput = ({ option, checked, value, onChange }) => {
   if (!option.input || !checked) {
     return null;
   }
 
-  return <TextArea placeholder={option.placeholder} onChange={onChange} />;
+  const text = value[`${option.name}-input`];
+
+  return (
+    <TextArea placeholder={option.placeholder} onChange={onChange}>
+      {text}
+    </TextArea>
+  );
 };
 
 export default ({ title, options, currentValue, handleChange, next }) => (
@@ -60,10 +66,11 @@ export default ({ title, options, currentValue, handleChange, next }) => (
         <OptionInput
           option={option}
           checked={isChecked(currentValue, option)}
+          value={currentValue}
           onChange={(evt) =>
             handleChange({
               ...currentValue,
-              [`${option.name}-input`]: evt.target.checked
+              [`${option.name}-input`]: evt.target.value
             })
           }
         />
