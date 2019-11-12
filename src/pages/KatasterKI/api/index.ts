@@ -28,10 +28,20 @@ async function handleSubmitProfile({
   return fetchResponse.json();
 }
 
+const sleep = () => new Promise((resolve) => setTimeout(resolve, 2000));
+
 async function submitProfile(
   profileRequest: ProfileRequest
 ): Promise<ProfileResponse> {
-  return handleSubmitProfile({ json: profileRequest });
+  if (config.debug) {
+    await sleep();
+    return {
+      ratings_total: 54,
+      scenes: ['01_MS_C_139', '01_MS_C_27', '01_MS_C_73']
+    };
+  } else {
+    return handleSubmitProfile({ json: profileRequest });
+  }
 }
 
 export default {

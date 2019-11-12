@@ -15,7 +15,8 @@ import {
   setProfileAnswer,
   updateProgressBar,
   setZipcode,
-  setTransportRating
+  setTransportRating,
+  submitProfile
 } from '../state';
 import { RequestState } from '../types';
 
@@ -102,6 +103,7 @@ const Profile = ({
   const next = () => {
     const isLastSection = page === profileConfig.length - 1;
     if (isLastSection) {
+      dispatch(submitProfile());
       history.push(`${config.routes.katasterKI.scenesBase}/1`);
     } else {
       history.push(`${config.routes.katasterKI.profileBase}/${page + 2}`);

@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import history from '~/history';
+import Loader from '~/components/PageLoading';
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
 import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
 import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import Scene from '~/pages/KatasterKI/components/SectionTypes/Scene';
 import { setAnswer, updateProgressBar } from '../state';
-import { Answer, Section } from '../types';
+import { Answer, Section, RequestState } from '../types';
 import { makeSection } from '~/pages/KatasterKI/scene-utils';
 
 const sectionTypes = {
@@ -27,11 +28,17 @@ const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
     ? scenes.find((s) => s.sceneID === section.name)
     : null;
 
-const Scenes = ({ match, scenes, perspective, dispatch }) => {
+const Scenes = ({ match, scenes, perspective, dispatch, profileRequest }) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
   if ((!config.debug && !isProfileComplete) || !match.params.page) {
     return <Redirect to={config.routes.katasterKI.profileBase} />;
   }
+
+  if (
+    profileRequest.state == RequestState.pending ||
+    profileRequest.state == RequestState.error
+  )
+    return <Loader pastDelay={true} error={profileRequest.message} />;
 
   const page = +match.params.page - 1;
   const sectionConfig = makeSection(scenes, perspective);
@@ -79,7 +86,8 @@ const Scenes = ({ match, scenes, perspective, dispatch }) => {
 const mapStateToProps = (state) => ({
   isTosAccepted: state.KatasterKIState.isTosAccepted,
   scenes: state.KatasterKIState.scenes,
-  perspective: state.KatasterKIState.currentPerspective
+  perspective: state.KatasterKIState.currentPerspective,
+  profileRequest: state.KatasterKIState.profileRequest
 });
 
 export default connect(mapStateToProps)(Scenes);
