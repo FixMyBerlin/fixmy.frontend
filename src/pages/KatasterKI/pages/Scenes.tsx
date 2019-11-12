@@ -20,9 +20,6 @@ const sectionTypes = {
   scene: Scene
 };
 
-// TODO: Replace with function
-const isProfileComplete = true;
-
 const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
   section.type === 'scene'
     ? scenes.find((s) => s.sceneID === section.name)
@@ -30,7 +27,10 @@ const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
 
 const Scenes = ({ match, scenes, perspective, dispatch, profileRequest }) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
-  if ((!config.debug && !isProfileComplete) || !match.params.page) {
+  if (
+    (!config.debug && profileRequest.state == RequestState.waiting) ||
+    !match.params.page
+  ) {
     return <Redirect to={config.routes.katasterKI.profileBase} />;
   }
 
@@ -43,6 +43,8 @@ const Scenes = ({ match, scenes, perspective, dispatch, profileRequest }) => {
   const page = +match.params.page - 1;
   const sectionConfig = makeSection(scenes, perspective);
   const section = sectionConfig[page];
+  if (section == null)
+    return <Redirect to={config.routes.katasterKI.scenesBase + '/1'} />;
   const SectionComponent = sectionTypes[section.type];
 
   useEffect(() => {
