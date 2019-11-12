@@ -92,7 +92,7 @@ interface Action {
   profileResponse?: ProfileResponse;
 }
 
-const defaultState: State = {
+const productionDefaultState: State = {
   isTosAccepted: false,
   transportRatings: {},
   profile: {
@@ -109,13 +109,39 @@ const defaultState: State = {
     state: RequestState.waiting
   },
   userGroup: UserGroup.bicycle,
-  scenes: [
-    { sceneID: '01_MS_C_139', duration: null, rating: null },
-    { sceneID: '01_MS_C_27', duration: null, rating: null },
-    { sceneID: '01_MS_C_73', duration: null, rating: null }
-  ],
+  scenes: [],
   currentPerspective: Perspective.bicycle
 };
+
+const testingDefaultState: State = {
+  ...productionDefaultState,
+  isTosAccepted: true,
+  transportRatings: {
+    pedelec: 0,
+    bicycle: 5,
+    motorbike: 3,
+    car: 0,
+    public: 3
+  },
+  profile: {
+    ageGroup: 1,
+    berlinTraffic: '3',
+    bicycleAccident: 1,
+    bicycleUse: 0,
+    bikeReasons: ['1', '5', '3'],
+    district: 'Mitte',
+    gender: 'd',
+    hasChildren: true,
+    vehiclesOwned: [VehicleKind.car],
+    zipcode: '22000'
+  },
+  userGroup: UserGroup.bicycle,
+  currentPerspective: Perspective.bicycle
+};
+
+const defaultState = config.debug
+  ? testingDefaultState
+  : productionDefaultState;
 
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {
@@ -316,5 +342,6 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
     if (process.env.NODE_ENV === 'test') {
       console.error = cachedConsoleErrorFunc;
     }
+    throw e;
   }
 };
