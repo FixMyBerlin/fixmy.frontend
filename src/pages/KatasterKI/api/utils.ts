@@ -7,32 +7,37 @@ import {
   TransportRating,
   UserGroup
 } from '../types';
-import { State } from '../state';
+import { State, MultiChoice } from '../state';
 
 // JSON import apparently only works in ts when using `require`
 const profileRequestSchema = require('../scheme/profile-request.schema.json');
 
 type marshallProfileStateParam = { KatasterKIState: State };
 
-const marshallBikeReasons = (
-  stateBikeReasons: State['profile']['bikeReasons']
+/**
+ * Marshall state of a multi_choice component for sending in a request
+ *
+ * @param values state of multi_choice input component
+ */
+const marshallMultiChoice = (
+  values: MultiChoice
 ): {
-  bikeReasons: ProfileRequest['bikeReasons'];
-  bikeReasonsVar: ProfileRequest['bikeReasonsVar'];
+  choices: Array<string>;
+  other: string;
 } => {
-  let bikeReasonsVar = '';
-  const bikeReasons = Object.keys(stateBikeReasons)
-    .map((reason) => {
-      if (reason.endsWith('-input')) {
-        bikeReasonsVar = stateBikeReasons[reason].toString();
+  let other = '';
+  const choices = Object.keys(values)
+    .map((field) => {
+      if (field.endsWith('-input')) {
+        other = values[field].toString();
       } else {
-        return stateBikeReasons[reason] ? reason : null;
+        return values[field] ? field : null;
       }
     })
     .filter((val) => val != null);
   return {
-    bikeReasons,
-    bikeReasonsVar
+    choices,
+    other
   };
 };
 
@@ -58,13 +63,14 @@ export const marshallProfile = (
   const isComplete = [
     profile.ageGroup,
     profile.berlinTraffic,
-    profile.bicycleAccident,
     profile.bicycleUse,
     profile.bikeReasons,
     profile.gender,
     profile.hasChildren,
+    profile.motivationalFactors,
     profile.zipcode,
     profile.vehiclesOwned,
+    profile.whyBiking,
     userGroup,
     transportRatings,
     currentPerspective
@@ -74,21 +80,25 @@ export const marshallProfile = (
   if (!isTosAccepted === true)
     throw new Error('Trying to marshall profile without accepted TOS');
 
-  const { bikeReasons, bikeReasonsVar } = marshallBikeReasons(
+  const { choices: bikeReasons, other: bikeReasonsVar } = marshallMultiChoice(
     profile.bikeReasons
   );
+
+  const { choices: whyBiking } = marshallMultiChoice(profile.whyBiking);
+  const { choices: vehiclesOwned } = marshallMultiChoice(profile.vehiclesOwned);
 
   const profileRequest = {
     ageGroup: profile.ageGroup,
     berlinTraffic: profile.berlinTraffic,
-    bicycleAccident: profile.bicycleAccident,
     bicycleUse: profile.bicycleUse,
     district: profile.district,
     gender: profile.gender,
     hasChildren: profile.hasChildren,
+    motivationalFactors: profile.motivationalFactors,
     zipcode: profile.zipcode,
-    vehiclesOwned: profile.vehiclesOwned,
     perspective: currentPerspective,
+    vehiclesOwned,
+    whyBiking,
     bikeReasons,
     bikeReasonsVar,
     userGroup,

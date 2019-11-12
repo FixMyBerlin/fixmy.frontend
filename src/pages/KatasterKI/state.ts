@@ -28,23 +28,31 @@ export const SUBMIT_PROFILE_PENDING = 'KatasterKI/SUBMIT_PROFILE_PENDING';
 export const SUBMIT_PROFILE_ERROR = 'KatasterKI/SUBMIT_PROFILE_ERROR';
 export const SUBMIT_PROFILE_COMPLETE = 'KatasterKI/SUBMIT_PROFILE_COMPLETE';
 
+export type MultiChoice = {
+  [name: string]: boolean | string;
+};
+
+type RadioGroups = {
+  [name: string]: number;
+};
+
+type SingleChoice<P> = P;
 export interface State {
   currentPerspective?: Perspective;
   districtOptions?: Array<string>;
   isTosAccepted: boolean;
   profile: {
-    ageGroup?: 0 | 1 | 2 | 3;
-    berlinTraffic?: string;
-    bicycleAccident?: 0 | 1 | 2 | 3;
-    bicycleUse?: 0 | 1 | 2 | 3;
-    bikeReasons?: {
-      [reason: string]: boolean | string;
-    };
+    ageGroup?: SingleChoice<number>;
+    berlinTraffic?: SingleChoice<number>;
+    bicycleUse?: SingleChoice<number>;
+    bikeReasons?: MultiChoice;
     district?: string;
     gender?: 'm' | 'w' | 'd';
     hasChildren?: boolean;
+    motivationalFactors?: RadioGroups;
     zipcode: string;
-    vehiclesOwned?: Array<VehicleKind>;
+    vehiclesOwned?: MultiChoice;
+    whyBiking?: MultiChoice;
   };
   progressBar: {
     current: number;
@@ -127,14 +135,15 @@ const testingDefaultState: State = {
   },
   profile: {
     ageGroup: 1,
-    berlinTraffic: '3',
-    bicycleAccident: 1,
+    berlinTraffic: 3,
     bicycleUse: 0,
     bikeReasons: {},
     district: 'Mitte',
     gender: 'd',
     hasChildren: true,
-    vehiclesOwned: [VehicleKind.car],
+    vehiclesOwned: {
+      car: true
+    },
     zipcode: '22000'
   },
   userGroup: UserGroup.bicycle,
