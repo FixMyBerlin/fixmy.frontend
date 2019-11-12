@@ -31,15 +31,23 @@ const RatingLabel = styled.div`
   color: ${config.colors.darkbg};
 `;
 
+const startMeasurement = () => window.performance.mark('imageLoaded');
+const finishMeasurement = (sceneID) => {
+  window.performance.measure(sceneID, 'imageLoaded');
+  const results = window.performance.getEntriesByName(sceneID);
+  return results[0].duration;
+};
+
 const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
   const onClick = (option) => {
-    handleChange(option.value);
+    const duration = finishMeasurement(name);
+    handleChange(option.value, duration);
     next();
   };
 
   return (
     <>
-      <img src={getSceneImageSrc(name)} alt={title} />
+      <img src={getSceneImageSrc(name)} alt={title} onLoad={startMeasurement} />
       <QuestionTitle>{title}</QuestionTitle>
       <Flex>
         {options.map((option, index) => {
