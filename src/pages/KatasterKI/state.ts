@@ -11,7 +11,8 @@ import {
   VehicleKind,
   UserGroup,
   ProfileRequest,
-  ProfileResponse
+  ProfileResponse,
+  PerspectiveResponse
 } from './types';
 import { getUserGroup } from './utils';
 import api from './api';
@@ -27,6 +28,11 @@ const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
 export const SUBMIT_PROFILE_PENDING = 'KatasterKI/SUBMIT_PROFILE_PENDING';
 export const SUBMIT_PROFILE_ERROR = 'KatasterKI/SUBMIT_PROFILE_ERROR';
 export const SUBMIT_PROFILE_COMPLETE = 'KatasterKI/SUBMIT_PROFILE_COMPLETE';
+export const SUBMIT_PERSPECTIVE_PENDING =
+  'KatasterKI/SUBMIT_PERSPECTIVE_PENDING';
+export const SUBMIT_PERSPECTIVE_ERROR = 'KatasterKI/SUBMIT_PERSPECTIVE_ERROR';
+export const SUBMIT_PERSPECTIVE_COMPLETE =
+  'KatasterKI/SUBMIT_PERSPECTIVE_COMPLETE';
 
 export type MultiChoice = {
   [name: string]: boolean | string;
@@ -63,7 +69,7 @@ export interface State {
     state: RequestState;
     message?: string;
   };
-  perspectiveChangeRequest: {
+  perspectiveRequest: {
     state: RequestState;
     message?: string;
   };
@@ -93,7 +99,7 @@ interface Action {
   };
   answer?: Answer;
   requestInfo?: {
-    type: 'profileRequest' | 'perspectiveChangeRequest';
+    type: 'profileRequest' | 'perspectiveRequest';
     state: RequestState;
     message?: string;
   };
@@ -115,7 +121,7 @@ const productionDefaultState: State = {
   profileRequest: {
     state: RequestState.waiting
   },
-  perspectiveChangeRequest: {
+  perspectiveRequest: {
     state: RequestState.waiting
   },
   userGroup: UserGroup.bicycle,
@@ -186,6 +192,38 @@ export default function reducer(state: State = defaultState, action: Action) {
         }
       };
 
+    case SUBMIT_PERSPECTIVE_PENDING:
+      return {
+        ...state,
+        perspectiveRequest: { state: RequestState.pending }
+      };
+
+    case SUBMIT_PERSPECTIVE_ERROR:
+      return {
+        ...state,
+        perspectiveRequest: {
+          state: RequestState.error,
+          message: action.error
+        }
+      };
+
+    case SUBMIT_PERSPECTIVE_COMPLETE:
+      return {
+        ...state,
+        scenes: [
+          ...action.value.response.scenes.map(
+            (sceneID: string): Answer => ({
+              sceneID,
+              rating: null,
+              duration: null
+            })
+          )
+        ],
+        currentPerspective: action.value.perspective,
+        statisticsCounter: action.value.response.ratings_total,
+        perspectiveRequest: { state: RequestState.success }
+      };
+
     case SUBMIT_PROFILE_PENDING:
       return {
         ...state,
@@ -197,12 +235,10 @@ export default function reducer(state: State = defaultState, action: Action) {
         ...state,
         profileRequest: { state: RequestState.error, message: action.error }
       };
-
     case SUBMIT_PROFILE_COMPLETE:
       return {
         ...state,
         scenes: [
-          ...state.scenes,
           ...action.value.scenes.map(
             (sceneID: string): Answer => ({
               sceneID,
@@ -270,7 +306,10 @@ export function setAnswer(
   rating: Rating,
   duration: number
 ): Action {
-  return { type: SET_ANSWER, answer: { sceneID, rating, duration } };
+  return {
+    type: SET_ANSWER,
+    answer: { sceneID, rating, duration }
+  };
 }
 
 /**
@@ -333,6 +372,22 @@ export function submitProfileComplete(
   return { type: SUBMIT_PROFILE_COMPLETE, value: profileResponse };
 }
 
+export function submitPerspectiveChangePending(): Action {
+  return { type: SUBMIT_PERSPECTIVE_PENDING };
+}
+export function submitPerspectiveChangeError(errorMessage: string): Action {
+  return { type: SUBMIT_PERSPECTIVE_ERROR, error: errorMessage };
+}
+export function submitPerspectiveChangeComplete(
+  perspectiveResponse: PerspectiveResponse,
+  perspective: Perspective
+): Action {
+  return {
+    type: SUBMIT_PERSPECTIVE_COMPLETE,
+    value: { response: perspectiveResponse, perspective }
+  };
+}
+
 // thunks
 
 export const submitProfile = () => async (dispatch: Dispatch, getState) => {
@@ -345,7 +400,6 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
     const profileResponse = await api.submitProfile(profileToSubmit);
     dispatch(submitProfileComplete(profileResponse));
   } catch (e) {
-    // dispatch error message to update UI
     dispatch(
       submitProfileError(
         'Beim Übermitteln des Profils ist etwas schiefgelaufen'
@@ -362,6 +416,26 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
     if (process.env.NODE_ENV === 'test') {
       console.error = cachedConsoleErrorFunc;
     }
+    if (process.env.NODE_ENV != 'test') throw e;
+  }
+};
+
+export const submitPerspectiveChange = (perspective: Perspective) => async (
+  dispatch: Dispatch,
+  getState
+) => {
+  dispatch(submitPerspectiveChangePending());
+  try {
+    const perspectiveResponse = await api.submitPerspectiveChange({
+      perspective
+    });
+    dispatch(submitPerspectiveChangeComplete(perspectiveResponse, perspective));
+  } catch (e) {
+    dispatch(
+      submitProfileError(
+        'Beim Übermitteln des Perspektivwechsels ist etwas schiefgelaufen'
+      )
+    );
     if (process.env.NODE_ENV != 'test') throw e;
   }
 };
