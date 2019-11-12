@@ -218,52 +218,6 @@ export default [
     ]
   },
   {
-    type: 'multi_choice',
-    name: 'bikeReasons',
-    title:
-      'Aus welchen Gründen können, dürfen oder wollen Sie nicht häufiger Fahrrad fahren?',
-    options: [
-      {
-        label: 'Ich kann nicht Fahrrad fahren (fehlende Fertigkeit)',
-        name: 'skills'
-      },
-      {
-        label: 'Es gibt keine angemessene Infrastruktur',
-        name: 'infrastructure'
-      },
-      {
-        label: 'Es sind zu viele Autos unterwegs',
-        name: 'traffic'
-      },
-      {
-        label: 'Der Zielort ist zu weit entfernt',
-        name: 'distance'
-      },
-      {
-        label: 'In meinem Umfeld fahren wenige Personen Fahrrad',
-        name: 'social'
-      },
-      {
-        label: 'Radfahren ist mir zu anstrengend',
-        name: 'physicalStrain'
-      },
-      {
-        label: 'Ich habe kein (gutes) Fahrrad',
-        name: 'equipment'
-      },
-      {
-        label: 'Ich kann meine Kinder nicht mitnehmen',
-        name: 'children'
-      },
-      {
-        label: 'Sonstiges',
-        input: true,
-        placeholder: 'Geben Sie hier Ihre Antwort ein ...',
-        name: 8
-      }
-    ]
-  },
-  {
     type: 'radiogroups',
     name: 'motivationalFactors',
     title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
@@ -313,6 +267,52 @@ export default [
           { label: 'trifft eher zu', value: 3 },
           { label: 'trifft zu', value: 4 }
         ]
+      }
+    ]
+  },
+  {
+    type: 'multi_choice',
+    name: 'bikeReasons',
+    title:
+      'Aus welchen Gründen können, dürfen oder wollen Sie nicht häufiger Fahrrad fahren?',
+    options: [
+      {
+        label: 'Ich kann nicht Fahrrad fahren (fehlende Fertigkeit)',
+        name: 'skills'
+      },
+      {
+        label: 'Es gibt keine angemessene Infrastruktur',
+        name: 'infrastructure'
+      },
+      {
+        label: 'Es sind zu viele Autos unterwegs',
+        name: 'traffic'
+      },
+      {
+        label: 'Der Zielort ist zu weit entfernt',
+        name: 'distance'
+      },
+      {
+        label: 'In meinem Umfeld fahren wenige Personen Fahrrad',
+        name: 'social'
+      },
+      {
+        label: 'Radfahren ist mir zu anstrengend',
+        name: 'physicalStrain'
+      },
+      {
+        label: 'Ich habe kein (gutes) Fahrrad',
+        name: 'equipment'
+      },
+      {
+        label: 'Ich kann meine Kinder nicht mitnehmen',
+        name: 'children'
+      },
+      {
+        label: 'Sonstiges',
+        input: true,
+        placeholder: 'Geben Sie hier Ihre Antwort ein ...',
+        name: 8
       }
     ]
   },
