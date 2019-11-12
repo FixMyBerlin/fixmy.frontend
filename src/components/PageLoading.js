@@ -5,7 +5,15 @@ const Loader = ({ pastDelay, error }) => {
     if (config.debug) console.error(error);
     return <p>Ups, da ist etwas schiefgegangen.</p>;
   }
-  if (pastDelay) return <h2>Loading...</h2>;
+  if (pastDelay)
+    return (
+      <h2>
+        <span role="img" aria-label="robot">
+          🤖
+        </span>{' '}
+        Computer arbeitet...
+      </h2>
+    );
   return null;
 };
 
