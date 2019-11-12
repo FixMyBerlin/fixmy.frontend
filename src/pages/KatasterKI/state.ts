@@ -140,9 +140,18 @@ const testingDefaultState: State = {
     bikeReasons: {},
     district: 'Mitte',
     gender: 'd',
+    motivationalFactors: {
+      bikeFun: 4,
+      faster: 4,
+      weather: 4,
+      safe: 4
+    },
     hasChildren: true,
     vehiclesOwned: {
       car: true
+    },
+    whyBiking: {
+      fun: true
     },
     zipcode: '22000'
   },

@@ -111,7 +111,10 @@ export const marshallProfile = (
     // eslint-disable-next-line no-use-before-define
     validateProfileRequest(profileRequest);
   } catch (e) {
-    throw new Error(`Marshalled profileRequest failed: ${e.message}`);
+    throw new Error(
+      `Marshalled profileRequest failed: ${e.message}
+      ${JSON.stringify(profileRequest, null, 2)}`
+    );
   }
 
   return profileRequest;
