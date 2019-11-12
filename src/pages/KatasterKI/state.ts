@@ -353,6 +353,6 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
     if (process.env.NODE_ENV === 'test') {
       console.error = cachedConsoleErrorFunc;
     }
-    throw e;
+    if (process.env.NODE_ENV != 'test') throw e;
   }
 };
