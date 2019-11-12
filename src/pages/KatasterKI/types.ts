@@ -1,7 +1,7 @@
 export interface Answer {
   sceneID: string;
-  rating: Rating;
-  duration: number;
+  rating?: Rating;
+  duration?: number;
 }
 
 export interface ProfileRequest {

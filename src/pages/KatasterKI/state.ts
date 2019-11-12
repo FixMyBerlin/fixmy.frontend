@@ -1,3 +1,4 @@
+import { Dispatch } from 'redux';
 import {
   Answer,
   AnswerRequest,
@@ -8,9 +9,12 @@ import {
   TransportMode,
   TransportRating,
   VehicleKind,
-  UserGroup
+  UserGroup,
+  ProfileRequest,
+  ProfileResponse
 } from './types';
 import { getUserGroup } from './utils';
+import api from './api';
 
 const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
 const SET_ANSWER = 'KatasterKI/SET_ANSWER';
@@ -19,9 +23,10 @@ const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
 const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
 const SET_ZIPCODE = 'KatasterKI/SET_ZIPCODE';
 const SET_DISTRICT_OPTIONS = 'KatasterKI/SET_DISTRICT_OPTIONS';
-const SET_REQUEST_STATE = 'KatasterKI/SET_REQUEST_STATE';
-const SUBMIT_SURVEY = 'KatasterKI/SUBMIT_SURVEY';
 const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
+export const SUBMIT_PROFILE_PENDING = 'KatasterKI/SUBMIT_PROFILE_PENDING';
+export const SUBMIT_PROFILE_ERROR = 'KatasterKI/SUBMIT_PROFILE_ERROR';
+export const SUBMIT_PROFILE_COMPLETE = 'KatasterKI/SUBMIT_PROFILE_COMPLETE';
 
 export interface State {
   currentPerspective?: Perspective;
@@ -52,6 +57,7 @@ export interface State {
     state: RequestState;
     message?: string;
   };
+  statisticsCounter?: number; // total count of ratings as reported by backend
   transportRatings: {
     [mode: string]: TransportRating;
   };
@@ -82,6 +88,8 @@ interface Action {
     message?: string;
   };
   message?: string;
+  error?: string; // an error message to display to the user,
+  profileResponse?: ProfileResponse;
 }
 
 const defaultState: State = {
@@ -132,6 +140,35 @@ export default function reducer(state: State = defaultState, action: Action) {
         }
       };
 
+    case SUBMIT_PROFILE_PENDING:
+      return {
+        ...state,
+        profileRequest: { state: RequestState.pending }
+      };
+
+    case SUBMIT_PROFILE_ERROR:
+      return {
+        ...state,
+        profileRequest: { state: RequestState.error, message: action.error }
+      };
+
+    case SUBMIT_PROFILE_COMPLETE:
+      return {
+        ...state,
+        scenes: [
+          ...state.scenes,
+          ...action.value.scenes.map(
+            (sceneID: string): Answer => ({
+              sceneID,
+              rating: null,
+              duration: null
+            })
+          )
+        ],
+        statisticsCounter: action.value.ratings_total,
+        profileRequest: { state: RequestState.success }
+      };
+
     case SET_TRANSPORT_RATING:
       const transportRatings = {
         ...state.transportRatings,
@@ -155,16 +192,6 @@ export default function reducer(state: State = defaultState, action: Action) {
           district
         }
       };
-
-    case SET_REQUEST_STATE:
-      const { type, state: requestState, message } = action.requestInfo;
-      return {
-        ...state,
-        [type]: { state: requestState, message }
-      };
-
-    case SUBMIT_SURVEY:
-      console.error('not implemented');
 
     case UPDATE_PROGRESS_BAR:
       const { current, total } = action.value;
@@ -241,16 +268,6 @@ export function updateProgressBar(current: number, total?: number) {
   return { type: UPDATE_PROGRESS_BAR, value: { current, total } };
 }
 
-export function setRequestState(props): Action {
-  return { type: SET_REQUEST_STATE, requestInfo: props };
-}
-
-/**
- * Set the user's frequency of use for a transport kind
- *
- * @param type a kind of vehicle as defined in types
- * @param rating a rating from 0-5
- */
 export function setTransportRating(
   type: TransportMode,
   rating: number
@@ -258,6 +275,46 @@ export function setTransportRating(
   return { type: SET_TRANSPORT_RATING, transportRating: { type, rating } };
 }
 
-export function submitSurvey(): Action {
-  return { type: SUBMIT_SURVEY };
+export function submitProfilePending(): Action {
+  return { type: SUBMIT_PROFILE_PENDING };
 }
+export function submitProfileError(errorMessage: string): Action {
+  return { type: SUBMIT_PROFILE_ERROR, error: errorMessage };
+}
+export function submitProfileComplete(
+  profileResponse: ProfileResponse
+): Action {
+  return { type: SUBMIT_PROFILE_COMPLETE, value: profileResponse };
+}
+
+// thunks
+
+export const submitProfile = () => async (dispatch: Dispatch, getState) => {
+  let profileToSubmit: ProfileRequest;
+
+  dispatch(submitProfilePending());
+
+  try {
+    profileToSubmit = api.marshallProfile(getState());
+    const profileResponse = await api.submitProfile(profileToSubmit);
+    dispatch(submitProfileComplete(profileResponse));
+  } catch (e) {
+    // dispatch error message to update UI
+    dispatch(
+      submitProfileError(
+        'Beim Übermitteln des Profils ist etwas schiefgelaufen'
+      )
+    );
+    // log an error to inspect in dev tools.
+    // Throwing an error would break unit tests.
+    // If this is a test run, don't log the error. TODO: factor out to util method
+    const cachedConsoleErrorFunc = console.error;
+    if (process.env.NODE_ENV === 'test') {
+      console.error = () => {};
+    }
+    console.error(`Failed to submit profile: ${e.message}`);
+    if (process.env.NODE_ENV === 'test') {
+      console.error = cachedConsoleErrorFunc;
+    }
+  }
+};
