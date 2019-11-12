@@ -17,6 +17,7 @@ import {
   setZipcode,
   setTransportRating
 } from '../state';
+import { RequestState } from '../types';
 
 const sectionTypes = {
   info: Info,
@@ -26,10 +27,48 @@ const sectionTypes = {
   zip: ZipInput
 };
 
-const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
-  // we dont redirect when developing. We do so if agbs not accepted or no question param passed
-  if ((!config.debug && !isAgbAccepted) || !match.params.page) {
+/**
+ * Return true if this page should redirect to the landing page
+ *
+ * @param matchParams page parameters from react-router
+ * @param isTosAccepted boolean from state
+ */
+const shouldRedirectToLanding = (matchParams, isTosAccepted) => {
+  if (config.debug) return false;
+
+  if (!isTosAccepted || +matchParams.page < 1) return true;
+  return false;
+};
+
+/**
+ * Return true if page should redirect to scenes
+ *
+ * It should not be possible to return to the profile section after the profile
+ * has been submitted for the first time. If that was possible a user could
+ * receive several SceneGroups without having looked at them.
+ *
+ * @param profileRequest profile request info from state
+ */
+const shouldRedirectToScenes = (profileRequest) => {
+  if (config.debug) return false;
+
+  if (profileRequest.state === RequestState.success) return true;
+  return false;
+};
+
+const Profile = ({
+  match,
+  isAgbAccepted,
+  profile,
+  profileRequest,
+  dispatch
+}) => {
+  if (shouldRedirectToLanding(match.params, isAgbAccepted)) {
     return <Redirect to={config.routes.katasterKI.landing} />;
+  }
+
+  if (shouldRedirectToScenes(profileRequest)) {
+    return <Redirect to={config.routes.katasterKI.scenesBase} />;
   }
 
   const page = +match.params.page - 1;
@@ -84,7 +123,8 @@ const Profile = ({ match, isAgbAccepted, profile, dispatch }) => {
 
 const mapStateToProps = (state) => ({
   isAgbAccepted: state.KatasterKIState.isAgbAccepted,
-  profile: state.KatasterKIState.profile
+  profile: state.KatasterKIState.profile,
+  profileRequest: state.KatasterKIState.profileRequest
 });
 
 export default connect(mapStateToProps)(Profile);
