@@ -5,22 +5,26 @@ export interface Answer {
 }
 
 export interface ProfileRequest {
-  ageGroup: 0 | 1 | 2 | 3;
-  berlinTraffic?: string;
-  bicycleAccident: 0 | 1 | 2 | 3;
-  bicycleUse: 0 | 1 | 2 | 3;
-  bikeReasons?: Array<string>;
-  district?: string;
+  ageGroup: number;
+  berlinTraffic: number;
+  bicycleUse: number;
+  bikeReasons: Array<string>;
+  bikeReasonsVar?: string;
+  district: string;
   gender: 'm' | 'w' | 'd';
   hasChildren: boolean;
   isTosAccepted: boolean;
-  zipcode: string;
+  motivationalFactors: {
+    [name: string]: number;
+  };
+  perspective: Perspective;
   transportRatings: {
     [mode: string]: TransportRating;
   };
   userGroup: UserGroup;
-  perspective: Perspective;
-  vehiclesOwned: Array<VehicleKind>;
+  vehiclesOwned: Array<string>;
+  whyBiking: Array<string>;
+  zipcode: string;
 }
 
 export interface ProfileResponse {

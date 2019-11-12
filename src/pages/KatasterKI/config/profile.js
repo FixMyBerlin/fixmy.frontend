@@ -187,7 +187,7 @@ export default [
   },
   {
     type: 'single_choice',
-    name: 'bicycleUsage',
+    name: 'bicycleUse',
     title:
       'Wie lange dauert der Weg, den Sie am häufigsten mit dem Fahrrad zurücklegen (ohne Rückweg)?',
     options: [
@@ -225,35 +225,35 @@ export default [
     options: [
       {
         label: 'Ich kann nicht Fahrrad fahren (fehlende Fertigkeit)',
-        name: 0
+        name: 'skills'
       },
       {
         label: 'Es gibt keine angemessene Infrastruktur',
-        name: 1
+        name: 'infrastructure'
       },
       {
         label: 'Es sind zu viele Autos unterwegs',
-        name: 2
+        name: 'traffic'
       },
       {
         label: 'Der Zielort ist zu weit entfernt',
-        name: 3
+        name: 'distance'
       },
       {
         label: 'In meinem Umfeld fahren wenige Personen Fahrrad',
-        name: 4
+        name: 'social'
       },
       {
         label: 'Radfahren ist mir zu anstrengend',
-        name: 5
+        name: 'physicalStrain'
       },
       {
         label: 'Ich habe kein (gutes) Fahrrad',
-        name: 6
+        name: 'equipment'
       },
       {
         label: 'Ich kann meine Kinder nicht mitnehmen',
-        name: 7
+        name: 'children'
       },
       {
         label: 'Sonstiges',
@@ -265,7 +265,7 @@ export default [
   },
   {
     type: 'radiogroups',
-    name: 'reasons',
+    name: 'motivationalFactors',
     title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
     info:
       'Die folgenden Fragen sind für unsere Forschung sehr wichtig. Sie handeln von all jenen Faktoren, die Sie möglicherweise motivieren, Fahrrad zu fahren - oder Sie davon abhalten.',
@@ -324,28 +324,28 @@ export default [
   },
   {
     type: 'multi_choice',
-    name: 'bikeReasons',
+    name: 'whyBiking',
     title: 'Welcher dieser Aussagen würden sie zustimmen?',
     options: [
       {
         label: 'Meine täglichen Wege kann ich gut mit dem Fahrrad erledigen.',
-        name: 0
+        name: 'dailyTransport'
       },
       {
         label: 'Radfahren macht mir Spaß',
-        name: 1
+        name: 'fun'
       },
       {
         label: 'Ich kann gut und sicher Radfahren',
-        name: 2
+        name: 'ability'
       },
       {
         label: 'In meinem Umfeld fahren viele Menschen Fahrrad',
-        name: 3
+        name: 'social'
       },
       {
         label: 'Ich fühle mich sicher auf dem Rad im Verkehr',
-        name: 4
+        name: 'safety'
       }
     ]
   }

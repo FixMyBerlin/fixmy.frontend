@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
@@ -49,6 +49,7 @@ const ZipInput = (props) => {
   // whether we change the zip or the district
   const zipCode = useRef(props.currentValue);
   const district = useRef(props.district);
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
 
   const hasDistrictOptions = !!(
     props.districtOptions && props.districtOptions.length
@@ -56,6 +57,15 @@ const ZipInput = (props) => {
 
   const onChange = () => {
     const selectedDistrict = hasDistrictOptions ? district.current : null;
+
+    const isInvalidZipCode =
+      zipCode.current.length === 0 ||
+      Number.isNaN(parseInt(zipCode.current, 10)) ||
+      parseInt(zipCode.current, 10) < 1000;
+
+    setButtonDisabled(
+      (hasDistrictOptions && props.district == null) || isInvalidZipCode
+    );
 
     props.handleChange({
       zipcode: zipCode.current,
@@ -72,8 +82,6 @@ const ZipInput = (props) => {
     district.current = evt.target.value;
     onChange();
   };
-
-  const isButtonDisabled = hasDistrictOptions && props.district == null;
 
   return (
     <Flex flexDirection="column" css={{ flexGrow: 1 }}>

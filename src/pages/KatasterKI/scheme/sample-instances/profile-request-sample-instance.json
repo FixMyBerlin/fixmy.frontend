@@ -1,13 +1,19 @@
 {
   "ageGroup": 1,
-  "berlinTraffic": "3",
-  "bicycleAccident": 1,
+  "berlinTraffic": 3,
   "bicycleUse": 0,
-  "bikeReasons": ["1", "5", "3"],
+  "bikeReasons": ["skills", "social"],
+  "bikeReasonsVar": "Tja",
   "district": "Mitte",
   "gender": "d",
   "hasChildren": true,
   "isTosAccepted": true,
+  "motivationalFactors": {
+    "bikeFun": 4,
+    "faster": 4,
+    "weather": 4,
+    "safe": 4
+  },
   "transportRatings": {
     "pedelec": 0,
     "bicycle": 5,
@@ -17,5 +23,6 @@
   },
   "userGroup": "pedestrian",
   "vehiclesOwned": ["car"],
+  "whyBiking": ["social"],
   "zipcode": "22000"
 }

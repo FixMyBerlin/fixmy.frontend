@@ -16,18 +16,12 @@
   },
   "properties": {
     "ageGroup": {
-      "enum": [0, 1, 2, 3],
       "type": "number"
     },
     "berlinTraffic": {
-      "type": "string"
-    },
-    "bicycleAccident": {
-      "enum": [0, 1, 2, 3],
       "type": "number"
     },
     "bicycleUse": {
-      "enum": [0, 1, 2, 3],
       "type": "number"
     },
     "bikeReasons": {
@@ -35,6 +29,9 @@
         "type": "string"
       },
       "type": "array"
+    },
+    "bikeReasonsVar": {
+      "type": "string"
     },
     "district": {
       "type": "string"
@@ -48,6 +45,12 @@
     },
     "isTosAccepted": {
       "type": "boolean"
+    },
+    "motivationalFactors": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "type": "object"
     },
     "perspective": {
       "$ref": "#/definitions/Perspective"
@@ -63,7 +66,12 @@
     },
     "vehiclesOwned": {
       "items": {
-        "enum": ["bicycle", "car", "motorbike", "pedelec", "public"],
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "whyBiking": {
+      "items": {
         "type": "string"
       },
       "type": "array"

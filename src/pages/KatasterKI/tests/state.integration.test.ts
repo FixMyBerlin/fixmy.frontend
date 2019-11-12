@@ -30,6 +30,7 @@ const getBaseState = () => ({
   // additional state data needed
   userGroup: UserGroup.bicycle,
   transportRatings: { mode: TransportRating.never },
+  currentPerspective: 'C',
   isTosAccepted: true
 });
 
@@ -47,8 +48,10 @@ describe('Kataster state', () => {
 
       // mock store
       const stateBefore = {
-        ...getBaseState(),
-        profile: profileRequestSample
+        KatasterKIState: {
+          ...getBaseState(),
+          profile: profileRequestSample
+        }
       };
       const store = mockStore(stateBefore);
       const expectedActions = [SUBMIT_PROFILE_PENDING, SUBMIT_PROFILE_COMPLETE];
@@ -83,8 +86,10 @@ describe('Kataster state', () => {
         zipcode: 345
       };
       const stateBefore = {
-        ...getBaseState(),
-        profile: invalidProfile
+        KatasterKIState: {
+          ...getBaseState(),
+          profile: invalidProfile
+        }
       };
       const store = mockStore(stateBefore);
 

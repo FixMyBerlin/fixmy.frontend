@@ -7,12 +7,39 @@ import {
   TransportRating,
   UserGroup
 } from '../types';
-import { State } from '../state';
+import { State, MultiChoice } from '../state';
 
 // JSON import apparently only works in ts when using `require`
 const profileRequestSchema = require('../scheme/profile-request.schema.json');
 
 type marshallProfileStateParam = { KatasterKIState: State };
+
+/**
+ * Marshall state of a multi_choice component for sending in a request
+ *
+ * @param values state of multi_choice input component
+ */
+const marshallMultiChoice = (
+  values: MultiChoice
+): {
+  choices: Array<string>;
+  other: string;
+} => {
+  let other = '';
+  const choices = Object.keys(values)
+    .map((field) => {
+      if (field.endsWith('-input')) {
+        other = values[field].toString();
+      } else {
+        return values[field] ? field : null;
+      }
+    })
+    .filter((val) => val != null);
+  return {
+    choices,
+    other
+  };
+};
 
 /**
  * Marshall and validate all data required for profile request
@@ -36,13 +63,14 @@ export const marshallProfile = (
   const isComplete = [
     profile.ageGroup,
     profile.berlinTraffic,
-    profile.bicycleAccident,
     profile.bicycleUse,
     profile.bikeReasons,
     profile.gender,
     profile.hasChildren,
+    profile.motivationalFactors,
     profile.zipcode,
     profile.vehiclesOwned,
+    profile.whyBiking,
     userGroup,
     transportRatings,
     currentPerspective
@@ -52,18 +80,27 @@ export const marshallProfile = (
   if (!isTosAccepted === true)
     throw new Error('Trying to marshall profile without accepted TOS');
 
+  const { choices: bikeReasons, other: bikeReasonsVar } = marshallMultiChoice(
+    profile.bikeReasons
+  );
+
+  const { choices: whyBiking } = marshallMultiChoice(profile.whyBiking);
+  const { choices: vehiclesOwned } = marshallMultiChoice(profile.vehiclesOwned);
+
   const profileRequest = {
     ageGroup: profile.ageGroup,
     berlinTraffic: profile.berlinTraffic,
-    bicycleAccident: profile.bicycleAccident,
     bicycleUse: profile.bicycleUse,
-    bikeReasons: profile.bikeReasons,
     district: profile.district,
     gender: profile.gender,
     hasChildren: profile.hasChildren,
+    motivationalFactors: profile.motivationalFactors,
     zipcode: profile.zipcode,
-    vehiclesOwned: profile.vehiclesOwned,
     perspective: currentPerspective,
+    vehiclesOwned,
+    whyBiking,
+    bikeReasons,
+    bikeReasonsVar,
     userGroup,
     isTosAccepted,
     transportRatings
@@ -74,7 +111,10 @@ export const marshallProfile = (
     // eslint-disable-next-line no-use-before-define
     validateProfileRequest(profileRequest);
   } catch (e) {
-    throw new Error(`Marshalled profileRequest failed: ${e.message}`);
+    throw new Error(
+      `Marshalled profileRequest failed: ${e.message}
+      ${JSON.stringify(profileRequest, null, 2)}`
+    );
   }
 
   return profileRequest;
