@@ -7,7 +7,7 @@
   "district": "Mitte",
   "gender": "d",
   "hasChildren": true,
-  "isAgbAccepted": true,
+  "isTosAccepted": true,
   "transportRatings": {
     "pedelec": 0,
     "bicycle": 5,

@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import Store from '~/store';
-import { setAGBAccepted } from '../state';
+import { setTOSAccepted } from '../state';
 import Button from '~/pages/KatasterKI/components/Button';
 import ExternalLink from '~/pages/KatasterKI/components/ExternalLink';
 import Paragraph from '~/pages/KatasterKI/components/Paragraph';
@@ -76,9 +76,9 @@ const landingText = `
   Erklärunglängere Erklärung längere Erklärunglängere Erklärunglängere Erk
 `;
 
-const onAcceptTOS = (ev) => Store.dispatch(setAGBAccepted(ev.target.checked));
+const onAcceptTOS = (ev) => Store.dispatch(setTOSAccepted(ev.target.checked));
 
-const Landing = ({ isAgbAccepted }) => {
+const Landing = ({ isTosAccepted }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const visibleText = isExpanded ? landingText : landingText.slice(0, 300);
 
@@ -98,7 +98,7 @@ const Landing = ({ isAgbAccepted }) => {
       <CheckboxWrapper>
         <input
           type="checkbox"
-          checked={isAgbAccepted}
+          checked={isTosAccepted}
           onChange={onAcceptTOS}
           id="check_agb"
         />
@@ -118,7 +118,7 @@ const Landing = ({ isAgbAccepted }) => {
         <Button
           as={Link}
           to={`${config.routes.katasterKI.profileBase}/1`}
-          disabled={!isAgbAccepted}
+          disabled={!isTosAccepted}
         >
           Umfrage beginnen
         </Button>
@@ -128,7 +128,7 @@ const Landing = ({ isAgbAccepted }) => {
 };
 
 const mapStateToProps = (state) => ({
-  isAgbAccepted: state.KatasterKIState.isAgbAccepted
+  isTosAccepted: state.KatasterKIState.isTosAccepted
 });
 
 export default connect(mapStateToProps)(Landing);

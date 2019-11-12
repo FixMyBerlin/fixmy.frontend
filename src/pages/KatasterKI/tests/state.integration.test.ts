@@ -30,7 +30,7 @@ const getBaseState = () => ({
   // additional state data needed
   userGroup: UserGroup.bicycle,
   transportRatings: { mode: TransportRating.never },
-  isAgbAccepted: true
+  isTosAccepted: true
 });
 
 describe('Kataster state', () => {
@@ -74,7 +74,7 @@ describe('Kataster state', () => {
       // mock store
       const invalidProfile = {
         ageGroup: 'BBB',
-        isAgbAccepted: {},
+        isTosAccepted: {},
         transportRatings: {
           '': 1
         },

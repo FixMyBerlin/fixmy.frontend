@@ -72,6 +72,8 @@ const ZipInput = (props) => {
     onChange();
   };
 
+  const isButtonDisabled = hasDistrictOptions && props.district == null;
+
   return (
     <Flex flexDirection="column" css={{ flexGrow: 1 }}>
       <QuestionTitle>{props.title}</QuestionTitle>
@@ -106,7 +108,11 @@ const ZipInput = (props) => {
       )}
 
       <Flex css={{ flexGrow: 1 }} justifyContent="center">
-        <Button onClick={props.next} css={{ alignSelf: 'flex-end' }}>
+        <Button
+          onClick={props.next}
+          css={{ alignSelf: 'flex-end' }}
+          disabled={isButtonDisabled}
+        >
           weiter
         </Button>
       </Flex>

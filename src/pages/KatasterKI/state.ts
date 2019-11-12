@@ -16,7 +16,7 @@ import {
 import { getUserGroup } from './utils';
 import api from './api';
 
-const SET_AGB_ACCEPTED = 'KatasterKI/SET_AGB_ACCEPTED';
+const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
 const SET_ANSWER = 'KatasterKI/SET_ANSWER';
 const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
 const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
@@ -31,7 +31,7 @@ export const SUBMIT_PROFILE_COMPLETE = 'KatasterKI/SUBMIT_PROFILE_COMPLETE';
 export interface State {
   currentPerspective?: Perspective;
   districtOptions?: Array<string>;
-  isAgbAccepted: boolean;
+  isTosAccepted: boolean;
   profile: {
     ageGroup?: 0 | 1 | 2 | 3;
     berlinTraffic?: string;
@@ -93,7 +93,7 @@ interface Action {
 }
 
 const defaultState: State = {
-  isAgbAccepted: false,
+  isTosAccepted: false,
   transportRatings: {},
   profile: {
     zipcode: ''
@@ -110,16 +110,17 @@ const defaultState: State = {
   },
   userGroup: UserGroup.bicycle,
   scenes: [
-    { sceneID: '01_SE_A_5312', duration: null, rating: null },
-    { sceneID: '01_CP_C_5', duration: null, rating: null }
+    { sceneID: '01_MS_C_139', duration: null, rating: null },
+    { sceneID: '01_MS_C_27', duration: null, rating: null },
+    { sceneID: '01_MS_C_73', duration: null, rating: null }
   ],
   currentPerspective: Perspective.bicycle
 };
 
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {
-    case SET_AGB_ACCEPTED:
-      return { ...state, isAgbAccepted: action.value };
+    case SET_TOS_ACCEPTED:
+      return { ...state, isTosAccepted: action.value };
 
     case SET_ANSWER:
       const scenes = Array.from(state.scenes);
@@ -208,8 +209,14 @@ export default function reducer(state: State = defaultState, action: Action) {
   }
 }
 
-export function setAGBAccepted(value: boolean): Action {
-  return { type: SET_AGB_ACCEPTED, value };
+/**
+ * Record when the user accepts the TOS and PP
+ *
+ * @param value whether the user has accepted the terms of service and
+ *    recognized the privacy policy
+ */
+export function setTOSAccepted(value: boolean): Action {
+  return { type: SET_TOS_ACCEPTED, value };
 }
 
 export function setAnswer(
@@ -220,20 +227,43 @@ export function setAnswer(
   return { type: SET_ANSWER, answer: { sceneID, rating, duration } };
 }
 
+/**
+ * Record answers pertaining to the participants profile such as demographics
+ *
+ * @param question identifier as spelled in the State and ProfileRequest types
+ * @param value value may be a literal or a simple object
+ */
 export function setProfileAnswer(question: string, value: any): Action {
   return { type: SET_PROFILE_ANSWER, profile: { question, value } };
 }
 
+/**
+ * Change the perspective from which SceneGroups will be fetched for the user
+ *
+ * @param perspective the new perspective
+ */
 export function setPerspective(perspective: Perspective): Action {
   return { type: SET_PERSPECTIVE, perspective };
 }
 
+/**
+ * Set the user's zipcode and an optional district
+ *
+ * @param zipcode
+ * @param district optional for some zipcodes that are defined in global config
+ */
 export function setZipcode(zipcode: string, district?: string): Action {
   // @ts-ignore
   const districtOptions = config.katasterKI.zipcodeDistricts[zipcode];
   return { type: SET_ZIPCODE, area: { zipcode, district, districtOptions } };
 }
 
+/**
+ * Update the progress bar
+ *
+ * @param current one-indexed
+ * @param total number of panes in the progress bar
+ */
 export function updateProgressBar(current: number, total?: number) {
   return { type: UPDATE_PROGRESS_BAR, value: { current, total } };
 }

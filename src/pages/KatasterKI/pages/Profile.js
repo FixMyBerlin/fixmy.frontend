@@ -58,12 +58,12 @@ const shouldRedirectToScenes = (profileRequest) => {
 
 const Profile = ({
   match,
-  isAgbAccepted,
+  isTosAccepted,
   profile,
   profileRequest,
   dispatch
 }) => {
-  if (shouldRedirectToLanding(match.params, isAgbAccepted)) {
+  if (shouldRedirectToLanding(match.params, isTosAccepted)) {
     return <Redirect to={config.routes.katasterKI.landing} />;
   }
 
@@ -122,7 +122,7 @@ const Profile = ({
 };
 
 const mapStateToProps = (state) => ({
-  isAgbAccepted: state.KatasterKIState.isAgbAccepted,
+  isTosAccepted: state.KatasterKIState.isTosAccepted,
   profile: state.KatasterKIState.profile,
   profileRequest: state.KatasterKIState.profileRequest
 });

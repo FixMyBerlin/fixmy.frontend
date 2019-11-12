@@ -13,12 +13,13 @@ export interface ProfileRequest {
   district?: string;
   gender: 'm' | 'w' | 'd';
   hasChildren: boolean;
-  isAgbAccepted: boolean;
-  zipcode: string; // TODO: consider using numbers with a fixed length of five here
+  isTosAccepted: boolean;
+  zipcode: string;
   transportRatings: {
     [mode: string]: TransportRating;
   };
   userGroup: UserGroup;
+  perspective: Perspective;
   vehiclesOwned: Array<VehicleKind>;
 }
 

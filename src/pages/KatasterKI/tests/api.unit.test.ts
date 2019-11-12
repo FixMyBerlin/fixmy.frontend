@@ -16,7 +16,7 @@ describe('API bindings', () => {
   it('Throws if an invalid ProfileRequest instance is json-validated', () => {
     const invalidInstance = {
       ageGroup: 'BBB',
-      isAgbAccepted: {},
+      isTosAccepted: {},
       transportRatings: {
         '': 1
       },

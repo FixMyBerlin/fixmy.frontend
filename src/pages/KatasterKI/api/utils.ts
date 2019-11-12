@@ -20,7 +20,13 @@ const profileRequestSchema = require('../scheme/profile-request.schema.json');
  *    or the TOS are not accepted
  */
 export const marshallProfile = (state: State): ProfileRequest => {
-  const { profile, userGroup, transportRatings, isAgbAccepted } = state;
+  const {
+    profile,
+    userGroup,
+    transportRatings,
+    isTosAccepted,
+    currentPerspective
+  } = state;
 
   // profile.district is optional, everything else is required
   const isComplete = [
@@ -34,11 +40,12 @@ export const marshallProfile = (state: State): ProfileRequest => {
     profile.zipcode,
     profile.vehiclesOwned,
     userGroup,
-    transportRatings
+    transportRatings,
+    currentPerspective
   ].every((val) => val != null);
 
   if (!isComplete) throw new Error('Trying to marshall incomplete profile');
-  if (!isAgbAccepted === true)
+  if (!isTosAccepted === true)
     throw new Error('Trying to marshall profile without accepted TOS');
 
   const profileRequest = {
@@ -52,8 +59,9 @@ export const marshallProfile = (state: State): ProfileRequest => {
     hasChildren: profile.hasChildren,
     zipcode: profile.zipcode,
     vehiclesOwned: profile.vehiclesOwned,
+    perspective: currentPerspective,
     userGroup,
-    isAgbAccepted,
+    isTosAccepted,
     transportRatings
   };
 
