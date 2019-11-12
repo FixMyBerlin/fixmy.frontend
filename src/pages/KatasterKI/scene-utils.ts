@@ -6,8 +6,8 @@ import ButtonIconMostlySafe from '~/images/kataster-icons/button-backgrund-3.svg
 import ButtonIconSafe from '~/images/kataster-icons/button-backgrund-4.svg';
 
 const perspectiveNames = {
-  C: 'Fahrradfahrerperspektive',
-  A: 'Autofahrerperspektive',
+  C: 'Fahrradperspektive',
+  A: 'Autoperspektive',
   P: 'Fußgängerperspektive'
 };
 
@@ -47,10 +47,10 @@ export const makeSection = (
   };
 
   const perspectiveChangeScreen = {
-    type: 'single_choice',
+    type: 'perspective_change',
     name: 'perspectiveChange',
     title:
-      'Danke für Ihre Bewertungen. Sie können weiter machen oder die Perspektive wechseln.',
+      'Vielen Dank, Sie können mit dieser Perspektive weiter machen oder jetzt die Straße aus einer anderen Sicht bewerten:',
     options: Object.keys(perspectiveNames).map((p) => ({
       label: perspectiveNames[p],
       value: p

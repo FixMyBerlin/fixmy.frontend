@@ -12,12 +12,14 @@ import Scene from '~/pages/KatasterKI/components/SectionTypes/Scene';
 import { setAnswer, updateProgressBar } from '../state';
 import { Answer, Section, RequestState } from '../types';
 import { makeSection } from '~/pages/KatasterKI/scene-utils';
+import PerspectiveChange from '../components/SectionTypes/PerspectiveChange';
 
 const sectionTypes = {
   info: Info,
   multi_choice: MultiChoice,
   single_choice: SingleChoice,
-  scene: Scene
+  scene: Scene,
+  perspective_change: PerspectiveChange
 };
 
 const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
