@@ -12,21 +12,25 @@ import { State } from '../state';
 // JSON import apparently only works in ts when using `require`
 const profileRequestSchema = require('../scheme/profile-request.schema.json');
 
+type marshallProfileStateParam = { KatasterKIState: State };
+
 /**
  * Marshall and validate all data required for profile request
  *
- * @param state State object after all data has been collected
+ * @param state KatasterKI state object after all data has been collected
  * @throws will throw an error when any required data fields are null
  *    or the TOS are not accepted
  */
-export const marshallProfile = (state: State): ProfileRequest => {
+export const marshallProfile = (
+  state: marshallProfileStateParam
+): ProfileRequest => {
   const {
     profile,
     userGroup,
     transportRatings,
     isTosAccepted,
     currentPerspective
-  } = state;
+  } = state.KatasterKIState;
 
   // profile.district is optional, everything else is required
   const isComplete = [
