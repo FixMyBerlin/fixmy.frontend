@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
@@ -115,16 +115,29 @@ const StyledSlider = styled(Slider)`
   }
 
   .rc-slider-mark-text {
-    color: ${config.colors.inactivegrey};
-    letter-spacing: 0.2px;
+    color: ${config.colors.darkbg};
+    font-weight: 700;
     font-size: 10px;
-    transform: translate(${SLIDER_HEIGHT /
-      2}px, 0) translate(-50%, 0) !important;
+    user-select: none;
+
+    ${(props) =>
+      props.value === 0 || props.value === props.max
+        ? css`
+            width: ${SLIDER_HEIGHT}px;
+            transform: translate(
+              ${props.value === 0 ? 0 : '-100%'},
+              0
+            ) !important;
+          `
+        : null}
   }
 `;
 
 export default (props) => {
   const Icon = props.icon;
+  const marks = {
+    [props.value]: props.ratingLabels[props.value]
+  };
 
   return (
     <SliderWrapper>
@@ -133,6 +146,7 @@ export default (props) => {
         <Icon />
         <StyledSlider
           {...props.sliderOptions}
+          marks={marks}
           value={props.value}
           onChange={(value) => props.onChange(value, props)}
           ratingLabels={props.ratingLabels}
