@@ -1,12 +1,12 @@
 import { ProfileRequest } from '../types';
-import { validateProfileRequest } from '../utils';
+import { validateProfileRequest } from '../api/utils';
 
 const profileRequestSample: ProfileRequest = require('../scheme/sample-instances/profile-request-sample-instance.json');
 
 describe('Kataster utils', () => {
   it(
     'Successfully validates an error free instance of the ProfileRequest' +
-    ' Json Schema',
+      ' Json Schema',
     () => {
       // Lacking better tools, I used "JSONBuddy" to auto-generate an instance from the schema.
       const validInstance = profileRequestSample;
