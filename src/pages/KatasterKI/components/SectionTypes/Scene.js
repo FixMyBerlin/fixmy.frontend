@@ -41,7 +41,7 @@ const finishMeasurement = (sceneID) => {
 const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
   const onClick = (option) => {
     const duration = finishMeasurement(name);
-    handleChange(option.value, duration);
+    handleChange({ rating: option.value, duration });
     next();
   };
 

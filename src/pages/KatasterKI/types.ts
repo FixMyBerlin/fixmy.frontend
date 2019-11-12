@@ -34,11 +34,11 @@ export interface ProfileResponse {
 
 export interface AnswerRequest extends Answer {}
 
-export interface PerspectiveChangeRequest {
+export interface PerspectiveRequest {
   perspective: Perspective;
 }
 
-export interface PerspectiveChangeResponse extends ProfileResponse {}
+export interface PerspectiveResponse extends ProfileResponse {}
 
 export interface Section {
   type: string;

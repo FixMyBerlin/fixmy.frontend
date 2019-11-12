@@ -11,7 +11,7 @@ const PerspectiveChange = ({
   next
 }) => {
   const onClick = (option) => {
-    handleChange(option.value);
+    handleChange({ nextPerspective: option.value });
     next();
   };
 

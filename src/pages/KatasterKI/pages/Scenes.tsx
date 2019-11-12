@@ -9,7 +9,11 @@ import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
 import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import Scene from '~/pages/KatasterKI/components/SectionTypes/Scene';
-import { setAnswer, updateProgressBar } from '../state';
+import {
+  setAnswer,
+  updateProgressBar,
+  submitPerspectiveChange
+} from '../state';
 import { Answer, Section, RequestState } from '../types';
 import { makeSection } from '~/pages/KatasterKI/scene-utils';
 import PerspectiveChange from '../components/SectionTypes/PerspectiveChange';
@@ -27,7 +31,14 @@ const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
     ? scenes.find((s) => s.sceneID === section.name)
     : null;
 
-const Scenes = ({ match, scenes, perspective, dispatch, profileRequest }) => {
+const Scenes = ({
+  match,
+  scenes,
+  perspective,
+  dispatch,
+  profileRequest,
+  perspectiveRequest
+}) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
   if (
     (!config.debug && profileRequest.state == RequestState.waiting) ||
@@ -41,6 +52,12 @@ const Scenes = ({ match, scenes, perspective, dispatch, profileRequest }) => {
     profileRequest.state == RequestState.error
   )
     return <Loader pastDelay={true} error={profileRequest.message} />;
+
+  if (
+    perspectiveRequest.state == RequestState.pending ||
+    perspectiveRequest.state == RequestState.error
+  )
+    return <Loader pastDelay={true} error={perspectiveRequest.message} />;
 
   const page = +match.params.page - 1;
   const sectionConfig = makeSection(scenes, perspective);
@@ -60,10 +77,14 @@ const Scenes = ({ match, scenes, perspective, dispatch, profileRequest }) => {
     throw new Error("Error: Section or section type doesn't exist.");
   }
 
-  const onChange = (rating: number, duration: number) =>
-    section.type === 'scene'
-      ? dispatch(setAnswer(section.name, rating, duration))
-      : null;
+  const onChange = ({ rating, duration, nextPerspective }) => {
+    if (section.type === 'scene') {
+      dispatch(setAnswer(section.name, rating, duration));
+    } else if (section.type === 'perspective_change') {
+      dispatch(setAnswer(section.name, rating, duration));
+      dispatch(submitPerspectiveChange(nextPerspective));
+    }
+  };
 
   const next = () => {
     const isLastSection = page === sectionConfig.length - 1;
@@ -91,7 +112,8 @@ const mapStateToProps = (state) => ({
   isTosAccepted: state.KatasterKIState.isTosAccepted,
   scenes: state.KatasterKIState.scenes,
   perspective: state.KatasterKIState.currentPerspective,
-  profileRequest: state.KatasterKIState.profileRequest
+  profileRequest: state.KatasterKIState.profileRequest,
+  perspectiveRequest: state.KatasterKIState.perspectiveRequest
 });
 
 export default connect(mapStateToProps)(Scenes);
