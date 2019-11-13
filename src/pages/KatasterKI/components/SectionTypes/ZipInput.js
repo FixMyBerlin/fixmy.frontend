@@ -59,7 +59,7 @@ const ZipInput = (props) => {
     const selectedDistrict = hasDistrictOptions ? district.current : '';
 
     const isInvalidZipCode =
-      zipCode.current.length === 0 ||
+      zipCode.current.length !== 5 ||
       Number.isNaN(parseInt(zipCode.current, 10)) ||
       parseInt(zipCode.current, 10) < 1000;
 
