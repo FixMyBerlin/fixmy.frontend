@@ -1,14 +1,11 @@
 import { Dispatch } from 'redux';
 import {
   Answer,
-  AnswerRequest,
-  Experiment,
   Perspective,
   Rating,
   RequestState,
   TransportMode,
   TransportRating,
-  VehicleKind,
   UserGroup,
   ProfileRequest,
   ProfileResponse,
@@ -23,8 +20,8 @@ const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
 const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
 const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
 const SET_ZIPCODE = 'KatasterKI/SET_ZIPCODE';
-const SET_DISTRICT_OPTIONS = 'KatasterKI/SET_DISTRICT_OPTIONS';
 const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
+export const RECEIVED_SCENE_GROUP = 'KatasterKI/RECEIVED_SCENE_GROUP';
 export const SUBMIT_PROFILE_PENDING = 'KatasterKI/SUBMIT_PROFILE_PENDING';
 export const SUBMIT_PROFILE_ERROR = 'KatasterKI/SUBMIT_PROFILE_ERROR';
 export const SUBMIT_PROFILE_COMPLETE = 'KatasterKI/SUBMIT_PROFILE_COMPLETE';
@@ -129,7 +126,9 @@ const productionDefaultState: State = {
   currentPerspective: Perspective.bicycle
 };
 
-const testingDefaultState: State = {
+// This state is used in the dev environment and for integration tests
+// to simulate an already filled form
+export const testingDefaultState: State = {
   ...productionDefaultState,
   isTosAccepted: true,
   transportRatings: {
@@ -210,17 +209,7 @@ export default function reducer(state: State = defaultState, action: Action) {
     case SUBMIT_PERSPECTIVE_COMPLETE:
       return {
         ...state,
-        scenes: [
-          ...action.value.response.scenes.map(
-            (sceneID: string): Answer => ({
-              sceneID,
-              rating: null,
-              duration: null
-            })
-          )
-        ],
-        currentPerspective: action.value.perspective,
-        statisticsCounter: action.value.response.ratings_total,
+        currentPerspective: action.value,
         perspectiveRequest: { state: RequestState.success }
       };
 
@@ -238,17 +227,20 @@ export default function reducer(state: State = defaultState, action: Action) {
     case SUBMIT_PROFILE_COMPLETE:
       return {
         ...state,
-        scenes: [
-          ...action.value.scenes.map(
-            (sceneID: string): Answer => ({
-              sceneID,
-              rating: null,
-              duration: null
-            })
-          )
-        ],
-        statisticsCounter: action.value.ratings_total,
         profileRequest: { state: RequestState.success }
+      };
+
+    case RECEIVED_SCENE_GROUP:
+      return {
+        ...state,
+        scenes: action.value.scenes.map(
+          (sceneID: string): Answer => ({
+            sceneID,
+            rating: null,
+            duration: null
+          })
+        ),
+        statisticsCounter: action.value.ratings_total
       };
 
     case SET_TRANSPORT_RATING:
@@ -366,26 +358,28 @@ export function submitProfilePending(): Action {
 export function submitProfileError(errorMessage: string): Action {
   return { type: SUBMIT_PROFILE_ERROR, error: errorMessage };
 }
-export function submitProfileComplete(
-  profileResponse: ProfileResponse
-): Action {
-  return { type: SUBMIT_PROFILE_COMPLETE, value: profileResponse };
+export function submitProfileComplete(): Action {
+  return { type: SUBMIT_PROFILE_COMPLETE };
 }
 
-export function submitPerspectiveChangePending(): Action {
+export function submitPerspectivePending(): Action {
   return { type: SUBMIT_PERSPECTIVE_PENDING };
 }
-export function submitPerspectiveChangeError(errorMessage: string): Action {
+export function submitPerspectiveError(errorMessage: string): Action {
   return { type: SUBMIT_PERSPECTIVE_ERROR, error: errorMessage };
 }
-export function submitPerspectiveChangeComplete(
-  perspectiveResponse: PerspectiveResponse,
-  perspective: Perspective
-): Action {
+export function submitPerspectiveComplete(perspective: Perspective): Action {
   return {
     type: SUBMIT_PERSPECTIVE_COMPLETE,
-    value: { response: perspectiveResponse, perspective }
+    value: perspective
   };
+}
+
+export function receivedSceneGroup(
+  scenes: Array<string>,
+  ratings_total: number
+) {
+  return { type: RECEIVED_SCENE_GROUP, value: { scenes, ratings_total } };
 }
 
 // thunks
@@ -397,8 +391,9 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
 
   try {
     profileToSubmit = api.marshallProfile(getState());
-    const profileResponse = await api.submitProfile(profileToSubmit);
-    dispatch(submitProfileComplete(profileResponse));
+    const { scenes, ratings_total } = await api.submitProfile(profileToSubmit);
+    dispatch(receivedSceneGroup(scenes, ratings_total));
+    dispatch(submitProfileComplete());
   } catch (e) {
     dispatch(
       submitProfileError(
@@ -420,16 +415,17 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
   }
 };
 
-export const submitPerspectiveChange = (perspective: Perspective) => async (
+export const submitPerspective = (perspective: Perspective) => async (
   dispatch: Dispatch,
   getState
 ) => {
-  dispatch(submitPerspectiveChangePending());
+  dispatch(submitPerspectivePending());
   try {
-    const perspectiveResponse = await api.submitPerspectiveChange({
+    const { scenes, ratings_total } = await api.submitPerspective({
       perspective
     });
-    dispatch(submitPerspectiveChangeComplete(perspectiveResponse, perspective));
+    dispatch(receivedSceneGroup(scenes, ratings_total));
+    dispatch(submitPerspectiveComplete(perspective));
   } catch (e) {
     dispatch(
       submitProfileError(
