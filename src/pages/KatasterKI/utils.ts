@@ -32,10 +32,3 @@ const userGroupToPerspective = {
  */
 export const getInitialPerspective = (userGroup: UserGroup): Perspective =>
   userGroupToPerspective[userGroup];
-
-/** Build an endpoint URL given an endpoint configured in the global config
- *
- * @param endpoint name of the endpoint from config.katasterKI.api
- */
-export const getEndpointURL = (endpoint: string): string =>
-  `${config.apiUrl}/${config.katasterKI.api[endpoint]}`;

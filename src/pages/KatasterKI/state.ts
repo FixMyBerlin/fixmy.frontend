@@ -14,13 +14,13 @@ import {
 import { getUserGroup } from './utils';
 import api from './api';
 
-const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
-const SET_ANSWER = 'KatasterKI/SET_ANSWER';
-const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
-const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
-const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
-const SET_ZIPCODE = 'KatasterKI/SET_ZIPCODE';
-const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
+export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
+export const SET_ANSWER = 'KatasterKI/SET_ANSWER';
+export const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
+export const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
+export const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
+export const SET_ZIPCODE = 'KatasterKI/SET_ZIPCODE';
+export const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
 export const RECEIVED_SCENE_GROUP = 'KatasterKI/RECEIVED_SCENE_GROUP';
 export const SUBMIT_PROFILE_PENDING = 'KatasterKI/SUBMIT_PROFILE_PENDING';
 export const SUBMIT_PROFILE_ERROR = 'KatasterKI/SUBMIT_PROFILE_ERROR';
@@ -105,7 +105,7 @@ interface Action {
   profileResponse?: ProfileResponse;
 }
 
-const productionDefaultState: State = {
+export const productionDefaultState: State = {
   isTosAccepted: false,
   transportRatings: {},
   profile: {
@@ -406,13 +406,13 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
     // Throwing an error would break unit tests.
     // If this is a test run, don't log the error. TODO: factor out to util method
     const cachedConsoleErrorFunc = console.error;
-    if (process.env.NODE_ENV === 'test') {
-      console.error = () => {};
-    }
-    console.error(`Failed to submit profile: ${e.message}`);
-    if (process.env.NODE_ENV === 'test') {
-      console.error = cachedConsoleErrorFunc;
-    }
+    // if (process.env.NODE_ENV === 'test') {
+    //   console.error = () => {};
+    // }
+    if (config.debug) console.error(`Failed to submit profile: ${e.message}`);
+    // if (process.env.NODE_ENV === 'test') {
+    //   console.error = cachedConsoleErrorFunc;
+    // }
     if (process.env.NODE_ENV != 'test') throw e;
   }
 };

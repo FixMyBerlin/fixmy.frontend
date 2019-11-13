@@ -9,11 +9,12 @@ import {
   UserGroup,
   Perspective,
   PerspectiveRequest,
-  PerspectiveResponse
+  PerspectiveResponse,
+  TransportMode
 } from '../types';
-import { getEndpointURL } from '../utils';
+import { getEndpointURL } from '../api/utils';
 
-import {
+import reducer, {
   State,
   SUBMIT_PROFILE_COMPLETE,
   SUBMIT_PROFILE_ERROR,
@@ -24,7 +25,18 @@ import {
   SUBMIT_PERSPECTIVE_PENDING,
   SUBMIT_PERSPECTIVE_COMPLETE,
   submitPerspective,
-  testingDefaultState
+  testingDefaultState,
+  productionDefaultState,
+  setTOSAccepted,
+  setProfileAnswer,
+  setTransportRating,
+  setZipcode,
+  SET_TOS_ACCEPTED,
+  SET_PROFILE_ANSWER,
+  SET_TRANSPORT_RATING,
+  SET_ZIPCODE,
+  updateProgressBar,
+  UPDATE_PROGRESS_BAR
 } from '../state';
 
 const profileRequestSample: ProfileRequest = require('../scheme/sample-instances/profile-request-sample-instance.json');
@@ -49,7 +61,11 @@ describe('submitProfile', () => {
       'and SUBMIT_PROFILE_COMPLETE',
     () => {
       // mock api request
-      fetchMock.postOnce(getEndpointURL('profile'), profileResponseSample);
+      const sessionId = 'session-id';
+      fetchMock.postOnce(
+        getEndpointURL('profile', sessionId, null),
+        profileResponseSample
+      );
 
       // mock store
       const stateBefore = {
@@ -80,7 +96,8 @@ describe('submitProfile', () => {
       'for invalid inputs',
     async () => {
       // mock failing api request
-      fetchMock.postOnce(getEndpointURL('profile'), {}); // kept here for savety, request should not get fired
+      const sessionId = 'session-id';
+      fetchMock.postOnce(getEndpointURL('profile', sessionId, null), {}); // kept here for savety, request should not get fired
 
       // mock store
       const invalidProfile = {
@@ -121,8 +138,9 @@ describe('submitPerspective', () => {
 
   it('dispatches SUBMIT_PERSPECTIVE_PENDING, RECEIVED_SCENE_GROUP and SUBMIT_PERSPECTIVE_COMPLETE', () => {
     // mock api request
+    const sessionId = 'session-id';
     fetchMock.postOnce(
-      getEndpointURL('perspective'),
+      getEndpointURL('perspective', sessionId, null),
       perspectiveResponseSample
     );
 
@@ -147,5 +165,78 @@ describe('submitPerspective', () => {
 
       // test reducer TODO
     });
+  });
+});
+describe('Profile section', () => {
+  afterEach(() => {
+    fetchMock.restore();
+  });
+
+  it('Submits a profile to the backend after completing all questions', async () => {
+    // mock api request
+    const sessionId = 'session-id';
+    fetchMock.postOnce(
+      getEndpointURL('profile', sessionId, null),
+      profileResponseSample
+    );
+
+    // mock store
+    const stateBefore = {
+      KatasterKIState: {
+        ...productionDefaultState
+      }
+    };
+    const store = mockStore(stateBefore);
+    const expectedActions = [
+      SET_TOS_ACCEPTED,
+      UPDATE_PROGRESS_BAR,
+      SET_PROFILE_ANSWER,
+      SET_TRANSPORT_RATING,
+      SET_PROFILE_ANSWER,
+      SET_PROFILE_ANSWER,
+      SET_PROFILE_ANSWER,
+      SET_PROFILE_ANSWER,
+      SET_PROFILE_ANSWER,
+      SET_PROFILE_ANSWER,
+      SET_PROFILE_ANSWER,
+      SET_PROFILE_ANSWER,
+      SET_ZIPCODE,
+      SET_ZIPCODE,
+      SET_ZIPCODE,
+      SET_ZIPCODE,
+      SET_ZIPCODE,
+      SET_PROFILE_ANSWER,
+      SUBMIT_PROFILE_PENDING,
+      RECEIVED_SCENE_GROUP,
+      SUBMIT_PROFILE_COMPLETE
+    ];
+
+    // Update progress bar omitted
+    store.dispatch(setTOSAccepted(true));
+    store.dispatch(updateProgressBar(12, 13));
+    store.dispatch(setProfileAnswer('berlinTraffic', 3));
+    store.dispatch(setTransportRating(TransportMode.car, 5));
+    store.dispatch(setProfileAnswer('ageGroup', 7));
+    store.dispatch(setProfileAnswer('hasChildren', false));
+    store.dispatch(setProfileAnswer('gender', 'd'));
+    store.dispatch(setProfileAnswer('vehiclesOwned', { car: true }));
+    store.dispatch(setProfileAnswer('bicycleUse', 5));
+    store.dispatch(setProfileAnswer('motivationalFactors', { bikefun: 1 }));
+    store.dispatch(setProfileAnswer('bikeReasons', { 8: true }));
+    store.dispatch(
+      setProfileAnswer('bikeReasons', { 8: true, '8-input': 'test' })
+    );
+    store.dispatch(setZipcode('1', ''));
+    store.dispatch(setZipcode('10', ''));
+    store.dispatch(setZipcode('105', ''));
+    store.dispatch(setZipcode('1055', ''));
+    store.dispatch(setZipcode('10553', ''));
+    store.dispatch(setProfileAnswer('whyBiking', { safety: true }));
+    await store.dispatch(submitProfile());
+
+    const dispatchedActions = store.getActions();
+    expect(dispatchedActions.map((action) => action.type)).toEqual(
+      expectedActions
+    );
   });
 });
