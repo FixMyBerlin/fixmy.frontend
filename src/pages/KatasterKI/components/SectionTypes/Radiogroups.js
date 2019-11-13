@@ -50,11 +50,6 @@ const isChecked = (currentValues, name, value) =>
   currentValues !== null &&
   currentValues[name] === value;
 
-const isSomeChecked = (currentValues, name) =>
-  typeof currentValues !== 'undefined' &&
-  currentValues !== null &&
-  typeof currentValues[name] !== 'undefined';
-
 export default ({
   title,
   info,
@@ -77,15 +72,10 @@ export default ({
               radiogroup.name,
               option.value
             );
-            const userCheckedRadio = isSomeChecked(
-              currentValue,
-              radiogroup.name
-            );
             const isLabelVisible =
               isRadioChecked ||
-              (!userCheckedRadio &&
-                (optionIndex === 0 ||
-                  optionIndex === radiogroup.options.length - 1));
+              (optionIndex === 0 ||
+                optionIndex === radiogroup.options.length - 1);
 
             return (
               <RadioItem

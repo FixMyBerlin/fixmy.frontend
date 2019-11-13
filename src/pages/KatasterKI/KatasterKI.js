@@ -2,10 +2,24 @@ import React from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { media } from '~/styles/utils';
 import history from '~/history';
 import Landing from './pages/Landing';
 import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
+import landingSrc from '~/images/strassencheck-bg.jpg';
+
+const BgWrapper = styled.div`
+  height: 100%;
+  ${(props) =>
+    !props.isLanding
+      ? media.m`
+          background: url(${landingSrc}) no-repeat center center;
+          background-size: cover;
+          padding: ${!props.isLanding ? '20px' : 0};
+        `
+      : null}
+`;
 
 const ContentWrapper = styled.div`
   padding: ${(props) => (props.isLanding ? 0 : '1rem')};
@@ -14,43 +28,50 @@ const ContentWrapper = styled.div`
   min-height: 100%;
   display: flex;
   flex-direction: column;
-
+  background: white;
+  box-shadow: ${(props) =>
+    props.isLanding ? 'none' : '0 0 8px 3px rgba(0,0,0,.25)'};
   img {
     width: 100%;
   }
 `;
 
-const KatasterKI = (props) => (
-  <ContentWrapper
-    isLanding={props.location.pathname === config.routes.katasterKI.landing}
-  >
-    <Router history={history}>
-      <Switch>
-        <Route
-          exact
-          path={config.routes.katasterKI.landing}
-          component={Landing}
-        />
+const KatasterKI = (props) => {
+  const isLanding =
+    props.location.pathname === config.routes.katasterKI.landing;
 
-        <Route
-          exact
-          path={config.routes.katasterKI.profile}
-          component={Profile}
-        />
+  return (
+    <BgWrapper isLanding={isLanding}>
+      <ContentWrapper isLanding={isLanding}>
+        <Router history={history}>
+          <Switch>
+            <Route
+              exact
+              path={config.routes.katasterKI.landing}
+              component={Landing}
+            />
 
-        <Route
-          exact
-          path={config.routes.katasterKI.scenes}
-          component={Scenes}
-        />
+            <Route
+              exact
+              path={config.routes.katasterKI.profile}
+              component={Profile}
+            />
 
-        {/* Fallback: redirect to landing page */}
-        <Route
-          render={() => <Redirect to={config.routes.katasterKI.landing} />}
-        />
-      </Switch>
-    </Router>
-  </ContentWrapper>
-);
+            <Route
+              exact
+              path={config.routes.katasterKI.scenes}
+              component={Scenes}
+            />
+
+            {/* Fallback: redirect to landing page */}
+            <Route
+              render={() => <Redirect to={config.routes.katasterKI.landing} />}
+            />
+          </Switch>
+        </Router>
+      </ContentWrapper>
+    </BgWrapper>
+  );
+};
 
 export default KatasterKI;

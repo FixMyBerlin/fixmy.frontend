@@ -23,10 +23,15 @@ const IntroScreen = styled.div`
 const IntroSubline = styled.div`
   color: white;
   font-size: 16px;
+  max-width: 650px;
+  width: 100%;
+  margin: 0 auto;
 `;
 
 const IntroBottom = styled.div`
-  margin-top: auto;
+  max-width: 650px;
+  width: 100%;
+  margin: auto auto 0 auto;
 `;
 
 const IntroQuestion = styled.div`
@@ -58,6 +63,9 @@ const Headline = styled.h2`
 
 const Content = styled.div`
   padding: 1rem;
+  max-width: 650px;
+  width: 100%;
+  margin: 0 auto;
 `;
 
 const Quote = styled.div`
