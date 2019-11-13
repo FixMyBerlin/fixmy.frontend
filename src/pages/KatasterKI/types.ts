@@ -50,26 +50,26 @@ export interface Section {
   }>;
 }
 
-export const enum Experiment {
+export enum Experiment {
   MainStreet = 'MS',
   CyclePath = 'CP',
   SideStreet = 'SE'
 }
 
-export const enum Perspective {
+export enum Perspective {
   bicycle = 'C',
   car = 'A',
   pedestrian = 'P'
 }
 
-export const enum Rating {
+export enum Rating {
   unsafe,
   mostlyUnsafe,
   mostlySafe,
   safe
 }
 
-export const enum RequestState {
+export enum RequestState {
   waiting = 'waiting',
   pending = 'pending',
   delayed = 'delayed',
@@ -77,7 +77,7 @@ export const enum RequestState {
   error = 'error'
 }
 
-export const enum TransportMode {
+export enum TransportMode {
   pedestrian = 'pedestrian',
   bicycle = 'bicycle',
   motorbike = 'motorbike',
@@ -85,7 +85,7 @@ export const enum TransportMode {
   car = 'car'
 }
 
-export const enum TransportRating {
+export enum TransportRating {
   never,
   monthly,
   monthlyPlus,
@@ -94,14 +94,14 @@ export const enum TransportRating {
   daily
 }
 
-export const enum UserGroup {
+export enum UserGroup {
   bicycle = 'bicycle',
   potentialBicycle = 'potentialBicycle',
   car = 'car',
   pedestrian = 'pedestrian'
 }
 
-export const enum VehicleKind {
+export enum VehicleKind {
   pedelec = 'pedelec',
   car = 'car',
   public = 'public',
