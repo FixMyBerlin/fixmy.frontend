@@ -1,60 +1,68 @@
-import thunk from 'redux-thunk';
+import { AnyAction } from 'redux';
+import thunk, { ThunkDispatch } from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import fetchMock from 'fetch-mock';
 import {
   ProfileRequest,
   ProfileResponse,
   TransportRating,
-  UserGroup
+  UserGroup,
+  Perspective,
+  PerspectiveRequest,
+  PerspectiveResponse
 } from '../types';
+import { getEndpointURL } from '../utils';
 
-import { profilesEndpointUrl } from '../api';
 import {
+  State,
   SUBMIT_PROFILE_COMPLETE,
   SUBMIT_PROFILE_ERROR,
   SUBMIT_PROFILE_PENDING,
+  RECEIVED_SCENE_GROUP,
   submitProfile,
-  submitProfileError
+  submitProfileError,
+  SUBMIT_PERSPECTIVE_PENDING,
+  SUBMIT_PERSPECTIVE_COMPLETE,
+  submitPerspective,
+  testingDefaultState
 } from '../state';
 
 const profileRequestSample: ProfileRequest = require('../scheme/sample-instances/profile-request-sample-instance.json');
 const profileResponseSample: ProfileResponse = require('../scheme/sample-instances/profile-response-sample-instance.json');
+const perspetiveRequestSample: PerspectiveRequest = require('../scheme/sample-instances/perspective-request-sample-instance.json');
+const perspectiveResponseSample: PerspectiveResponse = require('../scheme/sample-instances/perspective-response-sample-instance.json');
 
+type mockState = {
+  KatasterKIState: State;
+};
 const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+type DispatchExts = ThunkDispatch<mockState, void, AnyAction>;
+const mockStore = configureMockStore<mockState, DispatchExts>(middlewares);
 
-// util function to prepare a state that utils.marshallProfileForUpload accepts as valid
-const getBaseState = () => ({
-  // the profile is set in the individual test
-  profile: null,
-  // additional state data needed
-  userGroup: UserGroup.bicycle,
-  transportRatings: { mode: TransportRating.never },
-  currentPerspective: 'C',
-  isTosAccepted: true
-});
-
-describe('Kataster state', () => {
+describe('submitProfile', () => {
   afterEach(() => {
     fetchMock.restore();
   });
 
   it(
-    'dispatches SUBMIT_PROFILE_PENDING and SUBMIT_PROFILE_COMPLETE ' +
-      'during the submit of a valid ProfileRequest',
+    'dispatches SUBMIT_PROFILE_PENDING, RECEIVED_SCENE_GROUP' +
+      'and SUBMIT_PROFILE_COMPLETE',
     () => {
       // mock api request
-      fetchMock.postOnce(profilesEndpointUrl, profileResponseSample);
+      fetchMock.postOnce(getEndpointURL('profile'), profileResponseSample);
 
       // mock store
       const stateBefore = {
         KatasterKIState: {
-          ...getBaseState(),
-          profile: profileRequestSample
+          ...testingDefaultState
         }
       };
       const store = mockStore(stateBefore);
-      const expectedActions = [SUBMIT_PROFILE_PENDING, SUBMIT_PROFILE_COMPLETE];
+      const expectedActions = [
+        SUBMIT_PROFILE_PENDING,
+        RECEIVED_SCENE_GROUP,
+        SUBMIT_PROFILE_COMPLETE
+      ];
 
       return store.dispatch(submitProfile()).then(() => {
         // test action sequence
@@ -69,10 +77,10 @@ describe('Kataster state', () => {
 
   it(
     'dispatches SUBMIT_PROFILE_PENDING and SUBMIT_PROFILE_ERROR ' +
-      'during the submit of an invalid ProfileRequest',
+      'for invalid inputs',
     async () => {
       // mock failing api request
-      fetchMock.postOnce(profilesEndpointUrl, {}); // kept here for savety, request should not get fired
+      fetchMock.postOnce(getEndpointURL('profile'), {}); // kept here for savety, request should not get fired
 
       // mock store
       const invalidProfile = {
@@ -87,7 +95,7 @@ describe('Kataster state', () => {
       };
       const stateBefore = {
         KatasterKIState: {
-          ...getBaseState(),
+          ...testingDefaultState,
           profile: invalidProfile
         }
       };
