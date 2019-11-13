@@ -22,6 +22,7 @@
     "public": 3
   },
   "userGroup": "pedestrian",
+  "perspective": "P",
   "vehiclesOwned": ["car"],
   "whyBiking": ["social"],
   "zipcode": "22000"
