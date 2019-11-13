@@ -8,8 +8,8 @@ import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
 
 const ContentWrapper = styled.div`
-  padding: 1rem;
-  max-width: 650px;
+  padding: ${(props) => (props.isLanding ? 0 : '1rem')};
+  max-width: ${(props) => (props.isLanding ? 'none' : '650px')};
   margin: 0 auto;
   min-height: 100%;
   display: flex;
@@ -20,8 +20,10 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const KatasterKI = () => (
-  <ContentWrapper>
+const KatasterKI = (props) => (
+  <ContentWrapper
+    isLanding={props.location.pathname === config.routes.katasterKI.landing}
+  >
     <Router history={history}>
       <Switch>
         <Route
