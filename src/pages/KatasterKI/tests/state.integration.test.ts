@@ -99,6 +99,9 @@ describe('submitProfile', () => {
           profile: invalidProfile
         }
       };
+
+      // This is supposed to be a mismatch
+      // @ts-ignore
       const store = mockStore(stateBefore);
 
       const dispatch = jest.fn();
