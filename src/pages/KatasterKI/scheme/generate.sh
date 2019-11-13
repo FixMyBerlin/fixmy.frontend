@@ -3,5 +3,5 @@ typescript-json-schema src/pages/KatasterKI/types.ts ProfileResponse --ignoreErr
 
 typescript-json-schema src/pages/KatasterKI/types.ts AnswerRequest --ignoreErrors -o src/pages/KatasterKI/scheme/answer-request.schema.json
 
-typescript-json-schema src/pages/KatasterKI/types.ts PerspectiveChangeRequest --ignoreErrors -o src/pages/KatasterKI/scheme/perspective-change-request.schema.json
-typescript-json-schema src/pages/KatasterKI/types.ts PerspectiveChangeResponse --ignoreErrors -o src/pages/KatasterKI/scheme/perspective-change-response.schema.json
+typescript-json-schema src/pages/KatasterKI/types.ts PerspectiveRequest --ignoreErrors -o src/pages/KatasterKI/scheme/perspective-request.schema.json
+typescript-json-schema src/pages/KatasterKI/types.ts PerspectiveResponse --ignoreErrors -o src/pages/KatasterKI/scheme/perspective-response.schema.json
