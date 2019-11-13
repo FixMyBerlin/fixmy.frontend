@@ -109,6 +109,10 @@ const productionDefaultState: State = {
   isTosAccepted: false,
   transportRatings: {},
   profile: {
+    bikeReasons: {},
+    motivationalFactors: {},
+    vehiclesOwned: {},
+    whyBiking: {},
     zipcode: ''
   },
   progressBar: {
@@ -164,9 +168,7 @@ export const testingDefaultState: State = {
   currentPerspective: Perspective.bicycle
 };
 
-const defaultState = config.debug
-  ? testingDefaultState
-  : productionDefaultState;
+const defaultState = false ? testingDefaultState : productionDefaultState;
 
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {
@@ -329,7 +331,7 @@ export function setPerspective(perspective: Perspective): Action {
  * @param zipcode
  * @param district optional for some zipcodes that are defined in global config
  */
-export function setZipcode(zipcode: string, district?: string): Action {
+export function setZipcode(zipcode: string, district: string): Action {
   // @ts-ignore
   const districtOptions = config.katasterKI.zipcodeDistricts[zipcode];
   return { type: SET_ZIPCODE, area: { zipcode, district, districtOptions } };
