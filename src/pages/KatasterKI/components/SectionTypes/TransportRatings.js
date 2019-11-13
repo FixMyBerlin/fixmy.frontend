@@ -6,6 +6,7 @@ import Flex from '~/components/Flex';
 import RatingSlider from '../RatingSlider';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Button from '~/pages/KatasterKI/components//Button';
+import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
 
 const Sliders = ({
   title,
@@ -17,6 +18,7 @@ const Sliders = ({
   next
 }) => {
   const [usedSlider, setUsedSlider] = useState(false);
+  const [isLoading, onClick] = useHandlerTimeout(next);
 
   return (
     <Flex flexDirection="column" css={{ flexGrow: 1 }}>
@@ -44,11 +46,12 @@ const Sliders = ({
 
       <Flex css={{ flexGrow: 1 }} justifyContent="center">
         <Button
-          onClick={next}
+          onClick={onClick}
           css={{ alignSelf: 'flex-end' }}
           disabled={!usedSlider}
+          isLoading={isLoading}
         >
-          weiter
+          Weiter
         </Button>
       </Flex>
     </Flex>

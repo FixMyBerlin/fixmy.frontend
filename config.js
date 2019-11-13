@@ -270,7 +270,8 @@ const config = {
       profile: '/profile',
       perspective: '/perspective',
       answer: '/answer'
-    }
+    },
+    buttonTimeout: 300
   },
   reports: {
     apiRoute: '/reports',
