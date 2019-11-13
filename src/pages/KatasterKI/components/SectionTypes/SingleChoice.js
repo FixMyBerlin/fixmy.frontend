@@ -1,7 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 
+import { media } from '~/styles/utils';
 import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+
+const SingleChoiceWrapper = styled.div`
+  ${media.m`
+    button {
+      margin-left: auto;
+      margin-right: auto
+    }
+  `}
+`;
 
 const SingleChoiceInput = ({
   title,
@@ -16,7 +27,7 @@ const SingleChoiceInput = ({
   };
 
   return (
-    <>
+    <SingleChoiceWrapper>
       <QuestionTitle>{title}</QuestionTitle>
       {options.map((option) => (
         <GhostButton
@@ -28,7 +39,7 @@ const SingleChoiceInput = ({
           {option.label}
         </GhostButton>
       ))}
-    </>
+    </SingleChoiceWrapper>
   );
 };
 

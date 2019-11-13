@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
@@ -9,6 +10,14 @@ import Radio from '~/pages/KatasterKI/components/Radio';
 
 const RadioGroupWrapper = styled.div`
   margin-bottom: 1em;
+
+  ${media.m`
+    width: 500px;
+    margin: 10px auto;
+    padding-bottom: 20px;
+    border-bottom: ${(props) =>
+      props.isLast ? 'none' : `1px solid ${config.colors.lightgrey}`} ;
+  `}
 `;
 
 const RadioGroupTitle = styled.div`
@@ -62,7 +71,10 @@ export default ({
     {info && <QuestionInfo>{info}</QuestionInfo>}
     <QuestionTitle>{title}</QuestionTitle>
     {radiogroups.map((radiogroup, index) => (
-      <RadioGroupWrapper key={`radiogroup_${radiogroup.name}`}>
+      <RadioGroupWrapper
+        key={`radiogroup_${radiogroup.name}`}
+        isLast={index === radiogroups.length - 1}
+      >
         <RadioGroupTitle>{radiogroup.label}</RadioGroupTitle>
         <RadioGroup>
           {radiogroup.options.map((option, optionIndex) => {

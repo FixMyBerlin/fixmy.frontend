@@ -5,6 +5,7 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 import Flex from '~/components/Flex';
+import { media } from '~/styles/utils';
 
 const SLIDER_HEIGHT = 40;
 
@@ -17,6 +18,13 @@ const SliderLabel = styled.div`
 
 const SliderWrapper = styled.div`
   margin-bottom: 3em;
+  width: 100%;
+
+  ${media.m`
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  `}
 `;
 
 const getTranslateX = (props) => {

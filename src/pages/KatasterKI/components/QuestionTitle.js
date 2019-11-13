@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { isSmallScreen } from '~/styles/utils';
+
 const HeadlineWrapper = styled.div`
   margin-bottom: 25px;
 
@@ -25,8 +27,10 @@ const HeadlineWrapper = styled.div`
 export default (props) => (
   <HeadlineWrapper>
     <h1>{props.children}</h1>
-    <svg>
-      <line x1="0" y1="0" x2="100%" />
-    </svg>
+    {isSmallScreen() && (
+      <svg>
+        <line x1="0" y1="0" x2="100%" />
+      </svg>
+    )}
   </HeadlineWrapper>
 );

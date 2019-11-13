@@ -23,7 +23,7 @@ const BgWrapper = styled.div`
 
 const ContentWrapper = styled.div`
   padding: ${(props) => (props.isLanding ? 0 : '1rem')};
-  max-width: ${(props) => (props.isLanding ? 'none' : '650px')};
+  max-width: ${(props) => (props.isLanding ? 'none' : '740px')};
   margin: 0 auto;
   min-height: 100%;
   display: flex;
