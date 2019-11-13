@@ -40,9 +40,11 @@ export const makeSection = (
 ): Array<Section> => {
   const perspectiveName = perspectiveNames[perspective];
 
+  const sceneCount = scenes.length;
+
   const titleScreen = {
     type: 'info',
-    title: `Wir zeigen ihnen nun Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen:`,
+    title: `Wir zeigen ihnen nun ${sceneCount} Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen:`,
     name: 'info'
   };
 
