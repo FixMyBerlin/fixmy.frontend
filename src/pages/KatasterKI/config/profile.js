@@ -47,10 +47,10 @@ export default [
     },
     ratingLabels: [
       'Nie',
-      'Selten',
-      '1 mal im Monat',
-      'Mehrmals im Monat',
-      '1 mal wöchentlich',
+      'seltener als monatlich',
+      '1-3 mal pro Monat',
+      '1-3 mal pro Woche',
+      '4-5 mal pro Woche',
       '(fast) täglich'
     ],
     ratings: [

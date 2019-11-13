@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -28,7 +28,6 @@ const getTranslateX = (props) => {
 };
 
 const StyledSlider = styled(Slider)`
-
   &&& {
     height: ${SLIDER_HEIGHT}px;
     padding: 0;
@@ -134,9 +133,18 @@ const StyledSlider = styled(Slider)`
 `;
 
 export default (props) => {
+  const [showMarks, setShowMarks] = useState(true);
   const Icon = props.icon;
-  const marks = {
-    [props.value]: props.ratingLabels[props.value]
+  const marks = showMarks
+    ? {
+        [props.value]: props.ratingLabels[props.value]
+      }
+    : {};
+
+  const onAfterChange = () => {
+    window.setTimeout(() => {
+      setShowMarks(true);
+    }, 200);
   };
 
   return (
@@ -150,6 +158,8 @@ export default (props) => {
           value={props.value}
           onChange={(value) => props.onChange(value, props)}
           ratingLabels={props.ratingLabels}
+          onBeforeChange={() => setShowMarks(false)}
+          onAfterChange={onAfterChange}
         />
       </Flex>
     </SliderWrapper>
