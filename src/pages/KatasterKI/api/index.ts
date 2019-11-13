@@ -49,7 +49,7 @@ async function submitProfile(
   }
 }
 
-async function submitPerspectiveChange(
+async function submitPerspective(
   perspectiveRequest: PerspectiveRequest
 ): Promise<PerspectiveResponse> {
   if (config.debug) {
@@ -66,5 +66,5 @@ async function submitPerspectiveChange(
 export default {
   submitProfile,
   marshallProfile,
-  submitPerspectiveChange
+  submitPerspective
 };
