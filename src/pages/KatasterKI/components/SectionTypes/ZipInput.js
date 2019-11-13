@@ -56,7 +56,7 @@ const ZipInput = (props) => {
   );
 
   const onChange = () => {
-    const selectedDistrict = hasDistrictOptions ? district.current : null;
+    const selectedDistrict = hasDistrictOptions ? district.current : '';
 
     const isInvalidZipCode =
       zipCode.current.length === 0 ||
