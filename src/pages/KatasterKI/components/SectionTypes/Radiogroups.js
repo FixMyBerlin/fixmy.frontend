@@ -37,7 +37,7 @@ const RadioItem = styled.div`
 const RadioLabel = styled.label`
   font-size: 14px;
   color: ${(props) =>
-    props.isChecked ? config.colors.katasterHighlight : config.colors.midgrey};
+    props.isChecked ? config.colors.darkbg : config.colors.midgrey};
   display: block;
   text-align: center;
   margin-top: 5px;

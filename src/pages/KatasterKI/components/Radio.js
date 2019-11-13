@@ -40,7 +40,7 @@ const StyledRadio = styled.div`
             left: 0;
             width: 11px;
             height: 11px;
-            background: ${config.colors.katasterHighlight};
+            background: ${config.colors.darkbg};
             transform: translate(50%, 50%);
           }
         `
