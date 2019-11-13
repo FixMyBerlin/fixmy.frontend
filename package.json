@@ -83,7 +83,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.6.0",
+    "@babel/polyfill": "^7.7.0",
     "@turf/along": "^6.0.1",
     "@turf/boolean-within": "^6.0.1",
     "@turf/helpers": "^6.1.4",
