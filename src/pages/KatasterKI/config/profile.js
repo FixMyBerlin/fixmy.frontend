@@ -57,12 +57,12 @@ export default [
       {
         icon: PedelecIcon,
         name: 'pedelec',
-        label: 'Zu Fuß'
+        label: 'Zu Fuß (länger als 15 min pro Weg)'
       },
       {
         icon: BikeIcon,
         name: 'bicycle',
-        label: 'Fahrrad'
+        label: 'Fahrrad / E-Bike'
       },
       {
         icon: MotorbikeIcon,

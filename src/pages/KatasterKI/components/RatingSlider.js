@@ -16,7 +16,7 @@ const SliderLabel = styled.div`
 `;
 
 const SliderWrapper = styled.div`
-  margin-bottom: 2em;
+  margin-bottom: 3em;
 `;
 
 const getTranslateX = (props) => {
