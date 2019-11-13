@@ -111,3 +111,38 @@ describe('submitProfile', () => {
     }
   );
 });
+describe('submitPerspective', () => {
+  afterEach(() => {
+    fetchMock.restore();
+  });
+
+  it('dispatches SUBMIT_PERSPECTIVE_PENDING, RECEIVED_SCENE_GROUP and SUBMIT_PERSPECTIVE_COMPLETE', () => {
+    // mock api request
+    fetchMock.postOnce(
+      getEndpointURL('perspective'),
+      perspectiveResponseSample
+    );
+
+    // mock store
+    const stateBefore = {
+      KatasterKIState: {
+        ...testingDefaultState
+      }
+    };
+    const store = mockStore(stateBefore);
+    const expectedActions = [
+      SUBMIT_PERSPECTIVE_PENDING,
+      RECEIVED_SCENE_GROUP,
+      SUBMIT_PERSPECTIVE_COMPLETE
+    ];
+
+    return store.dispatch(submitPerspective(Perspective.bicycle)).then(() => {
+      // test action sequence
+      expect(
+        store.getActions().map((dispatchedActions) => dispatchedActions.type)
+      ).toEqual(expectedActions);
+
+      // test reducer TODO
+    });
+  });
+});
