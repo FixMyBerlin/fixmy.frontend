@@ -300,7 +300,10 @@ const config = {
       '14197': ['Tempelhof-Schöneberg', 'Charlottenburg-Wilmersdorf']
     },
     buttonTimeout: 300,
-    projectId: '01'
+    projectId: '01',
+
+    // this is the article link for the landing page
+    tspArticleLink: 'https://tagesspiegel.de'
   },
   reports: {
     apiRoute: '/reports',

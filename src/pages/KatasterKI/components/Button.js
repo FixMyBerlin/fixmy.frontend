@@ -11,12 +11,10 @@ const StyledButton = styled.button`
   border-radius: 32px;
   border: none;
   outline: none;
-  padding: 0 25px;
-  background: ${(props) =>
-    props.disabled ? config.colors.lightgrey : config.colors.katasterHighlight};
+  padding: 16px 25px;
+  background: ${(props) => (props.disabled ? config.colors.lightgrey : config.colors.katasterHighlight)};
   text-decoration: none;
-  color: ${(props) =>
-    props.disabled ? config.colors.midgrey : config.colors.black};
+  color: ${(props) => (props.disabled ? config.colors.midgrey : config.colors.black)};
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
@@ -26,7 +24,6 @@ const StyledButton = styled.button`
   max-width: 400px;
   display: block;
   text-align: center;
-  height: 48px;
 
   &:hover {
     box-shadow: ${(props) => (props.disabled ? 'none' : boxShadowHover)};
@@ -34,7 +31,5 @@ const StyledButton = styled.button`
 `;
 
 export default ({ children, isLoading, ...rest }) => (
-  <StyledButton {...rest}>
-    {isLoading ? <Loader css={{ display: 'inline-block' }} /> : children}
-  </StyledButton>
+  <StyledButton {...rest}>{isLoading ? <Loader css={{ display: 'inline-block' }} /> : children}</StyledButton>
 );
