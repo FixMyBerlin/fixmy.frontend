@@ -31,7 +31,11 @@ export default (props) => {
   return (
     <>
       <ButtonWrapper>
-        <Button as={Link} to={`${config.routes.katasterKI.profileBase}/1`}>
+        <Button
+          disabled={!props.checked}
+          as={Link}
+          to={`${config.routes.katasterKI.profileBase}/1`}
+        >
           Umfrage beginnen
         </Button>
       </ButtonWrapper>
