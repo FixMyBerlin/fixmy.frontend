@@ -5,18 +5,15 @@ import fetchMock from 'fetch-mock';
 import {
   ProfileRequest,
   ProfileResponse,
-  TransportRating,
-  UserGroup,
   Perspective,
   PerspectiveRequest,
   PerspectiveResponse
 } from '../types';
-import { getEndpointURL } from '../utils';
+import { getEndpointURL } from '../api/utils';
 
-import {
+import reducer, {
   State,
   SUBMIT_PROFILE_COMPLETE,
-  SUBMIT_PROFILE_ERROR,
   SUBMIT_PROFILE_PENDING,
   RECEIVED_SCENE_GROUP,
   submitProfile,
@@ -49,7 +46,11 @@ describe('submitProfile', () => {
       'and SUBMIT_PROFILE_COMPLETE',
     async () => {
       // mock api request
-      fetchMock.postOnce(getEndpointURL('profile'), profileResponseSample);
+      const sessionId = 'session-id';
+      fetchMock.postOnce(
+        getEndpointURL('profile', sessionId, null),
+        profileResponseSample
+      );
 
       // mock store
       const stateBefore = {
@@ -78,7 +79,8 @@ describe('submitProfile', () => {
       'for invalid inputs',
     async () => {
       // mock failing api request
-      fetchMock.postOnce(getEndpointURL('profile'), {}); // kept here for savety, request should not get fired
+      const sessionId = 'session-id';
+      fetchMock.postOnce(getEndpointURL('profile', sessionId, null), {}); // kept here for savety, request should not get fired
 
       // mock store
       const invalidProfile = {
@@ -118,8 +120,10 @@ describe('submitPerspective', () => {
   });
 
   it('dispatches SUBMIT_PERSPECTIVE_PENDING, RECEIVED_SCENE_GROUP and SUBMIT_PERSPECTIVE_COMPLETE', async () => {
+    // mock api request
+    const sessionId = 'session-id';
     fetchMock.postOnce(
-      getEndpointURL('perspective'),
+      getEndpointURL('perspective', sessionId, null),
       perspectiveResponseSample
     );
 

@@ -11,16 +11,16 @@ import {
   ProfileResponse,
   PerspectiveResponse
 } from './types';
-import { getUserGroup, toggleNavigationWarning } from './utils';
+import { getUserGroup, makeSessionID, toggleNavigationWarning } from './utils';
 import api from './api';
 
-const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
-const SET_ANSWER = 'KatasterKI/SET_ANSWER';
-const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
-const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
-const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
-const SET_ZIPCODE = 'KatasterKI/SET_ZIPCODE';
-const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
+export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
+export const SET_ANSWER = 'KatasterKI/SET_ANSWER';
+export const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
+export const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
+export const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
+export const SET_ZIPCODE = 'KatasterKI/SET_ZIPCODE';
+export const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
 export const RECEIVED_SCENE_GROUP = 'KatasterKI/RECEIVED_SCENE_GROUP';
 export const SUBMIT_PROFILE_PENDING = 'KatasterKI/SUBMIT_PROFILE_PENDING';
 export const SUBMIT_PROFILE_ERROR = 'KatasterKI/SUBMIT_PROFILE_ERROR';
@@ -70,6 +70,7 @@ export interface State {
     state: RequestState;
     message?: string;
   };
+  sessionID: string;
   statisticsCounter?: number; // total count of ratings as reported by backend
   transportRatings: {
     [mode: string]: TransportRating;
@@ -105,7 +106,7 @@ interface Action {
   profileResponse?: ProfileResponse;
 }
 
-const productionDefaultState: State = {
+export const productionDefaultState: State = {
   isTosAccepted: false,
   transportRatings: {},
   profile: {
@@ -127,7 +128,8 @@ const productionDefaultState: State = {
   },
   userGroup: UserGroup.bicycle,
   scenes: [],
-  currentPerspective: Perspective.bicycle
+  currentPerspective: Perspective.bicycle,
+  sessionID: makeSessionID()
 };
 
 // This state is used in the dev environment and for integration tests
