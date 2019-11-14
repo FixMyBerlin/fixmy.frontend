@@ -1,4 +1,4 @@
-import PedelecIcon from '~/images/kataster-icons/icon-transportation-1.svg';
+import PedestrianIcon from '~/images/kataster-icons/icon-transportation-1.svg';
 import BikeIcon from '~/images/kataster-icons/icon-transportation-2.svg';
 import MotorbikeIcon from '~/images/kataster-icons/icon-transportation-5.svg';
 import PublicIcon from '~/images/kataster-icons/icon-transportation-3.svg';
@@ -55,8 +55,8 @@ export default [
     ],
     ratings: [
       {
-        icon: PedelecIcon,
-        name: 'pedelec',
+        icon: PedestrianIcon,
+        name: 'pedestrian',
         label: 'Zu Fuß (länger als 15 min pro Weg)'
       },
       {

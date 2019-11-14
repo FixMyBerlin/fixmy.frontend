@@ -108,7 +108,13 @@ interface Action {
 
 export const productionDefaultState: State = {
   isTosAccepted: false,
-  transportRatings: {},
+  transportRatings: {
+    pedestrian: 0,
+    bicycle: 0,
+    motorbike: 0,
+    car: 0,
+    public: 0
+  },
   profile: {
     bikeReasons: {},
     motivationalFactors: {},
@@ -138,7 +144,7 @@ export const testingDefaultState: State = {
   ...productionDefaultState,
   isTosAccepted: true,
   transportRatings: {
-    pedelec: 0,
+    pedestrian: 0,
     bicycle: 5,
     motorbike: 3,
     car: 0,

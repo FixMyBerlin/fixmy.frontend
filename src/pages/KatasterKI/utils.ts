@@ -7,9 +7,17 @@ import {
   UserGroup
 } from './types';
 
+const userGroups: Array<
+  UserGroupAssociation
+> = require('./config/userGroups.json');
+
 interface TransportRatings {
   [mode: string]: TransportRating;
 }
+
+type UserGroupAssociation = TransportRating & {
+  userGroup: UserGroup;
+};
 
 /**
  * Determine a usergroup given ratings given for different transport modes by
@@ -17,8 +25,20 @@ interface TransportRatings {
  *
  * @param transportRatings rating values for each TransportMode
  */
-export const getUserGroup = (transportRatings: TransportRatings): UserGroup =>
-  transportRatings[TransportMode.car] > 2 ? UserGroup.car : UserGroup.bicycle;
+export const getUserGroup = (transportRatings: TransportRatings): UserGroup => {
+  const match = userGroups.find((ug: UserGroupAssociation) =>
+    Object.keys(transportRatings).every(
+      (mode) => ug[mode] === transportRatings[mode]
+    )
+  );
+  if (match == null) {
+    if (config.debug)
+      console.warn('No usergroup match for transportRatings', transportRatings);
+    return UserGroup.bicycle;
+  } else {
+    return match.userGroup;
+  }
+};
 
 const userGroupToPerspective = {
   [UserGroup.bicycle]: Perspective.bicycle,
