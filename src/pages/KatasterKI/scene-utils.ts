@@ -29,7 +29,12 @@ const agentNames = {
 
 const ratingNames = ['unsicher', 'eher unsicher', 'eher sicher', 'sicher'];
 
-const ratingIcons = [ButtonIconUnsafe, ButtonIconMostyUnsafe, ButtonIconMostlySafe, ButtonIconSafe];
+const ratingIcons = [
+  ButtonIconUnsafe,
+  ButtonIconMostyUnsafe,
+  ButtonIconMostlySafe,
+  ButtonIconSafe
+];
 
 export const getSceneImageSrc = (id) => {
   // if (config.debug) {
@@ -39,7 +44,10 @@ export const getSceneImageSrc = (id) => {
   return `https://fmb-aws-bucket.s3.eu-central-1.amazonaws.com/KatasterKI/scenes/${id}.jpg`;
 };
 
-export const makeSection = (scenes: Array<Answer>, perspective: Perspective): Array<Section> => {
+export const makeSection = (
+  scenes: Array<Answer>,
+  perspective: Perspective
+): Array<Section> => {
   const perspectiveName = perspectiveNames[perspective];
 
   const sceneCount = scenes.length;
