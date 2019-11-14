@@ -47,7 +47,7 @@ describe('submitProfile', () => {
   it(
     'dispatches SUBMIT_PROFILE_PENDING, RECEIVED_SCENE_GROUP' +
       'and SUBMIT_PROFILE_COMPLETE',
-    () => {
+    async () => {
       // mock api request
       fetchMock.postOnce(getEndpointURL('profile'), profileResponseSample);
 
@@ -58,20 +58,18 @@ describe('submitProfile', () => {
         }
       };
       const store = mockStore(stateBefore);
+
+      await store.dispatch(submitProfile());
+      const dispatchedActionTypes = store
+        .getActions()
+        .map((dispatchedActions) => dispatchedActions.type);
+
       const expectedActions = [
         SUBMIT_PROFILE_PENDING,
         RECEIVED_SCENE_GROUP,
         SUBMIT_PROFILE_COMPLETE
       ];
-
-      return store.dispatch(submitProfile()).then(() => {
-        // test action sequence
-        expect(
-          store.getActions().map((dispatchedActions) => dispatchedActions.type)
-        ).toEqual(expectedActions);
-
-        // test reducer TODO
-      });
+      expect(dispatchedActionTypes).toEqual(expectedActions);
     }
   );
 
@@ -100,7 +98,7 @@ describe('submitProfile', () => {
         }
       };
 
-      // This is supposed to be a mismatch
+      // This is supposed to be a type mismatch
       // @ts-ignore
       const store = mockStore(stateBefore);
 
@@ -119,33 +117,28 @@ describe('submitPerspective', () => {
     fetchMock.restore();
   });
 
-  it('dispatches SUBMIT_PERSPECTIVE_PENDING, RECEIVED_SCENE_GROUP and SUBMIT_PERSPECTIVE_COMPLETE', () => {
-    // mock api request
+  it('dispatches SUBMIT_PERSPECTIVE_PENDING, RECEIVED_SCENE_GROUP and SUBMIT_PERSPECTIVE_COMPLETE', async () => {
     fetchMock.postOnce(
       getEndpointURL('perspective'),
       perspectiveResponseSample
     );
 
-    // mock store
     const stateBefore = {
       KatasterKIState: {
         ...testingDefaultState
       }
     };
     const store = mockStore(stateBefore);
+    await store.dispatch(submitPerspective(Perspective.bicycle));
+    const dispatchedActionTypes = store
+      .getActions()
+      .map((dispatchedActions) => dispatchedActions.type);
+
     const expectedActions = [
       SUBMIT_PERSPECTIVE_PENDING,
       RECEIVED_SCENE_GROUP,
       SUBMIT_PERSPECTIVE_COMPLETE
     ];
-
-    return store.dispatch(submitPerspective(Perspective.bicycle)).then(() => {
-      // test action sequence
-      expect(
-        store.getActions().map((dispatchedActions) => dispatchedActions.type)
-      ).toEqual(expectedActions);
-
-      // test reducer TODO
-    });
+    expect(dispatchedActionTypes).toEqual(expectedActions);
   });
 });

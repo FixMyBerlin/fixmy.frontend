@@ -28,6 +28,10 @@ const marshallMultiChoice = (
   let other = '';
   const choices = Object.keys(values)
     .map((field) => {
+      // Optional freeform input fields are stored in fieldnames ending in
+      // "-input". These are returned separately.
+      // Checkbox inputs in the multi_choice component are returned as a list
+      // of all "checked" fieldnames
       if (field.endsWith('-input')) {
         other = values[field].toString();
       } else {
