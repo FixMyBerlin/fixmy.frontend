@@ -11,7 +11,7 @@ import {
   ProfileResponse,
   PerspectiveResponse
 } from './types';
-import { getUserGroup, makeSessionID } from './utils';
+import { getUserGroup, makeSessionID, toggleNavigationWarning } from './utils';
 import api from './api';
 
 export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
@@ -294,6 +294,7 @@ export default function reducer(state: State = defaultState, action: Action) {
  *    recognized the privacy policy
  */
 export function setTOSAccepted(value: boolean): Action {
+  toggleNavigationWarning(true);
   return { type: SET_TOS_ACCEPTED, value };
 }
 
