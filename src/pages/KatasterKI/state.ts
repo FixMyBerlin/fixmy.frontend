@@ -25,9 +25,11 @@ export const RECEIVED_SCENE_GROUP = 'KatasterKI/RECEIVED_SCENE_GROUP';
 export const SUBMIT_PROFILE_PENDING = 'KatasterKI/SUBMIT_PROFILE_PENDING';
 export const SUBMIT_PROFILE_ERROR = 'KatasterKI/SUBMIT_PROFILE_ERROR';
 export const SUBMIT_PROFILE_COMPLETE = 'KatasterKI/SUBMIT_PROFILE_COMPLETE';
-export const SUBMIT_PERSPECTIVE_PENDING = 'KatasterKI/SUBMIT_PERSPECTIVE_PENDING';
+export const SUBMIT_PERSPECTIVE_PENDING =
+  'KatasterKI/SUBMIT_PERSPECTIVE_PENDING';
 export const SUBMIT_PERSPECTIVE_ERROR = 'KatasterKI/SUBMIT_PERSPECTIVE_ERROR';
-export const SUBMIT_PERSPECTIVE_COMPLETE = 'KatasterKI/SUBMIT_PERSPECTIVE_COMPLETE';
+export const SUBMIT_PERSPECTIVE_COMPLETE =
+  'KatasterKI/SUBMIT_PERSPECTIVE_COMPLETE';
 export const SUBMIT_ANSWER_ERROR = 'KatasterKI/SUBMIT_ANSWER_ERROR';
 
 export type MultiChoice = {
@@ -176,7 +178,9 @@ export const testingDefaultState: State = {
   currentPerspective: Perspective.bicycle
 };
 
-const defaultState = config.debug ? testingDefaultState : productionDefaultState;
+const defaultState = config.debug
+  ? testingDefaultState
+  : productionDefaultState;
 
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {
@@ -185,7 +189,9 @@ export default function reducer(state: State = defaultState, action: Action) {
 
     case SET_ANSWER:
       const scenes = Array.from(state.scenes);
-      const answerPos = scenes.findIndex((sc) => sc.sceneID === action.answer.sceneID);
+      const answerPos = scenes.findIndex(
+        (sc) => sc.sceneID === action.answer.sceneID
+      );
       scenes[answerPos] = action.answer;
       return { ...state, scenes };
 
@@ -302,7 +308,11 @@ export function setTOSAccepted(value: boolean): Action {
   return { type: SET_TOS_ACCEPTED, value };
 }
 
-export function setAnswer(sceneID: string, rating: Rating, duration: number): Action {
+export function setAnswer(
+  sceneID: string,
+  rating: Rating,
+  duration: number
+): Action {
   return {
     type: SET_ANSWER,
     answer: { sceneID, rating, duration }
@@ -350,7 +360,10 @@ export function updateProgressBar(current: number, total?: number) {
   return { type: UPDATE_PROGRESS_BAR, value: { current, total } };
 }
 
-export function setTransportRating(type: TransportMode, rating: number): Action {
+export function setTransportRating(
+  type: TransportMode,
+  rating: number
+): Action {
   return { type: SET_TRANSPORT_RATING, transportRating: { type, rating } };
 }
 
@@ -382,7 +395,10 @@ export function submitAnswerError(errorMessage: string): Action {
   return { type: SUBMIT_ANSWER_ERROR, error: errorMessage };
 }
 
-export function receivedSceneGroup(scenes: Array<string>, ratings_total: number) {
+export function receivedSceneGroup(
+  scenes: Array<string>,
+  ratings_total: number
+) {
   return { type: RECEIVED_SCENE_GROUP, value: { scenes, ratings_total } };
 }
 
@@ -399,7 +415,9 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
     dispatch(receivedSceneGroup(scenes, ratings_total));
     dispatch(submitProfileComplete());
   } catch (e) {
-    dispatch(submitProfileError('Das Nutzerprofil konnte nicht übertragen werden.'));
+    dispatch(
+      submitProfileError('Das Nutzerprofil konnte nicht übertragen werden.')
+    );
     // log an error to inspect in dev tools.
     // Throwing an error would break unit tests.
     // If this is a test run, don't log the error. TODO: factor out to util method
@@ -415,7 +433,10 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
   }
 };
 
-export const submitPerspective = (perspective: Perspective) => async (dispatch: Dispatch, getState) => {
+export const submitPerspective = (perspective: Perspective) => async (
+  dispatch: Dispatch,
+  getState
+) => {
   dispatch(submitPerspectivePending());
   const {
     KatasterKIState: { sessionID }
@@ -428,12 +449,19 @@ export const submitPerspective = (perspective: Perspective) => async (dispatch: 
     dispatch(receivedSceneGroup(scenes, ratings_total));
     dispatch(submitPerspectiveComplete(perspective));
   } catch (e) {
-    dispatch(submitProfileError('Die nächste Szenengruppe konnte nicht angefragt werden.'));
+    dispatch(
+      submitProfileError(
+        'Die nächste Szenengruppe konnte nicht angefragt werden.'
+      )
+    );
     if (process.env.NODE_ENV != 'test') throw e;
   }
 };
 
-export const submitAnswer = (answer: Answer) => async (dispatch: Dispatch, getState) => {
+export const submitAnswer = (answer: Answer) => async (
+  dispatch: Dispatch,
+  getState
+) => {
   const { sceneID, rating, duration } = answer;
   dispatch(setAnswer(sceneID, rating, duration));
 
@@ -448,7 +476,11 @@ export const submitAnswer = (answer: Answer) => async (dispatch: Dispatch, getSt
       sessionID
     });
   } catch (e) {
-    dispatch(submitAnswerError('Beim Übermitteln der Bewertung ist etwas schiefgelaufen'));
+    dispatch(
+      submitAnswerError(
+        'Beim Übermitteln der Bewertung ist etwas schiefgelaufen'
+      )
+    );
     if (process.env.NODE_ENV != 'test') throw e;
   }
 };
