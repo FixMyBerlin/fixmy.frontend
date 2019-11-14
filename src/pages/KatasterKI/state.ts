@@ -11,7 +11,7 @@ import {
   ProfileResponse,
   PerspectiveResponse
 } from './types';
-import { getUserGroup } from './utils';
+import { getUserGroup, makeSessionID } from './utils';
 import api from './api';
 
 export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
@@ -75,6 +75,7 @@ export interface State {
     [mode: string]: TransportRating;
   };
   userGroup: UserGroup;
+  sessionID: string;
 }
 
 interface Action {
@@ -127,7 +128,8 @@ export const productionDefaultState: State = {
   },
   userGroup: UserGroup.bicycle,
   scenes: [],
-  currentPerspective: Perspective.bicycle
+  currentPerspective: Perspective.bicycle,
+  sessionID: makeSessionID()
 };
 
 // This state is used in the dev environment and for integration tests

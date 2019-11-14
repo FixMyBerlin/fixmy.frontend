@@ -1,3 +1,5 @@
+import uuid4 from 'uuid/v4';
+
 import {
   Perspective,
   TransportMode,
@@ -32,3 +34,9 @@ const userGroupToPerspective = {
  */
 export const getInitialPerspective = (userGroup: UserGroup): Perspective =>
   userGroupToPerspective[userGroup];
+
+/**
+ * Return a unique user uid that allows identifying a user when interfacing
+ * with the server
+ */
+export const makeSessionID = () => uuid4();
