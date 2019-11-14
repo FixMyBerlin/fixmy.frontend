@@ -243,7 +243,7 @@ const config = {
         intersections: 'fmb-HBI-intersections',
         intersectionsSide0: 'fmb-HBI-intersections-side-0',
         intersectionsSide1: 'fmb-HBI-intersections-side-1',
-        intersectionsOverlay: 'fmb-HBI-intersections-overlay'
+        intersectionsOverlay: 'fmb-HBI-intersections-overlay-line'
       },
       buildings3d: '3d-buildings',
       dimmingLayer: 'fmb-dimming'
