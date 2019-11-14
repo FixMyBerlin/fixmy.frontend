@@ -47,7 +47,7 @@ describe('submitProfile', () => {
     async () => {
       // mock api request
       const sessionId = 'session-id';
-      fetchMock.postOnce(
+      fetchMock.putOnce(
         getEndpointURL('profile', sessionId, null),
         profileResponseSample
       );
@@ -80,7 +80,7 @@ describe('submitProfile', () => {
     async () => {
       // mock failing api request
       const sessionId = 'session-id';
-      fetchMock.postOnce(getEndpointURL('profile', sessionId, null), {}); // kept here for savety, request should not get fired
+      fetchMock.putOnce(getEndpointURL('profile', sessionId, null), {}); // kept here for savety, request should not get fired
 
       // mock store
       const invalidProfile = {
