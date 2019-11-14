@@ -1,3 +1,5 @@
+import uuid4 from 'uuid/v4';
+
 import {
   Perspective,
   TransportMode,
@@ -39,3 +41,9 @@ export const getInitialPerspective = (userGroup: UserGroup): Perspective =>
  */
 export const getEndpointURL = (endpoint: string): string =>
   `${config.apiUrl}/${config.katasterKI.api[endpoint]}`;
+
+/**
+ * Return a unique user uid that allows identifying a user when interfacing
+ * with the server
+ */
+export const makeSessionID = () => uuid4();
