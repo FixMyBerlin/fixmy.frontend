@@ -176,7 +176,9 @@ export const testingDefaultState: State = {
   currentPerspective: Perspective.bicycle
 };
 
-const defaultState = false ? testingDefaultState : productionDefaultState;
+const defaultState = config.debug
+  ? testingDefaultState
+  : productionDefaultState;
 
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {
