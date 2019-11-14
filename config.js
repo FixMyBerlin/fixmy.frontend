@@ -266,11 +266,7 @@ const config = {
     zipcodeDistricts: {
       '0000': ['Testbezirk', 'Testbezirk 2', 'Testbezirk 3']
     },
-    api: {
-      profile: '/profile',
-      perspective: '/perspective',
-      answer: '/answer'
-    }
+    projectId: '01'
   },
   reports: {
     apiRoute: '/reports',
