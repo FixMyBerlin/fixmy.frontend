@@ -172,9 +172,9 @@ export const getEndpointURL: getEndpointURL = (
 ) => {
   const projectId = config.katasterKI.projectId;
   if (endpoint === 'profile' || endpoint === 'perspective')
-    return `/survey/${projectId}/${sessionId}`;
+    return `${config.apiUrl}/survey/${projectId}/${sessionId}`;
   if (endpoint === 'answer')
-    return `/survey/${projectId}/${sessionId}/${sceneID}`;
+    return `${config.apiUrl}/survey/${projectId}/${sessionId}/${sceneID}`;
 
   throw Error(`Endpoint ${endpoint} has no configured backend route`);
 };
