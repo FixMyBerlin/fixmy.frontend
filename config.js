@@ -298,6 +298,7 @@ const config = {
       '14195': ['Steglitz-Zehlendorf', 'Charlottenburg-Wilmersdorf'],
       '14197': ['Tempelhof-Schöneberg', 'Charlottenburg-Wilmersdorf']
     },
+    buttonTimeout: 300,
     projectId: '01'
   },
   reports: {

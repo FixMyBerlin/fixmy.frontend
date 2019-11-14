@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 import Flex from '~/components/Flex';
+import { media } from '~/styles/utils';
 
 const SLIDER_HEIGHT = 40;
 
@@ -16,7 +17,14 @@ const SliderLabel = styled.div`
 `;
 
 const SliderWrapper = styled.div`
-  margin-bottom: 2em;
+  margin-bottom: 3em;
+  width: 100%;
+
+  ${media.m`
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  `}
 `;
 
 const getTranslateX = (props) => {
@@ -28,7 +36,6 @@ const getTranslateX = (props) => {
 };
 
 const StyledSlider = styled(Slider)`
-
   &&& {
     height: ${SLIDER_HEIGHT}px;
     padding: 0;
@@ -134,9 +141,18 @@ const StyledSlider = styled(Slider)`
 `;
 
 export default (props) => {
+  const [showMarks, setShowMarks] = useState(true);
   const Icon = props.icon;
-  const marks = {
-    [props.value]: props.ratingLabels[props.value]
+  const marks = showMarks
+    ? {
+        [props.value]: props.ratingLabels[props.value]
+      }
+    : {};
+
+  const onAfterChange = () => {
+    window.setTimeout(() => {
+      setShowMarks(true);
+    }, 200);
   };
 
   return (
@@ -150,6 +166,8 @@ export default (props) => {
           value={props.value}
           onChange={(value) => props.onChange(value, props)}
           ratingLabels={props.ratingLabels}
+          onBeforeChange={() => setShowMarks(false)}
+          onAfterChange={onAfterChange}
         />
       </Flex>
     </SliderWrapper>

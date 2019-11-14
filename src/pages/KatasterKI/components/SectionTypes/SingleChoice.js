@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
+import { media } from '~/styles/utils';
 import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+
+const SingleChoiceWrapper = styled.div`
+  ${media.m`
+    button {
+      margin-left: auto;
+      margin-right: auto
+    }
+  `}
+`;
 
 const SingleChoiceInput = ({
   title,
@@ -10,13 +21,22 @@ const SingleChoiceInput = ({
   handleChange,
   next
 }) => {
+  const [clickedButton, setClickedButton] = useState(null);
   const onClick = (option) => {
-    handleChange(option.value);
-    next();
+    if (clickedButton) {
+      return;
+    }
+    setClickedButton(option.value);
+
+    setTimeout(() => {
+      setClickedButton(null);
+      handleChange(option.value);
+      next();
+    }, config.katasterKI.buttonTimeout);
   };
 
   return (
-    <>
+    <SingleChoiceWrapper>
       <QuestionTitle>{title}</QuestionTitle>
       {options.map((option) => (
         <GhostButton
@@ -24,11 +44,12 @@ const SingleChoiceInput = ({
           onClick={() => onClick(option)}
           css={{ textAlign: 'left', marginBottom: 10 }}
           isActive={option.value === currentValue}
+          isLoading={option.value === clickedButton}
         >
           {option.label}
         </GhostButton>
       ))}
-    </>
+    </SingleChoiceWrapper>
   );
 };
 

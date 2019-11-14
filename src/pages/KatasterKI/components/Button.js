@@ -1,14 +1,17 @@
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
 import styled from 'styled-components';
+
+import Loader from '~/components/Loader';
 
 const boxShadow = '0 0 10px 0 rgba(0, 0, 0, 0.2)';
 const boxShadowHover = '0 0 2px 0 rgba(0, 0, 0, 0.2)';
 
-export default styled.button`
+const StyledButton = styled.button`
   border-radius: 32px;
   border: none;
   outline: none;
-  display: inline-block;
-  padding: 15px 25px;
+  padding: 0 25px;
   background: ${(props) =>
     props.disabled ? config.colors.lightgrey : config.colors.katasterHighlight};
   text-decoration: none;
@@ -23,8 +26,15 @@ export default styled.button`
   max-width: 400px;
   display: block;
   text-align: center;
+  height: 48px;
 
   &:hover {
     box-shadow: ${(props) => (props.disabled ? 'none' : boxShadowHover)};
   }
 `;
+
+export default ({ children, isLoading, ...rest }) => (
+  <StyledButton {...rest}>
+    {isLoading ? <Loader css={{ display: 'inline-block' }} /> : children}
+  </StyledButton>
+);
