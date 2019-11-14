@@ -10,6 +10,7 @@ import { getFeedbackThreshold } from '~/pages/KatasterKI/utils';
 import Paragraph from '~/pages/KatasterKI/components/Paragraph';
 import Button from '~/pages/KatasterKI/components/Button';
 import GhostButton from '~/pages/KatasterKI/components/GhostButton';
+import ShareButton from '~/pages/KatasterKI/components/ShareButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import ProgressVis from '~/pages/KatasterKI/components/ProgressVis';
 
@@ -38,15 +39,10 @@ const Feedback = (props) => {
   }
 
   const feedbackThreshold = getFeedbackThreshold();
-  const title = getTitle(numberFormat(props.statisticsCounter), numberFormat(feedbackThreshold));
-
-  const onShare = () => {
-    navigator.share({
-      title: config.katasterKI.shareTitle,
-      text: config.katasterKI.shareText,
-      url: `${config.prodUrl}/${config.routes.katasterKI.landing}`
-    });
-  };
+  const title = getTitle(
+    numberFormat(props.statisticsCounter),
+    numberFormat(feedbackThreshold)
+  );
 
   const onOpenInfo = () => {
     window.location.href = config.katasterKI.tspArticleLink;
@@ -56,13 +52,18 @@ const Feedback = (props) => {
     <>
       <QuestionTitle>
         {title}
-        <ProgressVis value={props.statisticsCounter} max={feedbackThreshold} style={{ margin: '15px 0' }} />
+        <ProgressVis
+          value={props.statisticsCounter}
+          max={feedbackThreshold}
+          style={{ margin: '15px 0' }}
+        />
       </QuestionTitle>
 
       <FeedbackWrapper>
         <Paragraph css={{ margin: '0 0 25px 0' }}>
-          Sie haben bereits <strong>{userSituationCount} Situationen</strong> bewertet. Je mehr Bewertungen die Umfrage
-          erhält umso aussagekräftiger sind die Ergebnisse.
+          Sie haben bereits <strong>{userSituationCount} Situationen</strong>{' '}
+          bewertet. Je mehr Bewertungen die Umfrage erhält umso aussagekräftiger
+          sind die Ergebnisse.
         </Paragraph>
 
         <Flex css={{ flexGrow: 1 }} alignItems="center" flexDirection="column">
@@ -70,11 +71,7 @@ const Feedback = (props) => {
           <Button as={Link} to={config.routes.katasterKI.landing}>
             Weiter bewerten
           </Button>
-          {navigator.share && (
-            <GhostButton css={{ marginTop: 20 }} onClick={onShare}>
-              Umfrage mit Freunden teilen
-            </GhostButton>
-          )}
+          <ShareButton style={{ marginTop: 20 }} />
           <GhostButton css={{ marginTop: 'auto' }} onClick={onOpenInfo}>
             Informationen über das Projekt
           </GhostButton>

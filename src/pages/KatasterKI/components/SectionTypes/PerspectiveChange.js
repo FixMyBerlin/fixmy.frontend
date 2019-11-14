@@ -4,14 +4,18 @@ import styled from 'styled-components';
 import { media } from '~/styles/utils';
 import Button from '~/pages/KatasterKI/components/Button';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import ShareButton from '~/pages/KatasterKI/components/ShareButton';
 
 const SingleChoiceWrapper = styled.div`
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   ${media.m`
     button {
       margin-left: auto;
       margin-right: auto
     }
-  `}
+  `};
 `;
 
 const PerspectiveChange = ({ title, options, handleChange, next }) => {
@@ -42,6 +46,8 @@ const PerspectiveChange = ({ title, options, handleChange, next }) => {
           </Button>
         );
       })}
+
+      <ShareButton style={{ marginTop: 'auto' }} />
     </SingleChoiceWrapper>
   );
 };
