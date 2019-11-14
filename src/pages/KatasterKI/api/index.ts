@@ -5,7 +5,7 @@ import {
   PerspectiveRequest,
   PerspectiveResponse
 } from '../types';
-import { marshallProfile } from './utils';
+import { marshallProfile, getEndpointURL } from './utils';
 
 export const profilesEndpointUrl = 'http://localhost:8080'; // TODO: configure
 
@@ -33,7 +33,7 @@ async function handleSubmitProfile({
   return fetchResponse.json();
 }
 
-const sleep = () => new Promise((resolve) => setTimeout(resolve, 1000));
+const sleep = () => new Promise((resolve) => setTimeout(resolve, 200));
 
 async function submitProfile(
   profileRequest: ProfileRequest
@@ -66,5 +66,6 @@ async function submitPerspective(
 export default {
   submitProfile,
   marshallProfile,
-  submitPerspective
+  submitPerspective,
+  getEndpointURL
 };

@@ -147,3 +147,31 @@ export const validateProfileRequest = (profileRequest: ProfileRequest) => {
   }
   return schemaValidationResult.valid;
 };
+
+interface getEndpointURL {
+  (
+    endpoint: 'profile' | 'perspective',
+    sessionId: string,
+    sceneID: null
+  ): string;
+
+  (endpoint: 'answer', sessionId: string, sceneID: string): string;
+}
+
+/** Build an endpoint URL given an endpoint configured in the global config
+ *
+ * @param endpoint name of the endpoint from config.katasterKI.api
+ */
+export const getEndpointURL: getEndpointURL = (
+  endpoint,
+  sessionId,
+  sceneID
+) => {
+  const projectId = config.katasterKI.projectId;
+  if (endpoint === 'profile' || endpoint === 'perspective')
+    return `/survey/${projectId}/${sessionId}`;
+  if (endpoint === 'answer')
+    return `/survey/${projectId}/${sessionId}/${sceneID}`;
+
+  throw Error(`Endpoint ${endpoint} has no configured backend route`);
+};
