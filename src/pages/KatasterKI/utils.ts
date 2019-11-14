@@ -74,3 +74,8 @@ export const toggleNavigationWarning = (isEnabled: boolean) => {
     window.onbeforeunload = null;
   }
 };
+
+/**
+ * Return the threshold displayed on the feedback screen
+ */
+export const getFeedbackThreshold = (totalRatings: number): number => 5000;
