@@ -77,7 +77,6 @@ const Scenes = ({
     if (section.type === 'scene') {
       dispatch(setAnswer(section.name, rating, duration));
     } else if (section.type === 'perspective_change') {
-      dispatch(setAnswer(section.name, rating, duration));
       dispatch(submitPerspective(nextPerspective));
     }
   };
