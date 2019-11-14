@@ -70,12 +70,12 @@ export interface State {
     state: RequestState;
     message?: string;
   };
+  sessionID: string;
   statisticsCounter?: number; // total count of ratings as reported by backend
   transportRatings: {
     [mode: string]: TransportRating;
   };
   userGroup: UserGroup;
-  sessionID: string;
 }
 
 interface Action {

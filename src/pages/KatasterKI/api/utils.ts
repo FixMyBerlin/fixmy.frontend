@@ -60,7 +60,8 @@ export const marshallProfile = (
     userGroup,
     transportRatings,
     isTosAccepted,
-    currentPerspective
+    currentPerspective,
+    sessionID
   } = state.KatasterKIState;
 
   // profile.district is optional, everything else is required
@@ -76,6 +77,7 @@ export const marshallProfile = (
     profile.vehiclesOwned,
     profile.whyBiking,
     userGroup,
+    sessionID,
     transportRatings,
     currentPerspective
   ].every((val) => val != null);
@@ -107,6 +109,7 @@ export const marshallProfile = (
     bikeReasonsVar,
     userGroup,
     isTosAccepted,
+    sessionID,
     transportRatings
   };
 

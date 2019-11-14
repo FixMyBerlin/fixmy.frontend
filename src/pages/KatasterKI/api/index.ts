@@ -15,10 +15,12 @@ export const profilesEndpointUrl = 'http://localhost:8080'; // TODO: configure
 // TODO: make sure we use a fetch polyfill
 async function handleSubmitProfile({
   json = {},
-  token = false
+  token = false,
+  sessionID
 }): Promise<ProfileResponse> {
   const headers = token ? { Authorization: `JWT ${token}` } : {};
-  const fetchResponse = await fetch(profilesEndpointUrl, {
+  const endpoint = getEndpointURL('profile', sessionID, null);
+  const fetchResponse = await fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify(json),
     headers
@@ -45,7 +47,10 @@ async function submitProfile(
       scenes: ['01_MS_C_139', '01_MS_C_27']
     };
   } else {
-    return handleSubmitProfile({ json: profileRequest });
+    return handleSubmitProfile({
+      json: profileRequest,
+      sessionID: profileRequest.sessionID
+    });
   }
 }
 
