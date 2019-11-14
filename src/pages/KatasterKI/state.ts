@@ -30,6 +30,7 @@ export const SUBMIT_PERSPECTIVE_PENDING =
 export const SUBMIT_PERSPECTIVE_ERROR = 'KatasterKI/SUBMIT_PERSPECTIVE_ERROR';
 export const SUBMIT_PERSPECTIVE_COMPLETE =
   'KatasterKI/SUBMIT_PERSPECTIVE_COMPLETE';
+export const SUBMIT_ANSWER_ERROR = 'KatasterKI/SUBMIT_ANSWER_ERROR';
 
 export type MultiChoice = {
   [name: string]: boolean | string;
@@ -176,7 +177,9 @@ export const testingDefaultState: State = {
   currentPerspective: Perspective.bicycle
 };
 
-const defaultState = false ? testingDefaultState : productionDefaultState;
+const defaultState = config.debug
+  ? testingDefaultState
+  : productionDefaultState;
 
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {
@@ -386,6 +389,11 @@ export function submitPerspectiveComplete(perspective: Perspective): Action {
   };
 }
 
+export function submitAnswerError(errorMessage: string): Action {
+  // TODO: Should this result in anything?
+  return { type: SUBMIT_ANSWER_ERROR, error: errorMessage };
+}
+
 export function receivedSceneGroup(
   scenes: Array<string>,
   ratings_total: number
@@ -407,9 +415,7 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
     dispatch(submitProfileComplete());
   } catch (e) {
     dispatch(
-      submitProfileError(
-        'Beim Übermitteln des Profils ist etwas schiefgelaufen'
-      )
+      submitProfileError('Das Nutzerprofil konnte nicht übertragen werden.')
     );
     // log an error to inspect in dev tools.
     // Throwing an error would break unit tests.
@@ -431,16 +437,47 @@ export const submitPerspective = (perspective: Perspective) => async (
   getState
 ) => {
   dispatch(submitPerspectivePending());
+  const {
+    KatasterKIState: { sessionID }
+  } = getState();
   try {
     const { scenes, ratings_total } = await api.submitPerspective({
-      perspective
+      perspective,
+      sessionID
     });
     dispatch(receivedSceneGroup(scenes, ratings_total));
     dispatch(submitPerspectiveComplete(perspective));
   } catch (e) {
     dispatch(
       submitProfileError(
-        'Beim Übermitteln des Perspektivwechsels ist etwas schiefgelaufen'
+        'Die nächste Szenengruppe konnte nicht angefragt werden.'
+      )
+    );
+    if (process.env.NODE_ENV != 'test') throw e;
+  }
+};
+
+export const submitAnswer = (answer: Answer) => async (
+  dispatch: Dispatch,
+  getState
+) => {
+  const { sceneID, rating, duration } = answer;
+  dispatch(setAnswer(sceneID, rating, duration));
+
+  const {
+    KatasterKIState: { sessionID }
+  } = getState();
+  try {
+    await api.submitAnswer({
+      sceneID,
+      rating,
+      duration,
+      sessionID
+    });
+  } catch (e) {
+    dispatch(
+      submitAnswerError(
+        'Beim Übermitteln der Bewertung ist etwas schiefgelaufen'
       )
     );
     if (process.env.NODE_ENV != 'test') throw e;

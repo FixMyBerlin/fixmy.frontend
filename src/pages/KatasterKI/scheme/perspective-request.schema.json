@@ -13,6 +13,9 @@
     "properties": {
         "perspective": {
             "$ref": "#/definitions/Perspective"
+        },
+        "sessionID": {
+            "type": "string"
         }
     },
     "type": "object"

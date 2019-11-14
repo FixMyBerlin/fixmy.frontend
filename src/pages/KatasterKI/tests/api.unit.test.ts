@@ -1,5 +1,5 @@
 import { ProfileRequest } from '../types';
-import { validateProfileRequest } from '../api/utils';
+import { validateProfileRequest } from '../api/profile';
 
 const profileRequestSample: ProfileRequest = require('../scheme/sample-instances/profile-request-sample-instance.json');
 

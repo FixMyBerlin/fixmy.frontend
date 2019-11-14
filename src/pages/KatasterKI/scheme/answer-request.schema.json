@@ -20,6 +20,9 @@
         },
         "sceneID": {
             "type": "string"
+        },
+        "sessionID": {
+            "type": "string"
         }
     },
     "type": "object"
