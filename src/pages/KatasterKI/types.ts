@@ -33,10 +33,13 @@ export interface ProfileResponse {
   ratings_total: number;
 }
 
-export interface AnswerRequest extends Answer {}
+export interface AnswerRequest extends Answer {
+  sessionID: string;
+}
 
 export interface PerspectiveRequest {
   perspective: Perspective;
+  sessionID: string;
 }
 
 export interface PerspectiveResponse extends ProfileResponse {}
