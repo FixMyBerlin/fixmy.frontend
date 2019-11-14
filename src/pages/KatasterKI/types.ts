@@ -25,6 +25,7 @@ export interface ProfileRequest {
   vehiclesOwned: Array<string>;
   whyBiking: Array<string>;
   zipcode: string;
+  sessionID: string;
 }
 
 export interface ProfileResponse {

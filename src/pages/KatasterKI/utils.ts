@@ -1,3 +1,5 @@
+import uuidv4 from 'uuid/v4';
+
 import {
   Perspective,
   TransportMode,
@@ -33,9 +35,30 @@ const userGroupToPerspective = {
 export const getInitialPerspective = (userGroup: UserGroup): Perspective =>
   userGroupToPerspective[userGroup];
 
-/** Build an endpoint URL given an endpoint configured in the global config
+/**
+ * Build an endpoint URL given an endpoint configured in the global config
  *
  * @param endpoint name of the endpoint from config.katasterKI.api
  */
 export const getEndpointURL = (endpoint: string): string =>
   `${config.apiUrl}/${config.katasterKI.api[endpoint]}`;
+
+/**
+ * Return a unique user uid that allows identifying a user when interfacing
+ * with the server
+ */
+export const makeSessionID = () => uuidv4();
+
+/**
+ * Toggle a warning that is displayed when users try and navigate away
+ *
+ * @param isEnabled set to true to enable showing a warning
+ */
+export const toggleNavigationWarning = (isEnabled: boolean) => {
+  if (isEnabled) {
+    window.onbeforeunload = () =>
+      'Die Umfrage wird abgebrochen, wenn Sie die Seite verlassen.';
+  } else {
+    window.onbeforeunload = null;
+  }
+};
