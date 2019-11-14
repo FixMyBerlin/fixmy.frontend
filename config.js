@@ -145,6 +145,7 @@ const config = {
     },
     katasterKI: {
       landing: '/strassencheck',
+      landingEmbedded: '/strassencheck/embedded',
       profileBase: '/strassencheck/profil',
       profile: '/strassencheck/profil/:page',
       scenesBase: '/strassencheck/szenen',

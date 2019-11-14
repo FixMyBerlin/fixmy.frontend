@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { media } from '~/styles/utils';
 import history from '~/history';
 import Landing from './pages/Landing';
+import LandingEmbedded from './pages/LandingEmbedded';
 import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
 import landingSrc from '~/images/strassencheck-bg.jpg';
@@ -49,6 +50,12 @@ const KatasterKI = (props) => {
               exact
               path={config.routes.katasterKI.landing}
               component={Landing}
+            />
+
+            <Route
+              exact
+              path={config.routes.katasterKI.landingEmbedded}
+              component={LandingEmbedded}
             />
 
             <Route
