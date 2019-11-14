@@ -8,6 +8,7 @@ import Landing from './pages/Landing';
 import LandingEmbedded from './pages/LandingEmbedded';
 import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
+import Feedback from './pages/Feedback';
 import landingSrc from '~/images/strassencheck-bg.jpg';
 
 const BgWrapper = styled.div`
@@ -68,6 +69,12 @@ const KatasterKI = (props) => {
               exact
               path={config.routes.katasterKI.scenes}
               component={Scenes}
+            />
+
+            <Route
+              exact
+              path={config.routes.katasterKI.feedback}
+              component={Feedback}
             />
 
             {/* Fallback: redirect to landing page */}

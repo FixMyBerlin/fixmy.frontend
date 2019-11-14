@@ -12,9 +12,11 @@ const StyledButton = styled.button`
   border: none;
   outline: none;
   padding: 16px 25px;
-  background: ${(props) => (props.disabled ? config.colors.lightgrey : config.colors.katasterHighlight)};
+  background: ${(props) =>
+    props.disabled ? config.colors.lightgrey : config.colors.katasterHighlight};
   text-decoration: none;
-  color: ${(props) => (props.disabled ? config.colors.midgrey : config.colors.black)};
+  color: ${(props) =>
+    props.disabled ? config.colors.midgrey : config.colors.black};
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
@@ -31,5 +33,7 @@ const StyledButton = styled.button`
 `;
 
 export default ({ children, isLoading, ...rest }) => (
-  <StyledButton {...rest}>{isLoading ? <Loader css={{ display: 'inline-block' }} /> : children}</StyledButton>
+  <StyledButton {...rest}>
+    {isLoading ? <Loader css={{ display: 'inline-block' }} /> : children}
+  </StyledButton>
 );
