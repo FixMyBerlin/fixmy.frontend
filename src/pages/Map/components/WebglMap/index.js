@@ -197,7 +197,7 @@ class Map extends PureComponent {
     }
 
     setPlanningLegendFilter(this.map, this.props.filterPlannings)
-    
+
     // project layers
     toggleLayer(this.map, 'fmb-projects', false)
     toggleLayer(this.map, projectsLayers.center, isPlanungen);
@@ -229,7 +229,7 @@ class Map extends PureComponent {
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
 
     if (properties) {
-      const name = slugify(properties.name || '').toLowerCase();
+      const name = slugify(properties.name || properties.street_name || '').toLowerCase();
       const { id } = properties;
       // when user is in detail mode, we don't want to show the tooltip again,
       // but directly switch to another detail view
