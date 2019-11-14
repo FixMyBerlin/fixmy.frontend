@@ -6,21 +6,8 @@ import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components/Button';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Radio from '~/pages/KatasterKI/components/Radio';
+import Input from '~/pages/KatasterKI/components/Input';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
-
-const Input = styled.input`
-  border: none;
-  border-bottom: 1px solid ${config.colors.inactivegrey};
-  font-size: 24px;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-
-  &:focus {
-    outline: none;
-    border-bottom-color: ${config.colors.katasterHighlight};
-  }
-`;
 
 const DistrictChooser = styled.div`
   width: 100%;
