@@ -132,6 +132,10 @@ const config = {
       route: '/api'
     },
     {
+      key: 'jobs',
+      route: '/jobs'
+    },
+    {
       key: 'newsletter-thank-you',
       route: '/newsletter-danke'
     }
