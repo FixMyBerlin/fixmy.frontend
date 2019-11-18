@@ -47,7 +47,12 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
 
   return (
     <>
-      <img src={getSceneImageSrc(name)} alt={title} onLoad={startMeasurement} />
+      <img
+        src={getSceneImageSrc(name)}
+        alt={title}
+        onLoad={startMeasurement}
+        onError={startMeasurement}
+      />
       <QuestionTitle>{title}</QuestionTitle>
       <Flex>
         {options.map((option, index) => {

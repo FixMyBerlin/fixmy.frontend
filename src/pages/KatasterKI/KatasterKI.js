@@ -36,6 +36,7 @@ const ContentWrapper = styled.div`
   flex-direction: column;
   background: white;
   flex-grow: 1;
+  width: 100%;
 
   img {
     width: 100%;
