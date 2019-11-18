@@ -10,6 +10,7 @@ import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
 import Feedback from './pages/Feedback';
 import Email from './pages/Email';
+import GlobalStyle from './styles/Global';
 import landingSrc from '~/images/strassencheck-bg.jpg';
 
 const BgWrapper = styled.div`
@@ -37,6 +38,7 @@ const ContentWrapper = styled.div`
   background: white;
   flex-grow: 1;
   width: 100%;
+  font-family: FranklinGothic-Book, sans-serif;
 
   img {
     width: 100%;
@@ -53,6 +55,7 @@ const KatasterKI = (props) => {
 
   return (
     <BgWrapper isLanding={isLanding}>
+      <GlobalStyle />
       <ContentWrapper isLanding={isLanding}>
         <Router history={history}>
           <Switch>

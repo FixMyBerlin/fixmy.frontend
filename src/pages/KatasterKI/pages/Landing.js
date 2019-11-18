@@ -40,7 +40,7 @@ const IntroQuestion = styled.div`
 `;
 
 const IntroHeadline = styled.h1`
-  font-family: 'Roboto Slab', serif;
+  font-family: 'FranklinGothic-Demi', sans-serif;
   margin: 0.5em 0;
   text-align: center;
   color: white;
