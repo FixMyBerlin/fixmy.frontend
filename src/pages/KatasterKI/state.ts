@@ -11,16 +11,16 @@ import {
   ProfileResponse,
   PerspectiveResponse
 } from './types';
-import { getUserGroup } from './utils';
+import { getUserGroup, makeSessionID, toggleNavigationWarning } from './utils';
 import api from './api';
 
-const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
-const SET_ANSWER = 'KatasterKI/SET_ANSWER';
-const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
-const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
-const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
-const SET_ZIPCODE = 'KatasterKI/SET_ZIPCODE';
-const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
+export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
+export const SET_ANSWER = 'KatasterKI/SET_ANSWER';
+export const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
+export const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
+export const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
+export const SET_ZIPCODE = 'KatasterKI/SET_ZIPCODE';
+export const UPDATE_PROGRESS_BAR = 'KatasterKI/UPDATE_PROGRESS_BAR';
 export const RECEIVED_SCENE_GROUP = 'KatasterKI/RECEIVED_SCENE_GROUP';
 export const SUBMIT_PROFILE_PENDING = 'KatasterKI/SUBMIT_PROFILE_PENDING';
 export const SUBMIT_PROFILE_ERROR = 'KatasterKI/SUBMIT_PROFILE_ERROR';
@@ -30,6 +30,7 @@ export const SUBMIT_PERSPECTIVE_PENDING =
 export const SUBMIT_PERSPECTIVE_ERROR = 'KatasterKI/SUBMIT_PERSPECTIVE_ERROR';
 export const SUBMIT_PERSPECTIVE_COMPLETE =
   'KatasterKI/SUBMIT_PERSPECTIVE_COMPLETE';
+export const SUBMIT_ANSWER_ERROR = 'KatasterKI/SUBMIT_ANSWER_ERROR';
 
 export type MultiChoice = {
   [name: string]: boolean | string;
@@ -70,6 +71,7 @@ export interface State {
     state: RequestState;
     message?: string;
   };
+  sessionID: string;
   statisticsCounter?: number; // total count of ratings as reported by backend
   transportRatings: {
     [mode: string]: TransportRating;
@@ -105,9 +107,15 @@ interface Action {
   profileResponse?: ProfileResponse;
 }
 
-const productionDefaultState: State = {
+export const productionDefaultState: State = {
   isTosAccepted: false,
-  transportRatings: {},
+  transportRatings: {
+    pedestrian: 0,
+    bicycle: 0,
+    motorbike: 0,
+    car: 0,
+    public: 0
+  },
   profile: {
     bikeReasons: {},
     motivationalFactors: {},
@@ -127,7 +135,8 @@ const productionDefaultState: State = {
   },
   userGroup: UserGroup.bicycle,
   scenes: [],
-  currentPerspective: Perspective.bicycle
+  currentPerspective: Perspective.bicycle,
+  sessionID: makeSessionID()
 };
 
 // This state is used in the dev environment and for integration tests
@@ -136,7 +145,7 @@ export const testingDefaultState: State = {
   ...productionDefaultState,
   isTosAccepted: true,
   transportRatings: {
-    pedelec: 0,
+    pedestrian: 0,
     bicycle: 5,
     motorbike: 3,
     car: 0,
@@ -168,7 +177,9 @@ export const testingDefaultState: State = {
   currentPerspective: Perspective.bicycle
 };
 
-const defaultState = false ? testingDefaultState : productionDefaultState;
+const defaultState = config.debug
+  ? testingDefaultState
+  : productionDefaultState;
 
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {
@@ -292,6 +303,7 @@ export default function reducer(state: State = defaultState, action: Action) {
  *    recognized the privacy policy
  */
 export function setTOSAccepted(value: boolean): Action {
+  toggleNavigationWarning(true);
   return { type: SET_TOS_ACCEPTED, value };
 }
 
@@ -377,6 +389,11 @@ export function submitPerspectiveComplete(perspective: Perspective): Action {
   };
 }
 
+export function submitAnswerError(errorMessage: string): Action {
+  // TODO: Should this result in anything?
+  return { type: SUBMIT_ANSWER_ERROR, error: errorMessage };
+}
+
 export function receivedSceneGroup(
   scenes: Array<string>,
   ratings_total: number
@@ -398,9 +415,7 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
     dispatch(submitProfileComplete());
   } catch (e) {
     dispatch(
-      submitProfileError(
-        'Beim Übermitteln des Profils ist etwas schiefgelaufen'
-      )
+      submitProfileError('Das Nutzerprofil konnte nicht übertragen werden.')
     );
     // log an error to inspect in dev tools.
     // Throwing an error would break unit tests.
@@ -422,16 +437,47 @@ export const submitPerspective = (perspective: Perspective) => async (
   getState
 ) => {
   dispatch(submitPerspectivePending());
+  const {
+    KatasterKIState: { sessionID }
+  } = getState();
   try {
     const { scenes, ratings_total } = await api.submitPerspective({
-      perspective
+      perspective,
+      sessionID
     });
     dispatch(receivedSceneGroup(scenes, ratings_total));
     dispatch(submitPerspectiveComplete(perspective));
   } catch (e) {
     dispatch(
       submitProfileError(
-        'Beim Übermitteln des Perspektivwechsels ist etwas schiefgelaufen'
+        'Die nächste Szenengruppe konnte nicht angefragt werden.'
+      )
+    );
+    if (process.env.NODE_ENV != 'test') throw e;
+  }
+};
+
+export const submitAnswer = (answer: Answer) => async (
+  dispatch: Dispatch,
+  getState
+) => {
+  const { sceneID, rating, duration } = answer;
+  dispatch(setAnswer(sceneID, rating, duration));
+
+  const {
+    KatasterKIState: { sessionID }
+  } = getState();
+  try {
+    await api.submitAnswer({
+      sceneID,
+      rating,
+      duration,
+      sessionID
+    });
+  } catch (e) {
+    dispatch(
+      submitAnswerError(
+        'Beim Übermitteln der Bewertung ist etwas schiefgelaufen'
       )
     );
     if (process.env.NODE_ENV != 'test') throw e;

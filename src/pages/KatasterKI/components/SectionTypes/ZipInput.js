@@ -6,11 +6,15 @@ import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components/Button';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Radio from '~/pages/KatasterKI/components/Radio';
+import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
 
 const Input = styled.input`
   border: none;
   border-bottom: 1px solid ${config.colors.inactivegrey};
   font-size: 24px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 
   &:focus {
     outline: none;
@@ -19,7 +23,9 @@ const Input = styled.input`
 `;
 
 const DistrictChooser = styled.div`
-  margin-top: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto 0 auto;
 `;
 
 const DistrictInfo = styled.div`
@@ -36,10 +42,6 @@ const DistrictWrapper = styled.div`
   color: ${config.colors.darkbg};
 `;
 
-const DistrictInput = styled.input`
-  margin-right: 10px;
-`;
-
 const DistrictLabel = styled.label`
   user-select: none;
 `;
@@ -50,6 +52,7 @@ const ZipInput = (props) => {
   const zipCode = useRef(props.currentValue);
   const district = useRef(props.district);
   const [isButtonDisabled, setButtonDisabled] = useState(true);
+  const [isLoading, onClick] = useHandlerTimeout(props.next);
 
   const hasDistrictOptions = !!(
     props.districtOptions && props.districtOptions.length
@@ -121,11 +124,12 @@ const ZipInput = (props) => {
 
       <Flex css={{ flexGrow: 1 }} justifyContent="center">
         <Button
-          onClick={props.next}
+          onClick={onClick}
           css={{ alignSelf: 'flex-end' }}
           disabled={isButtonDisabled}
+          isLoading={isLoading}
         >
-          weiter
+          Weiter
         </Button>
       </Flex>
     </Flex>

@@ -1,11 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import Flex from '~/components/Flex';
 import RatingSlider from '../RatingSlider';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Button from '~/pages/KatasterKI/components//Button';
+import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
 
 const Sliders = ({
   title,
@@ -15,36 +16,47 @@ const Sliders = ({
   handleChange,
   transportRatings,
   next
-}) => (
-  <Flex flexDirection="column" css={{ flexGrow: 1 }}>
-    <QuestionTitle>{title}</QuestionTitle>
+}) => {
+  const [usedSlider, setUsedSlider] = useState(false);
+  const [isLoading, onClick] = useHandlerTimeout(next);
 
-    {ratings.map((rating) => {
-      const currentValue =
-        typeof transportRatings[rating.name] !== 'undefined'
-          ? transportRatings[rating.name]
-          : 0;
-      return (
-        <RatingSlider
-          key={`slider_${rating.name}`}
-          sliderOptions={sliderOptions}
-          ratingLabels={ratingLabels}
-          onChange={(value) =>
-            handleChange({ type: rating.name, rating: value })
-          }
-          value={currentValue}
-          {...rating}
-        />
-      );
-    })}
+  return (
+    <Flex flexDirection="column" css={{ flexGrow: 1 }}>
+      <QuestionTitle>{title}</QuestionTitle>
 
-    <Flex css={{ flexGrow: 1 }} justifyContent="center">
-      <Button onClick={next} css={{ alignSelf: 'flex-end' }}>
-        weiter
-      </Button>
+      {ratings.map((rating) => {
+        const currentValue =
+          typeof transportRatings[rating.name] !== 'undefined'
+            ? transportRatings[rating.name]
+            : 0;
+        return (
+          <RatingSlider
+            key={`slider_${rating.name}`}
+            sliderOptions={sliderOptions}
+            ratingLabels={ratingLabels}
+            onChange={(value) => {
+              setUsedSlider(true);
+              handleChange({ type: rating.name, rating: value });
+            }}
+            value={currentValue}
+            {...rating}
+          />
+        );
+      })}
+
+      <Flex css={{ flexGrow: 1 }} justifyContent="center">
+        <Button
+          onClick={onClick}
+          css={{ alignSelf: 'flex-end' }}
+          disabled={!usedSlider}
+          isLoading={isLoading}
+        >
+          Weiter
+        </Button>
+      </Flex>
     </Flex>
-  </Flex>
-);
+  );
+};
 
 const mapStateToProps = (state) => ({
   transportRatings: state.KatasterKIState.transportRatings

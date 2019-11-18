@@ -1,25 +1,11 @@
-import { Validator, ValidatorResult } from 'jsonschema';
-
-import {
-  Perspective,
-  ProfileRequest,
-  TransportMode,
-  TransportRating,
-  UserGroup
-} from '../types';
-import { State, MultiChoice } from '../state';
-
-// JSON import apparently only works in ts when using `require`
-const profileRequestSchema = require('../scheme/profile-request.schema.json');
-
-type marshallProfileStateParam = { KatasterKIState: State };
+import { MultiChoice } from '../state';
 
 /**
  * Marshall state of a multi_choice component for sending in a request
  *
  * @param values state of multi_choice input component
  */
-const marshallMultiChoice = (
+export const marshallMultiChoice = (
   values: MultiChoice
 ): {
   choices: Array<string>;
@@ -28,6 +14,10 @@ const marshallMultiChoice = (
   let other = '';
   const choices = Object.keys(values)
     .map((field) => {
+      // Optional freeform input fields are stored in fieldnames ending in
+      // "-input". These are returned separately.
+      // Checkbox inputs in the multi_choice component are returned as a list
+      // of all "checked" fieldnames
       if (field.endsWith('-input')) {
         other = values[field].toString();
       } else {
@@ -41,105 +31,30 @@ const marshallMultiChoice = (
   };
 };
 
-/**
- * Marshall and validate all data required for profile request
+interface getEndpointURL {
+  (
+    endpoint: 'profile' | 'perspective',
+    sessionId: string,
+    sceneID: null
+  ): string;
+
+  (endpoint: 'answer', sessionId: string, sceneID: string): string;
+}
+
+/** Build an endpoint URL given an endpoint configured in the global config
  *
- * @param state KatasterKI state object after all data has been collected
- * @throws will throw an error when any required data fields are null
- *    or the TOS are not accepted
+ * @param endpoint name of the endpoint from config.katasterKI.api
  */
-export const marshallProfile = (
-  state: marshallProfileStateParam
-): ProfileRequest => {
-  const {
-    profile,
-    userGroup,
-    transportRatings,
-    isTosAccepted,
-    currentPerspective
-  } = state.KatasterKIState;
+export const getEndpointURL: getEndpointURL = (
+  endpoint,
+  sessionId,
+  sceneID
+) => {
+  const projectId = config.katasterKI.projectId;
+  if (endpoint === 'profile' || endpoint === 'perspective')
+    return `${config.apiUrl}/survey/${projectId}/${sessionId}`;
+  if (endpoint === 'answer')
+    return `${config.apiUrl}/survey/${projectId}/${sessionId}/${sceneID}`;
 
-  // profile.district is optional, everything else is required
-  const isComplete = [
-    profile.ageGroup,
-    profile.berlinTraffic,
-    profile.bicycleUse,
-    profile.bikeReasons,
-    profile.gender,
-    profile.hasChildren,
-    profile.motivationalFactors,
-    profile.zipcode,
-    profile.vehiclesOwned,
-    profile.whyBiking,
-    userGroup,
-    transportRatings,
-    currentPerspective
-  ].every((val) => val != null);
-
-  if (!isComplete) throw new Error('Trying to marshall incomplete profile');
-  if (!isTosAccepted === true)
-    throw new Error('Trying to marshall profile without accepted TOS');
-
-  const { choices: bikeReasons, other: bikeReasonsVar } = marshallMultiChoice(
-    profile.bikeReasons
-  );
-
-  const { choices: whyBiking } = marshallMultiChoice(profile.whyBiking);
-  const { choices: vehiclesOwned } = marshallMultiChoice(profile.vehiclesOwned);
-
-  const profileRequest = {
-    ageGroup: profile.ageGroup,
-    berlinTraffic: profile.berlinTraffic,
-    bicycleUse: profile.bicycleUse,
-    district: profile.district,
-    gender: profile.gender,
-    hasChildren: profile.hasChildren,
-    motivationalFactors: profile.motivationalFactors,
-    zipcode: profile.zipcode,
-    perspective: currentPerspective,
-    vehiclesOwned,
-    whyBiking,
-    bikeReasons,
-    bikeReasonsVar,
-    userGroup,
-    isTosAccepted,
-    transportRatings
-  };
-
-  try {
-    // TODO: consider adapting eslint-config. keeping the util func below this call is fine IMHO
-    // eslint-disable-next-line no-use-before-define
-    validateProfileRequest(profileRequest);
-  } catch (e) {
-    throw new Error(
-      `Marshalled profileRequest failed: ${e.message}
-      ${JSON.stringify(profileRequest, null, 2)}`
-    );
-  }
-
-  return profileRequest;
-};
-
-/**
- * JSON-validates a profileRequest.
- *
- * @param profileRequest
- * @throws will throw an error describing the difference between instance and
- *    schema.
- */
-export const validateProfileRequest = (profileRequest: ProfileRequest) => {
-  const schemaValidationResult: ValidatorResult = new Validator().validate(
-    profileRequest,
-    profileRequestSchema
-  );
-  if (schemaValidationResult.errors.length) {
-    let errorMsg =
-      'ProfileRequest object is not ' + 'structured as stated in json schema';
-    schemaValidationResult.errors.forEach(({ property, message }) => {
-      errorMsg += `
-        Property ${property} ${message}`;
-    });
-    throw new Error(errorMsg);
-  }
-  return schemaValidationResult.valid;
+  throw Error(`Endpoint ${endpoint} has no configured backend route`);
 };

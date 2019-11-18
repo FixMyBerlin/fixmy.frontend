@@ -1,10 +1,12 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
+import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Checkbox from '~/pages/KatasterKI/components/Checkbox';
+import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
 
 const CheckboxWrapper = styled.div`
   margin-bottom: 1em;
@@ -24,6 +26,14 @@ const TextArea = styled.textarea`
   }
 `;
 
+const MultiChoice = styled.div`
+  ${media.m`
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+  `}
+`;
+
 const isChecked = (currentValues, option) =>
   currentValues != null && currentValues[option.name] === true;
 
@@ -41,45 +51,53 @@ const OptionInput = ({ option, checked, value, onChange }) => {
   );
 };
 
-export default ({ title, options, currentValue, handleChange, next }) => (
-  <Flex flexDirection="column" css={{ flexGrow: 1 }}>
-    <QuestionTitle>{title}</QuestionTitle>
-    {options.map((option) => (
-      <Fragment key={`multichoice_${option.name}`}>
-        <CheckboxWrapper>
-          <label htmlFor={option.name}>
-            <Checkbox
-              type="checkbox"
-              name={option.name}
-              id={option.name}
-              checked={isChecked(currentValue, option)}
-              onChange={(evt) =>
-                handleChange({
-                  ...currentValue,
-                  [option.name]: evt.target.checked
-                })
-              }
-            />
-            {option.label}
-          </label>
-        </CheckboxWrapper>
-        <OptionInput
-          option={option}
-          checked={isChecked(currentValue, option)}
-          value={currentValue}
-          onChange={(evt) =>
-            handleChange({
-              ...currentValue,
-              [`${option.name}-input`]: evt.target.value
-            })
-          }
-        />
-      </Fragment>
-    ))}
-    <Flex css={{ flexGrow: 1 }} justifyContent="center">
-      <Button onClick={next} css={{ alignSelf: 'flex-end' }}>
-        weiter
-      </Button>
+export default ({ title, options, currentValue, handleChange, next }) => {
+  const [isLoading, onClick] = useHandlerTimeout(next);
+
+  return (
+    <Flex flexDirection="column" css={{ flexGrow: 1 }}>
+      <QuestionTitle>{title}</QuestionTitle>
+      {options.map((option) => (
+        <MultiChoice key={`multichoice_${option.name}`}>
+          <CheckboxWrapper>
+            <label htmlFor={option.name}>
+              <Checkbox
+                type="checkbox"
+                name={option.name}
+                id={option.name}
+                checked={isChecked(currentValue, option)}
+                onChange={(evt) =>
+                  handleChange({
+                    ...currentValue,
+                    [option.name]: evt.target.checked
+                  })
+                }
+              />
+              {option.label}
+            </label>
+          </CheckboxWrapper>
+          <OptionInput
+            option={option}
+            checked={isChecked(currentValue, option)}
+            value={currentValue}
+            onChange={(evt) =>
+              handleChange({
+                ...currentValue,
+                [`${option.name}-input`]: evt.target.value
+              })
+            }
+          />
+        </MultiChoice>
+      ))}
+      <Flex css={{ flexGrow: 1 }} justifyContent="center">
+        <Button
+          onClick={onClick}
+          css={{ alignSelf: 'flex-end' }}
+          isLoading={isLoading}
+        >
+          Weiter
+        </Button>
+      </Flex>
     </Flex>
-  </Flex>
-);
+  );
+};

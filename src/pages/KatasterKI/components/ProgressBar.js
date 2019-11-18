@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
+import { isSmallScreen } from '~/styles/utils';
+
 const ProgressWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -16,21 +18,32 @@ const ProgressStep = styled.div`
   opacity: ${(props) => (props.current ? 0.5 : 1)};
 `;
 
+const ProgressBarLabel = styled.div`
+  color: ${config.colors.midgrey};
+  margin-bottom: 8px;
+  font-size: 14px;
+`;
+
 const ProgressBar = ({ total, current }) => {
   const width = `${85 / total}%`;
   const stepRange = Array.from(Array(total).keys());
 
   return (
-    <ProgressWrapper>
-      {stepRange.map((index) => (
-        <ProgressStep
-          css={{ width }}
-          done={index <= current}
-          current={index === current}
-          key={`progress-step__${index}`}
-        />
-      ))}
-    </ProgressWrapper>
+    <>
+      {!isSmallScreen() && (
+        <ProgressBarLabel>Fortschritt der Umfrage</ProgressBarLabel>
+      )}
+      <ProgressWrapper>
+        {stepRange.map((index) => (
+          <ProgressStep
+            css={{ width }}
+            done={index <= current}
+            current={index === current}
+            key={`progress-step__${index}`}
+          />
+        ))}
+      </ProgressWrapper>
+    </>
   );
 };
 

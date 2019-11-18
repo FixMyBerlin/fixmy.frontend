@@ -5,18 +5,15 @@ import fetchMock from 'fetch-mock';
 import {
   ProfileRequest,
   ProfileResponse,
-  TransportRating,
-  UserGroup,
   Perspective,
   PerspectiveRequest,
   PerspectiveResponse
 } from '../types';
-import { getEndpointURL } from '../utils';
+import { getEndpointURL } from '../api/utils';
 
-import {
+import reducer, {
   State,
   SUBMIT_PROFILE_COMPLETE,
-  SUBMIT_PROFILE_ERROR,
   SUBMIT_PROFILE_PENDING,
   RECEIVED_SCENE_GROUP,
   submitProfile,
@@ -47,9 +44,13 @@ describe('submitProfile', () => {
   it(
     'dispatches SUBMIT_PROFILE_PENDING, RECEIVED_SCENE_GROUP' +
       'and SUBMIT_PROFILE_COMPLETE',
-    () => {
+    async () => {
       // mock api request
-      fetchMock.postOnce(getEndpointURL('profile'), profileResponseSample);
+      const sessionId = 'session-id';
+      fetchMock.putOnce(
+        getEndpointURL('profile', sessionId, null),
+        profileResponseSample
+      );
 
       // mock store
       const stateBefore = {
@@ -58,20 +59,18 @@ describe('submitProfile', () => {
         }
       };
       const store = mockStore(stateBefore);
+
+      await store.dispatch(submitProfile());
+      const dispatchedActionTypes = store
+        .getActions()
+        .map((dispatchedActions) => dispatchedActions.type);
+
       const expectedActions = [
         SUBMIT_PROFILE_PENDING,
         RECEIVED_SCENE_GROUP,
         SUBMIT_PROFILE_COMPLETE
       ];
-
-      return store.dispatch(submitProfile()).then(() => {
-        // test action sequence
-        expect(
-          store.getActions().map((dispatchedActions) => dispatchedActions.type)
-        ).toEqual(expectedActions);
-
-        // test reducer TODO
-      });
+      expect(dispatchedActionTypes).toEqual(expectedActions);
     }
   );
 
@@ -80,7 +79,8 @@ describe('submitProfile', () => {
       'for invalid inputs',
     async () => {
       // mock failing api request
-      fetchMock.postOnce(getEndpointURL('profile'), {}); // kept here for savety, request should not get fired
+      const sessionId = 'session-id';
+      fetchMock.putOnce(getEndpointURL('profile', sessionId, null), {}); // kept here for savety, request should not get fired
 
       // mock store
       const invalidProfile = {
@@ -100,7 +100,7 @@ describe('submitProfile', () => {
         }
       };
 
-      // This is supposed to be a mismatch
+      // This is supposed to be a type mismatch
       // @ts-ignore
       const store = mockStore(stateBefore);
 
@@ -119,33 +119,30 @@ describe('submitPerspective', () => {
     fetchMock.restore();
   });
 
-  it('dispatches SUBMIT_PERSPECTIVE_PENDING, RECEIVED_SCENE_GROUP and SUBMIT_PERSPECTIVE_COMPLETE', () => {
+  it('dispatches SUBMIT_PERSPECTIVE_PENDING, RECEIVED_SCENE_GROUP and SUBMIT_PERSPECTIVE_COMPLETE', async () => {
     // mock api request
+    const sessionId = 'session-id';
     fetchMock.postOnce(
-      getEndpointURL('perspective'),
+      getEndpointURL('perspective', sessionId, null),
       perspectiveResponseSample
     );
 
-    // mock store
     const stateBefore = {
       KatasterKIState: {
         ...testingDefaultState
       }
     };
     const store = mockStore(stateBefore);
+    await store.dispatch(submitPerspective(Perspective.bicycle));
+    const dispatchedActionTypes = store
+      .getActions()
+      .map((dispatchedActions) => dispatchedActions.type);
+
     const expectedActions = [
       SUBMIT_PERSPECTIVE_PENDING,
       RECEIVED_SCENE_GROUP,
       SUBMIT_PERSPECTIVE_COMPLETE
     ];
-
-    return store.dispatch(submitPerspective(Perspective.bicycle)).then(() => {
-      // test action sequence
-      expect(
-        store.getActions().map((dispatchedActions) => dispatchedActions.type)
-      ).toEqual(expectedActions);
-
-      // test reducer TODO
-    });
+    expect(dispatchedActionTypes).toEqual(expectedActions);
   });
 });
