@@ -109,7 +109,7 @@ const ZipInput = (props) => {
         </DistrictChooser>
       )}
 
-      <Flex css={{ flexGrow: 1 }} justifyContent="center">
+      <Flex css={{ flexGrow: 1, marginTop: 20 }} justifyContent="center">
         <Button
           onClick={onClick}
           css={{ alignSelf: 'flex-end' }}

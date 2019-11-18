@@ -11,6 +11,7 @@ import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Input from '~/pages/KatasterKI/components/Input';
 import Paragraph from '~/pages/KatasterKI/components/Paragraph';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
+import Checkbox from '~/pages/KatasterKI/components/Checkbox';
 
 import emailImageSrc from '~/images/reports/letter.png';
 
@@ -34,6 +35,33 @@ const EmailWrapper = styled.div`
   `}
 `;
 
+const CheckboxWrapper = styled.div`
+  margin-bottom: 1em;
+  width: 100%;
+  font-size: 14px;
+  color: ${config.colors.midgrey};
+
+  label {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+  }
+`;
+
+const initialNewsletterConfig = [
+  {
+    id: 'fixmy-newsletter',
+    label: 'Ich möchte außerdem den FixMyBerlin Newsletter erhalten.',
+    checked: false
+  },
+  {
+    id: 'tsp-newsletter',
+    label:
+      'Ich wünsche mir weitere interessante Angebote der Tagesspiegel-Gruppe per E-Mail.',
+    checked: false
+  }
+];
+
 const Email = (props) => {
   if (!props.isTosAccepted) {
     return <Redirect to={config.routes.katasterKI.landing} />;
@@ -41,6 +69,9 @@ const Email = (props) => {
 
   const [emailSent, setEmailSent] = useState(false);
   const [email, setEmail] = useState('');
+  const [newsletterOptions, setNewsletterOptions] = useState(
+    initialNewsletterConfig
+  );
 
   const onSend = () => {
     // @TODO: send email to mail provider after successfull response:
@@ -49,6 +80,20 @@ const Email = (props) => {
 
   const onOpenInfo = () => {
     window.location.href = config.routes.katasterKI.landing;
+  };
+
+  const onToggle = (evt) => {
+    const { name } = evt.target;
+
+    setNewsletterOptions((options) =>
+      options.map((option) => {
+        if (option.id === name) {
+          option.checked = !option.checked;
+        }
+
+        return option;
+      })
+    );
   };
 
   const [isLoading, onClick] = useHandlerTimeout(onSend);
@@ -96,7 +141,24 @@ const Email = (props) => {
             placeholder="Deine E-Mailadresse"
             onChange={(evt) => setEmail(evt.target.value)}
             value={email}
+            css={{ marginBottom: 20 }}
           />
+
+          {newsletterOptions.map((option) => (
+            <CheckboxWrapper key={option.id}>
+              <label htmlFor={option.id}>
+                <Checkbox
+                  type="checkbox"
+                  name={option.id}
+                  id={option.id}
+                  checked={option.checked}
+                  onChange={onToggle}
+                />
+                <div>{option.label}</div>
+              </label>
+            </CheckboxWrapper>
+          ))}
+
           <Button
             css={{ marginTop: 20 }}
             disabled={!email}

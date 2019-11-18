@@ -13,7 +13,10 @@ import Email from './pages/Email';
 import landingSrc from '~/images/strassencheck-bg.jpg';
 
 const BgWrapper = styled.div`
-  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
   ${(props) =>
     !props.isLanding
       ? media.m`
@@ -32,11 +35,15 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   background: white;
-  box-shadow: ${(props) =>
-    props.isLanding ? 'none' : '0 0 8px 3px rgba(0,0,0,.25)'};
+  flex-grow: 1;
+
   img {
     width: 100%;
   }
+
+  ${(props) => media.m`
+    box-shadow: ${props.isLanding ? 'none' : '0 0 8px 3px rgba(0,0,0,.25)'};
+  `}
 `;
 
 const KatasterKI = (props) => {
