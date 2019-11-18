@@ -43,3 +43,23 @@ There is also a deployed production version: https://embed.fixmyberlin.de/.
 
 
 The project is based on [wbkd/react-starter](https://github.com/wbkd/react-starter).
+
+
+## Run Tests
+
+We are gradually adding tests
+
+### Unit tests
+
+Run unit tests using `npm run test`.
+
+### Unit tests
+
+To start the dev server und run end-to-end tests run
+```
+npm run test:e2e
+```
+If the development server is already running:
+```
+npm run test:e2e-concurrent 
+```
