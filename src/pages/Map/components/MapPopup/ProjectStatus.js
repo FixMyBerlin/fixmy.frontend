@@ -13,6 +13,6 @@ export default ({ section }) => {
   }
 
   return (
-    <StyledTitle>{section.title}</StyledTitle>
+    <StyledTitle data-cy="section-title">{section.title}</StyledTitle>
   );
 };

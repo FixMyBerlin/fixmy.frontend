@@ -93,7 +93,7 @@ class MapPopup extends PureComponent {
             {isPlaningView && <ProjectStatus section={data} />}
             {isStatus && <BikeLevelStatus onClick={this.onDetailClick} section={data} />}
             <MoreButtonWrapper>
-              <Button onClick={this.onDetailClick}>
+              <Button data-cy="more-info-btn" onClick={this.onDetailClick}>
                 mehr Infos
               </Button>
             </MoreButtonWrapper>
