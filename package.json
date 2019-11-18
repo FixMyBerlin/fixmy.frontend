@@ -12,6 +12,7 @@
     "test:watch": "npm run test  -- --watch",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=**/state/*",
     "test:e2e": "start-server-and-test start http://localhost:8080 cypress",
+    "test:e2e-concurrent": "npm run cypress",
     "cypress": "cypress run",
     "generate-kataster-schema": "./src/pages/KatasterKI/scheme/generate.sh"
   },
