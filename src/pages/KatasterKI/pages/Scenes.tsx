@@ -9,7 +9,12 @@ import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
 import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import Scene from '~/pages/KatasterKI/components/SectionTypes/Scene';
-import { setAnswer, updateProgressBar, submitPerspective } from '../state';
+import {
+  setAnswer,
+  updateProgressBar,
+  submitPerspective,
+  submitAnswer
+} from '../state';
 import { Answer, Section, RequestState } from '../types';
 import { makeSection } from '~/pages/KatasterKI/scene-utils';
 import PerspectiveChange from '../components/SectionTypes/PerspectiveChange';
@@ -75,7 +80,7 @@ const Scenes = ({
 
   const onChange = ({ rating, duration, nextPerspective }) => {
     if (section.type === 'scene') {
-      dispatch(setAnswer(section.name, rating, duration));
+      dispatch(submitAnswer(section.name, rating, duration));
     } else if (section.type === 'perspective_change') {
       dispatch(submitPerspective(nextPerspective));
     }

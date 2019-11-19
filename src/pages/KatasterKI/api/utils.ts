@@ -54,7 +54,7 @@ export const getEndpointURL: getEndpointURL = (
   if (endpoint === 'profile' || endpoint === 'perspective')
     return `${config.apiUrl}/survey/${projectId}/${sessionId}`;
   if (endpoint === 'answer')
-    return `${config.apiUrl}/survey/${projectId}/${sessionId}/${sceneID}`;
+    return `${config.apiUrl}/survey/${projectId}/${sessionId}/ratings/${sceneID}`;
 
   throw Error(`Endpoint ${endpoint} has no configured backend route`);
 };
