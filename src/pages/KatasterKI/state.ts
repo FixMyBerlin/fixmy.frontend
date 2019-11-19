@@ -78,6 +78,8 @@ export interface State {
   };
   sessionID: string;
   statisticsCounter?: number; // total count of ratings as reported by backend
+  ratingsCounter: number; // number of ratings made in this session
+  sceneGroupCounter: number; // current round of scenegroups
   transportRatings: {
     [mode: string]: TransportRating;
   };
@@ -141,6 +143,8 @@ export const productionDefaultState: State = {
   userGroup: UserGroup.bicycle,
   scenes: [],
   currentPerspective: Perspective.bicycle,
+  sceneGroupCounter: 0,
+  ratingsCounter: 0,
   sessionID: makeSessionID()
 };
 
@@ -198,7 +202,7 @@ export default function reducer(state: State = defaultState, action: Action) {
         (sc) => sc.sceneID === action.answer.sceneID
       );
       scenes[answerPos] = action.answer;
-      return { ...state, scenes };
+      return { ...state, scenes, ratingsCounter: state.ratingsCounter + 1 };
 
     case SET_PROFILE_ANSWER:
       const { question, value } = action.profile;
@@ -259,7 +263,8 @@ export default function reducer(state: State = defaultState, action: Action) {
             duration: null
           })
         ),
-        statisticsCounter: action.value.ratings_total
+        statisticsCounter: action.value.ratings_total,
+        sceneGroupCounter: state.sceneGroupCounter + 1
       };
 
     case SET_TRANSPORT_RATING:
