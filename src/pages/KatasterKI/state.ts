@@ -457,11 +457,11 @@ export const submitPerspective = (perspective: Perspective) => async (
   }
 };
 
-export const submitAnswer = (answer: Answer) => async (
-  dispatch: Dispatch,
-  getState
-) => {
-  const { sceneID, rating, duration } = answer;
+export const submitAnswer = (
+  sceneID: Answer['sceneID'],
+  rating: Answer['rating'],
+  duration: Answer['duration']
+) => async (dispatch: Dispatch, getState) => {
   dispatch(setAnswer(sceneID, rating, duration));
 
   const {

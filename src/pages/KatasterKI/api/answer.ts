@@ -10,12 +10,15 @@ async function handleSubmitAnswer({
   sessionID,
   sceneID
 }): Promise<void> {
-  const headers = token ? { Authorization: `JWT ${token}` } : {};
+  const authHeader = token ? { Authorization: `JWT ${token}` } : {};
   const endpoint = getEndpointURL('answer', sessionID, sceneID);
   const fetchResponse = await fetch(endpoint, {
     method: 'PUT',
     body: JSON.stringify(json),
-    headers
+    headers: {
+      ...authHeader,
+      'Content-Type': 'application/json'
+    }
   });
 
   if (!fetchResponse.ok) {
