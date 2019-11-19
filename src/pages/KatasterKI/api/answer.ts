@@ -27,7 +27,7 @@ async function handleSubmitAnswer({
     );
   }
 
-  return fetchResponse.json();
+  return null;
 }
 
 export default handleSubmitAnswer;
