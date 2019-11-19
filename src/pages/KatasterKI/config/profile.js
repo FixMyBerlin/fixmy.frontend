@@ -12,23 +12,90 @@ export default [
   {
     type: 'single_choice',
     name: 'berlinTraffic',
-    title: 'Wie empfinden Sie den Verkehr in Berlin?',
+    title: 'Was nervt Sie am meisten im Straßenverkehr?',
     options: [
       {
-        label: 'entspannt',
+        label: 'Baustellen auf der Fahrbahn',
         value: 0
       },
       {
-        label: 'eher entspannt',
+        label: 'Falschparker',
         value: 1
       },
       {
-        label: 'eher stressig',
+        label: 'Überhöhte Geschwindigkeit anderer',
         value: 2
       },
       {
-        label: 'stressig',
+        label: 'Smartphone-Nutzung anderer im Verkehr',
         value: 3
+      },
+      {
+        label: 'Zu dichtes Überholen von Autos und LKW',
+        value: 4
+      },
+      {
+        label: 'Zu viel Verkehr',
+        value: 5
+      },
+      {
+        label: 'Aggressives Verhalten anderer',
+        value: 6
+      },
+      {
+        label: 'Ignorieren der Verkehrsregeln ',
+        value: 7
+      }
+    ]
+  },
+  {
+    type: 'single_choice',
+    name: 'offended',
+    title: 'Wurden Sie im vergangenen Jahr im Verkehr verbal beleidigt?',
+    options: [
+      {
+        label: 'Ja, häufig',
+        value: 0
+      },
+      {
+        label: 'Ja, ab und an',
+        value: 1
+      },
+      {
+        label: 'Eher selten',
+        value: 2
+      },
+      {
+        label: 'Nein',
+        value: 3
+      }
+    ]
+  },
+  {
+    type: 'single_choice',
+    name: 'responsible',
+    title:
+      'Wer trägt die größte Verantwortung für die Probleme im Berliner Verkehr?',
+    options: [
+      {
+        label: 'Die Politik',
+        value: 0
+      },
+      {
+        label: 'Die Polizei / das Ordnungsamt',
+        value: 1
+      },
+      {
+        label: 'Die Autofahrer',
+        value: 2
+      },
+      {
+        label: 'Die Radfahrer',
+        value: 3
+      },
+      {
+        label: 'Die Fußgänger',
+        value: 4
       }
     ]
   },

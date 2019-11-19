@@ -10,6 +10,7 @@ const HeadlineWrapper = styled.div`
     font-size: 26px;
     line-height: 1;
     margin: 5px 0;
+    font-family: FranklinGothic-Demi, sans-serif;
   }
 
   svg {

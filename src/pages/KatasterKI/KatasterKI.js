@@ -8,10 +8,16 @@ import Landing from './pages/Landing';
 import LandingEmbedded from './pages/LandingEmbedded';
 import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
+import Feedback from './pages/Feedback';
+import Email from './pages/Email';
+import GlobalStyle from './styles/Global';
 import landingSrc from '~/images/strassencheck-bg.jpg';
 
 const BgWrapper = styled.div`
-  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+
   ${(props) =>
     !props.isLanding
       ? media.m`
@@ -30,11 +36,17 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   background: white;
-  box-shadow: ${(props) =>
-    props.isLanding ? 'none' : '0 0 8px 3px rgba(0,0,0,.25)'};
+  flex-grow: 1;
+  width: 100%;
+  font-family: FranklinGothic-Book, sans-serif;
+
   img {
     width: 100%;
   }
+
+  ${(props) => media.m`
+    box-shadow: ${props.isLanding ? 'none' : '0 0 8px 3px rgba(0,0,0,.25)'};
+  `}
 `;
 
 const KatasterKI = (props) => {
@@ -43,6 +55,7 @@ const KatasterKI = (props) => {
 
   return (
     <BgWrapper isLanding={isLanding}>
+      <GlobalStyle />
       <ContentWrapper isLanding={isLanding}>
         <Router history={history}>
           <Switch>
@@ -68,6 +81,18 @@ const KatasterKI = (props) => {
               exact
               path={config.routes.katasterKI.scenes}
               component={Scenes}
+            />
+
+            <Route
+              exact
+              path={config.routes.katasterKI.feedback}
+              component={Feedback}
+            />
+
+            <Route
+              exact
+              path={config.routes.katasterKI.email}
+              component={Email}
             />
 
             {/* Fallback: redirect to landing page */}

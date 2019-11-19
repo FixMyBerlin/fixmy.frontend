@@ -173,6 +173,7 @@ export const testingDefaultState: State = {
     },
     zipcode: '22000'
   },
+  statisticsCounter: 1234,
   userGroup: UserGroup.bicycle,
   currentPerspective: Perspective.bicycle
 };

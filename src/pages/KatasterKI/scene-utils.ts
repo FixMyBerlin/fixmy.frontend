@@ -5,10 +5,20 @@ import ButtonIconMostyUnsafe from '~/images/kataster-icons/button-backgrund-2.sv
 import ButtonIconMostlySafe from '~/images/kataster-icons/button-backgrund-3.svg';
 import ButtonIconSafe from '~/images/kataster-icons/button-backgrund-4.svg';
 
+import BikeIcon from '~/images/kataster-icons/icon-transportation-2.svg';
+import PedestrianIcon from '~/images/kataster-icons/icon-transportation-1.svg';
+import CarIcon from '~/images/kataster-icons/icon-transportation-4.svg';
+
 const perspectiveNames = {
   C: 'Fahrradperspektive',
   A: 'Autoperspektive',
   P: 'Fußgängerperspektive'
+};
+
+const perspectiveIcons = {
+  C: BikeIcon,
+  A: CarIcon,
+  P: PedestrianIcon
 };
 
 const agentNames = {
@@ -55,6 +65,7 @@ export const makeSection = (
       'Vielen Dank, Sie können mit dieser Perspektive weiter machen oder jetzt die Straße aus einer anderen Sicht bewerten:',
     options: Object.keys(perspectiveNames).map((p) => ({
       label: perspectiveNames[p],
+      icon: perspectiveIcons[p],
       value: p
     }))
   };

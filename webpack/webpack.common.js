@@ -1,6 +1,6 @@
 const Path = require('path');
 const Webpack = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
@@ -52,7 +52,14 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: [
+          {
+            loader: 'babel-loader'
+          },
+          {
+            loader: 'ts-loader'
+          }
+        ],
         include: [Path.resolve(__dirname, '../src')]
       },
       {
@@ -66,28 +73,31 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        oneOf: [{
-          exclude: /node_modules/,
-          use: ['babel-loader', {
-            loader: 'react-svg-loader',
-            options: {
-              svgo: {
-                plugins: [
-                  { cleanupIDs: false },
-                  { removeViewBox: false }
-                ]
+        oneOf: [
+          {
+            exclude: /node_modules/,
+            use: [
+              'babel-loader',
+              {
+                loader: 'react-svg-loader',
+                options: {
+                  svgo: {
+                    plugins: [{ cleanupIDs: false }, { removeViewBox: false }]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            include: /node_modules/,
+            use: {
+              loader: 'file-loader',
+              options: {
+                name: '[path][name].[ext]'
               }
             }
-          }]
-        }, {
-          include: /node_modules/,
-          use: {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]'
-            }
           }
-        }]
+        ]
       }
     ]
   }
