@@ -40,7 +40,12 @@ const finishMeasurement = (sceneID) => {
 
 const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
   const onClick = (option) => {
-    const duration = finishMeasurement(name);
+    let duration = 0;
+    try {
+      duration = finishMeasurement(name);
+    } catch (err) {
+      if (config.debug) console.error(`Error measuring response time ${err}`);
+    }
     handleChange({ rating: option.value, duration });
     next();
   };
