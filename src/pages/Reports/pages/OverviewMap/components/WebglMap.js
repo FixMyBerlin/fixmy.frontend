@@ -24,6 +24,10 @@ function toGeojson(data) {
   };
 }
 
+MapboxGL.clearStorage(err => {
+  console.log(err);
+ });
+
 class WebglMap extends PureComponent {
   static propTypes = {
     center: PropTypes.arrayOf(PropTypes.number),

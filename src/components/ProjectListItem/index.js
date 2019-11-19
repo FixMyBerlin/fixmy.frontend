@@ -3,7 +3,7 @@ import idx from 'idx';
 import styled from 'styled-components';
 import slugify from 'slugify';
 
-import { numberFormat } from '~/utils/utils';
+import { numberFormat, getRVALength } from '~/utils/utils';
 import Label from '~/components/Label';
 import Button from '~/components/Button';
 import HeartIcon from '~/images/heart.svg';
@@ -115,6 +115,19 @@ const MapButton = styled(Button)`
   }
 `;
 
+const ProjectLength = ({ length, side, id }) => {
+  const rvaLength = getRVALength({ length, side, id });
+  if (rvaLength == null) return null;
+  return (
+    <>
+      | {numberFormat(rvaLength / 1000, 1)} km
+      {side === 2 && (
+        <> (beidseitige Planung mit je {numberFormat(length / 1000, 1)} km)</>
+      )}
+    </>
+  );
+};
+
 class ProjectListItem extends PureComponent {
   constructor(props) {
     super(props);
@@ -124,9 +137,9 @@ class ProjectListItem extends PureComponent {
   }
 
   onClick = () => {
-    const { id, street_name: name } = this.props
+    const { id, street_name: name } = this.props;
     const slug = name ? slugify(name) : '';
-    const url = `${config.routes.projects}/${id}/${slug.toLowerCase()}`
+    const url = `${config.routes.projects}/${id}/${slug.toLowerCase()}`;
     this.props.history.push(url);
   };
 
@@ -141,7 +154,6 @@ class ProjectListItem extends PureComponent {
       construction_completed: constructionCompleted,
       photos = [],
       id,
-      length,
       likes,
       street_name: streetName,
       title,
@@ -159,7 +171,7 @@ class ProjectListItem extends PureComponent {
           <ItemHeader>
             <ItemTitle>{streetName}</ItemTitle>
             <Label>
-              {borough} {length && `| ${numberFormat(+length / 1000, 1)} km`}
+              {borough} <ProjectLength {...this.props} />
             </Label>
           </ItemHeader>
           <ItemSubTitle>{title}</ItemSubTitle>

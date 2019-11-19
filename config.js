@@ -128,6 +128,10 @@ const config = {
       route: '/api'
     },
     {
+      key: 'jobs',
+      route: '/jobs'
+    },
+    {
       key: 'newsletter-thank-you',
       route: '/newsletter-danke'
     }
@@ -249,7 +253,7 @@ const config = {
         intersections: 'fmb-HBI-intersections',
         intersectionsSide0: 'fmb-HBI-intersections-side-0',
         intersectionsSide1: 'fmb-HBI-intersections-side-1',
-        intersectionsOverlay: 'fmb-HBI-intersections-overlay'
+        intersectionsOverlay: 'fmb-HBI-intersections-overlay-line'
       },
       buildings3d: '3d-buildings',
       dimmingLayer: 'fmb-dimming'
@@ -259,7 +263,6 @@ const config = {
     geocoderAppId: 'WOhEXnd20kbhT8Lxx4n4',
     geocoderAppCode: 'uFkDYK0WKXBPZgG8mRb9Rg',
     geocoderBounds: '13.3651,52.4658,13.4945,52.5479',
-    drawOverlayLine: true,
     dimmingOpacity: 0.3,
     bounds: [[13.2826, 52.4615], [13.46391, 52.5544374]]
   },
