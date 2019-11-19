@@ -9,6 +9,7 @@ import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
 import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import Scene from '~/pages/KatasterKI/components/SectionTypes/Scene';
+import Feedback from '../components/SectionTypes/Feedback';
 import {
   setAnswer,
   updateProgressBar,
@@ -24,7 +25,8 @@ const sectionTypes = {
   multi_choice: MultiChoice,
   single_choice: SingleChoice,
   scene: Scene,
-  perspective_change: PerspectiveChange
+  perspective_change: PerspectiveChange,
+  feedback: Feedback
 };
 
 const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
@@ -38,7 +40,8 @@ const Scenes = ({
   perspective,
   dispatch,
   profileRequest,
-  perspectiveRequest
+  perspectiveRequest,
+  sceneGroupCounter
 }) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
   if (
@@ -61,7 +64,7 @@ const Scenes = ({
     return <Loader pastDelay={true} error={perspectiveRequest.message} />;
 
   const page = +match.params.page - 1;
-  const sectionConfig = makeSection(scenes, perspective);
+  const sectionConfig = makeSection(scenes, perspective, sceneGroupCounter);
   const section = sectionConfig[page];
   if (section == null)
     return <Redirect to={config.routes.katasterKI.scenesBase + '/1'} />;
@@ -113,7 +116,8 @@ const mapStateToProps = (state) => ({
   scenes: state.KatasterKIState.scenes,
   perspective: state.KatasterKIState.currentPerspective,
   profileRequest: state.KatasterKIState.profileRequest,
-  perspectiveRequest: state.KatasterKIState.perspectiveRequest
+  perspectiveRequest: state.KatasterKIState.perspectiveRequest,
+  sceneGroupCounter: state.KatasterKIState.sceneGroupCounter
 });
 
 export default connect(mapStateToProps)(Scenes);

@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
+import history from '~/history';
 import { media } from '~/styles/utils';
 import { numberFormat } from '~/utils/utils';
 import Flex from '~/components/Flex';
@@ -30,22 +31,36 @@ const FeedbackWrapper = styled.div`
   `}
 `;
 
-// @TODO: the situation count needs to be dynamic
-const userSituationCount = 15;
-
-const Feedback = (props) => {
-  if (!props.isTosAccepted) {
+const Feedback = ({
+  isTosAccepted,
+  statisticsCounter,
+  ratingsCounter,
+  isEmbedded,
+  next
+}) => {
+  if (!isTosAccepted) {
     return <Redirect to={config.routes.katasterKI.landing} />;
   }
 
   const feedbackThreshold = getFeedbackThreshold();
   const title = getTitle(
-    numberFormat(props.statisticsCounter),
+    numberFormat(statisticsCounter),
     numberFormat(feedbackThreshold)
   );
 
-  const onOpenInfo = () => {
-    window.location.href = config.katasterKI.tspArticleLink;
+  /**
+   * Handles behavior when users clicked the 'quit' button.
+   *
+   * When the survey is embedded this should message the parent window to close
+   * the iFrame. When not embedded, a redirect to a content page is issued
+   * through history.push
+   */
+  const handleQuit = () => {
+    if (isEmbedded) {
+      window.parent.postMessage({ msg: 'done' }, '*');
+    } else {
+      history.push(config.katasterKI.tspArticleLink);
+    }
   };
 
   return (
@@ -53,7 +68,7 @@ const Feedback = (props) => {
       <QuestionTitle>
         {title}
         <ProgressVis
-          value={props.statisticsCounter}
+          value={statisticsCounter}
           max={feedbackThreshold}
           style={{ margin: '15px 0' }}
         />
@@ -61,18 +76,15 @@ const Feedback = (props) => {
 
       <FeedbackWrapper>
         <Paragraph css={{ margin: '0 0 25px 0' }}>
-          Sie haben bereits <strong>{userSituationCount} Situationen</strong>{' '}
+          Sie haben bereits <strong>{ratingsCounter} Situationen</strong>{' '}
           bewertet. Je mehr Bewertungen die Umfrage erhält umso aussagekräftiger
           sind die Ergebnisse.
         </Paragraph>
 
         <Flex css={{ flexGrow: 1 }} alignItems="center" flexDirection="column">
-          {/* @TODO: where should we go when user clicks "weiter bewerten" ? */}
-          <Button as={Link} to={config.routes.katasterKI.landing}>
-            Weiter bewerten
-          </Button>
+          <Button onClick={next}>Weiter bewerten</Button>
           <ShareButton style={{ marginTop: 20 }} />
-          <GhostButton css={{ marginTop: 'auto' }} onClick={onOpenInfo}>
+          <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>
             Informationen über das Projekt
           </GhostButton>
         </Flex>
@@ -83,7 +95,9 @@ const Feedback = (props) => {
 
 const mapStateToProps = (state) => ({
   isTosAccepted: state.KatasterKIState.isTosAccepted,
-  statisticsCounter: state.KatasterKIState.statisticsCounter
+  statisticsCounter: state.KatasterKIState.statisticsCounter,
+  ratingsCounter: state.KatasterKIState.ratingsCounter.KatasterKIState,
+  isEmbedded: state.KatasterKIState.isEmbedded
 });
 
 export default connect(mapStateToProps)(Feedback);

@@ -46,7 +46,8 @@ export const getSceneImageSrc = (id) => {
 
 export const makeSection = (
   scenes: Array<Answer>,
-  perspective: Perspective
+  perspective: Perspective,
+  sceneGroupCounter: number
 ): Array<Section> => {
   const perspectiveName = perspectiveNames[perspective];
 
@@ -70,6 +71,12 @@ export const makeSection = (
     }))
   };
 
+  const feedbackScreen = {
+    type: 'feedback',
+    title: null,
+    name: 'feedback'
+  };
+
   const sceneScreens = scenes.map((scene) => ({
     type: 'scene',
     name: scene.sceneID,
@@ -81,5 +88,13 @@ export const makeSection = (
     }))
   }));
 
-  return [titleScreen, ...sceneScreens, perspectiveChangeScreen];
+  const sectionConfig = [titleScreen, ...sceneScreens];
+
+  if (sceneGroupCounter === 1) {
+    sectionConfig.push(perspectiveChangeScreen);
+  } else {
+    sectionConfig.push(feedbackScreen, perspectiveChangeScreen);
+  }
+
+  return sectionConfig;
 };
