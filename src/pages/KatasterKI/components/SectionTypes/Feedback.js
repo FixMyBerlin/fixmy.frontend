@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
+import history from '~/history';
 import { media } from '~/styles/utils';
 import { numberFormat } from '~/utils/utils';
 import Flex from '~/components/Flex';
@@ -34,6 +35,7 @@ const Feedback = ({
   isTosAccepted,
   statisticsCounter,
   ratingsCounter,
+  isEmbedded,
   next
 }) => {
   if (!isTosAccepted) {
@@ -46,8 +48,19 @@ const Feedback = ({
     numberFormat(feedbackThreshold)
   );
 
+  /**
+   * Handles behavior when users clicked the 'quit' button.
+   *
+   * When the survey is embedded this should message the parent window to close
+   * the iFrame. When not embedded, a redirect to a content page is issued
+   * through history.push
+   */
   const handleQuit = () => {
-    window.location.href = config.katasterKI.tspArticleLink;
+    if (isEmbedded) {
+      window.parent.postMessage({ msg: 'done' }, '*');
+    } else {
+      history.push(config.katasterKI.tspArticleLink);
+    }
   };
 
   return (
@@ -83,7 +96,8 @@ const Feedback = ({
 const mapStateToProps = (state) => ({
   isTosAccepted: state.KatasterKIState.isTosAccepted,
   statisticsCounter: state.KatasterKIState.statisticsCounter,
-  ratingsCounter: state.KatasterKIState.ratingsCounter
+  ratingsCounter: state.KatasterKIState.ratingsCounter.KatasterKIState,
+  isEmbedded: state.KatasterKIState.isEmbedded
 });
 
 export default connect(mapStateToProps)(Feedback);
