@@ -11,7 +11,12 @@ import {
   ProfileResponse,
   PerspectiveResponse
 } from './types';
-import { getUserGroup, makeSessionID, toggleNavigationWarning } from './utils';
+import {
+  getUserGroup,
+  makeSessionID,
+  toggleNavigationWarning,
+  getInitialPerspective
+} from './utils';
 import api from './api';
 
 export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
@@ -262,8 +267,9 @@ export default function reducer(state: State = defaultState, action: Action) {
         [action.transportRating.type]: action.transportRating.rating
       };
       const userGroup = getUserGroup(transportRatings);
+      const currentPerspective = getInitialPerspective(userGroup);
 
-      return { ...state, transportRatings, userGroup };
+      return { ...state, transportRatings, userGroup, currentPerspective };
 
     case SET_PERSPECTIVE:
       return { ...state, perspective: action.perspective };
