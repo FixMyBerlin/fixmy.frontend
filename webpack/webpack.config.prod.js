@@ -3,7 +3,6 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
@@ -23,12 +22,9 @@ module.exports = merge(common, {
       chunks: 'all',
       name: false
     },
-    minimizer: [
-      new TerserPlugin()
-    ],
+    minimizer: [new TerserPlugin()]
   },
   plugins: [
-    new Webpack.EnvironmentPlugin(['NODE_ENV', 'CONFIG_ENV']),
     new HtmlWebpackPlugin({
       inject: true,
       siteUrl: Config.prodUrl,
@@ -36,8 +32,7 @@ module.exports = merge(common, {
       minify: false
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
-    new Webpack.optimize.ModuleConcatenationPlugin(),
-    // new BundleAnalyzerPlugin()
+    new Webpack.optimize.ModuleConcatenationPlugin()
   ],
   module: {
     rules: [
@@ -51,9 +46,7 @@ module.exports = merge(common, {
             options: {
               sourceMap: true,
               ident: 'postcss',
-              plugins: () => [
-                Autoprefixer
-              ]
+              plugins: () => [Autoprefixer]
             }
           }
         ]
