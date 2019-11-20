@@ -55,13 +55,25 @@ const Scenes = ({
     profileRequest.state == RequestState.pending ||
     profileRequest.state == RequestState.error
   )
-    return <Loader pastDelay={true} error={profileRequest.message} />;
+    return (
+      <Loader
+        pastDelay={false}
+        error={profileRequest.message}
+        color={config.colors.katasterHighlight}
+      />
+    );
 
   if (
     perspectiveRequest.state == RequestState.pending ||
     perspectiveRequest.state == RequestState.error
   )
-    return <Loader pastDelay={true} error={perspectiveRequest.message} />;
+    return (
+      <Loader
+        pastDelay={false}
+        error={perspectiveRequest.message}
+        color={config.colors.katasterHighlight}
+      />
+    );
 
   const page = +match.params.page - 1;
   const sectionConfig = makeSection(scenes, perspective, sceneGroupCounter);
