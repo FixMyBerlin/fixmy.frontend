@@ -42,7 +42,7 @@ const Feedback = ({
     return <Redirect to={config.routes.katasterKI.landing} />;
   }
 
-  const feedbackThreshold = getFeedbackThreshold();
+  const feedbackThreshold = getFeedbackThreshold(statisticsCounter);
   const title = getTitle(
     numberFormat(statisticsCounter),
     numberFormat(feedbackThreshold)
@@ -96,7 +96,7 @@ const Feedback = ({
 const mapStateToProps = (state) => ({
   isTosAccepted: state.KatasterKIState.isTosAccepted,
   statisticsCounter: state.KatasterKIState.statisticsCounter,
-  ratingsCounter: state.KatasterKIState.ratingsCounter.KatasterKIState,
+  ratingsCounter: state.KatasterKIState.ratingsCounter,
   isEmbedded: state.KatasterKIState.isEmbedded
 });
 
