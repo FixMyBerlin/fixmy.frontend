@@ -1,9 +1,9 @@
 import { Answer, Perspective, Section } from './types';
 
-import ButtonIconUnsafe from '~/images/kataster-icons/button-backgrund-1.svg';
-import ButtonIconMostyUnsafe from '~/images/kataster-icons/button-backgrund-2.svg';
-import ButtonIconMostlySafe from '~/images/kataster-icons/button-backgrund-3.svg';
-import ButtonIconSafe from '~/images/kataster-icons/button-backgrund-4.svg';
+import ButtonIconUnsafe from '~/images/kataster-icons/button-background-1.svg';
+import ButtonIconMostyUnsafe from '~/images/kataster-icons/button-background-2.svg';
+import ButtonIconMostlySafe from '~/images/kataster-icons/button-background-3.svg';
+import ButtonIconSafe from '~/images/kataster-icons/button-background-4.svg';
 
 import BikeIcon from '~/images/kataster-icons/icon-transportation-2.svg';
 import PedestrianIcon from '~/images/kataster-icons/icon-transportation-1.svg';
