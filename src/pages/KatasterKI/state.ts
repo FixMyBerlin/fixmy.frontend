@@ -205,7 +205,12 @@ export default function reducer(state: State = defaultState, action: Action) {
         (sc) => sc.sceneID === action.answer.sceneID
       );
       scenes[answerPos] = action.answer;
-      return { ...state, scenes, ratingsCounter: state.ratingsCounter + 1 };
+      return {
+        ...state,
+        scenes,
+        ratingsCounter: state.ratingsCounter + 1,
+        statisticsCounter: state.statisticsCounter + 1
+      };
 
     case SET_EMBEDDED:
       return { ...state, isEmbedded: action.value };
