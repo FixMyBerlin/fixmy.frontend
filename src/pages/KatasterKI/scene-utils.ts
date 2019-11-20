@@ -90,7 +90,7 @@ export const makeSection = (
 
   const sectionConfig = [titleScreen, ...sceneScreens];
 
-  if (sceneGroupCounter === 1) {
+  if (sceneGroupCounter % 2 === 1) {
     sectionConfig.push(perspectiveChangeScreen);
   } else {
     sectionConfig.push(feedbackScreen, perspectiveChangeScreen);
