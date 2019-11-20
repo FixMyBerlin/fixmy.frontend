@@ -1,3 +1,5 @@
+import React from 'react';
+
 import PedestrianIcon from '~/images/kataster-icons/icon-transportation-1.svg';
 import BikeIcon from '~/images/kataster-icons/icon-transportation-2.svg';
 import MotorbikeIcon from '~/images/kataster-icons/icon-transportation-5.svg';
@@ -124,7 +126,11 @@ export default [
       {
         icon: PedestrianIcon,
         name: 'pedestrian',
-        label: 'Zu Fuß (länger als 15 min pro Weg)'
+        label: (
+          <>
+            Zu Fuß <span className="light">(länger als 15 min pro Weg)</span>
+          </>
+        )
       },
       {
         icon: BikeIcon,

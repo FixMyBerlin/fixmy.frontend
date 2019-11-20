@@ -112,7 +112,7 @@ const ZipInput = (props) => {
       <Flex css={{ flexGrow: 1, marginTop: 20 }} justifyContent="center">
         <Button
           onClick={onClick}
-          css={{ alignSelf: 'flex-end' }}
+          css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           disabled={isButtonDisabled}
           isLoading={isLoading}
         >

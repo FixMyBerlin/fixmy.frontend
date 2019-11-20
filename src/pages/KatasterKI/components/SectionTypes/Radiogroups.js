@@ -26,6 +26,11 @@ const RadioGroupTitle = styled.div`
   color: ${config.colors.darkbg};
   margin-bottom: 10px;
   font-weight: 700;
+  font-family: FranklinGothic-Demi, sans-serif;
+
+  ${media.m`
+      font-size: 20px;
+  `}
 `;
 
 const RadioGroup = styled.div`
@@ -122,7 +127,7 @@ export default ({
       <Flex css={{ flexGrow: 1 }} justifyContent="center">
         <Button
           onClick={onClick}
-          css={{ alignSelf: 'flex-end' }}
+          css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           isLoading={isLoading}
         >
           Weiter

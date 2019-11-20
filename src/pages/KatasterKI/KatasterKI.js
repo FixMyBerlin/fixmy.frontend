@@ -28,7 +28,7 @@ const BgWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  padding: ${(props) => (props.isLanding ? 0 : '1rem')};
+  padding: ${(props) => (props.isLanding ? 0 : '15px')};
   max-width: ${(props) => (props.isLanding ? 'none' : '740px')};
   margin: 0 auto;
   min-height: 100%;
@@ -45,6 +45,7 @@ const ContentWrapper = styled.div`
 
   ${(props) => media.m`
     box-shadow: ${props.isLanding ? 'none' : '0 0 8px 3px rgba(0,0,0,.25)'};
+    padding: ${props.isLanding ? 0 : '15px 60px'};
   `}
 `;
 
