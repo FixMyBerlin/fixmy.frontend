@@ -9,7 +9,7 @@ import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
 import GlobalStyle from './styles/Global';
 import AppGlobalStyle from '~/styles/Global';
-import landingSrc from '~/images/strassencheck-bg.jpg';
+import landingSrc from '~/images/strassencheck/map-bg.jpg';
 
 const BgWrapper = styled.div`
   min-height: 100%;

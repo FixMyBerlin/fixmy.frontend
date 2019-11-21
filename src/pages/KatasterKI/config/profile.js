@@ -1,10 +1,10 @@
 import React from 'react';
 
-import PedestrianIcon from '~/images/kataster-icons/icon-transportation-1.svg';
-import BikeIcon from '~/images/kataster-icons/icon-transportation-2.svg';
-import MotorbikeIcon from '~/images/kataster-icons/icon-transportation-5.svg';
-import PublicIcon from '~/images/kataster-icons/icon-transportation-3.svg';
-import CarIcon from '~/images/kataster-icons/icon-transportation-4.svg';
+import PedestrianIcon from '~/images/strassencheck/icons/icon-transportation-1.svg';
+import BikeIcon from '~/images/strassencheck/icons/icon-transportation-2.svg';
+import MotorbikeIcon from '~/images/strassencheck/icons/icon-transportation-5.svg';
+import PublicIcon from '~/images/strassencheck/icons/icon-transportation-3.svg';
+import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 
 export default [
   {

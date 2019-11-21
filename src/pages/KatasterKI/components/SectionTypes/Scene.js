@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import classnames from 'classnames';
 
@@ -7,6 +7,7 @@ import Loader from '~/components/Loader';
 import Flex from '~/components/Flex';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import { getSceneImageSrc } from '~/pages/KatasterKI/scene-utils';
+import loadingImage from '~/images/strassencheck/scene-loading.jpg';
 
 const RatingTitle = styled(QuestionTitle)`
   margin-top: 10px;
@@ -56,6 +57,11 @@ const finishMeasurement = (sceneID) => {
 
 const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
   const [clickedButton, setClickedButton] = useState(null);
+  const [imageSrc, setImageSrc] = useState(loadingImage);
+
+  useEffect(() => {
+    setImageSrc(loadingImage);
+  }, [name]);
 
   const onClick = (option) => {
     if (clickedButton) {
@@ -77,13 +83,18 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
     }, config.katasterKI.buttonTimeout);
   };
 
+  const onImageLoad = () => {
+    startMeasurement();
+    setImageSrc(getSceneImageSrc(name));
+  };
+
   return (
     <>
       <img
-        src={getSceneImageSrc(name)}
+        src={imageSrc}
         alt={title}
-        onLoad={startMeasurement}
-        onError={startMeasurement}
+        onLoad={onImageLoad}
+        onError={onImageLoad}
       />
       <RatingTitle>{title}</RatingTitle>
       <Flex>
