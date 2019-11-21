@@ -71,9 +71,14 @@ export default ({
   radiogroups,
   currentValue,
   handleChange,
-  next
+  next,
+  randomize
 }) => {
   const [isLoading, onClick] = useHandlerTimeout(next);
+
+  if (randomize) {
+    // TODO: shuffle radiogroups array
+  }
 
   return (
     <Flex flexDirection="column" css={{ flexGrow: 1 }}>

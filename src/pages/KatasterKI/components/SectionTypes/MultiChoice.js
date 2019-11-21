@@ -51,8 +51,19 @@ const OptionInput = ({ option, checked, value, onChange }) => {
   );
 };
 
-export default ({ title, options, currentValue, handleChange, next }) => {
+export default ({
+  title,
+  options,
+  currentValue,
+  handleChange,
+  next,
+  randomize
+}) => {
   const [isLoading, onClick] = useHandlerTimeout(next);
+
+  if (randomize) {
+    // TODO: shuffle options array
+  }
 
   return (
     <Flex flexDirection="column" css={{ flexGrow: 1 }}>

@@ -22,6 +22,7 @@ const SingleChoiceWrapper = styled.div`
 const SingleChoiceInput = ({
   title,
   options,
+  randomize,
   currentValue,
   handleChange,
   next
@@ -39,6 +40,10 @@ const SingleChoiceInput = ({
       next();
     }, config.katasterKI.buttonTimeout);
   };
+
+  if (randomize) {
+    // TODO: shuffle options array
+  }
 
   return (
     <SingleChoiceWrapper>

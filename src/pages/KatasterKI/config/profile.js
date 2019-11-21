@@ -263,6 +263,7 @@ export default [
     name: 'bicycleUse',
     title:
       'Wie lange dauert der Weg, den Sie am häufigsten mit dem Fahrrad zurücklegen (ohne Rückweg)?',
+    randomize: true,
     options: [
       {
         label: '10 Minuten',
@@ -294,6 +295,7 @@ export default [
     type: 'radiogroups',
     name: 'motivationalFactors',
     title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
+    randomize: true,
     info:
       'Die folgenden Fragen sind für unsere Forschung sehr wichtig. Sie handeln von all jenen Faktoren, die Sie möglicherweise motivieren, Fahrrad zu fahren - oder Sie davon abhalten.',
     radiogroups: [
@@ -348,6 +350,7 @@ export default [
     name: 'bikeReasons',
     title:
       'Aus welchen Gründen können, dürfen oder wollen Sie nicht häufiger Fahrrad fahren?',
+    randomize: true,
     options: [
       {
         label: 'Ich kann nicht Fahrrad fahren (fehlende Fertigkeit)',
