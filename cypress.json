@@ -1,6 +1,6 @@
 {
   "video": false,
   "baseUrl": "http://localhost:8080",
-  "__about__": "for now: excludethe example tests that I keep locally without checking them in",
-  "testFiles": "**/planungen.js"
+  "//": "paths are relative to the folder cypress/integration",
+  "testFiles": "*.js"
 }

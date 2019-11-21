@@ -38,6 +38,7 @@ export default (props) => {
           disabled={!props.checked}
           as={Link}
           to={`${config.routes.katasterKI.profileBase}/1`}
+          data-cy="kat-start-survey-btn"
         >
           Umfrage beginnen
         </Button>
