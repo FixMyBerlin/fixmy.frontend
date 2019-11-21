@@ -394,32 +394,5 @@ export default [
     name: 'zipcode',
     title:
       'Geben Sie Ihre Postleitzahl an, damit wir Sie einem Ort zuordnen können.'
-  },
-  {
-    type: 'multi_choice',
-    name: 'whyBiking',
-    title: 'Welcher dieser Aussagen würden sie zustimmen?',
-    options: [
-      {
-        label: 'Meine täglichen Wege kann ich gut mit dem Fahrrad erledigen.',
-        name: 'dailyTransport'
-      },
-      {
-        label: 'Radfahren macht mir Spaß',
-        name: 'fun'
-      },
-      {
-        label: 'Ich kann gut und sicher Radfahren',
-        name: 'ability'
-      },
-      {
-        label: 'In meinem Umfeld fahren viele Menschen Fahrrad',
-        name: 'social'
-      },
-      {
-        label: 'Ich fühle mich sicher auf dem Rad im Verkehr',
-        name: 'safety'
-      }
-    ]
   }
 ];
