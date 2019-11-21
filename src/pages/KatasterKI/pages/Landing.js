@@ -9,7 +9,7 @@ import { setTOSAccepted, setEmbedded } from '../state';
 import Flex from '~/components/Flex';
 
 import IconBar from '~/pages/KatasterKI/components/IconBar';
-import IntroImgSrc from '~/images/404-weg-zu-ende.jpg';
+import IntroImgSrc from '~/images/strassencheck/landing-bg.jpg';
 import TOCCheckbox from '~/pages/KatasterKI/components/TOCCheckbox';
 
 const IntroScreen = styled.div`
