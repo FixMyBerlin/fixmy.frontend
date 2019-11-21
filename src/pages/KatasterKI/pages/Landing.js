@@ -1,9 +1,11 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import queryString from 'query-string';
 
 import Store from '~/store';
-import { setTOSAccepted } from '../state';
+import { setTOSAccepted, setEmbedded } from '../state';
 import Flex from '~/components/Flex';
 
 import IconBar from '~/pages/KatasterKI/components/IconBar';
@@ -64,7 +66,27 @@ const IntroCallToAction = styled.a`
 
 const onAcceptTOS = (ev) => Store.dispatch(setTOSAccepted(ev.target.checked));
 
-const Landing = ({ isTosAccepted }) => {
+/**
+ * Check whether an `embedded` query parameter is set and enable embedded mode
+ *
+ * If the query parameter is set as in `/?embedded`, the Ts and Ps  are set to be
+ * agreed to and the user is routed directly into the survey.
+ */
+const checkEmbeddedParam = (value) => {
+  const params = queryString.parse(value);
+  if (Object.keys(params).indexOf('embedded') > -1) {
+    Store.dispatch(setTOSAccepted(true));
+    Store.dispatch(setEmbedded(true));
+    return true;
+  }
+  return false;
+};
+
+const Landing = ({ isTosAccepted, location }) => {
+  if (checkEmbeddedParam(location.search)) {
+    return <Redirect to={`${config.routes.katasterKI.profileBase}/1`} />;
+  }
+
   return (
     <>
       <IntroScreen>
