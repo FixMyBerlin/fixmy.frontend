@@ -27,7 +27,15 @@ const FeedbackWrapper = styled.div`
   ${media.m`
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
+    width: 640px;
+  `}
+`;
+
+const FeedbackParagraph = styled(Paragraph)`
+  margin: 0 0 25px 0;
+
+  ${media.m`
+    margin: 0 0 70px 0;
   `}
 `;
 
@@ -75,13 +83,17 @@ const Feedback = ({
       </QuestionTitle>
 
       <FeedbackWrapper>
-        <Paragraph css={{ margin: '0 0 25px 0' }}>
+        <FeedbackParagraph>
           Sie haben bereits <strong>{ratingsCounter} Situationen</strong>{' '}
           bewertet. Je mehr Bewertungen die Umfrage erhält umso aussagekräftiger
           sind die Ergebnisse.
-        </Paragraph>
+        </FeedbackParagraph>
 
-        <Flex css={{ flexGrow: 1 }} alignItems="center" flexDirection="column">
+        <Flex
+          css={{ flexGrow: 1, maxWidth: 500, width: '100%', margin: '0 auto' }}
+          alignItems="center"
+          flexDirection="column"
+        >
           <Button onClick={next}>Weiter bewerten</Button>
           <ShareButton style={{ marginTop: 20 }} />
           <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>

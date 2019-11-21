@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -27,7 +28,7 @@ const HeadlineWrapper = styled.div`
 `;
 
 export default (props) => (
-  <HeadlineWrapper>
+  <HeadlineWrapper {...props}>
     <h1>{props.children}</h1>
     {isSmallScreen() && (
       <svg>

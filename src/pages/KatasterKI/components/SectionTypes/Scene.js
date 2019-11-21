@@ -2,10 +2,20 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import classnames from 'classnames';
 
+import { media } from '~/styles/utils';
 import Loader from '~/components/Loader';
 import Flex from '~/components/Flex';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import { getSceneImageSrc } from '~/pages/KatasterKI/scene-utils';
+
+const RatingTitle = styled(QuestionTitle)`
+  margin-top: 10px;
+  margin-bottom: 0;
+
+  ${media.m`
+    margin-top: 15px;
+  `}
+`;
 
 const RatingButton = styled.button`
   align-self: flex-start;
@@ -13,6 +23,10 @@ const RatingButton = styled.button`
   border: none;
   width: 25%;
   cursor: pointer;
+
+  svg {
+    width: 100%;
+  }
 
   &:hover {
     opacity: 0.8;
@@ -71,7 +85,7 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
         onLoad={startMeasurement}
         onError={startMeasurement}
       />
-      <QuestionTitle>{title}</QuestionTitle>
+      <RatingTitle>{title}</RatingTitle>
       <Flex>
         {options.map((option, index) => {
           const Icon = option.icon;

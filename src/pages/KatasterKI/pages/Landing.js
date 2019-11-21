@@ -49,17 +49,15 @@ const IntroHeadline = styled.h1`
 `;
 
 const IntroCallToAction = styled.a`
-  border-bottom: 2px solid white;
   color: white;
   font-weight: bold;
   font-size: 14px;
   margin: 20px 0 10px 0;
-  text-decoration: none;
+  text-align: center;
 
   &:hover,
   &:active,
   &:visited {
-    text-decoration: none;
     color: white;
   }
 `;
