@@ -10,12 +10,15 @@ async function handleSubmitPerspective({
   token = false,
   sessionID
 }): Promise<PerspectiveResponse> {
-  const headers = token ? { Authorization: `JWT ${token}` } : {};
+  const authHeader = token ? { Authorization: `JWT ${token}` } : {};
   const endpoint = getEndpointURL('perspective', sessionID, null);
   const fetchResponse = await fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify(json),
-    headers
+    headers: {
+      ...authHeader,
+      'Content-Type': 'application/json'
+    }
   });
 
   if (!fetchResponse.ok) {

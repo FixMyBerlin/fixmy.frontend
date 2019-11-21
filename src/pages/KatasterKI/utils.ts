@@ -77,5 +77,18 @@ export const toggleNavigationWarning = (isEnabled: boolean) => {
 
 /**
  * Return the threshold displayed on the feedback screen
+ *
+ * The first part of the function defines concrete steps, the second part
+ * defines a dynamic threshold that always shifts above the current
+ * totalRatings number.
  */
-export const getFeedbackThreshold = (totalRatings: number): number => 5000;
+export const getFeedbackThreshold = (totalRatings: number): number => {
+  if (totalRatings < 100) return 100;
+  if (totalRatings < 300) return 300;
+  if (totalRatings < 500) return 500;
+  if (totalRatings < 1000) return 1000;
+
+  const step = totalRatings < 10000 ? 1000.0 : 5000.0;
+  const threshold = Math.ceil((totalRatings + 1) / step) * step;
+  return Math.round(threshold);
+};

@@ -92,7 +92,7 @@ export default ({ title, options, currentValue, handleChange, next }) => {
       <Flex css={{ flexGrow: 1 }} justifyContent="center">
         <Button
           onClick={onClick}
-          css={{ alignSelf: 'flex-end' }}
+          css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           isLoading={isLoading}
         >
           Weiter

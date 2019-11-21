@@ -64,15 +64,7 @@ class ProjectMarkers extends PureComponent {
       }
 
       if (marker.center == null) {
-        if (config.debug) {
-          console.error(`Marker center missing in project #${marker.id}`);
-        } else {
-          Store.dispatch(
-            MapActions.setError(
-              'Leider konnten keine vollständigen Planungsdaten geladen werden.'
-            )
-          );
-        }
+        console.error(`Marker center missing in project #${marker.id}`);
         return null;
       }
 

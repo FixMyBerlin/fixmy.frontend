@@ -2,7 +2,6 @@ const Path = require('path');
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
@@ -25,9 +24,7 @@ module.exports = merge(common, {
       inject: true,
       siteUrl: Config.devUrl,
       template: Path.resolve(__dirname, '../src/index.html')
-    }),
-    new Webpack.EnvironmentPlugin(['NODE_ENV', 'CONFIG_ENV'])
-    // new BundleAnalyzerPlugin()
+    })
   ],
   module: {
     rules: [
@@ -49,9 +46,7 @@ module.exports = merge(common, {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              plugins: (loader) => [
-                Autoprefixer
-              ]
+              plugins: (loader) => [Autoprefixer]
             }
           }
         ]

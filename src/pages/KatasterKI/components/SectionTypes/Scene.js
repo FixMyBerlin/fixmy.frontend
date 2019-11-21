@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import classnames from 'classnames';
 
-import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import Loader from '~/components/Loader';
 import Flex from '~/components/Flex';
+import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import { getSceneImageSrc } from '~/pages/KatasterKI/scene-utils';
 
 const RatingButton = styled.button`
@@ -27,8 +28,9 @@ const RatingButton = styled.button`
 `;
 
 const RatingLabel = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   color: ${config.colors.darkbg};
+  font-family: FranklinGothicFS-Med, sans-serif;
 `;
 
 const startMeasurement = () => window.performance.mark('imageLoaded');
@@ -39,15 +41,36 @@ const finishMeasurement = (sceneID) => {
 };
 
 const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
+  const [clickedButton, setClickedButton] = useState(null);
+
   const onClick = (option) => {
-    const duration = finishMeasurement(name);
-    handleChange({ rating: option.value, duration });
-    next();
+    if (clickedButton) {
+      return;
+    }
+
+    setClickedButton(option.label);
+
+    setTimeout(() => {
+      setClickedButton(null);
+      let duration = 0;
+      try {
+        duration = finishMeasurement(name);
+      } catch (err) {
+        if (config.debug) console.error(`Error measuring response time ${err}`);
+      }
+      handleChange({ rating: option.value, duration });
+      next();
+    }, config.katasterKI.buttonTimeout);
   };
 
   return (
     <>
-      <img src={getSceneImageSrc(name)} alt={title} onLoad={startMeasurement} />
+      <img
+        src={getSceneImageSrc(name)}
+        alt={title}
+        onLoad={startMeasurement}
+        onError={startMeasurement}
+      />
       <QuestionTitle>{title}</QuestionTitle>
       <Flex>
         {options.map((option, index) => {
@@ -63,7 +86,13 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
               className={buttonClasses}
             >
               <Icon />
-              <RatingLabel>{option.label}</RatingLabel>
+              <RatingLabel>
+                {clickedButton === option.label ? (
+                  <Loader css={{ margin: '0 auto' }} />
+                ) : (
+                  option.label
+                )}
+              </RatingLabel>
             </RatingButton>
           );
         })}

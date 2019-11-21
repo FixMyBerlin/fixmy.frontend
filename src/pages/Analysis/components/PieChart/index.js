@@ -6,7 +6,7 @@ import { VictoryPie, VictoryLabel, Slice } from 'victory';
 
 import { setPhaseFilter } from '~/pages/Analysis/AnalysisState';
 
-import { numberFormat } from '~/utils/utils';
+import { numberFormat, getRVALength } from '~/utils/utils';
 import SvgIcon from '~/components/SvgIcon';
 import DotLoader from '~/components/DotLoader';
 
@@ -56,13 +56,13 @@ const chartStyle = {
  * @param {String} phase Name of the phase to filter for or `null` for all
  */
 const lengthByPhase = (projects, phase) => {
-  let curLen
+  let rvaLength;
   return projects.reduce((acc, cur)  => {
-    curLen = 0;
+    rvaLength = 0;
     if (phase == null || cur.phase === phase) {
-      curLen = cur.length
+      rvaLength = getRVALength(cur);
     }
-    return acc + curLen
+    return acc + rvaLength;
   }, 0)
 } 
 

@@ -14,10 +14,14 @@ const SliderLabel = styled.div`
   color: ${config.colors.darkbg};
   font-weight: 700;
   margin-bottom: 5px;
+
+  .light {
+    font-weight: 400;
+  }
 `;
 
 const SliderWrapper = styled.div`
-  margin-bottom: 3em;
+  margin-bottom: 42px;
   width: 100%;
 
   ${media.m`
@@ -123,9 +127,10 @@ const StyledSlider = styled(Slider)`
 
   .rc-slider-mark-text {
     color: ${config.colors.darkbg};
-    font-weight: 700;
-    font-size: 10px;
+    font-weight: 400;
+    font-size: 14px;
     user-select: none;
+    font-family: FranklinGothic-Med,sans-serif;
 
     ${(props) =>
       props.value === 0 || props.value === props.max

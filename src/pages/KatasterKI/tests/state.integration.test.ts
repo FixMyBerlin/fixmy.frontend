@@ -46,9 +46,8 @@ describe('submitProfile', () => {
       'and SUBMIT_PROFILE_COMPLETE',
     async () => {
       // mock api request
-      const sessionId = 'session-id';
       fetchMock.putOnce(
-        getEndpointURL('profile', sessionId, null),
+        getEndpointURL('profile', testingDefaultState.sessionID, null),
         profileResponseSample
       );
 
@@ -79,8 +78,10 @@ describe('submitProfile', () => {
       'for invalid inputs',
     async () => {
       // mock failing api request
-      const sessionId = 'session-id';
-      fetchMock.putOnce(getEndpointURL('profile', sessionId, null), {}); // kept here for savety, request should not get fired
+      fetchMock.putOnce(
+        getEndpointURL('profile', testingDefaultState.sessionID, null),
+        {}
+      ); // kept here for savety, request should not get fired
 
       // mock store
       const invalidProfile = {
@@ -107,9 +108,7 @@ describe('submitProfile', () => {
       const dispatch = jest.fn();
       await submitProfile()(dispatch, store.getState);
       expect(dispatch).toHaveBeenLastCalledWith(
-        submitProfileError(
-          'Beim Übermitteln des Profils ist etwas schiefgelaufen'
-        )
+        submitProfileError('Das Nutzerprofil konnte nicht übertragen werden.')
       );
     }
   );
@@ -121,9 +120,8 @@ describe('submitPerspective', () => {
 
   it('dispatches SUBMIT_PERSPECTIVE_PENDING, RECEIVED_SCENE_GROUP and SUBMIT_PERSPECTIVE_COMPLETE', async () => {
     // mock api request
-    const sessionId = 'session-id';
     fetchMock.postOnce(
-      getEndpointURL('perspective', sessionId, null),
+      getEndpointURL('perspective', testingDefaultState.sessionID, null),
       perspectiveResponseSample
     );
 

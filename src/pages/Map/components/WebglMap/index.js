@@ -15,10 +15,15 @@ import ProjectMarkers from '~/pages/Map/components/ProjectMarkers';
 import {
   colorizeHbiLines, animateView, setView, toggleLayer,
   filterLayersById, getCenterFromGeom, resetMap, intersectionLayers,
-  parseUrlOptions
+  parseUrlOptions, setPlanningLegendFilter
 } from '~/pages/Map/map-utils';
 
-const MB_STYLE_URL = `${config.map.style}?fresh=true`;
+let MB_STYLE_URL
+if (config.debug) {
+  MB_STYLE_URL = `${config.map.style}?fresh=true`;
+} else {
+  MB_STYLE_URL = config.map.style;
+}
 
 MapboxGL.accessToken = config.map.accessToken;
 
@@ -40,7 +45,6 @@ class Map extends PureComponent {
     activeSection: PropTypes.number,
     hasMoved: PropTypes.bool,
     calculatePopupPosition: PropTypes.bool,
-    drawOverlayLine: PropTypes.bool,
     dim: PropTypes.bool
   }
 
@@ -56,7 +60,6 @@ class Map extends PureComponent {
     setMapContext: () => {},
     hasMoved: false,
     calculatePopupPosition: false,
-    drawOverlayLine: true,
     dim: false
   }
 
@@ -192,18 +195,21 @@ class Map extends PureComponent {
     if (isZustand) {
       colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
     }
-    
+
+    setPlanningLegendFilter(this.map, this.props.filterPlannings)
+
     // project layers
+    toggleLayer(this.map, 'fmb-projects', false)
     toggleLayer(this.map, projectsLayers.center, isPlanungen);
     toggleLayer(this.map, projectsLayers.side0, isPlanungen);
     toggleLayer(this.map, projectsLayers.side1, isPlanungen);
-    toggleLayer(this.map, projectsLayers.overlayLine, this.props.drawOverlayLine);
+    toggleLayer(this.map, projectsLayers.overlayLine, isPlanungen);
 
     // hbi layers
     toggleLayer(this.map, hbiLayers.center, isZustand);
     toggleLayer(this.map, hbiLayers.side0, isZustand);
     toggleLayer(this.map, hbiLayers.side1, isZustand);
-    toggleLayer(this.map, hbiLayers.overlayLine, this.props.drawOverlayLine);
+    toggleLayer(this.map, hbiLayers.overlayLine, isZustand);
     toggleLayer(this.map, hbiLayers.intersections, isZustand);
     toggleLayer(this.map, hbiLayers.intersectionsSide0, isZustand);
     toggleLayer(this.map, hbiLayers.intersectionsSide1, isZustand);
@@ -223,7 +229,7 @@ class Map extends PureComponent {
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
 
     if (properties) {
-      const name = slugify(properties.name || '').toLowerCase();
+      const name = slugify(properties.name || properties.street_name || '').toLowerCase();
       const { id } = properties;
       // when user is in detail mode, we don't want to show the tooltip again,
       // but directly switch to another detail view

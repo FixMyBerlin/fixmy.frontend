@@ -8,8 +8,10 @@ const HeadlineWrapper = styled.div`
 
   h1 {
     font-size: 26px;
-    line-height: 1;
+    line-height: 1.3;
     margin: 5px 0;
+    font-weight: 400;
+    font-family: FranklinGothic-Med, sans-serif;
   }
 
   svg {

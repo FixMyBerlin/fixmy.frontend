@@ -12,6 +12,7 @@ FixMyBerlin ist aus einer Initiative der Berliner Zivilgesellschaft heraus entst
 Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministeriums, der Berliner Senatskanzlei und dem Berliner StartUp Stipendium. Die für Verkehr zuständige Senatsverwaltung sowie 11 von 12 der Berliner Bezirksämter nutzen die Plattform und veröffentlichen dort ihre Planungen.
 
 ## Team von FixMyBerlin [[Kontakt]](/impressum)
+Du willst uns unterstützen? [Melde Dich gerne](/jobs)
 <div class="teamportrait">
   <img src="/uploads/team/FixMyBerlin_Boris Hekele.png" alt="Boris Hekele" title="Boris Hekele" style="width: 160px" /><br />
   <strong>Boris Hekele</strong><br />

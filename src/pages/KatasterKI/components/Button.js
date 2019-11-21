@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   border-radius: 32px;
   border: none;
   outline: none;
-  padding: 0 25px;
+  padding: 16px 25px;
   background: ${(props) =>
     props.disabled ? config.colors.lightgrey : config.colors.katasterHighlight};
   text-decoration: none;
@@ -26,7 +26,6 @@ const StyledButton = styled.button`
   max-width: 400px;
   display: block;
   text-align: center;
-  height: 48px;
 
   &:hover {
     box-shadow: ${(props) => (props.disabled ? 'none' : boxShadowHover)};

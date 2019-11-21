@@ -68,6 +68,26 @@ export function getParameterByName(name) {
   return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
 
+/**
+ * Return the length of a project's RVA.
+ *
+ * This is defined as the length of the project's geometry if the project is
+ * one-sided or twice that length if the new bike infrastructure runs along
+ * both sides of the geometry.
+ */
+export function getRVALength({ length, side, id }) {
+  const isBisided = side === 2;
+  if (length == 0) {
+    if (config.debug) console.error(`Project #${id} has no length`);
+    return null;
+  }
+  if (isBisided) {
+    return length * 2.0;
+  } else {
+    return length;
+  }
+}
+
 export default {
   numberFormat,
   trackEvent,
@@ -75,5 +95,6 @@ export default {
   byKey,
   sortByKey,
   isNumeric,
-  getParameterByName
+  getParameterByName,
+  getRVALength
 };

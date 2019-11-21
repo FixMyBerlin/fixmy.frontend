@@ -1,6 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 
-const Loader = ({ pastDelay, error }) => {
+const LoaderWrapper = styled.div`
+  width: 100%;
+  margin: 15px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Loader = ({ pastDelay, error, color }) => {
   if (error) {
     if (config.debug) console.error(error);
     return (
@@ -14,12 +24,11 @@ const Loader = ({ pastDelay, error }) => {
   }
   if (pastDelay)
     return (
-      <h2>
-        <span role="img" aria-label="robot">
-          🤖
-        </span>{' '}
-        Computer arbeitet...
-      </h2>
+      <LoaderWrapper>
+        <PropagateLoader
+          color={`${color == null ? config.colors.interaction : color}`}
+        />
+      </LoaderWrapper>
     );
   return null;
 };

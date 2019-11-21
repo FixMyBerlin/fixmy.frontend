@@ -41,9 +41,30 @@ Each branch gets automatically deployed on netlify:
 If you want to test the embed mode, you just need to add a query paramter to the url: `http://localhost:8080/planungen?embed=1`.
 There is also a deployed production version: https://embed.fixmyberlin.de/.
 
-
 The project is based on [wbkd/react-starter](https://github.com/wbkd/react-starter).
 
+
+## Kataster Standalone
+
+In order to create the standalone version we are using the env variables `BASE_NAME`, `ENTRY_POINT` and `KATASTER_PATH`.
+
+- `BASE_PATH`: used in the webpack config and the router history. If you want to deploy the standalone version somewhere other than root you need to set this variable.
+- `ENTRY_POINT`: needs to be set in order to use the kataster app as an entry point
+- `KATASTER_PATH`: base url of the kataster app. Should be empty for the standalone version
+
+The variables are already configured when you are using the following tasks:
+
+**Development:**
+
+```sh
+$ npm run start:strassencheck
+```
+
+**Build:**
+
+```sh
+$ npm run build:strassencheck
+```
 
 ## Run Tests
 

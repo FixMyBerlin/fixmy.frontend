@@ -128,6 +128,10 @@ const config = {
       route: '/api'
     },
     {
+      key: 'jobs',
+      route: '/jobs'
+    },
+    {
       key: 'newsletter-thank-you',
       route: '/newsletter-danke'
     }
@@ -144,14 +148,14 @@ const config = {
       new: '/meldungen/radbuegel/friedrichshain-kreuzberg/neu'
     },
     katasterKI: {
-      landing: '/strassencheck',
-      landingEmbedded: '/strassencheck/embedded',
-      profileBase: '/strassencheck/profil',
-      profile: '/strassencheck/profil/:page',
-      scenesBase: '/strassencheck/szenen',
-      scenes: '/strassencheck/szenen/:page',
-      share: '/strassencheck/teilen',
-      iframe: '/strassencheck/iFrame-test'
+      landing: process.env.KATASTER_PATH || '/',
+      profileBase: `${process.env.KATASTER_PATH}/profil`,
+      profile: `${process.env.KATASTER_PATH}/profil/:page`,
+      scenesBase: `${process.env.KATASTER_PATH}/szenen`,
+      scenes: `${process.env.KATASTER_PATH}/szenen/:page`,
+      share: `${process.env.KATASTER_PATH}/teilen`,
+      feedback: `${process.env.KATASTER_PATH}/auswertung`,
+      iframe: `${process.env.KATASTER_PATH}/iFrame-test`
     },
     signup: '/registrieren',
     login: '/anmelden',
@@ -249,7 +253,7 @@ const config = {
         intersections: 'fmb-HBI-intersections',
         intersectionsSide0: 'fmb-HBI-intersections-side-0',
         intersectionsSide1: 'fmb-HBI-intersections-side-1',
-        intersectionsOverlay: 'fmb-HBI-intersections-overlay'
+        intersectionsOverlay: 'fmb-HBI-intersections-overlay-line'
       },
       buildings3d: '3d-buildings',
       dimmingLayer: 'fmb-dimming'
@@ -259,7 +263,6 @@ const config = {
     geocoderAppId: 'WOhEXnd20kbhT8Lxx4n4',
     geocoderAppCode: 'uFkDYK0WKXBPZgG8mRb9Rg',
     geocoderBounds: '13.3651,52.4658,13.4945,52.5479',
-    drawOverlayLine: true,
     dimmingOpacity: 0.3,
     bounds: [[13.2826, 52.4615], [13.46391, 52.5544374]]
   },
@@ -300,7 +303,11 @@ const config = {
       '14197': ['Tempelhof-Schöneberg', 'Charlottenburg-Wilmersdorf']
     },
     buttonTimeout: 300,
-    projectId: '01'
+    projectId: '01',
+    // this is the article link for the landing page
+    tspArticleLink: 'https://tagesspiegel.de',
+    shareTitle: 'Umfrage Share Title',
+    shareText: 'Umfrage Share Text'
   },
   reports: {
     apiRoute: '/reports',

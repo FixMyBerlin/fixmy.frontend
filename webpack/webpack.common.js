@@ -1,16 +1,19 @@
 const Path = require('path');
 const Webpack = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const defaultBaseName = '/';
+const defaultEntryPoint = '../src/index.js';
 
 module.exports = {
   entry: {
-    app: Path.resolve(__dirname, '../src/index.js')
+    app: Path.resolve(__dirname, process.env.ENTRY_POINT || defaultEntryPoint)
   },
   output: {
     path: Path.join(__dirname, '../build'),
     filename: 'js/[name].js',
-    publicPath: '/'
+    publicPath: process.env.BASE_NAME || defaultBaseName
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -23,6 +26,12 @@ module.exports = {
     ]),
     new Webpack.ProvidePlugin({
       config: '~/../config.js'
+    }),
+    new Webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+      CONFIG_ENV: 'dev',
+      BASE_NAME: '/', // base name of router history
+      KATASTER_PATH: '/strassencheck' // used as a base for the kataster app
     })
   ],
   resolve: {
@@ -52,7 +61,14 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: [
+          {
+            loader: 'babel-loader'
+          },
+          {
+            loader: 'ts-loader'
+          }
+        ],
         include: [Path.resolve(__dirname, '../src')]
       },
       {
@@ -66,28 +82,31 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        oneOf: [{
-          exclude: /node_modules/,
-          use: ['babel-loader', {
-            loader: 'react-svg-loader',
-            options: {
-              svgo: {
-                plugins: [
-                  { cleanupIDs: false },
-                  { removeViewBox: false }
-                ]
+        oneOf: [
+          {
+            exclude: /node_modules/,
+            use: [
+              'babel-loader',
+              {
+                loader: 'react-svg-loader',
+                options: {
+                  svgo: {
+                    plugins: [{ cleanupIDs: false }, { removeViewBox: false }]
+                  }
+                }
+              }
+            ]
+          },
+          {
+            include: /node_modules/,
+            use: {
+              loader: 'file-loader',
+              options: {
+                name: '[path][name].[ext]'
               }
             }
-          }]
-        }, {
-          include: /node_modules/,
-          use: {
-            loader: 'file-loader',
-            options: {
-              name: '[path][name].[ext]'
-            }
           }
-        }]
+        ]
       }
     ]
   }

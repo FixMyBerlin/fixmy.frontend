@@ -1,14 +1,24 @@
 import { Answer, Perspective, Section } from './types';
 
-import ButtonIconUnsafe from '~/images/kataster-icons/button-backgrund-1.svg';
-import ButtonIconMostyUnsafe from '~/images/kataster-icons/button-backgrund-2.svg';
-import ButtonIconMostlySafe from '~/images/kataster-icons/button-backgrund-3.svg';
-import ButtonIconSafe from '~/images/kataster-icons/button-backgrund-4.svg';
+import ButtonIconUnsafe from '~/images/kataster-icons/button-background-1.svg';
+import ButtonIconMostyUnsafe from '~/images/kataster-icons/button-background-2.svg';
+import ButtonIconMostlySafe from '~/images/kataster-icons/button-background-3.svg';
+import ButtonIconSafe from '~/images/kataster-icons/button-background-4.svg';
+
+import BikeIcon from '~/images/kataster-icons/icon-transportation-2.svg';
+import PedestrianIcon from '~/images/kataster-icons/icon-transportation-1.svg';
+import CarIcon from '~/images/kataster-icons/icon-transportation-4.svg';
 
 const perspectiveNames = {
   C: 'Fahrradperspektive',
   A: 'Autoperspektive',
   P: 'Fußgängerperspektive'
+};
+
+const perspectiveIcons = {
+  C: BikeIcon,
+  A: CarIcon,
+  P: PedestrianIcon
 };
 
 const agentNames = {
@@ -36,7 +46,8 @@ export const getSceneImageSrc = (id) => {
 
 export const makeSection = (
   scenes: Array<Answer>,
-  perspective: Perspective
+  perspective: Perspective,
+  sceneGroupCounter: number
 ): Array<Section> => {
   const perspectiveName = perspectiveNames[perspective];
 
@@ -55,8 +66,15 @@ export const makeSection = (
       'Vielen Dank, Sie können mit dieser Perspektive weiter machen oder jetzt die Straße aus einer anderen Sicht bewerten:',
     options: Object.keys(perspectiveNames).map((p) => ({
       label: perspectiveNames[p],
+      icon: perspectiveIcons[p],
       value: p
     }))
+  };
+
+  const feedbackScreen = {
+    type: 'feedback',
+    title: null,
+    name: 'feedback'
   };
 
   const sceneScreens = scenes.map((scene) => ({
@@ -70,5 +88,13 @@ export const makeSection = (
     }))
   }));
 
-  return [titleScreen, ...sceneScreens, perspectiveChangeScreen];
+  const sectionConfig = [titleScreen, ...sceneScreens];
+
+  if (sceneGroupCounter % 2 === 1) {
+    sectionConfig.push(perspectiveChangeScreen);
+  } else {
+    sectionConfig.push(feedbackScreen, perspectiveChangeScreen);
+  }
+
+  return sectionConfig;
 };

@@ -11,11 +11,17 @@ import {
   ProfileResponse,
   PerspectiveResponse
 } from './types';
-import { getUserGroup, makeSessionID, toggleNavigationWarning } from './utils';
+import {
+  getUserGroup,
+  makeSessionID,
+  toggleNavigationWarning,
+  getInitialPerspective
+} from './utils';
 import api from './api';
 
 export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
 export const SET_ANSWER = 'KatasterKI/SET_ANSWER';
+export const SET_EMBEDDED = 'KatasterKI/SET_EMBEDDED';
 export const SET_PROFILE_ANSWER = 'KatasterKI/SET_PROFILE_ANSWER';
 export const SET_TRANSPORT_RATING = 'KatasterKI/SET_TRANSPORT_RATING';
 export const SET_PERSPECTIVE = 'KatasterKI/SET_PERSPECTIVE';
@@ -73,6 +79,9 @@ export interface State {
   };
   sessionID: string;
   statisticsCounter?: number; // total count of ratings as reported by backend
+  ratingsCounter: number; // number of ratings made in this session
+  sceneGroupCounter: number; // current round of scenegroups
+  isEmbedded: boolean;
   transportRatings: {
     [mode: string]: TransportRating;
   };
@@ -136,6 +145,9 @@ export const productionDefaultState: State = {
   userGroup: UserGroup.bicycle,
   scenes: [],
   currentPerspective: Perspective.bicycle,
+  sceneGroupCounter: 0,
+  isEmbedded: false,
+  ratingsCounter: 0,
   sessionID: makeSessionID()
 };
 
@@ -173,6 +185,7 @@ export const testingDefaultState: State = {
     },
     zipcode: '22000'
   },
+  statisticsCounter: 1234,
   userGroup: UserGroup.bicycle,
   currentPerspective: Perspective.bicycle
 };
@@ -192,7 +205,15 @@ export default function reducer(state: State = defaultState, action: Action) {
         (sc) => sc.sceneID === action.answer.sceneID
       );
       scenes[answerPos] = action.answer;
-      return { ...state, scenes };
+      return {
+        ...state,
+        scenes,
+        ratingsCounter: state.ratingsCounter + 1,
+        statisticsCounter: state.statisticsCounter + 1
+      };
+
+    case SET_EMBEDDED:
+      return { ...state, isEmbedded: action.value };
 
     case SET_PROFILE_ANSWER:
       const { question, value } = action.profile;
@@ -253,7 +274,8 @@ export default function reducer(state: State = defaultState, action: Action) {
             duration: null
           })
         ),
-        statisticsCounter: action.value.ratings_total
+        statisticsCounter: action.value.ratings_total,
+        sceneGroupCounter: state.sceneGroupCounter + 1
       };
 
     case SET_TRANSPORT_RATING:
@@ -262,8 +284,9 @@ export default function reducer(state: State = defaultState, action: Action) {
         [action.transportRating.type]: action.transportRating.rating
       };
       const userGroup = getUserGroup(transportRatings);
+      const currentPerspective = getInitialPerspective(userGroup);
 
-      return { ...state, transportRatings, userGroup };
+      return { ...state, transportRatings, userGroup, currentPerspective };
 
     case SET_PERSPECTIVE:
       return { ...state, perspective: action.perspective };
@@ -347,6 +370,10 @@ export function setZipcode(zipcode: string, district: string): Action {
   // @ts-ignore
   const districtOptions = config.katasterKI.zipcodeDistricts[zipcode];
   return { type: SET_ZIPCODE, area: { zipcode, district, districtOptions } };
+}
+
+export function setEmbedded(isEmbedded: boolean) {
+  return { type: SET_EMBEDDED, value: isEmbedded };
 }
 
 /**
@@ -457,11 +484,11 @@ export const submitPerspective = (perspective: Perspective) => async (
   }
 };
 
-export const submitAnswer = (answer: Answer) => async (
-  dispatch: Dispatch,
-  getState
-) => {
-  const { sceneID, rating, duration } = answer;
+export const submitAnswer = (
+  sceneID: Answer['sceneID'],
+  rating: Answer['rating'],
+  duration: Answer['duration']
+) => async (dispatch: Dispatch, getState) => {
   dispatch(setAnswer(sceneID, rating, duration));
 
   const {
