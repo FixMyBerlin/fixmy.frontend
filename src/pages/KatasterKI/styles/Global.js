@@ -14,4 +14,11 @@ export default createGlobalStyle`
     font-weight: 400;
     src: url(https://background.tagesspiegel.de/build/fonts/FranklinGothic-Demi.debd9572.woff2) format('woff2');
   }
+
+  @font-face {
+    font-family: FranklinGothic-Med;
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://background.tagesspiegel.de/build/fonts/FranklinGothic-Medium.561fa3d4.woff2) format('woff2');
+  }
 `;

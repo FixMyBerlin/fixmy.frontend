@@ -6,10 +6,15 @@ import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 
 const SingleChoiceWrapper = styled.div`
+  button {
+    margin-bottom: 28px;
+  }
+
   ${media.m`
     button {
       margin-left: auto;
-      margin-right: auto
+      margin-right: auto;
+      margin-bottom: 32px;
     }
   `}
 `;
@@ -42,7 +47,7 @@ const SingleChoiceInput = ({
         <GhostButton
           key={`singlechoice__${option.value}`}
           onClick={() => onClick(option)}
-          css={{ textAlign: 'left', marginBottom: 10 }}
+          css={{ textAlign: 'left' }}
           isActive={option.value === currentValue}
           isLoading={option.value === clickedButton}
         >

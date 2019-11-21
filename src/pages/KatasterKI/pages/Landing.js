@@ -90,7 +90,7 @@ const Landing = ({ isTosAccepted }) => {
               target="_blank"
               href={config.katasterKI.tspArticleLink}
             >
-              Alle Infos und Hintergründe
+              Infos und Hintergründe zum Projekt auf tagesspiegel.de
             </IntroCallToAction>
           </Flex>
         </IntroBottom>

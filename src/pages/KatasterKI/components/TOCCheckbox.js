@@ -13,7 +13,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const CheckboxWrapper = styled.div`
-  font-size: 12px;
+  font-size: 16px;
   margin-top: 10px;
 
   label {
@@ -21,7 +21,10 @@ const CheckboxWrapper = styled.div`
     color: ${(props) => props.labelColor};
   }
 
-  a {
+  a,
+  a:visited,
+  a:focus,
+  a:active {
     color: ${(props) => props.labelColor};
   }
 `;
