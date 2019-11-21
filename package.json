@@ -2,16 +2,23 @@
   "name": "fixmyberlin-frontend",
   "version": "1.0.0",
   "description": "A Mobility Platform for Berlin",
+  "config": {
+    "katasterStandaloneBase": "/strassencheck/",
+    "katasterStandaloneEntry": "../src/pages/KatasterKI/entry.js",
+    "katasterStandalonePath": ""
+  },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
     "deploy": "npm run build && netlify deploy",
-    "start": "cross-env NODE_ENV=development CONFIG_ENV=staging webpack-dev-server --config webpack/webpack.config.dev.js",
-    "dev": "cross-env NODE_ENV=development CONFIG_ENV=dev webpack-dev-server --config webpack/webpack.config.dev.js",
+    "start": "cross-env CONFIG_ENV=staging webpack-dev-server --config webpack/webpack.config.dev.js",
+    "dev": "webpack-dev-server --config webpack/webpack.config.dev.js",
     "lint": "eslint src",
     "test": "cross-env CONFIG_ENV=dev jest --verbose --config=jest/jest.config.js",
     "test:watch": "npm run test  -- --watch",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=**/state/*",
-    "generate-kataster-schema": "./src/pages/KatasterKI/scheme/generate.sh"
+    "generate-kataster-schema": "./src/pages/KatasterKI/scheme/generate.sh",
+    "build:strassencheck": "cross-env BASE_NAME=$npm_package_config_katasterStandaloneBase KATASTER_PATH=$npm_package_config_katasterStandalonePath ENTRY_POINT=$npm_package_config_katasterStandaloneEntry npm run build",
+    "start:strassencheck": "cross-env CONFIG_ENV=staging KATASTER_PATH=$npm_package_config_katasterStandalonePath ENTRY_POINT=$npm_package_config_katasterStandaloneEntry npm start"
   },
   "repository": {
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
@@ -77,7 +84,6 @@
     "typescript": "^3.6.3",
     "typescript-json-schema": "^0.40.0",
     "webpack": "^4.41.2",
-    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2"

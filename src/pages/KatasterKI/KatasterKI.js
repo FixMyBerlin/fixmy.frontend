@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Router, Route, Switch, Redirect, matchPath } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
@@ -10,6 +10,7 @@ import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
 import Email from './pages/Email';
 import GlobalStyle from './styles/Global';
+import AppGlobalStyle from '~/styles/Global';
 import landingSrc from '~/images/strassencheck-bg.jpg';
 
 const BgWrapper = styled.div`
@@ -48,13 +49,16 @@ const ContentWrapper = styled.div`
   `}
 `;
 
-const KatasterKI = (props) => {
-  const isLanding =
-    props.location.pathname === config.routes.katasterKI.landing;
+const KatasterKI = () => {
+  const isLanding = matchPath(window.location.pathname, {
+    path: config.routes.katasterKI.landing,
+    exact: true
+  });
 
   return (
     <BgWrapper isLanding={isLanding}>
       <GlobalStyle />
+      <AppGlobalStyle />
       <ContentWrapper isLanding={isLanding}>
         <Router history={history}>
           <Switch>
