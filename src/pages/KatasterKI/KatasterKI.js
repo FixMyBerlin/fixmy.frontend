@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { media } from '~/styles/utils';
 import history from '~/history';
 import Landing from './pages/Landing';
-import LandingEmbedded from './pages/LandingEmbedded';
 import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
 import GlobalStyle from './styles/Global';
