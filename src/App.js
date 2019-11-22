@@ -5,7 +5,8 @@ import { Route, Switch, Router, Redirect } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
 import GlobalStyles from '~/styles/Global';
 
-import history from '~/history';
+import ReactPiwik from "react-piwik";
+import { createBrowserHistory } from "history";
 import { PrivateRoute } from '~/utils/router-utils';
 import Menu from '~/components/Menu';
 import Home from '~/pages/Home';
@@ -21,6 +22,17 @@ import UserVerify from '~/pages/User/pages/Verify';
 import { verify } from '~/pages/User/UserState';
 import Reports from '~/pages/Reports';
 import KatasterKI from '~/pages/KatasterKI';
+
+const history = createBrowserHistory();
+
+const piwik = new ReactPiwik({
+  url: "fixmyberlin.de/stats",
+  siteId: 3,
+  trackErrors: true
+});
+
+// track the initial pageview
+ReactPiwik.push(["trackPageView"]);
 
 const AppContent = styled.div`
   width: 100%;
@@ -43,7 +55,7 @@ class App extends PureComponent {
     return (
       <Fragment>
         <GlobalStyles />
-        <Router history={history}>
+        <Router history={piwik.connectToHistory(history)}>
           <LastLocationProvider>
             <AppWrapper>
               {!isEmbedMode && <Menu />}
