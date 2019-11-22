@@ -56,7 +56,7 @@ const finishMeasurement = (sceneID) => {
 };
 
 const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
-  const [clickedButton, setClickedButton] = useState(null);
+  const [enqueuedRating, setEnqueuedRating] = useState(null);
   const [imageSrc, setImageSrc] = useState(loadingImage);
 
   useEffect(() => {
@@ -64,20 +64,20 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
   }, [name]);
 
   const onClick = (option) => {
-    if (clickedButton) {
+    if (enqueuedRating != null) {
       return;
     }
 
-    setClickedButton(option.label);
+    let duration = 0;
+    try {
+      duration = finishMeasurement(name);
+    } catch (err) {
+      if (config.debug) console.error(`Error measuring response time ${err}`);
+    }
 
+    setEnqueuedRating(option.label);
     setTimeout(() => {
-      setClickedButton(null);
-      let duration = 0;
-      try {
-        duration = finishMeasurement(name);
-      } catch (err) {
-        if (config.debug) console.error(`Error measuring response time ${err}`);
-      }
+      setEnqueuedRating(null);
       handleChange({ rating: option.value, duration });
       next();
     }, config.katasterKI.buttonTimeout);
@@ -112,7 +112,7 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
             >
               <Icon />
               <RatingLabel>
-                {clickedButton === option.label ? (
+                {enqueuedRating === option.label ? (
                   <Loader css={{ margin: '0 auto' }} />
                 ) : (
                   option.label
