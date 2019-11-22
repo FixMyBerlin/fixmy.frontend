@@ -92,3 +92,17 @@ export const getFeedbackThreshold = (totalRatings: number): number => {
   const threshold = Math.ceil((totalRatings + 1) / step) * step;
   return Math.round(threshold);
 };
+
+/**
+ * Shuffle an array in place using Fisher-Yates-shuffle
+ *
+ * Taken from https://stackoverflow.com/a/6274381
+ *
+ * @param array array to be shuffled
+ */
+export const shuffle = (a: Array<any>): void => {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+};
