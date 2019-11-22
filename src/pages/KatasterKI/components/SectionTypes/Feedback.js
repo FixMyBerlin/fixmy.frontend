@@ -100,7 +100,9 @@ const Feedback = ({
           {!isEmbedded && (
             <GhostButton
               css={{ marginTop: 'auto' }}
-              to={config.katasterKI.tspArticleLink}
+              onClick={() => {
+                window.location.href = config.katasterKI.tspArticleLink;
+              }}
             >
               Informationen über das Projekt
             </GhostButton>
