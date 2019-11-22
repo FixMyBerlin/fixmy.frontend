@@ -52,6 +52,10 @@ const KatasterKI = (props) => {
   const isLanding =
     props.location.pathname === config.routes.katasterKI.landing;
 
+  useEffect(() => {
+    document.title = 'Der Straßencheck für Berlin';
+  }, [props.location.pathname]);
+
   return (
     <BgWrapper isLanding={isLanding}>
       <GlobalStyle />
