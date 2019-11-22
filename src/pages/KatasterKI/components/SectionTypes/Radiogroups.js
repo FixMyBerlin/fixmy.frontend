@@ -7,6 +7,7 @@ import Button from '~/pages/KatasterKI/components//Button';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import QuestionInfo from '~/pages/KatasterKI/components/QuestionInfo';
 import Radio from '~/pages/KatasterKI/components/Radio';
+import { shuffle } from '~/pages/KatasterKI/utils';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
 
 const RadioGroupWrapper = styled.div`
@@ -77,7 +78,7 @@ export default ({
   const [isLoading, onClick] = useHandlerTimeout(next);
 
   if (randomize) {
-    // TODO: shuffle radiogroups array
+    shuffle(radiogroups);
   }
 
   return (

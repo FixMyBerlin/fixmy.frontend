@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { media } from '~/styles/utils';
 import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import { shuffle } from '~/pages/KatasterKI/utils';
 
 const SingleChoiceWrapper = styled.div`
   button {
@@ -42,7 +43,7 @@ const SingleChoiceInput = ({
   };
 
   if (randomize) {
-    // TODO: shuffle options array
+    shuffle(options);
   }
 
   return (

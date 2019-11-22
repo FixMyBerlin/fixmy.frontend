@@ -6,7 +6,9 @@ import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Checkbox from '~/pages/KatasterKI/components/Checkbox';
+import { shuffle } from '~/pages/KatasterKI/utils';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
+import { array } from 'prop-types';
 
 const CheckboxWrapper = styled.div`
   margin-bottom: 1em;
@@ -62,7 +64,14 @@ export default ({
   const [isLoading, onClick] = useHandlerTimeout(next);
 
   if (randomize) {
-    // TODO: shuffle options array
+    shuffle(options);
+
+    // Find options that define an input textbox and - if one is found
+    // - move it to the end of the options array
+    const inputFieldIndex = options.findIndex((val) => val.input === true);
+    if (inputFieldIndex > -1) {
+      options.push(options.splice(inputFieldIndex, 1)[0]);
+    }
   }
 
   return (
