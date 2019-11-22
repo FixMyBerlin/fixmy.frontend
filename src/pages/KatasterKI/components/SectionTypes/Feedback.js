@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import history from '~/history';
@@ -64,11 +64,7 @@ const Feedback = ({
    * through history.push
    */
   const handleQuit = () => {
-    if (isEmbedded) {
-      window.parent.postMessage({ msg: 'done' }, '*');
-    } else {
-      history.push(config.katasterKI.tspArticleLink);
-    }
+    window.parent.postMessage({ msg: 'done' }, '*');
   };
 
   return (
@@ -96,9 +92,19 @@ const Feedback = ({
         >
           <Button onClick={next}>Weiter bewerten</Button>
           <ShareButton style={{ marginTop: 20 }} />
-          <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>
-            Informationen über das Projekt
-          </GhostButton>
+          {isEmbedded && (
+            <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>
+              Umfrage beenden
+            </GhostButton>
+          )}
+          {!isEmbedded && (
+            <GhostButton
+              css={{ marginTop: 'auto' }}
+              to={config.katasterKI.tspArticleLink}
+            >
+              Informationen über das Projekt
+            </GhostButton>
+          )}
         </Flex>
       </FeedbackWrapper>
     </>
