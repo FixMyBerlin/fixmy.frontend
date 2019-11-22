@@ -103,7 +103,7 @@ export default [
   },
   {
     type: 'info',
-    title: 'Erzählen Sie uns nun etwas zu Ihrer Person: (9 Fragen)'
+    title: 'Erzählen Sie uns nun etwas zu Ihrer Person (9 Fragen)'
   },
   {
     type: 'transportRatings',

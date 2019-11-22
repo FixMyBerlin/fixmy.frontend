@@ -55,7 +55,7 @@ export const makeSection = (
 
   const titleScreen = {
     type: 'info',
-    title: `Wir zeigen ihnen nun ${sceneCount} Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen:`,
+    title: `Wir zeigen ihnen nun ${sceneCount} Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen`,
     name: 'info'
   };
 
@@ -63,7 +63,7 @@ export const makeSection = (
     type: 'perspective_change',
     name: 'perspectiveChange',
     title:
-      'Vielen Dank, Sie können mit dieser Perspektive weiter machen oder jetzt die Straße aus einer anderen Sicht bewerten:',
+      'Vielen Dank, Sie können mit dieser Perspektive weiter machen oder jetzt die Straße aus einer anderen Sicht bewerten',
     options: Object.keys(perspectiveNames).map((p) => ({
       label: perspectiveNames[p],
       icon: perspectiveIcons[p],
