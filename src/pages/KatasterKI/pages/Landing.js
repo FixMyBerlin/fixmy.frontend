@@ -9,7 +9,7 @@ import { setTOSAccepted, setEmbedded } from '../state';
 import Flex from '~/components/Flex';
 
 import IconBar from '~/pages/KatasterKI/components/IconBar';
-import IntroImgSrc from '~/images/404-weg-zu-ende.jpg';
+import IntroImgSrc from '~/images/strassencheck/landing-bg.jpg';
 import TOCCheckbox from '~/pages/KatasterKI/components/TOCCheckbox';
 
 const IntroScreen = styled.div`
@@ -49,17 +49,15 @@ const IntroHeadline = styled.h1`
 `;
 
 const IntroCallToAction = styled.a`
-  border-bottom: 2px solid white;
   color: white;
   font-weight: bold;
   font-size: 14px;
   margin: 20px 0 10px 0;
-  text-decoration: none;
+  text-align: center;
 
   &:hover,
   &:active,
   &:visited {
-    text-decoration: none;
     color: white;
   }
 `;
