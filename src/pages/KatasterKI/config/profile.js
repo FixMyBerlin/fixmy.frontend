@@ -17,36 +17,32 @@ export default [
     title: 'Was nervt Sie am meisten im Straßenverkehr?',
     options: [
       {
-        label: 'Baustellen auf der Fahrbahn',
+        label: 'Hohes Verkehrsaufkommen und Staus',
         value: 0
       },
       {
-        label: 'Falschparker',
+        label: 'Zustand der Straßen / Radwege',
         value: 1
       },
       {
-        label: 'Überhöhte Geschwindigkeit anderer',
+        label: 'Missachtung der Verkehrsregeln',
         value: 2
       },
       {
-        label: 'Smartphone-Nutzung anderer im Verkehr',
+        label: 'Der Lärm',
         value: 3
       },
       {
-        label: 'Zu dichtes Überholen von Autos und LKW',
+        label: 'Hohe Zahl der Unfälle',
         value: 4
       },
       {
-        label: 'Zu viel Verkehr',
+        label: 'Aggressives Verhalten anderer',
         value: 5
       },
       {
-        label: 'Aggressives Verhalten anderer',
+        label: 'Starke Luftverschmutzung',
         value: 6
-      },
-      {
-        label: 'Ignorieren der Verkehrsregeln ',
-        value: 7
       }
     ]
   },
