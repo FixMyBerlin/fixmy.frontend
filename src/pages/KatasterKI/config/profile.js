@@ -277,16 +277,12 @@ export default [
         value: 2
       },
       {
-        label: '40 Minuten',
+        label: 'Mehr als 30 Minuten',
         value: 3
       },
       {
-        label: 'Mehr als 40 Minuten',
-        value: 4
-      },
-      {
         label: 'Weiß ich nicht',
-        value: 5
+        value: 4
       }
     ]
   },
