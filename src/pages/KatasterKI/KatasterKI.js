@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import GlobalStyle from './styles/Global';
 import AppGlobalStyle from '~/styles/Global';
 import landingSrc from '~/images/strassencheck/map-bg.jpg';
+import ScrollToTop from './utils';
 
 const BgWrapper = styled.div`
   min-height: 100%;
@@ -58,6 +59,7 @@ const KatasterKI = () => {
     <BgWrapper isLanding={isLanding}>
       <GlobalStyle />
       <AppGlobalStyle />
+      <ScrollToTop />
       <ContentWrapper isLanding={isLanding}>
         <Router history={history}>
           <Switch>
