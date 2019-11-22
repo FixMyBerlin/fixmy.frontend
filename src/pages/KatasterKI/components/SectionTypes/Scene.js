@@ -52,7 +52,7 @@ const startMeasurement = () => window.performance.mark('imageLoaded');
 const finishMeasurement = (sceneID) => {
   window.performance.measure(sceneID, 'imageLoaded');
   const results = window.performance.getEntriesByName(sceneID);
-  return results[0].duration;
+  return parseInt(results[0].duration, 10);
 };
 
 const Scene = ({ title, name, options, currentValue, handleChange, next }) => {

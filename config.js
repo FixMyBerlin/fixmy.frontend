@@ -304,8 +304,8 @@ const config = {
     },
     buttonTimeout: 300,
     projectId: '01',
-    // this is the article link for the landing page
-    tspArticleLink: 'https://tagesspiegel.de',
+    // this is the article link for the landing page and feedback page
+    tspArticleLink: 'https://tagesspiegel.de/',
     shareTitle: 'Umfrage Share Title',
     shareText: 'Umfrage Share Text'
   },
