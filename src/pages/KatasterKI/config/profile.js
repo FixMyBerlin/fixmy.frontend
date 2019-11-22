@@ -9,7 +9,7 @@ import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 export default [
   {
     type: 'info',
-    title: 'Zunächst drei allgemeine Fragen zum Verkehr in Berlin:'
+    title: 'Zunächst drei allgemeine Fragen zum Verkehr in Berlin'
   },
   {
     type: 'single_choice',
