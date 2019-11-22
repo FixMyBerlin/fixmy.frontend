@@ -3,10 +3,9 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Route, Switch, Router, Redirect } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
-import GlobalStyles from '~/styles/Global';
 
-import ReactPiwik from "react-piwik";
-import { createBrowserHistory } from "history";
+import { createBrowserHistory } from 'history';
+import GlobalStyles from '~/styles/Global';
 import { PrivateRoute } from '~/utils/router-utils';
 import Menu from '~/components/Menu';
 import Home from '~/pages/Home';
@@ -24,15 +23,6 @@ import Reports from '~/pages/Reports';
 import KatasterKI from '~/pages/KatasterKI';
 
 const history = createBrowserHistory();
-
-const piwik = new ReactPiwik({
-  url: "fixmyberlin.de/stats",
-  siteId: 3,
-  trackErrors: true
-});
-
-// track the initial pageview
-ReactPiwik.push(["trackPageView"]);
 
 const AppContent = styled.div`
   width: 100%;
@@ -55,7 +45,7 @@ class App extends PureComponent {
     return (
       <Fragment>
         <GlobalStyles />
-        <Router history={piwik.connectToHistory(history)}>
+        <Router history={history}>
           <LastLocationProvider>
             <AppWrapper>
               {!isEmbedMode && <Menu />}

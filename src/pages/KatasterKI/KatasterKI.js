@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+import ReactPiwik from 'react-piwik';
 
 import { media } from '~/styles/utils';
 import history from '~/history';
@@ -48,6 +49,12 @@ const ContentWrapper = styled.div`
   `}
 `;
 
+export const piwik = new ReactPiwik({
+  url: 'fixmyberlin.de/stats',
+  siteId: 3,
+  trackErrors: true
+});
+
 const KatasterKI = (props) => {
   const isLanding =
     props.location.pathname === config.routes.katasterKI.landing;
@@ -60,7 +67,7 @@ const KatasterKI = (props) => {
     <BgWrapper isLanding={isLanding}>
       <GlobalStyle />
       <ContentWrapper isLanding={isLanding}>
-        <Router history={history}>
+        <Router history={piwik.connectToHistory(history)}>
           <Switch>
             <Route
               exact
