@@ -56,7 +56,7 @@ export default [
         value: 0
       },
       {
-        label: 'Ja, ab und an',
+        label: 'Ja, ab und zu',
         value: 1
       },
       {
@@ -226,7 +226,7 @@ export default [
   {
     type: 'multi_choice',
     name: 'vehiclesOwned',
-    title: 'Mir steht folgendes zur Verfügung:',
+    title: 'Mir steht Folgendes zur Verfügung:',
     options: [
       {
         label: 'Pedelec / E-Bike',
@@ -241,7 +241,7 @@ export default [
         name: 'public'
       },
       {
-        label: 'Motorad / Moped',
+        label: 'Motorrad / Moped',
         name: 'motorbike'
       },
       {
@@ -339,22 +339,18 @@ export default [
     type: 'multi_choice',
     name: 'bikeReasons',
     title:
-      'Aus welchen Gründen können, dürfen oder wollen Sie nicht häufiger Fahrrad fahren?',
+      'Aus welchen Gründen fahren Sie nicht häufiger Fahrrad?',
     options: [
       {
         label: 'Ich kann nicht Fahrrad fahren (fehlende Fertigkeit)',
         name: 'skills'
       },
       {
-        label: 'Es gibt keine angemessene Infrastruktur',
+        label: 'Es gibt keine sichere Infrastruktur',
         name: 'infrastructure'
       },
       {
-        label: 'Es sind zu viele Autos unterwegs',
-        name: 'traffic'
-      },
-      {
-        label: 'Der Zielort ist zu weit entfernt',
+        label: 'Meine Strecken sind zu lang',
         name: 'distance'
       },
       {
@@ -374,7 +370,7 @@ export default [
         name: 'children'
       },
       {
-        label: 'Sonstiges',
+        label: 'Andere Gründe',
         input: true,
         placeholder: 'Geben Sie hier Ihre Antwort ein ...',
         name: 8
