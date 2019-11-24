@@ -18,6 +18,7 @@
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=**/state/*",
     "test:e2e": "start-server-and-test start http://localhost:8080 cypress",
     "test:e2e-concurrent": "npm run cypress",
+    "test:e2e-concurrent-chrome": "npm run cypress -- --browser chrome",
     "cypress": "cypress run",
     "generate-kataster-schema": "./src/pages/KatasterKI/scheme/generate.sh",
     "build:strassencheck": "cross-env BASE_NAME=$npm_package_config_katasterStandaloneBase KATASTER_PATH=$npm_package_config_katasterStandalonePath ENTRY_POINT=$npm_package_config_katasterStandaloneEntry npm run build",
