@@ -115,6 +115,8 @@ Eingesetzte Dienste und Diensteanbieter:
 
 - Amazon Web Services (AWS): Webhosting und infrastrukturelle Dienstleistungen; Dienstanbieter: Amazon Web Services, Inc., 410 Terry Avenue North, Seattle WA 98109, USA; Website: https://aws.amazon.com/de/; Datenschutzerklärung: https://aws.amazon.com/de/privacy/?nc1=f_pr; Privacy Shield (Gewährleistung Datenschutzniveau bei Verarbeitung von Daten in den USA): https://www.privacyshield.gov/participant?id=a2zt0000000TOWQAA4&status=Active.
 
+- Heroku: Webhosting und infrastrukturelle Dienstleistungen; Dienstanbieter: Salesforce; 50 Fremont St.; Suite 300; San Francisco, CA; 94105; Website: https://www.heroku.com/; Datenschutzerklärung: https://www.salesforce.com/company/privacy/; Privacy Shield (Gewährleistung Datenschutzniveau bei Verarbeitung von Daten in den USA): https://www.privacyshield.gov/participant?id=a2zt0000000KzLyAAK&status=Active
+
 ## Bewerbungsverfahren
 
 Das Bewerbungsverfahren setzt voraus, dass Bewerber uns die für deren Beurteilung und Auswahl erforderlichen Daten mitteilen. Welche Informationen erforderlich sind, ergibt sich aus der Stellenbeschreibung oder im Fall von Onlineformularen aus den dortigen Angaben.
