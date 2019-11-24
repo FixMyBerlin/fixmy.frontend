@@ -1,4 +1,4 @@
-# API (beta)
+# API
 
 Alle API Inhalte stehen unter der [ODbL Lizenz](https://opendatacommons.org/licenses/odbl/) zur Verfügung.
 
@@ -20,5 +20,7 @@ Zur [API für Planungsabschnitte inkl. Happy-Bike-Index](https://api.fixmyberlin
 -   "daily_traffic_heavy": 686.0 // Schwerlastverkehr
 -   "daily_traffic_cargo": 2250.0 // Transport
 -   "daily_traffic_bus": 32.0 // Bus
+
+Zur [API für Fahrradbügel-Meldungen für Friedrichhain-Kreuzberg](https://api.fixmyberlin.de/api/reports)
 
 Bei gesonderter Lizenzierung schreib bitte an [hello@fixmycity.de](mailto:hello@fixmycity.de)
