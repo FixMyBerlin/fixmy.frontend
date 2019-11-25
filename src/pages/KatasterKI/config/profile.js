@@ -12,41 +12,41 @@ export default [
     title: 'Zunächst drei allgemeine Fragen zum Verkehr in Berlin'
   },
   {
-    type: 'single_choice',
+    type: 'multi_choice',
     name: 'berlinTraffic',
     title: 'Was nervt Sie am meisten im Straßenverkehr?',
     options: [
       {
         label: 'Baustellen auf der Fahrbahn',
-        value: 0
+        name: 'a'
       },
       {
         label: 'Falschparker',
-        value: 1
+        name: 'b'
       },
       {
         label: 'Überhöhte Geschwindigkeit anderer',
-        value: 2
+        name: 'c'
       },
       {
         label: 'Smartphone-Nutzung anderer im Verkehr',
-        value: 3
+        name: 'd'
       },
       {
         label: 'Zu dichtes Überholen von Autos und LKW',
-        value: 4
+        name: 'e'
       },
       {
         label: 'Zu viel Verkehr',
-        value: 5
+        name: 'f'
       },
       {
         label: 'Aggressives Verhalten anderer',
-        value: 6
+        name: 'g'
       },
       {
         label: 'Ignorieren der Verkehrsregeln ',
-        value: 7
+        name: 'h'
       }
     ]
   },
