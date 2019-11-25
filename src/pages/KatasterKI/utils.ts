@@ -98,7 +98,7 @@ export const getFeedbackThreshold = (totalRatings: number): number => {
 /**
  * Scroll to top on navigation
  */
-export default function ScrollToTop() {
+export const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -106,4 +106,4 @@ export default function ScrollToTop() {
   }, [pathname]);
 
   return null;
-}
+};
