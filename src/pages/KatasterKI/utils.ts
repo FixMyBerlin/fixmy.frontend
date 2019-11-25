@@ -85,12 +85,10 @@ export const toggleNavigationWarning = (isEnabled: boolean) => {
  * totalRatings number.
  */
 export const getFeedbackThreshold = (totalRatings: number): number => {
-  if (totalRatings < 200) return 200;
+  if (totalRatings < 100) return 100;
+  if (totalRatings < 300) return 300;
   if (totalRatings < 500) return 500;
   if (totalRatings < 1000) return 1000;
-  if (totalRatings < 2500) return 2500;
-  if (totalRatings < 5000) return 5000;
-  if (totalRatings < 5000) return 10000;
 
   const step = totalRatings < 10000 ? 1000.0 : 5000.0;
   const threshold = Math.ceil((totalRatings + 1) / step) * step;
