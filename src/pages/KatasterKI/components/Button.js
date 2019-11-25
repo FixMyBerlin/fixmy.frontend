@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   border-radius: 32px;
   border: none;
   outline: none;
-  padding: 14px 25px;
+  padding: 16px 25px;
   background: ${(props) =>
     props.disabled ? config.colors.lightgrey : config.colors.katasterHighlight};
   text-decoration: none;
