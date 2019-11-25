@@ -9,7 +9,6 @@ import Store from '~/store';
 import { setTOSAccepted, setEmbedded } from '../state';
 import Flex from '~/components/Flex';
 
-import IconBar from '~/pages/KatasterKI/components/IconBar';
 import TOCCheckbox from '~/pages/KatasterKI/components/TOCCheckbox';
 import TspLogo from '~/images/strassencheck/tsp-logo.svg';
 import fixMyLogoSrc from '~/images/logofmb@2x.png';
@@ -45,18 +44,6 @@ const FixMyImage = styled.img.attrs({ src: fixMyLogoSrc })`
     left: -10px;
     top: 10px;
   }
-`;
-
-const IntroSubline = styled.div`
-  display: none;
-
-  ${media.m`
-    color: white;
-    font-size: 16px;
-    max-width: 650px;
-    width: 100%;
-    margin: 0 auto;
-  `}
 `;
 
 const IntroBottom = styled.div`
@@ -146,10 +133,6 @@ const Landing = ({ isTosAccepted, location }) => {
           <FixMyImage />
         </IntroHeader>
         <IntroHeadline>Der Berliner Straßencheck</IntroHeadline>
-        <IntroSubline>
-          Eine Umfrage für:
-          <IconBar />
-        </IntroSubline>
 
         <IntroBottom>
           <IntroQuestion>
