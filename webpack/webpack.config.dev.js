@@ -8,7 +8,7 @@ const common = require('./webpack.common.js');
 const Config = require('../config.js');
 
 const INDEX_HTML =
-  process.env.KATASTER_PATH.length === 0
+  process.env.KATASTER_PATH != null
     ? '../src/pages/KatasterKI/index_tsp.html'
     : '../src/index.html';
 
