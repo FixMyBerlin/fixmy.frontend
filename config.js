@@ -305,9 +305,11 @@ const config = {
     buttonTimeout: 300,
     projectId: '01',
     // this is the article link for the landing page and feedback page
-    tspArticleLink: 'https://tagesspiegel.de/',
+    tspArticleLink: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
+    shareUrl: 'https://interaktiv.tagesspiegel.de/strassencheck/',
     shareTitle: 'Umfrage Share Title',
-    shareText: 'Umfrage Share Text'
+    shareText:
+      'Wie können die Berliner Straßen sicher für alle werden? Tolle Umfrage von @FixMyBerlin und @tagesspiegel, bitte teilnehmen!'
   },
   reports: {
     apiRoute: '/reports',
