@@ -114,8 +114,8 @@ const Email = (props) => {
           >
             <EmailImg />
             <Paragraph>
-              Sobald Sie den Link aktiviert haben, bekommen Sie eine Email,
-              wenn Auswertungen der Umfrage online sind.
+              Sobald Sie den Link aktiviert haben, bekommen Sie eine Email, wenn
+              Auswertungen der Umfrage online sind.
             </Paragraph>
             <Button css={{ marginTop: 'auto' }} onClick={onOpenInfo}>
               Weiter in der Umfrage
@@ -129,14 +129,16 @@ const Email = (props) => {
   return (
     <>
       <QuestionTitle>
-        Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage informieren.
+        Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der
+        Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage
+        informieren.
       </QuestionTitle>
 
       <EmailWrapper>
         <Flex css={{ flexGrow: 1 }} alignItems="center" flexDirection="column">
           <Input
             type="email"
-            placeholder="Ihre Emailadresse"
+            placeholder="Ihre E-Mailadresse"
             onChange={(evt) => setEmail(evt.target.value)}
             value={email}
             css={{ marginBottom: 20 }}

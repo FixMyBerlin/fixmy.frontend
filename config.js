@@ -155,7 +155,8 @@ const config = {
       scenes: `${process.env.KATASTER_PATH}/szenen/:page`,
       share: `${process.env.KATASTER_PATH}/teilen`,
       feedback: `${process.env.KATASTER_PATH}/auswertung`,
-      iframe: `${process.env.KATASTER_PATH}/iFrame-test`
+      iframe: `${process.env.KATASTER_PATH}/iFrame-test`,
+      email: `${process.env.KATASTER_PATH}/email`
     },
     signup: '/registrieren',
     login: '/anmelden',

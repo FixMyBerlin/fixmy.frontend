@@ -7,6 +7,7 @@ import history from '~/history';
 import Landing from './pages/Landing';
 import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
+import Email from './pages/Email';
 import GlobalStyle from './styles/Global';
 import AppGlobalStyle from '~/styles/Global';
 import { ScrollToTop } from './utils';
@@ -99,11 +100,11 @@ const KatasterKI = () => {
               component={Scenes}
             />
 
-            {/* <Route
+            <Route
               exact
               path={config.routes.katasterKI.email}
               component={Email}
-            /> */}
+            />
 
             {/* Fallback: redirect to landing page */}
             <Route

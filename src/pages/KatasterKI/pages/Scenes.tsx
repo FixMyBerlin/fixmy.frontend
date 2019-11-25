@@ -107,6 +107,11 @@ const Scenes = ({
 
   const next = () => {
     const isLastSection = page === sectionConfig.length - 1;
+
+    if (section.type === 'feedback') {
+      return history.push(config.routes.katasterKI.email);
+    }
+
     if (isLastSection) {
       history.push(`${config.routes.katasterKI.scenesBase}/1`);
     } else {
