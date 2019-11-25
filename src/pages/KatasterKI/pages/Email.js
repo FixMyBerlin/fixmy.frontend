@@ -51,7 +51,7 @@ const CheckboxWrapper = styled.div`
 const initialNewsletterConfig = [
   {
     id: 'fixmy-newsletter',
-    label: 'Ich möchte außerdem den FixMyBerlin Newsletter erhalten.',
+    label: 'Ich möchte außerdem den FixMyBerlin-Newsletter erhalten.',
     checked: false
   },
   {
