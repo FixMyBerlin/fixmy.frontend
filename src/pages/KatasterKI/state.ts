@@ -413,6 +413,9 @@ export function submitProfileError(errorMessage: string): Action {
   return { type: SUBMIT_PROFILE_ERROR, error: errorMessage };
 }
 export function submitProfileComplete(): Action {
+  // Once the profile has been submitted, no information is lost when
+  // users navigate away from the page
+  toggleNavigationWarning(false);
   return { type: SUBMIT_PROFILE_COMPLETE };
 }
 

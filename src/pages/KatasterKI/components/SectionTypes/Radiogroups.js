@@ -70,6 +70,7 @@ export default ({
   info,
   radiogroups,
   currentValue,
+  page,
   handleChange,
   next
 }) => {
@@ -81,7 +82,7 @@ export default ({
       <QuestionTitle>{title}</QuestionTitle>
       {radiogroups.map((radiogroup, index) => (
         <RadioGroupWrapper
-          key={`radiogroup_${radiogroup.name}`}
+          key={`radiogroup_${page}_${radiogroup.name}`}
           isLast={index === radiogroups.length - 1}
         >
           <RadioGroupTitle>{radiogroup.label}</RadioGroupTitle>

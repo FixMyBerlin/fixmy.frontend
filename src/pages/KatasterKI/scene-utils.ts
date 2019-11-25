@@ -21,12 +21,6 @@ const perspectiveIcons = {
   P: PedestrianIcon
 };
 
-const agentNames = {
-  C: 'Fahrradfahrer:in',
-  A: 'Autofahrer:in',
-  P: 'Fußgänger:in'
-};
-
 const ratingNames = ['unsicher', 'eher unsicher', 'eher sicher', 'sicher'];
 
 const ratingIcons = [
@@ -77,10 +71,16 @@ export const makeSection = (
     name: 'feedback'
   };
 
+  const titleByPerspective = {
+    C: 'Sie fahren Fahrrad: Fühlen Sie sich hier sicher?',
+    A: 'Wie empfinden Sie diese Situation beim Autofahren?',
+    P: 'Sie gehen zu Fuß: Fühlen Sie sich hier sicher?'
+  };
+
   const sceneScreens = scenes.map((scene) => ({
     type: 'scene',
     name: scene.sceneID,
-    title: `Fühlen Sie sich hier als ${agentNames[perspective]} sicher?`,
+    title: titleByPerspective[perspective],
     options: ratingNames.map((r, i) => ({
       label: r,
       value: i,
