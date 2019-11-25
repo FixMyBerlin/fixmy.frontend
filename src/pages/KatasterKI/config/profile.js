@@ -12,37 +12,37 @@ export default [
     title: 'Zunächst drei allgemeine Fragen zum Verkehr in Berlin'
   },
   {
-    type: 'single_choice',
+    type: 'multi_choice',
     name: 'berlinTraffic',
     title: 'Was nervt Sie am meisten im Straßenverkehr?',
     options: [
       {
         label: 'Hohes Verkehrsaufkommen und Staus',
-        value: 0
+        name: 'traffic'
       },
       {
         label: 'Zustand der Straßen / Radwege',
-        value: 1
+        name: 'maintenance'
       },
       {
         label: 'Missachtung der Verkehrsregeln',
-        value: 2
+        name: 'rules'
       },
       {
         label: 'Der Lärm',
-        value: 3
+        name: 'noise'
       },
       {
         label: 'Hohe Zahl der Unfälle',
-        value: 4
+        name: 'accidents'
       },
       {
         label: 'Aggressives Verhalten anderer',
-        value: 5
+        name: 'aggression'
       },
       {
         label: 'Starke Luftverschmutzung',
-        value: 6
+        name: 'polution'
       }
     ]
   },

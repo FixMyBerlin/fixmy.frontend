@@ -11,6 +11,7 @@ const Headline = styled.h1`
   font-family: FranklinGothic-Med, sans-serif;
   margin-top: 0;
   font-weight: 400;
+  hyphens: auto;
 `;
 
 export default ({ title, next }) => {

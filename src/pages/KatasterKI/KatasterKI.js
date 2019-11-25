@@ -20,7 +20,7 @@ const BgWrapper = styled.div`
   ${(props) =>
     !props.isLanding
       ? media.m`
-          background: url(${landingSrc}) no-repeat center center;
+          background: url(${landingSrc}) no-repeat center top;
           background-size: cover;
           padding: ${!props.isLanding ? '20px' : 0};
         `
