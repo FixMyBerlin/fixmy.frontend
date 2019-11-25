@@ -112,7 +112,7 @@ const KatasterKI = () => {
           </Switch>
         </Router>
       </ContentWrapper>
-      <Gradient />
+      {isLanding && <Gradient />}
     </BgWrapper>
   );
 };
