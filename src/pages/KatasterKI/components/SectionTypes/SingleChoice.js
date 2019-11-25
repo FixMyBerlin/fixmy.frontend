@@ -7,14 +7,14 @@ import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 
 const SingleChoiceWrapper = styled.div`
   button {
-    margin-bottom: 26px;
+    margin-bottom: 24px;
   }
 
   ${media.m`
     button {
       margin-left: auto;
       margin-right: auto;
-      margin-bottom: 26px;
+      margin-bottom: 24px;
     }
   `}
 `;
