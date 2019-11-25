@@ -287,10 +287,10 @@ export default [
     name: 'motivationalFactors',
     title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
     info:
-      'Die folgenden Fragen sind für unsere Forschung sehr wichtig. Sie handeln von all jenen Faktoren, die Sie möglicherweise motivieren, Fahrrad zu fahren - oder Sie davon abhalten.',
+      'Die folgenden Fragen sind für unsere Forschung sehr wichtig. Sie handeln von all jenen Faktoren, die Sie möglicherweise motivieren Fahrrad zu fahren - oder Sie davon abhalten.',
     radiogroups: [
       {
-        label: '„Ich fahre Fahrrad weil es mir Spaß macht.“',
+        label: '„Ich fahre Fahrrad, weil es mir Spaß macht.“',
         name: 'bikefun',
         options: [
           { label: 'trifft nicht zu', value: 0 },
