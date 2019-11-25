@@ -339,7 +339,7 @@ export default [
     type: 'multi_choice',
     name: 'bikeReasons',
     title:
-      'Aus welchen Gründen fahren Sie nicht häufiger Fahrrad?',
+      'Aus welchen Gründen können, dürfen oder wollen Sie nicht häufiger Fahrrad fahren?',
     options: [
       {
         label: 'Ich kann nicht Fahrrad fahren (fehlende Fertigkeit)',
