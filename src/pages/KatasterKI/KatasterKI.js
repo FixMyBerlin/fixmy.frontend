@@ -9,7 +9,7 @@ import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
 import GlobalStyle from './styles/Global';
 import AppGlobalStyle from '~/styles/Global';
-import ScrollToTop from './utils';
+import { ScrollToTop } from './utils';
 import mapBgSrc from '~/images/strassencheck/map-bg.jpg';
 import landingBgSrc from '~/images/strassencheck/landing-bg.jpg';
 

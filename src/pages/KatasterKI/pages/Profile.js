@@ -5,13 +5,13 @@ import { Redirect } from 'react-router-dom';
 
 import history from '~/history';
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
-import profileConfig from '~/pages/KatasterKI/config/profile';
 import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
 import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import TransportRatings from '~/pages/KatasterKI/components/SectionTypes/TransportRatings';
 import ZipInput from '~/pages/KatasterKI/components/SectionTypes/ZipInput';
 import Radiogroups from '~/pages/KatasterKI/components/SectionTypes/Radiogroups';
+import Survey from '~/pages/KatasterKI/survey';
 import {
   setProfileAnswer,
   updateProgressBar,
@@ -64,6 +64,7 @@ const Profile = ({
   isTosAccepted,
   profile,
   profileRequest,
+  userGroup,
   dispatch
 }) => {
   if (shouldRedirectToLanding(match.params, isTosAccepted)) {
@@ -75,6 +76,8 @@ const Profile = ({
   }
 
   const page = +match.params.page - 1;
+
+  const profileConfig = Survey.profileConfig(userGroup);
 
   useEffect(() => {
     dispatch(updateProgressBar(page, profileConfig.length));
@@ -129,6 +132,7 @@ const Profile = ({
 const mapStateToProps = (state) => ({
   isTosAccepted: state.KatasterKIState.isTosAccepted,
   profile: state.KatasterKIState.profile,
+  userGroup: state.KatasterKIState.userGroup,
   profileRequest: state.KatasterKIState.profileRequest
 });
 
