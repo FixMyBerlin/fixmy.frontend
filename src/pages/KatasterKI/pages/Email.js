@@ -57,7 +57,7 @@ const initialNewsletterConfig = [
   {
     id: 'tsp-newsletter',
     label:
-      'Ich wünsche mir weitere interessante Angebote der Tagesspiegel-Gruppe per E-Mail.',
+      'Ich wünsche mir weitere interessante Angebote der Tagesspiegel-Gruppe per EMail.',
     checked: false
   }
 ];
@@ -129,7 +129,7 @@ const Email = (props) => {
   return (
     <>
       <QuestionTitle>
-        Tragen Sie hier Ihre Mailadresse ein, wenn Sie wollen, dass der Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage informieren.
+        Tragen Sie hier Ihre Mailadresse ein, wenn Sie möchten, dass der Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage informieren.
       </QuestionTitle>
 
       <EmailWrapper>
