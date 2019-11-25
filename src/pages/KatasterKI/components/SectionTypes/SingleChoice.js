@@ -24,6 +24,7 @@ const SingleChoiceInput = ({
   options,
   currentValue,
   handleChange,
+  page,
   next
 }) => {
   const [clickedButton, setClickedButton] = useState(null);
@@ -45,7 +46,7 @@ const SingleChoiceInput = ({
       <QuestionTitle>{title}</QuestionTitle>
       {options.map((option) => (
         <GhostButton
-          key={`singlechoice__${option.value}`}
+          key={`singlechoice__${page}_${option.value}`}
           onClick={() => onClick(option)}
           css={{ textAlign: 'left' }}
           isActive={option.value === currentValue}

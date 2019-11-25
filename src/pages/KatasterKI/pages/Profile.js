@@ -117,6 +117,7 @@ const Profile = ({
       <ProgressBar />
       <SectionComponent
         {...section}
+        page={page}
         currentValue={profile[section.name]}
         next={next}
         handleChange={onChange}
