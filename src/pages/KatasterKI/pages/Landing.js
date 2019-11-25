@@ -4,41 +4,77 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import queryString from 'query-string';
 
+import { media, isSmallScreen } from '~/styles/utils';
 import Store from '~/store';
 import { setTOSAccepted, setEmbedded } from '../state';
 import Flex from '~/components/Flex';
 
 import IconBar from '~/pages/KatasterKI/components/IconBar';
-import IntroImgSrc from '~/images/strassencheck/landing-bg.jpg';
 import TOCCheckbox from '~/pages/KatasterKI/components/TOCCheckbox';
+import TspLogo from '~/images/strassencheck/tsp-logo.svg';
+import fixMyLogoSrc from '~/images/logofmb@2x.png';
 
 const IntroScreen = styled.div`
-  background: url(${IntroImgSrc}) no-repeat center center;
-  background-size: cover;
-  padding: 1rem;
+  padding: 10px 16px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 `;
 
-const IntroSubline = styled.div`
+const IntroHeader = styled.div`
+  display: flex;
+  font-size: 12px;
   color: white;
-  font-size: 16px;
-  max-width: 650px;
-  width: 100%;
+  flex-direction: column;
+  width: 150px;
   margin: 0 auto;
+  align-items: center;
+  position: relative;
+
+  svg {
+    margin-top: 10px;
+    width: 100%;
+  }
+`;
+
+const FixMyImage = styled.img.attrs({ src: fixMyLogoSrc })`
+  &&& {
+    width: 36px;
+    position: absolute;
+    transform: translate(-100%, 0);
+    left: -10px;
+    top: 10px;
+  }
+`;
+
+const IntroSubline = styled.div`
+  display: none;
+
+  ${media.m`
+    color: white;
+    font-size: 16px;
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+  `}
 `;
 
 const IntroBottom = styled.div`
   max-width: 650px;
   width: 100%;
   margin: auto auto 0 auto;
+
+  ${media.m`
+    margin: 0 auto;
+  `}
 `;
 
 const IntroQuestion = styled.div`
   text-align: center;
   color: white;
   font-weight: 700;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  font-size: 22px;
 `;
 
 const IntroHeadline = styled.h1`
@@ -46,20 +82,32 @@ const IntroHeadline = styled.h1`
   margin: 0.5em 0;
   text-align: center;
   color: white;
+  text-shadow: 0 0 12px rgba(15, 15, 15, 0.7);
+  font-size: 42px;
+
+  ${media.m`
+    font-size: 60px;
+    margin-top: 20vh;
+  `}
 `;
 
 const IntroCallToAction = styled.a`
   color: white;
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 16px;
   margin: 20px 0 10px 0;
   text-align: center;
+  font-family: 'FranklinGothic-Demi', sans-serif;
 
   &:hover,
   &:active,
   &:visited {
     color: white;
   }
+
+  ${media.m`
+    margin-top: 20vh;
+  `}
 `;
 
 const onAcceptTOS = (ev) => Store.dispatch(setTOSAccepted(ev.target.checked));
@@ -85,10 +133,19 @@ const Landing = ({ isTosAccepted, location }) => {
     return <Redirect to={`${config.routes.katasterKI.profileBase}/1`} />;
   }
 
+  const checkBoxLabelColor = isSmallScreen()
+    ? config.colors.lightgrey
+    : 'white';
+
   return (
     <>
       <IntroScreen>
-        <IntroHeadline>Der Straßencheck für Berlin</IntroHeadline>
+        <IntroHeader>
+          <div>Eine Umfrage von:</div>
+          <TspLogo />
+          <FixMyImage />
+        </IntroHeader>
+        <IntroHeadline>Der Berliner Straßencheck</IntroHeadline>
         <IntroSubline>
           Eine Umfrage für:
           <IconBar />
@@ -103,7 +160,7 @@ const Landing = ({ isTosAccepted, location }) => {
           <TOCCheckbox
             checked={isTosAccepted}
             onChange={onAcceptTOS}
-            labelColor="white"
+            labelColor={checkBoxLabelColor}
           />
           <Flex alignItems="center" justifyContent="center">
             <IntroCallToAction
