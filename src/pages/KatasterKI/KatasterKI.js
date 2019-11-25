@@ -1,6 +1,6 @@
 import React from 'react';
 import { Router, Route, Switch, Redirect, matchPath } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { media } from '~/styles/utils';
 import history from '~/history';
@@ -9,8 +9,9 @@ import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
 import GlobalStyle from './styles/Global';
 import AppGlobalStyle from '~/styles/Global';
-import landingSrc from '~/images/strassencheck/map-bg.jpg';
 import { ScrollToTop } from './utils';
+import mapBgSrc from '~/images/strassencheck/map-bg.jpg';
+import landingBgSrc from '~/images/strassencheck/landing-bg.jpg';
 
 const BgWrapper = styled.div`
   min-height: 100%;
@@ -18,13 +19,16 @@ const BgWrapper = styled.div`
   flex-direction: column;
 
   ${(props) =>
-    !props.isLanding
-      ? media.m`
-          background: url(${landingSrc}) no-repeat center top;
+    props.isLanding
+      ? css`
+          background: url(${landingBgSrc}) no-repeat center center;
           background-size: cover;
-          padding: ${!props.isLanding ? '20px' : 0};
         `
-      : null}
+      : media.m`
+          background: url(${mapBgSrc}) no-repeat center top;
+          padding: ${!props.isLanding ? '20px' : 0};
+          background-size: cover;
+        `}
 `;
 
 const ContentWrapper = styled.div`
@@ -34,10 +38,11 @@ const ContentWrapper = styled.div`
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  background: white;
+  background: ${(props) => (props.isLanding ? 'transparent' : 'white')};
   flex-grow: 1;
   width: 100%;
   font-family: FranklinGothic-Book, sans-serif;
+  z-index: 1;
 
   img {
     width: 100%;
@@ -47,6 +52,19 @@ const ContentWrapper = styled.div`
     box-shadow: ${props.isLanding ? 'none' : '0 0 8px 3px rgba(0,0,0,.25)'};
     padding: ${props.isLanding ? 0 : '15px 60px'};
   `}
+`;
+
+const Gradient = styled.div`
+  position: absolute;
+  bottom: 0;
+  height: 50%;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
 `;
 
 const KatasterKI = () => {
@@ -94,6 +112,7 @@ const KatasterKI = () => {
           </Switch>
         </Router>
       </ContentWrapper>
+      <Gradient />
     </BgWrapper>
   );
 };
