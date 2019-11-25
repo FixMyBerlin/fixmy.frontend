@@ -19,13 +19,19 @@
       "type": "number"
     },
     "berlinTraffic": {
-      "type": "number"
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "type": "object"
     },
     "bicycleUse": {
       "type": "number"
     },
     "bikeReasons": {
-      "type": "object"
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
     },
     "bikeReasonsVar": {
       "type": "string"

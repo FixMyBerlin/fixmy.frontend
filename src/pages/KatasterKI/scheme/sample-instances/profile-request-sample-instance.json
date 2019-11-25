@@ -1,6 +1,14 @@
 {
   "ageGroup": 1,
-  "berlinTraffic": 3,
+  "berlinTraffic": {
+    "traffic": true,
+    "maintenance": true,
+    "rules": true,
+    "noise": true,
+    "accidents": true,
+    "aggression": true,
+    "polution": false
+  },
   "bicycleUse": 0,
   "bikeReasons": ["skills", "social"],
   "bikeReasonsVar": "Tja",
