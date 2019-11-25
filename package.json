@@ -135,7 +135,7 @@
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
-    "slugify": "^1.3.5",
+    "slugify": "^1.3.6",
     "store": "^2.0.12",
     "styled-components": "^4.4.0",
     "styled-normalize": "^8.0.6",
