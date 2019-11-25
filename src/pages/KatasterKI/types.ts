@@ -6,7 +6,9 @@ export interface Answer {
 
 export interface ProfileRequest {
   ageGroup: number;
-  berlinTraffic: number;
+  berlinTraffic: {
+    [name: string]: boolean;
+  };
   bicycleUse: number;
   bikeReasons: Array<string>;
   bikeReasonsVar?: string;

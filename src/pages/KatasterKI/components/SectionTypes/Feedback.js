@@ -16,7 +16,7 @@ import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import ProgressVis from '~/pages/KatasterKI/components/ProgressVis';
 
 const getTitle = (count, max) => {
-  return `Wir haben bereits ${count} Bewertungen bekommen, helfen Sie mit, dass wir auf ${max} kommen.`;
+  return `Wir haben bereits ${count} Bewertungen bekommen. Helfen Sie mit, dass wir auf ${max} kommen.`;
 };
 
 const FeedbackWrapper = styled.div`
@@ -81,7 +81,7 @@ const Feedback = ({
       <FeedbackWrapper>
         <FeedbackParagraph>
           Sie haben bereits <strong>{ratingsCounter} Situationen</strong>{' '}
-          bewertet. Je mehr Bewertungen die Umfrage erhält umso aussagekräftiger
+          bewertet. Je mehr Bewertungen die Umfrage erhält, umso aussagekräftiger
           sind die Ergebnisse.
         </FeedbackParagraph>
 
