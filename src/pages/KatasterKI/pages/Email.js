@@ -51,13 +51,13 @@ const CheckboxWrapper = styled.div`
 const initialNewsletterConfig = [
   {
     id: 'fixmy-newsletter',
-    label: 'Ich möchte außerdem den FixMyBerlin Newsletter erhalten.',
+    label: 'Ich möchte außerdem den FixMyBerlin-Newsletter erhalten.',
     checked: false
   },
   {
     id: 'tsp-newsletter',
     label:
-      'Ich wünsche mir weitere interessante Angebote der Tagesspiegel-Gruppe per E-Mail.',
+      'Ich wünsche mir weitere interessante Angebote der Tagesspiegel-Gruppe per Email.',
     checked: false
   }
 ];
@@ -114,7 +114,7 @@ const Email = (props) => {
           >
             <EmailImg />
             <Paragraph>
-              Sobald Sie den Login aktiviert haben, bekommen Sie eine Email,
+              Sobald Sie den Link aktiviert haben, bekommen Sie eine Email,
               wenn Auswertungen der Umfrage online sind.
             </Paragraph>
             <Button css={{ marginTop: 'auto' }} onClick={onOpenInfo}>
@@ -129,16 +129,14 @@ const Email = (props) => {
   return (
     <>
       <QuestionTitle>
-        Tragen Sie hier Ihre Emailadresse für den FixMyBerlin Newsletter ein,
-        dann informieren wir Sie, sobald die Ergbnisse der Umfrage ausgewertet
-        sind. (Optional)
+        Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage informieren.
       </QuestionTitle>
 
       <EmailWrapper>
         <Flex css={{ flexGrow: 1 }} alignItems="center" flexDirection="column">
           <Input
             type="email"
-            placeholder="Deine E-Mailadresse"
+            placeholder="Ihre Emailadresse"
             onChange={(evt) => setEmail(evt.target.value)}
             value={email}
             css={{ marginBottom: 20 }}

@@ -17,36 +17,32 @@ export default [
     title: 'Was nervt Sie am meisten im Straßenverkehr?',
     options: [
       {
-        label: 'Baustellen auf der Fahrbahn',
+        label: 'Hohes Verkehrsaufkommen und Staus',
         value: 0
       },
       {
-        label: 'Falschparker',
+        label: 'Zustand der Straßen / Radwege',
         value: 1
       },
       {
-        label: 'Überhöhte Geschwindigkeit anderer',
+        label: 'Missachtung der Verkehrsregeln',
         value: 2
       },
       {
-        label: 'Smartphone-Nutzung anderer im Verkehr',
+        label: 'Der Lärm',
         value: 3
       },
       {
-        label: 'Zu dichtes Überholen von Autos und LKW',
+        label: 'Hohe Zahl der Unfälle',
         value: 4
       },
       {
-        label: 'Zu viel Verkehr',
+        label: 'Aggressives Verhalten anderer',
         value: 5
       },
       {
-        label: 'Aggressives Verhalten anderer',
+        label: 'Starke Luftverschmutzung',
         value: 6
-      },
-      {
-        label: 'Ignorieren der Verkehrsregeln ',
-        value: 7
       }
     ]
   },
@@ -60,7 +56,7 @@ export default [
         value: 0
       },
       {
-        label: 'Ja, ab und an',
+        label: 'Ja, ab und zu',
         value: 1
       },
       {
@@ -230,7 +226,7 @@ export default [
   {
     type: 'multi_choice',
     name: 'vehiclesOwned',
-    title: 'Mir steht folgendes zur Verfügung:',
+    title: 'Mir steht Folgendes zur Verfügung:',
     options: [
       {
         label: 'Pedelec / E-Bike',
@@ -245,7 +241,7 @@ export default [
         name: 'public'
       },
       {
-        label: 'Motorad / Moped',
+        label: 'Motorrad / Moped',
         name: 'motorbike'
       },
       {
@@ -291,10 +287,10 @@ export default [
     name: 'motivationalFactors',
     title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
     info:
-      'Die folgenden Fragen sind für unsere Forschung sehr wichtig. Sie handeln von all jenen Faktoren, die Sie möglicherweise motivieren, Fahrrad zu fahren - oder Sie davon abhalten.',
+      'Die folgenden Fragen sind für unsere Forschung sehr wichtig. Sie handeln von all jenen Faktoren, die Sie möglicherweise motivieren Fahrrad zu fahren - oder Sie davon abhalten.',
     radiogroups: [
       {
-        label: '„Ich fahre Fahrrad weil es mir Spaß macht.“',
+        label: '„Ich fahre Fahrrad, weil es mir Spaß macht.“',
         name: 'bikefun',
         options: [
           { label: 'trifft nicht zu', value: 0 },
@@ -350,15 +346,11 @@ export default [
         name: 'skills'
       },
       {
-        label: 'Es gibt keine angemessene Infrastruktur',
+        label: 'Es gibt keine sichere Infrastruktur',
         name: 'infrastructure'
       },
       {
-        label: 'Es sind zu viele Autos unterwegs',
-        name: 'traffic'
-      },
-      {
-        label: 'Der Zielort ist zu weit entfernt',
+        label: 'Meine Strecken sind zu lang',
         name: 'distance'
       },
       {
@@ -378,7 +370,7 @@ export default [
         name: 'children'
       },
       {
-        label: 'Sonstiges',
+        label: 'Andere Gründe',
         input: true,
         placeholder: 'Geben Sie hier Ihre Antwort ein ...',
         name: 8
