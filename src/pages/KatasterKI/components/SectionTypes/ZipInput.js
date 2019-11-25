@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
@@ -33,6 +33,11 @@ const DistrictLabel = styled.label`
   user-select: none;
 `;
 
+const isInvalidZipCode = (zip) =>
+  zip.length !== 5 ||
+  Number.isNaN(parseInt(zip, 10)) ||
+  parseInt(zip, 10) < 1000;
+
 const ZipInput = (props) => {
   // we need to remember zip and district locally so that we can always send both values
   // whether we change the zip or the district
@@ -40,21 +45,20 @@ const ZipInput = (props) => {
   const district = useRef(props.district);
   const [isButtonDisabled, setButtonDisabled] = useState(true);
   const [isLoading, onClick] = useHandlerTimeout(props.next);
-
   const hasDistrictOptions = !!(
     props.districtOptions && props.districtOptions.length
   );
 
+  useEffect(() => {
+    setButtonDisabled(hasDistrictOptions && !props.district);
+  }, [hasDistrictOptions, props.district]);
+
   const onChange = () => {
     const selectedDistrict = hasDistrictOptions ? district.current : '';
 
-    const isInvalidZipCode =
-      zipCode.current.length !== 5 ||
-      Number.isNaN(parseInt(zipCode.current, 10)) ||
-      parseInt(zipCode.current, 10) < 1000;
-
     setButtonDisabled(
-      (hasDistrictOptions && props.district == null) || isInvalidZipCode
+      (hasDistrictOptions && !props.district) ||
+        isInvalidZipCode(zipCode.current)
     );
 
     props.handleChange({
