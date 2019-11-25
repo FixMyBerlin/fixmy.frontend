@@ -17,7 +17,7 @@ import {
   submitAnswer
 } from '../state';
 import { Answer, Section, RequestState } from '../types';
-import { makeSection } from '~/pages/KatasterKI/scene-utils';
+import Survey from '~/pages/KatasterKI/survey';
 import PerspectiveChange from '../components/SectionTypes/PerspectiveChange';
 
 const sectionTypes = {
@@ -76,7 +76,11 @@ const Scenes = ({
     );
 
   const page = +match.params.page - 1;
-  const sectionConfig = makeSection(scenes, perspective, sceneGroupCounter);
+  const sectionConfig = Survey.scenesConfig(
+    scenes,
+    perspective,
+    sceneGroupCounter
+  );
   const section = sectionConfig[page];
   if (section == null)
     return <Redirect to={config.routes.katasterKI.scenesBase + '/1'} />;
