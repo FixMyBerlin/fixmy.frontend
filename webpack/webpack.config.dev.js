@@ -7,6 +7,11 @@ const Autoprefixer = require('autoprefixer');
 const common = require('./webpack.common.js');
 const Config = require('../config.js');
 
+const INDEX_HTML =
+  process.env.KATASTER_PATH != null
+    ? '../src/pages/KatasterKI/index_tsp.html'
+    : '../src/index.html';
+
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
@@ -23,7 +28,7 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       inject: true,
       siteUrl: Config.devUrl,
-      template: Path.resolve(__dirname, '../src/index.html')
+      template: Path.resolve(__dirname, INDEX_HTML)
     })
   ],
   module: {

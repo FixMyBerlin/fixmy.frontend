@@ -1,3 +1,4 @@
+const Path = require('path');
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,6 +8,11 @@ const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
 const Config = require('../config.js');
+
+const INDEX_HTML =
+  process.env.KATASTER_PATH != null
+    ? '../src/pages/KatasterKI/index_tsp.html'
+    : '../src/index.html';
 
 module.exports = merge(common, {
   mode: 'production',
@@ -28,7 +34,7 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       inject: true,
       siteUrl: Config.prodUrl,
-      template: './src/index.html',
+      template: Path.resolve(__dirname, INDEX_HTML),
       minify: false
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
