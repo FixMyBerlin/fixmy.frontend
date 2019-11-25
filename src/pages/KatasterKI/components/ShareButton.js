@@ -15,7 +15,7 @@ export default ({
     navigator.share({
       title: config.katasterKI.shareTitle,
       text: config.katasterKI.shareText,
-      url: `${config.prodUrl}/${config.routes.katasterKI.landing}`
+      url: config.katasterKI.shareUrl
     });
   };
 
