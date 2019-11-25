@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const districts = [
   'Charlottenburg-Wilmersdorf',
   'Friedrichshain-Kreuzberg',
@@ -15,12 +17,18 @@ export const districts = [
 
 export const homeLabels = {
   title: 'Hi, das ist FixMyBerlin',
-  intro: `
-    Auf der Planungskarte von FixMyBerlin siehst Du, was Berlin an Radwegen plant.
-  `,
+  intro: (
+    <>
+      <strong>News!</strong> Nimm an unserer Umfrage dem Berliner Straßencheck
+      teil!
+      <br />
+      Sag uns, wie die Berliner Straßen sicher für alle werden können?
+    </>
+  ),
   button: 'Worum geht es hier genau?',
   reportsButton: 'Jetzt Radbügel melden',
-  mapButton: 'Gehe zur Planungskarte'
+  mapButton: 'Gehe zur Planungskarte',
+  katasterButton: 'Umfrage beginnen'
 };
 
 export const errorLabels = {
