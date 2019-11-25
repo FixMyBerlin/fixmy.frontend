@@ -51,14 +51,14 @@ const OptionInput = ({ option, checked, value, onChange }) => {
   );
 };
 
-export default ({ title, options, currentValue, handleChange, next }) => {
+export default ({ title, options, currentValue, handleChange, page, next }) => {
   const [isLoading, onClick] = useHandlerTimeout(next);
 
   return (
     <Flex flexDirection="column" css={{ flexGrow: 1 }}>
       <QuestionTitle>{title}</QuestionTitle>
       {options.map((option) => (
-        <MultiChoice key={`multichoice_${option.name}`}>
+        <MultiChoice key={`multichoice_${page}_${option.name}`}>
           <CheckboxWrapper>
             <label htmlFor={option.name}>
               <Checkbox
