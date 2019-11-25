@@ -15,6 +15,7 @@ export default [
     type: 'multi_choice',
     name: 'berlinTraffic',
     title: 'Was nervt Sie am meisten im Straßenverkehr?',
+    randomize: true,
     options: [
       {
         label: 'Hohes Verkehrsaufkommen und Staus',
@@ -74,6 +75,7 @@ export default [
     name: 'responsible',
     title:
       'Wer trägt die größte Verantwortung für die Probleme im Berliner Verkehr?',
+    randomize: true,
     options: [
       {
         label: 'Die Politik',
@@ -259,6 +261,7 @@ export default [
     name: 'bicycleUse',
     title:
       'Wie lange dauert der Weg, den Sie am häufigsten mit dem Fahrrad zurücklegen (ohne Rückweg)?',
+    randomize: true,
     options: [
       {
         label: '10 Minuten',
@@ -288,6 +291,7 @@ export default [
     title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
     info:
       'Die folgenden Fragen sind für unsere Forschung sehr wichtig. Sie handeln von all jenen Faktoren, die Sie möglicherweise motivieren Fahrrad zu fahren - oder Sie davon abhalten.',
+    randomize: true,
     radiogroups: [
       {
         label: '„Ich fahre Fahrrad, weil es mir Spaß macht.“',
@@ -340,6 +344,7 @@ export default [
     name: 'bikeReasons',
     title:
       'Aus welchen Gründen können, dürfen oder wollen Sie nicht häufiger Fahrrad fahren?',
+    randomize: true,
     options: [
       {
         label: 'Ich kann nicht Fahrrad fahren (fehlende Fertigkeit)',

@@ -6,7 +6,7 @@ import { media } from '~/styles/utils';
 import Loader from '~/components/Loader';
 import Flex from '~/components/Flex';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
-import { getSceneImageSrc } from '~/pages/KatasterKI/scene-utils';
+import { getSceneImageSrc } from '~/pages/KatasterKI/survey';
 import loadingImage from '~/images/strassencheck/scene-loading.jpg';
 
 const RatingTitle = styled(QuestionTitle)`
