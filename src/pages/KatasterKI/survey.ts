@@ -116,8 +116,16 @@ const scenesConfig = (
 
   const feedbackScreen = {
     type: 'feedback',
-    title: null,
+    title:
+      'Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage informieren.',
     name: 'feedback'
+  };
+
+  const emailScreen = {
+    type: 'email',
+    title:
+      'Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage informieren.',
+    name: 'email'
   };
 
   const titleByPerspective = {
@@ -142,7 +150,7 @@ const scenesConfig = (
   if (sceneGroupCounter % 2 === 1) {
     sectionConfig.push(perspectiveChangeScreen);
   } else {
-    sectionConfig.push(feedbackScreen, perspectiveChangeScreen);
+    sectionConfig.push(feedbackScreen, emailScreen, perspectiveChangeScreen);
   }
 
   return sectionConfig;

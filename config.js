@@ -307,6 +307,7 @@ const config = {
     projectId: '01',
     // this is the article link for the landing page and feedback page
     tspArticleLink: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
+    tspNewsletterLink: 'https://www.tagesspiegel.de/newsletter/',
     shareUrl: 'https://interaktiv.tagesspiegel.de/strassencheck/',
     shareTitle: 'Umfrage Share Title',
     shareText:
