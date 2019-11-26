@@ -67,18 +67,32 @@ const Gradient = styled.div`
   );
 `;
 
-// Define the path for the landing page to be able to check whether we
-// are currently on it. The path is prepended with the BASE_NAME env var, which
-// ends with a "/" that is then duplicated at the beinning of the configured
-// landing page path, which is why it is remove with slice.
-const LANDING_PATH =
-  process.env.BASE_NAME.slice(0, -1) + config.routes.katasterKI.landing;
+/** Define the path for the landing page to be able to check whether it's active
+ *
+ * The path is prepended with the BASE_NAME env var, which
+ * ends with a "/" that is then duplicated at the beinning of the configured
+ * landing page path, which is why it is remove with slice.
+ *
+ * @param {string} path current window.location.pathname
+ */
+const isLandingPage = (path) => {
+  const LANDING_PATH =
+    process.env.BASE_NAME.slice(0, -1) + config.routes.katasterKI.landing;
+  const isLanding = matchPath(path, { path: LANDING_PATH, exact: true });
 
-const KatasterKI = () => {
-  const isLanding = matchPath(window.location.pathname, {
-    path: LANDING_PATH,
+  const LANDING_PATH_NATIONAL =
+    process.env.BASE_NAME.slice(0, -1) +
+    config.routes.katasterKI.landingNational;
+  const isLandingNational = matchPath(path, {
+    path: LANDING_PATH_NATIONAL,
     exact: true
   });
+
+  return isLanding || isLandingNational;
+};
+
+const KatasterKI = () => {
+  const isLanding = isLandingPage(window.location.pathname);
 
   return (
     <BgWrapper isLanding={isLanding}>
@@ -90,6 +104,12 @@ const KatasterKI = () => {
             <Route
               exact
               path={config.routes.katasterKI.landing}
+              component={Landing}
+            />
+
+            <Route
+              exact
+              path={config.routes.katasterKI.landingNational}
               component={Landing}
             />
 

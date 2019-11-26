@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, matchPath } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import queryString from 'query-string';
@@ -13,10 +13,16 @@ import TOCCheckbox from '~/pages/KatasterKI/components/TOCCheckbox';
 import TspLogo from '~/images/strassencheck/tsp-logo.svg';
 import fixMyLogoSrc from '~/images/logofmb@2x.png';
 
-const labels = {
+const labelsBerlin = {
   headline: 'Der Berliner Straßencheck',
   teaser:
     'Wie können die Berliner Straßen sicher für alle werden? Sagen Sie es uns!',
+  calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de'
+};
+
+const labelsNational = {
+  headline: 'Der große Straßencheck',
+  teaser: 'Wie können die Straßen sicher für alle werden? Sagen Sie es uns!',
   calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de'
 };
 
@@ -107,7 +113,7 @@ const CallToActionLink = styled.a`
   }
 `;
 
-const CallToAction = () => (
+const CallToAction = ({ labels }) => (
   <CallToActionWrapper>
     <CallToActionLink target="_blank" href={config.katasterKI.tspArticleLink}>
       {labels.calltoaction}
@@ -133,6 +139,9 @@ const checkEmbeddedParam = (value) => {
   return false;
 };
 
+const LANDING_PATH_NATIONAL =
+  process.env.BASE_NAME.slice(0, -1) + config.routes.katasterKI.landingNational;
+
 const Landing = ({ isTosAccepted, location }) => {
   if (checkEmbeddedParam(location.search)) {
     return <Redirect to={`${config.routes.katasterKI.profileBase}/1`} />;
@@ -140,6 +149,13 @@ const Landing = ({ isTosAccepted, location }) => {
 
   const isMobile = isSmallScreen();
   const checkBoxLabelColor = isMobile ? config.colors.lightgrey : 'white';
+
+  const isNationalVersion = matchPath(window.location.pathname, {
+    path: LANDING_PATH_NATIONAL,
+    exact: true
+  });
+
+  const labels = isNationalVersion ? labelsNational : labelsBerlin;
 
   const renderMobileMarkup = () => (
     <>
@@ -151,7 +167,7 @@ const Landing = ({ isTosAccepted, location }) => {
           onChange={onAcceptTOS}
           labelColor={checkBoxLabelColor}
         />
-        <CallToAction />
+        <CallToAction labels={labels} />
       </BottomContainer>
     </>
   );
@@ -168,7 +184,7 @@ const Landing = ({ isTosAccepted, location }) => {
         />
       </CenterContainer>
       <BottomContainer>
-        <CallToAction />
+        <CallToAction labels={labels} />
       </BottomContainer>
     </>
   );

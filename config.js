@@ -149,6 +149,7 @@ const config = {
     },
     katasterKI: {
       landing: process.env.KATASTER_PATH || '/',
+      landingNational: '/de',
       profileBase: `${process.env.KATASTER_PATH}/profil`,
       profile: `${process.env.KATASTER_PATH}/profil/:page`,
       scenesBase: `${process.env.KATASTER_PATH}/szenen`,
