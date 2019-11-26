@@ -20,7 +20,7 @@ const StyledButton = styled.button`
   font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
   font-size: 16px;
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
-  font-weight: 700;
+  font-weight: 500;
   box-shadow: ${(props) => (props.disabled ? 'none' : boxShadow)};
   width: 100%;
   max-width: 500px;

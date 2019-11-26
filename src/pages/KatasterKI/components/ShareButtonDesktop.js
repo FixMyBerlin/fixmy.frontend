@@ -27,7 +27,7 @@ const ShareButtonDesktop = styled.div`
     padding: 16px 25px;
     width: 100%;
     font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 16px;
     border: none;
     outline: none;

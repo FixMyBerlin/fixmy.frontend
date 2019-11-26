@@ -100,11 +100,11 @@ const CallToActionWrapper = styled(Flex)`
 
 const CallToActionLink = styled.a`
   color: white;
-  font-weight: 700;
   font-size: 16px;
   margin: 20px 0 10px 0;
   text-align: center;
   font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
+  font-weight: 500;
 
   &:hover,
   &:active,
