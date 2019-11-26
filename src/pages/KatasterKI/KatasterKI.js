@@ -67,9 +67,16 @@ const Gradient = styled.div`
   );
 `;
 
+// Define the path for the landing page to be able to check whether we
+// are currently on it. The path is prepended with the BASE_NAME env var, which
+// ends with a "/" that is then duplicated at the beinning of the configured
+// landing page path, which is why it is remove with slice.
+const LANDING_PATH =
+  process.env.BASE_NAME.slice(0, -1) + config.routes.katasterKI.landing;
+
 const KatasterKI = () => {
   const isLanding = matchPath(window.location.pathname, {
-    path: config.routes.katasterKI.landing,
+    path: LANDING_PATH,
     exact: true
   });
 
