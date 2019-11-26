@@ -85,11 +85,8 @@ export const marshallProfile = (
   const isComplete = [
     profile.ageGroup,
     profile.berlinTraffic,
-    profile.bicycleUse,
-    profile.bikeReasons,
     profile.gender,
     profile.hasChildren,
-    profile.motivationalFactors,
     profile.zipcode,
     profile.vehiclesOwned,
     profile.whyBiking,
