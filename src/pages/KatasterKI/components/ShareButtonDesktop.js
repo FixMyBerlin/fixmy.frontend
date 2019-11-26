@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Adapted from https://sharingbuttons.io/
+// (MIT licensed)
+
 const boxShadow = '0 0 10px 0 rgba(0, 0, 0, 0.2)';
 const boxShadowHover = '0 0 2px 0 rgba(0, 0, 0, 0.2)';
 
