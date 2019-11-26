@@ -127,10 +127,10 @@ const StyledSlider = styled(Slider)`
 
   .rc-slider-mark-text {
     color: ${config.colors.darkbg};
-    font-weight: 400;
     font-size: 14px;
     user-select: none;
-    font-family: FranklinGothic-Med,sans-serif;
+    font-family: 'Franklin Gothic FS', sans-serif;
+    font-weight: 500;
 
     ${(props) =>
       props.value === 0 || props.value === props.max

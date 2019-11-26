@@ -7,7 +7,6 @@ import history from '~/history';
 import Landing from './pages/Landing';
 import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
-import GlobalStyle from './styles/Global';
 import AppGlobalStyle from '~/styles/Global';
 import { ScrollToTop } from './utils';
 import mapBgSrc from '~/images/strassencheck/map-bg.jpg';
@@ -41,7 +40,7 @@ const ContentWrapper = styled.div`
   background: ${(props) => (props.isLanding ? 'transparent' : 'white')};
   flex-grow: 1;
   width: 100%;
-  font-family: FranklinGothic-Book, sans-serif;
+  font-family: 'Franklin Gothic FS' sans-serif;
   z-index: 1;
 
   img {
@@ -75,7 +74,6 @@ const KatasterKI = () => {
 
   return (
     <BgWrapper isLanding={isLanding}>
-      <GlobalStyle />
       <AppGlobalStyle />
       <ScrollToTop />
       <ContentWrapper isLanding={isLanding}>

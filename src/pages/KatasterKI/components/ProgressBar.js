@@ -26,7 +26,8 @@ const ProgressBarLabel = styled.div`
   color: ${config.colors.midgrey};
   margin-bottom: 8px;
   font-size: 14px;
-  font-family: FranklinGothic-Med, sans-serif;
+  font-family: 'Franklin Gothic FS', sans-serif;
+  font-weight: 500;
 `;
 
 const ProgressBar = ({ total, current }) => {
