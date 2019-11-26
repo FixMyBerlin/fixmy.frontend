@@ -9,7 +9,7 @@ import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 export default [
   {
     type: 'info',
-    title: 'Zunächst drei allgemeine Fragen zum Verkehr in Berlin'
+    title: 'Zunächst drei allgemeine Fragen zum Verkehr'
   },
   {
     type: 'multi_choice',
@@ -74,7 +74,7 @@ export default [
     type: 'single_choice',
     name: 'responsible',
     title:
-      'Wer trägt die größte Verantwortung für die Probleme im Berliner Verkehr?',
+      'Wer trägt die größte Verantwortung für die Probleme im Verkehr?',
     randomize: true,
     options: [
       {
