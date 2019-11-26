@@ -40,7 +40,7 @@ const ContentWrapper = styled.div`
   background: ${(props) => (props.isLanding ? 'transparent' : 'white')};
   flex-grow: 1;
   width: 100%;
-  font-family: 'Franklin Gothic FS' sans-serif;
+  font-family: 'Franklin Gothic FS', sans-serif;
   z-index: 1;
 
   img {
