@@ -19,3 +19,4 @@ localtest
 .vscode
 .idea/
 /coverage/
+public/lab/assets/fonts/franklin_gothic_fs*
