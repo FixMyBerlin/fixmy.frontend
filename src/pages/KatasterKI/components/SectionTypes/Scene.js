@@ -58,11 +58,15 @@ const finishMeasurement = (sceneID) => {
 
 const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
   const [enqueuedRating, setEnqueuedRating] = useState(null);
-  const [imageSrc, setImageSrc] = useState(loadingImage);
+  const [showLoadingImage, setShowLoadingImage] = useState(null);
 
   useEffect(() => {
-    setImageSrc(loadingImage);
+    setShowLoadingImage(true);
   }, [name]);
+
+  if (showLoadingImage === null) {
+    return null;
+  }
 
   const onClick = (option) => {
     if (enqueuedRating != null) {
@@ -86,17 +90,29 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
 
   const onImageLoad = () => {
     startMeasurement();
-    setImageSrc(getSceneImageSrc(name));
+  };
+
+  const onLoadingImageLoad = () => {
+    setShowLoadingImage(false);
   };
 
   return (
     <>
-      <img
-        src={imageSrc}
-        alt={title}
-        onLoad={onImageLoad}
-        onError={onImageLoad}
-      />
+      {showLoadingImage ? (
+        <img
+          src={loadingImage}
+          alt="Lade Bild"
+          onLoad={onLoadingImageLoad}
+          onError={onLoadingImageLoad}
+        />
+      ) : (
+        <img
+          src={getSceneImageSrc(name)}
+          alt={title}
+          onLoad={onImageLoad}
+          onError={onImageLoad}
+        />
+      )}
       <RatingTitle>{title}</RatingTitle>
       <Flex>
         {options.map((option, index) => {
