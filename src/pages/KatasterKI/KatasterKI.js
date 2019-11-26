@@ -41,6 +41,7 @@ const ContentWrapper = styled.div`
   flex-grow: 1;
   width: 100%;
   font-family: 'Franklin Gothic FS', sans-serif;
+  font-weight: 400;
   z-index: 1;
 
   img {
