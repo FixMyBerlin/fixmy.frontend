@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
-import history from '~/history';
 import { media } from '~/styles/utils';
 import { numberFormat } from '~/utils/utils';
 import Flex from '~/components/Flex';
@@ -14,6 +13,7 @@ import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import ShareButton from '~/pages/KatasterKI/components/ShareButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import ProgressVis from '~/pages/KatasterKI/components/ProgressVis';
+import ShareButtonDesktop from '../ShareButtonDesktop';
 
 const getTitle = (count, max) => {
   return `Wir haben bereits ${count} Bewertungen bekommen. Helfen Sie mit, dass wir auf ${max} kommen.`;
@@ -81,8 +81,8 @@ const Feedback = ({
       <FeedbackWrapper>
         <FeedbackParagraph>
           Sie haben bereits <strong>{ratingsCounter} Situationen</strong>{' '}
-          bewertet. Je mehr Bewertungen die Umfrage erhält, umso aussagekräftiger
-          sind die Ergebnisse.
+          bewertet. Je mehr Bewertungen die Umfrage erhält, umso
+          aussagekräftiger sind die Ergebnisse.
         </FeedbackParagraph>
 
         <Flex
@@ -91,6 +91,8 @@ const Feedback = ({
           flexDirection="column"
         >
           <Button onClick={next}>Weiter bewerten</Button>
+
+          <ShareButtonDesktop />
           <ShareButton style={{ marginTop: 20 }} />
           {isEmbedded && (
             <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>

@@ -19,6 +19,7 @@ import {
 import { Answer, Section, RequestState } from '../types';
 import Survey from '~/pages/KatasterKI/survey';
 import PerspectiveChange from '../components/SectionTypes/PerspectiveChange';
+import Email from '../components/SectionTypes/Email';
 
 const sectionTypes = {
   info: Info,
@@ -26,7 +27,8 @@ const sectionTypes = {
   single_choice: SingleChoice,
   scene: Scene,
   perspective_change: PerspectiveChange,
-  feedback: Feedback
+  feedback: Feedback,
+  email: Email
 };
 
 const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
@@ -107,6 +109,7 @@ const Scenes = ({
 
   const next = () => {
     const isLastSection = page === sectionConfig.length - 1;
+
     if (isLastSection) {
       history.push(`${config.routes.katasterKI.scenesBase}/1`);
     } else {

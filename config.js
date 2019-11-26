@@ -156,7 +156,8 @@ const config = {
       scenes: `${process.env.KATASTER_PATH}/szenen/:page`,
       share: `${process.env.KATASTER_PATH}/teilen`,
       feedback: `${process.env.KATASTER_PATH}/auswertung`,
-      iframe: `${process.env.KATASTER_PATH}/iFrame-test`
+      iframe: `${process.env.KATASTER_PATH}/iFrame-test`,
+      email: `${process.env.KATASTER_PATH}/email`
     },
     signup: '/registrieren',
     login: '/anmelden',
@@ -307,6 +308,7 @@ const config = {
     projectId: '01',
     // this is the article link for the landing page and feedback page
     tspArticleLink: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
+    tspNewsletterLink: 'https://www.tagesspiegel.de/newsletter/',
     shareUrl: 'https://interaktiv.tagesspiegel.de/strassencheck/',
     shareTitle: 'Umfrage Share Title',
     shareText:

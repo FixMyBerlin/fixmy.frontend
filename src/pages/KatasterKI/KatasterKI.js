@@ -125,12 +125,6 @@ const KatasterKI = () => {
               component={Scenes}
             />
 
-            {/* <Route
-              exact
-              path={config.routes.katasterKI.email}
-              component={Email}
-            /> */}
-
             {/* Fallback: redirect to landing page */}
             <Route
               render={() => <Redirect to={config.routes.katasterKI.landing} />}
