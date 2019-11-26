@@ -17,8 +17,8 @@ const StyledButton = styled.button`
   text-decoration: none;
   color: ${(props) =>
     props.disabled ? config.colors.midgrey : config.colors.black};
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
+  font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
+  font-size: 16px;
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
   font-weight: 700;
   box-shadow: ${(props) => (props.disabled ? 'none' : boxShadow)};
