@@ -129,7 +129,7 @@ const StyledSlider = styled(Slider)`
     color: ${config.colors.darkbg};
     font-size: 14px;
     user-select: none;
-    font-family: 'Franklin Gothic FS', sans-serif;
+    font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
     font-weight: 500;
 
     ${(props) =>

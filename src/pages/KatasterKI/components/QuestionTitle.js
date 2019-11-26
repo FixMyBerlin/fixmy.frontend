@@ -11,7 +11,7 @@ const HeadlineWrapper = styled.div`
     font-size: 26px;
     line-height: 1.3;
     margin: 5px 0;
-    font-family: 'Franklin Gothic FS', sans-serif;
+    font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
     font-weight: 500;
   }
 

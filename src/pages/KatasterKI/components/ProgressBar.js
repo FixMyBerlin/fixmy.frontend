@@ -26,7 +26,7 @@ const ProgressBarLabel = styled.div`
   color: ${config.colors.midgrey};
   margin-bottom: 8px;
   font-size: 14px;
-  font-family: 'Franklin Gothic FS', sans-serif;
+  font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
   font-weight: 500;
 `;
 

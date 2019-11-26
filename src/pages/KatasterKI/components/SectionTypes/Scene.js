@@ -45,7 +45,7 @@ const RatingButton = styled.button`
 const RatingLabel = styled.div`
   font-size: 14px;
   color: ${config.colors.darkbg};
-  font-family: 'Franklin Gothic FS', sans-serif;
+  font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
   font-weight: 500;
 `;
 
