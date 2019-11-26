@@ -2,6 +2,7 @@ const Path = require('path');
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
@@ -29,7 +30,10 @@ module.exports = merge(common, {
       inject: true,
       siteUrl: Config.devUrl,
       template: Path.resolve(__dirname, INDEX_HTML)
-    })
+    }),
+    new CopyWebpackPlugin([
+      { from: Path.resolve(__dirname, '../public/lab'), to: 'lab' }
+    ])
   ],
   module: {
     rules: [

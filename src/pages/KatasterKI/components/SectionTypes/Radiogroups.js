@@ -25,8 +25,8 @@ const RadioGroupTitle = styled.div`
   font-size: 16px;
   color: ${config.colors.darkbg};
   margin-bottom: 10px;
+  font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
   font-weight: 700;
-  font-family: FranklinGothic-Demi, sans-serif;
 
   ${media.m`
       font-size: 20px;

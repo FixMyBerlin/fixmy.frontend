@@ -75,7 +75,7 @@ const TeaserText = styled.div`
 `;
 
 const Headline = styled.h1`
-  font-family: 'FranklinGothic-Demi', sans-serif;
+  font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
   margin: 16px 0;
   text-align: center;
   color: white;
@@ -98,7 +98,7 @@ const CallToActionLink = styled.a`
   font-size: 16px;
   margin: 20px 0 10px 0;
   text-align: center;
-  font-family: 'FranklinGothic-Demi', sans-serif;
+  font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
 
   &:hover,
   &:active,
