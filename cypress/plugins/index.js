@@ -13,6 +13,7 @@ module.exports = (on, config) => {
       // immediately open dev tools so we can inspect breakpoint halts
       // (when we added a "debugger" statement in our code
       args.push('--auto-open-devtools-for-tabs');
+      // TODO: pause on exception (if there is such cli arg)
       return args;
     }
   });
