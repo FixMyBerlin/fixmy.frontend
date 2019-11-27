@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Router, Route, Switch, Redirect, matchPath } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import ReactPiwik from 'react-piwik';
@@ -55,12 +55,6 @@ const ContentWrapper = styled.div`
   `}
 `;
 
-export const piwik = new ReactPiwik({
-  url: 'fixmyberlin.de/stats',
-  siteId: 3,
-  trackErrors: true
-});
-
 const Gradient = styled.div`
   position: absolute;
   bottom: 0;
@@ -73,6 +67,17 @@ const Gradient = styled.div`
     rgba(0, 0, 0, 0.4) 100%
   );
 `;
+
+const piwik = new ReactPiwik({
+  url: 'fixmyberlin.de/stats',
+  siteId: config.debug
+    ? config.piwik.siteId.katasterTesting
+    : config.piwik.siteId.kataster,
+  trackErrors: true
+});
+
+// track the initial pageview
+ReactPiwik.push(['trackPageView']);
 
 /** Define the path for the landing page to be able to check whether it's active
  *
@@ -100,10 +105,6 @@ const isLandingPage = (path) => {
 
 const KatasterKI = () => {
   const isLanding = isLandingPage(window.location.pathname);
-
-  useEffect(() => {
-    document.title = 'Der Straßencheck für Berlin';
-  }, [props.location.pathname]);
 
   return (
     <BgWrapper isLanding={isLanding}>
