@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, matchPath } from 'react-router-dom';
+import { Redirect, Link, matchPath } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import queryString from 'query-string';
@@ -8,10 +8,11 @@ import { media, isSmallScreen } from '~/styles/utils';
 import Store from '~/store';
 import { setTOSAccepted, setEmbedded } from '../state';
 import Flex from '~/components/Flex';
+import Button from '~/pages/KatasterKI/components/Button';
 
-import TOCCheckbox from '~/pages/KatasterKI/components/TOCCheckbox';
 import TspLogo from '~/images/strassencheck/tsp-logo.svg';
 import fixMyLogoSrc from '~/images/logofmb@2x.png';
+import ExternalLink from '~/pages/KatasterKI/components/ExternalLink';
 
 const labelsBerlin = {
   headline: 'Der Berliner Straßencheck',
@@ -121,6 +122,29 @@ const Headline = styled.h1`
   `}
 `;
 
+const TOCWrapper = styled.div`
+  margin: 15px 0 0 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
+
+const TOCText = styled.div`
+  width: 100%;
+  max-width: 500px;
+  color: white;
+  font-size: 14px;
+  margin-top: 15px;
+  font-family: FranklinGothicFS-Med, sans-serif;
+
+  a,
+  a:visited,
+  a:focus,
+  a:active {
+    color: white;
+  }
+`;
+
 const CallToActionWrapper = styled(Flex)`
   align-items: center;
   justify-content: center;
@@ -149,7 +173,24 @@ const CallToAction = ({ labels }) => (
   </CallToActionWrapper>
 );
 
-const onAcceptTOS = (ev) => Store.dispatch(setTOSAccepted(ev.target.checked));
+const TOC = () => (
+  <TOCWrapper>
+    <Button as={Link} to={`${config.routes.katasterKI.profileBase}/1`}>
+      Umfrage beginnen
+    </Button>
+    <TOCText>
+      Die Umfrage wird von FixMyBerlin durchgeführt. Ergebnisse werden
+      ausschließlich anonymisiert gespeichert. Zur{' '}
+      <ExternalLink
+        href="https://fixmyberlin.de/datenschutz"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Datenschutzerklärung
+      </ExternalLink>
+    </TOCText>
+  </TOCWrapper>
+);
 
 /**
  * Check whether an `embedded` query parameter is set and enable embedded mode
@@ -170,13 +211,12 @@ const checkEmbeddedParam = (value) => {
 const LANDING_PATH_NATIONAL =
   process.env.BASE_NAME.slice(0, -1) + config.routes.katasterKI.landingNational;
 
-const Landing = ({ isTosAccepted, location }) => {
+const Landing = ({ location }) => {
   if (checkEmbeddedParam(location.search)) {
     return <Redirect to={`${config.routes.katasterKI.profileBase}/1`} />;
   }
 
   const isMobile = isSmallScreen();
-  const checkBoxLabelColor = isMobile ? config.colors.lightgrey : 'white';
 
   const isNationalVersion = matchPath(window.location.pathname, {
     path: LANDING_PATH_NATIONAL,
@@ -190,11 +230,7 @@ const Landing = ({ isTosAccepted, location }) => {
       <Headline>{labels.headline}</Headline>
       <BottomContainer>
         <TeaserText>{labels.teaser}</TeaserText>
-        <TOCCheckbox
-          checked={isTosAccepted}
-          onChange={onAcceptTOS}
-          labelColor={checkBoxLabelColor}
-        />
+        <TOC />
         <CallToAction labels={labels} />
       </BottomContainer>
     </>
@@ -205,11 +241,7 @@ const Landing = ({ isTosAccepted, location }) => {
       <CenterContainer>
         <Headline>{labels.headline}</Headline>
         <TeaserText>{labels.teaser}</TeaserText>
-        <TOCCheckbox
-          checked={isTosAccepted}
-          onChange={onAcceptTOS}
-          labelColor={checkBoxLabelColor}
-        />
+        <TOC />
       </CenterContainer>
       <BottomContainer>
         <CallToAction labels={labels} />
