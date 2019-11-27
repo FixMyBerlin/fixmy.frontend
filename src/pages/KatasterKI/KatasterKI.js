@@ -7,6 +7,7 @@ import history from '~/history';
 import Landing from './pages/Landing';
 import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
+import Email from './components/SectionTypes/EmailCheckboxes';
 import AppGlobalStyle from '~/styles/Global';
 import { ScrollToTop } from './utils';
 import mapBgSrc from '~/images/strassencheck/map-bg.jpg';
@@ -124,6 +125,12 @@ const KatasterKI = () => {
               exact
               path={config.routes.katasterKI.scenes}
               component={Scenes}
+            />
+
+            <Route
+              exact
+              path={config.routes.katasterKI.email}
+              component={Email}
             />
 
             {/* Fallback: redirect to landing page */}
