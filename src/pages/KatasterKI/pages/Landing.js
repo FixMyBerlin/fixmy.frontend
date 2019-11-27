@@ -1,9 +1,9 @@
 import React from 'react';
-import { Redirect, Link, matchPath } from 'react-router-dom';
+import { Link, matchPath, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import queryString from 'query-string';
 
-import { media, isSmallScreen } from '~/styles/utils';
+import { isSmallScreen, media } from '~/styles/utils';
 import Store from '~/store';
 import { setEmbedded } from '../state';
 import Flex from '~/components/Flex';
@@ -174,7 +174,11 @@ const CallToAction = ({ labels }) => (
 
 const TOC = () => (
   <TOCWrapper>
-    <Button as={Link} to={`${config.routes.katasterKI.profileBase}/1`}>
+    <Button
+      as={Link}
+      to={`${config.routes.katasterKI.profileBase}/1`}
+      data-cy="kat-start-survey-btn"
+    >
       Umfrage beginnen
     </Button>
     <TOCText>
