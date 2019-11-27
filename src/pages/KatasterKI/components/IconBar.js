@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import PedelecIcon from '~/images/kataster-icons/icon-transportation-1.svg';
-import BikeIcon from '~/images/kataster-icons/icon-transportation-2.svg';
-import PublicIcon from '~/images/kataster-icons/icon-transportation-3.svg';
-import CarIcon from '~/images/kataster-icons/icon-transportation-4.svg';
+import PedelecIcon from '~/images/strassencheck/icons/icon-transportation-1.svg';
+import BikeIcon from '~/images/strassencheck/icons/icon-transportation-2.svg';
+import PublicIcon from '~/images/strassencheck/icons/icon-transportation-3.svg';
+import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 
 const IconBar = styled.div`
   display: flex;

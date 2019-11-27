@@ -1,13 +1,18 @@
+const Path = require('path');
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
 const Config = require('../config.js');
+
+const INDEX_HTML =
+  process.env.KATASTER_PATH != null
+    ? '../src/pages/KatasterKI/index_tsp.html'
+    : '../src/index.html';
 
 module.exports = merge(common, {
   mode: 'production',
@@ -23,21 +28,17 @@ module.exports = merge(common, {
       chunks: 'all',
       name: false
     },
-    minimizer: [
-      new TerserPlugin()
-    ],
+    minimizer: [new TerserPlugin()]
   },
   plugins: [
-    new Webpack.EnvironmentPlugin(['NODE_ENV', 'CONFIG_ENV']),
     new HtmlWebpackPlugin({
       inject: true,
       siteUrl: Config.prodUrl,
-      template: './src/index.html',
+      template: Path.resolve(__dirname, INDEX_HTML),
       minify: false
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
-    new Webpack.optimize.ModuleConcatenationPlugin(),
-    // new BundleAnalyzerPlugin()
+    new Webpack.optimize.ModuleConcatenationPlugin()
   ],
   module: {
     rules: [
@@ -51,9 +52,7 @@ module.exports = merge(common, {
             options: {
               sourceMap: true,
               ident: 'postcss',
-              plugins: () => [
-                Autoprefixer
-              ]
+              plugins: () => [Autoprefixer]
             }
           }
         ]

@@ -2,16 +2,23 @@
   "name": "fixmyberlin-frontend",
   "version": "1.0.0",
   "description": "A Mobility Platform for Berlin",
+  "config": {
+    "katasterStandaloneBase": "/strassencheck/",
+    "katasterStandaloneEntry": "../src/pages/KatasterKI/entry.js",
+    "katasterStandalonePath": ""
+  },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
+    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
     "deploy": "npm run build && netlify deploy",
-    "start": "cross-env NODE_ENV=development CONFIG_ENV=staging webpack-dev-server --config webpack/webpack.config.dev.js",
-    "dev": "cross-env NODE_ENV=development CONFIG_ENV=dev webpack-dev-server --config webpack/webpack.config.dev.js",
+    "start": "cross-env CONFIG_ENV=staging webpack-dev-server --config webpack/webpack.config.dev.js",
+    "dev": "webpack-dev-server --config webpack/webpack.config.dev.js",
     "lint": "eslint src",
     "test": "cross-env CONFIG_ENV=dev jest --verbose --config=jest/jest.config.js",
     "test:watch": "npm run test  -- --watch",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=**/state/*",
-    "generate-kataster-schema": "./src/pages/KatasterKI/scheme/generate.sh"
+    "generate-kataster-schema": "./src/pages/KatasterKI/scheme/generate.sh",
+    "build:strassencheck": "cross-env CONFIG_ENV=production BASE_NAME=$npm_package_config_katasterStandaloneBase KATASTER_PATH=$npm_package_config_katasterStandalonePath ENTRY_POINT=$npm_package_config_katasterStandaloneEntry npm run build",
+    "start:strassencheck": "cross-env CONFIG_ENV=staging KATASTER_PATH=$npm_package_config_katasterStandalonePath ENTRY_POINT=$npm_package_config_katasterStandaloneEntry npm start"
   },
   "repository": {
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
@@ -35,7 +42,7 @@
     "@types/redux-mock-store": "^1.0.1",
     "@types/styled-components": "^4.4.0",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
-    "@typescript-eslint/parser": "^2.7.0",
+    "@typescript-eslint/parser": "^2.8.0",
     "autoprefixer": "^9.6.5",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.8.0",
@@ -77,7 +84,6 @@
     "typescript": "^3.6.3",
     "typescript-json-schema": "^0.40.0",
     "webpack": "^4.41.2",
-    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2"
@@ -107,6 +113,7 @@
     "promise": "^8.0.3",
     "prop-types": "^15.7.2",
     "qs": "^6.9.0",
+    "query-string": "^6.9.0",
     "rc-slider": "^8.7.1",
     "rc-tooltip": "^3.7.3",
     "react": "^16.10.2",

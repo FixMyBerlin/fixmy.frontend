@@ -25,7 +25,12 @@ const RadioGroupTitle = styled.div`
   font-size: 16px;
   color: ${config.colors.darkbg};
   margin-bottom: 10px;
+  font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
   font-weight: 700;
+
+  ${media.m`
+      font-size: 20px;
+  `}
 `;
 
 const RadioGroup = styled.div`
@@ -65,6 +70,7 @@ export default ({
   info,
   radiogroups,
   currentValue,
+  page,
   handleChange,
   next
 }) => {
@@ -76,7 +82,7 @@ export default ({
       <QuestionTitle>{title}</QuestionTitle>
       {radiogroups.map((radiogroup, index) => (
         <RadioGroupWrapper
-          key={`radiogroup_${radiogroup.name}`}
+          key={`radiogroup_${page}_${radiogroup.name}`}
           isLast={index === radiogroups.length - 1}
         >
           <RadioGroupTitle>{radiogroup.label}</RadioGroupTitle>
@@ -122,7 +128,7 @@ export default ({
       <Flex css={{ flexGrow: 1 }} justifyContent="center">
         <Button
           onClick={onClick}
-          css={{ alignSelf: 'flex-end' }}
+          css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           isLoading={isLoading}
         >
           Weiter

@@ -42,6 +42,10 @@ export type MultiChoice = {
   [name: string]: boolean | string;
 };
 
+export type BooleanMultiChoice = {
+  [name: string]: boolean;
+};
+
 type RadioGroups = {
   [name: string]: number;
 };
@@ -53,7 +57,7 @@ export interface State {
   isTosAccepted: boolean;
   profile: {
     ageGroup?: SingleChoice<number>;
-    berlinTraffic?: SingleChoice<number>;
+    berlinTraffic?: BooleanMultiChoice;
     bicycleUse?: SingleChoice<number>;
     bikeReasons?: MultiChoice;
     district?: string;
@@ -165,7 +169,16 @@ export const testingDefaultState: State = {
   },
   profile: {
     ageGroup: 1,
-    berlinTraffic: 3,
+    berlinTraffic: {
+      a: true,
+      b: true,
+      c: false,
+      d: false,
+      e: false,
+      f: false,
+      g: false,
+      h: false
+    },
     bicycleUse: 0,
     bikeReasons: {},
     district: 'Mitte',
@@ -400,6 +413,9 @@ export function submitProfileError(errorMessage: string): Action {
   return { type: SUBMIT_PROFILE_ERROR, error: errorMessage };
 }
 export function submitProfileComplete(): Action {
+  // Once the profile has been submitted, no information is lost when
+  // users navigate away from the page
+  toggleNavigationWarning(false);
   return { type: SUBMIT_PROFILE_COMPLETE };
 }
 

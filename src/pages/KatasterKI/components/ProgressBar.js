@@ -2,13 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import { isSmallScreen } from '~/styles/utils';
+import { isSmallScreen, media } from '~/styles/utils';
 
 const ProgressWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1em;
+  margin-bottom: 15px;
+
+  ${media.m`
+    margin-bottom: 25px;
+  `}
 `;
 
 const ProgressStep = styled.div`
@@ -22,6 +26,8 @@ const ProgressBarLabel = styled.div`
   color: ${config.colors.midgrey};
   margin-bottom: 8px;
   font-size: 14px;
+  font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
+  font-weight: 500;
 `;
 
 const ProgressBar = ({ total, current }) => {

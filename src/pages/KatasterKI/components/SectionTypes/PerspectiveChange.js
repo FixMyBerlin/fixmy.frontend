@@ -10,10 +10,16 @@ const SingleChoiceWrapper = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+
+  button {
+    margin-bottom: 28px;
+  }
+
   ${media.m`
     button {
       margin-left: auto;
-      margin-right: auto
+      margin-right: auto;
+      margin-bottom: 32px;
     }
   `};
 `;

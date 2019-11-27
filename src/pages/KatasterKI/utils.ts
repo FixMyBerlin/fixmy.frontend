@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import uuidv4 from 'uuid/v4';
 
 import {
@@ -91,4 +93,31 @@ export const getFeedbackThreshold = (totalRatings: number): number => {
   const step = totalRatings < 10000 ? 1000.0 : 5000.0;
   const threshold = Math.ceil((totalRatings + 1) / step) * step;
   return Math.round(threshold);
+};
+
+/**
+ * Shuffle an array in place using Fisher-Yates-shuffle
+ *
+ * Taken from https://stackoverflow.com/a/6274381
+ *
+ * @param array array to be shuffled
+ */
+export const shuffle = (a: Array<any>): void => {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+};
+
+/**
+ * Scroll to top on navigation
+ */
+export const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 };

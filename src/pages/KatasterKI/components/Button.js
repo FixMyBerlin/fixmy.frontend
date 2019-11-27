@@ -17,13 +17,13 @@ const StyledButton = styled.button`
   text-decoration: none;
   color: ${(props) =>
     props.disabled ? config.colors.midgrey : config.colors.black};
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
+  font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
+  font-size: 16px;
   cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
-  font-weight: 700;
+  font-weight: 500;
   box-shadow: ${(props) => (props.disabled ? 'none' : boxShadow)};
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   display: block;
   text-align: center;
 

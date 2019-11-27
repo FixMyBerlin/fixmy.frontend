@@ -1,100 +1,204 @@
 import React from 'react';
+import { Redirect, matchPath } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import queryString from 'query-string';
 
+import { media, isSmallScreen } from '~/styles/utils';
 import Store from '~/store';
-import { setTOSAccepted } from '../state';
+import { setTOSAccepted, setEmbedded } from '../state';
 import Flex from '~/components/Flex';
 
-import IconBar from '~/pages/KatasterKI/components/IconBar';
-import IntroImgSrc from '~/images/404-weg-zu-ende.jpg';
 import TOCCheckbox from '~/pages/KatasterKI/components/TOCCheckbox';
+import TspLogo from '~/images/strassencheck/tsp-logo.svg';
+import fixMyLogoSrc from '~/images/logofmb@2x.png';
 
-const IntroScreen = styled.div`
-  background: url(${IntroImgSrc}) no-repeat center center;
-  background-size: cover;
-  padding: 1rem;
+const labelsBerlin = {
+  headline: 'Der Berliner Straßencheck',
+  teaser:
+    'Wie können die Berliner Straßen sicher für alle werden? Sagen Sie es uns!',
+  calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de'
+};
+
+const labelsNational = {
+  headline: 'Der große Straßencheck',
+  teaser: 'Wie können die Straßen sicher für alle werden? Sagen Sie es uns!',
+  calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de'
+};
+
+const Wrapper = styled.div`
+  padding: 10px 16px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 `;
 
-const IntroSubline = styled.div`
+const Header = styled.div`
+  display: flex;
+  font-size: 12px;
   color: white;
-  font-size: 16px;
-  max-width: 650px;
-  width: 100%;
+  flex-direction: column;
+  width: 150px;
   margin: 0 auto;
+  align-items: center;
+  position: relative;
+
+  svg {
+    margin-top: 10px;
+    width: 100%;
+  }
 `;
 
-const IntroBottom = styled.div`
+const FixMyImage = styled.img.attrs({ src: fixMyLogoSrc })`
+  &&& {
+    width: 36px;
+    position: absolute;
+    transform: translate(-100%, 0);
+    left: -10px;
+    top: 10px;
+  }
+`;
+
+const BottomContainer = styled.div`
   max-width: 650px;
   width: 100%;
   margin: auto auto 0 auto;
 `;
 
-const IntroQuestion = styled.div`
+const CenterContainer = styled.div`
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const TeaserText = styled.div`
   text-align: center;
   color: white;
   font-weight: 700;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  font-size: 22px;
 `;
 
-const IntroHeadline = styled.h1`
-  font-family: 'FranklinGothic-Demi', sans-serif;
-  margin: 0.5em 0;
+const Headline = styled.h1`
+  font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
+  margin: 16px 0;
   text-align: center;
   color: white;
+  text-shadow: 0 0 12px rgba(15, 15, 15, 0.7);
+  font-size: 42px;
+
+  ${media.m`
+    font-size: 60px;
+  `}
 `;
 
-const IntroCallToAction = styled.a`
-  border-bottom: 2px solid white;
+const CallToActionWrapper = styled(Flex)`
+  align-items: center;
+  justify-content: center;
+`;
+
+const CallToActionLink = styled.a`
   color: white;
-  font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   margin: 20px 0 10px 0;
-  text-decoration: none;
+  text-align: center;
+  font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
+  font-weight: 500;
 
   &:hover,
   &:active,
   &:visited {
-    text-decoration: none;
     color: white;
   }
 `;
 
+const CallToAction = ({ labels }) => (
+  <CallToActionWrapper>
+    <CallToActionLink target="_blank" href={config.katasterKI.tspArticleLink}>
+      {labels.calltoaction}
+    </CallToActionLink>
+  </CallToActionWrapper>
+);
+
 const onAcceptTOS = (ev) => Store.dispatch(setTOSAccepted(ev.target.checked));
 
-const Landing = ({ isTosAccepted }) => {
+/**
+ * Check whether an `embedded` query parameter is set and enable embedded mode
+ *
+ * If the query parameter is set as in `/?embedded`, the Ts and Ps  are set to be
+ * agreed to and the user is routed directly into the survey.
+ */
+const checkEmbeddedParam = (value) => {
+  const params = queryString.parse(value);
+  if (Object.keys(params).indexOf('embedded') > -1) {
+    Store.dispatch(setTOSAccepted(true));
+    Store.dispatch(setEmbedded(true));
+    return true;
+  }
+  return false;
+};
+
+const LANDING_PATH_NATIONAL =
+  process.env.BASE_NAME.slice(0, -1) + config.routes.katasterKI.landingNational;
+
+const Landing = ({ isTosAccepted, location }) => {
+  if (checkEmbeddedParam(location.search)) {
+    return <Redirect to={`${config.routes.katasterKI.profileBase}/1`} />;
+  }
+
+  const isMobile = isSmallScreen();
+  const checkBoxLabelColor = isMobile ? config.colors.lightgrey : 'white';
+
+  const isNationalVersion = matchPath(window.location.pathname, {
+    path: LANDING_PATH_NATIONAL,
+    exact: true
+  });
+
+  const labels = isNationalVersion ? labelsNational : labelsBerlin;
+
+  const renderMobileMarkup = () => (
+    <>
+      <Headline>{labels.headline}</Headline>
+      <BottomContainer>
+        <TeaserText>{labels.teaser}</TeaserText>
+        <TOCCheckbox
+          checked={isTosAccepted}
+          onChange={onAcceptTOS}
+          labelColor={checkBoxLabelColor}
+        />
+        <CallToAction labels={labels} />
+      </BottomContainer>
+    </>
+  );
+
+  const renderDesktopMarkup = () => (
+    <>
+      <CenterContainer>
+        <Headline>{labels.headline}</Headline>
+        <TeaserText>{labels.teaser}</TeaserText>
+        <TOCCheckbox
+          checked={isTosAccepted}
+          onChange={onAcceptTOS}
+          labelColor={checkBoxLabelColor}
+        />
+      </CenterContainer>
+      <BottomContainer>
+        <CallToAction labels={labels} />
+      </BottomContainer>
+    </>
+  );
+
   return (
     <>
-      <IntroScreen>
-        <IntroHeadline>Der Straßencheck für Berlin</IntroHeadline>
-        <IntroSubline>
-          Eine Umfrage für:
-          <IconBar />
-        </IntroSubline>
-
-        <IntroBottom>
-          <IntroQuestion>
-            Wie können die Berliner Straßen sicher für alle werden? Sagen Sie es
-            uns!
-          </IntroQuestion>
-
-          <TOCCheckbox
-            checked={isTosAccepted}
-            onChange={onAcceptTOS}
-            labelColor="white"
-          />
-          <Flex alignItems="center" justifyContent="center">
-            <IntroCallToAction
-              target="_blank"
-              href={config.katasterKI.tspArticleLink}
-            >
-              Alle Infos und Hintergründe
-            </IntroCallToAction>
-          </Flex>
-        </IntroBottom>
-      </IntroScreen>
+      <Wrapper>
+        <Header>
+          <div>Eine Umfrage von:</div>
+          <TspLogo />
+          <FixMyImage />
+        </Header>
+        {isMobile ? renderMobileMarkup() : renderDesktopMarkup()}
+      </Wrapper>
     </>
   );
 };

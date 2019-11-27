@@ -14,6 +14,7 @@ async function handleSubmitPerspective({
   const endpoint = getEndpointURL('perspective', sessionID, null);
   const fetchResponse = await fetch(endpoint, {
     method: 'POST',
+    mode: 'cors',
     body: JSON.stringify(json),
     headers: {
       ...authHeader,

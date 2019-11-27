@@ -1,50 +1,49 @@
-import PedestrianIcon from '~/images/kataster-icons/icon-transportation-1.svg';
-import BikeIcon from '~/images/kataster-icons/icon-transportation-2.svg';
-import MotorbikeIcon from '~/images/kataster-icons/icon-transportation-5.svg';
-import PublicIcon from '~/images/kataster-icons/icon-transportation-3.svg';
-import CarIcon from '~/images/kataster-icons/icon-transportation-4.svg';
+import React from 'react';
+
+import PedestrianIcon from '~/images/strassencheck/icons/icon-transportation-1.svg';
+import BikeIcon from '~/images/strassencheck/icons/icon-transportation-2.svg';
+import MotorbikeIcon from '~/images/strassencheck/icons/icon-transportation-5.svg';
+import PublicIcon from '~/images/strassencheck/icons/icon-transportation-3.svg';
+import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 
 export default [
   {
     type: 'info',
-    title: 'Zunächst drei allgemeine Fragen zum Verkehr in Berlin:'
+    title: 'Zunächst drei allgemeine Fragen zum Verkehr'
   },
   {
-    type: 'single_choice',
+    type: 'multi_choice',
     name: 'berlinTraffic',
     title: 'Was nervt Sie am meisten im Straßenverkehr?',
+    randomize: true,
     options: [
       {
-        label: 'Baustellen auf der Fahrbahn',
-        value: 0
+        label: 'Hohes Verkehrsaufkommen und Staus',
+        name: 'traffic'
       },
       {
-        label: 'Falschparker',
-        value: 1
+        label: 'Zustand der Straßen / Radwege',
+        name: 'maintenance'
       },
       {
-        label: 'Überhöhte Geschwindigkeit anderer',
-        value: 2
+        label: 'Missachtung der Verkehrsregeln',
+        name: 'rules'
       },
       {
-        label: 'Smartphone-Nutzung anderer im Verkehr',
-        value: 3
+        label: 'Der Lärm',
+        name: 'noise'
       },
       {
-        label: 'Zu dichtes Überholen von Autos und LKW',
-        value: 4
-      },
-      {
-        label: 'Zu viel Verkehr',
-        value: 5
+        label: 'Hohe Zahl der Unfälle',
+        name: 'accidents'
       },
       {
         label: 'Aggressives Verhalten anderer',
-        value: 6
+        name: 'aggression'
       },
       {
-        label: 'Ignorieren der Verkehrsregeln ',
-        value: 7
+        label: 'Starke Luftverschmutzung',
+        name: 'polution'
       }
     ]
   },
@@ -58,7 +57,7 @@ export default [
         value: 0
       },
       {
-        label: 'Ja, ab und an',
+        label: 'Ja, ab und zu',
         value: 1
       },
       {
@@ -75,7 +74,8 @@ export default [
     type: 'single_choice',
     name: 'responsible',
     title:
-      'Wer trägt die größte Verantwortung für die Probleme im Berliner Verkehr?',
+      'Wer trägt die größte Verantwortung für die Probleme im Verkehr?',
+    randomize: true,
     options: [
       {
         label: 'Die Politik',
@@ -101,7 +101,7 @@ export default [
   },
   {
     type: 'info',
-    title: 'Erzählen Sie uns nun etwas zu Ihrer Person: (9 Fragen)'
+    title: 'Erzählen Sie uns nun etwas zu Ihrer Person (9 Fragen)'
   },
   {
     type: 'transportRatings',
@@ -124,7 +124,11 @@ export default [
       {
         icon: PedestrianIcon,
         name: 'pedestrian',
-        label: 'Zu Fuß (länger als 15 min pro Weg)'
+        label: (
+          <>
+            Zu Fuß <span className="light">(länger als 15 min pro Weg)</span>
+          </>
+        )
       },
       {
         icon: BikeIcon,
@@ -224,7 +228,7 @@ export default [
   {
     type: 'multi_choice',
     name: 'vehiclesOwned',
-    title: 'Mir steht folgendes zur Verfügung:',
+    title: 'Mir steht Folgendes zur Verfügung:',
     options: [
       {
         label: 'Pedelec / E-Bike',
@@ -239,7 +243,7 @@ export default [
         name: 'public'
       },
       {
-        label: 'Motorad / Moped',
+        label: 'Motorrad / Moped',
         name: 'motorbike'
       },
       {
@@ -257,6 +261,7 @@ export default [
     name: 'bicycleUse',
     title:
       'Wie lange dauert der Weg, den Sie am häufigsten mit dem Fahrrad zurücklegen (ohne Rückweg)?',
+    randomize: true,
     options: [
       {
         label: '10 Minuten',
@@ -271,16 +276,12 @@ export default [
         value: 2
       },
       {
-        label: '40 Minuten',
+        label: 'Mehr als 30 Minuten',
         value: 3
       },
       {
-        label: 'Mehr als 40 Minuten',
-        value: 4
-      },
-      {
         label: 'Weiß ich nicht',
-        value: 5
+        value: 4
       }
     ]
   },
@@ -289,10 +290,11 @@ export default [
     name: 'motivationalFactors',
     title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
     info:
-      'Die folgenden Fragen sind für unsere Forschung sehr wichtig. Sie handeln von all jenen Faktoren, die Sie möglicherweise motivieren, Fahrrad zu fahren - oder Sie davon abhalten.',
+      'Die folgenden Fragen sind für unsere Forschung sehr wichtig. Sie handeln von all jenen Faktoren, die Sie möglicherweise motivieren Fahrrad zu fahren - oder Sie davon abhalten.',
+    randomize: true,
     radiogroups: [
       {
-        label: '„Ich fahre Fahrrad weil es mir Spaß macht.“',
+        label: '„Ich fahre Fahrrad, weil es mir Spaß macht.“',
         name: 'bikefun',
         options: [
           { label: 'trifft nicht zu', value: 0 },
@@ -342,21 +344,18 @@ export default [
     name: 'bikeReasons',
     title:
       'Aus welchen Gründen können, dürfen oder wollen Sie nicht häufiger Fahrrad fahren?',
+    randomize: true,
     options: [
       {
         label: 'Ich kann nicht Fahrrad fahren (fehlende Fertigkeit)',
         name: 'skills'
       },
       {
-        label: 'Es gibt keine angemessene Infrastruktur',
+        label: 'Es gibt keine sichere Infrastruktur',
         name: 'infrastructure'
       },
       {
-        label: 'Es sind zu viele Autos unterwegs',
-        name: 'traffic'
-      },
-      {
-        label: 'Der Zielort ist zu weit entfernt',
+        label: 'Meine Strecken sind zu lang',
         name: 'distance'
       },
       {
@@ -376,7 +375,7 @@ export default [
         name: 'children'
       },
       {
-        label: 'Sonstiges',
+        label: 'Andere Gründe',
         input: true,
         placeholder: 'Geben Sie hier Ihre Antwort ein ...',
         name: 8
@@ -388,32 +387,5 @@ export default [
     name: 'zipcode',
     title:
       'Geben Sie Ihre Postleitzahl an, damit wir Sie einem Ort zuordnen können.'
-  },
-  {
-    type: 'multi_choice',
-    name: 'whyBiking',
-    title: 'Welcher dieser Aussagen würden sie zustimmen?',
-    options: [
-      {
-        label: 'Meine täglichen Wege kann ich gut mit dem Fahrrad erledigen.',
-        name: 'dailyTransport'
-      },
-      {
-        label: 'Radfahren macht mir Spaß',
-        name: 'fun'
-      },
-      {
-        label: 'Ich kann gut und sicher Radfahren',
-        name: 'ability'
-      },
-      {
-        label: 'In meinem Umfeld fahren viele Menschen Fahrrad',
-        name: 'social'
-      },
-      {
-        label: 'Ich fühle mich sicher auf dem Rad im Verkehr',
-        name: 'safety'
-      }
-    ]
   }
 ];
