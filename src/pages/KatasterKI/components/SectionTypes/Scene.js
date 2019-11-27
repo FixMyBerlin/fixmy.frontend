@@ -9,6 +9,14 @@ import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import { getSceneImageSrc } from '~/pages/KatasterKI/survey';
 import loadingImage from '~/images/strassencheck/scene-loading.jpg';
 
+const ImageWrapper = styled.div`
+  margin: 0 -15px 0 -15px;
+
+  ${media.m`
+    margin: 0;
+  `}
+`;
+
 const RatingTitle = styled(QuestionTitle)`
   margin-top: 10px;
   margin-bottom: 0;
@@ -98,21 +106,23 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
 
   return (
     <>
-      {showLoadingImage ? (
-        <img
-          src={loadingImage}
-          alt="Lade Bild"
-          onLoad={onLoadingImageLoad}
-          onError={onLoadingImageLoad}
-        />
-      ) : (
-        <img
-          src={getSceneImageSrc(name)}
-          alt={title}
-          onLoad={onImageLoad}
-          onError={onImageLoad}
-        />
-      )}
+      <ImageWrapper>
+        {showLoadingImage ? (
+          <img
+            src={loadingImage}
+            alt="Lade Bild"
+            onLoad={onLoadingImageLoad}
+            onError={onLoadingImageLoad}
+          />
+        ) : (
+          <img
+            src={getSceneImageSrc(name)}
+            alt={title}
+            onLoad={onImageLoad}
+            onError={onImageLoad}
+          />
+        )}
+      </ImageWrapper>
       <RatingTitle>{title}</RatingTitle>
       <Flex>
         {options.map((option, index) => {
