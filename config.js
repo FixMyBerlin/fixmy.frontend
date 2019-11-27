@@ -1,3 +1,5 @@
+const katasterPath = process.env.KATASTER_PATH || '';
+
 const config = {
   devUrl: 'http://localhost:8080',
   prodUrl: 'https://fixmyberlin.de',
@@ -148,16 +150,16 @@ const config = {
       new: '/meldungen/radbuegel/friedrichshain-kreuzberg/neu'
     },
     katasterKI: {
-      landing: process.env.KATASTER_PATH || '/',
+      landing: katasterPath || '/',
       landingNational: '/de',
-      profileBase: `${process.env.KATASTER_PATH || ''}/profil`,
-      profile: `${process.env.KATASTER_PATH || ''}/profil/:page`,
-      scenesBase: `${process.env.KATASTER_PATH || ''}/szenen`,
-      scenes: `${process.env.KATASTER_PATH || ''}/szenen/:page`,
-      share: `${process.env.KATASTER_PATH || ''}/teilen`,
-      feedback: `${process.env.KATASTER_PATH || ''}/auswertung`,
-      iframe: `${process.env.KATASTER_PATH || ''}/iFrame-test`,
-      email: `${process.env.KATASTER_PATH || ''}/email`
+      profileBase: `${katasterPath}/profil`,
+      profile: `${katasterPath}/profil/:page`,
+      scenesBase: `${katasterPath}/szenen`,
+      scenes: `${katasterPath}/szenen/:page`,
+      share: `${katasterPath}/teilen`,
+      feedback: `${katasterPath}/auswertung`,
+      iframe: `${katasterPath}/iFrame-test`,
+      email: `${katasterPath}/email`
     },
     signup: '/registrieren',
     login: '/anmelden',
