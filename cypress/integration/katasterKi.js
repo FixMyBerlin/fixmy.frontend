@@ -1,5 +1,9 @@
 import config from '../../config';
 
+function goToStep(step = 1) {
+  cy.visit(`${config.routes.katasterKI.profileBase}/${step}`);
+}
+
 describe('Kastaster survey', () => {
 
   describe('landing page', () => {
@@ -16,7 +20,7 @@ describe('Kastaster survey', () => {
 
   describe('step 1', () => {
     before(() => {
-      cy.visit(`${config.routes.katasterKI.profileBase}/1`);
+      goToStep(1);
     });
 
     it('shows a progress bar', () => {
@@ -32,5 +36,26 @@ describe('Kastaster survey', () => {
       cy.location('pathname')
         .should('eq', `${config.routes.katasterKI.profileBase}/2`);
     });
+  });
+
+  describe('step 2 and 3', () => {
+    let step = 2;
+
+    beforeEach(() => {
+      goToStep(step);
+    });
+
+    it('has a single choice buttons which links to the next step', () => {
+      cy.get('[data-cy=kat-singlechoice-btn]')
+        .first()
+        .click();
+      cy.location('pathname')
+        .should('eq', `${config.routes.katasterKI.profileBase}/${step + 1}`);
+    });
+
+    afterEach(() => {
+      step += 1;
+    });
+
   });
 });

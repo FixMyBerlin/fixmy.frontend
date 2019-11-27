@@ -53,6 +53,7 @@ const SingleChoiceInput = ({
             option.value === currentValue || option.value === clickedButton
           }
           isLoading={option.value === clickedButton}
+          data-cy="kat-singlechoice-btn"
         >
           {option.label}
         </GhostButton>
