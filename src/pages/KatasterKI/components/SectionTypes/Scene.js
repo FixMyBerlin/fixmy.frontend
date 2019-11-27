@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import classnames from 'classnames';
 
-import { media } from '~/styles/utils';
-import Loader from '~/components/Loader';
+import { media, bounce } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import { getSceneImageSrc } from '~/pages/KatasterKI/survey';
@@ -53,6 +52,12 @@ const RatingButton = styled.button`
 
   &.active {
     font-weight: 700;
+
+    svg {
+      use {
+        fill: ${config.colors.katasterHighlight};
+      }
+    }
   }
 
   &:focus {
@@ -65,6 +70,13 @@ const RatingLabel = styled.div`
   color: ${config.colors.darkbg};
   font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
   font-weight: 500;
+`;
+
+const animation = () => css`
+  ${bounce} 1s;
+`;
+const IconWrapper = styled.div`
+  animation: ${(props) => (props.isEnqueued ? animation : 'none')};
 `;
 
 const startMeasurement = () => window.performance.mark('imageLoaded');
@@ -147,14 +159,10 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
               onClick={() => onClick(option)}
               className={buttonClasses}
             >
-              <Icon />
-              <RatingLabel>
-                {enqueuedRating === option.label ? (
-                  <Loader css={{ margin: '0 auto' }} />
-                ) : (
-                  option.label
-                )}
-              </RatingLabel>
+              <IconWrapper isEnqueued={enqueuedRating === option.label}>
+                <Icon />
+              </IconWrapper>
+              <RatingLabel>{option.label}</RatingLabel>
             </RatingButton>
           );
         })}
