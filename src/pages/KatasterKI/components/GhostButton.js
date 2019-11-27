@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Button from './Button';
+import { isTouch } from '~/utils/utils';
 
 export default styled(Button)`
   border: 1px solid ${config.colors.katasterHighlight};
@@ -9,8 +10,15 @@ export default styled(Button)`
     props.isActive ? config.colors.katasterHighlight : 'transparent'};
   box-shadow: none;
 
-  &:hover {
-    box-shadow: none;
-    background: ${config.colors.katasterHighlight};
+  &:focus {
+    outline: none;
   }
+
+  ${!isTouch &&
+    css`
+      &:hover {
+        box-shadow: none;
+        background: ${config.colors.katasterHighlight};
+      }
+    `}
 `;

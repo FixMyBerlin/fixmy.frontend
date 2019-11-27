@@ -121,7 +121,7 @@ interface Action {
 }
 
 export const productionDefaultState: State = {
-  isTosAccepted: false,
+  isTosAccepted: true,
   transportRatings: {
     pedestrian: 0,
     bicycle: 0,

@@ -49,7 +49,9 @@ const SingleChoiceInput = ({
           key={`singlechoice__${page}_${option.value}`}
           onClick={() => onClick(option)}
           css={{ textAlign: 'left' }}
-          isActive={option.value === currentValue}
+          isActive={
+            option.value === currentValue || option.value === clickedButton
+          }
           isLoading={option.value === clickedButton}
         >
           {option.label}
