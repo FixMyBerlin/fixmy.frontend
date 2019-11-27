@@ -29,6 +29,7 @@ const ImageWrapper = styled.div`
 const RatingTitle = styled(QuestionTitle)`
   margin-top: 10px;
   margin-bottom: 0;
+  font-size: 25px;
 
   ${media.m`
     margin-top: 15px;
