@@ -74,7 +74,7 @@ We are gradually adding tests
 
 Run unit tests using `npm run test`.
 
-### Unit tests
+### End-To-End Tests
 
 To start the dev server und run end-to-end tests run
 ```
