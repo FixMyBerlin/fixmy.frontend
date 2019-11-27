@@ -46,9 +46,16 @@ const RatingButton = styled.button`
     width: 100%;
   }
 
-  &:hover {
-    opacity: 0.8;
-  }
+  ${media.m`
+    margin-top: 15px;
+    &:hover {
+      svg {
+        use {
+          fill: ${config.colors.katasterHighlight};
+        }
+      }
+    }
+  `}
 
   &.active {
     font-weight: 700;
