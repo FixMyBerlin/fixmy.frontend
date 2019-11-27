@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
-import history from '~/history';
 import { media } from '~/styles/utils';
 import { numberFormat } from '~/utils/utils';
 import Flex from '~/components/Flex';
@@ -14,9 +13,10 @@ import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import ShareButton from '~/pages/KatasterKI/components/ShareButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import ProgressVis from '~/pages/KatasterKI/components/ProgressVis';
+import ShareButtonDesktop from '../ShareButtonDesktop';
 
 const getTitle = (count, max) => {
-  return `Wir haben bereits ${count} Bewertungen bekommen, helfen Sie mit, dass wir auf ${max} kommen.`;
+  return `Wir haben bereits ${count} Bewertungen bekommen. Helfen Sie mit, dass wir auf ${max} kommen.`;
 };
 
 const FeedbackWrapper = styled.div`
@@ -27,7 +27,15 @@ const FeedbackWrapper = styled.div`
   ${media.m`
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
+    width: 640px;
+  `}
+`;
+
+const FeedbackParagraph = styled(Paragraph)`
+  margin: 0 0 25px 0;
+
+  ${media.m`
+    margin: 0 0 70px 0;
   `}
 `;
 
@@ -56,11 +64,7 @@ const Feedback = ({
    * through history.push
    */
   const handleQuit = () => {
-    if (isEmbedded) {
-      window.parent.postMessage({ msg: 'done' }, '*');
-    } else {
-      history.push(config.katasterKI.tspArticleLink);
-    }
+    window.parent.postMessage({ msg: 'done' }, '*');
   };
 
   return (
@@ -75,18 +79,36 @@ const Feedback = ({
       </QuestionTitle>
 
       <FeedbackWrapper>
-        <Paragraph css={{ margin: '0 0 25px 0' }}>
+        <FeedbackParagraph>
           Sie haben bereits <strong>{ratingsCounter} Situationen</strong>{' '}
-          bewertet. Je mehr Bewertungen die Umfrage erhält umso aussagekräftiger
-          sind die Ergebnisse.
-        </Paragraph>
+          bewertet. Je mehr Bewertungen die Umfrage erhält, umso
+          aussagekräftiger sind die Ergebnisse.
+        </FeedbackParagraph>
 
-        <Flex css={{ flexGrow: 1 }} alignItems="center" flexDirection="column">
+        <Flex
+          css={{ flexGrow: 1, maxWidth: 500, width: '100%', margin: '0 auto' }}
+          alignItems="center"
+          flexDirection="column"
+        >
           <Button onClick={next}>Weiter bewerten</Button>
+
+          <ShareButtonDesktop />
           <ShareButton style={{ marginTop: 20 }} />
-          <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>
-            Informationen über das Projekt
-          </GhostButton>
+          {isEmbedded && (
+            <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>
+              Umfrage beenden
+            </GhostButton>
+          )}
+          {!isEmbedded && (
+            <GhostButton
+              css={{ marginTop: 'auto' }}
+              onClick={() => {
+                window.location.href = config.katasterKI.tspArticleLink;
+              }}
+            >
+              Informationen über das Projekt
+            </GhostButton>
+          )}
         </Flex>
       </FeedbackWrapper>
     </>

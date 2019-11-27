@@ -1,3 +1,5 @@
+const katasterPath = process.env.KATASTER_PATH || '';
+
 const config = {
   devUrl: 'http://localhost:8080',
   prodUrl: 'https://fixmyberlin.de',
@@ -148,14 +150,16 @@ const config = {
       new: '/meldungen/radbuegel/friedrichshain-kreuzberg/neu'
     },
     katasterKI: {
-      landing: process.env.KATASTER_PATH || '/',
-      profileBase: `${process.env.KATASTER_PATH}/profil`,
-      profile: `${process.env.KATASTER_PATH}/profil/:page`,
-      scenesBase: `${process.env.KATASTER_PATH}/szenen`,
-      scenes: `${process.env.KATASTER_PATH}/szenen/:page`,
-      share: `${process.env.KATASTER_PATH}/teilen`,
-      feedback: `${process.env.KATASTER_PATH}/auswertung`,
-      iframe: `${process.env.KATASTER_PATH}/iFrame-test`
+      landing: katasterPath || '/',
+      landingNational: '/de',
+      profileBase: `${katasterPath}/profil`,
+      profile: `${katasterPath}/profil/:page`,
+      scenesBase: `${katasterPath}/szenen`,
+      scenes: `${katasterPath}/szenen/:page`,
+      share: `${katasterPath}/teilen`,
+      feedback: `${katasterPath}/auswertung`,
+      iframe: `${katasterPath}/iFrame-test`,
+      email: `${katasterPath}/email`
     },
     signup: '/registrieren',
     login: '/anmelden',
@@ -304,10 +308,13 @@ const config = {
     },
     buttonTimeout: 300,
     projectId: '01',
-    // this is the article link for the landing page
-    tspArticleLink: 'https://tagesspiegel.de',
+    // this is the article link for the landing page and feedback page
+    tspArticleLink: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
+    tspNewsletterLink: 'https://www.tagesspiegel.de/newsletter/',
+    shareUrl: 'https://interaktiv.tagesspiegel.de/strassencheck/',
     shareTitle: 'Umfrage Share Title',
-    shareText: 'Umfrage Share Text'
+    shareText:
+      'Wie können die Straßen sicher für alle werden? Tolle Umfrage von @FixMyBerlin und @tagesspiegel, bitte teilnehmen!'
   },
   reports: {
     apiRoute: '/reports',

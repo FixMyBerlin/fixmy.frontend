@@ -81,29 +81,6 @@ export const marshallProfile = (
     sessionID
   } = state.KatasterKIState;
 
-  // profile.district is optional, everything else is required
-  const isComplete = [
-    profile.ageGroup,
-    profile.berlinTraffic,
-    profile.bicycleUse,
-    profile.bikeReasons,
-    profile.gender,
-    profile.hasChildren,
-    profile.motivationalFactors,
-    profile.zipcode,
-    profile.vehiclesOwned,
-    profile.whyBiking,
-    userGroup,
-    sessionID,
-    transportRatings,
-    currentPerspective
-  ].every((val) => val != null);
-
-  if (!isComplete) {
-    if (config.debug)
-      console.error(JSON.stringify(state.KatasterKIState, null, 2));
-    throw new Error('Trying to marshall incomplete profile');
-  }
   if (!isTosAccepted === true)
     throw new Error('Trying to marshall profile without accepted TOS');
 

@@ -14,6 +14,7 @@ async function handleSubmitAnswer({
   const endpoint = getEndpointURL('answer', sessionID, sceneID);
   const fetchResponse = await fetch(endpoint, {
     method: 'PUT',
+    mode: 'cors',
     body: JSON.stringify(json),
     headers: {
       ...authHeader,

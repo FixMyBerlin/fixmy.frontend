@@ -6,6 +6,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const defaultBaseName = '/';
 const defaultEntryPoint = '../src/index.js';
 
+const FAVICONS_PATH =
+  process.env.KATASTER_PATH != null
+    ? '../src/pages/KatasterKI/favicons'
+    : '../favicons';
+
 module.exports = {
   entry: {
     app: Path.resolve(__dirname, process.env.ENTRY_POINT || defaultEntryPoint)
@@ -21,7 +26,7 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' },
       { from: Path.resolve(__dirname, '../_redirects') },
-      { from: Path.resolve(__dirname, '../favicons') },
+      { from: Path.resolve(__dirname, FAVICONS_PATH) },
       { from: Path.resolve(__dirname, '../public/data'), to: 'data' }
     ]),
     new Webpack.ProvidePlugin({

@@ -6,15 +6,17 @@ export interface Answer {
 
 export interface ProfileRequest {
   ageGroup: number;
-  berlinTraffic: number;
-  bicycleUse: number;
-  bikeReasons: Array<string>;
+  berlinTraffic: {
+    [name: string]: boolean;
+  };
+  bicycleUse?: number;
+  bikeReasons?: Array<string>;
   bikeReasonsVar?: string;
   district: string;
   gender: 'm' | 'w' | 'd';
   hasChildren: boolean;
   isTosAccepted: boolean;
-  motivationalFactors: {
+  motivationalFactors?: {
     [name: string]: number;
   };
   perspective: Perspective;
