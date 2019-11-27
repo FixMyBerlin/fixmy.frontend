@@ -286,7 +286,7 @@ export default [
     name: 'motivationalFactors',
     title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
     info:
-      'Die folgenden Fragen sind für die Forschung sehr wichtig. Sie handeln von den Faktoren, die Menschen motivieren Fahrrad zu fahren - oder es zu lassen.',
+      'Die folgenden Fragen sind für die Forschung sehr wichtig. Sie handeln von den Faktoren, die Menschen motivieren Fahrrad zu fahren - oder Sie davon abhalten.',
     randomize: true,
     radiogroups: [
       {
