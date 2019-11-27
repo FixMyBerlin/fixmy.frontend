@@ -1,12 +1,11 @@
 import React from 'react';
 import { Redirect, Link, matchPath } from 'react-router-dom';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import queryString from 'query-string';
 
 import { media, isSmallScreen } from '~/styles/utils';
 import Store from '~/store';
-import { setTOSAccepted, setEmbedded } from '../state';
+import { setEmbedded } from '../state';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components/Button';
 
@@ -201,7 +200,6 @@ const TOC = () => (
 const checkEmbeddedParam = (value) => {
   const params = queryString.parse(value);
   if (Object.keys(params).indexOf('embedded') > -1) {
-    Store.dispatch(setTOSAccepted(true));
     Store.dispatch(setEmbedded(true));
     return true;
   }
@@ -267,8 +265,4 @@ const Landing = ({ location }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  isTosAccepted: state.KatasterKIState.isTosAccepted
-});
-
-export default connect(mapStateToProps)(Landing);
+export default Landing;
