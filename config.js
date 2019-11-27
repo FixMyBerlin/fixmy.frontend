@@ -1,4 +1,4 @@
-const katasterPath = process.env.KATASTER_PATH || '';
+const katasterPath = process.env.KATASTER_PATH || '/strassencheck';
 
 const config = {
   devUrl: 'http://localhost:8080',
