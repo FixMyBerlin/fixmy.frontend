@@ -106,7 +106,7 @@ const scenesConfig = (
     type: 'perspective_change',
     name: 'perspectiveChange',
     title:
-      'Vielen Dank, Sie können mit dieser Perspektive weiter machen oder jetzt die Straße aus einer anderen Sicht bewerten',
+      'Vielen Dank, Sie haben Straßensituationen aus Fahrradperspektive bewertet. Sie können aus Sicht von anderen Verkehrsmitteln weitermachen.',
     options: Object.keys(perspectiveNames).map((p) => ({
       label: perspectiveNames[p],
       icon: perspectiveIcons[p],
