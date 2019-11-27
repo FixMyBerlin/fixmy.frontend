@@ -83,9 +83,9 @@ export default () => (
           <Text>{homeLabels.intro}</Text>
         </div>
         <MapLinkWrapper>
-          <Link to={config.routes.projects}>
+          <a href={config.katasterKI.tspArticleLink}>
             <BounceButton>{homeLabels.katasterButton}</BounceButton>
-          </Link>
+          </a>
           <Link to={config.routes.projects}>
             <GhostButton>{homeLabels.mapButton}</GhostButton>
           </Link>
