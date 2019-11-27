@@ -90,17 +90,13 @@ const Feedback = ({
           flexDirection="column"
         >
           <Button onClick={next}>Mehr Situationen bewerten</Button>
-
-          <ShareButtonDesktop />
-          <ShareButton style={{ marginTop: 20 }} />
-          {isEmbedded && (
+          {isEmbedded ? (
             <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>
               Umfrage beenden
             </GhostButton>
-          )}
-          {!isEmbedded && (
+          ) : (
             <GhostButton
-              css={{ marginTop: 'auto' }}
+              css={{ marginTop: 10 }}
               onClick={() => {
                 window.location.href = config.katasterKI.tspArticleLink;
               }}
@@ -109,6 +105,8 @@ const Feedback = ({
             </GhostButton>
           )}
         </Flex>
+        <ShareButtonDesktop />
+        <ShareButton />
       </FeedbackWrapper>
     </>
   );
