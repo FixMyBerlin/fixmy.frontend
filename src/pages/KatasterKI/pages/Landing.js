@@ -47,16 +47,44 @@ const Header = styled.div`
     margin-top: 10px;
     width: 100%;
   }
+
+  ${media.m`
+    width: 200px;
+  `}
+`;
+
+const FixMyLogoWrapper = styled.div`
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+`;
+
+const FixMyLabel = styled.div`
+  display: none;
+
+  ${media.m`
+    color: white;
+    font-size: 20px;
+    margin-left: 10px;
+    display: block;
+    line-height: 1;
+    position: relative;
+    top: -4px;
+  `}
 `;
 
 const FixMyImage = styled.img.attrs({ src: fixMyLogoSrc })`
   &&& {
-    width: 36px;
-    position: absolute;
-    transform: translate(-100%, 0);
-    left: -10px;
-    top: 10px;
+    width: 47px;
   }
+
+  ${media.m`
+    &&& {
+      width: 60px;
+    }
+  `}
 `;
 
 const BottomContainer = styled.div`
@@ -193,10 +221,14 @@ const Landing = ({ isTosAccepted, location }) => {
     <>
       <Wrapper>
         <Header>
-          <div>Eine Umfrage von:</div>
           <TspLogo />
-          <FixMyImage />
         </Header>
+
+        <FixMyLogoWrapper>
+          <FixMyImage />
+          <FixMyLabel>FixMyBerlin</FixMyLabel>
+        </FixMyLogoWrapper>
+
         {isMobile ? renderMobileMarkup() : renderDesktopMarkup()}
       </Wrapper>
     </>
