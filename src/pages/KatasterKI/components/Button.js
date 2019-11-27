@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Loader from '~/components/Loader';
+import { isTouch } from '~/utils/utils';
 
 const boxShadow = '0 0 10px 0 rgba(0, 0, 0, 0.2)';
 const boxShadowHover = '0 0 2px 0 rgba(0, 0, 0, 0.2)';
@@ -27,9 +28,16 @@ const StyledButton = styled.button`
   display: block;
   text-align: center;
 
-  &:hover {
-    box-shadow: ${(props) => (props.disabled ? 'none' : boxShadowHover)};
+  &:focus {
+    outline: none;
   }
+
+  ${!isTouch &&
+    css`
+      &:hover {
+        box-shadow: ${(props) => (props.disabled ? 'none' : boxShadowHover)};
+      }
+    `}
 `;
 
 export default ({ children, isLoading, ...rest }) => (
