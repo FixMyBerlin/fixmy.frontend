@@ -10,7 +10,7 @@ export default [
   {
     type: 'multi_choice',
     name: 'berlinTraffic',
-    title: 'Was nervt Sie am meisten am Straßenverkehr? (Mehrfachnennung möglich)',
+    title: 'Was nervt Sie am meisten am Straßenverkehr?',
     randomize: true,
     options: [
       {
