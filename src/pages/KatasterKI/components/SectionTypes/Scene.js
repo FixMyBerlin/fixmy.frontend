@@ -9,6 +9,16 @@ import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import { getSceneImageSrc } from '~/pages/KatasterKI/survey';
 import loadingImage from '~/images/strassencheck/scene-loading.jpg';
 
+const SceneWrapper = styled.div`
+  margin: 0 auto;
+  width: 500px;
+
+  ${media.xl`
+    margin: 0;
+    width: 100%;
+  `}
+`;
+
 const ImageWrapper = styled.div`
   margin: 0 -15px 0 -15px;
 
@@ -105,7 +115,7 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
   };
 
   return (
-    <>
+    <SceneWrapper>
       <ImageWrapper>
         {showLoadingImage ? (
           <img
@@ -149,7 +159,7 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
           );
         })}
       </Flex>
-    </>
+    </SceneWrapper>
   );
 };
 
