@@ -16,7 +16,7 @@ import ProgressVis from '~/pages/KatasterKI/components/ProgressVis';
 import ShareButtonDesktop from '../ShareButtonDesktop';
 
 const getTitle = (count, max) => {
-  return `Wir haben bereits ${count} Bewertungen bekommen. Helfen Sie mit, dass wir auf ${max} kommen.`;
+  return `Wir haben bereits ${count} Bewertungen erhalten. Helfen Sie, damit wir auf ${max} kommen.`;
 };
 
 const FeedbackWrapper = styled.div`
@@ -81,8 +81,7 @@ const Feedback = ({
       <FeedbackWrapper>
         <FeedbackParagraph>
           Sie haben bereits <strong>{ratingsCounter} Situationen</strong>{' '}
-          bewertet. Je mehr Bewertungen die Umfrage erhält, umso
-          aussagekräftiger sind die Ergebnisse.
+          bewertet. Je mehr Straßensituationen bewertet werden, desto aussagekräftiger die Ergebnisse.
         </FeedbackParagraph>
 
         <Flex
@@ -90,15 +89,10 @@ const Feedback = ({
           alignItems="center"
           flexDirection="column"
         >
-          <Button onClick={next}>Weiter bewerten</Button>
+          <Button onClick={next}>Mehr Situationen bewerten</Button>
           {isEmbedded ? (
-            <GhostButton
-              css={{ marginTop: 'auto' }}
-              onClick={() => {
-                window.location.href = config.katasterKI.tspArticleLink;
-              }}
-            >
-              Informationen über das Projekt
+            <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>
+              Umfrage beenden
             </GhostButton>
           ) : (
             <GhostButton
