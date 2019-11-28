@@ -16,7 +16,7 @@ const ProgressBar = styled.div`
 `;
 
 const Progress = styled.div`
-  background: rgb(207, 0, 113);
+  background: rgb(5 124 156);
   height: 100%;
   width: ${(props) => props.progress || 0}%;
 `;
