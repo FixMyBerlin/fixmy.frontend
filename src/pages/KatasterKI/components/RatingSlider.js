@@ -43,6 +43,7 @@ const StyledSlider = styled(Slider)`
   &&& {
     height: ${SLIDER_HEIGHT}px;
     padding: 0;
+    user-select: none;
   }
 
   .rc-slider-track {

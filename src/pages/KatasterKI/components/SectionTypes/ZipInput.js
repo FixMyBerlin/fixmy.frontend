@@ -43,14 +43,19 @@ const ZipInput = (props) => {
   // whether we change the zip or the district
   const zipCode = useRef(props.currentValue);
   const district = useRef(props.district);
-  const [isButtonDisabled, setButtonDisabled] = useState(true);
+  const [isButtonDisabled, setButtonDisabled] = useState(
+    isInvalidZipCode(zipCode.current)
+  );
   const [isLoading, onClick] = useHandlerTimeout(props.next);
   const hasDistrictOptions = !!(
     props.districtOptions && props.districtOptions.length
   );
 
   useEffect(() => {
-    setButtonDisabled(hasDistrictOptions && !props.district);
+    setButtonDisabled(
+      isInvalidZipCode(zipCode.current) ||
+        (hasDistrictOptions && !props.district)
+    );
   }, [hasDistrictOptions, props.district]);
 
   const onChange = () => {
@@ -82,7 +87,7 @@ const ZipInput = (props) => {
       <QuestionTitle>{props.title}</QuestionTitle>
 
       <Input
-        type="text"
+        type="number"
         placeholder="PLZ"
         onChange={onZipChange}
         value={props.currentValue}

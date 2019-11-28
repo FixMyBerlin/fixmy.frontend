@@ -1,8 +1,7 @@
 # Impressum
 FixMyCity GmbH<br />
-c/o CityLAB<br />
-Platz der Luftbrücke 4<br />
-12021 Berlin<br />
+Karlsgartenstraße 12<br />
+12049 Berlin<br/>
 E-Mail-Adresse: [hello@fixmycity.de](mailto:hello@fixmycity.de)<br />
 Telefon: 030 / 549 08 665<br />
 

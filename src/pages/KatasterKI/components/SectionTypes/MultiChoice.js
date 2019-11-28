@@ -14,6 +14,8 @@ const CheckboxWrapper = styled.div`
   label {
     cursor: pointer;
     user-select: none;
+    display: flex;
+    align-items: center;
   }
 `;
 

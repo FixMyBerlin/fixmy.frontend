@@ -10,7 +10,7 @@ export default [
   {
     type: 'multi_choice',
     name: 'berlinTraffic',
-    title: 'Was nervt Sie am meisten im Straßenverkehr?',
+    title: 'Was nervt Sie am meisten am Straßenverkehr?',
     randomize: true,
     options: [
       {
@@ -18,7 +18,7 @@ export default [
         name: 'traffic'
       },
       {
-        label: 'Zustand der Straßen / Radwege',
+        label: 'Der Zustand der Straßen / Radwege',
         name: 'maintenance'
       },
       {
@@ -30,7 +30,7 @@ export default [
         name: 'noise'
       },
       {
-        label: 'Hohe Zahl der Unfälle',
+        label: 'Die Unfälle',
         name: 'accidents'
       },
       {
@@ -38,7 +38,7 @@ export default [
         name: 'aggression'
       },
       {
-        label: 'Starke Luftverschmutzung',
+        label: 'Die Luftverschmutzung',
         name: 'polution'
       }
     ]
@@ -57,11 +57,11 @@ export default [
         value: 1
       },
       {
-        label: 'Eher selten',
+        label: 'Selten',
         value: 2
       },
       {
-        label: 'Nein',
+        label: 'Nein, nie',
         value: 3
       }
     ]
@@ -69,7 +69,8 @@ export default [
   {
     type: 'single_choice',
     name: 'responsible',
-    title: 'Wer trägt die größte Verantwortung für die Probleme im Verkehr?',
+    title:
+      'Wer trägt die größte Verantwortung für die Probleme im Verkehr?',
     randomize: true,
     options: [
       {
@@ -96,7 +97,7 @@ export default [
   },
   {
     type: 'info',
-    title: 'Erzählen Sie uns nun etwas zu Ihrer Person (9 Fragen)'
+    title: 'Erzählen Sie uns nun etwas zu Ihrer Verkehrsnutzung. Die Angaben sind anonym.'
   },
   {
     type: 'transportRatings',
@@ -285,7 +286,7 @@ export default [
     name: 'motivationalFactors',
     title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
     info:
-      'Die folgenden Fragen sind für unsere Forschung sehr wichtig. Sie handeln von all jenen Faktoren, die Sie möglicherweise motivieren Fahrrad zu fahren - oder Sie davon abhalten.',
+      'Die folgenden Fragen sind für die Forschung sehr wichtig. Sie handeln von den Faktoren, die Menschen motivieren Fahrrad zu fahren - oder Sie davon abhalten.',
     randomize: true,
     radiogroups: [
       {
@@ -338,7 +339,7 @@ export default [
     type: 'multi_choice',
     name: 'bikeReasons',
     title:
-      'Aus welchen Gründen können, dürfen oder wollen Sie nicht häufiger Fahrrad fahren?',
+      'Aus welchen Gründen können, dürfen oder wollen Sie nicht (häufiger) Fahrradfahren?',
     randomize: true,
     options: [
       {
@@ -381,6 +382,6 @@ export default [
     type: 'zip',
     name: 'zipcode',
     title:
-      'Geben Sie Ihre Postleitzahl an, damit wir Sie einem Ort zuordnen können.'
+      'Geben Sie Ihre Postleitzahl an, damit wir mögliche regionale Unterschiede ermitteln können.'
   }
 ];
