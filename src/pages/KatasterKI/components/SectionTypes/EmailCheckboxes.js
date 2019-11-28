@@ -128,10 +128,7 @@ const Email = (props) => {
   if (emailSent) {
     return (
       <>
-        <QuestionTitle>
-          Danke, wir haben Ihnen eine Email geschickt. Klicken Sie dort auf den
-          Link zur Bestätigung.
-        </QuestionTitle>
+        <QuestionTitle>{props.thankyou}</QuestionTitle>
 
         <EmailWrapper>
           <Flex
@@ -155,17 +152,13 @@ const Email = (props) => {
 
   return (
     <>
-      <QuestionTitle>
-        Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der
-        Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage
-        informieren.
-      </QuestionTitle>
+      <QuestionTitle>{props.title}</QuestionTitle>
 
       <EmailWrapper>
         <Flex css={{ flexGrow: 1 }} alignItems="center" flexDirection="column">
           <Input
             type="email"
-            placeholder="Ihre E-Mailadresse"
+            placeholder={props.placeholder}
             onChange={(evt) => handleUpdate(evt.target.value)}
             value={email}
             css={{ marginBottom: '2em' }}
