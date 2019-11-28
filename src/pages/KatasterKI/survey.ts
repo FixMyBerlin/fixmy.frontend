@@ -147,7 +147,10 @@ const scenesConfig = (
     }))
   }));
 
-  const sectionConfig = [titleScreen, ...sceneScreens];
+  let sectionConfig = [];
+  if (sceneGroupCounter === 0) sectionConfig.push(titleScreen);
+
+  sectionConfig.push(...sceneScreens);
 
   if (sceneGroupCounter % 2 === 1) {
     sectionConfig.push(perspectiveChangeScreen);
