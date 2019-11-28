@@ -56,8 +56,9 @@ const profileConfig = (userGroup: UserGroup) => {
     userGroup === UserGroup.pedestrian
   ) {
     const q1 = rv.findIndex((sec) => sec.name === 'bicycleUse');
-    const q2 = rv.findIndex((sec) => sec.name === 'motivationalFactors');
     rv.splice(q1, 1);
+    const q2 = rv.findIndex((sec) => sec.name === 'motivationalFactors');
+    // console.log('Removing q2 motivationalFactors', rv[q2].name, q2);
     rv.splice(q2, 1);
   }
 
