@@ -97,7 +97,7 @@ export default [
   },
   {
     type: 'info',
-    title: 'Erzählen Sie uns nun etwas zu Ihrer Verkehrsnutzung. Die Angaben sind anonym'
+    title: 'Erzählen Sie uns nun etwas zu Ihrer Verkehrsnutzung. Die Angaben sind anonym.'
   },
   {
     type: 'transportRatings',
