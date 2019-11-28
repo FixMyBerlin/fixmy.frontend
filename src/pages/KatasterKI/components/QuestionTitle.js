@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import { isSmallScreen } from '~/styles/utils';
 
 const HeadlineWrapper = styled.div`
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 
   h1 {
-    font-size: 25px;
+    font-size: 24px;
     line-height: 1.3;
-    margin: 5px 0;
+    margin: 3px 0;
     font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
     font-weight: 500;
   }
