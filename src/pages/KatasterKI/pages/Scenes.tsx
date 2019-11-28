@@ -37,6 +37,21 @@ const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
     ? scenes.find((s) => s.sceneID === section.name)
     : null;
 
+/**
+ * Modifies the behavior of updateProgressBar so that only 'scene' sections
+ * are considered
+ *
+ * @param page current match.params page entry
+ * @param sectionConfig sectionConfig for current sceneGroup
+ */
+const updateScenesProgress = (page, sectionConfig) => {
+  const progressPages = sectionConfig.filter(
+    (section) => section.type === 'scene'
+  );
+  const current = progressPages.indexOf(sectionConfig[page]);
+  return updateProgressBar(current, progressPages.length);
+};
+
 const Scenes = ({
   match,
   scenes,
@@ -90,7 +105,7 @@ const Scenes = ({
   const SectionComponent = sectionTypes[section.type];
 
   useEffect(() => {
-    dispatch(updateProgressBar(page, sectionConfig.length));
+    dispatch(updateScenesProgress(page, sectionConfig));
   }, [page, sectionConfig.length]);
 
   if (
@@ -120,7 +135,7 @@ const Scenes = ({
 
   return (
     <>
-      <ProgressBar />
+      {section.type === 'scene' && <ProgressBar />}
       <SectionComponent
         {...section}
         currentValue={getCurrentValue(section, scenes)}
