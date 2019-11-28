@@ -87,7 +87,7 @@ const ZipInput = (props) => {
       <QuestionTitle>{props.title}</QuestionTitle>
 
       <Input
-        type="text"
+        type="number"
         placeholder="PLZ"
         onChange={onZipChange}
         value={props.currentValue}
