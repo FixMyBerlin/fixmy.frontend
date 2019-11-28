@@ -5,7 +5,6 @@ function goToStep(step = 1) {
 }
 
 describe('Kastaster survey', () => {
-
   describe('landing page', () => {
     before(() => {
       cy.visit(config.routes.katasterKI.landing);
@@ -13,8 +12,10 @@ describe('Kastaster survey', () => {
     });
 
     it('links to step 1', () => {
-      cy.location('pathname')
-        .should('eq', `${config.routes.katasterKI.profileBase}/1`);
+      cy.location('pathname').should(
+        'eq',
+        `${config.routes.katasterKI.profileBase}/1`
+      );
     });
   });
 
@@ -33,29 +34,32 @@ describe('Kastaster survey', () => {
 
     it('links to step 2', () => {
       cy.get('[data-cy=kat-multichoice-proceed-btn]').click();
-      cy.location('pathname')
-        .should('eq', `${config.routes.katasterKI.profileBase}/2`);
+      cy.location('pathname').should(
+        'eq',
+        `${config.routes.katasterKI.profileBase}/2`
+      );
     });
   });
 
   describe('step 2 and 3', () => {
-    let step = 2;
+    [2, 3].forEach((step) => {
+      before(() => {
+        goToStep(step);
+      });
 
-    beforeEach(() => {
-      goToStep(step);
+      it('has a single choice buttons which links to the next step', () => {
+        cy.get('[data-cy=kat-singlechoice-btn]')
+          .first()
+          .click();
+        cy.location('pathname').should(
+          'eq',
+          `${config.routes.katasterKI.profileBase}/${step + 1}`
+        );
+      });
     });
+  });
 
-    it('has a single choice buttons which links to the next step', () => {
-      cy.get('[data-cy=kat-singlechoice-btn]')
-        .first()
-        .click();
-      cy.location('pathname')
-        .should('eq', `${config.routes.katasterKI.profileBase}/${step + 1}`);
-    });
-
-    afterEach(() => {
-      step += 1;
-    });
-
+  describe('step 5', () => {
+    // TODO: consider testing the slider behaviour
   });
 });
