@@ -81,7 +81,8 @@ const Feedback = ({
       <FeedbackWrapper>
         <FeedbackParagraph>
           Sie haben bereits <strong>{ratingsCounter} Situationen</strong>{' '}
-          bewertet. Je mehr Straßensituationen bewertet werden, desto aussagekräftiger die Ergebnisse.
+          bewertet. Je mehr Straßensituationen bewertet werden, desto
+          aussagekräftiger die Ergebnisse.
         </FeedbackParagraph>
 
         <Flex
@@ -90,6 +91,7 @@ const Feedback = ({
           flexDirection="column"
         >
           <Button onClick={next}>Mehr Situationen bewerten</Button>
+
           {isEmbedded ? (
             <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>
               Umfrage beenden
@@ -105,6 +107,7 @@ const Feedback = ({
             </GhostButton>
           )}
         </Flex>
+
         <ShareButtonDesktop />
         <ShareButton />
       </FeedbackWrapper>

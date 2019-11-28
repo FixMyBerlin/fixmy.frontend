@@ -78,10 +78,6 @@ const Email = (props) => {
     setEmailSent(true);
   };
 
-  const onOpenInfo = () => {
-    window.location.href = config.routes.katasterKI.landing;
-  };
-
   const onToggle = (evt) => {
     const { name } = evt.target;
 
@@ -117,7 +113,7 @@ const Email = (props) => {
               Sobald Sie den Link aktiviert haben, bekommen Sie eine Email, wenn
               Auswertungen der Umfrage online sind.
             </Paragraph>
-            <Button css={{ marginTop: 'auto' }} onClick={onOpenInfo}>
+            <Button css={{ marginTop: 'auto' }} onClick={props.next}>
               Weiter in der Umfrage
             </Button>
           </Flex>
@@ -168,7 +164,7 @@ const Email = (props) => {
             Absenden
           </Button>
 
-          <GhostButton css={{ marginTop: 'auto' }} onClick={onOpenInfo}>
+          <GhostButton css={{ marginTop: 'auto' }} onClick={props.next}>
             Weiter in der Umfrage
           </GhostButton>
         </Flex>
