@@ -59,6 +59,28 @@ describe('Kastaster survey', () => {
     });
   });
 
+  describe('step 4', () => {
+    before(() => {
+      goToStep(4);
+    });
+
+    // TODO: consider checking this for the other steps as well
+    it('has a heading containing text', () => {
+      cy.get('[data-cy=kat-info-heading]').then((element) => {
+        const text = element.text();
+        expect(text).not.to.be.empty;
+      });
+    });
+
+    it('links to step 5', () => {
+      cy.get('[data-cy=kat-info-proceed-btn]').click();
+      cy.location('pathname').should(
+        'eq',
+        `${config.routes.katasterKI.profileBase}/5`
+      );
+    });
+  });
+
   describe('step 5', () => {
     // TODO: consider testing the slider behaviour
   });
