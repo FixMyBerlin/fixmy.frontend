@@ -61,7 +61,7 @@ const initialNewsletterConfig = [
   {
     id: 'tsp-newsletter',
     label:
-      'Ich wünsche mir weitere interessante Angebote der Tagesspiegel-Gruppe per Email.',
+      'Ich wünsche mir weitere interessante Angebote der Tagesspiegel-Gruppe per E-Mail.',
     checked: false
   }
 ];
@@ -129,7 +129,7 @@ const Email = (props) => {
     return (
       <>
         <QuestionTitle>
-          Danke, wir haben Ihnen eine Email geschickt. Klicken Sie dort auf den
+          Danke, wir haben Ihnen eine E-Mail geschickt. Klicken Sie dort auf den
           Link zur Bestätigung.
         </QuestionTitle>
 
@@ -141,7 +141,7 @@ const Email = (props) => {
           >
             <EmailImg />
             <Paragraph>
-              Sobald Sie den Link aktiviert haben, bekommen Sie eine Email, wenn
+              Sobald Sie den Link aktiviert haben, bekommen Sie eine E-Mail, wenn
               Auswertungen der Umfrage online sind.
             </Paragraph>
             <Button css={{ marginTop: 'auto' }} onClick={props.next}>
