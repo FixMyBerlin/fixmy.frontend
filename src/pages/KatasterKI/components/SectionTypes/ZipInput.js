@@ -50,7 +50,10 @@ const ZipInput = (props) => {
   );
 
   useEffect(() => {
-    setButtonDisabled(hasDistrictOptions && !props.district);
+    setButtonDisabled(
+      isInvalidZipCode(zipCode.current) ||
+        (hasDistrictOptions && !props.district)
+    );
   }, [hasDistrictOptions, props.district]);
 
   const onChange = () => {
