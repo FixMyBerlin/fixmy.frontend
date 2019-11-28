@@ -119,14 +119,17 @@ const scenesConfig = (
   const feedbackScreen = {
     type: 'feedback',
     title:
-      'Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage informieren.',
+      'Tragen Sie hier Ihre E-Mail-Adresse ein, wenn Sie möchten, dass der Tagesspiegel und FixMyBerlin Sie über die Ergebnisse der Umfrage informieren.',
     name: 'feedback'
   };
 
   const emailScreen = {
     type: 'email',
     title:
-      'Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage informieren.',
+      'Tragen Sie hier Ihre E-Mail-Adresse ein, wenn Sie möchten, dass der Tagesspiegel und FixMyBerlin Sie über die Ergebnisse der Umfrage informieren.',
+    placeholder: 'Ihre E-Mail-Adresse',
+    thankyou:
+      'Danke, wir haben Ihnen eine E-Mail geschickt. Klicken Sie dort auf den Link zur Bestätigung.',
     name: 'email'
   };
 
