@@ -82,6 +82,6 @@ describe('Kastaster survey', () => {
   });
 
   describe('step 5', () => {
-    // TODO: consider testing the slider behaviour
+    // TODO: test if moving one slider handle will disable the proceed button
   });
 });
