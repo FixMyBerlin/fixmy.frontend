@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+import uuidv4 from 'uuid/v4';
 
 import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
@@ -12,6 +13,8 @@ import Input from '~/pages/KatasterKI/components/Input';
 import Paragraph from '~/pages/KatasterKI/components/Paragraph';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
 import Checkbox from '~/pages/KatasterKI/components/Checkbox';
+
+import api from '~/pages/KatasterKI/api';
 
 import emailImageSrc from '~/images/reports/letter.png';
 
@@ -62,11 +65,12 @@ const initialNewsletterConfig = [
   }
 ];
 
-const submitFMCSignup = (shouldSignupFMCNewsletter) => {
+const submitFMCSignup = (data) => {
   console.log(
     'Signing up FMC newsletter with newsletter option',
-    shouldSignupFMCNewsletter
+    data.newsletter
   );
+  api.submitNewsletter(data);
 };
 
 const submitTSPForm = () => {
@@ -94,7 +98,13 @@ const Email = (props) => {
       (opt) => opt.id === 'tsp-newsletter'
     ).checked;
 
-    submitFMCSignup(shouldSignupFMCNewsletter);
+    submitFMCSignup({
+      email,
+      username: email,
+      password: uuidv4(),
+      newsletter: shouldSignupFMCNewsletter
+    });
+
     if (shouldSignupTSP) submitTSPForm();
   };
 
@@ -156,7 +166,7 @@ const Email = (props) => {
             placeholder="Ihre E-Mailadresse"
             onChange={(evt) => setEmail(evt.target.value)}
             value={email}
-            css={{ marginBottom: 20 }}
+            css={{ marginBottom: '2em' }}
           />
 
           {newsletterOptions.map((option) => (

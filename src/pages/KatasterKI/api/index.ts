@@ -1,4 +1,6 @@
 import {
+  NewsletterRequest,
+  NewsletterResponse,
   ProfileRequest,
   ProfileResponse,
   PerspectiveRequest,
@@ -8,6 +10,7 @@ import {
 import handleSubmitProfile, { marshallProfile } from './profile';
 import handleSubmitPerspective from './perspective';
 import handleSubmitAnswer from './answer';
+import handleSubmitNewsletter from './newsletter';
 import { getEndpointURL } from './utils';
 
 async function submitAnswer(answerRequest: AnswerRequest): Promise<void> {
@@ -19,6 +22,20 @@ async function submitAnswer(answerRequest: AnswerRequest): Promise<void> {
       sessionID: answerRequest.sessionID,
       sceneID: answerRequest.sceneID
     });
+  }
+}
+
+async function submitNewsletter(
+  newsletterRequest: NewsletterRequest
+): Promise<NewsletterResponse> {
+  if (process.env.NODE_ENV === 'testing') {
+    return {
+      email: 'test-fmc@abgeordnetenwatch.de',
+      username: 'test8589340-5@abgeordnetenwatch.de',
+      id: 277
+    };
+  } else {
+    return handleSubmitNewsletter({ json: newsletterRequest });
   }
 }
 
@@ -59,5 +76,6 @@ export default {
   submitProfile,
   marshallProfile,
   submitPerspective,
+  submitNewsletter,
   getEndpointURL
 };
