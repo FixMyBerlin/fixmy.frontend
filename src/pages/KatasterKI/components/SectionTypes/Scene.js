@@ -10,18 +10,22 @@ import loadingImage from '~/images/strassencheck/scene-loading.jpg';
 
 const SceneWrapper = styled.div`
   margin: 0 auto;
-  width: 500px;
+
+  ${media.s`
+    max-width: 500px;
+  `}
 
   ${media.xl`
     margin: 0;
     width: 100%;
+    max-width: none;
   `}
 `;
 
 const ImageWrapper = styled.div`
   margin: 0 -15px 0 -15px;
 
-  ${media.m`
+  ${media.s`
     margin: 0;
   `}
 `;
@@ -30,6 +34,10 @@ const RatingTitle = styled(QuestionTitle)`
   margin-top: 10px;
   margin-bottom: 0;
   font-size: 25px;
+
+  h1 {
+    margin: 0;
+  }
 
   ${media.m`
     margin-top: 10px;
