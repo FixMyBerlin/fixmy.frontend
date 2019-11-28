@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
 
@@ -12,6 +13,10 @@ const Headline = styled.h1`
   font-weight: 500;
   margin-top: 0;
   hyphens: auto;
+
+  ${media.m`
+    font-size: 28px;
+  `}
 `;
 
 export default ({ title, next }) => {
