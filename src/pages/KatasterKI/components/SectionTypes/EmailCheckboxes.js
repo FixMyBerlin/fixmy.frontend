@@ -66,16 +66,29 @@ const initialNewsletterConfig = [
   }
 ];
 
+/**
+ * Return true if param email is a valid e-mail address
+ *
+ * @param {string} email Address to be tested
+ */
+const checkEmail = (email) => /(.+)@(.+){2,}\.(.+){2,}/.test(email);
+
 const Email = (props) => {
   if (!props.isTosAccepted) {
     return <Redirect to={config.routes.katasterKI.landing} />;
   }
 
   const [emailSent, setEmailSent] = useState(false);
-  const [email, setEmail] = useState('test@test.com');
+  const [email, setEmail] = useState('');
+  const [isEmailValid, setEmailValid] = useState(checkEmail(email));
   const [newsletterOptions, setNewsletterOptions] = useState(
     initialNewsletterConfig
   );
+
+  const handleUpdate = (value) => {
+    setEmail(value);
+    setEmailValid(checkEmail(value));
+  };
 
   const handleSend = () => {
     setEmailSent(true);
@@ -153,7 +166,7 @@ const Email = (props) => {
           <Input
             type="email"
             placeholder="Ihre E-Mailadresse"
-            onChange={(evt) => setEmail(evt.target.value)}
+            onChange={(evt) => handleUpdate(evt.target.value)}
             value={email}
             css={{ marginBottom: '2em' }}
           />
@@ -175,7 +188,7 @@ const Email = (props) => {
 
           <Button
             css={{ marginTop: 20 }}
-            disabled={!email}
+            disabled={!isEmailValid}
             onClick={onClick}
             isLoading={isLoading}
           >
