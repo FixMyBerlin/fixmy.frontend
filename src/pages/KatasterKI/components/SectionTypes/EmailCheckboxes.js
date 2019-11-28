@@ -62,20 +62,40 @@ const initialNewsletterConfig = [
   }
 ];
 
+const submitFMCSignup = (shouldSignupFMCNewsletter) => {
+  console.log(
+    'Signing up FMC newsletter with newsletter option',
+    shouldSignupFMCNewsletter
+  );
+};
+
+const submitTSPForm = () => {
+  console.log('Submitting TSP form');
+};
+
 const Email = (props) => {
   if (!props.isTosAccepted) {
     return <Redirect to={config.routes.katasterKI.landing} />;
   }
 
   const [emailSent, setEmailSent] = useState(false);
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('test@test.com');
   const [newsletterOptions, setNewsletterOptions] = useState(
     initialNewsletterConfig
   );
 
-  const onSend = () => {
+  const handleSend = () => {
     // @TODO: send email to mail provider after successfull response:
     setEmailSent(true);
+    const shouldSignupFMCNewsletter = newsletterOptions.find(
+      (opt) => opt.id === 'fixmy-newsletter'
+    ).checked;
+    const shouldSignupTSP = newsletterOptions.find(
+      (opt) => opt.id === 'tsp-newsletter'
+    ).checked;
+
+    submitFMCSignup(shouldSignupFMCNewsletter);
+    if (shouldSignupTSP) submitTSPForm();
   };
 
   const onToggle = (evt) => {
@@ -84,15 +104,14 @@ const Email = (props) => {
     setNewsletterOptions((options) =>
       options.map((option) => {
         if (option.id === name) {
-          option.checked = !option.checked;
+          return { ...option, checked: !option.checked };
         }
-
         return option;
       })
     );
   };
 
-  const [isLoading, onClick] = useHandlerTimeout(onSend);
+  const [isLoading, onClick] = useHandlerTimeout(handleSend);
 
   if (emailSent) {
     return (
