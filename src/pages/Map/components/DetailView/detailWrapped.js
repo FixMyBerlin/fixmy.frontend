@@ -17,7 +17,7 @@ import NewCloseButton from '~/components/NewCloseButton';
 const DetailWrapper = styled.div`
   position: absolute;
   left: 0;
-  top:0;
+  top: 0;
   width: 100%;
   height: 100%;
   z-index: 3000;
@@ -71,7 +71,7 @@ const DetailBody = styled.div`
 `;
 
 const Close = styled(NewCloseButton)`
-   margin-left: auto;
+  margin-left: auto;
 `;
 
 /**
@@ -93,26 +93,26 @@ function detailWrapped(Component) {
       apiEndpoint: PropTypes.string.isRequired,
       onCloseRoute: PropTypes.string,
       onClose: PropTypes.func
-    }
+    };
 
     static defaultProps = {
       onCloseRoute: '/',
       onClose: () => {}
-    }
+    };
 
     state = {
       data: null,
       isLoading: true,
       isError: false
-    }
+    };
 
     componentDidMount() {
       this.loadData();
     }
 
     componentDidUpdate(prevProps) {
-      const currId = idx(this.props.match, _ => _.params.id);
-      const prevId = idx(prevProps.match, _ => _.params.id);
+      const currId = idx(this.props.match, (_) => _.params.id);
+      const prevId = idx(prevProps.match, (_) => _.params.id);
 
       if (currId !== prevId) {
         this.loadData();
@@ -124,14 +124,16 @@ function detailWrapped(Component) {
       const center = getCenterFromGeom(geometry);
 
       if (center) {
-        Store.dispatch(setView({
-          center,
-          zoom: 16,
-          animate: true,
-          pitch: 40,
-          show3dBuildings: true,
-          dim: true
-        }));
+        Store.dispatch(
+          setView({
+            center,
+            zoom: 16,
+            animate: true,
+            pitch: 40,
+            show3dBuildings: true,
+            dim: true
+          })
+        );
       }
 
       this.setState({
@@ -139,41 +141,45 @@ function detailWrapped(Component) {
         isLoading: false,
         isError: false
       });
-    }
+    };
 
     onDataError = () => {
       this.setState({
         isLoading: false,
         isError: true
       });
-    }
+    };
 
     onClose = () => {
       this.props.history.push(this.props.onCloseRoute);
       this.props.onClose();
-    }
+    };
 
     getJSONFallbackPath() {
-      const file = this.props.apiEndpoint === 'planungen' ? 'planning-sections-example.json' : 'plannings-example.json';
+      const file =
+        this.props.apiEndpoint === 'planungen'
+          ? 'planning-sections-example.json'
+          : 'plannings-example.json';
       return `/data/${file}`;
     }
 
     loadData = async () => {
-      const id = idx(this.props.match, _ => _.params.id);
+      const id = idx(this.props.match, (_) => _.params.id);
 
       this.setState({ isLoading: true });
 
-      const dataUrl = config.offlineMode ?
-        this.getJSONFallbackPath() :
-        `${config.apiUrl}/${this.props.apiEndpoint}/${id}`;
+      const dataUrl = config.offlineMode
+        ? this.getJSONFallbackPath()
+        : `${config.apiUrl}/${this.props.apiEndpoint}/${id}`;
 
       try {
         const data = await ky.get(dataUrl).json();
         this.onDataLoaded(data);
       } catch (error) {
-        this.onDataError(error);
+        console.error(error);
+        this.onDataError();
       }
-    }
+    };
 
     renderName(data) {
       if (data.street_name) {
@@ -200,9 +206,7 @@ function detailWrapped(Component) {
         <DetailWrapper>
           <DetailHeader>
             <div>
-              <DetailTitle>
-                Ein Fehler ist aufgetreten.
-              </DetailTitle>
+              <DetailTitle>Ein Fehler ist aufgetreten.</DetailTitle>
             </div>
             <Close onClick={this.onClose} />
           </DetailHeader>
@@ -238,10 +242,7 @@ function detailWrapped(Component) {
           </DetailHeader>
           {showShadow ? <Shadow /> : null}
           <DetailBody>
-            <Component
-              data={data}
-              {...this.props}
-            />
+            <Component data={data} {...this.props} />
           </DetailBody>
         </DetailWrapper>
       );

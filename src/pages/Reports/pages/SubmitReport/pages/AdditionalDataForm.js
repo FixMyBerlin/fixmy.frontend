@@ -12,7 +12,7 @@ import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import ErrorMessage from '~/components/ErrorMessage';
 import { matchMediaSize, breakpoints } from '~/styles/utils';
-import { removeError, addError } from '~/pages/Reports/ReportsState';
+import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 
 const StyledHeading = styled(Heading)`
   margin: 0;
@@ -94,8 +94,9 @@ class AdditionalDataForm extends PureComponent {
 
   onPhotoUploadError = (errorMsg) => {
     const isDesktopView = matchMediaSize(breakpoints.m);
-    this.props.addError(`Fehler beim ${isDesktopView ? 'hochladen' : 'aufnehmen'} des Fotos:
-    ${errorMsg}`);
+    const errMsg = `Fehler beim ${isDesktopView ? 'hochladen' : 'aufnehmen'} des Fotos:
+    ${errorMsg}`
+    this.props.addError({message: errorMsg});
   };
 
   submit = () => {
@@ -192,7 +193,8 @@ class AdditionalDataForm extends PureComponent {
   }
 }
 
+
 export default connect(
-  state => ({ error: state.ReportsState.error }),
-  { addError, removeError }
+  state => ({ error: state.ReportsState.ErrorState }),
+  { ...errorStateActions }
 )(AdditionalDataForm);

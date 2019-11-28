@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { homeLabels } from '~/labels';
-// import StyledLink from '~/components/Link';
 import ContentOverlay from '~/components/ContentOverlay';
 import FMBLogo from '~/components/FMBLogo';
 import Title from '~/components/Title';
@@ -23,13 +22,8 @@ const HomeContent = styled.div`
   margin: 0 auto;
 `;
 
-// const AboutLinkWrapper = styled.div`
-//   margin: 10px 40px;
-//   font-size: 14px;
-// `;
-
 const MapLinkWrapper = styled.div`
-  margin: 10px;
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,25 +66,28 @@ const bounce = keyframes`
   }
 `;
 
-const MapButton = styled(Button)`
+const BounceButton = styled(Button)`
   font-weight: 700;
-  margin: 1em 0 2em 0;
+  margin: 16px 0 10px 0;
   animation: ${bounce} 4s ease-in infinite;
 `;
 
 export default () => (
-  <Fragment>
+  <>
     <ContentOverlay>
       <MenuButton />
       <HomeContent>
         <FMBLogo />
         <div>
-          <Title dangerouslySetInnerHTML={{ __html: homeLabels.title }} />
-          <Text dangerouslySetInnerHTML={{ __html: homeLabels.intro }} />
+          <Title>{homeLabels.title}</Title>
+          <Text>{homeLabels.intro}</Text>
         </div>
         <MapLinkWrapper>
+          <a href={config.katasterKI.tspArticleLink}>
+            <BounceButton>{homeLabels.katasterButton}</BounceButton>
+          </a>
           <Link to={config.routes.projects}>
-            <MapButton>{homeLabels.mapButton}</MapButton>
+            <GhostButton>{homeLabels.mapButton}</GhostButton>
           </Link>
         </MapLinkWrapper>
         <SubscribtionWidget />
@@ -98,5 +95,5 @@ export default () => (
       </HomeContent>
     </ContentOverlay>
     <BackgroundMap />
-  </Fragment>
+  </>
 );

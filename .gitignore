@@ -13,7 +13,10 @@ npm-debug.log
 yarn-error.log
 yarn.lock
 .yarnclean
+localtest
 
 # IDEs
 .vscode
 .idea/
+/coverage/
+public/lab/assets/fonts/franklin_gothic_fs*

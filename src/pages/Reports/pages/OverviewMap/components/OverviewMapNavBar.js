@@ -77,14 +77,13 @@ const OverviewMapNavBar = ({ heading }) => (
           as="a"
           isMobile={!getIsDesktop()}
           href={`mailto:${config.feedbackMail}?subject=Feedback zum Meldedialog`}
-        >Feedback zum Meldedialog?
+        >
+          Feedback zum Meldedialog?
         </TinyEmailLink>
       </LinkSection>
-
     </TextWrapper>
     <BikeParkImg alt="Icon Fahrradparkplätze" />
   </Wrapper>
-
 );
 
 OverviewMapNavBar.propTypes = {

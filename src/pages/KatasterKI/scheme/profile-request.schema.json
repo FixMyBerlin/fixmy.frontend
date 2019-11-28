@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Perspective": {
+      "enum": ["A", "C", "P"],
+      "type": "string"
+    },
+    "TransportRating": {
+      "enum": [0, 1, 2, 3, 4, 5],
+      "type": "number"
+    },
+    "UserGroup": {
+      "enum": ["bicycle", "car", "pedestrian", "potentialBicycle"],
+      "type": "string"
+    }
+  },
+  "properties": {
+    "ageGroup": {
+      "type": "number"
+    },
+    "berlinTraffic": {
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "type": "object"
+    },
+    "bicycleUse": {
+      "type": "number"
+    },
+    "bikeReasons": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "bikeReasonsVar": {
+      "type": "string"
+    },
+    "district": {
+      "type": "string"
+    },
+    "gender": {
+      "enum": ["d", "m", "w"],
+      "type": "string"
+    },
+    "hasChildren": {
+      "type": "boolean"
+    },
+    "isTosAccepted": {
+      "type": "boolean"
+    },
+    "motivationalFactors": {
+      "additionalProperties": {
+        "type": "number"
+      },
+      "type": "object"
+    },
+    "perspective": {
+      "$ref": "#/definitions/Perspective"
+    },
+    "sessionID": {
+      "type": "string"
+    },
+    "transportRatings": {
+      "additionalProperties": {
+        "$ref": "#/definitions/TransportRating"
+      },
+      "type": "object"
+    },
+    "userGroup": {
+      "$ref": "#/definitions/UserGroup"
+    },
+    "vehiclesOwned": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "whyBiking": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "zipcode": {
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

@@ -5,7 +5,7 @@ import idx from 'idx';
 import { connect } from 'react-redux';
 
 import { media } from '~/styles/utils';
-import { setSelectedReport } from '~/pages/Reports/ReportsState';
+import { actions } from '~/pages/Reports/state/OverviewMapState';
 import MapPopupWrapper from '~/components/MapPopupWrapper';
 import Button from '~/components/Button';
 import Title from '~/components/Title';
@@ -75,8 +75,8 @@ class ReportsPopup extends PureComponent {
 
 export default withRouter(
   connect(state => ({
-    selectedReport: state.ReportsState.selectedReport,
-    reports: state.ReportsState.reports,
-    position: state.ReportsState.selectedReportPosition
-  }), { setSelectedReport })(ReportsPopup)
+    selectedReport: state.ReportsState.OverviewMapState.selectedReport,
+    reports: state.ReportsState.OverviewMapState.reports,
+    position: state.ReportsState.OverviewMapState.selectedReportPosition
+  }), { setSelectedReport: actions.setSelectedReport })(ReportsPopup)
 );

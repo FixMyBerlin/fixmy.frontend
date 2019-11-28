@@ -1,3 +1,5 @@
+const katasterPath = process.env.KATASTER_PATH || '';
+
 const config = {
   devUrl: 'http://localhost:8080',
   prodUrl: 'https://fixmyberlin.de',
@@ -21,7 +23,8 @@ const config = {
     change_4: '#910055',
     index: '#ff650c',
     error: '#FF5050',
-    likebg: '#FFF9EC'
+    likebg: '#FFF9EC',
+    katasterHighlight: '#fabe28'
   },
   menu: {
     size: 325,
@@ -43,15 +46,10 @@ const config = {
         border: true
       },
       {
-        type: 'plus',
-        label: 'MITMACHEN',
+        type: 'link',
+        label: 'Radbügel in X-Hain (Meldungen nicht mehr möglich)',
         icon: 'fixhere',
-        children: [
-          {
-            link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
-            label: 'Radbügel für X-Hain (Meldungen nicht mehr möglich)'
-          }
-        ],
+        link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
         border: true
       },
       {
@@ -150,6 +148,18 @@ const config = {
       landing: '/meldungen/radbuegel/friedrichshain-kreuzberg/landing',
       map: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
       new: '/meldungen/radbuegel/friedrichshain-kreuzberg/neu'
+    },
+    katasterKI: {
+      landing: katasterPath || '/',
+      landingNational: '/de',
+      profileBase: `${katasterPath}/profil`,
+      profile: `${katasterPath}/profil/:page`,
+      scenesBase: `${katasterPath}/szenen`,
+      scenes: `${katasterPath}/szenen/:page`,
+      share: `${katasterPath}/teilen`,
+      feedback: `${katasterPath}/auswertung`,
+      iframe: `${katasterPath}/iFrame-test`,
+      email: `${katasterPath}/email`
     },
     signup: '/registrieren',
     login: '/anmelden',
@@ -260,31 +270,77 @@ const config = {
     dimmingOpacity: 0.3,
     bounds: [[13.2826, 52.4615], [13.46391, 52.5544374]]
   },
-  reportsMap: {
-    style: 'mapbox://styles/hejco/cjpnt0cc41ipy2rlpu19jgt7a',
-    bounds: [[13.3651, 52.4658], [13.4945, 52.5479]],
-    maxBounds: [[13.2, 52.4158], [13.6, 52.5979]]
-  },
-  reportsLocateMeMap: {
-    zoomOnGeocodedLocation: 15.5,
-    boundaryGeodataUrl: '/data/Fhain-Xberg-trimmed.json',
-    outofBoundaryText:
-      'Diese Adresse liegt außerhalb Friedrichshain-Kreuzbergs',
-    reverseGeocoderUrl:
-      'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json',
-    paddingInDegree: 0.1,
-    geocoder: {
-      debounceTime: 1000,
-      searchStringMinLength: 3
-    }
+  katasterKI: {
+    zipcodeDistricts: {
+      '10247': ['Friedrichshain-Kreuzberg', 'Pankow'],
+      '10249': ['Friedrichshain-Kreuzberg', 'Pankow'],
+      '10435': ['Mitte', 'Pankow'],
+      '10777': ['Tempelhof-Schöneberg', 'Charlottenburg-Wilmersdorf'],
+      '10779': ['Tempelhof-Schöneberg', 'Charlottenburg-Wilmersdorf'],
+      '10785': ['Friedrichshain-Kreuzberg', 'Tempelhof-Schöneberg', 'Mitte'],
+      '10787': ['Charlottenburg-Wilmersdorf', 'Tempelhof-Schöneberg', 'Mitte'],
+      '10789': ['Charlottenburg-Wilmersdorf', 'Tempelhof-Schöneberg'],
+      '10825': ['Tempelhof-Schöneberg', 'Charlottenburg-Wilmersdorf'],
+      '10827': ['Tempelhof-Schöneberg', 'Charlottenburg-Wilmersdorf'],
+      '10963': ['Friedrichshain-Kreuzberg', 'Mitte'],
+      '10965': ['Friedrichshain-Kreuzberg', 'Neukölln', 'Tempelhof-Schöneberg'],
+      '10967': ['Friedrichshain-Kreuzberg', 'Neukölln'],
+      '12099': ['Neukölln', 'Tempelhof-Schöneberg', 'Neukölln'],
+      '12107': ['Neukölln', 'Tempelhof-Schöneberg'],
+      '12157': ['Tempelhof-Schöneberg', 'Steglitz-Zehlendorf'],
+      '12161': ['Tempelhof-Schöneberg', 'Steglitz-Zehlendorf'],
+      '12163': ['Tempelhof-Schöneberg', 'Steglitz-Zehlendorf'],
+      '12279': ['Steglitz-Zehlendorf', 'Tempelhof-Schöneberg'],
+      '12305': ['Neukölln', 'Tempelhof-Schöneberg'],
+      '12435': ['Treptow-Köpenick', 'Neukölln'],
+      '13088': ['Lichtenberg', 'Pankow'],
+      '13353': ['Charlottenburg-Wilmersdorf', 'Mitte'],
+      '13405': ['Reinickendorf', 'Mitte'],
+      '13407': ['Reinickendorf', 'Mitte'],
+      '13409': ['Reinickendorf', 'Mitte'],
+      '13597': ['Charlottenburg-Wilmersdorf', 'Spandau'],
+      '13599': ['Spandau', 'Reinickendorf'],
+      '13627': ['Charlottenburg-Wilmersdorf', 'Spandau'],
+      '13629': ['Charlottenburg-Wilmersdorf', 'Spandau', 'Reinickendorf'],
+      '14193': ['Steglitz-Zehlendorf', 'Charlottenburg-Wilmersdorf'],
+      '14195': ['Steglitz-Zehlendorf', 'Charlottenburg-Wilmersdorf'],
+      '14197': ['Tempelhof-Schöneberg', 'Charlottenburg-Wilmersdorf']
+    },
+    buttonTimeout: 300,
+    projectId: '01',
+    // this is the article link for the landing page and feedback page
+    tspArticleLink: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
+    tspNewsletterLink: 'https://www.tagesspiegel.de/newsletter/',
+    shareUrl: 'https://interaktiv.tagesspiegel.de/strassencheck/',
+    shareTitle: 'Umfrage Share Title',
+    shareText:
+      'Wie können die Straßen sicher für alle werden? Tolle Umfrage von @FixMyBerlin und @tagesspiegel, bitte teilnehmen!'
   },
   reports: {
+    apiRoute: '/reports',
     dialog: {
-      maxBikeStands: 12,
       imageResizeOptions: {
         maxWidth: 800,
         maxHeight: 800,
         quality: 0.9
+      }
+    },
+    overviewMap: {
+      style: 'mapbox://styles/hejco/cjpnt0cc41ipy2rlpu19jgt7a',
+      bounds: [[13.3651, 52.4658], [13.4945, 52.5479]],
+      maxBounds: [[13.2, 52.4158], [13.6, 52.5979]]
+    },
+    locateMeMap: {
+      zoomOnGeocodedLocation: 15.5,
+      boundaryGeodataUrl: '/data/Fhain-Xberg-trimmed.json',
+      outofBoundaryText:
+        'Diese Adresse liegt außerhalb Friedrichshain-Kreuzbergs',
+      reverseGeocoderUrl:
+        'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json',
+      paddingInDegree: 0.1,
+      geocoder: {
+        debounceTime: 1000,
+        searchStringMinLength: 3
       }
     }
   },
