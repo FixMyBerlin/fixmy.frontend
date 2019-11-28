@@ -55,7 +55,7 @@ const UserVerify = ({ match, location }) => {
         await ky(`${config.apiUrl}/users/confirm/`, {
           method: 'POST',
           json: { uid, token, newsletter: signupNewsletter }
-        }).text();
+        }).json();
       } catch (e) {
         console.log(e);
         return serServerError(
