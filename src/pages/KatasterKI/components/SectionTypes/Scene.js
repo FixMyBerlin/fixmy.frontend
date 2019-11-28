@@ -32,7 +32,7 @@ const RatingTitle = styled(QuestionTitle)`
   font-size: 25px;
 
   ${media.m`
-    margin-top: 15px;
+    margin-top: 10px;
   `}
 `;
 
