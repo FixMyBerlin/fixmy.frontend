@@ -57,7 +57,7 @@ const UserVerify = ({ match, location }) => {
       } catch (e) {
         console.log(e);
         return serServerError(
-          'Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden.'
+          'Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden. Evtl. wurde Ihr Konto auch schon aktiviert.'
         );
       }
     };
