@@ -121,3 +121,28 @@ export const ScrollToTop = () => {
 
   return null;
 };
+
+/**
+ * Register an e-mail address for the Tagesspiegel Checkpoint newsletter
+ */
+export const signupTSPNewsletter = async (email: string) => {
+  const url = 'https://nl.tagesspiegel.de/form.do';
+  const data = {
+    agnCI: 875,
+    agnFN: 'de_doi_confirm',
+    agnMAILINGLIST: 21005,
+    agnSUBSCRIBE: 1,
+    sonderkampagne: 'lab',
+    submit: true,
+    email
+  };
+
+  const params = new URLSearchParams(data);
+
+  fetch(url, {
+    method: 'POST',
+    body: params,
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+  });
+};

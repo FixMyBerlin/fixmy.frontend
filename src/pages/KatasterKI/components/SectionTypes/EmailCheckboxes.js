@@ -15,6 +15,7 @@ import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
 import Checkbox from '~/pages/KatasterKI/components/Checkbox';
 
 import api from '~/pages/KatasterKI/api';
+import { signupTSPNewsletter } from '~/pages/KatasterKI/utils';
 
 import emailImageSrc from '~/images/reports/letter.png';
 
@@ -65,18 +66,6 @@ const initialNewsletterConfig = [
   }
 ];
 
-const submitFMCSignup = (data) => {
-  console.log(
-    'Signing up FMC newsletter with newsletter option',
-    data.newsletter
-  );
-  api.submitNewsletter(data);
-};
-
-const submitTSPForm = () => {
-  console.log('Submitting TSP form');
-};
-
 const Email = (props) => {
   if (!props.isTosAccepted) {
     return <Redirect to={config.routes.katasterKI.landing} />;
@@ -89,23 +78,23 @@ const Email = (props) => {
   );
 
   const handleSend = () => {
-    // @TODO: send email to mail provider after successfull response:
     setEmailSent(true);
+
     const shouldSignupFMCNewsletter = newsletterOptions.find(
       (opt) => opt.id === 'fixmy-newsletter'
     ).checked;
-    const shouldSignupTSP = newsletterOptions.find(
-      (opt) => opt.id === 'tsp-newsletter'
-    ).checked;
-
-    submitFMCSignup({
+    api.submitNewsletter({
       email,
       username: email,
       password: uuidv4(),
       newsletter: shouldSignupFMCNewsletter
     });
 
-    if (shouldSignupTSP) submitTSPForm();
+    const shouldSignupTSP = newsletterOptions.find(
+      (opt) => opt.id === 'tsp-newsletter'
+    ).checked;
+
+    if (shouldSignupTSP) signupTSPNewsletter(email);
   };
 
   const onToggle = (evt) => {
