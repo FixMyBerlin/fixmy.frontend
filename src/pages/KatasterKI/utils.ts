@@ -128,12 +128,12 @@ export const ScrollToTop = () => {
 export const signupTSPNewsletter = async (email: string) => {
   const url = 'https://nl.tagesspiegel.de/form.do';
   const data = {
-    agnCI: 875,
+    agnCI: '875',
     agnFN: 'de_doi_confirm',
-    agnMAILINGLIST: 21005,
-    agnSUBSCRIBE: 1,
+    agnMAILINGLIST: '21005',
+    agnSUBSCRIBE: '1',
     sonderkampagne: 'lab',
-    submit: true,
+    submit: 'true',
     email
   };
 
