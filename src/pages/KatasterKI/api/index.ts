@@ -13,8 +13,10 @@ import handleSubmitAnswer from './answer';
 import handleSubmitNewsletter from './newsletter';
 import { getEndpointURL } from './utils';
 
+const MOCK_RESPONSES = false;
+
 async function submitAnswer(answerRequest: AnswerRequest): Promise<void> {
-  if (process.env.NODE_ENV === 'testing') {
+  if (MOCK_RESPONSES) {
     console.log('Submitted rating');
   } else {
     return handleSubmitAnswer({
@@ -28,7 +30,7 @@ async function submitAnswer(answerRequest: AnswerRequest): Promise<void> {
 async function submitNewsletter(
   newsletterRequest: NewsletterRequest
 ): Promise<NewsletterResponse> {
-  if (process.env.NODE_ENV === 'testing') {
+  if (MOCK_RESPONSES) {
     return {
       email: 'test-fmc@abgeordnetenwatch.de',
       username: 'test8589340-5@abgeordnetenwatch.de',
@@ -42,7 +44,7 @@ async function submitNewsletter(
 async function submitProfile(
   profileRequest: ProfileRequest
 ): Promise<ProfileResponse> {
-  if (process.env.NODE_ENV === 'testing') {
+  if (MOCK_RESPONSES) {
     return {
       ratings_total: 54,
       scenes: ['01_MS_C_139', '01_MS_C_27']
@@ -58,7 +60,7 @@ async function submitProfile(
 async function submitPerspective(
   perspectiveRequest: PerspectiveRequest
 ): Promise<PerspectiveResponse> {
-  if (process.env.NODE_ENV === 'testing') {
+  if (MOCK_RESPONSES) {
     return {
       ratings_total: 115,
       scenes: ['01_MS_C_73']
