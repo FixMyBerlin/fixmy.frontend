@@ -6,7 +6,7 @@ import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
 
 const Headline = styled.h1`
-  font-size: 40px;
+  font-size: 28px;
   flex-grow: 1;
   line-height: 1.3;
   font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
@@ -15,7 +15,7 @@ const Headline = styled.h1`
   hyphens: auto;
 
   ${media.m`
-    font-size: 28px;
+    font-size: 40px;
   `}
 `;
 
