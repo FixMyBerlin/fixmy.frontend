@@ -148,7 +148,7 @@ const scenesConfig = (
   }));
 
   let sectionConfig = [];
-  if (sceneGroupCounter === 0) sectionConfig.push(titleScreen);
+  if (sceneGroupCounter === 1) sectionConfig.push(titleScreen);
 
   sectionConfig.push(...sceneScreens);
 
