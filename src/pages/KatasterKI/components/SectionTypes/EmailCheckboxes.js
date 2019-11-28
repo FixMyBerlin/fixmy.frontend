@@ -157,7 +157,7 @@ const Email = (props) => {
     <>
       <QuestionTitle>
         Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der
-        Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage
+        Tagesspiegel und FixMyBerlin Sie über die Ergebnisse der Umfrage
         informieren.
       </QuestionTitle>
 
