@@ -107,8 +107,8 @@ const scenesConfig = (
   const perspectiveChangeScreen = {
     type: 'perspective_change',
     name: 'perspectiveChange',
-    title:
-      'Vielen Dank, Sie können mit dieser Perspektive weiter machen oder jetzt die Straße aus einer anderen Sicht bewerten',
+    title: `Sie haben bisher aus der ${perspectiveName} bewertet. Nun können Sie die Straße aus einer anderen Perspektive bewerten.`,
+    helper: 'Sie können die Perspektive später noch einmal wechseln.',
     options: Object.keys(perspectiveNames).map((p) => ({
       label: perspectiveNames[p],
       icon: perspectiveIcons[p],
