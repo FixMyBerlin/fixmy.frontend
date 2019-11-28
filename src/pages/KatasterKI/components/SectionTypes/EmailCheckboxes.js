@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+import uuidv4 from 'uuid/v4';
 
 import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
@@ -12,6 +13,9 @@ import Input from '~/pages/KatasterKI/components/Input';
 import Paragraph from '~/pages/KatasterKI/components/Paragraph';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
 import Checkbox from '~/pages/KatasterKI/components/Checkbox';
+
+import api from '~/pages/KatasterKI/api';
+import { signupTSPNewsletter } from '~/pages/KatasterKI/utils';
 
 import emailImageSrc from '~/images/reports/letter.png';
 
@@ -62,6 +66,13 @@ const initialNewsletterConfig = [
   }
 ];
 
+/**
+ * Return true if param email is a valid e-mail address
+ *
+ * @param {string} email Address to be tested
+ */
+const checkEmail = (email) => /(.+)@(.+){2,}\.(.+){2,}/.test(email);
+
 const Email = (props) => {
   if (!props.isTosAccepted) {
     return <Redirect to={config.routes.katasterKI.landing} />;
@@ -69,13 +80,34 @@ const Email = (props) => {
 
   const [emailSent, setEmailSent] = useState(false);
   const [email, setEmail] = useState('');
+  const [isEmailValid, setEmailValid] = useState(checkEmail(email));
   const [newsletterOptions, setNewsletterOptions] = useState(
     initialNewsletterConfig
   );
 
-  const onSend = () => {
-    // @TODO: send email to mail provider after successfull response:
+  const handleUpdate = (value) => {
+    setEmail(value);
+    setEmailValid(checkEmail(value));
+  };
+
+  const handleSend = () => {
     setEmailSent(true);
+
+    const shouldSignupFMCNewsletter = newsletterOptions.find(
+      (opt) => opt.id === 'fixmy-newsletter'
+    ).checked;
+    api.submitNewsletter({
+      email,
+      username: email,
+      password: uuidv4(),
+      newsletter: shouldSignupFMCNewsletter
+    });
+
+    const shouldSignupTSP = newsletterOptions.find(
+      (opt) => opt.id === 'tsp-newsletter'
+    ).checked;
+
+    if (shouldSignupTSP) signupTSPNewsletter(email);
   };
 
   const onToggle = (evt) => {
@@ -84,15 +116,14 @@ const Email = (props) => {
     setNewsletterOptions((options) =>
       options.map((option) => {
         if (option.id === name) {
-          option.checked = !option.checked;
+          return { ...option, checked: !option.checked };
         }
-
         return option;
       })
     );
   };
 
-  const [isLoading, onClick] = useHandlerTimeout(onSend);
+  const [isLoading, onClick] = useHandlerTimeout(handleSend);
 
   if (emailSent) {
     return (
@@ -135,9 +166,9 @@ const Email = (props) => {
           <Input
             type="email"
             placeholder="Ihre E-Mailadresse"
-            onChange={(evt) => setEmail(evt.target.value)}
+            onChange={(evt) => handleUpdate(evt.target.value)}
             value={email}
-            css={{ marginBottom: 20 }}
+            css={{ marginBottom: '2em' }}
           />
 
           {newsletterOptions.map((option) => (
@@ -157,7 +188,7 @@ const Email = (props) => {
 
           <Button
             css={{ marginTop: 20 }}
-            disabled={!email}
+            disabled={!isEmailValid}
             onClick={onClick}
             isLoading={isLoading}
           >
