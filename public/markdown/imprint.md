@@ -9,9 +9,9 @@ Gesellschafter: Boris Hekele und Heiko Rintelen
 
 Verantwortlicher i.S.v. § 55 Rundfunkstaatsvertrag (RStV): Heiko Rintelen<br />
 
-Büroadresse: c/o CityLAB Berlin />
-Platz der Luftbrücke 4 />
-12101 Berlin />
+Büroadresse: c/o CityLAB Berlin<br />
+Platz der Luftbrücke 4<br />
+12101 Berlin<br />
 
 
 ## Feedback / Kontakt
