@@ -9,6 +9,8 @@ https://embed.fixmyberlin.de
 
 ### Bildmaterial
 Bildmaterial zur freien Verwendung durch die Presse: <br>
+- [Screenshots Umfrage Straßencheck (Zip-Datei mit 6 Bildern)](https://fixmyberlin.de/uploads/press/Strassencheck_Screenshots_©FixMyBerlin.zip "Screenshots-Umfrage Straßencheck")
+- [Renderings Szenarien Umfrage Straßencheck (Zip-Datei mit 11 Bildern)](https://fixmyberlin.de/uploads/press/Strassencheck-Szenarien-©FixMyBerlin.zip "Renderings Szenarien Umfrage Straßencheck")
 - [Mock-Up Meldedialog XHain Handheld](https://fixmyberlin.de/uploads/press/Meldedialog_MockUp_FixMyBerlin.png "MockUp-Meldedialog XHain Handheld")
 - [Mock-Up Meldedialog XHain Screens](https://fixmyberlin.de/uploads/press/MockUp_4screens_Meldedialog.jpg "MockUp-Meldedialog XHain Screens")
 - [Screenshot_Planung-Uebersicht](https://fixmyberlin.de/uploads/press/Planungsansicht_fixmyberlin.jpg "Screenshot-Planungen")
@@ -18,11 +20,15 @@ Bildmaterial zur freien Verwendung durch die Presse: <br>
 - [Screenshot_Happy-Bike-Level-schlecht+sehrschlecht](https://fixmyberlin.de/uploads/press/Happy-Bike-Level_schlecht_fixmyberlin.jpg "Screenshot-Happy-Bike-Level-gut")
 
 ### Pressemitteilungen
++ 02.12.2019 - [Start Umfrage Straßencheck mit Tagesspiegel Berlin](https://fixmyberlin.de/uploads/press/2019_12_02_PM_Start_Strassencheck.pdf "Start Umfrage Straßencheck mit Tagesspiegel Berlin") FixMyBerlin und Tagesspiegel Berlin starten die Umfrage Straßencheck zur Sicherheit von Berlins Straßen.
 + 11.10.2019 - [Abschluss Meldedialog XHain](https://fixmyberlin.de/uploads/press/2019_10_10_240_PM_Meldedialog_Radbuegel.pdf "PM-Launch-Meldedialog XHain") Erfolgreiche Kooperation zwischen Bezirksamt und FixMyBerlin: 1.200 Meldungen für Fahrradbügel im Bezirk.
 + 11.09.2019 - [Launch Meldedialog XHain](https://fixmyberlin.de/uploads/press/2019_09_02_PM_Kooperation_FixMyBerlin_XHain.pdf "PM-Launch-Meldedialog XHain") Bezirksamt Friedrichshain-Kreuzberg und FixMyBerlin starten digitalen Meldedialog für bessere Fahrradstellplätze.
 + 19.09.2018 - [Launch FixMyBerlin](https://fixmyberlin.de/uploads/press/pressemitteilung_launch_fixmyberlin_20180919.pdf "PM-Launch-FixMyBerlin") Ab heute zeigt fixmyberlin.de, wo in Berlin neue Radwege entstehen und wie sicher die Berliner Hauptstraßen für Radfahrende sind.
 
 ### Pressespiegel
++ 15.10.2019 - Industrie.de - [Sechs Unternehmen pitchen um den Smart Country Startup Award](https://industrie.de/top/sechs-unternehmen-pitchen-um-den-smart-country-startup-award/)
++ 15.10.2019 - Berliner Woche - [Mehr als 1200 Bügel gemeldet – Zuwachs noch in diesem Jahr geplant](https://www.berliner-woche.de/friedrichshain-kreuzberg/c-verkehr/zuwachs-noch-in-diesem-jahr-geplant_a235930)
++ 13.10.2019 - RBB - [City Lab des Senats soll Berlin in die Zukunft bringen](https://www.rbb24.de/wirtschaft/beitrag/2019/10/city-lab-berlin-tempelhof.html)
 + 09.10.2019 - inforadio - [Fahrradstadt Berlin: Ein Startup beschleunigt die Planung](https://www.inforadio.de/programm/schema/sendungen/wirtschaft_aktuell/201910/09/375762.html)
 + 20.09.2019 - Berliner Abendblatt - [Friedrichshain-Kreuzberg: 700 neue Parkplätze für Fahrräder](https://www.abendblatt-berlin.de/2019/09/20/friedrichshain-kreuzberg-700-neue-parkplaetze-fuer-fahrraeder/)
 + 15.09.2019 - Berliner Kurier - [700 neue Fahrradbügel: Berlin kann auch schnell](https://www.berliner-kurier.de/berlin/kiez---stadt/700-neue-fahrradbuegel-berlin-kann-auch-schnell--33172026)
