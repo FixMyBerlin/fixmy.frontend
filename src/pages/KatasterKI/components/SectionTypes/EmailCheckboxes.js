@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+import uuidv4 from 'uuid/v4';
 
 import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
@@ -12,6 +13,9 @@ import Input from '~/pages/KatasterKI/components/Input';
 import Paragraph from '~/pages/KatasterKI/components/Paragraph';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
 import Checkbox from '~/pages/KatasterKI/components/Checkbox';
+
+import api from '~/pages/KatasterKI/api';
+import { signupTSPNewsletter } from '~/pages/KatasterKI/utils';
 
 import emailImageSrc from '~/images/reports/letter.png';
 
@@ -57,10 +61,17 @@ const initialNewsletterConfig = [
   {
     id: 'tsp-newsletter',
     label:
-      'Ich wünsche mir weitere interessante Angebote der Tagesspiegel-Gruppe per Email.',
+      'Ich wünsche mir weitere interessante Angebote der Tagesspiegel-Gruppe per E-Mail.',
     checked: false
   }
 ];
+
+/**
+ * Return true if param email is a valid e-mail address
+ *
+ * @param {string} email Address to be tested
+ */
+const checkEmail = (email) => /(.+)@(.+){2,}\.(.+){2,}/.test(email);
 
 const Email = (props) => {
   if (!props.isTosAccepted) {
@@ -69,13 +80,34 @@ const Email = (props) => {
 
   const [emailSent, setEmailSent] = useState(false);
   const [email, setEmail] = useState('');
+  const [isEmailValid, setEmailValid] = useState(checkEmail(email));
   const [newsletterOptions, setNewsletterOptions] = useState(
     initialNewsletterConfig
   );
 
-  const onSend = () => {
-    // @TODO: send email to mail provider after successfull response:
+  const handleUpdate = (value) => {
+    setEmail(value);
+    setEmailValid(checkEmail(value));
+  };
+
+  const handleSend = () => {
     setEmailSent(true);
+
+    const shouldSignupFMCNewsletter = newsletterOptions.find(
+      (opt) => opt.id === 'fixmy-newsletter'
+    ).checked;
+    api.submitNewsletter({
+      email,
+      username: email,
+      password: uuidv4(),
+      newsletter: shouldSignupFMCNewsletter
+    });
+
+    const shouldSignupTSP = newsletterOptions.find(
+      (opt) => opt.id === 'tsp-newsletter'
+    ).checked;
+
+    if (shouldSignupTSP) signupTSPNewsletter(email);
   };
 
   const onToggle = (evt) => {
@@ -84,23 +116,19 @@ const Email = (props) => {
     setNewsletterOptions((options) =>
       options.map((option) => {
         if (option.id === name) {
-          option.checked = !option.checked;
+          return { ...option, checked: !option.checked };
         }
-
         return option;
       })
     );
   };
 
-  const [isLoading, onClick] = useHandlerTimeout(onSend);
+  const [isLoading, onClick] = useHandlerTimeout(handleSend);
 
   if (emailSent) {
     return (
       <>
-        <QuestionTitle>
-          Danke, wir haben Ihnen eine Email geschickt. Klicken Sie dort auf den
-          Link zur Bestätigung.
-        </QuestionTitle>
+        <QuestionTitle>{props.thankyou}</QuestionTitle>
 
         <EmailWrapper>
           <Flex
@@ -110,8 +138,8 @@ const Email = (props) => {
           >
             <EmailImg />
             <Paragraph>
-              Sobald Sie den Link aktiviert haben, bekommen Sie eine Email, wenn
-              Auswertungen der Umfrage online sind.
+              Sobald Sie den Link aktiviert haben, bekommen Sie eine E-Mail,
+              wenn Auswertungen der Umfrage online sind.
             </Paragraph>
             <Button css={{ marginTop: 'auto' }} onClick={props.next}>
               Weiter in der Umfrage
@@ -124,20 +152,16 @@ const Email = (props) => {
 
   return (
     <>
-      <QuestionTitle>
-        Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der
-        Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage
-        informieren.
-      </QuestionTitle>
+      <QuestionTitle>{props.title}</QuestionTitle>
 
       <EmailWrapper>
         <Flex css={{ flexGrow: 1 }} alignItems="center" flexDirection="column">
           <Input
             type="email"
-            placeholder="Ihre E-Mailadresse"
-            onChange={(evt) => setEmail(evt.target.value)}
+            placeholder={props.placeholder}
+            onChange={(evt) => handleUpdate(evt.target.value)}
             value={email}
-            css={{ marginBottom: 20 }}
+            css={{ marginBottom: '2em' }}
           />
 
           {newsletterOptions.map((option) => (
@@ -157,7 +181,7 @@ const Email = (props) => {
 
           <Button
             css={{ marginTop: 20 }}
-            disabled={!email}
+            disabled={!isEmailValid}
             onClick={onClick}
             isLoading={isLoading}
           >

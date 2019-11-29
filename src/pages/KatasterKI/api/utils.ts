@@ -37,8 +37,8 @@ interface getEndpointURL {
     sessionId: string,
     sceneID: null
   ): string;
-
   (endpoint: 'answer', sessionId: string, sceneID: string): string;
+  (endpoint: 'newsletter', sessionId: null, sceneID: null): string;
 }
 
 /** Build an endpoint URL given an endpoint configured in the global config
@@ -55,6 +55,7 @@ export const getEndpointURL: getEndpointURL = (
     return `${config.apiUrl}/survey/${projectId}/${sessionId}`;
   if (endpoint === 'answer')
     return `${config.apiUrl}/survey/${projectId}/${sessionId}/ratings/${sceneID}`;
+  if (endpoint === 'newsletter') return `${config.apiUrl}/users/create`;
 
   throw Error(`Endpoint ${endpoint} has no configured backend route`);
 };

@@ -24,7 +24,15 @@ const SingleChoiceWrapper = styled.div`
   `};
 `;
 
-const PerspectiveChange = ({ title, options, handleChange, next }) => {
+const Helper = styled.p`
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+  line-height: 1.4em;
+`;
+
+const PerspectiveChange = ({ title, options, helper, handleChange, next }) => {
   const onClick = (option) => {
     handleChange({ nextPerspective: option.value });
     next();
@@ -53,7 +61,7 @@ const PerspectiveChange = ({ title, options, handleChange, next }) => {
         );
       })}
 
-      <ShareButton style={{ marginTop: 'auto' }} />
+      <Helper>{helper}</Helper>
     </SingleChoiceWrapper>
   );
 };

@@ -93,7 +93,7 @@ const Feedback = ({
           <Button onClick={next}>Mehr Situationen bewerten</Button>
 
           {isEmbedded ? (
-            <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>
+            <GhostButton css={{ marginTop: 10 }} onClick={handleQuit}>
               Umfrage beenden
             </GhostButton>
           ) : (

@@ -39,6 +39,25 @@ export interface AnswerRequest extends Answer {
   sessionID: string;
 }
 
+export interface NewsletterRequest {
+  email: string;
+  username: string;
+  password: string;
+  newsletter: boolean;
+}
+
+export type NewsletterResponse = NewsletterResponseOK | NewsletterResponseError;
+
+type NewsletterResponseError = {
+  [field: string]: [string];
+};
+
+type NewsletterResponseOK = {
+  email: string;
+  username: string;
+  id: number;
+};
+
 export interface PerspectiveRequest {
   perspective: Perspective;
   sessionID: string;

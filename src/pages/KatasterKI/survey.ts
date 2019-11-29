@@ -40,51 +40,22 @@ export const getSceneImageSrc = (id) => {
 const profileConfig = (userGroup: UserGroup) => {
   const rv = [...defaultProfileConfig];
 
-  // console.table(rv);
-  // console.log(userGroup);
-
   // Remove some questions for some user groups
   if (
     userGroup === UserGroup.bicycle ||
     userGroup === UserGroup.potentialBicycle
   ) {
     const q3 = rv.findIndex((sec) => sec.name === 'bikeReasons');
-    // console.log('Removing q3 bikeReasons', rv[q3].name, q3);
     rv.splice(q3, 1);
   } else if (
     userGroup === UserGroup.car ||
     userGroup === UserGroup.pedestrian
   ) {
     const q1 = rv.findIndex((sec) => sec.name === 'bicycleUse');
-    // console.log('Removing q1 bicycleUse', rv[q1].name, q1);
     rv.splice(q1, 1);
     const q2 = rv.findIndex((sec) => sec.name === 'motivationalFactors');
-    // console.log('Removing q2 motivationalFactors', rv[q2].name, q2);
     rv.splice(q2, 1);
   }
-
-  // Shuffle order of answer options if the section config contains
-  // an option randomize
-
-  // for (let i = 0; i < rv.length; i++) {
-  //   if (rv[i].randomize) {
-  //     if (rv[i].type === 'radiogroups') {
-  //       shuffle(rv[i].radiogroups);
-  //     } else {
-  //       shuffle(rv[i].options);
-  //       // Find options that define an input textbox and - if one is found
-  //       // - move it to the end of the options array
-  //       const inputFieldIndex = rv[i].options.findIndex(
-  //         (val) => val.input === true
-  //       );
-  //       if (inputFieldIndex > -1) {
-  //         const inputField = rv[i].options.splice(inputFieldIndex, 1)[0];
-  //         // @ts-ignore
-  //         rv[i].options.push(inputField);
-  //       }
-  //     }
-  //   }
-  // }
 
   return rv;
 };
@@ -107,8 +78,8 @@ const scenesConfig = (
   const perspectiveChangeScreen = {
     type: 'perspective_change',
     name: 'perspectiveChange',
-    title:
-      'Vielen Dank, Sie können mit dieser Perspektive weiter machen oder jetzt die Straße aus einer anderen Sicht bewerten',
+    title: `Sie haben bisher aus der ${perspectiveName} bewertet. Nun können Sie die Straße aus einer anderen Perspektive bewerten.`,
+    helper: 'Sie können die Perspektive später noch einmal wechseln.',
     options: Object.keys(perspectiveNames).map((p) => ({
       label: perspectiveNames[p],
       icon: perspectiveIcons[p],
@@ -119,14 +90,17 @@ const scenesConfig = (
   const feedbackScreen = {
     type: 'feedback',
     title:
-      'Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage informieren.',
+      'Tragen Sie hier Ihre E-Mail-Adresse ein, wenn Sie möchten, dass der Tagesspiegel und FixMyBerlin Sie über die Ergebnisse der Umfrage informieren.',
     name: 'feedback'
   };
 
   const emailScreen = {
     type: 'email',
     title:
-      'Tragen Sie hier Ihre Emailadresse ein, wenn Sie möchten, dass der Tagesspiegel und Fixmyberlin Sie über die Ergebnisse der Umfrage informieren.',
+      'Tragen Sie hier Ihre E-Mail-Adresse ein, wenn Sie möchten, dass der Tagesspiegel und FixMyBerlin Sie über die Ergebnisse der Umfrage informieren.',
+    placeholder: 'Ihre E-Mail-Adresse',
+    thankyou:
+      'Danke, wir haben Ihnen eine E-Mail geschickt. Klicken Sie dort auf den Link zur Bestätigung.',
     name: 'email'
   };
 
@@ -147,7 +121,10 @@ const scenesConfig = (
     }))
   }));
 
-  const sectionConfig = [titleScreen, ...sceneScreens];
+  let sectionConfig = [];
+  if (sceneGroupCounter === 1) sectionConfig.push(titleScreen);
+
+  sectionConfig.push(...sceneScreens);
 
   if (sceneGroupCounter % 2 === 1) {
     sectionConfig.push(perspectiveChangeScreen);
