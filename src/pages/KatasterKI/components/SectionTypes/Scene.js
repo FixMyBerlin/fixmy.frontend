@@ -9,7 +9,6 @@ import { getSceneImageSrc } from '~/pages/KatasterKI/survey';
 import loadingImage from '~/images/strassencheck/scene-loading.jpg';
 
 const SceneWrapper = styled.div`
-  overflow-x: hidden;
   margin: 0;
   width: 100%;
   max-width: none;
