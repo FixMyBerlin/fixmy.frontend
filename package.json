@@ -8,11 +8,7 @@
     "katasterStandalonePath": ""
   },
   "scripts": {
-<<<<<<< HEAD
-    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
-=======
     "build": "cross-env NODE_ENV=production CONFIG_ENV=production webpack --config webpack/webpack.config.prod.js",
->>>>>>> origin/develop
     "deploy": "npm run build && netlify deploy",
     "start": "cross-env CONFIG_ENV=staging webpack-dev-server --config webpack/webpack.config.dev.js",
     "dev": "webpack-dev-server --config webpack/webpack.config.dev.js",
