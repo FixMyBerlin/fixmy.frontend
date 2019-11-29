@@ -9,8 +9,8 @@ https://embed.fixmyberlin.de
 
 ### Bildmaterial
 Bildmaterial zur freien Verwendung durch die Presse: <br>
-- [Screenshots Umfrage Straßencheck (6 Bilder)](https://fixmyberlin.de/uploads/press/Strassencheck_Screenshots_©FixMyBerlin.zip "Screenshots-Umfrage Straßencheck")
-- [Renderings Szenarien Umfrage Straßencheck (11 Bilder)](https://fixmyberlin.de/uploads/press/Strassencheck-Szenarien-©FixMyBerlin.zip "Renderings Szenarien Umfrage Straßencheck")
+- [Screenshots Umfrage Straßencheck (Zip-Datei mit 6 Bildern)](https://fixmyberlin.de/uploads/press/Strassencheck_Screenshots_©FixMyBerlin.zip "Screenshots-Umfrage Straßencheck")
+- [Renderings Szenarien Umfrage Straßencheck (Zip-Datei mit 11 Bildern)](https://fixmyberlin.de/uploads/press/Strassencheck-Szenarien-©FixMyBerlin.zip "Renderings Szenarien Umfrage Straßencheck")
 - [Mock-Up Meldedialog XHain Handheld](https://fixmyberlin.de/uploads/press/Meldedialog_MockUp_FixMyBerlin.png "MockUp-Meldedialog XHain Handheld")
 - [Mock-Up Meldedialog XHain Screens](https://fixmyberlin.de/uploads/press/MockUp_4screens_Meldedialog.jpg "MockUp-Meldedialog XHain Screens")
 - [Screenshot_Planung-Uebersicht](https://fixmyberlin.de/uploads/press/Planungsansicht_fixmyberlin.jpg "Screenshot-Planungen")
