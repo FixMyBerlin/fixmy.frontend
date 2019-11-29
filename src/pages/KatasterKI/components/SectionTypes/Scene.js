@@ -9,17 +9,15 @@ import { getSceneImageSrc } from '~/pages/KatasterKI/survey';
 import loadingImage from '~/images/strassencheck/scene-loading.jpg';
 
 const SceneWrapper = styled.div`
-  margin: 0 auto;
+  overflow-x: hidden;
+  margin: 0;
+  width: 100%;
+  max-width: none;
 
-  ${media.s`
+  @media (max-height: 700px) {
+    margin: 0 auto;
     max-width: 500px;
-  `}
-
-  ${media.xl`
-    margin: 0;
-    width: 100%;
-    max-width: none;
-  `}
+  }
 `;
 
 const ImageWrapper = styled.div`
