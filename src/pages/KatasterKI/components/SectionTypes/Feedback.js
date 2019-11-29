@@ -100,7 +100,7 @@ const Feedback = ({
             <GhostButton
               css={{ marginTop: 10 }}
               onClick={() => {
-                window.location.href = config.katasterKI.tspArticleLink;
+                window.open(config.katasterKI.tspArticleLink);
               }}
             >
               Informationen über das Projekt
