@@ -105,7 +105,16 @@ describe('Kastaster survey', () => {
   });
 });
 
-// Utility functions TODO: move to commands
+      it(`links to the first scenes step`, () => {
+        cy.get('@zipProceedBtn').click();
+        cy.location('pathname').should(
+          'eq',
+          `${config.routes.katasterKI.scenesBase}/1`
+        );
+      });
+    });
+  });
+});
 
 function goToStep(step = 1) {
   cy.visit(`${config.routes.katasterKI.profileBase}/${step}`);
@@ -121,13 +130,11 @@ function testSingleChoice(step) {
     });
 
     it('has a single choice buttons which links to the next step', () => {
-      cy.get('@singleChoiceBtn')
-        .click();
+      cy.get('@singleChoiceBtn').click();
       cy.location('pathname').should(
         'eq',
         `${config.routes.katasterKI.profileBase}/${step + 1}`
       );
     });
-  }
-)
+  });
 }

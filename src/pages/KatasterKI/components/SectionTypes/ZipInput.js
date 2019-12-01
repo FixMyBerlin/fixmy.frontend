@@ -91,6 +91,7 @@ const ZipInput = (props) => {
         placeholder="PLZ"
         onChange={onZipChange}
         value={props.currentValue}
+        data-cy="kat-zip-input"
       />
 
       {hasDistrictOptions && (
@@ -124,6 +125,7 @@ const ZipInput = (props) => {
           css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           disabled={isButtonDisabled}
           isLoading={isLoading}
+          data-cy="kat-zip-proceed-btn"
         >
           Weiter
         </Button>
