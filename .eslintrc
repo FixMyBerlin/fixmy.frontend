@@ -6,7 +6,7 @@
     "prettier",
     "prettier/react"
   ],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "cypress"],
   "rules": {
     "prettier/prettier": ["warn"],
     "react/jsx-filename-extension": [
@@ -18,7 +18,8 @@
   },
   "env": {
     "browser": true,
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
   },
   "settings": {
     "import/resolver": {
