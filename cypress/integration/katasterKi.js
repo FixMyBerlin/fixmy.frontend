@@ -82,6 +82,28 @@ describe('Kastaster survey', () => {
   });
 
   describe('step 5', () => {
-    // TODO: test if moving one slider handle will disable the proceed button
+    before(() => {
+      goToStep(5);
+
+      // get references on proceed button and slider handle
+      cy.get('[data-cy=kat-transport-rating-proceed-btn]').as('trProceedBtn');
+
+      cy.get('[data-cy=kat-transport-rating-wrapper]')
+        .find('.rc-slider-handle')
+        .first()
+        .as('sliderHandle');
+    });
+
+    it('enables the proceed-button after a slider handle has been dragged', () => {
+      // Cypress describes testing an input of type range [here](https://docs.cypress.io/api/commands/trigger.html#Change-Event).
+      // But the lib used to implement the slider uses divs.
+      // Thus moving the slider programmatically is done a bit hacky:
+      cy.get('@sliderHandle')
+        .trigger('mousedown')
+        .type('{leftarrow}')
+        .type('{rightarrow}');
+
+      cy.get('@trProceedBtn').should('have.prop', 'disabled', false);
+    });
   });
 });
