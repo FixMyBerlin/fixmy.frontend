@@ -40,51 +40,22 @@ export const getSceneImageSrc = (id) => {
 const profileConfig = (userGroup: UserGroup) => {
   const rv = [...defaultProfileConfig];
 
-  // console.table(rv);
-  // console.log(userGroup);
-
   // Remove some questions for some user groups
   if (
     userGroup === UserGroup.bicycle ||
     userGroup === UserGroup.potentialBicycle
   ) {
     const q3 = rv.findIndex((sec) => sec.name === 'bikeReasons');
-    // console.log('Removing q3 bikeReasons', rv[q3].name, q3);
     rv.splice(q3, 1);
   } else if (
     userGroup === UserGroup.car ||
     userGroup === UserGroup.pedestrian
   ) {
     const q1 = rv.findIndex((sec) => sec.name === 'bicycleUse');
-    // console.log('Removing q1 bicycleUse', rv[q1].name, q1);
     rv.splice(q1, 1);
     const q2 = rv.findIndex((sec) => sec.name === 'motivationalFactors');
-    // console.log('Removing q2 motivationalFactors', rv[q2].name, q2);
     rv.splice(q2, 1);
   }
-
-  // Shuffle order of answer options if the section config contains
-  // an option randomize
-
-  // for (let i = 0; i < rv.length; i++) {
-  //   if (rv[i].randomize) {
-  //     if (rv[i].type === 'radiogroups') {
-  //       shuffle(rv[i].radiogroups);
-  //     } else {
-  //       shuffle(rv[i].options);
-  //       // Find options that define an input textbox and - if one is found
-  //       // - move it to the end of the options array
-  //       const inputFieldIndex = rv[i].options.findIndex(
-  //         (val) => val.input === true
-  //       );
-  //       if (inputFieldIndex > -1) {
-  //         const inputField = rv[i].options.splice(inputFieldIndex, 1)[0];
-  //         // @ts-ignore
-  //         rv[i].options.push(inputField);
-  //       }
-  //     }
-  //   }
-  // }
 
   return rv;
 };

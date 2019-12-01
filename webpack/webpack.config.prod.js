@@ -33,7 +33,7 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      siteUrl: Config.prodUrl,
+      siteUrl: process.env.KATASTER_PATH != null ? '/strassencheck' : Config.prodUrl,
       template: Path.resolve(__dirname, INDEX_HTML),
       minify: false
     }),
