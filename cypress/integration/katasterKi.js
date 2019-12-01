@@ -1,8 +1,6 @@
-import config from '../../config';
+/* eslint-disable no-use-before-define*/
 
-function goToStep(step = 1) {
-  cy.visit(`${config.routes.katasterKI.profileBase}/${step}`);
-}
+import config from '../../config';
 
 describe('Kastaster survey', () => {
   describe('landing page', () => {
@@ -42,21 +40,7 @@ describe('Kastaster survey', () => {
   });
 
   describe('step 2 and 3', () => {
-    [2, 3].forEach((step) => {
-      before(() => {
-        goToStep(step);
-      });
-
-      it('has a single choice buttons which links to the next step', () => {
-        cy.get('[data-cy=kat-singlechoice-btn]')
-          .first()
-          .click();
-        cy.location('pathname').should(
-          'eq',
-          `${config.routes.katasterKI.profileBase}/${step + 1}`
-        );
-      });
-    });
+    [2, 3].forEach(testSingleChoice);
   });
 
   describe('step 4', () => {
@@ -116,3 +100,25 @@ describe('Kastaster survey', () => {
     });
   });
 });
+
+// Utility functions TODO: move to commands
+
+function goToStep(step = 1) {
+  cy.visit(`${config.routes.katasterKI.profileBase}/${step}`);
+}
+
+function testSingleChoice(step) {
+  before(() => {
+    goToStep(step);
+  });
+
+  it('has a single choice buttons which links to the next step', () => {
+    cy.get('[data-cy=kat-singlechoice-btn]')
+      .first()
+      .click();
+    cy.location('pathname').should(
+      'eq',
+      `${config.routes.katasterKI.profileBase}/${step + 1}`
+    );
+  });
+}
