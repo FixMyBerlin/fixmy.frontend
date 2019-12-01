@@ -1,4 +1,4 @@
-/* eslint-disable no-use-before-define*/
+/* eslint-disable no-use-before-define */
 
 import config from '../../config';
 
@@ -99,6 +99,10 @@ describe('Kastaster survey', () => {
       );
     });
   });
+
+  describe('step 6, 7 and 8', () => {
+    [6, 7, 8].forEach(testSingleChoice);
+  });
 });
 
 // Utility functions TODO: move to commands
@@ -108,17 +112,22 @@ function goToStep(step = 1) {
 }
 
 function testSingleChoice(step) {
-  before(() => {
-    goToStep(step);
-  });
+  describe(`step ${step}`, () => {
+    before(() => {
+      goToStep(step);
+      cy.get('[data-cy=kat-singlechoice-btn]')
+        .first()
+        .as('singleChoiceBtn');
+    });
 
-  it('has a single choice buttons which links to the next step', () => {
-    cy.get('[data-cy=kat-singlechoice-btn]')
-      .first()
-      .click();
-    cy.location('pathname').should(
-      'eq',
-      `${config.routes.katasterKI.profileBase}/${step + 1}`
-    );
-  });
+    it('has a single choice buttons which links to the next step', () => {
+      cy.get('@singleChoiceBtn')
+        .click();
+      cy.location('pathname').should(
+        'eq',
+        `${config.routes.katasterKI.profileBase}/${step + 1}`
+      );
+    });
+  }
+)
 }
