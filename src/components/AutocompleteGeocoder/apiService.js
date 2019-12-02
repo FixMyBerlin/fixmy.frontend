@@ -1,3 +1,5 @@
+import logger from '~/utils/logger';
+
 let abortController = new window.AbortController();
 
 function compileSearchUrl(searchString) {
@@ -68,7 +70,7 @@ export async function fetchSuggestions(searchString) {
       // if (error.name === 'AbortError') { FIXME: documented way of detecting an abortError won't work
       if (error.message.includes('aborted')) {
         // workaround
-        console.log('cancelled');
+        logger('cancelled');
         return [];
       }
       // else re-throw

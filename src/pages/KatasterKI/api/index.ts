@@ -12,12 +12,13 @@ import handleSubmitPerspective from './perspective';
 import handleSubmitAnswer from './answer';
 import handleSubmitNewsletter from './newsletter';
 import { getEndpointURL } from './utils';
+import logger from '~/utils/logger';
 
 const MOCK_RESPONSES = false;
 
 async function submitAnswer(answerRequest: AnswerRequest): Promise<void> {
   if (MOCK_RESPONSES) {
-    console.log('Submitted rating');
+    logger('Submitted rating');
   } else {
     return handleSubmitAnswer({
       json: answerRequest,

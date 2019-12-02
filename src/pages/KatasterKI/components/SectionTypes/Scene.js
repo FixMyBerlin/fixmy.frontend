@@ -7,6 +7,7 @@ import Flex from '~/components/Flex';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import { getSceneImageSrc } from '~/pages/KatasterKI/survey';
 import loadingImage from '~/images/strassencheck/scene-loading.jpg';
+import logger from '~/utils/logger';
 
 const SceneWrapper = styled.div`
   margin: 0;
@@ -120,7 +121,7 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
     try {
       duration = finishMeasurement(name);
     } catch (err) {
-      if (config.debug) console.error(`Error measuring response time ${err}`);
+      logger(`Error measuring response time ${err}`);
     }
 
     setEnqueuedRating(option.label);

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
 import TextareaAutosize from 'react-autosize-textarea';
 
+import logger from '~/utils/logger';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import UploadPhotoInput from '~/pages/Reports/pages/SubmitReport/components/UploadPhotoInput';
@@ -75,7 +76,7 @@ class AdditionalDataForm extends PureComponent {
   };
 
   static defaultProps = {
-    onConfirm: () => console.log('onConfirm() says implement me'),
+    onConfirm: () => logger('onConfirm() says implement me'),
     maxDescriptionLength: 400
   };
 
@@ -206,7 +207,6 @@ class AdditionalDataForm extends PureComponent {
   }
 }
 
-export default connect(
-  (state) => ({ error: state.ReportsState.ErrorState }),
-  { ...errorStateActions }
-)(AdditionalDataForm);
+export default connect((state) => ({ error: state.ReportsState.ErrorState }), {
+  ...errorStateActions
+})(AdditionalDataForm);

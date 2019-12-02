@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ky from 'ky';
 
+import logger from '~/utils/logger';
 import { media, matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './WebglMap';
 import StaticMarker from './StaticMarker';
@@ -97,7 +98,7 @@ class LocateMeMap extends Component {
   };
 
   static defaultProps = {
-    onProceed: () => console.log('implement me')
+    onProceed: () => logger('implement me')
   };
 
   static async getValidationGeodata() {
@@ -285,8 +286,8 @@ class LocateMeMap extends Component {
 
         {!this.state.isLoading &&
           !this.state.autocompleteHasFocus &&
-          (this.props.getLocationIsModeGeocoding &&
-            !this.state.locationPinned) && (
+          this.props.getLocationIsModeGeocoding &&
+            !this.state.locationPinned && (
             <LocatorControl
               key="ReportsLocateMap__LocatorControl"
               onChange={this.onlocateMeMarkerUse}
@@ -340,7 +341,4 @@ const mapDispatchToProps = {
   ...errorStateActions,
   ...submitReportStateActions
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LocateMeMap);
+export default connect(mapStateToProps, mapDispatchToProps)(LocateMeMap);

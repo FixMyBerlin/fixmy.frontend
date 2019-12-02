@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import logger from '~/utils/logger';
 
 const Button = styled.button`
   height: 48px;
@@ -48,7 +49,7 @@ PinLocationButton.propTypes = {
 };
 
 PinLocationButton.defaultProps = {
-  onConfirm: () => console.log('onConfirm says implement me'),
+  onConfirm: () => logger('onConfirm says implement me'),
   text: () => 'Diese Position bestätigen',
   disabled: false
 };

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import _isEqual from 'lodash.isequal';
 import MapboxGL from 'mapbox-gl';
 
+import logger from '~/utils/logger';
 import { animateView, setView } from '~/pages/Map/map-utils';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 
@@ -21,7 +22,7 @@ class WebglMap extends PureComponent {
   static defaultProps = {
     center: config.map.view.center,
     newLocationZoomLevel: 18,
-    onMapDrag: () => console.log('onMapDrag says implement me'),
+    onMapDrag: () => logger('onMapDrag says implement me'),
     allowDrag: true,
     onLoad: () => {},
     zoomedOut: false,

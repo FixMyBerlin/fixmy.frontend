@@ -13,6 +13,7 @@ import { getCenterFromGeom } from '~/pages/Map/map-utils';
 import PinIcon from '~/images/pin.svg';
 import Label from '~/components/Label';
 import NewCloseButton from '~/components/NewCloseButton';
+import logger from '~/utils/logger';
 
 const DetailWrapper = styled.div`
   position: absolute;
@@ -176,7 +177,7 @@ function detailWrapped(Component) {
         const data = await ky.get(dataUrl).json();
         this.onDataLoaded(data);
       } catch (error) {
-        console.error(error);
+        logger(error);
         this.onDataError();
       }
     };

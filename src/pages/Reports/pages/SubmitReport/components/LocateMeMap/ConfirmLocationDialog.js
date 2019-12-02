@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import logger from '~/utils/logger';
 import Button from '~/components/Button';
 import { media } from '~/styles/utils';
 
@@ -85,8 +86,8 @@ ConfirmLocationDialog.propTypes = {
 ConfirmLocationDialog.defaultProps = {
   heading: 'Der Ort wurde markiert!',
   address: 'Fehler beim Setzen der Adresse',
-  onConfirm: () => console.log('implement me'),
-  onDecline: () => console.log('implement me')
+  onConfirm: () => logger('implement me'),
+  onDecline: () => logger('implement me')
 };
 
 export default ConfirmLocationDialog;

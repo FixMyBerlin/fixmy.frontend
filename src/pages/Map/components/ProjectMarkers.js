@@ -7,6 +7,7 @@ import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
 import Store from '~/store';
 import * as MapActions from '../MapState';
+import logger from '~/utils/logger';
 
 const Markers = {
   draft: DraftMarker,
@@ -64,7 +65,7 @@ class ProjectMarkers extends PureComponent {
       }
 
       if (marker.center == null) {
-        console.error(`Marker center missing in project #${marker.id}`);
+        logger(`Marker center missing in project #${marker.id}`);
         return null;
       }
 

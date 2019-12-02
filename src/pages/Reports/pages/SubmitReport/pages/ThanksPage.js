@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 
+import logger from '~/utils/logger';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
@@ -45,7 +46,7 @@ class ThanksPage extends PureComponent {
     const { reportId } = this.props;
 
     if (!reportId) {
-      console.error('No id was passed to reveal the report on the map');
+      logger('No id was passed to reveal the report on the map');
       return;
     }
 

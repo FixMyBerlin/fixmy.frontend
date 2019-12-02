@@ -30,7 +30,7 @@ class AutocompleteGeocoder extends PureComponent {
 
   handleError = (error) => {
     this.clearSuggestions();
-    console.error(`Error in AutocompleteGeocoder: ${error}`);
+    logger(`Error in AutocompleteGeocoder: ${error}`);
     this.props.onError(
       'Service nicht erreichbar. Bitte versuch den Standort über die Karte zu finden.'
     );

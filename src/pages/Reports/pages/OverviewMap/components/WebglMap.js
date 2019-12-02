@@ -3,6 +3,7 @@ import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
+import logger from '~/utils/logger';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusteredMarkers from './ClusteredMarkers';
 import FMCPropTypes from '~/propTypes';
@@ -25,7 +26,7 @@ function toGeojson(data) {
 }
 
 MapboxGL.clearStorage((err) => {
-  console.log(err);
+  logger(err);
 });
 
 class WebglMap extends PureComponent {

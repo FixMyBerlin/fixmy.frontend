@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import ky from 'ky';
 import qs from 'qs';
 
+import logger from '~/utils/logger';
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
@@ -58,7 +59,7 @@ const UserVerify = ({ match, location }) => {
         });
         const body = await response.text();
       } catch (e) {
-        console.log(e);
+        logger(e);
         return serServerError(
           'Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden. Evtl. wurde Ihr Konto auch schon aktiviert.'
         );

@@ -1,6 +1,7 @@
 import ky from 'ky';
 import oneLine from 'common-tags/es/oneLine/oneLine';
 import validateNewReport from './state/tests/schemaValidation/validateNewReport';
+import logger from '~/utils/logger';
 
 export const reportsEndpointUrl =
   config.apiUrl + config.reports.apiRoute || '/reports';
@@ -82,7 +83,7 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
   // validate object
   const validationResult = validateNewReport(reportItemCopy);
   if (validationResult.errors.length) {
-    console.error(
+    logger(
       'Marshalled newReport object is not structured as stated in json schema'
     );
     validationResult.errors.forEach(({ property, message }) => {
@@ -107,7 +108,7 @@ export function getReportStatusCaption(status) {
   }[status];
 
   if (!caption) {
-    console.error(`Failed to resolve status ${status} to a caption`);
+    logger(`Failed to resolve status ${status} to a caption`);
     return status;
   }
 

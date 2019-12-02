@@ -1,6 +1,8 @@
 /* eslint no-param-reassign: 0 */
 import ky from 'ky';
 
+import logger from '~/utils/logger';
+
 const LOAD_DATA = 'Analysis/AnalysisState/LOAD_DATA';
 const LOAD_DATA_SUCCESS = 'Analysis/AnalysisState/LOAD_DATA_SUCCESS';
 const LOAD_DATA_FAIL = 'Analysis/AnalysisState/LOAD_DATA_FAIL';
@@ -49,7 +51,7 @@ export function loadProjectData(selectedDistrict = false) {
         payload: { data: results, isLoading: false }
       });
     } catch (e) {
-      console.error('Error loading project data', e);
+      logger('Error loading project data', e);
       return dispatch({ type: LOAD_DATA_FAIL, payload: { isLoading: false } });
     }
   };

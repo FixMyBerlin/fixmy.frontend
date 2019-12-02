@@ -8,6 +8,7 @@ import history from '~/history';
 import { addUserToReport } from '~/pages/Reports/apiservice';
 import { apiUser } from '~/pages/User/apiservice';
 
+import logger from '~/utils/logger';
 import thanksImageSrc from '~/images/reports/reports-thanks.png';
 
 import AuthForm from './AuthForm';
@@ -37,7 +38,7 @@ class ReportSubmitted extends PureComponent {
     const { reportId } = this.props;
 
     if (!reportId) {
-      console.error('No id was passed to reveal the report on the map');
+      logger('No id was passed to reveal the report on the map');
       return;
     }
 
