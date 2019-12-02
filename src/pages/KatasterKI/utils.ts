@@ -94,20 +94,6 @@ export const getFeedbackThreshold = (totalRatings: number): number => {
 };
 
 /**
- * Shuffle an array in place using Fisher-Yates-shuffle
- *
- * Taken from https://stackoverflow.com/a/6274381
- *
- * @param array array to be shuffled
- */
-export const shuffle = (a: Array<any>): void => {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-};
-
-/**
  * Scroll to top on navigation
  */
 export const ScrollToTop = () => {
