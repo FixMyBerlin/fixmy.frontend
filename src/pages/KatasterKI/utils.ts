@@ -96,6 +96,14 @@ export const getFeedbackThreshold = (totalRatings: number): number => {
 };
 
 /**
+ * Send signal to iFrame parent to close the survey
+ *
+ */
+export const handleQuit = () => {
+  window.parent.postMessage({ msg: 'done' }, '*');
+};
+
+/**
  * Shuffle an array in place using Fisher-Yates-shuffle
  *
  * Taken from https://stackoverflow.com/a/6274381
