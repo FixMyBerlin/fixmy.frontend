@@ -81,7 +81,6 @@ class ClusterWrapper extends React.Component {
   }
 
   updateMarkers() {
-    console.log('Update markers');
     const { data, detailId, map, selectedReport } = this.props;
 
     const { clusters, clusterSource } = this.state;
