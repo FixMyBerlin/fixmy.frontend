@@ -69,7 +69,13 @@ const PerspectiveChange = ({
       })}
 
       {helper !== null && <Helper>{helper}</Helper>}
-      {showCloseButton === true && <CloseSurveyButton />}
+      {showCloseButton === true && (
+        <CloseSurveyButton
+          style={{
+            marginTop: 'auto'
+          }}
+        />
+      )}
     </SingleChoiceWrapper>
   );
 };

@@ -75,12 +75,18 @@ const Feedback = ({
         </FeedbackParagraph>
 
         <Flex
-          css={{ flexGrow: 1, maxWidth: 500, width: '100%', margin: '0 auto' }}
+          css={{
+            flexGrow: 1,
+            maxWidth: 500,
+            width: '100%',
+            margin: '0 auto',
+            paddingBottom: 10
+          }}
           alignItems="center"
           flexDirection="column"
         >
           <Button onClick={next}>Mehr Situationen bewerten</Button>
-          <CloseSurveyButton />
+          <CloseSurveyButton style={{ marginTop: 10 }} />
         </Flex>
 
         <ShareButtonDesktop />
