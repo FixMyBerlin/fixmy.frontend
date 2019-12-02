@@ -1,11 +1,12 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-export const PrivateRoute = ({
-  component: Component,
-  token = false,
-  ...rest
-}) => (
+// Disable prop spreading rule because this is a usable component
+// that explicitly works with different sets of props
+
+/* eslint-disable react/jsx-props-no-spreading */
+
+const PrivateRoute = ({ component: Component, token = false, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
@@ -23,6 +24,4 @@ export const PrivateRoute = ({
   />
 );
 
-export default {
-  PrivateRoute
-};
+export default PrivateRoute;

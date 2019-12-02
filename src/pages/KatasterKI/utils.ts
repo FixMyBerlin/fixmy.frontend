@@ -10,7 +10,9 @@ import {
   UserGroup
 } from './types';
 
-const userGroups: Array<UserGroupAssociation> = require('./config/userGroups.json');
+const userGroups: Array<
+  UserGroupAssociation
+> = require('./config/userGroups.json');
 
 interface TransportRatings {
   [mode: string]: TransportRating;
