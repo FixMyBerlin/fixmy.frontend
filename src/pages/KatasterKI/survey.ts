@@ -71,7 +71,7 @@ const scenesConfig = (
 
   const titleScreen = {
     type: 'info',
-    title: `Wir zeigen ihnen nun ${sceneCount} Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen`,
+    title: `Wir zeigen Ihnen nun ${sceneCount} Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen`,
     name: 'info'
   };
 
