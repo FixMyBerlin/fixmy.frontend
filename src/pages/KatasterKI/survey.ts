@@ -71,20 +71,36 @@ const scenesConfig = (
 
   const titleScreen = {
     type: 'info',
-    title: `Wir zeigen ihnen nun ${sceneCount} Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen`,
+    title: `Wir zeigen Ihnen nun ${sceneCount} Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen`,
     name: 'info'
   };
 
-  const perspectiveChangeScreen = {
+  const firstPerspectiveScreen = {
     type: 'perspective_change',
     name: 'perspectiveChange',
-    title: `Sie haben bisher aus der ${perspectiveName} bewertet. Nun können Sie die Straße aus einer anderen Perspektive bewerten.`,
+    title: `Perspektivwechsel: Sie haben bisher aus der ${perspectiveName} bewertet. Bitte bewerten Sie nun einige Situationen von einem anderen Verkehrsmittel aus.`,
     helper: 'Sie können die Perspektive später noch einmal wechseln.',
+    options: Object.keys(perspectiveNames)
+      .filter((p) => p !== perspective)
+      .map((p) => ({
+        label: perspectiveNames[p],
+        icon: perspectiveIcons[p],
+        value: p
+      })),
+    showCloseButton: false
+  };
+
+  const followingPerspectiveScreen = {
+    type: 'perspective_change',
+    name: 'perspectiveChange',
+    title: `Sie können noch weitere Perspektiven bewerten: wahlweise aus derselben Sicht, oder von einem anderen Verkehrsmittel aus.`,
+    helper: null,
     options: Object.keys(perspectiveNames).map((p) => ({
       label: perspectiveNames[p],
       icon: perspectiveIcons[p],
       value: p
-    }))
+    })),
+    showCloseButton: true
   };
 
   const feedbackScreen = {
@@ -126,10 +142,12 @@ const scenesConfig = (
 
   sectionConfig.push(...sceneScreens);
 
-  if (sceneGroupCounter % 2 === 1) {
-    sectionConfig.push(perspectiveChangeScreen);
+  if (sceneGroupCounter === 1) {
+    sectionConfig.push(firstPerspectiveScreen);
+  } else if (sceneGroupCounter % 2 === 1) {
+    sectionConfig.push(followingPerspectiveScreen);
   } else {
-    sectionConfig.push(feedbackScreen, emailScreen, perspectiveChangeScreen);
+    sectionConfig.push(feedbackScreen, emailScreen, followingPerspectiveScreen);
   }
 
   return sectionConfig;
