@@ -2,6 +2,7 @@ import { ProfileResponse, ProfileRequest } from '../types';
 import { getEndpointURL, marshallMultiChoice } from './utils';
 import { ValidatorResult, Validator } from 'jsonschema';
 import { State } from '../state';
+import logger from '~/utils/logger';
 
 // JSON import apparently only works in ts when using `require`
 const profileRequestSchema = require('../scheme/profile-request.schema.json');
@@ -84,12 +85,18 @@ export const marshallProfile = (
   if (!isTosAccepted === true)
     throw new Error('Trying to marshall profile without accepted TOS');
 
-  const { choices: bikeReasons, other: bikeReasonsVar } = marshallMultiChoice(
-    profile.bikeReasons
-  );
+  let bikeReasons, bikeReasonsVar, whyBiking, vehiclesOwned;
+  try {
+    ({ choices: bikeReasons, other: bikeReasonsVar } = marshallMultiChoice(
+      profile.bikeReasons
+    ));
 
-  const { choices: whyBiking } = marshallMultiChoice(profile.whyBiking);
-  const { choices: vehiclesOwned } = marshallMultiChoice(profile.vehiclesOwned);
+    ({ choices: whyBiking } = marshallMultiChoice(profile.whyBiking));
+    ({ choices: vehiclesOwned } = marshallMultiChoice(profile.vehiclesOwned));
+  } catch (e) {
+    logger(`Error marshalling profile: ${e.message}`);
+    throw e;
+  }
 
   const profileRequest = {
     ageGroup: profile.ageGroup,

@@ -18,6 +18,7 @@ import {
   getInitialPerspective
 } from './utils';
 import api from './api';
+import logger from '~/utils/logger';
 
 export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
 export const SET_ANSWER = 'KatasterKI/SET_ANSWER';
@@ -460,18 +461,8 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
     dispatch(
       submitProfileError('Das Nutzerprofil konnte nicht übertragen werden.')
     );
-    // log an error to inspect in dev tools.
-    // Throwing an error would break unit tests.
-    // If this is a test run, don't log the error. TODO: factor out to util method
-    const cachedConsoleErrorFunc = console.error;
-    if (process.env.NODE_ENV === 'test') {
-      console.error = () => {};
-    }
-    console.error(`Failed to submit profile: ${e.message}`);
-    if (process.env.NODE_ENV === 'test') {
-      console.error = cachedConsoleErrorFunc;
-    }
-    if (process.env.NODE_ENV != 'test') throw e;
+    logger(`Failed to submit profile: ${e.message}`);
+    throw e;
   }
 };
 
