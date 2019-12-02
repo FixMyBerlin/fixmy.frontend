@@ -1,4 +1,5 @@
 import { formatDefaultLocale } from 'd3-format';
+import logger from '~/utils/logger';
 
 const germanNumberFormat = formatDefaultLocale({
   decimal: ',',
@@ -31,14 +32,6 @@ export function trackEvent(category = '', action = '', name = '') {
   if (typeof _paq !== 'undefined') {
     _paq.push(['trackEvent', category, action, name]);
   }
-}
-
-export function log(stuff) {
-  if (!config.debug) {
-    return false;
-  }
-
-  return console.log(stuff);
 }
 
 export function byKey(arr = [], key = 'id') {
@@ -77,8 +70,8 @@ export function getParameterByName(name) {
  */
 export function getRVALength({ length, side, id }) {
   const isBisided = side === 2;
-  if (length == 0) {
-    if (config.debug) console.error(`Project #${id} has no length`);
+  if (length === 0) {
+    logger(`Project #${id} has no length`);
     return null;
   }
   if (isBisided) {
@@ -92,7 +85,6 @@ export const isTouch = 'ontouchstart' in window;
 export default {
   numberFormat,
   trackEvent,
-  log,
   byKey,
   sortByKey,
   isNumeric,
