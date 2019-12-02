@@ -64,10 +64,7 @@ function createPinMarker({
     }
   }
 
-  const updatedMarkerData = Object.assign({}, markerData, {
-    geometry,
-    details
-  });
+  const updatedMarkerData = { ...markerData, geometry, details };
 
   el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${
     ICONS[details.subject]

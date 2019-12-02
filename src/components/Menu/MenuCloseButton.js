@@ -20,7 +20,7 @@ const MenuCloseButton = styled.div`
   }
 `;
 
-export default props => (
+export default (props) => (
   <MenuCloseButton
     onClick={() => Store.dispatch(toggle())}
     role="button"

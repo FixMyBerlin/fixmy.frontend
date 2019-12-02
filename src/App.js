@@ -41,7 +41,7 @@ class App extends PureComponent {
     const { isEmbedMode, token } = this.props;
 
     return (
-      <Fragment>
+      <>
         <GlobalStyles />
         <Router history={history}>
           <LastLocationProvider>
@@ -121,7 +121,7 @@ class App extends PureComponent {
             </AppWrapper>
           </LastLocationProvider>
         </Router>
-      </Fragment>
+      </>
     );
   }
 }

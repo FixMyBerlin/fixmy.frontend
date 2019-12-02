@@ -19,17 +19,17 @@ class BaseMap extends PureComponent {
     maxBounds: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
     onLoad: PropTypes.func,
     onMove: PropTypes.func
-  }
+  };
 
   static defaultProps = {
     maxBounds: config.reports.overviewMap.maxBounds,
     onLoad: () => {},
     onMove: () => {}
-  }
+  };
 
   state = {
     isLoading: true
-  }
+  };
 
   componentDidMount() {
     this.map = new MapboxGL.Map({
@@ -52,7 +52,7 @@ class BaseMap extends PureComponent {
   }
 
   render() {
-    const Loader = this.state.isLoading ? (<BigLoader />) : null;
+    const Loader = this.state.isLoading ? <BigLoader /> : null;
     return (
       <StyledMap
         className={this.props.className}

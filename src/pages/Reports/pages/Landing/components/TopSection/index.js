@@ -17,10 +17,10 @@ const Section = styled.section`
   background-size: cover;
   background-position: center 80%;
   display: flex;
-  flex-direction: column; 
-  
+  flex-direction: column;
+
   &:after {
-    content: "Photo by Trae Gould on Unsplash";
+    content: 'Photo by Trae Gould on Unsplash';
     font-size: 10px;
     letter-spacing: 0.2px;
     color: ${config.colors.lightgrey};
@@ -56,7 +56,7 @@ const StyledMenuButton = styled(MenuButton)`
 `;
 
 const StyledHeading = styled.h2`
-  font-family: "Roboto Slab", sans-serif;
+  font-family: 'Roboto Slab', sans-serif;
   font-size: 32px;
   font-weight: bold;
   font-style: normal;
@@ -73,7 +73,7 @@ const StyledButton = styled(Button)`
   padding: 10px 18px;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
 
-   &:hover {
+  &:hover {
     box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.4);
     opacity: 1;
   }
@@ -83,7 +83,8 @@ const StyledLink = styled(Link)`
   color: white;
   font-size: 18px;
 
-  &:visited, &:hover {
+  &:visited,
+  &:hover {
     color: white;
   }
 `;
@@ -93,10 +94,13 @@ const TopSection = ({ toUrl }) => (
     <FlexWrapper>
       <StyledMenuButton whiteFill="true" />
       <img width="92px" src={FixMyLogo} alt="logo" />
-      <StyledHeading>Melde neue Fahrradbügel für Friedrichshain-Kreuzberg</StyledHeading>
+      <StyledHeading>
+        Melde neue Fahrradbügel für Friedrichshain-Kreuzberg
+      </StyledHeading>
       <StyledButton className="wiggle">
         <StyledLink to={toUrl}>
-          <strong>Sagt uns wo</strong><br /> in 30 Sekunden
+          <strong>Sagt uns wo</strong>
+          <br /> in 30 Sekunden
         </StyledLink>
       </StyledButton>
     </FlexWrapper>

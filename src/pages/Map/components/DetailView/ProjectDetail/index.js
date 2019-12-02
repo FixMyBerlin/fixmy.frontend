@@ -7,7 +7,9 @@ import SectionTitle from '~/components/SectionTitle';
 import Text from '~/components/Text';
 import Label from '~/components/Label';
 import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
-import DetailSwitch, { ButtonGroup } from '~/pages/Map/components/DetailView/DetailSwitch';
+import DetailSwitch, {
+  ButtonGroup
+} from '~/pages/Map/components/DetailView/DetailSwitch';
 import ImageSlider from '~/pages/Map/components/DetailView/ImageSlider';
 
 import ProjectStatus from './ProjectStatus';
@@ -59,7 +61,8 @@ const Anchor = styled.a`
     text-decoration: underline;
   }
 
-  &:visited, &:active {
+  &:visited,
+  &:active {
     color: ${config.colors.interaction};
   }
 `;
@@ -74,13 +77,15 @@ class ProjectDetail extends PureComponent {
   state = {
     descriptionExpanded: false,
     sideIndex: 0
-  }
+  };
 
-  onSwitchSide = sideIndex => () => this.setState({ sideIndex })
+  onSwitchSide = (sideIndex) => () => this.setState({ sideIndex });
 
   toggleDescription = () => {
-    this.setState(prevState => ({ descriptionExpanded: !prevState.descriptionExpanded }));
-  }
+    this.setState((prevState) => ({
+      descriptionExpanded: !prevState.descriptionExpanded
+    }));
+  };
 
   render() {
     const { data } = this.props;
@@ -91,15 +96,27 @@ class ProjectDetail extends PureComponent {
     }
 
     const {
-      title, description, construction_completed, external_url, responsible, costs, faq, photos,
-      phase, construction_started, draft_submitted, cross_section_photo, url, category
+      title,
+      description,
+      construction_completed,
+      external_url,
+      responsible,
+      costs,
+      faq,
+      photos,
+      phase,
+      construction_started,
+      draft_submitted,
+      cross_section_photo,
+      url,
+      category
     } = data;
 
     const translatedCategory = categoryMapping[category];
     const showFaq = faq && faq.length;
 
     return (
-      <Fragment>
+      <>
         <ImageSlider images={photos} />
 
         <DetailHead>
@@ -110,7 +127,8 @@ class ProjectDetail extends PureComponent {
             </SectionTitle>
           )}
           <Label margin="-12px 0 25px 0">
-            {draft_submitted ? `Planungsbeginn: ${draft_submitted}` : null} {construction_started ? `Baubeginn: ${construction_started}` : null}
+            {draft_submitted ? `Planungsbeginn: ${draft_submitted}` : null}{' '}
+            {construction_started ? `Baubeginn: ${construction_started}` : null}
           </Label>
           {phase && <ProjectStatus phase={phase} />}
         </DetailHead>
@@ -119,20 +137,42 @@ class ProjectDetail extends PureComponent {
           {description && (
             <DetailBodySection>
               <SectionTitle>Ziel & Hintergrund dieser Maßnahme?</SectionTitle>
-              <Text>
-                {description}
-              </Text>
-              <ExpandDescriptionButton onClick={this.toggleDescription}>{this.state.descriptionExpanded ? 'Weniger' : 'Mehr >'}</ExpandDescriptionButton>
+              <Text>{description}</Text>
+              <ExpandDescriptionButton onClick={this.toggleDescription}>
+                {this.state.descriptionExpanded ? 'Weniger' : 'Mehr >'}
+              </ExpandDescriptionButton>
             </DetailBodySection>
           )}
 
           <DetailBodySection>
             <SectionTitle>Projektdaten:</SectionTitle>
-            {typeof responsible !== 'undefined' && responsible !== null ? <DetailItem>Zuständigkeit: <strong>{responsible}</strong></DetailItem> : null}
-            {typeof translatedCategory !== 'undefined' && translatedCategory !== null ? <DetailItem>Art der Maßnahme: <strong>{translatedCategory}</strong></DetailItem> : null}
-            {typeof costs !== 'undefined' && costs !== null ? <DetailItem>Projektvolumen: <strong>{costs}</strong></DetailItem> : null}
-            {external_url ? <DetailItem>Link zur Planung: <Anchor target="_blank" href={external_url}>{external_url}</Anchor></DetailItem> : null}
-            {cross_section_photo ? <DetailImage src={cross_section_photo} /> : null}
+            {typeof responsible !== 'undefined' && responsible !== null ? (
+              <DetailItem>
+                Zuständigkeit: <strong>{responsible}</strong>
+              </DetailItem>
+            ) : null}
+            {typeof translatedCategory !== 'undefined' &&
+            translatedCategory !== null ? (
+              <DetailItem>
+                Art der Maßnahme: <strong>{translatedCategory}</strong>
+              </DetailItem>
+            ) : null}
+            {typeof costs !== 'undefined' && costs !== null ? (
+              <DetailItem>
+                Projektvolumen: <strong>{costs}</strong>
+              </DetailItem>
+            ) : null}
+            {external_url ? (
+              <DetailItem>
+                Link zur Planung:{' '}
+                <Anchor target="_blank" href={external_url}>
+                  {external_url}
+                </Anchor>
+              </DetailItem>
+            ) : null}
+            {cross_section_photo ? (
+              <DetailImage src={cross_section_photo} />
+            ) : null}
           </DetailBodySection>
 
           {showFaq ? (
@@ -140,7 +180,9 @@ class ProjectDetail extends PureComponent {
               <SectionTitle>Häufige Fragen:</SectionTitle>
               {faq.map((f, i) => (
                 <div key={`FAQ_Item_${i}`}>
-                  <Text><strong>{f.text}</strong></Text>
+                  <Text>
+                    <strong>{f.text}</strong>
+                  </Text>
                   <Text>{f.answer}</Text>
                 </div>
               ))}
@@ -149,10 +191,14 @@ class ProjectDetail extends PureComponent {
         </DetailBody>
         {config.showLikeButton && (
           <DetailFooter>
-            <ProjectLike token={this.props.token} url={url} id={this.props.match.params.id} />
+            <ProjectLike
+              token={this.props.token}
+              url={url}
+              id={this.props.match.params.id}
+            />
           </DetailFooter>
         )}
-      </Fragment>
+      </>
     );
   }
 }

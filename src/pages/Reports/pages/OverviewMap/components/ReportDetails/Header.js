@@ -48,7 +48,7 @@ const ReportPin = styled.img.attrs({
 `;
 
 const DetailsHeader = ({ details: { number }, status }) => (
-  <React.Fragment>
+  <>
     <HeadlineSection>
       <Heading alignLeft>
         {number} neue{number === 1 ? 'r' : null} Fahrradbügel gewünscht
@@ -65,7 +65,7 @@ const DetailsHeader = ({ details: { number }, status }) => (
       </StatusIndicator>
       <ReportPin />
     </StatusIndicatorWrapper>
-  </React.Fragment>
+  </>
 );
 
 export default DetailsHeader;

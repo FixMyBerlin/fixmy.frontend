@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import _isEqual from 'lodash.isequal';
 import MapboxGL from 'mapbox-gl';
@@ -15,11 +15,8 @@ class WebglMap extends PureComponent {
     allowDrag: PropTypes.bool,
     onLoad: PropTypes.func,
     zoomedOut: PropTypes.bool,
-    zoomControlPosition: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.bool
-    ])
-  }
+    zoomControlPosition: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+  };
 
   static defaultProps = {
     center: config.map.view.center,
@@ -29,17 +26,19 @@ class WebglMap extends PureComponent {
     onLoad: () => {},
     zoomedOut: false,
     zoomControlPosition: false
-  }
+  };
 
-  map = null
+  map = null;
 
-  maxExtent = null
+  maxExtent = null;
 
-  nav = new MapboxGL.NavigationControl({ showCompass: false })
+  nav = new MapboxGL.NavigationControl({ showCompass: false });
 
   constructor(props) {
     super(props);
-    this.maxExtent = this.addPaddingToBounds(config.reports.overviewMap.maxBounds);
+    this.maxExtent = this.addPaddingToBounds(
+      config.reports.overviewMap.maxBounds
+    );
   }
 
   componentDidUpdate(prevProps) {
@@ -48,7 +47,7 @@ class WebglMap extends PureComponent {
     }
 
     if (this.props.zoomedOut) {
-       this.map.easeTo({ zoom: 12, duration: 3000 });
+      this.map.easeTo({ zoom: 12, duration: 3000 });
     }
 
     const isNewLocation = !_isEqual(prevProps.center, this.props.center);
@@ -60,7 +59,9 @@ class WebglMap extends PureComponent {
     const allowDragChanged = prevProps.allowDrag !== this.props.allowDrag;
     if (allowDragChanged && this.map) {
       const dragPanHandler = this.map.dragPan;
-      const updateDragPanFunc = this.props.allowDrag ? dragPanHandler.enable : dragPanHandler.disable;
+      const updateDragPanFunc = this.props.allowDrag
+        ? dragPanHandler.enable
+        : dragPanHandler.disable;
       updateDragPanFunc.call(dragPanHandler);
     }
   }
@@ -68,11 +69,11 @@ class WebglMap extends PureComponent {
   addPaddingToBounds = (bounds) => {
     const PADDING_IN_DEG = config.reports.locateMeMap.paddingInDegree || 0.2;
     const [sw, ne] = bounds;
-    const moreSw = sw.map(coord => coord - PADDING_IN_DEG);
-    const moreNe = ne.map(coord => coord + PADDING_IN_DEG);
+    const moreSw = sw.map((coord) => coord - PADDING_IN_DEG);
+    const moreNe = ne.map((coord) => coord + PADDING_IN_DEG);
 
     return [moreSw, moreNe];
-  }
+  };
 
   onLoad = (map) => {
     this.map = map;
@@ -89,11 +90,12 @@ class WebglMap extends PureComponent {
 
     // add controls
     const { zoomControlPosition } = this.props;
-    if (zoomControlPosition) this.map.addControl(this.nav, this.props.zoomControlPosition);
+    if (zoomControlPosition)
+      this.map.addControl(this.nav, this.props.zoomControlPosition);
 
     // notify containers that map has been initialized
     this.props.onLoad();
-  }
+  };
 
   setView = (view, animate = false) => {
     if (animate) {
@@ -101,27 +103,22 @@ class WebglMap extends PureComponent {
     } else {
       setView(this.map, view);
     }
-  }
+  };
 
-  getViewFromProps = () => (
-    {
-      zoom: this.props.newLocationZoomLevel,
-      center: this.props.center
-    }
-  )
+  getViewFromProps = () => ({
+    zoom: this.props.newLocationZoomLevel,
+    center: this.props.center
+  });
 
   handleMoveEnd = () => {
     const mapCenter = this.map.getCenter();
     const { lat, lng } = mapCenter;
     this.props.onMapDrag({ lat, lng });
-  }
+  };
 
   render() {
     return (
-      <BaseMap
-        maxBounds={this.maxExtent}
-        onLoad={map => this.onLoad(map)}
-      />
+      <BaseMap maxBounds={this.maxExtent} onLoad={(map) => this.onLoad(map)} />
     );
   }
 }

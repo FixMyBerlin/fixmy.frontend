@@ -25,21 +25,21 @@ const DetailButtonWrapper = styled.div`
 class ProjectStatus extends PureComponent {
   state = {
     isExpanded: false
-  }
+  };
 
   toggleExpand = () => {
-    this.setState(prevState => ({ isExpanded: !prevState.isExpanded }));
-  }
+    this.setState((prevState) => ({ isExpanded: !prevState.isExpanded }));
+  };
 
   render() {
     return (
-      <Fragment>
+      <>
         <ProjectStatusChart phase={this.props.phase} />
         <DetailButtonWrapper>
           <DetailButton onClick={this.toggleExpand}>Details +</DetailButton>
         </DetailButtonWrapper>
         {this.state.isExpanded ? <ProjectChecklist /> : null}
-      </Fragment>
+      </>
     );
   }
 }

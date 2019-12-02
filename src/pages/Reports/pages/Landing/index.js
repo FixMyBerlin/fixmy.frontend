@@ -21,7 +21,7 @@ const ContentWrapper = styled.div`
 `;
 
 export default () => (
-  <Fragment>
+  <>
     <TopSection toUrl={`${config.routes.reports.new}`} />
     <ContentWrapper>
       <HowItWorksSection />
@@ -34,5 +34,5 @@ export default () => (
       <JoinButton />
       <MapLink />
     </ContentWrapper>
-  </Fragment>
+  </>
 );

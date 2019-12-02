@@ -21,7 +21,7 @@ const StyledHeading = styled(Heading)`
 const Hint = styled(Paragraph)`
   margin-top: 12px;
   margin-bottom: 0;
-  font-weight: ${({ emphasize }) => (emphasize ? 'bold' : 'normal')}
+  font-weight: ${({ emphasize }) => (emphasize ? 'bold' : 'normal')};
 `;
 
 const PhotoDisclaimerWrapper = styled.div`
@@ -42,12 +42,12 @@ const StyledCheckbox = styled.input`
 `;
 
 const StyledCheckboxLabel = styled.label`
-   font-size: 12px;
-   letter-spacing: 0.2px;
-   line-height: 1.4;
-   color: ${props => (props.disabled ? '#777' : config.colors.darkgrey)};
-   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
-   display: block;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  line-height: 1.4;
+  color: ${(props) => (props.disabled ? '#777' : config.colors.darkgrey)};
+  cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
+  display: block;
 `;
 
 const PLACEHOLDER_COLOR = config.colors.midgrey;
@@ -88,15 +88,18 @@ class AdditionalDataForm extends PureComponent {
     };
   }
 
-  onPhotoUpload = photo => this.setState({ photo });
+  onPhotoUpload = (photo) => this.setState({ photo });
 
-  onPhotoDelete = () => this.setState({ photo: null, photoDisclaimerTicked: false });
+  onPhotoDelete = () =>
+    this.setState({ photo: null, photoDisclaimerTicked: false });
 
   onPhotoUploadError = (errorMsg) => {
     const isDesktopView = matchMediaSize(breakpoints.m);
-    const errMsg = `Fehler beim ${isDesktopView ? 'hochladen' : 'aufnehmen'} des Fotos:
-    ${errorMsg}`
-    this.props.addError({message: errorMsg});
+    const errMsg = `Fehler beim ${
+      isDesktopView ? 'hochladen' : 'aufnehmen'
+    } des Fotos:
+    ${errorMsg}`;
+    this.props.addError({ message: errorMsg });
   };
 
   submit = () => {
@@ -119,7 +122,9 @@ class AdditionalDataForm extends PureComponent {
   };
 
   togglePhotoDisclaimerTicked = () => {
-    this.setState(prevState => ({ photoDisclaimerTicked: !prevState.photoDisclaimerTicked }));
+    this.setState((prevState) => ({
+      photoDisclaimerTicked: !prevState.photoDisclaimerTicked
+    }));
   };
 
   updateDescription = (evt) => {
@@ -131,9 +136,13 @@ class AdditionalDataForm extends PureComponent {
 
     return (
       <DialogStepWrapper>
-        <StyledHeading>Bitte entweder noch ein Foto von dem Ort oder Hinweise zum Ort ergänzen.</StyledHeading>
+        <StyledHeading>
+          Bitte entweder noch ein Foto von dem Ort oder Hinweise zum Ort
+          ergänzen.
+        </StyledHeading>
         <Hint>
-          Ein Foto des Ortes hilft der Verwaltung, die Situation vor Ort besser zu beurteilen und die Meldung schneller zu bearbeiten.
+          Ein Foto des Ortes hilft der Verwaltung, die Situation vor Ort besser
+          zu beurteilen und die Meldung schneller zu bearbeiten.
         </Hint>
 
         <UploadPhotoInput
@@ -157,7 +166,8 @@ class AdditionalDataForm extends PureComponent {
             htmlFor="photo-disclaimer-tick"
             disabled={!this.state.photo}
           >
-            Hiermit bestätige ich, dass auf den von mir eingestellten Fotos keine Personen abgebildet sind.
+            Hiermit bestätige ich, dass auf den von mir eingestellten Fotos
+            keine Personen abgebildet sind.
           </StyledCheckboxLabel>
         </PhotoDisclaimerWrapper>
 
@@ -173,12 +183,15 @@ class AdditionalDataForm extends PureComponent {
           Meldung oder nenne besondere Anforderungen,
           z.B. Stellplätze für Lastenräder, die Nähe einer Kita oder Ähnliches.`}
         />
-        <Hint emphasize={this.state.description.length === this.props.maxDescriptionLength}>Max. {this.props.maxDescriptionLength} Zeichen</Hint>
-
-        <WeiterButton
-          onClick={this.submit}
-          disabled={!this.isSubmittable()}
+        <Hint
+          emphasize={
+            this.state.description.length === this.props.maxDescriptionLength
+          }
         >
+          Max. {this.props.maxDescriptionLength} Zeichen
+        </Hint>
+
+        <WeiterButton onClick={this.submit} disabled={!this.isSubmittable()}>
           Weiter
         </WeiterButton>
 
@@ -193,8 +206,7 @@ class AdditionalDataForm extends PureComponent {
   }
 }
 
-
 export default connect(
-  state => ({ error: state.ReportsState.ErrorState }),
+  (state) => ({ error: state.ReportsState.ErrorState }),
   { ...errorStateActions }
 )(AdditionalDataForm);

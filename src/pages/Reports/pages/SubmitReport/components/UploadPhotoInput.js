@@ -52,7 +52,7 @@ const AbortButton = styled(NewCloseButton)`
 `;
 
 const AbortText = styled(Text)`
-  line-height:  ${BUTTON_HEIGHT};
+  line-height: ${BUTTON_HEIGHT};
   &:hover {
     cursor: pointer;
     opacity: 0.7;
@@ -72,16 +72,14 @@ class UploadPhotoInput extends PureComponent {
   };
 
   static defaultProps = {
-    onError: () => {
-    },
-    onReset: () => {
-    },
+    onError: () => {},
+    onReset: () => {},
     resizeOptions: {
       maxWidth: 800,
       maxHeight: 800,
       quality: 0.9
     }
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -99,16 +97,16 @@ class UploadPhotoInput extends PureComponent {
     } else {
       this.handleFilePickSuccess(photo);
     }
-  }
+  };
 
   handleFilePickAbort = () => {
     // do nothing
-  }
+  };
 
   resetState = () => {
     this.setState({ photo: null });
     this.props.onReset();
-  }
+  };
 
   handleFilePickSuccess = (photo) => {
     if (!['image/jpg', 'image/jpeg'].includes(photo.type)) {
@@ -118,19 +116,20 @@ class UploadPhotoInput extends PureComponent {
     }
     // trigger handleConvertedPhoto()
     this.fileReader.readAsDataURL(photo);
-  }
+  };
 
-  resizeImage = dataUrl => new Promise(((resolve) => {
-    const image = new Image();
-    image.src = dataUrl;
-    image.onload = this.resizeImageInner.bind(this, image, dataUrl, resolve);
-  }));
+  resizeImage = (dataUrl) =>
+    new Promise((resolve) => {
+      const image = new Image();
+      image.src = dataUrl;
+      image.onload = this.resizeImageInner.bind(this, image, dataUrl, resolve);
+    });
 
   resizeImageInner = (image, photoDataUrl, resolve) => {
     const { maxWidth, maxHeight, quality } = this.props.resizeOptions;
     const { width, height } = image;
 
-    const shouldResize = (width > maxWidth) || (height > maxHeight);
+    const shouldResize = width > maxWidth || height > maxHeight;
 
     if (!shouldResize) {
       resolve(photoDataUrl);
@@ -157,27 +156,23 @@ class UploadPhotoInput extends PureComponent {
     context.drawImage(image, 0, 0, newWidth, newHeight);
 
     resolve(canvas.toDataURL('image/jpeg', quality));
-  }
+  };
 
   handleConvertedPhoto(evt) {
     const photoInBase64 = evt.target.result;
-    this.resizeImage(photoInBase64)
-      .then((photo) => {
-        // update state for UI update
-        this.setState({ photo });
-        // pass photo to container
-        this.props.onPhotoResized(photo);
-      });
+    this.resizeImage(photoInBase64).then((photo) => {
+      // update state for UI update
+      this.setState({ photo });
+      // pass photo to container
+      this.props.onPhotoResized(photo);
+    });
   }
 
   render() {
     const { photo } = this.state;
     return (
-      <Fragment>
-
-        <PhotoInputLabel
-          htmlFor="photo-file-input"
-        >
+      <>
+        <PhotoInputLabel htmlFor="photo-file-input">
           {`Foto ${photo ? 'neu' : ''} aufnehmen oder hochladen`}
         </PhotoInputLabel>
 
@@ -192,21 +187,21 @@ class UploadPhotoInput extends PureComponent {
             capture="environment"
             id="photo-file-input"
             name="photo-file-input"
-            onChange={e => this.handleFilePickAction(e.target.files)}
+            onChange={(e) => this.handleFilePickAction(e.target.files)}
           />
         </PhotoInputImageLabel>
 
         {photo && (
           <>
-            <AbortText onClick={this.resetState}>Foto entfernen
+            <AbortText onClick={this.resetState}>
+              Foto entfernen
               <AbortButton onClick={this.resetState} />
             </AbortText>
           </>
-          )}
-      </Fragment>
+        )}
+      </>
     );
   }
 }
-
 
 export default UploadPhotoInput;

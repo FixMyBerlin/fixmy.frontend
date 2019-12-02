@@ -13,14 +13,28 @@ const StyledLink = styled(Link)`
 `;
 
 const formConfig = [
-  { id: 'username', value: '', type: 'email', label: 'E-Mail', placeholder: 'E-Mail eingeben...', validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.' },
-  { id: 'password', value: '', type: 'password', label: 'Passwort', placeholder: 'Passwort eingeben...', validateError: 'Bitte geben Sie Ihr Passwort an.' }
+  {
+    id: 'username',
+    value: '',
+    type: 'email',
+    label: 'E-Mail',
+    placeholder: 'E-Mail eingeben...',
+    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.'
+  },
+  {
+    id: 'password',
+    value: '',
+    type: 'password',
+    label: 'Passwort',
+    placeholder: 'Passwort eingeben...',
+    validateError: 'Bitte geben Sie Ihr Passwort an.'
+  }
 ];
 
 class Login extends PureComponent {
   onSubmit = (values, params) => {
     this.props.dispatch(login(values, params));
-  }
+  };
 
   render() {
     return (
@@ -32,7 +46,7 @@ class Login extends PureComponent {
           onSubmit={this.onSubmit}
         />
         <StyledLink to={config.routes.forgotPassword}>
-           Passwort vergessen?
+          Passwort vergessen?
         </StyledLink>
         <StyledLink to={config.routes.signup}>
           Ich habe noch keinen Account
@@ -42,4 +56,4 @@ class Login extends PureComponent {
   }
 }
 
-export default connect(state => state.UserState)(Login);
+export default connect((state) => state.UserState)(Login);

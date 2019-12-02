@@ -18,7 +18,10 @@ const initialState = {
 };
 
 export function setDistrictFilter(selectedDistrict) {
-  return { type: SET_DISTRICT_FILTER, payload: { selectedDistrict, selectedPhase: false } };
+  return {
+    type: SET_DISTRICT_FILTER,
+    payload: { selectedDistrict, selectedPhase: false }
+  };
 }
 
 export function setPhaseFilter(selectedPhase) {
@@ -60,8 +63,8 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case SET_DISTRICT_FILTER:
     case SET_PHASE_FILTER:
     case SET_SORT:
-      return Object.assign({}, state, action.payload);
+      return { ...state, ...action.payload };
     default:
-      return Object.assign({}, state);
+      return { ...state };
   }
 }

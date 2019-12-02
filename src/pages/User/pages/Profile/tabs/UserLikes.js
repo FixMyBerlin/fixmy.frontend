@@ -10,14 +10,14 @@ import Select from '~/components/Select';
 class UserLikes extends PureComponent {
   state = {
     itemType: 'projects'
-  }
+  };
 
   componentDidMount() {
     this.props.dispatch(loadLikes(this.state.itemType));
   }
 
   onSelect(evt) {
-    const itemType = idx(evt, _ => _.target.selectedOptions[0].value);
+    const itemType = idx(evt, (_) => _.target.selectedOptions[0].value);
 
     this.setState({ itemType });
     this.props.dispatch(loadLikes(itemType));
@@ -25,20 +25,25 @@ class UserLikes extends PureComponent {
 
   render() {
     return (
-      <Fragment>
+      <>
         <Title>Likes</Title>
-        <Text>Hier kannst du deine gelikten Planungen und Meldungen sehen.</Text>
+        <Text>
+          Hier kannst du deine gelikten Planungen und Meldungen sehen.
+        </Text>
 
         <Select
           title=""
-          onChange={val => this.onSelect(val)}
-          options={[{
-            value: 'projects',
-            label: 'Planungen'
-          }, {
-            value: 'reports',
-            label: 'Meldungen'
-          }]}
+          onChange={(val) => this.onSelect(val)}
+          options={[
+            {
+              value: 'projects',
+              label: 'Planungen'
+            },
+            {
+              value: 'reports',
+              label: 'Meldungen'
+            }
+          ]}
           disabled={this.props.isLoading}
         />
 
@@ -47,7 +52,7 @@ class UserLikes extends PureComponent {
           isLoading={this.props.isLoading}
           itemType={this.state.itemType}
         />
-      </Fragment>
+      </>
     );
   }
 }

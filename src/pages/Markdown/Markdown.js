@@ -7,7 +7,7 @@ import MarkdownContent from '~/pages/Markdown/components/MarkdownContent';
 class MarkdownPage extends PureComponent {
   state = {
     content: false
-  }
+  };
 
   componentDidMount() {
     this.loadContent();

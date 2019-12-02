@@ -36,47 +36,49 @@ const PlusChildren = styled.div`
 
 function renderItem(item) {
   switch (item.type) {
-    case 'link': return (
-      <NavItem
-        key={item.label}
-        to={item.link}
-        onClick={() => Store.dispatch(close())}
-        border={item.border ? item.border.toString() : null}
-      >
-        {item.icon ? <SvgIcon type={item.icon} /> : null}
-        <NavItem.Label>{item.label}</NavItem.Label>
-      </NavItem>
-    );
-    case 'plus': return (
-      <PlusItemWrapper key={item.label}>
-        <PlusItemLabelWrapper>
+    case 'link':
+      return (
+        <NavItem
+          key={item.label}
+          to={item.link}
+          onClick={() => Store.dispatch(close())}
+          border={item.border ? item.border.toString() : null}
+        >
           {item.icon ? <SvgIcon type={item.icon} /> : null}
-          <div>{item.label}</div>
-        </PlusItemLabelWrapper>
-        <PlusChildren>
-          {item.children.map(c => (
-            <NavItem
-              key={c.link}
-              to={c.link}
-              onClick={() => Store.dispatch(close())}
-              border={c.border ? c.border.toString() : null}
-            >
-              {c.icon ? <SvgIcon type={c.icon} /> : null}
-              <NavItem.Label>{c.label}</NavItem.Label>
-            </NavItem>
-          ))}
-        </PlusChildren>
-      </PlusItemWrapper>
-    );
-    case 'separator': return (
-      <Separator key={item.label} label={item.label} />
-    );
-    default: return null;
+          <NavItem.Label>{item.label}</NavItem.Label>
+        </NavItem>
+      );
+    case 'plus':
+      return (
+        <PlusItemWrapper key={item.label}>
+          <PlusItemLabelWrapper>
+            {item.icon ? <SvgIcon type={item.icon} /> : null}
+            <div>{item.label}</div>
+          </PlusItemLabelWrapper>
+          <PlusChildren>
+            {item.children.map((c) => (
+              <NavItem
+                key={c.link}
+                to={c.link}
+                onClick={() => Store.dispatch(close())}
+                border={c.border ? c.border.toString() : null}
+              >
+                {c.icon ? <SvgIcon type={c.icon} /> : null}
+                <NavItem.Label>{c.label}</NavItem.Label>
+              </NavItem>
+            ))}
+          </PlusChildren>
+        </PlusItemWrapper>
+      );
+    case 'separator':
+      return <Separator key={item.label} label={item.label} />;
+    default:
+      return null;
   }
 }
 
-export default props => (
+export default (props) => (
   <NavBody className={props.className}>
-    {config.menu.items.map(item => renderItem(item))}
+    {config.menu.items.map((item) => renderItem(item))}
   </NavBody>
 );

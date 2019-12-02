@@ -46,12 +46,12 @@ const DetailsBody = ({
   details: { fee_acceptable: isFeeAcceptable },
   created_date: createdDate
 }) => (
-  <React.Fragment>
+  <>
     {description && (
-      <Fragment>
+      <>
         <SubHeading alignLeft>Hinweise an die Verwaltung</SubHeading>
         <Text>{description}</Text>
-      </Fragment>
+      </>
     )}
 
     <IndicatorSection>
@@ -62,7 +62,7 @@ const DetailsBody = ({
     <HorizontalRuler className="light" />
 
     {createdDate && <Text>Meldung vom: {formatDate(createdDate)}</Text>}
-  </React.Fragment>
+  </>
 );
 
 export default DetailsBody;

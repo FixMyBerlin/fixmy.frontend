@@ -83,9 +83,8 @@ export function getRVALength({ length, side, id }) {
   }
   if (isBisided) {
     return length * 2.0;
-  } 
-    return length;
-  
+  }
+  return length;
 }
 
 export const isTouch = 'ontouchstart' in window;

@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import idx from 'idx';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import ky from 'ky';
 
 import { media } from '~/styles/utils';
@@ -221,7 +221,6 @@ function detailWrapped(Component) {
       const showShadow = data != null && this.props.activeView === 'planungen';
       const borough = idx(this.state, (_) => _.data.borough);
 
-
       if (isLoading) {
         return this.renderLoading();
       }
@@ -236,7 +235,7 @@ function detailWrapped(Component) {
             <StyledPinIcon />
             <div>
               <DetailTitle>{this.renderName(data)}</DetailTitle>
-              <Label uppercase>{subtitle || borough }</Label>
+              <Label uppercase>{subtitle || borough}</Label>
             </div>
             <Close onClick={this.onClose} />
           </DetailHeader>

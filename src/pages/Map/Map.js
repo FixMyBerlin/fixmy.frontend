@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Loadable from 'react-loadable';

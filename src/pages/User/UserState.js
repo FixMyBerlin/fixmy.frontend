@@ -1,7 +1,16 @@
 import uuidv4 from 'uuid/v4';
 
 import { set, remove, get } from '~/services/storage';
-import { apiSignup, apiLogin, apiUpdate, apiUser, apiVerify, apiPasswordReset, apiPasswordForgot, apiLikes } from '~/pages/User/apiservice';
+import {
+  apiSignup,
+  apiLogin,
+  apiUpdate,
+  apiUser,
+  apiVerify,
+  apiPasswordReset,
+  apiPasswordForgot,
+  apiLikes
+} from '~/pages/User/apiservice';
 import history from '~/history';
 
 const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
@@ -28,7 +37,7 @@ const LOAD_LIKES_FAIL = 'User/UserState/LOAD_LIKES_FAIL';
 
 const initialState = {
   userid: uuidv4(),
-  hbi_values: config.hbi.map(d => d.value),
+  hbi_values: config.hbi.map((d) => d.value),
   token: get('token'),
   userData: false,
   userLikes: false
@@ -107,10 +116,16 @@ export function update(values, formFunctions) {
       if (values.new_username) {
         remove('token');
         formFunctions.setStatus('usernamesuccess');
-        dispatch({ type: UPDATE_USERNAME_SUCCESS, payload: { userData: { ...userData, username: values.new_username } } });
+        dispatch({
+          type: UPDATE_USERNAME_SUCCESS,
+          payload: { userData: { ...userData, username: values.new_username } }
+        });
       } else if (values.new_password) {
         formFunctions.setStatus('passwordsuccess');
-        dispatch({ type: UPDATE_PASSWORD_SUCCESS, payload: { userData: { ...userData, password: '' } } });
+        dispatch({
+          type: UPDATE_PASSWORD_SUCCESS,
+          payload: { userData: { ...userData, password: '' } }
+        });
       }
     }
   };
@@ -174,9 +189,12 @@ export function loadLikes(itemType) {
     if (!items.error) {
       // @TODO: why is the API different for reports and plannings?
       const result = itemType === 'projects' ? items.results : items;
-      const userLikes = result.filter(d => d.liked_by_user);
+      const userLikes = result.filter((d) => d.liked_by_user);
 
-      dispatch({ type: LOAD_LIKES_SUCCESS, payload: { isLoading: false, userLikes } });
+      dispatch({
+        type: LOAD_LIKES_SUCCESS,
+        payload: { isLoading: false, userLikes }
+      });
     } else {
       dispatch({ type: LOAD_LIKES_FAIL, payload: { isLoading: false } });
     }
@@ -193,7 +211,7 @@ export default function MapStateReducer(state = initialState, action = {}) {
         return d;
       });
 
-      return Object.assign({}, state, { hbi_values: hbiValues });
+      return { ...state, hbi_values: hbiValues };
     }
     case SIGNUP:
     case SIGNUP_SUCCESS:
@@ -214,8 +232,8 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case LOAD_LIKES:
     case LOAD_LIKES_SUCCESS:
     case LOAD_LIKES_FAIL:
-      return Object.assign({}, state, action.payload);
+      return { ...state, ...action.payload };
     default:
-      return Object.assign({}, state);
+      return { ...state };
   }
 }

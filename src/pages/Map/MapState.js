@@ -123,20 +123,22 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case SET_POPUP_LOCATION:
     case SET_POPUP_VISIBLE:
     case SET_PLANNING_DATA:
-      return Object.assign({}, state, action.payload);
+      return { ...state, ...action.payload };
     case SET_HBI_FILTER:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         filterHbi: state.filterHbi.map((filter, i) =>
           i === action.filterIndex ? !filter : filter
         )
-      });
+      };
     case SET_PLANNING_FILTER:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         filterPlannings: state.filterPlannings.map((filter, i) =>
           i === action.filterIndex ? !filter : filter
         )
-      });
+      };
     default:
-      return Object.assign({}, state);
+      return { ...state };
   }
 }

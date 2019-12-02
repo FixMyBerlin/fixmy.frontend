@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
@@ -29,7 +29,8 @@ const ThanksImg = styled.img`
 class ThanksPage extends PureComponent {
   componentDidMount = () => {
     this.unlistenToHistory = history.listen((location, action) => {
-      if (action === 'POP') { // if this is an attempt to navigate backwards ..
+      if (action === 'POP') {
+        // if this is an attempt to navigate backwards ..
         // do not allow navigating back within the dialog, instead route somewhere safe
         this.props.history.push(`${config.routes.reports.map}`);
       }
@@ -49,27 +50,30 @@ class ThanksPage extends PureComponent {
     }
 
     this.props.history.push(`${config.routes.reports.map}/${reportId}`);
-  }
+  };
 
   render() {
     return (
       <DialogStepWrapper>
         <StyledHeading>
-          Danke, wir haben dir eine E-Mail geschickt. Klicke dort auf den Link zur Bestätigung.
+          Danke, wir haben dir eine E-Mail geschickt. Klicke dort auf den Link
+          zur Bestätigung.
         </StyledHeading>
 
         <ThanksImg src={thanksImageSrc} />
 
         <Text>
-          Sobald du deinen Login aktiviert hast, bekommst du Nachrichten zu deiner
-          Meldung und kannst andere Meldungen mit einem Herz unterstützen.
+          Sobald du deinen Login aktiviert hast, bekommst du Nachrichten zu
+          deiner Meldung und kannst andere Meldungen mit einem Herz
+          unterstützen.
         </Text>
 
         <Button
           onClick={this.goToMap}
           style={{ marginTop: 25, marginBottom: 10 }}
         >
-          Meldung anzeigen<br />
+          Meldung anzeigen
+          <br />
         </Button>
 
         <Paragraph>

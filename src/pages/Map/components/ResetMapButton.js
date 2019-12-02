@@ -17,7 +17,7 @@ const ResetMapButton = styled.button`
   color: ${config.colors.midgrey};
 `;
 
-export default props => (
+export default (props) => (
   <ResetMapButton {...props} onClick={resetMap}>
     ×
   </ResetMapButton>

@@ -24,9 +24,8 @@ import FMBCredits from '~/pages/Map/components/FMBCredits';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import {
   actions as submitReportStateActions,
-  selectors as submitReportStateSelectors }
-  from '~/pages/Reports/state/SubmitReportState';
-
+  selectors as submitReportStateSelectors
+} from '~/pages/Reports/state/SubmitReportState';
 
 const MapView = styled.div`
   flex: 1;
@@ -90,7 +89,6 @@ const InvalidAdressIndicator = styled(AddressIndicator)`
   color: ${config.colors.error};
 `;
 
-
 let validationBoundary = null; // kept here for caching
 
 class LocateMeMap extends Component {
@@ -103,7 +101,9 @@ class LocateMeMap extends Component {
   };
 
   static async getValidationGeodata() {
-    validationBoundary = await ky.get(`${config.reports.locateMeMap.boundaryGeodataUrl}`).json();
+    validationBoundary = await ky
+      .get(`${config.reports.locateMeMap.boundaryGeodataUrl}`)
+      .json();
   }
 
   constructor(props) {
@@ -130,7 +130,8 @@ class LocateMeMap extends Component {
     });
   }
 
-  setAutocompleteHasFocus = hasFocus => this.setState({ autocompleteHasFocus: hasFocus })
+  setAutocompleteHasFocus = (hasFocus) =>
+    this.setState({ autocompleteHasFocus: hasFocus });
 
   onMapMove = (coords) => {
     if (!validationBoundary) return;
@@ -141,14 +142,15 @@ class LocateMeMap extends Component {
   };
 
   reverseGeocodeCoords = (coords) => {
-    this.props.validateCoordinates(validationBoundary, coords)
+    this.props
+      .validateCoordinates(validationBoundary, coords)
       .then((isValid) => {
         if (isValid) {
           this.props.reverseGeocodeCoordinates(coords);
           this.props.setTempLocationCoords(coords);
         }
       });
-  }
+  };
 
   getCenter = () => {
     // if component is shown because of backwards navigation, use the center already determined
@@ -168,12 +170,14 @@ class LocateMeMap extends Component {
     return centerObj && [centerObj.lng, centerObj.lat];
   };
 
-  ongeocodeUse = () => this.setState({
-    geocoderUsed: true
-  })
+  ongeocodeUse = () =>
+    this.setState({
+      geocoderUsed: true
+    });
 
   ongeocodeSuccess = ({ coords, address }) => {
-    this.props.validateCoordinates(validationBoundary, coords)
+    this.props
+      .validateCoordinates(validationBoundary, coords)
       .then(() => this.props.handleGeocodeSuccess({ coords, address }));
   };
 
@@ -189,21 +193,22 @@ class LocateMeMap extends Component {
   confirmLocation = () => {
     this.props.confirmLocation(); // update state
     this.props.onProceed(); // update route
-  }
+  };
 
   togglePinned = () => {
-    this.setState(state => ({
+    this.setState((state) => ({
       locationPinned: !state.locationPinned
     }));
   };
 
   onMapLoad = () => {
     this.setState({ isLoading: false });
-  }
+  };
 
-  getLocatorControlPosition = ({ isDesktopView }) => (isDesktopView ?
-    { bottom: '128px', right: '15px' } :
-    { bottom: '128px', right: '8px' })
+  getLocatorControlPosition = ({ isDesktopView }) =>
+    isDesktopView
+      ? { bottom: '128px', right: '15px' }
+      : { bottom: '128px', right: '8px' };
 
   render() {
     // TODO: simplify usage by keeping getIsDesktopView() within styles util
@@ -211,18 +216,15 @@ class LocateMeMap extends Component {
 
     return (
       <MapView>
-
-        {
-          this.props.error.message && (
-            <ErrorMessage
-              message={this.props.error.message}
-              onDismiss={this.props.removeError}
-            />
-          )
-        }
+        {this.props.error.message && (
+          <ErrorMessage
+            message={this.props.error.message}
+            onDismiss={this.props.removeError}
+          />
+        )}
 
         {!this.state.isLoading && this.props.getLocationIsModeGeocoding && (
-          <Fragment>
+          <>
             {!this.state.locationPinned && (
               <SearchBarWrapper>
                 <AutocompleteGeocoder
@@ -230,22 +232,27 @@ class LocateMeMap extends Component {
                   onInputBlur={() => this.setAutocompleteHasFocus(false)}
                   onLocationPick={this.ongeocodeSuccess}
                   onSearchStart={this.ongeocodeUse}
-                  searchStringMinLength={config.reports.locateMeMap.geocoder.searchStringMinLength}
-                  debounceTime={config.reports.locateMeMap.geocoder.debounceTime}
+                  searchStringMinLength={
+                    config.reports.locateMeMap.geocoder.searchStringMinLength
+                  }
+                  debounceTime={
+                    config.reports.locateMeMap.geocoder.debounceTime
+                  }
                   onError={this.props.addError}
                 />
               </SearchBarWrapper>
             )}
-            {(this.state.mapHasBeenDragged || this.state.geocoderUsed) ? null : (
+            {this.state.mapHasBeenDragged || this.state.geocoderUsed ? null : (
               <HelpText />
             )}
-          </Fragment>
+          </>
         )}
-
 
         <MapWrapper>
           <StyledWebGlMap
-            newLocationZoomLevel={config.reports.locateMeMap.zoomOnGeocodedLocation}
+            newLocationZoomLevel={
+              config.reports.locateMeMap.zoomOnGeocodedLocation
+            }
             zoomedOut={!this.props.tempLocation.valid}
             center={this.getCenter()}
             className="locate-me-map"
@@ -255,30 +262,31 @@ class LocateMeMap extends Component {
             zoomControlPosition={isDesktopView ? 'bottom-right' : 'top-left'}
           />
 
-          {
-            !this.state.isLoading && !this.state.autocompleteHasFocus && (
-              <Fragment>
-                {this.props.locationMode && (
-                  <StaticMarker
-                    pinned={this.state.locationPinned}
-                  />
-                )}
+          {!this.state.isLoading && !this.state.autocompleteHasFocus && (
+            <>
+              {this.props.locationMode && (
+                <StaticMarker pinned={this.state.locationPinned} />
+              )}
 
-                {this.props.tempLocation.address && this.props.tempLocation.valid && (
-                  <AddressIndicator className="pass-touch">{this.props.tempLocation.address}</AddressIndicator>
+              {this.props.tempLocation.address &&
+                this.props.tempLocation.valid && (
+                  <AddressIndicator className="pass-touch">
+                    {this.props.tempLocation.address}
+                  </AddressIndicator>
                 )}
-                {!this.props.tempLocation.valid && (
-                  <InvalidAdressIndicator className="pass-touch">{config.reports.locateMeMap.outofBoundaryText}</InvalidAdressIndicator>
-                )}
-              </Fragment>
-            )
-          }
-
+              {!this.props.tempLocation.valid && (
+                <InvalidAdressIndicator className="pass-touch">
+                  {config.reports.locateMeMap.outofBoundaryText}
+                </InvalidAdressIndicator>
+              )}
+            </>
+          )}
         </MapWrapper>
 
         {!this.state.isLoading &&
           !this.state.autocompleteHasFocus &&
-          (this.props.getLocationIsModeGeocoding && !this.state.locationPinned) && (
+          (this.props.getLocationIsModeGeocoding &&
+            !this.state.locationPinned) && (
             <LocatorControl
               key="ReportsLocateMap__LocatorControl"
               onChange={this.onlocateMeMarkerUse}
@@ -286,13 +294,20 @@ class LocateMeMap extends Component {
             />
           )}
 
-        {!this.state.isLoading && !this.state.autocompleteHasFocus && !this.state.locationPinned && (
-          <PinLocationButton
-            onConfirm={this.togglePinned}
-            text="Diese Position bestätigen"
-            disabled={!(this.props.tempLocation.valid && this.props.tempLocation.address)}
-          />
-        )}
+        {!this.state.isLoading &&
+          !this.state.autocompleteHasFocus &&
+          !this.state.locationPinned && (
+            <PinLocationButton
+              onConfirm={this.togglePinned}
+              text="Diese Position bestätigen"
+              disabled={
+                !(
+                  this.props.tempLocation.valid &&
+                  this.props.tempLocation.address
+                )
+              }
+            />
+          )}
 
         {this.state.locationPinned && (
           <ConfirmLocationDialog
@@ -308,15 +323,24 @@ class LocateMeMap extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   ...state.ReportsState.SubmitReportState,
   error: state.ReportsState.ErrorState,
   // selectors
-  getLocationIsModeGeocoding: () => submitReportStateSelectors.getLocationIsModeGeocoding(state.ReportsState.SubmitReportState),
-  getAlreadyPicketLocation: () => submitReportStateSelectors.getAlreadyPicketLocation(state.ReportsState.SubmitReportState)
+  getLocationIsModeGeocoding: () =>
+    submitReportStateSelectors.getLocationIsModeGeocoding(
+      state.ReportsState.SubmitReportState
+    ),
+  getAlreadyPicketLocation: () =>
+    submitReportStateSelectors.getAlreadyPicketLocation(
+      state.ReportsState.SubmitReportState
+    )
 });
 const mapDispatchToProps = {
   ...errorStateActions,
   ...submitReportStateActions
 };
-export default connect(mapStateToProps, mapDispatchToProps)(LocateMeMap);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LocateMeMap);

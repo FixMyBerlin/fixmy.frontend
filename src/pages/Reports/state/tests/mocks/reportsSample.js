@@ -12,10 +12,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.40061834673159,
-        52.50075090458924
-      ]
+      coordinates: [13.40061834673159, 52.50075090458924]
     },
     id: 2,
     likes: 0,
@@ -38,10 +35,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.43891385584493,
-        52.50686916908651
-      ]
+      coordinates: [13.43891385584493, 52.50686916908651]
     },
     id: 1,
     likes: 0,
@@ -61,10 +55,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.43754677753566,
-        52.5073314413834
-      ]
+      coordinates: [13.43754677753566, 52.5073314413834]
     },
     id: 3,
     likes: 0,
@@ -87,10 +78,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45896882090108,
-        52.50699566558592
-      ]
+      coordinates: [13.45896882090108, 52.50699566558592]
     },
     id: 4,
     likes: 1,
@@ -113,10 +101,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44196228281942,
-        52.51729963135287
-      ]
+      coordinates: [13.44196228281942, 52.51729963135287]
     },
     id: 5,
     likes: 1,
@@ -139,10 +124,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44633444429837,
-        52.50730673034886
-      ]
+      coordinates: [13.44633444429837, 52.50730673034886]
     },
     id: 6,
     likes: 0,
@@ -165,10 +147,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44565162982963,
-        52.51864880082044
-      ]
+      coordinates: [13.44565162982963, 52.51864880082044]
     },
     id: 7,
     likes: 0,
@@ -191,10 +170,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44565162982963,
-        52.51864880082044
-      ]
+      coordinates: [13.44565162982963, 52.51864880082044]
     },
     id: 8,
     likes: 0,
@@ -217,10 +193,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44202111105903,
-        52.51015077239626
-      ]
+      coordinates: [13.44202111105903, 52.51015077239626]
     },
     id: 9,
     likes: 0,
@@ -243,10 +216,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.43124,
-        52.4985
-      ]
+      coordinates: [13.43124, 52.4985]
     },
     id: 10,
     likes: 0,
@@ -269,10 +239,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.43416698265719,
-        52.5148496413683
-      ]
+      coordinates: [13.43416698265719, 52.5148496413683]
     },
     id: 11,
     likes: 0,
@@ -295,10 +262,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.41013283536722,
-        52.50169257249706
-      ]
+      coordinates: [13.41013283536722, 52.50169257249706]
     },
     id: 12,
     likes: 0,
@@ -321,10 +285,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45152260256316,
-        52.51128592413076
-      ]
+      coordinates: [13.45152260256316, 52.51128592413076]
     },
     id: 13,
     likes: 0,
@@ -347,10 +308,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.4565570914001,
-        52.51512301314565
-      ]
+      coordinates: [13.4565570914001, 52.51512301314565]
     },
     id: 14,
     likes: 1,
@@ -373,10 +331,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.39031883654684,
-        52.49471703516858
-      ]
+      coordinates: [13.39031883654684, 52.49471703516858]
     },
     id: 15,
     likes: 0,
@@ -399,10 +354,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.39809073879098,
-        52.48888115125612
-      ]
+      coordinates: [13.39809073879098, 52.48888115125612]
     },
     id: 16,
     likes: 0,
@@ -425,10 +377,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.4446266520365,
-        52.50673885147518
-      ]
+      coordinates: [13.4446266520365, 52.50673885147518]
     },
     id: 17,
     likes: 0,
@@ -451,10 +400,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44163439420106,
-        52.51068178206734
-      ]
+      coordinates: [13.44163439420106, 52.51068178206734]
     },
     id: 18,
     likes: 0,
@@ -477,10 +423,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44536647995687,
-        52.51023082370159
-      ]
+      coordinates: [13.44536647995687, 52.51023082370159]
     },
     id: 19,
     likes: 0,
@@ -503,10 +446,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45298074628977,
-        52.51134201091475
-      ]
+      coordinates: [13.45298074628977, 52.51134201091475]
     },
     id: 20,
     likes: 0,
@@ -529,10 +469,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.3770421,
-        52.491972
-      ]
+      coordinates: [13.3770421, 52.491972]
     },
     id: 21,
     likes: 0,
@@ -555,10 +492,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44902646834566,
-        52.51493476899168
-      ]
+      coordinates: [13.44902646834566, 52.51493476899168]
     },
     id: 22,
     likes: 1,
@@ -581,10 +515,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.41059925952322,
-        52.49137152516204
-      ]
+      coordinates: [13.41059925952322, 52.49137152516204]
     },
     id: 55,
     likes: 1,
@@ -607,10 +538,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45943920583022,
-        52.51156924966128
-      ]
+      coordinates: [13.45943920583022, 52.51156924966128]
     },
     id: 56,
     likes: 1,
@@ -633,10 +561,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44216349127566,
-        52.49839911680718
-      ]
+      coordinates: [13.44216349127566, 52.49839911680718]
     },
     id: 57,
     likes: 1,
@@ -659,10 +584,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.43469462970688,
-        52.50674874204248
-      ]
+      coordinates: [13.43469462970688, 52.50674874204248]
     },
     id: 58,
     likes: 0,
@@ -685,10 +607,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.42346100831787,
-        52.49104381309093
-      ]
+      coordinates: [13.42346100831787, 52.49104381309093]
     },
     id: 59,
     likes: 1,
@@ -711,10 +630,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45150034586482,
-        52.50297277665024
-      ]
+      coordinates: [13.45150034586482, 52.50297277665024]
     },
     id: 60,
     likes: 1,
@@ -737,10 +653,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.40753274586223,
-        52.49564893988426
-      ]
+      coordinates: [13.40753274586223, 52.49564893988426]
     },
     id: 61,
     likes: 0,
@@ -763,10 +676,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.40518267662139,
-        52.49966302421635
-      ]
+      coordinates: [13.40518267662139, 52.49966302421635]
     },
     id: 62,
     likes: 0,
@@ -789,10 +699,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.43500227134166,
-        52.49403485199761
-      ]
+      coordinates: [13.43500227134166, 52.49403485199761]
     },
     id: 63,
     likes: 0,
@@ -815,10 +722,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.40110093304372,
-        52.49697125489408
-      ]
+      coordinates: [13.40110093304372, 52.49697125489408]
     },
     id: 64,
     likes: 0,
@@ -841,10 +745,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44565018387175,
-        52.5045537145848
-      ]
+      coordinates: [13.44565018387175, 52.5045537145848]
     },
     id: 65,
     likes: 0,
@@ -864,10 +765,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.4790341879384,
-        52.49445143952678
-      ]
+      coordinates: [13.4790341879384, 52.49445143952678]
     },
     id: 66,
     likes: 0,
@@ -887,10 +785,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.43427190251327,
-        52.51098347117292
-      ]
+      coordinates: [13.43427190251327, 52.51098347117292]
     },
     id: 67,
     likes: 0,
@@ -913,10 +808,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.43135996602291,
-        52.50832504305927
-      ]
+      coordinates: [13.43135996602291, 52.50832504305927]
     },
     id: 68,
     likes: 2,
@@ -939,10 +831,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.42035474874444,
-        52.50281316821324
-      ]
+      coordinates: [13.42035474874444, 52.50281316821324]
     },
     id: 69,
     likes: 0,
@@ -965,10 +854,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45646232706611,
-        52.51031353627567
-      ]
+      coordinates: [13.45646232706611, 52.51031353627567]
     },
     id: 70,
     likes: 0,
@@ -988,10 +874,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.4235308129098,
-        52.49093588847771
-      ]
+      coordinates: [13.4235308129098, 52.49093588847771]
     },
     id: 71,
     likes: 1,
@@ -1014,10 +897,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.46192415157373,
-        52.51315506795149
-      ]
+      coordinates: [13.46192415157373, 52.51315506795149]
     },
     id: 72,
     likes: 0,
@@ -1037,10 +917,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45537691686741,
-        52.51051728730434
-      ]
+      coordinates: [13.45537691686741, 52.51051728730434]
     },
     id: 73,
     likes: 0,
@@ -1063,10 +940,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.40706656211785,
-        52.50375571640225
-      ]
+      coordinates: [13.40706656211785, 52.50375571640225]
     },
     id: 74,
     likes: 0,
@@ -1089,10 +963,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.40625900676002,
-        52.50203890999808
-      ]
+      coordinates: [13.40625900676002, 52.50203890999808]
     },
     id: 75,
     likes: 0,
@@ -1115,10 +986,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.38704101835083,
-        52.49077099916491
-      ]
+      coordinates: [13.38704101835083, 52.49077099916491]
     },
     id: 76,
     likes: 0,
@@ -1141,10 +1009,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45029813738279,
-        52.50987680000623
-      ]
+      coordinates: [13.45029813738279, 52.50987680000623]
     },
     id: 77,
     likes: 0,
@@ -1164,10 +1029,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44597348071784,
-        52.49874837362307
-      ]
+      coordinates: [13.44597348071784, 52.49874837362307]
     },
     id: 78,
     likes: 0,
@@ -1187,10 +1049,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.41728675291097,
-        52.49562342632814
-      ]
+      coordinates: [13.41728675291097, 52.49562342632814]
     },
     id: 79,
     likes: 0,
@@ -1210,10 +1069,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.38613155673909,
-        52.48523802966514
-      ]
+      coordinates: [13.38613155673909, 52.48523802966514]
     },
     id: 80,
     likes: 0,
@@ -1233,10 +1089,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.41232727203669,
-        52.49048726700252
-      ]
+      coordinates: [13.41232727203669, 52.49048726700252]
     },
     id: 82,
     likes: 0,
@@ -1256,10 +1109,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45845919912176,
-        52.50636206469397
-      ]
+      coordinates: [13.45845919912176, 52.50636206469397]
     },
     id: 83,
     likes: 1,
@@ -1282,10 +1132,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.4634480860642,
-        52.51471182127378
-      ]
+      coordinates: [13.4634480860642, 52.51471182127378]
     },
     id: 84,
     likes: 2,
@@ -1305,10 +1152,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.37487033912907,
-        52.48559839686666
-      ]
+      coordinates: [13.37487033912907, 52.48559839686666]
     },
     id: 85,
     likes: 0,
@@ -1328,10 +1172,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.39408248528173,
-        52.48890635591926
-      ]
+      coordinates: [13.39408248528173, 52.48890635591926]
     },
     id: 81,
     likes: 1,
@@ -1354,10 +1195,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.4102064633189,
-        52.49619919571089
-      ]
+      coordinates: [13.4102064633189, 52.49619919571089]
     },
     id: 86,
     likes: 1,
@@ -1371,7 +1209,8 @@ export default [
   },
   {
     address: 'Fischzug 21, 10245 Berlin',
-    description: 'Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Do',
+    description:
+      'Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Do',
     details: {
       fee: 2,
       number: 4,
@@ -1380,10 +1219,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.47218469137795,
-        52.49638371695306
-      ]
+      coordinates: [13.47218469137795, 52.49638371695306]
     },
     id: 87,
     likes: 0,
@@ -1403,10 +1239,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.41034745265415,
-        52.50134648323558
-      ]
+      coordinates: [13.41034745265415, 52.50134648323558]
     },
     id: 88,
     likes: 1,
@@ -1429,10 +1262,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45172967529925,
-        52.5045957217491
-      ]
+      coordinates: [13.45172967529925, 52.5045957217491]
     },
     id: 89,
     likes: 0,
@@ -1452,10 +1282,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44629560198564,
-        52.52224445027929
-      ]
+      coordinates: [13.44629560198564, 52.52224445027929]
     },
     id: 90,
     likes: 1,
@@ -1478,10 +1305,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45173331250714,
-        52.51824434633738
-      ]
+      coordinates: [13.45173331250714, 52.51824434633738]
     },
     id: 91,
     likes: 0,
@@ -1501,10 +1325,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44525611111749,
-        52.51408837299363
-      ]
+      coordinates: [13.44525611111749, 52.51408837299363]
     },
     id: 92,
     likes: 0,
@@ -1524,10 +1345,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44489666663117,
-        52.514307118213
-      ]
+      coordinates: [13.44489666663117, 52.514307118213]
     },
     id: 93,
     likes: 0,
@@ -1547,10 +1365,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.43914555552306,
-        52.51693197622691
-      ]
+      coordinates: [13.43914555552306, 52.51693197622691]
     },
     id: 94,
     likes: 0,
@@ -1561,7 +1376,8 @@ export default [
   },
   {
     address: 'Gärtnerstraße 11, 10245 Berlin',
-    description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed',
+    description:
+      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed',
     details: {
       fee: 0,
       number: 4,
@@ -1570,10 +1386,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.46053927501077,
-        52.51040921296402
-      ]
+      coordinates: [13.46053927501077, 52.51040921296402]
     },
     id: 95,
     likes: 1,
@@ -1593,10 +1406,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.47086632149069,
-        52.51899228132243
-      ]
+      coordinates: [13.47086632149069, 52.51899228132243]
     },
     id: 96,
     likes: 0,
@@ -1619,10 +1429,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.43915678031181,
-        52.49964292639186
-      ]
+      coordinates: [13.43915678031181, 52.49964292639186]
     },
     id: 97,
     likes: 0,
@@ -1645,10 +1452,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.4076691846484,
-        52.4935125176834
-      ]
+      coordinates: [13.4076691846484, 52.4935125176834]
     },
     id: 98,
     likes: 0,
@@ -1668,10 +1472,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.45342142862296,
-        52.5106657042316
-      ]
+      coordinates: [13.45342142862296, 52.5106657042316]
     },
     id: 99,
     likes: 0,
@@ -1691,10 +1492,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.43130487836288,
-        52.50702494456158
-      ]
+      coordinates: [13.43130487836288, 52.50702494456158]
     },
     id: 100,
     likes: 1,
@@ -1714,10 +1512,7 @@ export default [
     },
     geometry: {
       type: 'Point',
-      coordinates: [
-        13.44526741939808,
-        52.51510134966557
-      ]
+      coordinates: [13.44526741939808, 52.51510134966557]
     },
     id: 101,
     likes: 0,
