@@ -9,6 +9,7 @@ const config = {
     staging: 'https://fixmyplatform-develop.herokuapp.com/api',
     production: 'https://api.fixmyberlin.de/api'
   },
+  logger: 'fmc*', // selects logging namespaces to display when not in production
   feedbackMail: 'feedback@fixmyberlin.de',
   colors: {
     lightbg: '#f5f5f5',
