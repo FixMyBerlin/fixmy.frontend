@@ -4,17 +4,14 @@ import { connect } from 'react-redux';
 import { handleQuit } from '~/pages/KatasterKI/utils';
 import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 
-const CloseSurveyButton = ({ isEmbedded }) => {
-  const css = {
-    marginTop: 'auto'
-  };
+const CloseSurveyButton = ({ isEmbedded, style = {} }) => {
   return isEmbedded ? (
-    <GhostButton css={css} onClick={handleQuit}>
+    <GhostButton css={style} onClick={handleQuit}>
       Umfrage beenden
     </GhostButton>
   ) : (
     <GhostButton
-      css={css}
+      css={style}
       onClick={() => {
         window.open(config.katasterKI.tspArticleLink);
       }}
