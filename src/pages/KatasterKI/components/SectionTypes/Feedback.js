@@ -9,8 +9,8 @@ import Flex from '~/components/Flex';
 import { getFeedbackThreshold } from '~/pages/KatasterKI/utils';
 import Paragraph from '~/pages/KatasterKI/components/Paragraph';
 import Button from '~/pages/KatasterKI/components/Button';
-import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import ShareButton from '~/pages/KatasterKI/components/ShareButton';
+import CloseSurveyButton from '~/pages/KatasterKI/components/CloseSurveyButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import ProgressVis from '~/pages/KatasterKI/components/ProgressVis';
 import ShareButtonDesktop from '../ShareButtonDesktop';
@@ -56,17 +56,6 @@ const Feedback = ({
     numberFormat(feedbackThreshold)
   );
 
-  /**
-   * Handles behavior when users clicked the 'quit' button.
-   *
-   * When the survey is embedded this should message the parent window to close
-   * the iFrame. When not embedded, a redirect to a content page is issued
-   * through history.push
-   */
-  const handleQuit = () => {
-    window.parent.postMessage({ msg: 'done' }, '*');
-  };
-
   return (
     <>
       <QuestionTitle>
@@ -91,21 +80,7 @@ const Feedback = ({
           flexDirection="column"
         >
           <Button onClick={next}>Mehr Situationen bewerten</Button>
-
-          {isEmbedded ? (
-            <GhostButton css={{ marginTop: 10 }} onClick={handleQuit}>
-              Umfrage beenden
-            </GhostButton>
-          ) : (
-            <GhostButton
-              css={{ marginTop: 10 }}
-              onClick={() => {
-                window.open(config.katasterKI.tspArticleLink);
-              }}
-            >
-              Informationen über das Projekt
-            </GhostButton>
-          )}
+          <CloseSurveyButton />
         </Flex>
 
         <ShareButtonDesktop />
@@ -118,8 +93,7 @@ const Feedback = ({
 const mapStateToProps = (state) => ({
   isTosAccepted: state.KatasterKIState.isTosAccepted,
   statisticsCounter: state.KatasterKIState.statisticsCounter,
-  ratingsCounter: state.KatasterKIState.ratingsCounter,
-  isEmbedded: state.KatasterKIState.isEmbedded
+  ratingsCounter: state.KatasterKIState.ratingsCounter
 });
 
 export default connect(mapStateToProps)(Feedback);
