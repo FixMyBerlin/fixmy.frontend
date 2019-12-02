@@ -71,14 +71,14 @@ const scenesConfig = (
 
   const titleScreen = {
     type: 'info',
-    title: `Wir zeigen ihnen nun ${sceneCount} Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen`,
+    title: `Wir zeigen Ihnen nun ${sceneCount} Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen`,
     name: 'info'
   };
 
   const firstPerspectiveScreen = {
     type: 'perspective_change',
     name: 'perspectiveChange',
-    title: `Perspektivwechsel: Sie haben bisher aus der ${perspectiveName} bewertet. Bitte bewerten Sie nun Straßensituationen aus der Perspektive anderer Verkehrsteilnehmender.`,
+    title: `Perspektivwechsel: Sie haben bisher aus der ${perspectiveName} bewertet. Bitte bewerten Sie nun einige Situationen von einem anderen Verkehrsmittel aus.`,
     helper: 'Sie können die Perspektive später noch einmal wechseln.',
     options: Object.keys(perspectiveNames)
       .filter((p) => p !== perspective)
@@ -93,7 +93,7 @@ const scenesConfig = (
   const followingPerspectiveScreen = {
     type: 'perspective_change',
     name: 'perspectiveChange',
-    title: `Sie können nun aus einer weiteren Perspektive bewerten oder weitere Straßensituationen aus den bisherigen Perspektiven bewerten.`,
+    title: `Sie können noch weitere Perspektiven bewerten: wahlweise aus derselben Sicht, oder von einem anderen Verkehrsmittel aus.`,
     helper: null,
     options: Object.keys(perspectiveNames).map((p) => ({
       label: perspectiveNames[p],
