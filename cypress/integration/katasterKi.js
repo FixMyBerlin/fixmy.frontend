@@ -195,6 +195,27 @@ describe('Kastaster survey', () => {
       });
     });
   });
+
+  describe('scenes', () => {
+    before(() => {
+      goToScene(1);
+    });
+
+    it('has a heading containing text', () => {
+      cy.get('[data-cy=kat-info-heading]').then((element) => {
+        const text = element.text();
+        expect(text).not.to.be.empty;
+      });
+    });
+
+    it('links to scene 2', () => {
+      cy.get('[data-cy=kat-info-proceed-btn]').click();
+      cy.location('pathname').should(
+        'eq',
+        `${config.routes.katasterKI.scenesBase}/2`
+      );
+    });
+  });
 });
 
 function goToProfile(profile = 1) {
