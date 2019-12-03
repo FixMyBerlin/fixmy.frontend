@@ -17,36 +17,39 @@ describe('Kastaster survey', () => {
     });
   });
 
-  describe('step 1', () => {
-    before(() => {
+  // TODO: split tests into multiplefiles
+  describe('profiles', () => {
+    describe('profile 1', () => {
       before(() => {
-        goToStep(1);
-      });
+        before(() => {
+          goToProfile(1);
+        });
 
-      it('shows a progress bar', () => {
-        cy.get('[data-cy=kat-progress-bar]').should('exist');
-      });
+        it('shows a progress bar', () => {
+          cy.get('[data-cy=kat-progress-bar]').should('exist');
+        });
 
-      it('contains checkboxes', () => {
-        cy.get('[type="checkbox"]');
-      });
+        it('contains checkboxes', () => {
+          cy.get('[type="checkbox"]');
+        });
 
-      it('links to step 2', () => {
-        cy.get('[data-cy=kat-multichoice-proceed-btn]').click();
-        cy.location('pathname').should(
-          'eq',
-          `${config.routes.katasterKI.profileBase}/2`
-        );
+        it('links to profile 2', () => {
+          cy.get('[data-cy=kat-multichoice-proceed-btn]').click();
+          cy.location('pathname').should(
+            'eq',
+            `${config.routes.katasterKI.profileBase}/2`
+          );
+        });
       });
     });
 
-    describe('step 2 and 3', () => {
+    describe('profile 2 and 3', () => {
       [2, 3].forEach(testSingleChoice);
     });
 
-    describe('step 4', () => {
+    describe('profile 4', () => {
       before(() => {
-        goToStep(4);
+        goToProfile(4);
       });
 
       // TODO: consider checking this for the other steps as well
@@ -57,7 +60,7 @@ describe('Kastaster survey', () => {
         });
       });
 
-      it('links to step 5', () => {
+      it('links to profile 5', () => {
         cy.get('[data-cy=kat-info-proceed-btn]').click();
         cy.location('pathname').should(
           'eq',
@@ -66,11 +69,11 @@ describe('Kastaster survey', () => {
       });
     });
 
-    describe('step 5', () => {
-      const step = 5;
+    describe('profile 5', () => {
+      const profile = 5;
 
       before(() => {
-        goToStep(step);
+        goToProfile(profile);
 
         // get references on proceed button and slider handle
         cy.get('[data-cy=kat-transport-rating-proceed-btn]').as('trProceedBtn');
@@ -95,18 +98,18 @@ describe('Kastaster survey', () => {
         cy.get('@trProceedBtn').click();
         cy.location('pathname').should(
           'eq',
-          `${config.routes.katasterKI.profileBase}/${step + 1}`
+          `${config.routes.katasterKI.profileBase}/${profile + 1}`
         );
       });
     });
 
-    describe('step 6, 7 and 8', () => {
+    describe('profile 6, 7 and 8', () => {
       [6, 7, 8].forEach(testSingleChoice);
     });
 
-    describe('step 9', () => {
+    describe('profile 9', () => {
       before(() => {
-        goToStep(9);
+        goToProfile(9);
       });
 
       it('shows a progress bar', () => {
@@ -117,7 +120,7 @@ describe('Kastaster survey', () => {
         cy.get('[type="checkbox"]');
       });
 
-      it('links to step 9', () => {
+      it('links to profile 9', () => {
         cy.get('[data-cy=kat-multichoice-proceed-btn]').click();
         cy.location('pathname').should(
           'eq',
@@ -126,13 +129,13 @@ describe('Kastaster survey', () => {
       });
     });
 
-    describe('step 10', () => {
+    describe('profile 10', () => {
       testSingleChoice(10);
     });
 
-    describe('step 11', () => {
+    describe('profile 11', () => {
       before(() => {
-        goToStep(11);
+        goToProfile(11);
       });
 
       it('shows a progress bar', () => {
@@ -145,7 +148,7 @@ describe('Kastaster survey', () => {
           .check();
       });
 
-      it('links to step 12', () => {
+      it('links to profile 12', () => {
         cy.get('[data-cy=kat-radiogroups-proceed-btn]').click();
         cy.location('pathname').should(
           'eq',
@@ -154,11 +157,10 @@ describe('Kastaster survey', () => {
       });
     });
 
-    describe('step 12', () => {
-
+    describe('profile 12', () => {
       // we cannot use "before" since the aliases would only be available in the first "it"
       beforeEach(() => {
-        goToStep(12);
+        goToProfile(12);
         cy.get('[data-cy=kat-zip-input]').as('zipInput');
         cy.get('[data-cy=kat-zip-proceed-btn]').as('zipProceedBtn');
       });
@@ -184,7 +186,7 @@ describe('Kastaster survey', () => {
         cy.get('@zipProceedBtn').should('have.prop', 'disabled', true);
       });
 
-      it(`links to the first scenes step`, () => {
+      it(`links to the first scene`, () => {
         cy.get('@zipProceedBtn').click();
         cy.location('pathname').should(
           'eq',
@@ -195,14 +197,18 @@ describe('Kastaster survey', () => {
   });
 });
 
-function goToStep(step = 1) {
-  cy.visit(`${config.routes.katasterKI.profileBase}/${step}`);
+function goToProfile(profile = 1) {
+  cy.visit(`${config.routes.katasterKI.profileBase}/${profile}`);
 }
 
-function testSingleChoice(step) {
-  describe(`step ${step}`, () => {
+function goToScene(scene = 1) {
+  cy.visit(`${config.routes.katasterKI.scenesBase}/${scene}`);
+}
+
+function testSingleChoice(profile) {
+  describe(`profile ${profile}`, () => {
     before(() => {
-      goToStep(step);
+      goToProfile(profile);
       cy.get('[data-cy=kat-singlechoice-btn]')
         .first()
         .as('singleChoiceBtn');
@@ -212,7 +218,7 @@ function testSingleChoice(step) {
       cy.get('@singleChoiceBtn').click();
       cy.location('pathname').should(
         'eq',
-        `${config.routes.katasterKI.profileBase}/${step + 1}`
+        `${config.routes.katasterKI.profileBase}/${profile + 1}`
       );
     });
   });
