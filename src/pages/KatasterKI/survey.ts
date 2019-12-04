@@ -10,7 +10,6 @@ import PedestrianIcon from '~/images/strassencheck/icons/icon-transportation-1.s
 import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 
 import defaultProfileConfig from '~/pages/KatasterKI/config/profile';
-import { shuffle } from './utils';
 
 const perspectiveNames = {
   C: 'Fahrradperspektive',
