@@ -89,14 +89,6 @@ function renderImage(image) {
 }
 
 class ImageSlider extends PureComponent {
-  static propTypes = {
-    images: PropTypes.arrayOf(PropTypes.object)
-  };
-
-  static defaultProps = {
-    images: []
-  };
-
   render() {
     return (
       <StyledSlider dots arrows={false}>
@@ -105,5 +97,13 @@ class ImageSlider extends PureComponent {
     );
   }
 }
+
+ImageSlider.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.object)
+};
+
+ImageSlider.defaultProps = {
+  images: []
+};
 
 export default ImageSlider;

@@ -53,56 +53,6 @@ const SearchReset = styled.div`
 `;
 
 class SearchBar extends PureComponent {
-  static propTypes = {
-    /**
-     * Called when search Input gets Focus.
-     */
-    onInputFocus: PropTypes.func,
-    /**
-     *Called when search Input looses Focus.
-     */
-    onInputBlur: PropTypes.func,
-    /**
-     * Callback that gets the current search string in order to fetch suggestions.
-     */
-    onSearchEnter: PropTypes.func.isRequired,
-    /**
-     * Called when the first search String is compiled. Ment to set a flag in the consuming component,
-     * e.g. to hide a Tooltip.
-     */
-    onSearchStart: PropTypes.func,
-    /**
-     * Callback invoked when the control is being reset,
-     * e.g. to clear the results list.
-     */
-    onSearchReset: PropTypes.func,
-    /**
-     * Callback invoked when enter is pressed,
-     * e.g. to e.g. to use the first item in the list.
-     */
-    onEnterKeyPress: PropTypes.func,
-    /**
-     * Minimum input length that triggers this.props.onSearchEnter()
-     * e.g. to clear the results list.
-     */
-    searchStringMinLength: PropTypes.number,
-    /**
-     * Amount of milliseconds the invokation of this.props.onSearchEnter() isdelayed
-     * since its last invocation.
-     */
-    debounceTime: PropTypes.number
-  };
-
-  static defaultProps = {
-    onInputFocus: () => {},
-    onInputBlur: () => {},
-    onSearchStart: () => {},
-    onSearchReset: () => {},
-    onEnterKeyPress: () => {},
-    searchStringMinLength: 3,
-    debounceTime: 1000
-  };
-
   state = {
     searchStarted: false,
     inputValue: ''
@@ -168,5 +118,55 @@ class SearchBar extends PureComponent {
     );
   }
 }
+
+SearchBar.propTypes = {
+  /**
+   * Called when search Input gets Focus.
+   */
+  onInputFocus: PropTypes.func,
+  /**
+   *Called when search Input looses Focus.
+   */
+  onInputBlur: PropTypes.func,
+  /**
+   * Callback that gets the current search string in order to fetch suggestions.
+   */
+  onSearchEnter: PropTypes.func.isRequired,
+  /**
+   * Called when the first search String is compiled. Ment to set a flag in the consuming component,
+   * e.g. to hide a Tooltip.
+   */
+  onSearchStart: PropTypes.func,
+  /**
+   * Callback invoked when the control is being reset,
+   * e.g. to clear the results list.
+   */
+  onSearchReset: PropTypes.func,
+  /**
+   * Callback invoked when enter is pressed,
+   * e.g. to e.g. to use the first item in the list.
+   */
+  onEnterKeyPress: PropTypes.func,
+  /**
+   * Minimum input length that triggers this.props.onSearchEnter()
+   * e.g. to clear the results list.
+   */
+  searchStringMinLength: PropTypes.number,
+  /**
+   * Amount of milliseconds the invokation of this.props.onSearchEnter() isdelayed
+   * since its last invocation.
+   */
+  debounceTime: PropTypes.number
+};
+
+SearchBar.defaultProps = {
+  onInputFocus: () => {},
+  onInputBlur: () => {},
+  onSearchStart: () => {},
+  onSearchReset: () => {},
+  onEnterKeyPress: () => {},
+  searchStringMinLength: 3,
+  debounceTime: 1000
+};
 
 export default SearchBar;

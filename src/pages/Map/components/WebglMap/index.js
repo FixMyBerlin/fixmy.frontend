@@ -40,36 +40,6 @@ const StyledMap = styled.div`
 `;
 
 class Map extends PureComponent {
-  static propTypes = {
-    zoom: PropTypes.number,
-    center: PropTypes.arrayOf(PropTypes.number),
-    pitch: PropTypes.number,
-    bearing: PropTypes.number,
-    show3dBuildings: PropTypes.bool,
-    animate: PropTypes.bool,
-    setMapContext: PropTypes.func,
-    activeLayer: PropTypes.string,
-    activeSection: PropTypes.number,
-    hasMoved: PropTypes.bool,
-    calculatePopupPosition: PropTypes.bool,
-    dim: PropTypes.bool
-  };
-
-  static defaultProps = {
-    zoom: config.map.view.zoom,
-    center: config.map.view.center,
-    pitch: config.map.view.pitch,
-    bearing: config.map.view.bearing,
-    show3dBuildings: true,
-    animate: false,
-    activeLayer: null,
-    activeSection: null,
-    setMapContext: () => {},
-    hasMoved: false,
-    calculatePopupPosition: false,
-    dim: false
-  };
-
   state = {
     loading: true,
     popupLngLat: false,
@@ -379,5 +349,35 @@ class Map extends PureComponent {
     );
   }
 }
+
+Map.propTypes = {
+  zoom: PropTypes.number,
+  center: PropTypes.arrayOf(PropTypes.number),
+  pitch: PropTypes.number,
+  bearing: PropTypes.number,
+  show3dBuildings: PropTypes.bool,
+  animate: PropTypes.bool,
+  setMapContext: PropTypes.func,
+  activeLayer: PropTypes.string,
+  activeSection: PropTypes.number,
+  hasMoved: PropTypes.bool,
+  calculatePopupPosition: PropTypes.bool,
+  dim: PropTypes.bool
+};
+
+Map.defaultProps = {
+  zoom: config.map.view.zoom,
+  center: config.map.view.center,
+  pitch: config.map.view.pitch,
+  bearing: config.map.view.bearing,
+  show3dBuildings: true,
+  animate: false,
+  activeLayer: null,
+  activeSection: null,
+  setMapContext: () => {},
+  hasMoved: false,
+  calculatePopupPosition: false,
+  dim: false
+};
 
 export default withRouter(Map);

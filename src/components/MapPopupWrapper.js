@@ -120,33 +120,6 @@ function renderName(data) {
 }
 
 class MapPopupWrapper extends PureComponent {
-  static propTypes = {
-    x: PropTypes.number,
-    y: PropTypes.number,
-    onClose: PropTypes.func,
-    onClick: PropTypes.func,
-    showSubline: PropTypes.bool,
-    data: PropTypes.shape({
-      name: PropTypes.string,
-      address: PropTypes.string,
-      isIntersection: PropTypes.bool
-    }),
-    // eslint-disable-next-line react/forbid-prop-types
-    style: PropTypes.object,
-    children: PropTypes.node
-  };
-
-  static defaultProps = {
-    x: 0,
-    y: 0,
-    style: {},
-    onClose: () => {},
-    onClick: () => {},
-    showSubline: true,
-    data: {},
-    children: null
-  };
-
   render() {
     const toggleSubLine =
       !this.props.data.isIntersection &&
@@ -169,5 +142,32 @@ class MapPopupWrapper extends PureComponent {
     );
   }
 }
+
+MapPopupWrapper.propTypes = {
+  x: PropTypes.number,
+  y: PropTypes.number,
+  onClose: PropTypes.func,
+  onClick: PropTypes.func,
+  showSubline: PropTypes.bool,
+  data: PropTypes.shape({
+    name: PropTypes.string,
+    address: PropTypes.string,
+    isIntersection: PropTypes.bool
+  }),
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object,
+  children: PropTypes.node
+};
+
+MapPopupWrapper.defaultProps = {
+  x: 0,
+  y: 0,
+  style: {},
+  onClose: () => {},
+  onClick: () => {},
+  showSubline: true,
+  data: {},
+  children: null
+};
 
 export default MapPopupWrapper;

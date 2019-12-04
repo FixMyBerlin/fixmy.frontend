@@ -90,17 +90,6 @@ function formatAddressString(address) {
 
 function detailWrapped(Component) {
   class DetailWrapperComp extends PureComponent {
-    static propTypes = {
-      apiEndpoint: PropTypes.string.isRequired,
-      onCloseRoute: PropTypes.string,
-      onClose: PropTypes.func
-    };
-
-    static defaultProps = {
-      onCloseRoute: '/',
-      onClose: () => {}
-    };
-
     state = {
       data: null,
       isLoading: true,
@@ -248,6 +237,17 @@ function detailWrapped(Component) {
       );
     }
   }
+
+  DetailWrapperComp.propTypes = {
+    apiEndpoint: PropTypes.string.isRequired,
+    onCloseRoute: PropTypes.string,
+    onClose: PropTypes.func
+  };
+
+  DetailWrapperComp.defaultProps = {
+    onCloseRoute: '/',
+    onClose: () => {}
+  };
 
   return withRouter(DetailWrapperComp);
 }

@@ -23,14 +23,6 @@ const StyledSelect = styled.select`
 `;
 
 class Select extends PureComponent {
-  static defaultProps = {
-    options: [],
-    onChange: () => {},
-    title: false,
-    disabled: false,
-    isVisible: true
-  };
-
   render() {
     const {
       title,
@@ -60,5 +52,13 @@ class Select extends PureComponent {
     );
   }
 }
+
+Select.defaultProps = {
+  options: [],
+  onChange: () => {},
+  title: false,
+  disabled: false,
+  isVisible: true
+};
 
 export default Select;

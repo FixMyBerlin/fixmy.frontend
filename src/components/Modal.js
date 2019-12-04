@@ -51,18 +51,6 @@ const Close = styled.div`
 `;
 
 class Modal extends PureComponent {
-  static propTypes = {
-    isOpen: PropTypes.bool,
-    onClose: PropTypes.func,
-    children: PropTypes.node
-  };
-
-  static defaultProps = {
-    isOpen: false,
-    onClose: () => {},
-    children: ''
-  };
-
   render() {
     if (!this.props.isOpen) {
       return null;
@@ -80,5 +68,17 @@ class Modal extends PureComponent {
     );
   }
 }
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+  children: PropTypes.node
+};
+
+Modal.defaultProps = {
+  isOpen: false,
+  onClose: () => {},
+  children: ''
+};
 
 export default Modal;

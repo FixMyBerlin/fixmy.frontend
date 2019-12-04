@@ -26,25 +26,6 @@ const LocatorButton = styled.button`
 `;
 
 class LocatorControl extends PureComponent {
-  static propTypes = {
-    position: PropTypes.string,
-    customPosition: PropTypes.shape({
-      top: PropTypes.string,
-      bottom: PropTypes.string,
-      left: PropTypes.string,
-      right: PropTypes.string
-    }),
-    onChange: PropTypes.func,
-    onStart: PropTypes.func
-  };
-
-  static defaultProps = {
-    position: 'top-left',
-    onChange: () => {},
-    onStart: () => {},
-    customPosition: undefined
-  };
-
   state = {
     isLoading: false
   };
@@ -84,5 +65,24 @@ class LocatorControl extends PureComponent {
     );
   }
 }
+
+LocatorControl.propTypes = {
+  position: PropTypes.string,
+  customPosition: PropTypes.shape({
+    top: PropTypes.string,
+    bottom: PropTypes.string,
+    left: PropTypes.string,
+    right: PropTypes.string
+  }),
+  onChange: PropTypes.func,
+  onStart: PropTypes.func
+};
+
+LocatorControl.defaultProps = {
+  position: 'top-left',
+  onChange: () => {},
+  onStart: () => {},
+  customPosition: undefined
+};
 
 export default LocatorControl;

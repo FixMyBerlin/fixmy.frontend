@@ -25,14 +25,6 @@ const BraceWrapper = styled.div`
 `;
 
 class MapLegend extends PureComponent {
-  static propTypes = {
-    type: PropTypes.oneOf(['hbi', 'plannings'])
-  };
-
-  static defaultProps = {
-    type: 'hbi'
-  };
-
   getLegendComponent = () => {
     switch (this.props.type) {
       case 'hbi':
@@ -60,5 +52,13 @@ class MapLegend extends PureComponent {
     );
   }
 }
+
+MapLegend.propTypes = {
+  type: PropTypes.oneOf(['hbi', 'plannings'])
+};
+
+MapLegend.defaultProps = {
+  type: 'hbi'
+};
 
 export default MapLegend;

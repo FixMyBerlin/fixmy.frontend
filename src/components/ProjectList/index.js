@@ -6,11 +6,6 @@ import ReportListItem from '~/components/ReportListItem';
 import DotLoader from '~/components/DotLoader';
 
 class ProjectList extends PureComponent {
-  static defaultProps = {
-    showLoadingIndicator: true,
-    itemType: 'projects'
-  };
-
   render() {
     const isProjects = this.props.itemType === 'projects';
 
@@ -31,5 +26,10 @@ class ProjectList extends PureComponent {
     ));
   }
 }
+
+ProjectList.defaultProps = {
+  showLoadingIndicator: true,
+  itemType: 'projects'
+};
 
 export default withRouter(ProjectList);
