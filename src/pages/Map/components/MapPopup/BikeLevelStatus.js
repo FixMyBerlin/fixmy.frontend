@@ -73,7 +73,7 @@ export default (props) => {
         <SidesWrapper>
           {isLevel0Valid && (
             <Label margin="0 0 10px 0">
-              {orientationNames.side0}:{' '}
+              {orientationNames.side0}:
               <LevelLabel color={level0Color}>
                 {numberFormat(level0)}
               </LevelLabel>
@@ -81,7 +81,7 @@ export default (props) => {
           )}
           {isLevel1Valid && (
             <Label>
-              {orientationNames.side1}:{' '}
+              {orientationNames.side1}:
               <LevelLabel color={level1Color}>
                 {numberFormat(level1)}
               </LevelLabel>

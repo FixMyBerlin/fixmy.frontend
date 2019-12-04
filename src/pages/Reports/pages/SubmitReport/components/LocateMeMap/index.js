@@ -287,7 +287,7 @@ class LocateMeMap extends Component {
         {!this.state.isLoading &&
           !this.state.autocompleteHasFocus &&
           this.props.getLocationIsModeGeocoding &&
-            !this.state.locationPinned && (
+          !this.state.locationPinned && (
             <LocatorControl
               key="ReportsLocateMap__LocatorControl"
               onChange={this.onlocateMeMarkerUse}
@@ -341,4 +341,7 @@ const mapDispatchToProps = {
   ...errorStateActions,
   ...submitReportStateActions
 };
-export default connect(mapStateToProps, mapDispatchToProps)(LocateMeMap);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LocateMeMap);

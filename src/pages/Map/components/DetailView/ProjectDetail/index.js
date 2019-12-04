@@ -157,7 +157,7 @@ class ProjectDetail extends PureComponent {
             ) : null}
             {external_url ? (
               <DetailItem>
-                Link zur Planung:{' '}
+                Link zur Planung:
                 <Anchor target="_blank" href={external_url}>
                   {external_url}
                 </Anchor>
