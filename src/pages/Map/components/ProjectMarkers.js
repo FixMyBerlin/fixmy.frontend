@@ -5,8 +5,6 @@ import DraftMarker from '~/images/planning-icons/konzept-marker.png';
 import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
-import Store from '~/store';
-import * as MapActions from '../MapState';
 import logger from '~/utils/logger';
 
 const Markers = {

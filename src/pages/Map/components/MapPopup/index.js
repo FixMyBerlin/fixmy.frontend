@@ -69,7 +69,7 @@ class MapPopup extends PureComponent {
       return null;
     }
 
-    const isPlaningView = activeView === 'planungen';
+    const isPlanningView = activeView === 'planungen';
     const isStatus = activeView === 'zustand';
     const isSmallScreen = window.innerWidth <= 768;
     const x = popupLocation && !isSmallScreen ? popupLocation.x : 0;
@@ -94,7 +94,7 @@ class MapPopup extends PureComponent {
           </>
         ) : (
           <>
-            {isPlaningView && <ProjectStatus section={data} />}
+            {isPlanningView && <ProjectStatus section={data} />}
             {isStatus && (
               <BikeLevelStatus onClick={this.onDetailClick} section={data} />
             )}

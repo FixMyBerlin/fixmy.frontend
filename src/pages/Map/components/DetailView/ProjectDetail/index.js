@@ -1,5 +1,5 @@
 /* eslint react/no-array-index-key: 0, camelcase: 0 */
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
 import Title from '~/components/Title';
@@ -7,12 +7,9 @@ import SectionTitle from '~/components/SectionTitle';
 import Text from '~/components/Text';
 import Label from '~/components/Label';
 import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
-import DetailSwitch, {
-  ButtonGroup
-} from '~/pages/Map/components/DetailView/DetailSwitch';
 import ImageSlider from '~/pages/Map/components/DetailView/ImageSlider';
 
-import ProjectStatus from './ProjectStatus';
+import ProjectStatusChart from './ProjectStatusChart';
 import ProjectLike from './ProjectLike';
 import categoryMapping from './categoryMapping';
 import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
@@ -75,11 +72,8 @@ const NoDataLabel = styled.div`
 
 class ProjectDetail extends PureComponent {
   state = {
-    descriptionExpanded: false,
-    sideIndex: 0
+    descriptionExpanded: false
   };
-
-  onSwitchSide = (sideIndex) => () => this.setState({ sideIndex });
 
   toggleDescription = () => {
     this.setState((prevState) => ({
@@ -89,7 +83,6 @@ class ProjectDetail extends PureComponent {
 
   render() {
     const { data } = this.props;
-    const { sideIndex } = this.state;
 
     if (!data) {
       return <NoDataLabel>Keine Projekte vorhanden</NoDataLabel>;
@@ -130,7 +123,7 @@ class ProjectDetail extends PureComponent {
             {draft_submitted ? `Planungsbeginn: ${draft_submitted}` : null}{' '}
             {construction_started ? `Baubeginn: ${construction_started}` : null}
           </Label>
-          {phase && <ProjectStatus phase={phase} />}
+          {phase && <ProjectStatusChart phase={phase} />}
         </DetailHead>
 
         <DetailBody>

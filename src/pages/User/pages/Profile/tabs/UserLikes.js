@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import idx from 'idx';
 
 import Title from '~/components/Title';

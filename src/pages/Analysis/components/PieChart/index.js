@@ -1,5 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
-import idx from 'idx';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { VictoryPie, VictoryLabel, Slice } from 'victory';

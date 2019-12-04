@@ -34,13 +34,6 @@ export function trackEvent(category = '', action = '', name = '') {
   }
 }
 
-export function byKey(arr = [], key = 'id') {
-  return arr.reduce((res, item) => {
-    res[item[key]] = item;
-    return res;
-  }, {});
-}
-
 export function sortByKey(key = 'id', sortDirection = 'ASC') {
   const isAsc = sortDirection === 'ASC';
   return (a, b) => {
@@ -85,7 +78,6 @@ export const isTouch = 'ontouchstart' in window;
 export default {
   numberFormat,
   trackEvent,
-  byKey,
   sortByKey,
   isNumeric,
   getParameterByName,

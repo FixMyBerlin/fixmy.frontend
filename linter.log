@@ -1,0 +1,161 @@
+
+> fixmyberlin-frontend@1.0.0 lint /Users/work/code/fixmy.frontend
+> eslint src "--ignore-pattern" "src/pages/Reports"
+
+
+/Users/work/code/fixmy.frontend/src/components/AutocompleteGeocoder/SearchBar.js
+  56:3  error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/components/AutocompleteGeocoder/index.js
+  1:32  error  'Fragment' is defined but never used  no-unused-vars
+
+/Users/work/code/fixmy.frontend/src/components/CloseButton.js
+  22:40  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/components/MapPopupWrapper.js
+  127:23  warning  'data.borough' is missing in props validation  react/prop-types
+  137:61  warning  'data.borough' is missing in props validation  react/prop-types
+
+/Users/work/code/fixmy.frontend/src/components/MenuButton.js
+  22:64  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/components/NewCloseButton.js
+  12:35  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/components/ProjectList/index.js
+  25:54  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/components/ProjectListItem/index.js
+    2:8   error  'idx' is defined but never used  no-unused-vars
+  174:40  error  Prop spreading is forbidden      react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/components/ReportListItem/index.js
+  107:3  error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/components/SvgIcon.js
+  4:3  error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/pages/Analysis/components/PieChart/index.js
+    1:32  error  'Fragment' is defined but never used  no-unused-vars
+    2:8   error  'idx' is defined but never used       no-unused-vars
+  105:21  error  Prop spreading is forbidden           react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/pages/KatasterKI/components/SectionTypes/Email.js
+   2:10  error  'Redirect' is defined but never used       no-unused-vars
+  10:8   error  'emailImageSrc' is defined but never used  no-unused-vars
+
+/Users/work/code/fixmy.frontend/src/pages/KatasterKI/components/SectionTypes/Feedback.js
+  46:3  error  'isEmbedded' is defined but never used  no-unused-vars
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/DetailView/FeedbackForm/index.js
+  55:19  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/DetailView/ProjectDetail/ProjectLike.js
+  58:3  error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/DetailView/ProjectDetail/ProjectStatus.js
+   1:32  error  'Fragment' is defined but never used             no-unused-vars
+  26:3   error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/DetailView/ProjectDetail/ProjectStatusChart.js
+  63:3  error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/DetailView/ProjectDetail/index.js
+   2:32  error  'Fragment' is defined but never used             no-unused-vars
+  10:8   error  'DetailSwitch' is defined but never used         no-unused-vars
+  11:3   error  'ButtonGroup' is defined but never used          no-unused-vars
+  77:3   error  State initialization should be in a constructor  react/state-in-constructor
+  92:13  error  'sideIndex' is assigned a value but never used   no-unused-vars
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/DetailView/SectionDetail/index.js
+  101:3  error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/DetailView/detailWrapped.js
+   93:5   error    State initialization should be in a constructor  react/state-in-constructor
+  104:37  warning  'match' is missing in props validation           react/prop-types
+  105:36  warning  'match' is missing in props validation           react/prop-types
+  144:18  warning  'history' is missing in props validation         react/prop-types
+  144:26  warning  'history.push' is missing in props validation    react/prop-types
+  157:33  warning  'match' is missing in props validation           react/prop-types
+  208:15  warning  'subtitle' is missing in props validation        react/prop-types
+  211:53  warning  'activeView' is missing in props validation      react/prop-types
+  234:36  error    Prop spreading is forbidden                      react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/LocatorControl.js
+  29:3  error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/MapControl.js
+  52:67  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/MapLegend/index.js
+   1:32  error    'Fragment' is defined but never used          no-unused-vars
+  44:28  error    Prop spreading is forbidden                   react/jsx-props-no-spreading
+  46:22  warning  'isEmbedMode' is missing in props validation  react/prop-types
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/MapPopup/BikeLevelStatus.js
+  71:22  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/ProjectMarkers.js
+  8:8   error  'Store' is defined but never used       no-unused-vars
+  9:13  error  'MapActions' is defined but never used  no-unused-vars
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/SearchBar.js
+  77:3  error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/pages/Map/components/WebglMap/index.js
+   43:3   error    State initialization should be in a constructor     react/state-in-constructor
+   83:27  warning  'filterHbi' is missing in props validation          react/prop-types
+   83:49  warning  'filterHbi' is missing in props validation          react/prop-types
+   98:18  warning  'match' is missing in props validation              react/prop-types
+   98:24  warning  'match.url' is missing in props validation          react/prop-types
+   99:27  warning  'hbi_values' is missing in props validation         react/prop-types
+   99:50  warning  'hbi_values' is missing in props validation         react/prop-types
+  101:45  warning  'hbi_values' is missing in props validation         react/prop-types
+  101:68  warning  'filterHbi' is missing in props validation          react/prop-types
+  177:45  warning  'hbi_values' is missing in props validation         react/prop-types
+  177:68  warning  'filterHbi' is missing in props validation          react/prop-types
+  180:50  warning  'filterPlannings' is missing in props validation    react/prop-types
+  223:51  warning  'displayPopup' is missing in props validation       react/prop-types
+  224:44  warning  'activeView' is missing in props validation         react/prop-types
+  225:20  warning  'history' is missing in props validation            react/prop-types
+  225:28  warning  'history.push' is missing in props validation       react/prop-types
+  271:40  warning  'location' is missing in props validation           react/prop-types
+  271:49  warning  'location.pathname' is missing in props validation  react/prop-types
+  284:42  warning  'activeView' is missing in props validation         react/prop-types
+  285:18  warning  'history' is missing in props validation            react/prop-types
+  285:26  warning  'history.push' is missing in props validation       react/prop-types
+  331:39  warning  'planningData' is missing in props validation       react/prop-types
+  335:31  warning  'className' is missing in props validation          react/prop-types
+  340:21  warning  'children' is missing in props validation           react/prop-types
+  346:39  warning  'filterPlannings' is missing in props validation    react/prop-types
+
+/Users/work/code/fixmy.frontend/src/pages/Map/map-utils.js
+  6:10  error  'byKey' is defined but never used  no-unused-vars
+
+/Users/work/code/fixmy.frontend/src/pages/Markdown/Markdown.js
+  8:3  error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/pages/MyHBI/MyHBI.js
+  11:3  error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/pages/MyHBI/components/HBIConfigurator/index.js
+  70:36  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/pages/MyHBI/components/HBISubmitForm/index.js
+  55:19  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/pages/User/components/UserForm.js
+  119:19  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/pages/User/pages/Profile/Profile.js
+  22:22  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+
+/Users/work/code/fixmy.frontend/src/pages/User/pages/Profile/tabs/Profile.js
+  54:3  error  State initialization should be in a constructor  react/state-in-constructor
+
+/Users/work/code/fixmy.frontend/src/pages/User/pages/Profile/tabs/UserLikes.js
+   1:32  error  'Fragment' is defined but never used             no-unused-vars
+  11:3   error  State initialization should be in a constructor  react/state-in-constructor
+
+✖ 82 problems (48 errors, 34 warnings)
+
