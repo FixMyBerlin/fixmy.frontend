@@ -19,11 +19,11 @@ import {
   toggleLayer,
   filterLayersById,
   getCenterFromGeom,
-  resetMap,
   intersectionLayers,
   parseUrlOptions,
   setPlanningLegendFilter
 } from '~/pages/Map/map-utils';
+import resetMap from '~/pages/Map/reset';
 
 let MB_STYLE_URL;
 if (config.debug) {

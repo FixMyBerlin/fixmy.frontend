@@ -1,5 +1,5 @@
 /* eslint indent: 0 */
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -14,7 +14,7 @@ import MapPopupWrapper from '~/components/MapPopupWrapper';
 import Button from '~/components/Button';
 import Label from '~/components/Label';
 import Brace from '~/pages/Map/components/Brace';
-import { resetMap } from '~/pages/Map/map-utils';
+import resetMap from '~/pages/Map/reset';
 
 const arrowSize = 19;
 

@@ -3,12 +3,7 @@ import turfAlong from '@turf/along';
 import turfLength from '@turf/length';
 import { lineString as turfLineString } from '@turf/helpers';
 
-import Store from '~/store';
-import * as MapActions from '~/pages/Map/MapState';
-import * as AppActions from '~/AppState';
 import { byKey, isNumeric, getParameterByName } from '~/utils/utils';
-
-const planningPhases = byKey(config.planningPhases, 'id');
 
 export const intersectionLayers = [
   'intersections',
@@ -150,27 +145,6 @@ export function colorizeHbiLines(map, hbiValues, hbiFilter) {
   });
 }
 
-export function resetMap({ zoom = null } = {}) {
-  Store.dispatch(AppActions.setActiveSection(null));
-  Store.dispatch(MapActions.setPopupData(null));
-  Store.dispatch(MapActions.setPopupVisible(false));
-
-  const nextMapView = {
-    show3dBuildings: false,
-    dim: false,
-    pitch: 0,
-    bearing: 0,
-    animate: true,
-    center: null
-  };
-
-  if (zoom) {
-    nextMapView.zoom = zoom;
-  }
-
-  Store.dispatch(MapActions.setView(nextMapView));
-}
-
 export function getCenterFromGeom(geometry, defaultCenter = null) {
   if (geometry && geometry.coordinates) {
     if (geometry.type === 'MultiLineString') {
@@ -227,7 +201,6 @@ export default {
   filterLayersById,
   toggleLayer,
   colorizeHbiLines,
-  resetMap,
   getCenterFromGeom,
   getGeoLocation,
   parseUrlOptions
