@@ -54,7 +54,7 @@ export async function apiUpdate(json, token, formFunctions) {
     return handleRequest('password/', { json, token }, formFunctions, 'text');
   }
 
-  handleRequest(
+  return handleRequest(
     'users/me/',
     { json, token, method: 'PUT' },
     { setSubmitting: () => {}, setErrors: () => {} },

@@ -25,8 +25,7 @@ const RESET_PASSWORD_SUCCESS = 'User/UserState/RESET_PASSWORD_SUCCESS';
 const FORGOT_PASSWORD = 'User/UserState/FORGOT_PASSWORD';
 const FORGOT_PASSWORD_SUCCESS = 'User/UserState/FORGOT_PASSWORD_SUCCESS';
 const UPDATE = 'User/UserState/UPDATE';
-const VERIFY = 'User/UserState/VERIFY';
-const VERIFY_SUCCESS = 'User/UserState/VERIFY_SUCCESS';
+const RESET_TOKEN = 'User/UserState/RESET_TOKEN';
 const PROFILE = 'User/UserState/PROFILE';
 const PROFILE_SUCCESS = 'User/UserState/PROFILE_SUCCESS';
 const UPDATE_USERNAME_SUCCESS = 'User/UserState/UPDATE_USERNAME_SUCCESS';
@@ -134,18 +133,14 @@ export function update(values, formFunctions) {
 // when token is not valid anymore we reset the token
 export function verify() {
   return async (dispatch, getState) => {
-    dispatch({ type: VERIFY });
-
     const { token } = getState().UserState;
-    if (!token) {
-      return false;
-    }
+    if (token) {
+      const data = await apiVerify(token);
 
-    const data = await apiVerify(token);
-
-    if (data.error) {
-      remove('token');
-      dispatch({ type: VERIFY_SUCCESS, payload: { token: false } });
+      if (data.error) {
+        remove('token');
+        dispatch({ type: RESET_TOKEN, payload: { token: false } });
+      }
     }
   };
 }
@@ -223,8 +218,7 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case RESET_PASSWORD_SUCCESS:
     case FORGOT_PASSWORD:
     case FORGOT_PASSWORD_SUCCESS:
-    case VERIFY:
-    case VERIFY_SUCCESS:
+    case RESET_TOKEN:
     case PROFILE:
     case PROFILE_SUCCESS:
     case UPDATE_USERNAME_SUCCESS:

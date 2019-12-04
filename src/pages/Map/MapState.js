@@ -102,9 +102,9 @@ export function geocodeAddress(searchtext) {
         geocodeResult.Longitude,
         geocodeResult.Latitude + Math.random() / 1000
       ];
-      dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
+      return dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
     } catch (error) {
-      dispatch({
+      return dispatch({
         type: GEOCODE_FAIL,
         payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' }
       });

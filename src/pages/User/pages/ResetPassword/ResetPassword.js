@@ -33,7 +33,7 @@ class ResetPassword extends PureComponent {
     const { password } = values;
     const { uid, token } = matchParams;
 
-    this.props.dispatch(
+    return this.props.dispatch(
       resetPassword({ new_password: password, uid, token }, params)
     );
   };
