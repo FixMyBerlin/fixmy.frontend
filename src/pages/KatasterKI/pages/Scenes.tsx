@@ -19,7 +19,6 @@ import {
 import { Answer, Section, RequestState } from '../types';
 import Survey from '~/pages/KatasterKI/survey';
 import PerspectiveChange from '../components/SectionTypes/PerspectiveChange';
-import Email from '../components/SectionTypes/Email';
 import EmailCheckboxes from '../components/SectionTypes/EmailCheckboxes';
 
 const sectionTypes = {
