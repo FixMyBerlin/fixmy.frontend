@@ -18,8 +18,8 @@ function handleClick() {
   Store.dispatch(toggle());
 }
 
-export default (props) => (
-  <MenuButton role="button" tabIndex={0} onClick={handleClick} {...props}>
-    {props.whiteFill ? <MenuIconWhite /> : <MenuIcon />}
+export default ({ whiteFill }) => (
+  <MenuButton role="button" tabIndex={0} onClick={handleClick}>
+    {whiteFill ? <MenuIconWhite /> : <MenuIcon />}
   </MenuButton>
 );

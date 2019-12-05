@@ -21,9 +21,7 @@ module.exports = (api) => {
 
   const env = {
     test: {
-      plugins: [
-        'transform-es2015-modules-commonjs'
-      ]
+      plugins: ['transform-es2015-modules-commonjs']
     },
     production: {
       plugins: [
