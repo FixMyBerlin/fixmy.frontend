@@ -60,7 +60,8 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/webidl-conversions'),
           Path.resolve(__dirname, '../node_modules/whatwg-url'),
           Path.resolve(__dirname, '../node_modules/ky'),
-          Path.resolve(__dirname, '../node_modules/d3-scale')
+          Path.resolve(__dirname, '../node_modules/d3-scale'),
+          Path.resolve(__dirname, '../config.js')
         ],
         use: 'babel-loader'
       },
