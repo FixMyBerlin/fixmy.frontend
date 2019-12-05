@@ -15,28 +15,19 @@ const StyledMap = styled.div`
 `;
 
 class BaseMap extends PureComponent {
-  static propTypes = {
-    maxBounds: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
-    onLoad: PropTypes.func,
-    onMove: PropTypes.func
-  };
-
-  static defaultProps = {
-    maxBounds: config.reports.overviewMap.maxBounds,
-    onLoad: () => {},
-    onMove: () => {}
-  };
-
-  state = {
-    isLoading: true
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    };
+  }
 
   componentDidMount() {
     this.map = new MapboxGL.Map({
       container: this.root,
       style: MB_STYLE_URL,
       bounds: config.reports.overviewMap.bounds,
-      maxBounds: this.props.maxBounds
+      maxBounds: this.props.maxBounds || config.reports.overviewMap.maxBounds
     });
 
     this.map.on('load', () => {
@@ -66,5 +57,17 @@ class BaseMap extends PureComponent {
     );
   }
 }
+
+BaseMap.propTypes = {
+  maxBounds: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
+  onLoad: PropTypes.func,
+  onMove: PropTypes.func
+};
+
+BaseMap.defaultProps = {
+  maxBounds: config.reports.overviewMap.maxBounds,
+  onLoad: () => {},
+  onMove: () => {}
+};
 
 export default BaseMap;
