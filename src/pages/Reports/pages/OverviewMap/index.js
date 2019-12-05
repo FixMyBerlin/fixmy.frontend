@@ -8,6 +8,7 @@ import { withRouter, Route } from 'react-router-dom';
 
 import styled from 'styled-components';
 
+import logger from '~/utils/logger';
 import { matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';
@@ -51,32 +52,36 @@ class OverviewMap extends Component {
     this.props.loadReportsData();
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { selectedReport, match, reports } = nextProps;
+  componentDidUpdate(prevProps) {
+    const { selectedReport: prevReport } = prevProps;
+    const { selectedReport } = this.props;
 
-    // handle deeplink load
-    if (!selectedReport && match.params.id) {
-      this.props.setSelectedReport(
-        reports.find((r) => r.id === +match.params.id)
-      );
+    if (selectedReport?.id) {
+      if (prevReport?.id !== selectedReport.id) {
+        // Selected report changed
+
+        // setState is okay because conditionals will prevent this
+        // from occuring in a loop
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({ mapCenter: selectedReport.geometry.coordinates });
+      }
+    } else if (!selectedReport) {
+      if (this.props.match.params.id) {
+        // handle deeplink load
+        this.props.setSelectedReport(
+          this.props.reports.find((r) => r.id === +this.props.match.params.id)
+        );
+      } else if (prevReport) {
+        // Unsetting report
+
+        // setState is okay because conditionals will prevent this
+        // from occuring in a loop
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({
+          mapCenter: null
+        });
+      }
     }
-
-    if (
-      selectedReport &&
-      selectedReport.geometry.coordinates !== this.state.mapCenter
-    ) {
-      this.setState({
-        mapCenter: selectedReport.geometry.coordinates
-      });
-    }
-
-    if (!nextProps.selectedReport && this.props.selectedReport) {
-      this.setState({
-        mapCenter: null
-      });
-    }
-
-    return null;
   }
 
   componentWillUnmount() {
