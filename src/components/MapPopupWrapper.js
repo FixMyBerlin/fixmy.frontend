@@ -152,7 +152,8 @@ MapPopupWrapper.propTypes = {
   data: PropTypes.shape({
     name: PropTypes.string,
     address: PropTypes.string,
-    isIntersection: PropTypes.bool
+    isIntersection: PropTypes.bool,
+    borough: PropTypes.string
   }),
   // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object,

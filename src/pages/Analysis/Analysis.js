@@ -18,6 +18,7 @@ import Flex from '~/components/Flex';
 import Select from '~/components/Select';
 import ProjectList from '~/components/ProjectList';
 import Card from './components/Card';
+import logger from '~/utils/logger';
 
 const AnalysisWrapper = styled.div`
   background: ${config.colors.lightgrey};
@@ -78,10 +79,11 @@ const sortOptions = [
 ];
 
 function filterDistrict(districtName) {
-  return (d) =>
-    !districtName
-      ? true
-      : d.borough.toLowerCase() === districtName.toLowerCase();
+  return (d) => {
+    if (!districtName) return true;
+    if (d.borough == null) logger('No borough defined', d);
+    return d.borough?.toLowerCase() === districtName.toLowerCase();
+  };
 }
 
 function filterPhase(phaseName) {
@@ -130,10 +132,12 @@ class Analysis extends PureComponent {
 
     // for the pie chart we only filter by district
     const filteredDataDistrict = data.filter(filterDistrict(selectedDistrict));
+
     // for the list we filter by district AND phase
     const filteredData = filteredDataDistrict.filter(
       filterPhase(selectedPhase)
     );
+
     const hasData = filteredData.length > 0;
     const { sortDirection } = selectedSort
       ? sortOptions.find((s) => s.value === selectedSort)
