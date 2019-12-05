@@ -54,11 +54,13 @@ class MapLegend extends PureComponent {
 }
 
 MapLegend.propTypes = {
-  type: PropTypes.oneOf(['hbi', 'plannings'])
+  type: PropTypes.oneOf(['hbi', 'plannings']),
+  isEmbedMode: PropTypes.bool
 };
 
 MapLegend.defaultProps = {
-  type: 'hbi'
+  type: 'hbi',
+  isEmbedMode: false
 };
 
 export default MapLegend;

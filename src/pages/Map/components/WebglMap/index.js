@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import MapboxGL from 'mapbox-gl';
 import _isEqual from 'lodash.isequal';
 import styled from 'styled-components';
 import idx from 'idx';
-import PropTypes from 'prop-types';
 import { withRouter, matchPath } from 'react-router-dom';
 import slugify from 'slugify';
 
@@ -59,7 +59,6 @@ class Map extends PureComponent {
     this.map.addControl(nav, 'bottom-left');
 
     this.map.on('load', this.handleLoad);
-    this.props.setMapContext(this.map);
 
     window.map = this.map;
   }
@@ -80,7 +79,7 @@ class Map extends PureComponent {
     }
 
     const layerChanged =
-      prevProps.activeLayer !== this.props.activeLayer ||
+      prevProps.activeView !== this.props.activeView ||
       prevProps.activeSection !== this.props.activeSection ||
       prevProps.show3dBuildings !== this.props.show3dBuildings ||
       !_isEqual(prevProps.filterHbi, this.props.filterHbi);
@@ -89,7 +88,7 @@ class Map extends PureComponent {
       this.updateLayers();
     }
 
-    if (prevProps.activeLayer !== this.props.activeLayer) {
+    if (prevProps.activeView !== this.props.activeView) {
       this.registerClickHandler();
     }
 
@@ -109,7 +108,7 @@ class Map extends PureComponent {
       resetMap({ zoom: this.map.getZoom() });
     }
 
-    if (this.props.activeLayer === 'planungen') {
+    if (this.props.activeView === 'planungen') {
       Store.dispatch(MapActions.loadPlanningData());
     }
 
@@ -156,7 +155,7 @@ class Map extends PureComponent {
     const projectsTarget = config.map.layers.projects.overlayLine;
     const hbiTarget = config.map.layers.hbi.overlayLine;
 
-    if (this.props.activeLayer === 'zustand') {
+    if (this.props.activeView === 'zustand') {
       this.map.off('click', projectsTarget, this.handleClick);
       this.map.on('click', hbiTarget, this.handleClick);
     } else {
@@ -166,8 +165,8 @@ class Map extends PureComponent {
   };
 
   updateLayers = () => {
-    const isZustand = this.props.activeLayer === 'zustand';
-    const isPlanungen = this.props.activeLayer === 'planungen';
+    const isZustand = this.props.activeView === 'zustand';
+    const isPlanungen = this.props.activeView === 'planungen';
 
     const hbiLayers = config.map.layers.hbi;
     const projectsLayers = config.map.layers.projects;
@@ -212,8 +211,8 @@ class Map extends PureComponent {
   };
 
   handleClick = (e) => {
-    const properties = idx(e.features, (_) => _[0].properties);
-    const geometry = idx(e.features, (_) => _[0].geometry);
+    const properties = e.features?.[0].properties;
+    const geometry = e.features?.[0].geometry;
     const center = getCenterFromGeom(geometry, [e.lngLat.lng, e.lngLat.lat]);
 
     if (properties) {
@@ -344,7 +343,7 @@ class Map extends PureComponent {
         <ProjectMarkers
           map={this.state.map}
           data={markerData}
-          active={this.props.activeLayer === 'planungen'}
+          active={this.props.activeView === 'planungen'}
           onClick={this.handleMarkerClick}
           filterPlannings={this.props.filterPlannings}
         />
@@ -353,34 +352,28 @@ class Map extends PureComponent {
   }
 }
 
-Map.propTypes = {
-  zoom: PropTypes.number,
-  center: PropTypes.arrayOf(PropTypes.number),
-  pitch: PropTypes.number,
-  bearing: PropTypes.number,
-  show3dBuildings: PropTypes.bool,
-  animate: PropTypes.bool,
-  setMapContext: PropTypes.func,
-  activeLayer: PropTypes.string,
-  activeSection: PropTypes.number,
-  hasMoved: PropTypes.bool,
-  calculatePopupPosition: PropTypes.bool,
-  dim: PropTypes.bool
-};
-
-Map.defaultProps = {
-  zoom: config.map.view.zoom,
-  center: config.map.view.center,
-  pitch: config.map.view.pitch,
-  bearing: config.map.view.bearing,
-  show3dBuildings: true,
-  animate: false,
-  activeLayer: null,
-  activeSection: null,
-  setMapContext: () => {},
-  hasMoved: false,
-  calculatePopupPosition: false,
-  dim: false
-};
-
-export default withRouter(Map);
+export default withRouter(
+  connect((state) => ({
+    activeView: state.AppState.activeView,
+    activeSection: parseInt(state.AppState.activeSection, 0),
+    activeLocation: state.MapState.activeLocation,
+    animate: state.MapState.animate,
+    bearing: state.MapState.bearing,
+    center: state.MapState.center,
+    dim: state.MapState.dim,
+    displayPopup: state.MapState.displayPopup,
+    error: state.MapState.error,
+    filterHbi: state.MapState.filterHbi,
+    filterPlannings: state.MapState.filterPlannings,
+    filterReports: state.MapState.filterReports,
+    hasMoved: state.MapState.hasMoved,
+    hbi_safety: state.MapState.hbi_safety,
+    hbi_speed: state.MapState.hbi_speed,
+    isEmbedMode: state.AppState.isEmbedMode,
+    pitch: state.MapState.pitch,
+    planningData: state.MapState.planningData,
+    show3dBuildings: state.MapState.show3dBuildings,
+    zoom: state.MapState.zoom,
+    ...state.UserState
+  }))(Map)
+);

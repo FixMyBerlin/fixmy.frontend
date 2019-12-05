@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import idx from 'idx';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import ky from 'ky';
 
 import { media } from '~/styles/utils';
@@ -212,7 +213,7 @@ function detailWrapped(Component) {
       const { isLoading, isError, data } = this.state;
       // we only show the shadow if there is no switch button
       const showShadow = data != null && this.props.activeView === 'planungen';
-      const borough = idx(this.state, (_) => _.data.borough);
+      const borough = this.state.data?.borough;
 
       if (isLoading) {
         return this.renderLoading();
@@ -242,14 +243,20 @@ function detailWrapped(Component) {
   }
 
   DetailWrapperComp.propTypes = {
+    activeView: PropTypes.string,
     apiEndpoint: PropTypes.string.isRequired,
     onCloseRoute: PropTypes.string,
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    subtitle: PropTypes.string,
+    history: ReactRouterPropTypes.history.isRequired,
+    match: ReactRouterPropTypes.match.isRequired
   };
 
   DetailWrapperComp.defaultProps = {
+    activeView: 'planungen',
     onCloseRoute: '/',
-    onClose: () => {}
+    onClose: () => {},
+    subtitle: null
   };
 
   return withRouter(DetailWrapperComp);

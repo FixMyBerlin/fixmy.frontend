@@ -16,16 +16,19 @@ const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 
 const initialState = {
   ...config.map.view,
-  popupData: null,
+  animate: false,
+  dim: false,
   displayPopup: false,
-  popupLocation: null,
+  error: null,
   filterHbi: [true, true, true, true],
   filterPlannings: [true, true, true, true],
   hasMoved: false,
-  hbi_speed: 5,
   hbi_safety: 5,
+  hbi_speed: 5,
   planningData: false,
-  error: null
+  popupData: null,
+  popupLocation: null,
+  show3dBuildings: true
 };
 
 export function setError(message) {
