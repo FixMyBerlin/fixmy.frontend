@@ -1,7 +1,6 @@
 /* eslint class-methods-use-this: 0 */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import idx from 'idx';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
@@ -105,8 +104,8 @@ function detailWrapped(Component) {
     }
 
     componentDidUpdate(prevProps) {
-      const currId = idx(this.props.match, (_) => _.params.id);
-      const prevId = idx(prevProps.match, (_) => _.params.id);
+      const currId = this.props.match.params.id;
+      const prevId = prevProps.match.params.id;
 
       if (currId !== prevId) {
         this.loadData();
@@ -158,7 +157,7 @@ function detailWrapped(Component) {
     }
 
     loadData = async () => {
-      const id = idx(this.props.match, (_) => _.params.id);
+      const { id } = this.props.match.params;
 
       this.setState({ isLoading: true });
 

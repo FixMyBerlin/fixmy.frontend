@@ -1,6 +1,5 @@
 /* eslint-disable  no-multi-spaces */
 import booleanWithin from '@turf/boolean-within';
-import idx from 'idx';
 
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils'; // TODO: handle eslint warning regarding dependency circle
@@ -364,9 +363,8 @@ const selectors = {};
 
 selectors.getLocationIsModeGeocoding = (state) =>
   state.locationMode === LOCATION_MODE_GEOCODING;
-selectors.getAlreadyPicketLocation = function(state) {
-  return idx(state, (_) => _.newReport.geometry.coordinates);
-};
+selectors.getAlreadyPicketLocation = (state) =>
+  state.newReport?.geometry.coordinates;
 
 export { actions, types, selectors, initialState };
 

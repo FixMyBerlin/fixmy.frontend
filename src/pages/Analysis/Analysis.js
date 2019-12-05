@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import idx from 'idx';
 import { connect } from 'react-redux';
 
 import { sortByKey } from '~/utils/utils';
@@ -92,15 +91,12 @@ function filterPhase(phaseName) {
 
 class Analysis extends PureComponent {
   componentDidMount() {
-    const selectedDistrict = idx(
-      this.props,
-      (_) => _.match.params.districtName
-    );
+    const selectedDistrict = this.props.match.params.districtName;
     this.props.loadProjectData(selectedDistrict);
   }
 
   onDistrictChange = (evt) => {
-    const districtName = idx(evt, (_) => _.target.selectedOptions[0].value);
+    const districtName = evt?.target.selectedOptions?.[0].value;
     const showAll = districtName === 'all';
     const selectedDistrict = showAll ? false : districtName;
     const nextRoute = selectedDistrict ? `/${selectedDistrict}` : '';
@@ -110,14 +106,14 @@ class Analysis extends PureComponent {
   };
 
   onPhaseFilterChange = (evt) => {
-    const phaseValue = idx(evt, (_) => _.target.selectedOptions[0].value);
+    const phaseValue = evt?.target.selectedOptions?.[0].value;
     const showAll = phaseValue === 'all';
     const selectedPhase = showAll ? false : phaseValue;
     this.props.setPhaseFilter(selectedPhase);
   };
 
   onSort = (evt) => {
-    const sortValue = idx(evt, (_) => _.target.selectedOptions[0].value);
+    const sortValue = evt?.target.selectedOptions?.[0].value;
     this.props.setSort(sortValue);
   };
 
