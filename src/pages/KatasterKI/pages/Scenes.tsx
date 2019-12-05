@@ -10,12 +10,7 @@ import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice'
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import Scene from '~/pages/KatasterKI/components/SectionTypes/Scene';
 import Feedback from '../components/SectionTypes/Feedback';
-import {
-  setAnswer,
-  updateProgressBar,
-  submitPerspective,
-  submitAnswer
-} from '../state';
+import { updateProgressBar, submitPerspective, submitAnswer } from '../state';
 import { Answer, Section, RequestState } from '../types';
 import Survey from '~/pages/KatasterKI/survey';
 import PerspectiveChange from '../components/SectionTypes/PerspectiveChange';
@@ -62,15 +57,15 @@ const Scenes = ({
 }) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
   if (
-    (!config.debug && profileRequest.state == RequestState.waiting) ||
+    (!config.debug && profileRequest.state === RequestState.waiting) ||
     !match.params.page
   ) {
     return <Redirect to={config.routes.katasterKI.profileBase} />;
   }
 
   if (
-    profileRequest.state == RequestState.pending ||
-    profileRequest.state == RequestState.error
+    profileRequest.state === RequestState.pending ||
+    profileRequest.state === RequestState.error
   )
     return (
       <Loader
@@ -81,8 +76,8 @@ const Scenes = ({
     );
 
   if (
-    perspectiveRequest.state == RequestState.pending ||
-    perspectiveRequest.state == RequestState.error
+    perspectiveRequest.state === RequestState.pending ||
+    perspectiveRequest.state === RequestState.error
   )
     return (
       <Loader
@@ -100,7 +95,7 @@ const Scenes = ({
   );
   const section = sectionConfig[page];
   if (section == null)
-    return <Redirect to={config.routes.katasterKI.scenesBase + '/1'} />;
+    return <Redirect to={`${config.routes.katasterKI.scenesBase}/1`} />;
   const SectionComponent = sectionTypes[section.type];
 
   useEffect(() => {

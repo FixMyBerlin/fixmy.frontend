@@ -50,7 +50,7 @@ export const getEndpointURL: getEndpointURL = (
   sessionId,
   sceneID
 ) => {
-  const projectId = config.katasterKI.projectId;
+  const { projectId } = config.katasterKI;
   if (endpoint === 'profile' || endpoint === 'perspective')
     return `${config.apiUrl}/survey/${projectId}/${sessionId}`;
   if (endpoint === 'answer')

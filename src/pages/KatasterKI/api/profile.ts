@@ -1,8 +1,8 @@
+import { ValidatorResult, Validator } from 'jsonschema';
+import logger from '~/utils/logger';
 import { ProfileResponse, ProfileRequest } from '../types';
 import { getEndpointURL, marshallMultiChoice } from './utils';
-import { ValidatorResult, Validator } from 'jsonschema';
 import { State } from '../state';
-import logger from '~/utils/logger';
 
 // JSON import apparently only works in ts when using `require`
 const profileRequestSchema = require('../scheme/profile-request.schema.json');
@@ -53,7 +53,7 @@ export const validateProfileRequest = (profileRequest: ProfileRequest) => {
   );
   if (schemaValidationResult.errors.length) {
     let errorMsg =
-      'ProfileRequest object is not ' + 'structured as stated in json schema';
+      'ProfileRequest object is not structured as stated in json schema';
     schemaValidationResult.errors.forEach(({ property, message }) => {
       errorMsg += `
           Property ${property} ${message}`;
@@ -85,7 +85,10 @@ export const marshallProfile = (
   if (!isTosAccepted === true)
     throw new Error('Trying to marshall profile without accepted TOS');
 
-  let bikeReasons, bikeReasonsVar, whyBiking, vehiclesOwned;
+  let bikeReasons;
+  let bikeReasonsVar;
+  let whyBiking;
+  let vehiclesOwned;
   try {
     ({ choices: bikeReasons, other: bikeReasonsVar } = marshallMultiChoice(
       profile.bikeReasons
