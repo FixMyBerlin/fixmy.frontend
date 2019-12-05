@@ -47,7 +47,7 @@ const LinkSection = styled.div`
   justify-content: space-between;
 `;
 
-const TinyLink = styled(Link)`
+const TinyLink = styled.a`
   display: block;
   margin-top: 2px;
   font-size: 10px;

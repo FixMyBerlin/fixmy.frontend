@@ -131,14 +131,15 @@ ClusteredMarkers.propTypes = {
   radius: PropTypes.number,
   detailId: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  selectedReport: FMCPropTypes.report.isRequired
+  selectedReport: FMCPropTypes.report
 };
 
 ClusteredMarkers.defaultProps = {
   name: 'cluster',
   radius: 50,
   data: [],
-  map: null
+  map: null,
+  selectedReport: null
 };
 
 export default ClusteredMarkers;

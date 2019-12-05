@@ -13,7 +13,7 @@ const LoaderWrapper = styled.div`
 
 const Loader = ({ pastDelay, error, color }) => {
   if (error) {
-    logger(error);
+    logger('Error loading page', error);
     return (
       <p>
         <span role="img" aria-label="sick face emoji">

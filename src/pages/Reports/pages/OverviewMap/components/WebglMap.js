@@ -26,7 +26,8 @@ function toGeojson(data) {
 }
 
 MapboxGL.clearStorage((err) => {
-  logger(err);
+  logger('Clearing Mapbox cache');
+  if (err) logger('Error clearing Mapbox storage:', err);
 });
 
 class WebglMap extends PureComponent {
