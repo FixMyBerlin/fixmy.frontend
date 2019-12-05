@@ -52,6 +52,7 @@ const ContentWrapper = styled.div`
     box-shadow: ${props.isLanding ? 'none' : '0 0 8px 3px rgba(0,0,0,.25)'};
     padding: ${props.isLanding ? 0 : '15px 60px'};
     max-height: 1000px;
+    height: 90vh;
   `}
 `;
 
