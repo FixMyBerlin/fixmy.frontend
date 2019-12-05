@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import idx from 'idx';

@@ -27,7 +27,7 @@ class BaseMap extends PureComponent {
       container: this.root,
       style: MB_STYLE_URL,
       bounds: config.reports.overviewMap.bounds,
-      maxBounds: this.props.maxBounds || config.reports.overviewMap.maxBounds
+      maxBounds: this.props.maxBounds
     });
 
     this.map.on('load', () => {
@@ -61,13 +61,16 @@ class BaseMap extends PureComponent {
 BaseMap.propTypes = {
   maxBounds: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   onLoad: PropTypes.func,
-  onMove: PropTypes.func
+  onMove: PropTypes.func,
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired
 };
 
 BaseMap.defaultProps = {
   maxBounds: config.reports.overviewMap.maxBounds,
   onLoad: () => {},
-  onMove: () => {}
+  onMove: () => {},
+  className: ''
 };
 
 export default BaseMap;

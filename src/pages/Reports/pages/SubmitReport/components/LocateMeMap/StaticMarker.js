@@ -2,7 +2,7 @@
  * Marker image to indicate current center of mapView.
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { X } from 'react-feather';

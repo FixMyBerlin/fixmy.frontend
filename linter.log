@@ -1,93 +1,100 @@
 
 > fixmyberlin-frontend@1.0.0 lint /Users/work/code/fixmy.frontend
-> eslint src "--ignore-pattern" "src/pages/Reports"
+> eslint src
 
 
-/Users/work/code/fixmy.frontend/src/components/CloseButton.js
-  22:40  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+/Users/work/code/fixmy.frontend/src/pages/Reports/pages/OverviewMap/components/WebglMap.js
+  33:3  error  'propTypes' should be declared outside the class body     react/static-property-placement
+  47:3  error  'defaultProps' should be declared outside the class body  react/static-property-placement
+  60:3  error  nav should be placed before propTypes                     react/sort-comp
 
-/Users/work/code/fixmy.frontend/src/components/MapPopupWrapper.js
-  127:23  warning  'data.borough' is missing in props validation  react/prop-types
-  137:61  warning  'data.borough' is missing in props validation  react/prop-types
+/Users/work/code/fixmy.frontend/src/pages/Reports/pages/OverviewMap/index.js
+   54:3  error  componentWillReceiveProps is deprecated since React 16.9.0, use UNSAFE_componentWillReceiveProps instead, see https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components  react/no-deprecated
+  117:3  error  Expected to return a value at the end of method 'onMapMove'                                                                                                                                                                                                                                                  consistent-return
+  125:3  error  Expected to return a value at the end of method 'updateSelectedReportPosition'                                                                                                                                                                                                                               consistent-return
 
-/Users/work/code/fixmy.frontend/src/components/MenuButton.js
-  22:64  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+/Users/work/code/fixmy.frontend/src/pages/Reports/pages/SubmitReport/components/LocateMeMap/SearchBar.js
+  73:3  error  State initialization should be in a constructor  react/state-in-constructor
 
-/Users/work/code/fixmy.frontend/src/components/NewCloseButton.js
-  12:35  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+/Users/work/code/fixmy.frontend/src/pages/Reports/pages/SubmitReport/components/LocateMeMap/WebglMap.js
+  12:3   error    'propTypes' should be declared outside the class body                 react/static-property-placement
+  22:3   error    'defaultProps' should be declared outside the class body              react/static-property-placement
+  32:3   error    map should be placed before propTypes                                 react/sort-comp
+  45:3   error    Expected to return a value at the end of method 'componentDidUpdate'  consistent-return
+  57:56  warning  'animate' is missing in props validation                              react/prop-types
 
-/Users/work/code/fixmy.frontend/src/components/ProjectList/index.js
-  25:54  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+/Users/work/code/fixmy.frontend/src/pages/Reports/pages/SubmitReport/components/LocateMeMap/index.js
+   96:3   error    'propTypes' should be declared outside the class body        react/static-property-placement
+  100:3   error    'defaultProps' should be declared outside the class body     react/static-property-placement
+  147:8   warning  'validateCoordinates' is missing in props validation         react/prop-types
+  150:22  warning  'reverseGeocodeCoordinates' is missing in props validation   react/prop-types
+  151:22  warning  'setTempLocationCoords' is missing in props validation       react/prop-types
+  158:46  warning  'getAlreadyPicketLocation' is missing in props validation    react/prop-types
+  165:20  warning  'deviceLocation' is missing in props validation              react/prop-types
+  166:30  warning  'deviceLocation' is missing in props validation              react/prop-types
+  168:20  warning  'geocodeResult' is missing in props validation               react/prop-types
+  169:30  warning  'geocodeResult' is missing in props validation               react/prop-types
+  181:8   warning  'validateCoordinates' is missing in props validation         react/prop-types
+  182:30  warning  'handleGeocodeSuccess' is missing in props validation        react/prop-types
+  190:16  warning  'setDeviceLocation' is missing in props validation           react/prop-types
+  195:16  warning  'confirmLocation' is missing in props validation             react/prop-types
+  220:21  warning  'error' is missing in props validation                       react/prop-types
+  220:27  warning  'error.message' is missing in props validation               react/prop-types
+  222:33  warning  'error' is missing in props validation                       react/prop-types
+  222:39  warning  'error.message' is missing in props validation               react/prop-types
+  223:35  warning  'removeError' is missing in props validation                 react/prop-types
+  227:46  warning  'getLocationIsModeGeocoding' is missing in props validation  react/prop-types
+  242:39  warning  'addError' is missing in props validation                    react/prop-types
+  257:36  warning  'tempLocation' is missing in props validation                react/prop-types
+  257:49  warning  'tempLocation.valid' is missing in props validation          react/prop-types
+  268:27  warning  'locationMode' is missing in props validation                react/prop-types
+  272:27  warning  'tempLocation' is missing in props validation                react/prop-types
+  272:40  warning  'tempLocation.address' is missing in props validation        react/prop-types
+  273:28  warning  'tempLocation' is missing in props validation                react/prop-types
+  273:41  warning  'tempLocation.valid' is missing in props validation          react/prop-types
+  275:33  warning  'tempLocation' is missing in props validation                react/prop-types
+  275:46  warning  'tempLocation.address' is missing in props validation        react/prop-types
+  278:28  warning  'tempLocation' is missing in props validation                react/prop-types
+  278:41  warning  'tempLocation.valid' is missing in props validation          react/prop-types
+  289:22  warning  'getLocationIsModeGeocoding' is missing in props validation  react/prop-types
+  306:30  warning  'tempLocation' is missing in props validation                react/prop-types
+  306:43  warning  'tempLocation.valid' is missing in props validation          react/prop-types
+  307:30  warning  'tempLocation' is missing in props validation                react/prop-types
+  307:43  warning  'tempLocation.address' is missing in props validation        react/prop-types
+  317:33  warning  'tempLocation' is missing in props validation                react/prop-types
+  317:46  warning  'tempLocation.address' is missing in props validation        react/prop-types
 
-/Users/work/code/fixmy.frontend/src/components/ProjectListItem/index.js
-  173:40  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+/Users/work/code/fixmy.frontend/src/pages/Reports/pages/SubmitReport/components/UploadPhotoInput.js
+  63:3  error  'propTypes' should be declared outside the class body     react/static-property-placement
+  74:3  error  'defaultProps' should be declared outside the class body  react/static-property-placement
 
-/Users/work/code/fixmy.frontend/src/pages/Analysis/components/PieChart/index.js
-  104:21  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+/Users/work/code/fixmy.frontend/src/pages/Reports/pages/SubmitReport/pages/AdditionalDataForm.js
+   73:3   error    'propTypes' should be declared outside the class body                                                                                react/static-property-placement
+   78:3   error    'defaultProps' should be declared outside the class body                                                                             react/static-property-placement
+   99:11  error    'errMsg' is assigned a value but never used                                                                                          no-unused-vars
+  103:16  warning  'addError' is missing in props validation                                                                                            react/prop-types
+  199:21  warning  'error' is missing in props validation                                                                                               react/prop-types
+  199:27  warning  'error.message' is missing in props validation                                                                                       react/prop-types
+  201:33  warning  'error' is missing in props validation                                                                                               react/prop-types
+  201:39  warning  'error.message' is missing in props validation                                                                                       react/prop-types
+  202:35  warning  'removeError' is missing in props validation                                                                                         react/prop-types
+  210:24  warning  Replace `(state)·=>·({·error:·state.ReportsState.ErrorState·}),` with `⏎··(state)·=>·({·error:·state.ReportsState.ErrorState·}),⏎·`  prettier/prettier
+  211:1   warning  Insert `··`                                                                                                                          prettier/prettier
+  212:1   warning  Replace `}` with `··}⏎`                                                                                                              prettier/prettier
 
-/Users/work/code/fixmy.frontend/src/pages/KatasterKI/components/SectionTypes/Feedback.js
-  46:3  error  'isEmbedded' is defined but never used  no-unused-vars
+/Users/work/code/fixmy.frontend/src/pages/Reports/pages/SubmitReport/pages/LocateModeChooser.js
+  72:3   warning  'error' is missing in props validation          react/prop-types
+  73:3   warning  'removeError' is missing in props validation    react/prop-types
+  96:12  warning  'error.message' is missing in props validation  react/prop-types
+  98:24  warning  'error.message' is missing in props validation  react/prop-types
 
-/Users/work/code/fixmy.frontend/src/pages/Map/components/DetailView/FeedbackForm/index.js
-  55:19  error  Prop spreading is forbidden  react/jsx-props-no-spreading
+/Users/work/code/fixmy.frontend/src/pages/Reports/pages/SubmitReport/pages/ReportSubmitted/index.js
+  2:1  error  'react-router' should be listed in the project's dependencies. Run 'npm i -S react-router' to add it  import/no-extraneous-dependencies
 
-/Users/work/code/fixmy.frontend/src/pages/Map/components/DetailView/detailWrapped.js
-  107:37  warning  'match' is missing in props validation         react/prop-types
-  108:36  warning  'match' is missing in props validation         react/prop-types
-  147:18  warning  'history' is missing in props validation       react/prop-types
-  147:26  warning  'history.push' is missing in props validation  react/prop-types
-  160:33  warning  'match' is missing in props validation         react/prop-types
-  211:15  warning  'subtitle' is missing in props validation      react/prop-types
-  214:53  warning  'activeView' is missing in props validation    react/prop-types
-  237:36  error    Prop spreading is forbidden                    react/jsx-props-no-spreading
+/Users/work/code/fixmy.frontend/src/pages/Reports/state/SubmitReportState.js
+  129:72  error    Expected to return a value at the end of async arrow function  consistent-return
+  367:38  warning  Unexpected unnamed function                                    func-names
 
-/Users/work/code/fixmy.frontend/src/pages/Map/components/MapControl.js
-  52:67  error  Prop spreading is forbidden  react/jsx-props-no-spreading
-
-/Users/work/code/fixmy.frontend/src/pages/Map/components/MapLegend/index.js
-  44:28  error    Prop spreading is forbidden                   react/jsx-props-no-spreading
-  46:22  warning  'isEmbedMode' is missing in props validation  react/prop-types
-
-/Users/work/code/fixmy.frontend/src/pages/Map/components/MapPopup/BikeLevelStatus.js
-  71:22  error  Prop spreading is forbidden  react/jsx-props-no-spreading
-
-/Users/work/code/fixmy.frontend/src/pages/Map/components/WebglMap/index.js
-   86:27  warning  'filterHbi' is missing in props validation          react/prop-types
-   86:49  warning  'filterHbi' is missing in props validation          react/prop-types
-  101:18  warning  'match' is missing in props validation              react/prop-types
-  101:24  warning  'match.url' is missing in props validation          react/prop-types
-  102:27  warning  'hbi_values' is missing in props validation         react/prop-types
-  102:50  warning  'hbi_values' is missing in props validation         react/prop-types
-  104:45  warning  'hbi_values' is missing in props validation         react/prop-types
-  104:68  warning  'filterHbi' is missing in props validation          react/prop-types
-  180:45  warning  'hbi_values' is missing in props validation         react/prop-types
-  180:68  warning  'filterHbi' is missing in props validation          react/prop-types
-  183:50  warning  'filterPlannings' is missing in props validation    react/prop-types
-  226:51  warning  'displayPopup' is missing in props validation       react/prop-types
-  227:44  warning  'activeView' is missing in props validation         react/prop-types
-  228:20  warning  'history' is missing in props validation            react/prop-types
-  228:28  warning  'history.push' is missing in props validation       react/prop-types
-  274:40  warning  'location' is missing in props validation           react/prop-types
-  274:49  warning  'location.pathname' is missing in props validation  react/prop-types
-  287:42  warning  'activeView' is missing in props validation         react/prop-types
-  288:18  warning  'history' is missing in props validation            react/prop-types
-  288:26  warning  'history.push' is missing in props validation       react/prop-types
-  334:39  warning  'planningData' is missing in props validation       react/prop-types
-  338:31  warning  'className' is missing in props validation          react/prop-types
-  343:21  warning  'children' is missing in props validation           react/prop-types
-  349:39  warning  'filterPlannings' is missing in props validation    react/prop-types
-
-/Users/work/code/fixmy.frontend/src/pages/MyHBI/components/HBIConfigurator/index.js
-  70:36  error  Prop spreading is forbidden  react/jsx-props-no-spreading
-
-/Users/work/code/fixmy.frontend/src/pages/MyHBI/components/HBISubmitForm/index.js
-  55:19  error  Prop spreading is forbidden  react/jsx-props-no-spreading
-
-/Users/work/code/fixmy.frontend/src/pages/User/components/UserForm.js
-  119:19  error  Prop spreading is forbidden  react/jsx-props-no-spreading
-
-/Users/work/code/fixmy.frontend/src/pages/User/pages/Profile/Profile.js
-  22:22  error  Prop spreading is forbidden  react/jsx-props-no-spreading
-
-✖ 50 problems (16 errors, 34 warnings)
+✖ 72 problems (20 errors, 52 warnings)
+  0 errors and 3 warnings potentially fixable with the `--fix` option.
 

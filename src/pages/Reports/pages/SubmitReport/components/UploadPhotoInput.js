@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
@@ -60,27 +60,6 @@ const AbortText = styled(Text)`
 `;
 
 class UploadPhotoInput extends PureComponent {
-  static propTypes = {
-    onPhotoResized: PropTypes.func.isRequired,
-    onError: PropTypes.func,
-    onReset: PropTypes.func,
-    resizeOptions: PropTypes.shape({
-      maxWidth: PropTypes.number,
-      maxHeight: PropTypes.number,
-      quality: PropTypes.number
-    })
-  };
-
-  static defaultProps = {
-    onError: () => {},
-    onReset: () => {},
-    resizeOptions: {
-      maxWidth: 800,
-      maxHeight: 800,
-      quality: 0.9
-    }
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -203,5 +182,26 @@ class UploadPhotoInput extends PureComponent {
     );
   }
 }
+
+UploadPhotoInput.propTypes = {
+  onPhotoResized: PropTypes.func.isRequired,
+  onError: PropTypes.func,
+  onReset: PropTypes.func,
+  resizeOptions: PropTypes.shape({
+    maxWidth: PropTypes.number,
+    maxHeight: PropTypes.number,
+    quality: PropTypes.number
+  })
+};
+
+UploadPhotoInput.defaultProps = {
+  onError: () => {},
+  onReset: () => {},
+  resizeOptions: {
+    maxWidth: 800,
+    maxHeight: 800,
+    quality: 0.9
+  }
+};
 
 export default UploadPhotoInput;

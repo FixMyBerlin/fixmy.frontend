@@ -2,7 +2,7 @@
  *  Displays report items fetched from backend.
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route } from 'react-router-dom';
 
@@ -115,23 +115,16 @@ class OverviewMap extends Component {
   };
 
   onMapMove() {
-    if (!this.props.selectedReport) {
-      return null;
-    }
-
-    this.updateSelectedReportPosition();
+    if (this.props.selectedReport) this.updateSelectedReportPosition();
   }
 
   updateSelectedReportPosition() {
-    if (!this.map || !this.props.selectedReport) {
-      return false;
+    if (this.map && this.props.selectedReport) {
+      const selectedReportsPosition = this.map.project(
+        this.props.selectedReport.geometry.coordinates
+      );
+      this.props.setSelectedReportPosition(selectedReportsPosition);
     }
-
-    const selectedReportsPosition = this.map.project(
-      this.props.selectedReport.geometry.coordinates
-    );
-
-    this.props.setSelectedReportPosition(selectedReportsPosition);
   }
 
   render() {

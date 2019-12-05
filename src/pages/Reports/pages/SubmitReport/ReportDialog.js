@@ -3,7 +3,7 @@
  * the successively populated reports state
  */
 
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import styled from 'styled-components';
