@@ -71,9 +71,12 @@ const NoDataLabel = styled.div`
 `;
 
 class ProjectDetail extends PureComponent {
-  state = {
-    descriptionExpanded: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      descriptionExpanded: false
+    };
+  }
 
   toggleDescription = () => {
     this.setState((prevState) => ({

@@ -1,9 +1,12 @@
 import { PureComponent } from 'react';
 
 class SvgIcon extends PureComponent {
-  state = {
-    icon: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      icon: null
+    };
+  }
 
   componentDidMount() {
     this.loadIcon();

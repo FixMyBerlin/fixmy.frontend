@@ -8,9 +8,12 @@ import ProjectList from '~/components/ProjectList';
 import Select from '~/components/Select';
 
 class UserLikes extends PureComponent {
-  state = {
-    itemType: 'projects'
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemType: 'projects'
+    };
+  }
 
   componentDidMount() {
     this.props.dispatch(loadLikes(this.state.itemType));

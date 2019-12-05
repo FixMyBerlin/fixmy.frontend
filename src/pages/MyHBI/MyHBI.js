@@ -8,9 +8,12 @@ import Modal from '~/components/Modal';
 import { trackEvent } from '~/utils/utils';
 
 class MyHBIView extends PureComponent {
-  state = {
-    isSubmitFormOpen: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSubmitFormOpen: false
+    };
+  }
 
   onSave = () => {
     const sliderValues = config.hbi.reduce((res, item, index) => {

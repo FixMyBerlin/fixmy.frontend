@@ -40,11 +40,14 @@ const StyledMap = styled.div`
 `;
 
 class Map extends PureComponent {
-  state = {
-    loading: true,
-    popupLngLat: false,
-    map: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      popupLngLat: false,
+      map: false
+    };
+  }
 
   componentDidMount() {
     this.map = new MapboxGL.Map({

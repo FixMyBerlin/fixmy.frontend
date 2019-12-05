@@ -90,11 +90,14 @@ function formatAddressString(address) {
 
 function detailWrapped(Component) {
   class DetailWrapperComp extends PureComponent {
-    state = {
-      data: null,
-      isLoading: true,
-      isError: false
-    };
+    constructor(props) {
+      super(props);
+      this.state = {
+        data: null,
+        isLoading: true,
+        isError: false
+      };
+    }
 
     componentDidMount() {
       this.loadData();

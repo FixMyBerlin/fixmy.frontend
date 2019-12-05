@@ -60,10 +60,6 @@ function getPhaseIcon(phase = {}) {
 }
 
 class ProjectStatusChart extends PureComponent {
-  state = {
-    width: 0
-  };
-
   height = 80;
 
   padding = {
@@ -72,6 +68,13 @@ class ProjectStatusChart extends PureComponent {
     bottom: 0,
     left: 30
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      width: 0
+    };
+  }
 
   componentDidMount() {
     this.updateWidth();

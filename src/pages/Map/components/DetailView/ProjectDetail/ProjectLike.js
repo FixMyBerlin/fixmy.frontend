@@ -55,11 +55,14 @@ const LikeButton = styled.button`
 `;
 
 class ProjectLike extends PureComponent {
-  state = {
-    count: 0,
-    bouncy: false,
-    userLike: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+      bouncy: false,
+      userLike: false
+    };
+  }
 
   componentDidMount() {
     this.updateLikes();

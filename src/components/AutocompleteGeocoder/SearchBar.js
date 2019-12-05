@@ -53,15 +53,18 @@ const SearchReset = styled.div`
 `;
 
 class SearchBar extends PureComponent {
-  state = {
-    searchStarted: false,
-    inputValue: ''
-  };
-
   delayedonSearchEnterCallback = debounce(
     this.props.onSearchEnter,
     this.props.debounceTime
   );
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchStarted: false,
+      inputValue: ''
+    };
+  }
 
   onChange = (evt) => {
     evt.persist();

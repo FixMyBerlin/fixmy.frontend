@@ -104,9 +104,12 @@ const MapButton = styled(Button)`
 `;
 
 class ReportListItem extends PureComponent {
-  state = {
-    isExpanded: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isExpanded: false
+    };
+  }
 
   onClick = () => {
     const { id } = this.props;

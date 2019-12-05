@@ -98,9 +98,12 @@ const InfoSectionTextRight = styled.div`
 `;
 
 class SectionDetails extends PureComponent {
-  state = {
-    sideIndex: 0
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      sideIndex: 0
+    };
+  }
 
   onSwitchSide = (sideIndex) => () => this.setState({ sideIndex });
 

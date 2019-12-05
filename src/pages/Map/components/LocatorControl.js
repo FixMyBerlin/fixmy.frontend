@@ -26,9 +26,12 @@ const LocatorButton = styled.button`
 `;
 
 class LocatorControl extends PureComponent {
-  state = {
-    isLoading: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false
+    };
+  }
 
   locate = async () => {
     this.setState({ isLoading: true });
