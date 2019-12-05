@@ -52,7 +52,8 @@ class Map extends PureComponent {
   componentDidMount() {
     this.map = new MapboxGL.Map({
       container: this.root,
-      style: MB_STYLE_URL
+      style: MB_STYLE_URL,
+      bounds: config.map.bounds
     });
 
     const nav = new MapboxGL.NavigationControl({ showCompass: false });
