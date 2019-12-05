@@ -82,13 +82,8 @@ class AdditionalDataForm extends PureComponent {
   onPhotoDelete = () =>
     this.setState({ photo: null, photoDisclaimerTicked: false });
 
-  onPhotoUploadError = (errorMsg) => {
-    const isDesktopView = matchMediaSize(breakpoints.m);
-    const errMsg = `Fehler beim ${
-      isDesktopView ? 'hochladen' : 'aufnehmen'
-    } des Fotos:
-    ${errorMsg}`;
-    this.props.addError({ message: errorMsg });
+  onPhotoUploadError = (message) => {
+    this.props.addError({ message });
   };
 
   submit = () => {
