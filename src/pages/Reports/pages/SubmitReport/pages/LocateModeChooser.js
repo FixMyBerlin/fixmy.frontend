@@ -109,11 +109,14 @@ LocateModeChooser.propTypes = {
   heading: PropTypes.string,
   onUseDevicePosition: PropTypes.func.isRequired,
   onUseGeocoding: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  error: PropTypes.shape({ message: PropTypes.string }),
+  removeError: PropTypes.func.isRequired
 };
 
 LocateModeChooser.defaultProps = {
-  heading: 'Wo benötigst du neue Fahrradbügel?'
+  heading: 'Wo benötigst du neue Fahrradbügel?',
+  error: {}
 };
 
 export default LocateModeChooser;

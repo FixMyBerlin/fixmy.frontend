@@ -139,15 +139,15 @@ actions.reverseGeocodeCoordinates = ({ lat, lng }) => async (dispatch) => {
   }
 
   if (errorMsg) {
-    return dispatch(
+    dispatch(
       errorStateActions.addError({
         message: errorMsg
       })
     );
+  } else {
+    dispatch({ type: types.REVERSE_GEOCODE_COMPLETE, payload: { result } });
+    dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
   }
-
-  dispatch({ type: types.REVERSE_GEOCODE_COMPLETE, payload: { result } });
-  dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
 };
 
 actions.useDevicePosition = () => async (dispatch) => {

@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
 import TextareaAutosize from 'react-autosize-textarea';
 
-import logger from '~/utils/logger';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import UploadPhotoInput from '~/pages/Reports/pages/SubmitReport/components/UploadPhotoInput';
@@ -70,16 +68,6 @@ const DescriptionTextArea = styled(TextareaAutosize)`
 `;
 
 class AdditionalDataForm extends PureComponent {
-  static propTypes = {
-    onConfirm: PropTypes.func,
-    maxDescriptionLength: PropTypes.number
-  };
-
-  static defaultProps = {
-    onConfirm: () => logger('onConfirm() says implement me'),
-    maxDescriptionLength: 400
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -176,7 +164,7 @@ class AdditionalDataForm extends PureComponent {
 
         <DescriptionTextArea
           rows={isDesktopView ? 6 : 8}
-          maxLength={this.props.maxDescriptionLength}
+          maxLength={this.props.maxDescriptionLength || 400}
           value={this.state.description}
           onChange={this.updateDescription}
           placeholder={oneLine`
@@ -207,6 +195,9 @@ class AdditionalDataForm extends PureComponent {
   }
 }
 
-export default connect((state) => ({ error: state.ReportsState.ErrorState }), {
-  ...errorStateActions
-})(AdditionalDataForm);
+export default connect(
+  (state) => ({ error: state.ReportsState.ErrorState }),
+  {
+    ...errorStateActions
+  }
+)(AdditionalDataForm);

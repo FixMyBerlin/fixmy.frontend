@@ -7,7 +7,6 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import ky from 'ky';
 
@@ -93,14 +92,6 @@ const InvalidAdressIndicator = styled(AddressIndicator)`
 let validationBoundary = null; // kept here for caching
 
 class LocateMeMap extends Component {
-  static propTypes = {
-    onProceed: PropTypes.func
-  };
-
-  static defaultProps = {
-    onProceed: () => logger('implement me')
-  };
-
   static async getValidationGeodata() {
     validationBoundary = await ky
       .get(`${config.reports.locateMeMap.boundaryGeodataUrl}`)
@@ -193,7 +184,11 @@ class LocateMeMap extends Component {
 
   confirmLocation = () => {
     this.props.confirmLocation(); // update state
-    this.props.onProceed(); // update route
+    try {
+      this.props.onProceed(); // update route
+    } catch (err) {
+      logger('LocateMeMap.props.onProceed failed');
+    }
   };
 
   togglePinned = () => {

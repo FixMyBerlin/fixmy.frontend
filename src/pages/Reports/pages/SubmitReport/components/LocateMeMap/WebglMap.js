@@ -9,26 +9,6 @@ import { animateView, setView } from '~/pages/Map/map-utils';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 
 class WebglMap extends PureComponent {
-  static propTypes = {
-    center: PropTypes.arrayOf(PropTypes.number),
-    newLocationZoomLevel: PropTypes.number,
-    onMapDrag: PropTypes.func,
-    allowDrag: PropTypes.bool,
-    onLoad: PropTypes.func,
-    zoomedOut: PropTypes.bool,
-    zoomControlPosition: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
-  };
-
-  static defaultProps = {
-    center: config.map.view.center,
-    newLocationZoomLevel: 18,
-    onMapDrag: () => logger('onMapDrag says implement me'),
-    allowDrag: true,
-    onLoad: () => {},
-    zoomedOut: false,
-    zoomControlPosition: false
-  };
-
   map = null;
 
   maxExtent = null;
@@ -43,27 +23,25 @@ class WebglMap extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if (!this.map) {
-      return false;
-    }
+    if (this.map) {
+      if (this.props.zoomedOut) {
+        this.map.easeTo({ zoom: 12, duration: 3000 });
+      }
 
-    if (this.props.zoomedOut) {
-      this.map.easeTo({ zoom: 12, duration: 3000 });
-    }
+      const isNewLocation = !_isEqual(prevProps.center, this.props.center);
 
-    const isNewLocation = !_isEqual(prevProps.center, this.props.center);
+      if (isNewLocation) {
+        this.setView(this.getViewFromProps(), this.props.animate);
+      }
 
-    if (isNewLocation) {
-      this.setView(this.getViewFromProps(), this.props.animate);
-    }
-
-    const allowDragChanged = prevProps.allowDrag !== this.props.allowDrag;
-    if (allowDragChanged && this.map) {
-      const dragPanHandler = this.map.dragPan;
-      const updateDragPanFunc = this.props.allowDrag
-        ? dragPanHandler.enable
-        : dragPanHandler.disable;
-      updateDragPanFunc.call(dragPanHandler);
+      const allowDragChanged = prevProps.allowDrag !== this.props.allowDrag;
+      if (allowDragChanged && this.map) {
+        const dragPanHandler = this.map.dragPan;
+        const updateDragPanFunc = this.props.allowDrag
+          ? dragPanHandler.enable
+          : dragPanHandler.disable;
+        updateDragPanFunc.call(dragPanHandler);
+      }
     }
   }
 
@@ -123,5 +101,27 @@ class WebglMap extends PureComponent {
     );
   }
 }
+
+WebglMap.propTypes = {
+  animate: PropTypes.bool,
+  center: PropTypes.arrayOf(PropTypes.number),
+  newLocationZoomLevel: PropTypes.number,
+  onMapDrag: PropTypes.func,
+  allowDrag: PropTypes.bool,
+  onLoad: PropTypes.func,
+  zoomedOut: PropTypes.bool,
+  zoomControlPosition: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+};
+
+WebglMap.defaultProps = {
+  animate: false,
+  center: config.map.view.center,
+  newLocationZoomLevel: 18,
+  onMapDrag: () => logger('onMapDrag says implement me'),
+  allowDrag: true,
+  onLoad: () => {},
+  zoomedOut: false,
+  zoomControlPosition: false
+};
 
 export default withRouter(WebglMap);

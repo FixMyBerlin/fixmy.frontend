@@ -70,9 +70,12 @@ const SearchReset = styled.div`
 `;
 
 class SearchBar extends PureComponent {
-  state = {
-    inputValue: ''
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ''
+    };
+  }
 
   onFormSubmit = (evt) => {
     evt.preventDefault();
