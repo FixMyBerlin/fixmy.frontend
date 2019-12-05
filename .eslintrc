@@ -14,7 +14,8 @@
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
     "react/prop-types": [1, { "skipUndeclared": true }],
-    "react/destructuring-assignment": 0
+    "react/destructuring-assignment": 0,
+    "react/jsx-props-no-spreading": 0
   },
   "env": {
     "browser": true,
