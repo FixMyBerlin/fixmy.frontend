@@ -70,22 +70,17 @@ const UserVerify = ({ match, location }) => {
       <StyledHeading>
         {serverError
           ? 'Dein Account konnte leider nicht aktiviert werden!'
-          : 'Super, dein Account ist aktiviert. Du kannst jetzt Meldungen und Planungen ‚Liken‘.'}
+          : 'Super, dein Account ist aktiviert'}
       </StyledHeading>
 
       <VerifyImage src={verifyImageSrc} />
 
       {!serverError && (
         <>
-          <Text>
-            Links oben im Menu kannst du dich an- und abmelden. Unter deinem
-            Profil kannst du von dir gelikte Planungen und Meldungen sehen,
-            sowie dein Passwort ändern.
-          </Text>
           <ButtonWrapper>
-            <Link to={config.routes.login}>
+            <Link to="/">
               <Button style={{ marginTop: 25, marginBottom: 10 }}>
-                Zum Login
+                Zur Startseite
               </Button>
             </Link>
           </ButtonWrapper>

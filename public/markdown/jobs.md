@@ -1,6 +1,6 @@
 # Jobs bei FixMyCity
 
-# ![Weg zu Ende](./FixMyCity_positiv_300px.png)
+# ![Logo FixMyCity](./FixMyCity_positiv_300px.png)
 
 FixMyCity begleitet Städte auf dem Weg zur Fahrradstadt und mit dem Projekt FixMyBerlin begleiten wir Berlin bei der Umsetzung des Mobilitätsgesetzes. Ziel ist eine datenbasierte Grundlage für einen konstruktiven Dialog zwischen Verwaltung und Bürger:innen zu schaffen. Wir entwickeln dafür digitale Werkzeuge, so dass Radfahren sicher und komfortabel für alle wird. Wenn Du Spaß am Digitalen und am Radfahren hast, bewirb Dich bei uns.
 

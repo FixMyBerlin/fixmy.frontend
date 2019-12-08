@@ -90,9 +90,17 @@ export const getFeedbackThreshold = (totalRatings: number): number => {
   if (totalRatings < 500) return 500;
   if (totalRatings < 1000) return 1000;
 
-  const step = totalRatings < 10000 ? 1000.0 : 5000.0;
+  const step = 25000.0;
   const threshold = Math.ceil((totalRatings + 1) / step) * step;
   return Math.round(threshold);
+};
+
+/**
+ * Send signal to iFrame parent to close the survey
+ *
+ */
+export const handleQuit = () => {
+  window.parent.postMessage({ msg: 'done' }, '*');
 };
 
 /**
