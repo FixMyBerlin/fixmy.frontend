@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { handleQuit } from '~/pages/KatasterKI/utils';
 import GhostButton from '~/pages/KatasterKI/components/GhostButton';
+import Button from '~/pages/KatasterKI/components/Button';
 
 const CloseSurveyButton = ({ isEmbedded, style = {} }) => {
   return isEmbedded ? (
