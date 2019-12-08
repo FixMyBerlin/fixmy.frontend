@@ -197,16 +197,52 @@ describe('Kastaster survey', () => {
   });
 
   describe('scenes', () => {
-    before(() => {
-      goToScene(1);
+    describe('scene 1', () => {
+      before(() => {
+        goToScene(1);
+      });
+
+      it('links to scene 2', () => {
+        cy.get('[data-cy=kat-feedback-proceed-btn]').click();
+        cy.location('pathname').should(
+          'eq',
+          `${config.routes.katasterKI.scenesBase}/2`
+        );
+      });
     });
 
-    it('links to scene 2', () => {
-      cy.get('[data-cy=kat-feedback-proceed-btn]').click();
-      cy.location('pathname').should(
-        'eq',
-        `${config.routes.katasterKI.scenesBase}/2`
-      );
+    describe('scene 2', () => {
+      beforeEach(() => {
+        goToScene(2);
+        cy.get('[data-cy=kat-emailcheckboxes-input]').as('emailInput');
+        cy.get('[data-cy=kat-emailcheckboxes-proceed-btn]').as(
+          'emailProceedBtn'
+        );
+        cy.get('[data-cy=kat-emailcheckboxes-submit-btn]').as(
+          'emailSubmitBtn'
+        );
+      });
+
+      it('does not enable the submit button when an invalid email is entered', () => {
+        const INVALID_MAIL = '123.de';
+        cy.get('@emailInput').type(INVALID_MAIL);
+        cy.get('@emailSubmitBtn').should('have.prop', 'disabled', true);
+
+      });
+
+      it('enables the submit button when a valid email is entered', () => {
+        const VALID_MAIL = 'test@dummy.org';
+        cy.get('@emailInput').type(VALID_MAIL);
+        cy.get('@emailSubmitBtn').should('have.prop', 'disabled', false);
+      });
+
+      it('provides a button to proceed', () => {
+        cy.get('@emailProceedBtn').click();
+        cy.location('pathname').should(
+          'eq',
+          `${config.routes.katasterKI.scenesBase}/3`
+        );
+      });
     });
   });
 });
