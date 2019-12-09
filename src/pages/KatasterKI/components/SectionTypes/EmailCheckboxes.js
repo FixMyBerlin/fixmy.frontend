@@ -52,11 +52,27 @@ const CheckboxWrapper = styled.div`
   }
 `;
 
+const CheckboxLabel = styled.div`
+  line-height: 1.3em;
+`;
+
+const TSPPrivacyLink = () => (
+  <a
+    href="https://www.tagesspiegel.de/service/verlag-der-tagesspiegel-datenschutz\
+erklaerung/22603436.html"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ color: config.colors.midgrey }}
+  >
+    Datenschutzerklärung
+  </a>
+);
+
 const initialNewsletterConfig = [
   {
     id: 'tsp-newsletter',
-    label:
-      'Ich wünsche mir weitere interessante Angebote der Tagesspiegel-Gruppe per E-Mail.',
+    label: `Ich möchte kostenlos den Tagesspiegel Checkpoint abonnieren. Dort \
+wird auch über die Ergebnisse der Umfrage berichtet.`,
     checked: false
   },
   {
@@ -174,7 +190,10 @@ const Email = (props) => {
                   checked={option.checked}
                   onChange={onToggle}
                 />
-                <div>{option.label}</div>
+                <CheckboxLabel>
+                  {option.label}{' '}
+                  {option.id === 'tsp-newsletter' && <TSPPrivacyLink />}
+                </CheckboxLabel>
               </label>
             </CheckboxWrapper>
           ))}
