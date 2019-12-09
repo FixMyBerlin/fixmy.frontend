@@ -1,5 +1,11 @@
 const katasterPath = process.env.KATASTER_PATH || '';
 
+const MapboxStyles = {
+  'FMB-release-3': 'mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h',
+  'FMB-release-4': 'mapbox://styles/hejco/ck0nzclbk0ey01ct9ilwefpzc',
+  'FMB-release-5': 'mapbox://styles/hejco/ck37eiywp0un71cpd01dutt7r'
+};
+
 const config = {
   devUrl: 'http://localhost:8080',
   prodUrl: 'https://fixmyberlin.de',
@@ -233,7 +239,7 @@ const config = {
   map: {
     accessToken:
       'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
-    style: 'mapbox://styles/hejco/ck0nzclbk0ey01ct9ilwefpzc',
+    style: MapboxStyles['FMB-release-5'],
     view: {
       zoom: 12,
       bearing: 0,
