@@ -20,9 +20,9 @@ export const marshallMultiChoice = (
       // of all "checked" fieldnames
       if (field.endsWith('-input')) {
         other = values[field].toString();
-      } else {
-        return values[field] ? field : null;
+        return null;
       }
+      return values[field] ? field : null;
     })
     .filter((val) => val != null);
   return {
