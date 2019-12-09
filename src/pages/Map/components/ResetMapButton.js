@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { resetMap } from '~/pages/Map/map-utils';
+import resetMap from '~/pages/Map/reset';
 
 const ResetMapButton = styled.button`
   display: flex;
@@ -17,7 +17,9 @@ const ResetMapButton = styled.button`
   color: ${config.colors.midgrey};
 `;
 
-export default props => (
+export default (props) => (
+  // Wrapper components may use prop spreading
+  // eslint-disable-next-line react/jsx-props-no-spreading
   <ResetMapButton {...props} onClick={resetMap}>
     ×
   </ResetMapButton>

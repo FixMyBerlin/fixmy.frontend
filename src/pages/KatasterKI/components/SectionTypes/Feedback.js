@@ -9,14 +9,15 @@ import Flex from '~/components/Flex';
 import { getFeedbackThreshold } from '~/pages/KatasterKI/utils';
 import Paragraph from '~/pages/KatasterKI/components/Paragraph';
 import Button from '~/pages/KatasterKI/components/Button';
-import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import ShareButton from '~/pages/KatasterKI/components/ShareButton';
+import CloseSurveyButton from '~/pages/KatasterKI/components/CloseSurveyButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import ProgressVis from '~/pages/KatasterKI/components/ProgressVis';
 import ShareButtonDesktop from '../ShareButtonDesktop';
 
 const getTitle = (count, max) => {
-  return `Wir haben bereits ${count} Bewertungen bekommen. Helfen Sie mit, dass wir auf ${max} kommen.`;
+  return `Wir haben bereits ${count} Bewertungen erhalten. Helfen Sie, \
+damit wir auf ${max} kommen.`;
 };
 
 const FeedbackWrapper = styled.div`
@@ -43,7 +44,6 @@ const Feedback = ({
   isTosAccepted,
   statisticsCounter,
   ratingsCounter,
-  isEmbedded,
   next
 }) => {
   if (!isTosAccepted) {
@@ -55,17 +55,6 @@ const Feedback = ({
     numberFormat(statisticsCounter),
     numberFormat(feedbackThreshold)
   );
-
-  /**
-   * Handles behavior when users clicked the 'quit' button.
-   *
-   * When the survey is embedded this should message the parent window to close
-   * the iFrame. When not embedded, a redirect to a content page is issued
-   * through history.push
-   */
-  const handleQuit = () => {
-    window.parent.postMessage({ msg: 'done' }, '*');
-  };
 
   return (
     <>
@@ -81,35 +70,27 @@ const Feedback = ({
       <FeedbackWrapper>
         <FeedbackParagraph>
           Sie haben bereits <strong>{ratingsCounter} Situationen</strong>{' '}
-          bewertet. Je mehr Bewertungen die Umfrage erhält, umso
-          aussagekräftiger sind die Ergebnisse.
+          bewertet. Je mehr Straßensituationen bewertet werden, desto
+          aussagekräftiger die Ergebnisse.
         </FeedbackParagraph>
 
         <Flex
-          css={{ flexGrow: 1, maxWidth: 500, width: '100%', margin: '0 auto' }}
+          css={{
+            flexGrow: 1,
+            maxWidth: 500,
+            width: '100%',
+            margin: '0 auto',
+            paddingBottom: 10
+          }}
           alignItems="center"
           flexDirection="column"
         >
-          <Button onClick={next}>Weiter bewerten</Button>
-
-          <ShareButtonDesktop />
-          <ShareButton style={{ marginTop: 20 }} />
-          {isEmbedded && (
-            <GhostButton css={{ marginTop: 'auto' }} onClick={handleQuit}>
-              Umfrage beenden
-            </GhostButton>
-          )}
-          {!isEmbedded && (
-            <GhostButton
-              css={{ marginTop: 'auto' }}
-              onClick={() => {
-                window.location.href = config.katasterKI.tspArticleLink;
-              }}
-            >
-              Informationen über das Projekt
-            </GhostButton>
-          )}
+          <Button onClick={next}>Mehr Situationen bewerten</Button>
+          <CloseSurveyButton style={{ marginTop: 10 }} />
         </Flex>
+
+        <ShareButtonDesktop />
+        <ShareButton />
       </FeedbackWrapper>
     </>
   );
@@ -118,8 +99,7 @@ const Feedback = ({
 const mapStateToProps = (state) => ({
   isTosAccepted: state.KatasterKIState.isTosAccepted,
   statisticsCounter: state.KatasterKIState.statisticsCounter,
-  ratingsCounter: state.KatasterKIState.ratingsCounter,
-  isEmbedded: state.KatasterKIState.isEmbedded
+  ratingsCounter: state.KatasterKIState.ratingsCounter
 });
 
 export default connect(mapStateToProps)(Feedback);

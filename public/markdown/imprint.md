@@ -1,8 +1,7 @@
 # Impressum
 FixMyCity GmbH<br />
-c/o CityLAB<br />
-Platz der Luftbrücke 4<br />
-12021 Berlin<br />
+Karlsgartenstraße 12<br />
+12049 Berlin<br/>
 E-Mail-Adresse: [hello@fixmycity.de](mailto:hello@fixmycity.de)<br />
 Telefon: 030 / 549 08 665<br />
 
@@ -10,18 +9,24 @@ Gesellschafter: Boris Hekele und Heiko Rintelen
 
 Verantwortlicher i.S.v. § 55 Rundfunkstaatsvertrag (RStV): Heiko Rintelen<br />
 
+Büroadresse: c/o CityLAB Berlin<br />
+Platz der Luftbrücke 4<br />
+12101 Berlin<br />
+
+
 ## Feedback / Kontakt
 
 Wir freuen uns über Kommentare Anregungen und Unterstützung an [feedback@fixmycity.de](mailto:feedback@fixmycity.de)
 
-Du findest uns auch auf [twitter](https://twitter.com/fixmyberlin).
+Du findest uns auch auf [twitter](https://twitter.com/fixmyberlin) | [instagram](https://www.instagram.com/fixmycity/) | [facebook](https://www.facebook.com/FixMyCityApp/) und [linkedIn](https://www.linkedin.com/company/fixmycity)
 
 Sofern du Bugs oder Verbesserungsvorschläge hast, gib uns gerne [auf github.com Feedback](https://github.com/FixMyBerlin/fixmy.frontend).
 
 ## Dienstleister
 Frontend & UX Beratung: Webkid GmbH, https://webkid.io/
-
+Ux-Konzeption: Philipp Schiedel
 Backend & Beratung: Agaric e.K. Stefan Freudenberg
+3D-Visualisierungen: David Wegner
 
 ## Quellenvermerk
 Die von FixMyCity entwickelten Karten basieren auf Daten des Geoportal Berlin /  Detailnetz Berlin und wurden für die Dienste von FixMyCity entsprechend angepasst.

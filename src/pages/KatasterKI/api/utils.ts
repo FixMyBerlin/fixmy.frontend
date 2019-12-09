@@ -20,9 +20,9 @@ export const marshallMultiChoice = (
       // of all "checked" fieldnames
       if (field.endsWith('-input')) {
         other = values[field].toString();
-      } else {
-        return values[field] ? field : null;
+        return null;
       }
+      return values[field] ? field : null;
     })
     .filter((val) => val != null);
   return {
@@ -37,8 +37,8 @@ interface getEndpointURL {
     sessionId: string,
     sceneID: null
   ): string;
-
   (endpoint: 'answer', sessionId: string, sceneID: string): string;
+  (endpoint: 'newsletter', sessionId: null, sceneID: null): string;
 }
 
 /** Build an endpoint URL given an endpoint configured in the global config
@@ -50,11 +50,12 @@ export const getEndpointURL: getEndpointURL = (
   sessionId,
   sceneID
 ) => {
-  const projectId = config.katasterKI.projectId;
+  const { projectId } = config.katasterKI;
   if (endpoint === 'profile' || endpoint === 'perspective')
     return `${config.apiUrl}/survey/${projectId}/${sessionId}`;
   if (endpoint === 'answer')
     return `${config.apiUrl}/survey/${projectId}/${sessionId}/ratings/${sceneID}`;
+  if (endpoint === 'newsletter') return `${config.apiUrl}/users/create`;
 
   throw Error(`Endpoint ${endpoint} has no configured backend route`);
 };

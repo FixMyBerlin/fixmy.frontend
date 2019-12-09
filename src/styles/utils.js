@@ -12,13 +12,15 @@ export function getMediaQuery(size) {
 export const breakpoints = {
   s: 460,
   m: 768,
-  l: 1024
+  l: 1024,
+  xl: 1280
 };
 
 export const media = {
   s: getMediaQuery(breakpoints.s),
   m: getMediaQuery(breakpoints.m),
-  l: getMediaQuery(breakpoints.l)
+  l: getMediaQuery(breakpoints.l),
+  xl: getMediaQuery(breakpoints.xl)
 };
 
 function getOrientationQuery(orientation) {
@@ -39,7 +41,8 @@ export function matchMediaSize(size) {
 }
 
 export function isSmallScreen() {
-  return window.matchMedia(`screen and (max-width: ${breakpoints.m}px)`).matches;
+  return window.matchMedia(`screen and (max-width: ${breakpoints.m}px)`)
+    .matches;
 }
 
 export const bounce = keyframes`

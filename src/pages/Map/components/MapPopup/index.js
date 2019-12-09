@@ -1,8 +1,8 @@
 /* eslint indent: 0 */
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import slugify from 'slugify';
 
 import Store from '~/store';
@@ -14,7 +14,7 @@ import MapPopupWrapper from '~/components/MapPopupWrapper';
 import Button from '~/components/Button';
 import Label from '~/components/Label';
 import Brace from '~/pages/Map/components/Brace';
-import { resetMap } from '~/pages/Map/map-utils';
+import resetMap from '~/pages/Map/reset';
 
 const arrowSize = 19;
 
@@ -43,9 +43,15 @@ const IntersectionContent = styled.div`
 const closePopup = () => {
   Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
-  Store.dispatch(MapActions.setView({
-    show3dBuildings: true, pitch: 40, dim: true, animate: true, zoom: 16
-  }));
+  Store.dispatch(
+    MapActions.setView({
+      show3dBuildings: true,
+      pitch: 40,
+      dim: true,
+      animate: true,
+      zoom: 16
+    })
+  );
 };
 
 class MapPopup extends PureComponent {
@@ -54,7 +60,7 @@ class MapPopup extends PureComponent {
     const detailRoute = `/${this.props.activeView}/${this.props.activeSection}/${name}`;
     this.props.history.push(detailRoute);
     closePopup();
-  }
+  };
 
   render() {
     const { data, displayPopup, activeView, popupLocation } = this.props;
@@ -63,7 +69,7 @@ class MapPopup extends PureComponent {
       return null;
     }
 
-    const isPlaningView = activeView === 'planungen';
+    const isPlanningView = activeView === 'planungen';
     const isStatus = activeView === 'zustand';
     const isSmallScreen = window.innerWidth <= 768;
     const x = popupLocation && !isSmallScreen ? popupLocation.x : 0;
@@ -78,29 +84,27 @@ class MapPopup extends PureComponent {
         onClose={() => resetMap()}
       >
         {data.isIntersection ? (
-          <Fragment>
+          <>
             <IntersectionContent>
-              <Label>
-                Zu den Kreuzungen gibt es noch keine Informationen
-              </Label>
+              <Label>Zu den Kreuzungen gibt es noch keine Informationen</Label>
             </IntersectionContent>
             <BraceWrapper>
               <Brace type={this.props.activeView} />
             </BraceWrapper>
-          </Fragment>
+          </>
         ) : (
-          <Fragment>
-            {isPlaningView && <ProjectStatus section={data} />}
-            {isStatus && <BikeLevelStatus onClick={this.onDetailClick} section={data} />}
+          <>
+            {isPlanningView && <ProjectStatus section={data} />}
+            {isStatus && (
+              <BikeLevelStatus onClick={this.onDetailClick} section={data} />
+            )}
             <MoreButtonWrapper>
-              <Button onClick={this.onDetailClick}>
-                mehr Infos
-              </Button>
+              <Button onClick={this.onDetailClick}>mehr Infos</Button>
             </MoreButtonWrapper>
             <BraceWrapper>
               <Brace type={activeView} />
             </BraceWrapper>
-          </Fragment>
+          </>
         )}
       </MapPopupWrapper>
     );
@@ -108,7 +112,7 @@ class MapPopup extends PureComponent {
 }
 
 export default withRouter(
-  connect(state => ({
+  connect((state) => ({
     popupLocation: state.MapState.popupLocation,
     activeSection: state.AppState.activeSection,
     activeView: state.AppState.activeView,

@@ -21,11 +21,15 @@ const StyledMarkdown = styled(Markdown)`
     padding-bottom: 1rem;
   }
 
-  h2, h3, h4, h5 {
+  h2,
+  h3,
+  h4,
+  h5 {
     ${getSectionTitleStyles()}
   }
 
-  p, li {
+  p,
+  li {
     ${getTextStyles()}
   }
 
@@ -44,8 +48,11 @@ function loadImage(mdSrc) {
   return ImageContext(mdSrc);
 }
 
-export default props => (
-  typeof props.content === 'string' ?
-    <StyledMarkdown escapeHtml={false} transformImageUri={loadImage} source={props.content} /> :
-    null
-);
+export default (props) =>
+  typeof props.content === 'string' ? (
+    <StyledMarkdown
+      escapeHtml={false}
+      transformImageUri={loadImage}
+      source={props.content}
+    />
+  ) : null;

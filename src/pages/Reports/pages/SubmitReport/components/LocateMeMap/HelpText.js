@@ -36,7 +36,9 @@ const Box = styled.div`
 `;
 
 const HelpText = ({ text }) => (
-  <Box><span>{text}</span></Box>
+  <Box>
+    <span>{text}</span>
+  </Box>
 );
 
 HelpText.propTypes = {

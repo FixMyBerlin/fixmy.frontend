@@ -10,16 +10,11 @@ import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice'
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import Scene from '~/pages/KatasterKI/components/SectionTypes/Scene';
 import Feedback from '../components/SectionTypes/Feedback';
-import {
-  setAnswer,
-  updateProgressBar,
-  submitPerspective,
-  submitAnswer
-} from '../state';
+import { updateProgressBar, submitPerspective, submitAnswer } from '../state';
 import { Answer, Section, RequestState } from '../types';
 import Survey from '~/pages/KatasterKI/survey';
 import PerspectiveChange from '../components/SectionTypes/PerspectiveChange';
-import Email from '../components/SectionTypes/Email';
+import EmailCheckboxes from '../components/SectionTypes/EmailCheckboxes';
 
 const sectionTypes = {
   info: Info,
@@ -28,13 +23,28 @@ const sectionTypes = {
   scene: Scene,
   perspective_change: PerspectiveChange,
   feedback: Feedback,
-  email: Email
+  email: EmailCheckboxes
 };
 
 const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
   section.type === 'scene'
     ? scenes.find((s) => s.sceneID === section.name)
     : null;
+
+/**
+ * Modifies the behavior of updateProgressBar so that only 'scene' sections
+ * are considered
+ *
+ * @param page current match.params page entry
+ * @param sectionConfig sectionConfig for current sceneGroup
+ */
+const updateScenesProgress = (page, sectionConfig) => {
+  const progressPages = sectionConfig.filter(
+    (section) => section.type === 'scene'
+  );
+  const current = progressPages.indexOf(sectionConfig[page]);
+  return updateProgressBar(current, progressPages.length);
+};
 
 const Scenes = ({
   match,
@@ -47,15 +57,15 @@ const Scenes = ({
 }) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
   if (
-    (!config.debug && profileRequest.state == RequestState.waiting) ||
+    (!config.debug && profileRequest.state === RequestState.waiting) ||
     !match.params.page
   ) {
     return <Redirect to={config.routes.katasterKI.profileBase} />;
   }
 
   if (
-    profileRequest.state == RequestState.pending ||
-    profileRequest.state == RequestState.error
+    profileRequest.state === RequestState.pending ||
+    profileRequest.state === RequestState.error
   )
     return (
       <Loader
@@ -66,8 +76,8 @@ const Scenes = ({
     );
 
   if (
-    perspectiveRequest.state == RequestState.pending ||
-    perspectiveRequest.state == RequestState.error
+    perspectiveRequest.state === RequestState.pending ||
+    perspectiveRequest.state === RequestState.error
   )
     return (
       <Loader
@@ -85,11 +95,11 @@ const Scenes = ({
   );
   const section = sectionConfig[page];
   if (section == null)
-    return <Redirect to={config.routes.katasterKI.scenesBase + '/1'} />;
+    return <Redirect to={`${config.routes.katasterKI.scenesBase}/1`} />;
   const SectionComponent = sectionTypes[section.type];
 
   useEffect(() => {
-    dispatch(updateProgressBar(page, sectionConfig.length));
+    dispatch(updateScenesProgress(page, sectionConfig));
   }, [page, sectionConfig.length]);
 
   if (
@@ -119,7 +129,7 @@ const Scenes = ({
 
   return (
     <>
-      <ProgressBar />
+      {section.type === 'scene' && <ProgressBar />}
       <SectionComponent
         {...section}
         currentValue={getCurrentValue(section, scenes)}

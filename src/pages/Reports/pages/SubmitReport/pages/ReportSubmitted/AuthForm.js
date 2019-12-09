@@ -95,9 +95,12 @@ export const initialValues = signupFormConfig.reduce((res, item) => {
 }, {});
 
 class AuthForm extends Component {
-  state = {
-    showLoginForm: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      showLoginForm: false
+    };
+  }
 
   validate = (values) =>
     signupFormConfig.reduce((res, item) => {

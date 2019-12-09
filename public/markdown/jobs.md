@@ -1,6 +1,10 @@
-# Prak­ti­kum Kom­mu­ni­ka­tion Fix­My­City
+# Jobs bei FixMyCity
 
-Fix­My­City / FixMyBerlin begleitet Berlin bei der Umsetzung des Mobilitätsgesetzes und entwickelt digitale Werkzeuge für die Verkehrswende. Ziel ist eine datenbasierte Grundlage für einen konstruktiven Dialog zwischen Verwaltung und Bürger:innen zu schaffen.
+# ![Logo FixMyCity](./FixMyCity_positiv_300px.png)
+
+FixMyCity begleitet Städte auf dem Weg zur Fahrradstadt und mit dem Projekt FixMyBerlin begleiten wir Berlin bei der Umsetzung des Mobilitätsgesetzes. Ziel ist eine datenbasierte Grundlage für einen konstruktiven Dialog zwischen Verwaltung und Bürger:innen zu schaffen. Wir entwickeln dafür digitale Werkzeuge, so dass Radfahren sicher und komfortabel für alle wird. Wenn Du Spaß am Digitalen und am Radfahren hast, bewirb Dich bei uns.
+
+# Praktikum
 
 ## Auf­ga­ben­be­sch­rei­bung
 
@@ -33,9 +37,7 @@ Infos / Kon­di­tio­nen
 - Arbeits­zeit: 32 Stun­den / Woche, Ent­loh­nung 360,- / Monat
 - Arbeits­ort: City­LAB Ber­lin (Flug­ha­fen Tem­pel­hof)
 
-## Hin­wei­se zur Be­wer­bung
-
-Kon­takt
+## Kontakt
 
 - E-Mail: [jobs@fixmycity.de](mailto:jobs@fixmycity.de)
 - Bewer­bung jederzeit möglich über fol­gen­des For­mu­lar: https://forms.gle/16D1ysuLsBGaCEwB6

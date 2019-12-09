@@ -5,11 +5,9 @@ const rotate360 = keyframes`
   100%  { transform: rotate(360deg); }
 `;
 
-const Loader = styled.div.attrs(
-  props => ({ size: props.size || 15 })
-)`
-  height: ${props => (props.size)}px;
-  width: ${props => (props.size)}px;
+const Loader = styled.div.attrs((props) => ({ size: props.size || 15 }))`
+  height: ${(props) => props.size}px;
+  width: ${(props) => props.size}px;
   animation: ${rotate360} 0.8s infinite linear;
   border: 3px solid ${config.colors.darkgrey};
   border-right-color: transparent;

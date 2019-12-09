@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropagateLoader from 'react-spinners/PropagateLoader';
+import logger from '~/utils/logger';
 
 const LoaderWrapper = styled.div`
   width: 100%;
@@ -12,7 +13,7 @@ const LoaderWrapper = styled.div`
 
 const Loader = ({ pastDelay, error, color }) => {
   if (error) {
-    if (config.debug) console.error(error);
+    logger('Error loading page', error);
     return (
       <p>
         <span role="img" aria-label="sick face emoji">

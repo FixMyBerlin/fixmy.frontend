@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
 import Button from '~/pages/KatasterKI/components/Button';
+import CloseSurveyButton from '~/pages/KatasterKI/components/CloseSurveyButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
-import ShareButton from '~/pages/KatasterKI/components/ShareButton';
 
 const SingleChoiceWrapper = styled.div`
   flex-grow: 1;
@@ -24,7 +24,22 @@ const SingleChoiceWrapper = styled.div`
   `};
 `;
 
-const PerspectiveChange = ({ title, options, handleChange, next }) => {
+const Helper = styled.p`
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 auto;
+  line-height: 1.4em;
+`;
+
+const PerspectiveChange = ({
+  title,
+  options,
+  helper,
+  handleChange,
+  showCloseButton,
+  next
+}) => {
   const onClick = (option) => {
     handleChange({ nextPerspective: option.value });
     next();
@@ -53,7 +68,14 @@ const PerspectiveChange = ({ title, options, handleChange, next }) => {
         );
       })}
 
-      <ShareButton style={{ marginTop: 'auto' }} />
+      {helper !== null && <Helper>{helper}</Helper>}
+      {showCloseButton === true && (
+        <CloseSurveyButton
+          style={{
+            marginTop: 'auto'
+          }}
+        />
+      )}
     </SingleChoiceWrapper>
   );
 };

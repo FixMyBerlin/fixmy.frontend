@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from '~/components/Button';
+import logger from '~/utils/logger';
 
 const Div = styled.div`
   position: fixed;
@@ -39,7 +40,7 @@ ErrorMessage.propTypes = {
 
 ErrorMessage.defaultProps = {
   message: 'Ein Fehler ist aufgetreten',
-  onDismiss: () => console.log('onDismiss says implement me'),
+  onDismiss: () => logger('onDismiss says implement me'),
   dismissMessage: 'OK'
 };
 

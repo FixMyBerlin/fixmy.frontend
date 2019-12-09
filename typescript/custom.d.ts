@@ -3,4 +3,4 @@ declare module '*.svg' {
   export default content;
 }
 
-declare var config: any;
+declare const config: any;

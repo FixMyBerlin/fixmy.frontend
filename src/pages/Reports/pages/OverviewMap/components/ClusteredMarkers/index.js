@@ -4,28 +4,17 @@ import GeoPropTypes from 'geojson-prop-types';
 
 import FMCPropTypes from '~/propTypes';
 
-import { createPinMarker, createClusterMarker } from './marker-utils';
-import { setupClusters } from './cluster-utils';
+import {
+  createPinMarker,
+  createClusterMarker,
+  setupClusters
+} from './marker-utils';
 
 /**
  * This component does not render to the dom but clusters report markers
  * once they are loaded into the map through the Mapbox API
  */
-class ClusterWrapper extends React.Component {
-  static propTypes = {
-    data: GeoPropTypes.FeatureCollection,
-    map: FMCPropTypes.map,
-    name: PropTypes.string,
-    radius: PropTypes.number
-  };
-
-  static defaultProps = {
-    name: 'cluster',
-    radius: 50,
-    data: [],
-    map: null
-  };
-
+class ClusteredMarkers extends React.Component {
   constructor(props) {
     super(props);
 
@@ -81,14 +70,11 @@ class ClusterWrapper extends React.Component {
   }
 
   updateMarkers() {
-    console.log('Update markers');
     const { data, detailId, map, selectedReport } = this.props;
-
     const { clusters, clusterSource } = this.state;
+    const newMarkers = {};
 
     if (!data || !map) return;
-
-    const newMarkers = {};
 
     clusters.forEach((markerData) => {
       const lngLat = markerData.geometry.coordinates;
@@ -138,4 +124,23 @@ class ClusterWrapper extends React.Component {
   }
 }
 
-export default ClusterWrapper;
+ClusteredMarkers.propTypes = {
+  data: GeoPropTypes.FeatureCollection,
+  map: FMCPropTypes.map,
+  name: PropTypes.string,
+  radius: PropTypes.number,
+  detailId: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
+  selectedReport: FMCPropTypes.report
+};
+
+ClusteredMarkers.defaultProps = {
+  name: 'cluster',
+  radius: 50,
+  data: [],
+  detailId: null,
+  map: null,
+  selectedReport: null
+};
+
+export default ClusteredMarkers;

@@ -48,8 +48,8 @@ const closeSize = 20;
 
 const SearchReset = styled.div`
   position: absolute;
-  right:10px;
-  top:12px;
+  right: 10px;
+  top: 12px;
   border-radius: 50%;
   width: ${closeSize}px;
   height: ${closeSize}px;
@@ -61,7 +61,7 @@ const SearchReset = styled.div`
   line-height: 1;
   font-weight: 700;
   font-size: 20px;
-  cursor:pointer;
+  cursor: pointer;
   box-shadow: 0 1px 1px 2px rgba(0, 0, 0, 0.12);
 
   &:hover {
@@ -70,8 +70,11 @@ const SearchReset = styled.div`
 `;
 
 class SearchBar extends PureComponent {
-  state = {
-    inputValue: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: ''
+    };
   }
 
   onFormSubmit = (evt) => {
@@ -106,7 +109,9 @@ class SearchBar extends PureComponent {
           </Form>
           {this.state.inputValue ? (
             <SearchReset onClick={this.onInputReset}>×</SearchReset>
-          ) : <StyledSearchIcon />}
+          ) : (
+            <StyledSearchIcon />
+          )}
         </SearchBarInnerWrapper>
       </SearchBarWrapper>
     );
