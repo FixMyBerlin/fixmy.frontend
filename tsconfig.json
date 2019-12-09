@@ -10,12 +10,12 @@
     "sourceMap": true,
     "baseUrl": "src",
     "paths": {
-      "~": ["./*"]
+      "~": ["./"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
   "files": ["typescript/custom.d.ts"],
-  "include": ["src/**/*"],
+  "include": ["./**/*.ts", "./**/*.tsx"],
   "exclude": ["node_modules"]
 }
