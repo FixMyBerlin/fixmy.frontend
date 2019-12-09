@@ -103,6 +103,14 @@ export const ScrollToTop = () => {
 };
 
 /**
+ * Send signal to iFrame parent to close the survey
+ *
+ */
+export const handleQuit = () => {
+  window.parent.postMessage({ msg: 'done' }, '*');
+};
+
+/**
  * Register an e-mail address for the Tagesspiegel Checkpoint newsletter
  */
 export const signupTSPNewsletter = async (email: string) => {
