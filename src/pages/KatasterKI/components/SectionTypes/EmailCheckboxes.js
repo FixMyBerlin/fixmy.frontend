@@ -54,14 +54,14 @@ const CheckboxWrapper = styled.div`
 
 const initialNewsletterConfig = [
   {
-    id: 'fixmy-newsletter',
-    label: 'Ich möchte außerdem den FixMyBerlin-Newsletter erhalten.',
-    checked: false
-  },
-  {
     id: 'tsp-newsletter',
     label:
       'Ich wünsche mir weitere interessante Angebote der Tagesspiegel-Gruppe per E-Mail.',
+    checked: false
+  },
+  {
+    id: 'fixmy-newsletter',
+    label: 'Ich möchte außerdem den FixMyBerlin-Newsletter erhalten.',
     checked: false
   }
 ];
