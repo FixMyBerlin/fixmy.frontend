@@ -12,7 +12,5 @@ export default ({ section }) => {
     return null;
   }
 
-  return (
-    <StyledTitle>{section.title}</StyledTitle>
-  );
+  return <StyledTitle>{section.title}</StyledTitle>;
 };

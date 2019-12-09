@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import idx from 'idx';
 import styled from 'styled-components';
 import slugify from 'slugify';
 

@@ -15,20 +15,11 @@ const StyledMap = styled.div`
 `;
 
 class BaseMap extends PureComponent {
-  static propTypes = {
-    maxBounds: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
-    onLoad: PropTypes.func,
-    onMove: PropTypes.func
-  }
-
-  static defaultProps = {
-    maxBounds: config.reports.overviewMap.maxBounds,
-    onLoad: () => {},
-    onMove: () => {}
-  }
-
-  state = {
-    isLoading: true
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true
+    };
   }
 
   componentDidMount() {
@@ -52,7 +43,7 @@ class BaseMap extends PureComponent {
   }
 
   render() {
-    const Loader = this.state.isLoading ? (<BigLoader />) : null;
+    const Loader = this.state.isLoading ? <BigLoader /> : null;
     return (
       <StyledMap
         className={this.props.className}
@@ -66,5 +57,20 @@ class BaseMap extends PureComponent {
     );
   }
 }
+
+BaseMap.propTypes = {
+  maxBounds: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
+  onLoad: PropTypes.func,
+  onMove: PropTypes.func,
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired
+};
+
+BaseMap.defaultProps = {
+  maxBounds: config.reports.overviewMap.maxBounds,
+  onLoad: () => {},
+  onMove: () => {},
+  className: ''
+};
 
 export default BaseMap;

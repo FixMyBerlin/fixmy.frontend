@@ -8,36 +8,35 @@ const initialState = {
 
 describe('ErrorState reducer and actions', () => {
   it('returns the initial state for an empty action', () => {
-    expect(reducer(undefined, {}))
-    .toMatchObject(initialState);
+    expect(reducer(undefined, {})).toMatchObject(initialState);
   });
 
-  it('adds an error with a default message ' +
-    'with no further details about the error', () => {
-      expect(
-        reducer(undefined, actions.addError())
-      ).toEqual(
-        {
-          message: 'Ein Fehler ist aufgetreten',
-          proceedMessage: null,
-          proceedFunc: null
-        }
-      );
-    });
+  it(
+    'adds an error with a default message ' +
+      'with no further details about the error',
+    () => {
+      expect(reducer(undefined, actions.addError())).toEqual({
+        message: 'Ein Fehler ist aufgetreten',
+        proceedMessage: null,
+        proceedFunc: null
+      });
+    }
+  );
 
   it('adds an error with a custom message', () => {
     const MESSAGE = 'Standortsuche fehlgeschlagen';
     expect(
-      reducer(undefined, actions.addError({
-        message: MESSAGE
-      }))
-    ).toEqual(
-      {
-        message: MESSAGE,
-        proceedMessage: null,
-        proceedFunc: null
-      }
-    );
+      reducer(
+        undefined,
+        actions.addError({
+          message: MESSAGE
+        })
+      )
+    ).toEqual({
+      message: MESSAGE,
+      proceedMessage: null,
+      proceedFunc: null
+    });
   });
 
   it('adds an error with a custom ProceedButton spec', () => {
@@ -45,18 +44,19 @@ describe('ErrorState reducer and actions', () => {
     const LABEL = 'Ort erneut eingeben';
     const FUNC = () => 1 + 2;
     expect(
-      reducer(undefined, actions.addError({
-        message: MESSAGE,
-        proceedMessage: LABEL,
-        proceedFunc: FUNC
-      }))
-    ).toEqual(
-      {
-        message: MESSAGE,
-        proceedMessage: LABEL,
-        proceedFunc: FUNC
-      }
-    );
+      reducer(
+        undefined,
+        actions.addError({
+          message: MESSAGE,
+          proceedMessage: LABEL,
+          proceedFunc: FUNC
+        })
+      )
+    ).toEqual({
+      message: MESSAGE,
+      proceedMessage: LABEL,
+      proceedFunc: FUNC
+    });
   });
 
   it('removes an error', () => {

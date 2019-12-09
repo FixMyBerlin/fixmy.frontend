@@ -69,8 +69,7 @@ export default [
   {
     type: 'single_choice',
     name: 'responsible',
-    title:
-      'Wer trägt die größte Verantwortung für die Probleme im Verkehr?',
+    title: 'Wer trägt die größte Verantwortung für die Probleme im Verkehr?',
     randomize: true,
     options: [
       {
@@ -97,7 +96,8 @@ export default [
   },
   {
     type: 'info',
-    title: 'Erzählen Sie uns nun etwas zu Ihrer Verkehrsnutzung. Die Angaben sind anonym.'
+    title:
+      'Erzählen Sie uns nun etwas zu Ihrer Verkehrsnutzung. Die Angaben sind anonym.'
   },
   {
     type: 'transportRatings',

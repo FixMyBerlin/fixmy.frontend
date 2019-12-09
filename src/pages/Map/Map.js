@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Loadable from 'react-loadable';
@@ -88,25 +88,8 @@ class MapViewComponent extends PureComponent {
           <SearchBar />
           <WebglMap
             key="MapComponent"
-            zoom={this.props.zoom}
-            center={this.props.center}
-            bearing={this.props.bearing}
-            pitch={this.props.pitch}
-            show3dBuildings={this.props.show3dBuildings}
-            dim={this.props.dim}
-            activeLayer={this.props.activeLayer}
-            activeSection={this.props.activeSection}
-            activeView={this.props.activeLayer}
             updateView={this.updateView}
-            hasMoved={this.props.hasMoved}
-            hbi_values={this.props.hbi_values}
-            filterHbi={this.props.filterHbi}
-            filterPlannings={this.props.filterPlannings}
-            filterReports={this.props.filterReports}
             calculatePopupPosition={calculatePopupPosition}
-            displayPopup={this.props.displayPopup}
-            animate={this.props.animate}
-            planningData={this.props.planningData}
           >
             {!this.props.displayPopup && (
               <LocatorControl
@@ -169,24 +152,9 @@ export default withRouter(
   connect((state) => ({
     activeLayer: state.AppState.activeView,
     activeSection: parseInt(state.AppState.activeSection, 0),
-    activeLocation: state.MapState.activeLocation,
-    animate: state.MapState.animate,
-    bearing: state.MapState.bearing,
-    center: state.MapState.center,
-    dim: state.MapState.dim,
     displayPopup: state.MapState.displayPopup,
-    error: state.MapState.error,
     filterHbi: state.MapState.filterHbi,
-    filterPlannings: state.MapState.filterPlannings,
-    filterReports: state.MapState.filterReports,
-    hasMoved: state.MapState.hasMoved,
-    hbi_safety: state.MapState.hbi_safety,
-    hbi_speed: state.MapState.hbi_speed,
     isEmbedMode: state.AppState.isEmbedMode,
-    pitch: state.MapState.pitch,
-    planningData: state.MapState.planningData,
-    show3dBuildings: state.MapState.show3dBuildings,
-    zoom: state.MapState.zoom,
     ...state.UserState
   }))(MapViewComponent)
 );

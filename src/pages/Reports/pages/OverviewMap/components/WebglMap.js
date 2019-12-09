@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
+import logger from '~/utils/logger';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusteredMarkers from './ClusteredMarkers';
 import FMCPropTypes from '~/propTypes';
@@ -24,38 +25,12 @@ function toGeojson(data) {
   };
 }
 
-MapboxGL.clearStorage(err => {
-  console.log(err);
- });
+MapboxGL.clearStorage((err) => {
+  logger('Clearing Mapbox cache');
+  if (err) logger('Error clearing Mapbox storage:', err);
+});
 
 class WebglMap extends PureComponent {
-  static propTypes = {
-    center: PropTypes.arrayOf(PropTypes.number),
-    detailId: PropTypes.string,
-    disabled: PropTypes.bool,
-    error: PropTypes.shape({ message: PropTypes.string }),
-    fitExtentOnPopupClose: PropTypes.bool,
-    onLoad: PropTypes.func,
-    onMarkerClick: PropTypes.func.isRequired,
-    onMove: PropTypes.func,
-    reportsData: PropTypes.arrayOf(FMCPropTypes.report),
-    selectedReport: FMCPropTypes.report,
-    zoomControlPosition: PropTypes.string
-  };
-
-  static defaultProps = {
-    reportsData: [],
-    center: null,
-    onLoad: () => {},
-    onMove: () => {},
-    detailId: null,
-    disabled: false,
-    zoomControlPosition: 'bottom-left',
-    fitExtentOnPopupClose: true,
-    selectedReport: null,
-    error: null
-  };
-
   nav = new MapboxGL.NavigationControl({ showCompass: false });
 
   map = null;
@@ -128,5 +103,32 @@ class WebglMap extends PureComponent {
     );
   }
 }
+
+WebglMap.propTypes = {
+  center: PropTypes.arrayOf(PropTypes.number),
+  detailId: PropTypes.string,
+  disabled: PropTypes.bool,
+  error: PropTypes.shape({ message: PropTypes.string }),
+  fitExtentOnPopupClose: PropTypes.bool,
+  onLoad: PropTypes.func,
+  onMarkerClick: PropTypes.func.isRequired,
+  onMove: PropTypes.func,
+  reportsData: PropTypes.arrayOf(FMCPropTypes.report),
+  selectedReport: FMCPropTypes.report,
+  zoomControlPosition: PropTypes.string
+};
+
+WebglMap.defaultProps = {
+  reportsData: [],
+  center: null,
+  onLoad: () => {},
+  onMove: () => {},
+  detailId: null,
+  disabled: false,
+  zoomControlPosition: 'bottom-left',
+  fitExtentOnPopupClose: true,
+  selectedReport: null,
+  error: null
+};
 
 export default withRouter(WebglMap);

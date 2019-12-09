@@ -8,7 +8,6 @@ import CloseIcon from '~/images/close.svg';
 import history from '~/history';
 import { actions } from '~/pages/Reports/state/SubmitReportState';
 
-
 const Button = styled(CloseIcon)`
   position: absolute;
   top: 3px;
@@ -27,4 +26,7 @@ const AbortButton = ({ abortDialog }) => (
   <Button onClick={clickHandler.bind(this, abortDialog)} />
 );
 
-export default connect(null, { abortDialog: actions.resetDialogState })(AbortButton);
+export default connect(
+  null,
+  { abortDialog: actions.resetDialogState }
+)(AbortButton);

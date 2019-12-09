@@ -89,8 +89,6 @@ describe('OverviewMapState reducer and actions', () => {
     test.only(`fails to fetch reports and creates ${formatActionType(
       errorStateTypes.ADD_ERROR
     )}`, () => {
-      console.error = jest.fn(); // mute provoked console.error
-
       fetchMock.getOnce(reportsEndpointUrl, {
         throws: new HTTPError('some error')
       });

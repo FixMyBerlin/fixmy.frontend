@@ -1,12 +1,13 @@
 /* eslint-disable  no-multi-spaces */
 import booleanWithin from '@turf/boolean-within';
-import idx from 'idx';
 
 import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/pages/Map/map-utils'; // TODO: handle eslint warning regarding dependency circle
-import { apiSubmitReport, marshallNewReportObjectFurSubmit } from '~/pages/Reports/apiservice';
+import {
+  apiSubmitReport,
+  marshallNewReportObjectFurSubmit
+} from '~/pages/Reports/apiservice';
 import { actions as errorStateActions } from './ErrorState';
-
 
 // action constants
 
@@ -45,7 +46,7 @@ actions.resetDialogState = () => ({
   type: types.RESET_DIALOG_STATE
 });
 
-actions.setLocationMode = mode => ({
+actions.setLocationMode = (mode) => ({
   type: types.SET_LOCATION_MODE,
   mode
 });
@@ -65,7 +66,7 @@ actions.setTempLocationCoords = ({ lng, lat }) => ({
   payload: { lng, lat }
 });
 
-actions.setTempLocationAddress = address => ({
+actions.setTempLocationAddress = (address) => ({
   type: types.SET_TEMP_LOCATION_ADDRESS,
   address
 });
@@ -84,7 +85,7 @@ actions.handleGeocodeSuccess = ({ coords, address }) => ({
   payload: { coords, address }
 });
 
-actions.setBikestandCount = amount => ({
+actions.setBikestandCount = (amount) => ({
   type: types.SET_BIKESTAND_COUNT,
   payload: amount
 });
@@ -94,14 +95,16 @@ actions.setAdditionalData = ({ photo, description }) => ({
   payload: { photo, description }
 });
 
-actions.setFeeAcceptable = isFeeAcceptable => ({
+actions.setFeeAcceptable = (isFeeAcceptable) => ({
   type: types.SET_FEE_ACCEPTABLE,
   isFeeAcceptable
 });
 
 // thunks
 
-actions.validateCoordinates = (polygonGeoJson, { lng, lat }) => async (dispatch) => {
+actions.validateCoordinates = (polygonGeoJson, { lng, lat }) => async (
+  dispatch
+) => {
   const pointFeature = {
     type: 'Feature',
     geometry: {
@@ -135,15 +138,16 @@ actions.reverseGeocodeCoordinates = ({ lat, lng }) => async (dispatch) => {
   }
 
   if (errorMsg) {
-    return dispatch(errorStateActions.addError({
-      message: errorMsg
-    }));
+    dispatch(
+      errorStateActions.addError({
+        message: errorMsg
+      })
+    );
+  } else {
+    dispatch({ type: types.REVERSE_GEOCODE_COMPLETE, payload: { result } });
+    dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
   }
-
-  dispatch({ type: types.REVERSE_GEOCODE_COMPLETE, payload: { result } });
-  dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
 };
-
 
 actions.useDevicePosition = () => async (dispatch) => {
   let coords;
@@ -157,7 +161,8 @@ actions.useDevicePosition = () => async (dispatch) => {
     );
     dispatch(actions.setLocationModeDevice());
   } catch (err) {
-    const errMsg = 'Standortbestimmung fehlgeschlagen. ' +
+    const errMsg =
+      'Standortbestimmung fehlgeschlagen. ' +
       'Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.';
     dispatch(
       errorStateActions.addError({
@@ -171,14 +176,17 @@ actions.submitReport = () => async (dispatch, getState) => {
   dispatch({ type: types.SUBMIT_REPORT_PENDING });
 
   try {
-    const reportPayload = marshallNewReportObjectFurSubmit(getState().ReportsState.SubmitReportState.newReport);
+    const reportPayload = marshallNewReportObjectFurSubmit(
+      getState().ReportsState.SubmitReportState.newReport
+    );
     const submittedReport = await apiSubmitReport(reportPayload);
     dispatch({ type: types.SUBMIT_REPORT_COMPLETE, submittedReport });
   } catch (e) {
     const errMsg = 'Beim Übermitteln der Meldung ist etwas schiefgelaufen.';
     dispatch({ type: types.SUBMIT_REPORT_ERROR }); // update UI
     dispatch(
-      errorStateActions.addError({ // show ErrorMessage using the generic component
+      errorStateActions.addError({
+        // show ErrorMessage using the generic component
         message: errMsg
       })
     );
@@ -188,30 +196,32 @@ actions.submitReport = () => async (dispatch, getState) => {
 // reducer
 
 const initialState = {
-  locationMode: null,           // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
-  deviceLocation: null,         // { lng, lat}
-  geocodeResult: null,          // { coords, address}
+  locationMode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
+  deviceLocation: null, // { lng, lat}
+  geocodeResult: null, // { coords, address}
   reverseGeocodeResult: null,
-  tempLocation: {               // fostered when the user searches a suitable location for a report. when confirmed, props get attached to the newReport item
-    lngLat: null,               // { lng, lat}
-    address: '',                // reverse-geocoding result
-    pinned: false,              // true when the user has confirmed the location he set using the map
-    valid: true                 // set to false when a location is outside the area of interest
+  tempLocation: {
+    // fostered when the user searches a suitable location for a report. when confirmed, props get attached to the newReport item
+    lngLat: null, // { lng, lat}
+    address: '', // reverse-geocoding result
+    pinned: false, // true when the user has confirmed the location he set using the map
+    valid: true // set to false when a location is outside the area of interest
   },
   apiRequestStatus: {
-    submitting: false,          // set true during submission of the report item to the api
-    submitted: false            // set true on submit success
+    submitting: false, // set true during submission of the report item to the api
+    submitted: false // set true on submit success
   },
-  newReport: {                 // instance of json schema agreed upon
-    address: null,              // address string
-    geometry: {},               // GeoJson point feature
+  newReport: {
+    // instance of json schema agreed upon
+    address: null, // address string
+    geometry: {}, // GeoJson point feature
     details: {
       subject: 'BIKE_STANDS',
-      number: null,             // number of bikestands
-      fee_acceptable: null      // if the user would pay for managed parking
+      number: null, // number of bikestands
+      fee_acceptable: null // if the user would pay for managed parking
     },
-    photo: null,                // jpeg in base64
-    description: null          // textual description of the problem / potential site
+    photo: null, // jpeg in base64
+    description: null // textual description of the problem / potential site
   }
 };
 
@@ -249,9 +259,7 @@ function reducer(state = initialState, action = {}) {
         }
       };
     case types.REVERSE_GEOCODE_COMPLETE:
-      return { ...state,
-        reverseGeocodeResult: action.payload
-      };
+      return { ...state, reverseGeocodeResult: action.payload };
     case types.SET_TEMP_LOCATION_COORDS:
       return {
         ...state,
@@ -353,16 +361,11 @@ function reducer(state = initialState, action = {}) {
 
 const selectors = {};
 
-selectors.getLocationIsModeGeocoding = state => state.locationMode === LOCATION_MODE_GEOCODING;
-selectors.getAlreadyPicketLocation = function (state) {
-  return idx(state, _ => _.newReport.geometry.coordinates);
-}
+selectors.getLocationIsModeGeocoding = (state) =>
+  state.locationMode === LOCATION_MODE_GEOCODING;
+selectors.getAlreadyPicketLocation = (state) =>
+  state.newReport?.geometry.coordinates;
 
-export {
-  actions,
-  types,
-  selectors,
-  initialState
-};
+export { actions, types, selectors, initialState };
 
 export default reducer;

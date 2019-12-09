@@ -1,4 +1,4 @@
-import { matchPath } from 'react-router-dom';
+import { matchPath } from 'react-router-dom';
 import qs from 'qs';
 
 const UPDATE_HISTORY = 'App/AppState/UPDATE_HISTORY';
@@ -14,8 +14,10 @@ const initialState = {
   isEmbedMode: false
 };
 
-export const detectEmbedMode = props => (dispatch) => {
-  const isEmbedMode = !!(qs.parse(props.search, { ignoreQueryPrefix: true }).embed) || window.location.host === 'embed.fixmyberlin.de';
+export const detectEmbedMode = (props) => (dispatch) => {
+  const isEmbedMode =
+    !!qs.parse(props.search, { ignoreQueryPrefix: true }).embed ||
+    window.location.host === 'embed.fixmyberlin.de';
 
   dispatch({
     type: UPDATE_HISTORY,
@@ -25,7 +27,7 @@ export const detectEmbedMode = props => (dispatch) => {
   });
 };
 
-export const updateHistory = props => (dispatch) => {
+export const updateHistory = (props) => (dispatch) => {
   const match = matchPath(props.pathname, {
     path: '/:activeView?/:activeSection?',
     exact: false,
@@ -74,14 +76,14 @@ export function toggle() {
 export default function AppStateReducer(state = initialState, action = {}) {
   switch (action.type) {
     case OPEN_MENU:
-      return Object.assign({}, state, { isMenuOpen: true });
+      return { ...state, isMenuOpen: true };
     case CLOSE_MENU:
-      return Object.assign({}, state, { isMenuOpen: false });
+      return { ...state, isMenuOpen: false };
     case UPDATE_HISTORY:
     case SET_ACTIVE_SECTION:
     case SET_VIEW_ACTIVE:
-      return Object.assign({}, state, action.payload);
+      return { ...state, ...action.payload };
     default:
-      return Object.assign({}, state);
+      return { ...state };
   }
 }

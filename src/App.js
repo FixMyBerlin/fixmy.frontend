@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Route, Switch, Router, Redirect } from 'react-router-dom';
@@ -6,8 +6,8 @@ import { LastLocationProvider } from 'react-router-last-location';
 import GlobalStyles from '~/styles/Global';
 
 import history from '~/history';
-import { PrivateRoute } from '~/utils/router-utils';
 import Menu from '~/components/Menu';
+import PrivateRoute from '~/components/PrivateRoute';
 import Home from '~/pages/Home';
 import Markdown from '~/pages/Markdown';
 import MapView from '~/pages/Map';
@@ -41,7 +41,7 @@ class App extends PureComponent {
     const { isEmbedMode, token } = this.props;
 
     return (
-      <Fragment>
+      <>
         <GlobalStyles />
         <Router history={history}>
           <LastLocationProvider>
@@ -121,7 +121,7 @@ class App extends PureComponent {
             </AppWrapper>
           </LastLocationProvider>
         </Router>
-      </Fragment>
+      </>
     );
   }
 }

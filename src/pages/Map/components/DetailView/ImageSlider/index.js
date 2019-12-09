@@ -13,7 +13,7 @@ const StyledSlider = styled(Slider)`
   min-height: 150px;
 
   .slick-slide {
-    >div {
+    > div {
       height: 100%;
     }
   }
@@ -61,7 +61,7 @@ const ImageSource = styled.div`
   position: absolute;
   bottom: 2px;
   font-size: 9px;
-  right:2px;
+  right: 2px;
   color: ${config.colors.lightgrey};
 `;
 
@@ -75,35 +75,35 @@ const PlaceholderLabel = styled.div`
 `;
 
 function renderImage(image) {
-  const showPlaceholderLabel = image.src.includes('Platzhalter') || image.src.includes('emil-bruckner');
+  const showPlaceholderLabel =
+    image.src.includes('Platzhalter') || image.src.includes('emil-bruckner');
   return (
     <Slide key={`SliderImage_${image.src}`}>
       <SliderImage src={image.src} alt={image.copyright} />
-      {showPlaceholderLabel && <PlaceholderLabel>Noch kein Bild vorhanden</PlaceholderLabel>}
+      {showPlaceholderLabel && (
+        <PlaceholderLabel>Noch kein Bild vorhanden</PlaceholderLabel>
+      )}
       {image.copyright && <ImageSource>{image.copyright}</ImageSource>}
     </Slide>
   );
 }
 
 class ImageSlider extends PureComponent {
-  static propTypes = {
-    images: PropTypes.arrayOf(PropTypes.object)
-  }
-
-  static defaultProps = {
-    images: []
-  }
-
   render() {
     return (
-      <StyledSlider
-        dots
-        arrows={false}
-      >
+      <StyledSlider dots arrows={false}>
         {this.props.images.map(renderImage)}
       </StyledSlider>
     );
   }
 }
+
+ImageSlider.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.object)
+};
+
+ImageSlider.defaultProps = {
+  images: []
+};
 
 export default ImageSlider;

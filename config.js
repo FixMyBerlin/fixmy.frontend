@@ -9,6 +9,7 @@ const config = {
     staging: 'https://fixmyplatform-develop.herokuapp.com/api',
     production: 'https://api.fixmyberlin.de/api'
   },
+  logger: 'fmc*', // selects logging namespaces to display when not in production
   feedbackMail: 'feedback@fixmyberlin.de',
   colors: {
     lightbg: '#f5f5f5',
@@ -353,10 +354,6 @@ const config = {
   showFeedBackForm: false
 };
 
-config.apiUrl = config.api[process.env.CONFIG_ENV] || config.api.production;
-
-if (!process.env.CONFIG_ENV) {
-  console.warn('No CONFIG_ENV defined. Using production API by default.');
-}
+config.apiUrl = config.api[process.env.CONFIG_ENV] || config.api.staging;
 
 module.exports = config;
