@@ -176,6 +176,13 @@ const config = {
     profile: '/profil',
     userVerify: '/bestaetigen'
   },
+  piwik: {
+    siteId: {
+      main: 1,
+      kataster: 2,
+      katasterTesting: 3
+    }
+  },
   hbi: [
     { label: 'Geschwindgkeit', type: 'speed', value: 5, min: 0, max: 10 },
     { label: 'Sicherheit', type: 'security', value: 5, min: 0, max: 10 }

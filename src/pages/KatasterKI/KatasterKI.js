@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch, Redirect, matchPath } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import ReactPiwik from 'react-piwik';
 
 import { media } from '~/styles/utils';
 import history from '~/history';
@@ -69,6 +70,17 @@ const Gradient = styled.div`
   );
 `;
 
+const piwik = new ReactPiwik({
+  url: 'fixmyberlin.de/stats',
+  siteId: config.debug
+    ? config.piwik.siteId.katasterTesting
+    : config.piwik.siteId.kataster,
+  trackErrors: true
+});
+
+// track the initial pageview
+ReactPiwik.push(['trackPageView']);
+
 /** Define the path for the landing page to be able to check whether it's active
  *
  * The path is prepended with the BASE_NAME env var, which
@@ -101,7 +113,7 @@ const KatasterKI = () => {
       <AppGlobalStyle />
       <ScrollToTop />
       <ContentWrapper isLanding={isLanding}>
-        <Router history={history}>
+        <Router history={piwik.connectToHistory(history)}>
           <Switch>
             <Route
               exact
