@@ -27,7 +27,7 @@
   "author": "webkid.io",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.6.3",
+    "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.4",
     "@babel/plugin-proposal-class-properties": "^7.7.0",
     "@babel/plugin-proposal-optional-chaining": "^7.7.4",
