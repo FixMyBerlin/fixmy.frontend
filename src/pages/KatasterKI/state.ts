@@ -64,6 +64,8 @@ export interface State {
     gender?: 'm' | 'w' | 'd';
     hasChildren?: boolean;
     motivationalFactors?: RadioGroups;
+    offended?: number;
+    responsible?: number;
     zipcode: string;
     vehiclesOwned?: MultiChoice;
     whyBiking?: MultiChoice;

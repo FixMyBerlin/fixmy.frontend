@@ -55,8 +55,14 @@
       },
       "type": "object"
     },
+    "offended": {
+      "type": "number"
+    },
     "perspective": {
       "$ref": "#/definitions/Perspective"
+    },
+    "responsible": {
+      "type": "number"
     },
     "sessionID": {
       "type": "string"
