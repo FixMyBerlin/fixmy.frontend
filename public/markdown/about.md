@@ -9,7 +9,7 @@ Ziel ist eine datenbasierte Grundlage für einen konstruktiven Dialog zwischen V
 ## Wer steckt hinter FixMyBerlin?
 FixMyBerlin ist aus einer Initiative der Berliner Zivilgesellschaft heraus entstanden. Mittlerweile sind wir ein größer werdendes Team aus Entwickler:innen, Designer:innen, Verkehrsplaner:innen sowie Datenspezialist:innen, die Berlin und andere Städte bei der Transformation zur Fahrradstadt unterstützen und Lösungen für die offene Verwaltung entwickeln.
 
-Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministeriums, der Berliner Senatskanzlei und dem Berliner StartUp Stipendium. Die für Verkehr zuständige Senatsverwaltung sowie 11 von 12 der Berliner Bezirksämter nutzen die Plattform und veröffentlichen dort ihre Planungen.
+Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministeriums, der Berliner Senatskanzlei und dem Berliner StartUp Stipendium. Die für Verkehr zuständige Senatsverwaltung sowie alle Berliner Bezirksämter nutzen die Plattform und veröffentlichen dort ihre Planungen.
 
 ## Team von FixMyBerlin [[Kontakt]](/impressum)
 Du willst uns unterstützen? [Melde Dich gerne](/jobs)

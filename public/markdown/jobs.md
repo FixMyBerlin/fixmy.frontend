@@ -10,7 +10,6 @@ FixMyCity begleitet Städte auf dem Weg zur Fahrradstadt und mit dem Projekt Fix
 
 Deine Auf­ga­ben
 
-- Mit­ar­beit bei UX-Kon­zep­tion und Erar­bei­tung einer Kam­pa­gne
 - Social-Media-Posts ent­wer­fen und -Kanäle betreuen
 - Texte für den News­let­ter schrei­ben
 - Info­gra­fi­ken / Memes erstel­len
