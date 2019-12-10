@@ -109,6 +109,8 @@ export const marshallProfile = (
     gender: profile.gender,
     hasChildren: profile.hasChildren,
     motivationalFactors: profile.motivationalFactors,
+    offended: profile.offended,
+    responsible: profile.responsible,
     zipcode: profile.zipcode,
     perspective: currentPerspective,
     vehiclesOwned,

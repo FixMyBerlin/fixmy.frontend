@@ -19,6 +19,8 @@ export interface ProfileRequest {
   motivationalFactors?: {
     [name: string]: number;
   };
+  offended: number;
+  responsible: number;
   perspective: Perspective;
   transportRatings: {
     [mode: string]: TransportRating;
