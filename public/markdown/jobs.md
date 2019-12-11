@@ -6,7 +6,13 @@ FixMyCity begleitet Städte auf dem Weg zur Fahrradstadt und mit dem Projekt Fix
 
 # Praktikum
 
-# ![Fahrradfahren](./amsterdam-1203305_1280.jpg)
+<h1>
+    <img 
+        alt="Fahrradfahren" 
+        src="/src/images/amsterdam-1203305_1280.jpg" 
+        class="img-lg"
+    >
+</h1>
 
 ## Auf­ga­ben­be­sch­rei­bung
 
@@ -42,4 +48,3 @@ Infos / Kon­di­tio­nen
 
 - E-Mail: [jobs@fixmycity.de](mailto:jobs@fixmycity.de)
 - Bewer­bung jederzeit möglich über fol­gen­des For­mu­lar: https://forms.gle/16D1ysuLsBGaCEwB6
-
