@@ -42,6 +42,10 @@ const StyledMarkdown = styled(Markdown)`
   img {
     max-width: 250px;
   }
+  
+  img.img-lg {
+    max-width: initial;
+  }
 `;
 
 function loadImage(mdSrc) {
