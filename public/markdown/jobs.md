@@ -6,6 +6,8 @@ FixMyCity begleitet Städte auf dem Weg zur Fahrradstadt und mit dem Projekt Fix
 
 # Praktikum
 
+# ![Fahrradfahren](./amsterdam-1203305_1280.jpg)
+
 ## Auf­ga­ben­be­sch­rei­bung
 
 Deine Auf­ga­ben
