@@ -314,7 +314,8 @@ const config = {
     shareUrl: 'https://interaktiv.tagesspiegel.de/strassencheck/',
     shareTitle: 'Umfrage Share Title',
     shareText:
-      'Wie können die Straßen sicher für alle werden? Tolle Umfrage von @FixMyBerlin und @tagesspiegel, bitte teilnehmen!'
+      'Wie können die Straßen sicher für alle werden? Tolle Umfrage von @FixMyBerlin und @tagesspiegel, bitte teilnehmen!',
+    numIntroQuestions: 2 // how many intro questions should be asked
   },
   reports: {
     apiRoute: '/reports',

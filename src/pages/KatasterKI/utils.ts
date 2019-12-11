@@ -104,18 +104,29 @@ export const handleQuit = () => {
 };
 
 /**
- * Shuffle an array in place using Fisher-Yates-shuffle
+ * Shuffle an array using Fisher-Yates-shuffle
  *
  * Taken from https://stackoverflow.com/a/6274381
  *
  * @param array array to be shuffled
  */
-export const shuffle = (a: Array<any>): void => {
-  for (let i = a.length - 1; i > 0; i--) {
+export const shuffle = (x: Array<any>): Array<any> => {
+  const a = [...x];
+  for (let i = a.length - 1; i > 0; i -= 1) {
     const j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]];
   }
+  return a;
 };
+
+/**
+ * Generate a selection of indices
+ *
+ * Generates an array of all integers up to `max`, shuffles them and
+ * returns the first `num` entries.
+ */
+export const makeIntroSelection = (max: number, num: number) =>
+  shuffle([...Array(max).keys()]).slice(0, num);
 
 /**
  * Scroll to top on navigation
