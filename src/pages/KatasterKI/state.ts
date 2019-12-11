@@ -178,16 +178,6 @@ export const testingDefaultState: State = {
   },
   profile: {
     ageGroup: 1,
-    berlinTraffic: {
-      a: true,
-      b: true,
-      c: false,
-      d: false,
-      e: false,
-      f: false,
-      g: false,
-      h: false
-    },
     bicycleUse: 0,
     bikeReasons: {},
     district: 'Mitte',
