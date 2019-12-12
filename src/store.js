@@ -23,8 +23,17 @@ const Reducer = combineReducers({
 /* eslint-disable no-underscore-dangle */
 const enhancers = compose(
   applyMiddleware(thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__
+    ? window.__REDUX_DEVTOOLS_EXTENSION__()
+    : (f) => f // handle browsers with no redux dev tools installed
 );
 /* eslint-enable */
 
-export default createStore(Reducer, enhancers);
+const store = createStore(Reducer, enhancers);
+
+// expose store when run in Cypress Test
+if (window.Cypress) {
+  window.store = store;
+}
+
+export default store;

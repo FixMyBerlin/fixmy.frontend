@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-
+// TODO: split tests into multiple files
 import config from '../../config';
 
 describe('Kastaster survey', () => {
@@ -17,7 +17,7 @@ describe('Kastaster survey', () => {
     });
   });
 
-  // TODO: split tests into multiplefiles
+
   describe('profiles', () => {
     describe('profile 1', () => {
       before(() => {
@@ -199,10 +199,14 @@ describe('Kastaster survey', () => {
   describe('scenes', () => {
     describe('scene 1', () => {
       before(() => {
+        cy.window()
+          .its('store')
+          .as('store');
         goToScene(1);
       });
 
       it('links to scene 2', () => {
+        console.debug(cy.get('@store').invoke('getState'));
         cy.get('[data-cy=kat-feedback-proceed-btn]').click();
         cy.location('pathname').should(
           'eq',
@@ -218,16 +222,13 @@ describe('Kastaster survey', () => {
         cy.get('[data-cy=kat-emailcheckboxes-proceed-btn]').as(
           'emailProceedBtn'
         );
-        cy.get('[data-cy=kat-emailcheckboxes-submit-btn]').as(
-          'emailSubmitBtn'
-        );
+        cy.get('[data-cy=kat-emailcheckboxes-submit-btn]').as('emailSubmitBtn');
       });
 
       it('does not enable the submit button when an invalid email is entered', () => {
         const INVALID_MAIL = '123.de';
         cy.get('@emailInput').type(INVALID_MAIL);
         cy.get('@emailSubmitBtn').should('have.prop', 'disabled', true);
-
       });
 
       it('enables the submit button when a valid email is entered', () => {
@@ -247,12 +248,22 @@ describe('Kastaster survey', () => {
   });
 });
 
+function getFixedStateJson(fileNameWithoutEnding) {
+  return cy.fixture(`katasterKiStates/${fileNameWithoutEnding}.json`);
+}
+
 function goToProfile(profile = 1) {
   cy.visit(`${config.routes.katasterKI.profileBase}/${profile}`);
 }
 
 function goToScene(scene = 1) {
-  cy.visit(`${config.routes.katasterKI.scenesBase}/${scene}`);
+  getFixedStateJson('afterProfileSubmit').then(stateSlice => {
+    cy.visit(`${config.routes.katasterKI.scenesBase}/${scene}`, {
+      onBeforeLoad(win) {
+        win.initialState = stateSlice;
+      }
+    });
+  });
 }
 
 function testSingleChoice(profile) {
