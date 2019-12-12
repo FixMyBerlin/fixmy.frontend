@@ -1,40 +1,5 @@
 export default [
   {
-    type: 'multi_choice',
-    name: 'berlinTraffic',
-    title: 'Was nervt Sie am meisten am Straßenverkehr?',
-    options: [
-      {
-        label: 'Hohes Verkehrsaufkommen und Staus',
-        name: 'traffic'
-      },
-      {
-        label: 'Der Zustand der Straßen / Radwege',
-        name: 'maintenance'
-      },
-      {
-        label: 'Missachtung der Verkehrsregeln',
-        name: 'rules'
-      },
-      {
-        label: 'Der Lärm',
-        name: 'noise'
-      },
-      {
-        label: 'Die Unfälle',
-        name: 'accidents'
-      },
-      {
-        label: 'Aggressives Verhalten anderer',
-        name: 'aggression'
-      },
-      {
-        label: 'Die Luftverschmutzung',
-        name: 'polution'
-      }
-    ]
-  },
-  {
     type: 'single_choice',
     name: 'offended',
     title: 'Wurden Sie im vergangenen Jahr im Verkehr verbal beleidigt?',
@@ -81,6 +46,109 @@ export default [
       {
         label: 'Die Fußgänger',
         value: 4
+      }
+    ]
+  },
+  {
+    type: 'multi_choice',
+    name: 'riskFactors',
+    title: 'Warum fühlen Sie sich am ehesten unsicher im Straßenverkehr?',
+    options: [
+      {
+        label: 'Wege nicht ausreichend beleuchtet',
+        name: 'lighting'
+      },
+      {
+        label: 'Baustellen auf der Fahrbahn',
+        name: 'construction'
+      },
+      {
+        label: 'Breite der Straßen und Wege nicht ausreichend',
+        name: 'roadWidth'
+      },
+      {
+        label: 'Falschparker',
+        name: 'parkingViolations'
+      },
+      {
+        label: 'Überhöhte Geschwindigkeit anderer',
+        name: 'speed'
+      },
+      {
+        label: 'Smartphone-Nutzung anderer im Verkehr',
+        name: 'smartphones'
+      },
+      {
+        label: 'Überholen ohne genügend Sicherheitsabstand',
+        name: 'distance'
+      },
+      {
+        label: 'Straßenbelag in schlechtem Zustand',
+        name: 'roadSurface'
+      },
+      {
+        label: 'Zu viel Verkehr',
+        name: 'trafficAmount'
+      },
+      {
+        label: 'Aggressives Verhalten anderer',
+        name: 'aggressive'
+      },
+      {
+        label: 'Ignorieren der Verkehrsregeln',
+        name: 'ruleViolation'
+      },
+      {
+        label: 'Schlechte Kreuzungsgestaltung',
+        name: 'crossings'
+      },
+      {
+        label: 'Ich fühle mich nie unsicher im Verkehr',
+        name: 'chuckNorris'
+      }
+    ]
+  },
+  {
+    type: 'multi_choice',
+    name: 'bestMeasures',
+    title:
+      'Welche Maßnahmen würden Sie befürworten, um den Berliner Verkehr klimafreundlicher zu gestalten?',
+    options: [
+      {
+        label: 'Besserer öffentlicher Nahverkehr',
+        name: 'publicTransport'
+      },
+      {
+        label: 'Bessere Radwege',
+        name: 'cyclePaths'
+      },
+      {
+        label: 'Mehr Platz für Fußgänger',
+        name: 'pedestrianSpace'
+      },
+      {
+        label: 'Mehr Tempolimits',
+        name: 'speedLimit'
+      },
+      {
+        label: 'Verbot von Verbrennungsmotoren',
+        name: 'banICEs'
+      },
+      {
+        label: 'Citymaut',
+        name: 'toll'
+      },
+      {
+        label: 'Besteuerung großer Autos',
+        name: 'tankTax'
+      },
+      {
+        label: 'Mehr Sharing-Angebote',
+        name: 'sharing'
+      },
+      {
+        label: 'Mehr Ladesäulen für Elektroautos',
+        name: 'chargingInfrstructure'
       }
     ]
   }
