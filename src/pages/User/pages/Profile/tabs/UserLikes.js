@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import idx from 'idx';
 
 import Title from '~/components/Title';
@@ -8,8 +8,11 @@ import ProjectList from '~/components/ProjectList';
 import Select from '~/components/Select';
 
 class UserLikes extends PureComponent {
-  state = {
-    itemType: 'projects'
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemType: 'projects'
+    };
   }
 
   componentDidMount() {
@@ -17,7 +20,7 @@ class UserLikes extends PureComponent {
   }
 
   onSelect(evt) {
-    const itemType = idx(evt, _ => _.target.selectedOptions[0].value);
+    const itemType = idx(evt, (_) => _.target.selectedOptions[0].value);
 
     this.setState({ itemType });
     this.props.dispatch(loadLikes(itemType));
@@ -25,20 +28,25 @@ class UserLikes extends PureComponent {
 
   render() {
     return (
-      <Fragment>
+      <>
         <Title>Likes</Title>
-        <Text>Hier kannst du deine gelikten Planungen und Meldungen sehen.</Text>
+        <Text>
+          Hier kannst du deine gelikten Planungen und Meldungen sehen.
+        </Text>
 
         <Select
           title=""
-          onChange={val => this.onSelect(val)}
-          options={[{
-            value: 'projects',
-            label: 'Planungen'
-          }, {
-            value: 'reports',
-            label: 'Meldungen'
-          }]}
+          onChange={(val) => this.onSelect(val)}
+          options={[
+            {
+              value: 'projects',
+              label: 'Planungen'
+            },
+            {
+              value: 'reports',
+              label: 'Meldungen'
+            }
+          ]}
           disabled={this.props.isLoading}
         />
 
@@ -47,7 +55,7 @@ class UserLikes extends PureComponent {
           isLoading={this.props.isLoading}
           itemType={this.state.itemType}
         />
-      </Fragment>
+      </>
     );
   }
 }

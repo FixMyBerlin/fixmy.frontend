@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import { breakpoints, matchMediaSize } from '~/styles/utils';
@@ -47,7 +46,7 @@ const LinkSection = styled.div`
   justify-content: space-between;
 `;
 
-const TinyLink = styled(Link)`
+const TinyLink = styled.a`
   display: block;
   margin-top: 2px;
   font-size: 10px;

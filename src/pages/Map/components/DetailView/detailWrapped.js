@@ -1,9 +1,9 @@
 /* eslint class-methods-use-this: 0 */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import idx from 'idx';
 import styled from 'styled-components';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import ky from 'ky';
 
 import { media } from '~/styles/utils';
@@ -13,6 +13,7 @@ import { getCenterFromGeom } from '~/pages/Map/map-utils';
 import PinIcon from '~/images/pin.svg';
 import Label from '~/components/Label';
 import NewCloseButton from '~/components/NewCloseButton';
+import logger from '~/utils/logger';
 
 const DetailWrapper = styled.div`
   position: absolute;
@@ -89,30 +90,22 @@ function formatAddressString(address) {
 
 function detailWrapped(Component) {
   class DetailWrapperComp extends PureComponent {
-    static propTypes = {
-      apiEndpoint: PropTypes.string.isRequired,
-      onCloseRoute: PropTypes.string,
-      onClose: PropTypes.func
-    };
-
-    static defaultProps = {
-      onCloseRoute: '/',
-      onClose: () => {}
-    };
-
-    state = {
-      data: null,
-      isLoading: true,
-      isError: false
-    };
+    constructor(props) {
+      super(props);
+      this.state = {
+        data: null,
+        isLoading: true,
+        isError: false
+      };
+    }
 
     componentDidMount() {
       this.loadData();
     }
 
     componentDidUpdate(prevProps) {
-      const currId = idx(this.props.match, (_) => _.params.id);
-      const prevId = idx(prevProps.match, (_) => _.params.id);
+      const currId = this.props.match.params.id;
+      const prevId = prevProps.match.params.id;
 
       if (currId !== prevId) {
         this.loadData();
@@ -164,7 +157,7 @@ function detailWrapped(Component) {
     }
 
     loadData = async () => {
-      const id = idx(this.props.match, (_) => _.params.id);
+      const { id } = this.props.match.params;
 
       this.setState({ isLoading: true });
 
@@ -176,7 +169,7 @@ function detailWrapped(Component) {
         const data = await ky.get(dataUrl).json();
         this.onDataLoaded(data);
       } catch (error) {
-        console.error(error);
+        logger(error);
         this.onDataError();
       }
     };
@@ -219,8 +212,7 @@ function detailWrapped(Component) {
       const { isLoading, isError, data } = this.state;
       // we only show the shadow if there is no switch button
       const showShadow = data != null && this.props.activeView === 'planungen';
-      const borough = idx(this.state, (_) => _.data.borough);
-
+      const borough = this.state.data?.borough;
 
       if (isLoading) {
         return this.renderLoading();
@@ -236,7 +228,7 @@ function detailWrapped(Component) {
             <StyledPinIcon />
             <div>
               <DetailTitle>{this.renderName(data)}</DetailTitle>
-              <Label uppercase>{subtitle || borough }</Label>
+              <Label uppercase>{subtitle || borough}</Label>
             </div>
             <Close onClick={this.onClose} />
           </DetailHeader>
@@ -248,6 +240,23 @@ function detailWrapped(Component) {
       );
     }
   }
+
+  DetailWrapperComp.propTypes = {
+    activeView: PropTypes.string,
+    apiEndpoint: PropTypes.string.isRequired,
+    onCloseRoute: PropTypes.string,
+    onClose: PropTypes.func,
+    subtitle: PropTypes.string,
+    history: ReactRouterPropTypes.history.isRequired,
+    match: ReactRouterPropTypes.match.isRequired
+  };
+
+  DetailWrapperComp.defaultProps = {
+    activeView: 'planungen',
+    onCloseRoute: '/',
+    onClose: () => {},
+    subtitle: null
+  };
 
   return withRouter(DetailWrapperComp);
 }

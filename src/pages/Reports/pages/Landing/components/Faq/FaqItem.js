@@ -56,7 +56,6 @@ const CollapsibleWrapper = styled.div`
   }
 `;
 
-
 const FaqItem = ({ heading, text, open }) => (
   <CollapsibleWrapper>
     <Collapsible trigger={heading} open={open}>
@@ -64,7 +63,6 @@ const FaqItem = ({ heading, text, open }) => (
     </Collapsible>
   </CollapsibleWrapper>
 );
-
 
 FaqItem.propTypes = {
   heading: PropTypes.string,

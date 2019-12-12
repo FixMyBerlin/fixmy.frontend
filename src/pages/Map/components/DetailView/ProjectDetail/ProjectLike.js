@@ -21,7 +21,8 @@ const animation = () => css`
 `;
 
 const LikeButton = styled.button`
-  background: ${props => (props.disabled ? config.colors.inactivegrey : config.colors.interaction)};
+  background: ${(props) =>
+    props.disabled ? config.colors.inactivegrey : config.colors.interaction};
   width: 62px;
   height: 62px;
   display: flex;
@@ -30,12 +31,12 @@ const LikeButton = styled.button`
   align-items: center;
   margin: 8px 0;
   box-shadow: ${buttonBoxShadow};
-  transition: box-shadow .15s;
-  animation: ${props => (props.bouncy ? animation : 'none')};
+  transition: box-shadow 0.15s;
+  animation: ${(props) => (props.bouncy ? animation : 'none')};
   border-style: solid;
   border-color: #cf0a7d;
-  border-width: ${props => (props.isLiked ? '2px' : '0')};
-  cursor: ${props => (props.disabled ? 'default' : 'pointer')};
+  border-width: ${(props) => (props.isLiked ? '2px' : '0')};
+  cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
 
   svg {
     g {
@@ -48,15 +49,19 @@ const LikeButton = styled.button`
   }
 
   &:hover {
-    box-shadow: ${props => (props.disabled ? buttonBoxShadow : buttonBoxShadowActive)};
+    box-shadow: ${(props) =>
+      props.disabled ? buttonBoxShadow : buttonBoxShadowActive};
   }
 `;
 
 class ProjectLike extends PureComponent {
-  state = {
-    count: 0,
-    bouncy: false,
-    userLike: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+      bouncy: false,
+      userLike: false
+    };
   }
 
   componentDidMount() {
@@ -66,7 +71,7 @@ class ProjectLike extends PureComponent {
   updateLikes = async () => {
     const res = await getLikes(this.props.url, this.props.token);
     this.handleLikeResponse(res);
-  }
+  };
 
   handleClick = async () => {
     this.setState({ bouncy: false });
@@ -77,24 +82,37 @@ class ProjectLike extends PureComponent {
 
     const res = await likeDetail(this.props.url, this.props.token);
     this.handleLikeResponse(res);
-  }
+  };
 
   handleLikeResponse = (res) => {
-    if (typeof res.likes !== 'undefined' && typeof res.user_has_liked !== 'undefined' && !res.error) {
+    if (
+      typeof res.likes !== 'undefined' &&
+      typeof res.user_has_liked !== 'undefined' &&
+      !res.error
+    ) {
       this.setState({
         count: res.likes,
         userLike: res.user_has_liked
       });
     }
-  }
+  };
 
   render() {
     const { token, itemType = 'Planung' } = this.props;
     const { userLike, count, bouncy } = this.state;
 
-    const label = token ?
-      <Label>{userLike ? `Diese ${itemType} gefällt mir` : `Gefällt dir die ${itemType}?`}</Label> :
-      <Label>Um eine {itemType} zu liken, musst du <Link to={config.routes.login}>eingeloggt sein</Link>.</Label>;
+    const label = token ? (
+      <Label>
+        {userLike
+          ? `Diese ${itemType} gefällt mir`
+          : `Gefällt dir die ${itemType}?`}
+      </Label>
+    ) : (
+      <Label>
+        Um eine {itemType} zu liken, musst du
+        <Link to={config.routes.login}>eingeloggt sein</Link>.
+      </Label>
+    );
 
     return (
       <LikeButtonWrapper>

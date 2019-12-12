@@ -12,19 +12,20 @@ import handleSubmitPerspective from './perspective';
 import handleSubmitAnswer from './answer';
 import handleSubmitNewsletter from './newsletter';
 import { getEndpointURL } from './utils';
+import logger from '~/utils/logger';
 
 const MOCK_RESPONSES = false;
 
 async function submitAnswer(answerRequest: AnswerRequest): Promise<void> {
   if (MOCK_RESPONSES) {
-    console.log('Submitted rating');
-  } else {
-    return handleSubmitAnswer({
-      json: answerRequest,
-      sessionID: answerRequest.sessionID,
-      sceneID: answerRequest.sceneID
-    });
+    logger('Submitted rating');
+    return null;
   }
+  return handleSubmitAnswer({
+    json: answerRequest,
+    sessionID: answerRequest.sessionID,
+    sceneID: answerRequest.sceneID
+  });
 }
 
 async function submitNewsletter(
@@ -36,9 +37,8 @@ async function submitNewsletter(
       username: 'test8589340-5@abgeordnetenwatch.de',
       id: 277
     };
-  } else {
-    return handleSubmitNewsletter({ json: newsletterRequest });
   }
+  return handleSubmitNewsletter({ json: newsletterRequest });
 }
 
 async function submitProfile(
@@ -49,12 +49,11 @@ async function submitProfile(
       ratings_total: 54,
       scenes: ['01_MS_C_139', '01_MS_C_27']
     };
-  } else {
-    return handleSubmitProfile({
-      json: profileRequest,
-      sessionID: profileRequest.sessionID
-    });
   }
+  return handleSubmitProfile({
+    json: profileRequest,
+    sessionID: profileRequest.sessionID
+  });
 }
 
 async function submitPerspective(
@@ -65,12 +64,11 @@ async function submitPerspective(
       ratings_total: 115,
       scenes: ['01_MS_C_73']
     };
-  } else {
-    return handleSubmitPerspective({
-      json: perspectiveRequest,
-      sessionID: perspectiveRequest.sessionID
-    });
   }
+  return handleSubmitPerspective({
+    json: perspectiveRequest,
+    sessionID: perspectiveRequest.sessionID
+  });
 }
 
 export default {

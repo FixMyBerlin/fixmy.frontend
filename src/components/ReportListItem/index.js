@@ -104,25 +104,30 @@ const MapButton = styled(Button)`
 `;
 
 class ReportListItem extends PureComponent {
-  state = {
-    isExpanded: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      isExpanded: false
+    };
   }
 
   onClick = () => {
     const { id } = this.props;
     this.props.history.push(`${config.routes.reports.map}/${id}`);
-  }
+  };
 
   toggleExpanded = () => {
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       isExpanded: !prevState.isExpanded
     }));
-  }
+  };
 
   render() {
     const { id, photo, likes, details, address } = this.props;
     const count = details.number;
-    const subtitle = `${count} ${count === 1 ? 'neuer' : 'neue'} Fahrradbügel gewünscht`;
+    const subtitle = `${count} ${
+      count === 1 ? 'neuer' : 'neue'
+    } Fahrradbügel gewünscht`;
 
     const photoSrc = photo ? photo.src : DefaultPhotoSrc;
     const photoCopyright = photo ? photo.copyright : '';
@@ -132,24 +137,16 @@ class ReportListItem extends PureComponent {
         <ItemContent>
           <ItemImage />
           <ItemHeader>
-            <ItemTitle>
-              {address}
-            </ItemTitle>
-            <Label>
-              Meldung {id}
-            </Label>
+            <ItemTitle>{address}</ItemTitle>
+            <Label>Meldung {id}</Label>
           </ItemHeader>
-          <ItemSubTitle>
-            {subtitle}
-          </ItemSubTitle>
+          <ItemSubTitle>{subtitle}</ItemSubTitle>
           <ItemFooter>
             <Likes>
               <HeartIcon />
               <Label>{likes}</Label>
             </Likes>
-            <DateWrapper>
-              Status: Neue Meldung
-            </DateWrapper>
+            <DateWrapper>Status: Neue Meldung</DateWrapper>
           </ItemFooter>
         </ItemContent>
         {this.state.isExpanded && (

@@ -1,5 +1,11 @@
 const katasterPath = process.env.KATASTER_PATH || '/strassencheck';
 
+const MapboxStyles = {
+  'FMB-release-3': 'mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h',
+  'FMB-release-4': 'mapbox://styles/hejco/ck0nzclbk0ey01ct9ilwefpzc',
+  'FMB-release-5': 'mapbox://styles/hejco/ck37eiywp0un71cpd01dutt7r'
+};
+
 const config = {
   devUrl: 'http://localhost:8080',
   prodUrl: 'https://fixmyberlin.de',
@@ -9,6 +15,7 @@ const config = {
     staging: 'https://fixmyplatform-develop.herokuapp.com/api',
     production: 'https://api.fixmyberlin.de/api'
   },
+  logger: 'fmc*', // selects logging namespaces to display when not in production
   feedbackMail: 'feedback@fixmyberlin.de',
   colors: {
     lightbg: '#f5f5f5',
@@ -169,6 +176,13 @@ const config = {
     profile: '/profil',
     userVerify: '/bestaetigen'
   },
+  piwik: {
+    siteId: {
+      main: 1,
+      kataster: 2,
+      katasterTesting: 3
+    }
+  },
   hbi: [
     { label: 'Geschwindgkeit', type: 'speed', value: 5, min: 0, max: 10 },
     { label: 'Sicherheit', type: 'security', value: 5, min: 0, max: 10 }
@@ -232,7 +246,7 @@ const config = {
   map: {
     accessToken:
       'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
-    style: 'mapbox://styles/hejco/ck0nzclbk0ey01ct9ilwefpzc',
+    style: MapboxStyles['FMB-release-5'],
     view: {
       zoom: 12,
       bearing: 0,
@@ -353,10 +367,6 @@ const config = {
   showFeedBackForm: false
 };
 
-config.apiUrl = config.api[process.env.CONFIG_ENV] || config.api.production;
-
-if (!process.env.CONFIG_ENV) {
-  console.warn('No CONFIG_ENV defined. Using production API by default.');
-}
+config.apiUrl = config.api[process.env.CONFIG_ENV] || config.api.staging;
 
 module.exports = config;

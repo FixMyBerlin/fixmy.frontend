@@ -6,8 +6,7 @@
  * @param {String} pathedAction
  * @returns {String} {any}
  */
-export const formatActionType = pathedAction => pathedAction
-  .split('/').pop();
+export const formatActionType = (pathedAction) => pathedAction.split('/').pop();
 
 export default {
   formatActionType

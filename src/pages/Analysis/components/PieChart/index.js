@@ -1,5 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
-import idx from 'idx';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { VictoryPie, VictoryLabel, Slice } from 'victory';
@@ -51,44 +50,51 @@ const chartStyle = {
 
 /**
  * Return the summed length of projects in an array, optionally filtered by phase
- * 
+ *
  * @param {Array<Object>} projects Project objects with `length` field
  * @param {String} phase Name of the phase to filter for or `null` for all
  */
 const lengthByPhase = (projects, phase) => {
   let rvaLength;
-  return projects.reduce((acc, cur)  => {
+  return projects.reduce((acc, cur) => {
     rvaLength = 0;
     if (phase == null || cur.phase === phase) {
       rvaLength = getRVALength(cur);
     }
     return acc + rvaLength;
-  }, 0)
-} 
+  }, 0);
+};
 
 function getSvgOffsetY(orientation) {
   switch (orientation) {
-    case 'top': return -40;
-    case 'bottom': return -25;
-    case 'left': return -35;
-    case 'right': return -35;
-    default: return 0;
+    case 'top':
+      return -40;
+    case 'bottom':
+      return -25;
+    case 'left':
+      return -35;
+    case 'right':
+      return -35;
+    default:
+      return 0;
   }
 }
 
 function getSvgOffsetX(textAnchor) {
   switch (textAnchor) {
-    case 'start': return 10;
-    case 'middle': return 0;
-    case 'end': return -20;
-    default: return 0;
+    case 'start':
+      return 10;
+    case 'middle':
+      return 0;
+    case 'end':
+      return -20;
+    default:
+      return 0;
   }
 }
 
-const Label = ({
-  x, y, dy, ...props
-}) => {
-  const phase = config.planningPhases.find(p => p.name === props.text);
+const Label = ({ x, y, dy, ...props }) => {
+  const phase = config.planningPhases.find((p) => p.name === props.text);
   const offsetX = getSvgOffsetX(props.textAnchor);
   const offsetY = getSvgOffsetY(props.orientation);
 
@@ -100,31 +106,35 @@ const Label = ({
   );
 };
 
-
-const NoData = () => <ChartTitle>Keine Planungen <br />vorhanden.</ChartTitle>
+const NoData = () => (
+  <ChartTitle>
+    Keine Planungen <br />
+    vorhanden.
+  </ChartTitle>
+);
 
 class PieChart extends PureComponent {
   handleClick = (evt, data) => {
     this.props.setPhaseFilter(data.datum.x);
-  }
+  };
 
   renderChartLabel() {
-    const { data } = this.props
-    const lengthSum = lengthByPhase(this.props.data, null) / 1000.0
-    const numProjects = data.length
+    const { data } = this.props;
+    const lengthSum = lengthByPhase(this.props.data, null) / 1000.0;
+    const numProjects = data.length;
 
     return (
-      <Fragment>
+      <>
         <ChartTitle>{numProjects} Planungen</ChartTitle>
         <ChartSubtitle>
           gesamte Länge: {numberFormat(lengthSum, 0)} km
         </ChartSubtitle>
-      </Fragment>
+      </>
     );
   }
 
   render() {
-    const { isLoading, data } = this.props
+    const { isLoading, data } = this.props;
 
     if (isLoading) {
       return (
@@ -143,8 +153,8 @@ class PieChart extends PureComponent {
       }))
       .filter((d) => d.y > 0);
 
-    const hasData = data.length > 0
-    const colorScale = chartData.map(d => d.color);
+    const hasData = data.length > 0;
+    const colorScale = chartData.map((d) => d.color);
 
     return (
       <PieChartWrapper>
@@ -173,6 +183,9 @@ class PieChart extends PureComponent {
   }
 }
 
-export default connect(null, dispatch => ({
-  setPhaseFilter: filter => dispatch(setPhaseFilter(filter))
-}))(PieChart);
+export default connect(
+  null,
+  (dispatch) => ({
+    setPhaseFilter: (filter) => dispatch(setPhaseFilter(filter))
+  })
+)(PieChart);

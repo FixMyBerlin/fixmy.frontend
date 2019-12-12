@@ -12,11 +12,11 @@ export const ListItem = styled(Text).attrs(() => ({ as: 'li' }))`
   margin: 0;
 
   &:before {
-    content: "•";
+    content: '•';
     color: white;
     display: block;
     width: 10.4px;
-    background-color: #D8D8D6;
+    background-color: #d8d8d6;
     height: 10.4px;
     border-radius: 11px;
     position: relative;

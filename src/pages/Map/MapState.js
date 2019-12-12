@@ -16,16 +16,19 @@ const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 
 const initialState = {
   ...config.map.view,
-  popupData: null,
+  animate: false,
+  dim: false,
   displayPopup: false,
-  popupLocation: null,
+  error: null,
   filterHbi: [true, true, true, true],
   filterPlannings: [true, true, true, true],
   hasMoved: false,
-  hbi_speed: 5,
   hbi_safety: 5,
+  hbi_speed: 5,
   planningData: false,
-  error: null
+  popupData: null,
+  popupLocation: null,
+  show3dBuildings: true
 };
 
 export function setError(message) {
@@ -102,9 +105,9 @@ export function geocodeAddress(searchtext) {
         geocodeResult.Longitude,
         geocodeResult.Latitude + Math.random() / 1000
       ];
-      dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
+      return dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
     } catch (error) {
-      dispatch({
+      return dispatch({
         type: GEOCODE_FAIL,
         payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' }
       });
@@ -123,20 +126,22 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case SET_POPUP_LOCATION:
     case SET_POPUP_VISIBLE:
     case SET_PLANNING_DATA:
-      return Object.assign({}, state, action.payload);
+      return { ...state, ...action.payload };
     case SET_HBI_FILTER:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         filterHbi: state.filterHbi.map((filter, i) =>
           i === action.filterIndex ? !filter : filter
         )
-      });
+      };
     case SET_PLANNING_FILTER:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         filterPlannings: state.filterPlannings.map((filter, i) =>
           i === action.filterIndex ? !filter : filter
         )
-      });
+      };
     default:
-      return Object.assign({}, state);
+      return { ...state };
   }
 }

@@ -9,8 +9,7 @@ import BikeIcon from '~/images/strassencheck/icons/icon-transportation-2.svg';
 import PedestrianIcon from '~/images/strassencheck/icons/icon-transportation-1.svg';
 import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 
-import defaultProfileConfig from '~/pages/KatasterKI/config/profile';
-import { shuffle } from './utils';
+import defaultProfileConfig from './config/profile';
 
 const perspectiveNames = {
   C: 'Fahrradperspektive',
@@ -37,6 +36,13 @@ export const getSceneImageSrc = (id) => {
   return `https://fmb-aws-bucket.s3.eu-central-1.amazonaws.com/KatasterKI/scenes/${id}.jpg`;
 };
 
+/**
+ * Select the screens to be included in the profile part of the survey.
+ *
+ * Some screens are added or removed depending on the user group.
+ *
+ * @param userGroup profile config is dependent on the userGroup specified here
+ */
 const profileConfig = (userGroup: UserGroup) => {
   const rv = [...defaultProfileConfig];
 
@@ -60,6 +66,13 @@ const profileConfig = (userGroup: UserGroup) => {
   return rv;
 };
 
+/**
+ * Select the screens to be included in the rating part of the survey.
+ *
+ * @param scenes list of scenes to be included
+ * @param perspective the perspective represented by the scenes
+ * @param sceneGroupCounter which round of ratings is this?
+ */
 const scenesConfig = (
   scenes: Array<Answer>,
   perspective: Perspective,
@@ -137,7 +150,7 @@ const scenesConfig = (
     }))
   }));
 
-  let sectionConfig = [];
+  const sectionConfig = [];
   if (sceneGroupCounter === 1) sectionConfig.push(titleScreen);
 
   sectionConfig.push(...sceneScreens);

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import logger from '~/utils/logger';
 
 const Button = styled.button`
   height: 48px;
@@ -22,8 +23,8 @@ const Button = styled.button`
   width: 280px;
 
   &[disabled] {
-     box-shadow: none;
-     background-color: ${config.colors.inactivegrey};
+    box-shadow: none;
+    background-color: ${config.colors.inactivegrey};
   }
 
   &:focus {
@@ -36,7 +37,8 @@ const PinLocationButton = ({ onConfirm, text, disabled }) => (
     className="confirm-location-button"
     onClick={onConfirm}
     disabled={disabled}
-  >{text}
+  >
+    {text}
   </Button>
 );
 
@@ -47,7 +49,7 @@ PinLocationButton.propTypes = {
 };
 
 PinLocationButton.defaultProps = {
-  onConfirm: () => console.log('onConfirm says implement me'),
+  onConfirm: () => logger('onConfirm says implement me'),
   text: () => 'Diese Position bestätigen',
   disabled: false
 };

@@ -152,7 +152,7 @@ const CallToActionWrapper = styled(Flex)`
 const CallToActionLink = styled.a`
   color: white;
   font-size: 16px;
-  margin: 20px 0 10px 0;
+  margin: 20px 0 20px 0;
   text-align: center;
   font-family: 'Franklin Gothic FS', 'Open Sans', sans-serif;
   font-weight: 500;
@@ -164,11 +164,26 @@ const CallToActionLink = styled.a`
   }
 `;
 
+const AttributionLabel = styled.span`
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  font-size: 10px;
+  color: #0f0f0f;
+
+  ${media.m`
+    & {
+      font-size: 14px;
+    }
+  `}
+`;
+
 const CallToAction = ({ labels }) => (
   <CallToActionWrapper>
     <CallToActionLink target="_blank" href={config.katasterKI.tspArticleLink}>
       {labels.calltoaction}
     </CallToActionLink>
+    <AttributionLabel>Illustration: Martin Baaske</AttributionLabel>
   </CallToActionWrapper>
 );
 

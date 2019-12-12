@@ -6,11 +6,18 @@ FixMyCity begleitet Städte auf dem Weg zur Fahrradstadt und mit dem Projekt Fix
 
 # Praktikum
 
+<h1>
+    <img 
+        alt="Fahrradfahren" 
+        src="/src/images/amsterdam-1203305_1280.jpg" 
+        class="img-lg"
+    >
+</h1>
+
 ## Auf­ga­ben­be­sch­rei­bung
 
 Deine Auf­ga­ben
 
-- Mit­ar­beit bei UX-Kon­zep­tion und Erar­bei­tung einer Kam­pa­gne
 - Social-Media-Posts ent­wer­fen und -Kanäle betreuen
 - Texte für den News­let­ter schrei­ben
 - Info­gra­fi­ken / Memes erstel­len
@@ -41,4 +48,3 @@ Infos / Kon­di­tio­nen
 
 - E-Mail: [jobs@fixmycity.de](mailto:jobs@fixmycity.de)
 - Bewer­bung jederzeit möglich über fol­gen­des For­mu­lar: https://forms.gle/16D1ysuLsBGaCEwB6
-

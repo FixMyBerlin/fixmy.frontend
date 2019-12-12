@@ -2,10 +2,10 @@
  *  Displays report items fetched from backend.
  */
 
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
+
 import styled from 'styled-components';
 
 import { matchMediaSize, breakpoints } from '~/styles/utils';
@@ -51,27 +51,36 @@ class OverviewMap extends Component {
     this.props.loadReportsData();
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { selectedReport, match, reports } = nextProps;
+  componentDidUpdate(prevProps) {
+    const { selectedReport: prevReport } = prevProps;
+    const { selectedReport } = this.props;
 
-    // handle deeplink load
-    if (!selectedReport && match.params.id) {
-      this.props.setSelectedReport(reports.find(r => r.id === +match.params.id));
+    if (selectedReport?.id) {
+      if (prevReport?.id !== selectedReport.id) {
+        // Selected report changed
+
+        // setState is okay because conditionals will prevent this
+        // from occuring in a loop
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({ mapCenter: selectedReport.geometry.coordinates });
+      }
+    } else if (!selectedReport) {
+      if (this.props.match.params.id) {
+        // handle deeplink load
+        this.props.setSelectedReport(
+          this.props.reports.find((r) => r.id === +this.props.match.params.id)
+        );
+      } else if (prevReport) {
+        // Unsetting report
+
+        // setState is okay because conditionals will prevent this
+        // from occuring in a loop
+        // eslint-disable-next-line react/no-did-update-set-state
+        this.setState({
+          mapCenter: null
+        });
+      }
     }
-
-    if (selectedReport && selectedReport.geometry.coordinates !== this.state.mapCenter) {
-      this.setState({
-        mapCenter: selectedReport.geometry.coordinates
-      });
-    }
-
-    if (!nextProps.selectedReport && this.props.selectedReport) {
-      this.setState({
-        mapCenter: null
-      });
-    }
-
-    return null;
   }
 
   componentWillUnmount() {
@@ -80,7 +89,7 @@ class OverviewMap extends Component {
 
   onAddButtonTab = () => {
     this.props.history.push(config.routes.reports.new);
-  }
+  };
 
   onMarkerClick = (el, reportItem) => {
     const { selectedReport, match } = this.props;
@@ -89,90 +98,88 @@ class OverviewMap extends Component {
     this.props.setSelectedReport(reportItem);
     this.updateSelectedReportPosition();
 
-    if (hasDetailId && (selectedReport.id !== reportItem.id)) {
+    if (hasDetailId && selectedReport.id !== reportItem.id) {
       this.props.history.push(`${config.routes.reports.map}/${reportItem.id}`);
     }
-  }
+  };
 
   onLocationChange = (coords) => {
     this.setState({ mapCenter: coords });
-  }
+  };
 
   onPopupClose = () => {
     // show map by returning to the map route
     this.props.setSelectedReport(null);
     this.props.history.push(config.routes.reports.map);
-  }
+  };
 
   onMapLoad = (map) => {
     this.map = map;
     this.setState({ isLoading: false });
-  }
+  };
 
   onMapMove() {
-    if (!this.props.selectedReport) {
-      return null;
-    }
-
-    this.updateSelectedReportPosition();
+    if (this.props.selectedReport) this.updateSelectedReportPosition();
   }
 
   updateSelectedReportPosition() {
-    if (!this.map || !this.props.selectedReport) {
-      return false;
+    if (this.map && this.props.selectedReport) {
+      const selectedReportsPosition = this.map.project(
+        this.props.selectedReport.geometry.coordinates
+      );
+      this.props.setSelectedReportPosition(selectedReportsPosition);
     }
-
-    const selectedReportsPosition = this.map.project(this.props.selectedReport.geometry.coordinates);
-
-    this.props.setSelectedReportPosition(selectedReportsPosition);
   }
 
   render() {
-    const { reports, selectedReport, match, token, isMenuOpen, errorMessage } = this.props;
+    const {
+      reports,
+      selectedReport,
+      match,
+      token,
+      isMenuOpen,
+      errorMessage
+    } = this.props;
     const hasDetailId = match.params.id;
     const isDesktopView = matchMediaSize(breakpoints.m);
     const isAddButtonShifted = isDesktopView && hasDetailId && !isMenuOpen;
     const isAddButtonHidden = isDesktopView && hasDetailId && isMenuOpen;
 
     const mapControls = (
-      <Fragment>
+      <>
         <LocatorControl
           key="ReportsOverviewMap__LocatorControl"
           onChange={this.onLocationChange}
           customPosition={{ bottom: '105px', right: '7px' }}
         />
-        {
-        !isAddButtonHidden && (
+        {!isAddButtonHidden && (
           <AddButton
             onTab={this.onAddButtonTab}
             shiftLeft={isAddButtonShifted}
           />
-        )
-      }
-
-      </Fragment>
+        )}
+      </>
     );
 
     return (
       <MapView>
-        {
-          errorMessage && (
-            <ErrorMessage
-              message={this.props.errorMessage}
-              onDismiss={this.props.removeError}
-            />
-          )
-        }
+        {errorMessage && (
+          <ErrorMessage
+            message={this.props.errorMessage}
+            onDismiss={this.props.removeError}
+          />
+        )}
 
         <OverviewMapNavBar
-          heading="Fahrradbügel für Friedrichshain-Kreuzberg (Status: In Bearbeitung durch den Bezirk)"
+          heading={`Fahrradbügel für Friedrichshain-Kreuzberg \
+(Status: In Bearbeitung durch den Bezirk)`}
         />
         <MapWrapper>
           <WebglMap
             reportsData={reports}
             center={this.state.mapCenter}
             onMarkerClick={this.onMarkerClick}
-            onLoad={m => this.onMapLoad(m)}
+            onLoad={(m) => this.onMapLoad(m)}
             onMove={() => this.onMapMove()}
             selectedReport={selectedReport}
             detailId={match.params.id}
@@ -180,7 +187,7 @@ class OverviewMap extends Component {
             fitExtentOnPopupClose={false}
           />
           {this.state.isLoading ? null : mapControls}
-          {(selectedReport && !hasDetailId) && (
+          {selectedReport && !hasDetailId && (
             <ReportsPopup
               onClose={this.onPopupClose}
               reportItem={selectedReport}
@@ -194,7 +201,9 @@ class OverviewMap extends Component {
                 return null;
               }
 
-              const reportItem = reports.find(r => r.id === +props.match.params.id);
+              const reportItem = reports.find(
+                (r) => r.id === +props.match.params.id
+              );
 
               return (
                 <ReportDetails
@@ -219,10 +228,15 @@ const mapDispatchToPros = {
   ...errorStateActions
 };
 
-export default withRouter(connect(state => ({
-  selectedReport: state.ReportsState.OverviewMapState.selectedReport,
-  reports: state.ReportsState.OverviewMapState.reports,
-  token: state.UserState.token,
-  isMenuOpen: state.AppState.isMenuOpen,
-  errorMessage: state.ReportsState.ErrorState.message
-}), mapDispatchToPros)(OverviewMap));
+export default withRouter(
+  connect(
+    (state) => ({
+      selectedReport: state.ReportsState.OverviewMapState.selectedReport,
+      reports: state.ReportsState.OverviewMapState.reports,
+      token: state.UserState.token,
+      isMenuOpen: state.AppState.isMenuOpen,
+      errorMessage: state.ReportsState.ErrorState.message
+    }),
+    mapDispatchToPros
+  )(OverviewMap)
+);
