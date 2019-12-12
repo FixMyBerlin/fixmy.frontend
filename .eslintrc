@@ -5,7 +5,8 @@
     "airbnb",
     "plugin:prettier/recommended",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "plugin:cypress/recommended"
   ],
 
   "plugins": ["prettier"],
@@ -74,8 +75,7 @@
 
   "env": {
     "browser": true,
-    "jest": true,
-    "cypress/globals": true
+    "jest": true
   },
 
   "settings": {
