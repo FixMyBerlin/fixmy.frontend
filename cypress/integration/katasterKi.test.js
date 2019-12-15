@@ -221,7 +221,7 @@ describe('Kastaster survey', () => {
         });
 
         it('has a progressbar indicating a valid number of received ratings', () => {
-          cy.get('[data-cy=kat-progress-vis-wrapper]')
+          getByDataAttr`kat-progress-vis-wrapper`
             .find('[data-cy=kat-progress-vis-value-label]')
             .should(($label) => {
               const text = +$label.text();
@@ -230,7 +230,7 @@ describe('Kastaster survey', () => {
         });
 
         it('links to scene 2', () => {
-          cy.get('[data-cy=kat-feedback-proceed-btn]').click();
+          getByDataAttr`kat-feedback-proceed-btn`.click();
           cy.location('pathname').should(
             'eq',
             `${config.routes.katasterKI.scenesBase}/2`
@@ -262,16 +262,28 @@ describe('Kastaster survey', () => {
           cy.get('@emailSubmitBtn').should('have.prop', 'disabled', false);
         });
 
-      it('provides a button to proceed', () => {
-        cy.get('@emailProceedBtn').click();
-        cy.location('pathname').should(
-          'eq',
-          `${config.routes.katasterKI.scenesBase}/3`
-        );
+        it('provides a button to proceed linking to step 3', () => {
+          cy.get('@emailProceedBtn').click();
+          cy.location('pathname').should(
+            'eq',
+            `${config.routes.katasterKI.scenesBase}/3`
+          );
+        });
       });
     });
   });
 });
+
+/**
+ * JS Tag function (taking a template string) to make getting elements by their data-attribute
+ * more readable.
+ * TODO: Propose adopting this to team.
+ * @param {string} args Arguments to the tag function.
+ */
+function getByDataAttr(...args) {
+  const attrVal = args[0][0];
+  return cy.get(`[data-cy=${attrVal}]`);
+}
 
 function getFixedStateJson(fileNameWithoutEnding) {
   return cy.fixture(`katasterKiStates/${fileNameWithoutEnding}.json`);
