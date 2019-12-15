@@ -206,10 +206,26 @@ describe('Kastaster survey', () => {
 
       describe('scene 1', () => {
         before(() => {
-          cy.window()
-            .its('store')
-            .as('store');
           goToScene(1);
+        });
+
+        it('links to scene 2', () => {
+          getByDataAttr`kat-info-proceed-btn`.click();
+          cy.location('pathname').should(
+            'eq',
+            `${config.routes.katasterKI.scenesBase}/2`
+          );
+        });
+
+        it('contains an image that has loaded properly', () => {
+          // TODO: factor test out. This going to be used in many places
+          getByDataAttr`kat-scene-image-wrapper`
+            .find('img')
+            .should('be.visible')
+            .and(($img) => {
+              // "naturalWidth" and "naturalHeight" are set when the image loads
+              expect($img[0].naturalWidth).to.be.greaterThan(0);
+            });
         });
       });
     });
@@ -277,7 +293,7 @@ describe('Kastaster survey', () => {
 /**
  * JS Tag function (taking a template string) to make getting elements by their data-attribute
  * more readable.
- * TODO: Propose adopting this to team.
+ * TODO: Propose adopting this to team. If ok, only use this to get elements by data-attribute.
  * @param {string} args Arguments to the tag function.
  */
 function getByDataAttr(...args) {

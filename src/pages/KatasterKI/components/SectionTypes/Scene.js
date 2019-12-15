@@ -142,7 +142,7 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
 
   return (
     <SceneWrapper>
-      <ImageWrapper>
+      <ImageWrapper data-cy="kat-scene-image-wrapper">
         {showLoadingImage ? (
           <img
             src={loadingImage}
