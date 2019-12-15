@@ -197,45 +197,70 @@ describe('Kastaster survey', () => {
   });
 
   describe('scenes', () => {
-    describe('scene 1', () => {
-      before(() => {
+    describe('a new session with gathered profile information at hand', () => {
+      it('has made the store object globally available for testing', () => {
         cy.window()
           .its('store')
-          .as('store');
-        goToScene(1);
+          .should('exist');
       });
 
-      it('links to scene 2', () => {
-        console.debug(cy.get('@store').invoke('getState'));
-        cy.get('[data-cy=kat-feedback-proceed-btn]').click();
-        cy.location('pathname').should(
-          'eq',
-          `${config.routes.katasterKI.scenesBase}/2`
-        );
+      describe('scene 1', () => {
+        before(() => {
+          cy.window()
+            .its('store')
+            .as('store');
+          goToScene(1);
+        });
       });
     });
 
-    describe('scene 2', () => {
-      beforeEach(() => {
-        goToScene(2);
-        cy.get('[data-cy=kat-emailcheckboxes-input]').as('emailInput');
-        cy.get('[data-cy=kat-emailcheckboxes-proceed-btn]').as(
-          'emailProceedBtn'
-        );
-        cy.get('[data-cy=kat-emailcheckboxes-submit-btn]').as('emailSubmitBtn');
+    describe('when a session is resumed', () => {
+      describe('scene 1: proceed with ratings screen', () => {
+        before(() => {
+          returnToScene(1);
+        });
+
+        it('has a progressbar indicating a valid number of received ratings', () => {
+          cy.get('[data-cy=kat-progress-vis-wrapper]')
+            .find('[data-cy=kat-progress-vis-value-label]')
+            .should(($label) => {
+              const text = +$label.text();
+              assert.isNumber(text);
+            });
+        });
+
+        it('links to scene 2', () => {
+          cy.get('[data-cy=kat-feedback-proceed-btn]').click();
+          cy.location('pathname').should(
+            'eq',
+            `${config.routes.katasterKI.scenesBase}/2`
+          );
+        });
       });
 
-      it('does not enable the submit button when an invalid email is entered', () => {
-        const INVALID_MAIL = '123.de';
-        cy.get('@emailInput').type(INVALID_MAIL);
-        cy.get('@emailSubmitBtn').should('have.prop', 'disabled', true);
-      });
+      describe('scene 2: leave email to stay informed', () => {
+        beforeEach(() => {
+          returnToScene(2);
+          cy.get('[data-cy=kat-emailcheckboxes-input]').as('emailInput');
+          cy.get('[data-cy=kat-emailcheckboxes-proceed-btn]').as(
+            'emailProceedBtn'
+          );
+          cy.get('[data-cy=kat-emailcheckboxes-submit-btn]').as(
+            'emailSubmitBtn'
+          );
+        });
 
-      it('enables the submit button when a valid email is entered', () => {
-        const VALID_MAIL = 'test@dummy.org';
-        cy.get('@emailInput').type(VALID_MAIL);
-        cy.get('@emailSubmitBtn').should('have.prop', 'disabled', false);
-      });
+        it('does not enable the submit button when an invalid email is entered', () => {
+          const INVALID_MAIL = '123.de';
+          cy.get('@emailInput').type(INVALID_MAIL);
+          cy.get('@emailSubmitBtn').should('have.prop', 'disabled', true);
+        });
+
+        it('enables the submit button when a valid email is entered', () => {
+          const VALID_MAIL = 'test@dummy.org';
+          cy.get('@emailInput').type(VALID_MAIL);
+          cy.get('@emailSubmitBtn').should('have.prop', 'disabled', false);
+        });
 
       it('provides a button to proceed', () => {
         cy.get('@emailProceedBtn').click();
@@ -257,13 +282,17 @@ function goToProfile(profile = 1) {
 }
 
 function goToScene(scene = 1) {
-  getFixedStateJson('afterProfileSubmit').then(stateSlice => {
+  getFixedStateJson('afterProfileSubmit').then((stateSlice) => {
     cy.visit(`${config.routes.katasterKI.scenesBase}/${scene}`, {
       onBeforeLoad(win) {
         win.initialState = stateSlice;
       }
     });
   });
+}
+
+function returnToScene(scene = 1) {
+  cy.visit(`${config.routes.katasterKI.scenesBase}/${scene}`);
 }
 
 function testSingleChoice(profile) {
