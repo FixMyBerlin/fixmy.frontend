@@ -6,9 +6,6 @@ export interface Answer {
 
 export interface ProfileRequest {
   ageGroup: number;
-  berlinTraffic: {
-    [name: string]: boolean;
-  };
   bicycleUse?: number;
   bikeReasons?: Array<string>;
   bikeReasonsVar?: string;
@@ -19,8 +16,6 @@ export interface ProfileRequest {
   motivationalFactors?: {
     [name: string]: number;
   };
-  offended: number;
-  responsible: number;
   perspective: Perspective;
   transportRatings: {
     [mode: string]: TransportRating;
@@ -30,6 +25,7 @@ export interface ProfileRequest {
   whyBiking: Array<string>;
   zipcode: string;
   sessionID: string;
+  introSelection: Array<string>;
 }
 
 export interface ProfileResponse {
