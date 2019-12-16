@@ -20,7 +20,8 @@
         "ecmaFeatures": {
           "jsx": true
         },
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "."
       },
       "plugins": ["@typescript-eslint"],
       "rules": {
@@ -89,7 +90,6 @@
   },
 
   "globals": {
-    "config": true,
     "_paq": true
   }
 }

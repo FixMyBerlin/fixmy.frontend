@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Route, Switch, Router, Redirect } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
 
+import config from '~/config';
 import history from '~/history';
 import GlobalStyles from '~/styles/Global';
 import Menu from '~/components/Menu';

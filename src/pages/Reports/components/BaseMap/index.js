@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MapboxGL from 'mapbox-gl';
 
+import config from '~/pages/Map/config';
 import BigLoader from '~/components/BigLoader';
 
 const MB_STYLE_URL = `${config.reports.overviewMap.style}?fresh=true`;

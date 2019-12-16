@@ -5,6 +5,7 @@ import _isEqual from 'lodash.isequal';
 import MapboxGL from 'mapbox-gl';
 
 import logger from '~/utils/logger';
+import config from '~/pages/Map/config';
 import { animateView, setView } from '~/pages/Map/map-utils';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 

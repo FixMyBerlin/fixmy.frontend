@@ -18,6 +18,7 @@ import {
 } from './utils';
 import api from './api';
 import logger from '~/utils/logger';
+import config from './config';
 
 export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
 export const SET_ANSWER = 'KatasterKI/SET_ANSWER';

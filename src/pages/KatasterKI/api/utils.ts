@@ -1,4 +1,5 @@
 import { MultiChoice } from '../state';
+import config from '../config';
 
 /**
  * Marshall state of a multi_choice component for sending in a request

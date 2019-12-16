@@ -16,6 +16,7 @@ import FMBLogo from '~/components/FMBLogo';
 import Store from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from '~/pages/Map/components/WebglMap';
+import config from '~/pages/Map/config';
 import MyHBI from '~/pages/MyHBI';
 
 export const SectionDetail = Loadable({
