@@ -164,10 +164,13 @@ export default [
         label: 'Das Ausleihen sollte nur an festen Leihstationen möglich sein',
         name: 'sharingstations'
       },
-      { label: 'Die Anbieter sollten beschränkt werden', name: 'limits' },
+      {
+        label: 'Die Zahl der Sharing-Fahrzeuge soll beschränkt werden',
+        name: 'limits'
+      },
       {
         label:
-          'Die Angebote sollten von der Stadt gefördert werden, damit Sie auch in den Außenbezirken angeboten werden können',
+          'Die Angebote sollten von der Stadt gefördert werden, damit sie auch in den Außenbezirken angeboten werden können',
         name: 'subsidy'
       }
     ]
