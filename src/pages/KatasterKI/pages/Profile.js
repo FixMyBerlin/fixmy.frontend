@@ -62,6 +62,7 @@ const shouldRedirectToScenes = (profileRequest) => {
 const Profile = ({
   match,
   isTosAccepted,
+  introSelection,
   profile,
   profileRequest,
   userGroup,
@@ -77,7 +78,7 @@ const Profile = ({
 
   const page = +match.params.page - 1;
 
-  const profileConfig = Survey.profileConfig(userGroup);
+  const profileConfig = Survey.profileConfig(userGroup, introSelection);
 
   useEffect(() => {
     dispatch(updateProgressBar(page, profileConfig.length));
@@ -132,6 +133,7 @@ const Profile = ({
 const mapStateToProps = (state) => ({
   isTosAccepted: state.KatasterKIState.isTosAccepted,
   profile: state.KatasterKIState.profile,
+  introSelection: state.KatasterKIState.introSelection,
   userGroup: state.KatasterKIState.userGroup,
   profileRequest: state.KatasterKIState.profileRequest
 });
