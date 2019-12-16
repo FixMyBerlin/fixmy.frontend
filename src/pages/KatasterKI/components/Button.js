@@ -2,6 +2,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import config from '~/pages/KatasterKI/config';
 import Loader from '~/components/Loader';
 import { isTouch } from '~/utils/utils';
 

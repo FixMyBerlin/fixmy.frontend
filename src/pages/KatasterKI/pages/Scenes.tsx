@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+import config from '~/pages/KatasterKI/config';
 import history from '~/history';
 import Loader from '~/components/PageLoading';
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';

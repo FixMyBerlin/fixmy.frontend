@@ -1,5 +1,5 @@
 import ky from 'ky';
-import config from '~/pages/Map/config';
+import config from '~/config';
 
 export default async ({ lat, lng }) => {
   // form a url following the docs https://docs.mapbox.com/api/search/#reverse-geocoding

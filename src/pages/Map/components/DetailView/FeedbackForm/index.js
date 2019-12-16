@@ -4,6 +4,7 @@ import React, { PureComponent } from 'react';
 import { Formik } from 'formik';
 import styled from 'styled-components';
 
+import config from '~/pages/Map/config';
 import Form from '~/components/Form';
 import FormField from '~/components/FormField';
 import Button from '~/components/Button';

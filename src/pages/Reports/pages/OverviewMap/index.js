@@ -8,6 +8,7 @@ import { withRouter, Route } from 'react-router-dom';
 
 import styled from 'styled-components';
 
+import config from '~/pages/Reports/config';
 import { matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';

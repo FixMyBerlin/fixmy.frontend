@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+import config from '~/config';
 import Store from '~/store';
 import { toggle } from '~/AppState';
 import AccountIcon from '~/images/account.svg';

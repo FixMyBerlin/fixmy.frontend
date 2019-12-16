@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { Formik } from 'formik';
 
+import config from '~/config';
 import Text from '~/components/Text';
 import Title from '~/components/Title';
 import Link from '~/components/Link';

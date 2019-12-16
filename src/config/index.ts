@@ -1,4 +1,5 @@
 import colors from './colors';
+import map from './map';
 import menu from './menu';
 import staticpages from './staticpages';
 import routes from './routes';
@@ -41,6 +42,7 @@ if (!process.env.CONFIG_ENV) {
 
 export default {
   colors,
+  map,
   menu,
   routes,
   staticpages,

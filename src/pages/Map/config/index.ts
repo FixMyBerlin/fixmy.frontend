@@ -1,11 +1,9 @@
 import globalConfig from '~/config';
 import hbiConfig from './hbi';
-import mapboxConfig from './map';
 
 const mapConfig = {
   hbi: hbiConfig.labels,
   hbiStops: hbiConfig.stops,
-  map: mapboxConfig,
   planningPhases: [
     {
       id: 'draft',

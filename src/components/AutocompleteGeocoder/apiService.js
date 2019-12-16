@@ -1,5 +1,5 @@
 import logger from '~/utils/logger';
-import mapConfig from '~/pages/Map/config/map';
+import mapConfig from '~/config/map';
 
 let abortController = new window.AbortController();
 

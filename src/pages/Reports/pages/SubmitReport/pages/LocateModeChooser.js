@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import CloseIcon from '~/images/close.svg';
 
+import config from '~/pages/Reports/config';
 import LocateIcon from '~/images/reports/location-button.svg';
 import MapIcon from '~/images/reports/noun-map-1909219.svg';
 import ErrorMessage from '~/components/ErrorMessage';

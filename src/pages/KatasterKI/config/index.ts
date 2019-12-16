@@ -1,4 +1,4 @@
-import config from '~/config';
+import config from '~/pages/KatasterKI/config';
 
 const katasterConfig = {
   katasterKI: {

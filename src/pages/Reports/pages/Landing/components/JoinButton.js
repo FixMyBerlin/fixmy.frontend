@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from '~/components/Button';
+import config from '~/pages/Reports/config';
 
 const CenteredButton = styled(Button)`
   margin: 0 auto;

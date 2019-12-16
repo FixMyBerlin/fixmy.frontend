@@ -3,6 +3,7 @@ import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
+import config from '~/pages/Reports/config';
 import logger from '~/utils/logger';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusteredMarkers from './ClusteredMarkers';

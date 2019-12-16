@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import ky from 'ky';
 
+import config from '~/pages/Map/config';
 import HBIConfigurator from '~/pages/MyHBI/components/HBIConfigurator';
 import HBISubmitForm from '~/pages/MyHBI/components/HBISubmitForm';
 import Modal from '~/components/Modal';

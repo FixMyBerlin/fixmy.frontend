@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import uuidv4 from 'uuid/v4';
 
+import config from '~/pages/KatasterKI/config';
 import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components/Button';

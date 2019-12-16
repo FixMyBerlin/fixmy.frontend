@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import classnames from 'classnames';
 
+import config from '~/pages/KatasterKI/config';
 import { media, bounce } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
