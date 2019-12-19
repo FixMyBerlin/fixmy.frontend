@@ -17,7 +17,6 @@ describe('Kastaster survey', () => {
     });
   });
 
-
   describe('profiles', () => {
     describe('profile 1', () => {
       before(() => {
@@ -56,6 +55,7 @@ describe('Kastaster survey', () => {
       it('has a heading containing text', () => {
         cy.get('[data-cy=kat-info-heading]').then((element) => {
           const text = element.text();
+          // eslint-disable-next-line no-unused-expressions
           expect(text).not.to.be.empty;
         });
       });
@@ -218,28 +218,47 @@ describe('Kastaster survey', () => {
         });
       });
 
-      // TODO: factor tests out. These going to be used in many places
-      describe('scene 2', () => {
-        before(() => {
-          goToScene(2);
-        });
+      describe('scenes 2 - 11', () => {
+        // build an Array holding all integers between 2 and 11 to loop over
+        new Array(10)
+          .fill(0)
+          .map((el, i) => i + 2)
+          .forEach((scene) => {
+            describe(`scene ${scene}`, () => {
+              before(() => {
+                goToScene(scene);
+              });
 
-        it('contains an image that has loaded properly', () => {
-          getByDataAttr`kat-scene-image-wrapper`
-            .find('img')
-            .should('be.visible')
-            .and(($img) => {
-              // "naturalWidth" and "naturalHeight" are set when the image loads
-              expect($img[0].naturalWidth).to.be.greaterThan(0);
+              it('contains an image that has loaded properly', () => {
+                getByDataAttr`kat-scene-image-wrapper`
+                  .find('img')
+                  .should('be.visible')
+                  .and(($img) => {
+                    // "naturalWidth" and "naturalHeight" are set when the image loads
+                    expect($img[0].naturalWidth).to.be.greaterThan(0);
+                  });
+              });
+
+              it('links to the next scene when a random rating button is clicked', () => {
+                clickRandomElement('kat-scene-rating-button');
+                cy.location('pathname').should(
+                  'eq',
+                  `${config.routes.katasterKI.scenesBase}/${scene + 1}`
+                );
+              });
             });
-        });
+          });
+      });
 
-        it('links to the next scene when a random rating button is clicked', () => {
-          // TODO: once it is clear how to get a random element by data-attribute, factor out that function as cypress util
-          clickRandomElement('kat-scene-rating-button')
+      describe('scene 12: perspective choice', () => {
+        it('leads to a set of new scenes', () => {
+          clickRandomElement('kat-perspective-change-single-choice-button');
+
+          // TODO: see how testing a store update would work here
+
           cy.location('pathname').should(
             'eq',
-            `${config.routes.katasterKI.scenesBase}/3`
+            `${config.routes.katasterKI.scenesBase}/${1}`
           );
         });
       });
@@ -321,11 +340,11 @@ function clickRandomElement(dataAttributeValue) {
   cy.get(fullSelector)
     .as('selection')
     .its('length')
-    .then(count => {
-      const randomZeroBasedIndex = Math.floor(Math.random() * count)
+    .then((count) => {
+      const randomZeroBasedIndex = Math.floor(Math.random() * count);
       cy.get('@selection')
         .eq(randomZeroBasedIndex)
-        .click()
+        .click();
     });
 }
 
