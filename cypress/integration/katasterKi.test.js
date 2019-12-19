@@ -198,7 +198,7 @@ describe('Kastaster survey', () => {
 
   describe('scenes', () => {
     describe('a new session with gathered profile information at hand', () => {
-      it('has made the store object globally available for testing', () => {
+      it('[internal] has made the store object globally available for testing', () => {
         cy.window()
           .its('store')
           .should('exist');
@@ -216,9 +216,15 @@ describe('Kastaster survey', () => {
             `${config.routes.katasterKI.scenesBase}/2`
           );
         });
+      });
+
+      // TODO: factor tests out. These going to be used in many places
+      describe('scene 2', () => {
+        before(() => {
+          goToScene(2);
+        });
 
         it('contains an image that has loaded properly', () => {
-          // TODO: factor test out. This going to be used in many places
           getByDataAttr`kat-scene-image-wrapper`
             .find('img')
             .should('be.visible')
@@ -226,6 +232,15 @@ describe('Kastaster survey', () => {
               // "naturalWidth" and "naturalHeight" are set when the image loads
               expect($img[0].naturalWidth).to.be.greaterThan(0);
             });
+        });
+
+        it('links to the next scene when a random rating button is clicked', () => {
+          // TODO: once it is clear how to get a random element by data-attribute, factor out that function as cypress util
+          clickRandomElement('kat-scene-rating-button')
+          cy.location('pathname').should(
+            'eq',
+            `${config.routes.katasterKI.scenesBase}/3`
+          );
         });
       });
     });
@@ -297,8 +312,21 @@ describe('Kastaster survey', () => {
  * @param {string} args Arguments to the tag function.
  */
 function getByDataAttr(...args) {
-  const attrVal = args[0][0];
-  return cy.get(`[data-cy=${attrVal}]`);
+  const dataAttributeValue = args[0][0];
+  return cy.get(`[data-cy=${dataAttributeValue}]`);
+}
+
+function clickRandomElement(dataAttributeValue) {
+  const fullSelector = `[data-cy=${dataAttributeValue}]`;
+  cy.get(fullSelector)
+    .as('selection')
+    .its('length')
+    .then(count => {
+      const randomZeroBasedIndex = Math.floor(Math.random() * count)
+      cy.get('@selection')
+        .eq(randomZeroBasedIndex)
+        .click()
+    });
 }
 
 function getFixedStateJson(fileNameWithoutEnding) {

@@ -172,6 +172,7 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
               key={`singlechoice__${option.value}`}
               onClick={() => onClick(option)}
               className={buttonClasses}
+              data-cy="kat-scene-rating-button"
             >
               <IconWrapper isEnqueued={enqueuedRating === option.label}>
                 <Icon />
