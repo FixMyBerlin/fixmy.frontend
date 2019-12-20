@@ -16,13 +16,13 @@ Before starting with the FAQ, here is a short link list about the topic.
 
 # FAQ
 
-## How can I get started? Is there some kind of High Level introduction article?
+## 1. How can I get started? Is there some kind of High Level introduction article?
 
 Yep, checkout [Der Softwerker: Frontend Spezial by CodeCentric](https://info.codecentric.de/softwerker-frontend-spezial).
 The german article "Cypress und Redux" from Enno Lohmann explains the basics of Cypress (how to reference and interact 
 with elements and more) and how it can be used in a Redux-driven app. As of now it is my primary source besides the Cypress docs.
 
-## Redux integration: How can I manipulate the store to put the app in a certain state before I can interact with the UI to test it?
+## 2. Redux integration: How can I manipulate the store to put the app in a certain state before I can interact with the UI to test it?
 
 Sometimes it is too complex to set the app in a certain, testable state just by changing routes and simulating user interactions.
 In a redux-based app, the Store can be mainpulated directly to set the app in the desired state before tests are run.
@@ -72,3 +72,10 @@ cy.visit('/', {
 });
 ```
 
+## 3. A test fails. How can I debug it?
+
+The following way worked for me, there surely are smarter ways.
+
+1. Set a debugger statement somewhere before you think the error resides.
+2. Start the dev server, then run `test:e2e-concurrent-chrome` in another console / run window
+   This will launch chrome with open dev tools which should stop at the entered break point. 
