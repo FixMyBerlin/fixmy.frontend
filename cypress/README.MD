@@ -13,6 +13,7 @@ Before starting with the FAQ, here is a short link list about the topic.
 * [best practices for cypress tests 2](https://itnext.io/cypress-io-best-practices-for-maintainable-tests-e9b9f392f117)
 * [best practices for general e2e testing](https://www.ranorex.com/de/blog/10-best-practices-9-end-to-end-tests-richtig-nutzen/)
 * [lessons learned with cypress](https://levelup.gitconnected.com/what-ive-learnt-using-cypress-io-for-the-past-three-weeks-c1597999cd2f)
+* [Cypress CI (incl. Parallelization)](https://medium.com/@ludmila.nesvitiy/cypress-parallelization-case-study-results-5a01da095fe)
 
 # FAQ
 
