@@ -8,6 +8,12 @@ especially pay attention to their [faq section](https://docs.cypress.io/faq/ques
 
 The questions below only complement those docs, focusing on our application and its stack.
 
+Before starting with the FAQ, here is a short link list about the topic.
+* [best practices for cypress tests 1](https://docs.cypress.io/guides/references/best-practices.html)
+* [best practices for cypress tests 2](https://itnext.io/cypress-io-best-practices-for-maintainable-tests-e9b9f392f117)
+* [best practices for general e2e testing](https://www.ranorex.com/de/blog/10-best-practices-9-end-to-end-tests-richtig-nutzen/)
+* [lessons learned with cypress](https://levelup.gitconnected.com/what-ive-learnt-using-cypress-io-for-the-past-three-weeks-c1597999cd2f)
+
 # FAQ
 
 ## How can I get started? Is there some kind of High Level introduction article?
