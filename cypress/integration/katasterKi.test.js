@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 // TODO: split tests into multiple files
 import config from '../../config';
+import { getByDataAttr } from '../support/utils';
 
 describe('Kastaster survey', () => {
   describe('landing page', () => {
@@ -21,7 +22,7 @@ describe('Kastaster survey', () => {
     describe('profile 1', () => {
       before(() => {
         before(() => {
-          goToProfile(1);
+          cy.fmbGoToProfile(1);
         });
 
         it('shows a progress bar', () => {
@@ -48,7 +49,7 @@ describe('Kastaster survey', () => {
 
     describe('profile 4', () => {
       before(() => {
-        goToProfile(4);
+        cy.fmbGoToProfile(4);
       });
 
       // TODO: consider checking this for the other steps as well
@@ -73,7 +74,7 @@ describe('Kastaster survey', () => {
       const profile = 5;
 
       before(() => {
-        goToProfile(profile);
+        cy.fmbGoToProfile(profile);
 
         // get references on proceed button and slider handle
         cy.get('[data-cy=kat-transport-rating-proceed-btn]').as('trProceedBtn');
@@ -109,7 +110,7 @@ describe('Kastaster survey', () => {
 
     describe('profile 9', () => {
       before(() => {
-        goToProfile(9);
+        cy.fmbGoToProfile(9);
       });
 
       it('shows a progress bar', () => {
@@ -135,7 +136,7 @@ describe('Kastaster survey', () => {
 
     describe('profile 11', () => {
       before(() => {
-        goToProfile(11);
+        cy.fmbGoToProfile(11);
       });
 
       it('shows a progress bar', () => {
@@ -160,7 +161,7 @@ describe('Kastaster survey', () => {
     describe('profile 12', () => {
       // we cannot use "before" since the aliases would only be available in the first "it"
       beforeEach(() => {
-        goToProfile(12);
+        cy.fmbGoToProfile(12);
         cy.get('[data-cy=kat-zip-input]').as('zipInput');
         cy.get('[data-cy=kat-zip-proceed-btn]').as('zipProceedBtn');
       });
@@ -206,7 +207,7 @@ describe('Kastaster survey', () => {
 
       describe('scene 1', () => {
         before(() => {
-          goToScene(1);
+          cy.fmbGoToScene(1);
         });
 
         it('links to scene 2', () => {
@@ -226,7 +227,7 @@ describe('Kastaster survey', () => {
           .forEach((scene) => {
             describe(`scene ${scene}`, () => {
               before(() => {
-                goToScene(scene);
+                cy.fmbGoToScene(scene);
               });
 
               it('contains an image that has loaded properly', () => {
@@ -240,7 +241,7 @@ describe('Kastaster survey', () => {
               });
 
               it('links to the next scene when a random rating button is clicked', () => {
-                clickRandomElement('kat-scene-rating-button');
+                cy.fmbClickRandomElement('kat-scene-rating-button');
                 cy.location('pathname').should(
                   'eq',
                   `${config.routes.katasterKI.scenesBase}/${scene + 1}`
@@ -252,7 +253,7 @@ describe('Kastaster survey', () => {
 
       describe('scene 12: perspective choice', () => {
         it('leads to a set of new scenes', () => {
-          clickRandomElement('kat-perspective-change-single-choice-button');
+          cy.fmbClickRandomElement('kat-perspective-change-single-choice-button');
 
           // TODO: see how testing a store update would work here
 
@@ -267,7 +268,7 @@ describe('Kastaster survey', () => {
     describe('when a session is resumed', () => {
       describe('scene 1: proceed with ratings screen', () => {
         before(() => {
-          returnToScene(1);
+          cy.fmbReturnToScene(1);
         });
 
         it('has a progressbar indicating a valid number of received ratings', () => {
@@ -290,7 +291,7 @@ describe('Kastaster survey', () => {
 
       describe('scene 2: leave email to stay informed', () => {
         beforeEach(() => {
-          returnToScene(2);
+          cy.fmbReturnToScene(2);
           cy.get('[data-cy=kat-emailcheckboxes-input]').as('emailInput');
           cy.get('[data-cy=kat-emailcheckboxes-proceed-btn]').as(
             'emailProceedBtn'
@@ -324,56 +325,10 @@ describe('Kastaster survey', () => {
   });
 });
 
-/**
- * JS Tag function (taking a template string) to make getting elements by their data-attribute
- * more readable.
- * TODO: Propose adopting this to team. If ok, only use this to get elements by data-attribute.
- * @param {string} args Arguments to the tag function.
- */
-function getByDataAttr(...args) {
-  const dataAttributeValue = args[0][0];
-  return cy.get(`[data-cy=${dataAttributeValue}]`);
-}
-
-function clickRandomElement(dataAttributeValue) {
-  const fullSelector = `[data-cy=${dataAttributeValue}]`;
-  cy.get(fullSelector)
-    .as('selection')
-    .its('length')
-    .then((count) => {
-      const randomZeroBasedIndex = Math.floor(Math.random() * count);
-      cy.get('@selection')
-        .eq(randomZeroBasedIndex)
-        .click();
-    });
-}
-
-function getFixedStateJson(fileNameWithoutEnding) {
-  return cy.fixture(`katasterKiStates/${fileNameWithoutEnding}.json`);
-}
-
-function goToProfile(profile = 1) {
-  cy.visit(`${config.routes.katasterKI.profileBase}/${profile}`);
-}
-
-function goToScene(scene = 1) {
-  getFixedStateJson('afterProfileSubmit').then((stateSlice) => {
-    cy.visit(`${config.routes.katasterKI.scenesBase}/${scene}`, {
-      onBeforeLoad(win) {
-        win.initialState = stateSlice;
-      }
-    });
-  });
-}
-
-function returnToScene(scene = 1) {
-  cy.visit(`${config.routes.katasterKI.scenesBase}/${scene}`);
-}
-
 function testSingleChoice(profile) {
   describe(`profile ${profile}`, () => {
     before(() => {
-      goToProfile(profile);
+      cy.fmbGoToProfile(profile);
       cy.get('[data-cy=kat-singlechoice-btn]')
         .first()
         .as('singleChoiceBtn');

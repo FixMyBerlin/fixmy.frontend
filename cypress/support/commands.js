@@ -1,25 +1,43 @@
 // ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+// commands get prefixed with `fmp` to clarify their origin when consumed
+import config from '../../config';
+
+// TODO: handle the issue that augmenting the cy object with the methods below leads to linting errors
+
+Cypress.Commands.add('fmbClickRandomElement', dataAttributeValue => {
+  const fullSelector = `[data-cy=${dataAttributeValue}]`;
+  cy.get(fullSelector)
+    .as('selection')
+    .its('length')
+    .then((count) => {
+      const randomZeroBasedIndex = Math.floor(Math.random() * count);
+      cy.get('@selection')
+        .eq(randomZeroBasedIndex)
+        .click();
+    });
+});
+
+Cypress.Commands.add('fmbGoToProfile', (profile = 1) => {
+  cy.visit(`${config.routes.katasterKI.profileBase}/${profile}`);
+});
+
+Cypress.Commands.add('fmbReturnToScene', (scene = 1) => {
+  cy.visit(`${config.routes.katasterKI.scenesBase}/${scene}`);
+});
+
+function getFixedStateJson(fileNameWithoutEnding) {
+  return cy.fixture(`katasterKiStates/${fileNameWithoutEnding}.json`);
+}
+Cypress.Commands.add('fmbGoToScene', (scene = 1) => {
+  getFixedStateJson('afterProfileSubmit').then((stateSlice) => {
+    cy.visit(`${config.routes.katasterKI.scenesBase}/${scene}`, {
+      onBeforeLoad(win) {
+        // eslint-disable-next-line no-param-reassign
+        win.initialState = stateSlice;
+      }
+    });
+  });
+});
