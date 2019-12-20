@@ -2,5 +2,5 @@
   "video": false,
   "baseUrl": "http://localhost:8080",
   "//": "paths are relative to the folder cypress/integration",
-  "testFiles": "*.js"
+  "testFiles": "**/*.js"
 }
