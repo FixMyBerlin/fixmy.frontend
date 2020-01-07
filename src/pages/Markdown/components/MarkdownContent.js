@@ -21,11 +21,15 @@ const StyledMarkdown = styled(Markdown)`
     padding-bottom: 1rem;
   }
 
-  h2, h3, h4, h5 {
+  h2,
+  h3,
+  h4,
+  h5 {
     ${getSectionTitleStyles()}
   }
 
-  p, li {
+  p,
+  li {
     ${getTextStyles()}
   }
 
@@ -38,14 +42,21 @@ const StyledMarkdown = styled(Markdown)`
   img {
     max-width: 250px;
   }
+
+  img.img-lg {
+    max-width: initial;
+  }
 `;
 
 function loadImage(mdSrc) {
   return ImageContext(mdSrc);
 }
 
-export default props => (
-  typeof props.content === 'string' ?
-    <StyledMarkdown escapeHtml={false} transformImageUri={loadImage} source={props.content} /> :
-    null
-);
+export default (props) =>
+  typeof props.content === 'string' ? (
+    <StyledMarkdown
+      escapeHtml={false}
+      transformImageUri={loadImage}
+      source={props.content}
+    />
+  ) : null;

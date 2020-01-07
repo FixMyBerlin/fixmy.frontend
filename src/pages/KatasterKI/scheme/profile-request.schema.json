@@ -18,12 +18,6 @@
     "ageGroup": {
       "type": "number"
     },
-    "berlinTraffic": {
-      "additionalProperties": {
-        "type": "boolean"
-      },
-      "type": "object"
-    },
     "bicycleUse": {
       "type": "number"
     },
@@ -45,6 +39,12 @@
     },
     "hasChildren": {
       "type": "boolean"
+    },
+    "introSelection": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
     },
     "isTosAccepted": {
       "type": "boolean"

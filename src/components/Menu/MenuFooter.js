@@ -9,10 +9,14 @@ import SocialLinks from '~/components/Social/SocialLinks';
 
 function getTextAlign(index) {
   switch (index % 3) {
-    case 0: return 'left';
-    case 1: return 'center';
-    case 2: return 'right';
-    default: return 'center';
+    case 0:
+      return 'left';
+    case 1:
+      return 'center';
+    case 2:
+      return 'right';
+    default:
+      return 'center';
   }
 }
 
@@ -36,24 +40,18 @@ const FooterLinks = styled.div`
   flex-wrap: wrap;
 `;
 
-const StyledLink = styled(NavLink).attrs(
-  props => ({ to: props.to })
-)`
+const StyledLink = styled(NavLink).attrs((props) => ({ to: props.to }))`
   width: 33.3333%;
   padding: 4px 8px;
   text-align: center;
   text-decoration: none;
   color: #635638;
-  text-align: ${props => getTextAlign(props.index)};
+  text-align: ${(props) => getTextAlign(props.index)};
 `;
 
 function renderItem(item, index) {
   return (
-    <StyledLink
-      key={item.label}
-      to={item.link}
-      index={index}
-    >
+    <StyledLink key={item.label} to={item.link} index={index}>
       {item.label}
     </StyledLink>
   );

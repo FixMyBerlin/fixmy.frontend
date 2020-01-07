@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { apiFetchReports } from '../apiservice';
 import { actions as errorStateActions } from './ErrorState';
+import logger from '~/utils/logger';
 
 const actions = {};
 const types = {};
@@ -8,9 +9,11 @@ const types = {};
 // action types
 
 types.REPORTS_FETCH_PENDING = 'Reports/OverviewMapState/REPORTS_FETCH_PENDING';
-types.REPORTS_FETCH_COMPLETE = 'Reports/OverviewMapState/REPORTS_FETCH_COMPLETE';
+types.REPORTS_FETCH_COMPLETE =
+  'Reports/OverviewMapState/REPORTS_FETCH_COMPLETE';
 types.SET_SELECTED_REPORT = 'Reports/OverviewMapState/SET_SELECTED_REPORT';
-types.SET_SELECTED_REPORT_POS = 'Reports/OverviewMapState/SET_SELECTED_REPORT_POS';
+types.SET_SELECTED_REPORT_POS =
+  'Reports/OverviewMapState/SET_SELECTED_REPORT_POS';
 types.RESET_MAP_STATE = 'Reports/OverviewMapState/RESET_MAP_STATE';
 
 // action creators
@@ -30,7 +33,7 @@ actions.loadReportsData = () => async (dispatch) => {
   await loadReportsThunk(dispatch);
 };
 
-actions.setSelectedReport = selectedReport => async (dispatch, getState) => {
+actions.setSelectedReport = (selectedReport) => async (dispatch, getState) => {
   const { reports } = getState().ReportsState.OverviewMapState;
 
   if (!reports.length) {
@@ -50,10 +53,12 @@ async function loadReportsThunk(dispatch) {
     dispatch({ type: types.REPORTS_FETCH_COMPLETE, payload: reportData });
   } catch (e) {
     const message = 'Fehler beim Laden der Meldungen';
-    console.error(`${message}: ${e}`);
-    dispatch(errorStateActions.addError({
-      message
-    }));
+    logger(`${message}: ${e}`);
+    dispatch(
+      errorStateActions.addError({
+        message
+      })
+    );
   }
 }
 
@@ -74,21 +79,19 @@ function reducer(state = initialState, { type, payload } = {}) {
       return { ...state, reports: payload };
     case types.SET_SELECTED_REPORT:
       return {
-        ...state, selectedReport: payload
+        ...state,
+        selectedReport: payload
       };
     case types.SET_SELECTED_REPORT_POS:
       return {
-        ...state, selectedReportPosition: payload
+        ...state,
+        selectedReportPosition: payload
       };
     default:
       return { ...state };
   }
 }
 
-export {
-  actions,
-  types,
-  initialState
-};
+export { actions, types, initialState };
 
 export default reducer;

@@ -2,7 +2,7 @@
  * Marker image to indicate current center of mapView.
  */
 
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { X } from 'react-feather';
@@ -39,7 +39,7 @@ const Wrapper = styled.div`
 const StyledPinnedLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`
   position: relative;
   top: 23px;
-  filter: drop-shadow(0px 1px 4px rgba(0,0,0,0.4));
+  filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.4));
 `;
 
 const StyledTickIcon = styled(TickIcon)`
@@ -55,10 +55,10 @@ const StyledMapCenterIndicator = styled(MapcenterIndicator)`
 const StaticMarker = ({ pinned }) => (
   <Wrapper>
     {pinned && (
-      <Fragment>
+      <>
         <StyledPinnedLocateMeMarkerIcon />
         <StyledTickIcon />
-      </Fragment>
+      </>
     )}
     {!pinned && <StyledMapCenterIndicator>+</StyledMapCenterIndicator>}
   </Wrapper>

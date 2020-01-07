@@ -1,12 +1,66 @@
 {
   "parser": "babel-eslint",
+
   "extends": [
     "airbnb",
     "plugin:prettier/recommended",
     "prettier",
     "prettier/react"
   ],
+
   "plugins": ["prettier"],
+
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "project": "./tsconfig.json"
+      },
+      "plugins": ["@typescript-eslint"],
+      "rules": {
+        // TypeScript's `noFallthroughCasesInSwitch` option is more robust
+        // https://github.com/facebook/create-react-app/issues/6906
+        "default-case": "off",
+        // 'tsc' already handles this (https://github.com/typescript-eslint/typescript-eslint/issues/291)
+        "no-dupe-class-members": "off",
+        // 'tsc' already handles this (https://github.com/typescript-eslint/typescript-eslint/issues/477)
+        "no-undef": "off",
+
+        // Add TypeScript specific rules (and turn off ESLint equivalents)
+        "@typescript-eslint/consistent-type-assertions": "warn",
+        "no-array-constructor": "off",
+        "@typescript-eslint/no-array-constructor": "warn",
+        "@typescript-eslint/no-namespace": "error",
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": [
+          "warn",
+          {
+            "functions": false,
+            "classes": false,
+            "variables": false,
+            "typedefs": false
+          }
+        ],
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "args": "none",
+            "ignoreRestSiblings": true
+          }
+        ],
+        "no-useless-constructor": "off",
+        "@typescript-eslint/no-useless-constructor": "warn"
+      }
+    }
+  ],
+
   "rules": {
     "prettier/prettier": ["warn"],
     "react/jsx-filename-extension": [
@@ -14,19 +68,26 @@
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
     "react/prop-types": [1, { "skipUndeclared": true }],
-    "react/destructuring-assignment": 0
+    "react/destructuring-assignment": 0,
+    "react/jsx-props-no-spreading": 0
   },
+
   "env": {
     "browser": true,
     "jest": true
   },
+
   "settings": {
     "import/resolver": {
       "webpack": {
         "config": "./webpack/webpack.config.dev.js"
       }
+    },
+    "react": {
+      "version": "detect"
     }
   },
+
   "globals": {
     "config": true,
     "_paq": true

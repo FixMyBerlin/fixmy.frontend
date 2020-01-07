@@ -9,7 +9,8 @@ import BikeIcon from '~/images/strassencheck/icons/icon-transportation-2.svg';
 import PedestrianIcon from '~/images/strassencheck/icons/icon-transportation-1.svg';
 import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 
-import defaultProfileConfig from '~/pages/KatasterKI/config/profile';
+import defaultProfileConfig from './config/profile';
+import introQuestions from './config/introQuestions';
 import { shuffle } from './utils';
 
 const perspectiveNames = {
@@ -37,8 +38,25 @@ export const getSceneImageSrc = (id) => {
   return `https://fmb-aws-bucket.s3.eu-central-1.amazonaws.com/KatasterKI/scenes/${id}.jpg`;
 };
 
-const profileConfig = (userGroup: UserGroup) => {
-  const rv = [...defaultProfileConfig];
+/**
+ * Given a list of indices for the intro question config, return a list
+ * of section spec objects
+ *
+ * @param selection list of indices specifying questions to return
+ */
+const genIntroConfig = (selection: Array<number>) =>
+  selection.map((num) => introQuestions[num]);
+
+/**
+ * Generate a section config for the first part of the survey
+ *
+ * @param userGroup usergroup of the current user
+ * @param introIndices selection of indices, specifying which intro questions
+ *   to show
+ */
+const profileConfig = (userGroup: UserGroup, introIndices: Array<number>) => {
+  const introSelection = genIntroConfig(introIndices);
+  const rv = [...introSelection, ...defaultProfileConfig];
 
   // Remove some questions for some user groups
   if (
@@ -60,6 +78,13 @@ const profileConfig = (userGroup: UserGroup) => {
   return rv;
 };
 
+/**
+ * Select the screens to be included in the rating part of the survey.
+ *
+ * @param scenes list of scenes to be included
+ * @param perspective the perspective represented by the scenes
+ * @param sceneGroupCounter which round of ratings is this?
+ */
 const scenesConfig = (
   scenes: Array<Answer>,
   perspective: Perspective,
@@ -75,16 +100,32 @@ const scenesConfig = (
     name: 'info'
   };
 
-  const perspectiveChangeScreen = {
+  const firstPerspectiveScreen = {
     type: 'perspective_change',
     name: 'perspectiveChange',
-    title: `Sie haben bisher aus der ${perspectiveName} bewertet. Nun können Sie die Straße aus einer anderen Perspektive bewerten.`,
+    title: `Perspektivwechsel: Sie haben bisher aus der ${perspectiveName} bewertet. Bitte bewerten Sie nun einige Situationen von einem anderen Verkehrsmittel aus.`,
     helper: 'Sie können die Perspektive später noch einmal wechseln.',
+    options: Object.keys(perspectiveNames)
+      .filter((p) => p !== perspective)
+      .map((p) => ({
+        label: perspectiveNames[p],
+        icon: perspectiveIcons[p],
+        value: p
+      })),
+    showCloseButton: false
+  };
+
+  const followingPerspectiveScreen = {
+    type: 'perspective_change',
+    name: 'perspectiveChange',
+    title: `Sie können noch weitere Perspektiven bewerten: wahlweise aus derselben Sicht, oder von einem anderen Verkehrsmittel aus.`,
+    helper: null,
     options: Object.keys(perspectiveNames).map((p) => ({
       label: perspectiveNames[p],
       icon: perspectiveIcons[p],
       value: p
-    }))
+    })),
+    showCloseButton: true
   };
 
   const feedbackScreen = {
@@ -121,15 +162,17 @@ const scenesConfig = (
     }))
   }));
 
-  let sectionConfig = [];
+  const sectionConfig = [];
   if (sceneGroupCounter === 1) sectionConfig.push(titleScreen);
 
   sectionConfig.push(...sceneScreens);
 
-  if (sceneGroupCounter % 2 === 1) {
-    sectionConfig.push(perspectiveChangeScreen);
+  if (sceneGroupCounter === 1) {
+    sectionConfig.push(firstPerspectiveScreen);
+  } else if (sceneGroupCounter % 2 === 1) {
+    sectionConfig.push(followingPerspectiveScreen);
   } else {
-    sectionConfig.push(feedbackScreen, emailScreen, perspectiveChangeScreen);
+    sectionConfig.push(feedbackScreen, emailScreen, followingPerspectiveScreen);
   }
 
   return sectionConfig;

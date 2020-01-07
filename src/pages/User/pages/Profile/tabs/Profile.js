@@ -51,9 +51,12 @@ const StyledButton = styled(Button)`
 `;
 
 class Profil extends PureComponent {
-  state = {
-    logoutstatus: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      logoutstatus: false
+    };
+  }
 
   componentDidMount() {
     this.props.dispatch(profile());

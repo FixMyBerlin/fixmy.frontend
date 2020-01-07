@@ -23,17 +23,15 @@ const StyledSelect = styled.select`
 `;
 
 class Select extends PureComponent {
-  static defaultProps = {
-    options: [],
-    onChange: () => {},
-    title: false,
-    disabled: false,
-    isVisible: true
-  }
-
   render() {
     const {
-      title, options, onChange, disabled, value, isVisible, className
+      title,
+      options,
+      onChange,
+      disabled,
+      value,
+      isVisible,
+      className
     } = this.props;
 
     if (!isVisible) {
@@ -44,13 +42,23 @@ class Select extends PureComponent {
       <SelectWrapper className={className}>
         {title && <Label>{title}</Label>}
         <StyledSelect onChange={onChange} disabled={disabled} value={value}>
-          {options.map(o => (
-            <option key={o.value} value={o.value}>{o.label}</option>
+          {options.map((o) => (
+            <option key={o.value} value={o.value}>
+              {o.label}
+            </option>
           ))}
         </StyledSelect>
       </SelectWrapper>
     );
   }
 }
+
+Select.defaultProps = {
+  options: [],
+  onChange: () => {},
+  title: false,
+  disabled: false,
+  isVisible: true
+};
 
 export default Select;

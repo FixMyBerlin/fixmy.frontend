@@ -5,8 +5,11 @@ import ContentPageWrapper from '~/components/ContentPageWrapper';
 import MarkdownContent from '~/pages/Markdown/components/MarkdownContent';
 
 class MarkdownPage extends PureComponent {
-  state = {
-    content: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      content: false
+    };
   }
 
   componentDidMount() {

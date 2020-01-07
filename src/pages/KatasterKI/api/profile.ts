@@ -1,7 +1,9 @@
+import { ValidatorResult, Validator } from 'jsonschema';
+import logger from '~/utils/logger';
 import { ProfileResponse, ProfileRequest } from '../types';
 import { getEndpointURL, marshallMultiChoice } from './utils';
-import { ValidatorResult, Validator } from 'jsonschema';
 import { State } from '../state';
+import introQuestions from '../config/introQuestions';
 
 // JSON import apparently only works in ts when using `require`
 const profileRequestSchema = require('../scheme/profile-request.schema.json');
@@ -52,7 +54,7 @@ export const validateProfileRequest = (profileRequest: ProfileRequest) => {
   );
   if (schemaValidationResult.errors.length) {
     let errorMsg =
-      'ProfileRequest object is not ' + 'structured as stated in json schema';
+      'ProfileRequest object is not structured as stated in json schema';
     schemaValidationResult.errors.forEach(({ property, message }) => {
       errorMsg += `
           Property ${property} ${message}`;
@@ -78,18 +80,28 @@ export const marshallProfile = (
     transportRatings,
     isTosAccepted,
     currentPerspective,
-    sessionID
+    sessionID,
+    introSelection
   } = state.KatasterKIState;
 
   if (!isTosAccepted === true)
     throw new Error('Trying to marshall profile without accepted TOS');
 
-  const { choices: bikeReasons, other: bikeReasonsVar } = marshallMultiChoice(
-    profile.bikeReasons
-  );
+  let bikeReasons;
+  let bikeReasonsVar;
+  let whyBiking;
+  let vehiclesOwned;
+  try {
+    ({ choices: bikeReasons, other: bikeReasonsVar } = marshallMultiChoice(
+      profile.bikeReasons
+    ));
 
-  const { choices: whyBiking } = marshallMultiChoice(profile.whyBiking);
-  const { choices: vehiclesOwned } = marshallMultiChoice(profile.vehiclesOwned);
+    ({ choices: whyBiking } = marshallMultiChoice(profile.whyBiking));
+    ({ choices: vehiclesOwned } = marshallMultiChoice(profile.vehiclesOwned));
+  } catch (e) {
+    logger(`Error marshalling profile: ${e.message}`);
+    throw e;
+  }
 
   const profileRequest = {
     ageGroup: profile.ageGroup,
@@ -99,6 +111,8 @@ export const marshallProfile = (
     gender: profile.gender,
     hasChildren: profile.hasChildren,
     motivationalFactors: profile.motivationalFactors,
+    offended: profile.offended,
+    responsible: profile.responsible,
     zipcode: profile.zipcode,
     perspective: currentPerspective,
     vehiclesOwned,
@@ -108,8 +122,22 @@ export const marshallProfile = (
     userGroup,
     isTosAccepted,
     sessionID,
-    transportRatings
+    transportRatings,
+    introSelection: []
   };
+
+  // Insert intro questions
+  let introID: string;
+  introSelection.forEach((i) => {
+    introID = introQuestions[i].name;
+    profileRequest.introSelection.push(introID);
+    profileRequest[introID] = profile[introID];
+  });
+
+  if (
+    profileRequest.introSelection.length !== config.katasterKI.numIntroQuestions
+  )
+    throw new Error('Profile contains a wrong number of intro questions');
 
   try {
     // TODO: consider adapting eslint-config. keeping the util func below this call is fine IMHO

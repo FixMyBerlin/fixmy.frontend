@@ -8,8 +8,11 @@ import Modal from '~/components/Modal';
 import { trackEvent } from '~/utils/utils';
 
 class MyHBIView extends PureComponent {
-  state = {
-    isSubmitFormOpen: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSubmitFormOpen: false
+    };
   }
 
   onSave = () => {
@@ -23,20 +26,29 @@ class MyHBIView extends PureComponent {
 
     trackEvent('my-hbi', 'save-profile', 'values');
     this.onToggleModal();
-  }
+  };
 
   onToggleModal = () => {
-    this.setState(prevState => ({ isSubmitFormOpen: !prevState.isSubmitFormOpen }));
-  }
+    this.setState((prevState) => ({
+      isSubmitFormOpen: !prevState.isSubmitFormOpen
+    }));
+  };
 
   render() {
     return [
       <HBIConfigurator key="hbi__configurator" onSave={this.onSave} />,
-      <Modal key="hbi__modal" isOpen={this.state.isSubmitFormOpen} onClose={this.onToggleModal}>
-        <HBISubmitForm userid={this.props.userid} onClose={this.onToggleModal} />
+      <Modal
+        key="hbi__modal"
+        isOpen={this.state.isSubmitFormOpen}
+        onClose={this.onToggleModal}
+      >
+        <HBISubmitForm
+          userid={this.props.userid}
+          onClose={this.onToggleModal}
+        />
       </Modal>
     ];
   }
 }
 
-export default connect(state => state.UserState)(MyHBIView);
+export default connect((state) => state.UserState)(MyHBIView);

@@ -8,96 +8,9 @@ import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 
 export default [
   {
-    type: 'multi_choice',
-    name: 'berlinTraffic',
-    title: 'Was nervt Sie am meisten am Straßenverkehr?',
-    randomize: true,
-    options: [
-      {
-        label: 'Hohes Verkehrsaufkommen und Staus',
-        name: 'traffic'
-      },
-      {
-        label: 'Der Zustand der Straßen / Radwege',
-        name: 'maintenance'
-      },
-      {
-        label: 'Missachtung der Verkehrsregeln',
-        name: 'rules'
-      },
-      {
-        label: 'Der Lärm',
-        name: 'noise'
-      },
-      {
-        label: 'Die Unfälle',
-        name: 'accidents'
-      },
-      {
-        label: 'Aggressives Verhalten anderer',
-        name: 'aggression'
-      },
-      {
-        label: 'Die Luftverschmutzung',
-        name: 'polution'
-      }
-    ]
-  },
-  {
-    type: 'single_choice',
-    name: 'offended',
-    title: 'Wurden Sie im vergangenen Jahr im Verkehr verbal beleidigt?',
-    options: [
-      {
-        label: 'Ja, häufig',
-        value: 0
-      },
-      {
-        label: 'Ja, ab und zu',
-        value: 1
-      },
-      {
-        label: 'Selten',
-        value: 2
-      },
-      {
-        label: 'Nein, nie',
-        value: 3
-      }
-    ]
-  },
-  {
-    type: 'single_choice',
-    name: 'responsible',
-    title:
-      'Wer trägt die größte Verantwortung für die Probleme im Verkehr?',
-    randomize: true,
-    options: [
-      {
-        label: 'Die Politik',
-        value: 0
-      },
-      {
-        label: 'Die Polizei / das Ordnungsamt',
-        value: 1
-      },
-      {
-        label: 'Die Autofahrer',
-        value: 2
-      },
-      {
-        label: 'Die Radfahrer',
-        value: 3
-      },
-      {
-        label: 'Die Fußgänger',
-        value: 4
-      }
-    ]
-  },
-  {
     type: 'info',
-    title: 'Erzählen Sie uns nun etwas zu Ihrer Verkehrsnutzung. Die Angaben sind anonym.'
+    title:
+      'Erzählen Sie uns nun etwas zu Ihrer Verkehrsnutzung. Die Angaben sind anonym.'
   },
   {
     type: 'transportRatings',
@@ -257,7 +170,6 @@ export default [
     name: 'bicycleUse',
     title:
       'Wie lange dauert der Weg, den Sie am häufigsten mit dem Fahrrad zurücklegen (ohne Rückweg)?',
-    randomize: true,
     options: [
       {
         label: '10 Minuten',
@@ -287,7 +199,6 @@ export default [
     title: 'Wie sehr stimmen Sie den folgenden Aussagen zu?',
     info:
       'Die folgenden Fragen sind für die Forschung sehr wichtig. Sie handeln von den Faktoren, die Menschen motivieren Fahrrad zu fahren - oder Sie davon abhalten.',
-    randomize: true,
     radiogroups: [
       {
         label: '„Ich fahre Fahrrad, weil es mir Spaß macht.“',
@@ -340,7 +251,6 @@ export default [
     name: 'bikeReasons',
     title:
       'Aus welchen Gründen können, dürfen oder wollen Sie nicht (häufiger) Fahrradfahren?',
-    randomize: true,
     options: [
       {
         label: 'Ich kann nicht Fahrrad fahren (fehlende Fertigkeit)',

@@ -6,9 +6,6 @@ export interface Answer {
 
 export interface ProfileRequest {
   ageGroup: number;
-  berlinTraffic: {
-    [name: string]: boolean;
-  };
   bicycleUse?: number;
   bikeReasons?: Array<string>;
   bikeReasonsVar?: string;
@@ -28,11 +25,12 @@ export interface ProfileRequest {
   whyBiking: Array<string>;
   zipcode: string;
   sessionID: string;
+  introSelection: Array<string>;
 }
 
 export interface ProfileResponse {
   scenes: Array<string>;
-  ratings_total: number;
+  ratings_total: number; // eslint-disable-line camelcase
 }
 
 export interface AnswerRequest extends Answer {

@@ -23,12 +23,12 @@ function getArrowCSS({ size = 20, color = 'white', offset = 0 }) {
     border-top: ${size}px solid ${color};
     left: 50%;
     top: auto;
-    bottom:-${(size + offset) - 1}px;
+    bottom:-${size + offset - 1}px;
     margin-left:-${size}px;
   `;
 }
 
-const MapPopup = styled.div.attrs(props => ({
+const MapPopup = styled.div.attrs((props) => ({
   style: {
     top: `${props.y}px`,
     left: `${props.x}px`
@@ -120,40 +120,12 @@ function renderName(data) {
 }
 
 class MapPopupWrapper extends PureComponent {
-  static propTypes = {
-    x: PropTypes.number,
-    y: PropTypes.number,
-    onClose: PropTypes.func,
-    onClick: PropTypes.func,
-    showSubline: PropTypes.bool,
-    data: PropTypes.shape({
-      name: PropTypes.string,
-      address: PropTypes.string,
-      isIntersection: PropTypes.bool
-    }),
-    // eslint-disable-next-line react/forbid-prop-types
-    style: PropTypes.object,
-    children: PropTypes.node
-  };
-
-  static defaultProps = {
-    x: 0,
-    y: 0,
-    style: {},
-    onClose: () => {},
-    onClick: () => {},
-    showSubline: true,
-    data: {},
-    children: null
-  };
-
   render() {
-    const toggleSubLine = (
+    const toggleSubLine =
       !this.props.data.isIntersection &&
       this.props.data &&
       this.props.data.borough != null &&
-      this.props.showSubline
-    );
+      this.props.showSubline;
 
     return (
       <MapPopup x={this.props.x} y={this.props.y} style={this.props.style}>
@@ -162,7 +134,7 @@ class MapPopupWrapper extends PureComponent {
           <StyledPinIcon />
           <div>
             <BigLabel uppercase>{renderName(this.props.data)}</BigLabel>
-            {toggleSubLine && <Label light>{ this.props.data.borough }</Label>}
+            {toggleSubLine && <Label light>{this.props.data.borough}</Label>}
           </div>
         </MapPopupLocation>
         {this.props.children}
@@ -170,5 +142,33 @@ class MapPopupWrapper extends PureComponent {
     );
   }
 }
+
+MapPopupWrapper.propTypes = {
+  x: PropTypes.number,
+  y: PropTypes.number,
+  onClose: PropTypes.func,
+  onClick: PropTypes.func,
+  showSubline: PropTypes.bool,
+  data: PropTypes.shape({
+    name: PropTypes.string,
+    address: PropTypes.string,
+    isIntersection: PropTypes.bool,
+    borough: PropTypes.string
+  }),
+  // eslint-disable-next-line react/forbid-prop-types
+  style: PropTypes.object,
+  children: PropTypes.node
+};
+
+MapPopupWrapper.defaultProps = {
+  x: 0,
+  y: 0,
+  style: {},
+  onClose: () => {},
+  onClick: () => {},
+  showSubline: true,
+  data: {},
+  children: null
+};
 
 export default MapPopupWrapper;

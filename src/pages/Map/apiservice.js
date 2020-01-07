@@ -17,7 +17,8 @@ export async function likeDetail(apiUrl, token) {
 
 export async function getLikes(apiUrl, token) {
   let response = {};
-  const headers = typeof token === 'undefined' ? {} : { Authorization: `JWT ${token}` };
+  const headers =
+    typeof token === 'undefined' ? {} : { Authorization: `JWT ${token}` };
 
   try {
     response = await ky.get(`${apiUrl}/likes`, { headers }).json();

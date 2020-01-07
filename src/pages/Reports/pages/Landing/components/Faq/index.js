@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import FaqItem from './FaqItem';
@@ -66,27 +66,13 @@ const content = [
   }
 ];
 
-class FaqSection extends PureComponent {
-  state = {
-    content
-  };
-
-  render() {
-    const faqItems = this.state.content
-      .map(item => (
-        <FaqItem
-          key={item.heading.replace(/ /g, '')} // not sure what to use here besides the array index
-          {...item}
-        />
-      ));
-
-    return (
-      <FaqWrapper>
-        <Heading>Häufige Fragen</Heading>
-        {faqItems}
-      </FaqWrapper>
-    );
-  }
-}
+const FaqSection = () => (
+  <FaqWrapper>
+    <Heading>Häufige Fragen</Heading>
+    {content.map(({ heading, text }) => (
+      <FaqItem key={heading} heading={heading} text={text} />
+    ))}
+  </FaqWrapper>
+);
 
 export default FaqSection;

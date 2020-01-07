@@ -1,4 +1,5 @@
 import { Dispatch } from 'redux';
+import logger from '~/utils/logger';
 import {
   Answer,
   Perspective,
@@ -8,16 +9,17 @@ import {
   TransportRating,
   UserGroup,
   ProfileRequest,
-  ProfileResponse,
-  PerspectiveResponse
+  ProfileResponse
 } from './types';
 import {
   getUserGroup,
   makeSessionID,
   toggleNavigationWarning,
-  getInitialPerspective
+  getInitialPerspective,
+  makeIntroSelection
 } from './utils';
 import api from './api';
+import introQuestions from './config/introQuestions';
 
 export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
 export const SET_ANSWER = 'KatasterKI/SET_ANSWER';
@@ -64,6 +66,8 @@ export interface State {
     gender?: 'm' | 'w' | 'd';
     hasChildren?: boolean;
     motivationalFactors?: RadioGroups;
+    offended?: number;
+    responsible?: number;
     zipcode: string;
     vehiclesOwned?: MultiChoice;
     whyBiking?: MultiChoice;
@@ -90,6 +94,7 @@ export interface State {
     [mode: string]: TransportRating;
   };
   userGroup: UserGroup;
+  introSelection: Array<number>;
 }
 
 interface Action {
@@ -152,7 +157,11 @@ export const productionDefaultState: State = {
   sceneGroupCounter: 0,
   isEmbedded: false,
   ratingsCounter: 0,
-  sessionID: makeSessionID()
+  sessionID: makeSessionID(),
+  introSelection: makeIntroSelection(
+    introQuestions.length,
+    config.katasterKI.numIntroQuestions
+  )
 };
 
 // This state is used in the dev environment and for integration tests
@@ -169,16 +178,6 @@ export const testingDefaultState: State = {
   },
   profile: {
     ageGroup: 1,
-    berlinTraffic: {
-      a: true,
-      b: true,
-      c: false,
-      d: false,
-      e: false,
-      f: false,
-      g: false,
-      h: false
-    },
     bicycleUse: 0,
     bikeReasons: {},
     district: 'Mitte',
@@ -212,7 +211,7 @@ export default function reducer(state: State = defaultState, action: Action) {
     case SET_TOS_ACCEPTED:
       return { ...state, isTosAccepted: action.value };
 
-    case SET_ANSWER:
+    case SET_ANSWER: {
       const scenes = Array.from(state.scenes);
       const answerPos = scenes.findIndex(
         (sc) => sc.sceneID === action.answer.sceneID
@@ -224,11 +223,12 @@ export default function reducer(state: State = defaultState, action: Action) {
         ratingsCounter: state.ratingsCounter + 1,
         statisticsCounter: state.statisticsCounter + 1
       };
+    }
 
     case SET_EMBEDDED:
       return { ...state, isEmbedded: action.value };
 
-    case SET_PROFILE_ANSWER:
+    case SET_PROFILE_ANSWER: {
       const { question, value } = action.profile;
       return {
         ...state,
@@ -237,6 +237,7 @@ export default function reducer(state: State = defaultState, action: Action) {
           [question]: value
         }
       };
+    }
 
     case SUBMIT_PERSPECTIVE_PENDING:
       return {
@@ -291,7 +292,7 @@ export default function reducer(state: State = defaultState, action: Action) {
         sceneGroupCounter: state.sceneGroupCounter + 1
       };
 
-    case SET_TRANSPORT_RATING:
+    case SET_TRANSPORT_RATING: {
       const transportRatings = {
         ...state.transportRatings,
         [action.transportRating.type]: action.transportRating.rating
@@ -300,11 +301,12 @@ export default function reducer(state: State = defaultState, action: Action) {
       const currentPerspective = getInitialPerspective(userGroup);
 
       return { ...state, transportRatings, userGroup, currentPerspective };
+    }
 
     case SET_PERSPECTIVE:
       return { ...state, perspective: action.perspective };
 
-    case SET_ZIPCODE:
+    case SET_ZIPCODE: {
       const { zipcode, district, districtOptions } = action.area;
       return {
         ...state,
@@ -315,8 +317,9 @@ export default function reducer(state: State = defaultState, action: Action) {
           district
         }
       };
+    }
 
-    case UPDATE_PROGRESS_BAR:
+    case UPDATE_PROGRESS_BAR: {
       const { current, total } = action.value;
       const newTotal = total == null ? state.progressBar.total : total;
       return {
@@ -326,6 +329,7 @@ export default function reducer(state: State = defaultState, action: Action) {
           total: newTotal
         }
       };
+    }
 
     default:
       return state;
@@ -439,9 +443,12 @@ export function submitAnswerError(errorMessage: string): Action {
 
 export function receivedSceneGroup(
   scenes: Array<string>,
-  ratings_total: number
+  ratingsTotal: number
 ) {
-  return { type: RECEIVED_SCENE_GROUP, value: { scenes, ratings_total } };
+  return {
+    type: RECEIVED_SCENE_GROUP,
+    value: { scenes, ratings_total: ratingsTotal }
+  };
 }
 
 // thunks
@@ -453,25 +460,17 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
 
   try {
     profileToSubmit = api.marshallProfile(getState());
-    const { scenes, ratings_total } = await api.submitProfile(profileToSubmit);
-    dispatch(receivedSceneGroup(scenes, ratings_total));
+    const { scenes, ratings_total: ratingsTotal } = await api.submitProfile(
+      profileToSubmit
+    );
+    dispatch(receivedSceneGroup(scenes, ratingsTotal));
     dispatch(submitProfileComplete());
   } catch (e) {
     dispatch(
       submitProfileError('Das Nutzerprofil konnte nicht übertragen werden.')
     );
-    // log an error to inspect in dev tools.
-    // Throwing an error would break unit tests.
-    // If this is a test run, don't log the error. TODO: factor out to util method
-    const cachedConsoleErrorFunc = console.error;
-    if (process.env.NODE_ENV === 'test') {
-      console.error = () => {};
-    }
-    console.error(`Failed to submit profile: ${e.message}`);
-    if (process.env.NODE_ENV === 'test') {
-      console.error = cachedConsoleErrorFunc;
-    }
-    if (process.env.NODE_ENV != 'test') throw e;
+    logger(`Failed to submit profile: ${e.message}`);
+    throw e;
   }
 };
 
@@ -484,11 +483,13 @@ export const submitPerspective = (perspective: Perspective) => async (
     KatasterKIState: { sessionID }
   } = getState();
   try {
-    const { scenes, ratings_total } = await api.submitPerspective({
-      perspective,
-      sessionID
-    });
-    dispatch(receivedSceneGroup(scenes, ratings_total));
+    const { scenes, ratings_total: ratingsTotal } = await api.submitPerspective(
+      {
+        perspective,
+        sessionID
+      }
+    );
+    dispatch(receivedSceneGroup(scenes, ratingsTotal));
     dispatch(submitPerspectiveComplete(perspective));
   } catch (e) {
     dispatch(
@@ -496,7 +497,7 @@ export const submitPerspective = (perspective: Perspective) => async (
         'Die nächste Szenengruppe konnte nicht angefragt werden.'
       )
     );
-    if (process.env.NODE_ENV != 'test') throw e;
+    if (process.env.NODE_ENV !== 'test') throw e;
   }
 };
 
@@ -523,6 +524,6 @@ export const submitAnswer = (
         'Beim Übermitteln der Bewertung ist etwas schiefgelaufen'
       )
     );
-    if (process.env.NODE_ENV != 'test') throw e;
+    if (process.env.NODE_ENV !== 'test') throw e;
   }
 };
