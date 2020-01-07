@@ -120,7 +120,7 @@ export const shuffle = (x: Array<any>): Array<any> => {
  * returns the first `num` entries.
  */
 export const makeIntroSelection = (max: number, num: number) =>
-  shuffle([...Array(max).keys()]).slice(0, num);
+  shuffle(Array.from(Array(max).keys())).slice(0, num);
 
 /**
  * Scroll to top on navigation
