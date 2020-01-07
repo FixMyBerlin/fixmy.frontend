@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ToggleSwitch from 'react-toggle-switch';
 import { withRouter } from 'react-router-dom';
 
+import config from '../config';
 import { media } from '~/styles/utils';
 import BikeIcon from '~/images/bike.svg';
 import PylonIcon from '~/images/poempel.svg';

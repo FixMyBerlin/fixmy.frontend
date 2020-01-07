@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import idx from 'idx';
 
+import config from '~/pages/Map/config';
 import DataProcessIcon from '~/images/data-process.svg';
 import { numberFormat, percentageFormat } from '~/utils/utils';
 import { getOrientationNames } from '~/utils/hbi-utils';

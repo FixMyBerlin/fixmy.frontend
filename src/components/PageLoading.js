@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import logger from '~/utils/logger';
+import config from '~/config';
 
 const LoaderWrapper = styled.div`
   width: 100%;
