@@ -26,26 +26,11 @@ const LocatorButton = styled.button`
 `;
 
 class LocatorControl extends PureComponent {
-  static propTypes = {
-    position: PropTypes.string,
-    customPosition: PropTypes.shape({
-      top: PropTypes.string,
-      bottom: PropTypes.string,
-      left: PropTypes.string,
-      right: PropTypes.string }),
-    onChange: PropTypes.func,
-    onStart: PropTypes.func
-  };
-
-  static defaultProps = {
-    position: 'top-left',
-    onChange: () => {},
-    onStart: () => {},
-    customPosition: undefined
-  }
-
-  state = {
-    isLoading: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false
+    };
   }
 
   locate = async () => {
@@ -54,8 +39,8 @@ class LocatorControl extends PureComponent {
 
     try {
       const position = await getGeoLocation();
-      const lat = idx(position, _ => _.coords.latitude);
-      const lng = idx(position, _ => _.coords.longitude);
+      const lat = idx(position, (_) => _.coords.latitude);
+      const lng = idx(position, (_) => _.coords.longitude);
 
       if (typeof lat === 'number' && typeof lng === 'number') {
         this.props.onChange([lng, lat]);
@@ -66,22 +51,41 @@ class LocatorControl extends PureComponent {
     }
 
     this.setState({ isLoading: false });
-  }
+  };
 
   render() {
     const Icon = this.state.isLoading ? <Loader size={24} /> : <LocatorIcon />;
 
     return (
-      <MapControl position={this.props.position} customPosition={this.props.customPosition}>
-        <LocatorButton
-          disabled={this.state.isLoading}
-          onClick={this.locate}
-        >
+      <MapControl
+        position={this.props.position}
+        customPosition={this.props.customPosition}
+      >
+        <LocatorButton disabled={this.state.isLoading} onClick={this.locate}>
           {Icon}
         </LocatorButton>
       </MapControl>
     );
   }
 }
+
+LocatorControl.propTypes = {
+  position: PropTypes.string,
+  customPosition: PropTypes.shape({
+    top: PropTypes.string,
+    bottom: PropTypes.string,
+    left: PropTypes.string,
+    right: PropTypes.string
+  }),
+  onChange: PropTypes.func,
+  onStart: PropTypes.func
+};
+
+LocatorControl.defaultProps = {
+  position: 'top-left',
+  onChange: () => {},
+  onStart: () => {},
+  customPosition: undefined
+};
 
 export default LocatorControl;

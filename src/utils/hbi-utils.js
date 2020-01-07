@@ -37,21 +37,6 @@ export function getOrientationNames(side0, side1) {
     side0: translateOrientationName(side0),
     side1: translateOrientationName(side1)
   };
-
-  // console.log(props);
-
-  // const orientationKey = props.orientation ? 'orientation' : 'side0_orientation';
-  // if (!props[orientationKey] || props[orientationKey] === 'O') {
-  //   return {
-  //     side0: 'Ostseite',
-  //     side1: 'Westseite'
-  //   };
-  // }
-
-  // return {
-  //   side0: 'Südseite',
-  //   side1: 'Nordseite'
-  // };
 }
 
 export default {

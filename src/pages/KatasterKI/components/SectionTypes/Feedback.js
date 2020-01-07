@@ -16,7 +16,8 @@ import ProgressVis from '~/pages/KatasterKI/components/ProgressVis';
 import ShareButtonDesktop from '../ShareButtonDesktop';
 
 const getTitle = (count, max) => {
-  return `Wir haben bereits ${count} Bewertungen erhalten. Helfen Sie, damit wir auf ${max} kommen.`;
+  return `Wir haben bereits ${count} Bewertungen erhalten. Helfen Sie, \
+damit wir auf ${max} kommen.`;
 };
 
 const FeedbackWrapper = styled.div`
@@ -43,7 +44,6 @@ const Feedback = ({
   isTosAccepted,
   statisticsCounter,
   ratingsCounter,
-  isEmbedded,
   next
 }) => {
   if (!isTosAccepted) {

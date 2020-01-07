@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import ProjectStatusChart from './ProjectStatusChart';
@@ -22,26 +22,19 @@ const DetailButtonWrapper = styled.div`
   display: none; // for now we dont want to show the details button
 `;
 
-class ProjectStatus extends PureComponent {
-  state = {
-    isExpanded: false
-  }
+const ProjectStatus = ({ phase }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const toggleExpanded = () => setIsExpanded(!isExpanded);
 
-  toggleExpand = () => {
-    this.setState(prevState => ({ isExpanded: !prevState.isExpanded }));
-  }
-
-  render() {
-    return (
-      <Fragment>
-        <ProjectStatusChart phase={this.props.phase} />
-        <DetailButtonWrapper>
-          <DetailButton onClick={this.toggleExpand}>Details +</DetailButton>
-        </DetailButtonWrapper>
-        {this.state.isExpanded ? <ProjectChecklist /> : null}
-      </Fragment>
-    );
-  }
-}
+  return (
+    <>
+      <ProjectStatusChart phase={phase} />
+      <DetailButtonWrapper>
+        <DetailButton onClick={toggleExpanded}>Details +</DetailButton>
+      </DetailButtonWrapper>
+      {isExpanded && <ProjectChecklist />}
+    </>
+  );
+};
 
 export default ProjectStatus;

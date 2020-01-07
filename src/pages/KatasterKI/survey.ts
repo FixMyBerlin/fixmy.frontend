@@ -78,6 +78,13 @@ const profileConfig = (userGroup: UserGroup, introIndices: Array<number>) => {
   return rv;
 };
 
+/**
+ * Select the screens to be included in the rating part of the survey.
+ *
+ * @param scenes list of scenes to be included
+ * @param perspective the perspective represented by the scenes
+ * @param sceneGroupCounter which round of ratings is this?
+ */
 const scenesConfig = (
   scenes: Array<Answer>,
   perspective: Perspective,
@@ -155,7 +162,7 @@ const scenesConfig = (
     }))
   }));
 
-  let sectionConfig = [];
+  const sectionConfig = [];
   if (sceneGroupCounter === 1) sectionConfig.push(titleScreen);
 
   sectionConfig.push(...sceneScreens);

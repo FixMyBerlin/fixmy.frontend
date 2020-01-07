@@ -6,9 +6,7 @@ const Separator = styled.div`
   text-transform: uppercase;
   font-size: 10px;
   color: ${config.colors.inactivegrey};
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
 `;
 
-export default ({ label }) => (
-  <Separator>{label}</Separator>
-);
+export default ({ label }) => <Separator>{label}</Separator>;

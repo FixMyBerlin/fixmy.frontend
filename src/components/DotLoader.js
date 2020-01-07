@@ -12,9 +12,7 @@ const LoaderWrapper = styled.div`
 
 const DotLoader = () => (
   <LoaderWrapper>
-    <PropagateLoader
-      color={`${config.colors.interaction}`}
-    />
+    <PropagateLoader color={`${config.colors.interaction}`} />
   </LoaderWrapper>
 );
 

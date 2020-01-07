@@ -18,7 +18,7 @@ class Menu extends PureComponent {
   }
 }
 
-export default connect(state => ({
+export default connect((state) => ({
   ...state.AppState,
   token: state.UserState.token
 }))(Menu);

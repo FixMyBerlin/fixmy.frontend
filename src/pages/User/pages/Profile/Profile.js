@@ -34,4 +34,4 @@ class ProfileTabs extends PureComponent {
   }
 }
 
-export default connect(state => state.UserState)(ProfileTabs);
+export default connect((state) => state.UserState)(ProfileTabs);

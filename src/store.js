@@ -17,9 +17,14 @@ const Reducer = combineReducers({
   KatasterKIState
 });
 
+// Configure redux-devtools-extension
+// https://github.com/zalmoxisus/redux-devtools-extension#usage
+
+/* eslint-disable no-underscore-dangle */
 const enhancers = compose(
   applyMiddleware(thunk),
-  window.devToolsExtension ? window.devToolsExtension() : (f) => f
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+/* eslint-enable */
 
 export default createStore(Reducer, enhancers);

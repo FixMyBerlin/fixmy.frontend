@@ -48,9 +48,6 @@ function reducer(state = initialState, { type, payload } = {}) {
   }
 }
 
-export {
-  actions,
-  types
-};
+export { actions, types };
 
 export default reducer;

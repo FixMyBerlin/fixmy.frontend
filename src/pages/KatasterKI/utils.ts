@@ -1,13 +1,9 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import uuidv4 from 'uuid/v4';
+import logger from '~/utils/logger';
 
-import {
-  Perspective,
-  TransportMode,
-  TransportRating,
-  UserGroup
-} from './types';
+import { Perspective, TransportRating, UserGroup } from './types';
 
 const userGroups: Array<
   UserGroupAssociation
@@ -34,12 +30,10 @@ export const getUserGroup = (transportRatings: TransportRatings): UserGroup => {
     )
   );
   if (match == null) {
-    if (config.debug)
-      console.warn('No usergroup match for transportRatings', transportRatings);
+    logger('No usergroup match for transportRatings', transportRatings);
     return UserGroup.bicycle;
-  } else {
-    return match.userGroup;
   }
+  return match.userGroup;
 };
 
 const userGroupToPerspective = {

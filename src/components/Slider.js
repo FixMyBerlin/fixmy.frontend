@@ -32,7 +32,7 @@ export default styled(Slider)`
      }
      
      &:after {
-      content: "${p => p.value}";
+      content: "${(p) => p.value}";
       display: block;
       user-select: none;
       color: white;

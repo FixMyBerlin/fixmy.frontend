@@ -1,6 +1,8 @@
 /* eslint no-param-reassign: 0 */
 import ky from 'ky';
 
+import logger from '~/utils/logger';
+
 const LOAD_DATA = 'Analysis/AnalysisState/LOAD_DATA';
 const LOAD_DATA_SUCCESS = 'Analysis/AnalysisState/LOAD_DATA_SUCCESS';
 const LOAD_DATA_FAIL = 'Analysis/AnalysisState/LOAD_DATA_FAIL';
@@ -18,7 +20,10 @@ const initialState = {
 };
 
 export function setDistrictFilter(selectedDistrict) {
-  return { type: SET_DISTRICT_FILTER, payload: { selectedDistrict, selectedPhase: false } };
+  return {
+    type: SET_DISTRICT_FILTER,
+    payload: { selectedDistrict, selectedPhase: false }
+  };
 }
 
 export function setPhaseFilter(selectedPhase) {
@@ -46,7 +51,7 @@ export function loadProjectData(selectedDistrict = false) {
         payload: { data: results, isLoading: false }
       });
     } catch (e) {
-      console.error('Error loading project data', e);
+      logger('Error loading project data', e);
       return dispatch({ type: LOAD_DATA_FAIL, payload: { isLoading: false } });
     }
   };
@@ -60,8 +65,8 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case SET_DISTRICT_FILTER:
     case SET_PHASE_FILTER:
     case SET_SORT:
-      return Object.assign({}, state, action.payload);
+      return { ...state, ...action.payload };
     default:
-      return Object.assign({}, state);
+      return { ...state };
   }
 }

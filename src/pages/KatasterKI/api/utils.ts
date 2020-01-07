@@ -20,9 +20,9 @@ export const marshallMultiChoice = (
       // of all "checked" fieldnames
       if (field.endsWith('-input')) {
         other = values[field].toString();
-      } else {
-        return values[field] ? field : null;
+        return null;
       }
+      return values[field] ? field : null;
     })
     .filter((val) => val != null);
   return {
@@ -50,7 +50,7 @@ export const getEndpointURL: getEndpointURL = (
   sessionId,
   sceneID
 ) => {
-  const projectId = config.katasterKI.projectId;
+  const { projectId } = config.katasterKI;
   if (endpoint === 'profile' || endpoint === 'perspective')
     return `${config.apiUrl}/survey/${projectId}/${sessionId}`;
   if (endpoint === 'answer')

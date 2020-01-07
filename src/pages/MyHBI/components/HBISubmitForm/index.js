@@ -30,10 +30,11 @@ class HBISubmitForm extends PureComponent {
         .json();
     } catch (err) {
       setSubmitting(false);
-      return setErrors({
+      setErrors({
         server:
           'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.'
       });
+      throw err;
     }
 
     setSubmitting(false);

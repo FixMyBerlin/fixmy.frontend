@@ -24,12 +24,41 @@ const usages = [
 ];
 
 const config = [
-  { id: 'age', value: '', type: 'number', label: 'Alter', placeholder: 'Alter angeben...' },
-  { id: 'sex', value: '', type: 'select', label: 'Geschlecht', options: gender },
-  { id: 'postal_code', value: '', type: 'text', label: 'Postleitzahl', placeholder: 'Postleitzahl angeben...' },
-  { id: 'category_of_bike', value: '', type: 'select', label: 'Fahrradtyp', options: bikeCategories },
+  {
+    id: 'age',
+    value: '',
+    type: 'number',
+    label: 'Alter',
+    placeholder: 'Alter angeben...'
+  },
+  {
+    id: 'sex',
+    value: '',
+    type: 'select',
+    label: 'Geschlecht',
+    options: gender
+  },
+  {
+    id: 'postal_code',
+    value: '',
+    type: 'text',
+    label: 'Postleitzahl',
+    placeholder: 'Postleitzahl angeben...'
+  },
+  {
+    id: 'category_of_bike',
+    value: '',
+    type: 'select',
+    label: 'Fahrradtyp',
+    options: bikeCategories
+  },
   { id: 'usage', value: '', type: 'select', label: 'Nutzung', options: usages },
-  { id: 'has_trailer', value: false, type: 'checkbox', label: 'Anhänger vorhanden' }
+  {
+    id: 'has_trailer',
+    value: false,
+    type: 'checkbox',
+    label: 'Anhänger vorhanden'
+  }
 ];
 
 export const initialValues = config.reduce((res, item) => {
