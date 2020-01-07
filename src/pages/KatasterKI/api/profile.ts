@@ -3,6 +3,7 @@ import logger from '~/utils/logger';
 import { ProfileResponse, ProfileRequest } from '../types';
 import { getEndpointURL, marshallMultiChoice } from './utils';
 import { State } from '../state';
+import introQuestions from '../config/introQuestions';
 
 // JSON import apparently only works in ts when using `require`
 const profileRequestSchema = require('../scheme/profile-request.schema.json');
@@ -79,7 +80,8 @@ export const marshallProfile = (
     transportRatings,
     isTosAccepted,
     currentPerspective,
-    sessionID
+    sessionID,
+    introSelection
   } = state.KatasterKIState;
 
   if (!isTosAccepted === true)
@@ -120,8 +122,22 @@ export const marshallProfile = (
     userGroup,
     isTosAccepted,
     sessionID,
-    transportRatings
+    transportRatings,
+    introSelection: []
   };
+
+  // Insert intro questions
+  let introID: string;
+  introSelection.forEach((i) => {
+    introID = introQuestions[i].name;
+    profileRequest.introSelection.push(introID);
+    profileRequest[introID] = profile[introID];
+  });
+
+  if (
+    profileRequest.introSelection.length !== config.katasterKI.numIntroQuestions
+  )
+    throw new Error('Profile contains a wrong number of intro questions');
 
   try {
     // TODO: consider adapting eslint-config. keeping the util func below this call is fine IMHO

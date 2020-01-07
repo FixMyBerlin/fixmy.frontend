@@ -14,11 +14,13 @@ import {
   getUserGroup,
   makeSessionID,
   toggleNavigationWarning,
-  getInitialPerspective
+  getInitialPerspective,
+  makeIntroSelection
 } from './utils';
 import api from './api';
-import logger from '~/utils/logger';
 import config from './config';
+import introQuestions from './config/introQuestions';
+import logger from '~/utils/logger';
 
 export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
 export const SET_ANSWER = 'KatasterKI/SET_ANSWER';
@@ -93,6 +95,7 @@ export interface State {
     [mode: string]: TransportRating;
   };
   userGroup: UserGroup;
+  introSelection: Array<number>;
 }
 
 interface Action {
@@ -155,7 +158,11 @@ export const productionDefaultState: State = {
   sceneGroupCounter: 0,
   isEmbedded: false,
   ratingsCounter: 0,
-  sessionID: makeSessionID()
+  sessionID: makeSessionID(),
+  introSelection: makeIntroSelection(
+    introQuestions.length,
+    config.katasterKI.numIntroQuestions
+  )
 };
 
 // This state is used in the dev environment and for integration tests
@@ -172,16 +179,6 @@ export const testingDefaultState: State = {
   },
   profile: {
     ageGroup: 1,
-    berlinTraffic: {
-      a: true,
-      b: true,
-      c: false,
-      d: false,
-      e: false,
-      f: false,
-      g: false,
-      h: false
-    },
     bicycleUse: 0,
     bikeReasons: {},
     district: 'Mitte',

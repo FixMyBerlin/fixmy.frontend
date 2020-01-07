@@ -10,6 +10,8 @@ import PedestrianIcon from '~/images/strassencheck/icons/icon-transportation-1.s
 import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 
 import defaultProfileConfig from './config/profile';
+import introQuestions from './config/introQuestions';
+import { shuffle } from './utils';
 
 const perspectiveNames = {
   C: 'Fahrradperspektive',
@@ -37,14 +39,24 @@ export const getSceneImageSrc = (id) => {
 };
 
 /**
- * Select the screens to be included in the profile part of the survey.
+ * Given a list of indices for the intro question config, return a list
+ * of section spec objects
  *
- * Some screens are added or removed depending on the user group.
- *
- * @param userGroup profile config is dependent on the userGroup specified here
+ * @param selection list of indices specifying questions to return
  */
-const profileConfig = (userGroup: UserGroup) => {
-  const rv = [...defaultProfileConfig];
+const genIntroConfig = (selection: Array<number>) =>
+  selection.map((num) => introQuestions[num]);
+
+/**
+ * Generate a section config for the first part of the survey
+ *
+ * @param userGroup usergroup of the current user
+ * @param introIndices selection of indices, specifying which intro questions
+ *   to show
+ */
+const profileConfig = (userGroup: UserGroup, introIndices: Array<number>) => {
+  const introSelection = genIntroConfig(introIndices);
+  const rv = [...introSelection, ...defaultProfileConfig];
 
   // Remove some questions for some user groups
   if (
