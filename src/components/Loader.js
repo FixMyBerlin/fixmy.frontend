@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import config from '~/config';
 
 const rotate360 = keyframes`
   0%    { transform: rotate(0deg); }

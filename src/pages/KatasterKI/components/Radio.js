@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import styled, { css } from 'styled-components';
+import config from '~/pages/KatasterKI/config';
 
 const Radio = styled.div`
   display: inline-block;

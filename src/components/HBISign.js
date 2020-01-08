@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '~/config';
 import BikeIcon from '~/images/bike.svg';
 import BetaIcon from '~/images/beta.svg';
 import { numberFormat } from '~/utils/utils';

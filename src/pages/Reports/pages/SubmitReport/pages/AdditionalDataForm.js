@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { oneLine } from 'common-tags';
 import TextareaAutosize from 'react-autosize-textarea';
 
+import config from '~/pages/Reports/config';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import UploadPhotoInput from '~/pages/Reports/pages/SubmitReport/components/UploadPhotoInput';

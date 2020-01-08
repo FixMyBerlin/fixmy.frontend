@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
+import config from '~/config';
 import Title from '~/components/Title';
 import Text from '~/components/Text';
 import Button from '~/components/Button';

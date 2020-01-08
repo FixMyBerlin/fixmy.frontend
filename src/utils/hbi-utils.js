@@ -1,4 +1,4 @@
-// import Store from '~/store';
+import config from '~/pages/Map/config';
 
 export function getHBIbyProps(props, sideKey) {
   // const hbiValues = Store.getState().UserState.hbi_values;

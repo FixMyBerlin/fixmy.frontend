@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '../config';
 import resetMap from '~/pages/Map/reset';
 
 const ResetMapButton = styled.button`

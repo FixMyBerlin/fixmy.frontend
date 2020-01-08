@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import config from '~/config';
 import { homeLabels } from '~/labels';
 import ContentOverlay from '~/components/ContentOverlay';
 import FMBLogo from '~/components/FMBLogo';
@@ -83,7 +84,7 @@ export default () => (
           <Text>{homeLabels.intro}</Text>
         </div>
         <MapLinkWrapper>
-          <a href={config.katasterKI.tspArticleLink}>
+          <a href={config.tspKatasterURL}>
             <BounceButton>{homeLabels.katasterButton}</BounceButton>
           </a>
           <Link to={config.routes.projects}>

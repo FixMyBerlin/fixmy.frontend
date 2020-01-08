@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
+import config from '~/config';
 import Link from '~/components/Link';
 import ExternalLink from '~/components/ExternalLink';
 import ContentPageWrapper from '~/components/ContentPageWrapper';

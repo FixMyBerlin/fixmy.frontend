@@ -3,6 +3,7 @@ import turfAlong from '@turf/along';
 import turfLength from '@turf/length';
 import { lineString as turfLineString } from '@turf/helpers';
 
+import config from '~/pages/Map/config';
 import { isNumeric, getParameterByName } from '~/utils/utils';
 
 export const intersectionLayers = [

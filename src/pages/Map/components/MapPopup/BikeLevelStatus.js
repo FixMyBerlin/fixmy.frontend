@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/Map/config';
 import BraceVertical from '~/images/brace-vertical.svg';
 import { numberFormat } from '~/utils/utils';
 import {

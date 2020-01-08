@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import config from '~/config';
 import { media, isSmallScreen } from '~/styles/utils';
 import Checkbox from '~/pages/KatasterKI/components/Checkbox';
 import Button from '~/pages/KatasterKI/components/Button';

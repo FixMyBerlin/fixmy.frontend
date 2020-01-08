@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import Button from './Button';
+import config from '~/pages/KatasterKI/config';
 import { isTouch } from '~/utils/utils';
+import Button from './Button';
 
 export default styled(Button)`
   border: 1px solid ${config.colors.katasterHighlight};

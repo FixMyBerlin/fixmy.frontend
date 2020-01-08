@@ -1,5 +1,4 @@
 import { Dispatch } from 'redux';
-import logger from '~/utils/logger';
 import {
   Answer,
   Perspective,
@@ -19,7 +18,9 @@ import {
   makeIntroSelection
 } from './utils';
 import api from './api';
+import config from './config';
 import introQuestions from './config/introQuestions';
+import logger from '~/utils/logger';
 
 export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
 export const SET_ANSWER = 'KatasterKI/SET_ANSWER';

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import config from '~/config';
 import PinIcon from '~/images/pin.svg';
 import { media } from '~/styles/utils';
 import CloseButton from '~/components/NewCloseButton';

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
+import config from '~/pages/Map/config';
 import { sortByKey } from '~/utils/utils';
 import { districts } from '~/labels';
 import {

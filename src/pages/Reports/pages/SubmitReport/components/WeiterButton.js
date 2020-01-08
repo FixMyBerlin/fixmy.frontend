@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import config from '~/pages/Reports/config';
 import Button from '~/components/Button';
 
 export default styled(Button)`

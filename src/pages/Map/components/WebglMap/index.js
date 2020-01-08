@@ -10,6 +10,7 @@ import slugify from 'slugify';
 import Store from '~/store';
 import { isSmallScreen } from '~/styles/utils';
 import * as AppActions from '~/AppState';
+import config from '~/pages/Map/config';
 import * as MapActions from '~/pages/Map/MapState';
 import ProjectMarkers from '~/pages/Map/components/ProjectMarkers';
 import {

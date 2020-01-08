@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import ky from 'ky';
 import { trackEvent } from '~/utils/utils';
 
+import config from '~/pages/Map/config';
 import Title from '~/components/Title';
 import Button from '~/components/Button';
 import Form from '~/components/Form';

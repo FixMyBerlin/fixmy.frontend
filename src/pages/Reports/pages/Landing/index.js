@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/Reports/config';
 import TopSection from './components/TopSection/index';
 import JoinButton from './components/JoinButton';
 import HowItWorksSection from './components/HowItWorksSecion';

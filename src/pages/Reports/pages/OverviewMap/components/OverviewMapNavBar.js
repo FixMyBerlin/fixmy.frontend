@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import { breakpoints, matchMediaSize } from '~/styles/utils';
+import config from '~/pages/Reports/config';
 
 const Wrapper = styled.div`
   margin: 0;

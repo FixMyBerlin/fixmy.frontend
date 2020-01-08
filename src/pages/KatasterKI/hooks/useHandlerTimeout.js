@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import config from '~/pages/KatasterKI/config';
 
 export default (handler = () => {}) => {
   const [isLoading, setIsLoading] = useState(false);
