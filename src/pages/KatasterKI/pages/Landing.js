@@ -181,7 +181,7 @@ const AttributionLabel = styled.span`
 
 const CallToAction = ({ labels }) => (
   <CallToActionWrapper>
-    <CallToActionLink target="_blank" href={config.katasterKI.tspArticleLink}>
+    <CallToActionLink target="_blank" href={config.tspKatasterURL}>
       {labels.calltoaction}
     </CallToActionLink>
     <AttributionLabel>Illustration: Martin Baaske</AttributionLabel>

@@ -14,7 +14,7 @@ const CloseSurveyButton = ({ isEmbedded, style = {} }) => {
     <GhostButton
       css={style}
       onClick={() => {
-        window.open(config.katasterKI.tspArticleLink);
+        window.open(config.tspKatasterURL);
       }}
     >
       Informationen über das Projekt

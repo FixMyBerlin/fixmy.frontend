@@ -14,6 +14,7 @@ const baseConfig = {
   devUrl: 'http://localhost:8080',
   prodUrl: 'https://fixmyberlin.de',
   newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/6kW',
+  tspKatasterURL: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
   apiUrl: apiEndpoints[process.env.CONFIG_ENV] || apiEndpoints.production,
   feedbackMail: 'feedback@fixmyberlin.de',
   logger: 'fmc*', // selects logging namespaces to display when not in production
