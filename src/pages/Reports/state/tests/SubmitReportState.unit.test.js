@@ -259,7 +259,7 @@ describe('SubmitReportState reducer and actions', () => {
         fetchMock.restore();
       });
 
-      it(`dispatches ${formatActionType(
+      it.skip(`dispatches ${formatActionType(
         types.SUBMIT_REPORT_PENDING
       )}, json-schema validates a report and dispatches
        ${formatActionType(
