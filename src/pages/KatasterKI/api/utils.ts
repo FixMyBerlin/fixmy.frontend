@@ -13,6 +13,9 @@ export const marshallMultiChoice = (
   other: string;
 } => {
   let other = '';
+
+  if (values == null) throw new Error('No values to marshall');
+
   const choices = Object.keys(values)
     .map((field) => {
       // Optional freeform input fields are stored in fieldnames ending in

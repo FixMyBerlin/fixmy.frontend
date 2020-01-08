@@ -106,7 +106,7 @@ describe('submitProfile', () => {
       const store = mockStore(stateBefore);
 
       const dispatch = jest.fn();
-      await submitProfile()(dispatch, store.getState);
+      await expect(submitProfile()(dispatch, store.getState)).rejects.toThrow();
       expect(dispatch).toHaveBeenLastCalledWith(
         submitProfileError('Das Nutzerprofil konnte nicht übertragen werden.')
       );
