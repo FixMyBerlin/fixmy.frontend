@@ -11,7 +11,7 @@ import '~/utils/polyfills';
 import history from '~/history';
 import { updateHistory } from '~/AppState';
 import Store from '~/store';
-import App from './KatasterKI';
+import App from '.';
 
 history.listen((location) => Store.dispatch(updateHistory(location)));
 Store.dispatch(updateHistory(history.location));
