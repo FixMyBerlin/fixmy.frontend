@@ -31,6 +31,10 @@ class ErrorBoundary extends React.Component<RouteComponentProps, State> {
     window.location.reload();
   }
 
+  static return() {
+    window.location.href = '/';
+  }
+
   constructor(props: RouteComponentProps) {
     super(props);
     this.state = { hasError: false, message: null };
@@ -38,10 +42,6 @@ class ErrorBoundary extends React.Component<RouteComponentProps, State> {
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     logger(errorInfo.componentStack);
-  }
-
-  return() {
-    this.props.history.push('/');
   }
 
   render() {
@@ -59,10 +59,10 @@ class ErrorBoundary extends React.Component<RouteComponentProps, State> {
             Du kannst versuchen, diese Seite neu zu laden oder zur Startseite
             zurückzukehren.
           </Text>
-          <Button className="button" onClick={this.reload}>
+          <Button className="button" onClick={ErrorBoundary.reload}>
             Neu laden
           </Button>
-          <Button className="button" onClick={this.return}>
+          <Button className="button" onClick={ErrorBoundary.return}>
             Zur Startseite
           </Button>
         </ErrorWrapper>
