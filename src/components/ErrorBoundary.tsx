@@ -22,22 +22,22 @@ const ErrorWrapper = styled.div`
 `;
 
 class ErrorBoundary extends React.Component<RouteComponentProps, State> {
-  constructor(props: RouteComponentProps) {
-    super(props);
-    this.state = { hasError: false, message: null };
-  }
-
   static getDerivedStateFromError(error: Error) {
     const { message } = error;
     return { hasError: true, message };
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    logger(errorInfo.componentStack);
+  static reload() {
+    window.location.reload();
   }
 
-  static reload() {
-    location.reload();
+  constructor(props: RouteComponentProps) {
+    super(props);
+    this.state = { hasError: false, message: null };
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    logger(errorInfo.componentStack);
   }
 
   return() {

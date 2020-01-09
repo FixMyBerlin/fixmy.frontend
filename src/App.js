@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Suspense } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Router } from 'react-router-dom';
@@ -6,8 +6,9 @@ import { LastLocationProvider } from 'react-router-last-location';
 
 import history from '~/history';
 import GlobalStyles from '~/styles/Global';
-import Menu from '~/components/Menu';
+import DotLoader from '~/components/DotLoader';
 import ErrorBoundary from '~/components/ErrorBoundary';
+import Menu from '~/components/Menu';
 import { verify } from '~/pages/User/UserState';
 
 import Routes from './routes';
@@ -34,16 +35,18 @@ class App extends PureComponent {
       <>
         <GlobalStyles />
         <Router history={history}>
-          <LastLocationProvider>
-            <AppWrapper>
-              {!isEmbedMode && <Menu />}
-              <AppContent>
-                <ErrorBoundary>
-                  <Routes />
-                </ErrorBoundary>
-              </AppContent>
-            </AppWrapper>
-          </LastLocationProvider>
+          <Suspense fallback={<DotLoader />}>
+            <LastLocationProvider>
+              <AppWrapper>
+                {!isEmbedMode && <Menu />}
+                <AppContent>
+                  <ErrorBoundary>
+                    <Routes />
+                  </ErrorBoundary>
+                </AppContent>
+              </AppWrapper>
+            </LastLocationProvider>
+          </Suspense>
         </Router>
       </>
     );
