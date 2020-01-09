@@ -28,7 +28,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const { isEmbedMode, token } = this.props;
+    const { isEmbedMode } = this.props;
 
     return (
       <>
@@ -39,7 +39,7 @@ class App extends PureComponent {
               {!isEmbedMode && <Menu />}
               <AppContent>
                 <ErrorBoundary>
-                  <Routes token={token} />
+                  <Routes />
                 </ErrorBoundary>
               </AppContent>
             </AppWrapper>
@@ -51,6 +51,5 @@ class App extends PureComponent {
 }
 
 export default connect((state) => ({
-  token: state.UserState.token,
   isEmbedMode: state.AppState.isEmbedMode
 }))(App);

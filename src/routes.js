@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from 'react';
+import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 import config from '~/config';
@@ -81,4 +82,6 @@ const Routes = ({ token }) => (
   </Suspense>
 );
 
-export default Routes;
+export default connect((state) => ({
+  token: state.UserState.token
+}))(Routes);

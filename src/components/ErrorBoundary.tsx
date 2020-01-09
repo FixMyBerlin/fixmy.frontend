@@ -1,6 +1,5 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
 
 import logger from '~/utils/logger';
@@ -22,22 +21,22 @@ const ErrorWrapper = styled.div`
   }
 `;
 
-class ErrorBoundary extends React.Component<State, RouteComponentProps> {
-  constructor(props) {
+class ErrorBoundary extends React.Component<RouteComponentProps, State> {
+  constructor(props: RouteComponentProps) {
     super(props);
     this.state = { hasError: false, message: null };
   }
 
   static getDerivedStateFromError(error: Error) {
-    const message = error.message;
+    const { message } = error;
     return { hasError: true, message };
   }
 
-  componentDidCatch(error: Error, errorInfo) {
-    logger(error, errorInfo);
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    logger(errorInfo.componentStack);
   }
 
-  reload() {
+  static reload() {
     location.reload();
   }
 
@@ -51,7 +50,11 @@ class ErrorBoundary extends React.Component<State, RouteComponentProps> {
       return (
         <ErrorWrapper>
           <Title>Ups, da ist etwas schiefgegangen</Title>
-          {message && <Text>{message}</Text>}
+          {message && (
+            <Text>
+              <em>{message}</em>
+            </Text>
+          )}
           <Text>
             Du kannst versuchen, diese Seite neu zu laden oder zur Startseite
             zurückzukehren.
