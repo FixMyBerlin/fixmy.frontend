@@ -1,0 +1,72 @@
+import React from 'react';
+import { RouteComponentProps } from 'react-router';
+import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
+
+import logger from '~/utils/logger';
+import Button from '~/components/Button';
+import Title from '~/components/Title';
+import Text from '~/components/Text';
+
+type State = {
+  hasError: boolean;
+  message: string;
+};
+
+const ErrorWrapper = styled.div`
+  margin: 3em auto;
+  max-width: 40em;
+
+  .button {
+    margin-right: 10px;
+  }
+`;
+
+class ErrorBoundary extends React.Component<State, RouteComponentProps> {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, message: null };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    const message = error.message;
+    return { hasError: true, message };
+  }
+
+  componentDidCatch(error: Error, errorInfo) {
+    logger(error, errorInfo);
+  }
+
+  reload() {
+    location.reload();
+  }
+
+  return() {
+    this.props.history.push('/');
+  }
+
+  render() {
+    const { message, hasError } = this.state;
+    if (hasError)
+      return (
+        <ErrorWrapper>
+          <Title>Ups, da ist etwas schiefgegangen</Title>
+          {message && <Text>{message}</Text>}
+          <Text>
+            Du kannst versuchen, diese Seite neu zu laden oder zur Startseite
+            zurückzukehren.
+          </Text>
+          <Button className="button" onClick={this.reload}>
+            Neu laden
+          </Button>
+          <Button className="button" onClick={this.return}>
+            Zur Startseite
+          </Button>
+        </ErrorWrapper>
+      );
+
+    return this.props.children;
+  }
+}
+
+export default withRouter(ErrorBoundary);

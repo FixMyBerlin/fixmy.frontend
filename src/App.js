@@ -7,6 +7,7 @@ import { LastLocationProvider } from 'react-router-last-location';
 import history from '~/history';
 import GlobalStyles from '~/styles/Global';
 import Menu from '~/components/Menu';
+import ErrorBoundary from '~/components/ErrorBoundary';
 import { verify } from '~/pages/User/UserState';
 
 import Routes from './routes';
@@ -37,7 +38,9 @@ class App extends PureComponent {
             <AppWrapper>
               {!isEmbedMode && <Menu />}
               <AppContent>
-                <Routes token={token} />
+                <ErrorBoundary>
+                  <Routes token={token} />
+                </ErrorBoundary>
               </AppContent>
             </AppWrapper>
           </LastLocationProvider>
