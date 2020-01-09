@@ -24,8 +24,8 @@
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
     "type": "git"
   },
-  "author": "webkid.io",
-  "license": "MIT",
+  "author": "FixMyCity",
+  "license": "AGPL-3.0",
   "devDependencies": {
     "@babel/cli": "^7.6.3",
     "@babel/core": "^7.7.4",
