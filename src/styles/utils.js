@@ -1,7 +1,7 @@
 import { css, keyframes } from 'styled-components';
 
 // https://github.com/styled-components/styled-components/blob/master/docs/tips-and-tricks.md
-export function getMediaQuery(size) {
+function getMediaQuery(size) {
   return (...args) => css`
     @media (min-width: ${size}px) {
       ${css(...args)}

@@ -24,8 +24,8 @@
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
     "type": "git"
   },
-  "author": "webkid.io",
-  "license": "MIT",
+  "author": "FixMyCity",
+  "license": "AGPL-3.0",
   "devDependencies": {
     "@babel/cli": "^7.6.3",
     "@babel/core": "^7.7.4",
@@ -67,6 +67,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
     "fetch-mock": "^7.7.0",
     "file-loader": "^4.3.0",
     "html-webpack-plugin": "^4.0.0-beta.2",
