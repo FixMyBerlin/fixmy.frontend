@@ -13,7 +13,7 @@ import SocialSharer from '~/components/Social/SocialSharer';
 import Text from '~/components/Text';
 import GhostButton from '~/components/GhostButton';
 
-import SubscribtionWidget from '~/pages/Home/components/SubscribtionWidget';
+import SubscribtionWidget from './SubscribtionWidget';
 import bgImage from '~/images/background.jpg';
 
 const HomeContent = styled.div`

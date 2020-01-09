@@ -18,7 +18,6 @@ import Store from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from '~/pages/Map/components/WebglMap';
 import config from '~/pages/Map/config';
-import MyHBI from '~/pages/MyHBI';
 
 const MapView = styled.div`
   height: 100%;
@@ -127,7 +126,6 @@ class MapViewComponent extends PureComponent {
             )}
           />
         </MapWrapper>
-        <Route path="/my-hbi" component={MyHBI} />
         {isEmbedMode && <FMBCredits />}
       </MapView>
     );

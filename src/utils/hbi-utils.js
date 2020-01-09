@@ -17,7 +17,7 @@ export function getHBIColorByIndex(index) {
   return stop ? stop.color : '#555';
 }
 
-export function translateOrientationName(name) {
+function translateOrientationName(name) {
   switch (name) {
     case 'O':
       return 'Ostseite';
