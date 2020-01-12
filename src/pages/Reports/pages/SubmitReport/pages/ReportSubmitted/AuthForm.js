@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import ky from 'ky';
 import PropTypes from 'prop-types';
 
+import config from '~/pages/Reports/config';
 import Store from '~/store';
 import Form from '~/components/Form';
 import FormField from '~/components/FormField';

@@ -28,12 +28,6 @@ export function isNumeric(val) {
   return !Number.isNaN(val) && Number.isFinite(val);
 }
 
-export function trackEvent(category = '', action = '', name = '') {
-  if (typeof _paq !== 'undefined') {
-    _paq.push(['trackEvent', category, action, name]);
-  }
-}
-
 export function sortByKey(key = 'id', sortDirection = 'ASC') {
   const isAsc = sortDirection === 'ASC';
   return (a, b) => {
@@ -74,13 +68,3 @@ export function getRVALength({ length, side, id }) {
 }
 
 export const isTouch = 'ontouchstart' in window;
-
-export default {
-  numberFormat,
-  trackEvent,
-  sortByKey,
-  isNumeric,
-  getParameterByName,
-  getRVALength,
-  isTouch
-};

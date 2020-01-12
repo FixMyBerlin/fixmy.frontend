@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '~/config';
 import { isSmallScreen } from '~/styles/utils';
 
 const HeadlineWrapper = styled.div`

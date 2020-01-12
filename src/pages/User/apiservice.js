@@ -1,5 +1,7 @@
 import ky from 'ky';
 
+import config from '~/config';
+
 // helper function that handles form errors and loading state
 async function handleRequest(
   route,

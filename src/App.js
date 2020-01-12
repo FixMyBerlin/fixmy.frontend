@@ -1,9 +1,13 @@
+import 'react-hot-loader';
+
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { hot } from 'react-hot-loader/root';
 import styled from 'styled-components';
 import { Route, Switch, Router, Redirect } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
 
+import config from '~/config';
 import history from '~/history';
 import GlobalStyles from '~/styles/Global';
 import Menu from '~/components/Menu';
@@ -126,7 +130,9 @@ class App extends PureComponent {
   }
 }
 
-export default connect((state) => ({
-  token: state.UserState.token,
-  isEmbedMode: state.AppState.isEmbedMode
-}))(App);
+export default hot(
+  connect((state) => ({
+    token: state.UserState.token,
+    isEmbedMode: state.AppState.isEmbedMode
+  }))(App)
+);

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import config from '~/pages/Map/config';
 
 function getBorderRadius(props) {
   return props.side === 'left' ? '40px 0 0 40px' : '0 40px 40px 0';

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Store from '~/store';
 
+import config from '~/config';
 import { close } from '~/AppState';
 import NavItem from '~/components/Menu/NavItem';
 import SvgIcon from '~/components/SvgIcon';

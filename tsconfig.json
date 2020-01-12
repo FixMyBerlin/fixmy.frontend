@@ -16,6 +16,6 @@
     "esModuleInterop": true
   },
   "files": ["typescript/custom.d.ts"],
-  "include": ["./**/*.ts", "./**/*.tsx"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": ["node_modules"]
 }

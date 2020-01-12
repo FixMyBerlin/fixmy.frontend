@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import idx from 'idx';
 
+import config from '~/pages/Map/config';
 import LocatorIcon from '~/images/location.svg';
 import Loader from '~/components/Loader';
 import { getGeoLocation } from '~/pages/Map/map-utils';

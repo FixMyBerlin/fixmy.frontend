@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
+import config from '~/pages/Reports/config';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
 import Landing from './pages/Landing';

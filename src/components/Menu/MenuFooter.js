@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 
+import config from '~/config';
 import Store from '~/store';
 import { close } from '~/AppState';
 import FMBLogo from '~/components/FMBLogo';

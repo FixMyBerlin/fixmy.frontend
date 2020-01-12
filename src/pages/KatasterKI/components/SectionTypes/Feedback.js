@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
+import config from '~/pages/KatasterKI/config';
 import { media } from '~/styles/utils';
 import { numberFormat } from '~/utils/utils';
 import Flex from '~/components/Flex';

@@ -1,6 +1,7 @@
 /* eslint import/no-dynamic-require: 0, global-require: 0 */
 import React from 'react';
 
+import config from '~/pages/Map/config';
 import Store from '~/store';
 import { toggleHbiFilter } from '~/pages/Map/MapState';
 import Label from '~/components/Label';

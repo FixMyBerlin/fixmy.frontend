@@ -21,7 +21,8 @@
         "ecmaFeatures": {
           "jsx": true
         },
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "."
       },
       "plugins": ["@typescript-eslint"],
       "rules": {
@@ -70,7 +71,17 @@
     ],
     "react/prop-types": [1, { "skipUndeclared": true }],
     "react/destructuring-assignment": 0,
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
   },
 
   "env": {
@@ -90,7 +101,6 @@
   },
 
   "globals": {
-    "config": true,
     "_paq": true
   }
 }

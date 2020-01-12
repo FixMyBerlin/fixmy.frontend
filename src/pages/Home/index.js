@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import config from '~/config';
 import { homeLabels } from '~/labels';
 import ContentOverlay from '~/components/ContentOverlay';
 import FMBLogo from '~/components/FMBLogo';
@@ -12,7 +13,7 @@ import SocialSharer from '~/components/Social/SocialSharer';
 import Text from '~/components/Text';
 import GhostButton from '~/components/GhostButton';
 
-import SubscribtionWidget from '~/pages/Home/components/SubscribtionWidget';
+import SubscribtionWidget from './SubscribtionWidget';
 import bgImage from '~/images/background.jpg';
 
 const HomeContent = styled.div`
@@ -83,7 +84,7 @@ export default () => (
           <Text>{homeLabels.intro}</Text>
         </div>
         <MapLinkWrapper>
-          <a href={config.katasterKI.tspArticleLink}>
+          <a href={config.tspKatasterURL}>
             <BounceButton>{homeLabels.katasterButton}</BounceButton>
           </a>
           <Link to={config.routes.projects}>

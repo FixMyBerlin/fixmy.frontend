@@ -12,6 +12,7 @@ import {
   apiLikes
 } from '~/pages/User/apiservice';
 import history from '~/history';
+import config from '~/pages/Map/config';
 
 const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
 const SIGNUP = 'User/UserState/SIGNUP';
