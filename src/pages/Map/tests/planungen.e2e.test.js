@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 
-import config from '../../config';
-import { getByDataAttr } from '../support/utils';
+import config from '../../../../config';
+import { getByDataAttr } from '../../../../cypress/support/utils';
 
 const adressRegex = new RegExp('[A-Za-z0-9\'\\.\\-\\s\\,]');
 

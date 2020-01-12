@@ -1,5 +1,5 @@
-import { getByDataAttr } from '../../support/utils';
-import config from '../../../config';
+import { getByDataAttr } from '../../../../../cypress/support/utils';
+import config from '../../../../../config';
 
 describe('katasterKi scenes', () => {
   describe('a new session with gathered profile information at hand', () => {

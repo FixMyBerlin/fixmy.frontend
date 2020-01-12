@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import config from '../../../config';
+import config from '../../../../../config';
 
 describe('katasterKi profiles', () => {
   describe('profile 1', () => {

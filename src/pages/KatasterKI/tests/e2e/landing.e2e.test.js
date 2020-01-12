@@ -1,5 +1,5 @@
 // TODO: split tests into multiple files
-import config from '../../../config';
+import config from '../../../../../config';
 
 describe('katasterKi landing', () => {
   before(() => {
