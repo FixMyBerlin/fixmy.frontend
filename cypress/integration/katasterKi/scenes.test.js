@@ -3,11 +3,19 @@ import config from '../../../config';
 
 describe('katasterKi scenes', () => {
   describe('a new session with gathered profile information at hand', () => {
-    it('[internal] has made the store object globally available for testing', () => {
-      cy.window()
-        .its('store')
-        .should('exist');
+
+    describe('internal test setup',() => {
+      before(() => {
+        cy.fmbGoToScene(1);
+      });
+
+      it('has made the store object globally available for testing', () => {
+        cy.window()
+          .its('store')
+          .should('exist');
+      });
     });
+
 
     describe('scene 1', () => {
       before(() => {
