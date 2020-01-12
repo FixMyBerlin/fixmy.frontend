@@ -1,6 +1,6 @@
 # About
 
-This document contains notices taken while adpting cypress for this project.
+This document contains notices taken while adapting cypress for this project.
 
 It shall provide help for other contributors by in form of a little FAQ.
 The main place to go when in doubt about cypress works are [its docs](https://docs.cypress.io),
@@ -80,3 +80,10 @@ The following way worked for me, there surely are smarter ways.
 1. Set a debugger statement somewhere before you think the error resides.
 2. Start the dev server, then run `test:e2e-concurrent-chrome` in another console / run window
    This will launch chrome with open dev tools which should stop at the entered break point. 
+
+TODOs
+* provide instructions how tests should be 
+  * named
+  * structured
+  * placed in the file tree
+  * scoped
