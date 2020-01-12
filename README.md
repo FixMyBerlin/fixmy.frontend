@@ -76,11 +76,15 @@ Run unit tests using `npm run test`.
 
 ### End-To-End Tests
 
-To start the dev server und run end-to-end tests run
-```
-npm run test:e2e
-```
-If the development server is already running:
-```
-npm run test:e2e-concurrent 
-```
+End-To-End tests are implemented using [Cypress](https://www.cypress.io/).
+There are a couple of options to run e2e tests. You can
+
+* start the dev server AND run tests 
+[headlessly](https://blog.logrocket.com/introduction-to-headless-browser-testing-44b82310b27c/) 
+in a single run `npm run test:e2e`.
+This stops the dev server after all tests have been run.
+* run e2e tests *headlessly* against an already running development server using `npm run test:e2e-concurrent`.
+* run e2e tests *in chrome* using `test:e2e-concurrent-chrome`.
+
+Besides the cypress docs, you can seek information about the implementation of e2e tests within the repo in 
+[cypress/README.MD](cypress/README.MD).
