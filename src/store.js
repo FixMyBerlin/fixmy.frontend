@@ -22,10 +22,7 @@ const Reducer = combineReducers({
 
 /* eslint-disable no-underscore-dangle */
 const enhancers = window.__REDUX_DEVTOOLS_EXTENSION__
-  ? compose(
-      applyMiddleware(thunk),
-      window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
+  ? compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__())
   : applyMiddleware(thunk);
 /* eslint-enable */
 
