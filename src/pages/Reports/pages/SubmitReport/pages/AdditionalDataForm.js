@@ -191,9 +191,6 @@ class AdditionalDataForm extends PureComponent {
   }
 }
 
-export default connect(
-  (state) => ({ error: state.ReportsState.ErrorState }),
-  {
-    ...errorStateActions
-  }
-)(AdditionalDataForm);
+export default connect((state) => ({ error: state.ReportsState.ErrorState }), {
+  ...errorStateActions
+})(AdditionalDataForm);
