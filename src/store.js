@@ -21,10 +21,12 @@ const Reducer = combineReducers({
 // https://github.com/zalmoxisus/redux-devtools-extension#usage
 
 /* eslint-disable no-underscore-dangle */
-const enhancers = compose(
-  applyMiddleware(thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const enhancers = window.__REDUX_DEVTOOLS_EXTENSION__
+  ? compose(
+      applyMiddleware(thunk),
+      window.__REDUX_DEVTOOLS_EXTENSION__()
+    )
+  : applyMiddleware(thunk);
 /* eslint-enable */
 
 export default createStore(Reducer, enhancers);
