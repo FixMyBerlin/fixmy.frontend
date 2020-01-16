@@ -1,4 +1,6 @@
 
+const wp = require('@cypress/webpack-preprocessor');
+const webpackOptions = require('../../webpack/webpack.config.dev.js');
 
 module.exports = (on, config) => {
   // modify the way browsers are launched,
@@ -13,6 +15,7 @@ module.exports = (on, config) => {
     }
   });
 
+  on('file:preprocessor', wp({ webpackOptions }));
 
   // store process env in cypress env,
   // see https://docs.cypress.io/guides/guides/environment-variables.html#Option-2-cypress-env-json
