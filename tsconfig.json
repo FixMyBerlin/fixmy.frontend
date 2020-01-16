@@ -5,6 +5,7 @@
     "module": "es2015",
     "target": "es2015",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "jsx": "react",
     "allowJs": true,
     "sourceMap": true,

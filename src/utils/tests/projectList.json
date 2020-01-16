@@ -1,0 +1,3929 @@
+[
+  {
+    "id": 4,
+    "url": "http://localhost:8000/api/projects/4",
+    "project_key": "FK-020",
+    "title": "Neue Fahrradstraße",
+    "description": "Die Glogauer Straße ist als Zubringer zum Görlitzer Park und Durchfahrt zur Oberbaumbrücke eine stark befahrene Radstrecke. Die Straße soll daher als Fahrradstraße umgwidmet werden. Die Machbarkeit soll im Jahr 2019 geprüft und bei einem positivem Ergebnis voraussichtlich in 2019 umgesetzt werden.",
+    "short_description": "Die Glogauer Straße wird zu einer Fahrradstraße.",
+    "category": "bike street",
+    "street_name": "Glogauer Straße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "draft",
+    "responsible": "Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.43565378662102, 52.49167098618408],
+        [13.43574183352529, 52.49176271973578],
+        [13.4374143916796, 52.49345700931438],
+        [13.43892283946466, 52.49499346330411]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.4374143916796, 52.49345700931438]
+    },
+    "length": 431,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 4,
+    "liked_by_user": false
+  },
+  {
+    "id": 6,
+    "url": "http://localhost:8000/api/projects/6",
+    "project_key": "FK-001-2",
+    "title": "Errichtung eines Radfahrstreifens",
+    "description": "Zwischen Kottbuser Tor und Hallesches Tor gibt es bisher noch keine Radverkehrsanlagen. Typisch für eine Hauptverkehrsstraße ist das Verkehrsaufkommen auf der Gitschiner Straße / Skalitzer Straße sehr hoch. Eine gesicherte Fahrradführung ist also sehr wichtig. Ende 2017 konnte der 1. BA (Kottbusser Tor bis Böcklerstraße) abgeschlossen werden. Hier stehen für Radfahrer*innen in beiden Richtungen nun zwei Meter breite Radfahrstreifen zur Verfügung. Der 4. BA (Zossener Brücke bis Alexandrinenstr) wird voraussichtlich im Herbst 2019 abgeschlossen sein. Die Umsetzung der BA. 3 und 4 (Alexandrinenstraße bis Böcklerstraße) werden im Jahr 2020 folgen.",
+    "short_description": "Auf der Fahrbahn soll ein Radfahrstreifen markiert werden",
+    "category": "new cycling infrastructure",
+    "street_name": "Gitschiner Straße / Skalitzer Straße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019 /2020",
+    "construction_completed_date": null,
+    "phase": "execution",
+    "responsible": "SenUVK / Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.39196938603253, 52.49794609954578],
+          [13.39223748854546, 52.49796936926107],
+          [13.3932339959752, 52.49805962702688],
+          [13.3942883619045, 52.4981667192273],
+          [13.39540109320607, 52.49830434173862]
+        ],
+        [
+          [13.39627833706286, 52.49836548436401],
+          [13.39648421399202, 52.4983759406485],
+          [13.39738738789134, 52.49838354595411],
+          [13.39783351632587, 52.4983348739409],
+          [13.399561674618, 52.49834865826171],
+          [13.40300617258397, 52.49836923869315],
+          [13.40617643612097, 52.498386080544]
+        ],
+        [
+          [13.40705964111121, 52.49839428339985],
+          [13.40834040880979, 52.49839652023859],
+          [13.40910811981809, 52.49842825636852],
+          [13.41010018236386, 52.49848084444068],
+          [13.41053440231461, 52.49851879410354],
+          [13.41133978193763, 52.49855994265284],
+          [13.41208691578946, 52.49859495143632],
+          [13.41253976293079, 52.49860281286509],
+          [13.41315810524703, 52.49856115158052],
+          [13.4136546145976, 52.49853029840036],
+          [13.41405175217077, 52.49851434606138],
+          [13.41420429863554, 52.4985137313159],
+          [13.41470143952053, 52.49856756888148],
+          [13.4158034324071, 52.4987339846373],
+          [13.41675516397391, 52.4988546189889],
+          [13.41724127579498, 52.49891023619531],
+          [13.41741353022934, 52.49893277354988]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.40300617258397, 52.49836923869315]
+    },
+    "length": 1768,
+    "photos": [
+      {
+        "copyright": "IST-Zustand Bild: SGA Friedrichshain-Kreuzberg",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-001-2_Gitschiener_Stra%C3%9Fe.jpg"
+      }
+    ],
+    "likes": 13,
+    "liked_by_user": false
+  },
+  {
+    "id": 7,
+    "url": "http://localhost:8000/api/projects/7",
+    "project_key": "FK-003",
+    "title": "Schaffung einer Radbahn auf dem Mittelstreifen",
+    "description": "Es besteht die Idee, auf dem Mittelstreifen der Yorckstraße für den Radverkehr eine eigene Radbahn zu schaffen. Die vorhandenen Radwege in den Seitenbereichen genügen den heutigen und zukünftigen Anforderungen nicht mehr. Es wird geprüft ob auf dem Mittelstreifen der Radverkehr geschützt vor dem Kfz-Verkehr geführt werden kann. Derzeit wird eine Machbarkeitsstudie durchgeführt.",
+    "short_description": "Auf dem Mittelstreifen soll für den Radverkehr eine eigene Radbahn geschaffen werden.",
+    "category": "new cycling infrastructure",
+    "street_name": "Gneisenaustraße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "draft",
+    "responsible": "SenUVK / Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.4007168403016, 52.49029553800499],
+          [13.4051605607868, 52.4894042943361]
+        ],
+        [
+          [13.39484517152587, 52.49147854920701],
+          [13.39638075279158, 52.49117446024247],
+          [13.39794293328846, 52.49086971746868],
+          [13.39993824553466, 52.49046619494752]
+        ],
+        [
+          [13.37713999548658, 52.49166139380101],
+          [13.378084362162, 52.49196077884978],
+          [13.37891600938793, 52.49223742597196],
+          [13.37909637657769, 52.49229509400678]
+        ],
+        [
+          [13.37988876387771, 52.49253302932939],
+          [13.38147602744163, 52.49305456039877],
+          [13.38194097081984, 52.49320900734789],
+          [13.38260541506031, 52.49342327386217],
+          [13.38274070281076, 52.49348043291452],
+          [13.38311161234749, 52.493582487113]
+        ],
+        [
+          [13.38396850631036, 52.49360724142731],
+          [13.38413994653816, 52.49358519399398],
+          [13.38678023948385, 52.49308597564639],
+          [13.38730721166673, 52.49299461366842]
+        ],
+        [
+          [13.38813587678524, 52.49280823122609],
+          [13.38835664700629, 52.4927611443368],
+          [13.3908690205872, 52.49227288579718],
+          [13.39272748755903, 52.491916220899],
+          [13.39400726554701, 52.49164898480638]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.3908690205872, 52.49227288579718]
+    },
+    "length": 2483,
+    "photos": [
+      {
+        "copyright": "Ist-Zustand Bild: SGA Friedrichshain-Kreuzberg",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-003_Generalszug.png"
+      }
+    ],
+    "likes": 16,
+    "liked_by_user": false
+  },
+  {
+    "id": 10,
+    "url": "http://localhost:8000/api/projects/10",
+    "project_key": "FK-006",
+    "title": "Sanierung der Radwege oder Radfahrstreifen auf der Fahrbahn",
+    "description": "Die Radwege auf dem Abschnitt befinden sich in einem desolaten Zustand und sind zu schmal. Aktuell wird überprüft, ob die Radwege saniert und verbreitert werden können oder ob auf der Fahrbahn ein Radfahrstreifen markiert wird. Ein erster Bauabschnitts (Alte Jakobstraße bis Lindenstraße - Nordseite) wird im Herbst 2019 fertiggestellt. In 2020 soll der zweite Bauabschnitt (Moritzplatz bis Alte Jakobstraße - Nordseite) umgesetzt werden.",
+    "short_description": "Auf dem Abschnitt sollen entweder die Radwege saniert werden oder ein Radfahrstreifen auf der Fahrbahn markiert",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Oranienstraße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": 0,
+    "draft_submitted": null,
+    "construction_started": "2019",
+    "construction_completed": "2020",
+    "construction_completed_date": "2020-12-31",
+    "phase": "execution",
+    "responsible": "SenUVK / Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.39866972475259, 52.50698301584839],
+        [13.39984415630414, 52.50665704756957],
+        [13.40168117424496, 52.5061522773845],
+        [13.401962847408, 52.50607163153281],
+        [13.40324961015359, 52.50571551851282],
+        [13.40508052291098, 52.5052156686329],
+        [13.40529891353006, 52.50515973487749],
+        [13.40554425090607, 52.50508632220038],
+        [13.40798058380103, 52.50441795250241],
+        [13.4084993508189, 52.50427535917519],
+        [13.40930632292208, 52.50405932488418],
+        [13.40959688881076, 52.50397664192852],
+        [13.40978988447843, 52.50391982093247],
+        [13.40997998726141, 52.50386800658382]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.40508052291098, 52.5052156686329]
+    },
+    "length": 902,
+    "photos": [
+      {
+        "copyright": "Ist-Zustand Bild: SGA Friedrichshain-Kreuzberg",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-006_Oranienstra%C3%9Fe.png"
+      }
+    ],
+    "likes": 11,
+    "liked_by_user": false
+  },
+  {
+    "id": 11,
+    "url": "http://localhost:8000/api/projects/11",
+    "project_key": "FK-007",
+    "title": "Sanierung und Umbau der Radwege",
+    "description": "Der Radwege auf dem Abschnitt befinden sich in einem desolaten Zustand und ist zu schmal. Daher wird die Radverkehrsanlage über den gesamte Abschnitt grundhaft erneuert und auf eine Breite von 2,16 m ausgebaut und asphaltiert. Im Bereich des U-Bahn Zugangs \"Platz der Luftbrück\" bis zum KP Fidicinstraße werden Radfahrende zukünftig auf der Fahrbahn in Form einer Protected Bike Lane geführt. Hierdurch wird die Gefahrenstelle U-Bahn Zugang (Konflikt: Fuß- / Radverkehr) und der bisher unübersichtlich gestaltete Kreuzungsbereich Mehringdamm/Fidicinstraße (Konflikt: Kfz-/Radverkehr) deutlich entschärft.",
+    "short_description": "Auf der Ostseite des Abschnittes sollen entweder die Radwege saniert werden oder ein Radfahrstreifen auf der Fahrbahn markiert",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Mehringdamm",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 0,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "2019",
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "execution",
+    "responsible": "SenUVK/Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.3859786598654, 52.4873522420721],
+          [13.3859903931592, 52.4874309059775],
+          [13.3860144578057, 52.4877078218844],
+          [13.3859993234812, 52.4878342474364],
+          [13.3860150116198, 52.4879379437764]
+        ],
+        [
+          [13.3860150116198, 52.4879379437764],
+          [13.3861311543599, 52.4887160128429],
+          [13.3862915720078, 52.4895028763217],
+          [13.3862907068678, 52.4896063467806],
+          [13.3863405047783, 52.4897835922349]
+        ],
+        [
+          [13.3878844124409, 52.4931470838753],
+          [13.387891154343, 52.4931572684131],
+          [13.3879790366425, 52.4933119050772],
+          [13.3882084230363, 52.4936736498569],
+          [13.3884278870705, 52.4939870862558],
+          [13.3885776138305, 52.4941852569057]
+        ],
+        [
+          [13.3885776138305, 52.4941852569057],
+          [13.3887964666808, 52.4944595605966],
+          [13.3889984200946, 52.4946924695021],
+          [13.3893482118637, 52.4950682185516],
+          [13.389456467032, 52.4952767788013],
+          [13.3895183888628, 52.4954221399144],
+          [13.3895344631916, 52.4955576347756],
+          [13.3895327710686, 52.4956906667357],
+          [13.389528578103, 52.4957282255749]
+        ],
+        [
+          [13.3865270503883, 52.4903105326633],
+          [13.3866882349157, 52.4908035989262],
+          [13.3868511717056, 52.491223318191],
+          [13.3868757681814, 52.4912700421799]
+        ],
+        [
+          [13.3868757681814, 52.4912700421799],
+          [13.3869559076863, 52.4914763152147],
+          [13.3872581902078, 52.4921619918516],
+          [13.3873131629234, 52.4922573026024],
+          [13.3873556666581, 52.4923738534499],
+          [13.3875275985466, 52.4926542117948]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.3872581902078, 52.4921619918516]
+    },
+    "length": 1003,
+    "photos": [
+      {
+        "copyright": "Ist-Zustand Bild: SGA Friedrichshain-Kreuzberg",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-007_Mehringdamm.png"
+      }
+    ],
+    "likes": 13,
+    "liked_by_user": false
+  },
+  {
+    "id": 18,
+    "url": "http://localhost:8000/api/projects/18",
+    "project_key": "FK-011",
+    "title": "Asphaltierung der Fahrbahn",
+    "description": "Die Mariannenstraße wird zwischen Kottbusser Brücke und Reichenberg Straße asphaliert. Der Abschnitt gehört zum übergeordneten Radroutennetz. Er ist gepflastert und für Radfahrende entsprechend unkomfortabel.",
+    "short_description": "Die Mariannenstraße wird zwischen Kottbusser Brücke und Reichenberg Straße asphaliert.",
+    "category": "modification of cross section",
+    "street_name": "Mariannenstraße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "Sommer 2018",
+    "construction_completed": "Sommer 2018",
+    "construction_completed_date": null,
+    "phase": "ready",
+    "responsible": "SenUVK / Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.42012314509257, 52.49643921721862],
+        [13.42012715844537, 52.49647165226898],
+        [13.4201331492649, 52.49649416005299],
+        [13.42139501021449, 52.49802241522671],
+        [13.42148274340587, 52.49813999304361]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.42139501021449, 52.49802241522671]
+    },
+    "length": 210,
+    "photos": [
+      {
+        "copyright": "Baustelle Mariannenstraße Bild: SGA Friedrichshain-Kreuzberg",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-011_Mariannenstra%C3%9Fe.jpg"
+      }
+    ],
+    "likes": 6,
+    "liked_by_user": false
+  },
+  {
+    "id": 20,
+    "url": "http://localhost:8000/api/projects/20",
+    "project_key": "FK-013",
+    "title": "Errichtung eines Radfahrstreifens",
+    "description": "Die Radwege auf dem Abschnitt befinden sich in einem desolaten Zustand und sind zu schmal. Es besteht die Idee den bisherige Radweg zum Parken zu benutzen und den Radverkehr auf einem Radfahrstreifen zu führen. Dazu ist vorher zu Prüfen, ob das Parken zwischen den Bäumen technisch möglich ist.",
+    "short_description": "Auf dem Abschnitt sollen Radfahrstreifen markiert werden. Der bisherige Radweg soll dann zum Parken genutzt werden-",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Prinzenstraße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "draft",
+    "responsible": "SenUVK/Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.40501945081379, 52.49630992396717],
+          [13.40506691213771, 52.49639858292478],
+          [13.40529440316699, 52.49668235918539],
+          [13.40534687979492, 52.49674016000409],
+          [13.40643034562297, 52.49814947711478]
+        ],
+        [
+          [13.40679030547703, 52.49864170324086],
+          [13.40702133200317, 52.49894192140019],
+          [13.40784480809677, 52.49998684458627],
+          [13.40790527089176, 52.50006476464198],
+          [13.40856220779454, 52.5008978893628],
+          [13.40910964591732, 52.50160643021479],
+          [13.40923865900603, 52.50175803510379],
+          [13.40932811384551, 52.50187164045321],
+          [13.41034846490776, 52.50317980538137]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.40784480809677, 52.49998684458627]
+    },
+    "length": 875,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 4,
+    "liked_by_user": false
+  },
+  {
+    "id": 23,
+    "url": "http://localhost:8000/api/projects/23",
+    "project_key": "FK-016",
+    "title": "Errichtung eines geschützten Radfahrstreifens (Westseite), Sanierung des Radwegs (Ostseite)",
+    "description": "Bisher gibt es auf der westlichen Seite der Möckernstraße keine Radverkehrsanlage. Aufgrund des hohen Verkehrsaufkommens sind die Radfahrende besonders zu schützen. Die Möglichkeit der Einrichtung eines geschützen Radfahrstreifen (Protected Bike Lane) wird geprüft. Auf der Ostseite der Möckernstraße ist ein Radweg vorhanden. Dieser befindet sich jedoch in einem desolaten Zustand und ist für heutige Verkehrsbelastungen nicht ausreichend dimensioniert. Dieser soll über die gesamte Strecke verbreitert und asphaltiert werden.",
+    "short_description": "Auf der Fahrbahn soll ein geschützer Radfahrrstreifen errichtet werden",
+    "category": "new cycling infrastructure",
+    "street_name": "Möckernstraße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "2020",
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "draft",
+    "responsible": "SenUVK/Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.3795008724211, 52.4926787704708],
+          [13.3795039797644, 52.492779322469],
+          [13.3795612069438, 52.4935000005561],
+          [13.3796302413558, 52.4944441407182]
+        ],
+        [
+          [13.379850730041, 52.4973714656043],
+          [13.3798526370508, 52.4974056393083],
+          [13.3798561763902, 52.4974579022837],
+          [13.3798624155258, 52.4975357540165],
+          [13.3798768710784, 52.4975881664928],
+          [13.3799966862303, 52.4979930809876],
+          [13.3800959127695, 52.4983143924026],
+          [13.3801455091989, 52.4984758935877]
+        ],
+        [
+          [13.3796302413558, 52.4944441407182],
+          [13.3796421466544, 52.494615389708],
+          [13.3796883754126, 52.4952392644328],
+          [13.3796969461537, 52.4953526984536],
+          [13.3797317262487, 52.4957353701667]
+        ],
+        [
+          [13.3797317262487, 52.4957353701667],
+          [13.3797832093937, 52.4965214855249],
+          [13.379815896812, 52.49691965228],
+          [13.379850730041, 52.4973714656043]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.3796969461537, 52.4953526984536]
+    },
+    "length": 707,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 5,
+    "liked_by_user": false
+  },
+  {
+    "id": 26,
+    "url": "http://localhost:8000/api/projects/26",
+    "project_key": "FK-019",
+    "title": "Neue Fahrradstraße",
+    "description": "Beide Straßen gehörten zum übergeordneten Radroutennetz. Entsprechend hoch ist der Anteil der Radfahrenden. In beiden Straßen soll eine Fahrradstraße angeordnet werden. Die Machbarkeit soll im Jahr 2019 geprüft und bei einem positivem Ergebnis voraussichtlich in 2019 umgesetzt werden.",
+    "short_description": "Die Körtstraße und die Fichtestraßen werden zu Fahrradstraßen",
+    "category": "bike street",
+    "street_name": "Fichtestraße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "draft",
+    "responsible": "Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.41298295462551, 52.49145113998119],
+          [13.41300112960139, 52.49140668527701],
+          [13.41330332543062, 52.48998068818118],
+          [13.41351229635156, 52.48901801183361],
+          [13.4136235707816, 52.48840699581237],
+          [13.41362515781976, 52.48836289573395],
+          [13.41357350995388, 52.48826764398438]
+        ],
+        [
+          [13.40781188047193, 52.48900007084459],
+          [13.40797699476521, 52.4892057708308],
+          [13.40808785004906, 52.48935524776991],
+          [13.40820233278482, 52.48953044772801],
+          [13.40828061177944, 52.48962903575529],
+          [13.40843585116364, 52.48975482704718],
+          [13.40864181531849, 52.48987892160108],
+          [13.40887564815696, 52.48998673835731],
+          [13.41073927739127, 52.49086431935071],
+          [13.41090049054453, 52.4909474057007],
+          [13.41233024044767, 52.4916112832562]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.41090049054453, 52.4909474057007]
+    },
+    "length": 787,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 8,
+    "liked_by_user": false
+  },
+  {
+    "id": 27,
+    "url": "http://localhost:8000/api/projects/27",
+    "project_key": "FK-021-1",
+    "title": "Neue Radfahrstreifen und Errichtung bzw. Sanierung eines Radwegs",
+    "description": "Aktuell werden Radfahrende zusammen mit den Fußverkehr auf dem Gehweg geführt. Der Gehweg ist für diese Führungsvariante zu schmal und in einem schlechten Zustand. Auf der Südseite der Stralauer Allee soll ein Radweg angelegt werden. In Teilabschnitten soll der Radverkehr zukünftig auf einem Radfahrstreifen geführt.",
+    "short_description": "Auf der Südseite der Stralauer Allee soll ein Radfahrstreifen markiert werden",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Stralauer Allee",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 0,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "2020",
+    "construction_completed": "2020",
+    "construction_completed_date": "2020-12-31",
+    "phase": "planning",
+    "responsible": "SenUVK/Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.45580679427119, 52.50020788246728],
+          [13.45700619522181, 52.49982283359569],
+          [13.45811930341065, 52.4994680247919],
+          [13.4584516616584, 52.49936887465841],
+          [13.45975321813622, 52.49896149443317],
+          [13.45996060068096, 52.49889333204899],
+          [13.4610131989775, 52.49855376595147],
+          [13.46212606537356, 52.49820703566481],
+          [13.46247824082046, 52.49812438593539],
+          [13.46266132427598, 52.49807027715333],
+          [13.46313413804349, 52.49792476674608],
+          [13.46360725959619, 52.49777033768501],
+          [13.46426632933481, 52.4975647959237],
+          [13.46429143590734, 52.49755678172301]
+        ],
+        [
+          [13.44718034637328, 52.50260937789297],
+          [13.44737623552517, 52.50256042428218],
+          [13.44758373910181, 52.50250260134431],
+          [13.44926951962482, 52.50204552824658],
+          [13.45043107183871, 52.50174050907051],
+          [13.4507247112569, 52.50164751451081],
+          [13.45191826425506, 52.50134616873651],
+          [13.45329210634686, 52.50096448570542],
+          [13.45453448257563, 52.50060723724235],
+          [13.4550273395967, 52.5004614484761]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.45700619522181, 52.49982283359569]
+    },
+    "length": 1351,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 6,
+    "liked_by_user": false
+  },
+  {
+    "id": 34,
+    "url": "http://localhost:8000/api/projects/34",
+    "project_key": "FK-029",
+    "title": "Neue Radfahrstreifen",
+    "description": "Auf diesem Abschnitt ist die Breite des Gehweges nicht ausreichend für das hohe Rad- und Fußverkehraufkommen. Aufgrund der beengten Verhältnisse kommt es immer wieder zu Konflikten zwischen Radfahrenden und zu Fuß Gehenden. Der Radweg, der nach Osten auf dem Gehweg verläuft, ist häufig nicht einmal einen Meter breit. Immer wieder gibt es Konflikte mit Fußgängern. Deswegen soll der Radverkehr auf die Fahrbahn gelegt werden. Dazu wird von den 3 Kfz-Spuren eine Spur in einen Radfahrstreifen umgewandelt. Die Planung läuft bereits, die Umsetzung soll in 2019 beginnen.",
+    "short_description": "Der Radverkehr soll auf diesem Abschnitt zukünfitg nicht mehr mit den Fußgängern geführt werden.",
+    "category": "new cycling infrastructure",
+    "street_name": "Frankfurter Allee",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 0,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "Herbst 2019",
+    "construction_completed": "Frühjahr 2020",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "SenUVK/Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": "https://www.berliner-zeitung.de/berlin/verkehr/frankfurter-allee-radler-bekommen-eigenen-fahrstreifen-30595954",
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.47343665952493, 52.51382850731007],
+          [13.47448014964433, 52.51371659827507],
+          [13.47507557633509, 52.51366539638019],
+          [13.47654462891523, 52.51352404698889],
+          [13.47662743535968, 52.51351607894068]
+        ],
+        [
+          [13.47078163295308, 52.5141131108338],
+          [13.47343665952493, 52.51382850731007]
+        ],
+        [
+          [13.46967730164709, 52.51422707734542],
+          [13.47078163295308, 52.5141131108338]
+        ],
+        [
+          [13.46747429285831, 52.5144380280731],
+          [13.46814426289688, 52.51437138244279],
+          [13.4690216895461, 52.51428461004189],
+          [13.46967730164709, 52.51422707734542]
+        ],
+        [
+          [13.4643735499124, 52.51477896332337],
+          [13.46478634036071, 52.51472572897339]
+        ],
+        [
+          [13.46334242813164, 52.51484594208886],
+          [13.46380462750296, 52.51482538939666],
+          [13.4643735499124, 52.51477896332337]
+        ],
+        [
+          [13.46285836178067, 52.51491479725601],
+          [13.46308011850318, 52.51488734722276],
+          [13.46334242813164, 52.51484594208886]
+        ],
+        [
+          [13.46059272149771, 52.51512410564099],
+          [13.46190077340445, 52.5149933454758],
+          [13.46224968873476, 52.51496754982112],
+          [13.46256035352341, 52.51494839276967],
+          [13.46285836178067, 52.51491479725601]
+        ],
+        [
+          [13.46615424395221, 52.51457932677241],
+          [13.46726061423851, 52.51446877265908],
+          [13.46747429285831, 52.5144380280731]
+        ],
+        [
+          [13.46478634036071, 52.51472572897339],
+          [13.46615424395221, 52.51457932677241]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.4690216895461, 52.51428461004189]
+    },
+    "length": 1104,
+    "photos": [
+      {
+        "copyright": "Ist-Zustand Bild: SGA Friedrichshain-Kreuzberg",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-029_Frankfurter_Allee.png"
+      }
+    ],
+    "likes": 12,
+    "liked_by_user": false
+  },
+  {
+    "id": 35,
+    "url": "http://localhost:8000/api/projects/35",
+    "project_key": "FK-031-1",
+    "title": "Neue Fahrradstraße",
+    "description": "Die Modersohnstraße, Gärtnerstraße und  Mainzer Straße bilden eine wichtige Fahrradroute durch den Boxhagener Kiez. Zur Verbesserung der Sicherheit soll auf diesem Abschnitt eine Fahrradstraßen angeordnet werden. Die Machbarkeit soll im Jahr 2019 geprüft und bei positivem Ergebnis voraussichtlich in 2020 umgesetzt werden. Die gepflasterte Gärtnerstraße soll in diesem Zuge asphaltiert werden. Die Asphaltierung der Gärtnerstraße kann ab 2020 erfolgen, wenn die Baumaßnahme der Berliner Wasserbetriebe (vorraussichtlich in 2019) abgeschlossen ist.",
+    "short_description": "Auf dieser Fahrradroute werden Fahrradstraßen angeordnet.",
+    "category": "bike street",
+    "street_name": "Modersohnstraße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.45558333968069, 52.50058935918732],
+        [13.45584610330448, 52.50098002498989],
+        [13.45671366178846, 52.50226016663981],
+        [13.45678562698722, 52.5023947090179],
+        [13.45685881663498, 52.50253296648805],
+        [13.45698126563338, 52.50279326637049],
+        [13.45704901591085, 52.50294580332368],
+        [13.45708749334521, 52.50301588725738],
+        [13.45721858724239, 52.50327986790258],
+        [13.45747269921486, 52.50378809769489],
+        [13.45771792474002, 52.50429977933559],
+        [13.45789700237466, 52.5046740296597],
+        [13.45823534212317, 52.50537196676781],
+        [13.45861886382998, 52.50615801748172],
+        [13.45864726347669, 52.50624017317838],
+        [13.45870948219203, 52.5063772932383],
+        [13.45875189899969, 52.50644191126683],
+        [13.45881784783954, 52.50655388083857]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.45721858724239, 52.50327986790258]
+    },
+    "length": 729,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 11,
+    "liked_by_user": false
+  },
+  {
+    "id": 36,
+    "url": "http://localhost:8000/api/projects/36",
+    "project_key": "FK-031-2",
+    "title": "Neue Fahrradstraße",
+    "description": "Die Modersohnstraße, Gärtnerstraße und  Mainzer Straße bilden eine wichtige Fahrradroute durch den Boxhagener Kiez. Zur Verbesserung der Sicherheit soll auf diesem Abschnitt eine Fahrradstraßen angeordnet werden. Die Machbarkeit soll im Jahr 2019 geprüft und bei positivem Ergebnis voraussichtlich in 2020 umgesetzt werden. Die gepflasterte Gärtnerstraße soll in diesem Zuge asphaltiert werden. Die Asphaltierung der Gärtnerstraße kann ab 2020 erfolgen, wenn die Baumaßnahme der Berliner Wasserbetriebe (vorraussichtlich in 2019) abgeschlossen ist.",
+    "short_description": "Auf dieser Fahrradroute werden Fahrradstraßen angeordnet.",
+    "category": "bike street",
+    "street_name": "Gärtnerstraße / Mainzer Straße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.45881784783954, 52.50655388083857],
+        [13.45886818047662, 52.50666634898231],
+        [13.45947156309903, 52.50791835801689],
+        [13.45954028984172, 52.50804409157834],
+        [13.45958814193969, 52.50815092872635],
+        [13.4599418457204, 52.50885224100729],
+        [13.46001307226773, 52.50898851273968],
+        [13.46030612336963, 52.50959300534769],
+        [13.46059157258866, 52.51020511293064],
+        [13.46061064673583, 52.51028106172058],
+        [13.46099744449634, 52.51109491010891],
+        [13.46146364566139, 52.51203586975599],
+        [13.46151928111341, 52.51211747480266],
+        [13.46156803574929, 52.51217282277308],
+        [13.46227307551889, 52.51319776565558],
+        [13.46328363513435, 52.5147428871302],
+        [13.46334242813164, 52.51484594208886]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.46099744449634, 52.51109491010891]
+    },
+    "length": 973,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 11,
+    "liked_by_user": false
+  },
+  {
+    "id": 37,
+    "url": "http://localhost:8000/api/projects/37",
+    "project_key": "FK-032",
+    "title": "Neue Fahrradstraße",
+    "description": "Die Corinthstraße stellt eine wichtige Radverbindung zwischen dem Boxhagener Kiez und der Stralauer Allee dar. Wegen dieser Verbindungsfunktion soll hier eine Fahrradstraße angeordnet werden. Die Machbarkeit soll im Jahr 2019 geprüft und bei einem positivem Ergebnis voraussichtlich in 2020 umgesetzt werden.",
+    "short_description": "Auf dieser Verbindung wird eine Fahrradstraße angeordnet.",
+    "category": "bike street",
+    "street_name": "Corinthstraße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "draft",
+    "responsible": "Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.45678562698722, 52.5023947090179],
+        [13.45696791087358, 52.50234674352478],
+        [13.4589858849358, 52.50126924608507],
+        [13.45915633654247, 52.50116945373176],
+        [13.45930720165792, 52.50107782697368],
+        [13.4602075203479, 52.50049115388587],
+        [13.46050872463747, 52.50029487559139],
+        [13.46311779096189, 52.49947998059698],
+        [13.46552527296087, 52.49872375934621]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.46050872463747, 52.50029487559139]
+    },
+    "length": 728,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 7,
+    "liked_by_user": false
+  },
+  {
+    "id": 40,
+    "url": "http://localhost:8000/api/projects/40",
+    "project_key": "FK-034",
+    "title": "Neue Fahrradstraße",
+    "description": "Als Alternativroute zur stark befahrenen Frankfurter Allee / Karl-Marx-Allee und zur Erschließung der dortigen Wohngebiete und soll hier eine Fahrradstraße angeordnet werden. Die Machbarkeit soll im Jahr 2019 geprüft und bei einem positivem Ergebnis voraussichtlich in 2020 umgesetzt werden.",
+    "short_description": "Hier soll eine Fahhradstraße entstehen.",
+    "category": "bike street",
+    "street_name": "Weidenweg",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "draft",
+    "responsible": "SenUVK / Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.45359881886097, 52.51845055246858],
+          [13.45409890150043, 52.51835094049306],
+          [13.45710530968803, 52.51780021891628],
+          [13.4590514306024, 52.51745923222381],
+          [13.46111510869572, 52.51710092787747],
+          [13.4637797694312, 52.51661674230981],
+          [13.46491781168847, 52.51641027681566],
+          [13.46510639234429, 52.51636990348872],
+          [13.46810772534446, 52.5158450052997],
+          [13.47174137028703, 52.51518784642618],
+          [13.47190191400657, 52.51516851001401],
+          [13.47199611611858, 52.51515069557372],
+          [13.47319669187686, 52.51493782169211],
+          [13.47335805833022, 52.51489470525546],
+          [13.47352016624036, 52.5148301883495],
+          [13.47416595693359, 52.51464820825174]
+        ],
+        [
+          [13.4409409521583, 52.5181879295677],
+          [13.44281605855999, 52.51799883189659],
+          [13.44759602741278, 52.51752835528382],
+          [13.44797536647371, 52.51749764826558],
+          [13.44922273881031, 52.5177328588025],
+          [13.44938221259404, 52.51774446419559],
+          [13.45048554854442, 52.51797301601582],
+          [13.4512095025192, 52.5181228473887],
+          [13.45220146315864, 52.5183291386992],
+          [13.4523121055945, 52.51837278231448],
+          [13.45249359319066, 52.51838988904037]
+        ],
+        [
+          [13.43345123214361, 52.51982658510732],
+          [13.43394871232399, 52.51968933877721],
+          [13.43491512240342, 52.51949040474999]
+        ],
+        [
+          [13.43491512240342, 52.51949040474999],
+          [13.43709186350791, 52.5190315054415]
+        ],
+        [
+          [13.42955165434571, 52.52116781938071],
+          [13.43100138491958, 52.52053999590637],
+          [13.43118314923961, 52.5204734183941],
+          [13.43186756871554, 52.52028177048751],
+          [13.43345123214361, 52.51982658510732]
+        ],
+        [
+          [13.43345123214361, 52.51982658510732],
+          [13.43394871232408, 52.51968933877721],
+          [13.43491512240342, 52.51949040474999]
+        ],
+        [
+          [13.43491512240342, 52.51949040474999],
+          [13.43709186350791, 52.51903150544161],
+          [13.44022662132851, 52.51838775164887],
+          [13.44035813640701, 52.5184180316624],
+          [13.4406262682449, 52.5185547824908]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.45048554854442, 52.51797301601582]
+    },
+    "length": 3092,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 9,
+    "liked_by_user": false
+  },
+  {
+    "id": 42,
+    "url": "http://localhost:8000/api/projects/42",
+    "project_key": "FK-037",
+    "title": "Sanierung und Umbau der Radwege",
+    "description": "Die heutigen Radwege auf diesem Abschnitt sind zu schmal und genügen den aktuellen Anforderungen nicht mehr. Deswegen sollen die Radwege auf 2,50m verbreitert werden. Die Planung läuft bereits, die Umsetzung soll in Etappen ab 2018 erfolgen. Ein erster Abschnitt zwischen Frankfurter Tor und Kosmos (Nordseite) konnte im Sommer 2018 fertig gestellt werden. Die Südseite zwischen Frankfurter Tor und Kosmos ab Ende 2019 umgesetzt.",
+    "short_description": "Die Radwege auf diesem Abschnitt sollen auf 2,50m verbreitert werden.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Karl-Marx-Allee",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "Ende 2019",
+    "construction_completed": "2020",
+    "construction_completed_date": "2020-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.44109428700576, 52.5170938352996],
+          [13.44162484901623, 52.51703663454808],
+          [13.44307015986399, 52.51688984399922],
+          [13.44338942621112, 52.51687620282555],
+          [13.44397952312264, 52.5168125978449],
+          [13.4452299960638, 52.51668273421907],
+          [13.44659751762489, 52.51655082576672],
+          [13.45011388343838, 52.51619014878872],
+          [13.45111465636292, 52.51609085118194],
+          [13.45220325170814, 52.51597909050082],
+          [13.45278417444853, 52.51593606176269],
+          [13.45359083916717, 52.51584692772359]
+        ],
+        [
+          [13.43338564983068, 52.51787871043074],
+          [13.43385447281916, 52.51782974958759],
+          [13.43431213748181, 52.51780106707926],
+          [13.43465263656117, 52.51776632048171],
+          [13.43644784143011, 52.51757595632048],
+          [13.43930263789168, 52.51727822255872],
+          [13.43969543245764, 52.51725307201011],
+          [13.440228286347, 52.5172005409299]
+        ],
+        [
+          [13.42944366602126, 52.5183223110702],
+          [13.42965599215823, 52.51829424032617],
+          [13.4300909989561, 52.51823399861198],
+          [13.431338436315, 52.5181095936201],
+          [13.43176428806039, 52.518059929359],
+          [13.43207778260426, 52.5180444579945],
+          [13.43252115864199, 52.51798906965487]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.44162484901623, 52.51703663454808]
+    },
+    "length": 1722,
+    "photos": [
+      {
+        "copyright": "Ist-Zustand Bild: SGA Friedrichshain-Kreuzberg",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-037_KMA.jpg"
+      }
+    ],
+    "likes": 10,
+    "liked_by_user": false
+  },
+  {
+    "id": 47,
+    "url": "http://localhost:8000/api/projects/47",
+    "project_key": "MI-001",
+    "title": "Umbau der Radverkehrsanlagen",
+    "description": "Die Radverkehrsanlagen auf diesem Abschnitt entsprechen nicht mehr den heutigen Standardmaßen. Deswegen sollen die vorhandenen Radverkehrsanlagen umgebaut werden. Wie die zukünftige Radverkehrsanlage aussieht, wird erst im Laufe des Planungsprozesses, mit Öffentlichkeitsbeteiligung, entschieden. Abhängig von den Personalressourcen beginnen die Planungen frühestens im Jahr 2019.",
+    "short_description": "Zwischen Stromstraße und Kirchstraße werden die vorhanden Radverkehrsanlagen umgebaut.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Alt-Moabit",
+    "borough": "Mitte",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": "evtl. 2019",
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "draft",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.3432998318151, 52.52533507663719],
+        [13.34336683172416, 52.52532656489199],
+        [13.34361210466033, 52.52528658340963],
+        [13.34373951313776, 52.52526933554209],
+        [13.34450072527767, 52.52517412627176],
+        [13.34519818589168, 52.52508872569001],
+        [13.3460024510335, 52.52498935104746],
+        [13.34681847426117, 52.524888351043],
+        [13.34760899935226, 52.5247911524669],
+        [13.34838091543621, 52.5246960677844],
+        [13.34862584605856, 52.52466499205438],
+        [13.34896378201094, 52.52462391372607],
+        [13.34913997785078, 52.52460202987001]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.3460024510335, 52.52498935104746]
+    },
+    "length": 465,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 3,
+    "liked_by_user": false
+  },
+  {
+    "id": 48,
+    "url": "http://localhost:8000/api/projects/48",
+    "project_key": "MI-002-1",
+    "title": "Bau einer Protected Bike Lane",
+    "description": "Auf der Westseite dieses Abschnittes soll ein geschützter Radfahrstreifen (Protected Bike Lane) errichtet werden. Das Vorhaben soll voraussichtlich 2019 begonnen werden, da jedoch Leitungsbauarbeiten auf diesem Abschnitt durchgeführt werden, können sich die Bauarbeiten noch verschieben.",
+    "short_description": "Auf der Westseite dieses Abschnittes soll ein geschützter Radfahrstreifen (Protected Bike Lane) errichtet werden.",
+    "category": "new cycling infrastructure",
+    "street_name": "Amrumer Straße",
+    "borough": "Mitte",
+    "side": 0,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "2019 (Verschiebung wegen Leitungsbauarbeiten möglich)",
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.34426684891536, 52.54604815471606],
+        [13.34449723614331, 52.545869229282],
+        [13.34486362890067, 52.54559483350758],
+        [13.34518318209227, 52.54535562526658],
+        [13.34571965613904, 52.54495914740031],
+        [13.34590699826252, 52.5448282503241],
+        [13.34633231668207, 52.54451690861379],
+        [13.34675196907571, 52.54420043109378],
+        [13.3470770421341, 52.5439605400512],
+        [13.34731198611186, 52.54378272767882],
+        [13.34776540559501, 52.54343887030668],
+        [13.34823188325288, 52.5430937956434],
+        [13.34852665389507, 52.54288113241208],
+        [13.34856380930937, 52.5428528067685],
+        [13.34899738004516, 52.54252848682339],
+        [13.34919248179728, 52.54238302010361]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.34675196907571, 52.54420043109378]
+    },
+    "length": 587,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 1,
+    "liked_by_user": false
+  },
+  {
+    "id": 49,
+    "url": "http://localhost:8000/api/projects/49",
+    "project_key": "MI-002-2",
+    "title": "Neuer Schutzstreifen",
+    "description": "Auf der Ostseite dieses Abschnittes wird ein Radfahrstreifen markiert.  Das Vorhaben soll 2019 fertiggestellt werden, da jedoch Leitungsbauarbeiten auf diesem Abschnitt durchgeführt werden, können sich die Bauarbeiten noch verschieben.",
+    "short_description": "Auf der Ostseite dieses Abschnittes wird ein Schutzstreifen markiert.",
+    "category": "new cycling infrastructure",
+    "street_name": "Amrumer Straße",
+    "borough": "Mitte",
+    "side": 1,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019 (Verschiebung wegen Leitungsbauarbeiten möglich)",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.34426684891536, 52.54604815471606],
+        [13.34449723614331, 52.545869229282],
+        [13.34486362890067, 52.54559483350758],
+        [13.34518318209227, 52.54535562526658],
+        [13.34571965613904, 52.54495914740031],
+        [13.34590699826252, 52.5448282503241],
+        [13.34633231668207, 52.54451690861379],
+        [13.34675196907571, 52.54420043109378],
+        [13.3470770421341, 52.5439605400512],
+        [13.34731198611186, 52.54378272767882],
+        [13.34776540559501, 52.54343887030668],
+        [13.34823188325288, 52.5430937956434],
+        [13.34852665389507, 52.54288113241208],
+        [13.34856380930937, 52.5428528067685],
+        [13.34899738004516, 52.54252848682339],
+        [13.34919248179728, 52.54238302010361]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.34675196907571, 52.54420043109378]
+    },
+    "length": 587,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 50,
+    "url": "http://localhost:8000/api/projects/50",
+    "project_key": "MI-003",
+    "title": "Neue Radfahrstreifen",
+    "description": "Auf diesem Abschnitt erfolgt ein Gehwegumbau mit Veränderung der Bordanlage, die Lichtsignalanlagen (Ampeln) werden angepasst und die Fahrbahndecke wird erneuert. Einhergehend wird auf der Fahrbahn ein  Radfahrstreifen markiert. Das Vorhaben soll 2018 / 2019 fertiggestellt werden.",
+    "short_description": "Nach dem Umbau des Straßenquerschnitts soll hier eine Radverkehrsanlage markiert werden.",
+    "category": "modification of cross section",
+    "street_name": "Annenstraße",
+    "borough": "Mitte",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "execution",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.41443697413599, 52.50779868433757],
+        [13.41516520655362, 52.50745071148291],
+        [13.41566656603382, 52.50725046289298],
+        [13.41588146977574, 52.50718465291249],
+        [13.41641457123144, 52.50702139867649]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.41516520655362, 52.50745071148291]
+    },
+    "length": 191,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 5,
+    "liked_by_user": false
+  },
+  {
+    "id": 51,
+    "url": "http://localhost:8000/api/projects/51",
+    "project_key": "MI-004",
+    "title": "Neue Schutz- oder Radfahrstreifen",
+    "description": "Nachdem die Tunnelarbeiten der BVG fertiggestellt wurden und der Bundesnachrichtendienst seine Bausstelle abgeschlossen hat, wird die Chausseestraße saniert. Dabei werden Schutz- oder Radfahrstreifen auf der Fahrbahn markiert. Teilbereiche sind bereits feritggestellt. Das Teilstück zwischen Schwarzkopfstraße und Zinnowitzer Straße befindet sich aktuell in der Bauausführung. Die Fertigstellung ist für 2018 / 2019 geplant.",
+    "short_description": "Hier werden Radfahrstreifen markiert.",
+    "category": "new cycling infrastructure",
+    "street_name": "Chausseestraße",
+    "borough": "Mitte",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019 (abhängig von der Tunnelsannierung U6)",
+    "construction_completed_date": null,
+    "phase": "execution",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.38026021937778, 52.53283787039198],
+          [13.38060700872586, 52.53254642402572],
+          [13.38122538632487, 52.53203188184349],
+          [13.38178936445316, 52.53158130597562],
+          [13.38186116137518, 52.53153827827776],
+          [13.3819147576587, 52.5315128433348],
+          [13.3819369809905, 52.53149487781428]
+        ],
+        [
+          [13.37841360203678, 52.5342908306255],
+          [13.37855783239622, 52.53417766111158],
+          [13.37881089873599, 52.53397951731368],
+          [13.37914262163049, 52.53371108365511],
+          [13.38023896215649, 52.53285898944196],
+          [13.38026021937778, 52.53283787039198]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.38023896215649, 52.53285898944196]
+    },
+    "length": 400,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 7,
+    "liked_by_user": false
+  },
+  {
+    "id": 52,
+    "url": "http://localhost:8000/api/projects/52",
+    "project_key": "MI-006",
+    "title": "Neue Schutz- oder Radfahrstreifen",
+    "description": "In der Französischen Straßen gibt es noch keine Radverkehrsanlage. Die Straße wird als Alternativstrecke zu Unter den Linden vom Radverkehr genutzt und weist ein entsprechend hohes Aufkommen auf. Auf der Fahrbahn soll auf diesem Abschnitt eine Radverkehrsanlage markiert werden. Die Fertigstellung von Teilabschnitten ist 2019, abhängig von Hochbaumaßnahmen, geplant.",
+    "short_description": "Auf diesem Abschnitt soll auf der Fahrbahn eine Radverkehrsanlage markiert werden",
+    "category": "new cycling infrastructure",
+    "street_name": "Französische Straße",
+    "borough": "Mitte",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "Teilabschnitte in 2019",
+    "construction_completed_date": null,
+    "phase": "execution",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.38250924840276, 52.51406575779619],
+          [13.3832599442601, 52.5142314487704],
+          [13.38365476767168, 52.51431058861707],
+          [13.38386400285398, 52.51434675120011],
+          [13.38460162157839, 52.51443532729587],
+          [13.3847893790542, 52.51447238444946],
+          [13.38495826040135, 52.51449253140421],
+          [13.38535503384907, 52.51451733861547],
+          [13.38549028190629, 52.51455212764168],
+          [13.38577562362186, 52.51456801324736]
+        ],
+        [
+          [13.38665682057363, 52.5145998037037],
+          [13.38699935180198, 52.51462205957586],
+          [13.3887466932159, 52.51473398281931]
+        ],
+        [
+          [13.38962574485324, 52.51478920026389],
+          [13.39110399067468, 52.51488022738337],
+          [13.39302965365448, 52.51500393023779],
+          [13.39464407747801, 52.51510070164443],
+          [13.39553142637303, 52.51515765199179],
+          [13.39674583967556, 52.51523446435087],
+          [13.39689650897669, 52.51524631868818],
+          [13.3970931361324, 52.5152677162603],
+          [13.39742367403891, 52.5153252248934],
+          [13.39774856308864, 52.51537918292395],
+          [13.39796591397721, 52.51543233731659],
+          [13.39820572162581, 52.51547266464306],
+          [13.39874817697608, 52.51559053804497],
+          [13.39959098376769, 52.51580009618478],
+          [13.39993453213634, 52.51588591955221],
+          [13.40008344862169, 52.51592739077987],
+          [13.40067832486257, 52.51618997385687],
+          [13.4008003204401, 52.51621303270394]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.39302965365448, 52.51500393023779]
+    },
+    "length": 1307,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 9,
+    "liked_by_user": false
+  },
+  {
+    "id": 53,
+    "url": "http://localhost:8000/api/projects/53",
+    "project_key": "MI-007",
+    "title": "Errichtung einer Fahrradstraße",
+    "description": "Auf diesem Abschnitt erfolgt eine Teil-Asphaltierung der Fahrbahn. Zusätzlich soll der Abschnitt als Fahrradstraße ausgewiesen werden. Die Fertigstellung ist für 2019 / 2020 geplant.",
+    "short_description": "Auf diesem Abschnitt erfolgt eine Teil-Asphaltierung der Fahrbahn. Zusätzlich soll der Abschnitt als Fahrradstraße ausgewiesen werden.",
+    "category": "modification of cross section",
+    "street_name": "Kameruner Straße",
+    "borough": "Mitte",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2020",
+    "construction_completed_date": "2020-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.34620690874757, 52.55005897989889],
+          [13.34774058769044, 52.55107714612331]
+        ],
+        [
+          [13.34774058769044, 52.55107714612331],
+          [13.34917895476829, 52.5520433811386]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.34774058769044, 52.55107714612331]
+    },
+    "length": 300,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 54,
+    "url": "http://localhost:8000/api/projects/54",
+    "project_key": "MI-008",
+    "title": "Umbau / Erneuererung der vorhandenen Radverkehrsanlage",
+    "description": "Die vorhandenen Radwege auf diesem Abschnitt sollen umgebaut bzw. erneuert werden. Eine Fertigstellung ist für 2019 geplant.",
+    "short_description": "Die vorhandenen Radwege auf diesem Abschnitt sollen umgebaut bzw. erneuert werden.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Kurfürstenstraße",
+    "borough": "Mitte",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.34161712897164, 52.50498360328928],
+        [13.34207186419149, 52.50487069857442],
+        [13.34217180477387, 52.50485663611336],
+        [13.34239020376921, 52.50480260238007],
+        [13.34278935812298, 52.5047106588094],
+        [13.34411709044018, 52.50439144408549],
+        [13.34431790638391, 52.5043383501777],
+        [13.34453408403266, 52.5042914181541],
+        [13.34514741290278, 52.5041536956814],
+        [13.34578561796223, 52.50402821242043],
+        [13.34597081499604, 52.50399115254511],
+        [13.34621341488567, 52.50394197958037],
+        [13.34675535646356, 52.50383213034571],
+        [13.34783867885913, 52.50359777114577],
+        [13.34800972944366, 52.50355852879416],
+        [13.34948979144571, 52.50322948650876],
+        [13.34951688938964, 52.5032226015615]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.34578561796223, 52.50402821242043]
+    },
+    "length": 631,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 3,
+    "liked_by_user": false
+  },
+  {
+    "id": 55,
+    "url": "http://localhost:8000/api/projects/55",
+    "project_key": "MI-009",
+    "title": "Verbesserung der Fahrradstraße durch Vorfahrtsregelungen",
+    "description": "Für Radfahrer in Mitte wird der Weg durch die Linienstraße angenehmer. Die Fahrradstraße soll noch fahrradfreundlicher werden. Das Bezirksamt Mitte hat dafür  eine Reihe von Maßnahmen beschlossen. Die Straße wird größtenteils zur Vorfahrtsstraße, dafür verschwinden die vielen Rechts-vor-Links-Situationen. Abgesehen von den Kreuzungen an der Rosenthaler Straße, der Alten Schönhauser Straße und der Rosa-Luxemburg-Straße heißt es für Radfahrer dann: freie Fahrt.\r\nAuf mehreren Abschnitten richtet der Bezirk zudem Einbahnstraßen für den Kfz-Verkehr ein – in jeweils wechselnden Richtungen. Radfahrer hingegen sollen dank einer „Radfahrer frei“-Regelung weiterhin auch in die Gegenrichtung unterwegs sein dürfen. Die Maßnahmen sollen dazu dienen, den Kfz-Durchgangsverkehr wirksam zu unterbinden und den Anliegerverkehr störungsfrei zu ermöglichen. Es sollen zudem Sicherheitstrennstreifen zu den parkenden Fahrzeugen (sog. Dooring-Zone, siehe FAQ) markiert werden. Die Fertigstellung ist noch in 2019 geplant.",
+    "short_description": "In der Fahrradstraße soll Sicherheitstrennstreifen zu den parkenden Fahrzeugen (sog. Dooring-Zone) markiert werden.",
+    "category": "bike street",
+    "street_name": "Linienstraße",
+    "borough": "Mitte",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "execution",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": "https://www.morgenpost.de/bezirke/mitte/article217117773/Radstrasse-Linienstrasse-wird-zur-Vorfahrts-und-Einbahnstrasse.html",
+    "cross_section": null,
+    "faq": [
+      {
+        "text": "Was ist eine Dooring-Zone?",
+        "answer": "Als \"Dooring-Zone\" wird der Bereich neben parkenden Autos bezeichnet. Hier besteht für Radfahrende ein erhöhtes Unfallrisiko durch unachtsam geöffnete Autotüren. Die Radverkehrsführung sollte daher nicht in diesen Bereichen erfolgen."
+      }
+    ],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.38768081348725, 52.52635865058429],
+          [13.3883938267131, 52.52638165207846],
+          [13.38855170443231, 52.5263406306164]
+        ],
+        [
+          [13.38835439681121, 52.52612689108106],
+          [13.38845787973076, 52.52627879235948],
+          [13.39062073997513, 52.52686250781736],
+          [13.39292058026712, 52.52748848476337],
+          [13.39490994489097, 52.52801980817587],
+          [13.39502365262427, 52.52805703368181],
+          [13.39727752827769, 52.52866327062748],
+          [13.39761342110368, 52.52875821690331],
+          [13.3979265292154, 52.5288362015641],
+          [13.39808780442608, 52.52885265808949],
+          [13.39860411767779, 52.5288667827124],
+          [13.39990363128559, 52.5289033918946],
+          [13.40007330985055, 52.52890330713871],
+          [13.40188041872957, 52.52896142079609],
+          [13.40311039425707, 52.52900021870659],
+          [13.40521669108649, 52.52874481627095],
+          [13.40745340128661, 52.52847590392138],
+          [13.4089400717967, 52.52829845417378],
+          [13.40907917349937, 52.52827550631665],
+          [13.40916293840301, 52.52828360876578],
+          [13.409505598218, 52.5282305733615],
+          [13.41029109477128, 52.5280965642854],
+          [13.41046910843311, 52.52802758906449],
+          [13.41140566966706, 52.52774518401485],
+          [13.41392769159862, 52.52697733036207],
+          [13.41406347569952, 52.52694346697607],
+          [13.4142263779356, 52.5269147245852],
+          [13.41474536988946, 52.52674564099671]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.40188041872957, 52.52896142079609]
+    },
+    "length": 1970,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 13,
+    "liked_by_user": false
+  },
+  {
+    "id": 56,
+    "url": "http://localhost:8000/api/projects/56",
+    "project_key": "MI-010",
+    "title": "Neue Radfahrstreifen",
+    "description": "Auf diesem Abschnitt sollen auf der Fahrbahn Schutz- oder Radfahrstreifen markiert werden. Die Radwege auf dem Gehweg werden zurückgebaut. Die Fertigstellung ist für 2019 geplant.",
+    "short_description": "Auf diesem Abschnitt soll eine Radverkehrsanlage auf der Fahrbahn markiert werden. Die Radwege auf dem Gehweg werden zurückgebaut.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Schwedenstraße",
+    "borough": "Mitte",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.37308811697729, 52.55726641394669],
+          [13.37351628888061, 52.55693962371947]
+        ],
+        [
+          [13.37210872017541, 52.55801894158171],
+          [13.37302182488264, 52.55731782867139],
+          [13.37308811697729, 52.55726641394669]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.37302182488264, 52.55731782867139]
+    },
+    "length": 168,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 4,
+    "liked_by_user": false
+  },
+  {
+    "id": 57,
+    "url": "http://localhost:8000/api/projects/57",
+    "project_key": "MI-011",
+    "title": "Sanierung und Verbreiterung der Radwege",
+    "description": "Die vorhandenen Radwege auf diesem Abschnitt sollen saniert und verbreitert werden. Die Fertigstellung ist für 2019 geplant.",
+    "short_description": "Die vorhandenen Radwege auf diesem Abschnitt sollen saniert und verbreitert werden.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Seestraße",
+    "borough": "Mitte",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.35231902454411, 52.55061933769188],
+        [13.35394882004413, 52.55147412806778],
+        [13.35473171280118, 52.55188020590958],
+        [13.35615429852531, 52.5526178709557],
+        [13.35764534657132, 52.55339523198379],
+        [13.35869212759996, 52.55393999698621],
+        [13.35883782839893, 52.5540043496849],
+        [13.35975518162767, 52.55448758033641],
+        [13.36134812489093, 52.5553145735657]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.35615429852531, 52.5526178709557]
+    },
+    "length": 835,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 4,
+    "liked_by_user": false
+  },
+  {
+    "id": 58,
+    "url": "http://localhost:8000/api/projects/58",
+    "project_key": "MI-015",
+    "title": "Neuer Schutzstreifen",
+    "description": "In der Sickingstraße werden die Radwege im Gehwegbereich zurückgebaut. Stattdessen werden auf der Fahrbahn Schutzstreifen markiert. Im Zuge dessen wird die Fahrbahn im Bereich der Schutzstreifen grundhaft erneuert und Parkplätze und Baumscheiben neu angeordnen. Die Fertigstellung ist  ab dem Jahr 2020 geplant.",
+    "short_description": "In diesem Abschnitt werden die Radwege auf dem Gehweg zurückgebaut und Schutzstreifen auf der Fahrbahn markiert.",
+    "category": "modification of cross section",
+    "street_name": "Sickingenstraße",
+    "borough": "Mitte",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019 / 2020",
+    "construction_completed_date": null,
+    "phase": "execution",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": "https://www.stadtentwicklung.berlin.de/staedtebau/foerderprogramme/stadtumbau/Moabit-West-Verkehrs-und-Logistikkonzept.6168.0.html#c13880",
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.31481662389468, 52.53041809861411],
+          [13.31672376126287, 52.5307768122805],
+          [13.31820119345114, 52.53105206061657],
+          [13.31862113341643, 52.53113185421968]
+        ],
+        [
+          [13.31946574877633, 52.53129105643431],
+          [13.32120185382615, 52.5316156476521],
+          [13.32241616193938, 52.5318416169341],
+          [13.32479553073088, 52.53228781434512],
+          [13.32524535889119, 52.53237769143346],
+          [13.32659364160476, 52.53262884103548],
+          [13.3268054451815, 52.53266738620928],
+          [13.3272005534007, 52.532740770659],
+          [13.32755159731306, 52.53281888359439],
+          [13.32800330525981, 52.53290433021331]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.32120185382615, 52.5316156476521]
+    },
+    "length": 997,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 3,
+    "liked_by_user": false
+  },
+  {
+    "id": 59,
+    "url": "http://localhost:8000/api/projects/59",
+    "project_key": "MI-017",
+    "title": "Sanierung und Verbreiterung des Radwegs",
+    "description": "Auf diesem Abschnitt soll der vorhandene Radweg nach der Fertiggstellung des Hochbauvorhabens saniert und verbreitert werden. Eine protected bike lane wird errichtet. Eine Fertigstellung ist für 2018 geplant.",
+    "short_description": "Auf diesem Abschnitt soll der vorhandene Radweg saniert und verbreitert werden",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Stromstraße",
+    "borough": "Mitte",
+    "side": 0,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2018",
+    "construction_completed_date": "2018-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.34189779856721, 52.52240741899137],
+        [13.34194139836061, 52.52259596332912],
+        [13.34207434882764, 52.52310453266038],
+        [13.34210468574713, 52.52323103959741],
+        [13.34219918932054, 52.52351783203202],
+        [13.34236731798369, 52.52402451485005],
+        [13.34240319080328, 52.52410919093693],
+        [13.34242050800574, 52.52416561522871],
+        [13.34256096859201, 52.52455266761699],
+        [13.34260116730329, 52.52472808001951],
+        [13.34273761481479, 52.52513232035059]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.34236731798369, 52.52402451485005]
+    },
+    "length": 339,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 3,
+    "liked_by_user": false
+  },
+  {
+    "id": 60,
+    "url": "http://localhost:8000/api/projects/60",
+    "project_key": "MI-018",
+    "title": "Sanierung und Verbreiterung des Radwegs",
+    "description": "Auf diesem Abschnitt soll der vorhandene Radweg saniert und verbreitert werden. Eine Fertigstellung ist für 2019 geplant.",
+    "short_description": "Auf diesem Abschnitt soll der vorhandene Radweg saniert und verbreitert werden",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Stromstraße",
+    "borough": "Mitte",
+    "side": 0,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.34326426408179, 52.52854493912477],
+        [13.34326883520394, 52.52808968271958],
+        [13.34327556134547, 52.5275280631332],
+        [13.34327894074658, 52.52700525967611],
+        [13.34327529100072, 52.52680533681258],
+        [13.3432462267191, 52.5265773917788],
+        [13.34324245235509, 52.52655968471751]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.34327556134547, 52.5275280631332]
+    },
+    "length": 281,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 3,
+    "liked_by_user": false
+  },
+  {
+    "id": 61,
+    "url": "http://localhost:8000/api/projects/61",
+    "project_key": "MI-019",
+    "title": "Bau einer Protected Bike Lane",
+    "description": "Nach Beendigung der Hochbauarbeiten auf diesem Abschnitt soll der vorher vorhandene Radweg saniert und verbreitert werden. Eine Fertigstellung ist für 2018 geplant.",
+    "short_description": "Auf diesem Abschnitt soll der vorhandene Radweg saniert und verbreitert werden",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Stromstraße",
+    "borough": "Mitte",
+    "side": 0,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "2018",
+    "construction_completed": "2018",
+    "construction_completed_date": "2018-12-31",
+    "phase": "ready",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.34324245235509, 52.52655968471751],
+        [13.3432462267191, 52.5265773917788],
+        [13.34327529100072, 52.52680533681258],
+        [13.34327894074658, 52.52700525967611],
+        [13.34326883520394, 52.52808968271958],
+        [13.34326426408179, 52.52854493912477]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.34326883520394, 52.52808968271958]
+    },
+    "length": 281,
+    "photos": [
+      {
+        "copyright": "© David Hartmann",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/MI-019_Stromstrasse_1_David_Hartmann.jpg"
+      },
+      {
+        "copyright": "© David Hartmann",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/MI-019_Stromstrasse_2_David_Hartmann.jpg"
+      }
+    ],
+    "likes": 3,
+    "liked_by_user": false
+  },
+  {
+    "id": 62,
+    "url": "http://localhost:8000/api/projects/62",
+    "project_key": "MI-020",
+    "title": "Neue Schutz- oder Radfahrstreifen",
+    "description": "In diesem Abschnitt werden die Radwege auf dem Gehweg zurückgebaut und Schutz- oder Radfahrstreifen auf der Fahrbahn markiert. Eine Fertigstellung ist für 2018 geplant.",
+    "short_description": "In diesem Abschnitt werden die Radwege auf dem Gehweg zurückgebaut und Schutzstreifen auf der Fahrbahn markiert.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Transvaalstraße",
+    "borough": "Mitte",
+    "side": 0,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2018",
+    "construction_completed_date": "2018-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.34216208840101, 52.5523508366934],
+        [13.34249084180851, 52.5525642997488],
+        [13.34355911719993, 52.55326615956652],
+        [13.34372274832617, 52.55336100596249]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.34249084180851, 52.5525642997488]
+    },
+    "length": 154,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 63,
+    "url": "http://localhost:8000/api/projects/63",
+    "project_key": "MI-021",
+    "title": "Errichtung einer Fahrradstraße",
+    "description": "Die Ungarnstraße soll saniert werden und anschließend als Fahrradstraße ausgewiesen werden. Eine Fertigstellung ist für das Jahr 2020 geplant.",
+    "short_description": "Die Ungarnstraße soll saniert werden und anschließend als Fahrradstraße ausgewiesen werden.",
+    "category": "bike street",
+    "street_name": "Ungarnstraße",
+    "borough": "Mitte",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2020",
+    "construction_completed_date": "2020-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Mitte",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.35024086187186, 52.5514627810449],
+        [13.35040894081911, 52.55158045476157],
+        [13.3530310989676, 52.55331073899779],
+        [13.35323188142295, 52.55342058256707],
+        [13.354793220824, 52.55445718328551],
+        [13.35626843892004, 52.55545153983298],
+        [13.35705056737723, 52.55598247060919],
+        [13.35737247360061, 52.55619390134209],
+        [13.35773543247001, 52.55640352185668],
+        [13.35812774143162, 52.55661116946789],
+        [13.358411447972, 52.556748321961],
+        [13.35876856664876, 52.55690552276259],
+        [13.35909935628738, 52.55703618973039],
+        [13.35930726461893, 52.5571128171314],
+        [13.35948068475104, 52.55717231398238],
+        [13.3597931259941, 52.55727179917841],
+        [13.36014457983297, 52.55737182401058],
+        [13.36038024275976, 52.55743693957092],
+        [13.36070909026498, 52.55751523960759],
+        [13.36107322645642, 52.55758926956091],
+        [13.36136813362197, 52.5576382657341],
+        [13.36165130668641, 52.55768291192817],
+        [13.36199292472948, 52.55773283850917],
+        [13.36224933803758, 52.55776493307069],
+        [13.36267669439881, 52.55781842278149],
+        [13.36305005513998, 52.55785451205599],
+        [13.36345471436677, 52.55788865399011],
+        [13.36418991563302, 52.55795071759326],
+        [13.36494022493676, 52.55801172178951]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.35705056737723, 52.55598247060919]
+    },
+    "length": 1310,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 2,
+    "liked_by_user": false
+  },
+  {
+    "id": 65,
+    "url": "http://localhost:8000/api/projects/65",
+    "project_key": "FK-038",
+    "title": "Asphaltierung und Verbreiterung des Geh- und Radwegs",
+    "description": "Dieser Abschnitt ist Teil des übergeordneten Radroutennetzes. Da es hier häufig zu Konflikten zwischen Rad- und Fußverkehr kam wurde die Querung bis zur Parkmitte asphaltiert und verbreitert.",
+    "short_description": "Da es hier häufig zu Konflikten zwischen Rad- und Fußverkehr kam wurde die Querung bis zur Parkmitte asphaltiert und verbreitert.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Görlitzer Park",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "Sommer 2018",
+    "construction_completed": "Sommer 2018",
+    "construction_completed_date": null,
+    "phase": "ready",
+    "responsible": "Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.43892283946466, 52.49499346330411],
+        [13.43971585169073, 52.49585306830307]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.43971585169073, 52.49585306830307]
+    },
+    "length": 109,
+    "photos": [
+      {
+        "copyright": "Baustelle Görlitzer Park Bild: SGA Friedrichshain-Kreuzberg",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-038_G%C3%B6rlitzer_Park.jpg"
+      }
+    ],
+    "likes": 5,
+    "liked_by_user": false
+  },
+  {
+    "id": 66,
+    "url": "http://localhost:8000/api/projects/66",
+    "project_key": "FK-042",
+    "title": "Ausbau des Radweges",
+    "description": "Der Verbindungsweg von der Kynaststraße zum Paul-und-Paula-Ufer soll asphaltiert und verbreitert werden. Ebenso wird der Uferweg weiter ausgebaut. Dieser Abschnitt ist Teil des übergeordneten Radroutennetzes. [https://www.berlin.de/senuvk/verkehr/mobil/fahrrad/radrouten/]",
+    "short_description": "Der Weg von der Kynaststraße zum Paul-und-Paula-Ufer soll ausgebaut werden.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Paul-und-Paula-Ufer",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "2020",
+    "construction_completed": "2020",
+    "construction_completed_date": "2020-12-31",
+    "phase": "planning",
+    "responsible": "SenUVK / Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.47312451849237, 52.50071242482036],
+          [13.47310510684186, 52.50071138215539]
+        ],
+        [
+          [13.47312451849237, 52.50071242482036],
+          [13.47346550935829, 52.50058078934178],
+          [13.47388597896076, 52.5004972097376],
+          [13.47408334224362, 52.50034049755138],
+          [13.47431502957561, 52.50022035116378],
+          [13.47440083969845, 52.50031960255101],
+          [13.47405759920671, 52.50050243346747],
+          [13.4737401017517, 52.50063825022751],
+          [13.47339686125988, 52.5007270532668],
+          [13.47312451849237, 52.50071242482036]
+        ],
+        [
+          [13.46969844496138, 52.49866886614257],
+          [13.46930371839573, 52.49894051057171],
+          [13.46917500321129, 52.4991442427921],
+          [13.46922648928502, 52.49924349660878],
+          [13.46944959560461, 52.49937409339448],
+          [13.46963837787508, 52.49952036133394],
+          [13.46975851204714, 52.49974498615068],
+          [13.46987006520689, 52.49993304325429]
+        ],
+        [
+          [13.46878695284803, 52.50013815236709],
+          [13.46987006520689, 52.49993304325429]
+        ],
+        [
+          [13.46987006520689, 52.49993304325429],
+          [13.46998161836673, 52.50017856103987],
+          [13.46999878039116, 52.50028826003285],
+          [13.47009317152648, 52.50039273500971],
+          [13.4704020879691, 52.50038751126669],
+          [13.47062519428879, 52.5003457213007],
+          [13.47089120566989, 52.50023079868946],
+          [13.4712001221126, 52.50015244219136],
+          [13.47140606640759, 52.50017333727109],
+          [13.4716892398133, 52.500340497552],
+          [13.47195525119441, 52.50050243346791],
+          [13.47224700561242, 52.5006278027996],
+          [13.47270179926401, 52.50070615845031],
+          [13.47311368785416, 52.50071660585982],
+          [13.47312451849237, 52.50071242482036]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.47140606640759, 52.50017333727109]
+    },
+    "length": 745,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 2,
+    "liked_by_user": false
+  },
+  {
+    "id": 67,
+    "url": "http://localhost:8000/api/projects/67",
+    "project_key": "TS-001",
+    "title": "Neue Radfahrstreifen",
+    "description": "Noch gibt es hier keine Radverkehrsanlage. Aber da dieser Abschnitt Teil der Fahrradnebenrouten ist, sollen auf der Fahrbahn Radfahrstreifen markiert werden.",
+    "short_description": "Auf der Fahrbahn werden Radfahrstreifen markiert.",
+    "category": "new cycling infrastructure",
+    "street_name": "Ringstraße",
+    "borough": "Tempelhof-Schöneberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": "2016",
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Tempelhof-Schöneberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.3759224784453, 52.443248928483],
+          [13.3767615712473, 52.4429173243594],
+          [13.3777607763988, 52.4425190294484],
+          [13.3779294366845, 52.442449571185],
+          [13.3786451486074, 52.4421497419721],
+          [13.3794066880454, 52.441811582603],
+          [13.3799458907987, 52.4415590321086],
+          [13.3803716903288, 52.4413254680934],
+          [13.3809330259645, 52.4410258457122]
+        ],
+        [
+          [13.3725612958436, 52.4443683572344],
+          [13.3736644064445, 52.4440676171706],
+          [13.373918273888, 52.4439926041376],
+          [13.374574745712, 52.443767900861],
+          [13.3749299331809, 52.4436371842586],
+          [13.3751796583348, 52.443539792497]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.3767615712473, 52.4429173243594]
+    },
+    "length": 743,
+    "photos": [
+      {
+        "copyright": "© fixmyberlin",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/ringstra%C3%9Fe3.jpg"
+      }
+    ],
+    "likes": 1,
+    "liked_by_user": false
+  },
+  {
+    "id": 68,
+    "url": "http://localhost:8000/api/projects/68",
+    "project_key": "TS-005",
+    "title": "Neue Radfahrstreifen",
+    "description": "Auf diesem Abschnitt sollen auf der Fahrbahn Radfahrstreifen markiert werden. Die Umsetzung erfolgt 2019.",
+    "short_description": "Auf der Fahrbahn werden Radfahrstreifen markiert.",
+    "category": "new cycling infrastructure",
+    "street_name": "Schöneberger Straße",
+    "borough": "Tempelhof-Schöneberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": "2016",
+    "construction_started": "2019",
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Tempelhof-Schöneberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.37240172457749, 52.4696169328376],
+          [13.37285301458791, 52.46937794139148],
+          [13.3734586662763, 52.46903657182119],
+          [13.3736218959687, 52.46896744911421],
+          [13.37396226869786, 52.46876873200986],
+          [13.37413238817914, 52.46867115636039],
+          [13.37438229751004, 52.4684912543122],
+          [13.37448122256639, 52.46843582223588],
+          [13.37464100487884, 52.4683462886853],
+          [13.37576392347638, 52.46768194062162],
+          [13.37652235628727, 52.46725335598806],
+          [13.37688529919774, 52.46705859710648],
+          [13.3772525771973, 52.4668423980237],
+          [13.3777767091771, 52.46653934049751]
+        ],
+        [
+          [13.37099822863238, 52.4703906720637],
+          [13.37107269065732, 52.47035793155829],
+          [13.37141462300698, 52.47019671109049],
+          [13.3717683333524, 52.47001381987499],
+          [13.37178571197187, 52.47000310072201]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.37464100487884, 52.4683462886853]
+    },
+    "length": 690,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 3,
+    "liked_by_user": false
+  },
+  {
+    "id": 69,
+    "url": "http://localhost:8000/api/projects/69",
+    "project_key": "TS-006",
+    "title": "Verlängerung des Schutzfahrstreifens",
+    "description": "Der Knotenpunkt Alt-Tempelhof / Schönburgstraße wird umgebaut. Dabei werden für den Radverkehr die Schutzstreifen verlängert. Zusätzlich wird eine Querungshilfe errichtet. Die Umsetzung erfolgt Ende 2019.",
+    "short_description": "Auf diesem Abschnitt wird ein Schutzstreifen markiert.",
+    "category": "crossing aid",
+    "street_name": "Alt-Tempelhof",
+    "borough": "Tempelhof-Schöneberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": "2016",
+    "construction_started": "2019",
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Tempelhof-Schöneberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.3783894560662, 52.4661513003115],
+        [13.3783965257429, 52.466146733126],
+        [13.3786818739976, 52.4660132629743],
+        [13.3788330775265, 52.4659528892147],
+        [13.3790810270064, 52.4658831361257],
+        [13.3794192926945, 52.4658199726773],
+        [13.3797083094304, 52.4658003833088],
+        [13.3811616512707, 52.4657342905043]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.3797083094304, 52.4658003833088]
+    },
+    "length": 229,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 70,
+    "url": "http://localhost:8000/api/projects/70",
+    "project_key": "TS-007",
+    "title": "Fahrradfreundlicher Ausbau der Fahrbahn",
+    "description": "Dieser Abschnitt ist Teil des Fahrradnebenroutennetzes. Deswegen soll die Fahrbahn fahrradfreundlich ausgebaut werden. Die Umsetzung erfolgt Ende 2019.",
+    "short_description": "Fahrradfreundlicher Ausbau der Fahrbahn",
+    "category": "modification of cross section",
+    "street_name": "Schönburgstraße",
+    "borough": "Tempelhof-Schöneberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": "2018",
+    "construction_started": "2019",
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Tempelhof-Schöneberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.3811616512707, 52.4657342905043],
+        [13.3812179889138, 52.464569748131],
+        [13.3812795236903, 52.4644849494906],
+        [13.3814084268899, 52.4644748191471],
+        [13.3815648422843, 52.4644579284283],
+        [13.3817386607575, 52.464391318445],
+        [13.3818169869068, 52.4642734444976],
+        [13.3820004269739, 52.4638382342178],
+        [13.3822782239887, 52.4631664230004]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.3815648422843, 52.4644579284283]
+    },
+    "length": 315,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 2,
+    "liked_by_user": false
+  },
+  {
+    "id": 71,
+    "url": "http://localhost:8000/api/projects/71",
+    "project_key": "TS-008",
+    "title": "Fahrradfreundlicher Ausbau der Fahrbahn",
+    "description": "Dieser Abschnitt ist Teil des Fahrradnebenroutennetzes. Deswegen soll die Fahrbahn fahrradfreundlich ausgebaut werden. Die Umsetzung erfolgt Ende 2019",
+    "short_description": "Fahrradfreundlicher Ausbau der Fahrbahn",
+    "category": "modification of cross section",
+    "street_name": "Parkstraße",
+    "borough": "Tempelhof-Schöneberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": "2018",
+    "construction_started": "2019",
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Tempelhof-Schöneberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.3812662743074, 52.4613848002921],
+        [13.3810099405664, 52.462597159653],
+        [13.3812114924673, 52.4626237077664],
+        [13.3813850973472, 52.4626689043612],
+        [13.3815465009275, 52.4627282072089],
+        [13.3817192344861, 52.4627971805289],
+        [13.3818253549873, 52.4628771367364],
+        [13.3819150326647, 52.4629806570136],
+        [13.3819984074197, 52.4630436494612],
+        [13.3821013337091, 52.4631045303992],
+        [13.3822782239887, 52.4631664230004]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.3813850973472, 52.4626689043612]
+    },
+    "length": 247,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 2,
+    "liked_by_user": false
+  },
+  {
+    "id": 72,
+    "url": "http://localhost:8000/api/projects/72",
+    "project_key": "TS-009",
+    "title": "Unterquerung Techowbrücke",
+    "description": "Entlang des Teltowkanals läuft im Abschnitt zwischen der Geiserich- und der Ringstraße ein Radweg, der Teil des Fahrradnebenroutennetzes ist. Aktuell wird an der Techowbrücke der Radverkehr über die Gersdorstraße geführt. Hier soll überprüft werden, ob eine Unterquerung Techowbrücke möglich ist.",
+    "short_description": "Hier wird geprüft, ob eine Unterquerung der Techowbrücke möglich ist.",
+    "category": "miscellaneous",
+    "street_name": "Teltowkanal",
+    "borough": "Tempelhof-Schöneberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": "2016",
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Tempelhof-Schöneberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.3703822870719, 52.4492592247525],
+          [13.3694354731685, 52.4485189443945]
+        ],
+        [
+          [13.3694354731685, 52.4485189443945],
+          [13.3684884408858, 52.4479925894923]
+        ],
+        [
+          [13.3684884408858, 52.4479925894923],
+          [13.3677201367101, 52.4476165552709]
+        ],
+        [
+          [13.3677201367101, 52.4476165552709],
+          [13.3672428568433, 52.4475527000844],
+          [13.3652045581748, 52.4463845978386]
+        ],
+        [
+          [13.3652045581748, 52.4463845978386],
+          [13.3672428568433, 52.4475527000843]
+        ],
+        [
+          [13.3672428568433, 52.4475527000843],
+          [13.3677201367101, 52.4476165552709]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.3672428568433, 52.4475527000844]
+    },
+    "length": 482,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 1,
+    "liked_by_user": false
+  },
+  {
+    "id": 73,
+    "url": "http://localhost:8000/api/projects/73",
+    "project_key": "TS-012",
+    "title": "Fahrradfreundlicher Ausbau der Fahrbahn",
+    "description": "Dieser Abschnitt ist Teil des Fahrradnebenroutennetzes. Deswegen soll die Fahrbahn fahrradfreundlich ausgebaut werden.",
+    "short_description": "Fahrradfreundlicher Ausbau der Fahrbahn",
+    "category": "modification of cross section",
+    "street_name": "Lintruper Straße",
+    "borough": "Tempelhof-Schöneberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": "2017",
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Tempelhof-Schöneberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.4036794533155, 52.4067953083851],
+        [13.4038023378098, 52.4063544871929],
+        [13.4039879291073, 52.4053078857713],
+        [13.4041602433787, 52.4044133561345],
+        [13.404294693119, 52.4039750693968]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.4039879291073, 52.4053078857713]
+    },
+    "length": 317,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 1,
+    "liked_by_user": false
+  },
+  {
+    "id": 74,
+    "url": "http://localhost:8000/api/projects/74",
+    "project_key": "NK-001",
+    "title": "Neue Fahrradstraße mit modalem Filter",
+    "description": "Die Markierung und Beschilderung der Fahrradstraße Weigandufer zwischen Pannierstraße und Treptower Straße wurde bereits im November 2018 fertiggestellt. In den kommenden zwei Jahren sollen weitere Elemente folgen, die das Radfahren entlang des Weigandufer attraktiver gestalten. Hierzu zählt die Errichtung eines Modalen Filters (2019) an der Straße Weigandufer zwischen Innstraße und Wildenbruchbrücke um den motorisierten Durchgangsverkehr zu senken. Eine Einbahnstraßenregelung an der Straße Weigandufer zwischen Innstraße und Roseggerstraße. (Ende 2019) Eine bauliche Umgestaltung zwischen Fuldastraße und Innstraße erfolgt ab März 2019 bis Ende 2020. Dabei wird an der Kreuzung Weigandufer / Wildenbruchbrücke eine Querungshilfe mit Mittelinsel errichtet. (Ende 2019) Allgemein soll die Aufenthaltsqualität auf diesem Abschnitt verbessert werden.\r\nWeitere Informationen in diesem Flyer: http://sonne.kms-sonne.de/assets/sites/3/2016/07/Flyer-Weigandufer-web.pdf",
+    "short_description": "Entlang des Weigandufers soll eine Fahrradstraße beschildert und markiert werden.",
+    "category": "bike street",
+    "street_name": "Weigandufer",
+    "borough": "Neukölln",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "September 2018",
+    "construction_completed": "Ende 2020",
+    "construction_completed_date": null,
+    "phase": "execution",
+    "responsible": "Bezirksamt Neukölln",
+    "external_url": "https://www.berlin.de/ba-neukoelln/aktuelles/pressemitteilungen/2019/pressemitteilung.785063.php",
+    "cross_section": null,
+    "faq": [
+      {
+        "text": "Was ist ein Modaler Filter?",
+        "answer": "Ein Modaler Filter ist eine bauliche Trennung die nur die gewünschten Verkehrsarten passieren lassen. In der Regel kann der Kfz-Verkehr nicht durchfahren, der Fuß- und Radverkehr können die Trennung jedoch problemlos queren. So ein Filter wird oft als verkehrsberuhigende Maßnahme eingesetzt um motorisierten Durchgangsverkehr zu verringern.\r\n\r\nEine ausführliche Erklärung mit einigen Bildern vom Netzwerk Fahrradfreundliches Neukölln findest du hier:\r\nhttps://fahrradfreundliches-neukoelln.de/blog/modale-filter"
+      }
+    ],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.43389150822312, 52.48986771911029],
+        [13.43588250333952, 52.48907443556707],
+        [13.43779774497781, 52.4881056062339],
+        [13.43788915732696, 52.48801247388569],
+        [13.44002644112376, 52.48691665344209],
+        [13.44018573385411, 52.48682003013137],
+        [13.44211078515549, 52.48582723422808],
+        [13.44421182645996, 52.48477716378149],
+        [13.44496966502677, 52.4843922332558],
+        [13.44523250879978, 52.484231545028],
+        [13.44665332211974, 52.48349848274753],
+        [13.44674378339411, 52.48345915290179],
+        [13.44795986969711, 52.48283995212372],
+        [13.44860364965342, 52.48249877745219],
+        [13.44923021211866, 52.48218822249387],
+        [13.45068483275262, 52.4814317665892],
+        [13.45170965589264, 52.48091461673049],
+        [13.45180065346043, 52.48088990391896]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.44211078515549, 52.48582723422808]
+    },
+    "length": 1576,
+    "photos": [
+      {
+        "copyright": "© BA Neukölln (Q: http://sonne.kms-sonne.de/weigandufer/)",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Screenshot_2019-02-19_09.11.27.png"
+      },
+      {
+        "copyright": "© BA Neukölln (Q: http://sonne.kms-sonne.de/weigandufer/)",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Screenshot_2019-02-19_09.12.32.png"
+      },
+      {
+        "copyright": "Visualisierung @fixmyberlin",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Weigandufer.jpg"
+      },
+      {
+        "copyright": "Ist-Zustand Foto: Manuel /Lizenz CC0",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-001_weigeandufer-hohe-eisensteg-blick-zur-wildenbruchstr_800.jpg"
+      },
+      {
+        "copyright": "Ist-Zustand Foto: Manuel /Lizenz CC0",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-001_weigendufer-blick-richtung-truseweg_800.jpg"
+      }
+    ],
+    "likes": 10,
+    "liked_by_user": false
+  },
+  {
+    "id": 75,
+    "url": "http://localhost:8000/api/projects/75",
+    "project_key": "NK-002",
+    "title": "Radfreundliche Umgestaltung der Thomasstraße",
+    "description": "Die Thomasstraße wird verkehrsberuhigt und der Übergang über die Hermannstraße wird sicherer gemacht. Am Knotenpunkt Thomasstraße / Herrmannstraße soll eine Lichtsignalanlage (Ampel) errichete werden. Zusätzlich soll der Grüne Weg (Zufahrt zum Tempelhofer Feld) asphaltiert werden.",
+    "short_description": "Die Thomasstraße soll umgestaltet werden",
+    "category": "modification of cross section",
+    "street_name": "Thomasstraße",
+    "borough": "Neukölln",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "ab 2020",
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Neukölln",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.4205583841016, 52.4710139272919],
+          [13.4289239810397, 52.4718729703814]
+        ],
+        [
+          [13.4289239810397, 52.4718729703814],
+          [13.4290830119483, 52.4719140965866],
+          [13.4317785595849, 52.4722472291134],
+          [13.4345400898321, 52.4725883099695],
+          [13.4362461781941, 52.4728130844185]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.4290830119483, 52.4719140965866]
+    },
+    "length": 1085,
+    "photos": [
+      {
+        "copyright": "Ist-Zustand Kreuzung Hermannstraße Foto: Manuel /Lizenz CC0",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-002_reuzung-thomasstr-hermmanstr-gruenerweg-01_800.jpg"
+      },
+      {
+        "copyright": "Ist-Zustand Grüner Weg Foto: Manuel /Lizenz CC0",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-002_gruener-weg-im-anita-berger-park-richtung-herrmanstr_800.jpg"
+      },
+      {
+        "copyright": "Ist-Zustand Thomasstraße Foto: Manuel /Lizenz CC0",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-002_thomasstr-entlang-st.thomas-friedhof-richtung-thomashoehe_800.jpg"
+      }
+    ],
+    "likes": 7,
+    "liked_by_user": false
+  },
+  {
+    "id": 76,
+    "url": "http://localhost:8000/api/projects/76",
+    "project_key": "NK-004-1",
+    "title": "Asphaltierung der Fahrbahn",
+    "description": "Auf diesem Abschnitt soll die Fahrbahn asphaltiert werden. Um den KFZ-Durchgangsverkehr möglichst gering zu halten wird ein Modaler Filter errichtet.",
+    "short_description": "Der Abschnitt soll asphaltiert werden",
+    "category": "modification of cross section",
+    "street_name": "Braunschweiger Straße",
+    "borough": "Neukölln",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "ab September 2019",
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Neukölln",
+    "external_url": "https://www.berlin.de/ba-neukoelln/politik-und-verwaltung/bezirksamt/beschluesse-des-bezirksamtes/bezirksamtsbeschluesse-2017/artikel.623240.php",
+    "cross_section": null,
+    "faq": [
+      {
+        "text": "Was ist ein Modaler Filter?",
+        "answer": "Ein Modaler Filter ist eine bauliche Trennung die nur die gewünschten Verkehrsarten passieren lassen. In der Regel kann der Kfz-Verkehr nicht durchfahren, der Fuß- und Radverkehr können die Trennung jedoch problemlos queren. So ein Filter wird oft als verkehrsberuhigende Maßnahme eingesetzt um motorisierten Durchgangsverkehr zu verringern.\r\n\r\nEine ausführliche Erklärung mit einigen Bildern vom Netzwerk Fahrradfreundliches Neukölln findest du hier:\r\nhttps://fahrradfreundliches-neukoelln.de/blog/modale-filter"
+      }
+    ],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.4512840771396, 52.4719463423833],
+        [13.4524832960116, 52.4728517433392],
+        [13.4536936621397, 52.4737739296882],
+        [13.4544857926141, 52.4743480792568],
+        [13.4546319581484, 52.4745016561077]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.4524832960116, 52.4728517433392]
+    },
+    "length": 364,
+    "photos": [
+      {
+        "copyright": "Ist-Zustand Foto: Manuel /Lizenz CC0",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-004-1_braunschweiger-ecke-brusendorfer-str-richtung-schudomaer_800.jpg"
+      },
+      {
+        "copyright": "Ist-Zustand Foto: Manuel /Lizenz CC0",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-004-1_braunschweigerstr-ecke-richardstr-blick-richtung-karl-marx-str_800.jpg"
+      }
+    ],
+    "likes": 1,
+    "liked_by_user": false
+  },
+  {
+    "id": 77,
+    "url": "http://localhost:8000/api/projects/77",
+    "project_key": "NK-004-2",
+    "title": "Asphaltierung der Fahrbahn",
+    "description": "Auf diesem Abschnitt soll die Fahrbahn asphaltiert werden. Um den KFZ-Durchgangsverkehr möglichst gering zu halten wird ein Modaler Filter errichtet.",
+    "short_description": "Der Abschnitt soll asphaltiert werden",
+    "category": "modification of cross section",
+    "street_name": "Braunschweiger Straße",
+    "borough": "Neukölln",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "ab 2021",
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Neukölln",
+    "external_url": "https://www.berlin.de/ba-neukoelln/politik-und-verwaltung/bezirksamt/beschluesse-des-bezirksamtes/bezirksamtsbeschluesse-2017/artikel.623240.php",
+    "cross_section": null,
+    "faq": [
+      {
+        "text": "Was ist ein Modaler Filter?",
+        "answer": "Ein Modaler Filter ist eine bauliche Trennung die nur die gewünschten Verkehrsarten passieren lassen. In der Regel kann der Kfz-Verkehr nicht durchfahren, der Fuß- und Radverkehr können die Trennung jedoch problemlos queren. So ein Filter wird oft als verkehrsberuhigende Maßnahme eingesetzt um motorisierten Durchgangsverkehr zu verringern.\r\n\r\nEine ausführliche Erklärung mit einigen Bildern vom Netzwerk Fahrradfreundliches Neukölln findest du hier:\r\nhttps://fahrradfreundliches-neukoelln.de/blog/modale-filter"
+      }
+    ],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.4463500925734, 52.4709635412374],
+        [13.4479273708775, 52.471136339583]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.4463500925734, 52.4709635412374]
+    },
+    "length": 109,
+    "photos": [
+      {
+        "copyright": "Ist-Zustand Foto: Manuel /Lizenz CC0",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-004-2_braunschweigerstr-ecke-richardstr-blick-richtung-kannerstr_800.jpg"
+      }
+    ],
+    "likes": 1,
+    "liked_by_user": false
+  },
+  {
+    "id": 78,
+    "url": "http://localhost:8000/api/projects/78",
+    "project_key": "NK-005",
+    "title": "Neuer (geschützter) Radfahrstreifen",
+    "description": "Nach Beendigung der Vorplanung im März 2019 wird ein Radfahrstreifen, der über längere Abschnitte in Form einer Protected Bike Lane geschützt wird, als Vorzugsvariante für eine Radverkehrsinfrastruktur entlang der Hermannstraße priorisiert. Im weiteren Verlauf des Planungsprozesses wird diese Radverkehrsführungsform detailliert betrachtet mit dem Ziel eine verkehrsrechtliche Anordnung zu erhalten.\r\n\r\n(aktualisiert am 19.7.2019)",
+    "short_description": "Auf diesem Abschnitt soll eine Radverkehrsanlage errichtet werden.",
+    "category": "new cycling infrastructure",
+    "street_name": "Hermannstraße",
+    "borough": "Neukölln",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": "März 2018",
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Neukölln",
+    "external_url": "https://kleineanfragen.de/berlin/18/17168",
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.43307181095367, 52.46441245320491],
+          [13.4331581546289, 52.46428574218046],
+          [13.43334155827677, 52.46402455114896],
+          [13.43361846885263, 52.46366202632488],
+          [13.43391072606687, 52.46332868790331],
+          [13.43404488941511, 52.46316988877457],
+          [13.43418843137624, 52.46299431907791],
+          [13.43424245351322, 52.46295305114596],
+          [13.43432787482473, 52.46285069994507],
+          [13.43435921742264, 52.46278542441259]
+        ],
+        [
+          [13.43207047798057, 52.46618750121705],
+          [13.43231443132563, 52.46575185709477],
+          [13.43248344561402, 52.4654347302422],
+          [13.43278307673102, 52.46492146023809]
+        ],
+        [
+          [13.42518842497673, 52.48044564263179],
+          [13.42525411015457, 52.48022761658678],
+          [13.42529012390312, 52.4801192616077],
+          [13.42530525090224, 52.48007753497551],
+          [13.42541099338854, 52.4797622523075],
+          [13.42548593988318, 52.47954558109851],
+          [13.42559297674074, 52.47917841987389],
+          [13.42563805900382, 52.4790498221662],
+          [13.42588614229987, 52.4782395418392],
+          [13.42592672101172, 52.47816693083367],
+          [13.42612149409418, 52.4777038539242],
+          [13.42615248963409, 52.47757223766677],
+          [13.4264453305693, 52.47690781382877],
+          [13.4268013992956, 52.4760856654424],
+          [13.4268566674902, 52.47593481494156],
+          [13.42695204358952, 52.47571841445921],
+          [13.42704739584216, 52.47552394935102],
+          [13.42712278959056, 52.47535492991462],
+          [13.42721079580753, 52.47518125133718],
+          [13.42741545205234, 52.47477687979218],
+          [13.42755589186983, 52.4745167751771],
+          [13.42765056199251, 52.47431999061968],
+          [13.42811500828562, 52.47342158862648],
+          [13.42814275332513, 52.47338092138259],
+          [13.42825576652794, 52.47316118586771],
+          [13.42850356602031, 52.47268453618678],
+          [13.42875453446017, 52.4722007913793],
+          [13.42889249166318, 52.47193678230817],
+          [13.4289239810397, 52.47187297038137],
+          [13.42917773330337, 52.47139282998658],
+          [13.42942973357638, 52.47090054604488],
+          [13.42971423228064, 52.47035621308471],
+          [13.42998682060829, 52.46983885338798],
+          [13.43038545059791, 52.46910498778709],
+          [13.43049756695589, 52.46889955172789],
+          [13.43056079765628, 52.46881521929547],
+          [13.43067431700909, 52.46859275263908],
+          [13.43073351799845, 52.46847673406818],
+          [13.43079089988409, 52.46834189826267],
+          [13.43099268978629, 52.46800736668867],
+          [13.43107241546413, 52.46790137392291],
+          [13.43110954842567, 52.4678429887846],
+          [13.43158636455545, 52.4670856867527],
+          [13.43168487469372, 52.46694425921377],
+          [13.43182187293968, 52.46670426319859]
+        ],
+        [
+          [13.42422573995547, 52.48610228745429],
+          [13.42421197091657, 52.48583922681591],
+          [13.42421141916207, 52.48569113340282],
+          [13.42425472655303, 52.48527270282318],
+          [13.42450331268959, 52.48449230117297],
+          [13.42474963280456, 52.48396052056759],
+          [13.42480122175946, 52.48374353882851],
+          [13.4248188949366, 52.483576062195],
+          [13.42483155417713, 52.4833853245742],
+          [13.42481272668093, 52.48299846836755],
+          [13.4248159729721, 52.48251265789393],
+          [13.42483461080951, 52.48223635968007],
+          [13.42485543543971, 52.48217151477417],
+          [13.4248678051455, 52.48209793377567],
+          [13.42489085194649, 52.48194361257085],
+          [13.4248874309276, 52.48187576854087],
+          [13.42488795540503, 52.48164294127695],
+          [13.42493670242571, 52.48125999370764],
+          [13.42501963490801, 52.4809747439761]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.42765056199251, 52.47431999061968]
+    },
+    "length": 2475,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 6,
+    "liked_by_user": false
+  },
+  {
+    "id": 79,
+    "url": "http://localhost:8000/api/projects/79",
+    "project_key": "NK-007",
+    "title": "Asphaltierung der Fahrbahn",
+    "description": "Die Fahrbahn auf diesem Abschnitt soll asphaltiert werden.",
+    "short_description": "Die Fahrbahn auf diesem Abschnitt soll asphaltiert werden.",
+    "category": "modification of cross section",
+    "street_name": "Innstraße",
+    "borough": "Neukölln",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "Mai 2018",
+    "construction_completed": "August 2018",
+    "construction_completed_date": null,
+    "phase": "ready",
+    "responsible": "Bezirksamt Neukölln",
+    "external_url": "https://www.berlin.de/ba-neukoelln/aktuelles/pressemitteilungen/2017/pressemitteilung.573131.php",
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.44271960307378, 52.4804040894507],
+        [13.44362698902102, 52.48109884089548],
+        [13.44435121320526, 52.48166502753269],
+        [13.44516708229452, 52.48228474975866],
+        [13.44568575313822, 52.48264429039637],
+        [13.44599340967218, 52.48285933344527],
+        [13.44609758047684, 52.48294396297698],
+        [13.44662809350964, 52.48336961491648],
+        [13.44674378339411, 52.48345915290179]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.44435121320526, 52.48166502753269]
+    },
+    "length": 436,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 4,
+    "liked_by_user": false
+  },
+  {
+    "id": 80,
+    "url": "http://localhost:8000/api/projects/80",
+    "project_key": "NK-008-1",
+    "title": "Asphaltierung der Fahrbahn",
+    "description": "Die Asphaltierung der Fahrbahnauf der Friedelstraße wurde zum November 2018 abgeschlossen. Der dazugehörige Knotenpunkt Friedelstraße / Maybachufer / Hobrechtbrücke / Brücknerstraße wird bis September 2019 für den Radverkehr sicher umgebaut.",
+    "short_description": "Die Fahrbahn des Abschnittes soll asphaltiert werden und der Knotenpunkt Friedelstraße / Maybachufer / Hobrechtbrücke / Brücknerstraße wird umgebaut",
+    "category": "modification of cross section",
+    "street_name": "Friedelstraße",
+    "borough": "Neukölln",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "August 2018",
+    "construction_completed": "November 2018",
+    "construction_completed_date": null,
+    "phase": "ready",
+    "responsible": "Bezirksamt Neukölln",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.42793010503711, 52.48834516603016],
+        [13.42757417158343, 52.49026235792608],
+        [13.42789275597442, 52.49146063395877],
+        [13.42804069053388, 52.49264668651631],
+        [13.42813182006383, 52.49331932594206],
+        [13.4282193886737, 52.49343221801887]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.42789275597442, 52.49146063395877]
+    },
+    "length": 600,
+    "photos": [
+      {
+        "copyright": "© fixmyberlin",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-008_Friedel_BorisHekele.jpg"
+      }
+    ],
+    "likes": 2,
+    "liked_by_user": false
+  },
+  {
+    "id": 81,
+    "url": "http://localhost:8000/api/projects/81",
+    "project_key": "NK-009",
+    "title": "Errichtung eines (geschützen) Radfahrstreifen",
+    "description": "Auf diesem Abschnitt soll ein geschützer Radfahrstreifen (Protected Bike Lane) oder ein Radfahrstreifen errichtet werden. Update: April 2019 Ab dem Hermannplatz entsteht in Richtung Rathaus Neukölln auf 300 Metern bis zur Reuterstraße ein geschützter Radstreifen, der die Sicherheit von Radfahrenden erhöhen wird. Die Bauarbeiten haben begonnen und dauern voraussichtlich bis Ende Juni. Der Radstreifen hat dabei eine Breite von 2,60 Metern. In entgegengesetzter Fahrtrichtung wird ein Radstreifen markiert. Aufgrund der zahlreichen Grundstückszufahrten und abgehender Straßen wird in diese Richtung auf die Einrichtung von Pollern verzichtet. Bezirksbürgermeister Martin Hikel: „Mit dem ersten geschützten Radstreifen schaffen wir mehr Sicherheit für Radfahrende und gleichzeitig mehr Übersichtlichkeit für den Autoverkehr. Wenn sich Rad- und Autofahrende weniger oft in die Quere kommen, führt das insgesamt zu mehr Lebensqualität. Der Radstreifen ist deshalb eine Bereicherung für die Menschen im Kiez.“ Die Ergebnisse des Pilotprojektes werden in die Neugestaltung der Karl-Marx-Straße einfließen.",
+    "short_description": "Errichtung einer Protected Bikelane und eines Radfahrstreifens",
+    "category": "new cycling infrastructure",
+    "street_name": "Karl-Marx-Straße",
+    "borough": "Neukölln",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "April 2019",
+    "construction_completed": "Juli 2019",
+    "construction_completed_date": null,
+    "phase": "ready",
+    "responsible": "Bezirksamt Neukölln",
+    "external_url": "https://www.berlin.de/ba-neukoelln/aktuelles/pressemitteilungen/2019/pressemitteilung.803054.php",
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.42461595452393, 52.48620827182246],
+        [13.42517396895731, 52.4859562944647],
+        [13.42569687112858, 52.48573783344389],
+        [13.42634268892048, 52.48543954950427],
+        [13.42667141305881, 52.48529865645077],
+        [13.42734268518867, 52.48498896443177],
+        [13.42744971354, 52.48493794313522],
+        [13.42881695267427, 52.48431772507799],
+        [13.4291766646191, 52.48415217369649],
+        [13.43014701149546, 52.48371187641819],
+        [13.43130745683454, 52.48318488394792],
+        [13.43145532682813, 52.48312321145411]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.42744971354, 52.48493794313522]
+    },
+    "length": 700,
+    "photos": [
+      {
+        "copyright": "© FixMyBerlin",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-009_KMS_fertig.JPG"
+      }
+    ],
+    "likes": 6,
+    "liked_by_user": false
+  },
+  {
+    "id": 82,
+    "url": "http://localhost:8000/api/projects/82",
+    "project_key": "NK-010",
+    "title": "Umbau der Karl-Marx-Straße",
+    "description": "Die Karl-Marx-Straße wird komplett umgebaut. Auf der Fahrbahn wird ein Schutzstreifen oder Radfahrstreifen markiert",
+    "short_description": "Die Karl-Marx-Straße wird komplett umgebaut. Auf der Fahrbahn wird ein Schutzstreifen oder Radfahrstreifen markiert",
+    "category": "modification of cross section",
+    "street_name": "Karl-Marx-Straße",
+    "borough": "Neukölln",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "Mai 2018",
+    "construction_completed": "Ende 2021",
+    "construction_completed_date": null,
+    "phase": "execution",
+    "responsible": "Bezirksamt Neukölln",
+    "external_url": "https://www.berlin.de/ba-neukoelln/aktuelles/pressemitteilungen/2018/pressemitteilung.697573.php",
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.43556193438762, 52.4806786857087],
+          [13.43588333123048, 52.48044566468349],
+          [13.4360131076096, 52.4803706614171],
+          [13.43639417158274, 52.48009023228327],
+          [13.43650832420731, 52.48000253276797],
+          [13.43655943226646, 52.47996217241707],
+          [13.43673605909156, 52.47984318338371],
+          [13.4368529415291, 52.47976087212609],
+          [13.43705108681186, 52.47961183612349],
+          [13.43709057400812, 52.47956953783126],
+          [13.4371387602562, 52.47952913863596],
+          [13.43720579833082, 52.4794515209522],
+          [13.43733155384057, 52.47928368636477],
+          [13.43742740574524, 52.47913508247382],
+          [13.43751372417674, 52.47897831233158],
+          [13.43761688185836, 52.47881821918528],
+          [13.43781112266333, 52.47853174938007],
+          [13.43792964202652, 52.47840307029882],
+          [13.43802078197387, 52.47827831875725]
+        ],
+        [
+          [13.43414629358539, 52.4816605219398],
+          [13.43452555935816, 52.48140364319918],
+          [13.43473826106746, 52.48125658784637],
+          [13.43495680313442, 52.48110960938806],
+          [13.43498870337789, 52.4810887245997]
+        ],
+        [
+          [13.43145532682813, 52.48312321145411],
+          [13.4323809246377, 52.48267992374047],
+          [13.43315957285161, 52.48231437532038],
+          [13.43332047295457, 52.4822272980494],
+          [13.43358088011107, 52.482074415844]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.43495680313442, 52.48110960938806]
+    },
+    "length": 711,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 4,
+    "liked_by_user": false
+  },
+  {
+    "id": 83,
+    "url": "http://localhost:8000/api/projects/83",
+    "project_key": "NK-011",
+    "title": "Neue Rad- und Gehwegverbindung",
+    "description": "Neubau einer Rad- und Gehwegverbindung in der Ringslebenstraße. Um den Durchgangsverkehr gering zu halten, wird ein Modaler Filter eingebaut.",
+    "short_description": "Neubau einer Rad- und Gehwegverbindung in der Ringslebenstraße",
+    "category": "modification of cross section",
+    "street_name": "Ringslebenstraße",
+    "borough": "Neukölln",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "April 2019",
+    "construction_completed": "August 2019",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Neukölln",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [
+      {
+        "text": "Was ist ein Modaler Filter?",
+        "answer": "Ein Modaler Filter ist eine bauliche Trennung die nur die gewünschten Verkehrsarten passieren lassen. In der Regel kann der Kfz-Verkehr nicht durchfahren, der Fuß- und Radverkehr können die Trennung jedoch problemlos queren. So ein Filter wird oft als verkehrsberuhigende Maßnahme eingesetzt um motorisierten Durchgangsverkehr zu verringern.\r\n\r\nEine ausführliche Erklärung mit einigen Bildern vom Netzwerk Fahrradfreundliches Neukölln findest du hier:\r\nhttps://fahrradfreundliches-neukoelln.de/blog/modale-filter"
+      }
+    ],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.44949050847739, 52.41776309350472],
+        [13.44961811358661, 52.41771219991441],
+        [13.45085329769157, 52.41810426025988],
+        [13.4509079902698, 52.41815642705108],
+        [13.45142478987453, 52.41832755201807],
+        [13.45197559061251, 52.41853718472699]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.45085329769157, 52.41810426025988]
+    },
+    "length": 196,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 1,
+    "liked_by_user": false
+  },
+  {
+    "id": 84,
+    "url": "http://localhost:8000/api/projects/84",
+    "project_key": "NK-012",
+    "title": "Asphaltierung der Fahrbahn",
+    "description": "Die Fahrbahn des Abschnittes soll asphaltiert und Gehwegvorstreckungen errichtet werden.",
+    "short_description": "Die Fahrbahn des Abschnittes soll asphaltiert und Gehwegvorstreckungen errichtet werden.",
+    "category": "modification of cross section",
+    "street_name": "Donaustraße",
+    "borough": "Neukölln",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "ab 4. Quartal 2018",
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "execution",
+    "responsible": "Bezirksamt Neukölln",
+    "external_url": "http://sonne.kms-sonne.de/donaustrasse/",
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.42962247931018, 52.48540566259168],
+          [13.429768961113, 52.48534099815548],
+          [13.43236363653858, 52.48393142518983],
+          [13.43244450627034, 52.48386981447808],
+          [13.43467549755202, 52.48285669587062],
+          [13.43600973610531, 52.4821519542638]
+        ],
+        [
+          [13.42891170912559, 52.48538006567549],
+          [13.42962247931018, 52.48540566259168]
+        ],
+        [
+          [13.42962247931018, 52.48540566259168],
+          [13.42960520584777, 52.48545301110518],
+          [13.43000145704274, 52.48587017590916]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.43236363653858, 52.48393142518983]
+    },
+    "length": 614,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 5,
+    "liked_by_user": false
+  },
+  {
+    "id": 85,
+    "url": "http://localhost:8000/api/projects/85",
+    "project_key": "TK-003-1",
+    "title": "Einrichtung einer Radverkehrsanlage",
+    "description": "Auf diesem Abschnitt soll eine Radverkehrsanlage errichtet werden.",
+    "short_description": "Auf diesem Abschnitt soll eine Radverkehrsanlage errichtet werden.",
+    "category": "new cycling infrastructure",
+    "street_name": "Wernsdorfer Straße",
+    "borough": "Treptow-Köpenick",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2017",
+    "construction_completed_date": "2017-12-31",
+    "phase": "ready",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.65235522768077, 52.3752347762486],
+        [13.65323008499036, 52.37494930304631],
+        [13.65369880608994, 52.37478622219378],
+        [13.65411530593116, 52.37466637444686],
+        [13.65416883622821, 52.3746526795239],
+        [13.65425207409909, 52.37464178778055],
+        [13.65451479535842, 52.37463575854871],
+        [13.65477334698038, 52.37463052695525],
+        [13.65525034175004, 52.37462011952678],
+        [13.65598546243814, 52.37460350407625],
+        [13.65650392602136, 52.37458929906977],
+        [13.6566252255013, 52.37457410677087],
+        [13.65673351690152, 52.37454971370311]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.65451479535842, 52.37463575854871]
+    },
+    "length": 315,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 86,
+    "url": "http://localhost:8000/api/projects/86",
+    "project_key": "TK-003-2",
+    "title": "Neue Schutzfahrstreifen",
+    "description": "Im Zuge einer Fahrbahsanierung sollen auf diesem Abschnitt auf der Fahrbahn Schutzfahrstreifen markiert werden. Zusätzlich werden Querungshilfen errichtet. Die bauliche Umsetzung erfolgt im 3. Quartal 2018.\r\n\r\nBitte beachten Sie: Während der weiteren Planungen können sich Änderungen bei der Ausführung und der zeitlichen Planung ergeben. (Bearbeitungsstand August 2018)",
+    "short_description": "Im Zuge einer Fahrbahsanierung sollen auf diesem Abschnitt auf der Fahrbahn Schutzstreifen markiert werden. Zusätzlich werden Querungshilfen errichtet.",
+    "category": "new cycling infrastructure",
+    "street_name": "Wernsdorfer Straße",
+    "borough": "Treptow-Köpenick",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "3. Quartal 2018",
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "execution",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.64884646266777, 52.37581410079191],
+        [13.64893408651882, 52.37584080731866],
+        [13.64973680113782, 52.37594277277959],
+        [13.64980585451496, 52.37594360555827],
+        [13.6498848808733, 52.37593620997156],
+        [13.65008946722487, 52.37590908431147],
+        [13.65038528400256, 52.37584742856462],
+        [13.65090885162431, 52.375739071037],
+        [13.6511003946152, 52.37567167545648],
+        [13.65118674173556, 52.37562835449001],
+        [13.65135088319066, 52.3755526448975],
+        [13.6517803648754, 52.37541358642201],
+        [13.65235522768077, 52.3752347762486]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.65038528400256, 52.37584742856462]
+    },
+    "length": 259,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 87,
+    "url": "http://localhost:8000/api/projects/87",
+    "project_key": "TK-004",
+    "title": "Markierung von Schutzstreifen",
+    "description": "Auf diesem Abschnitt werden auf der Fahrbahn Schutzstreifen markiert.",
+    "short_description": "Auf diesem Abschnitt werden auf der Fahrbahn Schutzstreifen markiert.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Bellevuestraße",
+    "borough": "Treptow-Köpenick",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2017",
+    "construction_completed_date": "2017-12-31",
+    "phase": "ready",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.59224853055083, 52.45506223998901],
+        [13.59238325053943, 52.4550020313131],
+        [13.59244539738021, 52.45493709548688],
+        [13.59250536854269, 52.45484122762395],
+        [13.5931983366516, 52.45333700464541],
+        [13.59320625086001, 52.4533184331965]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.59250536854269, 52.45484122762395]
+    },
+    "length": 237,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 88,
+    "url": "http://localhost:8000/api/projects/88",
+    "project_key": "TK-005",
+    "title": "Einrichtung einer Radverkehrsanlage",
+    "description": "Auf der Nordseite dieses Abschnittes soll eine Radverkehrsanlage errichtet werden.",
+    "short_description": "Auf der Nordseite dieses Abschnittes soll eine Radverkehrsanlage errichtet werden.",
+    "category": "new cycling infrastructure",
+    "street_name": "Glienicker Straße",
+    "borough": "Treptow-Köpenick",
+    "side": 1,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2017",
+    "construction_completed_date": "2017-12-31",
+    "phase": "ready",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.56278742867973, 52.43734525595802],
+        [13.56287584353529, 52.43738440173432],
+        [13.56324198052091, 52.43761603342468],
+        [13.56356807668531, 52.43784716834611],
+        [13.56466441851503, 52.43857681921781]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.56356807668531, 52.43784716834611]
+    },
+    "length": 187,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 89,
+    "url": "http://localhost:8000/api/projects/89",
+    "project_key": "TK-006-1",
+    "title": "Radwegsanierug Fürstenwalder Allee",
+    "description": "Hier wird der Radweg saniert.",
+    "short_description": "Hier wird der Radweg saniert.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Fürstenwalder Allee",
+    "borough": "Treptow-Köpenick",
+    "side": 1,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2017",
+    "construction_completed_date": "2017-12-31",
+    "phase": "ready",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.69940659236673, 52.43581053533645],
+        [13.70066869566453, 52.43546310269119],
+        [13.70207703722191, 52.4350872509168],
+        [13.70340875007016, 52.43473552001231],
+        [13.70436169684187, 52.43449142990252],
+        [13.70558157940864, 52.43416937412162],
+        [13.70649235383796, 52.4339343654563]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.70340875007016, 52.43473552001231]
+    },
+    "length": 525,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 90,
+    "url": "http://localhost:8000/api/projects/90",
+    "project_key": "TK-006-2",
+    "title": "Radwegsanierung Fürstenwalder Allee",
+    "description": "Auf diesem Abschnitt wird der Radweg saniert. Die bauliche Umsetzung erfolgt voraussichtlich 2018.\r\n\r\nBitte beachten Sie: Während der weiteren Planungen können sich Änderungen bei der Ausführung und der zeitlichen Planung ergeben. (Bearbeitungsstand August 2018)",
+    "short_description": "Hier wird der Radweg saniert.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Fürstenwalder Allee",
+    "borough": "Treptow-Köpenick",
+    "side": 1,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": "2018",
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "execution",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.70649235383796, 52.4339343654563],
+        [13.70778568856752, 52.43359639382248],
+        [13.70912109842523, 52.43324820754557],
+        [13.70984171989303, 52.43306100785479],
+        [13.71101133064557, 52.43275564298018],
+        [13.71156244651956, 52.43261113947839],
+        [13.71272730582098, 52.43230387319051],
+        [13.71375145500822, 52.43203711683211]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.70984171989303, 52.43306100785479]
+    },
+    "length": 537,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 91,
+    "url": "http://localhost:8000/api/projects/91",
+    "project_key": "TK-008",
+    "title": "Neue Radverkehrsanlage",
+    "description": "Auf diesem Abschnitt soll auf der nördlichen Seite eine Radverkehrsanlage errichtet werden. Eine bauliche Umsetzung ist z.Z. wegen Personalmangel (fehlende Bauleitung) nicht möglich. DIe Verkehrsbehördliche Anordnung liegt vor\r\n\r\nBitte beachten Sie: Während der weiteren Planungen können sich Änderungen bei der Ausführung und der zeitlichen Planung ergeben. (Bearbeitungsstand August 2018)",
+    "short_description": "Auf diesem Abschnitt soll eine Radverkehrsanlage errichtet werden.",
+    "category": "new cycling infrastructure",
+    "street_name": "Am Treptower Park",
+    "borough": "Treptow-Köpenick",
+    "side": 0,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.4734196054097, 52.4811794172408],
+          [13.4744790363362, 52.4804479640308],
+          [13.4751530257609, 52.4799942082706]
+        ],
+        [
+          [13.4579715507447, 52.4915166473586],
+          [13.4584519883286, 52.491198085601],
+          [13.4590692674064, 52.4907644660903],
+          [13.4595567939078, 52.4904293758577],
+          [13.4599458771072, 52.4901686017986],
+          [13.4604336075216, 52.4898448805676],
+          [13.461928308124, 52.4887941636052],
+          [13.4627687100039, 52.4882202510936],
+          [13.4639610777478, 52.487423242065],
+          [13.4644937352363, 52.4870547964913],
+          [13.4651432424816, 52.4866198463514],
+          [13.4661220991855, 52.4859615088969],
+          [13.4671143946524, 52.485289528362],
+          [13.4686650900337, 52.484244808587],
+          [13.4698335562232, 52.4834561844645],
+          [13.4708150939161, 52.4827932751536],
+          [13.4717060083105, 52.4821996224506],
+          [13.4722044560818, 52.4818766348254],
+          [13.4727314483679, 52.481533101565],
+          [13.4727539453609, 52.4815224277287]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.4661220991855, 52.4859615088969]
+    },
+    "length": 1766,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 2,
+    "liked_by_user": false
+  },
+  {
+    "id": 92,
+    "url": "http://localhost:8000/api/projects/92",
+    "project_key": "TK-010",
+    "title": "Neue Radverkehrsanlage",
+    "description": "Auf der Nordseite dieses Abschnitts soll eine Radverkehrsanlage errichtet werden. Die bauliche Umsetzung erfolgt 2019.\r\n\r\nBitte beachten Sie: Während der weiteren Planungen können sich Änderungen bei der Ausführung und der zeitlichen Planung ergeben. (Bearbeitungsstand August 2018)",
+    "short_description": "Auf diesem Abschnitt soll eine Radverkehrsanlage errichtet werden.",
+    "category": "new cycling infrastructure",
+    "street_name": "Elsenstraße",
+    "borough": "Treptow-Köpenick",
+    "side": 1,
+    "costs": null,
+    "draft_submitted": "2018",
+    "construction_started": "2019",
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "execution",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.45426344494866, 52.48914691870118],
+        [13.45450426822587, 52.48933662611386],
+        [13.45461178231971, 52.48943794374159],
+        [13.45514720469584, 52.48983923677006],
+        [13.45580234167078, 52.49032772977148],
+        [13.45598518642892, 52.4904348461024],
+        [13.45687112938093, 52.49110708127437],
+        [13.45738681815997, 52.49149936990941]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.45580234167078, 52.49032772977148]
+    },
+    "length": 397,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 8,
+    "liked_by_user": false
+  },
+  {
+    "id": 93,
+    "url": "http://localhost:8000/api/projects/93",
+    "project_key": "TK-011-1",
+    "title": "Sanierung des Geh-und Radwegs",
+    "description": "Auf diesem Abschnitt wird der Geh- und Radweg saniert.\r\n\r\nBitte beachten Sie: Während der weiteren Planungen können sich Änderungen bei der Ausführung und der zeitlichen Planung ergeben. (Bearbeitungsstand August 2018)",
+    "short_description": "Auf diesem Abschnitt wird der Geh- und Radweg saniert.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Rummelsburger Straße",
+    "borough": "Treptow-Köpenick",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "execution",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.51426168984068, 52.46895146822816],
+          [13.51415132778214, 52.46902866318179],
+          [13.51385959805387, 52.46927656383178],
+          [13.51363045160442, 52.4694877830073],
+          [13.51287094467354, 52.47017974433608],
+          [13.51223377589999, 52.47074749578595]
+        ],
+        [
+          [13.50981874537412, 52.47290625201889],
+          [13.51049357140149, 52.47227424044075],
+          [13.51082703815053, 52.47197394356571],
+          [13.51107226795885, 52.4717486589931],
+          [13.51143005246663, 52.47142012007911],
+          [13.51223377589999, 52.47074749578595]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.51143005246663, 52.47142012007911]
+    },
+    "length": 534,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 94,
+    "url": "http://localhost:8000/api/projects/94",
+    "project_key": "TK-011-2",
+    "title": "Sanierung des Geh-und Radwegs",
+    "description": "Auf diesem Abschnitt wird der Geh- und Radweg saniert.\r\n\r\nBitte beachten Sie: Während der weiteren Planungen können sich Änderungen bei der Ausführung und der zeitlichen Planung ergeben. (Bearbeitungsstand August 2018)",
+    "short_description": "Auf diesem Abschnitt wird der Geh- und Radweg saniert.",
+    "category": "renovation of cycling infrastructure",
+    "street_name": "Rummelsburger Landstraße",
+    "borough": "Treptow-Köpenick",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": "2018",
+    "construction_started": null,
+    "construction_completed": "2019",
+    "construction_completed_date": "2019-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.50758180289132, 52.47493187036687],
+        [13.50768474714141, 52.47484337890538],
+        [13.50799097735803, 52.47456923690853],
+        [13.50863615635263, 52.47398027628409],
+        [13.50913740495378, 52.47350997433072],
+        [13.50955920172167, 52.47312243288262],
+        [13.50981874537412, 52.47290625201889]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.50863615635263, 52.47398027628409]
+    },
+    "length": 272,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 95,
+    "url": "http://localhost:8000/api/projects/95",
+    "project_key": "TK-012",
+    "title": "Neue Radverkehrsanlage",
+    "description": "Zur Anbindung an den Bahnhof Rahnsdorf soll auf diesem Abschnitt eine neue Radverkehrsanlage errichtet werden.\r\nErstellung der Bau-Planungsunterlagen ruht bis zur Klärung, ob das Vorhaben naturschutzrechtlich genehmigungsfähig ist (Lage im FFH-Gebiet). Eine Vereinbarung mit den Berliner Forsten liegt bereits vor. Wenn die Planung genehmigungsfähig ist erfolgt eine bauliche Umsetzung voraussichtlich 2021. (BPU 2020)\r\n\r\nBitte beachten Sie: Während der weiteren Planungen können sich Änderungen bei der Ausführung und der zeitlichen Planung ergeben. (Bearbeitungsstand August 2018)",
+    "short_description": "Zur Anbindung an den Bahnhof Rahnsdorf soll auf diesem Abschnitt eine Radverkehrsanlage errichtet werden.",
+    "category": "new cycling infrastructure",
+    "street_name": "Woltersdorfer Weg",
+    "borough": "Treptow-Köpenick",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": "2020",
+    "construction_started": null,
+    "construction_completed": "2021",
+    "construction_completed_date": "2021-12-31",
+    "phase": "planning",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.68724801609033, 52.44150324562898],
+          [13.68899702509722, 52.44273353835956],
+          [13.68979851386333, 52.44333885790849],
+          [13.69143291147217, 52.44460762831968],
+          [13.69195309113063, 52.44459197372296],
+          [13.69163058443405, 52.44504380955629],
+          [13.69144912504149, 52.44962802350326]
+        ],
+        [
+          [13.69141182769086, 52.45111327684429],
+          [13.69144922355721, 52.44969452497429]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.69163058443405, 52.44504380955629]
+    },
+    "length": 1206,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  },
+  {
+    "id": 96,
+    "url": "http://localhost:8000/api/projects/96",
+    "project_key": "TK-013",
+    "title": "Neue Radverkehrsanlage",
+    "description": "Auf diesem Abschnitt soll auf der Fahrbahn ein Radfahrstreifen oder Schutzfahrstreifen in beide Richtungen markiert werden. Die Vorplanung (Machbarkeitsstudie) wird ab dem 3. Quartal 2018 durch ein Ingenieursbüro bearbeitet. \r\n\r\nBitte beachten Sie: Während der weiteren Planungen können sich Änderungen bei der Ausführung und der zeitlichen Planung ergeben. (Bearbeitungsstand August 2018)",
+    "short_description": "Auf diesem Abschnitt soll auf der Fahrbahn ein Radfahrstreifen oder Schutzfahrstreifen markiert werden.",
+    "category": "new cycling infrastructure",
+    "street_name": "Kiefholzstraße",
+    "borough": "Treptow-Köpenick",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "draft",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.48734681121827, 52.46537861245669],
+          [13.48778862699841, 52.46507118106517],
+          [13.48878173537702, 52.46437277928587],
+          [13.48885918605389, 52.46431896105949],
+          [13.48896309467265, 52.46424178553931],
+          [13.48985560668939, 52.46361670232827],
+          [13.49055312196526, 52.46311987206468],
+          [13.4911862734432, 52.46268602281246]
+        ],
+        [
+          [13.47404484412232, 52.47477837335946],
+          [13.47478566990631, 52.47425404678479],
+          [13.47555236050839, 52.47371262464698],
+          [13.47655267625549, 52.47300471154831],
+          [13.47731329793932, 52.4724685524362],
+          [13.4783972332511, 52.47170639134729],
+          [13.47860492154939, 52.47157197988706],
+          [13.47995067543753, 52.47062910612188],
+          [13.48052495748063, 52.47023347181559],
+          [13.48184310564637, 52.46929209641289],
+          [13.48371734879726, 52.4679708810289],
+          [13.48395314784236, 52.4678029928463],
+          [13.4845958462604, 52.46733088923279],
+          [13.4857997324863, 52.46648022465308],
+          [13.48677986509553, 52.46579100372398]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.48184310564637, 52.46929209641289]
+    },
+    "length": 1810,
+    "photos": [
+      {
+        "copyright": "© FixMyBerlin",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/kiefholz_schutzstreifen_b.jpg"
+      },
+      {
+        "copyright": "© FixMyBerlin",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/kiefholzstra%C3%9Fe_schutzstreifen.jpg"
+      }
+    ],
+    "likes": 1,
+    "liked_by_user": false
+  },
+  {
+    "id": 97,
+    "url": "http://localhost:8000/api/projects/97",
+    "project_key": "TK-014-1",
+    "title": "Neue Schutz- oder Radfahrstreifen",
+    "description": "Auf diesem Abschnitt soll auf der Fahrbahn ein Radfahrstreifen oder Schutzfahrstreifen markiert werden. Da auf diesem Abschnitt Umbaumaßnahmen geplant sind, wird vorerst nur eine Gelbmarkierung auf die Fahrbahn aufgetragen.\r\n\r\nBitte beachten Sie: Während der weiteren Planungen können sich Änderungen bei der Ausführung und der zeitlichen Planung ergeben. (Bearbeitungsstand August 2018)",
+    "short_description": "Auf diesem Abschnitt soll auf der Fahrbahn ein Radfahrstreifen oder Schutzfahrstreifen markiert werden. Da auf diesem Abschnitt Umbaumaßnahmen geplant sind, wird vorerst nur eine Gelbmarkierung auf di",
+    "category": "new cycling infrastructure",
+    "street_name": "Siemensstraße",
+    "borough": "Treptow-Köpenick",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "planning",
+    "responsible": "Bezirksamt Treptow-Köpenick",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.50672584552876, 52.46279343561116],
+          [13.50694689916038, 52.46298337747977],
+          [13.50702879784089, 52.46303261691548],
+          [13.50720434088722, 52.46312699045117]
+        ],
+        [
+          [13.50720434088722, 52.46312699045117],
+          [13.50741468867603, 52.46322180295667],
+          [13.50753502619127, 52.4633013011672],
+          [13.5076556996732, 52.46337087881271],
+          [13.50800159360592, 52.46354209775347],
+          [13.50813421237246, 52.4635952113391]
+        ],
+        [
+          [13.51210958778728, 52.46435282417099],
+          [13.51219036921159, 52.46436660068301],
+          [13.5123519322291, 52.46439415354266],
+          [13.51321510139683, 52.46453719323401]
+        ],
+        [
+          [13.51181911798105, 52.46430464067299],
+          [13.51210958778728, 52.46435282417099]
+        ],
+        [
+          [13.50894434486469, 52.46380517505307],
+          [13.50894556565593, 52.46380540147021],
+          [13.50935618467695, 52.4638814679933],
+          [13.50941129738692, 52.46389917632398],
+          [13.50952515937102, 52.46392254900277],
+          [13.51040362133157, 52.46407189110278],
+          [13.51075415161537, 52.46412797571697]
+        ],
+        [
+          [13.51075415161537, 52.46412797571697],
+          [13.51181911798105, 52.46430464067299]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.51040362133157, 52.46407189110278]
+    },
+    "length": 433,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 0,
+    "liked_by_user": false
+  }
+]
