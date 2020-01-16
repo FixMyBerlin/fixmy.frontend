@@ -228,6 +228,12 @@ export default function reducer(state: State = defaultState, action: Action) {
         (sc) => sc.sceneID === action.answer.sceneID
       );
       scenes[answerPos] = action.answer;
+
+      // The ratingsCounter should actually only be incremented if this scene
+      // has not been rated before. This is not considered here and might be
+      // important if this code is used again in the future.
+      // See https://github.com/FixMyBerlin/fixmy.platform/issues/223
+
       return {
         ...state,
         scenes,

@@ -27,7 +27,6 @@ const AbortButton = ({ abortDialog }) => (
   <Button onClick={clickHandler.bind(this, abortDialog)} />
 );
 
-export default connect(
-  null,
-  { abortDialog: actions.resetDialogState }
-)(AbortButton);
+export default connect(null, { abortDialog: actions.resetDialogState })(
+  AbortButton
+);

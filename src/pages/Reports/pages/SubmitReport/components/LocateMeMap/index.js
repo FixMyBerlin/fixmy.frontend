@@ -337,7 +337,4 @@ const mapDispatchToProps = {
   ...errorStateActions,
   ...submitReportStateActions
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LocateMeMap);
+export default connect(mapStateToProps, mapDispatchToProps)(LocateMeMap);

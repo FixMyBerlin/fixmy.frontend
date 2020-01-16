@@ -21,12 +21,9 @@ const Reducer = combineReducers({
 // https://github.com/zalmoxisus/redux-devtools-extension#usage
 
 /* eslint-disable no-underscore-dangle */
-const enhancers = compose(
-  applyMiddleware(thunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__
-    ? window.__REDUX_DEVTOOLS_EXTENSION__()
-    : (f) => f // handle browsers with no redux dev tools installed
-);
+const enhancers = window.__REDUX_DEVTOOLS_EXTENSION__
+  ? compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__())
+  : applyMiddleware(thunk);
 /* eslint-enable */
 
 const store = createStore(Reducer, enhancers);

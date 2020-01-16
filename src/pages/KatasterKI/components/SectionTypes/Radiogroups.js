@@ -97,8 +97,8 @@ export default ({
               );
               const isLabelVisible =
                 isRadioChecked ||
-                (optionIndex === 0 ||
-                  optionIndex === radiogroup.options.length - 1);
+                optionIndex === 0 ||
+                optionIndex === radiogroup.options.length - 1;
 
               return (
                 <RadioItem
