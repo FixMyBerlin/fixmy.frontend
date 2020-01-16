@@ -11,8 +11,14 @@ const reportsConfig = {
   },
   overviewMap: {
     style: 'mapbox://styles/hejco/cjpnt0cc41ipy2rlpu19jgt7a',
-    bounds: [[13.3651, 52.4658], [13.4945, 52.5479]],
-    maxBounds: [[13.2, 52.4158], [13.6, 52.5979]]
+    bounds: [
+      [13.3651, 52.4658],
+      [13.4945, 52.5479]
+    ],
+    maxBounds: [
+      [13.2, 52.4158],
+      [13.6, 52.5979]
+    ]
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,

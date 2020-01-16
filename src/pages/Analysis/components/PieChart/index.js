@@ -184,9 +184,6 @@ class PieChart extends PureComponent {
   }
 }
 
-export default connect(
-  null,
-  (dispatch) => ({
-    setPhaseFilter: (filter) => dispatch(setPhaseFilter(filter))
-  })
-)(PieChart);
+export default connect(null, (dispatch) => ({
+  setPhaseFilter: (filter) => dispatch(setPhaseFilter(filter))
+}))(PieChart);

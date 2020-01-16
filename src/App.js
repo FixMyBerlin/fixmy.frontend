@@ -1,5 +1,8 @@
+import 'react-hot-loader'; // keep first
+
 import React, { PureComponent, Suspense } from 'react';
 import { connect } from 'react-redux';
+import { hot } from 'react-hot-loader/root';
 import styled from 'styled-components';
 import { Router } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
@@ -53,6 +56,9 @@ class App extends PureComponent {
   }
 }
 
-export default connect((state) => ({
-  isEmbedMode: state.AppState.isEmbedMode
-}))(App);
+export default hot(
+  connect((state) => ({
+    token: state.UserState.token,
+    isEmbedMode: state.AppState.isEmbedMode
+  }))(App)
+);

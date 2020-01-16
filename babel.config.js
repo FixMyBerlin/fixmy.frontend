@@ -17,7 +17,8 @@ module.exports = (api) => {
     '@babel/plugin-proposal-class-properties',
     'babel-plugin-styled-components',
     'babel-plugin-idx',
-    '@babel/plugin-proposal-optional-chaining'
+    '@babel/plugin-proposal-optional-chaining',
+    'react-hot-loader/babel'
   ];
 
   const env = {

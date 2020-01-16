@@ -19,7 +19,8 @@ module.exports = merge(common, {
     historyApiFallback: true,
     host: '0.0.0.0',
     publicPath: '/',
-    clientLogLevel: 'silent'
+    clientLogLevel: 'silent',
+    hot: true
   },
   output: {
     chunkFilename: 'js/[name].chunk.js'
