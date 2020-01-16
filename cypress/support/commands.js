@@ -3,7 +3,7 @@
 // ***********************************************
 
 // commands get prefixed with `fmp` to clarify their origin when consumed
-import config from '../../config';
+import config from '~/config';
 
 // TODO: handle the issue that augmenting the cy object with the methods below leads to linting errors
 

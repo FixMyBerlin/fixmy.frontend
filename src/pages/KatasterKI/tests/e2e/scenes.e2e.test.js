@@ -1,10 +1,9 @@
-import { getByDataAttr } from '../../../../../cypress/support/utils';
-import config from '../../../../../config';
+import { getByDataAttr } from '~/../cypress/support/utils';
+import config from '~/config';
 
 describe('katasterKi scenes', () => {
   describe('a new session with gathered profile information at hand', () => {
-
-    describe('internal test setup',() => {
+    describe('internal test setup', () => {
       before(() => {
         cy.fmbGoToScene(1);
       });
@@ -15,7 +14,6 @@ describe('katasterKi scenes', () => {
           .should('exist');
       });
     });
-
 
     describe('scene 1', () => {
       before(() => {
@@ -108,9 +106,7 @@ describe('katasterKi scenes', () => {
         cy.get('[data-cy=kat-emailcheckboxes-proceed-btn]').as(
           'emailProceedBtn'
         );
-        cy.get('[data-cy=kat-emailcheckboxes-submit-btn]').as(
-          'emailSubmitBtn'
-        );
+        cy.get('[data-cy=kat-emailcheckboxes-submit-btn]').as('emailSubmitBtn');
       });
 
       it('does not enable the submit button when an invalid email is entered', () => {
