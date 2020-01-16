@@ -1,11 +1,6 @@
-/* eslint-disable */
+
 
 module.exports = (on, config) => {
-
-  // store process env in cypress env,
-  // see https://docs.cypress.io/guides/guides/environment-variables.html#Option-2-cypress-env-json
-  config.env = process.env;
-
   // modify the way browsers are launched,
   // see https://docs.cypress.io/api/plugins/browser-launch-api.html#Usage
   on('before:browser:launch', (browser = {}, args) => {
@@ -18,6 +13,8 @@ module.exports = (on, config) => {
     }
   });
 
-  // return config
-  return config;
+
+  // store process env in cypress env,
+  // see https://docs.cypress.io/guides/guides/environment-variables.html#Option-2-cypress-env-json
+  return { ...config, env: process.env };
 };
