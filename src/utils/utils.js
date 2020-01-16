@@ -31,6 +31,10 @@ export function isNumeric(val) {
 export function sortByKey(key = 'id', sortDirection = 'ASC') {
   const isAsc = sortDirection === 'ASC';
   return (a, b) => {
+    // Always sort undefined values to come last
+    if (a[key] == null) return 1;
+    if (b[key] == null) return -1;
+
     if (a[key] < b[key]) {
       return isAsc ? -1 : 1;
     }
