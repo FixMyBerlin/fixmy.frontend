@@ -158,8 +158,7 @@
 /planungen/9071/* /planungen/222/:splat 301
 /planungen/9070/* /planungen/223/:splat 301
 
-# Proxy stats and api
+# Proxy stats
 /stats/* https://stats.fixmyberlin.de/:splat 200
-/api/* https://api.fixmyberlin.de/api/:splat 200
 
 /*    /   200
