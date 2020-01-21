@@ -8,10 +8,10 @@ import { numberFormat } from '~/utils/utils';
 import { getHBIColorByIndex } from '~/utils/hbi-utils';
 
 const HBISign = styled.div`
-  border: ${(props) => props.borderWeight}px solid
-    ${(props) => props.color || config.colors.index};
-  width: ${(props) => props.size}px;
-  height: ${(props) => props.size}px;
+  border: ${({ borderWeight }) => borderWeight}px solid
+    ${({ color }) => color || config.colors.index};
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,36 +26,47 @@ const HBISign = styled.div`
   cursor: pointer;
 `;
 
-const StyledBetaIcon = styled(BetaIcon)`
+// styled-components passes the isToolTip prop on to the svg component
+// which it shouldn't, so the props are made explicit here
+const StyledBetaIcon = styled(({ isTooltip, ...props }) => (
+  <BetaIcon {...props} />
+))`
   position: absolute;
-  transform: ${(props) =>
-    props.isTooltip
+  transform: ${({ isTooltip }) =>
+    isTooltip
       ? 'rotate(-6deg) translate(65px, -33px)'
       : 'rotate(-6deg) translate(65px, 15px)'};
 `;
 
 const StyledBikeIcon = styled(BikeIcon)`
   path {
-    fill: ${(props) => props.color || config.colors.index};
+    fill: ${({ color }) => color || config.colors.index};
   }
 `;
 
-const HBISignComp = (props) => {
-  const color = getHBIColorByIndex(props.hbi);
+const HBISignComp = ({
+  hbi,
+  size,
+  borderWeight,
+  className,
+  onClick,
+  isTooltip
+}) => {
+  const color = getHBIColorByIndex(hbi);
 
   return (
     <HBISign
-      size={props.size}
-      borderWeight={props.borderWeight}
-      className={props.className}
-      onClick={props.onClick}
+      size={size}
+      borderWeight={borderWeight}
+      className={className}
+      onClick={onClick}
       color={color}
     >
       <div>
         <StyledBikeIcon color={color} />
-        <div>{numberFormat(props.hbi, 1)}</div>
+        <div>{numberFormat(hbi, 1)}</div>
       </div>
-      <StyledBetaIcon isTooltip={props.isTooltip} />
+      <StyledBetaIcon isTooltip={isTooltip} />
     </HBISign>
   );
 };

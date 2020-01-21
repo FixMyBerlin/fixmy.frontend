@@ -5,9 +5,7 @@ import logger from '~/utils/logger';
 
 import { Perspective, TransportRating, UserGroup } from './types';
 
-const userGroups: Array<
-  UserGroupAssociation
-> = require('./config/userGroups.json');
+const userGroups: Array<UserGroupAssociation> = require('./config/userGroups.json');
 
 interface TransportRatings {
   [mode: string]: TransportRating;
