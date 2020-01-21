@@ -160,5 +160,3 @@
 
 # Proxy stats
 /stats/* https://stats.fixmyberlin.de/:splat 200
-
-/*    /   200

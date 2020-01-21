@@ -2,4 +2,8 @@
     from = "/api/v1/*"
     to = "https://api.fixmyberlin.de/api/:splat"
     status = 200
-    headers = {X-Forwarded-Host = "fixmyberlin.de", X-Forwarded-Proto = "https"}
+
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
