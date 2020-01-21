@@ -2,6 +2,11 @@
     from = "/api/v1/*"
     to = "https://api.fixmyberlin.de/api/:splat"
     status = 200
+    force = true
+    [redirects.headers]
+        X-From = "Netlify"
+        X-Forwarded-Host = "fixmyberlin.de"
+        X-Forwarded-Proto = "https"
 
 [[redirects]]
     from = "/*"
