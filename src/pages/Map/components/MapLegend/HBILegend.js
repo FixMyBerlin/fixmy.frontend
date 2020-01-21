@@ -8,6 +8,17 @@ import Label from '~/components/Label';
 import LegendWrapper from './LegendWrapper';
 import LegendImageWrapper from './LegendImageWrapper';
 import LegendItem from './LegendItem';
+import IconSuper from '~/images/hbi-stop-icons/sehrgut@2x.png';
+import IconOk from '~/images/hbi-stop-icons/ok@2x.png';
+import IconBad from '~/images/hbi-stop-icons/gefaehrlich@2x.png';
+import IconWorst from '~/images/hbi-stop-icons/sehrgefaehrlich@2x.png';
+
+const Icons = {
+  super: IconSuper,
+  ok: IconOk,
+  schlecht: IconBad,
+  'sehr schlecht': IconWorst
+};
 
 export default (props) => (
   <LegendWrapper>
@@ -20,7 +31,7 @@ export default (props) => (
         <LegendImageWrapper>
           <img
             alt={`Legende - ${legendItem.label}`}
-            src={require(`~/images/hbi-stop-icons/${legendItem.image}`)}
+            src={Icons[legendItem.label]}
           />
         </LegendImageWrapper>
         <Label>{legendItem.label}</Label>
