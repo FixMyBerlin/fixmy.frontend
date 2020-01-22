@@ -6,8 +6,8 @@ import routes from './routes';
 
 const apiEndpoints = {
   dev: 'http://localhost:8000/api',
-  staging: 'https://fixmyplatform-develop.herokuapp.com/api',
-  production: 'https://api.fixmyberlin.de/api'
+  staging: 'https://fixmyberlin.de/api/next/',
+  production: 'https://fixmyberlin.de/api/v1/'
 };
 
 const baseConfig = {
