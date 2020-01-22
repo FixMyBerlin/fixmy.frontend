@@ -72,7 +72,7 @@ const sortOptions = [
   { value: 'likes', label: 'Likes', sortDirection: 'DESC' },
   { value: 'length', label: 'Länge', sortDirection: 'DESC' },
   {
-    value: 'construction_completed',
+    value: 'construction_completed_date',
     label: 'Fertigstellung',
     sortDirection: 'ASC'
   }
