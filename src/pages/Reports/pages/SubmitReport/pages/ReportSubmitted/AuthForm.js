@@ -137,7 +137,7 @@ class AuthForm extends Component {
 
     try {
       const user = await ky
-        .post(`${config.apiUrl}/users/create`, { json: userData })
+        .post(`${config.apiUrl}/users/`, { json: userData })
         .json();
       await addUserToReport(this.props.reportId, user.id);
     } catch (err) {
