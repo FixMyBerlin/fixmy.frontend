@@ -68,9 +68,9 @@ export function login(values, formFunctions, cb = () => {}) {
     const data = await apiLogin(values, formFunctions);
 
     if (!data.error) {
-      set('token', data.token);
+      set('token', data.access);
       formFunctions.setStatus('loginsuccess');
-      dispatch({ type: LOGIN_SUCCESS, payload: { token: data.token } });
+      dispatch({ type: LOGIN_SUCCESS, payload: { token: data.access } });
 
       cb(data);
     }
