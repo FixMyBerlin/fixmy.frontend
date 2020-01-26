@@ -20,6 +20,13 @@ Runs on [localhost:8080](http://localhost:8080/)
 $ npm start
 ```
 
+## Testing 
+
+Runs unit tests.
+```sh
+$ npm run test
+```
+
 ## Build
 
 Builds a minified version of the application in the build folder.
