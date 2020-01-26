@@ -68,9 +68,9 @@ Spotted a bug? Please raise an issue [/fixmy.platform](https://github.com/FixMyB
 Make sure to explain the problem with enough details to help maintainers to reproduce the problem. 
 
 * **Use a clear and descriptive title** for the issue to identify the problem.
-* **Describe the exact steps which reproduce the problem** in as many details as possible. E.g.
-  * start by explaining how you ran the app. Did you visit https://fixmyberlin.de/? Did you run a local dev server? 
-  * state the the route you encountered the bug, e.g. [/planungen](https://fixmyberlin.de/planungen)? 
+* **Describe the exact steps which reproduce the problem** in as many details as possible.
+  * Start by explaining how you ran the app. Did you visit https://fixmyberlin.de/? Did you run a local dev server? 
+  * State the the route you encountered the bug, e.g. [/planungen](https://fixmyberlin.de/planungen)? 
   * What did you to to provoke the error? Provide specific examples to demonstrate the steps**. 
   Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples. 
   If you're providing snippets in the issue, use [Markdown code blocks](https://help.github.com/articles/markdown-basics/#multiple-lines).
@@ -82,6 +82,7 @@ Make sure to explain the problem with enough details to help maintainers to repr
 ### Picking an open issue from the back log
 
 If the issue description is not clear enough, ask questions by commenting below it.
+You can spot suitable issues by their [labels](#labeling).
 
 ### Requesting a feature
 
@@ -115,7 +116,7 @@ FixMyBerlin is driven by [project funding](https://prototypefund.de/project/fixm
 Now that we explicitly open up suitable issues to public contributors, these issues are going to be
 in english
 detailed
-labeled, checkour our [labeling policy]((#labeling))
+labeled, checkout our [labeling policy](#labeling))
 
 
 
