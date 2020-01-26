@@ -5,6 +5,10 @@ You can check out the live version [here](https://fixmyberlin.de/).
 
 ![fixmy screenshot](/fixmy-screenshot.jpg)
 
+## Contributing
+
+Check the [contribution guide](CONTRIBUTING.md).
+
 ## Installation
 
 ```sh
