@@ -64,11 +64,8 @@ run tests
 
 ### Reporting Bugs
 
-Spotted a bug? Please 
-
-open up an issue in [/fixmy.platform](https://github.com/FixMyBerlin/fixmy.platform).
-explain the problem using the provided issue template and include additional details to help maintainers to reproduce the problem 
-- [ ] Issue template file Link Issue Template
+Spotted a bug? Please raise an issue [/fixmy.platform](https://github.com/FixMyBerlin/fixmy.platform/) using the provided issue template.
+Make sure to explain the problem with enough details to help maintainers to reproduce the problem. 
 
 * **Use a clear and descriptive title** for the issue to identify the problem.
 * **Describe the exact steps which reproduce the problem** in as many details as possible. E.g.
@@ -96,12 +93,12 @@ Provide a clear and detailed explanation of the feature you want to add. What va
 ### Opening a Pull Request
 
 We love PRs. Here is a quick guide how it works:
-Fork the repo
-Write new code
-Make sure all tests pass
-Commit your changes. When writing the message, follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) spec.
-Push to your fork and submit a pull request. Describe the requested change using the provided pull request template.
-
+* Fork the repo
+* Write new code
+* Make sure all tests pass
+* Commit your changes. When writing the message, follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) spec.
+* Push to your fork and submit a pull request. 
+* Within the PR, describe the requested change using the provided pull request template.
 
 ## Contacts
 
