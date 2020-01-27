@@ -1,5 +1,5 @@
 <p align="center">🚲 🚲 🚲</p>
-# FixMyBerlin - A Mobility Platform for Berlin [![Build Status](https://semaphoreci.com/api/v1/hekele/fixmy-frontend/branches/develop/badge.svg)](https://semaphoreci.com/hekele/fixmy-frontend)
+# FixMyBerlin - A Mobility Platform for Berlin ![Build Status](https://semaphoreci.com/api/v1/hekele/fixmy-frontend/branches/develop/badge.svg)](https://semaphoreci.com/hekele/fixmy-frontend)
 
 You can check out the live version [here](https://fixmyberlin.de/).
 
