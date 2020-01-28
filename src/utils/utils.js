@@ -28,15 +28,13 @@ export function isNumeric(val) {
   return !Number.isNaN(val) && Number.isFinite(val);
 }
 
-export function trackEvent(category = '', action = '', name = '') {
-  if (typeof _paq !== 'undefined') {
-    _paq.push(['trackEvent', category, action, name]);
-  }
-}
-
 export function sortByKey(key = 'id', sortDirection = 'ASC') {
   const isAsc = sortDirection === 'ASC';
   return (a, b) => {
+    // Always sort undefined values to come last
+    if (a[key] == null) return 1;
+    if (b[key] == null) return -1;
+
     if (a[key] < b[key]) {
       return isAsc ? -1 : 1;
     }
@@ -74,13 +72,3 @@ export function getRVALength({ length, side, id }) {
 }
 
 export const isTouch = 'ontouchstart' in window;
-
-export default {
-  numberFormat,
-  trackEvent,
-  sortByKey,
-  isNumeric,
-  getParameterByName,
-  getRVALength,
-  isTouch
-};

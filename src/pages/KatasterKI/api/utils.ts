@@ -1,4 +1,5 @@
 import { MultiChoice } from '../state';
+import config from '~/pages/KatasterKI/config';
 
 /**
  * Marshall state of a multi_choice component for sending in a request
@@ -12,6 +13,9 @@ export const marshallMultiChoice = (
   other: string;
 } => {
   let other = '';
+
+  if (values == null) throw new Error('No values to marshall');
+
   const choices = Object.keys(values)
     .map((field) => {
       // Optional freeform input fields are stored in fieldnames ending in

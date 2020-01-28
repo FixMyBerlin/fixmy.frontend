@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import ky from 'ky';
 
+import config from '~/pages/Reports/config';
 import logger from '~/utils/logger';
 import { media, matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './WebglMap';
@@ -336,7 +337,4 @@ const mapDispatchToProps = {
   ...errorStateActions,
   ...submitReportStateActions
 };
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(LocateMeMap);
+export default connect(mapStateToProps, mapDispatchToProps)(LocateMeMap);

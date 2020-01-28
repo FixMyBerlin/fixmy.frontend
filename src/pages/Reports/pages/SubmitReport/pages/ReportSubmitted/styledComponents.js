@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import config from '~/pages/Reports/config';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Button from '~/components/Button';

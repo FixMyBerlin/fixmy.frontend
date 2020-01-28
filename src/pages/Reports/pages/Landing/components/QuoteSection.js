@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/Reports/config';
 import PlannerImg from '~/images/reports/planner.jpg';
 import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';

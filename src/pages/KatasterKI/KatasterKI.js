@@ -3,6 +3,7 @@ import { Router, Route, Switch, Redirect, matchPath } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import ReactPiwik from 'react-piwik';
 
+import config from '~/pages/KatasterKI/config';
 import { media } from '~/styles/utils';
 import history from '~/history';
 import Landing from './pages/Landing';

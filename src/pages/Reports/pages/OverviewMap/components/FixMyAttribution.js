@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import config from '~/pages/Reports/config';
 
 const Wrapper = styled.div`
   position: absolute;

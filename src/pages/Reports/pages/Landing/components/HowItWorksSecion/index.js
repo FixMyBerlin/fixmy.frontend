@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/Reports/config';
 import BikeIcon from '~/images/reports/noun-bicycle.svg';
 import { media } from '~/styles/utils';
 import Steps from './Steps';

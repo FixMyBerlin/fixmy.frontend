@@ -12,6 +12,7 @@ import {
   apiLikes
 } from '~/pages/User/apiservice';
 import history from '~/history';
+import config from '~/pages/Map/config';
 
 const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
 const SIGNUP = 'User/UserState/SIGNUP';
@@ -67,9 +68,9 @@ export function login(values, formFunctions, cb = () => {}) {
     const data = await apiLogin(values, formFunctions);
 
     if (!data.error) {
-      set('token', data.token);
+      set('token', data.access);
       formFunctions.setStatus('loginsuccess');
-      dispatch({ type: LOGIN_SUCCESS, payload: { token: data.token } });
+      dispatch({ type: LOGIN_SUCCESS, payload: { token: data.access } });
 
       cb(data);
     }

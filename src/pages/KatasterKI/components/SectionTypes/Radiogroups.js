@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/KatasterKI/config';
 import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
@@ -96,8 +97,8 @@ export default ({
               );
               const isLabelVisible =
                 isRadioChecked ||
-                (optionIndex === 0 ||
-                  optionIndex === radiogroup.options.length - 1);
+                optionIndex === 0 ||
+                optionIndex === radiogroup.options.length - 1;
 
               return (
                 <RadioItem

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import logger from '~/utils/logger';
+import config from '~/pages/Reports/config';
 
 const Button = styled.button`
   height: 48px;

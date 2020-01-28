@@ -3,6 +3,7 @@ import { Redirect, Link, matchPath } from 'react-router-dom';
 import styled from 'styled-components';
 import queryString from 'query-string';
 
+import config from '~/pages/KatasterKI/config';
 import { media, isSmallScreen } from '~/styles/utils';
 import Store from '~/store';
 import { setEmbedded } from '../state';
@@ -180,7 +181,7 @@ const AttributionLabel = styled.span`
 
 const CallToAction = ({ labels }) => (
   <CallToActionWrapper>
-    <CallToActionLink target="_blank" href={config.katasterKI.tspArticleLink}>
+    <CallToActionLink target="_blank" href={config.tspKatasterURL}>
       {labels.calltoaction}
     </CallToActionLink>
     <AttributionLabel>Illustration: Martin Baaske</AttributionLabel>

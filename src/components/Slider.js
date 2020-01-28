@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import config from '~/config';
 
 export default styled(Slider)`
   .rc-slider-track {

@@ -3,7 +3,15 @@ export const worldWidePolygon = {
   properties: {},
   geometry: {
     type: 'Polygon',
-    coordinates: [[[-180, -90], [-180, 90], [180, 90], [180, -90], [-180, -90]]]
+    coordinates: [
+      [
+        [-180, -90],
+        [-180, 90],
+        [180, 90],
+        [180, -90],
+        [-180, -90]
+      ]
+    ]
   }
 };
 export const nullIslandPolygonFeature = {

@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/Reports/config';
 import SearchIcon from '~/images/reports/search.svg';
 import { media } from '~/styles/utils';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/KatasterKI/config';
 import { numberFormat } from '~/utils/utils';
 
 const ProgressWrapper = styled.div`

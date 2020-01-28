@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from '~/components/Button';
 import logger from '~/utils/logger';
+import config from '~/config';
 
 const Div = styled.div`
   position: fixed;

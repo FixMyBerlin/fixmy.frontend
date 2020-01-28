@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/Reports/config';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import Slider from '~/components/Slider';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';

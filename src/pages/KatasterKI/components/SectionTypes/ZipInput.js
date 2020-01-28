@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
+import config from '~/pages/KatasterKI/config';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components/Button';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';

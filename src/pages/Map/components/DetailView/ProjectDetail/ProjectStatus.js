@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/Map/config';
 import ProjectStatusChart from './ProjectStatusChart';
 import ProjectChecklist from './ProjectChecklist';
 

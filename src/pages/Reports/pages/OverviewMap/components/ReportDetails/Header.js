@@ -5,6 +5,7 @@ import ReportPinIcon from '~/images/reports/pin-meldung-yellow.png';
 
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 
+import config from '~/pages/Reports/config';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 
 const HeadlineSection = styled.div`

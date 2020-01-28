@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { VictoryPie, VictoryLabel, Slice } from 'victory';
 
+import config from '~/pages/Map/config';
 import { setPhaseFilter } from '~/pages/Analysis/AnalysisState';
 
 import { numberFormat, getRVALength } from '~/utils/utils';
@@ -183,9 +184,6 @@ class PieChart extends PureComponent {
   }
 }
 
-export default connect(
-  null,
-  (dispatch) => ({
-    setPhaseFilter: (filter) => dispatch(setPhaseFilter(filter))
-  })
-)(PieChart);
+export default connect(null, (dispatch) => ({
+  setPhaseFilter: (filter) => dispatch(setPhaseFilter(filter))
+}))(PieChart);
