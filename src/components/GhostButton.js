@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import config from '~/config';
 import Button from './Button';
 
 export default styled(Button)`

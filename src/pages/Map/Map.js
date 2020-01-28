@@ -16,7 +16,7 @@ import FMBLogo from '~/components/FMBLogo';
 import Store from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from '~/pages/Map/components/WebglMap';
-import MyHBI from '~/pages/MyHBI';
+import config from '~/pages/Map/config';
 
 export const SectionDetail = Loadable({
   loader: () =>
@@ -141,7 +141,6 @@ class MapViewComponent extends PureComponent {
             )}
           />
         </MapWrapper>
-        <Route path="/my-hbi" component={MyHBI} />
         {isEmbedMode && <FMBCredits />}
       </MapView>
     );

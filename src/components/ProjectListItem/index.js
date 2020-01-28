@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import slugify from 'slugify';
 
+import config from '~/config';
 import { numberFormat, getRVALength } from '~/utils/utils';
 import Label from '~/components/Label';
 import Button from '~/components/Button';

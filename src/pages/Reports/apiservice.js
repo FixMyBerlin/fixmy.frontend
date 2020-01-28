@@ -2,6 +2,7 @@ import ky from 'ky';
 import oneLine from 'common-tags/es/oneLine/oneLine';
 import validateNewReport from './state/tests/schemaValidation/validateNewReport';
 import logger from '~/utils/logger';
+import config from '~/pages/Reports/config';
 
 export const reportsEndpointUrl =
   config.apiUrl + config.reports.apiRoute || '/reports';

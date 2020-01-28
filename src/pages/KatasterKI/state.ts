@@ -1,5 +1,4 @@
 import { Dispatch } from 'redux';
-import logger from '~/utils/logger';
 import {
   Answer,
   Perspective,
@@ -19,7 +18,9 @@ import {
   makeIntroSelection
 } from './utils';
 import api from './api';
+import config from './config';
 import introQuestions from './config/introQuestions';
+import logger from '~/utils/logger';
 
 export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
 export const SET_ANSWER = 'KatasterKI/SET_ANSWER';
@@ -217,6 +218,12 @@ export default function reducer(state: State = defaultState, action: Action) {
         (sc) => sc.sceneID === action.answer.sceneID
       );
       scenes[answerPos] = action.answer;
+
+      // The ratingsCounter should actually only be incremented if this scene
+      // has not been rated before. This is not considered here and might be
+      // important if this code is used again in the future.
+      // See https://github.com/FixMyBerlin/fixmy.platform/issues/223
+
       return {
         ...state,
         scenes,

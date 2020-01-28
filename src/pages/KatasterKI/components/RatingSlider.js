@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
+import config from '~/pages/KatasterKI/config';
 import Flex from '~/components/Flex';
 import { media } from '~/styles/utils';
 

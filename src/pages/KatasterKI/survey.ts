@@ -11,7 +11,6 @@ import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 
 import defaultProfileConfig from './config/profile';
 import introQuestions from './config/introQuestions';
-import { shuffle } from './utils';
 
 const perspectiveNames = {
   C: 'Fahrradperspektive',

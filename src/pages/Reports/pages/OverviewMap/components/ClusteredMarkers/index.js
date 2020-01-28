@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GeoPropTypes from 'geojson-prop-types';
 
-import FMCPropTypes from '~/propTypes';
+import FMCPropTypes from '~/pages/Reports/propTypes';
 
 import {
   createPinMarker,

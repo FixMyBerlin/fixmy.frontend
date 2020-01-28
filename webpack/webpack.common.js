@@ -29,9 +29,6 @@ module.exports = {
       { from: Path.resolve(__dirname, FAVICONS_PATH) },
       { from: Path.resolve(__dirname, '../public/data'), to: 'data' }
     ]),
-    new Webpack.ProvidePlugin({
-      config: '~/../config.js'
-    }),
     new Webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
       CONFIG_ENV: 'dev',
@@ -42,7 +39,8 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
-      '~': Path.resolve(__dirname, '../src')
+      '~': Path.resolve(__dirname, '../src'),
+      'react-dom': '@hot-loader/react-dom'
     }
   },
   module: {
@@ -60,8 +58,7 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/webidl-conversions'),
           Path.resolve(__dirname, '../node_modules/whatwg-url'),
           Path.resolve(__dirname, '../node_modules/ky'),
-          Path.resolve(__dirname, '../node_modules/d3-scale'),
-          Path.resolve(__dirname, '../config.js')
+          Path.resolve(__dirname, '../node_modules/d3-scale')
         ],
         use: 'babel-loader'
       },

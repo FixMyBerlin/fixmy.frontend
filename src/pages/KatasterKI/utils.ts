@@ -5,9 +5,7 @@ import logger from '~/utils/logger';
 
 import { Perspective, TransportRating, UserGroup } from './types';
 
-const userGroups: Array<
-  UserGroupAssociation
-> = require('./config/userGroups.json');
+const userGroups: Array<UserGroupAssociation> = require('./config/userGroups.json');
 
 interface TransportRatings {
   [mode: string]: TransportRating;
@@ -120,7 +118,7 @@ export const shuffle = (x: Array<any>): Array<any> => {
  * returns the first `num` entries.
  */
 export const makeIntroSelection = (max: number, num: number) =>
-  shuffle([...Array(max).keys()]).slice(0, num);
+  shuffle(Array.from(Array(max).keys())).slice(0, num);
 
 /**
  * Scroll to top on navigation

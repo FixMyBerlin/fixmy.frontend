@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Collapsible from 'react-collapsible';
 import PropTypes from 'prop-types';
 
+import config from '~/pages/Reports/config';
 import Text from '~/components/Text';
 
 const StyledText = styled(Text)`

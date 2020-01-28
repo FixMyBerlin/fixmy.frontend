@@ -5,6 +5,8 @@ import { getEndpointURL, marshallMultiChoice } from './utils';
 import { State } from '../state';
 import introQuestions from '../config/introQuestions';
 
+import config from '~/pages/KatasterKI/config';
+
 // JSON import apparently only works in ts when using `require`
 const profileRequestSchema = require('../scheme/profile-request.schema.json');
 

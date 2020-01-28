@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import idx from 'idx';
 import { connect } from 'react-redux';
 
+import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
 import { actions } from '~/pages/Reports/state/OverviewMapState';
 import MapPopupWrapper from '~/components/MapPopupWrapper';

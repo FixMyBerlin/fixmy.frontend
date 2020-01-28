@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import config from '~/config';
 import FixMyLogo from '~/images/logofmb@2x.png';
 import BetaIcon from '~/images/beta.svg';
 

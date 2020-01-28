@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import ky from 'ky';
 import qs from 'qs';
 
+import config from '~/config';
 import logger from '~/utils/logger';
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
@@ -45,7 +46,7 @@ const UserVerify = ({ match, location }) => {
     const signupNewsletter = newsletter === 'yes';
 
     try {
-      return ky(`${config.apiUrl}/users/confirm/`, {
+      return ky(`${config.apiUrl}/users/activation/`, {
         method: 'POST',
         json: { uid, token, newsletter: signupNewsletter }
       });

@@ -1,6 +1,8 @@
 import ky from 'ky';
 import idx from 'idx';
 
+import config from '~/pages/Map/config';
+
 const SET_VIEW = 'Map/MapState/SET_VIEW';
 const SET_HAS_MOVED = 'Map/MapState/SET_HAS_MOVED';
 const GEOCODE_DONE = 'Map/MapState/GEOCODE_SUCCESS';
