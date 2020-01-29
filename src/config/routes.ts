@@ -13,7 +13,7 @@ export default {
   },
   katasterKI: {
     landing: katasterPath || '/',
-    landingNational: '/de',
+    landingNational: `${katasterPath}/de`,
     profileBase: `${katasterPath}/profil`,
     profile: `${katasterPath}/profil/:page`,
     scenesBase: `${katasterPath}/szenen`,
