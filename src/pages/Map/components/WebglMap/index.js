@@ -98,13 +98,6 @@ class Map extends PureComponent {
       this.disablePopup();
     }
 
-    if (
-      this.props.match.url === '/my-hbi' &&
-      !_isEqual(prevProps.hbi_values, this.props.hbi_values)
-    ) {
-      colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
-    }
-
     if (prevProps.activeSection && !this.props.activeSection) {
       // back button triggered
       resetMap({ zoom: this.map.getZoom() });
