@@ -9,6 +9,7 @@ import MapControl from '~/pages/Map/components/MapControl';
 import { isNumeric } from '~/utils/utils';
 import Loader from '~/components/Loader';
 import LocatorIcon from '~/images/location.svg';
+import ErrorMessage from '~/components/ErrorMessage';
 
 const LocatorButton = styled.button`
   background-color: ${config.colors.white};
@@ -49,7 +50,7 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
     }
   };
 
-  const onLocateError = ({code, message}) => {
+  const onLocateError = ({ code, message }) => {
     logger(message);
     if (code === locateErrors.PERMISSION_DENIED) {
       setIsGeolocationDenied(true);
@@ -59,24 +60,31 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
   const locate = () => {
     setIsLoading(true);
     onStart();
-
     getGeoLocation()
       .then(onLocateSuccess)
       .catch(onLocateError);
-
     setIsLoading(false);
   };
 
   const Icon = isLoading ? <Loader size={24} /> : <LocatorIcon />;
 
-  // TODO: if isGeolocationDenied is truthy, display errorMessage
 
   return (
-    <MapControl position={position} customPosition={customPosition}>
-      <LocatorButton disabled={isLoading} onClick={locate}>
-        {Icon}
-      </LocatorButton>
-    </MapControl>
+    <>
+      {isGeolocationDenied && (
+        <ErrorMessage
+          message="Wenn Du Dich orten willst, musst Du einer Ortung zustimmen"
+          dismissMessage="Verstanden"
+          onDismiss={() => setIsGeolocationDenied(false)}
+        />
+      )}
+
+      <MapControl position={position} customPosition={customPosition}>
+        <LocatorButton disabled={isLoading} onClick={locate}>
+          {Icon}
+        </LocatorButton>
+      </MapControl>
+    </>
   );
 };
 
