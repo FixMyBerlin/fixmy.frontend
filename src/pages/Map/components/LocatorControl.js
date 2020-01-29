@@ -1,13 +1,14 @@
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import idx from 'idx';
+import logger from '~/utils/logger';
 
 import config from '~/pages/Map/config';
-import LocatorIcon from '~/images/location.svg';
-import Loader from '~/components/Loader';
 import { getGeoLocation } from '~/pages/Map/map-utils';
 import MapControl from '~/pages/Map/components/MapControl';
+import { isNumeric } from '~/utils/utils';
+import Loader from '~/components/Loader';
+import LocatorIcon from '~/images/location.svg';
 
 const LocatorButton = styled.button`
   background-color: ${config.colors.white};
@@ -26,49 +27,58 @@ const LocatorButton = styled.button`
   }
 `;
 
-class LocatorControl extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: false
-    };
-  }
+const locateErrors = {
+  // https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError/code
+  PERMISSION_DENIED: 1,
+  POSITION_UNAVAILABLE: 2,
+  TIMEOUT: 3
+};
 
-  locate = async () => {
-    this.setState({ isLoading: true });
-    this.props.onStart();
+const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isGeolocationDenied, setIsGeolocationDenied] = useState(false);
 
-    try {
-      const position = await getGeoLocation();
-      const lat = idx(position, (_) => _.coords.latitude);
-      const lng = idx(position, (_) => _.coords.longitude);
-
-      if (typeof lat === 'number' && typeof lng === 'number') {
-        this.props.onChange([lng, lat]);
-      }
-    } catch (err) {
-      alert('Um dich zu lokalisieren, benötigen wir deine Berechtigung.'); // eslint-disable-line
-      throw err;
+  const onLocateSuccess = (geoPosition) => {
+    const lat = geoPosition?.coords?.latitude;
+    const lng = geoPosition?.coords?.longitude;
+    const isValidCoords = [lat, lng].every(isNumeric);
+    if (!isValidCoords) {
+      logger('invalid coords');
+    } else {
+      onChange([lng, lat]);
     }
-
-    this.setState({ isLoading: false });
   };
 
-  render() {
-    const Icon = this.state.isLoading ? <Loader size={24} /> : <LocatorIcon />;
+  const onLocateError = ({code, message}) => {
+    logger(message);
+    if (code === locateErrors.PERMISSION_DENIED) {
+      setIsGeolocationDenied(true);
+    }
+  };
 
-    return (
-      <MapControl
-        position={this.props.position}
-        customPosition={this.props.customPosition}
-      >
-        <LocatorButton disabled={this.state.isLoading} onClick={this.locate}>
-          {Icon}
-        </LocatorButton>
-      </MapControl>
-    );
-  }
-}
+  const locate = () => {
+    setIsLoading(true);
+    onStart();
+
+    getGeoLocation()
+      .then(onLocateSuccess)
+      .catch(onLocateError);
+
+    setIsLoading(false);
+  };
+
+  const Icon = isLoading ? <Loader size={24} /> : <LocatorIcon />;
+
+  // TODO: if isGeolocationDenied is truthy, display errorMessage
+
+  return (
+    <MapControl position={position} customPosition={customPosition}>
+      <LocatorButton disabled={isLoading} onClick={locate}>
+        {Icon}
+      </LocatorButton>
+    </MapControl>
+  );
+};
 
 LocatorControl.propTypes = {
   position: PropTypes.string,
