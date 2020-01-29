@@ -6,8 +6,8 @@ import routes from './routes';
 
 const apiEndpoints = {
   dev: 'http://localhost:8000/api',
-  staging: 'https://fixmyplatform-develop.herokuapp.com/api',
-  production: 'https://api.fixmyberlin.de/api'
+  staging: 'https://fixmyberlin-staging.netlify.com/api/next',
+  production: 'https://fixmyberlin.de/api/v1'
 };
 
 const baseConfig = {
@@ -15,7 +15,10 @@ const baseConfig = {
   prodUrl: 'https://fixmyberlin.de',
   newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/6kW',
   tspKatasterURL: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
-  apiUrl: apiEndpoints[process.env.CONFIG_ENV] || apiEndpoints.production,
+  apiUrl:
+    process.env.API_URL ||
+    apiEndpoints[process.env.CONFIG_ENV] ||
+    apiEndpoints.production,
   feedbackMail: 'feedback@fixmyberlin.de',
   logger: 'fmc*', // selects logging namespaces to display when not in production
   sectionIsBeta: true,
