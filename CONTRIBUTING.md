@@ -1,49 +1,56 @@
 # Contributing to FixMyBerlin
 
-FixMyBerlin is an OpenSource project and we would love to receive contributions.
-If want to contribute – Welcome! Great that you are here!
+FixMyBerlin is an open source project and we would love to receive contributions.
+If you want to contribute – welcome! Great that you are here!
+
+The project is mostly being developed by FixMyCity GmbH in Berlin. We
+are working on the platform continuously and see each other face-to-face every week. 
+Nonetheless we want to make it easy to contribute to this project from outside this
+organisation. This document tries to answer some common questions that you might have
+if you would like to do so. 
+You can always get in touch with us by sending a short, informal e-mail to [feedback@fixmycity.de](mailto:feedback@fixmycity.de).
+In the future we hope to make it even easier to quickly have a chat if you want
+to contribute to the project.
 
 ## Table of Contents
 
 - [What should I know before I get started?](#what-should-i-know-before-i-get-started-)
-  - [platform and frontend](#platform-and-frontend)
+  - [Split repositories](#split-repositories)
   - [Issues](#issues)
     - [All in one place](#all-in-one-place)
     - [Labeling](#labeling)
 - [How can I get start developing?](#how-can-i-get-start-developing-)
 - [How Can I start contributing?](#how-can-i-start-contributing-)
-  - [Reporting Bugs](#reporting-bugs)
+  - [Reporting bugs](#reporting-bugs)
   - [Picking an open issue from the back log](#picking-an-open-issue-from-the-back-log)
   - [Requesting a feature](#requesting-a-feature)
-  - [Opening a Pull Request](#opening-a-pull-request)
+  - [Opening a pull Request](#opening-a-pull-request)
 - [Contacts](#contacts)
-- [Additional Notes](#additional-notes)
-  - [Why are some issues in german and/or lacking a detailed explanation?](#why-are-some-issues-in-german-and-or-lacking-a-detailed-explanation-)
-
----
+- [Additional notes](#additional-notes)
+  - [Why are some issues in German and/or lacking a detailed explanation?](#why-are-some-issues-in-german-and-or-lacking-a-detailed-explanation-)
 
 ## What should I know before I get started?
 
-### platform and frontend
+### Split repositories
 
-The code behind (FixMyBerlin Web App)[https://fixmyberlin.de/] is split into two main repositories,
-bundled under the [FixMyBerlin GitHub Group](https://github.com/FixMyBerlin):
+The code running (fixmyberlin.de)[https://fixmyberlin.de/] is contained in two repositories,
+published by the [FixMyBerlin GitHub organisation](https://github.com/FixMyBerlin):
 
-| Repo                                                             | Purpose                                              |
-| ---------------------------------------------------------------- | ---------------------------------------------------- |
-| [/fixmy.platform](https://github.com/FixMyBerlin/fixmy.platform) | A [Django](https://www.djangoproject.com)-based API  |
-| [/fixmy.frontend](https://github.com/FixMyBerlin/fixmy.frontend) | A [React](https://reactjs.org)-based web application |
+| Repository                                                       | Purpose                                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| [/fixmy.platform](https://github.com/FixMyBerlin/fixmy.platform) | Backend for all services and projects we provide. A Django-based Python app. |
+| [/fixmy.frontend](https://github.com/FixMyBerlin/fixmy.frontend) | Web frontend that runs fixmyberlin.de. A React-based Javascript app.         |
 
-A contribution might affect both repositories.
+Your contribution might affect both repositories.
 
 ### Issues
 
-Tasks and their progress are tracked in issues.
+We use issues to track both bugs and tasks.
 
 #### All in one place
 
-We decided to keep all Issues in [/fixmy.platform](https://github.com/FixMyBerlin/fixmy.platform).
-If you want to open up an an issue regarding the frontend or/and the back end, please do it here.
+We decided to keep all issues in [/fixmy.platform](https://github.com/FixMyBerlin/fixmy.platform) so that we can use Github's projects feature with issues for both repositories.
+If you want to open up an an issue regarding either frontend or backend, please do it there.
 
 #### Labeling
 
@@ -57,9 +64,7 @@ So Issues explicitly suitable for external contributions are labeled as
 ## How can I get start developing?
 
 The [README.md](README.md) explains how to
-run the app locally by spawing a development server
-build
-run tests
+run the app locally by spawing a development server and how to run our test suite. If you run into any issues doing so, do not hesitate to open an issue with a description of your problem, we might be able to help.
 
 ## How Can I start contributing?
 
@@ -69,15 +74,15 @@ Spotted a bug? Please raise an issue [/fixmy.platform](https://github.com/FixMyB
 Make sure to explain the problem with enough details to help maintainers to reproduce the problem.
 
 - **Use a clear and descriptive title** for the issue to identify the problem.
-- **Describe the exact steps which reproduce the problem** in as many details as possible.
+- **Describe the exact steps that reproduce the problem** in as many details as possible.
   - Start by explaining how you ran the app. Did you visit https://fixmyberlin.de/? Did you run a local dev server?
-  - State the the route you encountered the bug, e.g. [/planungen](https://fixmyberlin.de/planungen)?
-  - What did you to to provoke the error? Provide specific examples to demonstrate the steps\*\*.
+  - State the the URL where you encountered the bug, e.g. [/planungen](https://fixmyberlin.de/planungen)?
+  - What did you to to provoke the error? Provide specific examples to demonstrate the steps.
     Include links to files or GitHub projects, or copy/pasteable snippets, which you use in those examples.
     If you're providing snippets in the issue, use [Markdown code blocks](https://help.github.com/articles/markdown-basics/#multiple-lines).
 - **Describe the behavior you observed after following the steps** and point out what exactly is the problem with that behavior.
 - **Explain which behavior you expected to see instead and why.**
-- **Include screenshots and animated GIFs** which show you following the described steps and clearly demonstrate the problem.
+- **Include screenshots and animated GIFs** which show you following the described steps and demonstrate the problem.
   You can use [this tool](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [this tool](https://github.com/colinkeenan/silentcast) or [this tool](https://github.com/GNOME/byzanz) on Linux.
 
 ### Picking an open issue from the back log
@@ -87,14 +92,15 @@ You can spot suitable issues by their [labels](#labeling).
 
 ### Requesting a feature
 
-You have an idea about how the app can be extended? Great! Please
+You have an idea for an improvement to the app? Great!
 
-Please [contact](#contacts) us to discuss your idea.
-Provide a clear and detailed explanation of the feature you want to add. What value would it add? How would it work/look like? Maybe also: How could it be implemented?
+Please contact us to discuss your idea. Try and make it easy for us to understand your idea. Does your idea add value for a specific kind of user of our app? How do you imagine it to work and look like? Maybe also: How could it be implemented? You don't need to have a solution ready, though.
 
 ### Opening a Pull Request
 
-We love PRs. Here is a quick guide how it works:
+We love PRs! Before you get to work developing an enormous feature, please get in touch and talk to us, though. 
+
+Here is a quick guide for how you make a pull request:
 
 - Fork the repo
 - Write new code
@@ -103,19 +109,12 @@ We love PRs. Here is a quick guide how it works:
 - Push to your fork and submit a pull request.
 - Within the PR, describe the requested change using the provided pull request template.
 
-## Contacts
-
-If you have any comments or suggestions please send a mail to [feedback@fixmycity.de](mailto:feedback@fixmycity.de)
-
-- [ ] Can we link to an open Slack channel designated for coordination with contributors?
-
 ## Additional Notes
 
-#### Why are some issues in german and/or lacking a detailed explanation?
+#### Why are some issues in German and/or lacking a detailed explanation?
 
-FixMyBerlin is driven by [project funding](https://prototypefund.de/project/fixmyberlin/). Up to now, most contributors have been hired. User stories fostered with project money are developed of a [small team](https://fixmyberlin.de/info) that regularly talks to each other - in german. Since the tasks are discussed and managed in other places, the issues are mainly used to give changes done in commits and PRs a bit of context – not to elaborate the task.
+FixMyBerlin is developed by a team of developers who regularly talk to each other and plan development in German language. Translating all of our plans into English would create a lot of friction and many chances for miscommunication. 
 
-Now that we explicitly open up suitable issues to public contributors, these issues are going to be
-in english
-detailed
-labeled, checkout our [labeling policy](#labeling))
+Since tasks are often also discussed in person in our office, in video calls or defined in external documents, we don't always add full documentation to the descriptions of our tickets. Instead we often use tickets to record the progress of tasks well-known.
+
+However, we are trying to explicitly create points of entry for anyone interested in joining in on the development of the project. Please refer to the [section about labeling](#labeling)) to find well-documented examples of good first issues.
