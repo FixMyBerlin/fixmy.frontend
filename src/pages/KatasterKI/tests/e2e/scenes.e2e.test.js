@@ -15,27 +15,11 @@ describe('katasterKi scenes', () => {
       });
     });
 
-    describe('scene 1', () => {
-      before(() => {
-        cy.fmbGoToScene(1);
-      });
-
-      it('links to scene 2', () => {
-        getByDataAttr`kat-info-proceed-btn`.click();
-        cy.location('pathname').should(
-          'eq',
-          `${config.routes.katasterKI.scenesBase}/2`
-        );
-      });
-    });
-
-    describe('scenes 2 - 11', () => {
+    describe('the rating page', () => {
       // build an Array holding all integers between 2 and 11 to loop over
-      new Array(10)
-        .fill(0)
-        .map((el, i) => i + 2)
-        .forEach((scene) => {
-          describe(`scene ${scene}`, () => {
+      [1, 10].forEach((page) => {
+        describe(`for scene ${page}`, () => {
+          const scene = page + 1;
             before(() => {
               cy.fmbGoToScene(scene);
             });
