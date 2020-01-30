@@ -1,7 +1,5 @@
-/* eslint-disable no-use-before-define */
-
-import config from '~/config';
 import { getByDataAttr } from '~/../cypress/support/utils';
+import { clickRandomMarker, goToProjects } from './utils';
 
 const adressRegex = new RegExp("[A-Za-z0-9'\\.\\-\\s\\,]");
 
@@ -10,6 +8,7 @@ describe('Planings Section', () => {
     describe('the popup', () => {
       // TODO: consider also testing map behaviour (shift of zoom/center)
       before(() => {
+        goToProjects();
         clickRandomMarker();
       });
 
@@ -40,17 +39,3 @@ describe('Planings Section', () => {
 
   describe('getting details for an intersection', () => {});
 });
-
-function clickRandomMarker() {
-  // wait for the api to respond. // TODO: consider mocking the response
-  cy.server()
-    .route('**/projects?page_size=200')
-    .as('getProjects');
-  cy.visit(config.routes.projects)
-    .wait('@getProjects')
-    .its('status')
-    .should('be', 200); // configured in cypress.config.json
-  cy.fmbClickRandomElement('.marker-image', false, {
-    force: true // otherwise the click fails because the image "is being covered by another element..."
-  });
-}
