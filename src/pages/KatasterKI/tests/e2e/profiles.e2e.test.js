@@ -2,35 +2,13 @@
 import config from '~/config';
 
 describe('katasterKi profiles', () => {
-  describe('profile 1', () => {
-    before(() => {
-      before(() => {
-        cy.fmbGoToProfile(1);
+  describe('profile intro questions', () => {
+    // The usually randomized intro questions are hardcoded in the
+    // fmbGoToProfile utility function
+    [1, 2, 3].forEach(testSingleChoice);
       });
 
-      it('shows a progress bar', () => {
-        cy.get('[data-cy=kat-progress-bar]').should('exist');
-      });
-
-      it('contains checkboxes', () => {
-        cy.get('[type="checkbox"]');
-      });
-
-      it('links to profile 2', () => {
-        cy.get('[data-cy=kat-multichoice-proceed-btn]').click();
-        cy.location('pathname').should(
-          'eq',
-          `${config.routes.katasterKI.profileBase}/2`
-        );
-      });
-    });
-  });
-
-  describe('profile 2 and 3', () => {
-    [2, 3].forEach(testSingleChoice);
-  });
-
-  describe('profile 4', () => {
+  describe('transport mode intro screen', () => {
     before(() => {
       cy.fmbGoToProfile(4);
     });
@@ -181,16 +159,19 @@ describe('katasterKi profiles', () => {
 });
 
 function testSingleChoice(profile) {
-  describe(`profile ${profile}`, () => {
+  describe(`profile single choice question ${profile}`, () => {
     before(() => {
       cy.fmbGoToProfile(profile);
-      cy.get('[data-cy=kat-singlechoice-btn]')
-        .first()
-        .as('singleChoiceBtn');
+    });
+
+    it('shows a progress bar', () => {
+      cy.get('[data-cy=kat-progress-bar]').should('exist');
     });
 
     it('has a single choice buttons which links to the next step', () => {
-      cy.get('@singleChoiceBtn').click();
+      cy.get('[data-cy=kat-singlechoice-btn]')
+        .first()
+        .click();
       cy.location('pathname').should(
         'eq',
         `${config.routes.katasterKI.profileBase}/${profile + 1}`
