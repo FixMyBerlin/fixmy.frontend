@@ -1,5 +1,7 @@
 <p align="center">🚲 🚲 🚲</p>
-<h1 align="center">FixMyBerlin - A Mobility Platform for Berlin <a href="https://semaphoreci.com/hekele/fixmy-frontend" target="_blank" rel="noopener"><img alt="build status" src="https://semaphoreci.com/api/v1/hekele/fixmy-frontend/branches/develop/badge.svg" /></a></h1>
+<h1 align="center">FixMyBerlin - A Mobility Platform for Berlin</h1>
+
+[![Build Status](https://semaphoreci.com/api/v1/hekele/fixmy-frontend/branches/dependabot-npm_and_yarn-develop-fetch-mock-8-3-2/badge.svg)](https://semaphoreci.com/hekele/fixmy-frontend)
 
 You can check out the live version [here](https://fixmyberlin.de/).
 
