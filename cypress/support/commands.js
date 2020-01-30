@@ -29,8 +29,6 @@ Cypress.Commands.add('fmbGoToProfile', (profile = 1) => {
   // are usually selected randomly, which makes testing harder.
   cy.visit(`${config.routes.katasterKI.profileBase}/${profile}`, {
     onBeforeLoad: (win) => {
-      // See cypress/README.md in this repo for why there is an assignment
-      // to window here
       // eslint-disable-next-line no-param-reassign
       win.initialState = {
         ...productionDefaultState,
@@ -57,4 +55,21 @@ Cypress.Commands.add('fmbGoToScene', (scene = 1) => {
       }
     });
   });
+});
+
+// Fix for Cypress not supporting to wait for `fetch` requests
+// https://github.com/cypress-io/cypress/issues/95#issuecomment-570098957
+Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
+  const opts = {
+    ...options,
+    onBeforeLoad: (window, ...args) => {
+      // eslint-disable-next-line no-param-reassign
+      window.fetch = null;
+      if (options && options.onBeforeLoad) {
+        return options.onBeforeLoad(window, ...args);
+      }
+      return null;
+    }
+  };
+  return originalFn(url, opts);
 });
