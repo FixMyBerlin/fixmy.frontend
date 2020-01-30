@@ -24,10 +24,9 @@ export default ({ title, next }) => {
     <Flex flexDirection="column" css={{ flexGrow: 1 }}>
       <Headline data-cy="kat-info-heading">{title}</Headline>
       <Flex justifyContent="center">
-        <Button
-          onClick={next}
-          data-cy="kat-info-proceed-btn"
-        >Weiter</Button>
+        <Button onClick={next} data-cy="kat-info-proceed-btn">
+          Weiter
+        </Button>
       </Flex>
     </Flex>
   );

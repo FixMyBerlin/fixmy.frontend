@@ -12,7 +12,5 @@ export default ({ section }) => {
     return null;
   }
 
-  return (
-    <StyledTitle data-cy="section-title">{section.title}</StyledTitle>
-  );
+  return <StyledTitle data-cy="section-title">{section.title}</StyledTitle>;
 };
