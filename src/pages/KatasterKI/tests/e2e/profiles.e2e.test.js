@@ -6,7 +6,7 @@ describe('katasterKi profiles', () => {
     // The usually randomized intro questions are hardcoded in the
     // fmbGoToProfile utility function
     [1, 2, 3].forEach(testSingleChoice);
-      });
+  });
 
   describe('transport mode intro screen', () => {
     before(() => {
@@ -22,7 +22,7 @@ describe('katasterKi profiles', () => {
       });
     });
 
-    it('links to profile 5', () => {
+    it('links to profile page 5', () => {
       cy.get('[data-cy=kat-info-proceed-btn]').click();
       cy.location('pathname').should(
         'eq',
@@ -31,7 +31,7 @@ describe('katasterKi profiles', () => {
     });
   });
 
-  describe('profile 5', () => {
+  describe('transport mode usage', () => {
     const profile = 5;
 
     before(() => {
@@ -65,11 +65,11 @@ describe('katasterKi profiles', () => {
     });
   });
 
-  describe('profile 6, 7 and 8', () => {
+  describe('screens for age, hasChildren, gender', () => {
     [6, 7, 8].forEach(testSingleChoice);
   });
 
-  describe('profile 9', () => {
+  describe('vehiclesOwned', () => {
     before(() => {
       cy.fmbGoToProfile(9);
     });
@@ -91,11 +91,11 @@ describe('katasterKi profiles', () => {
     });
   });
 
-  describe('profile 10', () => {
+  describe('bicycleUse', () => {
     testSingleChoice(10);
   });
 
-  describe('profile 11', () => {
+  describe('whyBiking', () => {
     before(() => {
       cy.fmbGoToProfile(11);
     });
@@ -119,7 +119,7 @@ describe('katasterKi profiles', () => {
     });
   });
 
-  describe('profile 12', () => {
+  describe('zipCode', () => {
     // we cannot use "before" since the aliases would only be available in the first "it"
     beforeEach(() => {
       cy.fmbGoToProfile(12);
@@ -141,13 +141,14 @@ describe('katasterKi profiles', () => {
       cy.get('@zipProceedBtn').should('have.prop', 'disabled', false);
     });
 
-    it('enables the proceed button when more than 5 numbers have been entered', () => {
+    it('disables the proceed button when more than 5 numbers have been entered', () => {
       cy.get('@zipInput')
         .type('{selectall}')
         .type('012345678');
       cy.get('@zipProceedBtn').should('have.prop', 'disabled', true);
     });
 
+    it(`links to the intro screen for scene rating`, () => {
     it(`links to the first scene`, () => {
       cy.get('@zipProceedBtn').click();
       cy.location('pathname').should(
