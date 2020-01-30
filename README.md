@@ -32,9 +32,8 @@ $ npm run build
 
 Each branch gets automatically deployed on netlify:
 
-* https://fixmyberlin-app.netlify.com/ [master]
-* https://develop--fixmyberlin-app.netlify.com/ [develop]
-
+- https://fixmyberlin-app.netlify.com/ [master]
+- https://develop--fixmyberlin-app.netlify.com/ [develop]
 
 ## Embed Mode
 
@@ -42,7 +41,6 @@ If you want to test the embed mode, you just need to add a query paramter to the
 There is also a deployed production version: https://embed.fixmyberlin.de/.
 
 The project is based on [wbkd/react-starter](https://github.com/wbkd/react-starter).
-
 
 ## Kataster Standalone
 
@@ -79,12 +77,13 @@ Run unit tests using `npm run test`.
 End-To-End tests are implemented using [Cypress](https://www.cypress.io/).
 There are a couple of options to run e2e tests. You can
 
-* start the dev server AND run tests 
-[headlessly](https://blog.logrocket.com/introduction-to-headless-browser-testing-44b82310b27c/) 
-in a single run `npm run test:e2e`.
-This stops the dev server after all tests have been run.
-* run e2e tests *headlessly* against an already running development server using `npm run test:e2e-concurrent`.
-* run e2e tests *in chrome* using `test:e2e-concurrent-chrome`.
+- start the dev server AND run tests
+  [headlessly](https://blog.logrocket.com/introduction-to-headless-browser-testing-44b82310b27c/)
+  in a single run `npm run test:e2e-dev-server`.
+  This stops the dev server after all tests have been run.
+- run e2e tests _headlessly_ against an already running development server using `npm run test:e2e`.
+- open the Cypress GUI and run tests in Chrome from there using `npm run cypress`
 
-Besides the cypress docs, you can seek information about the implementation of e2e tests within the repo in 
+When you are working on e2e-tests for this app please also refer to the
+collection of notes from development of the end-to-end-test-suite in
 [cypress/README.MD](cypress/README.MD).
