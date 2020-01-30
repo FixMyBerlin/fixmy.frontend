@@ -149,7 +149,9 @@ describe('katasterKi profiles', () => {
     });
 
     it(`links to the intro screen for scene rating`, () => {
-    it(`links to the first scene`, () => {
+      cy.get('@zipInput')
+        .type('{selectall}')
+        .type('01234');
       cy.get('@zipProceedBtn').click();
       cy.location('pathname').should(
         'eq',
