@@ -45,7 +45,7 @@ export async function apiLogin(json, formFunctions) {
 export async function apiUpdate(json, token, formFunctions) {
   if (json.new_username) {
     return handleRequest(
-      'users/change_username/',
+      'users/set_username/',
       { json, token },
       formFunctions,
       'text'
@@ -53,7 +53,12 @@ export async function apiUpdate(json, token, formFunctions) {
   }
 
   if (json.new_password) {
-    return handleRequest('password/', { json, token }, formFunctions, 'text');
+    return handleRequest(
+      'users/set_password/',
+      { json, token },
+      formFunctions,
+      'text'
+    );
   }
 
   return handleRequest(
@@ -95,7 +100,7 @@ export async function apiUser(token) {
 
 export async function apiPasswordReset(json, formFunctions) {
   return handleRequest(
-    'password/reset/confirm',
+    'users/reset_password_confirm/',
     { method: 'POST', json },
     formFunctions,
     false
@@ -104,7 +109,7 @@ export async function apiPasswordReset(json, formFunctions) {
 
 export async function apiPasswordForgot(json, formFunctions) {
   return handleRequest(
-    'password/reset',
+    'users/reset_password/',
     { method: 'POST', json },
     formFunctions,
     false

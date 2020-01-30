@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
 
 import history from '~/history';
-import Markdown from '~/pages/Markdown/Markdown';
 import SubmitReportDialog from './ReportDialog';
+
+const Markdown = React.lazy(() => import('~/pages/Markdown'));
 
 const SubmitReportWrapper = styled.div`
   min-height: 100%;
