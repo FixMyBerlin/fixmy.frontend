@@ -1,4 +1,8 @@
-// TODO: split tests into multiple files
+//
+// This test module is named to NOT be run as the first test. Otherwise,
+// Javascript bundles for this project are for some reason not generated.
+//
+
 import config from '~/config';
 
 describe('katasterKi landing', () => {
