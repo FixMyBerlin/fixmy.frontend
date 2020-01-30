@@ -58,8 +58,8 @@ We are using [GitHubs default labels](https://help.github.com/en/github/managing
 
 So Issues explicitly suitable for external contributions are labeled as
 
-- _good first issue_ (only a couple of lines of code are needed) or as
-- _help wanted_
+- [_good first issue_](https://github.com/FixMyBerlin/fixmy.platform/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) (only a couple of lines of code are needed) or as
+- [_help wanted_](https://github.com/FixMyBerlin/fixmy.platform/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
 
 ## How can I get start developing?
 
