@@ -4,6 +4,7 @@
 
 // commands get prefixed with `fmp` to clarify their origin when consumed
 import config from '~/config';
+import { productionDefaultState } from '~/pages/KatasterKI/state';
 
 // TODO: handle the issue that augmenting the cy object with the methods below leads to linting errors
 
@@ -24,7 +25,19 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add('fmbGoToProfile', (profile = 1) => {
-  cy.visit(`${config.routes.katasterKI.profileBase}/${profile}`);
+  // The selection of intro questions is hardcoded here because they
+  // are usually selected randomly, which makes testing harder.
+  cy.visit(`${config.routes.katasterKI.profileBase}/${profile}`, {
+    onBeforeLoad: (win) => {
+      // See cypress/README.md in this repo for why there is an assignment
+      // to window here
+      // eslint-disable-next-line no-param-reassign
+      win.initialState = {
+        ...productionDefaultState,
+        introSelection: [0, 1, 2]
+      };
+    }
+  });
 });
 
 Cypress.Commands.add('fmbReturnToScene', (scene = 1) => {
