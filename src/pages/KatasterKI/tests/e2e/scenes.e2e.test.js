@@ -1,9 +1,9 @@
 import { getByDataAttr } from '~/../cypress/support/utils';
 import config from '~/config';
 
-describe('katasterKi scenes', () => {
+describe('katasterKi scene rating', () => {
   describe('a new session with gathered profile information at hand', () => {
-    describe('internal test setup', () => {
+    describe('having visited the first screen', () => {
       before(() => {
         cy.fmbGoToScene(1);
       });
@@ -20,32 +20,32 @@ describe('katasterKi scenes', () => {
       [1, 10].forEach((page) => {
         describe(`for scene ${page}`, () => {
           const scene = page + 1;
-            before(() => {
-              cy.fmbGoToScene(scene);
-            });
+          before(() => {
+            cy.fmbGoToScene(scene);
+          });
 
-            it('contains an image that has loaded properly', () => {
-              getByDataAttr`kat-scene-image-wrapper`
-                .find('img')
-                .should('be.visible')
-                .and(($img) => {
-                  // "naturalWidth" and "naturalHeight" are set when the image loads
-                  expect($img[0].naturalWidth).to.be.greaterThan(0);
-                });
-            });
+          it('contains an image that has loaded properly', () => {
+            getByDataAttr`kat-scene-image-wrapper`
+              .find('img')
+              .should('be.visible')
+              .and(($img) => {
+                // "naturalWidth" and "naturalHeight" are set when the image loads
+                expect($img[0].naturalWidth).to.be.greaterThan(0);
+              });
+          });
 
-            it('links to the next scene when a random rating button is clicked', () => {
-              cy.fmbClickRandomElement('kat-scene-rating-button');
-              cy.location('pathname').should(
-                'eq',
-                `${config.routes.katasterKI.scenesBase}/${scene + 1}`
-              );
-            });
+          it('links to the next scene when a random rating button is clicked', () => {
+            cy.fmbClickRandomElement('kat-scene-rating-button');
+            cy.location('pathname').should(
+              'eq',
+              `${config.routes.katasterKI.scenesBase}/${scene + 1}`
+            );
           });
         });
+      });
     });
 
-    describe('scene 12: perspective choice', () => {
+    describe('perspective choice', () => {
       it('leads to a set of new scenes', () => {
         cy.fmbClickRandomElement('kat-perspective-change-single-choice-button');
 
@@ -59,8 +59,8 @@ describe('katasterKi scenes', () => {
     });
   });
 
-  describe('when a session is resumed', () => {
-    describe('scene 1: proceed with ratings screen', () => {
+  describe('when the session is continued', () => {
+    describe('the feedback screen', () => {
       before(() => {
         cy.fmbReturnToScene(1);
       });
@@ -74,7 +74,7 @@ describe('katasterKi scenes', () => {
           });
       });
 
-      it('links to scene 2', () => {
+      it('links to the next scene', () => {
         getByDataAttr`kat-feedback-proceed-btn`.click();
         cy.location('pathname').should(
           'eq',
@@ -83,7 +83,7 @@ describe('katasterKi scenes', () => {
       });
     });
 
-    describe('scene 2: leave email to stay informed', () => {
+    describe('the newsletter signup screen', () => {
       beforeEach(() => {
         cy.fmbReturnToScene(2);
         cy.get('[data-cy=kat-emailcheckboxes-input]').as('emailInput');
@@ -105,7 +105,7 @@ describe('katasterKi scenes', () => {
         cy.get('@emailSubmitBtn').should('have.prop', 'disabled', false);
       });
 
-      it('provides a button to proceed linking to step 3', () => {
+      it('provides a button to proceed linking to the next page', () => {
         cy.get('@emailProceedBtn').click();
         cy.location('pathname').should(
           'eq',
