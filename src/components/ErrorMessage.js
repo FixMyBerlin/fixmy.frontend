@@ -23,7 +23,7 @@ const StyledDismissButton = styled(Button)`
   float: right;
 `;
 
-const ErrorMessage = ({title = 'Fehler', message, onDismiss, dismissMessage }) => (
+const ErrorMessage = ({ title, message, onDismiss, dismissMessage }) => (
   <Div>
     <Heading>{title}</Heading>
     <p>{message}</p>
@@ -34,12 +34,14 @@ const ErrorMessage = ({title = 'Fehler', message, onDismiss, dismissMessage }) =
 );
 
 ErrorMessage.propTypes = {
+  title: PropTypes.string,
   message: PropTypes.string,
   onDismiss: PropTypes.func,
   dismissMessage: PropTypes.string
 };
 
 ErrorMessage.defaultProps = {
+  title: 'Fehler',
   message: 'Ein Fehler ist aufgetreten',
   onDismiss: () => logger('onDismiss says implement me'),
   dismissMessage: 'OK'
