@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { oneLine } from 'common-tags';
+
 import logger from '~/utils/logger';
 
 import config from '~/pages/Map/config';
@@ -34,6 +36,11 @@ const locateErrors = {
   POSITION_UNAVAILABLE: 2,
   TIMEOUT: 3
 };
+
+const userFeedback = oneLine`Wenn Du Dich orten willst, musst Du einer Ortung zustimmen.
+  Du kannst Die Entscheidung, Deinen Standort nicht zu teilen, in den Einstellungen
+  Deines Browsers rückgängig machen.
+`;
 
 const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -73,7 +80,8 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
     <>
       {isGeolocationDenied && (
         <ErrorMessage
-          message="Wenn Du Dich orten willst, musst Du einer Ortung zustimmen"
+          title="Keine Berechtigung zum Orten"
+          message={userFeedback}
           dismissMessage="Verstanden"
           onDismiss={() => setIsGeolocationDenied(false)}
         />
