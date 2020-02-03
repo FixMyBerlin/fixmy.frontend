@@ -40,7 +40,10 @@ module.exports = merge(common, {
       minify: false
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
-    new Webpack.optimize.ModuleConcatenationPlugin()
+    new Webpack.optimize.ModuleConcatenationPlugin(),
+    new Webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 10000
+    })
   ],
   module: {
     rules: [
