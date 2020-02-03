@@ -23,9 +23,9 @@ const StyledDismissButton = styled(Button)`
   float: right;
 `;
 
-const ErrorMessage = ({ message, onDismiss, dismissMessage }) => (
+const ErrorMessage = ({title = 'Fehler', message, onDismiss, dismissMessage }) => (
   <Div>
-    <Heading>Fehler!</Heading>
+    <Heading>{title}</Heading>
     <p>{message}</p>
     <StyledDismissButton onClick={onDismiss}>
       {dismissMessage}
