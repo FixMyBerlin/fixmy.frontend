@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
 
 import logger from '~/utils/logger';
-
 import config from '~/pages/Map/config';
 import { getGeoLocation } from '~/pages/Map/map-utils';
 import MapControl from '~/pages/Map/components/MapControl';
@@ -45,6 +44,7 @@ const userFeedback = oneLine`Wenn Du Dich orten willst, musst Du einer Ortung zu
 const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isGeolocationDenied, setIsGeolocationDenied] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const onLocateSuccess = (geoPosition) => {
     const lat = geoPosition?.coords?.latitude;
@@ -61,6 +61,7 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
     logger(message);
     if (code === locateErrors.PERMISSION_DENIED) {
       setIsGeolocationDenied(true);
+      setIsError(true);
     }
   };
 
@@ -75,20 +76,22 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
 
   const Icon = isLoading ? <Loader size={24} /> : <LocatorIcon />;
 
-
   return (
     <>
-      {isGeolocationDenied && (
+      {isError && (
         <ErrorMessage
           title="Keine Berechtigung zum Orten"
           message={userFeedback}
           dismissMessage="Verstanden"
-          onDismiss={() => setIsGeolocationDenied(false)}
+          onDismiss={() => setIsError(false)}
         />
       )}
 
       <MapControl position={position} customPosition={customPosition}>
-        <LocatorButton disabled={isLoading} onClick={locate}>
+        <LocatorButton
+          disabled={isLoading || isGeolocationDenied}
+          onClick={locate}
+        >
           {Icon}
         </LocatorButton>
       </MapControl>
