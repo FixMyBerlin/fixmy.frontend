@@ -19,6 +19,7 @@
     "generate-kataster-schema": "./src/pages/KatasterKI/scheme/generate.sh",
     "build:strassencheck": "cross-env CONFIG_ENV=production BASE_NAME=$npm_package_config_katasterStandaloneBase KATASTER_PATH=$npm_package_config_katasterStandalonePath ENTRY_POINT=$npm_package_config_katasterStandaloneEntry npm run build",
     "start:strassencheck": "cross-env CONFIG_ENV=staging KATASTER_PATH=$npm_package_config_katasterStandalonePath ENTRY_POINT=$npm_package_config_katasterStandaloneEntry npm start",
+    "build:bonn": "cross-env REGION_ENV=bonn NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
     "start:bonn": "cross-env REGION_ENV=bonn CONFIG_ENV=staging webpack-dev-server --config webpack/webpack.config.dev.js",
     "dev:bonn": "cross-env REGION_ENV=bonn npm run dev"
   },
