@@ -5,7 +5,8 @@
     "airbnb",
     "plugin:prettier/recommended",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "plugin:cypress/recommended"
   ],
 
   "plugins": ["prettier"],
@@ -80,6 +81,10 @@
         "ts": "never",
         "tsx": "never"
       }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/*.test.js", "**/*.spec.js", "cypress/**/*"] }
     ]
   },
 

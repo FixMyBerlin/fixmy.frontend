@@ -99,7 +99,12 @@ class MapPopup extends PureComponent {
               <BikeLevelStatus onClick={this.onDetailClick} section={data} />
             )}
             <MoreButtonWrapper>
-              <Button onClick={this.onDetailClick}>mehr Infos</Button>
+              <Button
+                data-cy="plannings-more-info-btn"
+                onClick={this.onDetailClick}
+              >
+                mehr Infos
+              </Button>
             </MoreButtonWrapper>
             <BraceWrapper>
               <Brace type={activeView} />
