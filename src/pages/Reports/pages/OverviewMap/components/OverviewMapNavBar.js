@@ -68,7 +68,7 @@ const TinyEmailLink = styled(TinyLink)`
 const getIsDesktop = () => matchMediaSize(breakpoints.m);
 
 const OverviewMapNavBar = ({ heading }) => (
-  <Wrapper>
+  <Wrapper data-cy="reports-heading">
     <StyledMenuButton />
     <TextWrapper>
       <Heading>{heading}</Heading>

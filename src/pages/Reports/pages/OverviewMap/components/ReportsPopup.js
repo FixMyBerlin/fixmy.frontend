@@ -64,9 +64,14 @@ class ReportsPopup extends PureComponent {
               }}
             />
           )}
-          <Title>{`${selectedReport.details.number} neue Fahrradbügel gewünscht`}</Title>
+          <Title data-cy="reports-popup-title">{`${selectedReport.details.number} neue Fahrradbügel gewünscht`}</Title>
           <ButtonWrapper>
-            <Button onClick={() => this.onDetailClick()}>mehr Infos</Button>
+            <Button
+              data-cy="reports-popup-button"
+              onClick={() => this.onDetailClick()}
+            >
+              mehr Infos
+            </Button>
           </ButtonWrapper>
         </>
       </MapPopupWrapper>

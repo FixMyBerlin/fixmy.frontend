@@ -49,4 +49,10 @@ const getMargins = (props) => {
   }
 };
 
-export default (props) => <MapControl margins={getMargins(props)} {...props} />;
+export default (props) => (
+  <MapControl
+    data-cy="map-map-control"
+    margins={getMargins(props)}
+    {...props}
+  />
+);
