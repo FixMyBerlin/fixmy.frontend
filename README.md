@@ -7,7 +7,9 @@ You can check out the live version [here](https://fixmyberlin.de/).
 
 ## Contributing
 
-Check the [contribution guide](CONTRIBUTING.md).
+Did you encounter an issue that you would like to tell us about? Would you like
+to add to this project yourself? Go ahead and check the
+[contribution guide](CONTRIBUTING.md).
 
 ## Installation
 
@@ -24,9 +26,10 @@ Runs on [localhost:8080](http://localhost:8080/)
 $ npm start
 ```
 
-## Testing 
+## Testing
 
 Runs unit tests.
+
 ```sh
 $ npm run test
 ```
