@@ -7,7 +7,7 @@ export default {
       type: 'link',
       label: 'Radbügelmeldung',
       icon: 'fixhere',
-      link: '/meldungen/radbuegel/bonn/karte',
+      link: '/meldungen/radbuegel/bonn/landing',
       border: true
     },
     {
@@ -16,7 +16,7 @@ export default {
     },
     {
       type: 'link',
-      label: 'Über FixMyBerlin',
+      label: 'Über FixMyBonn',
       link: '/info',
       icon: 'info',
       border: true

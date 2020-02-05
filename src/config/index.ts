@@ -2,7 +2,7 @@ import defaultConfig from './default';
 import berlin from './berlin';
 import bonn from './bonn';
 
-const region = process.env.REGION_ENV || 'berlin';
+const region = process.env.REGION_ENV;
 
 let instanceConfig: Object;
 
@@ -18,5 +18,6 @@ if (region === 'berlin') {
 
 export default {
   ...defaultConfig,
-  ...instanceConfig
+  ...instanceConfig,
+  region
 };
