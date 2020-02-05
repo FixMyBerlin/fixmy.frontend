@@ -53,7 +53,7 @@ const Routes = ({ token }) => (
     {config.routes.status != null && (
       <Route path={config.routes.status} component={MapView} />
     )}
-    {config.routes.projects !== null && (
+    {config.routes.projects != null && (
       <Route path={config.routes.projects} component={MapView} />
     )}
 
