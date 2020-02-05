@@ -123,7 +123,7 @@
     "history": "^4.10.1",
     "idx": "^2.5.6",
     "jsonschema": "^1.2.5",
-    "ky": "^0.15.0",
+    "ky": "^0.17.0",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
     "mapbox-gl": "^1.4.1",
