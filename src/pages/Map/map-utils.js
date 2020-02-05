@@ -97,6 +97,11 @@ export function setPlanningLegendFilter(map, selected) {
   ]);
 }
 
+/**
+ * Return a Mapbox expression to access the HBI values embedded in Mapbox
+ *
+ * @param {*} sideKey which side's HBI value to retrieve (layer prefix)
+ */
 function getHbiExpression(sideKey) {
   // formula:
   // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)
@@ -115,7 +120,8 @@ function getHbiExpression(sideKey) {
  * @param {Object} map Mapbox instance
  * @param {Array<boolean>} filters Four booleans describe which hbi states are visible
  */
-function getHbiFilterRules(hbi, hbiFilters) {
+function getHbiFilterRules(sideKey, hbiFilters) {
+  const hbi = getHbiExpression(sideKey);
   const activeHbiStops = config.hbiStops.filter((d, i) => hbiFilters[i]);
   return activeHbiStops.map((hbiStop) => [
     'all',
@@ -124,26 +130,14 @@ function getHbiFilterRules(hbi, hbiFilters) {
   ]);
 }
 
-export function colorizeHbiLines(map, hbiValues, hbiFilter) {
-  const mapFilter = ['any', ['has', 'side0_safety'], ['has', 'side0_velocity']];
+export function toggleVisibleHbiLines(map, hbiValues, hbiFilter) {
+  const centerRules = getHbiFilterRules('', hbiFilter);
+  const side0rules = getHbiFilterRules('side0_', hbiFilter);
+  const side1rules = getHbiFilterRules('side1_', hbiFilter);
 
-  standardLayersWithOverlay.forEach((layerName) =>
-    map.setFilter(config.map.layers.hbi[layerName], mapFilter)
-  );
-
-  const hbiExprCenter = getHbiExpression('');
-  const hbiExprSide0 = getHbiExpression('side0_');
-  const hbiExprSide1 = getHbiExpression('side1_');
-
-  const mapFilters = [
-    getHbiFilterRules(hbiExprCenter, hbiFilter),
-    getHbiFilterRules(hbiExprSide0, hbiFilter),
-    getHbiFilterRules(hbiExprSide1, hbiFilter)
-  ];
-
-  standardLayers.forEach((layerName, i) => {
-    map.setFilter(config.map.layers.hbi[layerName], ['any', ...mapFilters[i]]);
-  });
+  map.setFilter(config.map.layers.hbi.center, ['any', ...centerRules]);
+  map.setFilter(config.map.layers.hbi.side0, ['any', ...side0rules]);
+  map.setFilter(config.map.layers.hbi.side1, ['any', ...side1rules]);
 }
 
 export function getCenterFromGeom(geometry, defaultCenter = null) {
@@ -201,7 +195,6 @@ export default {
   animateView,
   filterLayersById,
   toggleLayer,
-  colorizeHbiLines,
   getCenterFromGeom,
   getGeoLocation,
   parseUrlOptions
