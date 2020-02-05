@@ -50,41 +50,6 @@ export default [
     ]
   },
   {
-    type: 'single_choice',
-    name: 'annoyingTraffic',
-    title: 'Was nervt Sie am meisten am Straßenverkehr?',
-    options: [
-      {
-        label: 'Hohes Verkehrsaufkommen und Staus',
-        value: 0
-      },
-      {
-        label: 'Der Zustand der Straßen/Radwege',
-        value: 1
-      },
-      {
-        label: 'Missachtung der Verkehrsregeln',
-        value: 2
-      },
-      {
-        label: 'Der Lärm',
-        value: 3
-      },
-      {
-        label: 'Die Unfälle',
-        value: 4
-      },
-      {
-        label: 'Aggressives Verhalten anderer',
-        value: 5
-      },
-      {
-        label: 'Die Luftverschmutzung',
-        value: 6
-      }
-    ]
-  },
-  {
     type: 'multi_choice',
     name: 'annoyingPeople',
     title: 'Was nervt Sie am meisten am Verhalten anderer?',
