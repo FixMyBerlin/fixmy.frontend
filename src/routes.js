@@ -1,6 +1,6 @@
 import React, { lazy } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import config from '~/config';
 import PrivateRoute from '~/components/PrivateRoute';
@@ -50,29 +50,30 @@ const Routes = ({ token }) => (
     />
 
     {/* map pages */}
-    <Route
-      path={`(${config.routes.status}|${config.routes.projects})`}
-      component={MapView}
-    />
+    {config.routes.status != null && (
+      <Route path={`(${config.routes.status})`} component={MapView} />
+    )}
+    {config.routes.projects != null && (
+      <Route path={`${config.routes.projects})`} component={MapView} />
+    )}
 
     {/* reports page */}
-    <Route path={`${config.routes.reports.index}`} component={Reports} />
+    {config.routes.reports != null && (
+      <Route path={`${config.routes.reports.index}`} component={Reports} />
+    )}
 
     {/* kataster survey page */}
-    <Route path={config.routes.katasterKI.landing} component={KatasterKI} />
+    {config.routes.katasterKI != null && (
+      <Route path={config.routes.katasterKI.landing} component={KatasterKI} />
+    )}
 
     {/* analysis pages */}
-    <Route
-      path={`${config.routes.analyse}/planungen/:districtName?`}
-      component={Analysis}
-    />
-
-    {/* reports page */}
-    <Route
-      exact
-      path={config.routes.reports.temporarily_forward_from_this_to_index}
-      render={() => <Redirect to={config.routes.reports.index} />}
-    />
+    {config.routes.analysis != null && (
+      <Route
+        path={`${config.routes.analyse}/planungen/:districtName?`}
+        component={Analysis}
+      />
+    )}
 
     <Route render={() => <Markdown page="nomatch" />} />
   </Switch>
