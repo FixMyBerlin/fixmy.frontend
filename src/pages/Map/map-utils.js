@@ -97,6 +97,11 @@ export function setPlanningLegendFilter(map, selected) {
   ]);
 }
 
+/**
+ * Return a Mapbox expression to access the HBI values embedded in Mapbox
+ *
+ * @param {*} sideKey which side's HBI value to retrieve (layer prefix)
+ */
 function getHbiExpression(sideKey) {
   // formula:
   // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)
@@ -115,7 +120,8 @@ function getHbiExpression(sideKey) {
  * @param {Object} map Mapbox instance
  * @param {Array<boolean>} filters Four booleans describe which hbi states are visible
  */
-function getHbiFilterRules(hbi, hbiFilters) {
+function getHbiFilterRules(sideKey, hbiFilters) {
+  const hbi = getHbiExpression(sideKey);
   const activeHbiStops = config.hbiStops.filter((d, i) => hbiFilters[i]);
   return activeHbiStops.map((hbiStop) => [
     'all',
@@ -125,9 +131,9 @@ function getHbiFilterRules(hbi, hbiFilters) {
 }
 
 export function toggleVisibleHbiLines(map, hbiValues, hbiFilter) {
-  const centerRules = getHbiFilterRules(getHbiExpression(''), hbiFilter);
-  const side0rules = getHbiFilterRules(getHbiExpression('side0_'), hbiFilter);
-  const side1rules = getHbiFilterRules(getHbiExpression('side1_'), hbiFilter);
+  const centerRules = getHbiFilterRules('', hbiFilter);
+  const side0rules = getHbiFilterRules('side0_', hbiFilter);
+  const side1rules = getHbiFilterRules('side1_', hbiFilter);
 
   map.setFilter(config.map.layers.hbi.center, ['any', ...centerRules]);
   map.setFilter(config.map.layers.hbi.side0, ['any', ...side0rules]);
@@ -189,7 +195,6 @@ export default {
   animateView,
   filterLayersById,
   toggleLayer,
-  colorizeHbiLines: toggleVisibleHbiLines,
   getCenterFromGeom,
   getGeoLocation,
   parseUrlOptions
