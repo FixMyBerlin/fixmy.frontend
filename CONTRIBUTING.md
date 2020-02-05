@@ -4,10 +4,10 @@ FixMyBerlin is an open source project and we would love to receive contributions
 If you want to contribute – welcome! Great that you are here!
 
 The project is mostly being developed by FixMyCity GmbH in Berlin. We
-are working on the platform continuously and see each other face-to-face every week. 
+are working on the platform continuously and see each other face-to-face every week.
 Nonetheless we want to make it easy to contribute to this project from outside this
 organisation. This document tries to answer some common questions that you might have
-if you would like to do so. 
+if you would like to do so.
 You can always get in touch with us by sending a short, informal e-mail to [feedback@fixmycity.de](mailto:feedback@fixmycity.de).
 In the future we hope to make it even easier to quickly have a chat if you want
 to contribute to the project.
@@ -70,7 +70,7 @@ run the app locally by spawing a development server and how to run our test suit
 
 ### Reporting Bugs
 
-Spotted a bug? Please raise an issue [/fixmy.platform](https://github.com/FixMyBerlin/fixmy.platform/) using the provided issue template.
+Spotted a bug? Please raise an issue using [the provided issue template](https://github.com/FixMyBerlin/fixmy.platform/issues/new/choose).
 Make sure to explain the problem with enough details to help maintainers to reproduce the problem.
 
 - **Use a clear and descriptive title** for the issue to identify the problem.
@@ -98,7 +98,7 @@ Please contact us to discuss your idea. Try and make it easy for us to understan
 
 ### Opening a Pull Request
 
-We love PRs! Before you get to work developing an enormous feature, please get in touch and talk to us, though. 
+We love PRs! Before you get to work developing an enormous feature, please get in touch and talk to us, though.
 
 Here is a quick guide for how you make a pull request:
 
@@ -113,7 +113,7 @@ Here is a quick guide for how you make a pull request:
 
 #### Why are some issues in German and/or lacking a detailed explanation?
 
-FixMyBerlin is developed by a team of developers who regularly talk to each other and plan development in German language. Translating all of our plans into English would create a lot of friction and many chances for miscommunication. 
+FixMyBerlin is developed by a team of developers who regularly talk to each other and plan development in German language. Translating all of our plans into English would create a lot of friction and many chances for miscommunication.
 
 Since tasks are often also discussed in person in our office, in video calls or defined in external documents, we don't always add full documentation to the descriptions of our tickets. Instead we often use tickets to record the progress of tasks well-known.
 
