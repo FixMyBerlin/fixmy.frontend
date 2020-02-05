@@ -51,10 +51,10 @@ const Routes = ({ token }) => (
 
     {/* map pages */}
     {config.routes.status != null && (
-      <Route path={`(${config.routes.status})`} component={MapView} />
+      <Route path={config.routes.status} component={MapView} />
     )}
-    {config.routes.projects != null && (
-      <Route path={`${config.routes.projects})`} component={MapView} />
+    {config.routes.projects !== null && (
+      <Route path={config.routes.projects} component={MapView} />
     )}
 
     {/* reports page */}
