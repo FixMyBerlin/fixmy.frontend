@@ -2,18 +2,19 @@ import defaultConfig from './default';
 import berlin from './berlin';
 import bonn from './bonn';
 
-const region = process.env.REGION_ENV;
+const region: string = process.env.REGION_ENV;
 
-let instanceConfig: Object;
+const AVAILABLE_REGIONS = {
+  berlin,
+  bonn
+};
 
-if (region === 'berlin') {
-  instanceConfig = berlin;
-} else if (region === 'bonn') {
-  instanceConfig = bonn;
-} else {
+const instanceConfig = AVAILABLE_REGIONS[region] || {};
+
+if (Object.keys(AVAILABLE_REGIONS).indexOf(region) === -1) {
   // Need to use console log to avoid circular import in logger module
   // eslint-disable-next-line no-console
-  console.log('No region defined for this instance');
+  console.error('No region defined for this instance');
 }
 
 export default {
