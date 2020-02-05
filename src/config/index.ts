@@ -1,54 +1,24 @@
-import colors from './colors';
-import map from './map';
-import menu from './menu';
-import staticpages from './staticpages';
-import routes from './routes';
+import defaultConfig from './default';
+import berlin from './berlin';
+import bonn from './bonn';
 
-const apiEndpoints = {
-  dev: 'http://localhost:8000/api',
-  staging: 'https://fixmyberlin-staging.netlify.com/api/next',
-  production: 'https://fixmyberlin.de/api/v1'
+const region: string = process.env.REGION_ENV;
+
+const AVAILABLE_REGIONS = {
+  berlin,
+  bonn
 };
 
-const baseConfig = {
-  devUrl: 'http://localhost:8080',
-  prodUrl: 'https://fixmyberlin.de',
-  newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/6kW',
-  tspKatasterURL: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
-  apiUrl:
-    process.env.API_URL ||
-    apiEndpoints[process.env.CONFIG_ENV] ||
-    apiEndpoints.production,
-  feedbackMail: 'feedback@fixmyberlin.de',
-  logger: 'fmc*', // selects logging namespaces to display when not in production
-  sectionIsBeta: true,
-  planningIsBeta: true,
-  offlineMode: false,
-  isSwitchEnabled: true,
-  debug: process.env.NODE_ENV !== 'production',
-  showLikeButton: true,
-  showFeedBackForm: false,
-  piwik: {
-    siteId: {
-      main: 1,
-      kataster: 2,
-      katasterTesting: 3
-    }
-  }
-};
+const instanceConfig = AVAILABLE_REGIONS[region] || {};
 
-if (!process.env.CONFIG_ENV) {
-  // need to use console here to avoid circular import when
-  // logging helper imports this file
+if (Object.keys(AVAILABLE_REGIONS).indexOf(region) === -1) {
+  // Need to use console log to avoid circular import in logger module
   // eslint-disable-next-line no-console
-  console.warn('No CONFIG_ENV defined. Using production API by default.');
+  console.error('No region defined for this instance');
 }
 
 export default {
-  colors,
-  map,
-  menu,
-  routes,
-  staticpages,
-  ...baseConfig
+  ...defaultConfig,
+  ...instanceConfig,
+  region
 };
