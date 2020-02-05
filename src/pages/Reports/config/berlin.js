@@ -1,14 +1,4 @@
-import globalConfig from '~/config';
-
-const reportsConfig = {
-  apiRoute: '/reports',
-  dialog: {
-    imageResizeOptions: {
-      maxWidth: 800,
-      maxHeight: 800,
-      quality: 0.9
-    }
-  },
+export default {
   overviewMap: {
     style: 'mapbox://styles/hejco/cjpnt0cc41ipy2rlpu19jgt7a',
     bounds: [
@@ -32,10 +22,7 @@ const reportsConfig = {
       debounceTime: 1000,
       searchStringMinLength: 3
     }
-  }
-};
-
-export default {
-  ...globalConfig,
-  reports: reportsConfig
+  },
+  title:
+    'Fahrradbügel für Friedrichshain-Kreuzberg (Status: In Bearbeitung durch den Bezirk)'
 };
