@@ -70,7 +70,7 @@ const Routes = ({ token }) => (
     {/* analysis pages */}
     {config.routes.analysis != null && (
       <Route
-        path={`${config.routes.analyse}/planungen/:districtName?`}
+        path={`${config.routes.analysis}/planungen/:districtName?`}
         component={Analysis}
       />
     )}
