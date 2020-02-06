@@ -19,7 +19,13 @@ function handleClick() {
 }
 
 export default (props) => (
-  <MenuButton role="button" tabIndex={0} onClick={handleClick} {...props}>
+  <MenuButton
+    data-cy="hamburger-button"
+    role="button"
+    tabIndex={0}
+    onClick={handleClick}
+    {...props}
+  >
     {props.whiteFill ? <MenuIconWhite /> : <MenuIcon />}
   </MenuButton>
 );

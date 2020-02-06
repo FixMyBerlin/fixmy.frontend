@@ -38,6 +38,7 @@ const PinLocationButton = ({ onConfirm, text, disabled }) => (
     className="confirm-location-button"
     onClick={onConfirm}
     disabled={disabled}
+    data-cy="reports-form-confirm-location-button"
   >
     {text}
   </Button>

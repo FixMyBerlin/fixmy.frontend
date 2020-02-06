@@ -8,7 +8,7 @@ describe('The reports landing page', () => {
       expect(img[0].naturalWidth).to.be.greaterThan(0);
     });
   });
-  it('has a header', () => {
+  it('has a title', () => {
     getByDataAttr`reports-landing-header`.should('be.visible');
     getByDataAttr`reports-landing-header`
       .first()

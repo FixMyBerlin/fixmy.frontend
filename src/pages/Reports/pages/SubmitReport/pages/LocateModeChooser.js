@@ -74,9 +74,13 @@ const LocateModeChooser = ({
   removeError
 }) => (
   <Wrapper>
-    <Heading>{heading}</Heading>
+    <Heading data-cy="reports-locatemode-title">{heading}</Heading>
 
-    <Button onClick={onUseDevicePosition} notranslate>
+    <Button
+      onClick={onUseDevicePosition}
+      notranslate
+      data-cy="reports-locatemode-currentPosition"
+    >
       {' '}
       {/* TODO: eventually disable page-translate site-wide */}
       <ButtonIcon>
@@ -85,13 +89,17 @@ const LocateModeChooser = ({
       An meiner aktuellen Position
     </Button>
 
-    <Button onClick={onUseGeocoding} notranslate>
+    <Button
+      onClick={onUseGeocoding}
+      notranslate
+      data-cy="reports-locatemode-enterPosition"
+    >
       <ButtonIcon>
         <MapIcon />
       </ButtonIcon>
       Ich möchte eine Adresse auf der Karte eingeben
     </Button>
-    <CloseButton onClick={onClose}>
+    <CloseButton onClick={onClose} data-cy="reports-locatemode-close-button">
       <CloseIcon />
     </CloseButton>
     {error.message && (
