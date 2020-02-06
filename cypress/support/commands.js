@@ -83,6 +83,7 @@ Cypress.Commands.add('fmbLogin', () => {
 
 // Fix for Cypress not supporting to wait for `fetch` requests
 // https://github.com/cypress-io/cypress/issues/95#issuecomment-570098957
+// MIT License per https://github.com/cypress-io/cypress/blob/develop/LICENSE
 Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
   const opts = {
     ...options,
@@ -96,4 +97,15 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
     }
   };
   return originalFn(url, opts);
+});
+
+// mock a geo location request
+// https://github.com/cypress-io/cypress/issues/2671#issuecomment-564796821
+// MIT License per https://github.com/cypress-io/cypress/blob/develop/LICENSE
+Cypress.Commands.add('mockGeolocation', (latitude = 30, longitude = -98) => {
+  cy.window().then(($window) => {
+    cy.stub($window.navigator.geolocation, 'getCurrentPosition', (callback) => {
+      return callback({ coords: { latitude, longitude } });
+    });
+  });
 });
