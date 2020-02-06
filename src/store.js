@@ -26,4 +26,11 @@ const enhancers = window.__REDUX_DEVTOOLS_EXTENSION__
   : applyMiddleware(thunk);
 /* eslint-enable */
 
-export default createStore(Reducer, enhancers);
+const store = createStore(Reducer, enhancers);
+
+// expose store when run in Cypress Test
+if (window.Cypress) {
+  window.store = store;
+}
+
+export default store;
