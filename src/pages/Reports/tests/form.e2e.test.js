@@ -53,4 +53,33 @@ describe('The reports submission form', () => {
       });
     });
   });
+
+  describe('the address input page', () => {
+    beforeEach(() => {
+      cy.visit(config.routes.reports.new);
+      getByDataAttr`reports-locatemode-enterPosition`.click();
+    });
+
+    describe('initially', () => {
+      it("doesn't let me confirm my position");
+      it('shows me an address input field');
+      it('shows a map');
+    });
+
+    describe('when an address is entered', () => {
+      it('shows a list of suggestions');
+      describe('when a suggestion is clicked', () => {
+        it('moves the map to this position');
+        it('indicates the target position and address');
+        it("let's me confirm the position");
+      });
+      it("let's me reset the position with a button");
+    });
+  });
+  describe('the locate me page', () => {
+    it('moves the map to my position');
+    it('indicates the target position and address');
+    it("let's me confirm the position");
+    it("let's me move the map to update the position");
+  });
 });
