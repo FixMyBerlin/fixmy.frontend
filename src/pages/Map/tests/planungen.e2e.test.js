@@ -30,7 +30,7 @@ describe('Planings Section', () => {
       it('opens the the detail fold-out on "Mehr Infos" click', () => {
         clickRandomMarker(); // popup got closed in the step before, re-open it.
         getByDataAttr`plannings-more-info-btn`.click();
-        getByDataAttr`plannings-detail-wrapped`.should('be.visible');
+        getByDataAttr`map-details-wrapper`.should('be.visible');
       });
     });
   });
