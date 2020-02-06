@@ -1,5 +1,3 @@
-import config from '~/pages/Reports/config';
-
 /**
  * Click a random element that has the dom attr data-cy=reports-marker
  */
