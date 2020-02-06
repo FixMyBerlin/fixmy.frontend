@@ -1,7 +1,7 @@
 import config from '~/pages/Reports/config';
 
 /**
- * Open the projects map and wait for the projects API call to complete
+ * Open the reports map and wait for the reports API call to complete
  */
 const goToReportsMap = () => {
   cy.server()
@@ -10,9 +10,12 @@ const goToReportsMap = () => {
   cy.visit(config.routes.reports.map)
     .wait('@getReports')
     .its('status')
-    .should('be', 200); // configured in cypress.config.json
+    .should('be', 200);
 };
 
+/**
+ * Click a random element that has the dom attr data-cy=reports-marker
+ */
 const clickRandomMarker = () => {
   cy.fmbClickRandomElement('reports-marker', true, {
     force: true // otherwise the click fails because the image "is being covered by another element..."

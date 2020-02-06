@@ -32,11 +32,11 @@ const ReportDetails = ({ reportItem, token }) => {
   const { id, photo } = reportItem;
 
   return (
-    <Wrapper>
+    <Wrapper data-cy="reports-detail-panel">
       {photo && photo.src && <ReportImage src={photo.src} />}
 
       <Main>
-        <Header {...reportItem} />
+        <Header {...reportItem} data-cy="reports-detail-header" />
         <HorizontalRuler className="light " />
         <Body {...reportItem} />
         <HorizontalRuler className="light " />

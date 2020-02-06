@@ -51,7 +51,7 @@ const DetailsBody = ({
     {description && (
       <>
         <SubHeading alignLeft>Hinweise an die Verwaltung</SubHeading>
-        <Text>{description}</Text>
+        <Text data-cy="reports-detail-description">{description}</Text>
       </>
     )}
 
@@ -62,7 +62,11 @@ const DetailsBody = ({
 
     <HorizontalRuler className="light" />
 
-    {createdDate && <Text>Meldung vom: {formatDate(createdDate)}</Text>}
+    {createdDate && (
+      <Text data-cy="reports-detail-datetime">
+        Meldung vom: {formatDate(createdDate)}
+      </Text>
+    )}
   </>
 );
 

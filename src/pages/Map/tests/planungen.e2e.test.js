@@ -13,7 +13,7 @@ describe('Planings Section', () => {
       });
 
       it('is visible', () => {
-        getByDataAttr`plannings-map-popup-wrapper`.should('be.visible');
+        getByDataAttr`map-popup-wrapper`.should('be.visible');
       });
 
       it('contains an address heading', () => {
@@ -23,8 +23,8 @@ describe('Planings Section', () => {
       });
 
       it('closes the popup on close button click', () => {
-        getByDataAttr`plannings-map-popup-close-button`.click();
-        getByDataAttr`plannings-map-popup-wrapper`.should('not.be.visible');
+        getByDataAttr`map-popup-close-button`.click();
+        getByDataAttr`map-popup-wrapper`.should('not.be.visible');
       });
 
       it('opens the the detail fold-out on "Mehr Infos" click', () => {
