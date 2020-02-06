@@ -24,5 +24,6 @@ export default {
     }
   },
   title:
-    'Fahrradbügel für Friedrichshain-Kreuzberg (Status: In Bearbeitung durch den Bezirk)'
+    'Fahrradbügel für Friedrichshain-Kreuzberg (Status: In Bearbeitung durch den Bezirk)',
+  region: 'Friedrichshain-Kreuzberg'
 };
