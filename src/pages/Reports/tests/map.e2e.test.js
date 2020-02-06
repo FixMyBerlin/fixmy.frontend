@@ -106,4 +106,17 @@ describe('a report detail page', () => {
     );
   });
   it('moves the map so that the report marker is visible');
+  describe('when logged in', () => {
+    before(() => {
+      cy.fmbLogin();
+      cy.reload();
+    });
+    it('lets users like reports after they log in', () => {
+      getByDataAttr`map-detail-likes-count`.as('likesBefore');
+      getByDataAttr`map-detail-likes-count`.click();
+      getByDataAttr`map-detail-likes-count`.then((likesAfter) => {
+        cy.get('@likesBefore').should('not.eq', likesAfter);
+      });
+    });
+  });
 });

@@ -5,6 +5,7 @@
 // commands get prefixed with `fmp` to clarify their origin when consumed
 import config from '~/config';
 import { productionDefaultState } from '~/pages/KatasterKI/state';
+import { login } from '~/pages/User/UserState';
 
 // TODO: handle the issue that augmenting the cy object with the methods below leads to linting errors
 
@@ -55,6 +56,29 @@ Cypress.Commands.add('fmbGoToScene', (scene = 1) => {
       }
     });
   });
+});
+
+/**
+ * Login a user with credentials defined in Cypress config and dispatch login
+ */
+Cypress.Commands.add('fmbLogin', () => {
+  const credentials = {
+    username: Cypress.env('username'),
+    password: Cypress.env('password')
+  };
+  const formFunctions = {
+    setSubmitting: () => null,
+    setErrors: (err) => {
+      throw new Error(err);
+    },
+    setStatus: () => null
+  };
+  cy.window()
+    .its('store')
+    .as('store');
+  cy.get('@store').then((store) =>
+    login(credentials, formFunctions)(store.dispatch)
+  );
 });
 
 // Fix for Cypress not supporting to wait for `fetch` requests

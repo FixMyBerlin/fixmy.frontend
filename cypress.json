@@ -3,5 +3,9 @@
   "baseUrl": "http://localhost:8080",
   "//": "not only look for tests in cypress/integration, search everywhere in ./src",
   "integrationFolder": "./src",
-  "testFiles": "**/*.e2e.test.js"
+  "testFiles": "**/*.e2e.test.js",
+  "env": {
+    "username": "integration_test_user",
+    "password": "test1234"
+  }
 }
