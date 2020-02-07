@@ -17,10 +17,14 @@ module.exports = (api) => {
     '@babel/plugin-proposal-class-properties',
     'babel-plugin-styled-components',
     'babel-plugin-idx',
-    '@babel/plugin-proposal-optional-chaining'
+    '@babel/plugin-proposal-optional-chaining',
+    'react-hot-loader/babel'
   ];
 
   const env = {
+    development: {
+      plugins: ['@babel/plugin-transform-react-jsx-source']
+    },
     test: {
       plugins: ['transform-es2015-modules-commonjs']
     },

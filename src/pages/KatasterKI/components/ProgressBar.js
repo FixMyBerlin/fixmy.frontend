@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
+import config from '~/pages/KatasterKI/config';
 import { isSmallScreen, media } from '~/styles/utils';
 
 const ProgressWrapper = styled.div`
@@ -39,7 +40,7 @@ const ProgressBar = ({ total, current }) => {
       {!isSmallScreen() && (
         <ProgressBarLabel>Fortschritt der Umfrage</ProgressBarLabel>
       )}
-      <ProgressWrapper>
+      <ProgressWrapper data-cy="kat-progress-bar">
         {stepRange.map((index) => (
           <ProgressStep
             css={{ width }}

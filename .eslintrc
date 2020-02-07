@@ -5,7 +5,8 @@
     "airbnb",
     "plugin:prettier/recommended",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "plugin:cypress/recommended"
   ],
 
   "plugins": ["prettier"],
@@ -20,7 +21,8 @@
         "ecmaFeatures": {
           "jsx": true
         },
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "."
       },
       "plugins": ["@typescript-eslint"],
       "rules": {
@@ -69,7 +71,21 @@
     ],
     "react/prop-types": [1, { "skipUndeclared": true }],
     "react/destructuring-assignment": 0,
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      { "devDependencies": ["**/*.test.js", "**/*.spec.js", "cypress/**/*"] }
+    ]
   },
 
   "env": {
@@ -89,7 +105,6 @@
   },
 
   "globals": {
-    "config": true,
     "_paq": true
   }
 }

@@ -3,6 +3,7 @@ import { Redirect, Link, matchPath } from 'react-router-dom';
 import styled from 'styled-components';
 import queryString from 'query-string';
 
+import config from '~/pages/KatasterKI/config';
 import { media, isSmallScreen } from '~/styles/utils';
 import Store from '~/store';
 import { setEmbedded } from '../state';
@@ -180,7 +181,7 @@ const AttributionLabel = styled.span`
 
 const CallToAction = ({ labels }) => (
   <CallToActionWrapper>
-    <CallToActionLink target="_blank" href={config.katasterKI.tspArticleLink}>
+    <CallToActionLink target="_blank" href={config.tspKatasterURL}>
       {labels.calltoaction}
     </CallToActionLink>
     <AttributionLabel>Illustration: Martin Baaske</AttributionLabel>
@@ -189,7 +190,11 @@ const CallToAction = ({ labels }) => (
 
 const TOC = () => (
   <TOCWrapper>
-    <Button as={Link} to={`${config.routes.katasterKI.profileBase}/1`}>
+    <Button
+      as={Link}
+      to={`${config.routes.katasterKI.profileBase}/1`}
+      data-cy="kat-start-survey-btn"
+    >
       Umfrage beginnen
     </Button>
     <TOCText>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/KatasterKI/config';
 import { numberFormat } from '~/utils/utils';
 
 const ProgressWrapper = styled.div`
@@ -44,12 +45,22 @@ export default ({ value = 0, max = 100, style = {}, className = null }) => {
   const showMaxLabel = progress < 90;
 
   return (
-    <ProgressWrapper style={style} className={className}>
-      <ValueLabel progress={progress}>{numberFormat(value)}</ValueLabel>
+    <ProgressWrapper
+      style={style}
+      className={className}
+      data-cy="kat-progress-vis-wrapper"
+    >
+      <ValueLabel progress={progress} data-cy="kat-progress-vis-value-label">
+        {numberFormat(value)}
+      </ValueLabel>
       <ProgressBar>
         <Progress progress={progress} />
       </ProgressBar>
-      {showMaxLabel && <MaxLabel>{numberFormat(max)}</MaxLabel>}
+      {showMaxLabel && (
+        <MaxLabel data-cy="kat-progress-vis-max-label">
+          {numberFormat(max)}
+        </MaxLabel>
+      )}
     </ProgressWrapper>
   );
 };

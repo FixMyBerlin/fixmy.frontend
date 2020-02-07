@@ -7,7 +7,6 @@ const TerserPlugin = require('terser-webpack-plugin');
 const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
-const Config = require('../config.js');
 
 const INDEX_HTML =
   process.env.KATASTER_PATH != null
@@ -33,12 +32,18 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      siteUrl: process.env.KATASTER_PATH != null ? '/strassencheck' : Config.prodUrl,
+      siteUrl:
+        process.env.KATASTER_PATH != null
+          ? '/strassencheck'
+          : 'https://fixmyberlin.de',
       template: Path.resolve(__dirname, INDEX_HTML),
       minify: false
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
-    new Webpack.optimize.ModuleConcatenationPlugin()
+    new Webpack.optimize.ModuleConcatenationPlugin(),
+    new Webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 10000
+    })
   ],
   module: {
     rules: [

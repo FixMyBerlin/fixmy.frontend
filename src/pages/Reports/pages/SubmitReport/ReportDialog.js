@@ -10,8 +10,8 @@ import styled from 'styled-components';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import { actions as submitReportStateActions } from '~/pages/Reports/state/SubmitReportState';
 
+import config from '~/pages/Reports/config';
 import OverviewMapNavBar from '~/pages/Reports/pages/OverviewMap/components/OverviewMapNavBar';
-import Markdown from '~/pages/Markdown/Markdown';
 import LocateModeChooser from './pages/LocateModeChooser';
 import LocateMeMap from './components/LocateMeMap';
 import BikestandsForm from './pages/BikestandsForm';
@@ -20,6 +20,8 @@ import FormProgressBar from '~/pages/Reports/pages/SubmitReport/components/FormP
 import ReportSubmitted from './pages/ReportSubmitted';
 import BicycleParkingGarageForm from './pages/BicycleParkingGarageForm';
 import ThanksPage from './pages/ThanksPage';
+
+const Markdown = React.lazy(() => import('~/pages/Markdown'));
 
 const LoaderWrapper = styled.div`
   width: 100%;

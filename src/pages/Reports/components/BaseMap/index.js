@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MapboxGL from 'mapbox-gl';
 
+import config from '~/pages/Reports/config';
 import BigLoader from '~/components/BigLoader';
 
 const MB_STYLE_URL = `${config.reports.overviewMap.style}?fresh=true`;
@@ -63,14 +64,15 @@ BaseMap.propTypes = {
   onLoad: PropTypes.func,
   onMove: PropTypes.func,
   className: PropTypes.string,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node
 };
 
 BaseMap.defaultProps = {
   maxBounds: config.reports.overviewMap.maxBounds,
   onLoad: () => {},
   onMove: () => {},
-  className: ''
+  className: '',
+  children: null
 };
 
 export default BaseMap;

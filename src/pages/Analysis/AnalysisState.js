@@ -1,6 +1,7 @@
 /* eslint no-param-reassign: 0 */
 import ky from 'ky';
 
+import config from '~/pages/Map/config';
 import logger from '~/utils/logger';
 
 const LOAD_DATA = 'Analysis/AnalysisState/LOAD_DATA';

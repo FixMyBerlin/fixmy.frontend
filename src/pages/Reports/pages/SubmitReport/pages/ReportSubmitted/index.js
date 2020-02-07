@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import config from '~/pages/Reports/config';
 import Button from '~/components/Button';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import ErrorMessage from '~/components/ErrorMessage';
@@ -62,7 +63,7 @@ class ReportSubmitted extends PureComponent {
     return (
       <DialogStepWrapper>
         <StyledHeading>
-          Du hilfst mit, Friedrichshain-Kreuzberg radfreundlicher zu machen!
+          Du hilfst mit, {config.reports.region} radfreundlicher zu machen!
         </StyledHeading>
 
         <ThanksImg src={thanksImageSrc} />

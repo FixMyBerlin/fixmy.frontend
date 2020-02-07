@@ -6,7 +6,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
-const Config = require('../config.js');
 
 const INDEX_HTML =
   process.env.KATASTER_PATH != null
@@ -20,7 +19,9 @@ module.exports = merge(common, {
     historyApiFallback: true,
     host: '0.0.0.0',
     publicPath: '/',
-    clientLogLevel: 'silent'
+    clientLogLevel: 'silent',
+    hot: true,
+    stats: 'minimal'
   },
   output: {
     chunkFilename: 'js/[name].chunk.js'
@@ -28,7 +29,7 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      siteUrl: Config.devUrl,
+      siteUrl: 'http://localhost:8080',
       template: Path.resolve(__dirname, INDEX_HTML)
     }),
     new CopyWebpackPlugin([

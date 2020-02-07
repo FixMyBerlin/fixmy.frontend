@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/Reports/config';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import Slider from '~/components/Slider';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
@@ -70,7 +71,7 @@ export default ({ onConfirm }) => {
       </StyledWeiterButton>
 
       <Paragraph>
-        Hinweis: Neue Fahrradbügel werden in Friedrichshain-Kreuzberg in der
+        Hinweis: Neue Fahrradbügel werden in {config.reports.region} in der
         Regel auf der Straße installiert, damit der Platz für Fußgänger:innen
         auf dem Gehweg nicht eingeschränkt wird.
       </Paragraph>

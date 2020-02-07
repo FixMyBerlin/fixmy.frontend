@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 import classnames from 'classnames';
 
+import config from '~/pages/KatasterKI/config';
 import { media, bounce } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
@@ -142,7 +143,7 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
 
   return (
     <SceneWrapper>
-      <ImageWrapper>
+      <ImageWrapper data-cy="kat-scene-image-wrapper">
         {showLoadingImage ? (
           <img
             src={loadingImage}
@@ -172,6 +173,7 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
               key={`singlechoice__${option.value}`}
               onClick={() => onClick(option)}
               className={buttonClasses}
+              data-cy="kat-scene-rating-button"
             >
               <IconWrapper isEnqueued={enqueuedRating === option.label}>
                 <Icon />

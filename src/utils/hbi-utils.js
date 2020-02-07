@@ -1,4 +1,4 @@
-// import Store from '~/store';
+import config from '~/pages/Map/config';
 
 export function getHBIbyProps(props, sideKey) {
   // const hbiValues = Store.getState().UserState.hbi_values;
@@ -17,7 +17,7 @@ export function getHBIColorByIndex(index) {
   return stop ? stop.color : '#555';
 }
 
-export function translateOrientationName(name) {
+function translateOrientationName(name) {
   switch (name) {
     case 'O':
       return 'Ostseite';

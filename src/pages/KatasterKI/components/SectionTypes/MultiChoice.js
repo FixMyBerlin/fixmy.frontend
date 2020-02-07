@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '~/pages/KatasterKI/config';
 import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
@@ -96,6 +97,7 @@ export default ({ title, options, currentValue, handleChange, page, next }) => {
           onClick={onClick}
           css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           isLoading={isLoading}
+          data-cy="kat-multichoice-proceed-btn"
         >
           Weiter
         </Button>

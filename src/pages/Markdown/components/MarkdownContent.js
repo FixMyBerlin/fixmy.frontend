@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
+
+import config from '~/pages/Map/config';
 import { getTitleStyles } from '~/components/Title';
 import { getSectionTitleStyles } from '~/components/SectionTitle';
 import { getTextStyles } from '~/components/Text';
