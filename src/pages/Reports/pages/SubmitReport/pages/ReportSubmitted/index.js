@@ -66,9 +66,9 @@ class ReportSubmitted extends PureComponent {
           Du hilfst mit, {config.reports.region} radfreundlicher zu machen!
         </StyledHeading>
 
-        <ThanksImg src={thanksImageSrc} />
+        <ThanksImg src={thanksImageSrc} data-cy="reports-submitted-image" />
 
-        <Text>
+        <Text data-cy="reports-submitted-text">
           Deine Meldung ist nun online! Alle Meldungen werden gesammelt und dann
           dem Bezirksamt am 10. Oktober 2019 übergeben. Die Planer:innen im
           Straßen- und Grünflächenamt prüfen, welche Meldungen umgesetzt werden
@@ -79,7 +79,12 @@ class ReportSubmitted extends PureComponent {
         </Text>
 
         {token ? (
-          <Button onClick={() => this.goToMap()}>Meldung jetzt anzeigen</Button>
+          <Button
+            onClick={() => this.goToMap()}
+            data-cy="reports-submitted-authenticated-show-report"
+          >
+            Meldung jetzt anzeigen
+          </Button>
         ) : (
           <AuthForm
             reportId={reportId}

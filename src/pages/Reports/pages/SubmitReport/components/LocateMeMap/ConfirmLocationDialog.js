@@ -67,12 +67,19 @@ const ConfirmButton = styled(StyledButton)`
 `;
 
 const ConfirmLocationDialog = ({ heading, address, onConfirm, onDecline }) => (
-  <Wrapper>
+  <Wrapper data-cy="reports-locateme-confirm">
     <Heading>{heading}</Heading>
     <AddressIndicator>{address}</AddressIndicator>
     <ButtonsWrapper>
-      <BackButton onClick={onDecline}>Ort ändern</BackButton>
-      <ConfirmButton onClick={onConfirm}>Weiter</ConfirmButton>
+      <BackButton onClick={onDecline} data-cy="reports-locateme-confirm-reset">
+        Ort ändern
+      </BackButton>
+      <ConfirmButton
+        onClick={onConfirm}
+        data-cy="reports-locateme-confirm-continue"
+      >
+        Weiter
+      </ConfirmButton>
     </ButtonsWrapper>
   </Wrapper>
 );

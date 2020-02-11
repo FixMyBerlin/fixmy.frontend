@@ -163,6 +163,7 @@ class AdditionalDataForm extends PureComponent {
           maxLength={this.props.maxDescriptionLength || 400}
           value={this.state.description}
           onChange={this.updateDescription}
+          data-cy="reports-additional-comment"
           placeholder={oneLine`
           Beschreibe hier die Situation an dem Ort deiner
           Meldung oder nenne besondere Anforderungen,
@@ -176,7 +177,11 @@ class AdditionalDataForm extends PureComponent {
           Max. {this.props.maxDescriptionLength} Zeichen
         </Hint>
 
-        <WeiterButton onClick={this.submit} disabled={!this.isSubmittable()}>
+        <WeiterButton
+          onClick={this.submit}
+          disabled={!this.isSubmittable()}
+          data-cy="reports-additional-continue"
+        >
           Weiter
         </WeiterButton>
 

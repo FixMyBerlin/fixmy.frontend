@@ -53,7 +53,7 @@ export default ({ onConfirm }) => {
         An einen Bügel können zwei Fahrräder angeschlossen werden.
       </Paragraph>
 
-      <SliderWrapper>
+      <SliderWrapper data-cy="reports-bikestands-slider-wrapper">
         <Slider
           min={1}
           max={MAX_STANDS}
@@ -66,7 +66,10 @@ export default ({ onConfirm }) => {
         />
       </SliderWrapper>
 
-      <StyledWeiterButton onClick={() => onConfirm(bikestandCount)}>
+      <StyledWeiterButton
+        onClick={() => onConfirm(bikestandCount)}
+        data-cy="reports-bikestands-continue"
+      >
         Weiter
       </StyledWeiterButton>
 

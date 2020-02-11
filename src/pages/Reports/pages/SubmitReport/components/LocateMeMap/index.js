@@ -245,7 +245,7 @@ class LocateMeMap extends Component {
           </>
         )}
 
-        <MapWrapper>
+        <MapWrapper data-cy="reports-locateme-wrapper">
           <StyledWebGlMap
             newLocationZoomLevel={
               config.reports.locateMeMap.zoomOnGeocodedLocation
