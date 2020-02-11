@@ -33,7 +33,7 @@ to contribute to the project.
 
 ### Split repositories
 
-The code running (fixmyberlin.de)[https://fixmyberlin.de/] is contained in two repositories,
+The code running [fixmyberlin.de](https://fixmyberlin.de/) is contained in two repositories,
 published by the [FixMyBerlin GitHub organisation](https://github.com/FixMyBerlin):
 
 | Repository                                                       | Purpose                                                                      |
