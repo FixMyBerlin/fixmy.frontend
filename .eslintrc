@@ -6,10 +6,11 @@
     "plugin:prettier/recommended",
     "prettier",
     "prettier/react",
-    "plugin:cypress/recommended"
+    "plugin:cypress/recommended",
+    "plugin:chai-friendly/recommended"
   ],
 
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "chai-friendly"],
 
   "overrides": [
     {
