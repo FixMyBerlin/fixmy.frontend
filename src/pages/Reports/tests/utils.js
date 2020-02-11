@@ -1,4 +1,4 @@
-import { getByDataAttr } from '~/../cypress/support/utils';
+import { cyElem } from '~/../cypress/support/utils';
 import config from '~/pages/Reports/config';
 
 /**
@@ -12,26 +12,28 @@ const clickRandomMarker = () => {
 
 const goToConfirmedAddress = (address) => {
   cy.visit(`${config.routes.reports.new}/1`);
-  getByDataAttr`reports-locatemode-enterPosition`.click();
-  getByDataAttr`map-address-input`.type(address);
-  getByDataAttr`map-address-suggestion`.first().click();
+  cyElem('reports-locatemode-enterPosition').click();
+  cyElem('map-address-input').type(address);
+  cyElem('map-address-suggestion')
+    .first()
+    .click();
 };
 
 const goToBikeStandForm = (address) => {
   goToConfirmedAddress(address);
-  getByDataAttr`reports-form-confirm-location-button`.click();
-  getByDataAttr`reports-locateme-confirm-continue`.click();
+  cyElem('reports-form-confirm-location-button').click();
+  cyElem('reports-locateme-confirm-continue').click();
 };
 
 const goToAdditionalDataForm = (address) => {
   goToBikeStandForm(address);
-  getByDataAttr`reports-bikestands-continue`.click();
+  cyElem('reports-bikestands-continue').click();
 };
 
 const goToParkingGarageForm = (address) => {
   goToAdditionalDataForm(address);
-  getByDataAttr`reports-additional-comment`.type('Test-Kommentärchen');
-  getByDataAttr`reports-additional-continue`.click();
+  cyElem('reports-additional-comment').type('Test-Kommentärchen');
+  cyElem('reports-additional-continue').click();
 };
 
 export default {

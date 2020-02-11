@@ -1,11 +1,20 @@
- /**
- * JS Tag function (taking a template string) to make getting elements by their data-attribute
- * more readable.
- * TODO: Propose adopting this to team. If ok, only use this to get elements by data-attribute.
- * @param {string} args Arguments to the tag function.
+/**
+ * Cypress selector shorthand
+ *
+ * Can be used to select elements by their data-cy dom attribute. Foe example an
+ * element
+ *
+ *  <div data-cy="menu-searchbar" />
+ *
+ * could be selected with
+ *
+ *  cyElem('menu-searchbar');
+ *
+ * @param {string} arg Value of the element's data-cy attribute
  */
 
- export function getByDataAttr(...args) {
-  const dataAttributeValue = args[0][0];
-  return cy.get(`[data-cy=${dataAttributeValue}]`);
+function cyElem(arg) {
+  return cy.get(`[data-cy=${arg}]`);
 }
+
+export { cyElem };
