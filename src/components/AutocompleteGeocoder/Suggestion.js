@@ -24,7 +24,11 @@ const Suggestion = ({ address, onSuggestionPick }) => {
       )
     );
 
-  return <ListItem onClick={onSuggestionPick}>{addressParts}</ListItem>;
+  return (
+    <ListItem data-cy="map-address-suggestion" onClick={onSuggestionPick}>
+      {addressParts}
+    </ListItem>
+  );
 };
 
 Suggestion.propTypes = {

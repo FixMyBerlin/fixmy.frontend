@@ -25,8 +25,6 @@ describe('The reports submission form', () => {
         cy.mockGeolocation();
         getByDataAttr`reports-locatemode-currentPosition`.click();
         cy.window().then((win) => {
-          // disabled because chai uses this syntax
-          // eslint-disable-next-line no-unused-expressions
           expect(win.navigator.geolocation.getCurrentPosition).to.be.called;
         });
         getByDataAttr`reports-locateme-address-invalid`.should('be.visible');
@@ -61,19 +59,56 @@ describe('The reports submission form', () => {
     });
 
     describe('initially', () => {
-      it("doesn't let me confirm my position");
-      it('shows me an address input field');
-      it('shows a map');
+      it("doesn't let me confirm my position", () => {
+        getByDataAttr`reports-form-confirm-location-button`.should(
+          'be.disabled'
+        );
+      });
+      it('shows me an address input field and an info box', () => {
+        getByDataAttr`map-address-input`
+          .should('be.visible')
+          .and('have.value', '');
+        getByDataAttr`reports-map-help`
+          .should('be.visible')
+          .contains('Bewege die Karte oder tippe eine Adresse ein');
+      });
+      it('shows a map', () => {
+        getByDataAttr`reports-map-help`.should('be.visible');
+      });
     });
 
     describe('when an address is entered', () => {
-      it('shows a list of suggestions');
-      describe('when a suggestion is clicked', () => {
-        it('moves the map to this position');
-        it('indicates the target position and address');
-        it("let's me confirm the position");
+      beforeEach(() => {
+        getByDataAttr`map-address-input`.type('meh');
       });
-      it("let's me reset the position with a button");
+      it('shows a list of suggestions', () => {
+        getByDataAttr`map-address-suggestion`.its('length').should('be.gte', 2);
+      });
+      describe('when a suggestion is clicked', () => {
+        beforeEach(() => {
+          getByDataAttr`map-address-suggestion`.first().click();
+        });
+        it('the suggestions are hidden', () => {
+          getByDataAttr`map-address-suggestion`.should('not.exist');
+        });
+        it('moves the map to this position');
+        it('indicates the target position and address', () => {});
+        it("let's me confirm the position", () => {
+          getByDataAttr`reports-form-confirm-location-button`.should(
+            'not.be.disabled'
+          );
+        });
+      });
+      it.only("let's me reset the position with a button", () => {
+        getByDataAttr`map-address-reset`
+          .should('be.visible')
+          .click()
+          .then(() => {
+            getByDataAttr`map-address-reset`.should('not.exist');
+            getByDataAttr`map-address-suggestion`.should('not.exist');
+            getByDataAttr`map-address-input`.should('have.value', '');
+          });
+      });
     });
   });
   describe('the locate me page', () => {
