@@ -101,7 +101,7 @@ describe('a report detail page', () => {
   });
   it('shows the detail panel for this report', () => {
     cyElem('reports-detail-panel').should('be.visible');
-    cyElem('map-details-header-subtitle`.contains(`Meldung ${singleReportId}'));
+    cyElem('map-details-header-subtitle').contains(`Meldung ${singleReportId}`);
   });
   it('moves the map so that the report marker is visible');
   describe('when logged in', () => {
