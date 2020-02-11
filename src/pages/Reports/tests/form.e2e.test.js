@@ -196,7 +196,7 @@ describe('The reports submission form', () => {
     });
   });
 
-  describe.only('bicycle parking garage form', () => {
+  describe('bicycle parking garage form', () => {
     before(() => {
       utils.goToParkingGarageForm('Mehringdamm');
     });
@@ -210,15 +210,15 @@ describe('The reports submission form', () => {
     it("let's users select whether they are interested in bike lockers", () => {
       getByDataAttr`reports-locker-accept`
         .should('be.visible')
-        .and('not.selected');
+        .and('not.checked');
       getByDataAttr`reports-locker-accept`.click();
-      getByDataAttr`reports-locker-accept`.should('be.selected');
+      getByDataAttr`reports-locker-accept`.should('be.checked');
 
       getByDataAttr`reports-locker-deny`
         .should('be.visible')
-        .and('not.selected');
+        .and('not.checked');
       getByDataAttr`reports-locker-deny`.click();
-      getByDataAttr`reports-locker-deny`.should('be.selected');
+      getByDataAttr`reports-locker-deny`.should('be.checked');
     });
     it("let's users confirm their choice", () => {
       getByDataAttr`reports-locker-continue`.should('not.be.disabled');
