@@ -4,7 +4,7 @@ FixMyBerlin is an open source project and we would love to receive contributions
 If you want to contribute – welcome! Great that you are here!
 
 The project is mostly being developed by FixMyCity GmbH in Berlin. We
-are working on the platform continuously and see each other face-to-face every week. 
+are working on the platform continuously and see each other face-to-face every week in the (co-working area of the city of Berlin)[https://www.citylab-berlin.org/]. 
 Nonetheless we want to make it easy to contribute to this project from outside this
 organisation. This document tries to answer some common questions that you might have
 if you would like to do so. 
