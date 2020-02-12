@@ -39,6 +39,18 @@ Cypress.Commands.add('fmbGoToProfile', (profile = 1) => {
   });
 });
 
+Cypress.Commands.add('navigateTo', (route, state = null) => {
+  cy.visit(route, {
+    onBeforeLoad: (win) => {
+      if (state != null) {
+        // eslint-disable-next-line no-param-reassign
+        win.initialState = state;
+      }
+    }
+  });
+  // if (cy.url() !== route) cy.window().then((win) => win.appHistory.push(route));
+});
+
 Cypress.Commands.add('fmbReturnToScene', (scene = 1) => {
   cy.visit(`${config.routes.katasterKI.scenesBase}/${scene}`);
 });
@@ -66,6 +78,7 @@ Cypress.Commands.add('fmbLogin', () => {
     username: Cypress.env('username'),
     password: Cypress.env('password')
   };
+  // mock form functions expected by login function
   const formFunctions = {
     setSubmitting: () => null,
     setErrors: (err) => {

@@ -1,6 +1,11 @@
 import { cyElem } from '~/../cypress/support/utils';
 import config from '~/pages/Reports/config';
 
+import foundAddress from './fixtures/foundAddress.json';
+import bikeStands from './fixtures/bikeStands.json';
+import additionalDataForm from './fixtures/additionalDataForm.json';
+import bikeLockerForm from './fixtures/bikeLockerForm.json';
+
 /**
  * Click a random element that has the dom attr data-cy=reports-marker
  */
@@ -10,30 +15,24 @@ const clickRandomMarker = () => {
   });
 };
 
-const goToConfirmedAddress = (address) => {
-  cy.visit(`${config.routes.reports.new}/1`);
-  cyElem('reports-locatemode-enterPosition').click();
-  cyElem('map-address-input').type(address);
-  cyElem('map-address-suggestion')
-    .first()
-    .click();
+const goToConfirmedAddress = () => {
+  const url = `${config.routes.reports.new}/1`;
+  cy.navigateTo(url, foundAddress);
 };
 
-const goToBikeStandForm = (address) => {
-  goToConfirmedAddress(address);
-  cyElem('reports-form-confirm-location-button').click();
-  cyElem('reports-locateme-confirm-continue').click();
+const goToBikeStandForm = () => {
+  const url = `${config.routes.reports.new}/2`;
+  cy.navigateTo(url, bikeStands);
 };
 
-const goToAdditionalDataForm = (address) => {
-  goToBikeStandForm(address);
-  cyElem('reports-bikestands-continue').click();
+const goToAdditionalDataForm = () => {
+  const url = `${config.routes.reports.new}/3`;
+  cy.navigateTo(url, additionalDataForm);
 };
 
-const goToParkingGarageForm = (address) => {
-  goToAdditionalDataForm(address);
-  cyElem('reports-additional-comment').type('Test-Kommentärchen');
-  cyElem('reports-additional-continue').click();
+const goToParkingGarageForm = () => {
+  const url = `${config.routes.reports.new}/4`;
+  cy.navigateTo(url, bikeLockerForm);
 };
 
 export default {

@@ -159,7 +159,7 @@ describe('The reports submission form', () => {
   });
   describe('form page for number of bikestands', () => {
     before(() => {
-      utils.goToBikeStandForm('Mehringdamm');
+      utils.goToBikeStandForm();
     });
     it('has a slider', () => {
       cyElem('reports-bikestands-slider-wrapper').should('be.visible');
@@ -172,7 +172,7 @@ describe('The reports submission form', () => {
 
   describe('photo and description form', () => {
     before(() => {
-      utils.goToAdditionalDataForm('Mehringdamm');
+      utils.goToAdditionalDataForm();
     });
 
     it('has a title and description', () => {
@@ -200,7 +200,7 @@ describe('The reports submission form', () => {
 
   describe('bicycle parking garage form', () => {
     before(() => {
-      utils.goToParkingGarageForm('Mehringdamm');
+      utils.goToParkingGarageForm();
     });
     it('initially blocks proceeding with the form', () => {
       cyElem('reports-locker-continue').should('be.disabled');
@@ -227,15 +227,14 @@ describe('The reports submission form', () => {
     });
   });
 
-  describe('continuing on the last page', () => {
+  describe.only('continuing on the last page', () => {
     before(() => {
-      localStorage.debug = 'cypress*';
       cy.server()
         .route('POST', '**/reports')
         .as('postReport');
     });
     it('results are submitted to the backend', () => {
-      utils.goToParkingGarageForm('Mehringdamm 1');
+      utils.goToParkingGarageForm();
       cyElem('reports-locker-accept').click();
       cyElem('reports-locker-continue').click();
 
