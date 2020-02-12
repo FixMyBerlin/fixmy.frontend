@@ -1,6 +1,8 @@
 <p align="center">🚲 🚲 🚲</p>
 <h1 align="center">FixMyBerlin - A Mobility Platform for Berlin</h1>
 
+[![Build Status](https://semaphoreci.com/api/v1/hekele/fixmy-frontend/branches/dependabot-npm_and_yarn-develop-fetch-mock-8-3-2/badge.svg)](https://semaphoreci.com/hekele/fixmy-frontend)
+
 You can check out the live version [here](https://fixmyberlin.de/).
 
 ![fixmy screenshot](/fixmy-screenshot.jpg)
@@ -77,3 +79,27 @@ $ npm run start:strassencheck
 ```sh
 $ npm run build:strassencheck
 ```
+
+## Run Tests
+
+We are gradually adding tests
+
+### Unit tests
+
+Run unit tests using `npm run test`.
+
+### End-To-End Tests
+
+End-To-End tests are implemented using [Cypress](https://www.cypress.io/).
+There are a couple of options to run e2e tests. You can
+
+- start the dev server AND run tests
+  [headlessly](https://blog.logrocket.com/introduction-to-headless-browser-testing-44b82310b27c/)
+  in a single run `npm run test:e2e-dev-server`.
+  This stops the dev server after all tests have been run.
+- run e2e tests _headlessly_ against an already running development server using `npm run test:e2e`.
+- open the Cypress GUI and run tests in Chrome from there using `npm run cypress`
+
+When you are working on e2e-tests for this app please also refer to the
+collection of notes from development of the end-to-end-test-suite in
+[cypress/README.MD](cypress/README.MD).

@@ -71,7 +71,7 @@ export default ({ onConfirm }) => {
       </StyledWeiterButton>
 
       <Paragraph>
-        Hinweis: Neue Fahrradbügel werden in Friedrichshain-Kreuzberg in der
+        Hinweis: Neue Fahrradbügel werden in {config.reports.region} in der
         Regel auf der Straße installiert, damit der Platz für Fußgänger:innen
         auf dem Gehweg nicht eingeschränkt wird.
       </Paragraph>

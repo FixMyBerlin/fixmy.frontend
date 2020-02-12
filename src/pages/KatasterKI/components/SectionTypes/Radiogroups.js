@@ -131,6 +131,7 @@ export default ({
           onClick={onClick}
           css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           isLoading={isLoading}
+          data-cy="kat-radiogroups-proceed-btn"
         >
           Weiter
         </Button>

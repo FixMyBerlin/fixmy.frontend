@@ -3,7 +3,7 @@ const katasterPath = process.env.KATASTER_PATH || '';
 export default {
   projects: '/planungen',
   status: '/zustand',
-  analyse: '/analyse',
+  analysis: '/analyse',
   reports: {
     temporarily_forward_from_this_to_index: '/meldungen',
     index: '/meldungen/radbuegel/friedrichshain-kreuzberg',
@@ -13,7 +13,7 @@ export default {
   },
   katasterKI: {
     landing: katasterPath || '/',
-    landingNational: '/de',
+    landingNational: `${katasterPath}/de`,
     profileBase: `${katasterPath}/profil`,
     profile: `${katasterPath}/profil/:page`,
     scenesBase: `${katasterPath}/szenen`,
