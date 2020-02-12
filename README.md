@@ -7,6 +7,12 @@ You can check out the live version [here](https://fixmyberlin.de/).
 
 ![fixmy screenshot](/fixmy-screenshot.jpg)
 
+## Contributing
+
+Did you encounter an issue that you would like to tell us about? Would you like
+to add to this project yourself? Go ahead and check the
+[contribution guide](CONTRIBUTING.md).
+
 ## Installation
 
 ```sh
@@ -20,6 +26,14 @@ Runs on [localhost:8080](http://localhost:8080/)
 
 ```sh
 $ npm start
+```
+
+## Testing
+
+Runs unit tests.
+
+```sh
+$ npm run test
 ```
 
 ## Build
