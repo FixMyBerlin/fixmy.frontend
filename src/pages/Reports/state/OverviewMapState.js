@@ -1,6 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { apiFetchReports } from '../apiservice';
 import { actions as errorStateActions } from './ErrorState';
+import initialState from './initialState';
 import logger from '~/utils/logger';
 
 const actions = {};
@@ -64,13 +65,10 @@ async function loadReportsThunk(dispatch) {
 
 // reducer
 
-const initialState = {
-  reports: [], // report items fetched from api
-  selectedReport: null, // an item of the reports list
-  selectedReportPosition: { x: 0, y: 0 } // projected position of report popup
-};
-
-function reducer(state = initialState, { type, payload } = {}) {
+function reducer(
+  state = initialState.OverviewMapState,
+  { type, payload } = {}
+) {
   switch (type) {
     case types.RESET_MAP_STATE: {
       return initialState;

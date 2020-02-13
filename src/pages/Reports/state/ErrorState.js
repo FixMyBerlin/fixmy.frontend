@@ -1,3 +1,5 @@
+import initialState from './initialState';
+
 const actions = {};
 const types = {};
 
@@ -24,13 +26,7 @@ actions.removeError = () => ({
 
 // reducer
 
-const initialState = {
-  message: null,
-  proceedMessage: null,
-  proceedFunc: null
-};
-
-function reducer(state = initialState, { type, payload } = {}) {
+function reducer(state = initialState.ErrorState, { type, payload } = {}) {
   switch (type) {
     case types.ADD_ERROR:
       return {

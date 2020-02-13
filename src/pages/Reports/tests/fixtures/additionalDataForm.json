@@ -1,142 +1,51 @@
 {
-  "AppState": {
-    "activeView": "meldungen",
-    "activeSection": "radbuegel",
-    "isMenuOpen": false,
-    "isEmbedMode": false
+  "ErrorState": {
+    "message": null,
+    "proceedMessage": null,
+    "proceedFunc": null
   },
-  "MapState": {
-    "zoom": 12,
-    "bearing": 0,
-    "pitch": 0,
-    "center": [13.415669, 52.513219],
-    "show3dBuildings": true,
-    "animate": false,
-    "dim": false,
-    "displayPopup": false,
-    "error": null,
-    "filterHbi": [true, true, true, true],
-    "filterPlannings": [true, true, true, true],
-    "hasMoved": false,
-    "hbi_safety": 5,
-    "hbi_speed": 5,
-    "planningData": false,
-    "popupData": null,
-    "popupLocation": null
+  "OverviewMapState": {
+    "reports": [],
+    "selectedReport": null,
+    "selectedReportPosition": {
+      "x": 0,
+      "y": 0
+    }
   },
-  "UserState": {
-    "userid": "dd555800-8fa4-4556-aac7-d6a033bba805",
-    "hbi_values": [5, 5],
-    "userData": false,
-    "userLikes": false
-  },
-  "AnalysisState": {
-    "data": [],
-    "isLoading": true,
-    "sorting": null,
-    "selectedDistrict": false,
-    "selectedPhase": false,
-    "selectedSort": "likes"
-  },
-  "ReportsState": {
-    "ErrorState": {
-      "message": null,
-      "proceedMessage": null,
-      "proceedFunc": null
+  "SubmitReportState": {
+    "locationMode": "GEOCODING",
+    "deviceLocation": null,
+    "geocodeResult": {
+      "lng": 13.386379,
+      "lat": 52.489505
     },
-    "OverviewMapState": {
-      "reports": [],
-      "selectedReport": null,
-      "selectedReportPosition": {
-        "x": 0,
-        "y": 0
-      }
-    },
-    "SubmitReportState": {
-      "locationMode": "GEOCODING",
-      "deviceLocation": null,
-      "geocodeResult": {
+    "reverseGeocodeResult": null,
+    "tempLocation": {
+      "lngLat": {
         "lng": 13.386379,
         "lat": 52.489505
       },
-      "reverseGeocodeResult": null,
-      "tempLocation": {
-        "lngLat": {
-          "lng": 13.386379,
-          "lat": 52.489505
-        },
-        "address": "Mehringdamm 1, 10965 Berlin",
-        "pinned": false,
-        "valid": true
+      "address": "Mehringdamm 1, 10965 Berlin",
+      "pinned": false,
+      "valid": true
+    },
+    "apiRequestStatus": {
+      "submitting": false,
+      "submitted": false
+    },
+    "newReport": {
+      "address": "Mehringdamm 1, 10965 Berlin",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [13.386379, 52.489505]
       },
-      "apiRequestStatus": {
-        "submitting": false,
-        "submitted": false
+      "details": {
+        "subject": "BIKE_STANDS",
+        "number": 1,
+        "fee_acceptable": null
       },
-      "newReport": {
-        "address": "Mehringdamm 1, 10965 Berlin",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [13.386379, 52.489505]
-        },
-        "details": {
-          "subject": "BIKE_STANDS",
-          "number": 1,
-          "fee_acceptable": null
-        },
-        "photo": null,
-        "description": null
-      }
+      "photo": null,
+      "description": null
     }
-  },
-  "KatasterKIState": {
-    "isTosAccepted": true,
-    "transportRatings": {
-      "pedestrian": 0,
-      "bicycle": 5,
-      "motorbike": 3,
-      "car": 0,
-      "public": 3
-    },
-    "profile": {
-      "ageGroup": 1,
-      "bicycleUse": 0,
-      "bikeReasons": {},
-      "district": "Mitte",
-      "gender": "d",
-      "motivationalFactors": {
-        "bikeFun": 4,
-        "faster": 4,
-        "weather": 4,
-        "safe": 4
-      },
-      "hasChildren": true,
-      "vehiclesOwned": {
-        "car": true
-      },
-      "whyBiking": {
-        "fun": true
-      },
-      "zipcode": "22000"
-    },
-    "progressBar": {
-      "current": 0,
-      "total": 0
-    },
-    "profileRequest": {
-      "state": "waiting"
-    },
-    "perspectiveRequest": {
-      "state": "waiting"
-    },
-    "userGroup": "bicycle",
-    "scenes": [],
-    "currentPerspective": "C",
-    "sceneGroupCounter": 0,
-    "isEmbedded": false,
-    "ratingsCounter": 0,
-    "sessionID": "25129883-3a38-42c7-b3ac-169dae2618d9",
-    "introSelection": [7, 0, 1, 3, 5],
-    "statisticsCounter": 1234
   }
 }
