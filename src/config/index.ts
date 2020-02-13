@@ -2,7 +2,7 @@ import defaultConfig from './default';
 import berlin from './berlin';
 import bonn from './bonn';
 
-const region: string = process.env.REGION_ENV;
+const region: string = process.env.REGION_ENV || 'berlin';
 
 const AVAILABLE_REGIONS = {
   berlin,
