@@ -71,7 +71,7 @@ function reducer(
 ) {
   switch (type) {
     case types.RESET_MAP_STATE: {
-      return initialState;
+      return initialState.OverviewMapState;
     }
     case types.REPORTS_FETCH_COMPLETE:
       return { ...state, reports: payload };

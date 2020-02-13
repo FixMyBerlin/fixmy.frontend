@@ -37,7 +37,7 @@ function reducer(state = initialState.ErrorState, { type, payload } = {}) {
       };
     case types.REMOVE_ERROR:
       return {
-        ...initialState
+        ...initialState.ErrorState
       };
     default:
       return { ...state };
