@@ -20,6 +20,10 @@ export default [
     route: '/presse'
   },
   {
+    key: 'research',
+    route: '/research'
+  },
+  {
     key: 'faq',
     route: '/faq'
   },
