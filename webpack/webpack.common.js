@@ -34,7 +34,8 @@ module.exports = {
       CONFIG_ENV: 'dev',
       BASE_NAME: '/', // base name of router history
       KATASTER_PATH: '/strassencheck', // used as a base for the kataster app
-      REGION_ENV: 'berlin'
+      REGION_ENV: 'berlin',
+      CYPRESS_BROWSER_WINDOW: null // position Cypress Chrome window e.g. "1920,1080;1920,0"
     })
   ],
   resolve: {

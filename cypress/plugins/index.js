@@ -1,17 +1,29 @@
 const wp = require('@cypress/webpack-preprocessor');
 const webpackOptions = require('../../webpack/webpack.config.dev.js');
-const cypressConfig = require('../../cypress.json');
 
 // immediately open dev tools so we can inspect breakpoint halts
 // (when we added a "debugger" statement in our code
 const setAutoDevTools = (args) => args.push('--auto-open-devtools-for-tabs');
 
 // Set Chrome's window position and size
+//
+// Use an environment variable to control where the Chrome browser window will
+// be opened by Cypress. As an example:
+//
+//   CYPRESS_BROWSER_WINDOW="1920,1080;1920,0" npm run test:e2e-chrome
+//
+// would run cypress tests with a window of size 1920x1080 with its upper left
+// corner at 1920,0 on the monitor.
 const setWindowPos = (args) => {
+  if (process.env.CYPRESS_BROWSER_WINDOW == null) return;
+
+  const [windowSize, windowPosition] = process.env.CYPRESS_BROWSER_WINDOW.split(
+    ';'
+  );
   args.push(
     '--user-data-dir="~/chrome-test-user"',
-    `--window-size=${cypressConfig.chrome.windowSize}`,
-    `--window-position=${cypressConfig.chrome.windowPosition}`
+    `--window-size=${windowSize}`,
+    `--window-position=${windowPosition}`
   );
 };
 
