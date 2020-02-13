@@ -25,7 +25,7 @@
     force = true
     [redirects.headers]
         X-From = "Netlify"
-        X-Forwarded-Host = "https://elegant-hugle-53926c.netlify.com/"
+        X-Forwarded-Host = "elegant-hugle-53926c.netlify.com"
         X-Forwarded-Proto = "https"
 
 [[redirects]]
