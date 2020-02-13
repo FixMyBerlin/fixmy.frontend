@@ -3,7 +3,8 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { HTTPError } from 'ky';
 
-import reducer, { actions, initialState, types } from '../OverviewMapState';
+import reducer, { actions, types } from '../OverviewMapState';
+import reportsInitialState from '../initialState';
 import { types as errorStateTypes } from '../ErrorState';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import reportSample from './mocks/reportsSample';
@@ -20,6 +21,8 @@ const mockFetchReports = () => {
     headers: { 'content-type': 'application/json' }
   });
 };
+
+const initialState = reportsInitialState.OverviewMapState;
 
 describe('OverviewMapState reducer and actions', () => {
   test.only('returns the initial state for an empty action', () => {
