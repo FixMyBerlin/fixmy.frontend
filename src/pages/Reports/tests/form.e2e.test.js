@@ -227,7 +227,7 @@ describe('The reports submission form', () => {
     });
   });
 
-  describe.only('continuing on the last page', () => {
+  describe('continuing on the last page', () => {
     before(() => {
       cy.server()
         .route('POST', '**/reports')
