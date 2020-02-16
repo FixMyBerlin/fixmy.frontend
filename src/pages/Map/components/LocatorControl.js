@@ -43,7 +43,6 @@ const userFeedback = oneLine`Wenn Du Dich orten willst, musst Du einer Ortung zu
 
 const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isGeolocationDenied, setIsGeolocationDenied] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const onLocateSuccess = (geoPosition) => {
@@ -60,7 +59,6 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
   const onLocateError = ({ code, message }) => {
     logger(message);
     if (code === locateErrors.PERMISSION_DENIED) {
-      setIsGeolocationDenied(true);
       setIsError(true);
     }
   };
@@ -88,10 +86,7 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
       )}
 
       <MapControl position={position} customPosition={customPosition}>
-        <LocatorButton
-          disabled={isLoading || isGeolocationDenied}
-          onClick={locate}
-        >
+        <LocatorButton disabled={isLoading} onClick={locate}>
           {Icon}
         </LocatorButton>
       </MapControl>
