@@ -14,7 +14,7 @@ import config from '~/pages/Map/config';
 import * as MapActions from '~/pages/Map/MapState';
 import ProjectMarkers from '~/pages/Map/components/ProjectMarkers';
 import {
-  toggleVisibleHbiLines,
+  colorizeHbiLines,
   animateView,
   setView,
   toggleLayer,
@@ -171,11 +171,7 @@ class Map extends PureComponent {
     );
 
     if (isZustand) {
-      toggleVisibleHbiLines(
-        this.map,
-        this.props.hbi_values,
-        this.props.filterHbi
-      );
+      colorizeHbiLines(this.map, this.props.hbi_values, this.props.filterHbi);
     }
 
     setPlanningLegendFilter(this.map, this.props.filterPlannings);

@@ -179,7 +179,6 @@ const Email = (props) => {
             onChange={(evt) => handleUpdate(evt.target.value)}
             value={email}
             css={{ marginBottom: '2em' }}
-            data-cy="kat-emailcheckboxes-input"
           />
 
           {newsletterOptions.map((option) => (
@@ -205,16 +204,11 @@ const Email = (props) => {
             disabled={!isEmailValid}
             onClick={onClick}
             isLoading={isLoading}
-            data-cy="kat-emailcheckboxes-submit-btn"
           >
             Absenden
           </Button>
 
-          <GhostButton
-            css={{ marginTop: 'auto' }}
-            onClick={props.next}
-            data-cy="kat-emailcheckboxes-proceed-btn"
-          >
+          <GhostButton css={{ marginTop: 'auto' }} onClick={props.next}>
             Weiter in der Umfrage
           </GhostButton>
         </Flex>

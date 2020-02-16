@@ -7,16 +7,11 @@ Telefon: 030 / 549 08 665<br />
 
 Gesellschafter: Boris Hekele und Heiko Rintelen
 
+Verantwortlicher i.S.v. § 55 Rundfunkstaatsvertrag (RStV): Heiko Rintelen<br />
+
 Büroadresse: c/o CityLAB Berlin<br />
 Platz der Luftbrücke 4<br />
 12101 Berlin<br />
-
-Registergericht: Amtsgericht Berlin-Charlottenburg<br />
-Registernummer: HRB 205031 B
-
-Umsatzsteuer-Identifikationsnummer gem. § 27a UStG: DE323489466
-
-Verantwortlicher i.S.v. § 55 Rundfunkstaatsvertrag (RStV): Heiko Rintelen
 
 
 ## Feedback / Kontakt

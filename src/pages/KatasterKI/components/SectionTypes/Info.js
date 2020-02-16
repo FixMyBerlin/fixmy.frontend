@@ -22,11 +22,9 @@ const Headline = styled.h1`
 export default ({ title, next }) => {
   return (
     <Flex flexDirection="column" css={{ flexGrow: 1 }}>
-      <Headline data-cy="kat-info-heading">{title}</Headline>
+      <Headline>{title}</Headline>
       <Flex justifyContent="center">
-        <Button onClick={next} data-cy="kat-info-proceed-btn">
-          Weiter
-        </Button>
+        <Button onClick={next}>Weiter</Button>
       </Flex>
     </Flex>
   );

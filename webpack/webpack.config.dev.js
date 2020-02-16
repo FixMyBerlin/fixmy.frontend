@@ -20,8 +20,7 @@ module.exports = merge(common, {
     host: '0.0.0.0',
     publicPath: '/',
     clientLogLevel: 'silent',
-    hot: true,
-    stats: 'minimal'
+    hot: true
   },
   output: {
     chunkFilename: 'js/[name].chunk.js'

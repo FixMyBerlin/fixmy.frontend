@@ -21,11 +21,7 @@ const Sliders = ({
   const [isLoading, onClick] = useHandlerTimeout(next);
 
   return (
-    <Flex
-      flexDirection="column"
-      css={{ flexGrow: 1 }}
-      data-cy="kat-transport-rating-wrapper"
-    >
+    <Flex flexDirection="column" css={{ flexGrow: 1 }}>
       <QuestionTitle>{title}</QuestionTitle>
 
       {ratings.map((rating) => {
@@ -54,7 +50,6 @@ const Sliders = ({
           css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           disabled={!usedSlider}
           isLoading={isLoading}
-          data-cy="kat-transport-rating-proceed-btn"
         >
           Weiter
         </Button>

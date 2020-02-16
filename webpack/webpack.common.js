@@ -33,8 +33,7 @@ module.exports = {
       NODE_ENV: 'development',
       CONFIG_ENV: 'dev',
       BASE_NAME: '/', // base name of router history
-      KATASTER_PATH: '/strassencheck', // used as a base for the kataster app
-      REGION_ENV: 'berlin'
+      KATASTER_PATH: '/strassencheck' // used as a base for the kataster app
     })
   ],
   resolve: {

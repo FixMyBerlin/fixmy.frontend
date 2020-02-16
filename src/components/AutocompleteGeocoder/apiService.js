@@ -1,7 +1,5 @@
 import logger from '~/utils/logger';
-import config from '~/config';
-
-const mapConfig = config.map;
+import mapConfig from '~/config/map';
 
 let abortController = new window.AbortController();
 

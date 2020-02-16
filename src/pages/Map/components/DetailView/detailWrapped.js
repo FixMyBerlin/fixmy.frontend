@@ -224,7 +224,7 @@ function detailWrapped(Component) {
       }
 
       return (
-        <DetailWrapper data-cy="plannings-detail-wrapped">
+        <DetailWrapper>
           <DetailHeader>
             <StyledPinIcon />
             <div>

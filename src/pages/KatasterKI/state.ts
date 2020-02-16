@@ -203,19 +203,9 @@ export const testingDefaultState: State = {
   currentPerspective: Perspective.bicycle
 };
 
-// Either use a) a test state defined by cypress when this code runs in an e2e test
-// or b) use the testing- or productionDefaultState defined above.
-
-// extend the Window Interface to the namespaces declared in e2e tests.
-declare global {
-  interface Window {
-    Cypress: any;
-    initialState: State;
-  }
-}
-const defaultState =
-  (window.Cypress && window.initialState) ||
-  (config.debug ? testingDefaultState : productionDefaultState);
+const defaultState = config.debug
+  ? testingDefaultState
+  : productionDefaultState;
 
 export default function reducer(state: State = defaultState, action: Action) {
   switch (action.type) {

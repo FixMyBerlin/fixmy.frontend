@@ -3,7 +3,7 @@ const katasterPath = process.env.KATASTER_PATH || '';
 export default {
   projects: '/planungen',
   status: '/zustand',
-  analysis: '/analyse',
+  analyse: '/analyse',
   reports: {
     temporarily_forward_from_this_to_index: '/meldungen',
     index: '/meldungen/radbuegel/friedrichshain-kreuzberg',

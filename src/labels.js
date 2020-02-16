@@ -1,5 +1,4 @@
 import React from 'react';
-import config from '~/config';
 
 export const districts = [
   'Charlottenburg-Wilmersdorf',
@@ -17,7 +16,7 @@ export const districts = [
 ];
 
 export const homeLabels = {
-  title: `Hi, das ist ${config.siteTitle}`,
+  title: 'Hi, das ist FixMyBerlin',
   intro: (
     <>
       Nimm an unserer aktuellen Umfrage teil, dem Berliner Straßencheck. Hier

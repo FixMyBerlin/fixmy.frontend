@@ -129,16 +129,8 @@ class MapPopupWrapper extends PureComponent {
       this.props.showSubline;
 
     return (
-      <MapPopup
-        x={this.props.x}
-        y={this.props.y}
-        style={this.props.style}
-        data-cy="plannings-map-popup-wrapper"
-      >
-        <CloseBtn
-          onClick={this.props.onClose}
-          data-cy="plannings-map-popup-close-button"
-        />
+      <MapPopup x={this.props.x} y={this.props.y} style={this.props.style}>
+        <CloseBtn onClick={this.props.onClose} />
         <MapPopupLocation onClick={this.props.onClick}>
           <StyledPinIcon />
           <div>

@@ -40,7 +40,7 @@ const ProgressBar = ({ total, current }) => {
       {!isSmallScreen() && (
         <ProgressBarLabel>Fortschritt der Umfrage</ProgressBarLabel>
       )}
-      <ProgressWrapper data-cy="kat-progress-bar">
+      <ProgressWrapper>
         {stepRange.map((index) => (
           <ProgressStep
             css={{ width }}

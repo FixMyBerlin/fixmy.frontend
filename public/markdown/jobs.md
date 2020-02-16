@@ -33,6 +33,7 @@ Was Du mit­bringst
 - Erfah­run­gen in Social-Media-Arbeit oder Cam­pai­gning
 - Lei­den­schaft für gra­fi­sche oder text­li­che Kom­mu­ni­ka­tion
 - Du arbei­test gerne im Team und kom­mu­ni­zierst offen und direkt
+- Du bist ehr­lich, unter­stüt­zend und hast Freude dich in neue Auf­ga­ben ein­zu­ar­bei­ten
 
 ## Un­ser An­ge­bot
 

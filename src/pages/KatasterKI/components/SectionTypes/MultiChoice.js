@@ -97,7 +97,6 @@ export default ({ title, options, currentValue, handleChange, page, next }) => {
           onClick={onClick}
           css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           isLoading={isLoading}
-          data-cy="kat-multichoice-proceed-btn"
         >
           Weiter
         </Button>

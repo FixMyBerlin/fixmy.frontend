@@ -86,9 +86,7 @@ const Feedback = ({
           alignItems="center"
           flexDirection="column"
         >
-          <Button onClick={next} data-cy="kat-feedback-proceed-btn">
-            Mehr Situationen bewerten
-          </Button>
+          <Button onClick={next}>Mehr Situationen bewerten</Button>
           <CloseSurveyButton style={{ marginTop: 10 }} />
         </Flex>
 

@@ -190,11 +190,7 @@ const CallToAction = ({ labels }) => (
 
 const TOC = () => (
   <TOCWrapper>
-    <Button
-      as={Link}
-      to={`${config.routes.katasterKI.profileBase}/1`}
-      data-cy="kat-start-survey-btn"
-    >
+    <Button as={Link} to={`${config.routes.katasterKI.profileBase}/1`}>
       Umfrage beginnen
     </Button>
     <TOCText>

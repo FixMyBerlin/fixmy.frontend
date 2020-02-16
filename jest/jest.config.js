@@ -9,7 +9,7 @@ module.exports = {
   roots: ['<rootDir>/src'],
   testMatch: [
     '**/__tests__/**/*.+(ts|tsx|js)',
-    '**/?(*.)+(unit|integration).+(spec|test).+(ts|tsx|js)'
+    '**/?(*.)+(spec|test).+(ts|tsx|js)'
   ],
   transform: {
     '^.+\\.(js|jsx)?$': 'babel-jest',
