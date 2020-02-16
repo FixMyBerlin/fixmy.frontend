@@ -76,7 +76,7 @@ const OverviewMapNavBar = ({ heading }) => (
         <TinyEmailLink
           as="a"
           isMobile={!getIsDesktop()}
-          href={`mailto:${config.feedbackMail}?subject=Feedback zum Meldedialog`}
+          href={`mailto:${config.feedbackMail}?subject=Feedback zum Meldedialog ${config.reports.region}`}
         >
           Feedback zum Meldedialog?
         </TinyEmailLink>
@@ -91,7 +91,7 @@ OverviewMapNavBar.propTypes = {
 };
 
 OverviewMapNavBar.defaultProps = {
-  heading: 'Neue Fahrradbügel für Friedrichshain-Kreuzberg'
+  heading: `Neue Fahrradbügel für ${config.reports.region}`
 };
 
 export default OverviewMapNavBar;

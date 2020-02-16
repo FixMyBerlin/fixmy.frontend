@@ -96,7 +96,7 @@ const TopSection = ({ toUrl }) => (
       <StyledMenuButton whiteFill="true" />
       <img width="92px" src={FixMyLogo} alt="logo" />
       <StyledHeading>
-        Melde neue Fahrradbügel für Friedrichshain-Kreuzberg
+        Melde neue Fahrradbügel für {config.reports.region}
       </StyledHeading>
       <StyledButton className="wiggle">
         <StyledLink to={toUrl}>
