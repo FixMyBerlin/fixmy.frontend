@@ -70,7 +70,8 @@ class ProjectLike extends PureComponent {
   }
 
   updateLikes = async () => {
-    const res = await getLikes(this.props.url, this.props.token);
+    const url = `${config.apiUrl}/projects/${this.props.id}`;
+    const res = await getLikes(url, this.props.token);
     this.handleLikeResponse(res);
   };
 
@@ -81,7 +82,8 @@ class ProjectLike extends PureComponent {
       this.setState({ bouncy: true });
     }, 1);
 
-    const res = await likeDetail(this.props.url, this.props.token);
+    const url = `${config.apiUrl}/projects/${this.props.id}`;
+    const res = await likeDetail(url, this.props.token);
     this.handleLikeResponse(res);
   };
 
