@@ -64,14 +64,15 @@ BaseMap.propTypes = {
   onLoad: PropTypes.func,
   onMove: PropTypes.func,
   className: PropTypes.string,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node
 };
 
 BaseMap.defaultProps = {
   maxBounds: config.reports.overviewMap.maxBounds,
   onLoad: () => {},
   onMove: () => {},
-  className: ''
+  className: '',
+  children: null
 };
 
 export default BaseMap;

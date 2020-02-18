@@ -34,9 +34,13 @@ async function handleFetchReports(
   respType = 'json'
 ) {
   let response = {};
-  const headers = token ? { Authorization: `JWT ${token}` } : {};
+  const options = {
+    method,
+    timeout: 30 * 1000,
+    headers: token ? { Authorization: `JWT ${token}` } : {}
+  };
   try {
-    response = await ky(reportsEndpointUrl, { method, headers })[respType]();
+    response = await ky(reportsEndpointUrl, options)[respType]();
   } catch (e) {
     response.error = await e.response.json();
   }

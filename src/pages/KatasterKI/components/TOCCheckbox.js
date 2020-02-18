@@ -40,20 +40,11 @@ const CheckboxWrapper = styled.div`
 export default (props) => {
   const labelColor = props.labelColor || config.colors.darkbg;
   const TextBreak = isSmallScreen() ? ' ' : <br />;
-  const onClick = (evt) => {
-    if (!props.checked) {
-      evt.preventDefault();
-    }
-  };
 
   return (
     <>
       <ButtonWrapper>
-        <Button
-          as={Link}
-          to={`${config.routes.katasterKI.profileBase}/1`}
-          onClick={onClick}
-        >
+        <Button as={Link} to={`${config.routes.katasterKI.profileBase}/1`}>
           Umfrage beginnen
         </Button>
       </ButtonWrapper>
