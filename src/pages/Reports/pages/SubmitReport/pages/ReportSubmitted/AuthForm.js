@@ -221,7 +221,11 @@ class AuthForm extends Component {
           />
         )}
 
-        <GhostButton onClick={this.props.goToMap} style={{ marginTop: 25 }}>
+        <GhostButton
+          onClick={this.props.goToMap}
+          style={{ marginTop: 25 }}
+          data-cy="reports-submitted-anon-show-report"
+        >
           Meldung anzeigen
           <br />
           (weiter ohne Login)

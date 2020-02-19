@@ -1,10 +1,7 @@
 import reducer, { actions } from '../ErrorState';
+import reportsInitialState from '../initialState';
 
-const initialState = {
-  message: null,
-  proceedMessage: null,
-  proceedFunc: null
-};
+const initialState = reportsInitialState.ErrorState;
 
 describe('ErrorState reducer and actions', () => {
   it('returns the initial state for an empty action', () => {

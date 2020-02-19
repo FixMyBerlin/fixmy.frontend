@@ -1,4 +1,4 @@
-import { getByDataAttr } from '~/../cypress/support/utils';
+import { cyElem } from '~/../cypress/support/utils';
 import config from '~/config';
 
 describe('katasterKi scene rating', () => {
@@ -25,7 +25,7 @@ describe('katasterKi scene rating', () => {
           });
 
           it('contains an image that has loaded properly', () => {
-            getByDataAttr`kat-scene-image-wrapper`
+            cyElem('kat-scene-image-wrapper')
               .find('img')
               .should('be.visible')
               .and(($img) => {
@@ -66,7 +66,7 @@ describe('katasterKi scene rating', () => {
       });
 
       it('has a progressbar indicating a valid number of received ratings', () => {
-        getByDataAttr`kat-progress-vis-wrapper`
+        cyElem('kat-progress-vis-wrapper')
           .find('[data-cy=kat-progress-vis-value-label]')
           .should(($label) => {
             const text = +$label.text();
@@ -75,7 +75,7 @@ describe('katasterKi scene rating', () => {
       });
 
       it('links to the next scene', () => {
-        getByDataAttr`kat-feedback-proceed-btn`.click();
+        cyElem('kat-feedback-proceed-btn').click();
         cy.location('pathname').should(
           'eq',
           `${config.routes.katasterKI.scenesBase}/2`

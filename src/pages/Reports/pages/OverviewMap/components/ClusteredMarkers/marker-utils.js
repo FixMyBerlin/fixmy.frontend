@@ -14,6 +14,8 @@ function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   elInner.className = 'reports-cluster__inner';
   elInner.innerHTML = pointCount;
 
+  el.dataset.cy = 'reports-marker-cluster';
+
   el.appendChild(elInner);
 
   if (pointCount >= 10) {
@@ -54,6 +56,8 @@ function createPinMarker({
   el.style.opacity = 1;
   el.style.width = '40px';
   el.style.height = 'auto';
+
+  el.dataset.cy = 'reports-marker';
 
   if (selectedReport || detailId) {
     const activeId = selectedReport ? selectedReport.id : detailId;

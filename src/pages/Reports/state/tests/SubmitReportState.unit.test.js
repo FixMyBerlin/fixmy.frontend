@@ -6,9 +6,9 @@ import reducer, {
   actions,
   types,
   selectors,
-  initialState,
   LOCATION_MODE_GEOCODING
 } from '../SubmitReportState';
+import reportsInitialState from '../initialState';
 import { worldWidePolygon, nullIslandPolygonFeature } from './mocks/geometries';
 import mockedReportItem from './schemaValidation/newReport-jsonSchema-testObject.json';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
@@ -25,6 +25,8 @@ const getGlobalState = (submitReportState) => ({
     SubmitReportState: submitReportState
   }
 });
+
+const initialState = reportsInitialState.SubmitReportState;
 
 describe('SubmitReportState reducer and actions', () => {
   describe('LocateMeMap', () => {

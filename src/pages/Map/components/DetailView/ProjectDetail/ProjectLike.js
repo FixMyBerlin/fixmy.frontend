@@ -119,12 +119,15 @@ class ProjectLike extends PureComponent {
 
     return (
       <LikeButtonWrapper>
-        <Label bold>{count}</Label>
+        <Label bold data-cy="map-detail-likes-count">
+          {count}
+        </Label>
         <LikeButton
           isLiked={userLike}
           disabled={!token}
           onClick={this.handleClick}
           bouncy={bouncy}
+          data-cy="map-detail-likes-button"
         >
           <HeartIcon />
         </LikeButton>

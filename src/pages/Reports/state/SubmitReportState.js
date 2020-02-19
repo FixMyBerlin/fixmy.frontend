@@ -8,6 +8,7 @@ import {
   marshallNewReportObjectFurSubmit
 } from '~/pages/Reports/apiservice';
 import { actions as errorStateActions } from './ErrorState';
+import initialState from './initialState';
 
 // action constants
 
@@ -195,41 +196,14 @@ actions.submitReport = () => async (dispatch, getState) => {
 
 // reducer
 
-const initialState = {
-  locationMode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
-  deviceLocation: null, // { lng, lat}
-  geocodeResult: null, // { coords, address}
-  reverseGeocodeResult: null,
-  tempLocation: {
-    // fostered when the user searches a suitable location for a report. when confirmed, props get attached to the newReport item
-    lngLat: null, // { lng, lat}
-    address: '', // reverse-geocoding result
-    pinned: false, // true when the user has confirmed the location he set using the map
-    valid: true // set to false when a location is outside the area of interest
-  },
-  apiRequestStatus: {
-    submitting: false, // set true during submission of the report item to the api
-    submitted: false // set true on submit success
-  },
-  newReport: {
-    // instance of json schema agreed upon
-    address: null, // address string
-    geometry: {}, // GeoJson point feature
-    details: {
-      subject: 'BIKE_STANDS',
-      number: null, // number of bikestands
-      fee_acceptable: null // if the user would pay for managed parking
-    },
-    photo: null, // jpeg in base64
-    description: null // textual description of the problem / potential site
-  }
-};
-
-function reducer(state = initialState, action = {}) {
+function reducer(state = initialState.SubmitReportState, action = {}) {
   switch (action.type) {
     case types.RESET_DIALOG_STATE:
       //  keep locationMode in order to display the map after user clicked "Ort ändern"
-      return { ...initialState, locationMode: state.locationMode };
+      return {
+        ...initialState.SubmitReportState,
+        locationMode: state.locationMode
+      };
     case types.SET_DEVICE_LOCATION:
       return { ...state, deviceLocation: action.payload };
     case types.GEOCODE_COMPLETE:

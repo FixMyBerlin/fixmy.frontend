@@ -25,6 +25,7 @@ async function handleRequest(
       await ky(`${config.apiUrl}/${route}`, { method, json, headers });
     }
   } catch (e) {
+    if (e.response.json == null) throw e;
     const error = await e.response.json();
     setErrors(error);
     response.error = error;

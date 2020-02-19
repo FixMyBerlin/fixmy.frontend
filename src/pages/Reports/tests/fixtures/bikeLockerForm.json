@@ -1,0 +1,51 @@
+{
+  "ErrorState": {
+    "message": null,
+    "proceedMessage": null,
+    "proceedFunc": null
+  },
+  "OverviewMapState": {
+    "reports": [],
+    "selectedReport": null,
+    "selectedReportPosition": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "SubmitReportState": {
+    "locationMode": "GEOCODING",
+    "deviceLocation": null,
+    "geocodeResult": {
+      "lng": 13.386379,
+      "lat": 52.489505
+    },
+    "reverseGeocodeResult": null,
+    "tempLocation": {
+      "lngLat": {
+        "lng": 13.386379,
+        "lat": 52.489505
+      },
+      "address": "Mehringdamm 1, 10965 Berlin",
+      "pinned": false,
+      "valid": true
+    },
+    "apiRequestStatus": {
+      "submitting": false,
+      "submitted": false
+    },
+    "newReport": {
+      "address": "Mehringdamm 1, 10965 Berlin",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [13.386379, 52.489505]
+      },
+      "details": {
+        "subject": "BIKE_STANDS",
+        "number": 1,
+        "fee_acceptable": null
+      },
+      "photo": null,
+      "description": "Test-Kommentärchen"
+    }
+  }
+}

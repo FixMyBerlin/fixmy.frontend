@@ -5,6 +5,7 @@
 // commands get prefixed with `fmp` to clarify their origin when consumed
 import config from '~/config';
 import { productionDefaultState } from '~/pages/KatasterKI/state';
+import { login } from '~/pages/User/UserState';
 
 // TODO: handle the issue that augmenting the cy object with the methods below leads to linting errors
 
@@ -38,6 +39,18 @@ Cypress.Commands.add('fmbGoToProfile', (profile = 1) => {
   });
 });
 
+Cypress.Commands.add('visitWithState', (route, state = null) => {
+  cy.visit(route, {
+    onBeforeLoad: (win) => {
+      if (state != null) {
+        // eslint-disable-next-line no-param-reassign
+        win.initialState = state;
+      }
+    }
+  });
+  // if (cy.url() !== route) cy.window().then((win) => win.appHistory.push(route));
+});
+
 Cypress.Commands.add('fmbReturnToScene', (scene = 1) => {
   cy.visit(`${config.routes.katasterKI.scenesBase}/${scene}`);
 });
@@ -57,8 +70,33 @@ Cypress.Commands.add('fmbGoToScene', (scene = 1) => {
   });
 });
 
+/**
+ * Login a user with credentials defined in Cypress config and dispatch login
+ */
+Cypress.Commands.add('fmbLogin', () => {
+  const credentials = {
+    username: Cypress.env('username'),
+    password: Cypress.env('password')
+  };
+  // mock form functions expected by login function
+  const formFunctions = {
+    setSubmitting: () => null,
+    setErrors: (err) => {
+      throw new Error(err);
+    },
+    setStatus: () => null
+  };
+  cy.window()
+    .its('store')
+    .as('store');
+  cy.get('@store').then((store) =>
+    login(credentials, formFunctions)(store.dispatch)
+  );
+});
+
 // Fix for Cypress not supporting to wait for `fetch` requests
 // https://github.com/cypress-io/cypress/issues/95#issuecomment-570098957
+// MIT License per https://github.com/cypress-io/cypress/blob/develop/LICENSE
 Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
   const opts = {
     ...options,
@@ -73,3 +111,21 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
   };
   return originalFn(url, opts);
 });
+
+// mock a geo location request
+// https://github.com/cypress-io/cypress/issues/2671#issuecomment-564796821
+// MIT License per https://github.com/cypress-io/cypress/blob/develop/LICENSE
+Cypress.Commands.add(
+  'mockGeolocation',
+  (latitude = 52.490064, longitude = 13.38694) => {
+    return cy.window().then(($window) => {
+      return cy.stub(
+        $window.navigator.geolocation,
+        'getCurrentPosition',
+        (callback) => {
+          return callback({ coords: { latitude, longitude } });
+        }
+      );
+    });
+  }
+);

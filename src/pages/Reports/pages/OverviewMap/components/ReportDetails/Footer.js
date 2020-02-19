@@ -18,6 +18,7 @@ const DetailsFooter = ({ token, reportId }) => (
       url={`${config.apiUrl}/reports/${reportId}`}
       id={reportId}
       itemType="Meldung"
+      data-cy="reports-detail-likes"
     />
   </Footer>
 );

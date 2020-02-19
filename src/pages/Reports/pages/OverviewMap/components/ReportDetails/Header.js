@@ -50,7 +50,7 @@ const ReportPin = styled.img.attrs({
 
 const DetailsHeader = ({ details: { number }, status }) => (
   <>
-    <HeadlineSection>
+    <HeadlineSection data-cy="reports-detail-title">
       <Heading alignLeft>
         {number} neue{number === 1 ? 'r' : null} Fahrradbügel gewünscht
       </Heading>
@@ -61,7 +61,7 @@ const DetailsHeader = ({ details: { number }, status }) => (
     </HeadlineSection>
 
     <StatusIndicatorWrapper>
-      <StatusIndicator>
+      <StatusIndicator data-cy="reports-detail-status">
         Status: {getReportStatusCaption(status)}
       </StatusIndicator>
       <ReportPin />

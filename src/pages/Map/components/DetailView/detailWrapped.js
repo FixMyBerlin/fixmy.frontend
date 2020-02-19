@@ -224,14 +224,21 @@ function detailWrapped(Component) {
       }
 
       return (
-        <DetailWrapper data-cy="plannings-detail-wrapped">
+        <DetailWrapper data-cy="map-details-wrapper">
           <DetailHeader>
             <StyledPinIcon />
             <div>
-              <DetailTitle>{this.renderName(data)}</DetailTitle>
-              <Label uppercase>{subtitle || borough}</Label>
+              <DetailTitle data-cy="map-details-header-title">
+                {this.renderName(data)}
+              </DetailTitle>
+              <Label uppercase data-cy="map-details-header-subtitle">
+                {subtitle || borough}
+              </Label>
             </div>
-            <Close onClick={this.onClose} />
+            <Close
+              onClick={this.onClose}
+              data-cy="map-details-header-close-button"
+            />
           </DetailHeader>
           {showShadow ? <Shadow /> : null}
           <DetailBody>

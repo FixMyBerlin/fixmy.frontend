@@ -51,6 +51,7 @@ class BaseMap extends PureComponent {
         ref={(ref) => {
           this.root = ref;
         }}
+        data-cy="reports-basemap"
       >
         {Loader}
         {this.props.children}

@@ -1,4 +1,4 @@
-import { getByDataAttr } from '~/../cypress/support/utils';
+import { cyElem } from '~/../cypress/support/utils';
 import { clickRandomMarker, goToProjects } from './utils';
 
 const adressRegex = new RegExp("[A-Za-z0-9'\\.\\-\\s\\,]");
@@ -13,24 +13,24 @@ describe('Planings Section', () => {
       });
 
       it('is visible', () => {
-        getByDataAttr`plannings-map-popup-wrapper`.should('be.visible');
+        cyElem('map-popup-wrapper').should('be.visible');
       });
 
       it('contains an address heading', () => {
-        getByDataAttr`section-title`
+        cyElem('section-title')
           .invoke('text')
           .should('match', adressRegex);
       });
 
       it('closes the popup on close button click', () => {
-        getByDataAttr`plannings-map-popup-close-button`.click();
-        getByDataAttr`plannings-map-popup-wrapper`.should('not.be.visible');
+        cyElem('map-popup-close-button').click();
+        cyElem('map-popup-wrapper').should('not.be.visible');
       });
 
       it('opens the the detail fold-out on "Mehr Infos" click', () => {
         clickRandomMarker(); // popup got closed in the step before, re-open it.
-        getByDataAttr`plannings-more-info-btn`.click();
-        getByDataAttr`plannings-detail-wrapped`.should('be.visible');
+        cyElem('plannings-more-info-btn').click();
+        cyElem('map-details-wrapper').should('be.visible');
       });
     });
   });

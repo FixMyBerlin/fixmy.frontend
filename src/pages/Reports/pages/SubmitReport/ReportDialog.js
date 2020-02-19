@@ -35,7 +35,7 @@ class ReportDialog extends PureComponent {
   componentDidMount() {
     this.props.resetDialogState();
     // prevent loading the dialog with a step > 1
-    if (+this.props.match.params.step > 1) {
+    if (+this.props.match.params.step > 1 && config.debug === false) {
       this.navigateDialog(1);
     }
   }

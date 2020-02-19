@@ -37,7 +37,7 @@ const Box = styled.div`
 `;
 
 const HelpText = ({ text }) => (
-  <Box>
+  <Box data-cy="reports-map-help">
     <span>{text}</span>
   </Box>
 );
