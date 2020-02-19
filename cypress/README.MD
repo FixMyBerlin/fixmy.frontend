@@ -85,7 +85,7 @@ The following way worked for me, there surely are smarter ways.
 2. Start the dev server, then run `npm run cypress -- run --browser chrome` in another console / run window
    This will launch chrome with open dev tools which should stop at the entered break point.
 
-## 4. I don't like where Cypress opens the Chrome browwser window. Can I change it?
+## 4. I don't like where Cypress opens the Chrome browser window. Can I change it?
 
 Yes, you can use the environment variable `CYPRESS_BROWSER_WINDOW` to control the
 position and size of the window. For example with
@@ -94,7 +94,7 @@ position and size of the window. For example with
 $ CYPRESS_BROWSER_WINDOW="1920,1080;1920,0" npm run test:e2e-chrome
 ```
 
-you can start the integration test suite and run it in browser windows of size
+You can start the integration test suite and run it in browser windows of size
 1920x1080 which start at x=1920 y=0 on the screen.
 
 Caveat: Enabling this option will also direct Chrome to use a user data directory at
