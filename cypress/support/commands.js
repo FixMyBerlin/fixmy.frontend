@@ -39,7 +39,7 @@ Cypress.Commands.add('fmbGoToProfile', (profile = 1) => {
   });
 });
 
-Cypress.Commands.add('navigateTo', (route, state = null) => {
+Cypress.Commands.add('visitWithState', (route, state = null) => {
   cy.visit(route, {
     onBeforeLoad: (win) => {
       if (state != null) {
