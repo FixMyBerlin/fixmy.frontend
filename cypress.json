@@ -7,9 +7,5 @@
   "env": {
     "username": "integration_test_user",
     "password": "test1234"
-  },
-  "chrome": {
-    "windowSize": "1920,1080",
-    "windowPosition": "1920,0"
   }
 }
