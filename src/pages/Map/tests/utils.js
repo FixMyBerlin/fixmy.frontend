@@ -5,7 +5,7 @@ import config from '~/config';
  */
 const goToProjects = () => {
   cy.server()
-    .route('**/projects?page_size=200')
+    .route('**/projects?page_size=500')
     .as('getProjects');
   cy.visit(config.routes.projects)
     .wait('@getProjects')
