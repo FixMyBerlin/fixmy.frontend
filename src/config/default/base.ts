@@ -13,7 +13,6 @@ const baseConfig = {
     process.env.API_URL ||
     apiEndpoints[process.env.CONFIG_ENV] ||
     apiEndpoints.production,
-  region: process.env.REGION || 'berlin',
   feedbackMail: 'feedback@fixmyberlin.de',
   siteTitle: 'FixMyBerlin',
   logger: 'fmc*', // selects logging namespaces to display when not in production

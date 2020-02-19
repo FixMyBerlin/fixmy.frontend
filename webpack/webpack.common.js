@@ -1,5 +1,3 @@
-// const dotenvResult = require('dotenv').config({ debug: true });
-
 const Path = require('path');
 const Webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -13,8 +11,6 @@ const FAVICONS_PATH =
   process.env.KATASTER_PATH != null
     ? '../src/pages/KatasterKI/favicons'
     : '../favicons';
-
-// if (dotenvResult.error) throw dotenvResult.error;
 
 module.exports = {
   entry: {
