@@ -30,7 +30,7 @@ module.exports = {
       { from: Path.resolve(__dirname, FAVICONS_PATH) },
       { from: Path.resolve(__dirname, '../public/data'), to: 'data' }
     ]),
-    new Dotenv({ defaults: true })
+    new Dotenv({ defaults: true, systemvars: true })
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
