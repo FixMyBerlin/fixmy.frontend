@@ -4,7 +4,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const defaultBaseName = '/';
-const defaultEntryPoint = '../src/index.js';
 
 const FAVICONS_PATH =
   process.env.KATASTER_PATH != null
@@ -13,7 +12,11 @@ const FAVICONS_PATH =
 
 module.exports = {
   entry: {
-    app: Path.resolve(__dirname, process.env.ENTRY_POINT || defaultEntryPoint)
+    App: Path.resolve(__dirname, '../src/index.js'),
+    Analysis: Path.resolve(__dirname, '../src/pages/Analysis/index.js'),
+    KatasterKI: Path.resolve(__dirname, '../src/pages/KatasterKI/index.js'),
+    Plannings: Path.resolve(__dirname, '../src/pages/Map/index.js'),
+    Reports: Path.resolve(__dirname, '../src/pages/Reports/index.js')
   },
   output: {
     path: Path.join(__dirname, '../build'),
