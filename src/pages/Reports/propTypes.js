@@ -31,7 +31,6 @@ const report = PropTypes.shape({
   geometry,
   id: PropTypes.number.isRequired,
   likes: PropTypes.number.isRequired,
-  liked_by_user: PropTypes.bool.isRequired,
   modified_date: PropTypes.string.isRequired,
   photo: PropTypes.shape({
     copyright: PropTypes.string,
