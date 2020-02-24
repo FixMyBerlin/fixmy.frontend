@@ -25,7 +25,9 @@ async function request(
   const [useSetSubmitting, useSetErrors] = [setSubmitting, setErrors].map(isFunction);
 
   let response = {};
-  useSetSubmitting && setSubmitting(true);
+  if (useSetSubmitting) {
+    setSubmitting(true);
+  }
 
   const headers = token ? { Authorization: `JWT ${token}` } : {};
 
@@ -42,26 +44,28 @@ async function request(
   } catch (e) {
     if (e.response.json == null) throw e;
     const error = await e.response.json();
-    useSetErrors && setErrors(error);
+    if (useSetErrors) {
+      setErrors(error);
+    }
     response.error = error;
   }
 
-  useSetSubmitting && setSubmitting(false);
+  if (useSetSubmitting) {
+    setSubmitting(false);
+  }
   return response;
 }
 
-export async function get() {
-
+export async function get(route, payloadOptions, ...args) {
+  const mergedOptions = { ...payloadOptions, method: 'get' };
+  return request(route, mergedOptions, ...args);
 }
 
-export async function patch() {
-
+export async function post(...args) {
+  return request(...args);
 }
 
-export async function patch() {
-
-}
-
-export async function patch() {
-
+export async function patch(route, payloadOptions, ...args) {
+  const mergedOptions = { ...payloadOptions, method: 'patch' };
+  return request(mergedOptions)
 }
