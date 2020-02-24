@@ -72,3 +72,9 @@ export function getRVALength({ length, side, id }) {
 }
 
 export const isTouch = 'ontouchstart' in window;
+
+export function isFunction(functionToCheck) {
+  return (
+    functionToCheck && {}.toString.call(functionToCheck) === '[object Function]'
+  );
+}
