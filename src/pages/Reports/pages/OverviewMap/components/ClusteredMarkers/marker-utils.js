@@ -1,9 +1,27 @@
 import MapboxGL from 'mapbox-gl';
 
-import BikeStandMarker from '~/images/reports/pin-meldung.png';
+import MarkerNeutral from '~/images/reports/pin-meldung.png';
+import MarkerNew from '~/images/reports/pin-meldung-yellow.png';
 
-const ICONS = {
-  BIKE_STANDS: BikeStandMarker
+import logger from '~/utils/logger';
+
+const ICONS_BY_STATUS = {
+  new: MarkerNew,
+  verification: MarkerNeutral,
+  accepted: MarkerNeutral,
+  rejected: MarkerNeutral,
+  done: MarkerNeutral
+};
+
+/**
+ * Returns a marker image source depending on report status
+ *
+ * @param {Object} markerData containing the status field
+ */
+const getMarkerSrc = (markerData) => {
+  const { status } = markerData;
+  if (status == null) logger('Record is missing status:', markerData);
+  return ICONS_BY_STATUS[status];
 };
 
 function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
@@ -70,9 +88,9 @@ function createPinMarker({
 
   const updatedMarkerData = { ...markerData, geometry, details };
 
-  el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${
-    ICONS[details.subject]
-  }" />`;
+  el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${getMarkerSrc(
+    markerData
+  )}" />`;
   el.addEventListener('click', (evt) => onClick(evt, updatedMarkerData));
 
   return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -20]);
