@@ -23,14 +23,27 @@ const BackgroundMap = styled.div`
   background-position: center center;
 `;
 
+let content;
+if (config.region === 'berlin') {
+  content = <Berlin />;
+} else if (config.region === 'bonn') {
+  content = <Bonn />;
+} else {
+  content = (
+    <>
+      <h1>Fehlende Konfiguration</h1>
+      <p>
+        Die Region <em>{config.region}</em> wurde noch nicht angelegt.
+      </p>
+    </>
+  );
+}
+
 export default () => (
   <>
     <ContentOverlay>
       <MenuButton />
-      <HomeContent>
-        {config.region === 'berlin' && <Berlin />}
-        {config.region === 'bonn' && <Bonn />}
-      </HomeContent>
+      <HomeContent>{content}</HomeContent>
     </ContentOverlay>
     <BackgroundMap />
   </>
