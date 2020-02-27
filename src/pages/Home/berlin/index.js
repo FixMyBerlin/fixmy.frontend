@@ -62,13 +62,12 @@ const labels = {
   title: `Hi, das ist ${config.siteTitle}`,
   intro: (
     <>
-      Nimm an unserer aktuellen Umfrage teil, dem Berliner Straßencheck. Hier
-      kannst du uns sagen, wie die Berliner Straßen sicher für alle werden
-      können.
+      Auf der Planungskarte von FixMyBerlin siehst Du, was Berlin an Radwegen
+      plant.
     </>
   ),
   button: 'Worum geht es hier genau?',
-  reportsButton: 'Karte der Radbügelmeldungen',
+  reportsButton: 'Karte der Radbügelmeldungen in Friedrichshain-Kreuzberg',
   mapButton: 'Gehe zur Planungskarte',
   katasterButton: 'Umfrage beginnen'
 };
@@ -81,12 +80,12 @@ export default () => (
       <Text>{labels.intro}</Text>
     </div>
     <MapLinkWrapper>
-      <a href={config.tspKatasterURL}>
-        <BounceButton>{labels.katasterButton}</BounceButton>
-      </a>
       <Link to={config.routes.projects}>
-        <FeatureButton>{labels.mapButton}</FeatureButton>
+        <BounceButton>{labels.mapButton}</BounceButton>
       </Link>
+      <a href={config.tspKatasterURL}>
+        <FeatureButton>{labels.katasterButton}</FeatureButton>
+      </a>
       <Link to={config.routes.reports.map}>
         <FeatureButton>{labels.reportsButton}</FeatureButton>
       </Link>
