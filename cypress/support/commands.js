@@ -75,9 +75,14 @@ Cypress.Commands.add('fmbGoToScene', (scene = 1) => {
  */
 Cypress.Commands.add('fmbLogin', () => {
   const credentials = {
-    username: Cypress.env('username'),
-    password: Cypress.env('password')
+    username: Cypress.env('CYPRESS_USERNAME'),
+    password: Cypress.env('CYPRESS_PASSWORD')
   };
+  if (credentials.username == null || credentials.password == null) {
+    throw new Error(
+      'Credentials not defined: This test requires credentials for a test user account'
+    );
+  }
   // mock form functions expected by login function
   const formFunctions = {
     setSubmitting: () => null,
