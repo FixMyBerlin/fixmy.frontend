@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
-import ReportPinIcon from '~/images/reports/pin-meldung-yellow.png';
+import ReportPinIcon from '~/images/reports/pin-new.png';
 
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 

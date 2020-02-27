@@ -1,16 +1,19 @@
 import MapboxGL from 'mapbox-gl';
 
-import MarkerNeutral from '~/images/reports/pin-meldung.png';
-import MarkerNew from '~/images/reports/pin-meldung-yellow.png';
+import MarkerNew from '~/images/reports/pin-new.png';
+import MarkerVerification from '~/images/reports/pin-verification.png';
+import MarkerAccepted from '~/images/reports/pin-accepted.png';
+import MarkerRejected from '~/images/reports/pin-rejected.png';
+import MarkerDone from '~/images/reports/pin-done.png';
 
 import logger from '~/utils/logger';
 
 const ICONS_BY_STATUS = {
   new: MarkerNew,
-  verification: MarkerNeutral,
-  accepted: MarkerNeutral,
-  rejected: MarkerNeutral,
-  done: MarkerNeutral
+  verification: MarkerVerification,
+  accepted: MarkerAccepted,
+  rejected: MarkerRejected,
+  done: MarkerDone
 };
 
 /**
@@ -70,10 +73,7 @@ function createPinMarker({
   const el = document.createElement('div');
 
   el.dataset.id = markerData.id;
-  el.style.cursor = 'pointer';
-  el.style.opacity = 1;
-  el.style.width = '40px';
-  el.style.height = 'auto';
+  el.className = 'reports-marker';
 
   el.dataset.cy = 'reports-marker';
 
@@ -88,7 +88,7 @@ function createPinMarker({
 
   const updatedMarkerData = { ...markerData, geometry, details };
 
-  el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${getMarkerSrc(
+  el.innerHTML = `<img class="marker-image" src="${getMarkerSrc(
     markerData
   )}" />`;
   el.addEventListener('click', (evt) => onClick(evt, updatedMarkerData));

@@ -82,7 +82,10 @@ export default createGlobalStyle`
   }
 
   .reports-marker {
-    width: 47px;
+    width: 50px;
+    cursor: pointer;
+    opacity: 1;
+    height: auto;
 
     .marker-image {
       width: 100%;
