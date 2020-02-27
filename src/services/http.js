@@ -1,5 +1,4 @@
 import ky from 'ky';
-import config from '~/config';
 import { isFunction } from '~/utils/utils';
 
 /**
@@ -24,7 +23,7 @@ async function request(
 ) {
   const [useSetSubmitting, useSetErrors] = [setSubmitting, setErrors].map(isFunction);
 
-  let response = {};
+  let response;
   if (useSetSubmitting) {
     setSubmitting(true);
   }
@@ -32,14 +31,10 @@ async function request(
   const headers = token ? { Authorization: `JWT ${token}` } : {};
 
   try {
+    response = await ky(route, { method, json, headers });
+
     if (respType) {
-      response = await ky(`${config.apiUrl}/${route}`, {
-        method,
-        json,
-        headers
-      })[respType]();
-    } else {
-      await ky(`${config.apiUrl}/${route}`, { method, json, headers });
+      response = await response[respType]();
     }
   } catch (e) {
     if (e.response.json == null) throw e;
@@ -47,7 +42,7 @@ async function request(
     if (useSetErrors) {
       setErrors(error);
     }
-    response.error = error;
+    throw error;
   }
 
   if (useSetSubmitting) {
@@ -67,5 +62,5 @@ export async function post(...args) {
 
 export async function patch(route, payloadOptions, ...args) {
   const mergedOptions = { ...payloadOptions, method: 'patch' };
-  return request(mergedOptions)
+  return request(route, mergedOptions, ...args);
 }
