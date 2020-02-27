@@ -22,3 +22,6 @@ public/lab/assets/fonts/franklin_gothic_fs*
 
 # tests
 cypress/screenshots/*
+
+# configuration
+.env
