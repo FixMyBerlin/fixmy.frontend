@@ -1,19 +1,21 @@
-import httpRequest, { JSONValue, RequestConfig } from './httpRequest';
+/**
+ * Facilitates http request creation by
+ * - offering helper methods with simplified interfaces
+ * - offering to provide functions to hooking before/after the request or on error
+ * - enriching request data
+ */
+import httpRequest from './httpRequest';
 import store from '~/store';
-import { apiUrl } from '~/config';
-
-const compileAbsoluteRoute = (relativeRoute) => {
-  const url = new window.URL(relativeRoute, apiUrl)
-  return url.href;
-};
-const getToken = () => store.getState().UserState.token;
+import config from '~/config';
+import { ExtendedRequestConfig, JSONValue } from './types';
 
 // TODO: write tests
 
-interface ExtendedRequestConfig extends RequestConfig {
-  setSubmitting?: (boolean) => void;
-  setErrors?: (Error) => void;
-}
+const compileAbsoluteRoute = (relativeRoute) => {
+  const url = new window.URL(relativeRoute, config.apiUrl);
+  return url.href;
+};
+const getToken = () => store.getState().UserState.token;
 
 async function requestPlatform(params: ExtendedRequestConfig) {
   const absoluteRoute = compileAbsoluteRoute(params.route);
@@ -36,7 +38,6 @@ async function requestPlatform(params: ExtendedRequestConfig) {
     throw e;
   }
 }
-
 
 export function get(route: string) {
   return requestPlatform({ method: 'get', route });
