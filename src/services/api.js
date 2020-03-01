@@ -18,10 +18,10 @@ async function requestPlatform(
 ){
   const absoluteRoute = compileAbsoluteRoute(route);
   const token = getToken();
-  const [useSetSubmitting, useSetErrors] = [setSubmitting, setErrors].map(
+  const [hasSubmitFunc, hasErrorFunc] = [setSubmitting, setErrors].map(
     isFunction
   );
-  const toggleSetSubmitting = (status) => useSetSubmitting ?
+  const toggleSetSubmitting = (status) => hasSubmitFunc ?
     setSubmitting(status) : () => {};
 
   toggleSetSubmitting(true);
@@ -30,7 +30,7 @@ async function requestPlatform(
     toggleSetSubmitting(false);
     return response;
   } catch (e) {
-    if (useSetErrors) {
+    if (hasErrorFunc) {
       setErrors(e);
     }
     toggleSetSubmitting(false);
@@ -39,13 +39,13 @@ async function requestPlatform(
 }
 
 export function get(route, ...args) {
-  return httpRequest(route, 'get', ...args)
+  return requestPlatform(route, 'get', ...args)
 }
 
 export function post(route, ...args) {
-  return httpRequest(route, 'post', ...args)
+  return requestPlatform(route, 'post', ...args)
 }
 
 export function patch(route, ...args) {
-  return httpRequest(route, 'patch', ...args)
+  return requestPlatform(route, 'patch', ...args)
 }
