@@ -9,6 +9,7 @@ export interface RequestConfig {
   json?: JSONValue;
   token?: string;
   respType?: string;
+  timeout?: number;
 }
 
 export interface ExtendedRequestConfig extends RequestConfig {
