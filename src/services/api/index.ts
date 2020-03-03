@@ -1,60 +1,96 @@
 /**
  * Facilitates http request creation by
  * - offering helper methods with simplified interfaces
- * - offering to provide functions to hooking before/after the request or on error
- * - enriching request data
+ * - allowing to hook into before/after a request is made or if an error occurss
+ * - centralized error handling
  */
-import httpRequest from './httpRequest';
+import ky from 'ky';
 import store from '~/store';
 import config from '~/config';
-import { ExtendedRequestConfig, JSONValue } from './types';
+import { JSONValue, RequestConfig } from './types';
+import {
+  ApiError,
+  NetworkError,
+  QualifiedError,
+  TimeoutError
+} from './httpErrors';
 
-// TODO: Re-write
-// - Do not split api module use one method
-// - use ky.create to set up things like a baseUrl
-// - use ky hooks to set the token header
-// - allow setting fetch options from consumers (e.g. to allow changing the timeout)
+const api = ky.create({
+  prefixUrl: config.apiUrl,
+  hooks: {
+    beforeRequest: [
+      (req) => {
+        const stateRoot = store.getState();
+        const { token } = stateRoot.UserState;
+        if (token) {
+          req.headers.set('Authorization', `JWT ${token}`);
+        }
+      }
+    ]
+  }
+});
 
-const compileAbsoluteRoute = (relativeRoute: string): string => {
-  const url = new window.URL(relativeRoute, config.apiUrl);
-  return url.href;
-};
-const getToken = () => store.getState().UserState.token;
+async function request(
+  route: string,
+  requestConfig: RequestConfig
+): Promise<Response> {
+  let response;
 
-// TODO: document method purpose
-async function requestPlatform(params: ExtendedRequestConfig) {
-  const absoluteRoute = compileAbsoluteRoute(params.route);
-  const token = getToken();
-  const setSubmitting = params.setSubmitting || (() => {});
-  const setErrors = params.setErrors || (() => {});
+  const defaultOptions = {
+    setSubmitting: (...args) => {},
+    setErrors: (...args) => {},
+    method: 'get',
+    timeout: 30 * 1000
+  };
+  const options = { ...requestConfig, ...defaultOptions };
+  const { setSubmitting, setErrors, method } = options; // TODO: make sure setSubmitting and setErrors do not get passed to ky. factor out Preparation of options
 
   setSubmitting(true);
   try {
-    const requestOptions = {
-      ...params,
-      route: absoluteRoute,
-      token
-    };
-    const response = httpRequest(requestOptions);
+    const responseBody = await api(route, options);
+    response = await responseBody.json(); // TODO: do we have to mind other [body methods](https://developer.mozilla.org/en-US/docs/Web/API/Body#Methods) like form data?
     setSubmitting(false);
-    return response;
   } catch (e) {
     setErrors(e);
     setSubmitting(false);
-    throw e;
+    handleError(e);
+  }
+  return response;
+}
+
+function handleError(e) {
+  switch (e.constructor) {
+    case ky.HTTPError:
+      // a non 2xx error code was found
+      if (e.response.json) {
+        // API answered with a JSON elaborating the error
+        throw new QualifiedError(e);
+      } else {
+        throw new ApiError(e);
+      }
+    case ky.TimeoutError:
+      throw new TimeoutError(e);
+    default:
+      throw new NetworkError(e);
   }
 }
 
-// TODO: add return types to methods
-
-export function get(route: string) {
-  return requestPlatform({ method: 'get', route });
+export function get(route: string, options?: RequestConfig): Promise<Response> {
+  return request(route, { ...options, method: 'get' });
 }
 
-export function post(route: string, payload: JSONValue) {
-  return requestPlatform({ method: 'post', route, json: payload });
+export function post(
+  route: string,
+  payload: JSONValue,
+  options?: RequestConfig
+): Promise<Response> {
+  return request(route, { ...options, method: 'post', json: payload });
 }
 
-export function patch(route: string, payload: JSONValue) {
-  return requestPlatform({ method: 'patch', route, json: payload });
+export function patch(
+  route: string,
+  payload: JSONValue,
+  options?: RequestConfig
+): Promise<Response> {
+  return request(route, { ...options, method: 'patch', json: payload });
 }
