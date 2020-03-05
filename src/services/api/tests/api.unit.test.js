@@ -2,14 +2,13 @@ import fetchMock from 'fetch-mock';
 import { Response } from 'node-fetch';
 import * as api from '../index';
 import config from '~/config'; // TODO: consider mocking this
-import QualifiedError, { TimeoutError } from '~/services/api/httpErrors';
+import QualifiedError from '~/services/api/httpErrors';
+
+import { combineURLs } from '~/services/api/utils';
 
 const globals = {
   testRoute: 'fakeEndpoint',
-  compileAbsoluteRoute: (relativeRoute) => {
-    const url = new window.URL(relativeRoute, config.apiUrl);
-    return url.href;
-  }
+  compileAbsoluteRoute: (relativeRoute) => combineURLs(config.apiUrl, relativeRoute)
 };
 
 describe('api module', () => {
@@ -46,18 +45,6 @@ describe('api module', () => {
       await expect(api.get(globals.testRoute)).rejects.toThrow(QualifiedError);
     });
 
-    it('throws a Timeout Error if the timeout is exceeded', async () => {
-      // this also proves that the timout can be configured by consumers of the api module TODO
-      fetchMock.get(
-        `end:${globals.testRoute}`,
-        new Promise((res) => setTimeout(() => res(200), 11))
-      );
-
-      await expect(
-        api.get(globals.testRoute, { timeout: 10 })
-      ).rejects.toThrow(TimeoutError);
-    });
-
     describe('successful POST requests', () => {
       it('can POST json data', async () => {
         const mockedPayload = { hello: 'world' };
@@ -66,9 +53,8 @@ describe('api module', () => {
         fetchMock.post(`end:${globals.testRoute}`, mockedResponse);
 
         const response = await api.post(globals.testRoute, mockedPayload);
-        const [url, fetchOptions] = fetchMock.lastCall();
+        const fetchOptions = fetchMock.lastOptions();
 
-        expect(url).toEqual(globals.testRoute);
         expect(fetchOptions.headers['content-type']).toContain('application/json');
         expect(fetchOptions.method).toEqual('POST');
 

@@ -74,8 +74,8 @@ function handleError(e) {
       } else {
         throw new ApiError(e);
       }
-    case ky.TimeoutError:
-      throw new TimeoutError(e);
+    // case ky.TimeoutError:
+
     default:
       throw new NetworkError(e);
   }
