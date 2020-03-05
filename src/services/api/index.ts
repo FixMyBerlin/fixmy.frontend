@@ -41,7 +41,7 @@ async function request(
     method: 'get',
     timeout: 30 * 1000
   };
-  const options = { ...requestConfig, ...defaultRequestOptions };
+  const options = { ...defaultRequestOptions, ...requestConfig };
 
   // prepare callback functions: if not defined, assign empty functions to facilitate invocation
   let setSubmitting = (...args) => {};
