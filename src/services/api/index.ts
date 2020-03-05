@@ -4,10 +4,10 @@
  * - allowing to hook into before/after a request is made or if an error occurss
  * - centralized error handling
  */
-import ky from 'ky';
+import ky, { Options as KyOptions } from 'ky';
 import store from '~/store';
 import config from '~/config';
-import { JSONValue, RequestConfig } from './types';
+import { Callbacks, JSONValue } from './types';
 import {
   ApiError,
   NetworkError,
@@ -15,7 +15,7 @@ import {
   TimeoutError
 } from './httpErrors';
 
-const api = ky.create({
+const configuredKy = ky.create({
   prefixUrl: config.apiUrl,
   hooks: {
     beforeRequest: [
@@ -32,23 +32,29 @@ const api = ky.create({
 
 async function request(
   route: string,
-  requestConfig: RequestConfig
+  requestConfig: KyOptions,
+  callbacks?: Callbacks
 ): Promise<Response> {
   let response;
 
-  const defaultOptions = {
-    setSubmitting: (...args) => {},
-    setErrors: (...args) => {},
+  const defaultRequestOptions = {
     method: 'get',
     timeout: 30 * 1000
   };
-  const options = { ...requestConfig, ...defaultOptions };
-  const { setSubmitting, setErrors, method } = options; // TODO: make sure setSubmitting and setErrors do not get passed to ky. factor out Preparation of options
+  const options = { ...requestConfig, ...defaultRequestOptions };
+
+  // prepare callback functions: if not defined, assign empty functions to facilitate invocation
+  let setSubmitting = (...args) => {};
+  let setErrors = (...args) => {};
+  if (callbacks) {
+    ({ setSubmitting, setErrors } = callbacks);
+  }
 
   setSubmitting(true);
   try {
-    const responseBody = await api(route, options);
-    response = await responseBody.json(); // TODO: do we have to mind other [body methods](https://developer.mozilla.org/en-US/docs/Web/API/Body#Methods) like form data?
+    const responseBody = await configuredKy(route, options);
+    // TODO: clarify if we have to mind other [body methods](https://developer.mozilla.org/en-US/docs/Web/API/Body#Methods) like form data?
+    response = await responseBody.json();
     setSubmitting(false);
   } catch (e) {
     setErrors(e);
@@ -75,14 +81,14 @@ function handleError(e) {
   }
 }
 
-export function get(route: string, options?: RequestConfig): Promise<Response> {
+export function get(route: string, options?: KyOptions): Promise<Response> {
   return request(route, { ...options, method: 'get' });
 }
 
 export function post(
   route: string,
   payload: JSONValue,
-  options?: RequestConfig
+  options?: KyOptions
 ): Promise<Response> {
   return request(route, { ...options, method: 'post', json: payload });
 }
@@ -90,7 +96,7 @@ export function post(
 export function patch(
   route: string,
   payload: JSONValue,
-  options?: RequestConfig
+  options?: KyOptions
 ): Promise<Response> {
   return request(route, { ...options, method: 'patch', json: payload });
 }
