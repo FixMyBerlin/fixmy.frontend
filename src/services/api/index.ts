@@ -4,7 +4,9 @@
  * - allowing to hook into before/after a request is made or if an error occurss
  * - centralized error handling
  */
-import ky, { Options as KyOptions } from 'ky';
+import ky, {
+  Options as KyOptions
+} from 'ky';
 import store from '~/store';
 import config from '~/config';
 import { Callbacks, JSONValue } from './types';
@@ -19,7 +21,7 @@ const configuredKy = ky.create({
   prefixUrl: config.apiUrl,
   hooks: {
     beforeRequest: [
-      (req) => {
+      (req: Request) => {
         const stateRoot = store.getState();
         const { token } = stateRoot.UserState;
         if (token) {
@@ -66,6 +68,9 @@ async function request(
 
 function handleError(e) {
   switch (e.constructor) {
+    // The whole Idea here is to translate errors reported by ky to a set of custom exceptions
+    // (https://dev.to/damxipo/custom-exceptions-with-js-3aoc) that we can use to make decisions
+    // on how to handle specific errors
     case ky.HTTPError:
       // a non 2xx error code was found
       if (e.response.json) {

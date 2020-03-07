@@ -20,12 +20,10 @@ describe('api module', () => {
     it('prefixes urls with the api base url defined in the app config', async () => {
       const mockedJsonResponse = { hello: 'world' };
       fetchMock.get(`end:${globals.testRoute}`, mockedJsonResponse);
-      // eslint-disable-next-line no-unused-vars
-      const result = await api.get(globals.testRoute);
+      await api.get(globals.testRoute);
       const [url] = fetchMock.lastCall();
       expect(url).toEqual(globals.compileAbsoluteRoute(globals.testRoute));
     });
-
 
     it('can GET json data', async () => {
       const mockedJsonResponse = { hello: 'world' };
