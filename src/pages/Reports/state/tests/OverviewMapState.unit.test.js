@@ -1,7 +1,7 @@
 import fetchMock from 'fetch-mock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { HTTPError } from 'ky';
+import ky from 'ky';
 
 import reducer, { actions, types } from '../OverviewMapState';
 import reportsInitialState from '../initialState';
@@ -93,7 +93,7 @@ describe('OverviewMapState reducer and actions', () => {
       errorStateTypes.ADD_ERROR
     )}`, () => {
       fetchMock.getOnce(reportsEndpointUrl, {
-        throws: new HTTPError('some error')
+        throws: ky.HTTPError('some error')
       });
       const expectedActionTypes = [
         // do not mind the action payloads here
