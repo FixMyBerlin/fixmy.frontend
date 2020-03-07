@@ -6,6 +6,8 @@
 const esModules = ['common-tags'];
 
 module.exports = {
+  setupFiles: ['dotenv/config'],
+
   roots: ['<rootDir>/src'],
   testMatch: [
     '**/__tests__/**/*.+(ts|tsx|js)',
