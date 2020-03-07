@@ -9,6 +9,8 @@ export class ApiError extends Error {
   }
 }
 
+// TODO: dig https://dev.to/damxipo/custom-exceptions-with-js-3aoc
+
 /**
  * The api has answered with an error description object.
  */
