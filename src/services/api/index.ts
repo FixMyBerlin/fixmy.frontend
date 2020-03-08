@@ -4,26 +4,21 @@
  * - allowing to hook into before/after a request is made or if an error occurss
  * - centralized error handling
  */
-import ky, {
-  Options as KyOptions
-} from 'ky';
-import store from '~/store';
+import ky, { Options as KyOptions } from 'ky';
 import config from '~/config';
-import { Callbacks, JSONValue } from './types';
-import {
-  ApiError,
-  NetworkError,
-  QualifiedError,
-  TimeoutError
-} from './httpErrors';
+import store from '~/store';
+import { BodyType, Callbacks, JSONValue } from './types';
+import { selectors as UserStateSelectors } from '~/pages/User/UserState';
+import { ApiError, NetworkError, QualifiedError, TimeoutError } from './httpErrors';
 
 const configuredKy = ky.create({
   prefixUrl: config.apiUrl,
   hooks: {
     beforeRequest: [
+      // load token directly from localStorage instead from store
       (req: Request) => {
         const stateRoot = store.getState();
-        const { token } = stateRoot.UserState;
+        const token = UserStateSelectors.getToken(stateRoot);
         if (token) {
           req.headers.set('Authorization', `JWT ${token}`);
         }
@@ -32,31 +27,36 @@ const configuredKy = ky.create({
   }
 });
 
-async function request(
+export async function request(
   route: string,
-  requestConfig: KyOptions,
-  callbacks?: Callbacks
+  requestConfig?: KyOptions,
+  callbacks?: Callbacks,
+  bodyType?: BodyType // defaults to json
 ): Promise<Response> {
   let response;
 
+  // prepare request options
   const defaultRequestOptions = {
     method: 'get',
     timeout: 30 * 1000
   };
-  const options = { ...defaultRequestOptions, ...requestConfig };
+  const options = { ...defaultRequestOptions, ...(requestConfig || {}) };
 
   // prepare callback functions: if not defined, assign empty functions to facilitate invocation
-  let setSubmitting = (...args) => {};
-  let setErrors = (...args) => {};
+  let setSubmitting = (...args) => {
+  };
+  let setErrors = (...args) => {
+  };
   if (callbacks) {
     ({ setSubmitting, setErrors } = callbacks);
   }
 
+  const bodyParseMethod = bodyType || 'json';
+
   setSubmitting(true);
   try {
     const responseBody = await configuredKy(route, options);
-    // TODO: clarify if we have to mind other [body methods](https://developer.mozilla.org/en-US/docs/Web/API/Body#Methods) like form data?
-    response = await responseBody.json();
+    response = await responseBody[bodyParseMethod]();
     setSubmitting(false);
   } catch (e) {
     setErrors(e);
@@ -71,16 +71,18 @@ function handleError(e) {
     // The whole Idea here is to translate errors reported by ky to a set of custom exceptions
     // (https://dev.to/damxipo/custom-exceptions-with-js-3aoc) that we can use to make decisions
     // on how to handle specific errors
+
     case ky.HTTPError:
       // a non 2xx error code was found
       if (e.response.json) {
         // API answered with a JSON elaborating the error
-        throw new QualifiedError(e);
+        const errorResponse = e.response.json();
+        throw new QualifiedError(errorResponse);
       } else {
         throw new ApiError(e);
       }
-    // case ky.TimeoutError:
-
+    case ky.TimeoutError:
+      throw new TimeoutError(e.message);
     default:
       throw new NetworkError(e);
   }
