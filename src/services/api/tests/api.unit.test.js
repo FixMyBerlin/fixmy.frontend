@@ -3,7 +3,7 @@ import { Response } from 'node-fetch';
 import * as api from '../index';
 import config from '~/config'; // TODO: consider mocking this
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
-import { QualifiedError, TimeoutError } from '~/services/api/httpErrors';
+import { NetworkError, QualifiedError, TimeoutError } from '~/services/api/httpErrors';
 import { combineURLs } from '~/services/api/utils';
 
 const globals = {
@@ -33,11 +33,14 @@ describe('api module', () => {
       // TODO: test request headers when the store contains a token
     });
 
-    describe('error handling', () => {
-      it('re-throws a meaningful error provided by the API', async () => {
+    describe('translation of errors into custom classes', () => {
+      it('translates an API error answer JSON, translates at re-throws it as custom QualifiedError instance', async () => {
         const testResponseBody = { detail: 'Nicht gefunden.' };
         const testResponseOptions = { status: 404, statusText: 'Not found' };
-        const errResponse = new Response(testResponseBody, testResponseOptions);
+        const errResponse = new Response(
+          JSON.stringify(testResponseBody),
+          testResponseOptions
+        );
         fetchMock.mock(`end:${globals.testRoute}`, errResponse);
 
         await expect(api.request(globals.testRoute)).rejects.toThrow(
@@ -45,28 +48,32 @@ describe('api module', () => {
         );
       });
 
-      it('throws a TimeoutError on request time out', async () => { // FIXME: this only runs in isolation
+      it('throws a custom TimeoutError on request time out', async () => {
         // this also proves that the request timeout can be specified at all
-        const delay = (response, after = 500) => () =>
+        const delayResponse = (response, after = 500) => () =>
           new Promise((resolve) => setTimeout(resolve, after)).then(
             () => response
           );
 
         // mock request timeout
-        fetchMock.mock(
-          `end:${globals.testRoute}`,
-          delay(408, 2)
-        ); // send '200' response after 2 millis
+        fetchMock.mock(`end:${globals.testRoute}`, delayResponse(408, 2)); // send '200' response after 2 millis
 
         await expect(
-          api.request(globals.testRoute, {timeout: 1})
+          api.request(globals.testRoute, { timeout: 1 })
         ).rejects.toThrow(TimeoutError);
       });
+
+      it('throws a custom NetworkError if the server does not answer', async () => {
+        fetchMock.mock(`end:${globals.testRoute}`, () => {
+          throw new Error('Connection error')
+        });
+
+        await expect(api.request(globals.testRoute)).rejects.toThrow(NetworkError);
+      })
     });
   });
 
   describe('GET requests', () => {
-
     it('can GET json data', async () => {
       const mockedJsonResponse = { hello: 'world' };
       fetchMock.get(`end:${globals.testRoute}`, mockedJsonResponse);
@@ -89,12 +96,11 @@ describe('api module', () => {
         );
         expect(fetchOptions.method).toEqual('POST');
 
-        expect(fetchOptions.body).toMatchObject(mockedPayload); // FIXME
+        expect(fetchOptions.body).toMatchObject(mockedPayload); // FIXME: this fails, seeked help https://github.com/sindresorhus/ky/issues/226#issuecomment-596752320
         expect(response).toEqual(mockedResponse);
       });
 
-      describe('error handling', () => {
-      });
+      describe('error handling', () => {});
     });
   });
 });
