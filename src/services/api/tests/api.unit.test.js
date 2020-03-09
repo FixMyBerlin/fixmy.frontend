@@ -96,7 +96,7 @@ describe('api module', () => {
         );
         expect(fetchOptions.method).toEqual('POST');
 
-        expect(fetchOptions.body).toMatchObject(mockedPayload); // FIXME: this fails, seeked help https://github.com/sindresorhus/ky/issues/226#issuecomment-596752320
+        expect(fetchOptions.body).toMatchObject(mockedPayload); // FIXME: this fails, seeked help https://github.com/wheresrhys/fetch-mock/issues/374
         expect(response).toEqual(mockedResponse);
       });
 
