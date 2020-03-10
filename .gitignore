@@ -4,6 +4,7 @@ node_modules
 # production
 build
 bundle.zip
+.env
 
 # misc
 .DS_Store
