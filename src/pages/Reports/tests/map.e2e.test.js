@@ -83,7 +83,11 @@ describe('The reports map', () => {
 
 describe('a report detail page', () => {
   before(() => {
-    expect(singleReportId).to.not.equal(null);
+    if (singleReportId == null) {
+      throw new Error(
+        'Report ID not defined: this test cannot be run in isolation'
+      );
+    }
     cy.server()
       .route(`**/reports/${singleReportId}`)
       .as('getReportSingle');
