@@ -120,8 +120,8 @@ export async function apiPasswordForgot(json, formFunctions) {
 export async function apiLikes(token, itemType = 'projects') {
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   let response = {};
-  const endpoint = `${config.apiUrl}/users/me/liked/${itemType}`;
-  const kyConfig = { method: 'GET', headers };
+  const endpoint = `${config.apiUrl}/users/me/liked/${itemType}?page_size=500`;
+  const kyConfig = { method: 'GET', headers, timeout: 20000 };
 
   try {
     response = await ky(endpoint, kyConfig).json();
