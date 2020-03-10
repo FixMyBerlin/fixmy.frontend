@@ -1,7 +1,7 @@
 import MapboxGL from 'mapbox-gl';
 
 // import MarkerNew from '~/images/reports/pin-new.png';
-import MarkerVerification from '~/images/reports/pin-verification.png';
+import MarkerVerification from '~/images/reports/pina-meldung@2x.png';
 import MarkerAccepted from '~/images/reports/pin-accepted.png';
 import MarkerRejected from '~/images/reports/pin-rejected.png';
 import MarkerDone from '~/images/reports/pin-done.png';
