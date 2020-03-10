@@ -1,6 +1,6 @@
 import MapboxGL from 'mapbox-gl';
 
-import MarkerNew from '~/images/reports/pin-new.png';
+// import MarkerNew from '~/images/reports/pin-new.png';
 import MarkerVerification from '~/images/reports/pin-verification.png';
 import MarkerAccepted from '~/images/reports/pin-accepted.png';
 import MarkerRejected from '~/images/reports/pin-rejected.png';
@@ -8,8 +8,10 @@ import MarkerDone from '~/images/reports/pin-done.png';
 
 import logger from '~/utils/logger';
 
+// The "new" marker is not used anymore and replaced by the verification marker
+// for now
 const ICONS_BY_STATUS = {
-  new: MarkerNew,
+  new: MarkerVerification,
   verification: MarkerVerification,
   accepted: MarkerAccepted,
   rejected: MarkerRejected,
