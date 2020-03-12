@@ -6,7 +6,6 @@
 const esModules = ['common-tags'];
 
 module.exports = {
-
   roots: ['<rootDir>/src'],
   testMatch: [
     '**/__tests__/**/*.+(ts|tsx|js)',
