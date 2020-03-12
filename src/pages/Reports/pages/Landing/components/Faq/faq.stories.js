@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `;
 
 export default {
-  title: 'FAQs',
+  title: 'Meldungen / Landing / FAQs',
   decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>]
 };
 
@@ -27,5 +27,5 @@ export const Entry = () => <FaqItem />;
 export const EntryOpen = () => <FaqItem open />;
 
 export const CustomContent = () => (
-  <FaqItem heading="Custom heading" text="Custom text" />
+  <FaqItem heading="Custom heading" text="Custom text" open />
 );
