@@ -7,7 +7,7 @@ import bgImage from '~/images/background.jpg';
 import config from '~/config';
 
 import Berlin from './berlin';
-import Bonn from './bonn';
+import Aachen from './aachen';
 
 const HomeContent = styled.div`
   text-align: center;
@@ -26,8 +26,8 @@ const BackgroundMap = styled.div`
 let content;
 if (config.region === 'berlin') {
   content = <Berlin />;
-} else if (config.region === 'bonn') {
-  content = <Bonn />;
+} else if (config.region === 'aachen') {
+  content = <Aachen />;
 } else {
   content = (
     <>

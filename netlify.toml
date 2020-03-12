@@ -19,13 +19,23 @@
         X-Forwarded-Proto = "https"
 
 [[redirects]]
-    from = "/api/bonn/next/*"
+    from = "/api/aachen/v1/*"
+    to = "https://fixmyplatform-fork.herokuapp.com/api/:splat"
+    status = 200
+    force = true
+    [redirects.headers]
+        X-From = "Netlify"
+        X-Forwarded-Host = "fixmyaachen.netlify.com"
+        X-Forwarded-Proto = "https"
+
+[[redirects]]
+    from = "/api/aachen/next/*"
     to = "https://fixmyplatform-develop-fork.herokuapp.com/api/:splat"
     status = 200
     force = true
     [redirects.headers]
         X-From = "Netlify"
-        X-Forwarded-Host = "elegant-hugle-53926c.netlify.com"
+        X-Forwarded-Host = "fixmyaachen-staging.netlify.com"
         X-Forwarded-Proto = "https"
 
 [[redirects]]

@@ -7,7 +7,7 @@ export default {
       type: 'link',
       label: 'Radbügelmeldung',
       icon: 'fixhere',
-      link: '/meldungen/radbuegel/bonn/landing',
+      link: '/meldungen/radbuegel/aachen/landing',
       border: true
     },
     {
@@ -16,7 +16,7 @@ export default {
     },
     {
       type: 'link',
-      label: 'Über FixMyBonn',
+      label: 'Über FixMyAachen',
       link: '/info',
       icon: 'info',
       border: true
