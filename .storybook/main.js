@@ -1,8 +1,7 @@
-const merge = require('webpack-merge');
-const common = require('../webpack/webpack.common.js');
+require('dotenv').config({ path: '../' });
 const path = require('path');
 
-const AppSourceDir = path.join(__dirname, '..', 'src');
+const AppSourceDir = path.resolve(__dirname, '..', 'src');
 
 /**
  * Replace Storybook's malfuncioning SVG rule with our working one
@@ -10,7 +9,14 @@ const AppSourceDir = path.join(__dirname, '..', 'src');
  * @param {Object} config with non-working SVG rule
  */
 const replaceSvgRule = (config) => {
-  const svgLoader = {
+  const svgRule = config.module.rules.find((rule) =>
+    'test.svg'.match(rule.test)
+  );
+  svgRule.exclude = [AppSourceDir];
+
+  config.module.rules.push({
+    test: /\.svg$/i,
+    include: [AppSourceDir],
     use: [
       'babel-loader',
       {
@@ -22,27 +28,25 @@ const replaceSvgRule = (config) => {
         }
       }
     ]
-  };
-
-  const svgRule = config.module.rules.find((rule) =>
-    'test.svg'.match(rule.test)
-  );
-  svgRule.exclude = [AppSourceDir];
-
-  config.module.rules.push({
-    test: /\.svg$/i,
-    include: [AppSourceDir],
-    use: [svgLoader]
   });
-  return config;
+};
+
+const configureTypeScript = (config) => {
+  config.resolve.extensions.push('.ts', '.tsx');
+  config.module.rules.push({
+    test: /\.tsx?$/,
+    use: [{ loader: 'babel-loader' }, { loader: 'ts-loader' }],
+    include: [AppSourceDir]
+  });
 };
 
 module.exports = {
   stories: ['../src/**/*.stories.[tj]s'],
   addons: ['@storybook/addon-actions', '@storybook/addon-links'],
   webpackFinal: (config) => {
-    const merged = merge(common, config);
-    const svgFixed = replaceSvgRule(config);
-    return merged;
+    config.resolve.alias['~'] = AppSourceDir;
+    configureTypeScript(config);
+    replaceSvgRule(config);
+    return config;
   }
 };
