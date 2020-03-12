@@ -180,16 +180,12 @@ export function loadLikes(itemType) {
     dispatch({ type: LOAD_LIKES, payload: { isLoading: true, userLikes: [] } });
 
     const { token } = getState().UserState;
-    const items = await apiLikes(token, itemType);
+    const res = await apiLikes(token, itemType);
 
-    if (!items.error) {
-      // @TODO: why is the API different for reports and plannings?
-      const result = itemType === 'projects' ? items.results : items;
-      const userLikes = result.filter((d) => d.liked_by_user);
-
+    if (!res.error) {
       dispatch({
         type: LOAD_LIKES_SUCCESS,
-        payload: { isLoading: false, userLikes }
+        payload: { isLoading: false, userLikes: res.results }
       });
     } else {
       dispatch({ type: LOAD_LIKES_FAIL, payload: { isLoading: false } });

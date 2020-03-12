@@ -87,7 +87,8 @@ Cypress.Commands.add('fmbLogin', () => {
   const formFunctions = {
     setSubmitting: () => null,
     setErrors: (err) => {
-      throw new Error(err);
+      cy.log('Error handling login:', err);
+      throw new Error('Error handling login:', err.message);
     },
     setStatus: () => null
   };
