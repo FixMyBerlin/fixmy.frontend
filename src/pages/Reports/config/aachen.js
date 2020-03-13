@@ -1,13 +1,13 @@
 export default {
   overviewMap: {
-    style: 'mapbox://styles/hejco/ck6969iav0iw11io0m8ykq1de',
+    style: 'mapbox://styles/hejco/ck7q440d50b6s1ip928c7zlbb',
     bounds: [
       [6.05, 50.71],
       [6.11, 50.82]
     ],
     maxBounds: [
-      [5.95, 50.5],
-      [6.2, 51]
+      [5.87, 50.5],
+      [6.5, 50.95]
     ]
   },
   locateMeMap: {
