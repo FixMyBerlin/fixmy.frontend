@@ -1,4 +1,6 @@
-require('dotenv').config();
+const path = require('path');
+
+const env = require('../../env.js');
 
 const wp = require('@cypress/webpack-preprocessor');
 const webpackOptions = require('../../webpack/webpack.config.dev.js');
@@ -17,9 +19,9 @@ const setAutoDevTools = (args) => args.push('--auto-open-devtools-for-tabs');
 // would run cypress tests with a window of size 1920x1080 with its upper left
 // corner at 1920,0 on the monitor.
 const setWindowPos = (args) => {
-  if (process.env.CYPRESS_BROWSER_WINDOW == null) return;
+  if (env.cypressBrowserWindow == null) return;
 
-  const [windowSize, windowPosition] = process.env.CYPRESS_BROWSER_WINDOW.split(
+  const [windowSize, windowPosition] = env.cypressBrowserWindow.split(
     ';'
   );
   args.push(
@@ -30,6 +32,16 @@ const setWindowPos = (args) => {
 };
 
 module.exports = (on, config) => {
+  // exclude certain e2e tests depending on city config using `ignoreTestFiles`
+  const testPoolOverrides = {};
+  const cityConfig = env.region;
+  if (cityConfig === 'bonn') {
+    const ignoredPages = ['Analysis', 'Home', 'Map', 'KatasterKI'];
+    // join glob path safely, see https://github.com/cypress-io/cypress/issues/2155
+    const globs = ignoredPages.map((page) => path.join('**', page, '**', '*.js')); // FIXME: this does not work yet
+    testPoolOverrides.ignoreTestFiles = JSON.stringify(globs);
+  }
+
   // modify the way browsers are launched,
   // see https://docs.cypress.io/api/plugins/browser-launch-api.html#Usage
   on('before:browser:launch', (browser = {}, args) => {
@@ -44,5 +56,9 @@ module.exports = (on, config) => {
 
   // store process env in cypress env,
   // see https://docs.cypress.io/guides/guides/environment-variables.html#Option-2-cypress-env-json
-  return { ...config, env: process.env };
+  return {
+    ...config,
+    env: process.env,
+    ...testPoolOverrides
+  };
 };
