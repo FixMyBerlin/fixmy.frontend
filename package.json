@@ -3,18 +3,8 @@
   "version": "1.0.0",
   "description": "A Mobility Platform for Berlin",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "build:bonn": "npm run build",
-    "start": "webpack-dev-server",
-    "lint": "eslint src",
-    "test": "jest --verbose --config=jest/jest.config.js",
-    "test:watch": "npm run test  -- --watch",
-    "test:coverage": "npm run test -- --coverage --collectCoverageFrom=**/state/*",
-    "cypress": "cypress",
-    "test:e2e": "cypress run",
-    "test:e2e-chrome": "cypress run --browser chrome",
-    "test:e2e-dev-server": "start-server-and-test start http://localhost:8080 test:e2e",
-    "generate-kataster-schema": "./src/pages/KatasterKI/scheme/generate.sh"
+    "start": "nps",
+    "test": "nps test"
   },
   "repository": {
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
