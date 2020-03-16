@@ -36,10 +36,8 @@ module.exports = (on, config) => {
   const testPoolOverrides = {};
   const cityConfig = env.region;
   if (cityConfig === 'bonn') {
-    const ignoredPages = ['Analysis', 'Home', 'Map', 'KatasterKI'];
-    // join glob path safely, see https://github.com/cypress-io/cypress/issues/2155
-    const globs = ignoredPages.map((page) => path.join('**', page, '**', '*.js')); // FIXME: this does not work yet
-    testPoolOverrides.ignoreTestFiles = JSON.stringify(globs);
+    const ignoredPages = ['Map', 'KatasterKI'];
+    testPoolOverrides.ignoreTestFiles = `**/{${ignoredPages.join()}}/**/*.e2e.test.js`;
   }
 
   // modify the way browsers are launched,
