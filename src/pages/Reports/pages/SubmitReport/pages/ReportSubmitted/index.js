@@ -69,13 +69,10 @@ class ReportSubmitted extends PureComponent {
         <ThanksImg src={thanksImageSrc} data-cy="reports-submitted-image" />
 
         <Text data-cy="reports-submitted-text">
-          Deine Meldung ist nun online! Alle Meldungen werden gesammelt und dann
-          dem Bezirksamt am 10. Oktober 2019 übergeben. Die Planer:innen im
-          Straßen- und Grünflächenamt prüfen, welche Meldungen umgesetzt werden
-          können. Die Ergebnisse siehst du anschließend hier auf der Karte{' '}
+          {config.reports.thankYouNote.base}{' '}
           {token
-            ? 'und wir benachrichtigen dich an deine im Login hinterlegte E-Mail-Adresse.'
-            : 'und wenn du deine E-Mail-Adresse eingibst, benachrichtigen wir dich auch per E-Mail.'}
+            ? config.reports.thankYouNote.loggedIn
+            : config.reports.thankYouNote.loggedOut}
         </Text>
 
         {token ? (
