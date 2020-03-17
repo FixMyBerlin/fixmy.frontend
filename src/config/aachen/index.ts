@@ -15,6 +15,6 @@ export default {
   siteTitle: 'FixMyAachen',
   apiUrl:
     process.env.API_URL ||
-    apiEndpoints[process.env.CONFIG_ENV] ||
+    apiEndpoints[process.env.BACKEND] ||
     apiEndpoints.staging
 };
