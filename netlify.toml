@@ -20,7 +20,7 @@
 
 [[redirects]]
     from = "/api/aachen/v1/*"
-    to = "https://fixmyplatform-fork.herokuapp.com/api/:splat"
+    to = "https://fixmyaachen.herokuapp.com/api/:splat"
     status = 200
     force = true
     [redirects.headers]
@@ -30,7 +30,7 @@
 
 [[redirects]]
     from = "/api/aachen/next/*"
-    to = "https://fixmyplatform-develop-fork.herokuapp.com/api/:splat"
+    to = "https://fixmyaachen-staging.herokuapp.com/api/:splat"
     status = 200
     force = true
     [redirects.headers]
