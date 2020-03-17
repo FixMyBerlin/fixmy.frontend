@@ -45,13 +45,17 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
 
   return (
     <DialogStepWrapper>
-      <StyledHeading>
+      <StyledHeading data-cy="reports-locker-heading">
         Würdest du an diesem Ort auch ein kostenpflichtiges Fahrradparkhaus
         nutzen?
       </StyledHeading>
 
       <ImageWrapper>
-        <Image src={BrBoxImg} alt="Bike-and-Ride-Box bzw. E-Ladestation" />
+        <Image
+          src={BrBoxImg}
+          alt="Bike-and-Ride-Box bzw. E-Ladestation"
+          data-cy="reports-locker-figure"
+        />
         <ImageSource>Foto: Kienzler Stadtmobiliar GmbH</ImageSource>
       </ImageWrapper>
 
@@ -66,6 +70,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
           value="true"
           checked={wouldPay === true}
           onChange={() => setWouldPay(true)}
+          data-cy="reports-locker-accept"
         />
         Ja, das wäre ein interessantes Angebot.
       </RadioButtonLabel>
@@ -81,6 +86,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
           value="false"
           checked={wouldPay === false}
           onChange={() => setWouldPay(false)}
+          data-cy="reports-locker-deny"
         />
         Nein, so etwas brauche ich nicht.
       </RadioButtonLabel>
@@ -88,6 +94,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
       <StyledWeiterButton
         onClick={() => onConfirm(wouldPay)}
         disabled={typeof wouldPay !== 'boolean'}
+        data-cy="reports-locker-continue"
       >
         Meldung abschließen
       </StyledWeiterButton>

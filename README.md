@@ -5,13 +5,26 @@
 
 You can check out the live version [here](https://fixmyberlin.de/).
 
-![fixmy screenshot](/fixmy-screenshot.jpg)
+![fixmy screenshot](/fixmy-screenshot.png)
+
+## Contributing
+
+Did you encounter an issue that you would like to tell us about? Would you like
+to add to this project yourself? Go ahead and check the
+[contribution guide](CONTRIBUTING.md).
 
 ## Installation
 
 ```sh
 $ npm install
 ```
+
+## Configuration
+
+Configuration options for the app are set through environment variables. You can
+set these by creating a file `/.env` in this directory. Look at the file
+`.env.defaults` to see how `.env` needs to be formatted. Default configuration
+options are also loaded from `.env.defaults`.
 
 ## Development
 
@@ -20,6 +33,14 @@ Runs on [localhost:8080](http://localhost:8080/)
 
 ```sh
 $ npm start
+```
+
+## Testing
+
+Runs unit tests.
+
+```sh
+$ npm run test
 ```
 
 ## Build
@@ -37,38 +58,12 @@ Each branch gets automatically deployed on netlify:
 - https://fixmyberlin-app.netlify.com/ [master]
 - https://develop--fixmyberlin-app.netlify.com/ [develop]
 
-## Embed Mode
+### Embed Mode
 
-If you want to test the embed mode, you just need to add a query paramter to the url: `http://localhost:8080/planungen?embed=1`.
+You can test the embed mode by adding a query parameter to the url: `http://localhost:8080/planungen?embed=1`.
 There is also a deployed production version: https://embed.fixmyberlin.de/.
 
-The project is based on [wbkd/react-starter](https://github.com/wbkd/react-starter).
-
-## Kataster Standalone
-
-In order to create the standalone version we are using the env variables `BASE_NAME`, `ENTRY_POINT` and `KATASTER_PATH`.
-
-- `BASE_PATH`: used in the webpack config and the router history. If you want to deploy the standalone version somewhere other than root you need to set this variable.
-- `ENTRY_POINT`: needs to be set in order to use the kataster app as an entry point
-- `KATASTER_PATH`: base url of the kataster app. Should be empty for the standalone version
-
-The variables are already configured when you are using the following tasks:
-
-**Development:**
-
-```sh
-$ npm run start:strassencheck
-```
-
-**Build:**
-
-```sh
-$ npm run build:strassencheck
-```
-
 ## Run Tests
-
-We are gradually adding tests
 
 ### Unit tests
 

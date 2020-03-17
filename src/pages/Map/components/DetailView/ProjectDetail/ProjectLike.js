@@ -70,8 +70,7 @@ class ProjectLike extends PureComponent {
   }
 
   updateLikes = async () => {
-    const url = `${config.apiUrl}/projects/${this.props.id}`;
-    const res = await getLikes(url, this.props.token);
+    const res = await getLikes(this.props.url, this.props.token);
     this.handleLikeResponse(res);
   };
 
@@ -82,8 +81,7 @@ class ProjectLike extends PureComponent {
       this.setState({ bouncy: true });
     }, 1);
 
-    const url = `${config.apiUrl}/projects/${this.props.id}`;
-    const res = await likeDetail(url, this.props.token);
+    const res = await likeDetail(this.props.url, this.props.token);
     this.handleLikeResponse(res);
   };
 
@@ -112,19 +110,22 @@ class ProjectLike extends PureComponent {
       </Label>
     ) : (
       <Label>
-        Um eine {itemType} zu liken, musst du
+        Um eine {itemType} zu liken, musst du{' '}
         <Link to={config.routes.login}>eingeloggt sein</Link>.
       </Label>
     );
 
     return (
       <LikeButtonWrapper>
-        <Label bold>{count}</Label>
+        <Label bold data-cy="map-detail-likes-count">
+          {count}
+        </Label>
         <LikeButton
           isLiked={userLike}
           disabled={!token}
           onClick={this.handleClick}
           bouncy={bouncy}
+          data-cy="map-detail-likes-button"
         >
           <HeartIcon />
         </LikeButton>

@@ -14,7 +14,7 @@ const Anchor = styled(Link)`
 `;
 
 export default () => (
-  <Anchor to={config.routes.reports.map}>
+  <Anchor to={config.routes.reports.map} data-cy="reports-landing-mapLink">
     Schau dir die Meldungen anderer an
   </Anchor>
 );

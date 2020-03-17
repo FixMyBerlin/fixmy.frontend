@@ -66,10 +66,10 @@ export const signupFormConfig = [
     type: 'checkbox',
     label: (
       <span>
-        Ich möchte einen Login bei FixMyBerlin erstellen, um über den
+        Ich möchte einen Login bei {config.siteTitle} erstellen, um über den
         Fortschritt meiner Meldung informiert zu werden. Die{' '}
         <ExternalLink
-          href="https://fixmyberlin.de/datenschutz"
+          href="/datenschutz"
           rel="noopener noreferrer"
           target="_blank"
         >
@@ -85,8 +85,7 @@ export const signupFormConfig = [
     id: 'newsletter',
     value: false,
     type: 'checkbox',
-    label:
-      'Ich möchte den FixMyBerlin Newsletter mit Updates zu Planungen erhalten'
+    label: `Ich möchte den ${config.siteTitle}-Newsletter mit Updates zu Planungen erhalten`
   }
 ];
 
@@ -221,7 +220,11 @@ class AuthForm extends Component {
           />
         )}
 
-        <GhostButton onClick={this.props.goToMap} style={{ marginTop: 25 }}>
+        <GhostButton
+          onClick={this.props.goToMap}
+          style={{ marginTop: 25 }}
+          data-cy="reports-submitted-anon-show-report"
+        >
           Meldung anzeigen
           <br />
           (weiter ohne Login)

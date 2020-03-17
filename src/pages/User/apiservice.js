@@ -25,6 +25,7 @@ async function handleRequest(
       await ky(`${config.apiUrl}/${route}`, { method, json, headers });
     }
   } catch (e) {
+    if (e.response.json == null) throw e;
     const error = await e.response.json();
     setErrors(error);
     response.error = error;
@@ -119,7 +120,7 @@ export async function apiPasswordForgot(json, formFunctions) {
 export async function apiLikes(token, itemType = 'projects') {
   const headers = token ? { Authorization: `JWT ${token}` } : {};
   let response = {};
-  const endpoint = `${config.apiUrl}/${itemType}?page_size=250`;
+  const endpoint = `${config.apiUrl}/${itemType}?page_size=500`;
   const kyConfig = { method: 'GET', headers, timeout: 20000 };
 
   try {

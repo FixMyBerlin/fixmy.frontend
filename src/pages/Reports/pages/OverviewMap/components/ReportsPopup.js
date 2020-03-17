@@ -55,20 +55,25 @@ class ReportsPopup extends PureComponent {
         showSubline={false}
         style={{ padding: 16 }}
       >
-        <>
-          {photoSrc && (
-            <PreviewImageContainer
-              to={`${config.routes.reports.map}/${selectedReport.id}`}
-              style={{
-                backgroundImage: `url(${photoSrc})`
-              }}
-            />
-          )}
-          <Title>{`${selectedReport.details.number} neue Fahrradbügel gewünscht`}</Title>
-          <ButtonWrapper>
-            <Button onClick={() => this.onDetailClick()}>mehr Infos</Button>
-          </ButtonWrapper>
-        </>
+        {photoSrc && (
+          <PreviewImageContainer
+            to={`${config.routes.reports.map}/${selectedReport.id}`}
+            style={{
+              backgroundImage: `url(${photoSrc})`
+            }}
+          />
+        )}
+        <Title data-cy="reports-popup-title">
+          {`${selectedReport.details.number} neue Fahrradbügel gewünscht`}
+        </Title>
+        <ButtonWrapper>
+          <Button
+            data-cy="reports-popup-button"
+            onClick={() => this.onDetailClick()}
+          >
+            mehr Infos
+          </Button>
+        </ButtonWrapper>
       </MapPopupWrapper>
     );
   }

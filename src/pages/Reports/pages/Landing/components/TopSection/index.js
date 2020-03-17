@@ -94,11 +94,16 @@ const TopSection = ({ toUrl }) => (
   <Section>
     <FlexWrapper>
       <StyledMenuButton whiteFill="true" />
-      <img width="92px" src={FixMyLogo} alt="logo" />
-      <StyledHeading>
+      <img
+        width="92px"
+        src={FixMyLogo}
+        alt="logo"
+        data-cy="reports-landing-logo"
+      />
+      <StyledHeading data-cy="reports-landing-header">
         Melde neue Fahrradbügel für {config.reports.region}
       </StyledHeading>
-      <StyledButton className="wiggle">
+      <StyledButton className="wiggle" data-cy="reports-landing-cta">
         <StyledLink to={toUrl}>
           <strong>Sagt uns wo</strong>
           <br /> in 30 Sekunden

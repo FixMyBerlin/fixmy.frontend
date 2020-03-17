@@ -105,6 +105,7 @@ class SearchBar extends PureComponent {
           value={this.state.inputValue}
           type="text"
           placeholder="Gib hier eine Adresse ein"
+          data-cy="map-address-input"
           spellCheck="false"
           autoCapitalize="words"
           onChange={this.onChange}
@@ -113,7 +114,9 @@ class SearchBar extends PureComponent {
           onBlur={this.props.onInputBlur}
         />
         {this.state.inputValue ? (
-          <SearchReset onClick={this.resetInput}>×</SearchReset>
+          <SearchReset onClick={this.resetInput} data-cy="map-address-reset">
+            ×
+          </SearchReset>
         ) : (
           <StyledSearchIcon />
         )}

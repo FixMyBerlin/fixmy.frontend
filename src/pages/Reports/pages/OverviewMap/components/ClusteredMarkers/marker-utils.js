@@ -1,10 +1,6 @@
 import MapboxGL from 'mapbox-gl';
 
-import BikeStandMarker from '~/images/reports/pin-meldung.png';
-
-const ICONS = {
-  BIKE_STANDS: BikeStandMarker
-};
+import utils from '~/pages/Reports/utils';
 
 function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   const el = document.createElement('div');
@@ -13,6 +9,8 @@ function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   const elInner = document.createElement('div');
   elInner.className = 'reports-cluster__inner';
   elInner.innerHTML = pointCount;
+
+  el.dataset.cy = 'reports-marker-cluster';
 
   el.appendChild(elInner);
 
@@ -50,10 +48,9 @@ function createPinMarker({
   const el = document.createElement('div');
 
   el.dataset.id = markerData.id;
-  el.style.cursor = 'pointer';
-  el.style.opacity = 1;
-  el.style.width = '40px';
-  el.style.height = 'auto';
+  el.className = 'reports-marker';
+
+  el.dataset.cy = 'reports-marker';
 
   if (selectedReport || detailId) {
     const activeId = selectedReport ? selectedReport.id : detailId;
@@ -66,9 +63,9 @@ function createPinMarker({
 
   const updatedMarkerData = { ...markerData, geometry, details };
 
-  el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${
-    ICONS[details.subject]
-  }" />`;
+  el.innerHTML = `<img class="marker-image" src="${utils.getMarkerSrc(
+    markerData
+  )}" />`;
   el.addEventListener('click', (evt) => onClick(evt, updatedMarkerData));
 
   return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -20]);

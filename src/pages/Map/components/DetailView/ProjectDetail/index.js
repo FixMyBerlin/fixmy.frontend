@@ -93,6 +93,7 @@ class ProjectDetail extends PureComponent {
     }
 
     const {
+      id,
       title,
       description,
       construction_completed,
@@ -105,9 +106,10 @@ class ProjectDetail extends PureComponent {
       construction_started,
       draft_submitted,
       cross_section_photo,
-      url,
       category
     } = data;
+
+    const url = `${config.apiUrl}/projects/${id}`;
 
     const translatedCategory = categoryMapping[category];
     const showFaq = faq && faq.length;

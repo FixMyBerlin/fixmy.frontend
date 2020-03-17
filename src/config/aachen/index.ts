@@ -3,15 +3,16 @@ import menu from './menu';
 import routes from './routes';
 
 const apiEndpoints = {
-  dev: 'http://localhost:8000/api',
-  staging: 'https://elegant-hugle-53926c.netlify.com/api/bonn/next'
+  local: 'http://localhost:8000/api',
+  staging: 'https://fixmyaachen-staging.netlify.com/api/aachen/next',
+  production: 'https://fixmyaachen.netlify.com/api/aachen/v1'
 };
 
 export default {
   map,
   menu,
   routes,
-  siteTitle: 'FixMyBonn',
+  siteTitle: 'FixMyAachen',
   apiUrl:
     process.env.API_URL ||
     apiEndpoints[process.env.CONFIG_ENV] ||

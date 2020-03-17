@@ -76,7 +76,7 @@ export function loadPlanningData() {
     }
 
     const planningData = await ky
-      .get(`${config.apiUrl}/projects?page_size=200`, { timeout: 50000 })
+      .get(`${config.apiUrl}/projects?page_size=500`, { timeout: 50000 })
       .json();
 
     return dispatch({ type: SET_PLANNING_DATA, payload: { planningData } });

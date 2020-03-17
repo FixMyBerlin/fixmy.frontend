@@ -44,7 +44,7 @@ export function loadProjectData(selectedDistrict = false) {
     }
 
     try {
-      const endPoint = `${config.apiUrl}/projects?page_size=200`;
+      const endPoint = `${config.apiUrl}/projects?page_size=500`;
       const { results } = await ky.get(endPoint, { timeout: 200000 }).json();
 
       return dispatch({

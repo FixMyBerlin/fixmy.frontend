@@ -245,7 +245,7 @@ class LocateMeMap extends Component {
           </>
         )}
 
-        <MapWrapper>
+        <MapWrapper data-cy="reports-locateme-wrapper">
           <StyledWebGlMap
             newLocationZoomLevel={
               config.reports.locateMeMap.zoomOnGeocodedLocation
@@ -267,12 +267,18 @@ class LocateMeMap extends Component {
 
               {this.props.tempLocation.address &&
                 this.props.tempLocation.valid && (
-                  <AddressIndicator className="pass-touch">
+                  <AddressIndicator
+                    className="pass-touch"
+                    data-cy="reports-locateme-address-valid"
+                  >
                     {this.props.tempLocation.address}
                   </AddressIndicator>
                 )}
               {!this.props.tempLocation.valid && (
-                <InvalidAdressIndicator className="pass-touch">
+                <InvalidAdressIndicator
+                  className="pass-touch"
+                  data-cy="reports-locateme-address-invalid"
+                >
                   {config.reports.locateMeMap.outofBoundaryText}
                 </InvalidAdressIndicator>
               )}

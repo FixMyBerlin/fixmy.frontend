@@ -1,18 +1,21 @@
 # Wie wird Berlin zur Fahrradstadt?
-FixMyBerlin begleitet Berlin bei der Umsetzung des [Mobilitätsgesetzes](https://www.berlin.de/senuvk/verkehr/mobilitaetsgesetz/ "Mobilitätsgesetzes") und entwickelt digitale Werkzeuge für die Verkehrswende.
 
-Die Transformation zur Fahrradstadt Berlin wird auf der Plattform von FixMyBerlin verständlich und nachvollziehbar auf Karten darstellt. Hierfür stimmt sich FixMyBerlin mit den Bezirken und der Senatsverwaltung ab und bereitet [deren Radverkehrsplanungen](/zustand "Karte mit Planungen") auf und stellt die aufbereiteten Daten wiederum [zum Download bereit](/api "API von FixMyBerlin"). Der von FixMyBerlin entwickelte [Happy-Bike-Index](/zustand "Karte zum Happy-Bike-Index") (derzeit noch in einer Beta-Version) zeigt außerdem, wo schon entspannt und sicher Rad gefahren werden kann (grün) bzw. wo es noch gefährlich ist (rot).
+FixMyBerlin begleitet Berlin bei der Umsetzung des [Mobilitätsgesetzes](https://www.berlin.de/senuvk/verkehr/mobilitaetsgesetz/ 'Mobilitätsgesetzes') und entwickelt digitale Werkzeuge für die Verkehrswende.
+
+Die Transformation zur Fahrradstadt Berlin wird auf der Plattform von FixMyBerlin verständlich und nachvollziehbar auf Karten darstellt. Hierfür stimmt sich FixMyBerlin mit den Bezirken und der Senatsverwaltung ab und bereitet [deren Radverkehrsplanungen](/zustand 'Karte mit Planungen') auf und stellt die aufbereiteten Daten wiederum [zum Download bereit](/api 'API von FixMyBerlin'). Der von FixMyBerlin entwickelte [Happy-Bike-Index](/zustand 'Karte zum Happy-Bike-Index') (derzeit noch in einer Beta-Version) zeigt außerdem, wo schon entspannt und sicher Rad gefahren werden kann (grün) bzw. wo es noch gefährlich ist (rot).
 
 Ziel ist eine datenbasierte Grundlage für einen konstruktiven Dialog zwischen Verwaltung und Bürger:innen zu schaffen.
 
-
 ## Wer steckt hinter FixMyBerlin?
+
 FixMyBerlin ist aus einer Initiative der Berliner Zivilgesellschaft heraus entstanden. Mittlerweile sind wir ein größer werdendes Team aus Entwickler:innen, Designer:innen, Verkehrsplaner:innen sowie Datenspezialist:innen, die Berlin und andere Städte bei der Transformation zur Fahrradstadt unterstützen und Lösungen für die offene Verwaltung entwickeln.
 
 Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministeriums, der Berliner Senatskanzlei und dem Berliner StartUp Stipendium. Die für Verkehr zuständige Senatsverwaltung sowie alle Berliner Bezirksämter nutzen die Plattform und veröffentlichen dort ihre Planungen.
 
 ## Team von FixMyBerlin [[Kontakt]](/impressum)
+
 Du willst uns unterstützen? [Melde Dich gerne](/jobs)
+
 <div class="teamportrait">
   <img src="/src/images/uploads/team/FixMyBerlin_Boris Hekele.png" alt="Boris Hekele" title="Boris Hekele" style="width: 160px" /><br />
   <strong>Boris Hekele</strong><br />
@@ -49,15 +52,21 @@ Du willst uns unterstützen? [Melde Dich gerne](/jobs)
   Datenredaktion, Literaturrecherche, Umfragedesign
 </div>
 <div class="teamportrait">
-  <img src="/src/images/uploads/team/VincentArendt.png" alt="Vincent Ahrend" title="Vincent Ahrend" style="width: 160px" /><br />
+  <img src="/src/images/uploads/team/VincentAhrend.png" alt="Vincent Ahrend" title="Vincent Ahrend" style="width: 160px" /><br />
   <strong>Vincent Ahrend</strong><br />
   Fullstack-Entwicklung
 </div>
+<div class="teamportrait">
+  <img src="/src/images/uploads/team/Niklas_Schader.jpg" alt="Niklas Schader" title="Niklas Schader" style="width: 160px" /><br />
+  <strong>Niklas Schader</strong><br />
+  Grafik und Kommunikation
+</div>
 <div style="clear: left;"></div>
 
-Unsere **Kontaktdaten** befinden sich im [Impressum](/impressum "Zum Impressum").
+Unsere **Kontaktdaten** befinden sich im [Impressum](/impressum 'Zum Impressum').
 
 ## Partner
+
 <style type="text/css">
   .teamportrait {
     width: 190px;
