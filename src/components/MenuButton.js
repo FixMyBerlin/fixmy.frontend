@@ -8,8 +8,8 @@ import { toggle } from '~/AppState';
 
 const MenuButton = styled.div`
   position: fixed;
-  left: 2rem;
-  top: 2rem;
+  left: 1rem;
+  top: 1rem;
   cursor: pointer;
   z-index: 100;
 `;

@@ -1,11 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import config from '~/pages/Reports/config';
-import MenuButton from '~/components/MenuButton';
+import FixMyLogo from '~/images/logofmb@2x.png';
+import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
+import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
+import Button from '~/components2/Button';
 import Link from '~/components/Link';
-import ScrollLink from './ScrollLink';
+import MenuButton from '~/pages/Reports/components/MenuButton';
+import ScrollLink from '~/pages/Reports/components/ScrollLink';
 import { media } from '~/styles/utils';
 
 const Section = styled.section`
@@ -121,8 +124,15 @@ const TopLogo = styled.img`
   `}
 `;
 
+const CallToAction = () => (
+  <Button className="wiggle" data-cy="reports-landing-cta">
+    <Link to={config.routes.reports.new}>Sag uns wo in 60 Sekunden</Link>
+  </Button>
+);
+
 const TopSection = ({ toUrl }) => (
   <Section>
+    <MenuButton whiteFill="true" />
     <FlexWrapper>
       <StyledMenuButton whiteFill="true" />
       <TopLogo
@@ -134,23 +144,10 @@ const TopSection = ({ toUrl }) => (
       <StyledHeading data-cy="reports-landing-header">
         {config.reports.landing?.title}
       </StyledHeading>
-      <StyledButton className="wiggle" data-cy="reports-landing-cta">
-        <StyledLink to={toUrl}>
-          <strong>Sagen Sie uns wo</strong>
-          <br /> in 30 Sekunden
-        </StyledLink>
-      </StyledButton>
+      <CallToAction />
     </FlexWrapper>
     <ScrollLink />
   </Section>
 );
-
-TopSection.propTypes = {
-  toUrl: PropTypes.string
-};
-
-TopSection.defaultProps = {
-  toUrl: '/meldungen/wo'
-};
 
 export default TopSection;

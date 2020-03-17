@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
-import TopSection from './components/TopSection/index';
+import TopSection from './TopSection';
 import { media } from '~/styles/utils';
 
 import AachenLanding from './aachen';
@@ -24,7 +24,7 @@ const RegionalLandingContent = () => {
   return <BerlinLanding />;
 };
 
-export default () => (
+const Landing = () => (
   <>
     <TopSection toUrl={`${config.routes.reports.new}`} />
     <ContentWrapper>
@@ -32,3 +32,5 @@ export default () => (
     </ContentWrapper>
   </>
 );
+
+export default Landing;
