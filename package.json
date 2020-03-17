@@ -149,7 +149,7 @@
     "store": "^2.0.12",
     "styled-components": "^4.4.1",
     "styled-normalize": "^8.0.7",
-    "uuid": "^3.4.0",
+    "uuid": "^7.0.2",
     "victory": "^33.1.7",
     "whatwg-fetch": "^3.0.0"
   }
