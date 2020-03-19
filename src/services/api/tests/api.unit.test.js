@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock';
 import { Response } from 'node-fetch';
-import * as api from '../index';
+import * as api from '../apiService';
 import config from '~/config'; // TODO: consider mocking this
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
 import { NetworkError, QualifiedError, TimeoutError } from '~/services/api/httpErrors';
