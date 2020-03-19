@@ -41,9 +41,12 @@ export default () => (
   <QuoteSection>
     <Img src={Portrait} alt="Oberbürgermeister Marcel Phillip" />
     <BlockQuote>
-      „Wir wollen Aachen zusammen mit den Bürger:innen zu einer
-      fahrradfreundlichen Stadt machen. Ihre Meldungen helfen uns dabei, noch
-      schneller zu werden.“
+      „Wir benötigen mehr Sicherheit und mehr Raum für den Radverkehr in Aachen,
+      dazu gehören auch mehr Fahrradabstellanlagen. In den letzten Wochen haben
+      mir viele Bürgerinnen und Bürger sowie die Initiatoren des Radentscheids
+      Standortvorschläge für Fahrradbügel geschickt, diese wurden in das jetzt
+      freigeschaltete Online-Tool bereits eingearbeitet und zum großen Teil
+      durch die Verwaltung geprüft.“
     </BlockQuote>
     <SourcePerson>Marcel Philipp</SourcePerson>
     <SourceFunction>Oberbürgermeister</SourceFunction>
