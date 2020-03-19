@@ -3,7 +3,11 @@ import { Response } from 'node-fetch';
 import * as api from '../apiService';
 import config from '~/config'; // TODO: consider mocking this
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
-import { NetworkError, QualifiedError, TimeoutError } from '~/services/api/httpErrors';
+import {
+  NetworkError,
+  QualifiedError,
+  TimeoutError
+} from '~/services/api/httpErrors';
 import { combineURLs } from '~/services/api/utils';
 
 const globals = {
@@ -65,7 +69,7 @@ describe('api module', () => {
 
       it('throws a custom NetworkError if the server does not answer', async () => {
         fetchMock.mock(`end:${globals.testRoute}`, () => {
-          throw new Error('Connection error')
+          throw new Error('Connection error');
         });
 
         await expect(api.request(globals.testRoute)).rejects.toThrow(NetworkError);
@@ -95,9 +99,11 @@ describe('api module', () => {
           'application/json'
         );
         expect(fetchOptions.method).toEqual('POST');
-
-        expect(fetchOptions.body).toMatchObject(mockedPayload); // FIXME: this fails, seeked help https://github.com/wheresrhys/fetch-mock/issues/374
         expect(response).toEqual(mockedResponse);
+
+
+        const body = await fetchOptions.body;
+        expect(body).toMatch(JSON.stringify(mockedPayload));
       });
 
       describe('error handling', () => {});
