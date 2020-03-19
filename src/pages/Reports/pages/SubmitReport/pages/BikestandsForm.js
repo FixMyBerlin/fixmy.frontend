@@ -72,14 +72,17 @@ export default ({ onConfirm }) => {
       >
         Weiter
       </StyledWeiterButton>
+      {config.reports.form.placementNotice && (
+        <>
+          <Paragraph>
+            Hinweis: Neue Fahrradbügel werden in {config.reports.region} in der
+            Regel auf der Straße installiert, damit der Platz für
+            Fußgänger:innen auf dem Gehweg nicht eingeschränkt wird.
+          </Paragraph>
 
-      <Paragraph>
-        Hinweis: Neue Fahrradbügel werden in {config.reports.region} in der
-        Regel auf der Straße installiert, damit der Platz für Fußgänger:innen
-        auf dem Gehweg nicht eingeschränkt wird.
-      </Paragraph>
-
-      <Image src={StreetBgImage} alt="Straßenseitige Fahrradständer" />
+          <Image src={StreetBgImage} alt="Straßenseitige Fahrradständer" />
+        </>
+      )}
     </DialogStepWrapper>
   );
 };
