@@ -12,7 +12,7 @@ export default {
   map,
   menu,
   routes,
-  siteTitle: 'FixMyAachen',
+  siteTitle: 'Radbügel für Aachen',
   apiUrl:
     process.env.API_URL ||
     apiEndpoints[process.env.BACKEND] ||

@@ -16,7 +16,7 @@ export default {
     },
     {
       type: 'link',
-      label: 'Über FixMyAachen',
+      label: 'Über uns',
       link: '/info',
       icon: 'info',
       border: true
