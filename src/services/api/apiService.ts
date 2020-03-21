@@ -2,7 +2,7 @@
  * Facilitates http request creation by
  * - offering helper methods with simplified interfaces
  * - allowing to hook into before/after a request is made or if an error occurs
- * - doing 	preparatory work for network error request handling
+ * - doing  preparatory work for network error request handling
  */
 import ky, { Options as KyOptions, ResponsePromise } from 'ky';
 import config from '~/config';
@@ -10,7 +10,6 @@ import store from '~/store';
 import { BodyType, Callbacks, JSONValue } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
 import { ApiError, NetworkError, QualifiedError, TimeoutError } from './httpErrors';
-import logger from '~/utils/logger';
 
 const configuredKy = ky.create({
   prefixUrl: config.apiUrl,
@@ -96,7 +95,7 @@ function prepareOptions(
 ) {
   const options = { ...defaultRequestOptions, ...(requestConfig || {}) };
 
-  // prepare callback functions: if not defined, assign empty functions to facilitate invocation
+  // prepare callback functions: if not defined, in order to not bloat consuming function with conditionals
   let setSubmitting = (...args) => {};
   let setErrors = (...args) => {};
   if (callbacks) {
@@ -116,25 +115,18 @@ function prepareOptions(
  * Resources:
  * https://github.com/sindresorhus/ky/issues/107
  * https://dev.to/damxipo/custom-exceptions-with-js-3aoc
+ * // TODO: move explanations from code docs to PR
  */
-// TODO: type this. in order to be able to do this, fetch latest developments https://github.com/sindresorhus/ky/pull/241
 async function translateError(e): Promise<Error> {
   let customError;
   switch (e.constructor) {
     case ky.HTTPError: // a non 2xx error code was found
-      // if the error is a json, ist can be parsed, see https://github.com/sindresorhus/ky/issues/191#issuecomment-548813942
-      if (e.response.json == null) {
-        customError = new ApiError(e); // re-throw as generic error
+      if (e.response.json != null) {
+        // the API responded a JSON
+        const parsedErrorResponse = await e.response.json();
+        customError = new QualifiedError(parsedErrorResponse);
       } else {
-        let parsedErrorResponse;
-        try {
-          parsedErrorResponse = await e.response.json();
-          customError = new QualifiedError(parsedErrorResponse);
-        } catch (err) {
-          const errMsg = `Failed to read error response body as json: ${err.message}`;
-          logger(errMsg);
-          throw new Error(errMsg);
-        }
+        customError = new ApiError(e); // re-throw as generic error
       }
       break;
     case ky.TimeoutError:
