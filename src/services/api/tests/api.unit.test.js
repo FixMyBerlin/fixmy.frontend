@@ -5,8 +5,9 @@ import config from '~/config'; // TODO: consider mocking this
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
 import {
   NetworkError,
-  QualifiedError,
-  TimeoutError
+  ApiError,
+  TimeoutError,
+  GENERIC_ERROR_MESSAGE
 } from '~/services/api/httpErrors';
 import { combineURLs } from '~/services/api/utils';
 
@@ -21,7 +22,7 @@ describe('api module', () => {
     fetchMock.restore();
   });
 
-  describe('generic requests handler', () => {
+  describe('generic request handler', () => {
     it('prefixes urls with the api base url defined in the app config', async () => {
       fetchMock.mock(`end:${globals.testRoute}`, {});
       await api.request(globals.testRoute);
@@ -34,11 +35,17 @@ describe('api module', () => {
       fetchMock.mock(`end:${globals.testRoute}`, {});
       await api.request(globals.testRoute);
       expect(spy).toHaveBeenCalled();
-      // TODO: test request headers when the store contains a token
     });
 
-    describe('translation of errors into custom classes', () => {
-      it('translates an API error answer JSON, translates at re-throws it as custom QualifiedError instance', async () => {
+    it('can request text content', async () => {
+      const testResponse = 'Hello world';
+      fetchMock.mock(`end:${globals.testRoute}`, testResponse);
+      const response = await api.request(globals.testRoute, null, null, 'text');
+      expect(response).toEqual(testResponse);
+    });
+
+    describe('error handling – translation of http client errors into custom Error classes', () => {
+      it('rethrows an Error JSON as ApiError stating its detail', async () => {
         const testResponseBody = { detail: 'Nicht gefunden.' };
         const testResponseOptions = { status: 404, statusText: 'Not found' };
         const errResponse = new Response(
@@ -47,12 +54,38 @@ describe('api module', () => {
         );
         fetchMock.mock(`end:${globals.testRoute}`, errResponse);
 
-        await expect(api.request(globals.testRoute)).rejects.toThrow(
-          QualifiedError
+        await expect(api.request(globals.testRoute)).rejects.toThrowError(
+          new ApiError(testResponseBody.detail)
         );
       });
 
-      it('throws a custom TimeoutError on request time out', async () => {
+      it('rethrows an Error JSON as ApiError not stating a detail with a generic error message', async () => {
+        // the key describing the error intentionally breaches our conventions for error answers
+        const testResponseBody = { customError: 'wholey moly' };
+        const testResponseOptions = { status: 500 };
+        const errResponse = new Response(
+          JSON.stringify(testResponseBody),
+          testResponseOptions
+        );
+        fetchMock.mock(`end:${globals.testRoute}`, errResponse);
+
+        await expect(api.request(globals.testRoute)).rejects.toThrowError(
+          new ApiError(GENERIC_ERROR_MESSAGE)
+        );
+      });
+
+      it('rethrows a non-JSON error as ApiError stating its detail', async () => {
+        const testResponse = 'something went south';
+        const testResponseOptions = { status: 404, statusText: 'Not found' };
+        const errResponse = new Response(testResponse, testResponseOptions);
+        fetchMock.mock(`end:${globals.testRoute}`, errResponse);
+
+        await expect(
+          api.request(globals.testRoute, null, null, 'text')
+        ).rejects.toThrowError(new ApiError(testResponse));
+      });
+
+      it('throws a TimeoutError on request time out', async () => {
         // this also proves that the request timeout can be specified at all
         const delayResponse = (response, after = 500) => () =>
           new Promise((resolve) => setTimeout(resolve, after)).then(
@@ -72,8 +105,10 @@ describe('api module', () => {
           throw new Error('Connection error');
         });
 
-        await expect(api.request(globals.testRoute)).rejects.toThrow(NetworkError);
-      })
+        await expect(api.request(globals.testRoute)).rejects.toThrow(
+          NetworkError
+        );
+      });
     });
   });
 
@@ -100,7 +135,6 @@ describe('api module', () => {
         );
         expect(fetchOptions.method).toEqual('POST');
         expect(response).toEqual(mockedResponse);
-
 
         const body = await fetchOptions.body;
         expect(body).toMatch(JSON.stringify(mockedPayload));

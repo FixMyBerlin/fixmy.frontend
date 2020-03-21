@@ -1,34 +1,25 @@
-/**
- * The api has answered but does not state an error description JSON.
- */
-class ApiError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = "ApiError";
-    // Set the prototype explicitly, see https://stackoverflow.com/questions/41102060/typescript-extending-error-class.
-    Object.setPrototypeOf(this, ApiError.prototype);
-    Error.captureStackTrace(this, ApiError)
-  }
-}
+//  TODO: use functions instead of classes to respect eslint, see  https://dev.to/damxipo/custom-exceptions-with-js-3aoc
+
+const GENERIC_ERROR_MESSAGE = 'No error detail provided';
 
 /**
- * The api has answered with an error description object.
+ * The api has answered with an error description.
  */
-class QualifiedError extends Error {
-  constructor({ detail = 'No Error description', message }) {
-    super(detail || message);
-    this.name = "QualifiedError";
-    Object.setPrototypeOf(this, QualifiedError.prototype);
-    Error.captureStackTrace(this, QualifiedError)
+class ApiError extends Error {
+  constructor(message = GENERIC_ERROR_MESSAGE) {
+    super(message);
+    this.name = 'QualifiedError';
+    Object.setPrototypeOf(this, ApiError.prototype);
+    Error.captureStackTrace(this, ApiError);
   }
 }
 
 class TimeoutError extends Error {
   constructor(message) {
     super(message);
-    this.name = "TimeoutError";
+    this.name = 'TimeoutError';
     Object.setPrototypeOf(this, TimeoutError.prototype);
-    Error.captureStackTrace(this, TimeoutError)
+    Error.captureStackTrace(this, TimeoutError);
   }
 }
 
@@ -40,15 +31,10 @@ class TimeoutError extends Error {
 class NetworkError extends Error {
   constructor(message) {
     super(message);
-    this.name = "NetworkError";
+    this.name = 'NetworkError';
     Object.setPrototypeOf(this, NetworkError.prototype);
-    Error.captureStackTrace(this, NetworkError)
+    Error.captureStackTrace(this, NetworkError);
   }
 }
 
-export {
-  ApiError,
-  QualifiedError,
-  TimeoutError,
-  NetworkError
-}
+export { GENERIC_ERROR_MESSAGE, ApiError, TimeoutError, NetworkError };
