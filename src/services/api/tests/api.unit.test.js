@@ -135,6 +135,9 @@ describe('api module', () => {
         expect(fetchOptions.headers['content-type']).toContain(
           'application/json'
         );
+        expect(fetchOptions.headers.accept).toContain(
+          'application/json'
+        );
         expect(fetchOptions.method).toEqual('POST');
         expect(response).toEqual(mockedResponse);
 

@@ -51,11 +51,9 @@ export async function request(
 
   setSubmitting(true);
   try {
-    const responseBody = await (configuredKy(
-      route,
-      options
-    ) as ResponsePromise);
-    response = await responseBody[bodyParseMethod]();
+    response = await configuredKy(route, options)[
+      bodyParseMethod // this usage sets the appropriate accept header
+    ]();
   } catch (e) {
     setErrors(e);
     throw await translateError(e);
