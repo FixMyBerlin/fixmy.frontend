@@ -44,7 +44,7 @@ describe('api module', () => {
       expect(response).toEqual(testResponse);
     });
 
-    test.todo('test that hooks have been called')
+    test.todo('test that hooks have been called');
 
     describe('error handling – translation of http client errors into custom Error classes', () => {
       it('rethrows an Error JSON as ApiError stating its detail', async () => {
@@ -114,38 +114,34 @@ describe('api module', () => {
     });
   });
 
-  describe('GET requests', () => {
-    it('can GET json data', async () => {
+  describe('Shorthand methods', () => {
+    it('provides a shorthand to GET json data', async () => {
       const mockedJsonResponse = { hello: 'world' };
       fetchMock.get(`end:${globals.testRoute}`, mockedJsonResponse);
       const result = await api.get(globals.testRoute);
       expect(result.hello).toEqual(mockedJsonResponse.hello);
     });
 
-    describe('POST requests', () => {
-      it('can POST json data', async () => {
-        const mockedPayload = { hello: 'world' };
-        const mockedResponse = mockedPayload;
+    it('provides a shorthand to POST json data', async () => {
+      const mockedPayload = { hello: 'world' };
+      const mockedResponse = mockedPayload;
 
-        fetchMock.post(`end:${globals.testRoute}`, mockedResponse);
+      fetchMock.post(`end:${globals.testRoute}`, mockedResponse);
 
-        const response = await api.post(globals.testRoute, mockedPayload);
-        const fetchOptions = fetchMock.lastOptions();
+      const response = await api.post(globals.testRoute, mockedPayload);
+      const fetchOptions = fetchMock.lastOptions();
 
-        expect(fetchOptions.headers['content-type']).toContain(
-          'application/json'
-        );
-        expect(fetchOptions.headers.accept).toContain(
-          'application/json'
-        );
-        expect(fetchOptions.method).toEqual('POST');
-        expect(response).toEqual(mockedResponse);
+      expect(fetchOptions.headers['content-type']).toContain(
+        'application/json'
+      );
+      expect(fetchOptions.headers.accept).toContain('application/json');
+      expect(fetchOptions.method).toEqual('POST');
+      expect(response).toEqual(mockedResponse);
 
-        const body = await fetchOptions.body;
-        expect(body).toMatch(JSON.stringify(mockedPayload));
-      });
-
-      describe('error handling', () => {});
+      const body = await fetchOptions.body;
+      expect(body).toMatch(JSON.stringify(mockedPayload));
     });
+
+    describe('error handling', () => {});
   });
 });
