@@ -11,7 +11,7 @@ export type Callbacks = {
   setErrors?: (Error) => void;
 }
 
-export type BodyType = 'arrayBuffer' |
+export type ResponseBodyType = 'arrayBuffer' |
   'blob' |
   'formData' |
   'json' |

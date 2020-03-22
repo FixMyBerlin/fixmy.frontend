@@ -7,13 +7,9 @@
 import ky, { Options as KyOptions, ResponsePromise } from 'ky';
 import config from '~/config';
 import store from '~/store';
-import { BodyType, Callbacks, JSONValue } from './types';
+import { ResponseBodyType, Callbacks, JSONValue } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
-import {
-  NetworkError,
-  ApiError,
-  TimeoutError
-} from './httpErrors';
+import { NetworkError, ApiError, TimeoutError } from './httpErrors';
 
 const configuredKy = ky.create({
   prefixUrl: config.apiUrl,
@@ -37,7 +33,7 @@ export async function request(
   route: string,
   requestConfig?: KyOptions,
   callbacks?: Callbacks,
-  bodyType?: BodyType // defaults to json
+  bodyType?: ResponseBodyType // defaults to json
 ): Promise<Response> {
   let response;
 
@@ -96,7 +92,7 @@ function prepareOptions(
   defaultRequestOptions: Object,
   requestConfig: KyOptions,
   callbacks: Callbacks,
-  bodyType: BodyType
+  bodyType: ResponseBodyType
 ) {
   const options = { ...defaultRequestOptions, ...(requestConfig || {}) };
 
