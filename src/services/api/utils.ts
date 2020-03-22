@@ -3,6 +3,9 @@ export function combineURLs(
   relativeURL: string
 ): string {
   return relativeURL
-    ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '')
+    ? `${baseURL.replace(/\/+$/, '')  }/${  relativeURL.replace(/^\/+/, '')}`
     : baseURL;
 }
+
+export const emptyFunc = () => {
+};
