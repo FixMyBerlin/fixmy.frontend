@@ -44,6 +44,8 @@ describe('api module', () => {
       expect(response).toEqual(testResponse);
     });
 
+    test.todo('test that hooks have been called')
+
     describe('error handling – translation of http client errors into custom Error classes', () => {
       it('rethrows an Error JSON as ApiError stating its detail', async () => {
         const testResponseBody = { detail: 'Nicht gefunden.' };
