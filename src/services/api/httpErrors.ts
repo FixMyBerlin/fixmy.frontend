@@ -6,9 +6,12 @@ const GENERIC_ERROR_MESSAGE = 'No error detail provided';
  * The api has answered with an error description.
  */
 class ApiError extends Error {
-  constructor(message = GENERIC_ERROR_MESSAGE) {
+  public code: number;
+
+  constructor(message = GENERIC_ERROR_MESSAGE, statusCode = 500) {
     super(message);
     this.name = 'QualifiedError';
+    this.code = statusCode;
     Object.setPrototypeOf(this, ApiError.prototype);
     Error.captureStackTrace(this, ApiError);
   }

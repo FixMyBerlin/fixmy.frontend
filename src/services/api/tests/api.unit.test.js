@@ -32,11 +32,12 @@ describe('API module', () => {
       expect(url).toEqual(globals.compileAbsoluteRoute(globals.randomRoute));
     });
 
-    it('reads the token from the store in an interceptor', async () => {
+    it('reads the token from the store before the request', async () => {
       const spy = jest.spyOn(UserStateSelectors, 'getToken');
       fetchMock.mock(`end:${globals.randomRoute}`, {});
       await api.request(globals.randomRoute);
       expect(spy).toHaveBeenCalled();
+      // TODO: write integration test that sets up a store with a test token and that makes sure the token is attached to the request. OR try mocking the store, see https://stackoverflow.com/a/56401114/5418403
     });
 
     it('can request text content', async () => {
@@ -50,7 +51,7 @@ describe('API module', () => {
 
     test.todo('it can post form data'); // see https://github.com/sindresorhus/ky#tips
 
-    it('calls the provided request hook `setSubmitting`', async () => {
+    it('toggles an isSubmitting flag using the provided request hook `setSubmitting`', async () => {
       const setSubmittingSpy = jest.fn();
 
       fetchMock.mock(`end:${globals.randomRoute}`, globals.randomJson);
@@ -63,92 +64,123 @@ describe('API module', () => {
       expect(setSubmittingSpy.mock.calls).toEqual([[true], [false]]);
     });
 
-    describe('Error handling – translation of http client errors into custom Error classes', () => {
-      it('rethrows an Error JSON as ApiError stating its detail', async () => {
-        const testResponseBody = { detail: 'Nicht gefunden.' };
-        const testResponseOptions = { status: 404, statusText: 'Not found' };
-        const errResponse = new Response(
-          JSON.stringify(testResponseBody),
-          testResponseOptions
-        );
-        fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
-
-        await expect(api.request(globals.randomRoute)).rejects.toThrowError(
-          new ApiError(testResponseBody.detail)
-        );
-      });
-
-      it('rethrows an Error JSON as ApiError not stating a detail with a generic error message', async () => {
-        // the key describing the error intentionally breaches our conventions for error answers
-        const testResponseBody = { customError: 'wholey moly' };
-        const testResponseOptions = { status: 500 };
-        const errResponse = new Response(
-          JSON.stringify(testResponseBody),
-          testResponseOptions
-        );
-        fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
-
-        await expect(api.request(globals.randomRoute)).rejects.toThrowError(
-          new ApiError(GENERIC_ERROR_MESSAGE)
-        );
-      });
-
-      it('rethrows a non-JSON error as ApiError stating its detail', async () => {
-        const testResponse = 'something went south';
-        const testResponseOptions = { status: 404, statusText: 'Not found' };
-        const errResponse = new Response(testResponse, testResponseOptions);
-        fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
-
-        await expect(
-          api.request(globals.randomRoute, {
-            responseBodyType: 'text'
-          })
-        ).rejects.toThrowError(new ApiError(testResponse));
-      });
-
-      it('throws a TimeoutError on request time out', async () => {
-        // this also proves that the request timeout can be specified at all
-        const delayResponse = (response, after = 500) => () =>
-          new Promise((resolve) => setTimeout(resolve, after)).then(
-            () => response
+    describe('Error handling', () => {
+      describe('translation of http client errors into custom Error classes', () => {
+        it('rethrows an error JSON as ApiError stating its error message and error code', async () => {
+          const testResponseBody = { detail: 'Nicht gefunden.' };
+          const testResponseOptions = { status: 404, statusText: 'Not found' };
+          const errResponse = new Response(
+            JSON.stringify(testResponseBody),
+            testResponseOptions
           );
+          fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
 
-        // mock request timeout
-        fetchMock.mock(`end:${globals.randomRoute}`, delayResponse(408, 2)); // send '200' response after 2 millis
-
-        await expect(
-          api.request(globals.randomRoute, { timeout: 1 })
-        ).rejects.toThrow(TimeoutError);
-      });
-
-      it('throws a custom NetworkError if the server does not answer', async () => {
-        fetchMock.mock(`end:${globals.randomRoute}`, () => {
-          throw new Error('Connection error');
+          let thrownError;
+          try {
+            await api.request(globals.randomRoute);
+          } catch (e) {
+            thrownError = e;
+          }
+          expect(thrownError).toBeInstanceOf(ApiError);
+          expect(thrownError.message).toBe(testResponseBody.detail);
+          expect(thrownError.code).toBe(testResponseOptions.status);
         });
 
-        await expect(api.request(globals.randomRoute)).rejects.toThrow(
-          NetworkError
-        );
-      });
+        it('rethrows an error JSON as ApiError not stating a detail with a generic error message', async () => {
+          // the key describing the error intentionally breaches our conventions for error answers
+          const testResponseBody = { customError: 'wholey moly' };
+          const testResponseOptions = { status: 500 };
+          const errResponse = new Response(
+            JSON.stringify(testResponseBody),
+            testResponseOptions
+          );
+          fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
 
-      it('calls the provided request hook `setError` with the original error JSON returned by the API', async () => {
-        const setErrorSpy = jest.fn();
-
-        const errorJson = { detail: 'Nicht gefunden.' };
-        const errResponse = new Response(JSON.stringify(errorJson), {
-          status: 500
+          await expect(api.request(globals.randomRoute)).rejects.toThrowError(
+            new ApiError(GENERIC_ERROR_MESSAGE)
+          );
         });
-        fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
-        try {
-          await api.request(globals.randomRoute, {
-            callbacks: {
-              setErrors: setErrorSpy
-            }
+
+        it('rethrows a non-JSON error as ApiError stating its detail', async () => {
+          const testResponse = 'something went south';
+          const testResponseOptions = { status: 404, statusText: 'Not found' };
+          const errResponse = new Response(testResponse, testResponseOptions);
+          fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
+
+          await expect(
+            api.request(globals.randomRoute, {
+              responseBodyType: 'text'
+            })
+          ).rejects.toThrowError(new ApiError(testResponse));
+        });
+
+        it('throws a TimeoutError on request time out', async () => {
+          // this also proves that the request timeout can be specified at all
+          const delayResponse = (response, after = 500) => () =>
+            new Promise((resolve) => setTimeout(resolve, after)).then(
+              () => response
+            );
+
+          // mock request timeout
+          fetchMock.mock(`end:${globals.randomRoute}`, delayResponse(408, 2)); // send '200' response after 2 millis
+
+          await expect(
+            api.request(globals.randomRoute, { kyOptions: { timeout: 1 } })
+          ).rejects.toThrow(TimeoutError);
+        });
+
+        it('throws a custom NetworkError if the server does not answer', async () => {
+          fetchMock.mock(`end:${globals.randomRoute}`, () => {
+            throw new Error('Connection error');
           });
-        } catch (e) {
-          expect(e).toBeInstanceOf(ApiError);
-          expect(setErrorSpy).toHaveBeenCalledWith(errorJson);
-        }
+
+          await expect(api.request(globals.randomRoute)).rejects.toThrow(
+            NetworkError
+          );
+        });
+      });
+
+      describe('invokation of request hooks', () => {
+        it('still invokes `setSubmitting` twice even if the request fails', async () => {
+          const setSubmittingSpy = jest.fn();
+
+          fetchMock.mock(`end:${globals.randomRoute}`, () => {
+            throw new Error('Connection error');
+          });
+
+          let catchedError;
+          try {
+            await api.request(globals.randomRoute, {
+              callbacks: {
+                setSubmitting: setSubmittingSpy
+              }
+            });
+          } catch (e) {
+            catchedError = e;
+          }
+          expect(catchedError).toBeInstanceOf(NetworkError);
+          expect(setSubmittingSpy.mock.calls).toEqual([[true], [false]]);
+        });
+
+        it('calls the provided request hook `setError` with the original error JSON returned by the API', async () => {
+          const setErrorSpy = jest.fn();
+
+          const errorJson = { detail: 'nuclear core melt accident' };
+          const errResponse = new Response(JSON.stringify(errorJson), {
+            status: 500
+          });
+          fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
+          try {
+            await api.request(globals.randomRoute, {
+              callbacks: {
+                setErrors: setErrorSpy
+              }
+            });
+          } catch (e) {
+            expect(e).toBeInstanceOf(ApiError);
+            expect(setErrorSpy).toHaveBeenCalledWith(errorJson);
+          }
+        });
       });
     });
   });

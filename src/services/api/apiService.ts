@@ -5,13 +5,14 @@
  * - doing  preparatory work for network error request handling
  */
 import ky, { Options as KyOptions } from 'ky';
-import { FetchError } from 'node-fetch';
 import config from '~/config';
 import store from '~/store';
-import { JSONValue, RequestOptions } from './types';
+import { JSONValue, RequestOptions, ResponseBodyType } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
 import { ApiError, NetworkError, TimeoutError } from './httpErrors';
 import { emptyFunc } from '~/services/api/utils';
+
+// setup ky
 
 const configuredKy = ky.create({
   prefixUrl: config.apiUrl,
@@ -28,7 +29,7 @@ const configuredKy = ky.create({
   }
 });
 
-// generic request handler
+// Generic Request Handler
 
 const defaultRequestOptions: RequestOptions = {
   kyOptions: {},
@@ -38,9 +39,6 @@ const defaultRequestOptions: RequestOptions = {
   responseBodyType: 'json'
 };
 
-/**
- * Generic Request Handler
- */
 export async function request(
   route: string,
   {
@@ -60,21 +58,10 @@ export async function request(
       responseBodyType // this usage sets the appropriate accept header
     ]();
   } catch (e) {
-    const translatedError = await mapError(e);
-
-    // invoke error hook with json answer
-    if (setErrors) {
-      const isErrorJson =
-        translatedError instanceof ApiError && e.response.json;
-      if (isErrorJson) {
-        const errorJson = await e.response.json();
-        setErrors(errorJson);
-      }
-    }
-
-    throw translatedError;
+    await handleError(e, responseBodyType, setErrors);
+  } finally {
+    setSubmitting(false);
   }
-  setSubmitting(false);
   return response;
 }
 
@@ -89,7 +76,14 @@ function prepareKyOptions(requestConfig: KyOptions = {}) {
   };
 }
 
-// shorthand methods
+/*
+    _____  _                   _    _                        _
+  /  ___|| |                 | |  | |                      | |
+  \ `--. | |__    ___   _ __ | |_ | |__    __ _  _ __    __| | ___
+   `--. \| '_ \  / _ \ | '__|| __|| '_ \  / _` || '_ \  / _` |/ __|
+  /\__/ /| | | || (_) || |   | |_ | | | || (_| || | | || (_| |\__ \
+  \____/ |_| |_| \___/ |_|    \__||_| |_| \__,_||_| |_| \__,_||___/
+ */
 
 export function get(
   route: string,
@@ -128,6 +122,33 @@ export function patch(
   return request(route, { ...requestOptions, kyOptions: mergedKyOptions });
 }
 
+/*
+    _____                            _   _                    _  _  _
+  |  ___|                          | | | |                  | || |(_)
+  | |__   _ __  _ __   ___   _ __  | |_| |  __ _  _ __    __| || | _  _ __    __ _
+  |  __| | '__|| '__| / _ \ | '__| |  _  | / _` || '_ \  / _` || || || '_ \  / _` |
+  | |___ | |   | |   | (_) || |    | | | || (_| || | | || (_| || || || | | || (_| |
+  \____/ |_|   |_|    \___/ |_|    \_| |_/ \__,_||_| |_| \__,_||_||_||_| |_| \__, |
+                                                                              __/ |
+                                                                             |___/
+ */
+
+async function handleError(e, responseBodyType, setErrors) {
+  const translatedError = await mapError(e, responseBodyType);
+
+  // invoke error hook with json answer (if any)
+  if (setErrors) {
+    const isErrorJson =
+      translatedError instanceof ApiError && responseBodyType === 'json';
+    if (isErrorJson) {
+      const errorJson = await e.response.json();
+      setErrors(errorJson);
+    }
+  }
+
+  throw translatedError;
+}
+
 /**
  * Translate errors reported by ky/fetch to a set of custom exceptions
  * which we can use to make decisions on how to handle specific errors.
@@ -141,30 +162,44 @@ export function patch(
  * // TODO: clarify what kind of errors we want to differentiate in the client. Do we want to handle 401s, 404s etc. specifically?
  * // TODO: move explanations from code docs to PR
  */
-async function mapError(e): Promise<Error> {
+async function mapError(e, responseBodyType: ResponseBodyType): Promise<Error> {
   let customError;
+  let errorMessage;
+  let statusCode;
   switch (e.constructor) {
     case ky.HTTPError: // a non 2xx error code was found
-      if (e.response.json != null) {
-        // the API responded with a JSON
-        const errorJson = await e.response.json();
-        // assume that the error message is found under the key detail
-        customError = new ApiError(
-          errorJson.detail
-        );
-      } else {
-        const textError = await e.response.text();
-        customError = new ApiError(textError); // TODO: pass status code to error object
-      }
+      errorMessage = await parseErrorResponse(e.response, responseBodyType);
+      statusCode = e.response.status;
+      customError = new ApiError(errorMessage, statusCode);
       break;
     case ky.TimeoutError:
       customError = new TimeoutError(e.message);
       break;
-    case FetchError:
-      customError = new NetworkError(e);
+    case TypeError:
+      customError = e; // throw as is
       break;
     default:
-      customError = new Error(e);
+      customError = new NetworkError(e);
+      break;
   }
   return customError;
+}
+
+async function parseErrorResponse(
+  errorResponse: Response,
+  responseBodyType: ResponseBodyType
+): Promise<string> {
+  // early exit: throw if we cannot handle // TODO: write unit test for this
+  const isHandledErrorBodyType = ['json', 'text'].includes(responseBodyType);
+  if (!isHandledErrorBodyType) {
+    throw new TypeError(
+      'Handling of errors stated in other body types other than json or text is not implemented'
+    );
+  }
+
+  const errorBody = await errorResponse[responseBodyType]();
+
+  return responseBodyType === 'json'
+    ? errorBody.detail // assume that body is structured following a convention made in the backend
+    : errorBody;
 }
