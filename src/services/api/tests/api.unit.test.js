@@ -2,13 +2,13 @@ import fetchMock from 'fetch-mock';
 import { Response } from 'node-fetch';
 import * as api from '../apiService';
 import config from '~/config'; // TODO: consider mocking this
-import { selectors as UserStateSelectors } from '~/pages/User/UserState';
 import {
   ApiError,
   GENERIC_ERROR_MESSAGE,
   NetworkError,
   TimeoutError
 } from '~/services/api/httpErrors';
+import store from '~/store';
 import { combineURLs } from '~/services/api/utils';
 
 // dedupe values used in multiple places within the test file
@@ -22,6 +22,7 @@ const globals = {
 describe('API module', () => {
   afterEach(() => {
     fetchMock.restore();
+    jest.restoreAllMocks();
   });
 
   describe('Generic request handler', () => {
@@ -32,12 +33,21 @@ describe('API module', () => {
       expect(url).toEqual(globals.compileAbsoluteRoute(globals.randomRoute));
     });
 
-    it('reads the token from the store before the request', async () => {
-      const spy = jest.spyOn(UserStateSelectors, 'getToken');
+    it('reads the token from the store before the request and adds it to the request header', async () => {
+      const testToken = 'abc123';
+      const mockState = {
+        UserState: {
+          token: testToken
+        }
+      };
+      jest.mock('~/store');
+      store.getState = () => mockState;
       fetchMock.mock(`end:${globals.randomRoute}`, {});
+
       await api.request(globals.randomRoute);
-      expect(spy).toHaveBeenCalled();
-      // TODO: write integration test that sets up a store with a test token and that makes sure the token is attached to the request. OR try mocking the store, see https://stackoverflow.com/a/56401114/5418403
+
+      const fetchOptions = fetchMock.lastOptions();
+      expect(fetchOptions.headers.Authorization).toContain(`JWT ${testToken}`); // headers are wrapped in array, see https://github.com/node-fetch/node-fetch/issues/219#issuecomment-270946419
     });
 
     it('can request text content', async () => {
