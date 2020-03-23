@@ -76,30 +76,41 @@ describe('API module', () => {
 
     describe('Error handling', () => {
       describe('translation of http client errors into custom Error classes', () => {
-        it('rethrows an error JSON as ApiError stating its error message and error code', async () => {
-          const testResponseBody = { detail: 'Nicht gefunden.' };
-          const testResponseOptions = { status: 404, statusText: 'Not found' };
-          const errResponse = new Response(
-            JSON.stringify(testResponseBody),
-            testResponseOptions
-          );
-          fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
+        it(
+          'identifies an error JSON response by its request headers ' +
+            'and rethrows it as ApiError stating its error message and error code',
+          async () => {
+            const testResponseBody = { detail: 'Nicht gefunden.' };
+            const testResponseOptions = {
+              status: 404,
+              statusText: 'Not found',
+              headers: { 'content-type': 'application/json' }
+            };
+            const errResponse = new Response(
+              JSON.stringify(testResponseBody),
+              testResponseOptions
+            );
+            fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
 
-          let thrownError;
-          try {
-            await api.request(globals.randomRoute);
-          } catch (e) {
-            thrownError = e;
+            let thrownError;
+            try {
+              await api.request(globals.randomRoute);
+            } catch (e) {
+              thrownError = e;
+            }
+            expect(thrownError).toBeInstanceOf(ApiError);
+            expect(thrownError.message).toBe(testResponseBody.detail);
+            expect(thrownError.code).toBe(testResponseOptions.status);
           }
-          expect(thrownError).toBeInstanceOf(ApiError);
-          expect(thrownError.message).toBe(testResponseBody.detail);
-          expect(thrownError.code).toBe(testResponseOptions.status);
-        });
+        );
 
         it('rethrows an error JSON as ApiError not stating a detail with a generic error message', async () => {
           // the key describing the error intentionally breaches our conventions for error answers
           const testResponseBody = { customError: 'wholey moly' };
-          const testResponseOptions = { status: 500 };
+          const testResponseOptions = {
+            status: 500,
+            headers: { 'content-type': 'application/json' }
+          };
           const errResponse = new Response(
             JSON.stringify(testResponseBody),
             testResponseOptions
@@ -150,7 +161,7 @@ describe('API module', () => {
         });
       });
 
-      describe('invokation of request hooks', () => {
+      describe('invocation of request hooks', () => {
         it('still invokes `setSubmitting` twice even if the request fails', async () => {
           const setSubmittingSpy = jest.fn();
 
@@ -172,11 +183,11 @@ describe('API module', () => {
           expect(setSubmittingSpy.mock.calls).toEqual([[true], [false]]);
         });
 
-        it('calls the provided request hook `setError` with the original error JSON returned by the API', async () => {
+        it('calls the provided request hook `setError` with the error message JSON returned by the API', async () => {
           const setErrorSpy = jest.fn();
 
-          const errorJson = { detail: 'nuclear core melt accident' };
-          const errResponse = new Response(JSON.stringify(errorJson), {
+          const errorMessage = 'nuclear core melt accident';
+          const errResponse = new Response(errorMessage, {
             status: 500
           });
           fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
@@ -187,8 +198,7 @@ describe('API module', () => {
               }
             });
           } catch (e) {
-            expect(e).toBeInstanceOf(ApiError);
-            expect(setErrorSpy).toHaveBeenCalledWith(errorJson);
+            expect(setErrorSpy).toHaveBeenCalledWith(errorMessage);
           }
         });
       });

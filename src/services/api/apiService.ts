@@ -7,7 +7,7 @@
 import ky, { Options as KyOptions } from 'ky';
 import config from '~/config';
 import store from '~/store';
-import { JSONValue, RequestOptions, ResponseBodyType } from './types';
+import { JSONValue, RequestOptions, ExpectedResponseBodyType } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
 import { ApiError, NetworkError, TimeoutError } from './httpErrors';
 import { emptyFunc } from '~/services/api/utils';
@@ -58,7 +58,7 @@ export async function request(
       responseBodyType // this usage sets the appropriate accept header
     ]();
   } catch (e) {
-    await handleError(e, responseBodyType, setErrors);
+    await handleError(e, setErrors);
   } finally {
     setSubmitting(false);
   }
@@ -133,17 +133,12 @@ export function patch(
                                                                              |___/
  */
 
-async function handleError(e, responseBodyType, setErrors) {
-  const translatedError = await mapError(e, responseBodyType);
+async function handleError(e, setErrors) {
+  const { translatedError, errorMessage } = await mapError(e);
 
   // invoke error hook with json answer (if any)
-  if (setErrors) {
-    const isErrorJson =
-      translatedError instanceof ApiError && responseBodyType === 'json';
-    if (isErrorJson) {
-      const errorJson = await e.response.json();
-      setErrors(errorJson);
-    }
+  if (setErrors && errorMessage) {
+    setErrors(errorMessage);
   }
 
   throw translatedError;
@@ -162,44 +157,68 @@ async function handleError(e, responseBodyType, setErrors) {
  * // TODO: clarify what kind of errors we want to differentiate in the client. Do we want to handle 401s, 404s etc. specifically?
  * // TODO: move explanations from code docs to PR
  */
-async function mapError(e, responseBodyType: ResponseBodyType): Promise<Error> {
-  let customError;
+async function mapError(
+  e
+): Promise<{
+  errorMessage: string;
+  translatedError: any; // TODO: type Error
+}> {
+  let translatedError;
   let errorMessage;
   let statusCode;
   switch (e.constructor) {
     case ky.HTTPError: // a non 2xx error code was found
-      errorMessage = await parseErrorResponse(e.response, responseBodyType);
+      errorMessage = await parseErrorResponse(e.response);
       statusCode = e.response.status;
-      customError = new ApiError(errorMessage, statusCode);
+      translatedError = new ApiError(errorMessage, statusCode);
       break;
     case ky.TimeoutError:
-      customError = new TimeoutError(e.message);
+      translatedError = new TimeoutError(e.message);
       break;
     case TypeError:
-      customError = e; // throw as is
+      translatedError = e; // throw as is
       break;
     default:
-      customError = new NetworkError(e);
+      translatedError = new NetworkError(e); // FIXME: every unexpected Error instance (that is not a TypeError) will be handled as NetworkError
       break;
   }
-  return customError;
+  return { translatedError, errorMessage }; // return body content to not parse body multiple times, see https://github.com/node-fetch/node-fetch/issues/533
 }
 
-async function parseErrorResponse(
-  errorResponse: Response,
-  responseBodyType: ResponseBodyType
-): Promise<string> {
-  // early exit: throw if we cannot handle // TODO: write unit test for this
-  const isHandledErrorBodyType = ['json', 'text'].includes(responseBodyType);
+async function parseErrorResponse(errorResponse: Response): Promise<string> {
+  const responseHeaders: Headers = errorResponse.headers;
+  const errorResponseType = detectActualResponseBodyType(responseHeaders);
+
+  // early exit: throw when body type is detected that we did not plan to handle
+  const isHandledErrorBodyType = ['json', 'text'].includes(errorResponseType);
   if (!isHandledErrorBodyType) {
-    throw new TypeError(
+    throw new TypeError( // TODO: provoke in unit test
       'Handling of errors stated in other body types other than json or text is not implemented'
     );
   }
 
-  const errorBody = await errorResponse[responseBodyType]();
+  const errorBody = await errorResponse[errorResponseType]();
 
-  return responseBodyType === 'json'
+  return errorResponseType === 'json'
     ? errorBody.detail // assume that body is structured following a convention made in the backend
     : errorBody;
+}
+
+function detectActualResponseBodyType(
+  headers: Headers
+): ExpectedResponseBodyType {
+  let errorResponseType: ExpectedResponseBodyType;
+  const CONTENT_TYPE_KEY = 'Content-Type';
+  const contentType: string | null = headers.get(CONTENT_TYPE_KEY);
+  if (contentType === 'application/json') {
+    // TODO: clarify if we need to handle cases where the response header is not set correctly
+    errorResponseType = 'json';
+  }
+  if (contentType.startsWith('text/plain')) {
+    errorResponseType = 'text';
+  }
+  if (!errorResponseType) {
+    throw new TypeError('Failed to extract the response mime type'); // TODO: provoke in unit test
+  }
+  return errorResponseType;
 }
