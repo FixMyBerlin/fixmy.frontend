@@ -22,6 +22,6 @@ export default {
     apiEndpoints.staging,
   colors: {
     ...defaultColors,
-    interaction: '#6f9ed4'
+    interaction: '#6E9BD2'
   }
 };
