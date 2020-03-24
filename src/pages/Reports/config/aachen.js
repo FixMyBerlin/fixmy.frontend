@@ -2,8 +2,8 @@ export default {
   overviewMap: {
     style: 'mapbox://styles/hejco/ck7q440d50b6s1ip928c7zlbb',
     bounds: [
-      [6.05, 50.71],
-      [6.11, 50.82]
+      [6.054187, 50.759965],
+      [6.113367, 50.787419]
     ],
     maxBounds: [
       [5.87, 50.5],
