@@ -77,14 +77,13 @@ describe('API module', () => {
     describe('Error handling', () => {
       describe('translation of http client errors into custom Error classes', () => {
         it(
-          'identifies an error JSON response by its request headers ' +
+          'identifies an error JSON response ' +
             'and rethrows it as ApiError stating its error message and error code',
           async () => {
             const testResponseBody = { detail: 'Nicht gefunden.' };
             const testResponseOptions = {
               status: 404,
-              statusText: 'Not found',
-              headers: { 'content-type': 'application/json' }
+              statusText: 'Not found'
             };
             const errResponse = new Response(
               JSON.stringify(testResponseBody),
@@ -108,8 +107,7 @@ describe('API module', () => {
           // the key describing the error intentionally breaches our conventions for error answers
           const testResponseBody = { customError: 'wholey moly' };
           const testResponseOptions = {
-            status: 500,
-            headers: { 'content-type': 'application/json' }
+            status: 500
           };
           const errResponse = new Response(
             JSON.stringify(testResponseBody),

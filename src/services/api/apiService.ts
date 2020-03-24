@@ -186,39 +186,24 @@ async function mapError(
 }
 
 async function parseErrorResponse(errorResponse: Response): Promise<string> {
-  const responseHeaders: Headers = errorResponse.headers;
-  const errorResponseType = detectActualResponseBodyType(responseHeaders);
+  let errorJson, errorText;
 
-  // early exit: throw when body type is detected that we did not plan to handle
-  const isHandledErrorBodyType = ['json', 'text'].includes(errorResponseType);
-  if (!isHandledErrorBodyType) {
+  // try parse error as text and then as JSON to not rely on content-type definitions response headers
+  try {
+    errorText = await errorResponse.text();
+  } catch (e) {
     throw new TypeError( // TODO: provoke in unit test
-      'Handling of errors stated in other body types other than json or text is not implemented'
+      'Handling of error responses stated in other body types other than json or text is not implemented'
     );
   }
 
-  const errorBody = await errorResponse[errorResponseType]();
+  try {
+    errorJson = JSON.parse(errorText);
+  } catch (e) {
+    // don't panic, its just text content
+  }
 
-  return errorResponseType === 'json'
-    ? errorBody.detail // assume that body is structured following a convention made in the backend
-    : errorBody;
-}
-
-function detectActualResponseBodyType(
-  headers: Headers
-): ExpectedResponseBodyType {
-  let errorResponseType: ExpectedResponseBodyType;
-  const CONTENT_TYPE_KEY = 'Content-Type';
-  const contentType: string | null = headers.get(CONTENT_TYPE_KEY);
-  if (contentType === 'application/json') {
-    // TODO: clarify if we need to handle cases where the response header is not set correctly
-    errorResponseType = 'json';
-  }
-  if (contentType.startsWith('text/plain')) {
-    errorResponseType = 'text';
-  }
-  if (!errorResponseType) {
-    throw new TypeError('Failed to extract the response mime type'); // TODO: provoke in unit test
-  }
-  return errorResponseType;
+  return !!errorJson
+    ? errorJson.detail // assume that body is structured following a convention made in the backend
+    : errorText;
 }
