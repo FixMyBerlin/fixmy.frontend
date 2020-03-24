@@ -22,7 +22,8 @@ export default {
       searchStringMinLength: 3
     }
   },
-  title: 'Fahrradbügel für Aachen',
+  form: { newsletter: false },
+  title: 'Radbügel für Aachen',
   region: 'Aachen',
   intro:
     'Damit du dein Fahrrad überall sicher abschließen kannst, installiert die Stadt Aachen neue Fahrradbügel. Da du als Bürger:in am besten weißt, wo du dein Fahrrad abstellst, kannst du hier melden, wo genau du neue Bügel benötigst.',
@@ -65,7 +66,7 @@ export default {
         Nach Abschluss des Meldezeitraums werden die Mitarbeiter und Mitarbeiterinnen der Stadt Aachen alle Meldungen anschauen und auswerten, welche umsetzbar sind. 
         Wenn du deine Mailadresse hinterlegt hast, bekommst du auf jeden Fall eine Rückmeldung, 
         ob dein Wunsch realisiert werden kann. Wenn es Rückfragen gibt, wird sich die Stadt ebenfalls bei dir melden. 
-        Zusätzlich wird auf FixMyAachen veröffentlicht, an welchen Orten neue Fahrradbügel installiert werden.
+        Zusätzlich wird über Radbügel für Aachen veröffentlicht, an welchen Orten neue Fahrradbügel installiert werden.
       `
     },
     {

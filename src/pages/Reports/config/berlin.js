@@ -23,6 +23,7 @@ export default {
       searchStringMinLength: 3
     }
   },
+  form: { placementNotice: true },
   title:
     'Fahrradbügel für Friedrichshain-Kreuzberg (Status: In Bearbeitung durch den Bezirk)',
   region: 'Friedrichshain-Kreuzberg',
