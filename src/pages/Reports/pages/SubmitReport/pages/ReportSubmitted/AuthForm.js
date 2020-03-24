@@ -83,6 +83,7 @@ export const signupFormConfig = [
   },
   {
     id: 'newsletter',
+    enabled: config.reports.form.newsletter,
     value: false,
     type: 'checkbox',
     label: `Ich möchte den ${config.siteTitle}-Newsletter mit Updates zu Planungen erhalten`
@@ -182,20 +183,22 @@ class AuthForm extends Component {
           >
             {({ values, errors, handleSubmit, isSubmitting, handleChange }) => (
               <Form onSubmit={handleSubmit}>
-                {signupFormConfig.map((d) => (
-                  <FormField
-                    key={`feedbackfield__${d.id}`}
-                    className={`formtype-${d.type}`}
-                    {...d}
-                    values={values}
-                    errors={errors}
-                    handleChange={handleChange}
-                    disabled={
-                      d.id === 'newsletter' &&
-                      (!values.login || values.email === '')
-                    }
-                  />
-                ))}
+                {signupFormConfig
+                  .filter((fieldConfig) => fieldConfig.enabled !== false)
+                  .map((d) => (
+                    <FormField
+                      key={`feedbackfield__${d.id}`}
+                      className={`formtype-${d.type}`}
+                      {...d}
+                      values={values}
+                      errors={errors}
+                      handleChange={handleChange}
+                      disabled={
+                        d.id === 'newsletter' &&
+                        (!values.login || values.email === '')
+                      }
+                    />
+                  ))}
                 {errors.server && <ErrorLabel>{errors.server}</ErrorLabel>}
                 <ButtonWrapper>
                   <SubmitButton type="submit" disabled={isSubmitting}>

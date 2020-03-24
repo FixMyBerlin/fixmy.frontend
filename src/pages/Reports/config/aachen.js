@@ -22,6 +22,7 @@ export default {
       searchStringMinLength: 3
     }
   },
+  form: { newsletter: false },
   title: 'Radbügel für Aachen',
   region: 'Aachen',
   intro:
