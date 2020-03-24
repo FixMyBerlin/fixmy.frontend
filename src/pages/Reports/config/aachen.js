@@ -12,8 +12,8 @@ export default {
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
-    boundaryGeodataUrl: '/data/aachen.json',
-    outofBoundaryText: 'Diese Adresse liegt außerhalb Aachens',
+    boundaryGeodataUrl: '/data/aachen.geojson',
+    outofBoundaryText: 'Dieser Ort gehört leider nicht zum Meldegebiet',
     reverseGeocoderUrl:
       'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json',
     paddingInDegree: 0.1,
@@ -26,7 +26,7 @@ export default {
     title: 'Radbügel für Aachen',
     logo: false
   },
-  form: { newsletter: false },
+  form: { newsletter: false, zoomOutForInvalidLocations: false },
   title: 'Radbügel für Aachen',
   region: 'Aachen',
   intro:
