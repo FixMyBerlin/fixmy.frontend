@@ -2,6 +2,8 @@ import map from './map';
 import menu from './menu';
 import routes from './routes';
 
+import defaultColors from '~/config/default/colors';
+
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
   staging: 'https://fixmyaachen-staging.netlify.com/api/aachen/next',
@@ -17,5 +19,9 @@ export default {
   apiUrl:
     process.env.API_URL ||
     apiEndpoints[process.env.BACKEND] ||
-    apiEndpoints.staging
+    apiEndpoints.staging,
+  colors: {
+    ...defaultColors,
+    interaction: '#6f9ed4'
+  }
 };
