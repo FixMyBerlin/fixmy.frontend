@@ -2,6 +2,8 @@ export default {
   size: 325,
   profileLabel: 'Zum Profil',
   loginLabel: 'Login',
+  logo: false,
+  twitter: false,
   items: [
     {
       type: 'link',
@@ -12,38 +14,13 @@ export default {
     },
     {
       type: 'separator',
-      label: 'Weiteres'
-    },
-    {
-      type: 'link',
-      label: 'Über uns',
-      link: '/info',
-      icon: 'info',
-      border: true
-    },
-    {
-      type: 'link',
-      label: 'FAQ',
-      link: '/faq',
-      icon: 'question',
-      border: true
-    },
-    {
-      type: 'link',
-      label: 'API',
-      link: '/api',
-      icon: 'api',
-      border: false
+      label: ''
     }
   ],
   footeritems: [
     {
-      label: 'Presse',
-      link: '/presse'
-    },
-    {
       label: 'Impressum',
-      link: '/impressum'
+      link: 'http://www.aachen.de/DE/stadt_buerger/allgemeines/impressum.html '
     },
     {
       label: 'Datenschutz',

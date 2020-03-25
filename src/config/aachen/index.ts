@@ -1,6 +1,7 @@
 import map from './map';
 import menu from './menu';
 import routes from './routes';
+import staticpages from './staticpages';
 
 import defaultColors from '~/config/default/colors';
 
@@ -14,6 +15,7 @@ export default {
   map,
   menu,
   routes,
+  staticpages,
   siteTitle: 'Radbügel für Aachen',
   feedbackMail: 'radbuegel@aachen.de',
   apiUrl:
