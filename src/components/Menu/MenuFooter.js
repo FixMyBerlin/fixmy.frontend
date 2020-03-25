@@ -8,19 +8,6 @@ import { close } from '~/AppState';
 import FMBLogo from '~/components/FMBLogo';
 import SocialLinks from '~/components/Social/SocialLinks';
 
-function getTextAlign(index) {
-  switch (index % 3) {
-    case 0:
-      return 'left';
-    case 1:
-      return 'center';
-    case 2:
-      return 'right';
-    default:
-      return 'center';
-  }
-}
-
 const Footer = styled.div`
   background: ${config.colors.lightgrey};
   color: ${config.colors.darkgrey};
@@ -47,11 +34,26 @@ const StyledLink = styled(NavLink).attrs((props) => ({ to: props.to }))`
   text-align: center;
   text-decoration: none;
   color: #635638;
-  text-align: ${(props) => getTextAlign(props.index)};
+`;
+
+const ExternalLink = styled.a`
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  color: #635638;
 `;
 
 function renderItem(item, index) {
-  return (
+  return item.external === true ? (
+    <ExternalLink
+      href={item.link}
+      key={item.label}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {item.label}
+    </ExternalLink>
+  ) : (
     <StyledLink key={item.label} to={item.link} index={index}>
       {item.label}
     </StyledLink>
