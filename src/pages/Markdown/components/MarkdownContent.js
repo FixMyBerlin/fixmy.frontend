@@ -37,7 +37,7 @@ const StyledMarkdown = styled(Markdown)`
 
   a {
     ${getLinkStyles()}
-    color: #fabe28;
+    color: ${config.colors.interaction};
     text-decoration: none;
   }
 

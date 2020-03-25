@@ -57,7 +57,7 @@ const StyledMenuButton = styled(MenuButton)`
 `;
 
 const StyledHeading = styled.h2`
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: '${config.titleFont}', sans-serif;
   font-size: 32px;
   font-weight: bold;
   font-style: normal;
