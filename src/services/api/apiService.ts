@@ -7,7 +7,7 @@
 import ky, { Options as KyOptions } from 'ky';
 import config from '~/config';
 import store from '~/store';
-import { JSONValue, RequestOptions, ExpectedResponseBodyType } from './types';
+import { JSONValue, RequestOptions } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
 import { ApiError, NetworkError, TimeoutError } from './httpErrors';
 import { emptyFunc } from '~/services/api/utils';
@@ -203,7 +203,7 @@ async function parseErrorResponse(errorResponse: Response): Promise<string> {
     // don't panic, its just text content
   }
 
-  return !!errorJson
+  return errorJson
     ? errorJson.detail // assume that body is structured following a convention made in the backend
     : errorText;
 }
