@@ -51,15 +51,13 @@ const StepNumber = styled.span`
   font-weight: bold;
 `;
 
-const colors = [config.colors.interaction, '#ff99d5', config.colors.black];
-
 export default ({ steps }) => (
   <Wrapper>
     {steps.map(({ text }, step) => (
       // Array index may be used as index here because the array is static
       // eslint-disable-next-line react/no-array-index-key
       <Item key={`step__${step}`}>
-        <StepIndicator color={colors[step]}>
+        <StepIndicator color={config.reports.landing.stepColors[step]}>
           <StepNumber>{step + 1}</StepNumber>
         </StepIndicator>
         <Text>{text}</Text>

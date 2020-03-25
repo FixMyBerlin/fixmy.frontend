@@ -1,3 +1,5 @@
+import config from '~/config';
+
 export default {
   overviewMap: {
     style: 'mapbox://styles/hejco/cjpnt0cc41ipy2rlpu19jgt7a',
@@ -23,7 +25,10 @@ export default {
       searchStringMinLength: 3
     }
   },
-  landing: { title: 'Melde neue Fahrradbügel für Friedrichshain-Kreuzberg' },
+  landing: {
+    title: 'Melde neue Fahrradbügel für Friedrichshain-Kreuzberg',
+    stepColors: [config.colors.interaction, '#ff99d5', config.colors.black]
+  },
   form: { placementNotice: true },
   title:
     'Fahrradbügel für Friedrichshain-Kreuzberg (Status: In Bearbeitung durch den Bezirk)',
