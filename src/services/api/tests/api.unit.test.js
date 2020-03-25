@@ -231,7 +231,24 @@ describe('API module', () => {
       expect(body).toMatch(JSON.stringify(mockedPayload));
     });
 
-    describe('error handling', () => {});
+    it('provides a shorthand to PATCH json data', async () => {
+      const mockedJsonResponse = { a: 1, b: 2 };
+      const mockedRequestBody = { b: 2 };
+
+      fetchMock.patch(`end:${globals.randomRoute}`, mockedJsonResponse);
+      const response = await api.patch(globals.randomRoute, mockedRequestBody);
+
+      const fetchOptions = fetchMock.lastOptions();
+      expect(fetchOptions.headers['content-type']).toContain(
+        'application/json'
+      );
+      expect(fetchOptions.headers.accept).toContain('application/json');
+      expect(fetchOptions.method).toEqual('PATCH');
+      expect(response).toEqual(mockedJsonResponse);
+
+      const body = await fetchOptions.body;
+      expect(body).toMatch(JSON.stringify(mockedRequestBody));
+    });
   });
 
   test.todo('patch request');
