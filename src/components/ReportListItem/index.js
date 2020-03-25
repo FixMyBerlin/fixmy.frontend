@@ -43,7 +43,7 @@ const ItemTitle = styled.div`
 const ItemSubTitle = styled.div`
   font-size: 14px;
   font-weight: 700;
-  font-family: 'Roboto Slab', serif;
+  font-family: '${config.titleFont}', serif;
   color: ${config.colors.darkbg};
   margin-top: 16px;
 `;

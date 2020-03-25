@@ -57,7 +57,7 @@ const StyledMenuButton = styled(MenuButton)`
 `;
 
 const StyledHeading = styled.h2`
-  font-family: 'Roboto Slab', sans-serif;
+  font-family: '${config.titleFont}', sans-serif;
   font-size: 32px;
   font-weight: bold;
   font-style: normal;
@@ -94,14 +94,16 @@ const TopSection = ({ toUrl }) => (
   <Section>
     <FlexWrapper>
       <StyledMenuButton whiteFill="true" />
-      <img
-        width="92px"
-        src={FixMyLogo}
-        alt="logo"
-        data-cy="reports-landing-logo"
-      />
+      {config.reports.landing?.logo !== false && (
+        <img
+          width="92px"
+          src={FixMyLogo}
+          alt="logo"
+          data-cy="reports-landing-logo"
+        />
+      )}
       <StyledHeading data-cy="reports-landing-header">
-        Melde neue Fahrradbügel für {config.reports.region}
+        {config.reports.landing?.title}
       </StyledHeading>
       <StyledButton className="wiggle" data-cy="reports-landing-cta">
         <StyledLink to={toUrl}>

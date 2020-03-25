@@ -23,6 +23,7 @@ export default {
       searchStringMinLength: 3
     }
   },
+  landing: { title: 'Melde neue Fahrradbügel für Friedrichshain-Kreuzberg' },
   form: { placementNotice: true },
   title:
     'Fahrradbügel für Friedrichshain-Kreuzberg (Status: In Bearbeitung durch den Bezirk)',

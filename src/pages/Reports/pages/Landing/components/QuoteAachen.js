@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
 
-import Portrait from '~/images/reports/aachen_marcel_philipp.jpg';
+import Portrait from '~/images/reports/marcel-philipp@2x.jpg';
 import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 

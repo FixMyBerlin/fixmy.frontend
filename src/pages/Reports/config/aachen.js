@@ -2,18 +2,18 @@ export default {
   overviewMap: {
     style: 'mapbox://styles/hejco/ck7q440d50b6s1ip928c7zlbb',
     bounds: [
-      [6.05, 50.71],
-      [6.11, 50.82]
+      [6.054187, 50.759965],
+      [6.113367, 50.787419]
     ],
     maxBounds: [
-      [5.87, 50.5],
-      [6.5, 50.95]
+      [5.9, 50.6],
+      [6.3, 50.9]
     ]
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
-    boundaryGeodataUrl: '/data/aachen.json',
-    outofBoundaryText: 'Diese Adresse liegt außerhalb Aachens',
+    boundaryGeodataUrl: '/data/aachen.geojson',
+    outofBoundaryText: 'Dieser Ort gehört leider nicht zum Meldegebiet',
     reverseGeocoderUrl:
       'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json',
     paddingInDegree: 0.1,
@@ -22,7 +22,11 @@ export default {
       searchStringMinLength: 3
     }
   },
-  form: { newsletter: false },
+  landing: {
+    title: 'Radbügel für Aachen',
+    logo: false
+  },
+  form: { newsletter: false, zoomOutForInvalidLocations: false },
   title: 'Radbügel für Aachen',
   region: 'Aachen',
   intro:

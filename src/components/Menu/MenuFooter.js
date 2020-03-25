@@ -32,17 +32,17 @@ const Footer = styled.div`
 
 const StyledFMBLogo = styled(FMBLogo)`
   text-align: center;
+  margin-bottom: 1rem;
 `;
 
 const FooterLinks = styled.div`
   font-size: 14px;
   display: flex;
-  margin-top: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const StyledLink = styled(NavLink).attrs((props) => ({ to: props.to }))`
-  width: 33.3333%;
   padding: 4px 8px;
   text-align: center;
   text-decoration: none;
@@ -62,13 +62,15 @@ class MenuFooter extends PureComponent {
   render() {
     return (
       <Footer>
-        <Link onClick={() => Store.dispatch(close())} to="/">
-          <StyledFMBLogo />
-        </Link>
+        {config.menu.logo !== false && (
+          <Link onClick={() => Store.dispatch(close())} to="/">
+            <StyledFMBLogo />
+          </Link>
+        )}
         <FooterLinks>
           {config.menu.footeritems.map((item, i) => renderItem(item, i))}
         </FooterLinks>
-        <SocialLinks title="Folge uns" />
+        {config.menu.twitter !== false && <SocialLinks title="Folge uns" />}
       </Footer>
     );
   }
