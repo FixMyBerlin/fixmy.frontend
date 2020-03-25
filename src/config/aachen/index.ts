@@ -26,5 +26,5 @@ export default {
     ...defaultColors,
     interaction: '#6E9BD2'
   },
-  titleFont: 'Roboto Slab'
+  titleFont: 'The Mix'
 };
