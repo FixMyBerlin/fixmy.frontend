@@ -120,7 +120,7 @@ describe('API module', () => {
           );
         });
 
-        it('rethrows a non-JSON error as ApiError stating its detail', async () => {
+        it('rethrows a text error as ApiError stating its detail', async () => {
           const testResponse = 'something went south';
           const testResponseOptions = { status: 404, statusText: 'Not found' };
           const errResponse = new Response(testResponse, testResponseOptions);
@@ -157,6 +157,12 @@ describe('API module', () => {
             NetworkError
           );
         });
+
+        test.todo(
+          'throws a typeError if the error response is not a text or a json', () => {
+            // not sure if we really need this except to have test coverage
+          }
+        );
       });
 
       describe('invocation of request hooks', () => {
