@@ -27,7 +27,8 @@ export default {
   footeritems: [
     {
       label: 'Impressum',
-      link: 'http://www.aachen.de/DE/stadt_buerger/allgemeines/impressum.html '
+      link: 'http://www.aachen.de/DE/stadt_buerger/allgemeines/impressum.html',
+      external: true
     },
     {
       label: 'Datenschutz',

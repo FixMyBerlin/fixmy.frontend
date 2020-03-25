@@ -10,7 +10,11 @@ import ContentPageWrapper from '~/components/ContentPageWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Button from '~/components/Button';
 
-import verifyImageSrc from '~/images/user-verify.png';
+import verifyImageFMB from '~/images/user-verify.png';
+import verifyImageAachen from '~/images/aachen/user-verify.svg';
+
+const verifyImage =
+  config.region === 'aachen' ? verifyImageAachen : verifyImageFMB;
 
 const StyledHeading = styled(Heading)`
   margin: 6px 0 8px 0;
@@ -66,7 +70,7 @@ const UserVerify = ({ match, location }) => {
           : 'Super, dein Account ist aktiviert'}
       </StyledHeading>
 
-      <VerifyImage src={verifyImageSrc} />
+      <VerifyImage src={verifyImage} />
 
       {!serverError && (
         <>

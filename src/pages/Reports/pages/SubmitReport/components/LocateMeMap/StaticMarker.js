@@ -7,8 +7,13 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { X } from 'react-feather';
 
+import config from '~/pages/Reports/config';
 import LocateMeMarkerIcon from '~/images/reports/locate-me-marker.svg';
+import LocateMeMarkerIconAachen from '~/images/aachen/locate-me-marker.svg';
 import TickIcon from '~/images/reports/locate-me-marker-tick.svg';
+
+const LocateMeMarker =
+  config.region === 'aachen' ? LocateMeMarkerIconAachen : LocateMeMarkerIcon;
 
 const MapcenterIndicator = styled(X)`
   font-weight: bold;
@@ -36,7 +41,7 @@ const Wrapper = styled.div`
   pointer-events: none;
 `;
 
-const StyledPinnedLocateMeMarkerIcon = styled(LocateMeMarkerIcon)`
+const StyledPinnedLocateMeMarkerIcon = styled(LocateMeMarker)`
   position: relative;
   top: 23px;
   filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.4));

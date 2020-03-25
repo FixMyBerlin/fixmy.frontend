@@ -10,7 +10,11 @@ import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import Button from '~/components/Button';
 import history from '~/history';
 
-import thanksImageSrc from '~/images/reports/letter.png';
+import letterImageFMB from '~/images/reports/letter.png';
+import letterImageAachen from '~/images/aachen/letter.svg';
+
+const letterImage =
+  config.region === 'aachen' ? letterImageAachen : letterImageFMB;
 
 const StyledHeading = styled(Heading)`
   margin: 6px 0 8px 0;
@@ -62,7 +66,7 @@ class ThanksPage extends PureComponent {
           zur Bestätigung.
         </StyledHeading>
 
-        <ThanksImg src={thanksImageSrc} />
+        <ThanksImg src={letterImage} />
 
         <Text>
           Sobald du deinen Login aktiviert hast, bekommst du Nachrichten zu
