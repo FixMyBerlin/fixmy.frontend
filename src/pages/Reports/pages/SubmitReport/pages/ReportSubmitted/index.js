@@ -10,10 +10,14 @@ import { addUserToReport } from '~/pages/Reports/apiservice';
 import { apiUser } from '~/pages/User/apiservice';
 
 import logger from '~/utils/logger';
-import thanksImageSrc from '~/images/reports/reports-thanks.png';
+import thanksImageFMB from '~/images/reports/reports-thanks.png';
+import thanksImageAachen from '~/images/aachen/Danke_Aachen_01.svg';
 
 import AuthForm from './AuthForm';
 import { StyledHeading, Text, ThanksImg } from './styledComponents';
+
+const thanksImage =
+  config.region === 'aachen' ? thanksImageAachen : thanksImageFMB;
 
 class ReportSubmitted extends PureComponent {
   componentDidMount = async () => {
@@ -66,7 +70,7 @@ class ReportSubmitted extends PureComponent {
           Du hilfst mit, {config.reports.region} radfreundlicher zu machen!
         </StyledHeading>
 
-        <ThanksImg src={thanksImageSrc} data-cy="reports-submitted-image" />
+        <ThanksImg src={thanksImage} data-cy="reports-submitted-image" />
 
         <Text data-cy="reports-submitted-text">
           {config.reports.thankYouNote.base}{' '}
