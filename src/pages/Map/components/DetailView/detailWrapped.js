@@ -117,6 +117,8 @@ function detailWrapped(Component) {
       const { geometry = null } = data;
       const center = getCenterFromGeom(geometry);
 
+      logger('Loaded project for detail view', data);
+
       if (center) {
         Store.dispatch(
           setView({
