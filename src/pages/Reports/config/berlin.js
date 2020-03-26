@@ -30,6 +30,7 @@ export default {
     stepColors: [config.colors.interaction, '#ff99d5', config.colors.black]
   },
   form: { placementNotice: true },
+  reportsDisabled: true,
   title:
     'Fahrradbügel für Friedrichshain-Kreuzberg (Status: In Bearbeitung durch den Bezirk)',
   region: 'Friedrichshain-Kreuzberg',
