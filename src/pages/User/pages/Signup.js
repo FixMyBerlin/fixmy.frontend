@@ -41,7 +41,7 @@ const formConfig = [
         Ja, ich stimme zu, dass {config.siteTitle} meine Daten speichert und
         verwendet. Die{' '}
         <ExternalLink
-          href="https://fixmyberlin.de/datenschutz"
+          href="/datenschutz"
           rel="noopener noreferrer"
           target="_blank"
         >
