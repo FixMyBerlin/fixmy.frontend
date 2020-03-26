@@ -39,7 +39,6 @@ const ReportDetails = ({ reportItem, token }) => {
         <Header {...reportItem} data-cy="reports-detail-header" />
         <HorizontalRuler className="light " />
         <Body {...reportItem} />
-        <HorizontalRuler className="light " />
       </Main>
 
       <DetailsFooter reportId={id} token={token} />

@@ -66,7 +66,6 @@ describe('The reports map', () => {
     it('has a title, status and description', () => {
       cyElem('reports-detail-title').should('be.visible');
       cyElem('reports-detail-status').should('be.visible');
-      cyElem('reports-detail-description').should('be.visible');
     });
     it('shows a date of creation', () => {
       cyElem('reports-detail-datetime').contains(/\d{2}\.\d{2}\.\d{4}/);

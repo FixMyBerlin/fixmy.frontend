@@ -87,7 +87,8 @@ Cypress.Commands.add('fmbLogin', () => {
   const formFunctions = {
     setSubmitting: () => null,
     setErrors: (err) => {
-      throw new Error(err);
+      cy.log('Error handling login:', err);
+      throw new Error('Error handling login:', err.message);
     },
     setStatus: () => null
   };
@@ -120,17 +121,21 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
 // mock a geo location request
 // https://github.com/cypress-io/cypress/issues/2671#issuecomment-564796821
 // MIT License per https://github.com/cypress-io/cypress/blob/develop/LICENSE
-Cypress.Commands.add(
-  'mockGeolocation',
-  (latitude = 52.490064, longitude = 13.38694) => {
-    return cy.window().then(($window) => {
-      return cy.stub(
-        $window.navigator.geolocation,
-        'getCurrentPosition',
-        (callback) => {
-          return callback({ coords: { latitude, longitude } });
-        }
-      );
-    });
-  }
-);
+Cypress.Commands.add('mockGeolocation', (coordinates) => {
+  const coords =
+    coordinates != null
+      ? coordinates
+      : {
+          latitude: 52.490064,
+          longitude: 13.38694
+        };
+  return cy.window().then(($window) => {
+    return cy.stub(
+      $window.navigator.geolocation,
+      'getCurrentPosition',
+      (callback) => {
+        return callback({ coords });
+      }
+    );
+  });
+});

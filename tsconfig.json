@@ -9,9 +9,9 @@
     "jsx": "react",
     "allowJs": true,
     "sourceMap": true,
-    "baseUrl": "src",
+    "baseUrl": "./",
     "paths": {
-      "~": ["./"]
+      "~/*": ["./src/*"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true

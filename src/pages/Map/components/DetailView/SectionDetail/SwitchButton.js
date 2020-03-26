@@ -28,7 +28,7 @@ const Button = styled.button`
   color: ${getColor};
   width: 100px;
   font-size: 14px;
-  font-family: 'Roboto Slab', serif;
+  font-family: '${config.titleFont}', serif;
   box-shadow: ${getBoxShadow};
   cursor: pointer;
 

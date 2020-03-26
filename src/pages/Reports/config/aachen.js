@@ -2,18 +2,18 @@ export default {
   overviewMap: {
     style: 'mapbox://styles/hejco/ck7q440d50b6s1ip928c7zlbb',
     bounds: [
-      [6.05, 50.71],
-      [6.11, 50.82]
+      [6.054187, 50.759965],
+      [6.113367, 50.787419]
     ],
     maxBounds: [
-      [5.87, 50.5],
-      [6.5, 50.95]
+      [5.9, 50.6],
+      [6.3, 50.9]
     ]
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
-    boundaryGeodataUrl: '/data/aachen.json',
-    outofBoundaryText: 'Diese Adresse liegt außerhalb Aachens',
+    boundaryGeodataUrl: '/data/aachen.geojson',
+    outofBoundaryText: 'Dieser Ort gehört leider nicht zum Meldegebiet',
     reverseGeocoderUrl:
       'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json',
     paddingInDegree: 0.1,
@@ -22,7 +22,20 @@ export default {
       searchStringMinLength: 3
     }
   },
-  title: 'Fahrradbügel für Aachen',
+  landing: {
+    title: 'Radbügel für Aachen',
+    logo: false,
+    stepColors: ['#FF99D4', '#CF0A7D', '#910055']
+  },
+  form: { newsletter: false, zoomOutForInvalidLocations: false },
+  title: 'Radbügel für Aachen',
+  tests: {
+    addressInput: 'kasino',
+    mockGeoLocation: {
+      latitude: 50.79,
+      longitude: 6.114
+    }
+  },
   region: 'Aachen',
   intro:
     'Damit du dein Fahrrad überall sicher abschließen kannst, installiert die Stadt Aachen neue Fahrradbügel. Da du als Bürger:in am besten weißt, wo du dein Fahrrad abstellst, kannst du hier melden, wo genau du neue Bügel benötigst.',
@@ -65,7 +78,7 @@ export default {
         Nach Abschluss des Meldezeitraums werden die Mitarbeiter und Mitarbeiterinnen der Stadt Aachen alle Meldungen anschauen und auswerten, welche umsetzbar sind. 
         Wenn du deine Mailadresse hinterlegt hast, bekommst du auf jeden Fall eine Rückmeldung, 
         ob dein Wunsch realisiert werden kann. Wenn es Rückfragen gibt, wird sich die Stadt ebenfalls bei dir melden. 
-        Zusätzlich wird auf FixMyAachen veröffentlicht, an welchen Orten neue Fahrradbügel installiert werden.
+        Zusätzlich wird über Radbügel für Aachen veröffentlicht, an welchen Orten neue Fahrradbügel installiert werden.
       `
     },
     {

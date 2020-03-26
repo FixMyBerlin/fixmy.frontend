@@ -7,7 +7,7 @@ import Slider from '~/components/Slider';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
-import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
+import PlacementNotice from '~/pages/Reports/pages/SubmitReport/components/PlacementNotice';
 
 import { breakpoints, media } from '~/styles/utils';
 
@@ -31,12 +31,6 @@ const SliderWrapper = styled.div`
 
 const StyledWeiterButton = styled(WeiterButton)`
   margin: 60px 0;
-`;
-
-const Image = styled.img`
-  width: 100%;
-  max-width: 486px;
-  margin-top: 1em;
 `;
 
 const MAX_STANDS = config.reports.dialog.maxBikeStands || 12;
@@ -72,14 +66,7 @@ export default ({ onConfirm }) => {
       >
         Weiter
       </StyledWeiterButton>
-
-      <Paragraph>
-        Hinweis: Neue Fahrradbügel werden in {config.reports.region} in der
-        Regel auf der Straße installiert, damit der Platz für Fußgänger:innen
-        auf dem Gehweg nicht eingeschränkt wird.
-      </Paragraph>
-
-      <Image src={StreetBgImage} alt="Straßenseitige Fahrradständer" />
+      {config.reports.form.placementNotice && <PlacementNotice />}
     </DialogStepWrapper>
   );
 };

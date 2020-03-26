@@ -36,14 +36,7 @@ function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([-10, -10]);
 }
 
-function createPinMarker({
-  markerData,
-  geometry,
-  lngLat,
-  selectedReport,
-  detailId,
-  onClick
-}) {
+function createPinMarker({ markerData, geometry, lngLat, onClick }) {
   const details = JSON.parse(markerData.details || {});
   const el = document.createElement('div');
 
@@ -51,15 +44,6 @@ function createPinMarker({
   el.className = 'reports-marker';
 
   el.dataset.cy = 'reports-marker';
-
-  if (selectedReport || detailId) {
-    const activeId = selectedReport ? selectedReport.id : detailId;
-    const isActive = markerData.id.toString() === activeId.toString();
-
-    if (!isActive) {
-      el.style.filter = 'brightness(1.15) grayscale(0.7)';
-    }
-  }
 
   const updatedMarkerData = { ...markerData, geometry, details };
 

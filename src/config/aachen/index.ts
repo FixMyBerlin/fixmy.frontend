@@ -1,6 +1,9 @@
 import map from './map';
 import menu from './menu';
 import routes from './routes';
+import staticpages from './staticpages';
+
+import defaultColors from '~/config/default/colors';
 
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
@@ -12,9 +15,17 @@ export default {
   map,
   menu,
   routes,
-  siteTitle: 'FixMyAachen',
+  staticpages,
+  siteTitle: 'Radbügel für Aachen',
+  feedbackMail: 'radbuegel@aachen.de',
   apiUrl:
     process.env.API_URL ||
-    apiEndpoints[process.env.CONFIG_ENV] ||
-    apiEndpoints.staging
+    apiEndpoints[process.env.BACKEND] ||
+    apiEndpoints.staging,
+  colors: {
+    ...defaultColors,
+    likebg: 'initial',
+    interaction: '#6E9BD2'
+  },
+  titleFont: 'The Mix'
 };

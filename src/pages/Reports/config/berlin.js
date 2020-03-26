@@ -1,3 +1,5 @@
+import config from '~/config';
+
 export default {
   overviewMap: {
     style: 'mapbox://styles/hejco/cjpnt0cc41ipy2rlpu19jgt7a',
@@ -21,6 +23,19 @@ export default {
     geocoder: {
       debounceTime: 1000,
       searchStringMinLength: 3
+    }
+  },
+  landing: {
+    title: 'Melde neue Fahrradbügel für Friedrichshain-Kreuzberg',
+    stepColors: [config.colors.interaction, '#ff99d5', config.colors.black]
+  },
+  form: { placementNotice: true },
+  reportsDisabled: true,
+  tests: {
+    addressInput: 'meh',
+    mockGeoLocation: {
+      latitude: 52.490064,
+      longitude: 13.38694
     }
   },
   title:

@@ -6,7 +6,8 @@
 }
 
 .reports-marker .marker-image {
-  width: 100%;
+  width: 40px;
+  height: 51px;
 }
 
 .reports-cluster {

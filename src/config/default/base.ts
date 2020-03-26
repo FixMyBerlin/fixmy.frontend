@@ -15,6 +15,7 @@ const baseConfig = {
     apiEndpoints.production,
   feedbackMail: 'feedback@fixmyberlin.de',
   siteTitle: 'FixMyBerlin',
+  titleFont: 'Roboto Slab',
   logger: 'fmc*', // selects logging namespaces to display when not in production
   sectionIsBeta: true,
   planningIsBeta: true,
