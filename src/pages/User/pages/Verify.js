@@ -11,7 +11,7 @@ import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Button from '~/components/Button';
 
 import verifyImageFMB from '~/images/user-verify.png';
-import verifyImageAachen from '~/images/aachen/user-verify.svg';
+import verifyImageAachen from '~/images/aachen/user@2x.png';
 
 const verifyImage =
   config.region === 'aachen' ? verifyImageAachen : verifyImageFMB;
@@ -44,23 +44,23 @@ const UserVerify = ({ match, location }) => {
 
   useEffect(() => {
     const verifyUser = async () => {
-    const { uid, token } = match.params;
-    const { newsletter } = qs.parse(location.search, {
-      ignoreQueryPrefix: true
-    });
-    const signupNewsletter = newsletter === 'yes';
-
-    try {
-      return ky(`${config.apiUrl}/users/activation/`, {
-        method: 'POST',
-        json: { uid, token, newsletter: signupNewsletter }
+      const { uid, token } = match.params;
+      const { newsletter } = qs.parse(location.search, {
+        ignoreQueryPrefix: true
       });
-    } catch (e) {
-      logger(e);
-      return serServerError(
-        'Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden. Evtl. wurde Ihr Konto auch schon aktiviert.'
-      );
-    }
+      const signupNewsletter = newsletter === 'yes';
+
+      try {
+        return ky(`${config.apiUrl}/users/activation/`, {
+          method: 'POST',
+          json: { uid, token, newsletter: signupNewsletter }
+        });
+      } catch (e) {
+        logger(e);
+        return serServerError(
+          'Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden. Evtl. wurde Ihr Konto auch schon aktiviert.'
+        );
+      }
     };
     verifyUser();
   }, []);
