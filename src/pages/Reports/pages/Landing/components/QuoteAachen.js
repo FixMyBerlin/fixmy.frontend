@@ -11,7 +11,6 @@ const QuoteSection = styled.div`
   line-height: 1.37;
   color: ${config.colors.darkgrey};
   margin: 50px 0;
-  max-width: 320px;
   padding: 28px 8px 58px 8px;
   margin: 0 auto;
 `;
@@ -44,7 +43,7 @@ export default () => (
       „Wir benötigen mehr Sicherheit und mehr Raum für den Radverkehr in Aachen,
       dazu gehören auch mehr Fahrradabstellanlagen. In den letzten Wochen haben
       mir viele Bürgerinnen und Bürger sowie die Initiatoren des Radentscheids
-      Standortvorschläge für Fahrradbügel geschickt, diese wurden in das jetzt
+      Standortvorschläge für Fahrradbügel geschickt. Diese wurden in das jetzt
       freigeschaltete Online-Tool bereits eingearbeitet und zum großen Teil
       durch die Verwaltung geprüft.“
     </BlockQuote>
