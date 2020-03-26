@@ -42,7 +42,8 @@ const ErrorMessage = styled.div`
 const UserVerify = ({ match, location }) => {
   const [serverError, serServerError] = useState(null);
 
-  useEffect(async () => {
+  useEffect(() => {
+    const verifyUser = async () => {
     const { uid, token } = match.params;
     const { newsletter } = qs.parse(location.search, {
       ignoreQueryPrefix: true
@@ -60,6 +61,8 @@ const UserVerify = ({ match, location }) => {
         'Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden. Evtl. wurde Ihr Konto auch schon aktiviert.'
       );
     }
+    };
+    verifyUser();
   }, []);
 
   return (
