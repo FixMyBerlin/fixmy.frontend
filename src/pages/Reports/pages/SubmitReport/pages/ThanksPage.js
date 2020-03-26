@@ -11,7 +11,7 @@ import Button from '~/components/Button';
 import history from '~/history';
 
 import letterImageFMB from '~/images/reports/letter.png';
-import letterImageAachen from '~/images/aachen/letter.svg';
+import letterImageAachen from '~/images/aachen/mail-illu-01@2x.png';
 
 const letterImage =
   config.region === 'aachen' ? letterImageAachen : letterImageFMB;
