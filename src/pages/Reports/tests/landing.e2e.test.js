@@ -4,9 +4,11 @@ import config from '~/pages/Reports/config';
 describe('The reports landing page', () => {
   before(() => {
     cy.visit(config.routes.reports.landing);
-    cyElem('reports-landing-logo').should((img) => {
-      expect(img[0].naturalWidth).to.be.greaterThan(0);
-    });
+    if (config.reports.landing?.logo) {
+      cyElem('reports-landing-logo').should((img) => {
+        expect(img[0].naturalWidth).to.be.greaterThan(0);
+      });
+    }
   });
   it('has a title', () => {
     cyElem('reports-landing-header').should('be.visible');
