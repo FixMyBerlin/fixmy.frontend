@@ -1,18 +1,19 @@
 import { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 
+import logger from '~/utils/logger';
 import DraftMarker from '~/images/planning-icons/konzept-marker.png';
 import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
+import TempMarker from '~/images/planning-icons/temp-marker.png';
 
 const Markers = {
   draft: DraftMarker,
   planning: PlanningMarker,
   execution: ExecutionMarker,
   ready: ReadyMarker,
-  inactive: ReadyMarker,
-  miscellaneous: ReadyMarker
+  inactive: TempMarker
 };
 
 const phasesOrder = Object.keys(Markers);
@@ -64,7 +65,7 @@ class ProjectMarkers extends PureComponent {
       // Don't show markers whose phase is not active in filterPlannings
       if (
         !this.props.filterPlannings[phaseIndex] &&
-        phaseIndex < TEMPORARY_PLANNINGS_PHASE_INDEX
+        phaseIndex !== TEMPORARY_PLANNINGS_PHASE_INDEX
       ) {
         return null;
       }
@@ -72,7 +73,7 @@ class ProjectMarkers extends PureComponent {
       // Don't show temporary plannings if ready phase is disabled
       if (
         !this.props.filterPlannings[3] &&
-        phaseIndex >= TEMPORARY_PLANNINGS_PHASE_INDEX
+        phaseIndex === TEMPORARY_PLANNINGS_PHASE_INDEX
       )
         return null;
 
