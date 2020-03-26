@@ -3,7 +3,6 @@ import turfAlong from '@turf/along';
 import turfLength from '@turf/length';
 import { lineString as turfLineString } from '@turf/helpers';
 
-import logger from '~/utils/logger';
 import config from '~/pages/Map/config';
 import { isNumeric, getParameterByName } from '~/utils/utils';
 
