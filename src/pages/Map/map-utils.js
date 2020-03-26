@@ -3,6 +3,7 @@ import turfAlong from '@turf/along';
 import turfLength from '@turf/length';
 import { lineString as turfLineString } from '@turf/helpers';
 
+import logger from '~/utils/logger';
 import config from '~/pages/Map/config';
 import { isNumeric, getParameterByName } from '~/utils/utils';
 
@@ -81,8 +82,10 @@ export function setPlanningLegendFilter(map, selected) {
     .filter((entry) => entry !== null);
 
   // Also show temporary projects if the filter for phase "ready" is active
-  if (selected[3].isSelected)
+  if (selected[3] === true) {
     filters.push(['==', 'inactive', ['get', 'phase']]);
+    filters.push(['==', 'miscellaneous', ['get', 'phase']]);
+  }
 
   // Planning legend filter can be directly set for center and overlayLine
   // layer, but need  to be concatenated with side filter for the side layers
