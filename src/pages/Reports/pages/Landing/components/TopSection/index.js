@@ -58,7 +58,7 @@ const StyledMenuButton = styled(MenuButton)`
 
 const StyledHeading = styled.h2`
   font-family: '${config.titleFont}', sans-serif;
-  font-size: 32px;
+  font-size: 3em;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
@@ -67,6 +67,10 @@ const StyledHeading = styled.h2`
   text-align: center;
   color: white;
   margin-bottom: 39px;
+
+  ${media.m`
+    font-size: 4em;
+  `}
 `;
 
 const StyledButton = styled(Button)`
