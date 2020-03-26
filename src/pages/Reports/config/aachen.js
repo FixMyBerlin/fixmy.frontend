@@ -29,6 +29,13 @@ export default {
   },
   form: { newsletter: false, zoomOutForInvalidLocations: false },
   title: 'Radbügel für Aachen',
+  tests: {
+    addressInput: 'kasino',
+    mockGeoLocation: {
+      latitude: 50.79,
+      longitude: 6.114
+    }
+  },
   region: 'Aachen',
   intro:
     'Damit du dein Fahrrad überall sicher abschließen kannst, installiert die Stadt Aachen neue Fahrradbügel. Da du als Bürger:in am besten weißt, wo du dein Fahrrad abstellst, kannst du hier melden, wo genau du neue Bügel benötigst.',

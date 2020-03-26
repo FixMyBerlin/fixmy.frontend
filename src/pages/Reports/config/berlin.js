@@ -31,6 +31,13 @@ export default {
   },
   form: { placementNotice: true },
   reportsDisabled: true,
+  tests: {
+    addressInput: 'meh',
+    mockGeoLocation: {
+      latitude: 52.490064,
+      longitude: 13.38694
+    }
+  },
   title:
     'Fahrradbügel für Friedrichshain-Kreuzberg (Status: In Bearbeitung durch den Bezirk)',
   region: 'Friedrichshain-Kreuzberg',
