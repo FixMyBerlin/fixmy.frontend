@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GeoPropTypes from 'geojson-prop-types';
 
+import logger from '~/utils/logger';
 import FMCPropTypes from '~/pages/Reports/propTypes';
 
 import {
