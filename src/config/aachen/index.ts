@@ -24,6 +24,7 @@ export default {
     apiEndpoints.staging,
   colors: {
     ...defaultColors,
+    likebg: 'initial',
     interaction: '#6E9BD2'
   },
   titleFont: 'The Mix'
