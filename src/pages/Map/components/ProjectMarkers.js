@@ -1,17 +1,19 @@
 import { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 
+import logger from '~/utils/logger';
 import DraftMarker from '~/images/planning-icons/konzept-marker.png';
 import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
-import logger from '~/utils/logger';
+import TempMarker from '~/images/planning-icons/temp-marker.png';
 
 const Markers = {
   draft: DraftMarker,
   planning: PlanningMarker,
   execution: ExecutionMarker,
-  ready: ReadyMarker
+  ready: ReadyMarker,
+  inactive: TempMarker
 };
 
 const phasesOrder = Object.keys(Markers);
@@ -57,10 +59,23 @@ class ProjectMarkers extends PureComponent {
         return null;
       }
 
+      const TEMPORARY_PLANNINGS_PHASE_INDEX = 4;
       const phaseIndex = phasesOrder.indexOf(marker.phase);
-      if (!this.props.filterPlannings[phaseIndex]) {
+
+      // Don't show markers whose phase is not active in filterPlannings
+      if (
+        !this.props.filterPlannings[phaseIndex] &&
+        phaseIndex !== TEMPORARY_PLANNINGS_PHASE_INDEX
+      ) {
         return null;
       }
+
+      // Don't show temporary plannings if ready phase is disabled
+      if (
+        !this.props.filterPlannings[3] &&
+        phaseIndex === TEMPORARY_PLANNINGS_PHASE_INDEX
+      )
+        return null;
 
       if (marker.center == null) {
         logger(`Marker center missing in project #${marker.id}`);
