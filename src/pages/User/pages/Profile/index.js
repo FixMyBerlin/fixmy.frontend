@@ -1,18 +1,25 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import styled from 'styled-components';
 
 import 'react-tabs/style/react-tabs.css';
 
+import config from '~/config';
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import Profile from './tabs/Profile';
 import UserLikes from './tabs/UserLikes';
+import ReportLikes from './tabs/ReportLikes';
+
+const StyledTabs = styled(Tabs)`
+  margin-top: 1em;
+`;
 
 class ProfileTabs extends PureComponent {
   render() {
     return (
       <ContentPageWrapper>
-        <Tabs>
+        <StyledTabs>
           <TabList>
             <Tab>Profil</Tab>
             <Tab>Likes</Tab>
@@ -22,13 +29,21 @@ class ProfileTabs extends PureComponent {
             <Profile {...this.props} />
           </TabPanel>
           <TabPanel>
-            <UserLikes
-              dispatch={this.props.dispatch}
-              userLikes={this.props.userLikes}
-              isLoading={this.props.isLoading}
-            />
+            {config.region === 'aachen' ? (
+              <ReportLikes
+                dispatch={this.props.dispatch}
+                userLikes={this.props.userLikes}
+                isLoading={this.props.isLoading}
+              />
+            ) : (
+              <UserLikes
+                dispatch={this.props.dispatch}
+                userLikes={this.props.userLikes}
+                isLoading={this.props.isLoading}
+              />
+            )}
           </TabPanel>
-        </Tabs>
+        </StyledTabs>
       </ContentPageWrapper>
     );
   }
