@@ -11,7 +11,7 @@ import { apiUser } from '~/pages/User/apiservice';
 
 import logger from '~/utils/logger';
 import thanksImageFMB from '~/images/reports/reports-thanks.png';
-import thanksImageAachen from '~/images/aachen/Danke_Aachen_01.svg';
+import thanksImageAachen from '~/images/aachen/danke-aachen-02@2x.png';
 
 import AuthForm from './AuthForm';
 import { StyledHeading, Text, ThanksImg } from './styledComponents';
