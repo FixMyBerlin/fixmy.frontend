@@ -74,6 +74,13 @@ function renderStatus(status) {
           <Link to="/anmelden">Zum Login</Link>
         </FormFieldError>
       );
+    case 'credentialserror':
+      return (
+        <FormFieldError>
+          E-Mail und Passwort passen leider nicht zusammen oder du hast dich
+          noch nicht registriert.
+        </FormFieldError>
+      );
     default:
       return null;
   }
@@ -127,10 +134,10 @@ class UserForm extends PureComponent {
                   {translateError(errors.non_field_errors)}
                 </FormFieldError>
               )}
+              {status && renderStatus(status)}
               <Button type="submit" disabled={isSubmitting}>
                 {buttonLabel}
               </Button>
-              {status && renderStatus(status)}
             </Form>
           )}
         </Formik>

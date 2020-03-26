@@ -20,9 +20,13 @@ const StyledHeading = styled(Heading)`
 `;
 
 const Hint = styled(Paragraph)`
-  margin-top: 12px;
+  margin-top: 0.8em;
   margin-bottom: 0;
   font-weight: ${({ emphasize }) => (emphasize ? 'bold' : 'normal')};
+`;
+
+const HintBottom = styled(Hint)`
+  margin-top: 2em;
 `;
 
 const PhotoDisclaimerWrapper = styled.div`
@@ -119,6 +123,7 @@ class AdditionalDataForm extends PureComponent {
 
   render() {
     const isDesktopView = matchMediaSize(breakpoints.m);
+    const isSubmittable = this.isSubmittable();
     const { maxDescriptionLength } = this.props;
 
     return (
@@ -179,11 +184,17 @@ class AdditionalDataForm extends PureComponent {
 
         <WeiterButton
           onClick={this.submit}
-          disabled={!this.isSubmittable()}
+          disabled={!isSubmittable}
           data-cy="reports-additional-continue"
         >
           Weiter
         </WeiterButton>
+
+        {!isSubmittable && (
+          <HintBottom>
+            <em>* Foto oder Text zum Fortfahren benötigt</em>
+          </HintBottom>
+        )}
 
         {this.props.error.message && (
           <ErrorMessage

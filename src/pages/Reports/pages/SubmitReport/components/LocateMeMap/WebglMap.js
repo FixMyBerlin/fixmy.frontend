@@ -69,7 +69,7 @@ class WebglMap extends PureComponent {
     }
 
     this.map.on('dragend', this.handleMoveEnd);
-    this.map.on('zoomEnd', this.handleMoveEnd);
+    this.map.on('zoomend', this.handleMoveEnd);
 
     // add controls
     const { zoomControlPosition } = this.props;
