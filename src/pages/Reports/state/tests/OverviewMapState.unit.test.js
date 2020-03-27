@@ -114,14 +114,18 @@ describe('OverviewMapState reducer and actions', () => {
       const expectedActions = [
         {
           type: types.SET_SELECTED_REPORT,
-          payload: reportItem
+          payload: {
+            selectedReport: reportItem,
+            zoomIn: false
+          }
         }
       ];
 
       const stateBefore = {
         ReportsState: {
           OverviewMapState: {
-            reports: mockedReportsList
+            reports: mockedReportsList,
+            zoomIn: false
           }
         }
       };
@@ -136,9 +140,49 @@ describe('OverviewMapState reducer and actions', () => {
           stateBefore.ReportsState.OverviewMapState;
         expect(reducer(overviewMapStateBefore, expectedActions[0])).toEqual({
           ...overviewMapStateBefore,
-          selectedReport: reportItem
+          selectedReport: reportItem,
+          zoomIn: false
         });
       });
+    });
+
+    test.only('handles setSelectedReport with an additional zoomIn flag', () => {
+      const reportItem = mockedReportsList[0];
+      const expectedActions = [
+        {
+          type: types.SET_SELECTED_REPORT,
+          payload: {
+            selectedReport: reportItem,
+            zoomIn: true
+          }
+        }
+      ];
+
+      const stateBefore = {
+        ReportsState: {
+          OverviewMapState: {
+            reports: mockedReportsList,
+            zoomIn: false
+          }
+        }
+      };
+      const store = mockStore(stateBefore);
+
+      return store
+        .dispatch(actions.setSelectedReport(reportItem, true))
+        .then(() => {
+          // test action sequence
+          expect(store.getActions()).toEqual(expectedActions);
+
+          // test reducer
+          const overviewMapStateBefore =
+            stateBefore.ReportsState.OverviewMapState;
+          expect(reducer(overviewMapStateBefore, expectedActions[0])).toEqual({
+            ...overviewMapStateBefore,
+            selectedReport: reportItem,
+            zoomIn: true
+          });
+        });
     });
 
     it(
