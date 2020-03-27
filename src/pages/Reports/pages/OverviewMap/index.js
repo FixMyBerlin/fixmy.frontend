@@ -126,7 +126,7 @@ class OverviewMap extends Component {
     const linkedReport = this.props.reports.find(
       (r) => r.id === +linkedReportId
     );
-    this.props.setSelectedReport(linkedReport);
+    this.props.setSelectedReport(linkedReport, true);
   }
 
   updateSelectedReportPosition() {
@@ -182,6 +182,7 @@ class OverviewMap extends Component {
           <WebglMap
             reportsData={reports}
             center={this.state.mapCenter}
+            zoomIn={this.state.zoomIn}
             onMarkerClick={this.onMarkerClick}
             onLoad={(m) => this.onMapLoad(m)}
             onMove={() => this.onMapMove()}
@@ -237,6 +238,7 @@ export default withRouter(
     (state) => ({
       selectedReport: state.ReportsState.OverviewMapState.selectedReport,
       reports: state.ReportsState.OverviewMapState.reports,
+      zoomIn: state.ReportsState.OverviewMapState.reports.zoomIn,
       token: state.UserState.token,
       isMenuOpen: state.AppState.isMenuOpen,
       errorMessage: state.ReportsState.ErrorState.message

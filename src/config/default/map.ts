@@ -39,6 +39,7 @@ export default {
     dimmingLayer: 'fmb-dimming'
   },
   zoomAfterGeocode: 15,
+  zoomDeepLinkedReportMarkers: 18,
   geocoderUrl: 'https://geocoder.cit.api.here.com/6.2/geocode.json',
   geocoderAppId: 'WOhEXnd20kbhT8Lxx4n4',
   geocoderAppCode: 'uFkDYK0WKXBPZgG8mRb9Rg',
