@@ -174,7 +174,7 @@ class LocateMeMap extends Component {
       .then(() => this.props.handleGeocodeSuccess({ coords, address }));
   };
 
-  onlocateMeMarkerUse = (coords) => {
+  onDevicePosition = (coords) => {
     const coordsObj = {
       lng: coords[0],
       lat: coords[1]
@@ -292,7 +292,7 @@ class LocateMeMap extends Component {
           !this.state.locationPinned && (
             <LocatorControl
               key="ReportsLocateMap__LocatorControl"
-              onChange={this.onlocateMeMarkerUse}
+              onChange={this.onDevicePosition}
               customPosition={this.getLocatorControlPosition(isDesktopView)}
             />
           )}
