@@ -160,6 +160,3 @@
 
 # Proxy stats
 /stats/* https://s.fixmycity.de/:splat 200
-
-# temp verification for mailjet
-/3e83a85511f70bef9fbe500647d70221.txt /data/3e83a85511f70bef9fbe500647d70221.txt
