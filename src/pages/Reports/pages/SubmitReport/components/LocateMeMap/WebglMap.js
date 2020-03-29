@@ -36,7 +36,7 @@ class WebglMap extends PureComponent {
       this.setView(this.getViewFromProps(), this.props.animate);
     }
     const allowDragChanged = prevProps.allowDrag !== this.props.allowDrag;
-    if (allowDragChanged && this.map) {
+    if (allowDragChanged) {
       const dragPanHandler = this.map.dragPan;
       const updateDragPanFunc = this.props.allowDrag
         ? dragPanHandler.enable
