@@ -60,8 +60,10 @@ class WebglMap extends PureComponent {
   onLoad = (map) => {
     this.map = map;
 
-    // center prop might have been set by getting the device´s geolocation before the component sets up
-    if (this.props.center !== config.map.view.center) {
+    // center prop might have been set by getting the device´s geolocation before the component sets up.
+    // otherwise the map will be left already centered according to its configured bounds
+    const isMapLoadedWithCenter = !this.props.center;
+    if (!isMapLoadedWithCenter) {
       this.map.setZoom(this.props.newLocationZoomLevel);
       this.map.setCenter(this.props.center);
       this.handleMoveEnd();
@@ -118,7 +120,7 @@ WebglMap.propTypes = {
 
 WebglMap.defaultProps = {
   animate: false,
-  center: config.map.view.center,
+  center: null,
   newLocationZoomLevel: 18,
   onMapMove: () => {},
   allowDrag: true,
