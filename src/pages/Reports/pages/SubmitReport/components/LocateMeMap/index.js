@@ -253,7 +253,7 @@ class LocateMeMap extends Component {
             zoomedOut={!this.props.tempLocation.valid}
             center={this.getCenter()}
             className="locate-me-map"
-            onMapDrag={this.onMapMove}
+            onMapMove={this.onMapMove}
             allowDrag={!this.state.locationPinned}
             onLoad={this.onMapLoad}
             zoomControlPosition={isDesktopView ? 'bottom-right' : 'top-left'}

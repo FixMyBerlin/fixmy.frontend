@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import _isEqual from 'lodash.isequal';
 import MapboxGL from 'mapbox-gl';
 
-import logger from '~/utils/logger';
 import config from '~/pages/Reports/config';
 import { animateView, setView } from '~/pages/Map/map-utils';
 import BaseMap from '~/pages/Reports/components/BaseMap';
@@ -96,7 +95,7 @@ class WebglMap extends PureComponent {
   handleMoveEnd = () => {
     const mapCenter = this.map.getCenter();
     const { lat, lng } = mapCenter;
-    this.props.onMapDrag({ lat, lng });
+    this.props.onMapMove({ lat, lng });
   };
 
   render() {
@@ -110,7 +109,7 @@ WebglMap.propTypes = {
   animate: PropTypes.bool,
   center: PropTypes.arrayOf(PropTypes.number),
   newLocationZoomLevel: PropTypes.number,
-  onMapDrag: PropTypes.func,
+  onMapMove: PropTypes.func,
   allowDrag: PropTypes.bool,
   onLoad: PropTypes.func,
   zoomedOut: PropTypes.bool,
@@ -121,7 +120,7 @@ WebglMap.defaultProps = {
   animate: false,
   center: config.map.view.center,
   newLocationZoomLevel: 18,
-  onMapDrag: () => logger('onMapDrag says implement me'),
+  onMapMove: () => {},
   allowDrag: true,
   onLoad: () => {},
   zoomedOut: false,
