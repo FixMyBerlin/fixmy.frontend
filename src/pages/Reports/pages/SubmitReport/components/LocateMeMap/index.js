@@ -127,11 +127,11 @@ class LocateMeMap extends Component {
     this.setState({ autocompleteHasFocus: hasFocus });
 
   onMapMove = (coords) => {
-    if (!validationBoundary) return;
-    this.reverseGeocodeCoords(coords);
     if (!this.state.mapHasBeenDragged) {
       this.state.mapHasBeenDragged = true;
     }
+    if (!validationBoundary) return;
+    this.reverseGeocodeCoords(coords);
   };
 
   reverseGeocodeCoords = (coords) => {
