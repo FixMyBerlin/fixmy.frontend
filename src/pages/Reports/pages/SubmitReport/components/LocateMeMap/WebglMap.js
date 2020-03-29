@@ -23,28 +23,25 @@ class WebglMap extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.map) {
-      if (
-        this.props.zoomedOut &&
-        config.reports.form?.zoomOutForInvalidLocations !== false
-      ) {
-        this.map.easeTo({ zoom: 12, duration: 3000 });
-      }
+    if (!this.map) return;
 
-      const isNewLocation = !_isEqual(prevProps.center, this.props.center);
-
-      if (isNewLocation) {
-        this.setView(this.getViewFromProps(), this.props.animate);
-      }
-
-      const allowDragChanged = prevProps.allowDrag !== this.props.allowDrag;
-      if (allowDragChanged && this.map) {
-        const dragPanHandler = this.map.dragPan;
-        const updateDragPanFunc = this.props.allowDrag
-          ? dragPanHandler.enable
-          : dragPanHandler.disable;
-        updateDragPanFunc.call(dragPanHandler);
-      }
+    if (
+      this.props.zoomedOut &&
+      config.reports.form?.zoomOutForInvalidLocations !== false
+    ) {
+      this.map.easeTo({ zoom: 12, duration: 3000 });
+    }
+    const isNewLocation = !_isEqual(prevProps.center, this.props.center);
+    if (isNewLocation) {
+      this.setView(this.getViewFromProps(), this.props.animate);
+    }
+    const allowDragChanged = prevProps.allowDrag !== this.props.allowDrag;
+    if (allowDragChanged && this.map) {
+      const dragPanHandler = this.map.dragPan;
+      const updateDragPanFunc = this.props.allowDrag
+        ? dragPanHandler.enable
+        : dragPanHandler.disable;
+      updateDragPanFunc.call(dragPanHandler);
     }
   }
 
