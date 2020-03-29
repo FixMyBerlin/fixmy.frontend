@@ -17,10 +17,12 @@ export const standardLayers = ['center', 'side0', 'side1'];
 export const standardLayersWithOverlay = [...standardLayers, 'overlayLine'];
 
 export function setView(map, view) {
-  if (view.zoom) map.setZoom(view.zoom);
-  if (view.center) map.setCenter(view.center);
-  if (view.pitch) map.setPitch(view.pitch);
-  if (view.bearing) map.setBearing(view.bearing);
+  // attach flag to enables listeners to differentiate between natural user interaction and programmatic map change
+  const eventData = { programmaticMove: true };
+  if (view.zoom) map.setZoom(view.zoom, eventData);
+  if (view.center) map.setCenter(view.center, eventData);
+  if (view.pitch) map.setPitch(view.pitch, eventData);
+  if (view.bearing) map.setBearing(view.bearing, eventData);
 }
 
 export function animateView(map, view) {
