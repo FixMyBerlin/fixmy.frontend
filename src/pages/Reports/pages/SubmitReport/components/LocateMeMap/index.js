@@ -130,7 +130,6 @@ class LocateMeMap extends Component {
     if (!this.state.mapHasBeenDragged) {
       this.state.mapHasBeenDragged = true;
     }
-    if (!validationBoundary) return;
     this.reverseGeocodeCoords(coords);
   };
 
