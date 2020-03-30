@@ -91,8 +91,8 @@ class WebglMap extends PureComponent {
     center: this.props.center
   });
 
-  handleMoveEnd = ({programmaticMove}) => {
-    if (programmaticMove) return;
+  handleMoveEnd = (eventData) => {
+    if (eventData.programmaticMove) return;
     const mapCenter = this.map.getCenter();
     const { lat, lng } = mapCenter;
     this.props.onMapMove({ lat, lng });
