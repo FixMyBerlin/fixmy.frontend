@@ -40,7 +40,7 @@ function reducer(state = initialState.ErrorState, { type, payload } = {}) {
         ...initialState.ErrorState
       };
     default:
-      return initialState
+      return state;
   }
 }
 
