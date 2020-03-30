@@ -130,6 +130,7 @@ class LocateMeMap extends Component {
     if (!this.state.mapHasBeenDragged) {
       this.state.mapHasBeenDragged = true;
     }
+    this.props.unsetAutomatedPositioning();
     this.reverseGeocodeCoords(coords);
   };
 
@@ -151,7 +152,8 @@ class LocateMeMap extends Component {
       return alreadyPickedLocation;
     }
 
-    // either device location or geocodeResult will be used
+    // either device location or geocodeResult will be used to tell the containing
+    // web gl map to use a certain center instead of wherever the user has moved the map before
     let centerObj;
     if (this.props.deviceLocation) {
       centerObj = this.props.deviceLocation;
