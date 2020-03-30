@@ -63,14 +63,9 @@ class ReportDialog extends PureComponent {
       locationMode,
       newReport,
       tempLocation,
+      error,
       submitting
     } = this.props;
-
-    const error = {
-      message: this.props.errorMessage,
-      proceedMessage: this.props.errorProceedMessage,
-      proceedFunc: this.props.errorproceedFunc
-    };
 
     const proceed = () => {
       // route change
@@ -205,11 +200,8 @@ const mapDispatchToProps = {
 
 export default connect(
   (state) => ({
-    locationMode: state.ReportsState.SubmitReportState.locationMode,
-    // connect to primitives instead of initialState object TODO: do this more elegant using reselect
-    errorMessage: state.ReportsState.ErrorState.message,
-    errorProceedMessage: state.ReportsState.ErrorState.proceedMessage,
-    errorproceedFunc: state.ReportsState.ErrorState.proceedMessage,
+    ...state.ReportsState.SubmitReportState,
+    error: state.ReportsState.ErrorState,
     token: state.UserState.token,
     user: state.UserState.userData
   }),
