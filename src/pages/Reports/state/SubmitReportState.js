@@ -331,7 +331,7 @@ function reducer(state = initialState.SubmitReportState, action = {}) {
         }
       };
     default:
-      return { ...state };
+      return state;
   }
 }
 

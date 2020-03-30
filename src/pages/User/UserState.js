@@ -230,6 +230,6 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case LOAD_LIKES_FAIL:
       return { ...state, ...action.payload };
     default:
-      return { ...state };
+      return state;
   }
 }

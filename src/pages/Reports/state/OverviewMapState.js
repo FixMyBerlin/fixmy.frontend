@@ -86,7 +86,7 @@ function reducer(
         selectedReportPosition: payload
       };
     default:
-      return { ...state };
+      return state;
   }
 }
 
