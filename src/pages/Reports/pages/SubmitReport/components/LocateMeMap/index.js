@@ -146,7 +146,7 @@ class LocateMeMap extends Component {
 
   getCenter = () => {
     // if component is shown because of backwards navigation, use the center already determined
-    const alreadyPickedLocation = this.props.getAlreadyPicketLocation();
+    const { alreadyPickedLocation } = this.props;
     if (alreadyPickedLocation) {
       return alreadyPickedLocation;
     }
@@ -219,7 +219,7 @@ class LocateMeMap extends Component {
           />
         )}
 
-        {!this.state.isLoading && this.props.getLocationIsModeGeocoding && (
+        {!this.state.isLoading && this.props.isLocationModeGeocoding && (
           <>
             {!this.state.locationPinned && (
               <SearchBarWrapper>
@@ -287,7 +287,7 @@ class LocateMeMap extends Component {
 
         {!this.state.isLoading &&
           !this.state.autocompleteHasFocus &&
-          this.props.getLocationIsModeGeocoding &&
+          this.props.isLocationModeGeocoding &&
           !this.state.locationPinned && (
             <LocatorControl
               key="ReportsLocateMap__LocatorControl"
@@ -329,14 +329,12 @@ const mapStateToProps = (state) => ({
   ...state.ReportsState.SubmitReportState,
   error: state.ReportsState.ErrorState,
   // selectors
-  getLocationIsModeGeocoding: () =>
-    submitReportStateSelectors.getLocationIsModeGeocoding(
-      state.ReportsState.SubmitReportState
-    ),
-  getAlreadyPicketLocation: () =>
-    submitReportStateSelectors.getAlreadyPicketLocation(
-      state.ReportsState.SubmitReportState
-    )
+  isLocationModeGeocoding: submitReportStateSelectors.getLocationIsModeGeocoding(
+    state.ReportsState.SubmitReportState
+  ),
+  alreadyPickedLocation: submitReportStateSelectors.getAlreadyPicketLocation(
+    state.ReportsState.SubmitReportState
+  )
 });
 const mapDispatchToProps = {
   ...errorStateActions,
