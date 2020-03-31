@@ -26,10 +26,15 @@ function toGeojson(data) {
   };
 }
 
-MapboxGL.clearStorage((err) => {
-  logger('Clearing Mapbox cache');
-  if (err) logger('Error clearing Mapbox storage:', err);
-});
+// we wrap this with a try catch in order to prevent a crash on IE11
+try {
+  MapboxGL.clearStorage((err) => {
+    logger('Clearing Mapbox cache');
+    if (err) logger('Error clearing Mapbox storage:', err);
+  });
+} catch (e) {
+  logger('Error clearing Mapbox storage:', e);
+}
 
 class WebglMap extends PureComponent {
   nav = new MapboxGL.NavigationControl({ showCompass: false });
