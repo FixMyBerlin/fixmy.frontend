@@ -73,7 +73,18 @@ const StyledHeading = styled.h2`
   `}
 `;
 
-const StyledButton = styled(Button)`
+const StyledButton = styled.div`
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  display: inline-block;
+  background: ${config.colors.interaction};
+  text-decoration: none;
+  color: ${config.colors.white};
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
   width: 167px;
   padding: 10px 18px;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
