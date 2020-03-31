@@ -159,8 +159,9 @@ describe('API module', () => {
         });
 
         test.todo(
-          'throws a typeError if the error response is not a text or a json'
-          // not sure if we really need this except to have test coverage
+          'throws a typeError if the error response is not a text or a json', () => {
+            // not sure if we really need this except to have test coverage
+          }
         );
       });
 
@@ -255,4 +256,6 @@ describe('API module', () => {
       expect(body).toMatch(JSON.stringify(mockedRequestBody));
     });
   });
+
+  test.todo('patch request');
 });

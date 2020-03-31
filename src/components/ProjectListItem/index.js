@@ -48,14 +48,15 @@ const ItemTitle = styled.div`
   font-size: 14px;
   color: ${config.colors.darkgrey};
   font-weight: 600;
+  margin-bottom: 3px;
 `;
 
 const ItemSubTitle = styled.div`
   font-size: 14px;
   font-weight: 700;
-  font-family: '${config.titleFont}', serif;
+  font-family: 'Roboto Slab', serif;
   color: ${config.colors.darkbg};
-  margin: .5em auto;
+  margin-top: 4px;
 `;
 
 const ItemFooter = styled.div`

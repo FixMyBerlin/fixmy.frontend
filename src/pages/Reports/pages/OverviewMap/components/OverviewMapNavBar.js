@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
+import { breakpoints, matchMediaSize } from '~/styles/utils';
 import config from '~/pages/Reports/config';
 
 const Wrapper = styled.div`
@@ -59,18 +60,26 @@ const TinyLink = styled.a`
   }
 `;
 
+const TinyEmailLink = styled(TinyLink)`
+  position: ${({ isMobile }) => isMobile && 'absolute'};
+  right: ${({ isMobile }) => isMobile && '8px'};
+`;
+
+const getIsDesktop = () => matchMediaSize(breakpoints.m);
+
 const OverviewMapNavBar = ({ heading }) => (
   <Wrapper data-cy="reports-heading">
     <StyledMenuButton />
     <TextWrapper>
       <Heading>{heading}</Heading>
       <LinkSection>
-        <TinyLink
+        <TinyEmailLink
           as="a"
+          isMobile={!getIsDesktop()}
           href={`mailto:${config.feedbackMail}?subject=Feedback zum Meldedialog ${config.reports.region}`}
         >
           Feedback zum Meldedialog?
-        </TinyLink>
+        </TinyEmailLink>
       </LinkSection>
     </TextWrapper>
     <BikeParkImg alt="Icon Fahrradparkplätze" />

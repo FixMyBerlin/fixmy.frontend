@@ -40,7 +40,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 4
+    "likes": 4,
+    "liked_by_user": false
   },
   {
     "id": 6,
@@ -114,7 +115,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-001-2_Gitschiener_Stra%C3%9Fe.jpg"
       }
     ],
-    "likes": 13
+    "likes": 13,
+    "liked_by_user": false
   },
   {
     "id": 7,
@@ -190,7 +192,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-003_Generalszug.png"
       }
     ],
-    "likes": 16
+    "likes": 16,
+    "liked_by_user": false
   },
   {
     "id": 10,
@@ -243,7 +246,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-006_Oranienstra%C3%9Fe.png"
       }
     ],
-    "likes": 11
+    "likes": 11,
+    "liked_by_user": false
   },
   {
     "id": 11,
@@ -329,7 +333,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-007_Mehringdamm.png"
       }
     ],
-    "likes": 13
+    "likes": 13,
+    "liked_by_user": false
   },
   {
     "id": 18,
@@ -373,7 +378,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-011_Mariannenstra%C3%9Fe.jpg"
       }
     ],
-    "likes": 6
+    "likes": 6,
+    "liked_by_user": false
   },
   {
     "id": 20,
@@ -430,7 +436,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 4
+    "likes": 4,
+    "liked_by_user": false
   },
   {
     "id": 23,
@@ -498,7 +505,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 5
+    "likes": 5,
+    "liked_by_user": false
   },
   {
     "id": 26,
@@ -559,7 +567,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 8
+    "likes": 8,
+    "liked_by_user": false
   },
   {
     "id": 27,
@@ -626,7 +635,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 6
+    "likes": 6,
+    "liked_by_user": false
   },
   {
     "id": 34,
@@ -716,7 +726,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-029_Frankfurter_Allee.png"
       }
     ],
-    "likes": 12
+    "likes": 12,
+    "liked_by_user": false
   },
   {
     "id": 35,
@@ -773,7 +784,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 11
+    "likes": 11,
+    "liked_by_user": false
   },
   {
     "id": 36,
@@ -829,7 +841,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 11
+    "likes": 11,
+    "liked_by_user": false
   },
   {
     "id": 37,
@@ -877,7 +890,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 7
+    "likes": 7,
+    "liked_by_user": false
   },
   {
     "id": 40,
@@ -975,7 +989,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 9
+    "likes": 9,
+    "liked_by_user": false
   },
   {
     "id": 42,
@@ -1047,7 +1062,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-037_KMA.jpg"
       }
     ],
-    "likes": 10
+    "likes": 10,
+    "liked_by_user": false
   },
   {
     "id": 47,
@@ -1099,7 +1115,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 3
+    "likes": 3,
+    "liked_by_user": false
   },
   {
     "id": 48,
@@ -1154,7 +1171,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 1
+    "likes": 1,
+    "liked_by_user": false
   },
   {
     "id": 49,
@@ -1209,7 +1227,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 50,
@@ -1253,7 +1272,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 5
+    "likes": 5,
+    "liked_by_user": false
   },
   {
     "id": 51,
@@ -1309,7 +1329,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 7
+    "likes": 7,
+    "liked_by_user": false
   },
   {
     "id": 52,
@@ -1385,7 +1406,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 9
+    "likes": 9,
+    "liked_by_user": false
   },
   {
     "id": 53,
@@ -1432,7 +1454,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 54,
@@ -1488,7 +1511,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 3
+    "likes": 3,
+    "liked_by_user": false
   },
   {
     "id": 55,
@@ -1567,7 +1591,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 13
+    "likes": 13,
+    "liked_by_user": false
   },
   {
     "id": 56,
@@ -1615,7 +1640,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 4
+    "likes": 4,
+    "liked_by_user": false
   },
   {
     "id": 57,
@@ -1663,7 +1689,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 4
+    "likes": 4,
+    "liked_by_user": false
   },
   {
     "id": 58,
@@ -1720,7 +1747,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 3
+    "likes": 3,
+    "liked_by_user": false
   },
   {
     "id": 59,
@@ -1770,7 +1798,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 3
+    "likes": 3,
+    "liked_by_user": false
   },
   {
     "id": 60,
@@ -1816,7 +1845,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 3
+    "likes": 3,
+    "liked_by_user": false
   },
   {
     "id": 61,
@@ -1865,7 +1895,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/MI-019_Stromstrasse_2_David_Hartmann.jpg"
       }
     ],
-    "likes": 3
+    "likes": 3,
+    "liked_by_user": false
   },
   {
     "id": 62,
@@ -1908,7 +1939,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 63,
@@ -1976,7 +2008,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 2
+    "likes": 2,
+    "liked_by_user": false
   },
   {
     "id": 65,
@@ -2017,7 +2050,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-038_G%C3%B6rlitzer_Park.jpg"
       }
     ],
-    "likes": 5
+    "likes": 5,
+    "liked_by_user": false
   },
   {
     "id": 66,
@@ -2103,7 +2137,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 2
+    "likes": 2,
+    "liked_by_user": false
   },
   {
     "id": 67,
@@ -2161,7 +2196,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/ringstra%C3%9Fe3.jpg"
       }
     ],
-    "likes": 1
+    "likes": 1,
+    "liked_by_user": false
   },
   {
     "id": 68,
@@ -2223,7 +2259,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 3
+    "likes": 3,
+    "liked_by_user": false
   },
   {
     "id": 69,
@@ -2270,7 +2307,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 70,
@@ -2318,7 +2356,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 2
+    "likes": 2,
+    "liked_by_user": false
   },
   {
     "id": 71,
@@ -2368,7 +2407,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 2
+    "likes": 2,
+    "liked_by_user": false
   },
   {
     "id": 72,
@@ -2432,7 +2472,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 1
+    "likes": 1,
+    "liked_by_user": false
   },
   {
     "id": 73,
@@ -2476,7 +2517,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 1
+    "likes": 1,
+    "liked_by_user": false
   },
   {
     "id": 74,
@@ -2554,7 +2596,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-001_weigendufer-blick-richtung-truseweg_800.jpg"
       }
     ],
-    "likes": 10
+    "likes": 10,
+    "liked_by_user": false
   },
   {
     "id": 75,
@@ -2612,7 +2655,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-002_thomasstr-entlang-st.thomas-friedhof-richtung-thomashoehe_800.jpg"
       }
     ],
-    "likes": 7
+    "likes": 7,
+    "liked_by_user": false
   },
   {
     "id": 76,
@@ -2665,7 +2709,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-004-1_braunschweigerstr-ecke-richardstr-blick-richtung-karl-marx-str_800.jpg"
       }
     ],
-    "likes": 1
+    "likes": 1,
+    "liked_by_user": false
   },
   {
     "id": 77,
@@ -2711,7 +2756,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-004-2_braunschweigerstr-ecke-richardstr-blick-richtung-kannerstr_800.jpg"
       }
     ],
-    "likes": 1
+    "likes": 1,
+    "liked_by_user": false
   },
   {
     "id": 78,
@@ -2836,7 +2882,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 6
+    "likes": 6,
+    "liked_by_user": false
   },
   {
     "id": 79,
@@ -2884,7 +2931,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 4
+    "likes": 4,
+    "liked_by_user": false
   },
   {
     "id": 80,
@@ -2929,7 +2977,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-008_Friedel_BorisHekele.jpg"
       }
     ],
-    "likes": 2
+    "likes": 2,
+    "liked_by_user": false
   },
   {
     "id": 81,
@@ -2980,7 +3029,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/NK-009_KMS_fertig.JPG"
       }
     ],
-    "likes": 6
+    "likes": 6,
+    "liked_by_user": false
   },
   {
     "id": 82,
@@ -3054,7 +3104,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 4
+    "likes": 4,
+    "liked_by_user": false
   },
   {
     "id": 83,
@@ -3104,7 +3155,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 1
+    "likes": 1,
+    "liked_by_user": false
   },
   {
     "id": 84,
@@ -3160,7 +3212,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 5
+    "likes": 5,
+    "liked_by_user": false
   },
   {
     "id": 85,
@@ -3212,7 +3265,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 86,
@@ -3264,7 +3318,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 87,
@@ -3309,7 +3364,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 88,
@@ -3353,7 +3409,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 89,
@@ -3399,7 +3456,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 90,
@@ -3446,7 +3504,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 91,
@@ -3512,7 +3571,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 2
+    "likes": 2,
+    "liked_by_user": false
   },
   {
     "id": 92,
@@ -3559,7 +3619,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 8
+    "likes": 8,
+    "liked_by_user": false
   },
   {
     "id": 93,
@@ -3614,7 +3675,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 94,
@@ -3660,7 +3722,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 95,
@@ -3712,7 +3775,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   },
   {
     "id": 96,
@@ -3782,7 +3846,8 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/kiefholzstra%C3%9Fe_schutzstreifen.jpg"
       }
     ],
-    "likes": 1
+    "likes": 1,
+    "liked_by_user": false
   },
   {
     "id": 97,
@@ -3858,6 +3923,7 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
       }
     ],
-    "likes": 0
+    "likes": 0,
+    "liked_by_user": false
   }
 ]

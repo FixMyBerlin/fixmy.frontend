@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
+import { homeLabels } from '~/labels';
 import FMBLogo from '~/components/FMBLogo';
 import Title from '~/components/Title';
 import Button from '~/components/Button';
@@ -54,40 +55,19 @@ const BounceButton = styled(Button)`
   animation: ${bounce} 4s ease-in infinite;
 `;
 
-const FeatureButton = styled(GhostButton)`
-  margin-bottom: 10px;
-`;
-
-const labels = {
-  title: `Hi, das ist ${config.siteTitle}`,
-  intro: (
-    <>
-      Auf der Planungskarte von FixMyBerlin siehst Du, was Berlin an Radwegen
-      plant.
-    </>
-  ),
-  button: 'Worum geht es hier genau?',
-  reportsButton: 'Karte der Radbügelmeldungen in Friedrichshain-Kreuzberg',
-  mapButton: 'Gehe zur Planungskarte',
-  katasterButton: 'Umfrage beginnen'
-};
-
 export default () => (
   <>
     <FMBLogo />
     <div>
-      <Title>{labels.title}</Title>
-      <Text>{labels.intro}</Text>
+      <Title>{homeLabels.title}</Title>
+      <Text>{homeLabels.intro}</Text>
     </div>
     <MapLinkWrapper>
-      <Link to={config.routes.projects}>
-        <BounceButton>{labels.mapButton}</BounceButton>
-      </Link>
       <a href={config.tspKatasterURL}>
-        <FeatureButton>{labels.katasterButton}</FeatureButton>
+        <BounceButton>{homeLabels.katasterButton}</BounceButton>
       </a>
-      <Link to={config.routes.reports.map}>
-        <FeatureButton>{labels.reportsButton}</FeatureButton>
+      <Link to={config.routes.projects}>
+        <GhostButton>{homeLabels.mapButton}</GhostButton>
       </Link>
     </MapLinkWrapper>
     <SubscribtionWidget />

@@ -1,4 +1,4 @@
-import ky from 'ky-universal';
+import ky from 'ky';
 import oneLine from 'common-tags/es/oneLine/oneLine';
 import validateNewReport from './state/tests/schemaValidation/validateNewReport';
 import logger from '~/utils/logger';
@@ -23,11 +23,7 @@ async function handleSubmitRequest(
       await ky(reportsEndpointUrl, { method, json, headers });
     }
   } catch (e) {
-    if (e.response != null) {
-      response.error = await e.response.json();
-    } else {
-      throw e;
-    }
+    response.error = await e.response.json();
   }
 
   return response;

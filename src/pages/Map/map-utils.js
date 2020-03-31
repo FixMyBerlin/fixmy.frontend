@@ -80,11 +80,6 @@ export function setPlanningLegendFilter(map, selected) {
     )
     .filter((entry) => entry !== null);
 
-  // Also show temporary projects if the filter for phase "ready" is active
-  if (selected[3] === true) {
-    filters.push(['==', 'inactive', ['get', 'phase']]);
-  }
-
   // Planning legend filter can be directly set for center and overlayLine
   // layer, but need  to be concatenated with side filter for the side layers
 

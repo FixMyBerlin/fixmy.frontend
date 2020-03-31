@@ -14,19 +14,16 @@ class ProjectList extends PureComponent {
     }
 
     if (!this.props.isLoading && this.props.data.length === 0) {
-      return (
-        <p>
-          Du hast noch keine {isProjects ? 'Planungen' : 'Meldungen'} geliked.
-        </p>
-      );
+      return `Es sind noch keine ${
+        isProjects ? 'Planungen' : 'Meldungen'
+      } gelikt worden.`;
     }
 
     const Item = isProjects ? ProjectListItem : ReportListItem;
-    const listItems = this.props.data.map((d) => (
+
+    return this.props.data.map((d) => (
       <Item key={d.url} history={this.props.history} {...d} />
     ));
-
-    return <span>{listItems}</span>;
   }
 }
 

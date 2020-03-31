@@ -1,16 +1,11 @@
 import React, { PureComponent } from 'react';
 import idx from 'idx';
-import styled from 'styled-components';
 
 import Title from '~/components/Title';
 import Text from '~/components/Text';
 import { loadLikes } from '~/pages/User/UserState';
 import ProjectList from '~/components/ProjectList';
 import Select from '~/components/Select';
-
-const StyledSelect = styled(Select)`
-  margin-bottom: 1.5em;
-`;
 
 class UserLikes extends PureComponent {
   constructor(props) {
@@ -36,11 +31,10 @@ class UserLikes extends PureComponent {
       <>
         <Title>Likes</Title>
         <Text>
-          Hier kannst du Planungen und Meldungen sehen, denen du einen Like
-          gegeben hast.
+          Hier kannst du deine gelikten Planungen und Meldungen sehen.
         </Text>
 
-        <StyledSelect
+        <Select
           title=""
           onChange={(val) => this.onSelect(val)}
           options={[

@@ -12,14 +12,20 @@ const IndicatorSection = styled.div`
 `;
 
 const IndicatorTitle = styled.p`
-  color: ${config.colors.darkbg};
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.32;
+  color: ${config.colors.black};
   flex-flow: 2;
-  font-weight: bold;
 `;
 
 const Text = styled.p`
   color: ${config.colors.darkgrey};
-  font-size: 1em;
+  font-size: 16px;
+  line-height: 1.25em;
+  margin-top: 0;
 `;
 
 const IndicatorValue = styled(Text)`
@@ -50,7 +56,7 @@ const DetailsBody = ({
     )}
 
     <IndicatorSection>
-      <IndicatorTitle>Bedarf Fahrradparkhaus:</IndicatorTitle>
+      <IndicatorTitle>Bedarf Fahrradparkhaus</IndicatorTitle>
       <IndicatorValue>{isFeeAcceptable ? 'ja' : 'nein'}</IndicatorValue>
     </IndicatorSection>
 

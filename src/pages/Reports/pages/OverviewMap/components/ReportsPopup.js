@@ -64,9 +64,7 @@ class ReportsPopup extends PureComponent {
           />
         )}
         <Title data-cy="reports-popup-title">
-          {`${selectedReport.details.number} neue${
-            selectedReport.details.number === 1 ? 'r' : ''
-          } Fahrradbügel gewünscht`}
+          {`${selectedReport.details.number} neue Fahrradbügel gewünscht`}
         </Title>
         <ButtonWrapper>
           <Button

@@ -7,7 +7,7 @@ import bgImage from '~/images/background.jpg';
 import config from '~/config';
 
 import Berlin from './berlin';
-import Aachen from './aachen';
+import Bonn from './bonn';
 
 const HomeContent = styled.div`
   text-align: center;
@@ -23,27 +23,14 @@ const BackgroundMap = styled.div`
   background-position: center center;
 `;
 
-let content;
-if (config.region === 'berlin') {
-  content = <Berlin />;
-} else if (config.region === 'aachen') {
-  content = <Aachen />;
-} else {
-  content = (
-    <>
-      <h1>Fehlende Konfiguration</h1>
-      <p>
-        Die Region <em>{config.region}</em> wurde noch nicht angelegt.
-      </p>
-    </>
-  );
-}
-
 export default () => (
   <>
     <ContentOverlay>
       <MenuButton />
-      <HomeContent>{content}</HomeContent>
+      <HomeContent>
+        {config.region === 'berlin' && <Berlin />}
+        {config.region === 'bonn' && <Bonn />}
+      </HomeContent>
     </ContentOverlay>
     <BackgroundMap />
   </>

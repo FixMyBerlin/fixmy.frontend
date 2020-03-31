@@ -66,6 +66,7 @@ describe('The reports map', () => {
     it('has a title, status and description', () => {
       cyElem('reports-detail-title').should('be.visible');
       cyElem('reports-detail-status').should('be.visible');
+      cyElem('reports-detail-description').should('be.visible');
     });
     it('shows a date of creation', () => {
       cyElem('reports-detail-datetime').contains(/\d{2}\.\d{2}\.\d{4}/);
@@ -82,11 +83,7 @@ describe('The reports map', () => {
 
 describe('a report detail page', () => {
   before(() => {
-    if (singleReportId == null) {
-      throw new Error(
-        'Report ID not defined: this test cannot be run in isolation'
-      );
-    }
+    expect(singleReportId).to.not.equal(null);
     cy.server()
       .route(`**/reports/${singleReportId}`)
       .as('getReportSingle');

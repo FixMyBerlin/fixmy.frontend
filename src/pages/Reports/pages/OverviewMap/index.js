@@ -144,9 +144,7 @@ class OverviewMap extends Component {
     const hasDetailId = match.params.id;
     const isDesktopView = matchMediaSize(breakpoints.m);
     const isAddButtonShifted = isDesktopView && hasDetailId && !isMenuOpen;
-    const isAddButtonHidden =
-      config.reports.reportsDisabled ||
-      (isDesktopView && hasDetailId && isMenuOpen);
+    const isAddButtonHidden = isDesktopView && hasDetailId && isMenuOpen;
 
     const mapControls = (
       <>

@@ -5,11 +5,8 @@ import PropTypes from 'prop-types';
 import config from '~/pages/Reports/config';
 import history from '~/history';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
-import TickIconAachen from '~/images/aachen/tick-icon.svg';
-import TickIconFMB from '~/images/reports/tick-icon.svg';
+import TickIcon from '~/images/reports/tick-icon.svg';
 import AbortButton from './AbortButton';
-
-const TickIcon = config.region === 'aachen' ? TickIconAachen : TickIconFMB;
 
 const BackLink = styled.a`
   position: absolute;

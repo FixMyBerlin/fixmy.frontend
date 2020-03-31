@@ -57,8 +57,8 @@ const StyledMenuButton = styled(MenuButton)`
 `;
 
 const StyledHeading = styled.h2`
-  font-family: '${config.titleFont}', sans-serif;
-  font-size: 3em;
+  font-family: 'Roboto Slab', sans-serif;
+  font-size: 32px;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
@@ -67,10 +67,6 @@ const StyledHeading = styled.h2`
   text-align: center;
   color: white;
   margin-bottom: 39px;
-
-  ${media.m`
-    font-size: 4em;
-  `}
 `;
 
 const StyledButton = styled(Button)`
@@ -98,16 +94,14 @@ const TopSection = ({ toUrl }) => (
   <Section>
     <FlexWrapper>
       <StyledMenuButton whiteFill="true" />
-      {config.reports.landing?.logo !== false && (
-        <img
-          width="92px"
-          src={FixMyLogo}
-          alt="logo"
-          data-cy="reports-landing-logo"
-        />
-      )}
+      <img
+        width="92px"
+        src={FixMyLogo}
+        alt="logo"
+        data-cy="reports-landing-logo"
+      />
       <StyledHeading data-cy="reports-landing-header">
-        {config.reports.landing?.title}
+        Melde neue Fahrradbügel für {config.reports.region}
       </StyledHeading>
       <StyledButton className="wiggle" data-cy="reports-landing-cta">
         <StyledLink to={toUrl}>

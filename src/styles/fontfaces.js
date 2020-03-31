@@ -12,9 +12,6 @@ import robotoRegularwoff2 from '../fonts/roboto-slab-v9-latin-regular.woff2';
 import roboto700woff from '../fonts/roboto-slab-v9-latin-700.woff';
 import roboto700woff2 from '../fonts/roboto-slab-v9-latin-700.woff2';
 
-import theMixBlackwoff from '../fonts/TheMixC5-9_Black.woff';
-import theMixBlackwoff2 from '../fonts/TheMixC5-9_Black.woff2';
-
 export default `
   /* open-sans-300 - latin */
   @font-face {
@@ -70,14 +67,5 @@ export default `
     src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'),
         url(${roboto700woff2}) format('woff2'),
         url(${roboto700woff}) format('woff');
-  }
-  /* The Mix - black */
-  @font-face {
-    font-family: 'The Mix';
-    font-style: normal;
-    font-weight: 700;
-    src: local('TheMixBlack'), local('TheMixC5-9_Black'),
-        url(${theMixBlackwoff2}) format('woff2'),
-        url(${theMixBlackwoff}) format('woff');
   }
 `;

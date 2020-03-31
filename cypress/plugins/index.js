@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const wp = require('@cypress/webpack-preprocessor');
 const webpackOptions = require('../../webpack/webpack.config.dev.js');
 

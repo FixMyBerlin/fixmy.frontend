@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
-import utils from '~/pages/Reports/utils';
+import ReportPinIcon from '~/images/reports/pin-meldung-yellow.png';
 
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 
@@ -39,10 +39,10 @@ const StatusIndicatorWrapper = styled.div`
   align-items: bottom;
 `;
 
-const ReportPin = styled.img.attrs((props) => ({
-  src: utils.getMarkerSrc({ status: props.status }),
+const ReportPin = styled.img.attrs({
+  src: ReportPinIcon,
   alt: 'A marker icon'
-}))`
+})`
   display: block;
   width: 40px;
   height: 51px;

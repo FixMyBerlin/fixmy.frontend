@@ -44,7 +44,6 @@ const DetailBodySection = styled.div`
 
 const DetailItem = styled(Text)`
   margin-bottom: 10px;
-  overflow-wrap: break-word;
 `;
 
 const DetailImage = styled.img`

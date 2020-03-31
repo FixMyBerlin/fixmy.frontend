@@ -1,12 +1,12 @@
 import defaultConfig from './default';
 import berlin from './berlin';
-import aachen from './aachen';
+import bonn from './bonn';
 
-const region: string = process.env.REGION || 'berlin';
+const region: string = process.env.REGION_ENV || 'berlin';
 
 const AVAILABLE_REGIONS = {
   berlin,
-  aachen
+  bonn
 };
 
 const instanceConfig = AVAILABLE_REGIONS[region] || {};

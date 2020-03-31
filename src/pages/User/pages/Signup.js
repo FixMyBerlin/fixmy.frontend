@@ -38,10 +38,10 @@ const formConfig = [
     type: 'checkbox',
     label: (
       <span>
-        Ja, ich stimme zu, dass {config.siteTitle} meine Daten speichert und
-        verwendet. Die{' '}
+        Ja, ich stimme zu, dass FixMyBerlin meine Daten speichert und verwendet.
+        Die{' '}
         <ExternalLink
-          href="/datenschutz"
+          href="https://fixmyberlin.de/datenschutz"
           rel="noopener noreferrer"
           target="_blank"
         >

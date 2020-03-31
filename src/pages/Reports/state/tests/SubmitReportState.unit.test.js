@@ -340,7 +340,7 @@ describe('SubmitReportState reducer and actions', () => {
         types.SUBMIT_REPORT_ERROR
       )} and ${formatActionType(
         errorStateTypes.ADD_ERROR
-      )} if the POST request fails`, async () => {
+      )} if the POST request fails`, () => {
         const mockedReportsItemCopy = JSON.parse(
           JSON.stringify(mockedReportItem)
         );
@@ -354,9 +354,8 @@ describe('SubmitReportState reducer and actions', () => {
 
         // mock failing request
 
-        const errroMsg = 'failed to submit';
         fetchMock.postOnce(reportsEndpointUrl, {
-          throws: errroMsg
+          throws: 'failed to submit'
         });
 
         const expectedActions = [
@@ -364,31 +363,25 @@ describe('SubmitReportState reducer and actions', () => {
           types.SUBMIT_REPORT_ERROR,
           errorStateTypes.ADD_ERROR
         ];
+        return store.dispatch(actions.submitReport()).then(() => {
+          expect(
+            store
+              .getActions()
+              .map((dispatchedActions) => dispatchedActions.type)
+          ).toEqual(expectedActions);
 
-        expect.assertions(3);
-
-        try {
-          await store.dispatch(actions.submitReport());
-        } catch (e) {
-          expect(e).toEqual(errroMsg);
-        }
-
-        const actionsProduced = store
-          .getActions()
-          .map((dispatchedActions) => dispatchedActions.type);
-        expect(actionsProduced).toEqual(expectedActions);
-
-        // test reducer (ErrorState reducer logic is not tested here)
-        expect(
-          reducer(stateBefore.ReportsState.SubmitReportState, {
-            type: types.SUBMIT_REPORT_ERROR
-          })
-        ).toEqual({
-          ...stateBefore.ReportsState.SubmitReportState,
-          apiRequestStatus: {
-            ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
-            submitting: false
-          }
+          // test reducer (ErrorState reducer logic is not tested here)
+          expect(
+            reducer(stateBefore.ReportsState.SubmitReportState, {
+              type: types.SUBMIT_REPORT_ERROR
+            })
+          ).toEqual({
+            ...stateBefore.ReportsState.SubmitReportState,
+            apiRequestStatus: {
+              ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
+              submitting: false
+            }
+          });
         });
       });
     });

@@ -34,7 +34,7 @@ const ChartTitle = styled.div`
 const ChartSubtitle = styled.div`
   font-size: 14px;
   font-weight: 700;
-  font-family: '${config.titleFont}', serif;
+  font-family: 'Roboto Slab', serif;
   color: ${config.colors.darkbg};
   max-width: 100px;
   display: inline-block;
