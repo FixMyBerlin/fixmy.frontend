@@ -29,7 +29,9 @@ module.exports = {
       { from: Path.resolve(__dirname, '../_redirects') },
       { from: Path.resolve(__dirname, FAVICONS_PATH) },
       { from: Path.resolve(__dirname, '../public/data'), to: 'data' },
-      { from: Path.resolve(__dirname, '../3e83a85511f70bef9fbe500647d70221.txt') }
+      {
+        from: Path.resolve(__dirname, '../3e83a85511f70bef9fbe500647d70221.txt')
+      }
     ]),
     new Dotenv({ defaults: true, systemvars: true })
   ],
@@ -55,7 +57,8 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/webidl-conversions'),
           Path.resolve(__dirname, '../node_modules/whatwg-url'),
           Path.resolve(__dirname, '../node_modules/ky'),
-          Path.resolve(__dirname, '../node_modules/d3-scale')
+          Path.resolve(__dirname, '../node_modules/d3-scale'),
+          Path.resolve(__dirname, '../node_modules/debug')
         ],
         use: 'babel-loader'
       },
