@@ -146,16 +146,7 @@ async function handleError(e, setErrors) {
 
 /**
  * Translate errors reported by ky/fetch to a set of custom exceptions
- * which we can use to make decisions on how to handle specific errors.
- *
- * We could handle this here by interacting with the store or
- * delegate error handling in terms of store updates to the api service modules of our individual pages (reports, user, ..)
- * Resources:
- * https://github.com/sindresorhus/ky/issues/107
- * https://dev.to/damxipo/custom-exceptions-with-js-3aoc
- * // TODO: get api documentation
- * // TODO: clarify what kind of errors we want to differentiate in the client. Do we want to handle 401s, 404s etc. specifically?
- * // TODO: move explanations from code docs to PR
+ * which we can later on use to make decisions on how to handle specific errors.
  */
 async function mapError(
   e
@@ -179,20 +170,21 @@ async function mapError(
       translatedError = e; // throw as is
       break;
     default:
-      translatedError = new NetworkError(e); // FIXME: every unexpected Error instance (that is not a TypeError) will be handled as NetworkError
+      translatedError = new NetworkError(e); // pain point: every unexpected Error instance (that is not a TypeError) will be handled as NetworkError
       break;
   }
   return { translatedError, errorMessage }; // return body content to not parse body multiple times, see https://github.com/node-fetch/node-fetch/issues/533
 }
 
 async function parseErrorResponse(errorResponse: Response): Promise<string> {
-  let errorJson, errorText;
+  let errorJson;
+  let errorText;
 
   // try parse error as text and then as JSON to not rely on content-type definitions response headers
   try {
     errorText = await errorResponse.text();
   } catch (e) {
-    throw new TypeError( // TODO: provoke in unit test
+    throw new TypeError(
       'Handling of error responses stated in other body types other than json or text is not implemented'
     );
   }
