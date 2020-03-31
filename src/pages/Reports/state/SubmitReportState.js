@@ -9,6 +9,7 @@ import {
 } from '~/pages/Reports/apiservice';
 import { actions as errorStateActions } from './ErrorState';
 import initialState from './initialState';
+import logger from '~/utils/logger';
 
 // action constants
 
@@ -133,6 +134,7 @@ actions.reverseGeocodeCoordinates = ({ lat, lng }) => async (dispatch) => {
     result = await reverseGeocode({ lat, lng });
   } catch (e) {
     errorMsg = 'Fehler beim Auflösen der Koordinaten in eine Adresse';
+    logger(e);
   }
   if (!result) {
     errorMsg = 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden';
@@ -170,6 +172,7 @@ actions.useDevicePosition = () => async (dispatch) => {
         message: errMsg
       })
     );
+    throw err;
   }
 };
 
@@ -191,6 +194,7 @@ actions.submitReport = () => async (dispatch, getState) => {
         message: errMsg
       })
     );
+    throw e;
   }
 };
 

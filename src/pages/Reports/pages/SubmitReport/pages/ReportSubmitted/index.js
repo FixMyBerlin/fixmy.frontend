@@ -10,10 +10,14 @@ import { addUserToReport } from '~/pages/Reports/apiservice';
 import { apiUser } from '~/pages/User/apiservice';
 
 import logger from '~/utils/logger';
-import thanksImageSrc from '~/images/reports/reports-thanks.png';
+import thanksImageFMB from '~/images/reports/reports-thanks.png';
+import thanksImageAachen from '~/images/aachen/danke-aachen-02@2x.png';
 
 import AuthForm from './AuthForm';
 import { StyledHeading, Text, ThanksImg } from './styledComponents';
+
+const thanksImage =
+  config.region === 'aachen' ? thanksImageAachen : thanksImageFMB;
 
 class ReportSubmitted extends PureComponent {
   componentDidMount = async () => {
@@ -66,16 +70,13 @@ class ReportSubmitted extends PureComponent {
           Du hilfst mit, {config.reports.region} radfreundlicher zu machen!
         </StyledHeading>
 
-        <ThanksImg src={thanksImageSrc} data-cy="reports-submitted-image" />
+        <ThanksImg src={thanksImage} data-cy="reports-submitted-image" />
 
         <Text data-cy="reports-submitted-text">
-          Deine Meldung ist nun online! Alle Meldungen werden gesammelt und dann
-          dem Bezirksamt am 10. Oktober 2019 übergeben. Die Planer:innen im
-          Straßen- und Grünflächenamt prüfen, welche Meldungen umgesetzt werden
-          können. Die Ergebnisse siehst du anschließend hier auf der Karte{' '}
+          {config.reports.thankYouNote.base}{' '}
           {token
-            ? 'und wir benachrichtigen dich an deine im Login hinterlegte E-Mail-Adresse.'
-            : 'und wenn du deine E-Mail-Adresse eingibst, benachrichtigen wir dich auch per E-Mail.'}
+            ? config.reports.thankYouNote.loggedIn
+            : config.reports.thankYouNote.loggedOut}
         </Text>
 
         {token ? (

@@ -93,7 +93,7 @@ describe('OverviewMapState reducer and actions', () => {
       errorStateTypes.ADD_ERROR
     )}`, () => {
       fetchMock.getOnce(reportsEndpointUrl, {
-        throws: ky.HTTPError('some error')
+        throws: new ky.HTTPError('some error')
       });
       const expectedActionTypes = [
         // do not mind the action payloads here

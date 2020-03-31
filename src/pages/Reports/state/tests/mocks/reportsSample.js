@@ -16,7 +16,6 @@ export default [
     },
     id: 2,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/4598b3b2-3c4.jpg'
@@ -39,7 +38,6 @@ export default [
     },
     id: 1,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -59,7 +57,6 @@ export default [
     },
     id: 3,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: null
@@ -82,7 +79,6 @@ export default [
     },
     id: 4,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/cafb5486-167.jpg'
@@ -105,7 +101,6 @@ export default [
     },
     id: 5,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/2fe3237d-d1c.jpg'
@@ -128,7 +123,6 @@ export default [
     },
     id: 6,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/beaae18c-f09.jpg'
@@ -151,7 +145,6 @@ export default [
     },
     id: 7,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/ec2692f5-55c.jpg'
@@ -174,7 +167,6 @@ export default [
     },
     id: 8,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/c03b56c6-1c2.jpg'
@@ -197,7 +189,6 @@ export default [
     },
     id: 9,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/bf152eae-f94.jpg'
@@ -220,7 +211,6 @@ export default [
     },
     id: 10,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/e3e6769d-709.jpg'
@@ -243,7 +233,6 @@ export default [
     },
     id: 11,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/587350ee-45b.jpg'
@@ -266,7 +255,6 @@ export default [
     },
     id: 12,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/3c0476ac-95a.jpg'
@@ -289,7 +277,6 @@ export default [
     },
     id: 13,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/b72b2ad2-ca0.jpg'
@@ -312,7 +299,6 @@ export default [
     },
     id: 14,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/52db7955-eb0.jpg'
@@ -335,7 +321,6 @@ export default [
     },
     id: 15,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/06470fa2-5e4.jpg'
@@ -358,7 +343,6 @@ export default [
     },
     id: 16,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/10af8dbd-c27.jpg'
@@ -381,7 +365,6 @@ export default [
     },
     id: 17,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/2367969d-394.jpg'
@@ -404,7 +387,6 @@ export default [
     },
     id: 18,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/b16c7120-520.jpg'
@@ -427,7 +409,6 @@ export default [
     },
     id: 19,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/6310a4bd-c5b.jpg'
@@ -450,7 +431,6 @@ export default [
     },
     id: 20,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/a98a64b1-22d.jpg'
@@ -473,7 +453,6 @@ export default [
     },
     id: 21,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/06096fbe-9c3.jpg'
@@ -496,7 +475,6 @@ export default [
     },
     id: 22,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/5dfe32be-d88.jpg'
@@ -519,7 +497,6 @@ export default [
     },
     id: 55,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/137486d7-54d.jpg'
@@ -542,7 +519,6 @@ export default [
     },
     id: 56,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/f718a679-f5f.jpg'
@@ -565,7 +541,6 @@ export default [
     },
     id: 57,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/a12e9194-f47.jpg'
@@ -588,7 +563,6 @@ export default [
     },
     id: 58,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/6e02e84f-8f2.jpg'
@@ -611,7 +585,6 @@ export default [
     },
     id: 59,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/a2d4c760-dbb.jpg'
@@ -634,7 +607,6 @@ export default [
     },
     id: 60,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/5bf4fc76-baa.jpg'
@@ -657,7 +629,6 @@ export default [
     },
     id: 61,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/938a77f3-557.jpg'
@@ -680,7 +651,6 @@ export default [
     },
     id: 62,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/d927c2b9-4c5.jpg'
@@ -703,7 +673,6 @@ export default [
     },
     id: 63,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/825b7cd2-41e.jpg'
@@ -726,7 +695,6 @@ export default [
     },
     id: 64,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/4c2ee125-553.jpg'
@@ -749,7 +717,6 @@ export default [
     },
     id: 65,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -769,7 +736,6 @@ export default [
     },
     id: 66,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -789,7 +755,6 @@ export default [
     },
     id: 67,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/4f85c533-520.jpg'
@@ -812,7 +777,6 @@ export default [
     },
     id: 68,
     likes: 2,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/abb411bb-f25.jpg'
@@ -835,7 +799,6 @@ export default [
     },
     id: 69,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/65bcbbb6-fae.jpg'
@@ -858,7 +821,6 @@ export default [
     },
     id: 70,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -878,7 +840,6 @@ export default [
     },
     id: 71,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/0db83b7a-877.jpg'
@@ -901,7 +862,6 @@ export default [
     },
     id: 72,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -921,7 +881,6 @@ export default [
     },
     id: 73,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/9ffbbec5-c08.jpg'
@@ -944,7 +903,6 @@ export default [
     },
     id: 74,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/6f1e1803-16b.jpg'
@@ -967,7 +925,6 @@ export default [
     },
     id: 75,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/baf63c0c-9a4.jpg'
@@ -990,7 +947,6 @@ export default [
     },
     id: 76,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/196e71fd-bda.jpg'
@@ -1013,7 +969,6 @@ export default [
     },
     id: 77,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1033,7 +988,6 @@ export default [
     },
     id: 78,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1053,7 +1007,6 @@ export default [
     },
     id: 79,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1073,7 +1026,6 @@ export default [
     },
     id: 80,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1093,7 +1045,6 @@ export default [
     },
     id: 82,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1113,7 +1064,6 @@ export default [
     },
     id: 83,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/6ff1aa48-dd7.jpg'
@@ -1136,7 +1086,6 @@ export default [
     },
     id: 84,
     likes: 2,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1156,7 +1105,6 @@ export default [
     },
     id: 85,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1176,7 +1124,6 @@ export default [
     },
     id: 81,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/8f930720-980.jpg'
@@ -1199,7 +1146,6 @@ export default [
     },
     id: 86,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/db975c05-940.jpg'
@@ -1223,7 +1169,6 @@ export default [
     },
     id: 87,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1243,7 +1188,6 @@ export default [
     },
     id: 88,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/0fc08d90-a6d.jpg'
@@ -1266,7 +1210,6 @@ export default [
     },
     id: 89,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1286,7 +1229,6 @@ export default [
     },
     id: 90,
     likes: 1,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/17900033-77a.jpg'
@@ -1309,7 +1251,6 @@ export default [
     },
     id: 91,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1329,7 +1270,6 @@ export default [
     },
     id: 92,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1349,7 +1289,6 @@ export default [
     },
     id: 93,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1369,7 +1308,6 @@ export default [
     },
     id: 94,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1390,7 +1328,6 @@ export default [
     },
     id: 95,
     likes: 1,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1410,7 +1347,6 @@ export default [
     },
     id: 96,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/071465bd-a6d.jpg'
@@ -1433,7 +1369,6 @@ export default [
     },
     id: 97,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/2a7129e5-4cf.jpg'
@@ -1456,7 +1391,6 @@ export default [
     },
     id: 98,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1476,7 +1410,6 @@ export default [
     },
     id: 99,
     likes: 0,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1496,7 +1429,6 @@ export default [
     },
     id: 100,
     likes: 1,
-    liked_by_user: false,
     photo: null,
     status: 'new',
     status_reason: null
@@ -1516,7 +1448,6 @@ export default [
     },
     id: 101,
     likes: 0,
-    liked_by_user: false,
     photo: {
       copyright: null,
       src: 'https://fmb-aws-bucket.s3.amazonaws.com/photos/3ad69419-c33.jpg'

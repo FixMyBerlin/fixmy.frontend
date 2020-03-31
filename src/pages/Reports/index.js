@@ -8,6 +8,8 @@ import Landing from './pages/Landing';
 import OverviewMap from './pages/OverviewMap';
 import SubmitReport from './pages/SubmitReport';
 
+import './styles.css';
+
 class Reports extends PureComponent {
   render() {
     return (

@@ -2,10 +2,15 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import PhotoControlImage from '~/images/reports/photo-control.png';
+import config from '~/pages/Reports/config';
+import PhotoControlFMB from '~/images/reports/photo-control.png';
+import PhotoControlAachen from '~/images/aachen/photo-control.png';
 import NewCloseButton from '~/components/NewCloseButton';
 import Text from '~/components/Text';
 import { getLinkStyles } from '~/components/Link';
+
+const PhotoControlImage =
+  config.region === 'aachen' ? PhotoControlAachen : PhotoControlFMB;
 
 const PhotoInput = styled.input`
   width: 0.1px;

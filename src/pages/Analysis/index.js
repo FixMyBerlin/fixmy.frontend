@@ -12,7 +12,7 @@ import {
   setSort
 } from '~/pages/Analysis/AnalysisState';
 import PieChart from '~/pages/Analysis/components/PieChart';
-import BigLabel from '~/components/BigLabel';
+import Title from '~/components/Title';
 import MenuButton from '~/components/MenuButton';
 import Flex from '~/components/Flex';
 import Select from '~/components/Select';
@@ -148,7 +148,7 @@ class Analysis extends PureComponent {
         <AnalysisContent>
           <AnalysisHeader>
             <StyledMenuButton />
-            <BigLabel>Analyse</BigLabel>
+            <Title>Analyse</Title>
           </AnalysisHeader>
           <Card>
             <Flex justifyContent="space-between">

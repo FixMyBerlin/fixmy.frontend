@@ -1,13 +1,14 @@
 const MapboxStyles = {
   'FMB-release-3': 'mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h',
   'FMB-release-4': 'mapbox://styles/hejco/ck0nzclbk0ey01ct9ilwefpzc',
-  'FMB-release-5': 'mapbox://styles/hejco/ck37eiywp0un71cpd01dutt7r'
+  'FMB-release-5': 'mapbox://styles/hejco/ck37eiywp0un71cpd01dutt7r',
+  'FMB-release-6': 'mapbox://styles/hejco/ck85ospzd0cre1ioa8d6gfuv9'
 };
 
 export default {
   accessToken:
     'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
-  style: MapboxStyles['FMB-release-5'],
+  style: MapboxStyles['FMB-release-6'],
   view: {
     zoom: 12,
     bearing: 0,

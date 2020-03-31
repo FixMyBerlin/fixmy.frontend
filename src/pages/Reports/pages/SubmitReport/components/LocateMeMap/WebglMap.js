@@ -25,7 +25,10 @@ class WebglMap extends PureComponent {
 
   componentDidUpdate(prevProps) {
     if (this.map) {
-      if (this.props.zoomedOut) {
+      if (
+        this.props.zoomedOut &&
+        config.reports.form?.zoomOutForInvalidLocations !== false
+      ) {
         this.map.easeTo({ zoom: 12, duration: 3000 });
       }
 
@@ -66,7 +69,7 @@ class WebglMap extends PureComponent {
     }
 
     this.map.on('dragend', this.handleMoveEnd);
-    this.map.on('zoomEnd', this.handleMoveEnd);
+    this.map.on('zoomend', this.handleMoveEnd);
 
     // add controls
     const { zoomControlPosition } = this.props;
