@@ -25,10 +25,15 @@ const baseConfig = {
   showLikeButton: true,
   showFeedBackForm: false,
   piwik: {
+    url: 's.fixmycity.de',
     siteId: {
-      main: 1,
-      kataster: 2,
-      katasterTesting: 3
+      berlin: 1,
+      aachen: 4
+    },
+    options: {
+      enableLinkTracking: true,
+      trackErrors: true,
+      disableCookies: true
     }
   }
 };
