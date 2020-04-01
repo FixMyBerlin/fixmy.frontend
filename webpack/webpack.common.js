@@ -12,7 +12,7 @@ const defaultEntryPoint = '../src/index.js';
 const FAVICONS_PATH =
   process.env.KATASTER_PATH != null
     ? '../src/pages/KatasterKI/favicons'
-    : Path.resolve(__dirname, '..', 'favicons', process.env.REGION);
+    : Path.resolve(__dirname, '..', 'favicons', process.env.REGION || 'berlin');
 
 // Used to prove domain ownership for Mailjet
 const MAILJET_AUTH_FILE = '3e83a85511f70bef9fbe500647d70221.txt';
