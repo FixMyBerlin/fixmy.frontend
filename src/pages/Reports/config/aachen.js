@@ -60,7 +60,7 @@ export default {
     {
       heading: 'Warum sollte ich mitmachen?',
       text: `
-        In Aachen werden neue Fahrradbügel gebaut. Hier könnt ihr sagen, wo sie stehen sollen.
+        In Aachen werden neue Fahrradbügel gebaut. Hier könnt ihr sagen, wo sie stehen sollen..
       `
     },
     {

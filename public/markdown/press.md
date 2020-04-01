@@ -26,6 +26,19 @@ Bildmaterial zur freien Verwendung durch die Presse: <br>
 + 19.09.2018 - [Launch FixMyBerlin](https://fixmyberlin.de/src/images/uploads/press/pressemitteilung_launch_fixmyberlin_20180919.pdf "PM-Launch-FixMyBerlin") Ab heute zeigt fixmyberlin.de, wo in Berlin neue Radwege entstehen und wie sicher die Berliner Hauptstraßen für Radfahrende sind.
 
 ### Pressespiegel
++ 16.02.2020 - Tagesspiegel - [Das stört im Berliner Verkehr am meisten](https://interaktiv.tagesspiegel.de/lab/strassencheck-das-stoert-im-berliner-verkehr-am-meisten/)
++ 16.02.2020 - Riff Reporter - Busy Streets - [Radinfrastruktur: Wird der Kunde König?](https://www.riffreporter.de/busystreets-koralle/fixmyberlin/)
++ 31.01.2020 - Urban Impact - [Berlin’s silent urban tech revolution](https://medium.com/urban-impact/berlins-silent-urban-tech-revolution-a687f2e2ea6f)
++ 06.01.2020 - BMVI mFund WIK - [Fahrradinfrastruktur und Planung mit Daten verbessern (PDF)](https://www.wik.org/fileadmin/mFUND_VF/20191220_wik-mFUND_FA-Radverkehr.pdf)
++ 15.12.2019 - radioeins - ["Straßencheck" die Umfrage zu Berlins Straßensicherheit](https://www.radioeins.de/programm/sendungen/die_sonntagsfahrer/_/strassencheck-die-umfrage-zu-berlins-strassensicherheit.html)
++ 09.12.2019 - Wirtschaftswoche - [Ein Lob der Digitalisierung](https://gruender.wiwo.de/kolumne-ein-lob-der-digitalisierung/)
++ 04.12.2019 - Karl August Kiez - [Der Tagesspiegel und FixMyBerlin fragen die Berliner:innen, wie die Straßen unserer Stadt in Zukunft sicherer sein sollen?](https://karl-august-kiez.de/bitte-mitmachen-umfrage-zu-berliner-strassen)
++ 02.12.2019 - BMVI mFund WIK - [7 Fragen an FixMyBerlin (PDF)](https://www.wik.org/fileadmin/mFUND_VF/mFUND_WIK_7_Fragen_an_FixMyBerlin.pdf)
++ 02.12.2019 - NRVP - [Internetumfrage "Der Berliner Straßencheck"](https://nationaler-radverkehrsplan.de/de/aktuell/termine/internetumfrage-der-berliner-strassencheck)
++ 02.12.2019 - Tagesspiegel - [Interaktive Onlineumfrage zur Mobilitätswende startet](https://www.tagesspiegel.de/berlin/frustriert-vom-berliner-verkehrschaos-interaktive-onlineumfrage-zur-mobilitaetswende-startet/25289218.html)
++ 29.11.2019 - Berliner Woche - [Bürger sollen sich an der Suche nach Standorten für Fahrradabstellplätze beteiligen](https://www.berliner-woche.de/marzahn-hellersdorf/c-verkehr/buerger-sollen-sich-an-der-suche-nach-standorten-fuer-fahrradabstellplaetze-beteiligen_a242524)
++ 08.11.2019 - SMART COUNTRY CONVENTION - [Smart Country Startup Award 2019](https://www.youtube.com/watch?v=mbTVteIhTk0)
++ 17.10.2019 - Tagesspiegel Leute - [1.200 Meldungen eingegangen: Xhainer:innen wünschen sich neue Fahrradbügel](https://leute.tagesspiegel.de/friedrichshain-kreuzberg/macher/2019/10/17/99269/1-200-meldungen-eingegangen-xhainerinnen-wuenschen-sich-neue-fahrradbuegel/)
 + 15.10.2019 - Industrie.de - [Sechs Unternehmen pitchen um den Smart Country Startup Award](https://industrie.de/top/sechs-unternehmen-pitchen-um-den-smart-country-startup-award/)
 + 15.10.2019 - Berliner Woche - [Mehr als 1200 Bügel gemeldet – Zuwachs noch in diesem Jahr geplant](https://www.berliner-woche.de/friedrichshain-kreuzberg/c-verkehr/zuwachs-noch-in-diesem-jahr-geplant_a235930)
 + 13.10.2019 - RBB - [City Lab des Senats soll Berlin in die Zukunft bringen](https://www.rbb24.de/wirtschaft/beitrag/2019/10/city-lab-berlin-tempelhof.html)
