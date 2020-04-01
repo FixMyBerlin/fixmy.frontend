@@ -7,7 +7,6 @@ import FixMyLogo from '~/images/logofmb@2x.png';
 import MenuButton from '~/components/MenuButton';
 import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
 import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
-import Button from '~/components/Button';
 import Link from '~/components/Link';
 import ScrollLink from './ScrollLink';
 import { media } from '~/styles/utils';
