@@ -111,7 +111,7 @@ const TopSection = ({ toUrl }) => (
       </StyledHeading>
       <StyledButton className="wiggle" data-cy="reports-landing-cta">
         <StyledLink to={toUrl}>
-          <strong>Sagt uns wo</strong>
+          <strong>Sagen Sie uns wo</strong>
           <br /> in 30 Sekunden
         </StyledLink>
       </StyledButton>

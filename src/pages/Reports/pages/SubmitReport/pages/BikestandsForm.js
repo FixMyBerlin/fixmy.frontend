@@ -41,7 +41,7 @@ export default ({ onConfirm }) => {
   return (
     <DialogStepWrapper>
       <Question>
-        Wie viele Bügel werden aus deiner Sicht an diesem Ort benötigt?
+        Wie viele Bügel werden aus Ihrer Sicht an diesem Ort benötigt?
       </Question>
       <Paragraph>
         An einen Bügel können zwei Fahrräder angeschlossen werden.
