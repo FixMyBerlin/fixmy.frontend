@@ -50,6 +50,7 @@ const Button = styled.div`
   -webkit-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.6);
+  align-items: center;
 `;
 
 const ButtonIcon = styled.div`
@@ -124,7 +125,7 @@ LocateModeChooser.propTypes = {
 };
 
 LocateModeChooser.defaultProps = {
-  heading: 'Wo benötigst du neue Fahrradbügel?',
+  heading: 'Wo benötigen Sie neue Fahrradbügel?',
   error: {}
 };
 

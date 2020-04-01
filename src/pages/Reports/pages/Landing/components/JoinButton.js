@@ -24,7 +24,7 @@ const CenteredButton = styled(Button)`
 
 const JoinButton = ({ toUrl }) => (
   <CenteredButton as="a" href={toUrl}>
-    Sag uns, wo du Fahrradbügel benötigst
+    Sagen Sie uns, wo Fahrradbügel benötigt werden
   </CenteredButton>
 );
 

@@ -62,15 +62,15 @@ class ThanksPage extends PureComponent {
     return (
       <DialogStepWrapper>
         <StyledHeading>
-          Danke, wir haben dir eine E-Mail geschickt. Klicke dort auf den Link
+          Danke, wir haben Ihnen eine E-Mail geschickt. Klicken Sue dort auf den Link
           zur Bestätigung.
         </StyledHeading>
 
         <ThanksImg src={letterImage} />
 
         <Text>
-          Sobald du deinen Login aktiviert hast, bekommst du Nachrichten zu
-          deiner Meldung und kannst andere Meldungen mit einem Herz
+          Sobald Sie den Login aktiviert haben, bekommen Sie Nachrichten zu
+          Ihret Meldung und können Meldungen anderer mit einem Herz
           unterstützen.
         </Text>
 
@@ -83,7 +83,7 @@ class ThanksPage extends PureComponent {
         </Button>
 
         <Paragraph>
-          Schau dir deine Meldung an und erzähle anderen davon.
+          Schauen Sie sich Ihre Meldung an und erzählen anderen davon.
         </Paragraph>
       </DialogStepWrapper>
     );

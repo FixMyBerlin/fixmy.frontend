@@ -158,5 +158,4 @@
 /planungen/9071/* /planungen/222/:splat 301
 /planungen/9070/* /planungen/223/:splat 301
 
-# Proxy stats
 /stats/* https://s.fixmycity.de/:splat 200
