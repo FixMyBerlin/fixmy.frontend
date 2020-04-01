@@ -55,22 +55,20 @@ class OverviewMap extends Component {
   componentDidUpdate(prevProps) {
     const { selectedReport: prevReport } = prevProps;
     const { selectedReport } = this.props;
+    const hasReportBeenSelected = !!selectedReport?.id;
 
-    if (selectedReport?.id) {
-      if (prevReport?.id !== selectedReport.id) {
-        // Selected report changed
-
+    if (hasReportBeenSelected) {
+      const hasSelectedReportChanged = prevReport?.id !== selectedReport.id;
+      if (hasSelectedReportChanged) {
         // setState is okay because conditionals will prevent this
         // from occuring in a loop
         // eslint-disable-next-line react/no-did-update-set-state
         this.setState({ mapCenter: selectedReport.geometry.coordinates });
       }
-    } else if (!selectedReport) {
-      if (this.props.match.params.id) {
-        // handle deeplink load
-        this.props.setSelectedReport(
-          this.props.reports.find((r) => r.id === +this.props.match.params.id)
-        );
+    } else if (!hasReportBeenSelected) {
+      const isBeingLoadedWithDeepLink = this.props.match.params.id;
+      if (isBeingLoadedWithDeepLink) {
+        this.handleDeepLinkLoad();
       } else if (prevReport) {
         // Unsetting report
 
@@ -123,6 +121,14 @@ class OverviewMap extends Component {
     if (this.props.selectedReport) this.updateSelectedReportPosition();
   }
 
+  handleDeepLinkLoad() {
+    const linkedReportId = this.props.match.params.id;
+    const linkedReport = this.props.reports.find(
+      (r) => r.id === +linkedReportId
+    );
+    this.props.setSelectedReport(linkedReport, true);
+  }
+
   updateSelectedReportPosition() {
     if (this.map && this.props.selectedReport) {
       const selectedReportsPosition = this.map.project(
@@ -144,9 +150,7 @@ class OverviewMap extends Component {
     const hasDetailId = match.params.id;
     const isDesktopView = matchMediaSize(breakpoints.m);
     const isAddButtonShifted = isDesktopView && hasDetailId && !isMenuOpen;
-    const isAddButtonHidden =
-      config.reports.reportsDisabled ||
-      (isDesktopView && hasDetailId && isMenuOpen);
+    const isAddButtonHidden = isDesktopView && hasDetailId && isMenuOpen;
 
     const mapControls = (
       <>
@@ -178,6 +182,7 @@ class OverviewMap extends Component {
           <WebglMap
             reportsData={reports}
             center={this.state.mapCenter}
+            zoomIn={this.state.zoomIn}
             onMarkerClick={this.onMarkerClick}
             onLoad={(m) => this.onMapLoad(m)}
             onMove={() => this.onMapMove()}
@@ -233,6 +238,7 @@ export default withRouter(
     (state) => ({
       selectedReport: state.ReportsState.OverviewMapState.selectedReport,
       reports: state.ReportsState.OverviewMapState.reports,
+      zoomIn: state.ReportsState.OverviewMapState.reports.zoomIn,
       token: state.UserState.token,
       isMenuOpen: state.AppState.isMenuOpen,
       errorMessage: state.ReportsState.ErrorState.message

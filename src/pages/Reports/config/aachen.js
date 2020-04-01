@@ -8,7 +8,8 @@ export default {
     maxBounds: [
       [5.9, 50.6],
       [6.3, 50.9]
-    ]
+    ],
+    zoomDeepLinkedMarkers: 18
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
