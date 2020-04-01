@@ -84,7 +84,7 @@ const StyledButton = styled.div`
   font-size: 14px;
   cursor: pointer;
   text-align: center;
-  width: 167px;
+  width: 200px;
   padding: 10px 18px;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
 
