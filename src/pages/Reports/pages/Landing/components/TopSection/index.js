@@ -7,7 +7,6 @@ import FixMyLogo from '~/images/logofmb@2x.png';
 import MenuButton from '~/components/MenuButton';
 import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
 import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
-import Button from '~/components/Button';
 import Link from '~/components/Link';
 import ScrollLink from './ScrollLink';
 import { media } from '~/styles/utils';
@@ -73,7 +72,18 @@ const StyledHeading = styled.h2`
   `}
 `;
 
-const StyledButton = styled(Button)`
+const StyledButton = styled.div`
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  display: inline-block;
+  background: ${config.colors.interaction};
+  text-decoration: none;
+  color: ${config.colors.white};
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
   width: 167px;
   padding: 10px 18px;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
@@ -111,7 +121,7 @@ const TopSection = ({ toUrl }) => (
       </StyledHeading>
       <StyledButton className="wiggle" data-cy="reports-landing-cta">
         <StyledLink to={toUrl}>
-          <strong>Sagt uns wo</strong>
+          <strong>Sagen Sie uns wo</strong>
           <br /> in 30 Sekunden
         </StyledLink>
       </StyledButton>

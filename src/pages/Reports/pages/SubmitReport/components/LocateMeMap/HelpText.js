@@ -47,7 +47,7 @@ HelpText.propTypes = {
 };
 
 HelpText.defaultProps = {
-  text: 'Bewege die Karte oder tippe eine Adresse ein.'
+  text: 'Bewegen Sie die Karte oder tippen Sie eine Adresse ein.'
 };
 
 export default HelpText;
