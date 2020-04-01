@@ -3,6 +3,7 @@ import 'react-hot-loader'; // keep first
 import React, { PureComponent, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
+import ReactPiwik from 'react-piwik';
 import styled from 'styled-components';
 import { Router } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
@@ -29,6 +30,9 @@ const AppWrapper = styled.div`
 class App extends PureComponent {
   componentDidMount() {
     this.props.dispatch(verify());
+
+    // track the initial pageview
+    ReactPiwik.push(['trackPageView']);
   }
 
   render() {
