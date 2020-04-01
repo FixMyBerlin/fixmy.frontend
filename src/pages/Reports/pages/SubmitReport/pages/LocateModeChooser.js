@@ -124,7 +124,7 @@ LocateModeChooser.propTypes = {
 };
 
 LocateModeChooser.defaultProps = {
-  heading: 'Wo benötigst du neue Fahrradbügel?',
+  heading: 'Wo benötigen Sie neue Fahrradbügel?',
   error: {}
 };
 
