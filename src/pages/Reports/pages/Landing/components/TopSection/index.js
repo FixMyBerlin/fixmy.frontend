@@ -74,7 +74,7 @@ const StyledHeading = styled.h2`
 `;
 
 const StyledButton = styled(Button)`
-  width: 167px;
+  width: 200px;
   padding: 10px 18px;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
 
