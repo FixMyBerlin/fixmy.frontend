@@ -25,11 +25,11 @@ const mockFetchReports = () => {
 const initialState = reportsInitialState.OverviewMapState;
 
 describe('OverviewMapState reducer and actions', () => {
-  test.only('returns the initial state for an empty action', () => {
+  test('returns the initial state for an empty action', () => {
     expect(reducer(undefined, {})).toMatchObject(initialState);
   });
 
-  test.only('sets the popup display position of a selected report', () => {
+  test('sets the popup display position of a selected report', () => {
     const stateBefore = {
       reports: mockedReportsList,
       selectedReport: mockedReportsList[0]
@@ -43,7 +43,7 @@ describe('OverviewMapState reducer and actions', () => {
     });
   });
 
-  test.only('resets the map state', () => {
+  test('resets the map state', () => {
     const stateBefore = {
       reports: mockedReportsList,
       selectedReport: mockedReportsList[1],
@@ -89,7 +89,7 @@ describe('OverviewMapState reducer and actions', () => {
       });
     });
 
-    test.only(`fails to fetch reports and creates ${formatActionType(
+    test(`fails to fetch reports and creates ${formatActionType(
       errorStateTypes.ADD_ERROR
     )}`, () => {
       fetchMock.getOnce(reportsEndpointUrl, {
@@ -109,7 +109,7 @@ describe('OverviewMapState reducer and actions', () => {
       });
     });
 
-    test.only('sets the selectedReport if reports have been fetched already', () => {
+    test('sets the selectedReport if reports have been fetched already', () => {
       const reportItem = mockedReportsList[0];
       const expectedActions = [
         {
@@ -146,7 +146,7 @@ describe('OverviewMapState reducer and actions', () => {
       });
     });
 
-    test.only('handles setSelectedReport with an additional zoomIn flag', () => {
+    test('handles setSelectedReport with an additional zoomIn flag', () => {
       const reportItem = mockedReportsList[0];
       const expectedActions = [
         {
