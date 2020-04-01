@@ -14,6 +14,9 @@ const FAVICONS_PATH =
     ? '../src/pages/KatasterKI/favicons'
     : Path.resolve(__dirname, '..', 'favicons', process.env.REGION);
 
+// Used to prove domain ownership for Mailjet
+const MAILJET_AUTH_FILE = '3e83a85511f70bef9fbe500647d70221.txt';
+
 module.exports = {
   entry: {
     app: Path.resolve(__dirname, process.env.ENTRY_POINT || defaultEntryPoint)
@@ -32,7 +35,7 @@ module.exports = {
       { from: Path.resolve(__dirname, FAVICONS_PATH) },
       { from: Path.resolve(__dirname, '../public/data'), to: 'data' },
       {
-        from: Path.resolve(__dirname, '../3e83a85511f70bef9fbe500647d70221.txt')
+        from: Path.resolve(__dirname, '..', 'public', MAILJET_AUTH_FILE)
       }
     ]),
     new Dotenv({ defaults: true, systemvars: true })
