@@ -36,7 +36,8 @@ const StyledIcon = styled(BikeIcon)`
 `;
 
 const StyledQuestion = styled.p`
-  font-size: 22px;
+  font-size: 1.7em;
+  font-family: ${config.titleFont}, 'sans-serif';
   font-weight: bold;
   margin: 32px 0 19px 0;
   line-height: 1.37;

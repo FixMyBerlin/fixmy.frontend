@@ -5,12 +5,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import CloseIcon from '~/images/close.svg';
 
 import config from '~/pages/Reports/config';
 import LocateIcon from '~/images/reports/location-button.svg';
 import MapIcon from '~/images/reports/noun-map-1909219.svg';
 import ErrorMessage from '~/components/ErrorMessage';
+import { media } from '~/styles/utils';
+import CloseIcon from '~/images/close.svg';
 
 const Wrapper = styled.div`
   flex: 2;
@@ -24,12 +25,17 @@ const Wrapper = styled.div`
 `;
 
 const Heading = styled.h2`
-  font-size: 25px;
+  font-family: '${config.titleFont}', sans-serif;
+  font-size: 2em;
   font-weight: bold;
   text-align: center;
   line-height: 1.33;
   margin-top: 76px;
   margin-bottom: 58px;
+
+  ${media.m`
+    font-size: 2.5em;
+  `}
 `;
 
 const Button = styled.div`

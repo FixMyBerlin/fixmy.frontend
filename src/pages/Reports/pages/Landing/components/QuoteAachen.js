@@ -23,11 +23,13 @@ const Img = styled.img`
 
 const BlockQuote = styled.blockquote`
   text-align: center;
-  font-style: italic;
   margin: 20px 0 28px 0;
+  line-height: 1.5;
 `;
 
 const SourcePerson = styled(SubHeading)`
+  font-family: '${config.titleFont}', sans-serif;
+  font-size: 1.2em;
   margin-bottom: 0;
 `;
 
