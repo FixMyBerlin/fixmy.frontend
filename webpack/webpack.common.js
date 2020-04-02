@@ -34,6 +34,7 @@ module.exports = {
       { from: Path.resolve(__dirname, '../_redirects') },
       { from: Path.resolve(__dirname, FAVICONS_PATH) },
       { from: Path.resolve(__dirname, '../public/data'), to: 'data' },
+      { from: Path.resolve(__dirname, '../public/uploads'), to: 'uploads' },
       {
         from: Path.resolve(__dirname, '..', 'public', MAILJET_AUTH_FILE)
       }

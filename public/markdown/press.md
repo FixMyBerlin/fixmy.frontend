@@ -9,21 +9,21 @@ https://embed.fixmyberlin.de
 
 ### Bildmaterial
 Bildmaterial zur freien Verwendung durch die Presse: <br>
-- [Screenshots Umfrage Straßencheck (Zip-Datei mit 6 Bildern)](https://fixmyberlin.de/src/images/uploads/press/Strassencheck_Screenshots_©FixMyBerlin.zip "Screenshots-Umfrage Straßencheck")
-- [Renderings Szenarien Umfrage Straßencheck (Zip-Datei mit 11 Bildern)](https://fixmyberlin.de/src/images/uploads/press/Strassencheck-Szenarien-©FixMyBerlin.zip "Renderings Szenarien Umfrage Straßencheck")
-- [Mock-Up Meldedialog XHain Handheld](https://fixmyberlin.de/src/images/uploads/press/Meldedialog_MockUp_FixMyBerlin.png "MockUp-Meldedialog XHain Handheld")
-- [Mock-Up Meldedialog XHain Screens](https://fixmyberlin.de/src/images/uploads/press/MockUp_4screens_Meldedialog.jpg "MockUp-Meldedialog XHain Screens")
-- [Screenshot_Planung-Uebersicht](https://fixmyberlin.de/src/images/uploads/press/Planungsansicht_fixmyberlin.jpg "Screenshot-Planungen")
-- [Screenshot_Planung-Holzmarkt](https://fixmyberlin.de/src/images/uploads/press/Planung_Holzmarkt_fixmyberlin.jpg "Screenshot-Planung-Holzmarkt")
-- [Screenshot_Happy-Bike-Level](https://fixmyberlin.de/src/images/uploads/press/Happy-Bike-Level_gesamt_fixmyberlin.jpg "Screenshot-Happy-Bike-Level")
-- [Screenshot_Happy-Bike-Level-sehrgut+ok](https://fixmyberlin.de/src/images/uploads/press/Happy-Bike-Level_gut_fixmyberlin.jpg "Screenshot-Happy-Bike-Level-gut")
-- [Screenshot_Happy-Bike-Level-schlecht+sehrschlecht](https://fixmyberlin.de/src/images/uploads/press/Happy-Bike-Level_schlecht_fixmyberlin.jpg "Screenshot-Happy-Bike-Level-gut")
+- [Screenshots Umfrage Straßencheck (Zip-Datei mit 6 Bildern)](/uploads/press/Strassencheck_Screenshots_©FixMyBerlin.zip "Screenshots-Umfrage Straßencheck")
+- [Renderings Szenarien Umfrage Straßencheck (Zip-Datei mit 11 Bildern)](/uploads/press/Strassencheck-Szenarien-©FixMyBerlin.zip "Renderings Szenarien Umfrage Straßencheck")
+- [Mock-Up Meldedialog XHain Handheld](/uploads/press/Meldedialog_MockUp_FixMyBerlin.png "MockUp-Meldedialog XHain Handheld")
+- [Mock-Up Meldedialog XHain Screens](/uploads/press/MockUp_4screens_Meldedialog.jpg "MockUp-Meldedialog XHain Screens")
+- [Screenshot_Planung-Uebersicht](/uploads/press/Planungsansicht_fixmyberlin.jpg "Screenshot-Planungen")
+- [Screenshot_Planung-Holzmarkt](/uploads/press/Planung_Holzmarkt_fixmyberlin.jpg "Screenshot-Planung-Holzmarkt")
+- [Screenshot_Happy-Bike-Level](/uploads/press/Happy-Bike-Level_gesamt_fixmyberlin.jpg "Screenshot-Happy-Bike-Level")
+- [Screenshot_Happy-Bike-Level-sehrgut+ok](/uploads/press/Happy-Bike-Level_gut_fixmyberlin.jpg "Screenshot-Happy-Bike-Level-gut")
+- [Screenshot_Happy-Bike-Level-schlecht+sehrschlecht](/uploads/press/Happy-Bike-Level_schlecht_fixmyberlin.jpg "Screenshot-Happy-Bike-Level-gut")
 
 ### Pressemitteilungen
-+ 02.12.2019 - [Start Umfrage Straßencheck mit Tagesspiegel Berlin](https://fixmyberlin.de/src/images/uploads/press/2019_12_02_PM_Start_Strassencheck.pdf "Start Umfrage Straßencheck mit Tagesspiegel Berlin") FixMyBerlin und Tagesspiegel Berlin starten die Umfrage Straßencheck zur Sicherheit von Berlins Straßen.
-+ 11.10.2019 - [Abschluss Meldedialog XHain](https://fixmyberlin.de/src/images/uploads/press/2019_10_10_240_PM_Meldedialog_Radbuegel.pdf "PM-Launch-Meldedialog XHain") Erfolgreiche Kooperation zwischen Bezirksamt und FixMyBerlin: 1.200 Meldungen für Fahrradbügel im Bezirk.
-+ 11.09.2019 - [Launch Meldedialog XHain](https://fixmyberlin.de/src/images/uploads/press/2019_09_02_PM_Kooperation_FixMyBerlin_XHain.pdf "PM-Launch-Meldedialog XHain") Bezirksamt Friedrichshain-Kreuzberg und FixMyBerlin starten digitalen Meldedialog für bessere Fahrradstellplätze.
-+ 19.09.2018 - [Launch FixMyBerlin](https://fixmyberlin.de/src/images/uploads/press/pressemitteilung_launch_fixmyberlin_20180919.pdf "PM-Launch-FixMyBerlin") Ab heute zeigt fixmyberlin.de, wo in Berlin neue Radwege entstehen und wie sicher die Berliner Hauptstraßen für Radfahrende sind.
++ 02.12.2019 - [Start Umfrage Straßencheck mit Tagesspiegel Berlin](/uploads/press/2019_12_02_PM_Start_Strassencheck.pdf "Start Umfrage Straßencheck mit Tagesspiegel Berlin") FixMyBerlin und Tagesspiegel Berlin starten die Umfrage Straßencheck zur Sicherheit von Berlins Straßen.
++ 11.10.2019 - [Abschluss Meldedialog XHain](/uploads/press/2019_10_10_240_PM_Meldedialog_Radbuegel.pdf "PM-Launch-Meldedialog XHain") Erfolgreiche Kooperation zwischen Bezirksamt und FixMyBerlin: 1.200 Meldungen für Fahrradbügel im Bezirk.
++ 11.09.2019 - [Launch Meldedialog XHain](/uploads/press/2019_09_02_PM_Kooperation_FixMyBerlin_XHain.pdf "PM-Launch-Meldedialog XHain") Bezirksamt Friedrichshain-Kreuzberg und FixMyBerlin starten digitalen Meldedialog für bessere Fahrradstellplätze.
++ 19.09.2018 - [Launch FixMyBerlin](/uploads/press/pressemitteilung_launch_fixmyberlin_20180919.pdf "PM-Launch-FixMyBerlin") Ab heute zeigt fixmyberlin.de, wo in Berlin neue Radwege entstehen und wie sicher die Berliner Hauptstraßen für Radfahrende sind.
 
 ### Pressespiegel
 + 16.02.2020 - Tagesspiegel - [Das stört im Berliner Verkehr am meisten](https://interaktiv.tagesspiegel.de/lab/strassencheck-das-stoert-im-berliner-verkehr-am-meisten/)
