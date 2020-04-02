@@ -22,6 +22,7 @@ types.SET_LOCATION_MODE_GEOCODING = `${PREFIX}SET_LOCATION_MODE_GEOCODING`;
 types.SET_LOCATION_MODE_DEVICE = `${PREFIX}SET_LOCATION_MODE_DEVICE`;
 types.SET_DEVICE_LOCATION = `${PREFIX}SET_DEVICE_LOCATION`;
 types.GEOCODE_COMPLETE = `${PREFIX}GEOCODE_COMPLETE`;
+types.UNSET_AUTOMATED_POSITIONING = `${PREFIX}UNSET_AUTOMATED_POSITIONING`;
 types.VALIDATE_POSITION = `${PREFIX}VALIDATE_POSITION`;
 types.INVALIDATE_POSITION = `${PREFIX}INVALIDATE_POSITION`;
 types.REVERSE_GEOCODE_COMPLETE = `${PREFIX}REVERSE_GEOCODE_COMPLETE`;
@@ -85,6 +86,10 @@ actions.setDeviceLocation = ({ lng, lat }) => ({
 actions.handleGeocodeSuccess = ({ coords, address }) => ({
   type: types.GEOCODE_COMPLETE,
   payload: { coords, address }
+});
+
+actions.unsetAutomatedPositioning = () => ({
+  type: types.UNSET_AUTOMATED_POSITIONING
 });
 
 actions.setBikestandCount = (amount) => ({
@@ -209,7 +214,11 @@ function reducer(state = initialState.SubmitReportState, action = {}) {
         locationMode: state.locationMode
       };
     case types.SET_DEVICE_LOCATION:
-      return { ...state, deviceLocation: action.payload };
+      return {
+        ...state,
+        deviceLocation: action.payload,
+        geocodeResult: null
+      };
     case types.GEOCODE_COMPLETE:
       return {
         ...state,
@@ -218,7 +227,14 @@ function reducer(state = initialState.SubmitReportState, action = {}) {
           ...state.tempLocation,
           address: action.payload.address,
           lngLat: action.payload.coords
-        }
+        },
+        deviceLocation: null
+      };
+    case types.UNSET_AUTOMATED_POSITIONING:
+      return {
+        ...state,
+        geocodeResult: null,
+        deviceLocation: null
       };
     case types.INVALIDATE_POSITION:
       return {
@@ -331,7 +347,7 @@ function reducer(state = initialState.SubmitReportState, action = {}) {
         }
       };
     default:
-      return { ...state };
+      return state;
   }
 }
 
