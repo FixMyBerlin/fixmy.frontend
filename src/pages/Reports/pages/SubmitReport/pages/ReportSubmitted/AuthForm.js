@@ -169,8 +169,8 @@ class AuthForm extends Component {
       <>
         <HorizontalRuler />
         <Heading>
-          Geben Sie Ihre E-Mailadresse an, damit Sie 
-          Informationen zum Status Ihrer Meldung bekommen können.
+          Geben Sie Ihre E-Mailadresse an, damit Sie Informationen zum Status
+          Ihrer Meldung bekommen können.
         </Heading>
 
         <FormWrapper>
