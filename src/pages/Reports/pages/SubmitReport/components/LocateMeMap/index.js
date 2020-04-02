@@ -221,7 +221,7 @@ class LocateMeMap extends Component {
           />
         )}
 
-        {!this.state.isLoading && this.props.isLocationModeGeocoding && (
+        {!this.state.isLoading && (
           <>
             {!this.state.locationPinned && (
               <SearchBarWrapper>
