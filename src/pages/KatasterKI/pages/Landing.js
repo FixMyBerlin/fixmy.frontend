@@ -227,7 +227,8 @@ const checkEmbeddedParam = (value) => {
 };
 
 const LANDING_PATH_NATIONAL =
-  process.env.BASE_NAME.slice(0, -1) + config.routes.katasterKI.landingNational;
+  process.env.BASE_NAME.slice(0, -1) +
+  config.routes.katasterKI?.landingNational;
 
 const Landing = ({ location }) => {
   if (checkEmbeddedParam(location.search)) {

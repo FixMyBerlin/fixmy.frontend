@@ -84,7 +84,7 @@ const isLandingPage = (path) => {
 
   const LANDING_PATH_NATIONAL =
     process.env.BASE_NAME.slice(0, -1) +
-    config.routes.katasterKI.landingNational;
+    config.routes.katasterKI?.landingNational;
   const isLandingNational = matchPath(path, {
     path: LANDING_PATH_NATIONAL,
     exact: true
