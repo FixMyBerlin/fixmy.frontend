@@ -2,6 +2,7 @@ import styledNormalize from 'styled-normalize';
 import { createGlobalStyle } from 'styled-components';
 
 import fontFaces from './fontfaces';
+import config from '~/config';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -24,11 +25,11 @@ export default createGlobalStyle`
     position: relative;
     height: 100%;
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: '${config.baseFont}', sans-serif;
   }
 
   input, button, select, textarea {
-    font-family: 'Open Sans', sans-serif;
+    font-family: '${config.baseFont}', sans-serif;
   }
 
   ::placeholder {

@@ -80,7 +80,7 @@ const StyledButton = styled.div`
   background: ${config.colors.interaction};
   text-decoration: none;
   color: ${config.colors.white};
-  font-family: 'Open Sans', sans-serif;
+  font-family: '${config.baseFont}', sans-serif;
   font-size: 14px;
   cursor: pointer;
   text-align: center;
