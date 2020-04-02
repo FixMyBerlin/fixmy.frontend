@@ -27,5 +27,7 @@ export default {
     likebg: 'initial',
     interaction: '#6E9BD2'
   },
-  titleFont: 'The Mix'
+  titleFont: 'The Mix',
+  baseFont: 'Arial',
+  flatButtons: true
 };

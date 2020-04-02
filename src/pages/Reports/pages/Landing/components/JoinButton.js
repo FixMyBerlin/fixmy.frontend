@@ -10,10 +10,13 @@ const CenteredButton = styled(Button)`
   display: block;
   font-size: 14px;
   font-weight: 600;
+  line-height: 1.4;
   text-decoration: none;
   width: 200px;
   text-align: center;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: ${config.flatButtons
+    ? 'initial'
+    : '0 0 12px 0 rgba(0, 0, 0, 0.3)'};
 
   &:visited,
   &:hover {

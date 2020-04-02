@@ -133,8 +133,8 @@ class AdditionalDataForm extends PureComponent {
           ergänzen.
         </StyledHeading>
         <Hint>
-          Ein Foto des Ortes hilft uns, die Situation vor Ort besser
-          zu beurteilen und die Meldung schneller zu bearbeiten.
+          Ein Foto des Ortes hilft uns, die Situation vor Ort besser zu
+          beurteilen und die Meldung schneller zu bearbeiten.
         </Hint>
 
         <UploadPhotoInput

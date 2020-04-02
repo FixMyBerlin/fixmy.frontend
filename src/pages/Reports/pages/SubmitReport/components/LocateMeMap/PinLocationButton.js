@@ -14,7 +14,7 @@ const Button = styled.button`
   line-height: 100%;
   color: #ffffff;
   border: none;
-  border-radius: 4px;
+  border-radius: ${config.flatButtons ? '0' : '4px'};
   // TODO: make the wrapping component take care of positioning
   position: absolute;
   bottom: 55px;

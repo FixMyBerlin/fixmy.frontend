@@ -16,6 +16,8 @@ const baseConfig = {
   feedbackMail: 'feedback@fixmyberlin.de',
   siteTitle: 'FixMyBerlin',
   titleFont: 'Roboto Slab',
+  baseFont: 'Open Sans',
+  flatButtons: false,
   logger: 'fmc*', // selects logging namespaces to display when not in production
   sectionIsBeta: true,
   planningIsBeta: true,

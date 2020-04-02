@@ -38,8 +38,7 @@ export default {
       longitude: 13.38694
     }
   },
-  title:
-    'Fahrradbügel für Friedrichshain-Kreuzberg (Status: In Bearbeitung durch den Bezirk)',
+  title: 'Fahrradbügel für Friedrichshain-Kreuzberg',
   region: 'Friedrichshain-Kreuzberg',
   intro:
     'Damit du dein Fahrrad überall sicher abschließen kannst, installiert das Bezirksamt Friedrichshain-Kreuzberg neue Fahrradbügel. Da du als Bürger:in am besten weißt, wo du dein Fahrrad abstellst, kannst du hier melden, wo genau im Bezirk du neue Bügel benötigst.',

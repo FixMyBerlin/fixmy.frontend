@@ -62,8 +62,8 @@ class ThanksPage extends PureComponent {
     return (
       <DialogStepWrapper>
         <StyledHeading>
-          Danke, wir haben Ihnen eine E-Mail geschickt. Klicken Sue dort auf den Link
-          zur Bestätigung.
+          Danke, wir haben Ihnen eine E-Mail geschickt. Klicken Sue dort auf den
+          Link zur Bestätigung.
         </StyledHeading>
 
         <ThanksImg src={letterImage} />
