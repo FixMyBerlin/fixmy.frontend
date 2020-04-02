@@ -1,7 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
+import { actions } from '~/pages/Reports/state/SubmitReportState';
+import FixMyLogo from '~/images/logofmb@2x.png';
+import MenuButton from '~/components/MenuButton';
+import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
+import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 import Link from '~/components/Link';
 import MenuButton from '~/pages/Reports/components/MenuButton';
 import ScrollLink from '~/pages/Reports/components/ScrollLink';
@@ -82,7 +89,7 @@ const StyledButton = styled.div`
   text-decoration: none;
   color: ${config.colors.white};
   font-family: '${config.baseFont}', sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   cursor: pointer;
   text-align: center;
   width: 200px;
@@ -101,7 +108,6 @@ const StyledButton = styled.div`
 
 const StyledLink = styled(Link)`
   color: white;
-  font-size: 18px;
 
   &:visited,
   &:hover {
@@ -133,7 +139,45 @@ const CenterLogo = styled.img`
   `};
 `;
 
-const TopSection = ({ toUrl }) => (
+const OnlyDesktop = styled.span`
+  display: none;
+  ${media.l`
+    display: inline;
+  `}
+`;
+
+const OnlyMobile = styled.span`
+  ${media.l`
+    display: none;
+  `}
+`;
+
+const navigateToMap = (dispatch, history) => {
+  dispatch(actions.setLocationModeGeocoding());
+  history.push(config.routes.reports.new);
+};
+
+const ModeChooserLink = () => (
+  <StyledButton className="wiggle" data-cy="reports-landing-cta">
+    <StyledLink to={config.routes.reports.new}>
+      <strong>Sagen Sie uns wo</strong>
+      <br /> in 30 Sekunden
+    </StyledLink>
+  </StyledButton>
+);
+
+const MapButton = ({ onClick }) => (
+  <StyledButton
+    className="wiggle"
+    data-cy="reports-landing-cta"
+    onClick={onClick}
+  >
+    <strong>Sagen Sie uns wo</strong>
+    <br /> in 30 Sekunden
+  </StyledButton>
+);
+
+const TopSection = ({ dispatch, history }) => (
   <Section>
     <MenuButton whiteFill="true" />
     <FlexWrapper>
@@ -148,15 +192,15 @@ const TopSection = ({ toUrl }) => (
       <StyledHeading data-cy="reports-landing-header">
         {config.reports.landing?.title}
       </StyledHeading>
-      <StyledButton className="wiggle" data-cy="reports-landing-cta">
-        <StyledLink to={toUrl}>
-          <strong>Sagen Sie uns wo</strong>
-          <br /> in 30 Sekunden
-        </StyledLink>
-      </StyledButton>
+      <OnlyMobile>
+        <ModeChooserLink />
+      </OnlyMobile>
+      <OnlyDesktop>
+        <MapButton onClick={() => navigateToMap(dispatch, history)} />
+      </OnlyDesktop>
     </FlexWrapper>
     <ScrollLink />
   </Section>
 );
 
-export default TopSection;
+export default connect()(withRouter(TopSection));
