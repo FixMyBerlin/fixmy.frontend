@@ -48,12 +48,16 @@ const ReportPin = styled.img.attrs((props) => ({
   height: 51px;
 `;
 
+const DetailsHeading = styled(Heading)`
+  font-size: 1.4em;
+`;
+
 const DetailsHeader = ({ details: { number }, status }) => (
   <>
     <HeadlineSection data-cy="reports-detail-title">
-      <Heading alignLeft>
+      <DetailsHeading alignLeft>
         {number} neue{number === 1 ? 'r' : null} Fahrradbügel gewünscht
-      </Heading>
+      </DetailsHeading>
       <BikeStandsCountSection>
         <BikestandsIcon />
         <BikeStandsCount>x{number}</BikeStandsCount>
