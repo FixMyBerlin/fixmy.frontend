@@ -14,14 +14,14 @@ import { media } from '~/styles/utils';
 import CloseIcon from '~/images/close.svg';
 
 const Wrapper = styled.div`
-  flex: 2;
+  z-index: 999999;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${config.colors.interaction};
   border: 1px solid #979797;
   padding: 12px;
-  z-index: 999999;
 `;
 
 const Heading = styled.h2`
