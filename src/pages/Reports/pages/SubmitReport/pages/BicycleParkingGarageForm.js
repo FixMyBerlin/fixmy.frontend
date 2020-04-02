@@ -46,7 +46,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
   return (
     <DialogStepWrapper>
       <StyledHeading data-cy="reports-locker-heading">
-        Würdest du an diesem Ort auch ein kostenpflichtiges Fahrradparkhaus
+        Würden Sie an diesem Ort auch ein kostenpflichtiges Fahrradparkhaus
         nutzen?
       </StyledHeading>
 
@@ -103,9 +103,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
       <Paragraph>
         Fahrradparkhäuser sind abschließbare Stationen, in denen Fahrräder gegen
         Gebühr besonders sicher untergebracht werden können. Teilweise sind sie
-        auch mit Ladestationen für E-Bikes ausgerüstet. Berlin will in den
-        nächsten Jahren viele solcher Angebote errichten und sucht derzeit nach
-        geeigeneten Standorten.
+        auch mit Ladestationen für E-Bikes ausgerüstet.
       </Paragraph>
     </DialogStepWrapper>
   );

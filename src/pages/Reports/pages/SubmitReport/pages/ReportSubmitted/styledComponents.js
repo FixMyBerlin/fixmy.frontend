@@ -26,7 +26,9 @@ const SubmitButton = styled(Button)`
   width: 168px;
   font-size: 18px;
   font-weight: bold;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: ${config.flatButtons
+    ? 'initial'
+    : '0 0 12px 0 rgba(0, 0, 0, 0.2)'};
 `;
 
 const ButtonWrapper = styled.div`

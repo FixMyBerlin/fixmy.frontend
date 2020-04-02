@@ -133,8 +133,8 @@ class AdditionalDataForm extends PureComponent {
           ergänzen.
         </StyledHeading>
         <Hint>
-          Ein Foto des Ortes hilft der Verwaltung, die Situation vor Ort besser
-          zu beurteilen und die Meldung schneller zu bearbeiten.
+          Ein Foto des Ortes hilft uns, die Situation vor Ort besser zu
+          beurteilen und die Meldung schneller zu bearbeiten.
         </Hint>
 
         <UploadPhotoInput
@@ -163,7 +163,7 @@ class AdditionalDataForm extends PureComponent {
           </StyledCheckboxLabel>
         </PhotoDisclaimerWrapper>
 
-        <StyledHeading>Hinweise an die Verwaltung</StyledHeading>
+        <StyledHeading>Hinweise zum Ort</StyledHeading>
 
         <DescriptionTextArea
           rows={isDesktopView ? 6 : 8}
@@ -172,9 +172,9 @@ class AdditionalDataForm extends PureComponent {
           onChange={this.updateDescription}
           data-cy="reports-additional-comment"
           placeholder={oneLine`
-          Beschreibe hier die Situation an dem Ort deiner
-          Meldung oder nenne besondere Anforderungen,
-          z.B. Stellplätze für Lastenräder, die Nähe einer Kita oder Ähnliches.`}
+          Beschreiben Sie hier die Situation an dem Ort Ihrer
+          Meldung oder nennen besondere Anforderungen,
+          z.B. Stellplätze für Lastenräder, die Nähe einer Kita oder ähnliches.`}
         />
         <Hint
           emphasize={this.state.description.length === maxDescriptionLength}

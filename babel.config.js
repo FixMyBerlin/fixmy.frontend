@@ -43,6 +43,20 @@ module.exports = (api) => {
   return {
     presets,
     plugins,
-    env
+    env,
+    overrides: [
+      {
+        test: './node_modules/debug/**/*.js',
+        sourceType: 'script',
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              /* other options */
+            }
+          ]
+        ]
+      }
+    ]
   };
 };

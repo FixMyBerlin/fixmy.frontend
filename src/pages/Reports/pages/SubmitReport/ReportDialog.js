@@ -80,7 +80,7 @@ class ReportDialog extends PureComponent {
           <>
             <OverviewMapNavBar />
             <LocateModeChooser
-              heading="Wo benötigst du neue Fahrradbügel?"
+              heading="Wo benötigen Sie neue Fahrradbügel?"
               onUseDevicePosition={this.props.useDevicePosition}
               onUseGeocoding={this.props.setLocationModeGeocoding}
               error={error}

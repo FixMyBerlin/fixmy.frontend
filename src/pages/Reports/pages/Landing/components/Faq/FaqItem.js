@@ -31,7 +31,7 @@ const CollapsibleWrapper = styled.div`
     }
 
     &:after {
-      font-family: 'Open Sans', sans-serif;
+      font-family: '${config.baseFont}', sans-serif;
       content: '';
       border-style: solid;
       border-width: 12px 7.5px 0 7.5px; // triangle

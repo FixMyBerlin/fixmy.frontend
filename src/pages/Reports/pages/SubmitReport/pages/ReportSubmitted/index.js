@@ -67,7 +67,7 @@ class ReportSubmitted extends PureComponent {
     return (
       <DialogStepWrapper>
         <StyledHeading>
-          Du hilfst mit, {config.reports.region} radfreundlicher zu machen!
+          Sie helfen mit, {config.reports.region} radfreundlicher zu machen!
         </StyledHeading>
 
         <ThanksImg src={thanksImage} data-cy="reports-submitted-image" />

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import config from '~/pages/Reports/config';
+import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`
   margin: 0;
@@ -31,6 +32,11 @@ const Heading = styled.h2`
   color: ${config.colors.darkgrey};
   letter-spacing: 0.8px;
   margin: 0;
+
+  ${media.m`
+    font-family: '${config.titleFont}', sans-serif;
+    font-size: 1.6em;
+  `}
 `;
 
 const BikeParkImg = styled(BikeParkIcon)`

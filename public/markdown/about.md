@@ -17,47 +17,47 @@ Das Projekt wird u.a. gefördert aus Mitteln des Bundesverkehrsministeriums, der
 Du willst uns unterstützen? [Melde Dich gerne](/jobs)
 
 <div class="teamportrait">
-  <img src="/src/images/uploads/team/FixMyBerlin_Boris Hekele.png" alt="Boris Hekele" title="Boris Hekele" style="width: 160px" /><br />
+  <img src="/src/images/team/FixMyBerlin_Boris Hekele.png" alt="Boris Hekele" title="Boris Hekele" style="width: 160px" /><br />
   <strong>Boris Hekele</strong><br />
   Geschäftsführung, Netzwerk, Technische Leitung
 </div>
 <div class="teamportrait">
-  <img src="/src/images/uploads/team/HeikoRintelen_hell.jpg" alt="Heiko Rintelen" title="Heiko Rintelen" style="width: 160px" /><br />
+  <img src="/src/images/team/HeikoRintelen_hell.jpg" alt="Heiko Rintelen" title="Heiko Rintelen" style="width: 160px" /><br />
   <strong>Heiko Rintelen</strong><br />
   Geschäftsführung, Kreative Leitung, Kommunikation
 </div>
 <div class="teamportrait">
-  <img src="/src/images/uploads/team/FixMyBerlin_NoraBinnig.jpg" alt="Nora Binnig" title="Nora Binnig" style="width: 160px" /><br />
+  <img src="/src/images/team/FixMyBerlin_NoraBinnig.jpg" alt="Nora Binnig" title="Nora Binnig" style="width: 160px" /><br />
   <strong>Nora Binnig</strong><br />
   Leitung Datenredaktion, Datenstrategie, Koordination Bezirke
 </div>
 <div class="teamportrait">
-  <img src="/src/images/uploads/team/sascha_picard.jpg" alt="Sascha Picard" title="Sascha Picard" style="width: 160px" /><br />
+  <img src="/src/images/team/sascha_picard.jpg" alt="Sascha Picard" title="Sascha Picard" style="width: 160px" /><br />
   <strong>Sascha Picard</strong><br />
   Frontend-Entwicklung, GIS-Datenbank, Testing
 </div>
 <div class="teamportrait">
-  <img src="/src/images/uploads/team/Tobi-350x400.jpg" alt="Tobias Müller" title="Tobias Müller" style="width: 160px" /><br />
+  <img src="/src/images/team/Tobi-350x400.jpg" alt="Tobias Müller" title="Tobias Müller" style="width: 160px" /><br />
   <strong>Tobias Müller</strong><br />
   Städtische Kontakte, Ausschreibungen, Präsentationen
 </div>
 <div class="teamportrait">
-  <img src="/src/images/uploads/team/Andrea.png" alt="Andrea Knabe-Schönemann" title="Andrea Knabe-Schönemann" style="width: 160px" /><br />
+  <img src="/src/images/team/Andrea.png" alt="Andrea Knabe-Schönemann" title="Andrea Knabe-Schönemann" style="width: 160px" /><br />
   <strong>Andrea Knabe-Schönemann</strong><br />
   Controlling, Open Data, Community
 </div>
 <div class="teamportrait">
-  <img src="/src/images/uploads/team/Felix_350x400.jpg" alt="Felix Sistenich" title="Felix Sistenich" style="width: 160px" /><br />
+  <img src="/src/images/team/Felix_350x400.jpg" alt="Felix Sistenich" title="Felix Sistenich" style="width: 160px" /><br />
   <strong>Felix Sistenich</strong><br />
   Datenredaktion, Literaturrecherche, Umfragedesign
 </div>
 <div class="teamportrait">
-  <img src="/src/images/uploads/team/VincentAhrend.png" alt="Vincent Ahrend" title="Vincent Ahrend" style="width: 160px" /><br />
+  <img src="/src/images/team/VincentAhrend.png" alt="Vincent Ahrend" title="Vincent Ahrend" style="width: 160px" /><br />
   <strong>Vincent Ahrend</strong><br />
   Fullstack-Entwicklung
 </div>
 <div class="teamportrait">
-  <img src="/src/images/uploads/team/Niklas_Schader.jpg" alt="Niklas Schader" title="Niklas Schader" style="width: 160px" /><br />
+  <img src="/src/images/team/Niklas_Schader.jpg" alt="Niklas Schader" title="Niklas Schader" style="width: 160px" /><br />
   <strong>Niklas Schader</strong><br />
   Grafik und Kommunikation
 </div>
@@ -82,38 +82,38 @@ Unsere **Kontaktdaten** befinden sich im [Impressum](/impressum 'Zum Impressum')
 </style>
 
 <div class="partner">
-  <a href="https://www.adfc.de/" target="_blank"><img src="/src/images/uploads/partner/adfc.png" /></a>
+  <a href="https://www.adfc.de/" target="_blank"><img src="/src/images/partner/adfc.png" /></a>
 </div>
 <div class="partner">
-  <a href="https://entrepreneurship.htw-berlin.de/stipendium/berliner-startup-stipendium/" target="_blank"><img src="/src/images/uploads/partner/berlin-startup-stipendium.png" /></a>
+  <a href="https://entrepreneurship.htw-berlin.de/stipendium/berliner-startup-stipendium/" target="_blank"><img src="/src/images/partner/berlin-startup-stipendium.png" /></a>
 </div>
 <div class="partner">
-  <a href="https://www.bmvi.de/" target="_blank"><img src="/src/images/uploads/partner/bmvi.png" /></a>
-</div>
-<br clear="both" />
-<div class="partner">
-  <a href="https://changing-cities.org/" target="_blank"><img src="/src/images/uploads/partner/changing-cities.png" /></a>
-</div>
-<div class="partner">
-  <a href="https://www.citylab-berlin.org/" target="_blank"><img src="/src/images/uploads/partner/citylab-berlin.png" /></a>
-</div>
-<div class="partner">
-  <a href="https://www.htw.de/" target="_blank"><img src="/src/images/uploads/partner/htw.jpg" /></a>
+  <a href="https://www.bmvi.de/" target="_blank"><img src="/src/images/partner/bmvi.png" /></a>
 </div>
 <br clear="both" />
 <div class="partner">
-  <a href="https://prototypefund.de/" target="_blank"><img src="/src/images/uploads/partner/prototype-fund.jpg" /></a>
+  <a href="https://changing-cities.org/" target="_blank"><img src="/src/images/partner/changing-cities.png" /></a>
 </div>
 <div class="partner">
-  <a href="https://www.berlin.de/rbmskzl/" target="_blank"><img src="/src/images/uploads/partner/senatskanzlei-berlin.png" /></a>
+  <a href="https://www.citylab-berlin.org/" target="_blank"><img src="/src/images/partner/citylab-berlin.png" /></a>
 </div>
 <div class="partner">
-  <a href="https://www.berlin.de/sen/uvk/" target="_blank"><img src="/src/images/uploads/partner/senat-verkehr-berlin.png" /></a>
+  <a href="https://www.htw.de/" target="_blank"><img src="/src/images/partner/htw.jpg" /></a>
 </div>
 <br clear="both" />
 <div class="partner">
-  <a href="https://www.tu-berlin.de/" target="_blank"><img src="/src/images/uploads/partner/tu-berlin.png" /></a>
+  <a href="https://prototypefund.de/" target="_blank"><img src="/src/images/partner/prototype-fund.jpg" /></a>
 </div>
 <div class="partner">
-  <a href="https://tu-dresden.de/" target="_blank"><img src="/src/images/uploads/partner/tu-dresden.png" /></a>
+  <a href="https://www.berlin.de/rbmskzl/" target="_blank"><img src="/src/images/partner/senatskanzlei-berlin.png" /></a>
+</div>
+<div class="partner">
+  <a href="https://www.berlin.de/sen/uvk/" target="_blank"><img src="/src/images/partner/senat-verkehr-berlin.png" /></a>
+</div>
+<br clear="both" />
+<div class="partner">
+  <a href="https://www.tu-berlin.de/" target="_blank"><img src="/src/images/partner/tu-berlin.png" /></a>
+</div>
+<div class="partner">
+  <a href="https://tu-dresden.de/" target="_blank"><img src="/src/images/partner/tu-dresden.png" /></a>
 </div>

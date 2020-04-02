@@ -8,7 +8,8 @@ export default {
     maxBounds: [
       [5.9, 50.6],
       [6.3, 50.9]
-    ]
+    ],
+    zoomDeepLinkedMarkers: 18
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
@@ -38,65 +39,61 @@ export default {
   },
   region: 'Aachen',
   intro:
-    'Damit du dein Fahrrad überall sicher abschließen kannst, installiert die Stadt Aachen neue Fahrradbügel. Da du als Bürger:in am besten weißt, wo du dein Fahrrad abstellst, kannst du hier melden, wo genau du neue Bügel benötigst.',
+    'Damit Sie Ihr Fahrrad überall sicher abschließen können, baut die Stadt Aachen umfassend neue Fahrradabstellmöglichkeiten aus. Da Sie  als Bürger*in am besten wissen, wo Sie Ihr Fahrrad abstellen, können Sie hier melden, wo genau Sie neue Bügel benötigen.',
   steps: [
     {
       step: 1,
-      text: 'Du meldest, wo neue Bügel benötigt werden.'
+      text: 'Sie melden, wo neue Bügel benötigt werden.'
     },
     {
       step: 2,
       text:
-        'Alle Meldungen, die bis zum 15. Mai eingegangen sind, werden von der Stadt Aachen geprüft.'
+        'Alle Meldungen, die bis zum 31. Juli 2020 eingegangen sind, werden von der Stadt Aachen geprüft.'
     },
     {
       step: 3,
       text:
-        'Sofern sie umsetzbar sind, werden die Bügel noch in diesem Jahr installiert.'
+        'Sofern sie umsetzbar sind, werden die Bügel so schnell wie möglich installiert.'
     }
   ],
   faq: [
     {
       heading: 'Warum sollte ich mitmachen?',
       text: `
-        In Aachen werden neue Fahrradbügel gebaut. Hier könnt ihr sagen, wo sie stehen sollen.
+        In Aachen werden 2.000 neue Fahrradbügel aufgestellt. Hier können Sie mitbestimmen, wo diese stehen sollen.
       `
     },
     {
       heading: 'Wie kann ich mitmachen?',
       text: `
-        Klicke unten auf den Button „Sag uns, wo du Radbügel benötigst“, oder schaue dir zunächst die Karte mit den
-        vorhandenen Meldungen an. Für eine neue Meldung wirst du durch einen kurzen Dialog geführt,
-        bei dem du den Ort und weitere Informationen zu deiner Meldung angeben musst.
-        Am einfachsten kannst du eine Meldung unterwegs von deinem Smartphone machen,
-        du kannst aber auch von zu Hause am PC einen Eintrag erstellen.
+        Klicken Sie unten auf den Button „Sagen Sie uns, wo Fahradbügel benötigt werden“, oder schauen Sie sich zunächst die Karte mit den vorhandenen Meldungen an. Für eine neue Meldung werden Sie durch einen kurzen Dialog geführt, bei dem Sie den Ort und weitere Informationen zu Ihrer Meldung angeben müssen. Am einfachsten können Sie eine Meldung von Ihrem Smartphone machen – Sie können aber auch von zu Hause am PC einen Eintrag erstellen.
       `
     },
     {
       heading: 'Was passiert mit den Meldungen?',
       text: `
-        Nach Abschluss des Meldezeitraums werden die Mitarbeiter und Mitarbeiterinnen der Stadt Aachen alle Meldungen anschauen und auswerten, welche umsetzbar sind. 
-        Wenn du deine Mailadresse hinterlegt hast, bekommst du auf jeden Fall eine Rückmeldung, 
-        ob dein Wunsch realisiert werden kann. Wenn es Rückfragen gibt, wird sich die Stadt ebenfalls bei dir melden. 
-        Zusätzlich wird über Radbügel für Aachen veröffentlicht, an welchen Orten neue Fahrradbügel installiert werden.
+       Während des Meldezeitraums werden die Mitarbeiter und Mitarbeiterinnen der Stadt Aachen alle Meldungen anschauen und bewerten, welche umsetzbar sind. Wenn Sie Ihre Mailadresse hinterlegen, bekommenSie in jedem Fall eine Rückmeldung, ob Ihr Wunsch realisiert werden kann. Wenn es Rückfragen gibt, wird sich die Stadt ebenfalls bei Ihnen melden. Zusätzlich wird auf radbuegel-aachen.de veröffentlicht, an welchen Orten neue Fahrradbügel installiert werden.
       `
     },
     {
       heading: 'Werden alle Meldungen umgesetzt?',
       text: `
-        Zunächst muss geprüft werden, ob an der gemeldeten Stelle Bügel aufgestellt werden können oder ob andere Aspekte dagegen sprechen. 
-        Ggf. wird der Ort besichtigt, oder eine Rückfrage gestellt. Außerdem gibt es natürlich eine Grenze, 
-        wie viele Bügel finanzierbar sind und von den beauftragten Fachfirmen pro Jahr aufgestellt werden können. 
-        Mehrere Meldungen an einem Ort werden zusammengefasst und gemeinsam betrachtet. 
+        Zunächst muss geprüft werden, ob an der gemeldeten Stelle Bügel aufgestellt werden können oder ob andere Aspekte dagegen sprechen. Bei Bedarf wird der Ort besichtigt, oder eine Rückfrage gestellt. Außerdem gibt es natürlich eine Grenze, wie viele Bügel finanzierbar sind und von den beauftragten Fachfirmen pro Jahr aufgestellt werden können. Mehrere Meldungen an einem Ort werden zusammengefasst und gemeinsam betrachtet.
+      `
+    },
+    {
+      heading: 'Kann im gesamten Stadtgebiet gemeldet werden?',
+      text: `
+        Generell können Sie für das gesamte Stadtgebiet einen Bedarf an Radbügeln anmelden. Im Umfeld von Dom und Rathaus sind zusätzliche Fahrradbügel nur unter größeren Schwierigkeiten zu realisieren. Das hat mit den vielen Veranstaltungen dort zu tun, aber auch mit Fragen des Brand- und Denkmalschutzes. Dies wird in einem separaten Prozess geprüft. Wenn Sie Vorschläge unterbreiten möchten, bitten wir Sie, alternative Standorte anzugeben.    
       `
     }
   ],
   thankYouNote: {
     base:
-      'Deine Meldung ist nun online! Alle Meldungen werden gesammelt und dann der Stadt am 15. Mai 2020 übergeben. Die Planer:innen werden dann prüfen, welche Meldungen umgesetzt werden können. Die Ergebnisse siehst du anschließend hier auf der Karte',
+      'Ihre Meldung ist nun online! Alle Meldungen werden gesammelt und dann der Stadt übergeben. Die Planer:innen werden dann prüfen, welche Meldungen umgesetzt werden können. Die Ergebnisse sehen Sie anschließend hier auf der Karte',
     loggedIn:
-      'und wir benachrichtigen dich an deine im Login hinterlegte E-Mail-Adresse.',
+      'und wir benachrichtigen Sie an Ihre im Login hinterlegte E-Mail-Adresse.',
     loggedOut:
-      'und wenn du deine E-Mail-Adresse eingibst, benachrichtigen wir dich auch per E-Mail.'
+      'und wenn Sie Ihre E-Mail-Adresse eingeben, benachrichtigen wir Sie auch per E-Mail.'
   }
 };

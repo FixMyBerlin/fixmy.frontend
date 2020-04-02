@@ -45,7 +45,7 @@ const StyledButton = styled(Button)`
   min-width: 100px;
   max-width: 48%;
   flex-grow: 1;
-  border-radius: 6px;
+  border-radius: ${config.flatButtons ? '0' : '6px'};
   font-size: 18px;
 
   ${media.m`
@@ -63,7 +63,9 @@ const ConfirmButton = styled(StyledButton)`
   color: white;
   font-weight: bold;
   background-color: ${config.colors.interaction};
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.24);
+  box-shadow: ${config.flatButtons
+    ? 'initial'
+    : '0 0 12px 0 rgba(0, 0, 0, 0.24)'};
 `;
 
 const ConfirmLocationDialog = ({ heading, address, onConfirm, onDecline }) => (

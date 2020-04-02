@@ -171,7 +171,7 @@ actions.useDevicePosition = () => async (dispatch) => {
   } catch (err) {
     const errMsg =
       'Standortbestimmung fehlgeschlagen. ' +
-      'Gib die Adresse bitte ein oder verschiebe die Karte zu Deinem Standort.';
+      'Geben Sie die Adresse bitte ein oder verschieben Sie die Karte zu Ihrem Standort.';
     dispatch(
       errorStateActions.addError({
         message: errMsg

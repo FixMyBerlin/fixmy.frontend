@@ -26,10 +26,15 @@ function toGeojson(data) {
   };
 }
 
-MapboxGL.clearStorage((err) => {
-  logger('Clearing Mapbox cache');
-  if (err) logger('Error clearing Mapbox storage:', err);
-});
+// we wrap this with a try catch in order to prevent a crash on IE11
+try {
+  MapboxGL.clearStorage((err) => {
+    logger('Clearing Mapbox cache');
+    if (err) logger('Error clearing Mapbox storage:', err);
+  });
+} catch (e) {
+  logger('Error clearing Mapbox storage:', e);
+}
 
 class WebglMap extends PureComponent {
   nav = new MapboxGL.NavigationControl({ showCompass: false });
@@ -41,10 +46,15 @@ class WebglMap extends PureComponent {
       return;
     }
 
-    const { center, disabled, fitExtentOnPopupClose } = this.props;
+    const { center, zoomIn, disabled, fitExtentOnPopupClose } = this.props;
 
     if (center) {
-      this.map.easeTo({ center });
+      const newCameraOptions = { center };
+      if (zoomIn) {
+        newCameraOptions.zoom =
+          config.reports.overviewMap.zoomDeepLinkedMarkers || 16;
+      }
+      this.map.easeTo(newCameraOptions);
     } else if (fitExtentOnPopupClose) {
       this.map.fitBounds(config.reportsMap.bounds);
     }
@@ -107,6 +117,7 @@ class WebglMap extends PureComponent {
 
 WebglMap.propTypes = {
   center: PropTypes.arrayOf(PropTypes.number),
+  zoomIn: PropTypes.bool,
   detailId: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.shape({ message: PropTypes.string }),
@@ -122,6 +133,7 @@ WebglMap.propTypes = {
 WebglMap.defaultProps = {
   reportsData: [],
   center: null,
+  zoomIn: true,
   onLoad: () => {},
   onMove: () => {},
   detailId: null,

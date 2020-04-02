@@ -4,6 +4,10 @@ export default [
     route: '/datenschutz'
   },
   {
+    key: 'aachen-imprint',
+    route: '/impressum'
+  },
+  {
     key: 'aachen-contact',
     route: '/kontakt'
   },

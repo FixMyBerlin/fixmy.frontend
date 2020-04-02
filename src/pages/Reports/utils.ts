@@ -23,7 +23,7 @@ const getMarkerSrc = (markerData: { status: string }): string => {
   const { status } = markerData;
   if (status == null || !Object.keys(ICONS_BY_STATUS).includes(status)) {
     logger('Record is missing status:', markerData);
-    return ICONS_BY_STATUS['new'];
+    return ICONS_BY_STATUS.new;
   }
   return ICONS_BY_STATUS[status];
 };
