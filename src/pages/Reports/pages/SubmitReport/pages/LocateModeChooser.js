@@ -13,14 +13,14 @@ import MapIcon from '~/images/reports/noun-map-1909219.svg';
 import ErrorMessage from '~/components/ErrorMessage';
 
 const Wrapper = styled.div`
-  flex: 2;
+  z-index: 999999;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${config.colors.interaction};
   border: 1px solid #979797;
   padding: 12px;
-  z-index: 999999;
 `;
 
 const Heading = styled.h2`

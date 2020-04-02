@@ -11,6 +11,7 @@ const SubmitReportWrapper = styled.div`
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  height: 100%;
 `;
 
 class SubmitReport extends PureComponent {
