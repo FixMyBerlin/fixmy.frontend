@@ -10,7 +10,9 @@ export default styled(Button)`
   width: 167px;
   font-size: 18px;
   font-weight: bold;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: ${config.flatButtons
+    ? 'initial'
+    : '0 0 12px 0 rgba(0, 0, 0, 0.2)'};
 
   &&[disabled] {
     background-color: ${config.colors.lightgrey};

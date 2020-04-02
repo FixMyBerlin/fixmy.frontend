@@ -29,4 +29,5 @@ export default {
   },
   titleFont: 'The Mix',
   baseFont: 'Arial',
+  flatButtons: true
 };

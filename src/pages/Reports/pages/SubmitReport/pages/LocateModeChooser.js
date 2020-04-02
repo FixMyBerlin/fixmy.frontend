@@ -40,16 +40,16 @@ const Button = styled.div`
   max-width: 360px;
   height: 74.5px;
   margin-bottom: 22px;
-  font-size: 18px;
+  font-size: 1.2em;
   line-height: 1.33;
   background-color: white;
-  border-radius: 6px;
+  border-radius: ${config.flatButtons ? '0' : '6px'};
   color: ${config.colors.black};
   text-decoration: none;
   padding: 14px;
-  -webkit-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: ${config.flatButtons
+    ? 'initial'
+    : '0px 0px 12px -2px rgba(0, 0, 0, 0.6)'};
   align-items: center;
 `;
 

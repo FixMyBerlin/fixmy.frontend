@@ -51,8 +51,10 @@ const FlexWrapper = styled.div`
 const StyledMenuButton = styled(MenuButton)`
   padding: 8px;
   background-color: #353535; /*TODO: factor out color to config */
-  border-radius: 2px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  border-radius: ${config.flatButtons ? '0' : '2px'};
+  box-shadow: ${config.flatButtons
+    ? 'initial'
+    : '0 2px 4px 0 rgba(0, 0, 0, 0.5)'};
 `;
 
 const StyledHeading = styled.h2`
@@ -73,7 +75,7 @@ const StyledHeading = styled.h2`
 `;
 
 const StyledButton = styled.div`
-  border-radius: 4px;
+  border-radius: ${config.flatButtons ? '0' : '4px'};
   border: none;
   outline: none;
   display: inline-block;
@@ -86,10 +88,14 @@ const StyledButton = styled.div`
   text-align: center;
   width: 200px;
   padding: 10px 18px;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: ${
+    config.flatButtons ? 'initial' : '0 0 2px 1px rgba(0, 0, 0, 0.25)'
+  };
 
   &:hover {
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: ${
+      config.flatButtons ? 'initial' : '0 0 8px 1px rgba(0, 0, 0, 0.4)'
+    };
     opacity: 1;
   }
 `;
