@@ -235,7 +235,7 @@ function reducer(state = initialState.SubmitReportState, action = {}) {
         ...state,
         geocodeResult: null,
         deviceLocation: null
-      }
+      };
     case types.INVALIDATE_POSITION:
       return {
         ...state,
