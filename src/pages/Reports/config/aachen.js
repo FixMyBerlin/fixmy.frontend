@@ -24,8 +24,8 @@ export default {
   },
   landing: {
     title: 'Radbügel für Aachen',
-    logo: false,
-    stepColors: ['#FF99D4', '#CF0A7D', '#910055']
+    logo: true,
+    stepColors: ['#6E9BD2', '#6E9BD2', '#6E9BD2']
   },
   form: { newsletter: false, zoomOutForInvalidLocations: false },
   title: 'Radbügel für Aachen',

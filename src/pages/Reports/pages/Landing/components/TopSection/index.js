@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import config from '~/pages/Reports/config';
-import FixMyLogo from '~/images/logofmb@2x.png';
+import FixMyLogo from '~/images/logo-stadt-aachen.png';
 import MenuButton from '~/components/MenuButton';
 import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
 import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
@@ -116,7 +116,7 @@ const TopSection = ({ toUrl }) => (
       <StyledMenuButton whiteFill="true" />
       {config.reports.landing?.logo !== false && (
         <img
-          width="92px"
+          width="192px"
           src={FixMyLogo}
           alt="logo"
           data-cy="reports-landing-logo"
