@@ -36,9 +36,9 @@ const locateErrors = {
   TIMEOUT: 3
 };
 
-const userFeedback = oneLine`Wenn Du Dich orten willst, musst Du einer Ortung zustimmen.
-  Du kannst Die Entscheidung, Deinen Standort nicht zu teilen, in den Einstellungen
-  Deines Browsers rückgängig machen.
+const userFeedback = oneLine`Wenn Sie sich orten lassen wollen, müssen Sie einer Ortung zustimmen.
+  Sie können die Entscheidung, Ihren Standort zu teilen, in den Einstellungen
+  des Browsers rückgängig machen.
 `;
 
 const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
