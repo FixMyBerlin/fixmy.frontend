@@ -47,7 +47,7 @@ HelpText.propTypes = {
 };
 
 HelpText.defaultProps = {
-  text: 'Bewegen Sie die Karte oder tippen Sie eine Adresse ein.'
+  text: 'api/nextasa Karte oder tippen Sie eine Adresse ein.'
 };
 
 export default HelpText;

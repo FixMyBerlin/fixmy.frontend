@@ -166,7 +166,7 @@ class ReportDialog extends PureComponent {
           <>
             <FormProgressBar stepNumber={5} stepCaption="Fertig" isLastStep />
             <ReportSubmitted
-              reportId={newReport.id}
+              reportId={newReport?.id}
               error={error}
               token={token}
               user={user}
