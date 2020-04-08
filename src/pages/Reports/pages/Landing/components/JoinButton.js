@@ -8,11 +8,11 @@ const CenteredButton = styled(Button)`
   margin: 0 auto;
   padding: 12px;
   display: block;
-  font-size: 14px;
+  font-size: 1em;
   font-weight: 600;
   line-height: 1.4;
   text-decoration: none;
-  width: 200px;
+  width: 17em;
   text-align: center;
   box-shadow: ${config.flatButtons
     ? 'initial'
