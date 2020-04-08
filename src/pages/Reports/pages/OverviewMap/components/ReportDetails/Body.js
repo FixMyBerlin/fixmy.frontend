@@ -28,18 +28,18 @@ const IndicatorValue = styled(Text)`
   white-space: pre-wrap;
 `;
 
-function formatDate(dateString) {
-  return new Date(dateString).toLocaleDateString('de-DE', {
-    month: '2-digit',
-    day: '2-digit',
-    year: 'numeric'
-  });
-}
+// function formatDate(dateString) {
+//   return new Date(dateString).toLocaleDateString('de-DE', {
+//     month: '2-digit',
+//     day: '2-digit',
+//     year: 'numeric'
+//   });
+// }
 
 const DetailsBody = ({
   description,
-  details: { fee_acceptable: isFeeAcceptable },
-  created_date: createdDate
+  details: { fee_acceptable: isFeeAcceptable }
+  // created_date: createdDate
 }) => (
   <>
     {description && (
