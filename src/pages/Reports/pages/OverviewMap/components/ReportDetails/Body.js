@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
-import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
+// import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
 import config from '~/pages/Reports/config';
 
 const IndicatorSection = styled.div`
