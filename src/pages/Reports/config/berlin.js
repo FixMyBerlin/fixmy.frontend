@@ -36,7 +36,7 @@ export default {
   landing: {
     title: 'Melde neue Fahrradbügel für Friedrichshain-Kreuzberg',
     logo: {
-      src: FixMyLogo
+      source: FixMyLogo
     },
     background: {
       source: BycicleParkingBgImg,
