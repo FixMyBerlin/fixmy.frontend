@@ -58,6 +58,11 @@ Each branch gets automatically deployed on netlify:
 - https://fixmyberlin-app.netlify.com/ [master]
 - https://develop--fixmyberlin-app.netlify.com/ [develop]
 
+### Build environment variables
+
+- `NF_API_URL` Configures API proxying through `/api/v1/`. Trailing backslash required.
+- `NF_API_HOST` Configures the host header sent for proxied API requests.
+
 ### Embed Mode
 
 You can test the embed mode by adding a query parameter to the url: `http://localhost:8080/planungen?embed=1`.
