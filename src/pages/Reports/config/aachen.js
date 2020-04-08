@@ -30,7 +30,7 @@ export default {
   landing: {
     title: 'Radbügel für Aachen',
     logo: true,
-    stepColors: ['#6E9BD2', '#6E9BD2', '#6E9BD2']
+    stepColors: ['#000', '#000', '#000']
   },
   form: { newsletter: false, zoomOutForInvalidLocations: false },
   title: 'Radbügel für Aachen',
