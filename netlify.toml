@@ -1,11 +1,11 @@
 [[redirects]]
     from = "/api/v1/*"
-    to = "API_URL:splat"
+    to = "NF_API_URL:splat"
     status = 200
     force = true
     [redirects.headers]
         X-From = "Netlify"
-        X-Forwarded-Host = "API_HOST"
+        X-Forwarded-Host = "NF_API_HOST"
         X-Forwarded-Proto = "https"
 
 [[redirects]]
