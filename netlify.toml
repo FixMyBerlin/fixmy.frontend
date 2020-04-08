@@ -1,41 +1,11 @@
 [[redirects]]
     from = "/api/v1/*"
-    to = "https://api.fixmyberlin.de/api/:splat"
+    to = "API_URL:splat"
     status = 200
     force = true
     [redirects.headers]
         X-From = "Netlify"
-        X-Forwarded-Host = "fixmyberlin.de"
-        X-Forwarded-Proto = "https"
-
-[[redirects]]
-    from = "/api/next/*"
-    to = "https://fixmyplatform-develop.herokuapp.com/api/:splat"
-    status = 200
-    force = true
-    [redirects.headers]
-        X-From = "Netlify"
-        X-Forwarded-Host = "fixmyberlin-staging.netlify.com"
-        X-Forwarded-Proto = "https"
-
-[[redirects]]
-    from = "/api/aachen/v1/*"
-    to = "https://fixmyaachen.herokuapp.com/api/:splat"
-    status = 200
-    force = true
-    [redirects.headers]
-        X-From = "Netlify"
-        X-Forwarded-Host = "fixmyaachen.netlify.com"
-        X-Forwarded-Proto = "https"
-
-[[redirects]]
-    from = "/api/aachen/next/*"
-    to = "https://fixmyaachen-staging.herokuapp.com/api/:splat"
-    status = 200
-    force = true
-    [redirects.headers]
-        X-From = "Netlify"
-        X-Forwarded-Host = "fixmyaachen-staging.netlify.com"
+        X-Forwarded-Host = "API_HOST"
         X-Forwarded-Proto = "https"
 
 [[redirects]]

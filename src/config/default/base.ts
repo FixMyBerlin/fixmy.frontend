@@ -1,6 +1,6 @@
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
-  staging: 'https://fixmyberlin-staging.netlify.com/api/next',
+  staging: 'https://fixmyberlin-staging.netlify.com/api/v1',
   production: 'https://fixmyberlin.de/api/v1'
 };
 
