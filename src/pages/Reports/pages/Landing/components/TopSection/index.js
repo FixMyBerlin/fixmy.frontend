@@ -113,13 +113,11 @@ const TopLogo = styled.img`
   top: 2em;
   right: 2em;
   width: 92px;
-  height: 56px;
 
   ${media.m`
     top: 2em;
     right: 2em;
     width: 120px;
-    height: 73px;
   `}
 `;
 

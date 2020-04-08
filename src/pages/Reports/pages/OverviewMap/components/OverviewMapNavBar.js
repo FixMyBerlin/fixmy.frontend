@@ -22,7 +22,7 @@ const StyledMenuButton = styled(MenuButton)`
 `;
 
 const TextWrapper = styled.div`
-  padding-left: 16px;
+  padding-left: 1.5em;
   padding-right: 8px;
   margin-top: -3px; /* due to increased line height */
   line-height: 1.3;
@@ -50,13 +50,11 @@ const BikeParkImg = styled(BikeParkIcon)`
 
 const AachenHeaderImage = styled.img`
   width: 67px;
-  height: 40px;
   margin-top: -0.5em;
   margin-left: auto;
 
   ${media.m`
     width: 108px;
-    height: 66px;
   `}
 `;
 
