@@ -2,9 +2,9 @@ import logger from '~/utils/logger';
 import config from '~/pages/Reports/config';
 
 import AachenMarkerVerification from '~/images/reports/marker/aachen/pina-meldung@2x.png';
-import AachenMarkerAccepted from '~/images/reports/marker/aachen/pin-meldung-klein-copy-2@2x.png';
-import AachenMarkerRejected from '~/images/reports/marker/aachen/pin-meldung-klein-fertig-copy@2x.png';
-import AachenMarkerDone from '~/images/reports/marker/aachen/pin-meldung-klein-fertig@2x.png';
+// import AachenMarkerAccepted from '~/images/reports/marker/aachen/pin-meldung-klein-copy-2@2x.png';
+// import AachenMarkerRejected from '~/images/reports/marker/aachen/pin-meldung-klein-fertig-copy@2x.png';
+// import AachenMarkerDone from '~/images/reports/marker/aachen/pin-meldung-klein-fertig@2x.png';
 
 import BerlinMarkerVerification from '~/images/reports/marker/berlin/pin-verification.png';
 import BerlinMarkerAccepted from '~/images/reports/marker/berlin/pin-accepted.png';
@@ -17,9 +17,9 @@ const ICONS_BY_STATUS = {
   aachen: {
     new: AachenMarkerVerification,
     verification: AachenMarkerVerification,
-    accepted: AachenMarkerAccepted,
-    rejected: AachenMarkerRejected,
-    done: AachenMarkerDone
+    accepted: AachenMarkerVerification,
+    rejected: AachenMarkerVerification,
+    done: AachenMarkerVerification
   },
   default: {
     new: BerlinMarkerVerification,

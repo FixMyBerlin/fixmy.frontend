@@ -45,7 +45,7 @@ const ReportPin = styled.img.attrs((props) => ({
 }))`
   display: block;
   width: 40px;
-  height: 51px;
+  height: 50px;
 `;
 
 const DetailsHeading = styled(Heading)`
