@@ -3,24 +3,21 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import config from '~/pages/Reports/config';
-import FixMyLogo from '~/images/logo-stadt-aachen.png';
 import MenuButton from '~/components/MenuButton';
-import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
-import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 import Link from '~/components/Link';
 import ScrollLink from './ScrollLink';
 import { media } from '~/styles/utils';
 
 const Section = styled.section`
   height: 100vh;
-  background-image: url(${BycicleParkingBgImg});
+  background-image: url(${config.reports.landing.background.source});
   background-size: cover;
   background-position: center 80%;
   display: flex;
   flex-direction: column;
 
   &:after {
-    content: 'Photo by Trae Gould on Unsplash';
+    content: '${config.reports.landing.background.attribution}';
     font-size: 10px;
     letter-spacing: 0.2px;
     color: ${config.colors.lightgrey};
@@ -30,11 +27,12 @@ const Section = styled.section`
   }
 
   ${media.m`
-    background-image: url(${BycicleParkingBgImgLargeScreen});
+    background-image: url(${config.reports.landing.backgroundDesktop.source});
     background-position: top;
 
     &:after {
-      content: "Photo by Christin Hume on Unsplash";
+      color: ${config.colors.lightgrey};
+      content: '${config.reports.landing.backgroundDesktop.attribution}';
     }
   `}
 `;
@@ -110,18 +108,29 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const TopLogo = styled.img`
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  width: 92px;
+
+  ${media.m`
+    top: 2em;
+    right: 2em;
+    width: 120px;
+  `}
+`;
+
 const TopSection = ({ toUrl }) => (
   <Section>
     <FlexWrapper>
       <StyledMenuButton whiteFill="true" />
-      {config.reports.landing?.logo !== false && (
-        <img
-          width="192px"
-          src={FixMyLogo}
-          alt="logo"
-          data-cy="reports-landing-logo"
-        />
-      )}
+      <TopLogo
+        src={config.reports.landing.logo.source}
+        alt="logo"
+        data-cy="reports-landing-logo"
+      />
+
       <StyledHeading data-cy="reports-landing-header">
         {config.reports.landing?.title}
       </StyledHeading>

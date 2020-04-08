@@ -16,8 +16,6 @@
   border: 3px solid rgba(145, 0, 85, 0.5);
   background: white;
   border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 10px rgba(84, 84, 84, 0.5);
-  -moz-box-shadow: 0px 0px 10px rgba(84, 84, 84, 0.5);
   box-shadow: 0px 0px 10px rgba(84, 84, 84, 0.5);
 }
 
