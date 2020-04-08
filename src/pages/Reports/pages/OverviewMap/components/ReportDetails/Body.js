@@ -54,13 +54,14 @@ const DetailsBody = ({
       <IndicatorValue>{isFeeAcceptable ? 'ja' : 'nein'}</IndicatorValue>
     </IndicatorSection>
 
+    {/*
     <HorizontalRuler className="light" />
 
-    {createdDate && (
+     {createdDate && (
       <Text data-cy="reports-detail-datetime">
         Meldung vom: {formatDate(createdDate)}
       </Text>
-    )}
+    )} */}
   </>
 );
 
