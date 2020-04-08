@@ -1,3 +1,6 @@
+import AachenLogo from '~/images/logo-stadt-aachen.png';
+import LandingBackground from '~/images/aachen/landing_background.jpg';
+
 export default {
   overviewMap: {
     style: 'mapbox://styles/hejco/ck7q440d50b6s1ip928c7zlbb',
@@ -29,7 +32,17 @@ export default {
   },
   landing: {
     title: 'Radbügel für Aachen',
-    logo: true,
+    logo: {
+      source: AachenLogo
+    },
+    background: {
+      source: LandingBackground,
+      attribution: 'Bild: Stadt Aachen'
+    },
+    backgroundDesktop: {
+      source: LandingBackground,
+      attribution: 'Bild: Stadt Aachen'
+    },
     stepColors: ['#000', '#000', '#000']
   },
   form: { newsletter: false, zoomOutForInvalidLocations: false },

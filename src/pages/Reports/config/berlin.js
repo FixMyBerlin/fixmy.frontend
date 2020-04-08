@@ -1,4 +1,8 @@
 import config from '~/config';
+import FixMyLogo from '~/images/logofmb@3x.png';
+
+import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
+import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 
 export default {
   overviewMap: {
@@ -31,6 +35,17 @@ export default {
   },
   landing: {
     title: 'Melde neue Fahrradbügel für Friedrichshain-Kreuzberg',
+    logo: {
+      src: FixMyLogo
+    },
+    background: {
+      source: BycicleParkingBgImg,
+      attribution: 'Photo by Trae Gould on Unsplash'
+    },
+    backgroundDesktop: {
+      source: BycicleParkingBgImgLargeScreen,
+      attribution: 'Photo by Christin Hume on Unsplash'
+    },
     stepColors: [config.colors.interaction, '#ff99d5', config.colors.black]
   },
   form: { placementNotice: true },
