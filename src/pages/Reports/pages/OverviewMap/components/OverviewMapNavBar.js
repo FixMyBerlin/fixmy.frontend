@@ -9,8 +9,9 @@ import { media } from '~/styles/utils';
 const Wrapper = styled.div`
   margin: 0;
   padding: 18px 8px 12px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   border-bottom: 0.5px solid #979797;
 `;
@@ -43,8 +44,20 @@ const BikeParkImg = styled(BikeParkIcon)`
   width: 65px;
   height: 40px;
   display: block;
-  align-self: center;
   flex-shrink: 0;
+  margin-left: auto;
+`;
+
+const AachenHeaderImage = styled.img`
+  width: 67px;
+  height: 40px;
+  margin-top: -0.5em;
+  margin-left: auto;
+
+  ${media.m`
+    width: 108px;
+    height: 66px;
+  `}
 `;
 
 const LinkSection = styled.div`
@@ -65,6 +78,16 @@ const TinyLink = styled.a`
   }
 `;
 
+const headerImage =
+  config.region === 'aachen' ? (
+    <AachenHeaderImage
+      src={config.reports.landing.logo.source}
+      alt="Logo der Stadt Aachen"
+    />
+  ) : (
+    <BikeParkImg alt="Icon Fahrradparkplätze" />
+  );
+
 const OverviewMapNavBar = ({ heading }) => (
   <Wrapper data-cy="reports-heading">
     <StyledMenuButton />
@@ -79,7 +102,7 @@ const OverviewMapNavBar = ({ heading }) => (
         </TinyLink>
       </LinkSection>
     </TextWrapper>
-    <BikeParkImg alt="Icon Fahrradparkplätze" />
+    {headerImage}
   </Wrapper>
 );
 
