@@ -10,7 +10,11 @@ export default {
     maxBounds: [
       [13.2, 52.4158],
       [13.6, 52.5979]
-    ]
+    ],
+    clusterColor: {
+      outer: 'rgba(145, 0, 85, 0.5)',
+      inner: 'rgba(207, 10, 125, 0.4)'
+    }
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,

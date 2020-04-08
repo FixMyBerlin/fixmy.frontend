@@ -1,14 +1,17 @@
 import MapboxGL from 'mapbox-gl';
 
+import config from '~/pages/Reports/config';
 import utils from '~/pages/Reports/utils';
 
 function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   const el = document.createElement('div');
   el.className = 'reports-cluster';
+  el.style.borderColor = config.reports.overviewMap.clusterColor.outer;
 
   const elInner = document.createElement('div');
   elInner.className = 'reports-cluster__inner';
   elInner.innerHTML = pointCount;
+  elInner.style.borderColor = config.reports.overviewMap.clusterColor.inner;
 
   el.dataset.cy = 'reports-marker-cluster';
 
