@@ -30,6 +30,7 @@ export default {
   },
   form: { newsletter: false, zoomOutForInvalidLocations: false },
   title: 'Radbügel für Aachen',
+  markerSet: 'aachen',
   tests: {
     addressInput: 'kasino',
     mockGeoLocation: {

@@ -31,6 +31,7 @@ export default {
   },
   form: { placementNotice: true },
   reportsDisabled: true,
+  markerSet: 'default',
   tests: {
     addressInput: 'meh',
     mockGeoLocation: {
