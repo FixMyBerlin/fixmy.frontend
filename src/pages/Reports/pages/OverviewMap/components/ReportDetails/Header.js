@@ -58,7 +58,12 @@ const DetailsHeader = ({ details: { number }, status }) => (
   <>
     <HeadlineSection data-cy="reports-detail-title">
       <DetailsHeading alignLeft>
-        {number} neue{number === 1 ? 'r' : null} Fahrradbügel gewünscht
+        {status !== 'done' && (
+          <>
+            {number} neue{number === 1 ? 'r' : null} Fahrradbügel gewünscht
+          </>
+        )}
+        {status === 'done' && <>{number} Fahrradbügel gebaut</>}
       </DetailsHeading>
       <BikeStandsCountSection>
         <BikestandsIcon />
