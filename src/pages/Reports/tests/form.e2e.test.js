@@ -71,7 +71,7 @@ describe('The reports submission form', () => {
           .and('have.value', '');
         cyElem('reports-map-help')
           .should('be.visible')
-          .contains('Bewege die Karte oder tippe eine Adresse ein');
+          .contains('Bewegen Sie die Karte oder tippen Sie eine Adresse ein');
       });
       it('shows a map', () => {
         cyElem('reports-basemap').should('be.visible');
@@ -177,7 +177,7 @@ describe('The reports submission form', () => {
 
     it('has a title and description', () => {
       cy.get('h3').contains('Bitte entweder noch ein Foto von dem Ort');
-      cy.get('p').contains('Ein Foto des Ortes hilft der Verwaltung');
+      cy.get('p').contains('Ein Foto des Ortes hilft');
     });
     it('initially prevents continuing in the form', () => {
       cyElem('reports-additional-continue').should('be.disabled');
