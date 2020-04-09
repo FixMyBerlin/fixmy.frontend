@@ -5,7 +5,27 @@
   height: auto;
 }
 
-.reports-marker .marker-image {
+.marker-new {
+  width: 40px;
+  height: 50px;
+}
+
+.marker-verification {
+  width: 20px;
+  height: 20px;
+}
+
+.marker-accepted {
+  width: 20px;
+  height: 20px;
+}
+
+.marker-rejected {
+  width: 20px;
+  height: 20px;
+}
+
+.marker-done {
   width: 40px;
   height: 50px;
 }

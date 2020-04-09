@@ -1,29 +1,30 @@
 import logger from '~/utils/logger';
 import config from '~/pages/Reports/config';
 
-import AachenMarkerVerification from '~/images/reports/marker/aachen/pina-meldung@2x.png';
-// import AachenMarkerAccepted from '~/images/reports/marker/aachen/pin-meldung-klein-copy-2@2x.png';
+import AachenMarkerNew from '~/images/reports/marker/aachen/pina-meldung@2x.png';
+import AachenMarkerVerification from '~/images/reports/marker/aachen/meldung-circle-copy-4@2x.png';
+import AachenMarkerAccepted from '~/images/reports/marker/aachen/meldung-circle@2x.png';
 // import AachenMarkerRejected from '~/images/reports/marker/aachen/pin-meldung-klein-fertig-copy@2x.png';
 // import AachenMarkerDone from '~/images/reports/marker/aachen/pin-meldung-klein-fertig@2x.png';
 
-import BerlinMarkerVerification from '~/images/reports/marker/berlin/pin-verification.png';
-import BerlinMarkerAccepted from '~/images/reports/marker/berlin/pin-accepted.png';
-import BerlinMarkerRejected from '~/images/reports/marker/berlin/pin-rejected.png';
-import BerlinMarkerDone from '~/images/reports/marker/berlin/pin-done.png';
+import BerlinMarkerVerification from '~/images/reports/marker/default/pin-verification.png';
+import BerlinMarkerAccepted from '~/images/reports/marker/default/pin-accepted.png';
+import BerlinMarkerRejected from '~/images/reports/marker/default/pin-rejected.png';
+import BerlinMarkerDone from '~/images/reports/marker/default/pin-done.png';
 
 // The "new" marker is not used anymore and replaced by the verification marker
 // for now
 const ICONS_BY_STATUS = {
   aachen: {
-    new: AachenMarkerVerification,
+    new: AachenMarkerNew,
     verification: AachenMarkerVerification,
-    accepted: AachenMarkerVerification,
-    rejected: AachenMarkerVerification,
-    done: AachenMarkerVerification
+    accepted: AachenMarkerAccepted,
+    rejected: AachenMarkerNew,
+    done: AachenMarkerNew
   },
   default: {
     new: BerlinMarkerVerification,
-    verification: BerlinMarkerVerification,
+    verification: AachenMarkerVerification,
     accepted: BerlinMarkerAccepted,
     rejected: BerlinMarkerRejected,
     done: BerlinMarkerDone
