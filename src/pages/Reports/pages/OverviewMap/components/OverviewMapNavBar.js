@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import MenuButton from '~/components/MenuButton';
@@ -26,6 +27,10 @@ const TextWrapper = styled.div`
   padding-right: 8px;
   margin-top: -3px; /* due to increased line height */
   line-height: 1.3;
+
+  & > a {
+    text-decoration: none;
+  }
 `;
 
 const Heading = styled.h2`
@@ -36,6 +41,7 @@ const Heading = styled.h2`
 
   ${media.m`
     font-family: '${config.titleFont}', sans-serif;
+
     font-size: 1.6em;
   `}
 `;
@@ -51,11 +57,14 @@ const BikeParkImg = styled(BikeParkIcon)`
 const AachenHeaderImage = styled.img`
   width: 67px;
   margin-top: -0.5em;
-  margin-left: auto;
 
   ${media.m`
     width: 108px;
   `}
+`;
+
+const HeaderLogo = styled.div`
+  margin-left: auto;
 `;
 
 const LinkSection = styled.div`
@@ -90,7 +99,9 @@ const OverviewMapNavBar = ({ heading }) => (
   <Wrapper data-cy="reports-heading">
     <StyledMenuButton />
     <TextWrapper>
-      <Heading>{heading}</Heading>
+      <Link to={config.routes.reports.index}>
+        <Heading>{heading}</Heading>
+      </Link>
       <LinkSection>
         <TinyLink
           as="a"
@@ -100,7 +111,9 @@ const OverviewMapNavBar = ({ heading }) => (
         </TinyLink>
       </LinkSection>
     </TextWrapper>
-    {headerImage}
+    <HeaderLogo>
+      <Link to={config.routes.reports.index}>{headerImage}</Link>
+    </HeaderLogo>
   </Wrapper>
 );
 
