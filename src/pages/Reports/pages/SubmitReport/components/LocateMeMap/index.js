@@ -127,11 +127,11 @@ class LocateMeMap extends Component {
     this.setState({ autocompleteHasFocus: hasFocus });
 
   onMapMove = (coords) => {
-    if (!validationBoundary) return;
-    this.reverseGeocodeCoords(coords);
     if (!this.state.mapHasBeenDragged) {
       this.state.mapHasBeenDragged = true;
     }
+    this.props.unsetAutomatedPositioning();
+    this.reverseGeocodeCoords(coords);
   };
 
   reverseGeocodeCoords = (coords) => {
@@ -147,12 +147,13 @@ class LocateMeMap extends Component {
 
   getCenter = () => {
     // if component is shown because of backwards navigation, use the center already determined
-    const alreadyPickedLocation = this.props.getAlreadyPicketLocation();
+    const { alreadyPickedLocation } = this.props;
     if (alreadyPickedLocation) {
       return alreadyPickedLocation;
     }
 
-    // either device location or geocodeResult will be used
+    // either device location or geocodeResult will be used to tell the containing
+    // web gl map to use a certain center instead of wherever the user has moved the map before
     let centerObj;
     if (this.props.deviceLocation) {
       centerObj = this.props.deviceLocation;
@@ -174,7 +175,7 @@ class LocateMeMap extends Component {
       .then(() => this.props.handleGeocodeSuccess({ coords, address }));
   };
 
-  onlocateMeMarkerUse = (coords) => {
+  onDevicePosition = (coords) => {
     const coordsObj = {
       lng: coords[0],
       lat: coords[1]
@@ -220,7 +221,7 @@ class LocateMeMap extends Component {
           />
         )}
 
-        {!this.state.isLoading && this.props.getLocationIsModeGeocoding && (
+        {!this.state.isLoading && (
           <>
             {!this.state.locationPinned && (
               <SearchBarWrapper>
@@ -253,7 +254,7 @@ class LocateMeMap extends Component {
             zoomedOut={!this.props.tempLocation.valid}
             center={this.getCenter()}
             className="locate-me-map"
-            onMapDrag={this.onMapMove}
+            onMapMove={this.onMapMove}
             allowDrag={!this.state.locationPinned}
             onLoad={this.onMapLoad}
             zoomControlPosition={isDesktopView ? 'bottom-right' : 'top-left'}
@@ -288,11 +289,11 @@ class LocateMeMap extends Component {
 
         {!this.state.isLoading &&
           !this.state.autocompleteHasFocus &&
-          this.props.getLocationIsModeGeocoding &&
+          this.props.isLocationModeGeocoding &&
           !this.state.locationPinned && (
             <LocatorControl
               key="ReportsLocateMap__LocatorControl"
-              onChange={this.onlocateMeMarkerUse}
+              onChange={this.onDevicePosition}
               customPosition={this.getLocatorControlPosition(isDesktopView)}
             />
           )}
@@ -330,14 +331,12 @@ const mapStateToProps = (state) => ({
   ...state.ReportsState.SubmitReportState,
   error: state.ReportsState.ErrorState,
   // selectors
-  getLocationIsModeGeocoding: () =>
-    submitReportStateSelectors.getLocationIsModeGeocoding(
-      state.ReportsState.SubmitReportState
-    ),
-  getAlreadyPicketLocation: () =>
-    submitReportStateSelectors.getAlreadyPicketLocation(
-      state.ReportsState.SubmitReportState
-    )
+  isLocationModeGeocoding: submitReportStateSelectors.getLocationIsModeGeocoding(
+    state.ReportsState.SubmitReportState
+  ),
+  alreadyPickedLocation: submitReportStateSelectors.getAlreadyPicketLocation(
+    state.ReportsState.SubmitReportState
+  )
 });
 const mapDispatchToProps = {
   ...errorStateActions,

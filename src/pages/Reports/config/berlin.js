@@ -1,4 +1,8 @@
 import config from '~/config';
+import FixMyLogo from '~/images/logofmb@3x.png';
+
+import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
+import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 
 export default {
   overviewMap: {
@@ -10,7 +14,11 @@ export default {
     maxBounds: [
       [13.2, 52.4158],
       [13.6, 52.5979]
-    ]
+    ],
+    clusterColor: {
+      outer: 'rgba(145, 0, 85, 0.5)',
+      inner: 'rgba(207, 10, 125, 0.4)'
+    }
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
@@ -27,10 +35,22 @@ export default {
   },
   landing: {
     title: 'Melde neue Fahrradbügel für Friedrichshain-Kreuzberg',
+    logo: {
+      source: FixMyLogo
+    },
+    background: {
+      source: BycicleParkingBgImg,
+      attribution: 'Photo by Trae Gould on Unsplash'
+    },
+    backgroundDesktop: {
+      source: BycicleParkingBgImgLargeScreen,
+      attribution: 'Photo by Christin Hume on Unsplash'
+    },
     stepColors: [config.colors.interaction, '#ff99d5', config.colors.black]
   },
   form: { placementNotice: true },
   reportsDisabled: true,
+  markerSet: 'default',
   tests: {
     addressInput: 'meh',
     mockGeoLocation: {

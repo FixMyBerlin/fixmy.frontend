@@ -1,14 +1,17 @@
 import MapboxGL from 'mapbox-gl';
 
+import config from '~/pages/Reports/config';
 import utils from '~/pages/Reports/utils';
 
 function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   const el = document.createElement('div');
   el.className = 'reports-cluster';
+  el.style.borderColor = config.reports.overviewMap.clusterColor.outer;
 
   const elInner = document.createElement('div');
   elInner.className = 'reports-cluster__inner';
   elInner.innerHTML = pointCount;
+  elInner.style.borderColor = config.reports.overviewMap.clusterColor.inner;
 
   el.dataset.cy = 'reports-marker-cluster';
 
@@ -47,12 +50,12 @@ function createPinMarker({ markerData, geometry, lngLat, onClick }) {
 
   const updatedMarkerData = { ...markerData, geometry, details };
 
-  el.innerHTML = `<img class="marker-image" src="${utils.getMarkerSrc(
-    markerData
-  )}" />`;
+  el.innerHTML = `<img class="marker-image marker-${
+    markerData.status
+  }" src="${utils.getMarkerSrc(markerData)}" />`;
   el.addEventListener('click', (evt) => onClick(evt, updatedMarkerData));
 
-  return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -20]);
+  return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -0]);
 }
 
 function setupClusters(name, map, data, radius, handleUpdate) {

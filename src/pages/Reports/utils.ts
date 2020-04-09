@@ -1,19 +1,34 @@
 import logger from '~/utils/logger';
+import config from '~/pages/Reports/config';
 
-// import MarkerNew from '~/images/reports/pin-new.png';
-import MarkerVerification from '~/images/reports/pina-meldung@2x.png';
-import MarkerAccepted from '~/images/reports/pin-accepted.png';
-import MarkerRejected from '~/images/reports/pin-rejected.png';
-import MarkerDone from '~/images/reports/pin-done.png';
+import AachenMarkerNew from '~/images/reports/marker/aachen/pina-meldung@2x.png';
+import AachenMarkerVerification from '~/images/reports/marker/aachen/meldung-circle-copy-4@2x.png';
+import AachenMarkerAccepted from '~/images/reports/marker/aachen/meldung-circle@2x.png';
+import AachenMarkerRejected from '~/images/reports/marker/aachen/rejected.png';
+import AachenMarkerDone from '~/images/reports/marker/aachen/done.png';
+
+import BerlinMarkerVerification from '~/images/reports/marker/default/pin-verification.png';
+// import BerlinMarkerAccepted from '~/images/reports/marker/default/pin-accepted.png';
+// import BerlinMarkerRejected from '~/images/reports/marker/default/pin-rejected.png';
+// import BerlinMarkerDone from '~/images/reports/marker/default/pin-done.png';
 
 // The "new" marker is not used anymore and replaced by the verification marker
 // for now
 const ICONS_BY_STATUS = {
-  new: MarkerVerification,
-  verification: MarkerVerification,
-  accepted: MarkerAccepted,
-  rejected: MarkerRejected,
-  done: MarkerDone
+  aachen: {
+    new: AachenMarkerNew,
+    verification: AachenMarkerVerification,
+    accepted: AachenMarkerAccepted,
+    rejected: AachenMarkerRejected,
+    done: AachenMarkerDone
+  },
+  default: {
+    new: BerlinMarkerVerification,
+    verification: AachenMarkerVerification,
+    accepted: AachenMarkerAccepted,
+    rejected: AachenMarkerRejected,
+    done: AachenMarkerDone
+  }
 };
 
 /**
@@ -21,11 +36,12 @@ const ICONS_BY_STATUS = {
  */
 const getMarkerSrc = (markerData: { status: string }): string => {
   const { status } = markerData;
-  if (status == null || !Object.keys(ICONS_BY_STATUS).includes(status)) {
+  const markerSet = ICONS_BY_STATUS[config.reports.markerSet];
+  if (status == null || !Object.keys(markerSet).includes(status)) {
     logger('Record is missing status:', markerData);
-    return ICONS_BY_STATUS.new;
+    return markerSet.new;
   }
-  return ICONS_BY_STATUS[status];
+  return markerSet[status];
 };
 
 export default {

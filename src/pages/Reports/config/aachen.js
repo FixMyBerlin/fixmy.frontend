@@ -1,3 +1,6 @@
+import AachenLogo from '~/images/logo-stadt-aachen.png';
+import LandingBackground from '~/images/aachen/landing_background.jpg';
+
 export default {
   overviewMap: {
     style: 'mapbox://styles/hejco/ck7q440d50b6s1ip928c7zlbb',
@@ -8,7 +11,12 @@ export default {
     maxBounds: [
       [5.9, 50.6],
       [6.3, 50.9]
-    ]
+    ],
+    zoomDeepLinkedMarkers: 18,
+    clusterColor: {
+      outer: 'rgba(133, 133, 133, 0.98)',
+      inner: 'rgba(205, 205, 205, 0.91)'
+    }
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
@@ -24,11 +32,22 @@ export default {
   },
   landing: {
     title: 'Radbügel für Aachen',
-    logo: true,
-    stepColors: ['#6E9BD2', '#6E9BD2', '#6E9BD2']
+    logo: {
+      source: AachenLogo
+    },
+    background: {
+      source: LandingBackground,
+      attribution: 'Bild: © Stadt Aachen/Nadine Jungblut'
+    },
+    backgroundDesktop: {
+      source: LandingBackground,
+      attribution: 'Bild: © Stadt Aachen/Nadine Jungblut'
+    },
+    stepColors: ['#000', '#000', '#000']
   },
   form: { newsletter: false, zoomOutForInvalidLocations: false },
   title: 'Radbügel für Aachen',
+  markerSet: 'aachen',
   tests: {
     addressInput: 'kasino',
     mockGeoLocation: {

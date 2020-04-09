@@ -5,9 +5,29 @@
   height: auto;
 }
 
-.reports-marker .marker-image {
+.marker-new {
   width: 40px;
-  height: 51px;
+  height: 50px;
+}
+
+.marker-verification {
+  width: 20px;
+  height: 20px;
+}
+
+.marker-accepted {
+  width: 20px;
+  height: 20px;
+}
+
+.marker-rejected {
+  width: 20px;
+  height: 20px;
+}
+
+.marker-done {
+  width: 40px;
+  height: 50px;
 }
 
 .reports-cluster {
@@ -16,8 +36,6 @@
   border: 3px solid rgba(145, 0, 85, 0.5);
   background: white;
   border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 10px rgba(84, 84, 84, 0.5);
-  -moz-box-shadow: 0px 0px 10px rgba(84, 84, 84, 0.5);
   box-shadow: 0px 0px 10px rgba(84, 84, 84, 0.5);
 }
 

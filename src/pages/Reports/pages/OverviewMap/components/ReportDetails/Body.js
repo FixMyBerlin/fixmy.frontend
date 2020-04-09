@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
-import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
+// import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
 import config from '~/pages/Reports/config';
 
 const IndicatorSection = styled.div`
@@ -28,18 +28,18 @@ const IndicatorValue = styled(Text)`
   white-space: pre-wrap;
 `;
 
-function formatDate(dateString) {
-  return new Date(dateString).toLocaleDateString('de-DE', {
-    month: '2-digit',
-    day: '2-digit',
-    year: 'numeric'
-  });
-}
+// function formatDate(dateString) {
+//   return new Date(dateString).toLocaleDateString('de-DE', {
+//     month: '2-digit',
+//     day: '2-digit',
+//     year: 'numeric'
+//   });
+// }
 
 const DetailsBody = ({
   description,
-  details: { fee_acceptable: isFeeAcceptable },
-  created_date: createdDate
+  details: { fee_acceptable: isFeeAcceptable }
+  // created_date: createdDate
 }) => (
   <>
     {description && (
@@ -54,13 +54,14 @@ const DetailsBody = ({
       <IndicatorValue>{isFeeAcceptable ? 'ja' : 'nein'}</IndicatorValue>
     </IndicatorSection>
 
+    {/*
     <HorizontalRuler className="light" />
 
-    {createdDate && (
+     {createdDate && (
       <Text data-cy="reports-detail-datetime">
         Meldung vom: {formatDate(createdDate)}
       </Text>
-    )}
+    )} */}
   </>
 );
 

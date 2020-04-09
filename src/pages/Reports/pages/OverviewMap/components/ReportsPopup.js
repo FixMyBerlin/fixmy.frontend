@@ -45,6 +45,8 @@ class ReportsPopup extends PureComponent {
     const x = isSmallScreen ? 0 : position.x;
     const y = isSmallScreen ? 0 : position.y;
 
+    const { number } = selectedReport.details;
+
     return (
       <MapPopupWrapper
         x={x}
@@ -64,9 +66,14 @@ class ReportsPopup extends PureComponent {
           />
         )}
         <Title data-cy="reports-popup-title">
-          {`${selectedReport.details.number} neue${
-            selectedReport.details.number === 1 ? 'r' : ''
-          } Fahrradbügel gewünscht`}
+          {selectedReport.status !== 'done' && (
+            <>
+              {number} neue{number === 1 ? 'r' : null} Fahrradbügel gewünscht
+            </>
+          )}
+          {selectedReport.status === 'done' && (
+            <>{number} Fahrradbügel gebaut</>
+          )}
         </Title>
         <ButtonWrapper>
           <Button

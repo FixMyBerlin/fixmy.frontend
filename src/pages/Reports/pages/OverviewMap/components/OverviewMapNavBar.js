@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import MenuButton from '~/components/MenuButton';
@@ -9,8 +10,9 @@ import { media } from '~/styles/utils';
 const Wrapper = styled.div`
   margin: 0;
   padding: 18px 8px 12px;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   border-bottom: 0.5px solid #979797;
 `;
@@ -21,10 +23,14 @@ const StyledMenuButton = styled(MenuButton)`
 `;
 
 const TextWrapper = styled.div`
-  padding-left: 16px;
+  padding-left: 1.5em;
   padding-right: 8px;
   margin-top: -3px; /* due to increased line height */
   line-height: 1.3;
+
+  & > a {
+    text-decoration: none;
+  }
 `;
 
 const Heading = styled.h2`
@@ -35,6 +41,7 @@ const Heading = styled.h2`
 
   ${media.m`
     font-family: '${config.titleFont}', sans-serif;
+
     font-size: 1.6em;
   `}
 `;
@@ -43,8 +50,21 @@ const BikeParkImg = styled(BikeParkIcon)`
   width: 65px;
   height: 40px;
   display: block;
-  align-self: center;
   flex-shrink: 0;
+  margin-left: auto;
+`;
+
+const AachenHeaderImage = styled.img`
+  width: 67px;
+  margin-top: -0.5em;
+
+  ${media.m`
+    width: 108px;
+  `}
+`;
+
+const HeaderLogo = styled.div`
+  margin-left: auto;
 `;
 
 const LinkSection = styled.div`
@@ -65,11 +85,23 @@ const TinyLink = styled.a`
   }
 `;
 
+const headerImage =
+  config.region === 'aachen' ? (
+    <AachenHeaderImage
+      src={config.reports.landing.logo.source}
+      alt="Logo der Stadt Aachen"
+    />
+  ) : (
+    <BikeParkImg alt="Icon Fahrradparkplätze" />
+  );
+
 const OverviewMapNavBar = ({ heading }) => (
   <Wrapper data-cy="reports-heading">
     <StyledMenuButton />
     <TextWrapper>
-      <Heading>{heading}</Heading>
+      <Link to={config.routes.reports.index}>
+        <Heading>{heading}</Heading>
+      </Link>
       <LinkSection>
         <TinyLink
           as="a"
@@ -79,7 +111,9 @@ const OverviewMapNavBar = ({ heading }) => (
         </TinyLink>
       </LinkSection>
     </TextWrapper>
-    <BikeParkImg alt="Icon Fahrradparkplätze" />
+    <HeaderLogo>
+      <Link to={config.routes.reports.index}>{headerImage}</Link>
+    </HeaderLogo>
   </Wrapper>
 );
 
