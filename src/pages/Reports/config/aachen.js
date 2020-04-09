@@ -37,11 +37,11 @@ export default {
     },
     background: {
       source: LandingBackground,
-      attribution: 'Bild: Stadt Aachen'
+      attribution: 'Bild: © Stadt Aachen/Nadine Jungblut'
     },
     backgroundDesktop: {
       source: LandingBackground,
-      attribution: 'Bild: Stadt Aachen'
+      attribution: 'Bild: © Stadt Aachen/Nadine Jungblut'
     },
     stepColors: ['#000', '#000', '#000']
   },
