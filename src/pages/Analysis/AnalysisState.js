@@ -68,6 +68,6 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case SET_SORT:
       return { ...state, ...action.payload };
     default:
-      return { ...state };
+      return state;
   }
 }

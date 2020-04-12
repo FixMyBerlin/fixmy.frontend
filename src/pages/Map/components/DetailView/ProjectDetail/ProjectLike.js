@@ -110,7 +110,7 @@ class ProjectLike extends PureComponent {
       </Label>
     ) : (
       <Label>
-        Um eine {itemType} zu liken, musst du
+        Um eine {itemType} zu liken, musst du{' '}
         <Link to={config.routes.login}>eingeloggt sein</Link>.
       </Label>
     );

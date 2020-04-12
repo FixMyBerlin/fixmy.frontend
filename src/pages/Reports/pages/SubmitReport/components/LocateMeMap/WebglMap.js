@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import _isEqual from 'lodash.isequal';
 import MapboxGL from 'mapbox-gl';
 
-import logger from '~/utils/logger';
 import config from '~/pages/Reports/config';
 import { animateView, setView } from '~/pages/Map/map-utils';
 import BaseMap from '~/pages/Reports/components/BaseMap';
@@ -24,25 +23,25 @@ class WebglMap extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.map) {
-      if (this.props.zoomedOut) {
-        this.map.easeTo({ zoom: 12, duration: 3000 });
-      }
+    if (!this.map) return;
 
-      const isNewLocation = !_isEqual(prevProps.center, this.props.center);
-
-      if (isNewLocation) {
-        this.setView(this.getViewFromProps(), this.props.animate);
-      }
-
-      const allowDragChanged = prevProps.allowDrag !== this.props.allowDrag;
-      if (allowDragChanged && this.map) {
-        const dragPanHandler = this.map.dragPan;
-        const updateDragPanFunc = this.props.allowDrag
-          ? dragPanHandler.enable
-          : dragPanHandler.disable;
-        updateDragPanFunc.call(dragPanHandler);
-      }
+    if (
+      this.props.zoomedOut &&
+      config.reports.form?.zoomOutForInvalidLocations !== false
+    ) {
+      this.map.easeTo({ zoom: 12, duration: 3000 });
+    }
+    const isNewLocation = !_isEqual(prevProps.center, this.props.center);
+    if (isNewLocation) {
+      this.setView(this.getViewFromProps(), this.props.animate);
+    }
+    const allowDragChanged = prevProps.allowDrag !== this.props.allowDrag;
+    if (allowDragChanged) {
+      const dragPanHandler = this.map.dragPan;
+      const updateDragPanFunc = this.props.allowDrag
+        ? dragPanHandler.enable
+        : dragPanHandler.disable;
+      updateDragPanFunc.call(dragPanHandler);
     }
   }
 
@@ -58,15 +57,17 @@ class WebglMap extends PureComponent {
   onLoad = (map) => {
     this.map = map;
 
-    // center prop might have been set by getting the device´s geolocation before the component sets up
-    if (this.props.center !== config.map.view.center) {
+    // center prop might have been set by getting the device´s geolocation before the component sets up.
+    // otherwise the map will be left already centered according to its configured bounds
+    const isMapLoadedWithCenter = !this.props.center;
+    if (!isMapLoadedWithCenter) {
       this.map.setZoom(this.props.newLocationZoomLevel);
       this.map.setCenter(this.props.center);
       this.handleMoveEnd();
     }
 
     this.map.on('dragend', this.handleMoveEnd);
-    this.map.on('zoomEnd', this.handleMoveEnd);
+    this.map.on('zoomend', this.handleMoveEnd);
 
     // add controls
     const { zoomControlPosition } = this.props;
@@ -90,10 +91,11 @@ class WebglMap extends PureComponent {
     center: this.props.center
   });
 
-  handleMoveEnd = () => {
+  handleMoveEnd = (eventData) => {
+    if (eventData?.programmaticMove) return;
     const mapCenter = this.map.getCenter();
     const { lat, lng } = mapCenter;
-    this.props.onMapDrag({ lat, lng });
+    this.props.onMapMove({ lat, lng });
   };
 
   render() {
@@ -107,7 +109,7 @@ WebglMap.propTypes = {
   animate: PropTypes.bool,
   center: PropTypes.arrayOf(PropTypes.number),
   newLocationZoomLevel: PropTypes.number,
-  onMapDrag: PropTypes.func,
+  onMapMove: PropTypes.func,
   allowDrag: PropTypes.bool,
   onLoad: PropTypes.func,
   zoomedOut: PropTypes.bool,
@@ -116,9 +118,9 @@ WebglMap.propTypes = {
 
 WebglMap.defaultProps = {
   animate: false,
-  center: config.map.view.center,
+  center: null,
   newLocationZoomLevel: 18,
-  onMapDrag: () => logger('onMapDrag says implement me'),
+  onMapMove: () => {},
   allowDrag: true,
   onLoad: () => {},
   zoomedOut: false,

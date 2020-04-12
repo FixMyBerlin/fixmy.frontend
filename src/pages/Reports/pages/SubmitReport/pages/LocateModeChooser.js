@@ -5,31 +5,37 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import CloseIcon from '~/images/close.svg';
 
 import config from '~/pages/Reports/config';
 import LocateIcon from '~/images/reports/location-button.svg';
 import MapIcon from '~/images/reports/noun-map-1909219.svg';
 import ErrorMessage from '~/components/ErrorMessage';
+import { media } from '~/styles/utils';
+import CloseIcon from '~/images/close.svg';
 
 const Wrapper = styled.div`
-  flex: 2;
+  z-index: 999999;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${config.colors.interaction};
   border: 1px solid #979797;
   padding: 12px;
-  z-index: 999999;
 `;
 
 const Heading = styled.h2`
-  font-size: 25px;
+  font-family: '${config.titleFont}', sans-serif;
+  font-size: 2em;
   font-weight: bold;
   text-align: center;
   line-height: 1.33;
   margin-top: 76px;
   margin-bottom: 58px;
+
+  ${media.m`
+    font-size: 2.5em;
+  `}
 `;
 
 const Button = styled.div`
@@ -40,16 +46,17 @@ const Button = styled.div`
   max-width: 360px;
   height: 74.5px;
   margin-bottom: 22px;
-  font-size: 18px;
+  font-size: 1.2em;
   line-height: 1.33;
   background-color: white;
-  border-radius: 6px;
+  border-radius: ${config.flatButtons ? '0' : '6px'};
   color: ${config.colors.black};
   text-decoration: none;
   padding: 14px;
-  -webkit-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: ${config.flatButtons
+    ? 'initial'
+    : '0px 0px 12px -2px rgba(0, 0, 0, 0.6)'};
+  align-items: center;
 `;
 
 const ButtonIcon = styled.div`
@@ -124,7 +131,7 @@ LocateModeChooser.propTypes = {
 };
 
 LocateModeChooser.defaultProps = {
-  heading: 'Wo benötigst du neue Fahrradbügel?',
+  heading: 'Wo benötigen Sie neue Fahrradbügel?',
   error: {}
 };
 

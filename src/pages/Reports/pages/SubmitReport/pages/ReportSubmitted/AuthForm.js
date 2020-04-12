@@ -66,10 +66,10 @@ export const signupFormConfig = [
     type: 'checkbox',
     label: (
       <span>
-        Ich möchte einen Login bei FixMyBerlin erstellen, um über den
+        Ich möchte einen Login bei {config.siteTitle} erstellen, um über den
         Fortschritt meiner Meldung informiert zu werden. Die{' '}
         <ExternalLink
-          href="https://fixmyberlin.de/datenschutz"
+          href="/datenschutz"
           rel="noopener noreferrer"
           target="_blank"
         >
@@ -83,10 +83,10 @@ export const signupFormConfig = [
   },
   {
     id: 'newsletter',
+    enabled: config.reports.form.newsletter,
     value: false,
     type: 'checkbox',
-    label:
-      'Ich möchte den FixMyBerlin Newsletter mit Updates zu Planungen erhalten'
+    label: `Ich möchte den ${config.siteTitle}-Newsletter mit Updates zu Planungen erhalten`
   }
 ];
 
@@ -143,7 +143,7 @@ class AuthForm extends Component {
     } catch (err) {
       errorMessage = {
         server:
-          'Es gab ein Problem mit dem Server. Bitte versuche es noch ein mal.'
+          'Es gab ein Problem mit dem Server. Bitte versuchen Sie es noch einmal.'
       };
 
       if (err.response && err.response.json) {
@@ -169,8 +169,8 @@ class AuthForm extends Component {
       <>
         <HorizontalRuler />
         <Heading>
-          Gib deine E-Mailadresse an, damit die Verwaltungsmitarbeiter dir
-          Informationen zum Status deiner Meldung schicken können.
+          Geben Sie Ihre E-Mailadresse an, damit Sie Informationen zum Status
+          Ihrer Meldung bekommen können.
         </Heading>
 
         <FormWrapper>
@@ -183,20 +183,22 @@ class AuthForm extends Component {
           >
             {({ values, errors, handleSubmit, isSubmitting, handleChange }) => (
               <Form onSubmit={handleSubmit}>
-                {signupFormConfig.map((d) => (
-                  <FormField
-                    key={`feedbackfield__${d.id}`}
-                    className={`formtype-${d.type}`}
-                    {...d}
-                    values={values}
-                    errors={errors}
-                    handleChange={handleChange}
-                    disabled={
-                      d.id === 'newsletter' &&
-                      (!values.login || values.email === '')
-                    }
-                  />
-                ))}
+                {signupFormConfig
+                  .filter((fieldConfig) => fieldConfig.enabled !== false)
+                  .map((d) => (
+                    <FormField
+                      key={`feedbackfield__${d.id}`}
+                      className={`formtype-${d.type}`}
+                      {...d}
+                      values={values}
+                      errors={errors}
+                      handleChange={handleChange}
+                      disabled={
+                        d.id === 'newsletter' &&
+                        (!values.login || values.email === '')
+                      }
+                    />
+                  ))}
                 {errors.server && <ErrorLabel>{errors.server}</ErrorLabel>}
                 <ButtonWrapper>
                   <SubmitButton type="submit" disabled={isSubmitting}>

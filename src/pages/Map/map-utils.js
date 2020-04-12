@@ -17,10 +17,12 @@ export const standardLayers = ['center', 'side0', 'side1'];
 export const standardLayersWithOverlay = [...standardLayers, 'overlayLine'];
 
 export function setView(map, view) {
-  if (view.zoom) map.setZoom(view.zoom);
-  if (view.center) map.setCenter(view.center);
-  if (view.pitch) map.setPitch(view.pitch);
-  if (view.bearing) map.setBearing(view.bearing);
+  // attach flag to enables listeners to differentiate between natural user interaction and programmatic map change
+  const eventData = { programmaticMove: true };
+  if (view.zoom) map.setZoom(view.zoom, eventData);
+  if (view.center) map.setCenter(view.center, eventData);
+  if (view.pitch) map.setPitch(view.pitch, eventData);
+  if (view.bearing) map.setBearing(view.bearing, eventData);
 }
 
 export function animateView(map, view) {
@@ -79,6 +81,11 @@ export function setPlanningLegendFilter(map, selected) {
       isSelected === true ? ['==', phases[phaseIndex], ['get', 'phase']] : null
     )
     .filter((entry) => entry !== null);
+
+  // Also show temporary projects if the filter for phase "ready" is active
+  if (selected[3] === true) {
+    filters.push(['==', 'inactive', ['get', 'phase']]);
+  }
 
   // Planning legend filter can be directly set for center and overlayLine
   // layer, but need  to be concatenated with side filter for the side layers

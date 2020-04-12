@@ -7,7 +7,8 @@ export default async ({ lat, lng }) => {
     .replace('{long}', lng)
     .replace('{lat}', lat)
     .concat(`?access_token=${config.map.accessToken}&`)
-    .concat('language=de');
+    .concat('language=de&')
+    .concat(`types=address`);
 
   const data = await ky.get(searchUrl).json(); // result is a GeoJSON
   return data.features[0].place_name_de // e.g. "Schnatterinchenstraße 2, 12345 Berlin, Deutschland"

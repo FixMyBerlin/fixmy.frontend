@@ -2,6 +2,7 @@ import styledNormalize from 'styled-normalize';
 import { createGlobalStyle } from 'styled-components';
 
 import fontFaces from './fontfaces';
+import config from '~/config';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 
@@ -24,11 +25,11 @@ export default createGlobalStyle`
     position: relative;
     height: 100%;
     width: 100%;
-    font-family: 'Open Sans', sans-serif;
+    font-family: '${config.baseFont}', sans-serif;
   }
 
   input, button, select, textarea {
-    font-family: 'Open Sans', sans-serif;
+    font-family: '${config.baseFont}', sans-serif;
   }
 
   ::placeholder {
@@ -79,34 +80,6 @@ export default createGlobalStyle`
     .marker-image {
       width: 100%;
     }
-  }
-
-  .reports-marker {
-    width: 47px;
-
-    .marker-image {
-      width: 100%;
-    }
-  }
-
-  .reports-cluster {
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgb(38, 204, 186);
-    background: white;
-    border-radius: 50%;
-  }
-
-  .reports-cluster__inner {
-    border: 3px solid rgba(38, 204, 186, 0.3);
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 700;
   }
 
   .wiggle {

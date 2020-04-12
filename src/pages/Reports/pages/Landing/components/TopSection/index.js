@@ -3,25 +3,21 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import config from '~/pages/Reports/config';
-import FixMyLogo from '~/images/logofmb@2x.png';
 import MenuButton from '~/components/MenuButton';
-import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
-import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
-import Button from '~/components/Button';
 import Link from '~/components/Link';
 import ScrollLink from './ScrollLink';
 import { media } from '~/styles/utils';
 
 const Section = styled.section`
   height: 100vh;
-  background-image: url(${BycicleParkingBgImg});
+  background-image: url(${config.reports.landing.background.source});
   background-size: cover;
   background-position: center 80%;
   display: flex;
   flex-direction: column;
 
   &:after {
-    content: 'Photo by Trae Gould on Unsplash';
+    content: '${config.reports.landing.background.attribution}';
     font-size: 10px;
     letter-spacing: 0.2px;
     color: ${config.colors.lightgrey};
@@ -31,11 +27,12 @@ const Section = styled.section`
   }
 
   ${media.m`
-    background-image: url(${BycicleParkingBgImgLargeScreen});
+    background-image: url(${config.reports.landing.backgroundDesktop.source});
     background-position: top;
 
     &:after {
-      content: "Photo by Christin Hume on Unsplash";
+      color: ${config.colors.lightgrey};
+      content: '${config.reports.landing.backgroundDesktop.attribution}';
     }
   `}
 `;
@@ -52,13 +49,15 @@ const FlexWrapper = styled.div`
 const StyledMenuButton = styled(MenuButton)`
   padding: 8px;
   background-color: #353535; /*TODO: factor out color to config */
-  border-radius: 2px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  border-radius: ${config.flatButtons ? '0' : '2px'};
+  box-shadow: ${config.flatButtons
+    ? 'initial'
+    : '0 2px 4px 0 rgba(0, 0, 0, 0.5)'};
 `;
 
 const StyledHeading = styled.h2`
-  font-family: 'Roboto Slab', sans-serif;
-  font-size: 32px;
+  font-family: '${config.titleFont}', sans-serif;
+  font-size: 3em;
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
@@ -67,15 +66,34 @@ const StyledHeading = styled.h2`
   text-align: center;
   color: white;
   margin-bottom: 39px;
+
+  ${media.m`
+    font-size: 4em;
+  `}
 `;
 
-const StyledButton = styled(Button)`
-  width: 167px;
+const StyledButton = styled.div`
+  border-radius: ${config.flatButtons ? '0' : '4px'};
+  border: none;
+  outline: none;
+  display: inline-block;
+  background: ${config.colors.interaction};
+  text-decoration: none;
+  color: ${config.colors.white};
+  font-family: '${config.baseFont}', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  width: 200px;
   padding: 10px 18px;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.25);
+  box-shadow: ${
+    config.flatButtons ? 'initial' : '0 0 2px 1px rgba(0, 0, 0, 0.25)'
+  };
 
   &:hover {
-    box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: ${
+      config.flatButtons ? 'initial' : '0 0 8px 1px rgba(0, 0, 0, 0.4)'
+    };
     opacity: 1;
   }
 `;
@@ -90,22 +108,35 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const TopLogo = styled.img`
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  width: 92px;
+
+  ${media.m`
+    top: 2em;
+    right: 2em;
+    width: 120px;
+  `}
+`;
+
 const TopSection = ({ toUrl }) => (
   <Section>
     <FlexWrapper>
       <StyledMenuButton whiteFill="true" />
-      <img
-        width="92px"
-        src={FixMyLogo}
+      <TopLogo
+        src={config.reports.landing.logo.source}
         alt="logo"
         data-cy="reports-landing-logo"
       />
+
       <StyledHeading data-cy="reports-landing-header">
-        Melde neue Fahrradbügel für {config.reports.region}
+        {config.reports.landing?.title}
       </StyledHeading>
       <StyledButton className="wiggle" data-cy="reports-landing-cta">
         <StyledLink to={toUrl}>
-          <strong>Sagt uns wo</strong>
+          <strong>Sagen Sie uns wo</strong>
           <br /> in 30 Sekunden
         </StyledLink>
       </StyledButton>

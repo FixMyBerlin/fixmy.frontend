@@ -1,18 +1,17 @@
 import MapboxGL from 'mapbox-gl';
 
-import BikeStandMarker from '~/images/reports/pin-meldung.png';
-
-const ICONS = {
-  BIKE_STANDS: BikeStandMarker
-};
+import config from '~/pages/Reports/config';
+import utils from '~/pages/Reports/utils';
 
 function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   const el = document.createElement('div');
   el.className = 'reports-cluster';
+  el.style.borderColor = config.reports.overviewMap.clusterColor.outer;
 
   const elInner = document.createElement('div');
   elInner.className = 'reports-cluster__inner';
   elInner.innerHTML = pointCount;
+  elInner.style.borderColor = config.reports.overviewMap.clusterColor.inner;
 
   el.dataset.cy = 'reports-marker-cluster';
 
@@ -40,42 +39,23 @@ function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([-10, -10]);
 }
 
-function createPinMarker({
-  markerData,
-  geometry,
-  lngLat,
-  selectedReport,
-  detailId,
-  onClick
-}) {
+function createPinMarker({ markerData, geometry, lngLat, onClick }) {
   const details = JSON.parse(markerData.details || {});
   const el = document.createElement('div');
 
   el.dataset.id = markerData.id;
-  el.style.cursor = 'pointer';
-  el.style.opacity = 1;
-  el.style.width = '40px';
-  el.style.height = 'auto';
+  el.className = 'reports-marker';
 
   el.dataset.cy = 'reports-marker';
 
-  if (selectedReport || detailId) {
-    const activeId = selectedReport ? selectedReport.id : detailId;
-    const isActive = markerData.id.toString() === activeId.toString();
-
-    if (!isActive) {
-      el.style.filter = 'brightness(1.15) grayscale(0.7)';
-    }
-  }
-
   const updatedMarkerData = { ...markerData, geometry, details };
 
-  el.innerHTML = `<img style="width: 100%;" class="marker-image" src="${
-    ICONS[details.subject]
-  }" />`;
+  el.innerHTML = `<img class="marker-image marker-${
+    markerData.status
+  }" src="${utils.getMarkerSrc(markerData)}" />`;
   el.addEventListener('click', (evt) => onClick(evt, updatedMarkerData));
 
-  return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -20]);
+  return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -0]);
 }
 
 function setupClusters(name, map, data, radius, handleUpdate) {

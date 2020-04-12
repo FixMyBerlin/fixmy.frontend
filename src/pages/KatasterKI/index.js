@@ -1,11 +1,9 @@
 import React from 'react';
 import { Router, Route, Switch, Redirect, matchPath } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import ReactPiwik from 'react-piwik';
 
 import config from '~/pages/KatasterKI/config';
 import { media } from '~/styles/utils';
-import history from '~/history';
 import Landing from './pages/Landing';
 import Scenes from './pages/Scenes';
 import Profile from './pages/Profile';
@@ -71,17 +69,6 @@ const Gradient = styled.div`
   );
 `;
 
-const piwik = new ReactPiwik({
-  url: 'fixmyberlin.de/stats',
-  siteId: config.debug
-    ? config.piwik.siteId.katasterTesting
-    : config.piwik.siteId.kataster,
-  trackErrors: true
-});
-
-// track the initial pageview
-ReactPiwik.push(['trackPageView']);
-
 /** Define the path for the landing page to be able to check whether it's active
  *
  * The path is prepended with the BASE_NAME env var, which
@@ -97,7 +84,7 @@ const isLandingPage = (path) => {
 
   const LANDING_PATH_NATIONAL =
     process.env.BASE_NAME.slice(0, -1) +
-    config.routes.katasterKI.landingNational;
+    config.routes.katasterKI?.landingNational;
   const isLandingNational = matchPath(path, {
     path: LANDING_PATH_NATIONAL,
     exact: true
@@ -114,7 +101,7 @@ const KatasterKI = () => {
       <AppGlobalStyle />
       <ScrollToTop />
       <ContentWrapper isLanding={isLanding}>
-        <Router history={piwik.connectToHistory(history)}>
+        <Router>
           <Switch>
             <Route
               exact

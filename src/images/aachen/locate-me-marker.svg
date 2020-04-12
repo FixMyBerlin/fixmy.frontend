@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="65" height="81" viewBox="0 0 65 81">
+    <defs>
+        <ellipse id="prefix__b" cx="32.5" cy="32.4" rx="27.422" ry="27.337"/>
+        <filter id="prefix__a" width="200%" height="180.7%" x="-50%" y="-40.4%" filterUnits="objectBoundingBox">
+            <feOffset dy="6" in="SourceAlpha" result="shadowOffsetOuter1"/>
+            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="5.5"/>
+            <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25317029 0"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd" filter="url(#prefix__a)">
+        <path fill="#6E9BD2" d="M59.437 50.541C62.973 45.481 65 38.918 65 32.4 65 14.506 50.45 0 32.5 0S0 14.506 0 32.4c0 6.289 1.424 12.576 4.908 18.141C7.231 54.251 16.428 64.405 32.5 81c15.6-16.932 24.579-27.085 26.937-30.459z"/>
+        <use fill="#FFF" xlink:href="#prefix__b"/>
+    </g>
+</svg>

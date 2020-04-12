@@ -10,7 +10,11 @@ import ContentPageWrapper from '~/components/ContentPageWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Button from '~/components/Button';
 
-import verifyImageSrc from '~/images/user-verify.png';
+import verifyImageFMB from '~/images/user-verify.png';
+import verifyImageAachen from '~/images/aachen/user@2x.png';
+
+const verifyImage =
+  config.region === 'aachen' ? verifyImageAachen : verifyImageFMB;
 
 const StyledHeading = styled(Heading)`
   margin: 6px 0 8px 0;
@@ -38,24 +42,27 @@ const ErrorMessage = styled.div`
 const UserVerify = ({ match, location }) => {
   const [serverError, serServerError] = useState(null);
 
-  useEffect(async () => {
-    const { uid, token } = match.params;
-    const { newsletter } = qs.parse(location.search, {
-      ignoreQueryPrefix: true
-    });
-    const signupNewsletter = newsletter === 'yes';
-
-    try {
-      return ky(`${config.apiUrl}/users/activation/`, {
-        method: 'POST',
-        json: { uid, token, newsletter: signupNewsletter }
+  useEffect(() => {
+    const verifyUser = async () => {
+      const { uid, token } = match.params;
+      const { newsletter } = qs.parse(location.search, {
+        ignoreQueryPrefix: true
       });
-    } catch (e) {
-      logger(e);
-      return serServerError(
-        'Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden. Evtl. wurde Ihr Konto auch schon aktiviert.'
-      );
-    }
+      const signupNewsletter = newsletter === 'yes';
+
+      try {
+        return ky(`${config.apiUrl}/users/activation/`, {
+          method: 'POST',
+          json: { uid, token, newsletter: signupNewsletter }
+        });
+      } catch (e) {
+        logger(e);
+        return serServerError(
+          'Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden. Evtl. wurde Ihr Konto auch schon aktiviert.'
+        );
+      }
+    };
+    verifyUser();
   }, []);
 
   return (
@@ -66,7 +73,7 @@ const UserVerify = ({ match, location }) => {
           : 'Super, dein Account ist aktiviert'}
       </StyledHeading>
 
-      <VerifyImage src={verifyImageSrc} />
+      <VerifyImage src={verifyImage} />
 
       {!serverError && (
         <>

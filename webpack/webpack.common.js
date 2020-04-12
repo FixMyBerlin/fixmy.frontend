@@ -1,7 +1,10 @@
+require('dotenv').config();
+
 const Path = require('path');
 const Webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const defaultBaseName = '/';
 const defaultEntryPoint = '../src/index.js';
@@ -9,7 +12,10 @@ const defaultEntryPoint = '../src/index.js';
 const FAVICONS_PATH =
   process.env.KATASTER_PATH != null
     ? '../src/pages/KatasterKI/favicons'
-    : '../favicons';
+    : Path.resolve(__dirname, '..', 'favicons', process.env.REGION || 'berlin');
+
+// Used to prove domain ownership for Mailjet
+const MAILJET_AUTH_FILE = '3e83a85511f70bef9fbe500647d70221.txt';
 
 module.exports = {
   entry: {
@@ -27,16 +33,13 @@ module.exports = {
       { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' },
       { from: Path.resolve(__dirname, '../_redirects') },
       { from: Path.resolve(__dirname, FAVICONS_PATH) },
-      { from: Path.resolve(__dirname, '../public/data'), to: 'data' }
+      { from: Path.resolve(__dirname, '../public/data'), to: 'data' },
+      { from: Path.resolve(__dirname, '../public/uploads'), to: 'uploads' },
+      {
+        from: Path.resolve(__dirname, '..', 'public', MAILJET_AUTH_FILE)
+      }
     ]),
-    new Webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
-      CONFIG_ENV: 'dev',
-      BASE_NAME: '/', // base name of router history
-      KATASTER_PATH: '/strassencheck', // used as a base for the kataster app
-      REGION_ENV: 'berlin',
-      CYPRESS_BROWSER_WINDOW: null // position Cypress Chrome window e.g. "1920,1080;1920,0"
-    })
+    new Dotenv({ defaults: true, systemvars: true })
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
@@ -60,7 +63,8 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/webidl-conversions'),
           Path.resolve(__dirname, '../node_modules/whatwg-url'),
           Path.resolve(__dirname, '../node_modules/ky'),
-          Path.resolve(__dirname, '../node_modules/d3-scale')
+          Path.resolve(__dirname, '../node_modules/d3-scale'),
+          Path.resolve(__dirname, '../node_modules/debug')
         ],
         use: 'babel-loader'
       },
