@@ -7,8 +7,8 @@ import defaultColors from '~/config/default/colors';
 
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
-  staging: 'https://fixmyaachen-staging.netlify.com/api/aachen/next',
-  production: 'https://fixmyaachen.netlify.com/api/aachen/v1'
+  staging: 'https://fixmyaachen-staging.netlify.app/api/aachen/next',
+  production: 'https://radbuegel-aachen.de/api/aachen/v1'
 };
 
 export default {

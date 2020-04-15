@@ -55,8 +55,8 @@ $ npm run build
 
 Each branch gets automatically deployed on netlify:
 
-- https://fixmyberlin-app.netlify.com/ [master]
-- https://develop--fixmyberlin-app.netlify.com/ [develop]
+- https://fixmyberlin-app.netlify.app/ [master]
+- https://develop--fixmyberlin-app.netlify.app/ [develop]
 
 ### Embed Mode
 
