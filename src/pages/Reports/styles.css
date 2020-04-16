@@ -5,29 +5,26 @@
   height: auto;
 }
 
-.marker-new {
-  width: 40px;
-  height: 50px;
-}
-
-.marker-verification {
-  width: 20px;
-  height: 20px;
-}
-
-.marker-accepted {
-  width: 20px;
-  height: 20px;
-}
-
-.marker-rejected {
-  width: 20px;
-  height: 20px;
-}
-
+.marker-new,
+.marker-report_new,
+.marker-planning,
+.marker-execution,
+.marker-invalid,
 .marker-done {
   width: 40px;
   height: 50px;
+}
+
+.marker-verification,
+.marker-accepted,
+.marker-rejected,
+.marker-inactive,
+.marker-report_verification,
+.marker-report_accepted,
+.marker-report_rejected,
+.marker-report_inactive {
+  width: 24px;
+  height: 24px;
 }
 
 .reports-cluster {
