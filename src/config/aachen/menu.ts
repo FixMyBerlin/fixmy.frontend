@@ -1,3 +1,5 @@
+import routes from './routes';
+
 export default {
   size: 325,
   profileLabel: 'Zum Profil',
@@ -9,8 +11,8 @@ export default {
       type: 'link',
       label: 'Radbügelmeldung',
       icon: 'fixhere',
-      link: '/meldungen/radbuegel/aachen/landing',
-      border: true
+      link: routes.reports.landing,
+      border: false
     },
     {
       type: 'separator',
