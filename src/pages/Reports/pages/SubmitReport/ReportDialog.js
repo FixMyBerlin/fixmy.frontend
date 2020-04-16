@@ -166,7 +166,7 @@ class ReportDialog extends PureComponent {
           <>
             <FormProgressBar stepNumber={5} stepCaption="Fertig" isLastStep />
             <ReportSubmitted
-              reportId={newReport?.id}
+              reportId={newReport.id}
               error={error}
               token={token}
               user={user}
@@ -203,6 +203,9 @@ export default connect(
     isLocationPinned:
       state.ReportsState.SubmitReportState.tempLocation?.isLocationPinned,
     locationMode: state.ReportsState.SubmitReportState.locationMode,
+    newReport: state.ReportsState.SubmitReportState.newReport,
+    submitting:
+      state.ReportsState.SubmitReportState.apiRequestStatus.submitting,
     error: state.ReportsState.ErrorState,
     token: state.UserState.token,
     user: state.UserState.userData
