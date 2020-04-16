@@ -13,13 +13,6 @@ export default {
       border: true
     },
     {
-      type: 'link',
-      label: 'Kontakt',
-      icon: 'info',
-      link: '/kontakt',
-      border: true
-    },
-    {
       type: 'separator',
       label: ''
     }
