@@ -16,12 +16,16 @@ const INDEX_HTML =
     : '../src/index.html';
 
 let siteUrl;
+let title;
 if (process.env.KATASTER_PATH != null) {
   siteUrl = '/strassencheck';
+  title = 'Der große Straßencheck';
 } else if (process.env.REGION === 'aachen') {
   siteUrl = 'https://radbuegel-aachen.de';
+  title = 'Radbügel für Aachen';
 } else {
   siteUrl = 'https://fixmyberlin.de';
+  title = 'FixMyBerlin';
 }
 
 module.exports = merge(common, {
@@ -44,6 +48,7 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       inject: true,
       siteUrl,
+      title,
       template: Path.resolve(__dirname, INDEX_HTML),
       minify: false
     }),

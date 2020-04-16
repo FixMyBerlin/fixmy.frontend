@@ -12,7 +12,7 @@ export default {
       [5.9, 50.6],
       [6.3, 50.9]
     ],
-    zoomDeepLinkedMarkers: 18,
+    zoomDeepLinkedMarkers: 16.5,
     clusterColor: {
       outer: 'rgba(133, 133, 133, 0.98)',
       inner: 'rgba(205, 205, 205, 0.91)'

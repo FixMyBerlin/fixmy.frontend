@@ -99,7 +99,7 @@ const OverviewMapNavBar = ({ heading }) => (
   <Wrapper data-cy="reports-heading">
     <StyledMenuButton />
     <TextWrapper>
-      <Link to={config.routes.reports.index}>
+      <Link to={config.routes.reports.landing}>
         <Heading>{heading}</Heading>
       </Link>
       <LinkSection>
@@ -112,7 +112,7 @@ const OverviewMapNavBar = ({ heading }) => (
       </LinkSection>
     </TextWrapper>
     <HeaderLogo>
-      <Link to={config.routes.reports.index}>{headerImage}</Link>
+      <Link to={config.routes.reports.landing}>{headerImage}</Link>
     </HeaderLogo>
   </Wrapper>
 );

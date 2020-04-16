@@ -30,6 +30,7 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       inject: true,
       siteUrl: 'http://localhost:8080',
+      title: 'FixMyBerlin DevServer',
       template: Path.resolve(__dirname, INDEX_HTML)
     }),
     new CopyWebpackPlugin([
