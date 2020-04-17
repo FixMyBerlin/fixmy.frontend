@@ -59,7 +59,7 @@ const AachenHeaderImage = styled.img`
   margin-top: -0.5em;
 
   ${media.m`
-    width: 108px;
+    width: 100px;
   `}
 `;
 
