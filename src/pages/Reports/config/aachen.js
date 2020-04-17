@@ -66,7 +66,7 @@ export default {
     {
       step: 2,
       text:
-        'Alle Meldungen, die bis zum 31. Juli 2020 eingegangen sind, werden von der Stadt Aachen geprüft.'
+        'Alle Meldungen, die bis zum 31. August 2020 eingegangen sind, werden von der Stadt Aachen geprüft.'
     },
     {
       step: 3,
@@ -78,7 +78,7 @@ export default {
     {
       heading: 'Warum sollte ich mitmachen?',
       text: `
-        In Aachen werden 2.000 neue Fahrradbügel aufgestellt. Hier können Sie mitbestimmen, wo diese stehen sollen.
+        In Aachen werden 5.000 neue Fahrradbügel aufgestellt. Hier können Sie mitbestimmen, wo diese stehen sollen.
       `
     },
     {
