@@ -17,7 +17,7 @@ export default {
   routes,
   staticpages,
   siteTitle: 'Radbügel für Aachen',
-  feedbackMail: 'radbuegel@aachen.de',
+  feedbackMail: 'verkehrsmanagement@mail.aachen.de',
   apiUrl:
     process.env.API_URL ||
     apiEndpoints[process.env.BACKEND] ||
