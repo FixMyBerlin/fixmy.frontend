@@ -25,12 +25,32 @@
     force = true
     [redirects.headers]
         X-From = "Netlify"
-        X-Forwarded-Host = "fixmyaachen.netlify.app"
+        X-Forwarded-Host = "radbuegel-aachen.de"
         X-Forwarded-Proto = "https"
 
 [[redirects]]
     from = "/api/aachen/next/*"
     to = "https://fixmyaachen-staging.herokuapp.com/api/:splat"
+    status = 200
+    force = true
+    [redirects.headers]
+        X-From = "Netlify"
+        X-Forwarded-Host = "fixmyaachen-staging.netlify.app"
+        X-Forwarded-Proto = "https"
+
+[[redirects]]
+    from = "/activate/aachen/v1/*"
+    to = "https://fixmyaachen.herokuapp.com/activate/:splat"
+    status = 200
+    force = true
+    [redirects.headers]
+        X-From = "Netlify"
+        X-Forwarded-Host = "radbuegel-aachen.de"
+        X-Forwarded-Proto = "https"
+
+[[redirects]]
+    from = "/activate/aachen/next/*"
+    to = "https://fixmyaachen-staging.herokuapp.com/activate/:splat"
     status = 200
     force = true
     [redirects.headers]
