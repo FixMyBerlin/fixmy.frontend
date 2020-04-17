@@ -10,6 +10,7 @@ const CenteredButton = styled(Button)`
   display: block;
   font-size: 1em;
   font-weight: 600;
+  font-family: '${config.baseFont}', sans-serif;
   line-height: 1.4;
   text-decoration: none;
   width: 17em;
