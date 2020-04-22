@@ -60,7 +60,7 @@ function createPinMarker({ markerData, geometry, lngLat, onClick }) {
 
 function setupClusters(name, map, data, radius, handleUpdate) {
   map.on('data', (e) => {
-    if (e.sourceId !== name || !e.isSourceLoaded) return;
+    if (e.sourceId !== name || !map.isSourceLoaded(name)) return;
 
     map.on('move', () => handleUpdate());
     map.on('moveend', () => handleUpdate());
