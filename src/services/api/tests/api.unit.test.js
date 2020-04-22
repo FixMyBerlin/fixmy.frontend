@@ -27,6 +27,7 @@ describe('API module', () => {
 
   describe('Generic request handler', () => {
     it('prefixes urls with the api base url defined in the app config', async () => {
+      // match all requests ending with the stated relative route since the api will prepend it with a base url
       fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, {});
       await api.request(statics.RANDOM_ROUTE);
       const [url] = fetchMock.lastCall();
