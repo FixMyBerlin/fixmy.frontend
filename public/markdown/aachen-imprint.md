@@ -1,37 +1,34 @@
 # Impressum
 
-<b>Herausgeber</b><br />
-Stadt Aachen<br />
-Der Oberbürgermeister<br />
-Marcel Philipp<br />
-Markt<br />
-52058 Aachen<br />
-Tel.: +49 241 432-0<br />
-Fax: +49 241 432-8008<br />
-[stadt.aachen@mail.aachen.de](mailto:stadt.aachen@mail.aachen.de)<br />
-[www.aachen.de](http://www.aachen.de)<br />
-Umsatzsteuer-Identifikationsnummer: DE 121689815<br />
+**Herausgeber**  
+Stadt Aachen  
+Der Oberbürgermeister  
+Marcel Philipp  
+Markt  
+52058 Aachen  
+Tel.: +49 241 432-0  
+Fax: +49 241 432-8008  
+[stadt.aachen@mail.aachen.de](mailto:stadt.aachen@mail.aachen.de)  
+[www.aachen.de](http://www.aachen.de)  
+Umsatzsteuer-Identifikationsnummer: DE 121689815
 
-<b>Redaktion</b><br />
-Fachbereich Presse und Marketing<br />
-Online-Redaktion der Stadt Aachen<br />
-Peter Klingel (verantwortlich)<br />
-Markt 39<br />
-52058 Aachen<br />
-Tel.: +49 241 432-1320<br />
-Fax: +49 241 28121<br />
-[onlineredaktion@mail.aachen.de](mailto:onlineredaktion@mail.aachen.de)<br />
+**Redaktion**  
+Fachbereich Stadtentwicklung und Verkehrsanlagen  
+Lagerhausstraße 20  
+52058 Aachen  
+Tel.: +49 241 432-6130  
+[verkehrsmanagement@mail.aachen.de](mailto:verkehrsmanagement@mail.aachen.de)
 
-<b>Konzept, Design, Umsetzung, Technik</b><br />
-FixMyCity GmbH - Gemeinsam schneller zur Fahrradstadt<br />
-c/o CityLAB Berlin<br />
-Platz der Luftbrücke 4<br />
-12101 Berlin<br />
-Tel.: +49 30 549 08 665<br />
-[hello@fixmycity.de](mailto:hello@fixmycity.de)<br />
-
+**Konzept, Design, Umsetzung, Technik**  
+FixMyCity GmbH - Gemeinsam schneller zur Fahrradstadt  
+c/o CityLAB Berlin  
+Platz der Luftbrücke 4  
+12101 Berlin  
+Tel.: +49 30 549 08 665  
+[hello@fixmycity.de](mailto:hello@fixmycity.de)
 
 # Elektronischer Zugang
+
 Die Stadt Aachen bietet die Möglichkeit zur elektronischen Kommunikation an.
 
 Dies bedeutet, dass Sie der Stadt Aachen Ihre Fragen, Anregungen und Anliegen gerne auch online senden können.<br />
@@ -93,17 +90,19 @@ Ist Ihnen Ihr Ansprechpartner oder die Dienststelle nicht bekannt, können Sie s
 Bitte schicken Sie der Stadtverwaltung keine E-Mails mit verlinkten Inhalten, da dies eine häufige Übertragungsform für Computerviren oder Phishing- Versuche ist.
 
 # Copyright/Urheberrechte
+
 Sofern nicht anders angegeben stehen alle Fotos oder Grafiken unter Creative Commons-Lizenz. ([Info zu CC Lizenzen](https://de.creativecommons.org/index.php/was-ist-cc/)) Urhebervermerk: "&copy; FixMyCity ([CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.de))"<br />
 
 # Haftungsausschluss/Rechtliche Hinweise
+
 Die Stadt Aachen ist darum bemüht auf dieser Website nur vollständige und richtige Informationen zu veröffentlichen. Eine Haftung oder Garantie für Aktualität, Richtigkeit und Vollständigkeit der Informationen und Daten besteht ausschließlich bei vorsätzlichem oder grob fahrlässigem pflichtwidrigen Verhalten des Providers. Eine Verantwortung für direkte oder indirekte Schäden an Rechtsgütern von Nutzern, die durch Programmveränderung oder -manipulation (insbesondere durch Viren) der Seiten der Stadt Aachen und der durch Links verbundenen Seiten Dritter entstehen, besteht nicht.
 
 (Access Provider)<br />
 Für ausgewiesene Querverweise (Links) zu anderen Sites, auf die der Provider keinen Einfluss hat und für deren Inhalt die Stadt Aachen keine Verantwortung trägt, gilt Folgendes:
 
-1) Die Stadt Aachen erklärt ausdrücklich, dass zum Zeitpunkt einer Linksetzung die entsprechenden verlinkten Seiten frei von illegalen Inhalten waren. Der Herausgeber hat keinerlei Einfluss auf die aktuelle und zukünftige Gestaltung und auf die Inhalte der verknüpften Seiten. Deshalb distanziert er sich hiermit ausdrücklich von allen Inhalten aller gelinkten Seiten, die nach der Linksetzung verändert wurden. Diese Erklärung gilt für alle auf dieser Homepage ausgebrachten Links und für alle Inhalte der Seiten, zu denen Links oder Banner führen.
+1. Die Stadt Aachen erklärt ausdrücklich, dass zum Zeitpunkt einer Linksetzung die entsprechenden verlinkten Seiten frei von illegalen Inhalten waren. Der Herausgeber hat keinerlei Einfluss auf die aktuelle und zukünftige Gestaltung und auf die Inhalte der verknüpften Seiten. Deshalb distanziert er sich hiermit ausdrücklich von allen Inhalten aller gelinkten Seiten, die nach der Linksetzung verändert wurden. Diese Erklärung gilt für alle auf dieser Homepage ausgebrachten Links und für alle Inhalte der Seiten, zu denen Links oder Banner führen.
 
-2) Die Stadt Aachen haftet für fremde Informationen, die sie übermittelt oder zu denen sie den Zugang zur Nutzung vermittelt, nur in den Fällen, in denen sie die Übermittlung veranlasst, den Adressaten der Informationen selbst ausgewählt oder die übermittelten Informationen selbst ausgewählt oder verändert hat. Für Internetseiten Dritter, auf die per Hyperlink verwiesen wird, tragen die jeweiligen Anbieter die Verantwortung.
+2. Die Stadt Aachen haftet für fremde Informationen, die sie übermittelt oder zu denen sie den Zugang zur Nutzung vermittelt, nur in den Fällen, in denen sie die Übermittlung veranlasst, den Adressaten der Informationen selbst ausgewählt oder die übermittelten Informationen selbst ausgewählt oder verändert hat. Für Internetseiten Dritter, auf die per Hyperlink verwiesen wird, tragen die jeweiligen Anbieter die Verantwortung.
 
 (Host-Provider)<br />
 Für Informationen Dritter, die die Stadt Aachen für einen Nutzer speichert, haftet diese nur bei ausdrücklicher Kenntnis von der Rechtswidrigkeit der gespeicherten Handlung oder Information oder bei Kenntnis von Tatsachen oder Umständen, aus denen die rechtswidrige Handlung oder Information offensichtlich wird. Die Haftung entfällt ebenfalls, wenn die Stadt Aachen nach Kenntniserlangung von der rechtswidrigen Information die unverzügliche Entfernung oder Zugangssperrung veranlasst.
@@ -116,7 +115,9 @@ Die Stadt Aachen ist nicht verpflichtet, die von ihr übermittelten oder gespeic
 Sämtliche Informationen oder Daten, deren Nutzung und die Anmeldung zur Website der Stadt Aachen, sowie sämtliches hiermit zusammenhängendes Tun, Dulden oder Unterlassen unterliegen nach dem Herkunftslandprinzip ausschließlich deutschem Recht.
 
 ## Rechtswirksamkeit des Haftungsausschlusses
+
 Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht, nicht mehr oder nicht vollständig entsprechen sollten, bleiben die übrigen Teile des Dokumentes in ihrem Inhalt und ihrer Gültigkeit davon unberührt.
 
 # Datenschutz
+
 Hinweise zum Datenschutz finden Sie unter "[Datenschutz](/datenschutz)".
