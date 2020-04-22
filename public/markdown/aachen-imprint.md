@@ -13,14 +13,11 @@ Fax: +49 241 432-8008<br />
 Umsatzsteuer-Identifikationsnummer: DE 121689815<br />
 
 <b>Redaktion</b><br />
-Fachbereich Presse und Marketing<br />
-Online-Redaktion der Stadt Aachen<br />
-Peter Klingel (verantwortlich)<br />
-Markt 39<br />
+Fachbereich Stadtentwicklung und Verkehrsanlagen<br />
+Lagerhausstraße 20<br />
 52058 Aachen<br />
-Tel.: +49 241 432-1320<br />
-Fax: +49 241 28121<br />
-[onlineredaktion@mail.aachen.de](mailto:onlineredaktion@mail.aachen.de)<br />
+Tel.: +49 241 432-6130<br />
+[verkehrsmanagement@mail.aachen.de](mailto:verkehrsmanagement@mail.aachen.de)<br />
 
 <b>Konzept, Design, Umsetzung, Technik</b><br />
 FixMyCity GmbH - Gemeinsam schneller zur Fahrradstadt<br />
