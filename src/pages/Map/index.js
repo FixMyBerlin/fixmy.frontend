@@ -125,8 +125,20 @@ class MapViewComponent extends PureComponent {
               />
             )}
           />
+          <Route
+            exact
+            path="/popupbikelanes/:id/:name?"
+            render={(props) => (
+              <ProjectDetail
+                apiEndpoint="projects"
+                onCloseRoute="/popupbikelanes"
+                activeView={this.props.activeLayer}
+                token={this.props.token}
+                match={props.match}
+              />
+            )}
+          />
         </MapWrapper>
-        {isEmbedMode && <FMBCredits />}
       </MapView>
     );
   }

@@ -23,6 +23,7 @@ export default {
     iframe: `${katasterPath}/iFrame-test`,
     email: `${katasterPath}/email`
   },
+  popupbikelanes: '/popupbikelanes',
   signup: '/registrieren',
   login: '/anmelden',
   forgotPassword: '/passwort-vergessen',
