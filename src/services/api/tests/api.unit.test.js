@@ -12,9 +12,9 @@ import store from '~/store';
 import { combineURLs } from '~/services/api/utils';
 
 // dedupe values used in multiple places within the test file
-const globals = {
-  randomRoute: 'fakeEndpoint',
-  randomJson: { hello: 'world' },
+const statics = {
+  RANDOM_ROUTE: 'fakeEndpoint',
+  RANDOM_JSON: { hello: 'world' },
   compileAbsoluteRoute: (relativeRoute) =>
     combineURLs(config.apiUrl, relativeRoute)
 };
@@ -27,10 +27,10 @@ describe('API module', () => {
 
   describe('Generic request handler', () => {
     it('prefixes urls with the api base url defined in the app config', async () => {
-      fetchMock.mock(`end:${globals.randomRoute}`, {});
-      await api.request(globals.randomRoute);
+      fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, {});
+      await api.request(statics.RANDOM_ROUTE);
       const [url] = fetchMock.lastCall();
-      expect(url).toEqual(globals.compileAbsoluteRoute(globals.randomRoute));
+      expect(url).toEqual(statics.compileAbsoluteRoute(statics.RANDOM_ROUTE));
     });
 
     it('reads the token from the store before the request and adds it to the request header', async () => {
@@ -42,9 +42,9 @@ describe('API module', () => {
       };
       jest.mock('~/store');
       store.getState = () => mockState;
-      fetchMock.mock(`end:${globals.randomRoute}`, {});
+      fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, {});
 
-      await api.request(globals.randomRoute);
+      await api.request(statics.RANDOM_ROUTE);
 
       const fetchOptions = fetchMock.lastOptions();
       expect(fetchOptions.headers.Authorization).toContain(`JWT ${testToken}`); // headers are wrapped in array, see https://github.com/node-fetch/node-fetch/issues/219#issuecomment-270946419
@@ -52,8 +52,8 @@ describe('API module', () => {
 
     it('can request text content', async () => {
       const testResponse = 'Hello world';
-      fetchMock.mock(`end:${globals.randomRoute}`, testResponse);
-      const response = await api.request(globals.randomRoute, {
+      fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, testResponse);
+      const response = await api.request(statics.RANDOM_ROUTE, {
         responseBodyType: 'text'
       });
       expect(response).toEqual(testResponse);
@@ -64,8 +64,8 @@ describe('API module', () => {
     it('toggles an isSubmitting flag using the provided request hook `setSubmitting`', async () => {
       const setSubmittingSpy = jest.fn();
 
-      fetchMock.mock(`end:${globals.randomRoute}`, globals.randomJson);
-      await api.request(globals.randomRoute, {
+      fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, statics.RANDOM_JSON);
+      await api.request(statics.RANDOM_ROUTE, {
         callbacks: {
           setSubmitting: setSubmittingSpy
         }
@@ -89,11 +89,11 @@ describe('API module', () => {
               JSON.stringify(testResponseBody),
               testResponseOptions
             );
-            fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
+            fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, errResponse);
 
             let thrownError;
             try {
-              await api.request(globals.randomRoute);
+              await api.request(statics.RANDOM_ROUTE);
             } catch (e) {
               thrownError = e;
             }
@@ -113,9 +113,9 @@ describe('API module', () => {
             JSON.stringify(testResponseBody),
             testResponseOptions
           );
-          fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
+          fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, errResponse);
 
-          await expect(api.request(globals.randomRoute)).rejects.toThrowError(
+          await expect(api.request(statics.RANDOM_ROUTE)).rejects.toThrowError(
             new ApiError(GENERIC_ERROR_MESSAGE)
           );
         });
@@ -124,10 +124,10 @@ describe('API module', () => {
           const testResponse = 'something went south';
           const testResponseOptions = { status: 404, statusText: 'Not found' };
           const errResponse = new Response(testResponse, testResponseOptions);
-          fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
+          fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, errResponse);
 
           await expect(
-            api.request(globals.randomRoute, {
+            api.request(statics.RANDOM_ROUTE, {
               responseBodyType: 'text'
             })
           ).rejects.toThrowError(new ApiError(testResponse));
@@ -141,19 +141,19 @@ describe('API module', () => {
             );
 
           // mock request timeout
-          fetchMock.mock(`end:${globals.randomRoute}`, delayResponse(408, 2)); // send '200' response after 2 millis
+          fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, delayResponse(408, 2)); // send '200' response after 2 millis
 
           await expect(
-            api.request(globals.randomRoute, { kyOptions: { timeout: 1 } })
+            api.request(statics.RANDOM_ROUTE, { kyOptions: { timeout: 1 } })
           ).rejects.toThrow(TimeoutError);
         });
 
         it('throws a custom NetworkError if the server does not answer', async () => {
-          fetchMock.mock(`end:${globals.randomRoute}`, () => {
+          fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, () => {
             throw new Error('Connection error');
           });
 
-          await expect(api.request(globals.randomRoute)).rejects.toThrow(
+          await expect(api.request(statics.RANDOM_ROUTE)).rejects.toThrow(
             NetworkError
           );
         });
@@ -168,13 +168,13 @@ describe('API module', () => {
         it('still invokes `setSubmitting` twice even if the request fails', async () => {
           const setSubmittingSpy = jest.fn();
 
-          fetchMock.mock(`end:${globals.randomRoute}`, () => {
+          fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, () => {
             throw new Error('Connection error');
           });
 
           let catchedError;
           try {
-            await api.request(globals.randomRoute, {
+            await api.request(statics.RANDOM_ROUTE, {
               callbacks: {
                 setSubmitting: setSubmittingSpy
               }
@@ -193,9 +193,9 @@ describe('API module', () => {
           const errResponse = new Response(errorMessage, {
             status: 500
           });
-          fetchMock.mock(`end:${globals.randomRoute}`, errResponse);
+          fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, errResponse);
           try {
-            await api.request(globals.randomRoute, {
+            await api.request(statics.RANDOM_ROUTE, {
               callbacks: {
                 setErrors: setErrorSpy
               }
@@ -210,19 +210,19 @@ describe('API module', () => {
 
   describe('Shorthand methods', () => {
     it('provides a shorthand to GET json data', async () => {
-      const mockedJsonResponse = globals.randomJson;
-      fetchMock.get(`end:${globals.randomRoute}`, mockedJsonResponse);
-      const result = await api.get(globals.randomRoute);
+      const mockedJsonResponse = statics.RANDOM_JSON;
+      fetchMock.get(`end:${statics.RANDOM_ROUTE}`, mockedJsonResponse);
+      const result = await api.get(statics.RANDOM_ROUTE);
       expect(result.hello).toEqual(mockedJsonResponse.hello);
     });
 
     it('provides a shorthand to POST json data', async () => {
-      const mockedPayload = globals.randomJson;
+      const mockedPayload = statics.RANDOM_JSON;
       const mockedResponse = mockedPayload;
 
-      fetchMock.post(`end:${globals.randomRoute}`, mockedResponse);
+      fetchMock.post(`end:${statics.RANDOM_ROUTE}`, mockedResponse);
 
-      const response = await api.post(globals.randomRoute, mockedPayload);
+      const response = await api.post(statics.RANDOM_ROUTE, mockedPayload);
       const fetchOptions = fetchMock.lastOptions();
 
       expect(fetchOptions.headers['content-type']).toContain(
@@ -240,8 +240,8 @@ describe('API module', () => {
       const mockedJsonResponse = { a: 1, b: 2 };
       const mockedRequestBody = { b: 2 };
 
-      fetchMock.patch(`end:${globals.randomRoute}`, mockedJsonResponse);
-      const response = await api.patch(globals.randomRoute, mockedRequestBody);
+      fetchMock.patch(`end:${statics.RANDOM_ROUTE}`, mockedJsonResponse);
+      const response = await api.patch(statics.RANDOM_ROUTE, mockedRequestBody);
 
       const fetchOptions = fetchMock.lastOptions();
       expect(fetchOptions.headers['content-type']).toContain(
