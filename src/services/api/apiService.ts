@@ -10,7 +10,6 @@ import store from '~/store';
 import { JSONValue, RequestOptions } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
 import { ApiError, NetworkError, TimeoutError } from './httpErrors';
-import { emptyFunc } from '~/services/api/utils';
 
 // setup ky
 
@@ -34,8 +33,7 @@ const configuredKy = ky.create({
 const defaultRequestOptions: RequestOptions = {
   kyOptions: {},
   callbacks: {
-    setSubmitting: emptyFunc
-  },
+    setSubmitting: () => {}},
   responseBodyType: 'json'
 };
 
@@ -50,7 +48,7 @@ export async function request(
   let response;
 
   const mergedKyOptions = prepareKyOptions(kyOptions);
-  const { setErrors, setSubmitting = emptyFunc } = callbacks;
+  const { setErrors, setSubmitting = () => {}} = callbacks;
 
   setSubmitting(true);
   try {
