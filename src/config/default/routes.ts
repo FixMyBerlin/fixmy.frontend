@@ -23,6 +23,12 @@ export default {
     iframe: `${katasterPath}/iFrame-test`,
     email: `${katasterPath}/email`
   },
+  spielstrassen: {
+    landing: '/spielstrassen',
+    kieze: '/spielstrassen/kieze',
+    register: '/spielstrassen/kieze/:kiez',
+    thanks: '/spielstrassen/kieze/:kiez/danke'
+  },
   popupbikelanes: '/popupbikelanes',
   signup: '/registrieren',
   login: '/anmelden',

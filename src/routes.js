@@ -17,6 +17,7 @@ const KatasterKI = lazy(() => import('~/pages/KatasterKI'));
 const MapView = lazy(() => import('~/pages/Map'));
 const Markdown = lazy(() => import('~/pages/Markdown'));
 const Reports = lazy(() => import('~/pages/Reports'));
+const Spielstrassen = lazy(() => import('~/pages/Spielstrassen'));
 
 const Routes = ({ token }) => (
   <Switch>
@@ -76,6 +77,14 @@ const Routes = ({ token }) => (
       <Route
         path={`${config.routes.analysis}/planungen/:districtName?`}
         component={Analysis}
+      />
+    )}
+
+    {/* Spielstrassen pages */}
+    {config.routes.spielstrassen != null && (
+      <Route
+        path={config.routes.spielstrassen.landing}
+        component={Spielstrassen}
       />
     )}
 
