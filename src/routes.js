@@ -57,6 +57,10 @@ const Routes = ({ token }) => (
       <Route path={config.routes.projects} component={MapView} />
     )}
 
+    {config.routes.popupbikelanes != null && (
+      <Route path={config.routes.popupbikelanes} component={MapView} />
+    )}
+
     {/* reports page */}
     {config.routes.reports != null && (
       <Route path={`${config.routes.reports.index}`} component={Reports} />
