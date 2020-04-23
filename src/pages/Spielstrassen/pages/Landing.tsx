@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, Container } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
 import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
@@ -9,48 +9,16 @@ import { Insert as ImageInsert } from '~/components2/Image';
 import BackgroundImage3 from '~/images/spielstrassen/landing-bg@3x.jpg';
 import Header from '../components/Header';
 
-const Title = styled.h1`
-  font-family: ${config.titleFont};
-  line-height: 1.25em;
-`;
-
-const Wrapper = styled(Box)`
-  font-size: 16px;
-  line-height: 1.5em;
-
-  h1 {
-    font-family: ${config.titleFont};
-    line-height: 1.25em;
-  }
-
-  h2 {
-    font-size: 24px;
-  }
-
-  ol {
-    padding-left: 1em;
-  }
-
-  a,
-  a:link,
-  a:visited,
-  a:active {
-    color: ${config.colors.darkbg};
-    text-decoration: none;
-    border-bottom: 1px solid ${config.colors.interaction};
-  }
-`;
-
 const CTA = styled(Button)`
   margin: 2em auto;
 `;
 
 const Landing = () => {
   return (
-    <Wrapper>
+    <>
       <Header />
       <Container>
-        <Title>Temporäre Spielstraßen für Friedrichshain-Kreuzberg</Title>
+        <h1>Temporäre Spielstraßen für Friedrichshain-Kreuzberg</h1>
         <p>
           Kinder brauchen Raum zum Spielen im Freien. Besonders während der
           Corona-Pandemie ist dieser Raum oft zu eng oder gar nicht vorhanden,
@@ -111,7 +79,7 @@ const Landing = () => {
           Straße betreuen, kann diese vom Bezirksamt eingerichtet werden.
         </p>
       </Container>
-    </Wrapper>
+    </>
   );
 };
 
