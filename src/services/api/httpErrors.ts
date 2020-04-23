@@ -1,14 +1,12 @@
 //  TODO: use functions instead of classes to respect eslint, see  https://dev.to/damxipo/custom-exceptions-with-js-3aoc
 
-const GENERIC_ERROR_MESSAGE = 'No error detail provided';
-
 /**
  * The api has answered with an error description.
  */
 class ApiError extends Error {
   public code: number;
 
-  constructor(message = GENERIC_ERROR_MESSAGE, statusCode = 500) {
+  constructor(message, statusCode = 500) {
     super(message);
     this.name = 'QualifiedError';
     this.code = statusCode;
@@ -40,4 +38,4 @@ class NetworkError extends Error {
   }
 }
 
-export { GENERIC_ERROR_MESSAGE, ApiError, TimeoutError, NetworkError };
+export { ApiError, TimeoutError, NetworkError };

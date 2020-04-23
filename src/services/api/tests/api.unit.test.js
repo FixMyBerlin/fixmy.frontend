@@ -4,13 +4,13 @@ import request from '../apiService';
 import config from '~/config'; // TODO: consider mocking this
 import {
   ApiError,
-  GENERIC_ERROR_MESSAGE,
   NetworkError,
   TimeoutError
 } from '~/services/api/httpErrors';
 import store from '~/store';
 import combineURLs from '~/services/api/tests/apiTestUtils';
 import { get, patch, post } from '~/services/api/shorthands';
+import { printError } from '~/services/api/errorHandling';
 
 // dedupe values used in multiple places within the test file
 const statics = {
@@ -105,22 +105,26 @@ describe('API module', () => {
           }
         );
 
-        it('rethrows an error JSON as ApiError not stating a detail with a generic error message', async () => {
-          // the key describing the error intentionally breaches our conventions for error answers
-          const testResponseBody = { customError: 'wholey moly' };
-          const testResponseOptions = {
-            status: 500
-          };
-          const errResponse = new Response(
-            JSON.stringify(testResponseBody),
-            testResponseOptions
-          );
-          fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, errResponse);
+        it(
+          'rethrows an error JSON as ApiError not containing a detail key ' +
+            'with the response body',
+          async () => {
+            // the key describing the error intentionally breaches our conventions for error answers
+            const testResponseBody = { customError: 'wholey moly' };
+            const testResponseOptions = {
+              status: 500
+            };
+            const errResponse = new Response(
+              JSON.stringify(testResponseBody),
+              testResponseOptions
+            );
+            fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, errResponse);
 
-          await expect(request(statics.RANDOM_ROUTE)).rejects.toThrowError(
-            new ApiError(GENERIC_ERROR_MESSAGE)
-          );
-        });
+            await expect(request(statics.RANDOM_ROUTE)).rejects.toThrowError(
+              new ApiError(printError(testResponseBody))
+            );
+          }
+        );
 
         it('rethrows a text error as ApiError stating its detail', async () => {
           const testResponse = 'something went south';

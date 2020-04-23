@@ -4,6 +4,7 @@ import {
   NetworkError,
   TimeoutError
 } from '~/services/api/httpErrors';
+import { JSONValue } from '~/services/api/types';
 
 export default async function handleError(e, setErrors) {
   const { translatedError, errorMessage } = await mapError(e);
@@ -67,7 +68,14 @@ async function parseErrorResponse(errorResponse: Response): Promise<string> {
     // don't panic, its just text content
   }
 
-  return errorJson
-    ? errorJson.detail // assume that body is structured following a convention made in the backend
-    : errorText;
+  if (errorJson) {
+    return typeof errorJson?.detail === 'string'
+      ? errorJson.detail
+      : printError(errorJson);
+  }
+  return errorText;
+}
+
+export function printError(errorJson: JSONValue): string {
+  return JSON.stringify(errorJson, null, '2');
 }
