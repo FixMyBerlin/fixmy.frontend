@@ -12,7 +12,7 @@ import history from '~/history';
 
 const Styles = styled.div`
   font-size: 16px;
-  line-height: 1.5em;
+  line-height: 24px;
 
   h1 {
     font-family: ${config.titleFont};
