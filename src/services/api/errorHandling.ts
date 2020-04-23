@@ -5,7 +5,7 @@ import {
   TimeoutError
 } from '~/services/api/httpErrors';
 
-export async function handleError(e, setErrors) {
+export default async function handleError(e, setErrors) {
   const { translatedError, errorMessage } = await mapError(e);
 
   // invoke error hook with json answer (if any)

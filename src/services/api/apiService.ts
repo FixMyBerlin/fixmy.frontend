@@ -9,7 +9,7 @@ import config from '~/config';
 import store from '~/store';
 import { RequestOptions } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
-import { handleError } from '~/services/api/errorHandling';
+import handleError from '~/services/api/errorHandling';
 
 // setup ky
 
