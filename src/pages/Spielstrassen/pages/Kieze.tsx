@@ -1,6 +1,9 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { generatePath } from 'react-router-dom';
 import { Paper, Container } from '@material-ui/core';
 import styled from 'styled-components';
+import slugify from 'slugify';
 
 import Button from '~/components2/Button';
 import Link from '~/components/Link';
@@ -41,7 +44,7 @@ const kiezNames = [
 ];
 
 const KiezListing = styled.div`
-  margin-top: 1em;
+  margin: 1em 0 2em;
 `;
 
 const KiezPaper = styled(Paper)`
@@ -89,6 +92,30 @@ const SupportersReached = styled(SupporterCheck)`
   margin-top: -5px;
 `;
 
+const ZoomMap = styled.span`
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: auto;
+
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  img {
+    display: inline-block;
+    transition: transform 0.25s ease;
+    cursor: zoom-in;
+    flex: 0 0 auto;
+    max-width: none;
+  }
+
+  input[type='checkbox']:checked ~ label > img {
+    transform: scale(2) translate(28%, 28%);
+    cursor: zoom-out;
+  }
+`;
+
 const Kiez = ({ name, street, supporters = 0 }) => (
   <KiezPaper elevation={5}>
     <dl>
@@ -109,7 +136,13 @@ const Kiez = ({ name, street, supporters = 0 }) => (
         {supporters} Unter&shy;stützer registriert
       </span>
       <Button flat>
-        <Link to={config.routes.spielstrassen.register}>Unterstützen</Link>
+        <Link
+          to={generatePath(config.routes.spielstrassen.register, {
+            kiez: slugify(name, { lower: true })
+          })}
+        >
+          Unterstützen
+        </Link>
       </Button>
     </footer>
   </KiezPaper>
@@ -120,7 +153,12 @@ const Kieze = () => (
     <Header showInfoLink />
     <Container>
       <h1>In welchem Kiez wollen Sie eine Spielstraße unterstützen?</h1>
-      <ImageInsert src={KiezKarte} />
+      <ZoomMap>
+        <input type="checkbox" id="zoomMap" />
+        <label htmlFor="zoomMap">
+          <ImageInsert src={KiezKarte} />
+        </label>
+      </ZoomMap>
       <KiezListing>
         {kiezNames.map(({ name, supporters, street }) => (
           <Kiez street={street} name={name} supporters={supporters} />

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Router, Route, Switch, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import config from '~/pages/Spielstrassen/config';
@@ -37,10 +37,21 @@ const Styles = styled.div`
   }
 `;
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
 const Spielstrassen = () => {
   return (
     <Styles>
       <Router history={history}>
+        <ScrollToTop />
         <Switch>
           <Route
             exact
