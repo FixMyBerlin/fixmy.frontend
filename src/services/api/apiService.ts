@@ -33,7 +33,8 @@ const configuredKy = ky.create({
 const defaultRequestOptions: RequestOptions = {
   kyOptions: {},
   callbacks: {
-    setSubmitting: () => {}},
+    setSubmitting: () => {}
+  },
   responseBodyType: 'json'
 };
 
@@ -48,7 +49,7 @@ export async function request(
   let response;
 
   const mergedKyOptions = prepareKyOptions(kyOptions);
-  const { setErrors, setSubmitting = () => {}} = callbacks;
+  const { setErrors, setSubmitting = () => {} } = callbacks;
 
   setSubmitting(true);
   try {
