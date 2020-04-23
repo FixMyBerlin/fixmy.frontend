@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock';
 import { Response } from 'node-fetch';
-import * as api from '../apiService';
+import request from '../apiService';
 import config from '~/config'; // TODO: consider mocking this
 import {
   ApiError,
@@ -9,7 +9,8 @@ import {
   TimeoutError
 } from '~/services/api/httpErrors';
 import store from '~/store';
-import { combineURLs } from '~/services/api/utils';
+import combineURLs from '~/services/api/tests/apiTestUtils';
+import { get, patch, post } from '~/services/api/shorthands';
 
 // dedupe values used in multiple places within the test file
 const statics = {
@@ -29,7 +30,7 @@ describe('API module', () => {
     it('prefixes urls with the api base url defined in the app config', async () => {
       // match all requests ending with the stated relative route since the api will prepend it with a base url
       fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, {});
-      await api.request(statics.RANDOM_ROUTE);
+      await request(statics.RANDOM_ROUTE);
       const [url] = fetchMock.lastCall();
       expect(url).toEqual(statics.compileAbsoluteRoute(statics.RANDOM_ROUTE));
     });
@@ -45,7 +46,7 @@ describe('API module', () => {
       store.getState = () => mockState;
       fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, {});
 
-      await api.request(statics.RANDOM_ROUTE);
+      await request(statics.RANDOM_ROUTE);
 
       const fetchOptions = fetchMock.lastOptions();
       expect(fetchOptions.headers.Authorization).toContain(`JWT ${testToken}`); // headers are wrapped in array, see https://github.com/node-fetch/node-fetch/issues/219#issuecomment-270946419
@@ -54,7 +55,7 @@ describe('API module', () => {
     it('can request text content', async () => {
       const testResponse = 'Hello world';
       fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, testResponse);
-      const response = await api.request(statics.RANDOM_ROUTE, {
+      const response = await request(statics.RANDOM_ROUTE, {
         responseBodyType: 'text'
       });
       expect(response).toEqual(testResponse);
@@ -66,7 +67,7 @@ describe('API module', () => {
       const setSubmittingSpy = jest.fn();
 
       fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, statics.RANDOM_JSON);
-      await api.request(statics.RANDOM_ROUTE, {
+      await request(statics.RANDOM_ROUTE, {
         callbacks: {
           setSubmitting: setSubmittingSpy
         }
@@ -94,7 +95,7 @@ describe('API module', () => {
 
             let thrownError;
             try {
-              await api.request(statics.RANDOM_ROUTE);
+              await request(statics.RANDOM_ROUTE);
             } catch (e) {
               thrownError = e;
             }
@@ -116,7 +117,7 @@ describe('API module', () => {
           );
           fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, errResponse);
 
-          await expect(api.request(statics.RANDOM_ROUTE)).rejects.toThrowError(
+          await expect(request(statics.RANDOM_ROUTE)).rejects.toThrowError(
             new ApiError(GENERIC_ERROR_MESSAGE)
           );
         });
@@ -128,7 +129,7 @@ describe('API module', () => {
           fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, errResponse);
 
           await expect(
-            api.request(statics.RANDOM_ROUTE, {
+            request(statics.RANDOM_ROUTE, {
               responseBodyType: 'text'
             })
           ).rejects.toThrowError(new ApiError(testResponse));
@@ -145,7 +146,7 @@ describe('API module', () => {
           fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, delayResponse(408, 2)); // send '200' response after 2 millis
 
           await expect(
-            api.request(statics.RANDOM_ROUTE, { kyOptions: { timeout: 1 } })
+            request(statics.RANDOM_ROUTE, { kyOptions: { timeout: 1 } })
           ).rejects.toThrow(TimeoutError);
         });
 
@@ -154,7 +155,7 @@ describe('API module', () => {
             throw new Error('Connection error');
           });
 
-          await expect(api.request(statics.RANDOM_ROUTE)).rejects.toThrow(
+          await expect(request(statics.RANDOM_ROUTE)).rejects.toThrow(
             NetworkError
           );
         });
@@ -175,7 +176,7 @@ describe('API module', () => {
 
           let catchedError;
           try {
-            await api.request(statics.RANDOM_ROUTE, {
+            await request(statics.RANDOM_ROUTE, {
               callbacks: {
                 setSubmitting: setSubmittingSpy
               }
@@ -196,7 +197,7 @@ describe('API module', () => {
           });
           fetchMock.mock(`end:${statics.RANDOM_ROUTE}`, errResponse);
           try {
-            await api.request(statics.RANDOM_ROUTE, {
+            await request(statics.RANDOM_ROUTE, {
               callbacks: {
                 setErrors: setErrorSpy
               }
@@ -213,7 +214,7 @@ describe('API module', () => {
     it('provides a shorthand to GET json data', async () => {
       const mockedJsonResponse = statics.RANDOM_JSON;
       fetchMock.get(`end:${statics.RANDOM_ROUTE}`, mockedJsonResponse);
-      const result = await api.get(statics.RANDOM_ROUTE);
+      const result = await get(statics.RANDOM_ROUTE);
       expect(result.hello).toEqual(mockedJsonResponse.hello);
     });
 
@@ -223,7 +224,7 @@ describe('API module', () => {
 
       fetchMock.post(`end:${statics.RANDOM_ROUTE}`, mockedResponse);
 
-      const response = await api.post(statics.RANDOM_ROUTE, mockedPayload);
+      const response = await post(statics.RANDOM_ROUTE, mockedPayload);
       const fetchOptions = fetchMock.lastOptions();
 
       expect(fetchOptions.headers['content-type']).toContain(
@@ -242,7 +243,7 @@ describe('API module', () => {
       const mockedRequestBody = { b: 2 };
 
       fetchMock.patch(`end:${statics.RANDOM_ROUTE}`, mockedJsonResponse);
-      const response = await api.patch(statics.RANDOM_ROUTE, mockedRequestBody);
+      const response = await patch(statics.RANDOM_ROUTE, mockedRequestBody);
 
       const fetchOptions = fetchMock.lastOptions();
       expect(fetchOptions.headers['content-type']).toContain(
