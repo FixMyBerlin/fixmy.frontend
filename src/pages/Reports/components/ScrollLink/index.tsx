@@ -26,9 +26,11 @@ function scrollDown() {
   window.scroll({ top: window.innerHeight, behavior: 'smooth' });
 }
 
-export default () => (
+const ScrollLink = () => (
   <ClickableArea onClick={scrollDown}>
     <Text>mehr Infos</Text>
     <Arrow />
   </ClickableArea>
 );
+
+export default ScrollLink;

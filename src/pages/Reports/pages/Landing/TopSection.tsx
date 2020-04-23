@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import config from '~/pages/Reports/config';
-import MenuButton from '~/components/MenuButton';
 import Link from '~/components/Link';
-import ScrollLink from './ScrollLink';
+import MenuButton from '~/pages/Reports/components/MenuButton';
+import ScrollLink from '~/pages/Reports/components/ScrollLink';
 import { media } from '~/styles/utils';
 
 const Section = styled.section`
@@ -123,6 +122,7 @@ const TopLogo = styled.img`
 
 const TopSection = ({ toUrl }) => (
   <Section>
+    <MenuButton whiteFill="true" />
     <FlexWrapper>
       <StyledMenuButton whiteFill="true" />
       <TopLogo
@@ -144,13 +144,5 @@ const TopSection = ({ toUrl }) => (
     <ScrollLink />
   </Section>
 );
-
-TopSection.propTypes = {
-  toUrl: PropTypes.string
-};
-
-TopSection.defaultProps = {
-  toUrl: '/meldungen/wo'
-};
 
 export default TopSection;

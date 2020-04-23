@@ -26,3 +26,6 @@ cypress/screenshots/*
 
 # configuration
 .env
+
+# storybook
+storybook-static

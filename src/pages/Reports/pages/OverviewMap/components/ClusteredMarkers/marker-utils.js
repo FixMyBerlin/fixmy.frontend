@@ -60,7 +60,10 @@ function createPinMarker({ markerData, geometry, lngLat, onClick }) {
 
 function setupClusters(name, map, data, radius, handleUpdate) {
   map.on('data', (e) => {
-    if (e.sourceId !== name || !e.isSourceLoaded) return;
+    // This is using the map.isSourceLoaded function instead of the property
+    // isSourceLoaded on the event itself as the latter doesn not seem to be
+    // reliable in indicating whether the source has actually been loaded.
+    if (e.sourceId !== name || !map.isSourceLoaded(name)) return;
 
     map.on('move', () => handleUpdate());
     map.on('moveend', () => handleUpdate());
