@@ -2,10 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
-import FixMyLogo from '~/images/logofmb@2x.png';
-import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
-import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
-import Button from '~/components2/Button';
 import Link from '~/components/Link';
 import MenuButton from '~/pages/Reports/components/MenuButton';
 import ScrollLink from '~/pages/Reports/components/ScrollLink';
@@ -124,12 +120,6 @@ const TopLogo = styled.img`
   `}
 `;
 
-const CallToAction = () => (
-  <Button className="wiggle" data-cy="reports-landing-cta">
-    <Link to={config.routes.reports.new}>Sag uns wo in 60 Sekunden</Link>
-  </Button>
-);
-
 const TopSection = ({ toUrl }) => (
   <Section>
     <MenuButton whiteFill="true" />
@@ -144,7 +134,12 @@ const TopSection = ({ toUrl }) => (
       <StyledHeading data-cy="reports-landing-header">
         {config.reports.landing?.title}
       </StyledHeading>
-      <CallToAction />
+      <StyledButton className="wiggle" data-cy="reports-landing-cta">
+        <StyledLink to={toUrl}>
+          <strong>Sagen Sie uns wo</strong>
+          <br /> in 30 Sekunden
+        </StyledLink>
+      </StyledButton>
     </FlexWrapper>
     <ScrollLink />
   </Section>
