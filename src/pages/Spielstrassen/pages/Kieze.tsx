@@ -13,8 +13,9 @@ import Supporter from '~/images/spielstrassen/supporter.svg';
 import SupporterCheck from '~/images/spielstrassen/supporter-check.svg';
 import config from '~/pages/Spielstrassen/config';
 import Header from '../components/Header';
+import { media } from '~/styles/utils';
 
-const kiezNames = [
+const kiezData = [
   { name: 'Andreasviertel', supporters: 0, street: 'Straßenname' },
   { name: 'Askanischer Platz', supporters: 7, street: 'Straßenname' },
   { name: 'Barnimkiez', supporters: 5, street: 'Straßenname' },
@@ -67,29 +68,36 @@ const KiezPaper = styled(Paper)`
   footer {
     display: flex;
 
-    > svg {
-      margin-right: 1em;
-    }
-
     .supportercount {
       font-size: 0.75em;
       line-height: 1.5em;
       color: ${config.colors.darkgrey};
       hyphens: manual;
+      margin-left: 1em;
+      margin-right: 0.5em;
+    }
+
+    button {
+      margin-left: auto;
     }
   }
 `;
 
 const ContactButton = styled(Button)`
-  align-self: flex-end;
   margin-bottom: 2em;
-  position: absolute;
-  right: 24px;
+  width: 100%;
+
+  ${media.s`
+    position: absolute;
+    right: 24px;
+    width: initial;
+  `}
 `;
 
 const SupportersReached = styled(SupporterCheck)`
-  margin-left: -30px;
+  margin-left: -14px;
   margin-top: -5px;
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
 `;
 
 const ZoomMap = styled.span`
@@ -116,43 +124,43 @@ const ZoomMap = styled.span`
   }
 `;
 
-const Kiez = ({ name, street, supporters = 0 }) => (
-  <KiezPaper elevation={5}>
-    <dl>
-      <strong>
-        <dt>Spielstraße:</dt>
-        <dd>{street}</dd>
-      </strong>
-      <br />
-      <dt>Kiez:</dt>
-      <dd>{name}</dd>
-    </dl>
-    <footer>
-      <Supporter />
-      {supporters >= config.spielstrassen.supporterGoal && (
-        <SupportersReached />
-      )}
-      <span className="supportercount">
-        {supporters} Unter&shy;stützer registriert
-      </span>
-      <Button flat>
-        <Link
-          to={generatePath(config.routes.spielstrassen.register, {
-            kiez: slugify(name, { lower: true })
-          })}
-        >
-          Unterstützen
-        </Link>
-      </Button>
-    </footer>
-  </KiezPaper>
-);
+const Kiez = ({ name, street, supporters = 0 }) => {
+  const signupUrl = generatePath(config.routes.spielstrassen.register, {
+    kiez: slugify(name, { lower: true })
+  });
+
+  return (
+    <KiezPaper elevation={5}>
+      <dl>
+        <strong>
+          <dt>Spielstraße:</dt>
+          <dd>{street}</dd>
+        </strong>
+        <br />
+        <dt>Kiez:</dt>
+        <dd>{name}</dd>
+      </dl>
+      <footer>
+        <Supporter />
+        <SupportersReached
+          visible={supporters >= config.spielstrassen.supporterGoal}
+        />
+        <span className="supportercount">
+          {supporters} Unter&shy;stützer registriert
+        </span>
+        <Button flat>
+          <Link to={signupUrl}>Unterstützen</Link>
+        </Button>
+      </footer>
+    </KiezPaper>
+  );
+};
 
 const Kieze = () => (
   <>
     <Header showInfoLink />
     <Container>
-      <h1>In welchem Kiez wollen Sie eine Spielstraße unterstützen?</h1>
+      <h2>In welchem Kiez wollen Sie eine Spielstraße unterstützen?</h2>
       <ZoomMap>
         <input type="checkbox" id="zoomMap" />
         <label htmlFor="zoomMap">
@@ -160,7 +168,7 @@ const Kieze = () => (
         </label>
       </ZoomMap>
       <KiezListing>
-        {kiezNames.map(({ name, supporters, street }) => (
+        {kiezData.map(({ name, supporters, street }) => (
           <Kiez street={street} name={name} supporters={supporters} />
         ))}
       </KiezListing>
@@ -176,4 +184,3 @@ const Kieze = () => (
 );
 
 export default Kieze;
-kiezNames;
