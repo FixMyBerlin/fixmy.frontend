@@ -3,6 +3,7 @@ import { Router, Route, Switch, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
+import { connect } from 'react-redux';
 
 import config from '~/pages/Spielstrassen/config';
 import Landing from './pages/Landing';
@@ -14,7 +15,6 @@ import history from '~/history';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
 import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
 import { loadKieze } from './state';
-import { connect } from 'react-redux';
 
 const Styles = styled.div`
   font-size: 16px;

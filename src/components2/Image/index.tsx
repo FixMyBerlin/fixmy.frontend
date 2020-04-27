@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
-import { breakpoints, media } from '~/styles/utils';
+import { media } from '~/styles/utils';
 
 export const Insert = styled.img`
   width: 100vw;

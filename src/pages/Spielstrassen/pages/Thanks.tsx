@@ -10,7 +10,7 @@ import { getStreetInfo } from '~/pages/Spielstrassen/utils';
 import KiezNotFound from '../components/NotFound';
 import KiezMap from '../components/KiezMap';
 import ShareButton from '../components/ShareButton';
-import ShareButtonDesktop from '../components/ShareButtonDesktop';
+// import ShareButtonDesktop from '../components/ShareButtonDesktop';
 import Button from '~/components2/Button';
 import config from '../config';
 import { media } from '~/styles/utils';

@@ -4,29 +4,15 @@ import { connect } from 'react-redux';
 import { Container, Grid } from '@material-ui/core';
 import styled from 'styled-components';
 
-import config from '~/pages/Spielstrassen/config';
-import Button from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
 import KiezKarte from '~/images/spielstrassen/kiezkarte@3x.jpg';
 import Header from '../components/Header';
 import KiezCard from '../components/KiezCard';
-import { media } from '~/styles/utils';
 import { RequestState } from '~/pages/Spielstrassen/state';
 import Loader from '~/components/Loader';
 
 const KiezListing = styled.div`
   margin: 1em 0 2em;
-`;
-
-const ContactButton = styled(Button)`
-  margin-bottom: 2em;
-  width: 100%;
-
-  ${media.s`
-    position: absolute;
-    right: 24px;
-    width: initial;
-  `}
 `;
 
 const Kieze = ({ streets, streetRequest }) => {

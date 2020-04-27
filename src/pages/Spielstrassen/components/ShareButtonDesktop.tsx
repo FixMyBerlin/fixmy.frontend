@@ -84,12 +84,7 @@ const ShareButtonDesktop = styled.div`
     border: none;
     outline: none;
     text-decoration: none;
-    box-shadow: ${(props) => (props.disabled ? 'none' : boxShadow)};
     display: flex;
-
-    &:hover {
-      box-shadow: ${(props) => (props.disabled ? 'none' : boxShadowHover)};
-    }
   }
 
   .resp-sharing-button__icon svg {
@@ -162,6 +157,7 @@ const ShareButtonDesktop = styled.div`
 `;
 
 export default () => {
+  // @ts-ignore
   if (navigator.share) {
     return null;
   }
