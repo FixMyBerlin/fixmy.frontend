@@ -20,7 +20,8 @@ const MapWrapper = styled.div`
 `;
 
 const MapImg = styled.img`
-  height: 8em;
+  width: 90%;
+  height: auto;
   margin: 1em auto;
 `;
 
@@ -45,9 +46,9 @@ const Section = styled.section`
   }
 `;
 
-const getKiezInfo = (slug) =>
-  config.spielstrassen.kieze.find(
-    (kiezInfo) => slugify(kiezInfo.name, { lower: true }) === slug
+const getStreetInfo = (slug) =>
+  config.spielstrassen.streets.find(
+    (kiezInfo) => slugify(kiezInfo.street, { lower: true }) === slug
   );
 
 const KiezNotFound = () => (
@@ -59,40 +60,38 @@ const KiezNotFound = () => (
   </>
 );
 
-const KiezMap = ({ kiez }) => (
+const KiezMap = ({ street }) => (
   <MapImg
-    src={`/src/images/spielstrassen/map-${slugify(kiez, {
-      lower: true
-    })}@2x.png`}
-    alt={`Karte von ${kiez}`}
+    src={`/src/images/spielstrassen/kieze/${street}.png`}
+    alt={`${street} im Kiezumfeld`}
   />
 );
 
 const Register = ({ match }) => {
-  let kiez = getKiezInfo(match.params?.slug);
+  let street = getStreetInfo(match.params?.slug);
   useEffect(() => {
-    kiez = getKiezInfo(match.params?.slug);
+    street = getStreetInfo(match.params?.slug);
   }, [match]);
 
-  if (kiez == null) return <KiezNotFound />;
+  if (street == null) return <KiezNotFound />;
 
   return (
     <>
       <Header showInfoLink />
       <Container>
         <Section>
-          <h2>{kiez.street}</h2>
-          <p>Temporäre Spielstraße im {kiez.name}:</p>
+          <h2>{street.street}</h2>
+          <p>Temporäre Spielstraße im {street.kiez}:</p>
           <MapWrapper>
-            <KiezMap kiez={kiez.name} />
+            <KiezMap street={street.street} />
           </MapWrapper>
           <SupporterInfo>
-            <SupporterIcon count={kiez.supporters} />
-            Bereits {kiez.supporters} Unterstützer:innen sind registriert,
+            <SupporterIcon count={street.supporters} />
+            Bereits {street.supporters} Unterstützer:innen sind registriert,
             mindestens {config.spielstrassen.supporterGoal} benötigt.
           </SupporterInfo>
           <p>
-            <Link to={config.routes.spielstrassen.kieze} className="internal">
+            <Link to={config.routes.spielstrassen.streets} className="internal">
               andere Spielstraße auswählen
             </Link>
           </p>
@@ -115,7 +114,7 @@ const Register = ({ match }) => {
           </p>
         </Section>
         <Section>
-          <SignupForm street={kiez.street} />
+          <SignupForm street={street.street} />
         </Section>
       </Container>
     </>

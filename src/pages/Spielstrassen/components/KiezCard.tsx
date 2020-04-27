@@ -44,9 +44,9 @@ const KiezCard = styled(Paper)`
   }
 `;
 
-const Kiez = ({ name, street, supporters = 0 }) => {
+const Kiez = ({ kiez, street, supporters = 0 }) => {
   const signupUrl = generatePath(config.routes.spielstrassen.register, {
-    slug: slugify(name, { lower: true })
+    slug: slugify(street, { lower: true })
   });
 
   return (
@@ -58,7 +58,7 @@ const Kiez = ({ name, street, supporters = 0 }) => {
         </strong>
         <br />
         <dt>Kiez:</dt>
-        <dd>{name}</dd>
+        <dd>{kiez}</dd>
       </dl>
       <footer>
         <SupporterIcon count={supporters} />

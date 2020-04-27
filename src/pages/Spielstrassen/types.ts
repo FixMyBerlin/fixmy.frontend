@@ -1,6 +1,6 @@
 // Django Serializers don't use camel case
 /* eslint-disable camelcase */
-interface SignupData {
+export interface SignupData {
   campaign: string;
   first_name: string;
   last_name: string;
@@ -11,4 +11,8 @@ interface SignupData {
   street: string;
 }
 
-export default SignupData;
+export interface Spielstrasse {
+  street: string;
+  kiez: string;
+  supporters?: number;
+}

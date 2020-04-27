@@ -68,7 +68,7 @@ const Landing = () => {
           .
         </p>
         <CTA>
-          <Link to={config.routes.spielstrassen.kieze}>
+          <Link to={config.routes.spielstrassen.streets}>
             Jetzt eine Spielstraße in Ihrem Kiez unterstützen
           </Link>
         </CTA>

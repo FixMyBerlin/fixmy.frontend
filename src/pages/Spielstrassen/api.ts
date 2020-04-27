@@ -1,6 +1,6 @@
 import ky from 'ky-universal';
 
-import SignupData from './types';
+import { SignupData } from './types';
 import config from './config';
 
 const API_URL = `${config.apiUrl}/playstreets/${config.spielstrassen.campaign}`;

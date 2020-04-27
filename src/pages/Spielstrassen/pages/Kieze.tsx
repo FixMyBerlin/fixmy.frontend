@@ -62,8 +62,13 @@ const Kieze = () => (
         </label>
       </ZoomMap>
       <KiezListing>
-        {config.spielstrassen.kieze.map(({ name, supporters, street }) => (
-          <KiezCard street={street} name={name} supporters={supporters} />
+        {config.spielstrassen.streets.map(({ kiez, supporters, street }) => (
+          <KiezCard
+            street={street}
+            kiez={kiez}
+            supporters={supporters}
+            key={`kiez-${street}`}
+          />
         ))}
       </KiezListing>
       <p>

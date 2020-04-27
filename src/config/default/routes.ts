@@ -25,7 +25,7 @@ export default {
   },
   spielstrassen: {
     landing: '/friedrichshain-kreuzberg/spielstrassen',
-    kieze: '/friedrichshain-kreuzberg/spielstrassen/kieze',
+    streets: '/friedrichshain-kreuzberg/spielstrassen/kieze',
     register: '/friedrichshain-kreuzberg/spielstrassen/:slug',
     thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke'
   },

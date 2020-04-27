@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import { media } from '~/styles/utils';
-import SignupData from '../types';
+import { SignupData } from '../types';
 import api from '../api';
 import logger from '~/utils/logger';
 
@@ -168,4 +168,7 @@ const SignupForm = ({ street, history }) => (
   </Formik>
 );
 
+// Typescript insists that using withRouter means that
+// the component cannot have any other props.
+// @ts-ignore
 export default withRouter(SignupForm);

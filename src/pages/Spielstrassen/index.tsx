@@ -92,13 +92,13 @@ const Spielstrassen = () => {
             />
             <Route
               exact
-              path={config.routes.spielstrassen.kieze}
-              component={Kieze}
+              path={config.routes.spielstrassen.register}
+              component={Register}
             />
             <Route
               exact
-              path={config.routes.spielstrassen.register}
-              component={Register}
+              path={config.routes.spielstrassen.streets}
+              component={Kieze}
             />
             <Route
               exact
