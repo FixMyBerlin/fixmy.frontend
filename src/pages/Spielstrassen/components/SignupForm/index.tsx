@@ -139,7 +139,10 @@ const SignupForm = ({ street, history }) => (
         <p>
           Wären Sie auch bereit, die Hauptverantwortung für die Betreuung der
           Spielstraße zu übernehmen und dafür eine{' '}
-          <a className="external" href="/">
+          <a
+            className="external"
+            href="/uploads/spielstrassen/2020_Vereinbarung_tempSpielstraße.pdf"
+          >
             Kooperationsvereinbarung (PDF)
           </a>{' '}
           mit dem Bezirksamt zu unterzeichnen?
