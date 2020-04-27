@@ -10,6 +10,10 @@ export default {
 
 export const Regular = () => <Button>Click me</Button>;
 
+export const Flat = () => <Button flat>Click me</Button>;
+
+export const Ghost = () => <Button ghost>Click me</Button>;
+
 export const ButtonWithLink = () => (
   <MemoryRouter>
     <Button>

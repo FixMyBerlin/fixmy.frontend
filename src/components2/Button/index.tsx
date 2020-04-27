@@ -1,18 +1,22 @@
 import styled from 'styled-components';
 import config from '~/config';
 
-export default styled.button`
+interface Props {
+  ghost?: boolean;
+  flat?: boolean;
+}
+
+export default styled.button<Props>`
   border-radius: 24px;
-  border: none;
+  border: ${(props) =>
+    props.ghost ? `1.5px solid ${config.colors.interaction}` : 'none'};
   outline: none;
   display: inline-block;
   padding: 15px 25px;
-  background: ${config.colors.interaction};
-  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2);
-  //   text-decoration: none;
+  background: ${(props) => (props.ghost ? 'none' : config.colors.interaction)};
+  box-shadow: ${(props) =>
+    props.flat ? 'none' : '0 10px 20px 0 rgba(0, 0, 0, 0.2)'};
   color: ${config.colors.darkbg};
-  //   font-family: 'Open Sans', sans-serif;
-  //   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
 
@@ -20,8 +24,10 @@ export default styled.button`
     opacity: 0.9;
   }
 
-  & a:link,
-  & a:visited {
+  && a:link,
+  && a:visited {
     color: ${config.colors.darkbg};
+    border: none;
+    text-decoration: none;
   }
 `;
