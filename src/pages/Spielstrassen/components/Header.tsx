@@ -28,7 +28,7 @@ const Title = styled.h1`
   line-height: 1.5em;
 `;
 
-const Subtitle = styled(Link)`
+const Subtitle = styled.span`
   font-size: 0.75em;
   color: ${config.colors.darkgrey};
   margin-top: -10px;
@@ -36,18 +36,18 @@ const Subtitle = styled(Link)`
   border-bottom: none !important;
 `;
 
+const LinkWrapper = styled(Link)`
+  border-bottom: none !important;
+`;
+
 const Header = ({ showInfoLink = false }) => (
   <Wrapper>
     <MenuButton />
     <Separator />
-    <div>
+    <LinkWrapper to={config.routes.spielstrassen.landing}>
       <Title>Temporäre Spielstraßen für Friedrichshain-Kreuzberg</Title>
-      {showInfoLink === true && (
-        <Subtitle to={config.routes.spielstrassen.landing}>
-          Alle Infos zur Aktion &gt;
-        </Subtitle>
-      )}
-    </div>
+      {showInfoLink === true && <Subtitle>Alle Infos zur Aktion &gt;</Subtitle>}
+    </LinkWrapper>
   </Wrapper>
 );
 
