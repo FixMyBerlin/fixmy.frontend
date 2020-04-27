@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { TextField, CheckboxWithLabel, RadioGroup } from 'formik-material-ui';
 import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
@@ -12,10 +13,10 @@ import api from '../api';
 import logger from '~/utils/logger';
 
 const initialValues = {
-  firstName: 'Max',
-  lastName: 'Mustermann',
+  first_name: 'Max',
+  last_name: 'Mustermann',
   email: 'max@mustermann.de',
-  tosAccepted: true,
+  tos_accepted: true,
   captain: null,
   message: ''
 };
@@ -64,18 +65,20 @@ const FormError = styled(FormHelperText)`
   }
 `;
 
-const SignupForm = ({ street }) => (
+const SignupForm = ({ street, history }) => (
   <Formik
     initialValues={initialValues}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       const signupData: SignupData = {
         ...values,
         captain: values.captain === 'yes',
+        campaign: config.spielstrassen.campaign,
         street
       };
       logger(JSON.stringify(signupData, null, 2));
       try {
         await api.signup(signupData);
+        history.push(config.routes.spielstrassen.thanks);
       } catch (e) {
         logger(e);
         setStatus(
@@ -88,19 +91,19 @@ const SignupForm = ({ street }) => (
     {({ status, isSubmitting }) => (
       <StyledForm>
         <Field
-          name="firstName"
+          name="first_name"
           component={TextField}
           label="Vorname"
           fullWidth
         />
-        <ErrorMessage name="firstName" component="div" />
+        <ErrorMessage name="first_name" component="div" />
         <Field
-          name="lastName"
+          name="last_name"
           component={TextField}
           label="Nachname"
           fullWidth
         />
-        <ErrorMessage name="lastName" component="div" />
+        <ErrorMessage name="last_name" component="div" />
         <Field
           type="email"
           name="email"
@@ -113,7 +116,7 @@ const SignupForm = ({ street }) => (
         <div className="tosFieldGroup">
           <Field
             component={CheckboxWithLabel}
-            name="tosAccepted"
+            name="tos_accepted"
             type="checkbox"
             Label={{
               label:
@@ -125,7 +128,7 @@ const SignupForm = ({ street }) => (
         <p>
           Wären Sie auch bereit, die Hauptverantwortung für die Betreuung der
           Spielstraße zu übernehmen und dafür eine{' '}
-          <a className="external" href="">
+          <a className="external" href="/">
             Kooperationsvereinbarung (PDF)
           </a>{' '}
           mit dem Bezirksamt zu unterzeichnen?
@@ -165,4 +168,4 @@ const SignupForm = ({ street }) => (
   </Formik>
 );
 
-export default SignupForm;
+export default withRouter(SignupForm);

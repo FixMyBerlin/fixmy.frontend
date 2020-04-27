@@ -7,7 +7,7 @@ import SupporterCheck from '~/images/spielstrassen/supporter-check.svg';
 const SupportersReached = styled(SupporterCheck)`
   margin-left: -40%;
   margin-top: -5px;
-  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
+  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
 `;
 
 const Wrapper = styled.span`

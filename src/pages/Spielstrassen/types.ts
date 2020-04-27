@@ -1,8 +1,11 @@
+// Django Serializers don't use camel case
+/* eslint-disable camelcase */
 interface SignupData {
-  firstName: string;
-  lastName: string;
+  campaign: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  tosAccepted: boolean;
+  tos_accepted: boolean;
   captain: boolean;
   message: string;
   street: string;
