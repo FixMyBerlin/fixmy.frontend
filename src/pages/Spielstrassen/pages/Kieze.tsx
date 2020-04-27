@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { connect } from 'react-redux';
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 
@@ -10,6 +11,8 @@ import KiezKarte from '~/images/spielstrassen/kiezkarte@3x.jpg';
 import Header from '../components/Header';
 import KiezCard from '../components/KiezCard';
 import { media } from '~/styles/utils';
+import { RequestState } from '~/pages/Spielstrassen/state';
+import Loader from '~/components/Loader';
 
 const KiezListing = styled.div`
   margin: 1em 0 2em;
@@ -50,7 +53,7 @@ const ZoomMap = styled.span`
   }
 `;
 
-const Kieze = () => (
+const Kieze = ({ streets, streetRequest }) => (
   <>
     <Header showInfoLink />
     <Container>
@@ -61,25 +64,23 @@ const Kieze = () => (
           <ImageInsert src={KiezKarte} />
         </label>
       </ZoomMap>
-      <KiezListing>
-        {config.spielstrassen.streets.map(({ kiez, supporters, street }) => (
-          <KiezCard
-            street={street}
-            kiez={kiez}
-            supporters={supporters}
-            key={`kiez-${street}`}
-          />
-        ))}
-      </KiezListing>
-      <p>
-        Fehlt eine Straße? Wenn Sie Anregungen für weitere Spielstrassen haben
-        schicken Sie diese an das Bezirksamt Friedrichshain-Kreuzberg.
-      </p>
-      <ContactButton flat ghost>
-        <a href={`mailto:${config.spielstrassen.email}`}>Mail senden</a>
-      </ContactButton>
+      {streetRequest.state === RequestState.pending ? (
+        <Loader />
+      ) : (
+        <KiezListing>
+          {streets.map(({ kiez, supporters, street }) => (
+            <KiezCard
+              street={street}
+              kiez={kiez}
+              supporters={supporters}
+              key={`kiez-${street}`}
+            />
+          ))}
+        </KiezListing>
+      )}
     </Container>
   </>
 );
 
-export default Kieze;
+const mapStateToProps = (state) => state.SpielstrassenState;
+export default connect(mapStateToProps)(Kieze);

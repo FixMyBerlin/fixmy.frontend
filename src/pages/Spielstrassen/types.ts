@@ -16,3 +16,7 @@ export interface Spielstrasse {
   kiez: string;
   supporters?: number;
 }
+
+export interface Counts {
+  [street: string]: number;
+}

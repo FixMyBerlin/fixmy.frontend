@@ -13,6 +13,8 @@ import Markdown from '~/pages/Markdown';
 import history from '~/history';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
 import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
+import { loadKieze } from './state';
+import { connect } from 'react-redux';
 
 const Styles = styled.div`
   font-size: 16px;
@@ -78,7 +80,12 @@ const ScrollToTop = () => {
   return null;
 };
 
-const Spielstrassen = () => {
+const Spielstrassen = ({ dispatch }) => {
+  useEffect(() => {
+    const load = async () => loadKieze(dispatch);
+    load();
+  }, []);
+
   return (
     <Styles>
       <ThemeProvider theme={theme}>
@@ -92,13 +99,13 @@ const Spielstrassen = () => {
             />
             <Route
               exact
-              path={config.routes.spielstrassen.register}
-              component={Register}
+              path={config.routes.spielstrassen.streets}
+              component={Kieze}
             />
             <Route
               exact
-              path={config.routes.spielstrassen.streets}
-              component={Kieze}
+              path={config.routes.spielstrassen.register}
+              component={Register}
             />
             <Route
               exact
@@ -113,4 +120,4 @@ const Spielstrassen = () => {
   );
 };
 
-export default Spielstrassen;
+export default connect()(Spielstrassen);
