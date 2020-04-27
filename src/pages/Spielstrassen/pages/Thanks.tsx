@@ -64,7 +64,7 @@ const Thanks = ({ match, streets, streetRequest }) => {
           <LinkButton flat>Link kopieren</LinkButton>
         </CopyToClipboard>
         <ShareButton text={shareText} url={sharingUrl} />
-        <ShareButtonDesktop />
+        {/* <ShareButtonDesktop /> */}
       </Container>
     </>
   );
