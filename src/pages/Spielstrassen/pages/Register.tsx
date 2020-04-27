@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 import slugify from 'slugify';
@@ -7,11 +8,11 @@ import { Link } from 'react-router-dom';
 
 import config from '~/pages/Spielstrassen/config';
 import Header from '../components/Header';
-import mapChamissokiez from '~/images/spielstrassen/map-chamissokiez@2x.png';
-import { media } from '~/styles/utils';
-import logger from '~/utils/logger';
 import SupporterIcon from '../components/SupporterIcon';
 import SignupForm from '../components/SignupForm';
+import { RequestState } from '../state';
+import Loader from '~/components/Loader';
+import { Spielstrasse } from '../types';
 
 const MapWrapper = styled.div`
   display: flex;
@@ -46,10 +47,14 @@ const Section = styled.section`
   }
 `;
 
-const getStreetInfo = (slug) =>
-  config.spielstrassen.streets.find(
-    (kiezInfo) => slugify(kiezInfo.street, { lower: true }) === slug
-  );
+const LoaderWrapper = styled.span`
+  display: inline-block;
+  margin: 0 10px;
+  height: 0.75em;
+`;
+
+const getStreetInfo = (streets: Spielstrasse[], slug: string) =>
+  streets?.find((street) => slugify(street.street, { lower: true }) === slug);
 
 const KiezNotFound = () => (
   <>
@@ -67,11 +72,14 @@ const KiezMap = ({ street }) => (
   />
 );
 
-const Register = ({ match }) => {
-  let street = getStreetInfo(match.params?.slug);
+const Register = ({ match, streets, streetRequest }) => {
+  const [street, setStreet] = useState(
+    getStreetInfo(streets, match.params?.slug)
+  );
+
   useEffect(() => {
-    street = getStreetInfo(match.params?.slug);
-  }, [match]);
+    setStreet(getStreetInfo(streets, match.params?.slug));
+  }, [match, streets]);
 
   if (street == null) return <KiezNotFound />;
 
@@ -87,8 +95,16 @@ const Register = ({ match }) => {
           </MapWrapper>
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />
-            Bereits {street.supporters} Unterstützer:innen sind registriert,
-            mindestens {config.spielstrassen.supporterGoal} benötigt.
+            Bereits{' '}
+            {streetRequest?.state === RequestState.pending ? (
+              <LoaderWrapper>
+                <Loader />
+              </LoaderWrapper>
+            ) : (
+              street.supporters
+            )}{' '}
+            Unterstützer:innen sind registriert, mindestens{' '}
+            {config.spielstrassen.supporterGoal} benötigt.
           </SupporterInfo>
           <p>
             <Link to={config.routes.spielstrassen.streets} className="internal">
@@ -121,4 +137,5 @@ const Register = ({ match }) => {
   );
 };
 
-export default Register;
+const mapStateToProps = (state) => ({ ...state.SpielstrassenState });
+export default connect(mapStateToProps)(Register);
