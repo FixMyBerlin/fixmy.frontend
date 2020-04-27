@@ -14,8 +14,7 @@ const MapImg = styled.img`
   margin: 1em auto;
 
   ${media.m`
-    height: 20em;
-    width: auto;
+    max-width: 100%;
   `}
 `;
 
