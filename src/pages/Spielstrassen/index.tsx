@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Router, Route, Switch, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core';
 
 import config from '~/pages/Spielstrassen/config';
 import Landing from './pages/Landing';
@@ -9,6 +11,7 @@ import Register from './pages/Register';
 import Thanks from './pages/Thanks';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
+import LinkIcon from '~/images/spielstrassen/icon-external-link@2x.png';
 
 const Styles = styled.div`
   font-size: 16px;
@@ -36,7 +39,25 @@ const Styles = styled.div`
     text-decoration: none;
     border-bottom: 1px solid ${config.colors.interaction};
   }
+
+  a.external {
+    background-image: url(${LinkIcon});
+    background-size: 9px 9px;
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 15px;
+  }
 `;
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: config.colors.interaction },
+    secondary: { main: config.colors.change_4 },
+    error: { main: config.colors.error },
+    info: { main: config.colors.interaction },
+    success: { main: config.colors.label_01 }
+  }
+});
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -51,32 +72,34 @@ const ScrollToTop = () => {
 const Spielstrassen = () => {
   return (
     <Styles>
-      <Router history={history}>
-        <ScrollToTop />
-        <Switch>
-          <Route
-            exact
-            path={config.routes.spielstrassen.landing}
-            component={Landing}
-          />
-          <Route
-            exact
-            path={config.routes.spielstrassen.kieze}
-            component={Kieze}
-          />
-          <Route
-            exact
-            path={config.routes.spielstrassen.register}
-            component={Register}
-          />
-          <Route
-            exact
-            path={config.routes.spielstrassen.thanks}
-            component={Thanks}
-          />
-          <Route render={() => <Markdown page="nomatch" />} />
-        </Switch>
-      </Router>
+      <ThemeProvider theme={theme}>
+        <Router history={history}>
+          <ScrollToTop />
+          <Switch>
+            <Route
+              exact
+              path={config.routes.spielstrassen.landing}
+              component={Landing}
+            />
+            <Route
+              exact
+              path={config.routes.spielstrassen.kieze}
+              component={Kieze}
+            />
+            <Route
+              exact
+              path={config.routes.spielstrassen.register}
+              component={Register}
+            />
+            <Route
+              exact
+              path={config.routes.spielstrassen.thanks}
+              component={Thanks}
+            />
+            <Route render={() => <Markdown page="nomatch" />} />
+          </Switch>
+        </Router>
+      </ThemeProvider>
     </Styles>
   );
 };

@@ -61,7 +61,11 @@ const Landing = () => {
         </ol>
         <p>
           Die genauen Anforderungen für die Betreuung der Spielstraße finden Sie
-          in diesem <a href="/">PDF</a>.
+          in diesem{' '}
+          <a className="external" href="/">
+            PDF
+          </a>
+          .
         </p>
         <CTA>
           <Link to={config.routes.spielstrassen.kieze}>

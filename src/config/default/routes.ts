@@ -24,10 +24,10 @@ export default {
     email: `${katasterPath}/email`
   },
   spielstrassen: {
-    landing: '/spielstrassen',
-    kieze: '/spielstrassen/kieze',
-    register: '/spielstrassen/kieze/:kiez',
-    thanks: '/spielstrassen/kieze/:kiez/danke'
+    landing: '/friedrichshain-kreuzberg/spielstrassen',
+    kieze: '/friedrichshain-kreuzberg/spielstrassen/kieze',
+    register: '/friedrichshain-kreuzberg/spielstrassen/:slug',
+    thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke'
   },
   popupbikelanes: '/popupbikelanes',
   signup: '/registrieren',

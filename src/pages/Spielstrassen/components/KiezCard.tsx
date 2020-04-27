@@ -4,11 +4,10 @@ import { Paper } from '@material-ui/core';
 import styled from 'styled-components';
 import slugify from 'slugify';
 
+import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import Link from '~/components/Link';
-import Supporter from '~/images/spielstrassen/supporter.svg';
-import SupporterCheck from '~/images/spielstrassen/supporter-check.svg';
-import config from '~/pages/Spielstrassen/config';
+import SupporterIcon from './SupporterIcon';
 
 const KiezCard = styled(Paper)`
   padding: 0.5em;
@@ -45,15 +44,9 @@ const KiezCard = styled(Paper)`
   }
 `;
 
-const SupportersReached = styled(SupporterCheck)`
-  margin-left: -14px;
-  margin-top: -5px;
-  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
-`;
-
 const Kiez = ({ name, street, supporters = 0 }) => {
   const signupUrl = generatePath(config.routes.spielstrassen.register, {
-    kiez: slugify(name, { lower: true })
+    slug: slugify(name, { lower: true })
   });
 
   return (
@@ -68,10 +61,7 @@ const Kiez = ({ name, street, supporters = 0 }) => {
         <dd>{name}</dd>
       </dl>
       <footer>
-        <Supporter />
-        <SupportersReached
-          visible={supporters >= config.spielstrassen.supporterGoal}
-        />
+        <SupporterIcon count={supporters} />
         <span className="supportercount">
           {supporters} Unter&shy;stützer registriert
         </span>
