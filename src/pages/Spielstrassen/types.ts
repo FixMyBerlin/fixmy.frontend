@@ -14,6 +14,7 @@ export interface SignupData {
 export interface Spielstrasse {
   street: string;
   kiez: string;
+  region: string;
   supporters?: number;
 }
 
