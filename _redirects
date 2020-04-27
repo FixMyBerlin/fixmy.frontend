@@ -3,6 +3,7 @@
 /radbuegel /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
 /meldungen/radbuegel/friedrichshain-kreuzberg/neu/1 /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
 /meldungen/radbuegel/friedrichshain-kreuzberg/neu /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
+/friedrichshain-kreuzberg/spielstraßen /friedrichshain-kreuzberg/spielstrassen 302
  
 # Legacy Plannings Redirects
 /planungen/2725/* /planungen/4/:splat 301
