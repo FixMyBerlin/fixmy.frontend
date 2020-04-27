@@ -63,7 +63,7 @@ const Register = ({ match, streets, streetRequest }) => {
           <KiezMap street={street.street} />
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />
-            Bereits{' '}
+            {street.supporters === 0 ? '' : 'Bereits '}
             {streetRequest?.state === RequestState.pending ? (
               <LoaderWrapper>
                 <Loader />
@@ -71,7 +71,7 @@ const Register = ({ match, streets, streetRequest }) => {
             ) : (
               street.supporters || 0
             )}{' '}
-            Unterstützer:in${street.supporters === 1 ? '' : 'nen'} sind
+            Unterstützer:in{street.supporters === 1 ? '' : 'nen'} sind
             registriert, mindestens {config.spielstrassen.supporterGoal}{' '}
             benötigt.
           </SupporterInfo>
