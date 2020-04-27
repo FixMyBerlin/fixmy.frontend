@@ -63,7 +63,8 @@ const Kiez = ({ kiez, street, supporters = 0 }) => {
       <footer>
         <SupporterIcon count={supporters} />
         <span className="supportercount">
-          {supporters} Unter&shy;stützer registriert
+          {supporters} Unter&shy;stützer:in{supporters === 1 ? '' : 'nen'}{' '}
+          registriert
         </span>
         <Button flat>
           <Link to={signupUrl}>Unterstützen</Link>
