@@ -69,10 +69,11 @@ const Register = ({ match, streets, streetRequest }) => {
                 <Loader />
               </LoaderWrapper>
             ) : (
-              street.supporters
+              street.supporters || 0
             )}{' '}
-            Unterstützer:innen sind registriert, mindestens{' '}
-            {config.spielstrassen.supporterGoal} benötigt.
+            Unterstützer:in${street.supporters === 1 ? '' : 'nen'} sind
+            registriert, mindestens {config.spielstrassen.supporterGoal}{' '}
+            benötigt.
           </SupporterInfo>
           <p>
             <Link to={config.routes.spielstrassen.streets} className="internal">
