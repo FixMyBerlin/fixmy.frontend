@@ -25,9 +25,11 @@ const initialValues = {
 
 const StyledForm = styled(Form)`
 
-    > div {
-        margin-bottom: 1em;
-    }
+  padding-bottom: 2em;
+
+  > div {
+      margin-bottom: 1em;
+  }
 
   .tosFieldGroup {
     margin: 2em 0;
