@@ -92,7 +92,7 @@ const Register = ({ match }) => {
             mindestens {config.spielstrassen.supporterGoal} benötigt.
           </SupporterInfo>
           <p>
-            <Link to={config.routes.spielstrassen.kieze}>
+            <Link to={config.routes.spielstrassen.kieze} className="internal">
               andere Spielstraße auswählen
             </Link>
           </p>
@@ -102,7 +102,7 @@ const Register = ({ match }) => {
           <p>
             Die Spielstraße kann nur eingerichtet werden, wenn mindestens 7
             Anwohner:innen die Betreuung vor Ort übernehmen. Hier finden Sie{' '}
-            <Link to={config.routes.spielstrassen.landing}>
+            <Link to={config.routes.spielstrassen.landing} className="internal">
               weitere Informationen
             </Link>{' '}
             zur Einrichtung der Spielstraßen.

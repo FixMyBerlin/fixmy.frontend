@@ -11,7 +11,8 @@ import Register from './pages/Register';
 import Thanks from './pages/Thanks';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
-import LinkIcon from '~/images/spielstrassen/icon-external-link@2x.png';
+import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
+import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
 
 const Styles = styled.div`
   font-size: 16px;
@@ -40,12 +41,20 @@ const Styles = styled.div`
     border-bottom: 1px solid ${config.colors.interaction};
   }
 
-  a.external {
-    background-image: url(${LinkIcon});
+  .external,
+  .internal {
     background-size: 9px 9px;
     background-repeat: no-repeat;
     background-position: center left;
     padding-left: 15px;
+  }
+
+  .external {
+    background-image: url(${LinkExternal});
+  }
+
+  .internal {
+    background-image: url(${LinkInternal});
   }
 `;
 

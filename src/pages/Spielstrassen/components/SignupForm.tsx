@@ -1,18 +1,21 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { TextField, CheckboxWithLabel, RadioGroup } from 'formik-material-ui';
-import { FormControlLabel, Radio } from '@material-ui/core';
+import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
 import styled from 'styled-components';
 
 import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import { media } from '~/styles/utils';
+import SignupData from '../types';
+import api from '../api';
+import logger from '~/utils/logger';
 
 const initialValues = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  tosAccepted: false,
+  firstName: 'Max',
+  lastName: 'Mustermann',
+  email: 'max@mustermann.de',
+  tosAccepted: true,
   captain: null,
   message: ''
 };
@@ -53,17 +56,36 @@ const StyledForm = styled(Form)`
     `} 
 `;
 
+const FormError = styled(FormHelperText)`
+  && {
+    font-size: 1em;
+    line-height: normal;
+    margin: 2em auto;
+  }
+`;
+
 const SignupForm = ({ street }) => (
   <Formik
     initialValues={initialValues}
-    onSubmit={(values, { setSubmitting }) => {
-      setTimeout(() => {
-        console.log(JSON.stringify(values, null, 2));
-        setSubmitting(false);
-      }, 400);
+    onSubmit={async (values, { setSubmitting, setStatus }) => {
+      const signupData: SignupData = {
+        ...values,
+        captain: values.captain === 'yes',
+        street
+      };
+      logger(JSON.stringify(signupData, null, 2));
+      try {
+        await api.signup(signupData);
+      } catch (e) {
+        logger(e);
+        setStatus(
+          'Es gab leider einen Fehler bei deiner Anmeldung. Bitte versuche es später noch einmal.'
+        );
+      }
+      setSubmitting(false);
     }}
   >
-    {({ isSubmitting }) => (
+    {({ status, isSubmitting }) => (
       <StyledForm>
         <Field
           name="firstName"
@@ -134,7 +156,10 @@ const SignupForm = ({ street }) => (
           fullWidth
           InputProps={{ notched: true }}
         />
-        <Button flat>Formular absenden</Button>
+        {status && <FormError error>{status}</FormError>}
+        <Button flat type="submit">
+          Formular absenden
+        </Button>
       </StyledForm>
     )}
   </Formik>
