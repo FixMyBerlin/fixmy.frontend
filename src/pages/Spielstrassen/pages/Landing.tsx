@@ -17,7 +17,7 @@ const Landing = () => {
   return (
     <>
       <Header />
-      <Container>
+      <Container maxWidth="md">
         <h1>Temporäre Spielstraßen für Friedrichshain-Kreuzberg</h1>
         <p>
           Kinder brauchen Raum zum Spielen im Freien. Besonders während der

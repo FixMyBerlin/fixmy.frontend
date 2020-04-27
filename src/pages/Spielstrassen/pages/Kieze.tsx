@@ -35,7 +35,7 @@ const Kieze = ({ streets, streetRequest }) => {
   return (
     <>
       <Header showInfoLink />
-      <Container>
+      <Container maxWidth="md">
         <h2>In welchem Kiez wollen Sie eine Spielstraße unterstützen?</h2>
         <ImageInsert src={KiezKarte} />
         {streetRequest.state === RequestState.pending ? (

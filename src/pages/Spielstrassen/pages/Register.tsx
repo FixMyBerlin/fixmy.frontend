@@ -13,6 +13,7 @@ import SignupForm from '../components/SignupForm';
 import { RequestState } from '../state';
 import Loader from '~/components/Loader';
 import { Spielstrasse } from '../types';
+import { media } from '~/styles/utils';
 
 const MapWrapper = styled.div`
   display: flex;
@@ -24,6 +25,11 @@ const MapImg = styled.img`
   width: 90%;
   height: auto;
   margin: 1em auto;
+
+  ${media.m`
+    height: 20em;
+    width: auto;
+  `}
 `;
 
 const SupporterInfo = styled.div`
@@ -86,9 +92,9 @@ const Register = ({ match, streets, streetRequest }) => {
   return (
     <>
       <Header showInfoLink />
-      <Container>
+      <Container maxWidth="sm">
         <Section>
-          <h2>{street.street}</h2>
+          <h1>{street.street}</h1>
           <p>Temporäre Spielstraße im {street.kiez}:</p>
           <MapWrapper>
             <KiezMap street={street.street} />
