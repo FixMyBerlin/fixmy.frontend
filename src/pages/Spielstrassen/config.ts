@@ -10,7 +10,7 @@ export default {
       'Friedrichshain-Kreuzberg richtet temporäre Spielstraßen ein, hier kann man sich melden um eine Spielstraße zu unterstützen. Bitte unterstütze diese Spielstraße, damit das möglich wird:',
     streets: [
       {
-        street: 'Samariterstraße',
+        street: 'Bänschstraße',
         kiez: 'Samariterviertel',
         region: 'Friedrichshain'
       },
