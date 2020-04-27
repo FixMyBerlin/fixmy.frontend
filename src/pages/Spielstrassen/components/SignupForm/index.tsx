@@ -8,9 +8,10 @@ import styled from 'styled-components';
 import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import { media } from '~/styles/utils';
-import { SignupData } from '../types';
-import api from '../api';
+import { SignupData } from '../../types';
+import api from '../../api';
 import logger from '~/utils/logger';
+import validate from './validate';
 
 const initialValues = {
   first_name: 'Max',
@@ -68,6 +69,7 @@ const FormError = styled(FormHelperText)`
 const SignupForm = ({ street, history }) => (
   <Formik
     initialValues={initialValues}
+    validate={validate}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       const signupData: SignupData = {
         ...values,
@@ -96,14 +98,12 @@ const SignupForm = ({ street, history }) => (
           label="Vorname"
           fullWidth
         />
-        <ErrorMessage name="first_name" component="div" />
         <Field
           name="last_name"
           component={TextField}
           label="Nachname"
           fullWidth
         />
-        <ErrorMessage name="last_name" component="div" />
         <Field
           type="email"
           name="email"
@@ -112,7 +112,11 @@ const SignupForm = ({ street, history }) => (
           placeholder="beispiel@domain.de"
           fullWidth
         />
-        <ErrorMessage name="email" component="div" />
+
+        <ErrorMessage
+          name="tos_accepted"
+          render={(msg) => <FormError error>{msg}</FormError>}
+        />
         <div className="tosFieldGroup">
           <Field
             component={CheckboxWithLabel}
@@ -133,6 +137,10 @@ const SignupForm = ({ street, history }) => (
           </a>{' '}
           mit dem Bezirksamt zu unterzeichnen?
         </p>
+        <ErrorMessage
+          name="captain"
+          render={(msg) => <FormError error>{msg}</FormError>}
+        />
         <Field component={RadioGroup} name="captain">
           <FormControlLabel
             value="yes"
