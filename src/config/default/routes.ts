@@ -23,6 +23,12 @@ export default {
     iframe: `${katasterPath}/iFrame-test`,
     email: `${katasterPath}/email`
   },
+  spielstrassen: {
+    landing: '/friedrichshain-kreuzberg/spielstrassen',
+    streets: '/friedrichshain-kreuzberg/spielstrassen/kieze',
+    register: '/friedrichshain-kreuzberg/spielstrassen/:slug',
+    thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke'
+  },
   popupbikelanes: '/popupbikelanes',
   signup: '/registrieren',
   login: '/anmelden',

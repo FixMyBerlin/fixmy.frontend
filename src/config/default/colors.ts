@@ -12,5 +12,6 @@ export default {
   index: '#ff650c',
   error: '#FF5050',
   likebg: '#FFF9EC',
-  katasterHighlight: '#fabe28'
+  katasterHighlight: '#fabe28',
+  label_01: '#45b834'
 };
