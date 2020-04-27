@@ -9,7 +9,7 @@ import Header from '../components/Header';
 import { getStreetInfo } from '~/pages/Spielstrassen/utils';
 import KiezNotFound from '../components/NotFound';
 import KiezMap from '../components/KiezMap';
-import ShareButton from '../components/ShareButton';
+// import ShareButton from '../components/ShareButton';
 // import ShareButtonDesktop from '../components/ShareButtonDesktop';
 import Button from '~/components2/Button';
 import config from '../config';
@@ -43,7 +43,7 @@ const Thanks = ({ match, streets, streetRequest }) => {
     { slug: match.params.slug }
   );
   const sharingUrl = `https://fixmyberlin.de${sharingUrlRelative}`;
-  const shareText = `${config.spielstrassen.shareText} ${sharingUrl}`;
+  // const shareText = `${config.spielstrassen.shareText} ${sharingUrl}`;
 
   return (
     <>
@@ -53,7 +53,7 @@ const Thanks = ({ match, streets, streetRequest }) => {
         <p>Temporäre Spielstraße im Kiez {street.kiez}:</p>
         <KiezMap street={street.street} />
         <h2>
-          Vielen Dank, Sie sind Unterstützer:in Nr. {street.supporters + 1}
+          Vielen Dank, Sie sind Unterstützer:in Nr. {+street.supporters + 1}
         </h2>
         <p>
           Das Bezirksamt meldet sich bei Ihnen, sobald sich sieben Personen
@@ -63,7 +63,7 @@ const Thanks = ({ match, streets, streetRequest }) => {
         <CopyToClipboard text={sharingUrl}>
           <LinkButton flat>Link kopieren</LinkButton>
         </CopyToClipboard>
-        <ShareButton text={shareText} url={sharingUrl} />
+        {/* <ShareButton text={shareText} url={sharingUrl} /> */}
         {/* <ShareButtonDesktop /> */}
       </Container>
     </>
