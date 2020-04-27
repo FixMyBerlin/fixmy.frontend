@@ -10,7 +10,7 @@ const MapWrapper = styled.div`
 
 const MapImg = styled.img`
   width: 90%;
-  height: auto;
+  height: intrinsic;
   margin: 1em auto;
 
   ${media.m`
