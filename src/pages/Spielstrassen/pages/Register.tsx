@@ -92,8 +92,8 @@ const Register = ({ match, streets, streetRequest }) => {
           </p>
           <p>
             <strong>
-              Melden Sie sich über dieses Formular an, um als Kiezlotse in der
-              Bergmannstraße zu unterstützen:
+              Melden Sie sich über dieses Formular an, um als Kiezlots:in in der{' '}
+              {street.street} zu unterstützen:
             </strong>
           </p>
         </Section>

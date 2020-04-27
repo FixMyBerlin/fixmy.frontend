@@ -56,7 +56,7 @@ const Thanks = ({ match, streets, streetRequest }) => {
           Vielen Dank, Sie sind Unterstützer:in Nr. {street.supporters + 1}
         </h2>
         <p>
-          Das Bezirksamt meldet sich bei Ihnen, sobald sieben Personen sich
+          Das Bezirksamt meldet sich bei Ihnen, sobald sich sieben Personen
           registriert haben. Teilen Sie diese Seite mit anderen Personen, die
           bei der Spielstraße in der Bergmannstraße helfen können.
         </p>

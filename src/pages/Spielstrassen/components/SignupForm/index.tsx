@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { TextField, CheckboxWithLabel, RadioGroup } from 'formik-material-ui';
 import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
 import styled from 'styled-components';
+import slugify from 'slugify';
 
 import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
@@ -12,13 +13,12 @@ import { SignupData } from '../../types';
 import api from '../../api';
 import logger from '~/utils/logger';
 import validate from './validate';
-import slugify from 'slugify';
 
 const initialValues = {
-  first_name: 'Max',
-  last_name: 'Mustermann',
-  email: 'max@mustermann.de',
-  tos_accepted: true,
+  first_name: '',
+  last_name: '',
+  email: '',
+  tos_accepted: false,
   captain: null,
   message: ''
 };

@@ -7,6 +7,7 @@ import Button from '~/components2/Button';
 import Link from '~/components/Link';
 import { Insert as ImageInsert } from '~/components2/Image';
 import BackgroundImage3 from '~/images/spielstrassen/landing-bg@3x.jpg';
+import BackgroundImage2 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
 import Header from '../components/Header';
 
 const CTA = styled(Button)`
@@ -18,70 +19,118 @@ const Landing = () => {
     <>
       <Header />
       <Container maxWidth="md">
-        <h1>Temporäre Spielstraßen für Friedrichshain-Kreuzberg</h1>
-        <p>
-          Kinder brauchen Raum zum Spielen im Freien. Besonders während der
-          Corona-Pandemie ist dieser Raum oft zu eng oder gar nicht vorhanden,
-          deshalb möchte das Bezirksamt Friedrichshain-Kreuzberg Kiezen
-          ermöglichen temporäre Spielstraßen einzurichten. Die Spielstraße kann
-          aber nur eingerichtet werden wenn Anwohner:innen das Bezirksamt
-          unterstützen.
-        </p>
+        <h1>Helfen Sie, eine temporäre Spielstraße einzurichten!</h1>
         <ImageInsert src={BackgroundImage3} />
-        <h2>Helfen Sie dabei, eine Spielstraße einzurichten</h2>
+        <p>
+          Kinder brauchen viel Raum zum Spielen im Freien, gerade jetzt während
+          der Corona-Pandemie. Deshalb richtet das Bezirksamt
+          Friedrichshain-Kreuzberg begleitend zur Spielplatzöffnung bis zu 30
+          temporäre Spielstraßen ein. Damit das möglich wird benötigt das
+          Bezirksamt an Sonn- und Feiertagen jeweils von 12-18 Uhr Ihre
+          Unterstützung.{' '}
+        </p>
         <p>
           <strong>
-            Wenn sich eine Gruppe von mindestens 7 Anwohner:innen findet, kann
-            die Spielstraße eingerichtet werden.
-          </strong>{' '}
-          Als engagierte Bürger:innen sind Sie zuständig, dafür zu sorgen, dass
-          auch während der Spieltermine weiterhin Möglichkeiten für
-          Anlieferungen sowie die Zufahrt für Menschen mit eingeschränkter
-          Mobilität etc. sichergestellt sind.
+            Sieben ist die magische Zahl – wenn sich eine Gruppe von mindestens
+            sieben Anwohner:innen zur Betreuung der Spielstraße findet, kann
+            diese eingerichtet werden.
+          </strong>
         </p>
         <h2>Wie funktioniert das genau?</h2>
         <ol>
           <li>
-            Registrieren Sie sich für den Kiez, in dem Sie die Spielstraße
-            unterstützen wollen
+            Registrieren Sie sich hier für die Spielstraße, die Sie als
+            Kiezlots:in unterstützen wollen.
           </li>
           <li>
             Das Bezirksamt kontaktiert Sie, sobald sich mindestens 7 Personen
-            gefunden haben.
+            für eine Straße gefunden haben.
           </li>
           <li>
-            Sie erhälten einen Termin zur Registrierung beim Bezirksamt, eine
-            hauptverantwortliche Person der Gruppe muss dort einen
-            Kooperationsvertrag unterschreiben.
+            Wenn Sie sich als Teamkapitän:in angemeldet haben schickt Ihnen das
+            Bezirksamt einen Terminvorschlag. Dort unterschreiben Sie eine
+            Kooperationsvereinbarung und erhalten eine Einweisung zum Verfahren.
           </li>
           <li>
-            Die Spielstraße wird vom Bezirksamt angeordnet und eingerichtet. Die
-            Organisation der Vor Ort können Sie selbständig organisieren.
+            Die Spielstraße wird vom Bezirksamt angeordnet und eingerichtet. Bei
+            der Umsetzung vor Ort ist das Bezirksamt jenseits der rechtlichen
+            und materiellen Vorbereitung auf Ihre selbständige Mitwirkung und
+            Organisation unter den registrierten Anwohner:innen angewiesen.
           </li>
         </ol>
-        <p>
-          Die genauen Anforderungen für die Betreuung der Spielstraße finden Sie
-          in diesem{' '}
-          <a className="external" href="/">
-            PDF
-          </a>
-          .
-        </p>
         <CTA>
           <Link to={config.routes.spielstrassen.streets}>
-            Jetzt eine Spielstraße in Ihrem Kiez unterstützen
+            Jetzt eine Spielstraße unterstützen
           </Link>
         </CTA>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
-          Notwendig für die Umsetzung ist die Bereitschaft der Initiative,
-          jeweils am Samstag von 12 bis 18 Uhr eine Aufsichtsfunktion zu
-          übernehmen (u.a. Aufstellen der Absperrungen, Teilnahme einer
-          ausreichenden Anzahl von Ordner*innen (ca. 2-4 Ordner:innen je nach
-          Größe der Spielstraße), Abbau und Entsorgung von eventuell
-          angefallenem Müll). Wenn sich mindestens 7 Personen finden, die eine
-          Straße betreuen, kann diese vom Bezirksamt eingerichtet werden.
+          Notwendig für die Umsetzung ist die Bereitschaft der Bürger:innen,
+          während der Spielzeiten eine Aufsichtsfunktion zu übernehmen. Als
+          engagierte Bürger:innen sind Sie zuständig, dafür zu sorgen,
         </p>
+        <ul>
+          <li>dass die Absperrungen auf- und abgebaut werden,</li>
+          <li>
+            dass die Aufsicht in der Straße durch 2-6 Kiezlots:innen (je nach
+            Größe der Spielstraße) gewährleistet ist,
+          </li>
+          <li>
+            dass auch während der Spieltermine weiterhin dringende
+            Anlieferungen, Rettungsfahrten sowie die Zufahrt für Menschen mit
+            eingeschränkter Mobilität etc. sichergestellt sind,
+          </li>
+          <li>
+            dass die Straße vor der Freigabe für den Autoverkehr frei von
+            Gegenständen und von eventuell angefallenem Müll ist.
+          </li>
+          <li>
+            Sie sollten Personen beim Betreten der Straßenabschnitte auch auf
+            die Infektionsschutzregeln hinweisen. Durch das Aufrufen zur
+            gegenseitigen Rücksichtnahme und durch freundliche Kommunikation
+            wirken Sie darauf hin, dass die Abstände gemäß der
+            Eindämmungsverordnung von 1,5 Metern beim Bewegen und von 5 Metern
+            beim Rasten eingehalten werden.
+          </li>
+        </ul>
+        <p>
+          <a
+            href="/uploads/spielstrassen/Hygienevorschriften_strassenlandinkinderhand.pdf"
+            className="external"
+          >
+            Hygienevorschriften Spielstraßen
+          </a>
+        </p>
+        <p>
+          <a
+            href="/uploads/spielstrassen/AnwohnerinnenInfo_Spielstrasse.pdf"
+            className="external"
+          >
+            Informationen für die Anwohner:innen
+          </a>
+        </p>
+        <ImageInsert src={BackgroundImage2} />
+        <h2>Zum Hintergrund</h2>
+        <p>
+          Die Spielplätze im Bezirk Friedrichshain-Kreuzberg werden nach einem
+          Beschluss des Rates der Bürgermeister:innen zum 01.05.2020 wieder
+          geöffnet. Die Abstandsgebote der Covid-19-Eindämmungsverordnung
+          behalten aber unverändert ihre Gültigkeit. Der Bezirk ist eines der
+          europaweit am stärksten besiedelten urbanen Gebiete. Mit nur 6,4 m2
+          Grünraum pro Einwohner:in füllen sich die öffentlichen Räume – und
+          hier besonders die Spielplätze und Parks – sehr schnell.
+        </p>
+        <p>
+          An einigen der betreffenden Straßen wird das Straßen- und
+          Grünflächenamt Tankwagen oder Wasserzapfstationen einrichten, damit
+          auch dem leidenden Baumbestand durch gemeinsame nachbarschaftliche
+          Gießaktionen geholfen werden kann.
+        </p>
+        <CTA>
+          <Link to={config.routes.spielstrassen.streets}>
+            Jetzt eine Spielstraße unterstützen
+          </Link>
+        </CTA>
       </Container>
     </>
   );
