@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, generatePath } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { TextField, CheckboxWithLabel, RadioGroup } from 'formik-material-ui';
 import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
@@ -12,6 +12,7 @@ import { SignupData } from '../../types';
 import api from '../../api';
 import logger from '~/utils/logger';
 import validate from './validate';
+import slugify from 'slugify';
 
 const initialValues = {
   first_name: 'Max',
@@ -80,7 +81,11 @@ const SignupForm = ({ street, history }) => (
       logger(JSON.stringify(signupData, null, 2));
       try {
         await api.signup(signupData);
-        history.push(config.routes.spielstrassen.thanks);
+        history.push(
+          generatePath(config.routes.spielstrassen.thanks, {
+            slug: slugify(street, { lower: true })
+          })
+        );
       } catch (e) {
         logger(e);
         setStatus(

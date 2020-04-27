@@ -137,6 +137,7 @@
     "react": "^16.13.1",
     "react-autosize-textarea": "^7.0.0",
     "react-collapsible": "^2.7.0",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.3",
     "react-hot-loader": "^4.12.20",

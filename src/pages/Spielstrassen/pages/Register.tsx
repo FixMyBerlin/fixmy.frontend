@@ -3,34 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
-import slugify from 'slugify';
 import { Link } from 'react-router-dom';
 
+import Loader from '~/components/Loader';
 import config from '~/pages/Spielstrassen/config';
 import Header from '../components/Header';
 import SupporterIcon from '../components/SupporterIcon';
 import SignupForm from '../components/SignupForm';
+import KiezNotFound from '../components/NotFound';
+import KiezMap from '../components/KiezMap';
 import { RequestState } from '../state';
-import Loader from '~/components/Loader';
-import { Spielstrasse } from '../types';
-import { media } from '~/styles/utils';
-
-const MapWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-`;
-
-const MapImg = styled.img`
-  width: 90%;
-  height: auto;
-  margin: 1em auto;
-
-  ${media.m`
-    height: 20em;
-    width: auto;
-  `}
-`;
+import { getStreetInfo } from '~/pages/Spielstrassen/utils';
 
 const SupporterInfo = styled.div`
   display: flex;
@@ -59,25 +42,6 @@ const LoaderWrapper = styled.span`
   height: 0.75em;
 `;
 
-const getStreetInfo = (streets: Spielstrasse[], slug: string) =>
-  streets?.find((street) => slugify(street.street, { lower: true }) === slug);
-
-const KiezNotFound = () => (
-  <>
-    <Header showInfoLink />
-    <Container>
-      <h1>Diese Seite gibt es leider nicht.</h1>
-    </Container>
-  </>
-);
-
-const KiezMap = ({ street }) => (
-  <MapImg
-    src={`/src/images/spielstrassen/kieze/${street}.png`}
-    alt={`${street} im Kiezumfeld`}
-  />
-);
-
 const Register = ({ match, streets, streetRequest }) => {
   const [street, setStreet] = useState(
     getStreetInfo(streets, match.params?.slug)
@@ -95,10 +59,8 @@ const Register = ({ match, streets, streetRequest }) => {
       <Container maxWidth="sm">
         <Section>
           <h1>{street.street}</h1>
-          <p>Temporäre Spielstraße im {street.kiez}:</p>
-          <MapWrapper>
-            <KiezMap street={street.street} />
-          </MapWrapper>
+          <p>Temporäre Spielstraße im Kiez {street.kiez}:</p>
+          <KiezMap street={street.street} />
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />
             Bereits{' '}
