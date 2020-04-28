@@ -5,7 +5,9 @@ import { Container, Grid } from '@material-ui/core';
 import styled from 'styled-components';
 
 import { Insert as ImageInsert } from '~/components2/Image';
-import KiezKarte from '~/images/spielstrassen/kiezkarte@3x.jpg';
+import KiezKarte1 from '~/images/spielstrassen/kiezkarte.jpg';
+import KiezKarte2 from '~/images/spielstrassen/kiezkarte@2x.jpg';
+import KiezKarte3 from '~/images/spielstrassen/kiezkarte@3x.jpg';
 import Header from '../components/Header';
 import KiezCard from '../components/KiezCard';
 import { RequestState } from '~/pages/Spielstrassen/state';
@@ -31,7 +33,10 @@ const Kieze = ({ streets, streetRequest }) => {
       <Header showInfoLink />
       <Container maxWidth="md">
         <h2>In welchem Kiez wollen Sie eine Spielstraße unterstützen?</h2>
-        <ImageInsert src={KiezKarte} />
+        <ImageInsert
+          src={KiezKarte2}
+          srcSet={`${KiezKarte1} 450w, ${KiezKarte2} 750w, ${KiezKarte3} 1125w`}
+        />
         {streetRequest.state === RequestState.pending ? (
           <Loader />
         ) : (

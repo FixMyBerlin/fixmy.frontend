@@ -6,8 +6,12 @@ import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import Link from '~/components/Link';
 import { Insert as ImageInsert } from '~/components2/Image';
-import BackgroundImage3 from '~/images/spielstrassen/landing-bg@3x.jpg';
-import BackgroundImage2 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
+import BackgroundImageA1 from '~/images/spielstrassen/landing-bg.jpg';
+import BackgroundImageA2 from '~/images/spielstrassen/landing-bg@2x.jpg';
+import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
+import BackgroundImageB1 from '~/images/spielstrassen/landing-bg-2.jpg';
+import BackgroundImageB2 from '~/images/spielstrassen/landing-bg-2@2x.jpg';
+import BackgroundImageB3 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
 import Header from '../components/Header';
 
 const CTA = styled(Button)`
@@ -20,7 +24,10 @@ const Landing = () => {
       <Header />
       <Container maxWidth="md">
         <h1>Helfen Sie, eine temporäre Spielstraße einzurichten!</h1>
-        <ImageInsert src={BackgroundImage3} />
+        <ImageInsert
+          src={BackgroundImageA2}
+          srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
+        />
         <p>
           Kinder brauchen viel Raum zum Spielen im Freien, gerade jetzt während
           der Corona-Pandemie. Deshalb richtet das Bezirksamt
@@ -107,7 +114,10 @@ const Landing = () => {
             Informationen für die Anwohner:innen
           </a>
         </p>
-        <ImageInsert src={BackgroundImage2} />
+        <ImageInsert
+          src={BackgroundImageB2}
+          srcSet={`${BackgroundImageB1} 450w, ${BackgroundImageB2} 750w, ${BackgroundImageB3} 1125w`}
+        />
         <h2>Zum Hintergrund</h2>
         <p>
           Die Spielplätze im Bezirk Friedrichshain-Kreuzberg werden nach einem
