@@ -23,7 +23,7 @@ const Landing = () => {
     <>
       <Header />
       <Container maxWidth="md">
-        <h1>Helfen Sie, eine temporäre Spielstraße einzurichten!</h1>
+        <h1>Helfen Sie eine temporäre Spielstraße einzurichten!</h1>
         <ImageInsert
           src={BackgroundImageA2}
           srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
@@ -32,9 +32,9 @@ const Landing = () => {
           Kinder brauchen viel Raum zum Spielen im Freien, gerade jetzt während
           der Corona-Pandemie. Deshalb richtet das Bezirksamt
           Friedrichshain-Kreuzberg begleitend zur Spielplatzöffnung bis zu 30
-          temporäre Spielstraßen ein. Damit das möglich wird benötigt das
+          temporäre Spielstraßen ein. Damit das möglich wird, benötigt das
           Bezirksamt an Sonn- und Feiertagen jeweils von 12-18 Uhr Ihre
-          Unterstützung.{' '}
+          Unterstützung.
         </p>
         <p>
           <strong>

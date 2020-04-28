@@ -58,7 +58,7 @@ const Thanks = ({ match, streets, streetRequest }) => {
         <p>
           Das Bezirksamt meldet sich bei Ihnen, sobald sich sieben Personen
           registriert haben. Teilen Sie diese Seite mit anderen Personen, die
-          bei der Spielstraße in der Bergmannstraße helfen können.
+          bei der Spielstraße in der {street.street} helfen können.
         </p>
         <CopyToClipboard text={sharingUrl}>
           <LinkButton flat>Link kopieren</LinkButton>
