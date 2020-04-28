@@ -6,12 +6,42 @@ import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import Link from '~/components/Link';
 import { Insert as ImageInsert } from '~/components2/Image';
-import BackgroundImage3 from '~/images/spielstrassen/landing-bg@3x.jpg';
-import BackgroundImage2 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
+import BackgroundImageA1 from '~/images/spielstrassen/landing-bg.jpg';
+import BackgroundImageA2 from '~/images/spielstrassen/landing-bg@2x.jpg';
+import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
+import BackgroundImageB1 from '~/images/spielstrassen/landing-bg-2.jpg';
+import BackgroundImageB2 from '~/images/spielstrassen/landing-bg-2@2x.jpg';
+import BackgroundImageB3 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
 import Header from '../components/Header';
+import Logo from '../components/Logo';
 
 const CTA = styled(Button)`
   margin: 2em auto;
+`;
+
+const Highlight = styled.p`
+  margin-top: -1em;
+  color: #cf0a7d;
+  margin-botom: 2em;
+  font-weight: bold;
+
+  span {
+    white-space: nowrap;
+  }
+`;
+
+const Attribution = styled.div`
+  font-size: 0.75em;
+  margin-top: -2.5em;
+  position: relative;
+  float: right;
+  right: 1em;
+  z-index: 9999;
+
+  && a {
+    color: white;
+    text-decoration: none;
+  }
 `;
 
 const Landing = () => {
@@ -19,15 +49,18 @@ const Landing = () => {
     <>
       <Header />
       <Container maxWidth="md">
-        <h1>Helfen Sie, eine temporäre Spielstraße einzurichten!</h1>
-        <ImageInsert src={BackgroundImage3} />
+        <h1>Helfen Sie eine temporäre Spielstraße einzurichten!</h1>
+        <ImageInsert
+          src={BackgroundImageA2}
+          srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
+        />
         <p>
           Kinder brauchen viel Raum zum Spielen im Freien, gerade jetzt während
           der Corona-Pandemie. Deshalb richtet das Bezirksamt
           Friedrichshain-Kreuzberg begleitend zur Spielplatzöffnung bis zu 30
-          temporäre Spielstraßen ein. Damit das möglich wird benötigt das
+          temporäre Spielstraßen ein. Damit das möglich wird, benötigt das
           Bezirksamt an Sonn- und Feiertagen jeweils von 12-18 Uhr Ihre
-          Unterstützung.{' '}
+          Unterstützung.
         </p>
         <p>
           <strong>
@@ -61,6 +94,9 @@ const Landing = () => {
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
+        <Highlight>
+          Registrierung möglich bis <span>29. April 2020, 13 Uhr</span>!
+        </Highlight>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
           Notwendig für die Umsetzung ist die Bereitschaft der Bürger:innen,
@@ -107,7 +143,15 @@ const Landing = () => {
             Informationen für die Anwohner:innen
           </a>
         </p>
-        <ImageInsert src={BackgroundImage2} />
+        <ImageInsert
+          src={BackgroundImageB2}
+          srcSet={`${BackgroundImageB1} 450w, ${BackgroundImageB2} 750w, ${BackgroundImageB3} 1125w`}
+        />
+        <Attribution>
+          <a href="https://panphotos.org/">
+            Fotograf: Peter Steudtner / panphotos.org
+          </a>
+        </Attribution>
         <h2>Zum Hintergrund</h2>
         <p>
           Die Spielplätze im Bezirk Friedrichshain-Kreuzberg werden nach einem
@@ -127,6 +171,10 @@ const Landing = () => {
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
+        <Highlight>
+          Registrierung möglich bis <span>29. April 2020, 13 Uhr</span>!
+        </Highlight>
+        <Logo />
       </Container>
     </>
   );

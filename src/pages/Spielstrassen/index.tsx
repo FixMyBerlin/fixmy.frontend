@@ -38,6 +38,10 @@ const Styles = styled.div`
     padding-left: 1em;
   }
 
+  li {
+    margin-bottom: 0.5em;
+  }
+
   a.internal,
   a.external,
   a.internal:link,

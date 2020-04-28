@@ -42,6 +42,17 @@ const LoaderWrapper = styled.span`
   height: 0.75em;
 `;
 
+const Highlight = styled.p`
+  margin-top: 2em auto;
+  color: #cf0a7d;
+  margin-botom: 2em;
+  font-weight: bold;
+
+  span {
+    white-space: nowrap;
+  }
+`;
+
 const Register = ({ match, streets, streetRequest }) => {
   const [street, setStreet] = useState(
     getStreetInfo(streets, match.params?.slug)
@@ -93,6 +104,11 @@ const Register = ({ match, streets, streetRequest }) => {
             </Link>{' '}
             zur Einrichtung der Spielstraßen.
           </p>
+
+          <Highlight>
+            {/* @ts-ignore */}
+            Registrierung möglich bis <span>29. April 2020, 13 Uhr</span>!
+          </Highlight>
           <p>
             <strong>
               Melden Sie sich über dieses Formular an, um als Kiezlots:in in der{' '}

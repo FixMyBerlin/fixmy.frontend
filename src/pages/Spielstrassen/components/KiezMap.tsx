@@ -21,7 +21,7 @@ const MapImg = styled.img`
 const KiezMap = ({ street }) => (
   <MapWrapper>
     <MapImg
-      src={`/src/images/spielstrassen/kieze/${street}.png`}
+      src={`/src/images/spielstrassen/kieze/${street}.jpg`}
       alt={`${street} im Kiezumfeld`}
     />
   </MapWrapper>
