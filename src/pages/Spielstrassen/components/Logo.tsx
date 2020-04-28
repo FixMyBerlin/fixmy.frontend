@@ -16,9 +16,12 @@ const Wrapper = styled.div`
     color: ${config.colors.darkgrey};
   }
 
-  img {
+  a {
     margin: 1em auto 3em;
-    width: 6em;
+
+    img {
+      width: 6em;
+    }
   }
 `;
 
