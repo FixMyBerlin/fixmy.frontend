@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import config from '~/pages/Spielstrassen/config';
 import FMBLogo from '~/images/logofmb@3x.png';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -24,7 +25,9 @@ const Wrapper = styled.div`
 const Logo = () => (
   <Wrapper>
     <span>Bereitgestellt durch</span>
-    <img src={FMBLogo} alt="Logo FixMyBerlin" />
+    <Link to="/">
+      <img src={FMBLogo} alt="Logo FixMyBerlin" />
+    </Link>
   </Wrapper>
 );
 
