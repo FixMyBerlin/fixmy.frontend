@@ -35,7 +35,7 @@ const Attribution = styled.div`
 
   && a {
     color: white;
-    border-bottom: none;
+    text-decoration: none;
   }
 `;
 
