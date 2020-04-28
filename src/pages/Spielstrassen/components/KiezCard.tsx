@@ -38,7 +38,7 @@ const KiezCard = styled(Paper)`
       margin-right: 0.5em;
     }
 
-    button {
+    a {
       margin-left: auto;
     }
   }

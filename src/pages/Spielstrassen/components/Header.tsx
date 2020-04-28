@@ -11,10 +11,6 @@ const Wrapper = styled(Box)`
   display: flex;
   align-items: top;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-
-  a {
-    color: ${config.colors.darkgrey};
-  }
 `;
 
 const Separator = styled(SeparatorImage)`
@@ -23,6 +19,7 @@ const Separator = styled(SeparatorImage)`
 `;
 
 const Title = styled.h1`
+  color: ${config.colors.darkgrey};
   font-weight: bold;
   font-size: 1em;
   line-height: 1.5em;
