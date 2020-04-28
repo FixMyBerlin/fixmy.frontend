@@ -14,6 +14,7 @@ import KiezMap from '../components/KiezMap';
 import Button from '~/components2/Button';
 import config from '../config';
 import { media } from '~/styles/utils';
+import Logo from '../components/Logo';
 
 const LinkButton = styled(Button)`
   width: 100%;
@@ -65,6 +66,7 @@ const Thanks = ({ match, streets, streetRequest }) => {
         </CopyToClipboard>
         {/* <ShareButton text={shareText} url={sharingUrl} /> */}
         {/* <ShareButtonDesktop /> */}
+        <Logo />
       </Container>
     </>
   );

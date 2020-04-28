@@ -13,6 +13,7 @@ import BackgroundImageB1 from '~/images/spielstrassen/landing-bg-2.jpg';
 import BackgroundImageB2 from '~/images/spielstrassen/landing-bg-2@2x.jpg';
 import BackgroundImageB3 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
 import Header from '../components/Header';
+import Logo from '../components/Logo';
 
 const CTA = styled(Button)`
   margin: 2em auto;
@@ -165,7 +166,7 @@ const Landing = () => {
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
         <Highlight>Registrierung möglich bis 29. April 2020, 13 Uhr!</Highlight>
-        <p>&nbsp;</p>
+        <Logo />
       </Container>
     </>
   );
