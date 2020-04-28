@@ -126,11 +126,9 @@ const Landing = () => {
           auch dem leidenden Baumbestand durch gemeinsame nachbarschaftliche
           Gießaktionen geholfen werden kann.
         </p>
-        <CTA>
-          <Link to={config.routes.spielstrassen.streets}>
-            Jetzt eine Spielstraße unterstützen
-          </Link>
-        </CTA>
+        <Link to={config.routes.spielstrassen.streets}>
+          <CTA>Jetzt eine Spielstraße unterstützen</CTA>
+        </Link>
       </Container>
     </>
   );
