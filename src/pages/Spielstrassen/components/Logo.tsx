@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import config from '~/pages/Spielstrassen/config';
 import FMBLogo from '~/images/logofmb@3x.png';
-import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
   width: 100%;

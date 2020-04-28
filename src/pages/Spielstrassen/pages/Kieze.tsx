@@ -21,6 +21,9 @@ const KiezListing = styled.div`
 const sortArray = (a: Spielstrasse, b: Spielstrasse) =>
   a.street.localeCompare(b.street);
 
+const fullMapURL =
+  'https://api.mapbox.com/styles/v1/hejco/ck98kjwqi5edx1ip74oyrmxmd.html?fresh=true&title=view&access_token=pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q#12.78/52.49946/13.42743';
+
 const Kieze = ({ streets, streetRequest }) => {
   const fhain = streets
     .filter((street) => street.region === 'Friedrichshain')
@@ -33,10 +36,12 @@ const Kieze = ({ streets, streetRequest }) => {
       <Header showInfoLink />
       <Container maxWidth="md">
         <h2>In welchem Kiez wollen Sie eine Spielstraße unterstützen?</h2>
-        <ImageInsert
-          src={KiezKarte2}
-          srcSet={`${KiezKarte1} 450w, ${KiezKarte2} 750w, ${KiezKarte3} 1125w`}
-        />
+        <a href={fullMapURL} target="_blank" rel="noopener noreferrer">
+          <ImageInsert
+            src={KiezKarte2}
+            srcSet={`${KiezKarte1} 450w, ${KiezKarte2} 750w, ${KiezKarte3} 1125w`}
+          />
+        </a>
         {streetRequest.state === RequestState.pending ? (
           <Loader />
         ) : (
