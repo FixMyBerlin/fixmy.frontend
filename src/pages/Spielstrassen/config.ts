@@ -55,8 +55,8 @@ export default {
       { street: 'Lilienthalstraße', kiez: 'Chamissokiez', region: 'Kreuzberg' },
       { street: 'Dresdener Straße', kiez: 'Oranienplatz', region: 'Kreuzberg' },
       {
-        street: 'Rudolfstraße	Stralauer',
-        kiez: 'Kiez',
+        street: 'Rudolfstraße',
+        kiez: 'Stralauer Kiez',
         region: 'Friedrichshain'
       },
       {
