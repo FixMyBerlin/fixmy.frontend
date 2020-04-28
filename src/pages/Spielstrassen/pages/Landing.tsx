@@ -18,6 +18,27 @@ const CTA = styled(Button)`
   margin: 2em auto;
 `;
 
+const Highlight = styled.p`
+  margin-top: -1em;
+  color: #cf0a7d;
+  margin-botom: 2em;
+  font-weight: bold;
+`;
+
+const Attribution = styled.div`
+  font-size: 0.75em;
+  margin-top: -2.5em;
+  position: relative;
+  float: right;
+  right: 1em;
+  z-index: 9999;
+
+  && a {
+    color: white;
+    border-bottom: none;
+  }
+`;
+
 const Landing = () => {
   return (
     <>
@@ -68,6 +89,7 @@ const Landing = () => {
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
+        <Highlight>Registrierung möglich bis 29. April 2020, 13 Uhr!</Highlight>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
           Notwendig für die Umsetzung ist die Bereitschaft der Bürger:innen,
@@ -118,6 +140,11 @@ const Landing = () => {
           src={BackgroundImageB2}
           srcSet={`${BackgroundImageB1} 450w, ${BackgroundImageB2} 750w, ${BackgroundImageB3} 1125w`}
         />
+        <Attribution>
+          <a href="https://panphotos.org/">
+            Fotograf: Peter Steudtner / panphotos.org
+          </a>
+        </Attribution>
         <h2>Zum Hintergrund</h2>
         <p>
           Die Spielplätze im Bezirk Friedrichshain-Kreuzberg werden nach einem
@@ -137,6 +164,8 @@ const Landing = () => {
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
+        <Highlight>Registrierung möglich bis 29. April 2020, 13 Uhr!</Highlight>
+        <p>&nbsp;</p>
       </Container>
     </>
   );
