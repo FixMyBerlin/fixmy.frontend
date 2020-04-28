@@ -59,7 +59,9 @@ const Register = ({ match, streets, streetRequest }) => {
       <Container maxWidth="sm">
         <Section>
           <h1>{street.street}</h1>
-          <p>Temporäre Spielstraße im Kiez {street.kiez}:</p>
+          <p className="subline">
+            Temporäre Spielstraße im Kiez {street.kiez}:
+          </p>
           <KiezMap street={street.street} />
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />

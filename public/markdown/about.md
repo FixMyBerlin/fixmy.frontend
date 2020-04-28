@@ -19,7 +19,7 @@ Du willst uns unterstützen? [Melde Dich gerne](/jobs)
 <div class="teamportrait">
   <img src="/src/images/team/FixMyBerlin_Boris Hekele.png" alt="Boris Hekele" title="Boris Hekele" style="width: 160px" /><br />
   <strong>Boris Hekele</strong><br />
-  Geschäftsführung, Netzwerk, Technische Leitung
+  Geschäftsführung, Netzwerk
 </div>
 <div class="teamportrait">
   <img src="/src/images/team/HeikoRintelen_hell.jpg" alt="Heiko Rintelen" title="Heiko Rintelen" style="width: 160px" /><br />
@@ -54,7 +54,7 @@ Du willst uns unterstützen? [Melde Dich gerne](/jobs)
 <div class="teamportrait">
   <img src="/src/images/team/VincentAhrend.png" alt="Vincent Ahrend" title="Vincent Ahrend" style="width: 160px" /><br />
   <strong>Vincent Ahrend</strong><br />
-  Fullstack-Entwicklung
+  Technische Leitung
 </div>
 <div class="teamportrait">
   <img src="/src/images/team/Niklas_Schader.jpg" alt="Niklas Schader" title="Niklas Schader" style="width: 160px" /><br />

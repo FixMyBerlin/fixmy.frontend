@@ -48,9 +48,9 @@ const Thanks = ({ match, streets, streetRequest }) => {
   return (
     <>
       <Header showInfoLink />
-      <Container maxWidth="md">
+      <Container maxWidth="sm">
         <h1>{street.street}</h1>
-        <p>Temporäre Spielstraße im Kiez {street.kiez}:</p>
+        <p className="subline">Temporäre Spielstraße im Kiez {street.kiez}:</p>
         <KiezMap street={street.street} />
         <h2>
           Vielen Dank, Sie sind Unterstützer:in Nr. {+street.supporters + 1}

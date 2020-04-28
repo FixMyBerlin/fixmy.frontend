@@ -38,7 +38,7 @@ const KiezCard = styled(Paper)`
       margin-right: 0.5em;
     }
 
-    button {
+    a {
       margin-left: auto;
     }
   }
@@ -66,9 +66,9 @@ const Kiez = ({ kiez, street, supporters = 0 }) => {
           {supporters} Unter&shy;stützer:in{supporters === 1 ? '' : 'nen'}{' '}
           registriert
         </span>
-        <Button flat>
-          <Link to={signupUrl}>Unterstützen</Link>
-        </Button>
+        <Link to={signupUrl}>
+          <Button flat>Unterstützen</Button>
+        </Link>
       </footer>
     </KiezCard>
   );

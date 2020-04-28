@@ -10,14 +10,22 @@ import Header from '../components/Header';
 import KiezCard from '../components/KiezCard';
 import { RequestState } from '~/pages/Spielstrassen/state';
 import Loader from '~/components/Loader';
+import { Spielstrasse } from '../types';
 
 const KiezListing = styled.div`
   margin: 1em 0 2em;
 `;
 
+const sortArray = (a: Spielstrasse, b: Spielstrasse) =>
+  a.street.localeCompare(b.street);
+
 const Kieze = ({ streets, streetRequest }) => {
-  const fhain = streets.filter((street) => street.region === 'Friedrichshain');
-  const xberg = streets.filter((street) => street.region === 'Kreuzberg');
+  const fhain = streets
+    .filter((street) => street.region === 'Friedrichshain')
+    .sort(sortArray);
+  const xberg = streets
+    .filter((street) => street.region === 'Kreuzberg')
+    .sort(sortArray);
   return (
     <>
       <Header showInfoLink />

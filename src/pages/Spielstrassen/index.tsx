@@ -25,6 +25,10 @@ const Styles = styled.div`
     line-height: 1.25em;
   }
 
+  h1 + .subline {
+    margin-top: -1em;
+  }
+
   h2 {
     font-size: 24px;
     line-height: 1.25em;
@@ -34,10 +38,14 @@ const Styles = styled.div`
     padding-left: 1em;
   }
 
-  a,
-  a:link,
-  a:visited,
-  a:active {
+  a.internal,
+  a.external,
+  a.internal:link,
+  a.external:link,
+  a.internal:visited,
+  a.external:visited,
+  a.internal:active,
+  a.external:active {
     color: ${config.colors.darkbg};
     text-decoration: none;
     border-bottom: 1px solid ${config.colors.interaction};

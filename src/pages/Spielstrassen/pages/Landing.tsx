@@ -58,11 +58,9 @@ const Landing = () => {
             Organisation unter den registrierten Anwohner:innen angewiesen.
           </li>
         </ol>
-        <CTA>
-          <Link to={config.routes.spielstrassen.streets}>
-            Jetzt eine Spielstraße unterstützen
-          </Link>
-        </CTA>
+        <Link to={config.routes.spielstrassen.streets}>
+          <CTA>Jetzt eine Spielstraße unterstützen</CTA>
+        </Link>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
           Notwendig für die Umsetzung ist die Bereitschaft der Bürger:innen,
@@ -126,11 +124,9 @@ const Landing = () => {
           auch dem leidenden Baumbestand durch gemeinsame nachbarschaftliche
           Gießaktionen geholfen werden kann.
         </p>
-        <CTA>
-          <Link to={config.routes.spielstrassen.streets}>
-            Jetzt eine Spielstraße unterstützen
-          </Link>
-        </CTA>
+        <Link to={config.routes.spielstrassen.streets}>
+          <CTA>Jetzt eine Spielstraße unterstützen</CTA>
+        </Link>
       </Container>
     </>
   );
