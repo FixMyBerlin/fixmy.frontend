@@ -94,9 +94,6 @@ const Landing = () => {
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
-        <Highlight>
-          Registrierung möglich bis <span>29. April 2020, 13 Uhr</span>!
-        </Highlight>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
           Notwendig für die Umsetzung ist die Bereitschaft der Bürger:innen,
@@ -171,9 +168,6 @@ const Landing = () => {
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
-        <Highlight>
-          Registrierung möglich bis <span>29. April 2020, 13 Uhr</span>!
-        </Highlight>
         <Logo />
       </Container>
     </>
