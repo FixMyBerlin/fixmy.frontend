@@ -177,7 +177,8 @@ describe('The reports submission form', () => {
 
     it('has a title and description', () => {
       cy.get('h3').contains('Bitte entweder noch ein Foto von dem Ort');
-      cy.get('p').contains('Ein Foto des Ortes hilft');
+      if (config.reports.form.placementNotice)
+        cy.get('p').contains('Ein Foto des Ortes hilft');
     });
     it('initially prevents continuing in the form', () => {
       cyElem('reports-additional-continue').should('be.disabled');
