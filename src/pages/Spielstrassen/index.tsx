@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Router, Route, Switch, useLocation } from 'react-router-dom';
+import { Router, Route, Switch, useLocation, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import config from '~/pages/Spielstrassen/config';
 import Landing from './pages/Landing';
 import Kieze from './pages/Kieze';
-import Register from './pages/Register';
+// import Register from './pages/Register';
 import Thanks from './pages/Thanks';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
@@ -114,10 +114,10 @@ const Spielstrassen = ({ dispatch }) => {
               path={config.routes.spielstrassen.streets}
               component={Kieze}
             />
-            <Route
+            <Redirect
               exact
-              path={config.routes.spielstrassen.register}
-              component={Register}
+              from={config.routes.spielstrassen.register}
+              to={config.routes.spielstrassen.landing}
             />
             <Route
               exact

@@ -6,7 +6,6 @@
 
 # Spielstraßen
 /friedrichshain-kreuzberg/spielstra%C3%9Fen /friedrichshain-kreuzberg/spielstrassen 301
-/friedrichshain-kreuzberg/spielstrassen/* /friedrichshain-kreuzberg/spielstrassen 302
  
 # Legacy Plannings Redirects
 /planungen/2725/* /planungen/4/:splat 301

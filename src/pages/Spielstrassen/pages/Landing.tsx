@@ -121,7 +121,10 @@ const Landing = () => {
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Zur Spielstraßen-Karte</CTA>
         </Link>
-        <Highlight>Registrierung jetzt geschlossen!</Highlight>
+        <Highlight>
+          Registrierung jetzt geschlossen! Für alle Spielstraßen haben sich
+          ausreichend Unterstützer:innen gemeldet.
+        </Highlight>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
           Notwendig für die Umsetzung ist die Bereitschaft der Bürger:innen,
@@ -196,7 +199,10 @@ const Landing = () => {
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Zur Spielstraßen-Karte</CTA>
         </Link>
-        <Highlight>Registrierung jetzt geschlossen!</Highlight>
+        <Highlight>
+          Registrierung jetzt geschlossen! Für alle Spielstraßen haben sich
+          ausreichend Unterstützer:innen gemeldet.
+        </Highlight>
         <Logo />
       </Container>
     </>

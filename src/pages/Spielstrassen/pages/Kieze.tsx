@@ -43,8 +43,8 @@ const Kieze = ({ streets, streetRequest }) => {
           />
         </a>
         <p>
-          Für alle Spielstraßen haben sich viele Unterstützer:innen gefunden.
-          Registrierung nicht mehr möglich.
+          Für alle Spielstraßen haben sich ausreichend Unterstützer:innen
+          gefunden. Registrierung nicht mehr möglich.
         </p>
         {streetRequest.state === RequestState.pending ? (
           <Loader />
