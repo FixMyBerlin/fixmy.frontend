@@ -4,7 +4,16 @@ import config from '~/config';
 interface Props {
   ghost?: boolean;
   flat?: boolean;
+  disabled?: boolean;
 }
+
+const getBackgroundColor = ({ ghost, disabled }: Props) => {
+  if (ghost) {
+    return 'none';
+  }
+  if (disabled) return config.colors.lightbg;
+  return config.colors.interaction;
+};
 
 export default styled.button<Props>`
   border-radius: 24px;
@@ -13,15 +22,16 @@ export default styled.button<Props>`
   outline: none;
   display: inline-block;
   padding: 15px 25px;
-  background: ${(props) => (props.ghost ? 'none' : config.colors.interaction)};
+  background: ${getBackgroundColor};
   box-shadow: ${(props) =>
     props.flat ? 'none' : '0 10px 20px 0 rgba(0, 0, 0, 0.2)'};
-  color: ${config.colors.darkbg};
+  color: ${({ disabled }) =>
+    disabled ? config.colors.inactivegrey : config.colors.darkbg};
   font-weight: bold;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? 'default' : 'pointer')};
 
   &:hover {
-    opacity: 0.9;
+    opacity: ${(props) => (props.disabled ? 1 : 0.9)};
   }
 
   && a:link,
