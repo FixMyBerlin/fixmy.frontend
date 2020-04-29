@@ -1,4 +1,4 @@
-import AachenLogo from '~/images/aachen/logo-stadt-aachen.png';
+import AachenLogo from '~/images/aachen/logo-stadt-aachen-bg.png';
 import LandingBackground from '~/images/aachen/landing_background.jpg';
 
 export default {

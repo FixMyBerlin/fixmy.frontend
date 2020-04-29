@@ -7,6 +7,7 @@ import MenuButton from '~/pages/Reports/components/MenuButton';
 import ScrollLink from '~/pages/Reports/components/ScrollLink';
 import { media } from '~/styles/utils';
 import FahrRadLogo from '~/images/aachen/fahr-rad-logo@2x.png';
+import LogoAachen from '~/images/aachen/logo-stadt-aachen@2x.png';
 
 const Section = styled.section`
   height: 100vh;
@@ -139,7 +140,7 @@ const TopSection = ({ toUrl }) => (
       <StyledMenuButton whiteFill="true" />
       <CenterLogo src={FahrRadLogo} alt="Logo Fahr-Rad Aachen" />
       <TopLogo
-        src={config.reports.landing.logo.source}
+        src={LogoAachen}
         alt="Logo Stadt Aachen"
         data-cy="reports-landing-logo"
       />
