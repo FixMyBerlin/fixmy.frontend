@@ -61,7 +61,7 @@ export default {
       },
       {
         street: 'Liebigstraße',
-        kiez: 'Samarieterviertel',
+        kiez: 'Samariterviertel',
         region: 'Friedrichshain'
       }
     ]
