@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '@material-ui/core';
+import { Container, Paper } from '@material-ui/core';
 
 import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
@@ -17,6 +17,7 @@ import DoneBadgeImg2 from '~/images/spielstrassen/done-badge@2x.png';
 import DoneBadgeImg3 from '~/images/spielstrassen/done-badge@3x.png';
 import Header from '../components/Header';
 import Logo from '../components/Logo';
+import Notice from '../components/Notice';
 import { media } from '~/styles/utils';
 
 const CTA = styled(Button)`
@@ -89,13 +90,7 @@ const Landing = () => {
           Bezirksamt an Sonn- und Feiertagen jeweils von 12-18 Uhr Ihre
           Unterstützung.
         </p>
-        <p>
-          <strong>
-            Sieben ist die magische Zahl – wenn sich eine Gruppe von mindestens
-            sieben Anwohner:innen zur Betreuung der Spielstraße findet, kann
-            diese eingerichtet werden.
-          </strong>
-        </p>
+        <Notice />
         <h2>Wie funktioniert das genau?</h2>
         <ol>
           <li>
@@ -119,11 +114,11 @@ const Landing = () => {
           </li>
         </ol>
         <Link to={config.routes.spielstrassen.streets}>
-          <CTA>Zur Spielstraßen-Karte</CTA>
+          <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
         <Highlight>
-          Registrierung jetzt geschlossen! Für alle Spielstraßen haben sich
-          ausreichend Unterstützer:innen gemeldet.
+          Für alle Spielstraßen haben sich ausreichend Unterstützer:innen
+          gemeldet.
         </Highlight>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
@@ -197,11 +192,11 @@ const Landing = () => {
           Gießaktionen geholfen werden kann.
         </p>
         <Link to={config.routes.spielstrassen.streets}>
-          <CTA>Zur Spielstraßen-Karte</CTA>
+          <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
         <Highlight>
-          Registrierung jetzt geschlossen! Für alle Spielstraßen haben sich
-          ausreichend Unterstützer:innen gemeldet.
+          Für alle Spielstraßen haben sich ausreichend Unterstützer:innen
+          gemeldet.
         </Highlight>
         <Logo />
       </Container>
