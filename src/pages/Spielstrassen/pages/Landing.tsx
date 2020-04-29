@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Container, Paper } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
 import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
