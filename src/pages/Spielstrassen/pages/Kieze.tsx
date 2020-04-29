@@ -35,13 +35,17 @@ const Kieze = ({ streets, streetRequest }) => {
     <>
       <Header showInfoLink />
       <Container maxWidth="md">
-        <h2>In welchem Kiez wollen Sie eine Spielstraße unterstützen?</h2>
+        <h2>Geplante Temporäre Spielstraßen in Friedrichshain-Kreuzberg</h2>
         <a href={fullMapURL} target="_blank" rel="noopener noreferrer">
           <ImageInsert
             src={KiezKarte2}
             srcSet={`${KiezKarte1} 450w, ${KiezKarte2} 750w, ${KiezKarte3} 1125w`}
           />
         </a>
+        <p>
+          Für alle Spielstraßen haben sich ausreichend Unterstützer:innen
+          gefunden. Registrierung nicht mehr möglich.
+        </p>
         {streetRequest.state === RequestState.pending ? (
           <Loader />
         ) : (

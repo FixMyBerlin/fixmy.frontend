@@ -19,9 +19,16 @@ export default {
     },
     {
       type: 'link',
-      label: 'Radbügel in X-Hain (Meldungen nicht mehr möglich)',
-      icon: 'fixhere',
+      label: 'Radbügel in X-Hain',
+      icon: 'reports-icon',
       link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
+      border: true
+    },
+    {
+      type: 'link',
+      label: 'Spielstraßen in X-Hain',
+      icon: 'spielstrassen-icon',
+      link: '/friedrichshain-kreuzberg/spielstrassen',
       border: true
     },
     {
