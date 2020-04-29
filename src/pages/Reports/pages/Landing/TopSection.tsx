@@ -5,10 +5,6 @@ import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
 import { actions } from '~/pages/Reports/state/SubmitReportState';
-import FixMyLogo from '~/images/logofmb@2x.png';
-import MenuButton from '~/components/MenuButton';
-import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
-import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 import Link from '~/components/Link';
 import MenuButton from '~/pages/Reports/components/MenuButton';
 import ScrollLink from '~/pages/Reports/components/ScrollLink';
@@ -124,7 +120,7 @@ const TopLogo = styled.img`
   ${media.m`
     top: 2em;
     right: 2em;
-    width: 120px;
+    width: 148px;
   `}
 `;
 
@@ -133,7 +129,7 @@ const CenterLogo = styled.img`
 
   ${media.m`
     display: block;
-    width: 5em;
+    width: 80px;
     position: absolute;
     top: 2em;
   `};
@@ -203,4 +199,4 @@ const TopSection = ({ dispatch, history }) => (
   </Section>
 );
 
-export default connect()(withRouter(TopSection));
+export default withRouter(connect()(TopSection));
