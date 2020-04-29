@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Router, Route, Switch, useLocation, Redirect } from 'react-router-dom';
+import { Router, Route, Switch, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';

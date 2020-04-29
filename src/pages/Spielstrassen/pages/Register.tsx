@@ -43,17 +43,6 @@ const LoaderWrapper = styled.span`
   height: 0.75em;
 `;
 
-const Highlight = styled.p`
-  margin-top: 2em auto;
-  color: #cf0a7d;
-  margin-botom: 2em;
-  font-weight: bold;
-
-  span {
-    white-space: nowrap;
-  }
-`;
-
 const Register = ({ match, streets, streetRequest }) => {
   const [street, setStreet] = useState(
     getStreetInfo(streets, match.params?.slug)
