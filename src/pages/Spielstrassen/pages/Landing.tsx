@@ -12,8 +12,12 @@ import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
 import BackgroundImageB1 from '~/images/spielstrassen/landing-bg-2.jpg';
 import BackgroundImageB2 from '~/images/spielstrassen/landing-bg-2@2x.jpg';
 import BackgroundImageB3 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
+import DoneBadgeImg1 from '~/images/spielstrassen/done-badge.png';
+import DoneBadgeImg2 from '~/images/spielstrassen/done-badge@2x.png';
+import DoneBadgeImg3 from '~/images/spielstrassen/done-badge@3x.png';
 import Header from '../components/Header';
 import Logo from '../components/Logo';
+import { media } from '~/styles/utils';
 
 const CTA = styled(Button)`
   margin: 2em auto;
@@ -44,16 +48,39 @@ const Attribution = styled.div`
   }
 `;
 
+const DoneBadge = styled.img`
+  position: absolute;
+  bottom: 5%;
+  width: 50%;
+  max-width: 20em;
+
+  ${media.m`
+    left: 5%;
+  `}
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
 const Landing = () => {
   return (
     <>
       <Header />
       <Container maxWidth="md">
         <h1>Helfen Sie eine temporäre Spielstraße einzurichten!</h1>
-        <ImageInsert
-          src={BackgroundImageA2}
-          srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
-        />
+        <ImageContainer>
+          <DoneBadge
+            src={DoneBadgeImg2}
+            srcSet={`${DoneBadgeImg1} 450w, ${DoneBadgeImg2} 750w, ${DoneBadgeImg3} 1125w`}
+            alt="Vielen Dank! Die Registrierung ist jetzt geschlossen."
+          />
+          <ImageInsert
+            src={BackgroundImageA2}
+            srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
+          />
+        </ImageContainer>
         <p>
           Kinder brauchen viel Raum zum Spielen im Freien, gerade jetzt während
           der Corona-Pandemie. Deshalb richtet das Bezirksamt
