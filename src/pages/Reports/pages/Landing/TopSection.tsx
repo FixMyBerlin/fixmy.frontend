@@ -128,7 +128,7 @@ const CenterLogo = styled.img`
     display: block;
     width: 5em;
     position: absolute;
-    top: 1em;
+    top: 2em;
   `};
 `;
 
