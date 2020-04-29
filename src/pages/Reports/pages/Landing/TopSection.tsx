@@ -6,6 +6,7 @@ import Link from '~/components/Link';
 import MenuButton from '~/pages/Reports/components/MenuButton';
 import ScrollLink from '~/pages/Reports/components/ScrollLink';
 import { media } from '~/styles/utils';
+import FahrRadLogo from '~/images/aachen/fahr-rad-logo@2x.png';
 
 const Section = styled.section`
   height: 100vh;
@@ -120,14 +121,26 @@ const TopLogo = styled.img`
   `}
 `;
 
+const CenterLogo = styled.img`
+  display: none;
+
+  ${media.m`
+    display: block;
+    width: 5em;
+    position: absolute;
+    top: 1em;
+  `};
+`;
+
 const TopSection = ({ toUrl }) => (
   <Section>
     <MenuButton whiteFill="true" />
     <FlexWrapper>
       <StyledMenuButton whiteFill="true" />
+      <CenterLogo src={FahrRadLogo} alt="Logo Fahr-Rad Aachen" />
       <TopLogo
         src={config.reports.landing.logo.source}
-        alt="logo"
+        alt="Logo Stadt Aachen"
         data-cy="reports-landing-logo"
       />
 
