@@ -26,7 +26,7 @@ const RegionalLandingContent = () => {
 
 const Landing = () => (
   <>
-    <TopSection toUrl={`${config.routes.reports.new}`} />
+    <TopSection />
     <ContentWrapper>
       <RegionalLandingContent />
     </ContentWrapper>

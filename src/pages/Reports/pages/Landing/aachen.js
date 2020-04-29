@@ -12,6 +12,7 @@ import FahrRadLogo from '~/images/aachen/fahr-rad-logo@2x.png';
 
 const BottomLogo = styled.img`
   margin: 5em auto 3em;
+  width: 192px;
   ${media.m`
     display: none;
   `};
