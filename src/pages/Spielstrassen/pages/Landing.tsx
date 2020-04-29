@@ -92,7 +92,7 @@ const Landing = () => {
           </li>
         </ol>
         <Link to={config.routes.spielstrassen.streets}>
-          <CTA>Jetzt eine Spielstraße unterstützen</CTA>
+          <CTA>Zur Spielstraßen-Karte</CTA>
         </Link>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
@@ -166,7 +166,7 @@ const Landing = () => {
           Gießaktionen geholfen werden kann.
         </p>
         <Link to={config.routes.spielstrassen.streets}>
-          <CTA>Jetzt eine Spielstraße unterstützen</CTA>
+          <CTA>Zur Spielstraßen-Karte</CTA>
         </Link>
         <Logo />
       </Container>

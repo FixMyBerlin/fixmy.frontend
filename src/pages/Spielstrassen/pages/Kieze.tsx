@@ -35,7 +35,7 @@ const Kieze = ({ streets, streetRequest }) => {
     <>
       <Header showInfoLink />
       <Container maxWidth="md">
-        <h2>In welchem Kiez wollen Sie eine Spielstraße unterstützen?</h2>
+        <h2>Angedachte Temporäre Spielstraßen in Friedrichshain-Kreuzberg</h2>
         <a href={fullMapURL} target="_blank" rel="noopener noreferrer">
           <ImageInsert
             src={KiezKarte2}
