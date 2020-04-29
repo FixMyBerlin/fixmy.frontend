@@ -13,6 +13,7 @@ import KiezCard from '../components/KiezCard';
 import { RequestState } from '~/pages/Spielstrassen/state';
 import Loader from '~/components/Loader';
 import { Spielstrasse } from '../types';
+import Notice from '../components/Notice';
 
 const KiezListing = styled.div`
   margin: 1em 0 2em;
@@ -42,10 +43,7 @@ const Kieze = ({ streets, streetRequest }) => {
             srcSet={`${KiezKarte1} 450w, ${KiezKarte2} 750w, ${KiezKarte3} 1125w`}
           />
         </a>
-        <p>
-          Für alle Spielstraßen haben sich ausreichend Unterstützer:innen
-          gefunden. Registrierung nicht mehr möglich.
-        </p>
+        <Notice />
         {streetRequest.state === RequestState.pending ? (
           <Loader />
         ) : (

@@ -67,9 +67,7 @@ const Kiez = ({ kiez, street, supporters = 0 }) => {
           registriert
         </span>
         <Link to={signupUrl}>
-          <Button flat disabled>
-            Unterstützen
-          </Button>
+          <Button flat>Unterstützen</Button>
         </Link>
       </footer>
     </KiezCard>

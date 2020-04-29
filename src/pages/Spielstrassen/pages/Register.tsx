@@ -14,6 +14,7 @@ import KiezNotFound from '../components/NotFound';
 import KiezMap from '../components/KiezMap';
 import { RequestState } from '../state';
 import { getStreetInfo } from '~/pages/Spielstrassen/utils';
+import Notice from '../components/Notice';
 
 const SupporterInfo = styled.div`
   display: flex;
@@ -40,17 +41,6 @@ const LoaderWrapper = styled.span`
   display: inline-block;
   margin: 0 10px;
   height: 0.75em;
-`;
-
-const Highlight = styled.p`
-  margin-top: 2em auto;
-  color: #cf0a7d;
-  margin-botom: 2em;
-  font-weight: bold;
-
-  span {
-    white-space: nowrap;
-  }
 `;
 
 const Register = ({ match, streets, streetRequest }) => {
@@ -96,19 +86,14 @@ const Register = ({ match, streets, streetRequest }) => {
         </Section>
         <Section>
           <h2>Diese Spielstrasse benötigt Ihre Unterstützung!</h2>
+          <Notice />
           <p>
-            Die Spielstraße kann nur eingerichtet werden, wenn mindestens 7
-            Anwohner:innen die Betreuung vor Ort übernehmen. Hier finden Sie{' '}
+            Hier finden Sie{' '}
             <Link to={config.routes.spielstrassen.landing} className="internal">
               weitere Informationen
             </Link>{' '}
             zur Einrichtung der Spielstraßen.
           </p>
-
-          <Highlight>
-            {/* @ts-ignore */}
-            Registrierung möglich bis <span>29. April 2020, 13 Uhr</span>!
-          </Highlight>
           <p>
             <strong>
               Melden Sie sich über dieses Formular an, um als Kiezlots:in in der{' '}
