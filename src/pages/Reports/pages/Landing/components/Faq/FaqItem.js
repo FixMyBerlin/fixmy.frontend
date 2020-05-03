@@ -58,7 +58,7 @@ const CollapsibleWrapper = styled.div`
 `;
 
 const FaqItem = ({ heading, text, open }) => (
-  <CollapsibleWrapper data-cy="reports-landing-faq-item">
+  <CollapsibleWrapper>
     <Collapsible trigger={heading} open={open}>
       <StyledText dangerouslySetInnerHTML={{ __html: text }} />
     </Collapsible>
