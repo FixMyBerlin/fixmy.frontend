@@ -52,6 +52,10 @@ module.exports = {
   // environment before each test
   setupFiles: ['<rootDir>/jest/jest.setup.js'],
 
+  // A list of paths to modules that run some code to configure or
+  // set up the testing framework before each test file in the suite is executed.
+  setupFilesAfterEnv: ['<rootDir>/jest/jest.setupAfterEnv.js'],
+
   // An array of regexp pattern strings that are matched against all source
   // file paths, matched files will skip transformation
   transformIgnorePatterns: [`<rootDir>/node_modules/(?!${esModules})`]
