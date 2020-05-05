@@ -1,9 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid, Paper, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
+import config from '~/pages/Spielstrassen/config';
+import Button from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
 import KiezKarte1 from '~/images/spielstrassen/kiezkarte.jpg';
 import KiezKarte2 from '~/images/spielstrassen/kiezkarte@2x.jpg';
@@ -14,6 +16,15 @@ import { RequestState } from '~/pages/Spielstrassen/state';
 import Loader from '~/components/Loader';
 import { Spielstrasse } from '../types';
 import Notice from '../components/Notice';
+import { media } from '~/styles/utils';
+
+const ContactButton = styled(Button)`
+  margin-bottom: 2em;
+  width: 100%;
+  ${media.s`
+    width: initial;
+  `}
+`;
 
 const KiezListing = styled.div`
   margin: 1em 0 2em;
@@ -76,6 +87,20 @@ const Kieze = ({ streets, streetRequest }) => {
             </Grid>
           </Grid>
         )}
+        <Box mb={6}>
+          <Paper elevation={1}>
+            <Box px={4} py={1}>
+              <p>
+                Fehlt eine Straße? Wenn Sie Anregungen für weitere Spielstrassen
+                haben, schicken Sie diese an das Bezirksamt
+                Friedrichshain-Kreuzberg.
+              </p>
+              <ContactButton flat ghost>
+                <a href={`mailto:${config.spielstrassen.email}`}>Mail senden</a>
+              </ContactButton>
+            </Box>
+          </Paper>
+        </Box>
       </Container>
     </>
   );
