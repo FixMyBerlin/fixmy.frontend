@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Route, Switch, Redirect, matchPath } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
+import history from '~/history';
 import config from '~/pages/KatasterKI/config';
 import { media } from '~/styles/utils';
 import Landing from './pages/Landing';
@@ -101,7 +102,7 @@ const KatasterKI = () => {
       <AppGlobalStyle />
       <ScrollToTop />
       <ContentWrapper isLanding={isLanding}>
-        <Router>
+        <Router history={history}>
           <Switch>
             <Route
               exact
