@@ -8,8 +8,8 @@ export interface JSONArray extends Array<JSONValue> {}
 export type JSONValue = JSONPrimitive | JSONObject | JSONArray;
 
 export type Callbacks = {
-  setSubmitting?: (boolean) => void;
-  setErrors?: (JsonValue) => void;
+  setSubmitting?: (arg0: boolean) => void;
+  setErrors?: (arg0: JSONValue) => void;
 };
 
 export type ExpectedResponseBodyType =
@@ -22,5 +22,7 @@ export type ExpectedResponseBodyType =
 export type RequestOptions = {
   kyOptions?: KyOptions;
   callbacks?: Callbacks;
-  responseBodyType?: ExpectedResponseBodyType;
+  accept?: ExpectedResponseBodyType;
 };
+
+export interface FMCError extends Error {}

@@ -4,12 +4,13 @@
  * - allowing to hook into before/after a request is made or if an error occurs
  * - doing  preparatory work for network error request handling
  */
-import ky, { Options as KyOptions } from 'ky';
+import ky from 'ky-universal';
+import { Options as KyOptions } from 'ky';
 import config from '~/config';
 import store from '~/store';
 import { RequestOptions } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
-import handleError from '~/services/api/errorHandling';
+import handleError from './errorHandling';
 
 // setup ky
 
@@ -30,41 +31,39 @@ const configuredKy = ky.create({
 
 // Generic Request Handler
 
-const defaultRequestOptions: RequestOptions = {
+const defaultOptions: RequestOptions = {
   kyOptions: {},
   callbacks: {
     setSubmitting: () => {}
   },
-  responseBodyType: 'json'
+  accept: 'json'
 };
 
 export default async function request(
   route: string,
   {
-    callbacks = {},
-    kyOptions = {},
-    responseBodyType = 'json'
-  }: RequestOptions = defaultRequestOptions
+    callbacks = defaultOptions.callbacks,
+    kyOptions = defaultOptions.kyOptions,
+    accept = defaultOptions.accept
+  }: RequestOptions = defaultOptions
 ): Promise<Response> {
   let response;
 
-  const mergedKyOptions = prepareKyOptions(kyOptions);
-  const { setErrors, setSubmitting = () => {} } = callbacks;
+  const mergedKyOptions = mergeKyOptions(kyOptions);
+  const { setErrors, setSubmitting } = callbacks;
 
-  setSubmitting(true);
+  if (setSubmitting) setSubmitting(true);
   try {
-    response = await configuredKy(route, mergedKyOptions)[
-      responseBodyType // this usage sets the appropriate accept header
-    ]();
+    response = await configuredKy(route, mergedKyOptions)[accept]();
   } catch (e) {
     await handleError(e, setErrors);
   } finally {
-    setSubmitting(false);
+    if (setSubmitting) setSubmitting(false);
   }
   return response;
 }
 
-function prepareKyOptions(requestConfig: KyOptions = {}) {
+function mergeKyOptions(requestConfig: KyOptions = {}) {
   const defaultKyOptions = {
     method: 'get',
     timeout: 30 * 1000

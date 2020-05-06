@@ -1,6 +1,6 @@
 import { Options as KyOptions } from 'ky';
-import { JSONValue, RequestOptions } from '~/services/api/types';
-import request from '~/services/api/apiService';
+import { JSONValue, RequestOptions } from './types';
+import request from './request';
 
 export function get(
   route: string,

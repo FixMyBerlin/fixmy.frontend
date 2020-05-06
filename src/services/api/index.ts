@@ -1,4 +1,4 @@
-import request from './apiService';
+import request from './request';
 import { get, post, patch } from './shorthands';
 
 export default {

@@ -1,15 +1,17 @@
-import ky from 'ky';
+import ky from 'ky-universal';
 import {
   ApiError,
   NetworkError,
   TimeoutError
 } from '~/services/api/httpErrors';
-import { JSONValue } from '~/services/api/types';
+import { FMCError } from './types';
 
-export default async function handleError(e, setErrors) {
+export default async function handleError(
+  e: Error,
+  setErrors: (arg0: string) => any
+) {
   const { translatedError, errorMessage } = await mapError(e);
 
-  // invoke error hook with json answer (if any)
   if (setErrors && errorMessage) {
     setErrors(errorMessage);
   }
@@ -25,7 +27,7 @@ async function mapError(
   e
 ): Promise<{
   errorMessage: string;
-  translatedError: any; // TODO: type Error
+  translatedError: FMCError;
 }> {
   let translatedError;
   let errorMessage;
@@ -71,11 +73,7 @@ async function parseErrorResponse(errorResponse: Response): Promise<string> {
   if (errorJson) {
     return typeof errorJson?.detail === 'string'
       ? errorJson.detail
-      : printError(errorJson);
+      : JSON.stringify(errorJson, null, '2');
   }
   return errorText;
-}
-
-export function printError(errorJson: JSONValue): string {
-  return JSON.stringify(errorJson, null, '2');
 }
