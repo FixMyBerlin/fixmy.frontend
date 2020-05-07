@@ -189,15 +189,13 @@ class ProjectDetail extends PureComponent {
             </DetailBodySection>
           ) : null}
         </DetailBody>
-        {config.showLikeButton && (
-          <DetailFooter>
-            <ProjectLike
-              token={this.props.token}
-              url={url}
-              id={this.props.match.params.id}
-            />
-          </DetailFooter>
-        )}
+        <DetailFooter>
+          <ProjectLike
+            token={this.props.token}
+            url={url}
+            id={this.props.match.params.id}
+          />
+        </DetailFooter>
       </>
     );
   }

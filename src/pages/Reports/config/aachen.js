@@ -56,6 +56,8 @@ export default {
     }
   },
   region: 'Aachen',
+  feedbackMail: 'verkehrsmanagement@mail.aachen.de',
+  flatButtons: true,
   intro:
     'Damit Sie Ihr Fahrrad überall sicher abschließen können, baut die Stadt Aachen umfassend neue Fahrradabstellmöglichkeiten aus. Da Sie  als Bürger*in am besten wissen, wo Sie Ihr Fahrrad abstellen, können Sie hier melden, wo genau Sie neue Bügel benötigen.',
   steps: [

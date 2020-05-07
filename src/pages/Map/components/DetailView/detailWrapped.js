@@ -151,22 +151,12 @@ function detailWrapped(Component) {
       this.props.onClose();
     };
 
-    getJSONFallbackPath() {
-      const file =
-        this.props.apiEndpoint === 'planungen'
-          ? 'planning-sections-example.json'
-          : 'plannings-example.json';
-      return `/data/${file}`;
-    }
-
     loadData = async () => {
       const { id } = this.props.match.params;
 
       this.setState({ isLoading: true });
 
-      const dataUrl = config.offlineMode
-        ? this.getJSONFallbackPath()
-        : `${config.apiUrl}/${this.props.apiEndpoint}/${id}`;
+      const dataUrl = `${config.apiUrl}/${this.props.apiEndpoint}/${id}`;
 
       try {
         const data = await ky.get(dataUrl).json();

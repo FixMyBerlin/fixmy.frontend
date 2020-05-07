@@ -18,7 +18,7 @@ const MapSwitchWrapper = styled.div`
   max-width: 550px;
   margin: 0 auto;
   height: 75px;
-  opacity: ${config.isSwitchEnabled ? 1 : 0.4};
+  opacity: 1;
 
   ${media.m`
     padding: 25px 15px;
@@ -123,7 +123,7 @@ class MapSwitch extends PureComponent {
           <Switch
             on={isPlanningView}
             onClick={this.handleChange(isPlanningView)}
-            enabled={config.isSwitchEnabled}
+            enabled={true}
           >
             {isPlanningView ? <PylonIcon /> : <BikeIcon />}
           </Switch>

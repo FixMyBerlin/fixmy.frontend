@@ -17,7 +17,6 @@ export default {
   routes,
   staticpages,
   siteTitle: 'Radbügel für Aachen',
-  feedbackMail: 'verkehrsmanagement@mail.aachen.de',
   apiUrl:
     process.env.API_URL ||
     apiEndpoints[process.env.BACKEND] ||
@@ -28,6 +27,5 @@ export default {
     interaction: '#6E9BD2'
   },
   titleFont: 'The Mix',
-  baseFont: 'Arial',
-  flatButtons: true
+  baseFont: 'Arial'
 };

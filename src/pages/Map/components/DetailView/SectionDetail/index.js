@@ -266,7 +266,7 @@ class SectionDetails extends PureComponent {
             <BetaOverlay />
           </BetaWrapper>
         </DetailInfoWrapper>
-        {config.showFeedbackForm && <FeedbackForm />}
+        <FeedbackForm />
       </>
     );
   }
