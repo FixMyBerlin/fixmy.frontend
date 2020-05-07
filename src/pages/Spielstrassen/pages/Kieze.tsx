@@ -96,7 +96,9 @@ const Kieze = ({ streets, streetRequest }) => {
                 Friedrichshain-Kreuzberg.
               </p>
               <ContactButton flat ghost>
-                <a href={`mailto:${config.spielstrassen.email}`}>Mail senden</a>
+                <a href=" mailto:spielstrasse.sga@ba-fk.berlin.de?subject=Vorschlag%20f%C3%BCr%20tempor%C3%A4re%20Spielstra%C3%9Fe&body=An%20das%20Bezirksamt%20Friedrichshain-Kreuzberg%2C%20Stra%C3%9Fen%20und%20Gr%C3%BCnfl%C3%A4chenamt%2C%0D%0A%0D%0Aich%20m%C3%B6chte%20folgende%20Stra%C3%9Fe%20f%C3%BCr%20die%20Einrichtung%20einer%20tempor%C3%A4ren%20Spielstra%C3%9Fe%20vorschlagen%3A%0D%0A%0D%0A%0D%0A%0D%0ADieser%20Abschnitt%20der%20Stra%C3%9Fe%20w%C3%A4re%20daf%C3%BCr%20geeignet%20(bitte%20bezeichnen%20Sie%20die%20Knotenpunkte%20oder%20Querstra%C3%9Fen%20zwischen%20denen%20die%20Spielstra%C3%9Fe%20eingerichtet%20werden%20sollte)%3A%0D%0A%0D%0A%0D%0A%0D%0AWeitere%20Anmerkungen%20zu%20meinem%20Vorschlag%3A">
+                  Mail senden
+                </a>
               </ContactButton>
             </Box>
           </Paper>

@@ -22,9 +22,10 @@ const Notice = () => (
   <Wrapper elevation={3}>
     <InfoIcon />
     <div>
-      Alle Spielstraßen können eingerichtet werden, da die Mindestzahl an
-      Unterstützer:innen erreicht wurde. Sie können sich aber noch registrieren,
-      um die vorhandenen Kiezlots:innen zu unterstützen.
+      Die Spielstraßen werden mit Ihrer Hilfe jetzt jeden Sonntag geöffnet. Wenn
+      Sie bei der Betreuung helfen können, registrieren Sie sich hier, wir
+      leiten Ihren Kontakt dann an die Teamkapitän:innen der jeweiligen Straße
+      weiter.
     </div>
   </Wrapper>
 );
