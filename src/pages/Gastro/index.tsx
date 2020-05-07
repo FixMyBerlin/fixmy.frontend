@@ -10,9 +10,7 @@ import BackgroundImageA1 from '~/images/spielstrassen/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/spielstrassen/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
 
-const SignupWrapper = styled(Box)`
-  margin: 0 -20px 0 -20px;
-`;
+const SignupWrapper = styled(Box)``;
 
 const Gastro = () => {
   return (
