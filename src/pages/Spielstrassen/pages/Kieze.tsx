@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Container, Grid, Paper, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
-import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
 import KiezKarte1 from '~/images/spielstrassen/kiezkarte.jpg';
