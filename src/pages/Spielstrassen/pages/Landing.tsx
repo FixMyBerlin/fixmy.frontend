@@ -87,7 +87,7 @@ const Landing = () => {
           der Corona-Pandemie. Deshalb richtet das Bezirksamt
           Friedrichshain-Kreuzberg begleitend zur Spielplatzöffnung bis zu 30
           temporäre Spielstraßen ein. Damit das möglich wird, benötigt das
-          Bezirksamt an Sonn- und Feiertagen jeweils von 12-18 Uhr Ihre
+          Bezirksamt an Sonntagen jeweils von 13-19 Uhr Ihre
           Unterstützung.
         </p>
         <Notice />
@@ -98,8 +98,7 @@ const Landing = () => {
             Kiezlots:in unterstützen wollen.
           </li>
           <li>
-            Das Bezirksamt kontaktiert Sie, sobald sich mindestens 7 Personen
-            für eine Straße gefunden haben.
+            Ihre Kontaktdaten werden an die Teamkapitän:in der Spielstraße weitergegeben, dieser Kontaktiert Sie für alles Weitere.
           </li>
           <li>
             Wenn Sie sich als Teamkapitän:in angemeldet haben schickt Ihnen das
@@ -116,10 +115,6 @@ const Landing = () => {
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
-        <Highlight>
-          Für alle Spielstraßen haben sich ausreichend Unterstützer:innen
-          gemeldet.
-        </Highlight>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
           Notwendig für die Umsetzung ist die Bereitschaft der Bürger:innen,
@@ -187,17 +182,13 @@ const Landing = () => {
         </p>
         <p>
           An einigen der betreffenden Straßen wird das Straßen- und
-          Grünflächenamt Tankwagen oder Wasserzapfstationen einrichten, damit
+          Grünflächenamt Wasserzapfstationen einrichten, damit
           auch dem leidenden Baumbestand durch gemeinsame nachbarschaftliche
           Gießaktionen geholfen werden kann.
         </p>
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
-        <Highlight>
-          Für alle Spielstraßen haben sich ausreichend Unterstützer:innen
-          gemeldet.
-        </Highlight>
         <Logo />
       </Container>
     </>
