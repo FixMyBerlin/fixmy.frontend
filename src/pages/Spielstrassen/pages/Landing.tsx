@@ -24,17 +24,6 @@ const CTA = styled(Button)`
   margin: 2em auto;
 `;
 
-const Highlight = styled.p`
-  margin-top: -1em;
-  color: #cf0a7d;
-  margin-botom: 2em;
-  font-weight: bold;
-
-  span {
-    white-space: nowrap;
-  }
-`;
-
 const Attribution = styled.div`
   font-size: 0.75em;
   margin-top: -2.5em;
@@ -87,8 +76,7 @@ const Landing = () => {
           der Corona-Pandemie. Deshalb richtet das Bezirksamt
           Friedrichshain-Kreuzberg begleitend zur Spielplatzöffnung bis zu 30
           temporäre Spielstraßen ein. Damit das möglich wird, benötigt das
-          Bezirksamt an Sonntagen jeweils von 13-19 Uhr Ihre
-          Unterstützung.
+          Bezirksamt an Sonntagen jeweils von 13-19 Uhr Ihre Unterstützung.
         </p>
         <Notice />
         <h2>Wie funktioniert das genau?</h2>
@@ -98,7 +86,8 @@ const Landing = () => {
             Kiezlots:in unterstützen wollen.
           </li>
           <li>
-            Ihre Kontaktdaten werden an die Teamkapitän:in der Spielstraße weitergegeben, dieser Kontaktiert Sie für alles Weitere.
+            Ihre Kontaktdaten werden an die Teamkapitän:in der Spielstraße
+            weitergegeben, dieser Kontaktiert Sie für alles Weitere.
           </li>
           <li>
             Wenn Sie sich als Teamkapitän:in angemeldet haben schickt Ihnen das
@@ -182,9 +171,9 @@ const Landing = () => {
         </p>
         <p>
           An einigen der betreffenden Straßen wird das Straßen- und
-          Grünflächenamt Wasserzapfstationen einrichten, damit
-          auch dem leidenden Baumbestand durch gemeinsame nachbarschaftliche
-          Gießaktionen geholfen werden kann.
+          Grünflächenamt Wasserzapfstationen einrichten, damit auch dem
+          leidenden Baumbestand durch gemeinsame nachbarschaftliche Gießaktionen
+          geholfen werden kann.
         </p>
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
