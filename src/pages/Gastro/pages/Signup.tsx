@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import config from '~/config';
 import Header from '../components/Header';
 import Thanks from '../components/Thanks';
+import SignupForm from '../components/SignupForm';
 
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};
@@ -18,10 +19,7 @@ const Section = styled.section`
 
 const Signup = () => {
   const [isSubmitting, setSubmitting] = useState(false);
-  const [submission, setSubmission] = useState({
-    area_requested: 2,
-    address: 'Schöneweider Str. 4, 12055 Berlin'
-  });
+  const [submission, setSubmission] = useState(null);
 
   return (
     <>
@@ -44,7 +42,7 @@ const Signup = () => {
               </p>
             </Section>
             <Section>
-              <p>Anmeldeformular</p>
+              <SignupForm onSuccess={setSubmission} onSubmit={setSubmitting} />
             </Section>
           </>
         )}
