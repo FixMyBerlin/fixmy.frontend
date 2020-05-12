@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
 
-import config from '~/config';
+import config from './config';
 import Landing from './pages/Landing';
 import Signup from './pages/Signup';
 import Markdown from '~/pages/Markdown';

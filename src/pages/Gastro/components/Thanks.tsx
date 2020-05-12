@@ -2,7 +2,7 @@ import React from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import styled from 'styled-components';
 
-import config from '~/config';
+import config from '~/pages/Gastro/config';
 import Button from '~/components2/Button';
 import Logo from '~/components2/LogoFooter';
 import { media } from '~/styles/utils';
@@ -26,7 +26,8 @@ const Thanks = ({ submission }) => (
     <h2>Vielen Dank für Ihre Interessensbekundung</h2>
     <p>
       Sie haben einen Bedarf von{' '}
-      <strong>{submission.area_requested} Sitzplätzen</strong> an der{' '}
+      <strong>{submission.seats_requested} Sitzplätzen</strong> für{' '}
+      <strong>{submission.name}</strong> an der Adresse{' '}
       <strong>{submission.address}</strong> gemeldet.
     </p>
 

@@ -6,7 +6,10 @@ export interface GastroSignup {
   name: string;
   email: string;
   address: string;
-  geometry: number[];
+  geometry: {
+    type: 'Point';
+    coordinates: [number, number];
+  };
   seats_requested: number;
   time_requested: string;
   accepts_agreement: boolean;

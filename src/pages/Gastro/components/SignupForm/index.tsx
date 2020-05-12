@@ -5,18 +5,17 @@ import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
 import styled from 'styled-components';
 import slugify from 'slugify';
 
-import config from '~/config';
 import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import Slider from '~/components/Slider';
 import logger from '~/utils/logger';
-// import { SignupData } from '../../types';
-// import api from '../../api';
-// import logger from '~/utils/logger';
-// import validate from './validate';
+import config from '~/pages/Gastro/config';
+import { GastroSignup } from '~/pages/Gastro/types';
+import api from '~/pages/Gastro/api';
+import validate from './validate';
 
 /* eslint-disable camelcase */
-interface FormData {
+export interface FormData {
   name?: string;
   email?: string;
   address?: string;
@@ -58,10 +57,27 @@ const SliderWrapper = styled.div`
 const SignupForm = ({ onSuccess, onSubmit }) => (
   <Formik
     initialValues={initialValues}
-    onSubmit={(values, { setSubmitting, setStatus }) => {
-      logger(values);
-      onSubmit();
-      setTimeout(() => onSuccess(values), 1000);
+    validate={validate}
+    onSubmit={async (values, { setSubmitting, setStatus }) => {
+      // @ts-ignore
+      const signupData: GastroSignup = {
+        ...values,
+        geometry: {
+          type: 'Point',
+          coordinates: [1, 1]
+        },
+        campaign: config.gastro.campaign
+      };
+      try {
+        const response = await api.signup(signupData);
+        onSuccess(response);
+      } catch (e) {
+        logger(e);
+        setStatus(
+          'Es gab leider einen Fehler bei Ihrer Anmeldung. Bitte versuchen Sie es später noch einmal.'
+        );
+      }
+      setSubmitting(false);
     }}
   >
     {({ status, values, handleChange, isSubmitting }) => (
@@ -115,7 +131,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           </h4>
 
           <ErrorMessage
-            name="captain"
+            name="time_requested"
             render={(msg) => <FormError error>{msg}</FormError>}
           />
           <Field component={RadioGroup} name="time_requested">

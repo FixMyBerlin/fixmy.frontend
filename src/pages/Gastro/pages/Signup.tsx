@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 
-import config from '~/config';
+import config from '~/pages/Gastro/config';
 import Header from '../components/Header';
 import Thanks from '../components/Thanks';
 import SignupForm from '../components/SignupForm';
@@ -14,6 +14,10 @@ const Section = styled.section`
 
   &:last-child {
     border-bottom: none;
+  }
+
+  h1 {
+    overflow-wrap: break-word;
   }
 `;
 
@@ -29,7 +33,7 @@ const Signup = () => {
         {submission == null && (
           <>
             <Section>
-              <h1>Interessensbekundung</h1>
+              <h1>Interessens&shy;bekundung</h1>
               <p>
                 <strong>
                   Füllen Sie dieses Formular aus, um dem Bezirksamt Ihren Bedarf

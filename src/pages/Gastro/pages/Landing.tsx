@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container } from '@material-ui/core';
 
-import config from '~/pages/Spielstrassen/config';
+import config from '~/pages/Gastro/config';
 import Button from '~/components2/Button';
 import Header from '../components/Header';
 import Link from '~/components/Link';

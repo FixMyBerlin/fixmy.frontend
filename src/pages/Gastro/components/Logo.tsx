@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import config from '~/config';
+import config from '~/pages/Gastro/config';
 import FMBLogo from '~/images/logofmb@3x.png';
 
 const Wrapper = styled.div`
