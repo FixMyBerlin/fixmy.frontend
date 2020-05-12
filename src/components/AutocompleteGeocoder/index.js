@@ -58,6 +58,7 @@ class AutocompleteGeocoder extends PureComponent {
           onEnterKeyPress={this.onEnterPress}
           searchStringMinLength={this.props.searchStringMinLength}
           debounceTime={this.props.debounceTime}
+          label={this.props.label}
         />
 
         <SuggestionList

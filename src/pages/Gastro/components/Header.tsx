@@ -4,7 +4,7 @@ import config from '~/pages/Gastro/config';
 
 const GastroHeader = ({ showInfoLink }) => (
   <Header to={config.routes.gastro.landing} showInfoLink={showInfoLink}>
-    Gastro Sonderflächen für Friedrichshain-Kreuzberg
+    Schankstraßen für Friedrichshain-Kreuzberg
   </Header>
 );
 

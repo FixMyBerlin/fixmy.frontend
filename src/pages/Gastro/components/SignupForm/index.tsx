@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import slugify from 'slugify';
 
 import Button from '~/components2/Button';
+import MapLocator from '~/components2/MapLocator';
 import { Form } from '~/components2/Form';
 import Slider from '~/components/Slider';
 import logger from '~/utils/logger';
@@ -13,12 +14,14 @@ import config from '~/pages/Gastro/config';
 import { GastroSignup } from '~/pages/Gastro/types';
 import api from '~/pages/Gastro/api';
 import validate from './validate';
+import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 
 /* eslint-disable camelcase */
 export interface FormData {
   name?: string;
   email?: string;
   address?: string;
+  location?: [number, number];
   seats_requested?: number;
   time_requested?: string;
   accepts_agreement?: boolean | '';
@@ -30,6 +33,7 @@ const initialValues: FormData = {
   name: '',
   email: '',
   address: '',
+  location: null,
   seats_requested: 4,
   time_requested: '',
   accepts_agreement: '',
@@ -64,7 +68,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
         ...values,
         geometry: {
           type: 'Point',
-          coordinates: [1, 1]
+          coordinates: values.location
         },
         campaign: config.gastro.campaign
       };
@@ -83,18 +87,23 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
     {({ status, values, handleChange, isSubmitting }) => (
       <StyledForm>
         <section>
-          <Field
-            name="name"
-            component={TextField}
-            label="Name ihres Gastronomiebetriebs"
-            fullWidth
+          <h4>Name ihres Gastronomiebetriebs</h4>
+          <Field name="name" component={TextField} label="Name" fullWidth />
+          <h4>Adresse Ihres Betriebes</h4>
+          <AutocompleteGeocoder
+            onInputFocus={() => logger('focus')}
+            onInputBlur={() => logger('focus off')}
+            onLocationPick={({ address, coords: { lng, lat } }) => {
+              handleChange({ target: { value: address, name: 'address' } });
+              handleChange({ target: { value: [lng, lat], name: 'geometry' } });
+            }}
+            onSearchStart={logger}
+            searchStringMinLength={3}
+            debounceTime={300}
+            onError={logger}
+            label="Adresse hier suchen..."
           />
-          <Field
-            name="address"
-            component={TextField}
-            label="Adresse"
-            fullWidth
-          />
+          <MapLocator location={values.location} />
         </section>
         <section>
           <p>
