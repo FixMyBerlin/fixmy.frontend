@@ -1,37 +1,108 @@
-import React from 'react';
-import { Box, Container } from '@material-ui/core';
+import React, { useEffect } from 'react';
+import { Router, Route, Switch, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import SubscriptionWidget from './components/SubscriptionWidget';
-import Header from './components/Header';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core';
+
 import config from '~/config';
-import Logo from './components/Logo';
-import { Insert as ImageInsert } from '~/components2/Image';
-import BackgroundImageA1 from '~/images/spielstrassen/landing-bg.jpg';
-import BackgroundImageA2 from '~/images/spielstrassen/landing-bg@2x.jpg';
-import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
+import Landing from './pages/Landing';
+import Markdown from '~/pages/Markdown';
+import history from '~/history';
+import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
+import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
 
-const SignupWrapper = styled(Box)``;
+const AppStyles = styled.div`
+  font-size: 16px;
+  line-height: 24px;
 
-const Gastro = () => {
-  return (
-    <>
-      <Header
-        title="Gastro Sonderflächen für Friedrichshain-Kreuzberg"
-        url={config.routes.gastro.landing}
-      />
-      <Container maxWidth="md">
-        <h1>Erweitern Sie die Außenflächen für Ihre Gastronomie</h1>
-        <ImageInsert
-          src={BackgroundImageA2}
-          srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
-        />
-        <SignupWrapper>
-          <SubscriptionWidget url="https://app.mailjet.com/widget/iframe/2YIa/qYV" />
-        </SignupWrapper>
-        <Logo />
-      </Container>
-    </>
-  );
+  h1 {
+    font-family: ${config.titleFont};
+    line-height: 1.25em;
+  }
+
+  h1 + .subline {
+    margin-top: -1em;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 1.25em;
+  }
+
+  ol {
+    padding-left: 1em;
+  }
+
+  li {
+    margin-bottom: 0.5em;
+  }
+
+  a.internal,
+  a.external,
+  a.internal:link,
+  a.external:link,
+  a.internal:visited,
+  a.external:visited,
+  a.internal:active,
+  a.external:active {
+    color: ${config.colors.darkbg};
+    text-decoration: none;
+    border-bottom: 1px solid ${config.colors.interaction};
+  }
+
+  .external,
+  .internal {
+    background-size: 9px 9px;
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 15px;
+  }
+
+  .external {
+    background-image: url(${LinkExternal});
+  }
+
+  .internal {
+    background-image: url(${LinkInternal});
+  }
+`;
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: config.colors.interaction },
+    secondary: { main: config.colors.change_4 },
+    error: { main: config.colors.error },
+    info: { main: config.colors.interaction },
+    success: { main: config.colors.label_01 }
+  }
+});
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
 };
+
+const Gastro = ({ dispatch }) => (
+  <AppStyles>
+    <ThemeProvider theme={theme}>
+      <Router history={history}>
+        <ScrollToTop />
+        <Switch>
+          <Route
+            exact
+            path={config.routes.gastro.landing}
+            component={Landing}
+          />
+          <Route render={() => <Markdown page="nomatch" />} />
+        </Switch>
+      </Router>
+    </ThemeProvider>
+  </AppStyles>
+);
 
 export default Gastro;

@@ -38,6 +38,8 @@ export default {
   profile: '/profil',
   userVerify: '/bestaetigen',
   gastro: {
-    landing: '/friedrichshain-kreuzberg/gastroflaechen'
+    landing: '/friedrichshain-kreuzberg/isst-draußen',
+    signup: '/friedrichshain-kreuzberg/isst-draußen/anmeldung',
+    thanks: '/friedrichshain-kreuzberg/isst-draußen/danke'
   }
 };

@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { Container, Grid, Paper, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
+import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
 import KiezKarte1 from '~/images/spielstrassen/kiezkarte.jpg';
 import KiezKarte2 from '~/images/spielstrassen/kiezkarte@2x.jpg';
 import KiezKarte3 from '~/images/spielstrassen/kiezkarte@3x.jpg';
-import Header from '../components/Header';
+import Header from '~/components2/Header';
 import KiezCard from '../components/KiezCard';
 import { RequestState } from '~/pages/Spielstrassen/state';
 import Loader from '~/components/Loader';
@@ -44,7 +45,9 @@ const Kieze = ({ streets, streetRequest }) => {
     .sort(sortArray);
   return (
     <>
-      <Header showInfoLink />
+      <Header to={config.routes.spielstrassen.landing} showInfoLink>
+        Temporäre Spielstraßen für Friedrichshain-Kreuzberg
+      </Header>
       <Container maxWidth="md">
         <h2>Geplante Temporäre Spielstraßen in Friedrichshain-Kreuzberg</h2>
         <a href={fullMapURL} target="_blank" rel="noopener noreferrer">
