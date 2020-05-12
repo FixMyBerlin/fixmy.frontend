@@ -9,7 +9,6 @@ import config from '~/config';
 import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import Slider from '~/components/Slider';
-import { media } from '~/styles/utils';
 import logger from '~/utils/logger';
 // import { SignupData } from '../../types';
 // import api from '../../api';
@@ -21,10 +20,10 @@ interface FormData {
   name?: string;
   email?: string;
   address?: string;
-  area_requested?: number;
+  seats_requested?: number;
   time_requested?: string;
-  agreed_agreement?: boolean;
-  tos_accepted?: boolean;
+  accepts_agreement?: boolean | '';
+  tos_accepted?: boolean | '';
 }
 /* eslint-enable camelcase */
 
@@ -32,9 +31,9 @@ const initialValues: FormData = {
   name: '',
   email: '',
   address: '',
-  area_requested: 4,
+  seats_requested: 4,
   time_requested: '',
-  agreed_agreement: '',
+  accepts_agreement: '',
   tos_accepted: ''
 };
 
@@ -98,12 +97,12 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
               max={100}
               step={4}
               marks={{ 4: 4, 100: 100 }}
-              name="area_requested"
-              value={values.area_requested}
+              name="seats_requested"
+              value={values.seats_requested}
               tooltip={false}
-              handleLabel={values.area_requested.toString()}
+              handleLabel={values.seats_requested.toString()}
               onChange={(value) =>
-                handleChange({ target: { value, name: 'area_requested' } })
+                handleChange({ target: { value, name: 'seats_requested' } })
               }
             />
           </SliderWrapper>
@@ -144,10 +143,10 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
         </h4>
 
         <ErrorMessage
-          name="agreed_agreement"
+          name="accepts_agreement"
           render={(msg) => <FormError error>{msg}</FormError>}
         />
-        <Field component={RadioGroup} name="time_requested">
+        <Field component={RadioGroup} name="accepts_agreement">
           <FormControlLabel
             value="1"
             control={<Radio disabled={isSubmitting} />}

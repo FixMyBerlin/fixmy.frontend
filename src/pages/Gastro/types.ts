@@ -7,8 +7,8 @@ export interface GastroSignup {
   email: string;
   address: string;
   geometry: number[];
-  area_requested: number;
+  seats_requested: number;
   time_requested: string;
-  agreed_agreement: boolean;
+  accepts_agreement: boolean;
   tos_accepted: boolean;
 }
