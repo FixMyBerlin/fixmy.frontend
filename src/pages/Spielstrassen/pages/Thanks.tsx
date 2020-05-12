@@ -12,9 +12,9 @@ import KiezMap from '../components/KiezMap';
 // import ShareButton from '../components/ShareButton';
 // import ShareButtonDesktop from '../components/ShareButtonDesktop';
 import Button from '~/components2/Button';
+import Logo from '~/components2/LogoFooter';
 import config from '../config';
 import { media } from '~/styles/utils';
-import Logo from '../components/Logo';
 
 const LinkButton = styled(Button)`
   width: 100%;
@@ -68,7 +68,7 @@ const Thanks = ({ match, streets, streetRequest }) => {
         </CopyToClipboard>
         {/* <ShareButton text={shareText} url={sharingUrl} /> */}
         {/* <ShareButtonDesktop /> */}
-        <Logo />
+        <Logo>Bereitgestellt durch FixMyBerlin</Logo>
       </Container>
     </>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import config from '~/pages/Spielstrassen/config';
+import config from '~/config';
 import FMBLogo from '~/images/logofmb@3x.png';
 
 const Wrapper = styled.div`
@@ -25,10 +25,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const Logo = () => (
+const Logo = ({ children, to = '/' }) => (
   <Wrapper>
-    <span>Bereitgestellt durch</span>
-    <Link to="/">
+    {children && <span>{children}</span>}
+    <Link to={to}>
       <img src={FMBLogo} alt="Logo FixMyBerlin" />
     </Link>
   </Wrapper>
