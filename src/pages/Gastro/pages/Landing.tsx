@@ -4,7 +4,7 @@ import { Container } from '@material-ui/core';
 
 import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
-import Header from '~/components2/Header';
+import Header from '../components/Header';
 import Link from '~/components/Link';
 import { Insert as ImageInsert } from '~/components2/Image';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
@@ -43,9 +43,7 @@ const Highlight = styled.p`
 const Landing = () => {
   return (
     <>
-      <Header to={config.routes.gastro.landing}>
-        Gastro Sonderflächen für Friedrichshain-Kreuzberg
-      </Header>
+      <Header showInfoLink={false} />
       <Container maxWidth="md">
         <h1>XHain isst draußen - aber mit Abstand</h1>
         <ImageInsert
