@@ -107,6 +107,7 @@
     "@turf/boolean-within": "^6.0.1",
     "@turf/helpers": "^6.1.4",
     "@turf/length": "^6.0.2",
+    "@types/mapbox-gl": "^1.9.1",
     "@types/node": "^13.11.0",
     "abortcontroller-polyfill": "^1.4.0",
     "babel-plugin-react-hot-loader": "^3.0.0-beta.6",

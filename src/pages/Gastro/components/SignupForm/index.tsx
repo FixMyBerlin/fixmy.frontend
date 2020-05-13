@@ -1,14 +1,7 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
+import { TextField, CheckboxWithLabel, Select } from 'formik-material-ui';
 import {
-  TextField,
-  CheckboxWithLabel,
-  RadioGroup,
-  Select
-} from 'formik-material-ui';
-import {
-  FormControlLabel,
-  Radio,
   FormHelperText,
   FormControl,
   InputLabel,
@@ -18,13 +11,12 @@ import styled from 'styled-components';
 
 import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
+import LocationPicker from '~/components2/LocationPicker';
 import logger from '~/utils/logger';
 import config from '~/pages/Gastro/config';
 import { GastroSignup } from '~/pages/Gastro/types';
 import api from '~/pages/Gastro/api';
 import validate from './validate';
-// import MapLocator from '~/components2/MapLocator';
-// import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 
 /* eslint-disable camelcase */
 export interface FormData {
@@ -83,7 +75,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
         ...values,
         geometry: {
           type: 'Point',
-          coordinates: [1, 0]
+          coordinates: values.location
         },
         shopfront_length: Math.round((values.shopfront_length as number) * 100),
         opening_hours: 'weekend',
@@ -109,7 +101,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           <Field
             name="shop_name"
             component={TextField}
-            label="Name des Betriebes"
+            label="Name des Betriebs"
             fullWidth
           />
 
@@ -119,7 +111,9 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           />
           <div className="dropdown">
             <FormControl fullWidth>
-              <InputLabel htmlFor="category">Art des Betriebs</InputLabel>
+              <InputLabel htmlFor="category">
+                Art des Betriebs wählen
+              </InputLabel>
               <Field
                 component={Select}
                 name="category"
@@ -127,10 +121,11 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
                   id: 'category'
                 }}
               >
-                <MenuItem value="restaurant">Restaurant / Imbiss</MenuItem>
-                <MenuItem value="cafe">Café</MenuItem>
-                <MenuItem value="shop">Einzelhandel</MenuItem>
-                <MenuItem value="coiffeur">Frisör</MenuItem>
+                <MenuItem value="restaurant">Restaurant</MenuItem>
+                <MenuItem value="cafe">Einzelhandel mit Auslage</MenuItem>
+                <MenuItem value="shop">Werkstatt</MenuItem>
+                <MenuItem value="coiffeur">Soziales Projekt</MenuItem>
+                <MenuItem value="coiffeur">Sonstiger Bedarf</MenuItem>
               </Field>
             </FormControl>
           </div>
@@ -146,11 +141,26 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
             label="Nachname der Inhaber:in"
             fullWidth
           />
-          <Field
+        </section>
+        <section>
+          <h4>Wo befindet sich das Ladenlokal?</h4>
+          <p>
+            Es können nur Adressen in Friedrichshain-Kreuzberg gemeldet werden.
+          </p>
+          <ErrorMessage
             name="address"
-            component={TextField}
-            label="Straße, Hausnummer, PLZ"
-            fullWidth
+            render={(msg) => <FormError error>{msg}</FormError>}
+          />
+          <LocationPicker
+            onSelect={({ address, location }) => {
+              handleChange({ target: { name: 'address', value: address } });
+              handleChange({
+                target: {
+                  name: 'location',
+                  value: [location.lng, location.lat]
+                }
+              });
+            }}
           />
           {/* <MapLocator location={values.location} /> */}
         </section>
@@ -160,8 +170,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           </p>
           <p>
             Auf Grundlage der Straßenfront-Breite kann das Bezirksamt
-            entscheiden welcher Raum genutzt werden kann und wie viele
-            Sitzplätze dort eingerichtet werden können.
+            entscheiden welcher Raum im Straßenland genutzt werden kann.
           </p>
           <Field
             name="shopfront_length"
