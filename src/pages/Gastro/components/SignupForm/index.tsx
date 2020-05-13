@@ -15,18 +15,16 @@ import {
   MenuItem
 } from '@material-ui/core';
 import styled from 'styled-components';
-import slugify from 'slugify';
 
 import Button from '~/components2/Button';
-import MapLocator from '~/components2/MapLocator';
 import { Form } from '~/components2/Form';
-import Slider from '~/components/Slider';
 import logger from '~/utils/logger';
 import config from '~/pages/Gastro/config';
 import { GastroSignup } from '~/pages/Gastro/types';
 import api from '~/pages/Gastro/api';
 import validate from './validate';
-import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
+// import MapLocator from '~/components2/MapLocator';
+// import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 
 /* eslint-disable camelcase */
 export interface FormData {
@@ -70,15 +68,12 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const SliderWrapper = styled.div`
-  margin: 2em 1em;
-`;
-
 const SignupForm = ({ onSuccess, onSubmit }) => (
   <Formik
     initialValues={initialValues}
     validate={validate}
-    onSubmit={async (values, { setSubmitting, setStatus, setErr }) => {
+    onSubmit={async (values, { setSubmitting, setStatus }) => {
+      onSubmit(true);
       // @ts-ignore
       const signupData: GastroSignup = {
         ...values,
@@ -98,6 +93,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           'Es gab leider einen Fehler bei Ihrer Anmeldung. Bitte versuchen Sie es später noch einmal.'
         );
       }
+      onSubmit(false);
       setSubmitting(false);
     }}
   >

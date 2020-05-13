@@ -9,7 +9,6 @@ import slugify from 'slugify';
 import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
-import { media } from '~/styles/utils';
 import { SignupData } from '../../types';
 import api from '../../api';
 import logger from '~/utils/logger';
