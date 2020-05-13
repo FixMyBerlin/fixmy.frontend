@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import config from '~/config';
+import { media } from '~/styles/utils';
 
 interface Props {
   ghost?: boolean;
@@ -40,4 +41,10 @@ export default styled.button<Props>`
     border: none;
     text-decoration: none;
   }
+
+  width: 100%;
+
+  ${media.s`
+    width: initial;
+  `}
 `;

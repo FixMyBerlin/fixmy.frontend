@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Box } from '@material-ui/core';
 
 import MenuButton from '~/components2/MenuButton';
-import SeparatorImage from '~/images/spielstrassen/separator.svg';
+import SeparatorImage from '~/images/header-separator.svg';
 import config from '~/config';
-import Link from '~/components/Link';
 
 const Wrapper = styled(Box)`
   display: flex;
@@ -34,15 +34,23 @@ const Subtitle = styled.span`
 `;
 
 const LinkWrapper = styled(Link)`
-  border-bottom: none !important;
+  border-bottom: none;
+  color: ${config.colors.interaction};
+  text-decoration: none;
+
+  &:visited,
+  &:hover {
+    color: ${config.colors.interaction};
+    text-decoration: none;
+  }
 `;
 
-const Header = ({ showInfoLink = false }) => (
+const Header = ({ to = '/', showInfoLink = false, children }) => (
   <Wrapper>
     <MenuButton />
     <Separator />
-    <LinkWrapper to={config.routes.spielstrassen.landing}>
-      <Title>Temporäre Spielstraßen für Friedrichshain-Kreuzberg</Title>
+    <LinkWrapper to={to}>
+      <Title>{children}</Title>
       {showInfoLink === true && <Subtitle>Alle Infos zur Aktion &gt;</Subtitle>}
     </LinkWrapper>
   </Wrapper>

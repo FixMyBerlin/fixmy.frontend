@@ -38,6 +38,8 @@ export default {
   profile: '/profil',
   userVerify: '/bestaetigen',
   gastro: {
-    landing: '/friedrichshain-kreuzberg/gastroflaechen'
+    landing: '/friedrichshain-kreuzberg/offene-strassen',
+    signup: '/friedrichshain-kreuzberg/offene-strassen/anmeldung',
+    thanks: '/friedrichshain-kreuzberg/offene-strassen/danke'
   }
 };
