@@ -7,9 +7,7 @@ import Button from '~/components2/Button';
 import Header from '../components/Header';
 import Link from '~/components/Link';
 import { Insert as ImageInsert } from '~/components2/Image';
-import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
-import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
-import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
+import BackgroundImage from '~/images/gastro/landing-bg.jpg';
 import Logo from '../components/Logo';
 
 const CTA = styled(Button)`
@@ -47,13 +45,12 @@ const Landing = () => {
       <Container maxWidth="md">
         <h1>XHain isst draußen - aber mit Abstand</h1>
         <ImageInsert
-          src={BackgroundImageA2}
-          srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
+          src={BackgroundImage}
           alt="Bild von Menschen, die an Tischen auf der Straße essen"
         />
-        <Attribution>
+        {/* <Attribution>
           <a href="/">Fotograf / Quelle</a>
-        </Attribution>
+        </Attribution> */}
         <p>
           Das Bezirksamt Friedrichshain-Kreuzberg möchte Gastronomiebetrieben
           die Möglichkeit bieten, zusätzliche Flächen im Straßenraum zum
