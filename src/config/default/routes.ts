@@ -38,6 +38,8 @@ export default {
   profile: '/profil',
   userVerify: '/bestaetigen',
   gastro: {
-    landing: '/friedrichshain-kreuzberg/gastroflaechen'
+    landing: '/friedrichshain-kreuzberg/schankstrassen',
+    signup: '/friedrichshain-kreuzberg/schankstrassen/anmeldung',
+    thanks: '/friedrichshain-kreuzberg/schankstrassen/danke'
   }
 };

@@ -16,7 +16,7 @@ import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
 import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
 import { loadKieze } from './state';
 
-const Styles = styled.div`
+const AppStyles = styled.div`
   font-size: 16px;
   line-height: 24px;
 
@@ -99,7 +99,7 @@ const Spielstrassen = ({ dispatch }) => {
   }, []);
 
   return (
-    <Styles>
+    <AppStyles>
       <ThemeProvider theme={theme}>
         <Router history={history}>
           <ScrollToTop />
@@ -128,7 +128,7 @@ const Spielstrassen = ({ dispatch }) => {
           </Switch>
         </Router>
       </ThemeProvider>
-    </Styles>
+    </AppStyles>
   );
 };
 

@@ -6,6 +6,7 @@ import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import Link from '~/components/Link';
 import { Insert as ImageInsert } from '~/components2/Image';
+import Header from '~/components2/Header';
 import BackgroundImageA1 from '~/images/spielstrassen/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/spielstrassen/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
@@ -15,8 +16,7 @@ import BackgroundImageB3 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
 import DoneBadgeImg1 from '~/images/spielstrassen/done-badge.png';
 import DoneBadgeImg2 from '~/images/spielstrassen/done-badge@2x.png';
 import DoneBadgeImg3 from '~/images/spielstrassen/done-badge@3x.png';
-import Header from '../components/Header';
-import Logo from '../components/Logo';
+import LogoFooter from '~/components2/LogoFooter';
 import Notice from '../components/Notice';
 import { media } from '~/styles/utils';
 
@@ -57,7 +57,9 @@ const ImageContainer = styled.div`
 const Landing = () => {
   return (
     <>
-      <Header />
+      <Header to={config.routes.spielstrassen.landing}>
+        Temporäre Spielstraßen für Friedrichshain-Kreuzberg
+      </Header>
       <Container maxWidth="md">
         <h1>Helfen Sie eine temporäre Spielstraße einzurichten!</h1>
         <ImageContainer>
@@ -178,7 +180,7 @@ const Landing = () => {
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
-        <Logo />
+        <LogoFooter>Bereitgestellt durch FixMyBerlin</LogoFooter>
       </Container>
     </>
   );
