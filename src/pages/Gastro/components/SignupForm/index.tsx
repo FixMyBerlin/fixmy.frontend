@@ -121,10 +121,11 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
                   id: 'category'
                 }}
               >
-                <MenuItem value="restaurant">Restaurant / Imbiss</MenuItem>
-                <MenuItem value="cafe">Café</MenuItem>
-                <MenuItem value="shop">Einzelhandel</MenuItem>
-                <MenuItem value="coiffeur">Frisör</MenuItem>
+                <MenuItem value="restaurant">Restaurant</MenuItem>
+                <MenuItem value="cafe">Einzelhandel mit Auslage</MenuItem>
+                <MenuItem value="shop">Werkstatt</MenuItem>
+                <MenuItem value="coiffeur">Soziales Projekt</MenuItem>
+                <MenuItem value="coiffeur">Sonstiger Bedarf</MenuItem>
               </Field>
             </FormControl>
           </div>
