@@ -101,7 +101,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           <Field
             name="shop_name"
             component={TextField}
-            label="Name des Betriebes"
+            label="Name des Betriebs"
             fullWidth
           />
 
@@ -111,7 +111,9 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           />
           <div className="dropdown">
             <FormControl fullWidth>
-              <InputLabel htmlFor="category">Art des Betriebs</InputLabel>
+              <InputLabel htmlFor="category">
+                Art des Betriebs wählen
+              </InputLabel>
               <Field
                 component={Select}
                 name="category"
@@ -160,8 +162,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           </p>
           <p>
             Auf Grundlage der Straßenfront-Breite kann das Bezirksamt
-            entscheiden welcher Raum genutzt werden kann und wie viele
-            Sitzplätze dort eingerichtet werden können.
+            entscheiden welcher Raum im Straßenland genutzt werden kann.
           </p>
           <Field
             name="shopfront_length"

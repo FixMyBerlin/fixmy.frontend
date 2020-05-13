@@ -36,13 +36,15 @@ const Signup = () => {
               <h1>Interessens&shy;bekundung</h1>
               <p>
                 <strong>
-                  Füllen Sie dieses Formular aus, um dem Bezirksamt Ihren Bedarf
-                  mitzuteilen.
+                  Bitte füllen Sie dieses Formular aus um dem Bezirksamt Ihren
+                  Bedarf mitzuteilen
                 </strong>
               </p>
               <p>
                 Die Angaben sind unverbindlich, das Bezirksamt wird Sie nach der
-                Bedarfsprüfung zum weiteren Vorgehen kontaktieren.
+                Bedarfsprüfung zum weiteren Vorgehen kontaktieren. Mögliche zur
+                Verfügung gestellte Flächen wären Freitags, Samstags und
+                Sonntags jeweils von 11 bis 22 Uhr nutzbar.
               </p>
             </Section>
             <Section>
