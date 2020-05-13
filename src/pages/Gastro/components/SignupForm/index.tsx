@@ -50,7 +50,6 @@ const initialValues: FormData = {
   address: '',
   location: null,
   shopfront_length: '',
-  opening_hours: '',
   tos_accepted: ''
 };
 
@@ -68,7 +67,7 @@ const StyledForm = styled(Form)`
   }
 
   .MuiTextField-root,
-  MuiInputBase-formControl {
+  .dropdown {
     margin-bottom: 1em;
   }
 `;
@@ -87,6 +86,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           coordinates: [1, 0]
         },
         shopfront_length: Math.round((values.shopfront_length as number) * 100),
+        opening_hours: 'weekend',
         campaign: config.gastro.campaign
       };
       try {
@@ -117,21 +117,23 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
             name="category"
             render={(msg) => <FormError error>{msg}</FormError>}
           />
-          <FormControl fullWidth>
-            <InputLabel htmlFor="category">Art des Betriebs</InputLabel>
-            <Field
-              component={Select}
-              name="category"
-              inputProps={{
-                id: 'category'
-              }}
-            >
-              <MenuItem value="restaurant">Restaurant / Imbiss</MenuItem>
-              <MenuItem value="cafe">Café</MenuItem>
-              <MenuItem value="shop">Einzelhandel</MenuItem>
-              <MenuItem value="coiffeur">Frisör</MenuItem>
-            </Field>
-          </FormControl>
+          <div className="dropdown">
+            <FormControl fullWidth>
+              <InputLabel htmlFor="category">Art des Betriebs</InputLabel>
+              <Field
+                component={Select}
+                name="category"
+                inputProps={{
+                  id: 'category'
+                }}
+              >
+                <MenuItem value="restaurant">Restaurant / Imbiss</MenuItem>
+                <MenuItem value="cafe">Café</MenuItem>
+                <MenuItem value="shop">Einzelhandel</MenuItem>
+                <MenuItem value="coiffeur">Frisör</MenuItem>
+              </Field>
+            </FormControl>
+          </div>
           <Field
             name="first_name"
             component={TextField}
@@ -168,32 +170,6 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
             label="Angabe in Metern z.B. 4,8"
             fullWidth
           />
-        </section>
-
-        <section>
-          <h4>
-            In welchem Zeitraum würden Sie die zusätzlichen Flächen gerne
-            nutzen?
-          </h4>
-
-          <ErrorMessage
-            name="opening_hours"
-            render={(msg) => <FormError error>{msg}</FormError>}
-          />
-          <Field component={RadioGroup} name="opening_hours">
-            <FormControlLabel
-              value="weekend"
-              control={<Radio disabled={isSubmitting} />}
-              label="Nur am Wochenende (Freitags von 11 Uhr bis Sonntags 22 Uhr)"
-              disabled={isSubmitting}
-            />
-            <FormControlLabel
-              value="week"
-              control={<Radio disabled={isSubmitting} />}
-              label="Die ganze Woche (Mo-So jeweils von 11 bis 22 Uhr)"
-              disabled={isSubmitting}
-            />
-          </Field>
         </section>
 
         <section>

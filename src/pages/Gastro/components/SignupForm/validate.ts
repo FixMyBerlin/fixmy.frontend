@@ -11,7 +11,6 @@ const validate = (values: FormData) => {
     category?: string;
     email?: string;
     address?: string;
-    opening_hours?: string;
     shopfront_length?: string;
     tos_accepted?: string;
   } = {};
@@ -46,10 +45,6 @@ const validate = (values: FormData) => {
     errors.email = 'Bitte eine E-Mail-Adresse angeben';
   } else if (values.email.indexOf('@') < 0) {
     errors.email = 'Das sieht nicht wie eine E-Mail-Adresse aus';
-  }
-
-  if (values.opening_hours === '') {
-    errors.opening_hours = 'Bitte wählen sie einen Zeitbereich aus';
   }
 
   if (!values.tos_accepted) {
