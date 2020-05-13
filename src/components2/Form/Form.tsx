@@ -28,14 +28,6 @@ const StyledForm = styled(Form)`
       align-items: flex-start;
     }
   }
-
-  button {
-    width: 100%;
-
-    ${media.s`
-      width: initial;
-    `}
-  }
 `;
 
 export default StyledForm;
