@@ -144,6 +144,13 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
         </section>
         <section>
           <h4>Wo befindet sich das Ladenlokal?</h4>
+          <p>
+            Es können nur Adressen in Friedrichshain-Kreuzberg gemeldet werden.
+          </p>
+          <ErrorMessage
+            name="address"
+            render={(msg) => <FormError error>{msg}</FormError>}
+          />
           <LocationPicker
             onSelect={({ address, location }) => {
               handleChange({ target: { name: 'address', value: address } });

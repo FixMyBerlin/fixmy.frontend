@@ -36,7 +36,7 @@ const Signup = () => {
               <h1>Interessens&shy;bekundung</h1>
               <p>
                 <strong>
-                  Bitte füllen Sie dieses Formular aus um dem Bezirksamt Ihren
+                  Bitte füllen Sie dieses Formular aus, um dem Bezirksamt Ihren
                   Bedarf mitzuteilen
                 </strong>
               </p>

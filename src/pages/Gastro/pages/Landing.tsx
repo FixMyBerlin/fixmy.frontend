@@ -12,41 +12,54 @@ import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import Logo from '../components/Logo';
 import DeadlineWarning from '../components/DeadlineWarning';
+import { media } from '~/styles/utils';
 
 const CTA = styled(Button)`
   margin: 2em auto;
 `;
 
-// const Attribution = styled.div`
-//   font-size: 0.75em;
-//   margin-top: -2.5em;
-//   position: relative;
-//   float: right;
-//   right: 1em;
-//   z-index: 9999;
+const Attribution = styled.div`
+  font-size: 0.75em;
+  margin-top: -2.5em;
+  position: relative;
+  float: right;
+  right: 1em;
+  z-index: 9999;
 
-//   && a {
-//     color: white;
-//     text-decoration: none;
-//   }
-// `;
+  && a {
+    color: white;
+    text-decoration: none;
+  }
+`;
+
+const StyledContainer = styled(Container)`
+  h1 {
+    ${media.m`
+      font-size: 3em;
+    `}
+  }
+`;
 
 const Landing = () => {
   return (
     <>
       <Header showInfoLink={false} />
-      <Container maxWidth="md">
-        <h1>
-          X-Hain isst draußen – Schankstraßen für Friedrichshain-Kreuzberg
-        </h1>
+      <StyledContainer maxWidth="md">
+        <h1>X-Hain isst draußen – Offene Straßen für Viele</h1>
         <ImageInsert
           src={BackgroundImageA2}
           srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
           alt="Bild von Menschen, die an Tischen auf der Straße essen"
         />
-        {/* <Attribution>
-          <a href="/">Fotograf / Quelle</a>
-        </Attribution> */}
+        <Attribution>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://unsplash.com/@freddydo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+          >
+            Photo by Freddy Do on Unsplash
+          </a>
+        </Attribution>
         <p>
           Das Bezirksamt Friedrichshain-Kreuzberg möchte Gastronomiebetrieben,
           Einzelhandel und sozialen Projekte die Möglichkeit bieten, zusätzliche
@@ -144,7 +157,7 @@ const Landing = () => {
         </Link>
         <DeadlineWarning />
         <Logo />
-      </Container>
+      </StyledContainer>
     </>
   );
 };
