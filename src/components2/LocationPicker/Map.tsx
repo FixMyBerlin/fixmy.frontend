@@ -9,35 +9,32 @@ const MapContainer = styled.div`
   margin: 2em 0;
 `;
 
-const initMap = ({ setMap, mapContainer }) => {
+const initMap = ({ setMap, mapContainer, onInit }) => {
   const map = new MapboxGL.Map({
     container: mapContainer.current,
-    style: config.map.style,
-    center: [10.296, 51.183],
-    zoom: 4.75,
-    maxBounds: config.map.bounds
+    style: config.gastro.map.style,
+    bounds: config.gastro.map.bounds
   });
 
   map.on('load', () => {
     setMap(map);
     map.resize();
+
+    // Disable scrolling on this map
+    map.scrollZoom.disable();
+
+    onInit(map);
   });
 };
 
-const Map = ({ location }) => {
+const Map = ({ onInit }) => {
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
 
   useEffect(() => {
     MapboxGL.accessToken = config.map.accessToken;
-    if (map == null) initMap({ setMap, mapContainer });
+    if (map == null) initMap({ setMap, mapContainer, onInit });
   }, [map]);
-
-  useEffect(() => {
-    if (location == null) return;
-    new MapboxGL.Marker().setLngLat(location).addTo(map);
-    map.flyTo({ center: location });
-  }, [location, map]);
 
   return (
     <MapContainer

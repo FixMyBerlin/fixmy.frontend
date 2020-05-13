@@ -1,14 +1,7 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
+import { TextField, CheckboxWithLabel, Select } from 'formik-material-ui';
 import {
-  TextField,
-  CheckboxWithLabel,
-  RadioGroup,
-  Select
-} from 'formik-material-ui';
-import {
-  FormControlLabel,
-  Radio,
   FormHelperText,
   FormControl,
   InputLabel,
@@ -18,13 +11,12 @@ import styled from 'styled-components';
 
 import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
+import LocationPicker from '~/components2/LocationPicker';
 import logger from '~/utils/logger';
 import config from '~/pages/Gastro/config';
 import { GastroSignup } from '~/pages/Gastro/types';
 import api from '~/pages/Gastro/api';
 import validate from './validate';
-// import MapLocator from '~/components2/MapLocator';
-// import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 
 /* eslint-disable camelcase */
 export interface FormData {
@@ -83,7 +75,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
         ...values,
         geometry: {
           type: 'Point',
-          coordinates: [1, 0]
+          coordinates: values.location
         },
         shopfront_length: Math.round((values.shopfront_length as number) * 100),
         opening_hours: 'weekend',
@@ -146,11 +138,19 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
             label="Nachname der Inhaber:in"
             fullWidth
           />
-          <Field
-            name="address"
-            component={TextField}
-            label="Straße, Hausnummer, PLZ"
-            fullWidth
+        </section>
+        <section>
+          <h4>Wo befindet sich das Ladenlokal?</h4>
+          <LocationPicker
+            onSelect={({ address, location }) => {
+              handleChange({ target: { name: 'address', value: address } });
+              handleChange({
+                target: {
+                  name: 'location',
+                  value: [location.lng, location.lat]
+                }
+              });
+            }}
           />
           {/* <MapLocator location={values.location} /> */}
         </section>
