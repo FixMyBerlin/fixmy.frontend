@@ -25,10 +25,8 @@ const Thanks = ({ submission }) => (
   <>
     <h2>Vielen Dank für Ihre Interessensbekundung</h2>
     <p>
-      Sie haben einen Bedarf von{' '}
-      <strong>{submission.seats_requested} Sitzplätzen</strong> für{' '}
-      <strong>{submission.name}</strong> an der Adresse{' '}
-      <strong>{submission.address}</strong> gemeldet.
+      Sie haben einen Bedarf für <strong>{submission.name}</strong> an der
+      Adresse <strong>{submission.address}</strong>gemeldet.
     </p>
 
     <p>

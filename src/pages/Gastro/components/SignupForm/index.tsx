@@ -1,7 +1,19 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
-import { TextField, CheckboxWithLabel, RadioGroup } from 'formik-material-ui';
-import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
+import {
+  TextField,
+  CheckboxWithLabel,
+  RadioGroup,
+  Select
+} from 'formik-material-ui';
+import {
+  FormControlLabel,
+  Radio,
+  FormHelperText,
+  FormControl,
+  InputLabel,
+  MenuItem
+} from '@material-ui/core';
 import styled from 'styled-components';
 import slugify from 'slugify';
 
@@ -18,25 +30,29 @@ import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 
 /* eslint-disable camelcase */
 export interface FormData {
-  name?: string;
+  shop_name?: string;
+  first_name?: string;
+  last_name?: string;
+  category?: string;
   email?: string;
   address?: string;
   location?: [number, number];
-  seats_requested?: number;
-  time_requested?: string;
-  accepts_agreement?: boolean | '';
+  shopfront_length?: number | '';
+  opening_hours?: string;
   tos_accepted?: boolean | '';
 }
 /* eslint-enable camelcase */
 
 const initialValues: FormData = {
-  name: '',
+  shop_name: '',
+  first_name: '',
+  last_name: '',
+  category: '',
   email: '',
   address: '',
   location: null,
-  seats_requested: 4,
-  time_requested: '',
-  accepts_agreement: '',
+  shopfront_length: '',
+  opening_hours: '',
   tos_accepted: ''
 };
 
@@ -62,14 +78,15 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
   <Formik
     initialValues={initialValues}
     validate={validate}
-    onSubmit={async (values, { setSubmitting, setStatus }) => {
+    onSubmit={async (values, { setSubmitting, setStatus, setErr }) => {
       // @ts-ignore
       const signupData: GastroSignup = {
         ...values,
         geometry: {
           type: 'Point',
-          coordinates: values.location
+          coordinates: [1, 0]
         },
+        shopfront_length: Math.round((values.shopfront_length as number) * 100),
         campaign: config.gastro.campaign
       };
       try {
@@ -87,50 +104,69 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
     {({ status, values, handleChange, isSubmitting }) => (
       <StyledForm>
         <section>
-          <h4>Name ihres Gastronomiebetriebs</h4>
-          <Field name="name" component={TextField} label="Name" fullWidth />
-          <h4>Adresse Ihres Betriebes</h4>
-          <AutocompleteGeocoder
-            onInputFocus={() => logger('focus')}
-            onInputBlur={() => logger('focus off')}
-            onLocationPick={({ address, coords: { lng, lat } }) => {
-              handleChange({ target: { value: address, name: 'address' } });
-              handleChange({ target: { value: [lng, lat], name: 'geometry' } });
-            }}
-            onSearchStart={logger}
-            searchStringMinLength={3}
-            debounceTime={300}
-            onError={logger}
-            label="Adresse hier suchen..."
+          <h4>Bitte machen Sie Angaben zu Ihrem Betrieb:</h4>
+          <Field
+            name="shop_name"
+            component={TextField}
+            label="Name des Betriebes"
+            fullWidth
           />
-          <MapLocator location={values.location} />
+
+          <ErrorMessage
+            name="category"
+            render={(msg) => <FormError error>{msg}</FormError>}
+          />
+          <FormControl fullWidth>
+            <InputLabel htmlFor="category">Art des Betriebs</InputLabel>
+            <Field
+              component={Select}
+              name="category"
+              inputProps={{
+                id: 'category'
+              }}
+            >
+              <MenuItem value="restaurant">Restaurant / Imbiss</MenuItem>
+              <MenuItem value="cafe">Café</MenuItem>
+              <MenuItem value="shop">Einzelhandel</MenuItem>
+              <MenuItem value="coiffeur">Frisör</MenuItem>
+            </Field>
+          </FormControl>
+          <Field
+            name="first_name"
+            component={TextField}
+            label="Vorname der Inhaber:in"
+            fullWidth
+          />
+          <Field
+            name="last_name"
+            component={TextField}
+            label="Nachname der Inhaber:in"
+            fullWidth
+          />
+          <Field
+            name="address"
+            component={TextField}
+            label="Straße, Hausnummer, PLZ"
+            fullWidth
+          />
+          {/* <MapLocator location={values.location} /> */}
         </section>
         <section>
           <p>
-            <strong>
-              Wie viele Sitzplätze möchten Sie gerne im Straßenraum anbieten?
-            </strong>
+            <strong>Wie breit ist die Straßenfront ihres Ladenlokals?</strong>
           </p>
           <p>
-            Info: Zwischen den einzelnen Tischen sollten X Meter Platz gehalten
-            werden. Das Aufstellen von Tischen für große Gruppen ist nicht
-            erlaubt.
+            Auf Grundlage der Straßenfront-Breite kann das Bezirksamt
+            entscheiden welcher Raum genutzt werden kann und wie viele
+            Sitzplätze dort eingerichtet werden können.
           </p>
-          <SliderWrapper>
-            <Slider
-              min={4}
-              max={100}
-              step={4}
-              marks={{ 4: 4, 100: 100 }}
-              name="seats_requested"
-              value={values.seats_requested}
-              tooltip={false}
-              handleLabel={values.seats_requested.toString()}
-              onChange={(value) =>
-                handleChange({ target: { value, name: 'seats_requested' } })
-              }
-            />
-          </SliderWrapper>
+          <Field
+            name="shopfront_length"
+            type="number"
+            component={TextField}
+            label="Angabe in Metern z.B. 4,8"
+            fullWidth
+          />
         </section>
 
         <div>
@@ -140,10 +176,10 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           </h4>
 
           <ErrorMessage
-            name="time_requested"
+            name="opening_hours"
             render={(msg) => <FormError error>{msg}</FormError>}
           />
-          <Field component={RadioGroup} name="time_requested">
+          <Field component={RadioGroup} name="opening_hours">
             <FormControlLabel
               value="weekend"
               control={<Radio disabled={isSubmitting} />}
@@ -159,32 +195,6 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           </Field>
         </div>
 
-        <h4>
-          Wären Sie bereit, bei Einrichtung einer Gastro-Straße folgende{' '}
-          <a href="/" className="external">
-            Kooperationsvereinbarung
-          </a>{' '}
-          zu unterschreiben?
-        </h4>
-
-        <ErrorMessage
-          name="accepts_agreement"
-          render={(msg) => <FormError error>{msg}</FormError>}
-        />
-        <Field component={RadioGroup} name="accepts_agreement">
-          <FormControlLabel
-            value="1"
-            control={<Radio disabled={isSubmitting} />}
-            label="Ja"
-            disabled={isSubmitting}
-          />
-          <FormControlLabel
-            value="0"
-            control={<Radio disabled={isSubmitting} />}
-            label="Nein"
-            disabled={isSubmitting}
-          />
-        </Field>
         <h4>Ihre E-Mail-Adresse</h4>
         <p>
           Das Bezirksamt kontaktiert Sie über diese Adresse nach Auswertung der

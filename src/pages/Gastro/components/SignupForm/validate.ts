@@ -1,23 +1,45 @@
 /* eslint-disable camelcase */
 
 import { FormData } from '.';
+import logger from '~/utils/logger';
 
 const validate = (values: FormData) => {
   const errors: {
-    name?: string;
+    shop_name?: string;
+    first_name?: string;
+    last_name?: string;
+    category?: string;
     email?: string;
     address?: string;
-    time_requested?: string;
-    accepts_agreement?: string;
+    opening_hours?: string;
+    shopfront_length?: string;
     tos_accepted?: string;
   } = {};
 
-  if (!values.name) {
-    errors.name = 'Bitte einen Namen angeben';
+  if (!values.shop_name) {
+    errors.shop_name = 'Bitte einen Namen angeben';
+  }
+
+  if (!values.first_name) {
+    errors.first_name = 'Bitte einen Vornamen angeben';
+  }
+
+  if (!values.last_name) {
+    errors.last_name = 'Bitte einen Nachnamen angeben';
   }
 
   if (!values.address) {
-    errors.address = 'Bitte geben Sie eine Adresse an';
+    errors.address = 'Bitte eine Adresse angeben';
+  }
+
+  try {
+    const val = Math.round(100 * (values.shopfront_length as number));
+    if (val < 100 || val > 5000)
+      errors.shopfront_length =
+        'Bitte geben Sie die Länge der Ladenfront in Metern an';
+  } catch (e) {
+    errors.shopfront_length =
+      'Bitte geben Sie die Länge der Ladenfront in Metern an';
   }
 
   if (!values.email) {
@@ -26,20 +48,15 @@ const validate = (values: FormData) => {
     errors.email = 'Das sieht nicht wie eine E-Mail-Adresse aus';
   }
 
-  if (values.time_requested === '') {
-    errors.time_requested = 'Bitte wählen sie einen Zeitbereich aus';
-  }
-
-  if (values.accepts_agreement === '') {
-    errors.accepts_agreement =
-      'Bitte geben Sie an, ob sie bereit wären, eine Kooperationsvereinbarung für eine Gastrostraße zu unterzeichnen.';
+  if (values.opening_hours === '') {
+    errors.opening_hours = 'Bitte wählen sie einen Zeitbereich aus';
   }
 
   if (!values.tos_accepted) {
     errors.tos_accepted =
-      'Bitte stimmen Sie diesen Bedingungen zu, damit wir Ihre Anmeldung entgegennehmen können.';
+      'Bitte stimmen Sie diesen Bedingungen zu, damit wir Ihre Interessensbekundung entgegennehmen können.';
   }
-
+  logger(errors);
   return errors;
 };
 

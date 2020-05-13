@@ -3,15 +3,17 @@
 
 export interface GastroSignup {
   campaign: string;
-  name: string;
+  shop_name: string;
+  first_name: string;
+  last_name: string;
+  category: string;
   email: string;
   address: string;
   geometry: {
     type: 'Point';
     coordinates: [number, number];
   };
-  seats_requested: number;
-  time_requested: string;
-  accepts_agreement: boolean;
+  shopfront_length: number;
+  opening_hours: string;
   tos_accepted: boolean;
 }
