@@ -11,6 +11,10 @@ const StyledForm = styled(Form)`
     margin-bottom: 1em;
   }
 
+  .MuiInputLabel-root {
+    font-style: italic;
+  }
+
   .tosFieldGroup {
     margin: 2em 0;
 

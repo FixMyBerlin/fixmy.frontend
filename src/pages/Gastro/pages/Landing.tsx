@@ -7,26 +7,28 @@ import Button from '~/components2/Button';
 import Header from '../components/Header';
 import Link from '~/components/Link';
 import { Insert as ImageInsert } from '~/components2/Image';
-import BackgroundImage from '~/images/gastro/landing-bg.jpg';
+import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
+import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
+import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import Logo from '../components/Logo';
 
 const CTA = styled(Button)`
   margin: 2em auto;
 `;
 
-const Attribution = styled.div`
-  font-size: 0.75em;
-  margin-top: -2.5em;
-  position: relative;
-  float: right;
-  right: 1em;
-  z-index: 9999;
+// const Attribution = styled.div`
+//   font-size: 0.75em;
+//   margin-top: -2.5em;
+//   position: relative;
+//   float: right;
+//   right: 1em;
+//   z-index: 9999;
 
-  && a {
-    color: white;
-    text-decoration: none;
-  }
-`;
+//   && a {
+//     color: white;
+//     text-decoration: none;
+//   }
+// `;
 
 const Highlight = styled.p`
   margin-top: -1em;
@@ -43,9 +45,12 @@ const Landing = () => {
     <>
       <Header showInfoLink={false} />
       <Container maxWidth="md">
-        <h1>XHain isst draußen - aber mit Abstand</h1>
+        <h1>
+          X-Hain isst draußen – Schankstraßen für Friedrichshain-Kreuzberg
+        </h1>
         <ImageInsert
-          src={BackgroundImage}
+          src={BackgroundImageA2}
+          srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
           alt="Bild von Menschen, die an Tischen auf der Straße essen"
         />
         {/* <Attribution>

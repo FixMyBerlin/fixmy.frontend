@@ -66,6 +66,11 @@ const StyledForm = styled(Form)`
   section {
     margin-bottom: 2em;
   }
+
+  .MuiTextField-root,
+  MuiInputBase-formControl {
+    margin-bottom: 1em;
+  }
 `;
 
 const SignupForm = ({ onSuccess, onSubmit }) => (
@@ -165,7 +170,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           />
         </section>
 
-        <div>
+        <section>
           <h4>
             In welchem Zeitraum würden Sie die zusätzlichen Flächen gerne
             nutzen?
@@ -189,24 +194,27 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
               disabled={isSubmitting}
             />
           </Field>
-        </div>
+        </section>
 
-        <h4>Ihre E-Mail-Adresse</h4>
-        <p>
-          Das Bezirksamt kontaktiert Sie über diese Adresse nach Auswertung der
-          Bedarfe zum weiteren Vorgehen.
-        </p>
-        <Field
-          name="email"
-          component={TextField}
-          label="Ihre E-Mail-Adresse"
-          fullWidth
-        />
-        <ErrorMessage
-          name="tos_accepted"
-          render={(msg) => <FormError error>{msg}</FormError>}
-        />
+        <section>
+          <h4>Ihre E-Mail-Adresse</h4>
+          <p className="subline">
+            Das Bezirksamt kontaktiert Sie über diese Adresse nach Auswertung
+            der Bedarfe zum weiteren Vorgehen.
+          </p>
+          <Field
+            name="email"
+            component={TextField}
+            label="Ihre E-Mail-Adresse"
+            fullWidth
+          />
+        </section>
+
         <div className="tosFieldGroup">
+          <ErrorMessage
+            name="tos_accepted"
+            render={(msg) => <FormError error>{msg}</FormError>}
+          />
           <Field
             component={CheckboxWithLabel}
             name="tos_accepted"
