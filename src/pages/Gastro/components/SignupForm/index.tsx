@@ -122,10 +122,10 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
                 }}
               >
                 <MenuItem value="restaurant">Restaurant</MenuItem>
-                <MenuItem value="cafe">Einzelhandel mit Auslage</MenuItem>
-                <MenuItem value="shop">Werkstatt</MenuItem>
-                <MenuItem value="coiffeur">Soziales Projekt</MenuItem>
-                <MenuItem value="coiffeur">Sonstiger Bedarf</MenuItem>
+                <MenuItem value="retail">Einzelhandel mit Auslage</MenuItem>
+                <MenuItem value="workshop">Werkstatt</MenuItem>
+                <MenuItem value="social">Soziales Projekt</MenuItem>
+                <MenuItem value="other">Sonstiger Bedarf</MenuItem>
               </Field>
             </FormControl>
           </div>
@@ -166,11 +166,15 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
         </section>
         <section>
           <p>
-            <strong>Wie breit ist die Straßenfront ihres Ladenlokals (falls vorhanden)?</strong>
+            <strong>
+              Wie breit ist die Straßenfront ihres Ladenlokals (falls
+              vorhanden)?
+            </strong>
           </p>
           <p>
             Auf Grundlage der Straßenfront-Breite kann das Bezirksamt
-            entscheiden welcher Raum im Straßenland genutzt werden kann. Sofern sie kein Ladenlokal haben bitte 0 angeben.
+            entscheiden welcher Raum im Straßenland genutzt werden kann. Sofern
+            sie kein Ladenlokal haben bitte 0 angeben.
           </p>
           <Field
             name="shopfront_length"
