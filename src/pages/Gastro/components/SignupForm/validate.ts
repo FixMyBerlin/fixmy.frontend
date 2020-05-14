@@ -2,6 +2,7 @@
 
 import { FormData } from '.';
 import logger from '~/utils/logger';
+import parseLength from './parseLength';
 
 const validate = (values: FormData) => {
   const errors: {
@@ -32,7 +33,7 @@ const validate = (values: FormData) => {
   }
 
   try {
-    const val = Math.round(100 * (values.shopfront_length as number));
+    const val = parseLength(values.shopfront_length);
     if (val < 0 || val > 5000)
       errors.shopfront_length =
         'Bitte geben Sie die Länge der Ladenfront in Metern an';
@@ -51,7 +52,7 @@ const validate = (values: FormData) => {
     errors.tos_accepted =
       'Bitte stimmen Sie diesen Bedingungen zu, damit wir Ihre Interessensbekundung entgegennehmen können.';
   }
-  logger(errors);
+  logger('Validation', errors, values);
   return errors;
 };
 

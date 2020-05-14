@@ -17,6 +17,7 @@ import config from '~/pages/Gastro/config';
 import { GastroSignup } from '~/pages/Gastro/types';
 import api from '~/pages/Gastro/api';
 import validate from './validate';
+import parseLength from './parseLength';
 
 /* eslint-disable camelcase */
 export interface FormData {
@@ -27,7 +28,7 @@ export interface FormData {
   email?: string;
   address?: string;
   location?: [number, number];
-  shopfront_length?: number | '';
+  shopfront_length?: string;
   opening_hours?: string;
   tos_accepted?: boolean | '';
 }
@@ -77,7 +78,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           type: 'Point',
           coordinates: values.location
         },
-        shopfront_length: Math.round((values.shopfront_length as number) * 100),
+        shopfront_length: parseLength(values.shopfront_length),
         opening_hours: 'weekend',
         campaign: config.gastro.campaign
       };
@@ -178,8 +179,9 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           </p>
           <Field
             name="shopfront_length"
-            type="number"
-            step="any"
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]+(,[0-9]+)?"
             component={TextField}
             label="Angabe in Metern z.B. 4,8"
             fullWidth
