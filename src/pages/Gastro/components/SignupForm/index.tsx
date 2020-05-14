@@ -217,7 +217,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
                     Datenschutzvereinbarung
                   </a>{' '}
                   gelesen und willige in die Speicherung meiner Daten zur
-                  Kommunikation im Zuge der Gastro-Sonderflächen ein.
+                  Kommunikation im Zuge der Nutzung der Sonderflächen ein.
                 </span>
               )
             }}
