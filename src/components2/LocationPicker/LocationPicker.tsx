@@ -90,7 +90,7 @@ const LocationPicker = ({ onSelect }) => {
         .setLngLat(selected.location)
         .addTo(map)
     );
-    map.flyTo({ center: selected.location, zoom: 16 });
+    map.flyTo({ center: selected.location, zoom: 17 });
   }, [selected, map]);
 
   /**
