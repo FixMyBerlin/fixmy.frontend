@@ -38,8 +38,8 @@ export default {
   profile: '/profil',
   userVerify: '/bestaetigen',
   gastro: {
-    landing: '/friedrichshain-kreuzberg/terassen',
-    signup: '/friedrichshain-kreuzberg/terassen/anmeldung',
-    thanks: '/friedrichshain-kreuzberg/terassen/danke'
+    landing: '/friedrichshain-kreuzberg/terrassen',
+    signup: '/friedrichshain-kreuzberg/terrassen/anmeldung',
+    thanks: '/friedrichshain-kreuzberg/terrassen/danke'
   }
 };
