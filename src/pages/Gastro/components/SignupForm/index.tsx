@@ -179,6 +179,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           <Field
             name="shopfront_length"
             type="number"
+            step="any"
             component={TextField}
             label="Angabe in Metern z.B. 4,8"
             fullWidth
