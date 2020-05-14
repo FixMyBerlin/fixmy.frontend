@@ -45,7 +45,7 @@ const Landing = () => {
     <>
       <Header showInfoLink={false} />
       <StyledContainer maxWidth="md">
-        <h1>X-Hain isst draußen – Offene Straßen für Viele</h1>
+        <h1>XHain is(s)t draußen – Terrassen für Vieles</h1>
         <ImageInsert
           src={BackgroundImageA2}
           srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
@@ -60,16 +60,22 @@ const Landing = () => {
             Photo by Freddy Do on Unsplash
           </a>
         </Attribution>
+        <h2>
+          Bedarfsmeldung für Gastronomie, Einzelhandel und soziale Projekte
+        </h2>
         <p>
           Das Bezirksamt Friedrichshain-Kreuzberg möchte Gastronomiebetrieben,
-          Einzelhandel und sozialen Projekte die Möglichkeit bieten, zusätzliche
-          Flächen im Straßenraum zum Aufstellen von Tischen zu nutzen. So können
-          diese die Vorgaben der Corona-Eindämmungsverordnung umsetzen und
-          dennoch Ihren Betrieb wieder aufzunehmen.
+          Einzelhandel und sozialen Projekten, die gemäß §6 der Sechsten
+          Verordnung zur Änderung der SARS-Cov-2-Eindämmungsmaßnahmenverordnung
+          vom 07. Mai 2020 wieder für den Publikumsverkehr öffnen dürfen, die
+          Möglichkeit bieten, Flächen im Straßenraum zum Aufstellen von Tischen
+          zu nutzen. So können diese die Vorgaben der
+          Corona-Eindämmungsverordnung umsetzen und dennoch ihren Betrieb wieder
+          aufzunehmen.
         </p>
         <p>
           Um den genauen Bedarf zu erfassen, können Sie als Gewerbetreibende
-          oder Soziales Projekt auf dieser Seite ihr Interesse und den Bedarf an
+          oder soziales Projekt auf dieser Seite Ihr Interesse und den Bedarf an
           Flächen im Straßenraum bekunden, wenn Sie auf Grund der Abstandsgebote
           zusätzliche Flächen benötigen.
         </p>
@@ -86,23 +92,28 @@ const Landing = () => {
         </p>
         <p>
           Das Bezirksamt Friedrichshain-Kreuzberg bietet in dieser Situation
-          Gewerbetrieben, Einzelhandel und sozialen Projekte an, Tische, Stühle
+          Gewerbetrieben, Einzelhandel und sozialen Projekten an, Tische, Stühle
           und Auslagen temporär auf das Straßenland zu verlagern. Melden Sie
-          über dieses Formular bis zum Sonntag Ihren Bedarf an. Das Bezirksamt
-          wertet Ihre Bedarfsmeldungen innerhalb einer Woche aus und wird auf
-          dieser Grundlage entsprechende Anordnungen vorbereiten.
+          über dieses Formular bis zum Sonntag den 17.05.2020 Ihren Bedarf an.
+          Das Bezirksamt wertet Ihre Bedarfsmeldungen aus und wird auf dieser
+          Grundlage entsprechende Anordnungen vorbereiten.
         </p>
-        <h2>Welche Flächen können genutzt werden?</h2>
+        <h2>Welche Flächen können wann genutzt werden?</h2>
         <p>
-          Je nach Dichte der Bedarfsmeldungen können Flächen im ruhenden
-          Parkraum oder auf der Fahrbahn angeordnet werden. Das Stellen von
-          Tischen, Stühlen und Auslagen auf der Fahrbahn wird nur möglich sein,
-          wenn im entsprechenden Straßenabschnitt mehrere Gewerbetreibende und
-          Projekte Bedarf angemeldet haben, sodass die Sperrung der Straße
-          temporär von Freitag vormittag bis Sonntag Abend für den motorisierten
+          Nach ca. einwöchiger Prüfung der Bedarfsanmeldungen wird das
+          Bezirksamt entsprechende verkehrsrechtliche Anordnungen treffen. Die
+          Genehmigungen werden mit Blick auf die Eindämmungsmaßnahmen befristet
+          und bis auf weiteres gebührenfrei ausgesprochen. Je nach Aufkommen der
+          Bedarfsmeldungen können Flächen im ruhenden Parkraum oder auf der
+          Fahrbahn angeordnet werden. Zeitlich werden dabei zunächst Freitag,
+          Samstag, Sonntag, jeweils von 11:00 Uhr bis 22:00 Uhr, Flächen als
+          zusätzliche Außenflächen temporär angeboten. Das Stellen von Tischen,
+          Stühlen und Auslagen auf der Fahrbahn wird nur möglich sein, wenn im
+          entsprechenden Straßenabschnitt mehrere Gewerbetreibende und Projekte
+          Bedarf angemeldet haben, sodass die Sperrung der Straße temporär von
+          Freitag Vormittag bis Sonntag Abend für den motorisierten
           Individualverkehr gerechtfertigt werden kann. Alternativ ist in wenig
-          befahrenen Straßen das Stellen auf dem Parkstreifen, analog zum Wiener
-          Modell mögich.{' '}
+          befahrenen Straßen das Stellen auf dem Parkstreifen möglich.{' '}
         </p>
         <h2>Bedingungen für die Genehmigung</h2>
         <p>
@@ -112,34 +123,34 @@ const Landing = () => {
         <ol>
           <li>
             Eigenverantwortliche Durchführung der verkehrsrechtlichen Anordnung,
-            incl. Stellung von Sperren, Schildern und ggf. Ordner-Personal
+            inkl. Stellung von Sperren, Schildern und ggf. Personal
           </li>
           <li>
             Verpflichtung zur Einführung eines Pfandsystems für Einweggebinde
             bei der Herausgabe von Speisen nach Maßgabe des Bezirksamtes
           </li>
           <li>
-            Freihalten von ausreichend breiten Gehwegen (Mindestens 2 Meter)
+            Freihaltung von ausreichend breiten Gehwegen (Mindestens 2 Meter)
           </li>
         </ol>
         <h2>Grund für die Maßnahme</h2>
         <p>
-          Grund für die Maßnahme ist die notwenige Aufrechterhaltung des
+          Grund für die Maßnahme ist die notwendige Aufrechterhaltung des
           1,50m-Abstandsgebotes. Dieses führt zu einem erhöhten Bedarf an
           Flächen im Innen- und Aussenbereich gegenüber den Verhältnissen vor
           der Pandemie. Insbesondere für die unter den Beschränkungen der
           Pandemie existenziell bedrohten Betriebe, aber auch für andere
           Organisationen mit Laufkundschaft steigt der Druck, entsprechend große
-          Aussenflächen zur Sicherung der ökonomischen Existenz anzubieten. Im
+          Außenflächen zur Sicherung der ökonomischen Existenz anzubieten. Im
           Gehwegbereich ist dies mit Blick auf die dort auch jetzt häufig schon
           sehr engen Platzverhältnisse für zu Fuß Gehende nicht möglich und wird
           seitens des Bezirksamtes strikt unterbunden. Für solche Fälle, in
-          denen eine nutzbare Gehwegbreite Breite nicht gewährleistet werden
-          kann, sind alle bestehenden Schankvorgärten und Auslagen in ihrer
-          Breite entsprechend zu reduzieren.
+          denen eine nutzbare Gehwegbreite nicht gewährleistet werden kann, sind
+          alle bestehenden Schankvorgärten und Auslagen in ihrer Breite
+          entsprechend zu reduzieren.
         </p>
         <p>
-          Die Erfahrung, bzw. Genehmigungspraxis für Wochenmärkte in den letzten
+          Die Erfahrung bzw. Genehmigungspraxis für Wochenmärkte in den letzten
           Wochen haben gezeigt, dass die Erweiterung von Gewerbeflächen auf das
           Straßenland im Grundsatz gut geeignet ist, Abstandsgebote besser
           einzuhalten; Anders als in anderen Bezirken konnte mit der Beauflagung

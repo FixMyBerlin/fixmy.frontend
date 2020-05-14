@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Form } from 'formik';
 
 import config from '~/config';
-import { media } from '~/styles/utils';
 
 const StyledForm = styled(Form)`
   padding-bottom: 2em;
@@ -25,7 +24,7 @@ const StyledForm = styled(Form)`
     }
 
     label {
-      align-items: flex-start;
+      align-items: center;
     }
   }
 `;
