@@ -4,7 +4,7 @@ import config from '~/pages/Gastro/config';
 
 const GastroHeader = ({ showInfoLink }) => (
   <Header to={config.routes.gastro.landing} showInfoLink={showInfoLink}>
-    Offene Straßen für Friedrichshain-Kreuzberg
+    Terrassen für Friedrichshain-Kreuzberg
   </Header>
 );
 

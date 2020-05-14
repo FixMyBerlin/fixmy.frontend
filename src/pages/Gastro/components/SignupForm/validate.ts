@@ -33,7 +33,7 @@ const validate = (values: FormData) => {
 
   try {
     const val = Math.round(100 * (values.shopfront_length as number));
-    if (val < 100 || val > 5000)
+    if (val < 0 || val > 5000)
       errors.shopfront_length =
         'Bitte geben Sie die Länge der Ladenfront in Metern an';
   } catch (e) {

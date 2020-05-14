@@ -13,7 +13,7 @@ const Highlight = styled.p`
 
 const DeadlineWarning = () => (
   <Highlight>
-    Bitte füllen Sie das Formular bis zum Sonntag, den 17. Mai 2020 um 22 Uhr
+    Bitte füllen Sie das Formular bis zum Sonntag, den 17. Mai 2020, um 18 Uhr
     aus.
   </Highlight>
 );
