@@ -41,10 +41,7 @@ const Signup = () => {
                 </strong>
               </p>
               <p>
-                Die Angaben sind unverbindlich, das Bezirksamt wird Sie nach der
-                Bedarfsprüfung zum weiteren Vorgehen kontaktieren. Mögliche zur
-                Verfügung gestellte Flächen wären Freitags, Samstags und
-                Sonntags jeweils von 11 bis 22 Uhr nutzbar.
+                Ihre Bedarfsmeldung bedeutet keinen Anspruch auf die Bereitstellung einer Fläche. das Bezirksamt wird Sie nach Prüfung aller Meldungen zum weiteren Vorgehen kontaktieren. 
               </p>
             </Section>
             <Section>
