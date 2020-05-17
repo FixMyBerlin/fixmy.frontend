@@ -6,7 +6,6 @@
 import config from '~/config';
 import { productionDefaultState } from '~/pages/KatasterKI/state';
 import { login } from '~/pages/User/UserState';
-import ReportsState from '~/pages/Reports/state';
 
 // TODO: handle the issue that augmenting the cy object with the methods below leads to linting errors
 
