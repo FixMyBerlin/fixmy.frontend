@@ -210,11 +210,13 @@ export const testingDefaultState: State = {
 declare global {
   interface Window {
     Cypress: any;
-    initialState: State;
+    initialState: {
+      KatasterKIState: State
+    };
   }
 }
 const defaultState =
-  (window.Cypress && window.initialState) ||
+  (window.Cypress && window.initialState?.KatasterKIState) ||
   (config.debug ? testingDefaultState : productionDefaultState);
 
 export default function reducer(state: State = defaultState, action: Action) {
