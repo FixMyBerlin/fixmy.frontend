@@ -16,22 +16,22 @@ const clickRandomMarker = () => {
 
 const goToConfirmedAddress = () => {
   const url = `${config.routes.reports.new}/1`;
-  cy.visitWithState(url, foundAddress);
+  cy.visitWithReportsState(url, foundAddress);
 };
 
 const goToBikeStandForm = () => {
   const url = `${config.routes.reports.new}/2`;
-  cy.visitWithState(url, bikeStands);
+  cy.visitWithReportsState(url, bikeStands);
 };
 
 const goToAdditionalDataForm = () => {
   const url = `${config.routes.reports.new}/3`;
-  cy.visitWithState(url, additionalDataForm);
+  cy.visitWithReportsState(url, additionalDataForm);
 };
 
 const goToParkingGarageForm = () => {
   const url = `${config.routes.reports.new}/4`;
-  cy.visitWithState(url, bikeLockerForm);
+  cy.visitWithReportsState(url, bikeLockerForm);
 };
 
 export default {

@@ -6,6 +6,7 @@
 import config from '~/config';
 import { productionDefaultState } from '~/pages/KatasterKI/state';
 import { login } from '~/pages/User/UserState';
+import ReportsState from '~/pages/Reports/state';
 
 // TODO: handle the issue that augmenting the cy object with the methods below leads to linting errors
 
@@ -32,19 +33,23 @@ Cypress.Commands.add('fmbGoToProfile', (profile = 1) => {
     onBeforeLoad: (win) => {
       // eslint-disable-next-line no-param-reassign
       win.initialState = {
-        ...productionDefaultState,
-        introSelection: [0, 1, 2]
+        KatasterKIState: {
+          ...productionDefaultState,
+          introSelection: [0, 1, 2]
+        }
       };
     }
   });
 });
 
-Cypress.Commands.add('visitWithState', (route, state = null) => {
+Cypress.Commands.add('visitWithReportsState', (route, state = null) => {
   cy.visit(route, {
     onBeforeLoad: (win) => {
       if (state != null) {
         // eslint-disable-next-line no-param-reassign
-        win.initialState = state;
+        win.initialState = {
+          ReportsState: state
+        };
       }
     }
   });
