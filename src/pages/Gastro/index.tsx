@@ -6,7 +6,6 @@ import { createMuiTheme } from '@material-ui/core';
 
 import config from './config';
 import Landing from './pages/Landing';
-import Signup from './pages/Signup';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
@@ -88,7 +87,7 @@ const ScrollToTop = () => {
   return null;
 };
 
-const Gastro = ({ dispatch }) => (
+const Gastro = () => (
   <AppStyles>
     <ThemeProvider theme={theme}>
       <Router history={history}>
