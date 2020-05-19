@@ -1,8 +1,6 @@
 import globalConfig from '~/config';
 
-const FMB_XHAIN_TERASSEN = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg${
-  process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
-}`;
+const FMB_XHAIN_TERASSEN = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg?fresh=true`;
 
 const config = {
   ...globalConfig,
