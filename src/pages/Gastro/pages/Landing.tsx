@@ -1,22 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from '@material-ui/core';
+import MapboxGL from 'mapbox-gl';
 
 import config from '~/pages/Gastro/config';
-import Button from '~/components2/Button';
+import Map from '~/components2/Map';
 import Header from '../components/Header';
-import Link from '~/components/Link';
 import { Insert as ImageInsert } from '~/components2/Image';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import Logo from '../components/Logo';
-import DeadlineWarning from '../components/DeadlineWarning';
+import Notice from '../components/Notice';
 import { media } from '~/styles/utils';
-
-const CTA = styled(Button)`
-  margin: 2em auto;
-`;
 
 const Attribution = styled.div`
   font-size: 0.75em;
@@ -40,12 +36,17 @@ const StyledContainer = styled(Container)`
   }
 `;
 
+const StyledMap = styled(Map)`
+  height: 30em;
+  margin: 2em 0;
+`;
+
 const Landing = () => {
   return (
     <>
       <Header showInfoLink={false} />
       <StyledContainer maxWidth="md">
-        <h1>XHain is(s)t draußen – Terrassen für Vieles</h1>
+        <h1>XHain isst draußen – Terrassen für Vieles</h1>
         <ImageInsert
           src={BackgroundImageA2}
           srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
@@ -65,24 +66,32 @@ const Landing = () => {
         </h2>
         <p>
           Das Bezirksamt Friedrichshain-Kreuzberg möchte Gastronomiebetrieben,
-          Einzelhandel und sozialen Projekten, die gemäß §6 der Sechsten
-          Verordnung zur Änderung der SARS-Cov-2-Eindämmungsmaßnahmenverordnung
-          vom 07. Mai 2020 wieder für den Publikumsverkehr öffnen dürfen, die
-          Möglichkeit bieten, Flächen im Straßenraum zum Aufstellen von Tischen
-          zu nutzen. So können diese die Vorgaben der
-          Corona-Eindämmungsverordnung umsetzen und dennoch ihren Betrieb wieder
-          aufzunehmen.
+          Einzelhandel und sozialen Projekte die Möglichkeit bieten, zusätzliche
+          Flächen im Straßenraum temporär Freitags, Samstags und Sonntags von 11
+          bis 22 Uhr zum Aufstellen von Tischen zu nutzen. So können diese die
+          Vorgaben der Corona-Eindämmungsverordnung umsetzen und dennoch Ihren
+          Betrieb wieder aufnehmen.
         </p>
         <p>
-          Um den genauen Bedarf zu erfassen, können Sie als Gewerbetreibende
-          oder soziales Projekt auf dieser Seite Ihr Interesse und den Bedarf an
-          Flächen im Straßenraum bekunden, wenn Sie auf Grund der Abstandsgebote
-          zusätzliche Flächen benötigen.
+          In der Karte sehen Sie alle bis zum 17. Mai 2020 eingegangenen
+          Bedarfsmeldungen. Die über 300 eingegangenen Meldungen werden derzeit
+          in Abgleich mit straßenrechtlichen Anforderungen geprüft. Alle
+          Betriebe und Träger, die eine Interessensbekundung abgegeben haben,
+          erhalten in den nächsten Tagen eine Nachricht vom Bezirksamt, mit
+          Angaben, wie sie sich für eine der Straßen registrieren können.
         </p>
-        <Link to={config.routes.gastro.signup}>
-          <CTA flat>Jetzt Bedarf anmelden</CTA>
-        </Link>
-        <DeadlineWarning />
+
+        <StyledMap
+          style={config.gastro.map.style}
+          bounds={config.gastro.map.bounds}
+          onInit={(map) => {
+            map.addControl(
+              new MapboxGL.NavigationControl({ showCompass: false })
+            );
+          }}
+        />
+        <Notice />
+
         <h2>Zum Hintergrund</h2>
         <p>
           Im Zuge der Lockerungen der Covid-19 Eindämmungsverordnung können
@@ -163,10 +172,7 @@ const Landing = () => {
           nicht kommerzielle Bedarfe der Daseinsvorsorge erfolgreich im Bezirk
           implementiert.
         </p>
-        <Link to={config.routes.gastro.signup}>
-          <CTA flat>Jetzt Bedarf anmelden</CTA>
-        </Link>
-        <DeadlineWarning />
+
         <Logo />
       </StyledContainer>
     </>

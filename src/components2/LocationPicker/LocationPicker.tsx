@@ -14,7 +14,7 @@ import styled from 'styled-components';
 
 import { fetchSuggestions } from '~/components/AutocompleteGeocoder/apiService';
 import config from '~/pages/Gastro/config';
-import Map from './Map';
+import Map from '~/components2/Map';
 import logger from '~/utils/logger';
 
 /**
@@ -26,6 +26,12 @@ import logger from '~/utils/logger';
  * @param address to be checked
  */
 const containsStreetNumber = (address: string) => address.match(/^[^,]+\d,/);
+
+const StyledMap = styled(Map)`
+  width: 100%;
+  height: 30em;
+  margin: 2em 0;
+`;
 
 const AddressHint = styled.p`
   display: flex;
@@ -162,7 +168,11 @@ const LocationPicker = ({ onSelect }) => {
           <ErrorIcon /> {addressHint}
         </AddressHint>
       )}
-      <Map onInit={setMap} />
+      <StyledMap
+        onInit={setMap}
+        style={config.gastro.map.style}
+        bounds={config.gastro.map.bounds}
+      />
       <Snackbar open={errorMessage}>{errorMessage}</Snackbar>
     </>
   );
