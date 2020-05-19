@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from '@material-ui/core';
+import MapboxGL from 'mapbox-gl';
 
 import config from '~/pages/Gastro/config';
 import Map from '~/components2/Map';
@@ -83,6 +84,11 @@ const Landing = () => {
         <StyledMap
           style={config.gastro.map.style}
           bounds={config.gastro.map.bounds}
+          onInit={(map) => {
+            map.addControl(
+              new MapboxGL.NavigationControl({ showCompass: false })
+            );
+          }}
         />
         <Notice />
 
