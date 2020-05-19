@@ -62,15 +62,16 @@ const Landing = () => {
           </a>
         </Attribution>
         <h2>
-          Bedarfsmeldung für Gastronomie, Einzelhandel und soziale Projekte
+          Sonderflächen für Schankbetrieb, Einzelhandel und soziale Projekte
         </h2>
         <p>
           Das Bezirksamt Friedrichshain-Kreuzberg möchte Gastronomiebetrieben,
           Einzelhandel und sozialen Projekte die Möglichkeit bieten, zusätzliche
-          Flächen im Straßenraum temporär Freitags, Samstags und Sonntags von 11
-          bis 22 Uhr zum Aufstellen von Tischen zu nutzen. So können diese die
-          Vorgaben der Corona-Eindämmungsverordnung umsetzen und dennoch Ihren
-          Betrieb wieder aufnehmen.
+          Flächen im Straßenraum temporär (Freitags bis Sonntags von 11 bis 22
+          Uhr oder Montags bis Freitags von 10 bis 20 Uhr) zum Aufstellen von
+          Tischen zu nutzen. So können diese die Vorgaben der
+          Corona-Eindämmungsverordnung umsetzen und dennoch Ihren Betrieb wieder
+          aufnehmen.
         </p>
         <p>
           In der Karte sehen Sie alle bis zum 17. Mai 2020 eingegangenen
