@@ -46,7 +46,7 @@ const Landing = () => {
     <>
       <Header showInfoLink={false} />
       <StyledContainer maxWidth="md">
-        <h1>XHain isst draußen – Terrassen für Vieles</h1>
+        <h1>XHain is(s)t draußen – Terrassen für Vieles</h1>
         <ImageInsert
           src={BackgroundImageA2}
           srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
