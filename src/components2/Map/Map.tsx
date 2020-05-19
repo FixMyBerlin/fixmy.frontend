@@ -3,17 +3,20 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import config from '~/pages/Gastro/config';
 
-const MapContainer = styled.div`
+const Wrapper = styled.div`
   width: 100%;
-  height: 30em;
-  margin: 2em 0;
+  height: 100%;
 `;
 
-const initMap = ({ setMap, mapContainer, onInit }) => {
+interface Props extends Partial<MapboxGL.MapboxOptions> {
+  onInit?: (arg0: MapboxGL.Map) => void;
+  className?: string;
+}
+
+const initMap = ({ setMap, mapContainer, onInit, mapboxProps }) => {
   const map = new MapboxGL.Map({
     container: mapContainer.current,
-    style: config.gastro.map.style,
-    bounds: config.gastro.map.bounds
+    ...mapboxProps
   });
 
   map.on('load', () => {
@@ -23,21 +26,24 @@ const initMap = ({ setMap, mapContainer, onInit }) => {
     // Disable scrolling on this map
     map.scrollZoom.disable();
 
-    onInit(map);
+    if (onInit) onInit(map);
   });
 };
 
-const Map = ({ onInit }) => {
+const Map = (props: Props) => {
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
 
+  const { onInit, className, ...mapboxProps } = props;
+
   useEffect(() => {
     MapboxGL.accessToken = config.map.accessToken;
-    if (map == null) initMap({ setMap, mapContainer, onInit });
+    if (map == null) initMap({ setMap, mapContainer, onInit, mapboxProps });
   }, [map]);
 
   return (
-    <MapContainer
+    <Wrapper
+      className={className}
       ref={(el) => {
         if (mapContainer != null) mapContainer.current = el;
       }}

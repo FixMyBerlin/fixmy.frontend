@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import { Router, Route, Switch, useLocation } from 'react-router-dom';
+import { Router, Route, Switch, useLocation, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
 
 import config from './config';
 import Landing from './pages/Landing';
-import Signup from './pages/Signup';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
@@ -88,7 +87,7 @@ const ScrollToTop = () => {
   return null;
 };
 
-const Gastro = ({ dispatch }) => (
+const Gastro = () => (
   <AppStyles>
     <ThemeProvider theme={theme}>
       <Router history={history}>
@@ -99,7 +98,9 @@ const Gastro = ({ dispatch }) => (
             path={config.routes.gastro.landing}
             component={Landing}
           />
-          <Route exact path={config.routes.gastro.signup} component={Signup} />
+          <Route exact path={config.routes.gastro.signup}>
+            <Redirect to={config.routes.gastro.landing} />
+          </Route>
           <Route render={() => <Markdown page="nomatch" />} />
         </Switch>
       </Router>
