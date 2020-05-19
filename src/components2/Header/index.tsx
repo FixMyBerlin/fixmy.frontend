@@ -45,7 +45,11 @@ const LinkWrapper = styled(Link)`
   }
 `;
 
-const Header = ({ to = '/', showInfoLink = false, children }) => (
+const LogoWrapper = styled.div`
+  margin: 1em 1em 1em auto;
+`;
+
+const Header = ({ to = '/', showInfoLink = false, logo = null, children }) => (
   <Wrapper>
     <MenuButton />
     <Separator />
@@ -53,6 +57,7 @@ const Header = ({ to = '/', showInfoLink = false, children }) => (
       <Title>{children}</Title>
       {showInfoLink === true && <Subtitle>Alle Infos zur Aktion &gt;</Subtitle>}
     </LinkWrapper>
+    {logo && <LogoWrapper>{logo}</LogoWrapper>}
   </Wrapper>
 );
 
