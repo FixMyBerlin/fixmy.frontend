@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Router, Route, Switch, useLocation } from 'react-router-dom';
+import { Router, Route, Switch, useLocation, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
@@ -99,7 +99,9 @@ const Gastro = ({ dispatch }) => (
             path={config.routes.gastro.landing}
             component={Landing}
           />
-          <Route exact path={config.routes.gastro.signup} component={Signup} />
+          <Route exact path={config.routes.gastro.signup}>
+            <Redirect to={config.routes.gastro.landing} />
+          </Route>
           <Route render={() => <Markdown page="nomatch" />} />
         </Switch>
       </Router>
