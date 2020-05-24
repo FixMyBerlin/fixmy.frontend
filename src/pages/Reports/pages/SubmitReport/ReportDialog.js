@@ -62,7 +62,7 @@ class ReportDialog extends PureComponent {
       user,
       locationMode,
       newReport,
-      tempLocation,
+      isLocationPinned,
       error,
       submitting
     } = this.props;
@@ -80,7 +80,7 @@ class ReportDialog extends PureComponent {
           <>
             <OverviewMapNavBar />
             <LocateModeChooser
-              heading="Wo benötigst du neue Fahrradbügel?"
+              heading="Wo benötigen Sie neue Fahrradbügel?"
               onUseDevicePosition={this.props.useDevicePosition}
               onUseGeocoding={this.props.setLocationModeGeocoding}
               error={error}
@@ -90,7 +90,7 @@ class ReportDialog extends PureComponent {
           </>
         ) : (
           <>
-            {tempLocation && tempLocation.pinned && (
+            {isLocationPinned && (
               <FormProgressBar
                 stepNumber={1}
                 stepCaption="Ort"
@@ -200,7 +200,12 @@ const mapDispatchToProps = {
 
 export default connect(
   (state) => ({
-    ...state.ReportsState.SubmitReportState,
+    isLocationPinned:
+      state.ReportsState.SubmitReportState.tempLocation?.isLocationPinned,
+    locationMode: state.ReportsState.SubmitReportState.locationMode,
+    newReport: state.ReportsState.SubmitReportState.newReport,
+    submitting:
+      state.ReportsState.SubmitReportState.apiRequestStatus.submitting,
     error: state.ReportsState.ErrorState,
     token: state.UserState.token,
     user: state.UserState.userData

@@ -3,6 +3,9 @@
 /radbuegel /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
 /meldungen/radbuegel/friedrichshain-kreuzberg/neu/1 /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
 /meldungen/radbuegel/friedrichshain-kreuzberg/neu /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
+
+# Spielstraßen
+/friedrichshain-kreuzberg/spielstra%C3%9Fen /friedrichshain-kreuzberg/spielstrassen 301
  
 # Legacy Plannings Redirects
 /planungen/2725/* /planungen/4/:splat 301
@@ -158,5 +161,4 @@
 /planungen/9071/* /planungen/222/:splat 301
 /planungen/9070/* /planungen/223/:splat 301
 
-# Proxy stats
-/stats/* https://stats.fixmyberlin.de/:splat 200
+/stats/* https://s.fixmycity.de/:splat 200

@@ -1,14 +1,17 @@
 import MapboxGL from 'mapbox-gl';
 
+import config from '~/pages/Reports/config';
 import utils from '~/pages/Reports/utils';
 
 function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   const el = document.createElement('div');
   el.className = 'reports-cluster';
+  el.style.borderColor = config.reports.overviewMap.clusterColor.outer;
 
   const elInner = document.createElement('div');
   elInner.className = 'reports-cluster__inner';
   elInner.innerHTML = pointCount;
+  elInner.style.borderColor = config.reports.overviewMap.clusterColor.inner;
 
   el.dataset.cy = 'reports-marker-cluster';
 
@@ -36,14 +39,7 @@ function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([-10, -10]);
 }
 
-function createPinMarker({
-  markerData,
-  geometry,
-  lngLat,
-  selectedReport,
-  detailId,
-  onClick
-}) {
+function createPinMarker({ markerData, geometry, lngLat, onClick }) {
   const details = JSON.parse(markerData.details || {});
   const el = document.createElement('div');
 
@@ -52,28 +48,22 @@ function createPinMarker({
 
   el.dataset.cy = 'reports-marker';
 
-  if (selectedReport || detailId) {
-    const activeId = selectedReport ? selectedReport.id : detailId;
-    const isActive = markerData.id.toString() === activeId.toString();
-
-    if (!isActive) {
-      el.style.filter = 'brightness(1.15) grayscale(0.7)';
-    }
-  }
-
   const updatedMarkerData = { ...markerData, geometry, details };
 
-  el.innerHTML = `<img class="marker-image" src="${utils.getMarkerSrc(
-    markerData
-  )}" />`;
+  el.innerHTML = `<img class="marker-image marker-${
+    markerData.status
+  }" src="${utils.getMarkerSrc(markerData)}" />`;
   el.addEventListener('click', (evt) => onClick(evt, updatedMarkerData));
 
-  return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -20]);
+  return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -0]);
 }
 
 function setupClusters(name, map, data, radius, handleUpdate) {
   map.on('data', (e) => {
-    if (e.sourceId !== name || !e.isSourceLoaded) return;
+    // This is using the map.isSourceLoaded function instead of the property
+    // isSourceLoaded on the event itself as the latter doesn not seem to be
+    // reliable in indicating whether the source has actually been loaded.
+    if (e.sourceId !== name || !map.isSourceLoaded(name)) return;
 
     map.on('move', () => handleUpdate());
     map.on('moveend', () => handleUpdate());

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const Path = require('path');
 const Webpack = require('webpack');
 const merge = require('webpack-merge');
@@ -12,6 +14,19 @@ const INDEX_HTML =
   process.env.KATASTER_PATH != null
     ? '../src/pages/KatasterKI/index_tsp.html'
     : '../src/index.html';
+
+let siteUrl;
+let title;
+if (process.env.KATASTER_PATH != null) {
+  siteUrl = '/strassencheck';
+  title = 'Der große Straßencheck';
+} else if (process.env.REGION === 'aachen') {
+  siteUrl = 'https://radbuegel-aachen.de';
+  title = 'Radbügel für Aachen';
+} else {
+  siteUrl = 'https://fixmyberlin.de';
+  title = 'FixMyBerlin';
+}
 
 module.exports = merge(common, {
   mode: 'production',
@@ -32,10 +47,8 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      siteUrl:
-        process.env.KATASTER_PATH != null
-          ? '/strassencheck'
-          : 'https://fixmyberlin.de',
+      siteUrl,
+      title,
       template: Path.resolve(__dirname, INDEX_HTML),
       minify: false
     }),

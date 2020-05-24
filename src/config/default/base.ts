@@ -1,6 +1,6 @@
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
-  staging: 'https://fixmyberlin-staging.netlify.com/api/next',
+  staging: 'https://fixmyberlin-staging.netlify.app/api/next',
   production: 'https://fixmyberlin.de/api/v1'
 };
 
@@ -15,6 +15,9 @@ const baseConfig = {
     apiEndpoints.production,
   feedbackMail: 'feedback@fixmyberlin.de',
   siteTitle: 'FixMyBerlin',
+  titleFont: 'Roboto Slab',
+  baseFont: 'Open Sans',
+  flatButtons: false,
   logger: 'fmc*', // selects logging namespaces to display when not in production
   sectionIsBeta: true,
   planningIsBeta: true,
@@ -24,10 +27,15 @@ const baseConfig = {
   showLikeButton: true,
   showFeedBackForm: false,
   piwik: {
+    url: 's.fixmycity.de',
     siteId: {
-      main: 1,
-      kataster: 2,
-      katasterTesting: 3
+      berlin: 1,
+      aachen: 4
+    },
+    options: {
+      enableLinkTracking: true,
+      trackErrors: true,
+      disableCookies: true
     }
   }
 };

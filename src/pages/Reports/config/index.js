@@ -1,6 +1,6 @@
 import globalConfig from '~/config';
 import berlin from './berlin';
-import bonn from './bonn';
+import aachen from './aachen';
 
 const defaultConfig = {
   apiRoute: '/reports',
@@ -15,8 +15,8 @@ const defaultConfig = {
 };
 
 let instanceConfig = {};
-if (globalConfig.region === 'bonn') {
-  instanceConfig = bonn;
+if (globalConfig.region === 'aachen') {
+  instanceConfig = aachen;
 } else {
   instanceConfig = berlin;
 }

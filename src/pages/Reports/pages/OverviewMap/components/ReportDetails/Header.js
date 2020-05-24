@@ -35,25 +35,36 @@ const StatusIndicator = styled.p`
 
 const StatusIndicatorWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: bottom;
+  align-items: center;
 `;
 
 const ReportPin = styled.img.attrs((props) => ({
   src: utils.getMarkerSrc({ status: props.status }),
   alt: 'A marker icon'
 }))`
-  display: block;
-  width: 40px;
-  height: 51px;
+  margin-left: auto;
+  width: ${(props) => (props.small ? '20px' : '40px')};
+  height: ${(props) => (props.small ? '20px' : '50px')};
 `;
+
+const DetailsHeading = styled(Heading)`
+  font-size: 1.4em;
+`;
+
+// statuses for which marker images are small
+const smallMarkers = ['verification', 'accepted', 'rejected'];
 
 const DetailsHeader = ({ details: { number }, status }) => (
   <>
     <HeadlineSection data-cy="reports-detail-title">
-      <Heading alignLeft>
-        {number} neue{number === 1 ? 'r' : null} Fahrradbügel gewünscht
-      </Heading>
+      <DetailsHeading alignLeft>
+        {status !== 'done' && (
+          <>
+            {number} neue{number === 1 ? 'r' : null} Fahrradbügel gewünscht
+          </>
+        )}
+        {status === 'done' && <>{number} Fahrradbügel gebaut</>}
+      </DetailsHeading>
       <BikeStandsCountSection>
         <BikestandsIcon />
         <BikeStandsCount>x{number}</BikeStandsCount>
@@ -64,7 +75,7 @@ const DetailsHeader = ({ details: { number }, status }) => (
       <StatusIndicator data-cy="reports-detail-status">
         Status: {getReportStatusCaption(status)}
       </StatusIndicator>
-      <ReportPin />
+      <ReportPin small={smallMarkers.indexOf(status) > -1} status={status} />
     </StatusIndicatorWrapper>
   </>
 );

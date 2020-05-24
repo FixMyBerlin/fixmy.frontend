@@ -17,6 +17,8 @@ const KatasterKI = lazy(() => import('~/pages/KatasterKI'));
 const MapView = lazy(() => import('~/pages/Map'));
 const Markdown = lazy(() => import('~/pages/Markdown'));
 const Reports = lazy(() => import('~/pages/Reports'));
+const Spielstrassen = lazy(() => import('~/pages/Spielstrassen'));
+const Gastro = lazy(() => import('~/pages/Gastro'));
 
 const Routes = ({ token }) => (
   <Switch>
@@ -57,6 +59,10 @@ const Routes = ({ token }) => (
       <Route path={config.routes.projects} component={MapView} />
     )}
 
+    {config.routes.popupbikelanes != null && (
+      <Route path={config.routes.popupbikelanes} component={MapView} />
+    )}
+
     {/* reports page */}
     {config.routes.reports != null && (
       <Route path={`${config.routes.reports.index}`} component={Reports} />
@@ -73,6 +79,19 @@ const Routes = ({ token }) => (
         path={`${config.routes.analysis}/planungen/:districtName?`}
         component={Analysis}
       />
+    )}
+
+    {/* Spielstrassen pages */}
+    {config.routes.spielstrassen != null && (
+      <Route
+        path={config.routes.spielstrassen.landing}
+        component={Spielstrassen}
+      />
+    )}
+
+    {/* Gastro pages */}
+    {config.routes.gastro != null && (
+      <Route path={config.routes.gastro.landing} component={Gastro} />
     )}
 
     <Route render={() => <Markdown page="nomatch" />} />

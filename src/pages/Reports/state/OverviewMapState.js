@@ -34,7 +34,10 @@ actions.loadReportsData = () => async (dispatch) => {
   await loadReportsThunk(dispatch);
 };
 
-actions.setSelectedReport = (selectedReport) => async (dispatch, getState) => {
+actions.setSelectedReport = (selectedReport, zoomIn) => async (
+  dispatch,
+  getState
+) => {
   const { reports } = getState().ReportsState.OverviewMapState;
 
   if (!reports.length) {
@@ -43,7 +46,10 @@ actions.setSelectedReport = (selectedReport) => async (dispatch, getState) => {
 
   dispatch({
     type: types.SET_SELECTED_REPORT,
-    payload: selectedReport || null
+    payload: {
+      selectedReport: selectedReport || null,
+      zoomIn: zoomIn || false
+    }
   });
 };
 
@@ -78,7 +84,7 @@ function reducer(
     case types.SET_SELECTED_REPORT:
       return {
         ...state,
-        selectedReport: payload
+        ...payload
       };
     case types.SET_SELECTED_REPORT_POS:
       return {
@@ -86,7 +92,7 @@ function reducer(
         selectedReportPosition: payload
       };
     default:
-      return { ...state };
+      return state;
   }
 }
 

@@ -60,13 +60,12 @@ describe('The reports map', () => {
 
   describe('the details panel', () => {
     it('has a header with address and report id', () => {
-      cyElem('map-details-header-title').contains(/.+\w\d{1,3}/);
+      cyElem('map-details-header-title').contains(/\S+/);
       cyElem('map-details-header-subtitle').contains(/Meldung\s\d{1,3}/);
     });
     it('has a title, status and description', () => {
       cyElem('reports-detail-title').should('be.visible');
       cyElem('reports-detail-status').should('be.visible');
-      cyElem('reports-detail-description').should('be.visible');
     });
     it('shows a date of creation', () => {
       cyElem('reports-detail-datetime').contains(/\d{2}\.\d{2}\.\d{4}/);

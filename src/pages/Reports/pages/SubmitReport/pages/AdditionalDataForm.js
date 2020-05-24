@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { oneLine } from 'common-tags';
 import TextareaAutosize from 'react-autosize-textarea';
 
+import { number, func, shape, string } from 'prop-types';
 import config from '~/pages/Reports/config';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
@@ -19,9 +20,13 @@ const StyledHeading = styled(Heading)`
 `;
 
 const Hint = styled(Paragraph)`
-  margin-top: 12px;
+  margin-top: 0.8em;
   margin-bottom: 0;
   font-weight: ${({ emphasize }) => (emphasize ? 'bold' : 'normal')};
+`;
+
+const HintBottom = styled(Hint)`
+  margin-top: 2em;
 `;
 
 const PhotoDisclaimerWrapper = styled.div`
@@ -118,6 +123,8 @@ class AdditionalDataForm extends PureComponent {
 
   render() {
     const isDesktopView = matchMediaSize(breakpoints.m);
+    const isSubmittable = this.isSubmittable();
+    const { maxDescriptionLength } = this.props;
 
     return (
       <DialogStepWrapper>
@@ -126,8 +133,8 @@ class AdditionalDataForm extends PureComponent {
           ergänzen.
         </StyledHeading>
         <Hint>
-          Ein Foto des Ortes hilft der Verwaltung, die Situation vor Ort besser
-          zu beurteilen und die Meldung schneller zu bearbeiten.
+          Ein Foto des Ortes hilft uns, die Situation vor Ort besser zu
+          beurteilen und die Meldung schneller zu bearbeiten.
         </Hint>
 
         <UploadPhotoInput
@@ -156,34 +163,38 @@ class AdditionalDataForm extends PureComponent {
           </StyledCheckboxLabel>
         </PhotoDisclaimerWrapper>
 
-        <StyledHeading>Hinweise an die Verwaltung</StyledHeading>
+        <StyledHeading>Hinweise zum Ort</StyledHeading>
 
         <DescriptionTextArea
           rows={isDesktopView ? 6 : 8}
-          maxLength={this.props.maxDescriptionLength || 400}
+          maxLength={maxDescriptionLength}
           value={this.state.description}
           onChange={this.updateDescription}
           data-cy="reports-additional-comment"
           placeholder={oneLine`
-          Beschreibe hier die Situation an dem Ort deiner
-          Meldung oder nenne besondere Anforderungen,
-          z.B. Stellplätze für Lastenräder, die Nähe einer Kita oder Ähnliches.`}
+          Beschreiben Sie hier die Situation an dem Ort Ihrer
+          Meldung oder nennen besondere Anforderungen,
+          z.B. Stellplätze für Lastenräder, die Nähe einer Kita oder ähnliches.`}
         />
         <Hint
-          emphasize={
-            this.state.description.length === this.props.maxDescriptionLength
-          }
+          emphasize={this.state.description.length === maxDescriptionLength}
         >
-          Max. {this.props.maxDescriptionLength} Zeichen
+          Max. {maxDescriptionLength} Zeichen
         </Hint>
 
         <WeiterButton
           onClick={this.submit}
-          disabled={!this.isSubmittable()}
+          disabled={!isSubmittable}
           data-cy="reports-additional-continue"
         >
           Weiter
         </WeiterButton>
+
+        {!isSubmittable && (
+          <HintBottom>
+            <em>* Foto oder Text zum Fortfahren benötigt</em>
+          </HintBottom>
+        )}
 
         {this.props.error.message && (
           <ErrorMessage
@@ -195,6 +206,19 @@ class AdditionalDataForm extends PureComponent {
     );
   }
 }
+
+AdditionalDataForm.propTypes = {
+  onConfirm: func.isRequired,
+  maxDescriptionLength: number,
+  error: shape({ message: string }),
+  addError: func.isRequired,
+  removeError: func.isRequired
+};
+
+AdditionalDataForm.defaultProps = {
+  maxDescriptionLength: 400,
+  error: null
+};
 
 export default connect((state) => ({ error: state.ReportsState.ErrorState }), {
   ...errorStateActions

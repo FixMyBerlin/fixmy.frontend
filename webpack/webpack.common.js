@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const Path = require('path');
 const Webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -10,7 +12,10 @@ const defaultEntryPoint = '../src/index.js';
 const FAVICONS_PATH =
   process.env.KATASTER_PATH != null
     ? '../src/pages/KatasterKI/favicons'
-    : '../favicons';
+    : Path.resolve(__dirname, '..', 'favicons', process.env.REGION || 'berlin');
+
+// Used to prove domain ownership for Mailjet
+const MAILJET_AUTH_FILE = '3e83a85511f70bef9fbe500647d70221.txt';
 
 module.exports = {
   entry: {
@@ -28,7 +33,11 @@ module.exports = {
       { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' },
       { from: Path.resolve(__dirname, '../_redirects') },
       { from: Path.resolve(__dirname, FAVICONS_PATH) },
-      { from: Path.resolve(__dirname, '../public/data'), to: 'data' }
+      { from: Path.resolve(__dirname, '../public/data'), to: 'data' },
+      { from: Path.resolve(__dirname, '../public/uploads'), to: 'uploads' },
+      {
+        from: Path.resolve(__dirname, '..', 'public', MAILJET_AUTH_FILE)
+      }
     ]),
     new Dotenv({ defaults: true, systemvars: true })
   ],
@@ -54,7 +63,8 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/webidl-conversions'),
           Path.resolve(__dirname, '../node_modules/whatwg-url'),
           Path.resolve(__dirname, '../node_modules/ky'),
-          Path.resolve(__dirname, '../node_modules/d3-scale')
+          Path.resolve(__dirname, '../node_modules/d3-scale'),
+          Path.resolve(__dirname, '../node_modules/debug')
         ],
         use: 'babel-loader'
       },

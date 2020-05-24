@@ -23,11 +23,23 @@ export default {
     iframe: `${katasterPath}/iFrame-test`,
     email: `${katasterPath}/email`
   },
+  spielstrassen: {
+    landing: '/friedrichshain-kreuzberg/spielstrassen',
+    streets: '/friedrichshain-kreuzberg/spielstrassen/kieze',
+    register: '/friedrichshain-kreuzberg/spielstrassen/:slug',
+    thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke'
+  },
+  popupbikelanes: '/popupbikelanes',
   signup: '/registrieren',
   login: '/anmelden',
   forgotPassword: '/passwort-vergessen',
   resetPassword: '/reset',
   emailVerification: '/email-verification',
   profile: '/profil',
-  userVerify: '/bestaetigen'
+  userVerify: '/bestaetigen',
+  gastro: {
+    landing: '/friedrichshain-kreuzberg/terrassen',
+    signup: '/friedrichshain-kreuzberg/terrassen/anmeldung',
+    thanks: '/friedrichshain-kreuzberg/terrassen/danke'
+  }
 };

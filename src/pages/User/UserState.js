@@ -67,12 +67,17 @@ export function login(values, formFunctions, cb = () => {}) {
 
     const data = await apiLogin(values, formFunctions);
 
+    const CREDENTIAL_ERROR_MESSAGE =
+      'No active account found with the given credentials';
+
     if (!data.error) {
       set('token', data.access);
       formFunctions.setStatus('loginsuccess');
       dispatch({ type: LOGIN_SUCCESS, payload: { token: data.access } });
 
       cb(data);
+    } else if (data.error?.detail === CREDENTIAL_ERROR_MESSAGE) {
+      formFunctions.setStatus('credentialserror');
     }
   };
 }
@@ -225,6 +230,6 @@ export default function MapStateReducer(state = initialState, action = {}) {
     case LOAD_LIKES_FAIL:
       return { ...state, ...action.payload };
     default:
-      return { ...state };
+      return state;
   }
 }

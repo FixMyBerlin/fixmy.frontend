@@ -5,8 +5,26 @@
   height: auto;
 }
 
-.reports-marker .marker-image {
-  width: 100%;
+.marker-new,
+.marker-report_new,
+.marker-planning,
+.marker-execution,
+.marker-invalid,
+.marker-done {
+  width: 40px;
+  height: 50px;
+}
+
+.marker-verification,
+.marker-accepted,
+.marker-rejected,
+.marker-inactive,
+.marker-report_verification,
+.marker-report_accepted,
+.marker-report_rejected,
+.marker-report_inactive {
+  width: 24px;
+  height: 24px;
 }
 
 .reports-cluster {
@@ -15,6 +33,7 @@
   border: 3px solid rgba(145, 0, 85, 0.5);
   background: white;
   border-radius: 50%;
+  box-shadow: 0px 0px 10px rgba(84, 84, 84, 0.5);
 }
 
 .reports-cluster__inner {

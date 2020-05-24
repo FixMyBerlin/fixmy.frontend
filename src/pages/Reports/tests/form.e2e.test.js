@@ -25,7 +25,7 @@ describe('The reports submission form', () => {
         cyElem('reports-locatemode-currentPosition').should('be.visible');
       });
       it('redirects to the map', () => {
-        cy.mockGeolocation();
+        cy.mockGeolocation(config.reports.tests.mockGeoLocation);
         cyElem('reports-locatemode-currentPosition').click();
         cy.window().then((win) => {
           expect(win.navigator.geolocation.getCurrentPosition).to.be.called;
@@ -71,7 +71,7 @@ describe('The reports submission form', () => {
           .and('have.value', '');
         cyElem('reports-map-help')
           .should('be.visible')
-          .contains('Bewege die Karte oder tippe eine Adresse ein');
+          .contains('Bewegen Sie die Karte oder tippen Sie eine Adresse ein');
       });
       it('shows a map', () => {
         cyElem('reports-basemap').should('be.visible');
@@ -80,7 +80,7 @@ describe('The reports submission form', () => {
 
     describe('when an address is entered', () => {
       beforeEach(() => {
-        cyElem('map-address-input').type('meh');
+        cyElem('map-address-input').type(config.reports.tests.addressInput);
       });
       it('shows a list of suggestions', () => {
         cyElem('map-address-suggestion')
@@ -119,7 +119,7 @@ describe('The reports submission form', () => {
   describe('the locate me page', () => {
     before(() => {
       cy.visit(config.routes.reports.new);
-      cy.mockGeolocation();
+      cy.mockGeolocation(config.reports.tests.mockGeoLocation);
       cyElem('reports-locatemode-currentPosition').click();
     });
 
@@ -137,7 +137,7 @@ describe('The reports submission form', () => {
     describe('which opens a confirmation dialogue', () => {
       beforeEach(() => {
         cy.visit(config.routes.reports.new);
-        cy.mockGeolocation();
+        cy.mockGeolocation(config.reports.tests.mockGeoLocation);
         cyElem('reports-locatemode-currentPosition').click();
         cyElem('reports-form-confirm-location-button').click();
       });
@@ -177,7 +177,8 @@ describe('The reports submission form', () => {
 
     it('has a title and description', () => {
       cy.get('h3').contains('Bitte entweder noch ein Foto von dem Ort');
-      cy.get('p').contains('Ein Foto des Ortes hilft der Verwaltung');
+      if (config.reports.form.placementNotice)
+        cy.get('p').contains('Ein Foto des Ortes hilft');
     });
     it('initially prevents continuing in the form', () => {
       cyElem('reports-additional-continue').should('be.disabled');
@@ -238,6 +239,9 @@ describe('The reports submission form', () => {
       cyElem('reports-locker-accept').click();
       cyElem('reports-locker-continue').click();
 
+      // the request body is not region-specific because it is
+      // sourced from a test fixture that contains data
+      // for Mehringdamm in Berlin.
       cy.wait('@postReport')
         .its('request.body')
         .should('deep.equal', {

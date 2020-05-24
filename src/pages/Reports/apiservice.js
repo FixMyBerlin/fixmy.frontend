@@ -1,4 +1,4 @@
-import ky from 'ky';
+import ky from 'ky-universal';
 import oneLine from 'common-tags/es/oneLine/oneLine';
 import validateNewReport from './state/tests/schemaValidation/validateNewReport';
 import logger from '~/utils/logger';
@@ -23,7 +23,11 @@ async function handleSubmitRequest(
       await ky(reportsEndpointUrl, { method, json, headers });
     }
   } catch (e) {
-    response.error = await e.response.json();
+    if (e.response != null) {
+      response.error = await e.response.json();
+    } else {
+      throw e;
+    }
   }
 
   return response;
@@ -104,13 +108,26 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
  * @param {string} status
  */
 export function getReportStatusCaption(status) {
-  const caption = {
+  const captions = {
     new: 'neue Meldung',
     verification: 'wird geprüft',
     accepted: 'wird umgesetzt',
     rejected: 'wird nicht umgesetzt',
+    inactive: 'siehe Beschreibung unten',
+    planning: 'in Planung',
+    tender: 'in Ausschreibung',
+    invalid: 'nicht umsetzbar',
+    execution: 'im Bau',
     done: 'wurde umgesetzt'
-  }[status];
+  };
+
+  captions.report_new = captions.new;
+  captions.report_verification = captions.verification;
+  captions.report_accepted = captions.accepted;
+  captions.report_rejected = captions.rejected;
+  captions.report_inactive = captions.inactive;
+
+  const caption = captions[status];
 
   if (!caption) {
     logger(`Failed to resolve status ${status} to a caption`);

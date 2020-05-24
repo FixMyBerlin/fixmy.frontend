@@ -10,7 +10,11 @@ import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import Button from '~/components/Button';
 import history from '~/history';
 
-import thanksImageSrc from '~/images/reports/letter.png';
+import letterImageFMB from '~/images/reports/letter.png';
+import letterImageAachen from '~/images/aachen/mail-illu-01@2x.png';
+
+const letterImage =
+  config.region === 'aachen' ? letterImageAachen : letterImageFMB;
 
 const StyledHeading = styled(Heading)`
   margin: 6px 0 8px 0;
@@ -58,15 +62,15 @@ class ThanksPage extends PureComponent {
     return (
       <DialogStepWrapper>
         <StyledHeading>
-          Danke, wir haben dir eine E-Mail geschickt. Klicke dort auf den Link
-          zur Bestätigung.
+          Danke, wir haben Ihnen eine E-Mail geschickt. Klicken Sue dort auf den
+          Link zur Bestätigung.
         </StyledHeading>
 
-        <ThanksImg src={thanksImageSrc} />
+        <ThanksImg src={letterImage} />
 
         <Text>
-          Sobald du deinen Login aktiviert hast, bekommst du Nachrichten zu
-          deiner Meldung und kannst andere Meldungen mit einem Herz
+          Sobald Sie den Login aktiviert haben, bekommen Sie Nachrichten zu
+          Ihret Meldung und können Meldungen anderer mit einem Herz
           unterstützen.
         </Text>
 
@@ -79,7 +83,7 @@ class ThanksPage extends PureComponent {
         </Button>
 
         <Paragraph>
-          Schau dir deine Meldung an und erzähle anderen davon.
+          Schauen Sie sich Ihre Meldung an und erzählen anderen davon.
         </Paragraph>
       </DialogStepWrapper>
     );

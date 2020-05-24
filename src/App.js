@@ -3,13 +3,14 @@ import 'react-hot-loader'; // keep first
 import React, { PureComponent, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
+import ReactPiwik from 'react-piwik';
 import styled from 'styled-components';
 import { Router } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
 
 import history from '~/history';
 import GlobalStyles from '~/styles/Global';
-import DotLoader from '~/components/DotLoader';
+import BigLoader from '~/components/BigLoader';
 import ErrorBoundary from '~/components/ErrorBoundary';
 import Menu from '~/components/Menu';
 import { verify } from '~/pages/User/UserState';
@@ -29,6 +30,9 @@ const AppWrapper = styled.div`
 class App extends PureComponent {
   componentDidMount() {
     this.props.dispatch(verify());
+
+    // track the initial pageview
+    ReactPiwik.push(['trackPageView']);
   }
 
   render() {
@@ -38,7 +42,7 @@ class App extends PureComponent {
       <>
         <GlobalStyles />
         <Router history={history}>
-          <Suspense fallback={<DotLoader />}>
+          <Suspense fallback={<BigLoader />}>
             <LastLocationProvider>
               <AppWrapper>
                 {!isEmbedMode && <Menu />}

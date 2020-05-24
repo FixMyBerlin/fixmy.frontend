@@ -17,10 +17,12 @@ export const standardLayers = ['center', 'side0', 'side1'];
 export const standardLayersWithOverlay = [...standardLayers, 'overlayLine'];
 
 export function setView(map, view) {
-  if (view.zoom) map.setZoom(view.zoom);
-  if (view.center) map.setCenter(view.center);
-  if (view.pitch) map.setPitch(view.pitch);
-  if (view.bearing) map.setBearing(view.bearing);
+  // attach flag to enables listeners to differentiate between natural user interaction and programmatic map change
+  const eventData = { programmaticMove: true };
+  if (view.zoom) map.setZoom(view.zoom, eventData);
+  if (view.center) map.setCenter(view.center, eventData);
+  if (view.pitch) map.setPitch(view.pitch, eventData);
+  if (view.bearing) map.setBearing(view.bearing, eventData);
 }
 
 export function animateView(map, view) {
@@ -80,6 +82,11 @@ export function setPlanningLegendFilter(map, selected) {
     )
     .filter((entry) => entry !== null);
 
+  // Also show temporary projects if the filter for phase "ready" is active
+  if (selected[3] === true) {
+    filters.push(['==', 'inactive', ['get', 'phase']]);
+  }
+
   // Planning legend filter can be directly set for center and overlayLine
   // layer, but need  to be concatenated with side filter for the side layers
 
@@ -95,6 +102,19 @@ export function setPlanningLegendFilter(map, selected) {
     sideFilter1,
     ['any', ...filters]
   ]);
+}
+
+/**
+ * Show all popup bike lanes from the projects layer
+ *
+ * @param {MapboxGL instance} map
+ */
+export function setPopupLanesFilter(map) {
+  const filter = ['==', 'inactive', ['get', 'phase']];
+  map.setFilter(config.map.layers.projects.center, filter);
+  map.setFilter(config.map.layers.projects.overlayLine, filter);
+  map.setFilter(config.map.layers.projects.side0, ['all', sideFilter0, filter]);
+  map.setFilter(config.map.layers.projects.side1, ['all', sideFilter1, filter]);
 }
 
 /**

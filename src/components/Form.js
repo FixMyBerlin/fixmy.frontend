@@ -23,7 +23,6 @@ export default styled.form`
     padding: 5px 10px;
     border: 1px solid #ddd;
     color: ${config.colors.darkbg};
-    font-family: 'Open Sans', sans-serif;
   }
 
   textarea {

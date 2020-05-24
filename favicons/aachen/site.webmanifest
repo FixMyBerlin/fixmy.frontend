@@ -1,0 +1,19 @@
+{
+  "name": "Radbügel für Aachen",
+  "short_name": "Radbügel für Aachen",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#6E9BD2",
+  "background_color": "#6E9BD2",
+  "display": "standalone"
+}
