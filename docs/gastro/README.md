@@ -12,6 +12,8 @@ Die Gastro-App implementiert einen Prozess zur Vereinbarung der Nutzung von
 
 **Administrator:innen** konfigurieren und betreuen die laufende Anwendung und ihre Datenflüsse
 
+**Anwohner:innen** besuchen die Ladengeschäfte im öffentlichen Raum als Kunden der Betreiber:innen
+
 ## User Stories
 
 ### A: Anmeldung von Interesse
@@ -51,6 +53,7 @@ Die Gastro-App implementiert einen Prozess zur Vereinbarung der Nutzung von
 | ID  | User-Story                                                                                                                                                                              | Tickets |
 | --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | E01 | Als Verwaltungsmitarbeiter:in möchte ich den Versand einer E-Mail-Benachrichtigung an Antragsteller auslösen können, so dass diese über die Bewilligung eines Antrags informiert werden |
+| E02 | Als Anwohner:in möchte ich mich über eine öffentlich einsehbare Internetseite über die eingerichteten Verkaufsflachen informieren können                                                |
 
 ### F: Zurückziehen von Anträgen
 
