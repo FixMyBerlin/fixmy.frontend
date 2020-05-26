@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 
 const Logo = () => (
   <Wrapper>
-    <span>Bereitgestellt durch</span>
+    <span>Software bereitgestellt durch</span>
     <Link to="/">
       <img src={FMBLogo} alt="Logo FixMyBerlin" />
     </Link>
