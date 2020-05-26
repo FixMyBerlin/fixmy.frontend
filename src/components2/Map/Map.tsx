@@ -19,6 +19,8 @@ const initMap = ({ setMap, mapContainer, onInit, mapboxProps }) => {
     ...mapboxProps
   });
 
+  console.log(mapboxProps);
+
   map.on('load', () => {
     setMap(map);
     map.resize();

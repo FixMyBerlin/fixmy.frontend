@@ -12,7 +12,7 @@ const get = async (id: number, accessKey: string) => {
     id,
     accessKey
   })}`;
-  return ky.get(url);
+  return ky.get(url).json();
 };
 
 const signup = async (signupData: GastroSignup) => {

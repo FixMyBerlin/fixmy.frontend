@@ -24,17 +24,22 @@ const Section = styled.section`
   }
 `;
 
-// 1
-// 7770139d-a8b1-40ca-85db-a76a8dfed633
+const process = (signupData) => ({
+  ...signupData,
+  shopfront_length: (0.01 * signupData.shopfront_length).toString()
+});
 
 const Registration = ({
   match: {
     params: { id, accessKey }
   }
 }) => {
+  // Data from previous signup (Interessensbekundung)
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [signupData, setSignupData] = useState({});
+
+  // State for this registration
   const [isSubmitting, setSubmitting] = useState(false);
   const [submission, setSubmission] = useState(null);
 
@@ -43,12 +48,14 @@ const Registration = ({
       let result;
       try {
         result = await api.get(id, accessKey);
+        result = process(result);
         setSignupData(result);
       } catch (e) {
         setError(e.message);
         setLoading(false);
         throw e;
       }
+      setLoading(false);
     };
     doLoad();
   }, [id, accessKey]);

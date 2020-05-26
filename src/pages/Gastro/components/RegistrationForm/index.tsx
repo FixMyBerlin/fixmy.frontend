@@ -11,25 +11,29 @@ import styled from 'styled-components';
 
 import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
-import LocationPicker from '~/components2/LocationPicker';
+import StaticMap from '~/components2/StaticMap';
 import logger from '~/utils/logger';
 import config from '~/pages/Gastro/config';
 import { GastroSignup } from '~/pages/Gastro/types';
 import api from '~/pages/Gastro/api';
 import validate from './validate';
-import parseLength from './parseLength';
+import parseLength from '../../parseLength';
 
 /* eslint-disable camelcase */
 export interface FormData {
   shop_name?: string;
   first_name?: string;
   last_name?: string;
+  phone?: string;
   category?: string;
   email?: string;
   address?: string;
   location?: [number, number];
   shopfront_length?: string;
+  usage?: string;
+  certificate?: string;
   opening_hours?: string;
+  agreement_accepted?: boolean | '';
   tos_accepted?: boolean | '';
 }
 /* eslint-enable camelcase */
@@ -38,11 +42,15 @@ const initialValues: FormData = {
   shop_name: '',
   first_name: '',
   last_name: '',
+  phone: '',
   category: '',
   email: '',
   address: '',
   location: null,
   shopfront_length: '',
+  usage: '',
+  certificate: null,
+  agreement_accepted: '',
   tos_accepted: ''
 };
 
@@ -98,13 +106,13 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
     {({ status, values, handleChange, isSubmitting }) => (
       <StyledForm>
         <section>
-          <h4>Bitte machen Sie Angaben zu Ihrem Betrieb:</h4>
+          <h4>Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb:</h4>
           <Field
             name="shop_name"
             component={TextField}
-            label="Name des Betriebs"
+            label="Name des Betriebs (kann nicht geändert werden)"
             fullWidth
-            value={signupData.shop_name}
+            disabled
           />
 
           <ErrorMessage
@@ -143,28 +151,42 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
             label="Nachname der Inhaber:in"
             fullWidth
           />
+          <Field
+            name="phone"
+            component={TextField}
+            label="Telefonnummer (tagsüber erreichbar)"
+            fullWidth
+            variant="filled"
+          />
         </section>
         <section>
-          <h4>Wo befindet sich das Ladenlokal?</h4>
-          <p>
-            Es können nur Adressen in Friedrichshain-Kreuzberg gemeldet werden.
-          </p>
-          <ErrorMessage
+          <Field
             name="address"
-            render={(msg) => <FormError error>{msg}</FormError>}
+            component={TextField}
+            label="Addresse des Ladengeschäfts"
+            disabled
+            fullWidth
           />
-          <LocationPicker
-            onSelect={({ address, location }) => {
-              handleChange({ target: { name: 'address', value: address } });
-              handleChange({
-                target: {
-                  name: 'location',
-                  value: [location.lng, location.lat]
-                }
-              });
-            }}
-          />
-          {/* <MapLocator location={values.location} /> */}
+          <StaticMap location={signupData?.geometry?.coordinates} />
+        </section>
+        <section>
+          <p>
+            <strong>
+              Ihr Betrieb liegt im Bereich der Straße XX, hier wird es eine
+              Gesamt-Anordnung für den Bereich XX Straße Hausnummer XX bis
+              Hausnummer XX geben. Wenn Sie sich registrieren, können Sie in
+              diesem Bereich teilnehmen.
+            </strong>
+          </p>
+          <p>
+            <a href="/" className="internal">
+              Karte der anzuordnenden Fläche
+            </a>
+          </p>
+          <p>
+            Die Sondernutzungsfläche kann nach Einrichtung Freitags, Samstags
+            und Sonntags, jeweils von 11 bis 22 Uhr genutzt werden.
+          </p>
         </section>
         <section>
           <p>
@@ -188,6 +210,97 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
             fullWidth
           />
         </section>
+        <section>
+          <p>
+            <strong>
+              Bitte formulieren Sie kurze Angaben zum Nutzungszweck der
+              beantragten Fläche:
+            </strong>
+          </p>
+          <Field
+            name="usage"
+            type="text"
+            component={TextField}
+            label="Nutzungszweck"
+            placeholder="z.B. Schankvorgarten, Warenauslagen, Werkstatt, oder anderer Zweck"
+            multiline
+            rows={4}
+            fullWidth
+            variant="filled"
+          />
+        </section>
+        <section>
+          <p>
+            <strong>
+              Bitte laden Sie hier die erste Seite Ihrer Gewerbeanmeldung /
+              Ihres Vereinsregisters als Scan oder Foto hoch (Schrift muss
+              lesbar sein).
+            </strong>
+          </p>
+          <Field
+            name="certificate"
+            type="text"
+            component={TextField}
+            label="Nachweis einfügen"
+            fullWidth
+          />
+        </section>
+        <section>
+          <p>
+            <strong>Zustimmung Kooperationsvereinbarung</strong>
+          </p>
+          <p>
+            Damit Sie die Sonderfläche nutzen können, müssen Sie der{' '}
+            <a href="" className="internal">
+              Kooperationsvereinbarung
+            </a>{' '}
+            mit dem Bezirksamt Friedrichshain-Kreuzberg zustimmen, damit sichern
+            Sie folgende Punkte zu:
+          </p>
+          <ul>
+            <li>
+              Eigenverantwortliche Durchführung der verkehrsrechtlichen
+              Anordnung, inkl. Stellung von Sperren, Schildern und ggf. Personal
+              (inkl. Kostenübernahme für das Stellen der Schilder)
+            </li>
+
+            <li>
+              Verpflichtung zur Einführung eines Pfandsystems für Einweggebinde
+              bei der Herausgabe von Speisen nach Maßgabe des Bezirksamtes{' '}
+            </li>
+
+            <li>
+              Freihaltung von ausreichend breiten Gehwegen (Mindestens 2 Meter)
+            </li>
+          </ul>
+          <div className="checkboxFieldGroup">
+            <ErrorMessage
+              name="agreement_accepted"
+              render={(msg) => <FormError error>{msg}</FormError>}
+            />
+            <Field
+              component={CheckboxWithLabel}
+              name="agreement_accepted"
+              type="checkbox"
+              Label={{
+                label: (
+                  <span>
+                    Ich habe die{' '}
+                    <a
+                      href="/"
+                      target="_blank"
+                      rel="noreferrer nofollow"
+                      className="internal"
+                    >
+                      Kooperationsvereinbarung
+                    </a>{' '}
+                    für die Nutzung der Sonderfläche gelesen und stimme Ihr zu.
+                  </span>
+                )
+              }}
+            />
+          </div>
+        </section>
 
         <section>
           <h4>Ihre E-Mail-Adresse</h4>
@@ -202,8 +315,7 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
             fullWidth
           />
         </section>
-
-        <div className="tosFieldGroup">
+        <div className="checkboxFieldGroup">
           <ErrorMessage
             name="tos_accepted"
             render={(msg) => <FormError error>{msg}</FormError>}
