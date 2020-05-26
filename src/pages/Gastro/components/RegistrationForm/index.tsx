@@ -65,14 +65,14 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const RegistrationForm = ({ onSuccess, onSubmit }) => (
+const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
   <Formik
-    initialValues={initialValues}
+    initialValues={{ ...initialValues, ...signupData }}
     validate={validate}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       onSubmit(true);
       // @ts-ignore
-      const signupData: GastroSignup = {
+      const registrationData: GastroSignup = {
         ...values,
         geometry: {
           type: 'Point',
@@ -83,7 +83,7 @@ const RegistrationForm = ({ onSuccess, onSubmit }) => (
         campaign: config.gastro.campaign
       };
       try {
-        const response = await api.signup(signupData);
+        const response = await api.signup(registrationData);
         onSuccess(response);
       } catch (e) {
         logger(e);
@@ -104,6 +104,7 @@ const RegistrationForm = ({ onSuccess, onSubmit }) => (
             component={TextField}
             label="Name des Betriebs"
             fullWidth
+            value={signupData.shop_name}
           />
 
           <ErrorMessage
