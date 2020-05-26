@@ -51,7 +51,13 @@ const Registration = ({
         result = process(result);
         setSignupData(result);
       } catch (e) {
-        setError(e.message);
+        if (e.message === 'Unauthorized') {
+          setError(
+            'Ungültige Zugangsdaten. Bitte prüfen Sie, ob Sie den exakten Link aus unserer E-Mail aufgerufen haben.'
+          );
+        } else {
+          setError(e.message);
+        }
         setLoading(false);
         throw e;
       }
@@ -82,8 +88,12 @@ const Registration = ({
               </p>
             </Section>
             <Section>
-              {isLoading && <p>Wird geladen...</p>}
-              {error && <p>Fehler: {error}</p>}
+              {isLoading && <p>Ihre Interessensbekundung wird geladen...</p>}
+              {error && (
+                <p>
+                  <strong>Fehler: {error}</strong>
+                </p>
+              )}
               {!isLoading && !error && (
                 <RegistrationForm
                   signupData={signupData}

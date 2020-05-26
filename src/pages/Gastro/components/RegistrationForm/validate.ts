@@ -41,7 +41,7 @@ const validate = (values: FormData) => {
   }
 
   if (!values.usage) {
-    errors.usage = 'Bitte einen Nutzungszwecke angeben';
+    errors.usage = 'Bitte einen Nutzungszweck angeben';
   }
 
   if (!values.certificate) {

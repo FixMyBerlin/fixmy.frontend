@@ -1,11 +1,17 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
-import { TextField, CheckboxWithLabel, Select } from 'formik-material-ui';
+import {
+  TextField,
+  CheckboxWithLabel,
+  Select,
+  SimpleFileUpload
+} from 'formik-material-ui';
 import {
   FormHelperText,
   FormControl,
   InputLabel,
-  MenuItem
+  MenuItem,
+  Input
 } from '@material-ui/core';
 import styled from 'styled-components';
 
@@ -238,11 +244,14 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
             </strong>
           </p>
           <Field
+            component={SimpleFileUpload}
             name="certificate"
-            type="text"
-            component={TextField}
-            label="Nachweis einfügen"
-            fullWidth
+            type="file"
+            inputProps={{
+              id: 'certificate',
+              accept: 'image/*,application/pdf,application/vnd.ms-excel',
+              capture: 'environment'
+            }}
           />
         </section>
         <section>
@@ -251,7 +260,7 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
           </p>
           <p>
             Damit Sie die Sonderfläche nutzen können, müssen Sie der{' '}
-            <a href="" className="internal">
+            <a href="/" className="internal">
               Kooperationsvereinbarung
             </a>{' '}
             mit dem Bezirksamt Friedrichshain-Kreuzberg zustimmen, damit sichern
@@ -305,8 +314,10 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
         <section>
           <h4>Ihre E-Mail-Adresse</h4>
           <p className="subline">
-            Das Bezirksamt kontaktiert Sie über diese Adresse nach Auswertung
-            der Bedarfe zum weiteren Vorgehen.
+            Ihre Daten werden für Durchführung des Verfahrens gespeichert, der
+            Name Ihres Betriebes kann im Zuge der Aktion{' '}
+            <em>Offene Terrassen für Friedrichshain-Kreuzberg</em>{' '}
+            veröffentlicht werden.
           </p>
           <Field
             name="email"
@@ -343,8 +354,12 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
             }}
           />
         </div>
+        <p>
+          Klicken Sie auf &quot;Antrag absenden&quot; um Ihren Antrag formal
+          beim Bezirksamt einzureichen.
+        </p>
         <Button flat type="submit">
-          Interessensbekundung absenden
+          Antrag absenden
         </Button>
       </StyledForm>
     )}
