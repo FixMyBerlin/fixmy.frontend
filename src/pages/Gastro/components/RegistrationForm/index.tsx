@@ -1,17 +1,11 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
-import {
-  TextField,
-  CheckboxWithLabel,
-  Select,
-  SimpleFileUpload
-} from 'formik-material-ui';
+import { TextField, CheckboxWithLabel, Select } from 'formik-material-ui';
 import {
   FormHelperText,
   FormControl,
   InputLabel,
-  MenuItem,
-  Input
+  MenuItem
 } from '@material-ui/core';
 import styled from 'styled-components';
 
@@ -93,7 +87,6 @@ const RegistrationForm = ({
   // eslint-disable-next-line camelcase
   access_key,
   onSuccess,
-  onSubmit,
   signupData,
   regulation
 }) => (
@@ -101,7 +94,6 @@ const RegistrationForm = ({
     initialValues={{ ...initialValues, ...signupData }}
     validate={validate}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
-      onSubmit(true);
       // @ts-ignore
       const registrationData: GastroRegistration = {
         ...signupData,
@@ -121,7 +113,6 @@ const RegistrationForm = ({
           'Es gab leider einen Fehler bei Ihrer Anmeldung. Bitte versuchen Sie es später noch einmal.'
         );
       }
-      onSubmit(false);
       setSubmitting(false);
     }}
   >

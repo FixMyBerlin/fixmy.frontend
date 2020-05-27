@@ -1,22 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {
-  TextField,
-  Snackbar,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon
-} from '@material-ui/core';
-import LocationIcon from '@material-ui/icons/LocationOn';
-import ErrorIcon from '@material-ui/icons/Error';
 import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 
-import { fetchSuggestions } from '~/components/AutocompleteGeocoder/apiService';
 import config from '~/pages/Gastro/config';
 import Map from '~/components2/Map';
-import logger from '~/utils/logger';
 
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
 

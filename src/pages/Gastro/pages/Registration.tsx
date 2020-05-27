@@ -9,7 +9,6 @@ import Thanks from '../components/ThanksRegistration';
 import RegistrationForm from '../components/RegistrationForm';
 import Logo from '~/pages/Gastro/components/Logo';
 import api from '../api';
-import logger from '~/utils/logger';
 import regulations from '../regulations';
 import { GastroSignup } from '../types';
 
@@ -43,7 +42,6 @@ const Registration = ({
   const [regulation, setRegulation] = useState({});
 
   // State for this registration
-  const [isSubmitting, setSubmitting] = useState(false);
   const [submission, setSubmission] = useState(null);
 
   useEffect(() => {
@@ -105,7 +103,6 @@ const Registration = ({
                   signupData={signupData}
                   regulation={regulation}
                   onSuccess={setSubmission}
-                  onSubmit={setSubmitting}
                 />
               )}
             </Section>
