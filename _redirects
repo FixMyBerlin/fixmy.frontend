@@ -162,3 +162,7 @@
 /planungen/9070/* /planungen/223/:splat 301
 
 /stats/* https://s.fixmycity.de/:splat 200
+
+
+ /apple https://apps.apple.com/de/app/simra/id1459516968 301
+ /android https://play.google.com/store/apps/details?id=de.tuberlin.mcc.simra.app&hl=de 301
