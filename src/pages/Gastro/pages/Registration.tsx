@@ -12,7 +12,6 @@ import api from '../api';
 import logger from '~/utils/logger';
 import regulations from '../regulations';
 import { GastroSignup } from '../types';
-import { sign } from 'crypto';
 
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};
