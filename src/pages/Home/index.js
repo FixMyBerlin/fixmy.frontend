@@ -31,10 +31,8 @@ if (config.region === 'berlin') {
 } else {
   content = (
     <>
-      <h1>Fehlende Konfiguration</h1>
-      <p>
-        Die Region <em>{config.region}</em> wurde noch nicht angelegt.
-      </p>
+      <h1>Seite im Aufbau</h1>
+      <p>Diese Seite wird eingerichtet und steht hier bald zur Verfügung.</p>
     </>
   );
 }
