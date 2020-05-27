@@ -6,19 +6,17 @@ import parseLength from '../../parseLength';
 
 const validate = (values: FormData) => {
   const errors: {
-    shop_name?: string;
     first_name?: string;
     last_name?: string;
+    phone?: string;
     category?: string;
     email?: string;
-    address?: string;
     shopfront_length?: string;
+    usage?: string;
+    certificate?: any;
+    agreement_accepted?: string;
     tos_accepted?: string;
   } = {};
-
-  if (!values.shop_name) {
-    errors.shop_name = 'Bitte einen Namen angeben';
-  }
 
   if (!values.first_name) {
     errors.first_name = 'Bitte einen Vornamen angeben';
@@ -28,8 +26,8 @@ const validate = (values: FormData) => {
     errors.last_name = 'Bitte einen Nachnamen angeben';
   }
 
-  if (!values.address) {
-    errors.address = 'Bitte eine Adresse angeben';
+  if (!values.phone) {
+    errors.phone = 'Bitte eine Telefonnummer angeben';
   }
 
   try {
@@ -42,15 +40,28 @@ const validate = (values: FormData) => {
       'Bitte geben Sie die Länge der Ladenfront in Metern an';
   }
 
+  if (!values.usage) {
+    errors.usage = 'Bitte einen Nutzungszweck angeben';
+  }
+
+  // if (!values.certificate) {
+  //   errors.certificate = 'Bitte einen Nachweis einfügen';
+  // }
+
   if (!values.email) {
     errors.email = 'Bitte eine E-Mail-Adresse angeben';
   } else if (values.email.indexOf('@') < 0) {
     errors.email = 'Das sieht nicht wie eine E-Mail-Adresse aus';
   }
 
+  if (!values.agreement_accepted) {
+    errors.agreement_accepted =
+      'Bitte stimmen Sie diesen Bedingungen zu, damit Sie die Sondernutzungsfläche nutzen können.';
+  }
+
   if (!values.tos_accepted) {
     errors.tos_accepted =
-      'Bitte stimmen Sie diesen Bedingungen zu, damit wir Ihre Interessensbekundung entgegennehmen können.';
+      'Bitte stimmen Sie diesen Bedingungen zu, damit wir Ihre Anmeldung entgegennehmen können.';
   }
   logger('Validation', errors, values);
   return errors;

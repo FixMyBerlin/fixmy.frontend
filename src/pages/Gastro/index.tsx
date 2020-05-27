@@ -6,6 +6,7 @@ import { createMuiTheme } from '@material-ui/core';
 
 import config from './config';
 import Landing from './pages/Landing';
+import Registration from './pages/Registration';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
@@ -101,6 +102,11 @@ const Gastro = () => (
           <Route exact path={config.routes.gastro.signup}>
             <Redirect to={config.routes.gastro.landing} />
           </Route>
+          <Route
+            exact
+            path={config.routes.gastro.registration}
+            component={Registration}
+          />
           <Route render={() => <Markdown page="nomatch" />} />
         </Switch>
       </Router>
