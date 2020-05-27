@@ -41,5 +41,8 @@ export default {
     landing: '/friedrichshain-kreuzberg/terrassen',
     signup: '/friedrichshain-kreuzberg/terrassen/anmeldung',
     thanks: '/friedrichshain-kreuzberg/terrassen/danke'
+  },
+  research: {
+    landing: '/research'
   }
 };
