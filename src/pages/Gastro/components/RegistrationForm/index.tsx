@@ -20,7 +20,7 @@ import { Form } from '~/components2/Form';
 import StaticMap from '~/components2/StaticMap';
 import logger from '~/utils/logger';
 import config from '~/pages/Gastro/config';
-import { GastroSignup } from '~/pages/Gastro/types';
+import { GastroRegistration } from '~/pages/Gastro/types';
 import api from '~/pages/Gastro/api';
 import validate from './validate';
 import parseLength from '../../parseLength';
@@ -79,25 +79,32 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
+const RegistrationForm = ({
+  id,
+  // eslint-disable-next-line camelcase
+  access_key,
+  onSuccess,
+  onSubmit,
+  signupData,
+  regulation
+}) => (
   <Formik
     initialValues={{ ...initialValues, ...signupData }}
     validate={validate}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       onSubmit(true);
       // @ts-ignore
-      const registrationData: GastroSignup = {
+      const registrationData: GastroRegistration = {
+        ...signupData,
         ...values,
-        geometry: {
-          type: 'Point',
-          coordinates: values.location
-        },
+        id,
+        access_key,
         shopfront_length: parseLength(values.shopfront_length),
         opening_hours: 'weekend',
         campaign: config.gastro.campaign
       };
       try {
-        const response = await api.signup(registrationData);
+        const response = await api.register(registrationData);
         onSuccess(response);
       } catch (e) {
         logger(e);
@@ -112,14 +119,10 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
     {({ status, values, handleChange, isSubmitting }) => (
       <StyledForm>
         <section>
-          <h4>Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb:</h4>
-          <Field
-            name="shop_name"
-            component={TextField}
-            label="Name des Betriebs (kann nicht geändert werden)"
-            fullWidth
-            disabled
-          />
+          <h4>
+            Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb{' '}
+            <em>{values.shop_name}</em>:
+          </h4>
 
           <ErrorMessage
             name="category"
@@ -175,25 +178,27 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
           />
           <StaticMap location={signupData?.geometry?.coordinates} />
         </section>
-        <section>
-          <p>
-            <strong>
-              Ihr Betrieb liegt im Bereich der Straße XX, hier wird es eine
-              Gesamt-Anordnung für den Bereich XX Straße Hausnummer XX bis
-              Hausnummer XX geben. Wenn Sie sich registrieren, können Sie in
-              diesem Bereich teilnehmen.
-            </strong>
-          </p>
-          <p>
-            <a href="/" className="internal">
-              Karte der anzuordnenden Fläche
-            </a>
-          </p>
-          <p>
-            Die Sondernutzungsfläche kann nach Einrichtung Freitags, Samstags
-            und Sonntags, jeweils von 11 bis 22 Uhr genutzt werden.
-          </p>
-        </section>
+        {regulation?.zone !== 'Parkplatz' && (
+          <section>
+            <p>
+              <strong>
+                Ihr Betrieb liegt im Bereich der {regulation?.street}, hier wird
+                es eine Gesamt-Anordnung für den Bereich {regulation?.street}{' '}
+                {regulation?.from} bis {regulation?.to} geben. Wenn Sie sich
+                registrieren, können Sie in diesem Bereich teilnehmen.
+              </strong>
+            </p>
+            <p>
+              <a href="/" className="internal">
+                Karte der anzuordnenden Fläche
+              </a>
+            </p>
+            <p>
+              Die Sondernutzungsfläche kann nach Einrichtung Freitags, Samstags
+              und Sonntags, jeweils von 11 bis 22 Uhr genutzt werden.
+            </p>
+          </section>
+        )}
         <section>
           <p>
             <strong>
@@ -235,7 +240,7 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
             variant="filled"
           />
         </section>
-        <section>
+        {/* <section>
           <p>
             <strong>
               Bitte laden Sie hier die erste Seite Ihrer Gewerbeanmeldung /
@@ -253,7 +258,7 @@ const RegistrationForm = ({ onSuccess, onSubmit, signupData }) => (
               capture: 'environment'
             }}
           />
-        </section>
+        </section> */}
         <section>
           <p>
             <strong>Zustimmung Kooperationsvereinbarung</strong>

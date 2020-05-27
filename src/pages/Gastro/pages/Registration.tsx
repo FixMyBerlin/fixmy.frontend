@@ -5,11 +5,14 @@ import styled from 'styled-components';
 
 import config from '~/pages/Gastro/config';
 import Header from '../components/Header';
-import Thanks from '../components/Thanks';
+import Thanks from '../components/ThanksRegistration';
 import RegistrationForm from '../components/RegistrationForm';
 import Logo from '~/pages/Gastro/components/Logo';
 import api from '../api';
 import logger from '~/utils/logger';
+import regulations from '../regulations';
+import { GastroSignup } from '../types';
+import { sign } from 'crypto';
 
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};
@@ -37,7 +40,8 @@ const Registration = ({
   // Data from previous signup (Interessensbekundung)
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [signupData, setSignupData] = useState({});
+  const [signupData, setSignupData] = useState({} as GastroSignup);
+  const [regulation, setRegulation] = useState({});
 
   // State for this registration
   const [isSubmitting, setSubmitting] = useState(false);
@@ -49,6 +53,7 @@ const Registration = ({
       try {
         result = await api.get(id, accessKey);
         result = process(result);
+        setRegulation(regulations[result.regulation]);
         setSignupData(result);
       } catch (e) {
         if (e.message === 'Unauthorized') {
@@ -96,7 +101,10 @@ const Registration = ({
               )}
               {!isLoading && !error && (
                 <RegistrationForm
+                  id={id}
+                  access_key={accessKey}
                   signupData={signupData}
+                  regulation={regulation}
                   onSuccess={setSubmission}
                   onSubmit={setSubmitting}
                 />
