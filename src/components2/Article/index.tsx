@@ -8,3 +8,4 @@ export { default as Kicker } from './Kicker';
 export { default as PublishDate } from './PublishDate';
 export { default as Quote } from './Quote';
 export { default as Text } from './Text';
+export { Image, MultiImage } from '../Image';
