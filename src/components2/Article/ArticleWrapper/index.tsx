@@ -31,11 +31,11 @@ const ContentWrapper = styled.div`
   padding: 0 16px 12px 16px;
   background: white;
 
-  ${media.l`
+  @media screen and (min-width: 800px) {
     box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.08);
     border-radius: 4px;
-    padding: 20px 60px;
-  `}
+    padding: 2rem 0;
+  }
 `;
 
 export default function SinglePageWrapper({

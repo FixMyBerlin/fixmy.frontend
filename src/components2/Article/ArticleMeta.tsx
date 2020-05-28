@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/config';
+import { media } from '~/styles/utils';
 
 import PublishDate from './PublishDate';
 import Author from './Author';
@@ -10,13 +11,16 @@ interface ArticleMetaProps {
   publishDate?: Date;
   author?: string;
   className?: string;
-  children?: ReactNode;
 }
 
 const MetaWrap = styled.div`
   display: flex;
-  font-size: 1em;
+  font-size: 0.88em;
   align-items: center;
+
+  ${media.m`
+    font-size: 1em;
+  `}
 `;
 
 const AuthorIcon = styled.div`
@@ -35,12 +39,13 @@ const Divider = styled.div`
   margin: 0 0.5em;
 `;
 
-const ArticleMeta = ({
-  publishDate,
-  author,
-  className,
-  children
-}: ArticleMetaProps) => {
+const MetaInnerWrap = styled.div`
+  display: flex;
+  flex: 1 1 100%;
+  flex-wrap: wrap;
+`;
+
+const ArticleMeta = ({ publishDate, author, className }: ArticleMetaProps) => {
   if (!publishDate && !author) {
     return null;
   }
@@ -48,10 +53,11 @@ const ArticleMeta = ({
   return (
     <MetaWrap className={className}>
       <AuthorIcon />
-      <PublishDate date={publishDate} />
-      <Divider />
-      <Author name={author} />
-      {children}
+      <MetaInnerWrap>
+        <PublishDate date={publishDate} />
+        <Divider />
+        <Author name={author} />
+      </MetaInnerWrap>
     </MetaWrap>
   );
 };
