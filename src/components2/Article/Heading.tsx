@@ -5,11 +5,16 @@ import config from '~/config';
 
 interface HeadingProps {
   as?: 'h1' | 'h2';
+  toc?: string;
   children?: ReactNode;
   className?: string;
 }
 
-const Heading1 = styled.h1`
+interface StyledHeadingProps {
+  toc?: string;
+}
+
+const Heading1 = styled.h1<StyledHeadingProps>`
   font-size: 2em;
   font-family: ${config.titleFont};
   font-weight: 700;
@@ -17,16 +22,19 @@ const Heading1 = styled.h1`
   line-height: 1.25;
 `;
 
-const Heading2 = styled.h2`
+const Heading2 = styled.h2<StyledHeadingProps>`
   font-size: 1.5em;
   margin: 0.67em 0;
 `;
 
-const Heading = ({ as, children, className }: HeadingProps) => {
-  if (as === 'h2') {
-    return <Heading2 className={className}>{children}</Heading2>;
-  }
-  return <Heading1 className={className}>{children}</Heading1>;
+const Heading = ({ as, toc, children, className }: HeadingProps) => {
+  const HeadingComponent = as === 'h2' ? Heading2 : Heading1;
+
+  return (
+    <HeadingComponent toc={toc} className={className}>
+      {children}
+    </HeadingComponent>
+  );
 };
 
 export default Heading;

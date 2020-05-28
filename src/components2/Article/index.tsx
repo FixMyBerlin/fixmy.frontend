@@ -1,3 +1,4 @@
+export { default as ArticleWrapper } from './ArticleWrapper';
 export { default as ArticleHeader } from './ArticleHeader';
 export { default as ArticleMeta } from './ArticleMeta';
 export { default as Author } from './Author';

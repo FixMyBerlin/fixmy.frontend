@@ -8,7 +8,6 @@ import config from '~/config';
 import history from '~/history';
 import Markdown from '~/pages/Markdown';
 import Landing from './pages/Landing';
-import Styleguide from './pages/Styleguide';
 
 const theme = createMuiTheme({
   palette: {
@@ -29,7 +28,6 @@ const Research = () => (
           path={config.routes.research.landing}
           component={Landing}
         />
-        <Route exact path="/research/styleguide" component={Styleguide} />
         <Route render={() => <Markdown page="nomatch" />} />
       </Switch>
     </Router>

@@ -51,7 +51,7 @@ export default function SinglePageWrapper({
       return null;
     }
 
-    setActiveTocIndex(index);
+    return setActiveTocIndex(index);
   };
 
   const tocChildren = React.Children.toArray(children).filter(

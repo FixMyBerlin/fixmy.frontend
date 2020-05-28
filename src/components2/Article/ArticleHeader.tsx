@@ -10,6 +10,7 @@ interface ArticleHeaderProps {
   title?: string;
   publishDate?: Date;
   author?: string;
+  toc?: string;
   children?: ReactNode;
   className?: string;
 }
@@ -23,13 +24,14 @@ const ArticleHeader = ({
   title,
   publishDate,
   author,
+  toc,
   children,
   className
 }: ArticleHeaderProps) => {
   return (
     <ArticleHeaderWrapper className={className}>
       {kicker && <Kicker>{kicker}</Kicker>}
-      {title && <Heading>{title}</Heading>}
+      {title && <Heading toc={toc}>{title}</Heading>}
       <ArticleMeta publishDate={publishDate} author={author} />
       {children}
     </ArticleHeaderWrapper>
