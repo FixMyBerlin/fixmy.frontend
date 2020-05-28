@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import FbIcon from '~/images/facebook.svg';
 import TwIcon from '~/images/twitter.svg';
 
@@ -22,7 +21,12 @@ export default (props) => {
   }
 
   return (
-    <a target="_blank" rel="noopener noreferrer" href={props.link}>
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Oeffne ${props.type}`}
+      href={props.link}
+    >
       <SocialButton>
         <SocialIcon />
       </SocialButton>

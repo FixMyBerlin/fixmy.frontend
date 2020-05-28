@@ -80,6 +80,10 @@ const StyledForm = styled(Form)`
   }
 `;
 
+const InvisiLabel = styled.label`
+  display: none;
+`;
+
 // Return true if usage for the signup's category is allowed on week days
 const usageWeekday = ({ category }) =>
   ['retail', 'workshop'].includes(category);
@@ -172,28 +176,39 @@ const RegistrationForm = ({
               </Field>
             </FormControl>
           </div>
+          <InvisiLabel htmlFor="first_name">Vorname der Inhaber:in</InvisiLabel>
           <Field
+            id="first_name"
             name="first_name"
             component={TextField}
             label="Vorname der Inhaber:in"
             fullWidth
           />
+          <InvisiLabel htmlFor="last_name">Nachname der Inhaber:in</InvisiLabel>
           <Field
+            id="last_name"
             name="last_name"
             component={TextField}
             label="Nachname der Inhaber:in"
             fullWidth
           />
+          <InvisiLabel htmlFor="phone">
+            Telefonnummer (tagsüber erreichbar)
+          </InvisiLabel>
           <Field
+            id="phone"
             name="phone"
             component={TextField}
             label="Telefonnummer (tagsüber erreichbar)"
             fullWidth
-            variant="filled"
           />
         </section>
         <section>
+          <InvisiLabel htmlFor="first_name">
+            Addresse des Ladengeschäfts
+          </InvisiLabel>
           <Field
+            id="address"
             name="address"
             component={TextField}
             label="Addresse des Ladengeschäfts"
@@ -309,7 +324,11 @@ const RegistrationForm = ({
             entscheiden welcher Raum im Straßenland genutzt werden kann. Sofern
             sie kein Ladenlokal haben bitte 0 angeben.
           </p>
+          <InvisiLabel htmlFor="shopfront_length">
+            Angabe in Metern z.B. 4,8
+          </InvisiLabel>
           <Field
+            id="shopfront_length"
             name="shopfront_length"
             type="text"
             inputMode="numeric"
@@ -326,7 +345,9 @@ const RegistrationForm = ({
               beantragten Fläche:
             </strong>
           </p>
+          <InvisiLabel htmlFor="usage">Nutzungszweck</InvisiLabel>
           <Field
+            id="usage"
             name="usage"
             type="text"
             component={TextField}
@@ -335,7 +356,6 @@ const RegistrationForm = ({
             multiline
             rows={4}
             fullWidth
-            variant="filled"
           />
         </section>
         <section>
@@ -346,8 +366,12 @@ const RegistrationForm = ({
               lesbar sein).
             </strong>
           </p>
+          <InvisiLabel htmlFor="certificate">
+            Wählen Sie eine PDF- oder Bilddatei aus oder machen Sie ein Foto
+          </InvisiLabel>
           <Field
             component={SimpleFileUpload}
+            id="certificate"
             name="certificate"
             type="file"
             inputProps={{
@@ -422,7 +446,9 @@ const RegistrationForm = ({
             <em>Offene Terrassen für Friedrichshain-Kreuzberg</em>{' '}
             veröffentlicht werden.
           </p>
+          <InvisiLabel htmlFor="email">Ihre E-Mail-Adresse</InvisiLabel>
           <Field
+            id="email"
             name="email"
             component={TextField}
             label="Ihre E-Mail-Adresse"
