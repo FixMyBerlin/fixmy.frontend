@@ -3,7 +3,11 @@ import styled from 'styled-components';
 
 import config from '~/config';
 
-const TOCEntryWrapper = styled.div`
+interface TOCEntryWrapperProps {
+  active: boolean;
+}
+
+const TOCEntryWrapper = styled.div<TOCEntryWrapperProps>`
   text-align: right;
   margin-bottom: 10px;
 `;
@@ -13,11 +17,17 @@ const TOCEntryIndex = styled.div`
   font-family: '${config.titleFont}', serif;
 `;
 
-function TOCEntry({ index, text }) {
+const TOCEntryText = styled.div<TOCEntryWrapperProps>`
+  font-weight: ${(props) => (props.active ? 700 : 400)};
+  font-family: ${(props) =>
+    props.active ? config.titleFont : config.baseFont};
+`;
+
+function TOCEntry({ index, text, active = false }) {
   return (
-    <TOCEntryWrapper>
+    <TOCEntryWrapper active={active}>
       <TOCEntryIndex>{index + 1}</TOCEntryIndex>
-      <div>{text}</div>
+      <TOCEntryText active={active}>{text}</TOCEntryText>
     </TOCEntryWrapper>
   );
 }
