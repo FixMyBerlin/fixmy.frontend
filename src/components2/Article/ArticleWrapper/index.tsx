@@ -75,6 +75,7 @@ export default function SinglePageWrapper({
 
             return (
               <InView
+                className={`toc__anchor-${tocIndex}`}
                 onChange={(inView, entry) =>
                   onViewChange(inView, entry, tocIndex)
                 }

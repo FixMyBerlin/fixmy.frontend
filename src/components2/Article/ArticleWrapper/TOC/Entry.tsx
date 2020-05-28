@@ -10,6 +10,11 @@ interface TOCEntryWrapperProps {
 const TOCEntryWrapper = styled.div<TOCEntryWrapperProps>`
   text-align: right;
   margin-bottom: 10px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.75;
+  }
 `;
 
 const TOCEntryIndex = styled.div`
@@ -23,11 +28,25 @@ const TOCEntryText = styled.div<TOCEntryWrapperProps>`
     props.active ? config.titleFont : config.baseFont};
 `;
 
-function TOCEntry({ index, text, active = false }) {
+function TOCEntry({ index, entry, active = false }) {
+  const goToEntry = () => {
+    const headlineDomNode = document.querySelector(`.toc__anchor-${index}`);
+
+    if (!headlineDomNode) {
+      return null;
+    }
+
+    const bounds = headlineDomNode.getBoundingClientRect();
+    window.scrollTo({
+      top: bounds.top,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <TOCEntryWrapper active={active}>
+    <TOCEntryWrapper active={active} onClick={goToEntry}>
       <TOCEntryIndex>{index + 1}</TOCEntryIndex>
-      <TOCEntryText active={active}>{text}</TOCEntryText>
+      <TOCEntryText active={active}>{entry.props.toc}</TOCEntryText>
     </TOCEntryWrapper>
   );
 }

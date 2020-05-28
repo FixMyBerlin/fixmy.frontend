@@ -14,18 +14,18 @@ const TOCWrapper = styled.div`
 `;
 
 function TOC({ entries, activeIndex }) {
-  const tocChildren: string[] = React.Children.toArray(entries)
-    .filter((child: ReactElement) => child.props.toc)
-    .map((child: ReactElement) => child.props.toc);
+  const tocChildren = React.Children.toArray(entries).filter(
+    (child: ReactElement) => child.props.toc
+  );
 
   return (
     <TOCWrapper>
-      {tocChildren.map((entry, index) => (
+      {tocChildren.map((entry: ReactElement, index) => (
         <Entry
-          key={`tocentry__${entry}`}
+          entry={entry}
+          key={`tocentry__${entry.props.toc}`}
           active={activeIndex === index}
           index={index}
-          text={entry}
         />
       ))}
     </TOCWrapper>
