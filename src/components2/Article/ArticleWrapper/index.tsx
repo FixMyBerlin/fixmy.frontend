@@ -6,7 +6,7 @@ import defaultBgPattern from './bg-pattern.png';
 
 import TOC from './TOC';
 import MenuButton from '~/components2/MenuButton';
-import { media } from '~/styles/utils';
+import { media, breakpoints } from '~/styles/utils';
 
 interface PageProps {
   bgPattern?: string;
@@ -38,6 +38,8 @@ const ContentWrapper = styled.div`
   `}
 `;
 
+const renderTocInsideArticle = window.innerWidth < breakpoints.xl;
+
 export default function SinglePageWrapper({
   bgPattern = defaultBgPattern,
   hasToc = false,
@@ -62,11 +64,25 @@ export default function SinglePageWrapper({
     <Page className={className} bgPattern={bgPattern}>
       <MenuButton />
       <ContentWrapperOuter>
-        {hasToc && <TOC entries={children} activeIndex={activeTocIndex} />}
+        {hasToc && !renderTocInsideArticle && (
+          <TOC entries={children} activeIndex={activeTocIndex} />
+        )}
         <ContentWrapper>
           {React.Children.map(children, (child) => {
+            const appendToc =
+              child.type.displayName === 'ArticleHeader' &&
+              hasToc &&
+              renderTocInsideArticle;
+
             if (!child.props.toc) {
-              return child;
+              return (
+                <>
+                  {child}
+                  {appendToc && (
+                    <TOC entries={children} activeIndex={activeTocIndex} />
+                  )}
+                </>
+              );
             }
 
             const tocIndex = tocChildren.findIndex(
@@ -75,11 +91,15 @@ export default function SinglePageWrapper({
 
             return (
               <InView
+                className={`toc__anchor-${tocIndex}`}
                 onChange={(inView, entry) =>
                   onViewChange(inView, entry, tocIndex)
                 }
               >
                 {child}
+                {appendToc && (
+                  <TOC entries={children} activeIndex={activeTocIndex} />
+                )}
               </InView>
             );
           })}

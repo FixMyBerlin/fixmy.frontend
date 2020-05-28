@@ -39,4 +39,6 @@ const ArticleHeader = ({
   );
 };
 
+ArticleHeader.displayName = 'ArticleHeader';
+
 export default ArticleHeader;

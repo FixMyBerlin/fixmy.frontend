@@ -1,31 +1,47 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
+import { media } from '~/styles/utils';
 import Entry from './Entry';
 
 const TOCWrapper = styled.div`
-  position: sticky;
-  line-height: 1.2;
-  font-weight: 400;
-  width: 110px;
-  transform: translate(-105%, 25px);
-  top: 25px;
-  height: 0;
+  max-width: 520px;
+  margin: 25px auto;
+
+  ${media.xl`
+    position: sticky;
+    transform: translate(-105%, 25px);
+    top: 25px;
+    height: 0;
+    width: 110px;
+    margin: 0;
+  `}
+`;
+
+const TOCArticleHeader = styled.div`
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+
+  ${media.xl`
+    display: none;
+  `}
 `;
 
 function TOC({ entries, activeIndex }) {
-  const tocChildren: string[] = React.Children.toArray(entries)
-    .filter((child: ReactElement) => child.props.toc)
-    .map((child: ReactElement) => child.props.toc);
+  const tocChildren = React.Children.toArray(entries).filter(
+    (child: ReactElement) => child.props.toc
+  );
 
   return (
     <TOCWrapper>
-      {tocChildren.map((entry, index) => (
+      <TOCArticleHeader>Gehe direkt zu einem Kapitel</TOCArticleHeader>
+      {tocChildren.map((entry: ReactElement, index) => (
         <Entry
-          key={`tocentry__${entry}`}
+          entry={entry}
+          key={`tocentry__${entry.props.toc}`}
           active={activeIndex === index}
           index={index}
-          text={entry}
         />
       ))}
     </TOCWrapper>
