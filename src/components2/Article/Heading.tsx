@@ -18,13 +18,15 @@ const Heading1 = styled.h1<StyledHeadingProps>`
   font-size: 2em;
   font-family: ${config.titleFont};
   font-weight: 700;
-  margin: 0.5em 0;
+  margin: 0.5em auto;
   line-height: 1.25;
+  max-width: 520px;
 `;
 
 const Heading2 = styled.h2<StyledHeadingProps>`
   font-size: 1.5em;
-  margin: 0.67em 0;
+  margin: 0.67em auto;
+  max-width: 520px;
 `;
 
 const Heading = ({ as, toc, children, className }: HeadingProps) => {

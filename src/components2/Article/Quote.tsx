@@ -15,7 +15,8 @@ const Quote = styled.div<QuoteProps>`
   line-height: 1.35;
   border-radius: 6px;
   position: relative;
-  margin-bottom: 1.8em;
+  max-width: 620px;
+  margin: 1em auto 1.8em auto;
 
   &:after {
     content: "${(p) => p.sourceText}";
