@@ -6,8 +6,12 @@ import {
   Text,
   Intro,
   Heading,
-  Quote
+  Quote,
+  Image,
+  MultiImage
 } from '~/components2/Article';
+
+import ExampleImageSource from '~/images/gastro/landing-bg.jpg';
 
 export default function ResearchLanding() {
   return (
@@ -71,6 +75,44 @@ export default function ResearchLanding() {
         welchen Bedingungen wird die Führung im Seitenraum oder auf der Fahrbahn
         als sicherer empfunden?
       </Text>
+      <Heading toc="Multi Image Test" as="h2">
+        Multi Image Test
+      </Heading>
+      <MultiImage sources={[ExampleImageSource, ExampleImageSource]} />
+      <Text>
+        Bisher gibt es kaum Erhebungen, welche Arten von Straßen, Wegen und
+        Kreuzungen die Verkehrsteilnehmer:innen subjektiv als sicher empfinden.
+        Insbesondere zur differenzierten Betrachtung verknüpfter Merkmale, wie
+        Führungsform der Radinfrastruktur (RVA), Ausführung, Breite sowie der
+        Situation links und rechts der RVA gibt es bisher kaum Untersuchungen.
+        Sind Radfahrstreifen mit Pollern die beste Lösung, um Konflikte zwischen
+        Auto und Fahrrad zu vermeiden oder sind ausreichend breite Radstreifen
+        entscheidend? Welchen Effekt hat die Einfärbung von Radstreifen? Unter
+        welchen Bedingungen wird die Führung im Seitenraum oder auf der Fahrbahn
+        als sicherer empfunden?
+      </Text>
+      <Heading toc="Multi Image Test 2" as="h2">
+        Multi Image Test 2
+      </Heading>
+      <MultiImage
+        sources={[ExampleImageSource, ExampleImageSource, ExampleImageSource]}
+      />
+      <Text>
+        Bisher gibt es kaum Erhebungen, welche Arten von Straßen, Wegen und
+        Kreuzungen die Verkehrsteilnehmer:innen subjektiv als sicher empfinden.
+        Insbesondere zur differenzierten Betrachtung verknüpfter Merkmale, wie
+        Führungsform der Radinfrastruktur (RVA), Ausführung, Breite sowie der
+        Situation links und rechts der RVA gibt es bisher kaum Untersuchungen.
+        Sind Radfahrstreifen mit Pollern die beste Lösung, um Konflikte zwischen
+        Auto und Fahrrad zu vermeiden oder sind ausreichend breite Radstreifen
+        entscheidend? Welchen Effekt hat die Einfärbung von Radstreifen? Unter
+        welchen Bedingungen wird die Führung im Seitenraum oder auf der Fahrbahn
+        als sicherer empfunden?
+      </Text>
+      <Heading toc="Single Image Test" as="h2">
+        Single Image Test
+      </Heading>
+      <Image source={ExampleImageSource} />
     </ArticleWrapper>
   );
 }

@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+import React from 'react';
 import styled from 'styled-components';
 import { media } from '~/styles/utils';
 
@@ -12,3 +13,32 @@ export const Insert = styled.img`
     margin-left: initial;
   `}
 `;
+
+const ImageWrapper = styled.div`
+  display: flex;
+  margin: -10px;
+`;
+
+const ImageSpacer = styled.div`
+  position: relative;
+  padding: 10px;
+  flex: 1 1 100%;
+`;
+
+const Img = styled.img`
+  width: 100%;
+`;
+
+export const MultiImage = ({ sources }) => {
+  return (
+    <ImageWrapper>
+      {sources.map((source) => (
+        <ImageSpacer>
+          <Img src={source} />
+        </ImageSpacer>
+      ))}
+    </ImageWrapper>
+  );
+};
+
+export const Image = ({ source }) => <MultiImage sources={[source]} />;
