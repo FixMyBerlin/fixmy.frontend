@@ -145,7 +145,7 @@ const RegistrationForm = ({
           <h4>Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb:</h4>
 
           <p>
-            <strong>Name des Betriebs: {values.shoo_name}</strong>
+            <strong>Name des Betriebs: {values.shop_name}</strong>
           </p>
 
           <ErrorMessage
