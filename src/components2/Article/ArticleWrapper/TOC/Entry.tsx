@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { media } from '~/styles/utils';
 import config from '~/config';
+import { media } from '~/styles/utils';
 
 interface TOCEntryWrapperProps {
   active: boolean;
@@ -22,41 +22,54 @@ const TOCEntryWrapper = styled.div<TOCEntryWrapperProps>`
     line-height: 1.2;
     display: block;
     text-align: right;
+    margin-bottom: 25px;
+    padding-right: 15px;
+    border-right: ${(props) =>
+      props.active ? `3px solid ${config.colors.interaction}` : 'none'};
   `}
 `;
 
 const TOCEntryIndex = styled.div`
   font-weight: 700;
-  font-family: '${config.titleFont}', serif;
-  margin-right: 10px;
 
   ${media.xl`
     margin-right: 0;
   `}
 `;
 
-const TOCEntryText = styled.div<TOCEntryWrapperProps>`
+const TOCEntrySeparator = styled.div`
+  width: 2px;
+  height: 18px;
+  margin: 0 10px;
+  background: #999;
+
   ${media.xl`
-    font-weight: ${(props) => (props.active ? 700 : 400)};
+    display: none;
   `}
 `;
+
+const TOCEntryText = styled.div<TOCEntryWrapperProps>`
+  ${media.xl`
+    font-weight: ${(props) => (props.active ? 700 : 300)};
+  `}
+`;
+
+const padIndex = (index) => {
+  return index < 10 ? `0${index}` : index;
+};
 
 function TOCEntry({ index, entry, active = false }) {
   const goToEntry = () => {
     const headlineDomNode = document.querySelector(`.toc__anchor-${index}`);
-
     if (headlineDomNode) {
-      const bounds = headlineDomNode.getBoundingClientRect();
-      window.scrollTo({
-        top: bounds.top,
-        behavior: 'smooth'
-      });
+      headlineDomNode.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
     <TOCEntryWrapper active={active} onClick={goToEntry}>
-      <TOCEntryIndex>{index + 1}</TOCEntryIndex>
+      <TOCEntryIndex>{padIndex(index + 1)}</TOCEntryIndex>
+      <TOCEntrySeparator />
       <TOCEntryText active={active}>{entry.props.toc}</TOCEntryText>
     </TOCEntryWrapper>
   );

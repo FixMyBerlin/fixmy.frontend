@@ -1,4 +1,4 @@
-import React, { useState, ReactElement } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import styled from 'styled-components';
 import { InView } from 'react-intersection-observer';
 
@@ -19,7 +19,7 @@ const Page = styled.div<PageProps>`
 
 const ContentWrapperOuter = styled.div`
   position: relative;
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
 
   ${media.l`
@@ -38,15 +38,28 @@ const ContentWrapper = styled.div`
   `}
 `;
 
-const renderTocInsideArticle = window.innerWidth < breakpoints.xl;
-
 export default function SinglePageWrapper({
   bgPattern = defaultBgPattern,
   hasToc = false,
   className = null,
   children
 }) {
+  const [renderTocInsideArticle, setRenderTocInsideArticle] = useState(
+    window.innerWidth < breakpoints.xl
+  );
   const [activeTocIndex, setActiveTocIndex] = useState(0);
+
+  useEffect(() => {
+    const onResize = () => {
+      setRenderTocInsideArticle(window.innerWidth < breakpoints.xl);
+    };
+
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
 
   const onViewChange = (inView, entry, index) => {
     if (!inView) {

@@ -7,18 +7,19 @@ import Entry from './Entry';
 const TOCWrapper = styled.div`
   max-width: 520px;
   margin: 25px auto;
+  font-size: 16px;
 
   ${media.xl`
     position: sticky;
-    transform: translate(-105%, 25px);
+    transform: translate(-135px, 25px);
     top: 25px;
     height: 0;
-    width: 110px;
+    width: 125px;
     margin: 0;
   `}
 `;
 
-const TOCArticleHeader = styled.div`
+const TOCHeaderArticle = styled.div`
   font-size: 24px;
   font-weight: 700;
   margin-bottom: 10px;
@@ -35,7 +36,7 @@ function TOC({ entries, activeIndex }) {
 
   return (
     <TOCWrapper>
-      <TOCArticleHeader>Gehe direkt zu einem Kapitel</TOCArticleHeader>
+      <TOCHeaderArticle>Gehe direkt zu einem Kapitel</TOCHeaderArticle>
       {tocChildren.map((entry: ReactElement, index) => (
         <Entry
           entry={entry}
