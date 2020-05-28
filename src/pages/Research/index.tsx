@@ -7,6 +7,7 @@ import { createMuiTheme } from '@material-ui/core';
 import config from '~/config';
 import history from '~/history';
 import Markdown from '~/pages/Markdown';
+import Landing from './pages/Landing';
 
 const theme = createMuiTheme({
   palette: {
@@ -25,7 +26,7 @@ const Research = () => (
         <Route
           exact
           path={config.routes.research.landing}
-          render={() => <Markdown page="nomatch" />}
+          component={Landing}
         />
         <Route render={() => <Markdown page="nomatch" />} />
       </Switch>
