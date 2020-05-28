@@ -1,4 +1,5 @@
 import React from 'react';
+import config from '~/pages/Gastro/config';
 
 const Thanks = ({ submission }) => (
   <>
@@ -8,6 +9,17 @@ const Thanks = ({ submission }) => (
       Ihr Antrag für <strong>{submission.shop_name}</strong> wurde übermittelt.
       Sie haben eine E-Mail zur Bestätigung erhalten.
     </p>
+
+    {submission.uploadFailed && (
+      <p>
+        <strong>
+          Leider konnte ihre Gewerbeanmeldung / Vereinsregister nicht übertragen
+          werden. Wir bitten Sie daher, diese Datei per E-Mail an
+          <a href={`mailto:${config.gastro.email}`}>{config.gastro.email}</a> zu
+          schicken.
+        </strong>
+      </p>
+    )}
 
     <p>
       Das Bezirksamt bearbeitet die Anträge in der Reihenfolge Ihres Eingangs.
