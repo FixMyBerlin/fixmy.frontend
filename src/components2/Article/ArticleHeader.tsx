@@ -16,7 +16,8 @@ interface ArticleHeaderProps {
 }
 
 const ArticleHeaderWrapper = styled.div`
-  margin-bottom: 1em;
+  margin: 2em auto 1em auto;
+  max-width: 520px;
 `;
 
 const ArticleHeader = ({
