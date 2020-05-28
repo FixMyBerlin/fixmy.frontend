@@ -1,11 +1,17 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
-import { TextField, CheckboxWithLabel, Select } from 'formik-material-ui';
+import {
+  TextField,
+  CheckboxWithLabel,
+  Select,
+  SimpleFileUpload
+} from 'formik-material-ui';
 import {
   FormHelperText,
   FormControl,
   InputLabel,
-  MenuItem
+  MenuItem,
+  LinearProgress
 } from '@material-ui/core';
 import styled from 'styled-components';
 
@@ -104,8 +110,25 @@ const RegistrationForm = ({
         opening_hours: 'weekend',
         campaign: config.gastro.campaign
       };
+
+      let uploadFailed = true;
+      try {
+        await api.uploadCertificate(registrationData);
+        uploadFailed = false;
+      } catch (e) {
+        logger(e);
+        setStatus(
+          'Es gab leider einen Fehler beim Hochladen Ihrer Gewerbeanmeldung / Ihres Vereinsregisters. Bitte senden Sie dieses Dokument daher als Foto oder PDF per E-Mail an info@fixmyberlin.de'
+        );
+      }
+
       try {
         const response = await api.register(registrationData);
+        // Additional field that is not part of the response
+        //  this is to signal to the thanks page whether the upload
+        // of the certificate file failed
+        // @ts-ignore
+        response.uploadFailed = uploadFailed;
         onSuccess(response);
       } catch (e) {
         logger(e);
@@ -116,13 +139,14 @@ const RegistrationForm = ({
       setSubmitting(false);
     }}
   >
-    {({ status, values, handleChange, isSubmitting }) => (
+    {({ isValid, values, handleChange, isSubmitting }) => (
       <StyledForm>
         <section>
-          <h4>
-            Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb{' '}
-            <em>{values.shop_name}</em>:
-          </h4>
+          <h4>Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb:</h4>
+
+          <p>
+            <strong>Name des Betriebs: {values.shoo_name}</strong>
+          </p>
 
           <ErrorMessage
             name="category"
@@ -314,7 +338,7 @@ const RegistrationForm = ({
             variant="filled"
           />
         </section>
-        {/* <section>
+        <section>
           <p>
             <strong>
               Bitte laden Sie hier die erste Seite Ihrer Gewerbeanmeldung /
@@ -332,7 +356,7 @@ const RegistrationForm = ({
               capture: 'environment'
             }}
           />
-        </section> */}
+        </section>
         <section>
           <p>
             <strong>Zustimmung Kooperationsvereinbarung</strong>
@@ -433,11 +457,21 @@ const RegistrationForm = ({
             }}
           />
         </div>
-        <p>
-          Klicken Sie auf &quot;Antrag absenden&quot; um Ihren Antrag formal
-          beim Bezirksamt einzureichen.
-        </p>
-        <Button flat type="submit">
+        {!isSubmitting && (
+          <p>
+            Klicken Sie auf &quot;Antrag absenden&quot; um Ihren Antrag formal
+            beim Bezirksamt einzureichen.
+          </p>
+        )}
+        {!isValid && (
+          <p>
+            <em>
+              Sie haben noch nicht alle benötigten Felder korrekt ausgefüllt.
+            </em>
+          </p>
+        )}
+        {isSubmitting && <LinearProgress />}
+        <Button flat type="submit" disabled={isSubmitting}>
           Antrag absenden
         </Button>
       </StyledForm>
