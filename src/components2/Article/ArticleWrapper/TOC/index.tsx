@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
 import Entry from './Entry';
+import Heading from '../../Heading';
 
 const TOCWrapper = styled.div`
   max-width: 520px;
@@ -19,11 +20,7 @@ const TOCWrapper = styled.div`
   `}
 `;
 
-const TOCHeaderArticle = styled.div`
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 10px;
-
+const TOCHeaderArticle = styled(Heading)`
   ${media.xl`
     display: none;
   `}
@@ -36,7 +33,7 @@ function TOC({ entries, activeIndex }) {
 
   return (
     <TOCWrapper>
-      <TOCHeaderArticle>Gehe direkt zu einem Kapitel</TOCHeaderArticle>
+      <TOCHeaderArticle as="h2">Gehe direkt zu einem Kapitel</TOCHeaderArticle>
       {tocChildren.map((entry: ReactElement, index) => (
         <Entry
           entry={entry}

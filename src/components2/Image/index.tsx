@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
+/* eslint-disable import/prefer-default-export, react/no-array-index-key */
 import React from 'react';
 import styled from 'styled-components';
 import { media } from '~/styles/utils';
@@ -32,8 +32,8 @@ const Img = styled.img`
 export const MultiImage = ({ sources }) => {
   return (
     <ImageWrapper>
-      {sources.map((source) => (
-        <ImageSpacer>
+      {sources.map((source, index) => (
+        <ImageSpacer key={`multi-image__${index}`}>
           <Img src={source} />
         </ImageSpacer>
       ))}
