@@ -8,6 +8,8 @@ import Map from '~/components2/Map';
 
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
 
+const DEFAULT_ZOOM_LEVEL = 19;
+
 const StyledMap = styled(Map)`
   width: 100%;
   height: 30em;
@@ -50,7 +52,7 @@ const AreaPicker = ({ center, onSelect }) => {
         style={config.gastro.map.style}
         bounds={config.gastro.map.bounds}
         center={center}
-        zoom={19}
+        zoom={DEFAULT_ZOOM_LEVEL}
         attributionControl={false}
       />
       {!hasGeometry && <p>Bitte zeichnen Sie einen Bereich ein.</p>}
