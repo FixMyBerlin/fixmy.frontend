@@ -16,7 +16,7 @@ const getBackgroundColor = ({ ghost, disabled }: Props) => {
   return config.colors.interaction;
 };
 
-export default styled.button<Props>`
+const Button = (containerElem: 'a' | 'button') => styled(containerElem)<Props>`
   border-radius: 24px;
   border: ${(props) =>
     props.ghost ? `1.5px solid ${config.colors.interaction}` : 'none'};
@@ -43,8 +43,18 @@ export default styled.button<Props>`
   }
 
   width: 100%;
+  word-break: break-all;
+  hyphens: auto;
 
   ${media.s`
     width: initial;
+    max-width: 24em;
   `}
 `;
+
+const DefaultButton = Button('button');
+const AnchorButton = Button('a');
+
+export { DefaultButton, AnchorButton };
+
+export default DefaultButton;

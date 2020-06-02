@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 import styled from 'styled-components';
 
-import Button from '~/components2/Button';
+import Button, { AnchorButton } from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import StaticMap from '~/components2/StaticMap';
 import AreaPicker from '~/components2/AreaPicker';
@@ -77,6 +77,22 @@ const StyledForm = styled(Form)`
   .MuiTextField-root,
   .dropdown {
     margin-bottom: 1em;
+  }
+`;
+
+const InvisiLabel = styled.label`
+  display: none;
+`;
+
+const FileInputLabel = styled.label`
+  // Separate button and label
+  a {
+    margin-top: 1em;
+  }
+
+  // Hide original form element (it's uggo)
+  div:last-child {
+    display: none;
   }
 `;
 
@@ -172,28 +188,40 @@ const RegistrationForm = ({
               </Field>
             </FormControl>
           </div>
+          <InvisiLabel htmlFor="first_name">Vorname der Inhaber:in</InvisiLabel>
           <Field
+            id="first_name"
             name="first_name"
             component={TextField}
             label="Vorname der Inhaber:in"
             fullWidth
           />
+          <InvisiLabel htmlFor="last_name">Nachname der Inhaber:in</InvisiLabel>
           <Field
+            id="last_name"
             name="last_name"
             component={TextField}
             label="Nachname der Inhaber:in"
             fullWidth
           />
+          <InvisiLabel htmlFor="phone">
+            Telefonnummer (tagsüber erreichbar)
+          </InvisiLabel>
           <Field
+            id="phone"
             name="phone"
             component={TextField}
             label="Telefonnummer (tagsüber erreichbar)"
             fullWidth
-            variant="filled"
           />
         </section>
+
         <section>
+          <InvisiLabel htmlFor="first_name">
+            Addresse des Ladengeschäfts
+          </InvisiLabel>
           <Field
+            id="address"
             name="address"
             component={TextField}
             label="Addresse des Ladengeschäfts"
@@ -207,12 +235,10 @@ const RegistrationForm = ({
           <section>
             <h3>Bestimmung der Sondernutzungsfläche</h3>
             <p>
-              <p>
-                Für Ihren Betrieb / Verein kann grundsätzlich eine
-                Sondernutzungsfläche{' '}
-                <strong>im Bereich der derzeitigen Parkflächen</strong> zur
-                Verfügung gestellt werden.
-              </p>
+              Für Ihren Betrieb / Verein kann grundsätzlich eine
+              Sondernutzungsfläche{' '}
+              <strong>im Bereich der derzeitigen Parkflächen</strong> zur
+              Verfügung gestellt werden.
             </p>
             {usageWeekday(values) && (
               <p>
@@ -280,9 +306,10 @@ const RegistrationForm = ({
             <p>
               <strong>
                 Ihr Betrieb liegt im Bereich der {regulation?.street}, hier wird
-                es eine Gesamt-Anordnung für den Bereich {regulation?.street}{' '}
-                {regulation?.from} bis {regulation?.to} geben. Wenn Sie sich
-                registrieren, können Sie in diesem Bereich teilnehmen.
+                es eine Gesamt-Anordnung für den rot markierten Bereich{' '}
+                {regulation?.street} {regulation?.from} bis {regulation?.to}{' '}
+                geben. Wenn Sie sich registrieren, können Sie in diesem Bereich
+                teilnehmen.
               </strong>
             </p>
             <p>
@@ -309,7 +336,11 @@ const RegistrationForm = ({
             entscheiden welcher Raum im Straßenland genutzt werden kann. Sofern
             sie kein Ladenlokal haben bitte 0 angeben.
           </p>
+          <InvisiLabel htmlFor="shopfront_length">
+            Angabe in Metern z.B. 4,8
+          </InvisiLabel>
           <Field
+            id="shopfront_length"
             name="shopfront_length"
             type="text"
             inputMode="numeric"
@@ -319,6 +350,7 @@ const RegistrationForm = ({
             fullWidth
           />
         </section>
+
         <section>
           <p>
             <strong>
@@ -326,7 +358,9 @@ const RegistrationForm = ({
               beantragten Fläche:
             </strong>
           </p>
+          <InvisiLabel htmlFor="usage">Nutzungszweck</InvisiLabel>
           <Field
+            id="usage"
             name="usage"
             type="text"
             component={TextField}
@@ -335,28 +369,51 @@ const RegistrationForm = ({
             multiline
             rows={4}
             fullWidth
-            variant="filled"
           />
         </section>
+
         <section>
           <p>
             <strong>
               Bitte laden Sie hier die erste Seite Ihrer Gewerbeanmeldung /
-              Ihres Vereinsregisters als Scan oder Foto hoch (Schrift muss
-              lesbar sein).
+              Ihres Vereinsregisters hoch.
             </strong>
           </p>
-          <Field
-            component={SimpleFileUpload}
-            name="certificate"
-            type="file"
-            inputProps={{
-              id: 'certificate',
-              accept: 'image/*,application/pdf,application/vnd.ms-excel',
-              capture: 'environment'
-            }}
-          />
+          <FileInputLabel>
+            <div>
+              Wählen Sie eine PDF- oder Bilddatei aus oder machen Sie ein Foto
+              (Schrift muss lesbar sein)
+            </div>
+            <AnchorButton flat disabled={isSubmitting} aria-hidden="true">
+              {values.certificate == null ? (
+                'Foto oder PDF auswählen'
+              ) : (
+                <span>
+                  <span role="img" aria-label="file">
+                    💾
+                  </span>{' '}
+                  {values.certificate?.name}
+                </span>
+              )}
+            </AnchorButton>
+
+            <ErrorMessage
+              name="certificate"
+              render={(msg) => <FormError error>{msg}</FormError>}
+            />
+
+            <Field
+              component={SimpleFileUpload}
+              name="certificate"
+              type="file"
+              inputProps={{
+                accept: 'image/*,application/pdf,application/vnd.ms-excel',
+                capture: 'environment'
+              }}
+            />
+          </FileInputLabel>
         </section>
+
         <section>
           <p>
             <strong>Zustimmung Kooperationsvereinbarung</strong>
@@ -422,7 +479,9 @@ const RegistrationForm = ({
             <em>Offene Terrassen für Friedrichshain-Kreuzberg</em>{' '}
             veröffentlicht werden.
           </p>
+          <InvisiLabel htmlFor="email">Ihre E-Mail-Adresse</InvisiLabel>
           <Field
+            id="email"
             name="email"
             component={TextField}
             label="Ihre E-Mail-Adresse"
@@ -457,12 +516,14 @@ const RegistrationForm = ({
             }}
           />
         </div>
+
         {!isSubmitting && (
           <p>
             Klicken Sie auf &quot;Antrag absenden&quot; um Ihren Antrag formal
             beim Bezirksamt einzureichen.
           </p>
         )}
+
         {!isValid && (
           <p>
             <em>
@@ -470,7 +531,9 @@ const RegistrationForm = ({
             </em>
           </p>
         )}
+
         {isSubmitting && <LinearProgress />}
+
         <Button flat type="submit" disabled={isSubmitting}>
           Antrag absenden
         </Button>

@@ -44,9 +44,9 @@ const validate = (values: FormData) => {
     errors.usage = 'Bitte einen Nutzungszweck angeben';
   }
 
-  // if (!values.certificate) {
-  //   errors.certificate = 'Bitte einen Nachweis einfügen';
-  // }
+  if (!values.certificate) {
+    errors.certificate = 'Bitte einen Nachweis einfügen';
+  }
 
   if (!values.email) {
     errors.email = 'Bitte eine E-Mail-Adresse angeben';
