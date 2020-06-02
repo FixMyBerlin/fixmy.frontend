@@ -16,6 +16,11 @@ const StyledMap = styled(Map)`
   margin: 2em 0;
 `;
 
+const GoodJob = styled.p`
+  color: ${config.colors.change_4};
+  font-weight: bold;
+`;
+
 const AreaPicker = ({ center, onSelect }) => {
   // Mapbox-GL.js map instance
   const [map, setMap] = useState(null);
@@ -55,8 +60,7 @@ const AreaPicker = ({ center, onSelect }) => {
         zoom={DEFAULT_ZOOM_LEVEL}
         attributionControl={false}
       />
-      {!hasGeometry && <p>Bitte zeichnen Sie einen Bereich ein.</p>}
-      {hasGeometry && <p>Sie haben einen Bereich eingezeichnet!</p>}
+      {hasGeometry && <GoodJob>Sie haben einen Bereich eingezeichnet!</GoodJob>}
     </>
   );
 };

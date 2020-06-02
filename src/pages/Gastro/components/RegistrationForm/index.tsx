@@ -11,7 +11,10 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
-  LinearProgress
+  LinearProgress,
+  CardHeader,
+  Card,
+  CardContent
 } from '@material-ui/core';
 import styled from 'styled-components';
 
@@ -94,6 +97,18 @@ const FileInputLabel = styled.label`
   div:last-child {
     display: none;
   }
+`;
+
+const EditIcon = styled.div`
+  width: 25px;
+  height: 20px;
+  margin: 0 3px;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.2);
+  vertical-align: text-top;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiICAgd2lkdGg9IjIwIiAgIGhlaWdodD0iMjAiICAgdmlld0JveD0iMCAwIDIwIDIwIiAgIGlkPSJzdmcxOTE2NyIgICB2ZXJzaW9uPSIxLjEiICAgaW5rc2NhcGU6dmVyc2lvbj0iMC45MStkZXZlbCtvc3htZW51IHIxMjkxMSIgICBzb2RpcG9kaTpkb2NuYW1lPSJzcXVhcmUuc3ZnIj4gIDxkZWZzICAgICBpZD0iZGVmczE5MTY5IiAvPiAgPHNvZGlwb2RpOm5hbWVkdmlldyAgICAgaWQ9ImJhc2UiICAgICBwYWdlY29sb3I9IiNmZmZmZmYiICAgICBib3JkZXJjb2xvcj0iIzY2NjY2NiIgICAgIGJvcmRlcm9wYWNpdHk9IjEuMCIgICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwLjAiICAgICBpbmtzY2FwZTpwYWdlc2hhZG93PSIyIiAgICAgaW5rc2NhcGU6em9vbT0iMTEuMzEzNzA4IiAgICAgaW5rc2NhcGU6Y3g9IjExLjY4MTYzNCIgICAgIGlua3NjYXBlOmN5PSI5LjI4NTcxNDMiICAgICBpbmtzY2FwZTpkb2N1bWVudC11bml0cz0icHgiICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJsYXllcjEiICAgICBzaG93Z3JpZD0idHJ1ZSIgICAgIHVuaXRzPSJweCIgICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMTI4MCIgICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9Ijc1MSIgICAgIGlua3NjYXBlOndpbmRvdy14PSIwIiAgICAgaW5rc2NhcGU6d2luZG93LXk9IjIzIiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0iMCIgICAgIGlua3NjYXBlOm9iamVjdC1ub2Rlcz0idHJ1ZSI+ICAgIDxpbmtzY2FwZTpncmlkICAgICAgIHR5cGU9Inh5Z3JpZCIgICAgICAgaWQ9ImdyaWQxOTcxNSIgLz4gIDwvc29kaXBvZGk6bmFtZWR2aWV3PiAgPG1ldGFkYXRhICAgICBpZD0ibWV0YWRhdGExOTE3MiI+ICAgIDxyZGY6UkRGPiAgICAgIDxjYzpXb3JrICAgICAgICAgcmRmOmFib3V0PSIiPiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+ICAgICAgICA8ZGM6dHlwZSAgICAgICAgICAgcmRmOnJlc291cmNlPSJodHRwOi8vcHVybC5vcmcvZGMvZGNtaXR5cGUvU3RpbGxJbWFnZSIgLz4gICAgICAgIDxkYzp0aXRsZSAvPiAgICAgIDwvY2M6V29yaz4gICAgPC9yZGY6UkRGPiAgPC9tZXRhZGF0YT4gIDxnICAgICBpbmtzY2FwZTpsYWJlbD0iTGF5ZXIgMSIgICAgIGlua3NjYXBlOmdyb3VwbW9kZT0ibGF5ZXIiICAgICBpZD0ibGF5ZXIxIiAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwtMTAzMi4zNjIyKSI+ICAgIDxwYXRoICAgICAgIGlua3NjYXBlOmNvbm5lY3Rvci1jdXJ2YXR1cmU9IjAiICAgICAgIHN0eWxlPSJjb2xvcjojMDAwMDAwO2Rpc3BsYXk6aW5saW5lO292ZXJmbG93OnZpc2libGU7dmlzaWJpbGl0eTp2aXNpYmxlO2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MC41O21hcmtlcjpub25lO2VuYWJsZS1iYWNrZ3JvdW5kOmFjY3VtdWxhdGUiICAgICAgIGQ9Im0gNSwxMDM5LjM2MjIgMCw2IDIsMiA2LDAgMiwtMiAwLC02IC0yLC0yIC02LDAgeiBtIDMsMCA0LDAgMSwxIDAsNCAtMSwxIC00LDAgLTEsLTEgMCwtNCB6IiAgICAgICBpZD0icmVjdDc3OTciICAgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY2NjY2NjY2NjY2NjY2NjY2NjIiAvPiAgICA8Y2lyY2xlICAgICAgIHN0eWxlPSJjb2xvcjojMDAwMDAwO2Rpc3BsYXk6aW5saW5lO292ZXJmbG93OnZpc2libGU7dmlzaWJpbGl0eTp2aXNpYmxlO2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MS42MDAwMDAwMjttYXJrZXI6bm9uZTtlbmFibGUtYmFja2dyb3VuZDphY2N1bXVsYXRlIiAgICAgICBpZD0icGF0aDQzNjQiICAgICAgIGN4PSI2IiAgICAgICBjeT0iMTA0Ni4zNjIyIiAgICAgICByPSIyIiAvPiAgICA8Y2lyY2xlICAgICAgIGlkPSJwYXRoNDM2OCIgICAgICAgc3R5bGU9ImNvbG9yOiMwMDAwMDA7ZGlzcGxheTppbmxpbmU7b3ZlcmZsb3c6dmlzaWJsZTt2aXNpYmlsaXR5OnZpc2libGU7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lO3N0cm9rZS13aWR0aDoxLjYwMDAwMDAyO21hcmtlcjpub25lO2VuYWJsZS1iYWNrZ3JvdW5kOmFjY3VtdWxhdGUiICAgICAgIGN4PSIxNCIgICAgICAgY3k9IjEwNDYuMzYyMiIgICAgICAgcj0iMiIgLz4gICAgPGNpcmNsZSAgICAgICBpZD0icGF0aDQzNzAiICAgICAgIHN0eWxlPSJjb2xvcjojMDAwMDAwO2Rpc3BsYXk6aW5saW5lO292ZXJmbG93OnZpc2libGU7dmlzaWJpbGl0eTp2aXNpYmxlO2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6MS42MDAwMDAwMjttYXJrZXI6bm9uZTtlbmFibGUtYmFja2dyb3VuZDphY2N1bXVsYXRlIiAgICAgICBjeD0iNiIgICAgICAgY3k9IjEwMzguMzYyMiIgICAgICAgcj0iMiIgLz4gICAgPGNpcmNsZSAgICAgICBzdHlsZT0iY29sb3I6IzAwMDAwMDtkaXNwbGF5OmlubGluZTtvdmVyZmxvdzp2aXNpYmxlO3Zpc2liaWxpdHk6dmlzaWJsZTtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmU7c3Ryb2tlLXdpZHRoOjEuNjAwMDAwMDI7bWFya2VyOm5vbmU7ZW5hYmxlLWJhY2tncm91bmQ6YWNjdW11bGF0ZSIgICAgICAgaWQ9InBhdGg0MzcyIiAgICAgICBjeD0iMTQiICAgICAgIGN5PSIxMDM4LjM2MjIiICAgICAgIHI9IjIiIC8+ICA8L2c+PC9zdmc+);
 `;
 
 // Return true if usage for the signup's category is allowed on week days
@@ -240,34 +255,30 @@ const RegistrationForm = ({
               <strong>im Bereich der derzeitigen Parkflächen</strong> zur
               Verfügung gestellt werden.
             </p>
-            {usageWeekday(values) && (
-              <p>
-                Die Sondernutzungsfläche kann nach Einrichtung Montags bis
-                Freitags, jeweils von 10 bis 20 Uhr genutzt werden.
-              </p>
-            )}
-            {usageWeekend(values) && (
-              <p>
-                Die Sondernutzungsfläche kann nach Einrichtung Freitags,
-                Samstags und Sonntags, jeweils von 11 bis 22 Uhr genutzt werden.
-              </p>
-            )}
             <p>
-              Die späteren Anordnungen werden nach folgenden Regelplänen
+              Die späteren Anordnungen werden nach folgendem Regelplan
               getroffen:
             </p>
             <ul>
               <li>
                 <a href="/" className="internal">
-                  Regelplan für Gehweg [PDF]
-                </a>
-              </li>
-              <li>
-                <a href="/" className="internal">
-                  Regelplan für Parkraum [PDF]
+                  Regelplan Sondernutzungsflächen
                 </a>
               </li>
             </ul>
+
+            <p>
+              Die Sondernutzungsfläche kann nach Einrichtung
+              {usageWeekday(values) && (
+                <>Montags bis Freitags, jeweils von 10 bis 20 Uhr</>
+              )}
+              {usageWeekend(values) && (
+                <>Freitags, Samstags und Sonntags, jeweils von 11 bis 22 Uhr</>
+              )}
+              genutzt werden. Die Nutzung der Sonderflächen erfolgt kostenfrei
+              zunächst bis zum 31.8.2020.
+            </p>
+
             <p>
               <strong>
                 Bitte zeichnen Sie auf der untenstehenden Karte ein, wo genau
@@ -298,6 +309,31 @@ const RegistrationForm = ({
                 });
               }}
             />
+
+            <Card>
+              <CardContent>
+                <p>
+                  <strong>Anleitung zum Zeichnen der Fläche</strong>
+                </p>
+                <ol>
+                  <li>
+                    Die Karte durch klicken und ziehen bewegen, so dass Sie den
+                    gewünschten Bereich als ganzes sehen können.
+                  </li>
+                  <li>
+                    Das Werkzeug <EditIcon /> oben rechts auswählen.
+                  </li>
+                  <li>
+                    Fläche zeichnen, durch anklicken mehrerer Punkte auf der
+                    Karte
+                  </li>
+                  <li>
+                    Fläche schließen, indem der erste Punkt erneut geklickt
+                    wird.
+                  </li>
+                </ol>
+              </CardContent>
+            </Card>
           </section>
         )}
 
@@ -416,30 +452,53 @@ const RegistrationForm = ({
 
         <section>
           <p>
-            <strong>Zustimmung Kooperationsvereinbarung</strong>
+            <strong>Bedingungen für die Nutzung der Sonderflächen</strong>
           </p>
           <p>
-            Damit Sie die Sonderfläche nutzen können, müssen Sie der{' '}
-            <a href="/" className="internal">
-              Kooperationsvereinbarung
-            </a>{' '}
-            mit dem Bezirksamt Friedrichshain-Kreuzberg zustimmen, damit sichern
-            Sie folgende Punkte zu:
+            Damit Sie die Sonderfläche nutzen können, müssen Sie der
+            Kooperationsvereinbarung mit dem Bezirksamt Friedrichshain-Kreuzberg
+            zustimmen, damit sichern Sie folgende Punkte zu:
           </p>
           <ul>
             <li>
-              Eigenverantwortliche Durchführung der verkehrsrechtlichen
-              Anordnung, inkl. Stellung von Sperren, Schildern und ggf. Personal
-              (inkl. Kostenübernahme für das Stellen der Schilder)
+              Eigenverantwortliche{' '}
+              <strong>Durchführung der verkehrsrechtlichen Anordnung</strong>.
+              Sie müssen eigenverantwortlich dazu eine Beschilderungsfirma
+              beauftragen für die Fläche die dem Regelplan entsprechenden
+              Schilder und Absperrungen aufzustellen. Liste mit
+              Beschilderungsfirmen in Berlin
             </li>
-
             <li>
-              Verpflichtung zur Einführung eines Pfandsystems für Einweggebinde
-              bei der Herausgabe von Speisen nach Maßgabe des Bezirksamtes{' '}
+              <strong>Freihaltung von ausreichend breiten Gehwegen</strong> muss
+              sichergestellt werden (Mindestens 2 Meter) Dies wird durch das
+              Ordnungsamt stichprobenartig überprüft, bei Nichteinhaltung kann
+              die Genehmigung entzogen werden.
             </li>
-
             <li>
-              Freihaltung von ausreichend breiten Gehwegen (Mindestens 2 Meter)
+              Die Nutzung der Flächen des ruhenden Verkehrs ist auf{' '}
+              <strong>
+                Freitag, Samstag und Sonntag jeweils von 11 Uhr bis 22 Uhr
+              </strong>{' '}
+              begrenzt. (Bei Einzelhandel Montags - Freitag jeweils von 10 bis
+              20 Uhr) Die Flächen sind außerhalb der Nutzungszeiten zu beräumen
+              und dem ruhenden Verkehr wieder zur Verfügung zu stellen.
+            </li>
+            <li>
+              Verpflichtung zur Einführung eines{' '}
+              <strong>Pfandsystems für Einweggebinde</strong> bei der Herausgabe
+              von Speisen. Damit durch die zusätzlichen Gastronomieflächen keine
+              zusätzlichen Müllmengen entstehen, erklären sich die beantragenden
+              Betriebe grundsätzlich bereit, ein Pfandsystem einzuführen.
+              Selbstverständlich dürfen vorhandene Mehrweggeschirre genutzt
+              werden. Zeitpunkt und Gebiete, in denen das Pfandsystem eingeführt
+              wird stehen noch nicht fest. Für die Herausgabe von Einweggebinden
+              stellt das Bezirksamt entsprechende Pfandrollen zur Verfügung, die
+              erst nach Herausgabe der Kartons / Becher samt Vereinnahmung des
+              Pfandes erstattet werden müssen. Darüber hinaus entstehen den
+              Gastronomiebetrieben keine Aufwendungen; Das Pfand wird 2€ für
+              Pizza- und Essenskartons / Schalen, sowie 1€ für Kaffeebecher
+              betragen. Die Rückholung erfolgt unabhängig von den
+              Gastronomiebetrieben durch einen Sozialhilfeträger.
             </li>
           </ul>
           <div className="checkboxFieldGroup">
@@ -454,16 +513,8 @@ const RegistrationForm = ({
               Label={{
                 label: (
                   <span>
-                    Ich habe die{' '}
-                    <a
-                      href="/"
-                      target="_blank"
-                      rel="noreferrer nofollow"
-                      className="internal"
-                    >
-                      Kooperationsvereinbarung
-                    </a>{' '}
-                    für die Nutzung der Sonderfläche gelesen und stimme Ihr zu.
+                    Ich habe die Bedingungen für die Nutzung der Sonderfläche
+                    gelesen und stimme ihnen zu.
                   </span>
                 )
               }}
