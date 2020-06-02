@@ -235,12 +235,10 @@ const RegistrationForm = ({
           <section>
             <h3>Bestimmung der Sondernutzungsfläche</h3>
             <p>
-              <p>
-                Für Ihren Betrieb / Verein kann grundsätzlich eine
-                Sondernutzungsfläche{' '}
-                <strong>im Bereich der derzeitigen Parkflächen</strong> zur
-                Verfügung gestellt werden.
-              </p>
+              Für Ihren Betrieb / Verein kann grundsätzlich eine
+              Sondernutzungsfläche{' '}
+              <strong>im Bereich der derzeitigen Parkflächen</strong> zur
+              Verfügung gestellt werden.
             </p>
             {usageWeekday(values) && (
               <p>
@@ -388,7 +386,7 @@ const RegistrationForm = ({
             </div>
             <AnchorButton flat disabled={isSubmitting} aria-hidden="true">
               {values.certificate == null ? (
-                'Datei auswählen'
+                'Foto oder PDF auswählen'
               ) : (
                 <span>
                   <span role="img" aria-label="file">
