@@ -12,7 +12,6 @@ import {
   InputLabel,
   MenuItem,
   LinearProgress,
-  CardHeader,
   Card,
   CardContent
 } from '@material-ui/core';
@@ -261,7 +260,11 @@ const RegistrationForm = ({
             </p>
             <ul>
               <li>
-                <a href="/" className="internal">
+                <a
+                  href="/uploads/offene-terrassen/20200527_BAFK_RP%20Sondernutzung%20Parkstreifen.pdf"
+                  className="external"
+                  target="_blank"
+                >
                   Regelplan Sondernutzungsflächen
                 </a>
               </li>
