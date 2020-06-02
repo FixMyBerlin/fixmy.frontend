@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 import styled from 'styled-components';
 
-import Button from '~/components2/Button';
+import Button, { AnchorButton } from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import StaticMap from '~/components2/StaticMap';
 import AreaPicker from '~/components2/AreaPicker';
@@ -82,6 +82,18 @@ const StyledForm = styled(Form)`
 
 const InvisiLabel = styled.label`
   display: none;
+`;
+
+const FileInputLabel = styled.label`
+  // Separate button and label
+  a {
+    margin-top: 1em;
+  }
+
+  // Hide original form element (it's uggo)
+  div:last-child {
+    display: none;
+  }
 `;
 
 // Return true if usage for the signup's category is allowed on week days
@@ -203,6 +215,7 @@ const RegistrationForm = ({
             fullWidth
           />
         </section>
+
         <section>
           <InvisiLabel htmlFor="first_name">
             Addresse des Ladengeschäfts
@@ -295,9 +308,10 @@ const RegistrationForm = ({
             <p>
               <strong>
                 Ihr Betrieb liegt im Bereich der {regulation?.street}, hier wird
-                es eine Gesamt-Anordnung für den Bereich {regulation?.street}{' '}
-                {regulation?.from} bis {regulation?.to} geben. Wenn Sie sich
-                registrieren, können Sie in diesem Bereich teilnehmen.
+                es eine Gesamt-Anordnung für den rot markierten Bereich{' '}
+                {regulation?.street} {regulation?.from} bis {regulation?.to}{' '}
+                geben. Wenn Sie sich registrieren, können Sie in diesem Bereich
+                teilnehmen.
               </strong>
             </p>
             <p>
@@ -338,6 +352,7 @@ const RegistrationForm = ({
             fullWidth
           />
         </section>
+
         <section>
           <p>
             <strong>
@@ -358,29 +373,49 @@ const RegistrationForm = ({
             fullWidth
           />
         </section>
+
         <section>
           <p>
             <strong>
               Bitte laden Sie hier die erste Seite Ihrer Gewerbeanmeldung /
-              Ihres Vereinsregisters als Scan oder Foto hoch (Schrift muss
-              lesbar sein).
+              Ihres Vereinsregisters hoch.
             </strong>
           </p>
-          <InvisiLabel htmlFor="certificate">
-            Wählen Sie eine PDF- oder Bilddatei aus oder machen Sie ein Foto
-          </InvisiLabel>
-          <Field
-            component={SimpleFileUpload}
-            id="certificate"
-            name="certificate"
-            type="file"
-            inputProps={{
-              id: 'certificate',
-              accept: 'image/*,application/pdf,application/vnd.ms-excel',
-              capture: 'environment'
-            }}
-          />
+          <FileInputLabel>
+            <div>
+              Wählen Sie eine PDF- oder Bilddatei aus oder machen Sie ein Foto
+              (Schrift muss lesbar sein)
+            </div>
+            <AnchorButton flat disabled={isSubmitting} aria-hidden="true">
+              {values.certificate == null ? (
+                'Datei auswählen'
+              ) : (
+                <span>
+                  <span role="img" aria-label="file">
+                    💾
+                  </span>{' '}
+                  {values.certificate?.name}
+                </span>
+              )}
+            </AnchorButton>
+
+            <ErrorMessage
+              name="certificate"
+              render={(msg) => <FormError error>{msg}</FormError>}
+            />
+
+            <Field
+              component={SimpleFileUpload}
+              name="certificate"
+              type="file"
+              inputProps={{
+                accept: 'image/*,application/pdf,application/vnd.ms-excel',
+                capture: 'environment'
+              }}
+            />
+          </FileInputLabel>
         </section>
+
         <section>
           <p>
             <strong>Zustimmung Kooperationsvereinbarung</strong>
@@ -483,12 +518,14 @@ const RegistrationForm = ({
             }}
           />
         </div>
+
         {!isSubmitting && (
           <p>
             Klicken Sie auf &quot;Antrag absenden&quot; um Ihren Antrag formal
             beim Bezirksamt einzureichen.
           </p>
         )}
+
         {!isValid && (
           <p>
             <em>
@@ -496,7 +533,9 @@ const RegistrationForm = ({
             </em>
           </p>
         )}
+
         {isSubmitting && <LinearProgress />}
+
         <Button flat type="submit" disabled={isSubmitting}>
           Antrag absenden
         </Button>

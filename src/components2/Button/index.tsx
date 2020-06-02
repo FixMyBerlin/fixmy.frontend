@@ -48,7 +48,7 @@ const Button = (containerElem: 'a' | 'button') => styled(containerElem)<Props>`
 
   ${media.s`
     width: initial;
-    max-width: 16em;
+    max-width: 24em;
   `}
 `;
 
