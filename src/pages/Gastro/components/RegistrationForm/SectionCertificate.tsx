@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { AnchorButton } from '~/components2/Button';
 
 import FormError from './FormError';
+import config from '../../config';
 
 const FileInputLabel = styled.label`
   // Separate button and label
@@ -17,6 +18,16 @@ const FileInputLabel = styled.label`
   div:last-child {
     display: none;
   }
+`;
+
+const SelectedFile = styled.span`
+  color: ${config.colors.change_4};
+  font-weight: bold;
+  display: block;
+  margin-top: 1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const SectionCertificate = ({ isSubmitting, values }) => (
@@ -33,17 +44,12 @@ const SectionCertificate = ({ isSubmitting, values }) => (
         (Schrift muss lesbar sein).
       </div>
       <AnchorButton flat disabled={isSubmitting} aria-hidden="true">
-        {values.certificate == null ? (
-          'Foto oder PDF auswählen'
-        ) : (
-          <span>
-            <span role="img" aria-label="file">
-              💾
-            </span>{' '}
-            {values.certificate?.name}
-          </span>
-        )}
+        Foto oder PDF auswählen
       </AnchorButton>
+
+      {values.certificate != null && (
+        <SelectedFile>Datei gewählt: {values.certificate?.name} </SelectedFile>
+      )}
 
       <ErrorMessage
         name="certificate"
