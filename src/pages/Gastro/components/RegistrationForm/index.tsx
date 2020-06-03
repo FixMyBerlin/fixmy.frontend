@@ -192,6 +192,7 @@ const RegistrationForm = ({
           <p>
             <em>
               Sie haben noch nicht alle benötigten Felder korrekt ausgefüllt.
+              Bitte beachten Sie die rot markierten Hinweise im Formular oben.
             </em>
           </p>
         )}

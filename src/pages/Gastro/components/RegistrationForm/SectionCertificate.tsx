@@ -30,7 +30,7 @@ const SectionCertificate = ({ isSubmitting, values }) => (
     <FileInputLabel>
       <div>
         Wählen Sie eine PDF- oder Bilddatei aus oder machen Sie ein Foto
-        (Schrift muss lesbar sein)
+        (Schrift muss lesbar sein).
       </div>
       <AnchorButton flat disabled={isSubmitting} aria-hidden="true">
         {values.certificate == null ? (
