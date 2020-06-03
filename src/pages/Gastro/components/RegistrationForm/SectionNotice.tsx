@@ -30,8 +30,8 @@ const SectionNotice = () => (
         die Fläche die dem Regelplan entsprechenden Schilder und Absperrungen
         aufzustellen. <br />
         <a
-          href="/uploads/offene-terrassen/Beschilderungsfirmen_Berlin"
-          className="external"
+          href="/uploads/offene-terrassen/Beschilderungsfirmen_Berlin.pdf"
+          className="internal"
           target="_blank"
         >
           Liste mit Beschilderungsfirmen in Berlin
@@ -39,7 +39,7 @@ const SectionNotice = () => (
       </li>
       <li>
         <strong>Freihaltung von ausreichend breiten Gehwegen</strong> muss
-        sichergestellt werden (Mindestens 2 Meter) Dies wird durch das
+        sichergestellt werden (mindestens 2 Meter). Dies wird durch das
         Ordnungsamt stichprobenartig überprüft, bei Nichteinhaltung kann die
         Genehmigung entzogen werden.
       </li>
@@ -48,9 +48,9 @@ const SectionNotice = () => (
         <strong>
           Freitag, Samstag und Sonntag jeweils von 11 Uhr bis 22 Uhr
         </strong>{' '}
-        begrenzt. (Bei Einzelhandel Montags - Freitag jeweils von 10 bis 20 Uhr)
-        Die Flächen sind außerhalb der Nutzungszeiten zu beräumen und dem
-        ruhenden Verkehr wieder zur Verfügung zu stellen.
+        begrenzt (bei Einzelhandelsbetrieben Montags - Freitag jeweils von 10
+        bis 20 Uhr). Die Flächen sind außerhalb der Nutzungszeiten zu beräumen
+        und dem ruhenden Verkehr wieder zur Verfügung zu stellen.
       </li>
       <li>
         Verpflichtung zur Einführung eines{' '}
@@ -60,15 +60,23 @@ const SectionNotice = () => (
         Betriebe grundsätzlich bereit, ein Pfandsystem einzuführen.
         <br />
         Selbstverständlich dürfen vorhandene Mehrweggeschirre genutzt werden.
-        Zeitpunkt und Gebiete, in denen das Pfandsystem eingeführt wird stehen
+        Zeitpunkt und Gebiete, in denen das Pfandsystem eingeführt wird, stehen
         noch nicht fest. <br />
         Für die Herausgabe von Einweggebinden stellt das Bezirksamt
         entsprechende Pfandrollen zur Verfügung, die erst nach Herausgabe der
         Kartons / Becher samt Vereinnahmung des Pfandes erstattet werden müssen.
-        Darüber hinaus entstehen den Gastronomiebetrieben keine Aufwendungen;
-        Das Pfand wird 2€ für Pizza- und Essenskartons / Schalen, sowie 1€ für
+        Darüber hinaus entstehen den Gastronomiebetrieben keine Aufwendungen.
+        Das Pfand wird 2 € für Pizza- und Essenskartons / Schalen, sowie 1 € für
         Kaffeebecher betragen. Die Rückholung erfolgt unabhängig von den
         Gastronomiebetrieben durch einen Sozialhilfeträger.
+        <br />
+        <a
+          href="/uploads/offene-terrassen/Nebenbestimmungen_Sonderflächen.pdf"
+          className="internal"
+          target="_blank"
+        >
+          Nebenbestimmungen für Sonderflächen
+        </a>
       </li>
     </ul>
     <div className="checkboxFieldGroup">

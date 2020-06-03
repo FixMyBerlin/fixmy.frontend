@@ -54,7 +54,7 @@ const SectionArea = ({ regulation, handleChange, signupData, values }) => (
           <li>
             <a
               href="/uploads/offene-terrassen/20200527_BAFK_RP%20Sondernutzung%20Parkstreifen.pdf"
-              className="external"
+              className="internal"
               target="_blank"
             >
               Regelplan Sondernutzungsflächen
@@ -63,13 +63,13 @@ const SectionArea = ({ regulation, handleChange, signupData, values }) => (
         </ul>
 
         <p>
-          Die Sondernutzungsfläche kann nach Einrichtung
+          Die Sondernutzungsfläche kann nach Einrichtung{' '}
           {usageWeekday(values) && (
             <>Montags bis Freitags, jeweils von 10 bis 20 Uhr</>
           )}
           {usageWeekend(values) && (
             <>Freitags, Samstags und Sonntags, jeweils von 11 bis 22 Uhr</>
-          )}
+          )}{' '}
           genutzt werden. Die Nutzung der Sonderflächen erfolgt kostenfrei
           zunächst bis zum 31.8.2020.
         </p>

@@ -13,8 +13,7 @@ const SectionEmail = () => (
     <p className="subline">
       Ihre Daten werden für die Durchführung des Verfahrens gespeichert, der
       Name Ihres Betriebes kann im Zuge der Aktion{' '}
-      <em>Offene Terrassen für Friedrichshain-Kreuzberg</em> veröffentlicht
-      werden.
+      <em>Terrassen für Friedrichshain-Kreuzberg</em> veröffentlicht werden.
     </p>
     <InvisiLabel htmlFor="email">Ihre E-Mail-Adresse</InvisiLabel>
     <Field
