@@ -11,10 +11,16 @@ import Logo from '~/pages/Gastro/components/Logo';
 import api from '../api';
 import regulations from '../regulations';
 import { GastroSignup } from '../types';
+import { media } from '~/styles/utils';
 
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};
   margin-bottom: 2em;
+
+  ${media.m`
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+  `};
 
   &:last-child {
     border-bottom: none;
@@ -22,6 +28,10 @@ const Section = styled.section`
 
   h1 {
     overflow-wrap: break-word;
+
+    ${media.m`
+      margin: 2em 0 1em;
+    `};
   }
 `;
 

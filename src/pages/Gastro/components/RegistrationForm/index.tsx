@@ -1,30 +1,26 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
-import {
-  TextField,
-  CheckboxWithLabel,
-  Select,
-  SimpleFileUpload
-} from 'formik-material-ui';
-import {
-  FormHelperText,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  LinearProgress
-} from '@material-ui/core';
+import { CheckboxWithLabel } from 'formik-material-ui';
+import { FormHelperText, LinearProgress } from '@material-ui/core';
 import styled from 'styled-components';
 
-import Button, { AnchorButton } from '~/components2/Button';
+import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
-import StaticMap from '~/components2/StaticMap';
-import AreaPicker from '~/components2/AreaPicker';
 import logger from '~/utils/logger';
 import config from '~/pages/Gastro/config';
 import { GastroRegistration } from '~/pages/Gastro/types';
 import api from '~/pages/Gastro/api';
 import validate from './validate';
 import parseLength from '../../parseLength';
+
+import SectionArea from './SectionArea';
+import SectionCertificate from './SectionCertificate';
+import SectionEmail from './SectionEmail';
+import SectionNotice from './SectionNotice';
+import SectionShopfrontLength from './SectionShopfrontLength';
+import SectionUsage from './SectionUsage';
+import SectionBase from './SectionBase';
+import { media } from '~/styles/utils';
 
 /* eslint-disable camelcase */
 export interface FormData {
@@ -72,6 +68,10 @@ const FormError = styled(FormHelperText)`
 const StyledForm = styled(Form)`
   section {
     margin-bottom: 2em;
+
+    ${media.m`
+      margin-bottom: 4em;
+    `}
   }
 
   .MuiTextField-root,
@@ -79,30 +79,6 @@ const StyledForm = styled(Form)`
     margin-bottom: 1em;
   }
 `;
-
-const InvisiLabel = styled.label`
-  display: none;
-`;
-
-const FileInputLabel = styled.label`
-  // Separate button and label
-  a {
-    margin-top: 1em;
-  }
-
-  // Hide original form element (it's uggo)
-  div:last-child {
-    display: none;
-  }
-`;
-
-// Return true if usage for the signup's category is allowed on week days
-const usageWeekday = ({ category }) =>
-  ['retail', 'workshop'].includes(category);
-
-// Return true if usage for the signup's category is allowed on weekends
-const usageWeekend = ({ category }) =>
-  ['restaurant', 'social', 'other'].includes(category);
 
 const RegistrationForm = ({
   id,
@@ -157,342 +133,26 @@ const RegistrationForm = ({
   >
     {({ isValid, values, handleChange, isSubmitting }) => (
       <StyledForm>
-        <section>
-          <h4>Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb:</h4>
+        <h3>Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb:</h3>
 
-          <p>
-            <strong>Name des Betriebs: {values.shop_name}</strong>
-          </p>
+        <SectionBase shopName={values.shop_name} signupData={signupData} />
 
-          <ErrorMessage
-            name="category"
-            render={(msg) => <FormError error>{msg}</FormError>}
-          />
-          <div className="dropdown">
-            <FormControl fullWidth>
-              <InputLabel htmlFor="category">
-                Art des Betriebs wählen
-              </InputLabel>
-              <Field
-                component={Select}
-                name="category"
-                inputProps={{
-                  id: 'category'
-                }}
-              >
-                <MenuItem value="restaurant">Restaurant</MenuItem>
-                <MenuItem value="retail">Einzelhandel mit Auslage</MenuItem>
-                <MenuItem value="workshop">Werkstatt</MenuItem>
-                <MenuItem value="social">Soziales Projekt</MenuItem>
-                <MenuItem value="other">Sonstiger Bedarf</MenuItem>
-              </Field>
-            </FormControl>
-          </div>
-          <InvisiLabel htmlFor="first_name">Vorname der Inhaber:in</InvisiLabel>
-          <Field
-            id="first_name"
-            name="first_name"
-            component={TextField}
-            label="Vorname der Inhaber:in"
-            fullWidth
-          />
-          <InvisiLabel htmlFor="last_name">Nachname der Inhaber:in</InvisiLabel>
-          <Field
-            id="last_name"
-            name="last_name"
-            component={TextField}
-            label="Nachname der Inhaber:in"
-            fullWidth
-          />
-          <InvisiLabel htmlFor="phone">
-            Telefonnummer (tagsüber erreichbar)
-          </InvisiLabel>
-          <Field
-            id="phone"
-            name="phone"
-            component={TextField}
-            label="Telefonnummer (tagsüber erreichbar)"
-            fullWidth
-          />
-        </section>
+        <h3>Bestimmung der Sondernutzungsfläche</h3>
+        <SectionArea
+          regulation={regulation}
+          handleChange={handleChange}
+          signupData={signupData}
+          values={values}
+        />
 
-        <section>
-          <InvisiLabel htmlFor="first_name">
-            Addresse des Ladengeschäfts
-          </InvisiLabel>
-          <Field
-            id="address"
-            name="address"
-            component={TextField}
-            label="Addresse des Ladengeschäfts"
-            disabled
-            fullWidth
-          />
-          <StaticMap location={signupData?.geometry?.coordinates} />
-        </section>
+        <SectionShopfrontLength />
+        <SectionUsage />
+        <SectionCertificate isSubmitting={isSubmitting} values={values} />
 
-        {regulation && regulation.zone === 'Parkplatz' && (
-          <section>
-            <h3>Bestimmung der Sondernutzungsfläche</h3>
-            <p>
-              Für Ihren Betrieb / Verein kann grundsätzlich eine
-              Sondernutzungsfläche{' '}
-              <strong>im Bereich der derzeitigen Parkflächen</strong> zur
-              Verfügung gestellt werden.
-            </p>
-            {usageWeekday(values) && (
-              <p>
-                Die Sondernutzungsfläche kann nach Einrichtung Montags bis
-                Freitags, jeweils von 10 bis 20 Uhr genutzt werden.
-              </p>
-            )}
-            {usageWeekend(values) && (
-              <p>
-                Die Sondernutzungsfläche kann nach Einrichtung Freitags,
-                Samstags und Sonntags, jeweils von 11 bis 22 Uhr genutzt werden.
-              </p>
-            )}
-            <p>
-              Die späteren Anordnungen werden nach folgenden Regelplänen
-              getroffen:
-            </p>
-            <ul>
-              <li>
-                <a href="/" className="internal">
-                  Regelplan für Gehweg [PDF]
-                </a>
-              </li>
-              <li>
-                <a href="/" className="internal">
-                  Regelplan für Parkraum [PDF]
-                </a>
-              </li>
-            </ul>
-            <p>
-              <strong>
-                Bitte zeichnen Sie auf der untenstehenden Karte ein, wo genau
-                Sie die Sonderfläche nutzen möchten:
-              </strong>
-            </p>
-            <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
-            <ul>
-              <li>
-                Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,
-                Bushaltestellen, Schaltschränken, Baumscheiben oder Baustellen
-                beantragt werden.
-              </li>
-              <li>
-                Die eingezeichnete Fläche muss sich im Bereich der Straßenfront
-                Ihres Ladenlokals befinden.
-              </li>
-            </ul>
+        <SectionNotice values={values} />
+        <SectionEmail />
 
-            <AreaPicker
-              center={signupData?.geometry?.coordinates}
-              onSelect={(value) => {
-                handleChange({
-                  target: {
-                    name: 'area',
-                    value
-                  }
-                });
-              }}
-            />
-          </section>
-        )}
-
-        {regulation && regulation.zone !== 'Parkplatz' && (
-          <section>
-            <p>
-              <strong>
-                Ihr Betrieb liegt im Bereich der {regulation?.street}, hier wird
-                es eine Gesamt-Anordnung für den rot markierten Bereich{' '}
-                {regulation?.street} {regulation?.from} bis {regulation?.to}{' '}
-                geben. Wenn Sie sich registrieren, können Sie in diesem Bereich
-                teilnehmen.
-              </strong>
-            </p>
-            <p>
-              <a href="/" className="internal">
-                Karte der anzuordnenden Fläche
-              </a>
-            </p>
-            <p>
-              Die Sondernutzungsfläche kann nach Einrichtung Freitags, Samstags
-              und Sonntags, jeweils von 11 bis 22 Uhr genutzt werden.
-            </p>
-          </section>
-        )}
-
-        <section>
-          <p>
-            <strong>
-              Wie breit ist die Straßenfront ihres Ladenlokals (falls
-              vorhanden)?
-            </strong>
-          </p>
-          <p>
-            Auf Grundlage der Straßenfront-Breite kann das Bezirksamt
-            entscheiden welcher Raum im Straßenland genutzt werden kann. Sofern
-            sie kein Ladenlokal haben bitte 0 angeben.
-          </p>
-          <InvisiLabel htmlFor="shopfront_length">
-            Angabe in Metern z.B. 4,8
-          </InvisiLabel>
-          <Field
-            id="shopfront_length"
-            name="shopfront_length"
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]+(,[0-9]+)?"
-            component={TextField}
-            label="Angabe in Metern z.B. 4,8"
-            fullWidth
-          />
-        </section>
-
-        <section>
-          <p>
-            <strong>
-              Bitte formulieren Sie kurze Angaben zum Nutzungszweck der
-              beantragten Fläche:
-            </strong>
-          </p>
-          <InvisiLabel htmlFor="usage">Nutzungszweck</InvisiLabel>
-          <Field
-            id="usage"
-            name="usage"
-            type="text"
-            component={TextField}
-            label="Nutzungszweck"
-            placeholder="z.B. Schankvorgarten, Warenauslagen, Werkstatt, oder anderer Zweck"
-            multiline
-            rows={4}
-            fullWidth
-          />
-        </section>
-
-        <section>
-          <p>
-            <strong>
-              Bitte laden Sie hier die erste Seite Ihrer Gewerbeanmeldung /
-              Ihres Vereinsregisters hoch.
-            </strong>
-          </p>
-          <FileInputLabel>
-            <div>
-              Wählen Sie eine PDF- oder Bilddatei aus oder machen Sie ein Foto
-              (Schrift muss lesbar sein)
-            </div>
-            <AnchorButton flat disabled={isSubmitting} aria-hidden="true">
-              {values.certificate == null ? (
-                'Foto oder PDF auswählen'
-              ) : (
-                <span>
-                  <span role="img" aria-label="file">
-                    💾
-                  </span>{' '}
-                  {values.certificate?.name}
-                </span>
-              )}
-            </AnchorButton>
-
-            <ErrorMessage
-              name="certificate"
-              render={(msg) => <FormError error>{msg}</FormError>}
-            />
-
-            <Field
-              component={SimpleFileUpload}
-              name="certificate"
-              type="file"
-              inputProps={{
-                accept: 'image/*,application/pdf,application/vnd.ms-excel',
-                capture: 'environment'
-              }}
-            />
-          </FileInputLabel>
-        </section>
-
-        <section>
-          <p>
-            <strong>Zustimmung Kooperationsvereinbarung</strong>
-          </p>
-          <p>
-            Damit Sie die Sonderfläche nutzen können, müssen Sie der{' '}
-            <a href="/" className="internal">
-              Kooperationsvereinbarung
-            </a>{' '}
-            mit dem Bezirksamt Friedrichshain-Kreuzberg zustimmen, damit sichern
-            Sie folgende Punkte zu:
-          </p>
-          <ul>
-            <li>
-              Eigenverantwortliche Durchführung der verkehrsrechtlichen
-              Anordnung, inkl. Stellung von Sperren, Schildern und ggf. Personal
-              (inkl. Kostenübernahme für das Stellen der Schilder)
-            </li>
-
-            <li>
-              Verpflichtung zur Einführung eines Pfandsystems für Einweggebinde
-              bei der Herausgabe von Speisen nach Maßgabe des Bezirksamtes{' '}
-            </li>
-
-            <li>
-              Freihaltung von ausreichend breiten Gehwegen (Mindestens 2 Meter)
-            </li>
-          </ul>
-          <div className="checkboxFieldGroup">
-            <ErrorMessage
-              name="agreement_accepted"
-              render={(msg) => <FormError error>{msg}</FormError>}
-            />
-            <Field
-              component={CheckboxWithLabel}
-              name="agreement_accepted"
-              type="checkbox"
-              Label={{
-                label: (
-                  <span>
-                    Ich habe die{' '}
-                    <a
-                      href="/"
-                      target="_blank"
-                      rel="noreferrer nofollow"
-                      className="internal"
-                    >
-                      Kooperationsvereinbarung
-                    </a>{' '}
-                    für die Nutzung der Sonderfläche gelesen und stimme Ihr zu.
-                  </span>
-                )
-              }}
-            />
-          </div>
-        </section>
-
-        <section>
-          <h4>Ihre E-Mail-Adresse</h4>
-          <p className="subline">
-            Ihre Daten werden für Durchführung des Verfahrens gespeichert, der
-            Name Ihres Betriebes kann im Zuge der Aktion{' '}
-            <em>Offene Terrassen für Friedrichshain-Kreuzberg</em>{' '}
-            veröffentlicht werden.
-          </p>
-          <InvisiLabel htmlFor="email">Ihre E-Mail-Adresse</InvisiLabel>
-          <Field
-            id="email"
-            name="email"
-            component={TextField}
-            label="Ihre E-Mail-Adresse"
-            fullWidth
-          />
-        </section>
         <div className="checkboxFieldGroup">
-          <ErrorMessage
-            name="tos_accepted"
-            render={(msg) => <FormError error>{msg}</FormError>}
-          />
           <Field
             component={CheckboxWithLabel}
             name="tos_accepted"
@@ -515,6 +175,10 @@ const RegistrationForm = ({
               )
             }}
           />
+          <ErrorMessage
+            name="tos_accepted"
+            render={(msg) => <FormError error>{msg}</FormError>}
+          />
         </div>
 
         {!isSubmitting && (
@@ -528,6 +192,7 @@ const RegistrationForm = ({
           <p>
             <em>
               Sie haben noch nicht alle benötigten Felder korrekt ausgefüllt.
+              Bitte beachten Sie die rot markierten Hinweise im Formular oben.
             </em>
           </p>
         )}
