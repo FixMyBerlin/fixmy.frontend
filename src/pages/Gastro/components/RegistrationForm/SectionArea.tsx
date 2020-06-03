@@ -122,11 +122,11 @@ const SectionArea = ({ regulation, handleChange, signupData, values }) => (
             <p>
               Über <TrashIcon /> können sie die Fläche löschen und neu zeichnen.
             </p>
-            <p>
+            {/* <p>
               <a className="internal" href="#">
                 Beispielvideo
               </a>
-            </p>
+            </p> */}
           </CardContent>
         </Card>
       </section>
