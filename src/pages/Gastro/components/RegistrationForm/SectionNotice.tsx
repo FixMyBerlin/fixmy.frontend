@@ -76,7 +76,7 @@ const SectionNotice = ({ values }) => (
         Gastronomiebetrieben durch einen Sozialhilfeträger.
         <br />
         <a
-          href="/uploads/offene-terrassen/Nebenbestimmungen_Sonderflächen.pdf"
+          href="/uploads/offene-terrassen/Nebenbestimmungen.pdf"
           className="internal"
           target="_blank"
         >
