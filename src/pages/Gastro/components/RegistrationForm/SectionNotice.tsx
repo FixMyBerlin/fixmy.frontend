@@ -28,7 +28,14 @@ const SectionNotice = () => (
         <strong>Durchführung der verkehrsrechtlichen Anordnung</strong>. Sie
         müssen eigenverantwortlich dazu eine Beschilderungsfirma beauftragen für
         die Fläche die dem Regelplan entsprechenden Schilder und Absperrungen
-        aufzustellen. Liste mit Beschilderungsfirmen in Berlin
+        aufzustellen. <br />
+        <a
+          href="/uploads/offene-terrassen/Beschilderungsfirmen_Berlin"
+          className="external"
+          target="_blank"
+        >
+          Liste mit Beschilderungsfirmen in Berlin
+        </a>
       </li>
       <li>
         <strong>Freihaltung von ausreichend breiten Gehwegen</strong> muss
@@ -51,15 +58,17 @@ const SectionNotice = () => (
         Speisen. Damit durch die zusätzlichen Gastronomieflächen keine
         zusätzlichen Müllmengen entstehen, erklären sich die beantragenden
         Betriebe grundsätzlich bereit, ein Pfandsystem einzuführen.
+        <br />
         Selbstverständlich dürfen vorhandene Mehrweggeschirre genutzt werden.
         Zeitpunkt und Gebiete, in denen das Pfandsystem eingeführt wird stehen
-        noch nicht fest. Für die Herausgabe von Einweggebinden stellt das
-        Bezirksamt entsprechende Pfandrollen zur Verfügung, die erst nach
-        Herausgabe der Kartons / Becher samt Vereinnahmung des Pfandes erstattet
-        werden müssen. Darüber hinaus entstehen den Gastronomiebetrieben keine
-        Aufwendungen; Das Pfand wird 2€ für Pizza- und Essenskartons / Schalen,
-        sowie 1€ für Kaffeebecher betragen. Die Rückholung erfolgt unabhängig
-        von den Gastronomiebetrieben durch einen Sozialhilfeträger.
+        noch nicht fest. <br />
+        Für die Herausgabe von Einweggebinden stellt das Bezirksamt
+        entsprechende Pfandrollen zur Verfügung, die erst nach Herausgabe der
+        Kartons / Becher samt Vereinnahmung des Pfandes erstattet werden müssen.
+        Darüber hinaus entstehen den Gastronomiebetrieben keine Aufwendungen;
+        Das Pfand wird 2€ für Pizza- und Essenskartons / Schalen, sowie 1€ für
+        Kaffeebecher betragen. Die Rückholung erfolgt unabhängig von den
+        Gastronomiebetrieben durch einen Sozialhilfeträger.
       </li>
     </ul>
     <div className="checkboxFieldGroup">
