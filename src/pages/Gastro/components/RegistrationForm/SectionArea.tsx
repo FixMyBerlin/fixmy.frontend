@@ -3,6 +3,7 @@ import { Card, CardContent } from '@material-ui/core';
 import styled from 'styled-components';
 
 import AreaPicker from '~/components2/AreaPicker';
+import { usageWeekday, usageWeekend } from './utils';
 
 const InlineIcon = styled.div`
   width: 21px;
@@ -28,14 +29,6 @@ const PickerIntro = styled.div`
     margin: 2em 0;
   }
 `;
-
-// Return true if usage for the signup's category is allowed on week days
-const usageWeekday = ({ category }) =>
-  ['retail', 'workshop'].includes(category);
-
-// Return true if usage for the signup's category is allowed on weekends
-const usageWeekend = ({ category }) =>
-  ['restaurant', 'social', 'other'].includes(category);
 
 const SectionArea = ({ regulation, handleChange, signupData, values }) => (
   <>

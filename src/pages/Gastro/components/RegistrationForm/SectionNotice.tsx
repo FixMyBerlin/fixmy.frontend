@@ -3,6 +3,7 @@ import { ErrorMessage, Field } from 'formik';
 import { CheckboxWithLabel } from 'formik-material-ui';
 import { FormHelperText } from '@material-ui/core';
 import styled from 'styled-components';
+import { usageWeekday, usageWeekend } from './utils';
 
 const FormError = styled(FormHelperText)`
   && {
@@ -12,7 +13,7 @@ const FormError = styled(FormHelperText)`
   }
 `;
 
-const SectionNotice = () => (
+const SectionNotice = ({ values }) => (
   <section>
     <p>
       <strong>Bedingungen für die Nutzung der Sonderflächen</strong>
@@ -45,12 +46,16 @@ const SectionNotice = () => (
       </li>
       <li>
         Die Nutzung der Flächen des ruhenden Verkehrs ist auf{' '}
-        <strong>
-          Freitag, Samstag und Sonntag jeweils von 11 Uhr bis 22 Uhr
-        </strong>{' '}
-        begrenzt (bei Einzelhandelsbetrieben Montags - Freitag jeweils von 10
-        bis 20 Uhr). Die Flächen sind außerhalb der Nutzungszeiten zu beräumen
-        und dem ruhenden Verkehr wieder zur Verfügung zu stellen.
+        {usageWeekend(values) && (
+          <strong>
+            Freitag, Samstag und Sonntag jeweils von 11 Uhr bis 22 Uhr
+          </strong>
+        )}
+        {usageWeekday(values) && (
+          <strong>Montag bis Freitag jeweils von 10 bis 20 Uhr</strong>
+        )}{' '}
+        begrenzt. Die Flächen sind außerhalb der Nutzungszeiten zu beräumen und
+        dem ruhenden Verkehr wieder zur Verfügung zu stellen.
       </li>
       <li>
         Verpflichtung zur Einführung eines{' '}

@@ -149,7 +149,7 @@ const RegistrationForm = ({
         <SectionUsage />
         <SectionCertificate isSubmitting={isSubmitting} values={values} />
 
-        <SectionNotice />
+        <SectionNotice values={values} />
         <SectionEmail />
 
         <div className="checkboxFieldGroup">
