@@ -96,7 +96,7 @@ const SignupForm = ({ street, history }) => (
           name="tos_accepted"
           render={(msg) => <FormError error>{msg}</FormError>}
         />
-        <div className="tosFieldGroup">
+        <div className="checkboxFieldGroup">
           <Field
             component={CheckboxWithLabel}
             name="tos_accepted"

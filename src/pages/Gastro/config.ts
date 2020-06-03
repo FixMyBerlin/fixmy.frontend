@@ -6,6 +6,7 @@ const config = {
   ...globalConfig,
   gastro: {
     campaign: 'xhain',
+    email: 'info@fixmyberlin.de',
     map: {
       style: FMB_XHAIN_TERASSEN,
       bounds: [

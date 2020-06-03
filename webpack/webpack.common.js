@@ -48,6 +48,9 @@ module.exports = {
       'react-dom': '@hot-loader/react-dom'
     }
   },
+  node: {
+    fs: 'empty'
+  },
   module: {
     rules: [
       {
