@@ -38,6 +38,7 @@ export interface FormData {
   opening_hours?: string;
   agreement_accepted?: boolean | '';
   tos_accepted?: boolean | '';
+  area?: any;
 }
 /* eslint-enable camelcase */
 
@@ -54,7 +55,8 @@ const initialValues: FormData = {
   usage: '',
   certificate: null,
   agreement_accepted: '',
-  tos_accepted: ''
+  tos_accepted: '',
+  area: null
 };
 
 const FormError = styled(FormHelperText)`
@@ -90,7 +92,7 @@ const RegistrationForm = ({
 }) => (
   <Formik
     initialValues={{ ...initialValues, ...signupData }}
-    validate={validate}
+    validate={validate(regulation)}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       // @ts-ignore
       const registrationData: GastroRegistration = {
@@ -131,7 +133,7 @@ const RegistrationForm = ({
       setSubmitting(false);
     }}
   >
-    {({ isValid, values, handleChange, isSubmitting }) => (
+    {({ isValid, values, handleChange, isSubmitting, status }) => (
       <StyledForm>
         <h3>Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb:</h3>
 
@@ -198,6 +200,12 @@ const RegistrationForm = ({
         )}
 
         {isSubmitting && <LinearProgress />}
+
+        {status && (
+          <p>
+            <strong>{status}</strong>
+          </p>
+        )}
 
         <Button flat type="submit" disabled={isSubmitting}>
           Antrag absenden
