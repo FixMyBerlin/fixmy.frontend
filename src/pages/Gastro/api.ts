@@ -65,7 +65,10 @@ const uploadCertificate = async (registrationData: GastroRegistration) => {
       })}`,
       {
         body: formData,
-        headers: { 'Content-Disposition': `attachment; filename="${fileName}"` }
+        headers: {
+          'Content-Disposition': `attachment; filename="${fileName}"`
+        },
+        timeout: 60000
       }
     )
     .json();
