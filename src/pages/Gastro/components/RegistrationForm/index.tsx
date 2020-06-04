@@ -133,7 +133,7 @@ const RegistrationForm = ({
       setSubmitting(false);
     }}
   >
-    {({ isValid, values, handleChange, isSubmitting }) => (
+    {({ isValid, values, handleChange, isSubmitting, status }) => (
       <StyledForm>
         <h3>Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb:</h3>
 
@@ -200,6 +200,12 @@ const RegistrationForm = ({
         )}
 
         {isSubmitting && <LinearProgress />}
+
+        {status && (
+          <p>
+            <strong>{status}</strong>
+          </p>
+        )}
 
         <Button flat type="submit" disabled={isSubmitting}>
           Antrag absenden
