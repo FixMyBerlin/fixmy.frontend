@@ -27,6 +27,12 @@ Du findest uns auch auf [twitter](https://twitter.com/fixmyberlin) | [instagram]
 
 Sofern du Bugs oder Verbesserungsvorschläge hast, gib uns gerne [auf github.com Feedback](https://github.com/FixMyBerlin/fixmy.frontend).
 
+## Open Source
+
+Wir setzen Open Source Software ein und arbeiten für uns selbstverständlich auch Open Soruce. Unseren Quellcode unter der AGPL v3 Lizenz finden Sie unter https://github.com/FixMyBerlin/
+
+Falls Sie Interesse haben etwas beizutragen, melden Sie sich gerne. Die aktuellen Aufgaben für die Plattform finden Sie in unserem Kanban-Board: https://github.com/FixMyBerlin/fixmy.platform/projects/1
+
 ## Dienstleister
 
 Frontend & UX Beratung: Webkid GmbH, https://webkid.io/
