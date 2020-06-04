@@ -1,9 +1,11 @@
 import React from 'react';
 import { Card, CardContent } from '@material-ui/core';
+import { ErrorMessage } from 'formik';
 import styled from 'styled-components';
 
 import AreaPicker from '~/components2/AreaPicker';
 import { usageWeekday, usageWeekend } from './utils';
+import FormError from './FormError';
 
 const InlineIcon = styled.div`
   width: 21px;
@@ -98,6 +100,11 @@ const SectionArea = ({ regulation, handleChange, signupData, values }) => (
               }
             });
           }}
+        />
+
+        <ErrorMessage
+          name="area"
+          render={(msg) => <FormError error>{msg}</FormError>}
         />
 
         <Card>

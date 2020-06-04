@@ -38,6 +38,7 @@ export interface FormData {
   opening_hours?: string;
   agreement_accepted?: boolean | '';
   tos_accepted?: boolean | '';
+  area?: any;
 }
 /* eslint-enable camelcase */
 
@@ -54,7 +55,8 @@ const initialValues: FormData = {
   usage: '',
   certificate: null,
   agreement_accepted: '',
-  tos_accepted: ''
+  tos_accepted: '',
+  area: null
 };
 
 const FormError = styled(FormHelperText)`
@@ -90,7 +92,7 @@ const RegistrationForm = ({
 }) => (
   <Formik
     initialValues={{ ...initialValues, ...signupData }}
-    validate={validate}
+    validate={validate(regulation)}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       // @ts-ignore
       const registrationData: GastroRegistration = {
