@@ -2,7 +2,7 @@
 
 import { FormData } from '.';
 import logger from '~/utils/logger';
-import parseLength from './parseLength';
+import parseLength from '../../parseLength';
 
 const validate = (values: FormData) => {
   const errors: {

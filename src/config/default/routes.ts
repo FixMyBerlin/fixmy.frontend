@@ -40,6 +40,10 @@ export default {
   gastro: {
     landing: '/friedrichshain-kreuzberg/terrassen',
     signup: '/friedrichshain-kreuzberg/terrassen/anmeldung',
-    thanks: '/friedrichshain-kreuzberg/terrassen/danke'
+    thanks: '/friedrichshain-kreuzberg/terrassen/danke',
+    registration:
+      '/friedrichshain-kreuzberg/terrassen/registrierung/:id/:accessKey',
+    registrationThanks:
+      '/friedrichshain-kreuzberg/terrassen/registrierung/danke'
   }
 };
