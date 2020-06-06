@@ -1,6 +1,5 @@
-const path = require('path');
 require('dotenv').config();
-
+const testWhiteList = require('../../cypressWhiteList');
 
 const wp = require('@cypress/webpack-preprocessor');
 const webpackOptions = require('../../webpack/webpack.config.dev.js');
@@ -19,12 +18,10 @@ const setAutoDevTools = (args) => args.push('--auto-open-devtools-for-tabs');
 // would run cypress tests with a window of size 1920x1080 with its upper left
 // corner at 1920,0 on the monitor.
 const setWindowPos = (args) => {
-  const {cypressBrowserWindow} = process.env;
+  const { cypressBrowserWindow } = process.env;
   if (cypressBrowserWindow == null) return;
 
-  const [windowSize, windowPosition] = cypressBrowserWindow.split(
-    ';'
-  );
+  const [windowSize, windowPosition] = cypressBrowserWindow.split(';');
   args.push(
     '--user-data-dir="~/chrome-test-user"',
     `--window-size=${windowSize}`,
@@ -33,13 +30,9 @@ const setWindowPos = (args) => {
 };
 
 module.exports = (on, config) => {
-  // exclude certain e2e tests depending on city config using `ignoreTestFiles`
-  const testPoolOverrides = {};
-  const cityConfig = process.env.region;
-  if (cityConfig === 'bonn') {
-    const ignoredPages = ['Map', 'KatasterKI'];
-    testPoolOverrides.ignoreTestFiles = `**/{${ignoredPages.join()}}/**/*.e2e.test.js`;
-  }
+  // only include certain tests
+  const testFilesToUse = getTestPool();
+  const testPoolOverrides = { testFiles: testFilesToUse };
 
   // modify the way browsers are launched,
   // see https://docs.cypress.io/api/plugins/browser-launch-api.html#Usage
@@ -61,3 +54,25 @@ module.exports = (on, config) => {
     ...testPoolOverrides
   };
 };
+
+/**
+ * Ge configured tests for city config by invoking an internal whitelist configuration.
+ * @returns string[] A list of file paths
+ */
+function getTestPool() {
+  const cityConfig = process.env.region;
+  const testFilesToUse = testWhiteList.getTestWhitelistForCityConfig(
+    cityConfig
+  );
+  // log test pool
+  let logMsg = cityConfig
+    ? `Found city config ${cityConfig}. `
+    : 'No city config found. ';
+  logMsg += `Using the following tests: ${JSON.stringify(
+    testFilesToUse,
+    null,
+    '\t'
+  )}`;
+  console.info(logMsg);
+  return testFilesToUse;
+}

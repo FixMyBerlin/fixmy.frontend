@@ -17,13 +17,18 @@ Before starting with the FAQ, here is a short link list about the topic.
 
 # FAQ
 
-## 1. How can I get started? Is there some kind of High Level introduction article?
+## 1. Is there any special cypress setup I should know about?
+
+Yep, besides a `cypress.json`, there is another file that configures how cypress runs within FMB: 
+`<repository root>/cypressWhiteList.js` determines which files will run. Any new e2e tests have to be registered here.
+
+## 2. How can I get started? Is there some kind of High Level introduction article?
 
 Yep, checkout [Der Softwerker: Frontend Spezial by CodeCentric](https://info.codecentric.de/softwerker-frontend-spezial).
 The german article "Cypress und Redux" from Enno Lohmann explains the basics of Cypress (how to reference and interact
 with elements and more) and how it can be used in a Redux-driven app. As of now it is my primary source besides the Cypress docs.
 
-## 2. Redux integration: How can I manipulate the store to put the app in a certain state before I can interact with the UI to test it?
+## 3. Redux integration: How can I manipulate the store to put the app in a certain state before I can interact with the UI to test it?
 
 It is an anti-pattern to set the app in a certain, testable state just by changing routes and simulating user interactions.
 In a redux-based app, the store can be mainpulated directly to configure the app with the desired state before tests are run.
@@ -77,7 +82,7 @@ cy.visit('/', {
 });
 ```
 
-## 3. A test fails. How can I debug it?
+## 4. A test fails. How can I debug it?
 
 The following way worked for me, there surely are smarter ways.
 
@@ -85,7 +90,7 @@ The following way worked for me, there surely are smarter ways.
 2. Start the dev server, then run `npm run cypress -- run --browser chrome` in another console / run window
    This will launch chrome with open dev tools which should stop at the entered break point.
 
-## 4. I don't like where Cypress opens the Chrome browser window. Can I change it?
+## 5. I don't like where Cypress opens the Chrome browser window. Can I change it?
 
 Yes, you can use the environment variable `CYPRESS_BROWSER_WINDOW` to control the
 position and size of the window. For example with
