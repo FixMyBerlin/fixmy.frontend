@@ -1,6 +1,6 @@
 const path = require('path');
+require('dotenv').config();
 
-const env = require('../../env.js');
 
 const wp = require('@cypress/webpack-preprocessor');
 const webpackOptions = require('../../webpack/webpack.config.dev.js');
@@ -19,9 +19,10 @@ const setAutoDevTools = (args) => args.push('--auto-open-devtools-for-tabs');
 // would run cypress tests with a window of size 1920x1080 with its upper left
 // corner at 1920,0 on the monitor.
 const setWindowPos = (args) => {
-  if (env.cypressBrowserWindow == null) return;
+  const {cypressBrowserWindow} = process.env;
+  if (cypressBrowserWindow == null) return;
 
-  const [windowSize, windowPosition] = env.cypressBrowserWindow.split(
+  const [windowSize, windowPosition] = cypressBrowserWindow.split(
     ';'
   );
   args.push(
@@ -34,7 +35,7 @@ const setWindowPos = (args) => {
 module.exports = (on, config) => {
   // exclude certain e2e tests depending on city config using `ignoreTestFiles`
   const testPoolOverrides = {};
-  const cityConfig = env.region;
+  const cityConfig = process.env.region;
   if (cityConfig === 'bonn') {
     const ignoredPages = ['Map', 'KatasterKI'];
     testPoolOverrides.ignoreTestFiles = `**/{${ignoredPages.join()}}/**/*.e2e.test.js`;
