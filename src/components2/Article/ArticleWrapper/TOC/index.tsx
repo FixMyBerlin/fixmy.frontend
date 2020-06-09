@@ -26,7 +26,7 @@ const TOCHeaderArticle = styled(Heading)`
   `}
 `;
 
-function TOC({ entries, activeIndex }) {
+function TOC({ entries, activeIndex, hasActiveState = false }) {
   const tocChildren = React.Children.toArray(entries).filter(
     (child: ReactElement) => child.props.toc
   );
@@ -38,7 +38,7 @@ function TOC({ entries, activeIndex }) {
         <Entry
           entry={entry}
           key={`tocentry__${entry.props.toc}`}
-          active={activeIndex === index}
+          active={hasActiveState && activeIndex === index}
           index={index}
         />
       ))}

@@ -7,6 +7,7 @@ import defaultBgPattern from './bg-pattern.png';
 import TOC from './TOC';
 import MenuButton from '~/components2/MenuButton';
 import { media, breakpoints } from '~/styles/utils';
+import config from '~/config';
 
 interface PageProps {
   bgPattern?: string;
@@ -30,6 +31,7 @@ const ContentWrapperOuter = styled.div`
 const ContentWrapper = styled.div`
   padding: 0 16px 12px 16px;
   background: white;
+  color: ${config.colors.darkbg};
 
   @media screen and (min-width: 800px) {
     box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.08);
@@ -41,13 +43,16 @@ const ContentWrapper = styled.div`
 export default function SinglePageWrapper({
   bgPattern = defaultBgPattern,
   hasToc = false,
+  tocHasActiveState = false,
   className = null,
   children
 }) {
   const [renderTocInsideArticle, setRenderTocInsideArticle] = useState(
     window.innerWidth < breakpoints.xl
   );
-  const [activeTocIndex, setActiveTocIndex] = useState(0);
+  const [activeTocIndex, setActiveTocIndex] = useState(
+    tocHasActiveState ? 0 : null
+  );
 
   useEffect(() => {
     const onResize = () => {
@@ -62,7 +67,7 @@ export default function SinglePageWrapper({
   }, []);
 
   const onViewChange = (inView, entry, index) => {
-    if (!inView) {
+    if (!inView || !tocHasActiveState) {
       return null;
     }
 
@@ -78,7 +83,11 @@ export default function SinglePageWrapper({
       <MenuButton />
       <ContentWrapperOuter>
         {hasToc && !renderTocInsideArticle && (
-          <TOC entries={children} activeIndex={activeTocIndex} />
+          <TOC
+            entries={children}
+            activeIndex={activeTocIndex}
+            hasActiveState={tocHasActiveState}
+          />
         )}
         <ContentWrapper>
           {React.Children.map(children, (child) => {
@@ -92,7 +101,11 @@ export default function SinglePageWrapper({
                 <>
                   {child}
                   {appendToc && (
-                    <TOC entries={children} activeIndex={activeTocIndex} />
+                    <TOC
+                      entries={children}
+                      activeIndex={activeTocIndex}
+                      hasActiveState={tocHasActiveState}
+                    />
                   )}
                 </>
               );
