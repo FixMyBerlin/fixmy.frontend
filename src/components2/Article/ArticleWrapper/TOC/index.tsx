@@ -4,20 +4,22 @@ import styled from 'styled-components';
 import { media } from '~/styles/utils';
 import Entry from './Entry';
 import Heading from '../../Heading';
+import config from '~/config';
 
 const TOCWrapper = styled.div`
   max-width: 520px;
   margin: 25px auto;
   font-size: 16px;
+  color: ${config.colors.darkbg};
 
   ${media.xl`
     position: sticky;
     transform: translate(-135px, 25px);
     top: 25px;
     height: 0;
-    width: 125px;
+    width: 135px;
     margin: 0;
-  `}
+  `};
 `;
 
 const TOCHeaderArticle = styled(Heading)`
