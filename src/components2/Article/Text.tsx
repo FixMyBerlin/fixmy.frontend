@@ -7,6 +7,7 @@ const Text = styled.p`
   margin: 1em auto;
   line-height: 1.5;
   max-width: 520px;
+  color: ${config.colors.darkbg};
 `;
 
 export default Text;

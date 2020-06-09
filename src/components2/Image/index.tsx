@@ -29,6 +29,13 @@ const Img = styled.img`
   width: 100%;
 `;
 
+const SingleImg = styled.img`
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  display: block;
+`;
+
 export const MultiImage = ({ sources }) => {
   return (
     <ImageWrapper>
@@ -41,4 +48,4 @@ export const MultiImage = ({ sources }) => {
   );
 };
 
-export const Image = ({ source }) => <MultiImage sources={[source]} />;
+export const Image = ({ source }) => <SingleImg src={source} />;
