@@ -92,6 +92,7 @@ const SectionArea = ({ regulation, handleChange, signupData, values }) => (
 
         <AreaPicker
           center={signupData?.geometry?.coordinates}
+          initialGeometry={values.area}
           onSelect={(value) => {
             handleChange({
               target: {

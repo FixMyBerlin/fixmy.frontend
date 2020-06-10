@@ -21,10 +21,11 @@ const GoodJob = styled.p`
   font-weight: bold;
 `;
 
-const AreaPicker = ({ center, onSelect }) => {
+const AreaPicker = ({ center, onSelect, initialGeometry }) => {
   // Mapbox-GL.js map instance
   const [map, setMap] = useState(null);
   const [hasGeometry, setHasGeometry] = useState(false);
+  const [initialValue] = useState(initialGeometry);
 
   useEffect(() => {
     if (map == null) return;
@@ -48,6 +49,10 @@ const AreaPicker = ({ center, onSelect }) => {
     map.on('draw.create', handleUpdate);
     map.on('draw.update', handleUpdate);
     map.on('draw.delete', () => onSelect(null));
+
+    if (initialValue) {
+      draw.add(initialValue);
+    }
   }, [map]);
 
   return (
