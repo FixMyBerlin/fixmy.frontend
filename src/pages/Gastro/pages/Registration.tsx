@@ -42,7 +42,11 @@ const process = (signupData) => ({
 
 // Return true if the application is locked because it has already been handled
 const isLocked = ({ status }) =>
-  ['application_accepted', 'application_rejected'].includes(status);
+  [
+    'application_accepted',
+    'application_rejected',
+    'application_verification'
+  ].includes(status);
 
 const Registration = ({
   match: {
