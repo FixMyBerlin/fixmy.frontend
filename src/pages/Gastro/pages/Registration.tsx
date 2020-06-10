@@ -40,6 +40,10 @@ const process = (signupData) => ({
   shopfront_length: (0.01 * signupData.shopfront_length).toString()
 });
 
+// Return true if the application is locked because it has already been handled
+const isLocked = ({ status }) =>
+  ['application_accepted', 'application_rejected'].includes(status);
+
 const Registration = ({
   match: {
     params: { id, accessKey }
@@ -60,6 +64,11 @@ const Registration = ({
       try {
         result = await api.get(id, accessKey);
         result = process(result);
+
+        if (isLocked(result)) {
+          setSubmission(result);
+        }
+
         setRegulation(regulations[result.regulation]);
         setSignupData(result);
       } catch (e) {
