@@ -4,7 +4,7 @@ import { ErrorMessage } from 'formik';
 import styled from 'styled-components';
 
 import AreaPicker from '~/components2/AreaPicker';
-import { usageWeekday, usageWeekend } from './utils';
+import { usageWeekday, usageWeekend, requiresArea } from './utils';
 import FormError from './FormError';
 
 const InlineIcon = styled.div`
@@ -34,7 +34,7 @@ const PickerIntro = styled.div`
 
 const SectionArea = ({ regulation, handleChange, signupData, values }) => (
   <>
-    {regulation && regulation.zone === 'Parkplatz' && (
+    {requiresArea(regulation.zone) && (
       <section>
         <p>
           Für Ihren Betrieb / Verein kann grundsätzlich eine
@@ -140,7 +140,7 @@ const SectionArea = ({ regulation, handleChange, signupData, values }) => (
       </section>
     )}
 
-    {regulation && regulation.zone !== 'Parkplatz' && (
+    {!requiresArea(regulation.zone) && (
       <section>
         <p>
           <strong>

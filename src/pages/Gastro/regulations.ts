@@ -8,7 +8,12 @@ const regulations = {
   6: { zone: '3', street: 'Gabriel-Max-Straße', from: '15', to: '21' },
   7: { zone: '4', street: 'Krossener Straße', from: '11', to: '21' },
   8: { zone: '6', street: 'Grünberger Straße', from: '73', to: '79' },
-  9: { zone: '7', street: 'Samariterstraße', from: '34a', to: '37' }
+  9: { zone: '7', street: 'Samariterstraße', from: '34a', to: '37' },
+  10: { zone: 'Gehweg', street: null, from: null, to: null },
+  11: { zone: 'Parken längs', street: null, from: null, to: null },
+  12: { zone: 'Parken quer', street: null, from: null, to: null },
+  13: { zone: 'Parken diagonal', street: null, from: null, to: null },
+  14: { zone: 'Sonstige', street: null, from: null, to: null }
 };
 
 export default regulations;

@@ -3,6 +3,7 @@
 import { FormData } from '.';
 import logger from '~/utils/logger';
 import parseLength from '../../parseLength';
+import { requiresArea } from './utils';
 
 const validate = (regulation) => {
   return (values: FormData) => {
@@ -42,7 +43,7 @@ const validate = (regulation) => {
         'Bitte geben Sie die Länge der Ladenfront in Metern an';
     }
 
-    if (regulation?.zone === 'Parkplatz') {
+    if (requiresArea(regulation?.zone)) {
       if (!values.area) {
         errors.area =
           'Bitte zeichnen Sie die gewünschte Sondernutzungsfläche ein';
