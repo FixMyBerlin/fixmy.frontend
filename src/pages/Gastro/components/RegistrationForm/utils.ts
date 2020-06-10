@@ -6,4 +6,20 @@ const usageWeekday = ({ category }) =>
 const usageWeekend = ({ category }) =>
   ['restaurant', 'social', 'other'].includes(category);
 
-export { usageWeekday, usageWeekend };
+/**
+ * Return true if the given regulation requires applications to
+ * draw a requested area for their application
+ *
+ * @param zone Text description of a regulation
+ */
+const requiresArea = (zone: string) =>
+  [
+    'Parkplatz',
+    'Gehweg',
+    'Parken längs',
+    'Parken quer',
+    'Parken diagonal',
+    'Sonstige'
+  ].includes(zone);
+
+export { usageWeekday, usageWeekend, requiresArea };
