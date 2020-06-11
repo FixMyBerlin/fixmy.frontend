@@ -16,50 +16,261 @@ Die Gastro-App implementiert einen Prozess zur Vereinbarung der Nutzung von
 
 ## User Stories
 
-### A: Anmeldung von Interesse
+### Anmeldung von Interesse
 
-| ID  | User-Story                                                                                        | Tickets |
-| --- | ------------------------------------------------------------------------------------------------- | ------- |
-| A01 | Als Betreiber:in kann ich mich auf der Webseite über die Rahmenbedingungen der Aktion erkundigen. |
-| A02 | Als Betreiber:in kann ich mich für eine Interessensbekundung anmelden                             |
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User-Story</th>
+      <th>Kriterien</th>
+      <th>Umsetzung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>A01</td>
+      <td>
+        Als Betreiber:in kann ich mich auf der Webseite über die
+        Rahmenbedingungen der Aktion erkundigen.
+      </td>
+      <td></td>
+      <td>Abgeschlossen</td>
+    </tr>
+    <tr>
+      <td>A02</td>
+      <td>
+        Als Betreiber:in kann ich mich für eine Interessensbekundung anmelden
+      </td>
+      <td></td>
+      <td>Abgeschlossen</td>
+    </tr>
+  </tbody>
+</table>
 
-### B: Prüfung von Interessensbekundung
+### Prüfung von Interessensbekundung
 
-| ID  | User-Story                                                                                                                                                                             | Tickets                                                         |
-| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| B01 | Als Verwaltungsmitarbeiter:in kann ich die eingegangenen Interessensbekundungen in einer Tabellenkalkulations- oder GIS-Anwendung betrachten, um angemessene Regelpläne zu entwickeln. |
-| B02 | Als Verwaltungsmitarbeiter:in möchte ich Interessensbekundungen einem von mehreren Regelplänen zuordnen um die benötigten Informationen zur weiteren Bearbeitung zu definieren         | [361](https://github.com/FixMyBerlin/fixmy.platform/issues/361) |
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User-Story</th>
+      <th>Kriterien</th>
+      <th>Umsetzung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>B01</td>
+      <td>
+        Als Verwaltungsmitarbeiter:in kann ich die eingegangenen
+        Interessensbekundungen in einer Tabellenkalkulations- oder GIS-Anwendung
+        betrachten, um angemessene Regelpläne zu entwickeln.
+      </td>
+      <td></td>
+      <td>Abgeschlossen</td>
+    </tr>
+    <tr>
+      <td>B02</td>
+      <td>
+        Als Verwaltungsmitarbeiter:in möchte ich Interessensbekundungen einem
+        von mehreren Regelplänen zuordnen um die benötigten Informationen zur
+        weiteren Bearbeitung zu definieren
+      </td>
+      <td></td>
+      <td>Abgeschlossen</td>
+    </tr>
+  </tbody>
+</table>
 
-### C: Beantragung
+### Beantragung
 
-| ID  | User-Story                                                                                                                                                       | Tickets                                                         |
-| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| C01 | Als Betreiber:in möchte ich nach Zuordnung zu einem Regelplan eine Benachrichtigung erhalten, die Anweisungen enthält, wie ich meine Daten vervollständigen kann | [361](https://github.com/FixMyBerlin/fixmy.platform/issues/361) |
-| C02 | Als Betreiber:in möchte ich meine Daten für eine ordentliche Beantragung vervollständigen können                                                                 | [361](https://github.com/FixMyBerlin/fixmy.platform/issues/361) |
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User-Story</th>
+      <th>Kriterien</th>
+      <th>Umsetzung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>C01</td>
+      <td>
+        Als Betreiber:in möchte ich nach Zuordnung zu einem Regelplan eine
+        Benachrichtigung erhalten, die Anweisungen enthält, wie ich meine Daten
+        vervollständigen kann
+      </td>
+      <td></td>
+      <td>Abgeschlossen</td>
+    </tr>
+    <tr>
+      <td>C02</td>
+      <td>
+        Als Betreiber:in möchte ich meine Daten für eine ordentliche Beantragung
+        vervollständigen können
+      </td>
+      <td></td>
+      <td>Teilweise abgeschlossen</td>
+    </tr>
+  </tbody>
+</table>
 
-### D: Prüfung von Anträgen
+### Prüfung von Anträgen
 
-| ID  | User-Story                                                                                                                                                                                       | Tickets                                                         |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- |
-| D01 | Als Verwaltungsmitarbeiter:in möchte ich eingegangene Anträge einsehen können, so dass ich sie auf Vollständigkeit und Korrektheit prüfen kann                                                   | [361](https://github.com/FixMyBerlin/fixmy.platform/issues/361) |
-| D02 | Als Verwaltungsmitarbeiter:in möchte ich Korrekturen an Anträgen vornehmen können, so dass diese allen Anforderungen entsprechen                                                                 | [361](https://github.com/FixMyBerlin/fixmy.platform/issues/361) |
-| D03 | Als Verwaltungsmitarbeiter:in möchte ich vollständige Anträge bewilligen können                                                                                                                  | [361](https://github.com/FixMyBerlin/fixmy.platform/issues/361) |
-| D04 | Als Verwaltungsmitarbeiter:in möchte ich ungültige Anträge ablehnen können                                                                                                                       | [361](https://github.com/FixMyBerlin/fixmy.platform/issues/361) |
-| D05 | Als Verwaltungsmitarbeiter:in möchte ich unvollständige Anträge als solche markieren können, so dass die Antragsteller:innen diese vervollständigen können                                       |
-| D06 | Als Verwaltungsmitarbeiter:in möchte ich ungewöhnliche Anträge als solche markieren können, so dass die Antragsteller:innen über eine außergewöhnliche Bearbeitungszeit informiert werden können |
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User-Story</th>
+      <th>Kriterien</th>
+      <th>Umsetzung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>D01</td>
+      <td>
+        Als Verwaltungsmitarbeiter:in möchte ich eingegangene Anträge einsehen
+        können, so dass ich sie auf Vollständigkeit und Korrektheit prüfen kann
+      </td>
+      <td>
+        <ul>
+            <li>
+                Alle Datenfelder der Anträge werden im Django-Admin akkurat 
+                dargestellt
+            </li>
+        </ul>
+      </td>
+      <td>Abgeschlossen</td>
+    </tr>
+    <tr>
+      <td>D02</td>
+      <td>
+        Als Verwaltungsmitarbeiter:in möchte ich Korrekturen an Anträgen
+        vornehmen können, so dass diese allen Anforderungen entsprechen
+      </td>
+      <td>
+        <ul>
+            <li>
+                Alle Datenfelder der Anträge können im Django-Admin bearbeitet 
+                werden
+            </li>
+        </ul>
+      </td>
+      <td>Abgeschlossen</td>
+    </tr>
+    <tr>
+      <td>D03</td>
+      <td>
+        Als Verwaltungsmitarbeiter:in möchte ich vollständige Anträge bewilligen
+        können
+      </td>
+      <td>
+        <ul>
+            <li>
+                Anträge können im Django-Admin mit einem Status "bewillig" 
+                versehen werden
+            </li>
+        </ul>
+      </td>
+      <td>Abgeschlossen</td>
+    </tr>
+    <tr>
+      <td>D04</td>
+      <td>
+        Als Verwaltungsmitarbeiter:in möchte ich ungültige Anträge ablehnen
+        können
+      </td>
+      <td>
+        <ul>
+            <li>
+                Anträge können im Django-Admin mit einem Status "abgelehnt" 
+                versehen werden
+            </li>
+        </ul>
+      </td>
+      <td>Abgeschlossen</td>
+    </tr>
+    <tr>
+      <td>D05</td>
+      <td>
+        Als Verwaltungsmitarbeiter:in möchte ich unvollständige Anträge als
+        solche markieren können, so dass die Antragsteller:innen diese
+        vervollständigen können
+      </td>
+      <td></td>
+      <td>Optional</td>
+    </tr>
+    <tr>
+      <td>D06</td>
+      <td>
+        Als Verwaltungsmitarbeiter:in möchte ich ungewöhnliche Anträge als
+        solche markieren können, so dass die Antragsteller:innen über eine
+        außergewöhnliche Bearbeitungszeit informiert werden können
+      </td>
+      <td></td>
+      <td>Optional</td>
+    </tr>
+  </tbody>
+</table>
 
-### E: Kommunikation von bewilligten Anträgen
+### Kommunikation von bewilligten Anträgen
 
-| ID  | User-Story                                                                                                                                                                              | Tickets |
-| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| E01 | Als Verwaltungsmitarbeiter:in möchte ich den Versand einer E-Mail-Benachrichtigung an Antragsteller auslösen können, so dass diese über die Bewilligung eines Antrags informiert werden |
-| E02 | Als Anwohner:in möchte ich mich über eine öffentlich einsehbare Internetseite über die eingerichteten Verkaufsflachen informieren können                                                |
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>User-Story</th>
+      <th>Kriterien</th>
+      <th>Umsetzung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>E01</td>
+      <td>
+        Als Verwaltungsmitarbeiter:in möchte ich den Versand einer
+        E-Mail-Benachrichtigung an Antragsteller auslösen können, so dass diese
+        über die Bewilligung eines Antrags informiert werden
+      </td>
+      <td>
+        <ul>
+            <li>
+                Es gibt ein Django-Kommando um Antragsteller:innen über die 
+                Bewilligung Ihres Antrags zu informieren
+            </li>
+            <li>
+                Der Inhalt der E-Mail wird abhängig von Regulation und 
+                Bewilligungsstatus zusammengestellt
+            </li>
+            <li>
+                Die E-Mail-Benachrichtigung enthält einen Link zu einer 
+                öffentlich einsehbaren Karte der bewilligten Nutzungsfläche
+            </li>
+        </ul>
+      </td>
+      <td>In Umsetzung</td>
+    </tr>
+    <tr>
+      <td>E02</td>
+      <td>
+        Als Anwohner:in möchte ich mich über eine öffentlich einsehbare
+        Internetseite über die eingerichteten Verkaufsflachen informieren können
+      </td>
+      <td>
+      </td>
+      <td>Screendesign</td>
+    </tr>
+  </tbody>
+</table>
 
-### F: Zurückziehen von Anträgen
+### Zurückziehen von Anträgen
 
-### G: Reichweitenmessung
+### Reichweitenmessung
 
-### H: Abwicklung
+### Abwicklung
 
 ## Datenmodelle
 
