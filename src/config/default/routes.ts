@@ -44,6 +44,11 @@ export default {
     registration:
       '/friedrichshain-kreuzberg/terrassen/registrierung/:id/:accessKey',
     registrationThanks:
-      '/friedrichshain-kreuzberg/terrassen/registrierung/danke'
+      '/friedrichshain-kreuzberg/terrassen/registrierung/danke',
+    directory: '/friedrichshain-kreuzberg/terrassen/verzeichnis/',
+    directoryEntry: '/friedrichshain-kreuzberg/terrassen/verzeichnis/:id',
+    permit: '/friedrichshain-kreuzberg/terrassen/verzeichnis/:id/genehmigung',
+    trafficOrder:
+      '/friedrichshain-kreuzberg/terrassen/verzeichnis/:id/anordnung'
   }
 };
