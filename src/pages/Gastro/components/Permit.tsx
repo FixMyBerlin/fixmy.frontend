@@ -131,6 +131,9 @@ const Permit = ({ application }) => {
       break;
   }
 
+  if (application.status !== 'application_accepted')
+    return <p>Dieser Antrag wurde bisher nicht bewilligt.</p>;
+
   return (
     <PermitContainer>
       <h1>Bezirksamt Friedrichshain-Kreuzberg von Berlin</h1>
