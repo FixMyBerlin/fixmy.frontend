@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { usageWeekday, usageWeekend } from './RegistrationForm/utils';
-import Map from '~/components2/Map';
-import config from '~/pages/Gastro/config';
+import { usageWeekday, usageWeekend, getCategoryDescription } from '../utils';
+import AreaMap from '~/pages/Gastro/components/AreaMap';
 
 const PermitContainer = styled.section`
   @media print {
@@ -70,66 +69,8 @@ const Headline = styled.div`
   }
 `;
 
-const StyledMap = styled(Map)`
-  width: 100%;
-  height: 30em;
-  margin: 1em 0;
-`;
-
-const AreaMap = ({ application }) => {
-  const { regulation, geometry, area } = application;
-  const addAreaLayer = (map) => {
-    map.addSource('usageArea', {
-      type: 'geojson',
-      data: {
-        type: 'Feature',
-        geometry: area
-      }
-    });
-    map.addLayer({
-      id: 'usageArea',
-      type: 'fill',
-      source: 'usageArea',
-      layout: {},
-      paint: {
-        'fill-color': config.colors.change_4,
-        'fill-opacity': 0.8
-      }
-    });
-    map.setCenter(geometry?.coordinates);
-    map.setZoom(18);
-  };
-
-  return (
-    <StyledMap
-      onInit={addAreaLayer}
-      style={config.gastro.map.style}
-      bounds={config.gastro.map.bounds}
-      dragPan={false}
-      scrollZoom={false}
-      doubleClickZoom={false}
-      touchZoomRotate={false}
-    />
-  );
-};
-
 const Permit = ({ application }) => {
-  let categoryDescription = null;
-  switch (application.category) {
-    case 'restaurant':
-      categoryDescription =
-        'Herausstellen von Tischen & Stühlen für Schankzwecke';
-      break;
-    case 'retail':
-      categoryDescription = 'Herausstellen von Waren';
-      break;
-    case 'workshop':
-      categoryDescription = 'Ausführen von Dienstleistungen';
-      break;
-    default:
-      categoryDescription = application.usage;
-      break;
-  }
+  const categoryDescription = getCategoryDescription(application);
 
   if (application.status !== 'application_accepted')
     return <p>Dieser Antrag wurde bisher nicht bewilligt.</p>;

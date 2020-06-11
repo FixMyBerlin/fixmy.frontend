@@ -2,26 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 
-import config from '~/pages/Gastro/config';
-import Loader from '~/components/PageLoading';
 import Header from '../components/Header';
 import api from '../api';
-import { setError } from '~/pages/Map/MapState';
+import TrafficOrder from '../components/TrafficOrder';
 
-const PermitWrapper = styled.article`
-  border-bottom: 2px dashed ${config.colors.lightgrey};
-  margin-bottom: 2em;
-
-  &:last-child {
-    border-bottom: none;
-  }
-
-  h1 {
-    overflow-wrap: break-word;
+const NoPrint = styled.span`
+  @media print {
+    display: none;
   }
 `;
 
-const Permit = ({
+const TrafficOrderPage = ({
   match: {
     params: { id }
   }
@@ -33,7 +24,9 @@ const Permit = ({
   useEffect(() => {
     const doLoad = async () => {
       try {
-        setApplication(await api.get(id, null));
+        const resp: any = await api.get(id, null);
+        resp.application_date = '[ANTRAGSDATUM]';
+        setApplication(resp);
       } catch (e) {
         setError(e.message);
       }
@@ -43,19 +36,17 @@ const Permit = ({
   }, []);
 
   return (
-    <PermitWrapper>
-      <Header showInfoLink />
+    <>
+      <NoPrint>
+        <Header showInfoLink />
+      </NoPrint>
       <Container maxWidth="lg">
         {error && <p>Fehler: {error}</p>}
-        {isLoading && <p>Loading...</p>}
-        {!isLoading && (
-          <>
-            <h1>Anordnung</h1>
-          </>
-        )}
+        {isLoading && <p>Anordnung wird geladen...</p>}
+        {!isLoading && <TrafficOrder application={application} />}
       </Container>
-    </PermitWrapper>
+    </>
   );
 };
 
-export default Permit;
+export default TrafficOrderPage;

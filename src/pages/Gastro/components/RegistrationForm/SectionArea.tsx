@@ -4,7 +4,7 @@ import { ErrorMessage } from 'formik';
 import styled from 'styled-components';
 
 import AreaPicker from '~/components2/AreaPicker';
-import { usageWeekday, usageWeekend, requiresArea } from './utils';
+import { usageWeekday, usageWeekend, requiresArea } from '../../utils';
 import FormError from './FormError';
 
 const InlineIcon = styled.div`

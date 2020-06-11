@@ -3,11 +3,9 @@ import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 
 import config from '~/pages/Gastro/config';
-import Loader from '~/components/PageLoading';
 import Header from '../components/Header';
 import Permit from '../components/Permit';
 import api from '../api';
-import { setError } from '~/pages/Map/MapState';
 
 const PermitWrapper = styled.article`
   border-bottom: 2px dashed ${config.colors.lightgrey};
