@@ -200,10 +200,10 @@ const Permit = ({ application }) => {
             </p>
           </td>
         </tr>
-        {application.notice != null && application.notice.length > 0 && (
+        {application.note != null && application.note.length > 0 && (
           <tr>
             <td>Besondere Hinweise:</td>
-            <td>{application.notes}</td>
+            <td>{application.note}</td>
           </tr>
         )}
       </table>
