@@ -1,4 +1,4 @@
-import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
+import AutocompleteGeocoder from '..';
 import React from 'react';
 import { render, fireEvent, act } from '@testing-library/react';
 
@@ -34,16 +34,16 @@ describe('<AutoCompleteGeocoder />', () => {
     };
   };
 
-  // just to get started. probably to be removed, since this tests the html input element,
-  // which is kind of unnecessary
   it('invokes callbacks when being focused / blurred', () => {
-    const { initProps, container, baseElement } = setup();
+    const { initProps, container } = setup();
     expect(initProps.onInputFocus).toHaveBeenCalledTimes(0);
     expect(initProps.onInputBlur).toHaveBeenCalledTimes(0);
     const input = container.querySelector('input');
+    // focus input
     act(() => input.focus()); // await DOM processing, see https://github.com/testing-library/react-testing-library/issues/276#issuecomment-473392827
     expect(initProps.onInputFocus).toHaveBeenCalledTimes(1);
-    act(() => baseElement.focus()); // FIXME: this fails
+    // loose focus on input
+    fireEvent.blur(input);
     expect(initProps.onInputBlur).toHaveBeenCalledTimes(1);
   });
   it('shows a list of addresses for a given search string', () => {
