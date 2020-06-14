@@ -81,7 +81,7 @@
     "fetch-mock": "^7.7.3",
     "file-loader": "^5.1.0",
     "html-webpack-plugin": "^4.0.4",
-    "jest": "^24.9.0",
+    "jest": "^25.4.0",
     "mini-css-extract-plugin": "^0.8.2",
     "msw": "^0.19.3",
     "node-fetch": "^2.6.0",
