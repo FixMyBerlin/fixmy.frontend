@@ -1,4 +1,5 @@
 import React from 'react';
+import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import Map from '~/components2/Map';
 import config from '~/pages/Gastro/config';
@@ -30,7 +31,13 @@ const AreaMap = ({ application, printable = false }) => {
       }
     });
     map.setCenter(geometry?.coordinates);
-    map.setZoom(18);
+
+    const bounds = area.coordinates[0].reduce(
+      (b: MapboxGL.LngLatBounds, coords: [number, number]) => b.extend(coords),
+      new MapboxGL.LngLatBounds(area.coordinates[0][0], area.coordinates[0][0])
+    );
+
+    map.fitBounds(bounds, { padding: 20, maxZoom: 17.5, linear: true });
   };
 
   return (
