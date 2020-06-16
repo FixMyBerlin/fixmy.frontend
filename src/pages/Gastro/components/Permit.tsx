@@ -1,7 +1,14 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import styled from 'styled-components';
-import { usageWeekday, usageWeekend, getCategoryDescription } from '../utils';
+import {
+  usageWeekday,
+  usageWeekend,
+  getCategoryDescription,
+  dateReceived,
+  isBoardwalk,
+  dateDecided
+} from '../utils';
 import AreaMap from '~/pages/Gastro/components/AreaMap';
 
 const PermitContainer = styled.section`
@@ -30,6 +37,11 @@ const PermitContainer = styled.section`
   p {
     font-size: 12px;
     line-height: 16px;
+  }
+
+  p.address {
+    font-size: 16px;
+    margin-bottom: 1em;
   }
 
   @media print {
@@ -80,14 +92,6 @@ const Headline = styled.div`
   }
 `;
 
-const dateReceived = ({ application_received }) =>
-  new Date(application_received).toLocaleDateString('de-DE');
-
-const dateDecided = ({ application_decided }) =>
-  new Date(application_decided).toLocaleDateString('de-DE');
-
-const isBoardwalk = ({ regulation }) => regulation === 10;
-
 const Permit = ({ application }) => {
   const categoryDescription = getCategoryDescription(application);
 
@@ -105,7 +109,7 @@ const Permit = ({ application }) => {
 
       <h3>Ausnahmegenehmigung nach der Straßenverkehrs-Ordnung</h3>
 
-      <p style={{ marginBottom: '1em' }}>
+      <p className="address">
         {application.shop_name}, {application.address}
       </p>
 

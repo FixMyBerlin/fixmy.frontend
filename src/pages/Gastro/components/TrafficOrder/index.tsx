@@ -6,16 +6,24 @@ import AreaMap from '../AreaMap';
 import {
   usageWeekday,
   usageWeekend,
-  getCategoryDescription
+  getCategoryDescription,
+  dateReceived
 } from '../../utils';
 
-const getSetupTimerangeEnd = (application) =>
-  '[Datum der Bewilligung + 3 Tage]';
+// eslint-disable-next-line camelcase
+const getSetupTimerangeEnd = ({ application_decided }) => {
+  const date = new Date(application_decided);
+  date.setDate(date.getDate() + 3);
+  return date.toLocaleDateString('de-DE');
+};
 
 const isParking = ({ regulation }) => regulation === 0;
 
 const TrafficOrder = ({ application }) => {
-  if (application.status !== 'application_accepted')
+  if (
+    application.status !== 'application_accepted' ||
+    application.application_decided == null
+  )
     return (
       <Container>
         <h1>Verkehrsrechtliche Anordnung</h1>
@@ -447,7 +455,7 @@ const TrafficOrder = ({ application }) => {
                 <span className="c57">Zum Antrag vom:</span>
                 <span className="c240">&nbsp;</span>
                 <span className="c201">&nbsp;</span>
-                <span className="c201">{application.application_date}</span>
+                <span className="c201">{dateReceived(application)}</span>
               </p>
               <p className="c31 c32 c248">
                 <span className="c57">Zeichen Antragsteller:</span>
@@ -674,8 +682,7 @@ const TrafficOrder = ({ application }) => {
               <p className="c93 c32">
                 <span className="c23">&nbsp;</span>
                 <span className="c23">
-                  {application.first_name} {application.last_name} (
-                  {application.phone}){' '}
+                  {application.first_name} {application.last_name}
                 </span>
               </p>
               <p className="c7">
@@ -725,7 +732,7 @@ const TrafficOrder = ({ application }) => {
             </td>
             <td className="c210" colSpan={17} rowSpan={1}>
               <p className="c93 c32">
-                {application.first_name} {application.last_name} (
+                {application.first_name} {application.last_name} (Tel:{' '}
                 {application.phone})
               </p>
             </td>
@@ -981,7 +988,7 @@ const TrafficOrder = ({ application }) => {
             </td>
             <td className="c193" colSpan={5} rowSpan={1}>
               <p className="c93 c32">
-                <span className="c2">&nbsp;</span>
+                <span className="c2">Beginn der Arbeitsstelle</span>
               </p>
             </td>
             <td className="c42" colSpan={1} rowSpan={1}>
@@ -1216,7 +1223,7 @@ const TrafficOrder = ({ application }) => {
                     <span>
                       Haltverbote: Z 283 nach VLB-Regelplan 630 mit
                       Zusatzzeichen 1042-33 StVO (zeitliche Beschr&auml;nkung)
-                    </span>
+                    </span>{' '}
                     {getSetupTimerangeEnd(application)} - 31.08.2020{' '}
                     {usageWeekend(application) && (
                       <span>Freitag-Sonntag jeweils von 11-22 Uhr. </span>
@@ -3657,515 +3664,6 @@ const TrafficOrder = ({ application }) => {
             </td>
             <td className="c26" colSpan={1} rowSpan={1}>
               <p className="c20">
-                <span className="c2" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c18">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c18 c29">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c24" colSpan={17} rowSpan={1}>
-              <p className="c18">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20">
-                <span className="c19" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c24" colSpan={17} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c19" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c162" colSpan={18} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c2" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c24" colSpan={17} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c2" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c296" colSpan={2} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c308" colSpan={2} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c236" colSpan={4} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c279" colSpan={6} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c297" colSpan={3} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c19" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c35" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c234" colSpan={8} rowSpan={1}>
-              <p className="c5">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c37" colSpan={1} rowSpan={1}>
-              <p className="c104 c32 c100">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c273" colSpan={6} rowSpan={1}>
-              <p className="c104 c32 c100">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c60" colSpan={1} rowSpan={1}>
-              <p className="c32 c100 c104">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c1" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c35" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c234" colSpan={8} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c37" colSpan={1} rowSpan={1}>
-              <p className="c104 c32 c100">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c273" colSpan={6} rowSpan={1}>
-              <p className="c104 c32 c100">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c60" colSpan={1} rowSpan={1}>
-              <p className="c104 c32 c100">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c2" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c35" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c234" colSpan={8} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c37" colSpan={1} rowSpan={1}>
-              <p className="c104 c32 c100">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c273" colSpan={6} rowSpan={1}>
-              <p className="c104 c32 c100">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c121" colSpan={1} rowSpan={1}>
-              <p className="c104 c32 c100">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c2" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c32 c29 c70">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c35" colSpan={1} rowSpan={1}>
-              <p className="c70 c32">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c287" colSpan={13} rowSpan={1}>
-              <p className="c154 c32 c100">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c253" colSpan={3} rowSpan={1}>
-              <p className="c32 c100 c154">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c87" colSpan={1} rowSpan={1}>
-              <p className="c70 c32">
-                <span className="c1" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c120" colSpan={17} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c39 c32">
-                <span className="c19">&nbsp; </span>
-              </p>
-            </td>
-            <td className="c16" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c210" colSpan={17} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c87" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c2" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c39 c32">
-                <span className="c19">&nbsp; </span>
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c334" colSpan={3} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c254" colSpan={8} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c293" colSpan={6} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c19" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c39 c32">
-                <span className="c19">&nbsp; </span>
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c65" colSpan={3} rowSpan={1}>
-              <p className="c5">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c205" colSpan={8} rowSpan={1}>
-              <p className="c5">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c249" colSpan={6} rowSpan={1}>
-              <p className="c5">
-                <span className="c1" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c1" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c65" colSpan={3} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c205" colSpan={8} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c249" colSpan={6} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c2" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c65" colSpan={3} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c205" colSpan={8} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c249" colSpan={6} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c2" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c39 c32">
-                <span className="c19">&nbsp; </span>
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c65" colSpan={3} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c205" colSpan={8} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c249" colSpan={6} rowSpan={1}>
-              <p className="c5">
-                <span className="c19" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
-                <span className="c19" />
-              </p>
-            </td>
-          </tr>
-          <tr className="c21">
-            <td className="c40" colSpan={1} rowSpan={1}>
-              <p className="c39 c32">
-                <span className="c19">&nbsp; </span>
-              </p>
-            </td>
-            <td className="c30" colSpan={1} rowSpan={1}>
-              <p className="c5 c29">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c24" colSpan={17} rowSpan={1}>
-              <p className="c5">
-                <span className="c2" />
-              </p>
-            </td>
-            <td className="c26" colSpan={1} rowSpan={1}>
-              <p className="c20 c100">
                 <span className="c2" />
               </p>
             </td>

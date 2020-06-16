@@ -24,8 +24,7 @@ const TrafficOrderPage = ({
   useEffect(() => {
     const doLoad = async () => {
       try {
-        const resp: any = await api.get(id, null);
-        resp.application_date = '[ANTRAGSDATUM]';
+        const resp = await api.get(id, null);
         setApplication(resp);
       } catch (e) {
         setError(e.message);

@@ -1,9 +1,9 @@
 // Return true if usage for the signup's category is allowed on week days
-const usageWeekday = ({ category }) =>
+export const usageWeekday = ({ category }) =>
   ['retail', 'workshop'].includes(category);
 
 // Return true if usage for the signup's category is allowed on weekends
-const usageWeekend = ({ category }) =>
+export const usageWeekend = ({ category }) =>
   ['restaurant', 'social', 'other'].includes(category);
 
 /**
@@ -12,7 +12,7 @@ const usageWeekend = ({ category }) =>
  *
  * @param zone Text description of a regulation
  */
-const requiresArea = (zone: string) =>
+export const requiresArea = (zone: string) =>
   [
     'Parkplatz',
     'Gehweg',
@@ -23,7 +23,7 @@ const requiresArea = (zone: string) =>
   ].includes(zone);
 
 /** Return a description of the category given an application */
-const getCategoryDescription = (application: any) => {
+export const getCategoryDescription = (application: any) => {
   let categoryDescription = null;
   switch (application.category) {
     case 'restaurant':
@@ -43,4 +43,12 @@ const getCategoryDescription = (application: any) => {
   return categoryDescription;
 };
 
-export { usageWeekday, usageWeekend, requiresArea, getCategoryDescription };
+// eslint-disable-next-line camelcase
+export const dateReceived = ({ application_received }) =>
+  new Date(application_received).toLocaleDateString('de-DE');
+
+// eslint-disable-next-line camelcase
+export const dateDecided = ({ application_decided }) =>
+  new Date(application_decided).toLocaleDateString('de-DE');
+
+export const isBoardwalk = ({ regulation }) => regulation === 10;
