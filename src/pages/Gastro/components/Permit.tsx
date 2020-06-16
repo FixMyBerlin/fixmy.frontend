@@ -1,29 +1,18 @@
+/* eslint-disable camelcase */
 import React from 'react';
 import styled from 'styled-components';
 import { usageWeekday, usageWeekend, getCategoryDescription } from '../utils';
 import AreaMap from '~/pages/Gastro/components/AreaMap';
 
 const PermitContainer = styled.section`
-  @media print {
-    h1 {
-      font-size: 16px;
-    }
-
-    h2,
-    h3,
-    h4 {
-      font=size: 14px;
-    }
-
-    h2 {
-      font-size: 14px !important;
-    }
-
-    font-size: 12px;
-    line-height: 14px;
+  h1 {
+    font-size: 2em;
   }
 
-  h2 {
+  h2,
+  h3,
+  h4 {
+    font-size: 1.6em;
     margin: 0;
   }
 
@@ -38,8 +27,29 @@ const PermitContainer = styled.section`
     margin: 2em 0;
   }
 
+  p {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  @media print {
+    h1 {
+      font-size: 16px !important;
+    }
+
+    h2,
+    h3,
+    h4 {
+      font-size: 14px !important;
+    }
+
+    font-size: 12px !important;
+    line-height: 14px !important;
+  }
+
   table {
     border-collapse: collapse;
+    margin-bottom: 1em;
   }
 
   table,
@@ -63,16 +73,28 @@ const PermitContainer = styled.section`
 const Headline = styled.div`
   display: flex;
   flex-direction: row;
+  margin-bottom: 1em;
 
   & span {
     width: 50%;
   }
 `;
 
+const dateReceived = ({ application_received }) =>
+  new Date(application_received).toLocaleDateString('de-DE');
+
+const dateDecided = ({ application_decided }) =>
+  new Date(application_decided).toLocaleDateString('de-DE');
+
+const isBoardwalk = ({ regulation }) => regulation === 10;
+
 const Permit = ({ application }) => {
   const categoryDescription = getCategoryDescription(application);
 
-  if (application.status !== 'application_accepted')
+  if (
+    application.status !== 'application_accepted' ||
+    application.application_decided == null
+  )
     return <p>Dieser Antrag wurde bisher nicht bewilligt.</p>;
 
   return (
@@ -83,8 +105,12 @@ const Permit = ({ application }) => {
 
       <h3>Ausnahmegenehmigung nach der Straßenverkehrs-Ordnung</h3>
 
+      <p style={{ marginBottom: '1em' }}>
+        {application.shop_name}, {application.address}
+      </p>
+
       <Headline>
-        <span>Antrag vom: ___</span>
+        <span>Antrag vom: {dateReceived(application)}</span>
         <span>
           Antrag gestellt von {application.first_name} {application.last_name}
         </span>
@@ -119,15 +145,17 @@ const Permit = ({ application }) => {
           <td>Ausmaß (maximal):</td>
           <td>
             Innerhalb der auf der untenstehenden Karte verzeichneten Fläche{' '}
-            <strong>nur im Bereich der Parkflächen</strong> und nicht über die
-            Breite der Ladenfront hinausgehend.
+            {!isBoardwalk(application) && (
+              <strong>nur im Bereich der Parkflächen</strong>
+            )}{' '}
+            und nicht über die Breite der Ladenfront hinausgehend.
             <AreaMap application={application} printable />
           </td>
         </tr>
         <tr>
           <td>Gültigkeit:</td>
           <td>
-            <p>Von ___ bis 31.8.2020 </p>
+            <p>Von {dateDecided(application)} bis 31.8.2020 </p>
             <p>
               {usageWeekday(application) && (
                 <strong>
