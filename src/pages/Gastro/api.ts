@@ -4,7 +4,7 @@ import { generatePath } from 'react-router-dom';
 import { GastroSignup, GastroRegistration } from './types';
 import config from './config';
 
-const URL_GET_SIGNUP = `/gastro/${config.gastro.campaign}/:id/:accessKey`;
+const URL_GET_SIGNUP = `/gastro/${config.gastro.campaign}/:id/:accessKey?`;
 const URL_PUT_SIGNUP = `/gastro/${config.gastro.campaign}`;
 const URL_POST_SIGNUP = `/gastro/${config.gastro.campaign}/:id/:accessKey`;
 const URL_POST_CERTIFICATE = `/gastro/${config.gastro.campaign}/certificate/:id/:accessKey`;
