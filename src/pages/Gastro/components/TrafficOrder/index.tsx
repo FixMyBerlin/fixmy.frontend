@@ -1233,7 +1233,7 @@ const TrafficOrder = ({ application }) => {
                   </span>
                 )}
               </p>
-              <AreaMap application={application} />
+              <AreaMap application={application} printable />
               <p className="c20">
                 <span className="c14 c77" />
               </p>

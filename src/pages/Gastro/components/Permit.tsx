@@ -121,7 +121,7 @@ const Permit = ({ application }) => {
             Innerhalb der auf der untenstehenden Karte verzeichneten Fläche{' '}
             <strong>nur im Bereich der Parkflächen</strong> und nicht über die
             Breite der Ladenfront hinausgehend.
-            <AreaMap application={application} />
+            <AreaMap application={application} printable />
           </td>
         </tr>
         <tr>

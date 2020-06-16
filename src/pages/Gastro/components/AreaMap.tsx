@@ -9,7 +9,7 @@ const StyledMap = styled(Map)`
   margin: 1em 0;
 `;
 
-const AreaMap = ({ application }) => {
+const AreaMap = ({ application, printable = false }) => {
   const { geometry, area } = application;
   const addAreaLayer = (map) => {
     map.addSource('usageArea', {
@@ -42,6 +42,7 @@ const AreaMap = ({ application }) => {
       scrollZoom={false}
       doubleClickZoom={false}
       touchZoomRotate={false}
+      preserveDrawingBuffer={printable === true}
     />
   );
 };
