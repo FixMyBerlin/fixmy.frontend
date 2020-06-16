@@ -45,11 +45,10 @@ const AreaMap = ({ application, printable = false }) => {
       onInit={addAreaLayer}
       style={config.gastro.map.style}
       bounds={config.gastro.map.bounds}
-      dragPan={false}
-      scrollZoom={false}
-      doubleClickZoom={false}
-      touchZoomRotate={false}
+      interactive={false}
       preserveDrawingBuffer={printable === true}
+      center={geometry?.coordinates}
+      zoom={17}
     />
   );
 };
