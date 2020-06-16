@@ -48,7 +48,7 @@ const SectionArea = ({ regulation, handleChange, signupData, values }) => (
         <ul>
           <li>
             <a
-              href="/uploads/offene-terrassen/20200527_BAFK_RP%20Sondernutzung%20Parkstreifen.pdf"
+              href="/uploads/offene-terrassen/Regelplaene_Strassenraum.pdf"
               className="internal"
               target="_blank"
             >
