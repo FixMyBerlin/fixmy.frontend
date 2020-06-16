@@ -40,7 +40,13 @@ const PermitPage = ({
       try {
         setApplication(await api.get(id, null));
       } catch (e) {
-        setError(e.message);
+        if (e.message === 'Failed to fetch') {
+          setError(
+            'Daten konnten nicht geladen werden. Bitte prüfen Sie Ihre Netzwerkverbindung und versuchen Sie es später noch einmal.'
+          );
+        } else {
+          setError(e.message);
+        }
       }
       setLoading(false);
     };
@@ -55,7 +61,7 @@ const PermitPage = ({
       <Container maxWidth="md">
         {error && <p>Fehler: {error}</p>}
         {isLoading && <p>Loading...</p>}
-        {!isLoading && <Permit application={application} />}
+        {!isLoading && !error && <Permit application={application} />}
       </Container>
     </PermitWrapper>
   );

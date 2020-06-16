@@ -42,7 +42,7 @@ const TrafficOrderPage = ({
       <Container maxWidth="lg">
         {error && <p>Fehler: {error}</p>}
         {isLoading && <p>Anordnung wird geladen...</p>}
-        {!isLoading && <TrafficOrder application={application} />}
+        {!isLoading && !error && <TrafficOrder application={application} />}
       </Container>
     </>
   );
