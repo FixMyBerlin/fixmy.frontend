@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import Header from '../components/Header';
 import Permit from '../components/Permit';
 import api from '../api';

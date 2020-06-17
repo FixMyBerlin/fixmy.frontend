@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`

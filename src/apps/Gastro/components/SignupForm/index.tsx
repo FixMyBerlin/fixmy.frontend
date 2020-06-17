@@ -13,9 +13,9 @@ import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import LocationPicker from '~/components2/LocationPicker';
 import logger from '~/utils/logger';
-import config from '~/pages/Gastro/config';
-import { GastroSignup } from '~/pages/Gastro/types';
-import api from '~/pages/Gastro/api';
+import config from '~/apps/Gastro/config';
+import { GastroSignup } from '~/apps/Gastro/types';
+import api from '~/apps/Gastro/api';
 import validate from './validate';
 import parseLength from '../../parseLength';
 

@@ -1,6 +1,6 @@
 import { matchPath } from 'react-router-dom';
 import qs from 'qs';
-import config from './pages/Gastro/config';
+import config from './apps/Gastro/config';
 import logger from './utils/logger';
 
 const UPDATE_HISTORY = 'App/AppState/UPDATE_HISTORY';

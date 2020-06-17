@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Container } from '@material-ui/core';
 import MapboxGL from 'mapbox-gl';
 
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import Map from '~/components2/Map';
 import Header from '../components/Header';
 import { Insert as ImageInsert } from '~/components2/Image';

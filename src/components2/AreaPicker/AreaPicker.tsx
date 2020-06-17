@@ -3,7 +3,7 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import Map from '~/components2/Map';
 
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';

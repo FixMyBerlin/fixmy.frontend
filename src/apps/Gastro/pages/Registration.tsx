@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import Header from '../components/Header';
 import Thanks from '../components/ThanksRegistration';
 import RegistrationForm from '../components/RegistrationForm';
-import Logo from '~/pages/Gastro/components/Logo';
+import Logo from '~/apps/Gastro/components/Logo';
 import api from '../api';
 import regulations from '../regulations';
 import { GastroSignup } from '../types';

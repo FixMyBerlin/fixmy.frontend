@@ -2,7 +2,7 @@ import React from 'react';
 import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import Map from '~/components2/Map';
 
 const StyledMap = styled(Map)`

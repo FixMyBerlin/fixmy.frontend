@@ -13,7 +13,7 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 
 import { fetchSuggestions } from '~/components/AutocompleteGeocoder/apiService';
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import Map from '~/components2/Map';
 import logger from '~/utils/logger';
 

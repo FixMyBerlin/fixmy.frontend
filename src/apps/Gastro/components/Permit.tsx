@@ -9,7 +9,7 @@ import {
   isBoardwalk,
   dateDecided
 } from '../utils';
-import AreaMap from '~/pages/Gastro/components/AreaMap';
+import AreaMap from '~/apps/Gastro/components/AreaMap';
 
 const PermitContainer = styled.section`
   h1 {

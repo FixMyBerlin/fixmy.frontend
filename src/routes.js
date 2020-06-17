@@ -20,7 +20,7 @@ const Reports = lazy(() => import('~/pages/Reports'));
 const Spielstrassen = lazy(() => import('~/pages/Spielstrassen'));
 
 const apps = {
-  gastro: lazy(() => import('~/pages/Gastro'))
+  gastro: lazy(() => import('~/apps/Gastro'))
 };
 
 const District = (name) => {

@@ -7,9 +7,9 @@ import styled from 'styled-components';
 import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import logger from '~/utils/logger';
-import config from '~/pages/Gastro/config';
-import { GastroRegistration } from '~/pages/Gastro/types';
-import api from '~/pages/Gastro/api';
+import config from '~/apps/Gastro/config';
+import { GastroRegistration } from '~/apps/Gastro/types';
+import api from '~/apps/Gastro/api';
 import validate from './validate';
 import parseLength from '../../parseLength';
 

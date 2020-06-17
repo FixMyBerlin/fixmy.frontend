@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import FMBLogo from '~/images/FixMyCity_positiv_300px.png';
 import Wappen1 from '~/images/gastro/wappen.png';
 import Wappen2 from '~/images/gastro/wappen@2x.png';
