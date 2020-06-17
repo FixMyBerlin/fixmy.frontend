@@ -7,8 +7,9 @@ import {
   Intro,
   Heading,
   Quote,
+  ImageFull,
   Image,
-  MultiImage,
+  ImageMulti,
   List,
   Button,
   BarChart,
@@ -17,6 +18,8 @@ import {
 
 import image0 from './images/image-0.jpg';
 import image1 from './images/image-1.jpg';
+import image3 from './images/image-3.png';
+import image4 from './images/image-4.png';
 
 export default function ResearchLanding() {
   return (
@@ -32,7 +35,7 @@ export default function ResearchLanding() {
         1.900 unterschiedliche Straßensituationen wurden anhand von 3D-Bildern
         durch über 20.000 Teilnehmer:innen insgesamt 300.000 mal bewertet.
       </Quote> */}
-      {/* <MultiImage sources={[ExampleImageSource, ExampleImageSource]} /> */}
+      {/* <ImageMulti sources={[ExampleImageSource, ExampleImageSource]} /> */}
       <Intro>
         Die Mobilitätswende in Berlin und vielen anderen Städten hat begonnen.
         Der Radverkehr soll gute Infrastruktur erhalten, auf der sich alle
@@ -294,7 +297,7 @@ export default function ResearchLanding() {
         Datensatz herunterladen
       </Button>
       <Heading as="h2" toc="Statistische Auswertung">
-        Statistische Auswertung
+        STATISTISCHE AUSWERTUNG
       </Heading>
       <Text>
         Mit den generierten Daten ist die Überprüfung von verschiedensten
@@ -311,6 +314,14 @@ export default function ResearchLanding() {
         diese, sowie ihre eigenen Hypothesen, überprüfen. Mehr dazu im folgenden
         Abschnitt.
       </Text>
+      <ImageMulti
+        sources={[image3, image4]}
+        feelsafes={[38, 16]}
+        subtitles={[
+          '*38 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive.',
+          '*16 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive.'
+        ]}
+      />
       <BarChartWrapper
         title="Führung auf der Fahrbahn ohne (RVA)"
         source="Anm: Durchschnitt der Bewertungen von Situationen auf HVS, ausgenommen wurden Situationen mit Tramschienen, Busfahrspuren…"
@@ -328,6 +339,22 @@ export default function ResearchLanding() {
           feelsafe={29}
         />
       </BarChartWrapper>
+      <Text>
+        Weitere Auswertungen nach Nutzermerkmalen finden Sie hier:{' '}
+        <a
+          href="https://fixmyberlin.de"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Jupyter notebook
+        </a>
+      </Text>
+      <ImageFull
+        source={image3}
+        feelsafe={63}
+        subtitle="*63 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive."
+      />
+
       <Heading as="h2" toc="Wer steht hinter der Umfrage">
         Wer steht hinter der Umfrage
       </Heading>

@@ -65,9 +65,17 @@ export default ({ value }: FeelsafeProps) => {
   const color = getColorByValue(value);
 
   return (
-    <Wrapper>
+    <Wrapper className="feelsafe">
       <svg width="100%" height="100%" viewBox="0 0 42 42">
         <circle cx="21" cy="21" r="15.91549430918954" fill="#fff" />
+        <circle
+          cx="21"
+          cy="21"
+          r="15.91549430918954"
+          fill="transparent"
+          stroke="#fff"
+          strokeWidth="3"
+        />
         <circle
           cx="21"
           cy="21"

@@ -6,7 +6,7 @@ import config from '~/config';
 const Wrapper = styled.div`
   background-color: ${config.colors.lightbg};
   padding: 16px;
-  margin: 20px 0;
+  margin: 40px 0;
 
   @media screen and (min-width: 800px) {
     padding: 22px 32px;

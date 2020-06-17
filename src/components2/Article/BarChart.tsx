@@ -17,11 +17,11 @@ const Wrapper = styled.div`
 
 const Title = styled.div`
   font-weight: 700;
-  margin-bottom: 50px;
+  margin-bottom: 55px;
 
   @media screen and (min-width: 800px) {
     margin-bottom: 0;
-    width: 200px;
+    width: 150px;
   }
 `;
 
@@ -39,10 +39,12 @@ const Chart = styled.div`
   display: flex;
   height: 40px;
   width: 100%;
+  font-size: 13px;
 
   @media screen and (min-width: 800px) {
     padding: 0 10px;
-    width: 440px;
+    width: 500px;
+    font-size: 15px;
   }
 `;
 
