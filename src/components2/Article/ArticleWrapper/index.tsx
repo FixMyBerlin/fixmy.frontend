@@ -23,6 +23,20 @@ const ContentWrapperOuter = styled.div`
   max-width: 800px;
   margin: 0 auto;
 
+  a {
+    text-decoration: none;
+    color: ${config.colors.black};
+    border-bottom: 1px solid ${config.colors.interaction};
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+
+  a:visited {
+    color: ${config.colors.black};
+  }
+
   ${media.l`
     margin: 20px auto;
   `}
