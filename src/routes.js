@@ -18,85 +18,107 @@ const MapView = lazy(() => import('~/pages/Map'));
 const Markdown = lazy(() => import('~/pages/Markdown'));
 const Reports = lazy(() => import('~/pages/Reports'));
 const Spielstrassen = lazy(() => import('~/pages/Spielstrassen'));
-const Gastro = lazy(() => import('~/pages/Gastro'));
 
-const Routes = ({ token }) => (
-  <Switch>
-    <Route exact path="/" component={Home} />
+const apps = {
+  gastro: lazy(() => import('~/pages/Gastro'))
+};
 
-    {/* standard markdown pages */
-    config.staticpages.map((page) => (
+const District = (name) => {
+  const district = config.districts[name];
+  const districtApps = Object.keys(district.apps).map((app) => {
+    const AppComponent = apps[app];
+    return (
       <Route
-        key={page}
-        path={page.route}
-        render={() => <Markdown page={page.key} />}
+        key={`${name}-${app}`}
+        path={`/${district.path}/${district.apps[app].path}`}
+        render={(props) => <AppComponent districtName={name} {...props} />}
       />
-    ))}
+    );
+  });
 
-    {/* user pages */}
-    <Route path={config.routes.signup} component={Signup} />
-    <Route path={config.routes.login} component={Login} />
-    <Route path={config.routes.forgotPassword} component={ForgotPassword} />
-    <Route
-      path={`${config.routes.resetPassword}/:uid/:token`}
-      component={ResetPassword}
-    />
-    <Route
-      path={`${config.routes.userVerify}/:uid/:token`}
-      component={UserVerify}
-    />
-    <PrivateRoute
-      path={config.routes.profile}
-      token={token}
-      component={Profile}
-    />
+  return (
+    <Route key={name} path={`/${district.path}`}>
+      {districtApps}
+    </Route>
+  );
+};
 
-    {/* map pages */}
-    {config.routes.status != null && (
-      <Route path={config.routes.status} component={MapView} />
-    )}
-    {config.routes.projects != null && (
-      <Route path={config.routes.projects} component={MapView} />
-    )}
+const Routes = ({ token }) => {
+  return (
+    <Switch>
+      <Route exact path="/" component={Home} />
 
-    {config.routes.popupbikelanes != null && (
-      <Route path={config.routes.popupbikelanes} component={MapView} />
-    )}
+      {/* standard markdown pages */
+      config.staticpages.map((page) => (
+        <Route
+          key={page}
+          path={page.route}
+          render={() => <Markdown page={page.key} />}
+        />
+      ))}
 
-    {/* reports page */}
-    {config.routes.reports != null && (
-      <Route path={`${config.routes.reports.index}`} component={Reports} />
-    )}
-
-    {/* kataster survey page */}
-    {config.routes.katasterKI != null && (
-      <Route path={config.routes.katasterKI.landing} component={KatasterKI} />
-    )}
-
-    {/* analysis pages */}
-    {config.routes.analysis != null && (
+      {/* user pages */}
+      <Route path={config.routes.signup} component={Signup} />
+      <Route path={config.routes.login} component={Login} />
+      <Route path={config.routes.forgotPassword} component={ForgotPassword} />
       <Route
-        path={`${config.routes.analysis}/planungen/:districtName?`}
-        component={Analysis}
+        path={`${config.routes.resetPassword}/:uid/:token`}
+        component={ResetPassword}
       />
-    )}
-
-    {/* Spielstrassen pages */}
-    {config.routes.spielstrassen != null && (
       <Route
-        path={config.routes.spielstrassen.landing}
-        component={Spielstrassen}
+        path={`${config.routes.userVerify}/:uid/:token`}
+        component={UserVerify}
       />
-    )}
+      <PrivateRoute
+        path={config.routes.profile}
+        token={token}
+        component={Profile}
+      />
 
-    {/* Gastro pages */}
-    {config.routes.gastro != null && (
-      <Route path={config.routes.gastro.landing} component={Gastro} />
-    )}
+      {/* map pages */}
+      {config.routes.status != null && (
+        <Route path={config.routes.status} component={MapView} />
+      )}
+      {config.routes.projects != null && (
+        <Route path={config.routes.projects} component={MapView} />
+      )}
 
-    <Route render={() => <Markdown page="nomatch" />} />
-  </Switch>
-);
+      {config.routes.popupbikelanes != null && (
+        <Route path={config.routes.popupbikelanes} component={MapView} />
+      )}
+
+      {/* reports page */}
+      {config.routes.reports != null && (
+        <Route path={`${config.routes.reports.index}`} component={Reports} />
+      )}
+
+      {/* kataster survey page */}
+      {config.routes.katasterKI != null && (
+        <Route path={config.routes.katasterKI.landing} component={KatasterKI} />
+      )}
+
+      {/* analysis pages */}
+      {config.routes.analysis != null && (
+        <Route
+          path={`${config.routes.analysis}/planungen/:districtName?`}
+          component={Analysis}
+        />
+      )}
+
+      {/* Spielstrassen pages */}
+      {config.routes.spielstrassen != null && (
+        <Route
+          path={config.routes.spielstrassen.landing}
+          component={Spielstrassen}
+        />
+      )}
+
+      {config.districts && Object.keys(config.districts).map(District)}
+
+      <Route render={() => <Markdown page="nomatch" />} />
+    </Switch>
+  );
+};
 
 export default connect((state) => ({
   token: state.UserState.token

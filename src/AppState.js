@@ -1,17 +1,21 @@
 import { matchPath } from 'react-router-dom';
 import qs from 'qs';
+import config from './pages/Gastro/config';
+import logger from './utils/logger';
 
 const UPDATE_HISTORY = 'App/AppState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'App/AppState/SET_ACTIVE_SECTION';
 const SET_VIEW_ACTIVE = 'App/AppState/SET_VIEW_ACTIVE';
 const OPEN_MENU = 'App/AppState/OPEN_MENU';
 const CLOSE_MENU = 'App/AppState/CLOSE_MENU';
+const SET_DISTRICT = 'App/AppState/SET_DISTRICT';
 
 const initialState = {
   activeView: null,
   activeSection: null,
   isMenuOpen: false,
-  isEmbedMode: false
+  isEmbedMode: false,
+  district: null
 };
 
 export const detectEmbedMode = (props) => (dispatch) => {
@@ -73,6 +77,12 @@ export function toggle() {
   };
 }
 
+export function setDistrict(district) {
+  const payload = config.districts[district];
+  if (payload == null) logger(`District ${district} not configured`);
+  return { type: SET_DISTRICT, payload };
+}
+
 export default function AppStateReducer(state = initialState, action = {}) {
   switch (action.type) {
     case OPEN_MENU:
@@ -83,6 +93,8 @@ export default function AppStateReducer(state = initialState, action = {}) {
     case SET_ACTIVE_SECTION:
     case SET_VIEW_ACTIVE:
       return { ...state, ...action.payload };
+    case SET_DISTRICT:
+      return { ...state, district: action.payload };
     default:
       return { ...state };
   }

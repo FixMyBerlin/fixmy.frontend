@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Router, Route, Switch, useLocation, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
@@ -13,6 +14,8 @@ import Markdown from '~/pages/Markdown';
 import history from '~/history';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
 import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
+import { setDistrict } from '~/AppState';
+import { getAppPath } from '~/utils/utils';
 
 const AppStyles = styled.div`
   font-size: 16px;
@@ -90,46 +93,60 @@ const ScrollToTop = () => {
   return null;
 };
 
-const Gastro = () => (
-  <AppStyles>
-    <ThemeProvider theme={theme}>
-      <Router history={history}>
-        <ScrollToTop />
-        <Switch>
-          <Route
-            exact
-            path={config.routes.gastro.landing}
-            component={Landing}
-          />
+const Gastro = ({ districtName, district, dispatch }) => {
+  useEffect(() => dispatch(setDistrict(districtName)), [districtName]);
+  // Skip rendering until redux action has taken effect
+  if (district == null) return null;
+  const basePath = getAppPath(district, 'gastro');
+  return (
+    <AppStyles>
+      <ThemeProvider theme={theme}>
+        <Router history={history}>
+          <ScrollToTop />
+          <Switch>
+            <Route
+              exact
+              path={basePath + config.gastro.routes.landing}
+              component={Landing}
+            />
 
-          <Route exact path={config.routes.gastro.signup}>
-            <Redirect to={config.routes.gastro.landing} />
-          </Route>
-          <Route
-            exact
-            path={config.routes.gastro.registration}
-            component={Registration}
-          />
+            <Route exact path={basePath + config.gastro.routes.signup}>
+              <Redirect to={basePath + config.gastro.routes.landing} />
+            </Route>
+            <Route
+              exact
+              path={basePath + config.gastro.routes.registration}
+              component={Registration}
+            />
 
-          <Route exact path={config.routes.gastro.directory}>
-            <Redirect to={config.routes.gastro.landing} />
-          </Route>
-          <Route exact path={config.routes.gastro.directoryEntry}>
-            <Redirect to={config.routes.gastro.landing} />
-          </Route>
+            <Route exact path={basePath + config.gastro.routes.directory}>
+              <Redirect to={basePath + config.gastro.routes.landing} />
+            </Route>
+            <Route exact path={basePath + config.gastro.routes.directoryEntry}>
+              <Redirect to={basePath + config.gastro.routes.landing} />
+            </Route>
 
-          <Route exact path={config.routes.gastro.permit} component={Permit} />
-          <Route
-            exact
-            path={config.routes.gastro.trafficOrder}
-            component={TrafficOrder}
-          />
+            <Route
+              exact
+              path={basePath + config.gastro.routes.permit}
+              component={Permit}
+            />
+            <Route
+              exact
+              path={basePath + config.gastro.routes.trafficOrder}
+              component={TrafficOrder}
+            />
 
-          <Route render={() => <Markdown page="nomatch" />} />
-        </Switch>
-      </Router>
-    </ThemeProvider>
-  </AppStyles>
-);
+            <Route render={() => <Markdown page="nomatch" />} />
+          </Switch>
+        </Router>
+      </ThemeProvider>
+    </AppStyles>
+  );
+};
 
-export default Gastro;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(Gastro);
