@@ -34,6 +34,7 @@ const Heading2 = styled.h2<StyledHeadingProps>`
   margin: 0.67em auto;
   max-width: 520px;
   color: ${config.colors.darkbg};
+  text-transform: uppercase;
 `;
 
 const Heading3 = styled.h2<StyledHeadingProps>`

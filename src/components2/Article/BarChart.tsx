@@ -54,6 +54,8 @@ const Tooltip = styled.div`
   position: absolute;
   bottom: -18px;
   font-size: 12px;
+  width: 100px;
+  left: 0;
 `;
 
 const Bar = styled.div`

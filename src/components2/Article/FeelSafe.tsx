@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { scaleLinear } from 'd3-scale';
 
-import BikeIcon from '~/images/bike.svg';
+import BikeIcon from '~/images/bike-icon2.svg';
 
 const Wrapper = styled.div`
   width: 80px;
@@ -25,7 +26,7 @@ const Wrapper = styled.div`
 const TextContent = styled.div`
   position: absolute;
   left: 0;
-  top: 11px;
+  top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,12 +35,8 @@ const TextContent = styled.div`
   line-height: 1;
 
   svg {
-    width: 20px;
-    height: 20px;
-
-    .bike {
-      fill: #545454;
-    }
+    width: 18px;
+    height: 15px;
   }
 `;
 
@@ -53,8 +50,10 @@ const Text = styled.div`
   color: #999;
 `;
 
+const scale = scaleLinear([40, 70, 100], ['#f08141', '#abc759', '#45b834']);
+
 const getColorByValue = (index) => {
-  return index <= 50 ? '#c01d1d' : '#45b834';
+  return index <= 40 ? '#c01d1d' : scale(index);
 };
 
 interface FeelsafeProps {

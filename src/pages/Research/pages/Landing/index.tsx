@@ -297,7 +297,7 @@ export default function ResearchLanding() {
         Datensatz herunterladen
       </Button>
       <Heading as="h2" toc="Statistische Auswertung">
-        STATISTISCHE AUSWERTUNG
+        Statistische Auswertung
       </Heading>
       <Text>
         Mit den generierten Daten ist die Überprüfung von verschiedensten
@@ -326,17 +326,27 @@ export default function ResearchLanding() {
         title="Führung auf der Fahrbahn ohne (RVA)"
         source="Anm: Durchschnitt der Bewertungen von Situationen auf HVS, ausgenommen wurden Situationen mit Tramschienen, Busfahrspuren…"
       >
-        <BarChart title="HVS mit RVA" data={[9, 6, 53, 32]} feelsafe={63} />
-        <BarChart title="HVS ohne RVA" data={[33, 40, 22, 5]} feelsafe={27} />
+        <BarChart title="HVS mit RVA" data={[9, 6, 53, 32]} feelsafe={15} />
+        <BarChart title="HVS ohne RVA" data={[33, 40, 22, 5]} feelsafe={30} />
         <BarChart
           title="HVS ohne RVA (Vielfahrer)"
           data={[33, 40, 22, 5]}
-          feelsafe={31}
+          feelsafe={45}
         />
         <BarChart
           title="HVS ohne RVA (Wenigfahrer)"
           data={[33, 40, 22, 5]}
-          feelsafe={29}
+          feelsafe={60}
+        />
+        <BarChart
+          title="HVS ohne RVA (Wenigfahrer)"
+          data={[33, 40, 22, 5]}
+          feelsafe={75}
+        />
+        <BarChart
+          title="HVS ohne RVA (Wenigfahrer)"
+          data={[33, 40, 22, 5]}
+          feelsafe={99}
         />
       </BarChartWrapper>
       <Text>
