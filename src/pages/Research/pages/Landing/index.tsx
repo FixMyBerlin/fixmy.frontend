@@ -6,6 +6,7 @@ import {
   Text,
   Intro,
   Heading,
+  Link,
   Quote,
   ImageFull,
   Image,
@@ -83,7 +84,7 @@ export default function ResearchLanding() {
         unterschiedlichen Faktoren, sowie weitere Analysen zu Führungen auf
         Nebenstraßen und nach Nutzergruppen.
       </Text>
-      <Button as="a" href="https://examlpe.com" target="_blank">
+      <Button as="a" href="#statistische-auswertung" target="_blank">
         Direkt zur Auswertung
       </Button>
       <Heading toc="Umfragekonzept" as="h2">
@@ -95,6 +96,13 @@ export default function ResearchLanding() {
         Anhand einer vierstufigen Skala könnten die Straßenszenen auf das
         subjektiven Empfinden von Sicherheit in der Situation bewertet werden.
       </Text>
+
+      <Quote sourceText="Herausforderung">
+        Um subjektive Sicherheit messbar zu machen war es notwendig eine
+        komplexe Systematik von Straßenszenen zu entwickeln und eine hohe Anzahl
+        Teilnehmender zu erreichen.
+      </Quote>
+
       <Text>
         Während die objektive Sicherheit von Radfahrenden bereits in vielen
         Studien untersucht wurde, gibt es zum subjektiven Sicherheitsempfinden
@@ -296,6 +304,8 @@ export default function ResearchLanding() {
       <Button as="a" href="https://example.com" target="_blank">
         Datensatz herunterladen
       </Button>
+
+      <div id="statistische-auswertung" />
       <Heading as="h2" toc="Statistische Auswertung">
         Statistische Auswertung
       </Heading>
@@ -351,13 +361,7 @@ export default function ResearchLanding() {
       </BarChartWrapper>
       <Text>
         Weitere Auswertungen nach Nutzermerkmalen finden Sie hier:{' '}
-        <a
-          href="https://fixmyberlin.de"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Jupyter notebook
-        </a>
+        <Link href="https://fixmyberlin.de">Jupyter notebook</Link>
       </Text>
       <ImageFull
         source={image3}

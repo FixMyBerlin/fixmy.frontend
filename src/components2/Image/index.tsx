@@ -59,24 +59,30 @@ const Subtitle = styled.div`
   padding: 0 1px;
 `;
 
+type FeelsafeSize = 'small' | 'big';
+
+interface InnerImageProps extends ImageProps {
+  feelsafeSize?: FeelsafeSize;
+}
+
+const InnerImg = ({
+  source,
+  feelsafe = null,
+  subtitle = null,
+  feelsafeSize = 'small'
+}: InnerImageProps) => (
+  <>
+    <Img src={source} />
+    {feelsafe && <FeelSafe value={feelsafe} size={feelsafeSize} />}
+    {subtitle && <Subtitle>{subtitle}</Subtitle>}
+  </>
+);
+
 interface MultiImageProps {
   sources: string[];
   feelsafes?: number[];
   subtitles?: string[];
 }
-interface ImageProps {
-  source: string;
-  feelsafe?: number;
-  subtitle?: string;
-}
-
-const InnerImg = ({ source, feelsafe = null, subtitle = null }: ImageProps) => (
-  <>
-    <Img src={source} />
-    {feelsafe && <FeelSafe value={feelsafe} />}
-    {subtitle && <Subtitle>{subtitle}</Subtitle>}
-  </>
-);
 
 export const ImageMulti = ({
   sources,
@@ -97,6 +103,12 @@ export const ImageMulti = ({
     </ImageWrapper>
   );
 };
+
+interface ImageProps {
+  source: string;
+  feelsafe?: number;
+  subtitle?: string;
+}
 
 export const Image = ({
   source,
@@ -122,6 +134,7 @@ export const ImageFull = ({
       source={source}
       feelsafe={feelsafe || null}
       subtitle={subtitle || null}
+      feelsafeSize="big"
     />
   </ImageWrapperFull>
 );

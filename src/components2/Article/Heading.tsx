@@ -31,7 +31,7 @@ const Heading1 = styled.h1<StyledHeadingProps>`
 
 const Heading2 = styled.h2<StyledHeadingProps>`
   font-size: 24px;
-  margin: 0.67em auto;
+  margin: 60px auto 0.67em auto;
   max-width: 520px;
   color: ${config.colors.darkbg};
   text-transform: uppercase;

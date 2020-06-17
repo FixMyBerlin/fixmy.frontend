@@ -22,12 +22,13 @@ const Quote = styled.div<QuoteProps>`
     content: "${(p) => p.sourceText}";
     display: ${(p) => (p.sourceText ? 'block' : 'none')};
     position: absolute;
-    background: ${config.colors.interaction};
+    background: #cf0a7d;
     font-weight: 700;
     font-size: 0.58em;
     font-style: normal;
-    padding: .7em 1em;
+    padding: 11px 22px;
     border-radius: 3px;
+    color: white;
     bottom: 0;
     top: auto;
     left: 50%;

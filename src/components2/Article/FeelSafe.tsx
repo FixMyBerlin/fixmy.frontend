@@ -5,8 +5,6 @@ import { scaleLinear } from 'd3-scale';
 import BikeIcon from '~/images/bike-icon2.svg';
 
 const Wrapper = styled.div`
-  width: 80px;
-  height: 80px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -23,48 +21,62 @@ const Wrapper = styled.div`
   }
 `;
 
-const TextContent = styled.div`
+interface TextContentProps {
+  isSmall?: boolean;
+}
+
+const TextContent = styled.div<TextContentProps>`
   position: absolute;
   left: 0;
-  top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
   line-height: 1;
+  height: 100%;
 
   svg {
-    width: 18px;
-    height: 15px;
+    width: ${(props) => (props.isSmall ? 18 : 24)}px;
+    height: ${(props) => (props.isSmall ? 10 : 14)}px;
   }
 `;
 
-const Number = styled.div`
-  font-size: 20px;
+const Number = styled.div<TextContentProps>`
+  font-size: ${(props) => (props.isSmall ? 20 : 30)}px;
   font-weight: 700;
 `;
 
-const Text = styled.div`
+const Text = styled.div<TextContentProps>`
   font-size: 8px;
   color: #999;
 `;
 
-const scale = scaleLinear([40, 70, 100], ['#f08141', '#abc759', '#45b834']);
+const scale = scaleLinear([30, 70, 100], ['#f08141', '#abc759', '#45b834']);
 
 const getColorByValue = (index) => {
-  return index <= 40 ? '#c01d1d' : scale(index);
+  return index <= 30 ? '#c01d1d' : scale(index);
 };
+
+type FeelsafeSize = 'small' | 'big';
 
 interface FeelsafeProps {
   value: number;
+  size?: FeelsafeSize;
 }
 
-export default ({ value }: FeelsafeProps) => {
+const sizes = {
+  small: 80,
+  big: 120
+};
+
+export default ({ value, size = 'small' }: FeelsafeProps) => {
   const color = getColorByValue(value);
+  const pxSize = sizes[size];
+  const isSmall = size === 'small';
 
   return (
-    <Wrapper className="feelsafe">
+    <Wrapper className="feelsafe" style={{ width: pxSize, height: pxSize }}>
       <svg width="100%" height="100%" viewBox="0 0 42 42">
         <circle cx="21" cy="21" r="15.91549430918954" fill="#fff" />
         <circle
@@ -95,10 +107,10 @@ export default ({ value }: FeelsafeProps) => {
           strokeDashoffset="25"
         />
       </svg>
-      <TextContent>
+      <TextContent isSmall={isSmall}>
         <BikeIcon />
-        <Number>{value}%</Number>
-        <Text>feel safe*</Text>
+        <Number isSmall={isSmall}>{value}%</Number>
+        <Text isSmall={isSmall}>feel safe*</Text>
       </TextContent>
     </Wrapper>
   );
