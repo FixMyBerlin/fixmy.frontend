@@ -13,7 +13,7 @@ import {
 // eslint-disable-next-line camelcase
 const getSetupTimerangeEnd = ({ application_decided }) => {
   const date = new Date(application_decided);
-  date.setDate(date.getDate() + 3);
+  date.setDate(date.getDate() + 4);
   return date.toLocaleDateString('de-DE');
 };
 
@@ -264,7 +264,10 @@ const TrafficOrder = ({ application }) => {
                 <span className="c23" />
               </p>
               <p className="c20">
-                <span className="c23" />
+                <span className="c23" style={{ fontSize: '10pt' }}>
+                  {application.shop_name} <br />
+                  {application.address}
+                </span>
               </p>
             </td>
             <td className="c122" colSpan={2} rowSpan={1}>
