@@ -6,6 +6,7 @@ import { media } from '~/styles/utils';
 
 import PublishDate from './PublishDate';
 import Author from './Author';
+import AuthorSvg from '~/images/author-icon.svg';
 
 interface ArticleMetaProps {
   publishDate?: Date;
@@ -30,6 +31,9 @@ const AuthorIcon = styled.div`
   border-radius: 50%;
   margin-right: 0.5em;
   background-color: ${config.colors.interaction};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Divider = styled.div`
@@ -52,7 +56,9 @@ const ArticleMeta = ({ publishDate, author, className }: ArticleMetaProps) => {
 
   return (
     <MetaWrap className={className}>
-      <AuthorIcon />
+      <AuthorIcon>
+        <AuthorSvg />
+      </AuthorIcon>
       <MetaInnerWrap>
         <PublishDate date={publishDate} />
         <Divider />

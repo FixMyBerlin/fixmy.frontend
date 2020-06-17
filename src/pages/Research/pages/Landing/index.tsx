@@ -10,7 +10,9 @@ import {
   Image,
   MultiImage,
   List,
-  Button
+  Button,
+  BarChart,
+  BarChartWrapper
 } from '~/components2/Article';
 
 import image0 from './images/image-0.jpg';
@@ -42,6 +44,7 @@ export default function ResearchLanding() {
       <Heading toc="Über das Projekt" as="h2">
         Über das Projekt
       </Heading>
+
       <Text>
         Bisher gibt es kaum Erhebungen, welche Arten von Straßen, Wegen und
         Kreuzungen die Verkehrsteilnehmenden subjektiv als sicher empfinden.
@@ -308,6 +311,23 @@ export default function ResearchLanding() {
         diese, sowie ihre eigenen Hypothesen, überprüfen. Mehr dazu im folgenden
         Abschnitt.
       </Text>
+      <BarChartWrapper
+        title="Führung auf der Fahrbahn ohne (RVA)"
+        source="Anm: Durchschnitt der Bewertungen von Situationen auf HVS, ausgenommen wurden Situationen mit Tramschienen, Busfahrspuren…"
+      >
+        <BarChart title="HVS mit RVA" data={[9, 6, 53, 32]} feelsafe={63} />
+        <BarChart title="HVS ohne RVA" data={[33, 40, 22, 5]} feelsafe={27} />
+        <BarChart
+          title="HVS ohne RVA (Vielfahrer)"
+          data={[33, 40, 22, 5]}
+          feelsafe={31}
+        />
+        <BarChart
+          title="HVS ohne RVA (Wenigfahrer)"
+          data={[33, 40, 22, 5]}
+          feelsafe={29}
+        />
+      </BarChartWrapper>
       <Heading as="h2" toc="Wer steht hinter der Umfrage">
         Wer steht hinter der Umfrage
       </Heading>
