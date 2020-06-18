@@ -69,3 +69,12 @@ export enum REGULATION {
   'ParkenDiagonal' = 13,
   'Sonstige' = 14
 }
+
+export const preSignup = (district) =>
+  new Date() < district.apps.gastro.timeline.openSignup;
+
+export const postSignup = (district) =>
+  new Date() > district.apps.gastro.timeline.closeSignup;
+
+export const openSignup = (district) =>
+  !preSignup(district) && !postSignup(district);

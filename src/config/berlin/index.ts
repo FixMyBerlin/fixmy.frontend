@@ -26,7 +26,11 @@ export default {
           path: 'spielstrassen'
         },
         gastro: {
-          path: 'terrassen'
+          path: 'terrassen',
+          timeline: {
+            openSignup: new Date(2020, 4, 14),
+            closeSignup: new Date(2020, 4, 19)
+          }
         }
       }
     },
@@ -53,7 +57,11 @@ export default {
       ],
       apps: {
         gastro: {
-          path: 'terrassen'
+          path: 'terrassen',
+          timeline: {
+            openSignup: new Date(Date.UTC(2020, 5, 19, 16, 0)),
+            closeSignup: new Date(Date.UTC(2020, 5, 22, 8, 0))
+          }
         }
       }
     }

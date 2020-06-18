@@ -15,6 +15,7 @@ import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import Logo from '~/apps/Gastro/components/Logo';
 import Notice from '~/apps/Gastro/components/Notice';
 import { getPath } from '~/apps/Gastro/routes';
+import { openSignup } from '~/apps/Gastro/utils';
 
 const Attribution = styled.div`
   font-size: 0.75em;
@@ -33,10 +34,6 @@ const Attribution = styled.div`
 const CTA = styled(Button)`
   margin: 2em auto;
 `;
-
-const preSignup = () => false;
-const openSignup = () => true;
-const postSignup = () => false;
 
 const XhainLanding = ({ district }) => (
   <>
@@ -71,7 +68,7 @@ const XhainLanding = ({ district }) => (
       über das weitere Vorgehen.
     </p>
 
-    {openSignup() && (
+    {openSignup(district) && (
       <Link to={getPath(district, 'signup')}>
         <CTA flat>Jetzt Interesse anmelden</CTA>
       </Link>
@@ -127,7 +124,7 @@ const XhainLanding = ({ district }) => (
       reduzieren.
     </p>
 
-    {openSignup() && (
+    {openSignup(district) && (
       <Link to={getPath(district, 'signup')}>
         <CTA flat>Jetzt Interesse anmelden</CTA>
       </Link>
