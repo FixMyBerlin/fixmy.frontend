@@ -7,7 +7,8 @@ import {
   usageWeekday,
   usageWeekend,
   getCategoryDescription,
-  dateReceived
+  dateReceived,
+  REGULATION
 } from '../../utils';
 
 // eslint-disable-next-line camelcase
@@ -17,7 +18,13 @@ const getSetupTimerangeEnd = ({ application_decided }) => {
   return date.toLocaleDateString('de-DE');
 };
 
-const isParking = ({ regulation }) => regulation === 0;
+const isParking = ({ regulation }) =>
+  [
+    REGULATION.Parkplatz,
+    REGULATION.ParkenDiagonal,
+    REGULATION.ParkenLängs,
+    REGULATION.ParkenDiagonal
+  ].includes(regulation);
 
 const TrafficOrder = ({ application }) => {
   if (application.status !== 'application_accepted')
@@ -31,7 +38,7 @@ const TrafficOrder = ({ application }) => {
   const categoryDescription = getCategoryDescription(application);
   const setupTimerangeEnd = getSetupTimerangeEnd(application);
   return (
-    <div className="c229">
+    <div className="c229 trafficOrder">
       <div>
         <p className="c20">
           <span className="c23" />

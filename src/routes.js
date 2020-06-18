@@ -18,6 +18,7 @@ const MapView = lazy(() => import('~/pages/Map'));
 const Markdown = lazy(() => import('~/pages/Markdown'));
 const Reports = lazy(() => import('~/pages/Reports'));
 const Spielstrassen = lazy(() => import('~/pages/Spielstrassen'));
+const Research = lazy(() => import('~/pages/Research'));
 
 const apps = {
   gastro: lazy(() => import('~/apps/Gastro'))
@@ -115,10 +116,14 @@ const Routes = ({ token }) => {
 
       {config.districts && Object.keys(config.districts).map(District)}
 
-      <Route render={() => <Markdown page="nomatch" />} />
-    </Switch>
-  );
-};
+    {/* Research pages */}
+    {config.routes.research != null && config.enableResearchPage && (
+      <Route path={config.routes.research.landing} component={Research} />
+    )}
+
+    <Route render={() => <Markdown page="nomatch" />} />
+  </Switch>
+);
 
 export default connect((state) => ({
   token: state.UserState.token

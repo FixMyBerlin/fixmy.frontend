@@ -36,5 +36,8 @@ export default {
   resetPassword: '/reset',
   emailVerification: '/email-verification',
   profile: '/profil',
-  userVerify: '/bestaetigen'
+  userVerify: '/bestaetigen',
+  research: {
+    landing: '/research'
+  }
 };
