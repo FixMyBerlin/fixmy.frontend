@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Header from '~/components2/Header';
-import Wappen1 from '~/images/gastro/wappen.png';
-import Wappen2 from '~/images/gastro/wappen@2x.png';
 import { getAppPath } from '~/utils/utils';
 
 const Wappen = styled.img`
@@ -17,9 +15,9 @@ const GastroHeader = ({ showInfoLink, district }) => {
       showInfoLink={showInfoLink}
       logo={
         <Wappen
-          src={Wappen2}
-          srcSet={`${Wappen1} 450w, ${Wappen2} 750w`}
-          alt="Wappen Friedrichshain-Kreuzberg"
+          src={district.emblem.large}
+          srcSet={`${district.emblem.small} 450w, ${district.emblem.large} 750w`}
+          alt={`Wappen ${district.title}`}
         />
       }
     >

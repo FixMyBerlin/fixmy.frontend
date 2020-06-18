@@ -1,21 +1,16 @@
 import React, { useEffect } from 'react';
-import { Router, Route, Switch, useLocation, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core';
 
 import config from './config';
-import Landing from './pages/Landing';
-import Registration from './pages/Registration';
-import Permit from './pages/Permit';
-import TrafficOrder from './pages/TrafficOrder';
-import Markdown from '~/pages/Markdown';
-import history from '~/history';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
 import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
 import { setDistrict } from '~/AppState';
 import { getAppPath } from '~/utils/utils';
+
+import Routes from './routes';
 
 const AppStyles = styled.div`
   font-size: 16px;
@@ -83,59 +78,16 @@ const theme = createMuiTheme({
   }
 });
 
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-};
-
 const Gastro = ({ districtName, district, dispatch }) => {
   useEffect(() => {
     dispatch(setDistrict(districtName));
   }, [districtName]);
   // Skip rendering until redux action has taken effect
   if (district == null) return null;
-  const basePath = getAppPath(district, 'gastro');
-  const getPath = (name: string) =>
-    basePath + config.gastro[districtName].routes[name];
   return (
     <AppStyles>
       <ThemeProvider theme={theme}>
-        <Router history={history}>
-          <ScrollToTop />
-          <Switch>
-            <Route exact path={getPath('landing')} component={Landing} />
-
-            <Route exact path={getPath('signup')}>
-              <Redirect to={getPath('landing')} />
-            </Route>
-            <Route
-              exact
-              path={getPath('registration')}
-              component={Registration}
-            />
-
-            <Route exact path={getPath('directory')}>
-              <Redirect to={getPath('landing')} />
-            </Route>
-            <Route exact path={getPath('directoryEntry')}>
-              <Redirect to={getPath('landing')} />
-            </Route>
-
-            <Route exact path={getPath('permit')} component={Permit} />
-            <Route
-              exact
-              path={getPath('trafficOrder')}
-              component={TrafficOrder}
-            />
-
-            <Route render={() => <Markdown page="nomatch" />} />
-          </Switch>
-        </Router>
+        <Routes />
       </ThemeProvider>
     </AppStyles>
   );

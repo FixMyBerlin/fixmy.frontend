@@ -1,9 +1,22 @@
+import TempelbergSmall from '~/images/gastro/wappen-tempelberg.png';
+import TempelbergLarge from '~/images/gastro/wappen-tempelberg@2x.png';
+import XHainSmall from '~/images/gastro/wappen.png';
+import XHainLarge from '~/images/gastro/wappen@2x.png';
+
 export default {
   districts: {
     xhain: {
       title: 'Friedrichshain-Kreuzberg',
       path: 'friedrichshain-kreuzberg',
       name: 'xhain',
+      content: {
+        footerLine:
+          'Ein Angebot des Bezirksamts Friedrichshain-Kreuzberg von Berlin'
+      },
+      emblem: {
+        small: XHainSmall,
+        large: XHainLarge
+      },
       bounds: [
         [13.3651, 52.4658],
         [13.4945, 52.5479]
@@ -21,6 +34,14 @@ export default {
       title: 'Tempelhof-Schöneberg',
       path: 'tempelhof-schöneberg',
       name: 'tempelberg',
+      content: {
+        footerLine:
+          'Ein Angebot des Bezirksamts Tempelhof-Schöneberg von Berlin'
+      },
+      emblem: {
+        small: TempelbergSmall,
+        large: TempelbergLarge
+      },
       backend: {
         local: 'http://localhost:8000/api',
         staging: 'https://fixmyberlin-staging.netlify.app/api/tempelberg/next',
