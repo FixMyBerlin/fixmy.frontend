@@ -95,10 +95,7 @@ const Headline = styled.div`
 const Permit = ({ application }) => {
   const categoryDescription = getCategoryDescription(application);
 
-  if (
-    application.status !== 'application_accepted' ||
-    application.application_decided == null
-  )
+  if (application.status !== 'application_accepted')
     return <p>Dieser Antrag wurde bisher nicht bewilligt.</p>;
 
   return (

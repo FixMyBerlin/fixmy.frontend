@@ -193,26 +193,6 @@ Die Gastro-App implementiert einen Prozess zur Vereinbarung der Nutzung von
       </td>
       <td>Abgeschlossen</td>
     </tr>
-    <tr>
-      <td>D05</td>
-      <td>
-        Als Verwaltungsmitarbeiter:in möchte ich unvollständige Anträge als
-        solche markieren können, so dass die Antragsteller:innen diese
-        vervollständigen können
-      </td>
-      <td></td>
-      <td>Optional</td>
-    </tr>
-    <tr>
-      <td>D06</td>
-      <td>
-        Als Verwaltungsmitarbeiter:in möchte ich ungewöhnliche Anträge als
-        solche markieren können, so dass die Antragsteller:innen über eine
-        außergewöhnliche Bearbeitungszeit informiert werden können
-      </td>
-      <td></td>
-      <td>Optional</td>
-    </tr>
   </tbody>
 </table>
 
@@ -251,17 +231,17 @@ Die Gastro-App implementiert einen Prozess zur Vereinbarung der Nutzung von
             </li>
         </ul>
       </td>
-      <td>In Umsetzung</td>
+      <td>Abgeschlossen</td>
     </tr>
     <tr>
       <td>E02</td>
       <td>
         Als Anwohner:in möchte ich mich über eine öffentlich einsehbare
-        Internetseite über die eingerichteten Verkaufsflachen informieren können
+        Internetseite über die eingerichteten Verkaufsflächen informieren können
       </td>
       <td>
       </td>
-      <td>Screendesign</td>
+      <td>In Screendesign</td>
     </tr>
   </tbody>
 </table>

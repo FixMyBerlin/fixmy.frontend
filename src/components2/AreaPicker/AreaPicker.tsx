@@ -21,7 +21,12 @@ const GoodJob = styled.p`
   font-weight: bold;
 `;
 
-const AreaPicker = ({ center, onSelect }) => {
+type Props = {
+  onSelect: (geometry: GeoJSON.Geometry | null) => any;
+  center?: MapboxGL.LngLatLike;
+};
+
+const AreaPicker: React.FC<Props> = ({ center, onSelect }) => {
   // Mapbox-GL.js map instance
   const [map, setMap] = useState(null);
   const [hasGeometry, setHasGeometry] = useState(false);

@@ -13,17 +13,14 @@ import {
 // eslint-disable-next-line camelcase
 const getSetupTimerangeEnd = ({ application_decided }) => {
   const date = new Date(application_decided);
-  date.setDate(date.getDate() + 3);
+  date.setDate(date.getDate() + 4);
   return date.toLocaleDateString('de-DE');
 };
 
 const isParking = ({ regulation }) => regulation === 0;
 
 const TrafficOrder = ({ application }) => {
-  if (
-    application.status !== 'application_accepted' ||
-    application.application_decided == null
-  )
+  if (application.status !== 'application_accepted')
     return (
       <Container>
         <h1>Verkehrsrechtliche Anordnung</h1>
@@ -264,7 +261,10 @@ const TrafficOrder = ({ application }) => {
                 <span className="c23" />
               </p>
               <p className="c20">
-                <span className="c23" />
+                <span className="c23" style={{ fontSize: '10pt' }}>
+                  {application.shop_name} <br />
+                  {application.address}
+                </span>
               </p>
             </td>
             <td className="c122" colSpan={2} rowSpan={1}>
