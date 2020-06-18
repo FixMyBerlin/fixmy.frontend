@@ -100,6 +100,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "@hot-loader/react-dom": "^16.13.0",
+    "@mapbox/mapbox-gl-draw": "^1.1.2",
     "@material-ui/core": "^4.9.5",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.9.10",
@@ -107,6 +108,7 @@
     "@turf/boolean-within": "^6.0.1",
     "@turf/helpers": "^6.1.4",
     "@turf/length": "^6.0.2",
+    "@types/geojson": "^7946.0.7",
     "@types/mapbox-gl": "^1.9.1",
     "@types/node": "^13.11.0",
     "abortcontroller-polyfill": "^1.4.0",

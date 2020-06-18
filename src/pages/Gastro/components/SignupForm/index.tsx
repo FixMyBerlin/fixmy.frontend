@@ -17,7 +17,7 @@ import config from '~/pages/Gastro/config';
 import { GastroSignup } from '~/pages/Gastro/types';
 import api from '~/pages/Gastro/api';
 import validate from './validate';
-import parseLength from './parseLength';
+import parseLength from '../../parseLength';
 
 /* eslint-disable camelcase */
 export interface FormData {
@@ -95,7 +95,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
       setSubmitting(false);
     }}
   >
-    {({ status, values, handleChange, isSubmitting }) => (
+    {({ status, values, handleChange, isValid, isSubmitting }) => (
       <StyledForm>
         <section>
           <h4>Bitte machen Sie Angaben zu Ihrem Betrieb:</h4>
@@ -202,7 +202,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
           />
         </section>
 
-        <div className="tosFieldGroup">
+        <div className="checkboxFieldGroup">
           <ErrorMessage
             name="tos_accepted"
             render={(msg) => <FormError error>{msg}</FormError>}
