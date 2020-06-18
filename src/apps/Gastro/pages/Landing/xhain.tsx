@@ -69,7 +69,7 @@ const XhainLanding = ({ district }) => (
 
     <StyledMap
       style={config.gastro[district?.name]?.map.style}
-      bounds={config.gastro[district?.name]?.map.bounds}
+      bounds={district?.bounds}
       onInit={(map) => {
         map.addControl(new MapboxGL.NavigationControl({ showCompass: false }));
       }}

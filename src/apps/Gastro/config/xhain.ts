@@ -4,11 +4,7 @@ const config = {
   campaign: 'xhain',
   email: 'info@fixmyberlin.de',
   map: {
-    style: FMB_XHAIN_TERASSEN,
-    bounds: [
-      [13.3651, 52.4658],
-      [13.4945, 52.5479]
-    ]
+    style: FMB_XHAIN_TERASSEN
   }
 };
 

@@ -57,7 +57,7 @@ const AreaMap = ({ application, district, printable = false }) => {
     <StyledMap
       onInit={(map) => handleMapInit(map, geometry, area)}
       style={config.gastro[district?.name]?.map.style}
-      bounds={config.gastro[district?.name]?.map.bounds}
+      bounds={district?.bounds}
       interactive={false}
       preserveDrawingBuffer={printable === true}
       center={geometry?.coordinates}
