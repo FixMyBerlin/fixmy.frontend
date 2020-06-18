@@ -3,7 +3,7 @@ export default {
     xhain: {
       title: 'Friedrichshain-Kreuzberg',
       path: 'friedrichshain-kreuzberg',
-      short: 'xhain',
+      name: 'xhain',
       apps: {
         spielstrassen: {
           path: 'spielstrassen'
@@ -16,7 +16,7 @@ export default {
     tempelberg: {
       title: 'Tempelhof-Schöneberg',
       path: 'tempelhof-schöneberg',
-      short: 'tempelberg',
+      name: 'tempelberg',
       backend: {
         local: 'http://localhost:8000/api',
         staging: 'https://fixmyberlin-staging.netlify.app/api/tempelberg/next',

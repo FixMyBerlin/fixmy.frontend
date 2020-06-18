@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import config from '~/apps/Gastro/config';
 import { media } from '~/styles/utils';
@@ -20,7 +21,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Thanks = ({ submission }) => (
+const Thanks = ({ submission, district }) => (
   <Wrapper>
     <h2>Vielen Dank für Ihren Antrag auf Nutzung einer Sonderfläche</h2>
 
@@ -34,8 +35,10 @@ const Thanks = ({ submission }) => (
         <strong>
           Leider konnte ihre Gewerbeanmeldung / Vereinsregister nicht übertragen
           werden. Wir bitten Sie daher, diese Datei per E-Mail an
-          <a href={`mailto:${config.gastro.email}`}>{config.gastro.email}</a> zu
-          schicken.
+          <a href={`mailto:${config.gastro[district?.name]?.email}`}>
+            {config.gastro[district?.name]?.email}
+          </a>{' '}
+          zu schicken.
         </strong>
       </p>
     )}
@@ -48,4 +51,8 @@ const Thanks = ({ submission }) => (
   </Wrapper>
 );
 
-export default Thanks;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(Thanks);

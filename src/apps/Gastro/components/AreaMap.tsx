@@ -3,6 +3,7 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import Map from '~/components2/Map';
 import config from '~/apps/Gastro/config';
+import { connect } from 'react-redux';
 
 const StyledMap = styled(Map)`
   width: 40em;
@@ -49,14 +50,14 @@ const handleMapInit = (map, geometry, area) => {
   if (area != null) addAreaToMap(map, area);
 };
 
-const AreaMap = ({ application, printable = false }) => {
+const AreaMap = ({ application, district, printable = false }) => {
   const { geometry, area } = application;
 
   return (
     <StyledMap
       onInit={(map) => handleMapInit(map, geometry, area)}
-      style={config.gastro.map.style}
-      bounds={config.gastro.map.bounds}
+      style={config.gastro[district?.name]?.map.style}
+      bounds={config.gastro[district?.name]?.map.bounds}
       interactive={false}
       preserveDrawingBuffer={printable === true}
       center={geometry?.coordinates}
@@ -65,4 +66,8 @@ const AreaMap = ({ application, printable = false }) => {
   );
 };
 
-export default AreaMap;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(AreaMap);

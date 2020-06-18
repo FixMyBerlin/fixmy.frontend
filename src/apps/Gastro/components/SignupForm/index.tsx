@@ -18,6 +18,7 @@ import { GastroSignup } from '~/apps/Gastro/types';
 import api from '~/apps/Gastro/api';
 import validate from './validate';
 import parseLength from '../../parseLength';
+import { connect } from 'react-redux';
 
 /* eslint-disable camelcase */
 export interface FormData {
@@ -65,7 +66,7 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const SignupForm = ({ onSuccess, onSubmit }) => (
+const SignupForm = ({ onSuccess, onSubmit, district }) => (
   <Formik
     initialValues={initialValues}
     validate={validate}
@@ -80,7 +81,7 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
         },
         shopfront_length: parseLength(values.shopfront_length),
         opening_hours: 'weekend',
-        campaign: config.gastro.campaign
+        campaign: config.gastro[district?.name]?.campaign
       };
       try {
         const response = await api.signup(signupData);
@@ -238,4 +239,8 @@ const SignupForm = ({ onSuccess, onSubmit }) => (
   </Formik>
 );
 
-export default SignupForm;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(SignupForm);

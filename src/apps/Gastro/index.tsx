@@ -94,46 +94,42 @@ const ScrollToTop = () => {
 };
 
 const Gastro = ({ districtName, district, dispatch }) => {
-  useEffect(() => dispatch(setDistrict(districtName)), [districtName]);
+  useEffect(() => {
+    dispatch(setDistrict(districtName));
+  }, [districtName]);
   // Skip rendering until redux action has taken effect
   if (district == null) return null;
   const basePath = getAppPath(district, 'gastro');
+  const getPath = (name: string) =>
+    basePath + config.gastro[districtName].routes[name];
   return (
     <AppStyles>
       <ThemeProvider theme={theme}>
         <Router history={history}>
           <ScrollToTop />
           <Switch>
-            <Route
-              exact
-              path={basePath + config.gastro.routes.landing}
-              component={Landing}
-            />
+            <Route exact path={getPath('landing')} component={Landing} />
 
-            <Route exact path={basePath + config.gastro.routes.signup}>
-              <Redirect to={basePath + config.gastro.routes.landing} />
+            <Route exact path={getPath('signup')}>
+              <Redirect to={getPath('landing')} />
             </Route>
             <Route
               exact
-              path={basePath + config.gastro.routes.registration}
+              path={getPath('registration')}
               component={Registration}
             />
 
-            <Route exact path={basePath + config.gastro.routes.directory}>
-              <Redirect to={basePath + config.gastro.routes.landing} />
+            <Route exact path={getPath('directory')}>
+              <Redirect to={getPath('landing')} />
             </Route>
-            <Route exact path={basePath + config.gastro.routes.directoryEntry}>
-              <Redirect to={basePath + config.gastro.routes.landing} />
+            <Route exact path={getPath('directoryEntry')}>
+              <Redirect to={getPath('landing')} />
             </Route>
 
+            <Route exact path={getPath('permit')} component={Permit} />
             <Route
               exact
-              path={basePath + config.gastro.routes.permit}
-              component={Permit}
-            />
-            <Route
-              exact
-              path={basePath + config.gastro.routes.trafficOrder}
+              path={getPath('trafficOrder')}
               component={TrafficOrder}
             />
 

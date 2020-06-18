@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { CheckboxWithLabel } from 'formik-material-ui';
 import { FormHelperText, LinearProgress } from '@material-ui/core';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import Button from '~/components2/Button';
@@ -88,7 +89,8 @@ const RegistrationForm = ({
   access_key,
   onSuccess,
   signupData,
-  regulation
+  regulation,
+  district
 }) => (
   <Formik
     initialValues={{ ...initialValues, ...signupData }}
@@ -102,7 +104,7 @@ const RegistrationForm = ({
         access_key,
         shopfront_length: parseLength(values.shopfront_length),
         opening_hours: 'weekend',
-        campaign: config.gastro.campaign
+        campaign: config.gastro[district?.name]?.campaign
       };
 
       let uploadFailed = true;
@@ -215,4 +217,8 @@ const RegistrationForm = ({
   </Formik>
 );
 
-export default RegistrationForm;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(RegistrationForm);
