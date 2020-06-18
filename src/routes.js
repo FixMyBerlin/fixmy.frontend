@@ -19,6 +19,7 @@ const Markdown = lazy(() => import('~/pages/Markdown'));
 const Reports = lazy(() => import('~/pages/Reports'));
 const Spielstrassen = lazy(() => import('~/pages/Spielstrassen'));
 const Gastro = lazy(() => import('~/pages/Gastro'));
+const Research = lazy(() => import('~/pages/Research'));
 
 const Routes = ({ token }) => (
   <Switch>
@@ -92,6 +93,11 @@ const Routes = ({ token }) => (
     {/* Gastro pages */}
     {config.routes.gastro != null && (
       <Route path={config.routes.gastro.landing} component={Gastro} />
+    )}
+
+    {/* Research pages */}
+    {config.routes.research != null && config.enableResearchPage && (
+      <Route path={config.routes.research.landing} component={Research} />
     )}
 
     <Route render={() => <Markdown page="nomatch" />} />

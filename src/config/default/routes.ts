@@ -50,5 +50,8 @@ export default {
     permit: '/friedrichshain-kreuzberg/terrassen/verzeichnis/:id/genehmigung',
     trafficOrder:
       '/friedrichshain-kreuzberg/terrassen/verzeichnis/:id/anordnung'
+  },
+  research: {
+    landing: '/research'
   }
 };
