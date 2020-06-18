@@ -109,7 +109,7 @@ const RegistrationForm = ({
 
       let uploadFailed = true;
       try {
-        await api.uploadCertificate(registrationData);
+        await api.uploadCertificate(registrationData, district);
         uploadFailed = false;
       } catch (e) {
         logger(e);
@@ -119,7 +119,7 @@ const RegistrationForm = ({
       }
 
       try {
-        const response = await api.register(registrationData);
+        const response = await api.register(registrationData, district);
         // Additional field that is not part of the response
         //  this is to signal to the thanks page whether the upload
         // of the certificate file failed

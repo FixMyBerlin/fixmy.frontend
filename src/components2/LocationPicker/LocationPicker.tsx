@@ -47,7 +47,13 @@ const AddressHint = styled.p`
   }
 `;
 
-const LocationPicker = ({ onSelect }) => {
+type Props = {
+  onSelect: (result: { address: string; location: MapboxGL.LngLat }) => any;
+  mapboxStyle: MapboxGL.Style;
+  bounds: MapboxGL.LngLatBoundsLike;
+};
+
+const LocationPicker: React.FC<Props> = ({ onSelect, mapboxStyle, bounds }) => {
   // Mapbox-GL.js map instance
   const [map, setMap] = useState(null);
 
@@ -113,15 +119,17 @@ const LocationPicker = ({ onSelect }) => {
     setSearchDelay(
       setTimeout(async () => {
         logger('searching', inputValue);
+        const geocoderBounds = `${bounds[0][0]},${bounds[0][1]},${bounds[1][0]},${bounds[1][1]}`;
         try {
-          const results = await fetchSuggestions(inputValue);
+          const results = await fetchSuggestions(inputValue, geocoderBounds);
           logger('found', results);
           setSuggestions(results);
+          throw new Error('test');
         } catch (e) {
           logger(e);
-          setErrorMessage(
-            'Es gab einen Fehler beim Laden der Ergebnisse. Sind Sie mit dem Internet verbunden?'
-          );
+          // setErrorMessage(
+          //   'Es gab einen Fehler beim Laden der Ergebnisse. Sind Sie mit dem Internet verbunden?'
+          // );
           throw e;
         }
       }, 300)
@@ -146,9 +154,7 @@ const LocationPicker = ({ onSelect }) => {
             </ListItem>
           )}
           {suggestions != null && suggestions.length === 0 && (
-            <em>
-              Es wurde keine Adresse in Friedrichshain-Kreuzberg gefunden.
-            </em>
+            <em>Es wurde keine passende Adresse gefunden.</em>
           )}
           {suggestions.map(({ coords, address }) => (
             <ListItem
@@ -168,11 +174,7 @@ const LocationPicker = ({ onSelect }) => {
           <ErrorIcon /> {addressHint}
         </AddressHint>
       )}
-      <StyledMap
-        onInit={setMap}
-        style={config.gastro.map.style}
-        bounds={config.gastro.map.bounds}
-      />
+      <StyledMap onInit={setMap} style={mapboxStyle} bounds={bounds} />
       <Snackbar open={errorMessage}>{errorMessage}</Snackbar>
     </>
   );

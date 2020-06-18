@@ -8,8 +8,10 @@ import Permit from './pages/Permit';
 import TrafficOrder from './pages/TrafficOrder';
 import Landing from './pages/Landing';
 import Markdown from '~/pages/Markdown';
+import Signup from './pages/Signup';
 import history from '~/history';
 import { getAppPath } from '~/utils/utils';
+import { openSignup } from './utils';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -34,9 +36,18 @@ const Routes = ({ district }) => (
     <Switch>
       <Route exact path={getPath(district, 'landing')} component={Landing} />
 
-      <Route exact path={getPath(district, 'signup')}>
-        <Redirect to={getPath(district, 'landing')} />
-      </Route>
+      <Route
+        exact
+        path={getPath(district, 'signup')}
+        render={(props) =>
+          openSignup(district) ? (
+            <Signup {...props} />
+          ) : (
+            <Redirect to={getPath(district, 'landing')} />
+          )
+        }
+      />
+
       <Route
         exact
         path={getPath(district, 'registration')}

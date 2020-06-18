@@ -1,24 +1,30 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
-import { TextField, CheckboxWithLabel, Select } from 'formik-material-ui';
+import {
+  TextField,
+  CheckboxWithLabel,
+  Select,
+  RadioGroup
+} from 'formik-material-ui';
 import {
   FormHelperText,
   FormControl,
   InputLabel,
-  MenuItem
+  MenuItem,
+  FormControlLabel,
+  Radio
 } from '@material-ui/core';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import LocationPicker from '~/components2/LocationPicker';
 import logger from '~/utils/logger';
-import config from '~/apps/Gastro/config';
 import { GastroSignup } from '~/apps/Gastro/types';
 import api from '~/apps/Gastro/api';
 import validate from './validate';
 import parseLength from '../../parseLength';
-import { connect } from 'react-redux';
 
 /* eslint-disable camelcase */
 export interface FormData {
@@ -80,11 +86,16 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
           coordinates: values.location
         },
         shopfront_length: parseLength(values.shopfront_length),
-        opening_hours: 'weekend',
-        campaign: config.gastro[district?.name]?.campaign
+        campaign: district.name,
+        opening_hours: district.apps.gastro.model.opening_hours
+          ? values.opening_hours
+          : 'weekend',
+        category: district.apps.gastro.model.category
+          ? values.category
+          : 'other'
       };
       try {
-        const response = await api.signup(signupData);
+        const response = await api.signup(signupData, district);
         onSuccess(response);
       } catch (e) {
         logger(e);
@@ -111,26 +122,28 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
             name="category"
             render={(msg) => <FormError error>{msg}</FormError>}
           />
-          <div className="dropdown">
-            <FormControl fullWidth>
-              <InputLabel htmlFor="category">
-                Art des Betriebs wählen
-              </InputLabel>
-              <Field
-                component={Select}
-                name="category"
-                inputProps={{
-                  id: 'category'
-                }}
-              >
-                <MenuItem value="restaurant">Restaurant</MenuItem>
-                <MenuItem value="retail">Einzelhandel mit Auslage</MenuItem>
-                <MenuItem value="workshop">Werkstatt</MenuItem>
-                <MenuItem value="social">Soziales Projekt</MenuItem>
-                <MenuItem value="other">Sonstiger Bedarf</MenuItem>
-              </Field>
-            </FormControl>
-          </div>
+          {district.apps.gastro.model.category && (
+            <div className="dropdown">
+              <FormControl fullWidth>
+                <InputLabel htmlFor="category">
+                  Art des Betriebs wählen
+                </InputLabel>
+                <Field
+                  component={Select}
+                  name="category"
+                  inputProps={{
+                    id: 'category'
+                  }}
+                >
+                  <MenuItem value="restaurant">Restaurant</MenuItem>
+                  <MenuItem value="retail">Einzelhandel mit Auslage</MenuItem>
+                  <MenuItem value="workshop">Werkstatt</MenuItem>
+                  <MenuItem value="social">Soziales Projekt</MenuItem>
+                  <MenuItem value="other">Sonstiger Bedarf</MenuItem>
+                </Field>
+              </FormControl>
+            </div>
+          )}
           <Field
             name="first_name"
             component={TextField}
@@ -146,14 +159,14 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
         </section>
         <section>
           <h4>Wo befindet sich das Ladenlokal?</h4>
-          <p>
-            Es können nur Adressen in Friedrichshain-Kreuzberg gemeldet werden.
-          </p>
+          <p>Es können nur Adressen in {district.title} gemeldet werden.</p>
           <ErrorMessage
             name="address"
             render={(msg) => <FormError error>{msg}</FormError>}
           />
           <LocationPicker
+            mapboxStyle={district.apps.gastro.signup.mapboxStyle}
+            bounds={district.bounds}
             onSelect={({ address, location }) => {
               handleChange({ target: { name: 'address', value: address } });
               handleChange({
@@ -174,9 +187,10 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
             </strong>
           </p>
           <p>
-            Auf Grundlage der Straßenfront-Breite kann das Bezirksamt
+            {district.apps.gastro.signup.shopfrontLabel ||
+              `Auf Grundlage der Straßenfront-Breite kann das Bezirksamt
             entscheiden welcher Raum im Straßenland genutzt werden kann. Sofern
-            sie kein Ladenlokal haben bitte 0 angeben.
+            sie kein Ladenlokal haben bitte 0 angeben.`}
           </p>
           <Field
             name="shopfront_length"
@@ -187,6 +201,30 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
             label="Angabe in Metern z.B. 4,8"
             fullWidth
           />
+        </section>
+
+        <section>
+          <h4>In welchem Zeitraum würden Sie die Fläche gerne nutzen?</h4>
+          <Field component={RadioGroup} name="opening_hours">
+            <FormControlLabel
+              value="weekend"
+              control={<Radio disabled={isSubmitting} />}
+              label="Am Wochenende (Freitags von 10 Uhr bis Sonntags 22 Uhr)"
+              disabled={isSubmitting}
+            />
+            <FormControlLabel
+              value="weekday"
+              control={<Radio disabled={isSubmitting} />}
+              label="Werktags (Montag bis Freitags, jeweils 10 bis 22 Uhr)"
+              disabled={isSubmitting}
+            />
+            <FormControlLabel
+              value="both"
+              control={<Radio disabled={isSubmitting} />}
+              label="Die ganze Woche. (Mo bis Sonntags jeweils von 10 bis 22 Uhr)"
+              disabled={isSubmitting}
+            />
+          </Field>
         </section>
 
         <section>

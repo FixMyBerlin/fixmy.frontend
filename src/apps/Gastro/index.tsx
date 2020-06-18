@@ -8,7 +8,6 @@ import config from './config';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
 import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
 import { setDistrict } from '~/AppState';
-import { getAppPath } from '~/utils/utils';
 
 import Routes from './routes';
 

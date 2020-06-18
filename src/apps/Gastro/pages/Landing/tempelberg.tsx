@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import config from '~/apps/Gastro/config';
 import Link from '~/components/Link';
 import Button from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';

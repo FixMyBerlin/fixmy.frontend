@@ -1,12 +1,12 @@
 import React from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import Button from '~/components2/Button';
 import Logo from '~/components2/LogoFooter';
 import { media } from '~/styles/utils';
 import { getAppPath } from '~/utils/utils';
-import { connect } from 'react-redux';
 
 const LinkButton = styled(Button)`
   width: 100%;
@@ -30,15 +30,23 @@ const Thanks = ({ submission, district }) => {
         der Adresse <strong>{submission.address}</strong> gemeldet.
       </p>
 
-      <p>
-        Das Bezirksamt bearbeitet alle Meldungen nach Ablauf der Frist und wird
-        sich dann mit Informationen zum weiteren Vorgehen bei Ihnen melden.
-      </p>
-      <p>
-        Wenn sich viele Betriebe in einer Straße melden, kann ggf. der gesamte
-        Straßenraum für die temporäre Nutzung freigegeben werden. Informieren
-        Sie Ihre Nachbarn und geben Sie diese Information weiter.
-      </p>
+      {district.apps.gastro.signup?.thanksMessage ? (
+        <p>{district.apps.gastro.signup.thanksMessage}</p>
+      ) : (
+        <>
+          <p>
+            Das Bezirksamt bearbeitet alle Meldungen nach Ablauf der Frist und
+            wird sich dann mit Informationen zum weiteren Vorgehen bei Ihnen
+            melden.
+          </p>
+          <p>
+            Wenn sich viele Betriebe in einer Straße melden, kann ggf. der
+            gesamte Straßenraum für die temporäre Nutzung freigegeben werden.
+            Informieren Sie Ihre Nachbarn und geben Sie diese Information
+            weiter.
+          </p>
+        </>
+      )}
 
       <CopyToClipboard text={sharingUrl}>
         <LinkButton flat>Link kopieren</LinkButton>
