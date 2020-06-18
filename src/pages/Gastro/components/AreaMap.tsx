@@ -5,7 +5,7 @@ import Map from '~/components2/Map';
 import config from '~/pages/Gastro/config';
 
 const StyledMap = styled(Map)`
-  width: 100%;
+  width: 40em;
   height: 30em;
   margin: 1em 0;
 `;
