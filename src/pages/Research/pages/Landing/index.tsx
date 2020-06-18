@@ -30,7 +30,7 @@ export default function ResearchLanding() {
         kicker="Forschungsergebnis - Strassencheck"
         title="Studie zur subjektiven Sicherheit im Radverkehr. - Ergebnisse und Datensatz einer Umfrage mit 20.000 Teilnehmenden"
         publishDate={new Date(2020, 6, 28, 11, 0)}
-        author="Heiko Rintelen"
+        author="FixMyCity"
       />
       {/* <Quote sourceText="Überwältigende Zahl an Teilnehmer:innen">
         1.900 unterschiedliche Straßensituationen wurden anhand von 3D-Bildern
