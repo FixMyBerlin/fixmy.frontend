@@ -96,7 +96,7 @@ const Routes = ({ token }) => (
     )}
 
     {/* Research pages */}
-    {config.routes.research != null && (
+    {config.routes.research != null && config.enableResearchPage && (
       <Route path={config.routes.research.landing} component={Research} />
     )}
 
