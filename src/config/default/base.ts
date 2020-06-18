@@ -23,7 +23,7 @@ const baseConfig = {
   planningIsBeta: true,
   offlineMode: false,
   isSwitchEnabled: true,
-  enableResearchPage: process.env.NODE_ENV !== 'production',
+  enableResearchPage: process.env.BACKEND !== 'production',
   debug: process.env.NODE_ENV !== 'production',
   showLikeButton: true,
   showFeedBackForm: false,
