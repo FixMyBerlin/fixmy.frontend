@@ -93,7 +93,8 @@ export default ({ title, data, feelsafe }: BarChartProps) => {
         <Chart>
           {data.map((d, i) => (
             <Bar
-              key={`bar__${i}`}
+              // eslint-disable-next-line react/no-array-index-key
+              key={`bar__${labels[i]}`}
               style={{ width: `${d}%`, backgroundColor: colors[i] }}
             >
               <BarLabel>{d}%</BarLabel>

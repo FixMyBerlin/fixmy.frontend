@@ -152,15 +152,15 @@ export default function ResearchLanding() {
       <Heading as="h3">Kommunikationskonzept</Heading>
       <Text>
         Die Umfrage wurde als Onlinebefragung konzipiert und in Kooperation mit
-        der Berliner Tageszeitung "Der Tagesspiegel" veröffentlicht. Auf der
-        Internetpräsenz des Tagsspiegels wurde über einen Artikel und
+        der Berliner Tageszeitung &ldquo;Der Tagesspiegel&rdquo; veröffentlicht.
+        Auf der Internetpräsenz des Tagsspiegels wurde über einen Artikel und
         Werbebanner auf die Umfrage verwiesen. Zum Auftakt wurde zusätzlich in
         der Printausgabe ein Artikel als Titelthema mit Verweis auf die Umfrage
         abgedruckt. Obwohl das Hauptziel die Bewertung von Fahrradinfrastruktur
-        auf subjektive Sicherheit war, wurde die Umfrage neutral als "Berliner
-        Straßencheck" kommuniziert. So konnten für die Umfrage unter anderem
-        mehr als 3.500 Personen gewonnen werden, die angaben, nie Fahrrad zu
-        fahren.
+        auf subjektive Sicherheit war, wurde die Umfrage neutral als
+        &ldquo;Berliner Straßencheck&rdquo; kommuniziert. So konnten für die
+        Umfrage unter anderem mehr als 3.500 Personen gewonnen werden, die
+        angaben, nie Fahrrad zu fahren.
       </Text>
       <Heading as="h3">Die Umfrage bestand aus drei Abschnitten:</Heading>
       <List
@@ -293,13 +293,13 @@ export default function ResearchLanding() {
         Datensatz der Ergebnisse zum Download
       </Heading>
       <Text>
-        FixMyCity stellt die Daten offen zur Verfügung ("open data"), unter der
-        Bedingung, dass abgeleitete Werke auch veröffentlicht werden
-        ("share-alike"). Details zur Lizenz können Sie auf den Seiten der Open
-        Knowledge Foundation nachlesen. Die Erklärung zu den Spalten in dem
-        CSV-Datensatz finden Sie in diesem PDF zu den Spezifikationen. Laden Sie
-        sich die Ergebnisse der Umfrage über den folgenden Button als
-        CSV-Datensatz herunter.
+        FixMyCity stellt die Daten offen zur Verfügung (&ldquo;open
+        data&rdquo;), unter der Bedingung, dass abgeleitete Werke auch
+        veröffentlicht werden (&ldquo;share-alike&rdquo;). Details zur Lizenz
+        können Sie auf den Seiten der Open Knowledge Foundation nachlesen. Die
+        Erklärung zu den Spalten in dem CSV-Datensatz finden Sie in diesem PDF
+        zu den Spezifikationen. Laden Sie sich die Ergebnisse der Umfrage über
+        den folgenden Button als CSV-Datensatz herunter.
       </Text>
       <Button as="a" href="https://example.com" target="_blank">
         Datensatz herunterladen

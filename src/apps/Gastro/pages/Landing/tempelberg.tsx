@@ -1,6 +1,5 @@
 import React from 'react';
 
-import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
@@ -8,7 +7,6 @@ import config from '~/apps/Gastro/config';
 import Link from '~/components/Link';
 import Button from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
-import Map from '~/components2/Map';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';

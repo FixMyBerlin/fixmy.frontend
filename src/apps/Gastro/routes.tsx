@@ -9,9 +9,6 @@ import TrafficOrder from './pages/TrafficOrder';
 import Landing from './pages/Landing';
 import Markdown from '~/pages/Markdown';
 import history from '~/history';
-import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
-import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
-import { setDistrict } from '~/AppState';
 import { getAppPath } from '~/utils/utils';
 
 const ScrollToTop = () => {
