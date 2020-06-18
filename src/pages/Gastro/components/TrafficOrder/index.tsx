@@ -38,7 +38,7 @@ const TrafficOrder = ({ application }) => {
   const categoryDescription = getCategoryDescription(application);
   const setupTimerangeEnd = getSetupTimerangeEnd(application);
   return (
-    <div className="c229">
+    <div className="c229 trafficOrder">
       <div>
         <p className="c20">
           <span className="c23" />
