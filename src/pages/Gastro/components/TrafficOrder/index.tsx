@@ -20,10 +20,7 @@ const getSetupTimerangeEnd = ({ application_decided }) => {
 const isParking = ({ regulation }) => regulation === 0;
 
 const TrafficOrder = ({ application }) => {
-  if (
-    application.status !== 'application_accepted' ||
-    application.application_decided == null
-  )
+  if (application.status !== 'application_accepted')
     return (
       <Container>
         <h1>Verkehrsrechtliche Anordnung</h1>
