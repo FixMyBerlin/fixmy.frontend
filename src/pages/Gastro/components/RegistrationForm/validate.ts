@@ -3,7 +3,7 @@
 import { FormData } from '.';
 import logger from '~/utils/logger';
 import parseLength from '../../parseLength';
-import { requiresArea } from './utils';
+import { requiresArea } from '../../utils';
 
 const validate = (regulation) => {
   return (values: FormData) => {

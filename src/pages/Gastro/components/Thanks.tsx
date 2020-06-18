@@ -36,7 +36,7 @@ const Thanks = ({ submission }) => (
     <p>
       Wenn sich viele Betriebe in einer Straße melden, kann ggf. der gesamte
       Straßenraum für die temporäre Nutzung freigegeben werden. Informieren Sie
-      Ihre Nachbarn und geben diese Information weiter.
+      Ihre Nachbarn und geben Sie diese Information weiter.
     </p>
 
     <CopyToClipboard text={sharingUrl}>
