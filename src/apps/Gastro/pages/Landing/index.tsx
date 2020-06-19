@@ -20,7 +20,7 @@ const Landing = ({ district }) => {
   return (
     <>
       <Header showInfoLink={false} />
-      <StyledContainer maxWidth="md">
+      <StyledContainer maxWidth="sm">
         {district?.name === 'xhain' && <XHainLanding />}
         {district?.name === 'tempelberg' && <TempelbergLanding />}
       </StyledContainer>
