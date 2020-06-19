@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { Container } from '@material-ui/core';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import Header from '../components/Header';
 import Thanks from '../components/Thanks';
 import SignupForm from '../components/SignupForm';
@@ -21,7 +22,7 @@ const Section = styled.section`
   }
 `;
 
-const Signup = () => {
+const Signup = ({ district }) => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [submission, setSubmission] = useState(null);
 
@@ -41,9 +42,10 @@ const Signup = () => {
                 </strong>
               </p>
               <p>
-                Ihre Bedarfsmeldung bedeutet keinen Anspruch auf die
-                Bereitstellung einer Fläche. das Bezirksamt wird Sie nach
-                Prüfung aller Meldungen zum weiteren Vorgehen kontaktieren.
+                {district.apps.gastro.signup?.intro ||
+                  `Ihre Bedarfsmeldung bedeutet keinen Anspruch auf die
+            Bereitstellung einer Fläche. das Bezirksamt wird Sie nach
+            Prüfung aller Meldungen zum weiteren Vorgehen kontaktieren.`}
               </p>
             </Section>
             <Section>
@@ -57,4 +59,8 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(Signup);

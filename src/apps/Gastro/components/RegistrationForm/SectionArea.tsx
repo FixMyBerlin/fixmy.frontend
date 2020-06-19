@@ -1,13 +1,14 @@
 import React from 'react';
 import { Card, CardContent } from '@material-ui/core';
 import { ErrorMessage } from 'formik';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import AreaPicker from '~/components2/AreaPicker';
 import { usageWeekday, usageWeekend, requiresArea } from '../../utils';
 import FormError from './FormError';
 
-const InlineIcon = styled.div`
+const InlineIcon = styled.i`
   width: 21px;
   height: 20px;
   margin: 0 3px;
@@ -32,7 +33,13 @@ const PickerIntro = styled.div`
   }
 `;
 
-const SectionArea = ({ regulation, handleChange, signupData, values }) => (
+const SectionArea = ({
+  regulation,
+  handleChange,
+  signupData,
+  values,
+  district
+}) => (
   <>
     {requiresArea(regulation.zone) && (
       <section>
@@ -92,6 +99,8 @@ const SectionArea = ({ regulation, handleChange, signupData, values }) => (
 
         <AreaPicker
           center={signupData?.geometry?.coordinates}
+          mapboxStyle={district?.apps.gastro.registration.mapboxStyle}
+          bounds={district?.bounds}
           onSelect={(value) => {
             handleChange({
               target: {
@@ -118,7 +127,8 @@ const SectionArea = ({ regulation, handleChange, signupData, values }) => (
                 gewünschten Bereich als ganzes sehen können.
               </li>
               <li>
-                Das Werkzeug <EditIcon /> oben rechts auswählen.
+                Das Werkzeug <EditIcon aria-label="Bearbeiten-Icon" /> oben
+                rechts auswählen.
               </li>
               <li>
                 Fläche zeichnen, durch anklicken mehrerer Punkte auf der Karte
@@ -128,13 +138,9 @@ const SectionArea = ({ regulation, handleChange, signupData, values }) => (
               </li>
             </ol>
             <p>
-              Über <TrashIcon /> können sie die Fläche löschen und neu zeichnen.
+              Über <TrashIcon aria-label="Mülltone-Icon" /> können sie die
+              Fläche löschen und neu zeichnen.
             </p>
-            {/* <p>
-              <a className="internal" href="#">
-                Beispielvideo
-              </a>
-            </p> */}
           </CardContent>
         </Card>
       </section>
@@ -164,4 +170,8 @@ const SectionArea = ({ regulation, handleChange, signupData, values }) => (
   </>
 );
 
-export default SectionArea;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(SectionArea);

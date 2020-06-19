@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import Header from '../components/Header';
 import Permit from '../components/Permit';
 import api from '../api';
@@ -29,7 +30,8 @@ const NoPrint = styled.span`
 const PermitPage = ({
   match: {
     params: { id }
-  }
+  },
+  district
 }) => {
   const [isLoading, setLoading] = useState(true);
   const [application, setApplication] = useState(null);
@@ -38,7 +40,7 @@ const PermitPage = ({
   useEffect(() => {
     const doLoad = async () => {
       try {
-        setApplication(await api.get(id, null));
+        setApplication(await api.get(id, null, district));
       } catch (e) {
         if (e.message === 'Failed to fetch') {
           setError(
@@ -67,4 +69,8 @@ const PermitPage = ({
   );
 };
 
-export default PermitPage;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(PermitPage);

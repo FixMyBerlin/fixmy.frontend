@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import FMBLogo from '~/images/FixMyCity_positiv_300px.png';
-import Wappen1 from '~/images/gastro/wappen.png';
-import Wappen2 from '~/images/gastro/wappen@2x.png';
 import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`
@@ -22,6 +21,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     padding-bottom: 2em;
+    padding-right: 1em;
 
     div {
       margin-right: 16px;
@@ -51,19 +51,17 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const Logo = () => (
+const Logo = ({ district }) => (
   <Wrapper>
     <section className="bezirksamt">
       <LogoWrapper>
         <img
-          src={Wappen2}
-          srcSet={`${Wappen1} 450w, ${Wappen2} 750w`}
-          alt="Wappen Friedrichshain-Kreuzberg"
+          src={district.emblem.large}
+          srcSet={`${district.emblem.small} 450w, ${district.emblem.large} 750w`}
+          alt={`Wappen ${district.title}`}
         />
       </LogoWrapper>
-      <span>
-        Ein Angebot des Bezirksamts Friedrichshain-Kreuzberg von Berlin
-      </span>
+      <span>{district.content.footerLine}</span>
     </section>
     <Link to="/" className="fmb">
       <LogoWrapper>
@@ -75,4 +73,8 @@ const Logo = () => (
   </Wrapper>
 );
 
-export default Logo;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(Logo);

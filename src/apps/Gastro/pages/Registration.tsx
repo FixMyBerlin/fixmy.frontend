@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { Container } from '@material-ui/core';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import Header from '../components/Header';
 import Thanks from '../components/ThanksRegistration';
 import RegistrationForm from '../components/RegistrationForm';
-import Logo from '~/pages/Gastro/components/Logo';
+import Logo from '~/apps/Gastro/components/Logo';
 import api from '../api';
 import regulations from '../regulations';
 import { GastroSignup } from '../types';
@@ -51,7 +52,8 @@ const isLocked = ({ status }) =>
 const Registration = ({
   match: {
     params: { id, accessKey }
-  }
+  },
+  district
 }) => {
   // Data from previous signup (Interessensbekundung)
   const [isLoading, setLoading] = useState(true);
@@ -66,7 +68,7 @@ const Registration = ({
     const doLoad = async () => {
       let result;
       try {
-        result = await api.get(id, accessKey);
+        result = await api.get(id, accessKey, district);
         result = process(result);
 
         if (isLocked(result)) {
@@ -138,4 +140,8 @@ const Registration = ({
   );
 };
 
-export default Registration;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(Registration);
