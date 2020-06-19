@@ -17,7 +17,7 @@ import {
   BarChartWrapper
 } from '~/components2/Article';
 
-import image0 from './images/image-0.jpg';
+import CP_C_688 from './images/01_CP_C_688.jpg';
 import image1 from './images/image-1.jpg';
 import image3 from './images/image-3.png';
 import image4 from './images/image-4.png';
@@ -74,15 +74,15 @@ export default function ResearchLanding() {
         Sicherheitsempfinden verschiedener Nutzergruppen und zur Perspektive von
         Autofahrenden und Fußgänger:innen gewonnen werden.
       </Text>
+      <ImageFull
+        source={CP_C_688}
+        feelsafe={95}
+        subtitle="*95 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive."
+      />
       <Image source={image0} />
       <Text>
-        Am sichersten fühlen sich die Teilnehmenden auf einem 3,5 Meter breiten
-        Radstreifen mit grüner Einfärbung und Blumenkübeln zur Trennung vom
-        KFZ-Verkehr (bei Führung auf der Fahrbahn). Bei Führung im Seitenraum
-        werden Radwege über zwei Meter Breite als überwiegend sicher empfunden.
-        In der Auswertung finden Sie eine genaue Auflistung der
-        unterschiedlichen Faktoren, sowie weitere Analysen zu Führungen auf
-        Nebenstraßen und nach Nutzergruppen.
+        Bei Führung auf der Fahrbahn fühlen sich die Teilnehmenden unter allen Situationen aus Fahrradperspektive auf einem   3,5 Meter breiten Radstreifen mit grüner Einfärbung, geführt rechts vom parkenden Verkehr am sichersten. Insgesamt wurden Führungen im Seitenraum am sichersten empfunden. In der statistischen Auswertung finden Sie eine dazu viele Analysen der unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie der unterschiedlichen Perspektiven.
+
       </Text>
       <Button as="a" href="#statistische-auswertung" target="_blank">
         Direkt zur Auswertung
