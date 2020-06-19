@@ -79,7 +79,7 @@ export default function ResearchLanding() {
         feelsafe={95}
         subtitle="*95 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive."
       />
-      <Image source={image0} />
+      <Image source={CP_C_688} />
       <Text>
         Bei Führung auf der Fahrbahn fühlen sich die Teilnehmenden unter allen Situationen aus Fahrradperspektive auf einem   3,5 Meter breiten Radstreifen mit grüner Einfärbung, geführt rechts vom parkenden Verkehr am sichersten. Insgesamt wurden Führungen im Seitenraum am sichersten empfunden. In der statistischen Auswertung finden Sie eine dazu viele Analysen der unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie der unterschiedlichen Perspektiven.
 
