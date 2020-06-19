@@ -59,7 +59,7 @@ export default {
     },
     tempelberg: {
       title: 'Tempelhof-Schöneberg',
-      path: 'tempelhof-schöneberg',
+      path: 'tempelhof-schoeneberg',
       name: 'tempelberg',
       content: {
         footerLine:
