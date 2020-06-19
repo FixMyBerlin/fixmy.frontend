@@ -53,6 +53,9 @@ export default {
           },
           signup: {
             mapboxStyle: XHAIN_TERRASSEN
+          },
+          registration: {
+            mapboxStyle: XHAIN_TERRASSEN
           }
         }
       }

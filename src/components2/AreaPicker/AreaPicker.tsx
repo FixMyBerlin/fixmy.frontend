@@ -24,12 +24,19 @@ const GoodJob = styled.p`
 type Props = {
   onSelect: (geometry: GeoJSON.Geometry | null) => any;
   center?: MapboxGL.LngLatLike;
+  mapboxStyle: string;
+  bounds?: MapboxGL.LngLatBoundsLike;
 };
 
-const AreaPicker: React.FC<Props> = ({ center, onSelect }) => {
+const AreaPicker: React.FC<Props> = ({
+  center,
+  onSelect,
+  mapboxStyle,
+  bounds
+}) => {
   // Mapbox-GL.js map instance
-  const [map, setMap] = useState(null);
-  const [hasGeometry, setHasGeometry] = useState(false);
+  const [map, setMap] = useState<MapboxGL.Map | null>(null);
+  const [hasGeometry, setHasGeometry] = useState<boolean>(false);
 
   useEffect(() => {
     if (map == null) return;
@@ -59,8 +66,8 @@ const AreaPicker: React.FC<Props> = ({ center, onSelect }) => {
     <>
       <StyledMap
         onInit={setMap}
-        style={config.gastro.map.style}
-        bounds={config.gastro.map.bounds}
+        style={mapboxStyle}
+        bounds={bounds}
         center={center}
         zoom={DEFAULT_ZOOM_LEVEL}
         attributionControl={false}

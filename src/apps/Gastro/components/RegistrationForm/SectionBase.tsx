@@ -6,12 +6,13 @@ import styled from 'styled-components';
 
 import StaticMap from '~/components2/StaticMap';
 import FormError from './FormError';
+import { connect } from 'react-redux';
 
 const InvisiLabel = styled.label`
   display: none;
 `;
 
-const SectionBase = ({ shopName, signupData }) => (
+const SectionBase = ({ shopName, signupData, district }) => (
   <section>
     <p>
       <strong>Name des Betriebs: {shopName}</strong>
@@ -74,8 +75,16 @@ const SectionBase = ({ shopName, signupData }) => (
       disabled
       fullWidth
     />
-    <StaticMap location={signupData?.geometry?.coordinates} />
+    <StaticMap
+      location={signupData?.geometry?.coordinates}
+      mapboxStyle={district?.apps.gastro.registration.mapboxStyle}
+      bounds={district?.bounds}
+    />
   </section>
 );
 
-export default SectionBase;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(SectionBase);
