@@ -332,9 +332,9 @@ export default function ResearchLanding() {
         ]}
       />
       <BarChartWrapper
-        title="Führung auf der Fahrbahn(HVS-F) mit und ohne Radverkehrsanlage(RVA)"
+        title="Führung auf der Fahrbahn(HVS) mit und ohne Radverkehrsanlage(RVA)"
         source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS. Busspuren wurden hier in der Gruppe "mit RVA" aufgenommen."
-      >
+      
         <BarChart title="HVS mit RVA" data={[9, 16, 53, 22]} feelsafe={75} />
         <BarChart title="HVS ohne RVA" data={[56, 30, 12, 2]} feelsafe={14} />
         <BarChart title="HVS ohne RVA (Vielfahrer)" data={[55, 30, 12, 3]} feelsafe={15} />
@@ -348,7 +348,7 @@ export default function ResearchLanding() {
       </Text>
       
       <Heading as="h2" toc="Ruhender Verkehr erzeugt zusätzliche Konfliktzone">
-      Ruhender Verkehr erzeugt zusätzliche Konfliktzone
+        Ruhender Verkehr erzeugt zusätzliche Konfliktzone
        </Heading>
       <Text>
       Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an die RVA sind grundlegend zu unterscheiden. Bei Führung mit ruhendem Verkehr rechts der RVA (Parken-rechts) beeinträchtigt die potentielle Gefahr durch Türöffnung der parkenden Autos das Sicherheitsempfinden negativ. 
