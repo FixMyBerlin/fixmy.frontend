@@ -42,15 +42,17 @@ export const getCategoryDescription = (application: any) => {
   return categoryDescription;
 };
 
-// eslint-disable-next-line camelcase
+/* eslint-disable camelcase */
 export const dateReceived = ({ application_received }) =>
-  new Date(application_received).toLocaleDateString('de-DE');
+  application_received == null
+    ? '<Datum Eingang>'
+    : new Date(application_received).toLocaleDateString('de-DE');
 
-// eslint-disable-next-line camelcase
 export const dateDecided = ({ application_decided }) =>
-  new Date(application_decided).toLocaleDateString('de-DE');
-
-export const isBoardwalk = ({ regulation }) => regulation === 10;
+  application_decided == null
+    ? '<Datum Bescheid>'
+    : new Date(application_decided).toLocaleDateString('de-DE');
+/* eslint-enable camelcase */
 
 export enum REGULATION {
   'Parkplatz' = 0,
@@ -69,6 +71,8 @@ export enum REGULATION {
   'ParkenDiagonal' = 13,
   'Sonstige' = 14
 }
+
+export const isBoardwalk = ({ regulation }) => regulation === REGULATION.Gehweg;
 
 export const preSignup = (district) =>
   new Date() < district.apps.gastro.timeline.openSignup;
