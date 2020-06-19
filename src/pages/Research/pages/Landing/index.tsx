@@ -19,8 +19,8 @@ import {
 
 import CP_C_688 from './images/01_CP_C_688.jpg';
 import image1 from './images/image-1.jpg';
-import image3 from './images/image-3.png';
-import image4 from './images/image-4.png';
+import MS_C_2 from './images/01_MS_C_2.jpg';
+import MS_C_587 from './images/01_MS_C_587.jpg';
 
 export default function ResearchLanding() {
   return (
@@ -81,8 +81,7 @@ export default function ResearchLanding() {
       />
       <Image source={CP_C_688} />
       <Text>
-        Bei Führung auf der Fahrbahn fühlen sich die Teilnehmenden unter allen Situationen aus Fahrradperspektive auf einem   3,5 Meter breiten Radstreifen mit grüner Einfärbung, geführt rechts vom parkenden Verkehr am sichersten. Insgesamt wurden Führungen im Seitenraum am sichersten empfunden. In der statistischen Auswertung finden Sie eine dazu viele Analysen der unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie der unterschiedlichen Perspektiven.
-
+        Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden rechts vom parkenden Verkehr am sichersten. Unter allen Situationen aus Fahrradperspektive erhielt die oben gezeigte auf einem 3,5 Meter breiten Radstreifen mit grüner Einfärbung und klarer Trennung zum ruhenden Verkehr die meisten Bewertungen “sicher” (64,09%) außerdem 31,36% “eher sicher”. Insgesamt wurden Führungen im Seitenraum als sicherer, als solche im Fließenden Verkehr empfunden. Führungen in Nebenstraßen schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargstellt wurden. In der statistischen Auswertung finden Sie detaillierte Analysen zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie Auswertungen der Auto- und Fußperspektive.
       </Text>
       <Button as="a" href="#statistische-auswertung" target="_blank">
         Direkt zur Auswertung
@@ -325,19 +324,19 @@ export default function ResearchLanding() {
         Abschnitt.
       </Text>
       <ImageMulti
-        sources={[image3, image4]}
-        feelsafes={[38, 16]}
+        sources={[MS_C_2, MS_C_587]}
+        feelsafes={[28, 11]}
         subtitles={[
-          '*38 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive.',
-          '*16 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive.'
+          '*27,62 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“',
+          '*11,05 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“'
         ]}
       />
       <BarChartWrapper
-        title="Führung auf der Fahrbahn ohne (RVA)"
-        source="Anm: Durchschnitt der Bewertungen von Situationen auf HVS, ausgenommen wurden Situationen mit Tramschienen, Busfahrspuren…"
+        title="Führung auf der Fahrbahn(HVS-F) mit und ohne Radverkehrsanlage(RVA)"
+        source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS. Busspuren wurden hier in der Gruppe "mit RVA" aufgenommen."
       >
-        <BarChart title="HVS mit RVA" data={[9, 6, 53, 32]} feelsafe={15} />
-        <BarChart title="HVS ohne RVA" data={[33, 40, 22, 5]} feelsafe={30} />
+        <BarChart title="HVS ohne RVA" data={[9, 6, 53, 32]} feelsafe={75} />
+        <BarChart title="HVS mit RVA" data={[33, 40, 22, 5]} feelsafe={14} />
         <BarChart
           title="HVS ohne RVA (Vielfahrer)"
           data={[33, 40, 22, 5]}
@@ -364,7 +363,7 @@ export default function ResearchLanding() {
         <Link href="https://fixmyberlin.de">Jupyter notebook</Link>
       </Text>
       <ImageFull
-        source={image3}
+        source={MS_C_587}
         feelsafe={63}
         subtitle="*63 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive."
       />
