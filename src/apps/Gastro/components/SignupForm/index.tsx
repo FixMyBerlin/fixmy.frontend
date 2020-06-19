@@ -63,7 +63,7 @@ const testValues: FormData = {
   email: 'fixmy-98@vincentahrend.com',
   address: 'Keithstraße, 12307 Berlin',
   location: [13.40994, 52.37997],
-  opening_hours: 'both',
+  opening_hours: 'whole_week',
   shopfront_length: '5',
   tos_accepted: true
 };
@@ -231,13 +231,13 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
               disabled={isSubmitting}
             />
             <FormControlLabel
-              value="weekday"
+              value="workdays"
               control={<Radio disabled={isSubmitting} />}
               label="Werktags (Montag bis Freitags, jeweils 10 bis 22 Uhr)"
               disabled={isSubmitting}
             />
             <FormControlLabel
-              value="both"
+              value="whole_week"
               control={<Radio disabled={isSubmitting} />}
               label="Die ganze Woche. (Mo bis Sonntags jeweils von 10 bis 22 Uhr)"
               disabled={isSubmitting}
