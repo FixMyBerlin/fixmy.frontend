@@ -41,7 +41,7 @@ export interface FormData {
 }
 /* eslint-enable camelcase */
 
-const initialValues: FormData = {
+const emptyForm: FormData = {
   shop_name: '',
   first_name: '',
   last_name: '',
@@ -49,9 +49,26 @@ const initialValues: FormData = {
   email: '',
   address: '',
   location: null,
+  opening_hours: null,
   shopfront_length: '',
   tos_accepted: ''
 };
+
+const testValues: FormData = {
+  shop_name: 'Test',
+  first_name: 'Snackmaster',
+  last_name: 'Chunk',
+  category: '',
+  email: 'fixmy-98@vincentahrend.com',
+  address: 'Keithstraße, 12307 Berlin',
+  location: [13.40994, 52.37997],
+  opening_hours: 'both',
+  shopfront_length: '5',
+  tos_accepted: true
+};
+
+const initialValues =
+  process.env.NODE_ENV === 'development' ? testValues : emptyForm;
 
 const FormError = styled(FormHelperText)`
   && {
