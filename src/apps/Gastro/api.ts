@@ -15,11 +15,9 @@ const getApiBase = (district) => {
     return config.apiUrl;
   }
 
-  logger(process.env);
-
   return (
     process.env.API_URL ||
-    district.backend[process.env.backend] ||
+    district.backend[process.env.BACKEND] ||
     district.backend.production
   );
 };
