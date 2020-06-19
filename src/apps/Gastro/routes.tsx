@@ -23,11 +23,7 @@ const ScrollToTop = () => {
   return null;
 };
 
-type DistrictConfig = {
-  name: string;
-};
-
-export const getPath = (district: DistrictConfig, name: string) =>
+export const getPath = (district, name: string) =>
   getAppPath(district, 'gastro') + config.gastro[district.name].routes[name];
 
 const Routes = ({ district }) => (

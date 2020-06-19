@@ -73,5 +73,12 @@ export function getRVALength({ length, side, id }) {
 
 export const isTouch = 'ontouchstart' in window;
 
-export const getAppPath = (district, app) =>
-  `/${district.path}/${district.apps[app].path}`;
+/**
+ *
+ * @param district configuration for the current district
+ * @param app name of the app
+ */
+export const getAppPath = (
+  district: { path: string; apps: { [app: string]: { path: string } } },
+  app: string
+) => `/${district.path}/${district.apps[app].path}`;
