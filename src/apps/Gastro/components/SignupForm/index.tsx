@@ -12,7 +12,8 @@ import {
   InputLabel,
   MenuItem,
   FormControlLabel,
-  Radio
+  Radio,
+  LinearProgress
 } from '@material-ui/core';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -286,6 +287,15 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
             }}
           />
         </div>
+
+        {isSubmitting && <LinearProgress />}
+
+        {status && (
+          <p>
+            <strong>{status}</strong>
+          </p>
+        )}
+
         <Button flat type="submit">
           Interessensbekundung absenden
         </Button>
