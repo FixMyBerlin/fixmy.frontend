@@ -85,7 +85,7 @@ export default {
         gastro: {
           path: 'terrassen',
           timeline: {
-            openSignup: new Date(Date.UTC(2020, 5, 17, 16, 0)),
+            openSignup: new Date(Date.UTC(2020, 5, 19, 16, 0)),
             closeSignup: new Date(Date.UTC(2020, 5, 22, 8, 0))
           },
           model: {

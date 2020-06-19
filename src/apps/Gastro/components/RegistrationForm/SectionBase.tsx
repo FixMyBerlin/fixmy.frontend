@@ -2,11 +2,11 @@ import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 import { TextField, Select } from 'formik-material-ui';
 import { FormControl, InputLabel, MenuItem } from '@material-ui/core';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import StaticMap from '~/components2/StaticMap';
 import FormError from './FormError';
-import { connect } from 'react-redux';
 
 const InvisiLabel = styled.label`
   display: none;

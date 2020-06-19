@@ -1,9 +1,9 @@
 import React from 'react';
 import MapboxGL from 'mapbox-gl';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Map from '~/components2/Map';
 import config from '~/apps/Gastro/config';
-import { connect } from 'react-redux';
 
 const StyledMap = styled(Map)`
   width: 40em;

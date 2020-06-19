@@ -1,6 +1,6 @@
 import React, { lazy } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import config from '~/config';
 import PrivateRoute from '~/components/PrivateRoute';
@@ -39,7 +39,10 @@ const District = (name) => {
 
   return (
     <Route key={name} path={`/${district.path}`}>
-      {districtApps}
+      <Switch>
+        {districtApps}
+        <Redirect to="/" />
+      </Switch>
     </Route>
   );
 };
