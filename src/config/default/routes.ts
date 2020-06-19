@@ -37,18 +37,7 @@ export default {
   emailVerification: '/email-verification',
   profile: '/profil',
   userVerify: '/bestaetigen',
-  gastro: {
-    landing: '/friedrichshain-kreuzberg/terrassen',
-    signup: '/friedrichshain-kreuzberg/terrassen/anmeldung',
-    thanks: '/friedrichshain-kreuzberg/terrassen/danke',
-    registration:
-      '/friedrichshain-kreuzberg/terrassen/registrierung/:id/:accessKey',
-    registrationThanks:
-      '/friedrichshain-kreuzberg/terrassen/registrierung/danke',
-    directory: '/friedrichshain-kreuzberg/terrassen/verzeichnis/',
-    directoryEntry: '/friedrichshain-kreuzberg/terrassen/verzeichnis/:id',
-    permit: '/friedrichshain-kreuzberg/terrassen/verzeichnis/:id/genehmigung',
-    trafficOrder:
-      '/friedrichshain-kreuzberg/terrassen/verzeichnis/:id/anordnung'
+  research: {
+    landing: '/research'
   }
 };

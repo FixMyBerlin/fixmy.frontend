@@ -1,6 +1,6 @@
 import React, { lazy } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import config from '~/config';
 import PrivateRoute from '~/components/PrivateRoute';
@@ -18,7 +18,34 @@ const MapView = lazy(() => import('~/pages/Map'));
 const Markdown = lazy(() => import('~/pages/Markdown'));
 const Reports = lazy(() => import('~/pages/Reports'));
 const Spielstrassen = lazy(() => import('~/pages/Spielstrassen'));
-const Gastro = lazy(() => import('~/pages/Gastro'));
+const Research = lazy(() => import('~/pages/Research'));
+
+const apps = {
+  gastro: lazy(() => import('~/apps/Gastro'))
+};
+
+const District = (name) => {
+  const district = config.districts[name];
+  const districtApps = Object.keys(district.apps).map((app) => {
+    const AppComponent = apps[app];
+    return (
+      <Route
+        key={`${name}-${app}`}
+        path={`/${district.path}/${district.apps[app].path}`}
+        render={(props) => <AppComponent districtName={name} {...props} />}
+      />
+    );
+  });
+
+  return (
+    <Route key={name} path={`/${district.path}`}>
+      <Switch>
+        {districtApps}
+        <Redirect to="/" />
+      </Switch>
+    </Route>
+  );
+};
 
 const Routes = ({ token }) => (
   <Switch>
@@ -89,9 +116,11 @@ const Routes = ({ token }) => (
       />
     )}
 
-    {/* Gastro pages */}
-    {config.routes.gastro != null && (
-      <Route path={config.routes.gastro.landing} component={Gastro} />
+    {config.districts && Object.keys(config.districts).map(District)}
+
+    {/* Research pages */}
+    {config.routes.research != null && config.enableResearchPage && (
+      <Route path={config.routes.research.landing} component={Research} />
     )}
 
     <Route render={() => <Markdown page="nomatch" />} />

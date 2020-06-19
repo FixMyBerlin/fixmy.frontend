@@ -4,6 +4,8 @@ import openSansRegularwoff from '../fonts/open-sans-v17-latin-regular.woff';
 import openSansRegularwoff2 from '../fonts/open-sans-v17-latin-regular.woff2';
 import openSans600woff from '../fonts/open-sans-v17-latin-600.woff';
 import openSans600woff2 from '../fonts/open-sans-v17-latin-600.woff2';
+import openSans600woffItalic from '../fonts/open-sans-v17-latin-600italic.woff';
+import openSans600woff2Italic from '../fonts/open-sans-v17-latin-600italic.woff2';
 import openSans700woff from '../fonts/open-sans-v17-latin-700.woff';
 import openSans700woff2 from '../fonts/open-sans-v17-latin-700.woff2';
 
@@ -42,6 +44,14 @@ export default `
     src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
         url(${openSans600woff2}) format('woff2'),
         url(${openSans600woff}) format('woff');
+  }
+  @font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 600;
+    src: local('Open Sans SemiBold Italic'), local('OpenSans-SemiBoldItalic'),
+        url(${openSans600woff2Italic}) format('woff2'),
+        url(${openSans600woffItalic}) format('woff');
   }
   /* open-sans-700 - latin */
   @font-face {
