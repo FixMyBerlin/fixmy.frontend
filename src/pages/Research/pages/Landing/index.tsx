@@ -115,11 +115,11 @@ export default function ResearchLanding() {
         Sicherheitsempfinden verschiedener Nutzergruppen und zur Perspektive von
         Autofahrenden und Fußgänger:innen gewonnen werden.
       </Text>
-      <ImageFull
+     {/* <ImageFull
         source={CP_C_688}
         feelsafe={98}
         subtitle="*97,93% der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive."
-      />
+      /> */}
       <Image source={CP_C_688} />
       <Text>
         Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden rechts vom parkenden Verkehr am sichersten. Unter allen Situationen aus Fahrradperspektive erhielt die oben gezeigte auf einem 3,5 Meter breiten Radstreifen mit grüner Einfärbung und klarer Trennung zum ruhenden Verkehr die meisten Bewertungen “sicher” (75,86%) außerdem 22,07% “eher sicher”. Im Durchschnitt wurden Führungen im Seitenraum als sicherer, als solche im Fließenden Verkehr empfunden. Führungen in Nebenstraßen schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargestellt wurden. In der statistischen Auswertung finden Sie detaillierte Analysen zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie Auswertungen der Auto- und Fußperspektive.    
@@ -385,7 +385,7 @@ export default function ResearchLanding() {
         <Link href="https://fixmyberlin.de">Jupyter notebook</Link>
       </Text>
       
-      <Heading as="h2" toc="Ruhender Verkehr erzeugt zusätzliche Konfliktzone">
+      <Heading as="h3" toc="Ruhender Verkehr erzeugt zusätzliche Konfliktzone">
         Ruhender Verkehr erzeugt zusätzliche Konfliktzone
        </Heading>
       <Text>
@@ -406,8 +406,42 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
        >
         <BarChart title="mit Parken rechts" data={[25, 25, 25, 25]} feelsafe={60} />
         <BarChart title="ohne Parken (inkl. bauliche Trennung) " data={[25, 25, 25, 25]} feelsafe={85} />
-        <BarChart title="ohne Parken (ohne bauliche Trennung) " data={[25, 25, 25, 25]} feelsafe={77} />
        </BarChartWrapper>
+      
+      <Heading as="h3" toc=" Drei zentrale Einflussfaktoren">
+         Drei zentrale Einflussfaktoren
+       </Heading>
+      <Text>
+        Für das subjektive Sicherheitsempfinden sind neben Lage der RVA vornehmlich drei Faktoren relevant:
+        <List
+        items={[
+          'Die Breite der RVA',
+          'Ihre Farbliche Unterscheidung',
+          'Vorhandensein einer baulichen Trennung zum fließendem KFZ-Verkehr'
+        ]}
+      />
+        <BarChartWrapper
+        title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
+        source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens"
+       >
+        <BarChart title="Breite RVA (Breit - schmal)" data={[100]} feelsafe={60} />
+        <BarChart title="Oberflächenfärbung (grün - asphalt)" data={[15, 85, 0, 0]} feelsafe={85} />
+        <BarChart title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)" data={[15, 85, 0, 0]} feelsafe={85} />
+        <BarChart title="Tempolimit (30 - 50)" data={[15, 85, 0, 0]} feelsafe={85} />
+        <BarChart title="Verkehrsstärke (normal - hoch)" data={[15, 85, 0, 0]} feelsafe={85} />
+        <BarChart title="Markierung Links (gestrichelt - Sperrfläche)" data={[15, 85, 0, 0]} feelsafe={85} />
+          
+       </BarChartWrapper>
+      </Text>
+      <Text>
+        Die weiteren in der Umfrage abgefragten Faktoren, Markierungsarten, Tempolimit und Verkehrsstärke, spielen eine vergleichsweise unbedeutende Rolle. Hier ist zu berücksichtigen, das die Empfindungen der Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur abstrahiert vermittelt werden kann.
+      </Text>
+      
+      <Heading as="h3" toc=" Drei zentrale Einflussfaktoren">
+         Drei zentrale Einflussfaktoren
+       </Heading>
+      <Text>
+      </Text>
       
       <ImageFull
         source={MS_C_587}
