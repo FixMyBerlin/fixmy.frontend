@@ -422,9 +422,9 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
       />
         <BarChartWrapper
         title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
-        source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens"
+        source="Anm: Durchschnitt der Bewertungen aller Situationen"
        >
-        <BarChart title="Breite RVA (Breit - schmal)" data={[100]} feelsafe={60} />
+        <BarChart title="Gesamtbreite RVA (Breit - schmal)" data={[100, 0, 0, 0]} feelsafe={21} />
         <BarChart title="Oberflächenfärbung (grün - asphalt)" data={[15, 85, 0, 0]} feelsafe={85} />
         <BarChart title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)" data={[15, 85, 0, 0]} feelsafe={85} />
         <BarChart title="Tempolimit (30 - 50)" data={[15, 85, 0, 0]} feelsafe={85} />
