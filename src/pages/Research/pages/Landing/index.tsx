@@ -20,7 +20,6 @@ import {
 import CP_C_688 from './images/01_CP_C_688.jpg';
 import image1 from './images/image-1.jpg';
 import MS_C_2 from './images/01_MS_C_2.jpg';
-import MS_C_587 from './images/01_MS_C_587.jpg';
 import CP_C_58 from './images/01_CP_C_58_@x2.jpg';
 import CP_C_49 from './images/01_CP_C_49_@x2.jpg';
 import CP_C_194 from './images/01_CP_C_194_@x2.jpg';
