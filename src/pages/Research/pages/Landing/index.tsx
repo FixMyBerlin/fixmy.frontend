@@ -385,7 +385,7 @@ export default function ResearchLanding() {
         <Link href="https://fixmyberlin.de">Jupyter notebook</Link>
       </Text>
       
-      <Heading as="h3" toc="Ruhender Verkehr erzeugt zusätzliche Konfliktzone">
+      <Heading as="h3">
         Ruhender Verkehr erzeugt zusätzliche Konfliktzone
        </Heading>
       <Text>
@@ -408,7 +408,7 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
         <BarChart title="ohne Parken (inkl. bauliche Trennung) " data={[25, 25, 25, 25]} feelsafe={85} />
        </BarChartWrapper>
       
-      <Heading as="h3" toc=" Drei zentrale Einflussfaktoren">
+      <Heading as="h3">
          Drei zentrale Einflussfaktoren
        </Heading>
       <Text>
@@ -416,29 +416,27 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
         <List
         items={[
           'Die Breite der RVA',
-          'Ihre Farbliche Unterscheidung',
-          'Vorhandensein einer baulichen Trennung zum fließendem KFZ-Verkehr'
+          'Ihre farbliche Unterscheidung',
+          'Vorhandensein einer baulichen Trennung zum fließenden KFZ-Verkehr'
         ]}
       />
         </Text>
+         <Text>
+            Die Breite der Trennung Links spielt vornehmlich bei Situationen mit Parken rechts eine Rolle. Die weiteren in der Umfrage abgefragten Faktoren, Tempolimit und Verkehrsstärke, spielen eine vergleichsweise unbedeutende Rolle. Hier ist zu berücksichtigen, das die Empfindungen der Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur abstrahiert vermittelt werden kann.
+         </Text>
         <BarChartWrapper
         title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
         source="Anm: Durchschnitt der Bewertungen aller Situationen"
        >
-        <BarChart title="Gesamtbreite RVA (Breit - schmal)" data={[100, 0, 0, 0]} feelsafe={21} />
-        <BarChart title="Oberflächenfärbung (grün - asphalt)" data={[15, 85, 0, 0]} feelsafe={85} />
-        <BarChart title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)" data={[15, 85, 0, 0]} feelsafe={85} />
-        <BarChart title="Tempolimit (30 - 50)" data={[15, 85, 0, 0]} feelsafe={85} />
-        <BarChart title="Verkehrsstärke (normal - hoch)" data={[15, 85, 0, 0]} feelsafe={85} />
-        <BarChart title="Markierung Links (gestrichelt - Sperrfläche)" data={[15, 85, 0, 0]} feelsafe={85} />
-          
+        <BarChart title="Gesamtbreite RVA (Breit - schmal)" data={[21, 0, 0, 79]} feelsafe={21} />
+        <BarChart title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)" data={[22, 0, 0, 78]} feelsafe={22} />
+        <BarChart title="Oberflächenfärbung (grün - asphalt)" data={[11, 0, 0, 89]} feelsafe={11} />
+        <BarChart title="Markierung Links (gestrichelt - Sperrfläche)" data={[8, 0, 0, 92]} feelsafe={8} />
+        <BarChart title="Tempolimit (30 - 50)" data={[3, 0, 0, 97]} feelsafe={3} />
+        <BarChart title="Verkehrsstärke (normal - hoch)" data={[3, 0, 0, 97]} feelsafe={3} />
        </BarChartWrapper>
       
-      <Text>
-        Die weiteren in der Umfrage abgefragten Faktoren, Markierungsarten, Tempolimit und Verkehrsstärke, spielen eine vergleichsweise unbedeutende Rolle. Hier ist zu berücksichtigen, das die Empfindungen der Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur abstrahiert vermittelt werden kann.
-      </Text>
-      
-      <Heading as="h3" toc=" Drei zentrale Einflussfaktoren">
+      <Heading as="h3">
          Drei zentrale Einflussfaktoren
        </Heading>
       <Text>
