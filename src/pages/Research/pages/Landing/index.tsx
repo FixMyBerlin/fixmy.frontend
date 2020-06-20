@@ -428,7 +428,7 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
         title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
         source="Anm: Durchschnitt der Bewertungen aller Situationen"
        >
-        <BarChart title="Gesamtbreite RVA (Breit - schmal)" data={[21, 0, 0, 79]} feelsafe={21} />
+        <BarChart title="Gesamtbreite RVA (Breit - schmal)" data={[21, 0, 0, 79]} />
         <BarChart title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)" data={[22, 0, 0, 78]} feelsafe={22} />
         <BarChart title="Oberflächenfärbung (grün - asphalt)" data={[11, 0, 0, 89]} feelsafe={11} />
         <BarChart title="Markierung Links (gestrichelt - Sperrfläche)" data={[8, 0, 0, 92]} feelsafe={8} />
