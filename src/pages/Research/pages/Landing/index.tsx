@@ -401,5 +401,5 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
         FixMyCity wird gefördert durch das BMVI und die Senatskanzlei Berlin.
       </Text>
     </ArticleWrapper>
-  );
+  )
 }
