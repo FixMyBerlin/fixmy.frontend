@@ -37,7 +37,6 @@ import CP_P_185 from './images/01_CP_P_185_@x2.jpg';
 import CP_P_194 from './images/01_CP_P_194_@x2.jpg';
 import CP_P_203 from './images/01_CP_P_203_@x2.jpg';
 import CP_P_778 from './images/01_CP_P_778_@x2.jpg';
-import MS_C_2 from './images/01_MS_C_2_@x2.jpg';
 import MS_C_21_ from './images/01_MS_C_21_@x2.jpg';
 import MS_C_51_ from './images/01_MS_C_51_@x2.jpg';
 import MS_C_17_ from './images/01_MS_C_17_@x2.jpg';
@@ -55,7 +54,6 @@ import MS_C_860_ from './images/01_MS_C_860_@x2.jpg';
 import MS_C_980_ from './images/01_MS_C_980_@x2.jpg';
 import MS_C_1220_ from './images/01_MS_C_1220_@x2.jpg';
 import SE_C_2_ from './images/01_SE_C_2_@x2.jpg';
-import SE_C_10_ from './images/01_SE_C_10_@x2.jpg';
 import SE_C_10_ from './images/01_SE_C_10_@x2.jpg';
 import SE_C_11_ from './images/01_SE_C_11_@x2.jpg';
 import SE_C_12_ from './images/01_SE_C_12_@x2.jpg';
@@ -120,12 +118,12 @@ export default function ResearchLanding() {
       </Text>
       <ImageFull
         source={CP_C_688}
-        feelsafe={95}
-        subtitle="*95 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive."
+        feelsafe={98}
+        subtitle="*97,93% der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive."
       />
       <Image source={CP_C_688} />
       <Text>
-        Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden rechts vom parkenden Verkehr am sichersten. Unter allen Situationen aus Fahrradperspektive erhielt die oben gezeigte auf einem 3,5 Meter breiten Radstreifen mit grüner Einfärbung und klarer Trennung zum ruhenden Verkehr die meisten Bewertungen “sicher” (64,09%) außerdem 31,36% “eher sicher”. Insgesamt wurden Führungen im Seitenraum als sicherer, als solche im Fließenden Verkehr empfunden. Führungen in Nebenstraßen schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargstellt wurden. In der statistischen Auswertung finden Sie detaillierte Analysen zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie Auswertungen der Auto- und Fußperspektive.
+        Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden rechts vom parkenden Verkehr am sichersten. Unter allen Situationen aus Fahrradperspektive erhielt die oben gezeigte auf einem 3,5 Meter breiten Radstreifen mit grüner Einfärbung und klarer Trennung zum ruhenden Verkehr die meisten Bewertungen “sicher” (75,86%) außerdem 22,07% “eher sicher”. Im Durchschnitt wurden Führungen im Seitenraum als sicherer, als solche im Fließenden Verkehr empfunden. Führungen in Nebenstraßen schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargestellt wurden. In der statistischen Auswertung finden Sie detaillierte Analysen zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie Auswertungen der Auto- und Fußperspektive.    
       </Text>
       <Button as="a" href="#statistische-auswertung" target="_blank">
         Direkt zur Auswertung
