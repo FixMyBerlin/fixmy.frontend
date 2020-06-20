@@ -371,15 +371,15 @@ export default function ResearchLanding() {
         ]}
       />
       <BarChartWrapper
-        title="Führung auf der Fahrbahn(HVS) mit und ohne Radverkehrsanlage(RVA)"
+        title="Führung auf der Fahrbahn(HVS-F) mit und ohne Radverkehrsanlage(RVA)"
         source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen."
        >
-        <BarChart title="HVS mit RVA" data={[9, 16, 53, 22]} feelsafe={75} />
-        <BarChart title="HVS ohne RVA" data={[56, 30, 12, 2]} feelsafe={14} />
-        <BarChart title="HVS ohne RVA (Vielfahrer)" data={[55, 30, 12, 3]} feelsafe={15} />
-        <BarChart title="HVS ohne RVA (Seltenfahrer)" data={[56, 29, 12, 1]} feelsafe={13} />
-        <BarChart title="HVS ohne RVA (weiblich)" data={[56, 33, 10, 1]} feelsafe={11} />
-        <BarChart title="HVS ohne RVA (männlich)" data={[56, 28, 14, 2]} feelsafe={16} />
+        <BarChart title="mit RVA" data={[9, 16, 53, 22]} feelsafe={75} />
+        <BarChart title="ohne RVA" data={[56, 30, 12, 2]} feelsafe={14} />
+        <BarChart title="ohne RVA (Vielfahrer)" data={[55, 30, 12, 3]} feelsafe={15} />
+        <BarChart title="ohne RVA (Seltenfahrer)" data={[56, 29, 12, 1]} feelsafe={13} />
+        <BarChart title="ohne RVA (weiblich)" data={[56, 33, 10, 1]} feelsafe={11} />
+        <BarChart title="ohne RVA (männlich)" data={[56, 28, 14, 2]} feelsafe={16} />
       </BarChartWrapper>
       <Text>
         Weitere Auswertungen nach Nutzermerkmalen finden Sie hier:{' '}
@@ -393,6 +393,22 @@ export default function ResearchLanding() {
       Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an die RVA sind grundlegend zu unterscheiden. Bei Führung mit ruhendem Verkehr rechts der RVA (Parken-rechts) beeinträchtigt die potentielle Gefahr durch Türöffnung der parkenden Autos das Sicherheitsempfinden negativ. 
 Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in diesen Situationen nicht möglich sind, was den Gestaltungsspielraum bei der Planung verringert. In der Umfrage nicht bildlich dargestellt wurde die Gefahr durch ein- sowie ausparkende Autos. Die tatsächliche Sicherheitsempfinden in diesen Situationen könnte also noch geringer ausfallen.
       </Text>
+      <ImageMulti
+        sources={[MS_C_17, MS_C_619]}
+        feelsafes={[69, 33]}
+        subtitles={[
+          '*69,09% der Nutzer:innen bewerteten diese Situation ohne Parkstreifen als „sicher“ oder „eher sicher“',
+          '*32,76% der Nutzer:innen bewerteten diese Situation mit Parkstreifen als „sicher“ oder „eher sicher“'
+        ]}
+      />
+      <BarChartWrapper
+        title="HVS-F: RVA mit und ohne rechtsseitiges Parken"
+        source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens"
+       >
+        <BarChart title="mit Parken rechts" data={[25, 25, 25, 25]} feelsafe={60} />
+        <BarChart title="ohne Parken (inkl. bauliche Trennung) " data={[25, 25, 25, 25]} feelsafe={85} />
+        <BarChart title="ohne Parken (ohne bauliche Trennung) " data={[25, 25, 25, 25]} feelsafe={77} />
+       </BarChartWrapper>
       
       <ImageFull
         source={MS_C_587}
