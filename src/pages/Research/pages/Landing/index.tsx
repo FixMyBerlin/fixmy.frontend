@@ -48,7 +48,6 @@ export default function ResearchLanding() {
       <Heading toc="Über das Projekt" as="h2">
         Über das Projekt
       </Heading>
-
       <Text>
         Bisher gibt es kaum Erhebungen, welche Arten von Straßen, Wegen und
         Kreuzungen die Verkehrsteilnehmenden subjektiv als sicher empfinden.
@@ -95,13 +94,11 @@ export default function ResearchLanding() {
         Anhand einer vierstufigen Skala könnten die Straßenszenen auf das
         subjektiven Empfinden von Sicherheit in der Situation bewertet werden.
       </Text>
-
       <Quote sourceText="Herausforderung">
         Um subjektive Sicherheit messbar zu machen war es notwendig eine
         komplexe Systematik von Straßenszenen zu entwickeln und eine hohe Anzahl
         Teilnehmender zu erreichen.
       </Quote>
-
       <Text>
         Während die objektive Sicherheit von Radfahrenden bereits in vielen
         Studien untersucht wurde, gibt es zum subjektiven Sicherheitsempfinden
@@ -226,7 +223,6 @@ export default function ResearchLanding() {
         beliebig lange fortgesetzt werden. Im Durchschnitt bewertete jeder
         Teilnehmende 22 Szenen.
       </Text>
-
       <Heading as="h3">Auswahl der Straßenszenen</Heading>
       <Text>
         Für die Umfrage entschieden wir uns, Straßenszenen als 3D-Renderings
@@ -334,7 +330,7 @@ export default function ResearchLanding() {
       <BarChartWrapper
         title="Führung auf der Fahrbahn(HVS) mit und ohne Radverkehrsanlage(RVA)"
         source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS. Busspuren wurden hier in der Gruppe "mit RVA" aufgenommen."
-      
+       >
         <BarChart title="HVS mit RVA" data={[9, 16, 53, 22]} feelsafe={75} />
         <BarChart title="HVS ohne RVA" data={[56, 30, 12, 2]} feelsafe={14} />
         <BarChart title="HVS ohne RVA (Vielfahrer)" data={[55, 30, 12, 3]} feelsafe={15} />
@@ -401,5 +397,5 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
         FixMyCity wird gefördert durch das BMVI und die Senatskanzlei Berlin.
       </Text>
     </ArticleWrapper>
-  )
+  );
 }
