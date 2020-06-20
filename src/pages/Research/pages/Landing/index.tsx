@@ -389,8 +389,8 @@ export default function ResearchLanding() {
         Ruhender Verkehr erzeugt zusätzliche Konfliktzone
        </Heading>
       <Text>
-      Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an die RVA sind grundlegend zu unterscheiden. Bei Führung mit ruhendem Verkehr rechts der RVA (Parken-rechts) beeinträchtigt die potentielle Gefahr durch Türöffnung der parkenden Autos das Sicherheitsempfinden negativ. 
-Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in diesen Situationen nicht möglich sind, was den Gestaltungsspielraum bei der Planung verringert. In der Umfrage nicht bildlich dargestellt wurde die Gefahr durch ein- sowie ausparkende Autos. Die tatsächliche Sicherheitsempfinden in diesen Situationen könnte also noch geringer ausfallen.
+     Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an die RVA sind grundlegend zu unterscheiden. Bei Führung mit ruhendem Verkehr rechts der RVA (Parken-rechts) beeinträchtigt die potentielle Gefahr durch Türöffnung der parkenden Autos das Sicherheitsempfinden negativ. 
+Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in diesen Situationen nicht möglich sind, was den Gestaltungsspielraum bei der Planung verringert. In der Umfrage nicht bildlich dargestellt wurde die Gefahr durch ein- sowie ausparkende Autos. Das tatsächliche Sicherheitsempfinden in diesen Situationen könnte also noch geringer ausfallen.
       </Text>
       <ImageMulti
         sources={[MS_C_17, MS_C_619]}
@@ -420,6 +420,7 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
           'Vorhandensein einer baulichen Trennung zum fließendem KFZ-Verkehr'
         ]}
       />
+        </Text>
         <BarChartWrapper
         title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
         source="Anm: Durchschnitt der Bewertungen aller Situationen"
@@ -432,7 +433,7 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
         <BarChart title="Markierung Links (gestrichelt - Sperrfläche)" data={[15, 85, 0, 0]} feelsafe={85} />
           
        </BarChartWrapper>
-      </Text>
+      
       <Text>
         Die weiteren in der Umfrage abgefragten Faktoren, Markierungsarten, Tempolimit und Verkehrsstärke, spielen eine vergleichsweise unbedeutende Rolle. Hier ist zu berücksichtigen, das die Empfindungen der Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur abstrahiert vermittelt werden kann.
       </Text>
