@@ -428,19 +428,37 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
         title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
         source="Anm: Durchschnitt der Bewertungen aller Situationen"
        >
-        <BarChart title="Gesamtbreite RVA (Breit - schmal)" data={[21, 0, 0, 79]} />
-        <BarChart title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)" data={[22, 0, 0, 78]} feelsafe={22} />
-        <BarChart title="Oberflächenfärbung (grün - asphalt)" data={[11, 0, 0, 89]} feelsafe={11} />
-        <BarChart title="Markierung Links (gestrichelt - Sperrfläche)" data={[8, 0, 0, 92]} feelsafe={8} />
-        <BarChart title="Tempolimit (30 - 50)" data={[3, 0, 0, 97]} feelsafe={3} />
-        <BarChart title="Verkehrsstärke (normal - hoch)" data={[3, 0, 0, 97]} feelsafe={3} />
+        <BarChart title="Gesamtbreite RVA (Breit - schmal)" data={[21, 0, 0, 79]} feelsafe={0} />
+        <BarChart title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)" data={[22, 0, 0, 78]} feelsafe={0} />
+        <BarChart title="Oberflächenfärbung (grün - asphalt)" data={[11, 0, 0, 89]} feelsafe={0} />
+        <BarChart title="Markierung Links (gestrichelt - Sperrfläche)" data={[8, 0, 0, 92]} feelsafe={0} />
+        <BarChart title="Tempolimit (30 - 50)" data={[3, 0, 0, 97]} feelsafe={0} />
+        <BarChart title="Verkehrsstärke (normal - hoch)" data={[3, 0, 0, 97]} feelsafe={0} />
        </BarChartWrapper>
       
-      <Heading as="h3">
-         Drei zentrale Einflussfaktoren
-       </Heading>
       <Text>
       </Text>
+      <Heading as="h3">
+         Breite der RVA zentral, besonders bei Parken rechts
+       </Heading>
+      <Text>
+          In der Umfrage wurde unterschieden zwischen 3,5 Metern (breit) und 2,0 Metern (schmal) Breite für die RVA inkl. aller links und rechtsseitigen Markierungen (s.a. Umfragedesign). Im Ergebnis aller Situationen zeigt sich, dass breite RVA in den allermeisten Situationen als sicher empfunden werden. Im Durchschnitt bewerten 84% der Teilnehmer:innen “diese als sicher” oder “eher sicher”.
+      <br />
+          Vergleichen wir einen Radstreifen an einer HVS ohne ruhenden Verkehr zeigt sich folgender Unterschied:
+      </Text>
+      
+      <Text>
+          Bei einem Radstreifen an einer HVS mit Parken-rechts ist der Unterschied erheblicher:
+      </Text>
+      
+      <Heading as="h3">Grüne Oberfläche hilft</Heading>
+      <Text>
+        Wird die RVA durch eine grüne Oberfläche von der KFZ-Fahrbahn unterschieden hat dies einen positiven Effekt  auf das subjektive Sicherheitsempfinden. 
+      </Text>
+      
+      <Heading as="h3">Poller stärken Sicherheitsempfinden, Blumenkästen auch</Heading>
+     
+      <Heading as="h3">Trennung durch ruhenden Verkehr</Heading>
       
       <ImageFull
         source={MS_C_587}
