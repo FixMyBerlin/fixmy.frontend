@@ -1319,8 +1319,16 @@ const TrafficOrder = ({ application }) => {
               <p className="c20">
                 <span className="c14" />
               </p>
-              <p className="c20">
-                <span className="c14" />
+              <p
+                className="c20"
+                style={{ height: 'initial', padding: '1em 0' }}
+              >
+                {application.note.split('\n').map((content) => (
+                  <span>
+                    {content}
+                    <br />
+                  </span>
+                ))}
               </p>
             </td>
             <td className="c87" colSpan={1} rowSpan={1}>
