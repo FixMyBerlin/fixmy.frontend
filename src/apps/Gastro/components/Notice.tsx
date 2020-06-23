@@ -23,8 +23,8 @@ const GastroNotice = ({ district }) => {
     if (openSignup(district))
       return (
         <Notice>
-          Bitte füllen Sie das Formular bis zum Montag, den 22. Juni 2020 um 10
-          Uhr aus.
+          Bitte füllen Sie das Formular bis zum Dienstag, den 23. Juni 2020 um
+          10 Uhr aus.
         </Notice>
       );
     if (postSignup(district))
