@@ -21,49 +21,48 @@ import CP_C_688 from './images/01_CP_C_688.jpg';
 import image1 from './images/image-1.jpg';
 import MS_C_2 from './images/01_MS_C_2.jpg';
 import MS_C_587 from './images/01_MS_C_587.jpg';
-import CP_C_58 from './images/01_CP_C_58_@x2.jpg';
-import CP_C_49 from './images/01_CP_C_49_@x2.jpg';
-import CP_C_194 from './images/01_CP_C_194_@x2.jpg';
-import CP_C_463 from './images/01_CP_C_463_@x2.jpg';
-import CP_C_509 from './images/01_CP_C_509_@x2.jpg';
-import CP_C_516 from './images/01_CP_C_516_@x2.jpg';
-import CP_C_553 from './images/01_CP_C_553_@x2.jpg';
-import CP_C_725 from './images/01_CP_C_725_@x2.jpg';
-import CP_C_823 from './images/01_CP_C_823_@x2.jpg';
-import CP_C_1093 from './images/01_CP_C_1093_@x2.jpg';
-import CP_C_1100 from './images/01_CP_C_1100_@x2.jpg';
-import CP_P_149 from './images/01_CP_P_149_@x2.jpg';
-import CP_P_185 from './images/01_CP_P_185_@x2.jpg';
-import CP_P_194 from './images/01_CP_P_194_@x2.jpg';
-import CP_P_203 from './images/01_CP_P_203_@x2.jpg';
-import CP_P_778 from './images/01_CP_P_778_@x2.jpg';
-import MS_C_21_ from './images/01_MS_C_21_@x2.jpg';
-import MS_C_51_ from './images/01_MS_C_51_@x2.jpg';
-import MS_C_17_ from './images/01_MS_C_17_@x2.jpg';
-import MS_C_305_ from './images/01_MS_C_305_@x2.jpg';
-import MS_C_325_ from './images/01_MS_C_325_@x2.jpg';
-import MS_C_377_ from './images/01_MS_C_377_@x2.jpg';
-import MS_C_587_ from './images/01_MS_C_587_@x2.jpg';
-import MS_C_596_ from './images/01_MS_C_596_@x2.jpg';
-import MS_C_597_ from './images/01_MS_C_597_@x2.jpg';
-import MS_C_606_ from './images/01_MS_C_606_@x2.jpg';
-import MS_C_611_ from './images/01_MS_C_611_@x2.jpg';
-import MS_C_619_ from './images/01_MS_C_619_@x2.jpg';
-import MS_C_620_ from './images/01_MS_C_620_@x2.jpg';
-import MS_C_860_ from './images/01_MS_C_860_@x2.jpg';
-import MS_C_980_ from './images/01_MS_C_980_@x2.jpg';
-import MS_C_1220_ from './images/01_MS_C_1220_@x2.jpg';
-import SE_C_2_ from './images/01_SE_C_2_@x2.jpg';
-import SE_C_10_ from './images/01_SE_C_10_@x2.jpg';
-import SE_C_11_ from './images/01_SE_C_11_@x2.jpg';
-import SE_C_12_ from './images/01_SE_C_12_@x2.jpg';
-import SE_C_42_ from './images/01_SE_C_42_@x2.jpg';
-import SE_C_44_ from './images/01_SE_C_44_@x2.jpg';
-import SE_C_47_ from './images/01_SE_C_47_@x2.jpg';
-import SE_C_49_ from './images/01_SE_C_49_@x2.jpg';
-import SE_C_50_ from './images/01_SE_C_50_@x2.jpg';
-import SE_C_71_ from './images/01_SE_C_71_@x2.jpg';
-
+// import CP_C_58 from './images/01_CP_C_58_@x2.jpg';
+// import CP_C_49 from './images/01_CP_C_49_@x2.jpg';
+// import CP_C_194 from './images/01_CP_C_194_@x2.jpg';
+// import CP_C_463 from './images/01_CP_C_463_@x2.jpg';
+// import CP_C_509 from './images/01_CP_C_509_@x2.jpg';
+// import CP_C_516 from './images/01_CP_C_516_@x2.jpg';
+// import CP_C_553 from './images/01_CP_C_553_@x2.jpg';
+// import CP_C_725 from './images/01_CP_C_725_@x2.jpg';
+// import CP_C_823 from './images/01_CP_C_823_@x2.jpg';
+// import CP_C_1093 from './images/01_CP_C_1093_@x2.jpg';
+// import CP_C_1100 from './images/01_CP_C_1100_@x2.jpg';
+// import CP_P_149 from './images/01_CP_P_149_@x2.jpg';
+// import CP_P_185 from './images/01_CP_P_185_@x2.jpg';
+// import CP_P_194 from './images/01_CP_P_194_@x2.jpg';
+// import CP_P_203 from './images/01_CP_P_203_@x2.jpg';
+// import CP_P_778 from './images/01_CP_P_778_@x2.jpg';
+// import MS_C_21_ from './images/01_MS_C_21_@x2.jpg';
+// import MS_C_51_ from './images/01_MS_C_51_@x2.jpg';
+// import MS_C_17_ from './images/01_MS_C_17_@x2.jpg';
+// import MS_C_305_ from './images/01_MS_C_305_@x2.jpg';
+// import MS_C_325_ from './images/01_MS_C_325_@x2.jpg';
+// import MS_C_377_ from './images/01_MS_C_377_@x2.jpg';
+// import MS_C_587_ from './images/01_MS_C_587_@x2.jpg';
+// import MS_C_596_ from './images/01_MS_C_596_@x2.jpg';
+// import MS_C_597_ from './images/01_MS_C_597_@x2.jpg';
+// import MS_C_606_ from './images/01_MS_C_606_@x2.jpg';
+// import MS_C_611_ from './images/01_MS_C_611_@x2.jpg';
+// import MS_C_619_ from './images/01_MS_C_619_@x2.jpg';
+// import MS_C_620_ from './images/01_MS_C_620_@x2.jpg';
+// import MS_C_860_ from './images/01_MS_C_860_@x2.jpg';
+// import MS_C_980_ from './images/01_MS_C_980_@x2.jpg';
+// import MS_C_1220_ from './images/01_MS_C_1220_@x2.jpg';
+// import SE_C_2_ from './images/01_SE_C_2_@x2.jpg';
+// import SE_C_10_ from './images/01_SE_C_10_@x2.jpg';
+// import SE_C_11_ from './images/01_SE_C_11_@x2.jpg';
+// import SE_C_12_ from './images/01_SE_C_12_@x2.jpg';
+// import SE_C_42_ from './images/01_SE_C_42_@x2.jpg';
+// import SE_C_44_ from './images/01_SE_C_44_@x2.jpg';
+// import SE_C_47_ from './images/01_SE_C_47_@x2.jpg';
+// import SE_C_49_ from './images/01_SE_C_49_@x2.jpg';
+// import SE_C_50_ from './images/01_SE_C_50_@x2.jpg';
+// import SE_C_71_ from './images/01_SE_C_71_@x2.jpg';
 
 export default function ResearchLanding() {
   return (
@@ -123,7 +122,17 @@ export default function ResearchLanding() {
       />
       <Image source={CP_C_688} />
       <Text>
-        Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden rechts vom parkenden Verkehr am sichersten. Unter allen Situationen aus Fahrradperspektive erhielt die oben gezeigte auf einem 3,5 Meter breiten Radstreifen mit grüner Einfärbung und klarer Trennung zum ruhenden Verkehr die meisten Bewertungen “sicher” (75,86%) außerdem 22,07% “eher sicher”. Im Durchschnitt wurden Führungen im Seitenraum als sicherer, als solche im Fließenden Verkehr empfunden. Führungen in Nebenstraßen schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargestellt wurden. In der statistischen Auswertung finden Sie detaillierte Analysen zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie Auswertungen der Auto- und Fußperspektive.    
+        Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden rechts
+        vom parkenden Verkehr am sichersten. Unter allen Situationen aus
+        Fahrradperspektive erhielt die oben gezeigte auf einem 3,5 Meter breiten
+        Radstreifen mit grüner Einfärbung und klarer Trennung zum ruhenden
+        Verkehr die meisten Bewertungen “sicher” (75,86%) außerdem 22,07% “eher
+        sicher”. Im Durchschnitt wurden Führungen im Seitenraum als sicherer,
+        als solche im Fließenden Verkehr empfunden. Führungen in Nebenstraßen
+        schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargestellt
+        wurden. In der statistischen Auswertung finden Sie detaillierte Analysen
+        zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren,
+        sowie Auswertungen der Auto- und Fußperspektive.
       </Text>
       <Button as="a" href="#statistische-auswertung" target="_blank">
         Direkt zur Auswertung
@@ -373,27 +382,52 @@ export default function ResearchLanding() {
       <BarChartWrapper
         title="Führung auf der Fahrbahn(HVS) mit und ohne Radverkehrsanlage(RVA)"
         source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen."
-       >
+      >
         <BarChart title="HVS mit RVA" data={[9, 16, 53, 22]} feelsafe={75} />
         <BarChart title="HVS ohne RVA" data={[56, 30, 12, 2]} feelsafe={14} />
-        <BarChart title="HVS ohne RVA (Vielfahrer)" data={[55, 30, 12, 3]} feelsafe={15} />
-        <BarChart title="HVS ohne RVA (Seltenfahrer)" data={[56, 29, 12, 1]} feelsafe={13} />
-        <BarChart title="HVS ohne RVA (weiblich)" data={[56, 33, 10, 1]} feelsafe={11} />
-        <BarChart title="HVS ohne RVA (männlich)" data={[56, 28, 14, 2]} feelsafe={16} />
+        <BarChart
+          title="HVS ohne RVA (Vielfahrer)"
+          data={[55, 30, 12, 3]}
+          feelsafe={15}
+        />
+        <BarChart
+          title="HVS ohne RVA (Seltenfahrer)"
+          data={[56, 29, 12, 1]}
+          feelsafe={13}
+        />
+        <BarChart
+          title="HVS ohne RVA (weiblich)"
+          data={[56, 33, 10, 1]}
+          feelsafe={11}
+        />
+        <BarChart
+          title="HVS ohne RVA (männlich)"
+          data={[56, 28, 14, 2]}
+          feelsafe={16}
+        />
       </BarChartWrapper>
       <Text>
         Weitere Auswertungen nach Nutzermerkmalen finden Sie hier:{' '}
         <Link href="https://fixmyberlin.de">Jupyter notebook</Link>
       </Text>
-      
+
       <Heading as="h2" toc="Ruhender Verkehr erzeugt zusätzliche Konfliktzone">
         Ruhender Verkehr erzeugt zusätzliche Konfliktzone
-       </Heading>
+      </Heading>
       <Text>
-      Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an die RVA sind grundlegend zu unterscheiden. Bei Führung mit ruhendem Verkehr rechts der RVA (Parken-rechts) beeinträchtigt die potentielle Gefahr durch Türöffnung der parkenden Autos das Sicherheitsempfinden negativ. 
-Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in diesen Situationen nicht möglich sind, was den Gestaltungsspielraum bei der Planung verringert. In der Umfrage nicht bildlich dargestellt wurde die Gefahr durch ein- sowie ausparkende Autos. Die tatsächliche Sicherheitsempfinden in diesen Situationen könnte also noch geringer ausfallen.
+        Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das
+        Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an
+        die RVA sind grundlegend zu unterscheiden. Bei Führung mit ruhendem
+        Verkehr rechts der RVA (Parken-rechts) beeinträchtigt die potentielle
+        Gefahr durch Türöffnung der parkenden Autos das Sicherheitsempfinden
+        negativ. Weiter zu beachten ist, dass bauliche Trennungen zum fließenden
+        KFZ-Verkehr in diesen Situationen nicht möglich sind, was den
+        Gestaltungsspielraum bei der Planung verringert. In der Umfrage nicht
+        bildlich dargestellt wurde die Gefahr durch ein- sowie ausparkende
+        Autos. Die tatsächliche Sicherheitsempfinden in diesen Situationen
+        könnte also noch geringer ausfallen.
       </Text>
-      
+
       <ImageFull
         source={MS_C_587}
         feelsafe={63}
