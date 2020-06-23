@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core';
 
 import config from './config';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
@@ -67,16 +66,6 @@ const AppStyles = styled.div`
   }
 `;
 
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: config.colors.interaction },
-    secondary: { main: config.colors.change_4 },
-    error: { main: config.colors.error },
-    info: { main: config.colors.interaction },
-    success: { main: config.colors.label_01 }
-  }
-});
-
 const Gastro = ({ districtName, district, dispatch }) => {
   useEffect(() => {
     dispatch(setDistrict(districtName));
@@ -85,9 +74,7 @@ const Gastro = ({ districtName, district, dispatch }) => {
   if (district == null) return null;
   return (
     <AppStyles>
-      <ThemeProvider theme={theme}>
-        <Routes />
-      </ThemeProvider>
+      <Routes />
     </AppStyles>
   );
 };
