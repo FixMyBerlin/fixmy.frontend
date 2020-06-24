@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import FeelSafe from './FeelSafe';
+import FeelSafe from '~/pages/Research/components/FeelSafe';
 
 const ImageWrapper = styled.div`
   display: flex;

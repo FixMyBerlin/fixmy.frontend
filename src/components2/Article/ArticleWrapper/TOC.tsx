@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
 import Entry from './TOCEntry';
-import Heading from '../Heading';
+import Heading from '../Typography/Heading';
 import config from '~/config';
 
 const TOCWrapper = styled.div`

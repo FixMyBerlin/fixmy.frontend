@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Kicker from './Kicker';
 import ArticleMeta from './ArticleMeta';
-import Heading from '~/components2/Article/Heading';
+import Heading from '~/components2/Article/Typography/Heading';
 
 interface ArticleHeaderProps {
   kicker?: string;

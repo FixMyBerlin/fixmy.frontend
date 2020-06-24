@@ -78,13 +78,11 @@ const SectionAbout = ({ toc }) => (
       angaben, nie Fahrrad zu fahren.
     </Paragraph>
     <Heading as="h3">Die Umfrage bestand aus drei Abschnitten:</Heading>
-    <List
-      items={[
-        'Allgemeine Fragen zum Verkehr',
-        'Profil- bzw. personenbezogenen Fragen',
-        'Bewertungen der unterschiedlichen Straßenszenen'
-      ]}
-    />
+    <List>
+      <List.Item>Allgemeine Fragen zum Verkehr</List.Item>
+      <List.Item>Profil- bzw. personenbezogene Fragen</List.Item>
+      <List.Item>Bewertungen der unterschiedlichen Straßenszenen</List.Item>
+    </List>
     <Heading as="h3">Allgemeine Fragen zum Verkehr (Eingangsfragen)</Heading>
     <Paragraph>
       In diesem Abschnitt wurden allgemeine Fragen über den Berliner Verkehr für
@@ -112,15 +110,15 @@ const SectionAbout = ({ toc }) => (
       Radfahrverhalten gestellt.
     </Paragraph>
     <Heading as="h3">Darunter fallen:</Heading>
-    <List
-      items={[
-        'Verkehrsmittelnutzung (Modal Split)',
-        'zur Verfügung stehende Verkehrsmittel',
-        'Länge des häufigsten Weges mit dem Fahrrad in Minuten',
-        'Motivation für das Fahrradfahren bzw.',
-        'Gründe gegen das Fahrradfahren'
-      ]}
-    />
+    <List>
+      <List.Item>Verkehrsmittelnutzung (Modal Split)</List.Item>
+      <List.Item>zur Verfügung stehende Verkehrsmittel</List.Item>
+      <List.Item>
+        Länge des häufigsten Weges mit dem Fahrrad in Minuten
+      </List.Item>
+      <List.Item>Motivation für das Fahrradfahren bzw.</List.Item>
+      <List.Item>Gründe gegen das Fahrradfahren</List.Item>
+    </List>
     <Paragraph>
       Nach Vervollständigung dieses Teiles der Umfrage wird ein Datensatz für
       den Teilnehmenden angelegt.
@@ -148,14 +146,11 @@ const SectionAbout = ({ toc }) => (
       fotorealistisch darzustellen. Die verschiedenen Straßenszenen wurden in
       drei Experimente unterteilt.
     </Paragraph>
-    <List
-      as="ol"
-      items={[
-        'Hauptverkehrsstraßen - Radführung auf der Fahrbahn',
-        'Nebenstraßen -  Radführung auf der Fahrbahn',
-        'Radführung im Seitenraum ( an Hauptverkehrsstraßen)'
-      ]}
-    />
+    <List as="ol">
+      <List.Item>Hauptverkehrsstraßen - Radführung auf der Fahrbahn</List.Item>
+      <List.Item>Nebenstraßen - Radführung auf der Fahrbahn</List.Item>
+      <List.Item>Radführung im Seitenraum ( an Hauptverkehrsstraßen)</List.Item>
+    </List>
     <Paragraph>
       Aufgrund der Vielzahl von möglichen Einflussfaktoren und den daraus
       resultierenden Szenarien musste die Anzahl der Szenarien eingegrenzt
@@ -172,19 +167,22 @@ const SectionAbout = ({ toc }) => (
       Während in diesem Experiment der Seitenraum immer gleich dargestellt wird,
       werden im Bereich des Fahrstreifens folgende Einflussfaktoren variiert:
     </Paragraph>
-    <List
-      items={['Geschwindigkeit', 'Verkehrsaufkommen', 'Tram-Schiene ja / nein']}
-    />
+    <List>
+      <List.Item>Geschwindigkeit</List.Item>
+      <List.Item>Verkehrsaufkommen</List.Item>
+      <List.Item>Tram-Schiene ja / nein</List.Item>
+    </List>
     <Paragraph>
       Im Bereich der Radverkehrsanlage (RVA) werden folgende Faktoren variiert:
     </Paragraph>
-    <List
-      items={[
-        'Art und Breite der Trennung links (hier gibt es unterschiedliche Markierungen und bauliche Trennungen)',
-        'Einfärbung und Breite der RVA',
-        'Art und Breite der Trennung rechts'
-      ]}
-    />
+    <List>
+      <List.Item>
+        Art und Breite der Trennung links (hier gibt es unterschiedliche
+        Markierungen und bauliche Trennungen)
+      </List.Item>
+      <List.Item>Einfärbung und Breite der RVA</List.Item>
+      <List.Item>Art und Breite der Trennung rechts</List.Item>
+    </List>
     <Paragraph>
       Weiter wird eine Reihe parkender Fahrzeuge dargestellt oder nicht.
       variiert:

@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Paragraph, Heading, Image, Button } from '~/components2/Article';
+import { Paragraph, Heading, Image } from '~/components2/Article';
+import { AnchorButton } from '~/components2/Button';
+import ButtonWrapper from '../components/ButtonWrapper';
 
 import CP_C_688 from '../images/01_CP_C_688.jpg';
 
@@ -47,9 +49,11 @@ const SectionIntroduction = ({ toc }) => (
       unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie
       Auswertungen der Auto- und Fußperspektive.
     </Paragraph>
-    <Button as="a" href="#statistische-auswertung" target="_blank">
-      Direkt zur Auswertung
-    </Button>
+    <ButtonWrapper>
+      <AnchorButton flat href="#statistische-auswertung">
+        Direkt zur Auswertung
+      </AnchorButton>
+    </ButtonWrapper>
   </>
 );
 

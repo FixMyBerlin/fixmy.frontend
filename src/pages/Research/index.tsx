@@ -2,11 +2,11 @@ import React from 'react';
 
 import { ArticleWrapper, ArticleHeader, Intro } from '~/components2/Article';
 
-import SectionIntroduction from './sections/01_intro';
-import SectionAbout from './sections/02_about';
-import SectionDataset from './sections/03_dataset';
-import SectionResults from './sections/04_results';
-import SectionTeam from './sections/05_team';
+import SectionIntroduction from './sections/02_intro';
+import SectionAbout from './sections/03_concept';
+import SectionDataset from './sections/04_dataset';
+import SectionResults from './sections/05_results';
+import SectionTeam from './sections/06_team';
 
 const Research = () => (
   <ArticleWrapper hasToc>

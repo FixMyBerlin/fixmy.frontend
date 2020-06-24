@@ -25,16 +25,18 @@ const Source = styled.div`
   margin-top: 10px;
 `;
 
-interface BarChartWrapperProps {
+interface Props {
   title: string;
   source: string;
   children: React.ReactNode;
 }
 
-export default ({ title, source, children }: BarChartWrapperProps) => (
+const BarChartWrapper = ({ title, source, children }: Props) => (
   <Wrapper>
     <Title>{title}</Title>
     {children}
     <Source>{source}</Source>
   </Wrapper>
 );
+
+export default BarChartWrapper;

@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import FeelSafe from './FeelSafe';
+import FeelSafe from '~/pages/Research/components/FeelSafe';
+import BarChartWrapper from './BarChartWrapper';
 
 const Wrapper = styled.div`
   display: flex;
@@ -85,7 +86,7 @@ interface BarChartProps {
 const colors = ['#c01d1d', '#f08141', '#abc759', '#45b834'];
 const labels = ['unsicher', 'eher unsicher', 'seher sicher', 'sicher'];
 
-export default ({ title, data, feelsafe }: BarChartProps) => {
+const BarChart = ({ title, data, feelsafe }: BarChartProps) => {
   return (
     <Wrapper>
       <Title>{title}</Title>
@@ -107,3 +108,7 @@ export default ({ title, data, feelsafe }: BarChartProps) => {
     </Wrapper>
   );
 };
+
+BarChart.Wrapper = BarChartWrapper;
+
+export default BarChart;

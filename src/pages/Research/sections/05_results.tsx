@@ -3,13 +3,12 @@ import React from 'react';
 import {
   Paragraph,
   Heading,
-  Link,
   ImageFull,
   ImageMulti,
-  List,
-  BarChart,
-  BarChartWrapper
+  List
 } from '~/components2/Article';
+import Link from '~/components2/Link';
+import BarChart from '../components/BarChart';
 
 import MS_C_17 from '../images/01_MS_C_17_@x2.jpg';
 import MS_C_2 from '../images/01_MS_C_2.jpg';
@@ -21,10 +20,10 @@ import MS_C_980 from '../images/01_MS_C_980_@x2.jpg';
 
 const SectionResults = ({ toc }) => (
   <>
-    <div id="statistische-auswertung" />
     <Heading as="h2" toc={toc}>
       Statistische Auswertung
     </Heading>
+
     <Paragraph>
       Mit den generierten Daten ist die Überprüfung von verschiedensten
       Hypothesen möglich. Ein besonderes Interesse der Forschung liegt
@@ -40,6 +39,7 @@ const SectionResults = ({ toc }) => (
       diese, sowie ihre eigenen Hypothesen, überprüfen. Mehr dazu im folgenden
       Abschnitt.
     </Paragraph>
+
     <ImageMulti
       sources={[MS_C_2, MS_C_587]}
       feelsafes={[28, 11]}
@@ -48,7 +48,8 @@ const SectionResults = ({ toc }) => (
         '*11,05 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“'
       ]}
     />
-    <BarChartWrapper
+
+    <BarChart.Wrapper
       title="Führung auf der Fahrbahn(HVS-F) mit und ohne Radverkehrsanlage(RVA)"
       source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen."
     >
@@ -74,7 +75,8 @@ const SectionResults = ({ toc }) => (
         data={[56, 28, 14, 2]}
         feelsafe={16}
       />
-    </BarChartWrapper>
+    </BarChart.Wrapper>
+
     <Paragraph>
       Weitere Auswertungen nach Nutzermerkmalen finden Sie hier:{' '}
       <Link href="https://fixmyberlin.de">Jupyter notebook</Link>
@@ -94,6 +96,7 @@ const SectionResults = ({ toc }) => (
       Das tatsächliche Sicherheitsempfinden in diesen Situationen könnte also
       noch geringer ausfallen.
     </Paragraph>
+
     <ImageMulti
       sources={[MS_C_17, MS_C_619]}
       feelsafes={[69, 33]}
@@ -102,7 +105,8 @@ const SectionResults = ({ toc }) => (
         '*32,76% der Nutzer:innen bewerteten diese Situation mit Parkstreifen als „sicher“ oder „eher sicher“'
       ]}
     />
-    <BarChartWrapper
+
+    <BarChart.Wrapper
       title="HVS-F: RVA mit und ohne rechtsseitiges Parken"
       source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens"
     >
@@ -121,19 +125,20 @@ const SectionResults = ({ toc }) => (
         data={[25, 25, 25, 25]}
         feelsafe={77}
       />
-    </BarChartWrapper>
+    </BarChart.Wrapper>
 
     <Heading as="h3">Drei zentrale Einflussfaktoren</Heading>
+
     <Paragraph>
       Für das subjektive Sicherheitsempfinden sind neben der Lage der RVA
       vornehmlich drei Faktoren relevant:
-      <List
-        items={[
-          'Die Breite der RVA',
-          'Ihre farbliche Unterscheidung',
-          'Vorhandensein einer baulichen Trennung zum fließenden KFZ-Verkehr'
-        ]}
-      />
+      <List>
+        <List.Item>Die Breite der RVA</List.Item>
+        <List.Item>Ihre farbliche Unterscheidung</List.Item>
+        <List.Item>
+          Vorhandensein einer baulichen Trennung zum fließenden KFZ-Verkehr
+        </List.Item>
+      </List>
     </Paragraph>
     <Paragraph>
       Die Breite der Trennung Links spielt vornehmlich bei Situationen mit
@@ -143,7 +148,8 @@ const SectionResults = ({ toc }) => (
       Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur
       abstrahiert vermittelt werden kann.
     </Paragraph>
-    <BarChartWrapper
+
+    <BarChart.Wrapper
       title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
       source="Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Bei Baulicher Trennung, Markierung Links, Tempolimit und Verkehrsaufkommen, werden Nur solche Situationen ohne Tram, Bus und RVA rechts des Parkens einbezogen. Bei der Baulichen Trennung nur solche ohne Parken rechts."
     >
@@ -177,7 +183,7 @@ const SectionResults = ({ toc }) => (
         data={[3, 0, 0, 97]}
         feelsafe={0}
       />
-    </BarChartWrapper>
+    </BarChart.Wrapper>
 
     <Paragraph>
       Die Breite der Trennung Links spielt vornehmlich bei Situationen mit
@@ -187,7 +193,8 @@ const SectionResults = ({ toc }) => (
       Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur
       abstrahiert vermittelt werden kann.
     </Paragraph>
-    <BarChartWrapper
+
+    <BarChart.Wrapper
       title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
       source="Anm: Durchschnitt der Bewertungen aller Situationen"
     >
@@ -221,11 +228,12 @@ const SectionResults = ({ toc }) => (
         data={[3, 0, 0, 97]}
         feelsafe={0}
       />
-    </BarChartWrapper>
+    </BarChart.Wrapper>
 
     <Heading as="h3">
       Breite der RVA zentral, besonders bei Parken rechts
     </Heading>
+
     <Paragraph>
       In der Umfrage wurde unterschieden zwischen 3,5 Metern (breit) und 2,0
       Metern (schmal) Breite für die RVA inkl. aller links und rechtsseitigen
@@ -233,10 +241,12 @@ const SectionResults = ({ toc }) => (
       sich, dass breite RVA in den allermeisten Situationen als sicher empfunden
       werden. Im Durchschnitt bewerten 84% der Teilnehmer:innen “diese als
       sicher” oder “eher sicher”.
-      <br />
+    </Paragraph>
+    <Paragraph>
       Vergleichen wir beispielhaft einen Radstreifen an einer HVS ohne ruhenden
       Verkehr zeigt sich folgender Unterschied:
     </Paragraph>
+
     <ImageMulti
       sources={[MS_C_305, MS_C_17]}
       feelsafes={[74, 69]}

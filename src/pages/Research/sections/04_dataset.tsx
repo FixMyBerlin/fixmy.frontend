@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Paragraph, Heading, Button } from '~/components2/Article';
+import { Paragraph, Heading } from '~/components2/Article';
+import { AnchorButton } from '~/components2/Button';
+import ButtonWrapper from '../components/ButtonWrapper';
 
 const SectionDataset = ({ toc }) => (
   <>
@@ -16,9 +18,9 @@ const SectionDataset = ({ toc }) => (
       Sie sich die Ergebnisse der Umfrage über den folgenden Button als
       CSV-Datensatz herunter.
     </Paragraph>
-    <Button as="a" href="https://example.com" target="_blank">
-      Datensatz herunterladen
-    </Button>
+    <ButtonWrapper>
+      <AnchorButton flat>Datensatz herunterladen</AnchorButton>
+    </ButtonWrapper>
   </>
 );
 
