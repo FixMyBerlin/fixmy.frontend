@@ -75,21 +75,19 @@ export const ImageMulti = ({
   sources,
   feelsafes = null,
   subtitles = null
-}: MultiImageProps) => {
-  return (
-    <ImageWrapper>
-      {sources.map((source, index) => (
-        <ImageSpacer key={`multi-image__${index}`}>
-          <InnerImg
-            source={source}
-            feelsafe={feelsafes ? feelsafes[index] : null}
-            subtitle={subtitles ? subtitles[index] : null}
-          />
-        </ImageSpacer>
-      ))}
-    </ImageWrapper>
-  );
-};
+}: MultiImageProps) => (
+  <ImageWrapper>
+    {sources.map((source, index) => (
+      <ImageSpacer key={`multi-image__${source}`}>
+        <InnerImg
+          source={source}
+          feelsafe={feelsafes ? feelsafes[index] : null}
+          subtitle={subtitles ? subtitles[index] : null}
+        />
+      </ImageSpacer>
+    ))}
+  </ImageWrapper>
+);
 
 interface ImageProps {
   source: string;
