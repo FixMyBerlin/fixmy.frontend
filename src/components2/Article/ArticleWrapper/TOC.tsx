@@ -2,8 +2,8 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
-import Entry from './Entry';
-import Heading from '../../Heading';
+import Entry from './TOCEntry';
+import Heading from '../Heading';
 import config from '~/config';
 
 const TOCWrapper = styled.div`

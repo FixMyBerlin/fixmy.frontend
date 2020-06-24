@@ -2,7 +2,7 @@ import React, { useState, useEffect, ReactElement } from 'react';
 import styled from 'styled-components';
 import { InView } from 'react-intersection-observer';
 
-import defaultBgPattern from './bg-pattern.png';
+import defaultBgPattern from './assets/bg-pattern.png';
 
 import TOC from './TOC';
 import MenuButton from '~/components2/MenuButton';
@@ -16,6 +16,14 @@ interface PageProps {
 const Page = styled.div<PageProps>`
   background: url(${(props) => props.bgPattern});
   min-height: 100%;
+
+  p {
+    font-weight: 400;
+    font-family: ${config.baseFont};
+    margin: 1em auto;
+    line-height: 1.5;
+    max-width: 520px;
+  }
 `;
 
 const ContentWrapperOuter = styled.div`
