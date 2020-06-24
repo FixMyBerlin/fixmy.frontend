@@ -12,13 +12,14 @@ import ForgotPassword from '~/pages/User/pages/ForgotPassword';
 import ResetPassword from '~/pages/User/pages/ResetPassword';
 import UserVerify from '~/pages/User/pages/Verify';
 
+import Research from '~/pages/Research';
+
 const Analysis = lazy(() => import('~/pages/Analysis'));
 const KatasterKI = lazy(() => import('~/pages/KatasterKI'));
 const MapView = lazy(() => import('~/pages/Map'));
 const Markdown = lazy(() => import('~/pages/Markdown'));
 const Reports = lazy(() => import('~/pages/Reports'));
 const Spielstrassen = lazy(() => import('~/pages/Spielstrassen'));
-const Research = lazy(() => import('~/pages/Research'));
 
 const apps = {
   gastro: lazy(() => import('~/apps/Gastro'))
