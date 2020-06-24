@@ -406,13 +406,14 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
        >
         <BarChart title="mit Parken rechts" data={[25, 25, 25, 25]} feelsafe={60} />
         <BarChart title="ohne Parken (inkl. bauliche Trennung) " data={[25, 25, 25, 25]} feelsafe={85} />
+        <BarChart title="ohne Parken (exkl. bauliche Trennung) " data={[25, 25, 25, 25]} feelsafe={77} />
        </BarChartWrapper>
       
       <Heading as="h3">
          Drei zentrale Einflussfaktoren
        </Heading>
       <Text>
-        Für das subjektive Sicherheitsempfinden sind neben Lage der RVA vornehmlich drei Faktoren relevant:
+        Für das subjektive Sicherheitsempfinden sind neben der Lage der RVA vornehmlich drei Faktoren relevant:
         <List
         items={[
           'Die Breite der RVA',
@@ -426,7 +427,7 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
          </Text>
         <BarChartWrapper
         title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
-        source="Anm: Durchschnitt der Bewertungen aller Situationen"
+        source="Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Bei Baulicher Trennung, Markierung Links, Tempolimit und Verkehrsaufkommen, werden Nur solche Situationen ohne Tram, Bus und RVA rechts des Parkens einbezogen. Bei der Baulichen Trennung nur solche ohne Parken rechts."
        >
         <BarChart title="Gesamtbreite RVA (Breit - schmal)" data={[21, 0, 0, 79]} feelsafe={0} />
         <BarChart title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)" data={[22, 0, 0, 78]} feelsafe={0} />
