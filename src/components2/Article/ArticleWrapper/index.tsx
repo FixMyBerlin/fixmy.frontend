@@ -54,7 +54,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-export default function SinglePageWrapper({
+export default function ArticleWrapper({
   bgPattern = defaultBgPattern,
   hasToc = false,
   tocHasActiveState = false,
