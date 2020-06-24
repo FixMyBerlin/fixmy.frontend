@@ -506,7 +506,6 @@ export default function ResearchLanding() {
         />
       </BarChartWrapper>
 
-      <Text></Text>
       <Heading as="h3">
         Breite der RVA zentral, besonders bei Parken rechts
       </Heading>
