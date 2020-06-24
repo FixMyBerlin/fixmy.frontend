@@ -445,12 +445,27 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
       <Text>
           In der Umfrage wurde unterschieden zwischen 3,5 Metern (breit) und 2,0 Metern (schmal) Breite für die RVA inkl. aller links und rechtsseitigen Markierungen (s.a. Umfragedesign). Im Ergebnis aller Situationen zeigt sich, dass breite RVA in den allermeisten Situationen als sicher empfunden werden. Im Durchschnitt bewerten 84% der Teilnehmer:innen “diese als sicher” oder “eher sicher”.
       <br />
-          Vergleichen wir einen Radstreifen an einer HVS ohne ruhenden Verkehr zeigt sich folgender Unterschied:
+          Vergleichen wir beispielhaft einen Radstreifen an einer HVS ohne ruhenden Verkehr zeigt sich folgender Unterschied:
       </Text>
-      
+      <ImageMulti
+        sources={[MS_C_305, MS_C_17]}
+        feelsafes={[74, 69]}
+        subtitles={[
+          '*69,09 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen als „sicher“ oder „eher sicher“',
+          '*32,76 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen als „sicher“ oder „eher sicher“'
+        ]}
+      />
       <Text>
-          Bei einem Radstreifen an einer HVS mit Parken-rechts ist der Unterschied erheblicher:
+          Bei einem Radstreifen an einer HVS mit Parken-rechts ist der Unterschied größer:
       </Text>
+      <ImageMulti
+        sources={[MS_C_980, MS_C_620]}
+        feelsafes={[71, 32]}
+        subtitles={[
+          '*70,71 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen als „sicher“ oder „eher sicher“',
+          '*32,23 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen als „sicher“ oder „eher sicher“'
+        ]}
+      />
       
       <Heading as="h3">Grüne Oberfläche hilft</Heading>
       <Text>
