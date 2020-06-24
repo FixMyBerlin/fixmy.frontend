@@ -17,51 +17,53 @@ import {
   BarChartWrapper
 } from '~/components2/Article';
 
-import CP_C_688 from './images/01_CP_C_688.jpg';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import image1 from './images/image-1.jpg';
-import MS_C_2 from './images/01_MS_C_2.jpg';
-// import CP_C_58 from './images/01_CP_C_58_@x2.jpg';
-// import CP_C_49 from './images/01_CP_C_49_@x2.jpg';
-// import CP_C_194 from './images/01_CP_C_194_@x2.jpg';
-// import CP_C_463 from './images/01_CP_C_463_@x2.jpg';
-// import CP_C_509 from './images/01_CP_C_509_@x2.jpg';
-// import CP_C_516 from './images/01_CP_C_516_@x2.jpg';
-// import CP_C_553 from './images/01_CP_C_553_@x2.jpg';
-// import CP_C_725 from './images/01_CP_C_725_@x2.jpg';
-// import CP_C_823 from './images/01_CP_C_823_@x2.jpg';
-// import CP_C_1093 from './images/01_CP_C_1093_@x2.jpg';
-// import CP_C_1100 from './images/01_CP_C_1100_@x2.jpg';
-// import CP_P_149 from './images/01_CP_P_149_@x2.jpg';
-// import CP_P_185 from './images/01_CP_P_185_@x2.jpg';
-// import CP_P_194 from './images/01_CP_P_194_@x2.jpg';
-// import CP_P_203 from './images/01_CP_P_203_@x2.jpg';
-// import CP_P_778 from './images/01_CP_P_778_@x2.jpg';
-// import MS_C_21 from './images/01_MS_C_21_@x2.jpg';
-// import MS_C_51 from './images/01_MS_C_51_@x2.jpg';
-// import MS_C_305 from './images/01_MS_C_305_@x2.jpg';
-// import MS_C_325 from './images/01_MS_C_325_@x2.jpg';
-// import MS_C_377 from './images/01_MS_C_377_@x2.jpg';
-// import MS_C_596 from './images/01_MS_C_596_@x2.jpg';
-// import MS_C_597 from './images/01_MS_C_597_@x2.jpg';
-// import MS_C_606 from './images/01_MS_C_606_@x2.jpg';
-// import MS_C_611 from './images/01_MS_C_611_@x2.jpg';
-// import MS_C_620 from './images/01_MS_C_620_@x2.jpg';
-// import MS_C_860 from './images/01_MS_C_860_@x2.jpg';
-// import MS_C_980 from './images/01_MS_C_980_@x2.jpg';
-// import MS_C_1220 from './images/01_MS_C_1220_@x2.jpg';
-// import SE_C_2 from './images/01_SE_C_2_@x2.jpg';
-// import SE_C_10 from './images/01_SE_C_10_@x2.jpg';
-// import SE_C_11 from './images/01_SE_C_11_@x2.jpg';
-// import SE_C_12 from './images/01_SE_C_12_@x2.jpg';
-// import SE_C_42 from './images/01_SE_C_42_@x2.jpg';
-// import SE_C_44 from './images/01_SE_C_44_@x2.jpg';
-// import SE_C_47 from './images/01_SE_C_47_@x2.jpg';
-// import SE_C_49 from './images/01_SE_C_49_@x2.jpg';
-// import SE_C_50 from './images/01_SE_C_50_@x2.jpg';
-// import SE_C_71 from './images/01_SE_C_71_@x2.jpg';
+import CP_C_1093 from './images/01_CP_C_1093_@x2.jpg';
+import CP_C_1100 from './images/01_CP_C_1100_@x2.jpg';
+import CP_C_194 from './images/01_CP_C_194_@x2.jpg';
+import CP_C_463 from './images/01_CP_C_463_@x2.jpg';
+import CP_C_49 from './images/01_CP_C_49_@x2.jpg';
+import CP_C_509 from './images/01_CP_C_509_@x2.jpg';
+import CP_C_516 from './images/01_CP_C_516_@x2.jpg';
+import CP_C_553 from './images/01_CP_C_553_@x2.jpg';
+import CP_C_58 from './images/01_CP_C_58_@x2.jpg';
+import CP_C_688 from './images/01_CP_C_688.jpg';
+import CP_C_725 from './images/01_CP_C_725_@x2.jpg';
+import CP_C_823 from './images/01_CP_C_823_@x2.jpg';
+import CP_P_149 from './images/01_CP_P_149_@x2.jpg';
+import CP_P_185 from './images/01_CP_P_185_@x2.jpg';
+import CP_P_194 from './images/01_CP_P_194_@x2.jpg';
+import CP_P_203 from './images/01_CP_P_203_@x2.jpg';
+import CP_P_778 from './images/01_CP_P_778_@x2.jpg';
+import MS_C_1220 from './images/01_MS_C_1220_@x2.jpg';
 import MS_C_17 from './images/01_MS_C_17_@x2.jpg';
+import MS_C_2 from './images/01_MS_C_2.jpg';
+import MS_C_21 from './images/01_MS_C_21_@x2.jpg';
+import MS_C_305 from './images/01_MS_C_305_@x2.jpg';
+import MS_C_325 from './images/01_MS_C_325_@x2.jpg';
+import MS_C_377 from './images/01_MS_C_377_@x2.jpg';
+import MS_C_51 from './images/01_MS_C_51_@x2.jpg';
 import MS_C_587 from './images/01_MS_C_587_@x2.jpg';
+import MS_C_596 from './images/01_MS_C_596_@x2.jpg';
+import MS_C_597 from './images/01_MS_C_597_@x2.jpg';
+import MS_C_606 from './images/01_MS_C_606_@x2.jpg';
+import MS_C_611 from './images/01_MS_C_611_@x2.jpg';
 import MS_C_619 from './images/01_MS_C_619_@x2.jpg';
+import MS_C_620 from './images/01_MS_C_620_@x2.jpg';
+import MS_C_860 from './images/01_MS_C_860_@x2.jpg';
+import MS_C_980 from './images/01_MS_C_980_@x2.jpg';
+import SE_C_10 from './images/01_SE_C_10_@x2.jpg';
+import SE_C_11 from './images/01_SE_C_11_@x2.jpg';
+import SE_C_12 from './images/01_SE_C_12_@x2.jpg';
+import SE_C_2 from './images/01_SE_C_2_@x2.jpg';
+import SE_C_42 from './images/01_SE_C_42_@x2.jpg';
+import SE_C_44 from './images/01_SE_C_44_@x2.jpg';
+import SE_C_47 from './images/01_SE_C_47_@x2.jpg';
+import SE_C_49 from './images/01_SE_C_49_@x2.jpg';
+import SE_C_50 from './images/01_SE_C_50_@x2.jpg';
+import SE_C_71 from './images/01_SE_C_71_@x2.jpg';
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
 export default function ResearchLanding() {
   return (
@@ -448,11 +450,16 @@ export default function ResearchLanding() {
           data={[25, 25, 25, 25]}
           feelsafe={85}
         />
+        <BarChart
+          title="ohne Parken (exkl. bauliche Trennung) "
+          data={[25, 25, 25, 25]}
+          feelsafe={77}
+        />
       </BarChartWrapper>
 
       <Heading as="h3">Drei zentrale Einflussfaktoren</Heading>
       <Text>
-        Für das subjektive Sicherheitsempfinden sind neben Lage der RVA
+        Für das subjektive Sicherheitsempfinden sind neben der Lage der RVA
         vornehmlich drei Faktoren relevant:
         <List
           items={[
@@ -462,6 +469,50 @@ export default function ResearchLanding() {
           ]}
         />
       </Text>
+      <Text>
+        Die Breite der Trennung Links spielt vornehmlich bei Situationen mit
+        Parken rechts eine Rolle. Die weiteren in der Umfrage abgefragten
+        Faktoren, Tempolimit und Verkehrsstärke, spielen eine vergleichsweise
+        unbedeutende Rolle. Hier ist zu berücksichtigen, das die Empfindungen
+        der Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur
+        abstrahiert vermittelt werden kann.
+      </Text>
+      <BarChartWrapper
+        title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
+        source="Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Bei Baulicher Trennung, Markierung Links, Tempolimit und Verkehrsaufkommen, werden Nur solche Situationen ohne Tram, Bus und RVA rechts des Parkens einbezogen. Bei der Baulichen Trennung nur solche ohne Parken rechts."
+      >
+        <BarChart
+          title="Gesamtbreite RVA (Breit - schmal)"
+          data={[21, 0, 0, 79]}
+          feelsafe={0}
+        />
+        <BarChart
+          title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)"
+          data={[22, 0, 0, 78]}
+          feelsafe={0}
+        />
+        <BarChart
+          title="Oberflächenfärbung (grün - asphalt)"
+          data={[11, 0, 0, 89]}
+          feelsafe={0}
+        />
+        <BarChart
+          title="Markierung Links (gestrichelt - Sperrfläche)"
+          data={[8, 0, 0, 92]}
+          feelsafe={0}
+        />
+        <BarChart
+          title="Tempolimit (30 - 50)"
+          data={[3, 0, 0, 97]}
+          feelsafe={0}
+        />
+        <BarChart
+          title="Verkehrsstärke (normal - hoch)"
+          data={[3, 0, 0, 97]}
+          feelsafe={0}
+        />
+      </BarChartWrapper>
+
       <Text>
         Die Breite der Trennung Links spielt vornehmlich bei Situationen mit
         Parken rechts eine Rolle. Die weiteren in der Umfrage abgefragten
@@ -517,14 +568,29 @@ export default function ResearchLanding() {
         empfunden werden. Im Durchschnitt bewerten 84% der Teilnehmer:innen
         “diese als sicher” oder “eher sicher”.
         <br />
-        Vergleichen wir einen Radstreifen an einer HVS ohne ruhenden Verkehr
-        zeigt sich folgender Unterschied:
+        Vergleichen wir beispielhaft einen Radstreifen an einer HVS ohne
+        ruhenden Verkehr zeigt sich folgender Unterschied:
       </Text>
-
+      <ImageMulti
+        sources={[MS_C_305, MS_C_17]}
+        feelsafes={[74, 69]}
+        subtitles={[
+          '*69,09 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen als „sicher“ oder „eher sicher“',
+          '*32,76 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen als „sicher“ oder „eher sicher“'
+        ]}
+      />
       <Text>
         Bei einem Radstreifen an einer HVS mit Parken-rechts ist der Unterschied
-        erheblicher:
+        größer:
       </Text>
+      <ImageMulti
+        sources={[MS_C_980, MS_C_620]}
+        feelsafes={[71, 32]}
+        subtitles={[
+          '*70,71 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen als „sicher“ oder „eher sicher“',
+          '*32,23 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen als „sicher“ oder „eher sicher“'
+        ]}
+      />
 
       <Heading as="h3">Grüne Oberfläche hilft</Heading>
       <Text>
