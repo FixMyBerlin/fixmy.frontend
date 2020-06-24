@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { ThemeProvider } from '@material-ui/styles';
 
 import config from './config';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
