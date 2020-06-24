@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
+import slugify from 'slugify';
 
 import config from '~/config';
 import { media } from '~/styles/utils';
@@ -50,13 +51,23 @@ const headings = {
   h3: Heading3
 };
 
+/**
+ * Provide an anchor for accessibility if toc prop is provided
+ */
+const AnchorWrapper = ({ toc, children }) =>
+  toc == null ? (
+    <>{children}</>
+  ) : (
+    <a href={`#${slugify(toc, { lower: true })}`}>{children}</a>
+  );
+
 const Heading = ({ as, toc, children, className }: HeadingProps) => {
   const HeadingComponent = headings[as] ? headings[as] : Heading1;
 
   return (
-    <HeadingComponent toc={toc} className={className}>
-      {children}
-    </HeadingComponent>
+    <AnchorWrapper toc={toc}>
+      <HeadingComponent className={className}>{children}</HeadingComponent>
+    </AnchorWrapper>
   );
 };
 

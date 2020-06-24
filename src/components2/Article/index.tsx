@@ -3,7 +3,7 @@ export { default as ArticleHeader } from './ArticleHeader';
 export { default as Heading } from './Heading';
 export { default as Intro } from './Intro';
 export { default as Quote } from './Quote';
-export { default as Text } from './Text';
+export { default as Paragraph } from './Paragraph';
 export { default as List } from './List';
 export { default as Link } from './Link';
 export { default as Button } from './Button';

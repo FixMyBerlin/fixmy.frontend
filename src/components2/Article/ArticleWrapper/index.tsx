@@ -16,14 +16,6 @@ interface PageProps {
 const Page = styled.div<PageProps>`
   background: url(${(props) => props.bgPattern});
   min-height: 100%;
-
-  p {
-    font-weight: 400;
-    font-family: ${config.baseFont};
-    margin: 1em auto;
-    line-height: 1.5;
-    max-width: 520px;
-  }
 `;
 
 const ContentWrapperOuter = styled.div`

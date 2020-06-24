@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Text from './Text';
+import Paragraph from './Paragraph';
 
-const Intro = styled(Text)`
+const Intro = styled(Paragraph)`
   font-weight: 700;
 `;
 
