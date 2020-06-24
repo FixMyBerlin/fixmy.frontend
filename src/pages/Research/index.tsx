@@ -15,7 +15,7 @@ import {
   Button,
   BarChart,
   BarChartWrapper
-} from './components';
+} from '~/components2/Article';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import image1 from './images/image-1.jpg';

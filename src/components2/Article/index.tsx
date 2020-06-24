@@ -13,4 +13,4 @@ export { default as Link } from './Link';
 export { default as Button } from './Button';
 export { default as BarChart } from './BarChart';
 export { default as BarChartWrapper } from './BarChartWrapper';
-export { Image, ImageMulti, ImageFull } from './Image';
+export { Image, ImageMulti, ImageFull } from '../Image';
