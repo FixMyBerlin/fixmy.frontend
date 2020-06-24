@@ -54,7 +54,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-export default function SinglePageWrapper({
+function ArticleWrapper({
   bgPattern = defaultBgPattern,
   hasToc = false,
   tocHasActiveState = false,
@@ -148,3 +148,5 @@ export default function SinglePageWrapper({
     </Page>
   );
 }
+
+export default ArticleWrapper;
