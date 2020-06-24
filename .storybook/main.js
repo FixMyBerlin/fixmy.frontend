@@ -40,6 +40,18 @@ const configureTypeScript = (config) => {
   });
 };
 
+const configureFileLoader = (config) => {
+  config.module.rules.push({
+    test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
+    use: {
+      loader: 'file-loader',
+      options: {
+        name: '[path][name].[ext]'
+      }
+    }
+  });
+};
+
 module.exports = {
   stories: ['../src/**/*.stories.[tj]s'],
   addons: ['@storybook/addon-actions', '@storybook/addon-links'],
@@ -47,6 +59,7 @@ module.exports = {
     config.resolve.alias['~'] = AppSourceDir;
     configureTypeScript(config);
     replaceSvgRule(config);
+    configureFileLoader(config);
     return config;
   }
 };
