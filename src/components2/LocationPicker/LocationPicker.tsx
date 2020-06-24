@@ -124,12 +124,11 @@ const LocationPicker: React.FC<Props> = ({ onSelect, mapboxStyle, bounds }) => {
           const results = await fetchSuggestions(inputValue, geocoderBounds);
           logger('found', results);
           setSuggestions(results);
-          throw new Error('test');
         } catch (e) {
           logger(e);
-          // setErrorMessage(
-          //   'Es gab einen Fehler beim Laden der Ergebnisse. Sind Sie mit dem Internet verbunden?'
-          // );
+          setErrorMessage(
+            'Es gab einen Fehler beim Laden der Ergebnisse. Sind Sie mit dem Internet verbunden?'
+          );
           throw e;
         }
       }, 300)
@@ -158,6 +157,7 @@ const LocationPicker: React.FC<Props> = ({ onSelect, mapboxStyle, bounds }) => {
           )}
           {suggestions.map(({ coords, address }) => (
             <ListItem
+              key={address}
               button
               onClick={() => setSelected({ address, location: coords })}
             >
@@ -175,7 +175,7 @@ const LocationPicker: React.FC<Props> = ({ onSelect, mapboxStyle, bounds }) => {
         </AddressHint>
       )}
       <StyledMap onInit={setMap} style={mapboxStyle} bounds={bounds} />
-      <Snackbar open={errorMessage}>{errorMessage}</Snackbar>
+      <Snackbar open={errorMessage != null} message={errorMessage} />
     </>
   );
 };

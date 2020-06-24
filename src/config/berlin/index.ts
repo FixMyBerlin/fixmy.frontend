@@ -86,7 +86,7 @@ export default {
           path: 'terrassen',
           timeline: {
             openSignup: new Date(Date.UTC(2020, 5, 19, 16, 0)),
-            closeSignup: new Date(Date.UTC(2020, 5, 22, 8, 0))
+            closeSignup: new Date(Date.UTC(2020, 5, 23, 8, 0))
           },
           model: {
             category: false,

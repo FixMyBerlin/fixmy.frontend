@@ -20,49 +20,48 @@ import {
 import CP_C_688 from './images/01_CP_C_688.jpg';
 import image1 from './images/image-1.jpg';
 import MS_C_2 from './images/01_MS_C_2.jpg';
-import CP_C_58 from './images/01_CP_C_58_@x2.jpg';
-import CP_C_49 from './images/01_CP_C_49_@x2.jpg';
-import CP_C_194 from './images/01_CP_C_194_@x2.jpg';
-import CP_C_463 from './images/01_CP_C_463_@x2.jpg';
-import CP_C_509 from './images/01_CP_C_509_@x2.jpg';
-import CP_C_516 from './images/01_CP_C_516_@x2.jpg';
-import CP_C_553 from './images/01_CP_C_553_@x2.jpg';
-import CP_C_725 from './images/01_CP_C_725_@x2.jpg';
-import CP_C_823 from './images/01_CP_C_823_@x2.jpg';
-import CP_C_1093 from './images/01_CP_C_1093_@x2.jpg';
-import CP_C_1100 from './images/01_CP_C_1100_@x2.jpg';
-import CP_P_149 from './images/01_CP_P_149_@x2.jpg';
-import CP_P_185 from './images/01_CP_P_185_@x2.jpg';
-import CP_P_194 from './images/01_CP_P_194_@x2.jpg';
-import CP_P_203 from './images/01_CP_P_203_@x2.jpg';
-import CP_P_778 from './images/01_CP_P_778_@x2.jpg';
-import MS_C_21 from './images/01_MS_C_21_@x2.jpg';
-import MS_C_51 from './images/01_MS_C_51_@x2.jpg';
+// import CP_C_58 from './images/01_CP_C_58_@x2.jpg';
+// import CP_C_49 from './images/01_CP_C_49_@x2.jpg';
+// import CP_C_194 from './images/01_CP_C_194_@x2.jpg';
+// import CP_C_463 from './images/01_CP_C_463_@x2.jpg';
+// import CP_C_509 from './images/01_CP_C_509_@x2.jpg';
+// import CP_C_516 from './images/01_CP_C_516_@x2.jpg';
+// import CP_C_553 from './images/01_CP_C_553_@x2.jpg';
+// import CP_C_725 from './images/01_CP_C_725_@x2.jpg';
+// import CP_C_823 from './images/01_CP_C_823_@x2.jpg';
+// import CP_C_1093 from './images/01_CP_C_1093_@x2.jpg';
+// import CP_C_1100 from './images/01_CP_C_1100_@x2.jpg';
+// import CP_P_149 from './images/01_CP_P_149_@x2.jpg';
+// import CP_P_185 from './images/01_CP_P_185_@x2.jpg';
+// import CP_P_194 from './images/01_CP_P_194_@x2.jpg';
+// import CP_P_203 from './images/01_CP_P_203_@x2.jpg';
+// import CP_P_778 from './images/01_CP_P_778_@x2.jpg';
+// import MS_C_21 from './images/01_MS_C_21_@x2.jpg';
+// import MS_C_51 from './images/01_MS_C_51_@x2.jpg';
+// import MS_C_305 from './images/01_MS_C_305_@x2.jpg';
+// import MS_C_325 from './images/01_MS_C_325_@x2.jpg';
+// import MS_C_377 from './images/01_MS_C_377_@x2.jpg';
+// import MS_C_596 from './images/01_MS_C_596_@x2.jpg';
+// import MS_C_597 from './images/01_MS_C_597_@x2.jpg';
+// import MS_C_606 from './images/01_MS_C_606_@x2.jpg';
+// import MS_C_611 from './images/01_MS_C_611_@x2.jpg';
+// import MS_C_620 from './images/01_MS_C_620_@x2.jpg';
+// import MS_C_860 from './images/01_MS_C_860_@x2.jpg';
+// import MS_C_980 from './images/01_MS_C_980_@x2.jpg';
+// import MS_C_1220 from './images/01_MS_C_1220_@x2.jpg';
+// import SE_C_2 from './images/01_SE_C_2_@x2.jpg';
+// import SE_C_10 from './images/01_SE_C_10_@x2.jpg';
+// import SE_C_11 from './images/01_SE_C_11_@x2.jpg';
+// import SE_C_12 from './images/01_SE_C_12_@x2.jpg';
+// import SE_C_42 from './images/01_SE_C_42_@x2.jpg';
+// import SE_C_44 from './images/01_SE_C_44_@x2.jpg';
+// import SE_C_47 from './images/01_SE_C_47_@x2.jpg';
+// import SE_C_49 from './images/01_SE_C_49_@x2.jpg';
+// import SE_C_50 from './images/01_SE_C_50_@x2.jpg';
+// import SE_C_71 from './images/01_SE_C_71_@x2.jpg';
 import MS_C_17 from './images/01_MS_C_17_@x2.jpg';
-import MS_C_305 from './images/01_MS_C_305_@x2.jpg';
-import MS_C_325 from './images/01_MS_C_325_@x2.jpg';
-import MS_C_377 from './images/01_MS_C_377_@x2.jpg';
 import MS_C_587 from './images/01_MS_C_587_@x2.jpg';
-import MS_C_596 from './images/01_MS_C_596_@x2.jpg';
-import MS_C_597 from './images/01_MS_C_597_@x2.jpg';
-import MS_C_606 from './images/01_MS_C_606_@x2.jpg';
-import MS_C_611 from './images/01_MS_C_611_@x2.jpg';
 import MS_C_619 from './images/01_MS_C_619_@x2.jpg';
-import MS_C_620 from './images/01_MS_C_620_@x2.jpg';
-import MS_C_860 from './images/01_MS_C_860_@x2.jpg';
-import MS_C_980 from './images/01_MS_C_980_@x2.jpg';
-import MS_C_1220 from './images/01_MS_C_1220_@x2.jpg';
-import SE_C_2 from './images/01_SE_C_2_@x2.jpg';
-import SE_C_10 from './images/01_SE_C_10_@x2.jpg';
-import SE_C_11 from './images/01_SE_C_11_@x2.jpg';
-import SE_C_12 from './images/01_SE_C_12_@x2.jpg';
-import SE_C_42 from './images/01_SE_C_42_@x2.jpg';
-import SE_C_44 from './images/01_SE_C_44_@x2.jpg';
-import SE_C_47 from './images/01_SE_C_47_@x2.jpg';
-import SE_C_49 from './images/01_SE_C_49_@x2.jpg';
-import SE_C_50 from './images/01_SE_C_50_@x2.jpg';
-import SE_C_71 from './images/01_SE_C_71_@x2.jpg';
-
 
 export default function ResearchLanding() {
   return (
@@ -115,14 +114,24 @@ export default function ResearchLanding() {
         Sicherheitsempfinden verschiedener Nutzergruppen und zur Perspektive von
         Autofahrenden und Fußgänger:innen gewonnen werden.
       </Text>
-     {/* <ImageFull
+      {/* <ImageFull
         source={CP_C_688}
         feelsafe={98}
         subtitle="*97,93% der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“ aus Fahrradperspektive."
       /> */}
       <Image source={CP_C_688} />
       <Text>
-        Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden rechts vom parkenden Verkehr am sichersten. Unter allen Situationen aus Fahrradperspektive erhielt die oben gezeigte auf einem 3,5 Meter breiten Radstreifen mit grüner Einfärbung und klarer Trennung zum ruhenden Verkehr die meisten Bewertungen “sicher” (75,86%) außerdem 22,07% “eher sicher”. Im Durchschnitt wurden Führungen im Seitenraum als sicherer, als solche im Fließenden Verkehr empfunden. Führungen in Nebenstraßen schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargestellt wurden. In der statistischen Auswertung finden Sie detaillierte Analysen zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie Auswertungen der Auto- und Fußperspektive.    
+        Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden rechts
+        vom parkenden Verkehr am sichersten. Unter allen Situationen aus
+        Fahrradperspektive erhielt die oben gezeigte auf einem 3,5 Meter breiten
+        Radstreifen mit grüner Einfärbung und klarer Trennung zum ruhenden
+        Verkehr die meisten Bewertungen “sicher” (75,86%) außerdem 22,07% “eher
+        sicher”. Im Durchschnitt wurden Führungen im Seitenraum als sicherer,
+        als solche im Fließenden Verkehr empfunden. Führungen in Nebenstraßen
+        schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargestellt
+        wurden. In der statistischen Auswertung finden Sie detaillierte Analysen
+        zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren,
+        sowie Auswertungen der Auto- und Fußperspektive.
       </Text>
       <Button as="a" href="#statistische-auswertung" target="_blank">
         Direkt zur Auswertung
@@ -372,25 +381,50 @@ export default function ResearchLanding() {
       <BarChartWrapper
         title="Führung auf der Fahrbahn(HVS-F) mit und ohne Radverkehrsanlage(RVA)"
         source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen."
-       >
+      >
         <BarChart title="mit RVA" data={[9, 16, 53, 22]} feelsafe={75} />
         <BarChart title="ohne RVA" data={[56, 30, 12, 2]} feelsafe={14} />
-        <BarChart title="ohne RVA (Vielfahrer)" data={[55, 30, 12, 3]} feelsafe={15} />
-        <BarChart title="ohne RVA (Seltenfahrer)" data={[56, 29, 12, 1]} feelsafe={13} />
-        <BarChart title="ohne RVA (weiblich)" data={[56, 33, 10, 1]} feelsafe={11} />
-        <BarChart title="ohne RVA (männlich)" data={[56, 28, 14, 2]} feelsafe={16} />
+        <BarChart
+          title="ohne RVA (Vielfahrer)"
+          data={[55, 30, 12, 3]}
+          feelsafe={15}
+        />
+        <BarChart
+          title="ohne RVA (Seltenfahrer)"
+          data={[56, 29, 12, 1]}
+          feelsafe={13}
+        />
+        <BarChart
+          title="ohne RVA (weiblich)"
+          data={[56, 33, 10, 1]}
+          feelsafe={11}
+        />
+        <BarChart
+          title="ohne RVA (männlich)"
+          data={[56, 28, 14, 2]}
+          feelsafe={16}
+        />
       </BarChartWrapper>
       <Text>
         Weitere Auswertungen nach Nutzermerkmalen finden Sie hier:{' '}
         <Link href="https://fixmyberlin.de">Jupyter notebook</Link>
       </Text>
-      
+
       <Heading as="h3">
         Ruhender Verkehr erzeugt zusätzliche Konfliktzone
-       </Heading>
+      </Heading>
       <Text>
-     Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an die RVA sind grundlegend zu unterscheiden. Bei Führung mit ruhendem Verkehr rechts der RVA (Parken-rechts) beeinträchtigt die potentielle Gefahr durch Türöffnung der parkenden Autos das Sicherheitsempfinden negativ. 
-Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in diesen Situationen nicht möglich sind, was den Gestaltungsspielraum bei der Planung verringert. In der Umfrage nicht bildlich dargestellt wurde die Gefahr durch ein- sowie ausparkende Autos. Das tatsächliche Sicherheitsempfinden in diesen Situationen könnte also noch geringer ausfallen.
+        Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das
+        Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an
+        die RVA sind grundlegend zu unterscheiden. Bei Führung mit ruhendem
+        Verkehr rechts der RVA (Parken-rechts) beeinträchtigt die potentielle
+        Gefahr durch Türöffnung der parkenden Autos das Sicherheitsempfinden
+        negativ. Weiter zu beachten ist, dass bauliche Trennungen zum fließenden
+        KFZ-Verkehr in diesen Situationen nicht möglich sind, was den
+        Gestaltungsspielraum bei der Planung verringert. In der Umfrage nicht
+        bildlich dargestellt wurde die Gefahr durch ein- sowie ausparkende
+        Autos. Das tatsächliche Sicherheitsempfinden in diesen Situationen
+        könnte also noch geringer ausfallen.
       </Text>
       <ImageMulti
         sources={[MS_C_17, MS_C_619]}
@@ -403,63 +437,109 @@ Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in 
       <BarChartWrapper
         title="HVS-F: RVA mit und ohne rechtsseitiges Parken"
         source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens"
-       >
-        <BarChart title="mit Parken rechts" data={[25, 25, 25, 25]} feelsafe={60} />
-        <BarChart title="ohne Parken (inkl. bauliche Trennung) " data={[25, 25, 25, 25]} feelsafe={85} />
-       </BarChartWrapper>
-      
-      <Heading as="h3">
-         Drei zentrale Einflussfaktoren
-       </Heading>
+      >
+        <BarChart
+          title="mit Parken rechts"
+          data={[25, 25, 25, 25]}
+          feelsafe={60}
+        />
+        <BarChart
+          title="ohne Parken (inkl. bauliche Trennung) "
+          data={[25, 25, 25, 25]}
+          feelsafe={85}
+        />
+      </BarChartWrapper>
+
+      <Heading as="h3">Drei zentrale Einflussfaktoren</Heading>
       <Text>
-        Für das subjektive Sicherheitsempfinden sind neben Lage der RVA vornehmlich drei Faktoren relevant:
+        Für das subjektive Sicherheitsempfinden sind neben Lage der RVA
+        vornehmlich drei Faktoren relevant:
         <List
-        items={[
-          'Die Breite der RVA',
-          'Ihre farbliche Unterscheidung',
-          'Vorhandensein einer baulichen Trennung zum fließenden KFZ-Verkehr'
-        ]}
-      />
-        </Text>
-         <Text>
-            Die Breite der Trennung Links spielt vornehmlich bei Situationen mit Parken rechts eine Rolle. Die weiteren in der Umfrage abgefragten Faktoren, Tempolimit und Verkehrsstärke, spielen eine vergleichsweise unbedeutende Rolle. Hier ist zu berücksichtigen, das die Empfindungen der Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur abstrahiert vermittelt werden kann.
-         </Text>
-        <BarChartWrapper
+          items={[
+            'Die Breite der RVA',
+            'Ihre farbliche Unterscheidung',
+            'Vorhandensein einer baulichen Trennung zum fließenden KFZ-Verkehr'
+          ]}
+        />
+      </Text>
+      <Text>
+        Die Breite der Trennung Links spielt vornehmlich bei Situationen mit
+        Parken rechts eine Rolle. Die weiteren in der Umfrage abgefragten
+        Faktoren, Tempolimit und Verkehrsstärke, spielen eine vergleichsweise
+        unbedeutende Rolle. Hier ist zu berücksichtigen, das die Empfindungen
+        der Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur
+        abstrahiert vermittelt werden kann.
+      </Text>
+      <BarChartWrapper
         title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
         source="Anm: Durchschnitt der Bewertungen aller Situationen"
-       >
-        <BarChart title="Gesamtbreite RVA (Breit - schmal)" data={[21, 0, 0, 79]} feelsafe={0} />
-        <BarChart title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)" data={[22, 0, 0, 78]} feelsafe={0} />
-        <BarChart title="Oberflächenfärbung (grün - asphalt)" data={[11, 0, 0, 89]} feelsafe={0} />
-        <BarChart title="Markierung Links (gestrichelt - Sperrfläche)" data={[8, 0, 0, 92]} feelsafe={0} />
-        <BarChart title="Tempolimit (30 - 50)" data={[3, 0, 0, 97]} feelsafe={0} />
-        <BarChart title="Verkehrsstärke (normal - hoch)" data={[3, 0, 0, 97]} feelsafe={0} />
-       </BarChartWrapper>
-      
-      <Text>
-      </Text>
+      >
+        <BarChart
+          title="Gesamtbreite RVA (Breit - schmal)"
+          data={[21, 0, 0, 79]}
+          feelsafe={0}
+        />
+        <BarChart
+          title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)"
+          data={[22, 0, 0, 78]}
+          feelsafe={0}
+        />
+        <BarChart
+          title="Oberflächenfärbung (grün - asphalt)"
+          data={[11, 0, 0, 89]}
+          feelsafe={0}
+        />
+        <BarChart
+          title="Markierung Links (gestrichelt - Sperrfläche)"
+          data={[8, 0, 0, 92]}
+          feelsafe={0}
+        />
+        <BarChart
+          title="Tempolimit (30 - 50)"
+          data={[3, 0, 0, 97]}
+          feelsafe={0}
+        />
+        <BarChart
+          title="Verkehrsstärke (normal - hoch)"
+          data={[3, 0, 0, 97]}
+          feelsafe={0}
+        />
+      </BarChartWrapper>
+
+      <Text></Text>
       <Heading as="h3">
-         Breite der RVA zentral, besonders bei Parken rechts
-       </Heading>
+        Breite der RVA zentral, besonders bei Parken rechts
+      </Heading>
       <Text>
-          In der Umfrage wurde unterschieden zwischen 3,5 Metern (breit) und 2,0 Metern (schmal) Breite für die RVA inkl. aller links und rechtsseitigen Markierungen (s.a. Umfragedesign). Im Ergebnis aller Situationen zeigt sich, dass breite RVA in den allermeisten Situationen als sicher empfunden werden. Im Durchschnitt bewerten 84% der Teilnehmer:innen “diese als sicher” oder “eher sicher”.
-      <br />
-          Vergleichen wir einen Radstreifen an einer HVS ohne ruhenden Verkehr zeigt sich folgender Unterschied:
+        In der Umfrage wurde unterschieden zwischen 3,5 Metern (breit) und 2,0
+        Metern (schmal) Breite für die RVA inkl. aller links und rechtsseitigen
+        Markierungen (s.a. Umfragedesign). Im Ergebnis aller Situationen zeigt
+        sich, dass breite RVA in den allermeisten Situationen als sicher
+        empfunden werden. Im Durchschnitt bewerten 84% der Teilnehmer:innen
+        “diese als sicher” oder “eher sicher”.
+        <br />
+        Vergleichen wir einen Radstreifen an einer HVS ohne ruhenden Verkehr
+        zeigt sich folgender Unterschied:
       </Text>
-      
+
       <Text>
-          Bei einem Radstreifen an einer HVS mit Parken-rechts ist der Unterschied erheblicher:
+        Bei einem Radstreifen an einer HVS mit Parken-rechts ist der Unterschied
+        erheblicher:
       </Text>
-      
+
       <Heading as="h3">Grüne Oberfläche hilft</Heading>
       <Text>
-        Wird die RVA durch eine grüne Oberfläche von der KFZ-Fahrbahn unterschieden hat dies einen positiven Effekt  auf das subjektive Sicherheitsempfinden. 
+        Wird die RVA durch eine grüne Oberfläche von der KFZ-Fahrbahn
+        unterschieden hat dies einen positiven Effekt auf das subjektive
+        Sicherheitsempfinden.
       </Text>
-      
-      <Heading as="h3">Poller stärken Sicherheitsempfinden, Blumenkästen auch</Heading>
-     
+
+      <Heading as="h3">
+        Poller stärken Sicherheitsempfinden, Blumenkästen auch
+      </Heading>
+
       <Heading as="h3">Trennung durch ruhenden Verkehr</Heading>
-      
+
       <ImageFull
         source={MS_C_587}
         feelsafe={63}
