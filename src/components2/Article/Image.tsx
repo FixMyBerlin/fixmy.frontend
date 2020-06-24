@@ -51,46 +51,41 @@ type FeelsafeSize = 'small' | 'big';
 
 interface InnerImageProps extends ImageProps {
   feelsafeSize?: FeelsafeSize;
+  children?: React.ReactNode;
 }
 
 const InnerImg = ({
   source,
   feelsafe = null,
   subtitle = null,
-  feelsafeSize = 'small'
+  feelsafeSize = 'small',
+  children = null
 }: InnerImageProps) => (
   <>
     <Img src={source} />
     {feelsafe && <FeelSafe value={feelsafe} size={feelsafeSize} />}
     {subtitle && <Subtitle>{subtitle}</Subtitle>}
+    {children}
   </>
 );
 
-interface MultiImageProps {
-  sources: string[];
-  feelsafes?: number[];
-  subtitles?: string[];
+export const ImageMulti = ({ children }) => (
+  <ImageWrapper>{children}</ImageWrapper>
+);
+
+interface ImageMultiInnerProps {
+  source: string;
+  children: React.ReactNode | React.ReactNode[];
 }
 
-export const ImageMulti = ({
-  sources,
-  feelsafes = null,
-  subtitles = null
-}: MultiImageProps) => {
-  return (
-    <ImageWrapper>
-      {sources.map((source, index) => (
-        <ImageSpacer key={`multi-image__${index}`}>
-          <InnerImg
-            source={source}
-            feelsafe={feelsafes ? feelsafes[index] : null}
-            subtitle={subtitles ? subtitles[index] : null}
-          />
-        </ImageSpacer>
-      ))}
-    </ImageWrapper>
-  );
-};
+const ImageMultiInner = ({ source, children }: ImageMultiInnerProps) => (
+  <ImageSpacer>
+    <InnerImg source={source}>{children}</InnerImg>
+  </ImageSpacer>
+);
+
+ImageMulti.Inner = ImageMultiInner;
+ImageMulti.Subtitle = Subtitle;
 
 interface ImageProps {
   source: string;

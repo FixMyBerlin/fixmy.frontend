@@ -17,6 +17,7 @@ import MS_C_587 from '../images/01_MS_C_587_@x2.jpg';
 import MS_C_619 from '../images/01_MS_C_619_@x2.jpg';
 import MS_C_620 from '../images/01_MS_C_620_@x2.jpg';
 import MS_C_980 from '../images/01_MS_C_980_@x2.jpg';
+import FeelSafe from '../components/FeelSafe';
 
 const SectionResults = ({ toc }) => (
   <>
@@ -40,14 +41,22 @@ const SectionResults = ({ toc }) => (
       Abschnitt.
     </Paragraph>
 
-    <ImageMulti
-      sources={[MS_C_2, MS_C_587]}
-      feelsafes={[28, 11]}
-      subtitles={[
-        '*27,62 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“',
-        '*11,05 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“'
-      ]}
-    />
+    <ImageMulti>
+      <ImageMulti.Inner source={MS_C_2}>
+        <FeelSafe value={28} />
+        <ImageMulti.Subtitle>
+          *27,62 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder
+          „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+      <ImageMulti.Inner source={MS_C_587}>
+        <FeelSafe value={11} />
+        <ImageMulti.Subtitle>
+          *11,05 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder
+          „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+    </ImageMulti>
 
     <BarChart.Wrapper
       title="Führung auf der Fahrbahn(HVS-F) mit und ohne Radverkehrsanlage(RVA)"
@@ -97,14 +106,22 @@ const SectionResults = ({ toc }) => (
       noch geringer ausfallen.
     </Paragraph>
 
-    <ImageMulti
-      sources={[MS_C_17, MS_C_619]}
-      feelsafes={[69, 33]}
-      subtitles={[
-        '*69,09% der Nutzer:innen bewerteten diese Situation ohne Parkstreifen als „sicher“ oder „eher sicher“',
-        '*32,76% der Nutzer:innen bewerteten diese Situation mit Parkstreifen als „sicher“ oder „eher sicher“'
-      ]}
-    />
+    <ImageMulti>
+      <ImageMulti.Inner source={MS_C_17}>
+        <FeelSafe value={69} />
+        <ImageMulti.Subtitle>
+          *69,09% der Nutzer:innen bewerteten diese Situation ohne Parkstreifen
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+      <ImageMulti.Inner source={MS_C_619}>
+        <FeelSafe value={33} />
+        <ImageMulti.Subtitle>
+          *32,76% der Nutzer:innen bewerteten diese Situation mit Parkstreifen
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+    </ImageMulti>
 
     <BarChart.Wrapper
       title="HVS-F: RVA mit und ohne rechtsseitiges Parken"
@@ -247,26 +264,44 @@ const SectionResults = ({ toc }) => (
       Verkehr zeigt sich folgender Unterschied:
     </Paragraph>
 
-    <ImageMulti
-      sources={[MS_C_305, MS_C_17]}
-      feelsafes={[74, 69]}
-      subtitles={[
-        '*69,09 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen als „sicher“ oder „eher sicher“',
-        '*32,76 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen als „sicher“ oder „eher sicher“'
-      ]}
-    />
+    <ImageMulti>
+      <ImageMulti.Inner source={MS_C_305}>
+        <FeelSafe value={74} />
+        <ImageMulti.Subtitle>
+          *69,09 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+      <ImageMulti.Inner source={MS_C_17}>
+        <FeelSafe value={69} />
+        <ImageMulti.Subtitle>
+          *32,76 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+    </ImageMulti>
+
     <Paragraph>
       Bei einem Radstreifen an einer HVS mit Parken-rechts ist der Unterschied
       größer:
     </Paragraph>
-    <ImageMulti
-      sources={[MS_C_980, MS_C_620]}
-      feelsafes={[71, 32]}
-      subtitles={[
-        '*70,71 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen als „sicher“ oder „eher sicher“',
-        '*32,23 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen als „sicher“ oder „eher sicher“'
-      ]}
-    />
+
+    <ImageMulti>
+      <ImageMulti.Inner source={MS_C_980}>
+        <FeelSafe value={71} />
+        <ImageMulti.Subtitle>
+          *70,71 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+      <ImageMulti.Inner source={MS_C_620}>
+        <FeelSafe value={32} />
+        <ImageMulti.Subtitle>
+          *32,23 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+    </ImageMulti>
 
     <Heading as="h3">Grüne Oberfläche hilft</Heading>
     <Paragraph>
