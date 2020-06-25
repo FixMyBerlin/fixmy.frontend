@@ -121,7 +121,13 @@ const Routes = ({ token }) => (
 
     {/* Research pages */}
     {config.routes.research != null && config.enableResearchPage && (
-      <Route path={config.routes.research.landing} component={Research} />
+      <>
+        <Route
+          path={config.routes.research.landing}
+          render={() => <Redirect to={config.routes.research.survey} />}
+        />
+        <Route path={config.routes.research.survey} component={Research} />
+      </>
     )}
 
     <Route render={() => <Markdown page="nomatch" />} />
