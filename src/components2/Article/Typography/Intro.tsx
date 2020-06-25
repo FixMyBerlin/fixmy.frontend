@@ -6,8 +6,10 @@ const Intro = styled(Paragraph)`
   font-weight: 700;
 
   ${media.m`
-    margin: 3em auto 2em;
-  `}
+    margin: 3em auto -3em;
+  `};
 `;
+
+Intro.displayName = 'Introduction';
 
 export default Intro;

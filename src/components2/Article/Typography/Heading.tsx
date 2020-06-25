@@ -54,6 +54,13 @@ const Heading3 = styled.h2<StyledHeadingProps>`
   `}
 `;
 
+const AnchorStyle = styled.a`
+  margin-top: -1px;
+  padding-top: 1px;
+  display: block;
+  border-bottom: none !important;
+`;
+
 const headings = {
   h1: Heading1,
   h2: Heading2,
@@ -67,7 +74,9 @@ const AnchorWrapper = ({ toc, children }) =>
   toc == null ? (
     <>{children}</>
   ) : (
-    <a href={`#${slugify(toc, { lower: true })}`}>{children}</a>
+    <AnchorStyle href={`#${slugify(toc, { lower: true })}`}>
+      {children}
+    </AnchorStyle>
   );
 
 const Heading = ({ as, toc, children, className }: HeadingProps) => {
