@@ -53,14 +53,13 @@ const ContentWrapper = styled.div`
     padding: 2rem 0;
   }
 `;
-
-export default function ArticleWrapper({
+const ArticleWrapper = ({
   bgPattern = defaultBgPattern,
   hasToc = false,
   tocHasActiveState = false,
   className = null,
   children
-}) {
+}) => {
   const [renderTocInsideArticle, setRenderTocInsideArticle] = useState(
     window.innerWidth < breakpoints.xl
   );
@@ -106,7 +105,7 @@ export default function ArticleWrapper({
         <ContentWrapper>
           {React.Children.map(children, (child) => {
             const appendToc =
-              child.type.displayName === 'ArticleHeader' &&
+              child.type.displayName === 'Introduction' &&
               hasToc &&
               renderTocInsideArticle;
 
@@ -147,4 +146,6 @@ export default function ArticleWrapper({
       </ContentWrapperOuter>
     </Page>
   );
-}
+};
+
+export default ArticleWrapper;

@@ -6,7 +6,7 @@ const Intro = styled(Paragraph)`
   font-weight: 700;
 
   ${media.m`
-    margin: 3em auto -3em;
+    margin: 3em auto 0;
   `};
 `;
 

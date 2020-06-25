@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { scaleLinear } from 'd3-scale';
 
 import BikeIcon from '~/images/bike-icon2.svg';
+import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`
   border-radius: 50%;
@@ -14,11 +15,11 @@ const Wrapper = styled.div`
   top: 0;
   right: 0;
 
-  @media screen and (min-width: 800px) {
+  ${media.m`
     position: relative;
     right: auto;
     margin-left: auto;
-  }
+  `}
 `;
 
 interface TextContentProps {

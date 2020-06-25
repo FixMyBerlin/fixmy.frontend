@@ -8,7 +8,7 @@ import config from '~/config';
 
 const TOCWrapper = styled.div`
   max-width: 520px;
-  margin: 3em auto 0;
+  margin: 3em auto -3em;
   font-size: 16px;
   color: ${config.colors.darkbg};
 
