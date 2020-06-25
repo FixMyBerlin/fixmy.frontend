@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import FeelSafe from '~/pages/Research/components/FeelSafe';
 import BarChartWrapper from './Wrapper';
-import LegendItem from '~/pages/Map/components/MapLegend/LegendItem';
 import config from '~/config';
 import { media } from '~/styles/utils';
 

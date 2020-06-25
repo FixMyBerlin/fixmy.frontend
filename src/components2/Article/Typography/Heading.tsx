@@ -74,7 +74,10 @@ const AnchorWrapper = ({ toc, children }) =>
   toc == null ? (
     <>{children}</>
   ) : (
-    <AnchorStyle href={`#${slugify(toc, { lower: true })}`}>
+    <AnchorStyle
+      href={`#${slugify(toc, { lower: true })}`}
+      id={slugify(toc, { lower: true })}
+    >
       {children}
     </AnchorStyle>
   );
