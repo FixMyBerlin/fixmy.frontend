@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { media } from '~/styles/utils';
 
 interface QuoteProps {
   sourceText?: string;
@@ -16,6 +17,10 @@ const Quote = styled.div<QuoteProps>`
   position: relative;
   max-width: 620px;
   margin: 1em auto 1.8em auto;
+
+  ${media.m`
+    margin: 3em auto 3.8em auto;
+  `}
 
   &:after {
     content: "${(p) => p.sourceText}";

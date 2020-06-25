@@ -17,7 +17,7 @@ interface StyledHeadingProps {
 }
 
 const Heading1 = styled.h1<StyledHeadingProps>`
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: ${config.titleFont};
   font-weight: 700;
   margin: 0.5em auto;
@@ -31,18 +31,27 @@ const Heading1 = styled.h1<StyledHeadingProps>`
 `;
 
 const Heading2 = styled.h2<StyledHeadingProps>`
-  font-size: 24px;
-  margin: 60px auto 0.67em auto;
+  font-size: 1.5rem;
+  margin: 2em auto;
   max-width: 520px;
   color: ${config.colors.darkbg};
   text-transform: uppercase;
+
+  ${media.m`
+    margin: 4em auto 2em;
+  `}
 `;
 
 const Heading3 = styled.h2<StyledHeadingProps>`
-  font-size: 16px;
+  font-size: 1rem;
   margin: 0.67em auto;
   max-width: 520px;
   color: ${config.colors.darkbg};
+
+  ${media.m`
+    font-size: 1.25rem;
+    margin: 2em auto;
+  `}
 `;
 
 const headings = {

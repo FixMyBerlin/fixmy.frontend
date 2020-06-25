@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import FeelSafe from '~/pages/Research/components/FeelSafe';
-import BarChartWrapper from './BarChartWrapper';
+import BarChartWrapper from './Wrapper';
+import LegendItem from '~/pages/Map/components/MapLegend/LegendItem';
+import config from '~/config';
+import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`
   display: flex;
@@ -10,20 +13,28 @@ const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
 
-  @media screen and (min-width: 800px) {
+  & + & {
+    margin-top: 1em;
+  }
+
+  ${media.m`
     align-items: center;
     flex-direction: row;
-  }
+    `}
 `;
+
+type TitleProps = {
+  hasFeelSafe?: boolean;
+};
 
 const Title = styled.div`
   font-weight: 700;
-  margin-bottom: 55px;
+  margin-bottom: ${(props: TitleProps) => (props.hasFeelSafe ? '55px' : '1em')};
 
-  @media screen and (min-width: 800px) {
+  ${media.m`
     margin-bottom: 0;
     width: 150px;
-  }
+    `}
 `;
 
 const ChartOuter = styled.div`
@@ -31,9 +42,9 @@ const ChartOuter = styled.div`
   justify-content: center;
   flex-grow: 1;
 
-  @media screen and (min-width: 800px) {
+  ${media.m`
     padding: 0 10px;
-  }
+  `}
 `;
 
 const Chart = styled.div`
@@ -42,11 +53,11 @@ const Chart = styled.div`
   width: 100%;
   font-size: 13px;
 
-  @media screen and (min-width: 800px) {
+  ${media.m`
     padding: 0 10px;
-    width: 500px;
+   width: 500px;
     font-size: 15px;
-  }
+    `}
 `;
 
 const Tooltip = styled.div`
@@ -72,24 +83,62 @@ const Bar = styled.div`
   }
 `;
 
-const BarLabel = styled.div`
+const BarLabelStyle = styled.div`
   font-weight: 700;
   color: white;
 `;
 
-interface BarChartProps {
+const WeightBarLabelStyle = styled.div`
+  position: absolute;
+  right: -2.5em;
+  font-weight: 700;
+  color: ${config.colors.darkbg};
+`;
+
+interface ScaleChartProps {
   title: string;
-  data: number[];
-  feelsafe: number;
+  data: [number, number, number, number];
+  feelsafe?: number;
 }
 
-const colors = ['#c01d1d', '#f08141', '#abc759', '#45b834'];
+interface WeightChartProps {
+  title: string;
+  data: [number];
+}
+
+type BarChartProps = WeightChartProps | ScaleChartProps;
+
+const colorScale = ['#c01d1d', '#f08141', '#abc759', '#45b834'];
+const colorWeight = ['#45b834'];
 const labels = ['unsicher', 'eher unsicher', 'seher sicher', 'sicher'];
 
-const BarChart = ({ title, data, feelsafe }: BarChartProps) => {
+const BarLabel = ({ value, isWeightGraph }) =>
+  isWeightGraph ? (
+    <WeightBarLabelStyle>
+      {(value / 100.0).toLocaleString(undefined, { maximumFractionDigits: 2 })}
+    </WeightBarLabelStyle>
+  ) : (
+    <BarLabelStyle>
+      {value.toLocaleString(undefined, { maximumFractionDigits: 2 })}%
+    </BarLabelStyle>
+  );
+
+const BarChart = ({ title, data, ...props }: BarChartProps) => {
+  let colors;
+  let feelsafe;
+  let isWeightGraph = false;
+
+  if (data.length === 1) {
+    isWeightGraph = true;
+    colors = colorWeight;
+  } else {
+    colors = colorScale;
+    feelsafe = (props as ScaleChartProps).feelsafe;
+  }
+
   return (
     <Wrapper>
-      <Title>{title}</Title>
+      <Title hasFeelSafe={!isWeightGraph}>{title}</Title>
       <ChartOuter>
         <Chart>
           {data.map((d, i) => (
@@ -98,13 +147,15 @@ const BarChart = ({ title, data, feelsafe }: BarChartProps) => {
               key={`bar__${labels[i]}`}
               style={{ width: `${d}%`, backgroundColor: colors[i] }}
             >
-              <BarLabel>{d}%</BarLabel>
-              <Tooltip className="barchart__tooltip">{labels[i]}</Tooltip>
+              <BarLabel value={d} isWeightGraph={isWeightGraph} />
+              {isWeightGraph === false && (
+                <Tooltip className="barchart__tooltip">{labels[i]}</Tooltip>
+              )}
             </Bar>
           ))}
         </Chart>
       </ChartOuter>
-      <FeelSafe value={feelsafe} />
+      {!isWeightGraph && <FeelSafe value={feelsafe} />}
     </Wrapper>
   );
 };

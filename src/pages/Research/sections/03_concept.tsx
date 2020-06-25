@@ -77,12 +77,14 @@ const SectionAbout = ({ toc }) => (
       Umfrage unter anderem mehr als 3.500 Personen gewonnen werden, die
       angaben, nie Fahrrad zu fahren.
     </Paragraph>
-    <Heading as="h3">Die Umfrage bestand aus drei Abschnitten:</Heading>
-    <List>
-      <List.Item>Allgemeine Fragen zum Verkehr</List.Item>
-      <List.Item>Profil- bzw. personenbezogene Fragen</List.Item>
-      <List.Item>Bewertungen der unterschiedlichen Straßenszenen</List.Item>
-    </List>
+    <Paragraph>
+      Die Umfrage bestand aus drei Abschnitten:
+      <List>
+        <List.Item>Allgemeine Fragen zum Verkehr</List.Item>
+        <List.Item>Profil- bzw. personenbezogene Fragen</List.Item>
+        <List.Item>Bewertungen der unterschiedlichen Straßenszenen</List.Item>
+      </List>
+    </Paragraph>
     <Heading as="h3">Allgemeine Fragen zum Verkehr (Eingangsfragen)</Heading>
     <Paragraph>
       In diesem Abschnitt wurden allgemeine Fragen über den Berliner Verkehr für
@@ -109,16 +111,18 @@ const SectionAbout = ({ toc }) => (
       Wohnort, Kinder) wurden Fragen zum Mobilitäts- dabei insbesondere zum
       Radfahrverhalten gestellt.
     </Paragraph>
-    <Heading as="h3">Darunter fallen:</Heading>
-    <List>
-      <List.Item>Verkehrsmittelnutzung (Modal Split)</List.Item>
-      <List.Item>zur Verfügung stehende Verkehrsmittel</List.Item>
-      <List.Item>
-        Länge des häufigsten Weges mit dem Fahrrad in Minuten
-      </List.Item>
-      <List.Item>Motivation für das Fahrradfahren bzw.</List.Item>
-      <List.Item>Gründe gegen das Fahrradfahren</List.Item>
-    </List>
+    <Paragraph>
+      Darunter fallen:
+      <List>
+        <List.Item>Verkehrsmittelnutzung (Modal Split)</List.Item>
+        <List.Item>zur Verfügung stehende Verkehrsmittel</List.Item>
+        <List.Item>
+          Länge des häufigsten Weges mit dem Fahrrad in Minuten
+        </List.Item>
+        <List.Item>Motivation für das Fahrradfahren bzw.</List.Item>
+        <List.Item>Gründe gegen das Fahrradfahren</List.Item>
+      </List>
+    </Paragraph>
     <Paragraph>
       Nach Vervollständigung dieses Teiles der Umfrage wird ein Datensatz für
       den Teilnehmenden angelegt.

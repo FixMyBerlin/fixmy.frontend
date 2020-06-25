@@ -2,40 +2,46 @@ import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/config';
+import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`
   background-color: ${config.colors.lightbg};
-  padding: 16px;
-  margin: 40px 0;
+  padding: 1rem;
+  margin: 3em -20px;
 
-  @media screen and (min-width: 800px) {
-    padding: 22px 32px;
-  }
+  ${media.m`
+    margin: 3em auto;
+    padding: 3em 32px;
+  `}
 `;
 
 const Title = styled.div`
   color: ${config.colors.darkbg};
-  font-size: 24px;
-  margin-bottom: 15px;
+  font-size: 1.5rem;
+  margin-bottom: 1.25em;
 `;
 
 const Source = styled.div`
   color: #999;
-  font-size: 12px;
+  font-size: 1rem;
   margin-top: 10px;
+
+  ${media.m`
+    margin-top: 2em;
+  `}
 `;
 
 interface Props {
   title: string;
-  source: string;
+  source?: string;
   children: React.ReactNode;
 }
 
-const BarChartWrapper = ({ title, source, children }: Props) => (
+const BarChartWrapper = ({ title, source = null, children }: Props) => (
   <Wrapper>
     <Title>{title}</Title>
     {children}
-    <Source>{source}</Source>
+    {source && <Source>{source}</Source>}
   </Wrapper>
 );
 

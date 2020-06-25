@@ -3,10 +3,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 import FeelSafe from '~/pages/Research/components/FeelSafe';
+import { media } from '~/styles/utils';
 
 const ImageWrapper = styled.div`
   display: flex;
-  margin: -10px;
+  flex-direction: column;
+  margin: 3em -10px;
+
+  ${media.m`
+    flex-direction: row;
+    margin: 3em -10px;
+  `}
 `;
 
 const ImageSpacer = styled.div`
@@ -34,6 +41,10 @@ const ImageWrapperFull = styled.div`
     top: 12px;
     right: 12px;
   }
+
+  ${media.m`
+    margin: 3em auto;
+  `}
 `;
 
 const ImageWrapperSimple = styled(ImageWrapperFull)`
@@ -41,10 +52,10 @@ const ImageWrapperSimple = styled(ImageWrapperFull)`
 `;
 
 const Subtitle = styled.div`
-  color: #999;
-  font-size: 12px;
+  color: ${(props) => props.theme.grey500};
+  font-size: 1rem;
   margin-top: 5px;
-  padding: 0 1px;
+  padding: 0 0.5em;
 `;
 
 type FeelsafeSize = 'small' | 'big';
