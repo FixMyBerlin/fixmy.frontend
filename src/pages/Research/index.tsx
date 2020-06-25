@@ -1,37 +1,38 @@
 import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
 
-import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core';
+import { ArticleWrapper, ArticleHeader, Intro } from '~/components2/Article';
 
-import config from '~/config';
-import history from '~/history';
-import Markdown from '~/pages/Markdown';
-import Landing from './pages/Landing';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: config.colors.interaction },
-    secondary: { main: config.colors.change_4 },
-    error: { main: config.colors.error },
-    info: { main: config.colors.interaction },
-    success: { main: config.colors.label_01 }
-  }
-});
+import SectionIntroduction from './sections/02_intro';
+import SectionAbout from './sections/03_concept';
+import SectionDataset from './sections/04_dataset';
+import SectionResults from './sections/05_results';
+import SectionTeam from './sections/06_team';
 
 const Research = () => (
-  <ThemeProvider theme={theme}>
-    <Router history={history}>
-      <Switch>
-        <Route
-          exact
-          path={config.routes.research.landing}
-          component={Landing}
-        />
-        <Route render={() => <Markdown page="nomatch" />} />
-      </Switch>
-    </Router>
-  </ThemeProvider>
+  <ArticleWrapper hasToc>
+    <ArticleHeader
+      toc="Einleitung"
+      kicker="Forschungsergebnis - Strassencheck"
+      publishDate={new Date(2020, 6, 28, 11, 0)}
+      author="FixMyCity"
+    >
+      Studie zur subjektiven Sicherheit im Radverkehr. - Ergebnisse und
+      Datensatz einer Umfrage mit 20.000 Teilnehmenden
+    </ArticleHeader>
+    <Intro>
+      Die Mobilitätswende in Berlin und vielen anderen Städten hat begonnen. Der
+      Radverkehr soll gute Infrastruktur erhalten, auf der sich alle Menschen
+      sicher fühlen. Was aber heißt “sicher für alle” konkret für die Planung
+      von Radinfrastruktur? Wir haben eine Umfrage zur Untersuchung des
+      subjektiven Sicherheitsempfindens durchgeführt, deren Ergebnisse wir hier
+      vorstellen.
+    </Intro>
+    <SectionIntroduction toc="Über das Projekt" />
+    <SectionAbout toc="Umfragekonzept" />
+    <SectionDataset toc="Datensatz der Ergebnisse" />
+    <SectionResults toc="Statistische Auswertung" />
+    <SectionTeam toc="Wer steht hinter der Umfrage" />
+  </ArticleWrapper>
 );
 
 export default Research;

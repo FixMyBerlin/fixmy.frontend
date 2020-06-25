@@ -2,7 +2,7 @@ import React, { useState, useEffect, ReactElement } from 'react';
 import styled from 'styled-components';
 import { InView } from 'react-intersection-observer';
 
-import defaultBgPattern from './bg-pattern.png';
+import defaultBgPattern from './assets/bg-pattern.png';
 
 import TOC from './TOC';
 import MenuButton from '~/components2/MenuButton';
@@ -53,14 +53,13 @@ const ContentWrapper = styled.div`
     padding: 2rem 0;
   }
 `;
-
-export default function SinglePageWrapper({
+const ArticleWrapper = ({
   bgPattern = defaultBgPattern,
   hasToc = false,
   tocHasActiveState = false,
   className = null,
   children
-}) {
+}) => {
   const [renderTocInsideArticle, setRenderTocInsideArticle] = useState(
     window.innerWidth < breakpoints.xl
   );
@@ -106,7 +105,7 @@ export default function SinglePageWrapper({
         <ContentWrapper>
           {React.Children.map(children, (child) => {
             const appendToc =
-              child.type.displayName === 'ArticleHeader' &&
+              child.type.displayName === 'Introduction' &&
               hasToc &&
               renderTocInsideArticle;
 
@@ -147,4 +146,6 @@ export default function SinglePageWrapper({
       </ContentWrapperOuter>
     </Page>
   );
-}
+};
+
+export default ArticleWrapper;
