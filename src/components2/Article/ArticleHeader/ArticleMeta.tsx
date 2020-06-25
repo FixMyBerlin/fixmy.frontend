@@ -18,9 +18,11 @@ const MetaWrap = styled.div`
   display: flex;
   font-size: 0.88em;
   align-items: center;
+  margin: 2em auto;
 
   ${media.m`
     font-size: 1em;
+    margin: initial;
   `}
 `;
 

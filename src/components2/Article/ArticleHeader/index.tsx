@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Kicker from './Kicker';
 import ArticleMeta from './ArticleMeta';
-import Heading from './Heading';
+import Heading from '~/components2/Article/Typography/Heading';
 
 interface ArticleHeaderProps {
   kicker?: string;
@@ -22,7 +22,6 @@ const ArticleHeaderWrapper = styled.div`
 
 const ArticleHeader = ({
   kicker,
-  title,
   publishDate,
   author,
   toc,
@@ -32,9 +31,8 @@ const ArticleHeader = ({
   return (
     <ArticleHeaderWrapper className={className}>
       {kicker && <Kicker>{kicker}</Kicker>}
-      {title && <Heading toc={toc}>{title}</Heading>}
+      <Heading toc={toc}>{children}</Heading>
       <ArticleMeta publishDate={publishDate} author={author} />
-      {children}
     </ArticleHeaderWrapper>
   );
 };

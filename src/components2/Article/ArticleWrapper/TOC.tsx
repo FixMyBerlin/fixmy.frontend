@@ -2,27 +2,29 @@ import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
-import Entry from './Entry';
-import Heading from '../../Heading';
+import Entry from './TOCEntry';
+import Heading from '../Typography/Heading';
 import config from '~/config';
 
 const TOCWrapper = styled.div`
   max-width: 520px;
-  margin: 25px auto;
+  margin: 3em auto -3em;
   font-size: 16px;
   color: ${config.colors.darkbg};
 
   ${media.xl`
     position: sticky;
-    transform: translate(-135px, 25px);
+    transform: translate(-145px, 25px);
     top: 25px;
     height: 0;
-    width: 135px;
+    width: 145px;
     margin: 0;
   `};
 `;
 
 const TOCHeaderArticle = styled(Heading)`
+  margin-bottom: 1em;
+
   ${media.xl`
     display: none;
   `}

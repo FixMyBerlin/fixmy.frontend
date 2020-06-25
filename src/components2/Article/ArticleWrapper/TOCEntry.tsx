@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import slugify from 'slugify';
 
 import config from '~/config';
 import { media } from '~/styles/utils';
@@ -8,11 +9,12 @@ interface TOCEntryWrapperProps {
   active: boolean;
 }
 
-const TOCEntryWrapper = styled.div<TOCEntryWrapperProps>`
+const TOCEntryWrapper = styled.a<TOCEntryWrapperProps>`
   margin-bottom: 10px;
   cursor: pointer;
   display: flex;
   line-height: 1;
+  border-bottom: none !important;
 
   &:hover {
     opacity: 0.75;
@@ -23,7 +25,7 @@ const TOCEntryWrapper = styled.div<TOCEntryWrapperProps>`
     display: block;
     text-align: right;
     margin-bottom: 25px;
-    padding-right: 15px;
+    padding-right: 25px;
     border-right: ${(props) =>
       props.active ? `3px solid ${config.colors.interaction}` : 'none'};
   `}
@@ -66,8 +68,10 @@ function TOCEntry({ index, entry, active = false }) {
     }
   };
 
+  const slug = slugify(entry.props.toc, { lower: true });
+
   return (
-    <TOCEntryWrapper active={active} onClick={goToEntry}>
+    <TOCEntryWrapper active={active} onClick={goToEntry} href={`#${slug}`}>
       <TOCEntryIndex>{padIndex(index + 1)}</TOCEntryIndex>
       <TOCEntrySeparator />
       <TOCEntryText active={active}>{entry.props.toc}</TOCEntryText>

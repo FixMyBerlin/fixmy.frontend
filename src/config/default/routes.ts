@@ -38,6 +38,7 @@ export default {
   profile: '/profil',
   userVerify: '/bestaetigen',
   research: {
-    landing: '/research'
+    landing: '/research',
+    survey: '/research/subjektive-sicherheit'
   }
 };
