@@ -1,25 +1,9 @@
 import React from 'react';
-import { render, fireEvent, act, screen, waitFor } from '@testing-library/react';
-import { rest } from 'msw';
-import { setupServer } from 'msw/node';
+import { render, act, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
-import { fetchSuggestions } from '~/components/AutocompleteGeocoder/apiService';
-import mockSuggesions from './mockSuggestions.json';
-
-// intercept api requests, see https://kentcdodds.com/blog/stop-mocking-fetch
-const SEARCH_STRING = 'Hauptstraße';
-const server = setupServer(
-  rest.get(
-    `https://api.mapbox.com/geocoding/v5/mapbox.places/${SEARCH_STRING}.json`,
-    (req, res, ctx) => {
-      return res(ctx.json(mockSuggesions));
-    }
-  )
-);
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+import * as apiService from '~/components/AutocompleteGeocoder/apiService';
 
 describe('<AutoCompleteGeocoder />', () => {
   // use setup method described as best practice in
@@ -38,16 +22,13 @@ describe('<AutoCompleteGeocoder />', () => {
     );
 
     const inputElement = container.querySelector('input');
-    const enterValueInInput = (value) =>
-      fireEvent.change(inputElement, { target: { value } });
 
     return {
       initProps: props,
       debug,
       container,
       baseElement,
-      inputElement,
-      enterValueInInput
+      inputElement
     };
   };
 
@@ -57,39 +38,87 @@ describe('<AutoCompleteGeocoder />', () => {
       expect(initProps.onInputFocus).toHaveBeenCalledTimes(0);
       expect(initProps.onInputBlur).toHaveBeenCalledTimes(0);
       // focus input
+
       act(() => inputElement.focus()); // await DOM processing, see https://github.com/testing-library/react-testing-library/issues/276#issuecomment-473392827
       expect(initProps.onInputFocus).toHaveBeenCalledTimes(1);
+
       // loose focus on input
       fireEvent.blur(inputElement);
+
       expect(initProps.onInputBlur).toHaveBeenCalledTimes(1);
     });
-    it('invokes the onSearchStart handler once the first search string has been entered', () => {
-      const { initProps, enterValueInInput } = setup();
-      enterValueInInput('abc');
-      enterValueInInput('');
-      enterValueInInput('abc');
+    it('invokes the onSearchStart handler once the first search string has been entered', async () => {
+      const { initProps, inputElement } = setup();
+      // simulate that user is typing fast
+      await userEvent.type(inputElement, '1');
+      await userEvent.type(inputElement, '2');
+
       expect(initProps.onSearchStart).toHaveBeenCalledTimes(1);
     });
   });
 
   describe('fetching suggestions', () => {
-    let componentProps;
-    beforeAll(() => {
-      const { enterValueInInput, initProps } = setup();
-      componentProps = initProps;
-      enterValueInInput(SEARCH_STRING);
+    const SEARCH_STRING = 'Hauptstraße'; // also used in the api response mock
+    it('renders the list of suggestions', async () => {
+      const { inputElement } = setup();
+      // simulate that the user initially types a search string
+      userEvent.type(inputElement, SEARCH_STRING);
+      const suggestionList = await screen.findByTestId(
+        'autocomplete-geocoder-suggestion-list',
+        {},
+        { timeout: 15000 } // FIXME: find out why the timeout is needed → msw should resolve immediately
+      );
+      expect(suggestionList).toBeDefined();
     });
     it('suggests three addresses for a given search string', async () => {
-      await waitFor(() => expect(fetchSuggestions).toHaveBeenCalledTimes(1), {
-        timeout: 5000
-      });
-      const suggestions = await screen.findAllByText(SEARCH_STRING);
-      expect(suggestions).toHaveLength(3);
+      const { inputElement } = setup();
+      userEvent.type(inputElement, SEARCH_STRING);
+
+      const suggestionItems = await screen.findAllByText(SEARCH_STRING, {
+        exact: false
+      }, { timeout: 15000 });
+
+      expect(suggestionItems).toHaveLength(3);
     });
     it('invokes the onLocationPick handler if the user clicks/taps on a suggestion', async () => {
-      const [firstSuggestion] = await screen.findAllByText(SEARCH_STRING);
+      const { inputElement, initProps } = setup();
+      userEvent.type(inputElement, SEARCH_STRING);
+      const [firstSuggestion] = await screen.findAllByText(SEARCH_STRING, {
+        exact: false
+      }, { timeout: 15000 });
       fireEvent.click(firstSuggestion);
-      expect(componentProps.onLocationPick.toHaveBeenCalled());
+
+      expect(initProps.onLocationPick).toHaveBeenCalled();
+    });
+    it('buffers api calls (waits for the user to type, then fetches suggestions)', async () => {
+      const fetchSuggestionsSpy = jest.spyOn(apiService, 'fetchSuggestions');
+      const { inputElement } = setup();
+
+      /* simulate fast user input with not delay in between strokes */
+      userEvent.type(inputElement, 'abcd');
+      // wait for suggestions to render
+      await screen.findAllByText(SEARCH_STRING, {
+        exact: false
+      }, { timeout: 15000 });
+
+      // only a single a request should be fired once the user is done typing
+      expect(fetchSuggestionsSpy).toHaveBeenCalledTimes(1);
+
+      fetchSuggestionsSpy.mockClear();
+
+      /* simulate slow user input */
+
+      const slowInput = 'defg';
+      await userEvent.type(inputElement, slowInput, {
+        delay: 2000
+      });
+
+      // FIXME: since the last stroke goes through async processing (debouncing) we can't exect right away, the last request does not get unnoticed
+
+      // each stroke should have triggered a request
+      expect(fetchSuggestionsSpy).toHaveBeenCalledTimes(slowInput.length);
+
+      fetchSuggestionsSpy.mockClear();
     });
   });
 });
