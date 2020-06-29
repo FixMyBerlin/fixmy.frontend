@@ -597,10 +597,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_A_1285}>
-        <FeelSafe value={94.68} feelsafeIcon="car" />
+        <FeelSafe value={94.68} icon="car" />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_A_586}>
-        <FeelSafe value={28.21} feelsafeIcon="car" />
+        <FeelSafe value={28.21} icon="car" />
       </ImageMulti.Inner>
     </ImageMulti>
     
@@ -968,7 +968,7 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_P_194}>
-        <FeelSafe value={81.44} feelsafeIcon="walk" />
+        <FeelSafe value={81.44} i con="walk" />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_194}>
         <FeelSafe value={75.56} />
@@ -1012,10 +1012,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_P_149}>
-        <FeelSafe value={90.52} feelsafeIcon="walk" />
+        <FeelSafe value={90.52} icon="walk" />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_P_778}>
-        <FeelSafe value={93.47} feelsafeIcon="walk" />
+        <FeelSafe value={93.47} icon="walk" />
       </ImageMulti.Inner>
     </ImageMulti>
 
