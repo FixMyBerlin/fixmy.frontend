@@ -241,14 +241,14 @@ const SectionResults = ({ toc }) => (
       <ImageMulti.Inner source={MS_C_305}>
         <FeelSafe value={74} />
         <ImageMulti.Subtitle>
-          *69,09 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen
+          *73,68 % der Nutzer:innen bewerteten diese Situation mit einer breiten RVA
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_17}>
         <FeelSafe value={69} />
         <ImageMulti.Subtitle>
-          *32,76 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen
+          *69,09 % der Nutzer:innen bewerteten diese Situation mit einer schmalen RVA
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
@@ -263,22 +263,21 @@ const SectionResults = ({ toc }) => (
       <ImageMulti.Inner source={MS_C_980}>
         <FeelSafe value={71} />
         <ImageMulti.Subtitle>
-          *70,71 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen
+          *70,71 % der Nutzer:innen bewerteten diese Situation mit breiter RVA neben einem Parkstreifen
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_620}>
         <FeelSafe value={32} />
         <ImageMulti.Subtitle>
-          *32,23 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen
+          *32,23 % der Nutzer:innen bewerteten diese Situation mit schmaler RVA neben einem Parkstreifen
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
 
-    {/* TODO: Titel einfügen */}
     <BarChart.Wrapper
-      title="<Titel einfügen>"
+      title="HVS-F: RVA Gesamtbreite schmal und breit"
       source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens sowie Situationen mit baulicher Trennung. "
     >
       <BarChart
@@ -313,6 +312,41 @@ const SectionResults = ({ toc }) => (
       der Grüneinfärbung.
     </Paragraph>
 
+     <ImageMulti>
+      <ImageMulti.Inner source={MS_C_21}>
+        <FeelSafe value={80} />
+        <ImageMulti.Subtitle>
+          *80,37 % der Nutzer:innen bewerteten diese Situation mit Grüneinfärbung
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+      <ImageMulti.Inner source={MS_C_17}>
+        <FeelSafe value={69} />
+        <ImageMulti.Subtitle>
+          *69,09 % der Nutzer:innen bewerteten diese Situation ohne Grüneinfärbung
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+    </ImageMulti>
+    
+    {/* TODO: Bilder einfügen */}
+     <ImageMulti>
+      <ImageMulti.Inner source={MS_C_1220}>
+        <FeelSafe value={78} />
+        <ImageMulti.Subtitle>
+          *77,87 % der Nutzer:innen bewerteten diese Situation mit Grüneinfärbung
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+      <ImageMulti.Inner source={MS_C_980}>
+        <FeelSafe value={71} />
+        <ImageMulti.Subtitle>
+          *70,71 % der Nutzer:innen bewerteten diese Situation ohne Grüneinfärbung
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+    </ImageMulti>
+    
     <BarChart.Wrapper
       title="HVS-F RVA mit oder ohne Grüneinfärbung"
       source="Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens, sowie Situationen mit baulicher Trennung."
