@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import FeelSafe from '~/pages/Research/components/FeelSafe';
+import FeelSafe, { FeelsafeIcon } from '~/pages/Research/components/FeelSafe';
 import BarChartWrapper from './Wrapper';
 import config from '~/config';
 import { media } from '~/styles/utils';
@@ -98,6 +98,7 @@ interface ScaleChartProps {
   title: string;
   data: [number, number, number, number];
   feelsafe?: number;
+  feelsafeIcon?: FeelsafeIcon;
 }
 
 interface WeightChartProps {
@@ -109,7 +110,7 @@ type BarChartProps = WeightChartProps | ScaleChartProps;
 
 const colorScale = ['#c01d1d', '#f08141', '#abc759', '#45b834'];
 const colorWeight = ['#45b834'];
-const labels = ['unsicher', 'eher unsicher', 'seher sicher', 'sicher'];
+const labels = ['unsicher', 'eher unsicher', 'eher sicher', 'sicher'];
 
 const BarLabel = ({ value, isWeightGraph }) =>
   isWeightGraph ? (
@@ -125,6 +126,7 @@ const BarLabel = ({ value, isWeightGraph }) =>
 const BarChart = ({ title, data, ...props }: BarChartProps) => {
   let colors;
   let feelsafe;
+  let feelsafeIcon;
   let isWeightGraph = false;
 
   if (data.length === 1) {
@@ -133,6 +135,7 @@ const BarChart = ({ title, data, ...props }: BarChartProps) => {
   } else {
     colors = colorScale;
     feelsafe = (props as ScaleChartProps).feelsafe;
+    feelsafeIcon = (props as ScaleChartProps).feelsafeIcon;
   }
 
   return (
@@ -154,7 +157,7 @@ const BarChart = ({ title, data, ...props }: BarChartProps) => {
           ))}
         </Chart>
       </ChartOuter>
-      {!isWeightGraph && <FeelSafe value={feelsafe} />}
+      {!isWeightGraph && <FeelSafe value={feelsafe} icon={feelsafeIcon} />}
     </Wrapper>
   );
 };
