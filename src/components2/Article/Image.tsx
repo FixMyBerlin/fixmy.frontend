@@ -56,7 +56,7 @@ const ImageWrapperSimple = styled(ImageWrapperFull)`
 
 const Subtitle = styled.div`
   color: ${(props) => props.theme.grey500};
-  font-size: 1rem;
+  font-size: 0.75rem;
   margin-top: 5px;
   padding: 0 0.5em;
 `;
