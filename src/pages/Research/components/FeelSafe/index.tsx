@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { scaleLinear } from 'd3-scale';
 
-import BikeIcon from '~/images/bike-icon2.svg';
+import BikeIcon from '~/images/feelsafe-bike-icon.svg';
+import CarIcon from '~/images/feelsafe-car-icon.svg';
+import WalkIcon from '~/images/feelsafe-walk-icon.svg';
 import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`
@@ -53,17 +55,22 @@ const Text = styled.div<TextContentProps>`
   color: #999;
 `;
 
-const scale = scaleLinear([25, 50, 75, 100], ['#c01d1d', '#f08141', '#abc759', '#45b834']);
+const scale = scaleLinear(
+  [25, 50, 75, 100],
+  ['#c01d1d', '#f08141', '#abc759', '#45b834']
+);
 
 const getColorByValue = (index) => {
   return index <= 25 ? '#c01d1d' : scale(index);
 };
 
-type FeelsafeSize = 'small' | 'big';
+export type FeelsafeSize = 'small' | 'big';
+export type FeelsafeIcon = 'bike' | 'car' | 'walk';
 
 interface FeelsafeProps {
   value: number;
   size?: FeelsafeSize;
+  icon?: FeelsafeIcon;
 }
 
 const sizes = {
@@ -71,10 +78,17 @@ const sizes = {
   big: 120
 };
 
-export default ({ value, size = 'small' }: FeelsafeProps) => {
+const icons = {
+  bike: BikeIcon,
+  car: CarIcon,
+  walk: WalkIcon
+};
+
+export default ({ value, size = 'small', icon = 'bike' }: FeelsafeProps) => {
   const color = getColorByValue(value);
   const pxSize = sizes[size];
   const isSmall = size === 'small';
+  const IconComponent = icons[icon];
 
   const valueDisplay = value.toLocaleString(undefined, {
     maximumFractionDigits: 0
@@ -113,7 +127,7 @@ export default ({ value, size = 'small' }: FeelsafeProps) => {
         />
       </svg>
       <TextContent isSmall={isSmall}>
-        <BikeIcon />
+        <IconComponent />
         <Number isSmall={isSmall}>{valueDisplay}%</Number>
         <Text isSmall={isSmall}>*</Text>
       </TextContent>

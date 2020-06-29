@@ -2,7 +2,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import FeelSafe from '~/pages/Research/components/FeelSafe';
+import FeelSafe, {
+  FeelsafeSize,
+  FeelsafeIcon
+} from '~/pages/Research/components/FeelSafe';
 import { media } from '~/styles/utils';
 
 const ImageWrapper = styled.div`
@@ -58,10 +61,9 @@ const Subtitle = styled.div`
   padding: 0 0.5em;
 `;
 
-type FeelsafeSize = 'small' | 'big';
-
 interface InnerImageProps extends ImageProps {
   feelsafeSize?: FeelsafeSize;
+  feelsafeIcon?: FeelsafeIcon;
   children?: React.ReactNode;
 }
 
@@ -70,11 +72,14 @@ const InnerImg = ({
   feelsafe = null,
   subtitle = null,
   feelsafeSize = 'small',
+  feelsafeIcon = 'bike',
   children = null
 }: InnerImageProps) => (
   <>
     <Img src={source} />
-    {feelsafe && <FeelSafe value={feelsafe} size={feelsafeSize} />}
+    {feelsafe && (
+      <FeelSafe value={feelsafe} size={feelsafeSize} icon={feelsafeIcon} />
+    )}
     {subtitle && <Subtitle>{subtitle}</Subtitle>}
     {children}
   </>
@@ -101,6 +106,7 @@ ImageMulti.Subtitle = Subtitle;
 interface ImageProps {
   source: string;
   feelsafe?: number;
+  feelsafeIcon?: FeelsafeIcon;
   subtitle?: string;
 }
 
