@@ -1161,10 +1161,10 @@ const SectionResults = ({ toc }) => (
 
     <Paragraph>
       Wirklich gute Werte erhalten in den NVS lediglich die Varianten, bei denen
-      kein fließender Kfz-Verkehr dargestellt wurde. Wir haben hier auch
-      Varianten mit ruhendem Verkehr aufgenommen, was einer Straße mit
-      Durchfahrtssperren entsprechen könnte, wo also tatsächlich nur Anlieger
-      einfahren können. Die besten Bewertungen erhält die “holländische Lösung”
+      kein fließender Kfz-Verkehr dargestellt wurde. Darunter sind auch
+      Varianten mit parkenden Autos. (Dies würde z.B. der Situatione in einer Straße mit
+      Durchfahrtssperren entsprechen, wo nur Anlieger
+      einfahren können.) Die besten Bewertungen erhält die “holländische Lösung”
       mit aufgepflastertem Mittelstreifen und durchgehendem grünen Asphalt. Bei
       der Führung in Nebenstraßen scheint die optisch deutliche Signalisierung
       der Fahrradstraße eine hohe Bedeutung zu haben.
