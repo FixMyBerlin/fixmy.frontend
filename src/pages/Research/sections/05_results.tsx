@@ -555,8 +555,35 @@ const SectionResults = ({ toc }) => (
       extrem:
     </Paragraph>
 
-    {/* Diagramm */}
-
+    {/* Fehlende Daten */}
+ <BarChart.Wrapper
+      title="HVS-F: mit und ohne RVA"
+      source="Anm: Durchschnitt der Bewertungen aller Situationen aus Perspektive der Autofahrenden oder der Radfahrenden"
+    >
+      <BarChart
+        title="Radperspektive: ohne RVA"
+        data={[0, 0, 0, 0]}
+        feelsafe={14.23}
+      />
+      <BarChart
+        title="Radperspektive: mit RVA"
+        data={[0, 0, 0, 0]}
+        feelsafe={75.51}
+      />
+      <BarChart
+        title="Autoperspektive: ohne RVA"
+        data={[0, 0, 0, 0]}
+        feelsafe={25.41}
+        feelsafeIcon="car"
+      />
+    <BarChart
+        title="Autoperspektive: mit RVA"
+        data={[0, 0, 0, 0]}
+        feelsafe={82.99}
+        feelsafeIcon="car"
+      />
+    </BarChart.Wrapper>
+    
     <Paragraph>
       Autofahrer empfinden die Situation als deutlich sicherer, wenn eine klar
       getrennte RVA vorhanden ist. am besten mit Sperrfläche oder Doppellinie
@@ -577,7 +604,53 @@ const SectionResults = ({ toc }) => (
       breite RVA mit klarer Trennung und Grünmarkierung ähnlich sicher
       empfunden.
     </Paragraph>
-
+    
+ <BarChart.Wrapper
+      title="HVS-F: RVA mit und ohne bauliche Trennung"
+      source="Durchschnitt der Bewertungen aller Situationen mit RVA, - ohne rechtsseitiges Parken, Tram, Busspur, oder RVA rechts des Parkens."
+    >
+      <BarChart
+        title="Radperspektive: RVA ohne baul. Trennung"
+        data={[0, 0, 0, 0]}
+        feelsafe={76.90}
+      />
+      <BarChart
+        title="Radperspektive: RVA mit baul. Trennung"
+        data={[0, 0, 0, 0]}
+        feelsafe={91.20}
+      />
+      <BarChart
+        title="Autoperspektive: RVA ohne baul. Trennung"
+        data={[0, 0, 0, 0]}
+        feelsafe={82.76}
+        feelsafeIcon="car"
+      />
+      <BarChart
+        title="Autoperspektive: RVA mit baul. Trennung"
+        data={[0, 0, 0, 0]}
+        feelsafe={86.76}
+        feelsafeIcon="car"
+      />
+      <BarChart
+        title="Autoperspektive: Trennung Sperrpfosten-hoch"
+        data={[0, 0, 0, 0]}
+        feelsafe={84.70}
+        feelsafeIcon="car"
+      />
+      <BarChart
+        title="Autoperspektive: Trennung Sperrpfosten-niedrig"
+        data={[0, 0, 0, 0]}
+        feelsafe={87.48}
+        feelsafeIcon="car"
+      />
+      <BarChart
+        title="Autoperspektive: Trennung Blumenkasten"
+        data={[0, 0, 0, 0]}
+        feelsafe={88.12}
+        feelsafeIcon="car"
+      />
+    </BarChart.Wrapper>
+    
     <Heading as="h3">Führung im Seitenraum</Heading>
 
     <Heading as="h3">RVA auf der Fahrbahn oder im Seitenraum?</Heading>
