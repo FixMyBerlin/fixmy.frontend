@@ -109,7 +109,7 @@ type BarChartProps = WeightChartProps | ScaleChartProps;
 
 const colorScale = ['#c01d1d', '#f08141', '#abc759', '#45b834'];
 const colorWeight = ['#45b834'];
-const labels = ['unsicher', 'eher unsicher', 'seher sicher', 'sicher'];
+const labels = ['unsicher', 'eher unsicher', 'eher sicher', 'sicher'];
 
 const BarLabel = ({ value, isWeightGraph }) =>
   isWeightGraph ? (
