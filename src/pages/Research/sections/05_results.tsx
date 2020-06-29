@@ -163,7 +163,7 @@ const SectionResults = ({ toc }) => (
     >
       <BarChart
         title="mit Parken rechts"
-        data={[25, 25, 25, 25]}
+        data={[25, 11, 30, 14]}
         feelsafe={60}
       />
       <BarChart
