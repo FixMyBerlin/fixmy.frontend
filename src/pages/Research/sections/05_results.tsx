@@ -61,7 +61,8 @@ const SectionResults = ({ toc }) => (
     <Heading as="h2" toc={toc}>
       Statistische Auswertung
     </Heading>
-
+{/* Datenänderungen von Nora */}
+    
     <Paragraph>
       Mit den generierten Daten ist die Überprüfung von verschiedensten
       Hypothesen möglich. Ein besonderes Interesse der Forschung liegt
