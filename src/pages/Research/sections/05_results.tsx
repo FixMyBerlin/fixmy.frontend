@@ -505,12 +505,10 @@ const SectionResults = ({ toc }) => (
       />
     </BarChart.Wrapper>
 
-    <Heading as="h3">Trennung durch ruhenden Verkehr</Heading>
+    <Heading as="h3">Lieber rechts als links vom ruhenden Verkehr</Heading>
 
     <Paragraph>
-      Soll an einer HVS Radverkehr gemeinsam mit ruhendem Verkehr geführt werden
-      ist die Führung rechts des ruhenden Verkehrs die subjektiv deutlich
-      sicherere Gestaltung.
+      Wird der Radverkehr gemeinsam mit ruhendem Kfz-Verkehr geführt, so wird die Führung rechts des ruhenden Verkehrs als deutlich sicherer empfunden.
     </Paragraph>
 
     <ImageMulti>
@@ -538,23 +536,23 @@ const SectionResults = ({ toc }) => (
     </ImageMulti>
 
     <BarChart.Wrapper
-      title="HVS-F: RVA Führung rechts vom Parken"
-      source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA breit, – ohne Tram, Busspur."
+      title="HVS-F: RVA Führung rechts und links vom Parken"
+      source="Anm.: Durchschnitt der Bewertungen aller Situationen mit RVA breit, – ohne Tram, Busspur. Es werden nur Varianten mit breiter RVA verglichen, schmale RVA rechts des Parkens wurden in der Umfrage nicht dargestellt."
     >
       <BarChart
-        title="RVA breit links des Parken"
-        data={[0, 0, 0, 0]}
+        title="RVA breit, links des Parken"
+        data={[3.812933, 19.951131, 48.818048, 27.417888]}
         feelsafe={74.54}
       />
       <BarChart
-        title="RVA breit rechts des Parken (ohne bauliche Trennungen)"
+        title="RVA breit, rechts des Parken (exkl. baul. Trennungen)"
         data={[0, 0, 0, 0]}
         feelsafe={91.69}
       />
       <BarChart
-        title="RVA-breit rechts des Parken (mit baulichen Trennungen)"
+        title="RVA breit, rechts des Parken (inkl. baul. Trennungen)"
         data={[0, 0, 0, 0]}
-        feelsafe={94.21}
+        feelsafe={94.22}
       />
     </BarChart.Wrapper>
 
