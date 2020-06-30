@@ -4,7 +4,8 @@ import { Paragraph, Heading, Image } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import ButtonWrapper from '../components/ButtonWrapper';
 
-import CP_C_688 from '../images/01_CP_C_688.jpg';
+import MS_C_573 from '../images/01_MS_C_573_@x2.jpg';
+import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
 
 const SectionIntroduction = ({ toc }) => (
   <>
@@ -35,19 +36,26 @@ const SectionIntroduction = ({ toc }) => (
       über Unterschiede im Sicherheitsempfinden verschiedener Nutzergruppen und
       zur Perspektive von Autofahrenden und Fußgänger:innen gewonnen werden.
     </Paragraph>
-    <Image source={CP_C_688} />
+    
+     <ImageMulti>
+      <ImageMulti.Inner source={MS_C_573}>
+        <FeelSafe value={99.11} />
+        <ImageMulti.Subtitle>
+          *99,11 % der Radfahrenden bewerteten diese Situation als „sicher“ oder
+          „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+      <ImageMulti.Inner source={MS_A_570}>
+        <FeelSafe value={96.84} icon="car"/>
+        <ImageMulti.Subtitle>
+          *96,84 % der Autofahrenden bewerteten diese Situation als „sicher“ oder
+          „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+    </ImageMulti>
+    
     <Paragraph>
-      Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden rechts vom
-      parkenden Verkehr am sichersten. Unter allen Situationen aus
-      Fahrradperspektive erhielt die oben gezeigte auf einem 3,5 Meter breiten
-      Radstreifen mit grüner Einfärbung und klarer Trennung zum ruhenden Verkehr
-      die meisten Bewertungen “sicher” (75,86%) außerdem 22,07% “eher sicher”.
-      Im Durchschnitt wurden Führungen im Seitenraum als sicherer, als solche im
-      Fließenden Verkehr empfunden. Führungen in Nebenstraßen schnitten
-      erstaunlich unsicher ab, wenn sie nicht “autofrei” dargestellt wurden. In
-      der statistischen Auswertung finden Sie detaillierte Analysen zu den
-      unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie
-      Auswertungen der Auto- und Fußperspektive.
+     Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden unter allen Varianten auf der oben links gezeigten am sichersten. Autofahrende favorisieren die fast gleiche Gestaltung nur ohne Grüneinfärbung. Der breite, grün eingefärbter Radstreifen getrennt vom KFZ-Verkehr durch Blumenkästen erhielt von Radfahrer:innen die meisten Bewertungen “sicher” (83,93%) oder “eher sicher” (15,18%). Im Durchschnitt wurden von ihnen allerdings Führungen im Seitenraum als sicherer, als solche im fließenden Verkehr empfunden. Führungen in Nebenstraßen schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargestellt wurden. In der statistischen Auswertung finden Sie detaillierte Analysen zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie Auswertungen der Auto- und Fußperspektive. Eine Zusammenfassung der wichtigsten Aussagen finden Sie unter Fazit / Empfehlungen.
     </Paragraph>
     <ButtonWrapper>
       <AnchorButton flat href="#statistische-auswertung">
