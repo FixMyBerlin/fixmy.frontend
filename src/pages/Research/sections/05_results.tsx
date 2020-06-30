@@ -79,6 +79,9 @@ const SectionResults = ({ toc }) => (
     </Paragraph>
     
     <Heading as="h3">Führung auf der Fahrbahn</Heading>
+    <Paragraph>
+      Wir betrachten zunächst die Führung an Hauptverkehrsstraßen. Nebenverkehrsstraßen werden in einem späteren Kapitel betrachtet.
+    </Paragraph>
     <Heading as="h3">Führung im Mischverkehr ist unsicher</Heading>
     <Paragraph>
       Eine Führung des Radverkehrs im Mischverkehr wird als deutlich unsicherer empfunden als eine Führung auf jeder Art von RVA. Werden die Faktoren Tempolimit, Verkehrsstärke und rechtsseitiges Parken variiert ändert sich das Sicherheitsempfinden. Aber auch in der bestbewerteten Situation ist kein ausreichendes Sicherheitsempfinden (Wir gehen hier davon aus, dass eine Bewertung “eher sicher” oder “sicher” von über 80% der Teilnehmenden ein anzustrebender Wert für eine subjektiv sichere Infrastruktur ist)   zu erzielen. Im Vergleich der Nutzermerkmale gibt es den größten Unterschied zwischen Männern und Frauen, aber insgesamt große Übereinstimmungen. Alle Typen von Radfahrenden (Viel-, oder Wenig-Radfahrende, weibliche oder männliche, ältere und jüngere, etc.) fühlen sich im Mischverkehr unsicher.
@@ -102,30 +105,45 @@ const SectionResults = ({ toc }) => (
     </ImageMulti>
 
     <BarChart.Wrapper
-      title="Führung auf der Fahrbahn(HVS-F) mit und ohne Radverkehrsanlage(RVA)"
+      title="Führung auf der Fahrbahn (HVS-F) mit und ohne Radverkehrsanlage (RVA)"
       source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen."
     >
-      <BarChart title="mit RVA" data={[9, 16, 53, 22]} feelsafe={75} />
-      <BarChart title="ohne RVA" data={[56, 30, 12, 2]} feelsafe={14} />
+      <BarChart title="mit RVA" data={[3, 18, 49, 30]} feelsafe={75.52} />
+      <BarChart title="ohne RVA" data={[52, 33, 12, 3]} feelsafe={14} />
       <BarChart
         title="ohne RVA (Vielfahrer)"
-        data={[55, 30, 12, 3]}
+        data={[51, 35, 12, 2]}
         feelsafe={15}
       />
       <BarChart
         title="ohne RVA (Seltenfahrer)"
-        data={[56, 29, 12, 1]}
-        feelsafe={13}
+        data={[58, 29, 10, 4]}
+        feelsafe={12.87}
       />
       <BarChart
         title="ohne RVA (weiblich)"
-        data={[56, 33, 10, 1]}
-        feelsafe={11}
+        data={[58, 31, 9, 2]}
+        feelsafe={10.52}
       />
       <BarChart
         title="ohne RVA (männlich)"
-        data={[56, 28, 14, 2]}
-        feelsafe={16}
+        data={[48, 35, 14, 3]}
+        feelsafe={16.15}
+      />
+      <BarChart
+        title="ohne RVA (U 30)"
+        data={[60, 29, 8, 3]}
+        feelsafe={9.70}
+      />
+      <BarChart
+        title="ohne RVA (30-63)"
+        data={[52, 33, 12, 3]}
+        feelsafe={14.24}
+      />
+      <BarChart
+        title="ohne RVA (Ü 64)"
+        data={[42, 42, 12, 4]}
+        feelsafe={15.10}
       />
     </BarChart.Wrapper>
 
