@@ -32,7 +32,7 @@ const Title = styled.div`
 
   ${media.m`
     margin-bottom: 0;
-    width: 200px;
+    width: 180px;
     `}
 `;
 
@@ -54,7 +54,7 @@ const Chart = styled.div`
 
   ${media.m`
     padding: 0 10px;
-   width: 400px;
+   width: 440px;
     font-size: 15px;
     `}
 `;
