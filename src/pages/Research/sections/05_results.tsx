@@ -51,6 +51,9 @@ import SE_C_47 from '../images/01_SE_C_47_@x2.jpg';
 import SE_C_49 from '../images/01_SE_C_49_@x2.jpg';
 import SE_C_50 from '../images/01_SE_C_50_@x2.jpg';
 import SE_C_71 from '../images/01_SE_C_71_@x2.jpg';
+import MS_A_1285 from '../images/01_MS_A_1285_@x2.jpg';
+import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
+import MS_A_586 from '../images/01_MS_A_586_@x2.jpg';
 /* eslint-enable @typescript-eslint/no-unused-vars */
 
 const SectionResults = ({ toc }) => (
@@ -163,7 +166,7 @@ const SectionResults = ({ toc }) => (
     >
       <BarChart
         title="mit Parken rechts"
-        data={[25, 25, 25, 25]}
+        data={[25, 11, 30, 14]}
         feelsafe={60}
       />
       <BarChart
@@ -241,14 +244,14 @@ const SectionResults = ({ toc }) => (
       <ImageMulti.Inner source={MS_C_305}>
         <FeelSafe value={74} />
         <ImageMulti.Subtitle>
-          *69,09 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen
+          *73,68 % der Nutzer:innen bewerteten diese Situation mit einer breiten RVA
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_17}>
         <FeelSafe value={69} />
         <ImageMulti.Subtitle>
-          *32,76 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen
+          *69,09 % der Nutzer:innen bewerteten diese Situation mit einer schmalen RVA
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
@@ -263,22 +266,21 @@ const SectionResults = ({ toc }) => (
       <ImageMulti.Inner source={MS_C_980}>
         <FeelSafe value={71} />
         <ImageMulti.Subtitle>
-          *70,71 % der Nutzer:innen bewerteten diese Situation ohne Parkstreifen
+          *70,71 % der Nutzer:innen bewerteten diese Situation mit breiter RVA neben einem Parkstreifen
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_620}>
         <FeelSafe value={32} />
         <ImageMulti.Subtitle>
-          *32,23 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen
+          *32,23 % der Nutzer:innen bewerteten diese Situation mit schmaler RVA neben einem Parkstreifen
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
 
-    {/* TODO: Titel einfügen */}
     <BarChart.Wrapper
-      title="<Titel einfügen>"
+      title="HVS-F: RVA Gesamtbreite schmal und breit"
       source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens sowie Situationen mit baulicher Trennung. "
     >
       <BarChart
@@ -313,6 +315,41 @@ const SectionResults = ({ toc }) => (
       der Grüneinfärbung.
     </Paragraph>
 
+     <ImageMulti>
+      <ImageMulti.Inner source={MS_C_21}>
+        <FeelSafe value={80} />
+        <ImageMulti.Subtitle>
+          *80,37 % der Nutzer:innen bewerteten diese Situation mit Grüneinfärbung
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+      <ImageMulti.Inner source={MS_C_17}>
+        <FeelSafe value={69} />
+        <ImageMulti.Subtitle>
+          *69,09 % der Nutzer:innen bewerteten diese Situation ohne Grüneinfärbung
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+    </ImageMulti>
+    
+    {/* TODO: Bilder einfügen */}
+     <ImageMulti>
+      <ImageMulti.Inner source={MS_C_1220}>
+        <FeelSafe value={78} />
+        <ImageMulti.Subtitle>
+          *77,87 % der Nutzer:innen bewerteten diese Situation mit Grüneinfärbung
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+      <ImageMulti.Inner source={MS_C_980}>
+        <FeelSafe value={71} />
+        <ImageMulti.Subtitle>
+          *70,71 % der Nutzer:innen bewerteten diese Situation ohne Grüneinfärbung
+          als „sicher“ oder „eher sicher“
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+    </ImageMulti>
+    
     <BarChart.Wrapper
       title="HVS-F RVA mit oder ohne Grüneinfärbung"
       source="Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens, sowie Situationen mit baulicher Trennung."
@@ -521,8 +558,35 @@ const SectionResults = ({ toc }) => (
       extrem:
     </Paragraph>
 
-    {/* Diagramm */}
-
+    {/* Fehlende Daten */}
+ <BarChart.Wrapper
+      title="HVS-F: mit und ohne RVA"
+      source="Anm: Durchschnitt der Bewertungen aller Situationen aus Perspektive der Autofahrenden oder der Radfahrenden"
+    >
+      <BarChart
+        title="Radperspektive: ohne RVA"
+        data={[0, 0, 0, 0]}
+        feelsafe={14.23}
+      />
+      <BarChart
+        title="Radperspektive: mit RVA"
+        data={[0, 0, 0, 0]}
+        feelsafe={75.51}
+      />
+      <BarChart
+        title="Autoperspektive: ohne RVA"
+        data={[0, 0, 0, 0]}
+        feelsafe={25.41}
+       
+      />
+    <BarChart
+        title="Autoperspektive: mit RVA"
+        data={[0, 0, 0, 0]}
+        feelsafe={82.99}
+        
+      />
+    </BarChart.Wrapper>
+    
     <Paragraph>
       Autofahrer empfinden die Situation als deutlich sicherer, wenn eine klar
       getrennte RVA vorhanden ist. am besten mit Sperrfläche oder Doppellinie
@@ -531,8 +595,15 @@ const SectionResults = ({ toc }) => (
       Autofahrer:innen scheinbar kaum wahrgenommen.
     </Paragraph>
 
-    {/* Bilder */}
-
+    <ImageMulti>
+      <ImageMulti.Inner source={MS_A_1285}>
+        <FeelSafe value={94.68} />
+      </ImageMulti.Inner>
+      <ImageMulti.Inner source={MS_A_586}>
+        <FeelSafe value={28.21} />
+      </ImageMulti.Inner>
+    </ImageMulti>
+    
     <Heading as="h3">Poller auch aus Autoperspektive sicherer</Heading>
 
     <Paragraph>
@@ -543,7 +614,55 @@ const SectionResults = ({ toc }) => (
       breite RVA mit klarer Trennung und Grünmarkierung ähnlich sicher
       empfunden.
     </Paragraph>
-
+    
+ <BarChart.Wrapper
+      title="HVS-F: RVA mit und ohne bauliche Trennung"
+      source="Durchschnitt der Bewertungen aller Situationen mit RVA, - ohne rechtsseitiges Parken, Tram, Busspur, oder RVA rechts des Parkens."
+    >
+      <BarChart
+        title="Radperspektive: RVA ohne baul. Trennung"
+        data={[0, 0, 0, 0]}
+        feelsafe={76.90}
+      />
+      <BarChart
+        title="Radperspektive: RVA mit baul. Trennung"
+        data={[0, 0, 0, 0]}
+        feelsafe={91.20}
+      />
+      <BarChart
+        title="Autoperspektive: RVA ohne baul. Trennung"
+        data={[0, 0, 0, 0]}
+        feelsafe={82.76}
+       
+      />
+      <BarChart
+        title="Autoperspektive: RVA mit baul. Trennung"
+        data={[0, 0, 0, 0]}
+        feelsafe={86.76}
+       
+      />
+      <BarChart
+        title="Autoperspektive: Trennung Sperrpfosten-hoch"
+        data={[0, 0, 0, 0]}
+        feelsafe={84.70}
+      
+      />
+      <BarChart
+        title="Autoperspektive: Trennung Sperrpfosten-niedrig"
+        data={[0, 0, 0, 0]}
+        feelsafe={87.48}
+   
+      />
+      <BarChart
+        title="Autoperspektive: Trennung Blumenkasten"
+        data={[0, 0, 0, 0]}
+        feelsafe={88.12}
+  
+      />
+    </BarChart.Wrapper>
+    
+     {/* Bilde single */}
+    
     <Heading as="h3">Führung im Seitenraum</Heading>
 
     <Heading as="h3">RVA auf der Fahrbahn oder im Seitenraum?</Heading>
@@ -817,11 +936,13 @@ const SectionResults = ({ toc }) => (
         title="Fußperspektive Auslage ja"
         data={[0, 0, 0, 0]}
         feelsafe={53.24}
+        
       />
       <BarChart
         title="Fußperspektive Auslage nein"
         data={[0, 0, 0, 0]}
         feelsafe={83.36}
+        
       />
       <BarChart
         title="Radperspektive Auslage ja"
@@ -867,16 +988,19 @@ const SectionResults = ({ toc }) => (
         title="Trennung rechts grünstreifen schmal"
         data={[0, 0, 0, 0]}
         feelsafe={78.18}
+       
       />
       <BarChart
         title="Trennung rechts grünstreifen breit"
         data={[0, 0, 0, 0]}
         feelsafe={85.48}
+        
       />
       <BarChart
         title="Trennung rechts keine"
         data={[8.617505, 35.028605, 35.731339, 20.622551]}
         feelsafe={56.35}
+     
       />
     </BarChart.Wrapper>
 
@@ -1037,10 +1161,10 @@ const SectionResults = ({ toc }) => (
 
     <Paragraph>
       Wirklich gute Werte erhalten in den NVS lediglich die Varianten, bei denen
-      kein fließender Kfz-Verkehr dargestellt wurde. Wir haben hier auch
-      Varianten mit ruhendem Verkehr aufgenommen, was einer Straße mit
-      Durchfahrtssperren entsprechen könnte, wo also tatsächlich nur Anlieger
-      einfahren können. Die besten Bewertungen erhält die “holländische Lösung”
+      kein fließender Kfz-Verkehr dargestellt wurde. Darunter sind auch
+      Varianten mit parkenden Autos. (Dies würde z.B. der Situatione in einer Straße mit
+      Durchfahrtssperren entsprechen, wo nur Anlieger
+      einfahren können.) Die besten Bewertungen erhält die “holländische Lösung”
       mit aufgepflastertem Mittelstreifen und durchgehendem grünen Asphalt. Bei
       der Führung in Nebenstraßen scheint die optisch deutliche Signalisierung
       der Fahrradstraße eine hohe Bedeutung zu haben.
