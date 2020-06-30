@@ -32,7 +32,7 @@ const Title = styled.div`
 
   ${media.m`
     margin-bottom: 0;
-    width: 150px;
+    width: 200px;
     `}
 `;
 
