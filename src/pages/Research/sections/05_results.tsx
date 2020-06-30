@@ -559,12 +559,7 @@ const SectionResults = ({ toc }) => (
     <Heading as="h3">Wie sehen das Autofahrende?</Heading>
 
     <Paragraph>
-      In der Umfrage wurde auch die Perspektive der Autofahrenden abgefragt,
-      wobei die Frage hier nicht ausschließlich auf das eigene
-      Sicherheitsempfinden abzielte sondern auf das aller
-      Verkehrsteilnehmer:innen. Die meisten Situationen werden von Autofahrenden
-      ähnlich eingeschätzt, wobei insgesamt Situationen als weniger unsicher
-      eingeschätzt werden bei ähnlichen Tendenzen.
+      In der Umfrage wurde auch die Perspektive der Autofahrenden abgefragt, wobei die Frage hier nicht ausschließlich auf das eigene Sicherheitsempfinden abzielte sondern auf das aller Verkehrsteilnehmer:innen: “Wie empfinden Sie diese Situation beim Autofahren?” Von der Tendenz werden Situationen von Autofahrenden ähnlich wie von den Radfahrenden beurteilt. Im Durchschnitt werden dabei die Situationen als weniger unsicher eingeschätzt, das Konfliktpotential Radfahrender mit dem ruhenden Verkehr wird deutlich weniger stark wahrgenommen, bzw. als unsicher beurteilt.
     </Paragraph>
 
     <Heading as="h3">Auch Autofahrer wollen separate RVA</Heading>
@@ -572,7 +567,7 @@ const SectionResults = ({ toc }) => (
     <Paragraph>
       Mischverkehr an Hauptstraßen wird im Vergleich zu vorhandener RVA
       ebenfalls als deutlich unsicherer bewertet, wenn auch nicht ganz so
-      extrem:
+      extrem, wie durch die Radfahrenden.
     </Paragraph>
 
     {/* Fehlende Daten */}
@@ -582,23 +577,23 @@ const SectionResults = ({ toc }) => (
     >
       <BarChart
         title="Radperspektive: ohne RVA"
-        data={[0, 0, 0, 0]}
-        feelsafe={14.23}
+        data={[52, 33, 12, 0]}
+        feelsafe={14.24}
       />
       <BarChart
         title="Radperspektive: mit RVA"
-        data={[0, 0, 0, 0]}
-        feelsafe={75.51}
+        data={[3, 18, 49, 30]}
+        feelsafe={75.52}
       />
       <BarChart
         title="Autoperspektive: ohne RVA"
-        data={[0, 0, 0, 0]}
+        data={[31.877551, 42.095238, 16.938776, 9.088435]}
         feelsafe={25.41}
         feelsafeIcon="car"
       />
     <BarChart
         title="Autoperspektive: mit RVA"
-        data={[0, 0, 0, 0]}
+        data={[1.773559, 12.917629, 47.055517, 38.253294]}
         feelsafe={82.99}
         feelsafeIcon="car"
       />
@@ -638,12 +633,12 @@ const SectionResults = ({ toc }) => (
     >
       <BarChart
         title="Radperspektive: RVA ohne baul. Trennung"
-        data={[0, 0, 0, 0]}
+        data={[4.057880, 17.882982, 46.429695, 31.629443]}
         feelsafe={76.90}
       />
       <BarChart
         title="Radperspektive: RVA mit baul. Trennung"
-        data={[0, 0, 0, 0]}
+        data={[1.366559, 6.879689, 30.908360, 60.845391]}
         feelsafe={91.20}
       />
       <BarChart
@@ -654,7 +649,7 @@ const SectionResults = ({ toc }) => (
       />
       <BarChart
         title="Autoperspektive: RVA mit baul. Trennung"
-        data={[0, 0, 0, 0]}
+        data={[2.326551, 10.173449, 34.247832, 53.252168]}
         feelsafe={86.76}
        
       />
@@ -679,6 +674,7 @@ const SectionResults = ({ toc }) => (
     </BarChart.Wrapper>
     
      {/* Bilde single */}
+    
     
     <Heading as="h3">Führung im Seitenraum</Heading>
 
