@@ -55,6 +55,8 @@ import SE_C_71 from '../images/01_SE_C_71_@x2.jpg';
 import MS_A_1285 from '../images/01_MS_A_1285_@x2.jpg';
 import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
 import MS_A_586 from '../images/01_MS_A_586_@x2.jpg';
+import MS_A_343 from '../images/01_MS_A_343_@x2.jpg';
+import MS_A_67 from '../images/01_MS_A_67_@x2.jpg';
 /* eslint-enable @typescript-eslint/no-unused-vars */
 
 const SectionResults = ({ toc }) => (
@@ -645,36 +647,50 @@ const SectionResults = ({ toc }) => (
         title="Autoperspektive: RVA ohne baul. Trennung"
         data={[0, 0, 0, 0]}
         feelsafe={82.76}
-       
+        feelsafeIcon="car"
       />
       <BarChart
         title="Autoperspektive: RVA mit baul. Trennung"
         data={[2.326551, 10.173449, 34.247832, 53.252168]}
         feelsafe={86.76}
-       
+        feelsafeIcon="car"
       />
       <BarChart
         title="Autoperspektive: Trennung Sperrpfosten-hoch"
         data={[0, 0, 0, 0]}
         feelsafe={84.70}
-      
+        feelsafeIcon="car"
       />
       <BarChart
         title="Autoperspektive: Trennung Sperrpfosten-niedrig"
         data={[0, 0, 0, 0]}
         feelsafe={87.48}
-   
+        feelsafeIcon="car"
       />
       <BarChart
         title="Autoperspektive: Trennung Blumenkasten"
         data={[0, 0, 0, 0]}
         feelsafe={88.12}
-  
+        feelsafeIcon="car"
       />
-    </BarChart.Wrapper>
-    
-     {/* Bilde single */}
-    
+    </BarChart.Wrapper> 
+    <Paragraph>
+    Bei hohem Verkehrsaufkommen und Tempolimit 50 km/h empfinden Autofahrer RVA mit baulicher Trennung als sicherer. Dies gilt aber auch für die meisten Situationen mit T30 und normalem Verkehrsaufkommen. Autofahrende haben also ein klare Wahrnehmung für die Gefahr von Unfällen mit Radfahrenden und empfinden die Situation als angenehmer, wenn dieser Konflikt entschärft ist.
+    </Paragraph>
+     <ImageMulti>
+      <ImageMulti.Inner source={MS_A_67}>
+        <FeelSafe value={87.77} />
+        <ImageMulti.Subtitle>
+          Bestbewertete Situation aus Autoperspektive bei schmaler RVA, T50 und hohem Verkehrsaufkommen
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+      <ImageMulti.Inner source={01_MS_A_343}>
+        <FeelSafe value={88.66} />
+        <ImageMulti.Subtitle>
+          Bestbewertete Situation aus Autoperspektive bei breiter RVA, T50 und hohem Verkehrsaufkommen
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>
+    </ImageMulti>
     
     <Heading as="h3">Führung im Seitenraum</Heading>
 
