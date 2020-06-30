@@ -54,7 +54,7 @@ const Chart = styled.div`
 
   ${media.m`
     padding: 0 10px;
-   width: 500px;
+   width: 400px;
     font-size: 15px;
     `}
 `;
