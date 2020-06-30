@@ -645,7 +645,7 @@ const SectionResults = ({ toc }) => (
       />
       <BarChart
         title="Autoperspektive: RVA ohne baul. Trennung"
-        data={[0, 0, 0, 0]}
+        data={[2.398382, 13.937584, 44.731266, 38.932768]}
         feelsafe={82.76}
         feelsafeIcon="car"
       />
@@ -657,25 +657,25 @@ const SectionResults = ({ toc }) => (
       />
       <BarChart
         title="Autoperspektive: Trennung Sperrpfosten-hoch"
-        data={[0, 0, 0, 0]}
+        data={[3.789474, 11.508772, 30.105263, 54.596491]}
         feelsafe={84.70}
         feelsafeIcon="car"
       />
       <BarChart
         title="Autoperspektive: Trennung Sperrpfosten-niedrig"
-        data={[0, 0, 0, 0]}
+        data={[2.107482, 10.410959, 35.911486, 51.570074]}
         feelsafe={87.48}
         feelsafeIcon="car"
       />
       <BarChart
         title="Autoperspektive: Trennung Blumenkasten"
-        data={[0, 0, 0, 0]}
+        data={[2.715547, 9.164969, 29.192125, 58.927359]}
         feelsafe={88.12}
         feelsafeIcon="car"
       />
     </BarChart.Wrapper> 
     <Paragraph>
-    Bei hohem Verkehrsaufkommen und Tempolimit 50 km/h empfinden Autofahrer RVA mit baulicher Trennung als sicherer. Dies gilt aber auch für die meisten Situationen mit T30 und normalem Verkehrsaufkommen. Autofahrende haben also ein klare Wahrnehmung für die Gefahr von Unfällen mit Radfahrenden und empfinden die Situation als angenehmer, wenn dieser Konflikt entschärft ist.
+    Bei hohem Verkehrsaufkommen und Tempolimit 50 km/h empfinden Autofahrer eine bauliche Trennung zum Radverkehr als sicherer. Dies gilt auch für die meisten Situationen mit T30 und normalem Verkehrsaufkommen. Autofahrende haben also ein klare Wahrnehmung für die Gefahr von Unfällen mit Radfahrenden und empfinden die Situation als angenehmer, wenn dieser Konflikt baulich entschärft ist.
     </Paragraph>
     
      <ImageMulti>
