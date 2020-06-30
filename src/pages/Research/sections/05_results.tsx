@@ -577,13 +577,13 @@ const SectionResults = ({ toc }) => (
         title="Autoperspektive: ohne RVA"
         data={[0, 0, 0, 0]}
         feelsafe={25.41}
-       
+        feelsafeIcon="car"
       />
     <BarChart
         title="Autoperspektive: mit RVA"
         data={[0, 0, 0, 0]}
         feelsafe={82.99}
-        
+        feelsafeIcon="car"
       />
     </BarChart.Wrapper>
     
@@ -597,10 +597,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_A_1285}>
-        <FeelSafe value={94.68} />
+        <FeelSafe value={94.68} icon="car" />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_A_586}>
-        <FeelSafe value={28.21} />
+        <FeelSafe value={28.21} icon="car" />
       </ImageMulti.Inner>
     </ImageMulti>
     
