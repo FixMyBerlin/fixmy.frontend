@@ -734,18 +734,18 @@ const SectionResults = ({ toc }) => (
       />
       <BarChart
         title="Seitenraum, RVA breit"
-        data={[0, 0, 0, 0]}
+        data={[0.677428, 3.889918, 29.751257, 65.681397]}
         feelsafe={94.61}
       />
       <BarChart
         title="Seitenraum, RVA schmal"
-        data={[0, 0, 0, 0]}
+        data={[3.729178, 23.567974, 43.981730, 28.721118]}
         feelsafe={69.1}
       />
       <BarChart
         title="Fahrbahn, RVA rechts des Parken"
-        data={[0, 0, 0, 0]}
-        feelsafe={94.21}
+        data={[1.055662,  5.143954, 26.813820, 66.986564]}
+        feelsafe={92.40}
       />
     </BarChart.Wrapper>
 
@@ -759,7 +759,7 @@ const SectionResults = ({ toc }) => (
         <FeelSafe value={87.93} />
         <ImageMulti.Subtitle>
           Eine auf der Fahrbahn geführte, klar gestaltete, breite RVA ohne
-          rechtsseitiges Parken wird als sehr sicher empfunden
+          rechtsseitiges Parken, wie hier im Bild wird als sehr sicher empfunden
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_1100}>
@@ -1257,6 +1257,25 @@ const SectionResults = ({ toc }) => (
     <Heading as="h2" toc={toc}>
       Fazit / Empfehlungen
     </Heading>
+    <Paragraph>
+    Die Umfrage zeigt, dass die Einflüsse unterschiedlicher Faktoren in ihren Wechselbeziehungen keine linearen Aussagen über die subjektive Sicherheit von Radinfrastruktur zulassen. Dennoch können einige zentrale Aussagen und Empfehlungen abgeleitet werden, wie eine “Radinfrastruktur für Alle” aussehen sollte. Dabei ist zu beachten, dass in der Umfrage nur die unterschiedlichen Führungsformen auf der Strecke untersucht wurden, die Gestaltung von Knotenpunkten und bzw. Implikationen auf diese, die sich aus der Wahl der Führung ergeben kann hier nicht beurteilt werden.
+<br>
+Auf Hauptstraßen aber auch auf Nebenstraßen wird die Führung im Mischverkehr als sehr unsicher empfunden.
+  <br>
+Für einen subjektiv sicheren Radverkehr sollte die Führung an Hauptstraßen der Regelfall sein, das Berliner Mobilitätsgesetz geht hier den richtigen Weg.
+    <br>
+Die Führung in Nebenstraßen, kann bei weitgehender Autofreiheit und deutlicher Markierung eine Alternative / Ergänzung sein. Das reine Markieren von Fahrradstraßen ohne Einschränkungen des KFZ-Verkehrs erhöht nur in geringem Maß die subjektive Sicherheit und wird auch von Autofahrenden als unsicher empfunden.
+      <br>
+Wenn es ausreichend breite Gehwege und keine geschäftliche Nutzung gibt ist die Führung im Seitenraum die beste Alternative, da hier wesentlich geringeres Konfliktpotential vorhanden ist. Auch zu Fuß Gehende fühlen sich bei einer Führung im Seitenraum ausreichend sicher, wenn es kein Hohes Fußverkerhersaufkommen gibt, Sie ausreichend Platz zur Verfügung haben und eine Trennung zum Radverkehr z.B. durch einen Grünstreifen klar erkennbar ist.
+        <br>
+Soll der Radverkehr auf der Fahrbahn geführt werden, so ist eine ausreichende Breite vorzusehen. Bei 3,5 Meter Breite (inkl. Markierungen) kann in fast allen Situationen eine hohe subjektive Sicherheit erreicht werden. Je nach Situation sind Grüneinfärbungen und bauliche Trennungen zusätzlich sinnvoll.
+          <br>
+Auch schmalere RVA können eine noch akzeptable subjektive Sicherheit bieten, wenn Sie z.B. durch niedrige Poller vom KFZ-Verkehr getrennt sind und an HVS ohne ruhenden Verkehr geführt werden.
+            <br>
+Bei Führung des Radverkehrs zusammen mit ruhendem Verkehr ist die Lage rechts vom ruhenden Verkehr zu empfehlen. Eine Führung links des ruhenden Verkehrs wird generell als deutlich weniger sicher empfunden. Es können hier zwar Varianten gefunden werden, die in der Umfrage einen akzeptablen Wert erreichten, dabei sollte aber beachtet werden, dass zusätzliche Konflikte, wie Falschparker oder kreuzender Parkverkehr in der Umfrage nicht dargestellt wurden.
+              <br>
+Auch Autofahrende empfinden gut ausgebaute RVA inklusive Poller als sicherer. Die Bewertungen sind von den Tendenzen ähnlich, wie die der Radfahrenden, wenn auch einige Gefahren, bzw. durch Dooring weniger stark eingeschätzt werden.
+    </Paragraph>
   </>
 );
 
