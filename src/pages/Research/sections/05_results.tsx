@@ -1120,22 +1120,22 @@ const SectionResults = ({ toc }) => (
       source="Anm: Durchschnitt der Bewertungen aller Situationen in Nebenverkehrsstraßen. Ausgenommen sind die Situationen mit durchgehender Grüneinfärbung des Asphalts."
     >
       <BarChart
-        title="NVS ohne Markierung"
+        title="ohne Markierung"
         data={[35.902256, 36.172462, 20.911654, 7.013628]}
         feelsafe={27.93}
       />
       <BarChart
-        title="NVS Fahrradstraße"
+        title="Fahrradstraße"
         data={[17.051071, 34.478701, 33.478466, 14.991763]}
         feelsafe={48.47}
       />
       <BarChart
-        title="NVS Fahrradstraße - Sondermarkierung"
+        title="Fahrradstraße - Sondermarkierung"
         data={[30.787364, 36.338991, 22.477605, 10.39604]}
         feelsafe={32.87}
       />
       <BarChart
-        title="NVS Spielstraße"
+        title="Spielstraße"
         data={[17.137386, 34.837243, 34.633796, 13.391575]}
         feelsafe={48.03}
       />
