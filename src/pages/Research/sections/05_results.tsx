@@ -577,13 +577,13 @@ const SectionResults = ({ toc }) => (
         title="Autoperspektive: ohne RVA"
         data={[0, 0, 0, 0]}
         feelsafe={25.41}
-        feelsafeIcon="car"
+       
       />
     <BarChart
         title="Autoperspektive: mit RVA"
         data={[0, 0, 0, 0]}
         feelsafe={82.99}
-        feelsafeIcon="car"
+        
       />
     </BarChart.Wrapper>
     
@@ -597,10 +597,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_A_1285}>
-        <FeelSafe value={94.68} icon="car" />
+        <FeelSafe value={94.68} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_A_586}>
-        <FeelSafe value={28.21} icon="car" />
+        <FeelSafe value={28.21} />
       </ImageMulti.Inner>
     </ImageMulti>
     
@@ -633,31 +633,31 @@ const SectionResults = ({ toc }) => (
         title="Autoperspektive: RVA ohne baul. Trennung"
         data={[0, 0, 0, 0]}
         feelsafe={82.76}
-        feelsafeIcon="car"
+       
       />
       <BarChart
         title="Autoperspektive: RVA mit baul. Trennung"
         data={[0, 0, 0, 0]}
         feelsafe={86.76}
-        feelsafeIcon="car"
+       
       />
       <BarChart
         title="Autoperspektive: Trennung Sperrpfosten-hoch"
         data={[0, 0, 0, 0]}
         feelsafe={84.70}
-        feelsafeIcon="car"
+      
       />
       <BarChart
         title="Autoperspektive: Trennung Sperrpfosten-niedrig"
         data={[0, 0, 0, 0]}
         feelsafe={87.48}
-        feelsafeIcon="car"
+   
       />
       <BarChart
         title="Autoperspektive: Trennung Blumenkasten"
         data={[0, 0, 0, 0]}
         feelsafe={88.12}
-        feelsafeIcon="car"
+  
       />
     </BarChart.Wrapper>
     
@@ -936,13 +936,13 @@ const SectionResults = ({ toc }) => (
         title="Fußperspektive Auslage ja"
         data={[0, 0, 0, 0]}
         feelsafe={53.24}
-        feelsafeIcon="walk"
+        
       />
       <BarChart
         title="Fußperspektive Auslage nein"
         data={[0, 0, 0, 0]}
         feelsafe={83.36}
-        feelsafeIcon="walk"
+        
       />
       <BarChart
         title="Radperspektive Auslage ja"
@@ -968,7 +968,7 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_P_194}>
-        <FeelSafe value={81.44} i con="walk" />
+        <FeelSafe value={81.44} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_194}>
         <FeelSafe value={75.56} />
@@ -988,19 +988,19 @@ const SectionResults = ({ toc }) => (
         title="Trennung rechts grünstreifen schmal"
         data={[0, 0, 0, 0]}
         feelsafe={78.18}
-        feelsafeIcon="walk"
+       
       />
       <BarChart
         title="Trennung rechts grünstreifen breit"
         data={[0, 0, 0, 0]}
         feelsafe={85.48}
-        feelsafeIcon="walk"
+        
       />
       <BarChart
         title="Trennung rechts keine"
         data={[8.617505, 35.028605, 35.731339, 20.622551]}
         feelsafe={56.35}
-        feelsafeIcon="walk"
+     
       />
     </BarChart.Wrapper>
 
@@ -1012,10 +1012,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_P_149}>
-        <FeelSafe value={90.52} icon="walk" />
+        <FeelSafe value={90.52} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_P_778}>
-        <FeelSafe value={93.47} icon="walk" />
+        <FeelSafe value={93.47} />
       </ImageMulti.Inner>
     </ImageMulti>
 
