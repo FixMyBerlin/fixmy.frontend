@@ -190,18 +190,18 @@ const SectionResults = ({ toc }) => (
     >
       <BarChart
         title="mit Parken rechts"
-        data={[25, 11, 30, 14]}
-        feelsafe={60}
+        data={[8, 29, 43, 19]}
+        feelsafe={59.62}
       />
       <BarChart
-        title="ohne Parken (inkl. bauliche Trennung) "
-        data={[25, 25, 25, 25]}
-        feelsafe={85}
+        title="ohne Parken (inkl. bauliche Trennung)"
+        data={[2, 11, 40, 47]}
+        feelsafe={85.47}
       />
       <BarChart
-        title="ohne Parken (exkl. bauliche Trennung) "
-        data={[25, 25, 25, 25]}
-        feelsafe={77}
+        title="ohne Parken (exkl. bauliche Trennung)"
+        data={[4, 18, 46, 32]}
+        feelsafe={76.90}
       />
     </BarChart.Wrapper>
 
