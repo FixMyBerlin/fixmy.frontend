@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Paragraph, Heading, Image } from '~/components2/Article';
+import { Paragraph, Heading, ImageMulti } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import ButtonWrapper from '../components/ButtonWrapper';
+import FeelSafe from '../components/FeelSafe';
 
 import MS_C_573 from '../images/01_MS_C_573_@x2.jpg';
 import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
