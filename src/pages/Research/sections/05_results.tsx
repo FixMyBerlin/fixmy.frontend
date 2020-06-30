@@ -32,6 +32,7 @@ import MS_C_305 from '../images/01_MS_C_305_@x2.jpg';
 import MS_C_325 from '../images/01_MS_C_325_@x2.jpg';
 import MS_C_377 from '../images/01_MS_C_377_@x2.jpg';
 import MS_C_51 from '../images/01_MS_C_51_@x2.jpg';
+import MS_C_75 from '../images/01_MS_C_75_@x2.jpg';
 import MS_C_587 from '../images/01_MS_C_587_@x2.jpg';
 import MS_C_596 from '../images/01_MS_C_596_@x2.jpg';
 import MS_C_597 from '../images/01_MS_C_597_@x2.jpg';
@@ -230,24 +231,25 @@ const SectionResults = ({ toc }) => (
 
     <BarChart.Wrapper
       title="RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
-      source="Anm: Durchschnitt der Bewertungen aller Situationen"
+      source="Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Bei Baulicher Trennung, Markierung links, Tempolimit und Verkehrsaufkommen, werden nur solche Situationen ohne Tram, Bus und RVA rechts des Parkens einbezogen. Bei der Baulichen Trennung nur solche ohne Parken rechts.
+"
     >
-      <BarChart title="Gesamtbreite RVA (Breit - schmal)" data={[21]} />
+      <BarChart title="Gesamtbreite RVA (Breit - schmal)" data={[21.51]} />
       <BarChart
         title="Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)"
-        data={[22]}
+        data={[22.17]}
       />
-      <BarChart title="Oberflächenfärbung (grün - asphalt)" data={[11]} />
+      <BarChart title="Oberflächenfarbe (grün - asphalt)" data={[10.57]} />
       <BarChart
         title="Markierung Links (gestrichelt - Sperrfläche)"
-        data={[8]}
+        data={[8.12]}
       />
-      <BarChart title="Tempolimit (30 - 50)" data={[3]} />
-      <BarChart title="Verkehrsstärke (normal - hoch)" data={[3]} />
+      <BarChart title="Tempolimit (30 - 50)" data={[3.11]} />
+      <BarChart title="Verkehrsstärke (normal - hoch)" data={[2.60]} />
     </BarChart.Wrapper>
 
     <Heading as="h3">
-      Breite der RVA zentral, besonders bei Parken rechts
+      Breite der RVA zentral, besonders bei rechtsseitigem Parken
     </Heading>
 
     <Paragraph>
@@ -255,7 +257,7 @@ const SectionResults = ({ toc }) => (
       Metern (schmal) Breite für die RVA inkl. aller links und rechtsseitigen
       Markierungen (s.a. Umfragedesign). Im Ergebnis aller Situationen zeigt
       sich, dass breite RVA in den allermeisten Situationen als sicher empfunden
-      werden. Im Durchschnitt bewerten 84% der Teilnehmer:innen “diese als
+      werden. Im Durchschnitt bewerten 82.99 % der Teilnehmer:innen “diese als
       sicher” oder “eher sicher”.
     </Paragraph>
 
@@ -282,8 +284,8 @@ const SectionResults = ({ toc }) => (
     </ImageMulti>
 
     <Paragraph>
-      Bei einem Radstreifen an einer HVS mit Parken-rechts ist der Unterschied
-      größer:
+      Bei einem Radstreifen mit rechtsseitigem Parken ist der Unterschied zwischen schmaler und breiter Ausführung deutlich größer
+      größer. 
     </Paragraph>
 
     <ImageMulti>
@@ -343,79 +345,78 @@ const SectionResults = ({ toc }) => (
       <ImageMulti.Inner source={MS_C_21}>
         <FeelSafe value={80} />
         <ImageMulti.Subtitle>
-          *80,37 % der Nutzer:innen bewerteten diese Situation mit Grüneinfärbung
+          *80,37 % der Nutzer:innen bewerteten diese breite RVA mit Grüneinfärbung
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_17}>
         <FeelSafe value={69} />
         <ImageMulti.Subtitle>
-          *69,09 % der Nutzer:innen bewerteten diese Situation ohne Grüneinfärbung
+          *69,09 % der Nutzer:innen bewerteten diese schmale RVA ohne Grüneinfärbung
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
     
-    {/* TODO: Bilder einfügen */}
      <ImageMulti>
       <ImageMulti.Inner source={MS_C_1220}>
         <FeelSafe value={78} />
         <ImageMulti.Subtitle>
-          *77,87 % der Nutzer:innen bewerteten diese Situation mit Grüneinfärbung
+          *77,87 % der Nutzer:innen bewerteten diese breite RVA mit Grüneinfärbung
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_980}>
         <FeelSafe value={71} />
         <ImageMulti.Subtitle>
-          *70,71 % der Nutzer:innen bewerteten diese Situation ohne Grüneinfärbung
+          *70,71 % der Nutzer:innen bewerteten diese breite RVA ohne Grüneinfärbung
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
     
     <BarChart.Wrapper
-      title="HVS-F RVA mit oder ohne Grüneinfärbung"
+      title="HVS-F: RVA mit oder ohne Grüneinfärbung"
       source="Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens, sowie Situationen mit baulicher Trennung."
     >
       <BarChart
-        title="RVA ohne Parken breit asphalt"
-        data={[0, 0, 0, 0]}
+        title="ohne Parken breit asphalt"
+        data={[2, 10, 37, 51]}
         feelsafe={87.55}
       />
       <BarChart
-        title="RVA ohne Parken breit grün"
-        data={[0, 0, 0, 0]}
+        title="ohne Parken breit grün"
+        data={[2, 5, 31, 62]}
         feelsafe={93.5}
       />
       <BarChart
-        title="RVA ohne Parken schmal asphalt"
-        data={[0, 0, 0, 0]}
+        title="ohne Parken schmal asphalt"
+        data={[4, 19, 41, 36]}
         feelsafe={76.2}
       />
       <BarChart
-        title="RVA ohne Parken schmal grün"
-        data={[0, 0, 0, 0]}
+        title="ohne Parken schmal grün"
+        data={[2, 14, 43, 41]}
         feelsafe={83.07}
       />
       <BarChart
-        title="RVA Parken-rechts breit asphalt"
-        data={[0, 0, 0, 0]}
+        title="Parken-rechts breit asphalt"
+        data={[5, 23, 49, 22]}
         feelsafe={70.17}
       />
       <BarChart
-        title="RVA Parken-rechts breit grün"
-        data={[0, 0, 0, 0]}
+        title="Parken-rechts breit grün"
+        data={[3, 16, 47, 34]}
         feelsafe={80.42}
       />
       <BarChart
-        title="RVA Parken-rechts schmal asphalt"
-        data={[0, 0, 0, 0]}
+        title="Parken-rechts schmal asphalt"
+        data={[23, 42, 28, 7]}
         feelsafe={34.19}
       />
       <BarChart
-        title="RVA Parken-rechts schmal grün"
-        data={[0, 0, 0, 0]}
+        title="Parken-rechts schmal grün"
+        data={[13, 36, 37, 13]}
         feelsafe={49.82}
       />
     </BarChart.Wrapper>
@@ -452,17 +453,12 @@ const SectionResults = ({ toc }) => (
     </Heading>
 
     <Paragraph>
-      Eine bauliche Trennung zwischen RVA und fließendem Kfz-Verkehr stärkt das
-      Sicherheitsempfinden. Dabei ist die Art der Trennung nicht besonders
-      entscheidend. Schaut man ins Detail, findet man, dass bei schmalen RVA
-      Poller am beliebtesten sind, bei breiten RVA Blumenkästen. Auffällig ist,
-      dass eine grüne Oberfläche nur noch minimale Verbesserung erzielt, wenn es
-      bereits eine breite RVA mit baulicher Trennung gibt.
+      Eine bauliche Trennung zwischen RVA und fließendem Kfz-Verkehr stärkt das Sicherheitsempfinden. Dabei ist die Art der Trennung nicht entscheidend. Schaut man ins Detail, findet man, dass bei schmalen RVA kleine Poller (sog. Leitboys) am beliebtesten sind, bei breiten RVA erhalten Blumenkästen die meisten sicheren Bewertungen. Auffällig ist, dass eine grüne Oberfläche nur noch minimale Verbesserung erzielt, wenn es bereits eine breite RVA mit baulicher Trennung gibt.
     </Paragraph>
 
     {/* TODO: Replace first image with MS_C_75 */}
     <ImageMulti>
-      <ImageMulti.Inner source={MS_C_377}>
+      <ImageMulti.Inner source={MS_C_75}>
         <FeelSafe value={91} />
         <ImageMulti.Subtitle>
           Am sichersten bewertete bauliche Trennung bei schmaler RVA ohne
