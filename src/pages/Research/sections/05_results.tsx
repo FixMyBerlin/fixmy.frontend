@@ -456,20 +456,19 @@ const SectionResults = ({ toc }) => (
       Eine bauliche Trennung zwischen RVA und fließendem Kfz-Verkehr stärkt das Sicherheitsempfinden. Dabei ist die Art der Trennung nicht entscheidend. Schaut man ins Detail, findet man, dass bei schmalen RVA kleine Poller (sog. Leitboys) am beliebtesten sind, bei breiten RVA erhalten Blumenkästen die meisten sicheren Bewertungen. Auffällig ist, dass eine grüne Oberfläche nur noch minimale Verbesserung erzielt, wenn es bereits eine breite RVA mit baulicher Trennung gibt.
     </Paragraph>
 
-    {/* TODO: Replace first image with MS_C_75 */}
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_75}>
-        <FeelSafe value={91} />
+        <FeelSafe value={90.65} />
         <ImageMulti.Subtitle>
-          Am sichersten bewertete bauliche Trennung bei schmaler RVA ohne
-          Grüneinfärbung
+          Mit 90,65 % am sichersten bewertete bauliche Trennung bei schmaler RVA ohne
+          Grüneinfärbung. Die Variante mit Grüneinfärbung kommt auf 97,52%
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_377}>
-        <FeelSafe value={98} />
+        <FeelSafe value={97.52} />
         <ImageMulti.Subtitle>
-          Am sichersten bewertete bauliche Trennung bei breiter RVA ohne
-          Grüneinfärbung
+          Mit 98,38 % am sichersten bewertete bauliche Trennung bei breiter RVA ohne
+          Grüneinfärbung. Die Variante mit Grüneinfärbung kommt auf 99,11 %
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
@@ -480,27 +479,27 @@ const SectionResults = ({ toc }) => (
       source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA, - ohne rechtsseitiges Parken, Tram, Busspur, oder RVA rechts des Parkens."
     >
       <BarChart
-        title="RVA ohne baul. Trennung, Markierung links schmal"
-        data={[0, 0, 0, 0]}
-        feelsafe={78.9}
-      />
-      <BarChart
-        title="RVA ohne baul. Trennung, Markierung links breit"
-        data={[0, 0, 0, 0]}
+        title="ohne baul. Trennung, Markierung links schmal"
+        data={[4.376283, 19.109343, 45.995893, 30.51848]}
         feelsafe={75.64}
       />
       <BarChart
-        title="RVA mit baul. Trennung Sperrpfosten-hoch"
+        title="ohne baul. Trennung, Markierung links breit"
+        data={[3.933106, 16.646020, 46.097863, 33.32301]}
+        feelsafe={78.91}
+      />
+      <BarChart
+        title="mit baul. Trennung Sperrpfosten-hoch"
         data={[1.895462, 7.352096, 25.272832, 65.479609]}
         feelsafe={90.75}
       />
       <BarChart
-        title="RVA mit baul. Trennung Sperrpfosten-niedrig"
+        title="mit baul. Trennung Sperrpfosten-niedrig"
         data={[1.396078, 7.32549, 33.662745, 57.615686]}
         feelsafe={91.28}
       />
       <BarChart
-        title="RVA mit baul. Trennung Blumenkasten"
+        title="mit baul. Trennung Blumenkasten"
         data={[1.466594, 7.224335, 25.31233, 65.996741]}
         feelsafe={91.31}
       />
