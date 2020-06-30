@@ -7,7 +7,7 @@ import { media } from '~/styles/utils';
 const Wrapper = styled.div`
   background-color: ${config.colors.lightbg};
   padding: 1rem;
-  margin: 3em -20px;
+  margin: 2em -20px;
 
   ${media.m`
     margin: 3em auto;
@@ -23,7 +23,7 @@ const Title = styled.div`
 
 const Source = styled.div`
   color: #999;
-  font-size: 1rem;
+  font-size: 0.75rem;
   margin-top: 10px;
 
   ${media.m`
