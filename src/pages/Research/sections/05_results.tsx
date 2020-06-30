@@ -677,6 +677,7 @@ const SectionResults = ({ toc }) => (
     <Paragraph>
     Bei hohem Verkehrsaufkommen und Tempolimit 50 km/h empfinden Autofahrer RVA mit baulicher Trennung als sicherer. Dies gilt aber auch für die meisten Situationen mit T30 und normalem Verkehrsaufkommen. Autofahrende haben also ein klare Wahrnehmung für die Gefahr von Unfällen mit Radfahrenden und empfinden die Situation als angenehmer, wenn dieser Konflikt entschärft ist.
     </Paragraph>
+    
      <ImageMulti>
       <ImageMulti.Inner source={MS_A_67}>
         <FeelSafe value={87.77} />
@@ -684,7 +685,7 @@ const SectionResults = ({ toc }) => (
           Bestbewertete Situation aus Autoperspektive bei schmaler RVA, T50 und hohem Verkehrsaufkommen
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
-      <ImageMulti.Inner source={01_MS_A_343}>
+      <ImageMulti.Inner source={MS_A_343}>
         <FeelSafe value={88.66} />
         <ImageMulti.Subtitle>
           Bestbewertete Situation aus Autoperspektive bei breiter RVA, T50 und hohem Verkehrsaufkommen
