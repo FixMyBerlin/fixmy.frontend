@@ -18,13 +18,13 @@ const Wrapper = styled.div`
 const Title = styled.div`
   color: ${config.colors.darkbg};
   font-size: 1.5rem;
-  margin-bottom: 1.25em;
+  margin-bottom: 1em;
 `;
 
 const Source = styled.div`
   color: #999;
   font-size: 0.75rem;
-  margin-top: 10px;
+  margin-top: 8px;
 
   ${media.m`
     margin-top: 2em;
