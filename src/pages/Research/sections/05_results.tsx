@@ -788,7 +788,7 @@ const SectionResults = ({ toc }) => (
       <ImageMulti.Inner source={CP_C_463}>
         <FeelSafe value={78.95} />
         <ImageMulti.Subtitle>
-          Eine RVA in schmaler Ausführung mit Trennungen links und rechts durch
+          Eine RVA im Seitenraum (mit linksseitigem Parken) in schmaler Ausführung mit Trennungen links und rechts durch
           Grünstreifen.
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
@@ -814,8 +814,13 @@ const SectionResults = ({ toc }) => (
       <BarChart title="Auslage (vorhanden - keine)" data={[4.1]} />
       <BarChart
         title="Auslage (vorhanden - keine) nur schmaler Gehweg"
-        data={[11.41]}
-      />
+        data={[11.41]} />
+      <BarChart
+        title="Trennung rechts (Grünstreifen - keine Trennung)"
+        data={[0.0]} />
+      <BarChart
+        title="Faktor Verkehrsart links (Links RVA Fahrstreifen vs. Parken)"
+        data={[0.0]} />
     </BarChart.Wrapper>
 
     <Heading as="h3">Schmale RVA sind sicher – breite sehr sicher</Heading>
@@ -843,8 +848,8 @@ const SectionResults = ({ toc }) => (
       title="HVS-S: RVA breit und schmal"
       source="Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum"
     >
-      <BarChart title="RVA breit" data={[0, 0, 0, 0]} feelsafe={94.61} />
-      <BarChart title="RVA schmal" data={[0, 0, 0, 0]} feelsafe={69.1} />
+      <BarChart title="RVA breit" data={[0.677428, 3.889918, 29.751257, 65.681397]} feelsafe={94.61} />
+      <BarChart title="RVA schmal" data={[3.729178, 23.567974, 43.981730, 28.721118]} feelsafe={69.1} />
     </BarChart.Wrapper>
 
     <Paragraph>
@@ -881,22 +886,22 @@ const SectionResults = ({ toc }) => (
     >
       <BarChart
         title="Breiter Gehweg Auslage ja"
-        data={[0, 0, 0, 0]}
+        data={[2.043688, 11.751203, 39.159571, 47.045539]}
         feelsafe={84.24}
       />
       <BarChart
         title="Breiter Gehweg Auslage nein"
-        data={[0, 0, 0, 0]}
+        data={2.039444, 11.687584, 37.483191, 48.789780]}
         feelsafe={84.16}
       />
       <BarChart
         title="Schmaler Gehweg Auslage ja"
-        data={[0, 0, 0, 0]}
-        feelsafe={74.95}
+        data={[3.390943, 18.938234, 40.016772, 37.654051]}
+        feelsafe={74.96}
       />
       <BarChart
         title="Schmaler Gehweg Auslage nein"
-        data={[0, 0, 0, 0]}
+        data={[1.710024, 9.920563, 35.795282, 52.574131]}
         feelsafe={86.4}
       />
     </BarChart.Wrapper>
@@ -959,29 +964,29 @@ const SectionResults = ({ toc }) => (
     </Paragraph>
 
     <BarChart.Wrapper
-      title="HVS-S Fußperspektive: Mit und ohne Auslage"
-      source="Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum. Die Fußperspektive wurde nur bei schmaler Gehweg-Gesamtbreite abgefragt."
+      title="HVS-S Fuß- und Radperspektive: Mit und ohne Auslage"
+      source="Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum. Die Auswertung vergleicht nur die Fälle mit schmaler Gehweggesamtbreite, da die Fußperspektive wurde nur in dieser Variante abgefragt wurde."
     >
       <BarChart
         title="Fußperspektive Auslage ja"
-        data={[0, 0, 0, 0]}
+        data={[6.599897, 36.123951, 38.004337, 19.271814]}
         feelsafe={53.24}
         feelsafeIcon="walk"
       />
       <BarChart
         title="Fußperspektive Auslage nein"
-        data={[0, 0, 0, 0]}
+        data={[1.740895, 12.454977, 42.070208, 43.733920]}
         feelsafe={83.36}
         feelsafeIcon="walk"
       />
       <BarChart
         title="Radperspektive Auslage ja"
-        data={[0, 0, 0, 0]}
+        data={[3.390943, 18.938234, 40.016772, 37.654051]}
         feelsafe={74.95}
       />
       <BarChart
         title="Radperspektive Auslage nein"
-        data={[0, 0, 0, 0]}
+        data={[1.710024, 9.920563, 35.795282, 52.574131]}
         feelsafe={86.4}
       />
     </BarChart.Wrapper>
