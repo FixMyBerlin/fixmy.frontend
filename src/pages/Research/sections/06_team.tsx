@@ -43,6 +43,7 @@ const SectionTeam = ({ toc }) => (
       <br />
       FixMyCity wird gefördert durch das BMVI und die Senatskanzlei Berlin.
     </Paragraph>
+
   </>
 );
 

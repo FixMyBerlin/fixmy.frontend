@@ -1,14 +1,8 @@
 import React from 'react';
-
-import styled from 'styled-components';
-import { Paragraph, Heading } from '~/components2/Article';
+import { Heading, Paragraph } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import ButtonWrapper from '../components/ButtonWrapper';
-import QuestionInfo from '../../KatasterKI/components/QuestionInfo';
-
-const DownloadInfo = styled(QuestionInfo)`
-  margin-top: 16px;
-`;
+import DownloadInfo from '~/pages/Research/components/DownloadInfo';
 
 const SectionDataset = ({ toc }) => (
   <>
