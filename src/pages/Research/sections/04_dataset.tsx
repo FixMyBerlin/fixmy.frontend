@@ -28,7 +28,12 @@ const SectionDataset = ({ toc }) => (
       CSV-Datensatz herunter.
     </Paragraph>
     <ButtonWrapper>
-      <AnchorButton flat>Datensatz herunterladen</AnchorButton>
+      <AnchorButton
+        flat
+        href="https://drive.google.com/file/d/1FPl3-_Tfl_lgpS5Z4TXJSWTToRTBX4r9/view?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Datensatz herunterladen</AnchorButton>
     </ButtonWrapper>
   </>
 );
