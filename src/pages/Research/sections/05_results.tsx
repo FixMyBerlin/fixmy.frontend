@@ -973,22 +973,7 @@ const SectionResults = ({ toc }) => (
         feelsafe={53.24}
         feelsafeIcon="walk"
       />
-      <BarChart
-        title="Fußperspektive Auslage nein"
-        data={[1.740895, 12.454977, 42.070208, 43.733920]}
-        feelsafe={83.36}
-        feelsafeIcon="walk"
-      />
-      <BarChart
-        title="Radperspektive Auslage ja"
-        data={[3.390943, 18.938234, 40.016772, 37.654051]}
-        feelsafe={74.95}
-      />
-      <BarChart
-        title="Radperspektive Auslage nein"
-        data={[1.710024, 9.920563, 35.795282, 52.574131]}
-        feelsafe={86.4}
-      />
+     
     </BarChart.Wrapper>
 
     <Paragraph>
