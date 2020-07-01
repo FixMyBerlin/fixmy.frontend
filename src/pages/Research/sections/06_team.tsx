@@ -1,6 +1,8 @@
 import React from 'react';
-
-import { Paragraph, Heading } from '~/components2/Article';
+import { Heading, Paragraph } from '~/components2/Article';
+import bmviLogi from '~/pages/Research/images/logo/BMVI_Fz_2017_Office_Farbe_de_clip_scale.png';
+import senKanzLogo from '~/pages/Research/images/logo/senatskanzlei-berlin.png';
+import LogoWrapper from '~/pages/Research/components/LogoWrapper';
 
 const SectionTeam = ({ toc }) => (
   <>
@@ -43,6 +45,10 @@ const SectionTeam = ({ toc }) => (
       <br />
       FixMyCity wird gefördert durch das BMVI und die Senatskanzlei Berlin.
     </Paragraph>
+    <LogoWrapper>
+      <img src={bmviLogi} alt="Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)"/>
+      <img src={senKanzLogo} alt="Logo der Senatskanzlei Berlin"/>
+    </LogoWrapper>
 
   </>
 );
