@@ -207,6 +207,14 @@ const SectionAbout = ({ toc }) => (
         hier [pdf download]
       </a> zu finden.
     </Paragraph>
+    <Paragraph>
+      Ein Übersicht der Szenen und ihrer Merkmale sind in <a
+        href="/uploads/kataster-ki/Szenarienuebersicht_fuer_Abgabe_KatasterKi_Feb20.ods"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+      dieser Tabelle [ods Download]</a> zu finden
+    </Paragraph>
     </>
 );
 
