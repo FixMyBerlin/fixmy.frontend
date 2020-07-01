@@ -13,8 +13,8 @@ const Research = () => (
     <ArticleHeader
       toc="Einleitung"
       kicker="Forschungsergebnis - Strassencheck"
-      publishDate={new Date(2020, 6, 28, 11, 0)}
-      author="FixMyCity"
+      publishDate={new Date(2020, 7, 6, 7, 0)}
+      author="FixMyCity Team"
     >
       Studie zur subjektiven Sicherheit im Radverkehr. - Ergebnisse und
       Datensatz einer Umfrage mit 20.000 Teilnehmenden

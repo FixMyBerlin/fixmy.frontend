@@ -28,11 +28,11 @@ type TitleProps = {
 
 const Title = styled.div`
   font-weight: 700;
-  margin-bottom: ${(props: TitleProps) => (props.hasFeelSafe ? '55px' : '1em')};
+  margin-bottom: ${(props: TitleProps) => (props.hasFeelSafe ? '40px' : '1em')};
 
   ${media.m`
     margin-bottom: 0;
-    width: 150px;
+    width: 180px;
     `}
 `;
 
@@ -54,7 +54,7 @@ const Chart = styled.div`
 
   ${media.m`
     padding: 0 10px;
-   width: 500px;
+   width: 440px;
     font-size: 15px;
     `}
 `;

@@ -56,12 +56,12 @@ const Text = styled.div<TextContentProps>`
 `;
 
 const scale = scaleLinear(
-  [25, 50, 75, 100],
+  [10, 50, 75, 100],
   ['#c01d1d', '#f08141', '#abc759', '#45b834']
 );
 
 const getColorByValue = (index) => {
-  return index <= 25 ? '#c01d1d' : scale(index);
+  return index <= 10 ? '#c01d1d' : scale(index);
 };
 
 export type FeelsafeSize = 'small' | 'big';
@@ -129,7 +129,7 @@ export default ({ value, size = 'small', icon = 'bike' }: FeelsafeProps) => {
       <TextContent isSmall={isSmall}>
         <IconComponent />
         <Number isSmall={isSmall}>{valueDisplay}%</Number>
-        <Text isSmall={isSmall}>*</Text>
+        <Text isSmall={isSmall}>feel safe*</Text>
       </TextContent>
     </Wrapper>
   );
