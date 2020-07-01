@@ -19,8 +19,12 @@ const SectionDataset = ({ toc }) => (
         rel="noopener noreferrer"
       >Open Knowledge Foundation
       </a> nachlesen. Die Erklärung zu den Spalten in
-      dem CSV-Datensatz finden Sie in diesem PDF zu den Spezifikationen. Laden
-      Sie sich die Ergebnisse der Umfrage über den folgenden Button als
+      dem CSV-Datensatz finden Sie in <a
+        href="/uploads/kataster-ki/Spezifikation_Ausgabeformat_des_Strassenchecks.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >diesem PDF zu den Spezifikationen</a>.
+      Laden Sie sich die Ergebnisse der Umfrage über den folgenden Button als
       CSV-Datensatz herunter.
     </Paragraph>
     <ButtonWrapper>
