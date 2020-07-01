@@ -579,7 +579,7 @@ const SectionResults = ({ toc }) => (
     >
       <BarChart
         title="Radperspektive: ohne RVA"
-        data={[52, 33, 12, 0]}
+        data={[52, 33, 12, 3]}
         feelsafe={14.24}
       />
       <BarChart
@@ -710,7 +710,6 @@ const SectionResults = ({ toc }) => (
       ruhenden Verkehrs.
     </Paragraph>
 
-    {/* TODO: Missing data */}
     <BarChart.Wrapper title="HVS mit RVA: Führungen im Seitenraum (HVS-S) und auf der Fahrbahn (HVS-F)">
       <BarChart
         title="Fahrbahn, RVA ohne Parken schmal"
@@ -794,7 +793,7 @@ const SectionResults = ({ toc }) => (
       </ImageMulti.Inner>
     </ImageMulti>
 
-    <Heading as="h3">Breite der RVA ausschlaggebend</Heading>
+    <Heading as="h3">Breite der RVA auch im Seitenraum ausschlaggebend</Heading>
 
     <Paragraph>
       Innerhalb der Varianten im Seitenraum spielt die RVA-Breite aus Sicht der
@@ -947,7 +946,7 @@ const SectionResults = ({ toc }) => (
       source="Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Die Fußperspektive wurde nur bei schmaler Gehweg-Gesamtbreite abgefragt."
     >
       <BarChart title="Breite RVA schmal vs. breit" data={[5.76]} />
-      <BarChart title="Trennung rechts (grün - keine)" data={[35.72]} />
+      <BarChart title="Trennung rechts (grün - keine)" data={[32.13]} />
       <BarChart title="Auslage (ja - nein)" data={[25.39]} />
     </BarChart.Wrapper>
 
