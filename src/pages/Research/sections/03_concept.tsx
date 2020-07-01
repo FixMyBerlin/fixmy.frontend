@@ -198,7 +198,16 @@ const SectionAbout = ({ toc }) => (
       Fußperspektive) erstellt. Ein genauere Dokumentation zur Systematik der
       Straßenszenarien ist hier zu finden.
     </Paragraph>
-  </>
+    <Paragraph>
+      Ein genauere Dokumentation zur Systematik der Straßenszenarien ist <a
+        href="/uploads/kataster-ki/Umfragekonzept_KatasterKI_Feb2020.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        hier [pdf download]
+      </a> zu finden.
+    </Paragraph>
+    </>
 );
 
 export default SectionAbout;
