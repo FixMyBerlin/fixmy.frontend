@@ -889,21 +889,7 @@ const SectionResults = ({ toc }) => (
         data={[2.043688, 11.751203, 39.159571, 47.045539]}
         feelsafe={84.24}
       />
-      <BarChart
-        title="Breiter Gehweg Auslage nein"
-        data={2.039444, 11.687584, 37.483191, 48.789780]}
-        feelsafe={84.16}
-      />
-      <BarChart
-        title="Schmaler Gehweg Auslage ja"
-        data={[3.390943, 18.938234, 40.016772, 37.654051]}
-        feelsafe={74.96}
-      />
-      <BarChart
-        title="Schmaler Gehweg Auslage nein"
-        data={[1.710024, 9.920563, 35.795282, 52.574131]}
-        feelsafe={86.4}
-      />
+     
     </BarChart.Wrapper>
 
     <Paragraph>
@@ -972,6 +958,22 @@ const SectionResults = ({ toc }) => (
         data={[6.599897, 36.123951, 38.004337, 19.271814]}
         feelsafe={53.24}
         feelsafeIcon="walk"
+      />
+       <BarChart
+        title="Fußperspektive Auslage nein"
+        data={[1.740895, 12.454977, 42.070208, 43.733920]}
+        feelsafe={83.36}
+        feelsafeIcon="walk"
+      />
+      <BarChart
+        title="Radperspektive Auslage ja"
+        data={[3.390943, 18.938234, 40.016772, 37.654051]}
+        feelsafe={74.95}
+      />
+      <BarChart
+        title="Radperspektive Auslage nein"
+        data={[1.710024, 9.920563, 35.795282, 52.574131]}
+        feelsafe={86.4}
       />
      
     </BarChart.Wrapper>
