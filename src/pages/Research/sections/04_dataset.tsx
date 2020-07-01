@@ -1,8 +1,14 @@
 import React from 'react';
 
+import styled from 'styled-components';
 import { Paragraph, Heading } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import ButtonWrapper from '../components/ButtonWrapper';
+import QuestionInfo from '../../KatasterKI/components/QuestionInfo';
+
+const DownloadInfo = styled(QuestionInfo)`
+  margin-top: 16px;
+`;
 
 const SectionDataset = ({ toc }) => (
   <>
@@ -34,6 +40,9 @@ const SectionDataset = ({ toc }) => (
         target="_blank"
         rel="noopener noreferrer"
       >Datensatz herunterladen</AnchorButton>
+     <DownloadInfo>
+       (Format: JSON, Größe: ~41 MB,Format: ODbL)
+     </DownloadInfo>
     </ButtonWrapper>
   </>
 );
