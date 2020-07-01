@@ -1004,10 +1004,16 @@ const SectionResults = ({ toc }) => (
     <ImageMulti>
       <ImageMulti.Inner source={CP_P_194}>
         <FeelSafe value={81.44} icon="walk" />
-      </ImageMulti.Inner>
+      <ImageMulti.Subtitle>
+          Trotz relativ enger Platzverhältnisse, wird diese Situation noch 81,44 % der zu Fuß Gehenden als “eher sicher” oder “sicher” empfunden.
+        </ImageMulti.Subtitle>
+        </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_194}>
         <FeelSafe value={75.56} />
-      </ImageMulti.Inner>
+        <ImageMulti.Subtitle>
+          Die gleiche Situation wird von 75,56 % der Radfahrenden als “eher sicher” oder “sicher” bewertet.
+        </ImageMulti.Subtitle>
+      </ImageMulti.Inner>      
     </ImageMulti>
 
     <Paragraph>
@@ -1021,14 +1027,14 @@ const SectionResults = ({ toc }) => (
     >
       <BarChart
         title="Trennung rechts grünstreifen schmal"
-        data={[0, 0, 0, 0]}
+        data={[2.907560, 16.603599, 39.771411, 40.717430]}
         feelsafe={78.18}
        feelsafeIcon="walk"
       />
       <BarChart
         title="Trennung rechts grünstreifen breit"
-        data={[0, 0, 0, 0]}
-        feelsafe={85.48}
+        data={[1.970729, 10.933870, 35.689949, 51.405451]}
+        feelsafe={85.49}
         feelsafeIcon="walk"
       />
       <BarChart
@@ -1084,7 +1090,7 @@ const SectionResults = ({ toc }) => (
 
     <BarChart.Wrapper
       title="NVS: Gewicht der Einflussfaktoren im Mittel"
-      source="Anm: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Ausgenommen sind die Situationen mit durchgehender Grüneinfärbung des Asphalts. Unter Markierung werden Fahrradstraße, Fahrradstraße-Sondermarkierung und Spielstraße zusammengefasst."
+      source="Anm: Unterschied der Mittelwerte der Bewertungen im Vergleich zweier Merkmalsausprägungen. Grundlage sind alle für das Merkmal relevante Situationen. Ausgenommen sind die Situationen mit durchgehender Grüneinfärbung des Asphalts. Unter Markierung werden Fahrradstraße, Fahrradstraße-Sondermarkierung und Spielstraße zusammengefasst."
     >
       <BarChart title="Straßenbreite (schmal vs. breit)" data={[30.5]} />
       <BarChart title="Parken (beidseitig – nein)" data={[19.4]} />
@@ -1230,15 +1236,15 @@ const SectionResults = ({ toc }) => (
 
     <BarChart.Wrapper
       title="NVS “autofrei”: Markierungsarten"
-      source="Anm: Durchschnitt der Bewertungen aller Situationen in Nebenverkehrsstraßen."
+      source="Anm: Durchschnitt der Bewertungen aller Situationen in Nebenverkehrsstraßen. Nur solche die ohne fließenden Kfz-Verkehrs dargestellt wurden"
     >
       <BarChart
-        title="NVS autofrei ohne Markierung"
+        title="Ohne Markierung"
         data={[15.428571, 33.142857, 33.0, 18.428571]}
         feelsafe={51.42}
       />
       <BarChart
-        title="NVS autofrei hollandaise"
+        title="Holländische Markierung"
         data={[2.039405, 6.394746, 22.571725, 68.994124]}
         feelsafe={91.56}
       />
@@ -1248,12 +1254,12 @@ const SectionResults = ({ toc }) => (
         feelsafe={82.19}
       />
       <BarChart
-        title="NVS autofrei Fahrradstraße - Sondermarkierung"
+        title="Fahrradstraße - Sondermarkierung"
         data={[9.591983, 20.042949, 33.786686, 36.578382]}
         feelsafe={70.35}
       />
       <BarChart
-        title="NVS autofrei Spielstraße"
+        title="Spielstraße"
         data={[4.538799, 18.081991, 43.045388, 34.333821]}
         feelsafe={77.37}
       />
