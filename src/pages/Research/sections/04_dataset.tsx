@@ -13,7 +13,12 @@ const SectionDataset = ({ toc }) => (
       FixMyCity stellt die Daten offen zur Verfügung (&ldquo;open data&rdquo;),
       unter der Bedingung, dass abgeleitete Werke auch veröffentlicht werden
       (&ldquo;share-alike&rdquo;). Details zur Lizenz können Sie auf den Seiten
-      der Open Knowledge Foundation nachlesen. Die Erklärung zu den Spalten in
+      der <a
+        href="https://www.opendatacommons.org/licenses/odbl/summary/index.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Open Knowledge Foundation
+      </a> nachlesen. Die Erklärung zu den Spalten in
       dem CSV-Datensatz finden Sie in diesem PDF zu den Spezifikationen. Laden
       Sie sich die Ergebnisse der Umfrage über den folgenden Button als
       CSV-Datensatz herunter.
