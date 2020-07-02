@@ -204,7 +204,7 @@ const SectionAbout = ({ toc }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        hier [pdf download]
+        hier [.pdf Download]
       </a> zu finden.
     </Paragraph>
     <Paragraph>
@@ -213,7 +213,7 @@ const SectionAbout = ({ toc }) => (
         target="_blank"
         rel="noopener noreferrer"
       >
-      dieser Tabelle [ods Download]</a> zu finden
+      dieser Tabelle [.ods Download]</a> zu finden
     </Paragraph>
     </>
 );
