@@ -157,7 +157,7 @@ const SectionResults = ({ toc }) => (
       <Link href="https://fixmyberlin.de">Jupyter Notebook</Link>
     </Paragraph>
  */}
-    <Heading as="h3">Ruhender Verkehr erzeugt zusätzliche Konfliktzone</Heading>
+    <Heading as="h3">Ruhender Verkehr erzeugt zusätzliche Konflikte</Heading>
     <Paragraph>
       Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das
       Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an
