@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Paragraph, Heading, Quote, Image, List } from '~/components2/Article';
 
-import image1 from '../images/image-1.jpg';
+import image1 from '../images/image1_@x2.jpg';
 
 const SectionAbout = ({ toc }) => (
   <>
