@@ -30,7 +30,7 @@ const SectionDataset = ({ toc }) => (
     <ButtonWrapper>
       <AnchorButton
         flat
-        href="https://drive.google.com/file/d/1FPl3-_Tfl_lgpS5Z4TXJSWTToRTBX4r9/view?usp=sharing"
+        href="https://raw.githubusercontent.com/FixMyBerlin/fixmy.data/master/SurveyResults_200414.json"
         target="_blank"
         rel="noopener noreferrer"
       >Datensatz herunterladen</AnchorButton>
