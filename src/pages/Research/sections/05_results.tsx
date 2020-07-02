@@ -66,20 +66,18 @@ const SectionResults = ({ toc }) => (
     </Heading>
 
     <Paragraph>
-      Mit den generierten Daten ist die Überprüfung von verschiedensten
-      Hypothesen möglich. Ein besonderes Interesse der Forschung liegt
-      beispielsweise auf der Nutzergruppe der potentiell Radfahrenden. Ab
-      welcher Verkehrsinfrastruktur fühlt sich diese Nutzergruppe im Straßenraum
-      sicher? Ist die Verkehrsstärke auch bei einer Trennung zwischen Rad- und
-      Kfz-Verkehr eine ausschlaggebende Einflussgröße? Welche
-      Verkehrsinfrastruktur empfinden die meisten Befragten als sicher? Welche
-      Poller werden als am sichersten empfunden?
+      Mit den generierten Daten ist die Überprüfung von verschiedensten Hypothesen möglich. Ein besonderes Interesse der Forschung liegt beispielsweise auf der Nutzergruppe der potentiell Radfahrenden. Ab welcher Verkehrsinfrastruktur fühlt sich diese Nutzergruppe im Straßenraum sicher? Ist die Verkehrsstärke auch bei einer Trennung zwischen Rad- und Kfz-Verkehr eine ausschlaggebende Einflussgröße? Welche Verkehrsinfrastruktur empfinden die meisten Befragten als sicher? Ist die Breite oder die physische Trennung der RVA ausschlaggebend? Welche Führungsformen sind jeweils im Seitenraum, auf der Fahrbahn oder in Nebenverkehrsstraßen am geeignetsten? Einige dieser Hypothesen werden in der folgenden Auswertung überprüft.
     </Paragraph>
     <Paragraph>
-      Mittels den zur Verfügung gestellten Daten können interessierte Personen
-      diese, sowie ihre eigenen Hypothesen, überprüfen. Mehr dazu im folgenden
-      Abschnitt.
+      Mittels den zur Verfügung gestellten Daten können interessierte Personen die Auswertung nachvollziehen und weitere Hypothesen überprüfen. Zunächst ein Überblick zu den Teilnehmenden.
     </Paragraph>
+    <Paragraph>
+    Für unsere eigene Auswertung nutzen wir {' '}
+      <Link href="https://github.com/FixMyBerlin/fixmy.survey-results">Jupyter Notebook</Link>.
+    </Paragraph>
+    
+    <Heading as="h3">Auswertung der Teilnehmenden</Heading>
+    
     
     <Heading as="h3">Führung auf der Fahrbahn</Heading>
     <Paragraph>
