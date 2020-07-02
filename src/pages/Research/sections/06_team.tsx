@@ -45,11 +45,12 @@ const SectionTeam = ({ toc }) => (
       <br />
       FixMyCity wird gefördert durch das BMVI und die Senatskanzlei Berlin.
     </Paragraph>
-    <LogoWrapper>
-      <img src={bmviLogi} alt="Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)"/>
-      <img src={senKanzLogo} alt="Logo der Senatskanzlei Berlin"/>
-    </LogoWrapper>
-
+    <Paragraph>
+      <LogoWrapper>
+        <img style={{ width: '188px', height: '197px', margin: '2em 0'}} src={bmviLogi} alt="Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)"/>
+        <img style={{height: '112px', width: '146px', margin: '2em 0'}} src={senKanzLogo} alt="Logo der Senatskanzlei Berlin"/>
+      </LogoWrapper>
+    </Paragraph>
   </>
 );
 
