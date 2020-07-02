@@ -83,10 +83,10 @@ const SectionResults = ({ toc }) => (
       source="Anm: Durchschnitt aller Bewertungen nach Angaben zum Geschlecht der Teilnehmenden"
     >
       <BarChart title="männlich" data={[8.185250, 21.410971, 34.955650, 35.448129]} feelsafe={70.40} />
-      <BarChart title="weiblich" data={[7.824049, 20.332307, 34.931507, 36.912137]} feelsafe={70.40}/>
+      <BarChart title="weiblich" data={[7.824049, 20.332307, 34.931507, 36.912137]} feelsafe={71.84}/>
       <BarChart
         title="divers"
-        data={[9.831594, 21.240512, 33.906546, 35.021347]} feelsafe={70.40}
+        data={[9.831594, 21.240512, 33.906546, 35.021347]} feelsafe={68.93}
       />
       </BarChart.Wrapper>
 
