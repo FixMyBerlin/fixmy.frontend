@@ -4,10 +4,10 @@ import { Paragraph, Heading, ImageMulti } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import ButtonWrapper from '../components/ButtonWrapper';
 import FeelSafe from '../components/FeelSafe';
+import Link from '~/components2/Link';
 
 import MS_C_573 from '../images/01_MS_C_573_@x2.jpg';
 import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
-import Link from '~/components/Link';
 
 const SectionIntroduction = ({ toc }) => (
   <>
@@ -59,7 +59,9 @@ const SectionIntroduction = ({ toc }) => (
      Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden unter allen Varianten auf der oben links gezeigten am sichersten. Autofahrende favorisieren die fast gleiche Gestaltung nur ohne Grüneinfärbung. Der breite, grün eingefärbter Radstreifen getrennt vom KFZ-Verkehr durch Blumenkästen erhielt von Radfahrer:innen die meisten Bewertungen “sicher” (83,93%) oder “eher sicher” (15,18%). Im Durchschnitt wurden von ihnen allerdings Führungen im Seitenraum als sicherer, als solche im fließenden Verkehr empfunden. Führungen in Nebenstraßen schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargestellt wurden. In der statistischen Auswertung finden Sie detaillierte Analysen zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie Auswertungen der Auto- und Fußperspektive. Eine Zusammenfassung der wichtigsten Aussagen finden Sie ganz unten in der Zusammenfassung.
     </Paragraph>
     <Paragraph>
-      Der Tagesspiegel Berlin hat eine eigene Auswertung der Ergebnisse gemacht, die Sie in diesem <a target="_blank" rel="noopener noreferrer" href="https://interaktiv.tagesspiegel.de/lab/berliner-strassencheck-die-auswertung/">Artikel</a> finden.
+      Der Tagesspiegel Berlin hat eine eigene Auswertung der Ergebnisse gemacht, die Sie in diesem <Link
+      href="https://interaktiv.tagesspiegel.de/lab/berliner-strassencheck-die-auswertung/"
+    >Artikel</Link> finden.
     </Paragraph>
     <ButtonWrapper>
       <AnchorButton flat href="#statistische-auswertung">
