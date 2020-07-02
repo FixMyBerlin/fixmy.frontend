@@ -87,9 +87,9 @@ const SectionResults = ({ toc }) => (
     </Paragraph>
     <Heading as="h3">Führung im Mischverkehr ist unsicher</Heading>
     <Paragraph>
-      Eine Führung des Radverkehrs im Mischverkehr wird als deutlich unsicherer empfunden als eine Führung auf jeder Art von RVA. Werden die Faktoren Tempolimit, Verkehrsstärke und rechtsseitiges Parken variiert ändert sich das Sicherheitsempfinden. Aber auch in der bestbewerteten Situation ist kein ausreichendes Sicherheitsempfinden (Wir gehen hier davon aus, dass eine Bewertung “eher sicher” oder “sicher” von über 80% der Teilnehmenden ein anzustrebender Wert für eine subjektiv sichere Infrastruktur ist)   zu erzielen. Im Vergleich der Nutzermerkmale gibt es den größten Unterschied zwischen Männern und Frauen, aber insgesamt große Übereinstimmungen. Alle Typen von Radfahrenden (Viel-, oder Wenig-Radfahrende, weibliche oder männliche, ältere und jüngere, etc.) fühlen sich im Mischverkehr unsicher.
+      Eine Führung des Radverkehrs im Mischverkehr wird als deutlich unsicherer empfunden als eine Führung auf jeder Art von RVA. Werden die Faktoren Tempolimit, Verkehrsstärke und rechtsseitiges Parken variiert ändert sich das Sicherheitsempfinden. Aber auch in der bestbewerteten Situation ist kein ausreichendes Sicherheitsempfinden (Wir gehen hier davon aus, dass eine Bewertung “eher sicher” oder “sicher” von über 80% der Teilnehmenden ein anzustrebender Wert für eine subjektiv sichere Infrastruktur ist) zu erzielen. 
     </Paragraph>
-
+    
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_2}>
         <FeelSafe value={28} />
@@ -118,6 +118,7 @@ const SectionResults = ({ toc }) => (
         data={[51, 35, 12, 2]}
         feelsafe={15}
       />
+      {/*
       <BarChart
         title="ohne RVA (Seltenfahrer)"
         data={[58, 29, 10, 4]}
@@ -148,13 +149,14 @@ const SectionResults = ({ toc }) => (
         data={[42, 42, 12, 4]}
         feelsafe={15.10}
       />
+       */}
     </BarChart.Wrapper>
-
+    {/*
     <Paragraph>
       Weitere Auswertungen nach Nutzermerkmalen finden Sie hier:{' '}
       <Link href="https://fixmyberlin.de">Jupyter Notebook</Link>
     </Paragraph>
-
+ */}
     <Heading as="h3">Ruhender Verkehr erzeugt zusätzliche Konfliktzone</Heading>
     <Paragraph>
       Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das
