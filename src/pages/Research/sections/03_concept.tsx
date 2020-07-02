@@ -32,7 +32,7 @@ const SectionAbout = ({ toc }) => (
       Kommunikationsstrategie eine hohe Zahl an Teilnehmenden zu erreichen.
     </Paragraph>
     <Paragraph>
-      Mittels einer qualitativen Befragung von Radfahrenden lässt sich schwierig
+      Mittels einer qualitativen Befragung von Radfahrenden lässt sich normalerweise schwierig
       ermitteln, welche Breite von Radverkehrsanlagen als “zu schmal” empfunden
       wird. Ähnliches gilt für das subjektive Empfinden von Straßensituationen
       sowie die Kombination von gewissen baulichen Merkmalen (z.B. schmaler
@@ -43,12 +43,12 @@ const SectionAbout = ({ toc }) => (
     </Paragraph>
     <Paragraph>
       Durch das Arbeiten mit Bildern von spezifischen Straßen-Szenarien konnte
-      im Rahmen der Umfrage eine Zuordnung vom subjektiven Sicherheitsempfinden
+      im Rahmen der Umfrage eine direkte Zuordnung vom subjektiven Sicherheitsempfinden
       in Bezug zu verschiedenen Infrastrukturen und deren Merkmalsausprägungen
       gemacht werden. Mittels Abfrage von Daten zum Verkehrsverhalten, sowie
       demografischen Daten konnten diese subjektiven Empfindungen verschiedenen
       Bevölkerungs- und Verkehrsnutzergruppen (z.B. Autofahrende, Radfahrende
-      etc. ) zugeordnet werden. Durch die große Teilnehmendenzahl und die
+      etc.) zugeordnet werden. Durch die große Teilnehmendenzahl und die
       gemeinsam mit dem Tagesspiegel Berlin entwickelte Kommunikationsstrategie
       konnte eine weit gestreute hohe Anzahl von Personen befragt werden
       (demografisch und vom Verkehrsverhalten).
@@ -56,7 +56,7 @@ const SectionAbout = ({ toc }) => (
     <Paragraph>
       Bei der Auswahl der Szenarien sollten Planungen von aktuellen
       RVA-Varianten berücksichtigt werden. Auf Grundlage einer engen Abstimmung
-      mit der Berliner Senatsverwaltung, der Durchführung von Fach-Workshops und
+      mit der Berliner Senatsverwaltung, der Durchführung von Fach-Workshops,
       dem Einarbeiten von neuen Infrastrukturkonzepten und dem intensiven
       Auseinandersetzen mit dem aktuellen Forschungsstand in der Literatur,
       konnte die Aktualität der Umfrage sichergestellt werden. Beispielsweise
@@ -90,8 +90,15 @@ const SectionAbout = ({ toc }) => (
       In diesem Abschnitt wurden allgemeine Fragen über den Berliner Verkehr für
       die redaktionelle Auswertung des Tagesspiegels gestellt. Hier soll nicht
       näher auf diese Fragen eingegangen werden, da diese nicht Teil der
-      Konzeption sind. Die Fragen und die Antwortmöglichkeiten sind aber hier zu
-      finden.
+      Konzeption sind. Eine  
+      <a
+        href="https://interaktiv.tagesspiegel.de/lab/strassencheck-das-stoert-im-berliner-verkehr-am-meisten/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Auswertung</a>
+      dazu hat der Tagesspiegel Berlin gemacht.
+      
+      
     </Paragraph>
     <Heading as="h3">Profilfragen</Heading>
     <Paragraph>
