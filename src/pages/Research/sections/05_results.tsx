@@ -77,7 +77,68 @@ const SectionResults = ({ toc }) => (
     </Paragraph>
     
     <Heading as="h3">Auswertung der Teilnehmenden</Heading>
-    
+    <Paragraph>
+    Zur Einordnung der Bewertungen ein kleiner Überblick, wer alles mitgemacht hat.
+Insgesamt hatte die Umfrage 21.401 Teilnehmende, davon 19.109 aus Berlin
+       <List>
+        <List.Item>Friedrichshain-Kreuzberg 14 %</List.Item>
+        <List.Item>Mitte 12 %</List.Item>
+        <List.Item>Pankow 12 %</List.Item>
+        <List.Item>Tempelhof-Schöneberg 10 %</List.Item>
+        <List.Item>Charlottenburg-Wilmersdorf 9 %</List.Item>
+        <List.Item>Steglitz-Zehlendorf 7 %</List.Item>
+        <List.Item>Neukölln 7%</List.Item>
+        <List.Item>Treptow-Köpenick 4 %</List.Item>
+        <List.Item>Lichtenberg 4 %</List.Item>
+        <List.Item>Reinickendorf 4 %</List.Item>
+        <List.Item>Spandau 3 %</List.Item>
+        <List.Item>Marzahn-Hellersdorf 1 %</List.Item>
+        <List.Item>andere Orte 11 %</List.Item>
+       </List>
+    </Paragraph>
+    <Paragraph>
+      Es haben nahezu doppelt so viele männliche Teilnehmer, die Umfrage beantwortet wie weibliche.
+      <List>
+        <List.Item>männlich 64 %</List.Item>
+        <List.Item>weiblich 34 %</List.Item>
+        <List.Item>divers 2 %</List.Item>
+       </List>
+      Zum Vergleich: laut Amt für Statistik Berlin Brandenburg leben in Berlin 49 % Männer und 51 % Frauen (Stand 2018)
+    </Paragraph>
+    <Paragraph>
+      Die Altersverteilung sieht wie folgt aus:
+      <List>
+        <List.Item>AG0 - unter 18 Jahre 1%</List.Item>
+        <List.Item>AG1 - 18 bis 24 Jahre 5%</List.Item>
+        <List.Item>AG2 - 25 bis 29 Jahre 8%</List.Item>
+        <List.Item>AG3 - 30 bis 39 Jahre 27%</List.Item>
+        <List.Item>AG4 - 40 bis 49 Jahre 22%</List.Item>
+        <List.Item>AG5 - 50 bis 64 Jahre 28%</List.Item>
+        <List.Item>AG6/7 - über 65 Jahre 10%</List.Item>
+       </List>
+      Im Vergleich: laut Amt für Statistik Berlin Brandenburg sieht die Altersverteilung in Berlin (Stand 2018) so aus:
+      <List>
+        <List.Item>unter 18 Jahre 16%</List.Item>
+        <List.Item>18 bis 24 Jahre 7%</List.Item>
+        <List.Item>25 bis 29 Jahre 8%</List.Item>
+        <List.Item>30 bis 39 Jahre 17%</List.Item>
+        <List.Item>40 bis 49 Jahre 13%</List.Item>
+        <List.Item>50 bis 64 Jahre 20%</List.Item>
+        <List.Item>über 65 Jahre 19%</List.Item>
+       </List>
+    </Paragraph>
+    <Paragraph>
+      Zusätzlich wurden die Teilnehmer gefragt wie oft sie zu Fuß, mit Bus und Bahn, dem Auto, dem Fahrrad und dem Motorrad unterwegs sind. Im Vergleich mit den Werten für Berlin aus der SrV 2018 ( Gerike et. al,  Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020) gibt es einige Abweichungen.Die Werte für die Nutzung des öffentlichen Verkehrs (Bus und Bahn) mindestens 1x in der Woche in der Umfrage (64%)  stimmen annähernd mit den Werten der SrV 2018 (62%) überein. Hingegen sind in dieser Umfrage die Nutzung des Pkws (35%) im Vergleich zur SrV 2018 (56%) unterrepräsentiert und die Nutzung des Fahrrads (64%) in der Umfrage (47% SrV) überrepräsentiert.
+    </Paragraph>
+    <Paragraph>
+    Weiter wurden in der Umfrage die Verfügbarkeit von Verkehrsmitteln, Motivationsfaktoren zum Radfahren bzw. Gründe nicht Rad zu fahren abgefragt. Die Daten sind im Datensatz enthalten.
+    </Paragraph>
+    <Paragraph>
+      In der Zusammenfassung bildet die Umfrage keine repräsentative Gesamtheit der Berliner Bevölkerung ab. Radfahrende, Männer und die Altergruppe zwischen 30 und 64 Jahren ist deutlich überrepräsentiert. Aufgrund der hohen Anzahl an Teilnehmenden können jedoch auch Auswertungen für spezifische Untergruppen gemacht werden (z.B. Frauen über 74 Jahre: 143 Teilnehmerinnen).
+Bei der durchschnittlichen Bewertung der unterschiedlichen Szenen zeichnet sich für die Nutzermerkmale Geschlecht, Alter und Nutzungshäufigkeit folgendes Bild:
+Geschlecht
+    </Paragraph>
+   
     <BarChart.Wrapper
       title="Bewertungen nach Geschlecht"
       source="Anm: Durchschnitt aller Bewertungen nach Angaben zum Geschlecht der Teilnehmenden"
@@ -89,6 +150,9 @@ const SectionResults = ({ toc }) => (
         data={[9.831594, 21.240512, 33.906546, 35.021347]} feelsafe={68.93}
       />
       </BarChart.Wrapper>
+     <Paragraph>
+    Bei der Auswertung nach den unterschiedlichen Merkmalen unterscheiden sich die Ergebnisse zwischen den den einzelnen Nutzergruppen nur gering. Entsprechend wurde für die weitere Auswertung auf eine weitere Differenzierung verzichtet.
+    </Paragraph>
 
     <Heading as="h3">Führung auf der Fahrbahn</Heading>
     <Paragraph>
