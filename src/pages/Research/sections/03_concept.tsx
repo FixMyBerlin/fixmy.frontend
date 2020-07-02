@@ -106,13 +106,13 @@ const SectionAbout = ({ toc }) => (
       verschiedene Radfahrtypen ermöglichen. Dies ermöglicht uns,
       unterschiedliches Antwortverhalten bei der Einschätzung des subjektiven
       Sicherheitsgefühls besser zu verstehen. Dafür nehmen wir vor allem Bezug
-      auf die Arbeit von Francke, Anke, Lißner (2019). In ihrer Arbeit stellen
+      auf die Arbeit von Francke, Anke, Lißner (2018). In ihrer Arbeit stellen
       sie eine Radfahrtypologie vor, mit welcher sie Vorlieben für die
       Radverkehrsinfrastruktur beschreiben. Da der entsprechende Fragebogen sehr
       umfangreich ist und das Hauptinteresse der Datenerhebung in dieser Arbeit
       auf der Bewertung der Szenen lag, wurde der Fragebogen auf das Nötigste
       reduziert. Änderungen an Fragebögen sorgen zwar dafür, dass die Ergebnisse
-      nicht mehr vergleichbar sind (u. a. Schwarz, 1999 und Catania et al.,
+      nicht mehr vergleichbar sind (vgl. Schwarz, 1999 und Catania et al.,
       1996), dennoch schien diese Entscheidung aus Sicht des Hauptziels der
       Umfrage richtig. Neben soziodemografischen Merkmalen (Alter, Geschlecht,
       Wohnort, Kinder) wurden Fragen zum Mobilitäts- dabei insbesondere zum
@@ -136,20 +136,8 @@ const SectionAbout = ({ toc }) => (
     </Paragraph>
     <Heading as="h3">Szenenbewertungen</Heading>
     <Paragraph>
-      Basierend auf den Angaben der Teilnehmenden zur Häufigkeit ihrer
-      Verkehrsmittelnutzung, wurden Sie (für die Nutzer:innen nicht sichtbar)
-      als Radfahrende,Fußgänger:innen oder Autofahrende eingestuft (hier
-      entschied, ob der Teilnehmer öfter zu Fuß oder mit dem ÖPNV unterwegs ist
-      gegenüber dem Auto). Den Teilnehmenden wurden im Anschluss fünf bzw. zehn
-      Straßenszenen aus der ihrer Nutzergruppe entsprechenden Perspektive
-      gezeigt. Die Straßenszenen konnten auf einer vierstufigen Skala mit
-      “unsicher”, “eher unsicher”, “eher sicher”, oder “sicher” bewertet werden.
-      Im Anschluss konnte der Teilnehmende wählen, ob er in dieser Perspektive
-      weitere Szenen bewerten möchte oder auf eine Perspektive aus Sicht der
-      anderen Verkehrsteilnehmenden wechseln möchte. Nach weiteren zehn Szenen
-      wurde der Teilnehmende erneut gefragt. So könnte die Umfrage beliebig
-      lange fortgesetzt werden. Im Durchschnitt bewertete jeder Teilnehmende 22
-      Szenen.
+      Basierend auf den Angaben der Teilnehmenden zur Häufigkeit ihrer Verkehrsmittelnutzung, wurden Sie anhand der angegebenen Nutzungshäufigkeit  (für die Nutzer:innen nicht sichtbar) als Radfahrende, Fußgänger:innen oder Autofahrende eingestuft..
+Den Teilnehmenden wurden im Anschluss fünf bzw. zehn Straßenszenen aus der ihrer Nutzergruppe entsprechenden Perspektive gezeigt. Die Straßenszenen konnten auf einer vierstufigen Skala mit “unsicher”, “eher unsicher”, “eher sicher”, oder “sicher” bewertet werden. Im Anschluss konnte der Teilnehmende wählen, ob er in dieser Perspektive weitere Szenen bewerten möchte oder auf eine Perspektive aus Sicht der anderen Verkehrsteilnehmenden wechseln möchte. Nach weiteren zehn Szenen wurde der Teilnehmende erneut gefragt. So könnte die Umfrage beliebig lange fortgesetzt werden. Im Durchschnitt bewertete jeder Teilnehmende 22 Szenen. 
     </Paragraph>
     <Heading as="h3">Auswahl der Straßenszenen</Heading>
     <Paragraph>
