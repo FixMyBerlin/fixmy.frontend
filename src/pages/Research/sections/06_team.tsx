@@ -3,6 +3,7 @@ import { Heading, Paragraph } from '~/components2/Article';
 import bmviLogi from '~/pages/Research/images/logo/BMVI_Fz_2017_Office_Farbe_de_clip_scale.png';
 import senKanzLogo from '~/pages/Research/images/logo/senatskanzlei-berlin.png';
 import LogoWrapper from '~/pages/Research/components/LogoWrapper';
+import { AnchorButton } from '~/components2/Button';
 
 const SectionTeam = ({ toc }) => (
   <>
@@ -45,11 +46,24 @@ const SectionTeam = ({ toc }) => (
       <br />
       FixMyCity wird gefördert durch das BMVI und die Senatskanzlei Berlin.
     </Paragraph>
-    <LogoWrapper>
-      <img src={bmviLogi} alt="Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)"/>
-      <img src={senKanzLogo} alt="Logo der Senatskanzlei Berlin"/>
-    </LogoWrapper>
-
+    <Paragraph>
+      <LogoWrapper>
+        <a
+          href="https://www.berlin.de/rbmskzl/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ borderBottom: 'none' }}>
+          <img style={{ width: '188px', height: '197px', margin: '2em 0'}} src={bmviLogi} alt="Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)"/>
+        </a>
+        <a
+          href="https://www.berlin.de/rbmskzl/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ borderBottom: 'none' }}>
+          <img style={{height: '112px', width: '146px', margin: '2em 0'}} src={senKanzLogo} alt="Logo der Senatskanzlei Berlin"/>
+        </a>
+      </LogoWrapper>
+    </Paragraph>
   </>
 );
 
