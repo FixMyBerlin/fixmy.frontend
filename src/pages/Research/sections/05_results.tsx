@@ -6,7 +6,7 @@ import BarChart from '../components/BarChart';
 import FeelSafe from '../components/FeelSafe';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import image1 from '../images/image-1.jpg';
+import image1 from '../images/image1_@x2.jpg';
 import CP_C_1093 from '../images/01_CP_C_1093_@x2.jpg';
 import CP_C_1100 from '../images/01_CP_C_1100_@x2.jpg';
 import CP_C_194 from '../images/01_CP_C_194_@x2.jpg';
@@ -128,7 +128,7 @@ Insgesamt hatte die Umfrage 21.401 Teilnehmende, davon 19.109 aus Berlin
        </List>
     </Paragraph>
     <Paragraph>
-      Zusätzlich wurden die Teilnehmer gefragt wie oft sie zu Fuß, mit Bus und Bahn, dem Auto, dem Fahrrad und dem Motorrad unterwegs sind. Im Vergleich mit den Werten für Berlin aus der SrV 2018 ( Gerike et. al,  Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020) gibt es einige Abweichungen.Die Werte für die Nutzung des öffentlichen Verkehrs (Bus und Bahn) mindestens 1x in der Woche in der Umfrage (64%)  stimmen annähernd mit den Werten der SrV 2018 (62%) überein. Hingegen sind in dieser Umfrage die Nutzung des Pkws (35%) im Vergleich zur SrV 2018 (56%) unterrepräsentiert und die Nutzung des Fahrrads (64%) in der Umfrage (47% SrV) überrepräsentiert.
+      Zusätzlich wurden die Teilnehmenden gefragt wie oft sie zu Fuß, mit Bus und Bahn, dem Auto, dem Fahrrad und dem Motorrad unterwegs sind. Im Vergleich mit den Werten für Berlin aus der SrV 2018 ( Gerike et. al,  Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020) gibt es einige Abweichungen.Die Werte für die Nutzung des öffentlichen Verkehrs (Bus und Bahn) mindestens 1x in der Woche in der Umfrage (64%)  stimmen annähernd mit den Werten der SrV 2018 (62%) überein. Hingegen sind in dieser Umfrage die Nutzung des Pkws (35%) im Vergleich zur SrV 2018 (56%) unterrepräsentiert und die Nutzung des Fahrrads (64%) in der Umfrage (47% SrV) überrepräsentiert.
     </Paragraph>
     <Paragraph>
     Weiter wurden in der Umfrage die Verfügbarkeit von Verkehrsmitteln, Motivationsfaktoren zum Radfahren bzw. Gründe nicht Rad zu fahren abgefragt. Die Daten sind im Datensatz enthalten.
