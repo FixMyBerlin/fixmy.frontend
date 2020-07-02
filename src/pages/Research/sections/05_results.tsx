@@ -615,7 +615,7 @@ Geschlecht
     <Heading as="h3">Lieber rechts als links vom ruhenden Verkehr</Heading>
 
     <Paragraph>
-      Wird der Radverkehr gemeinsam mit ruhendem Kfz-Verkehr geführt, so wird die Führung rechts des ruhenden Verkehrs als deutlich sicherer empfunden.
+      Wird der Radverkehr gemeinsam mit ruhendem Kfz-Verkehr geführt, so wird die Führung rechts des ruhenden Verkehrs als deutlich sicherer empfunden. Hierbei ist zu beachten, dass die Umfrage die subjektive Sicherheit von Führungsformen entlang der Strecke untersucht hat, eine Aussage über die Auswirkung auf Knotenpunkte kann nicht getroffen werden.
     </Paragraph>
 
     <ImageMulti>
@@ -1227,13 +1227,13 @@ Geschlecht
       <ImageMulti.Inner source={SE_C_2}>
         <FeelSafe value={51.02} />
         <ImageMulti.Subtitle>
-          Die bestbewertete Fahrradstraße mit KFZ-Verkehr als Einbahnstraße
+          Die bestbewertete Fahrradstraße mit KFZ-Verkehr in beide Richtungen
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={SE_C_12}>
         <FeelSafe value={56.72} />
         <ImageMulti.Subtitle>
-          Und hier mit beidseitigem Verkehr
+          Die bestbewertete Fahrradstraße mit KFZ-Verkehr als Einbahnstraße in Fahrtrichtung
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
@@ -1348,26 +1348,32 @@ Geschlecht
       Zusammenfassung
     </Heading>
     <Paragraph>
-      
-    Die Umfrage zeigt, dass die Einflüsse unterschiedlicher Faktoren in ihren Wechselbeziehungen keine linearen Aussagen über die subjektive Sicherheit von Radinfrastruktur zulassen. Dennoch können einige zentrale Aussagen und Empfehlungen abgeleitet werden, wie eine “Radinfrastruktur für Alle” aussehen sollte. Dabei ist zu beachten, dass in der Umfrage nur die unterschiedlichen Führungsformen auf der Strecke untersucht wurden, die Gestaltung von Knotenpunkten und bzw. Implikationen auf diese, die sich aus der Wahl der Führung ergeben kann hier nicht beurteilt werden.
+    Im Rahmen eines Forschungsprojektes des Nationalen Radverkehrs soll der Frage nachgegangen werden, wie eine Fahrradinfrastruktur aussehen soll, auf der sich alle sicher fühlen. Dazu wurde eine Online-Umfrage entwickelt, bei der die Teilnehmenden fotorealistische Darstellungen von Straßensituationen aus der Fahrperspektive nach ihrem Sicherheitsempfinden bewerten. Dadurch konnten die Einflüsse der einzelnen Merkmale kontrolliert und untersucht werden, jedoch entfielen damit auch weitere Einflüsse die zum vollständigen Empfinden einer Situation notwendig sind.
+Durch die Kooperation mit einer Berliner Tageszeitung konnte eine hohe Teilnehmendenzahl erreicht werden. Entsprechend ist der Wohnort von ca. 90% der Teilnehmenden Berlin. In der Umfrage waren zudem Männer, die Altersgruppe 30 bis 64 Jahre und hauptsächlich Radfahrende überrepräsentiert. Durch die hohe Gesamtzahl an Teilnehmenden sind jedoch eine ausreichende Anzahl von Bewertungen für die unterrepräsentierten Gruppen vorhanden.
+In einer ersten Auswertung zeigt die Umfrage, dass die Einflüsse unterschiedlicher Faktoren in ihren Wechselbeziehungen keine linearen Aussagen über die subjektive Sicherheit von Radinfrastruktur zulassen. Dennoch können einige zentrale Aussagen und Empfehlungen abgeleitet werden, wie eine “Radinfrastruktur für Alle” aussehen könnte.
 <List>
-        <List.Item>Auf Hauptstraßen aber auch auf Nebenstraßen wird die Führung im Mischverkehr als sehr unsicher empfunden.</List.Item>
-        <List.Item>Für einen subjektiv sicheren Radverkehr sollte die Führung an Hauptstraßen der Regelfall sein, das Berliner Mobilitätsgesetz geht hier den richtigen Weg.</List.Item>
-        <List.Item>
-          Die Führung in Nebenstraßen, kann bei weitgehender Autofreiheit und deutlicher Markierung eine Alternative / Ergänzung sein. Das reine Markieren von Fahrradstraßen ohne Einschränkungen des KFZ-Verkehrs erhöht nur in geringem Maß die subjektive Sicherheit und wird auch von Autofahrenden als unsicher empfunden.
-        </List.Item>
-        <List.Item>Wenn es ausreichend breite Gehwege und keine geschäftliche Nutzung gibt ist die Führung im Seitenraum die beste Alternative, da hier wesentlich geringeres Konfliktpotential vorhanden ist. Auch zu Fuß Gehende fühlen sich bei einer Führung im Seitenraum ausreichend sicher, wenn es kein Hohes Fußverkerhersaufkommen gibt, Sie ausreichend Platz zur Verfügung haben und eine Trennung zum Radverkehr z.B. durch einen Grünstreifen klar erkennbar ist.
- </List.Item>
-        <List.Item>Soll der Radverkehr auf der Fahrbahn geführt werden, so ist eine ausreichende Breite vorzusehen. Bei 3,5 Meter Breite (inkl. Markierungen) kann in fast allen Situationen eine hohe subjektive Sicherheit erreicht werden. Je nach Situation sind Grüneinfärbungen und bauliche Trennungen zusätzlich sinnvoll.
- </List.Item>
-        <List.Item>Auch schmalere RVA können eine noch akzeptable subjektive Sicherheit bieten, wenn Sie z.B. durch niedrige Poller vom KFZ-Verkehr getrennt sind und an HVS ohne ruhenden Verkehr geführt werden.
-</List.Item>
-        <List.Item>Bei Führung des Radverkehrs zusammen mit ruhendem Verkehr ist die Lage rechts vom ruhenden Verkehr zu empfehlen. Eine Führung links des ruhenden Verkehrs wird generell als deutlich weniger sicher empfunden. Es können hier zwar Varianten gefunden werden, die in der Umfrage einen akzeptablen Wert erreichten, dabei sollte aber beachtet werden, dass zusätzliche Konflikte, wie Falschparker oder kreuzender Parkverkehr in der Umfrage nicht dargestellt wurden.
- </List.Item>
-        <List.Item>Auch Autofahrende empfinden gut ausgebaute RVA inklusive Poller als sicherer. Die Bewertungen sind von den Tendenzen ähnlich, wie die der Radfahrenden, wenn auch einige Gefahren, bzw. durch Dooring weniger stark eingeschätzt werden.
-</List.Item>
+  <List.Item>Die Hypothese, dass die Führung im Seitenraum sicherer als die Führung auf der Fahrbahn empfunden wird, konnte bestätigt werden.</List.Item>
+  <List.Item>Bei breiten Gehwegen und keiner geschäftliche Nutzung ist die Führung im Seitenraum die am besten bewertete Alternative. Auch zu Fuß Gehende fühlen sich bei einer Führung des Radverkehrs im Seitenraum ausreichend sicher, wenn zusätzlich  eine Trennung zum Radverkehr z.B. durch einen Grünstreifen klar erkennbar ist.
+  </List.Item>
+  <List.Item>
+          Die Führung im Mischverkehr wird als sehr unsicher empfunden
+  </List.Item>
+  <List.Item>Bei der Führung auf der Fahrbahn werden breite Radverkehrsanlagen als deutlich sicherer empfunden.  Grüneinfärbungen und bauliche Trennungen erhöhen zusätzlich das Sicherheitsempfinden.
+  </List.Item>
+  <List.Item>Auch schmalere Radverkehrsanlagen bieten eine akzeptable subjektive Sicherheit, wenn Sie z.B. durch niedrige Poller vom KFZ-Verkehr getrennt sind und an Straßen ohne ruhenden Verkehr geführt werden.
+  </List.Item>
+  <List.Item>Bei Führung des Radverkehrs an einer Hauptverkehrsstraße mit ruhendem Verkehr wird die Lage rechts vom ruhenden Verkehr als sicherer empfunden. Eine Führung links des ruhenden Verkehrs wird generell als deutlich weniger sicher empfunden. Bei einer Führung links des ruhenden Verkehrs wurden Szenen die  z.B. eine breite Radverkehrsanlage mit Grüneinfärbung haben als akzeptable sicher bewertet. Dabei ist zu beachten, dass zusätzliche Konflikte, wie Falschparker oder kreuzender Parkverkehr in der Umfrage nicht dargestellt wurden. Ebenso wurden Situationen an Knotenpunkten in der Umfrage nicht untersucht, eine Aussage zum Zusammenhang zwischen RVA an der Strecke und den Auswirkungen auf Knotenpunkte kann daher nicht getroffen werden.
+  </List.Item>
+  <List.Item>Auch Autofahrende empfinden gut ausgebaute Radverkehrsanlagen inklusive Poller als sicherer. Die Bewertungen sind von den Tendenzen ähnlich, wie die der Radfahrenden, wenn auch einige Gefahren, bzw. durch Dooring weniger stark eingeschätzt werden.
+  </List.Item>
+  <List.Item>Szenen in Nebenstraßen erhielten generell schlechtere Bewertungen als solche an Hauptverkehrsstraßen. Dieser Vergleich ist allerdings nur bedingt aussagekräftig, da in den statischen Bildern der Umfrage die Verkehrsmenge nicht ausreichend deutlich dargestellt werden konnte. Szenen, bei denen kein Fließender Kfz-Verkehr dargestellt wurde und eine deutliche Straßenmarkierung als Fahrradstraße  vorhanden war erhielten die besten Bewertungen. 
+  </List.Item>
       </List>
     </Paragraph>
+    <Paragraph>
+    Die Daten sind weiter zu analysieren. Der Ergebnisdatensatz ist frei verfügbar ist und wird bereits jetzt für weitere Auswertungen genutzt. Wir freuen uns bei Interesse über eine Kontaktaufnahme und verlinken hier gerne auf die Ergebnisse!
+In den nächsten Schritten ist ein Abgleich der Ergebnisse zur subjektiven Sicherheit mit dem tatsächlichen Unfallgeschehen durchzuführen, um Empfehlungen abzuleiten.
+      </Paragraph>
   </>
 );
 
