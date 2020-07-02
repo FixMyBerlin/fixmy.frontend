@@ -6,7 +6,7 @@ import BarChart from '../components/BarChart';
 import FeelSafe from '../components/FeelSafe';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import image1 from '../images/image-1.jpg';
+import image1 from '../images/image1_@x2.jpg';
 import CP_C_1093 from '../images/01_CP_C_1093_@x2.jpg';
 import CP_C_1100 from '../images/01_CP_C_1100_@x2.jpg';
 import CP_C_194 from '../images/01_CP_C_194_@x2.jpg';
@@ -66,19 +66,114 @@ const SectionResults = ({ toc }) => (
     </Heading>
 
     <Paragraph>
-      Mit den generierten Daten ist die Überprüfung von verschiedensten
-      Hypothesen möglich. Ein besonderes Interesse der Forschung liegt
-      beispielsweise auf der Nutzergruppe der potentiell Radfahrenden. Ab
-      welcher Verkehrsinfrastruktur fühlt sich diese Nutzergruppe im Straßenraum
-      sicher? Ist die Verkehrsstärke auch bei einer Trennung zwischen Rad- und
-      Kfz-Verkehr eine ausschlaggebende Einflussgröße? Welche
-      Verkehrsinfrastruktur empfinden die meisten Befragten als sicher? Welche
-      Poller werden als am sichersten empfunden?
+      Mit den generierten Daten ist die Überprüfung von verschiedensten Hypothesen möglich. Ein besonderes Interesse der Forschung liegt beispielsweise auf der Nutzergruppe der potentiell Radfahrenden. Ab welcher Verkehrsinfrastruktur fühlt sich diese Nutzergruppe im Straßenraum sicher? Ist die Verkehrsstärke auch bei einer Trennung zwischen Rad- und Kfz-Verkehr eine ausschlaggebende Einflussgröße? Welche Verkehrsinfrastruktur empfinden die meisten Befragten als sicher? Ist die Breite oder die physische Trennung der RVA ausschlaggebend? Welche Führungsformen sind jeweils im Seitenraum, auf der Fahrbahn oder in Nebenverkehrsstraßen am geeignetsten? Einige dieser Hypothesen werden in der folgenden Auswertung überprüft.
     </Paragraph>
     <Paragraph>
-      Mittels den zur Verfügung gestellten Daten können interessierte Personen
-      diese, sowie ihre eigenen Hypothesen, überprüfen. Mehr dazu im folgenden
-      Abschnitt.
+      Mittels den zur Verfügung gestellten Daten können interessierte Personen die Auswertung nachvollziehen und weitere Hypothesen überprüfen. Zunächst ein Überblick zu den Teilnehmenden.
+    </Paragraph>
+    <Paragraph>
+    Für unsere eigene Auswertung nutzen wir {' '}
+      <Link href="https://github.com/FixMyBerlin/fixmy.survey-results">Jupyter Notebook</Link>.
+    </Paragraph>
+    
+    <Heading as="h3">Auswertung der Teilnehmenden</Heading>
+    <Paragraph>
+    Zur Einordnung der Bewertungen ein kleiner Überblick, wer alles mitgemacht hat.
+Insgesamt hatte die Umfrage 21.401 Teilnehmende, davon 19.109 aus Berlin
+       <List>
+        <List.Item>Friedrichshain-Kreuzberg 14 %</List.Item>
+        <List.Item>Mitte 12 %</List.Item>
+        <List.Item>Pankow 12 %</List.Item>
+        <List.Item>Tempelhof-Schöneberg 10 %</List.Item>
+        <List.Item>Charlottenburg-Wilmersdorf 9 %</List.Item>
+        <List.Item>Steglitz-Zehlendorf 7 %</List.Item>
+        <List.Item>Neukölln 7%</List.Item>
+        <List.Item>Treptow-Köpenick 4 %</List.Item>
+        <List.Item>Lichtenberg 4 %</List.Item>
+        <List.Item>Reinickendorf 4 %</List.Item>
+        <List.Item>Spandau 3 %</List.Item>
+        <List.Item>Marzahn-Hellersdorf 1 %</List.Item>
+        <List.Item>andere Orte 11 %</List.Item>
+       </List>
+    </Paragraph>
+    <Paragraph>
+      Es haben nahezu doppelt so viele männliche Teilnehmer, die Umfrage beantwortet wie weibliche.
+      <List>
+        <List.Item>männlich 64 %</List.Item>
+        <List.Item>weiblich 34 %</List.Item>
+        <List.Item>divers 2 %</List.Item>
+       </List>
+      Zum Vergleich: laut Amt für Statistik Berlin Brandenburg leben in Berlin 49 % Männer und 51 % Frauen (Stand 2018)
+    </Paragraph>
+    <Paragraph>
+      Die Altersverteilung sieht wie folgt aus:
+      <List>
+        <List.Item>AG0 - unter 18 Jahre 1%</List.Item>
+        <List.Item>AG1 - 18 bis 24 Jahre 5%</List.Item>
+        <List.Item>AG2 - 25 bis 29 Jahre 8%</List.Item>
+        <List.Item>AG3 - 30 bis 39 Jahre 27%</List.Item>
+        <List.Item>AG4 - 40 bis 49 Jahre 22%</List.Item>
+        <List.Item>AG5 - 50 bis 64 Jahre 28%</List.Item>
+        <List.Item>AG6/7 - über 65 Jahre 10%</List.Item>
+       </List>
+      Im Vergleich: laut Amt für Statistik Berlin Brandenburg sieht die Altersverteilung in Berlin (Stand 2018) so aus:
+      <List>
+        <List.Item>unter 18 Jahre 16%</List.Item>
+        <List.Item>18 bis 24 Jahre 7%</List.Item>
+        <List.Item>25 bis 29 Jahre 8%</List.Item>
+        <List.Item>30 bis 39 Jahre 17%</List.Item>
+        <List.Item>40 bis 49 Jahre 13%</List.Item>
+        <List.Item>50 bis 64 Jahre 20%</List.Item>
+        <List.Item>über 65 Jahre 19%</List.Item>
+       </List>
+    </Paragraph>
+    <Paragraph>
+      Zusätzlich wurden die Teilnehmenden gefragt wie oft sie zu Fuß, mit Bus und Bahn, dem Auto, dem Fahrrad und dem Motorrad unterwegs sind. Im Vergleich mit den Werten für Berlin aus der SrV 2018 ( Gerike et. al,  Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020) gibt es einige Abweichungen.Die Werte für die Nutzung des öffentlichen Verkehrs (Bus und Bahn) mindestens 1x in der Woche in der Umfrage (64%)  stimmen annähernd mit den Werten der SrV 2018 (62%) überein. Hingegen sind in dieser Umfrage die Nutzung des Pkws (35%) im Vergleich zur SrV 2018 (56%) unterrepräsentiert und die Nutzung des Fahrrads (64%) in der Umfrage (47% SrV) überrepräsentiert.
+    </Paragraph>
+    <Paragraph>
+    Weiter wurden in der Umfrage die Verfügbarkeit von Verkehrsmitteln, Motivationsfaktoren zum Radfahren bzw. Gründe nicht Rad zu fahren abgefragt. Die Daten sind im Datensatz enthalten.
+    </Paragraph>
+    <Paragraph>
+      In der Zusammenfassung bildet die Umfrage keine repräsentative Gesamtheit der Berliner Bevölkerung ab. Radfahrende, Männer und die Altergruppe zwischen 30 und 64 Jahren ist deutlich überrepräsentiert. Aufgrund der hohen Anzahl an Teilnehmenden können jedoch auch Auswertungen für spezifische Untergruppen gemacht werden (z.B. Frauen über 74 Jahre: 143 Teilnehmerinnen).
+Bei der durchschnittlichen Bewertung der unterschiedlichen Szenen zeichnet sich für die Nutzermerkmale Geschlecht, Alter und Nutzungshäufigkeit folgendes Bild:
+Geschlecht
+    </Paragraph>
+   
+    <BarChart.Wrapper
+      title="Bewertungen nach Geschlecht"
+      source="Anm: Durchschnitt aller Bewertungen nach Angaben zum Geschlecht der Teilnehmenden"
+    >
+      <BarChart title="männlich" data={[8.185250, 21.410971, 34.955650, 35.448129]} feelsafe={70.40} />
+      <BarChart title="weiblich" data={[7.824049, 20.332307, 34.931507, 36.912137]} feelsafe={71.84}/>
+      <BarChart title="divers" data={[9.831594, 21.240512, 33.906546, 35.021347]} feelsafe={68.93}
+      />
+      </BarChart.Wrapper>
+    <BarChart.Wrapper
+      title="Bewertungen nach Alter"
+      source="Anm: Durchschnitt aller Bewertungen nach Angaben zum Alter der Teilnehmenden"
+    >
+      <BarChart title="AG0 - unter 18 Jahre" data={[8.922697, 19.490132, 29.481908, 42.105263]} feelsafe={71} />
+      <BarChart title="AG1 - 18 bis 24 Jahre" data={[9.367420, 20.752886, 31.124479, 38.755215]} feelsafe={70} />
+      <BarChart title="AG2 - 25 bis 29 Jahre" data={[9.452893, 20.825782, 32.878943, 36.842382]} feelsafe={70} />
+      <BarChart title="AG3 - 30 bis 39 Jahre" data={[9.149358, 21.724335, 34.507092, 34.619215]} feelsafe={69} />
+      <BarChart title="AG4 - 40 bis 49 Jahre" data={[8.353393, 21.826761, 35.510278, 34.309567]} feelsafe={70} />
+      <BarChart title="AG5 - 50 bis 64 Jahre" data={[6.902527, 20.468174, 36.023561, 36.605738]} feelsafe={73} />
+      <BarChart title="AG6 -  65 bis 74 Jahre" data={[6.061991, 19.217255, 35.969147, 38.751607]} feelsafe={75} />
+      <BarChart title="AG7 - über 74 Jahre" data={[6.204244, 19.344832, 32.696364, 41.754560]} feelsafe={75} />
+      </BarChart.Wrapper>
+    <BarChart.Wrapper
+      title="Bewertungen nach Nutzungshäufigkeit Fahrrad"
+      source="Anm: Durchschnitt aller Bewertungen nach Angaben zur Nutzungshäufigkeit des Fahrrad unter den Teilnehmenden"
+    >
+      <BarChart title="(fast) täglich" data={[8.219178, 21.413216, 34.713547, 35.654059]} feelsafe={71} />
+      <BarChart title="4-5 mal pro Woche" data={[7.542612, 21.504180, 35.653024, 35.300185]} feelsafe={71} />
+      <BarChart title="1-3 mal pro Woche" data={[7.195407, 21.030776, 35.828827, 35.944990]} feelsafe={72} />
+      <BarChart title="1-3 mal pro Monat" data={[7.983095, 19.878098, 34.502092, 37.636715]} feelsafe={72} />
+      <BarChart title="seltener als monatlich" data={[8.619391, 20.588077, 34.345744, 36.446788]} feelsafe={70} />
+      <BarChart title="nie" data={[9.122029, 20.652014, 34.344607, 35.881350]} feelsafe={70} />
+    </BarChart.Wrapper>
+     <Paragraph>
+    Bei der Auswertung nach den unterschiedlichen Merkmalen unterscheiden sich die Ergebnisse zwischen den den einzelnen Nutzergruppen nur gering. Entsprechend wurde für die weitere Auswertung auf eine weitere Differenzierung verzichtet.
     </Paragraph>
     
     <Heading as="h3">Führung auf der Fahrbahn</Heading>
@@ -90,6 +185,15 @@ const SectionResults = ({ toc }) => (
       Eine Führung des Radverkehrs im Mischverkehr wird als deutlich unsicherer empfunden als eine Führung auf jeder Art von RVA. Werden die Faktoren Tempolimit, Verkehrsstärke und rechtsseitiges Parken variiert ändert sich das Sicherheitsempfinden. Aber auch in der bestbewerteten Situation ist kein ausreichendes Sicherheitsempfinden (Wir gehen hier davon aus, dass eine Bewertung “eher sicher” oder “sicher” von über 80% der Teilnehmenden ein anzustrebender Wert für eine subjektiv sichere Infrastruktur ist)   zu erzielen. Im Vergleich der Nutzermerkmale gibt es den größten Unterschied zwischen Männern und Frauen, aber insgesamt große Übereinstimmungen. Alle Typen von Radfahrenden (Viel-, oder Wenig-Radfahrende, weibliche oder männliche, ältere und jüngere, etc.) fühlen sich im Mischverkehr unsicher.
     </Paragraph>
 
+    <Heading as="h3">Führung auf der Fahrbahn</Heading>
+    <Paragraph>
+      Wir betrachten zunächst die Führung an Hauptverkehrsstraßen. Nebenverkehrsstraßen werden in einem späteren Kapitel betrachtet.
+    </Paragraph>
+    <Heading as="h3">Führung im Mischverkehr ist unsicher</Heading>
+    <Paragraph>
+      Eine Führung des Radverkehrs im Mischverkehr wird als deutlich unsicherer empfunden als eine Führung auf jeder Art von RVA. Werden die Faktoren Tempolimit, Verkehrsstärke und rechtsseitiges Parken variiert ändert sich das Sicherheitsempfinden. Aber auch in der bestbewerteten Situation ist kein ausreichendes Sicherheitsempfinden (Wir gehen hier davon aus, dass eine Bewertung “eher sicher” oder “sicher” von über 80% der Teilnehmenden ein anzustrebender Wert für eine subjektiv sichere Infrastruktur ist) zu erzielen. 
+    </Paragraph>
+    
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_2}>
         <FeelSafe value={28} />
@@ -109,7 +213,7 @@ const SectionResults = ({ toc }) => (
 
     <BarChart.Wrapper
       title="Führung auf der Fahrbahn (HVS-F) mit und ohne Radverkehrsanlage (RVA)"
-      source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen."
+      source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS-F aus Fahrradperspektive. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen."
     >
       <BarChart title="mit RVA" data={[3, 18, 49, 30]} feelsafe={75.52} />
       <BarChart title="ohne RVA" data={[52, 33, 12, 3]} feelsafe={14} />
@@ -118,6 +222,7 @@ const SectionResults = ({ toc }) => (
         data={[51, 35, 12, 2]}
         feelsafe={15}
       />
+      {/*
       <BarChart
         title="ohne RVA (Seltenfahrer)"
         data={[58, 29, 10, 4]}
@@ -148,14 +253,15 @@ const SectionResults = ({ toc }) => (
         data={[42, 42, 12, 4]}
         feelsafe={15.10}
       />
+       */}
     </BarChart.Wrapper>
-
+    {/*
     <Paragraph>
       Weitere Auswertungen nach Nutzermerkmalen finden Sie hier:{' '}
       <Link href="https://fixmyberlin.de">Jupyter Notebook</Link>
     </Paragraph>
-
-    <Heading as="h3">Ruhender Verkehr erzeugt zusätzliche Konfliktzone</Heading>
+ */}
+    <Heading as="h3">Ruhender Verkehr erzeugt zusätzliche Konflikte</Heading>
     <Paragraph>
       Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das
       Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an
@@ -189,7 +295,7 @@ const SectionResults = ({ toc }) => (
 
     <BarChart.Wrapper
       title="HVS-F: RVA mit und ohne rechtsseitiges Parken"
-      source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens"
+      source="Anm.: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens"
     >
       <BarChart
         title="mit Parken rechts"
@@ -382,42 +488,42 @@ const SectionResults = ({ toc }) => (
       source="Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens, sowie Situationen mit baulicher Trennung."
     >
       <BarChart
-        title="ohne Parken breit asphalt"
+        title="ohne Parken, breit asphalt"
         data={[2, 10, 37, 51]}
         feelsafe={87.55}
       />
       <BarChart
-        title="ohne Parken breit grün"
+        title="ohne Parken, breit grün"
         data={[2, 5, 31, 62]}
         feelsafe={93.5}
       />
       <BarChart
-        title="ohne Parken schmal asphalt"
+        title="ohne Parken, schmal asphalt"
         data={[4, 19, 41, 36]}
         feelsafe={76.2}
       />
       <BarChart
-        title="ohne Parken schmal grün"
+        title="ohne Parken, schmal grün"
         data={[2, 14, 43, 41]}
         feelsafe={83.07}
       />
       <BarChart
-        title="Parken-rechts breit asphalt"
+        title="mit Parken, breit asphalt"
         data={[5, 23, 49, 22]}
         feelsafe={70.17}
       />
       <BarChart
-        title="Parken-rechts breit grün"
+        title="mit Parken, breit grün"
         data={[3, 16, 47, 34]}
         feelsafe={80.42}
       />
       <BarChart
-        title="Parken-rechts schmal asphalt"
+        title="mit Parken, schmal asphalt"
         data={[23, 42, 28, 7]}
         feelsafe={34.19}
       />
       <BarChart
-        title="Parken-rechts schmal grün"
+        title="mit Parken, schmal grün"
         data={[13, 36, 37, 13]}
         feelsafe={49.82}
       />
@@ -451,7 +557,7 @@ const SectionResults = ({ toc }) => (
     </BarChart.Wrapper>
 
     <Heading as="h3">
-      Poller stärken Sicherheitsempfinden, Blumenkästen auch
+      Poller (Sperrpfosten) stärken Sicherheitsempfinden, Blumenkästen auch
     </Heading>
 
     <Paragraph>
@@ -475,7 +581,6 @@ const SectionResults = ({ toc }) => (
       </ImageMulti.Inner>
     </ImageMulti>
 
-    {/* TODO: Add missing data */}
     <BarChart.Wrapper
       title="HVS-F: RVA mit und ohne bauliche Trennung"
       source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA, - ohne rechtsseitiges Parken, Tram, Busspur, oder RVA rechts des Parkens."
@@ -548,12 +653,12 @@ const SectionResults = ({ toc }) => (
       />
       <BarChart
         title="RVA breit, rechts des Parken (exkl. baul. Trennungen)"
-        data={[0, 0, 0, 0]}
+        data={[1.431025, 3.978248, 21.665713, 72.925014]}
         feelsafe={91.69}
       />
       <BarChart
         title="RVA breit, rechts des Parken (inkl. baul. Trennungen)"
-        data={[0, 0, 0, 0]}
+        data={[1.060071, 7.022968, 34.584806, 57.332155]}
         feelsafe={94.22}
       />
     </BarChart.Wrapper>
@@ -579,7 +684,7 @@ const SectionResults = ({ toc }) => (
     >
       <BarChart
         title="Radperspektive: ohne RVA"
-        data={[52, 33, 12, 0]}
+        data={[52, 33, 12, 3]}
         feelsafe={14.24}
       />
       <BarChart
@@ -710,7 +815,6 @@ const SectionResults = ({ toc }) => (
       ruhenden Verkehrs.
     </Paragraph>
 
-    {/* TODO: Missing data */}
     <BarChart.Wrapper title="HVS mit RVA: Führungen im Seitenraum (HVS-S) und auf der Fahrbahn (HVS-F)">
       <BarChart
         title="Fahrbahn, RVA ohne Parken schmal"
@@ -794,7 +898,7 @@ const SectionResults = ({ toc }) => (
       </ImageMulti.Inner>
     </ImageMulti>
 
-    <Heading as="h3">Breite der RVA ausschlaggebend</Heading>
+    <Heading as="h3">Breite der RVA auch im Seitenraum ausschlaggebend</Heading>
 
     <Paragraph>
       Innerhalb der Varianten im Seitenraum spielt die RVA-Breite aus Sicht der
@@ -807,7 +911,7 @@ const SectionResults = ({ toc }) => (
 
     <BarChart.Wrapper
       title="RVA im Seitenraum: Gewicht der Einflussfaktoren im Mittel"
-      source="Anm: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen."
+      source="Anm: Unterschied der Mittelwerte der Bewertungen im Vergleich zweier Merkmalsausprägungen Es werden nur die für das Merkmal relevanten Situationen verglichen."
     >
       <BarChart title="Gesamtbreite RVA (breit - schmal)" data={[24.09]} />
       <BarChart title="Gesamtbreite Gehweg (breit - schmal)" data={[1.33]} />
@@ -817,10 +921,10 @@ const SectionResults = ({ toc }) => (
         data={[11.41]} />
       <BarChart
         title="Trennung rechts (Grünstreifen - keine Trennung)"
-        data={[0.0]} />
+        data={[6.23]} />
       <BarChart
         title="Faktor Verkehrsart links (Links RVA Fahrstreifen vs. Parken)"
-        data={[0.0]} />
+        data={[1.1]} />
     </BarChart.Wrapper>
 
     <Heading as="h3">Schmale RVA sind sicher – breite sehr sicher</Heading>
@@ -947,7 +1051,7 @@ const SectionResults = ({ toc }) => (
       source="Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Die Fußperspektive wurde nur bei schmaler Gehweg-Gesamtbreite abgefragt."
     >
       <BarChart title="Breite RVA schmal vs. breit" data={[5.76]} />
-      <BarChart title="Trennung rechts (grün - keine)" data={[35.72]} />
+      <BarChart title="Trennung rechts (grün - keine)" data={[32.13]} />
       <BarChart title="Auslage (ja - nein)" data={[25.39]} />
     </BarChart.Wrapper>
 
@@ -1064,29 +1168,12 @@ const SectionResults = ({ toc }) => (
     <Heading as="h3">Führung in Nebenverkehrsstraßen</Heading>
 
     <Paragraph>
-      Der Vergleich einer Radverkehrsführung in Nebenverkehrsstraßen gegenüber
-      der Führung an Hauptverkehrsstraßen ist über die Umfrageergebnisse
-      schwierig zu ziehen. Das liegt daran, dass in Nebenverkehrsstraßen die
-      Situation an Knotenpunkten und das Verkehrsaufkommen eine andere Rolle
-      spielen und dies in der Umfrage nicht oder nur bedingt abgebildet werden
-      konnte. Dennoch lassen die Ergebnisse einige generelle Aussagen zu. So ist
-      das subjektive Sicherheitsempfinden bei allen Führungen im Mischverkehr in
-      Nebenstraßen deutlich niedriger gegenüber gut gestalteten RVA an
-      Hauptverkehrsstraßen.{' '}
+      Der Vergleich einer Radverkehrsführung in Nebenverkehrsstraßen gegenüber der Führung an Hauptverkehrsstraßen ist nur bedingt aussagekräftig, da in der Umfrage nur statische Bilder gezeigt wurden, die den potenziellen Konflikt zwischen Kfz und Fahrrad zeigen. Das unterschiedliche Verkehrsaufkommen zwischen Haupt- und Nebenstraße konnte nur andeutungsweise abgebildet werden. Dennoch lassen die Ergebnisse Aussagen zum subjektiven Sicherheitsempfinden bei unterschiedlichen Gestaltungsformen von Nebenstraßen zu. 
     </Paragraph>
-
     <Heading as="h3">Nebenstraßen am liebsten “autofrei”</Heading>
 
     <Paragraph>
-      Bei der Führung in NVS wurden in der Umfrage fünf Faktoren untersucht: Die
-      Gesamtstraßenbreite, das Vorhandensein ruhenden Verkehrs, die
-      Markierungsform, die Führung ohne oder mit fließendem Verkehr und die
-      Kfz-Führungsrichtung (Einbahnstraße, Einbahnstraße gegenläufig,
-      beidseitig). Auffällig ist, dass der Faktor “autofrei” (fließender Verkehr
-      ja - nein) die größte Rolle spielt. Außerdem haben Einbahnstraßen mit
-      Gegenverkehr eine sehr negative Wirkung auf das Sicherheitsempfinden.
-      Breitere Straßen werden als sicherer empfunden, ruhender Verkehr
-      verschlechtert das Sicherheitsempfinden.
+     Auffällig ist, dass der Faktor “autofrei” (fließender Verkehr ja - nein) bei der Bewertung von Nebenstraßen die größte Rolle spielt. Außerdem haben Einbahnstraßen mit Gegenverkehr eine sehr negative Wirkung auf das Sicherheitsempfinden. Breitere Straßen werden als sicherer empfunden, ruhender Verkehr verschlechtert das Sicherheitsempfinden.
     </Paragraph>
 
     <BarChart.Wrapper
@@ -1103,7 +1190,7 @@ const SectionResults = ({ toc }) => (
       />
       <BarChart
         title="Einbahnstraße in Fahrtrichtung (einbahn vs. beidseitig)"
-        data={[27.02]}
+        data={[1.13]}
       />
       <BarChart title="“autofrei” (ja/nein)" data={[76.66]} />
     </BarChart.Wrapper>
@@ -1178,16 +1265,7 @@ const SectionResults = ({ toc }) => (
     </BarChart.Wrapper>
 
     <Paragraph>
-      Auffällig ist, dass Fahrradstraßen mit Sondermarkierungen der Dooringzone
-      schlechter abschneiden als solche mit einer großen
-      Fahrradstraßen-Markierung auf der Fahrbahn. Dies könnte darauf hindeuten,
-      dass durch die Markierung der Gefahrenbereich überhaupt erst wahrgenommen
-      wird oder dass diese Markierungsart bisher noch unbekannt ist und
-      möglicherweise nicht richtig verstanden wird. Hier muss außerdem
-      einschränkend gesagt werden, dass der Vergleich an dieser Stelle auch nur
-      bedingt aussagekräftig ist, da die Schilder für die Fahrradstraße nicht
-      dargestellt werden und einer der Radfahrenden im Bereich der Dooringzone
-      dargestellt wurde.
+      Auffällig ist, dass Fahrradstraßen mit Sondermarkierungen (der Dooring Zone) schlechter abschneiden als solche mit einer großen Fahrradstraßen-Markierung auf der Fahrbahn. Dieser Vergleich ist durch die Darstellung in der Umfrage allerdings wenig aussagekräftig, da durch die Komposition der Bilder mehrere Faktoren (Kennzeichnung als Fahrradstraße, Optische Breite der zur Verfügung stehenden Fahrbahn, Position der Radfahrenden) die Bewertung beeinflussen können. 
     </Paragraph>
 
     <ImageMulti>
@@ -1267,7 +1345,7 @@ const SectionResults = ({ toc }) => (
     </BarChart.Wrapper>
     
     <Heading as="h2" toc={toc}>
-      Fazit / Empfehlungen
+      Zusammenfassung
     </Heading>
     <Paragraph>
       

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Paragraph, Heading, Quote, Image, List } from '~/components2/Article';
 
-import image1 from '../images/image-1.jpg';
+import image1 from '../images/image1_@x2.jpg';
 
 const SectionAbout = ({ toc }) => (
   <>
@@ -198,7 +198,24 @@ const SectionAbout = ({ toc }) => (
       Fußperspektive) erstellt. Ein genauere Dokumentation zur Systematik der
       Straßenszenarien ist hier zu finden.
     </Paragraph>
-  </>
+    <Paragraph>
+      Ein genauere Dokumentation zur Systematik der Straßenszenarien ist <a
+        href="/uploads/kataster-ki/Umfragekonzept_KatasterKI_Feb2020.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        hier [.pdf Download]
+      </a> zu finden.
+    </Paragraph>
+    <Paragraph>
+      Ein Übersicht der Szenen und ihrer Merkmale sind in <a
+        href="/uploads/kataster-ki/Szenarienuebersicht_fuer_Abgabe_KatasterKi_Feb20.ods"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+      dieser Tabelle [.ods Download]</a> zu finden
+    </Paragraph>
+    </>
 );
 
 export default SectionAbout;
