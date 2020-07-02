@@ -72,8 +72,9 @@ const SectionResults = ({ toc }) => (
       Mittels den zur Verfügung gestellten Daten können interessierte Personen die Auswertung nachvollziehen und weitere Hypothesen überprüfen. Zunächst ein Überblick zu den Teilnehmenden.
     </Paragraph>
     <Paragraph>
-    Für unsere eigene Auswertung nutzen wir {' '}
-      <Link href="https://github.com/FixMyBerlin/fixmy.survey-results">Jupyter Notebook</Link>.
+    Für unsere eigene Auswertung nutzen wir Python, welche in {' '}
+      <Link href="https://github.com/FixMyBerlin/fixmy.survey-results">Jupyter Notebooks</Link>.
+      betrachtet werden kann. Dort sind Visualisierungen der Likert Skala Daten als auch Hypothesentests mit Bootstrap Konfidenzintervallen und Likelihood Ratio Tests mit Proportional Odds Regressions Modellen zu finden.
     </Paragraph>
     
     <Heading as="h3">Auswertung der Teilnehmenden</Heading>
@@ -128,7 +129,8 @@ Insgesamt hatte die Umfrage 21.401 Teilnehmende, davon 19.109 aus Berlin
        </List>
     </Paragraph>
     <Paragraph>
-      Zusätzlich wurden die Teilnehmenden gefragt wie oft sie zu Fuß, mit Bus und Bahn, dem Auto, dem Fahrrad und dem Motorrad unterwegs sind. Im Vergleich mit den Werten für Berlin aus der SrV 2018 ( Gerike et. al,  Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020) gibt es einige Abweichungen.Die Werte für die Nutzung des öffentlichen Verkehrs (Bus und Bahn) mindestens 1x in der Woche in der Umfrage (64%)  stimmen annähernd mit den Werten der SrV 2018 (62%) überein. Hingegen sind in dieser Umfrage die Nutzung des Pkws (35%) im Vergleich zur SrV 2018 (56%) unterrepräsentiert und die Nutzung des Fahrrads (64%) in der Umfrage (47% SrV) überrepräsentiert.
+      Zusätzlich wurden die Teilnehmenden gefragt wie oft sie zu Fuß, mit Bus und Bahn, dem Auto, dem Fahrrad und dem Motorrad unterwegs sind. Im Vergleich mit den Werten für Berlin aus der SrV 2018 gibt es einige Abweichungen. Die Werte für die Nutzung des öffentlichen Verkehrs (Bus und Bahn) mindestens 1x in der Woche in der Umfrage (64%)  stimmen annähernd mit den Werten der SrV 2018 (62%) überein. Hingegen sind in dieser Umfrage die Nutzung des Pkws (35%) im Vergleich zur SrV 2018 (56%) unterrepräsentiert und die Nutzung des Fahrrads (64%) in der Umfrage (47% SrV) überrepräsentiert. ( {' '}
+      <Link href="https://tu-dresden.de/bu/verkehr/ivs/srv/ressourcen/dateien/SrV2018_Staedtevergleich.pdf?lang=de">Gerike et. al,  Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020</Link>. S.127ff)  
     </Paragraph>
     <Paragraph>
     Weiter wurden in der Umfrage die Verfügbarkeit von Verkehrsmitteln, Motivationsfaktoren zum Radfahren bzw. Gründe nicht Rad zu fahren abgefragt. Die Daten sind im Datensatz enthalten.
