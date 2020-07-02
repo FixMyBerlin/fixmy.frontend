@@ -182,7 +182,7 @@ Geschlecht
 
     <BarChart.Wrapper
       title="Führung auf der Fahrbahn (HVS-F) mit und ohne Radverkehrsanlage (RVA)"
-      source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen."
+      source="Anm: Durchschnitt der Bewertungen aller Situationen auf HVS-F aus Fahrradperspektive. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen."
     >
       <BarChart title="mit RVA" data={[3, 18, 49, 30]} feelsafe={75.52} />
       <BarChart title="ohne RVA" data={[52, 33, 12, 3]} feelsafe={14} />
@@ -264,7 +264,7 @@ Geschlecht
 
     <BarChart.Wrapper
       title="HVS-F: RVA mit und ohne rechtsseitiges Parken"
-      source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens"
+      source="Anm.: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens"
     >
       <BarChart
         title="mit Parken rechts"
@@ -457,42 +457,42 @@ Geschlecht
       source="Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens, sowie Situationen mit baulicher Trennung."
     >
       <BarChart
-        title="ohne Parken breit asphalt"
+        title="ohne Parken, breit asphalt"
         data={[2, 10, 37, 51]}
         feelsafe={87.55}
       />
       <BarChart
-        title="ohne Parken breit grün"
+        title="ohne Parken, breit grün"
         data={[2, 5, 31, 62]}
         feelsafe={93.5}
       />
       <BarChart
-        title="ohne Parken schmal asphalt"
+        title="ohne Parken, schmal asphalt"
         data={[4, 19, 41, 36]}
         feelsafe={76.2}
       />
       <BarChart
-        title="ohne Parken schmal grün"
+        title="ohne Parken, schmal grün"
         data={[2, 14, 43, 41]}
         feelsafe={83.07}
       />
       <BarChart
-        title="Parken-rechts breit asphalt"
+        title="mit Parken, breit asphalt"
         data={[5, 23, 49, 22]}
         feelsafe={70.17}
       />
       <BarChart
-        title="Parken-rechts breit grün"
+        title="mit Parken, breit grün"
         data={[3, 16, 47, 34]}
         feelsafe={80.42}
       />
       <BarChart
-        title="Parken-rechts schmal asphalt"
+        title="mit Parken, schmal asphalt"
         data={[23, 42, 28, 7]}
         feelsafe={34.19}
       />
       <BarChart
-        title="Parken-rechts schmal grün"
+        title="mit Parken, schmal grün"
         data={[13, 36, 37, 13]}
         feelsafe={49.82}
       />
@@ -526,7 +526,7 @@ Geschlecht
     </BarChart.Wrapper>
 
     <Heading as="h3">
-      Poller stärken Sicherheitsempfinden, Blumenkästen auch
+      Poller (Sperrpfosten) stärken Sicherheitsempfinden, Blumenkästen auch
     </Heading>
 
     <Paragraph>
@@ -550,7 +550,6 @@ Geschlecht
       </ImageMulti.Inner>
     </ImageMulti>
 
-    {/* TODO: Add missing data */}
     <BarChart.Wrapper
       title="HVS-F: RVA mit und ohne bauliche Trennung"
       source="Anm: Durchschnitt der Bewertungen aller Situationen mit RVA, - ohne rechtsseitiges Parken, Tram, Busspur, oder RVA rechts des Parkens."
