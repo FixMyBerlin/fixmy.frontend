@@ -548,12 +548,12 @@ const SectionResults = ({ toc }) => (
       />
       <BarChart
         title="RVA breit, rechts des Parken (exkl. baul. Trennungen)"
-        data={[0, 0, 0, 0]}
+        data={[1.431025, 3.978248, 21.665713, 72.925014]}
         feelsafe={91.69}
       />
       <BarChart
         title="RVA breit, rechts des Parken (inkl. baul. Trennungen)"
-        data={[0, 0, 0, 0]}
+        data={[1.060071, 7.022968, 34.584806, 57.332155]}
         feelsafe={94.22}
       />
     </BarChart.Wrapper>
@@ -1063,29 +1063,12 @@ const SectionResults = ({ toc }) => (
     <Heading as="h3">Führung in Nebenverkehrsstraßen</Heading>
 
     <Paragraph>
-      Der Vergleich einer Radverkehrsführung in Nebenverkehrsstraßen gegenüber
-      der Führung an Hauptverkehrsstraßen ist über die Umfrageergebnisse
-      schwierig zu ziehen. Das liegt daran, dass in Nebenverkehrsstraßen die
-      Situation an Knotenpunkten und das Verkehrsaufkommen eine andere Rolle
-      spielen und dies in der Umfrage nicht oder nur bedingt abgebildet werden
-      konnte. Dennoch lassen die Ergebnisse einige generelle Aussagen zu. So ist
-      das subjektive Sicherheitsempfinden bei allen Führungen im Mischverkehr in
-      Nebenstraßen deutlich niedriger gegenüber gut gestalteten RVA an
-      Hauptverkehrsstraßen.{' '}
+      Der Vergleich einer Radverkehrsführung in Nebenverkehrsstraßen gegenüber der Führung an Hauptverkehrsstraßen ist nur bedingt aussagekräftig, da in der Umfrage nur statische Bilder gezeigt wurden, die den potenziellen Konflikt zwischen Kfz und Fahrrad zeigen. Das unterschiedliche Verkehrsaufkommen zwischen Haupt- und Nebenstraße konnte nur andeutungsweise abgebildet werden. Dennoch lassen die Ergebnisse Aussagen zum subjektiven Sicherheitsempfinden bei unterschiedlichen Gestaltungsformen von Nebenstraßen zu. 
     </Paragraph>
-
     <Heading as="h3">Nebenstraßen am liebsten “autofrei”</Heading>
 
     <Paragraph>
-      Bei der Führung in NVS wurden in der Umfrage fünf Faktoren untersucht: Die
-      Gesamtstraßenbreite, das Vorhandensein ruhenden Verkehrs, die
-      Markierungsform, die Führung ohne oder mit fließendem Verkehr und die
-      Kfz-Führungsrichtung (Einbahnstraße, Einbahnstraße gegenläufig,
-      beidseitig). Auffällig ist, dass der Faktor “autofrei” (fließender Verkehr
-      ja - nein) die größte Rolle spielt. Außerdem haben Einbahnstraßen mit
-      Gegenverkehr eine sehr negative Wirkung auf das Sicherheitsempfinden.
-      Breitere Straßen werden als sicherer empfunden, ruhender Verkehr
-      verschlechtert das Sicherheitsempfinden.
+     Auffällig ist, dass der Faktor “autofrei” (fließender Verkehr ja - nein) bei der Bewertung von Nebenstraßen die größte Rolle spielt. Außerdem haben Einbahnstraßen mit Gegenverkehr eine sehr negative Wirkung auf das Sicherheitsempfinden. Breitere Straßen werden als sicherer empfunden, ruhender Verkehr verschlechtert das Sicherheitsempfinden.
     </Paragraph>
 
     <BarChart.Wrapper
@@ -1102,7 +1085,7 @@ const SectionResults = ({ toc }) => (
       />
       <BarChart
         title="Einbahnstraße in Fahrtrichtung (einbahn vs. beidseitig)"
-        data={[27.02]}
+        data={[1.13]}
       />
       <BarChart title="“autofrei” (ja/nein)" data={[76.66]} />
     </BarChart.Wrapper>
@@ -1177,16 +1160,7 @@ const SectionResults = ({ toc }) => (
     </BarChart.Wrapper>
 
     <Paragraph>
-      Auffällig ist, dass Fahrradstraßen mit Sondermarkierungen der Dooringzone
-      schlechter abschneiden als solche mit einer großen
-      Fahrradstraßen-Markierung auf der Fahrbahn. Dies könnte darauf hindeuten,
-      dass durch die Markierung der Gefahrenbereich überhaupt erst wahrgenommen
-      wird oder dass diese Markierungsart bisher noch unbekannt ist und
-      möglicherweise nicht richtig verstanden wird. Hier muss außerdem
-      einschränkend gesagt werden, dass der Vergleich an dieser Stelle auch nur
-      bedingt aussagekräftig ist, da die Schilder für die Fahrradstraße nicht
-      dargestellt werden und einer der Radfahrenden im Bereich der Dooringzone
-      dargestellt wurde.
+      Auffällig ist, dass Fahrradstraßen mit Sondermarkierungen (der Dooring Zone) schlechter abschneiden als solche mit einer großen Fahrradstraßen-Markierung auf der Fahrbahn. Dieser Vergleich ist durch die Darstellung in der Umfrage allerdings wenig aussagekräftig, da durch die Komposition der Bilder mehrere Faktoren (Kennzeichnung als Fahrradstraße, Optische Breite der zur Verfügung stehenden Fahrbahn, Position der Radfahrenden) die Bewertung beeinflussen können. 
     </Paragraph>
 
     <ImageMulti>
@@ -1266,7 +1240,7 @@ const SectionResults = ({ toc }) => (
     </BarChart.Wrapper>
     
     <Heading as="h2" toc={toc}>
-      Fazit / Empfehlungen
+      Zusammenfassung
     </Heading>
     <Paragraph>
       
