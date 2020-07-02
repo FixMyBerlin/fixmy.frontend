@@ -806,7 +806,7 @@ const SectionResults = ({ toc }) => (
 
     <BarChart.Wrapper
       title="RVA im Seitenraum: Gewicht der Einflussfaktoren im Mittel"
-      source="Anm: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen."
+      source="Anm: Unterschied der Mittelwerte der Bewertungen im Vergleich zweier Merkmalsausprägungen Es werden nur die für das Merkmal relevanten Situationen verglichen."
     >
       <BarChart title="Gesamtbreite RVA (breit - schmal)" data={[24.09]} />
       <BarChart title="Gesamtbreite Gehweg (breit - schmal)" data={[1.33]} />
@@ -816,10 +816,10 @@ const SectionResults = ({ toc }) => (
         data={[11.41]} />
       <BarChart
         title="Trennung rechts (Grünstreifen - keine Trennung)"
-        data={[0.0]} />
+        data={[6.23]} />
       <BarChart
         title="Faktor Verkehrsart links (Links RVA Fahrstreifen vs. Parken)"
-        data={[0.0]} />
+        data={[1.1]} />
     </BarChart.Wrapper>
 
     <Heading as="h3">Schmale RVA sind sicher – breite sehr sicher</Heading>
