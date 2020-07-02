@@ -615,7 +615,7 @@ Geschlecht
     <Heading as="h3">Lieber rechts als links vom ruhenden Verkehr</Heading>
 
     <Paragraph>
-      Wird der Radverkehr gemeinsam mit ruhendem Kfz-Verkehr geführt, so wird die Führung rechts des ruhenden Verkehrs als deutlich sicherer empfunden.
+      Wird der Radverkehr gemeinsam mit ruhendem Kfz-Verkehr geführt, so wird die Führung rechts des ruhenden Verkehrs als deutlich sicherer empfunden. Hierbei ist zu beachten, dass die Umfrage die subjektive Sicherheit von Führungsformen entlang der Strecke untersucht hat, eine Aussage über die Auswirkung auf Knotenpunkte kann nicht getroffen werden.
     </Paragraph>
 
     <ImageMulti>
@@ -1227,13 +1227,13 @@ Geschlecht
       <ImageMulti.Inner source={SE_C_2}>
         <FeelSafe value={51.02} />
         <ImageMulti.Subtitle>
-          Die bestbewertete Fahrradstraße mit KFZ-Verkehr als Einbahnstraße
+          Die bestbewertete Fahrradstraße mit KFZ-Verkehr in beide Richtungen
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={SE_C_12}>
         <FeelSafe value={56.72} />
         <ImageMulti.Subtitle>
-          Und hier mit beidseitigem Verkehr
+          Die bestbewertete Fahrradstraße mit KFZ-Verkehr als Einbahnstraße in Fahrtrichtung
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
