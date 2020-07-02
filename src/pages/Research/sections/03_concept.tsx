@@ -13,7 +13,7 @@ const SectionAbout = ({ toc }) => (
     <Paragraph>
       Zur Online-Befragung der Teilnehmenden wurde ein Interface zur Bewertung
       von fotorealistischen Darstellungen von Straßensituationen geschaffen.
-      Anhand einer vierstufigen Skala könnten die Straßenszenen auf das
+      Anhand einer vierstufigen Skala konnten die Straßenszenen auf das
       subjektiven Empfinden von Sicherheit in der Situation bewertet werden.
     </Paragraph>
     <Quote sourceText="Herausforderung">
@@ -130,12 +130,12 @@ const SectionAbout = ({ toc }) => (
     </Paragraph>
     <Paragraph>
       Nach Vervollständigung dieses Teiles der Umfrage wird ein Datensatz für
-      den Teilnehmenden angelegt.
+      den/die Teilnehmenden angelegt.
     </Paragraph>
     <Heading as="h3">Szenenbewertungen</Heading>
     <Paragraph>
-      Basierend auf den Angaben der Teilnehmenden zur Häufigkeit ihrer Verkehrsmittelnutzung, wurden Sie anhand der angegebenen Nutzungshäufigkeit  (für die Nutzer:innen nicht sichtbar) als Radfahrende, Fußgänger:innen oder Autofahrende eingestuft..
-Den Teilnehmenden wurden im Anschluss fünf bzw. zehn Straßenszenen aus der ihrer Nutzergruppe entsprechenden Perspektive gezeigt. Die Straßenszenen konnten auf einer vierstufigen Skala mit “unsicher”, “eher unsicher”, “eher sicher”, oder “sicher” bewertet werden. Im Anschluss konnte der Teilnehmende wählen, ob er in dieser Perspektive weitere Szenen bewerten möchte oder auf eine Perspektive aus Sicht der anderen Verkehrsteilnehmenden wechseln möchte. Nach weiteren zehn Szenen wurde der Teilnehmende erneut gefragt. So könnte die Umfrage beliebig lange fortgesetzt werden. Im Durchschnitt bewertete jeder Teilnehmende 22 Szenen.
+      Basierend auf den Angaben der Teilnehmenden zur Häufigkeit ihrer Verkehrsmittelnutzung, wurden sie anhand der angegebenen Nutzungshäufigkeit  (für die Nutzer:innen nicht sichtbar) als Radfahrende, Fußgänger:innen oder Autofahrende eingestuft..
+Den Teilnehmenden wurden im Anschluss fünf bzw. zehn Straßenszenen aus der ihrer Nutzergruppe entsprechenden Perspektive gezeigt. Die Straßenszenen konnten auf einer vierstufigen Skala mit “unsicher”, “eher unsicher”, “eher sicher”, oder “sicher” bewertet werden. Im Anschluss konnte der/die Teilnehmende wählen, ob er in dieser Perspektive weitere Szenen bewerten möchte oder auf eine Perspektive aus Sicht der anderen Verkehrsteilnehmenden wechseln möchte. Nach weiteren zehn Szenen wurde der/die Teilnehmende erneut gefragt. So könnte die Umfrage beliebig lange fortgesetzt werden. Im Durchschnitt bewertete jede/r Teilnehmende 22 Szenen.
     </Paragraph>
     <Heading as="h3">Auswahl der Straßenszenen</Heading>
     <Paragraph>

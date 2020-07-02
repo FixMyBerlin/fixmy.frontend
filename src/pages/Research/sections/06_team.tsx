@@ -15,11 +15,11 @@ const SectionTeam = ({ toc }) => (
       setzt sich aus Entwickler:innen, Designer:innen, Verkehrsplaner:innen
       sowie Datenspezialist:innen zusammen und entwickelt digitale Tools, die
       eine offene und agile Verwaltungsarbeit ermöglichen. Um Städte und
-      Kommunen auf diesem Weg zu begleiten, entwickeln wir Open Government
-      Werkzeuge, die es Verwaltungen ermöglichen, die Verkehrswende gemeinsam
-      mit den Bürger:innen umzusetzen. Unsere digitalen Tools zur einfachen
+      Kommunen auf diesem Weg zu begleiten, entwickelt FixMyCity Open-Government-Werkzeuge, 
+      die es Verwaltungen ermöglichen, die Verkehrswende gemeinsam
+      mit den Bürger:innen umzusetzen. Die entwickelten digitalen Tools zur einfachen
       Bedarfsermittlung, effizienten Projektsteuerung, aktiven
-      Bürgerkommunikation, und intelligenten Datenanalyse beschleunigen die
+      Bürgerkommunikation und intelligenten Datenanalyse beschleunigen die
       Radverkehrsplanung und erhöhen ihre Akzeptanz.
     </Paragraph>
     <Paragraph>
@@ -34,8 +34,8 @@ const SectionTeam = ({ toc }) => (
       <br />
       Tel: 030 - 54 90 86 65
       <br />
-      hello@fixmycity.de
-      <br />
+      <a href="mailto:hello@fixmycity.de">hello@fixmycity.de</a>
+      <br /><br />
       Büroadresse:
       <br />
       FixMyCity GmbH c|o CityLAB Berlin
