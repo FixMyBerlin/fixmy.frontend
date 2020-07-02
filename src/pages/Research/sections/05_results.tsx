@@ -145,11 +145,33 @@ Geschlecht
     >
       <BarChart title="männlich" data={[8.185250, 21.410971, 34.955650, 35.448129]} feelsafe={70.40} />
       <BarChart title="weiblich" data={[7.824049, 20.332307, 34.931507, 36.912137]} feelsafe={71.84}/>
-      <BarChart
-        title="divers"
-        data={[9.831594, 21.240512, 33.906546, 35.021347]} feelsafe={68.93}
+      <BarChart title="divers" data={[9.831594, 21.240512, 33.906546, 35.021347]} feelsafe={68.93}
       />
       </BarChart.Wrapper>
+    <BarChart.Wrapper
+      title="Bewertungen nach Alter"
+      source="Anm: Durchschnitt aller Bewertungen nach Angaben zum Alter der Teilnehmenden"
+    >
+      <BarChart title="AG0 - unter 18 Jahre" data={[8.922697, 19.490132, 29.481908, 42.105263]} feelsafe={71} />
+      <BarChart title="AG1 - 18 bis 24 Jahre" data={[9.367420, 20.752886, 31.124479, 38.755215]} feelsafe={70} />
+      <BarChart title="AG2 - 25 bis 29 Jahre" data={[9.452893, 20.825782, 32.878943, 36.842382]} feelsafe={70} />
+      <BarChart title="AG3 - 30 bis 39 Jahre" data={[9.149358, 21.724335, 34.507092, 34.619215]} feelsafe={69} />
+      <BarChart title="AG4 - 40 bis 49 Jahre" data={[8.353393, 21.826761, 35.510278, 34.309567]} feelsafe={70} />
+      <BarChart title="AG5 - 50 bis 64 Jahre" data={[6.902527, 20.468174, 36.023561, 36.605738]} feelsafe={73} />
+      <BarChart title="AG6 -  65 bis 74 Jahre" data={[6.061991, 19.217255, 35.969147, 38.751607]} feelsafe={75} />
+      <BarChart title="AG7 - über 74 Jahre" data={[6.204244, 19.344832, 32.696364, 41.754560]} feelsafe={75} />
+      </BarChart.Wrapper>
+    <BarChart.Wrapper
+      title="Bewertungen nach Nutzungshäufigkeit Fahrrad"
+      source="Anm: Durchschnitt aller Bewertungen nach Angaben zur Nutzungshäufigkeit des Fahrrad unter den Teilnehmenden"
+    >
+      <BarChart title="(fast) täglich" data={[8.219178, 21.413216, 34.713547, 35.654059]} feelsafe={71} />
+      <BarChart title="4-5 mal pro Woche" data={[7.542612, 21.504180, 35.653024, 35.300185]} feelsafe={71} />
+      <BarChart title="1-3 mal pro Woche" data={[7.195407, 21.030776, 35.828827, 35.944990]} feelsafe={72} />
+      <BarChart title="1-3 mal pro Monat" data={[7.983095, 19.878098, 34.502092, 37.636715]} feelsafe={72} />
+      <BarChart title="seltener als monatlich" data={[8.619391, 20.588077, 34.345744, 36.446788]} feelsafe={70} />
+      <BarChart title="nie" data={[9.122029, 20.652014, 34.344607, 35.881350]} feelsafe={70} />
+    </BarChart.Wrapper>
      <Paragraph>
     Bei der Auswertung nach den unterschiedlichen Merkmalen unterscheiden sich die Ergebnisse zwischen den den einzelnen Nutzergruppen nur gering. Entsprechend wurde für die weitere Auswertung auf eine weitere Differenzierung verzichtet.
     </Paragraph>
