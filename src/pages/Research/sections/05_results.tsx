@@ -175,6 +175,15 @@ Geschlecht
      <Paragraph>
     Bei der Auswertung nach den unterschiedlichen Merkmalen unterscheiden sich die Ergebnisse zwischen den den einzelnen Nutzergruppen nur gering. Entsprechend wurde für die weitere Auswertung auf eine weitere Differenzierung verzichtet.
     </Paragraph>
+    
+    <Heading as="h3">Führung auf der Fahrbahn</Heading>
+    <Paragraph>
+      Wir betrachten zunächst die Führung an Hauptverkehrsstraßen. Nebenverkehrsstraßen werden in einem späteren Kapitel betrachtet.
+    </Paragraph>
+    <Heading as="h3">Führung im Mischverkehr ist unsicher</Heading>
+    <Paragraph>
+      Eine Führung des Radverkehrs im Mischverkehr wird als deutlich unsicherer empfunden als eine Führung auf jeder Art von RVA. Werden die Faktoren Tempolimit, Verkehrsstärke und rechtsseitiges Parken variiert ändert sich das Sicherheitsempfinden. Aber auch in der bestbewerteten Situation ist kein ausreichendes Sicherheitsempfinden (Wir gehen hier davon aus, dass eine Bewertung “eher sicher” oder “sicher” von über 80% der Teilnehmenden ein anzustrebender Wert für eine subjektiv sichere Infrastruktur ist)   zu erzielen. Im Vergleich der Nutzermerkmale gibt es den größten Unterschied zwischen Männern und Frauen, aber insgesamt große Übereinstimmungen. Alle Typen von Radfahrenden (Viel-, oder Wenig-Radfahrende, weibliche oder männliche, ältere und jüngere, etc.) fühlen sich im Mischverkehr unsicher.
+    </Paragraph>
 
     <Heading as="h3">Führung auf der Fahrbahn</Heading>
     <Paragraph>

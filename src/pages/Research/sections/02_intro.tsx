@@ -38,7 +38,6 @@ const SectionIntroduction = ({ toc }) => (
       über Unterschiede im Sicherheitsempfinden verschiedener Nutzergruppen und
       zur Perspektive von Autofahrenden und Fußgänger:innen gewonnen werden.
     </Paragraph>
-
      <ImageMulti>
       <ImageMulti.Inner source={MS_C_573}>
         <FeelSafe value={99.11} />
