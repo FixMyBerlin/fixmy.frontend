@@ -91,13 +91,11 @@ const SectionAbout = ({ toc }) => (
       In diesem Abschnitt wurden allgemeine Fragen über den Berliner Verkehr für
       die redaktionelle Auswertung des Tagesspiegels gestellt. Hier soll nicht
       näher auf diese Fragen eingegangen werden, da diese nicht Teil der
-      Konzeption sind. Eine
-      <a
+      Konzeption sind. Eine <a
         href="https://interaktiv.tagesspiegel.de/lab/strassencheck-das-stoert-im-berliner-verkehr-am-meisten/"
         target="_blank"
         rel="noopener noreferrer"
-      >Auswertung</a>
-      dazu hat der Tagesspiegel Berlin gemacht.
+      > Auswertung </a> dazu hat der Tagesspiegel Berlin gemacht.
 
 
     </Paragraph>
