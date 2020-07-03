@@ -17,7 +17,7 @@ const Research = () => (
       author="FixMyCity Team"
     >
       Studie zur subjektiven Sicherheit im Radverkehr. - Ergebnisse und
-      Datensatz einer Umfrage mit 20.000 Teilnehmenden
+      Datensatz einer Umfrage mit 21.000 Teilnehmenden
     </ArticleHeader>
     <Intro>
       Die Mobilitätswende in Berlin und vielen anderen Städten hat begonnen. Der
