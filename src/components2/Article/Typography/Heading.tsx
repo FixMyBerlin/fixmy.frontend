@@ -50,7 +50,7 @@ const Heading3 = styled.h2<StyledHeadingProps>`
 
   ${media.m`
     font-size: 1.25rem;
-    margin: 2em auto;
+    margin: 1em auto;
   `}
 `;
 
