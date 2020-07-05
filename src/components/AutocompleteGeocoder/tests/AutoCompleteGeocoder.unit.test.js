@@ -2,6 +2,7 @@ import React from 'react';
 import { render, act, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { waitFor } from '@testing-library/dom';
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import * as apiService from '~/components/AutocompleteGeocoder/apiService';
 import mockedSuggestions from '~/../jest/mocks/mockLocationSuggestions.json';
@@ -111,12 +112,11 @@ describe('<AutoCompleteGeocoder />', () => {
       const { inputElement, initProps } = setup();
 
       /* simulate fast user input with not delay in between strokes */
-      userEvent.type(inputElement, 'abcd');
-      // wait for suggestions to render
-      await findAllBySearchString();
-
+      await userEvent.type(inputElement, 'abcd');
+      // wait for async logic to kick in,
       // only a single a request should be fired once the user is done typing
-      expect(fetchSuggestionsSpy).toHaveBeenCalledTimes(1);
+      await waitFor(() => expect(fetchSuggestionsSpy)
+        .toHaveBeenCalledTimes(1));
 
       fetchSuggestionsSpy.mockClear();
 
@@ -126,13 +126,10 @@ describe('<AutoCompleteGeocoder />', () => {
       await userEvent.type(inputElement, slowInput, {
         delay: initProps.debounceTime + 10
       });
-      // callback logic runs async, wait a bit to let it be invoked. TODO: find a cleaner way to do so
-      const wait = (time) =>
-        new Promise((resolve) => setTimeout(resolve, time));
-      await wait(initProps.debounceTime * 2);
 
       // each stroke should have triggered a request
-      expect(fetchSuggestionsSpy).toHaveBeenCalledTimes(slowInput.length);
+      await waitFor(() => expect(fetchSuggestionsSpy)
+        .toHaveBeenCalledTimes(slowInput.length));
 
       fetchSuggestionsSpy.mockClear();
     });

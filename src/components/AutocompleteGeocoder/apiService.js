@@ -39,7 +39,7 @@ export const parseSuggestion = ({
   place_name_de: address,
   id,
   relevance,
-  properties
+  properties = {}
 }) => ({
   id,
   coords: { lng: center[0], lat: center[1] },
