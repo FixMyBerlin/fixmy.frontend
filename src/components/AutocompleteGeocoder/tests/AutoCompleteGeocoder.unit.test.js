@@ -72,6 +72,12 @@ describe('<AutoCompleteGeocoder />', () => {
         waitForElementOptions
       );
 
+    const fetchSuggestionsSpy = jest.spyOn(apiService, 'fetchSuggestions');
+
+    afterEach(() => {
+      fetchSuggestionsSpy.mockClear();
+    })
+
     it('renders the list of suggestions', async () => {
       const { inputElement } = setup();
       // simulate that the user initially types a search string
@@ -108,10 +114,10 @@ describe('<AutoCompleteGeocoder />', () => {
       });
     });
     it('buffers api calls (waits for the user to type, then fetches suggestions)', async () => {
-      const fetchSuggestionsSpy = jest.spyOn(apiService, 'fetchSuggestions');
       const { inputElement, initProps } = setup();
 
       /* simulate fast user input with not delay in between strokes */
+
       await userEvent.type(inputElement, 'abcd');
       // wait for async logic to kick in,
       // only a single a request should be fired once the user is done typing
@@ -131,14 +137,26 @@ describe('<AutoCompleteGeocoder />', () => {
       await waitFor(() => expect(fetchSuggestionsSpy)
         .toHaveBeenCalledTimes(slowInput.length));
 
-      fetchSuggestionsSpy.mockClear();
     });
     it('invokes the onLocationPick handler with the first search result' +
-        ' when the user presses enter', () => {
-      const { inputElement, initProps } = setup();
-      userEvent.type(inputElement, SEARCH_STRING);
+        ' when the user presses enter', async () => {
+      const [mockedFirstSuggestion] = mockedSuggestions.features;
+      // eslint-disable-next-line camelcase
+      const { place_name_de, center } = mockedFirstSuggestion;
+      const { address, coords } = parseSuggestion({ place_name_de, center });
 
-      expect(initProps.onLocationPick).toHaveBeenCalledWith();
+      const { inputElement, initProps } = setup();
+      await userEvent.type(inputElement, SEARCH_STRING);
+
+      // wait for suggestions to render
+      await findAllBySearchString();
+
+      // simulate that user presses enter
+      screen.debug();
+      fireEvent.keyPress(inputElement, { key: "Enter", code: 13, charCode: 13 });
+
+      // FIXME: callback is never invoked
+      expect(initProps.onLocationPick).toHaveBeenCalledWith({ address, coords });
     });
   });
 });
