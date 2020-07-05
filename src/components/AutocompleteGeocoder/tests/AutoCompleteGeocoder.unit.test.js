@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event';
 
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import * as apiService from '~/components/AutocompleteGeocoder/apiService';
+import mockedSuggestions from '~/../jest/mocks/mockLocationSuggestions.json';
+import { parseSuggestion } from '~/components/AutocompleteGeocoder/apiService';
 
 describe('<AutoCompleteGeocoder />', () => {
   // use setup method described as best practice in
@@ -88,13 +90,21 @@ describe('<AutoCompleteGeocoder />', () => {
 
       expect(suggestionItems).toHaveLength(3);
     });
-    it('invokes the onLocationPick handler if the user clicks/taps on a suggestion', async () => {
+    it('invokes the onLocationPick handler with coords and address when the user clicks/taps on a suggestion', async () => {
+      const [mockedFirstSuggestion] = mockedSuggestions.features;
+      // eslint-disable-next-line camelcase
+      const { place_name_de, center } = mockedFirstSuggestion;
+      const { address, coords } = parseSuggestion({ place_name_de, center });
+
       const { inputElement, initProps } = setup();
       userEvent.type(inputElement, SEARCH_STRING);
       const [firstSuggestion] = await findAllBySearchString();
       fireEvent.click(firstSuggestion);
 
-      expect(initProps.onLocationPick).toHaveBeenCalled();
+      expect(initProps.onLocationPick).toHaveBeenCalledWith({
+        coords,
+        address
+      });
     });
     it('buffers api calls (waits for the user to type, then fetches suggestions)', async () => {
       const fetchSuggestionsSpy = jest.spyOn(apiService, 'fetchSuggestions');
@@ -126,8 +136,12 @@ describe('<AutoCompleteGeocoder />', () => {
 
       fetchSuggestionsSpy.mockClear();
     });
-    it('takes the first suggestion when the user presses enter', () => {
+    it('invokes the onLocationPick handler with the first search result' +
+        ' when the user presses enter', () => {
+      const { inputElement, initProps } = setup();
+      userEvent.type(inputElement, SEARCH_STRING);
 
+      expect(initProps.onLocationPick).toHaveBeenCalledWith();
     });
   });
 });
