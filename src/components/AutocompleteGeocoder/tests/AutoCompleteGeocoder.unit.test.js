@@ -58,11 +58,16 @@ describe('<AutoCompleteGeocoder />', () => {
     });
   });
 
-  describe('fetching suggestions', () => {
+  describe('fetching and picking suggestions', () => {
     const SEARCH_STRING = 'Hauptstraße'; // also used in the api response mock
     const waitForElementOptions = { timeout: 15000 };
     const selectorMatchOptions = { exact: false };
-    const findAllBySearchString = async () => screen.findAllByText(SEARCH_STRING, selectorMatchOptions, waitForElementOptions);
+    const findAllBySearchString = async () =>
+      screen.findAllByText(
+        SEARCH_STRING,
+        selectorMatchOptions,
+        waitForElementOptions
+      );
 
     it('renders the list of suggestions', async () => {
       const { inputElement } = setup();
@@ -79,7 +84,7 @@ describe('<AutoCompleteGeocoder />', () => {
       const { inputElement } = setup();
       userEvent.type(inputElement, SEARCH_STRING);
 
-      const suggestionItems = await findAllBySearchString()
+      const suggestionItems = await findAllBySearchString();
 
       expect(suggestionItems).toHaveLength(3);
     });
@@ -112,7 +117,8 @@ describe('<AutoCompleteGeocoder />', () => {
         delay: initProps.debounceTime + 10
       });
       // callback logic runs async, wait a bit to let it be invoked. TODO: find a cleaner way to do so
-      const wait = (time) => new Promise(resolve => setTimeout(resolve, time));
+      const wait = (time) =>
+        new Promise((resolve) => setTimeout(resolve, time));
       await wait(initProps.debounceTime * 2);
 
       // each stroke should have triggered a request
@@ -120,7 +126,8 @@ describe('<AutoCompleteGeocoder />', () => {
 
       fetchSuggestionsSpy.mockClear();
     });
+    it('takes the first suggestion when the user presses enter', () => {
+
+    });
   });
 });
-
-
