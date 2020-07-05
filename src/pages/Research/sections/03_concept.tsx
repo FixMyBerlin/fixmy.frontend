@@ -91,10 +91,11 @@ const SectionAbout = ({ toc }) => (
       In diesem Abschnitt wurden allgemeine Fragen über den Berliner Verkehr für
       die redaktionelle Auswertung des Tagesspiegels gestellt. Hier soll nicht
       näher auf diese Fragen eingegangen werden, da diese nicht Teil der
-      Konzeption sind. Eine <Link
-      href="https://interaktiv.tagesspiegel.de/lab/strassencheck-das-stoert-im-berliner-verkehr-am-meisten/"
-      >Auswertung
-      </Link> dazu hat der Tagesspiegel Berlin gemacht.
+      Konzeption sind. Eine <a
+        href="https://interaktiv.tagesspiegel.de/lab/strassencheck-das-stoert-im-berliner-verkehr-am-meisten/"
+        target="_blank"
+        rel="noopener noreferrer"
+      > Auswertung </a> dazu hat der Tagesspiegel Berlin gemacht.
 
 
     </Paragraph>
@@ -134,7 +135,7 @@ const SectionAbout = ({ toc }) => (
     </Paragraph>
     <Heading as="h3">Szenenbewertungen</Heading>
     <Paragraph>
-      Basierend auf den Angaben der Teilnehmenden zur Häufigkeit ihrer Verkehrsmittelnutzung, wurden sie anhand der angegebenen Nutzungshäufigkeit  (für die Nutzer:innen nicht sichtbar) als Radfahrende, Fußgänger:innen oder Autofahrende eingestuft..
+      Basierend auf den Angaben der Teilnehmenden zur Häufigkeit ihrer Verkehrsmittelnutzung, wurden sie anhand der angegebenen Nutzungshäufigkeit  (für die Nutzer:innen nicht sichtbar) als Radfahrende, Fußgänger:innen oder Autofahrende eingestuft.
 Den Teilnehmenden wurden im Anschluss fünf bzw. zehn Straßenszenen aus der ihrer Nutzergruppe entsprechenden Perspektive gezeigt. Die Straßenszenen konnten auf einer vierstufigen Skala mit “unsicher”, “eher unsicher”, “eher sicher”, oder “sicher” bewertet werden. Im Anschluss konnte der/die Teilnehmende wählen, ob er in dieser Perspektive weitere Szenen bewerten möchte oder auf eine Perspektive aus Sicht der anderen Verkehrsteilnehmenden wechseln möchte. Nach weiteren zehn Szenen wurde der/die Teilnehmende erneut gefragt. So könnte die Umfrage beliebig lange fortgesetzt werden. Im Durchschnitt bewertete jede/r Teilnehmende 22 Szenen.
     </Paragraph>
     <Heading as="h3">Auswahl der Straßenszenen</Heading>

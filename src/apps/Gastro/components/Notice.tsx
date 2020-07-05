@@ -7,8 +7,7 @@ const GastroNotice = ({ district }) => {
   if (district?.name === 'xhain')
     return (
       <Notice>
-        Die eingereichten Meldungen werden vom Bezirksamt geprüft. Eine
-        Bedarfsmeldung ist derzeit nicht möglich (Frist endete zum 17. Mai).
+        Die eingereichten Anträge wurden vom Bezirksamt geprüft. Die bisher 100 genehmigten Anträge sehen Sie auf der Karte.
       </Notice>
     );
 
