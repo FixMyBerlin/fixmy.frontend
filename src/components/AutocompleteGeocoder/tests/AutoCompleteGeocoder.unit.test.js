@@ -15,7 +15,8 @@ describe('<AutoCompleteGeocoder />', () => {
       onInputFocus: jest.fn(),
       onSearchStart: jest.fn(),
       onInputBlur: jest.fn(),
-      searchStringMinLength: 4
+      searchStringMinLength: 4,
+      debounceTime: 500
     };
     const { container, baseElement, debug } = render(
       <AutocompleteGeocoder {...props} />
@@ -92,7 +93,7 @@ describe('<AutoCompleteGeocoder />', () => {
     });
     it('buffers api calls (waits for the user to type, then fetches suggestions)', async () => {
       const fetchSuggestionsSpy = jest.spyOn(apiService, 'fetchSuggestions');
-      const { inputElement } = setup();
+      const { inputElement, initProps } = setup();
 
       /* simulate fast user input with not delay in between strokes */
       userEvent.type(inputElement, 'abcd');
@@ -108,10 +109,11 @@ describe('<AutoCompleteGeocoder />', () => {
 
       const slowInput = 'defg';
       await userEvent.type(inputElement, slowInput, {
-        delay: 2000
+        delay: initProps.debounceTime + 10
       });
-
-      // FIXME: since the last stroke goes through async processing (debouncing) we can't exect right away, the last request does not get unnoticed
+      // callback logic runs async, wait a bit to let it be invoked. TODO: find a cleaner way to do so
+      const wait = (time) => new Promise(resolve => setTimeout(resolve, time));
+      await wait(initProps.debounceTime * 2);
 
       // each stroke should have triggered a request
       expect(fetchSuggestionsSpy).toHaveBeenCalledTimes(slowInput.length);
@@ -120,3 +122,5 @@ describe('<AutoCompleteGeocoder />', () => {
     });
   });
 });
+
+
