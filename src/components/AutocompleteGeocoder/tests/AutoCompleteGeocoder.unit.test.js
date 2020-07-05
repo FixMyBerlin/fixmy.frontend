@@ -59,6 +59,10 @@ describe('<AutoCompleteGeocoder />', () => {
 
   describe('fetching suggestions', () => {
     const SEARCH_STRING = 'Hauptstraße'; // also used in the api response mock
+    const waitForElementOptions = { timeout: 15000 };
+    const selectorMatchOptions = { exact: false };
+    const findAllBySearchString = async () => screen.findAllByText(SEARCH_STRING, selectorMatchOptions, waitForElementOptions);
+
     it('renders the list of suggestions', async () => {
       const { inputElement } = setup();
       // simulate that the user initially types a search string
@@ -74,18 +78,14 @@ describe('<AutoCompleteGeocoder />', () => {
       const { inputElement } = setup();
       userEvent.type(inputElement, SEARCH_STRING);
 
-      const suggestionItems = await screen.findAllByText(SEARCH_STRING, {
-        exact: false
-      }, { timeout: 15000 });
+      const suggestionItems = await findAllBySearchString()
 
       expect(suggestionItems).toHaveLength(3);
     });
     it('invokes the onLocationPick handler if the user clicks/taps on a suggestion', async () => {
       const { inputElement, initProps } = setup();
       userEvent.type(inputElement, SEARCH_STRING);
-      const [firstSuggestion] = await screen.findAllByText(SEARCH_STRING, {
-        exact: false
-      }, { timeout: 15000 });
+      const [firstSuggestion] = await findAllBySearchString();
       fireEvent.click(firstSuggestion);
 
       expect(initProps.onLocationPick).toHaveBeenCalled();
@@ -97,9 +97,7 @@ describe('<AutoCompleteGeocoder />', () => {
       /* simulate fast user input with not delay in between strokes */
       userEvent.type(inputElement, 'abcd');
       // wait for suggestions to render
-      await screen.findAllByText(SEARCH_STRING, {
-        exact: false
-      }, { timeout: 15000 });
+      await findAllBySearchString();
 
       // only a single a request should be fired once the user is done typing
       expect(fetchSuggestionsSpy).toHaveBeenCalledTimes(1);
