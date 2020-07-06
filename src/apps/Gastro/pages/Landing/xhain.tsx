@@ -59,12 +59,7 @@ const XhainLanding = ({ district }) => (
       umsetzen und dennoch Ihren Betrieb wieder aufnehmen.
     </p>
     <p>
-      In der Karte sehen Sie alle bis zum 17. Mai 2020 eingegangenen
-      Bedarfsmeldungen. Die über 300 eingegangenen Meldungen werden derzeit in
-      Abgleich mit straßenrechtlichen Anforderungen geprüft. Alle Betriebe und
-      Träger, die eine Interessensbekundung abgegeben haben, erhalten in den
-      nächsten Tagen eine Nachricht vom Bezirksamt, mit Angaben, wie sie sich
-      für eine der Straßen registrieren können.
+      In der Karte sehen Sie alle bis zum 3. Juli 2020 genehmigten Anträge. Die jeweiligen Betrieben können die Flächen nach Beauftragung der Schilder und Absperrungen nutzen.
     </p>
 
     <StyledMap
@@ -86,27 +81,16 @@ const XhainLanding = ({ district }) => (
     <p>
       Das Bezirksamt Friedrichshain-Kreuzberg bietet in dieser Situation
       Gewerbetrieben, Einzelhandel und sozialen Projekten an, Tische, Stühle und
-      Auslagen temporär auf das Straßenland zu verlagern. Melden Sie über dieses
-      Formular bis zum Sonntag den 17.05.2020 Ihren Bedarf an. Das Bezirksamt
-      wertet Ihre Bedarfsmeldungen aus und wird auf dieser Grundlage
-      entsprechende Anordnungen vorbereiten.
+      Auslagen temporär auf das Straßenland zu verlagern. Nach Auswertung von über 300 Bedarfsmeldungen und 130 Anträgen, wurden 100 Genehmigung zur Nutzung von Sonderflächen erteilt.
     </p>
     <h2>Welche Flächen können wann genutzt werden?</h2>
     <p>
-      Nach ca. einwöchiger Prüfung der Bedarfsanmeldungen wird das Bezirksamt
-      entsprechende verkehrsrechtliche Anordnungen treffen. Die Genehmigungen
+      Nach Prüfung der Anträge hat das Bezirksamt
+      entsprechende verkehrsrechtliche Anordnungen getroffen. Die Genehmigungen
       werden mit Blick auf die Eindämmungsmaßnahmen befristet und bis auf
-      weiteres gebührenfrei ausgesprochen. Je nach Aufkommen der
-      Bedarfsmeldungen können Flächen im ruhenden Parkraum oder auf der Fahrbahn
-      angeordnet werden. Zeitlich werden dabei zunächst Freitag, Samstag,
-      Sonntag, jeweils von 11:00 Uhr bis 22:00 Uhr, Flächen als zusätzliche
-      Außenflächen temporär angeboten. Das Stellen von Tischen, Stühlen und
-      Auslagen auf der Fahrbahn wird nur möglich sein, wenn im entsprechenden
-      Straßenabschnitt mehrere Gewerbetreibende und Projekte Bedarf angemeldet
-      haben, sodass die Sperrung der Straße temporär von Freitag Vormittag bis
-      Sonntag Abend für den motorisierten Individualverkehr gerechtfertigt
-      werden kann. Alternativ ist in wenig befahrenen Straßen das Stellen auf
-      dem Parkstreifen möglich.{' '}
+      weiteres gebührenfrei ausgesprochen. Zeitlich werden dabei zunächst Freitag, Samstag,
+      Sonntag, jeweils von 11:00 Uhr bis 22:00 Uhr für die Gastronomie und Mo-Fr jeweils von 10 bis 20 Uhr für den Einzelhandel, Flächen als zusätzliche
+      Außenflächen temporär angeboten.{' '}
     </p>
     <h2>Bedingungen für die Genehmigung</h2>
     <p>

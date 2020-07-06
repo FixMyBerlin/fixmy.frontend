@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { Paragraph, Heading, Quote, Image, List } from '~/components2/Article';
+import Link from '~/components2/Link';
 
-import image1 from '../images/image-1.jpg';
+import image1 from '../images/image1_@x2.jpg';
 
 const SectionAbout = ({ toc }) => (
   <>
@@ -12,7 +13,7 @@ const SectionAbout = ({ toc }) => (
     <Paragraph>
       Zur Online-Befragung der Teilnehmenden wurde ein Interface zur Bewertung
       von fotorealistischen Darstellungen von Straßensituationen geschaffen.
-      Anhand einer vierstufigen Skala könnten die Straßenszenen auf das
+      Anhand einer vierstufigen Skala konnten die Straßenszenen auf das
       subjektiven Empfinden von Sicherheit in der Situation bewertet werden.
     </Paragraph>
     <Quote sourceText="Herausforderung">
@@ -32,7 +33,7 @@ const SectionAbout = ({ toc }) => (
       Kommunikationsstrategie eine hohe Zahl an Teilnehmenden zu erreichen.
     </Paragraph>
     <Paragraph>
-      Mittels einer qualitativen Befragung von Radfahrenden lässt sich schwierig
+      Mittels einer qualitativen Befragung von Radfahrenden lässt sich normalerweise schwierig
       ermitteln, welche Breite von Radverkehrsanlagen als “zu schmal” empfunden
       wird. Ähnliches gilt für das subjektive Empfinden von Straßensituationen
       sowie die Kombination von gewissen baulichen Merkmalen (z.B. schmaler
@@ -43,12 +44,12 @@ const SectionAbout = ({ toc }) => (
     </Paragraph>
     <Paragraph>
       Durch das Arbeiten mit Bildern von spezifischen Straßen-Szenarien konnte
-      im Rahmen der Umfrage eine Zuordnung vom subjektiven Sicherheitsempfinden
+      im Rahmen der Umfrage eine direkte Zuordnung vom subjektiven Sicherheitsempfinden
       in Bezug zu verschiedenen Infrastrukturen und deren Merkmalsausprägungen
       gemacht werden. Mittels Abfrage von Daten zum Verkehrsverhalten, sowie
       demografischen Daten konnten diese subjektiven Empfindungen verschiedenen
       Bevölkerungs- und Verkehrsnutzergruppen (z.B. Autofahrende, Radfahrende
-      etc. ) zugeordnet werden. Durch die große Teilnehmendenzahl und die
+      etc.) zugeordnet werden. Durch die große Teilnehmendenzahl und die
       gemeinsam mit dem Tagesspiegel Berlin entwickelte Kommunikationsstrategie
       konnte eine weit gestreute hohe Anzahl von Personen befragt werden
       (demografisch und vom Verkehrsverhalten).
@@ -56,7 +57,7 @@ const SectionAbout = ({ toc }) => (
     <Paragraph>
       Bei der Auswahl der Szenarien sollten Planungen von aktuellen
       RVA-Varianten berücksichtigt werden. Auf Grundlage einer engen Abstimmung
-      mit der Berliner Senatsverwaltung, der Durchführung von Fach-Workshops und
+      mit der Berliner Senatsverwaltung, der Durchführung von Fach-Workshops,
       dem Einarbeiten von neuen Infrastrukturkonzepten und dem intensiven
       Auseinandersetzen mit dem aktuellen Forschungsstand in der Literatur,
       konnte die Aktualität der Umfrage sichergestellt werden. Beispielsweise
@@ -90,8 +91,13 @@ const SectionAbout = ({ toc }) => (
       In diesem Abschnitt wurden allgemeine Fragen über den Berliner Verkehr für
       die redaktionelle Auswertung des Tagesspiegels gestellt. Hier soll nicht
       näher auf diese Fragen eingegangen werden, da diese nicht Teil der
-      Konzeption sind. Die Fragen und die Antwortmöglichkeiten sind aber hier zu
-      finden.
+      Konzeption sind. Eine <a
+        href="https://interaktiv.tagesspiegel.de/lab/strassencheck-das-stoert-im-berliner-verkehr-am-meisten/"
+        target="_blank"
+        rel="noopener noreferrer"
+      > Auswertung </a> dazu hat der Tagesspiegel Berlin gemacht.
+
+
     </Paragraph>
     <Heading as="h3">Profilfragen</Heading>
     <Paragraph>
@@ -99,13 +105,13 @@ const SectionAbout = ({ toc }) => (
       verschiedene Radfahrtypen ermöglichen. Dies ermöglicht uns,
       unterschiedliches Antwortverhalten bei der Einschätzung des subjektiven
       Sicherheitsgefühls besser zu verstehen. Dafür nehmen wir vor allem Bezug
-      auf die Arbeit von Francke, Anke, Lißner (2019). In ihrer Arbeit stellen
+      auf die Arbeit von Francke, Anke, Lißner (2018). In ihrer Arbeit stellen
       sie eine Radfahrtypologie vor, mit welcher sie Vorlieben für die
       Radverkehrsinfrastruktur beschreiben. Da der entsprechende Fragebogen sehr
       umfangreich ist und das Hauptinteresse der Datenerhebung in dieser Arbeit
       auf der Bewertung der Szenen lag, wurde der Fragebogen auf das Nötigste
       reduziert. Änderungen an Fragebögen sorgen zwar dafür, dass die Ergebnisse
-      nicht mehr vergleichbar sind (u. a. Schwarz, 1999 und Catania et al.,
+      nicht mehr vergleichbar sind (vgl. Schwarz, 1999 und Catania et al.,
       1996), dennoch schien diese Entscheidung aus Sicht des Hauptziels der
       Umfrage richtig. Neben soziodemografischen Merkmalen (Alter, Geschlecht,
       Wohnort, Kinder) wurden Fragen zum Mobilitäts- dabei insbesondere zum
@@ -125,24 +131,12 @@ const SectionAbout = ({ toc }) => (
     </Paragraph>
     <Paragraph>
       Nach Vervollständigung dieses Teiles der Umfrage wird ein Datensatz für
-      den Teilnehmenden angelegt.
+      den/die Teilnehmenden angelegt.
     </Paragraph>
     <Heading as="h3">Szenenbewertungen</Heading>
     <Paragraph>
-      Basierend auf den Angaben der Teilnehmenden zur Häufigkeit ihrer
-      Verkehrsmittelnutzung, wurden Sie (für die Nutzer:innen nicht sichtbar)
-      als Radfahrende,Fußgänger:innen oder Autofahrende eingestuft (hier
-      entschied, ob der Teilnehmer öfter zu Fuß oder mit dem ÖPNV unterwegs ist
-      gegenüber dem Auto). Den Teilnehmenden wurden im Anschluss fünf bzw. zehn
-      Straßenszenen aus der ihrer Nutzergruppe entsprechenden Perspektive
-      gezeigt. Die Straßenszenen konnten auf einer vierstufigen Skala mit
-      “unsicher”, “eher unsicher”, “eher sicher”, oder “sicher” bewertet werden.
-      Im Anschluss konnte der Teilnehmende wählen, ob er in dieser Perspektive
-      weitere Szenen bewerten möchte oder auf eine Perspektive aus Sicht der
-      anderen Verkehrsteilnehmenden wechseln möchte. Nach weiteren zehn Szenen
-      wurde der Teilnehmende erneut gefragt. So könnte die Umfrage beliebig
-      lange fortgesetzt werden. Im Durchschnitt bewertete jeder Teilnehmende 22
-      Szenen.
+      Basierend auf den Angaben der Teilnehmenden zur Häufigkeit ihrer Verkehrsmittelnutzung, wurden sie anhand der angegebenen Nutzungshäufigkeit  (für die Nutzer:innen nicht sichtbar) als Radfahrende, Fußgänger:innen oder Autofahrende eingestuft.
+Den Teilnehmenden wurden im Anschluss fünf bzw. zehn Straßenszenen aus der ihrer Nutzergruppe entsprechenden Perspektive gezeigt. Die Straßenszenen konnten auf einer vierstufigen Skala mit “unsicher”, “eher unsicher”, “eher sicher”, oder “sicher” bewertet werden. Im Anschluss konnte der/die Teilnehmende wählen, ob er in dieser Perspektive weitere Szenen bewerten möchte oder auf eine Perspektive aus Sicht der anderen Verkehrsteilnehmenden wechseln möchte. Nach weiteren zehn Szenen wurde der/die Teilnehmende erneut gefragt. So könnte die Umfrage beliebig lange fortgesetzt werden. Im Durchschnitt bewertete jede/r Teilnehmende 22 Szenen.
     </Paragraph>
     <Heading as="h3">Auswahl der Straßenszenen</Heading>
     <Paragraph>
@@ -198,7 +192,20 @@ const SectionAbout = ({ toc }) => (
       Fußperspektive) erstellt. Ein genauere Dokumentation zur Systematik der
       Straßenszenarien ist hier zu finden.
     </Paragraph>
-  </>
+    <Paragraph>
+      Ein genauere Dokumentation zur Systematik der Straßenszenarien ist <Link
+        href="/uploads/kataster-ki/Umfragekonzept_KatasterKI_Feb2020.pdf"
+      >
+        hier [.pdf Download]
+      </Link> zu finden.
+    </Paragraph>
+    <Paragraph>
+      Ein Übersicht der Szenen und ihrer Merkmale sind in <Link
+        href="/uploads/kataster-ki/Szenarienuebersicht_fuer_Abgabe_KatasterKi_Feb20.ods"
+      >
+      dieser Tabelle [.ods Download]</Link> zu finden
+    </Paragraph>
+    </>
 );
 
 export default SectionAbout;

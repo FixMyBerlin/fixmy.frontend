@@ -7,7 +7,6 @@ interface Props {
   flat?: boolean;
   disabled?: boolean;
   href?: string;
-  _target?: string;
 }
 
 const getBackgroundColor = ({ ghost, disabled }: Props) => {

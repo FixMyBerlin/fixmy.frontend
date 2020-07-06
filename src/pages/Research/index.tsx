@@ -13,15 +13,15 @@ const Research = () => (
     <ArticleHeader
       toc="Einleitung"
       kicker="Forschungsergebnis - Strassencheck"
-      publishDate={new Date(2020, 6, 28, 11, 0)}
-      author="FixMyCity"
+      publishDate={new Date(2020, 6, 6, 7, 0)}
+      author="FixMyCity Team"
     >
-      Studie zur subjektiven Sicherheit im Radverkehr. - Ergebnisse und
-      Datensatz einer Umfrage mit 20.000 Teilnehmenden
+      Studie zur subjektiven Sicherheit im Radverkehr - Ergebnisse und
+      Datensatz einer Umfrage mit über 21.000 Teilnehmenden
     </ArticleHeader>
     <Intro>
-      Die Mobilitätswende in Berlin und vielen anderen Städten hat begonnen. Der
-      Radverkehr soll gute Infrastruktur erhalten, auf der sich alle Menschen
+      Die Mobilitätswende in Berlin und anderen Städten hat begonnen. Der
+      Radverkehr soll gute Infrastruktur bekommen, auf der sich alle Menschen
       sicher fühlen. Was aber heißt “sicher für alle” konkret für die Planung
       von Radinfrastruktur? Wir haben eine Umfrage zur Untersuchung des
       subjektiven Sicherheitsempfindens durchgeführt, deren Ergebnisse wir hier
