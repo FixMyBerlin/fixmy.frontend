@@ -8,7 +8,8 @@ import {
   Paragraph,
   Image,
   Quote,
-  ImageFull
+  ImageFull,
+  Heading
 } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import Link from '~/components2/Link';
@@ -43,6 +44,8 @@ const LogoGrid2 = styled(LogoGrid1)`
 const DownloadWrapper = styled(Paragraph)`
   display: flex;
   flex-wrap: wrap;
+  margin-top: -2em;
+
   a {
     flex-grow: 1;
     max-width: none;
@@ -56,12 +59,18 @@ const LogoAnnotation = styled(Paragraph)`
   color: ${(props) => props.theme.grey500};
 `;
 
+const Wrapper = styled(ArticleWrapper)`
+  h2 {
+    text-transform: none;
+  }
+`;
+
 const Research = () => (
-  <ArticleWrapper hasToc>
+  <Wrapper hasToc>
     <ArticleHeader
       toc="Einleitung"
       kicker="Forschungsprojekt - ZES-Plus"
-      publishDate={new Date(2020, 3, 3, 15, 0)}
+      publishDate={new Date(2020, 3, 2, 15, 0)}
       author="Jörg Jennoch (Bürgermeister)"
     >
       Eichwalde, Zeuthen und Schulzendorf entwickeln Radverkehrsnetz gemeinsam
@@ -76,7 +85,7 @@ const Research = () => (
     </Intro>
     <Paragraph>
       Um dies zu erreichen, entwickeln die Gemeinden gemeinsam mit FixMyCity und
-      der TU Berlin ein interkommunales Radverkehrskonzept mit dem Namen
+      der TU Berlin ein interkommunales Radverkehrskonzept mit dem Namen{' '}
       <strong>ZESplus</strong>. Der Name <strong>ZESplus</strong> verweist dabei
       auf die Zusammenarbeit der Gemeinden Zeuthen, Eichwalde und Schulzendorf,
       welche auf Grunde der räumlichen Nähe bereits in vielen Punkten
@@ -101,9 +110,9 @@ const Research = () => (
       können Sie sich auf dieser Seite über den Projektverlauf informieren und
       sich mit Anregungen und Fragen an uns wenden.
     </Paragraph>
-    <ArticleHeader toc="Radverkehr für die Gemeinden ZES">
+    <Heading as="h2" toc="Radverkehr für die Gemeinden ZES">
       Warum ist der Radverkehr wichtig für die Gemeinden?
-    </ArticleHeader>
+    </Heading>
     <Quote long sourceText="Jörg Jenoch, Bürgermeister Eichwalde">
       „Oft sind wir noch auf unsere Autos angewiesen. Doch für Wege innerhalb
       der Gemeinden sollte das Fahrrad das Verkehrsmittel der Wahl werden. Auch
@@ -154,9 +163,9 @@ const Research = () => (
       ZES-Gemeinden stehen dies beiden Punkte dabei ebenso im Fokus der
       Konzepterstellung.
     </Paragraph>
-    <ArticleHeader toc="Mitmachen">
+    <Heading as="h2" toc="Mitmachen">
       Mitmachen - jetzt SimRa-App nutzen!
-    </ArticleHeader>
+    </Heading>
     <Paragraph>
       Laden Sie die SimRa-App der TU Berlin auf Ihr Handy und zeichnen Sie Ihre
       Strecken beim Radfahren auf. Damit sammeln Sie wertvolle Daten, die die
@@ -191,9 +200,9 @@ const Research = () => (
         App für Android/LineageOS ohne Playstore laden
       </AnchorButton>
     </DownloadWrapper>
-    <ArticleHeader toc="Über das Projekt">
+    <Heading as="h2" toc="Über das Projekt">
       Über das Projekt NUDAFA
-    </ArticleHeader>
+    </Heading>
     <Paragraph>
       Um den Radverkehr in den Gemeinden Eichwalde, Zeuthen und Schulzendorf zu
       stärken, soll ein integriertes Radverkehrsnetz entwickelt werden. Ziel des
@@ -210,9 +219,9 @@ const Research = () => (
       integriert. Das Ergebnis der Klassifizierung wird in Form einer
       interaktiven Karte dargestellt und auf dieser Seite veröffentlicht.
     </Paragraph>
-    <ArticleHeader toc="Newsletter und Kontakt">
+    <Heading as="h2" toc="Newsletter und Feedback">
       Newsletter und Feedback?
-    </ArticleHeader>
+    </Heading>
     <Paragraph>
       Abonnieren Sie unseren Newsletter um aktuelle Informationen zum Projekt zu
       erhalten.
@@ -247,7 +256,7 @@ const Research = () => (
       <img alt="Logo FixMyBerlin" src={LogoFMB} />
       <img alt="Logo TU" src={LogoTU} />
     </LogoGrid2>
-  </ArticleWrapper>
+  </Wrapper>
 );
 
 export default Research;

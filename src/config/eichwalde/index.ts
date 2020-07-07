@@ -1,6 +1,8 @@
 import defaultRoutes from '../default/routes';
 
 export default {
+  titleFont: 'Roboto Slab',
+  baseFont: 'Roboto',
   routes: {
     signup: defaultRoutes.signup,
     login: defaultRoutes.login,
@@ -18,6 +20,7 @@ export default {
     logo: false,
     twitter: false,
     items: [],
+    size: 325,
     footeritems: [
       {
         label: 'Impressum',

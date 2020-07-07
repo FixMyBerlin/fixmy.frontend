@@ -29,7 +29,7 @@ const Quote = styled.div<QuoteProps>`
     position: absolute;
     background: #cf0a7d;
     font-weight: 700;
-    font-size: 0.58em;
+    font-size: ${(props) => (props.long ? '0.87em' : '0.58em')};
     font-style: normal;
     padding: 11px 22px;
     border-radius: 3px;
