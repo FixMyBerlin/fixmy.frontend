@@ -7,7 +7,8 @@ const GastroNotice = ({ district }) => {
   if (district?.name === 'xhain')
     return (
       <Notice>
-        Die eingereichten Anträge wurden vom Bezirksamt geprüft. Die bisher 100 genehmigten Anträge sehen Sie auf der Karte.
+        Die eingereichten Anträge wurden vom Bezirksamt geprüft. Die bisher 100
+        genehmigten Anträge sehen Sie auf der Karte.
       </Notice>
     );
 
