@@ -3,16 +3,17 @@ import { media } from '~/styles/utils';
 
 interface QuoteProps {
   sourceText?: string;
+  long?: boolean;
 }
 
 const Quote = styled.div<QuoteProps>`
   background: white;
   box-shadow: 2px 6px 60px 0 rgba(0, 0, 0, 0.09);
   padding: 1.5em;
-  font-size: 1.5em;
+  font-size: ${(props) => (props.long ? '1em' : '1.5em')};
   font-style: italic;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.5em;
   border-radius: 6px;
   position: relative;
   max-width: 620px;
