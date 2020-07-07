@@ -15,29 +15,31 @@ const SectionIntroduction = ({ toc }) => (
       Über das Projekt
     </Heading>
     <Paragraph>
-      Bisher gibt es kaum Erhebungen, welche Arten von Straßen, Radverkehrsanlagen und
-      Kreuzungen die Verkehrsteilnehmenden subjektiv als sicher empfinden.
-      Insbesondere zur differenzierten Betrachtung verknüpfter Merkmale, wie
-      Führungsform der Radverkehrsanlage (RVA), Ausführung, Breite sowie der
-      Situation links und rechts der RVA gibt es bisher kaum Untersuchungen.
-      Sind Radfahrstreifen mit Sperrpfosten (Pollern) die beste Lösung, um den
-      gefühlten Konflikt zwischen Auto und Fahrrad zu mindern oder sind
-      ausreichend breite Radstreifen entscheidend? Welchen Effekt hat die
-      Einfärbung von Radstreifen? Unter welchen Bedingungen wird die Führung im
-      Seitenraum oder auf der Fahrbahn als sicherer empfunden?
+      Bisher gibt es kaum Erhebungen, welche Arten von Straßen,
+      Radverkehrsanlagen und Kreuzungen die Verkehrsteilnehmenden subjektiv als
+      sicher empfinden. Insbesondere zur differenzierten Betrachtung verknüpfter
+      Merkmale, wie Führungsform der Radverkehrsanlage (RVA), Ausführung, Breite
+      sowie der Situation links und rechts der RVA gibt es bisher kaum
+      Untersuchungen. Sind Radfahrstreifen mit Sperrpfosten (Pollern) die beste
+      Lösung, um den gefühlten Konflikt zwischen Auto und Fahrrad zu mindern
+      oder sind ausreichend breite Radstreifen entscheidend? Welchen Effekt hat
+      die Einfärbung von Radstreifen? Unter welchen Bedingungen wird die Führung
+      im Seitenraum oder auf der Fahrbahn als sicherer empfunden?
     </Paragraph>
     <Paragraph>
-      Um diese Forschungslücke zu verkleinern hat FixMyCity die Umfrage “Straßencheck”
-      entwickelt und gemeinsam mit dem Tagesspiegel Berlin durchgeführt. Anhand
-      von 3D-Bildern wurden 1.900 unterschiedliche Straßensituationen durch über
-      21.000 Teilnehmende bewertet. Die zugrunde liegende Systematik (s. <a href="#umfragekonzept">Umfragekonzept</a>) zur Klassifizierung der Straßenquerschnitte und ihrer
-      Merkmalsausprägungen erlaubt nun in der Auswertung die Einflussgrößen
-      einzelner Merkmale, wie RVA-Breite, Oberfläche, baulicher Trennung,
-      rechtsseitiges Parken, usw., zu analysieren. Ebenso konnten Erkenntnisse
-      über Unterschiede im Sicherheitsempfinden verschiedener Nutzergruppen und
-      zur Perspektive von Autofahrenden und Fußgänger:innen gewonnen werden.
+      Um diese Forschungslücke zu verkleinern hat FixMyCity die Umfrage
+      “Straßencheck” entwickelt und gemeinsam mit dem Tagesspiegel Berlin
+      durchgeführt. Anhand von 3D-Bildern wurden 1.900 unterschiedliche
+      Straßensituationen durch über 21.000 Teilnehmende bewertet. Die zugrunde
+      liegende Systematik (s. <a href="#umfragekonzept">Umfragekonzept</a>) zur
+      Klassifizierung der Straßenquerschnitte und ihrer Merkmalsausprägungen
+      erlaubt nun in der Auswertung die Einflussgrößen einzelner Merkmale, wie
+      RVA-Breite, Oberfläche, baulicher Trennung, rechtsseitiges Parken, usw.,
+      zu analysieren. Ebenso konnten Erkenntnisse über Unterschiede im
+      Sicherheitsempfinden verschiedener Nutzergruppen und zur Perspektive von
+      Autofahrenden und Fußgänger:innen gewonnen werden.
     </Paragraph>
-     <ImageMulti>
+    <ImageMulti>
       <ImageMulti.Inner source={MS_C_573}>
         <FeelSafe value={99.11} />
         <ImageMulti.Subtitle>
@@ -46,16 +48,28 @@ const SectionIntroduction = ({ toc }) => (
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_A_570}>
-        <FeelSafe value={96.84} icon="car"/>
+        <FeelSafe value={96.84} icon="car" />
         <ImageMulti.Subtitle>
-          *96,84 % der Autofahrenden bewerteten diese Situation als „sicher“ oder
-          „eher sicher“
+          *96,84 % der Autofahrenden bewerteten diese Situation als „sicher“
+          oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
 
     <Paragraph>
-     Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden unter allen Varianten auf der ersten der beiden gezeigten am sichersten. Autofahrende favorisieren die fast gleiche Gestaltung nur ohne Grüneinfärbung. Der breite, grün eingefärbter Radstreifen getrennt vom KFZ-Verkehr durch Blumenkästen erhielt von Radfahrer:innen die meisten Bewertungen “sicher” (83,93%) oder “eher sicher” (15,18%). Im Durchschnitt wurden von ihnen allerdings Führungen im Seitenraum als sicherer, als solche im fließenden Verkehr empfunden. Führungen in Nebenstraßen schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargestellt wurden. In der statistischen Auswertung finden Sie detaillierte Analysen zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie Auswertungen der Auto- und Fußperspektive. Eine Zusammenfassung der wichtigsten Aussagen finden Sie ganz unten in der Zusammenfassung.
+      Bei einer Führung auf der Fahrbahn fühlen sich die Radfahrenden unter
+      allen Varianten auf der ersten der beiden gezeigten am sichersten.
+      Autofahrende favorisieren die fast gleiche Gestaltung nur ohne
+      Grüneinfärbung. Der breite, grün eingefärbter Radstreifen getrennt vom
+      KFZ-Verkehr durch Blumenkästen erhielt von Radfahrer:innen die meisten
+      Bewertungen “sicher” (83,93%) oder “eher sicher” (15,18%). Im Durchschnitt
+      wurden von ihnen allerdings Führungen im Seitenraum als sicherer, als
+      solche im fließenden Verkehr empfunden. Führungen in Nebenstraßen
+      schnitten erstaunlich unsicher ab, wenn sie nicht “autofrei” dargestellt
+      wurden. In der statistischen Auswertung finden Sie detaillierte Analysen
+      zu den unterschiedlichen Führungsformen und ihrer Einflussfaktoren, sowie
+      Auswertungen der Auto- und Fußperspektive. Eine Zusammenfassung der
+      wichtigsten Aussagen finden Sie ganz unten in der Zusammenfassung.
     </Paragraph>
     <ButtonWrapper>
       <AnchorButton flat href="#statistische-auswertung">
@@ -63,9 +77,12 @@ const SectionIntroduction = ({ toc }) => (
       </AnchorButton>
     </ButtonWrapper>
     <Paragraph>
-      Der Tagesspiegel Berlin hat eine eigene Auswertung der Ergebnisse gemacht, die Sie in diesem <Link
-      href="https://interaktiv.tagesspiegel.de/lab/berliner-strassencheck-die-auswertung/"
-    >Artikel</Link> finden.
+      Der Tagesspiegel Berlin hat eine eigene Auswertung der Ergebnisse gemacht,
+      die Sie in diesem{' '}
+      <Link href="https://interaktiv.tagesspiegel.de/lab/berliner-strassencheck-die-auswertung/">
+        Artikel
+      </Link>{' '}
+      finden.
     </Paragraph>
   </>
 );
