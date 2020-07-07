@@ -455,7 +455,7 @@ Geschlecht
       <ImageMulti.Inner source={MS_C_21}>
         <FeelSafe value={80} />
         <ImageMulti.Subtitle>
-          *80,37 % der Nutzer:innen bewerteten diese breite RVA mit Grüneinfärbung
+          *80,37 % der Nutzer:innen bewerteten diese schmale RVA mit Grüneinfärbung
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
