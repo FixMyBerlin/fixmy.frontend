@@ -52,6 +52,11 @@ const configureFileLoader = (config) => {
   });
 };
 
+const fixMapboxBug = (config) => {
+  // See https://github.com/mapbox/mapbox-gl-draw/issues/626
+  config.node = { ...config.node, fs: 'empty' };
+};
+
 module.exports = {
   stories: ['../src/**/*.stories.[tj]s'],
   addons: ['@storybook/addon-actions', '@storybook/addon-links'],
@@ -60,6 +65,7 @@ module.exports = {
     configureTypeScript(config);
     replaceSvgRule(config);
     configureFileLoader(config);
+    fixMapboxBug(config);
     return config;
   }
 };
