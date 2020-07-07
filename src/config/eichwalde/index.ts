@@ -8,7 +8,8 @@ export default {
     resetPassword: defaultRoutes.resetPassword,
     emailVerification: defaultRoutes.emailVerification,
     profile: defaultRoutes.profile,
-    userVerify: defaultRoutes.userVerify
+    userVerify: defaultRoutes.userVerify,
+    zesplusResearch: '/forschungsprojekt'
   },
   menu: {
     size: 325,
