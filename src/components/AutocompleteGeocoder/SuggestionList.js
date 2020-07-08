@@ -22,9 +22,7 @@ const Suggestionlist = ({ suggestions, onSuggestionPick }) => {
   ));
 
   return (
-    <List
-      data-testid="autocomplete-geocoder-suggestion-list"
-    >
+    <List>
       {suggestionItems}
     </List>
   );

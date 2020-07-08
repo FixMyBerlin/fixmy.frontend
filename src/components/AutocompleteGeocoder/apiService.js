@@ -61,6 +61,12 @@ export async function fetchSuggestions(searchString) {
 
   const url = compileSearchUrl(searchString);
   return fetch(url, { signal })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Encountered non 2xx status code')
+      }
+      return res
+    })
     .then((res) => res.json())
     .then((res) => res.features)
     .then((fetchedSuggestions) => {

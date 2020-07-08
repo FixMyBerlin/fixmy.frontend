@@ -5,7 +5,9 @@ export default [
   rest.get(
     new RegExp('^https://api.mapbox.com/geocoding/v5/mapbox.places'),
     (req, res, ctx) => {
-      return res(ctx.json(mockLocationSuggestions));
+      return res(
+        ctx.json(mockLocationSuggestions)
+      );
     }
   )
 ]

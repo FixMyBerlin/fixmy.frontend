@@ -7,6 +7,8 @@ import SuggestionList from './SuggestionList';
 import { fetchSuggestions } from './apiService';
 
 class AutocompleteGeocoder extends PureComponent {
+  static ERR_SERVICE_UNAVAILABLE = 'Service nicht erreichbar. Bitte versuch den Standort über die Karte zu finden.'
+
   isMounted = false;
 
   constructor(props) {
@@ -44,9 +46,7 @@ class AutocompleteGeocoder extends PureComponent {
   handleError = (error) => {
     this.clearSuggestions();
     logger(`Error in AutocompleteGeocoder: ${error}`);
-    this.props.onError(
-      'Service nicht erreichbar. Bitte versuch den Standort über die Karte zu finden.'
-    );
+    this.props.onError(AutocompleteGeocoder.ERR_SERVICE_UNAVAILABLE);
   };
 
   onEnterPress = () => {

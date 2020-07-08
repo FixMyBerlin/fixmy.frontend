@@ -8,7 +8,7 @@ import { setupServer } from 'msw/node';
 import handlers from './mocks/mswHandlers';
 
 // Setup requests interception using the given handlers.
-const server = setupServer(...handlers);
+export const server = setupServer(...handlers);
 
 beforeAll(() => {
   // Enable the mocking in tests.

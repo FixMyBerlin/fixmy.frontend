@@ -114,7 +114,10 @@ class SearchBar extends PureComponent {
           onBlur={this.props.onInputBlur}
         />
         {this.state.inputValue ? (
-          <SearchReset onClick={this.resetInput} data-cy="map-address-reset">
+          <SearchReset
+            role="button"
+            onClick={this.resetInput}
+            data-cy="map-address-reset">
             ×
           </SearchReset>
         ) : (
