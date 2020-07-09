@@ -50,7 +50,7 @@ const SectionTeam = ({ toc }) => (
     <Paragraph>
       <LogoWrapper>
         <a
-          href="https://www.berlin.de/rbmskzl/"
+          href="https://www.bmvi.de/"
           target="_blank"
           rel="noopener noreferrer"
           style={{ borderBottom: 'none' }}
