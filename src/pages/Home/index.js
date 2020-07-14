@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 import MenuButton from '~/components/MenuButton';
 import ContentOverlay from '~/components/ContentOverlay';
 import bgImage from '~/images/background.jpg';
@@ -28,6 +29,8 @@ if (config.region === 'berlin') {
   content = <Berlin />;
 } else if (config.region === 'aachen') {
   content = <Aachen />;
+} else if (config.region === 'eichwalde') {
+  content = <Redirect to={config.routes.zesplusResearch} />;
 } else {
   content = (
     <>
