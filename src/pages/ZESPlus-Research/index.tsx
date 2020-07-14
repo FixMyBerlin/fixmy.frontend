@@ -24,6 +24,8 @@ import LogoSchulzendorf from '~/images/eichwalde/logo-schulzendorf.png';
 import LogoTU from '~/images/eichwalde/logo-tu.png';
 import LogoFMB from '~/images/logofmb.png';
 import SimraSrc from '~/images/eichwalde/simra.jpg';
+import { media } from '~/styles/utils';
+import config from '~/config';
 
 const LogoGrid1 = styled.div`
   display: flex;
@@ -38,13 +40,20 @@ const LogoGrid2 = styled(LogoGrid1)`
     margin-right: 1em;
     height: 45px;
     width: auto;
+
+    ${media.m`
+      margin-right: 2em;
+    `}
   }
 `;
 
 const DownloadWrapper = styled(Paragraph)`
   display: flex;
   flex-wrap: wrap;
-  margin-top: -2em;
+
+  ${media.m`
+    margin-top: -2em;
+  `}
 
   a {
     flex-grow: 1;
@@ -55,8 +64,8 @@ const DownloadWrapper = styled(Paragraph)`
 `;
 
 const LogoAnnotation = styled(Paragraph)`
-  font-size: 0.9em;
-  color: ${(props) => props.theme.grey500};
+  font-size: 0.8em;
+  color: ${config.colors.darkgrey};
 `;
 
 const Wrapper = styled(ArticleWrapper)`
@@ -93,7 +102,7 @@ const Research = () => (
       Radnetzes, aber auch für die Einbeziehung der lokalen Initiativen sowie
       des direkten Umfelds, in Form der Nachbargemeinden und des BER.
     </Paragraph>
-    <Image source={Image1} />
+    <Image source={Image1} alt="" role="presentation" />
     <Paragraph>
       Finanziert wird diese Kooperation durch die „MobilitätsWerkStadt 2025“ des
       Bundesministeriums für Forschung und Entwicklung. Eine wichtige Grundlage
@@ -178,7 +187,7 @@ const Research = () => (
         Mehr Informationen zum SimRa-Projekt
       </Link>
     </Paragraph>
-    <Image source={SimraSrc} />
+    <Image source={SimraSrc} alt="Screenshots der SimRa-App" />
     <DownloadWrapper>
       <AnchorButton
         flat
@@ -240,7 +249,7 @@ const Research = () => (
         Feedback an das Projektteam
       </AnchorButton>
     </Paragraph>
-    <ImageFull source={Image2} />
+    <ImageFull source={Image2} alt="" role="presentation" />
     <LogoGrid1>
       <img
         src={LogoBMBF}
