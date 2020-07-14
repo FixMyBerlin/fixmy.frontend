@@ -1,13 +1,15 @@
 import { css, keyframes } from 'styled-components';
 
-// https://github.com/styled-components/styled-components/blob/master/docs/tips-and-tricks.md
-function getMediaQuery(size) {
-  return (...args) => css`
+type MediaType = Parameters<typeof css>;
+
+// https://github.com/styled-components/styled-components/blob/master/packages/styled-components/docs/tips-and-tricks.md#more-powerful-example
+const getMediaQuery = (size: number) => {
+  return (...styleDefinition: MediaType) => css`
     @media (min-width: ${size}px) {
-      ${css(...args)}
+      ${css(...styleDefinition)}
     }
   `;
-}
+};
 
 export const breakpoints = {
   s: 460,
@@ -24,7 +26,7 @@ export const media = {
 };
 
 function getOrientationQuery(orientation) {
-  return (...args) => css`
+  return (...args: Parameters<typeof css>) => css`
     @media (orientation: ${orientation}) {
       ${typeof window.orientation !== 'undefined' ? css(...args) : ''}
     }
@@ -36,7 +38,7 @@ export const orientation = {
   portrait: getOrientationQuery('portrait')
 };
 
-export function matchMediaSize(size) {
+export function matchMediaSize(size: number) {
   return window.matchMedia(`(min-width: ${size}px)`).matches;
 }
 
