@@ -33,26 +33,26 @@ const SectionAbout = ({ toc }) => (
       Kommunikationsstrategie eine hohe Zahl an Teilnehmenden zu erreichen.
     </Paragraph>
     <Paragraph>
-      Mittels einer qualitativen Befragung von Radfahrenden lässt sich
-      normalerweise schwierig ermitteln, welche Breite von Radverkehrsanlagen
-      als “zu schmal” empfunden wird. Ähnliches gilt für das subjektive
-      Empfinden von Straßensituationen sowie die Kombination von gewissen
-      baulichen Merkmalen (z.B. schmaler Radweg und Parkplätze). Darüber hinaus
-      werden häufig in erster Linie Personen befragt, welche ohnehin regelmäßig
-      Fahrrad fahren. Als Konsequenz sind die Daten häufig nur für die
-      Nutzergruppe “Radfahrende” repräsentativ.
+      Mittels einer qualitativen Befragung von Radfahrenden lässt sich normalerweise schwierig
+      ermitteln, welche Breite von Radverkehrsanlagen als “zu schmal” empfunden
+      wird. Ähnliches gilt für das subjektive Empfinden von Straßensituationen
+      sowie die Kombination von gewissen baulichen Merkmalen (z.B. schmaler
+      Radweg und Parkplätze). Darüber hinaus werden häufig in erster Linie
+      Personen befragt, welche ohnehin regelmäßig Fahrrad fahren. Als Konsequenz
+      sind die Daten häufig nur für die Nutzergruppe “Radfahrende”
+      repräsentativ.
     </Paragraph>
     <Paragraph>
       Durch das Arbeiten mit Bildern von spezifischen Straßen-Szenarien konnte
-      im Rahmen der Umfrage eine direkte Zuordnung vom subjektiven
-      Sicherheitsempfinden in Bezug zu verschiedenen Infrastrukturen und deren
-      Merkmalsausprägungen gemacht werden. Mittels Abfrage von Daten zum
-      Verkehrsverhalten, sowie demografischen Daten konnten diese subjektiven
-      Empfindungen verschiedenen Bevölkerungs- und Verkehrsnutzergruppen (z.B.
-      Autofahrende, Radfahrende etc.) zugeordnet werden. Durch die große
-      Teilnehmendenzahl und die gemeinsam mit dem Tagesspiegel Berlin
-      entwickelte Kommunikationsstrategie konnte eine weit gestreute hohe Anzahl
-      von Personen befragt werden (demografisch und vom Verkehrsverhalten).
+      im Rahmen der Umfrage eine direkte Zuordnung vom subjektiven Sicherheitsempfinden
+      in Bezug zu verschiedenen Infrastrukturen und deren Merkmalsausprägungen
+      gemacht werden. Mittels Abfrage von Daten zum Verkehrsverhalten, sowie
+      demografischen Daten konnten diese subjektiven Empfindungen verschiedenen
+      Bevölkerungs- und Verkehrsnutzergruppen (z.B. Autofahrende, Radfahrende
+      etc.) zugeordnet werden. Durch die große Teilnehmendenzahl und die
+      gemeinsam mit dem Tagesspiegel Berlin entwickelte Kommunikationsstrategie
+      konnte eine weit gestreute hohe Anzahl von Personen befragt werden
+      (demografisch und vom Verkehrsverhalten).
     </Paragraph>
     <Paragraph>
       Bei der Auswahl der Szenarien sollten Planungen von aktuellen
@@ -91,16 +91,13 @@ const SectionAbout = ({ toc }) => (
       In diesem Abschnitt wurden allgemeine Fragen über den Berliner Verkehr für
       die redaktionelle Auswertung des Tagesspiegels gestellt. Hier soll nicht
       näher auf diese Fragen eingegangen werden, da diese nicht Teil der
-      Konzeption sind. Eine{' '}
-      <a
+      Konzeption sind. Eine <a
         href="https://interaktiv.tagesspiegel.de/lab/strassencheck-das-stoert-im-berliner-verkehr-am-meisten/"
         target="_blank"
         rel="noopener noreferrer"
-      >
-        {' '}
-        Auswertung{' '}
-      </a>{' '}
-      dazu hat der Tagesspiegel Berlin gemacht.
+      > Auswertung </a> dazu hat der Tagesspiegel Berlin gemacht.
+
+
     </Paragraph>
     <Heading as="h3">Profilfragen</Heading>
     <Paragraph>
@@ -138,19 +135,8 @@ const SectionAbout = ({ toc }) => (
     </Paragraph>
     <Heading as="h3">Szenenbewertungen</Heading>
     <Paragraph>
-      Basierend auf den Angaben der Teilnehmenden zur Häufigkeit ihrer
-      Verkehrsmittelnutzung, wurden sie anhand der angegebenen
-      Nutzungshäufigkeit (für die Nutzer:innen nicht sichtbar) als Radfahrende,
-      Fußgänger:innen oder Autofahrende eingestuft. Den Teilnehmenden wurden im
-      Anschluss fünf bzw. zehn Straßenszenen aus der ihrer Nutzergruppe
-      entsprechenden Perspektive gezeigt. Die Straßenszenen konnten auf einer
-      vierstufigen Skala mit “unsicher”, “eher unsicher”, “eher sicher”, oder
-      “sicher” bewertet werden. Im Anschluss konnte der/die Teilnehmende wählen,
-      ob er in dieser Perspektive weitere Szenen bewerten möchte oder auf eine
-      Perspektive aus Sicht der anderen Verkehrsteilnehmenden wechseln möchte.
-      Nach weiteren zehn Szenen wurde der/die Teilnehmende erneut gefragt. So
-      könnte die Umfrage beliebig lange fortgesetzt werden. Im Durchschnitt
-      bewertete jede/r Teilnehmende 22 Szenen.
+      Basierend auf den Angaben der Teilnehmenden zur Häufigkeit ihrer Verkehrsmittelnutzung, wurden sie anhand der angegebenen Nutzungshäufigkeit  (für die Nutzer:innen nicht sichtbar) als Radfahrende, Fußgänger:innen oder Autofahrende eingestuft.
+Den Teilnehmenden wurden im Anschluss fünf bzw. zehn Straßenszenen aus der ihrer Nutzergruppe entsprechenden Perspektive gezeigt. Die Straßenszenen konnten auf einer vierstufigen Skala mit “unsicher”, “eher unsicher”, “eher sicher”, oder “sicher” bewertet werden. Im Anschluss konnte der/die Teilnehmende wählen, ob er in dieser Perspektive weitere Szenen bewerten möchte oder auf eine Perspektive aus Sicht der anderen Verkehrsteilnehmenden wechseln möchte. Nach weiteren zehn Szenen wurde der/die Teilnehmende erneut gefragt. So könnte die Umfrage beliebig lange fortgesetzt werden. Im Durchschnitt bewertete jede/r Teilnehmende 22 Szenen.
     </Paragraph>
     <Heading as="h3">Auswahl der Straßenszenen</Heading>
     <Paragraph>
@@ -207,20 +193,19 @@ const SectionAbout = ({ toc }) => (
       Straßenszenarien ist hier zu finden.
     </Paragraph>
     <Paragraph>
-      Ein genauere Dokumentation zur Systematik der Straßenszenarien ist{' '}
-      <Link href="/uploads/kataster-ki/Umfragekonzept_KatasterKI_Feb2020.pdf">
+      Ein genauere Dokumentation zur Systematik der Straßenszenarien ist <Link
+        href="/uploads/kataster-ki/Umfragekonzept_KatasterKI_Feb2020.pdf"
+      >
         hier [.pdf Download]
-      </Link>{' '}
-      zu finden.
+      </Link> zu finden.
     </Paragraph>
     <Paragraph>
-      Ein Übersicht der Szenen und ihrer Merkmale sind in{' '}
-      <Link href="/uploads/kataster-ki/Szenarienuebersicht_fuer_Abgabe_KatasterKi_Feb20.ods">
-        dieser Tabelle [.ods Download]
-      </Link>{' '}
-      zu finden
+      Ein Übersicht der Szenen und ihrer Merkmale sind in <Link
+        href="/uploads/kataster-ki/Szenarienuebersicht_fuer_Abgabe_KatasterKi_Feb20.ods"
+      >
+      dieser Tabelle [.ods Download]</Link> zu finden
     </Paragraph>
-  </>
+    </>
 );
 
 export default SectionAbout;

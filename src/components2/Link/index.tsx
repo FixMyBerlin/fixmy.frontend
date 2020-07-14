@@ -16,7 +16,7 @@ const BaseContainer = styled.a`
   background-repeat: no-repeat;
   background-position: center left;
   padding-left: 15px;
-
+  
   /* make sure long anchors wrap */
   white-space: pre-wrap;
 `;
