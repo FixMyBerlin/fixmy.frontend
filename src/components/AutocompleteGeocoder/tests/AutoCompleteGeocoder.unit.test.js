@@ -3,7 +3,7 @@ import { render, act, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/dom';
 
-import { server } from '~/../jest/jest.setupAfterEnv'
+import { server } from '~/../jest/jest.setupAfterEnv';
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import * as apiService from '~/components/AutocompleteGeocoder/apiService';
 import mockedSuggestions from '~/../jest/mocks/mockLocationSuggestions.json';
@@ -78,7 +78,7 @@ describe('<AutoCompleteGeocoder />', () => {
 
     afterEach(() => {
       fetchSuggestionsSpy.mockClear();
-    })
+    });
 
     it('renders the list of suggestions', async () => {
       const { inputElement } = setup();
@@ -141,36 +141,52 @@ describe('<AutoCompleteGeocoder />', () => {
 
     });
     // FIXME: onLocationPick not triggered
-    xit('invokes the onLocationPick handler with the first search result' +
-        ' when the user presses enter', async () => {
+    it('invokes the onLocationPick handler' +
+      ' when the user presses enter if there is only one search result', async () => {
+      // extract first suggested item from mock
       const [mockedFirstSuggestion] = mockedSuggestions.features;
       // eslint-disable-next-line camelcase
       const { place_name_de, center } = mockedFirstSuggestion;
       const { address, coords } = parseSuggestion({ place_name_de, center });
 
+      // set up msw response to only return one feature
+      const mockedResponse = { ...mockedSuggestions };
+      mockedResponse.features = mockedResponse.features.slice(0, 1);
+      server.use(
+        rest.get(
+          new RegExp('^https://api.mapbox.com/geocoding/v5/mapbox.places'),
+          (req, res, ctx) => {
+            return res(
+              ctx.json(mockedResponse)
+            );
+          }
+        )
+      );
+
+      // render, fetch suggestions
       const { inputElement, initProps } = setup();
       await userEvent.type(inputElement, SEARCH_STRING);
-
-      // wait for suggestions to render
       await findAllBySearchString();
 
       // simulate that user presses enter
-      screen.debug();
       await userEvent.type(inputElement, '{enter}');
-      //fireEvent.keyPress(inputElement,  { key: 'Enter', keyCode: 13, which: 13, charCode: 13 } );
 
       await waitFor(() =>
         expect(initProps.onLocationPick)
-        .toHaveBeenCalledWith({ address, coords })
+          .toHaveBeenCalledWith({ address, coords })
       );
+
+      // teardown: reset msw handler
+      server.resetHandlers();
     });
   });
 
   describe('cancelling a search', () => {
+
     it('empties the search input and clears the result list on reset button press', async () => {
-      const SEARCH_STRING = 'Hauptstraße'
+      const SEARCH_STRING = 'Hauptstraße';
       // get search results as usual
-      const { inputElement, } = setup();
+      const { inputElement } = setup();
       userEvent.type(inputElement, SEARCH_STRING);
       await screen.findByRole('list');
 
@@ -179,13 +195,13 @@ describe('<AutoCompleteGeocoder />', () => {
       expect(screen.queryByRole('list')).toBeInTheDocument();
 
       // reset UI by clicking the respective button
-      const resetButton = screen.getByRole('button')
+      const resetButton = screen.getByRole('button');
       userEvent.click(resetButton);
 
       expect(inputElement.value).toBe('');
       expect(screen.queryByRole('list')).not.toBeInTheDocument();
-    })
-  })
+    });
+  });
 
   describe('error handling', () => {
     beforeAll(() => {
@@ -196,28 +212,26 @@ describe('<AutoCompleteGeocoder />', () => {
             return res(
               ctx.status(403),
               ctx.json({
-                errorMessage: 'Not Authorized',
-              }),
+                errorMessage: 'Not Authorized'
+              })
             );
           }
         )
-      )
-    })
+      );
+    });
 
     it('invokes the onError callback if the API request fails', async () => {
-      const SEARCH_STRING = 'Hauptstraße'
+      const SEARCH_STRING = 'Hauptstraße';
       // get search results as usual
-      const { inputElement, initProps} = setup();
+      const { inputElement, initProps } = setup();
       userEvent.type(inputElement, SEARCH_STRING);
 
       await waitFor(() => {
         expect(initProps.onError)
-          .toHaveBeenCalledWith(AutocompleteGeocoder.ERR_SERVICE_UNAVAILABLE)
-      })
-    })
+          .toHaveBeenCalledWith(AutocompleteGeocoder.ERR_SERVICE_UNAVAILABLE);
+      });
+    });
 
-
-    // Reset any runtime request handlers we may add during the tests.
-    afterEach(() => server.resetHandlers())
-  })
+    afterEach(() => server.resetHandlers());
+  });
 });
