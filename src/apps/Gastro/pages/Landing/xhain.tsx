@@ -51,10 +51,18 @@ const XhainLanding = ({ district }) => (
     </Attribution>
     <h2>Sonderflächen für Schankbetrieb, Einzelhandel und soziale Projekte</h2>
     <p>
-      Das Bezirksamt Friedrichshain-Kreuzberg bietet Gastronomiebetrieben, Einzelhandel und sozialen Projekte die Möglichkeit, zusätzliche Flächen im ruhenden Verkehr temporär (Freitags bis Sonntags von 11 bis 22 Uhr oder Montags bis Freitags von 10 bis 20 Uhr) zum Aufstellen von Tischen oder zum Ausstellen von Waren zu nutzen. So können diese die Vorgaben der Corona-Eindämmungsverordnung umsetzen und dennoch Ihren Betrieb wieder aufnehmen.
+      Das Bezirksamt Friedrichshain-Kreuzberg bietet Gastronomiebetrieben,
+      Einzelhandel und sozialen Projekte die Möglichkeit, zusätzliche Flächen im
+      ruhenden Verkehr temporär (Freitags bis Sonntags von 11 bis 22 Uhr oder
+      Montags bis Freitags von 10 bis 20 Uhr) zum Aufstellen von Tischen oder
+      zum Ausstellen von Waren zu nutzen. So können diese die Vorgaben der
+      Corona-Eindämmungsverordnung umsetzen und dennoch Ihren Betrieb wieder
+      aufnehmen.
     </p>
     <p>
-      In der Karte sehen Sie alle bis zum 3. Juli 2020 genehmigten Anträge. Die jeweiligen Betrieben können die Flächen nach Beauftragung der Schilder und Absperrungen nutzen.
+      In der Karte sehen Sie alle bis zum 3. Juli 2020 genehmigten Anträge. Die
+      jeweiligen Betrieben können die Flächen nach Beauftragung der Schilder und
+      Absperrungen nutzen.
     </p>
 
     <StyledMap
@@ -76,16 +84,19 @@ const XhainLanding = ({ district }) => (
     <p>
       Das Bezirksamt Friedrichshain-Kreuzberg bietet in dieser Situation
       Gewerbetrieben, Einzelhandel und sozialen Projekten an, Tische, Stühle und
-      Auslagen temporär auf das Straßenland zu verlagern. Nach Auswertung von über 300 Bedarfsmeldungen und 130 Anträgen, wurden 100 Genehmigung zur Nutzung von Sonderflächen erteilt.
+      Auslagen temporär auf das Straßenland zu verlagern. Nach Auswertung von
+      über 300 Bedarfsmeldungen und 130 Anträgen, wurden 100 Genehmigung zur
+      Nutzung von Sonderflächen erteilt.
     </p>
     <h2>Welche Flächen können wann genutzt werden?</h2>
     <p>
-      Nach Prüfung der Anträge hat das Bezirksamt
-      entsprechende verkehrsrechtliche Anordnungen getroffen. Die Genehmigungen
-      werden mit Blick auf die Eindämmungsmaßnahmen befristet und bis auf
-      weiteres gebührenfrei ausgesprochen. Zeitlich werden dabei zunächst Freitag, Samstag,
-      Sonntag, jeweils von 11:00 Uhr bis 22:00 Uhr für die Gastronomie und Mo-Fr jeweils von 10 bis 20 Uhr für den Einzelhandel, Flächen als zusätzliche
-      Außenflächen temporär angeboten.{' '}
+      Nach Prüfung der Anträge hat das Bezirksamt entsprechende
+      verkehrsrechtliche Anordnungen getroffen. Die Genehmigungen werden mit
+      Blick auf die Eindämmungsmaßnahmen befristet und bis auf weiteres
+      gebührenfrei ausgesprochen. Zeitlich werden dabei zunächst Freitag,
+      Samstag, Sonntag, jeweils von 11:00 Uhr bis 22:00 Uhr für die Gastronomie
+      und Mo-Fr jeweils von 10 bis 20 Uhr für den Einzelhandel, Flächen als
+      zusätzliche Außenflächen temporär angeboten.{' '}
     </p>
     <h2>Bedingungen für die Genehmigung</h2>
     <p>

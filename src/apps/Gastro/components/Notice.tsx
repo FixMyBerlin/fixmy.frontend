@@ -7,7 +7,8 @@ const GastroNotice = ({ district }) => {
   if (district?.name === 'xhain')
     return (
       <Notice>
-        Bisher wurden 100 Anträge genehmigt, das Formular zur Antragsstellung wird demnächst wieder für neue Anträge freigeschaltet. 
+        Bisher wurden 100 Anträge genehmigt, das Formular zur Antragsstellung
+        wird demnächst wieder für neue Anträge freigeschaltet.
       </Notice>
     );
 

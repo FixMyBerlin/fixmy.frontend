@@ -50,9 +50,13 @@ const TOCEntrySeparator = styled.div`
   `}
 `;
 
-const TOCEntryText = styled.div<TOCEntryWrapperProps>`
+interface EntryText {
+  active?: boolean;
+}
+
+const TOCEntryText = styled.div<EntryText>`
   ${media.xl`
-    font-weight: ${(props) => (props.active ? 700 : 300)};
+    font-weight: ${(props: EntryText) => (props.active ? 700 : 300)};
   `}
 `;
 
