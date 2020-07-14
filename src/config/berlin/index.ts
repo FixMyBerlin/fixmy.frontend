@@ -43,6 +43,7 @@ export default {
         },
         gastro: {
           path: 'terrassen',
+          directSignup: true,
           timeline: {
             openSignup: new Date(2020, 6, 14),
             closeSignup: new Date(2020, 7, 31)

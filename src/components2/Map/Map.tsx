@@ -50,6 +50,12 @@ const Map = (props: Props) => {
       initMap({ setMap, mapContainer, onInit, center, zoom, mapboxProps });
   }, [map]);
 
+  useEffect(() => {
+    if (map == null || center == null) return;
+
+    map.setCenter(center);
+  }, [map, center]);
+
   return (
     <Wrapper
       className={className}

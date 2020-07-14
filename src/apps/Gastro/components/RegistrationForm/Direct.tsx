@@ -22,6 +22,7 @@ import SectionShopfrontLength from './SectionShopfrontLength';
 import SectionUsage from './SectionUsage';
 import SectionBase from './SectionBase';
 import { media } from '~/styles/utils';
+import regulations from '../../regulations';
 
 /* eslint-disable camelcase */
 export interface FormData {
@@ -83,25 +84,18 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const RegistrationForm = ({
-  id,
+const DirectRegistrationForm = ({
   // eslint-disable-next-line camelcase
-  access_key,
   onSuccess,
-  signupData,
-  regulation,
   district
 }) => (
   <Formik
-    initialValues={{ ...initialValues, ...signupData }}
-    validate={validate(regulation)}
+    initialValues={initialValues}
+    validate={validate(regulations[0])}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       // @ts-ignore
       const registrationData: GastroRegistration = {
-        ...signupData,
         ...values,
-        id,
-        access_key,
         shopfront_length: parseLength(values.shopfront_length),
         opening_hours: 'weekend',
         campaign: config.gastro[district?.name]?.campaign
@@ -137,19 +131,14 @@ const RegistrationForm = ({
   >
     {({ isValid, values, handleChange, isSubmitting, status }) => (
       <StyledForm>
-        <h3>Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb:</h3>
+        <h3>Bitte machen Sie Angaben zu Ihrem Betrieb / Verein:</h3>
 
-        <SectionBase
-          shopName={values.shop_name}
-          signupData={signupData}
-          handleChange={handleChange}
-        />
+        <SectionBase handleChange={handleChange} />
 
         <h3>Bestimmung der Sondernutzungsfläche</h3>
         <SectionArea
-          regulation={regulation}
+          regulation={regulations[0]}
           handleChange={handleChange}
-          signupData={signupData}
           values={values}
         />
 
@@ -225,4 +214,4 @@ const mapStateToProps = ({ AppState }) => ({
   district: AppState.district
 });
 
-export default connect(mapStateToProps)(RegistrationForm);
+export default connect(mapStateToProps)(DirectRegistrationForm);

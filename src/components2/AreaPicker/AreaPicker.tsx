@@ -37,6 +37,9 @@ const AreaPicker: React.FC<Props> = ({
   // Mapbox-GL.js map instance
   const [map, setMap] = useState<MapboxGL.Map | null>(null);
   const [hasGeometry, setHasGeometry] = useState<boolean>(false);
+  const [localCenter, setLocalCenter] = useState<MapboxGL.LngLatLike | null>(
+    center
+  );
 
   useEffect(() => {
     if (map == null) return;
@@ -62,13 +65,19 @@ const AreaPicker: React.FC<Props> = ({
     map.on('draw.delete', () => onSelect(null));
   }, [map]);
 
+  // Only adjust map center as long as no geometry has been drawn
+  // otherwise the user would lose their previously drawn area
+  useEffect(() => {
+    if (!hasGeometry) setLocalCenter(center);
+  }, [center]);
+
   return (
     <>
       <StyledMap
         onInit={setMap}
         style={mapboxStyle}
         bounds={bounds}
-        center={center}
+        center={localCenter}
         zoom={DEFAULT_ZOOM_LEVEL}
         attributionControl={false}
       />

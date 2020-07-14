@@ -7,16 +7,33 @@ import styled from 'styled-components';
 
 import StaticMap from '~/components2/StaticMap';
 import FormError from './FormError';
+import LocationPicker from '~/components2/LocationPicker';
 
 const InvisiLabel = styled.label`
   display: none;
 `;
 
-const SectionBase = ({ shopName, signupData, district }) => (
+const SectionBase = ({
+  shopName = null,
+  signupData = null,
+  handleChange,
+  district
+}) => (
   <section>
-    <p>
-      <strong>Name des Betriebs: {shopName}</strong>
-    </p>
+    {signupData && (
+      <p>
+        <strong>Name des Betriebs: {shopName}</strong>
+      </p>
+    )}
+
+    {signupData == null && (
+      <Field
+        name="shop_name"
+        component={TextField}
+        label="Name des Betriebs"
+        fullWidth
+      />
+    )}
 
     <ErrorMessage
       name="category"
@@ -67,19 +84,45 @@ const SectionBase = ({ shopName, signupData, district }) => (
       fullWidth
     />
     <InvisiLabel htmlFor="first_name">Addresse des Ladengeschäfts</InvisiLabel>
-    <Field
-      id="address"
-      name="address"
-      component={TextField}
-      label="Addresse des Ladengeschäfts"
-      disabled
-      fullWidth
-    />
-    <StaticMap
-      location={signupData?.geometry?.coordinates}
-      mapboxStyle={district?.apps.gastro.registration.mapboxStyle}
-      bounds={district?.bounds}
-    />
+    {signupData == null && (
+      <>
+        <p>Es können nur Adressen in {district.title} gemeldet werden.</p>
+        <ErrorMessage
+          name="address"
+          render={(msg) => <FormError error>{msg}</FormError>}
+        />
+        <LocationPicker
+          mapboxStyle={district.apps.gastro.signup.mapboxStyle}
+          bounds={district.bounds}
+          onSelect={({ address, location }) => {
+            handleChange({ target: { name: 'address', value: address } });
+            handleChange({
+              target: {
+                name: 'location',
+                value: [location.lng, location.lat]
+              }
+            });
+          }}
+        />
+      </>
+    )}
+    {signupData != null && (
+      <>
+        <Field
+          id="address"
+          name="address"
+          component={TextField}
+          label="Addresse des Ladengeschäfts"
+          disabled
+          fullWidth
+        />
+        <StaticMap
+          location={signupData?.geometry?.coordinates}
+          mapboxStyle={district?.apps.gastro.registration.mapboxStyle}
+          bounds={district?.bounds}
+        />
+      </>
+    )}
   </section>
 );
 

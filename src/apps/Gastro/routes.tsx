@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import config from './config';
 import Registration from './pages/Registration';
+import DirectSignup from './pages/DirectSignup';
 import Permit from './pages/Permit';
 import TrafficOrder from './pages/TrafficOrder';
 import Landing from './pages/Landing';
@@ -26,6 +27,17 @@ const ScrollToTop = () => {
 export const getPath = (district, name: string) =>
   getAppPath(district, 'gastro') + config.gastro[district.name].routes[name];
 
+const renderSignup = (props) => {
+  if (props.district == null) return null;
+
+  if (openSignup(props.district)) {
+    if (props.district.apps.gastro.directSignup)
+      return <DirectSignup {...props} />;
+    return <Signup {...props} />;
+  }
+  return <Redirect to={getPath(props.district, 'landing')} />;
+};
+
 const Routes = ({ district }) => (
   <Router history={history}>
     <ScrollToTop />
@@ -35,13 +47,7 @@ const Routes = ({ district }) => (
       <Route
         exact
         path={getPath(district, 'signup')}
-        render={(props) =>
-          openSignup(district) ? (
-            <Signup {...props} />
-          ) : (
-            <Redirect to={getPath(district, 'landing')} />
-          )
-        }
+        render={(props) => renderSignup({ district, ...props })}
       />
 
       <Route

@@ -36,139 +36,145 @@ const PickerIntro = styled.div`
 const SectionArea = ({
   regulation,
   handleChange,
-  signupData,
+  signupData = null,
   values,
   district
-}) => (
-  <>
-    {requiresArea(regulation.zone) && (
-      <section>
-        <p>
-          Für Ihren Betrieb / Verein kann grundsätzlich eine
-          Sondernutzungsfläche{' '}
-          <strong>im Bereich der derzeitigen Parkflächen</strong> zur Verfügung
-          gestellt werden.
-        </p>
-        <p>
-          Die späteren Anordnungen werden nach folgendem Regelplan getroffen:
-        </p>
-        <ul>
-          <li>
-            <a
-              href="/uploads/offene-terrassen/Regelplaene_Strassenraum.pdf"
-              className="internal"
-              target="_blank"
-            >
-              Regelplan Sondernutzungsflächen
-            </a>
-          </li>
-        </ul>
-
-        <p>
-          Die Sondernutzungsfläche kann nach Einrichtung{' '}
-          {usageWeekday(values) && (
-            <>Montags bis Freitags, jeweils von 10 bis 20 Uhr</>
+}) => {
+  const center = signupData?.geometry?.coordinates || values?.location;
+  return (
+    <>
+      {requiresArea(regulation.zone) && (
+        <section>
+          {signupData && (
+            <p>
+              Für Ihren Betrieb / Verein kann grundsätzlich eine
+              Sondernutzungsfläche{' '}
+              <strong>im Bereich der derzeitigen Parkflächen</strong> zur
+              Verfügung gestellt werden.
+            </p>
           )}
-          {usageWeekend(values) && (
-            <>Freitags, Samstags und Sonntags, jeweils von 11 bis 22 Uhr</>
-          )}{' '}
-          genutzt werden. Die Nutzung der Sonderflächen erfolgt kostenfrei
-          zunächst bis zum 31.8.2020.
-        </p>
-
-        <PickerIntro>
           <p>
-            <strong>
-              Bitte zeichnen Sie auf der untenstehenden Karte ein, wo genau Sie
-              die Sonderfläche nutzen möchten:
-            </strong>
+            Die späteren Anordnungen werden nach folgendem Regelplan getroffen:
           </p>
-          <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
           <ul>
             <li>
-              Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,
-              Bushaltestellen, Schaltschränken, Baumscheiben oder Baustellen
-              beantragt werden.
-            </li>
-            <li>
-              Die eingezeichnete Fläche muss sich im Bereich der Straßenfront
-              Ihres Ladenlokals befinden.
+              <a
+                href="/uploads/offene-terrassen/Regelplaene_Strassenraum.pdf"
+                className="internal"
+                target="_blank"
+              >
+                Regelplan Sondernutzungsflächen
+              </a>
             </li>
           </ul>
-        </PickerIntro>
 
-        <AreaPicker
-          center={signupData?.geometry?.coordinates}
-          mapboxStyle={district?.apps.gastro.registration.mapboxStyle}
-          bounds={district?.bounds}
-          onSelect={(value) => {
-            handleChange({
-              target: {
-                name: 'area',
-                value
-              }
-            });
-          }}
-        />
+          <p>
+            Die Sondernutzungsfläche kann nach Einrichtung{' '}
+            {usageWeekday(values) && (
+              <>Montags bis Freitags, jeweils von 10 bis 20 Uhr</>
+            )}
+            {usageWeekend(values) && (
+              <>Freitags, Samstags und Sonntags, jeweils von 11 bis 22 Uhr</>
+            )}{' '}
+            genutzt werden. Die Nutzung der Sonderflächen erfolgt kostenfrei
+            zunächst bis zum 31.8.2020.
+          </p>
 
-        <ErrorMessage
-          name="area"
-          render={(msg) => <FormError error>{msg}</FormError>}
-        />
-
-        <Card>
-          <CardContent>
+          <PickerIntro>
             <p>
-              <strong>Anleitung zum Zeichnen der Fläche</strong>
+              <strong>
+                Bitte zeichnen Sie auf der untenstehenden Karte ein, wo genau
+                Sie die Sonderfläche nutzen möchten:
+              </strong>
             </p>
-            <ol>
+            <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
+            <ul>
               <li>
-                Die Karte durch klicken und ziehen bewegen, so dass Sie den
-                gewünschten Bereich als ganzes sehen können.
+                Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,
+                Bushaltestellen, Schaltschränken, Baumscheiben oder Baustellen
+                beantragt werden.
               </li>
               <li>
-                Das Werkzeug <EditIcon aria-label="Bearbeiten-Icon" /> oben
-                rechts auswählen.
+                Die eingezeichnete Fläche muss sich im Bereich der Straßenfront
+                Ihres Ladenlokals befinden.
               </li>
-              <li>
-                Fläche zeichnen, durch anklicken mehrerer Punkte auf der Karte
-              </li>
-              <li>
-                Fläche schließen, indem der erste Punkt erneut geklickt wird.
-              </li>
-            </ol>
-            <p>
-              Über <TrashIcon aria-label="Mülltone-Icon" /> können sie die
-              Fläche löschen und neu zeichnen.
-            </p>
-          </CardContent>
-        </Card>
-      </section>
-    )}
+            </ul>
+          </PickerIntro>
 
-    {!requiresArea(regulation.zone) && (
-      <section>
-        <p>
-          <strong>
-            Ihr Betrieb liegt im Bereich der {regulation?.street}, hier wird es
-            eine Gesamt-Anordnung für den rot markierten Bereich{' '}
-            {regulation?.street} {regulation?.from} bis {regulation?.to} geben.
-            Wenn Sie sich registrieren, können Sie in diesem Bereich teilnehmen.
-          </strong>
-        </p>
-        <p>
-          <a href="/" className="internal">
-            Karte der anzuordnenden Fläche
-          </a>
-        </p>
-        <p>
-          Die Sondernutzungsfläche kann nach Einrichtung Freitags, Samstags und
-          Sonntags, jeweils von 11 bis 22 Uhr genutzt werden.
-        </p>
-      </section>
-    )}
-  </>
-);
+          <AreaPicker
+            center={center}
+            mapboxStyle={district?.apps.gastro.registration.mapboxStyle}
+            bounds={district?.bounds}
+            onSelect={(value) => {
+              handleChange({
+                target: {
+                  name: 'area',
+                  value
+                }
+              });
+            }}
+          />
+
+          <ErrorMessage
+            name="area"
+            render={(msg) => <FormError error>{msg}</FormError>}
+          />
+
+          <Card>
+            <CardContent>
+              <p>
+                <strong>Anleitung zum Zeichnen der Fläche</strong>
+              </p>
+              <ol>
+                <li>
+                  Die Karte durch klicken und ziehen bewegen, so dass Sie den
+                  gewünschten Bereich als ganzes sehen können.
+                </li>
+                <li>
+                  Das Werkzeug <EditIcon aria-label="Bearbeiten-Icon" /> oben
+                  rechts auswählen.
+                </li>
+                <li>
+                  Fläche zeichnen, durch anklicken mehrerer Punkte auf der Karte
+                </li>
+                <li>
+                  Fläche schließen, indem der erste Punkt erneut geklickt wird.
+                </li>
+              </ol>
+              <p>
+                Über <TrashIcon aria-label="Mülltone-Icon" /> können sie die
+                Fläche löschen und neu zeichnen.
+              </p>
+            </CardContent>
+          </Card>
+        </section>
+      )}
+
+      {!requiresArea(regulation.zone) && (
+        <section>
+          <p>
+            <strong>
+              Ihr Betrieb liegt im Bereich der {regulation?.street}, hier wird
+              es eine Gesamt-Anordnung für den rot markierten Bereich{' '}
+              {regulation?.street} {regulation?.from} bis {regulation?.to}{' '}
+              geben. Wenn Sie sich registrieren, können Sie in diesem Bereich
+              teilnehmen.
+            </strong>
+          </p>
+          <p>
+            <a href="/" className="internal">
+              Karte der anzuordnenden Fläche
+            </a>
+          </p>
+          <p>
+            Die Sondernutzungsfläche kann nach Einrichtung Freitags, Samstags
+            und Sonntags, jeweils von 11 bis 22 Uhr genutzt werden.
+          </p>
+        </section>
+      )}
+    </>
+  );
+};
 
 const mapStateToProps = ({ AppState }) => ({
   district: AppState.district
