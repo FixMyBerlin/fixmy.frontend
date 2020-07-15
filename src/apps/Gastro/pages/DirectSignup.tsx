@@ -64,16 +64,22 @@ const Registration = () => {
               <ul>
                 <li>
                   <strong>Kategorie Restaurant:</strong> Die
-                  Sondernutzungsfläche kann nach Einrichtung Freitags, Samstags
-                  und Sonntags, jeweils von 11 bis 22 Uhr genutzt werden.
+                  Sondernutzungsfläche kann im Falle einer Genehmigung ihres
+                  Antrags Freitags, Samstags und Sonntags, jeweils von 11 bis 22
+                  Uhr genutzt werden.
                 </li>
 
                 <li>
                   <strong>Alle anderen Kategorien:</strong> Die
-                  Sondernutzungsfläche kann nach Einrichtung Montags bis
-                  Freitags, jeweils von 10 bis 20 Uhr genutzt werden.
+                  Sondernutzungsfläche kann im Falle einer Genehmigung ihres
+                  Antrags Montags bis Freitags, jeweils von 10 bis 20 Uhr
+                  genutzt werden.
                 </li>
               </ul>
+              <p>
+                Die Sondergenehmigung der Sonderflächen erfolgt kostenfrei
+                zunächst bis zum 31.8.2020.
+              </p>
             </Section>
             <Section>
               <DirectForm onSuccess={setSubmission} />

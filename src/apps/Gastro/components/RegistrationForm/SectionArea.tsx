@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import AreaPicker from '~/components2/AreaPicker';
-import { usageWeekday, usageWeekend, requiresArea } from '../../utils';
+import { requiresArea } from '../../utils';
 import FormError from './FormError';
 
 const InlineIcon = styled.i`
@@ -29,7 +29,7 @@ const TrashIcon = styled(InlineIcon)`
 
 const PickerIntro = styled.div`
   p:first-child {
-    margin: 2em 0;
+    margin: 1em 0;
   }
 `;
 
@@ -63,22 +63,10 @@ const SectionArea = ({
                 className="internal"
                 target="_blank"
               >
-                Regelplan Sondernutzungsflächen
+                Regelplan temporäre Sondernutzung von Parkstreifen
               </a>
             </li>
           </ul>
-
-          <p>
-            Die Sondernutzungsfläche kann nach Einrichtung{' '}
-            {usageWeekday(values) && (
-              <>Montags bis Freitags, jeweils von 10 bis 20 Uhr</>
-            )}
-            {usageWeekend(values) && (
-              <>Freitags, Samstags und Sonntags, jeweils von 11 bis 22 Uhr</>
-            )}{' '}
-            genutzt werden. Die Nutzung der Sonderflächen erfolgt kostenfrei
-            zunächst bis zum 31.8.2020.
-          </p>
 
           <PickerIntro>
             <p>
