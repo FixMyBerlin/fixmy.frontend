@@ -36,6 +36,7 @@ export interface FormData {
   shopfront_length?: string;
   usage?: string;
   certificate?: string;
+  certificateS3?: string;
   opening_hours?: string;
   agreement_accepted?: boolean | '';
   tos_accepted?: boolean | '';
@@ -156,7 +157,11 @@ const RegistrationForm = ({
 
         <SectionShopfrontLength />
         <SectionUsage />
-        <SectionCertificate isSubmitting={isSubmitting} values={values} />
+        <SectionCertificate
+          isSubmitting={isSubmitting}
+          values={values}
+          handleChange={handleChange}
+        />
 
         <SectionNotice values={values} />
         <SectionEmail />

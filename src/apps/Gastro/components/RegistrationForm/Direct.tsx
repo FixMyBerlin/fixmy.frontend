@@ -40,6 +40,7 @@ const testValues: FormData = {
     ],
     type: 'Polygon'
   },
+  certificateS3: 'unit_test_data/test.txt',
   category: 'retail',
   email: 'fixmy056@vincentahrend.com',
   first_name: 'Snackmaster',
@@ -48,7 +49,7 @@ const testValues: FormData = {
   phone: '42343',
   shop_name: 'Test Shoppe',
   shopfront_length: '4,8',
-  tos_accepted: '',
+  tos_accepted: true,
   usage: 'Normal'
 };
 
@@ -106,35 +107,46 @@ const DirectRegistrationForm = ({
       // @ts-ignore
       const registrationData: GastroRegistration = {
         ...values,
+        campaign: district.name,
+        geometry: {
+          type: 'Point',
+          coordinates: values.location
+        },
         shopfront_length: parseLength(values.shopfront_length),
-        opening_hours: 'weekend',
-        campaign: config.gastro[district?.name]?.campaign
+        opening_hours: district.apps.gastro.model.opening_hours
+          ? values.opening_hours
+          : 'weekend',
+        category: district.apps.gastro.model.category
+          ? values.category
+          : 'other'
       };
 
-      let uploadFailed = true;
-      try {
-        await api.uploadCertificate(registrationData, district);
-        uploadFailed = false;
-      } catch (e) {
-        logger(e);
-        setStatus(
-          'Es gab leider einen Fehler beim Hochladen Ihrer Gewerbeanmeldung / Ihres Vereinsregisters. Bitte senden Sie dieses Dokument daher als Foto oder PDF per E-Mail an info@fixmyberlin.de'
-        );
-      }
+      delete registrationData.certificate;
 
+      let response;
       try {
-        const response = await api.register(registrationData, district);
+        response = await api.registerDirect(registrationData, district);
         // Additional field that is not part of the response
         //  this is to signal to the thanks page whether the upload
         // of the certificate file failed
         // @ts-ignore
-        response.uploadFailed = uploadFailed;
+        response.uploadFailed = false;
         onSuccess(response);
       } catch (e) {
         logger(e);
-        setStatus(
-          'Es gab leider einen Fehler bei Ihrer Anmeldung. Bitte versuchen Sie es später noch einmal.'
-        );
+        let errMsg: string;
+        try {
+          const data = await e.response?.json();
+          if (data?.non_field_errors) {
+            errMsg = data.non_field_errors.next();
+          }
+        } catch (e1) {
+          logger(e1);
+        }
+        if (!errMsg)
+          errMsg = `Es gab leider einen Fehler bei Ihrer Anmeldung. Bitte versuchen 
+            Sie es später noch einmal.`;
+        setStatus(errMsg);
       }
       setSubmitting(false);
     }}
@@ -154,7 +166,11 @@ const DirectRegistrationForm = ({
 
         <SectionShopfrontLength />
         <SectionUsage />
-        <SectionCertificate isSubmitting={isSubmitting} values={values} />
+        <SectionCertificate
+          isSubmitting={isSubmitting}
+          values={values}
+          handleChange={handleChange}
+        />
 
         <SectionNotice values={values} />
         <SectionEmail />

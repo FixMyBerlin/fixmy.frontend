@@ -6,9 +6,10 @@ import logger from '~/utils/logger';
 import config from './config';
 
 const URL_GET_SIGNUP = `/gastro/:campaign/:id/:accessKey?`;
-const URL_PUT_SIGNUP = `/gastro/:campaign`;
-const URL_POST_SIGNUP = `/gastro/:campaign/:id/:accessKey`;
-const URL_POST_CERTIFICATE = `/gastro/:campaign/certificate/:id/:accessKey`;
+const URL_POST_SIGNUP = `/gastro/:campaign`;
+const URL_PUT_SIGNUP = `/gastro/:campaign/:id/:accessKey`;
+const URL_PUT_CERTIFICATE = `/gastro/:campaign/certificate/:id/:accessKey`;
+const URL_POST_CERTIFICATE = `/gastro/:campaign/certificate/direct/:fileName`;
 
 const getApiBase = (district) => {
   if (district?.backend == null) {
@@ -42,7 +43,7 @@ const get = async (id: number, accessKey: string, district) => {
  * Submit Interessensbekundung
  */
 const signup = async (signupData: GastroSignup, district) => {
-  const endpoint = `${getApiBase(district)}${generatePath(URL_PUT_SIGNUP, {
+  const endpoint = `${getApiBase(district)}${generatePath(URL_POST_SIGNUP, {
     campaign: district.name
   })}`;
   logger('api signup', endpoint);
@@ -53,13 +54,24 @@ const signup = async (signupData: GastroSignup, district) => {
  * Submit formaler Antrag
  */
 const register = async (signupData: GastroRegistration, district) => {
-  const endpoint = `${getApiBase(district)}${generatePath(URL_POST_SIGNUP, {
+  const endpoint = `${getApiBase(district)}${generatePath(URL_PUT_SIGNUP, {
     id: signupData.id,
     accessKey: signupData.access_key,
     campaign: district.name
   })}`;
   logger('api register', endpoint);
-  // return ky.put(endpoint, { json: signupData }).json();
+  return ky.put(endpoint, { json: signupData }).json();
+};
+
+/**
+ * Submit formaler Antrag without two-step signup
+ */
+const registerDirect = async (signupData: GastroRegistration, district) => {
+  const endpoint = `${getApiBase(district)}${generatePath(URL_POST_SIGNUP, {
+    campaign: district.name
+  })}`;
+  logger('api register direct', endpoint);
+  return ky.post(endpoint, { json: signupData }).json();
 };
 
 /**
@@ -71,30 +83,42 @@ const uploadCertificate = async (
 ) => {
   const formData = new FormData();
   const fileName = registrationData.certificate.name;
+
   formData.append('file', registrationData.certificate, fileName);
-  const endpoint = `${getApiBase(district)}${generatePath(
-    URL_POST_CERTIFICATE,
-    {
+
+  let endpoint;
+  let method;
+  if (registrationData.id) {
+    method = 'PUT';
+    endpoint = `${getApiBase(district)}${generatePath(URL_PUT_CERTIFICATE, {
       id: registrationData.id,
       accessKey: registrationData.access_key,
       campaign: district.name
-    }
-  )}`;
+    })}`;
+  } else {
+    method = 'POST';
+    endpoint = `${getApiBase(district)}${generatePath(URL_POST_CERTIFICATE, {
+      fileName,
+      campaign: district.name
+    })}`;
+  }
+
   logger('api uploadCertificate', endpoint);
-  return ky
-    .post(endpoint, {
-      body: formData,
-      headers: {
-        'Content-Disposition': `attachment; filename="${fileName}"`
-      },
-      timeout: 60000
-    })
-    .json();
+
+  return ky(endpoint, {
+    method,
+    body: formData,
+    headers: {
+      'Content-Disposition': `attachment; filename="${fileName}"`
+    },
+    timeout: 60000
+  }).json();
 };
 
 export default {
   get,
   signup,
   register,
+  registerDirect,
   uploadCertificate
 };
