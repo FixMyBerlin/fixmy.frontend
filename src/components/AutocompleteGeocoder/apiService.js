@@ -1,5 +1,5 @@
-import logger from '~/utils/logger';
 import config from '~/config';
+import axios from 'axios';
 
 const mapConfig = config.map;
 
@@ -55,34 +55,16 @@ export const parseSuggestion = ({
  * @returns {Promise<Object[]>} See https://docs.mapbox.com/api/search/#geocoding-response-object
  */
 export async function fetchSuggestions(searchString) {
-  abortController.abort(); // Cancel the previous request
-  abortController = new AbortController();
-  const { signal } = abortController;
-
   const url = compileSearchUrl(searchString);
-  return fetch(url, { signal })
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error('Encountered non 2xx status code')
-      }
-      return res
-    })
-    .then((res) => res.json())
-    .then((res) => res.features)
-    .then((fetchedSuggestions) => {
-      if (!fetchedSuggestions.length) return [];
-      const parsedSuggestions = fetchedSuggestions.map(parseSuggestion);
-      const filteredSuggestions = filterSuggestions(parsedSuggestions);
-      return filteredSuggestions;
-    })
-    .catch((error) => {
-      // if (error.name === 'AbortError') { FIXME: documented way of detecting an abortError won't work
-      if (error.message.includes('aborted')) {
-        // workaround
-        logger('cancelled');
-        return [];
-      }
-      // else re-throw
-      throw error;
-    });
+
+  let res;
+  try {
+    res = await axios.get(url);
+  } catch (e) {
+    throw new Error('Encountered non 2xx status code')
+  }
+  const fetchedSuggestions = res.data.features;
+  if (!fetchedSuggestions.length) return [];
+  const parsedSuggestions = fetchedSuggestions.map(parseSuggestion);
+  return filterSuggestions(parsedSuggestions);
 }
