@@ -5,7 +5,8 @@ import {
   List,
   ListItem,
   ListItemText,
-  ListItemIcon
+  ListItemIcon,
+  Paper
 } from '@material-ui/core';
 import LocationIcon from '@material-ui/icons/LocationOn';
 import ErrorIcon from '@material-ui/icons/Error';
@@ -51,14 +52,20 @@ type Props = {
   onSelect: (result: { address: string; location: MapboxGL.LngLat }) => any;
   mapboxStyle: MapboxGL.Style;
   bounds: MapboxGL.LngLatBoundsLike;
+  initialValue?: string;
 };
 
-const LocationPicker: React.FC<Props> = ({ onSelect, mapboxStyle, bounds }) => {
+const LocationPicker: React.FC<Props> = ({
+  onSelect,
+  mapboxStyle,
+  bounds,
+  initialValue = ''
+}) => {
   // Mapbox-GL.js map instance
   const [map, setMap] = useState(null);
 
   // Text field value
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>(initialValue);
 
   // Timeout instance to delay sending search queries
   const [searchDelay, setSearchDelay] = useState(null);
@@ -145,7 +152,7 @@ const LocationPicker: React.FC<Props> = ({ onSelect, mapboxStyle, bounds }) => {
         onChange={({ target: { value } }) => setInputValue(value)}
       />
       {suggestions && (
-        <List aria-label="Adressvorschläge">
+        <List>
           {suggestions.length > 0 && (
             <ListItem>
               <ListItemText>
@@ -156,18 +163,22 @@ const LocationPicker: React.FC<Props> = ({ onSelect, mapboxStyle, bounds }) => {
           {suggestions != null && suggestions.length === 0 && (
             <em>Es wurde keine passende Adresse gefunden.</em>
           )}
-          {suggestions.map(({ coords, address }) => (
-            <ListItem
-              key={address}
-              button
-              onClick={() => setSelected({ address, location: coords })}
-            >
-              <ListItemIcon>
-                <LocationIcon />
-              </ListItemIcon>
-              <ListItemText primary={address} />
-            </ListItem>
-          ))}
+          {suggestions && suggestions.length > 0 && (
+            <Paper elevation={1} aria-label="Adressvorschläge">
+              {suggestions.map(({ coords, address }) => (
+                <ListItem
+                  key={address}
+                  button
+                  onClick={() => setSelected({ address, location: coords })}
+                >
+                  <ListItemIcon>
+                    <LocationIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={address} />
+                </ListItem>
+              ))}
+            </Paper>
+          )}
         </List>
       )}
       {addressHint && (

@@ -59,7 +59,7 @@ const register = async (signupData: GastroRegistration, district) => {
     campaign: district.name
   })}`;
   logger('api register', endpoint);
-  return ky.put(endpoint, { json: signupData }).json();
+  // return ky.put(endpoint, { json: signupData }).json();
 };
 
 /**

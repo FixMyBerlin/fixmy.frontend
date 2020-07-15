@@ -143,6 +143,7 @@ const RegistrationForm = ({
           shopName={values.shop_name}
           signupData={signupData}
           handleChange={handleChange}
+          values={values}
         />
 
         <h3>Bestimmung der Sondernutzungsfläche</h3>

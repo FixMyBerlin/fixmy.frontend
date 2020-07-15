@@ -25,6 +25,33 @@ import SectionBase from './SectionBase';
 import { media } from '~/styles/utils';
 import regulations from '../../regulations';
 
+const testValues: FormData = {
+  address: 'Köpenicker Straße 5, 10997 Berlin',
+  agreement_accepted: true,
+  area: {
+    coordinates: [
+      [
+        [13.440466533730415, 52.50187566721448],
+        [13.440556387732016, 52.501931997251006],
+        [13.440387408564675, 52.50201690035837],
+        [13.440302918980336, 52.50195893767781],
+        [13.440466533730415, 52.50187566721448]
+      ]
+    ],
+    type: 'Polygon'
+  },
+  category: 'retail',
+  email: 'fixmy056@vincentahrend.com',
+  first_name: 'Snackmaster',
+  last_name: 'Chunk',
+  location: [13.440547, 52.501977],
+  phone: '42343',
+  shop_name: 'Test Shoppe',
+  shopfront_length: '4,8',
+  tos_accepted: '',
+  usage: 'Normal'
+};
+
 const initialValues: FormData = {
   shop_name: '',
   first_name: '',
@@ -71,7 +98,9 @@ const DirectRegistrationForm = ({
   district
 }) => (
   <Formik
-    initialValues={initialValues}
+    initialValues={
+      process.env.NODE_ENV === 'production' ? initialValues : testValues
+    }
     validate={validateDirect}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       // @ts-ignore
@@ -114,7 +143,7 @@ const DirectRegistrationForm = ({
       <StyledForm>
         <h3>Bitte machen Sie Angaben zu Ihrem Betrieb / Verein:</h3>
 
-        <SectionBase handleChange={handleChange} />
+        <SectionBase handleChange={handleChange} values={values} />
 
         <h3>Bestimmung der Sondernutzungsfläche</h3>
         <SectionArea
