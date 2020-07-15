@@ -11,7 +11,7 @@ import logger from '~/utils/logger';
 import config from '~/apps/Gastro/config';
 import { GastroRegistration } from '~/apps/Gastro/types';
 import api from '~/apps/Gastro/api';
-import validate from './validate';
+import { validate } from './validate';
 import parseLength from '../../parseLength';
 
 import SectionArea from './SectionArea';

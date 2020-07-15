@@ -11,8 +11,9 @@ import logger from '~/utils/logger';
 import config from '~/apps/Gastro/config';
 import { GastroRegistration } from '~/apps/Gastro/types';
 import api from '~/apps/Gastro/api';
-import validate from './validate';
+import { validateDirect } from './validate';
 import parseLength from '../../parseLength';
+import { FormData } from '.';
 
 import SectionArea from './SectionArea';
 import SectionCertificate from './SectionCertificate';
@@ -23,26 +24,6 @@ import SectionUsage from './SectionUsage';
 import SectionBase from './SectionBase';
 import { media } from '~/styles/utils';
 import regulations from '../../regulations';
-
-/* eslint-disable camelcase */
-export interface FormData {
-  shop_name?: string;
-  first_name?: string;
-  last_name?: string;
-  phone?: string;
-  category?: string;
-  email?: string;
-  address?: string;
-  location?: [number, number];
-  shopfront_length?: string;
-  usage?: string;
-  certificate?: string;
-  opening_hours?: string;
-  agreement_accepted?: boolean | '';
-  tos_accepted?: boolean | '';
-  area?: any;
-}
-/* eslint-enable camelcase */
 
 const initialValues: FormData = {
   shop_name: '',
@@ -91,7 +72,7 @@ const DirectRegistrationForm = ({
 }) => (
   <Formik
     initialValues={initialValues}
-    validate={validate(regulations[0])}
+    validate={validateDirect}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       // @ts-ignore
       const registrationData: GastroRegistration = {

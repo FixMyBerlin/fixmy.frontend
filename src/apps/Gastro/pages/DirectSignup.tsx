@@ -46,12 +46,34 @@ const Registration = () => {
             <Section>
               <h1>Antrag auf Einrichtung einer Sondernutzungs&shy;fläche</h1>
               <p>
-                <strong>
-                  Bitte füllen Sie dieses Formular aus, um eine
-                  Sondernutzungsfläche für Ihren Betrieb / Verein beim
-                  Bezirksamt Friedrichshain-Kreuzberg zu beantragen.
-                </strong>
+                Bitte füllen Sie dieses Formular aus, um eine
+                Sondernutzungsfläche für Ihren Betrieb / Verein beim Bezirksamt
+                Friedrichshain-Kreuzberg zu beantragen.
               </p>
+              <p>
+                Bitte beachten Sie, dass die Sondernutzungsflächen{' '}
+                <strong>
+                  nur an Nebenstraßen und bei vorhandenen Kfz-Parkplätzen
+                </strong>{' '}
+                genehmigt werden können.
+              </p>
+              <p>
+                Entsprechend der Art Ihres Betriebs können die Sonderflächen in
+                folgenden Zeiten genutzt werden:
+              </p>
+              <ul>
+                <li>
+                  <strong>Kategorie Restaurant:</strong> Die
+                  Sondernutzungsfläche kann nach Einrichtung Freitags, Samstags
+                  und Sonntags, jeweils von 11 bis 22 Uhr genutzt werden.
+                </li>
+
+                <li>
+                  <strong>Alle anderen Kategorien:</strong> Die
+                  Sondernutzungsfläche kann nach Einrichtung Montags bis
+                  Freitags, jeweils von 10 bis 20 Uhr genutzt werden.
+                </li>
+              </ul>
             </Section>
             <Section>
               <DirectForm onSuccess={setSubmission} />

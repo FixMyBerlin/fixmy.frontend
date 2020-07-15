@@ -13,7 +13,7 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 
 import { fetchSuggestions } from '~/components/AutocompleteGeocoder/apiService';
-import config from '~/apps/Gastro/config';
+import config from '~/config';
 import Map from '~/components2/Map';
 import logger from '~/utils/logger';
 
@@ -138,6 +138,7 @@ const LocationPicker: React.FC<Props> = ({ onSelect, mapboxStyle, bounds }) => {
   return (
     <>
       <TextField
+        id="address"
         placeholder="Adresse suchen..."
         fullWidth
         value={inputValue}

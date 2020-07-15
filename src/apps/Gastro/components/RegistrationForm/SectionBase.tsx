@@ -83,14 +83,15 @@ const SectionBase = ({
       label="Telefonnummer (tagsüber erreichbar)"
       fullWidth
     />
-    <InvisiLabel htmlFor="first_name">Addresse des Ladengeschäfts</InvisiLabel>
     {signupData == null && (
       <>
+        <h3>Wo befindet sich das Ladenlokal?</h3>
         <p>Es können nur Adressen in {district.title} gemeldet werden.</p>
         <ErrorMessage
           name="address"
           render={(msg) => <FormError error>{msg}</FormError>}
         />
+        <InvisiLabel htmlFor="address">Addresse des Ladengeschäfts</InvisiLabel>
         <LocationPicker
           mapboxStyle={district.apps.gastro.signup.mapboxStyle}
           bounds={district.bounds}
