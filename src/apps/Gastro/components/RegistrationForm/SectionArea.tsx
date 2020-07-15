@@ -102,6 +102,7 @@ const SectionArea = ({
           </PickerIntro>
 
           <AreaPicker
+            initialGeometry={values.area}
             center={center}
             mapboxStyle={district?.apps.gastro.registration.mapboxStyle}
             bounds={district?.bounds}

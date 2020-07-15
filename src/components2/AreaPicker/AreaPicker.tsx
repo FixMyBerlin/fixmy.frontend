@@ -26,17 +26,20 @@ type Props = {
   center?: MapboxGL.LngLatLike;
   mapboxStyle: string;
   bounds?: MapboxGL.LngLatBoundsLike;
+  initialGeometry?: GeoJSON.Geometry;
 };
 
 const AreaPicker: React.FC<Props> = ({
   center,
   onSelect,
   mapboxStyle,
-  bounds
+  bounds,
+  initialGeometry
 }) => {
   // Mapbox-GL.js map instance
   const [map, setMap] = useState<MapboxGL.Map | null>(null);
   const [hasGeometry, setHasGeometry] = useState<boolean>(false);
+  const [initialValue] = useState(initialGeometry);
   const [localCenter, setLocalCenter] = useState<MapboxGL.LngLatLike | null>(
     center
   );
@@ -63,6 +66,10 @@ const AreaPicker: React.FC<Props> = ({
     map.on('draw.create', handleUpdate);
     map.on('draw.update', handleUpdate);
     map.on('draw.delete', () => onSelect(null));
+
+    if (initialValue) {
+      draw.add(initialValue);
+    }
   }, [map]);
 
   // Only adjust map center as long as no geometry has been drawn
