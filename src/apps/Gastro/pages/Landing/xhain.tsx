@@ -4,7 +4,10 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
+import Link from '~/components/Link';
+import Link2 from '~/components2/Link';
 import config from '~/apps/Gastro/config';
+import Button from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
 import Map from '~/components2/Map';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
@@ -12,6 +15,9 @@ import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import Logo from '~/apps/Gastro/components/Logo';
 import Notice from '~/apps/Gastro/components/Notice';
+import { getPath } from '~/apps/Gastro/routes';
+import { openSignup } from '~/apps/Gastro/utils';
+import { media } from '~/styles/utils';
 
 const Attribution = styled.div`
   font-size: 0.75em;
@@ -30,6 +36,19 @@ const Attribution = styled.div`
 const StyledMap = styled(Map)`
   height: 30em;
   margin: 2em 0;
+`;
+
+const CTA = styled(Button)`
+  ${media.m`
+    width: 20rem;
+    margin: 2em auto;
+  `}
+`;
+
+const CTAWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 const XhainLanding = ({ district }) => (
@@ -61,7 +80,7 @@ const XhainLanding = ({ district }) => (
     </p>
     <p>
       In der Karte sehen Sie alle bis zum 3. Juli 2020 genehmigten Anträge. Die
-      jeweiligen Betrieben können die Flächen nach Beauftragung der Schilder und
+      jeweiligen Betriebe können die Flächen nach Beauftragung der Schilder und
       Absperrungen nutzen.
     </p>
 
@@ -72,21 +91,30 @@ const XhainLanding = ({ district }) => (
         map.addControl(new MapboxGL.NavigationControl({ showCompass: false }));
       }}
     />
+
+    {openSignup(district) && (
+      <Link to={getPath(district, 'signup')}>
+        <CTAWrapper>
+          <CTA flat>Jetzt Antrag stellen</CTA>
+        </CTAWrapper>
+      </Link>
+    )}
+
     <Notice />
 
     <h2>Zum Hintergrund</h2>
     <p>
       Im Zuge der Lockerungen der Covid-19 Eindämmungsverordnung können
-      Restaurants zum 15. Mai 2020 wieder Tischbedienung durchführen, müssen
-      dabei aber einen Mindestabstand von 1,50 m zwischen den Gästen
+      Restaurants seit dem 15. Mai 2020 wieder Tischbedienung durchführen,
+      müssen dabei aber einen Mindestabstand von 1,50 m zwischen den Gästen
       gewährleisten.
     </p>
     <p>
       Das Bezirksamt Friedrichshain-Kreuzberg bietet in dieser Situation
       Gewerbetrieben, Einzelhandel und sozialen Projekten an, Tische, Stühle und
       Auslagen temporär auf das Straßenland zu verlagern. Nach Auswertung von
-      über 300 Bedarfsmeldungen und 130 Anträgen, wurden 100 Genehmigung zur
-      Nutzung von Sonderflächen erteilt.
+      über 300 Bedarfsmeldungen und 130 Anträgen, wurden bisher 100 Genehmigung
+      zur Nutzung von Sonderflächen erteilt.
     </p>
     <h2>Welche Flächen können wann genutzt werden?</h2>
     <p>
@@ -95,8 +123,11 @@ const XhainLanding = ({ district }) => (
       Blick auf die Eindämmungsmaßnahmen befristet und bis auf weiteres
       gebührenfrei ausgesprochen. Zeitlich werden dabei zunächst Freitag,
       Samstag, Sonntag, jeweils von 11:00 Uhr bis 22:00 Uhr für die Gastronomie
-      und Mo-Fr jeweils von 10 bis 20 Uhr für den Einzelhandel, Flächen als
-      zusätzliche Außenflächen temporär angeboten.{' '}
+      und Mo-Fr jeweils von 10 bis 20 Uhr für den Einzelhandel oder soziale
+      Projekte Flächen als zusätzliche Außenflächen temporär angeboten. Die
+      Nutzung der Sonderflächen erfolgt zunächst kostenfrei bis zum 31.10.2020,
+      über eine Verlängerung der Maßnahme entscheidet das Bezirksamt vor Ablauf
+      dieser Frist.
     </p>
     <h2>Bedingungen für die Genehmigung</h2>
     <p>
@@ -118,7 +149,7 @@ const XhainLanding = ({ district }) => (
     <p>
       Grund für die Maßnahme ist die notwendige Aufrechterhaltung des
       1,50m-Abstandsgebotes. Dieses führt zu einem erhöhten Bedarf an Flächen im
-      Innen- und Aussenbereich gegenüber den Verhältnissen vor der Pandemie.
+      Innen- und Außenbereich gegenüber den Verhältnissen vor der Pandemie.
       Insbesondere für die unter den Beschränkungen der Pandemie existenziell
       bedrohten Betriebe, aber auch für andere Organisationen mit Laufkundschaft
       steigt der Druck, entsprechend große Außenflächen zur Sicherung der
@@ -130,15 +161,21 @@ const XhainLanding = ({ district }) => (
       Auslagen in ihrer Breite entsprechend zu reduzieren.
     </p>
     <p>
-      Die Erfahrung bzw. Genehmigungspraxis für Wochenmärkte in den letzten
-      Wochen haben gezeigt, dass die Erweiterung von Gewerbeflächen auf das
-      Straßenland im Grundsatz gut geeignet ist, Abstandsgebote besser
-      einzuhalten; Anders als in anderen Bezirken konnte mit der Beauflagung von
-      10-Meter-Abstandsflächen zwischen den Marktständen und der Erweiterung des
-      Marktgeschehens in den Straßenraum verhindert werden, dass Märkte aufgrund
-      immanenter Verstöße gegen die Eindämmungsverordnung geschlossen werden
-      mussten. Weiterhin wurde mit insgesamt 19 temporären Spielstraßen das
-      Element der zeitweiligen Ausdehnung von Bewegungsräumen auf das
+      Die Erfahrung bzw. Genehmigungspraxis für Wochenmärkte haben gezeigt, dass
+      die Erweiterung von Gewerbeflächen auf das Straßenland im Grundsatz gut
+      geeignet ist, Abstandsgebote besser einzuhalten; Anders als in anderen
+      Bezirken konnte mit der Beauflagung von 10-Meter-Abstandsflächen zwischen
+      den Marktständen und der Erweiterung des Marktgeschehens in den
+      Straßenraum verhindert werden, dass Märkte aufgrund immanenter Verstöße
+      gegen die Eindämmungsverordnung geschlossen werden mussten. Weiterhin
+      wurde mit insgesamt 18{' '}
+      <Link2
+        internal
+        href="https://fixmyberlin.de/friedrichshain-kreuzberg/spielstrassen/"
+      >
+        temporären Spielstraßen
+      </Link2>{' '}
+      das Element der zeitweiligen Ausdehnung von Bewegungsräumen auf das
       Straßenland auch und gerade für nicht kommerzielle Bedarfe der
       Daseinsvorsorge erfolgreich im Bezirk implementiert.
     </p>

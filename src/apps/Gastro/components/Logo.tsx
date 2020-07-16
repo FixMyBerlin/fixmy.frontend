@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   margin-bottom: 3em;
 
   ${media.m`
+    margin-top: 4em;
     flex-direction: row;
   `}
 

@@ -200,8 +200,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
         <section>
           <p>
             <strong>
-              Wie breit ist die Straßenfront ihres Ladenlokals (falls
-              vorhanden)?
+              Wie breit ist die Häuserfront ihres Ladenlokals (falls vorhanden)?
             </strong>
           </p>
           <p>

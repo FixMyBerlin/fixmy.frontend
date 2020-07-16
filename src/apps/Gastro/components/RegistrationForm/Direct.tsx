@@ -10,8 +10,9 @@ import { Form } from '~/components2/Form';
 import logger from '~/utils/logger';
 import { GastroRegistration } from '~/apps/Gastro/types';
 import api from '~/apps/Gastro/api';
-import { validate } from './validate';
+import { validateDirect } from './validate';
 import parseLength from '../../parseLength';
+import { FormData } from '.';
 
 import SectionArea from './SectionArea';
 import SectionCertificate from './SectionCertificate';
@@ -21,27 +22,35 @@ import SectionShopfrontLength from './SectionShopfrontLength';
 import SectionUsage from './SectionUsage';
 import SectionBase from './SectionBase';
 import { media } from '~/styles/utils';
+import regulations from '../../regulations';
 
-/* eslint-disable camelcase */
-export interface FormData {
-  shop_name?: string;
-  first_name?: string;
-  last_name?: string;
-  phone?: string;
-  category?: string;
-  email?: string;
-  address?: string;
-  location?: [number, number];
-  shopfront_length?: string;
-  usage?: string;
-  certificate?: string;
-  certificateS3?: string;
-  opening_hours?: string;
-  agreement_accepted?: boolean | '';
-  tos_accepted?: boolean | '';
-  area?: any;
-}
-/* eslint-enable camelcase */
+const testValues: FormData = {
+  address: 'Köpenicker Straße 5, 10997 Berlin',
+  agreement_accepted: true,
+  area: {
+    coordinates: [
+      [
+        [13.440466533730415, 52.50187566721448],
+        [13.440556387732016, 52.501931997251006],
+        [13.440387408564675, 52.50201690035837],
+        [13.440302918980336, 52.50195893767781],
+        [13.440466533730415, 52.50187566721448]
+      ]
+    ],
+    type: 'Polygon'
+  },
+  certificateS3: 'unit_test_data/test.txt',
+  category: 'retail',
+  email: 'fixmy056@vincentahrend.com',
+  first_name: 'Snackmaster',
+  last_name: 'Chunk',
+  location: [13.440547, 52.501977],
+  phone: '42343',
+  shop_name: 'Test Shoppe',
+  shopfront_length: '4,8',
+  tos_accepted: true,
+  usage: 'Normal'
+};
 
 const initialValues: FormData = {
   shop_name: '',
@@ -59,6 +68,19 @@ const initialValues: FormData = {
   tos_accepted: '',
   area: null
 };
+
+const CTA = styled(Button)`
+  ${media.m`
+  width: 20rem;
+  margin: 2em auto;
+`}
+`;
+
+const CTAWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
 
 const FormError = styled(FormHelperText)`
   && {
@@ -83,74 +105,76 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const RegistrationForm = ({
-  id,
+const DirectRegistrationForm = ({
   // eslint-disable-next-line camelcase
-  access_key,
   onSuccess,
-  signupData,
-  regulation,
   district
 }) => (
   <Formik
-    initialValues={{ ...initialValues, ...signupData }}
-    validate={validate(regulation)}
+    initialValues={
+      process.env.NODE_ENV === 'production' ? initialValues : testValues
+    }
+    validate={validateDirect}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       // @ts-ignore
       const registrationData: GastroRegistration = {
-        ...signupData,
         ...values,
-        id,
-        access_key,
+        campaign: district.apps.gastro.currentCampaign,
+        geometry: {
+          type: 'Point',
+          coordinates: values.location
+        },
         shopfront_length: parseLength(values.shopfront_length),
-        opening_hours: 'weekend',
-        campaign: district.apps.gastro.currentCampaign
+        opening_hours: district.apps.gastro.model.opening_hours
+          ? values.opening_hours
+          : 'weekend',
+        category: district.apps.gastro.model.category
+          ? values.category
+          : 'other'
       };
 
-      let uploadFailed = true;
-      try {
-        await api.uploadCertificate(registrationData, district);
-        uploadFailed = false;
-      } catch (e) {
-        logger(e);
-        setStatus(
-          'Es gab leider einen Fehler beim Hochladen Ihrer Gewerbeanmeldung / Ihres Vereinsregisters. Bitte senden Sie dieses Dokument daher als Foto oder PDF per E-Mail an info@fixmyberlin.de'
-        );
-      }
+      delete registrationData.certificate;
 
+      let response;
       try {
-        const response = await api.register(registrationData, district);
+        response = await api.registerDirect(registrationData, district);
         // Additional field that is not part of the response
         //  this is to signal to the thanks page whether the upload
         // of the certificate file failed
         // @ts-ignore
-        response.uploadFailed = uploadFailed;
+        response.uploadFailed = false;
         onSuccess(response);
       } catch (e) {
         logger(e);
-        setStatus(
-          'Es gab leider einen Fehler bei Ihrer Anmeldung. Bitte versuchen Sie es später noch einmal.'
-        );
+        let errMsg: string;
+        try {
+          const data = await e.response?.json();
+          // Data from api is always in camelcase
+          // eslint-disable-next-line camelcase
+          if (data?.non_field_errors) {
+            errMsg = data.non_field_errors.next();
+          }
+        } catch (e1) {
+          logger(e1);
+        }
+        if (!errMsg)
+          errMsg = `Es gab leider einen Fehler bei Ihrer Anmeldung. Bitte versuchen 
+            Sie es später noch einmal.`;
+        setStatus(errMsg);
       }
       setSubmitting(false);
     }}
   >
     {({ isValid, values, handleChange, isSubmitting, status }) => (
       <StyledForm>
-        <h3>Bitte vervollständigen Sie die Angaben zu Ihrem Betrieb:</h3>
+        <h3>Bitte machen Sie Angaben zu Ihrem Betrieb / Verein:</h3>
 
-        <SectionBase
-          shopName={values.shop_name}
-          signupData={signupData}
-          handleChange={handleChange}
-          values={values}
-        />
+        <SectionBase handleChange={handleChange} values={values} />
 
         <h3>Bestimmung der Sondernutzungsfläche</h3>
         <SectionArea
-          regulation={regulation}
+          regulation={regulations[0]}
           handleChange={handleChange}
-          signupData={signupData}
           values={values}
         />
 
@@ -196,7 +220,7 @@ const RegistrationForm = ({
 
         {!isSubmitting && (
           <p>
-            Klicken Sie auf &quot;Antrag absenden&quot; um Ihren Antrag formal
+            Klicken Sie auf &quot;Antrag absenden&quot;, um Ihren Antrag formal
             beim Bezirksamt einzureichen.
           </p>
         )}
@@ -218,9 +242,11 @@ const RegistrationForm = ({
           </p>
         )}
 
-        <Button flat type="submit" disabled={isSubmitting}>
-          Antrag absenden
-        </Button>
+        <CTAWrapper>
+          <CTA flat type="submit" disabled={isSubmitting}>
+            Antrag absenden
+          </CTA>
+        </CTAWrapper>
       </StyledForm>
     )}
   </Formik>
@@ -230,4 +256,4 @@ const mapStateToProps = ({ AppState }) => ({
   district: AppState.district
 });
 
-export default connect(mapStateToProps)(RegistrationForm);
+export default connect(mapStateToProps)(DirectRegistrationForm);

@@ -4,22 +4,30 @@ import { FormData } from '.';
 import logger from '~/utils/logger';
 import parseLength from '../../parseLength';
 import { requiresArea } from '../../utils';
+import regulations from '../../regulations';
+
+interface ValidateErrors {
+  first_name?: string;
+  last_name?: string;
+  phone?: string;
+  category?: string;
+  email?: string;
+  shopfront_length?: string;
+  usage?: string;
+  certificate?: any;
+  agreement_accepted?: string;
+  tos_accepted?: string;
+  area?: string;
+}
+
+interface ValidateDirectErrors extends ValidateErrors {
+  shop_name?: string;
+  address?: string;
+}
 
 const validate = (regulation) => {
   return (values: FormData) => {
-    const errors: {
-      first_name?: string;
-      last_name?: string;
-      phone?: string;
-      category?: string;
-      email?: string;
-      shopfront_length?: string;
-      usage?: string;
-      certificate?: any;
-      agreement_accepted?: string;
-      tos_accepted?: string;
-      area?: string;
-    } = {};
+    const errors: ValidateErrors = {};
 
     if (!values.first_name) {
       errors.first_name = 'Bitte einen Vornamen angeben';
@@ -35,7 +43,7 @@ const validate = (regulation) => {
 
     try {
       const val = parseLength(values.shopfront_length);
-      if (val < 0 || val > 5000)
+      if (Number.isNaN(val) || val < 0 || val > 5000)
         errors.shopfront_length =
           'Bitte geben Sie die Länge der Ladenfront in Metern an';
     } catch (e) {
@@ -78,4 +86,29 @@ const validate = (regulation) => {
   };
 };
 
-export default validate;
+const validateDirect = (values: FormData) => {
+  const errors: ValidateDirectErrors = validate(regulations[0])(values);
+
+  if (!values.shop_name) {
+    errors.shop_name = 'Bitte einen Namen angeben';
+  }
+
+  if (values.category === '') {
+    errors.category = 'Bitte hier eine Option auswählen:';
+  }
+
+  if (values.address === '') {
+    errors.address = 'Bitte eine Adresse (mit Hausnummer) angeben';
+  }
+
+  if (!values.certificateS3) {
+    errors.certificate = 'Bitte einen Nachweis hochladen';
+  } else {
+    delete errors.certificate;
+  }
+
+  logger('Validation Direct', errors, values);
+  return errors;
+};
+
+export { validate, validateDirect };

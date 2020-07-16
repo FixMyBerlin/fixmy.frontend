@@ -44,9 +44,9 @@ const Thanks = ({ submission, district }) => (
     )}
 
     <p>
-      Das Bezirksamt bearbeitet die Anträge in der Reihenfolge Ihres Eingangs.
-      Wenn Ihr Antrag bearbeitet wurde, erhalten Sie eine E-Mail zum weiteren
-      Vorgehen. Bitte sehen Sie von individuellen Nachfragen ab.
+      Das Bezirksamt bearbeitet die Anträge in der Regel innherhalb einiger
+      Tage. Wenn Ihr Antrag bearbeitet wurde, erhalten Sie eine E-Mail mit einer
+      Zu- oder Absage. Bitte sehen Sie von individuellen Nachfragen ab.
     </p>
   </Wrapper>
 );

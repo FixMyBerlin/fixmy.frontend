@@ -114,6 +114,19 @@ Die Gastro-App implementiert einen Prozess zur Vereinbarung der Nutzung von
       <td></td>
       <td>Teilweise abgeschlossen</td>
     </tr>
+    <tr>
+      <td>C03</td>
+      <td>
+        Wenn direkte Beantragung aktiviert ist, möchte ich als Betreiber:in einen Antrag ohne vorherige Interessensbekundung einreichen können.
+      </td>
+      <td>
+        <ul>
+          <li>Konfigurationsoption für direkte Beantragung kann aktiviert werden</li>
+          <li>Antragsformular mit allen notwendigen Datenfeldern ist verfügbar</li>
+        </ul>
+      </td>
+      <td>In Arbeit</td>
+    </tr>
   </tbody>
 </table>
 

@@ -14,6 +14,12 @@ const StyledContainer = styled(Container)`
       font-size: 3em;
     `}
   }
+
+  h2 {
+    ${media.m`
+      margin: 1.5em auto 1em;
+    `}
+  }
 `;
 
 const Landing = ({ district }) => {

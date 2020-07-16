@@ -45,14 +45,15 @@ const SectionNotice = ({ values }) => (
         Genehmigung entzogen werden.
       </li>
       <li>
-        Die Nutzung der Flächen des ruhenden Verkehrs ist auf{' '}
+        Die Nutzung der Flächen des ruhenden Verkehrs ist{' '}
+        {values.category === '' && <>je nach Art des Betriebs</>}
         {usageWeekend(values) && (
           <strong>
-            Freitag, Samstag und Sonntag jeweils von 11 Uhr bis 22 Uhr
+            auf Freitag, Samstag und Sonntag jeweils von 11 Uhr bis 22 Uhr
           </strong>
         )}
         {usageWeekday(values) && (
-          <strong>Montag bis Freitag jeweils von 10 bis 20 Uhr</strong>
+          <strong>auf Montag bis Freitag jeweils von 10 bis 20 Uhr</strong>
         )}{' '}
         begrenzt. Die Flächen sind außerhalb der Nutzungszeiten zu beräumen und
         dem ruhenden Verkehr wieder zur Verfügung zu stellen.
