@@ -10,13 +10,13 @@ const BaseContainer = styled.a`
   color: ${config.colors.darkbg};
 
   text-decoration: none;
-  border-bottom: 1px solid ${(props) => props.theme.primary};
+  border-bottom: 1px solid ${config.colors.interaction};
 
   background-size: 9px 9px;
   background-repeat: no-repeat;
   background-position: center left;
   padding-left: 15px;
-  
+
   /* make sure long anchors wrap */
   white-space: pre-wrap;
 `;

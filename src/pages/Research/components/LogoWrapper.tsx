@@ -6,9 +6,9 @@ const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-   
-   /* for larger screens */
-   ${media.s`
+
+  /* for larger screens */
+  ${media.s`
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
@@ -16,4 +16,4 @@ const LogoWrapper = styled.div`
    `}
 `;
 
-export default LogoWrapper
+export default LogoWrapper;
