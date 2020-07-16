@@ -6,6 +6,7 @@ import { AppConfig } from '~/types';
 type Coordinate = [number, number];
 
 export interface GastroConfig extends AppConfig {
+  currentCampaign: string;
   directSignup: boolean;
   timeline?: {
     openSignup: Date;

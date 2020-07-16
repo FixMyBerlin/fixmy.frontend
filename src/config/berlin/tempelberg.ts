@@ -33,6 +33,7 @@ const tempelberg: DistrictConfig = {
   ],
   apps: {
     gastro: {
+      currentCampaign: 'tempelberg',
       path: 'terrassen',
       timeline: {
         openSignup: new Date(Date.UTC(2020, 5, 19, 16, 0)),

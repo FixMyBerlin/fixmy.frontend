@@ -5,7 +5,6 @@ import tempelberg from './tempelberg';
 const FMB_XHAIN_TERASSEN = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg?fresh=true`;
 
 const defaultConfig = {
-  campaign: '<unnamed_campaign>',
   email: 'info@fixmyberlin.de',
   map: {
     style: FMB_XHAIN_TERASSEN,

@@ -69,6 +69,19 @@ const initialValues: FormData = {
   area: null
 };
 
+const CTA = styled(Button)`
+  ${media.m`
+  width: 20rem;
+  margin: 2em auto;
+`}
+`;
+
+const CTAWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 const FormError = styled(FormHelperText)`
   && {
     font-size: 1em;
@@ -106,7 +119,7 @@ const DirectRegistrationForm = ({
       // @ts-ignore
       const registrationData: GastroRegistration = {
         ...values,
-        campaign: district.name,
+        campaign: district.apps.gastro.currentCampaign,
         geometry: {
           type: 'Point',
           coordinates: values.location
@@ -229,9 +242,11 @@ const DirectRegistrationForm = ({
           </p>
         )}
 
-        <Button flat type="submit" disabled={isSubmitting}>
-          Antrag absenden
-        </Button>
+        <CTAWrapper>
+          <CTA flat type="submit" disabled={isSubmitting}>
+            Antrag absenden
+          </CTA>
+        </CTAWrapper>
       </StyledForm>
     )}
   </Formik>

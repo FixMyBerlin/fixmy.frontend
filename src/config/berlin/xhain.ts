@@ -32,6 +32,7 @@ const xhain: DistrictConfig = {
       path: 'spielstrassen'
     },
     gastro: {
+      currentCampaign: 'xhain2',
       path: 'terrassen',
       directSignup: true,
       timeline: {

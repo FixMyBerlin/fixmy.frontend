@@ -105,7 +105,7 @@ const RegistrationForm = ({
         access_key,
         shopfront_length: parseLength(values.shopfront_length),
         opening_hours: 'weekend',
-        campaign: config.gastro[district?.name]?.campaign
+        campaign: district.apps.gastro.currentCampaign
       };
 
       let uploadFailed = true;

@@ -33,7 +33,7 @@ const get = async (id: number, accessKey: string, district) => {
   const url = `${getApiBase(district)}${generatePath(URL_GET_SIGNUP, {
     id,
     accessKey,
-    campaign: district.name
+    campaign: district.apps.gastro.currentCampaign
   })}`;
   logger('api get', url);
   return ky.get(url).json();
@@ -44,7 +44,7 @@ const get = async (id: number, accessKey: string, district) => {
  */
 const signup = async (signupData: GastroSignup, district) => {
   const endpoint = `${getApiBase(district)}${generatePath(URL_POST_SIGNUP, {
-    campaign: district.name
+    campaign: district.apps.gastro.currentCampaign
   })}`;
   logger('api signup', endpoint);
   return ky.post(endpoint, { json: signupData }).json();
@@ -57,7 +57,7 @@ const register = async (signupData: GastroRegistration, district) => {
   const endpoint = `${getApiBase(district)}${generatePath(URL_PUT_SIGNUP, {
     id: signupData.id,
     accessKey: signupData.access_key,
-    campaign: district.name
+    campaign: district.apps.gastro.currentCampaign
   })}`;
   logger('api register', endpoint);
   return ky.put(endpoint, { json: signupData }).json();
@@ -68,9 +68,10 @@ const register = async (signupData: GastroRegistration, district) => {
  */
 const registerDirect = async (signupData: GastroRegistration, district) => {
   const endpoint = `${getApiBase(district)}${generatePath(URL_POST_SIGNUP, {
-    campaign: district.name
+    campaign: district.apps.gastro.currentCampaign
   })}`;
   logger('api register direct', endpoint);
+  debugger;
   return ky.post(endpoint, { json: signupData }).json();
 };
 

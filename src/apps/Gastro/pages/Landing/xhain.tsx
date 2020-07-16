@@ -40,8 +40,15 @@ const StyledMap = styled(Map)`
 
 const CTA = styled(Button)`
   ${media.m`
+    width: 20rem;
     margin: 2em auto;
   `}
+`;
+
+const CTAWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 const XhainLanding = ({ district }) => (
@@ -87,7 +94,9 @@ const XhainLanding = ({ district }) => (
 
     {openSignup(district) && (
       <Link to={getPath(district, 'signup')}>
-        <CTA flat>Jetzt Antrag stellen</CTA>
+        <CTAWrapper>
+          <CTA flat>Jetzt Antrag stellen</CTA>
+        </CTAWrapper>
       </Link>
     )}
 
