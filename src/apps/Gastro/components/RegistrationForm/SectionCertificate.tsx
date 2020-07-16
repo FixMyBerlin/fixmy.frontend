@@ -19,7 +19,7 @@ const FileInputLabel = styled.label`
   }
 
   // Hide original form element (it's uggo)
-  div:last-child {
+  & > div:last-child {
     display: none;
   }
 `;
@@ -37,6 +37,11 @@ const SelectedFile = styled.span`
 const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+
+  a {
+    margin-right: 1em;
+  }
 `;
 
 const SectionCertificate = ({
@@ -83,16 +88,17 @@ const SectionCertificate = ({
             flat
             disabled={isSubmitting || isSubmittingCertificate}
             aria-hidden="true"
+            ghost={values.certificateS3 != null}
           >
-            Foto oder PDF auswählen
+            {values.certificateS3 == null && <>Foto oder PDF auswählen</>}
+            {values.certificateS3 != null && <>Neues Foto oder PDF auswählen</>}
           </AnchorButton>
-
           {isSubmittingCertificate && <CircularProgress />}
         </ButtonWrapper>
 
-        {values.certificate != null && (
+        {values.certificateS3 != null && (
           <SelectedFile>
-            Datei gewählt: {values.certificate?.name}{' '}
+            Die gewählte Datei wurde Ihrem Antrag beigefügt{' '}
           </SelectedFile>
         )}
 
