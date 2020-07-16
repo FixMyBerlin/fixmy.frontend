@@ -71,7 +71,6 @@ const registerDirect = async (signupData: GastroRegistration, district) => {
     campaign: district.apps.gastro.currentCampaign
   })}`;
   logger('api register direct', endpoint);
-  debugger;
   return ky.post(endpoint, { json: signupData }).json();
 };
 
