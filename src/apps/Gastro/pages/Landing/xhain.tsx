@@ -17,6 +17,7 @@ import Logo from '~/apps/Gastro/components/Logo';
 import Notice from '~/apps/Gastro/components/Notice';
 import { getPath } from '~/apps/Gastro/routes';
 import { openSignup } from '~/apps/Gastro/utils';
+import { media } from '~/styles/utils';
 
 const Attribution = styled.div`
   font-size: 0.75em;
@@ -38,7 +39,9 @@ const StyledMap = styled(Map)`
 `;
 
 const CTA = styled(Button)`
-  margin: 2em auto;
+  ${media.m`
+    margin: 2em auto;
+  `}
 `;
 
 const XhainLanding = ({ district }) => (

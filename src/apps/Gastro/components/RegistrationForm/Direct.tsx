@@ -8,7 +8,6 @@ import styled from 'styled-components';
 import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import logger from '~/utils/logger';
-import config from '~/apps/Gastro/config';
 import { GastroRegistration } from '~/apps/Gastro/types';
 import api from '~/apps/Gastro/api';
 import { validateDirect } from './validate';
@@ -137,6 +136,8 @@ const DirectRegistrationForm = ({
         let errMsg: string;
         try {
           const data = await e.response?.json();
+          // Data from api is always in camelcase
+          // eslint-disable-next-line camelcase
           if (data?.non_field_errors) {
             errMsg = data.non_field_errors.next();
           }
@@ -206,7 +207,7 @@ const DirectRegistrationForm = ({
 
         {!isSubmitting && (
           <p>
-            Klicken Sie auf &quot;Antrag absenden&quot; um Ihren Antrag formal
+            Klicken Sie auf &quot;Antrag absenden&quot;, um Ihren Antrag formal
             beim Bezirksamt einzureichen.
           </p>
         )}
