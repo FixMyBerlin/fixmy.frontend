@@ -70,7 +70,7 @@ const XhainLanding = ({ district }) => (
     </p>
     <p>
       In der Karte sehen Sie alle bis zum 3. Juli 2020 genehmigten Anträge. Die
-      jeweiligen Betrieben können die Flächen nach Beauftragung der Schilder und
+      jeweiligen Betriebe können die Flächen nach Beauftragung der Schilder und
       Absperrungen nutzen.
     </p>
 
@@ -84,7 +84,7 @@ const XhainLanding = ({ district }) => (
 
     {openSignup(district) && (
       <Link to={getPath(district, 'signup')}>
-        <CTA flat>Jetzt Interesse anmelden</CTA>
+        <CTA flat>Jetzt Antrag stellen</CTA>
       </Link>
     )}
 

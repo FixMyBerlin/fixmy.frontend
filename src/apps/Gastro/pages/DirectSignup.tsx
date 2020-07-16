@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { Container } from '@material-ui/core';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
