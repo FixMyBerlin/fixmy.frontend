@@ -37,7 +37,7 @@ const xhain: DistrictConfig = {
       directSignup: true,
       timeline: {
         openSignup: new Date(Date.UTC(2020, 6, 14)),
-        closeSignup: new Date(Date.UTC(2020, 7, 31))
+        closeSignup: new Date(Date.UTC(2020, 9, 31))
       },
       model: {
         category: true,

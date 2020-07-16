@@ -77,7 +77,7 @@ const Registration = () => {
               </ul>
               <p>
                 Die Sondergenehmigung zur Nutzung der Flächen erfolgt kostenfrei
-                zunächst bis zum 31.8.2020.
+                zunächst bis zum 31.10.2020.
               </p>
             </Section>
             <Section>

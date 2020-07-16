@@ -125,9 +125,9 @@ const XhainLanding = ({ district }) => (
       Samstag, Sonntag, jeweils von 11:00 Uhr bis 22:00 Uhr für die Gastronomie
       und Mo-Fr jeweils von 10 bis 20 Uhr für den Einzelhandel oder soziale
       Projekte Flächen als zusätzliche Außenflächen temporär angeboten. Die
-      Nutzung der Sonderflächen erfolgt zunächst kostenfrei zunächst bis zum
-      31.8.2020, über eine Verlängerung der Maßnahme entscheidet das Bezirksamt
-      vor Ablauf dieser Frist.
+      Nutzung der Sonderflächen erfolgt zunächst kostenfrei bis zum 31.10.2020,
+      über eine Verlängerung der Maßnahme entscheidet das Bezirksamt vor Ablauf
+      dieser Frist.
     </p>
     <h2>Bedingungen für die Genehmigung</h2>
     <p>
