@@ -1,4 +1,5 @@
 import 'react-hot-loader'; // keep first
+import './types';
 
 import React, { Suspense, useEffect } from 'react';
 import { connect } from 'react-redux';

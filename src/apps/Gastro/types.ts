@@ -1,7 +1,30 @@
 // API requests don't use CamelCase
 /* eslint-disable camelcase */
 
+import { AppConfig } from '~/types';
+
 type Coordinate = [number, number];
+
+export interface GastroConfig extends AppConfig {
+  directSignup: boolean;
+  timeline?: {
+    openSignup: Date;
+    closeSignup: Date;
+  };
+  model: {
+    category: boolean;
+    opening_hours: boolean;
+  };
+  signup: {
+    mapboxStyle: string;
+    intro?: string;
+    shopfrontLabel?: string;
+    thanksMessage?: string;
+  };
+  registration?: {
+    mapboxStyle: string;
+  };
+}
 
 export interface GastroSignup {
   campaign: string;

@@ -1,5 +1,9 @@
 // Django Serializers don't use camel case
 /* eslint-disable camelcase */
+
+import { AppConfig } from '~/types';
+
+export interface SpielstrassenConfig extends AppConfig {}
 export interface SignupData {
   campaign: string;
   first_name: string;
