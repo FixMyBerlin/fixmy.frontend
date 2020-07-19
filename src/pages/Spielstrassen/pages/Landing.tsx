@@ -6,6 +6,7 @@ import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import Link from '~/components/Link';
 import { Insert as ImageInsert } from '~/components2/Image';
+import Header from '~/components2/Header';
 import BackgroundImageA1 from '~/images/spielstrassen/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/spielstrassen/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
@@ -15,24 +16,12 @@ import BackgroundImageB3 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
 import DoneBadgeImg1 from '~/images/spielstrassen/done-badge.png';
 import DoneBadgeImg2 from '~/images/spielstrassen/done-badge@2x.png';
 import DoneBadgeImg3 from '~/images/spielstrassen/done-badge@3x.png';
-import Header from '../components/Header';
-import Logo from '../components/Logo';
+import LogoFooter from '~/components2/LogoFooter';
 import Notice from '../components/Notice';
 import { media } from '~/styles/utils';
 
 const CTA = styled(Button)`
   margin: 2em auto;
-`;
-
-const Highlight = styled.p`
-  margin-top: -1em;
-  color: #cf0a7d;
-  margin-botom: 2em;
-  font-weight: bold;
-
-  span {
-    white-space: nowrap;
-  }
 `;
 
 const Attribution = styled.div`
@@ -68,7 +57,9 @@ const ImageContainer = styled.div`
 const Landing = () => {
   return (
     <>
-      <Header />
+      <Header to={config.routes.spielstrassen.landing}>
+        Temporäre Spielstraßen für Friedrichshain-Kreuzberg
+      </Header>
       <Container maxWidth="md">
         <h1>Helfen Sie eine temporäre Spielstraße einzurichten!</h1>
         <ImageContainer>
@@ -87,8 +78,7 @@ const Landing = () => {
           der Corona-Pandemie. Deshalb richtet das Bezirksamt
           Friedrichshain-Kreuzberg begleitend zur Spielplatzöffnung bis zu 30
           temporäre Spielstraßen ein. Damit das möglich wird, benötigt das
-          Bezirksamt an Sonn- und Feiertagen jeweils von 12-18 Uhr Ihre
-          Unterstützung.
+          Bezirksamt an Sonntagen jeweils von 13-19 Uhr Ihre Unterstützung.
         </p>
         <Notice />
         <h2>Wie funktioniert das genau?</h2>
@@ -98,8 +88,8 @@ const Landing = () => {
             Kiezlots:in unterstützen wollen.
           </li>
           <li>
-            Das Bezirksamt kontaktiert Sie, sobald sich mindestens 7 Personen
-            für eine Straße gefunden haben.
+            Ihre Kontaktdaten werden an die Teamkapitän:in der Spielstraße
+            weitergegeben, dieser Kontaktiert Sie für alles Weitere.
           </li>
           <li>
             Wenn Sie sich als Teamkapitän:in angemeldet haben schickt Ihnen das
@@ -116,10 +106,6 @@ const Landing = () => {
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
-        <Highlight>
-          Für alle Spielstraßen haben sich ausreichend Unterstützer:innen
-          gemeldet.
-        </Highlight>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
           Notwendig für die Umsetzung ist die Bereitschaft der Bürger:innen,
@@ -187,18 +173,14 @@ const Landing = () => {
         </p>
         <p>
           An einigen der betreffenden Straßen wird das Straßen- und
-          Grünflächenamt Tankwagen oder Wasserzapfstationen einrichten, damit
-          auch dem leidenden Baumbestand durch gemeinsame nachbarschaftliche
-          Gießaktionen geholfen werden kann.
+          Grünflächenamt Wasserzapfstationen einrichten, damit auch dem
+          leidenden Baumbestand durch gemeinsame nachbarschaftliche Gießaktionen
+          geholfen werden kann.
         </p>
         <Link to={config.routes.spielstrassen.streets}>
           <CTA>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
-        <Highlight>
-          Für alle Spielstraßen haben sich ausreichend Unterstützer:innen
-          gemeldet.
-        </Highlight>
-        <Logo />
+        <LogoFooter>Bereitgestellt durch FixMyBerlin</LogoFooter>
       </Container>
     </>
   );

@@ -7,6 +7,7 @@ import MenuButtonSVG from '~/images/menubutton.svg';
 
 const MenuButton = () => (
   <IconButton
+    aria-label="Menü öffnen"
     data-cy="hamburger-button"
     onClick={() => Store.dispatch(toggle())}
   >

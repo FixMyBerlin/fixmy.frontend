@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter, generatePath } from 'react-router-dom';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Field, ErrorMessage } from 'formik';
 import { TextField, CheckboxWithLabel, RadioGroup } from 'formik-material-ui';
 import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
 import styled from 'styled-components';
@@ -8,7 +8,7 @@ import slugify from 'slugify';
 
 import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
-import { media } from '~/styles/utils';
+import { Form } from '~/components2/Form';
 import { SignupData } from '../../types';
 import api from '../../api';
 import logger from '~/utils/logger';
@@ -23,49 +23,21 @@ const initialValues = {
   message: ''
 };
 
-const StyledForm = styled(Form)`
-
-  padding-bottom: 2em;
-
-  > div {
-      margin-bottom: 1em;
-  }
-
-  .tosFieldGroup {
-    margin: 2em 0;
-
-    .MuiTypography-body1 {
-        font-size: 0.75em;
-        line-height: normal;
-        color: ${config.colors.darkgrey}
-    }
-
-    label {
-      align-items: flex-start;
-    }
-  }
-
-  .lastsectionheading {
-      margin: 2em 0 0.5em 0;
-  }
-
-  .messageField {
-    margin-bottom: 2em;
-  }
-
-  button {
-      width: 100%;
-
-      ${media.s`
-        width: initial;
-    `} 
-`;
-
 const FormError = styled(FormHelperText)`
   && {
     font-size: 1em;
     line-height: normal;
     margin: 2em auto;
+  }
+`;
+
+const StyledForm = styled(Form)`
+  .lastsectionheading {
+    margin: 2em 0 0.5em 0;
+  }
+
+  .messageField {
+    margin-bottom: 2em;
   }
 `;
 
@@ -124,7 +96,7 @@ const SignupForm = ({ street, history }) => (
           name="tos_accepted"
           render={(msg) => <FormError error>{msg}</FormError>}
         />
-        <div className="tosFieldGroup">
+        <div className="checkboxFieldGroup">
           <Field
             component={CheckboxWithLabel}
             name="tos_accepted"

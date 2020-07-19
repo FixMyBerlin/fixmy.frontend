@@ -3,7 +3,6 @@ import config from '~/config';
 export default {
   spielstrassen: {
     campaign: 'xhain',
-    email: 'aufsicht@ba-fk.berlin.de',
     supporterGoal: 7,
     shareTitle: 'Melde dich an für temporäre Spielstraßen',
     shareText:

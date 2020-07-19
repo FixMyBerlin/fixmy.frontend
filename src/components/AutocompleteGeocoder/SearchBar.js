@@ -104,7 +104,7 @@ class SearchBar extends PureComponent {
         <SearchInput
           value={this.state.inputValue}
           type="text"
-          placeholder="Gib hier eine Adresse ein"
+          placeholder={this.props.label || 'Gib hier eine Adresse ein'}
           data-cy="map-address-input"
           spellCheck="false"
           autoCapitalize="words"
@@ -165,7 +165,9 @@ SearchBar.propTypes = {
    * Amount of milliseconds the invokation of this.props.onSearchEnter() isdelayed
    * since its last invocation.
    */
-  debounceTime: PropTypes.number
+  debounceTime: PropTypes.number,
+
+  label: PropTypes.string
 };
 
 SearchBar.defaultProps = {
@@ -175,7 +177,8 @@ SearchBar.defaultProps = {
   onSearchReset: () => {},
   onEnterKeyPress: () => {},
   searchStringMinLength: 3,
-  debounceTime: 1000
+  debounceTime: 1000,
+  label: null
 };
 
 export default SearchBar;

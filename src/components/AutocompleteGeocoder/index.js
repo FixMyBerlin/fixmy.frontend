@@ -71,6 +71,7 @@ class AutocompleteGeocoder extends PureComponent {
           onEnterKeyPress={this.onEnterPress}
           searchStringMinLength={this.props.searchStringMinLength}
           debounceTime={this.props.debounceTime}
+          label={this.props.label}
         />
         {this.state.suggestions.length && (
           <SuggestionList
@@ -114,7 +115,9 @@ AutocompleteGeocoder.propTypes = {
    * Amount of milliseconds the invokation of this.props.onSearchEnter() isdelayed
    * since its last invocation.
    */
-  debounceTime: PropTypes.number
+  debounceTime: PropTypes.number,
+
+  label: PropTypes.string
 };
 
 AutocompleteGeocoder.defaultProps = {
@@ -125,7 +128,8 @@ AutocompleteGeocoder.defaultProps = {
   onSearchStart: () => {
   },
   searchStringMinLength: 3,
-  debounceTime: 1000
+  debounceTime: 1000,
+  label: null
 };
 
 export default AutocompleteGeocoder;

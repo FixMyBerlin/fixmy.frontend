@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 import Loader from '~/components/Loader';
 import config from '~/pages/Spielstrassen/config';
-import Header from '../components/Header';
+import Header from '~/components2/Header';
 import SupporterIcon from '../components/SupporterIcon';
 import SignupForm from '../components/SignupForm';
 import KiezNotFound from '../components/NotFound';
@@ -56,7 +56,9 @@ const Register = ({ match, streets, streetRequest }) => {
 
   return (
     <>
-      <Header showInfoLink />
+      <Header to={config.routes.spielstrassen.landing} showInfoLink>
+        Temporäre Spielstraßen für Friedrichshain-Kreuzberg
+      </Header>
       <Container maxWidth="sm">
         <Section>
           <h1>{street.street}</h1>
