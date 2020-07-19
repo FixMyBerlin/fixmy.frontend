@@ -140,7 +140,6 @@ describe('<AutoCompleteGeocoder />', () => {
         .toHaveBeenCalledTimes(slowInput.length));
 
     });
-    // FIXME: onLocationPick not triggered
     it('invokes the onLocationPick handler' +
       ' when the user presses enter if there is only one search result', async () => {
       // extract first suggested item from mock
