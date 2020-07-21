@@ -4,7 +4,7 @@ import { Paper } from '@material-ui/core';
 import styled from 'styled-components';
 import slugify from 'slugify';
 
-import config from '~/pages/Spielstrassen/config';
+import config from '~/config';
 import Button from '~/components2/Button';
 import Link from '~/components/Link';
 import SupporterIcon from './SupporterIcon';
@@ -44,7 +44,7 @@ const KiezCard = styled(Paper)`
   }
 `;
 
-const Kiez = ({ kiez, street, supporters = 0 }) => {
+const Kiez = ({ kiez, street, status, supporters = 0 }) => {
   const signupUrl = generatePath(config.routes.spielstrassen.register, {
     slug: slugify(street, { lower: true })
   });
@@ -67,7 +67,9 @@ const Kiez = ({ kiez, street, supporters = 0 }) => {
           registriert
         </span>
         <Link to={signupUrl}>
-          <Button flat>Unterstützen</Button>
+          <Button flat disabled={status === 'closed'}>
+            Unterstützen
+          </Button>
         </Link>
       </footer>
     </KiezCard>

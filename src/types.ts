@@ -1,6 +1,6 @@
 import MapboxGL from 'mapbox-gl';
 
-import { SpielstrassenConfig } from '~/pages/Spielstrassen/types';
+import { SpielstrassenConfig } from '~/apps/Spielstrassen/types';
 import { GastroConfig } from '~/apps/Gastro/types';
 
 export interface AppConfig {

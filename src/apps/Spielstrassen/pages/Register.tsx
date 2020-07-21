@@ -6,14 +6,14 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import Loader from '~/components/Loader';
-import config from '~/pages/Spielstrassen/config';
 import Header from '~/components2/Header';
+import { getStreetInfo } from '~/apps/Spielstrassen/utils';
+import config from '~/config';
 import SupporterIcon from '../components/SupporterIcon';
 import SignupForm from '../components/SignupForm';
 import KiezNotFound from '../components/NotFound';
 import KiezMap from '../components/KiezMap';
 import { RequestState } from '../state';
-import { getStreetInfo } from '~/pages/Spielstrassen/utils';
 import Notice from '../components/Notice';
 
 const SupporterInfo = styled.div`
@@ -43,7 +43,7 @@ const LoaderWrapper = styled.span`
   height: 0.75em;
 `;
 
-const Register = ({ match, streets, streetRequest }) => {
+const Register = ({ match, streets, streetRequest, district }) => {
   const [street, setStreet] = useState(
     getStreetInfo(streets, match.params?.slug)
   );
@@ -52,6 +52,7 @@ const Register = ({ match, streets, streetRequest }) => {
     setStreet(getStreetInfo(streets, match.params?.slug));
   }, [match, streets]);
 
+  if (district == null) return null;
   if (street == null) return <KiezNotFound />;
 
   return (
@@ -77,7 +78,7 @@ const Register = ({ match, streets, streetRequest }) => {
               street.supporters || 0
             )}{' '}
             Unterstützer:in{street.supporters === 1 ? '' : 'nen'} sind
-            registriert, mindestens {config.spielstrassen.supporterGoal}{' '}
+            registriert, mindestens {district.apps.spielstrassen.supporterGoal}{' '}
             benötigt.
           </SupporterInfo>
           <p>
@@ -111,5 +112,8 @@ const Register = ({ match, streets, streetRequest }) => {
   );
 };
 
-const mapStateToProps = (state) => ({ ...state.SpielstrassenState });
+const mapStateToProps = ({ AppState, SpielstrassenState }) => ({
+  ...SpielstrassenState,
+  district: AppState.district
+});
 export default connect(mapStateToProps)(Register);

@@ -5,15 +5,15 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { generatePath } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { getStreetInfo } from '~/apps/Spielstrassen/utils';
 import Header from '~/components2/Header';
-import { getStreetInfo } from '~/pages/Spielstrassen/utils';
 import KiezNotFound from '../components/NotFound';
 import KiezMap from '../components/KiezMap';
 // import ShareButton from '../components/ShareButton';
 // import ShareButtonDesktop from '../components/ShareButtonDesktop';
 import Button from '~/components2/Button';
 import Logo from '~/components2/LogoFooter';
-import config from '../config';
+import config from '~/config';
 import { media } from '~/styles/utils';
 
 const LinkButton = styled(Button)`

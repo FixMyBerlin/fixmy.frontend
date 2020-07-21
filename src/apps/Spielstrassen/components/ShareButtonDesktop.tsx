@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/pages/Spielstrassen/config';
+import config from '~/config';
 import { media } from '~/styles/utils';
 
 // Adapted from https://sharingbuttons.io/
