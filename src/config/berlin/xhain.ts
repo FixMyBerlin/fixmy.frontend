@@ -34,6 +34,7 @@ const xhain: DistrictConfig = {
       shareTitle: 'Melde dich an für temporäre Spielstraßen',
       shareText:
         'Friedrichshain-Kreuzberg richtet temporäre Spielstraßen ein, hier kann man sich melden um eine Spielstraße zu unterstützen. Bitte unterstütze diese Spielstraße, damit das möglich wird:',
+      mapboxStyle: 'mapbox://styles/hejco/ck98kjwqi5edx1ip74oyrmxmd',
       streets: [
         {
           street: 'Bänschstraße',
