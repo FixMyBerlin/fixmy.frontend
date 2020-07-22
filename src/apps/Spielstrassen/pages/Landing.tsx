@@ -86,7 +86,7 @@ const Landing = () => {
           </li>
         </ol>
         <Link to={config.routes.spielstrassen.streets}>
-          <CTA>Jetzt eine Spielstraße unterstützen</CTA>
+          <CTA flat>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
@@ -160,7 +160,7 @@ const Landing = () => {
           geholfen werden kann.
         </p>
         <Link to={config.routes.spielstrassen.streets}>
-          <CTA>Jetzt eine Spielstraße unterstützen</CTA>
+          <CTA flat>Jetzt eine Spielstraße unterstützen</CTA>
         </Link>
         <LogoFooter>Bereitgestellt durch FixMyBerlin</LogoFooter>
       </Container>
