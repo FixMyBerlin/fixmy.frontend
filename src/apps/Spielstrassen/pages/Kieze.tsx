@@ -1,21 +1,19 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Grid, Paper, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
-import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
 import KiezKarte1 from '~/images/spielstrassen/kiezkarte.jpg';
 import KiezKarte2 from '~/images/spielstrassen/kiezkarte@2x.jpg';
 import KiezKarte3 from '~/images/spielstrassen/kiezkarte@3x.jpg';
 import Header from '~/components2/Header';
+import config from '~/config';
 import KiezCard from '../components/KiezCard';
-import { RequestState } from '~/pages/Spielstrassen/state';
+import { RequestState } from '~/apps/Spielstrassen/state';
 import Loader from '~/components/Loader';
 import { Spielstrasse } from '../types';
-import Notice from '../components/Notice';
 import { media } from '~/styles/utils';
 
 const ContactButton = styled(Button)`
@@ -36,27 +34,34 @@ const sortArray = (a: Spielstrasse, b: Spielstrasse) =>
 const fullMapURL =
   'https://api.mapbox.com/styles/v1/hejco/ck98kjwqi5edx1ip74oyrmxmd.html?fresh=true&title=view&access_token=pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q#12.78/52.49946/13.42743';
 
-const Kieze = ({ streets, streetRequest }) => {
+type Props = {
+  streets: Spielstrasse[];
+  streetRequest: {
+    state: RequestState;
+  };
+};
+
+const Kieze = ({ streets, streetRequest }: Props) => {
   const fhain = streets
     .filter((street) => street.region === 'Friedrichshain')
     .sort(sortArray);
   const xberg = streets
     .filter((street) => street.region === 'Kreuzberg')
     .sort(sortArray);
+
   return (
     <>
       <Header to={config.routes.spielstrassen.landing} showInfoLink>
         Temporäre Spielstraßen für Friedrichshain-Kreuzberg
       </Header>
       <Container maxWidth="md">
-        <h2>Geplante Temporäre Spielstraßen in Friedrichshain-Kreuzberg</h2>
+        <h2>Welche Spielstraße wollen Sie unterstützen?</h2>
         <a href={fullMapURL} target="_blank" rel="noopener noreferrer">
           <ImageInsert
             src={KiezKarte2}
             srcSet={`${KiezKarte1} 450w, ${KiezKarte2} 750w, ${KiezKarte3} 1125w`}
           />
         </a>
-        <Notice />
         {streetRequest.state === RequestState.pending ? (
           <Loader />
         ) : (
@@ -64,26 +69,16 @@ const Kieze = ({ streets, streetRequest }) => {
             <Grid item xs={12} md={6}>
               <h2>Friedrichshain</h2>
               <KiezListing>
-                {fhain.map(({ kiez, supporters, street }) => (
-                  <KiezCard
-                    street={street}
-                    kiez={kiez}
-                    supporters={supporters}
-                    key={`kiez-${street}`}
-                  />
+                {fhain.map((props: Spielstrasse) => (
+                  <KiezCard key={`kiez-${props?.street}`} {...props} />
                 ))}
               </KiezListing>
             </Grid>
             <Grid item xs={12} md={6}>
               <h2>Kreuzberg</h2>
               <KiezListing>
-                {xberg.map(({ kiez, supporters, street }) => (
-                  <KiezCard
-                    street={street}
-                    kiez={kiez}
-                    supporters={supporters}
-                    key={`kiez-${street}`}
-                  />
+                {xberg.map((props: Spielstrasse) => (
+                  <KiezCard key={`kiez-${props?.street}`} {...props} />
                 ))}
               </KiezListing>
             </Grid>

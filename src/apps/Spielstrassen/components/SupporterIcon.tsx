@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import config from '~/pages/Spielstrassen/config';
+import { connect } from 'react-redux';
 import Supporter from '~/images/spielstrassen/supporter.svg';
 import SupporterCheck from '~/images/spielstrassen/supporter-check.svg';
 
@@ -12,17 +12,24 @@ const SupportersReached = styled(SupporterCheck)`
 
 const Wrapper = styled.span`
   display: flex;
+  flex-shrink: 0;
   svg:first-child {
     width: 100%;
     height: 100%;
   }
 `;
 
-const SupporterIcon = ({ count }) => (
+const SupporterIcon = ({ count, district }) => (
   <Wrapper>
     <Supporter />
-    <SupportersReached visible={count >= config.spielstrassen.supporterGoal} />
+    <SupportersReached
+      visible={count >= district.apps.spielstrassen.supporterGoal}
+    />
   </Wrapper>
 );
 
-export default SupporterIcon;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(SupporterIcon);

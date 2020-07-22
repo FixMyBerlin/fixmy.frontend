@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { generatePath } from 'react-router-dom';
 import { Paper } from '@material-ui/core';
 import styled from 'styled-components';
 import slugify from 'slugify';
 
-import config from '~/pages/Spielstrassen/config';
+import config from '~/config';
 import Button from '~/components2/Button';
 import Link from '~/components/Link';
 import SupporterIcon from './SupporterIcon';
@@ -44,7 +45,13 @@ const KiezCard = styled(Paper)`
   }
 `;
 
-const Kiez = ({ kiez, street, supporters = 0 }) => {
+const SignupButton = styled(Button)`
+  // Make sure the button doesn't become higher than one line
+  word-break: initial;
+  hyphens: initial;
+`;
+
+const Kiez = ({ district, kiez, street, status, supporters = 0 }) => {
   const signupUrl = generatePath(config.routes.spielstrassen.register, {
     slug: slugify(street, { lower: true })
   });
@@ -63,15 +70,30 @@ const Kiez = ({ kiez, street, supporters = 0 }) => {
       <footer>
         <SupporterIcon count={supporters} />
         <span className="supportercount">
-          {supporters} Unter&shy;stützer:in{supporters === 1 ? '' : 'nen'}{' '}
-          registriert
+          {supporters <= district.apps.spielstrassen.supporterGoal && (
+            <>
+              {supporters} Unter&shy;stützer:in{supporters === 1 ? '' : 'nen'}{' '}
+              registriert. Hilf mit, damit die Spielstraße eingerichtet werden
+              kann.
+            </>
+          )}
+          {supporters > district.apps.spielstrassen.supporterGoal && (
+            <>
+              Diese Spielstraße findet bereits statt, benötigt aber weiter ihre
+              Unterstützung.
+            </>
+          )}
         </span>
         <Link to={signupUrl}>
-          <Button flat>Unterstützen</Button>
+          <SignupButton flat>Unterstützen</SignupButton>
         </Link>
       </footer>
     </KiezCard>
   );
 };
 
-export default Kiez;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(Kiez);

@@ -5,16 +5,16 @@ import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import Loader from '~/components/Loader';
-import config from '~/pages/Spielstrassen/config';
+import BigLoader from '~/components/BigLoader';
 import Header from '~/components2/Header';
-import SupporterIcon from '../components/SupporterIcon';
-import SignupForm from '../components/SignupForm';
-import KiezNotFound from '../components/NotFound';
-import KiezMap from '../components/KiezMap';
-import { RequestState } from '../state';
-import { getStreetInfo } from '~/pages/Spielstrassen/utils';
-import Notice from '../components/Notice';
+import config from '~/config';
+
+import KiezNotFound from '~/apps/Spielstrassen/components/NotFound';
+import SupporterIcon from '~/apps/Spielstrassen/components/SupporterIcon';
+import SignupForm from '~/apps/Spielstrassen/components/SignupForm';
+import KiezMap from '~/apps/Spielstrassen/components/KiezMap';
+import { RequestState } from '~/apps/Spielstrassen/state';
+import { getStreetInfo } from '~/apps/Spielstrassen/utils';
 
 const SupporterInfo = styled.div`
   display: flex;
@@ -31,19 +31,14 @@ const SupporterInfo = styled.div`
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};
   margin-bottom: 2em;
+  padding-bottom: 2em;
 
   &:last-child {
     border-bottom: none;
   }
 `;
 
-const LoaderWrapper = styled.span`
-  display: inline-block;
-  margin: 0 10px;
-  height: 0.75em;
-`;
-
-const Register = ({ match, streets, streetRequest }) => {
+const Register = ({ match, streets, streetRequest, district }) => {
   const [street, setStreet] = useState(
     getStreetInfo(streets, match.params?.slug)
   );
@@ -52,6 +47,8 @@ const Register = ({ match, streets, streetRequest }) => {
     setStreet(getStreetInfo(streets, match.params?.slug));
   }, [match, streets]);
 
+  if (district == null) return null;
+  if (streetRequest.state === RequestState.pending) return <BigLoader />;
   if (street == null) return <KiezNotFound />;
 
   return (
@@ -68,17 +65,20 @@ const Register = ({ match, streets, streetRequest }) => {
           <KiezMap street={street.street} />
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />
-            {street.supporters === 0 ? '' : 'Bereits '}
-            {streetRequest?.state === RequestState.pending ? (
-              <LoaderWrapper>
-                <Loader />
-              </LoaderWrapper>
-            ) : (
-              street.supporters || 0
-            )}{' '}
-            Unterstützer:in{street.supporters === 1 ? '' : 'nen'} sind
-            registriert, mindestens {config.spielstrassen.supporterGoal}{' '}
-            benötigt.
+            {street.supporters <= district.apps.spielstrassen.supporterGoal && (
+              <>
+                {street.supporters === 0 ? '' : 'Bereits '}
+                {street.supporters} Unter&shy;stützer:in
+                {street.supporters === 1 ? '' : 'nen'} registriert. Hilf mit,
+                damit die Spielstraße eingerichtet werden kann.
+              </>
+            )}
+            {street.supporters > district.apps.spielstrassen.supporterGoal && (
+              <>
+                Diese Spielstraße findet bereits statt, benötigt aber weiter
+                ihre Unterstützung.
+              </>
+            )}
           </SupporterInfo>
           <p>
             <Link to={config.routes.spielstrassen.streets} className="internal">
@@ -88,7 +88,13 @@ const Register = ({ match, streets, streetRequest }) => {
         </Section>
         <Section>
           <h2>Diese Spielstrasse benötigt Ihre Unterstützung!</h2>
-          <Notice />
+          <p>
+            Damit die Spielstraßen dauerhaft stattfinden können, brauchen sie
+            Kiezlots:innen, die an Sonntagen 1-2 mal im Monat für drei Stunden
+            vor Ort sind. Registrieren Sie sich hier, um Ihre Nachbarn zu
+            unterstützen und Kindern das Spielen im öffentlichen Raum zu
+            ermöglichen.
+          </p>
           <p>
             Hier finden Sie{' '}
             <Link to={config.routes.spielstrassen.landing} className="internal">
@@ -98,8 +104,8 @@ const Register = ({ match, streets, streetRequest }) => {
           </p>
           <p>
             <strong>
-              Melden Sie sich über dieses Formular an, um als Kiezlots:in in der{' '}
-              {street.street} zu unterstützen:
+              Melden Sie sich über dieses Formular an, um die temporäre
+              Spielstraße {street.street} zu unterstützen:
             </strong>
           </p>
         </Section>
@@ -111,5 +117,8 @@ const Register = ({ match, streets, streetRequest }) => {
   );
 };
 
-const mapStateToProps = (state) => ({ ...state.SpielstrassenState });
+const mapStateToProps = ({ AppState, SpielstrassenState }) => ({
+  ...SpielstrassenState,
+  district: AppState.district
+});
 export default connect(mapStateToProps)(Register);

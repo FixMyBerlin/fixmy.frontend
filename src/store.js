@@ -7,7 +7,7 @@ import UserState from '~/pages/User/UserState';
 import AnalysisState from '~/pages/Analysis/AnalysisState';
 import ReportsState from '~/pages/Reports/state';
 import KatasterKIState from '~/pages/KatasterKI/state';
-import SpielstrassenState from '~/pages/Spielstrassen/state';
+import SpielstrassenState from '~/apps/Spielstrassen/state';
 
 const Reducer = combineReducers({
   AppState,

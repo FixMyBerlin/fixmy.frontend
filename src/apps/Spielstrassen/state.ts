@@ -1,15 +1,15 @@
 import { Dispatch } from 'redux';
+import logger from '~/utils/logger';
 
 import api from './api';
-import config from './config';
-
 import { Spielstrasse } from './types';
-import logger from '~/utils/logger';
+import { DistrictConfig } from '~/types';
 
 const SET_KIEZE = 'Spielstrassen/SET_KIEZE';
 const LOAD_KIEZE_PENDING = 'Spielstrassen/LOAD_KIEZE_PENDING';
 const LOAD_KIEZE_ERROR = 'Spielstrassen/LOAD_KIEZE_ERROR';
 const LOAD_KIEZE_COMPLETE = 'Spielstrassen/LOAD_KIEZE_COMPLETE';
+
 export interface State {
   streets: Spielstrasse[];
   streetRequest: {
@@ -29,11 +29,11 @@ export enum RequestState {
 interface Action {
   type: string;
   error?: string;
-  streets?: string;
+  streets?: Spielstrasse[];
 }
 
 const initialState = {
-  streets: config.spielstrassen.streets,
+  streets: [],
   streetRequest: {
     state: RequestState.waiting
   }
@@ -68,7 +68,7 @@ export default function reducer(state: State = initialState, action: Action) {
   }
 }
 
-export function setStreets(streets: string): Action {
+export function setStreets(streets: Spielstrasse[]): Action {
   return { type: SET_KIEZE, streets };
 }
 
@@ -82,11 +82,14 @@ export function loadKiezeComplete(): Action {
   return { type: LOAD_KIEZE_COMPLETE };
 }
 
-export const loadKieze = async (dispatch: Dispatch) => {
+export const loadKieze = async (
+  dispatch: Dispatch,
+  district: DistrictConfig
+) => {
   dispatch(loadKiezePending());
   let counts: { [street: string]: number };
   try {
-    counts = await api.getData();
+    counts = await api.getData(district);
     dispatch(loadKiezeComplete());
   } catch (e) {
     dispatch(loadKiezeError(e.message));
@@ -94,10 +97,14 @@ export const loadKieze = async (dispatch: Dispatch) => {
     throw e;
   }
 
-  const streets = config.spielstrassen.streets.map((streetInfo) => ({
-    ...streetInfo,
-    supporters: counts[streetInfo.street] || 0
-  }));
+  const isActive = (street: Spielstrasse) => street.status !== 'closed';
+
+  const streets = district.apps.spielstrassen.streets
+    .filter(isActive)
+    .map((streetInfo) => ({
+      ...streetInfo,
+      supporters: counts[streetInfo.street] || 0
+    }));
 
   dispatch(setStreets(streets));
 };
