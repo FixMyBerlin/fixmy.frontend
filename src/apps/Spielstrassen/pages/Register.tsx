@@ -88,8 +88,8 @@ const Register = ({ match, streets, streetRequest, district }) => {
           </p>
           <p>
             <strong>
-              Melden Sie sich über dieses Formular an, um als Kiezlots:in in der{' '}
-              {street.street} zu unterstützen:
+              Melden Sie sich über dieses Formular an, um die temporäre
+              Spielstraße {street.street} zu unterstützen:
             </strong>
           </p>
         </Section>

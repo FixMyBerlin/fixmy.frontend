@@ -38,20 +38,8 @@ const Attribution = styled.div`
   }
 `;
 
-const DoneBadge = styled.img`
-  position: absolute;
-  bottom: 5%;
-  width: 50%;
-  max-width: 20em;
-
-  ${media.m`
-    left: 5%;
-  `}
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
-  width: 100%;
+const Intro = styled.div`
+  margin-bottom: 3em;
 `;
 
 const Landing = () => {
@@ -62,25 +50,20 @@ const Landing = () => {
       </Header>
       <Container maxWidth="md">
         <h1>Helfen Sie eine temporäre Spielstraße einzurichten!</h1>
-        <ImageContainer>
-          <DoneBadge
-            src={DoneBadgeImg2}
-            srcSet={`${DoneBadgeImg1} 450w, ${DoneBadgeImg2} 750w, ${DoneBadgeImg3} 1125w`}
-            alt="Vielen Dank! Die Registrierung ist jetzt geschlossen."
-          />
-          <ImageInsert
-            src={BackgroundImageA2}
-            srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
-          />
-        </ImageContainer>
-        <p>
-          Kinder brauchen viel Raum zum Spielen im Freien, gerade jetzt während
-          der Corona-Pandemie. Deshalb richtet das Bezirksamt
-          Friedrichshain-Kreuzberg begleitend zur Spielplatzöffnung bis zu 30
-          temporäre Spielstraßen ein. Damit das möglich wird, benötigt das
-          Bezirksamt an Sonntagen jeweils von 13-19 Uhr Ihre Unterstützung.
-        </p>
-        <Notice />
+        <ImageInsert
+          src={BackgroundImageA2}
+          srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
+        />
+        <Intro>
+          <p>
+            Kinder brauchen viel Raum zum Spielen im Freien, gerade jetzt
+            während der Corona-Pandemie. Deshalb richtet das Bezirksamt
+            Friedrichshain-Kreuzberg begleitend zur Spielplatzöffnung bis zu 30
+            temporäre Spielstraßen ein. Damit das möglich wird, benötigt das
+            Bezirksamt an Sonntagen jeweils von 13-19 Uhr Ihre Unterstützung.
+          </p>
+          <Notice />
+        </Intro>
         <h2>Wie funktioniert das genau?</h2>
         <ol>
           <li>
@@ -88,19 +71,22 @@ const Landing = () => {
             Kiezlots:in unterstützen wollen.
           </li>
           <li>
-            Ihre Kontaktdaten werden an die Teamkapitän:in der Spielstraße
-            weitergegeben, dieser Kontaktiert Sie für alles Weitere.
+            Das Bezirksamt kontaktiert Sie, und stellt den Kontakt zu den Teams
+            der Spielstraßen her.
           </li>
           <li>
-            Wenn Sie sich als Teamkapitän:in angemeldet haben schickt Ihnen das
-            Bezirksamt einen Terminvorschlag. Dort unterschreiben Sie eine
-            Kooperationsvereinbarung und erhalten eine Einweisung zum Verfahren.
+            Wenn Sie sich als Teamkapitän*in für eine neue Straße angemeldet
+            haben schickt Ihnen das Bezirksamt einen Terminvorschlag. Dort
+            unterschreiben Sie eine Kooperationsvereinbarung und erhalten eine
+            Einweisung zum Verfahren.
           </li>
           <li>
-            Die Spielstraße wird vom Bezirksamt angeordnet und eingerichtet. Bei
-            der Umsetzung vor Ort ist das Bezirksamt jenseits der rechtlichen
-            und materiellen Vorbereitung auf Ihre selbständige Mitwirkung und
-            Organisation unter den registrierten Anwohner:innen angewiesen.
+            Bei neuen Spielstraßen: Sobald sich sieben Kiezlots:innen und ein/e
+            Teamkapitän:in für eine Spielstraße gefunden haben, wird diese vom
+            Bezirksamt angeordnet und eingerichtet. Bei der Umsetzung vor Ort
+            ist das Bezirksamt jenseits der rechtlichen und materiellen
+            Vorbereitung auf die selbständige Mitwirkung und Organisation unter
+            den registrierten Anwohner*innen angewiesen.
           </li>
         </ol>
         <Link to={config.routes.spielstrassen.streets}>
@@ -163,7 +149,7 @@ const Landing = () => {
         </Attribution>
         <h2>Zum Hintergrund</h2>
         <p>
-          Die Spielplätze im Bezirk Friedrichshain-Kreuzberg werden nach einem
+          Die Spielplätze im Bezirk Friedrichshain-Kreuzberg wurden nach einem
           Beschluss des Rates der Bürgermeister:innen zum 01.05.2020 wieder
           geöffnet. Die Abstandsgebote der Covid-19-Eindämmungsverordnung
           behalten aber unverändert ihre Gültigkeit. Der Bezirk ist eines der

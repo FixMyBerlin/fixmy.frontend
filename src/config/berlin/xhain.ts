@@ -30,7 +30,7 @@ const xhain: DistrictConfig = {
   apps: {
     spielstrassen: {
       path: 'spielstrassen',
-      supporterGoal: 7,
+      supporterGoal: 10,
       shareTitle: 'Melde dich an für temporäre Spielstraßen',
       shareText:
         'Friedrichshain-Kreuzberg richtet temporäre Spielstraßen ein, hier kann man sich melden um eine Spielstraße zu unterstützen. Bitte unterstütze diese Spielstraße, damit das möglich wird:',

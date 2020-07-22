@@ -12,6 +12,7 @@ const SupportersReached = styled(SupporterCheck)`
 
 const Wrapper = styled.span`
   display: flex;
+  flex-shrink: 0;
   svg:first-child {
     width: 100%;
     height: 100%;

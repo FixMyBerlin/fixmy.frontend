@@ -57,14 +57,13 @@ const Kieze = ({ streets, streetRequest }: Props) => {
         Temporäre Spielstraßen für Friedrichshain-Kreuzberg
       </Header>
       <Container maxWidth="md">
-        <h2>Geplante Temporäre Spielstraßen in Friedrichshain-Kreuzberg</h2>
+        <h2>Welche Spielstraße wollen Sie unterstützen?</h2>
         <a href={fullMapURL} target="_blank" rel="noopener noreferrer">
           <ImageInsert
             src={KiezKarte2}
             srcSet={`${KiezKarte1} 450w, ${KiezKarte2} 750w, ${KiezKarte3} 1125w`}
           />
         </a>
-        <Notice />
         {streetRequest.state === RequestState.pending ? (
           <Loader />
         ) : (
