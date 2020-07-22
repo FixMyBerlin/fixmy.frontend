@@ -10,7 +10,6 @@ import Header from '~/components2/Header';
 import config from '~/config';
 
 import KiezNotFound from '~/apps/Spielstrassen/components/NotFound';
-import Notice from '~/apps/Spielstrassen/components/Notice';
 import SupporterIcon from '~/apps/Spielstrassen/components/SupporterIcon';
 import SignupForm from '~/apps/Spielstrassen/components/SignupForm';
 import KiezMap from '~/apps/Spielstrassen/components/KiezMap';
@@ -32,6 +31,7 @@ const SupporterInfo = styled.div`
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};
   margin-bottom: 2em;
+  padding-bottom: 2em;
 
   &:last-child {
     border-bottom: none;
@@ -78,7 +78,14 @@ const Register = ({ match, streets, streetRequest, district }) => {
         </Section>
         <Section>
           <h2>Diese Spielstrasse benötigt Ihre Unterstützung!</h2>
-          <Notice />
+          <p>
+            Die Teams der Spielstraßen benötigen Ihre Unterstützung. Damit die
+            Spielstraßen dauerhaft stattfinden können, brauchen sie
+            Kiezlots:innen, die an Sonntagen 1-2 mal im Monat für drei Stunden
+            vor Ort sind. Registrieren Sie sich hier, um Ihre Nachbarn zu
+            unterstützen und Kindern das Spielen im öffentlichen Raum zu
+            ermöglichen.
+          </p>
           <p>
             Hier finden Sie{' '}
             <Link to={config.routes.spielstrassen.landing} className="internal">
