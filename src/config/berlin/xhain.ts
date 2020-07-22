@@ -56,7 +56,7 @@ const xhain: DistrictConfig = {
           status: 'closed'
         },
         {
-          street: 'Krossener Straße',
+          street: 'Krossener Straße / Gabriel-Max-Straße (Boxhagener Platz)',
           kiez: 'Boxhagener Platz',
           region: 'Friedrichshain',
           status: 'open',
@@ -91,7 +91,7 @@ const xhain: DistrictConfig = {
           schedule: 'Sonntags 14 – 17 Uhr (Ferienzeit)'
         },
         {
-          street: 'Arndtstraße',
+          street: 'Chamissoplatz',
           kiez: 'Chamissokiez',
           region: 'Kreuzberg',
           schedule:
@@ -102,7 +102,8 @@ const xhain: DistrictConfig = {
           street: 'Böckstraße',
           kiez: 'Graefekiez',
           region: 'Kreuzberg',
-          status: 'closed'
+          status: 'open',
+          schedule: 'Mittwochs 14-18 Uhr'
         },
         {
           street: 'Lachmannstraße',
@@ -130,7 +131,14 @@ const xhain: DistrictConfig = {
           status: 'closed'
         },
         {
-          street: 'Paul-Lincke-Ufer',
+          street: 'Simplonstraße',
+          kiez: 'Boxhagener Platz',
+          region: 'Friedrichshain',
+          status: 'open',
+          schedule: 'Sonntags 15-19 Uhr (Ferienzeit)'
+        },
+        {
+          street: 'Paul-Lincke-Ufer / Forsterstraße',
           kiez: 'Reichenberger Straße',
           region: 'Kreuzberg',
           status: 'open',
@@ -140,14 +148,14 @@ const xhain: DistrictConfig = {
           street: 'Lilienthalstraße',
           kiez: 'Chamissokiez',
           region: 'Kreuzberg',
-          status: 'preparation'
+          status: 'closed'
         },
         {
           street: 'Dresdener Straße',
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
           status: 'open',
-          schedule: 'Ab 26.7. Sonntags 13-19 Uhr'
+          schedule: 'Sonntags 13-19 Uhr'
         },
         {
           street: 'Rudolfstraße',
@@ -161,6 +169,13 @@ const xhain: DistrictConfig = {
           kiez: 'Samariterviertel',
           region: 'Friedrichshain',
           status: 'closed'
+        },
+        {
+          street: 'Dieffenbachstraße',
+          kiez: '',
+          region: 'Kreuzberg',
+          status: 'open',
+          schedule: 'Ab 1.August Sonntags 13-19 Uhr'
         }
       ]
     },
