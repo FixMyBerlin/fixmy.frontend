@@ -97,10 +97,14 @@ export const loadKieze = async (
     throw e;
   }
 
-  const streets = district.apps.spielstrassen.streets.map((streetInfo) => ({
-    ...streetInfo,
-    supporters: counts[streetInfo.street] || 0
-  }));
+  const isActive = (street: Spielstrasse) => street.status !== 'closed';
+
+  const streets = district.apps.spielstrassen.streets
+    .filter(isActive)
+    .map((streetInfo) => ({
+      ...streetInfo,
+      supporters: counts[streetInfo.street] || 0
+    }));
 
   dispatch(setStreets(streets));
 };

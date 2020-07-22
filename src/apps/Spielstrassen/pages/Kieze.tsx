@@ -50,6 +50,7 @@ const Kieze = ({ streets, streetRequest }: Props) => {
   const xberg = streets
     .filter((street) => street.region === 'Kreuzberg')
     .sort(sortArray);
+
   return (
     <>
       <Header to={config.routes.spielstrassen.landing} showInfoLink>
