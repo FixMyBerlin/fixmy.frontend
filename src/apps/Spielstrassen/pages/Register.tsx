@@ -5,16 +5,17 @@ import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import Loader from '~/components/Loader';
+import BigLoader from '~/components/BigLoader';
 import Header from '~/components2/Header';
-import { getStreetInfo } from '~/apps/Spielstrassen/utils';
 import config from '~/config';
-import SupporterIcon from '../components/SupporterIcon';
-import SignupForm from '../components/SignupForm';
-import KiezNotFound from '../components/NotFound';
-import KiezMap from '../components/KiezMap';
-import { RequestState } from '../state';
-import Notice from '../components/Notice';
+
+import KiezNotFound from '~/apps/Spielstrassen/components/NotFound';
+import Notice from '~/apps/Spielstrassen/components/Notice';
+import SupporterIcon from '~/apps/Spielstrassen/components/SupporterIcon';
+import SignupForm from '~/apps/Spielstrassen/components/SignupForm';
+import KiezMap from '~/apps/Spielstrassen/components/KiezMap';
+import { RequestState } from '~/apps/Spielstrassen/state';
+import { getStreetInfo } from '~/apps/Spielstrassen/utils';
 
 const SupporterInfo = styled.div`
   display: flex;
@@ -37,12 +38,6 @@ const Section = styled.section`
   }
 `;
 
-const LoaderWrapper = styled.span`
-  display: inline-block;
-  margin: 0 10px;
-  height: 0.75em;
-`;
-
 const Register = ({ match, streets, streetRequest, district }) => {
   const [street, setStreet] = useState(
     getStreetInfo(streets, match.params?.slug)
@@ -53,6 +48,7 @@ const Register = ({ match, streets, streetRequest, district }) => {
   }, [match, streets]);
 
   if (district == null) return null;
+  if (streetRequest.state === RequestState.pending) return <BigLoader />;
   if (street == null) return <KiezNotFound />;
 
   return (
@@ -70,16 +66,9 @@ const Register = ({ match, streets, streetRequest, district }) => {
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />
             {street.supporters === 0 ? '' : 'Bereits '}
-            {streetRequest?.state === RequestState.pending ? (
-              <LoaderWrapper>
-                <Loader />
-              </LoaderWrapper>
-            ) : (
-              street.supporters || 0
-            )}{' '}
-            Unterstützer:in{street.supporters === 1 ? '' : 'nen'} sind
-            registriert, mindestens {district.apps.spielstrassen.supporterGoal}{' '}
-            benötigt.
+            {street.supporters || 0} Unterstützer:in
+            {street.supporters === 1 ? '' : 'nen'} sind registriert, mindestens{' '}
+            {district.apps.spielstrassen.supporterGoal} benötigt.
           </SupporterInfo>
           <p>
             <Link to={config.routes.spielstrassen.streets} className="internal">
