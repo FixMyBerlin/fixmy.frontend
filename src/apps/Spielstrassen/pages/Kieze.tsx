@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Container, Grid, Paper, Box } from '@material-ui/core';
@@ -15,7 +14,6 @@ import KiezCard from '../components/KiezCard';
 import { RequestState } from '~/apps/Spielstrassen/state';
 import Loader from '~/components/Loader';
 import { Spielstrasse } from '../types';
-import Notice from '../components/Notice';
 import { media } from '~/styles/utils';
 
 const ContactButton = styled(Button)`

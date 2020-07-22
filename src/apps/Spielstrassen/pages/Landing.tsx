@@ -13,12 +13,8 @@ import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
 import BackgroundImageB1 from '~/images/spielstrassen/landing-bg-2.jpg';
 import BackgroundImageB2 from '~/images/spielstrassen/landing-bg-2@2x.jpg';
 import BackgroundImageB3 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
-import DoneBadgeImg1 from '~/images/spielstrassen/done-badge.png';
-import DoneBadgeImg2 from '~/images/spielstrassen/done-badge@2x.png';
-import DoneBadgeImg3 from '~/images/spielstrassen/done-badge@3x.png';
 import LogoFooter from '~/components2/LogoFooter';
 import Notice from '../components/Notice';
-import { media } from '~/styles/utils';
 
 const CTA = styled(Button)`
   margin: 2em auto;
