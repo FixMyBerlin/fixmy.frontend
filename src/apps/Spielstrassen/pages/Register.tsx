@@ -65,10 +65,20 @@ const Register = ({ match, streets, streetRequest, district }) => {
           <KiezMap street={street.street} />
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />
-            {street.supporters === 0 ? '' : 'Bereits '}
-            {street.supporters || 0} Unterstützer:in
-            {street.supporters === 1 ? '' : 'nen'} sind registriert, mindestens{' '}
-            {district.apps.spielstrassen.supporterGoal} benötigt.
+            {street.supporters <= district.apps.spielstrassen.supporterGoal && (
+              <>
+                {street.supporters === 0 ? '' : 'Bereits '}
+                {street.supporters} Unter&shy;stützer:in
+                {street.supporters === 1 ? '' : 'nen'} registriert. Hilf mit,
+                damit die Spielstraße eingerichtet werden kann.
+              </>
+            )}
+            {street.supporters > district.apps.spielstrassen.supporterGoal && (
+              <>
+                Diese Spielstraße findet bereits statt, benötigt aber weiter
+                ihre Unterstützung.
+              </>
+            )}
           </SupporterInfo>
           <p>
             <Link to={config.routes.spielstrassen.streets} className="internal">
@@ -79,8 +89,7 @@ const Register = ({ match, streets, streetRequest, district }) => {
         <Section>
           <h2>Diese Spielstrasse benötigt Ihre Unterstützung!</h2>
           <p>
-            Die Teams der Spielstraßen benötigen Ihre Unterstützung. Damit die
-            Spielstraßen dauerhaft stattfinden können, brauchen sie
+            Damit die Spielstraßen dauerhaft stattfinden können, brauchen sie
             Kiezlots:innen, die an Sonntagen 1-2 mal im Monat für drei Stunden
             vor Ort sind. Registrieren Sie sich hier, um Ihre Nachbarn zu
             unterstützen und Kindern das Spielen im öffentlichen Raum zu
