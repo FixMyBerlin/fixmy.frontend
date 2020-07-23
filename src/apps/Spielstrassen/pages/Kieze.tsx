@@ -8,11 +8,12 @@ import Header from '~/components2/Header';
 import Map from '~/components2/Map';
 import config from '~/config';
 import KiezCard from '../components/KiezCard';
-import { RequestState } from '~/apps/Spielstrassen/state';
+import { RequestState, loadKieze } from '~/apps/Spielstrassen/state';
 import Loader from '~/components/Loader';
 import { Spielstrasse } from '../types';
 import { media } from '~/styles/utils';
 import { DistrictConfig } from '~/types';
+import { ApiNotice } from '~/components2/Notice';
 
 const ContactButton = styled(Button)`
   margin-bottom: 2em;
@@ -38,6 +39,10 @@ const OverviewMap = styled(Map)`
   `}
 `;
 
+const StyledApiNotice = styled(ApiNotice)`
+  margin: 2em auto;
+`;
+
 const sortArray = (a: Spielstrasse, b: Spielstrasse) =>
   a.street.localeCompare(b.street);
 
@@ -47,9 +52,10 @@ type Props = {
     state: RequestState;
   };
   district: DistrictConfig;
+  dispatch: any;
 };
 
-const Kieze = ({ streets, streetRequest, district }: Props) => {
+const Kieze = ({ streets, streetRequest, district, dispatch }: Props) => {
   const fhain = streets
     .filter((street) => street.region === 'Friedrichshain')
     .sort(sortArray);
@@ -68,9 +74,16 @@ const Kieze = ({ streets, streetRequest, district }: Props) => {
           style={district.apps.spielstrassen.mapboxStyle}
           bounds={district.bounds}
         />
-        {streetRequest.state === RequestState.pending ? (
-          <Loader />
-        ) : (
+        {streetRequest.state === RequestState.pending && <Loader />}{' '}
+        {streetRequest.state === RequestState.error && (
+          <StyledApiNotice
+            title="Fehler beim Laden der Spielstraßen"
+            onRetry={() => loadKieze(dispatch, district)}
+          >
+            Die Spielstraßen konnten nicht geladen werden
+          </StyledApiNotice>
+        )}{' '}
+        {streetRequest.state === RequestState.success && (
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
               <h2>Friedrichshain</h2>

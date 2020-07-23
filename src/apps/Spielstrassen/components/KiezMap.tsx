@@ -1,30 +1,39 @@
 import React from 'react';
+import MapboxGL from 'mapbox-gl';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { media } from '~/styles/utils';
+import Map from '~/components2/Map';
 
-const MapWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-`;
+import lors from '~/apps/spielstrassen/data/lor-features.json';
 
-const MapImg = styled.img`
-  width: 90%;
-  height: intrinsic;
-  margin: 1em auto;
+const MapWrapper = styled(Map)`
+  width: 100vw;
+  height: 20em;
+  margin-left: -1rem;
+  margin-bottom: 2em;
 
   ${media.m`
-    max-width: 100%;
+    margin-left: 0;
+    width: 100%;
+    height: 30em;
   `}
 `;
 
-const KiezMap = ({ street }) => (
-  <MapWrapper>
-    <MapImg
-      src={`/src/images/spielstrassen/kieze/${street}.jpg`}
-      alt={`${street} im Kiezumfeld`}
-    />
-  </MapWrapper>
+const handleLoad = (map: MapboxGL.Map) => {
+  // TODO: fit map to kiez bounds
+  console.log(lors);
+};
+
+const KiezMap = ({ street, district }) => (
+  <MapWrapper
+    style={district.apps.spielstrassen.mapboxStyle}
+    onInit={handleLoad}
+  />
 );
 
-export default KiezMap;
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(KiezMap);
