@@ -13,9 +13,9 @@ import config from '~/config';
 const StyledCardHeader = styled(CardHeader)`
   & .MuiCardHeader-title {
     font-weight: bold;
-    color: ${config.colors.darkgrey};
+    color: ${config.colors.white};
   }
-  background-color: ${config.colors.interaction};
+  background-color: ${config.colors.change_4};
 `;
 
 type Props = {

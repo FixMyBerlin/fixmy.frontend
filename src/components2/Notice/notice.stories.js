@@ -8,7 +8,7 @@ export default {
   decorators: [(fn) => <Container maxWidth="md">{fn()}</Container>]
 };
 
-export const Regular = () => <Notice>Dies ist ein Hinweis</Notice>;
+export const Plain = () => <Notice>Dies ist ein Hinweis</Notice>;
 
 export const ApiNotice = () => (
   <ApiNoticeComponent>
