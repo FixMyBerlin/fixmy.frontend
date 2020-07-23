@@ -45,7 +45,7 @@ const Landing = () => {
         Temporäre Spielstraßen für Friedrichshain-Kreuzberg
       </Header>
       <Container maxWidth="md">
-        <h1>Helfen Sie eine temporäre Spielstraße einzurichten!</h1>
+        <h1>Unterstützen Sie temporäre Spielstraßen als Kiezlots:in</h1>
         <ImageInsert
           src={BackgroundImageA2}
           srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
@@ -58,6 +58,9 @@ const Landing = () => {
             temporäre Spielstraßen ein. Damit das möglich wird, benötigt das
             Bezirksamt an Sonntagen jeweils von 13-19 Uhr Ihre Unterstützung.
           </p>
+          <Link to={config.routes.spielstrassen.streets}>
+            <CTA flat>Jetzt eine Spielstraße unterstützen</CTA>
+          </Link>
           <Notice />
         </Intro>
         <h2>Wie funktioniert das genau?</h2>
@@ -85,9 +88,6 @@ const Landing = () => {
             den registrierten Anwohner*innen angewiesen.
           </li>
         </ol>
-        <Link to={config.routes.spielstrassen.streets}>
-          <CTA flat>Jetzt eine Spielstraße unterstützen</CTA>
-        </Link>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
           Notwendig für die Umsetzung ist die Bereitschaft der Bürger:innen,
