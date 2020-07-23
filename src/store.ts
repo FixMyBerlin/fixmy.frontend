@@ -19,12 +19,23 @@ const Reducer = combineReducers({
   SpielstrassenState
 });
 
+export type RootState = ReturnType<typeof Reducer>;
+
 // Configure redux-devtools-extension
 // https://github.com/zalmoxisus/redux-devtools-extension#usage
 
+type ExtendedWindow = Window &
+  typeof globalThis & {
+    store: typeof store;
+    __REDUX_DEVTOOLS_EXTENSION__: any;
+  };
+
 /* eslint-disable no-underscore-dangle */
-const enhancers = window.__REDUX_DEVTOOLS_EXTENSION__
-  ? compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__())
+const enhancers = (window as ExtendedWindow).__REDUX_DEVTOOLS_EXTENSION__
+  ? compose(
+      applyMiddleware(thunk),
+      (window as ExtendedWindow).__REDUX_DEVTOOLS_EXTENSION__()
+    )
   : applyMiddleware(thunk);
 /* eslint-enable */
 
@@ -32,7 +43,7 @@ const store = createStore(Reducer, enhancers);
 
 // expose store when run in Cypress Test
 if (window.Cypress) {
-  window.store = store;
+  (window as ExtendedWindow).store = store;
 }
 
 export default store;

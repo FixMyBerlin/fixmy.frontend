@@ -173,7 +173,7 @@ const xhain: DistrictConfig = {
         },
         {
           street: 'Dieffenbachstraße',
-          kiez: '',
+          kiez: 'Graefekiez',
           region: 'Kreuzberg',
           status: 'open',
           schedule: 'Ab 1.August Sonntags 13-19 Uhr'

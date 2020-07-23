@@ -3,7 +3,9 @@ import berlin from './berlin';
 import aachen from './aachen';
 import eichwalde from './eichwalde';
 
-const region: string = process.env.REGION || 'berlin';
+type Region = 'eichwalde' | 'berlin' | 'aachen';
+
+const region = (process.env.REGION as Region) || 'berlin';
 
 const AVAILABLE_REGIONS = {
   berlin,
@@ -11,7 +13,7 @@ const AVAILABLE_REGIONS = {
   eichwalde
 };
 
-const instanceConfig = AVAILABLE_REGIONS[region] || {};
+const instanceConfig = AVAILABLE_REGIONS[region];
 
 if (Object.keys(AVAILABLE_REGIONS).indexOf(region) === -1) {
   // Need to use console log to avoid circular import in logger module
@@ -19,8 +21,29 @@ if (Object.keys(AVAILABLE_REGIONS).indexOf(region) === -1) {
   console.error('No region defined for this instance');
 }
 
-export default {
+type BerlinConfig = typeof defaultConfig &
+  typeof berlin & {
+    region: 'berlin';
+  };
+
+type AachenConfig = typeof defaultConfig &
+  typeof berlin & {
+    region: 'aachen';
+  };
+
+type EichwaldeConfig = typeof defaultConfig &
+  typeof berlin & {
+    region: 'eichwalde';
+  };
+
+type RootConfig = BerlinConfig | AachenConfig | EichwaldeConfig;
+
+// TODO: Fix all root config types
+// @ts-ignore
+const rootConfig: RootConfig = {
   ...defaultConfig,
   ...instanceConfig,
   region
 };
+
+export default rootConfig;
