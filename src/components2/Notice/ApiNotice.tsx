@@ -6,6 +6,17 @@ import {
   CardContent,
   CardActions
 } from '@material-ui/core';
+import ReplayIcon from '@material-ui/icons/Replay';
+import styled from 'styled-components';
+import config from '~/config';
+
+const StyledCardHeader = styled(CardHeader)`
+  & .MuiCardHeader-title {
+    font-weight: bold;
+    color: ${config.colors.darkgrey};
+  }
+  background-color: ${config.colors.interaction};
+`;
 
 type Props = {
   title?: string;
@@ -24,12 +35,12 @@ const ApiNotice = ({
   onRetry = null,
   className = null
 }: Props) => (
-  <Card raised className={className}>
-    <CardHeader title={title} />
+  <Card variant="outlined" className={className}>
+    <StyledCardHeader title={title} />
     <CardContent>{children}</CardContent>
     {onRetry && (
       <CardActions>
-        <Button size="small" color="secondary" onClick={onRetry}>
+        <Button startIcon={<ReplayIcon />} onClick={onRetry}>
           Nochmal versuchen
         </Button>
       </CardActions>

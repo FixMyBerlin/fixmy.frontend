@@ -1,9 +1,8 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 
 import BigLoader from '~/components/BigLoader';
 import Header from '~/components2/Header';
@@ -15,6 +14,7 @@ import SignupForm from '~/apps/Spielstrassen/components/SignupForm';
 import KiezMap from '~/apps/Spielstrassen/components/KiezMap';
 import { RequestState } from '~/apps/Spielstrassen/state';
 import { getStreetInfo } from '~/apps/Spielstrassen/utils';
+import { RootState } from '~/store';
 
 const SupporterInfo = styled.div`
   display: flex;
@@ -38,7 +38,15 @@ const Section = styled.section`
   }
 `;
 
-const Register = ({ match, streets, streetRequest, district }) => {
+const connector = connect(({ AppState, SpielstrassenState }: RootState) => ({
+  ...SpielstrassenState,
+  district: AppState.district
+}));
+
+type Props = ConnectedProps<typeof connector> &
+  RouteComponentProps<{ slug: string }>;
+
+const Register = ({ match, streets, streetRequest, district }: Props) => {
   const [street, setStreet] = useState(
     getStreetInfo(streets, match.params?.slug)
   );
@@ -62,7 +70,7 @@ const Register = ({ match, streets, streetRequest, district }) => {
           <p className="subline">
             Temporäre Spielstraße im Kiez {street.kiez}:
           </p>
-          <KiezMap street={street.street} />
+          <KiezMap street={street} />
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />
             {street.supporters <= district.apps.spielstrassen.supporterGoal && (
@@ -117,8 +125,4 @@ const Register = ({ match, streets, streetRequest, district }) => {
   );
 };
 
-const mapStateToProps = ({ AppState, SpielstrassenState }) => ({
-  ...SpielstrassenState,
-  district: AppState.district
-});
-export default connect(mapStateToProps)(Register);
+export default connector(Register);

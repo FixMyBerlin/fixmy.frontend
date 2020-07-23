@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Container } from '@material-ui/core';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { generatePath } from 'react-router-dom';
+import { generatePath, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { getStreetInfo } from '~/apps/Spielstrassen/utils';
@@ -15,6 +15,7 @@ import Button from '~/components2/Button';
 import Logo from '~/components2/LogoFooter';
 import config from '~/config';
 import { media } from '~/styles/utils';
+import { State } from '~/apps/Spielstrassen/state';
 
 const LinkButton = styled(Button)`
   width: 100%;
@@ -28,7 +29,11 @@ const LinkButton = styled(Button)`
   `}
 `;
 
-const Thanks = ({ match, streets, streetRequest }) => {
+const Thanks = ({
+  match,
+  streets,
+  streetRequest
+}: State & RouteComponentProps<{ slug: string }>) => {
   const [street, setStreet] = useState(
     getStreetInfo(streets, match.params?.slug)
   );
@@ -54,7 +59,7 @@ const Thanks = ({ match, streets, streetRequest }) => {
       <Container maxWidth="sm">
         <h1>{street.street}</h1>
         <p className="subline">Temporäre Spielstraße im Kiez {street.kiez}:</p>
-        <KiezMap street={street.street} />
+        <KiezMap street={street} />
         <h2>
           Vielen Dank, Sie sind Unterstützer:in Nr. {+street.supporters + 1}
         </h2>

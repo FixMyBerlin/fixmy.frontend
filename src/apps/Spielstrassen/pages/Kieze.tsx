@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { Container, Grid, Paper, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
@@ -12,8 +12,8 @@ import { RequestState, loadKieze } from '~/apps/Spielstrassen/state';
 import Loader from '~/components/Loader';
 import { Spielstrasse } from '../types';
 import { media } from '~/styles/utils';
-import { DistrictConfig } from '~/types';
 import { ApiNotice } from '~/components2/Notice';
+import { RootState } from '~/store';
 
 const ContactButton = styled(Button)`
   margin-bottom: 2em;
@@ -41,21 +41,29 @@ const OverviewMap = styled(Map)`
 
 const StyledApiNotice = styled(ApiNotice)`
   margin: 2em auto;
+  width: 100vw;
+  margin-left: -1rem !important;
+
+  ${media.m`
+    width: 100%;
+    margin-left: 0 !important;
+  `}
 `;
 
 const sortArray = (a: Spielstrasse, b: Spielstrasse) =>
   a.street.localeCompare(b.street);
 
-type Props = {
-  streets: Spielstrasse[];
-  streetRequest: {
-    state: RequestState;
-  };
-  district: DistrictConfig;
-  dispatch: any;
-};
+const connector = connect((state: RootState) => ({
+  ...state.SpielstrassenState,
+  district: state.AppState.district
+}));
 
-const Kieze = ({ streets, streetRequest, district, dispatch }: Props) => {
+const Kieze = ({
+  streets,
+  streetRequest,
+  district,
+  dispatch
+}: ConnectedProps<typeof connector>) => {
   const fhain = streets
     .filter((street) => street.region === 'Friedrichshain')
     .sort(sortArray);
@@ -124,8 +132,4 @@ const Kieze = ({ streets, streetRequest, district, dispatch }: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  ...state.SpielstrassenState,
-  district: state.AppState.district
-});
-export default connect(mapStateToProps)(Kieze);
+export default connector(Kieze);
