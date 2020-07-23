@@ -7,7 +7,8 @@ import SuggestionList from './SuggestionList';
 import { fetchSuggestions } from './apiService';
 
 class AutocompleteGeocoder extends PureComponent {
-  static ERR_SERVICE_UNAVAILABLE = 'Service nicht erreichbar. Bitte versuch den Standort über die Karte zu finden.'
+  static ERR_SERVICE_UNAVAILABLE =
+    'Service nicht erreichbar. Bitte versuch den Standort über die Karte zu finden.';
 
   isMounted = false;
 
@@ -121,12 +122,9 @@ AutocompleteGeocoder.propTypes = {
 };
 
 AutocompleteGeocoder.defaultProps = {
-  onInputFocus: () => {
-  },
-  onInputBlur: () => {
-  },
-  onSearchStart: () => {
-  },
+  onInputFocus: () => {},
+  onInputBlur: () => {},
+  onSearchStart: () => {},
   searchStringMinLength: 3,
   debounceTime: 1000,
   label: null

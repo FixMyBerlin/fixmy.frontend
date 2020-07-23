@@ -117,7 +117,8 @@ class SearchBar extends PureComponent {
           <SearchReset
             role="button"
             onClick={this.resetInput}
-            data-cy="map-address-reset">
+            data-cy="map-address-reset"
+          >
             ×
           </SearchReset>
         ) : (

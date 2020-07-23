@@ -21,11 +21,7 @@ const Suggestionlist = ({ suggestions, onSuggestionPick }) => {
     />
   ));
 
-  return (
-    <List>
-      {suggestionItems}
-    </List>
-  );
+  return <List>{suggestionItems}</List>;
 };
 
 Suggestionlist.propTypes = {

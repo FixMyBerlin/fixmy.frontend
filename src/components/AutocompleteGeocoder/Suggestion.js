@@ -25,10 +25,7 @@ const Suggestion = ({ address, onSuggestionPick }) => {
     );
 
   return (
-    <ListItem
-      data-cy="map-address-suggestion"
-      onClick={onSuggestionPick}
-    >
+    <ListItem data-cy="map-address-suggestion" onClick={onSuggestionPick}>
       {addressParts}
     </ListItem>
   );
