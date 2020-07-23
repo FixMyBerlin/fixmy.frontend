@@ -57,7 +57,7 @@ const xhain: DistrictConfig = {
           status: 'closed'
         },
         {
-          street: 'Krossener Straße / Gabriel-Max-Straße (Boxhagener Platz)',
+          street: 'Krossener Straße / Gabriel-Max-Straße',
           kiez: 'Boxhagener Platz',
           region: 'Friedrichshain',
           status: 'open',
