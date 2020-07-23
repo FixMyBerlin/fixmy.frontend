@@ -1,20 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { Container, Grid, Paper, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
 import Button from '~/components2/Button';
-import { Insert as ImageInsert } from '~/components2/Image';
-import KiezKarte1 from '~/images/spielstrassen/kiezkarte.jpg';
-import KiezKarte2 from '~/images/spielstrassen/kiezkarte@2x.jpg';
-import KiezKarte3 from '~/images/spielstrassen/kiezkarte@3x.jpg';
 import Header from '~/components2/Header';
+import Map from '~/components2/Map';
 import config from '~/config';
 import KiezCard from '../components/KiezCard';
-import { RequestState } from '~/apps/Spielstrassen/state';
+import { RequestState, loadKieze } from '~/apps/Spielstrassen/state';
 import Loader from '~/components/Loader';
 import { Spielstrasse } from '../types';
 import { media } from '~/styles/utils';
+import { ApiNotice } from '~/components2/Notice';
+import { RootState } from '~/store';
 
 const ContactButton = styled(Button)`
   margin-bottom: 2em;
@@ -28,20 +27,43 @@ const KiezListing = styled.div`
   margin: 1em 0 2em;
 `;
 
+const OverviewMap = styled(Map)`
+  width: 100vw;
+  height: 20em;
+  margin-left: -1rem;
+
+  ${media.m`
+    margin-left: 0;
+    width: 100%;
+    height: 30em;
+  `}
+`;
+
+const StyledApiNotice = styled(ApiNotice)`
+  margin: 2em auto;
+  width: 100vw;
+  margin-left: -1rem !important;
+
+  ${media.m`
+    width: 100%;
+    margin-left: 0 !important;
+  `}
+`;
+
 const sortArray = (a: Spielstrasse, b: Spielstrasse) =>
   a.street.localeCompare(b.street);
 
-const fullMapURL =
-  'https://api.mapbox.com/styles/v1/hejco/ck98kjwqi5edx1ip74oyrmxmd.html?fresh=true&title=view&access_token=pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q#12.78/52.49946/13.42743';
+const connector = connect((state: RootState) => ({
+  ...state.SpielstrassenState,
+  district: state.AppState.district
+}));
 
-type Props = {
-  streets: Spielstrasse[];
-  streetRequest: {
-    state: RequestState;
-  };
-};
-
-const Kieze = ({ streets, streetRequest }: Props) => {
+const Kieze = ({
+  streets,
+  streetRequest,
+  district,
+  dispatch
+}: ConnectedProps<typeof connector>) => {
   const fhain = streets
     .filter((street) => street.region === 'Friedrichshain')
     .sort(sortArray);
@@ -56,15 +78,20 @@ const Kieze = ({ streets, streetRequest }: Props) => {
       </Header>
       <Container maxWidth="md">
         <h2>Welche Spielstraße wollen Sie unterstützen?</h2>
-        <a href={fullMapURL} target="_blank" rel="noopener noreferrer">
-          <ImageInsert
-            src={KiezKarte2}
-            srcSet={`${KiezKarte1} 450w, ${KiezKarte2} 750w, ${KiezKarte3} 1125w`}
-          />
-        </a>
-        {streetRequest.state === RequestState.pending ? (
-          <Loader />
-        ) : (
+        <OverviewMap
+          style={district.apps.spielstrassen.mapboxStyle}
+          bounds={district.bounds}
+        />
+        {streetRequest.state === RequestState.pending && <Loader />}{' '}
+        {streetRequest.state === RequestState.error && (
+          <StyledApiNotice
+            title="Fehler beim Laden der Spielstraßen"
+            onRetry={() => loadKieze(dispatch, district)}
+          >
+            Die Spielstraßen konnten nicht geladen werden
+          </StyledApiNotice>
+        )}{' '}
+        {streetRequest.state === RequestState.success && (
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
               <h2>Friedrichshain</h2>
@@ -105,5 +132,4 @@ const Kieze = ({ streets, streetRequest }: Props) => {
   );
 };
 
-const mapStateToProps = (state) => state.SpielstrassenState;
-export default connect(mapStateToProps)(Kieze);
+export default connector(Kieze);

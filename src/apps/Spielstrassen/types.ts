@@ -7,6 +7,7 @@ export interface SpielstrassenConfig extends AppConfig {
   supporterGoal: number;
   shareTitle: string;
   shareText: string;
+  mapboxStyle: string;
   streets: Spielstrasse[];
 }
 export interface SignupData {

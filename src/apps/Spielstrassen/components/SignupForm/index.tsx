@@ -50,7 +50,7 @@ const SignupForm = ({ street, history, district }) => (
       const signupData: SignupData = {
         ...values,
         captain: values.captain === 'yes',
-        campaign: config.spielstrassen.campaign,
+        campaign: district.name,
         street
       };
       logger(JSON.stringify(signupData, null, 2));

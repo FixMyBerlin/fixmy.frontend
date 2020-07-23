@@ -88,8 +88,7 @@ const Spielstrassen = ({ districtName, district, dispatch }) => {
 
   useEffect(() => {
     if (district != null) {
-      const doLoad = async () => loadKieze(dispatch, district);
-      doLoad();
+      loadKieze(dispatch, district);
     }
   }, [district]);
 
