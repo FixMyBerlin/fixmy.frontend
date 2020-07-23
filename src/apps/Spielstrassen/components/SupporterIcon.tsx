@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 import Supporter from '~/images/spielstrassen/supporter.svg';
 import SupporterCheck from '~/images/spielstrassen/supporter-check.svg';
 
-const SupportersReached = styled(SupporterCheck)`
+type IconProps = { visible: boolean };
+
+const SupportersReached = styled(SupporterCheck)<IconProps>`
   margin-left: -40%;
   margin-top: -5px;
-  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
+  visibility: ${(props: IconProps) => (props.visible ? 'visible' : 'hidden')};
 `;
 
 const Wrapper = styled.span`
