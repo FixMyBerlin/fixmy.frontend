@@ -3,7 +3,13 @@
 
 import { AppConfig } from '~/types';
 
-export interface SpielstrassenConfig extends AppConfig {}
+export interface SpielstrassenConfig extends AppConfig {
+  supporterGoal: number;
+  shareTitle: string;
+  shareText: string;
+  mapboxStyle: string;
+  streets: Spielstrasse[];
+}
 export interface SignupData {
   campaign: string;
   first_name: string;
@@ -20,6 +26,8 @@ export interface Spielstrasse {
   kiez: string;
   region: string;
   supporters?: number;
+  schedule?: string;
+  status: 'open' | 'closed' | 'preparation';
 }
 
 export interface Counts {

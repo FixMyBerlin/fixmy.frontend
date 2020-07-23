@@ -30,7 +30,7 @@ const AppWrapper = styled.div`
   position: relative;
 `;
 
-const theme = createMuiTheme({
+export const theme = createMuiTheme({
   palette: {
     primary: { main: config.colors.interaction },
     secondary: { main: config.colors.change_4 },

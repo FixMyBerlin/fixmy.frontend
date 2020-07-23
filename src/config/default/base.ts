@@ -38,7 +38,8 @@ const baseConfig = {
       trackErrors: true,
       disableCookies: true
     }
-  }
+  },
+  districts: null
 };
 
 if (!process.env.BACKEND && process.env.API_URL == null) {

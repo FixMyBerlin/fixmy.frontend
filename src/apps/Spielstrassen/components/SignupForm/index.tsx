@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter, generatePath } from 'react-router-dom';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { TextField, CheckboxWithLabel, RadioGroup } from 'formik-material-ui';
@@ -6,9 +7,9 @@ import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
 import styled from 'styled-components';
 import slugify from 'slugify';
 
-import config from '~/pages/Spielstrassen/config';
 import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
+import config from '~/config';
 import { SignupData } from '../../types';
 import api from '../../api';
 import logger from '~/utils/logger';
@@ -41,7 +42,7 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const SignupForm = ({ street, history }) => (
+const SignupForm = ({ street, history, district }) => (
   <Formik
     initialValues={initialValues}
     validate={validate}
@@ -49,12 +50,12 @@ const SignupForm = ({ street, history }) => (
       const signupData: SignupData = {
         ...values,
         captain: values.captain === 'yes',
-        campaign: config.spielstrassen.campaign,
+        campaign: district.name,
         street
       };
       logger(JSON.stringify(signupData, null, 2));
       try {
-        await api.signup(signupData);
+        await api.signup(signupData, district);
         history.push(
           generatePath(config.routes.spielstrassen.thanks, {
             slug: slugify(street, { lower: true })
@@ -158,7 +159,11 @@ const SignupForm = ({ street, history }) => (
   </Formik>
 );
 
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
 // Typescript insists that using withRouter means that
 // the component cannot have any other props.
 // @ts-ignore
-export default withRouter(SignupForm);
+export default withRouter(connect(mapStateToProps)(SignupForm));

@@ -14,12 +14,7 @@ const defaultConfig = {
   }
 };
 
-let instanceConfig = {};
-if (globalConfig.region === 'aachen') {
-  instanceConfig = aachen;
-} else {
-  instanceConfig = berlin;
-}
+const instanceConfig = globalConfig.region === 'aachen' ? aachen : berlin;
 
 export default {
   ...globalConfig,
