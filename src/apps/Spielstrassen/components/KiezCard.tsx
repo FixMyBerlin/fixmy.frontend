@@ -1,13 +1,12 @@
+import { Paper } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
 import { generatePath } from 'react-router-dom';
-import { Paper } from '@material-ui/core';
-import styled from 'styled-components';
 import slugify from 'slugify';
-
-import config from '~/config';
-import Button from '~/components2/Button';
+import styled from 'styled-components';
 import Link from '~/components/Link';
+import Button from '~/components2/Button';
+import config from '~/config';
 import SupporterIcon from './SupporterIcon';
 
 const KiezCard = styled(Paper)`
@@ -51,7 +50,20 @@ const SignupButton = styled(Button)`
   hyphens: initial;
 `;
 
-const Kiez = ({ district, kiez, street, status, supporters = 0 }) => {
+const Schedule = styled.dd`
+  margin-left: 0 !important;
+  font-size: 12px;
+  color: ${config.colors.darkgrey};
+`;
+
+const Kiez = ({
+  district,
+  kiez,
+  street,
+  status,
+  schedule = null,
+  supporters = 0
+}) => {
   const signupUrl = generatePath(config.routes.spielstrassen.register, {
     slug: slugify(street, { lower: true })
   });
@@ -66,6 +78,13 @@ const Kiez = ({ district, kiez, street, status, supporters = 0 }) => {
         <br />
         <dt>Kiez:</dt>
         <dd>{kiez}</dd>
+        {schedule && (
+          <>
+            <br />
+            <dt style={{ display: 'none' }}>Öffnungszeiten</dt>
+            <Schedule>{schedule}</Schedule>
+          </>
+        )}
       </dl>
       <footer>
         <SupporterIcon count={supporters} />
@@ -73,8 +92,8 @@ const Kiez = ({ district, kiez, street, status, supporters = 0 }) => {
           {supporters <= district.apps.spielstrassen.supporterGoal && (
             <>
               {supporters} Unter&shy;stützer:in{supporters === 1 ? '' : 'nen'}{' '}
-              registriert. Hilf mit, damit die Spielstraße eingerichtet werden
-              kann.
+              registriert. Mit {district.apps.spielstrassen.supporterGoal}{' '}
+              Kiezlots:innen kann die Spielstraße eingerichtet werden.
             </>
           )}
           {supporters > district.apps.spielstrassen.supporterGoal && (

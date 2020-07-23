@@ -211,7 +211,7 @@ declare global {
   interface Window {
     Cypress: any;
     initialState: {
-      KatasterKIState: State
+      KatasterKIState: State;
     };
   }
 }

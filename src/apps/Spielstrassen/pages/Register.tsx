@@ -1,19 +1,17 @@
+import { Container } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { Container } from '@material-ui/core';
-import styled from 'styled-components';
 import { Link, RouteComponentProps } from 'react-router-dom';
-
+import styled from 'styled-components';
+import KiezMap from '~/apps/Spielstrassen/components/KiezMap';
+import KiezNotFound from '~/apps/Spielstrassen/components/NotFound';
+import SignupForm from '~/apps/Spielstrassen/components/SignupForm';
+import SupporterIcon from '~/apps/Spielstrassen/components/SupporterIcon';
+import { RequestState } from '~/apps/Spielstrassen/state';
+import { getStreetInfo } from '~/apps/Spielstrassen/utils';
 import BigLoader from '~/components/BigLoader';
 import Header from '~/components2/Header';
 import config from '~/config';
-
-import KiezNotFound from '~/apps/Spielstrassen/components/NotFound';
-import SupporterIcon from '~/apps/Spielstrassen/components/SupporterIcon';
-import SignupForm from '~/apps/Spielstrassen/components/SignupForm';
-import KiezMap from '~/apps/Spielstrassen/components/KiezMap';
-import { RequestState } from '~/apps/Spielstrassen/state';
-import { getStreetInfo } from '~/apps/Spielstrassen/utils';
 import { RootState } from '~/store';
 
 const SupporterInfo = styled.div`
@@ -32,10 +30,10 @@ const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};
   margin-bottom: 2em;
   padding-bottom: 2em;
+`;
 
-  &:last-child {
-    border-bottom: none;
-  }
+const Schedule = styled.p`
+  color: ${config.colors.darkbg};
 `;
 
 const connector = connect(({ AppState, SpielstrassenState }: RootState) => ({
@@ -71,14 +69,18 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
             Temporäre Spielstraße im Kiez {street.kiez}:
           </p>
           <KiezMap street={street} />
+          {street.schedule && (
+            <Schedule>Öffnungszeiten: {street.schedule}</Schedule>
+          )}
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />
             {street.supporters <= district.apps.spielstrassen.supporterGoal && (
               <>
                 {street.supporters === 0 ? '' : 'Bereits '}
                 {street.supporters} Unter&shy;stützer:in
-                {street.supporters === 1 ? '' : 'nen'} registriert. Hilf mit,
-                damit die Spielstraße eingerichtet werden kann.
+                {street.supporters === 1 ? '' : 'nen'} registriert. Mit{' '}
+                {district.apps.spielstrassen.supporterGoal} Kiezlots:innen kann
+                die Spielstraße eingerichtet werden.
               </>
             )}
             {street.supporters > district.apps.spielstrassen.supporterGoal && (
@@ -116,8 +118,6 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
               Spielstraße {street.street} zu unterstützen:
             </strong>
           </p>
-        </Section>
-        <Section>
           <SignupForm street={street.street} />
         </Section>
       </Container>

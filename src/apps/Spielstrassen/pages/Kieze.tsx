@@ -14,6 +14,7 @@ import { Spielstrasse } from '../types';
 import { media } from '~/styles/utils';
 import { ApiNotice } from '~/components2/Notice';
 import { RootState } from '~/store';
+import MissingSupportersNotice from '../components/MissingSupporters';
 
 const ContactButton = styled(Button)`
   margin-bottom: 2em;
@@ -92,24 +93,30 @@ const Kieze = ({
           </StyledApiNotice>
         )}{' '}
         {streetRequest.state === RequestState.success && (
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
-              <h2>Friedrichshain</h2>
-              <KiezListing>
-                {fhain.map((props: Spielstrasse) => (
-                  <KiezCard key={`kiez-${props?.street}`} {...props} />
-                ))}
-              </KiezListing>
+          <>
+            <MissingSupportersNotice
+              streets={streets}
+              supporterGoal={district.apps.spielstrassen.supporterGoal}
+            />
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={6}>
+                <h2>Friedrichshain</h2>
+                <KiezListing>
+                  {fhain.map((props: Spielstrasse) => (
+                    <KiezCard key={`kiez-${props?.street}`} {...props} />
+                  ))}
+                </KiezListing>
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <h2>Kreuzberg</h2>
+                <KiezListing>
+                  {xberg.map((props: Spielstrasse) => (
+                    <KiezCard key={`kiez-${props?.street}`} {...props} />
+                  ))}
+                </KiezListing>
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <h2>Kreuzberg</h2>
-              <KiezListing>
-                {xberg.map((props: Spielstrasse) => (
-                  <KiezCard key={`kiez-${props?.street}`} {...props} />
-                ))}
-              </KiezListing>
-            </Grid>
-          </Grid>
+          </>
         )}
         <Box mb={6}>
           <Paper elevation={1}>
