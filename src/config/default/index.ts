@@ -5,7 +5,7 @@ import menu from './menu';
 import staticpages from './staticpages';
 import routes from './routes';
 
-export default {
+const defaultConfig = {
   colors,
   map,
   menu,
@@ -13,3 +13,5 @@ export default {
   staticpages,
   ...baseConfig
 };
+
+export default defaultConfig;

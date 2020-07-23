@@ -5,7 +5,8 @@ import {
   List,
   ListItem,
   ListItemText,
-  ListItemIcon
+  ListItemIcon,
+  Paper
 } from '@material-ui/core';
 import LocationIcon from '@material-ui/icons/LocationOn';
 import ErrorIcon from '@material-ui/icons/Error';
@@ -13,8 +14,8 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 
 import { fetchSuggestions } from '~/components/AutocompleteGeocoder/apiService';
-import config from '~/pages/Gastro/config';
-import Map from './Map';
+import config from '~/config';
+import Map from '~/components2/Map';
 import logger from '~/utils/logger';
 
 /**
@@ -26,6 +27,12 @@ import logger from '~/utils/logger';
  * @param address to be checked
  */
 const containsStreetNumber = (address: string) => address.match(/^[^,]+\d,/);
+
+const StyledMap = styled(Map)`
+  width: 100%;
+  height: 30em;
+  margin: 2em 0;
+`;
 
 const AddressHint = styled.p`
   display: flex;
@@ -41,12 +48,24 @@ const AddressHint = styled.p`
   }
 `;
 
-const LocationPicker = ({ onSelect }) => {
+type Props = {
+  onSelect: (result: { address: string; location: MapboxGL.LngLat }) => any;
+  mapboxStyle: MapboxGL.Style;
+  bounds: MapboxGL.LngLatBoundsLike;
+  initialValue?: string;
+};
+
+const LocationPicker: React.FC<Props> = ({
+  onSelect,
+  mapboxStyle,
+  bounds,
+  initialValue = ''
+}) => {
   // Mapbox-GL.js map instance
   const [map, setMap] = useState(null);
 
   // Text field value
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>(initialValue);
 
   // Timeout instance to delay sending search queries
   const [searchDelay, setSearchDelay] = useState(null);
@@ -107,8 +126,9 @@ const LocationPicker = ({ onSelect }) => {
     setSearchDelay(
       setTimeout(async () => {
         logger('searching', inputValue);
+        const geocoderBounds = `${bounds[0][0]},${bounds[0][1]},${bounds[1][0]},${bounds[1][1]}`;
         try {
-          const results = await fetchSuggestions(inputValue);
+          const results = await fetchSuggestions(inputValue, geocoderBounds);
           logger('found', results);
           setSuggestions(results);
         } catch (e) {
@@ -125,13 +145,14 @@ const LocationPicker = ({ onSelect }) => {
   return (
     <>
       <TextField
+        id="address"
         placeholder="Adresse suchen..."
         fullWidth
         value={inputValue}
         onChange={({ target: { value } }) => setInputValue(value)}
       />
       {suggestions && (
-        <List aria-label="Adressvorschläge">
+        <List>
           {suggestions.length > 0 && (
             <ListItem>
               <ListItemText>
@@ -140,21 +161,24 @@ const LocationPicker = ({ onSelect }) => {
             </ListItem>
           )}
           {suggestions != null && suggestions.length === 0 && (
-            <em>
-              Es wurde keine Adresse in Friedrichshain-Kreuzberg gefunden.
-            </em>
+            <em>Es wurde keine passende Adresse gefunden.</em>
           )}
-          {suggestions.map(({ coords, address }) => (
-            <ListItem
-              button
-              onClick={() => setSelected({ address, location: coords })}
-            >
-              <ListItemIcon>
-                <LocationIcon />
-              </ListItemIcon>
-              <ListItemText primary={address} />
-            </ListItem>
-          ))}
+          {suggestions && suggestions.length > 0 && (
+            <Paper elevation={1} aria-label="Adressvorschläge">
+              {suggestions.map(({ coords, address }) => (
+                <ListItem
+                  key={address}
+                  button
+                  onClick={() => setSelected({ address, location: coords })}
+                >
+                  <ListItemIcon>
+                    <LocationIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={address} />
+                </ListItem>
+              ))}
+            </Paper>
+          )}
         </List>
       )}
       {addressHint && (
@@ -162,8 +186,8 @@ const LocationPicker = ({ onSelect }) => {
           <ErrorIcon /> {addressHint}
         </AddressHint>
       )}
-      <Map onInit={setMap} />
-      <Snackbar open={errorMessage}>{errorMessage}</Snackbar>
+      <StyledMap onInit={setMap} style={mapboxStyle} bounds={bounds} />
+      <Snackbar open={errorMessage != null} message={errorMessage} />
     </>
   );
 };

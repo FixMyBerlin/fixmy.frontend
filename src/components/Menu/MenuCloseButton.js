@@ -5,11 +5,13 @@ import Store from '~/store';
 import CloseIcon from '~/images/dark-close.svg';
 import { toggle } from '~/AppState';
 
-const MenuCloseButton = styled.div`
+const MenuCloseButton = styled.button`
   position: absolute;
   top: -1.5rem;
   right: 0.5rem;
   cursor: pointer;
+  background: none;
+  border: none;
 
   &:hover {
     opacity: 0.9;
@@ -22,11 +24,12 @@ const MenuCloseButton = styled.div`
 
 export default (props) => (
   <MenuCloseButton
+    aria-label="Menü schließen"
     onClick={() => Store.dispatch(toggle())}
     role="button"
     tabIndex={0}
     className={props.className}
   >
-    <CloseIcon />
+    <CloseIcon aria-hidden="true" />
   </MenuCloseButton>
 );

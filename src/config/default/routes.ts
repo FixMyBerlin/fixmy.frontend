@@ -1,6 +1,34 @@
 const katasterPath = process.env.KATASTER_PATH || '';
 
-export default {
+interface RouteConfig {
+  // optional routes
+  projects?: string;
+  status?: string;
+  analysis?: string;
+  reports?: {
+    [page: string]: string;
+  };
+  katasterKI?: {
+    [page: string]: string;
+  };
+  spielstrassen?: {
+    [page: string]: string;
+  };
+  popupbikelanes?: string;
+  research?: {
+    [page: string]: string;
+  };
+  // mandatory routes
+  signup: string;
+  login: string;
+  forgotPassword: string;
+  resetPassword: string;
+  emailVerification: string;
+  profile: string;
+  userVerify: string;
+}
+
+const routes: RouteConfig = {
   projects: '/planungen',
   status: '/zustand',
   analysis: '/analyse',
@@ -37,9 +65,10 @@ export default {
   emailVerification: '/email-verification',
   profile: '/profil',
   userVerify: '/bestaetigen',
-  gastro: {
-    landing: '/friedrichshain-kreuzberg/terrassen',
-    signup: '/friedrichshain-kreuzberg/terrassen/anmeldung',
-    thanks: '/friedrichshain-kreuzberg/terrassen/danke'
+  research: {
+    landing: '/research',
+    survey: '/research/subjektive-sicherheit'
   }
 };
+
+export default routes;

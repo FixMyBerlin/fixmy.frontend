@@ -14,7 +14,7 @@ const StyledForm = styled(Form)`
     font-style: italic;
   }
 
-  .tosFieldGroup {
+  .checkboxFieldGroup {
     margin: 2em 0;
 
     .MuiTypography-body1 {
