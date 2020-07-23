@@ -1,9 +1,11 @@
 import xhain from './xhain';
 import tempelberg from './tempelberg';
 
-export default {
+const berlinConfig = {
   districts: {
     xhain,
     tempelberg
   }
 };
+
+export default berlinConfig;

@@ -3,7 +3,7 @@ import { Router, Route, Switch, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import config from '~/pages/Spielstrassen/config';
+import config from '~/config';
 import Landing from './pages/Landing';
 import Kieze from './pages/Kieze';
 import Register from './pages/Register';
@@ -13,6 +13,7 @@ import history from '~/history';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
 import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
 import { loadKieze } from './state';
+import { setDistrict } from '~/AppState';
 
 const AppStyles = styled.div`
   font-size: 16px;
@@ -80,11 +81,19 @@ const ScrollToTop = () => {
   return null;
 };
 
-const Spielstrassen = ({ dispatch }) => {
+const Spielstrassen = ({ districtName, district, dispatch }) => {
   useEffect(() => {
-    const load = async () => loadKieze(dispatch);
-    load();
-  }, []);
+    dispatch(setDistrict(districtName));
+  }, [districtName]);
+
+  useEffect(() => {
+    if (district != null) {
+      loadKieze(dispatch, district);
+    }
+  }, [district]);
+
+  // Skip rendering until redux action has taken effect
+  if (district == null) return null;
 
   return (
     <AppStyles>
@@ -118,4 +127,8 @@ const Spielstrassen = ({ dispatch }) => {
   );
 };
 
-export default connect()(Spielstrassen);
+const mapStateToProps = ({ AppState }) => ({
+  district: AppState.district
+});
+
+export default connect(mapStateToProps)(Spielstrassen);

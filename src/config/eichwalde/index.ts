@@ -11,6 +11,7 @@ export default {
     userVerify: defaultRoutes.userVerify
   },
   menu: {
+    size: 325,
     profileLabel: 'Zum Profil',
     loginLabel: 'Login',
     logo: false,

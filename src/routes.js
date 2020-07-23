@@ -19,10 +19,10 @@ const KatasterKI = lazy(() => import('~/pages/KatasterKI'));
 const MapView = lazy(() => import('~/pages/Map'));
 const Markdown = lazy(() => import('~/pages/Markdown'));
 const Reports = lazy(() => import('~/pages/Reports'));
-const Spielstrassen = lazy(() => import('~/pages/Spielstrassen'));
 
 const apps = {
-  gastro: lazy(() => import('~/apps/Gastro'))
+  gastro: lazy(() => import('~/apps/Gastro')),
+  spielstrassen: lazy(() => import('~/apps/Spielstrassen'))
 };
 
 const District = (name) => {
@@ -42,7 +42,8 @@ const District = (name) => {
     <Route key={name} path={`/${district.path}`}>
       <Switch>
         {districtApps}
-        <Redirect to="/" />
+
+        <Route render={() => <Markdown page="nomatch" />} />
       </Switch>
     </Route>
   );
@@ -109,25 +110,18 @@ const Routes = ({ token }) => (
       />
     )}
 
-    {/* Spielstrassen pages */}
-    {config.routes.spielstrassen != null && (
-      <Route
-        path={config.routes.spielstrassen.landing}
-        component={Spielstrassen}
-      />
-    )}
-
     {config.districts && Object.keys(config.districts).map(District)}
 
     {/* Research pages */}
     {config.routes.research != null && config.enableResearchPage && (
-      <>
-        <Route
-          path={config.routes.research.landing}
-          render={() => <Redirect to={config.routes.research.survey} />}
-        />
-        <Route path={config.routes.research.survey} component={Research} />
-      </>
+      <Route
+        path={config.routes.research.landing}
+        render={() => <Redirect to={config.routes.research.survey} />}
+      />
+    )}
+
+    {config.routes.research != null && config.enableResearchPage && (
+      <Route path={config.routes.research.survey} component={Research} />
     )}
 
     <Route render={() => <Markdown page="nomatch" />} />
