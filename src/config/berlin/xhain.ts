@@ -156,14 +156,14 @@ const xhain: DistrictConfig = {
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
           status: 'open',
-          schedule: 'Sonntags 13-19 Uhr'
+          schedule: 'Sonntags 15-18 Uhr (Ferienzeit)'
         },
         {
           street: 'Rudolfstraße',
           kiez: 'Stralauer Kiez',
           region: 'Friedrichshain',
           status: 'open',
-          schedule: 'Sonntags 15 – 19 (Ferienzeit)'
+          schedule: 'Sonntags 15 – 19 Uhr (Ferienzeit)'
         },
         {
           street: 'Liebigstraße',
@@ -176,7 +176,7 @@ const xhain: DistrictConfig = {
           kiez: 'Graefekiez',
           region: 'Kreuzberg',
           status: 'open',
-          schedule: 'Ab 1.August Sonntags 13-19 Uhr'
+          schedule: 'Ab 2.August Sonntags 13-19 Uhr'
         }
       ]
     },
