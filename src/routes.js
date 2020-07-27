@@ -115,6 +115,7 @@ const Routes = ({ token }) => (
     {/* Research pages */}
     {config.routes.research != null && config.enableResearchPage && (
       <Route
+        exact
         path={config.routes.research.landing}
         render={() => <Redirect to={config.routes.research.survey} />}
       />
