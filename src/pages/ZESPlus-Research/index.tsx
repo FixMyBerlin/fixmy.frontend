@@ -23,6 +23,9 @@ import LogoZeuthen from '~/images/eichwalde/logo-zeuthen.png';
 import LogoSchulzendorf from '~/images/eichwalde/logo-schulzendorf.png';
 import LogoTU from '~/images/eichwalde/logo-tu.png';
 import LogoFMB from '~/images/logofmb.png';
+import LogoZES from '~/images/eichwalde/logo-zes.png';
+import LogoZES2 from '~/images/eichwalde/logo-zes@2x.png';
+import LogoZES3 from '~/images/eichwalde/logo-zes@3x.png';
 import SimraSrc from '~/images/eichwalde/simra.jpg';
 import { media } from '~/styles/utils';
 import config from '~/config';
@@ -74,16 +77,28 @@ const Wrapper = styled(ArticleWrapper)`
   }
 `;
 
+const Logo = styled.img`
+  width: 105px;
+  height: 42px;
+`;
+
 const Research = () => (
   <Wrapper hasToc>
     <ArticleHeader
       toc="Einleitung"
-      kicker="Forschungsprojekt - ZES-Plus"
+      kicker="Forschungs&shy;projekt - ZES-Plus"
+      logo={
+        <Logo
+          src={LogoZES2}
+          srcSet={`${LogoZES} 1x, ${LogoZES2} 2x, ${LogoZES3} 3x`}
+          alt="Logo ZES+"
+        />
+      }
       publishDate={new Date(2020, 3, 2, 15, 0)}
       author="Jörg Jennoch (Bürgermeister)"
     >
-      Eichwalde, Zeuthen und Schulzendorf entwickeln Radverkehrsnetz gemeinsam
-      mit den Bürger:innen
+      Eich&shy;walde, Zeu&shy;then und Schulzen&shy;dorf entwickeln
+      Radverkehrsnetz gemeinsam mit den Bürger:innen
     </ArticleHeader>
     <Intro>
       Die Mobilitätswende in Eichwalde, Zeuthen und Schulzendorf hat begonnen!

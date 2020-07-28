@@ -14,7 +14,6 @@ export default {
     zesplusResearch: '/forschungsprojekt'
   },
   menu: {
-    size: 325,
     profileLabel: 'Zum Profil',
     loginLabel: 'Login',
     logo: false,
