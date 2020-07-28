@@ -44,18 +44,31 @@ class BaseMap extends PureComponent {
   }
 
   render() {
-    const Loader = this.state.isLoading ? <BigLoader /> : null;
+    // While the map initializes, show loading animation.
+    // If configured (by setting isReportsDataLoaded to a boolean),
+    // also show loader until the prop value toggles.
+    const isOverlayLoaded = this.props.didOverlayLoad;
+    const isOverlayLoadTogglePropused = isOverlayLoaded !== undefined;
+    const isMapInitializing = this.state.isLoading;
+    const isMapInitializingOrOverlayLoading =
+      isMapInitializing || !isOverlayLoaded;
+    const isLoaderShown = isOverlayLoadTogglePropused
+      ? isMapInitializingOrOverlayLoading
+      : isMapInitializing;
+
     return (
-      <StyledMap
-        className={this.props.className}
-        ref={(ref) => {
-          this.root = ref;
-        }}
-        data-cy="reports-basemap"
-      >
-        {Loader}
-        {this.props.children}
-      </StyledMap>
+      <>
+        {isLoaderShown && <BigLoader useAbsolutePositioning />}
+        <StyledMap
+          className={this.props.className}
+          ref={(ref) => {
+            this.root = ref;
+          }}
+          data-cy="reports-basemap"
+        >
+          {this.props.children}
+        </StyledMap>
+      </>
     );
   }
 }
@@ -65,7 +78,10 @@ BaseMap.propTypes = {
   onLoad: PropTypes.func,
   onMove: PropTypes.func,
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  // purposely allowing didOverlayLoad to be undefined
+  // eslint-disable-next-line react/require-default-props
+  didOverlayLoad: PropTypes.bool
 };
 
 BaseMap.defaultProps = {
