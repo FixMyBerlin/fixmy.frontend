@@ -174,7 +174,10 @@ const SectionAbout = ({ toc }) => (
       Grundbild aus einem Fahrstreifen, einer Radverkehrsanlage mit Trennung
       (links / rechts), einem Parkstreifen und dem Seitenraum:
     </Paragraph>
-    <Image source={image1} />
+    <Image
+      source={image1}
+      alt="Straßenszene, in der die oben beschriebenen Infrastrukturmerkmale beschriftet sind"
+    />
     <Paragraph>
       Während in diesem Experiment der Seitenraum immer gleich dargestellt wird,
       werden im Bereich des Fahrstreifens folgende Einflussfaktoren variiert:

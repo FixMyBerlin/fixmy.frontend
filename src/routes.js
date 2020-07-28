@@ -11,6 +11,7 @@ import Profile from '~/pages/User/pages/Profile';
 import ForgotPassword from '~/pages/User/pages/ForgotPassword';
 import ResetPassword from '~/pages/User/pages/ResetPassword';
 import UserVerify from '~/pages/User/pages/Verify';
+import ZESPlusResearch from '~/pages/ZESPlus-Research';
 
 import Research from '~/pages/Research';
 
@@ -123,6 +124,11 @@ const Routes = ({ token }) => (
 
     {config.routes.research != null && config.enableResearchPage && (
       <Route path={config.routes.research.survey} component={Research} />
+    )}
+
+    {/* ZES-Plus research page */}
+    {config.routes.zesplusResearch && (
+      <Route path={config.routes.zesplusResearch} component={ZESPlusResearch} />
     )}
 
     <Route render={() => <Markdown page="nomatch" />} />

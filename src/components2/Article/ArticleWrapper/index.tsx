@@ -20,7 +20,7 @@ const Page = styled.div<PageProps>`
 
 const ContentWrapperOuter = styled.div`
   position: relative;
-  max-width: 800px;
+  max-width: ${breakpoints.m}px;
   margin: 0 auto;
 
   a {
@@ -47,7 +47,7 @@ const ContentWrapper = styled.div`
   background: white;
   color: ${config.colors.darkbg};
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: ${breakpoints.m}px) {
     box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.08);
     border-radius: 4px;
     padding: 2rem 0;

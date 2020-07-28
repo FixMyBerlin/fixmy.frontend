@@ -7,6 +7,7 @@ import Heading from '~/components2/Article/Typography/Heading';
 
 interface ArticleHeaderProps {
   kicker?: string;
+  logo?: ReactNode;
   title?: string;
   publishDate?: Date;
   author?: string;
@@ -20,8 +21,15 @@ const ArticleHeaderWrapper = styled.div`
   max-width: 520px;
 `;
 
+const LogoWrapper = styled.div`
+  float: right;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+`;
+
 const ArticleHeader = ({
   kicker,
+  logo,
   publishDate,
   author,
   toc,
@@ -30,6 +38,7 @@ const ArticleHeader = ({
 }: ArticleHeaderProps) => {
   return (
     <ArticleHeaderWrapper className={className}>
+      {logo && <LogoWrapper>{logo}</LogoWrapper>}
       {kicker && <Kicker>{kicker}</Kicker>}
       <Heading toc={toc}>{children}</Heading>
       <ArticleMeta publishDate={publishDate} author={author} />
