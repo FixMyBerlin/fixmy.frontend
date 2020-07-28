@@ -95,7 +95,7 @@ const Research = () => (
           alt="Logo ZES+"
         />
       }
-      publishDate={new Date(2020, 3, 2, 15, 0)}
+      publishDate={new Date(2020, 6, 29, 10, 0)}
       author="Jörg Jennoch (Bürgermeister)"
     >
       Eich&shy;walde, Zeu&shy;then und Schulzen&shy;dorf entwickeln
