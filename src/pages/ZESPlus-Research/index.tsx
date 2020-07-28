@@ -13,6 +13,7 @@ import {
 } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import Link from '~/components2/Link';
+import NewsletterWidget from '~/components2/NewsletterWidget';
 
 import Image1 from '~/images/eichwalde/research-1.jpg';
 import Image2 from '~/images/eichwalde/research-2.jpg';
@@ -251,9 +252,7 @@ const Research = () => (
       erhalten.
     </Paragraph>
     <Paragraph>
-      <AnchorButton flat href="/">
-        Newsletter abonnieren
-      </AnchorButton>
+      <NewsletterWidget height={203} />
     </Paragraph>
     <Paragraph>
       Wenn Sie Fragen zum Projekt oder Feedback haben senden Sie eine E-Mail an

@@ -3,6 +3,7 @@ import defaultRoutes from '../default/routes';
 export default {
   titleFont: 'Roboto Slab',
   baseFont: 'Roboto',
+  newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EuZ',
   routes: {
     signup: defaultRoutes.signup,
     login: defaultRoutes.login,

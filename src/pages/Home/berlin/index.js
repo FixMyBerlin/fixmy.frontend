@@ -7,9 +7,8 @@ import Button from '~/components/Button';
 import SocialSharer from '~/components/Social/SocialSharer';
 import Text from '~/components/Text';
 import GhostButton from '~/components/GhostButton';
+import NewsletterWidget from '~/components2/NewsletterWidget';
 import config from '~/config';
-
-import SubscribtionWidget from '../SubscribtionWidget';
 
 const MapLinkWrapper = styled.div`
   margin-bottom: 24px;
@@ -90,7 +89,7 @@ export default () => (
         <FeatureButton>{labels.reportsButton}</FeatureButton>
       </Link>
     </MapLinkWrapper>
-    <SubscribtionWidget />
+    <NewsletterWidget />
     <SocialSharer />{' '}
   </>
 );
