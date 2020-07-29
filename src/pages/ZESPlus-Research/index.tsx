@@ -17,39 +17,12 @@ import NewsletterWidget from '~/components2/NewsletterWidget';
 
 import Image1 from '~/images/eichwalde/research-1.jpg';
 import Image2 from '~/images/eichwalde/research-2.jpg';
-import LogoBMBF from '~/images/eichwalde/logo-bmbf.png';
-import LogoFONA from '~/images/eichwalde/logo-fona.svg';
-import LogoEichwalde from '~/images/eichwalde/logo-eichwalde.png';
-import LogoZeuthen from '~/images/eichwalde/logo-zeuthen.png';
-import LogoSchulzendorf from '~/images/eichwalde/logo-schulzendorf.png';
-import LogoTU from '~/images/eichwalde/logo-tu.png';
-import LogoFMB from '~/images/logofmb.png';
 import LogoZES from '~/images/eichwalde/logo-zes.png';
 import LogoZES2 from '~/images/eichwalde/logo-zes@2x.png';
 import LogoZES3 from '~/images/eichwalde/logo-zes@3x.png';
 import SimraSrc from '~/images/eichwalde/simra.jpg';
 import { media } from '~/styles/utils';
-import config from '~/config';
-
-const LogoGrid1 = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  max-width: 520px;
-  margin: 1em auto;
-`;
-
-const LogoGrid2 = styled(LogoGrid1)`
-  img {
-    margin-right: 1em;
-    height: 45px;
-    width: auto;
-
-    ${media.m`
-      margin-right: 2em;
-    `}
-  }
-`;
+import Logos from './Logos';
 
 const DownloadWrapper = styled(Paragraph)`
   display: flex;
@@ -65,11 +38,6 @@ const DownloadWrapper = styled(Paragraph)`
     margin: 10px;
     text-align: center;
   }
-`;
-
-const LogoAnnotation = styled(Paragraph)`
-  font-size: 0.8em;
-  color: ${config.colors.darkgrey};
 `;
 
 const Wrapper = styled(ArticleWrapper)`
@@ -99,14 +67,14 @@ const Research = () => (
       author="Jörg Jennoch (Bürgermeister)"
     >
       Eich&shy;walde, Zeu&shy;then und Schulzen&shy;dorf entwickeln
-      Radverkehrsnetz gemeinsam mit den Bürger:innen
+      Radverkehrsnetz gemeinsam mit den Bürger*innen
     </ArticleHeader>
     <Intro>
       Die Mobilitätswende in Eichwalde, Zeuthen und Schulzendorf hat begonnen!
       Der Radverkehr soll eine bessere Infrastruktur erhalten, auf der alle
       Menschen komfortabel vorankommen und sich sicher fühlen – auf dem Weg zur
       Arbeit, zur Schule, zur S-Bahn, zu Freunden und Bekannten, zum Sport und
-      zum Einkauf
+      zum Einkauf.
     </Intro>
     <Paragraph>
       Um dies zu erreichen, entwickeln die Gemeinden gemeinsam mit FixMyCity und
@@ -118,11 +86,14 @@ const Research = () => (
       Radnetzes, aber auch für die Einbeziehung der lokalen Initiativen sowie
       des direkten Umfelds, in Form der Nachbargemeinden und des BER.
     </Paragraph>
-    <Image source={Image1} alt="" role="presentation" />
+    <ImageFull source={Image1} alt="" role="presentation" />
     <Paragraph>
-      Finanziert wird diese Kooperation durch die „MobilitätsWerkStadt 2025“ des
-      Bundesministeriums für Forschung und Entwicklung. Eine wichtige Grundlage
-      für Projekt bildete auch die Vorarbeit der lokalen Initiative{' '}
+      Finanziert wird diese Kooperation durch die{' '}
+      <Link href="https://www.fona.de/de/massnahmen/foerdermassnahmen/mobilitaet-in-der-stadt.php">
+        „MobilitätsWerkStadt 2025“
+      </Link>{' '}
+      des Bundesministeriums für Forschung und Entwicklung. Eine wichtige
+      Grundlage für Projekt bildete auch die Vorarbeit der lokalen Initiative{' '}
       <Link href="https://www.radnetz-lds.de/">
         Netzwerk fahrradfreundliches LDS (-Nord)
       </Link>
@@ -148,14 +119,15 @@ const Research = () => (
     </Quote>
     <Paragraph>
       Viele Wege innerhalb der drei eng verflochtenen Gemeinden sind kürzer als
-      5 km und damit eigentlich leicht mit dem Fahrrad zurückzulegen. Doch auch
-      wenn bereits viele Radwege vorhanden sind, gibt es in jeder der drei
-      Gemeinden aktuell noch Missstände, die das Radfahren erschweren. Diese
-      sollen durch das Konzept behoben werden, sodass das Rad für Alltagswege
-      innerhalb der Gemeinden eine noch attraktivere Alternative zum Auto
-      bildet. Dabei ist wichtig, Konflikte mit dem Fußverkehr und dem Auto zu
-      vermeiden, um die Sicherheit für allen Verkehrsteilnehmer*innen zu
-      erhöhen.
+      5 km und könnten eigentlich leicht mit dem Fahrrad zurück gelegt werden.
+      Verschiedene s.g. Radverkehrsanlagen – Schutzstreifen, Radwege oder für
+      den Radverkehr freigegebene Bürgersteige - sind dafür bereits angelegt.
+      Gleichzeitig gibt es in jeder der drei Gemeinden aktuell auch noch
+      Missstände, die das Radfahren erschweren. Diese sollen durch das Konzept
+      behoben werden, sodass das Rad für Alltagswege innerhalb der Gemeinden
+      eine noch attraktivere Alternative zum Auto bildet. Dabei ist wichtig,
+      Konflikte mit dem Fußverkehr und dem Auto zu vermeiden, um die Sicherheit
+      für allen Verkehrsteilnehmer*innen zu erhöhen.
     </Paragraph>
     <Paragraph>
       Bereits jetzt haben Eichwalde, Zeuthen und Schulzendorf ein hohes
@@ -170,12 +142,6 @@ const Research = () => (
       wollen die beteiligten Gemeinden aufgreifen und die Entwicklung rund um
       den BER nutzen, um eine nachhaltige Mobilität in der Region
       sicherzustellen.
-    </Paragraph>
-    <Paragraph>
-      <Link href="/">
-        Stellungnahme der Bürgermeister der drei Gemeinden zum Ausbau des
-        Radverkehrs
-      </Link>
     </Paragraph>
     <Paragraph>
       Um im Alltagsverkehr auch auf mittlerer Distanz Alternativen zum MIV
@@ -264,21 +230,7 @@ const Research = () => (
       </AnchorButton>
     </Paragraph>
     <ImageFull source={Image2} alt="" role="presentation" />
-    <LogoGrid1>
-      <img
-        src={LogoBMBF}
-        alt="Logo Bundesministerium für Bildung und Forschung"
-      />
-      <LogoFONA />
-    </LogoGrid1>
-    <LogoAnnotation>Projektpartner:</LogoAnnotation>
-    <LogoGrid2>
-      <img alt="Wappen Eichwalde" src={LogoEichwalde} />
-      <img alt="Wappen Zeuthen" src={LogoZeuthen} />
-      <img alt="Wappen Schulzendorf" src={LogoSchulzendorf} />
-      <img alt="Logo FixMyBerlin" src={LogoFMB} />
-      <img alt="Logo TU" src={LogoTU} />
-    </LogoGrid2>
+    <Logos />
   </Wrapper>
 );
 
