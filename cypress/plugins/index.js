@@ -49,7 +49,7 @@ const getPatternsForRegion = () => {
   const patterns = whitelist.map(makePattern);
 
   log(`Selecting tests for region ${region} using patterns ${patterns}`);
-  if (!Object.keys(baseConfig).contains(region))
+  if (!Object.keys(baseConfig).includes(region))
     log('No test whitelist defined for region, using default');
 
   return patterns;
