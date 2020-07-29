@@ -37,7 +37,7 @@ JoinButton.propTypes = {
 };
 
 JoinButton.defaultProps = {
-  toUrl: `${config.routes.reports.new}`
+  toUrl: `${config.routes.reports?.new}`
 };
 
 export default JoinButton;
