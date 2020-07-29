@@ -20,6 +20,9 @@ const compileAbsoluteRoute = (relativeURL) =>
 
 const printError = (value) => JSON.stringify(value, null, 2);
 
+const delayResponse = (response, after = 500) => () =>
+  new Promise((resolve) => setTimeout(resolve, after)).then(() => response);
+
 describe('API module', () => {
   afterEach(() => {
     fetchMock.restore();
@@ -66,17 +69,38 @@ describe('API module', () => {
 
     test.todo('it can post form data'); // see https://github.com/sindresorhus/ky#tips
 
-    it('toggles an isSubmitting flag using the provided request hook `setSubmitting`', async () => {
-      const setSubmittingSpy = jest.fn();
+    it('calls the onSubmit and onFinish callback', async () => {
+      const onSubmitSpy = jest.fn();
+      const onFinishSpy = jest.fn();
 
       fetchMock.mock(`end:${SAMPLE_ROUTE}`, SAMPLE_JSON_VALUE);
       await request(SAMPLE_ROUTE, {
-        callbacks: {
-          setSubmitting: setSubmittingSpy
-        }
+        onSubmit: onSubmitSpy,
+        onFinish: onFinishSpy
       });
 
-      expect(setSubmittingSpy.mock.calls).toEqual([[true], [false]]);
+      expect(onSubmitSpy).toBeCalled();
+      expect(onFinishSpy).toBeCalled();
+    });
+
+    it('calls the onSlowResponse callback on for slow requests', async () => {
+      const onSlowResponseSpy = jest.fn();
+
+      fetchMock.mock(`end:${SAMPLE_ROUTE}`, SAMPLE_JSON_VALUE);
+      await request(SAMPLE_ROUTE, {
+        onSlowResponse: onSlowResponseSpy
+      });
+
+      expect(onSlowResponseSpy).toHaveBeenCalledTimes(0);
+
+      fetchMock.mock(`end:slowRoute`, delayResponse(SAMPLE_JSON_VALUE, 2));
+
+      await request('slowRoute', {
+        onSlowResponse: onSlowResponseSpy,
+        slowResponseTimeout: 1
+      });
+
+      expect(onSlowResponseSpy).toHaveBeenCalledTimes(1);
     });
 
     describe('Error handling', () => {
@@ -144,17 +168,13 @@ describe('API module', () => {
 
         it('throws a TimeoutError on request time out', async () => {
           // this also proves that the request timeout can be specified at all
-          const delayResponse = (response, after = 500) => () =>
-            new Promise((resolve) => setTimeout(resolve, after)).then(
-              () => response
-            );
 
           // mock request timeout
           fetchMock.mock(`end:${SAMPLE_ROUTE}`, delayResponse(408, 2)); // send '200' response after 2 millis
 
-          await expect(
-            request(SAMPLE_ROUTE, { kyOptions: { timeout: 1 } })
-          ).rejects.toThrow(TimeoutError);
+          await expect(request(SAMPLE_ROUTE, { timeout: 1 })).rejects.toThrow(
+            TimeoutError
+          );
         });
 
         it('throws a custom NetworkError if the server does not answer', async () => {
@@ -173,7 +193,8 @@ describe('API module', () => {
 
       describe('invocation of request hooks', () => {
         it('still invokes `setSubmitting` twice even if the request fails', async () => {
-          const setSubmittingSpy = jest.fn();
+          const onSubmitSpy = jest.fn();
+          const onFinishSpy = jest.fn();
 
           fetchMock.mock(`end:${SAMPLE_ROUTE}`, () => {
             throw new Error('Connection error');
@@ -182,34 +203,15 @@ describe('API module', () => {
           let catchedError;
           try {
             await request(SAMPLE_ROUTE, {
-              callbacks: {
-                setSubmitting: setSubmittingSpy
-              }
+              onSubmit: onSubmitSpy,
+              onFinish: onFinishSpy
             });
           } catch (e) {
             catchedError = e;
           }
           expect(catchedError).toBeInstanceOf(NetworkError);
-          expect(setSubmittingSpy.mock.calls).toEqual([[true], [false]]);
-        });
-
-        it('calls the provided request hook `setError` with the error message JSON returned by the API', async () => {
-          const setErrorSpy = jest.fn();
-
-          const errorMessage = 'nuclear core melt accident';
-          const errResponse = new Response(errorMessage, {
-            status: 500
-          });
-          fetchMock.mock(`end:${SAMPLE_ROUTE}`, errResponse);
-          try {
-            await request(SAMPLE_ROUTE, {
-              callbacks: {
-                setErrors: setErrorSpy
-              }
-            });
-          } catch (e) {
-            expect(setErrorSpy).toHaveBeenCalledWith(errorMessage);
-          }
+          expect(onSubmitSpy).toBeCalled();
+          expect(onFinishSpy).toBeCalled();
         });
       });
     });

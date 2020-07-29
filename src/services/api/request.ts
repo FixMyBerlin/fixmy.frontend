@@ -11,7 +11,7 @@ import config from '~/config';
 import store from '~/store';
 import { RequestOptions } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
-import handleError from './errorHandling';
+import fmcError from './fmcError';
 
 const log = debug('fmc:api:request()');
 
@@ -36,47 +36,45 @@ const configuredKy = ky.create({
 // Generic Request Handler
 
 const defaultOptions: RequestOptions = {
-  kyOptions: {},
-  callbacks: {
-    setSubmitting: () => {}
-  },
-  accept: 'json'
+  accept: 'json',
+  method: 'get',
+  timeout: 30 * 1000,
+  slowResponseTimeout: 5 * 1000
 };
 
 export default async function request(
   route: string,
-  {
-    callbacks = defaultOptions.callbacks,
-    kyOptions = defaultOptions.kyOptions,
-    accept = defaultOptions.accept
-  }: RequestOptions = defaultOptions
+  options: RequestOptions = defaultOptions
 ): Promise<Response> {
   let response;
 
-  const mergedKyOptions = mergeKyOptions(kyOptions);
-  const { setErrors, setSubmitting } = callbacks;
+  const {
+    accept = defaultOptions.accept,
+    slowResponseTimeout = defaultOptions.slowResponseTimeout,
+    onSubmit,
+    onFinish,
+    onSlowResponse,
+    ...kyOptions
+  } = options;
 
-  if (setSubmitting) setSubmitting(true);
+  if (onSubmit) onSubmit();
+  const timeout = setTimeout(() => {
+    if (onSlowResponse) {
+      log('calling slow request handler');
+      onSlowResponse(slowResponseTimeout);
+    }
+  }, slowResponseTimeout);
+
   try {
-    log('sending request', { route, mergedKyOptions, accept });
-    response = await configuredKy(route, mergedKyOptions)[accept]();
+    log('sending request', { route, options, accept });
+    response = await configuredKy(route, kyOptions)[accept]();
   } catch (e) {
     log('calling error handler', { error: e });
-    await handleError(e, setErrors);
+    throw await fmcError(e);
   } finally {
     log('finished request');
-    if (setSubmitting) setSubmitting(false);
+    if (onFinish) onFinish();
+    clearTimeout(timeout);
   }
   return response;
-}
-
-function mergeKyOptions(requestConfig: KyOptions = {}) {
-  const defaultKyOptions = {
-    method: 'get',
-    timeout: 30 * 1000
-  };
-  return {
-    ...defaultKyOptions,
-    ...requestConfig
-  };
 }

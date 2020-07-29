@@ -2,39 +2,29 @@ import { Options as KyOptions } from 'ky';
 import { JSONValue, RequestOptions } from './types';
 import request from './request';
 
-export function get(
+export const get = (
   route: string,
   requestOptions: RequestOptions = {}
-): Promise<Response> {
-  const kyOptions = requestOptions.kyOptions || {};
-  const mergedKyOptions: KyOptions = { ...kyOptions, method: 'get' };
-  return request(route, { ...requestOptions, kyOptions: mergedKyOptions });
-}
+): Promise<Response> => request(route, { ...requestOptions, method: 'get' });
 
-export function post(
+export const post = (
   route: string,
   payload: JSONValue,
   requestOptions: RequestOptions = {}
-): Promise<Response> {
-  const kyOptions = requestOptions.kyOptions || {};
-  const mergedKyOptions: KyOptions = {
-    ...kyOptions,
+): Promise<Response> =>
+  request(route, {
+    ...requestOptions,
     method: 'post',
     json: payload
-  };
-  return request(route, { ...requestOptions, kyOptions: mergedKyOptions });
-}
+  });
 
-export function patch(
+export const patch = (
   route: string,
   payload: JSONValue,
   requestOptions: RequestOptions = {}
-): Promise<Response> {
-  const kyOptions = requestOptions.kyOptions || {};
-  const mergedKyOptions: KyOptions = {
-    ...kyOptions,
+): Promise<Response> =>
+  request(route, {
+    ...requestOptions,
     method: 'patch',
     json: payload
-  };
-  return request(route, { ...requestOptions, kyOptions: mergedKyOptions });
-}
+  });

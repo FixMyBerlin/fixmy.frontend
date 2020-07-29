@@ -9,29 +9,11 @@ import { FMCError, JSONValue, JSONObject } from './types';
 
 const log = debug('fmc:api:errorHandling');
 
-export default async function handleError(
-  e: Error,
-  setErrors: (arg0: string) => any
-) {
-  const { translatedError, errorMessage } = await makeFMCError(e);
-
-  if (setErrors && errorMessage) {
-    setErrors(errorMessage);
-  }
-
-  throw translatedError;
-}
-
 /**
  * Translate errors reported by ky/fetch to a set of custom exceptions
  * which we can later on use to make decisions on how to handle specific errors.
  */
-async function makeFMCError(
-  e: FMCError
-): Promise<{
-  errorMessage: string;
-  translatedError: FMCError;
-}> {
+export default async function makeFMCError(e: FMCError): Promise<FMCError> {
   let translatedError: FMCError;
   let errorMessage: string;
   let statusCode: number;
@@ -53,9 +35,8 @@ async function makeFMCError(
       translatedError = new NetworkError(e);
       break;
   }
-  // return body content to not parse body multiple times,
-  // see https://github.com/node-fetch/node-fetch/issues/533
-  return { translatedError, errorMessage };
+
+  return translatedError;
 }
 
 /**

@@ -7,11 +7,6 @@ export interface JSONArray extends Array<JSONValue> {}
 
 export type JSONValue = JSONPrimitive | JSONObject | JSONArray;
 
-export type Callbacks = {
-  setSubmitting?: (arg0: boolean) => void;
-  setErrors?: (arg0: JSONValue) => void;
-};
-
 export type ExpectedResponseBodyType =
   | 'arrayBuffer'
   | 'blob'
@@ -19,10 +14,12 @@ export type ExpectedResponseBodyType =
   | 'json'
   | 'text';
 
-export type RequestOptions = {
-  kyOptions?: KyOptions;
-  callbacks?: Callbacks;
+export type RequestOptions = KyOptions & {
+  onSubmit?: Function;
+  onFinish?: Function;
+  onSlowResponse?: (timeout: number) => any;
   accept?: ExpectedResponseBodyType;
+  slowResponseTimeout?: number;
 };
 
 export interface FMCError extends Error {
