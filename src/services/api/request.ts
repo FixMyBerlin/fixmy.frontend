@@ -6,11 +6,14 @@
  */
 import ky from 'ky-universal';
 import { Options as KyOptions } from 'ky';
+import debug from 'debug';
 import config from '~/config';
 import store from '~/store';
 import { RequestOptions } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
 import handleError from './errorHandling';
+
+const log = debug('fmc:api:request()');
 
 // setup ky
 
@@ -18,6 +21,7 @@ const configuredKy = ky.create({
   prefixUrl: config.apiUrl,
   hooks: {
     beforeRequest: [
+      // Set authorization headers
       (req: Request) => {
         const stateRoot = store.getState();
         const token = UserStateSelectors.getToken(stateRoot);
@@ -54,10 +58,13 @@ export default async function request(
 
   if (setSubmitting) setSubmitting(true);
   try {
+    log('sending request', { route, mergedKyOptions, accept });
     response = await configuredKy(route, mergedKyOptions)[accept]();
   } catch (e) {
+    log('calling error handler', { error: e });
     await handleError(e, setErrors);
   } finally {
+    log('finished request');
     if (setSubmitting) setSubmitting(false);
   }
   return response;

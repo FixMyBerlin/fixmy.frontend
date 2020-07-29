@@ -9,7 +9,6 @@ import {
 } from '~/services/api/httpErrors';
 import store from '~/store';
 import { get, patch, post } from '~/services/api/shorthands';
-import { printError } from '~/services/api/errorHandling';
 
 const SAMPLE_ROUTE = 'fakeEndpoint';
 const SAMPLE_JSON_VALUE = { hello: 'world' };
@@ -19,6 +18,8 @@ const compileAbsoluteRoute = (relativeURL) =>
     ? `${config.apiUrl.replace(/\/+$/, '')}/${relativeURL.replace(/^\/+/, '')}`
     : config.apiUrl;
 
+const printError = (value) => JSON.stringify(value, null, 2);
+
 describe('API module', () => {
   afterEach(() => {
     fetchMock.restore();
@@ -27,14 +28,15 @@ describe('API module', () => {
 
   describe('Generic request handler', () => {
     it('prefixes urls with the api base url defined in the app config', async () => {
-      // match all requests ending with the stated relative route since the api will prepend it with a base url
+      // match all requests ending with the stated relative route since the api
+      //  will prepend it with a base url
       fetchMock.mock(`end:${SAMPLE_ROUTE}`, {});
       await request(SAMPLE_ROUTE);
       const [url] = fetchMock.lastCall();
       expect(url).toEqual(compileAbsoluteRoute(SAMPLE_ROUTE));
     });
 
-    it('reads the token from the store before the request and adds it to the request header', async () => {
+    it('adds user auth token from redux store to request header', async () => {
       const testToken = 'abc123';
       const mockState = {
         UserState: {
@@ -48,14 +50,16 @@ describe('API module', () => {
       await request(SAMPLE_ROUTE);
 
       const fetchOptions = fetchMock.lastOptions();
-      expect(fetchOptions.headers.Authorization).toContain(`JWT ${testToken}`); // headers are wrapped in array, see https://github.com/node-fetch/node-fetch/issues/219#issuecomment-270946419
+      // headers are wrapped in an array
+      // see https://github.com/node-fetch/node-fetch/issues/219#issuecomment-270946419
+      expect(fetchOptions.headers.Authorization).toContain(`JWT ${testToken}`);
     });
 
     it('can request text content', async () => {
       const testResponse = 'Hello world';
       fetchMock.mock(`end:${SAMPLE_ROUTE}`, testResponse);
       const response = await request(SAMPLE_ROUTE, {
-        responseBodyType: 'text'
+        accept: 'text'
       });
       expect(response).toEqual(testResponse);
     });
@@ -133,7 +137,7 @@ describe('API module', () => {
 
           await expect(
             request(SAMPLE_ROUTE, {
-              responseBodyType: 'text'
+              accept: 'text'
             })
           ).rejects.toThrowError(new ApiError(testResponse));
         });

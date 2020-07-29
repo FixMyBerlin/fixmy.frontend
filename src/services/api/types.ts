@@ -25,4 +25,6 @@ export type RequestOptions = {
   accept?: ExpectedResponseBodyType;
 };
 
-export interface FMCError extends Error {}
+export interface FMCError extends Error {
+  response?: Response;
+}
