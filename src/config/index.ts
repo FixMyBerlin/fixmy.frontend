@@ -19,8 +19,10 @@ if (Object.keys(AVAILABLE_REGIONS).indexOf(region) === -1) {
   console.error('No region defined for this instance');
 }
 
-export default {
+const rootConfig = {
   ...defaultConfig,
   ...instanceConfig,
   region
 };
+
+export default rootConfig;

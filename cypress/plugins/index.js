@@ -1,7 +1,9 @@
 require('dotenv').config();
-const testWhiteList = require('../../cypressWhiteList');
-
 const wp = require('@cypress/webpack-preprocessor');
+
+const log = require('debug')('cypress:plugins');
+
+const baseConfig = require('../../cypress.json');
 const webpackOptions = require('../../webpack/webpack.config.dev.js');
 
 // immediately open dev tools so we can inspect breakpoint halts
@@ -29,10 +31,33 @@ const setWindowPos = (args) => {
   );
 };
 
+/**
+ * Generate an array of pattern for selecting tests to run
+ *
+ * Expects an environment variable `REGION` with a corresponding entry
+ * in `cypress.json` under the key `whitelist`, containing an array of
+ * path segments to match for.
+ *
+ * @returns string[] A list of file patterns
+ */
+const getPatternsForRegion = () => {
+  const makePattern = (page) => `**/${page}/**/*.e2e.test.js`;
+
+  const region = process.env.REGION;
+  const whitelist =
+    baseConfig.whitelist[region] || baseConfig.whitelist.default;
+  const patterns = whitelist.map(makePattern);
+
+  log(`Selecting tests for region ${region} using patterns ${patterns}`);
+  if (!Object.keys(baseConfig).contains(region))
+    log('No test whitelist defined for region, using default');
+
+  return patterns;
+};
+
 module.exports = (on, config) => {
   // only include certain tests
-  const testFilesToUse = getTestPool();
-  const testPoolOverrides = { testFiles: testFilesToUse };
+  const testFiles = getPatternsForRegion();
 
   // modify the way browsers are launched,
   // see https://docs.cypress.io/api/plugins/browser-launch-api.html#Usage
@@ -50,29 +75,7 @@ module.exports = (on, config) => {
   // see https://docs.cypress.io/guides/guides/environment-variables.html#Option-2-cypress-env-json
   return {
     ...config,
-    env: process.env,
-    ...testPoolOverrides
+    testFiles,
+    env: process.env
   };
 };
-
-/**
- * Ge configured tests for city config by invoking an internal whitelist configuration.
- * @returns string[] A list of file paths
- */
-function getTestPool() {
-  const cityConfig = process.env.region;
-  const testFilesToUse = testWhiteList.getTestWhitelistForCityConfig(
-    cityConfig
-  );
-  // log test pool
-  let logMsg = cityConfig
-    ? `Found city config ${cityConfig}. `
-    : 'No city config found. ';
-  logMsg += `Using the following tests: ${JSON.stringify(
-    testFilesToUse,
-    null,
-    '\t'
-  )}`;
-  console.info(logMsg);
-  return testFilesToUse;
-}
