@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 import MenuButton from '~/components/MenuButton';
 import ContentOverlay from '~/components/ContentOverlay';
 import bgImage from '~/images/background.jpg';
@@ -7,7 +8,6 @@ import bgImage from '~/images/background.jpg';
 import config from '~/config';
 
 import Berlin from './berlin';
-import Aachen from './aachen';
 
 const HomeContent = styled.div`
   text-align: center;
@@ -27,7 +27,9 @@ let content;
 if (config.region === 'berlin') {
   content = <Berlin />;
 } else if (config.region === 'aachen') {
-  content = <Aachen />;
+  content = <Redirect to={config.routes.reports.landing} />;
+} else if (config.region === 'eichwalde') {
+  content = <Redirect to={config.routes.zesplusResearch} />;
 } else {
   content = (
     <>

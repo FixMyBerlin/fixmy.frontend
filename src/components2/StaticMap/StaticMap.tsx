@@ -2,7 +2,7 @@ import React from 'react';
 import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import Map from '~/components2/Map';
 
 const StyledMap = styled(Map)`
@@ -11,10 +11,22 @@ const StyledMap = styled(Map)`
   margin: 2em 0;
 `;
 
-const StaticMap = ({ location, zoom = 17 }) => {
+type Props = {
+  location: MapboxGL.LngLatLike;
+  mapboxStyle: string;
+  bounds?: MapboxGL.LngLatBoundsLike;
+  zoom?: number;
+};
+
+const StaticMap: React.FC<Props> = ({
+  location,
+  mapboxStyle,
+  bounds = null,
+  zoom = 17
+}) => {
   if (!location) return null;
 
-  const handleInit = (map) => {
+  const handleInit = (map: MapboxGL.Map) => {
     if (location) {
       new MapboxGL.Marker({ color: config.colors.interaction })
         .setLngLat(location)
@@ -27,8 +39,8 @@ const StaticMap = ({ location, zoom = 17 }) => {
   return (
     <StyledMap
       onInit={handleInit}
-      style={config.gastro.map.style}
-      bounds={config.gastro.map.bounds}
+      style={mapboxStyle}
+      bounds={bounds}
       dragPan={false}
       scrollZoom={false}
       doubleClickZoom={false}

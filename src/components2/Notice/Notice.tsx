@@ -6,7 +6,7 @@ import { media } from '~/styles/utils';
 
 const Wrapper = styled(Paper)`
   display: flex;
-  padding: 0.5em;
+  padding: 0.5em 2em 0.5em 0.5em;
   margin: 1em 0;
 
   ${media.m`
@@ -14,7 +14,7 @@ const Wrapper = styled(Paper)`
   `};
 
   svg {
-    margin: 0 0.5em;
+    margin: 0 0.5rem 0 0;
   }
 `;
 

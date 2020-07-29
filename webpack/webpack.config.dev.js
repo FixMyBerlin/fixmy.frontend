@@ -16,11 +16,13 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
+    clientLogLevel: 'silent',
     historyApiFallback: true,
     host: '0.0.0.0',
-    publicPath: '/',
-    clientLogLevel: 'silent',
     hot: true,
+    overlay: true,
+    publicPath: '/',
+    progress: true,
     stats: 'minimal'
   },
   output: {

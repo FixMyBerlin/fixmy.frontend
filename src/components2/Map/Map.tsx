@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import logger from '~/utils/logger';
 
 const Wrapper = styled.div`
@@ -49,6 +49,12 @@ const Map = (props: Props) => {
     if (map == null)
       initMap({ setMap, mapContainer, onInit, center, zoom, mapboxProps });
   }, [map]);
+
+  useEffect(() => {
+    if (map == null || center == null) return;
+
+    map.setCenter(center);
+  }, [map, center]);
 
   return (
     <Wrapper

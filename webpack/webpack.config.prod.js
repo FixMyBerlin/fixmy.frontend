@@ -23,6 +23,9 @@ if (process.env.KATASTER_PATH != null) {
 } else if (process.env.REGION === 'aachen') {
   siteUrl = 'https://radbuegel-aachen.de';
   title = 'Radbügel für Aachen';
+} else if (process.env.REGION === 'eichwalde') {
+  siteUrl = 'https://zesplus.de';
+  title = 'ZESplus';
 } else {
   siteUrl = 'https://fixmyberlin.de';
   title = 'FixMyBerlin';

@@ -5,12 +5,12 @@ const mapConfig = config.map;
 
 let abortController = new window.AbortController();
 
-function compileSearchUrl(searchString) {
+function compileSearchUrl(searchString, customBounds) {
   const { accessToken, geocoderBounds } = mapConfig;
   return (
     `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchString}.json?` +
     `access_token=${accessToken}&autocomplete=true&language=de&` +
-    `bbox=${geocoderBounds}&` +
+    `bbox=${customBounds || geocoderBounds}&` +
     'limit=3&' +
     'types=address'
   ); // maybe using "poi" would also be a good idea
@@ -52,19 +52,20 @@ export const parseSuggestion = ({
  * Uses the [Mapbox Forward Geocoding API](https://docs.mapbox.com/api/search/#forward-geocoding)
  * to fetch a list of locations using a search string.
  * @param {String} searchString
+ * @param {MapboxGL.LngLatBoundsLike} customBounds of search area
  * @returns {Promise<Object[]>} See https://docs.mapbox.com/api/search/#geocoding-response-object
  */
-export async function fetchSuggestions(searchString) {
+export async function fetchSuggestions(searchString, customBounds = null) {
   abortController.abort(); // Cancel the previous request
   abortController = new AbortController();
   const { signal } = abortController;
 
-  const url = compileSearchUrl(searchString);
+  const url = compileSearchUrl(searchString, customBounds);
   return fetch(url, { signal })
     .then((res) => res.json())
     .then((res) => res.features)
     .then((fetchedSuggestions) => {
-      if (!fetchedSuggestions.length) return [];
+      if (!fetchedSuggestions?.length) return [];
       const parsedSuggestions = fetchedSuggestions.map(parseSuggestion);
       const filteredSuggestions = filterSuggestions(parsedSuggestions);
       return filteredSuggestions;

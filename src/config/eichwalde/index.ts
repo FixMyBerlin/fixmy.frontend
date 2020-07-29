@@ -1,6 +1,9 @@
 import defaultRoutes from '../default/routes';
 
 export default {
+  titleFont: 'Roboto Slab',
+  baseFont: 'Roboto',
+  newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EuZ',
   routes: {
     signup: defaultRoutes.signup,
     login: defaultRoutes.login,
@@ -8,7 +11,8 @@ export default {
     resetPassword: defaultRoutes.resetPassword,
     emailVerification: defaultRoutes.emailVerification,
     profile: defaultRoutes.profile,
-    userVerify: defaultRoutes.userVerify
+    userVerify: defaultRoutes.userVerify,
+    zesplusResearch: '/forschungsprojekt'
   },
   menu: {
     profileLabel: 'Zum Profil',
@@ -16,6 +20,7 @@ export default {
     logo: false,
     twitter: false,
     items: [],
+    size: 325,
     footeritems: [
       {
         label: 'Impressum',

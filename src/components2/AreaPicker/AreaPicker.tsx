@@ -3,7 +3,7 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 
-import config from '~/pages/Gastro/config';
+import config from '~/apps/Gastro/config';
 import Map from '~/components2/Map';
 
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
@@ -21,10 +21,28 @@ const GoodJob = styled.p`
   font-weight: bold;
 `;
 
-const AreaPicker = ({ center, onSelect }) => {
+type Props = {
+  onSelect: (geometry: GeoJSON.Geometry | null) => any;
+  center?: MapboxGL.LngLatLike;
+  mapboxStyle: string;
+  bounds?: MapboxGL.LngLatBoundsLike;
+  initialGeometry?: GeoJSON.Geometry;
+};
+
+const AreaPicker: React.FC<Props> = ({
+  center,
+  onSelect,
+  mapboxStyle,
+  bounds,
+  initialGeometry
+}) => {
   // Mapbox-GL.js map instance
-  const [map, setMap] = useState(null);
-  const [hasGeometry, setHasGeometry] = useState(false);
+  const [map, setMap] = useState<MapboxGL.Map | null>(null);
+  const [hasGeometry, setHasGeometry] = useState<boolean>(false);
+  const [initialValue] = useState(initialGeometry);
+  const [localCenter, setLocalCenter] = useState<MapboxGL.LngLatLike | null>(
+    center
+  );
 
   useEffect(() => {
     if (map == null) return;
@@ -48,15 +66,25 @@ const AreaPicker = ({ center, onSelect }) => {
     map.on('draw.create', handleUpdate);
     map.on('draw.update', handleUpdate);
     map.on('draw.delete', () => onSelect(null));
+
+    if (initialValue) {
+      draw.add(initialValue);
+    }
   }, [map]);
+
+  // Only adjust map center as long as no geometry has been drawn
+  // otherwise the user would lose their previously drawn area
+  useEffect(() => {
+    if (!hasGeometry) setLocalCenter(center);
+  }, [center]);
 
   return (
     <>
       <StyledMap
         onInit={setMap}
-        style={config.gastro.map.style}
-        bounds={config.gastro.map.bounds}
-        center={center}
+        style={mapboxStyle}
+        bounds={bounds}
+        center={localCenter}
         zoom={DEFAULT_ZOOM_LEVEL}
         attributionControl={false}
       />

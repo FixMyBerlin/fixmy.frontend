@@ -23,6 +23,7 @@ const baseConfig = {
   planningIsBeta: true,
   offlineMode: false,
   isSwitchEnabled: true,
+  enableResearchPage: true,
   debug: process.env.NODE_ENV !== 'production',
   showLikeButton: true,
   showFeedBackForm: false,
@@ -37,7 +38,8 @@ const baseConfig = {
       trackErrors: true,
       disableCookies: true
     }
-  }
+  },
+  districts: null
 };
 
 if (!process.env.BACKEND && process.env.API_URL == null) {
