@@ -2,10 +2,10 @@ import defaultRoutes from '../default/routes';
 
 export default {
   reports: {
-    index: '/meldungen/radbuegel/aachen',
-    landing: '/meldungen/radbuegel/aachen/landing',
-    map: '/meldungen/radbuegel/aachen/karte',
-    new: '/meldungen/radbuegel/aachen/neu'
+    index: '/',
+    landing: '/meldungen',
+    map: '/meldungen/karte',
+    new: '/meldungen/neu'
   },
   signup: defaultRoutes.signup,
   login: defaultRoutes.login,

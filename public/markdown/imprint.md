@@ -25,12 +25,18 @@ Wir freuen uns über Kommentare Anregungen und Unterstützung an [feedback@fixmy
 
 Du findest uns auch auf [twitter](https://twitter.com/fixmyberlin) | [instagram](https://www.instagram.com/fixmycity/) | [facebook](https://www.facebook.com/FixMyCityApp/) und [linkedIn](https://www.linkedin.com/company/fixmycity)
 
-Sofern du Bugs oder Verbesserungsvorschläge hast, gib uns gerne [auf github.com Feedback](https://github.com/FixMyBerlin/fixmy.frontend).
+Sofern du Bugs oder Verbesserungsvorschläge hast, gib uns gerne [auf github.com Feedback](https://github.com/FixMyBerlin/fixmy.platform/issues/new/choose).
+
+## Open Source
+
+Wir setzen Open Source Software ein und veröffentlichen auch unsere eigenen Software-Produkte unter Open Source-Lizenzen. Unseren Quellcode unter der AGPL v3 Lizenz finden Sie unter https://github.com/FixMyBerlin/
+
+Falls Sie Interesse haben, etwas beizutragen, melden Sie sich gerne. Ein englischsprachiges Einstiegsdokument hierfür finden Sie auch [auf Github](https://github.com/FixMyBerlin/fixmy.frontend/blob/develop/CONTRIBUTING.md).
 
 ## Dienstleister
 
 Frontend & UX Beratung: Webkid GmbH, https://webkid.io/
-Ux-Konzeption: Philipp Schiedel
+UX-Konzeption: Philipp Schiedel
 Backend & Beratung: Agaric e.K. Stefan Freudenberg
 3D-Visualisierungen: David Wegner
 

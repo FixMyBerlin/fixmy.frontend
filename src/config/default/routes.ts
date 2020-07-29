@@ -1,6 +1,34 @@
 const katasterPath = process.env.KATASTER_PATH || '';
 
-export default {
+interface RouteConfig {
+  // optional routes
+  projects?: string;
+  status?: string;
+  analysis?: string;
+  reports?: {
+    [page: string]: string;
+  };
+  katasterKI?: {
+    [page: string]: string;
+  };
+  spielstrassen?: {
+    [page: string]: string;
+  };
+  popupbikelanes?: string;
+  research?: {
+    [page: string]: string;
+  };
+  // mandatory routes
+  signup: string;
+  login: string;
+  forgotPassword: string;
+  resetPassword: string;
+  emailVerification: string;
+  profile: string;
+  userVerify: string;
+}
+
+const routes: RouteConfig = {
   projects: '/planungen',
   status: '/zustand',
   analysis: '/analyse',
@@ -23,11 +51,24 @@ export default {
     iframe: `${katasterPath}/iFrame-test`,
     email: `${katasterPath}/email`
   },
+  spielstrassen: {
+    landing: '/friedrichshain-kreuzberg/spielstrassen',
+    streets: '/friedrichshain-kreuzberg/spielstrassen/kieze',
+    register: '/friedrichshain-kreuzberg/spielstrassen/:slug',
+    thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke'
+  },
+  popupbikelanes: '/popupbikelanes',
   signup: '/registrieren',
   login: '/anmelden',
   forgotPassword: '/passwort-vergessen',
   resetPassword: '/reset',
   emailVerification: '/email-verification',
   profile: '/profil',
-  userVerify: '/bestaetigen'
+  userVerify: '/bestaetigen',
+  research: {
+    landing: '/research',
+    survey: '/research/subjektive-sicherheit'
+  }
 };
+
+export default routes;

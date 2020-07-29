@@ -3,5 +3,6 @@
   "baseUrl": "http://localhost:8080",
   "//": "not only look for tests in cypress/integration, search everywhere in ./src",
   "integrationFolder": "./src",
-  "testFiles": "**/*.e2e.test.js"
+  "testFiles": "**/*.e2e.test.js",
+  "requestTimeout": 10000
 }

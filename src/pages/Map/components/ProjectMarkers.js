@@ -42,6 +42,40 @@ class ProjectMarkers extends PureComponent {
     this.markers = [];
   };
 
+  shouldMarkerBeVisible = (marker) => {
+    if (!Markers[marker.phase]) {
+      return false;
+    }
+
+    const TEMPORARY_PLANNINGS_PHASE_INDEX = 4;
+    const phaseIndex = phasesOrder.indexOf(marker.phase);
+
+    if (this.props.onlyPopupbikelanes) {
+      if (marker.phase !== 'inactive') return false;
+    } else {
+      // Don't show markers whose phase is not active in filterPlannings
+      if (
+        !this.props.filterPlannings[phaseIndex] &&
+        phaseIndex !== TEMPORARY_PLANNINGS_PHASE_INDEX
+      ) {
+        return false;
+      }
+
+      // Don't show temporary plannings if ready phase is disabled
+      if (
+        !this.props.filterPlannings[3] &&
+        phaseIndex === TEMPORARY_PLANNINGS_PHASE_INDEX
+      )
+        return false;
+    }
+
+    if (marker.center == null) {
+      logger(`Marker center missing in project #${marker.id}`);
+      return false;
+    }
+    return true;
+  };
+
   updateMarkers = () => {
     const { active, data, map } = this.props;
     if (!data || !map) {
@@ -55,32 +89,7 @@ class ProjectMarkers extends PureComponent {
     }
 
     this.markers = data.map((marker) => {
-      if (!Markers[marker.phase]) {
-        return null;
-      }
-
-      const TEMPORARY_PLANNINGS_PHASE_INDEX = 4;
-      const phaseIndex = phasesOrder.indexOf(marker.phase);
-
-      // Don't show markers whose phase is not active in filterPlannings
-      if (
-        !this.props.filterPlannings[phaseIndex] &&
-        phaseIndex !== TEMPORARY_PLANNINGS_PHASE_INDEX
-      ) {
-        return null;
-      }
-
-      // Don't show temporary plannings if ready phase is disabled
-      if (
-        !this.props.filterPlannings[3] &&
-        phaseIndex === TEMPORARY_PLANNINGS_PHASE_INDEX
-      )
-        return null;
-
-      if (marker.center == null) {
-        logger(`Marker center missing in project #${marker.id}`);
-        return null;
-      }
+      if (!this.shouldMarkerBeVisible(marker)) return null;
 
       const center = marker.center.coordinates;
       const el = document.createElement('div');

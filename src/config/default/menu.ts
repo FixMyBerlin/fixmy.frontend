@@ -1,4 +1,34 @@
-export default {
+interface Menu {
+  size: number;
+  profileLabel: string;
+  loginLabel: string;
+  logo?: boolean;
+  twitter?: boolean;
+  items: MenuItem[];
+  footeritems: FooterItem[];
+}
+
+type MenuItem = Link | Separator;
+
+type Link = {
+  type: 'link';
+  label: string;
+  link: string;
+  icon: string;
+  border: boolean;
+};
+
+type Separator = {
+  type: 'separator';
+  label: string;
+};
+
+type FooterItem = {
+  label: string;
+  link: string;
+};
+
+const menuConfig: Menu = {
   size: 325,
   profileLabel: 'Zum Profil',
   loginLabel: 'Login',
@@ -19,9 +49,16 @@ export default {
     },
     {
       type: 'link',
-      label: 'Radbügel in X-Hain (Meldungen nicht mehr möglich)',
-      icon: 'fixhere',
+      label: 'Radbügel in X-Hain',
+      icon: 'reports-icon',
       link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
+      border: true
+    },
+    {
+      type: 'link',
+      label: 'Spielstraßen in X-Hain',
+      icon: 'spielstrassen-icon',
+      link: '/friedrichshain-kreuzberg/spielstrassen',
       border: true
     },
     {
@@ -72,3 +109,5 @@ export default {
     }
   ]
 };
+
+export default menuConfig;

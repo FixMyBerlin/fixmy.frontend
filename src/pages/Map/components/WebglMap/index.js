@@ -22,7 +22,8 @@ import {
   getCenterFromGeom,
   intersectionLayers,
   parseUrlOptions,
-  setPlanningLegendFilter
+  setPlanningLegendFilter,
+  setPopupLanesFilter
 } from '~/pages/Map/map-utils';
 import resetMap from '~/pages/Map/reset';
 
@@ -103,7 +104,10 @@ class Map extends PureComponent {
       resetMap({ zoom: this.map.getZoom() });
     }
 
-    if (this.props.activeView === 'planungen') {
+    if (
+      this.props.activeView === 'planungen' ||
+      this.props.activeView === 'popupbikelanes'
+    ) {
       Store.dispatch(MapActions.loadPlanningData());
     }
 
@@ -161,7 +165,7 @@ class Map extends PureComponent {
 
   updateLayers = () => {
     const isZustand = this.props.activeView === 'zustand';
-    const isPlanungen = this.props.activeView === 'planungen';
+    let isPlanungen = this.props.activeView === 'planungen';
 
     const hbiLayers = config.map.layers.hbi;
     const projectsLayers = config.map.layers.projects;
@@ -178,7 +182,14 @@ class Map extends PureComponent {
       );
     }
 
-    setPlanningLegendFilter(this.map, this.props.filterPlannings);
+    if (this.props.activeView === 'popupbikelanes') {
+      // Make sure that planning layers are set visible in Mapbox to be
+      // able to see popup bike lane geometries
+      isPlanungen = true;
+      setPopupLanesFilter(this.map);
+    } else {
+      setPlanningLegendFilter(this.map, this.props.filterPlannings);
+    }
 
     // project layers
     toggleLayer(this.map, 'fmb-projects', false);
@@ -330,6 +341,9 @@ class Map extends PureComponent {
 
   render() {
     const markerData = idx(this.props.planningData, (_) => _.results);
+    const markersVisible =
+      this.props.activeView === 'planungen' ||
+      this.props.activeView === 'popupbikelanes';
 
     return (
       <StyledMap
@@ -342,9 +356,10 @@ class Map extends PureComponent {
         <ProjectMarkers
           map={this.state.map}
           data={markerData}
-          active={this.props.activeView === 'planungen'}
+          active={markersVisible}
           onClick={this.handleMarkerClick}
           filterPlannings={this.props.filterPlannings}
+          onlyPopupbikelanes={this.props.activeView === 'popupbikelanes'}
         />
       </StyledMap>
     );

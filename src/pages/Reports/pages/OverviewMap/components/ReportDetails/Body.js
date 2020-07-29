@@ -44,7 +44,7 @@ const DetailsBody = ({
   <>
     {description && (
       <>
-        <SubHeading alignLeft>Hinweise an die Verwaltung</SubHeading>
+        <SubHeading alignLeft>Hinweise zum Ort:</SubHeading>
         <Text data-cy="reports-detail-description">{description}</Text>
       </>
     )}

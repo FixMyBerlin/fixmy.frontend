@@ -1,4 +1,4 @@
-import AachenLogo from '~/images/logo-stadt-aachen.png';
+import AachenLogo from '~/images/aachen/logo-stadt-aachen-bg.png';
 import LandingBackground from '~/images/aachen/landing_background.jpg';
 
 export default {
@@ -12,7 +12,7 @@ export default {
       [5.9, 50.6],
       [6.3, 50.9]
     ],
-    zoomDeepLinkedMarkers: 18,
+    zoomDeepLinkedMarkers: 16.5,
     clusterColor: {
       outer: 'rgba(133, 133, 133, 0.98)',
       inner: 'rgba(205, 205, 205, 0.91)'
@@ -66,7 +66,7 @@ export default {
     {
       step: 2,
       text:
-        'Alle Meldungen, die bis zum 31. Juli 2020 eingegangen sind, werden von der Stadt Aachen geprüft.'
+        'Alle Meldungen, die bis zum 31. August 2020 eingegangen sind, werden von der Stadt Aachen geprüft.'
     },
     {
       step: 3,
@@ -78,7 +78,7 @@ export default {
     {
       heading: 'Warum sollte ich mitmachen?',
       text: `
-        In Aachen werden 2.000 neue Fahrradbügel aufgestellt. Hier können Sie mitbestimmen, wo diese stehen sollen.
+        In Aachen werden 5.000 neue Fahrradbügel aufgestellt. Hier können Sie mitbestimmen, wo diese stehen sollen.
       `
     },
     {
