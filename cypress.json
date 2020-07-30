@@ -4,5 +4,11 @@
   "//": "not only look for tests in cypress/integration, search everywhere in ./src",
   "integrationFolder": "./src",
   "testFiles": "**/*.e2e.test.js",
-  "requestTimeout": 10000
+  "requestTimeout": 10000,
+  "whitelist": {
+    "default": [],
+    "aachen": ["Reports"],
+    "berlin": ["Map", "Reports", "KatasterKI"],
+    "eichwalde": []
+  }
 }
