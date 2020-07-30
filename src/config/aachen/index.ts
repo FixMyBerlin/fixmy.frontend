@@ -4,6 +4,7 @@ import routes from './routes';
 import staticpages from './staticpages';
 
 import defaultColors from '~/config/default/colors';
+import { RegionConfig } from '~/types';
 
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
@@ -11,7 +12,7 @@ const apiEndpoints = {
   production: 'https://radbuegel-aachen.de/api/aachen/v1'
 };
 
-export default {
+const aachenConfig: RegionConfig = {
   map,
   menu,
   routes,
@@ -29,3 +30,5 @@ export default {
   titleFont: 'The Mix',
   baseFont: 'Arial'
 };
+
+export default aachenConfig;

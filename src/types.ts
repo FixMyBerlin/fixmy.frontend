@@ -5,6 +5,11 @@ import { GastroConfig } from '~/apps/Gastro/types';
 
 export type LocaleCode = 'de' | 'en' | 'es';
 
+//
+// Config
+//
+export type Region = 'berlin' | 'aachen' | 'eichwalde';
+
 export interface AppConfig {
   path: string;
 }
@@ -13,6 +18,35 @@ export interface BackendConfig {
   local: string;
   staging: string;
   production: string;
+}
+
+export interface DefaultConfig {
+  colors: {
+    [color: string]: string;
+  };
+  map: any;
+  menu: any;
+  routes: any;
+  staticpages: any;
+  apiUrl: string;
+  titleFont: string;
+  baseFont: string;
+  newsletterWidgetUrl?: string;
+}
+
+export interface RegionConfig extends Partial<DefaultConfig> {
+  siteTitle: string;
+  apps?: {
+    map?: {};
+    hbi?: {};
+  };
+  districts?: {
+    [district: string]: DistrictConfig;
+  };
+}
+
+export interface RootConfig extends RegionConfig {
+  region: Region;
 }
 
 export interface DistrictConfig {
