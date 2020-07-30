@@ -1,10 +1,6 @@
 import ky from 'ky-universal';
 import debug from 'debug';
-import {
-  ApiError,
-  NetworkError,
-  TimeoutError
-} from '~/services/api/httpErrors';
+import { ApiError, NetworkError, TimeoutError } from './errors';
 import { FMCError, JSONValue, JSONObject } from './types';
 
 const log = debug('fmc:api:errorHandling');

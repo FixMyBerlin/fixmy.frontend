@@ -2,13 +2,10 @@ import fetchMock from 'fetch-mock';
 import { Response } from 'node-fetch';
 import request from '../request';
 import config from '~/config'; // TODO: consider mocking this
-import {
-  ApiError,
-  NetworkError,
-  TimeoutError
-} from '~/services/api/httpErrors';
 import store from '~/store';
-import { get, patch, post } from '~/services/api/shorthands';
+
+import { ApiError, NetworkError, TimeoutError } from '../errors';
+import { get, patch, post } from '../shorthands';
 
 const SAMPLE_ROUTE = 'fakeEndpoint';
 const SAMPLE_JSON_VALUE = { hello: 'world' };
