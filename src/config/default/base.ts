@@ -1,24 +1,32 @@
+import { DefaultConfig } from '~/types';
+
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
   staging: 'https://fixmyberlin-staging.netlify.app/api/next',
   production: 'https://fixmyberlin.de/api/v1'
 };
 
-const baseConfig = {
-  devUrl: 'http://localhost:8080',
-  prodUrl: 'https://fixmyberlin.de',
-  newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EGM',
-  tspKatasterURL: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
+const baseConfig: Omit<
+  DefaultConfig,
+  'map' | 'colors' | 'menu' | 'routes' | 'staticpages'
+> = {
   apiUrl:
     process.env.API_URL ||
     apiEndpoints[process.env.BACKEND] ||
     apiEndpoints.production,
-  siteTitle: 'FixMyBerlin',
   titleFont: 'Roboto Slab',
   baseFont: 'Open Sans',
   logger: 'fmc*', // selects logging namespaces to display when not in production
-  enableResearchPage: true,
   debug: process.env.NODE_ENV !== 'production',
+  mapbox: {
+    accessToken:
+      'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
+    reverseGeocoderUrl:
+      'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json'
+  },
+  newsletter: {
+    embedUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EGM'
+  },
   piwik: {
     url: 's.fixmycity.de',
     siteId: {
@@ -30,8 +38,7 @@ const baseConfig = {
       trackErrors: true,
       disableCookies: true
     }
-  },
-  districts: null
+  }
 };
 
 if (!process.env.BACKEND && process.env.API_URL == null) {

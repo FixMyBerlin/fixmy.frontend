@@ -5,7 +5,6 @@ const eichwaldeConfig: RegionConfig = {
   siteTitle: 'ZESplus',
   titleFont: 'Roboto Slab',
   baseFont: 'Roboto',
-  newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EuZ',
   routes: {
     signup: defaultRoutes.signup,
     login: defaultRoutes.login,
@@ -33,6 +32,9 @@ const eichwaldeConfig: RegionConfig = {
         link: '/datenschutz'
       }
     ]
+  },
+  newsletter: {
+    embedUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EuZ'
   }
 };
 

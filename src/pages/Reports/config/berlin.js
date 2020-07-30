@@ -25,8 +25,6 @@ export default {
     boundaryGeodataUrl: '/data/Fhain-Xberg-trimmed.json',
     outofBoundaryText:
       'Diese Adresse liegt außerhalb Friedrichshain-Kreuzbergs',
-    reverseGeocoderUrl:
-      'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json',
     paddingInDegree: 0.1,
     geocoder: {
       debounceTime: 1000,

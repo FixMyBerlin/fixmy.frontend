@@ -123,7 +123,7 @@ class MapSwitch extends PureComponent {
           <Switch
             on={isPlanningView}
             onClick={this.handleChange(isPlanningView)}
-            enabled={true}
+            enabled
           >
             {isPlanningView ? <PylonIcon /> : <BikeIcon />}
           </Switch>

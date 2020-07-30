@@ -19,6 +19,7 @@ import MapView from '~/pages/Map';
 import Markdown from '~/pages/Markdown';
 import Reports from '~/pages/Reports';
 import Research from '~/pages/Research';
+import { RootState } from './store';
 
 import Gastro from '~/apps/Gastro';
 import Spielstrassen from '~/apps/Spielstrassen';
@@ -28,7 +29,7 @@ const apps = {
   spielstrassen: Spielstrassen
 };
 
-const District = (name) => {
+const District = (name: string) => {
   const district = config.districts[name];
   const districtApps = Object.keys(district.apps).map((app) => {
     const AppComponent = apps[app];
@@ -116,7 +117,7 @@ const Routes = ({ token }) => (
     {config.districts && Object.keys(config.districts).map(District)}
 
     {/* Research pages */}
-    {config.routes.research != null && config.enableResearchPage && (
+    {config.routes.research != null && (
       <Route
         exact
         path={config.routes.research.landing}
@@ -124,7 +125,7 @@ const Routes = ({ token }) => (
       />
     )}
 
-    {config.routes.research != null && config.enableResearchPage && (
+    {config.routes.research != null && (
       <Route path={config.routes.research.survey} component={Research} />
     )}
 
@@ -137,6 +138,6 @@ const Routes = ({ token }) => (
   </Switch>
 );
 
-export default connect((state) => ({
+export default connect((state: RootState) => ({
   token: state.UserState.token
 }))(Routes);

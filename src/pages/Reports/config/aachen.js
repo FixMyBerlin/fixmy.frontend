@@ -1,7 +1,7 @@
 import AachenLogo from '~/images/aachen/logo-stadt-aachen-bg.png';
 import LandingBackground from '~/images/aachen/landing_background.jpg';
 
-export default {
+const aachenConfig = {
   overviewMap: {
     style: 'mapbox://styles/hejco/ck7q440d50b6s1ip928c7zlbb',
     bounds: [
@@ -22,8 +22,6 @@ export default {
     zoomOnGeocodedLocation: 15.5,
     boundaryGeodataUrl: '/data/aachen.geojson',
     outofBoundaryText: 'Dieser Ort gehört leider nicht zum Meldegebiet',
-    reverseGeocoderUrl:
-      'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json',
     paddingInDegree: 0.1,
     geocoder: {
       debounceTime: 1000,
@@ -117,3 +115,5 @@ export default {
       'und wenn Sie Ihre E-Mail-Adresse eingeben, benachrichtigen wir Sie auch per E-Mail.'
   }
 };
+
+export default aachenConfig;

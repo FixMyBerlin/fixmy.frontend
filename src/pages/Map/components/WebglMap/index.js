@@ -34,7 +34,7 @@ if (config.debug) {
   MB_STYLE_URL = config.map.style;
 }
 
-MapboxGL.accessToken = config.map.accessToken;
+MapboxGL.accessToken = config.mapbox.accessToken;
 
 const StyledMap = styled.div`
   width: 100%;

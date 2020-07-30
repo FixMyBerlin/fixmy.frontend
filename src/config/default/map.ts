@@ -6,8 +6,6 @@ const MapboxStyles = {
 };
 
 export default {
-  accessToken:
-    'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
   style: MapboxStyles['FMB-release-6'],
   view: {
     zoom: 12,

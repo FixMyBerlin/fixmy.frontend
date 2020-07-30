@@ -14,35 +14,33 @@ export interface AppConfig {
   path: string;
 }
 
-export interface BackendConfig {
-  local: string;
-  staging: string;
-  production: string;
-}
-
 export interface DefaultConfig {
+  baseFont: string;
   colors: {
     [color: string]: string;
   };
   map: any;
   menu: any;
+  apiUrl: string;
+  piwik: PiwikService;
+  mapbox: MapboxService;
+  newsletter: NewsletterService;
+  logger: string;
+  debug: boolean;
   routes: any;
   staticpages: any;
-  apiUrl: string;
   titleFont: string;
-  baseFont: string;
-  newsletterWidgetUrl?: string;
 }
 
 export interface RegionConfig extends Partial<DefaultConfig> {
-  siteTitle: string;
   apps?: {
-    map?: {};
     hbi?: {};
+    map?: {};
   };
   districts?: {
     [district: string]: DistrictConfig;
   };
+  siteTitle: string;
 }
 
 export interface RootConfig extends RegionConfig {
@@ -53,7 +51,6 @@ export interface DistrictConfig {
   title: string;
   path: string;
   name: string;
-  backend?: BackendConfig;
   content: {
     [key: string]: any;
   };
@@ -66,4 +63,22 @@ export interface DistrictConfig {
     spielstrassen?: SpielstrassenConfig;
     gastro?: GastroConfig;
   };
+  backend?: BackendService;
 }
+
+export interface BackendService {
+  local: string;
+  staging: string;
+  production: string;
+}
+
+export interface NewsletterService {
+  embedUrl: string;
+}
+
+export interface MapboxService {
+  accessToken: string;
+  reverseGeocoderUrl: string;
+}
+
+export interface PiwikService {}
