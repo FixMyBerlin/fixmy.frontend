@@ -48,10 +48,15 @@ export const dateReceived = ({ application_received }) =>
     ? '<Datum Eingang>'
     : new Date(application_received).toLocaleDateString('de-DE');
 
-export const dateDecided = ({ application_decided }) =>
-  application_decided == null
-    ? '<Datum Bescheid>'
-    : new Date(application_decided).toLocaleDateString('de-DE');
+export const permitStart = ({ permit_start }) =>
+  permit_start == null
+    ? '<Beginn der Genehmigung unbestimmt>'
+    : new Date(permit_start).toLocaleDateString('de-DE');
+
+export const permitEnd = ({ permit_end }) =>
+  permit_end == null
+    ? '<Ende der Genehmigung unbestimmt>'
+    : new Date(permit_end).toLocaleDateString('de-DE');
 /* eslint-enable camelcase */
 
 export enum REGULATION {

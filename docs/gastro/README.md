@@ -14,6 +14,16 @@ Die Gastro-App implementiert einen Prozess zur Vereinbarung der Nutzung von
 
 **Anwohner:innen** besuchen die Ladengeschäfte im öffentlichen Raum als Kunden der Betreiber:innen
 
+## Konzepte
+
+**Kampagnen** werden durch einen Zeitraum und ein Gebiet begrenzt, innerhalb dessen ihnen Anträge, Genehmigungen und Anordnungen zugeordnet werden
+
+**Anträge** werden von Betreiber:innen gestellt und von Verwaltungsmitarbeiter:innen bearbeitet, die daraufhin Genehmigungen und Anordnungen ausstellen
+
+**Sondergenehmigungen** erlauben die temporäre Nutzung von Flächen
+
+**Verkehrsrechtliche Anordnungen** erlauben die Nutzung von Verkehrsflächen
+
 ## User Stories
 
 ### Anmeldung von Interesse
@@ -112,7 +122,7 @@ Die Gastro-App implementiert einen Prozess zur Vereinbarung der Nutzung von
         vervollständigen können
       </td>
       <td></td>
-      <td>Teilweise abgeschlossen</td>
+      <td>Abgeschlossen</td>
     </tr>
     <tr>
       <td>C03</td>
@@ -125,7 +135,7 @@ Die Gastro-App implementiert einen Prozess zur Vereinbarung der Nutzung von
           <li>Antragsformular mit allen notwendigen Datenfeldern ist verfügbar</li>
         </ul>
       </td>
-      <td>In Arbeit</td>
+      <td>Abgeschlossen</td>
     </tr>
   </tbody>
 </table>
@@ -246,29 +256,38 @@ Die Gastro-App implementiert einen Prozess zur Vereinbarung der Nutzung von
       </td>
       <td>Abgeschlossen</td>
     </tr>
-    <tr>
-      <td>E02</td>
-      <td>
-        Als Anwohner:in möchte ich mich über eine öffentlich einsehbare
-        Internetseite über die eingerichteten Verkaufsflächen informieren können
-      </td>
-      <td>
-      </td>
-      <td>In Screendesign</td>
-    </tr>
   </tbody>
 </table>
 
-### Zurückziehen von Anträgen
+### Verlängerung über Folgeanträge
 
-### Reichweitenmessung
+Jeder Antrag ist für einen Zeitraum gültig. Um Betreiber:innen die Nutzung auch nach Ablauf des Zeitraums zu ermöglichen können Folgeanträge gestellt werden.
 
-### Abwicklung
-
-## Datenmodelle
-
-### Anmeldung
-
-### Regelfall
-
-## API
+<table>
+  <tbody>
+    <tr>
+      <td>F01</td>
+      <td>Als Verwaltungsmitarbeiter:in kann ich Betreiber:innen per E-Mail die Möglichkeit zur Beantragung einer Folgegenehmigung zusenden.</td>
+      <td>
+        <ul>
+          <li>Es gibt eine Action im Django-Admin um Angebote zur Stellung eines Folgeantrags zu stellen</li>
+          <li>Anträge sind danach filterbar, ob bereits ein Angebot zum Folgeantrag verschickt wurde</td>
+        </ul>
+      </td>
+      <td>In Entwicklung</td>
+    </tr>
+    <tr>
+      <td>F02</td>
+      <td>Als Betreiber:in kann ich einen Folgeantrag stellen, wenn ich ein Angebot hierfür per E-Mail erhalten habe.</td>
+      <td>
+        <ul>
+          <li>Es gibt eine Bestätigungs-Seite für das Stellen von Folgeanträgen</li>
+          <li>Auf der Bestätigungsseite wird die vorige Genehmigung verlinkt</li>
+          <li>Durch Bestätigung des Angebots wird ein neuer Antrag mit den gleichen Daten wie der vorige gestellt.</li>
+          <li>Folgeanträge haben den Beginn der Folgekampagne als frühesten Geltungstag</li>
+        </ul>
+      </td>
+      <td>In Entwicklung</td>
+    </tr>
+  </tbody>
+</table>
