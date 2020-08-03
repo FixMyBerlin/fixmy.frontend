@@ -7,7 +7,8 @@ import {
   getCategoryDescription,
   dateReceived,
   isBoardwalk,
-  dateDecided
+  permitStart,
+  permitEnd
 } from '../utils';
 import AreaMap from '~/apps/Gastro/components/AreaMap';
 
@@ -156,7 +157,9 @@ const Permit = ({ application }) => {
         <tr>
           <td>Gültigkeit:</td>
           <td>
-            <p>Von {dateDecided(application)} bis 31.8.2020 </p>
+            <p>
+              Von {permitStart(application)} bis {permitEnd(application)}{' '}
+            </p>
             <p>
               {usageWeekday(application) && (
                 <strong>
