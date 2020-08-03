@@ -8,12 +8,13 @@ import {
   usageWeekend,
   getCategoryDescription,
   dateReceived,
-  REGULATION
+  REGULATION,
+  permitEnd
 } from '../../utils';
 
 // eslint-disable-next-line camelcase
-const getSetupTimerangeEnd = ({ application_decided }) => {
-  const date = new Date(application_decided);
+const getSetupTimerangeEnd = ({ permit_start }) => {
+  const date = new Date(permit_start);
   date.setDate(date.getDate() + 4);
   return date.toLocaleDateString('de-DE');
 };
@@ -1035,7 +1036,7 @@ const TrafficOrder = ({ application }) => {
             </td>
             <td className="c314" colSpan={11} rowSpan={1}>
               <p className="c93 c32">
-                <span className="c14">&nbsp;31.08.2020 </span>
+                <span className="c14">&nbsp;{permitEnd(application)} </span>
               </p>
             </td>
             <td className="c87" colSpan={1} rowSpan={1}>
@@ -1231,7 +1232,7 @@ const TrafficOrder = ({ application }) => {
                       Haltverbote: Z 283 nach VLB-Regelplan 630 mit
                       Zusatzzeichen 1042-33 StVO (zeitliche Beschr&auml;nkung)
                     </span>{' '}
-                    {getSetupTimerangeEnd(application)} - 31.08.2020{' '}
+                    {setupTimerangeEnd} - {permitEnd(application)}{' '}
                     {usageWeekend(application) && (
                       <span>Freitag-Sonntag jeweils von 11-22 Uhr. </span>
                     )}
