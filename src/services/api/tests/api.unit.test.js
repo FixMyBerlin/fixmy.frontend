@@ -157,7 +157,7 @@ describe('API module', () => {
           ).rejects.toThrowError(new ApiError(testResponse));
         });
 
-        it('throws a TimeoutError on request time out', async () => {
+        it('throws a TimeoutError on read request time out', async () => {
           // this also proves that the request timeout can be specified at all
 
           // mock request timeout
@@ -168,6 +168,18 @@ describe('API module', () => {
           );
         });
 
+        it('throws a TimeoutError on connection request time out', async () => {
+          // use a non-routable IP, do not intercept the request, see https://stackoverflow.com/a/904609/5418403
+          const nonRoutableIp = '192.168.255.255';
+
+          await expect(
+            request(`https://${{ nonRoutableIp }}`, { timeout: 1 })
+          ).rejects.toThrow(TimeoutError);
+        });
+
+        // FIXME: this test is horrible. What if fetch changes its way of stating a network error?
+        //  We should rather find a way to simulate an offline device, e.g. using cypress
+        //  (see https://github.com/cypress-io/cypress/issues/235)
         it('throws a custom NetworkError if the server does not answer', async () => {
           fetchMock.mock(`end:${SAMPLE_ROUTE}`, () => {
             throw new Error('Connection error');
