@@ -14,6 +14,10 @@ class ApiError extends Error {
   }
 }
 
+/**
+ * Indicates a Read Timeout (it took to long after the last byte has been sent)
+ * or a Connection Timeout (the server never responded)
+ */
 class TimeoutError extends Error {
   constructor(message) {
     super(message);
