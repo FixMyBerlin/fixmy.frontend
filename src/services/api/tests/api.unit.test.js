@@ -182,7 +182,7 @@ describe('API module', () => {
         //  (see https://github.com/cypress-io/cypress/issues/235)
         it('throws a custom NetworkError if the server does not answer', async () => {
           fetchMock.mock(`end:${SAMPLE_ROUTE}`, () => {
-            throw new Error('Connection error');
+            throw new Error('Failed to fetch');
           });
 
           await expect(request(SAMPLE_ROUTE)).rejects.toThrow(NetworkError);

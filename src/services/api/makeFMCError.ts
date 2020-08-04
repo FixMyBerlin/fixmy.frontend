@@ -13,6 +13,12 @@ export default async function makeFMCError(e: FMCError): Promise<FMCError> {
   let translatedError: FMCError;
   let errorMessage: string;
   let statusCode: number;
+
+  // handle network errors (misspelled URL, flaky or no network or CORS problems)
+  if (e.message === 'Failed to fetch') {
+    translatedError = new NetworkError(e.message);
+  }
+  // handle all other errors
   switch (e.constructor) {
     case ky.HTTPError: // a non 2xx error code was found
       errorMessage = await parseErrorResponse(e.response);
@@ -26,13 +32,11 @@ export default async function makeFMCError(e: FMCError): Promise<FMCError> {
       translatedError = e;
       break;
     default:
-      // pain point: every unexpected Error instance (that is not a TypeError)
-      // will be handled as NetworkError
-      translatedError = new NetworkError(e);
+      // any other error, just forward it
       break;
   }
 
-  return translatedError;
+  return translatedError || e;
 }
 
 /**
