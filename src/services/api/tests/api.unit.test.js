@@ -1,24 +1,18 @@
 import fetchMock from 'fetch-mock';
 import { Response } from 'node-fetch';
 import request from '../request';
-import config from '~/config'; // TODO: consider mocking this
 import store from '~/store';
 
 import { ApiError, NetworkError, TimeoutError } from '../errors';
 import { get, patch, post } from '../shorthands';
+import {
+  compileAbsoluteRoute,
+  delayResponse,
+  printError
+} from '~/services/api/tests/apiTestUtils';
 
 const SAMPLE_ROUTE = 'fakeEndpoint';
 const SAMPLE_JSON_VALUE = { hello: 'world' };
-
-const compileAbsoluteRoute = (relativeURL) =>
-  relativeURL
-    ? `${config.apiUrl.replace(/\/+$/, '')}/${relativeURL.replace(/^\/+/, '')}`
-    : config.apiUrl;
-
-const printError = (value) => JSON.stringify(value, null, 2);
-
-const delayResponse = (response, after = 500) => () =>
-  new Promise((resolve) => setTimeout(resolve, after)).then(() => response);
 
 describe('API module', () => {
   afterEach(() => {
