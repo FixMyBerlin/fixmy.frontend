@@ -5,7 +5,6 @@
  * - doing  preparatory work for network error request handling
  */
 import ky from 'ky-universal';
-import { Options as KyOptions } from 'ky';
 import debug from 'debug';
 import config from '~/config';
 import store from '~/store';

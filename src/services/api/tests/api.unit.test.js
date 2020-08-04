@@ -189,7 +189,7 @@ describe('API module', () => {
       });
 
       describe('invocation of request hooks', () => {
-        it('still invokes `setSubmitting` twice even if the request fails', async () => {
+        it('invokes `onSubmit` and `onFinish` even if the request fails', async () => {
           const onSubmitSpy = jest.fn();
           const onFinishSpy = jest.fn();
 
@@ -197,16 +197,16 @@ describe('API module', () => {
             throw new Error('Connection error');
           });
 
-          let catchedError;
+          let caughtError;
           try {
             await request(SAMPLE_ROUTE, {
               onSubmit: onSubmitSpy,
               onFinish: onFinishSpy
             });
           } catch (e) {
-            catchedError = e;
+            caughtError = e;
           }
-          expect(catchedError).toBeInstanceOf(NetworkError);
+          expect(caughtError).toBeInstanceOf(NetworkError);
           expect(onSubmitSpy).toBeCalled();
           expect(onFinishSpy).toBeCalled();
         });

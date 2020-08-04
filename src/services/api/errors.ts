@@ -11,7 +11,6 @@ class ApiError extends Error {
     this.name = 'ApiError';
     this.code = statusCode;
     Object.setPrototypeOf(this, ApiError.prototype);
-    Error.captureStackTrace(this, ApiError);
   }
 }
 
@@ -20,7 +19,6 @@ class TimeoutError extends Error {
     super(message);
     this.name = 'TimeoutError';
     Object.setPrototypeOf(this, TimeoutError.prototype);
-    Error.captureStackTrace(this, TimeoutError);
   }
 }
 
@@ -34,7 +32,6 @@ class NetworkError extends Error {
     super(message);
     this.name = 'NetworkError';
     Object.setPrototypeOf(this, NetworkError.prototype);
-    Error.captureStackTrace(this, NetworkError);
   }
 }
 
