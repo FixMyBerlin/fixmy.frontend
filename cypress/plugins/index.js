@@ -61,12 +61,13 @@ module.exports = (on, config) => {
 
   // modify the way browsers are launched,
   // see https://docs.cypress.io/api/plugins/browser-launch-api.html#Usage
-  on('before:browser:launch', (browser = {}, args) => {
+  on('before:browser:launch', (browser = {}, launchOptions) => {
     if (browser.name === 'chrome') {
+      const { args } = launchOptions;
       setAutoDevTools(args);
       setWindowPos(args);
     }
-    return args;
+    return launchOptions;
   });
 
   on('file:preprocessor', wp({ webpackOptions }));
