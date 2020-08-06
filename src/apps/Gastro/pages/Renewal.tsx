@@ -98,7 +98,7 @@ const Renewal = ({
           <>
             {!isSubmitted && (
               <Section>
-                <h1>Folgeantrag auf Genehmigung einer Sondernutzungsfläche</h1>
+                <h1>Folgeantrag auf Nutzung einer Sonderfläche</h1>
                 {application != null && (
                   <>
                     <p>
@@ -125,10 +125,10 @@ const Renewal = ({
             )}
             {isSubmitted && (
               <Section>
-                <h2>
+                <h1>
                   Vielen Dank für Ihren Folgeantrag auf Nutzung einer
                   Sonderfläche
-                </h2>
+                </h1>
 
                 <p>
                   Ihr Antrag für <strong>{application.shop_name}</strong> wurde
@@ -136,7 +136,7 @@ const Renewal = ({
                 </p>
 
                 <p>
-                  Das Bezirksamt bearbeitet die Anträge in der Regel innherhalb
+                  Das Bezirksamt bearbeitet die Anträge in der Regel innerhalb
                   einiger Tage. Wenn Ihr Antrag bearbeitet wurde, erhalten Sie
                   eine E-Mail mit einer Zu- oder Absage an{' '}
                   <strong>{application.email}</strong>. Bitte sehen Sie von
