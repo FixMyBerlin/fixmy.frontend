@@ -9,7 +9,8 @@ module.exports = (api) => {
         useBuiltIns: 'usage',
         corejs: 3
       }
-    ]
+    ],
+    '@babel/preset-typescript'
   ];
 
   const plugins = [
