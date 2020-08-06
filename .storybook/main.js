@@ -35,7 +35,7 @@ const configureTypeScript = (config) => {
   config.resolve.extensions.push('.ts', '.tsx');
   config.module.rules.push({
     test: /\.tsx?$/,
-    use: [{ loader: 'babel-loader' }, { loader: 'ts-loader' }],
+    use: [{ loader: 'babel-loader' }],
     include: [AppSourceDir]
   });
 };
