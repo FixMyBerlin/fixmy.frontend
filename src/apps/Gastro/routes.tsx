@@ -10,6 +10,7 @@ import TrafficOrder from './pages/TrafficOrder';
 import Landing from './pages/Landing';
 import Markdown from '~/pages/Markdown';
 import Signup from './pages/Signup';
+import Renewal from './pages/Renewal';
 import history from '~/history';
 import { getAppPath } from '~/utils/utils';
 import { openSignup } from './utils';
@@ -55,6 +56,8 @@ const Routes = ({ district }) => (
         path={getPath(district, 'registration')}
         component={Registration}
       />
+
+      <Route exact path={getPath(district, 'renewal')} component={Renewal} />
 
       <Route exact path={getPath(district, 'directory')}>
         <Redirect to={getPath(district, 'landing')} />

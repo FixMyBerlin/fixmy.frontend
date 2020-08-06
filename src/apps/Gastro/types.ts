@@ -5,6 +5,15 @@ import { AppConfig } from '~/types';
 
 type Coordinate = [number, number];
 
+export type GastroStatus =
+  | 'new'
+  | 'verification'
+  | 'waiting_for_application'
+  | 'application_received'
+  | 'application_verification'
+  | 'application_accepted'
+  | 'application_rejected';
+
 export interface GastroConfig extends AppConfig {
   currentCampaign: string;
   directSignup: boolean;
@@ -56,4 +65,7 @@ export interface GastroRegistration extends GastroSignup {
   };
   certificate?: any;
   agreement_accepted: boolean;
+  permit_start: string;
+  permit_end: string;
+  status: GastroStatus;
 }
