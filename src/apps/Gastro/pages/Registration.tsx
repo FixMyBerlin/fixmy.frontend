@@ -11,7 +11,7 @@ import RegistrationForm from '../components/RegistrationForm';
 import Logo from '~/apps/Gastro/components/Logo';
 import api from '../api';
 import regulations from '../regulations';
-import { GastroSignup } from '../types';
+import { GastroSignup, GastroRegistration, GastroStatus } from '../types';
 import { media } from '~/styles/utils';
 
 const Section = styled.section`
@@ -42,7 +42,7 @@ const process = (signupData) => ({
 });
 
 // Return true if the application is locked because it has already been handled
-const isLocked = ({ status }) =>
+const isLocked = ({ status }: { status: GastroStatus }) =>
   [
     'application_accepted',
     'application_rejected',
@@ -56,17 +56,17 @@ const Registration = ({
   district
 }) => {
   // Data from previous signup (Interessensbekundung)
-  const [isLoading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [isLoading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>(null);
   const [signupData, setSignupData] = useState({} as GastroSignup);
   const [regulation, setRegulation] = useState({});
 
   // State for this registration
-  const [submission, setSubmission] = useState(null);
+  const [submission, setSubmission] = useState<GastroRegistration>(null);
 
   useEffect(() => {
     const doLoad = async () => {
-      let result;
+      let result: GastroRegistration;
       try {
         result = await api.get(id, accessKey, district);
         result = process(result);
