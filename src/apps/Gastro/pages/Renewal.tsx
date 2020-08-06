@@ -4,18 +4,17 @@ import styled from 'styled-components';
 import debug from 'debug';
 import { useSelector } from 'react-redux';
 
+import { RootState } from '~/store';
+import { DistrictConfig } from '~/types';
+import { media } from '~/styles/utils';
+import Button from '~/components2/Button';
 import { GastroRegistration } from '../types';
 import Header from '../components/Header';
 import config from '../config';
-import { media } from '~/styles/utils';
-import Button from '~/components2/Button';
 import api from '../api';
 import BigLoader from '~/components/BigLoader';
-import { RootState } from '~/store';
-import { DistrictConfig } from '~/types';
-import ThanksRegistration from '../components/ThanksRegistration';
 
-const log = debug('fmc:gastro');
+const log = debug('fmc:gastro:renewal');
 
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};
@@ -48,7 +47,6 @@ const Renewal = ({
   const [error, setError] = useState<string>(null);
   const [application, setApplication] = useState<GastroRegistration>(null);
   const [isSubmitting, setSubmitting] = useState<boolean>(false);
-  const [submission, setSubmission] = useState<GastroRegistration>(null);
 
   const district: DistrictConfig = useSelector(
     (state: RootState) => state.AppState.district
@@ -78,13 +76,18 @@ const Renewal = ({
   const handleSubmit = async () => {
     setSubmitting(true);
     try {
-      setSubmission(await api.postRenewal(id, accessKey, district));
+      setApplication(await api.postRenewal(id, accessKey, district));
     } catch (err) {
       setError(err.message);
     } finally {
       setSubmitting(false);
     }
   };
+
+  // eslint-disable-next-line camelcase
+  const isSubmitted = application?.renewal_application != null;
+
+  log('isSubmitted', isSubmitted);
 
   return (
     <>
@@ -93,7 +96,7 @@ const Renewal = ({
         {isLoading && <BigLoader />}
         {!isLoading && (
           <>
-            {submission == null && (
+            {!isSubmitted && (
               <Section>
                 <h1>Folgeantrag auf Genehmigung einer Sondernutzungsfläche</h1>
                 {application != null && (
@@ -120,8 +123,26 @@ const Renewal = ({
                 {error != null && <p>Es ist ein Fehler aufgetreten: {error}</p>}
               </Section>
             )}
-            {submission != null && (
-              <ThanksRegistration submission={submission} />
+            {isSubmitted && (
+              <Section>
+                <h2>
+                  Vielen Dank für Ihren Folgeantrag auf Nutzung einer
+                  Sonderfläche
+                </h2>
+
+                <p>
+                  Ihr Antrag für <strong>{application.shop_name}</strong> wurde
+                  übermittelt.
+                </p>
+
+                <p>
+                  Das Bezirksamt bearbeitet die Anträge in der Regel innherhalb
+                  einiger Tage. Wenn Ihr Antrag bearbeitet wurde, erhalten Sie
+                  eine E-Mail mit einer Zu- oder Absage an{' '}
+                  <strong>{application.email}</strong>. Bitte sehen Sie von
+                  individuellen Nachfragen ab.
+                </p>
+              </Section>
             )}
           </>
         )}

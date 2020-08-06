@@ -68,4 +68,5 @@ export interface GastroRegistration extends GastroSignup {
   permit_start: string;
   permit_end: string;
   status: GastroStatus;
+  renewal_application: number | null;
 }
