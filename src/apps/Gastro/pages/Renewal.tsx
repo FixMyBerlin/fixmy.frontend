@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 import debug from 'debug';
-import { connect, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { GastroRegistration } from '../types';
 import Header from '../components/Header';
