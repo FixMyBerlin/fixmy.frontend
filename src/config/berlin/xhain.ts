@@ -88,7 +88,7 @@ const xhain: DistrictConfig = {
           street: 'Friedrichstraße',
           kiez: 'Mehringplatz',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'closed',
           schedule: 'Sonntags 14 – 17 Uhr (Ferienzeit)'
         },
         {
@@ -162,7 +162,7 @@ const xhain: DistrictConfig = {
           street: 'Rudolfstraße',
           kiez: 'Stralauer Kiez',
           region: 'Friedrichshain',
-          status: 'open',
+          status: 'closed',
           schedule: 'Sonntags 15 – 19 Uhr (Ferienzeit)'
         },
         {
