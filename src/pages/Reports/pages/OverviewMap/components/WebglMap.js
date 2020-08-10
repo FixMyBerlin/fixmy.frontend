@@ -94,12 +94,14 @@ class WebglMap extends PureComponent {
   render() {
     const { reportsData, onMarkerClick, selectedReport, detailId } = this.props;
 
+    const isReportsDataLoaded = !!reportsData.length;
     return (
       <BaseMap
         onLoad={(map) => this.onLoad(map)}
         onMove={() => this.props.onMove()}
+        didOverlayLoad={isReportsDataLoaded}
       >
-        {reportsData.length > 0 && (
+        {isReportsDataLoaded > 0 && (
           <ClusteredMarkers
             data={toGeojson(reportsData)}
             map={this.map}
