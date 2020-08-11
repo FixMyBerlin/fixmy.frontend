@@ -42,7 +42,7 @@ module.exports = {
     new Dotenv({ defaults: true, systemvars: true })
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
     alias: {
       '~': Path.resolve(__dirname, '../src'),
       'react-dom': '@hot-loader/react-dom'
@@ -67,7 +67,8 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/whatwg-url'),
           Path.resolve(__dirname, '../node_modules/ky'),
           Path.resolve(__dirname, '../node_modules/d3-scale'),
-          Path.resolve(__dirname, '../node_modules/debug')
+          Path.resolve(__dirname, '../node_modules/debug'),
+          Path.resolve(__dirname, '../node_modules/react-spinners')
         ],
         use: 'babel-loader'
       },

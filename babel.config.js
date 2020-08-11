@@ -24,6 +24,7 @@ module.exports = (api) => {
     ],
     'babel-plugin-idx',
     '@babel/plugin-proposal-optional-chaining',
+    '@babel/proposal-object-rest-spread',
     'react-hot-loader/babel'
   ];
 
