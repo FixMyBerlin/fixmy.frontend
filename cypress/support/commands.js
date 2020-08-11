@@ -41,14 +41,15 @@ Cypress.Commands.add('fmbGoToProfile', (profile = 1) => {
   });
 });
 
-Cypress.Commands.add('visitWithReportsState', (route, state = null) => {
+/**
+ * Set global Redux state and visit a URL
+ */
+Cypress.Commands.add('visitWithState', (route, state = null) => {
   cy.visit(route, {
     onBeforeLoad: (win) => {
       if (state != null) {
         // eslint-disable-next-line no-param-reassign
-        win.initialState = {
-          ReportsState: state
-        };
+        win.initialState = state;
       }
     }
   });
