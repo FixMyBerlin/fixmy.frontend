@@ -6,7 +6,7 @@
   "testFiles": "**/*.e2e.test.js",
   "requestTimeout": 10000,
   "whitelist": {
-    "default": [],
+    "default": ["Map", "Reports", "KatasterKI"],
     "aachen": ["Reports"],
     "berlin": ["Map", "Reports", "KatasterKI"],
     "eichwalde": []
