@@ -14,24 +14,27 @@ const clickRandomMarker = () => {
   });
 };
 
+const visitWithReportsState = (url, state) =>
+  cy.visitWithState(url, { ReportsState: state });
+
 const goToConfirmedAddress = () => {
   const url = `${config.routes.reports.new}/1`;
-  cy.visitWithState(url, foundAddress);
+  visitWithReportsState(url, foundAddress);
 };
 
 const goToBikeStandForm = () => {
   const url = `${config.routes.reports.new}/2`;
-  cy.visitWithState(url, bikeStands);
+  visitWithReportsState(url, bikeStands);
 };
 
 const goToAdditionalDataForm = () => {
   const url = `${config.routes.reports.new}/3`;
-  cy.visitWithState(url, additionalDataForm);
+  visitWithReportsState(url, additionalDataForm);
 };
 
 const goToParkingGarageForm = () => {
   const url = `${config.routes.reports.new}/4`;
-  cy.visitWithState(url, bikeLockerForm);
+  visitWithReportsState(url, bikeLockerForm);
 };
 
 export default {
