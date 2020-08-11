@@ -59,7 +59,7 @@ module.exports = {
         type: 'javascript/auto'
       },
       {
-        test: /\.js$/,
+        test: /\.[jt]sx?$/,
         include: [
           Path.resolve(__dirname, '../src'),
           Path.resolve(__dirname, '../node_modules/tr46'),
@@ -70,15 +70,6 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/debug')
         ],
         use: 'babel-loader'
-      },
-      {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'babel-loader'
-          }
-        ],
-        include: [Path.resolve(__dirname, '../src')]
       },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
