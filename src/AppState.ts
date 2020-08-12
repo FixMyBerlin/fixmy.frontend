@@ -5,7 +5,7 @@ import { Dispatch } from 'redux';
 import config from './apps/Gastro/config';
 import logger from './utils/logger';
 import getDefaultLocale from './utils/defaultLocale';
-import { supportedLocales, DistrictConfig } from './types';
+import { LocaleCode, DistrictConfig } from './types';
 import { Region } from './config';
 
 const UPDATE_HISTORY = 'App/AppState/UPDATE_HISTORY';
@@ -17,6 +17,8 @@ const SET_DISTRICT = 'App/AppState/SET_DISTRICT';
 const SET_LOCALE = 'App/AppState/SET_LOCALE';
 
 type MapView = 'zustand' | 'planungen';
+
+// Action types
 
 type UpdateHistory = {
   type: typeof UPDATE_HISTORY;
@@ -37,7 +39,7 @@ type SetActiveView = {
 type Open = { type: typeof OPEN_MENU };
 type Close = { type: typeof CLOSE_MENU };
 type SetDistrict = { type: typeof SET_DISTRICT; payload: DistrictConfig };
-type SetLocale = { type: typeof SET_LOCALE; locale: supportedLocales };
+type SetLocale = { type: typeof SET_LOCALE; locale: LocaleCode };
 
 export type AppStateAction =
   | UpdateHistory
@@ -48,14 +50,13 @@ export type AppStateAction =
   | SetDistrict
   | SetLocale
   | { type: null };
-
 export interface AppState {
   activeView?: MapView;
   activeSection?: number;
   isMenuOpen: boolean;
   isEmbedMode: boolean;
   district?: DistrictConfig;
-  locale: supportedLocales;
+  locale: LocaleCode;
 }
 
 const initialState = {
@@ -140,7 +141,7 @@ export function setDistrict(district: Region) {
   return { type: SET_DISTRICT, payload };
 }
 
-export function setLocale(locale: supportedLocales) {
+export function setLocale(locale: LocaleCode) {
   return { type: SET_LOCALE, locale };
 }
 

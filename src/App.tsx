@@ -1,7 +1,7 @@
 import 'react-hot-loader'; // keep first
 
 import React, { Suspense, useEffect, useState } from 'react';
-import { IntlProvider } from 'react-intl';
+import { IntlProvider, IntlConfig } from 'react-intl';
 import { connect, useSelector } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
 import ReactPiwik from 'react-piwik';
@@ -14,18 +14,18 @@ import debug from 'debug';
 
 import config from '~/config';
 import history from '~/history';
+import Routes from '~/routes';
+import { RootState } from '~/store';
+import { LocaleCode } from '~/types';
 import GlobalStyles from '~/styles/Global';
 import BigLoader from '~/components/BigLoader';
 import ErrorBoundary from '~/components/ErrorBoundary';
 import Menu from '~/components/Menu';
 import { verify } from '~/pages/User/UserState';
+
 import defaultMessages from '~/lang/compiled/de.json';
 
-import Routes from './routes';
-import { RootState } from './store';
-import { supportedLocales } from './types';
-
-const log = debug('fmc:App.tsx');
+const log = debug('fmc');
 
 const AppContent = styled.div`
   width: 100%;
@@ -47,7 +47,12 @@ export const theme = createMuiTheme({
   }
 });
 
-const loadLocaleMessages = async (locale: supportedLocales, setResult) => {
+const loadLocaleMessages = async (
+  locale: LocaleCode,
+  prevLocale: LocaleCode,
+  setResult
+) => {
+  if (locale === prevLocale) return;
   log('switching to locale', locale);
   switch (locale) {
     case 'en':
@@ -62,7 +67,9 @@ const loadLocaleMessages = async (locale: supportedLocales, setResult) => {
 };
 
 const App = ({ dispatch, isEmbedMode }) => {
-  const [messages, setMessages] = useState(defaultMessages);
+  const [messages, setMessages] = useState<
+    [LocaleCode, IntlConfig['messages']]
+  >(['de', defaultMessages]);
   useEffect(() => {
     dispatch(verify());
 
@@ -73,12 +80,12 @@ const App = ({ dispatch, isEmbedMode }) => {
   const locale = useSelector((state: RootState) => state.AppState.locale);
 
   useEffect(() => {
-    loadLocaleMessages(locale, setMessages);
+    loadLocaleMessages(locale, messages[0], (m) => setMessages([locale, m]));
   }, [locale]);
 
   return (
     <ThemeProvider theme={theme}>
-      <IntlProvider messages={messages} locale={locale} defaultLocale="de">
+      <IntlProvider messages={messages[1]} locale={locale} defaultLocale="de">
         <GlobalStyles />
         <Router history={history}>
           <Suspense fallback={<BigLoader />}>
