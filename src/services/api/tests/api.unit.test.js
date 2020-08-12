@@ -7,8 +7,7 @@ import { ApiError, NetworkError, TimeoutError } from '../errors';
 import { get, patch, post } from '../shorthands';
 import {
   compileAbsoluteRoute,
-  delayResponse,
-  printError
+  delayResponse
 } from '~/services/api/tests/apiTestUtils';
 
 const SAMPLE_ROUTE = 'fakeEndpoint';
@@ -125,7 +124,7 @@ describe('API module', () => {
 
         it(
           'rethrows an error JSON as ApiError not containing a detail key ' +
-            'with the response body',
+            'without the response body',
           async () => {
             // the key describing the error intentionally breaches our conventions for error answers
             const testResponseBody = { customError: 'wholey moly' };
@@ -139,7 +138,7 @@ describe('API module', () => {
             fetchMock.mock(`end:${SAMPLE_ROUTE}`, errResponse);
 
             await expect(request(SAMPLE_ROUTE)).rejects.toThrowError(
-              new ApiError(printError(testResponseBody))
+              new ApiError(null)
             );
           }
         );
