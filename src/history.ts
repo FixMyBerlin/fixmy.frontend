@@ -10,13 +10,8 @@ const piwik = new ReactPiwik({
   ...config.piwik.options
 });
 
-const history = piwik.connectToHistory(
+const history: ReturnType<typeof createBrowserHistory> = piwik.connectToHistory(
   createBrowserHistory({ basename: process.env.BASE_NAME })
 );
-
-// used in integration tests
-if (window.Cypress) {
-  window.appHistory = history;
-}
 
 export default history;

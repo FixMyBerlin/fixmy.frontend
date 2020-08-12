@@ -3,7 +3,7 @@ import berlin from './berlin';
 import aachen from './aachen';
 import eichwalde from './eichwalde';
 
-type Region = 'eichwalde' | 'berlin' | 'aachen';
+export type Region = 'eichwalde' | 'berlin' | 'aachen';
 
 const region = (process.env.REGION as Region) || 'berlin';
 
