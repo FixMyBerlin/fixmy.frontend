@@ -2,6 +2,7 @@ import { matchPath } from 'react-router-dom';
 import qs from 'qs';
 import config from './apps/Gastro/config';
 import logger from './utils/logger';
+import getDefaultLocale from './utils/defaultLocale';
 
 const UPDATE_HISTORY = 'App/AppState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'App/AppState/SET_ACTIVE_SECTION';
@@ -9,13 +10,15 @@ const SET_VIEW_ACTIVE = 'App/AppState/SET_VIEW_ACTIVE';
 const OPEN_MENU = 'App/AppState/OPEN_MENU';
 const CLOSE_MENU = 'App/AppState/CLOSE_MENU';
 const SET_DISTRICT = 'App/AppState/SET_DISTRICT';
+const SET_LOCALE = 'App/AppState/SET_LOCALE';
 
 const initialState = {
   activeView: null,
   activeSection: null,
   isMenuOpen: false,
   isEmbedMode: false,
-  district: null
+  district: null,
+  locale: getDefaultLocale()
 };
 
 export const detectEmbedMode = (props) => (dispatch) => {
@@ -83,6 +86,10 @@ export function setDistrict(district) {
   return { type: SET_DISTRICT, payload };
 }
 
+export function setLocale(locale) {
+  return { type: SET_LOCALE, locale };
+}
+
 export default function AppStateReducer(state = initialState, action = {}) {
   switch (action.type) {
     case OPEN_MENU:
@@ -95,6 +102,8 @@ export default function AppStateReducer(state = initialState, action = {}) {
       return { ...state, ...action.payload };
     case SET_DISTRICT:
       return { ...state, district: action.payload };
+    case SET_LOCALE:
+      return { ...state, locale: action.locale };
     default:
       return { ...state };
   }

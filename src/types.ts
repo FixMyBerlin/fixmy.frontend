@@ -3,6 +3,8 @@ import MapboxGL from 'mapbox-gl';
 import { SpielstrassenConfig } from '~/apps/Spielstrassen/types';
 import { GastroConfig } from '~/apps/Gastro/types';
 
+export type supportedLocales = 'de' | 'en' | 'es';
+
 export interface AppConfig {
   path: string;
 }
