@@ -10,33 +10,26 @@ const log = debug('fmc:api:errorHandling');
  * which we can later on use to make decisions on how to handle specific errors.
  */
 export default async function makeFMCError(e: FMCError): Promise<FMCError> {
-  let translatedError: FMCError;
   let errorMessage: string;
   let statusCode: number;
 
   // handle network errors (misspelled URL, flaky or no network or CORS problems)
   if (e.message === 'Failed to fetch') {
-    translatedError = new NetworkError(e.message);
+    return new NetworkError(e.message);
   }
+
   // handle all other errors
   switch (e.constructor) {
     case ky.HTTPError: // a non 2xx error code was found
       errorMessage = await parseErrorResponse(e.response);
       statusCode = e.response.status;
-      translatedError = new ApiError(errorMessage, statusCode);
-      break;
+      return new ApiError(errorMessage, statusCode);
     case ky.TimeoutError:
-      translatedError = new TimeoutError(e.message);
-      break;
-    case TypeError:
-      translatedError = e;
-      break;
+      return new TimeoutError(e.message);
     default:
       // any other error, just forward it
-      break;
+      return e;
   }
-
-  return translatedError || e;
 }
 
 /**
