@@ -3,13 +3,13 @@ import debug from 'debug';
 import { ApiError, NetworkError, TimeoutError } from './errors';
 import { FMCError, JSONValue, JSONObject } from './types';
 
-const log = debug('fmc:api:errorHandling');
+const log = debug('fmc:api:mapError');
 
 /**
  * Translate errors reported by ky/fetch to a set of custom exceptions
  * which we can later on use to make decisions on how to handle specific errors.
  */
-export default async function makeFMCError(e: FMCError): Promise<FMCError> {
+export default async function mapError(e: FMCError): Promise<FMCError> {
   let errorMessage: string;
   let statusCode: number;
 

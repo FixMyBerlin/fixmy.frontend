@@ -10,7 +10,7 @@ import config from '~/config';
 import store from '~/store';
 import { RequestOptions } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
-import makeFMCError from './makeFMCError';
+import mapError from './mapError';
 
 const log = debug('fmc:api:request()');
 
@@ -102,8 +102,8 @@ export default async function request(
     log('sending request', { route, options, accept });
     response = await configuredKy(route, kyOptions)[accept]();
   } catch (e) {
-    log('calling error handler', { error: e });
-    throw await makeFMCError(e);
+    log('mapping error type', { error: e });
+    throw await mapError(e);
   } finally {
     log('finished request');
     if (onFinish) onFinish();
