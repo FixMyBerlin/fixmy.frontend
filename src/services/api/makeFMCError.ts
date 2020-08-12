@@ -40,7 +40,9 @@ export default async function makeFMCError(e: FMCError): Promise<FMCError> {
  *
  * @param errorResponse API return value
  */
-async function parseErrorResponse(errorResponse: Response): Promise<string> {
+async function parseErrorResponse(
+  errorResponse: Response
+): Promise<string | null> {
   let errorJson: JSONValue;
   let errorText: string;
 
@@ -49,6 +51,7 @@ async function parseErrorResponse(errorResponse: Response): Promise<string> {
   try {
     errorText = await errorResponse.text();
   } catch (e) {
+    log(e);
     throw new TypeError('Only JSON and text error responses can be handled');
   }
 
@@ -63,6 +66,6 @@ async function parseErrorResponse(errorResponse: Response): Promise<string> {
     log('found `detail` field in json response');
     return (errorJson as JSONObject)?.detail.toString();
   }
-  log('found json-encoded error response');
-  return JSON.stringify(errorJson, null, 2);
+  log('found json-encoded error response', errorJson);
+  return null;
 }
