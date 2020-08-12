@@ -1,6 +1,13 @@
 import React from 'react';
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
 
-import { ArticleWrapper, ArticleHeader, Intro } from '~/components2/Article';
+import {
+  ArticleWrapper,
+  ArticleHeader,
+  Intro,
+  LocaleSwitcher
+} from '~/components2/Article';
 
 import SectionIntroduction from './sections/02_intro';
 import SectionAbout from './sections/03_concept';
@@ -8,16 +15,33 @@ import SectionDataset from './sections/04_dataset';
 import SectionResults from './sections/05_results';
 import SectionTeam from './sections/06_team';
 
-const Research = () => (
+const messages = defineMessages({
+  tocIntroduction: {
+    id: 'research.toc.introduction',
+    defaultMessage: 'Einleitung'
+  },
+  kicker: {
+    id: 'research.kicker',
+    defaultMessage: 'Forschungsergebnis - Strassencheck'
+  },
+  authors: {
+    id: 'research.authors',
+    defaultMessage: 'FixMyCity Team'
+  }
+});
+
+const Research = ({ intl, dispatch }) => (
   <ArticleWrapper hasToc>
     <ArticleHeader
-      toc="Einleitung"
-      kicker="Forschungsergebnis - Strassencheck"
+      toc={intl.formatMessage(messages.tocIntroduction)}
+      kicker={intl.formatMessage(messages.kicker)}
       publishDate={new Date(2020, 6, 6, 7, 0)}
-      author="FixMyCity Team"
+      author={intl.formatMessage(messages.authors)}
     >
-      Studie zur subjektiven Sicherheit im Radverkehr - Ergebnisse und Datensatz
-      einer Umfrage mit über 21.000 Teilnehmenden
+      <FormattedMessage
+        id="research.title"
+        defaultMessage="Studie zur subjektiven Sicherheit im Radverkehr - Ergebnisse und Datensatz einer Umfrage mit über 21.000 Teilnehmenden"
+      />
     </ArticleHeader>
     <Intro>
       Die Mobilitätswende in Berlin und anderen Städten hat begonnen. Der
@@ -27,6 +51,7 @@ const Research = () => (
       subjektiven Sicherheitsempfindens durchgeführt, deren Ergebnisse wir hier
       vorstellen.
     </Intro>
+    <LocaleSwitcher />
     <SectionIntroduction toc="Über das Projekt" />
     <SectionAbout toc="Umfragekonzept" />
     <SectionDataset toc="Datensatz der Ergebnisse" />
@@ -35,4 +60,4 @@ const Research = () => (
   </ArticleWrapper>
 );
 
-export default Research;
+export default connect()(injectIntl(Research));
