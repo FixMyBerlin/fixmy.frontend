@@ -23,6 +23,9 @@ const ContentOverlay = styled.div`
 const StyledMenuButton = styled(MenuButton)`
   // Override material ui by increasing specificity
   && {
+    position: absolute;
+    top: 0
+    left: 0;
     margin: 1rem;
 
     ${media.m`
