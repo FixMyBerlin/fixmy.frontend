@@ -5,6 +5,7 @@ import Store from '~/store';
 import config from '~/config';
 import { close } from '~/AppState';
 import NavItem from '~/components/Menu/NavItem';
+import AnchorItem from '~/components/Menu/AnchorItem';
 import SvgIcon from '~/components/SvgIcon';
 import Separator from './Separator';
 
@@ -48,6 +49,19 @@ function renderItem(item) {
           {item.icon ? <SvgIcon type={item.icon} /> : null}
           <NavItem.Label>{item.label}</NavItem.Label>
         </NavItem>
+      );
+    case 'external':
+      return (
+        <AnchorItem
+          key={item.label}
+          href={item.href}
+          target="_blank"
+          rel="noreferrer noopener"
+          border={item.border ? item.border.toString() : null}
+        >
+          {item.icon ? <SvgIcon type={item.icon} /> : null}
+          {item.label}
+        </AnchorItem>
       );
     case 'plus':
       return (

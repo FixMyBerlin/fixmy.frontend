@@ -8,7 +8,7 @@ interface Menu {
   footeritems: FooterItem[];
 }
 
-type MenuItem = Link | Separator;
+type MenuItem = Link | ExternalLink | Separator | Plus;
 
 type Link = {
   type: 'link';
@@ -18,9 +18,24 @@ type Link = {
   border: boolean;
 };
 
+type ExternalLink = {
+  type: 'external';
+  label: string;
+  href: string;
+  icon: string;
+  border: boolean;
+};
+
 type Separator = {
   type: 'separator';
   label: string;
+};
+
+type Plus = {
+  type: 'plus';
+  label: string;
+  icon?: string;
+  children: Link[];
 };
 
 type FooterItem = {
@@ -49,20 +64,6 @@ const menuConfig: Menu = {
     },
     {
       type: 'link',
-      label: 'Radbügel in X-Hain',
-      icon: 'reports-icon',
-      link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
-      border: true
-    },
-    {
-      type: 'link',
-      label: 'Spielstraßen in X-Hain',
-      icon: 'spielstrassen-icon',
-      link: '/friedrichshain-kreuzberg/spielstrassen',
-      border: true
-    },
-    {
-      type: 'link',
       label: 'Analyse Planungen',
       link: '/analyse/planungen',
       icon: 'analysis',
@@ -70,7 +71,39 @@ const menuConfig: Menu = {
     },
     {
       type: 'separator',
+      label: 'Friedrichshain-Kreuzberg'
+    },
+    {
+      type: 'link',
+      label: 'Terrassen für XHain',
+      icon: 'reports-icon',
+      link: '/friedrichshain-kreuzberg/terrassen',
+      border: true
+    },
+    {
+      type: 'link',
+      label: 'Radbügelmeldungen in XHain',
+      icon: 'reports-icon',
+      link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
+      border: true
+    },
+    {
+      type: 'link',
+      label: 'Spielstraßen in XHain',
+      icon: 'spielstrassen-icon',
+      link: '/friedrichshain-kreuzberg/spielstrassen',
+      border: true
+    },
+    {
+      type: 'separator',
       label: 'Weiteres'
+    },
+    {
+      type: 'external',
+      label: 'Angebote für Kommunen',
+      href: 'https://fixmycity.de',
+      icon: 'icon-kommunen',
+      border: true
     },
     {
       type: 'link',

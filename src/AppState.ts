@@ -119,10 +119,12 @@ export function setActiveView(activeView: MapView) {
 }
 
 export function open() {
+  window.scrollTo(0, 0);
   return { type: OPEN_MENU };
 }
 
 export function close() {
+  window.scrollTo(0, 0);
   return { type: CLOSE_MENU };
 }
 
