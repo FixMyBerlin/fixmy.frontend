@@ -6,7 +6,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import FMBLogo from '~/components2/Logo';
 import Button from '~/components2/Button';
 import Link from '~/components2/Link';
-import SocialSharer from '~/components/Social/SocialSharer';
 import NewsletterWidget from '~/components2/NewsletterWidget';
 import config from '~/config';
 import { media } from '~/styles/utils';
