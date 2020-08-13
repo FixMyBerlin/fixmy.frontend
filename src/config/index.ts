@@ -27,12 +27,12 @@ type BerlinConfig = typeof defaultConfig &
   };
 
 type AachenConfig = typeof defaultConfig &
-  typeof berlin & {
+  typeof aachen & {
     region: 'aachen';
   };
 
 type EichwaldeConfig = typeof defaultConfig &
-  typeof berlin & {
+  typeof eichwalde & {
     region: 'eichwalde';
   };
 
