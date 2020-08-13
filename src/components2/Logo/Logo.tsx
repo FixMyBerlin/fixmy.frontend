@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import config from '~/config';
-import FixMyLogo from '~/images/logofmb@2x.png';
+import FixMyLogo1 from '~/images/logofmb.png';
+import FixMyLogo2 from '~/images/logofmb@2x.png';
+import FixMyLogo3 from '~/images/logofmb@3x.png';
 import BetaIcon from '~/images/beta.svg';
 
 const FMBLogoWrapper = styled.div`
@@ -20,23 +22,27 @@ const StyledBetaIcon = styled(BetaIcon).attrs(() => ({ width: 60 }))`
   }
 `;
 
-const FMBLogo = ({ className, showBetaIcon, width }) => (
+type Props = {
+  className?: string;
+  showBetaIcon?: boolean;
+  width?: number;
+};
+
+const FMBLogo = ({
+  className = null,
+  showBetaIcon = false,
+  width = 70
+}: Props) => (
   <FMBLogoWrapper className={className}>
     {showBetaIcon && <StyledBetaIcon />}
-    <img width={width} src={FixMyLogo} alt="logo" />
+    <img
+      width={width}
+      height={width * 1.164556962}
+      src={FixMyLogo1}
+      srcSet={`${FixMyLogo1} 1x, ${FixMyLogo2} 2x, ${FixMyLogo3} 3x`}
+      alt="FixMyBerlin logo"
+    />
   </FMBLogoWrapper>
 );
-
-FMBLogo.propTypes = {
-  width: PropTypes.number,
-  className: PropTypes.string,
-  showBetaIcon: PropTypes.bool
-};
-
-FMBLogo.defaultProps = {
-  width: 70,
-  className: null,
-  showBetaIcon: false
-};
 
 export default FMBLogo;
