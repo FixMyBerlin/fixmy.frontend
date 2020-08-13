@@ -1,5 +1,6 @@
 import { matchPath } from 'react-router-dom';
 import qs from 'qs';
+import debug from 'debug';
 import { Location } from 'history';
 import { Dispatch } from 'redux';
 import config from './apps/Gastro/config';
@@ -15,6 +16,8 @@ const OPEN_MENU = 'App/AppState/OPEN_MENU';
 const CLOSE_MENU = 'App/AppState/CLOSE_MENU';
 const SET_DISTRICT = 'App/AppState/SET_DISTRICT';
 const SET_LOCALE = 'App/AppState/SET_LOCALE';
+
+const log = debug('fmc:AppState');
 
 type MapView = 'zustand' | 'planungen';
 
@@ -142,7 +145,9 @@ export function setDistrict(district: Region) {
 }
 
 export function setLocale(locale: LocaleCode) {
-  return { type: SET_LOCALE, locale };
+  log('locale switcher is disabled');
+  // return { type: SET_LOCALE, locale };
+  return {};
 }
 
 export default function AppStateReducer(

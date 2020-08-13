@@ -36,7 +36,7 @@ const StyledLink = styled(NavLink).attrs((props) => ({ to: props.to }))`
   color: #635638;
 `;
 
-const ExternalLink = styled.a`
+const ExternalLink = styled(Link)`
   padding: 4px 8px;
   text-align: center;
   text-decoration: none;
@@ -54,7 +54,13 @@ function renderItem(item, index) {
       {item.label}
     </ExternalLink>
   ) : (
-    <StyledLink key={item.label} to={item.link} index={index}>
+    <StyledLink
+      key={item.label}
+      to={item.link}
+      index={index}
+      onClick={() => Store.dispatch(close())}
+      tabindex={0}
+    >
       {item.label}
     </StyledLink>
   );
