@@ -51,7 +51,7 @@ const Research = ({ intl, dispatch }) => (
       subjektiven Sicherheitsempfindens durchgeführt, deren Ergebnisse wir hier
       vorstellen.
     </Intro>
-    <LocaleSwitcher />
+    {/* <LocaleSwitcher /> */}
     <SectionIntroduction toc="Über das Projekt" />
     <SectionAbout toc="Umfragekonzept" />
     <SectionDataset toc="Datensatz der Ergebnisse" />
