@@ -50,21 +50,21 @@ const menuConfig: Menu = {
   items: [
     {
       type: 'link',
-      label: 'Planungen für den Radverkehr',
+      label: 'Karte',
       link: '/planungen',
       icon: 'map',
       border: true
     },
+    // {
+    //   type: 'link',
+    //   label: 'Happy-Bike-Index (beta)',
+    //   link: '/zustand',
+    //   icon: 'hbi-icon',
+    //   border: true
+    // },
     {
       type: 'link',
-      label: 'Happy-Bike-Index (beta)',
-      link: '/zustand',
-      icon: 'hbi-icon',
-      border: true
-    },
-    {
-      type: 'link',
-      label: 'Analyse Planungen',
+      label: 'Analyse',
       link: '/analyse/planungen',
       icon: 'analysis',
       border: false
@@ -82,17 +82,17 @@ const menuConfig: Menu = {
     },
     {
       type: 'link',
-      label: 'Radbügelmeldungen in XHain',
-      icon: 'reports-icon',
-      link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
-      border: true
-    },
-    {
-      type: 'link',
       label: 'Spielstraßen in XHain',
       icon: 'spielstrassen-icon',
       link: '/friedrichshain-kreuzberg/spielstrassen',
       border: true
+    },
+    {
+      type: 'link',
+      label: 'Radbügelmeldungen in XHain',
+      icon: 'reports-icon',
+      link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
+      border: false
     },
     {
       type: 'separator',
