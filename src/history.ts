@@ -14,7 +14,7 @@ const browserHistory = createBrowserHistory({
 // As a workaround, the resulting error is caught here.
 // See https://github.com/joernroeder/piwik-react-router/issues/48
 
-let history;
+let history: ReturnType<typeof createBrowserHistory>;
 try {
   const piwik = new ReactPiwik({
     url: config.piwik.url,
@@ -29,11 +29,6 @@ try {
   } else {
     throw e;
   }
-}
-
-// used in integration tests
-if (window.Cypress) {
-  window.appHistory = history;
 }
 
 // Export history as a constant, even though it was mutable before

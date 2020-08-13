@@ -53,7 +53,6 @@ Cypress.Commands.add('visitWithState', (route, state = null) => {
       }
     }
   });
-  // if (cy.url() !== route) cy.window().then((win) => win.appHistory.push(route));
 });
 
 Cypress.Commands.add('fmbReturnToScene', (scene = 1) => {

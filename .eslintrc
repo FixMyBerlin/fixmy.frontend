@@ -10,7 +10,7 @@
     "plugin:chai-friendly/recommended"
   ],
 
-  "plugins": ["prettier", "chai-friendly"],
+  "plugins": ["prettier", "chai-friendly", "formatjs"],
 
   "overrides": [
     {

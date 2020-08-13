@@ -1,0 +1,44 @@
+{
+  "components.article.localeSwitcher.english": [
+    {
+      "type": 0,
+      "value": "Englisch"
+    }
+  ],
+  "components.article.localeSwitcher.german": [
+    {
+      "type": 0,
+      "value": "Deutsch"
+    }
+  ],
+  "components.article.localeSwitcher.spanish": [
+    {
+      "type": 0,
+      "value": "Spanisch"
+    }
+  ],
+  "research.authors": [
+    {
+      "type": 0,
+      "value": "FixMyCity Team"
+    }
+  ],
+  "research.kicker": [
+    {
+      "type": 0,
+      "value": "Forschungsergebnis - Strassencheck"
+    }
+  ],
+  "research.title": [
+    {
+      "type": 0,
+      "value": "Studie zur subjektiven Sicherheit im Radverkehr - Ergebnisse und Datensatz einer Umfrage mit über 21.000 Teilnehmenden"
+    }
+  ],
+  "research.toc.introduction": [
+    {
+      "type": 0,
+      "value": "Einleitung"
+    }
+  ]
+}

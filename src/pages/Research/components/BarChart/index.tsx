@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import FeelSafe, { FeelsafeIcon } from '~/pages/Research/components/FeelSafe';
@@ -104,6 +104,8 @@ interface ScaleChartProps {
 interface WeightChartProps {
   title: string;
   data: [number];
+  feelsafe?: null;
+  feelsafeIcon?: null;
 }
 
 type BarChartProps = WeightChartProps | ScaleChartProps;
@@ -111,6 +113,9 @@ type BarChartProps = WeightChartProps | ScaleChartProps;
 const colorScale = ['#c01d1d', '#f08141', '#abc759', '#45b834'];
 const colorWeight = ['#45b834'];
 const labels = ['unsicher', 'eher unsicher', 'eher sicher', 'sicher'];
+
+const getColor = (isWeightGraph, index) =>
+  isWeightGraph ? colorWeight[index] : colorScale[index];
 
 const BarLabel = ({ value, isWeightGraph }) =>
   isWeightGraph ? (
@@ -123,20 +128,14 @@ const BarLabel = ({ value, isWeightGraph }) =>
     </BarLabelStyle>
   );
 
-const BarChart = ({ title, data, ...props }: BarChartProps) => {
-  let colors;
-  let feelsafe;
-  let feelsafeIcon;
-  let isWeightGraph = false;
-
-  if (data.length === 1) {
-    isWeightGraph = true;
-    colors = colorWeight;
-  } else {
-    colors = colorScale;
-    feelsafe = (props as ScaleChartProps).feelsafe;
-    feelsafeIcon = (props as ScaleChartProps).feelsafeIcon;
-  }
+const BarChart = ({
+  title,
+  data,
+  feelsafe = null,
+  feelsafeIcon = 'bike' as FeelsafeIcon
+}: BarChartProps) => {
+  const [isWeightGraph, setWeightGraph] = useState(data.length === 1);
+  useEffect(() => setWeightGraph(data.length === 1), [data.length]);
 
   return (
     <Wrapper>
@@ -147,10 +146,13 @@ const BarChart = ({ title, data, ...props }: BarChartProps) => {
             <Bar
               // eslint-disable-next-line react/no-array-index-key
               key={`bar__${labels[i]}`}
-              style={{ width: `${d}%`, backgroundColor: colors[i] }}
+              style={{
+                width: `${d}%`,
+                backgroundColor: getColor(isWeightGraph, i)
+              }}
             >
               <BarLabel value={d} isWeightGraph={isWeightGraph} />
-              {isWeightGraph === false && (
+              {!isWeightGraph && (
                 <Tooltip className="barchart__tooltip">{labels[i]}</Tooltip>
               )}
             </Bar>

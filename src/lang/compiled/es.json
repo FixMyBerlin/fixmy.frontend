@@ -1,0 +1,38 @@
+{
+  "components.article.localeSwitcher.english": [
+    {
+      "type": 0,
+      "value": "Ingles"
+    }
+  ],
+  "components.article.localeSwitcher.german": [
+    {
+      "type": 0,
+      "value": "Aleman"
+    }
+  ],
+  "components.article.localeSwitcher.spanish": [
+    {
+      "type": 0,
+      "value": "Espanol"
+    }
+  ],
+  "research.authors": [
+    {
+      "type": 0,
+      "value": "FixMyCity Team"
+    }
+  ],
+  "research.kicker": [
+    {
+      "type": 0,
+      "value": "Resultado de la investigación - control de carretera"
+    }
+  ],
+  "research.toc.introduction": [
+    {
+      "type": 0,
+      "value": "Introducción"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import config from '~/config';
 
-const Paragraph = styled.p`
+const Paragraph = styled.div`
   font-weight: 400;
   font-family: ${config.baseFont};
   margin: 1em auto;
