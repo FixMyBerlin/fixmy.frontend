@@ -9,21 +9,21 @@ import styled from 'styled-components';
 import { Router } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
 import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core';
 import debug from 'debug';
+import { Theme } from '@material-ui/core';
 
-import config from '~/config';
 import history from '~/history';
 import Routes from '~/routes';
 import { RootState } from '~/store';
-import { LocaleCode } from '~/types';
 import GlobalStyles from '~/styles/Global';
 import BigLoader from '~/components/BigLoader';
 import ErrorBoundary from '~/components/ErrorBoundary';
 import Menu from '~/components/Menu';
 import { verify } from '~/pages/User/UserState';
+import { getTheme } from '~/styles/mui-utils';
 
 import defaultMessages from '~/lang/compiled/de.json';
+import loadLocaleMessages from './lang/loader';
 
 const log = debug('fmc');
 
@@ -37,39 +37,23 @@ const AppWrapper = styled.div`
   position: relative;
 `;
 
-export const theme = createMuiTheme({
-  palette: {
-    primary: { main: config.colors.interaction },
-    secondary: { main: config.colors.change_4 },
-    error: { main: config.colors.error },
-    info: { main: config.colors.interaction },
-    success: { main: config.colors.label_01 }
-  }
-});
-
-const loadLocaleMessages = async (
-  locale: LocaleCode,
-  prevLocale: LocaleCode,
-  setResult
-) => {
-  if (locale === prevLocale) return;
-  log('switching to locale', locale);
-  switch (locale) {
-    case 'en':
-      setResult(await import('~/lang/compiled/en.json'));
-      break;
-    case 'es':
-      setResult(await import('~/lang/compiled/es.json'));
-      break;
-    default:
-      setResult(defaultMessages);
-  }
-};
-
 const App = ({ dispatch, isEmbedMode }) => {
-  const [messages, setMessages] = useState<
-    [LocaleCode, IntlConfig['messages']]
-  >(['de', defaultMessages]);
+  log('rendering app');
+  const locale = useSelector((state: RootState) => state.AppState.locale);
+  const [messages, setMessages] = useState<IntlConfig['messages']>(
+    defaultMessages
+  );
+  const [theme, setTheme] = useState<Theme>(getTheme(locale));
+
+  useEffect(() => {
+    log('switching to locale', locale);
+    const doLoad = async () => {
+      setMessages(await loadLocaleMessages(locale));
+      setTheme(getTheme(locale));
+    };
+    doLoad();
+  }, [locale]);
+
   useEffect(() => {
     dispatch(verify());
 
@@ -77,15 +61,9 @@ const App = ({ dispatch, isEmbedMode }) => {
     ReactPiwik.push(['trackPageView']);
   }, []);
 
-  const locale = useSelector((state: RootState) => state.AppState.locale);
-
-  useEffect(() => {
-    loadLocaleMessages(locale, messages[0], (m) => setMessages([locale, m]));
-  }, [locale]);
-
   return (
     <ThemeProvider theme={theme}>
-      <IntlProvider messages={messages[1]} locale={locale} defaultLocale="de">
+      <IntlProvider messages={messages} locale={locale} defaultLocale="de">
         <GlobalStyles />
         <Router history={history}>
           <Suspense fallback={<BigLoader />}>
