@@ -1,37 +1,9 @@
-/* eslint-disable no-use-before-define */
 require('dotenv').config();
 const wp = require('@cypress/webpack-preprocessor');
 
 const log = require('debug')('cypress:plugins');
-
 const baseConfig = require('../../cypress.json');
 const webpackOptions = require('../../webpack/webpack.config.dev.js');
-
-module.exports = (on, config) => {
-  // only include certain tests
-  const testFiles = getPatternsForRegion();
-
-  // modify the way browsers are launched,
-  // see https://docs.cypress.io/api/plugins/browser-launch-api.html#Usage
-  on('before:browser:launch', (browser = {}, launchOptions) => {
-    if (browser.name === 'chrome') {
-      const { args } = launchOptions;
-      setAutoDevTools(args);
-      setWindowPos(args);
-    }
-    return launchOptions;
-  });
-
-  on('file:preprocessor', wp({ webpackOptions }));
-
-  // store process env in cypress env,
-  // see https://docs.cypress.io/guides/guides/environment-variables.html#Option-2-cypress-env-json
-  return {
-    ...config,
-    testFiles,
-    env: process.env
-  };
-};
 
 /**
  * Extend browser arguments to immediately open dev tools so we can inspect breakpoint halts
@@ -91,3 +63,31 @@ function getPatternsForRegion() {
 
   return patterns;
 }
+
+const DynamicCypressConfig = (on, config) => {
+  // only include certain tests
+  const testFiles = getPatternsForRegion();
+
+  // modify the way browsers are launched,
+  // see https://docs.cypress.io/api/plugins/browser-launch-api.html#Usage
+  on('before:browser:launch', (browser = {}, launchOptions) => {
+    if (browser.name === 'chrome') {
+      const { args } = launchOptions;
+      setAutoDevTools(args);
+      setWindowPos(args);
+    }
+    return launchOptions;
+  });
+
+  on('file:preprocessor', wp({ webpackOptions }));
+
+  // store process env in cypress env,
+  // see https://docs.cypress.io/guides/guides/environment-variables.html#Option-2-cypress-env-json
+  return {
+    ...config,
+    testFiles,
+    env: process.env
+  };
+};
+
+module.exports = DynamicCypressConfig;
