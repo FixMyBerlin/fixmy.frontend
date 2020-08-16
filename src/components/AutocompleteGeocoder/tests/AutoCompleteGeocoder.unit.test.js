@@ -21,7 +21,7 @@ describe('<AutoCompleteGeocoder />', () => {
       onSearchStart: jest.fn(),
       onInputBlur: jest.fn(),
       searchStringMinLength: 4,
-      debounceTime: 500
+      debounceTime: 1
     };
     const { container, baseElement, debug } = render(
       <AutocompleteGeocoder {...props} />
