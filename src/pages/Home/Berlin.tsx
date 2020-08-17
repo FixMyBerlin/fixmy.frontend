@@ -98,7 +98,7 @@ const TwitterButton = styled(TwitterIcon)`
   }
 `;
 
-export default () => {
+const HomeBerlin = () => {
   const dispatch = useDispatch();
   const isMenuOpen = useSelector(
     (state: RootState) => state.AppState.isMenuOpen
@@ -159,3 +159,5 @@ export default () => {
     </>
   );
 };
+
+export default HomeBerlin;

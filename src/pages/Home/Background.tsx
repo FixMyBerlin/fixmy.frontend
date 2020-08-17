@@ -38,7 +38,7 @@ const Background = ({ onLoad }: { onLoad?: () => any }) => {
     try {
       imageLoader.src = window
         .getComputedStyle(elemRef.current)
-        .backgroundImage.slice(5, -2);
+        .backgroundImage.slice(5, -2); // remove 'url()' wrapper
     } catch {
       setLoaded(true);
     }
