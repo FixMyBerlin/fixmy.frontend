@@ -49,19 +49,16 @@ const menuConfig: Menu = {
   loginLabel: 'Login',
   items: [
     {
+      type: 'separator',
+      label: 'Berlin'
+    },
+    {
       type: 'link',
-      label: 'Karte',
+      label: 'Planungskarte',
       link: '/planungen',
       icon: 'map',
       border: true
     },
-    // {
-    //   type: 'link',
-    //   label: 'Happy-Bike-Index (beta)',
-    //   link: '/zustand',
-    //   icon: 'hbi-icon',
-    //   border: true
-    // },
     {
       type: 'link',
       label: 'Analyse',
@@ -75,21 +72,21 @@ const menuConfig: Menu = {
     },
     {
       type: 'link',
-      label: 'Terrassen für XHain',
-      icon: 'reports-icon',
+      label: 'Terrassen für Vieles',
+      icon: 'icon-gastro',
       link: '/friedrichshain-kreuzberg/terrassen',
       border: true
     },
     {
       type: 'link',
-      label: 'Spielstraßen in XHain',
+      label: 'Temporäre Spielstraßen',
       icon: 'spielstrassen-icon',
       link: '/friedrichshain-kreuzberg/spielstrassen',
       border: true
     },
     {
       type: 'link',
-      label: 'Radbügelmeldungen in XHain',
+      label: 'Karte der Radbügelmeldungen',
       icon: 'reports-icon',
       link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
       border: false
@@ -103,6 +100,13 @@ const menuConfig: Menu = {
       label: 'Angebote für Kommunen',
       href: 'https://fixmycity.de',
       icon: 'icon-kommunen',
+      border: true
+    },
+    {
+      type: 'link',
+      label: 'Ergebnisse der Straßencheck-Umfrage',
+      icon: 'icon-flask',
+      link: '/research/subjektive-sicherheit',
       border: true
     },
     {
