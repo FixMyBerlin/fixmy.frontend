@@ -13,7 +13,7 @@ import FMBCredits from '~/pages/Map/components/FMBCredits';
 import SectionDetail from '~/pages/Map/components/DetailView/SectionDetail';
 import ProjectDetail from '~/pages/Map/components/DetailView/ProjectDetail';
 import ErrorMessage from '~/components/ErrorMessage';
-import FMBLogo from '~/components/FMBLogo';
+import FMBLogo from '~/components2/Logo';
 import Store from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from '~/pages/Map/components/WebglMap';

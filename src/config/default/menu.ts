@@ -8,7 +8,7 @@ interface Menu {
   footeritems: FooterItem[];
 }
 
-type MenuItem = Link | Separator;
+type MenuItem = Link | ExternalLink | Separator | Plus;
 
 type Link = {
   type: 'link';
@@ -18,9 +18,24 @@ type Link = {
   border: boolean;
 };
 
+type ExternalLink = {
+  type: 'external';
+  label: string;
+  href: string;
+  icon: string;
+  border: boolean;
+};
+
 type Separator = {
   type: 'separator';
   label: string;
+};
+
+type Plus = {
+  type: 'plus';
+  label: string;
+  icon?: string;
+  children: Link[];
 };
 
 type FooterItem = {
@@ -34,43 +49,65 @@ const menuConfig: Menu = {
   loginLabel: 'Login',
   items: [
     {
+      type: 'separator',
+      label: 'Berlin'
+    },
+    {
       type: 'link',
-      label: 'Planungen für den Radverkehr',
+      label: 'Planungskarte',
       link: '/planungen',
       icon: 'map',
       border: true
     },
     {
       type: 'link',
-      label: 'Happy-Bike-Index (beta)',
-      link: '/zustand',
-      icon: 'hbi-icon',
-      border: true
-    },
-    {
-      type: 'link',
-      label: 'Radbügel in X-Hain',
-      icon: 'reports-icon',
-      link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
-      border: true
-    },
-    {
-      type: 'link',
-      label: 'Spielstraßen in X-Hain',
-      icon: 'spielstrassen-icon',
-      link: '/friedrichshain-kreuzberg/spielstrassen',
-      border: true
-    },
-    {
-      type: 'link',
-      label: 'Analyse Planungen',
+      label: 'Analyse',
       link: '/analyse/planungen',
       icon: 'analysis',
       border: false
     },
     {
       type: 'separator',
+      label: 'Friedrichshain-Kreuzberg'
+    },
+    {
+      type: 'link',
+      label: 'Terrassen für Vieles',
+      icon: 'icon-gastro',
+      link: '/friedrichshain-kreuzberg/terrassen',
+      border: true
+    },
+    {
+      type: 'link',
+      label: 'Temporäre Spielstraßen',
+      icon: 'spielstrassen-icon',
+      link: '/friedrichshain-kreuzberg/spielstrassen',
+      border: true
+    },
+    {
+      type: 'link',
+      label: 'Karte der Radbügelmeldungen',
+      icon: 'reports-icon',
+      link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
+      border: false
+    },
+    {
+      type: 'separator',
       label: 'Weiteres'
+    },
+    {
+      type: 'external',
+      label: 'Angebote für Kommunen',
+      href: 'https://fixmycity.de',
+      icon: 'icon-kommunen',
+      border: true
+    },
+    {
+      type: 'link',
+      label: 'Ergebnisse der Straßencheck-Umfrage',
+      icon: 'icon-flask',
+      link: '/research/subjektive-sicherheit',
+      border: true
     },
     {
       type: 'link',

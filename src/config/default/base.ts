@@ -7,7 +7,7 @@ const apiEndpoints = {
 const baseConfig = {
   devUrl: 'http://localhost:8080',
   prodUrl: 'https://fixmyberlin.de',
-  newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/6kW',
+  newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EGM',
   tspKatasterURL: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
   apiUrl:
     process.env.API_URL ||

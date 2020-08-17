@@ -28,19 +28,21 @@ const External = styled(BaseContainer)`
   background-image: url(${LinkExternal});
 `;
 
-interface LinkProps {
+interface Props {
   href: string;
   internal?: boolean;
   children: React.ReactNode;
+  onClick?: any;
+  role?: string;
+  tabIndex?: number;
 }
-
 /**
  * Link component with arrow to distinguish internal and external links.
  *
  * External links are opened in new tab/window and have noopener / noreferrer
  * attributes.
  */
-const Link = ({ href, internal, children, ...props }: LinkProps) => {
+const Link = ({ href, internal, children, ...props }: Props) => {
   const Container = internal ? Internal : External;
   return (
     <Container
