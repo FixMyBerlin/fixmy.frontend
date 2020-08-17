@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import FMBLogo from '~/components2/Logo';
@@ -49,7 +48,6 @@ const NewsletterWrapper = styled.div`
 const MainButton = styled(Button)`
   width: 280px;
   word-break: break-word;
-  margin-top: 20px; // >= size of button drop shadow
   hyphens: none;
   ${media.s`
     width: 280px;
@@ -69,6 +67,12 @@ const StyledLink = styled(Link)`
   margin-top: 1em;
 `;
 
+const StyledRouterLink = styled(RouterLink)`
+  & + & {
+    margin-top: 1em;
+  }
+`;
+
 const SocialWrapper = styled.div`
   margin: 1em auto;
 `;
@@ -78,12 +82,20 @@ const FacebookButton = styled(FacebookIcon)`
   height: 40px;
   margin: 0 5px;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 const TwitterButton = styled(TwitterIcon)`
   width: 40px;
   height: 40px;
   margin: 0 5px;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export default () => {
@@ -95,37 +107,21 @@ export default () => {
     <>
       <FMBLogo width={88} />
       <TitleWrapper>
-        <Title>
-          <FormattedMessage
-            id="home.title"
-            defaultMessage="Hi, das ist {siteName}"
-            values={{ siteName: config.siteTitle }}
-          />
-        </Title>
+        <Title>Hi, das ist {config.siteTitle}</Title>
         <SubTitle>
-          <FormattedMessage
-            id="home.subTitle"
-            defaultMessage="Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Auf der Karte mit den Planungen sieht du, was Berlin dafür plant."
-          />
+          Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Auf der
+          Karte mit den Planungen sieht du, was Berlin dafür plant.
         </SubTitle>
       </TitleWrapper>
       <CTAWrapper>
-        <RouterLink to={config.routes.projects}>
-          <MainButton>
-            <FormattedMessage
-              id="home.mapButton"
-              defaultMessage="Gehe zur Karte"
-            />
-          </MainButton>
-        </RouterLink>
-        <RouterLink to={config.routes.research.survey}>
+        <StyledRouterLink to={config.routes.projects}>
+          <MainButton flat>Gehe zur Karte</MainButton>
+        </StyledRouterLink>
+        <StyledRouterLink to={config.routes.research.survey}>
           <SecondaryButton ghost flat>
-            <FormattedMessage
-              id="home.researchButton"
-              defaultMessage="Ergebnisse der Straßencheck-Umfrage"
-            />
+            Ergebnisse der Straßencheck-Umfrage
           </SecondaryButton>
-        </RouterLink>
+        </StyledRouterLink>
         <StyledLink
           internal
           onClick={(ev) => {
