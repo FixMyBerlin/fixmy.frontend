@@ -16,7 +16,6 @@ import history from '~/history';
 import Routes from '~/routes';
 import { RootState } from '~/store';
 import GlobalStyles from '~/styles/Global';
-import BigLoader from '~/components/BigLoader';
 import ErrorBoundary from '~/components/ErrorBoundary';
 import Menu from '~/components/Menu';
 import { verify } from '~/pages/User/UserState';
