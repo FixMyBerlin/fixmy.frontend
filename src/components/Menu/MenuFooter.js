@@ -12,9 +12,7 @@ const Footer = styled.div`
   background: ${config.colors.lightgrey};
   color: ${config.colors.darkgrey};
   padding: 1.5rem 0;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  display: block;
 `;
 
 const StyledFMBLogo = styled(FMBLogo)`
