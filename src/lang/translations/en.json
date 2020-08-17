@@ -7,15 +7,5 @@
   },
   "components.article.localeSwitcher.spanish": {
     "defaultMessage": "Spanish"
-  },
-  "research.kicker": {
-    "defaultMessage": "Research Results - Road Check",
-    "description": "above page title"
-  },
-  "research.authors": {
-    "defaultMessage": "FixMyCity Team"
-  },
-  "research.toc.introduction": {
-    "defaultMessage": "Introduction"
   }
 }

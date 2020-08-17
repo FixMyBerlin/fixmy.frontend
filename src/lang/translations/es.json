@@ -7,15 +7,5 @@
   },
   "components.article.localeSwitcher.spanish": {
     "defaultMessage": "Espanol"
-  },
-  "research.kicker": {
-    "defaultMessage": "Resultado de la investigación - control de carretera",
-    "description": "above page title"
-  },
-  "research.authors": {
-    "defaultMessage": "FixMyCity Team"
-  },
-  "research.toc.introduction": {
-    "defaultMessage": "Introducción"
   }
 }

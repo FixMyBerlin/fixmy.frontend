@@ -16,23 +16,5 @@
       "type": 0,
       "value": "Espanol"
     }
-  ],
-  "research.authors": [
-    {
-      "type": 0,
-      "value": "FixMyCity Team"
-    }
-  ],
-  "research.kicker": [
-    {
-      "type": 0,
-      "value": "Resultado de la investigación - control de carretera"
-    }
-  ],
-  "research.toc.introduction": [
-    {
-      "type": 0,
-      "value": "Introducción"
-    }
   ]
 }

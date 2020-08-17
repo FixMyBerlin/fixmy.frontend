@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import {
   ArticleWrapper,
   ArticleHeader,
-  Intro,
-  LocaleSwitcher
+  Intro
+  // LocaleSwitcher
 } from '~/components2/Article';
 
 import SectionIntroduction from './sections/02_intro';

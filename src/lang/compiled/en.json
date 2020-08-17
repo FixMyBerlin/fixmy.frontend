@@ -16,23 +16,5 @@
       "type": 0,
       "value": "Spanish"
     }
-  ],
-  "research.authors": [
-    {
-      "type": 0,
-      "value": "FixMyCity Team"
-    }
-  ],
-  "research.kicker": [
-    {
-      "type": 0,
-      "value": "Research Results - Road Check"
-    }
-  ],
-  "research.toc.introduction": [
-    {
-      "type": 0,
-      "value": "Introduction"
-    }
   ]
 }
