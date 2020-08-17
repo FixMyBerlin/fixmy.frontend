@@ -36,6 +36,11 @@ const PlusChildren = styled.div`
   }
 `;
 
+const StyledSvgIcon = styled(SvgIcon)`
+  max-width: 26px;
+  max-height: 26px;
+`;
+
 function renderItem(item) {
   switch (item.type) {
     case 'link':
@@ -46,7 +51,7 @@ function renderItem(item) {
           onClick={() => Store.dispatch(close())}
           border={item.border ? item.border.toString() : null}
         >
-          {item.icon ? <SvgIcon type={item.icon} /> : null}
+          {item.icon ? <StyledSvgIcon type={item.icon} width={26} /> : null}
           <NavItem.Label>{item.label}</NavItem.Label>
         </NavItem>
       );
@@ -59,7 +64,7 @@ function renderItem(item) {
           rel="noreferrer noopener"
           border={item.border ? item.border.toString() : null}
         >
-          {item.icon ? <SvgIcon type={item.icon} /> : null}
+          {item.icon ? <StyledSvgIcon type={item.icon} /> : null}
           {item.label}
         </AnchorItem>
       );
@@ -67,7 +72,7 @@ function renderItem(item) {
       return (
         <PlusItemWrapper key={item.label}>
           <PlusItemLabelWrapper>
-            {item.icon ? <SvgIcon type={item.icon} /> : null}
+            {item.icon ? <StyledSvgIcon type={item.icon} /> : null}
             <div>{item.label}</div>
           </PlusItemLabelWrapper>
           <PlusChildren>
