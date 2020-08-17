@@ -57,7 +57,7 @@ function renderItem(item, index) {
       to={item.link}
       index={index}
       onClick={() => Store.dispatch(close())}
-      tabindex={0}
+      tabIndex={0}
     >
       {item.label}
     </StyledLink>
