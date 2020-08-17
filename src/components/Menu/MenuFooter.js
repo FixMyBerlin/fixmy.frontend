@@ -5,16 +5,14 @@ import { Link, NavLink } from 'react-router-dom';
 import config from '~/config';
 import Store from '~/store';
 import { close } from '~/AppState';
-import FMBLogo from '~/components/FMBLogo';
+import FMBLogo from '~/components2/Logo';
 import SocialLinks from '~/components/Social/SocialLinks';
 
 const Footer = styled.div`
   background: ${config.colors.lightgrey};
   color: ${config.colors.darkgrey};
   padding: 1.5rem 0;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  display: block;
 `;
 
 const StyledFMBLogo = styled(FMBLogo)`
@@ -36,7 +34,7 @@ const StyledLink = styled(NavLink).attrs((props) => ({ to: props.to }))`
   color: #635638;
 `;
 
-const ExternalLink = styled.a`
+const ExternalLink = styled(Link)`
   padding: 4px 8px;
   text-align: center;
   text-decoration: none;
@@ -54,7 +52,13 @@ function renderItem(item, index) {
       {item.label}
     </ExternalLink>
   ) : (
-    <StyledLink key={item.label} to={item.link} index={index}>
+    <StyledLink
+      key={item.label}
+      to={item.link}
+      index={index}
+      onClick={() => Store.dispatch(close())}
+      tabIndex={0}
+    >
       {item.label}
     </StyledLink>
   );

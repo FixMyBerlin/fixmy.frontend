@@ -84,3 +84,49 @@ There are a couple of options to run e2e tests. You can
 When you are working on e2e-tests for this app please also refer to the
 collection of notes from development of the end-to-end-test-suite in
 [cypress/README.MD](cypress/README.MD).
+
+## Internationalization
+
+The platform has localization capabilities via [format.js](https://formatjs.io/).
+This means that language, formatting and other options can be customized based
+on the localization of the current user. When strings are created using the
+format specific to format.js, translations can be made by extracting, translating
+and compiling the relevant text contents. Please refer to the format.js documentation
+for information on how to create React components that are suitable for translation.
+
+Please note that IDs for translation strings are not automatically generated, as
+recommended by format.js documentation, but namespaced to the app or page the
+content is relevant for. Text for generic components is namespaced to `components`.
+
+Each locale has a language code. This app currently supports:
+
+- German (`de` language code, default language)
+- English (`en` language code)
+- Spanish (`es` language code)
+
+### Extracting
+
+Extract text content for translation from the source code by running the command
+
+```
+$ npm run extract
+```
+
+This will update the file containing the German language default text contents
+in the file [`src/lang/translations/de.json`](https://github.com/FixMyBerlin/fixmy.frontend/blob/develop/src/lang/translations/de.json).
+
+### Translating
+
+In order to create translations for the entries generated in the previous step,
+the relevant file at `/src/lang/translations/[language code].json` is updated
+with the new entries.
+
+### Compiling
+
+Run the command
+
+```
+$ npm run compile
+```
+
+to make available all new translations in an optimized format.

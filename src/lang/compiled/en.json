@@ -1,0 +1,20 @@
+{
+  "components.article.localeSwitcher.english": [
+    {
+      "type": 0,
+      "value": "English"
+    }
+  ],
+  "components.article.localeSwitcher.german": [
+    {
+      "type": 0,
+      "value": "German"
+    }
+  ],
+  "components.article.localeSwitcher.spanish": [
+    {
+      "type": 0,
+      "value": "Spanish"
+    }
+  ]
+}

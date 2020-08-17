@@ -3,10 +3,13 @@
 
 // Some vendors publish their sources without transpiling. You need to say
 // jest to transpile such files
-const esModules = ['common-tags'];
+const esModules = ['common-tags', 'ky'];
 
 module.exports = {
-  roots: ['<rootDir>/src'],
+  roots: [
+    '<rootDir>/src',
+    '<rootDir>/jest' // allow putting the mocks folder lower down than root https://github.com/facebook/jest/issues/2726#issuecomment-390625860
+  ],
   testMatch: [
     '**/__tests__/**/*.+(ts|tsx|js)',
     '**/?(*.)+(unit|integration).+(spec|test).+(ts|tsx|js)'
@@ -40,9 +43,7 @@ module.exports = {
       '<rootDir>/jest/mocks/fileMock.js',
     'images/hbi-stop-icons': '<rootDir>/jest/mocks/fileMock.js',
     // handle webpack aliases
-    '^~/(.*)$': '<rootDir>/src/$1',
-    // handle ky, see https://github.com/sindresorhus/ky/issues/170
-    '^ky$': require.resolve('ky').replace('index.js', 'umd.js')
+    '^~/(.*)$': '<rootDir>/src/$1'
   },
 
   // The root directory that Jest should scan for tests and modules within
@@ -54,5 +55,5 @@ module.exports = {
 
   // An array of regexp pattern strings that are matched against all source
   // file paths, matched files will skip transformation
-  transformIgnorePatterns: [`<rootDir>/node_modules/(?!${esModules})`]
+  transformIgnorePatterns: [`<rootDir>/node_modules/(?!${esModules.join('|')})`]
 };
