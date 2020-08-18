@@ -1,3 +1,4 @@
+import fetch from 'node-fetch';
 import logger from '~/utils/logger';
 import config from '~/config';
 
@@ -39,7 +40,7 @@ export const parseSuggestion = ({
   place_name_de: address,
   id,
   relevance,
-  properties
+  properties = {}
 }) => ({
   id,
   coords: { lng: center[0], lat: center[1] },
@@ -62,6 +63,12 @@ export async function fetchSuggestions(searchString, customBounds = null) {
 
   const url = compileSearchUrl(searchString, customBounds);
   return fetch(url, { signal })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Encountered non 2xx status code');
+      }
+      return res;
+    })
     .then((res) => res.json())
     .then((res) => res.features)
     .then((fetchedSuggestions) => {

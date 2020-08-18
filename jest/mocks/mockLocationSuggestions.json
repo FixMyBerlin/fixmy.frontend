@@ -1,0 +1,81 @@
+{
+  "//": "I stripped all actual data und entered dummy data to not get into conflicts with MapBox' terms of usage",
+  "type": "FeatureCollection",
+  "query": [
+    "hauptstraße"
+  ],
+  "features": [
+    {
+      "id": "address.123",
+      "type": "Feature",
+      "place_type": [
+        "address"
+      ],
+      "relevance": 1,
+      "properties": {
+        "accuracy": "street"
+      },
+      "text_de": "Hauptstraße",
+      "place_name_de": "Hauptstraße, 123 DummyCity, Deutschland",
+      "center": [
+        6.123,
+        50.123
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.123,
+          50.123
+        ]
+      }
+    },
+    {
+      "id": "address.234",
+      "type": "Feature",
+      "place_type": [
+        "address"
+      ],
+      "relevance": 1,
+      "properties": {
+        "accuracy": "street"
+      },
+      "text_de": "Hauptstraße",
+      "place_name_de": "Hauptstraße, 234 TestCity, Deutschland",
+      "center": [
+        6.234,
+        50.234
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.234,
+          50.234
+        ]
+      }
+    },
+    {
+      "id": "address.345",
+      "type": "Feature",
+      "place_type": [
+        "address"
+      ],
+      "relevance": 1,
+      "properties": {
+        "accuracy": "street"
+      },
+      "text_de": "Hauptstraße",
+      "place_name_de": "Hauptstraße, 345 MockVillage, Deutschland",
+      "center": [
+        6.345,
+        50.345
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.345,
+          50.345
+        ]
+      }
+    }
+  ]
+}

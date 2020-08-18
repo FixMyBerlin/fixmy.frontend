@@ -7,6 +7,11 @@ import SuggestionList from './SuggestionList';
 import { fetchSuggestions } from './apiService';
 
 class AutocompleteGeocoder extends PureComponent {
+  static ERR_SERVICE_UNAVAILABLE =
+    'Service nicht erreichbar. Bitte versuch den Standort über die Karte zu finden.';
+
+  isMounted = false;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -14,12 +19,23 @@ class AutocompleteGeocoder extends PureComponent {
     };
   }
 
+  componentDidMount() {
+    this.isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this.isMounted = false;
+  }
+
   clearSuggestions = () => this.setState({ suggestions: [] });
 
   geocodeSearchPhrase = (searchPhrase) => {
     this.clearSuggestions();
     fetchSuggestions(searchPhrase)
-      .then((suggestions) => this.setState({ suggestions }))
+      .then((suggestions) => {
+        if (!this.isMounted) return;
+        this.setState({ suggestions });
+      })
       .catch(this.handleError);
   };
 
@@ -31,9 +47,7 @@ class AutocompleteGeocoder extends PureComponent {
   handleError = (error) => {
     this.clearSuggestions();
     logger(`Error in AutocompleteGeocoder: ${error}`);
-    this.props.onError(
-      'Service nicht erreichbar. Bitte versuch den Standort über die Karte zu finden.'
-    );
+    this.props.onError(AutocompleteGeocoder.ERR_SERVICE_UNAVAILABLE);
   };
 
   onEnterPress = () => {
@@ -60,11 +74,12 @@ class AutocompleteGeocoder extends PureComponent {
           debounceTime={this.props.debounceTime}
           label={this.props.label}
         />
-
-        <SuggestionList
-          suggestions={this.state.suggestions}
-          onSuggestionPick={this.onSuggestionPick}
-        />
+        {this.state.suggestions.length && (
+          <SuggestionList
+            suggestions={this.state.suggestions}
+            onSuggestionPick={this.onSuggestionPick}
+          />
+        )}
       </>
     );
   }

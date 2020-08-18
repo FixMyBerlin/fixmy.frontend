@@ -53,7 +53,7 @@ const SearchReset = styled.div`
 `;
 
 class SearchBar extends PureComponent {
-  delayedonSearchEnterCallback = debounce(
+  delayedOnSearchEnterCb = debounce(
     this.props.onSearchEnter,
     this.props.debounceTime
   );
@@ -79,7 +79,7 @@ class SearchBar extends PureComponent {
     }
 
     if (inputValue.length >= this.props.searchStringMinLength) {
-      this.delayedonSearchEnterCallback(inputValue);
+      this.delayedOnSearchEnterCb(inputValue);
     } else {
       this.props.onSearchReset();
     }
@@ -114,7 +114,11 @@ class SearchBar extends PureComponent {
           onBlur={this.props.onInputBlur}
         />
         {this.state.inputValue ? (
-          <SearchReset onClick={this.resetInput} data-cy="map-address-reset">
+          <SearchReset
+            role="button"
+            onClick={this.resetInput}
+            data-cy="map-address-reset"
+          >
             ×
           </SearchReset>
         ) : (

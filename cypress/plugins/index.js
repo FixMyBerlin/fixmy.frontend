@@ -2,24 +2,33 @@ require('dotenv').config();
 const wp = require('@cypress/webpack-preprocessor');
 
 const log = require('debug')('cypress:plugins');
-
 const baseConfig = require('../../cypress.json');
 const webpackOptions = require('../../webpack/webpack.config.dev.js');
 
-// immediately open dev tools so we can inspect breakpoint halts
-// (when we added a "debugger" statement in our code
-const setAutoDevTools = (args) => args.push('--auto-open-devtools-for-tabs');
+/**
+ * Extend browser arguments to immediately open dev tools so we can inspect breakpoint halts
+ * (when we added a "debugger" statement in our code
+ * @param {string[]} args - Command-line args Passed when the browser is launched,
+ * see https://docs.cypress.io/api/plugins/browser-launch-api.html#Modify-browser-launch-arguments-preferences-and-extensions
+ */
+function setAutoDevTools(args) {
+  args.push('--auto-open-devtools-for-tabs');
+}
 
-// Set Chrome's window position and size
-//
-// Use an environment variable to control where the Chrome browser window will
-// be opened by Cypress. As an example:
-//
-//   CYPRESS_BROWSER_WINDOW="1920,1080;1920,0" npm run test:e2e-chrome
-//
-// would run cypress tests with a window of size 1920x1080 with its upper left
-// corner at 1920,0 on the monitor.
-const setWindowPos = (args) => {
+/**
+ * Extend browser arguments to set Chrome's window position and size
+ * Use an environment variable to control where the Chrome browser window will
+ * be opened by Cypress. As an example:
+ *
+ * $ cross-env CYPRESS_BROWSER_WINDOW="1920,1080;1920,0" npm run test:e2e-chrome
+ *
+ * would run cypress tests with a window of size 1920x1080 with its upper left
+ * corner at 1920,0 on the monitor.
+ *
+ * @param {string[]} args - Command-line args Passed when the browser is launched,
+ * see https://docs.cypress.io/api/plugins/browser-launch-api.html#Modify-browser-launch-arguments-preferences-and-extensions
+ */
+function setWindowPos(args) {
   const { cypressBrowserWindow } = process.env;
   if (cypressBrowserWindow == null) return;
 
@@ -29,7 +38,7 @@ const setWindowPos = (args) => {
     `--window-size=${windowSize}`,
     `--window-position=${windowPosition}`
   );
-};
+}
 
 /**
  * Generate an array of pattern for selecting tests to run
@@ -40,7 +49,7 @@ const setWindowPos = (args) => {
  *
  * @returns string[] A list of file patterns
  */
-const getPatternsForRegion = () => {
+function getPatternsForRegion() {
   const makePattern = (page) => `**/${page}/**/*.e2e.test.js`;
 
   const region = process.env.REGION;
@@ -53,20 +62,21 @@ const getPatternsForRegion = () => {
     log('No test whitelist defined for region, using default');
 
   return patterns;
-};
+}
 
-module.exports = (on, config) => {
+const DynamicCypressConfig = (on, config) => {
   // only include certain tests
   const testFiles = getPatternsForRegion();
 
   // modify the way browsers are launched,
   // see https://docs.cypress.io/api/plugins/browser-launch-api.html#Usage
-  on('before:browser:launch', (browser = {}, args) => {
+  on('before:browser:launch', (browser = {}, launchOptions) => {
     if (browser.name === 'chrome') {
+      const { args } = launchOptions;
       setAutoDevTools(args);
       setWindowPos(args);
     }
-    return args;
+    return launchOptions;
   });
 
   on('file:preprocessor', wp({ webpackOptions }));
@@ -79,3 +89,5 @@ module.exports = (on, config) => {
     env: process.env
   };
 };
+
+module.exports = DynamicCypressConfig;
