@@ -15,7 +15,12 @@ module.exports = (api) => {
   const plugins = [
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-class-properties',
+    [
     'babel-plugin-styled-components',
+      {
+        displayName: true
+      }
+    ],
     'babel-plugin-idx',
     '@babel/plugin-proposal-optional-chaining',
     'react-hot-loader/babel'
@@ -28,16 +33,7 @@ module.exports = (api) => {
     test: {
       plugins: ['transform-es2015-modules-commonjs']
     },
-    production: {
-      plugins: [
-        [
-          'babel-plugin-styled-components',
-          {
-            displayName: true
-          }
-        ]
-      ]
-    }
+    production: {}
   };
 
   return {
