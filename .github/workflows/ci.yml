@@ -1,28 +1,25 @@
-name: Continuous Integration
+name: Node.js CI
 
-on:
-  pull_request:
-    branches: [ develop ]
+on: [push]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
     steps:
-
-#     - name: Read .nvmrc
-#       run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-#       id: nvm
-
-    - name: Setup node
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        node-version: 'v10.16.3'
-
-    - run: npm ci
-    - run: npm run build
-    - run: npm run test:coverage
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm run build --if-present
+    - run: npm test
       
     - name: Code Coverage Report
       uses: romeovs/lcov-reporter-action@v0.2.16
