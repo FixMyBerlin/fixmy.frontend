@@ -81,7 +81,10 @@ module.exports = {
             query: { cacheDirectory: true }
           },
           {
-            loader: 'ts-loader'
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true
+            }
           }
         ],
         include: [Path.resolve(__dirname, '../src')]
