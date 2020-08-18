@@ -14,7 +14,7 @@ const INDEX_HTML =
 
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'eval-source-map',
   devServer: {
     clientLogLevel: 'silent',
     historyApiFallback: true,
