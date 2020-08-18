@@ -48,14 +48,12 @@ module.exports = (api) => {
       {
         test: './node_modules/debug/**/*.js',
         sourceType: 'script',
-        presets: [
-          [
-            '@babel/preset-env',
-            {
-              /* other options */
-            }
-          ]
-        ]
+        presets: ['@babel/preset-env']
+      },
+      {
+        test: './node_modules/@mapbox/mapbox-gl-draw/**/*.js',
+        sourceType: 'script',
+        presets: ['@babel/preset-env']
       }
     ]
   };
