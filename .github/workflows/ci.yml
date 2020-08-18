@@ -11,15 +11,20 @@ jobs:
 
     steps:
 
-    - name: Read .nvmrc
-      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-      id: nvm
+#     - name: Read .nvmrc
+#       run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+#       id: nvm
 
     - name: Setup node
       uses: actions/setup-node@v1
       with:
-        node-version: '${{ steps.nvm.outputs.NVMRC }}'
+        node-version: 'v10.16.3'
 
     - run: npm ci
     - run: npm run build
     - run: npm run test:coverage
+      
+    - name: Code Coverage Report
+      uses: romeovs/lcov-reporter-action@v0.2.16
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
