@@ -10,7 +10,13 @@
     "plugin:chai-friendly/recommended"
   ],
 
-  "plugins": ["prettier", "chai-friendly", "formatjs"],
+  "plugins": [
+    "prettier",
+    "chai-friendly",
+    "jest-dom",
+    "formatjs",
+    "testing-library"
+  ],
 
   "overrides": [
     {
@@ -34,7 +40,6 @@
         "no-dupe-class-members": "off",
         // 'tsc' already handles this (https://github.com/typescript-eslint/typescript-eslint/issues/477)
         "no-undef": "off",
-
         // Add TypeScript specific rules (and turn off ESLint equivalents)
         "@typescript-eslint/consistent-type-assertions": "warn",
         "no-array-constructor": "off",
@@ -83,10 +88,7 @@
         "tsx": "never"
       }
     ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": ["**/*.test.js", "**/*.spec.js", "cypress/**/*"] }
-    ]
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
   },
 
   "env": {

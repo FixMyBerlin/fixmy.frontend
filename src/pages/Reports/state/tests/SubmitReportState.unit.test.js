@@ -354,9 +354,9 @@ describe('SubmitReportState reducer and actions', () => {
 
         // mock failing request
 
-        const errroMsg = 'failed to submit';
+        const errorMsg = 'failed to submit';
         fetchMock.postOnce(reportsEndpointUrl, {
-          throws: errroMsg
+          throws: errorMsg
         });
 
         const expectedActions = [
@@ -370,7 +370,7 @@ describe('SubmitReportState reducer and actions', () => {
         try {
           await store.dispatch(actions.submitReport());
         } catch (e) {
-          expect(e).toEqual(errroMsg);
+          expect(e).toEqual(errorMsg);
         }
 
         const actionsProduced = store
