@@ -11,16 +11,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      
     - name: Use Node.js
       uses: actions/setup-node@v1
       with:
         node-version: 'v10.16.3'
-        
+
+    - name: Cache node modules
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+          
     - run: npm ci
     - run: npm run build 
-    - run: npm run test:coverage
-      
-    - name: Code Coverage Report
-      uses: romeovs/lcov-reporter-action@v0.2.16
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+    - run: npm run test
