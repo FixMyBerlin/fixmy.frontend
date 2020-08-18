@@ -226,10 +226,6 @@ const checkEmbeddedParam = (value) => {
   return false;
 };
 
-const LANDING_PATH_NATIONAL =
-  process.env.BASE_NAME.slice(0, -1) +
-  config.routes.katasterKI?.landingNational;
-
 const Landing = ({ location }) => {
   if (checkEmbeddedParam(location.search)) {
     return <Redirect to={`${config.routes.katasterKI.profileBase}/1`} />;
@@ -238,7 +234,7 @@ const Landing = ({ location }) => {
   const isMobile = isSmallScreen();
 
   const isNationalVersion = matchPath(window.location.pathname, {
-    path: LANDING_PATH_NATIONAL,
+    path: config.routes.katasterKI?.landingNational,
     exact: true
   });
 

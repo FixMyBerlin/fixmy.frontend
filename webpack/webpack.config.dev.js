@@ -7,11 +7,6 @@ const Webpack = require('webpack');
 
 const common = require('./webpack.common.js');
 
-const INDEX_HTML =
-  process.env.KATASTER_PATH != null
-    ? '../src/pages/KatasterKI/index_tsp.html'
-    : '../src/index.html';
-
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'eval-source-map',
@@ -34,7 +29,7 @@ module.exports = merge(common, {
       inject: true,
       siteUrl: 'http://localhost:8080',
       title: 'FixMyBerlin DevServer',
-      template: Path.resolve(__dirname, INDEX_HTML)
+      template: Path.resolve(__dirname, '../src/index.html')
     }),
     new CopyWebpackPlugin([
       { from: Path.resolve(__dirname, '../public/lab'), to: 'lab' }

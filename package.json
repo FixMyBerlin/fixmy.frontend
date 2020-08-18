@@ -136,7 +136,6 @@
     "geojson-prop-types": "^0.2.0",
     "history": "^4.10.1",
     "idx": "^2.5.6",
-    "iframe-resizer-react": "^1.0.3",
     "intersection-observer": "^0.10.0",
     "jsonschema": "^1.2.6",
     "ky": "^0.19.0",

@@ -5,9 +5,7 @@ import config from '~/config';
 
 const piwikSiteId = config.piwik.siteId[config.region] || 1;
 
-const browserHistory = createBrowserHistory({
-  basename: process.env.BASE_NAME
-});
+const browserHistory = createBrowserHistory();
 
 // piwik-react-router has an open issue where it will try and attach a
 // script tag in the dom, which doesn't work in a Jest environment.
