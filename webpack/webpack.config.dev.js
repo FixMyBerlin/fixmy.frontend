@@ -1,9 +1,9 @@
+const Autoprefixer = require('autoprefixer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
 const Path = require('path');
 const Webpack = require('webpack');
-const merge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
 
@@ -25,6 +25,7 @@ module.exports = merge(common, {
     progress: true,
     stats: 'minimal'
   },
+  cache: true,
   output: {
     chunkFilename: 'js/[name].chunk.js'
   },
@@ -47,7 +48,8 @@ module.exports = merge(common, {
         enforce: 'pre',
         loader: 'eslint-loader',
         options: {
-          emitWarning: true
+          emitWarning: true,
+          cache: true
         }
       },
       {

@@ -71,13 +71,14 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/whatwg-url'),
           Path.resolve(__dirname, '../src')
         ],
-        use: 'babel-loader'
+        use: [{ loader: 'babel-loader', query: { cacheDirectory: true } }]
       },
       {
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            query: { cacheDirectory: true }
           },
           {
             loader: 'ts-loader'
