@@ -1,20 +1,15 @@
+const Autoprefixer = require('autoprefixer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
 const Path = require('path');
 const Webpack = require('webpack');
-const merge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
 
-const INDEX_HTML =
-  process.env.KATASTER_PATH != null
-    ? '../src/pages/KatasterKI/index_tsp.html'
-    : '../src/index.html';
-
 module.exports = merge(common, {
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'eval-source-map',
   devServer: {
     clientLogLevel: 'silent',
     historyApiFallback: true,
@@ -25,6 +20,7 @@ module.exports = merge(common, {
     progress: true,
     stats: 'minimal'
   },
+  cache: true,
   output: {
     chunkFilename: 'js/[name].chunk.js'
   },
@@ -33,7 +29,7 @@ module.exports = merge(common, {
       inject: true,
       siteUrl: 'http://localhost:8080',
       title: 'FixMyBerlin DevServer',
-      template: Path.resolve(__dirname, INDEX_HTML)
+      template: Path.resolve(__dirname, '../src/index.html')
     }),
     new CopyWebpackPlugin([
       { from: Path.resolve(__dirname, '../public/lab'), to: 'lab' }
@@ -47,7 +43,8 @@ module.exports = merge(common, {
         enforce: 'pre',
         loader: 'eslint-loader',
         options: {
-          emitWarning: true
+          emitWarning: true,
+          cache: true
         }
       },
       {

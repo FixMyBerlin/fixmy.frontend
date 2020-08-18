@@ -1,5 +1,3 @@
-const katasterPath = process.env.KATASTER_PATH || '';
-
 interface RouteConfig {
   // optional routes
   projects?: string;
@@ -40,16 +38,15 @@ const routes: RouteConfig = {
     new: '/meldungen/radbuegel/friedrichshain-kreuzberg/neu'
   },
   katasterKI: {
-    landing: katasterPath || '/',
-    landingNational: `${katasterPath}/de`,
-    profileBase: `${katasterPath}/profil`,
-    profile: `${katasterPath}/profil/:page`,
-    scenesBase: `${katasterPath}/szenen`,
-    scenes: `${katasterPath}/szenen/:page`,
-    share: `${katasterPath}/teilen`,
-    feedback: `${katasterPath}/auswertung`,
-    iframe: `${katasterPath}/iFrame-test`,
-    email: `${katasterPath}/email`
+    landing: '/strassencheck',
+    landingNational: `/strassencheck/de`,
+    profileBase: `/strassencheck/profil`,
+    profile: `/strassencheck/profil/:page`,
+    scenesBase: `/strassencheck/szenen`,
+    scenes: `/strassencheck/szenen/:page`,
+    share: `/strassencheck/teilen`,
+    feedback: `/strassencheck/auswertung`,
+    email: `/strassencheck/email`
   },
   spielstrassen: {
     landing: '/friedrichshain-kreuzberg/spielstrassen',

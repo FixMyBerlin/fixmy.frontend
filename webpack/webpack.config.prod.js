@@ -10,17 +10,9 @@ const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
 
-const INDEX_HTML =
-  process.env.KATASTER_PATH != null
-    ? '../src/pages/KatasterKI/index_tsp.html'
-    : '../src/index.html';
-
 let siteUrl;
 let title;
-if (process.env.KATASTER_PATH != null) {
-  siteUrl = '/strassencheck';
-  title = 'Der große Straßencheck';
-} else if (process.env.REGION === 'aachen') {
+if (process.env.REGION === 'aachen') {
   siteUrl = 'https://radbuegel-aachen.de';
   title = 'Radbügel für Aachen';
 } else if (process.env.REGION === 'eichwalde') {
@@ -52,7 +44,7 @@ module.exports = merge(common, {
       inject: true,
       siteUrl,
       title,
-      template: Path.resolve(__dirname, INDEX_HTML),
+      template: Path.resolve(__dirname, '../src/index.html'),
       minify: false
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
