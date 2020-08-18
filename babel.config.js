@@ -7,7 +7,7 @@ module.exports = (api) => {
       '@babel/preset-env',
       {
         useBuiltIns: 'usage',
-        corejs: 3
+        corejs: { version: '3.6', proposals: true }
       }
     ]
   ];
@@ -16,7 +16,7 @@ module.exports = (api) => {
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-class-properties',
     [
-    'babel-plugin-styled-components',
+      'babel-plugin-styled-components',
       {
         displayName: true
       }
