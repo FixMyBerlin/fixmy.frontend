@@ -43,13 +43,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
-    - name: Use Node.js
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v1
       with:
         node-version: 'v10.16.3'
         
-    - name: Cache node modules
-      uses: actions/cache@v2
+    - uses: actions/cache@v2
       env:
         cache-name: cache-node-modules
       with:
@@ -62,9 +60,10 @@ jobs:
           
     - run: npm ci
 
-    - name: Run linters
-      uses: wearerequired/lint-action@v1
+    - uses: wearerequired/lint-action@v1
       with:
         github_token: ${{ secrets.github_token }}
         eslint: true
+        eslint_dir: 'src'
         prettier: true
+        prettier_dir: 'src'
