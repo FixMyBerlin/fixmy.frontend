@@ -13,9 +13,15 @@
     "test:e2e": "cypress run",
     "test:e2e-chrome": "cypress run --browser chrome",
     "test:e2e-dev-server": "start-server-and-test start http://localhost:8080 test:e2e",
+    "test:e2e-interactive": "cypress open",
     "generate-kataster-schema": "./src/pages/KatasterKI/scheme/generate.sh",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "extract": "formatjs extract 'src/**/*.ts*' --out-file src/lang/translations/de.json",
+    "compile": "npm run compile:de; npm run compile:en; npm run compile:es",
+    "compile:de": "formatjs compile src/lang/translations/de.json --ast --out-file src/lang/compiled/de.json",
+    "compile:en": "formatjs compile src/lang/translations/en.json --ast --out-file src/lang/compiled/en.json",
+    "compile:es": "formatjs compile src/lang/translations/es.json --ast --out-file src/lang/compiled/es.json"
   },
   "repository": {
     "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
@@ -33,6 +39,7 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
     "@cypress/webpack-preprocessor": "^4.1.5",
+    "@formatjs/cli": "^2.6.0",
     "@storybook/addon-links": "^5.3.14",
     "@storybook/addons": "^5.3.14",
     "@storybook/react": "^5.3.14",
@@ -42,6 +49,7 @@
     "@testing-library/user-event": "^12.0.11",
     "@types/fetch-mock": "^7.3.2",
     "@types/jest": "^24.9.1",
+    "@types/node-fetch": "^2.5.5",
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.32",
     "@types/react-redux": "^7.1.7",
@@ -73,6 +81,7 @@
     "eslint-loader": "^3.0.4",
     "eslint-plugin-chai-friendly": "^0.5.0",
     "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-formatjs": "^2.6.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest-dom": "^3.0.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -116,6 +125,7 @@
     "@turf/boolean-within": "^6.0.1",
     "@turf/helpers": "^6.1.4",
     "@turf/length": "^6.0.2",
+    "@types/debug": "^4.1.5",
     "@types/geojson": "^7946.0.7",
     "@types/mapbox-gl": "^1.11.1",
     "@types/node": "^13.11.0",
@@ -137,7 +147,7 @@
     "iframe-resizer-react": "^1.0.3",
     "intersection-observer": "^0.10.0",
     "jsonschema": "^1.2.6",
-    "ky": "^0.17.0",
+    "ky": "^0.19.0",
     "ky-universal": "^0.5.0",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
@@ -155,6 +165,7 @@
     "react-feather": "^2.0.3",
     "react-hot-loader": "^4.12.20",
     "react-intersection-observer": "^8.26.2",
+    "react-intl": "^5.4.7",
     "react-markdown": "^4.3.1",
     "react-piwik": "^1.8.0",
     "react-rangeslider": "^2.2.0",
@@ -176,5 +187,8 @@
     "uuid": "^3.4.0",
     "victory": "^34.1.3",
     "whatwg-fetch": "^3.0.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.1.3"
   }
 }

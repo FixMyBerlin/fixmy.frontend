@@ -32,13 +32,18 @@ Cypress.Commands.add('fmbGoToProfile', (profile = 1) => {
     onBeforeLoad: (win) => {
       // eslint-disable-next-line no-param-reassign
       win.initialState = {
-        ...productionDefaultState,
-        introSelection: [0, 1, 2]
+        KatasterKIState: {
+          ...productionDefaultState,
+          introSelection: [0, 1, 2]
+        }
       };
     }
   });
 });
 
+/**
+ * Set global Redux state and visit a URL
+ */
 Cypress.Commands.add('visitWithState', (route, state = null) => {
   cy.visit(route, {
     onBeforeLoad: (win) => {
@@ -48,7 +53,6 @@ Cypress.Commands.add('visitWithState', (route, state = null) => {
       }
     }
   });
-  // if (cy.url() !== route) cy.window().then((win) => win.appHistory.push(route));
 });
 
 Cypress.Commands.add('fmbReturnToScene', (scene = 1) => {

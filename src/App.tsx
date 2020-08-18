@@ -1,24 +1,30 @@
 import 'react-hot-loader'; // keep first
 
-import React, { Suspense, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { IntlProvider, IntlConfig } from 'react-intl';
+import { connect, useSelector } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
 import ReactPiwik from 'react-piwik';
 import styled from 'styled-components';
 import { Router } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
 import { ThemeProvider } from '@material-ui/styles';
-import { createMuiTheme } from '@material-ui/core';
+import debug from 'debug';
+import { Theme } from '@material-ui/core';
 
-import config from '~/config';
 import history from '~/history';
+import Routes from '~/routes';
+import { RootState } from '~/store';
 import GlobalStyles from '~/styles/Global';
-import BigLoader from '~/components/BigLoader';
 import ErrorBoundary from '~/components/ErrorBoundary';
 import Menu from '~/components/Menu';
 import { verify } from '~/pages/User/UserState';
+import { getTheme } from '~/styles/mui-utils';
 
-import Routes from './routes';
+import defaultMessages from '~/lang/compiled/de.json';
+import loadLocaleMessages from './lang/loader';
+
+const log = debug('fmc');
 
 const AppContent = styled.div`
   width: 100%;
@@ -30,17 +36,23 @@ const AppWrapper = styled.div`
   position: relative;
 `;
 
-export const theme = createMuiTheme({
-  palette: {
-    primary: { main: config.colors.interaction },
-    secondary: { main: config.colors.change_4 },
-    error: { main: config.colors.error },
-    info: { main: config.colors.interaction },
-    success: { main: config.colors.label_01 }
-  }
-});
-
 const App = ({ dispatch, isEmbedMode }) => {
+  log('rendering app');
+  const locale = useSelector((state: RootState) => state.AppState.locale);
+  const [messages, setMessages] = useState<IntlConfig['messages']>(
+    defaultMessages
+  );
+  const [theme, setTheme] = useState<Theme>(getTheme(locale));
+
+  useEffect(() => {
+    log('switching to locale', locale);
+    const doLoad = async () => {
+      setMessages(await loadLocaleMessages(locale));
+      setTheme(getTheme(locale));
+    };
+    doLoad();
+  }, [locale]);
+
   useEffect(() => {
     dispatch(verify());
 
@@ -50,9 +62,9 @@ const App = ({ dispatch, isEmbedMode }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <Router history={history}>
-        <Suspense fallback={<BigLoader />}>
+      <IntlProvider messages={messages} locale={locale} defaultLocale="de">
+        <GlobalStyles />
+        <Router history={history}>
           <LastLocationProvider>
             <AppWrapper>
               {!isEmbedMode && <Menu />}
@@ -63,8 +75,8 @@ const App = ({ dispatch, isEmbedMode }) => {
               </AppContent>
             </AppWrapper>
           </LastLocationProvider>
-        </Suspense>
-      </Router>
+        </Router>
+      </IntlProvider>
     </ThemeProvider>
   );
 };

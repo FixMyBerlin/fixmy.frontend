@@ -7,6 +7,7 @@ import FeelSafe, {
   FeelsafeIcon
 } from '~/pages/Research/components/FeelSafe';
 import { media } from '~/styles/utils';
+import config from '~/config';
 
 const ImageWrapper = styled.div`
   display: flex;
@@ -55,7 +56,7 @@ const ImageWrapperSimple = styled(ImageWrapperFull)`
 `;
 
 const Subtitle = styled.div`
-  color: ${(props) => props.theme.grey500};
+  color: ${config.colors.darkgrey};
   font-size: 0.75rem;
   margin-top: 5px;
   padding: 0 0.5em;
@@ -69,6 +70,8 @@ interface InnerImageProps extends ImageProps {
 
 const InnerImg = ({
   source,
+  alt,
+  role = null,
   feelsafe = null,
   subtitle = null,
   feelsafeSize = 'small',
@@ -76,7 +79,7 @@ const InnerImg = ({
   children = null
 }: InnerImageProps) => (
   <>
-    <Img src={source} />
+    <Img src={source} alt={alt} role={role} />
     {feelsafe && (
       <FeelSafe value={feelsafe} size={feelsafeSize} icon={feelsafeIcon} />
     )}
@@ -91,12 +94,21 @@ export const ImageMulti = ({ children }) => (
 
 interface ImageMultiInnerProps {
   source: string;
+  alt?: string;
+  role?: string;
   children: React.ReactNode | React.ReactNode[];
 }
 
-const ImageMultiInner = ({ source, children }: ImageMultiInnerProps) => (
+const ImageMultiInner = ({
+  source,
+  alt,
+  role = null,
+  children
+}: ImageMultiInnerProps) => (
   <ImageSpacer>
-    <InnerImg source={source}>{children}</InnerImg>
+    <InnerImg source={source} alt={alt} role={role}>
+      {children}
+    </InnerImg>
   </ImageSpacer>
 );
 
@@ -105,6 +117,8 @@ ImageMulti.Subtitle = Subtitle;
 
 interface ImageProps {
   source: string;
+  alt?: string; // required for accessibility
+  role?: string; // for purely decorative images set alt="" role="presentation"
   feelsafe?: number;
   feelsafeIcon?: FeelsafeIcon;
   subtitle?: string;
@@ -112,12 +126,16 @@ interface ImageProps {
 
 export const Image = ({
   source,
+  alt,
+  role = null,
   feelsafe = null,
   subtitle = null
 }: ImageProps) => (
   <ImageWrapperSimple>
     <InnerImg
       source={source}
+      alt={alt}
+      role={role}
       feelsafe={feelsafe || null}
       subtitle={subtitle || null}
     />
@@ -126,12 +144,16 @@ export const Image = ({
 
 export const ImageFull = ({
   source,
+  alt,
+  role = null,
   feelsafe = null,
   subtitle = null
 }: ImageProps) => (
   <ImageWrapperFull>
     <InnerImg
       source={source}
+      alt={alt}
+      role={role}
       feelsafe={feelsafe || null}
       subtitle={subtitle || null}
       feelsafeSize="big"

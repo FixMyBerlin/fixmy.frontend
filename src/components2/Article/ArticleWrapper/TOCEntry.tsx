@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { StyledProps } from 'styled-components';
 import slugify from 'slugify';
 
 import config from '~/config';
@@ -26,7 +26,7 @@ const TOCEntryWrapper = styled.a<TOCEntryWrapperProps>`
     text-align: right;
     margin-bottom: 25px;
     padding-right: 25px;
-    border-right: ${(props) =>
+    border-right: ${(props: StyledProps<TOCEntryWrapperProps>) =>
       props.active ? `3px solid ${config.colors.interaction}` : 'none'};
   `}
 `;
@@ -50,17 +50,14 @@ const TOCEntrySeparator = styled.div`
   `}
 `;
 
-interface EntryText {
-  active?: boolean;
-}
-
-const TOCEntryText = styled.div<EntryText>`
+const TOCEntryText = styled.div<TOCEntryWrapperProps>`
   ${media.xl`
-    font-weight: ${(props: EntryText) => (props.active ? 700 : 300)};
+    font-weight: ${(props: StyledProps<TOCEntryWrapperProps>) =>
+      props.active ? 700 : 300};
   `}
 `;
 
-const padIndex = (index) => {
+const padIndex = (index: number) => {
   return index < 10 ? `0${index}` : index;
 };
 

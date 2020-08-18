@@ -41,4 +41,5 @@ const defaultState = {
   }
 };
 
-export default (window.Cypress && window.initialState) || defaultState;
+export default (window.Cypress && window.initialState?.ReportsState) ||
+  defaultState;

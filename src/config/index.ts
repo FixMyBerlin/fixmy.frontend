@@ -3,7 +3,7 @@ import berlin from './berlin';
 import aachen from './aachen';
 import eichwalde from './eichwalde';
 
-type Region = 'eichwalde' | 'berlin' | 'aachen';
+export type Region = 'eichwalde' | 'berlin' | 'aachen';
 
 const region = (process.env.REGION as Region) || 'berlin';
 
@@ -27,12 +27,12 @@ type BerlinConfig = typeof defaultConfig &
   };
 
 type AachenConfig = typeof defaultConfig &
-  typeof berlin & {
+  typeof aachen & {
     region: 'aachen';
   };
 
 type EichwaldeConfig = typeof defaultConfig &
-  typeof berlin & {
+  typeof eichwalde & {
     region: 'eichwalde';
   };
 

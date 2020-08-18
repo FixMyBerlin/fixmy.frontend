@@ -336,45 +336,8 @@ const SectionResults = ({ toc }) => (
         data={[51, 35, 12, 2]}
         feelsafe={15}
       />
-      {/*
-      <BarChart
-        title="ohne RVA (Seltenfahrer)"
-        data={[58, 29, 10, 4]}
-        feelsafe={12.87}
-      />
-      <BarChart
-        title="ohne RVA (weiblich)"
-        data={[58, 31, 9, 2]}
-        feelsafe={10.52}
-      />
-      <BarChart
-        title="ohne RVA (männlich)"
-        data={[48, 35, 14, 3]}
-        feelsafe={16.15}
-      />
-      <BarChart
-        title="ohne RVA (U 30)"
-        data={[60, 29, 8, 3]}
-        feelsafe={9.70}
-      />
-      <BarChart
-        title="ohne RVA (30-63)"
-        data={[52, 33, 12, 3]}
-        feelsafe={14.24}
-      />
-      <BarChart
-        title="ohne RVA (Ü 64)"
-        data={[42, 42, 12, 4]}
-        feelsafe={15.10}
-      />
-       */}
     </BarChart.Wrapper>
-    {/*
-    <Paragraph>
-      Weitere Auswertungen nach Nutzermerkmalen finden Sie hier:{' '}
-      <Link href="https://fixmyberlin.de">Jupyter Notebook</Link>
-    </Paragraph>
- */}
+
     <Heading as="h3">Ruhender Verkehr erzeugt zusätzliche Konflikte</Heading>
     <Paragraph>
       Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das

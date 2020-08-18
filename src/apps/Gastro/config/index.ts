@@ -19,6 +19,7 @@ const defaultConfig = {
     thanks: '/danke',
     registration: '/registrierung/:id/:accessKey',
     registrationThanks: '/registrierung/danke',
+    renewal: '/folgeantrag/:id/:accessKey',
     directory: '/verzeichnis/',
     directoryEntry: '/verzeichnis/:id',
     permit: '/verzeichnis/:id/genehmigung',

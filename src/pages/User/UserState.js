@@ -233,3 +233,8 @@ export default function MapStateReducer(state = initialState, action = {}) {
       return state;
   }
 }
+
+// selectors
+export const selectors = {
+  getToken: (state) => state.UserState.token
+};

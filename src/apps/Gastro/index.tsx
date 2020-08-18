@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import debug from 'debug';
 
 import config from './config';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
@@ -8,6 +9,8 @@ import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
 import { setDistrict } from '~/AppState';
 
 import Routes from './routes';
+
+const log = debug('fmc:gastro');
 
 const AppStyles = styled.div`
   font-size: 16px;
@@ -67,6 +70,7 @@ const AppStyles = styled.div`
 
 const Gastro = ({ districtName, district, dispatch }) => {
   useEffect(() => {
+    log('setting district', districtName);
     dispatch(setDistrict(districtName));
   }, [districtName]);
   // Skip rendering until redux action has taken effect

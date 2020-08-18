@@ -10,7 +10,13 @@
     "plugin:chai-friendly/recommended"
   ],
 
-  "plugins": ["prettier", "chai-friendly", "jest-dom", "testing-library"],
+  "plugins": [
+    "prettier",
+    "chai-friendly",
+    "jest-dom",
+    "formatjs",
+    "testing-library"
+  ],
 
   "overrides": [
     {
@@ -82,10 +88,7 @@
         "tsx": "never"
       }
     ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      { "devDependencies": true }
-    ]
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
   },
 
   "env": {
