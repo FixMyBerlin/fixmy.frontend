@@ -1,6 +1,6 @@
 import 'react-hot-loader'; // keep first
 
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IntlProvider, IntlConfig } from 'react-intl';
 import { connect, useSelector } from 'react-redux';
 import { hot } from 'react-hot-loader/root';
@@ -16,7 +16,6 @@ import history from '~/history';
 import Routes from '~/routes';
 import { RootState } from '~/store';
 import GlobalStyles from '~/styles/Global';
-import BigLoader from '~/components/BigLoader';
 import ErrorBoundary from '~/components/ErrorBoundary';
 import Menu from '~/components/Menu';
 import { verify } from '~/pages/User/UserState';
@@ -66,18 +65,16 @@ const App = ({ dispatch, isEmbedMode }) => {
       <IntlProvider messages={messages} locale={locale} defaultLocale="de">
         <GlobalStyles />
         <Router history={history}>
-          <Suspense fallback={<BigLoader />}>
-            <LastLocationProvider>
-              <AppWrapper>
-                {!isEmbedMode && <Menu />}
-                <AppContent>
-                  <ErrorBoundary>
-                    <Routes />
-                  </ErrorBoundary>
-                </AppContent>
-              </AppWrapper>
-            </LastLocationProvider>
-          </Suspense>
+          <LastLocationProvider>
+            <AppWrapper>
+              {!isEmbedMode && <Menu />}
+              <AppContent>
+                <ErrorBoundary>
+                  <Routes />
+                </ErrorBoundary>
+              </AppContent>
+            </AppWrapper>
+          </LastLocationProvider>
         </Router>
       </IntlProvider>
     </ThemeProvider>

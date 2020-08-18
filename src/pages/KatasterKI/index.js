@@ -70,24 +70,18 @@ const Gradient = styled.div`
   );
 `;
 
-/** Define the path for the landing page to be able to check whether it's active
- *
- * The path is prepended with the BASE_NAME env var, which
- * ends with a "/" that is then duplicated at the beinning of the configured
- * landing page path, which is why it is remove with slice.
+/** Return true if currently on landing page
  *
  * @param {string} path current window.location.pathname
  */
 const isLandingPage = (path) => {
-  const LANDING_PATH =
-    process.env.BASE_NAME.slice(0, -1) + config.routes.katasterKI.landing;
-  const isLanding = matchPath(path, { path: LANDING_PATH, exact: true });
+  const isLanding = matchPath(path, {
+    path: config.routes.katasterKI.landing,
+    exact: true
+  });
 
-  const LANDING_PATH_NATIONAL =
-    process.env.BASE_NAME.slice(0, -1) +
-    config.routes.katasterKI?.landingNational;
   const isLandingNational = matchPath(path, {
-    path: LANDING_PATH_NATIONAL,
+    path: config.routes.katasterKI?.landingNational,
     exact: true
   });
 

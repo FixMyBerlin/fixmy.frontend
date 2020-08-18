@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
@@ -13,17 +13,19 @@ import ResetPassword from '~/pages/User/pages/ResetPassword';
 import UserVerify from '~/pages/User/pages/Verify';
 import ZESPlusResearch from '~/pages/ZESPlus-Research';
 
+import Analysis from '~/pages/Analysis';
+import KatasterKI from '~/pages/KatasterKI';
+import MapView from '~/pages/Map';
+import Markdown from '~/pages/Markdown';
+import Reports from '~/pages/Reports';
 import Research from '~/pages/Research';
 
-const Analysis = lazy(() => import('~/pages/Analysis'));
-const KatasterKI = lazy(() => import('~/pages/KatasterKI'));
-const MapView = lazy(() => import('~/pages/Map'));
-const Markdown = lazy(() => import('~/pages/Markdown'));
-const Reports = lazy(() => import('~/pages/Reports'));
+import Gastro from '~/apps/Gastro';
+import Spielstrassen from '~/apps/Spielstrassen';
 
 const apps = {
-  gastro: lazy(() => import('~/apps/Gastro')),
-  spielstrassen: lazy(() => import('~/apps/Spielstrassen'))
+  gastro: Gastro,
+  spielstrassen: Spielstrassen
 };
 
 const District = (name) => {
