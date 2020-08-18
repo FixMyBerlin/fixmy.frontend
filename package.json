@@ -5,7 +5,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack-dev-server",
-    "lint": "eslint src",
+    "lint": "eslint .",
     "test": "jest --verbose --config=jest/jest.config.js",
     "test:watch": "npm run test  -- --watch --verbose false",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.{js,ts,tsx}",
