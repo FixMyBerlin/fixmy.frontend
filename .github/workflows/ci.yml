@@ -1,6 +1,9 @@
 name: Node.js CI
 
-on: [push, pull_request]
+on: 
+  pull_request:
+  push:
+    branches: ['master', 'develop']
 
 jobs:
   tests:
@@ -8,11 +11,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        
+      - name: Read node version from .nvmrc
+        id: nvmrc
+        uses: browniebroke/read-nvmrc-action@v1
 
-      - name: Use Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
-          node-version: 'v10.16.3'
+          node-version: '${{ steps.nvmrc.outputs.node_version }}'
 
       - name: Cache node modules
         uses: actions/cache@v2
@@ -38,10 +44,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        
+      - name: Read node version from .nvmrc
+        id: nvmrc
+        uses: browniebroke/read-nvmrc-action@v1
 
       - uses: actions/setup-node@v1
         with:
-          node-version: 'v10.16.3'
+          node-version: '${{ steps.nvmrc.outputs.node_version }}'
 
       - uses: actions/cache@v2
         env:
