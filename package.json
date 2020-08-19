@@ -5,10 +5,10 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack-dev-server",
-    "lint": "eslint src",
+    "lint": "eslint .",
     "test": "jest --verbose --config=jest/jest.config.js",
     "test:watch": "npm run test  -- --watch --verbose false",
-    "test:coverage": "npm run test -- --coverage --collectCoverageFrom=**/state/*",
+    "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.{js,ts,tsx}",
     "cypress": "cypress",
     "test:e2e": "cypress run",
     "test:e2e-chrome": "cypress run --browser chrome",
