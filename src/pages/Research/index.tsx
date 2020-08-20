@@ -1,6 +1,5 @@
 import React from 'react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { connect } from 'react-redux';
 
 import {
   ArticleWrapper,
@@ -30,7 +29,7 @@ const messages = defineMessages({
   }
 });
 
-const Research = ({ intl, dispatch }) => (
+const Research = ({ intl }) => (
   <ArticleWrapper hasToc>
     <ArticleHeader
       toc={intl.formatMessage(messages.tocIntroduction)}
@@ -60,4 +59,4 @@ const Research = ({ intl, dispatch }) => (
   </ArticleWrapper>
 );
 
-export default connect()(injectIntl(Research));
+export default injectIntl(Research);
