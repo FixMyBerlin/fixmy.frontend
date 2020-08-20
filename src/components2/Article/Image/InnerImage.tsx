@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { ImgHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-import { ImageProps } from './Image';
 import Subtitle from './Subtitle';
 
-interface InnerImageProps extends ImageProps {
+export interface InnerImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+  source: string;
   children?: React.ReactNode;
+  subtitle?: string;
+  alt?: string;
+  role?: string;
 }
 
 const Img = styled.img`
@@ -17,10 +20,11 @@ const InnerImg = ({
   alt,
   role = null,
   subtitle = null,
-  children = null
+  children = null,
+  ...props
 }: InnerImageProps) => (
   <>
-    <Img src={source} alt={alt} role={role} />
+    <Img src={source} alt={alt} role={role} {...props} />
     {subtitle && <Subtitle>{subtitle}</Subtitle>}
     {children}
   </>

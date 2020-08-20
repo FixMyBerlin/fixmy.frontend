@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
 
-import { ImageProps } from './Image';
-import InnerImg from './InnerImage';
+import InnerImg, { InnerImageProps } from './InnerImage';
 
 export const ImageWrapperFull = styled.div`
   margin: 0 auto;
@@ -20,7 +19,7 @@ export const ImageFull = ({
   alt,
   role = null,
   subtitle = null
-}: ImageProps) => (
+}: InnerImageProps) => (
   <ImageWrapperFull>
     <InnerImg
       source={source}
