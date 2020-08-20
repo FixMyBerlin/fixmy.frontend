@@ -68,6 +68,7 @@ export type FeelsafeSize = 'small' | 'big';
 export type FeelsafeIcon = 'bike' | 'car' | 'walk';
 
 interface FeelsafeProps {
+  className?: string;
   value: number;
   size?: FeelsafeSize;
   icon?: FeelsafeIcon;
@@ -84,7 +85,12 @@ const icons = {
   walk: WalkIcon
 };
 
-export default ({ value, size = 'small', icon = 'bike' }: FeelsafeProps) => {
+const FeelSafe = ({
+  className,
+  value,
+  size = 'small',
+  icon = 'bike'
+}: FeelsafeProps) => {
   const color = getColorByValue(value);
   const pxSize = sizes[size];
   const isSmall = size === 'small';
@@ -95,7 +101,7 @@ export default ({ value, size = 'small', icon = 'bike' }: FeelsafeProps) => {
   });
 
   return (
-    <Wrapper className="feelsafe" style={{ width: pxSize, height: pxSize }}>
+    <Wrapper className={className} style={{ width: pxSize, height: pxSize }}>
       <svg width="100%" height="100%" viewBox="0 0 42 42">
         <circle cx="21" cy="21" r="15.91549430918954" fill="#fff" />
         <circle
@@ -134,3 +140,5 @@ export default ({ value, size = 'small', icon = 'bike' }: FeelsafeProps) => {
     </Wrapper>
   );
 };
+
+export default FeelSafe;

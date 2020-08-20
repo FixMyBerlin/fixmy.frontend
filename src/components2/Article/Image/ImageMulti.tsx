@@ -21,12 +21,6 @@ const ImageSpacer = styled.div`
   position: relative;
   padding: 10px;
   flex: 1 1 100%;
-
-  .feelsafe {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-  }
 `;
 
 const ImageMulti = ({ children }) => <ImageWrapper>{children}</ImageWrapper>;

@@ -1,9 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import { Paragraph, Heading, ImageMulti, List } from '~/components2/Article';
 import Link from '~/components2/Link';
 import BarChart from '../components/BarChart';
-import FeelSafe from '../components/FeelSafe';
+import FeelSafeBase from '../components/FeelSafe';
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import image1 from '../images/image1_@x2.jpg';
@@ -57,7 +58,20 @@ import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
 import MS_A_586 from '../images/01_MS_A_586_@x2.jpg';
 import MS_A_343 from '../images/01_MS_A_343_@x2.jpg';
 import MS_A_67 from '../images/01_MS_A_67_@x2.jpg';
+import { media } from '~/styles/utils';
 /* eslint-enable @typescript-eslint/no-unused-vars */
+
+const FeelSafe = styled(FeelSafeBase)`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  ${media.m`
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  `}
+`;
 
 const SectionResults = ({ toc }) => (
   <>

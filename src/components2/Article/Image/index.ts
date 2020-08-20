@@ -3,9 +3,4 @@ import ImageFull from './ImageFull';
 import ImageMulti from './ImageMulti';
 import Subtitle from './Subtitle';
 
-export default {
-  Image,
-  ImageFull,
-  ImageMulti,
-  Subtitle
-};
+export { Image, ImageFull, ImageMulti, Subtitle };

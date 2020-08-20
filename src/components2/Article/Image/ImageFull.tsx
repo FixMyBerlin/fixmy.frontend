@@ -10,12 +10,6 @@ export const ImageWrapperFull = styled.div`
   margin: 0 auto;
   position: relative;
 
-  .feelsafe {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-  }
-
   ${media.m`
     margin: 3em auto;
   `}
@@ -25,7 +19,6 @@ export const ImageFull = ({
   source,
   alt,
   role = null,
-  feelsafe = null,
   subtitle = null
 }: ImageProps) => (
   <ImageWrapperFull>
@@ -33,9 +26,7 @@ export const ImageFull = ({
       source={source}
       alt={alt}
       role={role}
-      feelsafe={feelsafe || null}
       subtitle={subtitle || null}
-      feelsafeSize="big"
     />
   </ImageWrapperFull>
 );
