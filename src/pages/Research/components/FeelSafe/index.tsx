@@ -141,4 +141,19 @@ const FeelSafe = ({
   );
 };
 
+// Special variant of FeelSafe to use within Image containers
+const ImageFeelSafe = styled(FeelSafe)`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  ${media.m`
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  `}
+`;
+
+FeelSafe.Image = ImageFeelSafe;
+
 export default FeelSafe;

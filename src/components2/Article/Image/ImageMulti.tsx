@@ -7,6 +7,7 @@ import Subtitle from './Subtitle';
 import InnerImg, { InnerImageProps } from './InnerImage';
 
 const ImageWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 3em -10px;

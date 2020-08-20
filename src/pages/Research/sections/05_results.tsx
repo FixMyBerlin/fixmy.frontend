@@ -1,12 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import { Paragraph, Heading, ImageMulti, List } from '~/components2/Article';
 import Link from '~/components2/Link';
 import BarChart from '../components/BarChart';
-import FeelSafeBase from '../components/FeelSafe';
+import FeelSafe from '../components/FeelSafe';
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import image1 from '../images/image1_@x2.jpg';
 import CP_C_1093 from '../images/01_CP_C_1093_@x2.jpg';
 import CP_C_1100 from '../images/01_CP_C_1100_@x2.jpg';
@@ -59,19 +58,7 @@ import MS_A_586 from '../images/01_MS_A_586_@x2.jpg';
 import MS_A_343 from '../images/01_MS_A_343_@x2.jpg';
 import MS_A_67 from '../images/01_MS_A_67_@x2.jpg';
 import { media } from '~/styles/utils';
-/* eslint-enable @typescript-eslint/no-unused-vars */
-
-const FeelSafe = styled(FeelSafeBase)`
-  position: absolute;
-  top: 12px;
-  right: 12px;
-
-  ${media.m`
-    position: absolute;
-    top: 12px;
-    right: 12px;
-  `}
-`;
+/* eslint-enable no-unused-vars */
 
 const SectionResults = ({ toc }) => (
   <>
@@ -324,14 +311,14 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_2}>
-        <FeelSafe value={28} />
+        <FeelSafe.Image value={28} />
         <ImageMulti.Subtitle>
           *27,62 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder
           „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_587}>
-        <FeelSafe value={11} />
+        <FeelSafe.Image value={11} />
         <ImageMulti.Subtitle>
           *11,05 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder
           „eher sicher“
@@ -369,14 +356,14 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_17}>
-        <FeelSafe value={69} />
+        <FeelSafe.Image value={69} />
         <ImageMulti.Subtitle>
           *69,09% der Nutzer:innen bewerteten diese Situation ohne Parkstreifen
           als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_619}>
-        <FeelSafe value={33} />
+        <FeelSafe.Image value={33} />
         <ImageMulti.Subtitle>
           *32,76 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen
           als „sicher“ oder „eher sicher“
@@ -467,14 +454,14 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_305}>
-        <FeelSafe value={74} />
+        <FeelSafe.Image value={74} />
         <ImageMulti.Subtitle>
           *73,68 % der Nutzer:innen bewerteten diese Situation mit einer breiten
           RVA als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_17}>
-        <FeelSafe value={69} />
+        <FeelSafe.Image value={69} />
         <ImageMulti.Subtitle>
           *69,09 % der Nutzer:innen bewerteten diese Situation mit einer
           schmalen RVA als „sicher“ oder „eher sicher“
@@ -489,14 +476,14 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_980}>
-        <FeelSafe value={71} />
+        <FeelSafe.Image value={71} />
         <ImageMulti.Subtitle>
           *70,71 % der Nutzer:innen bewerteten diese Situation mit breiter RVA
           neben einem Parkstreifen als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_620}>
-        <FeelSafe value={32} />
+        <FeelSafe.Image value={32} />
         <ImageMulti.Subtitle>
           *32,23 % der Nutzer:innen bewerteten diese Situation mit schmaler RVA
           neben einem Parkstreifen als „sicher“ oder „eher sicher“
@@ -542,14 +529,14 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_21}>
-        <FeelSafe value={80} />
+        <FeelSafe.Image value={80} />
         <ImageMulti.Subtitle>
           *80,37 % der Nutzer:innen bewerteten diese schmale RVA mit
           Grüneinfärbung als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_17}>
-        <FeelSafe value={69} />
+        <FeelSafe.Image value={69} />
         <ImageMulti.Subtitle>
           *69,09 % der Nutzer:innen bewerteten diese schmale RVA ohne
           Grüneinfärbung als „sicher“ oder „eher sicher“
@@ -559,14 +546,14 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_1220}>
-        <FeelSafe value={78} />
+        <FeelSafe.Image value={78} />
         <ImageMulti.Subtitle>
           *77,87 % der Nutzer:innen bewerteten diese breite RVA mit
           Grüneinfärbung als „sicher“ oder „eher sicher“
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_980}>
-        <FeelSafe value={71} />
+        <FeelSafe.Image value={71} />
         <ImageMulti.Subtitle>
           *70,71 % der Nutzer:innen bewerteten diese breite RVA ohne
           Grüneinfärbung als „sicher“ oder „eher sicher“
@@ -663,14 +650,14 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_75}>
-        <FeelSafe value={90.65} />
+        <FeelSafe.Image value={90.65} />
         <ImageMulti.Subtitle>
           Mit 90,65 % am sichersten bewertete bauliche Trennung bei schmaler RVA
           ohne Grüneinfärbung. Die Variante mit Grüneinfärbung kommt auf 97,52%
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_377}>
-        <FeelSafe value={97.52} />
+        <FeelSafe.Image value={97.52} />
         <ImageMulti.Subtitle>
           Mit 98,38 % am sichersten bewertete bauliche Trennung bei breiter RVA
           ohne Grüneinfärbung. Die Variante mit Grüneinfärbung kommt auf 99,11 %
@@ -721,10 +708,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_597}>
-        <FeelSafe value={91.3} />
+        <FeelSafe.Image value={91.3} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_980}>
-        <FeelSafe value={70.71} />
+        <FeelSafe.Image value={70.71} />
       </ImageMulti.Inner>
     </ImageMulti>
 
@@ -736,10 +723,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_611}>
-        <FeelSafe value={94.32} />
+        <FeelSafe.Image value={94.32} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_596}>
-        <FeelSafe value={95.45} />
+        <FeelSafe.Image value={95.45} />
       </ImageMulti.Inner>
     </ImageMulti>
 
@@ -825,10 +812,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_A_1285}>
-        <FeelSafe value={94.68} icon="car" />
+        <FeelSafe.Image value={94.68} icon="car" />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_A_586}>
-        <FeelSafe value={28.21} icon="car" />
+        <FeelSafe.Image value={28.21} icon="car" />
       </ImageMulti.Inner>
     </ImageMulti>
 
@@ -899,14 +886,14 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_A_67}>
-        <FeelSafe value={87.77} icon="car" />
+        <FeelSafe.Image value={87.77} icon="car" />
         <ImageMulti.Subtitle>
           Bestbewertete Situation aus Autoperspektive bei schmaler RVA, T50 und
           hohem Verkehrsaufkommen
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_A_343}>
-        <FeelSafe value={88.66} icon="car" />
+        <FeelSafe.Image value={88.66} icon="car" />
         <ImageMulti.Subtitle>
           Bestbewertete Situation aus Autoperspektive bei breiter RVA, T50 und
           hohem Verkehrsaufkommen
@@ -976,14 +963,14 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_325}>
-        <FeelSafe value={87.93} />
+        <FeelSafe.Image value={87.93} />
         <ImageMulti.Subtitle>
           Eine auf der Fahrbahn geführte, klar gestaltete, breite RVA ohne
           rechtsseitiges Parken, wie hier im Bild wird als sehr sicher empfunden
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_1100}>
-        <FeelSafe value={97.62} />
+        <FeelSafe.Image value={97.62} />
         <ImageMulti.Subtitle>
           Eine gleich breite RVA im Seitenraum wird sogar noch etwas sicherer
           bewertet.
@@ -1000,13 +987,13 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_860}>
-        <FeelSafe value={47.55} />
+        <FeelSafe.Image value={47.55} />
         <ImageMulti.Subtitle>
           Die bestbewertete RVA in schmaler Ausführung mit rechtsseitigem Parken
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_463}>
-        <FeelSafe value={78.95} />
+        <FeelSafe.Image value={78.95} />
         <ImageMulti.Subtitle>
           Eine RVA im Seitenraum (mit linksseitigem Parken) in schmaler
           Ausführung mit Trennungen links und rechts durch Grünstreifen.
@@ -1060,10 +1047,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_C_553}>
-        <FeelSafe value={76.52} />
+        <FeelSafe.Image value={76.52} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_1093}>
-        <FeelSafe value={97.47} />
+        <FeelSafe.Image value={97.47} />
       </ImageMulti.Inner>
     </ImageMulti>
 
@@ -1092,14 +1079,14 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_C_516}>
-        <FeelSafe value={56.13} />
+        <FeelSafe.Image value={56.13} />
         <ImageMulti.Subtitle>
           Ist fließender Verkehr linksseitig der RVA geführt, ist eine physische
           Trennung rechts problematisch.
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_509}>
-        <FeelSafe value={77.42} />
+        <FeelSafe.Image value={77.42} />
         <ImageMulti.Subtitle>
           Besser ist dann die Trennung durch einen schmalen Grünstreifen.
         </ImageMulti.Subtitle>
@@ -1150,19 +1137,19 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_C_725}>
-        <FeelSafe value={69.16} />
+        <FeelSafe.Image value={69.16} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_823}>
-        <FeelSafe value={98.18} />
+        <FeelSafe.Image value={98.18} />
       </ImageMulti.Inner>
     </ImageMulti>
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_C_49}>
-        <FeelSafe value={49.56} />
+        <FeelSafe.Image value={49.56} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_58}>
-        <FeelSafe value={67.88} />
+        <FeelSafe.Image value={67.88} />
       </ImageMulti.Inner>
     </ImageMulti>
 
@@ -1237,14 +1224,14 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_P_194}>
-        <FeelSafe value={81.44} icon="walk" />
+        <FeelSafe.Image value={81.44} icon="walk" />
         <ImageMulti.Subtitle>
           Trotz relativ enger Platzverhältnisse, wird diese Situation noch 81,44
           % der zu Fuß Gehenden als “eher sicher” oder “sicher” empfunden.
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_194}>
-        <FeelSafe value={75.56} />
+        <FeelSafe.Image value={75.56} />
         <ImageMulti.Subtitle>
           Die gleiche Situation wird von 75,56 % der Radfahrenden als “eher
           sicher” oder “sicher” bewertet.
@@ -1289,10 +1276,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_P_149}>
-        <FeelSafe value={90.52} icon="walk" />
+        <FeelSafe.Image value={90.52} icon="walk" />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_P_778}>
-        <FeelSafe value={93.47} icon="walk" />
+        <FeelSafe.Image value={93.47} icon="walk" />
       </ImageMulti.Inner>
     </ImageMulti>
 
@@ -1346,10 +1333,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={SE_C_11}>
-        <FeelSafe value={33.4} />
+        <FeelSafe.Image value={33.4} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={SE_C_71}>
-        <FeelSafe value={21.43} />
+        <FeelSafe.Image value={21.43} />
       </ImageMulti.Inner>
     </ImageMulti>
 
@@ -1367,13 +1354,13 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={SE_C_2}>
-        <FeelSafe value={51.02} />
+        <FeelSafe.Image value={51.02} />
         <ImageMulti.Subtitle>
           Die bestbewertete Fahrradstraße mit KFZ-Verkehr in beide Richtungen
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={SE_C_12}>
-        <FeelSafe value={56.72} />
+        <FeelSafe.Image value={56.72} />
         <ImageMulti.Subtitle>
           Die bestbewertete Fahrradstraße mit KFZ-Verkehr als Einbahnstraße in
           Fahrtrichtung
@@ -1419,10 +1406,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={SE_C_42}>
-        <FeelSafe value={45.03} />
+        <FeelSafe.Image value={45.03} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={SE_C_44}>
-        <FeelSafe value={21.74} />
+        <FeelSafe.Image value={21.74} />
       </ImageMulti.Inner>
     </ImageMulti>
 
@@ -1441,10 +1428,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={SE_C_10}>
-        <FeelSafe value={98.33} />
+        <FeelSafe.Image value={98.33} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={SE_C_50}>
-        <FeelSafe value={92.42} />
+        <FeelSafe.Image value={92.42} />
       </ImageMulti.Inner>
     </ImageMulti>
 
@@ -1455,10 +1442,10 @@ const SectionResults = ({ toc }) => (
 
     <ImageMulti>
       <ImageMulti.Inner source={SE_C_47}>
-        <FeelSafe value={74.54} />
+        <FeelSafe.Image value={74.54} />
       </ImageMulti.Inner>
       <ImageMulti.Inner source={SE_C_49}>
-        <FeelSafe value={54.83} />
+        <FeelSafe.Image value={54.83} />
       </ImageMulti.Inner>
     </ImageMulti>
 

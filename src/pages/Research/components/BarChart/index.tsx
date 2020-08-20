@@ -160,7 +160,9 @@ const BarChart = ({
           ))}
         </Chart>
       </ChartOuter>
-      {!isWeightGraph && <FeelSafe value={feelsafe} icon={feelsafeIcon} />}
+      {!isWeightGraph && (
+        <FeelSafe.Image value={feelsafe} icon={feelsafeIcon} />
+      )}
     </Wrapper>
   );
 };
