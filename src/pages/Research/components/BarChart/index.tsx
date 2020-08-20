@@ -28,12 +28,13 @@ type TitleProps = {
 
 const Title = styled.div`
   font-weight: 700;
-  margin-bottom: ${(props: TitleProps) => (props.hasFeelSafe ? '40px' : '1em')};
+  margin: ${(props: TitleProps) =>
+    props.hasFeelSafe ? '30px 0 30px' : '0 0 1em 0'};
 
   ${media.m`
-    margin-bottom: 0;
+    margin: 0;
     width: 180px;
-    `}
+  `}
 `;
 
 const ChartOuter = styled.div`
@@ -132,7 +133,7 @@ const BarChart = ({
   title,
   data,
   feelsafe = null,
-  feelsafeIcon = 'bike' as FeelsafeIcon
+  feelsafeIcon = 'bike'
 }: BarChartProps) => {
   const [isWeightGraph, setWeightGraph] = useState(data.length === 1);
   useEffect(() => setWeightGraph(data.length === 1), [data.length]);
@@ -159,7 +160,9 @@ const BarChart = ({
           ))}
         </Chart>
       </ChartOuter>
-      {!isWeightGraph && <FeelSafe value={feelsafe} icon={feelsafeIcon} />}
+      {!isWeightGraph && (
+        <FeelSafe.Image value={feelsafe} icon={feelsafeIcon} />
+      )}
     </Wrapper>
   );
 };

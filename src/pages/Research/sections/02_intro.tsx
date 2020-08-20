@@ -44,7 +44,7 @@ const SectionIntroduction = ({ toc }) => (
         source={MS_C_573}
         alt="Fahrradperspektive auf breiten Radweg mit grüner Oberfläche und Trennung zur Fahrbahn durch Blumenkübel"
       >
-        <FeelSafe value={99.11} />
+        <FeelSafe.Image value={99.11} />
         <ImageMulti.Subtitle>
           *99,11 % der Radfahrenden bewerteten diese Situation als „sicher“ oder
           „eher sicher“
@@ -54,7 +54,7 @@ const SectionIntroduction = ({ toc }) => (
         source={MS_A_570}
         alt="Autoperspektive auf vorigen Radweg"
       >
-        <FeelSafe value={96.84} icon="car" />
+        <FeelSafe.Image value={96.84} icon="car" />
         <ImageMulti.Subtitle>
           *96,84 % der Autofahrenden bewerteten diese Situation als „sicher“
           oder „eher sicher“
