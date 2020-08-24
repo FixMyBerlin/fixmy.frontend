@@ -9,6 +9,7 @@ import TOC from './TOC';
 import MenuButton from '~/components2/MenuButton';
 import { media, breakpoints } from '~/styles/utils';
 import config from '~/config';
+import Header from '~/components2/Header';
 
 const log = debug('fmc:Article:ArticleWrapper');
 
@@ -56,10 +57,29 @@ const ContentWrapper = styled.div`
     padding: 2rem 0;
   }
 `;
+
+const MobileHeader = styled(Header)`
+  && {
+    display: block;
+    ${media.m`
+    display: none;
+  `}
+  }
+`;
+
+const DesktopHeader = styled.div`
+  display: none;
+  ${media.m`
+    display: block;
+  `}
+`;
+
 const ArticleWrapper = ({
+  bannerTitle,
   bgPattern = defaultBgPattern,
   hasToc = false,
   tocHasActiveState = true,
+  localeSwitcher = false,
   className = null,
   children
 }) => {
@@ -126,7 +146,12 @@ const ArticleWrapper = ({
 
   return (
     <Page className={className} bgPattern={bgPattern}>
-      <MenuButton />
+      <MobileHeader position="sticky" localeSwitcher={localeSwitcher}>
+        {bannerTitle}
+      </MobileHeader>
+      <DesktopHeader>
+        <MenuButton />
+      </DesktopHeader>
       <ContentWrapperOuter>
         {hasToc && !renderTocInsideArticle && (
           <TOC

@@ -30,7 +30,11 @@ const messages = defineMessages({
 });
 
 const Research = ({ intl }) => (
-  <ArticleWrapper hasToc>
+  <ArticleWrapper
+    hasToc
+    bannerTitle={intl.formatMessage(messages.kicker)}
+    localeSwitcher
+  >
     <ArticleHeader
       toc={intl.formatMessage(messages.tocIntroduction)}
       kicker={intl.formatMessage(messages.kicker)}
