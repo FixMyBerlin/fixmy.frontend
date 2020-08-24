@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Provider } from 'react-redux';
 import { configure, addDecorator } from '@storybook/react';
 import { ThemeProvider } from '@material-ui/styles';
 import Store from '~/store';
