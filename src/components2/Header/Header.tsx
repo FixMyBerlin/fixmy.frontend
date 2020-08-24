@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, AppBarProps } from '@material-ui/core';
+import { AppBar, Toolbar, AppBarProps, Button } from '@material-ui/core';
 
 import MenuButton from '~/components2/MenuButton';
 import SeparatorImage from '~/images/header-separator.svg';
 import config from '~/config';
+
+import ChatTranslate from './chat-translate.svg';
 
 const StyledAppBar = styled(AppBar)`
   && {
@@ -13,7 +15,7 @@ const StyledAppBar = styled(AppBar)`
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
     .MuiToolbar-root {
-      padding: 0;
+      padding-left: 0;
     }
   }
 `;
@@ -42,6 +44,7 @@ const LinkWrapper = styled(Link)`
   border-bottom: none;
   color: ${config.colors.interaction};
   text-decoration: none;
+  flex-grow: 1;
 
   &:visited,
   &:hover {
@@ -54,10 +57,16 @@ const LogoWrapper = styled.div`
   margin: 1em 1em 1em auto;
 `;
 
+const ChatTranslateIcon = styled(ChatTranslate)`
+  width: 32px;
+  height: 32px;
+`;
+
 interface Props extends AppBarProps {
   to?: string;
   showInfoLink?: boolean;
   logo?: React.ReactNode;
+  localeSwitcher?: boolean;
 }
 
 const Header = ({
@@ -65,6 +74,7 @@ const Header = ({
   showInfoLink = false,
   logo = null,
   position = 'static',
+  localeSwitcher = false,
   children,
   ...props
 }: Props) => (
@@ -78,6 +88,7 @@ const Header = ({
           <Subtitle>Alle Infos zur Aktion &gt;</Subtitle>
         )}
       </LinkWrapper>
+      {localeSwitcher && <Button endIcon={<ChatTranslateIcon />}>de</Button>}
       {logo && <LogoWrapper>{logo}</LogoWrapper>}
     </Toolbar>
   </StyledAppBar>
