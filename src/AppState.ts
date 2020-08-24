@@ -147,9 +147,8 @@ export function setDistrict(district: Region) {
 }
 
 export function setLocale(locale: LocaleCode) {
-  log('locale switcher is disabled');
-  // return { type: SET_LOCALE, locale };
-  return {};
+  log('set locale to', locale);
+  return { type: SET_LOCALE, locale };
 }
 
 export default function AppStateReducer(
