@@ -24,6 +24,5 @@ describe('<ArticleHeader>', () => {
     );
     expect(getByRole('banner')).toBeInTheDocument();
     expect(getAllByRole('button', { name: 'Menü öffnen' })).toHaveLength(2);
-    expect(getAllByRole('heading')).toHaveLength(38);
   });
 });
