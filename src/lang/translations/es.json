@@ -8,6 +8,9 @@
   "common.localeSwitcher.labelES": {
     "defaultMessage": "Español"
   },
+  "components.article.attribution": {
+    "defaultMessage": "de"
+  },
   "components.article.localeSwitcher.label": {
     "defaultMessage": "seleccione otro idioma"
   },
@@ -18,10 +21,10 @@
     "defaultMessage": "SOBRE EL PROYECTO"
   },
   "research.02_intro.images1.label1": {
-    "defaultMessage": "El 99,11 % de los ciclistas consideran esta situación como “segura” o “bastante segura”"
+    "defaultMessage": "* el 99,11 % de los ciclistas consideran esta situación como “segura” o “bastante segura”"
   },
   "research.02_intro.images1.label2": {
-    "defaultMessage": "El 96,84 % de los automovilistas consideran esta situación como “segura” o “bastante segura”"
+    "defaultMessage": "* el 96,84 % de los automovilistas consideran esta situación como “segura” o “bastante segura”"
   },
   "research.02_intro.p1": {
     "defaultMessage": "Hasta ahora casi no existen estudios sobre qué tipo de calles, infraestructuras y cruces son percibidos como “seguros” por los usuarios. Particularmente sobre la visión diferenciada vinculada a las características, como la forma y ancho del carril para bicicletas como así también la situación a la derecha e izquierda del mismo. ¿Serán los carriles para bicicletas separados por postes la mejor solución ante el conflicto entre automovilistas y ciclistas? ¿O será suficiente un adecuado ancho de las bicisendas? ¿Qué efecto tiene el color de las ciclovías? ¿Bajo cuáles condiciones la ubicación del carril bici en la acera o en la calzada brindan comodidad al usuario?"
