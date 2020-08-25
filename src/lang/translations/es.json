@@ -1,11 +1,11 @@
 {
-  "components.article.localeSwitcher.english": {
-    "defaultMessage": "Ingles"
+  "common.localeSwitcher.labelDE": {
+    "defaultMessage": "Alemán"
   },
-  "components.article.localeSwitcher.german": {
-    "defaultMessage": "Aleman"
+  "common.localeSwitcher.labelEN": {
+    "defaultMessage": "Inglés"
   },
-  "components.article.localeSwitcher.spanish": {
-    "defaultMessage": "Espanol"
+  "common.localeSwitcher.labelES": {
+    "defaultMessage": "Español"
   }
 }
