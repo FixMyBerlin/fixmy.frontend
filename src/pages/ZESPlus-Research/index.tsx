@@ -52,7 +52,7 @@ const Logo = styled.img`
 `;
 
 const Research = () => (
-  <Wrapper hasToc>
+  <Wrapper hasToc bannerTitle="Forschungs&shy;projekt - ZES-Plus">
     <ArticleHeader
       toc="Einleitung"
       kicker="Forschungs&shy;projekt - ZES-Plus"

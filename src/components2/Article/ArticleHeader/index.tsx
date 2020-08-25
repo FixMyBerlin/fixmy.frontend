@@ -3,7 +3,9 @@ import styled from 'styled-components';
 
 import Kicker from './Kicker';
 import ArticleMeta from './ArticleMeta';
+import LocaleSwitcher from './LocaleSwitcher';
 import Heading from '~/components2/Article/Typography/Heading';
+import { LocaleCode } from '~/types';
 
 interface ArticleHeaderProps {
   kicker?: string;
@@ -14,6 +16,7 @@ interface ArticleHeaderProps {
   toc?: string;
   children?: ReactNode;
   className?: string;
+  locales?: LocaleCode[];
 }
 
 const ArticleHeaderWrapper = styled.div`
@@ -34,10 +37,12 @@ const ArticleHeader = ({
   author,
   toc,
   children,
+  locales = null,
   className
 }: ArticleHeaderProps) => {
   return (
     <ArticleHeaderWrapper className={className}>
+      {locales && <LocaleSwitcher locales={locales} />}
       {logo && <LogoWrapper>{logo}</LogoWrapper>}
       {kicker && <Kicker>{kicker}</Kicker>}
       <Heading toc={toc}>{children}</Heading>

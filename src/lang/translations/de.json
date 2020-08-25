@@ -1,12 +1,15 @@
 {
-  "components.article.localeSwitcher.english": {
-    "defaultMessage": "Englisch"
-  },
-  "components.article.localeSwitcher.german": {
+  "common.localeSwitcher.labelDE": {
     "defaultMessage": "Deutsch"
   },
-  "components.article.localeSwitcher.spanish": {
+  "common.localeSwitcher.labelEN": {
+    "defaultMessage": "Englisch"
+  },
+  "common.localeSwitcher.labelES": {
     "defaultMessage": "Spanisch"
+  },
+  "components.article.localeSwitcher.label": {
+    "defaultMessage": "andere Sprache wählen"
   },
   "research.authors": {
     "defaultMessage": "FixMyCity Team"

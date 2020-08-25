@@ -7,14 +7,17 @@ export default {
   title: 'Article'
 };
 
+const LOCALES = ['de', 'en'];
+
 export const Example = () => (
-  <Article.ArticleWrapper hasToc>
+  <Article.ArticleWrapper hasToc locales={LOCALES}>
     <div toc="Einleitung">
       <Article.ArticleHeader
         toc="Einleitung"
         kicker="Kicker"
         publishDate={new Date(2020, 7, 6, 14, 0)}
         author="FixMyCity"
+        locales={LOCALES}
       >
         Überschrift
       </Article.ArticleHeader>
