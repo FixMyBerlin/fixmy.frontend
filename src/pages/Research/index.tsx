@@ -1,12 +1,7 @@
 import React from 'react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 
-import {
-  ArticleWrapper,
-  ArticleHeader,
-  Intro
-  // LocaleSwitcher
-} from '~/components2/Article';
+import { ArticleWrapper, ArticleHeader, Intro } from '~/components2/Article';
 import { LocaleCode } from '~/types';
 
 import SectionIntroduction from './sections/02_intro';
@@ -58,7 +53,6 @@ const Research = ({ intl }) => (
       subjektiven Sicherheitsempfindens durchgeführt, deren Ergebnisse wir hier
       vorstellen.
     </Intro>
-    {/* <LocaleSwitcher /> */}
     <SectionIntroduction toc="Über das Projekt" />
     <SectionAbout toc="Umfragekonzept" />
     <SectionDataset toc="Datensatz der Ergebnisse" />
