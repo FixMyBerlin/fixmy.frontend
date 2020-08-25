@@ -1307,7 +1307,7 @@ const SectionResults = ({ toc }) => (
 
     <BarChart.Wrapper
       title="NVS: Gewicht der Einflussfaktoren im Mittel"
-      source="Anm: Unterschied der Mittelwerte der Bewertungen im Vergleich zweier Merkmalsausprägungen. Grundlage sind alle für das Merkmal relevante Situationen. Ausgenommen sind die Situationen mit durchgehender Grüneinfärbung des Asphalts. Unter Markierung werden Fahrradstraße, Fahrradstraße-Sondermarkierung und Spielstraße zusammengefasst."
+      source="Anm: Unterschied der Mittelwerte der Bewertungen im Vergleich zweier Merkmalsausprägungen. Grundlage sind alle für das Merkmal relevante Situationen. Ausgenommen sind die Situationen mit durchgehender Grüneinfärbung des Asphalts. Unter Markierung werden Fahrradstraße, Fahrradstraße - Sondermarkierung Dooring und Spielstraße zusammengefasst."
     >
       <BarChart title="Straßenbreite (schmal vs. breit)" data={[30.5]} />
       <BarChart title="Parken (beidseitig – nein)" data={[19.4]} />
@@ -1325,7 +1325,7 @@ const SectionResults = ({ toc }) => (
     </BarChart.Wrapper>
 
     <Paragraph>
-      Wenn wir alle Situationen ohne Sondermarkierungen und mit Kfz-Verkehr
+      Wenn wir alle Situationen ohne Markierungen (als Fahrradstraße oder Spielstraße) jedoch mit Kfz-Verkehr
       betrachten, so zeigt sich ein eher schlechtes durchschnittliches
       Sicherheitsempfinden. Die beste Variante erhält lediglich 33,40% sichere
       oder eher sichere Bewertungen.
@@ -1383,7 +1383,7 @@ const SectionResults = ({ toc }) => (
         feelsafe={48.47}
       />
       <BarChart
-        title="Fahrradstraße - Sondermarkierung"
+        title="Fahrradstraße - Sondermarkierung Dooring"
         data={[30.787364, 36.338991, 22.477605, 10.39604]}
         feelsafe={32.87}
       />
@@ -1395,8 +1395,8 @@ const SectionResults = ({ toc }) => (
     </BarChart.Wrapper>
 
     <Paragraph>
-      Auffällig ist, dass Fahrradstraßen mit Sondermarkierungen (der Dooring
-      Zone) schlechter abschneiden als solche mit einer großen
+      Auffällig ist, dass Fahrradstraßen mit "Sondermarkierungen Dooring" (Markierung der Dooring
+      Zone durch eine unterbrochene Linie, zusätzlich Markierung eines Doppelpfeils um des Nebeneinanderfahren von Radfahrenden anzuzeigen) schlechter abschneiden als solche mit einer großen
       Fahrradstraßen-Markierung auf der Fahrbahn. Dieser Vergleich ist durch die
       Darstellung in der Umfrage allerdings wenig aussagekräftig, da durch die
       Komposition der Bilder mehrere Faktoren (Kennzeichnung als Fahrradstraße,

@@ -64,7 +64,7 @@ const Research = () => (
         />
       }
       publishDate={new Date(2020, 6, 29, 10, 0)}
-      author="Jörg Jennoch (Bürgermeister)"
+      author="Jörg Jenoch, Bürgermeister Eichwalde"
     >
       Eich&shy;walde, Zeu&shy;then und Schulzen&shy;dorf entwickeln
       Radverkehrsnetz gemeinsam mit den Bürger*innen
