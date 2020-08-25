@@ -30,20 +30,20 @@ const messages = defineMessages({
   }
 });
 
-const LOCALES: LocaleCode[] = ['de', 'en', 'es'];
+// const LOCALES: LocaleCode[] = ['de', 'en', 'es'];
 
 const Research = ({ intl }) => (
   <ArticleWrapper
     hasToc
     bannerTitle={intl.formatMessage(messages.kicker)}
-    locales={LOCALES}
+    // locales={LOCALES}
   >
     <ArticleHeader
       toc={intl.formatMessage(messages.tocIntroduction)}
       kicker={intl.formatMessage(messages.kicker)}
       publishDate={new Date(2020, 6, 6, 7, 0)}
       author={intl.formatMessage(messages.authors)}
-      locales={LOCALES}
+      // locales={LOCALES}
     >
       <FormattedMessage
         id="research.title"
