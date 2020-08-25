@@ -200,7 +200,6 @@ const SectionAbout = ({ toc }) => (
     </List>
     <Paragraph>
       Weiter wird eine Reihe parkender Fahrzeuge dargestellt oder nicht.
-      variiert:
     </Paragraph>
     <Paragraph>
       Je nach Führungsform wurden die Szenarien zusätzlich zur
