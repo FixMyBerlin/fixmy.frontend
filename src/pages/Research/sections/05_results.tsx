@@ -1324,7 +1324,7 @@ const SectionResults = ({ toc }) => (
     </BarChart.Wrapper>
 
     <Paragraph>
-      Wenn wir alle Situationen ohne Sondermarkierungen und mit Kfz-Verkehr
+      Wenn wir alle Situationen ohne Markierungen (Als Fahrradstraße oder Spielstraße) jedoch mit Kfz-Verkehr
       betrachten, so zeigt sich ein eher schlechtes durchschnittliches
       Sicherheitsempfinden. Die beste Variante erhält lediglich 33,40% sichere
       oder eher sichere Bewertungen.
