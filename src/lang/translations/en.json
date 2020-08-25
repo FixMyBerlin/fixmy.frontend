@@ -7,5 +7,50 @@
   },
   "common.localeSwitcher.labelES": {
     "defaultMessage": "Spanish"
+  },
+  "components.article.localeSwitcher.label": {
+    "defaultMessage": "choose another language"
+  },
+  "research.02_intro.cta": {
+    "defaultMessage": "Go to statistical evaluation"
+  },
+  "research.02_intro.heading": {
+    "defaultMessage": "About the project"
+  },
+  "research.02_intro.images1.label1": {
+    "defaultMessage": "99.11% of cyclists rate this scenario as ‘safe’ or ‘rather safe’"
+  },
+  "research.02_intro.images1.label2": {
+    "defaultMessage": "96.84% of motorists rate this scenario as ‘safe’ or ‘rather safe’"
+  },
+  "research.02_intro.p1": {
+    "defaultMessage": "Until now, very little was known about which types of street configurations, cycle infrastructure and junctions are found to be safest from the perspective of the citizens travelling through those systems. Even less was known about how different street characteristics alter this perception of safety - characteristics such as the design, width and position of a cycle path or the setup either side of said route. Are cycle paths with protective bollards the best solution to reduce the palpable conflict between motor and cycle traffic, or is the width of the cycle path the deciding factor? What effect does the colour of the cycle path have? Which conditions help cyclists to feel their safest when the cycle path is on the pavement or on the road?"
+  },
+  "research.02_intro.p2": {
+    "defaultMessage": "To close this gap in our knowledge, we developed a survey entitled “Straßencheck” (‘Street Check-up’) and carried out the survey in cooperation with the Berlin Tagesspiegel (a mainstream newspaper).  21,000 participants rated 1900 variations of common street configurations as illustrated with 3D imagery. The fundamental structure of the survey (see {link}) involved categorising various street configurations and their differing characteristics. This allowed us to analyse the extent to which individual characteristics - such as cycle path width, path surface, physical barriers, parking on the right side of the cycle path etc - make a difference. We were also able to gain insights into how the perceived sense of safety differs between different groups of road users and from the perspective of both motorists and pedestrians.\n"
+  },
+  "research.02_intro.p2.link": {
+    "defaultMessage": "“Survey concept”"
+  },
+  "research.02_intro.p3": {
+    "defaultMessage": "When a cycle route is implemented along the road, cyclists feel safest with the street configuration shown in the left image above, compared to all other variations. Motorists prefer almost exactly the same configuration but without the green colouring. The wide, green-coloured cycle path, separated from the motor traffic by planters, received the most ‘safe’ ratings (83.93%) and ‘mostly safe’ ratings (15.18%). On average, however, cycle paths running along the pavement were felt to be safer than those running next to moving traffic. Routes along minor roads and side streets were perceived to be extremely unsafe if the street was not marked as ‘car-free’. Detailed analysis of the different types of cycle paths and their influencing factors, including from the perspective of motorists and pedestrians, will be presented in the statistical evaluation section of this report."
+  },
+  "research.02_intro.p4": {
+    "defaultMessage": "The Berlin Tagespiegel have written up their own analysis of the results - click {link} to read the article."
+  },
+  "research.02_intro.p4.link": {
+    "defaultMessage": "here"
+  },
+  "research.authors": {
+    "defaultMessage": "FixMyCity Team"
+  },
+  "research.kicker": {
+    "defaultMessage": ""
+  },
+  "research.title": {
+    "defaultMessage": "Study on subjective safety when travelling by bicycle. Results and data from a survey of 21,000 participants."
+  },
+  "research.toc.introduction": {
+    "defaultMessage": "Introduction"
   }
 }

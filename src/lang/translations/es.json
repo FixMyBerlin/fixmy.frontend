@@ -7,5 +7,50 @@
   },
   "common.localeSwitcher.labelES": {
     "defaultMessage": "Español"
+  },
+  "components.article.localeSwitcher.label": {
+    "defaultMessage": "seleccione otro idioma"
+  },
+  "research.02_intro.cta": {
+    "defaultMessage": "DIRECTO A LA EVALUACIÓN"
+  },
+  "research.02_intro.heading": {
+    "defaultMessage": "SOBRE EL PROYECTO"
+  },
+  "research.02_intro.images1.label1": {
+    "defaultMessage": "El 99,11 % de los ciclistas consideran esta situación como “segura” o “bastante segura”"
+  },
+  "research.02_intro.images1.label2": {
+    "defaultMessage": "El 96,84 % de los automovilistas consideran esta situación como “segura” o “bastante segura”"
+  },
+  "research.02_intro.p1": {
+    "defaultMessage": "Hasta ahora casi no existen estudios sobre qué tipo de calles, infraestructuras y cruces son percibidos como “seguros” por los usuarios. Particularmente sobre la visión diferenciada vinculada a las características, como la forma y ancho del carril para bicicletas como así también la situación a la derecha e izquierda del mismo. ¿Serán los carriles para bicicletas separados por postes la mejor solución ante el conflicto entre automovilistas y ciclistas? ¿O será suficiente un adecuado ancho de las bicisendas? ¿Qué efecto tiene el color de las ciclovías? ¿Bajo cuáles condiciones la ubicación del carril bici en la acera o en la calzada brindan comodidad al usuario?"
+  },
+  "research.02_intro.p2": {
+    "defaultMessage": "Para encontrar una respuesta a estas preguntas, FixMyCity realizó la encuesta “Straßencheck” (“Chequeo de calles”) que se llevó a cabo en conjunto con el diario Tagesspiegel Berlín. Con la ayuda de fotos 3D se analizaron 1900 situaciones viales, en la encuesta participaron más de 21.000 personas. {link} con la que se clasificaron los tramos de calles y su caracterización previa permitieron analizar la influencia de cada propiedad por separado, como el ancho del carril, la superficie de las calles, la separación entre carril y calzada, el espacio de estacionamiento a la derecha del carril de bicis, etc. Además se logró observar las diferencias de perspectivas en diferentes grupos de usuarios e incluso de los conductores de autos y peatones."
+  },
+  "research.02_intro.p2.link": {
+    "defaultMessage": "La sistemática"
+  },
+  "research.02_intro.p3": {
+    "defaultMessage": "Cuando el área destinada a las bicicletas se encuentra sobre la calzada, los ciclistas se sienten más seguros entre todas las variantes, ante la primera de las dos recientemente mostradas. Los automovilistas prefieren casi el mismo diseño, solo que sin el color verde. El carril bici amplio, pintado de color verde y separado del tráfico por maceteros recibió la mayor cantidad de valoraciones de los ciclistas como “seguro” (83,93%) o “bastante seguro” (15,18%). Sin embargo, en promedio se encontraron que las sendas sobre la vereda (bicisendas) son percibidas cómo más seguras que aquellas en el tráfico fluido. Las bicisendas en calles secundarias fueron, sorprendentemente, percibidas como inseguras cuando no se presentaron \"sin automóviles\". En la evaluación estadística se encuentran  análisis detallados de las diferentes formas de los carriles y sus factores de influencia, así como evaluaciones de la perspectiva de automovilistas y peatones. Al final se encuentra un resumen de las afirmaciones más importantes."
+  },
+  "research.02_intro.p4": {
+    "defaultMessage": "El diario Tagesspiegel Berlín realizó su propia evaluación de los resultados, puede encontrarla en este {link} (sólo disponible en alemán)"
+  },
+  "research.02_intro.p4.link": {
+    "defaultMessage": "artículo"
+  },
+  "research.authors": {
+    "defaultMessage": "FixMyCity Team"
+  },
+  "research.kicker": {
+    "defaultMessage": ""
+  },
+  "research.title": {
+    "defaultMessage": "Estudio sobre la seguridad subjetiva en la movilidad ciclista  - Resultados y datos de la encuesta realizada a más de 21.000 participantes"
+  },
+  "research.toc.introduction": {
+    "defaultMessage": ""
   }
 }
