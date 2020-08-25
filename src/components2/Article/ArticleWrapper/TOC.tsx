@@ -14,10 +14,10 @@ const TOCWrapper = styled.div`
 
   ${media.xl`
     position: sticky;
-    transform: translate(-145px, 25px);
+    transform: translate(-200px, 25px);
     top: 25px;
     height: 0;
-    width: 145px;
+    width: 200px;
     margin: 0;
   `};
 `;

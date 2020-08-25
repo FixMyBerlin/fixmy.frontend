@@ -2,13 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import {
-  AppBar,
-  Toolbar,
-  AppBarProps,
-  Button,
-  ClickAwayListener
-} from '@material-ui/core';
+import { AppBar, Toolbar, AppBarProps, Button } from '@material-ui/core';
 
 import MenuButton from '~/components2/MenuButton';
 import SeparatorImage from '~/images/header-separator.svg';
@@ -17,19 +11,16 @@ import { RootState } from '~/store';
 
 import ChatTranslate from './chat-translate.svg';
 import LocaleMenu from './LocaleMenu';
+import { LocaleCode } from '~/types';
 
-type LocaleMenuProps = {
-  isOpen: boolean;
-};
-
-const StyledAppBar = styled(AppBar)`
+const StyledAppBar = styled(({ isOpen, ...props }) => <AppBar {...props} />)`
   && {
     background-color: ${config.colors.white};
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 
     .MuiToolbar-root {
       padding-left: 0;
-      opacity: ${(props: LocaleMenuProps) => (props.isOpen ? 0.7 : 1)};
+      opacity: ${({ isOpen }) => (isOpen ? 0.7 : 1)};
     }
   }
 `;
@@ -71,12 +62,13 @@ const LogoWrapper = styled.div`
   margin: 1em 1em 1em auto;
 `;
 
-const ChatTranslateIcon = styled(ChatTranslate)`
-  width: 32px;
-  height: 32px;
+const ChatTranslateIcon = styled(({ isOpen, ...props }) => (
+  <ChatTranslate {...props} />
+))`
+  width: 24px;
+  height: 24px;
   path {
-    fill: ${(props: LocaleMenuProps) =>
-      props.isOpen ? config.colors.interaction : 'initial'};
+    fill: ${({ isOpen }) => (isOpen ? config.colors.interaction : 'initial')};
   }
 `;
 
@@ -84,7 +76,7 @@ interface Props extends AppBarProps {
   to?: string;
   showInfoLink?: boolean;
   logo?: React.ReactNode;
-  localeSwitcher?: boolean;
+  locales?: LocaleCode[];
 }
 
 const Header = ({
@@ -92,7 +84,7 @@ const Header = ({
   showInfoLink = false,
   logo = null,
   position = 'static',
-  localeSwitcher = false,
+  locales = null,
   children,
   ...props
 }: Props) => {
@@ -114,7 +106,7 @@ const Header = ({
             <Subtitle>Alle Infos zur Aktion &gt;</Subtitle>
           )}
         </LinkWrapper>
-        {localeSwitcher && (
+        {locales && (
           <Button
             endIcon={<ChatTranslateIcon isOpen={isLocaleMenuOpen} />}
             onClick={() => setLocaleMenu(!isLocaleMenuOpen)}
@@ -124,10 +116,13 @@ const Header = ({
         )}
         {logo && <LogoWrapper>{logo}</LogoWrapper>}
       </Toolbar>
-      <LocaleMenu
-        open={isLocaleMenuOpen}
-        onSelection={() => setLocaleMenu(false)}
-      />
+      {locales && (
+        <LocaleMenu
+          locales={locales}
+          open={isLocaleMenuOpen}
+          onSelection={() => setLocaleMenu(false)}
+        />
+      )}
     </StyledAppBar>
   );
 };

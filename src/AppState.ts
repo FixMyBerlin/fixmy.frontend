@@ -1,4 +1,4 @@
-import { matchPath } from 'react-router-dom';
+import { match, matchPath } from 'react-router-dom';
 import qs from 'qs';
 import debug from 'debug';
 import { Location } from 'history';
@@ -86,22 +86,24 @@ export const detectEmbedMode = (location: Location) => (dispatch: Dispatch) => {
 
 type MapPath = {
   activeView?: MapView;
-  activeSection?: number;
+  activeSection?: string;
 };
 
 export const updateHistory = (props: Location) => (dispatch: Dispatch) => {
-  const match = matchPath(props.pathname, {
+  const pathMatch: match<MapPath> = matchPath(props.pathname, {
     path: '/:activeView?/:activeSection?',
     exact: false,
     strict: false
   });
 
-  const { activeSection, activeView } = match.params as MapPath;
+  const { activeSection, activeView } = pathMatch.params;
 
   dispatch({
     type: UPDATE_HISTORY,
     payload: {
-      activeSection: Number.isNaN(activeSection) ? null : activeSection,
+      activeSection: Number.isNaN(parseInt(activeSection, 10))
+        ? null
+        : activeSection,
       activeView
     }
   });

@@ -74,12 +74,20 @@ const DesktopHeader = styled.div`
   `}
 `;
 
+const OffsetMenuButton = styled(MenuButton)`
+  display: inline-flex;
+  ${media.l`
+  top: 30px;
+  left: 40px;
+  `}
+`;
+
 const ArticleWrapper = ({
   bannerTitle,
   bgPattern = defaultBgPattern,
   hasToc = false,
   tocHasActiveState = true,
-  localeSwitcher = false,
+  locales = null,
   className = null,
   children
 }) => {
@@ -136,8 +144,10 @@ const ArticleWrapper = ({
           : candidate,
       0
     );
-    log(`Setting TOC highlight on section ${active + 1}`);
-    setActiveTocIndex(active);
+    if (activeTocIndex !== active) {
+      log(`Setting TOC highlight on section ${active + 1}`);
+      setActiveTocIndex(active);
+    }
   }, [visibleSections]);
 
   const tocChildren = React.Children.toArray(children).filter(
@@ -146,11 +156,11 @@ const ArticleWrapper = ({
 
   return (
     <Page className={className} bgPattern={bgPattern}>
-      <MobileHeader position="sticky" localeSwitcher={localeSwitcher}>
+      <MobileHeader position="sticky" locales={locales}>
         {bannerTitle}
       </MobileHeader>
       <DesktopHeader>
-        <MenuButton />
+        <OffsetMenuButton />
       </DesktopHeader>
       <ContentWrapperOuter>
         {hasToc && !renderTocInsideArticle && (

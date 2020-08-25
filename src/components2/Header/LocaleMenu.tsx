@@ -1,19 +1,17 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import styled from 'styled-components';
 import { MenuList, MenuItem, Collapse } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '~/store';
 import { setLocale } from '~/AppState';
 import { LocaleCode } from '~/types';
+import messages from '~/lang/common';
 
 type Props = {
+  locales: LocaleCode[];
   open: boolean;
   onSelection: () => any;
-};
-
-type OptionProps = {
-  isActive: boolean;
 };
 
 const Wrapper = styled.div`
@@ -25,15 +23,17 @@ const LocaleMenuLabel = styled.h2`
   padding: 0 1rem;
 `;
 
-const LocaleMenuOption = styled(MenuItem)`
+const LocaleMenuOption = styled(({ isActive, ...props }) => (
+  <MenuItem {...props} />
+))`
   && {
     justify-content: flex-end;
-    font-weight: ${(props: OptionProps) =>
-      props.isActive ? 'bold' : 'initial'};
+    font-weight: ${({ isActive }) => (isActive ? 'bold' : 'initial')};
   }
 `;
 
 const LocaleMenu = (props: Props) => {
+  const intl = useIntl();
   const dispatch = useDispatch();
   const activeLocale = useSelector((state: RootState) => state.AppState.locale);
   const handleClick = (locale: LocaleCode) => {
@@ -51,33 +51,15 @@ const LocaleMenu = (props: Props) => {
           :
         </LocaleMenuLabel>
         <MenuList aria-labelledby="localeMenuLabel">
-          <LocaleMenuOption
-            onClick={() => handleClick('de')}
-            isActive={activeLocale === 'de'}
-          >
-            <FormattedMessage
-              id="components.article.localeSwitcher.german"
-              defaultMessage="Deutsch"
-            />
-          </LocaleMenuOption>
-          <LocaleMenuOption
-            onClick={() => handleClick('en')}
-            isActive={activeLocale === 'en'}
-          >
-            <FormattedMessage
-              id="components.article.localeSwitcher.english"
-              defaultMessage="Englisch"
-            />
-          </LocaleMenuOption>
-          <LocaleMenuOption
-            onClick={() => handleClick('es')}
-            isActive={activeLocale === 'es'}
-          >
-            <FormattedMessage
-              id="components.article.localeSwitcher.spanish"
-              defaultMessage="Spanisch"
-            />
-          </LocaleMenuOption>
+          {props.locales.map((l) => (
+            <LocaleMenuOption
+              key={l}
+              onClick={() => handleClick(l)}
+              isActive={activeLocale === l}
+            >
+              {intl.formatMessage(messages[`localeSwitcher-${l}`])}
+            </LocaleMenuOption>
+          ))}
         </MenuList>
       </Wrapper>
     </Collapse>
