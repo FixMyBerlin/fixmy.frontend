@@ -9,6 +9,7 @@ export interface InnerImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   subtitle?: string;
   alt?: string;
   role?: string;
+  loadingStrategy?: ImgHTMLAttributes<HTMLImageElement>['loading'];
 }
 
 const Img = styled.img`
@@ -21,10 +22,11 @@ const InnerImg = ({
   role = null,
   subtitle = null,
   children = null,
+  loading = 'lazy',
   ...props
 }: InnerImageProps) => (
   <>
-    <Img src={source} alt={alt} role={role} {...props} />
+    <Img src={source} alt={alt} role={role} loading={loading} {...props} />
     {subtitle && <Subtitle>{subtitle}</Subtitle>}
     {children}
   </>
