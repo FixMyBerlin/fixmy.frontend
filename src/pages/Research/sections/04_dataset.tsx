@@ -1,33 +1,55 @@
 import React from 'react';
-import { Heading, Paragraph } from '~/components2/Article';
+import { FormattedMessage } from 'react-intl';
+import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import Link from '~/components2/Link';
 
-const SectionDataset = ({ toc }) => (
+const SectionDataset = ({ toc }: SectionProps) => (
   <>
     <Heading as="h2" toc={toc}>
-      Datensatz der Ergebnisse zum Download
+      <FormattedMessage
+        id="research.04_dataset.heading"
+        defaultMessage="Datensatz der Ergebnisse zum Download"
+      />
     </Heading>
     <Paragraph>
-      FixMyCity stellt die Daten offen zur Verfügung (&ldquo;open data&rdquo;),
-      unter der Bedingung, dass abgeleitete Werke auch veröffentlicht werden
-      (&ldquo;share-alike&rdquo;). Details zur Lizenz können Sie auf den Seiten
-      der{' '}
-      <Link href="https://www.opendatacommons.org/licenses/odbl/summary/index.html">
-        Open Knowledge Foundation
-      </Link>{' '}
-      nachlesen. Die Erklärung zu den Spalten in dem JSON-Datensatz finden Sie
-      in{' '}
-      <Link href="/uploads/kataster-ki/Spezifikation_Ausgabeformat_des_Strassenchecks.pdf">
-        diesem PDF zu den Spezifikationen
-      </Link>
-      .
+      <FormattedMessage
+        id="research.04_dataset.p1"
+        defaultMessage='FixMyCity stellt die Daten offen zur Verfügung ("open data"), unter der Bedingung, dass abgeleitete Werke auch veröffentlicht werden ("share-alike"). Details zur Lizenz können Sie auf den Seiten der {linkLicense} nachlesen. Die Erklärung zu den Spalten in dem JSON-Datensatz finden Sie in {linkSpec}.'
+        values={{
+          linkLicense: (
+            <Link href="https://www.opendatacommons.org/licenses/odbl/summary/index.html">
+              <FormattedMessage
+                id="research.04_dataset.p1.linkLicense"
+                defaultMessage="Open Knowledge Foundation"
+              />
+            </Link>
+          ),
+          linkSpec: (
+            <Link href="/uploads/kataster-ki/Spezifikation_Ausgabeformat_des_Strassenchecks.pdf">
+              <FormattedMessage
+                id="research.04_dataset.p1.linkSpec"
+                defaultMessage="diesem PDF zu den Spezifikationen"
+              />
+            </Link>
+          )
+        }}
+      />
     </Paragraph>
     <Paragraph>
-      Unter folgendem Link gelangen Sie zu den{' '}
-      <Link href="https://raw.githubusercontent.com/FixMyBerlin/fixmy.data/master/SurveyResults_200414.json">
-        Ergebnissen der Umfrage als JSON-Datensatz
-      </Link>
-      , die sie dort Einsehen und Herunterladen können.
+      <FormattedMessage
+        id="research.04_dataset.p2"
+        defaultMessage="Unter folgendem Link gelangen Sie zu den {linkResults}, die sie dort Einsehen und Herunterladen können."
+        values={{
+          linkResults: (
+            <Link href="https://raw.githubusercontent.com/FixMyBerlin/fixmy.data/master/SurveyResults_200414.json">
+              <FormattedMessage
+                id="research.04_dataset.p2.linkResults"
+                defaultMessage="Ergebnissen der Umfrage als JSON-Datensatz"
+              />
+            </Link>
+          )
+        }}
+      />
     </Paragraph>
   </>
 );

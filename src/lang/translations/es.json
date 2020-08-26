@@ -11,8 +11,17 @@
   "components.article.attribution": {
     "defaultMessage": "de"
   },
+  "components.article.localeSwitcher.english": {
+    "defaultMessage": ""
+  },
+  "components.article.localeSwitcher.german": {
+    "defaultMessage": ""
+  },
   "components.article.localeSwitcher.label": {
     "defaultMessage": "seleccione otro idioma"
+  },
+  "components.article.localeSwitcher.spanish": {
+    "defaultMessage": ""
   },
   "research.02_intro.cta": {
     "defaultMessage": "DIRECTO A LA EVALUACIÓN"
@@ -43,6 +52,726 @@
   },
   "research.02_intro.p4.link": {
     "defaultMessage": "artículo"
+  },
+  "research.03_concept.heading": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p1": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p1.quote": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p1.quoteSource": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p10": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p10.list1": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p10.list2": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p10.list3": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p10.list4": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p11": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p12": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p12.heading": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p13": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p13.heading": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p14.list1": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p14.list2": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p14.list3": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p15": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p15.imageLabel": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p16": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p16.list1": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p16.list2": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p16.list3": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p17": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p17.list1": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p17.list2": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p17.list3": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p18": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p19": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p19.link": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p2": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p20": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p20.link": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p3": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p4": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p5": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p6": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p6.heading": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p7": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p7.list1": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p7.list2": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p7.list3": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p8": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p8.heading": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p8.link": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p9": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p9.heading": {
+    "defaultMessage": ""
+  },
+  "research.04_dataset.heading": {
+    "defaultMessage": ""
+  },
+  "research.04_dataset.p1": {
+    "defaultMessage": ""
+  },
+  "research.04_dataset.p1.linkLicense": {
+    "defaultMessage": ""
+  },
+  "research.04_dataset.p1.linkSpec": {
+    "defaultMessage": ""
+  },
+  "research.04_dataset.p2": {
+    "defaultMessage": ""
+  },
+  "research.04_dataset.p2.linkResults": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart1.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart1.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart1.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart1.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart1.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart10.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart10.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart10.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart10.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart10.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart10.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart10.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart11.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart11.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart11.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart11.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart11.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12b.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12b.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12b.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12b.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12b.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12b.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12b.7": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12b.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart12b.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart14.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart14.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart14.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart14.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart14.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart14.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart14.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart14.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart15.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart15.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart15.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart15.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart16.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart16.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart16.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart16.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart16.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart16.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart17.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart17.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart17.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart17.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart17.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart18.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart18.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart18.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart18.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart18.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart18.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart19.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart19.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart19.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart19.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart19.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart2.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart2.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart2.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart2.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart2.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart2.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart2.7": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart2.8": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart2.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart2.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart20.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart20.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart20.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart20.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart20.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart20.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart20.7": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart20.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart20.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart21.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart21.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart21.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart21.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart21.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart21.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart4.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart4.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart4.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart4.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart4.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart5.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart5.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart5.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart5.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart5.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.7": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.8": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart9.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart9.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart9.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart9.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart9.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p10": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p11": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p12": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p13.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p4.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p4.listOther": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p5.list1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p5.list2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p5.list3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list7": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p9": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p9.link": {
+    "defaultMessage": ""
   },
   "research.authors": {
     "defaultMessage": "FixMyCity Team"
