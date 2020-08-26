@@ -1325,10 +1325,10 @@ const SectionResults = ({ toc }) => (
     </BarChart.Wrapper>
 
     <Paragraph>
-      Wenn wir alle Situationen ohne Markierungen (als Fahrradstraße oder Spielstraße) jedoch mit Kfz-Verkehr
-      betrachten, so zeigt sich ein eher schlechtes durchschnittliches
-      Sicherheitsempfinden. Die beste Variante erhält lediglich 33,40% sichere
-      oder eher sichere Bewertungen.
+      Wenn wir alle Situationen ohne Markierungen (als Fahrradstraße oder
+      Spielstraße) jedoch mit Kfz-Verkehr betrachten, so zeigt sich ein eher
+      schlechtes durchschnittliches Sicherheitsempfinden. Die beste Variante
+      erhält lediglich 33,40% sichere oder eher sichere Bewertungen.
     </Paragraph>
 
     <ImageMulti>
@@ -1395,8 +1395,10 @@ const SectionResults = ({ toc }) => (
     </BarChart.Wrapper>
 
     <Paragraph>
-      Auffällig ist, dass Fahrradstraßen mit "Sondermarkierungen Dooring" (Markierung der Dooring
-      Zone durch eine unterbrochene Linie, zusätzlich Markierung eines Doppelpfeils um des Nebeneinanderfahren von Radfahrenden anzuzeigen) schlechter abschneiden als solche mit einer großen
+      Auffällig ist, dass Fahrradstraßen mit "Sondermarkierungen Dooring"
+      (Markierung der Dooring Zone durch eine unterbrochene Linie, zusätzlich
+      Markierung eines Doppelpfeils um des Nebeneinanderfahren von Radfahrenden
+      anzuzeigen) schlechter abschneiden als solche mit einer großen
       Fahrradstraßen-Markierung auf der Fahrbahn. Dieser Vergleich ist durch die
       Darstellung in der Umfrage allerdings wenig aussagekräftig, da durch die
       Komposition der Bilder mehrere Faktoren (Kennzeichnung als Fahrradstraße,
