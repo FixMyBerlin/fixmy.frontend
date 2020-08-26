@@ -3,28 +3,29 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
-/* mock-service-worker setup, see https://kentcdodds.com/blog/stop-mocking-fetch */
-import { setupServer } from 'msw/node';
-import handlers from './mocks/mswHandlers';
-
-// Setup requests interception using the given handlers.
-// eslint-disable-next-line import/prefer-default-export
-export const server = setupServer(...handlers);
-
-beforeAll(() => {
-  // Enable the mocking in tests.
-  server.listen();
-});
-
-afterEach(() => {
-  // Reset any runtime handlers tests may use.
-  server.resetHandlers();
-});
-
-afterAll(() => {
-  // Clean up once the tests are done.
-  server.close();
-});
 
 // increase timeout for async tests
 jest.setTimeout(30000);
+
+// add global hooks to use msw in test suites
+
+import { mswServer } from './msw/mswServer';
+beforeAll(() => {
+  // enable the mocking in tests.
+  mswServer.listen();
+});
+
+afterEach(() => {
+  // if you need to add a handler after calling setupServer for some specific test
+  // this will remove that handler for the rest of them
+  // (which is important for test isolation):
+  mswServer.resetHandlers();
+});
+
+afterAll(() => {
+  // stop intercepting requests after tests have run
+  mswServer.close();
+});
+
+// re-export msw server to add test-specific handlers for specific tests ("co-location")
+export { mswServer };
