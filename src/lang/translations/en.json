@@ -54,16 +54,16 @@
     "defaultMessage": "here"
   },
   "research.03_concept.heading": {
-    "defaultMessage": ""
+    "defaultMessage": "Survey concept"
   },
   "research.03_concept.p1": {
-    "defaultMessage": ""
+    "defaultMessage": "To enable participants to take part in the survey online, an interface was built whereby users can rate photorealistic illustrations of various street configurations. Using a four-point scale, these street scenarios could be scored according to the individual’s subjective feeling of safety in each situation."
   },
   "research.03_concept.p1.quote": {
-    "defaultMessage": ""
+    "defaultMessage": "To make subjective safety a measurable metric we had to develop a complex system of street scenarios and reach a high number of participants (The challenge)"
   },
   "research.03_concept.p1.quoteSource": {
-    "defaultMessage": ""
+    "defaultMessage": "The challenge"
   },
   "research.03_concept.p10": {
     "defaultMessage": ""
@@ -144,7 +144,7 @@
     "defaultMessage": ""
   },
   "research.03_concept.p2": {
-    "defaultMessage": ""
+    "defaultMessage": "While the objective safety of cyclists has already been investigated in multiple studies, scarcely any research has been carried out on perceived/subjective safety. The particular challenge when investigating subjective safety is to collect enough ratings for various street configurations and simultaneously look into each of the many different influences on the perceived safety of a situation in enough detail. It was therefore necessary to illustrate a wide variety of different street configurations in the survey and at the same time reach a large number of participants via an effective communication strategy."
   },
   "research.03_concept.p20": {
     "defaultMessage": ""
@@ -153,73 +153,73 @@
     "defaultMessage": ""
   },
   "research.03_concept.p3": {
-    "defaultMessage": ""
+    "defaultMessage": "It is typically difficult to determine how narrow a cycle path has to be for it to be considered ‘too narrow’ simply with qualitative surveys of cyclists’ opinions. This is also the case when gauging the subjective perception of street traffic scenarios or combinations of specific structural characteristics (such as narrow cycle paths or parking spaces). Furthermore, these kinds of surveys are usually carried out with participants who generally travel by bike on a regular basis. This means that the resulting data often only represents the ‘cyclist’ demographic."
   },
   "research.03_concept.p4": {
-    "defaultMessage": ""
+    "defaultMessage": "By working with images of specific street scenarios, the survey was able to show direct connections between the subjective perception of safety with regards to different types of infrastructure and their various structural characteristics. By collecting data about participants’ modes of transport plus demographic data we were able to sort the data about perceived safety into different social and mobility demographics (e.g. motorists, cyclists etc). Thanks to the large number of participants and the communications strategy we developed with the Berlin Tagesspiegel we were able to survey a large number and diverse spread (across various social and mobility demographics) of people."
   },
   "research.03_concept.p5": {
-    "defaultMessage": ""
+    "defaultMessage": "When choosing the scenarios in the survey it was important to reflect cycle path variants which are currently in use. After close consultation with Berlin’s senate administration, thematic workshops, an intensive review of current research in the relevant literature and after pulling in new infrastructure concepts, we felt confident that the survey was up-to-date. For example, Berlin’s senate administration is currently particularly interested in road users’ opinions on different kinds of barriers (bollards/posts) due to the plans they currently have in the pipeline."
   },
   "research.03_concept.p6": {
-    "defaultMessage": ""
+    "defaultMessage": "The survey was conceived as an online questionnaire and published in cooperation with the Berlin daily newspaper Der Tagesspiegel. On the Tagesspiegel website users were directed to the survey via a specific article and advertising banners. For the launch, a front-page article was additionally published in the print edition of the newspaper which made readers aware of the survey. Although the main purpose of the survey was to evaluate various types of cycle infrastructure as per the subjective sense of safety, the survey was neutrally portrayed as a ‘Berlin Street Check’. This enabled us to bring in, among others, over 3,500 participants who said they never travelled by bike."
   },
   "research.03_concept.p6.heading": {
-    "defaultMessage": ""
+    "defaultMessage": "Communication strategy"
   },
   "research.03_concept.p7": {
-    "defaultMessage": ""
+    "defaultMessage": "The survey consisted of three sections:"
   },
   "research.03_concept.p7.list1": {
-    "defaultMessage": ""
+    "defaultMessage": "general questions about modes of transport"
   },
   "research.03_concept.p7.list2": {
-    "defaultMessage": ""
+    "defaultMessage": "participant profile and questions about the individual"
   },
   "research.03_concept.p7.list3": {
-    "defaultMessage": ""
+    "defaultMessage": "rating various street configurations"
   },
   "research.03_concept.p8": {
-    "defaultMessage": ""
+    "defaultMessage": "In this section, participants were asked various general questions about traffic and transport in Berlin in order for the Tagesspiegel editorial team to assess the results. We will not go deeper into this part of the survey here, as this was not part of the survey concept for our research. The Berlin Tagespiegel wrote up the results of this section separately."
   },
   "research.03_concept.p8.heading": {
-    "defaultMessage": ""
+    "defaultMessage": "General questions about transport (Introductory questions)"
   },
   "research.03_concept.p8.link": {
-    "defaultMessage": ""
+    "defaultMessage": "results"
   },
   "research.03_concept.p9": {
-    "defaultMessage": ""
+    "defaultMessage": "These questions were designed to allow us to sort the participants into different types of cyclists/non-cyclists. This enabled us to better understand the answers provided by participants when giving their subjective safety ratings. These divisions were based on the work of Francke, Anke and Lißner (2019). In their assessment, they propose a taxonomy of cyclists/non-cyclists, which they use to describe various preferences road users have for cycle infrastructure. The questionnaire used in their study was extremely thorough; since our focus was rather to collect data on the safety ratings of street scenarios, we therefore reduced the questionnaire down to the most important elements. By changing the questionnaire the results of the two studies are therefore admittedly not directly comparable (see Schwarz, 1999 and Catania et al., 1996), but this was felt to be the right decision in light of the main goal of our survey. Alongside collecting the participant’s sociodemographic data (age, gender, place of residence, number of children), the survey also included questions about their transport behaviour - in particular, whether and to what extent the person travelled by bike."
   },
   "research.03_concept.p9.heading": {
-    "defaultMessage": ""
+    "defaultMessage": "Questions about the individual"
   },
   "research.04_dataset.heading": {
-    "defaultMessage": ""
+    "defaultMessage": "Download the dataset of the survey results"
   },
   "research.04_dataset.p1": {
-    "defaultMessage": ""
+    "defaultMessage": "FixMyCity provides the results data freely for public use (‘open data’) on the condition that work based on these data are also made freely available to the public (‘share-alike’). Find out more about the licence on the website of the Open Knowledge Foundation. An explanation of the columns in the JSON-formatted dataset is provided in this PDF overview of the specifications. Click the button below to download the results of the survey as a JSON dataset."
   },
   "research.04_dataset.p1.linkLicense": {
-    "defaultMessage": ""
+    "defaultMessage": "Open Knowledge Foundation"
   },
   "research.04_dataset.p1.linkSpec": {
-    "defaultMessage": ""
+    "defaultMessage": "this PDF overview of the specifications"
   },
   "research.04_dataset.p2": {
-    "defaultMessage": ""
+    "defaultMessage": "Click the button below to download the results of the survey as a JSON dataset. "
   },
   "research.04_dataset.p2.linkResults": {
-    "defaultMessage": ""
+    "defaultMessage": "Download data"
   },
   "research.05_results.chart1.1": {
-    "defaultMessage": ""
+    "defaultMessage": "male"
   },
   "research.05_results.chart1.2": {
-    "defaultMessage": ""
+    "defaultMessage": "female"
   },
   "research.05_results.chart1.3": {
-    "defaultMessage": ""
+    "defaultMessage": "non-binary"
   },
   "research.05_results.chart1.label": {
     "defaultMessage": ""
@@ -228,85 +228,85 @@
     "defaultMessage": ""
   },
   "research.05_results.chart10.1": {
-    "defaultMessage": ""
+    "defaultMessage": "Cycle path without physical barrier, narrow road markings on the left"
   },
   "research.05_results.chart10.2": {
-    "defaultMessage": ""
+    "defaultMessage": "Cycle path without physical barrier, wide road markings on the left"
   },
   "research.05_results.chart10.3": {
-    "defaultMessage": ""
+    "defaultMessage": "Cycle path with tall bollards as physical barrier"
   },
   "research.05_results.chart10.4": {
-    "defaultMessage": ""
+    "defaultMessage": "Cycle path with short bollards as physical barrier"
   },
   "research.05_results.chart10.5": {
-    "defaultMessage": ""
+    "defaultMessage": "Cycle path with planters as physical barrier"
   },
   "research.05_results.chart10.label": {
-    "defaultMessage": ""
+    "defaultMessage": "Note: This graph shows the average ratings for all scenarios involving a cycle path with a physical barrier - excluding scenarios with parking strips on the right-hand side, tram lines, a bus lane or the cycle path running to the left of parked cars."
   },
   "research.05_results.chart10.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Illustration: Cycle path on main road with and without a physical barrier"
   },
   "research.05_results.chart11.1": {
-    "defaultMessage": ""
+    "defaultMessage": "Wide cycle path to the left of parked cars"
   },
   "research.05_results.chart11.2": {
-    "defaultMessage": ""
+    "defaultMessage": "Wide cycle path to the right of parked cars (with no physical barrier)"
   },
   "research.05_results.chart11.3": {
-    "defaultMessage": ""
+    "defaultMessage": "Wide cycle path to the right of parked cars (with physical barrier)"
   },
   "research.05_results.chart11.label": {
-    "defaultMessage": ""
+    "defaultMessage": "Note: This graph shows the average ratings of all scenarios with a wide cycle path, excluding scenarios with tram lines or a bus lane. Only scenarios with a wide cycle path were compared in this context; narrow cycle paths were not used in the visualisations for this type of scenario."
   },
   "research.05_results.chart11.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Illustration: Cycle path on main road to the left and right of parked vehicles."
   },
   "research.05_results.chart12.1": {
-    "defaultMessage": ""
+    "defaultMessage": "Cyclists’ perspective: road with no cycle path"
   },
   "research.05_results.chart12.2": {
-    "defaultMessage": ""
+    "defaultMessage": "Cyclists’ perspective: road with cycle path"
   },
   "research.05_results.chart12.3": {
-    "defaultMessage": ""
+    "defaultMessage": "Motorists’ perspective: road with no cycle path"
   },
   "research.05_results.chart12.4": {
-    "defaultMessage": ""
+    "defaultMessage": "Motorists’ perspective: road with cycle path"
   },
   "research.05_results.chart12.label": {
-    "defaultMessage": ""
+    "defaultMessage": "Note: The average ratings by motorists and cyclists for all scenarios in the survey."
   },
   "research.05_results.chart12.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Illustration: Main road with and without a cycle path"
   },
   "research.05_results.chart12b.1": {
-    "defaultMessage": ""
+    "defaultMessage": "Cyclists’ perspective: Cycle path without physical barrier"
   },
   "research.05_results.chart12b.2": {
-    "defaultMessage": ""
+    "defaultMessage": "Cyclists’ perspective: Cycle path with physical barrier"
   },
   "research.05_results.chart12b.3": {
-    "defaultMessage": ""
+    "defaultMessage": "Motorists’ perspective: Cycle path without physical barrier"
   },
   "research.05_results.chart12b.4": {
-    "defaultMessage": ""
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier"
   },
   "research.05_results.chart12b.5": {
-    "defaultMessage": ""
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (tall bollards)"
   },
   "research.05_results.chart12b.6": {
-    "defaultMessage": ""
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (low bollards)"
   },
   "research.05_results.chart12b.7": {
-    "defaultMessage": ""
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (planters)"
   },
   "research.05_results.chart12b.label": {
-    "defaultMessage": ""
+    "defaultMessage": "Note: This graph shows the average ratings for all scenarios with a cycle path - excluding scenarios with parking to the right or left side of the cycle path, tram lines or a bus lane."
   },
   "research.05_results.chart12b.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Illustration: cycle path on main road with or without a physical barrier"
   },
   "research.05_results.chart13.1": {
     "defaultMessage": ""
@@ -333,163 +333,163 @@
     "defaultMessage": ""
   },
   "research.05_results.chart14.1": {
-    "defaultMessage": ""
+    "defaultMessage": "Total width of the cycle path (wide - narrow)"
   },
   "research.05_results.chart14.2": {
-    "defaultMessage": ""
+    "defaultMessage": "Total width of the pedestrian area (wide - narrow)"
   },
   "research.05_results.chart14.3": {
-    "defaultMessage": ""
+    "defaultMessage": "Commercial street (yes - no)"
   },
   "research.05_results.chart14.4": {
-    "defaultMessage": ""
+    "defaultMessage": "Commercial street (yes - no)  with narrow pedestrian area"
   },
   "research.05_results.chart14.5": {
-    "defaultMessage": ""
+    "defaultMessage": "Divider to the right of the cycle path (Grass strip - no divider)"
   },
   "research.05_results.chart14.6": {
-    "defaultMessage": ""
+    "defaultMessage": "Type of traffic to the left of the cycle path (moving traffic - parked cars)"
   },
   "research.05_results.chart14.label": {
-    "defaultMessage": ""
+    "defaultMessage": "The differences between the median ratings for contrasting pairs of street configurations. Only scenarios which were relevant for this particular context were compared."
   },
   "research.05_results.chart14.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Illustration: The weightings of the different influencing factors for a cycle path on the pavement"
   },
   "research.05_results.chart15.1": {
-    "defaultMessage": ""
+    "defaultMessage": "Wide cycle path"
   },
   "research.05_results.chart15.2": {
-    "defaultMessage": ""
+    "defaultMessage": "Narrow cycle path"
   },
   "research.05_results.chart15.label": {
-    "defaultMessage": ""
+    "defaultMessage": "Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum"
   },
   "research.05_results.chart15.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Illustration: A narrow vs a wide cycle path on the pavement"
   },
   "research.05_results.chart16.1": {
-    "defaultMessage": ""
+    "defaultMessage": "Wide pavement on commercial street"
   },
   "research.05_results.chart16.2": {
-    "defaultMessage": ""
+    "defaultMessage": "Wide pavement on non-commercial street"
   },
   "research.05_results.chart16.3": {
-    "defaultMessage": ""
+    "defaultMessage": "Narrow pavement on commercial street"
   },
   "research.05_results.chart16.4": {
-    "defaultMessage": ""
+    "defaultMessage": "Narrow pavement on non-commercial street"
   },
   "research.05_results.chart16.label": {
-    "defaultMessage": ""
+    "defaultMessage": "The average ratings for all such scenarios on the pavement are shown below."
   },
   "research.05_results.chart16.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Illustration: Pavement with and without commercial establishments."
   },
   "research.05_results.chart17.1": {
-    "defaultMessage": ""
+    "defaultMessage": "Width of the cycle path (narrow - wide)"
   },
   "research.05_results.chart17.2": {
-    "defaultMessage": ""
+    "defaultMessage": "Divider to the right of the cycle path"
   },
   "research.05_results.chart17.3": {
-    "defaultMessage": ""
+    "defaultMessage": "Commercial activity on street (yes - no) "
   },
   "research.05_results.chart17.label": {
-    "defaultMessage": ""
+    "defaultMessage": "Note: This graph shows the differences between the median ratings for all scenarios in this context. The pedestrian perspective was only collected for scenarios with a narrow pedestrian area."
   },
   "research.05_results.chart17.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Illustration of weightings"
   },
   "research.05_results.chart18.1": {
-    "defaultMessage": ""
+    "defaultMessage": "Pedestrian perspective on commercial street"
   },
   "research.05_results.chart18.2": {
-    "defaultMessage": ""
+    "defaultMessage": "Pedestrian perspective on non-commercial street"
   },
   "research.05_results.chart18.3": {
-    "defaultMessage": ""
+    "defaultMessage": "Cyclist perspective on commercial street (narrow pedestrian area)"
   },
   "research.05_results.chart18.4": {
-    "defaultMessage": ""
+    "defaultMessage": "Cyclist perspective on non-commercial street (narrow pedestrian area)"
   },
   "research.05_results.chart18.label": {
-    "defaultMessage": ""
+    "defaultMessage": "Note: The average ratings for all scenarios on the pavement - this analysis only compares the values for scenarios with a narrow pedestrian area, since this was the only variant presented in the pedestrian perspective."
   },
   "research.05_results.chart18.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Illustration: Pedestrian perspective of the pavement with and without commercial activity"
   },
   "research.05_results.chart19.1": {
-    "defaultMessage": ""
+    "defaultMessage": "Narrow grass strip as divider between cycle and foot traffic"
   },
   "research.05_results.chart19.2": {
-    "defaultMessage": ""
+    "defaultMessage": "Wide grass strip as divider between cycle and foot traffic"
   },
   "research.05_results.chart19.3": {
-    "defaultMessage": ""
+    "defaultMessage": "No divider between cycle and foot traffic"
   },
   "research.05_results.chart19.label": {
-    "defaultMessage": ""
+    "defaultMessage": "Note: This graph shows the average ratings for all scenarios on the pavement. The pedestrian perspective was only visualised with a narrow pedestrian area."
   },
   "research.05_results.chart19.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Illustration: Pedestrian perspective of the pavement with and without a clearly separated cycle path"
   },
   "research.05_results.chart2.1": {
-    "defaultMessage": ""
+    "defaultMessage": "AG0 - under 18 years of age"
   },
   "research.05_results.chart2.2": {
-    "defaultMessage": ""
+    "defaultMessage": "AG1 - 18 to 24 years of age"
   },
   "research.05_results.chart2.3": {
-    "defaultMessage": ""
+    "defaultMessage": "AG2 - 25 to 29 years of age"
   },
   "research.05_results.chart2.4": {
-    "defaultMessage": ""
+    "defaultMessage": "AG3 - 30 to 39 years of age"
   },
   "research.05_results.chart2.5": {
-    "defaultMessage": ""
+    "defaultMessage": "AG4 - 40 to 49 years of age"
   },
   "research.05_results.chart2.6": {
-    "defaultMessage": ""
+    "defaultMessage": "AG5 - 50 to 64 years of age"
   },
   "research.05_results.chart2.7": {
-    "defaultMessage": ""
+    "defaultMessage": "AG6 -  65 to 74 years of age"
   },
   "research.05_results.chart2.8": {
-    "defaultMessage": ""
+    "defaultMessage": "AG7 - over 74 years of age"
   },
   "research.05_results.chart2.label": {
-    "defaultMessage": ""
+    "defaultMessage": "The average safety rating given by each main demographic group (gender, age and frequency of travel by bike) tells us this much:"
   },
   "research.05_results.chart2.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Ratings by age"
   },
   "research.05_results.chart20.1": {
-    "defaultMessage": ""
+    "defaultMessage": "Street width (narrow - wide)"
   },
   "research.05_results.chart20.2": {
-    "defaultMessage": ""
+    "defaultMessage": "Parking (on both sides - none)"
   },
   "research.05_results.chart20.3": {
-    "defaultMessage": ""
+    "defaultMessage": "Parking (on one side - none)"
   },
   "research.05_results.chart20.4": {
-    "defaultMessage": ""
+    "defaultMessage": "Street designation (non-standard – standard)"
   },
   "research.05_results.chart20.5": {
-    "defaultMessage": ""
+    "defaultMessage": "One-way traffic (In opposite direction - not one-way)"
   },
   "research.05_results.chart20.6": {
-    "defaultMessage": ""
+    "defaultMessage": "One-way traffic (In same direction - not one-way"
   },
   "research.05_results.chart20.7": {
-    "defaultMessage": ""
+    "defaultMessage": "‘car-free’ (yes - no)"
   },
   "research.05_results.chart20.label": {
-    "defaultMessage": ""
+    "defaultMessage": "Note: The differences between the median ratings for pairs of contrasting characteristics. The basis for this analysis was all scenarios relevant to this context, excluding scenarios where the street has a continuous green surface layer. The segment ‘Street designation’ refers to cycle-only streets, cycle-only streets with specialised road markings and ‘Child-friendly streets’ (aka streets where motor traffic is not allowed and children are permitted to play freely) as ‘non-standard’."
   },
   "research.05_results.chart20.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Illustration: Weightings of the various influencing factors"
   },
   "research.05_results.chart21.1": {
     "defaultMessage": ""

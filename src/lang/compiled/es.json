@@ -23,11 +23,17 @@
       "value": "de"
     }
   ],
+  "components.article.localeSwitcher.english": [
+  ],
+  "components.article.localeSwitcher.german": [
+  ],
   "components.article.localeSwitcher.label": [
     {
       "type": 0,
       "value": "seleccione otro idioma"
     }
+  ],
+  "components.article.localeSwitcher.spanish": [
   ],
   "research.02_intro.cta": [
     {
@@ -105,18 +111,928 @@
       "value": "artículo"
     }
   ],
+  "research.03_concept.heading": [
+    {
+      "type": 0,
+      "value": "CONCEPTO DE LA ENCUESTA"
+    }
+  ],
+  "research.03_concept.p1": [
+    {
+      "type": 0,
+      "value": "La encuesta online se realizó mediante una interfaz en donde se evaluaron representaciones fotorealistas de diferentes situaciones viales. La sensación de seguridad ante estas escenificaciones pudieron ser evaluadas en cuatro niveles a través de una escala."
+    }
+  ],
+  "research.03_concept.p1.quote": [
+    {
+      "type": 0,
+      "value": "Para poder medir la seguridad subjetiva es necesario desarrollar una sistemática compleja para los escenarios viales y también es muy importante conseguir un elevado número de participación."
+    }
+  ],
+  "research.03_concept.p1.quoteSource": [
+    {
+      "type": 0,
+      "value": "desafío"
+    }
+  ],
+  "research.03_concept.p10": [
+  ],
+  "research.03_concept.p10.list1": [
+  ],
+  "research.03_concept.p10.list2": [
+  ],
+  "research.03_concept.p10.list3": [
+  ],
+  "research.03_concept.p10.list4": [
+  ],
+  "research.03_concept.p11": [
+  ],
+  "research.03_concept.p12": [
+  ],
+  "research.03_concept.p12.heading": [
+  ],
+  "research.03_concept.p13": [
+  ],
+  "research.03_concept.p13.heading": [
+  ],
+  "research.03_concept.p14.list1": [
+  ],
+  "research.03_concept.p14.list2": [
+  ],
+  "research.03_concept.p14.list3": [
+  ],
+  "research.03_concept.p15": [
+  ],
+  "research.03_concept.p15.imageLabel": [
+  ],
+  "research.03_concept.p16": [
+  ],
+  "research.03_concept.p16.list1": [
+  ],
+  "research.03_concept.p16.list2": [
+  ],
+  "research.03_concept.p16.list3": [
+  ],
+  "research.03_concept.p17": [
+  ],
+  "research.03_concept.p17.list1": [
+  ],
+  "research.03_concept.p17.list2": [
+  ],
+  "research.03_concept.p17.list3": [
+  ],
+  "research.03_concept.p18": [
+  ],
+  "research.03_concept.p19": [
+  ],
+  "research.03_concept.p19.link": [
+  ],
+  "research.03_concept.p2": [
+    {
+      "type": 0,
+      "value": "Mientras que la seguridad objetiva de los ciclistas ya ha sido en diversos estudios investigada, la seguridad subjetiva casi no ha sido analizada. Uno de los desafíos más grandes para poder realizar este estudio es conseguir suficientes valoraciones frente a una situación concreta y al mismo tiempo determinar detalladamente cuales son los posibles factores que  influyen en la sensación de seguridad percibida. Es por esto que fue necesario incluir en la encuesta una gran variación de posibles escenarios viales y mantener una buena estrategia de comunicación."
+    }
+  ],
+  "research.03_concept.p20": [
+  ],
+  "research.03_concept.p20.link": [
+  ],
+  "research.03_concept.p3": [
+    {
+      "type": 0,
+      "value": "A través de una encuesta cualitativa a ciclistas es normalmente difícil de determinar cuál es el ancho del carril de bicicletas que será considerado como “demasiado estrecho”. Esto también se aplica a la percepción sobre situaciones de las calles como así también a la combinación de características estructurales (por ejemplo bicisendas estrechas o  hileras de estacionamientos). Además se preguntó con más frecuencia a personas que usan regularmente la bicicleta como medio de transporte. Debido a estos, los datos son considerados como representativos sólo para este último grupo de usuarios."
+    }
+  ],
+  "research.03_concept.p4": [
+    {
+      "type": 0,
+      "value": "Al trabajar con imágenes de escenarios viales específicos, se pudo asignar directamente percepciones subjetivas de seguridad en relación con diversas infraestructuras y sus respectivas características. Al consultar datos sobre el comportamiento del tráfico y los datos demográficos, estas sensaciones subjetivas podrían asignarse a diferentes grupos de usuarios de la población y tráfico (por ejemplo, automovilistas, ciclistas, etc.). Debido a la gran cantidad de participantes y la estrategia de comunicación desarrollada junto con Tagesspiegel Berlín, se pudo entrevistar a un gran número de personas de diversos comportamientos (demográfico y tráfico)."
+    }
+  ],
+  "research.03_concept.p5": [
+    {
+      "type": 0,
+      "value": "Al seleccionar los escenarios, deben tenerse en cuenta las planificaciones actuales para los diferentes carriles bici. La estrecha coordinación con la administración del Senado de Berlín, la implementación de talleres especializados, la incorporación de nuevos conceptos de infraestructura y la intensiva investigación bibliográfica sobre el estado actual del tema garantizan la actualidad de la encuesta. Por ejemplo, según la planificación actual, la Administración del Senado de Berlín tiene un interés particular en la experiencia del usuario de varios tipos de postes barreras (también conocidos como bolardos)."
+    }
+  ],
+  "research.03_concept.p6": [
+    {
+      "type": 0,
+      "value": "La encuesta se diseñó como una encuesta en línea y se publicó en cooperación con el diario berlinés “Der Tagesspiegel”. Se hizo referencia a la encuesta a través de un artículo y un espacio publicitario en el sitio web de Tagesspiegel. Inicialmente también se publicó un artículo en la edición impresa, cuyo título refería a la encuesta. Aunque el objetivo principal era evaluar la seguridad subjetiva de las infraestructuras para bicicletas, la encuesta se comunicó de manera neutral como una \"Chequeo de las calles de Berlín\". Por esta razón fueron participes más de 3500 personas que expresaron nunca haber andado en bicicleta."
+    }
+  ],
+  "research.03_concept.p6.heading": [
+    {
+      "type": 0,
+      "value": "Estrategias de comunicación"
+    }
+  ],
+  "research.03_concept.p7": [
+    {
+      "type": 0,
+      "value": "La encuesta consta de tres secciones"
+    }
+  ],
+  "research.03_concept.p7.list1": [
+    {
+      "type": 0,
+      "value": "Preguntas generales acerca del tráfico"
+    }
+  ],
+  "research.03_concept.p7.list2": [
+    {
+      "type": 0,
+      "value": "Datos personales referidos al perfil del usuario"
+    }
+  ],
+  "research.03_concept.p7.list3": [
+    {
+      "type": 0,
+      "value": "Valoraciones de los diferentes escenarios de las calles"
+    }
+  ],
+  "research.03_concept.p8": [
+    {
+      "type": 0,
+      "value": "En esta sección, se hicieron preguntas generales sobre el tráfico de Berlín para la evaluación editorial del Tagesspiegel. Estas preguntas no se discuten con más detalle aquí, ya que no forman parte del concepto. Sobre este tema “Tagesspiegel Berlín” realizó una evaluación (disponible en alemán)."
+    }
+  ],
+  "research.03_concept.p8.heading": [
+    {
+      "type": 0,
+      "value": "Preguntas generales acerca del tráfico (preguntas iniciales)"
+    }
+  ],
+  "research.03_concept.p8.link": [
+    {
+      "type": 0,
+      "value": "evaluación"
+    }
+  ],
+  "research.03_concept.p9": [
+    {
+      "type": 0,
+      "value": "Estas preguntas tienen el objetivo de categorizar a  los participantes de la encuesta en diferentes tipos de ciclistas. Esto nos permite comprender mejor los diferentes comportamientos de respuesta al evaluar el sentimiento subjetivo de seguridad. Para ello nos remitimos principalmente al trabajo de Francke, Anke, Lißner (2018). En su trabajo presentan una tipología ciclista, para la que describen preferencias por las diferentes infraestructuras. Dado que el cuestionario correspondiente es muy extenso y el principal interés de la recolección de datos en este trabajo fue la evaluación de las escenas viales, el cuestionario se redujo a lo esencial. Los cambios en los cuestionarios aseguran que los resultados ya no sean comparables (cf. Schwarz, 1999 y Catania et al., 1996), pero esta decisión parecía correcta desde el punto de vista del objetivo principal de la encuesta. Además de las características sociodemográficas (edad, sexo, lugar de residencia, hijos), se hicieron preguntas sobre la movilidad, especialmente sobre el comportamiento en bicicleta."
+    }
+  ],
+  "research.03_concept.p9.heading": [
+    {
+      "type": 0,
+      "value": "Datos personales referidos al perfil del usuario"
+    }
+  ],
+  "research.04_dataset.heading": [
+    {
+      "type": 0,
+      "value": "Conjunto de datos de los resultados (para descargar)"
+    }
+  ],
+  "research.04_dataset.p1": [
+    {
+      "type": 0,
+      "value": "FixMyCity pone los datos a disposición de manera abierta (\"open data\") con la condición de que también se publiquen trabajos derivados de los mismos (\"share-alike\"). Los detalles sobre la licencia se pueden encontrar en el sitio web de Open Knowledge Foundation. La explicación de las columnas en el los datos de archivos JSON se puede encontrar en este PDF.El siguiente enlace lo lleva a los resultados de la encuesta como un conjunto de datos en formato  JSON, que puede ver y descargar allí."
+    }
+  ],
+  "research.04_dataset.p1.linkLicense": [
+    {
+      "type": 0,
+      "value": "Open Knowledge Foundation"
+    }
+  ],
+  "research.04_dataset.p1.linkSpec": [
+    {
+      "type": 0,
+      "value": "este PDF"
+    }
+  ],
+  "research.04_dataset.p2": [
+    {
+      "type": 0,
+      "value": "El siguiente enlace lo lleva a los resultados de la encuesta como un conjunto de datos en formato  JSON, que puede ver y descargar allí."
+    }
+  ],
+  "research.04_dataset.p2.linkResults": [
+    {
+      "type": 0,
+      "value": "Descargar conjunto de datos"
+    }
+  ],
+  "research.05_results.chart1.1": [
+    {
+      "type": 0,
+      "value": "masculino"
+    }
+  ],
+  "research.05_results.chart1.2": [
+    {
+      "type": 0,
+      "value": "femenino"
+    }
+  ],
+  "research.05_results.chart1.3": [
+    {
+      "type": 0,
+      "value": "diverso"
+    }
+  ],
+  "research.05_results.chart1.label": [
+  ],
+  "research.05_results.chart1.title": [
+  ],
+  "research.05_results.chart10.1": [
+    {
+      "type": 0,
+      "value": "Carril bici sin separación estructural, marca de delimitación izquierda estrecha"
+    }
+  ],
+  "research.05_results.chart10.2": [
+    {
+      "type": 0,
+      "value": "Carril bici sin separación estructural, marca de delimitación izquierda amplia"
+    }
+  ],
+  "research.05_results.chart10.3": [
+    {
+      "type": 0,
+      "value": "Carril bici con separación estructural, bolardos altos"
+    }
+  ],
+  "research.05_results.chart10.4": [
+    {
+      "type": 0,
+      "value": "Carril bici con separación estructural, bolardos bajos"
+    }
+  ],
+  "research.05_results.chart10.5": [
+    {
+      "type": 0,
+      "value": "Carril bici con separación estructural, maceteros"
+    }
+  ],
+  "research.05_results.chart10.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones con carril bici, - sin estacionamiento a la derecha, tranvía, carril bus o estacionamiento a la derecha del carril bici."
+    }
+  ],
+  "research.05_results.chart10.title": [
+    {
+      "type": 0,
+      "value": "Circulación por calzada de calle principal: Carril bici con y sin separación estructural"
+    }
+  ],
+  "research.05_results.chart11.1": [
+    {
+      "type": 0,
+      "value": "Carril bici ancho, a la izquierda del estacionamiento"
+    }
+  ],
+  "research.05_results.chart11.2": [
+    {
+      "type": 0,
+      "value": "Carril bici ancho, a la derecha del estacionamiento (sin incluir separaciones estructurales)"
+    }
+  ],
+  "research.05_results.chart11.3": [
+    {
+      "type": 0,
+      "value": "Carril bici ancho, a la derecha del estacionamiento (incluye separaciones estructurales)"
+    }
+  ],
+  "research.05_results.chart11.label": [
+    {
+      "type": 0,
+      "value": "Comentario.: Promedio de las calificaciones de todas las situaciones con carril bici ancho, sin tranvía, carril bus. Solo se comparan las variantes con un carril bici ancho, el carril bici estrecho a la derecha del espacio de estacionamiento no se mostró en la encuesta."
+    }
+  ],
+  "research.05_results.chart11.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Circulación sobre calzada de calle principal, ubicación de carril bici a la derecha o izquierda del estacionamiento"
+    }
+  ],
+  "research.05_results.chart12.1": [
+    {
+      "type": 0,
+      "value": "Perspectiva ciclista: sin carril bici"
+    }
+  ],
+  "research.05_results.chart12.2": [
+    {
+      "type": 0,
+      "value": "Perspectiva ciclista: con carril bici"
+    }
+  ],
+  "research.05_results.chart12.3": [
+    {
+      "type": 0,
+      "value": "Perspectiva automovilista: sin carril bici"
+    }
+  ],
+  "research.05_results.chart12.4": [
+    {
+      "type": 0,
+      "value": "Perspectiva automovilista: con carril bici"
+    }
+  ],
+  "research.05_results.chart12.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las valoraciones de todas las situaciones por conductores o ciclistas."
+    }
+  ],
+  "research.05_results.chart12.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Calles principales con y sin bicisenda delimitada."
+    }
+  ],
+  "research.05_results.chart12b.1": [
+    {
+      "type": 0,
+      "value": "Perspectiva del ciclista: carril bici sin separación estructural"
+    }
+  ],
+  "research.05_results.chart12b.2": [
+    {
+      "type": 0,
+      "value": "Perspectiva del ciclista: carril bici con separación estructural"
+    }
+  ],
+  "research.05_results.chart12b.3": [
+    {
+      "type": 0,
+      "value": "Perspectiva del automovilista: carril bici sin separación estructural"
+    }
+  ],
+  "research.05_results.chart12b.4": [
+    {
+      "type": 0,
+      "value": "Perspectiva del automovilista: carril bici con separación estructural"
+    }
+  ],
+  "research.05_results.chart12b.5": [
+    {
+      "type": 0,
+      "value": "Perspectiva del automovilista: carril bici con separación estructural:bolardos altos"
+    }
+  ],
+  "research.05_results.chart12b.6": [
+    {
+      "type": 0,
+      "value": "Perspectiva del automovilista: carril bici con separación estructural:bolardos bajos"
+    }
+  ],
+  "research.05_results.chart12b.7": [
+    {
+      "type": 0,
+      "value": "Perspectiva del automovilista: carril bici con separación estructural: maceteros"
+    }
+  ],
+  "research.05_results.chart12b.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones con carril bici, - sin estacionamiento a la derecha, tranvía, carril bus o estacionamiento a la derecha del carril bici."
+    }
+  ],
+  "research.05_results.chart12b.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Calle principal,carril bici  con y sin separación estructural"
+    }
+  ],
+  "research.05_results.chart13.1": [
+  ],
+  "research.05_results.chart13.2": [
+  ],
+  "research.05_results.chart13.3": [
+  ],
+  "research.05_results.chart13.4": [
+  ],
+  "research.05_results.chart13.5": [
+  ],
+  "research.05_results.chart13.6": [
+  ],
+  "research.05_results.chart13.label": [
+  ],
+  "research.05_results.chart13.title": [
+  ],
+  "research.05_results.chart14.1": [
+    {
+      "type": 0,
+      "value": "Ancho total del carril bici (amplio - estrecho)"
+    }
+  ],
+  "research.05_results.chart14.2": [
+    {
+      "type": 0,
+      "value": "Ancho total de la acera (amplia - estrecha)"
+    }
+  ],
+  "research.05_results.chart14.3": [
+    {
+      "type": 0,
+      "value": "elementos de uso comercial de la acera  (existentes - ninguno) "
+    }
+  ],
+  "research.05_results.chart14.4": [
+    {
+      "type": 0,
+      "value": "elementos de uso comercial de la acera  (existentes - ninguno) solo en aceras estrechas"
+    }
+  ],
+  "research.05_results.chart14.5": [
+    {
+      "type": 0,
+      "value": "Separación a la derecha (Franjas verdes - ninguna separación)"
+    }
+  ],
+  "research.05_results.chart14.6": [
+    {
+      "type": 0,
+      "value": "Factor tipo de tránsito a la izquierda (A la izquierda del carril bici carriles para vehículos a motor vs estacionamiento)"
+    }
+  ],
+  "research.05_results.chart14.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Diferencia entre los valores medios de las evaluaciones al comparar dos valores característicos.Solo se comparan las situaciones relevantes para la característica."
+    }
+  ],
+  "research.05_results.chart14.title": [
+    {
+      "type": 0,
+      "value": "Diagrama de importancia:Carril bici sobre la acera: Influencia de los factores de influencia en promedio"
+    }
+  ],
+  "research.05_results.chart15.1": [
+    {
+      "type": 0,
+      "value": "Carril bici amplio"
+    }
+  ],
+  "research.05_results.chart15.2": [
+    {
+      "type": 0,
+      "value": "Carril bici estrecho"
+    }
+  ],
+  "research.05_results.chart15.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las valoraciones de todas las situaciones sobre acera."
+    }
+  ],
+  "research.05_results.chart15.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Circulación sobre acera: carril bici ancho y estrecho"
+    }
+  ],
+  "research.05_results.chart16.1": [
+    {
+      "type": 0,
+      "value": "Acera amplia con elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart16.2": [
+    {
+      "type": 0,
+      "value": "Acera amplia sin elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart16.3": [
+    {
+      "type": 0,
+      "value": "Acera estrecha con elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart16.4": [
+    {
+      "type": 0,
+      "value": "Acera estrecha sin elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart16.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de todas las valoraciones para situaciones en áreas laterales"
+    }
+  ],
+  "research.05_results.chart16.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Circulación sobre acera, con o sin uso comercial de la acera"
+    }
+  ],
+  "research.05_results.chart17.1": [
+    {
+      "type": 0,
+      "value": "Ancho del carril bici estrecho vs. amplio"
+    }
+  ],
+  "research.05_results.chart17.2": [
+    {
+      "type": 0,
+      "value": "Separación a la derecha (verde - ninguna)"
+    }
+  ],
+  "research.05_results.chart17.3": [
+    {
+      "type": 0,
+      "value": "elementos de uso comercial de la acera (si - no)"
+    }
+  ],
+  "research.05_results.chart17.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Diferencia en los valores medios de las evaluaciones de todas las situaciones relevantes para la característica. La perspectiva del peatón sólo se consultó si el ancho total de la acera era estrecho"
+    }
+  ],
+  "research.05_results.chart17.title": [
+    {
+      "type": 0,
+      "value": "Diagrama de importancia"
+    }
+  ],
+  "research.05_results.chart18.1": [
+    {
+      "type": 0,
+      "value": "Perspectiva del peatón: acera con elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart18.2": [
+    {
+      "type": 0,
+      "value": "Perspectiva del peatón: acera sin elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart18.3": [
+    {
+      "type": 0,
+      "value": "Perspectiva del ciclista: Acera estrecha con elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart18.4": [
+    {
+      "type": 0,
+      "value": "Perspectiva del ciclista: Acera estrecha sin elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart18.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones sobre la acera. La evaluación solo compara los casos con aceras estrechas, ya que la perspectiva del peatón solo fue consultada en esta variante."
+    }
+  ],
+  "research.05_results.chart18.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Perspectiva del peatón: Acera con y sin presencia de elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart19.1": [
+    {
+      "type": 0,
+      "value": "Separación estrecha a la derecha con franjas verdes"
+    }
+  ],
+  "research.05_results.chart19.2": [
+    {
+      "type": 0,
+      "value": "Separación amplia a la derecha, con franjas verdes"
+    }
+  ],
+  "research.05_results.chart19.3": [
+    {
+      "type": 0,
+      "value": "Ninguna separación a la derecha"
+    }
+  ],
+  "research.05_results.chart19.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones en la acera. La perspectiva del peatón sólo se cuestionó cuando el ancho total de la acera era estrecho."
+    }
+  ],
+  "research.05_results.chart19.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Circulación por calles principales: Perspectiva de los peatones, con y sin separación"
+    }
+  ],
+  "research.05_results.chart2.1": [
+    {
+      "type": 0,
+      "value": "AG0 - menores de 18 años"
+    }
+  ],
+  "research.05_results.chart2.2": [
+    {
+      "type": 0,
+      "value": "AG1 - 18 a 24 años"
+    }
+  ],
+  "research.05_results.chart2.3": [
+    {
+      "type": 0,
+      "value": "AG2 - 25 a 29 años"
+    }
+  ],
+  "research.05_results.chart2.4": [
+    {
+      "type": 0,
+      "value": "AG3 - 30 a 39 años"
+    }
+  ],
+  "research.05_results.chart2.5": [
+    {
+      "type": 0,
+      "value": "AG4 - 40 a 49 años"
+    }
+  ],
+  "research.05_results.chart2.6": [
+    {
+      "type": 0,
+      "value": "AG5 - 50 a 64 años"
+    }
+  ],
+  "research.05_results.chart2.7": [
+    {
+      "type": 0,
+      "value": "AG6 -  65 a 74 años"
+    }
+  ],
+  "research.05_results.chart2.8": [
+    {
+      "type": 0,
+      "value": "AG7 - mayores de 74 años"
+    }
+  ],
+  "research.05_results.chart2.label": [
+  ],
+  "research.05_results.chart2.title": [
+    {
+      "type": 0,
+      "value": "Valoración según edad:"
+    }
+  ],
+  "research.05_results.chart20.1": [
+    {
+      "type": 0,
+      "value": "Ancho de la calle (estrecho vs amplio)"
+    }
+  ],
+  "research.05_results.chart20.2": [
+    {
+      "type": 0,
+      "value": "Estacionamiento  (en ambos lados – no)"
+    }
+  ],
+  "research.05_results.chart20.3": [
+    {
+      "type": 0,
+      "value": "Estacionamiento (en un lado – no)"
+    }
+  ],
+  "research.05_results.chart20.4": [
+    {
+      "type": 0,
+      "value": "Señalización (existente – ninguna)"
+    }
+  ],
+  "research.05_results.chart20.5": [
+    {
+      "type": 0,
+      "value": "Calle de un solo sentido, circulación en dirección contraria (contramano vs a los dos lados)"
+    }
+  ],
+  "research.05_results.chart20.6": [
+    {
+      "type": 0,
+      "value": "Calle de un solo sentido, circulación en el sentido de la calle (una mano vs a los dos lados)"
+    }
+  ],
+  "research.05_results.chart20.7": [
+    {
+      "type": 0,
+      "value": "“libre de autos” (si/no)"
+    }
+  ],
+  "research.05_results.chart20.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Diferencia en los valores medios de las evaluaciones en la comparación de dos valores característicos. Todas las situaciones relevantes para la característica son la base. Las excepciones son situaciones en las que el asfalto está continuamente verde. Bajo “señalización” se resumen señalizaciones especiales de ciclocalles,  ciclocalles y calles residenciales."
+    }
+  ],
+  "research.05_results.chart20.title": [
+    {
+      "type": 0,
+      "value": "Diagrama de importancias Calles secundarias: Importancia de los factores de influencia en promedio"
+    }
+  ],
+  "research.05_results.chart21.1": [
+  ],
+  "research.05_results.chart21.2": [
+  ],
+  "research.05_results.chart21.3": [
+  ],
+  "research.05_results.chart21.4": [
+  ],
+  "research.05_results.chart21.label": [
+  ],
+  "research.05_results.chart21.title": [
+  ],
+  "research.05_results.chart22.1": [
+  ],
+  "research.05_results.chart22.2": [
+  ],
+  "research.05_results.chart22.3": [
+  ],
+  "research.05_results.chart22.4": [
+  ],
+  "research.05_results.chart22.5": [
+  ],
+  "research.05_results.chart22.label": [
+  ],
+  "research.05_results.chart22.title": [
+  ],
+  "research.05_results.chart3.1": [
+  ],
+  "research.05_results.chart3.2": [
+  ],
+  "research.05_results.chart3.3": [
+  ],
+  "research.05_results.chart3.4": [
+  ],
+  "research.05_results.chart3.5": [
+  ],
+  "research.05_results.chart3.6": [
+  ],
+  "research.05_results.chart3.label": [
+  ],
+  "research.05_results.chart3.title": [
+  ],
+  "research.05_results.chart4.1": [
+  ],
+  "research.05_results.chart4.2": [
+  ],
+  "research.05_results.chart4.3": [
+  ],
+  "research.05_results.chart4.label": [
+  ],
+  "research.05_results.chart4.title": [
+  ],
+  "research.05_results.chart5.1": [
+  ],
+  "research.05_results.chart5.2": [
+  ],
+  "research.05_results.chart5.3": [
+  ],
+  "research.05_results.chart5.label": [
+  ],
+  "research.05_results.chart5.title": [
+  ],
+  "research.05_results.chart6.1": [
+  ],
+  "research.05_results.chart6.2": [
+  ],
+  "research.05_results.chart6.3": [
+  ],
+  "research.05_results.chart6.4": [
+  ],
+  "research.05_results.chart6.5": [
+  ],
+  "research.05_results.chart6.6": [
+  ],
+  "research.05_results.chart6.label": [
+  ],
+  "research.05_results.chart6.title": [
+  ],
+  "research.05_results.chart7.1": [
+  ],
+  "research.05_results.chart7.2": [
+  ],
+  "research.05_results.chart7.3": [
+  ],
+  "research.05_results.chart7.4": [
+  ],
+  "research.05_results.chart7.label": [
+  ],
+  "research.05_results.chart7.title": [
+  ],
+  "research.05_results.chart8.1": [
+  ],
+  "research.05_results.chart8.2": [
+  ],
+  "research.05_results.chart8.3": [
+  ],
+  "research.05_results.chart8.4": [
+  ],
+  "research.05_results.chart8.5": [
+  ],
+  "research.05_results.chart8.6": [
+  ],
+  "research.05_results.chart8.7": [
+  ],
+  "research.05_results.chart8.8": [
+  ],
+  "research.05_results.chart8.label": [
+  ],
+  "research.05_results.chart8.title": [
+  ],
+  "research.05_results.chart9.1": [
+  ],
+  "research.05_results.chart9.2": [
+  ],
+  "research.05_results.chart9.3": [
+  ],
+  "research.05_results.chart9.label": [
+  ],
+  "research.05_results.chart9.title": [
+  ],
+  "research.05_results.heading": [
+  ],
+  "research.05_results.p1": [
+  ],
+  "research.05_results.p10": [
+  ],
+  "research.05_results.p11": [
+  ],
+  "research.05_results.p12": [
+  ],
+  "research.05_results.p13.heading": [
+  ],
+  "research.05_results.p2": [
+  ],
+  "research.05_results.p3": [
+  ],
+  "research.05_results.p4": [
+  ],
+  "research.05_results.p4.heading": [
+  ],
+  "research.05_results.p4.listOther": [
+  ],
+  "research.05_results.p5": [
+  ],
+  "research.05_results.p5.list1": [
+  ],
+  "research.05_results.p5.list2": [
+  ],
+  "research.05_results.p5.list3": [
+  ],
+  "research.05_results.p6": [
+  ],
+  "research.05_results.p7": [
+  ],
+  "research.05_results.p7.list1": [
+  ],
+  "research.05_results.p7.list2": [
+  ],
+  "research.05_results.p7.list3": [
+  ],
+  "research.05_results.p7.list4": [
+  ],
+  "research.05_results.p7.list5": [
+  ],
+  "research.05_results.p7.list6": [
+  ],
+  "research.05_results.p7.list7": [
+  ],
+  "research.05_results.p8": [
+  ],
+  "research.05_results.p8.list": [
+  ],
+  "research.05_results.p8.list1": [
+  ],
+  "research.05_results.p8.list2": [
+  ],
+  "research.05_results.p8.list3": [
+  ],
+  "research.05_results.p8.list4": [
+  ],
+  "research.05_results.p8.list5": [
+  ],
+  "research.05_results.p8.list6": [
+  ],
+  "research.05_results.p9": [
+  ],
+  "research.05_results.p9.link": [
+  ],
   "research.authors": [
     {
       "type": 0,
       "value": "FixMyCity Team"
     }
   ],
-  "research.kicker": [],
+  "research.kicker": [
+  ],
   "research.title": [
     {
       "type": 0,
       "value": "Estudio sobre la seguridad subjetiva en la movilidad ciclista  - Resultados y datos de la encuesta realizada a más de 21.000 participantes"
     }
   ],
-  "research.toc.introduction": []
+  "research.toc.introduction": [
+  ]
 }

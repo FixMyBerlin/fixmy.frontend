@@ -23,11 +23,17 @@
       "value": "von"
     }
   ],
+  "components.article.localeSwitcher.english": [
+  ],
+  "components.article.localeSwitcher.german": [
+  ],
   "components.article.localeSwitcher.label": [
     {
       "type": 0,
       "value": "andere Sprache wählen"
     }
+  ],
+  "components.article.localeSwitcher.spanish": [
   ],
   "research.02_intro.cta": [
     {
@@ -103,6 +109,1510 @@
     {
       "type": 0,
       "value": "Artikel"
+    }
+  ],
+  "research.03_concept.heading": [
+    {
+      "type": 0,
+      "value": "Umfragekonzept"
+    }
+  ],
+  "research.03_concept.p1": [
+    {
+      "type": 0,
+      "value": "Zur Online-Befragung der Teilnehmenden wurde ein Interface zur Bewertung von fotorealistischen Darstellungen von Straßensituationen geschaffen. Anhand einer vierstufigen Skala konnten die Straßenszenen auf das subjektiven Empfinden von Sicherheit in der Situation bewertet werden."
+    }
+  ],
+  "research.03_concept.p1.quote": [
+    {
+      "type": 0,
+      "value": "Um subjektive Sicherheit messbar zu machen war es notwendig eine komplexe Systematik von Straßenszenen zu entwickeln und eine hohe Anzahl Teilnehmender zu erreichen."
+    }
+  ],
+  "research.03_concept.p1.quoteSource": [
+    {
+      "type": 0,
+      "value": "Herausforderung"
+    }
+  ],
+  "research.03_concept.p10": [
+    {
+      "type": 0,
+      "value": "Darunter fallen:"
+    }
+  ],
+  "research.03_concept.p10.list1": [
+    {
+      "type": 0,
+      "value": "Verkehrsmittelnutzung (Modal Split)"
+    }
+  ],
+  "research.03_concept.p10.list2": [
+    {
+      "type": 0,
+      "value": "zur Verfügung stehende Verkehrsmittel"
+    }
+  ],
+  "research.03_concept.p10.list3": [
+    {
+      "type": 0,
+      "value": "Länge des häufigsten Weges mit dem Fahrrad in Minuten"
+    }
+  ],
+  "research.03_concept.p10.list4": [
+    {
+      "type": 0,
+      "value": "Motivation für das Fahrradfahren bzw. Gründe gegen das Fahrradfahren"
+    }
+  ],
+  "research.03_concept.p11": [
+    {
+      "type": 0,
+      "value": "Nach Vervollständigung dieses Teiles der Umfrage wird ein Datensatz für den/die Teilnehmenden angelegt."
+    }
+  ],
+  "research.03_concept.p12": [
+    {
+      "type": 0,
+      "value": "Basierend auf den Angaben der Teilnehmenden zur Häufigkeit ihrer Verkehrsmittelnutzung, wurden sie anhand der angegebenen Nutzungshäufigkeit (für die Nutzer:innen nicht sichtbar) als Radfahrende, Fußgänger:innen oder Autofahrende eingestuft. Den Teilnehmenden wurden im Anschluss fünf bzw. zehn Straßenszenen aus der ihrer Nutzergruppe entsprechenden Perspektive gezeigt. Die Straßenszenen konnten auf einer vierstufigen Skala mit “unsicher”, “eher unsicher”, “eher sicher”, oder “sicher” bewertet werden. Im Anschluss konnte der/die Teilnehmende wählen, ob er in dieser Perspektive weitere Szenen bewerten möchte oder auf eine Perspektive aus Sicht der anderen Verkehrsteilnehmenden wechseln möchte. Nach weiteren zehn Szenen wurde der/die Teilnehmende erneut gefragt. So könnte die Umfrage beliebig lange fortgesetzt werden. Im Durchschnitt bewertete jede/r Teilnehmende 22 Szenen."
+    }
+  ],
+  "research.03_concept.p12.heading": [
+    {
+      "type": 0,
+      "value": "Szenenbewertungen"
+    }
+  ],
+  "research.03_concept.p13": [
+    {
+      "type": 0,
+      "value": "Für die Umfrage entschieden wir uns, Straßenszenen als 3D-Renderings fotorealistisch darzustellen. Die verschiedenen Straßenszenen wurden in drei Experimente unterteilt."
+    }
+  ],
+  "research.03_concept.p13.heading": [
+    {
+      "type": 0,
+      "value": "Auswahl der Straßenszenen"
+    }
+  ],
+  "research.03_concept.p14.list1": [
+    {
+      "type": 0,
+      "value": "Hauptverkehrsstraßen - Radführung auf der Fahrbahn"
+    }
+  ],
+  "research.03_concept.p14.list2": [
+    {
+      "type": 0,
+      "value": "Nebenstraßen - Radführung auf der Fahrbahn"
+    }
+  ],
+  "research.03_concept.p14.list3": [
+    {
+      "type": 0,
+      "value": "Radführung im Seitenraum ( an Hauptverkehrsstraßen)"
+    }
+  ],
+  "research.03_concept.p15": [
+    {
+      "type": 0,
+      "value": "Aufgrund der Vielzahl von möglichen Einflussfaktoren und den daraus resultierenden Szenarien musste die Anzahl der Szenarien eingegrenzt werden. Nach Recherche des aktuellen Stands der Forschung wurden die wichtigsten Einflussfaktoren herausgearbeitet. Jedes Experiment besteht aus einer Grundansicht, zu welcher unterschiedliche Infrastrukturmerkmale hinzugefügt oder verändert werden können. Beispielsweise Experiment 1: Hauptverkehrsstraße - Radführung auf der Fahrbahn: Hier besteht das Grundbild aus einem Fahrstreifen, einer Radverkehrsanlage mit Trennung (links / rechts), einem Parkstreifen und dem Seitenraum:"
+    }
+  ],
+  "research.03_concept.p15.imageLabel": [
+    {
+      "type": 0,
+      "value": "Beschriebenes Grundbild aus einem Fahrstreifen, einer Radverkehrsanlage mit Trennung (links / rechts), einem Parkstreifen und dem Seitenraum"
+    }
+  ],
+  "research.03_concept.p16": [
+    {
+      "type": 0,
+      "value": "Während in diesem Experiment der Seitenraum immer gleich dargestellt wird, werden im Bereich des Fahrstreifens folgende Einflussfaktoren variiert:"
+    }
+  ],
+  "research.03_concept.p16.list1": [
+    {
+      "type": 0,
+      "value": "Geschwindigkeit"
+    }
+  ],
+  "research.03_concept.p16.list2": [
+    {
+      "type": 0,
+      "value": "Verkehrsaufkommen"
+    }
+  ],
+  "research.03_concept.p16.list3": [
+    {
+      "type": 0,
+      "value": "Tram-Schiene ja / nein"
+    }
+  ],
+  "research.03_concept.p17": [
+    {
+      "type": 0,
+      "value": "Im Bereich der Radverkehrsanlage (RVA) werden folgende Faktoren variiert:"
+    }
+  ],
+  "research.03_concept.p17.list1": [
+    {
+      "type": 0,
+      "value": "Art und Breite der Trennung links (hier gibt es unterschiedliche Markierungen und bauliche Trennungen)"
+    }
+  ],
+  "research.03_concept.p17.list2": [
+    {
+      "type": 0,
+      "value": "Einfärbung und Breite der RVA"
+    }
+  ],
+  "research.03_concept.p17.list3": [
+    {
+      "type": 0,
+      "value": "Art und Breite der Trennung rechts"
+    }
+  ],
+  "research.03_concept.p18": [
+    {
+      "type": 0,
+      "value": "Weiter wird eine Reihe parkender Fahrzeuge dargestellt oder nicht."
+    }
+  ],
+  "research.03_concept.p19": [
+    {
+      "type": 0,
+      "value": "Je nach Führungsform wurden die Szenarien zusätzlich zur Radfahrperspektive aus Auto- und/oder Fußperspektive dargestellt. So wurden insgesamt 1900 Szenarien und 3.000 Bilddateien (inkl. Auto und Fußperspektive) erstellt. Ein genauere Dokumentation zur Systematik der Straßenszenarien ist "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " zu finden."
+    }
+  ],
+  "research.03_concept.p19.link": [
+    {
+      "type": 0,
+      "value": "hier (PDF-Download)"
+    }
+  ],
+  "research.03_concept.p2": [
+    {
+      "type": 0,
+      "value": "Während die objektive Sicherheit von Radfahrenden bereits in vielen Studien untersucht wurde, gibt es zum subjektiven Sicherheitsempfinden bisher kaum Forschungsergebnisse. Die besondere Herausforderung bei der Untersuchung subjektiver Sicherheit ist es, ausreichend Bewertungen einer Situation zu erhalten und gleichzeitig die vielen möglichen Einflussfaktoren für das Sicherheitsempfinden ausreichend detailliert abzubilden. So war es notwendig, für die Umfrage eine hohe Zahl an Varianten von Straßenszenen darzustellen und gleichzeitig mit einer guten Kommunikationsstrategie eine hohe Zahl an Teilnehmenden zu erreichen."
+    }
+  ],
+  "research.03_concept.p20": [
+    {
+      "type": 0,
+      "value": "Ein Übersicht der Szenen und ihrer Merkmale sind in "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " zu finden"
+    }
+  ],
+  "research.03_concept.p20.link": [
+    {
+      "type": 0,
+      "value": "dieser Tabelle (ODS-Download)"
+    }
+  ],
+  "research.03_concept.p3": [
+    {
+      "type": 0,
+      "value": "Mittels einer qualitativen Befragung von Radfahrenden lässt sich normalerweise schwierig ermitteln, welche Breite von Radverkehrsanlagen als “zu schmal” empfunden wird. Ähnliches gilt für das subjektive Empfinden von Straßensituationen sowie die Kombination von gewissen baulichen Merkmalen (z.B. schmaler Radweg und Parkplätze). Darüber hinaus werden häufig in erster Linie Personen befragt, welche ohnehin regelmäßig Fahrrad fahren. Als Konsequenz sind die Daten häufig nur für die Nutzergruppe “Radfahrende” repräsentativ."
+    }
+  ],
+  "research.03_concept.p4": [
+    {
+      "type": 0,
+      "value": "Durch das Arbeiten mit Bildern von spezifischen Straßen-Szenarien konnte im Rahmen der Umfrage eine direkte Zuordnung vom subjektiven Sicherheitsempfinden in Bezug zu verschiedenen Infrastrukturen und deren Merkmalsausprägungen gemacht werden. Mittels Abfrage von Daten zum Verkehrsverhalten, sowie demografischen Daten konnten diese subjektiven Empfindungen verschiedenen Bevölkerungs- und Verkehrsnutzergruppen (z.B. Autofahrende, Radfahrende etc.) zugeordnet werden. Durch die große Teilnehmendenzahl und die gemeinsam mit dem Tagesspiegel Berlin entwickelte Kommunikationsstrategie konnte eine weit gestreute hohe Anzahl von Personen befragt werden (demografisch und vom Verkehrsverhalten)."
+    }
+  ],
+  "research.03_concept.p5": [
+    {
+      "type": 0,
+      "value": "Bei der Auswahl der Szenarien sollten Planungen von aktuellen RVA-Varianten berücksichtigt werden. Auf Grundlage einer engen Abstimmung mit der Berliner Senatsverwaltung, der Durchführung von Fach-Workshops, dem Einarbeiten von neuen Infrastrukturkonzepten und dem intensiven Auseinandersetzen mit dem aktuellen Forschungsstand in der Literatur, konnte die Aktualität der Umfrage sichergestellt werden. Beispielsweise hat die Berliner Senatsverwaltung aufgrund von aktuellen Planungen ein besonderes Interesse an der Nutzerwahrnehmung von verschiedenen Sperrpfostenvarianten (Pollern)."
+    }
+  ],
+  "research.03_concept.p6": [
+    {
+      "type": 0,
+      "value": "Die Umfrage wurde als Onlinebefragung konzipiert und in Kooperation mit der Berliner Tageszeitung \"Der Tagesspiegel\" veröffentlicht. Auf der Internetpräsenz des Tagsspiegels wurde über einen Artikel und Werbebanner auf die Umfrage verwiesen. Zum Auftakt wurde zusätzlich in der Printausgabe ein Artikel als Titelthema mit Verweis auf die Umfrage abgedruckt. Obwohl das Hauptziel die Bewertung von Fahrradinfrastruktur auf subjektive Sicherheit war, wurde die Umfrage neutral als \"Berliner Straßencheck\" kommuniziert. So konnten für die Umfrage unter anderem mehr als 3.500 Personen gewonnen werden, die angaben, nie Fahrrad zu fahren."
+    }
+  ],
+  "research.03_concept.p6.heading": [
+    {
+      "type": 0,
+      "value": "Kommunikationskonzept"
+    }
+  ],
+  "research.03_concept.p7": [
+    {
+      "type": 0,
+      "value": "Die Umfrage bestand aus drei Abschnitten:"
+    }
+  ],
+  "research.03_concept.p7.list1": [
+    {
+      "type": 0,
+      "value": "Allgemeine Fragen zum Verkehr"
+    }
+  ],
+  "research.03_concept.p7.list2": [
+    {
+      "type": 0,
+      "value": "Profil- bzw. personenbezogene Fragen"
+    }
+  ],
+  "research.03_concept.p7.list3": [
+    {
+      "type": 0,
+      "value": "Bewertungen der unterschiedlichen Straßenszenen"
+    }
+  ],
+  "research.03_concept.p8": [
+    {
+      "type": 0,
+      "value": "In diesem Abschnitt wurden allgemeine Fragen über den Berliner Verkehr für die redaktionelle Auswertung des Tagesspiegels gestellt. Hier soll nicht näher auf diese Fragen eingegangen werden, da diese nicht Teil der Konzeption sind. Eine "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " dazu hat der Tagesspiegel Berlin gemacht."
+    }
+  ],
+  "research.03_concept.p8.heading": [
+    {
+      "type": 0,
+      "value": "Allgemeine Fragen zum Verkehr (Eingangsfragen)"
+    }
+  ],
+  "research.03_concept.p8.link": [
+    {
+      "type": 0,
+      "value": "Auswertung"
+    }
+  ],
+  "research.03_concept.p9": [
+    {
+      "type": 0,
+      "value": "Diese Fragen sollen die Zuordnung der Teilnehmer:innen der Umfrage in verschiedene Radfahrtypen ermöglichen. Dies ermöglicht uns, unterschiedliches Antwortverhalten bei der Einschätzung des subjektiven Sicherheitsgefühls besser zu verstehen. Dafür nehmen wir vor allem Bezug auf die Arbeit von Francke, Anke, Lißner (2018). In ihrer Arbeit stellen sie eine Radfahrtypologie vor, mit welcher sie Vorlieben für die Radverkehrsinfrastruktur beschreiben. Da der entsprechende Fragebogen sehr umfangreich ist und das Hauptinteresse der Datenerhebung in dieser Arbeit auf der Bewertung der Szenen lag, wurde der Fragebogen auf das Nötigste reduziert. Änderungen an Fragebögen sorgen zwar dafür, dass die Ergebnisse nicht mehr vergleichbar sind (vgl. Schwarz, 1999 und Catania et al., 1996), dennoch schien diese Entscheidung aus Sicht des Hauptziels der Umfrage richtig. Neben soziodemografischen Merkmalen (Alter, Geschlecht, Wohnort, Kinder) wurden Fragen zum Mobilitäts- dabei insbesondere zum Radfahrverhalten gestellt."
+    }
+  ],
+  "research.03_concept.p9.heading": [
+    {
+      "type": 0,
+      "value": "Profilfragen"
+    }
+  ],
+  "research.04_dataset.heading": [
+    {
+      "type": 0,
+      "value": "Datensatz der Ergebnisse zum Download"
+    }
+  ],
+  "research.04_dataset.p1": [
+    {
+      "type": 0,
+      "value": "FixMyCity stellt die Daten offen zur Verfügung (\"open data\"), unter der Bedingung, dass abgeleitete Werke auch veröffentlicht werden (\"share-alike\"). Details zur Lizenz können Sie auf den Seiten der "
+    },
+    {
+      "type": 1,
+      "value": "linkLicense"
+    },
+    {
+      "type": 0,
+      "value": " nachlesen. Die Erklärung zu den Spalten in dem JSON-Datensatz finden Sie in "
+    },
+    {
+      "type": 1,
+      "value": "linkSpec"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "research.04_dataset.p1.linkLicense": [
+    {
+      "type": 0,
+      "value": "Open Knowledge Foundation"
+    }
+  ],
+  "research.04_dataset.p1.linkSpec": [
+    {
+      "type": 0,
+      "value": "diesem PDF zu den Spezifikationen"
+    }
+  ],
+  "research.04_dataset.p2": [
+    {
+      "type": 0,
+      "value": "Unter folgendem Link gelangen Sie zu den "
+    },
+    {
+      "type": 1,
+      "value": "linkResults"
+    },
+    {
+      "type": 0,
+      "value": ", die sie dort Einsehen und Herunterladen können."
+    }
+  ],
+  "research.04_dataset.p2.linkResults": [
+    {
+      "type": 0,
+      "value": "Ergebnissen der Umfrage als JSON-Datensatz"
+    }
+  ],
+  "research.05_results.chart1.1": [
+    {
+      "type": 0,
+      "value": "männlich"
+    }
+  ],
+  "research.05_results.chart1.2": [
+    {
+      "type": 0,
+      "value": "weiblich"
+    }
+  ],
+  "research.05_results.chart1.3": [
+    {
+      "type": 0,
+      "value": "divers"
+    }
+  ],
+  "research.05_results.chart1.label": [
+    {
+      "type": 0,
+      "value": "Anm: Durchschnitt aller Bewertungen nach Angaben zum Geschlecht der Teilnehmenden"
+    }
+  ],
+  "research.05_results.chart1.title": [
+    {
+      "type": 0,
+      "value": "Bewertungen nach Geschlecht"
+    }
+  ],
+  "research.05_results.chart10.1": [
+    {
+      "type": 0,
+      "value": "ohne baul. Trennung, Markierung links schmal"
+    }
+  ],
+  "research.05_results.chart10.2": [
+    {
+      "type": 0,
+      "value": "ohne baul. Trennung, Markierung links breit"
+    }
+  ],
+  "research.05_results.chart10.3": [
+    {
+      "type": 0,
+      "value": "mit baul. Trennung Sperrpfosten-hoch"
+    }
+  ],
+  "research.05_results.chart10.4": [
+    {
+      "type": 0,
+      "value": "mit baul. Trennung Sperrpfosten-niedrig"
+    }
+  ],
+  "research.05_results.chart10.5": [
+    {
+      "type": 0,
+      "value": "mit baul. Trennung Blumenkasten"
+    }
+  ],
+  "research.05_results.chart10.label": [
+    {
+      "type": 0,
+      "value": "Anm: Durchschnitt der Bewertungen aller Situationen mit RVA, - ohne rechtsseitiges Parken, Tram, Busspur, oder RVA rechts des Parkens."
+    }
+  ],
+  "research.05_results.chart10.title": [
+    {
+      "type": 0,
+      "value": "HVS-F: RVA mit und ohne bauliche Trennung"
+    }
+  ],
+  "research.05_results.chart11.1": [
+    {
+      "type": 0,
+      "value": "RVA breit, links des Parken"
+    }
+  ],
+  "research.05_results.chart11.2": [
+    {
+      "type": 0,
+      "value": "RVA breit, rechts des Parken (exkl. baul. Trennungen)"
+    }
+  ],
+  "research.05_results.chart11.3": [
+    {
+      "type": 0,
+      "value": "RVA breit, rechts des Parken (inkl. baul. Trennungen)"
+    }
+  ],
+  "research.05_results.chart11.label": [
+    {
+      "type": 0,
+      "value": "Anm.: Durchschnitt der Bewertungen aller Situationen mit RVA breit, – ohne Tram, Busspur. Es werden nur Varianten mit breiter RVA verglichen, schmale RVA rechts des Parkens wurden in der Umfrage nicht dargestellt."
+    }
+  ],
+  "research.05_results.chart11.title": [
+    {
+      "type": 0,
+      "value": "HVS-F: RVA Führung rechts und links vom Parken"
+    }
+  ],
+  "research.05_results.chart12.1": [
+    {
+      "type": 0,
+      "value": "Radperspektive: ohne RVA"
+    }
+  ],
+  "research.05_results.chart12.2": [
+    {
+      "type": 0,
+      "value": "Radperspektive: mit RVA"
+    }
+  ],
+  "research.05_results.chart12.3": [
+    {
+      "type": 0,
+      "value": "Autoperspektive: ohne RVA"
+    }
+  ],
+  "research.05_results.chart12.4": [
+    {
+      "type": 0,
+      "value": "Autoperspektive: mit RVA"
+    }
+  ],
+  "research.05_results.chart12.label": [
+    {
+      "type": 0,
+      "value": "Anm: Durchschnitt der Bewertungen aller Situationen aus Perspektive der Autofahrenden oder der Radfahrenden"
+    }
+  ],
+  "research.05_results.chart12.title": [
+    {
+      "type": 0,
+      "value": "HVS-F: mit und ohne RVA"
+    }
+  ],
+  "research.05_results.chart12b.1": [
+    {
+      "type": 0,
+      "value": "Radperspektive: RVA ohne baul. Trennung"
+    }
+  ],
+  "research.05_results.chart12b.2": [
+    {
+      "type": 0,
+      "value": "Radperspektive: RVA mit baul. Trennung"
+    }
+  ],
+  "research.05_results.chart12b.3": [
+    {
+      "type": 0,
+      "value": "Autoperspektive: RVA ohne baul. Trennung"
+    }
+  ],
+  "research.05_results.chart12b.4": [
+    {
+      "type": 0,
+      "value": "Autoperspektive: RVA mit baul. Trennung"
+    }
+  ],
+  "research.05_results.chart12b.5": [
+    {
+      "type": 0,
+      "value": "Autoperspektive: Trennung Sperrpfosten-hoch"
+    }
+  ],
+  "research.05_results.chart12b.6": [
+    {
+      "type": 0,
+      "value": "Autoperspektive: Trennung Sperrpfosten-niedrig"
+    }
+  ],
+  "research.05_results.chart12b.7": [
+    {
+      "type": 0,
+      "value": "Autoperspektive: Trennung Blumenkasten"
+    }
+  ],
+  "research.05_results.chart12b.label": [
+    {
+      "type": 0,
+      "value": "Durchschnitt der Bewertungen aller Situationen mit RVA, - ohne rechtsseitiges Parken, Tram, Busspur, oder RVA rechts des Parkens."
+    }
+  ],
+  "research.05_results.chart12b.title": [
+    {
+      "type": 0,
+      "value": "HVS-F: RVA mit und ohne bauliche Trennung"
+    }
+  ],
+  "research.05_results.chart13.1": [
+    {
+      "type": 0,
+      "value": "Fahrbahn, RVA ohne Parken breit"
+    }
+  ],
+  "research.05_results.chart13.2": [
+    {
+      "type": 0,
+      "value": "Fahrbahn, RVA mit Parken schmal"
+    }
+  ],
+  "research.05_results.chart13.3": [
+    {
+      "type": 0,
+      "value": "Fahrbahn, RVA mit Parken breit"
+    }
+  ],
+  "research.05_results.chart13.4": [
+    {
+      "type": 0,
+      "value": "Seitenraum, RVA breit"
+    }
+  ],
+  "research.05_results.chart13.5": [
+    {
+      "type": 0,
+      "value": "Seitenraum, RVA schmal"
+    }
+  ],
+  "research.05_results.chart13.6": [
+    {
+      "type": 0,
+      "value": "Fahrbahn, RVA rechts des Parken breit"
+    }
+  ],
+  "research.05_results.chart13.label": [
+    {
+      "type": 0,
+      "value": "Fahrbahn, RVA ohne Parken schmal"
+    }
+  ],
+  "research.05_results.chart13.title": [
+    {
+      "type": 0,
+      "value": "HVS mit RVA: Führungen im Seitenraum (HVS-S) und auf der Fahrbahn (HVS-F)"
+    }
+  ],
+  "research.05_results.chart14.1": [
+    {
+      "type": 0,
+      "value": "Gesamtbreite RVA (breit - schmal)"
+    }
+  ],
+  "research.05_results.chart14.2": [
+    {
+      "type": 0,
+      "value": "Gesamtbreite Gehweg (breit - schmal)"
+    }
+  ],
+  "research.05_results.chart14.3": [
+    {
+      "type": 0,
+      "value": "Auslage (vorhanden - keine)"
+    }
+  ],
+  "research.05_results.chart14.4": [
+    {
+      "type": 0,
+      "value": "Auslage (vorhanden - keine) nur schmaler Gehweg"
+    }
+  ],
+  "research.05_results.chart14.5": [
+    {
+      "type": 0,
+      "value": "Trennung rechts (Grünstreifen - keine Trennung)"
+    }
+  ],
+  "research.05_results.chart14.6": [
+    {
+      "type": 0,
+      "value": "Faktor Verkehrsart links (Links RVA Fahrstreifen vs. Parken)"
+    }
+  ],
+  "research.05_results.chart14.label": [
+    {
+      "type": 0,
+      "value": "Anm: Unterschied der Mittelwerte der Bewertungen im Vergleich zweier Merkmalsausprägungen Es werden nur die für das Merkmal relevanten Situationen verglichen."
+    }
+  ],
+  "research.05_results.chart14.title": [
+    {
+      "type": 0,
+      "value": "RVA im Seitenraum: Gewicht der Einflussfaktoren im Mittel"
+    }
+  ],
+  "research.05_results.chart15.1": [
+    {
+      "type": 0,
+      "value": "RVA breit"
+    }
+  ],
+  "research.05_results.chart15.2": [
+    {
+      "type": 0,
+      "value": "RVA schmal"
+    }
+  ],
+  "research.05_results.chart15.label": [
+    {
+      "type": 0,
+      "value": "Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum"
+    }
+  ],
+  "research.05_results.chart15.title": [
+    {
+      "type": 0,
+      "value": "HVS-S: RVA breit und schmal"
+    }
+  ],
+  "research.05_results.chart16.1": [
+    {
+      "type": 0,
+      "value": "Breiter Gehweg Auslage ja"
+    }
+  ],
+  "research.05_results.chart16.2": [
+    {
+      "type": 0,
+      "value": "Breiter Gehweg Auslage nein"
+    }
+  ],
+  "research.05_results.chart16.3": [
+    {
+      "type": 0,
+      "value": "Schmaler Gehweg Auslage ja"
+    }
+  ],
+  "research.05_results.chart16.4": [
+    {
+      "type": 0,
+      "value": "Schmaler Gehweg Auslage nein"
+    }
+  ],
+  "research.05_results.chart16.label": [
+    {
+      "type": 0,
+      "value": "Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum"
+    }
+  ],
+  "research.05_results.chart16.title": [
+    {
+      "type": 0,
+      "value": "HVS-S: Mit und ohne Auslage"
+    }
+  ],
+  "research.05_results.chart17.1": [
+    {
+      "type": 0,
+      "value": "Breite RVA schmal vs. breit"
+    }
+  ],
+  "research.05_results.chart17.2": [
+    {
+      "type": 0,
+      "value": "Trennung rechts (grün - keine)"
+    }
+  ],
+  "research.05_results.chart17.3": [
+    {
+      "type": 0,
+      "value": "Auslage (ja - nein)"
+    }
+  ],
+  "research.05_results.chart17.label": [
+    {
+      "type": 0,
+      "value": "Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Die Fußperspektive wurde nur bei schmaler Gehweg-Gesamtbreite abgefragt."
+    }
+  ],
+  "research.05_results.chart17.title": [
+    {
+      "type": 0,
+      "value": "Diagramm Gewicht"
+    }
+  ],
+  "research.05_results.chart18.1": [
+    {
+      "type": 0,
+      "value": "Fußperspektive Auslage ja"
+    }
+  ],
+  "research.05_results.chart18.2": [
+    {
+      "type": 0,
+      "value": "Fußperspektive Auslage nein"
+    }
+  ],
+  "research.05_results.chart18.3": [
+    {
+      "type": 0,
+      "value": "Radperspektive Auslage ja"
+    }
+  ],
+  "research.05_results.chart18.4": [
+    {
+      "type": 0,
+      "value": "Radperspektive Auslage nein"
+    }
+  ],
+  "research.05_results.chart18.label": [
+    {
+      "type": 0,
+      "value": "Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum. Die Auswertung vergleicht nur die Fälle mit schmaler Gehweggesamtbreite, da die Fußperspektive nur in dieser Variante abgefragt wurde."
+    }
+  ],
+  "research.05_results.chart18.title": [
+    {
+      "type": 0,
+      "value": "HVS-S Fuß- und Radperspektive: Mit und ohne Auslage"
+    }
+  ],
+  "research.05_results.chart19.1": [
+    {
+      "type": 0,
+      "value": "Trennung rechts grünstreifen schmal"
+    }
+  ],
+  "research.05_results.chart19.2": [
+    {
+      "type": 0,
+      "value": "Trennung rechts grünstreifen breit"
+    }
+  ],
+  "research.05_results.chart19.3": [
+    {
+      "type": 0,
+      "value": "Trennung rechts keine"
+    }
+  ],
+  "research.05_results.chart19.label": [
+    {
+      "type": 0,
+      "value": "Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum. Die Fußperspektive wurde nur bei schmaler Gehweggesamtbreite abgefragt."
+    }
+  ],
+  "research.05_results.chart19.title": [
+    {
+      "type": 0,
+      "value": "HVS-S Fußperspektive: Mit und ohne Trennung"
+    }
+  ],
+  "research.05_results.chart2.1": [
+    {
+      "type": 0,
+      "value": "AG0 - unter 18 Jahre"
+    }
+  ],
+  "research.05_results.chart2.2": [
+    {
+      "type": 0,
+      "value": "AG1 - 18 bis 24 Jahre"
+    }
+  ],
+  "research.05_results.chart2.3": [
+    {
+      "type": 0,
+      "value": "AG2 - 25 bis 29 Jahre"
+    }
+  ],
+  "research.05_results.chart2.4": [
+    {
+      "type": 0,
+      "value": "AG3 - 30 bis 39 Jahre"
+    }
+  ],
+  "research.05_results.chart2.5": [
+    {
+      "type": 0,
+      "value": "AG4 - 40 bis 49 Jahre"
+    }
+  ],
+  "research.05_results.chart2.6": [
+    {
+      "type": 0,
+      "value": "AG5 - 50 bis 64 Jahre"
+    }
+  ],
+  "research.05_results.chart2.7": [
+    {
+      "type": 0,
+      "value": "AG6 -  65 bis 74 Jahre"
+    }
+  ],
+  "research.05_results.chart2.8": [
+    {
+      "type": 0,
+      "value": "AG7 - über 74 Jahre"
+    }
+  ],
+  "research.05_results.chart2.label": [
+    {
+      "type": 0,
+      "value": "Anm: Durchschnitt aller Bewertungen nach Angaben zum Alter der Teilnehmenden"
+    }
+  ],
+  "research.05_results.chart2.title": [
+    {
+      "type": 0,
+      "value": "Bewertungen nach Alter"
+    }
+  ],
+  "research.05_results.chart20.1": [
+    {
+      "type": 0,
+      "value": "Straßenbreite (schmal vs. breit)"
+    }
+  ],
+  "research.05_results.chart20.2": [
+    {
+      "type": 0,
+      "value": "Parken (beidseitig – nein)"
+    }
+  ],
+  "research.05_results.chart20.3": [
+    {
+      "type": 0,
+      "value": "Parken (einseitig – nein)"
+    }
+  ],
+  "research.05_results.chart20.4": [
+    {
+      "type": 0,
+      "value": "Markierung (vorhanden – keine)"
+    }
+  ],
+  "research.05_results.chart20.5": [
+    {
+      "type": 0,
+      "value": "Gegenläufige Einbahnstraße (gegenläufig vs. beidseitig)"
+    }
+  ],
+  "research.05_results.chart20.6": [
+    {
+      "type": 0,
+      "value": "Einbahnstraße in Fahrtrichtung (einbahn vs. beidseitig)"
+    }
+  ],
+  "research.05_results.chart20.7": [
+    {
+      "type": 0,
+      "value": "“autofrei” (ja/nein)"
+    }
+  ],
+  "research.05_results.chart20.label": [
+    {
+      "type": 0,
+      "value": "Anm: Unterschied der Mittelwerte der Bewertungen im Vergleich zweier Merkmalsausprägungen. Grundlage sind alle für das Merkmal relevante Situationen. Ausgenommen sind die Situationen mit durchgehender Grüneinfärbung des Asphalts. Unter Markierung werden Fahrradstraße, Fahrradstraße - Sondermarkierung Dooring und Spielstraße zusammengefasst."
+    }
+  ],
+  "research.05_results.chart20.title": [
+    {
+      "type": 0,
+      "value": "NVS: Gewicht der Einflussfaktoren im Mittel"
+    }
+  ],
+  "research.05_results.chart21.1": [
+    {
+      "type": 0,
+      "value": "ohne Markierung"
+    }
+  ],
+  "research.05_results.chart21.2": [
+    {
+      "type": 0,
+      "value": "Fahrradstraße"
+    }
+  ],
+  "research.05_results.chart21.3": [
+    {
+      "type": 0,
+      "value": "Fahrradstraße - Sondermarkierung Dooring"
+    }
+  ],
+  "research.05_results.chart21.4": [
+    {
+      "type": 0,
+      "value": "Spielstraße"
+    }
+  ],
+  "research.05_results.chart21.label": [
+    {
+      "type": 0,
+      "value": "Anm: Durchschnitt der Bewertungen aller Situationen in Nebenverkehrsstraßen. Ausgenommen sind die Situationen mit durchgehender Grüneinfärbung des Asphalts."
+    }
+  ],
+  "research.05_results.chart21.title": [
+    {
+      "type": 0,
+      "value": "NVS: Markierungsarten"
+    }
+  ],
+  "research.05_results.chart22.1": [
+    {
+      "type": 0,
+      "value": "Ohne Markierung"
+    }
+  ],
+  "research.05_results.chart22.2": [
+    {
+      "type": 0,
+      "value": "Holländische Markierung"
+    }
+  ],
+  "research.05_results.chart22.3": [
+    {
+      "type": 0,
+      "value": "Fahrradstraße"
+    }
+  ],
+  "research.05_results.chart22.4": [
+    {
+      "type": 0,
+      "value": "Fahrradstraße - Sondermarkierung"
+    }
+  ],
+  "research.05_results.chart22.5": [
+    {
+      "type": 0,
+      "value": "Spielstraße"
+    }
+  ],
+  "research.05_results.chart22.label": [
+    {
+      "type": 0,
+      "value": "Anm: Durchschnitt der Bewertungen aller Situationen in Nebenverkehrsstraßen. Nur solche die ohne fließenden Kfz-Verkehrs dargestellt wurden"
+    }
+  ],
+  "research.05_results.chart22.title": [
+    {
+      "type": 0,
+      "value": "NVS “autofrei”: Markierungsarten"
+    }
+  ],
+  "research.05_results.chart3.1": [
+    {
+      "type": 0,
+      "value": "(fast) täglich"
+    }
+  ],
+  "research.05_results.chart3.2": [
+    {
+      "type": 0,
+      "value": "4-5 mal pro Woche"
+    }
+  ],
+  "research.05_results.chart3.3": [
+    {
+      "type": 0,
+      "value": "1-3 mal pro Woche"
+    }
+  ],
+  "research.05_results.chart3.4": [
+    {
+      "type": 0,
+      "value": "1-3 mal pro Monat"
+    }
+  ],
+  "research.05_results.chart3.5": [
+    {
+      "type": 0,
+      "value": "seltener als monatlich"
+    }
+  ],
+  "research.05_results.chart3.6": [
+    {
+      "type": 0,
+      "value": "nie"
+    }
+  ],
+  "research.05_results.chart3.label": [
+    {
+      "type": 0,
+      "value": "Anm: Durchschnitt aller Bewertungen nach Angaben zur Nutzungshäufigkeit des Fahrrad unter den Teilnehmenden"
+    }
+  ],
+  "research.05_results.chart3.title": [
+    {
+      "type": 0,
+      "value": "Bewertungen nach Nutzungshäufigkeit Fahrrad"
+    }
+  ],
+  "research.05_results.chart4.1": [
+    {
+      "type": 0,
+      "value": "mit RVA"
+    }
+  ],
+  "research.05_results.chart4.2": [
+    {
+      "type": 0,
+      "value": "ohne RVA"
+    }
+  ],
+  "research.05_results.chart4.3": [
+    {
+      "type": 0,
+      "value": "ohne RVA (Vielfahrer)"
+    }
+  ],
+  "research.05_results.chart4.label": [
+    {
+      "type": 0,
+      "value": "Anm: Durchschnitt der Bewertungen aller Situationen auf HVS-F aus Fahrradperspektive. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen."
+    }
+  ],
+  "research.05_results.chart4.title": [
+    {
+      "type": 0,
+      "value": "Führung auf der Fahrbahn (HVS-F) mit und ohne Radverkehrsanlage (RVA)"
+    }
+  ],
+  "research.05_results.chart5.1": [
+    {
+      "type": 0,
+      "value": "mit Parken rechts"
+    }
+  ],
+  "research.05_results.chart5.2": [
+    {
+      "type": 0,
+      "value": "ohne Parken (inkl. bauliche Trennung)"
+    }
+  ],
+  "research.05_results.chart5.3": [
+    {
+      "type": 0,
+      "value": "ohne Parken (exkl. bauliche Trennung)"
+    }
+  ],
+  "research.05_results.chart5.label": [
+    {
+      "type": 0,
+      "value": "Anm.: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens"
+    }
+  ],
+  "research.05_results.chart5.title": [
+    {
+      "type": 0,
+      "value": "HVS-F: RVA mit und ohne rechtsseitiges Parken"
+    }
+  ],
+  "research.05_results.chart6.1": [
+    {
+      "type": 0,
+      "value": "Gesamtbreite RVA (Breit - schmal)"
+    }
+  ],
+  "research.05_results.chart6.2": [
+    {
+      "type": 0,
+      "value": "Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)"
+    }
+  ],
+  "research.05_results.chart6.3": [
+    {
+      "type": 0,
+      "value": "Oberflächenfarbe (grün - asphalt)"
+    }
+  ],
+  "research.05_results.chart6.4": [
+    {
+      "type": 0,
+      "value": "Markierung Links (gestrichelt - Sperrfläche)"
+    }
+  ],
+  "research.05_results.chart6.5": [
+    {
+      "type": 0,
+      "value": "Tempolimit (30 - 50)"
+    }
+  ],
+  "research.05_results.chart6.6": [
+    {
+      "type": 0,
+      "value": "Verkehrsstärke (normal - hoch)"
+    }
+  ],
+  "research.05_results.chart6.label": [
+    {
+      "type": 0,
+      "value": "Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Bei Baulicher Trennung, Markierung links, Tempolimit und Verkehrsaufkommen, werden nur solche Situationen ohne Tram, Bus und RVA rechts des Parkens einbezogen. Bei der Baulichen Trennung nur solche ohne Parken rechts."
+    }
+  ],
+  "research.05_results.chart6.title": [
+    {
+      "type": 0,
+      "value": "RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel"
+    }
+  ],
+  "research.05_results.chart7.1": [
+    {
+      "type": 0,
+      "value": "RVA ohne Parken schmal"
+    }
+  ],
+  "research.05_results.chart7.2": [
+    {
+      "type": 0,
+      "value": "RVA ohne Parken breit"
+    }
+  ],
+  "research.05_results.chart7.3": [
+    {
+      "type": 0,
+      "value": "RVA mit Parken schmal"
+    }
+  ],
+  "research.05_results.chart7.4": [
+    {
+      "type": 0,
+      "value": "RVA mit Parken breit"
+    }
+  ],
+  "research.05_results.chart7.label": [
+    {
+      "type": 0,
+      "value": "Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens sowie Situationen mit baulicher Trennung. "
+    }
+  ],
+  "research.05_results.chart7.title": [
+    {
+      "type": 0,
+      "value": "HVS-F: RVA Gesamtbreite schmal und breit"
+    }
+  ],
+  "research.05_results.chart8.1": [
+    {
+      "type": 0,
+      "value": "ohne Parken, breit asphalt"
+    }
+  ],
+  "research.05_results.chart8.2": [
+    {
+      "type": 0,
+      "value": "ohne Parken, breit grün"
+    }
+  ],
+  "research.05_results.chart8.3": [
+    {
+      "type": 0,
+      "value": "ohne Parken, schmal asphalt"
+    }
+  ],
+  "research.05_results.chart8.4": [
+    {
+      "type": 0,
+      "value": "ohne Parken, schmal grün"
+    }
+  ],
+  "research.05_results.chart8.5": [
+    {
+      "type": 0,
+      "value": "mit Parken, breit asphalt"
+    }
+  ],
+  "research.05_results.chart8.6": [
+    {
+      "type": 0,
+      "value": "mit Parken, breit grün"
+    }
+  ],
+  "research.05_results.chart8.7": [
+    {
+      "type": 0,
+      "value": "mit Parken, schmal asphalt"
+    }
+  ],
+  "research.05_results.chart8.8": [
+    {
+      "type": 0,
+      "value": "mit Parken, schmal grün"
+    }
+  ],
+  "research.05_results.chart8.label": [
+    {
+      "type": 0,
+      "value": "Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens, sowie Situationen mit baulicher Trennung."
+    }
+  ],
+  "research.05_results.chart8.title": [
+    {
+      "type": 0,
+      "value": "HVS-F: RVA mit oder ohne Grüneinfärbung"
+    }
+  ],
+  "research.05_results.chart9.1": [
+    {
+      "type": 0,
+      "value": "RVA asphalt"
+    }
+  ],
+  "research.05_results.chart9.2": [
+    {
+      "type": 0,
+      "value": "RVA farbig"
+    }
+  ],
+  "research.05_results.chart9.3": [
+    {
+      "type": 0,
+      "value": "RVA farbig schraffur"
+    }
+  ],
+  "research.05_results.chart9.label": [
+    {
+      "type": 0,
+      "value": "Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens."
+    }
+  ],
+  "research.05_results.chart9.title": [
+    {
+      "type": 0,
+      "value": "HVS-F: RVA mit verschiedenen Arten der Grüneinfärbung"
+    }
+  ],
+  "research.05_results.heading": [
+    {
+      "type": 0,
+      "value": "Statistische Auswertung"
+    }
+  ],
+  "research.05_results.p1": [
+    {
+      "type": 0,
+      "value": "Mit den generierten Daten ist die Überprüfung von verschiedensten Hypothesen möglich. Ein besonderes Interesse der Forschung liegt beispielsweise auf der Nutzergruppe der potentiell Radfahrenden. Ab welcher Verkehrsinfrastruktur fühlt sich diese Nutzergruppe im Straßenraum sicher? Ist die Verkehrsstärke auch bei einer Trennung zwischen Rad- und Kfz-Verkehr eine ausschlaggebende Einflussgröße? Welche Verkehrsinfrastruktur empfinden die meisten Befragten als sicher? Ist die Breite oder die physische Trennung der RVA ausschlaggebend? Welche Führungsformen sind jeweils im Seitenraum, auf der Fahrbahn oder in Nebenverkehrsstraßen am geeignetsten? Einige dieser Hypothesen werden in der folgenden Auswertung überprüft."
+    }
+  ],
+  "research.05_results.p10": [
+    {
+      "type": 0,
+      "value": "Weiter wurden in der Umfrage die Verfügbarkeit von Verkehrsmitteln,Motivationsfaktoren zum Radfahren bzw. Gründe nicht Rad zu fahrenabgefragt. Die Daten sind im Datensatz enthalten."
+    }
+  ],
+  "research.05_results.p11": [
+    {
+      "type": 0,
+      "value": "In der Zusammenfassung bildet die Umfrage keine repräsentative Gesamtheit der Berliner Bevölkerung ab. Radfahrende, Männer und die Altergruppe zwischen 30 und 64 Jahren ist deutlich überrepräsentiert. Aufgrund der hohen Anzahl an Teilnehmenden können jedoch auch Auswertungen für spezifische Untergruppen gemacht werden (z.B. Frauen über 74 Jahre: 143 Teilnehmerinnen). Bei der durchschnittlichen Bewertung der unterschiedlichen Szenen zeichnet sich für die Nutzermerkmale Geschlecht, Alter und Nutzungshäufigkeit folgendes Bild: Geschlecht"
+    }
+  ],
+  "research.05_results.p12": [
+    {
+      "type": 0,
+      "value": "Bei der Auswertung nach den unterschiedlichen Merkmalen unterscheiden sich die Ergebnisse zwischen den den einzelnen Nutzergruppen nur gering. Entsprechend wurde für die weitere Auswertung auf eine weitere Differenzierung verzichtet."
+    }
+  ],
+  "research.05_results.p13.heading": [
+    {
+      "type": 0,
+      "value": "Führung auf der Fahrbahn"
+    }
+  ],
+  "research.05_results.p2": [
+    {
+      "type": 0,
+      "value": "Mittels den zur Verfügung gestellten Daten können interessierte Personendie Auswertung nachvollziehen und weitere Hypothesen überprüfen. Zunächstein Überblick zu den Teilnehmenden."
+    }
+  ],
+  "research.05_results.p3": [
+    {
+      "type": 0,
+      "value": "Für unsere eigene Auswertung nutzen wir Python, welche in "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " betrachtet werden kann. Dort sind Visualisierungen der Likert Skala Daten als auch Hypothesentests mit Bootstrap Konfidenzintervallen und Likelihood Ratio Tests mit Proportional Odds Regressions Modellen zu finden."
+    }
+  ],
+  "research.05_results.p4": [
+    {
+      "type": 0,
+      "value": "Zur Einordnung der Bewertungen ein kleiner Überblick, wer alles mitgemacht hat. Insgesamt hatte die Umfrage 21.401 Teilnehmende, davon 19.109 aus Berlin"
+    }
+  ],
+  "research.05_results.p4.heading": [
+    {
+      "type": 0,
+      "value": "Auswertung der Teilnehmenden"
+    }
+  ],
+  "research.05_results.p4.listOther": [
+    {
+      "type": 0,
+      "value": "andere Orte"
+    }
+  ],
+  "research.05_results.p5": [
+    {
+      "type": 0,
+      "value": "Es haben nahezu doppelt so viele männliche Teilnehmer die Umfrage beantwortet wie weibliche."
+    }
+  ],
+  "research.05_results.p5.list1": [
+    {
+      "type": 0,
+      "value": "männlich 64 %"
+    }
+  ],
+  "research.05_results.p5.list2": [
+    {
+      "type": 0,
+      "value": "weiblich 34 %"
+    }
+  ],
+  "research.05_results.p5.list3": [
+    {
+      "type": 0,
+      "value": "divers 2 %"
+    }
+  ],
+  "research.05_results.p6": [
+    {
+      "type": 0,
+      "value": "Zum Vergleich: laut Amt für Statistik Berlin Brandenburg leben in Berlin 49 % Männer und 51 % Frauen (Stand 2018)"
+    }
+  ],
+  "research.05_results.p7": [
+    {
+      "type": 0,
+      "value": "Die Altersverteilung sieht wie folgt aus:"
+    }
+  ],
+  "research.05_results.p7.list1": [
+    {
+      "type": 0,
+      "value": "AG0 - unter 18 Jahre 1%"
+    }
+  ],
+  "research.05_results.p7.list2": [
+    {
+      "type": 0,
+      "value": "AG1 - 18 bis 24 Jahre 5%"
+    }
+  ],
+  "research.05_results.p7.list3": [
+    {
+      "type": 0,
+      "value": "AG2 - 25 bis 29 Jahre 8%"
+    }
+  ],
+  "research.05_results.p7.list4": [
+    {
+      "type": 0,
+      "value": "AG3 - 30 bis 39 Jahre 27%"
+    }
+  ],
+  "research.05_results.p7.list5": [
+    {
+      "type": 0,
+      "value": "AG4 - 40 bis 49 Jahre 22%"
+    }
+  ],
+  "research.05_results.p7.list6": [
+    {
+      "type": 0,
+      "value": "AG5 - 50 bis 64 Jahre 28%"
+    }
+  ],
+  "research.05_results.p7.list7": [
+    {
+      "type": 0,
+      "value": "AG6/7 - über 65 Jahre 10%"
+    }
+  ],
+  "research.05_results.p8": [
+    {
+      "type": 0,
+      "value": "Im Vergleich: laut Amt für Statistik Berlin Brandenburg sieht die Altersverteilung in Berlin (Stand 2018) so aus:"
+    }
+  ],
+  "research.05_results.p8.list": [
+    {
+      "type": 0,
+      "value": "über 65 Jahre 19%"
+    }
+  ],
+  "research.05_results.p8.list1": [
+    {
+      "type": 0,
+      "value": "unter 18 Jahre 16%"
+    }
+  ],
+  "research.05_results.p8.list2": [
+    {
+      "type": 0,
+      "value": "18 bis 24 Jahre 7%"
+    }
+  ],
+  "research.05_results.p8.list3": [
+    {
+      "type": 0,
+      "value": "25 bis 29 Jahre 8%"
+    }
+  ],
+  "research.05_results.p8.list4": [
+    {
+      "type": 0,
+      "value": "30 bis 39 Jahre 17%"
+    }
+  ],
+  "research.05_results.p8.list5": [
+    {
+      "type": 0,
+      "value": "40 bis 49 Jahre 13%"
+    }
+  ],
+  "research.05_results.p8.list6": [
+    {
+      "type": 0,
+      "value": "50 bis 64 Jahre 20%"
+    }
+  ],
+  "research.05_results.p9": [
+    {
+      "type": 0,
+      "value": "Zusätzlich wurden die Teilnehmenden gefragt wie oft sie zu Fuß, mit Bus und Bahn, dem Auto, dem Fahrrad und dem Motorrad unterwegs sind. Im Vergleich mit den Werten für Berlin aus der SrV 2018 gibt es einige Abweichungen. Die Werte für die Nutzung des öffentlichen Verkehrs (Bus und Bahn) mindestens 1x in der Woche in der Umfrage (64%) stimmen annähernd mit den Werten der SrV 2018 (62%) überein. Hingegen sind in dieser Umfrage die Nutzung des Pkws (35%) im Vergleich zur SrV 2018 (56%) unterrepräsentiert und die Nutzung des Fahrrads (64%) in der Umfrage (47% SrV) überrepräsentiert. ("
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": ". S.127ff)"
+    }
+  ],
+  "research.05_results.p9.link": [
+    {
+      "type": 0,
+      "value": "Gerike et. al, Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020"
     }
   ],
   "research.authors": [
