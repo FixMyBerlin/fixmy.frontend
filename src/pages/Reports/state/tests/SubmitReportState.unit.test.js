@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import fetchMock from 'fetch-mock';
+import { rest } from 'msw';
 import reducer, {
   actions,
   types,
@@ -14,6 +14,7 @@ import mockedReportItem from './schemaValidation/newReport-jsonSchema-testObject
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import { types as errorStateTypes } from '../ErrorState';
 import { formatActionType } from '~/utils/test-utils';
+import { mswServer } from '../../../../../jest/msw/mswServer';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -106,10 +107,6 @@ describe('SubmitReportState reducer and actions', () => {
     );
 
     describe('(Reverse-)Geocoding thunks', () => {
-      afterEach(() => {
-        fetchMock.restore();
-      });
-
       // test.todo('it geocodes an location', () => {
       //
       // });
@@ -284,8 +281,7 @@ describe('SubmitReportState reducer and actions', () => {
 
         // mock api request
 
-        fetchMock.postOnce(reportsEndpointUrl, mockedReportItem);
-
+        // test if thunk dispatches expected action sequence
         const expectedActions = [
           types.SUBMIT_REPORT_PENDING,
           types.SUBMIT_REPORT_COMPLETE
@@ -353,11 +349,10 @@ describe('SubmitReportState reducer and actions', () => {
         const store = mockStore(stateBefore);
 
         // mock failing request
-
-        const errorMsg = 'failed to submit';
-        fetchMock.postOnce(reportsEndpointUrl, {
-          throws: errorMsg
-        });
+        const apiResponse = { detail: 'Internal Error' };
+        const responseResolver = (_, res, ctx) =>
+          res(ctx.status(500), ctx.json(apiResponse));
+        mswServer.use(rest.post(reportsEndpointUrl, responseResolver));
 
         const expectedActions = [
           types.SUBMIT_REPORT_PENDING,
@@ -370,7 +365,7 @@ describe('SubmitReportState reducer and actions', () => {
         try {
           await store.dispatch(actions.submitReport());
         } catch (e) {
-          expect(e).toEqual(errorMsg);
+          expect(e.message).toEqual('Internal Error');
         }
 
         const actionsProduced = store
