@@ -1,9 +1,9 @@
-const labels = [
+export const HBI = [
   { label: 'Geschwindgkeit', type: 'speed', value: 5, min: 0, max: 10 },
   { label: 'Sicherheit', type: 'security', value: 5, min: 0, max: 10 }
 ];
 
-const stops = [
+export const HBI_STOPS = [
   {
     min: 0,
     max: 2.5,
@@ -30,7 +30,29 @@ const stops = [
   }
 ];
 
-export default {
-  stops,
-  labels
-};
+export const PLANNING_PHASES = [
+  {
+    id: 'draft',
+    color: '#fa96d0',
+    icon: 'konzept.svg',
+    name: 'Konzept'
+  },
+  {
+    id: 'planning',
+    color: '#cf0a7d',
+    icon: 'planung.svg',
+    name: 'Planung'
+  },
+  {
+    id: 'execution',
+    color: '#910055',
+    icon: 'bau.svg',
+    name: 'im Bau'
+  },
+  {
+    id: 'ready',
+    color: '#0f0f0f',
+    icon: 'fertig.svg',
+    name: 'Fertig'
+  }
+];

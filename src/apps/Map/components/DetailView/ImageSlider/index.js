@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 

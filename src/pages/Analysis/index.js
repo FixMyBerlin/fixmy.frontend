@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import config from '~/pages/Map/config';
+import config from '~/config';
 import { sortByKey } from '~/utils/utils';
 import { districts } from '~/labels';
 import {
@@ -19,6 +19,7 @@ import Select from '~/components/Select';
 import ProjectList from '~/components/ProjectList';
 import Card from './components/Card';
 import logger from '~/utils/logger';
+import { PLANNING_PHASES } from '~/apps/Map/constants';
 
 const AnalysisWrapper = styled.div`
   background: ${config.colors.lightgrey};
@@ -62,7 +63,7 @@ const districtOptions = [
 
 const phaseOptions = [
   { label: 'Alle Phasen anzeigen', value: 'all' },
-  ...config.planningPhases.map((phase) => ({
+  ...PLANNING_PHASES.map((phase) => ({
     label: phase.name,
     value: phase.id
   }))

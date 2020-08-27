@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import config from '../config';
+import config from '~/config';
 import { geocodeAddress } from '~/apps/Map/MapState';
 import Store from '~/store';
 

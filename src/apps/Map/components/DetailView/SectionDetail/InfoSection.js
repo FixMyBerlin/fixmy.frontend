@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 import { numberFormat } from '~/utils/utils';
 import SectionTitle from '~/components/SectionTitle';
 import Label from '~/components/Label';

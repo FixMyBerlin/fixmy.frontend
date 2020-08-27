@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import idx from 'idx';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 import DataProcessIcon from '~/images/data-process.svg';
 import { numberFormat, percentageFormat } from '~/utils/utils';
-import { getOrientationNames } from '~/utils/hbi-utils';
-import HBISign from '~/components/HBISign';
+import { getOrientationNames } from '~/apps/Map/hbi-utils';
+import HBISign from '~/apps/Map/components/HBISign';
 import Label from '~/components/Label';
 import Title from '~/components/Title';
 import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';

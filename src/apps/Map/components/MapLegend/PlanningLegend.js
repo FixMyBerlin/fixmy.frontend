@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 import ConceptIcon from '~/images/planning-icons/konzept.svg';
 import PlanningIcon from '~/images/planning-icons/planung.svg';
 import ConstructionIcon from '~/images/planning-icons/bau.svg';
@@ -14,6 +14,7 @@ import { togglePlanningFilter } from '~/apps/Map/MapState';
 import LegendWrapper from './LegendWrapper';
 import LegendImageWrapper from './LegendImageWrapper';
 import LegendItem from './LegendItem';
+import { PLANNING_PHASES } from '~/apps/Map/constants';
 
 const Icons = {
   draft: ConceptIcon,
@@ -45,7 +46,7 @@ function renderLegendItem(props, index, isActive) {
 
 const PlanningLegendComp = ({ filterPlannings }) => (
   <LegendWrapper>
-    {config.planningPhases.map((item, index) =>
+    {PLANNING_PHASES.map((item, index) =>
       renderLegendItem(item, index, filterPlannings[index])
     )}
   </LegendWrapper>

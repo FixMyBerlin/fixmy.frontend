@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
 
 import logger from '~/utils/logger';
-import config from '~/apps/Map/config';
+import config from '~/config';
 import { getGeoLocation } from '~/apps/Map/map-utils';
 import MapControl from '~/apps/Map/components/MapControl';
 import { isNumeric } from '~/utils/utils';

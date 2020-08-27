@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 import BraceVertical from '~/images/brace-vertical.svg';
 import { numberFormat } from '~/utils/utils';
 import {
   getHBIbyProps,
   getHBIColorByIndex,
   getOrientationNames
-} from '~/utils/hbi-utils';
+} from '~/apps/Map/hbi-utils';
 
-import HBISign from '~/components/HBISign';
+import HBISign from '~/apps/Map/components/HBISign';
 import Label from '~/components/Label';
 
 const BikeLevelStatus = styled.div`

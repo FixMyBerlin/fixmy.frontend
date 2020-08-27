@@ -1,7 +1,7 @@
 import ky from 'ky';
 import idx from 'idx';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 
 const SET_VIEW = 'Map/MapState/SET_VIEW';
 const SET_HAS_MOVED = 'Map/MapState/SET_HAS_MOVED';
@@ -17,7 +17,7 @@ const SET_ERROR = 'Map/MapState/SET_ERROR';
 const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 
 const initialState = {
-  ...config.map.view,
+  ...config.apps.map.view,
   animate: false,
   dim: false,
   displayPopup: false,
@@ -85,7 +85,7 @@ export function loadPlanningData() {
 
 export function geocodeAddress(searchtext) {
   return async (dispatch) => {
-    const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.map;
+    const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.apps.map;
 
     try {
       const searchUrl = `${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;

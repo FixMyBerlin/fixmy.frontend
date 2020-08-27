@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 import Title from '~/components/Title';
 import SectionTitle from '~/components/SectionTitle';
 import Text from '~/components/Text';

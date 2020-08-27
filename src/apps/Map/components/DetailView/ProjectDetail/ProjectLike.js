@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled, { css } from 'styled-components';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 import HeartIcon from '~/images/heart.svg';
 import { bounce } from '~/styles/utils';
 import Label from '~/components/Label';

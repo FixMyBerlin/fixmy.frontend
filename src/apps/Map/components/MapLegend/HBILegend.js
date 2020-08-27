@@ -1,7 +1,6 @@
 /* eslint import/no-dynamic-require: 0, global-require: 0 */
 import React from 'react';
 
-import config from '~/apps/Map/config';
 import Store from '~/store';
 import { toggleHbiFilter } from '~/apps/Map/MapState';
 import Label from '~/components/Label';
@@ -12,6 +11,7 @@ import IconSuper from '~/images/hbi-stop-icons/sehrgut@2x.png';
 import IconOk from '~/images/hbi-stop-icons/ok@2x.png';
 import IconBad from '~/images/hbi-stop-icons/gefaehrlich@2x.png';
 import IconWorst from '~/images/hbi-stop-icons/sehrgefaehrlich@2x.png';
+import { HBI_STOPS } from '~/apps/Map/constants';
 
 const Icons = {
   super: IconSuper,
@@ -22,7 +22,7 @@ const Icons = {
 
 export default (props) => (
   <LegendWrapper>
-    {config.hbiStops.map((legendItem, i) => (
+    {HBI_STOPS.map((legendItem, i) => (
       <LegendItem
         onClick={() => Store.dispatch(toggleHbiFilter(i))}
         isActive={props.filterHbi[i]}

@@ -10,7 +10,7 @@ import slugify from 'slugify';
 import Store from '~/store';
 import { isSmallScreen } from '~/styles/utils';
 import * as AppActions from '~/AppState';
-import config from '~/apps/Map/config';
+import config from '~/config';
 import * as MapActions from '~/apps/Map/MapState';
 import ProjectMarkers from '~/apps/Map/components/ProjectMarkers';
 import {
@@ -29,9 +29,9 @@ import resetMap from '~/apps/Map/reset';
 
 let MB_STYLE_URL;
 if (config.debug) {
-  MB_STYLE_URL = `${config.map.style}?fresh=true`;
+  MB_STYLE_URL = `${config.apps.map.style}?fresh=true`;
 } else {
-  MB_STYLE_URL = config.map.style;
+  MB_STYLE_URL = config.apps.map.style;
 }
 
 MapboxGL.accessToken = config.mapbox.accessToken;
@@ -55,7 +55,7 @@ class Map extends PureComponent {
     this.map = new MapboxGL.Map({
       container: this.root,
       style: MB_STYLE_URL,
-      bounds: config.map.bounds
+      bounds: config.apps.map.bounds
     });
 
     const nav = new MapboxGL.NavigationControl({ showCompass: false });
@@ -139,7 +139,7 @@ class Map extends PureComponent {
     if (urlMapOptions) {
       this.setView(urlMapOptions, false);
     } else if (!this.props.activeSection) {
-      this.map.fitBounds(config.map.bounds, { animate: false });
+      this.map.fitBounds(config.apps.map.bounds, { animate: false });
     } else {
       this.setView(this.getViewFromProps(), false);
     }
@@ -151,8 +151,8 @@ class Map extends PureComponent {
   };
 
   registerClickHandler = () => {
-    const projectsTarget = config.map.layers.projects.overlayLine;
-    const hbiTarget = config.map.layers.hbi.overlayLine;
+    const projectsTarget = config.apps.map.layers.projects.overlayLine;
+    const hbiTarget = config.apps.map.layers.hbi.overlayLine;
 
     if (this.props.activeView === 'zustand') {
       this.map.off('click', projectsTarget, this.handleClick);
@@ -167,8 +167,8 @@ class Map extends PureComponent {
     const isZustand = this.props.activeView === 'zustand';
     let isPlanungen = this.props.activeView === 'planungen';
 
-    const hbiLayers = config.map.layers.hbi;
-    const projectsLayers = config.map.layers.projects;
+    const hbiLayers = config.apps.map.layers.hbi;
+    const projectsLayers = config.apps.map.layers.projects;
 
     intersectionLayers.forEach((layerName) =>
       toggleLayer(this.map, hbiLayers[layerName], isZustand)
@@ -211,10 +211,10 @@ class Map extends PureComponent {
     // other layers
     toggleLayer(
       this.map,
-      config.map.layers.buildings3d,
+      config.apps.map.layers.buildings3d,
       this.props.show3dBuildings
     );
-    toggleLayer(this.map, config.map.layers.dimmingLayer, this.props.dim);
+    toggleLayer(this.map, config.apps.map.layers.dimmingLayer, this.props.dim);
 
     const subMap = isZustand ? 'hbi' : 'projects';
     filterLayersById(this.map, subMap, this.props.activeSection);
@@ -246,7 +246,7 @@ class Map extends PureComponent {
           center,
           animate: true,
           zoom: isSmallScreen()
-            ? config.map.zoomAfterGeocode
+            ? config.apps.map.zoomAfterGeocode
             : this.map.getZoom()
         })
       );
@@ -265,7 +265,9 @@ class Map extends PureComponent {
       MapActions.setView({
         center: evt.lngLat,
         animate: true,
-        zoom: isSmallScreen() ? config.map.zoomAfterGeocode : this.map.getZoom()
+        zoom: isSmallScreen()
+          ? config.apps.map.zoomAfterGeocode
+          : this.map.getZoom()
       })
     );
 
@@ -304,7 +306,7 @@ class Map extends PureComponent {
           center,
           animate: true,
           zoom: isSmallScreen()
-            ? config.map.zoomAfterGeocode
+            ? config.apps.map.zoomAfterGeocode
             : this.map.getZoom()
         })
       );

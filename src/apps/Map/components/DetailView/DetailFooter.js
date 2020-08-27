@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import config from '~/apps/Map/config';
+import config from '~/config';
 
 export default styled.div`
   background: ${config.colors.likebg};

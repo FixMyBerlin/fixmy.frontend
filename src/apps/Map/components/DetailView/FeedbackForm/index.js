@@ -4,7 +4,7 @@ import React, { PureComponent } from 'react';
 import { Formik } from 'formik';
 import styled from 'styled-components';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 import Form from '~/components/Form';
 import FormField from '~/components/FormField';
 import Button from '~/components/Button';
@@ -50,7 +50,7 @@ class FeedbackForm extends PureComponent {
         >
           {({ values, errors, handleSubmit, isSubmitting, handleChange }) => (
             <Form onSubmit={handleSubmit}>
-              {formConfig.map((d) => (
+              {formconfig.apps.map((d) => (
                 <FormField
                   key={`feedbackfield__${d.id}`}
                   {...d}

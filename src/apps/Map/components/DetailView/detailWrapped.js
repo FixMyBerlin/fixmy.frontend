@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import ky from 'ky';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 import { media } from '~/styles/utils';
 import Store from '~/store';
 import { setView } from '~/apps/Map/MapState';

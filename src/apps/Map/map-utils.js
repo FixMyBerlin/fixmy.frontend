@@ -3,8 +3,10 @@ import turfAlong from '@turf/along';
 import turfLength from '@turf/length';
 import { lineString as turfLineString } from '@turf/helpers';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 import { isNumeric, getParameterByName } from '~/utils/utils';
+
+import { PLANNING_PHASES, HBI_STOPS } from './constants';
 
 export const intersectionLayers = [
   'intersections',
@@ -58,7 +60,7 @@ export function filterLayersById(map, subMap, id) {
 
   standardLayers.forEach((layer) =>
     map.setPaintProperty(
-      config.map.layers[subMap][layer],
+      config.apps.map.layers[subMap][layer],
       'line-opacity',
       VisibilityFilter
     )
@@ -75,7 +77,7 @@ const sideFilter1 = ['match', ['get', 'side'], [2, 1], true, false];
  * @param {Array<boolean>} filters Four booleans describe which phases are visible
  */
 export function setPlanningLegendFilter(map, selected) {
-  const phases = config.planningPhases.map((phase) => phase.id);
+  const phases = PLANNING_PHASES.map((phase) => phase.id);
   const filters = selected
     .map((isSelected, phaseIndex) =>
       isSelected === true ? ['==', phases[phaseIndex], ['get', 'phase']] : null
@@ -90,14 +92,17 @@ export function setPlanningLegendFilter(map, selected) {
   // Planning legend filter can be directly set for center and overlayLine
   // layer, but need  to be concatenated with side filter for the side layers
 
-  map.setFilter(config.map.layers.projects.center, ['any', ...filters]);
-  map.setFilter(config.map.layers.projects.overlayLine, ['any', ...filters]);
-  map.setFilter(config.map.layers.projects.side0, [
+  map.setFilter(config.apps.map.layers.projects.center, ['any', ...filters]);
+  map.setFilter(config.apps.map.layers.projects.overlayLine, [
+    'any',
+    ...filters
+  ]);
+  map.setFilter(config.apps.map.layers.projects.side0, [
     'all',
     sideFilter0,
     ['any', ...filters]
   ]);
-  map.setFilter(config.map.layers.projects.side1, [
+  map.setFilter(config.apps.map.layers.projects.side1, [
     'all',
     sideFilter1,
     ['any', ...filters]
@@ -111,10 +116,18 @@ export function setPlanningLegendFilter(map, selected) {
  */
 export function setPopupLanesFilter(map) {
   const filter = ['==', 'inactive', ['get', 'phase']];
-  map.setFilter(config.map.layers.projects.center, filter);
-  map.setFilter(config.map.layers.projects.overlayLine, filter);
-  map.setFilter(config.map.layers.projects.side0, ['all', sideFilter0, filter]);
-  map.setFilter(config.map.layers.projects.side1, ['all', sideFilter1, filter]);
+  map.setFilter(config.apps.map.layers.projects.center, filter);
+  map.setFilter(config.apps.map.layers.projects.overlayLine, filter);
+  map.setFilter(config.apps.map.layers.projects.side0, [
+    'all',
+    sideFilter0,
+    filter
+  ]);
+  map.setFilter(config.apps.map.layers.projects.side1, [
+    'all',
+    sideFilter1,
+    filter
+  ]);
 }
 
 /**
@@ -142,7 +155,7 @@ function getHbiExpression(sideKey) {
  */
 function getHbiFilterRules(sideKey, hbiFilters) {
   const hbi = getHbiExpression(sideKey);
-  const activeHbiStops = config.hbiStops.filter((d, i) => hbiFilters[i]);
+  const activeHbiStops = HBI_STOPS.filter((d, i) => hbiFilters[i]);
   return activeHbiStops.map((hbiStop) => [
     'all',
     ['>', hbi, hbiStop.min],
@@ -155,9 +168,9 @@ export function toggleVisibleHbiLines(map, hbiValues, hbiFilter) {
   const side0rules = getHbiFilterRules('side0_', hbiFilter);
   const side1rules = getHbiFilterRules('side1_', hbiFilter);
 
-  map.setFilter(config.map.layers.hbi.center, ['any', ...centerRules]);
-  map.setFilter(config.map.layers.hbi.side0, ['any', ...side0rules]);
-  map.setFilter(config.map.layers.hbi.side1, ['any', ...side1rules]);
+  map.setFilter(config.apps.map.layers.hbi.center, ['any', ...centerRules]);
+  map.setFilter(config.apps.map.layers.hbi.side0, ['any', ...side0rules]);
+  map.setFilter(config.apps.map.layers.hbi.side1, ['any', ...side1rules]);
 }
 
 export function getCenterFromGeom(geometry, defaultCenter = null) {
@@ -205,8 +218,8 @@ export function parseUrlOptions() {
   }
 
   return {
-    center: [+lng, +lat] || config.map.view.center,
-    zoom: validZoom ? +zoom : config.map.view.zoom
+    center: [+lng, +lat] || config.apps.map.view.center,
+    zoom: validZoom ? +zoom : config.apps.map.view.zoom
   };
 }
 

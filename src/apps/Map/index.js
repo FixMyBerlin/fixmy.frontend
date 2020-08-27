@@ -17,7 +17,7 @@ import FMBLogo from '~/components2/Logo';
 import Store from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from '~/apps/Map/components/WebglMap';
-import config from '~/apps/Map/config';
+import config from '~/config';
 
 const MapView = styled.div`
   height: 100%;
@@ -53,7 +53,7 @@ class MapViewComponent extends PureComponent {
   handleLocationChange = (userLocation) => {
     this.updateView({
       center: userLocation,
-      zoom: config.map.zoomAfterGeocode,
+      zoom: config.apps.map.zoomAfterGeocode,
       animate: true
     });
   };

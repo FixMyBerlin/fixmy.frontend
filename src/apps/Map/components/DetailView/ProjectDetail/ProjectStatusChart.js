@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import config from '~/apps/Map/config';
+import config from '~/config';
 import ConceptIcon from '~/images/planning-icons/konzept.svg';
 import PlanningIcon from '~/images/planning-icons/planung.svg';
 import ConstructionIcon from '~/images/planning-icons/bau.svg';
 import DoneIcon from '~/images/planning-icons/fertig.svg';
+
+import { PLANNING_PHASES } from '~/apps/Map/constants';
 
 const iconPaths = {
   'im Bau': ConstructionIcon,
@@ -84,7 +86,7 @@ class ProjectStatusChart extends PureComponent {
   getChartData = (phase) => {
     let isFinished = true;
 
-    return config.planningPhases.map((planningPhase, i) => {
+    return PLANNING_PHASES.map((planningPhase, i) => {
       if (planningPhase.id === phase) {
         isFinished = false;
       }
@@ -92,7 +94,7 @@ class ProjectStatusChart extends PureComponent {
       const inProgress = planningPhase.id === phase;
       const innerWidth =
         this.state.width - this.padding.left - this.padding.right;
-      const step = innerWidth / (config.planningPhases.length - 1);
+      const step = innerWidth / (PLANNING_PHASES.length - 1);
       const r = inProgress ? 25 : 12.5;
       const x = this.padding.left + step * i;
       const y = this.height / 3;
