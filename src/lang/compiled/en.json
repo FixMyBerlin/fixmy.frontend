@@ -23,18 +23,15 @@
       "value": "by"
     }
   ],
-  "components.article.localeSwitcher.english": [
-  ],
-  "components.article.localeSwitcher.german": [
-  ],
+  "components.article.localeSwitcher.english": [],
+  "components.article.localeSwitcher.german": [],
   "components.article.localeSwitcher.label": [
     {
       "type": 0,
       "value": "choose another language"
     }
   ],
-  "components.article.localeSwitcher.spanish": [
-  ],
+  "components.article.localeSwitcher.spanish": [],
   "research.02_intro.cta": [
     {
       "type": 0,
@@ -135,68 +132,40 @@
       "value": "The challenge"
     }
   ],
-  "research.03_concept.p10": [
-  ],
-  "research.03_concept.p10.list1": [
-  ],
-  "research.03_concept.p10.list2": [
-  ],
-  "research.03_concept.p10.list3": [
-  ],
-  "research.03_concept.p10.list4": [
-  ],
-  "research.03_concept.p11": [
-  ],
-  "research.03_concept.p12": [
-  ],
-  "research.03_concept.p12.heading": [
-  ],
-  "research.03_concept.p13": [
-  ],
-  "research.03_concept.p13.heading": [
-  ],
-  "research.03_concept.p14.list1": [
-  ],
-  "research.03_concept.p14.list2": [
-  ],
-  "research.03_concept.p14.list3": [
-  ],
-  "research.03_concept.p15": [
-  ],
-  "research.03_concept.p15.imageLabel": [
-  ],
-  "research.03_concept.p16": [
-  ],
-  "research.03_concept.p16.list1": [
-  ],
-  "research.03_concept.p16.list2": [
-  ],
-  "research.03_concept.p16.list3": [
-  ],
-  "research.03_concept.p17": [
-  ],
-  "research.03_concept.p17.list1": [
-  ],
-  "research.03_concept.p17.list2": [
-  ],
-  "research.03_concept.p17.list3": [
-  ],
-  "research.03_concept.p18": [
-  ],
-  "research.03_concept.p19": [
-  ],
-  "research.03_concept.p19.link": [
-  ],
+  "research.03_concept.p10": [],
+  "research.03_concept.p10.list1": [],
+  "research.03_concept.p10.list2": [],
+  "research.03_concept.p10.list3": [],
+  "research.03_concept.p10.list4": [],
+  "research.03_concept.p11": [],
+  "research.03_concept.p12": [],
+  "research.03_concept.p12.heading": [],
+  "research.03_concept.p13": [],
+  "research.03_concept.p13.heading": [],
+  "research.03_concept.p14.list1": [],
+  "research.03_concept.p14.list2": [],
+  "research.03_concept.p14.list3": [],
+  "research.03_concept.p15": [],
+  "research.03_concept.p15.imageLabel": [],
+  "research.03_concept.p16": [],
+  "research.03_concept.p16.list1": [],
+  "research.03_concept.p16.list2": [],
+  "research.03_concept.p16.list3": [],
+  "research.03_concept.p17": [],
+  "research.03_concept.p17.list1": [],
+  "research.03_concept.p17.list2": [],
+  "research.03_concept.p17.list3": [],
+  "research.03_concept.p18": [],
+  "research.03_concept.p19": [],
+  "research.03_concept.p19.link": [],
   "research.03_concept.p2": [
     {
       "type": 0,
       "value": "While the objective safety of cyclists has already been investigated in multiple studies, scarcely any research has been carried out on perceived/subjective safety. The particular challenge when investigating subjective safety is to collect enough ratings for various street configurations and simultaneously look into each of the many different influences on the perceived safety of a situation in enough detail. It was therefore necessary to illustrate a wide variety of different street configurations in the survey and at the same time reach a large number of participants via an effective communication strategy."
     }
   ],
-  "research.03_concept.p20": [
-  ],
-  "research.03_concept.p20.link": [
-  ],
+  "research.03_concept.p20": [],
+  "research.03_concept.p20.link": [],
   "research.03_concept.p3": [
     {
       "type": 0,
@@ -335,10 +304,8 @@
       "value": "non-binary"
     }
   ],
-  "research.05_results.chart1.label": [
-  ],
-  "research.05_results.chart1.title": [
-  ],
+  "research.05_results.chart1.label": [],
+  "research.05_results.chart1.title": [],
   "research.05_results.chart10.1": [
     {
       "type": 0,
@@ -501,22 +468,14 @@
       "value": "Illustration: cycle path on main road with or without a physical barrier"
     }
   ],
-  "research.05_results.chart13.1": [
-  ],
-  "research.05_results.chart13.2": [
-  ],
-  "research.05_results.chart13.3": [
-  ],
-  "research.05_results.chart13.4": [
-  ],
-  "research.05_results.chart13.5": [
-  ],
-  "research.05_results.chart13.6": [
-  ],
-  "research.05_results.chart13.label": [
-  ],
-  "research.05_results.chart13.title": [
-  ],
+  "research.05_results.chart13.1": [],
+  "research.05_results.chart13.2": [],
+  "research.05_results.chart13.3": [],
+  "research.05_results.chart13.4": [],
+  "research.05_results.chart13.5": [],
+  "research.05_results.chart13.6": [],
+  "research.05_results.chart13.label": [],
+  "research.05_results.chart13.title": [],
   "research.05_results.chart14.1": [
     {
       "type": 0,
@@ -835,202 +794,107 @@
       "value": "Illustration: Weightings of the various influencing factors"
     }
   ],
-  "research.05_results.chart21.1": [
-  ],
-  "research.05_results.chart21.2": [
-  ],
-  "research.05_results.chart21.3": [
-  ],
-  "research.05_results.chart21.4": [
-  ],
-  "research.05_results.chart21.label": [
-  ],
-  "research.05_results.chart21.title": [
-  ],
-  "research.05_results.chart22.1": [
-  ],
-  "research.05_results.chart22.2": [
-  ],
-  "research.05_results.chart22.3": [
-  ],
-  "research.05_results.chart22.4": [
-  ],
-  "research.05_results.chart22.5": [
-  ],
-  "research.05_results.chart22.label": [
-  ],
-  "research.05_results.chart22.title": [
-  ],
-  "research.05_results.chart3.1": [
-  ],
-  "research.05_results.chart3.2": [
-  ],
-  "research.05_results.chart3.3": [
-  ],
-  "research.05_results.chart3.4": [
-  ],
-  "research.05_results.chart3.5": [
-  ],
-  "research.05_results.chart3.6": [
-  ],
-  "research.05_results.chart3.label": [
-  ],
-  "research.05_results.chart3.title": [
-  ],
-  "research.05_results.chart4.1": [
-  ],
-  "research.05_results.chart4.2": [
-  ],
-  "research.05_results.chart4.3": [
-  ],
-  "research.05_results.chart4.label": [
-  ],
-  "research.05_results.chart4.title": [
-  ],
-  "research.05_results.chart5.1": [
-  ],
-  "research.05_results.chart5.2": [
-  ],
-  "research.05_results.chart5.3": [
-  ],
-  "research.05_results.chart5.label": [
-  ],
-  "research.05_results.chart5.title": [
-  ],
-  "research.05_results.chart6.1": [
-  ],
-  "research.05_results.chart6.2": [
-  ],
-  "research.05_results.chart6.3": [
-  ],
-  "research.05_results.chart6.4": [
-  ],
-  "research.05_results.chart6.5": [
-  ],
-  "research.05_results.chart6.6": [
-  ],
-  "research.05_results.chart6.label": [
-  ],
-  "research.05_results.chart6.title": [
-  ],
-  "research.05_results.chart7.1": [
-  ],
-  "research.05_results.chart7.2": [
-  ],
-  "research.05_results.chart7.3": [
-  ],
-  "research.05_results.chart7.4": [
-  ],
-  "research.05_results.chart7.label": [
-  ],
-  "research.05_results.chart7.title": [
-  ],
-  "research.05_results.chart8.1": [
-  ],
-  "research.05_results.chart8.2": [
-  ],
-  "research.05_results.chart8.3": [
-  ],
-  "research.05_results.chart8.4": [
-  ],
-  "research.05_results.chart8.5": [
-  ],
-  "research.05_results.chart8.6": [
-  ],
-  "research.05_results.chart8.7": [
-  ],
-  "research.05_results.chart8.8": [
-  ],
-  "research.05_results.chart8.label": [
-  ],
-  "research.05_results.chart8.title": [
-  ],
-  "research.05_results.chart9.1": [
-  ],
-  "research.05_results.chart9.2": [
-  ],
-  "research.05_results.chart9.3": [
-  ],
-  "research.05_results.chart9.label": [
-  ],
-  "research.05_results.chart9.title": [
-  ],
-  "research.05_results.heading": [
-  ],
-  "research.05_results.p1": [
-  ],
-  "research.05_results.p10": [
-  ],
-  "research.05_results.p11": [
-  ],
-  "research.05_results.p12": [
-  ],
-  "research.05_results.p13.heading": [
-  ],
-  "research.05_results.p2": [
-  ],
-  "research.05_results.p3": [
-  ],
-  "research.05_results.p4": [
-  ],
-  "research.05_results.p4.heading": [
-  ],
-  "research.05_results.p4.listOther": [
-  ],
-  "research.05_results.p5": [
-  ],
-  "research.05_results.p5.list1": [
-  ],
-  "research.05_results.p5.list2": [
-  ],
-  "research.05_results.p5.list3": [
-  ],
-  "research.05_results.p6": [
-  ],
-  "research.05_results.p7": [
-  ],
-  "research.05_results.p7.list1": [
-  ],
-  "research.05_results.p7.list2": [
-  ],
-  "research.05_results.p7.list3": [
-  ],
-  "research.05_results.p7.list4": [
-  ],
-  "research.05_results.p7.list5": [
-  ],
-  "research.05_results.p7.list6": [
-  ],
-  "research.05_results.p7.list7": [
-  ],
-  "research.05_results.p8": [
-  ],
-  "research.05_results.p8.list": [
-  ],
-  "research.05_results.p8.list1": [
-  ],
-  "research.05_results.p8.list2": [
-  ],
-  "research.05_results.p8.list3": [
-  ],
-  "research.05_results.p8.list4": [
-  ],
-  "research.05_results.p8.list5": [
-  ],
-  "research.05_results.p8.list6": [
-  ],
-  "research.05_results.p9": [
-  ],
-  "research.05_results.p9.link": [
-  ],
+  "research.05_results.chart21.1": [],
+  "research.05_results.chart21.2": [],
+  "research.05_results.chart21.3": [],
+  "research.05_results.chart21.4": [],
+  "research.05_results.chart21.label": [],
+  "research.05_results.chart21.title": [],
+  "research.05_results.chart22.1": [],
+  "research.05_results.chart22.2": [],
+  "research.05_results.chart22.3": [],
+  "research.05_results.chart22.4": [],
+  "research.05_results.chart22.5": [],
+  "research.05_results.chart22.label": [],
+  "research.05_results.chart22.title": [],
+  "research.05_results.chart3.1": [],
+  "research.05_results.chart3.2": [],
+  "research.05_results.chart3.3": [],
+  "research.05_results.chart3.4": [],
+  "research.05_results.chart3.5": [],
+  "research.05_results.chart3.6": [],
+  "research.05_results.chart3.label": [],
+  "research.05_results.chart3.title": [],
+  "research.05_results.chart4.1": [],
+  "research.05_results.chart4.2": [],
+  "research.05_results.chart4.3": [],
+  "research.05_results.chart4.label": [],
+  "research.05_results.chart4.title": [],
+  "research.05_results.chart5.1": [],
+  "research.05_results.chart5.2": [],
+  "research.05_results.chart5.3": [],
+  "research.05_results.chart5.label": [],
+  "research.05_results.chart5.title": [],
+  "research.05_results.chart6.1": [],
+  "research.05_results.chart6.2": [],
+  "research.05_results.chart6.3": [],
+  "research.05_results.chart6.4": [],
+  "research.05_results.chart6.5": [],
+  "research.05_results.chart6.6": [],
+  "research.05_results.chart6.label": [],
+  "research.05_results.chart6.title": [],
+  "research.05_results.chart7.1": [],
+  "research.05_results.chart7.2": [],
+  "research.05_results.chart7.3": [],
+  "research.05_results.chart7.4": [],
+  "research.05_results.chart7.label": [],
+  "research.05_results.chart7.title": [],
+  "research.05_results.chart8.1": [],
+  "research.05_results.chart8.2": [],
+  "research.05_results.chart8.3": [],
+  "research.05_results.chart8.4": [],
+  "research.05_results.chart8.5": [],
+  "research.05_results.chart8.6": [],
+  "research.05_results.chart8.7": [],
+  "research.05_results.chart8.8": [],
+  "research.05_results.chart8.label": [],
+  "research.05_results.chart8.title": [],
+  "research.05_results.chart9.1": [],
+  "research.05_results.chart9.2": [],
+  "research.05_results.chart9.3": [],
+  "research.05_results.chart9.label": [],
+  "research.05_results.chart9.title": [],
+  "research.05_results.heading": [],
+  "research.05_results.p1": [],
+  "research.05_results.p10": [],
+  "research.05_results.p11": [],
+  "research.05_results.p12": [],
+  "research.05_results.p13.heading": [],
+  "research.05_results.p2": [],
+  "research.05_results.p3": [],
+  "research.05_results.p4": [],
+  "research.05_results.p4.heading": [],
+  "research.05_results.p4.listOther": [],
+  "research.05_results.p5": [],
+  "research.05_results.p5.list1": [],
+  "research.05_results.p5.list2": [],
+  "research.05_results.p5.list3": [],
+  "research.05_results.p6": [],
+  "research.05_results.p7": [],
+  "research.05_results.p7.list1": [],
+  "research.05_results.p7.list2": [],
+  "research.05_results.p7.list3": [],
+  "research.05_results.p7.list4": [],
+  "research.05_results.p7.list5": [],
+  "research.05_results.p7.list6": [],
+  "research.05_results.p7.list7": [],
+  "research.05_results.p8": [],
+  "research.05_results.p8.list": [],
+  "research.05_results.p8.list1": [],
+  "research.05_results.p8.list2": [],
+  "research.05_results.p8.list3": [],
+  "research.05_results.p8.list4": [],
+  "research.05_results.p8.list5": [],
+  "research.05_results.p8.list6": [],
+  "research.05_results.p9": [],
+  "research.05_results.p9.link": [],
   "research.authors": [
     {
       "type": 0,
       "value": "FixMyCity Team"
     }
   ],
-  "research.kicker": [
-  ],
+  "research.kicker": [],
   "research.title": [
     {
       "type": 0,

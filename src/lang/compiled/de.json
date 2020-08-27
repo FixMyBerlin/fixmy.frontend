@@ -23,18 +23,15 @@
       "value": "von"
     }
   ],
-  "components.article.localeSwitcher.english": [
-  ],
-  "components.article.localeSwitcher.german": [
-  ],
+  "components.article.localeSwitcher.english": [],
+  "components.article.localeSwitcher.german": [],
   "components.article.localeSwitcher.label": [
     {
       "type": 0,
       "value": "andere Sprache wählen"
     }
   ],
-  "components.article.localeSwitcher.spanish": [
-  ],
+  "components.article.localeSwitcher.spanish": [],
   "research.02_intro.cta": [
     {
       "type": 0,
