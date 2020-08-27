@@ -123,5 +123,5 @@ class SearchBar extends PureComponent {
 }
 
 export default connect((state) => ({
-  isEmbedMode: state.AppState.isEmbedMode
+  isEmbedMode: state.MapState.isEmbedMode
 }))(SearchBar);

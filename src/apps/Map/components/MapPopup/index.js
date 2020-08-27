@@ -119,8 +119,8 @@ class MapPopup extends PureComponent {
 export default withRouter(
   connect((state) => ({
     popupLocation: state.MapState.popupLocation,
-    activeSection: state.AppState.activeSection,
-    activeView: state.AppState.activeView,
+    activeSection: state.MapState.activeSection,
+    activeView: state.MapState.activeView,
     data: state.MapState.popupData,
     displayPopup: state.MapState.displayPopup
   }))(MapPopup)

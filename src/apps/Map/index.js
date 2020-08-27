@@ -15,6 +15,7 @@ import ProjectDetail from '~/apps/Map/components/DetailView/ProjectDetail';
 import ErrorMessage from '~/components/ErrorMessage';
 import FMBLogo from '~/components2/Logo';
 import Store from '~/store';
+import history from '~/history';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from '~/apps/Map/components/WebglMap';
 import config from '~/config';
@@ -44,6 +45,12 @@ const StyledFMBLogo = styled(FMBLogo)`
 `;
 
 const dismissErrorMessage = () => Store.dispatch(MapActions.unsetError());
+
+history.listen((location) =>
+  Store.dispatch(MapActions.updateHistory(location))
+);
+Store.dispatch(MapActions.updateHistory(history.location));
+Store.dispatch(MapActions.detectEmbedMode(history.location));
 
 class MapViewComponent extends PureComponent {
   updateView = (view) => {
@@ -146,11 +153,11 @@ class MapViewComponent extends PureComponent {
 
 export default withRouter(
   connect((state) => ({
-    activeLayer: state.AppState.activeView,
-    activeSection: parseInt(state.AppState.activeSection, 0),
+    activeLayer: state.MapState.activeView,
+    activeSection: parseInt(state.MapState.activeSection, 0),
     displayPopup: state.MapState.displayPopup,
     filterHbi: state.MapState.filterHbi,
-    isEmbedMode: state.AppState.isEmbedMode,
+    isEmbedMode: state.MapState.isEmbedMode,
     error: state.MapState.error,
     ...state.UserState
   }))(MapViewComponent)

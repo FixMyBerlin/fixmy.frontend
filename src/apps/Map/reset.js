@@ -1,9 +1,8 @@
 import Store from '~/store';
 import * as MapActions from '~/apps/Map/MapState';
-import * as AppActions from '~/AppState';
 
 function resetMap({ zoom = null } = {}) {
-  Store.dispatch(AppActions.setActiveSection(null));
+  Store.dispatch(MapActions.setActiveSection(null));
   Store.dispatch(MapActions.setPopupData(null));
   Store.dispatch(MapActions.setPopupVisible(false));
 

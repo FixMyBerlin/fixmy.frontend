@@ -240,7 +240,7 @@ class Map extends PureComponent {
         Store.dispatch(MapActions.setPopupVisible(true));
       }
 
-      Store.dispatch(AppActions.setActiveSection(id));
+      Store.dispatch(MapActions.setActiveSection(id));
       Store.dispatch(
         MapActions.setView({
           center,
@@ -260,7 +260,7 @@ class Map extends PureComponent {
   handleIntersectionClick = (evt) => {
     Store.dispatch(MapActions.setPopupData({ isIntersection: true }));
     Store.dispatch(MapActions.setPopupVisible(true));
-    Store.dispatch(AppActions.setActiveSection(1));
+    Store.dispatch(MapActions.setActiveSection(1));
     Store.dispatch(
       MapActions.setView({
         center: evt.lngLat,
@@ -300,7 +300,7 @@ class Map extends PureComponent {
     } else {
       Store.dispatch(MapActions.setPopupData(data));
       Store.dispatch(MapActions.setPopupVisible(true));
-      Store.dispatch(AppActions.setActiveSection(id));
+      Store.dispatch(MapActions.setActiveSection(id));
       Store.dispatch(
         MapActions.setView({
           center,
@@ -370,8 +370,8 @@ class Map extends PureComponent {
 
 export default withRouter(
   connect((state) => ({
-    activeView: state.AppState.activeView,
-    activeSection: parseInt(state.AppState.activeSection, 0),
+    activeView: state.MapState.activeView,
+    activeSection: parseInt(state.MapState.activeSection, 0),
     animate: state.MapState.animate,
     bearing: state.MapState.bearing,
     center: state.MapState.center,

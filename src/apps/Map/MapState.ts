@@ -1,11 +1,18 @@
+import { match, matchPath } from 'react-router-dom';
+import qs from 'qs';
 import ky from 'ky';
-import { Action } from 'redux';
-import { ThunkAction } from 'redux-thunk';
+import { Dispatch } from 'redux';
+import debug from 'debug';
+import idx from 'idx';
 
 import config from '~/config';
 import { MapConfig } from './types';
-import { RootState } from '~/store';
 
+const log = debug('fmc:map.mapstate');
+
+const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
+const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
+const SET_VIEW_ACTIVE = 'Map/MapState/SET_VIEW_ACTIVE';
 const SET_VIEW = 'Map/MapState/SET_VIEW';
 const SET_HAS_MOVED = 'Map/MapState/SET_HAS_MOVED';
 const GEOCODE_DONE = 'Map/MapState/GEOCODE_SUCCESS';
@@ -19,10 +26,20 @@ const SET_PLANNING_DATA = 'Map/MapState/SET_PLANNING_DATA';
 const SET_ERROR = 'Map/MapState/SET_ERROR';
 const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 
+type MapView = 'zustand' | 'planungen';
+
 // todo: define this based on fixmy.platform serializer & model
 type ProjectData = any;
 
-export type MapState = MapConfig['view'] & {
+type MapPath = {
+  activeView?: MapView;
+  activeSection?: string;
+};
+
+export type MapState = Partial<MapConfig['view']> & {
+  activeView?: MapView;
+  activeSection?: number;
+  isEmbedMode: boolean;
   animate: boolean;
   dim: boolean;
   displayPopup: boolean;
@@ -36,10 +53,10 @@ export type MapState = MapConfig['view'] & {
   show3dBuildings: boolean;
 };
 
-type MapView = 'projects' | '';
-
 const initialState: MapState = {
-  ...config.apps.map.view,
+  activeView: null,
+  activeSection: null,
+  isEmbedMode: false,
   animate: false,
   dim: false,
   displayPopup: false,
@@ -52,6 +69,71 @@ const initialState: MapState = {
   popupLocation: null,
   show3dBuildings: true
 };
+
+type UpdateHistory = {
+  type: typeof UPDATE_HISTORY;
+  payload: {
+    isEmbedMode?: boolean;
+    activeSection?: number | null;
+    activeView?: MapView;
+  };
+};
+
+export const updateHistory = (props: Location) => (dispatch: Dispatch) => {
+  const pathMatch: match<MapPath> = matchPath(props.pathname, {
+    path: '/:activeView?/:activeSection?',
+    exact: false,
+    strict: false
+  });
+
+  const { activeSection, activeView } = pathMatch.params;
+
+  dispatch({
+    type: UPDATE_HISTORY,
+    payload: {
+      activeSection: Number.isNaN(parseInt(activeSection, 10))
+        ? null
+        : activeSection,
+      activeView
+    }
+  });
+};
+
+export const detectEmbedMode = (location: Location) => (dispatch: Dispatch) => {
+  const isEmbedMode =
+    !!qs.parse(location.search, { ignoreQueryPrefix: true }).embed ||
+    window.location.host === 'embed.fixmyberlin.de';
+
+  const action: UpdateHistory = {
+    type: UPDATE_HISTORY,
+    payload: {
+      isEmbedMode
+    }
+  };
+
+  dispatch(action);
+};
+
+type SetActiveSection = {
+  type: typeof SET_ACTIVE_SECTION;
+  payload: { activeSection: number | null };
+};
+
+export function setActiveSection(activeSection: number | null) {
+  return {
+    type: SET_ACTIVE_SECTION,
+    payload: { activeSection }
+  };
+}
+
+type SetActiveView = {
+  type: typeof SET_VIEW_ACTIVE;
+  payload: { activeView: MapView };
+};
+
+export function setActiveView(activeView: MapView) {
+  return { type: SET_VIEW_ACTIVE, payload: { activeView } };
+}
 
 type SetError = {
   type: typeof SET_ERROR;
@@ -77,10 +159,10 @@ export function unsetError(): UnsetError {
 
 type SetView = {
   type: typeof SET_VIEW;
-  payload: MapConfig['view'];
+  payload: Partial<MapConfig['view']>;
 };
 
-export function setView(view: MapConfig['view']): SetView {
+export function setView(view: SetView['payload']): SetView {
   return { type: SET_VIEW, payload: view };
 }
 
@@ -159,30 +241,24 @@ interface LoadPlanningData {
   };
 }
 
-export const loadPlanningData: ThunkAction<
-  void,
-  RootState,
-  unknown,
-  Action<LoadPlanningData>
-> = () => async (dispatch, getState) => {
-  if (getState().MapState.planningData) {
-    return;
-  }
+export function loadPlanningData() {
+  return async (dispatch, getState) => {
+    if (getState().MapState.planningData) {
+      return false;
+    }
 
-  const planningData = await ky
-    .get(`${config.apiUrl}/projects?page_size=500`, { timeout: 50000 })
-    .json();
+    const planningData = await ky
+      .get(`${config.apiUrl}/projects?page_size=500`, { timeout: 50000 })
+      .json();
 
-  dispatch({
-    type: SET_PLANNING_DATA,
-    payload: { planningData }
-  });
-};
+    return dispatch({ type: SET_PLANNING_DATA, payload: { planningData } });
+  };
+}
 
 interface GeocodeAddressSuccess {
   type: typeof GEOCODE_DONE;
   payload: {
-    center: [number, number];
+    center: mapboxgl.PointLike;
     zoom: number;
   };
 }
@@ -194,46 +270,48 @@ interface GeocodeAddressFail {
   };
 }
 
-export const geocodeAddress: ThunkAction<
-  void,
-  RootState,
-  unknown,
-  Action<GeocodeAddressSuccess | GeocodeAddressFail>
-> = (searchtext) => async (dispatch) => {
-  const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.apps.map;
+export function geocodeAddress(searchtext) {
+  return async (dispatch) => {
+    const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.apps.map;
 
-  try {
-    const searchUrl = `${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;
-    const data: any = await ky.get(searchUrl).json();
+    try {
+      const searchUrl = `${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;
+      const data = await ky.get(searchUrl).json();
 
-    const geocodeResult =
-      data?.Response?.View[0]?.Result[0]?.Location?.DisplayPosition;
+      // const geocodeResult = idx(
+      //   data,
+      //   (_) => _.Response.View[0].Result[0].Location.DisplayPosition
+      // );
+      const geocodeResult = (data as any)?.Response?.View[0]?.Result[0]
+        ?.Location.DisplayPosition;
+      if (!geocodeResult) {
+        return dispatch({
+          type: GEOCODE_FAIL,
+          payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' }
+        });
+      }
 
-    if (!geocodeResult) {
+      // we do + (Math.random() / 1000) in order to always get a slightly different center
+      const center = [
+        geocodeResult.Longitude,
+        geocodeResult.Latitude + Math.random() / 1000
+      ];
+      return dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
+    } catch (error) {
       return dispatch({
         type: GEOCODE_FAIL,
         payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' }
       });
     }
-
-    // we do + (Math.random() / 1000) in order to always get a slightly different center
-    const center = [
-      geocodeResult.Longitude,
-      geocodeResult.Latitude + Math.random() / 1000
-    ];
-    return dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
-  } catch (error) {
-    return dispatch({
-      type: GEOCODE_FAIL,
-      payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' }
-    });
-  }
-};
+  };
+}
 
 type ActionType =
   | GeocodeAddressFail
   | GeocodeAddressSuccess
   | LoadPlanningData
+  | SetActiveSection
+  | SetActiveView
   | SetError
   | SetHasMoved
   | SetPopupData
@@ -243,23 +321,29 @@ type ActionType =
   | ToggleHbiFilter
   | TogglePlanningFilter
   | UnsetError
+  | UpdateHistory
   | { type: null };
 
 export default function MapStateReducer(
   state: MapState = initialState,
   action: ActionType = { type: null }
 ): MapState {
+  log('MapState', action);
   switch (action.type) {
-    case SET_ERROR:
-    case UNSET_ERROR:
-    case SET_VIEW:
-    case SET_POPUP_DATA:
-    case SET_HAS_MOVED:
     case GEOCODE_DONE:
+    case SET_ACTIVE_SECTION:
+    case SET_ERROR:
+    case SET_HAS_MOVED:
+    case SET_PLANNING_DATA:
+    case SET_POPUP_DATA:
     case SET_POPUP_LOCATION:
     case SET_POPUP_VISIBLE:
-    case SET_PLANNING_DATA:
-      return { ...state, ...(action as LoadPlanningData).payload };
+    case SET_VIEW_ACTIVE:
+    case SET_VIEW:
+    case UNSET_ERROR:
+    case UPDATE_HISTORY:
+      // @ts-ignore
+      return { ...state, ...action.payload };
     case SET_HBI_FILTER:
       return {
         ...state,
