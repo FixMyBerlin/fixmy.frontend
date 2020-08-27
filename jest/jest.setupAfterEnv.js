@@ -9,6 +9,7 @@ jest.setTimeout(30000);
 
 // add global hooks to use msw in test suites
 
+import ky from 'ky-universal';
 import { mswServer } from './msw/mswServer';
 beforeAll(() => {
   // enable the mocking in tests.
