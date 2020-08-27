@@ -4,6 +4,7 @@ import routes from './routes';
 import staticpages from './staticpages';
 
 import defaultColors from '~/config/default/colors';
+import defaultBase from '~/config/default/base';
 import { RegionConfig } from '~/types';
 
 const apiEndpoints = {
@@ -28,7 +29,11 @@ const aachenConfig: RegionConfig = {
     interaction: '#6E9BD2'
   },
   titleFont: 'The Mix',
-  baseFont: 'Arial'
+  baseFont: 'Arial',
+  piwik: {
+    ...defaultBase.piwik,
+    siteId: 4
+  }
 };
 
 export default aachenConfig;

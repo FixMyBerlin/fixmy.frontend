@@ -29,10 +29,7 @@ const baseConfig: Omit<
   },
   piwik: {
     url: 's.fixmycity.de',
-    siteId: {
-      berlin: 1,
-      aachen: 4
-    },
+    siteId: 1,
     options: {
       enableLinkTracking: true,
       trackErrors: true,

@@ -81,4 +81,8 @@ export interface MapboxService {
   reverseGeocoderUrl: string;
 }
 
-export interface PiwikService {}
+export interface PiwikService {
+  url: string;
+  siteId: number;
+  options: object;
+}
