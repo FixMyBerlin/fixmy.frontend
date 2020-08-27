@@ -1,4 +1,4 @@
-import { cyElem } from '~/../cypress/support/utils';
+import { cyElem } from 'cypress/support/utils';
 import { clickRandomMarker, goToProjects } from './utils';
 
 const adressRegex = new RegExp("[A-Za-z0-9'\\.\\-\\s\\,]");
