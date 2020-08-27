@@ -24,5 +24,21 @@ describe('<ArticleHeader>', () => {
     );
     expect(getByRole('banner')).toBeInTheDocument();
     expect(getAllByRole('button', { name: 'Menü öffnen' })).toHaveLength(2);
+    expect(
+      getByRole('heading', { name: 'Über das Projekt' })
+    ).toBeInTheDocument();
+
+    // Förderlogos
+    expect(
+      getByRole('img', {
+        name:
+          'Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)'
+      })
+    ).toBeInTheDocument();
+    expect(
+      getByRole('img', {
+        name: 'Logo der Senatskanzlei Berlin'
+      })
+    ).toBeInTheDocument();
   });
 });
