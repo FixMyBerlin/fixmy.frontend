@@ -23,7 +23,7 @@ const SectionTeam = ({ toc }) => (
     <Paragraph>
       <FormattedMessage
         id="research.07_team.p03"
-        defaultMessage="Das Team von FixMyCity arbeitet im CityLAB Berlin, wo auch die auf dieser Seite beschriebene Umfrage entstanden ist. Wenn Sie mehr über uns erfahren wollen, besuchen Sie uns unter{' '} {link} oder nehmen Sie direkt Kontakt mit uns auf."
+        defaultMessage="Das Team von FixMyCity arbeitet im CityLAB Berlin, wo auch die auf dieser Seite beschriebene Umfrage entstanden ist. Wenn Sie mehr über uns erfahren wollen, besuchen Sie uns unter {link} oder nehmen Sie direkt Kontakt mit uns auf."
         values={{ link: <Link href="https://fixmycity.de">fixmycity.de</Link> }}
       />
     </Paragraph>
