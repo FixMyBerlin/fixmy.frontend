@@ -9,7 +9,6 @@ import slugify from 'slugify';
 
 import Store from '~/store';
 import { isSmallScreen } from '~/styles/utils';
-import * as AppActions from '~/AppState';
 import config from '~/config';
 import * as MapActions from '~/apps/Map/MapState';
 import ProjectMarkers from '~/apps/Map/components/ProjectMarkers';
@@ -57,12 +56,9 @@ class Map extends PureComponent {
       style: MB_STYLE_URL,
       bounds: config.apps.map.bounds
     });
-
     const nav = new MapboxGL.NavigationControl({ showCompass: false });
     this.map.addControl(nav, 'bottom-left');
-
     this.map.on('load', this.handleLoad);
-
     window.map = this.map;
   }
 

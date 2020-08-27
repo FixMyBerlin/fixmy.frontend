@@ -20,7 +20,7 @@ function getBoxShadow(props) {
     : '0 0 2px 1px rgba(0, 0, 0, 0.2)';
 }
 
-const SwitchButton = styled(({ side, ...props }) => (
+const SwitchButton = styled(({ side, isActive, ...props }) => (
   <button type="button" {...props} />
 ))`
   border-radius: ${getBorderRadius};
