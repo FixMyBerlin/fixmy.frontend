@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import config from '~/config';
 
 const Tooltip = styled.div`
-  display: none;
+  transition: opacity 0.3s;
+  opacity: 0;
   color: #666;
   position: absolute;
   bottom: -18px;
@@ -23,7 +24,7 @@ const Bar = styled.div`
   &:hover,
   &:focus {
     ${Tooltip} {
-      display: block;
+      opacity: 1;
     }
   }
 `;
@@ -69,7 +70,7 @@ const BarLabel = ({ value, isWeightGraph }) => {
   return isWeightGraph ? (
     <WeightBarLabelStyle>
       {(value / 100.0).toLocaleString(intl.locale, {
-        maximumFractionDigits: 0
+        maximumFractionDigits: 2
       })}
     </WeightBarLabelStyle>
   ) : (
@@ -86,6 +87,9 @@ const BarElement = ({ title, value, index, isWeightGraph = false }) => {
   const pctValue = value.toLocaleString(intl.locale, {
     maximumFractionDigits: 2
   });
+  const tooltipId = `barchart-tooltip-${encodeURIComponent(
+    title
+  )}-${index}-${pctValue}`;
   return (
     <Bar
       // eslint-disable-next-line react/no-array-index-key
@@ -94,17 +98,12 @@ const BarElement = ({ title, value, index, isWeightGraph = false }) => {
         width: `${value}%`,
         backgroundColor: getColor(isWeightGraph, index)
       }}
-      tabIndex={0}
-      aria-labelledby={
-        isWeightGraph ? null : `barchart-tooltip-${title}-${index}`
-      }
+      tabIndex={isWeightGraph ? null : 0}
+      aria-describedby={isWeightGraph ? null : tooltipId}
     >
       <BarLabel value={value} isWeightGraph={isWeightGraph} />
       {!isWeightGraph && (
-        <Tooltip
-          className="barchart__tooltip"
-          id={`barchart-tooltip-${title}-${index}`}
-        >
+        <Tooltip role="tooltip" className="barchart__tooltip" id={tooltipId}>
           {pctValue}% {intl.formatMessage(labels[index])}
         </Tooltip>
       )}

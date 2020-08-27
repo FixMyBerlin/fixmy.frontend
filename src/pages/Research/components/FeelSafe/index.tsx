@@ -3,10 +3,11 @@ import { useIntl, defineMessages } from 'react-intl';
 import styled from 'styled-components';
 import { scaleLinear } from 'd3-scale';
 
-import BikeIcon from '~/images/feelsafe-bike-icon.svg';
-import CarIcon from '~/images/feelsafe-car-icon.svg';
-import WalkIcon from '~/images/feelsafe-walk-icon.svg';
 import { media } from '~/styles/utils';
+
+import BikeIcon from './feelsafe-bike-icon.svg';
+import CarIcon from './feelsafe-car-icon.svg';
+import WalkIcon from './feelsafe-walk-icon.svg';
 
 const Wrapper = styled.div`
   border-radius: 50%;
