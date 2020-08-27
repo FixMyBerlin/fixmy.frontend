@@ -485,37 +485,41 @@ const SectionResults = ({
       />
     </Heading>
     <Paragraph>
-      Wir betrachten zunächst die Führung an Hauptverkehrsstraßen.
-      Nebenverkehrsstraßen werden in einem späteren Kapitel betrachtet.
+      <FormattedMessage
+        id="research.05_results.p13"
+        defaultMessage="Wir betrachten zunächst die Führung an Hauptverkehrsstraßen. Nebenverkehrsstraßen werden in einem späteren Kapitel betrachtet."
+      />
     </Paragraph>
-    <Heading as="h3">Führung im Mischverkehr ist unsicher</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p14.heading"
+        defaultMessage="Führung im Mischverkehr ist unsicher"
+      />
+    </Heading>
     <Paragraph>
-      Eine Führung des Radverkehrs im Mischverkehr wird als deutlich unsicherer
-      empfunden als eine Führung auf jeder Art von RVA. Werden die Faktoren
-      Tempolimit, Verkehrsstärke und rechtsseitiges Parken variiert ändert sich
-      das Sicherheitsempfinden. Aber auch in der bestbewerteten Situation ist
-      kein ausreichendes Sicherheitsempfinden (Wir gehen hier davon aus, dass
-      eine Bewertung “eher sicher” oder “sicher” von über 80% der Teilnehmenden
-      ein anzustrebender Wert für eine subjektiv sichere Infrastruktur ist) zu
-      erzielen. Im Vergleich der Nutzermerkmale gibt es den größten Unterschied
-      zwischen Männern und Frauen, aber insgesamt große Übereinstimmungen. Alle
-      Typen von Radfahrenden (Viel-, oder Wenig-Radfahrende, weibliche oder
-      männliche, ältere und jüngere, etc.) fühlen sich im Mischverkehr unsicher.
+      <FormattedMessage
+        id="research.05_results.p14"
+        defaultMessage="Eine Führung des Radverkehrs im Mischverkehr wird als deutlich unsicherer empfunden als eine Führung auf jeder Art von RVA. Werden die Faktoren Tempolimit, Verkehrsstärke und rechtsseitiges Parken variiert ändert sich das Sicherheitsempfinden. Aber auch in der bestbewerteten Situation ist kein ausreichendes Sicherheitsempfinden (Wir gehen hier davon aus, dass eine Bewertung “eher sicher” oder “sicher” von über 80% der Teilnehmenden ein anzustrebender Wert für eine subjektiv sichere Infrastruktur ist) zu erzielen. Im Vergleich der Nutzermerkmale gibt es den größten Unterschied zwischen Männern und Frauen, aber insgesamt große Übereinstimmungen. Alle Typen von Radfahrenden (Viel-, oder Wenig-Radfahrende, weibliche oder männliche, ältere und jüngere, etc.) fühlen sich im Mischverkehr unsicher."
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_2}>
         <FeelSafe.Image value={28} />
         <ImageMulti.Subtitle>
-          *27,62 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder
-          „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p14.image1"
+            defaultMessage="*27,62 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_587}>
         <FeelSafe.Image value={11} />
         <ImageMulti.Subtitle>
-          *11,05 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder
-          „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p14.image2"
+            defaultMessage="*11,05 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
@@ -558,34 +562,36 @@ const SectionResults = ({
       />
     </BarChart.Wrapper>
 
-    <Heading as="h3">Ruhender Verkehr erzeugt zusätzliche Konflikte</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p15.heading"
+        defaultMessage="Ruhender Verkehr erzeugt zusätzliche Konflikte"
+      />
+    </Heading>
     <Paragraph>
-      Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das
-      Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an
-      die RVA sind grundlegend zu unterscheiden. Bei Führung mit ruhendem
-      Verkehr rechts der RVA (Parken-rechts) beeinträchtigt die potentielle
-      Gefahr durch Türöffnung der parkenden Autos das Sicherheitsempfinden
-      negativ. Weiter zu beachten ist, dass bauliche Trennungen zum fließenden
-      KFZ-Verkehr in diesen Situationen nicht möglich sind, was den
-      Gestaltungsspielraum bei der Planung verringert. In der Umfrage nicht
-      bildlich dargestellt wurde die Gefahr durch ein- sowie ausparkende Autos.
-      Das tatsächliche Sicherheitsempfinden in diesen Situationen könnte also
-      noch geringer ausfallen.
+      <FormattedMessage
+        id="research.05_results.p15"
+        defaultMessage="Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an die RVA sind grundlegend zu unterscheiden. Bei Führung mit ruhendem Verkehr rechts der RVA (Parken-rechts) beeinträchtigt die potentielle Gefahr durch Türöffnung der parkenden Autos das Sicherheitsempfinden negativ. Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in diesen Situationen nicht möglich sind, was den Gestaltungsspielraum bei der Planung verringert. In der Umfrage nicht bildlich dargestellt wurde die Gefahr durch ein- sowie ausparkende Autos. Das tatsächliche Sicherheitsempfinden in diesen Situationen könnte also noch geringer ausfallen."
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_17}>
         <FeelSafe.Image value={69} />
         <ImageMulti.Subtitle>
-          *69,09% der Nutzer:innen bewerteten diese Situation ohne Parkstreifen
-          als „sicher“ oder „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p15.image1"
+            defaultMessage="*69,09% der Nutzer:innen bewerteten diese Situation ohne Parkstreifen als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_619}>
         <FeelSafe.Image value={33} />
         <ImageMulti.Subtitle>
-          *32,76 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen
-          als „sicher“ oder „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p15.image2"
+            defaultMessage="*32,76 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
@@ -627,27 +633,45 @@ const SectionResults = ({
       />
     </BarChart.Wrapper>
 
-    <Heading as="h3">Drei zentrale Einflussfaktoren</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p16"
+        defaultMessage="Drei zentrale Einflussfaktoren"
+      />
+    </Heading>
 
     <Paragraph>
-      Für das subjektive Sicherheitsempfinden sind neben der Lage der RVA
-      vornehmlich drei Faktoren relevant:
+      <FormattedMessage
+        id="research.05_results.p17"
+        defaultMessage="Für das subjektive Sicherheitsempfinden sind neben der Lage der RVA vornehmlich drei Faktoren relevant:"
+      />
       <List>
-        <List.Item>Die Breite der RVA</List.Item>
-        <List.Item>Ihre farbliche Unterscheidung</List.Item>
         <List.Item>
-          Vorhandensein einer baulichen Trennung zum fließenden KFZ-Verkehr
+          <FormattedMessage
+            id="research.05_results.p17.list1"
+            defaultMessage="Die Breite der RVA"
+          />
+        </List.Item>
+        <List.Item>
+          <FormattedMessage
+            id="research.05_results.p17.list2"
+            defaultMessage="Ihre farbliche Unterscheidung"
+          />
+        </List.Item>
+        <List.Item>
+          <FormattedMessage
+            id="research.05_results.p17.list3"
+            defaultMessage="Vorhandensein einer baulichen Trennung zum fließenden KFZ-Verkehr"
+          />
         </List.Item>
       </List>
     </Paragraph>
 
     <Paragraph>
-      Die Breite der Trennung Links spielt vornehmlich bei Situationen mit
-      Parken rechts eine Rolle. Die weiteren in der Umfrage abgefragten
-      Faktoren, Tempolimit und Verkehrsstärke, spielen eine vergleichsweise
-      unbedeutende Rolle. Hier ist zu berücksichtigen, das die Empfindungen der
-      Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur
-      abstrahiert vermittelt werden kann.
+      <FormattedMessage
+        id="research.05_results.p18"
+        defaultMessage="Die Breite der Trennung Links spielt vornehmlich bei Situationen mit Parken rechts eine Rolle. Die weiteren in der Umfrage abgefragten Faktoren, Tempolimit und Verkehrsstärke, spielen eine vergleichsweise unbedeutende Rolle. Hier ist zu berücksichtigen, das die Empfindungen der Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur abstrahiert vermittelt werden kann."
+      />
     </Paragraph>
 
     <BarChart.Wrapper
@@ -707,58 +731,71 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Heading as="h3">
-      Breite der RVA zentral, besonders bei rechtsseitigem Parken
+      <FormattedMessage
+        id="research.05_results.p19.heading"
+        defaultMessage="Breite der RVA zentral, besonders bei rechtsseitigem Parken"
+      />
     </Heading>
 
     <Paragraph>
-      In der Umfrage wurde unterschieden zwischen 3,5 Metern (breit) und 2,0
-      Metern (schmal) Breite für die RVA inkl. aller links und rechtsseitigen
-      Markierungen (s.a. Umfragedesign). Im Ergebnis aller Situationen zeigt
-      sich, dass breite RVA in den allermeisten Situationen als sicher empfunden
-      werden. Im Durchschnitt bewerten 82.99 % der Teilnehmer:innen “diese als
-      sicher” oder “eher sicher”.
+      <FormattedMessage
+        id="research.05_results.p19"
+        defaultMessage="In der Umfrage wurde unterschieden zwischen 3,5 Metern (breit) und 2,0 Metern (schmal) Breite für die RVA inkl. aller links und rechtsseitigen Markierungen (s.a. Umfragedesign). Im Ergebnis aller Situationen zeigt sich, dass breite RVA in den allermeisten Situationen als sicher empfunden werden. Im Durchschnitt bewerten 82.99 % der Teilnehmer:innen “diese als sicher” oder “eher sicher”."
+      />
     </Paragraph>
 
     <Paragraph>
-      Vergleichen wir beispielhaft einen Radstreifen an einer HVS ohne ruhenden
-      Verkehr zeigt sich folgender Unterschied:
+      <FormattedMessage
+        id="research.05_results.p20"
+        defaultMessage="Vergleichen wir beispielhaft einen Radstreifen an einer HVS ohne ruhenden Verkehr zeigt sich folgender Unterschied:"
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_305}>
         <FeelSafe.Image value={74} />
         <ImageMulti.Subtitle>
-          *73,68 % der Nutzer:innen bewerteten diese Situation mit einer breiten
-          RVA als „sicher“ oder „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p20.image1"
+            defaultMessage="*73,68 % der Nutzer:innen bewerteten diese Situation mit einer breiten RVA als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_17}>
         <FeelSafe.Image value={69} />
         <ImageMulti.Subtitle>
-          *69,09 % der Nutzer:innen bewerteten diese Situation mit einer
-          schmalen RVA als „sicher“ oder „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p20.image2"
+            defaultMessage="*69,09 % der Nutzer:innen bewerteten diese Situation mit einer schmalen RVA als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
 
     <Paragraph>
-      Bei einem Radstreifen mit rechtsseitigem Parken ist der Unterschied
-      zwischen schmaler und breiter Ausführung deutlich größer größer.
+      <FormattedMessage
+        id="research.05_results.p21"
+        defaultMessage="Bei einem Radstreifen mit rechtsseitigem Parken ist der Unterschied zwischen schmaler und breiter Ausführung deutlich größer größer."
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_980}>
         <FeelSafe.Image value={71} />
         <ImageMulti.Subtitle>
-          *70,71 % der Nutzer:innen bewerteten diese Situation mit breiter RVA
-          neben einem Parkstreifen als „sicher“ oder „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p21.image1"
+            defaultMessage="*70,71 % der Nutzer:innen bewerteten diese Situation mit breiter RVA neben einem Parkstreifen als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_620}>
         <FeelSafe.Image value={32} />
         <ImageMulti.Subtitle>
-          *32,23 % der Nutzer:innen bewerteten diese Situation mit schmaler RVA
-          neben einem Parkstreifen als „sicher“ oder „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p21.image2"
+            defaultMessage="*32,23 % der Nutzer:innen bewerteten diese Situation mit schmaler RVA neben einem Parkstreifen als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
@@ -808,29 +845,37 @@ const SectionResults = ({
       />
     </BarChart.Wrapper>
 
-    <Heading as="h3">Grüne Oberfläche hilft</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p22.heading"
+        defaultMessage="Grüne Oberfläche hilft"
+      />
+    </Heading>
 
     <Paragraph>
-      Wird die RVA durch eine grüne Oberfläche von der Kfz-Fahrbahn
-      unterschieden, hat dies einen positiven Effekt auf das subjektive
-      Sicherheitsempfinden. Je nach Situation ist dieser Effekt unterschiedlich
-      stark. Umso schlechter die RVA ausgebaut ist, desto stärker ist der Effekt
-      der Grüneinfärbung.
+      <FormattedMessage
+        id="research.05_results.p22"
+        defaultMessage="Wird die RVA durch eine grüne Oberfläche von der Kfz-Fahrbahn unterschieden, hat dies einen positiven Effekt auf das subjektive Sicherheitsempfinden. Je nach Situation ist dieser Effekt unterschiedlich stark. Umso schlechter die RVA ausgebaut ist, desto stärker ist der Effekt der Grüneinfärbung."
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_21}>
         <FeelSafe.Image value={80} />
         <ImageMulti.Subtitle>
-          *80,37 % der Nutzer:innen bewerteten diese schmale RVA mit
-          Grüneinfärbung als „sicher“ oder „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p22.image1"
+            defaultMessage="*80,37 % der Nutzer:innen bewerteten diese schmale RVA mit Grüneinfärbung als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_17}>
         <FeelSafe.Image value={69} />
         <ImageMulti.Subtitle>
-          *69,09 % der Nutzer:innen bewerteten diese schmale RVA ohne
-          Grüneinfärbung als „sicher“ oder „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p22.image2"
+            defaultMessage="*69,09 % der Nutzer:innen bewerteten diese schmale RVA ohne Grüneinfärbung als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
@@ -839,15 +884,19 @@ const SectionResults = ({
       <ImageMulti.Inner source={MS_C_1220}>
         <FeelSafe.Image value={78} />
         <ImageMulti.Subtitle>
-          *77,87 % der Nutzer:innen bewerteten diese breite RVA mit
-          Grüneinfärbung als „sicher“ oder „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p22.image3"
+            defaultMessage="*77,87 % der Nutzer:innen bewerteten diese breite RVA mit Grüneinfärbung als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_980}>
         <FeelSafe.Image value={71} />
         <ImageMulti.Subtitle>
-          *70,71 % der Nutzer:innen bewerteten diese breite RVA ohne
-          Grüneinfärbung als „sicher“ oder „eher sicher“
+          <FormattedMessage
+            id="research.05_results.p22.image4"
+            defaultMessage="*70,71 % der Nutzer:innen bewerteten diese breite RVA ohne Grüneinfärbung als „sicher“ oder „eher sicher“"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
@@ -930,9 +979,10 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Paragraph>
-      In der Umfrage wurde eine weitere Variante – ein lediglich schraffierter
-      grüner Strich linksseitig – getestet. Diese Variante brachte keine
-      Verbesserung gegenüber einer normalen Asphaltoberfläche.
+      <FormattedMessage
+        id="research.05_results.p23"
+        defaultMessage="In der Umfrage wurde eine weitere Variante – ein lediglich schraffierter grüner Strich linksseitig – getestet. Diese Variante brachte keine Verbesserung gegenüber einer normalen Asphaltoberfläche."
+      />
     </Paragraph>
 
     <BarChart.Wrapper
@@ -973,32 +1023,36 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Heading as="h3">
-      Poller (Sperrpfosten) stärken Sicherheitsempfinden, Blumenkästen auch
+      <FormattedMessage
+        id="research.05_results.p24.heading"
+        defaultMessage="Poller (Sperrpfosten) stärken Sicherheitsempfinden, Blumenkästen auch"
+      />
     </Heading>
 
     <Paragraph>
-      Eine bauliche Trennung zwischen RVA und fließendem Kfz-Verkehr stärkt das
-      Sicherheitsempfinden. Dabei ist die Art der Trennung nicht entscheidend.
-      Schaut man ins Detail, findet man, dass bei schmalen RVA kleine Poller
-      (sog. Leitboys) am beliebtesten sind, bei breiten RVA erhalten
-      Blumenkästen die meisten sicheren Bewertungen. Auffällig ist, dass eine
-      grüne Oberfläche nur noch minimale Verbesserung erzielt, wenn es bereits
-      eine breite RVA mit baulicher Trennung gibt.
+      <FormattedMessage
+        id="research.05_results.p24"
+        defaultMessage="Eine bauliche Trennung zwischen RVA und fließendem Kfz-Verkehr stärkt das Sicherheitsempfinden. Dabei ist die Art der Trennung nicht entscheidend. Schaut man ins Detail, findet man, dass bei schmalen RVA kleine Poller (sog. Leitboys) am beliebtesten sind, bei breiten RVA erhalten Blumenkästen die meisten sicheren Bewertungen. Auffällig ist, dass eine grüne Oberfläche nur noch minimale Verbesserung erzielt, wenn es bereits eine breite RVA mit baulicher Trennung gibt."
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_75}>
         <FeelSafe.Image value={90.65} />
         <ImageMulti.Subtitle>
-          Mit 90,65 % am sichersten bewertete bauliche Trennung bei schmaler RVA
-          ohne Grüneinfärbung. Die Variante mit Grüneinfärbung kommt auf 97,52%
+          <FormattedMessage
+            id="research.05_results.p24.image1"
+            defaultMessage="Mit 90,65 % am sichersten bewertete bauliche Trennung bei schmaler RVA ohne Grüneinfärbung. Die Variante mit Grüneinfärbung kommt auf 97,52%"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_C_377}>
         <FeelSafe.Image value={97.52} />
         <ImageMulti.Subtitle>
-          Mit 98,38 % am sichersten bewertete bauliche Trennung bei breiter RVA
-          ohne Grüneinfärbung. Die Variante mit Grüneinfärbung kommt auf 99,11 %
+          <FormattedMessage
+            id="research.05_results.p24.image2"
+            defaultMessage="Mit 98,38 % am sichersten bewertete bauliche Trennung bei breiter RVA ohne Grüneinfärbung. Die Variante mit Grüneinfärbung kommt auf 99,11 %"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
@@ -1056,14 +1110,18 @@ const SectionResults = ({
       />
     </BarChart.Wrapper>
 
-    <Heading as="h3">Lieber rechts als links vom ruhenden Verkehr</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p25.heading"
+        defaultMessage="Lieber rechts als links vom ruhenden Verkehr"
+      />
+    </Heading>
 
     <Paragraph>
-      Wird der Radverkehr gemeinsam mit ruhendem Kfz-Verkehr geführt, so wird
-      die Führung rechts des ruhenden Verkehrs als deutlich sicherer empfunden.
-      Hierbei ist zu beachten, dass die Umfrage die subjektive Sicherheit von
-      Führungsformen entlang der Strecke untersucht hat, eine Aussage über die
-      Auswirkung auf Knotenpunkte kann nicht getroffen werden.
+      <FormattedMessage
+        id="research.05_results.p25"
+        defaultMessage="Wird der Radverkehr gemeinsam mit ruhendem Kfz-Verkehr geführt, so wird die Führung rechts des ruhenden Verkehrs als deutlich sicherer empfunden. Hierbei ist zu beachten, dass die Umfrage die subjektive Sicherheit von Führungsformen entlang der Strecke untersucht hat, eine Aussage über die Auswirkung auf Knotenpunkte kann nicht getroffen werden."
+      />
     </Paragraph>
 
     <ImageMulti>
@@ -1076,9 +1134,10 @@ const SectionResults = ({
     </ImageMulti>
 
     <Paragraph>
-      Diese Führungsform kann durch bauliche Trennung oder Grüneinfärbung
-      zusätzlich subjektiv sicherer gemacht werden, der Effekt ist aber relativ
-      gering.
+      <FormattedMessage
+        id="research.05_results.p26"
+        defaultMessage="Diese Führungsform kann durch bauliche Trennung oder Grüneinfärbung zusätzlich subjektiv sicherer gemacht werden, der Effekt ist aber relativ gering."
+      />
     </Paragraph>
 
     <ImageMulti>
@@ -1129,26 +1188,32 @@ const SectionResults = ({
       />
     </BarChart.Wrapper>
 
-    <Heading as="h3">Wie sehen das Autofahrende?</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p27.heading"
+        defaultMessage="Wie sehen das Autofahrende?"
+      />
+    </Heading>
 
     <Paragraph>
-      In der Umfrage wurde auch die Perspektive der Autofahrenden abgefragt,
-      wobei die Frage hier nicht ausschließlich auf das eigene
-      Sicherheitsempfinden abzielte sondern auf das aller
-      Verkehrsteilnehmer:innen: “Wie empfinden Sie diese Situation beim
-      Autofahren?” Von der Tendenz werden Situationen von Autofahrenden ähnlich
-      wie von den Radfahrenden beurteilt. Im Durchschnitt werden dabei die
-      Situationen als weniger unsicher eingeschätzt, das Konfliktpotential
-      Radfahrender mit dem ruhenden Verkehr wird deutlich weniger stark
-      wahrgenommen, bzw. als unsicher beurteilt.
+      <FormattedMessage
+        id="research.05_results.p27"
+        defaultMessage="In der Umfrage wurde auch die Perspektive der Autofahrenden abgefragt,wobei die Frage hier nicht ausschließlich auf das eigeneSicherheitsempfinden abzielte sondern auf das allerVerkehrsteilnehmer:innen: “Wie empfinden Sie diese Situation beimAutofahren?” Von der Tendenz werden Situationen von Autofahrenden ähnlichwie von den Radfahrenden beurteilt. Im Durchschnitt werden dabei dieSituationen als weniger unsicher eingeschätzt, das KonfliktpotentialRadfahrender mit dem ruhenden Verkehr wird deutlich weniger starkwahrgenommen, bzw. als unsicher beurteilt."
+      />
     </Paragraph>
 
-    <Heading as="h3">Auch Autofahrer wollen separate RVA</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p28.heading"
+        defaultMessage="Auch Autofahrer wollen separate RVA"
+      />
+    </Heading>
 
     <Paragraph>
-      Mischverkehr an Hauptstraßen wird im Vergleich zu vorhandener RVA
-      ebenfalls als deutlich unsicherer bewertet, wenn auch nicht ganz so
-      extrem, wie durch die Radfahrenden.
+      <FormattedMessage
+        id="research.05_results.p28"
+        defaultMessage="Mischverkehr an Hauptstraßen wird im Vergleich zu vorhandener RVA ebenfalls als deutlich unsicherer bewertet, wenn auch nicht ganz so extrem, wie durch die Radfahrenden."
+      />
     </Paragraph>
 
     {/* Fehlende Daten */}
@@ -1200,11 +1265,10 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Paragraph>
-      Autofahrer empfinden die Situation als deutlich sicherer, wenn eine klar
-      getrennte RVA vorhanden ist. am besten mit Sperrfläche oder Doppellinie
-      und Grüneinfärbung. Interessant ist, das der Faktor Parken hier keine
-      große Rolle spielt, diese Gefahr für Radfahrende wird von den
-      Autofahrer:innen scheinbar kaum wahrgenommen.
+      <FormattedMessage
+        id="research.05_results.p29"
+        defaultMessage="Autofahrer empfinden die Situation als deutlich sicherer, wenn eine klar getrennte RVA vorhanden ist. am besten mit Sperrfläche oder Doppellinie und Grüneinfärbung. Interessant ist, das der Faktor Parken hier keine große Rolle spielt, diese Gefahr für Radfahrende wird von den Autofahrer:innen scheinbar kaum wahrgenommen."
+      />
     </Paragraph>
 
     <ImageMulti>
@@ -1216,15 +1280,18 @@ const SectionResults = ({
       </ImageMulti.Inner>
     </ImageMulti>
 
-    <Heading as="h3">Poller auch aus Autoperspektive sicherer</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p30.heading"
+        defaultMessage="Poller auch aus Autoperspektive sicherer"
+      />
+    </Heading>
 
     <Paragraph>
-      Die bauliche Trennung der RVA durch Poller oder ähnliches erhöht auch aus
-      Sicht der Autofahrenden die Sicherheit, wenn der Effekt hier auch deutlich
-      weniger stark ist. Dabei favorisieren Autofahrer:innen Blumenkästen oder
-      niedrige Poller. Wie man an dem Beispiel oben sehen kann werden aber auch
-      breite RVA mit klarer Trennung und Grünmarkierung ähnlich sicher
-      empfunden.
+      <FormattedMessage
+        id="research.05_results.p30"
+        defaultMessage="Die bauliche Trennung der RVA durch Poller oder ähnliches erhöht auch aus Sicht der Autofahrenden die Sicherheit, wenn der Effekt hier auch deutlich weniger stark ist. Dabei favorisieren Autofahrer:innen Blumenkästen oder niedrige Poller. Wie man an dem Beispiel oben sehen kann werden aber auch breite RVA mit klarer Trennung und Grünmarkierung ähnlich sicher empfunden."
+      />
     </Paragraph>
 
     <BarChart.Wrapper
@@ -1301,46 +1368,52 @@ const SectionResults = ({
       />
     </BarChart.Wrapper>
     <Paragraph>
-      Bei hohem Verkehrsaufkommen und Tempolimit 50 km/h empfinden Autofahrer
-      eine bauliche Trennung zum Radverkehr als sicherer. Dies gilt auch für die
-      meisten Situationen mit T30 und normalem Verkehrsaufkommen. Autofahrende
-      haben also ein klare Wahrnehmung für die Gefahr von Unfällen mit
-      Radfahrenden und empfinden die Situation als angenehmer, wenn dieser
-      Konflikt baulich entschärft ist.
+      <FormattedMessage
+        id="research.05_results.p31"
+        defaultMessage="Bei hohem Verkehrsaufkommen und Tempolimit 50 km/h empfinden Autofahrereine bauliche Trennung zum Radverkehr als sicherer. Dies gilt auch für diemeisten Situationen mit T30 und normalem Verkehrsaufkommen. Autofahrendehaben also ein klare Wahrnehmung für die Gefahr von Unfällen mitRadfahrenden und empfinden die Situation als angenehmer, wenn dieserKonflikt baulich entschärft ist."
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_A_67}>
         <FeelSafe.Image value={87.77} icon="car" />
         <ImageMulti.Subtitle>
-          Bestbewertete Situation aus Autoperspektive bei schmaler RVA, T50 und
-          hohem Verkehrsaufkommen
+          <FormattedMessage
+            id="research.05_results.p31.image1"
+            defaultMessage="Bestbewertete Situation aus Autoperspektive bei schmaler RVA, T50 und hohem Verkehrsaufkommen"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={MS_A_343}>
         <FeelSafe.Image value={88.66} icon="car" />
         <ImageMulti.Subtitle>
-          Bestbewertete Situation aus Autoperspektive bei breiter RVA, T50 und
-          hohem Verkehrsaufkommen
+          <FormattedMessage
+            id="research.05_results.p31.image2"
+            defaultMessage="Bestbewertete Situation aus Autoperspektive bei breiter RVA, T50 und hohem Verkehrsaufkommen"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
 
-    <Heading as="h3">Führung im Seitenraum</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p32.heading"
+        defaultMessage="Führung im Seitenraum"
+      />
+    </Heading>
 
-    <Heading as="h3">RVA auf der Fahrbahn oder im Seitenraum?</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p33.heading"
+        defaultMessage="RVA auf der Fahrbahn oder im Seitenraum?"
+      />
+    </Heading>
 
     <Paragraph>
-      Eine Führung im Seitenraum wird im Durchschnitt als sicherer empfunden als
-      eine auf der Fahrbahn. Abhängig von der Ausgestaltung der RVA,
-      insbesondere in Bezug auf die jeweiligen Konfliktzonen (fließender
-      Kfz-Verkehr, ruhender Verkehr, Fußverkehr) variieren die Bewertungen
-      allerdings. Führungen im Seitenraum stellen insgesamt weniger hohe
-      Anforderungen an die Gestaltung der RVA um ein hohes Sicherheitsempfinden
-      bei Radfahrenden zu schaffen. Auf Straßen mit ruhendem Verkehr hat die
-      Führung im Seitenraum oder auf der Fahrbahn rechtsseitig des ruhenden
-      Verkehrs eine deutliche höhere Bewertung als eine solche links des
-      ruhenden Verkehrs.
+      <FormattedMessage
+        id="research.05_results.p33"
+        defaultMessage="Eine Führung im Seitenraum wird im Durchschnitt als sicherer empfunden alseine auf der Fahrbahn. Abhängig von der Ausgestaltung der RVA,insbesondere in Bezug auf die jeweiligen Konfliktzonen (fließenderKfz-Verkehr, ruhender Verkehr, Fußverkehr) variieren die Bewertungenallerdings. Führungen im Seitenraum stellen insgesamt weniger hoheAnforderungen an die Gestaltung der RVA um ein hohes Sicherheitsempfindenbei Radfahrenden zu schaffen. Auf Straßen mit ruhendem Verkehr hat dieFührung im Seitenraum oder auf der Fahrbahn rechtsseitig des ruhendenVerkehrs eine deutliche höhere Bewertung als eine solche links desruhenden Verkehrs."
+      />
     </Paragraph>
 
     <BarChart.Wrapper
@@ -1409,59 +1482,74 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Paragraph>
-      Ohne Parkspur sind sicher gestaltete RVA sowohl im Seitenraum als auch auf
-      der Fahrbahn möglich.
+      <FormattedMessage
+        id="research.05_results.p34"
+        defaultMessage="Ohne Parkspur sind sicher gestaltete RVA sowohl im Seitenraum als auch auf der Fahrbahn möglich."
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_325}>
         <FeelSafe.Image value={87.93} />
         <ImageMulti.Subtitle>
-          Eine auf der Fahrbahn geführte, klar gestaltete, breite RVA ohne
-          rechtsseitiges Parken, wie hier im Bild wird als sehr sicher empfunden
+          <FormattedMessage
+            id="research.05_results.p34.image1"
+            defaultMessage="Eine auf der Fahrbahn geführte, klar gestaltete, breite RVA ohne rechtsseitiges Parken, wie hier im Bild wird als sehr sicher empfunden"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_1100}>
         <FeelSafe.Image value={97.62} />
         <ImageMulti.Subtitle>
-          Eine gleich breite RVA im Seitenraum wird sogar noch etwas sicherer
-          bewertet.
+          <FormattedMessage
+            id="research.05_results.p34.image2"
+            defaultMessage="Eine gleich breite RVA im Seitenraum wird sogar noch etwas sicherer bewertet."
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
 
     <Paragraph>
-      Eine schmale RVA im Seitenraum mit linksseitigem Parken wird als
-      wesentlich sicherer empfunden als eine schmale auf der Fahrbahn geführte
-      mit rechtsseitigem Parken, selbst bei “optimaler” Gestaltung dieser. Hier
-      bietet die Führung im Seitenraum also klare Vorteile.
+      {' '}
+      <FormattedMessage
+        id="research.05_results.p35"
+        defaultMessage="Eine schmale RVA im Seitenraum mit linksseitigem Parken wird als wesentlich sicherer empfunden als eine schmale auf der Fahrbahn geführte mit rechtsseitigem Parken, selbst bei “optimaler” Gestaltung dieser. Hier bietet die Führung im Seitenraum also klare Vorteile."
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={MS_C_860}>
         <FeelSafe.Image value={47.55} />
         <ImageMulti.Subtitle>
-          Die bestbewertete RVA in schmaler Ausführung mit rechtsseitigem Parken
+          <FormattedMessage
+            id="research.05_results.p35.image1"
+            defaultMessage="Die bestbewertete RVA in schmaler Ausführung mit rechtsseitigem Parken"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_463}>
         <FeelSafe.Image value={78.95} />
         <ImageMulti.Subtitle>
-          Eine RVA im Seitenraum (mit linksseitigem Parken) in schmaler
-          Ausführung mit Trennungen links und rechts durch Grünstreifen.
+          <FormattedMessage
+            id="research.05_results.p35.image2"
+            defaultMessage="Eine RVA im Seitenraum (mit linksseitigem Parken) in schmaler Ausführung mit Trennungen links und rechts durch Grünstreifen."
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
 
-    <Heading as="h3">Breite der RVA auch im Seitenraum ausschlaggebend</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p36"
+        defaultMessage="Breite der RVA auch im Seitenraum ausschlaggebend"
+      />
+    </Heading>
 
     <Paragraph>
-      Innerhalb der Varianten im Seitenraum spielt die RVA-Breite aus Sicht der
-      Radfahrenden die eindeutig größte Rolle. Der Faktor Fußgängeraufkommen
-      (mit / ohne Auslage) spielt eine Rolle bei schmalen Gehwegen. Einen
-      kleineren Einfluss haben die Gehweggesamtbreite und die Art der Trennung.
-      Der Faktor Verkehrsart links der RVA (Ruhender / Fließender Verkehr) hat
-      nur einen sehr geringen Einfluss.
+      <FormattedMessage
+        id="research.05_results.p37"
+        defaultMessage="Innerhalb der Varianten im Seitenraum spielt die RVA-Breite aus Sicht der Radfahrenden die eindeutig größte Rolle. Der Faktor Fußgängeraufkommen (mit / ohne Auslage) spielt eine Rolle bei schmalen Gehwegen. Einen kleineren Einfluss haben die Gehweggesamtbreite und die Art der Trennung. Der Faktor Verkehrsart links der RVA (Ruhender / Fließender Verkehr) hat nur einen sehr geringen Einfluss."
+      />
     </Paragraph>
 
     <BarChart.Wrapper
@@ -1521,16 +1609,18 @@ const SectionResults = ({
       />
     </BarChart.Wrapper>
 
-    <Heading as="h3">Schmale RVA sind sicher – breite sehr sicher</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p38.heading"
+        defaultMessage="Schmale RVA sind sicher – breite sehr sicher"
+      />
+    </Heading>
 
     <Paragraph>
-      Breite RVA im Seitenraum erfahren eine sehr große Akzeptanz was das
-      Sicherheitsgefühl betrifft. Aber auch schmale RVA erhalten noch relativ
-      hohe Bewertungen. Es wurde in der Umfrage nicht nach geeigneten
-      Ausbaustandards gefragt und kein hohes Radverkehrsaufkommen dargestellt.
-      Es ist im Seitenraum aber – im Gegensatz z.B. zu schmalen RVA auf der
-      Fahrbahn – einer sehr großen Gruppe von Menschen grundsätzlich ein
-      entspanntes Radfahren möglich.{' '}
+      <FormattedMessage
+        id="research.05_results.p38"
+        defaultMessage="Breite RVA im Seitenraum erfahren eine sehr große Akzeptanz was das Sicherheitsgefühl betrifft. Aber auch schmale RVA erhalten noch relativ hohe Bewertungen. Es wurde in der Umfrage nicht nach geeigneten Ausbaustandards gefragt und kein hohes Radverkehrsaufkommen dargestellt. Es ist im Seitenraum aber – im Gegensatz z.B. zu schmalen RVA auf der Fahrbahn – einer sehr großen Gruppe von Menschen grundsätzlich ein entspanntes Radfahren möglich."
+      />
     </Paragraph>
 
     <ImageMulti>
@@ -1572,34 +1662,45 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Paragraph>
-      Auch wenn die Situation linksseitig der RVA im Durchschnitt keinen großen
-      Einfluss hat sind dennoch in bestimmten Situationen starke Einschränkungen
-      der subjektiven Sicherheit vorhanden, wie das untenstehende Beispiel
-      zeigt.
+      <FormattedMessage
+        id="research.05_results.p39"
+        defaultMessage="Auch wenn die Situation linksseitig der RVA im Durchschnitt keinen großen Einfluss hat sind dennoch in bestimmten Situationen starke Einschränkungen der subjektiven Sicherheit vorhanden, wie das untenstehende Beispiel zeigt."
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_C_516}>
         <FeelSafe.Image value={56.13} />
         <ImageMulti.Subtitle>
-          Ist fließender Verkehr linksseitig der RVA geführt, ist eine physische
-          Trennung rechts problematisch.
+          <FormattedMessage
+            id="research.05_results.p39.image1"
+            defaultMessage="Ist fließender Verkehr linksseitig der RVA geführt, ist eine physische Trennung rechts problematisch."
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_509}>
         <FeelSafe.Image value={77.42} />
         <ImageMulti.Subtitle>
-          Besser ist dann die Trennung durch einen schmalen Grünstreifen.
+          <FormattedMessage
+            id="research.05_results.p39.image2"
+            defaultMessage="Besser ist dann die Trennung durch einen schmalen Grünstreifen."
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
 
-    <Heading as="h3">Geschäftsnutzung relevant bei engen Gehwegen</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p40"
+        defaultMessage="Geschäftsnutzung relevant bei engen Gehwegen"
+      />
+    </Heading>
 
     <Paragraph>
-      Der Einfluss durch hohes Fußgänger:innenaufkommen, bzw. Geschäftsnutzung
-      wurde in der Umfrage durch die Darstellung von Cafétischen dargestellt.
-      Dieser Faktor wird relevant wenn die Gehweg-Gesamtbreite schmal ist.
+      <FormattedMessage
+        id="research.05_results.p41"
+        defaultMessage="Der Einfluss durch hohes Fußgänger:innenaufkommen, bzw. Geschäftsnutzung wurde in der Umfrage durch die Darstellung von Cafétischen dargestellt. Dieser Faktor wird relevant wenn die Gehweg-Gesamtbreite schmal ist."
+      />
     </Paragraph>
 
     <BarChart.Wrapper
@@ -1648,11 +1749,10 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Paragraph>
-      Hier zeigen sich im Detail große Unterschiede: Ist die RVA gut getrennt
-      und ausreichend breit, wird sie von Radfahrenden auch bei schmalem Gehweg
-      als sicher empfunden. Ist sie dies nicht, so sinkt der Wert stark ab:
-      zumindest eine gut erkennbare Trennung zwischen Rad und Fußverkehr sollte
-      vorhanden sein.
+      <FormattedMessage
+        id="research.05_results.p42"
+        defaultMessage="Hier zeigen sich im Detail große Unterschiede: Ist die RVA gut getrennt und ausreichend breit, wird sie von Radfahrenden auch bei schmalem Gehweg als sicher empfunden. Ist sie dies nicht, so sinkt der Wert stark ab: zumindest eine gut erkennbare Trennung zwischen Rad und Fußverkehr sollte vorhanden sein."
+      />
     </Paragraph>
 
     <ImageMulti>
@@ -1674,13 +1774,17 @@ const SectionResults = ({
     </ImageMulti>
 
     <Heading as="h3">
-      Fußgänger:innen ist eine eindeutige Trennung vom Radverkehr wichtig.
+      <FormattedMessage
+        id="research.05_results.p43.heading"
+        defaultMessage="Fußgänger:innen ist eine eindeutige Trennung vom Radverkehr wichtig."
+      />
     </Heading>
 
     <Paragraph>
-      Die meisten zu Fuß Gehenden fühlen sich grundsätzlich sicher mit einer
-      Führung des Radverkehrs im Seitenraum. Wichtig ist ihnen eine eindeutige
-      Trennung und ausreichend verbleibender Platz für den Fußverkehr.
+      <FormattedMessage
+        id="research.05_results.p43"
+        defaultMessage="Die meisten zu Fuß Gehenden fühlen sich grundsätzlich sicher mit einer Führung des Radverkehrs im Seitenraum. Wichtig ist ihnen eine eindeutige Trennung und ausreichend verbleibender Platz für den Fußverkehr."
+      />
     </Paragraph>
 
     <BarChart.Wrapper
@@ -1718,15 +1822,17 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Heading as="h3">
-      Hohes Fußverkehrsaufkommen erfordert passende Gestaltung
+      <FormattedMessage
+        id="research.05_results.p44.heading"
+        defaultMessage="Hohes Fußverkehrsaufkommen erfordert passende Gestaltung"
+      />
     </Heading>
 
     <Paragraph>
-      Hat die Straße eine überwiegend geschäftliche Nutzung und damit
-      verbundenes hohes Fußverkehrsaufkommen, so werden nur bestimmte
-      Gestaltungen der RVA von den zu Fuß Gehenden als sicher empfunden. Im
-      Vergleich zur Radperspektive zeigt sich ein deutlich unterschiedliches
-      Empfinden der Situationen mit Auslage.
+      <FormattedMessage
+        id="research.05_results.p44"
+        defaultMessage="Hat die Straße eine überwiegend geschäftliche Nutzung und damit verbundenes hohes Fußverkehrsaufkommen, so werden nur bestimmte Gestaltungen der RVA von den zu Fuß Gehenden als sicher empfunden. Im Vergleich zur Radperspektive zeigt sich ein deutlich unterschiedliches Empfinden der Situationen mit Auslage."
+      />
     </Paragraph>
 
     <BarChart.Wrapper
@@ -1777,35 +1883,38 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Paragraph>
-      Eine Variante, mit der Radfahrende und Fußgänger:innen unter engen
-      Platzverhältnissen relativ gut leben können, ist die Trennung durch einen
-      Grünstreifen. In der realen Situation spielen Faktoren wie Überholvorgänge
-      von Radfahrenden, frei laufende Hunde, Kinder etc. eine zusätzlich
-      mindernde Rolle auf das Sicherheitsempfinden. Eine gemeinsame Führung von
-      Radverkehr und Fußverkehr bei hohem Fußgängeraufkommen ist daher nur bei
-      ausreichend breitem Gehweg zu empfehlen.
+      <FormattedMessage
+        id="research.05_results.p45"
+        defaultMessage="Eine Variante, mit der Radfahrende und Fußgänger:innen unter engen Platzverhältnissen relativ gut leben können, ist die Trennung durch einen Grünstreifen. In der realen Situation spielen Faktoren wie Überholvorgänge von Radfahrenden, frei laufende Hunde, Kinder etc. eine zusätzlich mindernde Rolle auf das Sicherheitsempfinden. Eine gemeinsame Führung von Radverkehr und Fußverkehr bei hohem Fußgängeraufkommen ist daher nur bei ausreichend breitem Gehweg zu empfehlen."
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={CP_P_194}>
         <FeelSafe.Image value={81.44} icon="walk" />
         <ImageMulti.Subtitle>
-          Trotz relativ enger Platzverhältnisse, wird diese Situation noch 81,44
-          % der zu Fuß Gehenden als “eher sicher” oder “sicher” empfunden.
+          <FormattedMessage
+            id="research.05_results.p45.image1"
+            defaultMessage="Trotz relativ enger Platzverhältnisse, wird diese Situation noch 81,44 % der zu Fuß Gehenden als “eher sicher” oder “sicher” empfunden."
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={CP_C_194}>
         <FeelSafe.Image value={75.56} />
         <ImageMulti.Subtitle>
-          Die gleiche Situation wird von 75,56 % der Radfahrenden als “eher
-          sicher” oder “sicher” bewertet.
+          <FormattedMessage
+            id="research.05_results.p45.image2"
+            defaultMessage="Die gleiche Situation wird von 75,56 % der Radfahrenden als “eher sicher” oder “sicher” bewertet."
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
 
     <Paragraph>
-      Eine eindeutige Trennung der RVA kann das subjektive Sicherheitsempfinden
-      der zu Fuß Gehenden deutlich verbessern.
+      <FormattedMessage
+        id="research.05_results.p46"
+        defaultMessage="Eine eindeutige Trennung der RVA kann das subjektive Sicherheitsempfinden der zu Fuß Gehenden deutlich verbessern."
+      />
     </Paragraph>
 
     <BarChart.Wrapper
@@ -1849,9 +1958,10 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Paragraph>
-      Sind keine Auslagen vorhanden und ist der Radweg klar erkennbar vom Fußweg
-      getrennt fühlen sich Fußgänger:innen mit den meisten Varianten der
-      Radverkehrsführung sicher.
+      <FormattedMessage
+        id="research.05_results.p47"
+        defaultMessage="Sind keine Auslagen vorhanden und ist der Radweg klar erkennbar vom Fußweg getrennt fühlen sich Fußgänger:innen mit den meisten Varianten der Radverkehrsführung sicher."
+      />
     </Paragraph>
 
     <ImageMulti>
@@ -1863,26 +1973,31 @@ const SectionResults = ({
       </ImageMulti.Inner>
     </ImageMulti>
 
-    <Heading as="h3">Führung in Nebenverkehrsstraßen</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p48"
+        defaultMessage="Führung in Nebenverkehrsstraßen"
+      />
+    </Heading>
 
     <Paragraph>
-      Der Vergleich einer Radverkehrsführung in Nebenverkehrsstraßen gegenüber
-      der Führung an Hauptverkehrsstraßen ist nur bedingt aussagekräftig, da in
-      der Umfrage nur statische Bilder gezeigt wurden, die den potenziellen
-      Konflikt zwischen Kfz und Fahrrad zeigen. Das unterschiedliche
-      Verkehrsaufkommen zwischen Haupt- und Nebenstraße konnte nur
-      andeutungsweise abgebildet werden. Dennoch lassen die Ergebnisse Aussagen
-      zum subjektiven Sicherheitsempfinden bei unterschiedlichen
-      Gestaltungsformen von Nebenstraßen zu.
+      <FormattedMessage
+        id="research.05_results.p49"
+        defaultMessage="Der Vergleich einer Radverkehrsführung in Nebenverkehrsstraßen gegenüber der Führung an Hauptverkehrsstraßen ist nur bedingt aussagekräftig, da in der Umfrage nur statische Bilder gezeigt wurden, die den potenziellen Konflikt zwischen Kfz und Fahrrad zeigen. Das unterschiedliche Verkehrsaufkommen zwischen Haupt- und Nebenstraße konnte nur andeutungsweise abgebildet werden. Dennoch lassen die Ergebnisse Aussagen zum subjektiven Sicherheitsempfinden bei unterschiedlichen Gestaltungsformen von Nebenstraßen zu."
+      />
     </Paragraph>
-    <Heading as="h3">Nebenstraßen am liebsten “autofrei”</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p50.heading"
+        defaultMessage="Nebenstraßen am liebsten “autofrei”"
+      />
+    </Heading>
 
     <Paragraph>
-      Auffällig ist, dass der Faktor “autofrei” (fließender Verkehr ja - nein)
-      bei der Bewertung von Nebenstraßen die größte Rolle spielt. Außerdem haben
-      Einbahnstraßen mit Gegenverkehr eine sehr negative Wirkung auf das
-      Sicherheitsempfinden. Breitere Straßen werden als sicherer empfunden,
-      ruhender Verkehr verschlechtert das Sicherheitsempfinden.
+      <FormattedMessage
+        id="research.05_results.p50"
+        defaultMessage="Auffällig ist, dass der Faktor “autofrei” (fließender Verkehr ja - nein) bei der Bewertung von Nebenstraßen die größte Rolle spielt. Außerdem haben Einbahnstraßen mit Gegenverkehr eine sehr negative Wirkung auf das Sicherheitsempfinden. Breitere Straßen werden als sicherer empfunden, ruhender Verkehr verschlechtert das Sicherheitsempfinden."
+      />
     </Paragraph>
 
     <BarChart.Wrapper
@@ -1950,10 +2065,10 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Paragraph>
-      Wenn wir alle Situationen ohne Markierungen (als Fahrradstraße oder
-      Spielstraße) jedoch mit Kfz-Verkehr betrachten, so zeigt sich ein eher
-      schlechtes durchschnittliches Sicherheitsempfinden. Die beste Variante
-      erhält lediglich 33,40% sichere oder eher sichere Bewertungen.
+      <FormattedMessage
+        id="research.05_results.p51"
+        defaultMessage="Wenn wir alle Situationen ohne Markierungen (als Fahrradstraße oder Spielstraße) jedoch mit Kfz-Verkehr betrachten, so zeigt sich ein eher schlechtes durchschnittliches Sicherheitsempfinden. Die beste Variante erhält lediglich 33,40% sichere oder eher sichere Bewertungen."
+      />
     </Paragraph>
 
     <ImageMulti>
@@ -1966,29 +2081,36 @@ const SectionResults = ({
     </ImageMulti>
 
     <Heading as="h3">
-      Fahrradstraßen sind besser, aber nicht ausreichend
+      <FormattedMessage
+        id="research.05_results.p52"
+        defaultMessage="Fahrradstraßen sind besser, aber nicht ausreichend"
+      />
     </Heading>
 
     <Paragraph>
-      Die Markierung von Fahrradstraßen verbessert das Sicherheitsempfinden,
-      aber es werden keine besonders hohen Werte erreicht. Es wird maximal ein
-      Wert von 45,03% sicherer oder eher sicherer Bewertungen erreicht. Bei
-      Straßen ohne Parken und geführten Einbahnstraßen in Fahrtrichtung erhöht
-      sich dieser Wert auf maximal 56,72%
+      <FormattedMessage
+        id="research.05_results.p53"
+        defaultMessage="Die Markierung von Fahrradstraßen verbessert das Sicherheitsempfinden, aber es werden keine besonders hohen Werte erreicht. Es wird maximal ein Wert von 45,03% sicherer oder eher sicherer Bewertungen erreicht. Bei Straßen ohne Parken und geführten Einbahnstraßen in Fahrtrichtung erhöht sich dieser Wert auf maximal 56,72%"
+      />
     </Paragraph>
 
     <ImageMulti>
       <ImageMulti.Inner source={SE_C_2}>
         <FeelSafe.Image value={51.02} />
         <ImageMulti.Subtitle>
-          Die bestbewertete Fahrradstraße mit KFZ-Verkehr in beide Richtungen
+          <FormattedMessage
+            id="research.05_results.p53.image1"
+            defaultMessage="Die bestbewertete Fahrradstraße mit KFZ-Verkehr in beide Richtungen"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
       <ImageMulti.Inner source={SE_C_12}>
         <FeelSafe.Image value={56.72} />
         <ImageMulti.Subtitle>
-          Die bestbewertete Fahrradstraße mit KFZ-Verkehr als Einbahnstraße in
-          Fahrtrichtung
+          <FormattedMessage
+            id="research.05_results.p53.image2"
+            defaultMessage="Die bestbewertete Fahrradstraße mit KFZ-Verkehr als Einbahnstraße in Fahrtrichtung"
+          />
         </ImageMulti.Subtitle>
       </ImageMulti.Inner>
     </ImageMulti>
@@ -2039,15 +2161,10 @@ const SectionResults = ({
     </BarChart.Wrapper>
 
     <Paragraph>
-      Auffällig ist, dass Fahrradstraßen mit &quot;Sondermarkierungen
-      Dooring&quot; (Markierung der Dooring Zone durch eine unterbrochene Linie,
-      zusätzlich Markierung eines Doppelpfeils um des Nebeneinanderfahren von
-      Radfahrenden anzuzeigen) schlechter abschneiden als solche mit einer
-      großen Fahrradstraßen-Markierung auf der Fahrbahn. Dieser Vergleich ist
-      durch die Darstellung in der Umfrage allerdings wenig aussagekräftig, da
-      durch die Komposition der Bilder mehrere Faktoren (Kennzeichnung als
-      Fahrradstraße, Optische Breite der zur Verfügung stehenden Fahrbahn,
-      Position der Radfahrenden) die Bewertung beeinflussen können.
+      <FormattedMessage
+        id="research.05_results.p54"
+        defaultMessage="Auffällig ist, dass Fahrradstraßen mit “Sondermarkierungen Dooring“ (Markierung der Dooring Zone durch eine unterbrochene Linie, zusätzlich Markierung eines Doppelpfeils um des Nebeneinanderfahren von Radfahrenden anzuzeigen) schlechter abschneiden als solche mit einer großen Fahrradstraßen-Markierung auf der Fahrbahn. Dieser Vergleich ist durch die Darstellung in der Umfrage allerdings wenig aussagekräftig, da durch die Komposition der Bilder mehrere Faktoren (Kennzeichnung als Fahrradstraße, Optische Breite der zur Verfügung stehenden Fahrbahn, Position der Radfahrenden) die Bewertung beeinflussen können."
+      />
     </Paragraph>
 
     <ImageMulti>
@@ -2059,17 +2176,18 @@ const SectionResults = ({
       </ImageMulti.Inner>
     </ImageMulti>
 
-    <Heading as="h3">Die Holländische Lösung</Heading>
+    <Heading as="h3">
+      <FormattedMessage
+        id="research.05_results.p55"
+        defaultMessage="Die Holländische Lösung"
+      />
+    </Heading>
 
     <Paragraph>
-      Wirklich gute Werte erhalten in den NVS lediglich die Varianten, bei denen
-      kein fließender Kfz-Verkehr dargestellt wurde. Darunter sind auch
-      Varianten mit parkenden Autos. (Dies würde z.B. der Situatione in einer
-      Straße mit Durchfahrtssperren entsprechen, wo nur Anlieger einfahren
-      können.) Die besten Bewertungen erhält die “holländische Lösung” mit
-      aufgepflastertem Mittelstreifen und durchgehendem grünen Asphalt. Bei der
-      Führung in Nebenstraßen scheint die optisch deutliche Signalisierung der
-      Fahrradstraße eine hohe Bedeutung zu haben.
+      <FormattedMessage
+        id="research.05_results.p56"
+        defaultMessage="Wirklich gute Werte erhalten in den NVS lediglich die Varianten, bei denen kein fließender Kfz-Verkehr dargestellt wurde. Darunter sind auch Varianten mit parkenden Autos. (Dies würde z.B. der Situatione in einer Straße mit Durchfahrtssperren entsprechen, wo nur Anlieger einfahren können.) Die besten Bewertungen erhält die “holländische Lösung” mit aufgepflastertem Mittelstreifen und durchgehendem grünen Asphalt. Bei der Führung in Nebenstraßen scheint die optisch deutliche Signalisierung der Fahrradstraße eine hohe Bedeutung zu haben."
+      />
     </Paragraph>
 
     <ImageMulti>
@@ -2082,8 +2200,10 @@ const SectionResults = ({
     </ImageMulti>
 
     <Paragraph>
-      Bei den Varianten mit ruhendem Verkehr zeigen sich deutliche Unterschiede
-      in der Markierungsart.
+      <FormattedMessage
+        id="research.05_results.p57"
+        defaultMessage="Bei den Varianten mit ruhendem Verkehr zeigen sich deutliche Unterschiede in der Markierungsart."
+      />
     </Paragraph>
 
     <ImageMulti>
@@ -2147,93 +2267,6 @@ const SectionResults = ({
         feelsafe={77.37}
       />
     </BarChart.Wrapper>
-
-    <Heading as="h2" toc={toc}>
-      Zusammenfassung
-    </Heading>
-    <Paragraph>
-      Im Rahmen eines Forschungsprojektes des Nationalen Radverkehrsplan wurde
-      der Frage nachgegangen, wie eine Fahrradinfrastruktur aussehen sollte, auf
-      der sich alle sicher fühlen. Dazu wurde eine Online-Umfrage entwickelt,
-      bei der die Teilnehmenden fotorealistische Darstellungen von
-      Straßensituationen aus der Fahrperspektive nach ihrem Sicherheitsempfinden
-      bewerten. Dadurch konnten die Einflüsse der einzelnen Merkmale
-      kontrolliert und untersucht werden, jedoch entfielen damit auch weitere
-      Einflüsse die zum vollständigen Empfinden einer Situation notwendig sind.
-      Durch die Kooperation mit einer Berliner Tageszeitung konnte eine hohe
-      Teilnehmendenzahl erreicht werden. Entsprechend ist der Wohnort von ca.
-      90% der Teilnehmenden Berlin. In der Umfrage waren zudem Männer, die
-      Altersgruppe 30 bis 64 Jahre und hauptsächlich Radfahrende
-      überrepräsentiert. Durch die hohe Gesamtzahl an Teilnehmenden sind jedoch
-      eine ausreichende Anzahl von Bewertungen für die unterrepräsentierten
-      Gruppen vorhanden. In einer ersten Auswertung zeigt die Umfrage, dass die
-      Einflüsse unterschiedlicher Faktoren in ihren Wechselbeziehungen keine
-      linearen Aussagen über die subjektive Sicherheit von Radinfrastruktur
-      zulassen. Dennoch können einige zentrale Aussagen und Empfehlungen
-      abgeleitet werden, wie eine “Radinfrastruktur für Alle” aussehen könnte.
-      <List>
-        <List.Item>
-          Die Hypothese, dass die Führung im Seitenraum sicherer als die Führung
-          auf der Fahrbahn empfunden wird, konnte bestätigt werden.
-        </List.Item>
-        <List.Item>
-          Bei breiten Gehwegen und keiner geschäftliche Nutzung ist die Führung
-          im Seitenraum die am besten bewertete Alternative. Auch zu Fuß Gehende
-          fühlen sich bei einer Führung des Radverkehrs im Seitenraum
-          ausreichend sicher, wenn zusätzlich eine Trennung zum Radverkehr z.B.
-          durch einen Grünstreifen klar erkennbar ist.
-        </List.Item>
-        <List.Item>
-          Die Führung im Mischverkehr wird als sehr unsicher empfunden
-        </List.Item>
-        <List.Item>
-          Bei der Führung auf der Fahrbahn werden breite Radverkehrsanlagen als
-          deutlich sicherer empfunden. Grüneinfärbungen und bauliche Trennungen
-          erhöhen zusätzlich das Sicherheitsempfinden.
-        </List.Item>
-        <List.Item>
-          Auch schmalere Radverkehrsanlagen bieten eine akzeptable subjektive
-          Sicherheit, wenn Sie z.B. durch niedrige Poller vom KFZ-Verkehr
-          getrennt sind und an Straßen ohne ruhenden Verkehr geführt werden.
-        </List.Item>
-        <List.Item>
-          Bei Führung des Radverkehrs an einer Hauptverkehrsstraße mit ruhendem
-          Verkehr wird die Lage rechts vom ruhenden Verkehr als sicherer
-          empfunden. Eine Führung links des ruhenden Verkehrs wird generell als
-          deutlich weniger sicher empfunden. Bei einer Führung links des
-          ruhenden Verkehrs wurden Szenen die z.B. eine breite Radverkehrsanlage
-          mit Grüneinfärbung haben als akzeptable sicher bewertet. Dabei ist zu
-          beachten, dass zusätzliche Konflikte, wie Falschparker oder kreuzender
-          Parkverkehr in der Umfrage nicht dargestellt wurden. Ebenso wurden
-          Situationen an Knotenpunkten in der Umfrage nicht untersucht, eine
-          Aussage zum Zusammenhang zwischen RVA an der Strecke und den
-          Auswirkungen auf Knotenpunkte kann daher nicht getroffen werden.
-        </List.Item>
-        <List.Item>
-          Auch Autofahrende empfinden gut ausgebaute Radverkehrsanlagen
-          inklusive Poller als sicherer. Die Bewertungen sind von den Tendenzen
-          ähnlich, wie die der Radfahrenden, wenn auch einige Gefahren, bzw.
-          durch Dooring weniger stark eingeschätzt werden.
-        </List.Item>
-        <List.Item>
-          Szenen in Nebenstraßen erhielten generell schlechtere Bewertungen als
-          solche an Hauptverkehrsstraßen. Dieser Vergleich ist allerdings nur
-          bedingt aussagekräftig, da in den statischen Bildern der Umfrage die
-          Verkehrsmenge nicht ausreichend deutlich dargestellt werden konnte.
-          Szenen, bei denen kein Fließender Kfz-Verkehr dargestellt wurde und
-          eine deutliche Straßenmarkierung als Fahrradstraße vorhanden war
-          erhielten die besten Bewertungen.
-        </List.Item>
-      </List>
-    </Paragraph>
-    <Paragraph>
-      Die Daten sind weiter zu analysieren. Der Ergebnisdatensatz ist frei
-      verfügbar ist und wird bereits jetzt für weitere Auswertungen genutzt. Wir
-      freuen uns bei Interesse über eine Kontaktaufnahme und verlinken hier
-      gerne auf die Ergebnisse! In den nächsten Schritten ist ein Abgleich der
-      Ergebnisse zur subjektiven Sicherheit mit dem tatsächlichen
-      Unfallgeschehen durchzuführen, um Empfehlungen abzuleiten.
-    </Paragraph>
   </>
 );
 
