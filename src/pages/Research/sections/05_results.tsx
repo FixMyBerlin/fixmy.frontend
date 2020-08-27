@@ -2163,7 +2163,7 @@ const SectionResults = ({
     <Paragraph>
       <FormattedMessage
         id="research.05_results.p54"
-        defaultMessage="Auffällig ist, dass Fahrradstraßen mit “Sondermarkierungen Dooring“ (Markierung der Dooring Zone durch eine unterbrochene Linie, zusätzlich Markierung eines Doppelpfeils um des Nebeneinanderfahren von Radfahrenden anzuzeigen) schlechter abschneiden als solche mit einer großen Fahrradstraßen-Markierung auf der Fahrbahn. Dieser Vergleich ist durch die Darstellung in der Umfrage allerdings wenig aussagekräftig, da durch die Komposition der Bilder mehrere Faktoren (Kennzeichnung als Fahrradstraße, Optische Breite der zur Verfügung stehenden Fahrbahn, Position der Radfahrenden) die Bewertung beeinflussen können."
+        defaultMessage="Auffällig ist, dass Fahrradstraßen mit “Sondermarkierungen Dooring“ (Markierung der Dooring-Zone durch eine unterbrochene Linie, zusätzlich Markierung eines Doppelpfeils um das Nebeneinanderfahren von Radfahrenden anzuzeigen) schlechter abschneiden als solche mit einer großen Fahrradstraßen-Markierung auf der Fahrbahn. Dieser Vergleich ist durch die Darstellung in der Umfrage allerdings wenig aussagekräftig, da durch die Komposition der Bilder mehrere Faktoren (Kennzeichnung als Fahrradstraße, Optische Breite der zur Verfügung stehenden Fahrbahn, Position der Radfahrenden) die Bewertung beeinflussen können."
       />
     </Paragraph>
 
