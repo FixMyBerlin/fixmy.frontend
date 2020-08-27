@@ -2,13 +2,9 @@ import { match, matchPath } from 'react-router-dom';
 import qs from 'qs';
 import ky from 'ky';
 import { Dispatch } from 'redux';
-import debug from 'debug';
-import idx from 'idx';
 
 import config from '~/config';
 import { MapConfig } from './types';
-
-const log = debug('fmc:map.mapstate');
 
 const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
@@ -36,7 +32,7 @@ type MapPath = {
   activeSection?: string;
 };
 
-export type MapState = Partial<MapConfig['view']> & {
+export type MapState = MapConfig['view'] & {
   activeView?: MapView;
   activeSection?: number;
   isEmbedMode: boolean;
@@ -54,6 +50,7 @@ export type MapState = Partial<MapConfig['view']> & {
 };
 
 const initialState: MapState = {
+  ...config.apps.map.view,
   activeView: null,
   activeSection: null,
   isEmbedMode: false,
@@ -306,7 +303,7 @@ export function geocodeAddress(searchtext) {
   };
 }
 
-type ActionType =
+type MapStateAction =
   | GeocodeAddressFail
   | GeocodeAddressSuccess
   | LoadPlanningData
@@ -326,9 +323,8 @@ type ActionType =
 
 export default function MapStateReducer(
   state: MapState = initialState,
-  action: ActionType = { type: null }
+  action: MapStateAction = { type: null }
 ): MapState {
-  log('MapState', action);
   switch (action.type) {
     case GEOCODE_DONE:
     case SET_ACTIVE_SECTION:
