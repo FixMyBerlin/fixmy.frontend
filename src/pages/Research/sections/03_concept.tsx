@@ -174,7 +174,13 @@ const SectionAbout = ({ toc, intl }: Props) => (
         <List.Item>
           <FormattedMessage
             id="research.03_concept.p10.list4"
-            defaultMessage="Motivation für das Fahrradfahren bzw. Gründe gegen das Fahrradfahren"
+            defaultMessage="Motivation für das Fahrradfahren"
+          />
+        </List.Item>
+        <List.Item>
+          <FormattedMessage
+            id="research.03_concept.p10.list5"
+            defaultMessage="bzw. Gründe gegen das Fahrradfahren"
           />
         </List.Item>
       </List>
