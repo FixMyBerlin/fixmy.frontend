@@ -4,7 +4,6 @@ import debug from 'debug';
 import { Location } from 'history';
 import { Dispatch } from 'redux';
 import config from './apps/Gastro/config';
-import logger from './utils/logger';
 import getDefaultLocale from './utils/defaultLocale';
 import { LocaleCode, DistrictConfig, Region } from '~/types';
 
@@ -143,7 +142,7 @@ export function toggle() {
 
 export function setDistrict(district: Region) {
   const payload = config.districts[district];
-  if (payload == null) logger(`District ${district} not configured`);
+  if (payload == null) log(`District ${district} not configured`);
   return { type: SET_DISTRICT, payload };
 }
 
