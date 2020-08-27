@@ -6,9 +6,10 @@ const apiEndpoints = {
   production: 'https://fixmyberlin.de/api/v1'
 };
 
+// Default config without all fields thar are defined through sibling modules
 const baseConfig: Omit<
   DefaultConfig,
-  'map' | 'colors' | 'menu' | 'routes' | 'staticpages'
+  'apps' | 'map' | 'colors' | 'menu' | 'routes' | 'staticpages'
 > = {
   apiUrl:
     process.env.API_URL ||

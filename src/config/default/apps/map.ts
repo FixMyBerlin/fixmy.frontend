@@ -1,3 +1,5 @@
+import { MapConfig } from '~/apps/Map/types';
+
 const MapboxStyles = {
   'FMB-release-3': 'mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h',
   'FMB-release-4': 'mapbox://styles/hejco/ck0nzclbk0ey01ct9ilwefpzc',
@@ -5,7 +7,7 @@ const MapboxStyles = {
   'FMB-release-6': 'mapbox://styles/hejco/ck85ospzd0cre1ioa8d6gfuv9'
 };
 
-export default {
+const map: MapConfig = {
   style: MapboxStyles['FMB-release-6'],
   view: {
     zoom: 12,
@@ -47,3 +49,5 @@ export default {
     [13.46391, 52.5544374]
   ]
 };
+
+export default map;

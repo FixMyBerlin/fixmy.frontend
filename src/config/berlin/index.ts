@@ -4,10 +4,6 @@ import { RegionConfig } from '~/types';
 
 const berlinConfig: RegionConfig = {
   siteTitle: 'FixMyBerlin',
-  apps: {
-    map: {},
-    hbi: {}
-  },
   districts: {
     xhain,
     tempelberg
