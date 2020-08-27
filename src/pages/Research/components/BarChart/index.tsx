@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
 import styled from 'styled-components';
 
 import FeelSafe, { FeelsafeIcon } from '~/pages/Research/components/FeelSafe';
@@ -118,16 +119,20 @@ const labels = ['unsicher', 'eher unsicher', 'eher sicher', 'sicher'];
 const getColor = (isWeightGraph, index) =>
   isWeightGraph ? colorWeight[index] : colorScale[index];
 
-const BarLabel = ({ value, isWeightGraph }) =>
-  isWeightGraph ? (
+const BarLabel = ({ value, isWeightGraph }) => {
+  const intl = useIntl();
+  return isWeightGraph ? (
     <WeightBarLabelStyle>
-      {(value / 100.0).toLocaleString(undefined, { maximumFractionDigits: 2 })}
+      {(value / 100.0).toLocaleString(intl.locale, {
+        maximumFractionDigits: 2
+      })}
     </WeightBarLabelStyle>
   ) : (
     <BarLabelStyle>
-      {value.toLocaleString(undefined, { maximumFractionDigits: 2 })}%
+      {value.toLocaleString(intl.locale, { maximumFractionDigits: 2 })}%
     </BarLabelStyle>
   );
+};
 
 const BarChart = ({
   title,

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useIntl } from 'react-intl';
 import styled from 'styled-components';
 import { scaleLinear } from 'd3-scale';
 
@@ -97,7 +98,8 @@ const FeelSafe = ({
   const isSmall = size === 'small';
   const IconComponent = icons[icon];
 
-  const valueDisplay = value.toLocaleString(undefined, {
+  const intl = useIntl();
+  const valueDisplay = value.toLocaleString(intl.locale, {
     maximumFractionDigits: 0
   });
 
