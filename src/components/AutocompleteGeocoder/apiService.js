@@ -2,12 +2,11 @@ import fetch from 'node-fetch';
 import logger from '~/utils/logger';
 import config from '~/config';
 
-const mapConfig = config.map;
-
 let abortController = new window.AbortController();
 
 function compileSearchUrl(searchString, customBounds) {
-  const { accessToken, geocoderBounds } = mapConfig;
+  const { accessToken } = config.mapbox;
+  const { geocoderBounds } = config.apps.map;
   return (
     `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchString}.json?` +
     `access_token=${accessToken}&autocomplete=true&language=de&` +
