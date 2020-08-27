@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
+import debug from 'debug';
 
-import logger from '~/utils/logger';
 import config from '~/config';
 import { getGeoLocation } from '~/apps/Map/map-utils';
 import MapControl from '~/apps/Map/components/MapControl';
@@ -11,6 +11,8 @@ import { isNumeric } from '~/utils/utils';
 import Loader from '~/components/Loader';
 import LocatorIcon from '~/images/location.svg';
 import ErrorMessage from '~/components/ErrorMessage';
+
+const logger = debug('fmc:map:locator');
 
 const LocatorButton = styled.button`
   background-color: ${config.colors.white};

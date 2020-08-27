@@ -1,8 +1,10 @@
 /* eslint-disable camelcase */
 
+import debug from 'debug';
 import { FormData } from '.';
-import logger from '~/utils/logger';
 import parseLength from '../../parseLength';
+
+const logger = debug('fmc:Gastro:Signup');
 
 const validate = (values: FormData) => {
   const errors: {

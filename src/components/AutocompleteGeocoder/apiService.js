@@ -1,6 +1,8 @@
 import fetch from 'node-fetch';
-import logger from '~/utils/logger';
+import debug from 'debug';
 import config from '~/config';
+
+const logger = debug('fmc:AutocompleteGeocoder');
 
 let abortController = new window.AbortController();
 
