@@ -50,7 +50,7 @@ class FeedbackForm extends PureComponent {
         >
           {({ values, errors, handleSubmit, isSubmitting, handleChange }) => (
             <Form onSubmit={handleSubmit}>
-              {formconfig.apps.map((d) => (
+              {formconfig.map((d) => (
                 <FormField
                   key={`feedbackfield__${d.id}`}
                   {...d}

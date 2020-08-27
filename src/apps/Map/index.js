@@ -151,6 +151,7 @@ export default withRouter(
     displayPopup: state.MapState.displayPopup,
     filterHbi: state.MapState.filterHbi,
     isEmbedMode: state.AppState.isEmbedMode,
+    error: state.MapState.error,
     ...state.UserState
   }))(MapViewComponent)
 );
