@@ -254,11 +254,7 @@ describe('SubmitReportState reducer and actions', () => {
     });
 
     describe('thunks', () => {
-      afterEach(() => {
-        fetchMock.restore();
-      });
-
-      it.skip(`dispatches ${formatActionType(
+      it(`dispatches ${formatActionType(
         types.SUBMIT_REPORT_PENDING
       )}, json-schema validates a report and dispatches
        ${formatActionType(
@@ -279,7 +275,14 @@ describe('SubmitReportState reducer and actions', () => {
         });
         const store = mockStore(stateBefore);
 
-        // mock api request
+        // intercept create request, answer with report as the api would
+        const responseResolver = (_, res, ctx) =>
+          res(
+            ctx.status(200),
+            ctx.set('Content-Type', 'application/json'),
+            ctx.json(mockedReportItem)
+          );
+        mswServer.use(rest.post(reportsEndpointUrl, responseResolver));
 
         // test if thunk dispatches expected action sequence
         const expectedActions = [
@@ -287,7 +290,6 @@ describe('SubmitReportState reducer and actions', () => {
           types.SUBMIT_REPORT_COMPLETE
         ];
         return store.dispatch(actions.submitReport()).then(() => {
-          // test action sequence
           expect(
             store
               .getActions()
