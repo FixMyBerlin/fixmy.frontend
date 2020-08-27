@@ -6,8 +6,7 @@ import { Dispatch } from 'redux';
 import config from './apps/Gastro/config';
 import logger from './utils/logger';
 import getDefaultLocale from './utils/defaultLocale';
-import { LocaleCode, DistrictConfig } from './types';
-import { Region } from './config';
+import { LocaleCode, DistrictConfig, Region } from '~/types';
 
 const UPDATE_HISTORY = 'App/AppState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'App/AppState/SET_ACTIVE_SECTION';

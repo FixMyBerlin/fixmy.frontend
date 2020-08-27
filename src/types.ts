@@ -2,6 +2,7 @@ import MapboxGL from 'mapbox-gl';
 
 import { SpielstrassenConfig } from '~/apps/Spielstrassen/types';
 import { GastroConfig } from '~/apps/Gastro/types';
+import { MapConfig } from './apps/Map/types';
 
 export type LocaleCode = 'de' | 'en' | 'es';
 
@@ -15,11 +16,14 @@ export interface AppConfig {
 }
 
 export interface DefaultConfig {
+  apps: {
+    hbi?: {};
+    map?: MapConfig;
+  };
   baseFont: string;
   colors: {
     [color: string]: string;
   };
-  map: any;
   menu: any;
   apiUrl: string;
   piwik: PiwikService;
@@ -33,10 +37,7 @@ export interface DefaultConfig {
 }
 
 export interface RegionConfig extends Partial<DefaultConfig> {
-  apps?: {
-    hbi?: {};
-    map?: {};
-  };
+  apps?: DefaultConfig['apps'];
   districts?: {
     [district: string]: DistrictConfig;
   };

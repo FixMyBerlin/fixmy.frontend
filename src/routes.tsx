@@ -15,7 +15,6 @@ import ZESPlusResearch from '~/pages/ZESPlus-Research';
 
 import Analysis from '~/pages/Analysis';
 import KatasterKI from '~/pages/KatasterKI';
-import MapView from '~/pages/Map';
 import Markdown from '~/pages/Markdown';
 import Reports from '~/pages/Reports';
 import Research from '~/pages/Research';
@@ -23,10 +22,12 @@ import { RootState } from './store';
 
 import Gastro from '~/apps/Gastro';
 import Spielstrassen from '~/apps/Spielstrassen';
+import MapView from '~/apps/Map';
 
 const apps = {
   gastro: Gastro,
-  spielstrassen: Spielstrassen
+  spielstrassen: Spielstrassen,
+  map: MapView
 };
 
 const District = (name: string) => {
