@@ -1,1151 +1,1151 @@
 {
-	"common.localeSwitcher.labelDE": {
-		"defaultMessage": "German"
-	},
-	"common.localeSwitcher.labelEN": {
-		"defaultMessage": "English"
-	},
-	"common.localeSwitcher.labelES": {
-		"defaultMessage": "Spanish"
-	},
-	"components.article.attribution": {
-		"defaultMessage": "by"
-	},
-	"components.article.localeSwitcher.english": {
-		"defaultMessage": ""
-	},
-	"components.article.localeSwitcher.german": {
-		"defaultMessage": ""
-	},
-	"components.article.localeSwitcher.label": {
-		"defaultMessage": "choose another language"
-	},
-	"components.article.localeSwitcher.spanish": {
-		"defaultMessage": ""
-	},
-	"research.02_intro.cta": {
-		"defaultMessage": "Go to statistical evaluation"
-	},
-	"research.02_intro.heading": {
-		"defaultMessage": "About the project"
-	},
-	"research.02_intro.images1.label1": {
-		"defaultMessage": "99.11% of cyclists rate this scenario as ‘safe’ or ‘rather safe’"
-	},
-	"research.02_intro.images1.label2": {
-		"defaultMessage": "96.84% of motorists rate this scenario as ‘safe’ or ‘rather safe’"
-	},
-	"research.02_intro.p1": {
-		"defaultMessage": "Until now, very little was known about which types of street configurations, cycle infrastructure and junctions are found to be safest from the perspective of the citizens travelling through those systems. Even less was known about how different street characteristics alter this perception of safety - characteristics such as the design, width and position of a cycle path or the setup either side of said route. Are cycle paths with protective bollards the best solution to reduce the palpable conflict between motor and cycle traffic, or is the width of the cycle path the deciding factor? What effect does the colour of the cycle path have? Which conditions help cyclists to feel their safest when the cycle path is on the pavement or on the road?"
-	},
-	"research.02_intro.p2": {
-		"defaultMessage": "To close this gap in our knowledge, we developed a survey entitled “Straßencheck” (‘Street Check-up’) and carried out the survey in cooperation with the Berlin Tagesspiegel (a mainstream newspaper).  21,000 participants rated 1900 variations of common street configurations as illustrated with 3D imagery. The fundamental structure of the survey (see {link}) involved categorising various street configurations and their differing characteristics. This allowed us to analyse the extent to which individual characteristics - such as cycle path width, path surface, physical barriers, parking on the right side of the cycle path etc - make a difference. We were also able to gain insights into how the perceived sense of safety differs between different groups of road users and from the perspective of both motorists and pedestrians.\n"
-	},
-	"research.02_intro.p2.link": {
-		"defaultMessage": "“Survey concept”"
-	},
-	"research.02_intro.p3": {
-		"defaultMessage": "When a cycle route is implemented along the road, cyclists feel safest with the street configuration shown in the left image above, compared to all other variations. Motorists prefer almost exactly the same configuration but without the green colouring. The wide, green-coloured cycle path, separated from the motor traffic by planters, received the most ‘safe’ ratings (83.93%) and ‘mostly safe’ ratings (15.18%). On average, however, cycle paths running along the pavement were felt to be safer than those running next to moving traffic. Routes along minor roads and side streets were perceived to be extremely unsafe if the street was not marked as ‘car-free’. Detailed analysis of the different types of cycle paths and their influencing factors, including from the perspective of motorists and pedestrians, will be presented in the statistical evaluation section of this report."
-	},
-	"research.02_intro.p4": {
-		"defaultMessage": "The Berlin Tagespiegel have written up their own analysis of the results - click {link} to read the article."
-	},
-	"research.02_intro.p4.link": {
-		"defaultMessage": "here"
-	},
-	"research.03_concept.heading": {
-		"defaultMessage": "Survey concept"
-	},
-	"research.03_concept.p1": {
-		"defaultMessage": "To enable participants to take part in the survey online, an interface was built whereby users can rate photorealistic illustrations of various street configurations. Using a four-point scale, these street scenarios could be scored according to the individual’s subjective feeling of safety in each situation."
-	},
-	"research.03_concept.p1.quote": {
-		"defaultMessage": "To make subjective safety a measurable metric we had to develop a complex system of street scenarios and reach a high number of participants (The challenge)"
-	},
-	"research.03_concept.p1.quoteSource": {
-		"defaultMessage": "The challenge"
-	},
-	"research.03_concept.p10": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p10.list1": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p10.list2": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p10.list3": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p10.list4": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p11": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p12": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p12.heading": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p13": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p13.heading": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p14.list1": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p14.list2": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p14.list3": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p15": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p15.imageLabel": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p16": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p16.list1": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p16.list2": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p16.list3": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p17": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p17.list1": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p17.list2": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p17.list3": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p18": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p19": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p19.link": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p2": {
-		"defaultMessage": "While the objective safety of cyclists has already been investigated in multiple studies, scarcely any research has been carried out on perceived/subjective safety. The particular challenge when investigating subjective safety is to collect enough ratings for various street configurations and simultaneously look into each of the many different influences on the perceived safety of a situation in enough detail. It was therefore necessary to illustrate a wide variety of different street configurations in the survey and at the same time reach a large number of participants via an effective communication strategy."
-	},
-	"research.03_concept.p20": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p20.link": {
-		"defaultMessage": ""
-	},
-	"research.03_concept.p3": {
-		"defaultMessage": "It is typically difficult to determine how narrow a cycle path has to be for it to be considered ‘too narrow’ simply with qualitative surveys of cyclists’ opinions. This is also the case when gauging the subjective perception of street traffic scenarios or combinations of specific structural characteristics (such as narrow cycle paths or parking spaces). Furthermore, these kinds of surveys are usually carried out with participants who generally travel by bike on a regular basis. This means that the resulting data often only represents the ‘cyclist’ demographic."
-	},
-	"research.03_concept.p4": {
-		"defaultMessage": "By working with images of specific street scenarios, the survey was able to show direct connections between the subjective perception of safety with regards to different types of infrastructure and their various structural characteristics. By collecting data about participants’ modes of transport plus demographic data we were able to sort the data about perceived safety into different social and mobility demographics (e.g. motorists, cyclists etc). Thanks to the large number of participants and the communications strategy we developed with the Berlin Tagesspiegel we were able to survey a large number and diverse spread (across various social and mobility demographics) of people."
-	},
-	"research.03_concept.p5": {
-		"defaultMessage": "When choosing the scenarios in the survey it was important to reflect cycle path variants which are currently in use. After close consultation with Berlin’s senate administration, thematic workshops, an intensive review of current research in the relevant literature and after pulling in new infrastructure concepts, we felt confident that the survey was up-to-date. For example, Berlin’s senate administration is currently particularly interested in road users’ opinions on different kinds of barriers (bollards/posts) due to the plans they currently have in the pipeline."
-	},
-	"research.03_concept.p6": {
-		"defaultMessage": "The survey was conceived as an online questionnaire and published in cooperation with the Berlin daily newspaper Der Tagesspiegel. On the Tagesspiegel website users were directed to the survey via a specific article and advertising banners. For the launch, a front-page article was additionally published in the print edition of the newspaper which made readers aware of the survey. Although the main purpose of the survey was to evaluate various types of cycle infrastructure as per the subjective sense of safety, the survey was neutrally portrayed as a ‘Berlin Street Check’. This enabled us to bring in, among others, over 3,500 participants who said they never travelled by bike."
-	},
-	"research.03_concept.p6.heading": {
-		"defaultMessage": "Communication strategy"
-	},
-	"research.03_concept.p7": {
-		"defaultMessage": "The survey consisted of three sections:"
-	},
-	"research.03_concept.p7.list1": {
-		"defaultMessage": "general questions about modes of transport"
-	},
-	"research.03_concept.p7.list2": {
-		"defaultMessage": "participant profile and questions about the individual"
-	},
-	"research.03_concept.p7.list3": {
-		"defaultMessage": "rating various street configurations"
-	},
-	"research.03_concept.p8": {
-		"defaultMessage": "In this section, participants were asked various general questions about traffic and transport in Berlin in order for the Tagesspiegel editorial team to assess the results. We will not go deeper into this part of the survey here, as this was not part of the survey concept for our research. The Berlin Tagespiegel wrote up the results of this section separately."
-	},
-	"research.03_concept.p8.heading": {
-		"defaultMessage": "General questions about transport (Introductory questions)"
-	},
-	"research.03_concept.p8.link": {
-		"defaultMessage": "results"
-	},
-	"research.03_concept.p9": {
-		"defaultMessage": "These questions were designed to allow us to sort the participants into different types of cyclists/non-cyclists. This enabled us to better understand the answers provided by participants when giving their subjective safety ratings. These divisions were based on the work of Francke, Anke and Lißner (2019). In their assessment, they propose a taxonomy of cyclists/non-cyclists, which they use to describe various preferences road users have for cycle infrastructure. The questionnaire used in their study was extremely thorough; since our focus was rather to collect data on the safety ratings of street scenarios, we therefore reduced the questionnaire down to the most important elements. By changing the questionnaire the results of the two studies are therefore admittedly not directly comparable (see Schwarz, 1999 and Catania et al., 1996), but this was felt to be the right decision in light of the main goal of our survey. Alongside collecting the participant’s sociodemographic data (age, gender, place of residence, number of children), the survey also included questions about their transport behaviour - in particular, whether and to what extent the person travelled by bike."
-	},
-	"research.03_concept.p9.heading": {
-		"defaultMessage": "Questions about the individual"
-	},
-	"research.04_dataset.heading": {
-		"defaultMessage": "Download the dataset of the survey results"
-	},
-	"research.04_dataset.p1": {
-		"defaultMessage": "FixMyCity provides the results data freely for public use (‘open data’) on the condition that work based on these data are also made freely available to the public (‘share-alike’). Find out more about the licence on the website of the Open Knowledge Foundation. An explanation of the columns in the JSON-formatted dataset is provided in this PDF overview of the specifications. Click the button below to download the results of the survey as a JSON dataset."
-	},
-	"research.04_dataset.p1.linkLicense": {
-		"defaultMessage": "Open Knowledge Foundation"
-	},
-	"research.04_dataset.p1.linkSpec": {
-		"defaultMessage": "this PDF overview of the specifications"
-	},
-	"research.04_dataset.p2": {
-		"defaultMessage": "Click the button below to download the results of the survey as a JSON dataset. "
-	},
-	"research.04_dataset.p2.linkResults": {
-		"defaultMessage": "Download data"
-	},
-	"research.05_results.chart1.1": {
-		"defaultMessage": "male"
-	},
-	"research.05_results.chart1.2": {
-		"defaultMessage": "female"
-	},
-	"research.05_results.chart1.3": {
-		"defaultMessage": "non-binary"
-	},
-	"research.05_results.chart1.label": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart1.title": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart10.1": {
-		"defaultMessage": "Cycle path without physical barrier, narrow road markings on the left"
-	},
-	"research.05_results.chart10.2": {
-		"defaultMessage": "Cycle path without physical barrier, wide road markings on the left"
-	},
-	"research.05_results.chart10.3": {
-		"defaultMessage": "Cycle path with tall bollards as physical barrier"
-	},
-	"research.05_results.chart10.4": {
-		"defaultMessage": "Cycle path with short bollards as physical barrier"
-	},
-	"research.05_results.chart10.5": {
-		"defaultMessage": "Cycle path with planters as physical barrier"
-	},
-	"research.05_results.chart10.label": {
-		"defaultMessage": "Note: This graph shows the average ratings for all scenarios involving a cycle path with a physical barrier - excluding scenarios with parking strips on the right-hand side, tram lines, a bus lane or the cycle path running to the left of parked cars."
-	},
-	"research.05_results.chart10.title": {
-		"defaultMessage": "Illustration: Cycle path on main road with and without a physical barrier"
-	},
-	"research.05_results.chart11.1": {
-		"defaultMessage": "Wide cycle path to the left of parked cars"
-	},
-	"research.05_results.chart11.2": {
-		"defaultMessage": "Wide cycle path to the right of parked cars (with no physical barrier)"
-	},
-	"research.05_results.chart11.3": {
-		"defaultMessage": "Wide cycle path to the right of parked cars (with physical barrier)"
-	},
-	"research.05_results.chart11.label": {
-		"defaultMessage": "Note: This graph shows the average ratings of all scenarios with a wide cycle path, excluding scenarios with tram lines or a bus lane. Only scenarios with a wide cycle path were compared in this context; narrow cycle paths were not used in the visualisations for this type of scenario."
-	},
-	"research.05_results.chart11.title": {
-		"defaultMessage": "Illustration: Cycle path on main road to the left and right of parked vehicles."
-	},
-	"research.05_results.chart12.1": {
-		"defaultMessage": "Cyclists’ perspective: road with no cycle path"
-	},
-	"research.05_results.chart12.2": {
-		"defaultMessage": "Cyclists’ perspective: road with cycle path"
-	},
-	"research.05_results.chart12.3": {
-		"defaultMessage": "Motorists’ perspective: road with no cycle path"
-	},
-	"research.05_results.chart12.4": {
-		"defaultMessage": "Motorists’ perspective: road with cycle path"
-	},
-	"research.05_results.chart12.label": {
-		"defaultMessage": "Note: The average ratings by motorists and cyclists for all scenarios in the survey."
-	},
-	"research.05_results.chart12.title": {
-		"defaultMessage": "Illustration: Main road with and without a cycle path"
-	},
-	"research.05_results.chart12b.1": {
-		"defaultMessage": "Cyclists’ perspective: Cycle path without physical barrier"
-	},
-	"research.05_results.chart12b.2": {
-		"defaultMessage": "Cyclists’ perspective: Cycle path with physical barrier"
-	},
-	"research.05_results.chart12b.3": {
-		"defaultMessage": "Motorists’ perspective: Cycle path without physical barrier"
-	},
-	"research.05_results.chart12b.4": {
-		"defaultMessage": "Motorists’ perspective: Cycle path with physical barrier"
-	},
-	"research.05_results.chart12b.5": {
-		"defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (tall bollards)"
-	},
-	"research.05_results.chart12b.6": {
-		"defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (low bollards)"
-	},
-	"research.05_results.chart12b.7": {
-		"defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (planters)"
-	},
-	"research.05_results.chart12b.label": {
-		"defaultMessage": "Note: This graph shows the average ratings for all scenarios with a cycle path - excluding scenarios with parking to the right or left side of the cycle path, tram lines or a bus lane."
-	},
-	"research.05_results.chart12b.title": {
-		"defaultMessage": "Illustration: cycle path on main road with or without a physical barrier"
-	},
-	"research.05_results.chart13.1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart13.2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart13.3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart13.4": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart13.5": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart13.6": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart13.label": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart13.title": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart14.1": {
-		"defaultMessage": "Total width of the cycle path (wide - narrow)"
-	},
-	"research.05_results.chart14.2": {
-		"defaultMessage": "Total width of the pedestrian area (wide - narrow)"
-	},
-	"research.05_results.chart14.3": {
-		"defaultMessage": "Commercial street (yes - no)"
-	},
-	"research.05_results.chart14.4": {
-		"defaultMessage": "Commercial street (yes - no)  with narrow pedestrian area"
-	},
-	"research.05_results.chart14.5": {
-		"defaultMessage": "Divider to the right of the cycle path (Grass strip - no divider)"
-	},
-	"research.05_results.chart14.6": {
-		"defaultMessage": "Type of traffic to the left of the cycle path (moving traffic - parked cars)"
-	},
-	"research.05_results.chart14.label": {
-		"defaultMessage": "The differences between the median ratings for contrasting pairs of street configurations. Only scenarios which were relevant for this particular context were compared."
-	},
-	"research.05_results.chart14.title": {
-		"defaultMessage": "Illustration: The weightings of the different influencing factors for a cycle path on the pavement"
-	},
-	"research.05_results.chart15.1": {
-		"defaultMessage": "Wide cycle path"
-	},
-	"research.05_results.chart15.2": {
-		"defaultMessage": "Narrow cycle path"
-	},
-	"research.05_results.chart15.label": {
-		"defaultMessage": "Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum"
-	},
-	"research.05_results.chart15.title": {
-		"defaultMessage": "Illustration: A narrow vs a wide cycle path on the pavement"
-	},
-	"research.05_results.chart16.1": {
-		"defaultMessage": "Wide pavement on commercial street"
-	},
-	"research.05_results.chart16.2": {
-		"defaultMessage": "Wide pavement on non-commercial street"
-	},
-	"research.05_results.chart16.3": {
-		"defaultMessage": "Narrow pavement on commercial street"
-	},
-	"research.05_results.chart16.4": {
-		"defaultMessage": "Narrow pavement on non-commercial street"
-	},
-	"research.05_results.chart16.label": {
-		"defaultMessage": "The average ratings for all such scenarios on the pavement are shown below."
-	},
-	"research.05_results.chart16.title": {
-		"defaultMessage": "Illustration: Pavement with and without commercial establishments."
-	},
-	"research.05_results.chart17.1": {
-		"defaultMessage": "Width of the cycle path (narrow - wide)"
-	},
-	"research.05_results.chart17.2": {
-		"defaultMessage": "Divider to the right of the cycle path"
-	},
-	"research.05_results.chart17.3": {
-		"defaultMessage": "Commercial activity on street (yes - no) "
-	},
-	"research.05_results.chart17.label": {
-		"defaultMessage": "Note: This graph shows the differences between the median ratings for all scenarios in this context. The pedestrian perspective was only collected for scenarios with a narrow pedestrian area."
-	},
-	"research.05_results.chart17.title": {
-		"defaultMessage": "Illustration of weightings"
-	},
-	"research.05_results.chart18.1": {
-		"defaultMessage": "Pedestrian perspective on commercial street"
-	},
-	"research.05_results.chart18.2": {
-		"defaultMessage": "Pedestrian perspective on non-commercial street"
-	},
-	"research.05_results.chart18.3": {
-		"defaultMessage": "Cyclist perspective on commercial street (narrow pedestrian area)"
-	},
-	"research.05_results.chart18.4": {
-		"defaultMessage": "Cyclist perspective on non-commercial street (narrow pedestrian area)"
-	},
-	"research.05_results.chart18.label": {
-		"defaultMessage": "Note: The average ratings for all scenarios on the pavement - this analysis only compares the values for scenarios with a narrow pedestrian area, since this was the only variant presented in the pedestrian perspective."
-	},
-	"research.05_results.chart18.title": {
-		"defaultMessage": "Illustration: Pedestrian perspective of the pavement with and without commercial activity"
-	},
-	"research.05_results.chart19.1": {
-		"defaultMessage": "Narrow grass strip as divider between cycle and foot traffic"
-	},
-	"research.05_results.chart19.2": {
-		"defaultMessage": "Wide grass strip as divider between cycle and foot traffic"
-	},
-	"research.05_results.chart19.3": {
-		"defaultMessage": "No divider between cycle and foot traffic"
-	},
-	"research.05_results.chart19.label": {
-		"defaultMessage": "Note: This graph shows the average ratings for all scenarios on the pavement. The pedestrian perspective was only visualised with a narrow pedestrian area."
-	},
-	"research.05_results.chart19.title": {
-		"defaultMessage": "Illustration: Pedestrian perspective of the pavement with and without a clearly separated cycle path"
-	},
-	"research.05_results.chart2.1": {
-		"defaultMessage": "AG0 - under 18 years of age"
-	},
-	"research.05_results.chart2.2": {
-		"defaultMessage": "AG1 - 18 to 24 years of age"
-	},
-	"research.05_results.chart2.3": {
-		"defaultMessage": "AG2 - 25 to 29 years of age"
-	},
-	"research.05_results.chart2.4": {
-		"defaultMessage": "AG3 - 30 to 39 years of age"
-	},
-	"research.05_results.chart2.5": {
-		"defaultMessage": "AG4 - 40 to 49 years of age"
-	},
-	"research.05_results.chart2.6": {
-		"defaultMessage": "AG5 - 50 to 64 years of age"
-	},
-	"research.05_results.chart2.7": {
-		"defaultMessage": "AG6 -  65 to 74 years of age"
-	},
-	"research.05_results.chart2.8": {
-		"defaultMessage": "AG7 - over 74 years of age"
-	},
-	"research.05_results.chart2.label": {
-		"defaultMessage": "The average safety rating given by each main demographic group (gender, age and frequency of travel by bike) tells us this much:"
-	},
-	"research.05_results.chart2.title": {
-		"defaultMessage": "Ratings by age"
-	},
-	"research.05_results.chart20.1": {
-		"defaultMessage": "Street width (narrow - wide)"
-	},
-	"research.05_results.chart20.2": {
-		"defaultMessage": "Parking (on both sides - none)"
-	},
-	"research.05_results.chart20.3": {
-		"defaultMessage": "Parking (on one side - none)"
-	},
-	"research.05_results.chart20.4": {
-		"defaultMessage": "Street designation (non-standard – standard)"
-	},
-	"research.05_results.chart20.5": {
-		"defaultMessage": "One-way traffic (In opposite direction - not one-way)"
-	},
-	"research.05_results.chart20.6": {
-		"defaultMessage": "One-way traffic (In same direction - not one-way"
-	},
-	"research.05_results.chart20.7": {
-		"defaultMessage": "‘car-free’ (yes - no)"
-	},
-	"research.05_results.chart20.label": {
-		"defaultMessage": "Note: The differences between the median ratings for pairs of contrasting characteristics. The basis for this analysis was all scenarios relevant to this context, excluding scenarios where the street has a continuous green surface layer. The segment ‘Street designation’ refers to cycle-only streets, cycle-only streets with specialised road markings and ‘Child-friendly streets’ (aka streets where motor traffic is not allowed and children are permitted to play freely) as ‘non-standard’."
-	},
-	"research.05_results.chart20.title": {
-		"defaultMessage": "Illustration: Weightings of the various influencing factors"
-	},
-	"research.05_results.chart21.1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart21.2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart21.3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart21.4": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart21.label": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart21.title": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart22.1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart22.2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart22.3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart22.4": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart22.5": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart22.label": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart22.title": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart3.1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart3.2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart3.3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart3.4": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart3.5": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart3.6": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart3.label": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart3.title": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart4.1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart4.2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart4.3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart4.label": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart4.title": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart5.1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart5.2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart5.3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart5.label": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart5.title": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart6.1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart6.2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart6.3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart6.4": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart6.5": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart6.6": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart6.label": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart6.title": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart7.1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart7.2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart7.3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart7.4": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart7.label": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart7.title": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart8.1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart8.2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart8.3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart8.4": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart8.5": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart8.6": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart8.7": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart8.8": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart8.label": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart8.title": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart9.1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart9.2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart9.3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart9.label": {
-		"defaultMessage": ""
-	},
-	"research.05_results.chart9.title": {
-		"defaultMessage": ""
-	},
-	"research.05_results.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p10": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p11": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p12": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p13": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p13.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p14": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p14.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p14.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p14.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p15": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p15.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p15.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p15.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p16": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p17": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p17.list1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p17.list2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p17.list3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p18": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p19": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p19.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p20": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p20.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p20.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p21": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p21.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p21.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p22": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p22.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p22.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p22.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p22.image3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p22.image4": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p23": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p24": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p24.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p24.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p24.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p25": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p25.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p26": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p27": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p27.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p28": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p28.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p29": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p30": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p30.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p31": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p31.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p31.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p32.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p33": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p33.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p34": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p34.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p34.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p35": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p35.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p35.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p36": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p37": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p38": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p38.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p39": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p39.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p39.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p4": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p4.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p4.listOther": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p40": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p41": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p42": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p43": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p43.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p44": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p44.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p45": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p45.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p45.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p46": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p47": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p48": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p49": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p5": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p5.list1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p5.list2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p5.list3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p50": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p50.heading": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p51": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p52": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p53": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p53.image1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p53.image2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p54": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p55": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p56": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p57": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p6": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p7": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p7.list1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p7.list2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p7.list3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p7.list4": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p7.list5": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p7.list6": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p7.list7": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p8": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p8.list": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p8.list1": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p8.list2": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p8.list3": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p8.list4": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p8.list5": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p8.list6": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p9": {
-		"defaultMessage": ""
-	},
-	"research.05_results.p9.link": {
-		"defaultMessage": ""
-	},
-	"research.06_summary.p01.heading": {
-		"defaultMessage": ""
-	},
-	"research.06_summary.p02": {
-		"defaultMessage": ""
-	},
-	"research.06_summary.p03": {
-		"defaultMessage": ""
-	},
-	"research.06_summary.p04": {
-		"defaultMessage": ""
-	},
-	"research.06_summary.p05": {
-		"defaultMessage": ""
-	},
-	"research.06_summary.p06": {
-		"defaultMessage": ""
-	},
-	"research.06_summary.p07": {
-		"defaultMessage": ""
-	},
-	"research.06_summary.p08": {
-		"defaultMessage": ""
-	},
-	"research.06_summary.p09": {
-		"defaultMessage": ""
-	},
-	"research.06_summary.p10": {
-		"defaultMessage": ""
-	},
-	"research.06_summary.p11": {
-		"defaultMessage": ""
-	},
-	"research.07_team.p01.heading": {
-		"defaultMessage": ""
-	},
-	"research.07_team.p02": {
-		"defaultMessage": ""
-	},
-	"research.07_team.p03": {
-		"defaultMessage": ""
-	},
-	"research.07_team.p04": {
-		"defaultMessage": ""
-	},
-	"research.07_team.p04.address": {
-		"defaultMessage": ""
-	},
-	"research.07_team.p04.funding": {
-		"defaultMessage": ""
-	},
-	"research.07_team.p04.phone": {
-		"defaultMessage": ""
-	},
-	"research.authors": {
-		"defaultMessage": "FixMyCity Team"
-	},
-	"research.components.barchart.labels.ratherSafe": {
-		"defaultMessage": ""
-	},
-	"research.components.barchart.labels.ratherUnsafe": {
-		"defaultMessage": ""
-	},
-	"research.components.barchart.labels.safe": {
-		"defaultMessage": ""
-	},
-	"research.components.barchart.labels.unsafe": {
-		"defaultMessage": ""
-	},
-	"research.components.feelsafe.label": {
-		"defaultMessage": ""
-	},
-	"research.components.feelsafe.perspectives.bike": {
-		"defaultMessage": ""
-	},
-	"research.components.feelsafe.perspectives.car": {
-		"defaultMessage": ""
-	},
-	"research.components.feelsafe.perspectives.walking": {
-		"defaultMessage": ""
-	},
-	"research.introduction": {
-		"defaultMessage": ""
-	},
-	"research.kicker": {
-		"defaultMessage": ""
-	},
-	"research.title": {
-		"defaultMessage": "Study on subjective safety when travelling by bicycle. Results and data from a survey of 21,000 participants."
-	},
-	"research.toc.About": {
-		"defaultMessage": ""
-	},
-	"research.toc.Dataset": {
-		"defaultMessage": ""
-	},
-	"research.toc.Header": {
-		"defaultMessage": ""
-	},
-	"research.toc.Results": {
-		"defaultMessage": ""
-	},
-	"research.toc.Summary": {
-		"defaultMessage": ""
-	},
-	"research.toc.Team": {
-		"defaultMessage": ""
-	},
-	"research.toc.introduction": {
-		"defaultMessage": "Introduction"
-	}
+  "common.localeSwitcher.labelDE": {
+    "defaultMessage": "German"
+  },
+  "common.localeSwitcher.labelEN": {
+    "defaultMessage": "English"
+  },
+  "common.localeSwitcher.labelES": {
+    "defaultMessage": "Spanish"
+  },
+  "components.article.attribution": {
+    "defaultMessage": "by"
+  },
+  "components.article.localeSwitcher.english": {
+    "defaultMessage": ""
+  },
+  "components.article.localeSwitcher.german": {
+    "defaultMessage": ""
+  },
+  "components.article.localeSwitcher.label": {
+    "defaultMessage": "choose another language"
+  },
+  "components.article.localeSwitcher.spanish": {
+    "defaultMessage": ""
+  },
+  "research.02_intro.cta": {
+    "defaultMessage": "Go to statistical evaluation"
+  },
+  "research.02_intro.heading": {
+    "defaultMessage": "About the project"
+  },
+  "research.02_intro.images1.label1": {
+    "defaultMessage": "99.11% of cyclists rate this scenario as ‘safe’ or ‘rather safe’"
+  },
+  "research.02_intro.images1.label2": {
+    "defaultMessage": "96.84% of motorists rate this scenario as ‘safe’ or ‘rather safe’"
+  },
+  "research.02_intro.p1": {
+    "defaultMessage": "Until now, very little was known about which types of street configurations, cycle infrastructure and junctions are found to be safest from the perspective of the citizens travelling through those systems. Even less was known about how different street characteristics alter this perception of safety - characteristics such as the design, width and position of a cycle path or the setup either side of said route. Are cycle paths with protective bollards the best solution to reduce the palpable conflict between motor and cycle traffic, or is the width of the cycle path the deciding factor? What effect does the colour of the cycle path have? Which conditions help cyclists to feel their safest when the cycle path is on the pavement or on the road?"
+  },
+  "research.02_intro.p2": {
+    "defaultMessage": "To close this gap in our knowledge, we developed a survey entitled “Straßencheck” (‘Street Check-up’) and carried out the survey in cooperation with the Berlin Tagesspiegel (a mainstream newspaper).  21,000 participants rated 1900 variations of common street configurations as illustrated with 3D imagery. The fundamental structure of the survey (see {link}) involved categorising various street configurations and their differing characteristics. This allowed us to analyse the extent to which individual characteristics - such as cycle path width, path surface, physical barriers, parking on the right side of the cycle path etc - make a difference. We were also able to gain insights into how the perceived sense of safety differs between different groups of road users and from the perspective of both motorists and pedestrians.\n"
+  },
+  "research.02_intro.p2.link": {
+    "defaultMessage": "“Survey concept”"
+  },
+  "research.02_intro.p3": {
+    "defaultMessage": "When a cycle route is implemented along the road, cyclists feel safest with the street configuration shown in the left image above, compared to all other variations. Motorists prefer almost exactly the same configuration but without the green colouring. The wide, green-coloured cycle path, separated from the motor traffic by planters, received the most ‘safe’ ratings (83.93%) and ‘mostly safe’ ratings (15.18%). On average, however, cycle paths running along the pavement were felt to be safer than those running next to moving traffic. Routes along minor roads and side streets were perceived to be extremely unsafe if the street was not marked as ‘car-free’. Detailed analysis of the different types of cycle paths and their influencing factors, including from the perspective of motorists and pedestrians, will be presented in the statistical evaluation section of this report."
+  },
+  "research.02_intro.p4": {
+    "defaultMessage": "The Berlin Tagespiegel have written up their own analysis of the results - click {link} to read the article."
+  },
+  "research.02_intro.p4.link": {
+    "defaultMessage": "here"
+  },
+  "research.03_concept.heading": {
+    "defaultMessage": "Survey concept"
+  },
+  "research.03_concept.p1": {
+    "defaultMessage": "To enable participants to take part in the survey online, an interface was built whereby users can rate photorealistic illustrations of various street configurations. Using a four-point scale, these street scenarios could be scored according to the individual’s subjective feeling of safety in each situation."
+  },
+  "research.03_concept.p1.quote": {
+    "defaultMessage": "To make subjective safety a measurable metric we had to develop a complex system of street scenarios and reach a high number of participants (The challenge)"
+  },
+  "research.03_concept.p1.quoteSource": {
+    "defaultMessage": "The challenge"
+  },
+  "research.03_concept.p10": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p10.list1": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p10.list2": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p10.list3": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p10.list4": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p11": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p12": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p12.heading": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p13": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p13.heading": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p14.list1": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p14.list2": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p14.list3": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p15": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p15.imageLabel": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p16": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p16.list1": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p16.list2": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p16.list3": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p17": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p17.list1": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p17.list2": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p17.list3": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p18": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p19": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p19.link": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p2": {
+    "defaultMessage": "While the objective safety of cyclists has already been investigated in multiple studies, scarcely any research has been carried out on perceived/subjective safety. The particular challenge when investigating subjective safety is to collect enough ratings for various street configurations and simultaneously look into each of the many different influences on the perceived safety of a situation in enough detail. It was therefore necessary to illustrate a wide variety of different street configurations in the survey and at the same time reach a large number of participants via an effective communication strategy."
+  },
+  "research.03_concept.p20": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p20.link": {
+    "defaultMessage": ""
+  },
+  "research.03_concept.p3": {
+    "defaultMessage": "It is typically difficult to determine how narrow a cycle path has to be for it to be considered ‘too narrow’ simply with qualitative surveys of cyclists’ opinions. This is also the case when gauging the subjective perception of street traffic scenarios or combinations of specific structural characteristics (such as narrow cycle paths or parking spaces). Furthermore, these kinds of surveys are usually carried out with participants who generally travel by bike on a regular basis. This means that the resulting data often only represents the ‘cyclist’ demographic."
+  },
+  "research.03_concept.p4": {
+    "defaultMessage": "By working with images of specific street scenarios, the survey was able to show direct connections between the subjective perception of safety with regards to different types of infrastructure and their various structural characteristics. By collecting data about participants’ modes of transport plus demographic data we were able to sort the data about perceived safety into different social and mobility demographics (e.g. motorists, cyclists etc). Thanks to the large number of participants and the communications strategy we developed with the Berlin Tagesspiegel we were able to survey a large number and diverse spread (across various social and mobility demographics) of people."
+  },
+  "research.03_concept.p5": {
+    "defaultMessage": "When choosing the scenarios in the survey it was important to reflect cycle path variants which are currently in use. After close consultation with Berlin’s senate administration, thematic workshops, an intensive review of current research in the relevant literature and after pulling in new infrastructure concepts, we felt confident that the survey was up-to-date. For example, Berlin’s senate administration is currently particularly interested in road users’ opinions on different kinds of barriers (bollards/posts) due to the plans they currently have in the pipeline."
+  },
+  "research.03_concept.p6": {
+    "defaultMessage": "The survey was conceived as an online questionnaire and published in cooperation with the Berlin daily newspaper Der Tagesspiegel. On the Tagesspiegel website users were directed to the survey via a specific article and advertising banners. For the launch, a front-page article was additionally published in the print edition of the newspaper which made readers aware of the survey. Although the main purpose of the survey was to evaluate various types of cycle infrastructure as per the subjective sense of safety, the survey was neutrally portrayed as a ‘Berlin Street Check’. This enabled us to bring in, among others, over 3,500 participants who said they never travelled by bike."
+  },
+  "research.03_concept.p6.heading": {
+    "defaultMessage": "Communication strategy"
+  },
+  "research.03_concept.p7": {
+    "defaultMessage": "The survey consisted of three sections:"
+  },
+  "research.03_concept.p7.list1": {
+    "defaultMessage": "general questions about modes of transport"
+  },
+  "research.03_concept.p7.list2": {
+    "defaultMessage": "participant profile and questions about the individual"
+  },
+  "research.03_concept.p7.list3": {
+    "defaultMessage": "rating various street configurations"
+  },
+  "research.03_concept.p8": {
+    "defaultMessage": "In this section, participants were asked various general questions about traffic and transport in Berlin in order for the Tagesspiegel editorial team to assess the results. We will not go deeper into this part of the survey here, as this was not part of the survey concept for our research. The Berlin Tagespiegel wrote up the results of this section separately."
+  },
+  "research.03_concept.p8.heading": {
+    "defaultMessage": "General questions about transport (Introductory questions)"
+  },
+  "research.03_concept.p8.link": {
+    "defaultMessage": "results"
+  },
+  "research.03_concept.p9": {
+    "defaultMessage": "These questions were designed to allow us to sort the participants into different types of cyclists/non-cyclists. This enabled us to better understand the answers provided by participants when giving their subjective safety ratings. These divisions were based on the work of Francke, Anke and Lißner (2019). In their assessment, they propose a taxonomy of cyclists/non-cyclists, which they use to describe various preferences road users have for cycle infrastructure. The questionnaire used in their study was extremely thorough; since our focus was rather to collect data on the safety ratings of street scenarios, we therefore reduced the questionnaire down to the most important elements. By changing the questionnaire the results of the two studies are therefore admittedly not directly comparable (see Schwarz, 1999 and Catania et al., 1996), but this was felt to be the right decision in light of the main goal of our survey. Alongside collecting the participant’s sociodemographic data (age, gender, place of residence, number of children), the survey also included questions about their transport behaviour - in particular, whether and to what extent the person travelled by bike."
+  },
+  "research.03_concept.p9.heading": {
+    "defaultMessage": "Questions about the individual"
+  },
+  "research.04_dataset.heading": {
+    "defaultMessage": "Download the dataset of the survey results"
+  },
+  "research.04_dataset.p1": {
+    "defaultMessage": "FixMyCity provides the results data freely for public use (‘open data’) on the condition that work based on these data are also made freely available to the public (‘share-alike’). Find out more about the licence on the website of the Open Knowledge Foundation. An explanation of the columns in the JSON-formatted dataset is provided in this PDF overview of the specifications. Click the button below to download the results of the survey as a JSON dataset."
+  },
+  "research.04_dataset.p1.linkLicense": {
+    "defaultMessage": "Open Knowledge Foundation"
+  },
+  "research.04_dataset.p1.linkSpec": {
+    "defaultMessage": "this PDF overview of the specifications"
+  },
+  "research.04_dataset.p2": {
+    "defaultMessage": "Click the button below to download the results of the survey as a JSON dataset. "
+  },
+  "research.04_dataset.p2.linkResults": {
+    "defaultMessage": "Download data"
+  },
+  "research.05_results.chart1.1": {
+    "defaultMessage": "male"
+  },
+  "research.05_results.chart1.2": {
+    "defaultMessage": "female"
+  },
+  "research.05_results.chart1.3": {
+    "defaultMessage": "non-binary"
+  },
+  "research.05_results.chart1.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart1.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart10.1": {
+    "defaultMessage": "Cycle path without physical barrier, narrow road markings on the left"
+  },
+  "research.05_results.chart10.2": {
+    "defaultMessage": "Cycle path without physical barrier, wide road markings on the left"
+  },
+  "research.05_results.chart10.3": {
+    "defaultMessage": "Cycle path with tall bollards as physical barrier"
+  },
+  "research.05_results.chart10.4": {
+    "defaultMessage": "Cycle path with short bollards as physical barrier"
+  },
+  "research.05_results.chart10.5": {
+    "defaultMessage": "Cycle path with planters as physical barrier"
+  },
+  "research.05_results.chart10.label": {
+    "defaultMessage": "Note: This graph shows the average ratings for all scenarios involving a cycle path with a physical barrier - excluding scenarios with parking strips on the right-hand side, tram lines, a bus lane or the cycle path running to the left of parked cars."
+  },
+  "research.05_results.chart10.title": {
+    "defaultMessage": "Illustration: Cycle path on main road with and without a physical barrier"
+  },
+  "research.05_results.chart11.1": {
+    "defaultMessage": "Wide cycle path to the left of parked cars"
+  },
+  "research.05_results.chart11.2": {
+    "defaultMessage": "Wide cycle path to the right of parked cars (with no physical barrier)"
+  },
+  "research.05_results.chart11.3": {
+    "defaultMessage": "Wide cycle path to the right of parked cars (with physical barrier)"
+  },
+  "research.05_results.chart11.label": {
+    "defaultMessage": "Note: This graph shows the average ratings of all scenarios with a wide cycle path, excluding scenarios with tram lines or a bus lane. Only scenarios with a wide cycle path were compared in this context; narrow cycle paths were not used in the visualisations for this type of scenario."
+  },
+  "research.05_results.chart11.title": {
+    "defaultMessage": "Illustration: Cycle path on main road to the left and right of parked vehicles."
+  },
+  "research.05_results.chart12.1": {
+    "defaultMessage": "Cyclists’ perspective: road with no cycle path"
+  },
+  "research.05_results.chart12.2": {
+    "defaultMessage": "Cyclists’ perspective: road with cycle path"
+  },
+  "research.05_results.chart12.3": {
+    "defaultMessage": "Motorists’ perspective: road with no cycle path"
+  },
+  "research.05_results.chart12.4": {
+    "defaultMessage": "Motorists’ perspective: road with cycle path"
+  },
+  "research.05_results.chart12.label": {
+    "defaultMessage": "Note: The average ratings by motorists and cyclists for all scenarios in the survey."
+  },
+  "research.05_results.chart12.title": {
+    "defaultMessage": "Illustration: Main road with and without a cycle path"
+  },
+  "research.05_results.chart12b.1": {
+    "defaultMessage": "Cyclists’ perspective: Cycle path without physical barrier"
+  },
+  "research.05_results.chart12b.2": {
+    "defaultMessage": "Cyclists’ perspective: Cycle path with physical barrier"
+  },
+  "research.05_results.chart12b.3": {
+    "defaultMessage": "Motorists’ perspective: Cycle path without physical barrier"
+  },
+  "research.05_results.chart12b.4": {
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier"
+  },
+  "research.05_results.chart12b.5": {
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (tall bollards)"
+  },
+  "research.05_results.chart12b.6": {
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (low bollards)"
+  },
+  "research.05_results.chart12b.7": {
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (planters)"
+  },
+  "research.05_results.chart12b.label": {
+    "defaultMessage": "Note: This graph shows the average ratings for all scenarios with a cycle path - excluding scenarios with parking to the right or left side of the cycle path, tram lines or a bus lane."
+  },
+  "research.05_results.chart12b.title": {
+    "defaultMessage": "Illustration: cycle path on main road with or without a physical barrier"
+  },
+  "research.05_results.chart13.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart13.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart14.1": {
+    "defaultMessage": "Total width of the cycle path (wide - narrow)"
+  },
+  "research.05_results.chart14.2": {
+    "defaultMessage": "Total width of the pedestrian area (wide - narrow)"
+  },
+  "research.05_results.chart14.3": {
+    "defaultMessage": "Commercial street (yes - no)"
+  },
+  "research.05_results.chart14.4": {
+    "defaultMessage": "Commercial street (yes - no)  with narrow pedestrian area"
+  },
+  "research.05_results.chart14.5": {
+    "defaultMessage": "Divider to the right of the cycle path (Grass strip - no divider)"
+  },
+  "research.05_results.chart14.6": {
+    "defaultMessage": "Type of traffic to the left of the cycle path (moving traffic - parked cars)"
+  },
+  "research.05_results.chart14.label": {
+    "defaultMessage": "The differences between the median ratings for contrasting pairs of street configurations. Only scenarios which were relevant for this particular context were compared."
+  },
+  "research.05_results.chart14.title": {
+    "defaultMessage": "Illustration: The weightings of the different influencing factors for a cycle path on the pavement"
+  },
+  "research.05_results.chart15.1": {
+    "defaultMessage": "Wide cycle path"
+  },
+  "research.05_results.chart15.2": {
+    "defaultMessage": "Narrow cycle path"
+  },
+  "research.05_results.chart15.label": {
+    "defaultMessage": "Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum"
+  },
+  "research.05_results.chart15.title": {
+    "defaultMessage": "Illustration: A narrow vs a wide cycle path on the pavement"
+  },
+  "research.05_results.chart16.1": {
+    "defaultMessage": "Wide pavement on commercial street"
+  },
+  "research.05_results.chart16.2": {
+    "defaultMessage": "Wide pavement on non-commercial street"
+  },
+  "research.05_results.chart16.3": {
+    "defaultMessage": "Narrow pavement on commercial street"
+  },
+  "research.05_results.chart16.4": {
+    "defaultMessage": "Narrow pavement on non-commercial street"
+  },
+  "research.05_results.chart16.label": {
+    "defaultMessage": "The average ratings for all such scenarios on the pavement are shown below."
+  },
+  "research.05_results.chart16.title": {
+    "defaultMessage": "Illustration: Pavement with and without commercial establishments."
+  },
+  "research.05_results.chart17.1": {
+    "defaultMessage": "Width of the cycle path (narrow - wide)"
+  },
+  "research.05_results.chart17.2": {
+    "defaultMessage": "Divider to the right of the cycle path"
+  },
+  "research.05_results.chart17.3": {
+    "defaultMessage": "Commercial activity on street (yes - no) "
+  },
+  "research.05_results.chart17.label": {
+    "defaultMessage": "Note: This graph shows the differences between the median ratings for all scenarios in this context. The pedestrian perspective was only collected for scenarios with a narrow pedestrian area."
+  },
+  "research.05_results.chart17.title": {
+    "defaultMessage": "Illustration of weightings"
+  },
+  "research.05_results.chart18.1": {
+    "defaultMessage": "Pedestrian perspective on commercial street"
+  },
+  "research.05_results.chart18.2": {
+    "defaultMessage": "Pedestrian perspective on non-commercial street"
+  },
+  "research.05_results.chart18.3": {
+    "defaultMessage": "Cyclist perspective on commercial street (narrow pedestrian area)"
+  },
+  "research.05_results.chart18.4": {
+    "defaultMessage": "Cyclist perspective on non-commercial street (narrow pedestrian area)"
+  },
+  "research.05_results.chart18.label": {
+    "defaultMessage": "Note: The average ratings for all scenarios on the pavement - this analysis only compares the values for scenarios with a narrow pedestrian area, since this was the only variant presented in the pedestrian perspective."
+  },
+  "research.05_results.chart18.title": {
+    "defaultMessage": "Illustration: Pedestrian perspective of the pavement with and without commercial activity"
+  },
+  "research.05_results.chart19.1": {
+    "defaultMessage": "Narrow grass strip as divider between cycle and foot traffic"
+  },
+  "research.05_results.chart19.2": {
+    "defaultMessage": "Wide grass strip as divider between cycle and foot traffic"
+  },
+  "research.05_results.chart19.3": {
+    "defaultMessage": "No divider between cycle and foot traffic"
+  },
+  "research.05_results.chart19.label": {
+    "defaultMessage": "Note: This graph shows the average ratings for all scenarios on the pavement. The pedestrian perspective was only visualised with a narrow pedestrian area."
+  },
+  "research.05_results.chart19.title": {
+    "defaultMessage": "Illustration: Pedestrian perspective of the pavement with and without a clearly separated cycle path"
+  },
+  "research.05_results.chart2.1": {
+    "defaultMessage": "AG0 - under 18 years of age"
+  },
+  "research.05_results.chart2.2": {
+    "defaultMessage": "AG1 - 18 to 24 years of age"
+  },
+  "research.05_results.chart2.3": {
+    "defaultMessage": "AG2 - 25 to 29 years of age"
+  },
+  "research.05_results.chart2.4": {
+    "defaultMessage": "AG3 - 30 to 39 years of age"
+  },
+  "research.05_results.chart2.5": {
+    "defaultMessage": "AG4 - 40 to 49 years of age"
+  },
+  "research.05_results.chart2.6": {
+    "defaultMessage": "AG5 - 50 to 64 years of age"
+  },
+  "research.05_results.chart2.7": {
+    "defaultMessage": "AG6 -  65 to 74 years of age"
+  },
+  "research.05_results.chart2.8": {
+    "defaultMessage": "AG7 - over 74 years of age"
+  },
+  "research.05_results.chart2.label": {
+    "defaultMessage": "The average safety rating given by each main demographic group (gender, age and frequency of travel by bike) tells us this much:"
+  },
+  "research.05_results.chart2.title": {
+    "defaultMessage": "Ratings by age"
+  },
+  "research.05_results.chart20.1": {
+    "defaultMessage": "Street width (narrow - wide)"
+  },
+  "research.05_results.chart20.2": {
+    "defaultMessage": "Parking (on both sides - none)"
+  },
+  "research.05_results.chart20.3": {
+    "defaultMessage": "Parking (on one side - none)"
+  },
+  "research.05_results.chart20.4": {
+    "defaultMessage": "Street designation (non-standard – standard)"
+  },
+  "research.05_results.chart20.5": {
+    "defaultMessage": "One-way traffic (In opposite direction - not one-way)"
+  },
+  "research.05_results.chart20.6": {
+    "defaultMessage": "One-way traffic (In same direction - not one-way"
+  },
+  "research.05_results.chart20.7": {
+    "defaultMessage": "‘car-free’ (yes - no)"
+  },
+  "research.05_results.chart20.label": {
+    "defaultMessage": "Note: The differences between the median ratings for pairs of contrasting characteristics. The basis for this analysis was all scenarios relevant to this context, excluding scenarios where the street has a continuous green surface layer. The segment ‘Street designation’ refers to cycle-only streets, cycle-only streets with specialised road markings and ‘Child-friendly streets’ (aka streets where motor traffic is not allowed and children are permitted to play freely) as ‘non-standard’."
+  },
+  "research.05_results.chart20.title": {
+    "defaultMessage": "Illustration: Weightings of the various influencing factors"
+  },
+  "research.05_results.chart21.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart21.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart21.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart21.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart21.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart21.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart22.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart3.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart4.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart4.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart4.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart4.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart4.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart5.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart5.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart5.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart5.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart5.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart6.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart7.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.7": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.8": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart8.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart9.1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart9.2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart9.3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart9.label": {
+    "defaultMessage": ""
+  },
+  "research.05_results.chart9.title": {
+    "defaultMessage": ""
+  },
+  "research.05_results.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p10": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p11": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p12": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p13": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p13.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p14": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p14.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p14.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p14.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p15": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p15.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p15.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p15.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p16": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p17": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p17.list1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p17.list2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p17.list3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p18": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p19": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p19.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p20": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p20.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p20.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p21": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p21.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p21.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p22": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p22.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p22.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p22.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p22.image3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p22.image4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p23": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p24": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p24.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p24.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p24.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p25": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p25.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p26": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p27": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p27.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p28": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p28.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p29": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p30": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p30.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p31": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p31.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p31.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p32.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p33": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p33.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p34": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p34.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p34.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p35": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p35.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p35.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p36": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p37": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p38": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p38.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p39": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p39.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p39.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p4.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p4.listOther": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p40": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p41": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p42": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p43": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p43.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p44": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p44.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p45": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p45.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p45.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p46": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p47": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p48": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p49": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p5.list1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p5.list2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p5.list3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p50": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p50.heading": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p51": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p52": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p53": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p53.image1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p53.image2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p54": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p55": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p56": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p57": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p7.list7": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list1": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list2": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list3": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list4": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list5": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p8.list6": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p9": {
+    "defaultMessage": ""
+  },
+  "research.05_results.p9.link": {
+    "defaultMessage": ""
+  },
+  "research.06_summary.p01.heading": {
+    "defaultMessage": ""
+  },
+  "research.06_summary.p02": {
+    "defaultMessage": ""
+  },
+  "research.06_summary.p03": {
+    "defaultMessage": ""
+  },
+  "research.06_summary.p04": {
+    "defaultMessage": ""
+  },
+  "research.06_summary.p05": {
+    "defaultMessage": ""
+  },
+  "research.06_summary.p06": {
+    "defaultMessage": ""
+  },
+  "research.06_summary.p07": {
+    "defaultMessage": ""
+  },
+  "research.06_summary.p08": {
+    "defaultMessage": ""
+  },
+  "research.06_summary.p09": {
+    "defaultMessage": ""
+  },
+  "research.06_summary.p10": {
+    "defaultMessage": ""
+  },
+  "research.06_summary.p11": {
+    "defaultMessage": ""
+  },
+  "research.07_team.p01.heading": {
+    "defaultMessage": ""
+  },
+  "research.07_team.p02": {
+    "defaultMessage": ""
+  },
+  "research.07_team.p03": {
+    "defaultMessage": ""
+  },
+  "research.07_team.p04": {
+    "defaultMessage": ""
+  },
+  "research.07_team.p04.address": {
+    "defaultMessage": ""
+  },
+  "research.07_team.p04.funding": {
+    "defaultMessage": ""
+  },
+  "research.07_team.p04.phone": {
+    "defaultMessage": ""
+  },
+  "research.authors": {
+    "defaultMessage": "FixMyCity Team"
+  },
+  "research.components.barchart.labels.ratherSafe": {
+    "defaultMessage": ""
+  },
+  "research.components.barchart.labels.ratherUnsafe": {
+    "defaultMessage": ""
+  },
+  "research.components.barchart.labels.safe": {
+    "defaultMessage": ""
+  },
+  "research.components.barchart.labels.unsafe": {
+    "defaultMessage": ""
+  },
+  "research.components.feelsafe.label": {
+    "defaultMessage": ""
+  },
+  "research.components.feelsafe.perspectives.bike": {
+    "defaultMessage": ""
+  },
+  "research.components.feelsafe.perspectives.car": {
+    "defaultMessage": ""
+  },
+  "research.components.feelsafe.perspectives.walking": {
+    "defaultMessage": ""
+  },
+  "research.introduction": {
+    "defaultMessage": ""
+  },
+  "research.kicker": {
+    "defaultMessage": ""
+  },
+  "research.title": {
+    "defaultMessage": "Study on subjective safety when travelling by bicycle. Results and data from a survey of 21,000 participants."
+  },
+  "research.toc.About": {
+    "defaultMessage": ""
+  },
+  "research.toc.Dataset": {
+    "defaultMessage": ""
+  },
+  "research.toc.Header": {
+    "defaultMessage": ""
+  },
+  "research.toc.Results": {
+    "defaultMessage": ""
+  },
+  "research.toc.Summary": {
+    "defaultMessage": ""
+  },
+  "research.toc.Team": {
+    "defaultMessage": ""
+  },
+  "research.toc.introduction": {
+    "defaultMessage": "Introduction"
+  }
 }
