@@ -182,3 +182,12 @@ describe('getCenterFromGeom', () => {
     expect(typeof center[1]).toEqual('number');
   });
 });
+
+describe('getGeoLocation', () => {
+  it.todo('retrieves current position from geolocation api');
+  it.todo('handles browser without support for geolocation api');
+});
+
+describe('parseURLOptios', () => {
+  it.todo('parses view parameters from current browser location');
+});
