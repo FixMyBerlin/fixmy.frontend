@@ -12,7 +12,7 @@ import config from '~/pages/Reports/config';
 import { matchMediaSize, breakpoints } from '~/styles/utils';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';
-import AddButton from './components/AddButton';
+import CTAButton from './components/CTAButton';
 import ErrorMessage from '~/components/ErrorMessage';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
@@ -86,8 +86,12 @@ class OverviewMap extends Component {
     this.props.resetMapState();
   }
 
-  onAddButtonTab = () => {
-    this.props.history.push(config.routes.reports.new);
+  onCTAButtonTab = () => {
+    this.props.history.push(
+      config.reports.enabled
+        ? config.routes.reports.new
+        : config.routes.reports.landing
+    );
   };
 
   onMarkerClick = (el, reportItem) => {
@@ -149,10 +153,8 @@ class OverviewMap extends Component {
     } = this.props;
     const hasDetailId = match.params.id;
     const isDesktopView = matchMediaSize(breakpoints.m);
-    const isAddButtonShifted = isDesktopView && hasDetailId && !isMenuOpen;
-    const isAddButtonHidden =
-      config.reports.reportsDisabled ||
-      (isDesktopView && hasDetailId && isMenuOpen);
+    const isCTAButtonShifted = isDesktopView && hasDetailId && !isMenuOpen;
+    const isCTAHidden = isDesktopView && hasDetailId && isMenuOpen;
 
     const mapControls = (
       <>
@@ -161,10 +163,10 @@ class OverviewMap extends Component {
           onChange={this.onLocationChange}
           customPosition={{ bottom: '105px', right: '7px' }}
         />
-        {!isAddButtonHidden && (
-          <AddButton
-            onTab={this.onAddButtonTab}
-            shiftLeft={isAddButtonShifted}
+        {!isCTAHidden && (
+          <CTAButton
+            onTab={this.onCTAButtonTab}
+            shiftLeft={isCTAButtonShifted}
           />
         )}
       </>
