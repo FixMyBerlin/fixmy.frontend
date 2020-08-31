@@ -11,17 +11,8 @@
   "components.article.attribution": {
     "defaultMessage": "von"
   },
-  "components.article.localeSwitcher.english": {
-    "defaultMessage": ""
-  },
-  "components.article.localeSwitcher.german": {
-    "defaultMessage": ""
-  },
   "components.article.localeSwitcher.label": {
     "defaultMessage": "andere Sprache wählen"
-  },
-  "components.article.localeSwitcher.spanish": {
-    "defaultMessage": ""
   },
   "research.02_intro.cta": {
     "defaultMessage": "Direkt zur Auswertung"
@@ -78,7 +69,10 @@
     "defaultMessage": "Länge des häufigsten Weges mit dem Fahrrad in Minuten"
   },
   "research.03_concept.p10.list4": {
-    "defaultMessage": "Motivation für das Fahrradfahren bzw. Gründe gegen das Fahrradfahren"
+    "defaultMessage": "Motivation für das Fahrradfahren"
+  },
+  "research.03_concept.p10.list5": {
+    "defaultMessage": "bzw. Gründe gegen das Fahrradfahren"
   },
   "research.03_concept.p11": {
     "defaultMessage": "Nach Vervollständigung dieses Teiles der Umfrage wird ein Datensatz für den/die Teilnehmenden angelegt."
@@ -309,25 +303,25 @@
     "defaultMessage": "HVS-F: RVA mit und ohne bauliche Trennung"
   },
   "research.05_results.chart13.1": {
-    "defaultMessage": "Fahrbahn, RVA ohne Parken breit"
+    "defaultMessage": "Fahrbahn, RVA ohne Parken schmal"
   },
   "research.05_results.chart13.2": {
-    "defaultMessage": "Fahrbahn, RVA mit Parken schmal"
+    "defaultMessage": "Fahrbahn, RVA ohne Parken breit"
   },
   "research.05_results.chart13.3": {
-    "defaultMessage": "Fahrbahn, RVA mit Parken breit"
+    "defaultMessage": "Fahrbahn, RVA mit Parken schmal"
   },
   "research.05_results.chart13.4": {
-    "defaultMessage": "Seitenraum, RVA breit"
+    "defaultMessage": "Fahrbahn, RVA mit Parken breit"
   },
   "research.05_results.chart13.5": {
-    "defaultMessage": "Seitenraum, RVA schmal"
+    "defaultMessage": "Seitenraum, RVA breit"
   },
   "research.05_results.chart13.6": {
-    "defaultMessage": "Fahrbahn, RVA rechts des Parken breit"
+    "defaultMessage": "Seitenraum, RVA schmal"
   },
-  "research.05_results.chart13.label": {
-    "defaultMessage": "Fahrbahn, RVA ohne Parken schmal"
+  "research.05_results.chart13.7": {
+    "defaultMessage": "Fahrbahn, RVA rechts des Parken breit"
   },
   "research.05_results.chart13.title": {
     "defaultMessage": "HVS mit RVA: Führungen im Seitenraum (HVS-S) und auf der Fahrbahn (HVS-F)"
@@ -969,7 +963,7 @@
     "defaultMessage": "Die bestbewertete Fahrradstraße mit KFZ-Verkehr als Einbahnstraße in Fahrtrichtung"
   },
   "research.05_results.p54": {
-    "defaultMessage": "Auffällig ist, dass Fahrradstraßen mit “Sondermarkierungen Dooring“ (Markierung der Dooring Zone durch eine unterbrochene Linie, zusätzlich Markierung eines Doppelpfeils um des Nebeneinanderfahren von Radfahrenden anzuzeigen) schlechter abschneiden als solche mit einer großen Fahrradstraßen-Markierung auf der Fahrbahn. Dieser Vergleich ist durch die Darstellung in der Umfrage allerdings wenig aussagekräftig, da durch die Komposition der Bilder mehrere Faktoren (Kennzeichnung als Fahrradstraße, Optische Breite der zur Verfügung stehenden Fahrbahn, Position der Radfahrenden) die Bewertung beeinflussen können."
+    "defaultMessage": "Auffällig ist, dass Fahrradstraßen mit “Sondermarkierungen Dooring“ (Markierung der Dooring-Zone durch eine unterbrochene Linie, zusätzlich Markierung eines Doppelpfeils um das Nebeneinanderfahren von Radfahrenden anzuzeigen) schlechter abschneiden als solche mit einer großen Fahrradstraßen-Markierung auf der Fahrbahn. Dieser Vergleich ist durch die Darstellung in der Umfrage allerdings wenig aussagekräftig, da durch die Komposition der Bilder mehrere Faktoren (Kennzeichnung als Fahrradstraße, Optische Breite der zur Verfügung stehenden Fahrbahn, Position der Radfahrenden) die Bewertung beeinflussen können."
   },
   "research.05_results.p55": {
     "defaultMessage": "Die Holländische Lösung"
@@ -1010,9 +1004,6 @@
   "research.05_results.p8": {
     "defaultMessage": "Im Vergleich: laut Amt für Statistik Berlin Brandenburg sieht die Altersverteilung in Berlin (Stand 2018) so aus:"
   },
-  "research.05_results.p8.list": {
-    "defaultMessage": "über 65 Jahre 19%"
-  },
   "research.05_results.p8.list1": {
     "defaultMessage": "unter 18 Jahre 16%"
   },
@@ -1030,6 +1021,9 @@
   },
   "research.05_results.p8.list6": {
     "defaultMessage": "50 bis 64 Jahre 20%"
+  },
+  "research.05_results.p8.list7": {
+    "defaultMessage": "über 65 Jahre 19%"
   },
   "research.05_results.p9": {
     "defaultMessage": "Zusätzlich wurden die Teilnehmenden gefragt wie oft sie zu Fuß, mit Bus und Bahn, dem Auto, dem Fahrrad und dem Motorrad unterwegs sind. Im Vergleich mit den Werten für Berlin aus der SrV 2018 gibt es einige Abweichungen. Die Werte für die Nutzung des öffentlichen Verkehrs (Bus und Bahn) mindestens 1x in der Woche in der Umfrage (64%) stimmen annähernd mit den Werten der SrV 2018 (62%) überein. Hingegen sind in dieser Umfrage die Nutzung des Pkws (35%) im Vergleich zur SrV 2018 (56%) unterrepräsentiert und die Nutzung des Fahrrads (64%) in der Umfrage (47% SrV) überrepräsentiert. ({link}. S.127ff)"

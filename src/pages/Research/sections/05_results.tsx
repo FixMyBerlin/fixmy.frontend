@@ -264,7 +264,7 @@ const SectionResults = ({
         </List.Item>
         <List.Item>
           <FormattedMessage
-            id="research.05_results.p8.list"
+            id="research.05_results.p8.list7"
             defaultMessage="über 65 Jahre 19%"
           />
         </List.Item>
@@ -1425,7 +1425,7 @@ const SectionResults = ({
     >
       <BarChart
         title={intl.formatMessage({
-          id: 'research.05_results.chart13.label',
+          id: 'research.05_results.chart13.1',
           defaultMessage: 'Fahrbahn, RVA ohne Parken schmal'
         })}
         data={[5.98653, 23.522075, 47.318533, 23.172861]}
@@ -1433,7 +1433,7 @@ const SectionResults = ({
       />
       <BarChart
         title={intl.formatMessage({
-          id: 'research.05_results.chart13.1',
+          id: 'research.05_results.chart13.2',
           defaultMessage: 'Fahrbahn, RVA ohne Parken breit'
         })}
         data={[3.001464, 12.591508, 44.558321, 39.848707]}
@@ -1441,7 +1441,7 @@ const SectionResults = ({
       />
       <BarChart
         title={intl.formatMessage({
-          id: 'research.05_results.chart13.2',
+          id: 'research.05_results.chart13.3',
           defaultMessage: 'Fahrbahn, RVA mit Parken schmal'
         })}
         data={[19.22069, 39.432608, 31.377464, 9.969238]}
@@ -1449,7 +1449,7 @@ const SectionResults = ({
       />
       <BarChart
         title={intl.formatMessage({
-          id: 'research.05_results.chart13.3',
+          id: 'research.05_results.chart13.4',
           defaultMessage: 'Fahrbahn, RVA mit Parken breit'
         })}
         data={[4.514474, 20.134713, 48.199824, 27.15099]}
@@ -1457,7 +1457,7 @@ const SectionResults = ({
       />
       <BarChart
         title={intl.formatMessage({
-          id: 'research.05_results.chart13.4',
+          id: 'research.05_results.chart13.5',
           defaultMessage: 'Seitenraum, RVA breit'
         })}
         data={[0.677428, 3.889918, 29.751257, 65.681397]}
@@ -1465,7 +1465,7 @@ const SectionResults = ({
       />
       <BarChart
         title={intl.formatMessage({
-          id: 'research.05_results.chart13.5',
+          id: 'research.05_results.chart13.6',
           defaultMessage: 'Seitenraum, RVA schmal'
         })}
         data={[3.729178, 23.567974, 43.98173, 28.721118]}
@@ -1473,7 +1473,7 @@ const SectionResults = ({
       />
       <BarChart
         title={intl.formatMessage({
-          id: 'research.05_results.chart13.6',
+          id: 'research.05_results.chart13.7',
           defaultMessage: 'Fahrbahn, RVA rechts des Parken breit'
         })}
         data={[1.055662, 5.143954, 26.81382, 66.986564]}
