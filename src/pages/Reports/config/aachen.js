@@ -2,6 +2,7 @@ import AachenLogo from '~/images/aachen/logo-stadt-aachen-bg.png';
 import LandingBackground from '~/images/aachen/landing_background.jpg';
 
 export default {
+  enabled: false,
   overviewMap: {
     style: 'mapbox://styles/hejco/ck7q440d50b6s1ip928c7zlbb',
     bounds: [
@@ -57,7 +58,7 @@ export default {
   },
   region: 'Aachen',
   intro:
-    'Damit Sie Ihr Fahrrad überall sicher abschließen können, baut die Stadt Aachen umfassend neue Fahrradabstellmöglichkeiten aus. Da Sie  als Bürger*in am besten wissen, wo Sie Ihr Fahrrad abstellen, können Sie hier melden, wo genau Sie neue Bügel benötigen.',
+    'Damit Sie Ihr Fahrrad überall sicher abschließen können, baut die Stadt Aachen umfassend neue Fahrradabstellmöglichkeiten aus. Bürger*innen haben auf dieser Seite von April bis August 2020 gemeldet, wo genau sie Radbügel benötigen, so dass die Stadt diese jetzt bedarfsgerecht aufstellen kann.',
   steps: [
     {
       step: 1,
