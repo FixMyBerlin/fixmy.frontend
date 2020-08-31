@@ -154,7 +154,9 @@ class OverviewMap extends Component {
     const hasDetailId = match.params.id;
     const isDesktopView = matchMediaSize(breakpoints.m);
     const isCTAButtonShifted = isDesktopView && hasDetailId && !isMenuOpen;
-    const isCTAHidden = isDesktopView && hasDetailId && isMenuOpen;
+    const isCTAHidden =
+      (isDesktopView && hasDetailId && isMenuOpen) ||
+      config.region === 'berlin';
 
     const mapControls = (
       <>
