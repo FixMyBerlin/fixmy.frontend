@@ -151,6 +151,7 @@ class OverviewMap extends Component {
       isMenuOpen,
       errorMessage
     } = this.props;
+
     const hasDetailId = match.params.id;
     const isDesktopView = matchMediaSize(breakpoints.m);
     const isCTAButtonShifted = isDesktopView && hasDetailId && !isMenuOpen;
