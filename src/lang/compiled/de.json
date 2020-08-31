@@ -23,15 +23,18 @@
       "value": "von"
     }
   ],
-  "components.article.localeSwitcher.english": [],
-  "components.article.localeSwitcher.german": [],
   "components.article.localeSwitcher.label": [
     {
       "type": 0,
       "value": "andere Sprache wählen"
     }
   ],
-  "components.article.localeSwitcher.spanish": [],
+  "components.article.tocHeader": [
+    {
+      "type": 0,
+      "value": "Gehe direkt zu einem Kapitel"
+    }
+  ],
   "research.02_intro.cta": [
     {
       "type": 0,
@@ -159,7 +162,13 @@
   "research.03_concept.p10.list4": [
     {
       "type": 0,
-      "value": "Motivation für das Fahrradfahren bzw. Gründe gegen das Fahrradfahren"
+      "value": "Motivation für das Fahrradfahren"
+    }
+  ],
+  "research.03_concept.p10.list5": [
+    {
+      "type": 0,
+      "value": "bzw. Gründe gegen das Fahrradfahren"
     }
   ],
   "research.03_concept.p11": [
@@ -669,43 +678,43 @@
   "research.05_results.chart13.1": [
     {
       "type": 0,
-      "value": "Fahrbahn, RVA ohne Parken breit"
+      "value": "Fahrbahn, RVA ohne Parken schmal"
     }
   ],
   "research.05_results.chart13.2": [
     {
       "type": 0,
-      "value": "Fahrbahn, RVA mit Parken schmal"
+      "value": "Fahrbahn, RVA ohne Parken breit"
     }
   ],
   "research.05_results.chart13.3": [
     {
       "type": 0,
-      "value": "Fahrbahn, RVA mit Parken breit"
+      "value": "Fahrbahn, RVA mit Parken schmal"
     }
   ],
   "research.05_results.chart13.4": [
     {
       "type": 0,
-      "value": "Seitenraum, RVA breit"
+      "value": "Fahrbahn, RVA mit Parken breit"
     }
   ],
   "research.05_results.chart13.5": [
     {
       "type": 0,
-      "value": "Seitenraum, RVA schmal"
+      "value": "Seitenraum, RVA breit"
     }
   ],
   "research.05_results.chart13.6": [
     {
       "type": 0,
-      "value": "Fahrbahn, RVA rechts des Parken breit"
+      "value": "Seitenraum, RVA schmal"
     }
   ],
-  "research.05_results.chart13.label": [
+  "research.05_results.chart13.7": [
     {
       "type": 0,
-      "value": "Fahrbahn, RVA ohne Parken schmal"
+      "value": "Fahrbahn, RVA rechts des Parken breit"
     }
   ],
   "research.05_results.chart13.title": [
@@ -1422,16 +1431,268 @@
       "value": "Bei der Auswertung nach den unterschiedlichen Merkmalen unterscheiden sich die Ergebnisse zwischen den den einzelnen Nutzergruppen nur gering. Entsprechend wurde für die weitere Auswertung auf eine weitere Differenzierung verzichtet."
     }
   ],
+  "research.05_results.p13": [
+    {
+      "type": 0,
+      "value": "Wir betrachten zunächst die Führung an Hauptverkehrsstraßen. Nebenverkehrsstraßen werden in einem späteren Kapitel betrachtet."
+    }
+  ],
   "research.05_results.p13.heading": [
     {
       "type": 0,
       "value": "Führung auf der Fahrbahn"
     }
   ],
+  "research.05_results.p14": [
+    {
+      "type": 0,
+      "value": "Eine Führung des Radverkehrs im Mischverkehr wird als deutlich unsicherer empfunden als eine Führung auf jeder Art von RVA. Werden die Faktoren Tempolimit, Verkehrsstärke und rechtsseitiges Parken variiert ändert sich das Sicherheitsempfinden. Aber auch in der bestbewerteten Situation ist kein ausreichendes Sicherheitsempfinden (Wir gehen hier davon aus, dass eine Bewertung “eher sicher” oder “sicher” von über 80% der Teilnehmenden ein anzustrebender Wert für eine subjektiv sichere Infrastruktur ist) zu erzielen. Im Vergleich der Nutzermerkmale gibt es den größten Unterschied zwischen Männern und Frauen, aber insgesamt große Übereinstimmungen. Alle Typen von Radfahrenden (Viel-, oder Wenig-Radfahrende, weibliche oder männliche, ältere und jüngere, etc.) fühlen sich im Mischverkehr unsicher."
+    }
+  ],
+  "research.05_results.p14.heading": [
+    {
+      "type": 0,
+      "value": "Führung im Mischverkehr ist unsicher"
+    }
+  ],
+  "research.05_results.p14.image1": [
+    {
+      "type": 0,
+      "value": "*27,62 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p14.image2": [
+    {
+      "type": 0,
+      "value": "*11,05 % der Nutzer:innen bewerteten diese Situation als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p15": [
+    {
+      "type": 0,
+      "value": "Wird die RVA linksseitig von ruhendem Verkehr geführt, so sinkt das Sicherheitsempfinden. Die Anforderungen und Gestaltungsmöglichkeiten an die RVA sind grundlegend zu unterscheiden. Bei Führung mit ruhendem Verkehr rechts der RVA (Parken-rechts) beeinträchtigt die potentielle Gefahr durch Türöffnung der parkenden Autos das Sicherheitsempfinden negativ. Weiter zu beachten ist, dass bauliche Trennungen zum fließenden KFZ-Verkehr in diesen Situationen nicht möglich sind, was den Gestaltungsspielraum bei der Planung verringert. In der Umfrage nicht bildlich dargestellt wurde die Gefahr durch ein- sowie ausparkende Autos. Das tatsächliche Sicherheitsempfinden in diesen Situationen könnte also noch geringer ausfallen."
+    }
+  ],
+  "research.05_results.p15.heading": [
+    {
+      "type": 0,
+      "value": "Ruhender Verkehr erzeugt zusätzliche Konflikte"
+    }
+  ],
+  "research.05_results.p15.image1": [
+    {
+      "type": 0,
+      "value": "*69,09% der Nutzer:innen bewerteten diese Situation ohne Parkstreifen als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p15.image2": [
+    {
+      "type": 0,
+      "value": "*32,76 % der Nutzer:innen bewerteten diese Situation mit Parkstreifen als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p16": [
+    {
+      "type": 0,
+      "value": "Drei zentrale Einflussfaktoren"
+    }
+  ],
+  "research.05_results.p17": [
+    {
+      "type": 0,
+      "value": "Für das subjektive Sicherheitsempfinden sind neben der Lage der RVA vornehmlich drei Faktoren relevant:"
+    }
+  ],
+  "research.05_results.p17.list1": [
+    {
+      "type": 0,
+      "value": "Die Breite der RVA"
+    }
+  ],
+  "research.05_results.p17.list2": [
+    {
+      "type": 0,
+      "value": "Ihre farbliche Unterscheidung"
+    }
+  ],
+  "research.05_results.p17.list3": [
+    {
+      "type": 0,
+      "value": "Vorhandensein einer baulichen Trennung zum fließenden KFZ-Verkehr"
+    }
+  ],
+  "research.05_results.p18": [
+    {
+      "type": 0,
+      "value": "Die Breite der Trennung Links spielt vornehmlich bei Situationen mit Parken rechts eine Rolle. Die weiteren in der Umfrage abgefragten Faktoren, Tempolimit und Verkehrsstärke, spielen eine vergleichsweise unbedeutende Rolle. Hier ist zu berücksichtigen, das die Empfindungen der Faktoren Tempolimit und Verkehrsstärke über die Visualisierungen nur abstrahiert vermittelt werden kann."
+    }
+  ],
+  "research.05_results.p19": [
+    {
+      "type": 0,
+      "value": "In der Umfrage wurde unterschieden zwischen 3,5 Metern (breit) und 2,0 Metern (schmal) Breite für die RVA inkl. aller links und rechtsseitigen Markierungen (s.a. Umfragedesign). Im Ergebnis aller Situationen zeigt sich, dass breite RVA in den allermeisten Situationen als sicher empfunden werden. Im Durchschnitt bewerten 82.99 % der Teilnehmer:innen “diese als sicher” oder “eher sicher”."
+    }
+  ],
+  "research.05_results.p19.heading": [
+    {
+      "type": 0,
+      "value": "Breite der RVA zentral, besonders bei rechtsseitigem Parken"
+    }
+  ],
   "research.05_results.p2": [
     {
       "type": 0,
       "value": "Mittels den zur Verfügung gestellten Daten können interessierte Personendie Auswertung nachvollziehen und weitere Hypothesen überprüfen. Zunächstein Überblick zu den Teilnehmenden."
+    }
+  ],
+  "research.05_results.p20": [
+    {
+      "type": 0,
+      "value": "Vergleichen wir beispielhaft einen Radstreifen an einer HVS ohne ruhenden Verkehr zeigt sich folgender Unterschied:"
+    }
+  ],
+  "research.05_results.p20.image1": [
+    {
+      "type": 0,
+      "value": "*73,68 % der Nutzer:innen bewerteten diese Situation mit einer breiten RVA als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p20.image2": [
+    {
+      "type": 0,
+      "value": "*69,09 % der Nutzer:innen bewerteten diese Situation mit einer schmalen RVA als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p21": [
+    {
+      "type": 0,
+      "value": "Bei einem Radstreifen mit rechtsseitigem Parken ist der Unterschied zwischen schmaler und breiter Ausführung deutlich größer größer."
+    }
+  ],
+  "research.05_results.p21.image1": [
+    {
+      "type": 0,
+      "value": "*70,71 % der Nutzer:innen bewerteten diese Situation mit breiter RVA neben einem Parkstreifen als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p21.image2": [
+    {
+      "type": 0,
+      "value": "*32,23 % der Nutzer:innen bewerteten diese Situation mit schmaler RVA neben einem Parkstreifen als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p22": [
+    {
+      "type": 0,
+      "value": "Wird die RVA durch eine grüne Oberfläche von der Kfz-Fahrbahn unterschieden, hat dies einen positiven Effekt auf das subjektive Sicherheitsempfinden. Je nach Situation ist dieser Effekt unterschiedlich stark. Umso schlechter die RVA ausgebaut ist, desto stärker ist der Effekt der Grüneinfärbung."
+    }
+  ],
+  "research.05_results.p22.heading": [
+    {
+      "type": 0,
+      "value": "Grüne Oberfläche hilft"
+    }
+  ],
+  "research.05_results.p22.image1": [
+    {
+      "type": 0,
+      "value": "*80,37 % der Nutzer:innen bewerteten diese schmale RVA mit Grüneinfärbung als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p22.image2": [
+    {
+      "type": 0,
+      "value": "*69,09 % der Nutzer:innen bewerteten diese schmale RVA ohne Grüneinfärbung als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p22.image3": [
+    {
+      "type": 0,
+      "value": "*77,87 % der Nutzer:innen bewerteten diese breite RVA mit Grüneinfärbung als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p22.image4": [
+    {
+      "type": 0,
+      "value": "*70,71 % der Nutzer:innen bewerteten diese breite RVA ohne Grüneinfärbung als „sicher“ oder „eher sicher“"
+    }
+  ],
+  "research.05_results.p23": [
+    {
+      "type": 0,
+      "value": "In der Umfrage wurde eine weitere Variante – ein lediglich schraffierter grüner Strich linksseitig – getestet. Diese Variante brachte keine Verbesserung gegenüber einer normalen Asphaltoberfläche."
+    }
+  ],
+  "research.05_results.p24": [
+    {
+      "type": 0,
+      "value": "Eine bauliche Trennung zwischen RVA und fließendem Kfz-Verkehr stärkt das Sicherheitsempfinden. Dabei ist die Art der Trennung nicht entscheidend. Schaut man ins Detail, findet man, dass bei schmalen RVA kleine Poller (sog. Leitboys) am beliebtesten sind, bei breiten RVA erhalten Blumenkästen die meisten sicheren Bewertungen. Auffällig ist, dass eine grüne Oberfläche nur noch minimale Verbesserung erzielt, wenn es bereits eine breite RVA mit baulicher Trennung gibt."
+    }
+  ],
+  "research.05_results.p24.heading": [
+    {
+      "type": 0,
+      "value": "Poller (Sperrpfosten) stärken Sicherheitsempfinden, Blumenkästen auch"
+    }
+  ],
+  "research.05_results.p24.image1": [
+    {
+      "type": 0,
+      "value": "Mit 90,65 % am sichersten bewertete bauliche Trennung bei schmaler RVA ohne Grüneinfärbung. Die Variante mit Grüneinfärbung kommt auf 97,52%"
+    }
+  ],
+  "research.05_results.p24.image2": [
+    {
+      "type": 0,
+      "value": "Mit 98,38 % am sichersten bewertete bauliche Trennung bei breiter RVA ohne Grüneinfärbung. Die Variante mit Grüneinfärbung kommt auf 99,11 %"
+    }
+  ],
+  "research.05_results.p25": [
+    {
+      "type": 0,
+      "value": "Wird der Radverkehr gemeinsam mit ruhendem Kfz-Verkehr geführt, so wird die Führung rechts des ruhenden Verkehrs als deutlich sicherer empfunden. Hierbei ist zu beachten, dass die Umfrage die subjektive Sicherheit von Führungsformen entlang der Strecke untersucht hat, eine Aussage über die Auswirkung auf Knotenpunkte kann nicht getroffen werden."
+    }
+  ],
+  "research.05_results.p25.heading": [
+    {
+      "type": 0,
+      "value": "Lieber rechts als links vom ruhenden Verkehr"
+    }
+  ],
+  "research.05_results.p26": [
+    {
+      "type": 0,
+      "value": "Diese Führungsform kann durch bauliche Trennung oder Grüneinfärbung zusätzlich subjektiv sicherer gemacht werden, der Effekt ist aber relativ gering."
+    }
+  ],
+  "research.05_results.p27": [
+    {
+      "type": 0,
+      "value": "In der Umfrage wurde auch die Perspektive der Autofahrenden abgefragt,wobei die Frage hier nicht ausschließlich auf das eigeneSicherheitsempfinden abzielte sondern auf das allerVerkehrsteilnehmer:innen: “Wie empfinden Sie diese Situation beimAutofahren?” Von der Tendenz werden Situationen von Autofahrenden ähnlichwie von den Radfahrenden beurteilt. Im Durchschnitt werden dabei dieSituationen als weniger unsicher eingeschätzt, das KonfliktpotentialRadfahrender mit dem ruhenden Verkehr wird deutlich weniger starkwahrgenommen, bzw. als unsicher beurteilt."
+    }
+  ],
+  "research.05_results.p27.heading": [
+    {
+      "type": 0,
+      "value": "Wie sehen das Autofahrende?"
+    }
+  ],
+  "research.05_results.p28": [
+    {
+      "type": 0,
+      "value": "Mischverkehr an Hauptstraßen wird im Vergleich zu vorhandener RVA ebenfalls als deutlich unsicherer bewertet, wenn auch nicht ganz so extrem, wie durch die Radfahrenden."
+    }
+  ],
+  "research.05_results.p28.heading": [
+    {
+      "type": 0,
+      "value": "Auch Autofahrer wollen separate RVA"
+    }
+  ],
+  "research.05_results.p29": [
+    {
+      "type": 0,
+      "value": "Autofahrer empfinden die Situation als deutlich sicherer, wenn eine klar getrennte RVA vorhanden ist. am besten mit Sperrfläche oder Doppellinie und Grüneinfärbung. Interessant ist, das der Faktor Parken hier keine große Rolle spielt, diese Gefahr für Radfahrende wird von den Autofahrer:innen scheinbar kaum wahrgenommen."
     }
   ],
   "research.05_results.p3": [
@@ -1446,6 +1707,132 @@
     {
       "type": 0,
       "value": " betrachtet werden kann. Dort sind Visualisierungen der Likert Skala Daten als auch Hypothesentests mit Bootstrap Konfidenzintervallen und Likelihood Ratio Tests mit Proportional Odds Regressions Modellen zu finden."
+    }
+  ],
+  "research.05_results.p30": [
+    {
+      "type": 0,
+      "value": "Die bauliche Trennung der RVA durch Poller oder ähnliches erhöht auch aus Sicht der Autofahrenden die Sicherheit, wenn der Effekt hier auch deutlich weniger stark ist. Dabei favorisieren Autofahrer:innen Blumenkästen oder niedrige Poller. Wie man an dem Beispiel oben sehen kann werden aber auch breite RVA mit klarer Trennung und Grünmarkierung ähnlich sicher empfunden."
+    }
+  ],
+  "research.05_results.p30.heading": [
+    {
+      "type": 0,
+      "value": "Poller auch aus Autoperspektive sicherer"
+    }
+  ],
+  "research.05_results.p31": [
+    {
+      "type": 0,
+      "value": "Bei hohem Verkehrsaufkommen und Tempolimit 50 km/h empfinden Autofahrereine bauliche Trennung zum Radverkehr als sicherer. Dies gilt auch für diemeisten Situationen mit T30 und normalem Verkehrsaufkommen. Autofahrendehaben also ein klare Wahrnehmung für die Gefahr von Unfällen mitRadfahrenden und empfinden die Situation als angenehmer, wenn dieserKonflikt baulich entschärft ist."
+    }
+  ],
+  "research.05_results.p31.image1": [
+    {
+      "type": 0,
+      "value": "Bestbewertete Situation aus Autoperspektive bei schmaler RVA, T50 und hohem Verkehrsaufkommen"
+    }
+  ],
+  "research.05_results.p31.image2": [
+    {
+      "type": 0,
+      "value": "Bestbewertete Situation aus Autoperspektive bei breiter RVA, T50 und hohem Verkehrsaufkommen"
+    }
+  ],
+  "research.05_results.p32.heading": [
+    {
+      "type": 0,
+      "value": "Führung im Seitenraum"
+    }
+  ],
+  "research.05_results.p33": [
+    {
+      "type": 0,
+      "value": "Eine Führung im Seitenraum wird im Durchschnitt als sicherer empfunden alseine auf der Fahrbahn. Abhängig von der Ausgestaltung der RVA,insbesondere in Bezug auf die jeweiligen Konfliktzonen (fließenderKfz-Verkehr, ruhender Verkehr, Fußverkehr) variieren die Bewertungenallerdings. Führungen im Seitenraum stellen insgesamt weniger hoheAnforderungen an die Gestaltung der RVA um ein hohes Sicherheitsempfindenbei Radfahrenden zu schaffen. Auf Straßen mit ruhendem Verkehr hat dieFührung im Seitenraum oder auf der Fahrbahn rechtsseitig des ruhendenVerkehrs eine deutliche höhere Bewertung als eine solche links desruhenden Verkehrs."
+    }
+  ],
+  "research.05_results.p33.heading": [
+    {
+      "type": 0,
+      "value": "RVA auf der Fahrbahn oder im Seitenraum?"
+    }
+  ],
+  "research.05_results.p34": [
+    {
+      "type": 0,
+      "value": "Ohne Parkspur sind sicher gestaltete RVA sowohl im Seitenraum als auch auf der Fahrbahn möglich."
+    }
+  ],
+  "research.05_results.p34.image1": [
+    {
+      "type": 0,
+      "value": "Eine auf der Fahrbahn geführte, klar gestaltete, breite RVA ohne rechtsseitiges Parken, wie hier im Bild wird als sehr sicher empfunden"
+    }
+  ],
+  "research.05_results.p34.image2": [
+    {
+      "type": 0,
+      "value": "Eine gleich breite RVA im Seitenraum wird sogar noch etwas sicherer bewertet."
+    }
+  ],
+  "research.05_results.p35": [
+    {
+      "type": 0,
+      "value": "Eine schmale RVA im Seitenraum mit linksseitigem Parken wird als wesentlich sicherer empfunden als eine schmale auf der Fahrbahn geführte mit rechtsseitigem Parken, selbst bei “optimaler” Gestaltung dieser. Hier bietet die Führung im Seitenraum also klare Vorteile."
+    }
+  ],
+  "research.05_results.p35.image1": [
+    {
+      "type": 0,
+      "value": "Die bestbewertete RVA in schmaler Ausführung mit rechtsseitigem Parken"
+    }
+  ],
+  "research.05_results.p35.image2": [
+    {
+      "type": 0,
+      "value": "Eine RVA im Seitenraum (mit linksseitigem Parken) in schmaler Ausführung mit Trennungen links und rechts durch Grünstreifen."
+    }
+  ],
+  "research.05_results.p36": [
+    {
+      "type": 0,
+      "value": "Breite der RVA auch im Seitenraum ausschlaggebend"
+    }
+  ],
+  "research.05_results.p37": [
+    {
+      "type": 0,
+      "value": "Innerhalb der Varianten im Seitenraum spielt die RVA-Breite aus Sicht der Radfahrenden die eindeutig größte Rolle. Der Faktor Fußgängeraufkommen (mit / ohne Auslage) spielt eine Rolle bei schmalen Gehwegen. Einen kleineren Einfluss haben die Gehweggesamtbreite und die Art der Trennung. Der Faktor Verkehrsart links der RVA (Ruhender / Fließender Verkehr) hat nur einen sehr geringen Einfluss."
+    }
+  ],
+  "research.05_results.p38": [
+    {
+      "type": 0,
+      "value": "Breite RVA im Seitenraum erfahren eine sehr große Akzeptanz was das Sicherheitsgefühl betrifft. Aber auch schmale RVA erhalten noch relativ hohe Bewertungen. Es wurde in der Umfrage nicht nach geeigneten Ausbaustandards gefragt und kein hohes Radverkehrsaufkommen dargestellt. Es ist im Seitenraum aber – im Gegensatz z.B. zu schmalen RVA auf der Fahrbahn – einer sehr großen Gruppe von Menschen grundsätzlich ein entspanntes Radfahren möglich."
+    }
+  ],
+  "research.05_results.p38.heading": [
+    {
+      "type": 0,
+      "value": "Schmale RVA sind sicher – breite sehr sicher"
+    }
+  ],
+  "research.05_results.p39": [
+    {
+      "type": 0,
+      "value": "Auch wenn die Situation linksseitig der RVA im Durchschnitt keinen großen Einfluss hat sind dennoch in bestimmten Situationen starke Einschränkungen der subjektiven Sicherheit vorhanden, wie das untenstehende Beispiel zeigt."
+    }
+  ],
+  "research.05_results.p39.image1": [
+    {
+      "type": 0,
+      "value": "Ist fließender Verkehr linksseitig der RVA geführt, ist eine physische Trennung rechts problematisch."
+    }
+  ],
+  "research.05_results.p39.image2": [
+    {
+      "type": 0,
+      "value": "Besser ist dann die Trennung durch einen schmalen Grünstreifen."
     }
   ],
   "research.05_results.p4": [
@@ -1464,6 +1851,90 @@
     {
       "type": 0,
       "value": "andere Orte"
+    }
+  ],
+  "research.05_results.p40": [
+    {
+      "type": 0,
+      "value": "Geschäftsnutzung relevant bei engen Gehwegen"
+    }
+  ],
+  "research.05_results.p41": [
+    {
+      "type": 0,
+      "value": "Der Einfluss durch hohes Fußgänger:innenaufkommen, bzw. Geschäftsnutzung wurde in der Umfrage durch die Darstellung von Cafétischen dargestellt. Dieser Faktor wird relevant wenn die Gehweg-Gesamtbreite schmal ist."
+    }
+  ],
+  "research.05_results.p42": [
+    {
+      "type": 0,
+      "value": "Hier zeigen sich im Detail große Unterschiede: Ist die RVA gut getrennt und ausreichend breit, wird sie von Radfahrenden auch bei schmalem Gehweg als sicher empfunden. Ist sie dies nicht, so sinkt der Wert stark ab: zumindest eine gut erkennbare Trennung zwischen Rad und Fußverkehr sollte vorhanden sein."
+    }
+  ],
+  "research.05_results.p43": [
+    {
+      "type": 0,
+      "value": "Die meisten zu Fuß Gehenden fühlen sich grundsätzlich sicher mit einer Führung des Radverkehrs im Seitenraum. Wichtig ist ihnen eine eindeutige Trennung und ausreichend verbleibender Platz für den Fußverkehr."
+    }
+  ],
+  "research.05_results.p43.heading": [
+    {
+      "type": 0,
+      "value": "Fußgänger:innen ist eine eindeutige Trennung vom Radverkehr wichtig."
+    }
+  ],
+  "research.05_results.p44": [
+    {
+      "type": 0,
+      "value": "Hat die Straße eine überwiegend geschäftliche Nutzung und damit verbundenes hohes Fußverkehrsaufkommen, so werden nur bestimmte Gestaltungen der RVA von den zu Fuß Gehenden als sicher empfunden. Im Vergleich zur Radperspektive zeigt sich ein deutlich unterschiedliches Empfinden der Situationen mit Auslage."
+    }
+  ],
+  "research.05_results.p44.heading": [
+    {
+      "type": 0,
+      "value": "Hohes Fußverkehrsaufkommen erfordert passende Gestaltung"
+    }
+  ],
+  "research.05_results.p45": [
+    {
+      "type": 0,
+      "value": "Eine Variante, mit der Radfahrende und Fußgänger:innen unter engen Platzverhältnissen relativ gut leben können, ist die Trennung durch einen Grünstreifen. In der realen Situation spielen Faktoren wie Überholvorgänge von Radfahrenden, frei laufende Hunde, Kinder etc. eine zusätzlich mindernde Rolle auf das Sicherheitsempfinden. Eine gemeinsame Führung von Radverkehr und Fußverkehr bei hohem Fußgängeraufkommen ist daher nur bei ausreichend breitem Gehweg zu empfehlen."
+    }
+  ],
+  "research.05_results.p45.image1": [
+    {
+      "type": 0,
+      "value": "Trotz relativ enger Platzverhältnisse, wird diese Situation noch 81,44 % der zu Fuß Gehenden als “eher sicher” oder “sicher” empfunden."
+    }
+  ],
+  "research.05_results.p45.image2": [
+    {
+      "type": 0,
+      "value": "Die gleiche Situation wird von 75,56 % der Radfahrenden als “eher sicher” oder “sicher” bewertet."
+    }
+  ],
+  "research.05_results.p46": [
+    {
+      "type": 0,
+      "value": "Eine eindeutige Trennung der RVA kann das subjektive Sicherheitsempfinden der zu Fuß Gehenden deutlich verbessern."
+    }
+  ],
+  "research.05_results.p47": [
+    {
+      "type": 0,
+      "value": "Sind keine Auslagen vorhanden und ist der Radweg klar erkennbar vom Fußweg getrennt fühlen sich Fußgänger:innen mit den meisten Varianten der Radverkehrsführung sicher."
+    }
+  ],
+  "research.05_results.p48": [
+    {
+      "type": 0,
+      "value": "Führung in Nebenverkehrsstraßen"
+    }
+  ],
+  "research.05_results.p49": [
+    {
+      "type": 0,
+      "value": "Der Vergleich einer Radverkehrsführung in Nebenverkehrsstraßen gegenüber der Führung an Hauptverkehrsstraßen ist nur bedingt aussagekräftig, da in der Umfrage nur statische Bilder gezeigt wurden, die den potenziellen Konflikt zwischen Kfz und Fahrrad zeigen. Das unterschiedliche Verkehrsaufkommen zwischen Haupt- und Nebenstraße konnte nur andeutungsweise abgebildet werden. Dennoch lassen die Ergebnisse Aussagen zum subjektiven Sicherheitsempfinden bei unterschiedlichen Gestaltungsformen von Nebenstraßen zu."
     }
   ],
   "research.05_results.p5": [
@@ -1488,6 +1959,72 @@
     {
       "type": 0,
       "value": "divers 2 %"
+    }
+  ],
+  "research.05_results.p50": [
+    {
+      "type": 0,
+      "value": "Auffällig ist, dass der Faktor “autofrei” (fließender Verkehr ja - nein) bei der Bewertung von Nebenstraßen die größte Rolle spielt. Außerdem haben Einbahnstraßen mit Gegenverkehr eine sehr negative Wirkung auf das Sicherheitsempfinden. Breitere Straßen werden als sicherer empfunden, ruhender Verkehr verschlechtert das Sicherheitsempfinden."
+    }
+  ],
+  "research.05_results.p50.heading": [
+    {
+      "type": 0,
+      "value": "Nebenstraßen am liebsten “autofrei”"
+    }
+  ],
+  "research.05_results.p51": [
+    {
+      "type": 0,
+      "value": "Wenn wir alle Situationen ohne Markierungen (als Fahrradstraße oder Spielstraße) jedoch mit Kfz-Verkehr betrachten, so zeigt sich ein eher schlechtes durchschnittliches Sicherheitsempfinden. Die beste Variante erhält lediglich 33,40% sichere oder eher sichere Bewertungen."
+    }
+  ],
+  "research.05_results.p52": [
+    {
+      "type": 0,
+      "value": "Fahrradstraßen sind besser, aber nicht ausreichend"
+    }
+  ],
+  "research.05_results.p53": [
+    {
+      "type": 0,
+      "value": "Die Markierung von Fahrradstraßen verbessert das Sicherheitsempfinden, aber es werden keine besonders hohen Werte erreicht. Es wird maximal ein Wert von 45,03% sicherer oder eher sicherer Bewertungen erreicht. Bei Straßen ohne Parken und geführten Einbahnstraßen in Fahrtrichtung erhöht sich dieser Wert auf maximal 56,72%"
+    }
+  ],
+  "research.05_results.p53.image1": [
+    {
+      "type": 0,
+      "value": "Die bestbewertete Fahrradstraße mit KFZ-Verkehr in beide Richtungen"
+    }
+  ],
+  "research.05_results.p53.image2": [
+    {
+      "type": 0,
+      "value": "Die bestbewertete Fahrradstraße mit KFZ-Verkehr als Einbahnstraße in Fahrtrichtung"
+    }
+  ],
+  "research.05_results.p54": [
+    {
+      "type": 0,
+      "value": "Auffällig ist, dass Fahrradstraßen mit “Sondermarkierungen Dooring“ (Markierung der Dooring-Zone durch eine unterbrochene Linie, zusätzlich Markierung eines Doppelpfeils um das Nebeneinanderfahren von Radfahrenden anzuzeigen) schlechter abschneiden als solche mit einer großen Fahrradstraßen-Markierung auf der Fahrbahn. Dieser Vergleich ist durch die Darstellung in der Umfrage allerdings wenig aussagekräftig, da durch die Komposition der Bilder mehrere Faktoren (Kennzeichnung als Fahrradstraße, Optische Breite der zur Verfügung stehenden Fahrbahn, Position der Radfahrenden) die Bewertung beeinflussen können."
+    }
+  ],
+  "research.05_results.p55": [
+    {
+      "type": 0,
+      "value": "Die Holländische Lösung"
+    }
+  ],
+  "research.05_results.p56": [
+    {
+      "type": 0,
+      "value": "Wirklich gute Werte erhalten in den NVS lediglich die Varianten, bei denen kein fließender Kfz-Verkehr dargestellt wurde. Darunter sind auch Varianten mit parkenden Autos. (Dies würde z.B. der Situatione in einer Straße mit Durchfahrtssperren entsprechen, wo nur Anlieger einfahren können.) Die besten Bewertungen erhält die “holländische Lösung” mit aufgepflastertem Mittelstreifen und durchgehendem grünen Asphalt. Bei der Führung in Nebenstraßen scheint die optisch deutliche Signalisierung der Fahrradstraße eine hohe Bedeutung zu haben."
+    }
+  ],
+  "research.05_results.p57": [
+    {
+      "type": 0,
+      "value": "Bei den Varianten mit ruhendem Verkehr zeigen sich deutliche Unterschiede in der Markierungsart."
     }
   ],
   "research.05_results.p6": [
@@ -1550,12 +2087,6 @@
       "value": "Im Vergleich: laut Amt für Statistik Berlin Brandenburg sieht die Altersverteilung in Berlin (Stand 2018) so aus:"
     }
   ],
-  "research.05_results.p8.list": [
-    {
-      "type": 0,
-      "value": "über 65 Jahre 19%"
-    }
-  ],
   "research.05_results.p8.list1": [
     {
       "type": 0,
@@ -1592,6 +2123,12 @@
       "value": "50 bis 64 Jahre 20%"
     }
   ],
+  "research.05_results.p8.list7": [
+    {
+      "type": 0,
+      "value": "über 65 Jahre 19%"
+    }
+  ],
   "research.05_results.p9": [
     {
       "type": 0,
@@ -1612,10 +2149,192 @@
       "value": "Gerike et. al, Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020"
     }
   ],
+  "research.06_summary.p01.heading": [
+    {
+      "type": 0,
+      "value": "Zusammenfassung"
+    }
+  ],
+  "research.06_summary.p02": [
+    {
+      "type": 0,
+      "value": "Im Rahmen eines Forschungsprojektes des Nationalen Radverkehrsplan wurde der Frage nachgegangen, wie eine Fahrradinfrastruktur aussehen sollte, auf der sich alle sicher fühlen. Dazu wurde eine Online-Umfrage entwickelt, bei der die Teilnehmenden fotorealistische Darstellungen von Straßensituationen aus der Fahrperspektive nach ihrem Sicherheitsempfinden bewerten. Dadurch konnten die Einflüsse der einzelnen Merkmale kontrolliert und untersucht werden, jedoch entfielen damit auch weitere Einflüsse die zum vollständigen Empfinden einer Situation notwendig sind. Durch die Kooperation mit einer Berliner Tageszeitung konnte eine hohe Teilnehmendenzahl erreicht werden. Entsprechend ist der Wohnort von ca. 90% der Teilnehmenden Berlin. In der Umfrage waren zudem Männer, die Altersgruppe 30 bis 64 Jahre und hauptsächlich Radfahrende überrepräsentiert. Durch die hohe Gesamtzahl an Teilnehmenden sind jedoch eine ausreichende Anzahl von Bewertungen für die unterrepräsentierten Gruppen vorhanden. In einer ersten Auswertung zeigt die Umfrage, dass die Einflüsse unterschiedlicher Faktoren in ihren Wechselbeziehungen keine linearen Aussagen über die subjektive Sicherheit von Radinfrastruktur zulassen. Dennoch können einige zentrale Aussagen und Empfehlungen abgeleitet werden, wie eine “Radinfrastruktur für Alle” aussehen könnte."
+    }
+  ],
+  "research.06_summary.p03": [
+    {
+      "type": 0,
+      "value": "Die Hypothese, dass die Führung im Seitenraum sicherer als die Führung auf der Fahrbahn empfunden wird, konnte bestätigt werden."
+    }
+  ],
+  "research.06_summary.p04": [
+    {
+      "type": 0,
+      "value": "Bei breiten Gehwegen und keiner geschäftliche Nutzung ist die Führung im Seitenraum die am besten bewertete Alternative. Auch zu Fuß Gehende fühlen sich bei einer Führung des Radverkehrs im Seitenraum ausreichend sicher, wenn zusätzlich eine Trennung zum Radverkehr z.B. durch einen Grünstreifen klar erkennbar ist."
+    }
+  ],
+  "research.06_summary.p05": [
+    {
+      "type": 0,
+      "value": "Die Führung im Mischverkehr wird als sehr unsicher empfunden"
+    }
+  ],
+  "research.06_summary.p06": [
+    {
+      "type": 0,
+      "value": "Bei der Führung auf der Fahrbahn werden breite Radverkehrsanlagen als deutlich sicherer empfunden. Grüneinfärbungen und bauliche Trennungen erhöhen zusätzlich das Sicherheitsempfinden."
+    }
+  ],
+  "research.06_summary.p07": [
+    {
+      "type": 0,
+      "value": "Auch schmalere Radverkehrsanlagen bieten eine akzeptable subjektive Sicherheit, wenn Sie z.B. durch niedrige Poller vom KFZ-Verkehr getrennt sind und an Straßen ohne ruhenden Verkehr geführt werden."
+    }
+  ],
+  "research.06_summary.p08": [
+    {
+      "type": 0,
+      "value": "Bei Führung des Radverkehrs an einer Hauptverkehrsstraße mit ruhendem Verkehr wird die Lage rechts vom ruhenden Verkehr als sicherer empfunden. Eine Führung links des ruhenden Verkehrs wird generell als deutlich weniger sicher empfunden. Bei einer Führung links des ruhenden Verkehrs wurden Szenen die z.B. eine breite Radverkehrsanlage mit Grüneinfärbung haben als akzeptable sicher bewertet. Dabei ist zu beachten, dass zusätzliche Konflikte, wie Falschparker oder kreuzender Parkverkehr in der Umfrage nicht dargestellt wurden. Ebenso wurden Situationen an Knotenpunkten in der Umfrage nicht untersucht, eine Aussage zum Zusammenhang zwischen RVA an der Strecke und den Auswirkungen auf Knotenpunkte kann daher nicht getroffen werden."
+    }
+  ],
+  "research.06_summary.p09": [
+    {
+      "type": 0,
+      "value": "Auch Autofahrende empfinden gut ausgebaute Radverkehrsanlagen inklusive Poller als sicherer. Die Bewertungen sind von den Tendenzen ähnlich, wie die der Radfahrenden, wenn auch einige Gefahren, bzw. durch Dooring weniger stark eingeschätzt werden."
+    }
+  ],
+  "research.06_summary.p10": [
+    {
+      "type": 0,
+      "value": "Szenen in Nebenstraßen erhielten generell schlechtere Bewertungen als solche an Hauptverkehrsstraßen. Dieser Vergleich ist allerdings nur bedingt aussagekräftig, da in den statischen Bildern der Umfrage die Verkehrsmenge nicht ausreichend deutlich dargestellt werden konnte. Szenen, bei denen kein Fließender Kfz-Verkehr dargestellt wurde und eine deutliche Straßenmarkierung als Fahrradstraße vorhanden war erhielten die besten Bewertungen."
+    }
+  ],
+  "research.06_summary.p11": [
+    {
+      "type": 0,
+      "value": "Die Daten sind weiter zu analysieren. Der Ergebnisdatensatz ist frei verfügbar und wird bereits jetzt für weitere Auswertungen genutzt. Wir freuen uns bei Interesse über eine Kontaktaufnahme und verlinken hier gerne auf die Ergebnisse! In den nächsten Schritten ist ein Abgleich der Ergebnisse zur subjektiven Sicherheit mit dem tatsächlichen Unfallgeschehen durchzuführen, um Empfehlungen abzuleiten."
+    }
+  ],
+  "research.07_team.p01.heading": [
+    {
+      "type": 0,
+      "value": "Wer steht hinter der Umfrage"
+    }
+  ],
+  "research.07_team.p02": [
+    {
+      "type": 0,
+      "value": "FixMyCity unterstützt Städte bei der Umsetzung der Verkehrswende. Das Team setzt sich aus Entwickler:innen, Designer:innen, Verkehrsplaner:innen sowie Datenspezialist:innen zusammen und entwickelt digitale Tools, die eine offene und agile Verwaltungsarbeit ermöglichen. Um Städte und Kommunen auf diesem Weg zu begleiten, entwickelt FixMyCity Open-Government-Werkzeuge, die es Verwaltungen ermöglichen, die Verkehrswende gemeinsam mit den Bürger:innen umzusetzen. Die entwickelten digitalen Tools zur einfachen Bedarfsermittlung, effizienten Projektsteuerung, aktiven Bürgerkommunikation und intelligenten Datenanalyse beschleunigen die Radverkehrsplanung und erhöhen ihre Akzeptanz."
+    }
+  ],
+  "research.07_team.p03": [
+    {
+      "type": 0,
+      "value": "Das Team von FixMyCity arbeitet im CityLAB Berlin, wo auch die auf dieser Seite beschriebene Umfrage entstanden ist. Wenn Sie mehr über uns erfahren wollen, besuchen Sie uns unter "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " oder nehmen Sie direkt Kontakt mit uns auf."
+    }
+  ],
+  "research.07_team.p04": [
+    {
+      "type": 0,
+      "value": "Kontakt:"
+    }
+  ],
+  "research.07_team.p04.address": [
+    {
+      "type": 0,
+      "value": "Büroadresse:"
+    }
+  ],
+  "research.07_team.p04.funding": [
+    {
+      "type": 0,
+      "value": "FixMyCity wird gefördert durch das BMVI und die Senatskanzlei Berlin."
+    }
+  ],
+  "research.07_team.p04.phone": [
+    {
+      "type": 0,
+      "value": "Tel: 030 - 54 90 86 65"
+    }
+  ],
   "research.authors": [
     {
       "type": 0,
       "value": "FixMyCity Team"
+    }
+  ],
+  "research.components.barchart.labels.ratherSafe": [
+    {
+      "type": 0,
+      "value": "eher sicher"
+    }
+  ],
+  "research.components.barchart.labels.ratherUnsafe": [
+    {
+      "type": 0,
+      "value": "eher unsicher"
+    }
+  ],
+  "research.components.barchart.labels.safe": [
+    {
+      "type": 0,
+      "value": "sicher"
+    }
+  ],
+  "research.components.barchart.labels.unsafe": [
+    {
+      "type": 0,
+      "value": "unsicher"
+    }
+  ],
+  "research.components.feelsafe.label": [
+    {
+      "type": 1,
+      "value": "pct"
+    },
+    {
+      "type": 0,
+      "value": "% der Nutzer:innen in der "
+    },
+    {
+      "type": 1,
+      "value": "mode"
+    },
+    {
+      "type": 0,
+      "value": "-Perspektive fühlen sich sicher"
+    }
+  ],
+  "research.components.feelsafe.perspectives.bike": [
+    {
+      "type": 0,
+      "value": "Fahrrad"
+    }
+  ],
+  "research.components.feelsafe.perspectives.car": [
+    {
+      "type": 0,
+      "value": "Auto"
+    }
+  ],
+  "research.components.feelsafe.perspectives.walking": [
+    {
+      "type": 0,
+      "value": "Fuß"
+    }
+  ],
+  "research.introduction": [
+    {
+      "type": 0,
+      "value": "Die Mobilitätswende in Berlin und anderen Städten hat begonnen. Der Radverkehr soll gute Infrastruktur bekommen, auf der sich alle Menschen sicher fühlen. Was aber heißt “sicher für alle” konkret für die Planung von Radinfrastruktur? Wir haben eine Umfrage zur Untersuchung des subjektiven Sicherheitsempfindens durchgeführt, deren Ergebnisse wir hier vorstellen."
     }
   ],
   "research.kicker": [
@@ -1630,10 +2349,46 @@
       "value": "Studie zur subjektiven Sicherheit im Radverkehr - Ergebnisse und Datensatz einer Umfrage mit über 21.000 Teilnehmenden"
     }
   ],
-  "research.toc.introduction": [
+  "research.toc.About": [
+    {
+      "type": 0,
+      "value": "Umfragekonzept"
+    }
+  ],
+  "research.toc.Dataset": [
+    {
+      "type": 0,
+      "value": "Datensatz der Ergebnisse"
+    }
+  ],
+  "research.toc.Header": [
     {
       "type": 0,
       "value": "Einleitung"
+    }
+  ],
+  "research.toc.Results": [
+    {
+      "type": 0,
+      "value": "Statistische Auswertung"
+    }
+  ],
+  "research.toc.Summary": [
+    {
+      "type": 0,
+      "value": "Zusammenfassung"
+    }
+  ],
+  "research.toc.Team": [
+    {
+      "type": 0,
+      "value": "Wer steht hinter der Umfrage"
+    }
+  ],
+  "research.toc.introduction": [
+    {
+      "type": 0,
+      "value": "Über das Projekt"
     }
   ]
 }

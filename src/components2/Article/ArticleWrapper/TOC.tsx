@@ -1,4 +1,5 @@
 import React, { ReactElement } from 'react';
+import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
@@ -37,7 +38,12 @@ function TOC({ entries, activeIndex, hasActiveState = false }) {
 
   return (
     <TOCWrapper>
-      <TOCHeaderArticle as="h2">Gehe direkt zu einem Kapitel</TOCHeaderArticle>
+      <TOCHeaderArticle as="h2">
+        <FormattedMessage
+          id="components.article.tocHeader"
+          defaultMessage="Gehe direkt zu einem Kapitel"
+        />
+      </TOCHeaderArticle>
       {tocChildren.map((entry: ReactElement, index) => (
         <Entry
           entry={entry}

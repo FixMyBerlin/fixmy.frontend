@@ -11,7 +11,7 @@ const log = debug('fmc:intl');
  */
 const intlErrorHandler: IntlConfig['onError'] = (err) => {
   if (err.code === 'MISSING_TRANSLATION') {
-    // log(err.message);
+    log(err.message);
   } else {
     log('%O', err);
   }

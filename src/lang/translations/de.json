@@ -14,6 +14,9 @@
   "components.article.localeSwitcher.label": {
     "defaultMessage": "andere Sprache wählen"
   },
+  "components.article.tocHeader": {
+    "defaultMessage": "Gehe direkt zu einem Kapitel"
+  },
   "research.02_intro.cta": {
     "defaultMessage": "Direkt zur Auswertung"
   },

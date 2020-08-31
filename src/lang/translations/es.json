@@ -11,17 +11,11 @@
   "components.article.attribution": {
     "defaultMessage": "de"
   },
-  "components.article.localeSwitcher.english": {
-    "defaultMessage": ""
-  },
-  "components.article.localeSwitcher.german": {
-    "defaultMessage": ""
-  },
   "components.article.localeSwitcher.label": {
     "defaultMessage": "seleccione otro idioma"
   },
-  "components.article.localeSwitcher.spanish": {
-    "defaultMessage": ""
+  "components.article.tocHeader": {
+    "defaultMessage": "Ve directamente a un capítulo"
   },
   "research.02_intro.cta": {
     "defaultMessage": "DIRECTO A LA EVALUACIÓN"
@@ -1134,24 +1128,24 @@
     "defaultMessage": "Estudio sobre la seguridad subjetiva en la movilidad ciclista  - Resultados y datos de la encuesta realizada a más de 21.000 participantes"
   },
   "research.toc.About": {
-    "defaultMessage": "CONCEPTO DE LA ENCUESTA"
+    "defaultMessage": "Concepto de la encuesta"
   },
   "research.toc.Dataset": {
-    "defaultMessage": "datos de los resultados"
+    "defaultMessage": "Datos de los resultados"
   },
   "research.toc.Header": {
-    "defaultMessage": ""
+    "defaultMessage": "Ve directamente a una capilla"
   },
   "research.toc.Results": {
-    "defaultMessage": "VALORACIÓN ESTADÍSTICA"
+    "defaultMessage": "Valoración estadística"
   },
   "research.toc.Summary": {
     "defaultMessage": "Resumen"
   },
   "research.toc.Team": {
-    "defaultMessage": "QUIENES SE ENCUENTRAN ATRÁS DE LA ENCUESTA "
+    "defaultMessage": "Quiénes se encuentran atrás de la encuesta"
   },
   "research.toc.introduction": {
-    "defaultMessage": "SOBRE EL PROYECTO"
+    "defaultMessage": "Sobre el proyecto"
   }
 }

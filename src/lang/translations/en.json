@@ -11,17 +11,11 @@
   "components.article.attribution": {
     "defaultMessage": "by"
   },
-  "components.article.localeSwitcher.english": {
-    "defaultMessage": ""
-  },
-  "components.article.localeSwitcher.german": {
-    "defaultMessage": ""
-  },
   "components.article.localeSwitcher.label": {
     "defaultMessage": "choose another language"
   },
-  "components.article.localeSwitcher.spanish": {
-    "defaultMessage": ""
+  "components.article.tocHeader": {
+    "defaultMessage": "Go directly to a chapter"
   },
   "research.02_intro.cta": {
     "defaultMessage": "Go to statistical evaluation"
@@ -1128,7 +1122,7 @@
     "defaultMessage": ""
   },
   "research.kicker": {
-    "defaultMessage": "esearch result - Berlin street check"
+    "defaultMessage": "Research result - Berlin street check"
   },
   "research.title": {
     "defaultMessage": "Study on subjective safety when travelling by bicycle. Results and data from a survey of 21,000 participants."
@@ -1137,10 +1131,10 @@
     "defaultMessage": "Survey concept"
   },
   "research.toc.Dataset": {
-    "defaultMessage": ""
+    "defaultMessage": "Dataset of the survey results"
   },
   "research.toc.Header": {
-    "defaultMessage": "dataset of the survey results"
+    "defaultMessage": "Introduction"
   },
   "research.toc.Results": {
     "defaultMessage": "Statistical evaluation"
