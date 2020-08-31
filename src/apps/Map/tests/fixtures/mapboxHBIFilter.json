@@ -1,0 +1,263 @@
+[
+  [
+    "center",
+    [
+      "any",
+      [
+        "all",
+        [
+          ">",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "safety"], -1000],
+              ["to-number", ["get", "velocity"], -1000]
+            ]
+          ],
+          0
+        ],
+        [
+          "<",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "safety"], -1000],
+              ["to-number", ["get", "velocity"], -1000]
+            ]
+          ],
+          2.5
+        ]
+      ],
+      [
+        "all",
+        [
+          ">",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "safety"], -1000],
+              ["to-number", ["get", "velocity"], -1000]
+            ]
+          ],
+          2.5
+        ],
+        [
+          "<",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "safety"], -1000],
+              ["to-number", ["get", "velocity"], -1000]
+            ]
+          ],
+          5
+        ]
+      ],
+      [
+        "all",
+        [
+          ">",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "safety"], -1000],
+              ["to-number", ["get", "velocity"], -1000]
+            ]
+          ],
+          7.5
+        ],
+        [
+          "<",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "safety"], -1000],
+              ["to-number", ["get", "velocity"], -1000]
+            ]
+          ],
+          100
+        ]
+      ]
+    ]
+  ],
+  [
+    "side0",
+    [
+      "any",
+      [
+        "all",
+        [
+          ">",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side0_safety"], -1000],
+              ["to-number", ["get", "side0_velocity"], -1000]
+            ]
+          ],
+          0
+        ],
+        [
+          "<",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side0_safety"], -1000],
+              ["to-number", ["get", "side0_velocity"], -1000]
+            ]
+          ],
+          2.5
+        ]
+      ],
+      [
+        "all",
+        [
+          ">",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side0_safety"], -1000],
+              ["to-number", ["get", "side0_velocity"], -1000]
+            ]
+          ],
+          2.5
+        ],
+        [
+          "<",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side0_safety"], -1000],
+              ["to-number", ["get", "side0_velocity"], -1000]
+            ]
+          ],
+          5
+        ]
+      ],
+      [
+        "all",
+        [
+          ">",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side0_safety"], -1000],
+              ["to-number", ["get", "side0_velocity"], -1000]
+            ]
+          ],
+          7.5
+        ],
+        [
+          "<",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side0_safety"], -1000],
+              ["to-number", ["get", "side0_velocity"], -1000]
+            ]
+          ],
+          100
+        ]
+      ]
+    ]
+  ],
+  [
+    "side1",
+    [
+      "any",
+      [
+        "all",
+        [
+          ">",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side1_safety"], -1000],
+              ["to-number", ["get", "side1_velocity"], -1000]
+            ]
+          ],
+          0
+        ],
+        [
+          "<",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side1_safety"], -1000],
+              ["to-number", ["get", "side1_velocity"], -1000]
+            ]
+          ],
+          2.5
+        ]
+      ],
+      [
+        "all",
+        [
+          ">",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side1_safety"], -1000],
+              ["to-number", ["get", "side1_velocity"], -1000]
+            ]
+          ],
+          2.5
+        ],
+        [
+          "<",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side1_safety"], -1000],
+              ["to-number", ["get", "side1_velocity"], -1000]
+            ]
+          ],
+          5
+        ]
+      ],
+      [
+        "all",
+        [
+          ">",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side1_safety"], -1000],
+              ["to-number", ["get", "side1_velocity"], -1000]
+            ]
+          ],
+          7.5
+        ],
+        [
+          "<",
+          [
+            "number",
+            [
+              "+",
+              ["to-number", ["get", "side1_safety"], -1000],
+              ["to-number", ["get", "side1_velocity"], -1000]
+            ]
+          ],
+          100
+        ]
+      ]
+    ]
+  ]
+]
