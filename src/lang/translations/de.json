@@ -105,7 +105,7 @@
     "defaultMessage": "Aufgrund der Vielzahl von möglichen Einflussfaktoren und den daraus resultierenden Szenarien musste die Anzahl der Szenarien eingegrenzt werden. Nach Recherche des aktuellen Stands der Forschung wurden die wichtigsten Einflussfaktoren herausgearbeitet. Jedes Experiment besteht aus einer Grundansicht, zu welcher unterschiedliche Infrastrukturmerkmale hinzugefügt oder verändert werden können. Beispielsweise Experiment 1: Hauptverkehrsstraße - Radführung auf der Fahrbahn: Hier besteht das Grundbild aus einem Fahrstreifen, einer Radverkehrsanlage mit Trennung (links / rechts), einem Parkstreifen und dem Seitenraum:"
   },
   "research.03_concept.p15.imageLabel": {
-    "defaultMessage": "Beschriebenes Grundbild aus einem Fahrstreifen, einer Radverkehrsanlage mit Trennung (links / rechts), einem Parkstreifen und dem Seitenraum"
+    "defaultMessage": "Zuvor beschriebene Basis-Straßenszene"
   },
   "research.03_concept.p16": {
     "defaultMessage": "Während in diesem Experiment der Seitenraum immer gleich dargestellt wird, werden im Bereich des Fahrstreifens folgende Einflussfaktoren variiert:"
@@ -675,7 +675,7 @@
     "defaultMessage": "Mit den generierten Daten ist die Überprüfung von verschiedensten Hypothesen möglich. Ein besonderes Interesse der Forschung liegt beispielsweise auf der Nutzergruppe der potentiell Radfahrenden. Ab welcher Verkehrsinfrastruktur fühlt sich diese Nutzergruppe im Straßenraum sicher? Ist die Verkehrsstärke auch bei einer Trennung zwischen Rad- und Kfz-Verkehr eine ausschlaggebende Einflussgröße? Welche Verkehrsinfrastruktur empfinden die meisten Befragten als sicher? Ist die Breite oder die physische Trennung der RVA ausschlaggebend? Welche Führungsformen sind jeweils im Seitenraum, auf der Fahrbahn oder in Nebenverkehrsstraßen am geeignetsten? Einige dieser Hypothesen werden in der folgenden Auswertung überprüft."
   },
   "research.05_results.p10": {
-    "defaultMessage": "Weiter wurden in der Umfrage die Verfügbarkeit von Verkehrsmitteln,Motivationsfaktoren zum Radfahren bzw. Gründe nicht Rad zu fahrenabgefragt. Die Daten sind im Datensatz enthalten."
+    "defaultMessage": "Weiter wurden in der Umfrage die Verfügbarkeit von Verkehrsmitteln,Motivationsfaktoren zum Radfahren bzw. Gründe nicht Rad zu fahren abgefragt. Die Daten sind im Datensatz enthalten."
   },
   "research.05_results.p11": {
     "defaultMessage": "In der Zusammenfassung bildet die Umfrage keine repräsentative Gesamtheit der Berliner Bevölkerung ab. Radfahrende, Männer und die Altergruppe zwischen 30 und 64 Jahren ist deutlich überrepräsentiert. Aufgrund der hohen Anzahl an Teilnehmenden können jedoch auch Auswertungen für spezifische Untergruppen gemacht werden (z.B. Frauen über 74 Jahre: 143 Teilnehmerinnen). Bei der durchschnittlichen Bewertung der unterschiedlichen Szenen zeichnet sich für die Nutzermerkmale Geschlecht, Alter und Nutzungshäufigkeit folgendes Bild: Geschlecht"
