@@ -289,7 +289,7 @@ const SectionResults = ({
     <Paragraph>
       <FormattedMessage
         id="research.05_results.p10"
-        defaultMessage="Weiter wurden in der Umfrage die Verfügbarkeit von Verkehrsmitteln,Motivationsfaktoren zum Radfahren bzw. Gründe nicht Rad zu fahrenabgefragt. Die Daten sind im Datensatz enthalten."
+        defaultMessage="Weiter wurden in der Umfrage die Verfügbarkeit von Verkehrsmitteln,Motivationsfaktoren zum Radfahren bzw. Gründe nicht Rad zu fahren abgefragt. Die Daten sind im Datensatz enthalten."
       />
     </Paragraph>
     <Paragraph>

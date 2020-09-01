@@ -246,8 +246,7 @@ const SectionAbout = ({ toc, intl }: Props) => (
       source={image1}
       alt={intl.formatMessage({
         id: 'research.03_concept.p15.imageLabel',
-        defaultMessage:
-          'Beschriebenes Grundbild aus einem Fahrstreifen, einer Radverkehrsanlage mit Trennung (links / rechts), einem Parkstreifen und dem Seitenraum'
+        defaultMessage: 'Zuvor beschriebene Basis-Straßenszene'
       })}
     />
     <Paragraph>

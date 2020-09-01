@@ -89,7 +89,7 @@ const App = ({ dispatch, isEmbedMode }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: RootState) => ({
   isEmbedMode: state.AppState.isEmbedMode
 });
 
