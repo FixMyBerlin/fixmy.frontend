@@ -1,5 +1,6 @@
-import { IntlConfig } from 'react-intl';
+import { IntlConfig, ReactIntlErrorCode } from 'react-intl';
 import debug from 'debug';
+import config from '~/config';
 
 const log = debug('fmc:intl');
 
@@ -10,8 +11,8 @@ const log = debug('fmc:intl');
  * @param err react-intl error message
  */
 const intlErrorHandler: IntlConfig['onError'] = (err) => {
-  if (err.code === 'MISSING_TRANSLATION') {
-    log(err.message);
+  if (err.code === ReactIntlErrorCode.MISSING_TRANSLATION) {
+    if (config.intl.logMissingTranslations) log(err.message);
   } else {
     log('%O', err);
   }
