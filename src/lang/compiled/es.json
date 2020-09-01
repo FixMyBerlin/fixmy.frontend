@@ -226,6 +226,10 @@
     }
   ],
   "research.03_concept.p15.imageLabel": [
+    {
+      "type": 0,
+      "value": "La escena de la calle descrita anteriormente"
+    }
   ],
   "research.03_concept.p16": [
     {
@@ -276,10 +280,30 @@
     }
   ],
   "research.03_concept.p18": [
+    {
+      "type": 0,
+      "value": "También se muestran escenarios con o sin vehículos estacionados."
+    }
   ],
   "research.03_concept.p19": [
+    {
+      "type": 0,
+      "value": "Dependiendo del tipo, los escenarios se mostraron además de la perspectiva del ciclista desde una perspectiva de automovilistas y / o peatones. Se crearon un total de 1900 escenarios y 3000 archivos de imágenes (incluida la perspectiva de automovilistas y de peatones). Una documentación más detallada sobre la sistemática de los escenarios viales puede encontrarse "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
   ],
   "research.03_concept.p19.link": [
+    {
+      "type": 0,
+      "value": "aquí (PDF-Download, disponible sólo en alemán)"
+    }
   ],
   "research.03_concept.p2": [
     {
@@ -288,8 +312,24 @@
     }
   ],
   "research.03_concept.p20": [
+    {
+      "type": 0,
+      "value": "En "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " se puede encontrar una descripción general de las escenas y sus características."
+    }
   ],
   "research.03_concept.p20.link": [
+    {
+      "type": 0,
+      "value": "esta tabla (ODS-Download, disponible sólo en alemán)"
+    }
   ],
   "research.03_concept.p3": [
     {
@@ -429,9 +469,11 @@
       "value": "diverso"
     }
   ],
-  "research.05_results.chart1.label": [
-  ],
   "research.05_results.chart1.title": [
+    {
+      "type": 0,
+      "value": "Valoración según género"
+    }
   ],
   "research.05_results.chart10.1": [
     {
@@ -636,8 +678,6 @@
       "type": 0,
       "value": "Calzada, carril bici a la derecha del estacionamiento"
     }
-  ],
-  "research.05_results.chart13.label": [
   ],
   "research.05_results.chart13.title": [
     {
@@ -898,6 +938,10 @@
     }
   ],
   "research.05_results.chart2.label": [
+    {
+      "type": 0,
+      "value": "Promedio de todas las evaluaciones según la edad de los participantes"
+    }
   ],
   "research.05_results.chart2.title": [
     {
@@ -1074,6 +1118,10 @@
     }
   ],
   "research.05_results.chart3.label": [
+    {
+      "type": 0,
+      "value": "Promedio de todas las clasificaciones según la frecuencia de uso de la bicicleta entre los participantes"
+    }
   ],
   "research.05_results.chart3.title": [
     {
@@ -1094,6 +1142,10 @@
     }
   ],
   "research.05_results.chart4.3": [
+    {
+      "type": 0,
+      "value": "sin carril (conductores frecuentes)"
+    }
   ],
   "research.05_results.chart4.label": [
     {
@@ -1324,10 +1376,22 @@
     }
   ],
   "research.05_results.p10": [
+    {
+      "type": 0,
+      "value": "La encuesta también preguntó acerca de la disponibilidad de medios de transporte, los factores de motivación para andar en bicicleta y las razones para no hacerlo. Los datos están contenidos en el archivo."
+    }
   ],
   "research.05_results.p11": [
+    {
+      "type": 0,
+      "value": "En resumen, la encuesta no representa un total representativo de la población de Berlín. Los ciclistas, los hombres y el grupo de edad entre 30 y 64 años están claramente sobrerrepresentados. Sin embargo, debido al alto número de participantes, también se pueden realizar evaluaciones para subgrupos específicos (por ejemplo, mujeres mayores de 74 años: 143 participantes). Con la evaluación media de las diferentes escenas, surge el siguiente gráfico para las valoraciones del usuario diferenciadas según su género, edad y frecuencia de uso."
+    }
   ],
   "research.05_results.p12": [
+    {
+      "type": 0,
+      "value": "Al evaluar las diferentes características, los resultados difieren sólo ligeramente entre los grupos de usuarios. En consecuencia, no se hizo ninguna diferenciación adicional para una evaluación complementaria"
+    }
   ],
   "research.05_results.p13": [
     {
@@ -1378,8 +1442,16 @@
     }
   ],
   "research.05_results.p15.image1": [
+    {
+      "type": 0,
+      "value": "*69,09% de los usuarios calificaron esta situación sin franjas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
   ],
   "research.05_results.p15.image2": [
+    {
+      "type": 0,
+      "value": "32,76% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
   ],
   "research.05_results.p16": [
     {
@@ -1442,8 +1514,16 @@
     }
   ],
   "research.05_results.p20.image1": [
+    {
+      "type": 0,
+      "value": "*73,68% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
   ],
   "research.05_results.p20.image2": [
+    {
+      "type": 0,
+      "value": "*69,09% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
   ],
   "research.05_results.p21": [
     {
@@ -1452,8 +1532,16 @@
     }
   ],
   "research.05_results.p21.image1": [
+    {
+      "type": 0,
+      "value": "*70,71% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
   ],
   "research.05_results.p21.image2": [
+    {
+      "type": 0,
+      "value": "*32,23% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
   ],
   "research.05_results.p22": [
     {
@@ -1468,12 +1556,28 @@
     }
   ],
   "research.05_results.p22.image1": [
+    {
+      "type": 0,
+      "value": "*80,37% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
   ],
   "research.05_results.p22.image2": [
+    {
+      "type": 0,
+      "value": "*69,09% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
   ],
   "research.05_results.p22.image3": [
+    {
+      "type": 0,
+      "value": "*77,87% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
   ],
   "research.05_results.p22.image4": [
+    {
+      "type": 0,
+      "value": "*70,71% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
   ],
   "research.05_results.p23": [
     {
@@ -1494,8 +1598,16 @@
     }
   ],
   "research.05_results.p24.image1": [
+    {
+      "type": 0,
+      "value": "Con el 90,65%, la separación estructural más segura es el carril estrecho sin coloración verde. La variante con coloración verde llega al 97,52%."
+    }
   ],
   "research.05_results.p24.image2": [
+    {
+      "type": 0,
+      "value": "Con un 98,38 %, la separación estructural más segura es con un amplio carril sin coloración verde. La variante con coloración verde llega al 99,11%"
+    }
   ],
   "research.05_results.p25": [
     {
@@ -1666,8 +1778,16 @@
     }
   ],
   "research.05_results.p39.image1": [
+    {
+      "type": 0,
+      "value": "Si hay tráfico fluido en el lado izquierdo del carril, la separación física en el lado derecho es problemática."
+    }
   ],
   "research.05_results.p39.image2": [
+    {
+      "type": 0,
+      "value": "Mejor es la separación por una estrecha franja verde."
+    }
   ],
   "research.05_results.p4": [
     {
@@ -1826,8 +1946,16 @@
     }
   ],
   "research.05_results.p53.image1": [
+    {
+      "type": 0,
+      "value": "La carretera para bicicletas mejor valorada con tráfico de coches en ambas direcciones"
+    }
   ],
   "research.05_results.p53.image2": [
+    {
+      "type": 0,
+      "value": "La calle para bicicletas mejor clasificada, con tráfico de coches como calle de un solo sentido en la dirección de la marcha"
+    }
   ],
   "research.05_results.p54": [
     {
@@ -2106,6 +2234,26 @@
     }
   ],
   "research.components.feelsafe.label": [
+    {
+      "type": 0,
+      "value": "El "
+    },
+    {
+      "type": 1,
+      "value": "pct"
+    },
+    {
+      "type": 0,
+      "value": "% de los usuarios en la perspectiva \""
+    },
+    {
+      "type": 1,
+      "value": "mode"
+    },
+    {
+      "type": 0,
+      "value": "\" se sienten seguros"
+    }
   ],
   "research.components.feelsafe.perspectives.bike": [
     {
@@ -2126,6 +2274,10 @@
     }
   ],
   "research.introduction": [
+    {
+      "type": 0,
+      "value": "El cambio hacia una movilidad urbana sostenible ha empezado en Berlín y en otras ciudades. El ciclismo debe recibir una buena infraestructura, en la cual todas las personas se sientan seguras. Pero, ¿qué significa concretamente ”sentirse seguro” para la planificación de nuevas infraestructuras? Realizamos una encuesta para analizar la percepción de seguridad, aquí les presentamos los resultados."
+    }
   ],
   "research.kicker": [
     {

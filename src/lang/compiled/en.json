@@ -226,6 +226,10 @@
     }
   ],
   "research.03_concept.p15.imageLabel": [
+    {
+      "type": 0,
+      "value": "Basic scene as described above with labels"
+    }
   ],
   "research.03_concept.p16": [
     {
@@ -276,17 +280,29 @@
     }
   ],
   "research.03_concept.p18": [
+    {
+      "type": 0,
+      "value": "Furthermore, a number of parked vehicles is displayed or not."
+    }
   ],
   "research.03_concept.p19": [
     {
       "type": 0,
-      "value": "Depending on the style of the cycle route the scenarios were also re-rendered from the perspective of a motorist and a pedestrian in addition to the cyclist perspective. Using this approach, we created 1900 scenarios with 3000 images (including the motorist and pedestrian perspective)."
+      "value": "Depending on the style of the cycle route the scenarios were also re-rendered from the perspective of a motorist and a pedestrian in addition to the cyclist perspective. Using this approach, we created 1900 scenarios with 3000 images (including the motorist and pedestrian perspective). Click "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " to read a more detailed documentation of the process of creating the street scenarios"
     }
   ],
   "research.03_concept.p19.link": [
     {
       "type": 0,
-      "value": "pdf download"
+      "value": "here (PDF-download)"
     }
   ],
   "research.03_concept.p2": [
@@ -298,13 +314,21 @@
   "research.03_concept.p20": [
     {
       "type": 0,
-      "value": "Click here to browse an overview of the different street scenes and their different characteristics:"
+      "value": "Click "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " to browse a tabular overview of the different street scenes and their characteristics:"
     }
   ],
   "research.03_concept.p20.link": [
     {
       "type": 0,
-      "value": "Download ods"
+      "value": "here (ODS-download)"
     }
   ],
   "research.03_concept.p3": [
@@ -446,8 +470,16 @@
     }
   ],
   "research.05_results.chart1.label": [
+    {
+      "type": 0,
+      "value": "Average safety rating grouped by gender"
+    }
   ],
   "research.05_results.chart1.title": [
+    {
+      "type": 0,
+      "value": "Ratings by gender"
+    }
   ],
   "research.05_results.chart10.1": [
     {
@@ -652,8 +684,6 @@
       "type": 0,
       "value": "Road with cycle path on the right-hand side of the parking strip"
     }
-  ],
-  "research.05_results.chart13.label": [
   ],
   "research.05_results.chart13.title": [
     {
@@ -916,7 +946,7 @@
   "research.05_results.chart2.label": [
     {
       "type": 0,
-      "value": "The average safety rating given by each main demographic group (gender, age and frequency of travel by bike) tells us this much:"
+      "value": "Average safety rating grouped by age"
     }
   ],
   "research.05_results.chart2.title": [
@@ -1096,7 +1126,7 @@
   "research.05_results.chart3.label": [
     {
       "type": 0,
-      "value": "Note: The average safety rating given by each main demographic group (gender, age and frequency of travel by bike) tells us this much:"
+      "value": "Average safety rating grouped by frequency of bike travel"
     }
   ],
   "research.05_results.chart3.title": [
@@ -1352,10 +1382,22 @@
     }
   ],
   "research.05_results.p10": [
+    {
+      "type": 0,
+      "value": "Participants were also asked about the accessibility of different modes of transport and the reasons that motivate them to travel by bike or discourage them from cycling. These answers are available to read in the downloadable dataset. "
+    }
   ],
   "research.05_results.p11": [
+    {
+      "type": 0,
+      "value": "In sum, the demographics reflected in the survey do not reflect the composition of the population of Berlin. Cyclists, men and people between 30 and 64 years old are significantly overrepresented. Due to the large number of participants, it is nonetheless possible to draw conclusions from the results for specific demographic sub-groups (e.g. women over 74: 143 participants)."
+    }
   ],
   "research.05_results.p12": [
+    {
+      "type": 0,
+      "value": "When split by these characteristics, the results differ only slightly between groups. For this reason, we decided not to split the results for the next stages of the analysis."
+    }
   ],
   "research.05_results.p13": [
     {
@@ -2198,6 +2240,14 @@
     }
   ],
   "research.components.feelsafe.label": [
+    {
+      "type": 1,
+      "value": "pct"
+    },
+    {
+      "type": 0,
+      "value": "% of users in the {mode}-perspective felt safe here"
+    }
   ],
   "research.components.feelsafe.perspectives.bike": [
     {
@@ -2218,6 +2268,10 @@
     }
   ],
   "research.introduction": [
+    {
+      "type": 0,
+      "value": "The mobility revolution has begun in Berlin and many other cities. Cyclists are looking forward to improved infrastructure, infrastructure in which everyone feels safe. But what does “safety for everyone” actually mean in regards to how we design and plan cycle infrastructure? We carried out a survey to investigate subjective perceptions of safety on the road; in this article, we bring the results of this survey to light."
+    }
   ],
   "research.kicker": [
     {
