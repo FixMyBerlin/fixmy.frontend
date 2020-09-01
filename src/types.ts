@@ -34,6 +34,7 @@ export interface DefaultConfig {
   routes: any;
   staticpages: any;
   titleFont: string;
+  intl: I18NConfig;
 }
 
 export interface RegionConfig extends Partial<DefaultConfig> {
@@ -86,4 +87,8 @@ export interface PiwikService {
   url: string;
   siteId: number;
   options: object;
+}
+
+export interface I18NConfig {
+  logMissingTranslations: boolean;
 }
