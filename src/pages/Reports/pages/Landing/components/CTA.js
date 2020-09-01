@@ -58,9 +58,9 @@ JoinButton.propTypes = {
 };
 
 JoinButton.defaultProps = {
-  toUrl: config.reports.enabled
-    ? config.routes.reports.new
-    : config.routes.reports.map
+  toUrl: config.reports?.enabled
+    ? config.routes.reports?.new
+    : config.routes.reports?.map
 };
 
 export default JoinButton;
