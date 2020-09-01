@@ -31,11 +31,7 @@
           "contentMediaType": "image/jpg"
         }
       },
-      "required": [
-        "address",
-        "details",
-        "geometry"
-      ],
+      "required": ["address", "details", "geometry"],
       "title": "Report"
     },
     "Geometry": {
@@ -57,10 +53,7 @@
           }
         }
       },
-      "required": [
-        "type",
-        "coordinates"
-      ],
+      "required": ["type", "coordinates"],
       "title": "Geometry"
     },
     "BikeStands": {
@@ -81,11 +74,7 @@
           "description": "Is the person willing to pay for bicycle parking"
         }
       },
-      "required": [
-        "subject",
-        "number",
-        "fee_acceptable"
-      ],
+      "required": ["subject", "number", "fee_acceptable"],
       "title": "Bike stands"
     }
   }

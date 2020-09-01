@@ -1,6 +1,5 @@
 import React from 'react';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
-import { connect } from 'react-redux';
 
 import {
   ArticleWrapper,
@@ -14,6 +13,7 @@ import SectionAbout from './sections/03_concept';
 import SectionDataset from './sections/04_dataset';
 import SectionResults from './sections/05_results';
 import SectionTeam from './sections/06_team';
+import { LocaleCode } from '~/types';
 
 const messages = defineMessages({
   tocIntroduction: {
@@ -30,13 +30,20 @@ const messages = defineMessages({
   }
 });
 
-const Research = ({ intl, dispatch }) => (
-  <ArticleWrapper hasToc>
+// const LOCALES: LocaleCode[] = ['de', 'en', 'es'];
+
+const Research = ({ intl }) => (
+  <ArticleWrapper
+    hasToc
+    bannerTitle={intl.formatMessage(messages.kicker)}
+    // locales={LOCALES}
+  >
     <ArticleHeader
       toc={intl.formatMessage(messages.tocIntroduction)}
       kicker={intl.formatMessage(messages.kicker)}
       publishDate={new Date(2020, 6, 6, 7, 0)}
       author={intl.formatMessage(messages.authors)}
+      // locales={LOCALES}
     >
       <FormattedMessage
         id="research.title"
@@ -60,4 +67,4 @@ const Research = ({ intl, dispatch }) => (
   </ArticleWrapper>
 );
 
-export default connect()(injectIntl(Research));
+export default injectIntl(Research);

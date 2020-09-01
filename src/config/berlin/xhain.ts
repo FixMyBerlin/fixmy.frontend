@@ -97,7 +97,7 @@ const xhain: DistrictConfig = {
           region: 'Kreuzberg',
           schedule:
             'In der Ferienzeit: Sonntags 15–18 Uhr, ab 01.08.: Samstags 11–15 Uhr',
-          status: 'open'
+          status: 'closed'
         },
         {
           street: 'Böckstraße',

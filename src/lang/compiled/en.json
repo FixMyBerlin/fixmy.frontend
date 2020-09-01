@@ -1,17 +1,17 @@
 {
-  "components.article.localeSwitcher.english": [
-    {
-      "type": 0,
-      "value": "English"
-    }
-  ],
-  "components.article.localeSwitcher.german": [
+  "common.localeSwitcher.labelDE": [
     {
       "type": 0,
       "value": "German"
     }
   ],
-  "components.article.localeSwitcher.spanish": [
+  "common.localeSwitcher.labelEN": [
+    {
+      "type": 0,
+      "value": "English"
+    }
+  ],
+  "common.localeSwitcher.labelES": [
     {
       "type": 0,
       "value": "Spanish"

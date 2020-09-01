@@ -1,6 +1,6 @@
 import React from 'react';
 
-import JoinButton from './components/JoinButton';
+import CTA from './components/CTA';
 import HowItWorksSection from './components/HowItWorksSecion';
 import Quote from './components/QuoteWeisbrich';
 import MapLink from './components/MapLink';
@@ -12,11 +12,11 @@ const BerlinLanding = () => (
     <HowItWorksSection />
     <HorizontalRuler className="light" />
     <Quote />
-    <JoinButton />
+    <CTA />
     <MapLink />
     <HorizontalRuler className="light" />
     <Faq />
-    <JoinButton />
+    <CTA />
     <MapLink />
   </>
 );

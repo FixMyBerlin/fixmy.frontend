@@ -76,9 +76,6 @@ module.exports = {
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'cache-loader'
-          },
-          {
             loader: 'babel-loader',
             query: { cacheDirectory: true }
           },

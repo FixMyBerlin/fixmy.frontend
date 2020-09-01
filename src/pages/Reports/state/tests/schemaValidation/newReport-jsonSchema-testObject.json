@@ -2,10 +2,7 @@
   "address": "Karl-Liebknecht-Straße 9, 10178 Berlin",
   "geometry": {
     "type": "Point",
-    "coordinates": [
-      13.406372256327131,
-      52.5209746668792
-    ]
+    "coordinates": [13.406372256327131, 52.5209746668792]
   },
   "details": {
     "subject": "BIKE_STANDS",

@@ -1,20 +1,26 @@
 {
-  "components.article.localeSwitcher.english": [
-    {
-      "type": 0,
-      "value": "Englisch"
-    }
-  ],
-  "components.article.localeSwitcher.german": [
+  "common.localeSwitcher.labelDE": [
     {
       "type": 0,
       "value": "Deutsch"
     }
   ],
-  "components.article.localeSwitcher.spanish": [
+  "common.localeSwitcher.labelEN": [
+    {
+      "type": 0,
+      "value": "Englisch"
+    }
+  ],
+  "common.localeSwitcher.labelES": [
     {
       "type": 0,
       "value": "Spanisch"
+    }
+  ],
+  "components.article.localeSwitcher.label": [
+    {
+      "type": 0,
+      "value": "andere Sprache wählen"
     }
   ],
   "research.authors": [

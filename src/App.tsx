@@ -23,6 +23,7 @@ import { getTheme } from '~/styles/mui-utils';
 
 import defaultMessages from '~/lang/compiled/de.json';
 import loadLocaleMessages from './lang/loader';
+import polyfill from './utils/polyfill-intl';
 
 const log = debug('fmc');
 
@@ -49,6 +50,7 @@ const App = ({ dispatch, isEmbedMode }) => {
     const doLoad = async () => {
       setMessages(await loadLocaleMessages(locale));
       setTheme(getTheme(locale));
+      polyfill(locale);
     };
     doLoad();
   }, [locale]);
