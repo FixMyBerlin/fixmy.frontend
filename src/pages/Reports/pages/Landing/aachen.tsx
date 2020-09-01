@@ -2,13 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
-import JoinButton from './components/JoinButton';
+import CTA from './components/CTA';
 import HowItWorksSection from './components/HowItWorksSecion';
 import Quote from './components/QuoteAachen';
 import MapLink from './components/MapLink';
 import Faq from './components/Faq';
 import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
 import FahrRadLogo from '~/images/aachen/fahr-rad-logo@2x.png';
+import config from '~/pages/Reports/config';
 
 const BottomLogo = styled.img`
   margin: 5em auto 3em;
@@ -24,17 +25,21 @@ const LogoWrapper = styled.div`
   justify-content: center;
 `;
 
+const HR = styled(HorizontalRuler)`
+  margin-top: 2em;
+`;
+
 const AachenLanding = () => (
   <>
     <HowItWorksSection />
-    <HorizontalRuler className="light" />
+    <HR className="light" />
     <Quote />
-    <JoinButton />
-    <MapLink />
-    <HorizontalRuler className="light" />
+    <CTA />
+    {config.reports.enabled && <MapLink />}
+    <HR className="light" />
     <Faq />
-    <JoinButton />
-    <MapLink />
+    <CTA />
+    {config.reports.enabled && <MapLink />}
     <LogoWrapper>
       <BottomLogo src={FahrRadLogo} />
     </LogoWrapper>

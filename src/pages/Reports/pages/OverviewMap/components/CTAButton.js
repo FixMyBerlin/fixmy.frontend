@@ -42,19 +42,24 @@ const PlusIcon = styled(Plus)`
   box-sizing: content-box;
 `;
 
-const AddButton = ({ onTab, shiftLeft }) => (
+const CTAButton = ({ onTab, shiftLeft }) => (
   <Button onClick={onTab} className="wiggle" shiftLeft={shiftLeft}>
-    <PlusIcon /> Neue Meldung
+    {config.reports.enabled && (
+      <>
+        <PlusIcon /> Neue Meldung
+      </>
+    )}
+    {!config.reports.enabled && <>Mehr Infos</>}
   </Button>
 );
 
-AddButton.propTypes = {
+CTAButton.propTypes = {
   onTab: PropTypes.func.isRequired,
   shiftLeft: PropTypes.bool // if true, position more to the left to leave space for foldout
 };
 
-AddButton.defaultProps = {
+CTAButton.defaultProps = {
   shiftLeft: false
 };
 
-export default AddButton;
+export default CTAButton;
