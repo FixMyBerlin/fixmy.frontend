@@ -24,7 +24,16 @@ class Reports extends PureComponent {
             path={`${config.routes.reports.map}/:id?`}
             component={OverviewMap}
           />
-          <Route path={config.routes.reports.new} component={SubmitReport} />
+          <Route
+            path={config.routes.reports.new}
+            render={(props) =>
+              config.reports.enabled ? (
+                <SubmitReport {...props} />
+              ) : (
+                <Redirect to={config.routes.reports.landing} />
+              )
+            }
+          />
           <Route
             exact
             path={config.routes.reports.index}

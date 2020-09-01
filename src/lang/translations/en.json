@@ -7,5 +7,1142 @@
   },
   "common.localeSwitcher.labelES": {
     "defaultMessage": "Spanish"
+  },
+  "components.article.attribution": {
+    "defaultMessage": "by"
+  },
+  "components.article.localeSwitcher.label": {
+    "defaultMessage": "choose another language"
+  },
+  "components.article.tocHeader": {
+    "defaultMessage": "Go directly to a chapter"
+  },
+  "research.02_intro.cta": {
+    "defaultMessage": "Go to statistical evaluation"
+  },
+  "research.02_intro.heading": {
+    "defaultMessage": "About the project"
+  },
+  "research.02_intro.images1.label1": {
+    "defaultMessage": "99.11% of cyclists rate this scenario as ‘safe’ or ‘rather safe’"
+  },
+  "research.02_intro.images1.label2": {
+    "defaultMessage": "96.84% of motorists rate this scenario as ‘safe’ or ‘rather safe’"
+  },
+  "research.02_intro.p1": {
+    "defaultMessage": "Until now, very little was known about which types of street configurations, cycle infrastructure and junctions are found to be safest from the perspective of the citizens travelling through those systems. Even less was known about how different street characteristics alter this perception of safety - characteristics such as the design, width and position of a cycle path or the setup either side of said route. Are cycle paths with protective bollards the best solution to reduce the palpable conflict between motor and cycle traffic, or is the width of the cycle path the deciding factor? What effect does the colour of the cycle path have? Which conditions help cyclists to feel their safest when the cycle path is on the pavement or on the road?"
+  },
+  "research.02_intro.p2": {
+    "defaultMessage": "To close this gap in our knowledge, we developed a survey entitled “Straßencheck” (‘Street Check-up’) and carried out the survey in cooperation with the Berlin Tagesspiegel (a mainstream newspaper).  21,000 participants rated 1900 variations of common street configurations as illustrated with 3D imagery. The fundamental structure of the survey (see {link}) involved categorising various street configurations and their differing characteristics. This allowed us to analyse the extent to which individual characteristics - such as cycle path width, path surface, physical barriers, parking on the right side of the cycle path etc - make a difference. We were also able to gain insights into how the perceived sense of safety differs between different groups of road users and from the perspective of both motorists and pedestrians.\n"
+  },
+  "research.02_intro.p2.link": {
+    "defaultMessage": "“Survey concept”"
+  },
+  "research.02_intro.p3": {
+    "defaultMessage": "When a cycle route is implemented along the road, cyclists feel safest with the street configuration shown in the left image above, compared to all other variations. Motorists prefer almost exactly the same configuration but without the green colouring. The wide, green-coloured cycle path, separated from the motor traffic by planters, received the most ‘safe’ ratings (83.93%) and ‘mostly safe’ ratings (15.18%). On average, however, cycle paths running along the pavement were felt to be safer than those running next to moving traffic. Routes along minor roads and side streets were perceived to be extremely unsafe if the street was not marked as ‘car-free’. Detailed analysis of the different types of cycle paths and their influencing factors, including from the perspective of motorists and pedestrians, will be presented in the statistical evaluation section of this report."
+  },
+  "research.02_intro.p4": {
+    "defaultMessage": "The Berlin Tagespiegel have written up their own analysis of the results - click {link} to read the article."
+  },
+  "research.02_intro.p4.link": {
+    "defaultMessage": "here"
+  },
+  "research.03_concept.heading": {
+    "defaultMessage": "Survey concept"
+  },
+  "research.03_concept.p1": {
+    "defaultMessage": "To enable participants to take part in the survey online, an interface was built whereby users can rate photorealistic illustrations of various street configurations. Using a four-point scale, these street scenarios could be scored according to the individual’s subjective feeling of safety in each situation."
+  },
+  "research.03_concept.p1.quote": {
+    "defaultMessage": "To make subjective safety a measurable metric we had to develop a complex system of street scenarios and reach a high number of participants (The challenge)"
+  },
+  "research.03_concept.p1.quoteSource": {
+    "defaultMessage": "The challenge"
+  },
+  "research.03_concept.p10": {
+    "defaultMessage": "Such questions included:"
+  },
+  "research.03_concept.p10.list1": {
+    "defaultMessage": "the use of various modes of transport (modal split)"
+  },
+  "research.03_concept.p10.list2": {
+    "defaultMessage": "the modes of transport available to the participant"
+  },
+  "research.03_concept.p10.list3": {
+    "defaultMessage": "length of the most frequent cycle ride made by the participant (in minutes)"
+  },
+  "research.03_concept.p10.list4": {
+    "defaultMessage": "the participant’s motivations for cycling, and"
+  },
+  "research.03_concept.p10.list5": {
+    "defaultMessage": "any reasons the participant might have for not travelling by bike."
+  },
+  "research.03_concept.p11": {
+    "defaultMessage": "Once this section of the survey was completed a data set was created for the participant."
+  },
+  "research.03_concept.p12": {
+    "defaultMessage": "Based on the participants’ answers about how often they use various modes of transport, each person was categorised either as a cyclist, pedestrian or motorist as per their most regularly used mode of transport (the participant was not made aware of their category).The participant was then shown five to ten street scenes from the perspective of their transport group. The scenes could be rated on a four-point scale from ‘unsafe’, ‘rather unsafe’, ‘rather safe’ to ‘safe’. Finally the participant could choose whether they wished to rate more scenarios or change to the perspective of a different road user (i.e. from cyclist to motorist etc). After another ten scenarios, the participant was given the same option again. The survey could thus be continued as long as the participant wished. On average, each participant rated 22 scenarios."
+  },
+  "research.03_concept.p12.heading": {
+    "defaultMessage": "Ratings of scenarios"
+  },
+  "research.03_concept.p13": {
+    "defaultMessage": "For this survey we chose to present scenes of different streets as photorealistic 3D renderings. The various street configurations were grouped into three experiments:"
+  },
+  "research.03_concept.p13.heading": {
+    "defaultMessage": "Defining the range of illustrations"
+  },
+  "research.03_concept.p14.list1": {
+    "defaultMessage": "Main roads - cycle routes along the road"
+  },
+  "research.03_concept.p14.list2": {
+    "defaultMessage": "Minor/side roads - cycle routes along the road"
+  },
+  "research.03_concept.p14.list3": {
+    "defaultMessage": "Cycle routes along the pavement (on main roads)"
+  },
+  "research.03_concept.p15": {
+    "defaultMessage": "Due to the variety of potential influencing factors and the resulting range of scenarios, it was necessary to limit the number of scenarios in the survey. After looking into the current state of research in this area we were able to identify the most important influencing factors. Each experiment consists of a foundational scene, within which various infrastructure elements can be added or adjusted. For example: For experiment 1 (Main road - cycle routes along the road), the foundational image is a car lane, a cycle path with a divider (left/right), a parking strip and the pavement:"
+  },
+  "research.03_concept.p15.imageLabel": {
+    "defaultMessage": "Basic scene as described above with labels"
+  },
+  "research.03_concept.p16": {
+    "defaultMessage": "In this experiment, the configuration of the pavement does not change but the following influencing factors within the car lanes area are varied from image to image:"
+  },
+  "research.03_concept.p16.list1": {
+    "defaultMessage": "speed limit"
+  },
+  "research.03_concept.p16.list2": {
+    "defaultMessage": "volume of traffic"
+  },
+  "research.03_concept.p16.list3": {
+    "defaultMessage": "whether or not there are tram tracks on the road"
+  },
+  "research.03_concept.p17": {
+    "defaultMessage": "In the cycle path area the following factors are varied from image to image:"
+  },
+  "research.03_concept.p17.list1": {
+    "defaultMessage": "the type and width of the left-hand divide (using different kinds of road markings and structural dividers)"
+  },
+  "research.03_concept.p17.list2": {
+    "defaultMessage": "the colouration and width of the cycle path"
+  },
+  "research.03_concept.p17.list3": {
+    "defaultMessage": "the type and width of the right-hand divide"
+  },
+  "research.03_concept.p18": {
+    "defaultMessage": "Furthermore, a number of parked vehicles is displayed or not."
+  },
+  "research.03_concept.p19": {
+    "defaultMessage": "Depending on the style of the cycle route the scenarios were also re-rendered from the perspective of a motorist and a pedestrian in addition to the cyclist perspective. Using this approach, we created 1900 scenarios with 3000 images (including the motorist and pedestrian perspective). Click {link} to read a more detailed documentation of the process of creating the street scenarios"
+  },
+  "research.03_concept.p19.link": {
+    "defaultMessage": "here (PDF-download)"
+  },
+  "research.03_concept.p2": {
+    "defaultMessage": "While the objective safety of cyclists has already been investigated in multiple studies, scarcely any research has been carried out on perceived/subjective safety. The particular challenge when investigating subjective safety is to collect enough ratings for various street configurations and simultaneously look into each of the many different influences on the perceived safety of a situation in enough detail. It was therefore necessary to illustrate a wide variety of different street configurations in the survey and at the same time reach a large number of participants via an effective communication strategy."
+  },
+  "research.03_concept.p20": {
+    "defaultMessage": "Click {link} to browse a tabular overview of the different street scenes and their characteristics:"
+  },
+  "research.03_concept.p20.link": {
+    "defaultMessage": "here (ODS-download)"
+  },
+  "research.03_concept.p3": {
+    "defaultMessage": "It is typically difficult to determine how narrow a cycle path has to be for it to be considered ‘too narrow’ simply with qualitative surveys of cyclists’ opinions. This is also the case when gauging the subjective perception of street traffic scenarios or combinations of specific structural characteristics (such as narrow cycle paths or parking spaces). Furthermore, these kinds of surveys are usually carried out with participants who generally travel by bike on a regular basis. This means that the resulting data often only represents the ‘cyclist’ demographic."
+  },
+  "research.03_concept.p4": {
+    "defaultMessage": "By working with images of specific street scenarios, the survey was able to show direct connections between the subjective perception of safety with regards to different types of infrastructure and their various structural characteristics. By collecting data about participants’ modes of transport plus demographic data we were able to sort the data about perceived safety into different social and mobility demographics (e.g. motorists, cyclists etc). Thanks to the large number of participants and the communications strategy we developed with the Berlin Tagesspiegel we were able to survey a large number and diverse spread (across various social and mobility demographics) of people."
+  },
+  "research.03_concept.p5": {
+    "defaultMessage": "When choosing the scenarios in the survey it was important to reflect cycle path variants which are currently in use. After close consultation with Berlin’s senate administration, thematic workshops, an intensive review of current research in the relevant literature and after pulling in new infrastructure concepts, we felt confident that the survey was up-to-date. For example, Berlin’s senate administration is currently particularly interested in road users’ opinions on different kinds of barriers (bollards/posts) due to the plans they currently have in the pipeline."
+  },
+  "research.03_concept.p6": {
+    "defaultMessage": "The survey was conceived as an online questionnaire and published in cooperation with the Berlin daily newspaper Der Tagesspiegel. On the Tagesspiegel website users were directed to the survey via a specific article and advertising banners. For the launch, a front-page article was additionally published in the print edition of the newspaper which made readers aware of the survey. Although the main purpose of the survey was to evaluate various types of cycle infrastructure as per the subjective sense of safety, the survey was neutrally portrayed as a ‘Berlin Street Check’. This enabled us to bring in, among others, over 3,500 participants who said they never travelled by bike."
+  },
+  "research.03_concept.p6.heading": {
+    "defaultMessage": "Communication strategy"
+  },
+  "research.03_concept.p7": {
+    "defaultMessage": "The survey consisted of three sections:"
+  },
+  "research.03_concept.p7.list1": {
+    "defaultMessage": "general questions about modes of transport"
+  },
+  "research.03_concept.p7.list2": {
+    "defaultMessage": "participant profile and questions about the individual"
+  },
+  "research.03_concept.p7.list3": {
+    "defaultMessage": "rating various street configurations"
+  },
+  "research.03_concept.p8": {
+    "defaultMessage": "In this section, participants were asked various general questions about traffic and transport in Berlin in order for the Tagesspiegel editorial team to assess the results. We will not go deeper into this part of the survey here, as this was not part of the survey concept for our research. The Berlin Tagespiegel wrote up the results of this section separately."
+  },
+  "research.03_concept.p8.heading": {
+    "defaultMessage": "General questions about transport (Introductory questions)"
+  },
+  "research.03_concept.p8.link": {
+    "defaultMessage": "results"
+  },
+  "research.03_concept.p9": {
+    "defaultMessage": "These questions were designed to allow us to sort the participants into different types of cyclists/non-cyclists. This enabled us to better understand the answers provided by participants when giving their subjective safety ratings. These divisions were based on the work of Francke, Anke and Lißner (2019). In their assessment, they propose a taxonomy of cyclists/non-cyclists, which they use to describe various preferences road users have for cycle infrastructure. The questionnaire used in their study was extremely thorough; since our focus was rather to collect data on the safety ratings of street scenarios, we therefore reduced the questionnaire down to the most important elements. By changing the questionnaire the results of the two studies are therefore admittedly not directly comparable (see Schwarz, 1999 and Catania et al., 1996), but this was felt to be the right decision in light of the main goal of our survey. Alongside collecting the participant’s sociodemographic data (age, gender, place of residence, number of children), the survey also included questions about their transport behaviour - in particular, whether and to what extent the person travelled by bike."
+  },
+  "research.03_concept.p9.heading": {
+    "defaultMessage": "Questions about the individual"
+  },
+  "research.04_dataset.heading": {
+    "defaultMessage": "Download the dataset of the survey results"
+  },
+  "research.04_dataset.p1": {
+    "defaultMessage": "FixMyCity provides the results data freely for public use (‘open data’) on the condition that work based on these data are also made freely available to the public (‘share-alike’). Find out more about the licence on the website of the Open Knowledge Foundation. An explanation of the columns in the JSON-formatted dataset is provided in this PDF overview of the specifications. Click the button below to download the results of the survey as a JSON dataset."
+  },
+  "research.04_dataset.p1.linkLicense": {
+    "defaultMessage": "Open Knowledge Foundation"
+  },
+  "research.04_dataset.p1.linkSpec": {
+    "defaultMessage": "this PDF overview of the specifications"
+  },
+  "research.04_dataset.p2": {
+    "defaultMessage": "Click the button below to download the results of the survey as a JSON dataset. "
+  },
+  "research.04_dataset.p2.linkResults": {
+    "defaultMessage": "Download data"
+  },
+  "research.05_results.chart1.1": {
+    "defaultMessage": "male"
+  },
+  "research.05_results.chart1.2": {
+    "defaultMessage": "female"
+  },
+  "research.05_results.chart1.3": {
+    "defaultMessage": "non-binary"
+  },
+  "research.05_results.chart1.label": {
+    "defaultMessage": "Average safety rating grouped by gender"
+  },
+  "research.05_results.chart1.title": {
+    "defaultMessage": "Ratings by gender"
+  },
+  "research.05_results.chart10.1": {
+    "defaultMessage": "Cycle path without physical barrier, narrow road markings on the left"
+  },
+  "research.05_results.chart10.2": {
+    "defaultMessage": "Cycle path without physical barrier, wide road markings on the left"
+  },
+  "research.05_results.chart10.3": {
+    "defaultMessage": "Cycle path with tall bollards as physical barrier"
+  },
+  "research.05_results.chart10.4": {
+    "defaultMessage": "Cycle path with short bollards as physical barrier"
+  },
+  "research.05_results.chart10.5": {
+    "defaultMessage": "Cycle path with planters as physical barrier"
+  },
+  "research.05_results.chart10.label": {
+    "defaultMessage": "Note: This graph shows the average ratings for all scenarios involving a cycle path with a physical barrier - excluding scenarios with parking strips on the right-hand side, tram lines, a bus lane or the cycle path running to the left of parked cars."
+  },
+  "research.05_results.chart10.title": {
+    "defaultMessage": "Illustration: Cycle path on main road with and without a physical barrier"
+  },
+  "research.05_results.chart11.1": {
+    "defaultMessage": "Wide cycle path to the left of parked cars"
+  },
+  "research.05_results.chart11.2": {
+    "defaultMessage": "Wide cycle path to the right of parked cars (with no physical barrier)"
+  },
+  "research.05_results.chart11.3": {
+    "defaultMessage": "Wide cycle path to the right of parked cars (with physical barrier)"
+  },
+  "research.05_results.chart11.label": {
+    "defaultMessage": "Note: This graph shows the average ratings of all scenarios with a wide cycle path, excluding scenarios with tram lines or a bus lane. Only scenarios with a wide cycle path were compared in this context; narrow cycle paths were not used in the visualisations for this type of scenario."
+  },
+  "research.05_results.chart11.title": {
+    "defaultMessage": "Illustration: Cycle path on main road to the left and right of parked vehicles."
+  },
+  "research.05_results.chart12.1": {
+    "defaultMessage": "Cyclists’ perspective: road with no cycle path"
+  },
+  "research.05_results.chart12.2": {
+    "defaultMessage": "Cyclists’ perspective: road with cycle path"
+  },
+  "research.05_results.chart12.3": {
+    "defaultMessage": "Motorists’ perspective: road with no cycle path"
+  },
+  "research.05_results.chart12.4": {
+    "defaultMessage": "Motorists’ perspective: road with cycle path"
+  },
+  "research.05_results.chart12.label": {
+    "defaultMessage": "Note: The average ratings by motorists and cyclists for all scenarios in the survey."
+  },
+  "research.05_results.chart12.title": {
+    "defaultMessage": "Illustration: Main road with and without a cycle path"
+  },
+  "research.05_results.chart12b.1": {
+    "defaultMessage": "Cyclists’ perspective: Cycle path without physical barrier"
+  },
+  "research.05_results.chart12b.2": {
+    "defaultMessage": "Cyclists’ perspective: Cycle path with physical barrier"
+  },
+  "research.05_results.chart12b.3": {
+    "defaultMessage": "Motorists’ perspective: Cycle path without physical barrier"
+  },
+  "research.05_results.chart12b.4": {
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier"
+  },
+  "research.05_results.chart12b.5": {
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (tall bollards)"
+  },
+  "research.05_results.chart12b.6": {
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (low bollards)"
+  },
+  "research.05_results.chart12b.7": {
+    "defaultMessage": "Motorists’ perspective: Cycle path with physical barrier (planters)"
+  },
+  "research.05_results.chart12b.label": {
+    "defaultMessage": "Note: This graph shows the average ratings for all scenarios with a cycle path - excluding scenarios with parking to the right or left side of the cycle path, tram lines or a bus lane."
+  },
+  "research.05_results.chart12b.title": {
+    "defaultMessage": "Illustration: cycle path on main road with or without a physical barrier"
+  },
+  "research.05_results.chart13.1": {
+    "defaultMessage": "Road with narrow cycle path and no parking"
+  },
+  "research.05_results.chart13.2": {
+    "defaultMessage": "Road with wide cycle path and no parking"
+  },
+  "research.05_results.chart13.3": {
+    "defaultMessage": "Road with narrow cycle path and parking strip"
+  },
+  "research.05_results.chart13.4": {
+    "defaultMessage": "Road with wide cycle path and parking strip"
+  },
+  "research.05_results.chart13.5": {
+    "defaultMessage": "Pavement with wide cycle path"
+  },
+  "research.05_results.chart13.6": {
+    "defaultMessage": "Pavement with narrow cycle path"
+  },
+  "research.05_results.chart13.7": {
+    "defaultMessage": "Road with cycle path on the right-hand side of the parking strip"
+  },
+  "research.05_results.chart13.title": {
+    "defaultMessage": "Illustration: Main road with cycle path on the pavement and on the road itself"
+  },
+  "research.05_results.chart14.1": {
+    "defaultMessage": "Total width of the cycle path (wide - narrow)"
+  },
+  "research.05_results.chart14.2": {
+    "defaultMessage": "Total width of the pedestrian area (wide - narrow)"
+  },
+  "research.05_results.chart14.3": {
+    "defaultMessage": "Commercial street (yes - no)"
+  },
+  "research.05_results.chart14.4": {
+    "defaultMessage": "Commercial street (yes - no)  with narrow pedestrian area"
+  },
+  "research.05_results.chart14.5": {
+    "defaultMessage": "Divider to the right of the cycle path (Grass strip - no divider)"
+  },
+  "research.05_results.chart14.6": {
+    "defaultMessage": "Type of traffic to the left of the cycle path (moving traffic - parked cars)"
+  },
+  "research.05_results.chart14.label": {
+    "defaultMessage": "The differences between the median ratings for contrasting pairs of street configurations. Only scenarios which were relevant for this particular context were compared."
+  },
+  "research.05_results.chart14.title": {
+    "defaultMessage": "Illustration: The weightings of the different influencing factors for a cycle path on the pavement"
+  },
+  "research.05_results.chart15.1": {
+    "defaultMessage": "Wide cycle path"
+  },
+  "research.05_results.chart15.2": {
+    "defaultMessage": "Narrow cycle path"
+  },
+  "research.05_results.chart15.label": {
+    "defaultMessage": "Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum"
+  },
+  "research.05_results.chart15.title": {
+    "defaultMessage": "Illustration: A narrow vs a wide cycle path on the pavement"
+  },
+  "research.05_results.chart16.1": {
+    "defaultMessage": "Wide pavement on commercial street"
+  },
+  "research.05_results.chart16.2": {
+    "defaultMessage": "Wide pavement on non-commercial street"
+  },
+  "research.05_results.chart16.3": {
+    "defaultMessage": "Narrow pavement on commercial street"
+  },
+  "research.05_results.chart16.4": {
+    "defaultMessage": "Narrow pavement on non-commercial street"
+  },
+  "research.05_results.chart16.label": {
+    "defaultMessage": "The average ratings for all such scenarios on the pavement are shown below."
+  },
+  "research.05_results.chart16.title": {
+    "defaultMessage": "Illustration: Pavement with and without commercial establishments."
+  },
+  "research.05_results.chart17.1": {
+    "defaultMessage": "Width of the cycle path (narrow - wide)"
+  },
+  "research.05_results.chart17.2": {
+    "defaultMessage": "Divider to the right of the cycle path"
+  },
+  "research.05_results.chart17.3": {
+    "defaultMessage": "Commercial activity on street (yes - no) "
+  },
+  "research.05_results.chart17.label": {
+    "defaultMessage": "Note: This graph shows the differences between the median ratings for all scenarios in this context. The pedestrian perspective was only collected for scenarios with a narrow pedestrian area."
+  },
+  "research.05_results.chart17.title": {
+    "defaultMessage": "Illustration of weightings"
+  },
+  "research.05_results.chart18.1": {
+    "defaultMessage": "Pedestrian perspective on commercial street"
+  },
+  "research.05_results.chart18.2": {
+    "defaultMessage": "Pedestrian perspective on non-commercial street"
+  },
+  "research.05_results.chart18.3": {
+    "defaultMessage": "Cyclist perspective on commercial street (narrow pedestrian area)"
+  },
+  "research.05_results.chart18.4": {
+    "defaultMessage": "Cyclist perspective on non-commercial street (narrow pedestrian area)"
+  },
+  "research.05_results.chart18.label": {
+    "defaultMessage": "Note: The average ratings for all scenarios on the pavement - this analysis only compares the values for scenarios with a narrow pedestrian area, since this was the only variant presented in the pedestrian perspective."
+  },
+  "research.05_results.chart18.title": {
+    "defaultMessage": "Illustration: Pedestrian perspective of the pavement with and without commercial activity"
+  },
+  "research.05_results.chart19.1": {
+    "defaultMessage": "Narrow grass strip as divider between cycle and foot traffic"
+  },
+  "research.05_results.chart19.2": {
+    "defaultMessage": "Wide grass strip as divider between cycle and foot traffic"
+  },
+  "research.05_results.chart19.3": {
+    "defaultMessage": "No divider between cycle and foot traffic"
+  },
+  "research.05_results.chart19.label": {
+    "defaultMessage": "Note: This graph shows the average ratings for all scenarios on the pavement. The pedestrian perspective was only visualised with a narrow pedestrian area."
+  },
+  "research.05_results.chart19.title": {
+    "defaultMessage": "Illustration: Pedestrian perspective of the pavement with and without a clearly separated cycle path"
+  },
+  "research.05_results.chart2.1": {
+    "defaultMessage": "AG0 - under 18 years of age"
+  },
+  "research.05_results.chart2.2": {
+    "defaultMessage": "AG1 - 18 to 24 years of age"
+  },
+  "research.05_results.chart2.3": {
+    "defaultMessage": "AG2 - 25 to 29 years of age"
+  },
+  "research.05_results.chart2.4": {
+    "defaultMessage": "AG3 - 30 to 39 years of age"
+  },
+  "research.05_results.chart2.5": {
+    "defaultMessage": "AG4 - 40 to 49 years of age"
+  },
+  "research.05_results.chart2.6": {
+    "defaultMessage": "AG5 - 50 to 64 years of age"
+  },
+  "research.05_results.chart2.7": {
+    "defaultMessage": "AG6 -  65 to 74 years of age"
+  },
+  "research.05_results.chart2.8": {
+    "defaultMessage": "AG7 - over 74 years of age"
+  },
+  "research.05_results.chart2.label": {
+    "defaultMessage": "Average safety rating grouped by age"
+  },
+  "research.05_results.chart2.title": {
+    "defaultMessage": "Ratings by age"
+  },
+  "research.05_results.chart20.1": {
+    "defaultMessage": "Street width (narrow - wide)"
+  },
+  "research.05_results.chart20.2": {
+    "defaultMessage": "Parking (on both sides - none)"
+  },
+  "research.05_results.chart20.3": {
+    "defaultMessage": "Parking (on one side - none)"
+  },
+  "research.05_results.chart20.4": {
+    "defaultMessage": "Street designation (non-standard – standard)"
+  },
+  "research.05_results.chart20.5": {
+    "defaultMessage": "One-way traffic (In opposite direction - not one-way)"
+  },
+  "research.05_results.chart20.6": {
+    "defaultMessage": "One-way traffic (In same direction - not one-way"
+  },
+  "research.05_results.chart20.7": {
+    "defaultMessage": "‘car-free’ (yes - no)"
+  },
+  "research.05_results.chart20.label": {
+    "defaultMessage": "Note: The differences between the median ratings for pairs of contrasting characteristics. The basis for this analysis was all scenarios relevant to this context, excluding scenarios where the street has a continuous green surface layer. The segment ‘Street designation’ refers to cycle-only streets, cycle-only streets with specialised road markings and ‘Child-friendly streets’ (aka streets where motor traffic is not allowed and children are permitted to play freely) as ‘non-standard’."
+  },
+  "research.05_results.chart20.title": {
+    "defaultMessage": "Illustration: Weightings of the various influencing factors"
+  },
+  "research.05_results.chart21.1": {
+    "defaultMessage": "Side street with no special designation"
+  },
+  "research.05_results.chart21.2": {
+    "defaultMessage": "Side street as cycle street"
+  },
+  "research.05_results.chart21.3": {
+    "defaultMessage": "Side street as cycle street with specialised road markings"
+  },
+  "research.05_results.chart21.4": {
+    "defaultMessage": "Side street as child-friendly street"
+  },
+  "research.05_results.chart21.label": {
+    "defaultMessage": "Note: This graph shows the average ratings for all scenarios in side streets are shown below, excluding scenarios where the road has a green surface."
+  },
+  "research.05_results.chart21.title": {
+    "defaultMessage": "Illustration: variants of road markings in side streets"
+  },
+  "research.05_results.chart22.1": {
+    "defaultMessage": "No road markings"
+  },
+  "research.05_results.chart22.2": {
+    "defaultMessage": "‘Dutch’ road markings"
+  },
+  "research.05_results.chart22.3": {
+    "defaultMessage": "Cycle street"
+  },
+  "research.05_results.chart22.4": {
+    "defaultMessage": "Cycle street with specialised markings"
+  },
+  "research.05_results.chart22.5": {
+    "defaultMessage": "Child-friendly street"
+  },
+  "research.05_results.chart22.label": {
+    "defaultMessage": "Note: This graph shows the average ratings for all the scenarios for side streets."
+  },
+  "research.05_results.chart22.title": {
+    "defaultMessage": "Illustration: ‘Car-free’ side roads with different kinds of road markings"
+  },
+  "research.05_results.chart3.1": {
+    "defaultMessage": "(almost) always"
+  },
+  "research.05_results.chart3.2": {
+    "defaultMessage": "4-5 times per week"
+  },
+  "research.05_results.chart3.3": {
+    "defaultMessage": "1-3 times per week"
+  },
+  "research.05_results.chart3.4": {
+    "defaultMessage": "1-3 times per month"
+  },
+  "research.05_results.chart3.5": {
+    "defaultMessage": "less than monthly"
+  },
+  "research.05_results.chart3.6": {
+    "defaultMessage": "never"
+  },
+  "research.05_results.chart3.label": {
+    "defaultMessage": "Average safety rating grouped by frequency of bike travel"
+  },
+  "research.05_results.chart3.title": {
+    "defaultMessage": "Ratings by frequency of bike travel"
+  },
+  "research.05_results.chart4.1": {
+    "defaultMessage": "without cycle path"
+  },
+  "research.05_results.chart4.2": {
+    "defaultMessage": "with cycle path"
+  },
+  "research.05_results.chart4.3": {
+    "defaultMessage": "without cycle path (frequent bike user)"
+  },
+  "research.05_results.chart4.label": {
+    "defaultMessage": "Note: This graph shows the average ratings of all such configurations from the cyclists’ perspective on a main road. Bus lanes have also been counted as a cycle path."
+  },
+  "research.05_results.chart4.title": {
+    "defaultMessage": "Graph: Cycle route along the main road with or without a marked cycle path"
+  },
+  "research.05_results.chart5.1": {
+    "defaultMessage": "Cycle path with parking strip on the right"
+  },
+  "research.05_results.chart5.2": {
+    "defaultMessage": "Cycle path with no parking to the right (with physical barrier along the road)"
+  },
+  "research.05_results.chart5.3": {
+    "defaultMessage": "Cycle path with no parking to the right (without physical barrier along the road)"
+  },
+  "research.05_results.chart5.label": {
+    "defaultMessage": "Note: This graph shows the average rating for all scenarios with a cycle path - excluding scenarios with tram lines, a bus lane or a cycle lane to the right of a parking strip"
+  },
+  "research.05_results.chart5.title": {
+    "defaultMessage": "Graph: Main road with cycle street, with or without parking on the right"
+  },
+  "research.05_results.chart6.1": {
+    "defaultMessage": "Total width of the cycle path (Wide - narrow)"
+  },
+  "research.05_results.chart6.2": {
+    "defaultMessage": "Physical barrier cycle path/road (yes - no)"
+  },
+  "research.05_results.chart6.3": {
+    "defaultMessage": "Colour of cycle path surface (green - asphalt)"
+  },
+  "research.05_results.chart6.4": {
+    "defaultMessage": "Left-hand markings (narrow - wide) "
+  },
+  "research.05_results.chart6.5": {
+    "defaultMessage": "Speed limit (30 kph - 50 kph)"
+  },
+  "research.05_results.chart6.6": {
+    "defaultMessage": "Volume of traffic (normal - high)"
+  },
+  "research.05_results.chart6.label": {
+    "defaultMessage": "Note: This graph shows the difference between the median ratings for all scenarios relating to this particular type of street. In the case of speed limits, traffic volume, left-hand markings and physical barriers between cycle path and road, only scenarios without tram lines, bus lanes or parking strips along the left of the cycle path have been included in the data. In scenarios with physical barriers between the cycle path and the road, only scenarios without parking on the right have been included."
+  },
+  "research.05_results.chart6.title": {
+    "defaultMessage": "Illustration: Cycle path on main road - weighting of influencing factors"
+  },
+  "research.05_results.chart7.1": {
+    "defaultMessage": "Narrow cycle path without parking alongside"
+  },
+  "research.05_results.chart7.2": {
+    "defaultMessage": "Wide cycle path without parking alongside"
+  },
+  "research.05_results.chart7.3": {
+    "defaultMessage": "Narrow cycle path with parking alongside"
+  },
+  "research.05_results.chart7.4": {
+    "defaultMessage": "Wide cycle path without parking alongside"
+  },
+  "research.05_results.chart7.label": {
+    "defaultMessage": "Note: This graph shows the average ratings for all scenarios with a cycle path of varying width excluding scenarios with tram lines, a bus lane, a parking strip to the right of the cycle path or scenarios with a structural divide between cycle path and road are shown below:"
+  },
+  "research.05_results.chart7.title": {
+    "defaultMessage": "Illustration: Narrow vs wide cycle paths (total width incl. markings)"
+  },
+  "research.05_results.chart8.1": {
+    "defaultMessage": "Wide cycle path without parking alongside, normal colour"
+  },
+  "research.05_results.chart8.2": {
+    "defaultMessage": "Wide cycle path without parking alongside, green"
+  },
+  "research.05_results.chart8.3": {
+    "defaultMessage": "Narrow cycle path without parking alongside, normal colour"
+  },
+  "research.05_results.chart8.4": {
+    "defaultMessage": "Narrow cycle path without parking alongside, green"
+  },
+  "research.05_results.chart8.5": {
+    "defaultMessage": "Wide cycle path with parking along right, normal colour"
+  },
+  "research.05_results.chart8.6": {
+    "defaultMessage": "Wide cycle path with parking along right, green"
+  },
+  "research.05_results.chart8.7": {
+    "defaultMessage": "Narrow cycle path with parking along right, normal colour"
+  },
+  "research.05_results.chart8.8": {
+    "defaultMessage": "Narrow cycle path with parking along right, normal colour"
+  },
+  "research.05_results.chart8.label": {
+    "defaultMessage": "Note: This graph shows the average rating for all scenarios with different cycle path surfaces - excluding scenarios with tram lines, bus lanes, or a cycle lane to the right of a parking strip."
+  },
+  "research.05_results.chart8.title": {
+    "defaultMessage": "Illustration: Cycle path along main road with or without a green surface"
+  },
+  "research.05_results.chart9.1": {
+    "defaultMessage": "Cycle path - asphalt surface"
+  },
+  "research.05_results.chart9.2": {
+    "defaultMessage": "Cycle path - green surface"
+  },
+  "research.05_results.chart9.3": {
+    "defaultMessage": "Cycle path - hatched green strip alongside"
+  },
+  "research.05_results.chart9.label": {
+    "defaultMessage": "Note: The average ratings for each cycle path surface - excluding scenarios with tram lines, bus lanes, or parking strips to the left of the cycle route."
+  },
+  "research.05_results.chart9.title": {
+    "defaultMessage": "Illustration: Cycle path on main road with different types of green colouration."
+  },
+  "research.05_results.heading": {
+    "defaultMessage": "Statistical evaluation"
+  },
+  "research.05_results.p1": {
+    "defaultMessage": "The data assembled in this survey allow us to consider various hypotheses. One particular area of interest in current research in this area is potential cyclists as a demographic, for example. Which kind of road infrastructure do these people need in order to feel safe on the streets? Does the volume of traffic make as much of an impact when cycle and motor traffic is clearly separated? Which traffic infrastructure is felt to be safe by the majority of participants? Is the width of a cycle path or a physical divide alongside it a deciding factor? Which configurations are most suited for routes along the pavement, alongside the car lanes or in minor roads? We will analyse many of these hypotheses in the following evaluation of the results. "
+  },
+  "research.05_results.p10": {
+    "defaultMessage": "Participants were also asked about the accessibility of different modes of transport and the reasons that motivate them to travel by bike or discourage them from cycling. These answers are available to read in the downloadable dataset. "
+  },
+  "research.05_results.p11": {
+    "defaultMessage": "In sum, the demographics reflected in the survey do not reflect the composition of the population of Berlin. Cyclists, men and people between 30 and 64 years old are significantly overrepresented. Due to the large number of participants, it is nonetheless possible to draw conclusions from the results for specific demographic sub-groups (e.g. women over 74: 143 participants)."
+  },
+  "research.05_results.p12": {
+    "defaultMessage": "When split by these characteristics, the results differ only slightly between groups. For this reason, we decided not to split the results for the next stages of the analysis."
+  },
+  "research.05_results.p13": {
+    "defaultMessage": "Firstly we will look at the results for routes along the main roads. Minor/side roads will be addressed in a later chapter."
+  },
+  "research.05_results.p13.heading": {
+    "defaultMessage": "Routes alongside the car lanes"
+  },
+  "research.05_results.p14": {
+    "defaultMessage": "Mixing the cycle traffic in with the motor traffic is perceived to be significantly unsafer than routes with any kind of cycle path. Changing the speed limit, volume of traffic and whether or not there is parking on the right side of the road changes the perceived safety rating; yet even in the scenario with the highest safety rating, said rating is still well below what cities should be aiming for (our assertion being that cities should aim for their infrastructure to be considered ‘safe’ or ‘rather safe’ by over 80% of people surveyed)."
+  },
+  "research.05_results.p14.heading": {
+    "defaultMessage": "Mixed traffic routes are unsafe"
+  },
+  "research.05_results.p14.image1": {
+    "defaultMessage": "Left image: 27.62% of road users rated this situation as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p14.image2": {
+    "defaultMessage": "Right image: 11.05% of road users rated this situation as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p15": {
+    "defaultMessage": "When the cycle path runs alongside parked vehicles on the right-hand side, the perceived safety of the situation drops. The requirements and construction options for a cycle path are then very different in such a scenario. A cycle path with parked vehicles on the right-hand side negatively impacts cyclists’ sense of safety due to the danger of car doors suddenly opening out into the cycle path. It is also important to note that this configuration renders any physical barrier between the cycle path and the flow of traffic impossible, which allows less flexibility in designing and planning street infrastructure. Scenarios were also tested in which the cycle path runs to the left of a parking strip, with the parked vehicles dividing the cycle and motor traffic."
+  },
+  "research.05_results.p15.heading": {
+    "defaultMessage": "Parked vehicles create additional tension"
+  },
+  "research.05_results.p15.image1": {
+    "defaultMessage": "69.09% of participants rated this scenario without a parking strip as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p15.image2": {
+    "defaultMessage": "32.76% of participants rated this scenario with a parking strip as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p16": {
+    "defaultMessage": "The three key influencing factors"
+  },
+  "research.05_results.p17": {
+    "defaultMessage": "In order for cyclists to feel subjectively safe, there are three principal influencing factors besides the position of the cycle path:"
+  },
+  "research.05_results.p17.list1": {
+    "defaultMessage": "the width of the cycle path"
+  },
+  "research.05_results.p17.list2": {
+    "defaultMessage": "the colouration of the cycle path"
+  },
+  "research.05_results.p17.list3": {
+    "defaultMessage": "a physical barrier alongside the flow of motor traffic"
+  },
+  "research.05_results.p18": {
+    "defaultMessage": "The width of the left-hand margin of the cycle path chiefly plays a role when there is a parking strip to the right. Other factors addressed in the survey - the speed limit and volume of traffic - play a comparatively smaller role. It is of course important to bear in mind that it is difficult for participants to give anything more than an abstract estimation of their safety perception when only provided with static illustrations representing different speed limits and volumes of traffic."
+  },
+  "research.05_results.p19": {
+    "defaultMessage": "In the survey, two variants of cycle paths were shown: 3.5m wide (the ‘wide’ variant) and 2m wide (the ‘narrow’ variant), including all left and right-hand road markings (see ‘Survey concept’ section). After collating the data from all the various scenarios, the wide cycle path was found to be safe in the vast majority of them. On average, 82.99% of participants found this type of cycle path to be ‘safe’ or ‘rather safe’."
+  },
+  "research.05_results.p19.heading": {
+    "defaultMessage": "Width of the cycle path (most relevant for routes alongside right-hand parking strips)"
+  },
+  "research.05_results.p2": {
+    "defaultMessage": "We encourage anyone who is interested to use the provided dataset to gain understanding of the following analysis and look into further hypotheses. To begin our analysis we shall take a look at an overview of the participants. "
+  },
+  "research.05_results.p20": {
+    "defaultMessage": "This pair of illustrations of a cycle path on a main road without streetside parking show a notable difference compared to scenarios with streetside parking:"
+  },
+  "research.05_results.p20.image1": {
+    "defaultMessage": "Left image: 73.68% of participants rated this scenario with a wide cycle lane as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p20.image2": {
+    "defaultMessage": "Right image: 69.09% of participants rated this scenario with a narrow cycle lane as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p21": {
+    "defaultMessage": "When the cycle path runs alongside a right-hand parking strip, the difference in safety rating between a wide and a narrow cycle path is considerably larger:"
+  },
+  "research.05_results.p21.image1": {
+    "defaultMessage": "Left image: 70.71% of participants rated this situation with a wide cycle path alongside a parking strip as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p21.image2": {
+    "defaultMessage": "Right image: 32.23% of participants rated this situation with a narrow cycle path alongside a parking strip as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p22": {
+    "defaultMessage": "If the cycle path is differentiated from the car lanes by giving it a green colouration, this has a positive effect on the subjective feeling of safety. The degree of this positive influence varies from situation to situation. The weaker the design of the cycle path, the stronger the influence of the green colouration on the perceived safety of the route."
+  },
+  "research.05_results.p22.heading": {
+    "defaultMessage": "Colouring the surface green makes a positive difference"
+  },
+  "research.05_results.p22.image1": {
+    "defaultMessage": "Left image: 80.37% of participants rated this narrow cycle path with a green surface as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p22.image2": {
+    "defaultMessage": "Right image: 69.09% of participants rated this narrow cycle path with a standard surface as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p22.image3": {
+    "defaultMessage": "Left image: 77.87% of participants rated this wide cycle path with a green surface as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p22.image4": {
+    "defaultMessage": "Right image: 70.71% of participants rated this wide cycle path with a standard surface as ‘safe’ or ‘rather safe’"
+  },
+  "research.05_results.p23": {
+    "defaultMessage": "In the survey we also tested one other variant of cycle path colouration: a hatched green line on the left of the cycle path. This variant did not show any improvement over a normal asphalt surface."
+  },
+  "research.05_results.p24": {
+    "defaultMessage": "A structural barrier between the cycle path and the flow of motor traffic increases the sense of safety on the cycle path. The type of barrier does not make a difference here. Looking at the data in detail reveals that small bollards are most popular for narrow cycle paths, while planters get the most positive ratings in the case of wide cycle paths. Notably, colouring the surface of the cycle path green seems to make little difference when the cycle path is already structurally separated from the car lanes."
+  },
+  "research.05_results.p24.heading": {
+    "defaultMessage": "Bollards or planters strengthen cyclists’ sense of safety"
+  },
+  "research.05_results.p24.image1": {
+    "defaultMessage": "Image 1: This is the physical barrier rated safest (90.65%) for a narrow cycle path with no coloured surface. The green cycle path with the same barrier ranked at 97.52%."
+  },
+  "research.05_results.p24.image2": {
+    "defaultMessage": "Image 2: This is the physical barrier rated safest (98.38%) for a wide cycle path with no coloured surface. The green cycle path with the same barrier ranked at 99.11%. "
+  },
+  "research.05_results.p25": {
+    "defaultMessage": "If cyclists are routed alongside parked vehicles, a cycle path along the right-hand side of the parking area is considered to be significantly safer. It must be noted, however, that the survey only asked participants about their feelings of subjective safety along a stretch of road; we cannot make any assumptions about the effects of these configurations at junctions/crossings."
+  },
+  "research.05_results.p25.heading": {
+    "defaultMessage": "Parking strips on the left are preferred"
+  },
+  "research.05_results.p26": {
+    "defaultMessage": "This type of cycle route can be made to feel safer using a physical barrier or a green surface colouring, but the effect is relatively small."
+  },
+  "research.05_results.p27": {
+    "defaultMessage": "In the survey, motorists were also asked to give their perspective on these road configurations, although the question in this context was not just regarding the subject’s own sense of safety but also their general perception of how safe each scenario was for everyone on the road. “How do you feel about situations like this when you are driving?” Generally, motorists tended to rate the various scenarios similarly to cyclists. On average, all scenarios were considered to be less unsafe by motorists; they were significantly less aware of the potential difficulties parked vehicles pose for cyclists or of the fact that they may feel unsafe in such scenarios."
+  },
+  "research.05_results.p27.heading": {
+    "defaultMessage": "How do motorists view these scenarios?"
+  },
+  "research.05_results.p28": {
+    "defaultMessage": "Motorists also rate mixed traffic on main roads as significantly less safe than a road with a separate cycle path, albeit with a less extreme unsafe rating than that given by cyclists."
+  },
+  "research.05_results.p28.heading": {
+    "defaultMessage": "Motorists also prefer a separate cycle path"
+  },
+  "research.05_results.p29": {
+    "defaultMessage": "Motorists perceive the situation on the road to be significantly safer when there is a clearly defined separate cycle path, ideally with a restricted zone or twin line markings on the side and a green surface. Interestingly, it makes no great difference to the ratings whether or not there is parking at the side of the road; motorists seem not to recognise the danger this poses to cyclists."
+  },
+  "research.05_results.p3": {
+    "defaultMessage": "We used Python to create our analysis, which can be viewed in Jupyter Notebooks. In this document, we present the data as visualisations of the Likert Scale results as well as carrying out tests of our hypotheses using Bootstrap confidence intervals and likelihood ratio tests with proportional odds regressions models."
+  },
+  "research.05_results.p30": {
+    "defaultMessage": "Putting a physical barrier, such as bollards, between the cycle path and the road also raises the safety ratings for scenarios seen from a motorist’s perspective, although the effect is less pronounced. Motorists seem to prefer planters or low bollards. The example above shows, however, that a wide cycle path with a clear dividing line and a green surface is perceived to be similarly safe in this context."
+  },
+  "research.05_results.p30.heading": {
+    "defaultMessage": "Motorists also consider protective bollards to be safer"
+  },
+  "research.05_results.p31": {
+    "defaultMessage": "On a busy road where the speed limit is 50kph, motorists find a cycle path with a physical barrier to be safer. This is also true for most scenarios with a 30kph speed limit and a less busy road (normal traffic volume). Motorists therefore seem to have a clear sense of the danger of road accidents involving cyclists, and feel happier with scenarios where this danger is less acute."
+  },
+  "research.05_results.p31.image1": {
+    "defaultMessage": "Image 1: Safest rated scenario from the motorists’ perspective when the cycle path is narrow, the speed limit is 50kph and the traffic volume is high"
+  },
+  "research.05_results.p31.image2": {
+    "defaultMessage": "Image 2: Safest rated scenario from the motorists’ perspective when the cycle path is wide, the speed limit is 50kph and the traffic volume is high"
+  },
+  "research.05_results.p32.heading": {
+    "defaultMessage": "Routes along the pavement"
+  },
+  "research.05_results.p33": {
+    "defaultMessage": "Routes along the pavement are on average rated safer as those along the road. Depending on the configuration of the cycle path, especially considering the various risks to cyclists (the flow of moving traffic, parked vehicles, pedestrians), the ratings do fluctuate somewhat. Cyclists generally needed less additional infrastructure on or around a cycle path in order to feel a high level of safety when the cycle path was on the pavement. On streets with parking areas, cycle paths on the pavement or on the road to the right of the parking strip received a much higher safety rating as those along the left-hand side of the parked cars."
+  },
+  "research.05_results.p33.heading": {
+    "defaultMessage": "Should cycle paths be on the road or on the pavement?"
+  },
+  "research.05_results.p34": {
+    "defaultMessage": "When there is no parking strip, it is possible for a cycle path to feel safe both on the pavement and on the road."
+  },
+  "research.05_results.p34.image1": {
+    "defaultMessage": "Image 1: A wide cycle path alongside the car lanes, with clear markings and no parking to the right, is perceived to be very safe"
+  },
+  "research.05_results.p34.image2": {
+    "defaultMessage": "Image 2: An equally wide cycle path along the pavement is rated as even safer."
+  },
+  "research.05_results.p35": {
+    "defaultMessage": "A narrow cycle path along the pavement with parking to the left is considered to be considerably safer than a narrow cycle path along the road running alongside a right-hand parking strip, even when said cycle path is in all other ways ‘optimally’ designed. In this scenario the advantages of a cycle path along the pavement are therefore clear."
+  },
+  "research.05_results.p35.image1": {
+    "defaultMessage": "Image 1: The best-rated narrow cycle path with a parking strip to the right"
+  },
+  "research.05_results.p35.image2": {
+    "defaultMessage": "Image 2: A narrow cycle path on the pavement (with parking to the left) with strips of grass as dividers to the left and right."
+  },
+  "research.05_results.p36": {
+    "defaultMessage": "The width matters - even on the pavement"
+  },
+  "research.05_results.p37": {
+    "defaultMessage": "Among the various cycle path configurations on the pavement, the width of the cycle path definitively plays the biggest role in subjective safety from a cyclist’s perspective. The volume of pedestrians (with or without commercial establishments such as shops and cafés) plays a role when the pavement is narrow. The total width of the pavement and the type of division between the cycle path and the pedestrian area are less influential on the ratings. The type of traffic to the left of the cycle path (parked vs moving vehicles) has a negligible impact."
+  },
+  "research.05_results.p38": {
+    "defaultMessage": "Wide cycle paths on the pavement gain consistently positive ratings for the subjective sense of safety. However, narrow cycle paths also receive relatively high ratings in this context. In the survey, we did not ask what cycle path design standards were best suited or test whether a higher volume of cycle traffic would make a difference. It is nonetheless clear that a cycle path along the pavement - compared to a narrow cycle path along the road - allows a wide range of people to comfortably get around by bike. "
+  },
+  "research.05_results.p38.heading": {
+    "defaultMessage": "Narrow cycle paths are safe, but wider is safer"
+  },
+  "research.05_results.p39": {
+    "defaultMessage": "Even though the type of activity to the left of the cycle path had little impact on the ratings on average, certain situations cause the sense of subjective safety to be strongly negatively impacted, as shown in the example below:"
+  },
+  "research.05_results.p39.image1": {
+    "defaultMessage": "Left image: If there is moving traffic to the left of the cycle path, a physical barrier to the right of the cycle path is problematic."
+  },
+  "research.05_results.p39.image2": {
+    "defaultMessage": "Right image: The situation improves if a narrow strip of grass separates the cycle path from the rest of the pavement."
+  },
+  "research.05_results.p4": {
+    "defaultMessage": "To get a better sense of where this data all came from, we will first provide an overview of who took part in the survey. In total, 21,401 people participated, of which 19,109 came from Berlin:"
+  },
+  "research.05_results.p4.heading": {
+    "defaultMessage": "Evaluation of the participants"
+  },
+  "research.05_results.p4.listOther": {
+    "defaultMessage": "other regions"
+  },
+  "research.05_results.p40": {
+    "defaultMessage": "Narrow pavements are affected by commercial activity"
+  },
+  "research.05_results.p41": {
+    "defaultMessage": "The influence of a higher volume of pedestrians and pedestrian traffic in and out of commercial establishments was illustrated in the survey with an area of outdoor café seating. This factor has an influence on the ratings when the total width of the pavement is narrow."
+  },
+  "research.05_results.p42": {
+    "defaultMessage": "When we look at these ratings in detail, some clear contrasts are evident: if the cycle path is wide enough and well-separated from the pedestrian area, it is perceived to be safe by cyclists even if the pedestrian area is narrow. If the cycle path is not designed in this way, the rating drops dramatically; at the very least, there should be a clear separation between the cycle path and the pedestrian area."
+  },
+  "research.05_results.p43": {
+    "defaultMessage": "Most pedestrians feel fundamentally safe when there is a cycle path on the pavement. The most important factors for them is a clear separation between the cycle path and the pedestrian area and enough space in the pedestrian area for foot traffic."
+  },
+  "research.05_results.p43.heading": {
+    "defaultMessage": "Pedestrians value a clear barrier between the cycle path and the pedestrian area"
+  },
+  "research.05_results.p44": {
+    "defaultMessage": "If a street is chiefly commercial in use, and therefore has a high volume of foot traffic, only certain street configurations are felt to be safe by pedestrians. The scenarios involving commercial activity on the street received very different ratings compared to those given for the cyclist’s perspective of the same scenarios."
+  },
+  "research.05_results.p44.heading": {
+    "defaultMessage": "A heavy flow of foot traffic requires adequate infrastructure"
+  },
+  "research.05_results.p45": {
+    "defaultMessage": "One variant which was shown to be satisfactory for both cyclists and pedestrians with limited space on the pavement was the scenario where the cycle path is separated from the pedestrian area with a grass strip. In reality, additional factors such as overtaking manoeuvres by cyclists, dogs not on leashes, children etc also negatively impact the feeling of safety on the street. Combining cycle and foot traffic on the pavement is therefore only recommended when the pavement is sufficiently wide."
+  },
+  "research.05_results.p45.image1": {
+    "defaultMessage": "Image 1: Despite the relatively cramped setup of the street, this scenario was rated as either “safe” or “rather safe” by 81.44% of pedestrians"
+  },
+  "research.05_results.p45.image2": {
+    "defaultMessage": "Image 2: The same scenario was rated “safe” or “rather safe” by 75.56% of cyclists."
+  },
+  "research.05_results.p46": {
+    "defaultMessage": "A clear separation of the cycle path from the foot traffic can make a considerable improvement in pedestrians’ subjective sense of safety."
+  },
+  "research.05_results.p47": {
+    "defaultMessage": "If the street has no commercial activity and the cycle path is clearly separated from the pedestrian area, pedestrians find most variations of that configuration to be safe."
+  },
+  "research.05_results.p48": {
+    "defaultMessage": "Führung in Nebenverkehrsstraßen"
+  },
+  "research.05_results.p49": {
+    "defaultMessage": "There are limitations to what we can learn when comparing a cycle path along a side street to one routed along a main road, since the survey’s illustrations, showing the potential sources of conflict between motor vehicles and bikes, are merely static representations. The different volume and behaviour of traffic on main and side roads can thus only be implied. However, the results still allow us to make certain assertions about the subjective sense of safety within different configurations of side streets. "
+  },
+  "research.05_results.p5": {
+    "defaultMessage": "Almost twice as many men took part in the survey as women:"
+  },
+  "research.05_results.p5.list1": {
+    "defaultMessage": "male 64%"
+  },
+  "research.05_results.p5.list2": {
+    "defaultMessage": "female 34%"
+  },
+  "research.05_results.p5.list3": {
+    "defaultMessage": "non-binary 2%"
+  },
+  "research.05_results.p50": {
+    "defaultMessage": "It is most apparent that the most influential factor in the ratings of side streets is whether or not they are ‘car-free’ (aka with or without a constant flow of through-traffic). Furthermore, one-way streets with a flow of traffic opposite to the flow of cycle traffic have an extremely negative impact on the subjective safety ratings. Wider streets are felt to be safer, while parked vehicles lower the sense of safety."
+  },
+  "research.05_results.p50.heading": {
+    "defaultMessage": "Side streets are safest when “car-free”"
+  },
+  "research.05_results.p51": {
+    "defaultMessage": "Looking at all scenarios without a special road designation (child-friendly or cycle street) and where there is a flow of motor traffic along the street, the ratings for the subjective sense of safety are on average very low. Even the best-performing variations of this type of street configuration garnered only 33.40% ‘safe’ or ‘rather safe’ ratings."
+  },
+  "research.05_results.p52": {
+    "defaultMessage": "Cycle streets are better but not sufficient on their own"
+  },
+  "research.05_results.p53": {
+    "defaultMessage": "Designating a street as a cycle street improves the sense of safety, but the ratings were not especially high. The maximum score for subjective safety in these scenarios was just 45.03% ‘safe’ or ‘rather safe’ ratings. When streets were shown to have no parking and one-way systems in the direction of cycle traffic this value rose to a maximum of 56.72%."
+  },
+  "research.05_results.p53.image1": {
+    "defaultMessage": "Left image: The best-rated cycle street with two-way traffic"
+  },
+  "research.05_results.p53.image2": {
+    "defaultMessage": "Right image: The best-rated cycle street with one-way motor traffic in the same direction as the cycle traffic"
+  },
+  "research.05_results.p54": {
+    "defaultMessage": "It should be noted that cycle streets with specialised road markings (clearly showing the dooring zone) received worse ratings than those with a large cycle street sign painted onto the road. This comparison is admittedly less meaningful in the context of the visualisations given in the survey because the composition of the images by necessity introduces other factors which could influence the overall rating (the cycle street sign, the width of the road-space available to vehicles/cyclists, the position of the cyclists etc)."
+  },
+  "research.05_results.p55": {
+    "defaultMessage": "The Dutch solution"
+  },
+  "research.05_results.p56": {
+    "defaultMessage": "The only street configurations which received a definitively positive safety rating were those in which there is no flow of through-traffic. This includes variants with parked cars, which could be interpreted as representing closed streets where motor traffic is only allowed for access to buildings. The ‘Dutch solution’, where a central paved stripe separates two cycle lanes with a continuous green surface, was the variant which received the best ratings. For cycle routes along side roads, clear signaling that the street was a cycle street also seemed to be highly influential."
+  },
+  "research.05_results.p57": {
+    "defaultMessage": "In the scenarios with parked vehicles, the different types of road markings seemed to make a considerable difference."
+  },
+  "research.05_results.p6": {
+    "defaultMessage": "For context: according to the statistics office for Berlin and Brandenburg the population of Berlin is 49% male and 51% female (data from 2018)."
+  },
+  "research.05_results.p7": {
+    "defaultMessage": "The age range of the participants was as follows:"
+  },
+  "research.05_results.p7.list1": {
+    "defaultMessage": "AG0 - under 18 years of age 1%"
+  },
+  "research.05_results.p7.list2": {
+    "defaultMessage": "AG1 - 18 to 24 years of age  5%"
+  },
+  "research.05_results.p7.list3": {
+    "defaultMessage": "AG2 - 25 to 29 years of age  8%"
+  },
+  "research.05_results.p7.list4": {
+    "defaultMessage": "AG3 - 30 to 39 years of age  27%"
+  },
+  "research.05_results.p7.list5": {
+    "defaultMessage": "AG4 - 40 to 49 years of age  22%"
+  },
+  "research.05_results.p7.list6": {
+    "defaultMessage": "AG5 - 50 to 64 years of age  28%"
+  },
+  "research.05_results.p7.list7": {
+    "defaultMessage": "AG6/7 - over 65 years of age  10%"
+  },
+  "research.05_results.p8": {
+    "defaultMessage": "For context: according to the statistics office for Berlin and Brandenburg, the age range of the population of Berlin (as of 2018) is as follows:"
+  },
+  "research.05_results.p8.list1": {
+    "defaultMessage": "under 18 years of age 16%"
+  },
+  "research.05_results.p8.list2": {
+    "defaultMessage": "18 to 24 years of age 7%"
+  },
+  "research.05_results.p8.list3": {
+    "defaultMessage": "25 to 29 years of age 8%"
+  },
+  "research.05_results.p8.list4": {
+    "defaultMessage": "30 to 39 years of age 17%"
+  },
+  "research.05_results.p8.list5": {
+    "defaultMessage": "40 to 49 years of age 13%"
+  },
+  "research.05_results.p8.list6": {
+    "defaultMessage": "50 to 64 years of age 20%"
+  },
+  "research.05_results.p8.list7": {
+    "defaultMessage": "over 65 years of age 19%"
+  },
+  "research.05_results.p9": {
+    "defaultMessage": "In addition, participants were asked how often they travel by foot, by public transport, by car, by bike and by motorcycle. In comparison with the data gathered by a large mobility study (SrV) in 2018, our data showed some notable differences. The percentage value for travel by public transport (bus, train and tram) at least once weekly (64% in our survey) is close to the value from the mobility study (62%). In contrast, car users were underrepresented in our survey (35%) compared to the mobility study (56%) while cyclists were overrepresented (64% vs 47% in the mobility study). "
+  },
+  "research.05_results.p9.link": {
+    "defaultMessage": "(Gerike et. al,  Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020)"
+  },
+  "research.06_summary.p01.heading": {
+    "defaultMessage": "Summary:"
+  },
+  "research.06_summary.p02": {
+    "defaultMessage": "As part of a research project about the state of cycling on a national level, we looked into the question of how to design a cycle infrastructure system within which everyone feels safe. To this end, an online survey was developed, in which participants rated photorealistic visualisations of street configurations by their sense of perceived safety from the perspective of different modes of travel. In this way we were able to measure the influences of different street characteristics and analyse these data, although many other influencing factors were identified which would be required to reach a complete understanding of how various scenarios are perceived in real life.In cooperation with a Berlin-based daily newspaper, we were able to reach a large number of participants. Roughly 90% of the participants were based in Berlin. Additionally, certain demographic groups were overrepresented in the survey: namely men, those in the age group 30 to 64, and cyclists. However, the large total number of participants meant that the amount of data collected for the underrepresented groups was also sufficient.In an initial analysis of the survey, the influence of various factors in relation to each other showed that it was not possible to draw any linear conclusions about subjective safety in cycle infrastructure design. It was nonetheless possible to extract several core conclusions and overall recommendations about how a “cycle infrastructure for everyone” could look."
+  },
+  "research.06_summary.p03": {
+    "defaultMessage": "The hypothesis that routes along minor/side roads are felt to be safer than routes along main roads was confirmed"
+  },
+  "research.06_summary.p04": {
+    "defaultMessage": "On wide pavements with no commercial activity, routing cycle paths along the pavement was the best-rated alternative. Even pedestrians feel sufficiently safe in this case as long as there is a clear separation of the cycle path from the pedestrian area, e.g. with a grass strip in between."
+  },
+  "research.06_summary.p05": {
+    "defaultMessage": "It was generally felt to be very unsafe when cyclists are forced to mix with the main flow of traffic."
+  },
+  "research.06_summary.p06": {
+    "defaultMessage": "When a cycle path is routed along the road, wide cycle paths are considered to be much safer. A green surface colour and physical barriers along the cycle path raise the perceived sense of safety even further."
+  },
+  "research.06_summary.p07": {
+    "defaultMessage": "Narrow cycle paths are also considered to be acceptably safe from a subjective standpoint, as long as they are protected from the motor traffic by low bollards and do not run alongside parked vehicles, for example."
+  },
+  "research.06_summary.p08": {
+    "defaultMessage": "When a cycle path is routed along a main road with parked vehicles along the side, the space to the right of the parking strip is considered safer. Routing the cycle path to the left of the parking strip is considered far less safe. When the cycle path runs along the left-hand side of a parking zone, certain scenarios, such as those where the cycle path has a green surface coating, were felt to be acceptably safe. In this case it is however important to bear in mind that other potential tensions on such roads, such as illegally parked cars or reverse-parking vehicles, were not included in the visualisations for the survey. Similarly, we were unable to investigate scenarios involving junctions and crossings; therefore it is not possible to draw any conclusions about the relationship between cycle paths along a stretch of road and the effects of these configurations on connected junctions."
+  },
+  "research.06_summary.p09": {
+    "defaultMessage": "Motorists also find well-structured cycle infrastructure (including protective bollards) to be safer. The ratings are generally similar to those of the cyclists, although motorists’ perception of certain dangers such as dooring was less acute."
+  },
+  "research.06_summary.p10": {
+    "defaultMessage": "Scenarios in minor/side roads generally received worse ratings than those on main roads. This comparison is admittedly only partially meaningful, because the static visualisations could not fully give a sense of how busy the road is in a particular scene. Scenarios in which there was no active flow of traffic and where the street was clearly marked as a cycle street received the best ratings."
+  },
+  "research.06_summary.p11": {
+    "defaultMessage": "The data still have great potential to be analysed even further. The data set is freely available to the public and is already being used for further investigations. We would be delighted to hear from anyone interested in continuing this research and will gladly publish the links to any new results on our website!The next steps will be to compare the results about subjective safety with the concrete data about road accidents in order to make productive recommendations."
+  },
+  "research.07_team.p01.heading": {
+    "defaultMessage": "The people behind the survey"
+  },
+  "research.07_team.p02": {
+    "defaultMessage": "FixMyCity supports cities in implementing the mobility revolution. The team is comprised of developers, designers, transport planners and data specialists, who together develop digital tools to enable open and agile processes in councils and municipal bodies. To aid cities and communities with this approach, we develop Open Government tools which enable councils to enact the mobility revolution in cooperation with their citizens. Our digital tools facilitate easy ways to report pressing  local needs, efficient ways of managing projects, ways for citizens to contact the people in charge, and intelligent data analysis; our work pushes the momentum of cycle infrastructure planning and encourages citizens and councillors to embrace it."
+  },
+  "research.07_team.p03": {
+    "defaultMessage": "The FixMyCity team works in the CityLAB Berlin, the place where this survey was conceived and developed. If you would like to know more about us, visit us on https://fixmycity.de or contact us directly:"
+  },
+  "research.07_team.p04": {
+    "defaultMessage": "Contact details"
+  },
+  "research.07_team.p04.address": {
+    "defaultMessage": "Office address:"
+  },
+  "research.07_team.p04.funding": {
+    "defaultMessage": "FixMyCity is supported by BMVI and the Berlin Senate."
+  },
+  "research.07_team.p04.phone": {
+    "defaultMessage": "Tel: 030 - 54 90 86 65"
+  },
+  "research.authors": {
+    "defaultMessage": "FixMyCity Team"
+  },
+  "research.components.barchart.labels.ratherSafe": {
+    "defaultMessage": "rather Safe"
+  },
+  "research.components.barchart.labels.ratherUnsafe": {
+    "defaultMessage": "rather Unsafe"
+  },
+  "research.components.barchart.labels.safe": {
+    "defaultMessage": "safe"
+  },
+  "research.components.barchart.labels.unsafe": {
+    "defaultMessage": "unsafe"
+  },
+  "research.components.feelsafe.label": {
+    "defaultMessage": "{pct}% of users in the '{mode}'-perspective felt safe here"
+  },
+  "research.components.feelsafe.perspectives.bike": {
+    "defaultMessage": "bike"
+  },
+  "research.components.feelsafe.perspectives.car": {
+    "defaultMessage": "car"
+  },
+  "research.components.feelsafe.perspectives.walking": {
+    "defaultMessage": "pedestrians"
+  },
+  "research.introduction": {
+    "defaultMessage": "The mobility revolution has begun in Berlin and many other cities. Cyclists are looking forward to improved infrastructure, infrastructure in which everyone feels safe. But what does “safety for everyone” actually mean in regards to how we design and plan cycle infrastructure? We carried out a survey to investigate subjective perceptions of safety on the road; in this article, we bring the results of this survey to light."
+  },
+  "research.kicker": {
+    "defaultMessage": "Research result - Berlin street check"
+  },
+  "research.title": {
+    "defaultMessage": "Study on subjective safety when travelling by bicycle. Results and data from a survey of 21,000 participants."
+  },
+  "research.toc.About": {
+    "defaultMessage": "Survey concept"
+  },
+  "research.toc.Dataset": {
+    "defaultMessage": "Dataset of the survey results"
+  },
+  "research.toc.Header": {
+    "defaultMessage": "Introduction"
+  },
+  "research.toc.Results": {
+    "defaultMessage": "Statistical evaluation"
+  },
+  "research.toc.Summary": {
+    "defaultMessage": "Summary"
+  },
+  "research.toc.Team": {
+    "defaultMessage": "The people behind the survey"
+  },
+  "research.toc.introduction": {
+    "defaultMessage": "About the project"
   }
 }

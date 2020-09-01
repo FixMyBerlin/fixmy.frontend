@@ -5,6 +5,7 @@ import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
 import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 
 export default {
+  enabled: false,
   overviewMap: {
     style: 'mapbox://styles/hejco/cjpnt0cc41ipy2rlpu19jgt7a',
     bounds: [
@@ -47,7 +48,6 @@ export default {
     stepColors: [config.colors.interaction, '#ff99d5', config.colors.black]
   },
   form: { placementNotice: true },
-  reportsDisabled: true,
   markerSet: 'default',
   tests: {
     addressInput: 'meh',

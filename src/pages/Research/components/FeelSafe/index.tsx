@@ -1,11 +1,13 @@
 import React from 'react';
+import { useIntl, defineMessages } from 'react-intl';
 import styled from 'styled-components';
 import { scaleLinear } from 'd3-scale';
 
-import BikeIcon from '~/images/feelsafe-bike-icon.svg';
-import CarIcon from '~/images/feelsafe-car-icon.svg';
-import WalkIcon from '~/images/feelsafe-walk-icon.svg';
 import { media } from '~/styles/utils';
+
+import BikeIcon from './feelsafe-bike-icon.svg';
+import CarIcon from './feelsafe-car-icon.svg';
+import WalkIcon from './feelsafe-walk-icon.svg';
 
 const Wrapper = styled.div`
   border-radius: 50%;
@@ -86,6 +88,21 @@ const icons = {
   walk: WalkIcon
 };
 
+const modes = defineMessages({
+  bike: {
+    id: 'research.components.feelsafe.perspectives.bike',
+    defaultMessage: 'Fahrrad'
+  },
+  car: {
+    id: 'research.components.feelsafe.perspectives.car',
+    defaultMessage: 'Auto'
+  },
+  walk: {
+    id: 'research.components.feelsafe.perspectives.walking',
+    defaultMessage: 'Fuß'
+  }
+});
+
 const FeelSafe = ({
   className,
   value,
@@ -97,13 +114,26 @@ const FeelSafe = ({
   const isSmall = size === 'small';
   const IconComponent = icons[icon];
 
-  const valueDisplay = value.toLocaleString(undefined, {
+  const intl = useIntl();
+  const valueDisplay = value.toLocaleString(intl.locale, {
     maximumFractionDigits: 0
   });
+  const label = intl.formatMessage(
+    {
+      id: 'research.components.feelsafe.label',
+      defaultMessage:
+        '{pct}% der Nutzer:innen in der {mode}-Perspektive fühlen sich sicher'
+    },
+    {
+      pct: value.toLocaleString(intl.locale),
+      mode: intl.formatMessage(modes[icon])
+    }
+  );
 
   return (
     <Wrapper className={className} style={{ width: pxSize, height: pxSize }}>
       <svg width="100%" height="100%" viewBox="0 0 42 42">
+        <title>{label}</title>
         <circle cx="21" cy="21" r="15.91549430918954" fill="#fff" />
         <circle
           cx="21"
@@ -134,7 +164,7 @@ const FeelSafe = ({
         />
       </svg>
       <TextContent isSmall={isSmall}>
-        <IconComponent />
+        <IconComponent role="presentation" />
         <Number isSmall={isSmall}>{valueDisplay}%</Number>
         <Text isSmall={isSmall}>feel safe*</Text>
       </TextContent>

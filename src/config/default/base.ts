@@ -36,6 +36,9 @@ const baseConfig: Omit<
       trackErrors: true,
       disableCookies: true
     }
+  },
+  intl: {
+    logMissingTranslations: true
   }
 };
 

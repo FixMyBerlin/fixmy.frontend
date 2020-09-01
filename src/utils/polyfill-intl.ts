@@ -23,14 +23,14 @@ async function polyfill(locale: LocaleCode) {
 
   if ((Intl.PluralRules as any).polyfilled) {
     switch (locale) {
-      default:
-        await import('@formatjs/intl-pluralrules/locale-data/de');
-        break;
       case 'en':
         await import('@formatjs/intl-pluralrules/locale-data/en');
         break;
       case 'es':
         await import('@formatjs/intl-pluralrules/locale-data/es');
+        break;
+      default:
+        await import('@formatjs/intl-pluralrules/locale-data/de');
         break;
     }
   }
@@ -43,14 +43,14 @@ async function polyfill(locale: LocaleCode) {
 
   if ((Intl.NumberFormat as any).polyfilled) {
     switch (locale) {
-      default:
-        await import('@formatjs/intl-numberformat/locale-data/de');
-        break;
       case 'en':
         await import('@formatjs/intl-numberformat/locale-data/en');
         break;
       case 'es':
         await import('@formatjs/intl-numberformat/locale-data/es');
+        break;
+      default:
+        await import('@formatjs/intl-numberformat/locale-data/de');
         break;
     }
   }
@@ -66,11 +66,6 @@ async function polyfill(locale: LocaleCode) {
     const dataPolyfills = [import('@formatjs/intl-datetimeformat/add-all-tz')];
 
     switch (locale) {
-      default:
-        dataPolyfills.push(
-          import('@formatjs/intl-datetimeformat/locale-data/de')
-        );
-        break;
       case 'en':
         dataPolyfills.push(
           import('@formatjs/intl-datetimeformat/locale-data/en')
@@ -79,6 +74,11 @@ async function polyfill(locale: LocaleCode) {
       case 'es':
         dataPolyfills.push(
           import('@formatjs/intl-datetimeformat/locale-data/es')
+        );
+        break;
+      default:
+        dataPolyfills.push(
+          import('@formatjs/intl-datetimeformat/locale-data/de')
         );
         break;
     }

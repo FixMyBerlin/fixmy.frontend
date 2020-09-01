@@ -23,6 +23,7 @@ import { getTheme } from '~/styles/mui-utils';
 
 import defaultMessages from '~/lang/compiled/de.json';
 import loadLocaleMessages from './lang/loader';
+import intlErrorHandler from './lang/errorHandler';
 import polyfill from './utils/polyfill-intl';
 
 const log = debug('fmc');
@@ -64,7 +65,12 @@ const App = ({ dispatch, isEmbedMode }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <IntlProvider messages={messages} locale={locale} defaultLocale="de">
+      <IntlProvider
+        messages={messages}
+        locale={locale}
+        defaultLocale="de"
+        onError={intlErrorHandler}
+      >
         <GlobalStyles />
         <Router history={history}>
           <LastLocationProvider>

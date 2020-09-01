@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 interface AuthorProps {
   name?: string;
@@ -7,6 +8,10 @@ interface AuthorProps {
 
 export default ({ name = '', className }: AuthorProps) => (
   <span className={className}>
-    von <strong>{name}</strong>
+    <FormattedMessage
+      id="components.article.attribution"
+      defaultMessage="von"
+    />{' '}
+    <strong>{name}</strong>
   </span>
 );
