@@ -4,13 +4,10 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
 
-// increase timeout for async tests
-jest.setTimeout(30000);
+// setup mock service worker (msw)
+import { mswServer } from './msw/mswServer';
 
 // add global hooks to use msw in test suites
-
-import ky from 'ky-universal';
-import { mswServer } from './msw/mswServer';
 beforeAll(() => {
   // enable the mocking in tests.
   mswServer.listen();
@@ -28,5 +25,5 @@ afterAll(() => {
   mswServer.close();
 });
 
-// re-export msw server to add test-specific handlers for specific tests ("co-location")
-export { mswServer };
+// increase timeout for async tests
+jest.setTimeout(30000);
