@@ -15,9 +15,9 @@ import Link from '~/components2/Link';
 import MS_C_573 from '../images/01_MS_C_573_@x2.jpg';
 import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
 
-const SectionIntroduction = ({ toc }: SectionProps) => (
+const SectionIntroduction = ({ toc, tocAnchor }: SectionProps) => (
   <>
-    <Heading toc={toc} as="h2">
+    <Heading toc={toc} tocAnchor={tocAnchor} as="h2">
       <FormattedMessage
         id="research.02_intro.heading"
         defaultMessage="Über das Projekt"

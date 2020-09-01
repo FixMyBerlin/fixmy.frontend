@@ -11,4 +11,5 @@ export { Image, ImageMulti, ImageFull } from './Image';
 
 export interface SectionProps {
   toc: string;
+  tocAnchor?: string;
 }

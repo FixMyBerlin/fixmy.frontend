@@ -1,5 +1,10 @@
 import React from 'react';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+import {
+  FormattedMessage,
+  defineMessages,
+  injectIntl,
+  IntlShape
+} from 'react-intl';
 
 import { ArticleWrapper, ArticleHeader, Intro } from '~/components2/Article';
 import { LocaleCode } from '~/types';
@@ -52,7 +57,7 @@ const messages = defineMessages({
 
 const LOCALES: LocaleCode[] = ['de', 'en', 'es'];
 
-const Research = ({ intl }) => (
+const Research = ({ intl }: { intl: IntlShape }) => (
   <ArticleWrapper
     hasToc
     bannerTitle={intl.formatMessage(messages.kicker)}
@@ -75,12 +80,30 @@ const Research = ({ intl }) => (
         defaultMessage="Die Mobilitätswende in Berlin und anderen Städten hat begonnen. Der Radverkehr soll gute Infrastruktur bekommen, auf der sich alle Menschen sicher fühlen. Was aber heißt “sicher für alle” konkret für die Planung von Radinfrastruktur? Wir haben eine Umfrage zur Untersuchung des subjektiven Sicherheitsempfindens durchgeführt, deren Ergebnisse wir hier vorstellen."
       />
     </Intro>
-    <SectionIntroduction toc={intl.formatMessage(messages.tocIntroduction)} />
-    <SectionAbout toc={intl.formatMessage(messages.tocAbout)} />
-    <SectionDataset toc={intl.formatMessage(messages.tocDataset)} />
-    <SectionResults toc={intl.formatMessage(messages.tocResults)} />
-    <SectionSummary toc={intl.formatMessage(messages.tocSummary)} />
-    <SectionTeam toc={intl.formatMessage(messages.tocTeam)} />
+    <SectionIntroduction
+      toc={intl.formatMessage(messages.tocIntroduction)}
+      tocAnchor={messages.tocIntroduction.defaultMessage}
+    />
+    <SectionAbout
+      toc={intl.formatMessage(messages.tocAbout)}
+      tocAnchor={messages.tocAbout.defaultMessage}
+    />
+    <SectionDataset
+      toc={intl.formatMessage(messages.tocDataset)}
+      tocAnchor={messages.tocDataset.defaultMessage}
+    />
+    <SectionResults
+      toc={intl.formatMessage(messages.tocResults)}
+      tocAnchor={messages.tocResults.defaultMessage}
+    />
+    <SectionSummary
+      toc={intl.formatMessage(messages.tocSummary)}
+      tocAnchor={messages.tocSummary.defaultMessage}
+    />
+    <SectionTeam
+      toc={intl.formatMessage(messages.tocTeam)}
+      tocAnchor={messages.tocTeam.defaultMessage}
+    />
   </ArticleWrapper>
 );
 

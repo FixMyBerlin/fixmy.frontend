@@ -1,14 +1,14 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Heading, Paragraph } from '~/components2/Article';
+import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import bmviLogi from '~/pages/Research/images/logo/BMVI_Fz_2017_Office_Farbe_de_clip_scale.png';
 import senKanzLogo from '~/pages/Research/images/logo/senatskanzlei-berlin.png';
 import LogoWrapper from '~/pages/Research/components/LogoWrapper';
 import Link from '~/components2/Link';
 
-const SectionTeam = ({ toc }) => (
+const SectionTeam = ({ toc, tocAnchor }: SectionProps) => (
   <>
-    <Heading as="h2" toc={toc}>
+    <Heading as="h2" toc={toc} tocAnchor={tocAnchor}>
       <FormattedMessage
         id="research.07_team.p01.heading"
         defaultMessage="Wer steht hinter der Umfrage"

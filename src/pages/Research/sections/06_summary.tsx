@@ -9,10 +9,11 @@ import { Paragraph, Heading, List, SectionProps } from '~/components2/Article';
 
 const SectionSummary = ({
   toc,
+  tocAnchor,
   intl
 }: SectionProps & WrappedComponentProps) => (
   <>
-    <Heading as="h2" toc={toc}>
+    <Heading as="h2" toc={toc} tocAnchor={tocAnchor}>
       <FormattedMessage
         id="research.06_summary.p01.heading"
         defaultMessage="Zusammenfassung"

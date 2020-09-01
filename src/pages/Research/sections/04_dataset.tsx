@@ -3,9 +3,9 @@ import { FormattedMessage } from 'react-intl';
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import Link from '~/components2/Link';
 
-const SectionDataset = ({ toc }: SectionProps) => (
+const SectionDataset = ({ toc, tocAnchor }: SectionProps) => (
   <>
-    <Heading as="h2" toc={toc}>
+    <Heading as="h2" toc={toc} tocAnchor={tocAnchor}>
       <FormattedMessage
         id="research.04_dataset.heading"
         defaultMessage="Datensatz der Ergebnisse zum Download"

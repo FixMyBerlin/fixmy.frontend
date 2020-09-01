@@ -72,10 +72,11 @@ import MS_A_67 from '../images/01_MS_A_67_@x2.jpg';
 
 const SectionResults = ({
   toc,
+  tocAnchor,
   intl
 }: SectionProps & WrappedComponentProps) => (
   <>
-    <Heading as="h2" toc={toc}>
+    <Heading as="h2" toc={toc} tocAnchor={tocAnchor}>
       <FormattedMessage
         id="research.05_results.heading"
         defaultMessage="Statistische Auswertung"

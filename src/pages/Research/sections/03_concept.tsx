@@ -19,9 +19,9 @@ import image1 from '../images/image1_@x2.jpg';
 
 type Props = WrappedComponentProps & SectionProps;
 
-const SectionAbout = ({ toc, intl }: Props) => (
+const SectionAbout = ({ toc, tocAnchor, intl }: Props) => (
   <>
-    <Heading toc={toc} as="h2">
+    <Heading toc={toc} tocAnchor={tocAnchor} as="h2">
       <FormattedMessage
         id="research.03_concept.heading"
         defaultMessage="Umfragekonzept"
