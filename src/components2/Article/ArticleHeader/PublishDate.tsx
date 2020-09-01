@@ -1,30 +1,16 @@
 import React from 'react';
+import { FormattedDate, FormattedTime } from 'react-intl';
 
 interface PublishDateProps {
   date?: Date;
   className?: string;
 }
 
-function isDate(date: Date) {
-  return (
-    date && typeof date === 'object' && typeof date.getMonth === 'function'
-  );
-}
-
-function formatPublishDate(date: Date) {
-  if (!isDate(date)) {
-    return null;
-  }
-
-  return date.toLocaleString('de-DE', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric'
-  });
-}
-
-export default ({ date, className }: PublishDateProps) => (
-  <span className={className}>{formatPublishDate(date)}</span>
+const PublishDate = ({ date, className }: PublishDateProps) => (
+  <span className={className}>
+    <FormattedDate value={date} year="numeric" month="long" day="numeric" />{' '}
+    <FormattedTime value={date} hour="numeric" minute="numeric" />
+  </span>
 );
+
+export default PublishDate;

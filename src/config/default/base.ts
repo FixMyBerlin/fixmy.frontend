@@ -39,6 +39,9 @@ const baseConfig = {
       disableCookies: true
     }
   },
+  intl: {
+    logMissingTranslations: true
+  },
   districts: null
 };
 

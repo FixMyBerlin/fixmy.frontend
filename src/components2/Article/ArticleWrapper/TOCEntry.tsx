@@ -69,7 +69,9 @@ function TOCEntry({ index, entry, active = false }) {
     }
   };
 
-  const slug = slugify(entry.props.toc, { lower: true });
+  const slug = slugify(entry.props.tocAnchor || entry.props.toc, {
+    lower: true
+  });
 
   return (
     <TOCEntryWrapper active={active} onClick={goToEntry} href={`#${slug}`}>

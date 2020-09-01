@@ -1,6 +1,6 @@
 name: Node.js CI
 
-on: 
+on:
   pull_request:
   push:
     branches: ['master', 'develop']
@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        
+
       - name: Read node version from .nvmrc
         id: nvmrc
         uses: browniebroke/read-nvmrc-action@v1
@@ -38,13 +38,14 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           directory: coverage
+          flags: unittests
 
   linter:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-        
+
       - name: Read node version from .nvmrc
         id: nvmrc
         uses: browniebroke/read-nvmrc-action@v1
