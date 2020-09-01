@@ -105,7 +105,7 @@
     "defaultMessage": "Due to the variety of potential influencing factors and the resulting range of scenarios, it was necessary to limit the number of scenarios in the survey. After looking into the current state of research in this area we were able to identify the most important influencing factors. Each experiment consists of a foundational scene, within which various infrastructure elements can be added or adjusted. For example: For experiment 1 (Main road - cycle routes along the road), the foundational image is a car lane, a cycle path with a divider (left/right), a parking strip and the pavement:"
   },
   "research.03_concept.p15.imageLabel": {
-    "defaultMessage": ""
+    "defaultMessage": "Basic scene as described above with labels"
   },
   "research.03_concept.p16": {
     "defaultMessage": "In this experiment, the configuration of the pavement does not change but the following influencing factors within the car lanes area are varied from image to image:"
@@ -132,22 +132,22 @@
     "defaultMessage": "the type and width of the right-hand divide"
   },
   "research.03_concept.p18": {
-    "defaultMessage": ""
+    "defaultMessage": "Furthermore, a number of parked vehicles is displayed or not."
   },
   "research.03_concept.p19": {
-    "defaultMessage": "Depending on the style of the cycle route the scenarios were also re-rendered from the perspective of a motorist and a pedestrian in addition to the cyclist perspective. Using this approach, we created 1900 scenarios with 3000 images (including the motorist and pedestrian perspective)."
+    "defaultMessage": "Depending on the style of the cycle route the scenarios were also re-rendered from the perspective of a motorist and a pedestrian in addition to the cyclist perspective. Using this approach, we created 1900 scenarios with 3000 images (including the motorist and pedestrian perspective). Click {link} to read a more detailed documentation of the process of creating the street scenarios"
   },
   "research.03_concept.p19.link": {
-    "defaultMessage": "pdf download"
+    "defaultMessage": "here (PDF-download)"
   },
   "research.03_concept.p2": {
     "defaultMessage": "While the objective safety of cyclists has already been investigated in multiple studies, scarcely any research has been carried out on perceived/subjective safety. The particular challenge when investigating subjective safety is to collect enough ratings for various street configurations and simultaneously look into each of the many different influences on the perceived safety of a situation in enough detail. It was therefore necessary to illustrate a wide variety of different street configurations in the survey and at the same time reach a large number of participants via an effective communication strategy."
   },
   "research.03_concept.p20": {
-    "defaultMessage": "Click here to browse an overview of the different street scenes and their different characteristics:"
+    "defaultMessage": "Click {link} to browse a tabular overview of the different street scenes and their characteristics:"
   },
   "research.03_concept.p20.link": {
-    "defaultMessage": "Download ods"
+    "defaultMessage": "here (ODS-download)"
   },
   "research.03_concept.p3": {
     "defaultMessage": "It is typically difficult to determine how narrow a cycle path has to be for it to be considered ‘too narrow’ simply with qualitative surveys of cyclists’ opinions. This is also the case when gauging the subjective perception of street traffic scenarios or combinations of specific structural characteristics (such as narrow cycle paths or parking spaces). Furthermore, these kinds of surveys are usually carried out with participants who generally travel by bike on a regular basis. This means that the resulting data often only represents the ‘cyclist’ demographic."
@@ -219,10 +219,10 @@
     "defaultMessage": "non-binary"
   },
   "research.05_results.chart1.label": {
-    "defaultMessage": ""
+    "defaultMessage": "Average safety rating grouped by gender"
   },
   "research.05_results.chart1.title": {
-    "defaultMessage": ""
+    "defaultMessage": "Ratings by gender"
   },
   "research.05_results.chart10.1": {
     "defaultMessage": "Cycle path without physical barrier, narrow road markings on the left"
@@ -325,9 +325,6 @@
   },
   "research.05_results.chart13.7": {
     "defaultMessage": "Road with cycle path on the right-hand side of the parking strip"
-  },
-  "research.05_results.chart13.label": {
-    "defaultMessage": ""
   },
   "research.05_results.chart13.title": {
     "defaultMessage": "Illustration: Main road with cycle path on the pavement and on the road itself"
@@ -459,7 +456,7 @@
     "defaultMessage": "AG7 - over 74 years of age"
   },
   "research.05_results.chart2.label": {
-    "defaultMessage": "The average safety rating given by each main demographic group (gender, age and frequency of travel by bike) tells us this much:"
+    "defaultMessage": "Average safety rating grouped by age"
   },
   "research.05_results.chart2.title": {
     "defaultMessage": "Ratings by age"
@@ -549,7 +546,7 @@
     "defaultMessage": "never"
   },
   "research.05_results.chart3.label": {
-    "defaultMessage": "Note: The average safety rating given by each main demographic group (gender, age and frequency of travel by bike) tells us this much:"
+    "defaultMessage": "Average safety rating grouped by frequency of bike travel"
   },
   "research.05_results.chart3.title": {
     "defaultMessage": "Ratings by frequency of bike travel"
@@ -678,13 +675,13 @@
     "defaultMessage": "The data assembled in this survey allow us to consider various hypotheses. One particular area of interest in current research in this area is potential cyclists as a demographic, for example. Which kind of road infrastructure do these people need in order to feel safe on the streets? Does the volume of traffic make as much of an impact when cycle and motor traffic is clearly separated? Which traffic infrastructure is felt to be safe by the majority of participants? Is the width of a cycle path or a physical divide alongside it a deciding factor? Which configurations are most suited for routes along the pavement, alongside the car lanes or in minor roads? We will analyse many of these hypotheses in the following evaluation of the results. "
   },
   "research.05_results.p10": {
-    "defaultMessage": ""
+    "defaultMessage": "Participants were also asked about the accessibility of different modes of transport and the reasons that motivate them to travel by bike or discourage them from cycling. These answers are available to read in the downloadable dataset. "
   },
   "research.05_results.p11": {
-    "defaultMessage": ""
+    "defaultMessage": "In sum, the demographics reflected in the survey do not reflect the composition of the population of Berlin. Cyclists, men and people between 30 and 64 years old are significantly overrepresented. Due to the large number of participants, it is nonetheless possible to draw conclusions from the results for specific demographic sub-groups (e.g. women over 74: 143 participants)."
   },
   "research.05_results.p12": {
-    "defaultMessage": ""
+    "defaultMessage": "When split by these characteristics, the results differ only slightly between groups. For this reason, we decided not to split the results for the next stages of the analysis."
   },
   "research.05_results.p13": {
     "defaultMessage": "Firstly we will look at the results for routes along the main roads. Minor/side roads will be addressed in a later chapter."
@@ -1107,7 +1104,7 @@
     "defaultMessage": "unsafe"
   },
   "research.components.feelsafe.label": {
-    "defaultMessage": ""
+    "defaultMessage": "{pct}% of users in the '{mode}'-perspective felt safe here"
   },
   "research.components.feelsafe.perspectives.bike": {
     "defaultMessage": "bike"
@@ -1119,7 +1116,7 @@
     "defaultMessage": "pedestrians"
   },
   "research.introduction": {
-    "defaultMessage": ""
+    "defaultMessage": "The mobility revolution has begun in Berlin and many other cities. Cyclists are looking forward to improved infrastructure, infrastructure in which everyone feels safe. But what does “safety for everyone” actually mean in regards to how we design and plan cycle infrastructure? We carried out a survey to investigate subjective perceptions of safety on the road; in this article, we bring the results of this survey to light."
   },
   "research.kicker": {
     "defaultMessage": "Research result - Berlin street check"
