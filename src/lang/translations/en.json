@@ -17,6 +17,9 @@
   "components.article.tocHeader": {
     "defaultMessage": "Go directly to a chapter"
   },
+  "components.menu.ariaRole": {
+    "defaultMessage": "Site menu"
+  },
   "research.02_intro.cta": {
     "defaultMessage": "Go to statistical evaluation"
   },
@@ -177,7 +180,7 @@
     "defaultMessage": "rating various street configurations"
   },
   "research.03_concept.p8": {
-    "defaultMessage": "In this section, participants were asked various general questions about traffic and transport in Berlin in order for the Tagesspiegel editorial team to assess the results. We will not go deeper into this part of the survey here, as this was not part of the survey concept for our research. The Berlin Tagespiegel wrote up the results of this section separately."
+    "defaultMessage": "In this section, participants were asked various general questions about traffic and transport in Berlin in order for the Tagesspiegel editorial team to assess the results. We will not go deeper into this part of the survey here, as this was not part of the survey concept for our research. The Berlin Tagespiegel wrote up the {link} of this section separately."
   },
   "research.03_concept.p8.heading": {
     "defaultMessage": "General questions about transport (Introductory questions)"
@@ -195,19 +198,19 @@
     "defaultMessage": "Download the dataset of the survey results"
   },
   "research.04_dataset.p1": {
-    "defaultMessage": "FixMyCity provides the results data freely for public use (‘open data’) on the condition that work based on these data are also made freely available to the public (‘share-alike’). Find out more about the licence on the website of the Open Knowledge Foundation. An explanation of the columns in the JSON-formatted dataset is provided in this PDF overview of the specifications. Click the button below to download the results of the survey as a JSON dataset."
+    "defaultMessage": "FixMyCity provides the results data freely for public use (‘open data’) on the condition that work based on these data are also made freely available to the public (‘share-alike’). Find out more about the licence on the {linkLicense}. An explanation of the columns in the JSON-formatted dataset is provided {linkSpec}.."
   },
   "research.04_dataset.p1.linkLicense": {
-    "defaultMessage": "Open Knowledge Foundation"
+    "defaultMessage": "website of the Open Knowledge Foundation"
   },
   "research.04_dataset.p1.linkSpec": {
     "defaultMessage": "this PDF overview of the specifications"
   },
   "research.04_dataset.p2": {
-    "defaultMessage": "Click the button below to download the results of the survey as a JSON dataset. "
+    "defaultMessage": "Clicke {linkResults}"
   },
   "research.04_dataset.p2.linkResults": {
-    "defaultMessage": "Download data"
+    "defaultMessage": "here to download the results of the survey as a JSON dataset"
   },
   "research.05_results.chart1.1": {
     "defaultMessage": "male"
@@ -1029,7 +1032,7 @@
     "defaultMessage": "over 65 years of age 19%"
   },
   "research.05_results.p9": {
-    "defaultMessage": "In addition, participants were asked how often they travel by foot, by public transport, by car, by bike and by motorcycle. In comparison with the data gathered by a large mobility study (SrV) in 2018, our data showed some notable differences. The percentage value for travel by public transport (bus, train and tram) at least once weekly (64% in our survey) is close to the value from the mobility study (62%). In contrast, car users were underrepresented in our survey (35%) compared to the mobility study (56%) while cyclists were overrepresented (64% vs 47% in the mobility study). "
+    "defaultMessage": "In addition, participants were asked how often they travel by foot, by public transport, by car, by bike and by motorcycle. In comparison with the data gathered by a large mobility study (SrV) in 2018, our data showed some notable differences. The percentage value for travel by public transport (bus, train and tram) at least once weekly (64% in our survey) is close to the value from the mobility study (62%). In contrast, car users were underrepresented in our survey (35%) compared to the mobility study (56%) while cyclists were overrepresented (64% vs 47% in the mobility study, {link} p.127ff). "
   },
   "research.05_results.p9.link": {
     "defaultMessage": "(Gerike et. al,  Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020)"
@@ -1092,10 +1095,10 @@
     "defaultMessage": "FixMyCity Team"
   },
   "research.components.barchart.labels.ratherSafe": {
-    "defaultMessage": "rather Safe"
+    "defaultMessage": "rather safe"
   },
   "research.components.barchart.labels.ratherUnsafe": {
-    "defaultMessage": "rather Unsafe"
+    "defaultMessage": "rather unsafe"
   },
   "research.components.barchart.labels.safe": {
     "defaultMessage": "safe"

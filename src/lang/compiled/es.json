@@ -35,6 +35,12 @@
       "value": "Ve directamente a un capítulo"
     }
   ],
+  "components.menu.ariaRole": [
+    {
+      "type": 0,
+      "value": "Menú principal"
+    }
+  ],
   "research.02_intro.cta": [
     {
       "type": 0,
@@ -388,7 +394,15 @@
   "research.03_concept.p8": [
     {
       "type": 0,
-      "value": "En esta sección, se hicieron preguntas generales sobre el tráfico de Berlín para la evaluación editorial del Tagesspiegel. Estas preguntas no se discuten con más detalle aquí, ya que no forman parte del concepto. Sobre este tema “Tagesspiegel Berlín” realizó una evaluación (disponible en alemán)."
+      "value": "En esta sección, se hicieron preguntas generales sobre el tráfico de Berlín para la evaluación editorial del Tagesspiegel. Estas preguntas no se discuten con más detalle aquí, ya que no forman parte del concepto. Sobre este tema “Tagesspiegel Berlín” realizó una "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " (disponible en alemán)."
     }
   ],
   "research.03_concept.p8.heading": [
@@ -424,7 +438,23 @@
   "research.04_dataset.p1": [
     {
       "type": 0,
-      "value": "FixMyCity pone los datos a disposición de manera abierta (\"open data\") con la condición de que también se publiquen trabajos derivados de los mismos (\"share-alike\"). Los detalles sobre la licencia se pueden encontrar en el sitio web de Open Knowledge Foundation. La explicación de las columnas en el los datos de archivos JSON se puede encontrar en este PDF.El siguiente enlace lo lleva a los resultados de la encuesta como un conjunto de datos en formato  JSON, que puede ver y descargar allí."
+      "value": "FixMyCity pone los datos a disposición de manera abierta (\"open data\") con la condición de que también se publiquen trabajos derivados de los mismos (\"share-alike\"). Los detalles sobre la licencia se pueden encontrar en el sitio web de "
+    },
+    {
+      "type": 1,
+      "value": "linkLicense"
+    },
+    {
+      "type": 0,
+      "value": ". La explicación de las columnas en el los datos de archivos JSON se puede encontrar en "
+    },
+    {
+      "type": 1,
+      "value": "linkSpec"
+    },
+    {
+      "type": 0,
+      "value": ". El siguiente enlace lo lleva a los resultados de la encuesta como un conjunto de datos en formato  JSON, que puede ver y descargar allí."
     }
   ],
   "research.04_dataset.p1.linkLicense": [
@@ -442,13 +472,21 @@
   "research.04_dataset.p2": [
     {
       "type": 0,
-      "value": "El siguiente enlace lo lleva a los resultados de la encuesta como un conjunto de datos en formato  JSON, que puede ver y descargar allí."
+      "value": "El siguiente enlace lo lleva a "
+    },
+    {
+      "type": 1,
+      "value": "linkResults"
+    },
+    {
+      "type": 0,
+      "value": ", que puede ver y descargar allí."
     }
   ],
   "research.04_dataset.p2.linkResults": [
     {
       "type": 0,
-      "value": "Descargar conjunto de datos"
+      "value": "los resultados de la encuesta como un conjunto de datos en formato JSON"
     }
   ],
   "research.05_results.chart1.1": [
@@ -2086,7 +2124,15 @@
   "research.05_results.p9": [
     {
       "type": 0,
-      "value": "Además, se preguntó a los participantes con qué frecuencia viajaban en autobús, tren, coche, bicicleta, motocicleta o bien caminaban. En comparación con los valores de Berlín del Sistema de encuestas de tráfico representativas, 2018 (SrV, por sus siglas en alemán), existen algunas desviaciones. Los valores para el uso del transporte público (autobús y tren) al menos una vez a la semana en la encuesta (64%) coinciden aproximadamente con los valores del SrV 2018 (62%). Por el contrario, el uso del automóvil (35%) está subrepresentado en esta encuesta en comparación con el SrV 2018 (56%) y el uso de la bicicleta (64%) está sobrerrepresentado en la encuesta (47% SrV)."
+      "value": "Además, se preguntó a los participantes con qué frecuencia viajaban en autobús, tren, coche, bicicleta, motocicleta o bien caminaban. En comparación con los valores de Berlín del Sistema de encuestas de tráfico representativas, 2018 (SrV, por sus siglas en alemán), existen algunas desviaciones. Los valores para el uso del transporte público (autobús y tren) al menos una vez a la semana en la encuesta (64%) coinciden aproximadamente con los valores del SrV 2018 (62%). Por el contrario, el uso del automóvil (35%) está subrepresentado en esta encuesta en comparación con el SrV 2018 (56%) y el uso de la bicicleta (64%) está sobrerrepresentado en la encuesta (47% SrV, "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": ")."
     }
   ],
   "research.05_results.p9.link": [

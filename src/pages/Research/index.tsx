@@ -10,7 +10,7 @@ import { ArticleWrapper, ArticleHeader, Intro } from '~/components2/Article';
 import { LocaleCode } from '~/types';
 
 import SectionIntroduction from './sections/02_intro';
-import SectionAbout from './sections/03_concept';
+import SectionConcept from './sections/03_concept';
 import SectionDataset from './sections/04_dataset';
 import SectionResults from './sections/05_results';
 import SectionSummary from './sections/06_summary';
@@ -84,7 +84,7 @@ const Research = ({ intl }: { intl: IntlShape }) => (
       toc={intl.formatMessage(messages.tocIntroduction)}
       tocAnchor={messages.tocIntroduction.defaultMessage}
     />
-    <SectionAbout
+    <SectionConcept
       toc={intl.formatMessage(messages.tocAbout)}
       tocAnchor={messages.tocAbout.defaultMessage}
     />
