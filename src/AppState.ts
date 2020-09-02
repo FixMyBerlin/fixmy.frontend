@@ -8,6 +8,7 @@ import logger from './utils/logger';
 import getDefaultLocale from './utils/defaultLocale';
 import { LocaleCode, DistrictConfig } from './types';
 import { Region } from './config';
+import polyfill from './utils/polyfill-intl';
 
 const UPDATE_HISTORY = 'App/AppState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'App/AppState/SET_ACTIVE_SECTION';
@@ -148,10 +149,15 @@ export function setDistrict(district: Region) {
   return { type: SET_DISTRICT, payload };
 }
 
-export function setLocale(locale: LocaleCode) {
-  log('set locale to', locale);
-  return { type: SET_LOCALE, locale };
-}
+export const setLocale = (locale: LocaleCode) => async (dispatch: Dispatch) => {
+  await setLocaleThunk(locale, dispatch);
+};
+
+const setLocaleThunk = async (locale: LocaleCode, dispatch: Dispatch) => {
+  await polyfill(locale);
+  log('polyfills loaded');
+  dispatch({ type: SET_LOCALE, locale });
+};
 
 export default function AppStateReducer(
   state: AppState = initialState,
