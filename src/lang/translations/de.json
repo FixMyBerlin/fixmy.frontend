@@ -17,6 +17,9 @@
   "components.article.tocHeader": {
     "defaultMessage": "Gehe direkt zu einem Kapitel"
   },
+  "components.menu.ariaRole": {
+    "defaultMessage": "Hauptmenü"
+  },
   "research.02_intro.cta": {
     "defaultMessage": "Direkt zur Auswertung"
   },

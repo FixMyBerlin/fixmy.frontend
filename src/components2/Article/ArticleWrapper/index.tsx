@@ -17,7 +17,7 @@ interface PageProps {
   bgPattern?: string;
 }
 
-const Page = styled.div<PageProps>`
+const Page = styled.main<PageProps>`
   background: url(${(props) => props.bgPattern});
   min-height: 100%;
 `;

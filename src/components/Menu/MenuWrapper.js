@@ -4,7 +4,7 @@ import config from '~/config';
 const MenuTransform = `translate3d(-${config.menu.size + 10}px, 0, 0)`;
 const MenuActiveTransform = 'translate3d(0,0,0)';
 
-export default styled.div`
+export default styled.nav`
   position: fixed;
   top: 0;
   left: 0;

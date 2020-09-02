@@ -17,6 +17,9 @@
   "components.article.tocHeader": {
     "defaultMessage": "Ve directamente a un capítulo"
   },
+  "components.menu.ariaRole": {
+    "defaultMessage": "Menú principal"
+  },
   "research.02_intro.cta": {
     "defaultMessage": "DIRECTO A LA EVALUACIÓN"
   },

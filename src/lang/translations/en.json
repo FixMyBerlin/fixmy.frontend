@@ -17,6 +17,9 @@
   "components.article.tocHeader": {
     "defaultMessage": "Go directly to a chapter"
   },
+  "components.menu.ariaRole": {
+    "defaultMessage": "Site menu"
+  },
   "research.02_intro.cta": {
     "defaultMessage": "Go to statistical evaluation"
   },
