@@ -1095,10 +1095,10 @@
     "defaultMessage": "FixMyCity Team"
   },
   "research.components.barchart.labels.ratherSafe": {
-    "defaultMessage": "rather Safe"
+    "defaultMessage": "rather safe"
   },
   "research.components.barchart.labels.ratherUnsafe": {
-    "defaultMessage": "rather Unsafe"
+    "defaultMessage": "rather unsafe"
   },
   "research.components.barchart.labels.safe": {
     "defaultMessage": "safe"

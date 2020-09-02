@@ -2224,13 +2224,13 @@
   "research.components.barchart.labels.ratherSafe": [
     {
       "type": 0,
-      "value": "rather Safe"
+      "value": "rather safe"
     }
   ],
   "research.components.barchart.labels.ratherUnsafe": [
     {
       "type": 0,
-      "value": "rather Unsafe"
+      "value": "rather unsafe"
     }
   ],
   "research.components.barchart.labels.safe": [
