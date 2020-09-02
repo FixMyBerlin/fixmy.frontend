@@ -394,7 +394,15 @@
   "research.03_concept.p8": [
     {
       "type": 0,
-      "value": "In this section, participants were asked various general questions about traffic and transport in Berlin in order for the Tagesspiegel editorial team to assess the results. We will not go deeper into this part of the survey here, as this was not part of the survey concept for our research. The Berlin Tagespiegel wrote up the results of this section separately."
+      "value": "In this section, participants were asked various general questions about traffic and transport in Berlin in order for the Tagesspiegel editorial team to assess the results. We will not go deeper into this part of the survey here, as this was not part of the survey concept for our research. The Berlin Tagespiegel wrote up the "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " of this section separately."
     }
   ],
   "research.03_concept.p8.heading": [
@@ -430,13 +438,29 @@
   "research.04_dataset.p1": [
     {
       "type": 0,
-      "value": "FixMyCity provides the results data freely for public use (‘open data’) on the condition that work based on these data are also made freely available to the public (‘share-alike’). Find out more about the licence on the website of the Open Knowledge Foundation. An explanation of the columns in the JSON-formatted dataset is provided in this PDF overview of the specifications. Click the button below to download the results of the survey as a JSON dataset."
+      "value": "FixMyCity provides the results data freely for public use (‘open data’) on the condition that work based on these data are also made freely available to the public (‘share-alike’). Find out more about the licence on the "
+    },
+    {
+      "type": 1,
+      "value": "linkLicense"
+    },
+    {
+      "type": 0,
+      "value": ". An explanation of the columns in the JSON-formatted dataset is provided "
+    },
+    {
+      "type": 1,
+      "value": "linkSpec"
+    },
+    {
+      "type": 0,
+      "value": ".."
     }
   ],
   "research.04_dataset.p1.linkLicense": [
     {
       "type": 0,
-      "value": "Open Knowledge Foundation"
+      "value": "website of the Open Knowledge Foundation"
     }
   ],
   "research.04_dataset.p1.linkSpec": [
@@ -448,13 +472,17 @@
   "research.04_dataset.p2": [
     {
       "type": 0,
-      "value": "Click the button below to download the results of the survey as a JSON dataset. "
+      "value": "Clicke "
+    },
+    {
+      "type": 1,
+      "value": "linkResults"
     }
   ],
   "research.04_dataset.p2.linkResults": [
     {
       "type": 0,
-      "value": "Download data"
+      "value": "here to download the results of the survey as a JSON dataset"
     }
   ],
   "research.05_results.chart1.1": [
@@ -2098,7 +2126,15 @@
   "research.05_results.p9": [
     {
       "type": 0,
-      "value": "In addition, participants were asked how often they travel by foot, by public transport, by car, by bike and by motorcycle. In comparison with the data gathered by a large mobility study (SrV) in 2018, our data showed some notable differences. The percentage value for travel by public transport (bus, train and tram) at least once weekly (64% in our survey) is close to the value from the mobility study (62%). In contrast, car users were underrepresented in our survey (35%) compared to the mobility study (56%) while cyclists were overrepresented (64% vs 47% in the mobility study). "
+      "value": "In addition, participants were asked how often they travel by foot, by public transport, by car, by bike and by motorcycle. In comparison with the data gathered by a large mobility study (SrV) in 2018, our data showed some notable differences. The percentage value for travel by public transport (bus, train and tram) at least once weekly (64% in our survey) is close to the value from the mobility study (62%). In contrast, car users were underrepresented in our survey (35%) compared to the mobility study (56%) while cyclists were overrepresented (64% vs 47% in the mobility study, "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " p.127ff). "
     }
   ],
   "research.05_results.p9.link": [
