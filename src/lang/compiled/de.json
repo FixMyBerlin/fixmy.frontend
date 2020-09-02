@@ -35,6 +35,12 @@
       "value": "Gehe direkt zu einem Kapitel"
     }
   ],
+  "components.menu.ariaRole": [
+    {
+      "type": 0,
+      "value": "Hauptmenü"
+    }
+  ],
   "research.02_intro.cta": [
     {
       "type": 0,
