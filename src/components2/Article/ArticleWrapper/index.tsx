@@ -17,7 +17,7 @@ interface PageProps {
   bgPattern?: string;
 }
 
-const Page = styled.div<PageProps>`
+const Page = styled.main<PageProps>`
   background: url(${(props) => props.bgPattern});
   min-height: 100%;
 `;
@@ -47,6 +47,7 @@ const ContentWrapperOuter = styled.div`
 `;
 
 const ContentWrapper = styled.div`
+  position: relative;
   padding: 0 16px 12px 16px;
   background: white;
   color: ${config.colors.darkbg};

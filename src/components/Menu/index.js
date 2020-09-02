@@ -1,24 +1,28 @@
-import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import { useIntl, defineMessage } from 'react-intl';
+import { useSelector } from 'react-redux';
 
 import MenuWrapper from './MenuWrapper';
 import MenuHeader from './MenuHeader';
 import Navigation from './Navigation';
 import MenuFooter from './MenuFooter';
 
-class Menu extends PureComponent {
-  render() {
-    return (
-      <MenuWrapper isActive={this.props.isMenuOpen}>
-        <MenuHeader token={this.props.token} />
-        <Navigation />
-        <MenuFooter />
-      </MenuWrapper>
-    );
-  }
-}
+const label = defineMessage({
+  id: 'components.menu.ariaRole',
+  defaultMessage: 'Hauptmenü'
+});
 
-export default connect((state) => ({
-  ...state.AppState,
-  token: state.UserState.token
-}))(Menu);
+const Menu = () => {
+  const intl = useIntl();
+  const isMenuOpen = useSelector(({ AppState }) => AppState.isMenuOpen);
+  const token = useSelector(({ UserState }) => UserState.token);
+  return (
+    <MenuWrapper isActive={isMenuOpen} aria-label={intl.formatMessage(label)}>
+      <MenuHeader token={token} />
+      <Navigation />
+      <MenuFooter />
+    </MenuWrapper>
+  );
+};
+
+export default Menu;

@@ -17,8 +17,8 @@
     "generate-kataster-schema": "./src/pages/KatasterKI/scheme/generate.sh",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "extract": "formatjs extract 'src/**/*.ts*' --out-file src/lang/translations/de.json",
-    "compile": "npm run compile:de; npm run compile:en; npm run compile:es",
+    "extract": "formatjs extract 'src/**/*.{j,t}s*' --out-file src/lang/translations/de.json",
+    "compile": "(npm run compile:de; npm run compile:en; npm run compile:es) && npx prettier --write 'src/lang/**/*.json'",
     "compile:de": "formatjs compile src/lang/translations/de.json --ast --out-file src/lang/compiled/de.json",
     "compile:en": "formatjs compile src/lang/translations/en.json --ast --out-file src/lang/compiled/en.json",
     "compile:es": "formatjs compile src/lang/translations/es.json --ast --out-file src/lang/compiled/es.json"
