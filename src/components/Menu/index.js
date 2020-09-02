@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIntl, defineMessage } from 'react-intl';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import MenuWrapper from './MenuWrapper';
 import MenuHeader from './MenuHeader';
@@ -12,8 +12,10 @@ const label = defineMessage({
   defaultMessage: 'Hauptmenü'
 });
 
-const Menu = ({ isMenuOpen, token }) => {
+const Menu = () => {
   const intl = useIntl();
+  const isMenuOpen = useSelector(({ AppState }) => AppState.isMenuOpen);
+  const token = useSelector(({ UserState }) => UserState.token);
   return (
     <MenuWrapper isActive={isMenuOpen} aria-label={intl.formatMessage(label)}>
       <MenuHeader token={token} />
@@ -23,7 +25,4 @@ const Menu = ({ isMenuOpen, token }) => {
   );
 };
 
-export default connect((state) => ({
-  ...state.AppState,
-  token: state.UserState.token
-}))(Menu);
+export default Menu;
