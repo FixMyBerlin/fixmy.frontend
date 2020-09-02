@@ -30,6 +30,7 @@ export default `
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 300;
+    font-display: swap;
     src: local('Open Sans Light'), local('OpenSans-Light'),
         url(${openSans300woff2}) format('woff2'),
         url(${openSans300woff}) format('woff');
@@ -39,6 +40,7 @@ export default `
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
     src: local('Open Sans Regular'), local('OpenSans-Regular'),
         url(${openSansRegularwoff2}) format('woff2'),
         url(${openSansRegularwoff}) format('woff');
@@ -48,6 +50,7 @@ export default `
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 600;
+    font-display: swap;
     src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
         url(${openSans600woff2}) format('woff2'),
         url(${openSans600woff}) format('woff');
@@ -56,6 +59,7 @@ export default `
     font-family: 'Open Sans';
     font-style: italic;
     font-weight: 600;
+    font-display: swap;
     src: local('Open Sans SemiBold Italic'), local('OpenSans-SemiBoldItalic'),
         url(${openSans600woff2Italic}) format('woff2'),
         url(${openSans600woffItalic}) format('woff');
@@ -65,6 +69,7 @@ export default `
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;
+    font-display: swap;
     src: local('Open Sans Bold'), local('OpenSans-Bold'),
         url(${openSans700woff2}) format('woff2'),
         url(${openSans700woff}) format('woff');
@@ -75,6 +80,7 @@ export default `
     font-family: 'Roboto Slab';
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
     src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'),
         url(${robotoSlabwoff2}) format('woff2'),
         url(${robotoSlabwoff}) format('woff');
@@ -84,6 +90,7 @@ export default `
     font-family: 'Roboto Slab';
     font-style: normal;
     font-weight: 700;
+    font-display: swap;
     src: local('Roboto Slab Bold'), local('RobotoSlab-Bold'),
         url(${robotoSlab700woff2}) format('woff2'),
         url(${robotoSlab700woff}) format('woff');
@@ -95,6 +102,7 @@ export default `
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
     src: local('Roboto Regular'), local('Roboto-Regular'),
         url(${robotowoff2}) format('woff2'),
         url(${robotowoff}) format('woff');
@@ -104,6 +112,7 @@ export default `
     font-family: 'Roboto';
     font-style: italic;
     font-weight: 400;
+    font-display: swap;
     src: local('Roboto Italic'), local('Roboto-Italic'),
         url(${robotoItalicwoff2}) format('woff2'),
         url(${robotoItalicwoff}) format('woff');
@@ -113,6 +122,7 @@ export default `
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
+    font-display: swap;
     src: local('Roboto Bold'), local('Roboto-Bold'),
         url(${roboto700woff2}) format('woff2'),
         url(${roboto700woff}) format('woff');
@@ -123,6 +133,7 @@ export default `
     font-family: 'The Mix';
     font-style: normal;
     font-weight: 700;
+    font-display: swap;
     src: local('TheMixBlack'), local('TheMixC5-9_Black'),
         url(${theMixBlackwoff2}) format('woff2'),
         url(${theMixBlackwoff}) format('woff');

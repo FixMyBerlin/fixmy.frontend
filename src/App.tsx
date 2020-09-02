@@ -24,7 +24,6 @@ import { getTheme } from '~/styles/mui-utils';
 import defaultMessages from '~/lang/compiled/de.json';
 import loadLocaleMessages from './lang/loader';
 import intlErrorHandler from './lang/errorHandler';
-import polyfill from './utils/polyfill-intl';
 
 const log = debug('fmc');
 
@@ -39,7 +38,6 @@ const AppWrapper = styled.div`
 `;
 
 const App = ({ dispatch, isEmbedMode }) => {
-  log('rendering app');
   const locale = useSelector((state: RootState) => state.AppState.locale);
   const [messages, setMessages] = useState<IntlConfig['messages']>(
     defaultMessages
@@ -51,7 +49,7 @@ const App = ({ dispatch, isEmbedMode }) => {
     const doLoad = async () => {
       setMessages(await loadLocaleMessages(locale));
       setTheme(getTheme(locale));
-      polyfill(locale);
+      log('finished switching locale');
     };
     doLoad();
   }, [locale]);
@@ -63,6 +61,7 @@ const App = ({ dispatch, isEmbedMode }) => {
     ReactPiwik.push(['trackPageView']);
   }, []);
 
+  log('rendering app');
   return (
     <ThemeProvider theme={theme}>
       <IntlProvider
