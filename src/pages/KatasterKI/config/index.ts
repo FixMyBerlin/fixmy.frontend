@@ -40,6 +40,7 @@ const katasterConfig = {
   projectId: '01',
   numIntroQuestions: 5,
   tspNewsletterLink: 'https://www.tagesspiegel.de/newsletter/',
+  tspKatasterURL: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
   shareUrl: 'https://interaktiv.tagesspiegel.de/strassencheck/',
   shareTitle: 'Umfrage Share Title',
   shareText:

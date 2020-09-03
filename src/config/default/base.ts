@@ -1,38 +1,36 @@
+import { DefaultConfig } from '~/types';
+
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
   staging: 'https://fixmyberlin-staging.netlify.app/api/next',
   production: 'https://fixmyberlin.de/api/v1'
 };
 
-const baseConfig = {
-  devUrl: 'http://localhost:8080',
-  prodUrl: 'https://fixmyberlin.de',
-  newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EGM',
-  tspKatasterURL: 'https://interaktiv.tagesspiegel.de/lab/strassencheck/',
+// Default config without all fields thar are defined through sibling modules
+const baseConfig: Omit<
+  DefaultConfig,
+  'apps' | 'map' | 'colors' | 'menu' | 'routes' | 'staticpages'
+> = {
   apiUrl:
     process.env.API_URL ||
     apiEndpoints[process.env.BACKEND] ||
     apiEndpoints.production,
-  feedbackMail: 'feedback@fixmyberlin.de',
-  siteTitle: 'FixMyBerlin',
   titleFont: 'Roboto Slab',
   baseFont: 'Open Sans',
-  flatButtons: false,
   logger: 'fmc*', // selects logging namespaces to display when not in production
-  sectionIsBeta: true,
-  planningIsBeta: true,
-  offlineMode: false,
-  isSwitchEnabled: true,
-  enableResearchPage: true,
   debug: process.env.NODE_ENV !== 'production',
-  showLikeButton: true,
-  showFeedBackForm: false,
+  mapbox: {
+    accessToken:
+      'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
+    reverseGeocoderUrl:
+      'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json'
+  },
+  newsletter: {
+    embedUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EGM'
+  },
   piwik: {
     url: 's.fixmycity.de',
-    siteId: {
-      berlin: 1,
-      aachen: 4
-    },
+    siteId: 1,
     options: {
       enableLinkTracking: true,
       trackErrors: true,
@@ -41,8 +39,7 @@ const baseConfig = {
   },
   intl: {
     logMissingTranslations: true
-  },
-  districts: null
+  }
 };
 
 if (!process.env.BACKEND && process.env.API_URL == null) {

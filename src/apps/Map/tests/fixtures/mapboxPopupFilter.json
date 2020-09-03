@@ -1,0 +1,20 @@
+[
+  ["center", ["==", "inactive", ["get", "phase"]]],
+  ["overlayLine", ["==", "inactive", ["get", "phase"]]],
+  [
+    "side0",
+    [
+      "all",
+      ["match", ["get", "side"], [2, 0], true, false],
+      ["==", "inactive", ["get", "phase"]]
+    ]
+  ],
+  [
+    "side1",
+    [
+      "all",
+      ["match", ["get", "side"], [2, 1], true, false],
+      ["==", "inactive", ["get", "phase"]]
+    ]
+  ]
+]

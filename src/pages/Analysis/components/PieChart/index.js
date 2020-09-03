@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { VictoryPie, VictoryLabel, Slice } from 'victory';
 
-import config from '~/pages/Map/config';
+import config from '~/config';
 import { setPhaseFilter } from '~/pages/Analysis/AnalysisState';
 
 import { numberFormat, getRVALength } from '~/utils/utils';
 import SvgIcon from '~/components/SvgIcon';
 import DotLoader from '~/components/DotLoader';
+import { PLANNING_PHASES } from '~/apps/Map/constants';
 
 const PieChartWrapper = styled.div`
   width: 300px;
@@ -95,7 +96,7 @@ function getSvgOffsetX(textAnchor) {
 }
 
 const Label = ({ x, y, dy, ...props }) => {
-  const phase = config.planningPhases.find((p) => p.name === props.text);
+  const phase = PLANNING_PHASES.find((p) => p.name === props.text);
   const offsetX = getSvgOffsetX(props.textAnchor);
   const offsetY = getSvgOffsetY(props.orientation);
 
@@ -145,14 +146,12 @@ class PieChart extends PureComponent {
       );
     }
 
-    const chartData = config.planningPhases
-      .map((planningPhase) => ({
-        x: planningPhase.id,
-        xName: planningPhase.name,
-        y: lengthByPhase(data, planningPhase.id) / 1000.0,
-        color: planningPhase.color
-      }))
-      .filter((d) => d.y > 0);
+    const chartData = PLANNING_PHASES.map((planningPhase) => ({
+      x: planningPhase.id,
+      xName: planningPhase.name,
+      y: lengthByPhase(data, planningPhase.id) / 1000.0,
+      color: planningPhase.color
+    })).filter((d) => d.y > 0);
 
     const hasData = data.length > 0;
     const colorScale = chartData.map((d) => d.color);
