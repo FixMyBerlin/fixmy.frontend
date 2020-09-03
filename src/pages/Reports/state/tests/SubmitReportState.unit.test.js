@@ -13,7 +13,7 @@ import { worldWidePolygon, nullIslandPolygonFeature } from './mocks/geometries';
 import mockedReportItem from './schemaValidation/newReport-jsonSchema-testObject.json';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import { types as errorStateTypes } from '../ErrorState';
-import { formatActionType } from '~/utils/test-utils';
+import { formatActionType as ft } from '~/utils/test-utils';
 import { mswServer } from '../../../../../jest/msw/mswServer';
 
 const middlewares = [thunk];
@@ -122,7 +122,7 @@ describe('SubmitReportState reducer and actions', () => {
       //
       // });
 
-      it(`dispatches ${formatActionType(
+      it(`dispatches ${ft(
         types.VALIDATE_POSITION
       )} when a passed latLon is within a given polygon`, () => {
         const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
@@ -156,7 +156,7 @@ describe('SubmitReportState reducer and actions', () => {
           });
       });
 
-      it(`dispatches ${formatActionType(
+      it(`dispatches ${ft(
         types.INVALIDATE_POSITION
       )} when a passed latLon is outside a given polygon`, () => {
         const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
@@ -254,10 +254,10 @@ describe('SubmitReportState reducer and actions', () => {
     });
 
     describe('thunks', () => {
-      it(`dispatches ${formatActionType(
+      it(`dispatches ${ft(
         types.SUBMIT_REPORT_PENDING
       )}, json-schema validates a report and dispatches
-       ${formatActionType(
+       ${ft(
          types.SUBMIT_REPORT_COMPLETE
        )} for a valid new report item`, () => {
         // prepare initial mock store
@@ -332,13 +332,13 @@ describe('SubmitReportState reducer and actions', () => {
         });
       });
 
-      it(`dispatches ${formatActionType(
+      it(`dispatches ${ft(
         types.SUBMIT_REPORT_PENDING
-      )}, and then ${formatActionType(
+      )}, ${ft(
         types.SUBMIT_REPORT_ERROR
-      )} and ${formatActionType(
+      )} and ${ft(
         errorStateTypes.ADD_ERROR
-      )} if the POST request fails`, async () => {
+      )} when the POST request fails`, async () => {
         const mockedReportsItemCopy = JSON.parse(
           JSON.stringify(mockedReportItem)
         );
