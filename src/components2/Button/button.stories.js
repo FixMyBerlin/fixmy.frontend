@@ -5,14 +5,20 @@ import Link from '~/components/Link';
 import Button from '.';
 
 export default {
-  title: 'Generic / Button'
+  title: 'Generic / Button',
+  component: Button
 };
 
-export const Regular = () => <Button>Click me</Button>;
+const Template = (args) => <Button {...args}>Click me</Button>;
 
-export const Flat = () => <Button flat>Click me</Button>;
+export const Regular = Template.bind({});
+Regular.args = {};
 
-export const Ghost = () => <Button ghost>Click me</Button>;
+export const Flat = Template.bind({});
+Flat.args = { flat: true };
+
+export const Ghost = Template.bind({});
+Ghost.args = { ghost: true };
 
 export const ButtonWithLink = () => (
   <MemoryRouter>
