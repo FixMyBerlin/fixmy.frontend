@@ -7,6 +7,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import Store from '~/store';
 import { getTheme } from '~/styles/mui-utils';
 import { IntlProvider } from 'react-intl';
+import GlobalStyles from '~/styles/Global';
 
 import messages from '~/lang/compiled/de.json';
 
@@ -39,3 +40,14 @@ const RouterDecorator = (storyFn) => {
 };
 
 addDecorator(RouterDecorator);
+
+const StylesDecorator = (storyFn) => {
+  return (
+    <>
+      <GlobalStyles />
+      {storyFn()}
+    </>
+  );
+};
+
+addDecorator(StylesDecorator);
