@@ -1,7 +1,6 @@
-import fetchMock from 'fetch-mock';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import ky from 'ky';
+import { rest } from 'msw';
 
 import reducer, { actions, types } from '../OverviewMapState';
 import reportsInitialState from '../initialState';
@@ -9,20 +8,21 @@ import { types as errorStateTypes } from '../ErrorState';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import reportSample from './mocks/reportsSample';
 import { formatActionType } from '~/utils/test-utils';
+import { mswServer } from '../../../../../jest/msw/mswServer';
 
-// mocking
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
+// mock redux store
+const mockStore = configureMockStore([thunk]);
+const initialState = reportsInitialState.OverviewMapState;
 
+// intercept requests and mock responses
 const mockedReportsList = reportSample.slice(0, 5);
 const mockFetchReports = () => {
-  fetchMock.getOnce(reportsEndpointUrl, {
-    body: mockedReportsList,
-    headers: { 'content-type': 'application/json' }
-  });
+  mswServer.use(
+    rest.get(reportsEndpointUrl, (_, res, ctx) =>
+      res(ctx.json(mockedReportsList))
+    )
+  );
 };
-
-const initialState = reportsInitialState.OverviewMapState;
 
 describe('OverviewMapState reducer and actions', () => {
   test('returns the initial state for an empty action', () => {
@@ -56,10 +56,6 @@ describe('OverviewMapState reducer and actions', () => {
   });
 
   describe('async actions', () => {
-    afterEach(() => {
-      fetchMock.restore();
-    });
-
     it(`fetches reports and creates ${formatActionType(
       types.REPORTS_FETCH_COMPLETE
     )}`, () => {
@@ -92,9 +88,9 @@ describe('OverviewMapState reducer and actions', () => {
     test(`fails to fetch reports and creates ${formatActionType(
       errorStateTypes.ADD_ERROR
     )}`, () => {
-      fetchMock.getOnce(reportsEndpointUrl, {
-        throws: new ky.HTTPError('some error')
-      });
+      mswServer.use(
+        rest.get(reportsEndpointUrl, (_, res) => res.networkError('some error'))
+      );
       const expectedActionTypes = [
         // do not mind the action payloads here
         types.REPORTS_FETCH_PENDING,
