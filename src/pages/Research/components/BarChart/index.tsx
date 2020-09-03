@@ -29,7 +29,7 @@ type TitleProps = {
 const Title = styled.div`
   font-weight: 700;
   margin: ${(props: TitleProps) =>
-    props.hasFeelSafe ? '30px 0 30px' : '0 0 1em 0'};
+    props.hasFeelSafe ? '30px 80px 30px 0' : '0 0 1em 0'};
 
   ${media.m`
     margin: 0;
