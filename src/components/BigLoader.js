@@ -22,6 +22,8 @@ const WrapperAbsolute = styled(BaseWrapper)`
   top: 0;
   left: 0;
   z-index: 1000;
+  /* let through clicks */
+  pointer-events: none;
 `;
 
 const BigLoader = ({ useAbsolutePositioning }) => {
