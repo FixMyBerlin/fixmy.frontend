@@ -1,4 +1,7 @@
+import debug from 'debug';
 import { DefaultConfig } from '~/types';
+
+const log = debug('fmc:config');
 
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
@@ -14,7 +17,7 @@ const baseConfig: Omit<
   apiUrl:
     process.env.API_URL ||
     apiEndpoints[process.env.BACKEND] ||
-    apiEndpoints.production,
+    apiEndpoints.staging,
   titleFont: 'Roboto Slab',
   baseFont: 'Open Sans',
   logger: 'fmc*', // selects logging namespaces to display when not in production
@@ -46,9 +49,7 @@ if (!process.env.BACKEND && process.env.API_URL == null) {
   // need to use console here to avoid circular import when
   // logging helper imports this file
   // eslint-disable-next-line no-console
-  console.warn(
-    'No BACKEND env var defined. Using production backend by default.'
-  );
+  log('No BACKEND env var defined. Using staging backend by default.');
 }
 
 export default baseConfig;
