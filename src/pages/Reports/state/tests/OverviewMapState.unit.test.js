@@ -84,6 +84,7 @@ describe('OverviewMapState reducer and actions', () => {
           })
         ).toEqual({
           ...initialState,
+          reportFetchState: 'success',
           reports: mockedReportsList
         });
       });
@@ -98,6 +99,7 @@ describe('OverviewMapState reducer and actions', () => {
       const expectedActionTypes = [
         // do not mind the action payloads here
         types.REPORTS_FETCH_PENDING,
+        types.REPORTS_FETCH_ERROR,
         errorStateTypes.ADD_ERROR
       ];
       const store = mockStore({});
