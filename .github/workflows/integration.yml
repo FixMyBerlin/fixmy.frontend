@@ -5,7 +5,7 @@ on:
     branches: ['master', 'develop', 'ciex/platform/github-actions-cypress']
 
 jobs:
-  tests:
+  e2e:
     runs-on: ubuntu-latest
 
     strategy:
@@ -36,7 +36,7 @@ jobs:
             ${{ runner.os }}-
 
       - run: npm ci
-      - run: npm run test:e2e-dev-server
+      - run: DEBUG=cypress:* npm run test:e2e-dev-server
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
