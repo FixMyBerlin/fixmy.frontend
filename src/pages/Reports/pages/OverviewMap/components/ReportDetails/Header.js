@@ -52,7 +52,16 @@ const DetailsHeading = styled(Heading)`
 `;
 
 // statuses for which marker images are small
-const smallMarkers = ['verification', 'accepted', 'rejected'];
+const smallMarkers = [
+  'report_verification',
+  'report_accepted',
+  'report_rejected',
+  'report_inactive',
+  // deprecated
+  'verification',
+  'accepted',
+  'rejected'
+];
 
 const DetailsHeader = ({ details: { number }, status }) => (
   <>

@@ -5,6 +5,7 @@ import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
 import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 
 export default {
+  enabled: false,
   overviewMap: {
     style: 'mapbox://styles/hejco/cjpnt0cc41ipy2rlpu19jgt7a',
     bounds: [
@@ -25,8 +26,6 @@ export default {
     boundaryGeodataUrl: '/data/Fhain-Xberg-trimmed.json',
     outofBoundaryText:
       'Diese Adresse liegt außerhalb Friedrichshain-Kreuzbergs',
-    reverseGeocoderUrl:
-      'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json',
     paddingInDegree: 0.1,
     geocoder: {
       debounceTime: 1000,
@@ -49,7 +48,6 @@ export default {
     stepColors: [config.colors.interaction, '#ff99d5', config.colors.black]
   },
   form: { placementNotice: true },
-  reportsDisabled: true,
   markerSet: 'default',
   tests: {
     addressInput: 'meh',
@@ -59,7 +57,9 @@ export default {
     }
   },
   title: 'Fahrradbügel für Friedrichshain-Kreuzberg',
+  feedbackMail: 'feedback@fixmyberlin.de',
   region: 'Friedrichshain-Kreuzberg',
+  flatButtons: false,
   intro:
     'Damit du dein Fahrrad überall sicher abschließen kannst, installiert das Bezirksamt Friedrichshain-Kreuzberg neue Fahrradbügel. Da du als Bürger:in am besten weißt, wo du dein Fahrrad abstellst, kannst du hier melden, wo genau im Bezirk du neue Bügel benötigst.',
   steps: [

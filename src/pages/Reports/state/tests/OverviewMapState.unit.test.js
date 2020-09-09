@@ -87,10 +87,17 @@ describe('OverviewMapState reducer and actions', () => {
         reports: mockedReportsList
       };
 
-      const actualActions = store.getActions();
-      const actualState = reducer(initialState, {
-        type: types.REPORTS_FETCH_COMPLETE,
-        payload: mockedReportsList
+        // test reducer
+        expect(
+          reducer(initialState, {
+            type: types.REPORTS_FETCH_COMPLETE,
+            payload: mockedReportsList
+          })
+        ).toEqual({
+          ...initialState,
+          reportFetchState: 'success',
+          reports: mockedReportsList
+        });
       });
 
       expect(actualActions).toEqual(expectedActions);

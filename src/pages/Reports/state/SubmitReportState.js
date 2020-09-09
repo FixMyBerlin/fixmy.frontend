@@ -2,7 +2,7 @@
 import booleanWithin from '@turf/boolean-within';
 
 import reverseGeocode from '~/services/reverseGeocode';
-import { getGeoLocation } from '~/pages/Map/map-utils'; // TODO: handle eslint warning regarding dependency circle
+import { getGeoLocation } from '~/apps/Map/map-utils'; // TODO: handle eslint warning regarding dependency circle
 import {
   apiSubmitReport,
   marshallNewReportObjectFurSubmit

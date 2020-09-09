@@ -24,10 +24,10 @@ export const formatActionType = (pathedAction: string): string =>
 
 const Providers = ({ children }) => {
   const history = createMemoryHistory();
-  polyfill('de');
+  polyfill('en');
   return (
     <Provider store={Store}>
-      <IntlProvider defaultLocale="de" locale="de" messages={messages}>
+      <IntlProvider defaultLocale="en" locale="en" messages={messages}>
         <Router history={history}>{children}</Router>
       </IntlProvider>
     </Provider>

@@ -1,9 +1,8 @@
+import { RootConfig, Region } from '~/types';
 import defaultConfig from './default';
 import berlin from './berlin';
 import aachen from './aachen';
 import eichwalde from './eichwalde';
-
-export type Region = 'eichwalde' | 'berlin' | 'aachen';
 
 const region = (process.env.REGION as Region) || 'berlin';
 
@@ -21,25 +20,6 @@ if (Object.keys(AVAILABLE_REGIONS).indexOf(region) === -1) {
   console.error('No region defined for this instance');
 }
 
-type BerlinConfig = typeof defaultConfig &
-  typeof berlin & {
-    region: 'berlin';
-  };
-
-type AachenConfig = typeof defaultConfig &
-  typeof aachen & {
-    region: 'aachen';
-  };
-
-type EichwaldeConfig = typeof defaultConfig &
-  typeof eichwalde & {
-    region: 'eichwalde';
-  };
-
-type RootConfig = BerlinConfig | AachenConfig | EichwaldeConfig;
-
-// TODO: Fix all root config types
-// @ts-ignore
 const rootConfig: RootConfig = {
   ...defaultConfig,
   ...instanceConfig,

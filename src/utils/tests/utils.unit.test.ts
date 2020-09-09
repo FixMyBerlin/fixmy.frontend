@@ -1,5 +1,4 @@
 import { sortByKey } from '../utils';
-import logger from '../logger';
 import projectList from './projectList.json';
 import projectListSorted from './projectListSorted';
 

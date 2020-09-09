@@ -2,19 +2,2381 @@
   "common.localeSwitcher.labelDE": [
     {
       "type": 0,
-      "value": "Aleman"
+      "value": "Alemán"
     }
   ],
   "common.localeSwitcher.labelEN": [
     {
       "type": 0,
-      "value": "Ingles"
+      "value": "Inglés"
     }
   ],
   "common.localeSwitcher.labelES": [
     {
       "type": 0,
-      "value": "Espanol"
+      "value": "Español"
+    }
+  ],
+  "components.article.attribution": [
+    {
+      "type": 0,
+      "value": "de"
+    }
+  ],
+  "components.article.localeSwitcher.label": [
+    {
+      "type": 0,
+      "value": "seleccione otro idioma"
+    }
+  ],
+  "components.article.tocHeader": [
+    {
+      "type": 0,
+      "value": "Ve directamente a un capítulo"
+    }
+  ],
+  "components.menu.ariaRole": [
+    {
+      "type": 0,
+      "value": "Menú principal"
+    }
+  ],
+  "research.02_intro.cta": [
+    {
+      "type": 0,
+      "value": "DIRECTO A LA EVALUACIÓN"
+    }
+  ],
+  "research.02_intro.heading": [
+    {
+      "type": 0,
+      "value": "SOBRE EL PROYECTO"
+    }
+  ],
+  "research.02_intro.images1.label1": [
+    {
+      "type": 0,
+      "value": "* el 99,11 % de los ciclistas consideran esta situación como “segura” o “bastante segura”"
+    }
+  ],
+  "research.02_intro.images1.label2": [
+    {
+      "type": 0,
+      "value": "* el 96,84 % de los automovilistas consideran esta situación como “segura” o “bastante segura”"
+    }
+  ],
+  "research.02_intro.p1": [
+    {
+      "type": 0,
+      "value": "Hasta ahora casi no existen estudios sobre qué tipo de calles, infraestructuras y cruces son percibidos como “seguros” por los usuarios. Particularmente sobre la visión diferenciada vinculada a las características, como la forma y ancho del carril para bicicletas como así también la situación a la derecha e izquierda del mismo. ¿Serán los carriles para bicicletas separados por postes la mejor solución ante el conflicto entre automovilistas y ciclistas? ¿O será suficiente un adecuado ancho de las bicisendas? ¿Qué efecto tiene el color de las ciclovías? ¿Bajo cuáles condiciones la ubicación del carril bici en la acera o en la calzada brindan comodidad al usuario?"
+    }
+  ],
+  "research.02_intro.p2": [
+    {
+      "type": 0,
+      "value": "Para encontrar una respuesta a estas preguntas, FixMyCity realizó la encuesta “Straßencheck” (“Chequeo de calles”) que se llevó a cabo en conjunto con el diario Tagesspiegel Berlín. Con la ayuda de fotos 3D se analizaron 1900 situaciones viales, en la encuesta participaron más de 21.000 personas. "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " con la que se clasificaron los tramos de calles y su caracterización previa permitieron analizar la influencia de cada propiedad por separado, como el ancho del carril, la superficie de las calles, la separación entre carril y calzada, el espacio de estacionamiento a la derecha del carril de bicis, etc. Además se logró observar las diferencias de perspectivas en diferentes grupos de usuarios e incluso de los conductores de autos y peatones."
+    }
+  ],
+  "research.02_intro.p2.link": [
+    {
+      "type": 0,
+      "value": "La sistemática"
+    }
+  ],
+  "research.02_intro.p3": [
+    {
+      "type": 0,
+      "value": "Cuando el área destinada a las bicicletas se encuentra sobre la calzada, los ciclistas se sienten más seguros entre todas las variantes, ante la primera de las dos recientemente mostradas. Los automovilistas prefieren casi el mismo diseño, solo que sin el color verde. El carril bici amplio, pintado de color verde y separado del tráfico por maceteros recibió la mayor cantidad de valoraciones de los ciclistas como “seguro” (83,93%) o “bastante seguro” (15,18%). Sin embargo, en promedio se encontraron que las sendas sobre la vereda (bicisendas) son percibidas cómo más seguras que aquellas en el tráfico fluido. Las bicisendas en calles secundarias fueron, sorprendentemente, percibidas como inseguras cuando no se presentaron \"sin automóviles\". En la evaluación estadística se encuentran  análisis detallados de las diferentes formas de los carriles y sus factores de influencia, así como evaluaciones de la perspectiva de automovilistas y peatones. Al final se encuentra un resumen de las afirmaciones más importantes."
+    }
+  ],
+  "research.02_intro.p4": [
+    {
+      "type": 0,
+      "value": "El diario Tagesspiegel Berlín realizó su propia evaluación de los resultados, puede encontrarla en este "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " (sólo disponible en alemán)"
+    }
+  ],
+  "research.02_intro.p4.link": [
+    {
+      "type": 0,
+      "value": "artículo"
+    }
+  ],
+  "research.03_concept.heading": [
+    {
+      "type": 0,
+      "value": "CONCEPTO DE LA ENCUESTA"
+    }
+  ],
+  "research.03_concept.p1": [
+    {
+      "type": 0,
+      "value": "La encuesta online se realizó mediante una interfaz en donde se evaluaron representaciones fotorealistas de diferentes situaciones viales. La sensación de seguridad ante estas escenificaciones pudieron ser evaluadas en cuatro niveles a través de una escala."
+    }
+  ],
+  "research.03_concept.p1.quote": [
+    {
+      "type": 0,
+      "value": "Para poder medir la seguridad subjetiva es necesario desarrollar una sistemática compleja para los escenarios viales y también es muy importante conseguir un elevado número de participación."
+    }
+  ],
+  "research.03_concept.p1.quoteSource": [
+    {
+      "type": 0,
+      "value": "desafío"
+    }
+  ],
+  "research.03_concept.p10": [
+    {
+      "type": 0,
+      "value": "Estos incluyen:"
+    }
+  ],
+  "research.03_concept.p10.list1": [
+    {
+      "type": 0,
+      "value": "Uso de transporte (Modal Split)"
+    }
+  ],
+  "research.03_concept.p10.list2": [
+    {
+      "type": 0,
+      "value": "Medios de transporte disponibles"
+    }
+  ],
+  "research.03_concept.p10.list3": [
+    {
+      "type": 0,
+      "value": "Duración de la ruta más frecuente en bicicleta en minutos"
+    }
+  ],
+  "research.03_concept.p10.list4": [
+    {
+      "type": 0,
+      "value": "Motivación por el ciclismo o"
+    }
+  ],
+  "research.03_concept.p10.list5": [
+    {
+      "type": 0,
+      "value": "Razones en contra del ciclismo"
+    }
+  ],
+  "research.03_concept.p11": [
+    {
+      "type": 0,
+      "value": "Después de completar esta parte de la encuesta, se crea un registro de datos para los participantes."
+    }
+  ],
+  "research.03_concept.p12": [
+    {
+      "type": 0,
+      "value": "En base a  la información proporcionada por los participantes sobre el uso de transportes, se clasificaron como ciclistas, peatones o conductores en función de la frecuencia de uso declarada (no visible para el usuario). A los participantes se les mostraron cinco o diez escenarios viales desde la perspectiva de su grupo de usuarios. Estas escenas podrían clasificarse en una escala con cuatro opciones como \"inseguro\", \"bastante inseguro\", \"bastante seguro\" o \"seguro\". El participante podría entonces elegir si le gustaría evaluar más escenas desde esta perspectiva o si le gustaría cambiar a la perspectiva de los otros usuarios. Después de otras diez escenas, se volvió a preguntar al participante. De este modo la encuesta podía continuar tanto tiempo como se desee. En promedio, cada participante calificó 22 escenas."
+    }
+  ],
+  "research.03_concept.p12.heading": [
+    {
+      "type": 0,
+      "value": "Valoración de escenas"
+    }
+  ],
+  "research.03_concept.p13": [
+    {
+      "type": 0,
+      "value": "Para la encuesta, decidimos mostrar escenarios viales como representaciones 3D fotorrealistas. Las diferentes situaciones se dividieron en tres experimentos."
+    }
+  ],
+  "research.03_concept.p13.heading": [
+    {
+      "type": 0,
+      "value": "Elección de las escenas viales"
+    }
+  ],
+  "research.03_concept.p14.list1": [
+    {
+      "type": 0,
+      "value": "Calles principales: carriles bici sobre la calzada"
+    }
+  ],
+  "research.03_concept.p14.list2": [
+    {
+      "type": 0,
+      "value": "Calles secundarias: carriles bici sobre la calzada"
+    }
+  ],
+  "research.03_concept.p14.list3": [
+    {
+      "type": 0,
+      "value": "Carriles bici sobre la acera : paralelas a carreteras principales"
+    }
+  ],
+  "research.03_concept.p15": [
+    {
+      "type": 0,
+      "value": "Debido a la gran cantidad de posibles factores de influencia y a los escenarios resultantes, el número inicial de escenarios tuvo que ser limitado. Después de investigar el conocimiento actual del tema, se identificaron los factores de influencia más importantes. Cada experimento consta de una vista básica/principal a la que se pueden agregar o cambiar diferentes características de infraestructura. Por ejemplo, experimento 1: Calle principal - carriles para bicicletas sobre la calzada: Aquí la imagen básica consiste en una calzada, un sistema de carril ciclista con separación (izquierda / derecha), un carril de estacionamiento y el área lateral:"
+    }
+  ],
+  "research.03_concept.p15.imageLabel": [
+    {
+      "type": 0,
+      "value": "La escena de la calle descrita anteriormente"
+    }
+  ],
+  "research.03_concept.p16": [
+    {
+      "type": 0,
+      "value": "Si bien el espacio lateral siempre se muestra igual en este experimento, los siguientes factores de influencia varían en el área de la calzada:"
+    }
+  ],
+  "research.03_concept.p16.list1": [
+    {
+      "type": 0,
+      "value": "velocidad"
+    }
+  ],
+  "research.03_concept.p16.list2": [
+    {
+      "type": 0,
+      "value": "Volumen de tráfico"
+    }
+  ],
+  "research.03_concept.p16.list3": [
+    {
+      "type": 0,
+      "value": "Rieles de tranvía sí / no"
+    }
+  ],
+  "research.03_concept.p17": [
+    {
+      "type": 0,
+      "value": "Los siguientes factores varían en el ámbito del carril de bicicletas:"
+    }
+  ],
+  "research.03_concept.p17.list1": [
+    {
+      "type": 0,
+      "value": "Tipo y ancho de la separación a la izquierda (hay diferentes marcas y separaciones estructurales)"
+    }
+  ],
+  "research.03_concept.p17.list2": [
+    {
+      "type": 0,
+      "value": "Color y ancho del carril bici"
+    }
+  ],
+  "research.03_concept.p17.list3": [
+    {
+      "type": 0,
+      "value": "Tipo y ancho de separación a la derecha"
+    }
+  ],
+  "research.03_concept.p18": [
+    {
+      "type": 0,
+      "value": "También se muestran escenarios con o sin vehículos estacionados."
+    }
+  ],
+  "research.03_concept.p19": [
+    {
+      "type": 0,
+      "value": "Dependiendo del tipo, los escenarios se mostraron además de la perspectiva del ciclista desde una perspectiva de automovilistas y / o peatones. Se crearon un total de 1900 escenarios y 3000 archivos de imágenes (incluida la perspectiva de automovilistas y de peatones). Una documentación más detallada sobre la sistemática de los escenarios viales puede encontrarse "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "research.03_concept.p19.link": [
+    {
+      "type": 0,
+      "value": "aquí (PDF-Download, disponible sólo en alemán)"
+    }
+  ],
+  "research.03_concept.p2": [
+    {
+      "type": 0,
+      "value": "Mientras que la seguridad objetiva de los ciclistas ya ha sido en diversos estudios investigada, la seguridad subjetiva casi no ha sido analizada. Uno de los desafíos más grandes para poder realizar este estudio es conseguir suficientes valoraciones frente a una situación concreta y al mismo tiempo determinar detalladamente cuales son los posibles factores que  influyen en la sensación de seguridad percibida. Es por esto que fue necesario incluir en la encuesta una gran variación de posibles escenarios viales y mantener una buena estrategia de comunicación."
+    }
+  ],
+  "research.03_concept.p20": [
+    {
+      "type": 0,
+      "value": "En "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " se puede encontrar una descripción general de las escenas y sus características."
+    }
+  ],
+  "research.03_concept.p20.link": [
+    {
+      "type": 0,
+      "value": "esta tabla (ODS-Download, disponible sólo en alemán)"
+    }
+  ],
+  "research.03_concept.p3": [
+    {
+      "type": 0,
+      "value": "A través de una encuesta cualitativa a ciclistas es normalmente difícil de determinar cuál es el ancho del carril de bicicletas que será considerado como “demasiado estrecho”. Esto también se aplica a la percepción sobre situaciones de las calles como así también a la combinación de características estructurales (por ejemplo bicisendas estrechas o  hileras de estacionamientos). Además se preguntó con más frecuencia a personas que usan regularmente la bicicleta como medio de transporte. Debido a estos, los datos son considerados como representativos sólo para este último grupo de usuarios."
+    }
+  ],
+  "research.03_concept.p4": [
+    {
+      "type": 0,
+      "value": "Al trabajar con imágenes de escenarios viales específicos, se pudo asignar directamente percepciones subjetivas de seguridad en relación con diversas infraestructuras y sus respectivas características. Al consultar datos sobre el comportamiento del tráfico y los datos demográficos, estas sensaciones subjetivas podrían asignarse a diferentes grupos de usuarios de la población y tráfico (por ejemplo, automovilistas, ciclistas, etc.). Debido a la gran cantidad de participantes y la estrategia de comunicación desarrollada junto con Tagesspiegel Berlín, se pudo entrevistar a un gran número de personas de diversos comportamientos (demográfico y tráfico)."
+    }
+  ],
+  "research.03_concept.p5": [
+    {
+      "type": 0,
+      "value": "Al seleccionar los escenarios, deben tenerse en cuenta las planificaciones actuales para los diferentes carriles bici. La estrecha coordinación con la administración del Senado de Berlín, la implementación de talleres especializados, la incorporación de nuevos conceptos de infraestructura y la intensiva investigación bibliográfica sobre el estado actual del tema garantizan la actualidad de la encuesta. Por ejemplo, según la planificación actual, la Administración del Senado de Berlín tiene un interés particular en la experiencia del usuario de varios tipos de postes barreras (también conocidos como bolardos)."
+    }
+  ],
+  "research.03_concept.p6": [
+    {
+      "type": 0,
+      "value": "La encuesta se diseñó como una encuesta en línea y se publicó en cooperación con el diario berlinés “Der Tagesspiegel”. Se hizo referencia a la encuesta a través de un artículo y un espacio publicitario en el sitio web de Tagesspiegel. Inicialmente también se publicó un artículo en la edición impresa, cuyo título refería a la encuesta. Aunque el objetivo principal era evaluar la seguridad subjetiva de las infraestructuras para bicicletas, la encuesta se comunicó de manera neutral como una \"Chequeo de las calles de Berlín\". Por esta razón fueron participes más de 3500 personas que expresaron nunca haber andado en bicicleta."
+    }
+  ],
+  "research.03_concept.p6.heading": [
+    {
+      "type": 0,
+      "value": "Estrategias de comunicación"
+    }
+  ],
+  "research.03_concept.p7": [
+    {
+      "type": 0,
+      "value": "La encuesta consta de tres secciones"
+    }
+  ],
+  "research.03_concept.p7.list1": [
+    {
+      "type": 0,
+      "value": "Preguntas generales acerca del tráfico"
+    }
+  ],
+  "research.03_concept.p7.list2": [
+    {
+      "type": 0,
+      "value": "Datos personales referidos al perfil del usuario"
+    }
+  ],
+  "research.03_concept.p7.list3": [
+    {
+      "type": 0,
+      "value": "Valoraciones de los diferentes escenarios de las calles"
+    }
+  ],
+  "research.03_concept.p8": [
+    {
+      "type": 0,
+      "value": "En esta sección, se hicieron preguntas generales sobre el tráfico de Berlín para la evaluación editorial del Tagesspiegel. Estas preguntas no se discuten con más detalle aquí, ya que no forman parte del concepto. Sobre este tema “Tagesspiegel Berlín” realizó una "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": " (disponible en alemán)."
+    }
+  ],
+  "research.03_concept.p8.heading": [
+    {
+      "type": 0,
+      "value": "Preguntas generales acerca del tráfico (preguntas iniciales)"
+    }
+  ],
+  "research.03_concept.p8.link": [
+    {
+      "type": 0,
+      "value": "evaluación"
+    }
+  ],
+  "research.03_concept.p9": [
+    {
+      "type": 0,
+      "value": "Estas preguntas tienen el objetivo de categorizar a  los participantes de la encuesta en diferentes tipos de ciclistas. Esto nos permite comprender mejor los diferentes comportamientos de respuesta al evaluar el sentimiento subjetivo de seguridad. Para ello nos remitimos principalmente al trabajo de Francke, Anke, Lißner (2018). En su trabajo presentan una tipología ciclista, para la que describen preferencias por las diferentes infraestructuras. Dado que el cuestionario correspondiente es muy extenso y el principal interés de la recolección de datos en este trabajo fue la evaluación de las escenas viales, el cuestionario se redujo a lo esencial. Los cambios en los cuestionarios aseguran que los resultados ya no sean comparables (cf. Schwarz, 1999 y Catania et al., 1996), pero esta decisión parecía correcta desde el punto de vista del objetivo principal de la encuesta. Además de las características sociodemográficas (edad, sexo, lugar de residencia, hijos), se hicieron preguntas sobre la movilidad, especialmente sobre el comportamiento en bicicleta."
+    }
+  ],
+  "research.03_concept.p9.heading": [
+    {
+      "type": 0,
+      "value": "Datos personales referidos al perfil del usuario"
+    }
+  ],
+  "research.04_dataset.heading": [
+    {
+      "type": 0,
+      "value": "Conjunto de datos de los resultados (para descargar)"
+    }
+  ],
+  "research.04_dataset.p1": [
+    {
+      "type": 0,
+      "value": "FixMyCity pone los datos a disposición de manera abierta (\"open data\") con la condición de que también se publiquen trabajos derivados de los mismos (\"share-alike\"). Los detalles sobre la licencia se pueden encontrar en el sitio web de "
+    },
+    {
+      "type": 1,
+      "value": "linkLicense"
+    },
+    {
+      "type": 0,
+      "value": ". La explicación de las columnas en el los datos de archivos JSON se puede encontrar en "
+    },
+    {
+      "type": 1,
+      "value": "linkSpec"
+    },
+    {
+      "type": 0,
+      "value": ". El siguiente enlace lo lleva a los resultados de la encuesta como un conjunto de datos en formato  JSON, que puede ver y descargar allí."
+    }
+  ],
+  "research.04_dataset.p1.linkLicense": [
+    {
+      "type": 0,
+      "value": "Open Knowledge Foundation"
+    }
+  ],
+  "research.04_dataset.p1.linkSpec": [
+    {
+      "type": 0,
+      "value": "este PDF"
+    }
+  ],
+  "research.04_dataset.p2": [
+    {
+      "type": 0,
+      "value": "El siguiente enlace lo lleva a "
+    },
+    {
+      "type": 1,
+      "value": "linkResults"
+    },
+    {
+      "type": 0,
+      "value": ", que puede ver y descargar allí."
+    }
+  ],
+  "research.04_dataset.p2.linkResults": [
+    {
+      "type": 0,
+      "value": "los resultados de la encuesta como un conjunto de datos en formato JSON"
+    }
+  ],
+  "research.05_results.chart1.1": [
+    {
+      "type": 0,
+      "value": "masculino"
+    }
+  ],
+  "research.05_results.chart1.2": [
+    {
+      "type": 0,
+      "value": "femenino"
+    }
+  ],
+  "research.05_results.chart1.3": [
+    {
+      "type": 0,
+      "value": "diverso"
+    }
+  ],
+  "research.05_results.chart1.title": [
+    {
+      "type": 0,
+      "value": "Valoración según género"
+    }
+  ],
+  "research.05_results.chart10.1": [
+    {
+      "type": 0,
+      "value": "Carril bici sin separación estructural, marca de delimitación izquierda estrecha"
+    }
+  ],
+  "research.05_results.chart10.2": [
+    {
+      "type": 0,
+      "value": "Carril bici sin separación estructural, marca de delimitación izquierda amplia"
+    }
+  ],
+  "research.05_results.chart10.3": [
+    {
+      "type": 0,
+      "value": "Carril bici con separación estructural, bolardos altos"
+    }
+  ],
+  "research.05_results.chart10.4": [
+    {
+      "type": 0,
+      "value": "Carril bici con separación estructural, bolardos bajos"
+    }
+  ],
+  "research.05_results.chart10.5": [
+    {
+      "type": 0,
+      "value": "Carril bici con separación estructural, maceteros"
+    }
+  ],
+  "research.05_results.chart10.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones con carril bici, - sin estacionamiento a la derecha, tranvía, carril bus o estacionamiento a la derecha del carril bici."
+    }
+  ],
+  "research.05_results.chart10.title": [
+    {
+      "type": 0,
+      "value": "Circulación por calzada de calle principal: Carril bici con y sin separación estructural"
+    }
+  ],
+  "research.05_results.chart11.1": [
+    {
+      "type": 0,
+      "value": "Carril bici ancho, a la izquierda del estacionamiento"
+    }
+  ],
+  "research.05_results.chart11.2": [
+    {
+      "type": 0,
+      "value": "Carril bici ancho, a la derecha del estacionamiento (sin incluir separaciones estructurales)"
+    }
+  ],
+  "research.05_results.chart11.3": [
+    {
+      "type": 0,
+      "value": "Carril bici ancho, a la derecha del estacionamiento (incluye separaciones estructurales)"
+    }
+  ],
+  "research.05_results.chart11.label": [
+    {
+      "type": 0,
+      "value": "Comentario.: Promedio de las calificaciones de todas las situaciones con carril bici ancho, sin tranvía, carril bus. Solo se comparan las variantes con un carril bici ancho, el carril bici estrecho a la derecha del espacio de estacionamiento no se mostró en la encuesta."
+    }
+  ],
+  "research.05_results.chart11.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Circulación sobre calzada de calle principal, ubicación de carril bici a la derecha o izquierda del estacionamiento"
+    }
+  ],
+  "research.05_results.chart12.1": [
+    {
+      "type": 0,
+      "value": "Perspectiva ciclista: sin carril bici"
+    }
+  ],
+  "research.05_results.chart12.2": [
+    {
+      "type": 0,
+      "value": "Perspectiva ciclista: con carril bici"
+    }
+  ],
+  "research.05_results.chart12.3": [
+    {
+      "type": 0,
+      "value": "Perspectiva automovilista: sin carril bici"
+    }
+  ],
+  "research.05_results.chart12.4": [
+    {
+      "type": 0,
+      "value": "Perspectiva automovilista: con carril bici"
+    }
+  ],
+  "research.05_results.chart12.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las valoraciones de todas las situaciones por conductores o ciclistas."
+    }
+  ],
+  "research.05_results.chart12.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Calles principales con y sin bicisenda delimitada."
+    }
+  ],
+  "research.05_results.chart12b.1": [
+    {
+      "type": 0,
+      "value": "Perspectiva del ciclista: carril bici sin separación estructural"
+    }
+  ],
+  "research.05_results.chart12b.2": [
+    {
+      "type": 0,
+      "value": "Perspectiva del ciclista: carril bici con separación estructural"
+    }
+  ],
+  "research.05_results.chart12b.3": [
+    {
+      "type": 0,
+      "value": "Perspectiva del automovilista: carril bici sin separación estructural"
+    }
+  ],
+  "research.05_results.chart12b.4": [
+    {
+      "type": 0,
+      "value": "Perspectiva del automovilista: carril bici con separación estructural"
+    }
+  ],
+  "research.05_results.chart12b.5": [
+    {
+      "type": 0,
+      "value": "Perspectiva del automovilista: carril bici con separación estructural:bolardos altos"
+    }
+  ],
+  "research.05_results.chart12b.6": [
+    {
+      "type": 0,
+      "value": "Perspectiva del automovilista: carril bici con separación estructural:bolardos bajos"
+    }
+  ],
+  "research.05_results.chart12b.7": [
+    {
+      "type": 0,
+      "value": "Perspectiva del automovilista: carril bici con separación estructural: maceteros"
+    }
+  ],
+  "research.05_results.chart12b.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones con carril bici, - sin estacionamiento a la derecha, tranvía, carril bus o estacionamiento a la derecha del carril bici."
+    }
+  ],
+  "research.05_results.chart12b.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Calle principal,carril bici  con y sin separación estructural"
+    }
+  ],
+  "research.05_results.chart13.1": [
+    {
+      "type": 0,
+      "value": "Calzada, carril bici estrecho, sin estacionamiento"
+    }
+  ],
+  "research.05_results.chart13.2": [
+    {
+      "type": 0,
+      "value": "Calzada, carril bici ancho, sin estacionamiento"
+    }
+  ],
+  "research.05_results.chart13.3": [
+    {
+      "type": 0,
+      "value": "Calzada, carril bici estrecho, con estacionamiento"
+    }
+  ],
+  "research.05_results.chart13.4": [
+    {
+      "type": 0,
+      "value": "Calzada, carril bici ancho, con estacionamiento"
+    }
+  ],
+  "research.05_results.chart13.5": [
+    {
+      "type": 0,
+      "value": "Acera, carril bici amplio"
+    }
+  ],
+  "research.05_results.chart13.6": [
+    {
+      "type": 0,
+      "value": "Acera, carril bici estrecho"
+    }
+  ],
+  "research.05_results.chart13.7": [
+    {
+      "type": 0,
+      "value": "Calzada, carril bici a la derecha del estacionamiento"
+    }
+  ],
+  "research.05_results.chart13.title": [
+    {
+      "type": 0,
+      "value": "Diagrama:Ubicación del carril bici sobre la acera y sobre la calzada"
+    }
+  ],
+  "research.05_results.chart14.1": [
+    {
+      "type": 0,
+      "value": "Ancho total del carril bici (amplio - estrecho)"
+    }
+  ],
+  "research.05_results.chart14.2": [
+    {
+      "type": 0,
+      "value": "Ancho total de la acera (amplia - estrecha)"
+    }
+  ],
+  "research.05_results.chart14.3": [
+    {
+      "type": 0,
+      "value": "elementos de uso comercial de la acera  (existentes - ninguno) "
+    }
+  ],
+  "research.05_results.chart14.4": [
+    {
+      "type": 0,
+      "value": "elementos de uso comercial de la acera  (existentes - ninguno) solo en aceras estrechas"
+    }
+  ],
+  "research.05_results.chart14.5": [
+    {
+      "type": 0,
+      "value": "Separación a la derecha (Franjas verdes - ninguna separación)"
+    }
+  ],
+  "research.05_results.chart14.6": [
+    {
+      "type": 0,
+      "value": "Factor tipo de tránsito a la izquierda (A la izquierda del carril bici carriles para vehículos a motor vs estacionamiento)"
+    }
+  ],
+  "research.05_results.chart14.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Diferencia entre los valores medios de las evaluaciones al comparar dos valores característicos.Solo se comparan las situaciones relevantes para la característica."
+    }
+  ],
+  "research.05_results.chart14.title": [
+    {
+      "type": 0,
+      "value": "Diagrama de importancia:Carril bici sobre la acera: Influencia de los factores de influencia en promedio"
+    }
+  ],
+  "research.05_results.chart15.1": [
+    {
+      "type": 0,
+      "value": "Carril bici amplio"
+    }
+  ],
+  "research.05_results.chart15.2": [
+    {
+      "type": 0,
+      "value": "Carril bici estrecho"
+    }
+  ],
+  "research.05_results.chart15.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las valoraciones de todas las situaciones sobre acera."
+    }
+  ],
+  "research.05_results.chart15.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Circulación sobre acera: carril bici ancho y estrecho"
+    }
+  ],
+  "research.05_results.chart16.1": [
+    {
+      "type": 0,
+      "value": "Acera amplia con elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart16.2": [
+    {
+      "type": 0,
+      "value": "Acera amplia sin elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart16.3": [
+    {
+      "type": 0,
+      "value": "Acera estrecha con elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart16.4": [
+    {
+      "type": 0,
+      "value": "Acera estrecha sin elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart16.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de todas las valoraciones para situaciones en áreas laterales"
+    }
+  ],
+  "research.05_results.chart16.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Circulación sobre acera, con o sin uso comercial de la acera"
+    }
+  ],
+  "research.05_results.chart17.1": [
+    {
+      "type": 0,
+      "value": "Ancho del carril bici estrecho vs. amplio"
+    }
+  ],
+  "research.05_results.chart17.2": [
+    {
+      "type": 0,
+      "value": "Separación a la derecha (verde - ninguna)"
+    }
+  ],
+  "research.05_results.chart17.3": [
+    {
+      "type": 0,
+      "value": "elementos de uso comercial de la acera (si - no)"
+    }
+  ],
+  "research.05_results.chart17.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Diferencia en los valores medios de las evaluaciones de todas las situaciones relevantes para la característica. La perspectiva del peatón sólo se consultó si el ancho total de la acera era estrecho"
+    }
+  ],
+  "research.05_results.chart17.title": [
+    {
+      "type": 0,
+      "value": "Diagrama de importancia"
+    }
+  ],
+  "research.05_results.chart18.1": [
+    {
+      "type": 0,
+      "value": "Perspectiva del peatón: acera con elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart18.2": [
+    {
+      "type": 0,
+      "value": "Perspectiva del peatón: acera sin elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart18.3": [
+    {
+      "type": 0,
+      "value": "Perspectiva del ciclista: Acera estrecha con elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart18.4": [
+    {
+      "type": 0,
+      "value": "Perspectiva del ciclista: Acera estrecha sin elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart18.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones sobre la acera. La evaluación solo compara los casos con aceras estrechas, ya que la perspectiva del peatón solo fue consultada en esta variante."
+    }
+  ],
+  "research.05_results.chart18.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Perspectiva del peatón: Acera con y sin presencia de elementos de uso comercial"
+    }
+  ],
+  "research.05_results.chart19.1": [
+    {
+      "type": 0,
+      "value": "Separación estrecha a la derecha con franjas verdes"
+    }
+  ],
+  "research.05_results.chart19.2": [
+    {
+      "type": 0,
+      "value": "Separación amplia a la derecha, con franjas verdes"
+    }
+  ],
+  "research.05_results.chart19.3": [
+    {
+      "type": 0,
+      "value": "Ninguna separación a la derecha"
+    }
+  ],
+  "research.05_results.chart19.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones en la acera. La perspectiva del peatón sólo se cuestionó cuando el ancho total de la acera era estrecho."
+    }
+  ],
+  "research.05_results.chart19.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Circulación por calles principales: Perspectiva de los peatones, con y sin separación"
+    }
+  ],
+  "research.05_results.chart2.1": [
+    {
+      "type": 0,
+      "value": "AG0 - menores de 18 años"
+    }
+  ],
+  "research.05_results.chart2.2": [
+    {
+      "type": 0,
+      "value": "AG1 - 18 a 24 años"
+    }
+  ],
+  "research.05_results.chart2.3": [
+    {
+      "type": 0,
+      "value": "AG2 - 25 a 29 años"
+    }
+  ],
+  "research.05_results.chart2.4": [
+    {
+      "type": 0,
+      "value": "AG3 - 30 a 39 años"
+    }
+  ],
+  "research.05_results.chart2.5": [
+    {
+      "type": 0,
+      "value": "AG4 - 40 a 49 años"
+    }
+  ],
+  "research.05_results.chart2.6": [
+    {
+      "type": 0,
+      "value": "AG5 - 50 a 64 años"
+    }
+  ],
+  "research.05_results.chart2.7": [
+    {
+      "type": 0,
+      "value": "AG6 -  65 a 74 años"
+    }
+  ],
+  "research.05_results.chart2.8": [
+    {
+      "type": 0,
+      "value": "AG7 - mayores de 74 años"
+    }
+  ],
+  "research.05_results.chart2.label": [
+    {
+      "type": 0,
+      "value": "Promedio de todas las evaluaciones según la edad de los participantes"
+    }
+  ],
+  "research.05_results.chart2.title": [
+    {
+      "type": 0,
+      "value": "Valoración según edad:"
+    }
+  ],
+  "research.05_results.chart20.1": [
+    {
+      "type": 0,
+      "value": "Ancho de la calle (estrecho vs amplio)"
+    }
+  ],
+  "research.05_results.chart20.2": [
+    {
+      "type": 0,
+      "value": "Estacionamiento  (en ambos lados – no)"
+    }
+  ],
+  "research.05_results.chart20.3": [
+    {
+      "type": 0,
+      "value": "Estacionamiento (en un lado – no)"
+    }
+  ],
+  "research.05_results.chart20.4": [
+    {
+      "type": 0,
+      "value": "Señalización (existente – ninguna)"
+    }
+  ],
+  "research.05_results.chart20.5": [
+    {
+      "type": 0,
+      "value": "Calle de un solo sentido, circulación en dirección contraria (contramano vs a los dos lados)"
+    }
+  ],
+  "research.05_results.chart20.6": [
+    {
+      "type": 0,
+      "value": "Calle de un solo sentido, circulación en el sentido de la calle (una mano vs a los dos lados)"
+    }
+  ],
+  "research.05_results.chart20.7": [
+    {
+      "type": 0,
+      "value": "“libre de autos” (si/no)"
+    }
+  ],
+  "research.05_results.chart20.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Diferencia en los valores medios de las evaluaciones en la comparación de dos valores característicos. Todas las situaciones relevantes para la característica son la base. Las excepciones son situaciones en las que el asfalto está continuamente verde. Bajo “señalización” se resumen señalizaciones especiales de ciclocalles,  ciclocalles y calles residenciales."
+    }
+  ],
+  "research.05_results.chart20.title": [
+    {
+      "type": 0,
+      "value": "Diagrama de importancias Calles secundarias: Importancia de los factores de influencia en promedio"
+    }
+  ],
+  "research.05_results.chart21.1": [
+    {
+      "type": 0,
+      "value": "Calle secundaria sin señalización"
+    }
+  ],
+  "research.05_results.chart21.2": [
+    {
+      "type": 0,
+      "value": "Calle secundaria tipo ciclocalle"
+    }
+  ],
+  "research.05_results.chart21.3": [
+    {
+      "type": 0,
+      "value": "Calle secundaria tipo ciclocalle - Señalización especial"
+    }
+  ],
+  "research.05_results.chart21.4": [
+    {
+      "type": 0,
+      "value": "Calle secundaria zona de circulación calma/ zona residencial"
+    }
+  ],
+  "research.05_results.chart21.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones en carreteras secundarias. Las excepciones son situaciones en las que el asfalto está continuamente verde."
+    }
+  ],
+  "research.05_results.chart21.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Calles secundarias, tipo de señalizaciones "
+    }
+  ],
+  "research.05_results.chart22.1": [
+    {
+      "type": 0,
+      "value": "Sin señalización"
+    }
+  ],
+  "research.05_results.chart22.2": [
+    {
+      "type": 0,
+      "value": "Señalización holandesa"
+    }
+  ],
+  "research.05_results.chart22.3": [
+    {
+      "type": 0,
+      "value": "Ciclocalles"
+    }
+  ],
+  "research.05_results.chart22.4": [
+    {
+      "type": 0,
+      "value": "Ciclocalles - Señalización especial"
+    }
+  ],
+  "research.05_results.chart22.5": [
+    {
+      "type": 0,
+      "value": "Zona de circulación calma/ zona residencial"
+    }
+  ],
+  "research.05_results.chart22.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones en calles secundarias "
+    }
+  ],
+  "research.05_results.chart22.title": [
+    {
+      "type": 0,
+      "value": "Diagrama:Circulación por calles secundarias “libre de autos”: Tipo de señalizaciones"
+    }
+  ],
+  "research.05_results.chart3.1": [
+    {
+      "type": 0,
+      "value": "(casi) diario"
+    }
+  ],
+  "research.05_results.chart3.2": [
+    {
+      "type": 0,
+      "value": "4-5 veces por semana"
+    }
+  ],
+  "research.05_results.chart3.3": [
+    {
+      "type": 0,
+      "value": "1-3 veces por semana"
+    }
+  ],
+  "research.05_results.chart3.4": [
+    {
+      "type": 0,
+      "value": "1-3 veces por mes"
+    }
+  ],
+  "research.05_results.chart3.5": [
+    {
+      "type": 0,
+      "value": "menos que usos mensuales"
+    }
+  ],
+  "research.05_results.chart3.6": [
+    {
+      "type": 0,
+      "value": "nunca"
+    }
+  ],
+  "research.05_results.chart3.label": [
+    {
+      "type": 0,
+      "value": "Promedio de todas las clasificaciones según la frecuencia de uso de la bicicleta entre los participantes"
+    }
+  ],
+  "research.05_results.chart3.title": [
+    {
+      "type": 0,
+      "value": "Valoración según frecuencia de uso de bicicleta"
+    }
+  ],
+  "research.05_results.chart4.1": [
+    {
+      "type": 0,
+      "value": "sin carril bici"
+    }
+  ],
+  "research.05_results.chart4.2": [
+    {
+      "type": 0,
+      "value": "con carril bici"
+    }
+  ],
+  "research.05_results.chart4.3": [
+    {
+      "type": 0,
+      "value": "sin carril (conductores frecuentes)"
+    }
+  ],
+  "research.05_results.chart4.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Fue considerado el promedio de las valoraciones para todos los escenarios viales desde la perspectiva de los ciclistas para circulación sobre calzada. Carriles compartidos con colectivos fueron considerados en el grupo “con carril bici”."
+    }
+  ],
+  "research.05_results.chart4.title": [
+    {
+      "type": 0,
+      "value": "CIRCULACIÓN SOBRE LA CALZADA CON Y SIN CARRIL BICI"
+    }
+  ],
+  "research.05_results.chart5.1": [
+    {
+      "type": 0,
+      "value": "Carril bici con estacionamiento a la derecha"
+    }
+  ],
+  "research.05_results.chart5.2": [
+    {
+      "type": 0,
+      "value": "Carril bici sin estacionamiento (incl. separaciones estructurales)"
+    }
+  ],
+  "research.05_results.chart5.3": [
+    {
+      "type": 0,
+      "value": "Carril bici sin estacionamiento (excl. separaciones estructurales)"
+    }
+  ],
+  "research.05_results.chart5.label": [
+    {
+      "type": 0,
+      "value": "Comentario: El promedio de las valoraciones de todas las situaciones con carril bici,  sin líneas de tranvía, carriles para colectivos o carriles bici a la derecha del estacionamiento"
+    }
+  ],
+  "research.05_results.chart5.title": [
+    {
+      "type": 0,
+      "value": "Circulación sobre calzada: Carril bici con y sin estacionamiento a la derecha"
+    }
+  ],
+  "research.05_results.chart6.1": [
+    {
+      "type": 0,
+      "value": "Ancho total del carril bici (amplio - estrecho)"
+    }
+  ],
+  "research.05_results.chart6.2": [
+    {
+      "type": 0,
+      "value": "Separación estructural (si - no)"
+    }
+  ],
+  "research.05_results.chart6.3": [
+    {
+      "type": 0,
+      "value": "Superficie (verde - asfalto)"
+    }
+  ],
+  "research.05_results.chart6.4": [
+    {
+      "type": 0,
+      "value": "Marcas limitantes a la izquierda (estrechas - amplias)"
+    }
+  ],
+  "research.05_results.chart6.5": [
+    {
+      "type": 0,
+      "value": "Límite de velocidad (30 - 50)"
+    }
+  ],
+  "research.05_results.chart6.6": [
+    {
+      "type": 0,
+      "value": "Volumen de tráfico (normal - alto)"
+    }
+  ],
+  "research.05_results.chart6.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Diferencia en los valores medios de las evaluaciones de todas las situaciones relevantes para la característica. En el caso de separación estructural, franjas limitantes a la izquierda, límite de velocidad y volumen de tráfico, solo se incluyen situaciones sin tranvías, autobuses y carriles bici a la derecha del estacionamiento. Para casos con separación estructural, solo aquellos sin estacionamiento a la derecha"
+    }
+  ],
+  "research.05_results.chart6.title": [
+    {
+      "type": 0,
+      "value": "Diagrama de importancia: Bicisenda en calzada de calles principales: importancia de los factores de influencia en promedio"
+    }
+  ],
+  "research.05_results.chart7.1": [
+    {
+      "type": 0,
+      "value": "Carril bici estrecho, sin estacionamiento"
+    }
+  ],
+  "research.05_results.chart7.2": [
+    {
+      "type": 0,
+      "value": "Carril bici amplio, sin estacionamiento"
+    }
+  ],
+  "research.05_results.chart7.3": [
+    {
+      "type": 0,
+      "value": "Carril bici estrecho, con estacionamiento"
+    }
+  ],
+  "research.05_results.chart7.4": [
+    {
+      "type": 0,
+      "value": "Carril bici amplio, con estacionamiento"
+    }
+  ],
+  "research.05_results.chart7.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones con carril bici - sin tranvía, carril bus o carril bici a la derecha del estacionamiento, así como situaciones con separación estructural. "
+    }
+  ],
+  "research.05_results.chart7.title": [
+    {
+      "type": 0,
+      "value": "Diagrama:CIRCULACIÓN POR CALLE PRINCIPAL: CARRIL BICI ESTRECHO Y ANCHO"
+    }
+  ],
+  "research.05_results.chart8.1": [
+    {
+      "type": 0,
+      "value": "Carril bici amplio, sin estacionamiento, asfalto no coloreado"
+    }
+  ],
+  "research.05_results.chart8.2": [
+    {
+      "type": 0,
+      "value": "Carril bici amplio, sin estacionamiento, verde"
+    }
+  ],
+  "research.05_results.chart8.3": [
+    {
+      "type": 0,
+      "value": "Carril bici estrecho, sin estacionamiento, asfalto no coloreado"
+    }
+  ],
+  "research.05_results.chart8.4": [
+    {
+      "type": 0,
+      "value": "Carril bici estrecho, sin estacionamiento, verde"
+    }
+  ],
+  "research.05_results.chart8.5": [
+    {
+      "type": 0,
+      "value": "Carril bici amplio, estacionamiento a la derecha, asfalto no coloreado"
+    }
+  ],
+  "research.05_results.chart8.6": [
+    {
+      "type": 0,
+      "value": "Carril bici amplio, estacionamiento a la derecha, verde"
+    }
+  ],
+  "research.05_results.chart8.7": [
+    {
+      "type": 0,
+      "value": "Carril bici estrecho, estacionamiento a la derecha, asfalto no coloreado"
+    }
+  ],
+  "research.05_results.chart8.8": [
+    {
+      "type": 0,
+      "value": "Carril bici estrecho, estacionamiento a la derecha, verde"
+    }
+  ],
+  "research.05_results.chart8.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones con carril bici - sin tranvía, carril bus o carril bici a la derecha del estacionamiento."
+    }
+  ],
+  "research.05_results.chart8.title": [
+    {
+      "type": 0,
+      "value": "Diagrama:Circulación por calzada de calle principal: Carril bici con y sin coloración verde"
+    }
+  ],
+  "research.05_results.chart9.1": [
+    {
+      "type": 0,
+      "value": "Carril bici con asfalto no coloreado"
+    }
+  ],
+  "research.05_results.chart9.2": [
+    {
+      "type": 0,
+      "value": "Carril bici con color"
+    }
+  ],
+  "research.05_results.chart9.3": [
+    {
+      "type": 0,
+      "value": "Carril bici con franjas de color"
+    }
+  ],
+  "research.05_results.chart9.label": [
+    {
+      "type": 0,
+      "value": "Comentario: Promedio de las calificaciones de todas las situaciones con RVA - sin tranvía, carril bus o RVA a la derecha del estacionamiento."
+    }
+  ],
+  "research.05_results.chart9.title": [
+    {
+      "type": 0,
+      "value": "Diagrama: Circulación sobre calzada de calle principal: Carril bici con diferentes variantes de coloración verde"
+    }
+  ],
+  "research.05_results.heading": [
+    {
+      "type": 0,
+      "value": "VALORACIÓN ESTADÍSTICA"
+    }
+  ],
+  "research.05_results.p1": [
+    {
+      "type": 0,
+      "value": "Se puede verificar una amplia variedad de hipótesis con los datos generados. La investigación está particularmente interesada en el grupo de usuarios de  potenciales ciclistas. ¿Con cuál infraestructura se siente seguro este grupo de usuarios en la carretera? ¿Es el volumen de tráfico un factor de influencia decisivo incluso cuando existe una separación entre el carril de bicicletas y el carril de vehículos de motor? ¿Qué infraestructura considera la mayoría de los encuestados como segura? ¿Importa la amplitud o la separación física del carril de bicicletas? ¿Qué formas de orientación son las más adecuadas para los carriles en cada caso del área lateral, sobre la calzada o en carreteras secundarias? Algunas de estas hipótesis se prueban en la siguiente evaluación."
+    }
+  ],
+  "research.05_results.p10": [
+    {
+      "type": 0,
+      "value": "La encuesta también preguntó acerca de la disponibilidad de medios de transporte, los factores de motivación para andar en bicicleta y las razones para no hacerlo. Los datos están contenidos en el archivo."
+    }
+  ],
+  "research.05_results.p11": [
+    {
+      "type": 0,
+      "value": "En resumen, la encuesta no representa un total representativo de la población de Berlín. Los ciclistas, los hombres y el grupo de edad entre 30 y 64 años están claramente sobrerrepresentados. Sin embargo, debido al alto número de participantes, también se pueden realizar evaluaciones para subgrupos específicos (por ejemplo, mujeres mayores de 74 años: 143 participantes). Con la evaluación media de las diferentes escenas, surge el siguiente gráfico para las valoraciones del usuario diferenciadas según su género, edad y frecuencia de uso."
+    }
+  ],
+  "research.05_results.p12": [
+    {
+      "type": 0,
+      "value": "Al evaluar las diferentes características, los resultados difieren sólo ligeramente entre los grupos de usuarios. En consecuencia, no se hizo ninguna diferenciación adicional para una evaluación complementaria"
+    }
+  ],
+  "research.05_results.p13": [
+    {
+      "type": 0,
+      "value": "Primero consideraremos la ubicación de los carriles en las carreteras principales. Las carreteras secundarias se tratan en un capítulo posterior."
+    }
+  ],
+  "research.05_results.p13.heading": [
+    {
+      "type": 0,
+      "value": "Ubicación de los carriles"
+    }
+  ],
+  "research.05_results.p14": [
+    {
+      "type": 0,
+      "value": "Un carril de bicicletas en tráfico mixto se percibe como significativamente menos seguro que en cualquier otro tipo de bicisenda. Si los factores límite de velocidad, volumen de tráfico y estacionamiento a la derecha son variados, la sensación de seguridad cambia. Pero incluso en la situación mejor calificada, no se puede lograr una sensación de seguridad suficiente (asumimos aquí que una evaluación \"bastante segura\" o \"segura\" por parte de más del 80% de los participantes es un valor al que se debe aspirar para una infraestructura subjetivamente segura). Al comparar las características de los usuarios, la mayor diferencia de valoraciones existe entre los grupos “masculino” y “femenino”, pero en general grandes similitudes. Todos los tipos de ciclistas (ciclistas frecuentes o poco frecuentes, hombres o mujeres, mayores y más jóvenes, etc.) se sienten inseguros en el tráfico mixto."
+    }
+  ],
+  "research.05_results.p14.heading": [
+    {
+      "type": 0,
+      "value": "Ubicaciones en tránsito mixto son inseguras"
+    }
+  ],
+  "research.05_results.p14.image1": [
+    {
+      "type": 0,
+      "value": "27,62 % de los usuarios valoran esta situación como \"segura\" o \"bastante segura\""
+    }
+  ],
+  "research.05_results.p14.image2": [
+    {
+      "type": 0,
+      "value": "11,05 % de los usuarios valoran esta situación como \"segura\" o \"bastante segura\""
+    }
+  ],
+  "research.05_results.p15": [
+    {
+      "type": 0,
+      "value": "Si el carril bici está ubicado a la izquierda del tráfico de automóviles, la sensación de seguridad disminuye. Los requisitos y las opciones de diseño para la bicisenda deben diferenciarse fundamentalmente. Al conducir en bicicleta con automóviles estacionados a la derecha de la bicisenda, el peligro potencial de impactos debido a la apertura de puertas de los autos (mejor conocido como “dooring”) afecta negativamente la sensación de seguridad. También debe tenerse en cuenta que las separaciones estructurales del flujo de vehículos de motor no son posibles en estas situaciones, lo que reduce el margen de diseño en la planificación. La encuesta no describió el riesgo de que los automóviles entren o salgan de un estacionamiento. Por lo tanto, la sensación real de seguridad en estas situaciones podría ser aún menor."
+    }
+  ],
+  "research.05_results.p15.heading": [
+    {
+      "type": 0,
+      "value": "El estacionamiento de automóviles al costado de la calzada crea conflictos adicionales."
+    }
+  ],
+  "research.05_results.p15.image1": [
+    {
+      "type": 0,
+      "value": "*69,09% de los usuarios calificaron esta situación sin franjas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
+  ],
+  "research.05_results.p15.image2": [
+    {
+      "type": 0,
+      "value": "32,76% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
+  ],
+  "research.05_results.p16": [
+    {
+      "type": 0,
+      "value": "Tres factores de influencia centrales"
+    }
+  ],
+  "research.05_results.p17": [
+    {
+      "type": 0,
+      "value": "Además de la ubicación del carril para bicicletas, tres factores son principalmente relevantes para la sensación subjetiva de seguridad:"
+    }
+  ],
+  "research.05_results.p17.list1": [
+    {
+      "type": 0,
+      "value": "El ancho del carril de bicicletas"
+    }
+  ],
+  "research.05_results.p17.list2": [
+    {
+      "type": 0,
+      "value": "Su distinción por color"
+    }
+  ],
+  "research.05_results.p17.list3": [
+    {
+      "type": 0,
+      "value": "Existencia de una separación estructural del flujo de vehículos de motor."
+    }
+  ],
+  "research.05_results.p18": [
+    {
+      "type": 0,
+      "value": "El ancho de la separación a la izquierda juega un papel principalmente en situaciones con estacionamiento a la derecha. Los otros factores consultados en la encuesta, el límite de velocidad y el volumen de tráfico, juegan un papel comparativamente insignificante. Cabe señalar aquí que las sensaciones de los factores límite de velocidad y volumen de tráfico solo se pueden transmitir de manera abstracta a través de las visualizaciones."
+    }
+  ],
+  "research.05_results.p19": [
+    {
+      "type": 0,
+      "value": "En la encuesta, se hizo una distinción entre 3,5 metros (ancho) y 2,0 metros (estrecho) de ancho para la bicisenda, incluidas todas las marcas a la izquierda y a la derecha (ver también diseño de la encuesta). El resultado de todas las situaciones indica que las bicisendas amplias se perciben como seguras en la gran mayoría de los casos. En promedio, el 82,99% de los participantes calificaron estos como \"seguros\" o \"bastante seguros\""
+    }
+  ],
+  "research.05_results.p19.heading": [
+    {
+      "type": 0,
+      "value": "El ancho de la bicisenda es central,  especialmente en casos con estacionamiento a la derecha"
+    }
+  ],
+  "research.05_results.p2": [
+    {
+      "type": 0,
+      "value": "Utilizando los datos disponibles, las personas interesadas pueden comprender la evaluación y verificar otras hipótesis. Primero, una descripción general de los participantes."
+    }
+  ],
+  "research.05_results.p20": [
+    {
+      "type": 0,
+      "value": "Si comparamos un ejemplo de un carril bici en una calle principal sin vehículos estacionados, la siguiente diferencia se hace evidente:"
+    }
+  ],
+  "research.05_results.p20.image1": [
+    {
+      "type": 0,
+      "value": "*73,68% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
+  ],
+  "research.05_results.p20.image2": [
+    {
+      "type": 0,
+      "value": "*69,09% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
+  ],
+  "research.05_results.p21": [
+    {
+      "type": 0,
+      "value": "En el caso de un carril bici con estacionamiento a la derecha, la diferencia entre la versión estrecha y la ancha es significativamente mayor."
+    }
+  ],
+  "research.05_results.p21.image1": [
+    {
+      "type": 0,
+      "value": "*70,71% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
+  ],
+  "research.05_results.p21.image2": [
+    {
+      "type": 0,
+      "value": "*32,23% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
+  ],
+  "research.05_results.p22": [
+    {
+      "type": 0,
+      "value": "Si la bicisenda se diferencia del carril de vehículos por una superficie verde, se produce un efecto positivo en la sensación subjetiva de seguridad. Este efecto varía en intensidad según la situación. Cuanto peor se desarrolla la bicisenda, más fuerte será el efecto de la coloración verde."
+    }
+  ],
+  "research.05_results.p22.heading": [
+    {
+      "type": 0,
+      "value": "La superficie verde ayuda"
+    }
+  ],
+  "research.05_results.p22.image1": [
+    {
+      "type": 0,
+      "value": "*80,37% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
+  ],
+  "research.05_results.p22.image2": [
+    {
+      "type": 0,
+      "value": "*69,09% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
+  ],
+  "research.05_results.p22.image3": [
+    {
+      "type": 0,
+      "value": "*77,87% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
+  ],
+  "research.05_results.p22.image4": [
+    {
+      "type": 0,
+      "value": "*70,71% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    }
+  ],
+  "research.05_results.p23": [
+    {
+      "type": 0,
+      "value": "En la encuesta se probó otra variante: solo una línea verde trazada a la izquierda. Esta variante no supuso ninguna mejora sobre una superficie de asfalto normal."
+    }
+  ],
+  "research.05_results.p24": [
+    {
+      "type": 0,
+      "value": "Una separación estructural entre la bicisenda y el flujo de vehículos motorizados refuerza la sensación de seguridad. El tipo de separación no es determinante. Si observa en detalle, encontrará que los bolardos pequeños (los llamados Leitboys) son más populares entre los carriles bici estrechos, mientras que los maceteros reciben las calificaciones más confiables para las bicisendas anchas. Es de notar que una superficie verde solo logra una mejora mínima si ya existe una amplia infraestructura con separación estructural."
+    }
+  ],
+  "research.05_results.p24.heading": [
+    {
+      "type": 0,
+      "value": "Postes de separación (bolardos) aumentan la sensación de seguridad, maceteros separadores también"
+    }
+  ],
+  "research.05_results.p24.image1": [
+    {
+      "type": 0,
+      "value": "Con el 90,65%, la separación estructural más segura es el carril estrecho sin coloración verde. La variante con coloración verde llega al 97,52%."
+    }
+  ],
+  "research.05_results.p24.image2": [
+    {
+      "type": 0,
+      "value": "Con un 98,38 %, la separación estructural más segura es con un amplio carril sin coloración verde. La variante con coloración verde llega al 99,11%"
+    }
+  ],
+  "research.05_results.p25": [
+    {
+      "type": 0,
+      "value": "Si el tráfico de bicicletas se lleva a cabo junto al espacio de la calzada destinado a estacionamiento de automóviles, la bicisenda a la derecha de los autos estacionados se percibe como significativamente más segura. Cabe señalar que la encuesta examinó la seguridad subjetiva de la ubicación de los carriles bici a lo largo de los tramos de calles; no se puede hacer una declaración sobre el impacto en las intersecciones."
+    }
+  ],
+  "research.05_results.p25.heading": [
+    {
+      "type": 0,
+      "value": "Mejor a la derecha que a la izquierda del estacionamiento de automóviles"
+    }
+  ],
+  "research.05_results.p26": [
+    {
+      "type": 0,
+      "value": "Esta forma de la bicisenda también se puede hacer subjetivamente más segura mediante la separación estructural o coloreando de verde, pero el efecto es relativamente menor."
+    }
+  ],
+  "research.05_results.p27": [
+    {
+      "type": 0,
+      "value": "La encuesta también preguntó sobre la perspectiva de los conductores de automóvil, por lo que la pregunta aquí no estaba dirigida exclusivamente a su propia percepción de seguridad sino a la de todos los usuarios de la vía: \"¿Cómo percibe esta situación al conducir?\" En términos de tendencia, las situaciones son evaluadas por los conductores de manera similar a las de los ciclistas. En promedio, las situaciones se evalúan como menos inseguras, el potencial de conflicto entre ciclistas y los vehículos estacionados se percibe como significativamente menos pronunciado."
+    }
+  ],
+  "research.05_results.p27.heading": [
+    {
+      "type": 0,
+      "value": "¿Cómo lo ven los conductores?"
+    }
+  ],
+  "research.05_results.p28": [
+    {
+      "type": 0,
+      "value": "El tráfico mixto en las carreteras principales también se califica como significativamente menos seguro en comparación a cuando existe una bicisenda delimitada, aunque esta percepción de seguridad  no es tan extrema como en los ciclistas."
+    }
+  ],
+  "research.05_results.p28.heading": [
+    {
+      "type": 0,
+      "value": "Los automovilistas también quieren una bicisenda delimitada"
+    }
+  ],
+  "research.05_results.p29": [
+    {
+      "type": 0,
+      "value": "Los conductores perciben que la situación es mucho más segura cuando hay una bicisenda claramente separada. Preferiblemente con área restringida o doble línea y de color verde. Es interesante que el factor de estacionamiento no juega un papel importante aquí; este peligro para los ciclistas aparentemente es apenas percibido por los automovilistas."
+    }
+  ],
+  "research.05_results.p3": [
+    {
+      "type": 0,
+      "value": "Para nuestro propio análisis usamos Python, que se encuentra en Jupyter Notebooks. Allí puede encontrar visualizaciones de los datos de la escala Likert, así como pruebas de las hipótesis con intervalos de confianza Bootstrap, Likelihood Ratio Tests con modelos de regresión proportional Odd."
+    }
+  ],
+  "research.05_results.p30": [
+    {
+      "type": 0,
+      "value": "La separación estructural de carriles de bicicletas mediante bolardos (o similares) también aumenta la seguridad desde el punto de vista de los automovilistas, incluso si el efecto aquí es significativamente menos pronunciado. Los conductores prefieren maceteros o bolardos bajos. Como se puede ver en el ejemplo anterior, los carriles bici anchos con una separación clara y marca verde también tienen una percepción como “seguros”."
+    }
+  ],
+  "research.05_results.p30.heading": [
+    {
+      "type": 0,
+      "value": "Los bolardos también son más seguros desde la perspectiva del automovilista"
+    }
+  ],
+  "research.05_results.p31": [
+    {
+      "type": 0,
+      "value": "Con un tráfico elevado y un límite de velocidad de 50 km/h, los conductores perciben una separación estructural del tráfico de bicicletas como más segura. Esto también se aplica a la mayoría de situaciones con límite de velocidad de 30 km/h y tráfico normal. Por lo tanto, los conductores de automóviles tienen una percepción clara del riesgo de accidentes con los ciclistas y perciben la situación como más amena cuando este conflicto se mitiga estructuralmente."
+    }
+  ],
+  "research.05_results.p31.image1": [
+    {
+      "type": 0,
+      "value": "Imagen 1: Situación mejor valorada desde la perspectiva de automovilistas para carriles bici estrecho, límite de velocidad 50 km/h y alto volumen de tráfico"
+    }
+  ],
+  "research.05_results.p31.image2": [
+    {
+      "type": 0,
+      "value": "Imagen 2: Situación mejor valorada desde la perspectiva de automovilistas para carriles bici amplios, límite de velocidad 50 km/h y alto volumen de tráfico"
+    }
+  ],
+  "research.05_results.p32.heading": [
+    {
+      "type": 0,
+      "value": "Ubicación en el área lateral"
+    }
+  ],
+  "research.05_results.p33": [
+    {
+      "type": 0,
+      "value": "En promedio, un carril bici situado sobre el área lateral (sobre la acera) se percibe como más segura que uno sobre la calzada. Sin embargo las calificaciones varían dependiendo del diseño del carril, especialmente en consideración con las respectivas zonas de conflicto (tráfico fluido de vehículos motorizados, estacionamiento de autos, tráfico peatonal). Los carriles sobre la acera imponen menos exigencias en cuanto al diseño del mismo para crear una gran sensación de seguridad entre los ciclistas. En carreteras con muchos estacionamientos de automóviles en la calzada, la ubicación del carril bici sobre la acera o en el lado derecho del estacionamiento tiene una calificación significativamente más alta que una ubicación a la izquierda del estacionamiento."
+    }
+  ],
+  "research.05_results.p33.heading": [
+    {
+      "type": 0,
+      "value": "Carriles para bicicletas ¿sobre la calzada o en el área lateral (vereda)?"
+    }
+  ],
+  "research.05_results.p34": [
+    {
+      "type": 0,
+      "value": "Sin un carril de estacionamiento, los carriles para bicicletas diseñados con seguridad son posibles tanto en el área lateral como en la calzada."
+    }
+  ],
+  "research.05_results.p34.image1": [
+    {
+      "type": 0,
+      "value": "Imagen 1:Un carril bici  ancho y claramente delimitado en la calzada, sin estacionamiento a la derecha se percibe como muy seguro"
+    }
+  ],
+  "research.05_results.p34.image2": [
+    {
+      "type": 0,
+      "value": "Imagen 2:  Un carril bici del mismo ancho sobre la acera se califica de manera aún más confiable."
+    }
+  ],
+  "research.05_results.p35": [
+    {
+      "type": 0,
+      "value": "Un carril para bicicletas estrecho en el área lateral con estacionamiento a la izquierda se percibe como mucho más segura que una bicisenda estrecha en la calzada con estacionamiento a la derecha, incluso si el diseño es “óptimo”. La ubicación sobre la acera presenta claras ventajas aquí."
+    }
+  ],
+  "research.05_results.p35.image1": [
+    {
+      "type": 0,
+      "value": "Imagen 1: El carril bici estrecho mejor valorado, donde a la derecha se permite el estacionamiento de autos"
+    }
+  ],
+  "research.05_results.p35.image2": [
+    {
+      "type": 0,
+      "value": "Imagen 2:  Un carril bici estrecho, ubicado sobre la acera con separación a la izquierda y derecha por medio de franjas verdes"
+    }
+  ],
+  "research.05_results.p36": [
+    {
+      "type": 0,
+      "value": "El ancho del carril bici también es decisivo en el espacio lateral (vereda)"
+    }
+  ],
+  "research.05_results.p37": [
+    {
+      "type": 0,
+      "value": "Desde la perspectiva de los ciclistas, el ancho del carril juega claramente el papel más importante entre las variantes en el espacio lateral. El factor de tráfico de peatones (con o sin “elementos de uso comercial de la acera”) juega un papel en las aceras estrechas. El ancho total de la acera y el tipo de separación tienen una influencia menor. El factor de tipo de tráfico a la izquierda del carril sobre la acera (autos estacionados / tráfico fluido) tiene una influencia muy pequeña. Bajo “elementos de uso comercial de la acera” se hace referencia a los elementos presentes sobre la acera como escaparates de tiendas, mesas y sillas de restaurantes y bares."
+    }
+  ],
+  "research.05_results.p38": [
+    {
+      "type": 0,
+      "value": "Un amplio carril en el espacio lateral experimenta un alto nivel de aceptación en términos de sensación de seguridad. Pero incluso los carriles estrechos siguen recibiendo calificaciones relativamente altas. La encuesta no preguntó sobre estándares de construcción adecuados y no se mostró un alto tráfico de bicicletas. A diferencia de un carril demasiado estrecho sobre la calzada, si el carril se sitúa sobre la acera,  generalmente un grupo muy grande de personas puede disfrutar del ciclismo de manera relajada."
+    }
+  ],
+  "research.05_results.p38.heading": [
+    {
+      "type": 0,
+      "value": "Los carriles bici estrechos son seguros, los anchos muy seguros"
+    }
+  ],
+  "research.05_results.p39": [
+    {
+      "type": 0,
+      "value": "Incluso si la situación en el lado izquierdo del carril no tiene una gran influencia en promedio, todavía existen fuertes restricciones sobre la seguridad subjetiva en ciertas situaciones, como muestra el siguiente ejemplo."
+    }
+  ],
+  "research.05_results.p39.image1": [
+    {
+      "type": 0,
+      "value": "Si hay tráfico fluido en el lado izquierdo del carril, la separación física en el lado derecho es problemática."
+    }
+  ],
+  "research.05_results.p39.image2": [
+    {
+      "type": 0,
+      "value": "Mejor es la separación por una estrecha franja verde."
+    }
+  ],
+  "research.05_results.p4": [
+    {
+      "type": 0,
+      "value": "Para clasificar las valoraciones, presentamos una pequeña descripción general de quienes contribuyeron en la encuesta. Se contó con un  total de 21.401 participantes, 19.109 de ellos de Berlín."
+    }
+  ],
+  "research.05_results.p4.heading": [
+    {
+      "type": 0,
+      "value": "Evaluación de los participantes"
+    }
+  ],
+  "research.05_results.p4.listOther": [
+    {
+      "type": 0,
+      "value": "otros lugares"
+    }
+  ],
+  "research.05_results.p40": [
+    {
+      "type": 0,
+      "value": "Uso comercial relevante en aceras estrechas"
+    }
+  ],
+  "research.05_results.p41": [
+    {
+      "type": 0,
+      "value": "La influencia del alto tráfico peatonal y el uso comercial se mostró en la encuesta mediante la representación de las mesas de café. Este factor cobra relevancia cuando el ancho total de la acera es estrecho."
+    }
+  ],
+  "research.05_results.p42": [
+    {
+      "type": 0,
+      "value": "Aquí, hay grandes diferencias en los detalles: si el carril bici está bien separado y es lo suficientemente ancho, los ciclistas lo encontrarán seguro incluso en aceras estrechas. Si este no es el caso, el valor cae drásticamente: debería haber al menos una separación claramente reconocible entre el tráfico de bicicletas y peatones."
+    }
+  ],
+  "research.05_results.p43": [
+    {
+      "type": 0,
+      "value": "La mayoría de los peatones generalmente se sienten seguros cuando el carril bici se encuentra sobre la acera. Lo que es importante para ellos es una clara separación y también suficiente espacio restante para el tránsito peatonal."
+    }
+  ],
+  "research.05_results.p43.heading": [
+    {
+      "type": 0,
+      "value": "Para los peatones es importante una clara separación del espacio destinado al tránsito de bicicletas."
+    }
+  ],
+  "research.05_results.p44": [
+    {
+      "type": 0,
+      "value": "Si la calle se utiliza principalmente con fines comerciales y por lo tanto tiene un elevado volumen de tráfico peatonal asociado, los peatones perciben como seguros solo ciertos diseños de carriles bici. En comparación con la perspectiva de los ciclistas, existe una percepción significativamente diferente de las situaciones en la que las aceras presentan elementos de uso comercial."
+    }
+  ],
+  "research.05_results.p44.heading": [
+    {
+      "type": 0,
+      "value": "El tráfico peatonal elevado requiere un diseño adecuado"
+    }
+  ],
+  "research.05_results.p45": [
+    {
+      "type": 0,
+      "value": "Una variante con la que ciclistas y peatones pueden vivir relativamente bien en espacios reducidos es la separación por una franja verde. En la situación real, factores como las maniobras de adelantamiento de los ciclistas, los perros que corren libremente, los niños, etc., juegan un papel cada vez más negativo en la sensación de seguridad. Por tanto, sólo se recomienda una gestión conjunta del tránsito de bicicletas y del tránsito peatonal con un elevado número de este último,  si la acera es lo suficientemente ancha."
+    }
+  ],
+  "research.05_results.p45.image1": [
+    {
+      "type": 0,
+      "value": "Imagen 1: A pesar del espacio disponible relativamente reducido, el 81,44% de los peatones perciben el escenario como \"bastante seguros\" o \"seguros\"."
+    }
+  ],
+  "research.05_results.p45.image2": [
+    {
+      "type": 0,
+      "value": "Imagen 2: La misma situación fue valorada por los ciclistas como “bastante segura” o “segura” en un  75,56 %."
+    }
+  ],
+  "research.05_results.p46": [
+    {
+      "type": 0,
+      "value": "Una clara separación del carril bici puede mejorar significativamente la sensación subjetiva de seguridad de quienes caminan."
+    }
+  ],
+  "research.05_results.p47": [
+    {
+      "type": 0,
+      "value": "Si la acera está libre de elementos de uso comercial y además el carril bici está claramente separado del sendero, los peatones se sienten seguros con la mayoría de los carriles bici."
+    }
+  ],
+  "research.05_results.p48": [
+    {
+      "type": 0,
+      "value": "Ubicación en caminos secundarios"
+    }
+  ],
+  "research.05_results.p49": [
+    {
+      "type": 0,
+      "value": "La comparación de un carril bici en carreteras secundarias con un carril bici en carreteras principales es solo parcialmente significativa, ya que la encuesta solo mostró imágenes estáticas que muestran el posible conflicto entre el vehículo de motor y la bicicleta. Los diferentes volúmenes de tráfico entre la carretera principal y la secundaria sólo pueden indicarse a modo indicativo. Sin embargo, los resultados permiten hacer afirmaciones sobre la sensación subjetiva de seguridad en el caso de diferentes diseños de calles secundarias."
+    }
+  ],
+  "research.05_results.p5": [
+    {
+      "type": 0,
+      "value": "Los participantes masculinos fueron casi el doble que la participación femenina:"
+    }
+  ],
+  "research.05_results.p5.list1": [
+    {
+      "type": 0,
+      "value": "masculino 64 %"
+    }
+  ],
+  "research.05_results.p5.list2": [
+    {
+      "type": 0,
+      "value": "femenino 34 %"
+    }
+  ],
+  "research.05_results.p5.list3": [
+    {
+      "type": 0,
+      "value": "diverso 2 %"
+    }
+  ],
+  "research.05_results.p50": [
+    {
+      "type": 0,
+      "value": "Es notable que el factor “sin automóviles” (tráfico fluido si / no) juega el papel más importante en la evaluación de las calles secundarias. Además, las calles de un solo sentido con tráfico en sentido contrario tienen un efecto muy negativo en la sensación de seguridad. Las calles más anchas se perciben como más seguras, el espacio de estacionamiento a lo largo de la calle empeora la sensación de seguridad"
+    }
+  ],
+  "research.05_results.p50.heading": [
+    {
+      "type": 0,
+      "value": "Calles secundarias de preferencia \"sin automóviles\""
+    }
+  ],
+  "research.05_results.p51": [
+    {
+      "type": 0,
+      "value": "Si a las situaciones sin señalización (como ciclocalles o calles residenciales) las consideramos con tráfico de vehículos motorizados, la sensación de seguridad promedio es bastante pobre. La mejor variante solo recibe 33,40% de calificaciones seguras o más seguras"
+    }
+  ],
+  "research.05_results.p52": [
+    {
+      "type": 0,
+      "value": "Las ciclocalles son mejores, pero no suficientes"
+    }
+  ],
+  "research.05_results.p53": [
+    {
+      "type": 0,
+      "value": "La señalización de ciclocalles mejora la sensación de seguridad, pero los valores no son especialmente elevados. Se alcanza un máximo de 45,03% de calificaciones “seguras” o “bastante seguras”. Para calles sin estacionamiento y calles de una mano en el sentido de la marcha, este valor aumenta hasta un máximo del 56,72%"
+    }
+  ],
+  "research.05_results.p53.image1": [
+    {
+      "type": 0,
+      "value": "La carretera para bicicletas mejor valorada con tráfico de coches en ambas direcciones"
+    }
+  ],
+  "research.05_results.p53.image2": [
+    {
+      "type": 0,
+      "value": "La calle para bicicletas mejor clasificada, con tráfico de coches como calle de un solo sentido en la dirección de la marcha"
+    }
+  ],
+  "research.05_results.p54": [
+    {
+      "type": 0,
+      "value": "Es notable que las ciclocalles con señalización especial de Dooring (Señalización de la zona de Dooring mediante una línea discontinua, marcada adicionalmente con una doble flecha para indicar la circulación en dos sentidos ) funcionan peor que aquellas ciclocalles con grandes pictogramas sobre la calzada. Sin embargo, esta comparación no es muy significativa debido a la representación en la encuesta, ya que la composición de las imágenes puede influir en la evaluación por varios factores (marcación como ciclocalles, ancho óptico del carril disponible, posición de los ciclistas)."
+    }
+  ],
+  "research.05_results.p55": [
+    {
+      "type": 0,
+      "value": "La solución holandesa"
+    }
+  ],
+  "research.05_results.p56": [
+    {
+      "type": 0,
+      "value": "Solo se dan valores realmente buenos para las variantes en el NVS donde no se muestra ningún tráfico de vehículos. Esto también incluye variantes con automóviles estacionados. (Esto corresponde, por ejemplo, a la situación en una carretera con acceso restringido, donde sólo los residentes pueden conducir). Las mejores calificaciones se otorgan a la “solución holandesa” con un carril para bicis con separación media, pavimentado y asfalto verde continuo. Al guiar en calles laterales, la señalización ópticamente clara de la carretera para bicicletas parece ser de gran importancia."
+    }
+  ],
+  "research.05_results.p57": [
+    {
+      "type": 0,
+      "value": "Las variantes con autos estacionados muestran claras diferencias en el tipo de marcado."
+    }
+  ],
+  "research.05_results.p6": [
+    {
+      "type": 0,
+      "value": "A modo de comparación: según la Oficina de Estadísticas de Berlín Brandenburgo, en Berlín la población consta de un 49% de los hombres y  51% de mujeres (en 2018)."
+    }
+  ],
+  "research.05_results.p7": [
+    {
+      "type": 0,
+      "value": "La distribución por edades es la siguiente:"
+    }
+  ],
+  "research.05_results.p7.list1": [
+    {
+      "type": 0,
+      "value": "AG0 -  menores de 18 años 1%"
+    }
+  ],
+  "research.05_results.p7.list2": [
+    {
+      "type": 0,
+      "value": "AG1 - 18 a 24 años 5%"
+    }
+  ],
+  "research.05_results.p7.list3": [
+    {
+      "type": 0,
+      "value": "AG2 - 25 a 29 años 8%"
+    }
+  ],
+  "research.05_results.p7.list4": [
+    {
+      "type": 0,
+      "value": "AG3 - 30 a 39 años 27%"
+    }
+  ],
+  "research.05_results.p7.list5": [
+    {
+      "type": 0,
+      "value": "AG4 - 40 a 49 años 22%"
+    }
+  ],
+  "research.05_results.p7.list6": [
+    {
+      "type": 0,
+      "value": "AG5 - 50 a 64 años 28%"
+    }
+  ],
+  "research.05_results.p7.list7": [
+    {
+      "type": 0,
+      "value": "AG6/7 - mayores de 65 años 10%"
+    }
+  ],
+  "research.05_results.p8": [
+    {
+      "type": 0,
+      "value": "A modo de comparación: según la Oficina de Estadísticas de Berlín Brandenburgo, en Berlín la distribución por edades es la siguiente (en 2018):"
+    }
+  ],
+  "research.05_results.p8.list1": [
+    {
+      "type": 0,
+      "value": "menores de 18 años 16%"
+    }
+  ],
+  "research.05_results.p8.list2": [
+    {
+      "type": 0,
+      "value": "18 a 24 años 7%"
+    }
+  ],
+  "research.05_results.p8.list3": [
+    {
+      "type": 0,
+      "value": "25 a 29 años 8%"
+    }
+  ],
+  "research.05_results.p8.list4": [
+    {
+      "type": 0,
+      "value": "30 a 39 años 17%"
+    }
+  ],
+  "research.05_results.p8.list5": [
+    {
+      "type": 0,
+      "value": "40 a 49 años 13%"
+    }
+  ],
+  "research.05_results.p8.list6": [
+    {
+      "type": 0,
+      "value": "50 a 64 años 20%"
+    }
+  ],
+  "research.05_results.p8.list7": [
+    {
+      "type": 0,
+      "value": "mayores de  65 años 19%"
+    }
+  ],
+  "research.05_results.p9": [
+    {
+      "type": 0,
+      "value": "Además, se preguntó a los participantes con qué frecuencia viajaban en autobús, tren, coche, bicicleta, motocicleta o bien caminaban. En comparación con los valores de Berlín del Sistema de encuestas de tráfico representativas, 2018 (SrV, por sus siglas en alemán), existen algunas desviaciones. Los valores para el uso del transporte público (autobús y tren) al menos una vez a la semana en la encuesta (64%) coinciden aproximadamente con los valores del SrV 2018 (62%). Por el contrario, el uso del automóvil (35%) está subrepresentado en esta encuesta en comparación con el SrV 2018 (56%) y el uso de la bicicleta (64%) está sobrerrepresentado en la encuesta (47% SrV, "
+    },
+    {
+      "type": 1,
+      "value": "link"
+    },
+    {
+      "type": 0,
+      "value": ")."
+    }
+  ],
+  "research.05_results.p9.link": [
+    {
+      "type": 0,
+      "value": "(Gerike et. Al, evaluación especial del proyecto de investigación \"Movilidad en las ciudades - SrV 2018\" comparación de ciudades, Dresde 2020. p.127ff)"
+    }
+  ],
+  "research.06_summary.p01.heading": [
+    {
+      "type": 0,
+      "value": "Resumen"
+    }
+  ],
+  "research.06_summary.p02": [
+    {
+      "type": 0,
+      "value": "Como parte de un proyecto de investigación del Plan Nacional de Ciclismo, se investigó la pregunta de cómo debería ser una infraestructura ciclista donde todos se sientan seguros. Para ello, se desarrolló una encuesta online en la que los participantes valoraron las representaciones fotorrealistas de situaciones viales desde sus perspectivas como ciclistas, automovilistas y/o peatones. Esto permitió controlar y examinar las influencias de las características individuales de las infraestructuras, pero también significó que se pierdan otros agentes de influencias necesarios para la percepción completa de una situación.Se logró un gran número de participantes gracias a la cooperación con un diario de Berlín. En consecuencia, el lugar de residencia de alrededor del 90% de los participantes es Berlín. Los hombres, el grupo de edad de 30 a 64 años y principalmente ciclistas también estuvieron sobrerrepresentados en la encuesta, sin embargo, debido al alto número total de participantes, hay un número suficiente de evaluaciones para los grupos subrepresentados. En una evaluación inicial, la encuesta muestra que las influencias de diferentes factores en sus interrelaciones no permiten declaraciones lineales sobre la seguridad subjetiva de la infraestructura ciclista. No obstante, se pueden derivar algunas afirmaciones y recomendaciones centrales sobre cómo sería una “infraestructura ciclista para todos”."
+    }
+  ],
+  "research.06_summary.p03": [
+    {
+      "type": 0,
+      "value": "Se confirmó la hipótesis de que la ubicación del carril bici en el área lateral (acera) se percibe como más segura que un carril bici ubicado sobre la calzada."
+    }
+  ],
+  "research.06_summary.p04": [
+    {
+      "type": 0,
+      "value": "Con aceras anchas y sin uso comercial, el carril bici sobre la acera es la alternativa mejor valorada. Incluso los peatones se sienten suficientemente seguros bajo esta situación, si también hay una separación del tráfico de bicicletas, por ejemplo, si la bicisenda es claramente reconocible por una franja verde."
+    }
+  ],
+  "research.06_summary.p05": [
+    {
+      "type": 0,
+      "value": "Conducir en tráfico mixto se percibe como muy inseguro"
+    }
+  ],
+  "research.06_summary.p06": [
+    {
+      "type": 0,
+      "value": "Ante una bicisenda sobre la calzada, las infraestructuras amplias se perciben como significativamente más seguras. Los tonos verdes y las separaciones estructurales también aumentan la sensación de seguridad."
+    }
+  ],
+  "research.06_summary.p07": [
+    {
+      "type": 0,
+      "value": "Incluso las infraestructuras para ciclistas más estrechas ofrecen un nivel subjetivo aceptable de seguridad si están, por ejemplo, separadas del tráfico de vehículos por bolardos bajos y están ubicadas a lo largo de carreteras sin filas de vehículos estacionados."
+    }
+  ],
+  "research.06_summary.p08": [
+    {
+      "type": 0,
+      "value": "Al andar en bicicleta en una carretera principal con filas de vehículos estacionados, la ubicación a la derecha de estos se percibe como más segura. En general, se percibe que el estacionamiento de autos a la izquierda es significativamente menos seguro.Para una bicisenda ubicada a la izquierda de la hilera del estacionamiento de autos, las escenas son calificadas como aceptablemente seguras si, por ejemplo, la infraestructura para el ciclismo es amplia y de color verde. Cabe señalar que los conflictos adicionales, como los estacionamientos incorrectos, no se mostraron en la encuesta. Asimismo, las situaciones en los cruces no se examinaron en la encuesta, por lo que no se puede hacer una afirmación sobre la conexión entre las bicisendas en la calzada y sus efectos en los cruces."
+    }
+  ],
+  "research.06_summary.p09": [
+    {
+      "type": 0,
+      "value": "Los conductores de automóviles también perciben escenarios con infraestructuras bien desarrolladas para bicicletas, incluidos los bolardos, como más seguras. Las tendencias de las calificaciones son similares a las de los ciclistas, incluso si algunos peligros (como impactos por apertura de puertas o dooring) se evalúan con menos fuerza."
+    }
+  ],
+  "research.06_summary.p10": [
+    {
+      "type": 0,
+      "value": "Las escenas en las calles secundarias generalmente recibieron peores calificaciones que las de las carreteras principales. Sin embargo, esta comparación es sólo parcialmente significativa, ya que el volumen de tráfico no se pudo mostrar con suficiente claridad en las imágenes estáticas de la encuesta. Las escenas en las que no había un tráfico fluido de vehículos motorizados y en las que había una señalización clara como una ciclocalle recibieron las mejores calificaciones."
+    }
+  ],
+  "research.06_summary.p11": [
+    {
+      "type": 0,
+      "value": "Los datos deben analizarse más a fondo. El conjunto de datos de resultados está disponible gratuitamente y ya se está utilizando para evaluaciones posteriores. ¡Esperamos tener noticias suyas si está interesado y desea vincular sus resultados aquí! Para los siguientes pasos, se debe realizar una comparación de los resultados sobre seguridad subjetiva con la situación real de accidentes para formular recomendaciones."
+    }
+  ],
+  "research.07_team.p01.heading": [
+    {
+      "type": 0,
+      "value": "QUIENES SE ENCUENTRAN ATRÁS DE LA ENCUESTA "
+    }
+  ],
+  "research.07_team.p02": [
+    {
+      "type": 0,
+      "value": "FixMyCity apoya a ciudades en el cambio de la movilidad. El equipo está formado por programadores, diseñadores, planificadores de tráfico, como así también especialistas de datos. En conjunto, desarrollan herramientas digitales que posibilitan un trabajo administrativo abierto y ágil.Para apoyar a las ciudades y municipios en este camino, FixMyCity está desarrollando herramientas libres para el gobierno que permiten a las administraciones implementar el cambio de movilidad junto con los ciudadanos. Las herramientas digitales desarrolladas para la evaluación simple de necesidades, la gestión eficiente de proyectos, la comunicación activa con los ciudadanos y el análisis inteligente de datos aceleran la planificación del ciclismo y aumentan su aceptación."
+    }
+  ],
+  "research.07_team.p03": [
+    {
+      "type": 0,
+      "value": "El equipo de FixMyCity trabaja en CityLAB Berlín, donde se creó la encuesta descrita en esta página. Si desea obtener más información sobre nosotros, visítenos en fixmycity.de o contáctenos directamente."
+    }
+  ],
+  "research.07_team.p04": [
+    {
+      "type": 0,
+      "value": "Contacto:"
+    }
+  ],
+  "research.07_team.p04.address": [
+    {
+      "type": 0,
+      "value": "Dirección de la oficina:"
+    }
+  ],
+  "research.07_team.p04.funding": [
+    {
+      "type": 0,
+      "value": "FixMyCity está auspiciado por BMVI (Ministerio Federal de Transporte e Infraestructura Digital) y la Secretaría del Senado de Berlín."
+    }
+  ],
+  "research.07_team.p04.phone": [
+    {
+      "type": 0,
+      "value": "Tel: 030 - 54 90 86 65"
+    }
+  ],
+  "research.authors": [
+    {
+      "type": 0,
+      "value": "FixMyCity Team"
+    }
+  ],
+  "research.components.barchart.labels.ratherSafe": [
+    {
+      "type": 0,
+      "value": "bastante seguro"
+    }
+  ],
+  "research.components.barchart.labels.ratherUnsafe": [
+    {
+      "type": 0,
+      "value": "bastante inseguro"
+    }
+  ],
+  "research.components.barchart.labels.safe": [
+    {
+      "type": 0,
+      "value": "seguro"
+    }
+  ],
+  "research.components.barchart.labels.unsafe": [
+    {
+      "type": 0,
+      "value": "inseguro"
+    }
+  ],
+  "research.components.feelsafe.label": [
+    {
+      "type": 0,
+      "value": "El "
+    },
+    {
+      "type": 1,
+      "value": "pct"
+    },
+    {
+      "type": 0,
+      "value": "% de los usuarios en la perspectiva \""
+    },
+    {
+      "type": 1,
+      "value": "mode"
+    },
+    {
+      "type": 0,
+      "value": "\" se sienten seguros"
+    }
+  ],
+  "research.components.feelsafe.perspectives.bike": [
+    {
+      "type": 0,
+      "value": "ciclista"
+    }
+  ],
+  "research.components.feelsafe.perspectives.car": [
+    {
+      "type": 0,
+      "value": "automovilistas"
+    }
+  ],
+  "research.components.feelsafe.perspectives.walking": [
+    {
+      "type": 0,
+      "value": "peatones"
+    }
+  ],
+  "research.introduction": [
+    {
+      "type": 0,
+      "value": "El cambio hacia una movilidad urbana sostenible ha empezado en Berlín y en otras ciudades. El ciclismo debe recibir una buena infraestructura, en la cual todas las personas se sientan seguras. Pero, ¿qué significa concretamente ”sentirse seguro” para la planificación de nuevas infraestructuras? Realizamos una encuesta para analizar la percepción de seguridad, aquí les presentamos los resultados."
+    }
+  ],
+  "research.kicker": [
+    {
+      "type": 0,
+      "value": "Resultado de la investigación - Chequeo de las calles de Berlín"
+    }
+  ],
+  "research.title": [
+    {
+      "type": 0,
+      "value": "Estudio sobre la seguridad subjetiva en la movilidad ciclista  - Resultados y datos de la encuesta realizada a más de 21.000 participantes"
+    }
+  ],
+  "research.toc.About": [
+    {
+      "type": 0,
+      "value": "Concepto de la encuesta"
+    }
+  ],
+  "research.toc.Dataset": [
+    {
+      "type": 0,
+      "value": "Datos de los resultados"
+    }
+  ],
+  "research.toc.Header": [
+    {
+      "type": 0,
+      "value": "Ve directamente a una capilla"
+    }
+  ],
+  "research.toc.Results": [
+    {
+      "type": 0,
+      "value": "Valoración estadística"
+    }
+  ],
+  "research.toc.Summary": [
+    {
+      "type": 0,
+      "value": "Resumen"
+    }
+  ],
+  "research.toc.Team": [
+    {
+      "type": 0,
+      "value": "Quiénes se encuentran atrás de la encuesta"
+    }
+  ],
+  "research.toc.introduction": [
+    {
+      "type": 0,
+      "value": "Sobre el proyecto"
     }
   ]
 }

@@ -5,7 +5,7 @@ import _isEqual from 'lodash.isequal';
 import MapboxGL from 'mapbox-gl';
 
 import config from '~/pages/Reports/config';
-import { animateView, setView } from '~/pages/Map/map-utils';
+import { animateView, setView } from '~/apps/Map/map-utils';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 
 class WebglMap extends PureComponent {

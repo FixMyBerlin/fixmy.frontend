@@ -3,8 +3,6 @@ import { createBrowserHistory } from 'history';
 
 import config from '~/config';
 
-const piwikSiteId = config.piwik.siteId[config.region] || 1;
-
 const browserHistory = createBrowserHistory();
 
 // piwik-react-router has an open issue where it will try and attach a
@@ -16,7 +14,7 @@ let history: ReturnType<typeof createBrowserHistory>;
 try {
   const piwik = new ReactPiwik({
     url: config.piwik.url,
-    siteId: piwikSiteId,
+    siteId: config.piwik?.siteId || 1,
     ...config.piwik.options
   });
 

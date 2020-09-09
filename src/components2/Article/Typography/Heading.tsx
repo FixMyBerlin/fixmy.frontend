@@ -8,6 +8,7 @@ import { media } from '~/styles/utils';
 interface HeadingProps {
   as?: 'h1' | 'h2' | 'h3';
   toc?: string;
+  tocAnchor?: string;
   children?: ReactNode;
   className?: string;
 }
@@ -70,23 +71,23 @@ const headings = {
 /**
  * Provide an anchor for accessibility if toc prop is provided
  */
-const AnchorWrapper = ({ toc, children }) =>
-  toc == null ? (
-    <>{children}</>
-  ) : (
+const AnchorWrapper = ({ toc, children, tocAnchor = null }) => {
+  if (toc == null) return <>{children}</>;
+  return (
     <AnchorStyle
-      href={`#${slugify(toc, { lower: true })}`}
-      id={slugify(toc, { lower: true })}
+      href={`#${slugify(tocAnchor || toc, { lower: true })}`}
+      id={slugify(tocAnchor || toc, { lower: true })}
     >
       {children}
     </AnchorStyle>
   );
+};
 
-const Heading = ({ as, toc, children, className }: HeadingProps) => {
+const Heading = ({ as, toc, tocAnchor, children, className }: HeadingProps) => {
   const HeadingComponent = headings[as] ? headings[as] : Heading1;
 
   return (
-    <AnchorWrapper toc={toc}>
+    <AnchorWrapper toc={toc} tocAnchor={tocAnchor}>
       <HeadingComponent className={className}>{children}</HeadingComponent>
     </AnchorWrapper>
   );

@@ -20,8 +20,8 @@ import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import ErrorMessage from '~/components/ErrorMessage';
 import HelpText from './HelpText';
 import ConfirmLocationDialog from './ConfirmLocationDialog';
-import LocatorControl from '~/pages/Map/components/LocatorControl';
-import FMBCredits from '~/pages/Map/components/FMBCredits';
+import LocatorControl from '~/apps/Map/components/LocatorControl';
+import FMBCredits from '~/apps/Map/components/FMBCredits';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import {
   actions as submitReportStateActions,

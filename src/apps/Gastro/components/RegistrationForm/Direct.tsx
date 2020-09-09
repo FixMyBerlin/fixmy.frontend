@@ -4,10 +4,10 @@ import { CheckboxWithLabel } from 'formik-material-ui';
 import { FormHelperText, LinearProgress } from '@material-ui/core';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import debug from 'debug';
 
 import Button from '~/components2/Button';
 import { Form } from '~/components2/Form';
-import logger from '~/utils/logger';
 import { GastroRegistration } from '~/apps/Gastro/types';
 import api from '~/apps/Gastro/api';
 import { validateDirect } from './validate';
@@ -23,6 +23,8 @@ import SectionUsage from './SectionUsage';
 import SectionBase from './SectionBase';
 import { media } from '~/styles/utils';
 import regulations from '../../regulations';
+
+const logger = debug('fmc:Gastro:Registration');
 
 const testValues: FormData = {
   address: 'Köpenicker Straße 5, 10997 Berlin',

@@ -15,7 +15,7 @@ const ListItem = styled.li`
 
 const Suggestion = ({ address, onSuggestionPick }) => {
   const addressParts = address
-    .split(`${config.map.geocoderHighlightSeperator}`)
+    .split(`${config.apps.map.geocoderHighlightSeperator}`)
     .map((val, i) =>
       i % 2 ? (
         <b key={`highlight-${val}`}>{val}</b>

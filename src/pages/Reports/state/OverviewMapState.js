@@ -1,8 +1,9 @@
-/* eslint-disable no-use-before-define */
+import debug from 'debug';
 import { apiFetchReports } from '../apiservice';
 import { actions as errorStateActions } from './ErrorState';
 import initialState from './initialState';
-import logger from '~/utils/logger';
+
+const logger = debug('fmc:reports');
 
 const actions = {};
 const types = {};
@@ -10,6 +11,7 @@ const types = {};
 // action types
 
 types.REPORTS_FETCH_PENDING = 'Reports/OverviewMapState/REPORTS_FETCH_PENDING';
+types.REPORTS_FETCH_ERROR = 'Reports/OverviewMapState/REPORTS_FETCH_ERROR';
 types.REPORTS_FETCH_COMPLETE =
   'Reports/OverviewMapState/REPORTS_FETCH_COMPLETE';
 types.SET_SELECTED_REPORT = 'Reports/OverviewMapState/SET_SELECTED_REPORT';
@@ -30,6 +32,24 @@ actions.resetMapState = () => ({
 
 // thunks
 
+async function loadReportsThunk(dispatch) {
+  logger('Loading reports...');
+  try {
+    dispatch({ type: types.REPORTS_FETCH_PENDING });
+    const reportData = await apiFetchReports();
+    dispatch({ type: types.REPORTS_FETCH_COMPLETE, payload: reportData });
+  } catch (e) {
+    dispatch({ type: types.REPORTS_FETCH_ERROR });
+    const message = 'Fehler beim Laden der Meldungen';
+    logger(`${message}: \n%O`, e);
+    dispatch(
+      errorStateActions.addError({
+        message
+      })
+    );
+  }
+}
+
 actions.loadReportsData = () => async (dispatch) => {
   await loadReportsThunk(dispatch);
 };
@@ -38,9 +58,13 @@ actions.setSelectedReport = (selectedReport, zoomIn) => async (
   dispatch,
   getState
 ) => {
-  const { reports } = getState().ReportsState.OverviewMapState;
+  const {
+    reports,
+    reportFetchState
+  } = getState().ReportsState.OverviewMapState;
 
-  if (!reports.length) {
+  if (!reports.length && reportFetchState !== 'pending') {
+    logger(reportFetchState);
     await loadReportsThunk(dispatch);
   }
 
@@ -53,22 +77,6 @@ actions.setSelectedReport = (selectedReport, zoomIn) => async (
   });
 };
 
-async function loadReportsThunk(dispatch) {
-  try {
-    dispatch({ type: types.REPORTS_FETCH_PENDING });
-    const reportData = await apiFetchReports();
-    dispatch({ type: types.REPORTS_FETCH_COMPLETE, payload: reportData });
-  } catch (e) {
-    const message = 'Fehler beim Laden der Meldungen';
-    logger(`${message}: ${e}`);
-    dispatch(
-      errorStateActions.addError({
-        message
-      })
-    );
-  }
-}
-
 // reducer
 
 function reducer(
@@ -79,8 +87,12 @@ function reducer(
     case types.RESET_MAP_STATE: {
       return initialState.OverviewMapState;
     }
+    case types.REPORTS_FETCH_PENDING:
+      return { ...state, reportFetchState: 'pending' };
+    case types.REPORTS_FETCH_ERROR:
+      return { ...state, reportFetchState: 'error' };
     case types.REPORTS_FETCH_COMPLETE:
-      return { ...state, reports: payload };
+      return { ...state, reports: payload, reportFetchState: 'success' };
     case types.SET_SELECTED_REPORT:
       return {
         ...state,
