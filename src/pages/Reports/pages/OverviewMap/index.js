@@ -245,6 +245,8 @@ export default withRouter(
     (state) => ({
       selectedReport: state.ReportsState.OverviewMapState.selectedReport,
       reports: state.ReportsState.OverviewMapState.reports,
+      isReportsFetchPending:
+        state.ReportsState.OverviewMapState.reportFetchState === 'pending',
       zoomIn: state.ReportsState.OverviewMapState.reports.zoomIn,
       token: state.UserState.token,
       isMenuOpen: state.AppState.isMenuOpen,

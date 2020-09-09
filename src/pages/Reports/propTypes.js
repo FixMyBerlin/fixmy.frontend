@@ -24,8 +24,8 @@ const report = PropTypes.shape({
   created_date: PropTypes.string,
   description: PropTypes.string,
   details: PropTypes.shape({
-    number: PropTypes.number.isRequired,
-    subject: PropTypes.oneOf(['BIKE_STANDS']).isRequired,
+    number: PropTypes.number,
+    subject: PropTypes.oneOf(['BIKE_STANDS']),
     fee_acceptable: PropTypes.bool
   }),
   geometry,
@@ -37,11 +37,21 @@ const report = PropTypes.shape({
     src: PropTypes.string
   }),
   status: PropTypes.oneOf([
+    'report_new',
+    'report_verification',
+    'report_accepted',
+    'report_rejected',
+    'report_inactive',
+    'planning',
+    'tender',
+    'invalid',
+    'execution',
+    'done',
+    // deprecated
     'new',
     'verification',
     'accepted',
-    'rejected',
-    'done'
+    'rejected'
   ]),
   status_reason: PropTypes.string,
   url: PropTypes.string.isRequired
