@@ -10,7 +10,7 @@ const goToProjects = () => {
   cy.visit(config.routes.projects)
     .wait('@getProjects')
     .its('status')
-    .should('be', 200); // configured in cypress.config.json
+    .should('eq', 200); // configured in cypress.config.json
 };
 
 const clickRandomMarker = () => {
