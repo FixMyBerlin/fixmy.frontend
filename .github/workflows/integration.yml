@@ -35,8 +35,10 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
+      # clean install of dependencies
       - run: npm ci
-      - run: DEBUG=cypress:* npm run test:e2e-dev-server
+      # start webpack dev server and then - once server runs - start e2e tests
+      - run: npm run test:e2e-dev-server
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
