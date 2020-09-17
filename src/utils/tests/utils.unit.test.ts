@@ -1,13 +1,10 @@
 import { sortByKey } from '../utils';
 import projectList from './projectList.json';
-import projectListSorted from './projectListSorted';
 
 describe('sortByKey', () => {
   it('sorts lists of objects with a default sort', () => {
     const sortOutput = projectList.sort(sortByKey());
-    expect(JSON.stringify(sortOutput.map((obj) => obj.id))).toEqual(
-      JSON.stringify(projectListSorted.byId)
-    );
+    expect(JSON.stringify(sortOutput.map((obj) => obj.id))).toEqual('[4,6,7]');
   });
 
   it('sorts lists of objects by id', () => {
