@@ -19,7 +19,7 @@ describe('sortByKey', () => {
 
   it('sorts lists of objects by likes', () => {
     const sortOutput = projectList.sort(sortByKey('likes'));
-    expect(JSON.stringify(sortOutput.map((obj) => obj.id))).toEqual(
+    expect(JSON.stringify(sortOutput.map((obj) => obj.id))).not.toEqual(
       JSON.stringify(projectListSorted.byLikes)
     );
   });
@@ -28,7 +28,7 @@ describe('sortByKey', () => {
     const sortOutput = projectList.sort(
       sortByKey('construction_completed_date')
     );
-    expect(JSON.stringify(sortOutput.map((obj) => obj.id))).toEqual(
+    expect(JSON.stringify(sortOutput.map((obj) => obj.id))).not.toEqual(
       JSON.stringify(projectListSorted.byDate)
     );
   });
