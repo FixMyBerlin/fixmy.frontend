@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        region: [berlin, aachen, eichwalde]
+        region: [berlin, aachen]
 
     steps:
       - uses: actions/checkout@v2
