@@ -1,0 +1,46 @@
+name: integration tests
+
+on:
+  push:
+    branches: ['master', 'develop']
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        region: [berlin, aachen, eichwalde]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Read node version from .nvmrc
+        id: nvmrc
+        uses: browniebroke/read-nvmrc-action@v1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '${{ steps.nvmrc.outputs.node_version }}'
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      # clean install of dependencies
+      - run: npm ci
+      # start webpack dev server and then - once server runs - start e2e tests
+      - run: npm run test:e2e-dev-server
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          directory: coverage
+          flags: e2etests
