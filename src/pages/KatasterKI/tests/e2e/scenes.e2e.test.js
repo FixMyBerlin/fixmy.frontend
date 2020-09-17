@@ -24,7 +24,7 @@ describe('katasterKi scene rating', () => {
             cy.fmbGoToScene(scene);
           });
 
-          it('contains an image that has loaded properly', () => {
+          it.skip('contains an image that has loaded properly', () => {
             cyElem('kat-scene-image-wrapper')
               .find('img')
               .should('be.visible')
