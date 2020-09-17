@@ -38,7 +38,7 @@ jobs:
       # clean install of dependencies
       - run: npm ci
       # start webpack dev server and then - once server runs - start e2e tests
-      - run: REGION={{ env.region }} npm run test:e2e-dev-server
+      - run: REGION=${{ env.region }} npm run test:e2e-dev-server
       - uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
