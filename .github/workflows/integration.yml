@@ -2,7 +2,7 @@ name: integration tests
 
 on:
   push:
-    branches: ['master', 'develop', 'ciex/platform/github-actions-cypress']
+    branches: ['master', 'develop']
 
 jobs:
   e2e:
