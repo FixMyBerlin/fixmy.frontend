@@ -38,11 +38,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Start webpack dev server and run Cypress test suite
-        run: npm run test:e2e-dev-server
+      - name: Make bundle
+        run: npm run build
         env:
           REGION: ${{ matrix.region }}
-          # REGION has to be set in this manner as well because
+
+      - name: Run Cypress test suite
+        # starts a local webserver, waits for port 8080 to become available
+        # and then starts cypress runner. the `--proxy` argument redirects
+        # all requests that don't hit files to the root url
+        run: npx start-server-and-test 'http-server --proxy http://localhost:8080\? build' 8080 test:e2e
+        env:
+          REGION: ${{ matrix.region }}
           CYPRESS_REGION: ${{ matrix.region }}
 
       - uses: codecov/codecov-action@v1
