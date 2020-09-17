@@ -37,10 +37,14 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
       - name: Start webpack dev server and run Cypress test suite
         run: npm run test:e2e-dev-server
         env:
           REGION: ${{ matrix.region }}
+          # REGION has to be set in this manner as well because
+          CYPRESS_REGION: ${{ matrix.region }}
+
       - uses: codecov/codecov-action@v1
         with:
           directory: coverage
