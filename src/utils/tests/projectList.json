@@ -57,7 +57,7 @@
     "draft_submitted": null,
     "construction_started": null,
     "construction_completed": "2019 /2020",
-    "construction_completed_date": null,
+    "construction_completed_date": "2020-03-15",
     "phase": "execution",
     "responsible": "SenUVK / Bezirksamt Friedrichshain-Kreuzberg",
     "external_url": null,
@@ -131,7 +131,7 @@
     "draft_submitted": null,
     "construction_started": null,
     "construction_completed": "unbekannt",
-    "construction_completed_date": null,
+    "construction_completed_date": "2019-12-31",
     "phase": "draft",
     "responsible": "SenUVK / Bezirksamt Friedrichshain-Kreuzberg",
     "external_url": null,
@@ -190,6 +190,6 @@
         "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-003_Generalszug.png"
       }
     ],
-    "likes": 16
+    "likes": 9
   }
 ]
