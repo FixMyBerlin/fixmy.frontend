@@ -1,4 +1,4 @@
-<div style="display: flex;"><img style="margin: 0 auto; width: 75px;" src="/src/images/FixMyCity_positiv_300px.png" alt="Logo FixMyCity" /></div>
+<div style="display: flex;"><img style="margin: 0 auto; width: 75px; height: 75px;" src="/src/images/FixMyCity_positiv_300px.png" alt="Logo FixMyCity" /></div>
 
 # Jobs bei FixMyCity
 
@@ -58,7 +58,7 @@ Was wir Dir bie­ten: Viel Spaß in einem klei­nen dyna­mi­schen Team, das au
 
 ## Er­war­te­te Qua­li­fi­ka­tio­nen
 
-Was Du mit­bringst
+Was du mit­bringst
 
 - Lei­den­schaft fürs Rad­fah­ren
 - Erfah­run­gen in Social-Media-Arbeit oder Cam­pai­gning
