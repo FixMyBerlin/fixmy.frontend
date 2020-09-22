@@ -1,9 +1,5 @@
 name: integration tests
 
-on:
-  push:
-    branches: []
-
 jobs:
   e2e:
     runs-on: ubuntu-latest
