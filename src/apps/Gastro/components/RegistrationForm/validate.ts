@@ -1,10 +1,12 @@
 /* eslint-disable camelcase */
 
+import debug from 'debug';
 import { FormData } from '.';
-import logger from '~/utils/logger';
 import parseLength from '../../parseLength';
 import { requiresArea } from '../../utils';
 import regulations from '../../regulations';
+
+const logger = debug('fmc:Gastro:Registration');
 
 interface ValidateErrors {
   first_name?: string;

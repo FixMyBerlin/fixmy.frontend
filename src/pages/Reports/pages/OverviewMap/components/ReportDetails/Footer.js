@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
-import ProjectLike from '~/pages/Map/components/DetailView/ProjectDetail/ProjectLike';
-import DetailFooter from '~/pages/Map/components/DetailView/DetailFooter';
+import ProjectLike from '~/apps/Map/components/DetailView/ProjectDetail/ProjectLike';
+import DetailFooter from '~/apps/Map/components/DetailView/DetailFooter';
 
 const Footer = styled(DetailFooter)`
   width: 100%;

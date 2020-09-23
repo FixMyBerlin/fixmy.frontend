@@ -1,8 +1,8 @@
 import ky from 'ky-universal';
 import { generatePath } from 'react-router-dom';
+import debug from 'debug';
 
 import { GastroSignup, GastroRegistration } from './types';
-import logger from '~/utils/logger';
 import config from './config';
 import { DistrictConfig } from '~/types';
 
@@ -12,6 +12,8 @@ const URL_PUT_SIGNUP = `/gastro/:campaign/:id/:accessKey`;
 const URL_PUT_CERTIFICATE = `/gastro/:campaign/certificate/:id/:accessKey`;
 const URL_POST_CERTIFICATE = `/gastro/:campaign/certificate/direct/:fileName`;
 const URL_RENEWAL = '/gastro/:campaign/renewal/:id/:accessKey';
+
+const logger = debug('fmc:Gastro:api');
 
 const getApiBase = (district: DistrictConfig) => {
   if (district?.backend == null) {

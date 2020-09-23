@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import FMCPropTypes from '~/pages/Reports/propTypes';
-import detailWrapped from '~/pages/Map/components/DetailView/detailWrapped';
+import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';
 import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
 
 import Header from './Header';

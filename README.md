@@ -26,6 +26,9 @@ set these by creating a file `/.env` in this directory. Look at the file
 `.env.defaults` to see how `.env` needs to be formatted. Default configuration
 options are also loaded from `.env.defaults`.
 
+**Production builds should always have `BACKEND=production` set in order to
+configure the correct API endpoint.**
+
 ## Development
 
 Builds the application and starts a webserver with hot loading.

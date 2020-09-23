@@ -16,10 +16,12 @@ const defaultConfig = {
 
 const instanceConfig = globalConfig.region === 'aachen' ? aachen : berlin;
 
-export default {
+const reportsConfig = {
   ...globalConfig,
   reports: {
     ...defaultConfig,
     ...instanceConfig
   }
 };
+
+export default reportsConfig;

@@ -6,6 +6,7 @@ const defaultState = {
   },
   OverviewMapState: {
     reports: [], // report items fetched from api
+    reportFetchState: 'waiting',
     selectedReport: null, // an item of the reports list
     selectedReportPosition: { x: 0, y: 0 }, // projected position of report popup,
     zoomIn: false // wether or not the map zooms to a marker

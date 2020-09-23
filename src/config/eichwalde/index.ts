@@ -1,9 +1,10 @@
 import defaultRoutes from '../default/routes';
+import { RegionConfig } from '~/types';
 
-export default {
+const eichwaldeConfig: RegionConfig = {
+  siteTitle: 'ZESplus',
   titleFont: 'Roboto Slab',
   baseFont: 'Roboto',
-  newsletterWidgetUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EuZ',
   routes: {
     signup: defaultRoutes.signup,
     login: defaultRoutes.login,
@@ -31,5 +32,10 @@ export default {
         link: '/datenschutz'
       }
     ]
+  },
+  newsletter: {
+    embedUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EuZ'
   }
 };
+
+export default eichwaldeConfig;

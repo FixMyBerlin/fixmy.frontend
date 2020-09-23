@@ -16,7 +16,7 @@ import CTAButton from './components/CTAButton';
 import ErrorMessage from '~/components/ErrorMessage';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
-import LocatorControl from '~/pages/Map/components/LocatorControl';
+import LocatorControl from '~/apps/Map/components/LocatorControl';
 import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 
@@ -245,6 +245,8 @@ export default withRouter(
     (state) => ({
       selectedReport: state.ReportsState.OverviewMapState.selectedReport,
       reports: state.ReportsState.OverviewMapState.reports,
+      isReportsFetchPending:
+        state.ReportsState.OverviewMapState.reportFetchState === 'pending',
       zoomIn: state.ReportsState.OverviewMapState.reports.zoomIn,
       token: state.UserState.token,
       isMenuOpen: state.AppState.isMenuOpen,

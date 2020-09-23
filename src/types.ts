@@ -2,24 +2,57 @@ import MapboxGL from 'mapbox-gl';
 
 import { SpielstrassenConfig } from '~/apps/Spielstrassen/types';
 import { GastroConfig } from '~/apps/Gastro/types';
+import { MapConfig } from './apps/Map/types';
 
 export type LocaleCode = 'de' | 'en' | 'es';
+
+//
+// Config
+//
+export type Region = 'berlin' | 'aachen' | 'eichwalde';
 
 export interface AppConfig {
   path: string;
 }
 
-export interface BackendConfig {
-  local: string;
-  staging: string;
-  production: string;
+export interface DefaultConfig {
+  apps: {
+    hbi?: {};
+    map?: MapConfig;
+  };
+  baseFont: string;
+  colors: {
+    [color: string]: string;
+  };
+  menu: any;
+  apiUrl: string;
+  piwik: PiwikService;
+  mapbox: MapboxService;
+  newsletter: NewsletterService;
+  logger: string;
+  debug: boolean;
+  routes: any;
+  staticpages: any;
+  titleFont: string;
+  intl: I18NConfig;
+}
+
+export interface RegionConfig extends Partial<DefaultConfig> {
+  apps?: DefaultConfig['apps'];
+  districts?: {
+    [district: string]: DistrictConfig;
+  };
+  siteTitle: string;
+}
+
+export interface RootConfig extends RegionConfig {
+  region: Region;
 }
 
 export interface DistrictConfig {
   title: string;
   path: string;
   name: string;
-  backend?: BackendConfig;
   content: {
     [key: string]: any;
   };
@@ -32,4 +65,30 @@ export interface DistrictConfig {
     spielstrassen?: SpielstrassenConfig;
     gastro?: GastroConfig;
   };
+  backend?: BackendService;
+}
+
+export interface BackendService {
+  local: string;
+  staging: string;
+  production: string;
+}
+
+export interface NewsletterService {
+  embedUrl: string;
+}
+
+export interface MapboxService {
+  accessToken: string;
+  reverseGeocoderUrl: string;
+}
+
+export interface PiwikService {
+  url: string;
+  siteId: number;
+  options: object;
+}
+
+export interface I18NConfig {
+  logMissingTranslations: boolean;
 }
