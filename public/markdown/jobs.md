@@ -41,7 +41,7 @@ Beginn: 1.11.2020 (späterer Beginn möglich)
 Arbeitszeit: 20 Stunden+  
 Vergütung: Verhandlungsbasis, branchenüblich
 
-Bewerbungen bitte unter: https://forms.gle/o5foUbkYrYDJeT7r8 oder per E-Mail an [jobs@fixmycity.de](mailto:jobs@fixmycity.de)
+Bewerbungen bitte [über dieses Formular](https://forms.gle/S2kFLvG2wk3d4u6S7) oder per E-Mail an [jobs@fixmycity.de](mailto:jobs@fixmycity.de)
 
 # <a name="praktikum"></a>Praktikum
 
