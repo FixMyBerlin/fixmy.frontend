@@ -11,7 +11,7 @@ describe('Landing page', () => {
     const { getAllByRole } = render(<Landing />);
     config.reports.enabled = true;
     expect(
-      getAllByRole('button', { name: 'Schauen Sie sich alle Meldungen an' })
+      getAllByRole('button', { name: 'Zur Karte mit allen Meldungen' })
     ).toHaveLength(2);
   });
   it('renders when reports are disabled', () => {
