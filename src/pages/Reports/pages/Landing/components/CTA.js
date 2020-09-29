@@ -42,7 +42,7 @@ const JoinButton = ({ toUrl }) => (
       <CenteredButton>
         {config.reports.enabled
           ? 'Sagen Sie uns, wo Fahrradbügel benötigt werden'
-          : 'Schauen Sie sich alle Meldungen an'}
+          : 'Zur Karte mit allen Meldungen'}
       </CenteredButton>
     </Link>
     {!config.reports.enabled && (
