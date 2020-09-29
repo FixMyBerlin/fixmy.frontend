@@ -1,4 +1,4 @@
-name: Node.js CI
+name: continuous integration
 
 on:
   pull_request:
@@ -8,6 +8,10 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        region: [berlin, aachen, eichwalde]
 
     steps:
       - uses: actions/checkout@v2
@@ -33,8 +37,13 @@ jobs:
             ${{ runner.os }}-
 
       - run: npm ci
+
       - run: npm run test:coverage
+        env:
+          REGION: ${{ matrix.region }}
+
       - uses: codecov/codecov-action@v1
+        if: ${{ matrix.region == 'berlin' }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           directory: coverage
