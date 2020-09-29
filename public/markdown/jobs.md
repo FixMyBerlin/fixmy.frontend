@@ -6,7 +6,12 @@ Wir glauben, dass Menschen im Dialog am besten Antworten auf die aktuellen Herau
 
 Eine Übersicht über unsere Softwarelösungen findest du unter https://fixmycity.de unsere Pilotplattform unter https://fixmyberlin.de.
 
-# Junior Entwickler:in (Full Stack)
+<div><img
+alt="Fahrradfahren"
+src="/src/images/amsterdam-1203305_1280.jpg"
+class="img-lg"> </img></div>
+
+# <a name="junior-dev"></a>Junior Entwickler:in (Full Stack)
 
 **Zur Verstärkung unseres Teams bei FixMyCity suchen wir ab November (späterer Beginn möglich) eine:n Entwickler:in in Teilzeit für 20-32 Stunden / Woche.**
 
@@ -36,14 +41,9 @@ Beginn: 1.11.2020 (späterer Beginn möglich)
 Arbeitszeit: 20 Stunden+  
 Vergütung: Verhandlungsbasis, branchenüblich
 
-Bewerbungen bitte unter: https://forms.gle/o5foUbkYrYDJeT7r8 oder per E-Mail an jobs@fixmyberlin.de
+Bewerbungen bitte [über dieses Formular](https://forms.gle/S2kFLvG2wk3d4u6S7) oder per E-Mail an [jobs@fixmycity.de](mailto:jobs@fixmycity.de)
 
-# Praktikum
-
-<div><img
-alt="Fahrradfahren"
-src="/src/images/amsterdam-1203305_1280.jpg"
-class="img-lg"> </img></div>
+# <a name="praktikum"></a>Praktikum
 
 ## Auf­ga­ben­be­sch­rei­bung
 
