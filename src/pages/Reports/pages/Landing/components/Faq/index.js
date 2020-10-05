@@ -15,10 +15,14 @@ const FaqWrapper = styled.div`
   }
 `;
 
+const content = config.reports.enabled
+  ? config.reports.landing.reportsActive
+  : config.reports.landing.reportsInactive;
+
 const FaqSection = () => (
   <FaqWrapper>
     <Heading>Häufige Fragen</Heading>
-    {config.reports.faq.map(({ heading, text }) => (
+    {content.faq?.map(({ heading, text }) => (
       <FaqItem key={heading} heading={heading} text={text} />
     ))}
   </FaqWrapper>

@@ -30,6 +30,12 @@ const apps = {
   map: MapView
 };
 
+/**
+ * The District component assembles a router configuration dependent on the
+ * apps that are installed in the current instance's region.
+ *
+ * @param name of the district e.g. aachen
+ */
 const District = (name: string) => {
   const district = config.districts[name];
   const districtApps = Object.keys(district.apps).map((app) => {
@@ -54,9 +60,29 @@ const District = (name: string) => {
   );
 };
 
+/**
+ * This component provides routes that can be used to redirect users to
+ * ressources independent of the region-specific routes used in this instance.
+ *
+ * As an example, notification e-mails about reports can be sent by the backend
+ * with deeplinks to report detail pages without adapting to the route config
+ * used for reports in the frontend instance.
+ */
+const RedirectHelper = () => (
+  <Switch>
+    <Redirect
+      from="/redirect-to/reports/:id"
+      to={`${config.routes.reports.map}/:id`}
+    />
+    <Route render={() => <Markdown page="nomatch" />} />
+  </Switch>
+);
+
 const Routes = ({ token }) => (
   <Switch>
     <Route exact path="/" component={Home} />
+
+    <Route path="/redirect-to" component={RedirectHelper} />
 
     {/* standard markdown pages */
     config.staticpages.map((page) => (
