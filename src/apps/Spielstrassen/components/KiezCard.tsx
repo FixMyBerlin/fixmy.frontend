@@ -82,16 +82,12 @@ const Kiez = ({
           <>
             <br />
             <dt style={{ display: 'none' }}>Öffnungszeiten</dt>
-            <Schedule>
-              {status === 'paused' && (
-                <Schedule>
-                  <strong>Diese Spielstraße ist derzeit pausiert.</strong>
-                  <br />
-                  Reguläre Öffnungszeiten:&nbsp;
-                </Schedule>
-              )}
-              {schedule}
-            </Schedule>
+            {status === 'paused' && (
+              <Schedule>
+                <strong>Diese Spielstraße ist derzeit pausiert.</strong>
+              </Schedule>
+            )}
+            {status !== 'paused' && <Schedule>{schedule}</Schedule>}
           </>
         )}
       </dl>
