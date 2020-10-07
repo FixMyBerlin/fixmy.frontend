@@ -62,47 +62,47 @@ describe('OverviewMapState reducer and actions', () => {
   });
 
   describe('async actions', () => {
-    // it(`fetches reports and creates ${ft(
-    //   types.REPORTS_FETCH_COMPLETE
-    // )}`, async () => {
-    //   /* ARRANGE: mock store, intercept requests and respond with mock data */
-    //   const store = mockStore({});
-    //   interceptFetchReports();
+    it(`fetches reports and creates ${ft(
+      types.REPORTS_FETCH_COMPLETE
+    )}`, async () => {
+      /* ARRANGE: mock store, intercept requests and respond with mock data */
+      const store = mockStore({});
+      interceptFetchReports();
 
-    //   /* ACT: dispatch thunk */
-    //   const loadReportsThunk = actions.loadReportsData();
-    //   await store.dispatch(loadReportsThunk);
+      /* ACT: dispatch thunk */
+      const loadReportsThunk = actions.loadReportsData();
+      await store.dispatch(loadReportsThunk);
 
-    //   /* ASSERT: make sure thunk dispatched the right action sequence and
-    //              the reducer produced the right state */
-    //   const expectedActions = [
-    //     { type: types.REPORTS_FETCH_PENDING },
-    //     {
-    //       type: types.REPORTS_FETCH_COMPLETE,
-    //       payload: mockedReportsList
-    //     }
-    //   ];
-    //   const expectedNewState = {
-    //     ...initialState,
-    //     reports: mockedReportsList
-    //   };
+      /* ASSERT: make sure thunk dispatched the right action sequence and
+                 the reducer produced the right state */
+      const expectedActions = [
+        { type: types.REPORTS_FETCH_PENDING },
+        {
+          type: types.REPORTS_FETCH_COMPLETE,
+          payload: mockedReportsList
+        }
+      ];
+      const expectedNewState = {
+        ...initialState,
+        reports: mockedReportsList
+      };
 
-    //     // test reducer
-    //     expect(
-    //       reducer(initialState, {
-    //         type: types.REPORTS_FETCH_COMPLETE,
-    //         payload: mockedReportsList
-    //       })
-    //     ).toEqual({
-    //       ...initialState,
-    //       reportFetchState: 'success',
-    //       reports: mockedReportsList
-    //     });
-    //   });
+        // test reducer
+        expect(
+          reducer(initialState, {
+            type: types.REPORTS_FETCH_COMPLETE,
+            payload: mockedReportsList
+          })
+        ).toEqual({
+          ...initialState,
+          reportFetchState: 'success',
+          reports: mockedReportsList
+        });
+      });
 
-    //   expect(actualActions).toEqual(expectedActions);
-    //   expect(actualState).toEqual(expectedNewState);
-    // });
+      expect(actualActions).toEqual(expectedActions);
+      expect(actualState).toEqual(expectedNewState);
+    });
 
     it(`fails to fetch reports and creates ${ft(
       errorStateTypes.ADD_ERROR
