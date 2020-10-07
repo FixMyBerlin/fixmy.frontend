@@ -13,6 +13,7 @@ import BigLoader from '~/components/BigLoader';
 import Header from '~/components2/Header';
 import config from '~/config';
 import { RootState } from '~/store';
+import Notice from '~/components2/Notice';
 
 const SupporterInfo = styled.div`
   display: flex;
@@ -70,7 +71,16 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
           </p>
           <KiezMap street={street} />
           {street.schedule && (
-            <Schedule>Öffnungszeiten: {street.schedule}</Schedule>
+            <Schedule>
+              {street.status === 'paused' && (
+                <>
+                  <Notice>
+                    <strong>Diese Spielstraße ist derzeit pausiert.</strong>
+                  </Notice>
+                </>
+              )}
+              Öffnungszeiten: {street.schedule}
+            </Schedule>
           )}
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />
