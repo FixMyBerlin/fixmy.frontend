@@ -47,6 +47,7 @@ const StyledMarkdown = styled(Markdown)`
 
   img.img-lg {
     max-width: initial;
+    margin: 2em auto;
   }
 `;
 

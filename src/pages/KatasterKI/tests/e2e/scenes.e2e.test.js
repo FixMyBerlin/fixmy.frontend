@@ -24,7 +24,7 @@ describe('katasterKi scene rating', () => {
             cy.fmbGoToScene(scene);
           });
 
-          it('contains an image that has loaded properly', () => {
+          it.skip('contains an image that has loaded properly', () => {
             cyElem('kat-scene-image-wrapper')
               .find('img')
               .should('be.visible')
@@ -34,7 +34,7 @@ describe('katasterKi scene rating', () => {
               });
           });
 
-          it('links to the next scene when a random rating button is clicked', () => {
+          it.skip('links to the next scene when a random rating button is clicked', () => {
             cy.fmbClickRandomElement('kat-scene-rating-button');
             cy.location('pathname').should(
               'eq',
@@ -46,7 +46,7 @@ describe('katasterKi scene rating', () => {
     });
 
     describe('perspective choice', () => {
-      it('leads to a set of new scenes', () => {
+      it.skip('leads to a set of new scenes', () => {
         cy.fmbClickRandomElement('kat-perspective-change-single-choice-button');
 
         // TODO: see how testing a store update would work here

@@ -3,7 +3,7 @@ const wp = require('@cypress/webpack-preprocessor');
 
 const log = require('debug')('cypress:plugins');
 const baseConfig = require('../../cypress.json');
-const webpackOptions = require('../../webpack/webpack.config.dev.js');
+const webpackOptions = require('../../webpack/webpack.config.cypress.js');
 
 /**
  * Extend browser arguments to immediately open dev tools so we can inspect breakpoint halts
