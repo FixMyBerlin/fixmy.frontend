@@ -47,6 +47,8 @@ const Landing = () => {
       <Container maxWidth="md">
         <h1>Unterstützen Sie temporäre Spielstraßen als Kiezlots:in</h1>
         <ImageInsert
+          width="938"
+          height="603"
           src={BackgroundImageA2}
           srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
         />
