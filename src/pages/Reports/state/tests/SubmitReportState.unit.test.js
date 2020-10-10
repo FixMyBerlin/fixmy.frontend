@@ -257,9 +257,7 @@ describe('SubmitReportState reducer and actions', () => {
       it(`dispatches ${ft(
         types.SUBMIT_REPORT_PENDING
       )}, json-schema validates a report and dispatches
-       ${ft(
-         types.SUBMIT_REPORT_COMPLETE
-       )} for a valid new report item`, () => {
+       ${ft(types.SUBMIT_REPORT_COMPLETE)} for a valid new report item`, () => {
         // prepare initial mock store
 
         // reverse marshalling of a report item as the api expects it.
@@ -332,9 +330,7 @@ describe('SubmitReportState reducer and actions', () => {
         });
       });
 
-      it(`dispatches ${ft(
-        types.SUBMIT_REPORT_PENDING
-      )}, ${ft(
+      it(`dispatches ${ft(types.SUBMIT_REPORT_PENDING)}, ${ft(
         types.SUBMIT_REPORT_ERROR
       )} and ${ft(
         errorStateTypes.ADD_ERROR
