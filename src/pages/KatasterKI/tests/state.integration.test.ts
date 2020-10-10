@@ -1,7 +1,9 @@
 import { AnyAction } from 'redux';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
-import fetchMock from 'fetch-mock';
+import { rest } from 'msw';
+const nodeFetch = require('node-fetch');
+
 import {
   ProfileRequest,
   ProfileResponse,
@@ -10,6 +12,7 @@ import {
   PerspectiveResponse
 } from '../types';
 import { getEndpointURL } from '../api/utils';
+import { mswServer } from '~/../jest/msw/mswServer';
 
 import reducer, {
   State,
@@ -36,111 +39,124 @@ const middlewares = [thunk];
 type DispatchExts = ThunkDispatch<mockState, void, AnyAction>;
 const mockStore = configureMockStore<mockState, DispatchExts>(middlewares);
 
-describe('submitProfile', () => {
-  afterEach(() => {
-    fetchMock.restore();
+// the tested thunk uses fetch, so we replace its imlementation with node-fetch
+const unmockedFetch = global['fetch'];
+
+describe('Survey submits', () => {
+  beforeAll(() => {
+    global['fetch'] = nodeFetch;
   });
 
-  it(
-    'dispatches SUBMIT_PROFILE_PENDING, RECEIVED_SCENE_GROUP' +
-      'and SUBMIT_PROFILE_COMPLETE',
-    async () => {
+  afterAll(() => {
+    global['fetch'] = unmockedFetch;
+  });
+
+  describe('submitProfile', () => {
+    it(
+      'dispatches SUBMIT_PROFILE_PENDING, RECEIVED_SCENE_GROUP' +
+        'and SUBMIT_PROFILE_COMPLETE',
+      async () => {
+        // mock api request
+        mswServer.use(
+          rest.put(
+            getEndpointURL('profile', testingDefaultState.sessionID, null),
+            (_, res, ctx) => res(ctx.json(profileResponseSample))
+          )
+        );
+
+        // mock store
+        const stateBefore = {
+          KatasterKIState: {
+            ...testingDefaultState
+          }
+        };
+        const store = mockStore(stateBefore);
+
+        await store.dispatch(submitProfile());
+        const dispatchedActionTypes = store
+          .getActions()
+          .map((dispatchedActions) => dispatchedActions.type);
+
+        const expectedActions = [
+          SUBMIT_PROFILE_PENDING,
+          RECEIVED_SCENE_GROUP,
+          SUBMIT_PROFILE_COMPLETE
+        ];
+        expect(dispatchedActionTypes).toEqual(expectedActions);
+      }
+    );
+
+    it(
+      'dispatches SUBMIT_PROFILE_PENDING and SUBMIT_PROFILE_ERROR ' +
+        'for invalid inputs',
+      async () => {
+        // mock failing api request
+        mswServer.use(
+          rest.put(
+            getEndpointURL('profile', testingDefaultState.sessionID, null),
+            (_, res, ctx) => res(ctx.json({}))
+          )
+        ); // kept here for safety, request should not get fired
+
+        // mock store
+        const invalidProfile = {
+          ageGroup: 'BBB',
+          isTosAccepted: {},
+          transportRatings: {
+            '': 1
+          },
+          userGroup: [1, 2, 3],
+          vehiclesOwned: ['car'],
+          zipcode: 345
+        };
+        const stateBefore = {
+          KatasterKIState: {
+            ...testingDefaultState,
+            profile: invalidProfile
+          }
+        };
+
+        // This is supposed to be a type mismatch
+        // @ts-ignore
+        const store = mockStore(stateBefore);
+
+        const dispatch = jest.fn();
+        await expect(
+          submitProfile()(dispatch, store.getState)
+        ).rejects.toThrow();
+        expect(dispatch).toHaveBeenLastCalledWith(
+          submitProfileError('Das Nutzerprofil konnte nicht übertragen werden.')
+        );
+      }
+    );
+  });
+  describe('submitPerspective', () => {
+    it('dispatches SUBMIT_PERSPECTIVE_PENDING, RECEIVED_SCENE_GROUP and SUBMIT_PERSPECTIVE_COMPLETE', async () => {
       // mock api request
-      fetchMock.putOnce(
-        getEndpointURL('profile', testingDefaultState.sessionID, null),
-        profileResponseSample
+      mswServer.use(
+        rest.post(
+          getEndpointURL('perspective', testingDefaultState.sessionID, null),
+          (_, res, ctx) => res(ctx.json(perspectiveResponseSample))
+        )
       );
 
-      // mock store
       const stateBefore = {
         KatasterKIState: {
           ...testingDefaultState
         }
       };
       const store = mockStore(stateBefore);
-
-      await store.dispatch(submitProfile());
+      await store.dispatch(submitPerspective(Perspective.bicycle));
       const dispatchedActionTypes = store
         .getActions()
         .map((dispatchedActions) => dispatchedActions.type);
 
       const expectedActions = [
-        SUBMIT_PROFILE_PENDING,
+        SUBMIT_PERSPECTIVE_PENDING,
         RECEIVED_SCENE_GROUP,
-        SUBMIT_PROFILE_COMPLETE
+        SUBMIT_PERSPECTIVE_COMPLETE
       ];
       expect(dispatchedActionTypes).toEqual(expectedActions);
-    }
-  );
-
-  it(
-    'dispatches SUBMIT_PROFILE_PENDING and SUBMIT_PROFILE_ERROR ' +
-      'for invalid inputs',
-    async () => {
-      // mock failing api request
-      fetchMock.putOnce(
-        getEndpointURL('profile', testingDefaultState.sessionID, null),
-        {}
-      ); // kept here for savety, request should not get fired
-
-      // mock store
-      const invalidProfile = {
-        ageGroup: 'BBB',
-        isTosAccepted: {},
-        transportRatings: {
-          '': 1
-        },
-        userGroup: [1, 2, 3],
-        vehiclesOwned: ['car'],
-        zipcode: 345
-      };
-      const stateBefore = {
-        KatasterKIState: {
-          ...testingDefaultState,
-          profile: invalidProfile
-        }
-      };
-
-      // This is supposed to be a type mismatch
-      // @ts-ignore
-      const store = mockStore(stateBefore);
-
-      const dispatch = jest.fn();
-      await expect(submitProfile()(dispatch, store.getState)).rejects.toThrow();
-      expect(dispatch).toHaveBeenLastCalledWith(
-        submitProfileError('Das Nutzerprofil konnte nicht übertragen werden.')
-      );
-    }
-  );
-});
-describe('submitPerspective', () => {
-  afterEach(() => {
-    fetchMock.restore();
-  });
-
-  it('dispatches SUBMIT_PERSPECTIVE_PENDING, RECEIVED_SCENE_GROUP and SUBMIT_PERSPECTIVE_COMPLETE', async () => {
-    // mock api request
-    fetchMock.postOnce(
-      getEndpointURL('perspective', testingDefaultState.sessionID, null),
-      perspectiveResponseSample
-    );
-
-    const stateBefore = {
-      KatasterKIState: {
-        ...testingDefaultState
-      }
-    };
-    const store = mockStore(stateBefore);
-    await store.dispatch(submitPerspective(Perspective.bicycle));
-    const dispatchedActionTypes = store
-      .getActions()
-      .map((dispatchedActions) => dispatchedActions.type);
-
-    const expectedActions = [
-      SUBMIT_PERSPECTIVE_PENDING,
-      RECEIVED_SCENE_GROUP,
-      SUBMIT_PERSPECTIVE_COMPLETE
-    ];
-    expect(dispatchedActionTypes).toEqual(expectedActions);
+    });
   });
 });

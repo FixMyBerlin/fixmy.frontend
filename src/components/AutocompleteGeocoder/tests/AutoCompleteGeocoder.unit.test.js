@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/dom';
 
 import { rest } from 'msw';
-import { mswServer } from '~/../jest/jest.setupAfterEnv';
+import { mswServer } from '~/../jest/msw/mswServer';
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import * as apiService from '~/components/AutocompleteGeocoder/apiService';
 import mockedSuggestions from '../../../../jest/msw/mockData/mockLocationSuggestions.json';

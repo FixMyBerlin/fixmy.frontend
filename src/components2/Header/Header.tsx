@@ -101,9 +101,13 @@ const Header = ({
         <MenuButton />
         <Separator />
         <LinkWrapper to={to}>
-          <Title>{children}</Title>
-          {showInfoLink === true && (
-            <Subtitle>Alle Infos zur Aktion &gt;</Subtitle>
+          {React.Children.count(children) > 0 && (
+            <>
+              <Title>{children}</Title>
+              {showInfoLink === true && (
+                <Subtitle>Alle Infos zur Aktion &gt;</Subtitle>
+              )}
+            </>
           )}
         </LinkWrapper>
         {locales && (
