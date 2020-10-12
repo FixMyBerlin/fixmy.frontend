@@ -34,7 +34,7 @@ const MissingSupportersNotice = ({
         slug: slugify(street, { lower: true })
       });
       return (
-        <Link internal href={signupUrl}>
+        <Link internal href={signupUrl} key={signupUrl}>
           {street}
         </Link>
       );
