@@ -2,7 +2,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { rest } from 'msw';
 import {
-  LoadPlanningData,
+  SetPlanningData,
   loadPlanningData,
   MapState,
   SET_PLANNING_DATA
@@ -105,7 +105,7 @@ describe('Plannings Map Unit tests', () => {
       await store.dispatch(loadPlanningsThunk);
 
       /* ASSERT: action containing the api response has been dispatched */
-      const expectedAction: LoadPlanningData = {
+      const expectedAction: SetPlanningData = {
         type: SET_PLANNING_DATA,
         payload: { planningData: response as any }
       };

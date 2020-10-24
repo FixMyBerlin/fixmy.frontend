@@ -2,10 +2,13 @@ import { match, matchPath } from 'react-router-dom';
 import qs from 'qs';
 import ky from 'ky';
 import { Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 
 import config from '~/config';
 import { MapConfig } from './types';
 import { get as apiGet } from '~/services/api/shorthands';
+import { RootState } from '~/store';
+import { FMCError } from '~/services/api/types';
 
 const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
@@ -232,23 +235,43 @@ export function setPopupVisible(isVisible: boolean): SetPopupVisible {
   return { type: SET_POPUP_VISIBLE, payload: { displayPopup: isVisible } };
 }
 
-export interface LoadPlanningData {
+export interface SetPlanningData {
   type: typeof SET_PLANNING_DATA;
   payload: {
     planningData: any;
   };
 }
 
-export function loadPlanningData() {
+export function setPlanningData(apiResponse): SetPlanningData {
+  return {
+    type: SET_PLANNING_DATA,
+    payload: {
+      planningData: apiResponse
+    }
+  };
+}
+
+export function loadPlanningData(): ThunkAction<
+  void,
+  Pick<RootState, 'MapState'>,
+  unknown,
+  SetPlanningData | SetError
+> {
   return async (dispatch, getState) => {
-    if (getState().MapState.planningData) {
-      return false;
+    const isStoreAlreadyPopulated = getState().MapState.planningData;
+    if (isStoreAlreadyPopulated) {
+      return;
     }
 
-    const apiRoute = `projects?page_size=500`;
-    const planningData = await apiGet(apiRoute);
-
-    return dispatch({ type: SET_PLANNING_DATA, payload: { planningData } });
+    try {
+      const apiRoute = `projects?page_size=500`;
+      const apiResponse = await apiGet(apiRoute);
+      const setPlanningsAction = setPlanningData(apiResponse);
+      dispatch(setPlanningsAction);
+    } catch (apiClientError) {
+      const errorAction = setError((apiClientError as FMCError).message);
+      dispatch(errorAction);
+    }
   };
 }
 
@@ -306,7 +329,7 @@ export function geocodeAddress(searchtext) {
 type MapStateAction =
   | GeocodeAddressFail
   | GeocodeAddressSuccess
-  | LoadPlanningData
+  | SetPlanningData
   | SetActiveSection
   | SetActiveView
   | SetError
