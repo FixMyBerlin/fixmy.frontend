@@ -258,11 +258,12 @@ export function loadPlanningData(): ThunkAction<
   SetPlanningData | SetError
 > {
   return async (dispatch, getState) => {
+    // early exit: do not fetch data if that data is already in the store
     const isStoreAlreadyPopulated = getState().MapState.planningData;
     if (isStoreAlreadyPopulated) {
       return;
     }
-
+    // all good, fetch the data and handle errors
     try {
       const apiRoute = `projects?page_size=500`;
       const apiResponse = await apiGet(apiRoute);
