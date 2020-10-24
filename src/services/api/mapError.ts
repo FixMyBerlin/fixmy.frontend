@@ -9,7 +9,9 @@ const log = debug('fmc:api:mapError');
  * Translate errors reported by ky/fetch to a set of custom exceptions
  * which we can later on use to make decisions on how to handle specific errors.
  */
-export default async function mapError(e: FMCError): Promise<FMCError> {
+export default async function mapError(
+  e: Error
+): Promise<NetworkError | ApiError | TimeoutError | Error> {
   let errorMessage: string;
   let statusCode: number;
 
@@ -21,8 +23,8 @@ export default async function mapError(e: FMCError): Promise<FMCError> {
   // handle all other errors
   switch (e.constructor) {
     case ky.HTTPError: // a non 2xx error code was found
-      errorMessage = await parseErrorResponse(e.response);
-      statusCode = e.response.status;
+      errorMessage = await parseErrorResponse((e as FMCError).response);
+      statusCode = (e as FMCError).response.status;
       return new ApiError(errorMessage, statusCode);
     case ky.TimeoutError:
       return new TimeoutError(e.message);
