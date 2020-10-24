@@ -23,7 +23,7 @@ const SET_POPUP_DATA = 'Map/MapState/SET_POPUP_DATA';
 const SET_POPUP_LOCATION = 'Map/MapState/SET_POPUP_LOCATION';
 const SET_POPUP_VISIBLE = 'Map/MapState/SET_POPUP_VISIBLE';
 export const SET_PLANNING_DATA = 'Map/MapState/SET_PLANNING_DATA';
-const SET_ERROR = 'Map/MapState/SET_ERROR';
+export const SET_ERROR = 'Map/MapState/SET_ERROR';
 const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 
 type MapView = 'zustand' | 'planungen';
@@ -53,7 +53,7 @@ export type MapState = MapConfig['view'] & {
   show3dBuildings: boolean;
 };
 
-const initialState: MapState = {
+export const initialState: MapState = {
   ...config.apps.map.view,
   activeView: null,
   activeSection: null,
@@ -136,7 +136,7 @@ export function setActiveView(activeView: MapView) {
   return { type: SET_VIEW_ACTIVE, payload: { activeView } };
 }
 
-type SetError = {
+export type SetError = {
   type: typeof SET_ERROR;
   payload: {
     error: string;

@@ -1,15 +1,23 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { rest } from 'msw';
-import {
-  SetPlanningData,
+import { mocked } from 'ts-jest/utils';
+
+import mapStateReducer, {
+  initialState,
   loadPlanningData,
   MapState,
-  SET_PLANNING_DATA
+  SET_ERROR,
+  SET_PLANNING_DATA,
+  SetError,
+  SetPlanningData
 } from '~/apps/Map/MapState';
-import config from '~/config';
-import { mswServer } from '../../../jest/msw/mswServer';
+
 import { RootState } from '~/store';
+import { get as apiGet } from '~/services/api/shorthands';
+
+// mock module dependency → the api service
+jest.mock('~/services/api/shorthands');
+const mockedApiGet = mocked(apiGet); // in order to treat dependency as mock function, see https://stackoverflow.com/a/60007123/5418403
 
 describe('Plannings Map Unit tests', () => {
   describe('loadPlanningData() thunk', () => {
@@ -35,7 +43,7 @@ describe('Plannings Map Unit tests', () => {
     });
 
     it(`dispatches ${SET_PLANNING_DATA} once the plannings JSON has been fetched successfully`, async () => {
-      /* ARRANGE: mock store, intercept request and mock response */
+      /* ARRANGE: mock store, mock api response */
       const store = mockStore({
         MapState: {} as MapState
       });
@@ -93,11 +101,9 @@ describe('Plannings Map Unit tests', () => {
           }
         ]
       };
-      mswServer.use(
-        rest.get(`${config.apiUrl}/projects`, (_, res, ctx) =>
-          res(ctx.json(response))
-        )
-      );
+
+      // @ts-ignore FIXME: properly type this
+      mockedApiGet.mockResolvedValueOnce(response);
 
       /* ACT: invoke thunk */
       const loadPlanningsThunk = loadPlanningData();
@@ -111,5 +117,43 @@ describe('Plannings Map Unit tests', () => {
       };
       expect(store.getActions()).toEqual([expectedAction]);
     });
+
+    it(
+      `dispatches ${SET_ERROR} if the api request fails ` +
+        'and adds the error message to the error state slice',
+      async () => {
+        /* ARRANGE: mock store; intercept request and mock request-issuing mechanism */
+        const store = mockStore({
+          MapState: initialState as MapState
+        });
+
+        const errorMessage = 'failed to load plannings';
+        // We trust the apiService to deal with all kinds of errors during a request.
+        // Here we only want to switch the implementation of the function doing the request
+        // so that it throws a generic error.
+        mockedApiGet.mockRejectedValueOnce(new Error(errorMessage));
+
+        /* ACT: invoke loadPlanningsThunk; read dispatched actions and compute derived state */
+        const loadPlanningsThunk = loadPlanningData();
+        // @ts-ignore FIXME: properly type this
+        await store.dispatch(loadPlanningsThunk);
+        const actualActions = store.getActions();
+        const actualState = actualActions.reduce((state: MapState, action) => {
+          return mapStateReducer(state, action);
+        }, initialState);
+
+        /* ASSERT: an action indicating the error should be dispatched,
+         *  the state slice should reflect the error */
+        const expectedAction: SetError = {
+          type: SET_ERROR,
+          payload: {
+            error: errorMessage
+          }
+        };
+
+        expect(actualActions).toEqual([expectedAction]);
+        expect(actualState.error).toEqual(errorMessage);
+      }
+    );
   });
 });
