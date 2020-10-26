@@ -9,7 +9,8 @@ import mapStateReducer, {
   SET_ERROR,
   SET_PLANNING_DATA,
   SetError,
-  SetPlanningData
+  SetPlanningData,
+  SetPlanningsThunkDispatch
 } from '~/apps/Map/MapState';
 
 import { RootState } from '~/store';
@@ -35,8 +36,7 @@ describe('Plannings Map Unit tests', () => {
 
       /* ACT: invoke loadPlanningsThunk */
       const loadPlanningsThunk = loadPlanningData();
-      // @ts-ignore FIXME: properly type this
-      await store.dispatch(loadPlanningsThunk);
+      await (store.dispatch as SetPlanningsThunkDispatch)(loadPlanningsThunk);
 
       /* ASSERT: no action should have been called */
       expect(store.getActions()).toHaveLength(0);
@@ -107,8 +107,7 @@ describe('Plannings Map Unit tests', () => {
 
       /* ACT: invoke thunk */
       const loadPlanningsThunk = loadPlanningData();
-      // @ts-ignore FIXME: properly type this
-      await store.dispatch(loadPlanningsThunk);
+      await (store.dispatch as SetPlanningsThunkDispatch)(loadPlanningsThunk);
 
       /* ASSERT: action containing the api response has been dispatched */
       const expectedAction: SetPlanningData = {
@@ -135,8 +134,7 @@ describe('Plannings Map Unit tests', () => {
 
         /* ACT: invoke loadPlanningsThunk; read dispatched actions and compute derived state */
         const loadPlanningsThunk = loadPlanningData();
-        // @ts-ignore FIXME: properly type this
-        await store.dispatch(loadPlanningsThunk);
+        await (store.dispatch as SetPlanningsThunkDispatch)(loadPlanningsThunk);
         const actualActions = store.getActions();
         const actualState = actualActions.reduce((state: MapState, action) => {
           return mapStateReducer(state, action);

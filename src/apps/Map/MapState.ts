@@ -2,7 +2,7 @@ import { match, matchPath } from 'react-router-dom';
 import qs from 'qs';
 import ky from 'ky';
 import { Dispatch } from 'redux';
-import { ThunkAction } from 'redux-thunk';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import config from '~/config';
 import { MapConfig } from './types';
@@ -251,13 +251,19 @@ export function setPlanningData(apiResponse): SetPlanningData {
   };
 }
 
-export function loadPlanningData(): ThunkAction<
+export type SetPlanningsThunk = ThunkAction<
   void,
   Pick<RootState, 'MapState'>,
   unknown,
   SetPlanningData | SetError
-> {
-  return async (dispatch, getState) => {
+>;
+export type SetPlanningsThunkDispatch = ThunkDispatch<
+  Pick<RootState, 'MapState'>,
+  null,
+  SetPlanningData | SetError
+>;
+export function loadPlanningData(): SetPlanningsThunk {
+  return async (dispatch: SetPlanningsThunkDispatch, getState) => {
     // early exit: do not fetch data if that data is already in the store
     const isStoreAlreadyPopulated = getState().MapState.planningData;
     if (isStoreAlreadyPopulated) {
