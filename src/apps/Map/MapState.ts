@@ -2,9 +2,13 @@ import { match, matchPath } from 'react-router-dom';
 import qs from 'qs';
 import ky from 'ky';
 import { Dispatch } from 'redux';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import config from '~/config';
 import { MapConfig } from './types';
+import { get as apiGet } from '~/services/api/shorthands';
+import { RootState } from '~/store';
+import { FMCError } from '~/services/api/types';
 
 const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
@@ -18,8 +22,8 @@ const SET_PLANNING_FILTER = 'Map/MapState/SET_PLANNING_FILTER';
 const SET_POPUP_DATA = 'Map/MapState/SET_POPUP_DATA';
 const SET_POPUP_LOCATION = 'Map/MapState/SET_POPUP_LOCATION';
 const SET_POPUP_VISIBLE = 'Map/MapState/SET_POPUP_VISIBLE';
-const SET_PLANNING_DATA = 'Map/MapState/SET_PLANNING_DATA';
-const SET_ERROR = 'Map/MapState/SET_ERROR';
+export const SET_PLANNING_DATA = 'Map/MapState/SET_PLANNING_DATA';
+export const SET_ERROR = 'Map/MapState/SET_ERROR';
 const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 
 type MapView = 'zustand' | 'planungen';
@@ -49,7 +53,7 @@ export type MapState = MapConfig['view'] & {
   show3dBuildings: boolean;
 };
 
-const initialState: MapState = {
+export const initialState: MapState = {
   ...config.apps.map.view,
   activeView: null,
   activeSection: null,
@@ -132,7 +136,7 @@ export function setActiveView(activeView: MapView) {
   return { type: SET_VIEW_ACTIVE, payload: { activeView } };
 }
 
-type SetError = {
+export type SetError = {
   type: typeof SET_ERROR;
   payload: {
     error: string;
@@ -231,24 +235,50 @@ export function setPopupVisible(isVisible: boolean): SetPopupVisible {
   return { type: SET_POPUP_VISIBLE, payload: { displayPopup: isVisible } };
 }
 
-interface LoadPlanningData {
+export interface SetPlanningData {
   type: typeof SET_PLANNING_DATA;
   payload: {
     planningData: any;
   };
 }
 
-export function loadPlanningData() {
-  return async (dispatch, getState) => {
-    if (getState().MapState.planningData) {
-      return false;
+export function setPlanningData(apiResponse): SetPlanningData {
+  return {
+    type: SET_PLANNING_DATA,
+    payload: {
+      planningData: apiResponse
     }
+  };
+}
 
-    const planningData = await ky
-      .get(`${config.apiUrl}/projects?page_size=500`, { timeout: 50000 })
-      .json();
-
-    return dispatch({ type: SET_PLANNING_DATA, payload: { planningData } });
+export type SetPlanningsThunk = ThunkAction<
+  void,
+  Pick<RootState, 'MapState'>,
+  unknown,
+  SetPlanningData | SetError
+>;
+export type SetPlanningsThunkDispatch = ThunkDispatch<
+  Pick<RootState, 'MapState'>,
+  null,
+  SetPlanningData | SetError
+>;
+export function loadPlanningData(): SetPlanningsThunk {
+  return async (dispatch: SetPlanningsThunkDispatch, getState) => {
+    // early exit: do not fetch data if that data is already in the store
+    const isStoreAlreadyPopulated = getState().MapState.planningData;
+    if (isStoreAlreadyPopulated) {
+      return;
+    }
+    // all good, fetch the data and handle errors
+    try {
+      const apiRoute = `projects?page_size=500`;
+      const apiResponse = await apiGet(apiRoute);
+      const setPlanningsAction = setPlanningData(apiResponse);
+      dispatch(setPlanningsAction);
+    } catch (apiClientError) {
+      const errorAction = setError((apiClientError as FMCError).message);
+      dispatch(errorAction);
+    }
   };
 }
 
@@ -306,7 +336,7 @@ export function geocodeAddress(searchtext) {
 type MapStateAction =
   | GeocodeAddressFail
   | GeocodeAddressSuccess
-  | LoadPlanningData
+  | SetPlanningData
   | SetActiveSection
   | SetActiveView
   | SetError
