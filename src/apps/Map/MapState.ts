@@ -5,7 +5,7 @@ import { Dispatch } from 'redux';
 
 import config from '~/config';
 import { MapConfig } from './types';
-import { get as apiGet } from '~/services/api/shorthands';
+import api from '~/services/api/';
 
 const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
@@ -246,7 +246,7 @@ export function loadPlanningData() {
     }
 
     const apiRoute = `projects?page_size=500`;
-    const planningData = await apiGet(apiRoute);
+    const planningData = await api.get(apiRoute);
 
     return dispatch({ type: SET_PLANNING_DATA, payload: { planningData } });
   };
