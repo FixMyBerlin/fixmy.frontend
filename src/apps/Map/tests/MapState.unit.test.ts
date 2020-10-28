@@ -10,7 +10,7 @@ import {
 import config from '~/config';
 import { mswServer } from '../../../../jest/msw/mswServer';
 import { RootState } from '~/store';
-import planningsResponseFixture from './fixtures/planningsResponse.json'
+import planningsResponseFixture from './fixtures/planningsResponse.json';
 
 describe('Plannings Map Unit tests', () => {
   describe('loadPlanningData() thunk', () => {
