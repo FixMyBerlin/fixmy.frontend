@@ -19,7 +19,7 @@ class UserLikes extends PureComponent {
     return (
       <>
         <Title>Likes</Title>
-        <Text>Hier sieht du Meldungen, denen du einen Like gegeben hast.</Text>
+        <Text>Hier siehst du Meldungen, denen du einen Like gegeben hast.</Text>
 
         <StyledProjectList
           data={this.props.userLikes || []}
