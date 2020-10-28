@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import ProjectListItem from '~/components/ProjectListItem';
-import ReportListItem from '~/components/ReportListItem';
+import ProjectListItem from '~/components/ProjectList/ProjectListItem';
+import ReportListItem from '~/components/ProjectList/ReportListItem';
 import DotLoader from '~/components/DotLoader';
 
 class ProjectList extends PureComponent {
