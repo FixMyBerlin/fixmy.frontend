@@ -1,4 +1,3 @@
-import { Options as KyOptions } from 'ky';
 import { JSONValue, RequestOptions } from './types';
 import request from './request';
 
