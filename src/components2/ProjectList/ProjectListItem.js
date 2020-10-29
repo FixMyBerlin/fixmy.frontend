@@ -1,14 +1,23 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
+import slugify from 'slugify';
 
 import config from '~/config';
+import { numberFormat, getRVALength } from '~/utils/utils';
 import Label from '~/components/Label';
 import Button from '~/components/Button';
 import HeartIcon from '~/images/heart.svg';
-import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
-import DefaultPhotoSrc from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
+import DraftMarker from '~/images/planning-icons/konzept-marker.png';
+import PlanningMarker from '~/images/planning-icons/planung-marker.png';
+import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
+import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
 
-import { getReportStatusCaption } from '~/pages/Reports/apiservice';
+const icons = {
+  draft: DraftMarker,
+  planning: PlanningMarker,
+  execution: ExecutionMarker,
+  ready: ReadyMarker
+};
 
 const ItemWrapper = styled.div`
   margin: 8px 0;
@@ -28,7 +37,7 @@ const ItemContent = styled.div`
 
 const ItemHeader = styled.div``;
 
-const ItemImage = styled(BikestandsIcon)`
+const ItemImage = styled.img`
   position: absolute;
   right: 16px;
   top: 16px;
@@ -39,15 +48,14 @@ const ItemTitle = styled.div`
   font-size: 14px;
   color: ${config.colors.darkgrey};
   font-weight: 600;
-  margin-bottom: 3px;
 `;
 
 const ItemSubTitle = styled.div`
   font-size: 14px;
   font-weight: 700;
+  font-family: '${config.titleFont}', serif;
   color: ${config.colors.darkbg};
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: .5em auto;
 `;
 
 const ItemFooter = styled.div`
@@ -106,7 +114,20 @@ const MapButton = styled(Button)`
   }
 `;
 
-class ReportListItem extends PureComponent {
+const ProjectLength = ({ length, side, id }) => {
+  const rvaLength = getRVALength({ length, side, id });
+  if (rvaLength == null) return null;
+  return (
+    <>
+      | {numberFormat(rvaLength / 1000, 1)} km
+      {side === 2 && (
+        <> (beidseitige Planung mit je {numberFormat(length / 1000, 1)} km)</>
+      )}
+    </>
+  );
+};
+
+class ProjectListItem extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -115,8 +136,10 @@ class ReportListItem extends PureComponent {
   }
 
   onClick = () => {
-    const { id } = this.props;
-    this.props.history.push(`${config.routes.reports.map}/${id}`);
+    const { id, street_name: name } = this.props;
+    const slug = name ? slugify(name) : '';
+    const url = `${config.routes.projects}/${id}/${slug.toLowerCase()}`;
+    this.props.history.push(url);
   };
 
   toggleExpanded = () => {
@@ -126,37 +149,46 @@ class ReportListItem extends PureComponent {
   };
 
   render() {
-    const { id, photo, likes, details, address, status } = this.props;
-    const count = details.number;
-    const subtitle = `${count} ${
-      count === 1 ? 'neuer' : 'neue'
-    } Fahrradbügel gewünscht`;
+    const {
+      construction_completed: constructionCompleted,
+      photos = [],
+      id,
+      likes,
+      street_name: streetName,
+      title,
+      borough,
+      phase
+    } = this.props;
 
-    const photoSrc = photo ? photo.src : DefaultPhotoSrc;
-    const photoCopyright = photo ? photo.copyright : '';
-    const statusDisplay = getReportStatusCaption(status);
+    const iconSrc = icons[phase];
+    const photo = photos.length ? photos[0] : false;
 
     return (
-      <ItemWrapper onClick={this.toggleExpanded}>
+      <ItemWrapper
+        onClick={this.toggleExpanded}
+        data-testid="project-list-item"
+      >
         <ItemContent>
-          <ItemImage />
+          <ItemImage src={iconSrc} />
           <ItemHeader>
-            <ItemTitle>{address}</ItemTitle>
-            <Label>Meldung {id}</Label>
+            <ItemTitle>{streetName}</ItemTitle>
+            <Label>
+              {borough} <ProjectLength {...this.props} />
+            </Label>
           </ItemHeader>
-          <ItemSubTitle>{subtitle}</ItemSubTitle>
+          <ItemSubTitle>{title}</ItemSubTitle>
           <ItemFooter>
             <Likes>
               <HeartIcon />
               <Label>{likes}</Label>
             </Likes>
-            <DateWrapper>Status: {statusDisplay}</DateWrapper>
+            <DateWrapper>Fertigstellung: {constructionCompleted}</DateWrapper>
           </ItemFooter>
         </ItemContent>
         {this.state.isExpanded && (
           <Expansion>
-            <img src={photoSrc} alt={subtitle} />
-            <Copyright>{photoCopyright}</Copyright>
+            <img src={photo.src} alt={title} />
+            <Copyright>{photo.copyright}</Copyright>
             {id && <MapButton onClick={this.onClick}>Zur Karte</MapButton>}
           </Expansion>
         )}
@@ -165,4 +197,4 @@ class ReportListItem extends PureComponent {
   }
 }
 
-export default ReportListItem;
+export default ProjectListItem;

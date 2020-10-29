@@ -1,0 +1,86 @@
+[
+  {
+    "address": "Kardinalstraße, Aachen",
+    "created_date": "2020-03-29T10:20:41+02:00",
+    "description": "",
+    "details": {
+      "subject": "BIKE_STANDS",
+      "number": 1,
+      "fee_acceptable": false
+    },
+    "geometry": { "type": "Point", "coordinates": [6.0889932, 50.7841692] },
+    "id": 100,
+    "liked_by_user": true,
+    "likes": 1,
+    "modified_date": "2020-10-12T12:33:47.141066+02:00",
+    "origin": [],
+    "photo": null,
+    "plannings": [],
+    "status_reason": "",
+    "status": "report_verification",
+    "url": "https://fixmyaachen.herokuapp.com/api/reports/100"
+  },
+  {
+    "address": "Vereinsstraße 17, Aachen",
+    "created_date": "2020-03-29T10:20:41+02:00",
+    "description": "Prioritätenliste 2020",
+    "details": {
+      "subject": "BIKE_STANDS",
+      "number": 1,
+      "fee_acceptable": false
+    },
+    "geometry": { "type": "Point", "coordinates": [6.09292, 50.76901] },
+    "id": 242,
+    "liked_by_user": true,
+    "likes": 1,
+    "modified_date": "2020-10-12T12:34:54.083933+02:00",
+    "origin": [],
+    "photo": null,
+    "plannings": [
+      {
+        "address": "Vereinsstraße 19, Aachen",
+        "created_date": "2020-10-12T12:34:54.057684+02:00",
+        "description": "",
+        "details": {
+          "subject": "BIKE_STANDS",
+          "number": 2,
+          "fee_acceptable": false
+        },
+        "geometry": { "type": "Point", "coordinates": [6.09284, 50.76892] },
+        "id": 1823,
+        "likes": 0,
+        "liked_by_user": false,
+        "modified_date": "2020-10-12T12:34:54.057714+02:00",
+        "photo": null,
+        "status": "planning",
+        "status_reason": "",
+        "url": "https://fixmyaachen.herokuapp.com/api/reports/1823"
+      },
+      {
+        "address": "Michaelsbergstraße 36, Aachen",
+        "created_date": "2020-10-12T12:34:54.097138+02:00",
+        "description": "",
+        "details": {
+          "subject": "BIKE_STANDS",
+          "number": 2,
+          "fee_acceptable": false
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [6.0959954, 50.7647588]
+        },
+        "id": 1824,
+        "likes": 0,
+        "liked_by_user": false,
+        "modified_date": "2020-10-12T12:34:54.097163+02:00",
+        "photo": null,
+        "status": "planning",
+        "status_reason": "",
+        "url": "https://fixmyaachen.herokuapp.com/api/reports/1824"
+      }
+    ],
+    "status_reason": "",
+    "status": "report_accepted",
+    "url": "https://fixmyaachen.herokuapp.com/api/reports/242"
+  }
+]

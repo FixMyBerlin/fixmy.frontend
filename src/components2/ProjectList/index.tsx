@@ -1,13 +1,13 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import ProjectListItem from '~/components/ProjectList/ProjectListItem';
-import ReportListItem from '~/components/ProjectList/ReportListItem';
+import ProjectListItem from './ProjectListItem';
+import ReportListItem from './ReportListItem';
 import DotLoader from '~/components/DotLoader';
 
 interface Props extends RouteComponentProps {
-  showLoadingIndicator: boolean;
-  itemType: 'projects' | 'reports';
+  showLoadingIndicator?: boolean;
+  itemType?: 'projects' | 'reports';
   data: any[];
   isLoading: boolean;
 }

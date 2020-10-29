@@ -16,7 +16,7 @@ import Title from '~/components/Title';
 import MenuButton from '~/components/MenuButton';
 import Flex from '~/components/Flex';
 import Select from '~/components/Select';
-import ProjectList from '~/components/ProjectList';
+import ProjectList from '~/components2/ProjectList';
 import Card from './components/Card';
 import logger from '~/utils/logger';
 import { PLANNING_PHASES } from '~/apps/Map/constants';
