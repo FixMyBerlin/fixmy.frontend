@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Title from '~/components/Title';
 import Text from '~/components/Text';
 import { loadLikes } from '~/pages/User/UserState';
-import ProjectList from '~/components/ProjectList';
+import ProjectList from '~/components2/ProjectList';
 
 const StyledProjectList = styled(ProjectList)`
   margin-top: 1em;
@@ -19,7 +19,7 @@ class UserLikes extends PureComponent {
     return (
       <>
         <Title>Likes</Title>
-        <Text>Hier sieht du Meldungen, denen du einen Like gegeben hast.</Text>
+        <Text>Hier siehst du Meldungen, denen du einen Like gegeben hast.</Text>
 
         <StyledProjectList
           data={this.props.userLikes || []}
