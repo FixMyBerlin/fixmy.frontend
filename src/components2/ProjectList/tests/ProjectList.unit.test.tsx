@@ -26,6 +26,21 @@ describe('Project list component', () => {
     expect(getByRole('progressbar')).toBeInTheDocument();
   });
 
+  it('renders when nothing has been liked', () => {
+    const history = createMemoryHistory();
+    const { queryAllByTestId, getByText } = render(
+      <Provider store={Store}>
+        <Router history={history}>
+          <ProjectList isLoading={false} data={[]} />
+        </Router>
+      </Provider>
+    );
+    expect(queryAllByTestId('project-list-item')).toHaveLength(0);
+    expect(
+      getByText('Du hast noch keine Planungen geliked.')
+    ).toBeInTheDocument();
+  });
+
   it('renders project list', () => {
     const history = createMemoryHistory();
     const { getAllByTestId, getByText } = render(
