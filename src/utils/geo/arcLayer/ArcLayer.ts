@@ -36,6 +36,7 @@ const ArcLayer = ({ map, arcData, color }: ArcLayerProps): void => {
       getSourceColor: color,
       getTargetColor: [51, 223, 255],
       getWidth: 3
+      // TODO: add random (configurable) tilt in order to handle two arcs having the combination of start and end
     });
     map.addLayer(arcLayer);
 
