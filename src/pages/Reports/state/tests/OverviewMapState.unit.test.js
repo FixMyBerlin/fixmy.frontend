@@ -139,7 +139,7 @@ describe('OverviewMapState reducer and actions', () => {
 
       /* ACT: dispatch thunk */
       const reportItem = mockedReportsList[0];
-      const loadReportsThunk = actions.setSelectedReport(reportItem);
+      const loadReportsThunk = actions.setSelectedReportThunk(reportItem);
       await store.dispatch(loadReportsThunk);
 
       /* ASSERT: make sure thunk dispatched the right action sequence and
@@ -181,7 +181,7 @@ describe('OverviewMapState reducer and actions', () => {
 
       /* ACT: dispatch thunk */
       const reportItem = mockedReportsList[0];
-      const setSelectedReportThunk = actions.setSelectedReport(
+      const setSelectedReportThunk = actions.setSelectedReportThunk(
         reportItem,
         true
       );
@@ -227,7 +227,7 @@ describe('OverviewMapState reducer and actions', () => {
 
         /* ACT: dispatch thunk */
         const reportItem = { some: 'other content' };
-        await store.dispatch(actions.setSelectedReport(reportItem));
+        await store.dispatch(actions.setSelectedReportThunk(reportItem));
 
         /* ASSERT: make sure thunk dispatched the right action sequence and
                  the reducer produced the right state */

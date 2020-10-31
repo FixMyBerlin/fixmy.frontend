@@ -8,6 +8,7 @@ import logger from '~/utils/logger';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusteredMarkers from './ClusteredMarkers';
 import FMCPropTypes from '~/pages/Reports/propTypes';
+import ArcLayer from '~/utils/geo/arcLayer/ArcLayer';
 
 function toFeature(d) {
   const { geometry, ...properties } = d;
@@ -92,7 +93,13 @@ class WebglMap extends PureComponent {
   }
 
   render() {
-    const { reportsData, onMarkerClick, selectedReport, detailId } = this.props;
+    const {
+      reportsData,
+      onMarkerClick,
+      selectedReport,
+      detailId,
+      arcData
+    } = this.props;
 
     const isReportsDataLoaded = !!reportsData.length;
     return (
@@ -112,6 +119,11 @@ class WebglMap extends PureComponent {
             selectedReport={selectedReport}
           />
         )}
+        <ArcLayer
+          map={this.map}
+          arcData={arcData}
+          color={config.reports.overviewMap.arcColor}
+        />
       </BaseMap>
     );
   }
@@ -128,11 +140,15 @@ WebglMap.propTypes = {
   onMarkerClick: PropTypes.func.isRequired,
   onMove: PropTypes.func,
   reportsData: PropTypes.arrayOf(FMCPropTypes.report),
+  arcData: PropTypes.arrayOf(
+    PropTypes.objectOf(PropTypes.arrayOf(PropTypes.number))
+  ),
   selectedReport: FMCPropTypes.report,
   zoomControlPosition: PropTypes.string
 };
 
 WebglMap.defaultProps = {
+  arcData: [],
   reportsData: [],
   center: null,
   zoomIn: true,

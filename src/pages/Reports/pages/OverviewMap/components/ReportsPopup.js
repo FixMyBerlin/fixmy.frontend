@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
-import { actions } from '~/pages/Reports/state/OverviewMapState';
 import MapPopupWrapper from '~/components/MapPopupWrapper';
 import Button from '~/components/Button';
 import Title from '~/components/Title';
@@ -89,12 +88,9 @@ class ReportsPopup extends PureComponent {
 }
 
 export default withRouter(
-  connect(
-    (state) => ({
-      selectedReport: state.ReportsState.OverviewMapState.selectedReport,
-      reports: state.ReportsState.OverviewMapState.reports,
-      position: state.ReportsState.OverviewMapState.selectedReportPosition
-    }),
-    { setSelectedReport: actions.setSelectedReport }
-  )(ReportsPopup)
+  connect((state) => ({
+    selectedReport: state.ReportsState.OverviewMapState.selectedReport,
+    reports: state.ReportsState.OverviewMapState.reports,
+    position: state.ReportsState.OverviewMapState.selectedReportPosition
+  }))(ReportsPopup)
 );

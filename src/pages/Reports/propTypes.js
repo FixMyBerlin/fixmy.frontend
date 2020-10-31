@@ -32,10 +32,7 @@ const report = PropTypes.shape({
   id: PropTypes.number.isRequired,
   likes: PropTypes.number.isRequired,
   modified_date: PropTypes.string.isRequired,
-  photo: PropTypes.shape({
-    copyright: PropTypes.string,
-    src: PropTypes.string
-  }),
+ 
   status: PropTypes.oneOf([
     'report_new',
     'report_verification',

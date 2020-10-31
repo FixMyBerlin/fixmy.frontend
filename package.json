@@ -116,6 +116,9 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
+    "@deck.gl/core": "^8.2.8",
+    "@deck.gl/layers": "^8.2.8",
+    "@deck.gl/mapbox": "^8.2.8",
     "@formatjs/intl-datetimeformat": "^2.6.4",
     "@formatjs/intl-getcanonicallocales": "^1.4.3",
     "@formatjs/intl-numberformat": "^5.5.5",

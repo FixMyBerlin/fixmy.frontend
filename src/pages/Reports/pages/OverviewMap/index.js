@@ -4,12 +4,12 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Route } from 'react-router-dom';
-
+import { Route, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import debug from 'debug';
 
 import config from '~/pages/Reports/config';
-import { matchMediaSize, breakpoints } from '~/styles/utils';
+import { breakpoints, matchMediaSize } from '~/styles/utils';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';
 import CTAButton from './components/CTAButton';
@@ -19,6 +19,8 @@ import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/apps/Map/components/LocatorControl';
 import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
+
+const log = debug('fmc:reports:overviewmap');
 
 const MapView = styled.div`
   height: 100%;
@@ -125,6 +127,44 @@ class OverviewMap extends Component {
     if (this.props.selectedReport) this.updateSelectedReportPosition();
   }
 
+  getArcData() {
+    let arcList = [];
+    const { selectedReport } = this.props;
+
+    if (selectedReport) {
+      try {
+        // extract list of origins from api response
+        let origins = selectedReport?.origin || [];
+        if (typeof origins === 'string') {
+          let parsedOrigins;
+          try {
+            parsedOrigins = JSON.parse(origins);
+          } catch (e) {
+            /* no action */
+          }
+          if (Array.isArray(parsedOrigins)) {
+            origins = parsedOrigins;
+          }
+        }
+        const getCoords = (item) => item.geometry.coordinates;
+        // for each relation, construct and Arc
+        const source = getCoords(selectedReport);
+        arcList = origins.map((origin) => ({
+          source,
+          target: getCoords(origin)
+        }));
+
+        if (arcList.length) {
+          log('assembled arc Data');
+        }
+      } catch (e) {
+        log('failed to assemble arc Data, using an empty data set');
+      }
+    }
+
+    return arcList;
+  }
+
   handleDeepLinkLoad() {
     const linkedReportId = this.props.match.params.id;
     const linkedReport = this.props.reports.find(
@@ -159,6 +199,8 @@ class OverviewMap extends Component {
       (isDesktopView && hasDetailId && isMenuOpen) ||
       config.region === 'berlin';
 
+    const arcData = this.getArcData();
+
     const mapControls = (
       <>
         <LocatorControl
@@ -188,6 +230,7 @@ class OverviewMap extends Component {
         <MapWrapper>
           <WebglMap
             reportsData={reports}
+            arcData={arcData}
             center={this.state.mapCenter}
             zoomIn={this.state.zoomIn}
             onMarkerClick={this.onMarkerClick}
@@ -245,6 +288,7 @@ export default withRouter(
     (state) => ({
       selectedReport: state.ReportsState.OverviewMapState.selectedReport,
       reports: state.ReportsState.OverviewMapState.reports,
+      arcData: 123,
       isReportsFetchPending:
         state.ReportsState.OverviewMapState.reportFetchState === 'pending',
       zoomIn: state.ReportsState.OverviewMapState.reports.zoomIn,

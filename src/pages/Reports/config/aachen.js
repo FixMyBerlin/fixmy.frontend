@@ -17,7 +17,8 @@ const aachenConfig = {
     clusterColor: {
       outer: 'rgba(133, 133, 133, 0.98)',
       inner: 'rgba(205, 205, 205, 0.91)'
-    }
+    },
+    arcColor: [110, 155, 210] // rgb
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
