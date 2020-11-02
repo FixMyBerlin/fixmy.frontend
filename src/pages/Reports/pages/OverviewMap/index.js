@@ -130,39 +130,49 @@ class OverviewMap extends Component {
   getArcData() {
     let arcList = [];
     const { selectedReport } = this.props;
-
-    if (selectedReport) {
-      try {
-        // extract list of origins from api response
-        let origins = selectedReport?.origin || [];
-        if (typeof origins === 'string') {
-          let parsedOrigins;
-          try {
-            parsedOrigins = JSON.parse(origins);
-          } catch (e) {
-            /* no action */
-          }
-          if (Array.isArray(parsedOrigins)) {
-            origins = parsedOrigins;
-          }
-        }
-        const getCoords = (item) => item.geometry.coordinates;
-        // for each relation, construct and Arc
-        const source = getCoords(selectedReport);
-        arcList = origins.map((origin) => ({
-          source,
-          target: getCoords(origin)
-        }));
-
-        if (arcList.length) {
-          log('assembled arc Data');
-        }
-      } catch (e) {
-        log('failed to assemble arc Data, using an empty data set');
-      }
-    }
+    const linkages = this.getReportLinkages(selectedReport);
+    const getCoords = (item) => item.geometry.coordinates;
+    // for each relation, construct an Arc
+    const source = getCoords(selectedReport);
+    arcList = linkages.map((origin) => ({
+      source,
+      target: getCoords(origin)
+    }));
 
     return arcList;
+  }
+
+  /**
+   * Extracts linkages between reports and plannings and vice versa from the currently selected Report.
+
+   */
+  getReportLinkages(selectedReport) {
+    // Plannings are linked to Reports by stating one ore more entries under "origin",
+    // Reports are linked to Plannings by stating one ore more entries under "plannings"
+    // The API states both fields, so we have to check if one of those keys contains an array
+    // with at least one value
+    let linkages = [];
+
+    const relationFieldNames = ['plannings', 'origin'];
+    try {
+      relationFieldNames.forEach((fieldName) => {
+        // Also check for strings and try to parse it as Array. // FIXME: fix this on the API side.
+        let relationsList = selectedReport[fieldName];
+        if (typeof relationsList === 'string') {
+          relationsList = JSON.parse(linkages);
+        }
+        if (relationsList.length) {
+          linkages = linkages.concat(relationsList);
+        }
+      });
+      // ceck for success and log about it
+      if (linkages.length) {
+        log('assembled arc Data');
+      }
+    } catch (e) {
+      log('failed to assemble arc Data, using an empty data set');
+    }
+    return linkages;
   }
 
   handleDeepLinkLoad() {
@@ -199,8 +209,6 @@ class OverviewMap extends Component {
       (isDesktopView && hasDetailId && isMenuOpen) ||
       config.region === 'berlin';
 
-    const arcData = this.getArcData();
-
     const mapControls = (
       <>
         <LocatorControl
@@ -230,7 +238,7 @@ class OverviewMap extends Component {
         <MapWrapper>
           <WebglMap
             reportsData={reports}
-            arcData={arcData}
+            arcData={selectedReport && this.getArcData()}
             center={this.state.mapCenter}
             zoomIn={this.state.zoomIn}
             onMarkerClick={this.onMarkerClick}

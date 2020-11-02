@@ -2,6 +2,7 @@ import { Map } from 'mapbox-gl';
 import { ArcLayer as DeckArcLayer } from '@deck.gl/layers';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import { useEffect } from 'react';
+import { getRandomTilt } from '~/utils/geo/arcLayer/ArcLayerUtils';
 
 type FixedSizeArray<N extends number, T, M extends string = '0'> = {
   readonly [k in M]: any;
@@ -35,8 +36,10 @@ const ArcLayer = ({ map, arcData, color }: ArcLayerProps): void => {
       getTargetPosition: (d) => d.target,
       getSourceColor: color,
       getTargetColor: [51, 223, 255],
-      getWidth: 3
-      // TODO: add random (configurable) tilt in order to handle two arcs having the combination of start and end
+      getWidth: 4,
+      opacity: 0.8,
+      // add a little bit of random tilt to differentiate arcs with the same combination of source and destination
+      getTilt: getRandomTilt()
     });
     map.addLayer(arcLayer);
 
