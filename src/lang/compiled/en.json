@@ -1172,13 +1172,13 @@
   "research.05_results.chart4.1": [
     {
       "type": 0,
-      "value": "without cycle path"
+      "value": "with cycle path"
     }
   ],
   "research.05_results.chart4.2": [
     {
       "type": 0,
-      "value": "with cycle path"
+      "value": "without cycle path"
     }
   ],
   "research.05_results.chart4.3": [

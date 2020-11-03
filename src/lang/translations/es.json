@@ -552,10 +552,10 @@
     "defaultMessage": "Valoración según frecuencia de uso de bicicleta"
   },
   "research.05_results.chart4.1": {
-    "defaultMessage": "sin carril bici"
+    "defaultMessage": "con carril bici"
   },
   "research.05_results.chart4.2": {
-    "defaultMessage": "con carril bici"
+    "defaultMessage": "sin carril bici"
   },
   "research.05_results.chart4.3": {
     "defaultMessage": "sin carril (conductores frecuentes)"
