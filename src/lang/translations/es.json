@@ -108,7 +108,7 @@
     "defaultMessage": "Debido a la gran cantidad de posibles factores de influencia y a los escenarios resultantes, el número inicial de escenarios tuvo que ser limitado. Después de investigar el conocimiento actual del tema, se identificaron los factores de influencia más importantes. Cada experimento consta de una vista básica/principal a la que se pueden agregar o cambiar diferentes características de infraestructura. Por ejemplo, experimento 1: Calle principal - carriles para bicicletas sobre la calzada: Aquí la imagen básica consiste en una calzada, un sistema de carril ciclista con separación (izquierda / derecha), un carril de estacionamiento y el área lateral:"
   },
   "research.03_concept.p15.imageLabel": {
-    "defaultMessage": "La escena de la calle descrita anteriormente"
+    "defaultMessage": "El escenario vial descrito anteriormente"
   },
   "research.03_concept.p16": {
     "defaultMessage": "Si bien el espacio lateral siempre se muestra igual en este experimento, los siguientes factores de influencia varían en el área de la calzada:"
@@ -708,10 +708,10 @@
     "defaultMessage": "El estacionamiento de automóviles al costado de la calzada crea conflictos adicionales."
   },
   "research.05_results.p15.image1": {
-    "defaultMessage": "*69,09% de los usuarios calificaron esta situación sin franjas de estacionamiento como \"segura\" o \"más bien segura\""
+    "defaultMessage": "*69,09% de los usuarios calificaron esta situación sin fila de estacionamiento como \"segura\" o \"más bien segura\""
   },
   "research.05_results.p15.image2": {
-    "defaultMessage": "32,76% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    "defaultMessage": "32,76% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
   },
   "research.05_results.p16": {
     "defaultMessage": "Tres factores de influencia centrales"
@@ -744,19 +744,19 @@
     "defaultMessage": "Si comparamos un ejemplo de un carril bici en una calle principal sin vehículos estacionados, la siguiente diferencia se hace evidente:"
   },
   "research.05_results.p20.image1": {
-    "defaultMessage": "*73,68% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    "defaultMessage": "*73,68% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
   },
   "research.05_results.p20.image2": {
-    "defaultMessage": "*69,09% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    "defaultMessage": "*69,09% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
   },
   "research.05_results.p21": {
     "defaultMessage": "En el caso de un carril bici con estacionamiento a la derecha, la diferencia entre la versión estrecha y la ancha es significativamente mayor."
   },
   "research.05_results.p21.image1": {
-    "defaultMessage": "*70,71% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    "defaultMessage": "*70,71% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
   },
   "research.05_results.p21.image2": {
-    "defaultMessage": "*32,23% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    "defaultMessage": "*32,23% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
   },
   "research.05_results.p22": {
     "defaultMessage": "Si la bicisenda se diferencia del carril de vehículos por una superficie verde, se produce un efecto positivo en la sensación subjetiva de seguridad. Este efecto varía en intensidad según la situación. Cuanto peor se desarrolla la bicisenda, más fuerte será el efecto de la coloración verde."
@@ -765,16 +765,16 @@
     "defaultMessage": "La superficie verde ayuda"
   },
   "research.05_results.p22.image1": {
-    "defaultMessage": "*80,37% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    "defaultMessage": "*80,37% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
   },
   "research.05_results.p22.image2": {
-    "defaultMessage": "*69,09% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    "defaultMessage": "*69,09% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
   },
   "research.05_results.p22.image3": {
-    "defaultMessage": "*77,87% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    "defaultMessage": "*77,87% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
   },
   "research.05_results.p22.image4": {
-    "defaultMessage": "*70,71% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+    "defaultMessage": "*70,71% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
   },
   "research.05_results.p23": {
     "defaultMessage": "En la encuesta se probó otra variante: solo una línea verde trazada a la izquierda. Esta variante no supuso ninguna mejora sobre una superficie de asfalto normal."
@@ -1131,7 +1131,7 @@
     "defaultMessage": "Datos de los resultados"
   },
   "research.toc.Header": {
-    "defaultMessage": "Ve directamente a una capilla"
+    "defaultMessage": "Ve directamente a un capítulo"
   },
   "research.toc.Results": {
     "defaultMessage": "Valoración estadística"
