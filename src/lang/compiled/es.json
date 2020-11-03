@@ -234,7 +234,7 @@
   "research.03_concept.p15.imageLabel": [
     {
       "type": 0,
-      "value": "La escena de la calle descrita anteriormente"
+      "value": "El escenario vial descrito anteriormente"
     }
   ],
   "research.03_concept.p16": [
@@ -1170,13 +1170,13 @@
   "research.05_results.chart4.1": [
     {
       "type": 0,
-      "value": "sin carril bici"
+      "value": "con carril bici"
     }
   ],
   "research.05_results.chart4.2": [
     {
       "type": 0,
-      "value": "con carril bici"
+      "value": "sin carril bici"
     }
   ],
   "research.05_results.chart4.3": [
@@ -1482,13 +1482,13 @@
   "research.05_results.p15.image1": [
     {
       "type": 0,
-      "value": "*69,09% de los usuarios calificaron esta situación sin franjas de estacionamiento como \"segura\" o \"más bien segura\""
+      "value": "*69,09% de los usuarios calificaron esta situación sin fila de estacionamiento como \"segura\" o \"más bien segura\""
     }
   ],
   "research.05_results.p15.image2": [
     {
       "type": 0,
-      "value": "32,76% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+      "value": "32,76% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
     }
   ],
   "research.05_results.p16": [
@@ -1554,13 +1554,13 @@
   "research.05_results.p20.image1": [
     {
       "type": 0,
-      "value": "*73,68% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+      "value": "*73,68% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
     }
   ],
   "research.05_results.p20.image2": [
     {
       "type": 0,
-      "value": "*69,09% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+      "value": "*69,09% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
     }
   ],
   "research.05_results.p21": [
@@ -1572,13 +1572,13 @@
   "research.05_results.p21.image1": [
     {
       "type": 0,
-      "value": "*70,71% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+      "value": "*70,71% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
     }
   ],
   "research.05_results.p21.image2": [
     {
       "type": 0,
-      "value": "*32,23% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+      "value": "*32,23% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
     }
   ],
   "research.05_results.p22": [
@@ -1596,25 +1596,25 @@
   "research.05_results.p22.image1": [
     {
       "type": 0,
-      "value": "*80,37% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+      "value": "*80,37% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
     }
   ],
   "research.05_results.p22.image2": [
     {
       "type": 0,
-      "value": "*69,09% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+      "value": "*69,09% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
     }
   ],
   "research.05_results.p22.image3": [
     {
       "type": 0,
-      "value": "*77,87% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+      "value": "*77,87% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
     }
   ],
   "research.05_results.p22.image4": [
     {
       "type": 0,
-      "value": "*70,71% de los usuarios calificó esta situación con las bandas de estacionamiento como \"segura\" o \"más bien segura\""
+      "value": "*70,71% de los usuarios calificó esta situación con fila de estacionamiento como \"segura\" o \"más bien segura\""
     }
   ],
   "research.05_results.p23": [
@@ -2352,7 +2352,7 @@
   "research.toc.Header": [
     {
       "type": 0,
-      "value": "Ve directamente a una capilla"
+      "value": "Ve directamente a un capítulo"
     }
   ],
   "research.toc.Results": [
