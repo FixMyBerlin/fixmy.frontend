@@ -40,7 +40,7 @@ const SourceFunction = styled(Paragraph)`
 
 export default () => (
   <QuoteSection>
-    <Img src={Portrait} alt="Oberbürgermeister Marcel Phillip" />
+    <Img src={Portrait} alt="Ehemaliger Oberbürgermeister Marcel Phillip" />
     <BlockQuote>
       „Wir benötigen mehr Sicherheit und mehr Raum für den Radverkehr in Aachen,
       dazu gehören auch mehr Fahrradabstellanlagen. Seit November letzten Jahres
@@ -50,6 +50,6 @@ export default () => (
       zum Teil bereits durch die Verwaltung geprüft worden.“
     </BlockQuote>
     <SourcePerson>Marcel Philipp</SourcePerson>
-    <SourceFunction>Oberbürgermeister</SourceFunction>
+    <SourceFunction>Ehemaliger Oberbürgermeister</SourceFunction>
   </QuoteSection>
 );
