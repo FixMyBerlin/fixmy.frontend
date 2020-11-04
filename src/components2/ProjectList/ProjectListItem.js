@@ -164,7 +164,10 @@ class ProjectListItem extends PureComponent {
     const photo = photos.length ? photos[0] : false;
 
     return (
-      <ItemWrapper onClick={this.toggleExpanded}>
+      <ItemWrapper
+        onClick={this.toggleExpanded}
+        data-testid="project-list-item"
+      >
         <ItemContent>
           <ItemImage src={iconSrc} />
           <ItemHeader>

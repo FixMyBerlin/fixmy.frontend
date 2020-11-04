@@ -5,6 +5,7 @@ import { Dispatch } from 'redux';
 
 import config from '~/config';
 import { MapConfig } from './types';
+import api from '~/services/api/';
 
 const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
@@ -18,7 +19,7 @@ const SET_PLANNING_FILTER = 'Map/MapState/SET_PLANNING_FILTER';
 const SET_POPUP_DATA = 'Map/MapState/SET_POPUP_DATA';
 const SET_POPUP_LOCATION = 'Map/MapState/SET_POPUP_LOCATION';
 const SET_POPUP_VISIBLE = 'Map/MapState/SET_POPUP_VISIBLE';
-const SET_PLANNING_DATA = 'Map/MapState/SET_PLANNING_DATA';
+export const SET_PLANNING_DATA = 'Map/MapState/SET_PLANNING_DATA';
 const SET_ERROR = 'Map/MapState/SET_ERROR';
 const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 
@@ -231,7 +232,7 @@ export function setPopupVisible(isVisible: boolean): SetPopupVisible {
   return { type: SET_POPUP_VISIBLE, payload: { displayPopup: isVisible } };
 }
 
-interface LoadPlanningData {
+export interface LoadPlanningData {
   type: typeof SET_PLANNING_DATA;
   payload: {
     planningData: any;
@@ -244,9 +245,8 @@ export function loadPlanningData() {
       return false;
     }
 
-    const planningData = await ky
-      .get(`${config.apiUrl}/projects?page_size=500`, { timeout: 50000 })
-      .json();
+    const apiRoute = `projects?page_size=500`;
+    const planningData = await api.get(apiRoute);
 
     return dispatch({ type: SET_PLANNING_DATA, payload: { planningData } });
   };

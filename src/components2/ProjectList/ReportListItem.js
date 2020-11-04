@@ -8,6 +8,8 @@ import HeartIcon from '~/images/heart.svg';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
 import DefaultPhotoSrc from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 
+import { getReportStatusCaption } from '~/pages/Reports/apiservice';
+
 const ItemWrapper = styled.div`
   margin: 8px 0;
   background: ${config.colors.lightbg};
@@ -124,7 +126,7 @@ class ReportListItem extends PureComponent {
   };
 
   render() {
-    const { id, photo, likes, details, address } = this.props;
+    const { id, photo, likes, details, address, status } = this.props;
     const count = details.number;
     const subtitle = `${count} ${
       count === 1 ? 'neuer' : 'neue'
@@ -132,9 +134,10 @@ class ReportListItem extends PureComponent {
 
     const photoSrc = photo ? photo.src : DefaultPhotoSrc;
     const photoCopyright = photo ? photo.copyright : '';
+    const statusDisplay = getReportStatusCaption(status);
 
     return (
-      <ItemWrapper onClick={this.toggleExpanded}>
+      <ItemWrapper onClick={this.toggleExpanded} data-testid="report-list-item">
         <ItemContent>
           <ItemImage />
           <ItemHeader>
@@ -147,7 +150,7 @@ class ReportListItem extends PureComponent {
               <HeartIcon />
               <Label>{likes}</Label>
             </Likes>
-            <DateWrapper>Status: Neue Meldung</DateWrapper>
+            <DateWrapper>Status: {statusDisplay}</DateWrapper>
           </ItemFooter>
         </ItemContent>
         {this.state.isExpanded && (
