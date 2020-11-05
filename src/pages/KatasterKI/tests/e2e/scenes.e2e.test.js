@@ -59,7 +59,7 @@ describe('katasterKi scene rating', () => {
     });
   });
 
-  describe('when the session is continued', () => {
+  describe.skip('when the session is continued', () => {
     describe('the feedback screen', () => {
       before(() => {
         cy.fmbReturnToScene(1);
