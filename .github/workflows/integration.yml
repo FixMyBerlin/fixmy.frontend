@@ -2,7 +2,7 @@ name: integration tests
 
 on:
   push:
-    branches: ['master', 'develop', 'e2e-test-matrix']
+    branches: ['master', 'develop', 'hotfix/**']
 
 jobs:
   e2e:
