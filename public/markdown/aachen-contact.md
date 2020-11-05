@@ -1,4 +1,4 @@
 # Feedback / Kontakt
 
-Wir freuen uns über Kommentare Anregungen und Unterstützung:
-schick uns ein Nachricht an [radbuegel@aachen.de](mailto:radbuegel@aachen.de)
+Wir freuen uns über Kommentare, Anregungen und Unterstützung:
+schicken Sie uns eine Nachricht an [radbuegel@aachen.de](mailto:radbuegel@aachen.de)

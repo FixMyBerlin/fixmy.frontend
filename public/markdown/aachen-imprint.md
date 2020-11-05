@@ -2,8 +2,8 @@
 
 **Herausgeber**  
 Stadt Aachen  
-Der Oberbürgermeister  
-Marcel Philipp  
+Oberbürgermeisterin
+Sibylle Keupen
 Markt  
 52058 Aachen  
 Tel.: +49 241 432-0  

@@ -75,7 +75,8 @@ function setupClusters(name, map, data, radius, handleUpdate) {
     type: 'geojson',
     data,
     cluster: true,
-    clusterRadius: radius
+    clusterRadius: radius,
+    clusterMaxZoom: 16
   });
 
   map.addLayer({

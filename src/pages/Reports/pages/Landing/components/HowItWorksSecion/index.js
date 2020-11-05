@@ -26,6 +26,10 @@ const Headline = styled.p`
   text-align: center;
 `;
 
+const Text = styled(Headline)`
+  font-weight: normal;
+`;
+
 const StyledIcon = styled(BikeIcon)`
   width: 144px;
   margin: 20px 0;
@@ -43,12 +47,26 @@ const StyledQuestion = styled.p`
   line-height: 1.37;
 `;
 
+const content = config.reports.enabled
+  ? config.reports.landing.reportsActive
+  : config.reports.landing.reportsInactive;
+
 export default () => (
   <StyledSection>
-    <Headline>{config.reports.intro}</Headline>
+    <Headline>{content.intro}</Headline>
     <StyledIcon alt="Icon Fahrradparkplätze" />
-    <HorizontalRuler className="light" />
-    <StyledQuestion>Wie läuft das ab?</StyledQuestion>
-    <Steps steps={config.reports.steps} />
+    {content.sections?.map((sec) => (
+      <>
+        <Headline key={`section-${sec.heading}`}>{sec.heading}</Headline>
+        <Text key={`section-${sec.text.slice(0, 100)}`}>{sec.text}</Text>
+      </>
+    ))}
+    {content.steps && (
+      <>
+        <HorizontalRuler className="light" />
+        <StyledQuestion>Wie läuft das ab?</StyledQuestion>
+        <Steps steps={content.steps} />
+      </>
+    )}
   </StyledSection>
 );

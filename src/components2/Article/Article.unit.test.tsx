@@ -23,7 +23,7 @@ describe('<ArticleHeader>', () => {
       </Provider>
     );
     expect(getByRole('banner')).toBeInTheDocument();
-    expect(getAllByRole('button', { name: 'Menü öffnen' })).toHaveLength(2);
-    expect(getAllByRole('heading')).toHaveLength(6);
+    expect(getAllByRole('button', { name: 'Menü öffnen' })).toHaveLength(1);
+    expect(getAllByRole('heading')).toHaveLength(4);
   });
 });

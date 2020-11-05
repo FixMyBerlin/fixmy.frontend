@@ -3,8 +3,8 @@ Der Schutz von personenbezogenen Daten ist der Stadtverwaltung Aachen sehr wicht
 Im Hinblick auf die verwendeten Begrifflichkeiten, wie z.B. „Verantwortlicher“ oder „personenbezogene Daten“ verweisen wir auf die Definitionen im Art. 4 der DS-GVO.
 
 ## Verantwortliche Stelle
-Der Verantwortliche im Sinne des Datenschutzrechts ist:<br />
-Stadt Aachen, Der Oberbürgermeister<br />
+Die Verantwortliche im Sinne des Datenschutzrechts ist:<br />
+Stadt Aachen, Die Oberbürgermeisterin<br />
 Markt, 52058 Aachen<br />
 Telefon: +49 (0) 241-432 0<br />
 E-Mail: [info@mail.aachen.de](mailto:info@mail.aachen.de)<br />

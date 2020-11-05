@@ -20,11 +20,14 @@ async function handleSubmitRequest(
         respType
       ]();
     } else {
+      // FIXME: we don't need this
       await ky(reportsEndpointUrl, { method, json, headers });
     }
   } catch (e) {
     if (e.response != null) {
-      response.error = await e.response.json();
+      const errorJson = await e.response.json();
+      const errorDetail = errorJson.detail || 'Failed to submit report';
+      throw new Error(errorDetail);
     } else {
       throw e;
     }

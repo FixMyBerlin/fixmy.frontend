@@ -69,6 +69,16 @@ const getMarkerSrc = (markerData: { status: string }): string => {
   return markerSet[status];
 };
 
+/**
+ * Return landing page content depending on whether report submission is
+ * enabled or disabled for the currently active region
+ */
+const getLandingContent = () =>
+  config.reports.enabled
+    ? config.reports.landing.reportsActive
+    : config.reports.landing.reportsInactive;
+
 export default {
+  getLandingContent,
   getMarkerSrc
 };

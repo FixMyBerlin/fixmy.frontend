@@ -555,10 +555,10 @@
     "defaultMessage": "Ratings by frequency of bike travel"
   },
   "research.05_results.chart4.1": {
-    "defaultMessage": "without cycle path"
+    "defaultMessage": "with cycle path"
   },
   "research.05_results.chart4.2": {
-    "defaultMessage": "with cycle path"
+    "defaultMessage": "without cycle path"
   },
   "research.05_results.chart4.3": {
     "defaultMessage": "without cycle path (frequent bike user)"

@@ -191,7 +191,7 @@ actions.submitReport = () => async (dispatch, getState) => {
     const submittedReport = await apiSubmitReport(reportPayload);
     dispatch({ type: types.SUBMIT_REPORT_COMPLETE, submittedReport });
   } catch (e) {
-    const errMsg = 'Beim Übermitteln der Meldung ist etwas schiefgelaufen.';
+    const errMsg = `Beim Übermitteln der Meldung ist etwas schiefgelaufen: ${e.message}`;
     dispatch({ type: types.SUBMIT_REPORT_ERROR }); // update UI
     dispatch(
       errorStateActions.addError({
