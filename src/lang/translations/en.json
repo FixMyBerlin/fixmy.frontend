@@ -194,6 +194,12 @@
   "research.03_concept.p9.heading": {
     "defaultMessage": "Questions about the individual"
   },
+  "research.04_dataset.downloadCaption": {
+    "defaultMessage": "(Format: JSON compressed (ZIP), Size: 5,2 MB, License: ODbL)"
+  },
+  "research.04_dataset.downloadLabel": {
+    "defaultMessage": "Download dataset"
+  },
   "research.04_dataset.heading": {
     "defaultMessage": "Download the dataset of the survey results"
   },
@@ -207,10 +213,7 @@
     "defaultMessage": "this PDF overview of the specifications"
   },
   "research.04_dataset.p2": {
-    "defaultMessage": "Clicke {linkResults}"
-  },
-  "research.04_dataset.p2.linkResults": {
-    "defaultMessage": "here to download the results of the survey as a JSON dataset"
+    "defaultMessage": "Download the results of the survey in a JSON-formatted data set:"
   },
   "research.05_results.chart1.1": {
     "defaultMessage": "male"
