@@ -1,7 +1,19 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components';
+import config from '~/config';
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import Link from '~/components2/Link';
+import { AnchorButton } from '~/components2/Button';
+import ButtonWrapper from '../components/ButtonWrapper';
+
+const DownloadInfo = styled.div`
+  font-size: 14px;
+  color: ${config.colors.midgrey};
+  padding: 0 0 15px 0;
+  line-height: 1.4;
+  margin-top: 16px;
+`;
 
 const SectionDataset = ({ toc, tocAnchor }: SectionProps) => (
   <>
@@ -51,6 +63,27 @@ const SectionDataset = ({ toc, tocAnchor }: SectionProps) => (
         }}
       />
     </Paragraph>
+
+    <Paragraph>
+      Die Erklärung zu den Spalten in dem JSON-Datensatz finden Sie in{' '}
+      <Link href="/uploads/kataster-ki/Spezifikation_Ausgabeformat_des_Strassenchecks.pdf">
+        diesem PDF zu den Spezifikationen
+      </Link>
+      . Laden Sie sich die Ergebnisse der Umfrage über den folgenden Button als
+      JSON-Datensatz herunter.
+    </Paragraph>
+
+    <ButtonWrapper>
+      <AnchorButton
+        flat
+        href="https://raw.githubusercontent.com/FixMyBerlin/fixmy.data/master/SurveyResults_200414.json"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Datensatz herunterladen
+      </AnchorButton>
+      <DownloadInfo>(Format: JSON, Größe: ~41 MB,Format: ODbL)</DownloadInfo>
+    </ButtonWrapper>
   </>
 );
 
