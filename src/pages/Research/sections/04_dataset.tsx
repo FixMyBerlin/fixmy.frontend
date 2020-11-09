@@ -50,39 +50,29 @@ const SectionDataset = ({ toc, tocAnchor }: SectionProps) => (
     <Paragraph>
       <FormattedMessage
         id="research.04_dataset.p2"
-        defaultMessage="Unter folgendem Link gelangen Sie zu den {linkResults}, die sie dort Einsehen und Herunterladen können."
-        values={{
-          linkResults: (
-            <Link href="https://raw.githubusercontent.com/FixMyBerlin/fixmy.data/master/SurveyResults_200414.json">
-              <FormattedMessage
-                id="research.04_dataset.p2.linkResults"
-                defaultMessage="Ergebnissen der Umfrage als JSON-Datensatz"
-              />
-            </Link>
-          )
-        }}
+        defaultMessage="Laden Sie sich die Ergebnisse der Umfrage über den folgenden Button als
+        JSON-Datensatz herunter:"
       />
-    </Paragraph>
-
-    <Paragraph>
-      Die Erklärung zu den Spalten in dem JSON-Datensatz finden Sie in{' '}
-      <Link href="/uploads/kataster-ki/Spezifikation_Ausgabeformat_des_Strassenchecks.pdf">
-        diesem PDF zu den Spezifikationen
-      </Link>
-      . Laden Sie sich die Ergebnisse der Umfrage über den folgenden Button als
-      JSON-Datensatz herunter.
     </Paragraph>
 
     <ButtonWrapper>
       <AnchorButton
         flat
-        href="https://raw.githubusercontent.com/FixMyBerlin/fixmy.data/master/SurveyResults_200414.json"
+        href="https://fmb-aws-bucket.s3.eu-central-1.amazonaws.com/KatasterKI/SurveyResults_200414.json.zip"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Datensatz herunterladen
+        <FormattedMessage
+          id="research.04_dataset.downloadLabel"
+          defaultMessage="Datensatz herunterladen"
+        />
       </AnchorButton>
-      <DownloadInfo>(Format: JSON, Größe: ~41 MB,Format: ODbL)</DownloadInfo>
+      <DownloadInfo>
+        <FormattedMessage
+          id="research.04_dataset.downloadCaption"
+          defaultMessage="(Format: JSON komprimiert (ZIP), Größe: 5,2 MB, Lizenz: ODbL)"
+        />
+      </DownloadInfo>
     </ButtonWrapper>
   </>
 );
