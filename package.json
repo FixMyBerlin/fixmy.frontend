@@ -141,7 +141,7 @@
     "core-js": "^3.6.4",
     "d3-format": "^1.4.4",
     "d3-scale": "^3.2.1",
-    "debug": "^4.1.1",
+    "debug": "^4.2.0",
     "dot-prop-immutable": "^1.6.0",
     "dotenv": "^8.2.0",
     "formik": "^2.1.4",
