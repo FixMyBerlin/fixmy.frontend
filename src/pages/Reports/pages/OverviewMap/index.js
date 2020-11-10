@@ -98,7 +98,7 @@ class OverviewMap extends Component {
     const { selectedReport, match } = this.props;
     const hasDetailId = match.params.id;
 
-    this.props.setSelectedReport(reportItem);
+    this.props.setSelectedReport(clickedId);
     this.updateSelectedReportPosition();
 
     if (hasDetailId && selectedReport?.id !== clickedId) {
@@ -127,10 +127,7 @@ class OverviewMap extends Component {
 
   handleDeepLinkLoad() {
     const linkedReportId = this.props.match.params.id;
-    const linkedReport = this.props.reports.find(
-      (r) => r.id === +linkedReportId
-    );
-    this.props.setSelectedReport(linkedReport, true);
+    this.props.setSelectedReport(linkedReportId, true);
   }
 
   updateSelectedReportPosition() {

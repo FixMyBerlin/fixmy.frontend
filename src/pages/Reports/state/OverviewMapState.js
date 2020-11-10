@@ -54,25 +54,31 @@ actions.loadReportsData = () => async (dispatch) => {
   await loadReportsThunk(dispatch);
 };
 
-actions.setSelectedReport = (selectedReport, zoomIn) => async (
+actions.setSelectedReport = (selectedReportId, zoomIn = false) => async (
   dispatch,
   getState
 ) => {
-  const {
-    reports,
-    reportFetchState
-  } = getState().ReportsState.OverviewMapState;
+  let selectedReport = null;
 
-  if (!reports.length && reportFetchState !== 'pending') {
-    logger(reportFetchState);
-    await loadReportsThunk(dispatch);
+  if (selectedReportId != null) {
+    const {
+      reports,
+      reportFetchState
+    } = getState().ReportsState.OverviewMapState;
+
+    if (!reports.length && reportFetchState !== 'pending') {
+      logger(reportFetchState);
+      await loadReportsThunk(dispatch);
+    }
+
+    selectedReport = reports.find((report) => report.id === selectedReportId);
   }
 
   dispatch({
     type: types.SET_SELECTED_REPORT,
     payload: {
-      selectedReport: selectedReport || null,
-      zoomIn: zoomIn || false
+      selectedReport,
+      zoomIn
     }
   });
 };
