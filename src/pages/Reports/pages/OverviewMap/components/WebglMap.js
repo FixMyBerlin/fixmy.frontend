@@ -2,12 +2,14 @@ import React, { PureComponent } from 'react';
 import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import debug from 'debug';
 
 import config from '~/pages/Reports/config';
-import logger from '~/utils/logger';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusteredMarkers from './ClusteredMarkers';
 import FMCPropTypes from '~/pages/Reports/propTypes';
+
+const logger = debug('fmc:reports:WebglMap.js');
 
 function toFeature(d) {
   const { geometry, ...properties } = d;
@@ -46,23 +48,40 @@ class WebglMap extends PureComponent {
       return;
     }
 
-    const { center, zoomIn, disabled, fitExtentOnPopupClose } = this.props;
+    const {
+      center,
+      zoomIn,
+      disabled,
+      fitExtentOnPopupClose,
+      isCTAButtonShifted
+    } = this.props;
 
     const zoomTarget = config.reports.overviewMap.zoomDeepLinkedMarkers || 16;
+
     if (center) {
       const newCameraOptions = { center };
+      if (isCTAButtonShifted) newCameraOptions.padding = { right: 400 };
       if (zoomIn && this.map.getZoom() < zoomTarget) {
         newCameraOptions.zoom = zoomTarget;
+        logger(`Ease map and zoom camera:`, newCameraOptions);
+      } else {
+        logger(`Ease map to camera:`, newCameraOptions);
       }
       this.map.easeTo(newCameraOptions);
     } else if (fitExtentOnPopupClose) {
       this.map.fitBounds(config.reportsMap.bounds);
+      logger('Fit maps to new bounds');
+    } else {
+      logger('Updated but no camera change', this.map.showPadding);
+      if (!isCTAButtonShifted && this.map.getPadding().right > 0)
+        this.map.easeTo({ padding: { right: 0 } });
     }
 
     this.toggleMapInteractivity(disabled);
   }
 
   onLoad(map) {
+    logger('onLoad');
     this.map = map;
     this.toggleZoomControl(true);
 
@@ -129,7 +148,8 @@ WebglMap.propTypes = {
   onMove: PropTypes.func,
   reportsData: PropTypes.arrayOf(FMCPropTypes.report),
   selectedReport: FMCPropTypes.report,
-  zoomControlPosition: PropTypes.string
+  zoomControlPosition: PropTypes.string,
+  isCTAButtonShifted: PropTypes.bool
 };
 
 WebglMap.defaultProps = {
@@ -143,7 +163,8 @@ WebglMap.defaultProps = {
   zoomControlPosition: 'bottom-left',
   fitExtentOnPopupClose: true,
   selectedReport: null,
-  error: null
+  error: null,
+  isCTAButtonShifted: false
 };
 
 export default withRouter(WebglMap);

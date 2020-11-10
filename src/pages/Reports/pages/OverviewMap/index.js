@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route } from 'react-router-dom';
+import debug from 'debug';
 
 import styled from 'styled-components';
 
@@ -19,6 +20,8 @@ import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/apps/Map/components/LocatorControl';
 import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
+
+const logger = debug('fmc:reports:OverviewMap.js');
 
 const MapView = styled.div`
   height: 100%;
@@ -95,6 +98,7 @@ class OverviewMap extends Component {
   };
 
   onMarkerClick = (el, clickedId) => {
+    logger('Handling marker click');
     const { selectedReport, match } = this.props;
     const hasDetailId = match.params.id;
 
@@ -126,6 +130,7 @@ class OverviewMap extends Component {
   }
 
   handleDeepLinkLoad(linkedReportId) {
+    logger('Handling deep link load');
     this.props.setSelectedReport(linkedReportId, true);
   }
 
@@ -193,6 +198,7 @@ class OverviewMap extends Component {
             detailId={match.params.id}
             zoomControlPosition="top-left"
             fitExtentOnPopupClose={false}
+            isCTAButtonShifted={isCTAButtonShifted}
           />
           {this.state.isLoading ? null : mapControls}
           {selectedReport && !hasDetailId && (

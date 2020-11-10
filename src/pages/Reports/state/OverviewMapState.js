@@ -3,7 +3,7 @@ import { apiFetchReports } from '../apiservice';
 import { actions as errorStateActions } from './ErrorState';
 import initialState from './initialState';
 
-const logger = debug('fmc:reports');
+const logger = debug('fmc:reports:OverviewMapState.js');
 
 const actions = {};
 const types = {};
@@ -61,19 +61,25 @@ actions.setSelectedReport = (selectedReportId, zoomIn = false) => async (
   let selectedReport = null;
 
   if (selectedReportId != null) {
+    logger(`setting selected report ${selectedReportId}`);
     const {
       reports,
       reportFetchState
     } = getState().ReportsState.OverviewMapState;
 
     if (!reports.length && reportFetchState !== 'pending') {
-      logger(reportFetchState);
       await loadReportsThunk(dispatch);
     }
 
     selectedReport = reports.find(
       (report) => report.id === parseInt(selectedReportId, 10)
     );
+    if (selectedReport == null) {
+      logger('selected report is not available');
+      return;
+    }
+  } else {
+    logger('reset selected report');
   }
 
   dispatch({
