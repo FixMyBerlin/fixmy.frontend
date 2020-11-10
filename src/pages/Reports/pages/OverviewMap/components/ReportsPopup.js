@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import idx from 'idx';
 import { connect } from 'react-redux';
 
 import config from '~/pages/Reports/config';
