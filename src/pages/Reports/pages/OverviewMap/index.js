@@ -94,15 +94,15 @@ class OverviewMap extends Component {
     );
   };
 
-  onMarkerClick = (el, reportItem) => {
+  onMarkerClick = (el, clickedId) => {
     const { selectedReport, match } = this.props;
     const hasDetailId = match.params.id;
 
     this.props.setSelectedReport(reportItem);
     this.updateSelectedReportPosition();
 
-    if (hasDetailId && selectedReport.id !== reportItem.id) {
-      this.props.history.push(`${config.routes.reports.map}/${reportItem.id}`);
+    if (hasDetailId && selectedReport?.id !== clickedId) {
+      this.props.history.push(`${config.routes.reports.map}/${clickedId}`);
     }
   };
 
