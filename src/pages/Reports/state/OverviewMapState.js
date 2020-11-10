@@ -71,7 +71,9 @@ actions.setSelectedReport = (selectedReportId, zoomIn = false) => async (
       await loadReportsThunk(dispatch);
     }
 
-    selectedReport = reports.find((report) => report.id === selectedReportId);
+    selectedReport = reports.find(
+      (report) => report.id === parseInt(selectedReportId, 10)
+    );
   }
 
   dispatch({

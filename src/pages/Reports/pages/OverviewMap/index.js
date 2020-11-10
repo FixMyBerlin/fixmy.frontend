@@ -66,9 +66,9 @@ class OverviewMap extends Component {
         this.setState({ mapCenter: selectedReport.geometry.coordinates });
       }
     } else if (!hasReportBeenSelected) {
-      const isBeingLoadedWithDeepLink = this.props.match.params.id;
-      if (isBeingLoadedWithDeepLink) {
-        this.handleDeepLinkLoad();
+      const deepLinkedReportId = this.props.match.params.id;
+      if (deepLinkedReportId) {
+        this.handleDeepLinkLoad(deepLinkedReportId);
       } else if (prevReport) {
         // Unsetting report
 
@@ -125,8 +125,7 @@ class OverviewMap extends Component {
     if (this.props.selectedReport) this.updateSelectedReportPosition();
   }
 
-  handleDeepLinkLoad() {
-    const linkedReportId = this.props.match.params.id;
+  handleDeepLinkLoad(linkedReportId) {
     this.props.setSelectedReport(linkedReportId, true);
   }
 
