@@ -48,11 +48,11 @@ class WebglMap extends PureComponent {
 
     const { center, zoomIn, disabled, fitExtentOnPopupClose } = this.props;
 
+    const zoomTarget = config.reports.overviewMap.zoomDeepLinkedMarkers || 16;
     if (center) {
       const newCameraOptions = { center };
-      if (zoomIn) {
-        newCameraOptions.zoom =
-          config.reports.overviewMap.zoomDeepLinkedMarkers || 16;
+      if (zoomIn && this.map.getZoom() < zoomTarget) {
+        newCameraOptions.zoom = zoomTarget;
       }
       this.map.easeTo(newCameraOptions);
     } else if (fitExtentOnPopupClose) {
