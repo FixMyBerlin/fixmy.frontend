@@ -4,12 +4,22 @@ import PropTypes from 'prop-types';
 import { Plus } from 'react-feather';
 import config from '~/pages/Reports/config';
 
-const Button = styled.button`
+const ButtonWrapper = styled.div`
   position: absolute;
-  bottom: 50px;
+  top: 0;
   left: 0;
-  right: 0;
-  margin: ${(props) => (props.shiftLeft ? '0 auto 0 15%' : 'auto')};
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 50px;
+  padding-right: ${(props) => (props.shiftLeft ? '400px' : '0')};
+  transition: padding 0.3s;
+  pointer-events: none;
+`;
+
+const Button = styled.button`
   width: 220px;
   height: 48px;
   border: none;
@@ -25,6 +35,7 @@ const Button = styled.button`
   align-items: center;
 
   cursor: pointer;
+  pointer-events: auto;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5) &[disabled] {
     box-shadow: none;
     background-color: ${config.colors.inactivegrey};
@@ -43,14 +54,16 @@ const PlusIcon = styled(Plus)`
 `;
 
 const CTAButton = ({ onTab, shiftLeft }) => (
-  <Button onClick={onTab} className="wiggle" shiftLeft={shiftLeft}>
-    {config.reports.enabled && (
-      <>
-        <PlusIcon /> Neue Meldung
-      </>
-    )}
-    {!config.reports.enabled && <>Mehr Infos</>}
-  </Button>
+  <ButtonWrapper shiftLeft={shiftLeft}>
+    <Button onClick={onTab} className="wiggle">
+      {config.reports.enabled && (
+        <>
+          <PlusIcon /> Neue Meldung
+        </>
+      )}
+      {!config.reports.enabled && <>Mehr Infos</>}
+    </Button>
+  </ButtonWrapper>
 );
 
 CTAButton.propTypes = {
