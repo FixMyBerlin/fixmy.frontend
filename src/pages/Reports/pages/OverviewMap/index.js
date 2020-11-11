@@ -21,7 +21,7 @@ import LocatorControl from '~/apps/Map/components/LocatorControl';
 import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 
-const logger = debug('fmc:reports:OverviewMap.js');
+const logger = debug('fmc:reports:OverviewMap');
 
 const MapView = styled.div`
   height: 100%;
@@ -52,7 +52,15 @@ class OverviewMap extends Component {
   }
 
   componentDidMount() {
-    this.props.loadReportsData();
+    const init = async () => {
+      await this.props.loadReportsData();
+      const deepLinkedReportId = this.props.match.params.id;
+      if (deepLinkedReportId) {
+        logger('Handling deep link load');
+        this.props.setSelectedReport(deepLinkedReportId, true);
+      }
+    };
+    init();
   }
 
   componentDidUpdate(prevProps) {
@@ -68,20 +76,15 @@ class OverviewMap extends Component {
         // eslint-disable-next-line react/no-did-update-set-state
         this.setState({ mapCenter: selectedReport.geometry.coordinates });
       }
-    } else if (!hasReportBeenSelected) {
-      const deepLinkedReportId = this.props.match.params.id;
-      if (deepLinkedReportId) {
-        this.handleDeepLinkLoad(deepLinkedReportId);
-      } else if (prevReport) {
-        // Unsetting report
+    } else if (!hasReportBeenSelected && prevReport) {
+      // Unsetting report
 
-        // setState is okay because conditionals will prevent this
-        // from occuring in a loop
-        // eslint-disable-next-line react/no-did-update-set-state
-        this.setState({
-          mapCenter: null
-        });
-      }
+      // setState is okay because conditionals will prevent this
+      // from occuring in a loop
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        mapCenter: null
+      });
     }
   }
 
@@ -127,11 +130,6 @@ class OverviewMap extends Component {
 
   onMapMove() {
     if (this.props.selectedReport) this.updateSelectedReportPosition();
-  }
-
-  handleDeepLinkLoad(linkedReportId) {
-    logger('Handling deep link load');
-    this.props.setSelectedReport(linkedReportId, true);
   }
 
   updateSelectedReportPosition() {
