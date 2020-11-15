@@ -1,36 +1,38 @@
 import { Map } from 'mapbox-gl';
 import { ArcLayer as DeckArcLayer } from '@deck.gl/layers';
-import { MapboxLayer } from '@deck.gl/mapbox';
 import { useEffect } from 'react';
+import DeckGL from '@deck.gl/react';
 import { getRandomTilt } from '~/utils/geo/arcLayer/ArcLayerUtils';
+import { LonLatCoords } from '~/utils/geo/geoTypes';
 
-type FixedSizeArray<N extends number, T, M extends string = '0'> = {
-  readonly [k in M]: any;
-} & { length: N } & ReadonlyArray<T>;
-type LonLatList = FixedSizeArray<2, number>;
 type Arc = {
-  source: LonLatList;
-  target: LonLatList;
+  source: LonLatCoords;
+  sourceName: string;
+  target: LonLatCoords;
+  targetName: string;
 };
 export type ArcList = Arc[];
 type ArcLayerProps = {
-  map: Map;
+  deck: DeckGL.DeckGL;
   arcData: ArcList;
-  color: FixedSizeArray<3, number>;
+  color: [number, number, number];
 };
 
-const ArcLayer = ({ map, arcData, color }: ArcLayerProps): void => {
+// TODO: use a meaningful toolTip message
+const getToolTip = (arc: Arc): string | undefined =>
+  arc && `From ${arc.sourceName} to ${arc.targetName}`;
+
+const ArcLayer = ({ deck, arcData, color }: ArcLayerProps): void => {
   // basically we always create a new layer when new input data arrives, which might sound ineffective,
   // but it is fine with Deck.GL, see https://deck.gl/docs/developer-guide/performance
 
   useEffect(() => {
-    if (!map) return;
+    if (!deck) return;
 
     const arcLayerId = 'arcs';
 
-    const arcLayer = new MapboxLayer({
+    const arcLayer = new DeckArcLayer({
       id: arcLayerId,
-      type: DeckArcLayer,
       data: arcData,
       getSourcePosition: (d) => d.source,
       getTargetPosition: (d) => d.target,
@@ -41,15 +43,20 @@ const ArcLayer = ({ map, arcData, color }: ArcLayerProps): void => {
       // add a little bit of random tilt to differentiate arcs with the same combination of source and destination
       getTilt: getRandomTilt()
     });
-    map.addLayer(arcLayer);
+    deck.setProps({
+      layers: [...deck.layers, arcLayer]
+    });
 
     // cleanup-logic
     // FIXME: take care of eslint complaints
     // eslint-disable-next-line consistent-return
     return () => {
-      map.removeLayer(arcLayerId);
+      deck.setProps({
+        layers: [deck.layers.filter((layer) => layer !== arcLayer)],
+        getTooltip: getToolTip
+      });
     };
-  }, [arcData, map]);
+  }, [arcData, deck]);
   return null;
 };
 

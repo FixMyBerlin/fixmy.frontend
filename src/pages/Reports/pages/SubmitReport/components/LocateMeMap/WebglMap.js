@@ -6,7 +6,7 @@ import MapboxGL from 'mapbox-gl';
 
 import config from '~/pages/Reports/config';
 import { animateView, setView } from '~/apps/Map/map-utils';
-import BaseMap from '~/pages/Reports/components/BaseMap';
+import { BaseMap } from '~/pages/Reports/components/BaseMap';
 
 class WebglMap extends PureComponent {
   map = null;

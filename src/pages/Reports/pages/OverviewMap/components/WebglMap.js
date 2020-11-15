@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import config from '~/pages/Reports/config';
 import logger from '~/utils/logger';
-import BaseMap from '~/pages/Reports/components/BaseMap';
+import { BaseMap } from '~/pages/Reports/components/BaseMap';
 import ClusteredMarkers from './ClusteredMarkers';
 import FMCPropTypes from '~/pages/Reports/propTypes';
 import ArcLayer from '~/utils/geo/arcLayer/ArcLayer';
@@ -41,6 +41,8 @@ class WebglMap extends PureComponent {
   nav = new MapboxGL.NavigationControl({ showCompass: false });
 
   map = null;
+  // instance of https://deck.gl/docs/api-reference/core/deck
+  deck = null;
 
   componentDidUpdate() {
     if (!this.map) {
@@ -63,8 +65,9 @@ class WebglMap extends PureComponent {
     this.toggleMapInteractivity(disabled);
   }
 
-  onLoad(map) {
+  onLoad(map, deck) {
     this.map = map;
+    this.deck = deck;
     this.toggleZoomControl(true);
 
     // in order to rerender Report Markers
@@ -120,7 +123,7 @@ class WebglMap extends PureComponent {
           />
         )}
         <ArcLayer
-          map={this.map}
+          deck={this.deck}
           arcData={arcData}
           color={config.reports.overviewMap.arcColor}
         />

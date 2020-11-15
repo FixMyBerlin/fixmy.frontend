@@ -38,16 +38,6 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.[j|t]sx?$/,
-        include: Path.resolve(__dirname, '../src'),
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        options: {
-          emitWarning: true,
-          cache: true
-        }
-      },
-      {
         test: /\.css$/,
         use: [
           'style-loader',
