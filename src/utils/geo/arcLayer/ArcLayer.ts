@@ -1,14 +1,12 @@
-import { Map } from 'mapbox-gl';
 import { ArcLayer as DeckArcLayer } from '@deck.gl/layers';
 import { useEffect } from 'react';
 import DeckGL from '@deck.gl/react';
 import { getRandomTilt } from '~/utils/geo/arcLayer/ArcLayerUtils';
-import { LonLatCoords } from '~/utils/geo/geoTypes';
 
 type Arc = {
-  source: LonLatCoords;
+  source: [number, number];
   sourceName: string;
-  target: LonLatCoords;
+  target: [number, number];
   targetName: string;
 };
 export type ArcList = Arc[];
