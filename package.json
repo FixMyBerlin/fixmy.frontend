@@ -152,7 +152,7 @@
     "intersection-observer": "^0.10.0",
     "jsonschema": "^1.2.6",
     "ky": "^0.24.0",
-    "ky-universal": "^0.5.0",
+    "ky-universal": "^0.8.2",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
     "mapbox-gl": "^1.11.1",
