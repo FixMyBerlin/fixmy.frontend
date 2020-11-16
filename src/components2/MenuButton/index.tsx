@@ -18,7 +18,6 @@ const MenuButton = ({ className = null }) => {
       aria-expanded={isMenuOpen}
       data-cy="hamburger-button"
       onClick={() => dispatch(toggle())}
-      // onKeyUp={handleKey}
       classes={{ root: className }}
     >
       <MenuButtonSVG />

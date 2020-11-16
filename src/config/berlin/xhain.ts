@@ -41,14 +41,14 @@ const xhain: DistrictConfig = {
           kiez: 'Samariterviertel',
           region: 'Friedrichshain',
           schedule: 'Sonntags 13-19 Uhr',
-          status: 'open'
+          status: 'paused'
         },
         {
           street: 'Richard-Sorge-Straße',
           kiez: 'Richard-Sorge-Viertel',
           region: 'Friedrichshain',
           schedule: 'Sonntags 13-19 Uhr',
-          status: 'open'
+          status: 'paused'
         },
         {
           street: 'Gärtnerstraße',
@@ -60,28 +60,28 @@ const xhain: DistrictConfig = {
           street: 'Krossener Straße / Gabriel-Max-Straße',
           kiez: 'Boxhagener Platz',
           region: 'Friedrichshain',
-          status: 'open',
+          status: 'paused',
           schedule: 'Freitags 16-20 Uhr'
         },
         {
           street: 'Lausitzer Platz',
           kiez: 'Lausitzer Platz',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'paused',
           schedule: 'Sonntags 13-19 Uhr'
         },
         {
           street: 'Waldemarstraße',
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'paused',
           schedule: 'Sonntags 15 – 19 (Ferienzeit)'
         },
         {
           street: 'Wassertorstraße',
           kiez: 'Moritzplatz',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'paused',
           schedule: 'Sonntags 13 – 19'
         },
         {
@@ -97,13 +97,13 @@ const xhain: DistrictConfig = {
           region: 'Kreuzberg',
           schedule:
             'In der Ferienzeit: Sonntags 15–18 Uhr, ab 01.08.: Samstags 11–15 Uhr',
-          status: 'open'
+          status: 'closed'
         },
         {
           street: 'Böckstraße',
           kiez: 'Graefekiez',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'paused',
           schedule: 'Mittwochs 14-18 Uhr'
         },
         {
@@ -116,7 +116,7 @@ const xhain: DistrictConfig = {
           street: 'Lübbener Straße',
           kiez: 'Wrangelkiez',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'paused',
           schedule: 'Ab 9.August Sonntags 13-19 Uhr'
         },
         {
@@ -135,14 +135,14 @@ const xhain: DistrictConfig = {
           street: 'Simplonstraße',
           kiez: 'Boxhagener Platz',
           region: 'Friedrichshain',
-          status: 'open',
+          status: 'paused',
           schedule: 'Sonntags 15-19 Uhr (Ferienzeit)'
         },
         {
           street: 'Paul-Lincke-Ufer / Forsterstraße',
           kiez: 'Reichenberger Straße',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'paused',
           schedule: 'Sonntags 15 – 19 Uhr (Ferienzeit)'
         },
         {
@@ -155,7 +155,7 @@ const xhain: DistrictConfig = {
           street: 'Dresdener Straße',
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'paused',
           schedule: 'Sonntags 15-18 Uhr (Ferienzeit)'
         },
         {
@@ -175,7 +175,7 @@ const xhain: DistrictConfig = {
           street: 'Dieffenbachstraße',
           kiez: 'Graefekiez',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'paused',
           schedule: 'Ab 2.August Sonntags 13-19 Uhr'
         }
       ]

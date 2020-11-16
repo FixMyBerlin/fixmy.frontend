@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import { Dispatch } from 'redux';
+import { History } from 'history';
 
 import config from '~/pages/Reports/config';
 import { actions } from '~/pages/Reports/state/SubmitReportState';
@@ -53,8 +55,8 @@ const FlexWrapper = styled.div`
 const StyledMenuButton = styled(MenuButton)`
   padding: 8px;
   background-color: #353535; /*TODO: factor out color to config */
-  border-radius: ${config.flatButtons ? '0' : '2px'};
-  box-shadow: ${config.flatButtons
+  border-radius: ${config.reports.flatButtons ? '0' : '2px'};
+  box-shadow: ${config.reports.flatButtons
     ? 'initial'
     : '0 2px 4px 0 rgba(0, 0, 0, 0.5)'};
 `;
@@ -77,7 +79,7 @@ const StyledHeading = styled.h2`
 `;
 
 const StyledButton = styled.div`
-  border-radius: ${config.flatButtons ? '0' : '4px'};
+  border-radius: ${config.reports.flatButtons ? '0' : '4px'};
   border: none;
   outline: none;
   display: inline-block;
@@ -91,12 +93,12 @@ const StyledButton = styled.div`
   width: 200px;
   padding: 10px 18px;
   box-shadow: ${
-    config.flatButtons ? 'initial' : '0 0 2px 1px rgba(0, 0, 0, 0.25)'
+    config.reports.flatButtons ? 'initial' : '0 0 2px 1px rgba(0, 0, 0, 0.25)'
   };
 
   &:hover {
     box-shadow: ${
-      config.flatButtons ? 'initial' : '0 0 8px 1px rgba(0, 0, 0, 0.4)'
+      config.reports.flatButtons ? 'initial' : '0 0 8px 1px rgba(0, 0, 0, 0.4)'
     };
     opacity: 1;
   }
@@ -148,9 +150,13 @@ const OnlyMobile = styled.span`
   `}
 `;
 
-const navigateToMap = (dispatch, history) => {
+const navigateToMap = (dispatch: Dispatch, history: History) => {
   dispatch(actions.setLocationModeGeocoding());
   history.push(config.routes.reports.new);
+};
+
+const navigateToOverview = (dispatch: Dispatch, history: History) => {
+  history.push(config.routes.reports.map);
 };
 
 const ModeChooserLink = () => (
@@ -162,18 +168,28 @@ const ModeChooserLink = () => (
   </StyledButton>
 );
 
-const MapButton = ({ onClick }) => (
+const MapButton = ({ onClick, children = null }) => (
   <StyledButton
     className="wiggle"
     data-cy="reports-landing-cta"
     onClick={onClick}
   >
-    <strong>Sagen Sie uns wo</strong>
-    <br /> in 30 Sekunden
+    {!children && (
+      <>
+        <strong>Sagen Sie uns wo</strong>
+        <br /> in 30 Sekunden
+      </>
+    )}
+    {children}
   </StyledButton>
 );
 
-const TopSection = ({ dispatch, history }) => (
+type Props = {
+  dispatch: Dispatch;
+  history: History;
+};
+
+const TopSection = ({ dispatch, history }: Props) => (
   <Section>
     <MenuButton whiteFill="true" />
     <FlexWrapper>
@@ -188,12 +204,21 @@ const TopSection = ({ dispatch, history }) => (
       <StyledHeading data-cy="reports-landing-header">
         {config.reports.landing?.title}
       </StyledHeading>
-      <OnlyMobile>
-        <ModeChooserLink />
-      </OnlyMobile>
-      <OnlyDesktop>
-        <MapButton onClick={() => navigateToMap(dispatch, history)} />
-      </OnlyDesktop>
+      {config.reports.enabled && (
+        <>
+          <OnlyMobile>
+            <ModeChooserLink />
+          </OnlyMobile>
+          <OnlyDesktop>
+            <MapButton onClick={() => navigateToMap(dispatch, history)} />
+          </OnlyDesktop>
+        </>
+      )}
+      {!config.reports.enabled && (
+        <MapButton onClick={() => navigateToOverview(dispatch, history)}>
+          Schauen Sie sich alle Meldungen an
+        </MapButton>
+      )}
     </FlexWrapper>
     <ScrollLink />
   </Section>

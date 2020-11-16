@@ -1,0 +1,119 @@
+[
+  {
+    "id": 4,
+    "url": "https://fixmyberlin-staging.netlify.app/api/projects/4",
+    "project_key": "FK-020",
+    "title": "Neue Fahrradstraße",
+    "description": "Die Glogauer Straße ist als Zubringer zum Görlitzer Park und Durchfahrt zur Oberbaumbrücke eine stark befahrene Radstrecke. Die Straße soll daher als Fahrradstraße umgwidmet werden. Die Machbarkeit soll im Jahr 2019 geprüft und bei einem positivem Ergebnis voraussichtlich in 2019 umgesetzt werden.",
+    "short_description": "Die Glogauer Straße wird zu einer Fahrradstraße.",
+    "category": "bike street",
+    "street_name": "Glogauer Straße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "unbekannt",
+    "construction_completed_date": null,
+    "phase": "draft",
+    "responsible": "Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [13.43565378662102, 52.49167098618408],
+        [13.43574183352529, 52.49176271973578],
+        [13.4374143916796, 52.49345700931438],
+        [13.43892283946466, 52.49499346330411]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.4374143916796, 52.49345700931438]
+    },
+    "length": 431,
+    "photos": [
+      {
+        "copyright": "Photo by Anthony Ginsbrook",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/Platzhalter_anthony-ginsbrook-225252-unsplash.jpg"
+      }
+    ],
+    "likes": 4
+  },
+  {
+    "id": 6,
+    "url": "https://fixmyberlin-staging.netlify.app/api/projects/6",
+    "project_key": "FK-001-2",
+    "title": "Errichtung eines Radfahrstreifens",
+    "description": "Zwischen Kottbuser Tor und Hallesches Tor gibt es bisher noch keine Radverkehrsanlagen. Typisch für eine Hauptverkehrsstraße ist das Verkehrsaufkommen auf der Gitschiner Straße / Skalitzer Straße sehr hoch. Eine gesicherte Fahrradführung ist also sehr wichtig. Ende 2017 konnte der 1. BA (Kottbusser Tor bis Böcklerstraße) abgeschlossen werden. Hier stehen für Radfahrer*innen in beiden Richtungen nun zwei Meter breite Radfahrstreifen zur Verfügung. Der 4. BA (Zossener Brücke bis Alexandrinenstr) wird voraussichtlich im Herbst 2019 abgeschlossen sein. Die Umsetzung der BA. 3 und 4 (Alexandrinenstraße bis Böcklerstraße) werden im Jahr 2020 folgen.",
+    "short_description": "Auf der Fahrbahn soll ein Radfahrstreifen markiert werden",
+    "category": "new cycling infrastructure",
+    "street_name": "Gitschiner Straße / Skalitzer Straße",
+    "borough": "Friedrichshain-Kreuzberg",
+    "side": 2,
+    "costs": null,
+    "draft_submitted": null,
+    "construction_started": null,
+    "construction_completed": "2019 /2020",
+    "construction_completed_date": "2020-12-31",
+    "phase": "execution",
+    "responsible": "SenUVK / Bezirksamt Friedrichshain-Kreuzberg",
+    "external_url": null,
+    "cross_section": null,
+    "faq": [],
+    "geometry": {
+      "type": "MultiLineString",
+      "coordinates": [
+        [
+          [13.39196938603253, 52.49794609954578],
+          [13.39223748854546, 52.49796936926107],
+          [13.3932339959752, 52.49805962702688],
+          [13.3942883619045, 52.4981667192273],
+          [13.39540109320607, 52.49830434173862]
+        ],
+        [
+          [13.39627833706286, 52.49836548436401],
+          [13.39648421399202, 52.4983759406485],
+          [13.39738738789134, 52.49838354595411],
+          [13.39783351632587, 52.4983348739409],
+          [13.399561674618, 52.49834865826171],
+          [13.40300617258397, 52.49836923869315],
+          [13.40617643612097, 52.498386080544]
+        ],
+        [
+          [13.40705964111121, 52.49839428339985],
+          [13.40834040880979, 52.49839652023859],
+          [13.40910811981809, 52.49842825636852],
+          [13.41010018236386, 52.49848084444068],
+          [13.41053440231461, 52.49851879410354],
+          [13.41133978193763, 52.49855994265284],
+          [13.41208691578946, 52.49859495143632],
+          [13.41253976293079, 52.49860281286509],
+          [13.41315810524703, 52.49856115158052],
+          [13.4136546145976, 52.49853029840036],
+          [13.41405175217077, 52.49851434606138],
+          [13.41420429863554, 52.4985137313159],
+          [13.41470143952053, 52.49856756888148],
+          [13.4158034324071, 52.4987339846373],
+          [13.41675516397391, 52.4988546189889],
+          [13.41724127579498, 52.49891023619531],
+          [13.41741353022934, 52.49893277354988]
+        ]
+      ]
+    },
+    "center": {
+      "type": "Point",
+      "coordinates": [13.40300617258397, 52.49836923869315]
+    },
+    "length": 1619,
+    "photos": [
+      {
+        "copyright": "IST-Zustand Bild: SGA Friedrichshain-Kreuzberg",
+        "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/FK-001-2_Gitschiener_Stra%C3%9Fe.jpg"
+      }
+    ],
+    "likes": 13
+  }
+]

@@ -64,8 +64,10 @@ module.exports = merge(common, {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
-              ident: 'postcss',
-              plugins: () => [Autoprefixer]
+              postcssOptions: {
+                ident: 'postcss',
+                plugins: () => [Autoprefixer]
+              }
             }
           }
         ]

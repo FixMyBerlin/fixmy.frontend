@@ -30,6 +30,8 @@ module.exports = {
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
+  collectCoverageFrom: ['src/**/*.{js,ts,tsx}'],
+  coveragePathIgnorePatterns: ['node_modules', 'stories.', '.test.'],
 
   // An array of directory names to be searched recursively up from the
   // requiring module's location
@@ -49,13 +51,9 @@ module.exports = {
   // The root directory that Jest should scan for tests and modules within
   rootDir: '../', // since config is not stored in project root
 
-  // The paths to modules that run some code to configure or set up the testing
-  // environment before each test
-  setupFiles: ['<rootDir>/jest/jest.setup.js'],
-
   // A list of paths to modules that run some code to configure or
   // set up the testing framework before each test file in the suite is executed.
-  setupFilesAfterEnv: ['<rootDir>/jest/jest.setupAfterEnv.js'],
+  setupFilesAfterEnv: ['<rootDir>/jest/jest.setup.js'],
 
   // An array of regexp pattern strings that are matched against all source
   // file paths, matched files will skip transformation

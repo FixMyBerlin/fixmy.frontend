@@ -9,4 +9,7 @@ export { default as List } from './Typography/List';
 
 export { Image, ImageMulti, ImageFull } from './Image';
 
-export { default as LocaleSwitcher } from './LocaleSwitcher';
+export interface SectionProps {
+  toc: string;
+  tocAnchor?: string;
+}

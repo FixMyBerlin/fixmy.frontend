@@ -1,21 +1,17 @@
-import fetchMock from 'fetch-mock';
-import { Response } from 'node-fetch';
+import { rest } from 'msw';
 import request from '../request';
 import store from '~/store';
 
-import { ApiError, NetworkError, TimeoutError } from '../errors';
+import { ApiError, TimeoutError } from '../errors';
 import { get, patch, post } from '../shorthands';
-import {
-  compileAbsoluteRoute,
-  delayResponse
-} from '~/services/api/tests/apiTestUtils';
+import { compileAbsoluteRoute } from '~/services/api/tests/apiTestUtils';
+import { mswServer } from '~/../jest/msw/mswServer';
 
 const SAMPLE_ROUTE = 'fakeEndpoint';
-const SAMPLE_JSON_VALUE = { hello: 'world' };
+const DUMMY_JSON = { doesnt: 'matter' };
 
 describe('API module', () => {
   afterEach(() => {
-    fetchMock.restore();
     jest.restoreAllMocks();
   });
 
@@ -23,10 +19,19 @@ describe('API module', () => {
     it('prefixes urls with the api base url defined in the app config', async () => {
       // match all requests ending with the stated relative route since the api
       //  will prepend it with a base url
-      fetchMock.mock(`end:${SAMPLE_ROUTE}`, {});
+      const pathToMatch = `*/${SAMPLE_ROUTE}`;
+      // set up request interception, do assertions in response resolver
+      mswServer.use(
+        rest.get(pathToMatch, (req, res, ctx) => {
+          // run assertions against the outgoing request
+          expect(req.url.toString()).toEqual(
+            compileAbsoluteRoute(SAMPLE_ROUTE)
+          );
+          return res(ctx.json(DUMMY_JSON));
+        })
+      );
+      // trigger request
       await request(SAMPLE_ROUTE);
-      const [url] = fetchMock.lastCall();
-      expect(url).toEqual(compileAbsoluteRoute(SAMPLE_ROUTE));
     });
 
     it('adds user auth token from redux store to request header', async () => {
@@ -38,19 +43,22 @@ describe('API module', () => {
       };
       jest.mock('~/store');
       store.getState = () => mockState;
-      fetchMock.mock(`end:${SAMPLE_ROUTE}`, {});
-
+      mswServer.use(
+        rest.get(`*/${SAMPLE_ROUTE}`, (req, res, ctx) => {
+          expect(req.headers.get('authorization')).toEqual(`JWT ${testToken}`);
+          return res(ctx.json(DUMMY_JSON));
+        })
+      );
       await request(SAMPLE_ROUTE);
-
-      const fetchOptions = fetchMock.lastOptions();
-      // headers are wrapped in an array
-      // see https://github.com/node-fetch/node-fetch/issues/219#issuecomment-270946419
-      expect(fetchOptions.headers.Authorization).toContain(`JWT ${testToken}`);
     });
 
     it('can request text content', async () => {
       const testResponse = 'Hello world';
-      fetchMock.mock(`end:${SAMPLE_ROUTE}`, testResponse);
+      mswServer.use(
+        rest.get(`*/${SAMPLE_ROUTE}`, (_, res, ctx) =>
+          res(ctx.text(testResponse))
+        )
+      );
       const response = await request(SAMPLE_ROUTE, {
         accept: 'text'
       });
@@ -63,7 +71,12 @@ describe('API module', () => {
       const onSubmitSpy = jest.fn();
       const onFinishSpy = jest.fn();
 
-      fetchMock.mock(`end:${SAMPLE_ROUTE}`, SAMPLE_JSON_VALUE);
+      mswServer.use(
+        rest.get(`*/${SAMPLE_ROUTE}`, (_, res, ctx) => {
+          return res(ctx.json(DUMMY_JSON));
+        })
+      );
+
       await request(SAMPLE_ROUTE, {
         onSubmit: onSubmitSpy,
         onFinish: onFinishSpy
@@ -76,14 +89,20 @@ describe('API module', () => {
     it('calls the onSlowResponse callback on for slow requests', async () => {
       const onSlowResponseSpy = jest.fn();
 
-      fetchMock.mock(`end:${SAMPLE_ROUTE}`, SAMPLE_JSON_VALUE);
+      mswServer.use(
+        rest.get(`*/${SAMPLE_ROUTE}`, (_, res, ctx) =>
+          res(ctx.json(DUMMY_JSON))
+        )
+      );
       await request(SAMPLE_ROUTE, {
         onSlowResponse: onSlowResponseSpy
       });
 
-      expect(onSlowResponseSpy).toHaveBeenCalledTimes(0);
-
-      fetchMock.mock(`end:slowRoute`, delayResponse(SAMPLE_JSON_VALUE, 2));
+      mswServer.use(
+        rest.get(`*/slowRoute`, (_, res, ctx) =>
+          res(ctx.delay(2), ctx.json(DUMMY_JSON))
+        )
+      );
 
       await request('slowRoute', {
         onSlowResponse: onSlowResponseSpy,
@@ -99,16 +118,11 @@ describe('API module', () => {
           'identifies an error JSON response ' +
             'and rethrows it as ApiError stating its error message and error code',
           async () => {
-            const testResponseBody = { detail: 'Nicht gefunden.' };
-            const testResponseOptions = {
-              status: 404,
-              statusText: 'Not found'
-            };
-            const errResponse = new Response(
-              JSON.stringify(testResponseBody),
-              testResponseOptions
+            mswServer.use(
+              rest.get(`*/${SAMPLE_ROUTE}`, (_, res, ctx) =>
+                res(ctx.status(404), ctx.json({ detail: 'Nicht gefunden.' }))
+              )
             );
-            fetchMock.mock(`end:${SAMPLE_ROUTE}`, errResponse);
 
             let thrownError;
             try {
@@ -116,9 +130,10 @@ describe('API module', () => {
             } catch (e) {
               thrownError = e;
             }
+
             expect(thrownError).toBeInstanceOf(ApiError);
-            expect(thrownError.message).toBe(testResponseBody.detail);
-            expect(thrownError.code).toBe(testResponseOptions.status);
+            expect(thrownError.message).toBe('Nicht gefunden.');
+            expect(thrownError.code).toBe(404);
           }
         );
 
@@ -126,66 +141,74 @@ describe('API module', () => {
           'rethrows an error JSON as ApiError not containing a detail key ' +
             'without the response body',
           async () => {
-            // the key describing the error intentionally breaches our conventions for error answers
-            const testResponseBody = { customError: 'wholey moly' };
-            const testResponseOptions = {
-              status: 500
-            };
-            const errResponse = new Response(
-              JSON.stringify(testResponseBody),
-              testResponseOptions
+            mswServer.use(
+              rest.get(`*/${SAMPLE_ROUTE}`, (_, res, ctx) =>
+                res(
+                  ctx.status(500),
+                  // the response body intentionally breaks our conventions for API error answers
+                  ctx.json({ customError: 'wholey moly' })
+                )
+              )
             );
-            fetchMock.mock(`end:${SAMPLE_ROUTE}`, errResponse);
-
             await expect(request(SAMPLE_ROUTE)).rejects.toThrowError(
-              new ApiError(null)
+              new ApiError(null) // sets a default message
             );
           }
         );
 
         it('rethrows a text error as ApiError stating its detail', async () => {
-          const testResponse = 'something went south';
-          const testResponseOptions = { status: 404, statusText: 'Not found' };
-          const errResponse = new Response(testResponse, testResponseOptions);
-          fetchMock.mock(`end:${SAMPLE_ROUTE}`, errResponse);
+          const textResponse = 'something went south';
+          mswServer.use(
+            rest.get(`*/${SAMPLE_ROUTE}`, (_, res, ctx) =>
+              res(
+                ctx.status(500),
+                // the response body intentionally breaks our conventions for API error answers
+                ctx.text(textResponse)
+              )
+            )
+          );
 
           await expect(
             request(SAMPLE_ROUTE, {
               accept: 'text'
             })
-          ).rejects.toThrowError(new ApiError(testResponse));
+          ).rejects.toThrowError(new ApiError(textResponse));
         });
 
         it('throws a TimeoutError on read request time out', async () => {
           // this also proves that the request timeout can be specified at all
 
           // mock request timeout
-          fetchMock.mock(`end:${SAMPLE_ROUTE}`, delayResponse(408, 2)); // send '200' response after 2 millis
+          mswServer.use(
+            rest.get(`*/${SAMPLE_ROUTE}`, (_, res, ctx) =>
+              res(
+                ctx.delay(2),
+                // the response body intentionally breaks our conventions for API error answers
+                ctx.json(DUMMY_JSON)
+              )
+            )
+          );
 
           await expect(request(SAMPLE_ROUTE, { timeout: 1 })).rejects.toThrow(
             TimeoutError
           );
         });
 
-        it('throws a TimeoutError on connection request time out', async () => {
+        it('throws a TimeoutError on connect time out', async () => {
           // use a non-routable IP, do not intercept the request, see https://stackoverflow.com/a/904609/5418403
           const nonRoutableIp = '192.168.255.255';
+
+          // request is intentionally not intercepted
 
           await expect(
             request(`https://${{ nonRoutableIp }}`, { timeout: 1 })
           ).rejects.toThrow(TimeoutError);
         });
 
-        // FIXME: this test is horrible. What if fetch changes its way of stating a network error?
-        //  We should rather find a way to simulate an offline device, e.g. using cypress
+        // TODO: Since it does not make much sense to run tests against an apiClient
+        //  that uses node-fetch during tests either run tests headlessly or use cypress
         //  (see https://github.com/cypress-io/cypress/issues/235)
-        it('throws a custom NetworkError if the server does not answer', async () => {
-          fetchMock.mock(`end:${SAMPLE_ROUTE}`, () => {
-            throw new Error('Failed to fetch');
-          });
-
-          await expect(request(SAMPLE_ROUTE)).rejects.toThrow(NetworkError);
-        });
+        test.todo('throws a custom NetworkError if the server does not answer');
 
         test.todo(
           'throws a typeError if the error response is not a text or a json'
@@ -198,9 +221,11 @@ describe('API module', () => {
           const onSubmitSpy = jest.fn();
           const onFinishSpy = jest.fn();
 
-          fetchMock.mock(`end:${SAMPLE_ROUTE}`, () => {
-            throw new Error('Connection error');
-          });
+          mswServer.use(
+            rest.get(`*/${SAMPLE_ROUTE}`, (_, res) =>
+              res.networkError('shit hit the fan')
+            )
+          );
 
           try {
             await request(SAMPLE_ROUTE, {
@@ -219,49 +244,56 @@ describe('API module', () => {
 
   describe('Shorthand methods', () => {
     it('provides a shorthand to GET json data', async () => {
-      const mockedJsonResponse = SAMPLE_JSON_VALUE;
-      fetchMock.get(`end:${SAMPLE_ROUTE}`, mockedJsonResponse);
+      mswServer.use(
+        rest.get(`*/${SAMPLE_ROUTE}`, (_, res, ctx) =>
+          res(ctx.json({ hello: 'world' }))
+        )
+      );
       const result = await get(SAMPLE_ROUTE);
-      expect(result.hello).toEqual(mockedJsonResponse.hello);
+
+      expect(result.hello).toEqual('world');
     });
 
     it('provides a shorthand to POST json data', async () => {
-      const mockedPayload = SAMPLE_JSON_VALUE;
-      const mockedResponse = mockedPayload;
+      const mockedPayload = DUMMY_JSON;
+      const mockedResponse = mockedPayload; // request body equals parsed response
 
-      fetchMock.post(`end:${SAMPLE_ROUTE}`, mockedResponse);
-
-      const response = await post(SAMPLE_ROUTE, mockedPayload);
-      const fetchOptions = fetchMock.lastOptions();
-
-      expect(fetchOptions.headers['content-type']).toContain(
-        'application/json'
+      mswServer.use(
+        rest.post(`*/${SAMPLE_ROUTE}`, (req, res, ctx) => {
+          // ensure correct request configuration
+          expect(req.headers.get('content-type')).toBe('application/json');
+          expect(req.headers.get('accept')).toBe('application/json');
+          expect(req.method.toLowerCase()).toBe('post');
+          expect(req.body).toEqual(mockedPayload);
+          // resolve request with mock data
+          return res(ctx.json(mockedResponse));
+        })
       );
-      expect(fetchOptions.headers.accept).toContain('application/json');
-      expect(fetchOptions.method).toEqual('POST');
-      expect(response).toEqual(mockedResponse);
 
-      const body = await fetchOptions.body;
-      expect(body).toMatch(JSON.stringify(mockedPayload));
+      // ensure that the shorthand resolved with the parsed response
+      const response = await post(SAMPLE_ROUTE, mockedPayload);
+      expect(response).toEqual(mockedResponse);
     });
 
     it('provides a shorthand to PATCH json data', async () => {
       const mockedJsonResponse = { a: 1, b: 2 };
       const mockedRequestBody = { b: 2 };
 
-      fetchMock.patch(`end:${SAMPLE_ROUTE}`, mockedJsonResponse);
-      const response = await patch(SAMPLE_ROUTE, mockedRequestBody);
-
-      const fetchOptions = fetchMock.lastOptions();
-      expect(fetchOptions.headers['content-type']).toContain(
-        'application/json'
+      mswServer.use(
+        rest.patch(`*/${SAMPLE_ROUTE}`, (req, res, ctx) => {
+          // ensure correct request configuration
+          expect(req.headers.get('content-type')).toBe('application/json');
+          expect(req.headers.get('accept')).toBe('application/json');
+          expect(req.method.toLowerCase()).toBe('patch');
+          expect(req.body).toEqual(mockedRequestBody);
+          // resolve request with mock data
+          return res(ctx.json(mockedJsonResponse));
+        })
       );
-      expect(fetchOptions.headers.accept).toContain('application/json');
-      expect(fetchOptions.method).toEqual('PATCH');
-      expect(response).toEqual(mockedJsonResponse);
 
-      const body = await fetchOptions.body;
-      expect(body).toMatch(JSON.stringify(mockedRequestBody));
+      // ensure that the shorthand resolved with the parsed response
+      const response = await patch(SAMPLE_ROUTE, mockedRequestBody);
+      expect(response).toEqual(mockedJsonResponse);
     });
   });
 });

@@ -5,7 +5,8 @@ import Notice, { ApiNotice as ApiNoticeComponent } from '.';
 
 export default {
   title: 'Generic / Notice',
-  decorators: [(fn) => <Container maxWidth="md">{fn()}</Container>]
+  decorators: [(fn) => <Container maxWidth="md">{fn()}</Container>],
+  component: Notice
 };
 
 export const Plain = () => <Notice>Dies ist ein Hinweis</Notice>;

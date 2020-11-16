@@ -4,10 +4,10 @@ import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/dom';
 
 import { rest } from 'msw';
-import { server } from '~/../jest/jest.setupAfterEnv';
+import { mswServer } from '~/../jest/msw/mswServer';
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import * as apiService from '~/components/AutocompleteGeocoder/apiService';
-import mockedSuggestions from '~/../jest/mocks/mockLocationSuggestions.json';
+import mockedSuggestions from '../../../../jest/msw/mockData/mockLocationSuggestions.json';
 import { parseSuggestion } from '~/components/AutocompleteGeocoder/apiService';
 
 describe('<AutoCompleteGeocoder />', () => {
@@ -152,7 +152,7 @@ describe('<AutoCompleteGeocoder />', () => {
         // set up msw response to only return one feature
         const mockedResponse = { ...mockedSuggestions };
         mockedResponse.features = mockedResponse.features.slice(0, 1);
-        server.use(
+        mswServer.use(
           rest.get(
             new RegExp('^https://api.mapbox.com/geocoding/v5/mapbox.places'),
             (req, res, ctx) => {
@@ -177,7 +177,7 @@ describe('<AutoCompleteGeocoder />', () => {
         );
 
         // teardown: reset msw handler
-        server.resetHandlers();
+        mswServer.resetHandlers();
       }
     );
   });
@@ -205,7 +205,7 @@ describe('<AutoCompleteGeocoder />', () => {
 
   describe('error handling', () => {
     beforeAll(() => {
-      server.use(
+      mswServer.use(
         rest.get(
           new RegExp('^https://api.mapbox.com/geocoding/v5/mapbox.places'),
           (req, res, ctx) => {
@@ -233,6 +233,6 @@ describe('<AutoCompleteGeocoder />', () => {
       });
     });
 
-    afterEach(() => server.resetHandlers());
+    afterEach(() => mswServer.resetHandlers());
   });
 });

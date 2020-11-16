@@ -1,11 +1,13 @@
 import React from 'react';
+import { useIntl, defineMessages } from 'react-intl';
 import styled from 'styled-components';
 import { scaleLinear } from 'd3-scale';
 
-import BikeIcon from '~/images/feelsafe-bike-icon.svg';
-import CarIcon from '~/images/feelsafe-car-icon.svg';
-import WalkIcon from '~/images/feelsafe-walk-icon.svg';
 import { media } from '~/styles/utils';
+
+import BikeIcon from './feelsafe-bike-icon.svg';
+import CarIcon from './feelsafe-car-icon.svg';
+import WalkIcon from './feelsafe-walk-icon.svg';
 
 const Wrapper = styled.div`
   border-radius: 50%;
@@ -31,6 +33,7 @@ interface TextContentProps {
 const TextContent = styled.div<TextContentProps>`
   position: absolute;
   left: 0;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,6 +71,7 @@ export type FeelsafeSize = 'small' | 'big';
 export type FeelsafeIcon = 'bike' | 'car' | 'walk';
 
 interface FeelsafeProps {
+  className?: string;
   value: number;
   size?: FeelsafeSize;
   icon?: FeelsafeIcon;
@@ -84,19 +88,52 @@ const icons = {
   walk: WalkIcon
 };
 
-export default ({ value, size = 'small', icon = 'bike' }: FeelsafeProps) => {
+const modes = defineMessages({
+  bike: {
+    id: 'research.components.feelsafe.perspectives.bike',
+    defaultMessage: 'Fahrrad'
+  },
+  car: {
+    id: 'research.components.feelsafe.perspectives.car',
+    defaultMessage: 'Auto'
+  },
+  walk: {
+    id: 'research.components.feelsafe.perspectives.walking',
+    defaultMessage: 'Fuß'
+  }
+});
+
+const FeelSafe = ({
+  className,
+  value,
+  size = 'small',
+  icon = 'bike'
+}: FeelsafeProps) => {
   const color = getColorByValue(value);
   const pxSize = sizes[size];
   const isSmall = size === 'small';
   const IconComponent = icons[icon];
 
-  const valueDisplay = value.toLocaleString(undefined, {
+  const intl = useIntl();
+  const valueDisplay = value.toLocaleString(intl.locale, {
     maximumFractionDigits: 0
   });
+  const label = intl.formatMessage(
+    {
+      id: 'research.components.feelsafe.label',
+      defaultMessage:
+        '{pct}% der Nutzer:innen in der {mode}-Perspektive fühlen sich sicher'
+    },
+    {
+      pct: value.toLocaleString(intl.locale),
+      mode: intl.formatMessage(modes[icon])
+    }
+  );
 
   return (
-    <Wrapper className="feelsafe" style={{ width: pxSize, height: pxSize }}>
+    <Wrapper className={className} style={{ width: pxSize, height: pxSize }}>
       <svg width="100%" height="100%" viewBox="0 0 42 42">
+        <title>{label}</title>
         <circle cx="21" cy="21" r="15.91549430918954" fill="#fff" />
         <circle
           cx="21"
@@ -127,10 +164,27 @@ export default ({ value, size = 'small', icon = 'bike' }: FeelsafeProps) => {
         />
       </svg>
       <TextContent isSmall={isSmall}>
-        <IconComponent />
+        <IconComponent role="presentation" />
         <Number isSmall={isSmall}>{valueDisplay}%</Number>
         <Text isSmall={isSmall}>feel safe*</Text>
       </TextContent>
     </Wrapper>
   );
 };
+
+// Special variant of FeelSafe to use within Image containers
+const ImageFeelSafe = styled(FeelSafe)`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  ${media.m`
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  `}
+`;
+
+FeelSafe.Image = ImageFeelSafe;
+
+export default FeelSafe;

@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import debug from 'debug';
 
-import logger from '~/utils/logger';
 import SearchBar from './SearchBar';
 import SuggestionList from './SuggestionList';
 import { fetchSuggestions } from './apiService';
+
+const logger = debug('fmc:AutocompleteGeocoder');
 
 class AutocompleteGeocoder extends PureComponent {
   static ERR_SERVICE_UNAVAILABLE =

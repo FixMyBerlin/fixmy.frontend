@@ -12,7 +12,8 @@ import {
   apiLikes
 } from '~/pages/User/apiservice';
 import history from '~/history';
-import config from '~/pages/Map/config';
+import config from '~/config';
+import { HBI } from '~/apps/Map/constants';
 
 const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
 const SIGNUP = 'User/UserState/SIGNUP';
@@ -37,7 +38,7 @@ const LOAD_LIKES_FAIL = 'User/UserState/LOAD_LIKES_FAIL';
 
 const initialState = {
   userid: uuidv4(),
-  hbi_values: config.hbi.map((d) => d.value),
+  hbi_values: HBI.map((d) => d.value),
   token: get('token'),
   userData: false,
   userLikes: false

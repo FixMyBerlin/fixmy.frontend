@@ -50,7 +50,7 @@ const LogoAnnotation = styled(Paragraph)`
 `;
 
 const Logos = () => (
-  <>
+  <footer>
     <LogoGrid1>
       <img
         src={LogoBMBF2}
@@ -87,7 +87,7 @@ const Logos = () => (
         srcSet={`${LogoTU} 1x, ${LogoTU2} 2x, ${LogoTU3} 3x`}
       />
     </LogoGrid2>
-  </>
+  </footer>
 );
 
 export default Logos;

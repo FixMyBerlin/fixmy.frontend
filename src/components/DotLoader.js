@@ -12,7 +12,13 @@ const LoaderWrapper = styled.div`
 `;
 
 const DotLoader = () => (
-  <LoaderWrapper>
+  <LoaderWrapper
+    role="progressbar"
+    aria-busy
+    aria-valuetext="loading"
+    aria-live="assertive"
+  >
+    <div aria-hidden>Wird geladen...</div>
     <PropagateLoader color={`${config.colors.interaction}`} />
   </LoaderWrapper>
 );

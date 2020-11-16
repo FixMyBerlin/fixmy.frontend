@@ -1,5 +1,5 @@
 {
-  "semicolons": true,
+  "semi": true,
   "singleQuote": true,
   "arrowParens": "always",
   "printWidth": 80

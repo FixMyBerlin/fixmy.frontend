@@ -1,11 +1,17 @@
+import debug from 'debug';
+import { RootConfig, Region } from '~/types';
 import defaultConfig from './default';
 import berlin from './berlin';
 import aachen from './aachen';
 import eichwalde from './eichwalde';
 
-export type Region = 'eichwalde' | 'berlin' | 'aachen';
+const log = debug('fmc:config');
 
-const region = (process.env.REGION as Region) || 'berlin';
+let region = (process.env.REGION as Region) || 'berlin';
+
+if (window.Cypress) {
+  region = window.Cypress.env('REGION');
+}
 
 const AVAILABLE_REGIONS = {
   berlin,
@@ -18,28 +24,9 @@ const instanceConfig = AVAILABLE_REGIONS[region];
 if (Object.keys(AVAILABLE_REGIONS).indexOf(region) === -1) {
   // Need to use console log to avoid circular import in logger module
   // eslint-disable-next-line no-console
-  console.error('No region defined for this instance');
+  log('No region defined for this instance');
 }
 
-type BerlinConfig = typeof defaultConfig &
-  typeof berlin & {
-    region: 'berlin';
-  };
-
-type AachenConfig = typeof defaultConfig &
-  typeof aachen & {
-    region: 'aachen';
-  };
-
-type EichwaldeConfig = typeof defaultConfig &
-  typeof eichwalde & {
-    region: 'eichwalde';
-  };
-
-type RootConfig = BerlinConfig | AachenConfig | EichwaldeConfig;
-
-// TODO: Fix all root config types
-// @ts-ignore
 const rootConfig: RootConfig = {
   ...defaultConfig,
   ...instanceConfig,

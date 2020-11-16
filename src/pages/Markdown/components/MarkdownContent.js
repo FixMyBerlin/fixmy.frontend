@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
 
-import config from '~/pages/Map/config';
+import config from '~/config';
 import { getTitleStyles } from '~/components/Title';
 import { getSectionTitleStyles } from '~/components/SectionTitle';
 import { getTextStyles } from '~/components/Text';
@@ -47,6 +47,7 @@ const StyledMarkdown = styled(Markdown)`
 
   img.img-lg {
     max-width: initial;
+    margin: 2em auto;
   }
 `;
 

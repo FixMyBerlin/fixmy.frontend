@@ -44,7 +44,8 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
       '~': Path.resolve(__dirname, '../src'),
-      'react-dom': '@hot-loader/react-dom'
+      'react-dom': '@hot-loader/react-dom',
+      cypress: Path.resolve(__dirname, '../cypress')
     }
   },
   node: {
@@ -75,9 +76,6 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: [
-          {
-            loader: 'cache-loader'
-          },
           {
             loader: 'babel-loader',
             query: { cacheDirectory: true }

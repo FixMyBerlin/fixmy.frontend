@@ -37,11 +37,6 @@ Du willst uns unterstützen? [Melde Dich gerne](/jobs)
   Frontend-Entwicklung, GIS-Datenbank, Testing
 </div>
 <div class="teamportrait">
-  <img src="/src/images/team/Tobi-350x400.jpg" alt="Tobias Müller" title="Tobias Müller" style="width: 160px" /><br />
-  <strong>Tobias Müller</strong><br />
-  Städtische Kontakte, Ausschreibungen, Präsentationen
-</div>
-<div class="teamportrait">
   <img src="/src/images/team/Andrea.png" alt="Andrea Knabe-Schönemann" title="Andrea Knabe-Schönemann" style="width: 160px" /><br />
   <strong>Andrea Knabe-Schönemann</strong><br />
   Controlling, Open Data, Community

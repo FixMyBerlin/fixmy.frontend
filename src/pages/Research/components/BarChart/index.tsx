@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import FeelSafe, { FeelsafeIcon } from '~/pages/Research/components/FeelSafe';
 import BarChartWrapper from './Wrapper';
-import config from '~/config';
 import { media } from '~/styles/utils';
+import BarElement from './BarElement';
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,12 +28,13 @@ type TitleProps = {
 
 const Title = styled.div`
   font-weight: 700;
-  margin-bottom: ${(props: TitleProps) => (props.hasFeelSafe ? '40px' : '1em')};
+  margin: ${(props: TitleProps) =>
+    props.hasFeelSafe ? '30px 80px 30px 0' : '0 0 1em 0'};
 
   ${media.m`
-    margin-bottom: 0;
+    margin: 0;
     width: 180px;
-    `}
+  `}
 `;
 
 const ChartOuter = styled.div`
@@ -59,41 +60,6 @@ const Chart = styled.div`
     `}
 `;
 
-const Tooltip = styled.div`
-  display: none;
-  color: #999;
-  position: absolute;
-  bottom: -18px;
-  font-size: 12px;
-  width: 100px;
-  left: 0;
-`;
-
-const Bar = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-  &:hover {
-    ${Tooltip} {
-      display: block;
-    }
-  }
-`;
-
-const BarLabelStyle = styled.div`
-  font-weight: 700;
-  color: white;
-`;
-
-const WeightBarLabelStyle = styled.div`
-  position: absolute;
-  right: -2.5em;
-  font-weight: 700;
-  color: ${config.colors.darkbg};
-`;
-
 interface ScaleChartProps {
   title: string;
   data: [number, number, number, number];
@@ -110,29 +76,11 @@ interface WeightChartProps {
 
 type BarChartProps = WeightChartProps | ScaleChartProps;
 
-const colorScale = ['#c01d1d', '#f08141', '#abc759', '#45b834'];
-const colorWeight = ['#45b834'];
-const labels = ['unsicher', 'eher unsicher', 'eher sicher', 'sicher'];
-
-const getColor = (isWeightGraph, index) =>
-  isWeightGraph ? colorWeight[index] : colorScale[index];
-
-const BarLabel = ({ value, isWeightGraph }) =>
-  isWeightGraph ? (
-    <WeightBarLabelStyle>
-      {(value / 100.0).toLocaleString(undefined, { maximumFractionDigits: 2 })}
-    </WeightBarLabelStyle>
-  ) : (
-    <BarLabelStyle>
-      {value.toLocaleString(undefined, { maximumFractionDigits: 2 })}%
-    </BarLabelStyle>
-  );
-
 const BarChart = ({
   title,
   data,
   feelsafe = null,
-  feelsafeIcon = 'bike' as FeelsafeIcon
+  feelsafeIcon = 'bike'
 }: BarChartProps) => {
   const [isWeightGraph, setWeightGraph] = useState(data.length === 1);
   useEffect(() => setWeightGraph(data.length === 1), [data.length]);
@@ -143,19 +91,15 @@ const BarChart = ({
       <ChartOuter>
         <Chart>
           {data.map((d, i) => (
-            <Bar
+            <BarElement
+              title={title}
+              value={d}
+              index={i}
+              isWeightGraph={isWeightGraph}
+              // this index is stable
               // eslint-disable-next-line react/no-array-index-key
-              key={`bar__${labels[i]}`}
-              style={{
-                width: `${d}%`,
-                backgroundColor: getColor(isWeightGraph, i)
-              }}
-            >
-              <BarLabel value={d} isWeightGraph={isWeightGraph} />
-              {!isWeightGraph && (
-                <Tooltip className="barchart__tooltip">{labels[i]}</Tooltip>
-              )}
-            </Bar>
+              key={i}
+            />
           ))}
         </Chart>
       </ChartOuter>

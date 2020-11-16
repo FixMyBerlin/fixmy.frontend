@@ -1,9 +1,11 @@
-import map from './map';
 import menu from './menu';
 import routes from './routes';
 import staticpages from './staticpages';
 
 import defaultColors from '~/config/default/colors';
+import defaultBase from '~/config/default/base';
+import { map as defaultMapConfig } from '~/config/default/apps';
+import { RegionConfig } from '~/types';
 
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
@@ -11,13 +13,17 @@ const apiEndpoints = {
   production: 'https://radbuegel-aachen.de/api/aachen/v1'
 };
 
-export default {
-  map,
+const aachenConfig: RegionConfig = {
+  apps: {
+    map: {
+      ...defaultMapConfig,
+      geocoderBounds: '5.974,50.648,6.217,50.858'
+    }
+  },
   menu,
   routes,
   staticpages,
   siteTitle: 'Radbügel für Aachen',
-  feedbackMail: 'verkehrsmanagement@mail.aachen.de',
   apiUrl:
     process.env.API_URL ||
     apiEndpoints[process.env.BACKEND] ||
@@ -29,5 +35,10 @@ export default {
   },
   titleFont: 'The Mix',
   baseFont: 'Arial',
-  flatButtons: true
+  piwik: {
+    ...defaultBase.piwik,
+    siteId: 4
+  }
 };
+
+export default aachenConfig;

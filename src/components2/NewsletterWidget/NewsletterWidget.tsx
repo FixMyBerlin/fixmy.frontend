@@ -8,7 +8,7 @@ const SubscriptionWidget = ({ height = 120 }) => (
     scrolling="no"
     marginHeight={0}
     marginWidth={0}
-    src={`${config.newsletterWidgetUrl}?v=4`}
+    src={`${config.newsletter.embedUrl}?v=4`}
     width="100%"
     height={height}
   />

@@ -1,7 +1,7 @@
 <p align="center">🚲 🚲 🚲</p>
 <h1 align="center">FixMyBerlin - A Mobility Platform for Berlin</h1>
 
-[![Build Status](https://semaphoreci.com/api/v1/hekele/fixmy-frontend/branches/dependabot-npm_and_yarn-develop-fetch-mock-8-3-2/badge.svg)](https://semaphoreci.com/hekele/fixmy-frontend)
+![Node.js CI](https://github.com/FixMyBerlin/fixmy.frontend/workflows/Node.js%20CI/badge.svg?branch=develop)
 
 You can check out the live version [here](https://fixmyberlin.de/).
 
@@ -25,6 +25,9 @@ Configuration options for the app are set through environment variables. You can
 set these by creating a file `/.env` in this directory. Look at the file
 `.env.defaults` to see how `.env` needs to be formatted. Default configuration
 options are also loaded from `.env.defaults`.
+
+**Production builds should always have `BACKEND=production` set in order to
+configure the correct API endpoint.**
 
 ## Development
 

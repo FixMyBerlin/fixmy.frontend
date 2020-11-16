@@ -1,23 +1,18 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "definitions": {
-        "Perspective": {
-            "enum": [
-                "A",
-                "C",
-                "P"
-            ],
-            "type": "string"
-        }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Perspective": {
+      "enum": ["A", "C", "P"],
+      "type": "string"
+    }
+  },
+  "properties": {
+    "perspective": {
+      "$ref": "#/definitions/Perspective"
     },
-    "properties": {
-        "perspective": {
-            "$ref": "#/definitions/Perspective"
-        },
-        "sessionID": {
-            "type": "string"
-        }
-    },
-    "type": "object"
+    "sessionID": {
+      "type": "string"
+    }
+  },
+  "type": "object"
 }
-

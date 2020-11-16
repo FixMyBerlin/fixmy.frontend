@@ -7,7 +7,7 @@ import config from '~/pages/Reports/config';
 import BigLoader from '~/components/BigLoader';
 
 const MB_STYLE_URL = `${config.reports.overviewMap.style}?fresh=true`;
-MapboxGL.accessToken = MapboxGL.accessToken || config.map.accessToken;
+MapboxGL.accessToken = MapboxGL.accessToken || config.mapbox.accessToken;
 
 const StyledMap = styled.div`
   width: 100%;

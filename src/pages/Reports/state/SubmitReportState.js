@@ -2,7 +2,7 @@
 import booleanWithin from '@turf/boolean-within';
 
 import reverseGeocode from '~/services/reverseGeocode';
-import { getGeoLocation } from '~/pages/Map/map-utils'; // TODO: handle eslint warning regarding dependency circle
+import { getGeoLocation } from '~/apps/Map/map-utils'; // TODO: handle eslint warning regarding dependency circle
 import {
   apiSubmitReport,
   marshallNewReportObjectFurSubmit
@@ -191,7 +191,7 @@ actions.submitReport = () => async (dispatch, getState) => {
     const submittedReport = await apiSubmitReport(reportPayload);
     dispatch({ type: types.SUBMIT_REPORT_COMPLETE, submittedReport });
   } catch (e) {
-    const errMsg = 'Beim Übermitteln der Meldung ist etwas schiefgelaufen.';
+    const errMsg = `Beim Übermitteln der Meldung ist etwas schiefgelaufen: ${e.message}`;
     dispatch({ type: types.SUBMIT_REPORT_ERROR }); // update UI
     dispatch(
       errorStateActions.addError({
