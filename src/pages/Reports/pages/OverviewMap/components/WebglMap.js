@@ -48,18 +48,9 @@ class WebglMap extends PureComponent {
       return;
     }
 
-    const {
-      center,
-      disabled,
-      fitExtentOnPopupClose,
-      isCTAButtonShifted
-    } = this.props;
+    const { center, disabled, isCTAButtonShifted } = this.props;
 
-    if (center) {
-      this.pointMapAt(center);
-    } else if (fitExtentOnPopupClose) {
-      this.fitMapToBounds();
-    }
+    if (center) this.pointMapAt(center);
 
     // Reset camera offset when the details panel is not open
     if (!isCTAButtonShifted && this.map.getPadding().right > 0)
@@ -79,14 +70,6 @@ class WebglMap extends PureComponent {
     // notify containers that map has been initialized
     this.props.onLoad(map);
   }
-
-  /**
-   * Reset the map to fit bounds configured for this instance
-   */
-  fitMapToBounds = () => {
-    this.map.fitBounds(config.reportsMap.bounds);
-    logger('Fit map to new bounds');
-  };
 
   /**
    * Ease map to new location, adjusting zoom level and offset for details panel
@@ -158,7 +141,6 @@ WebglMap.propTypes = {
   detailId: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.shape({ message: PropTypes.string }),
-  fitExtentOnPopupClose: PropTypes.bool,
   onLoad: PropTypes.func,
   onMarkerClick: PropTypes.func.isRequired,
   onMove: PropTypes.func,
@@ -177,7 +159,6 @@ WebglMap.defaultProps = {
   detailId: null,
   disabled: false,
   zoomControlPosition: 'bottom-left',
-  fitExtentOnPopupClose: true,
   selectedReport: null,
   error: null,
   isCTAButtonShifted: false
