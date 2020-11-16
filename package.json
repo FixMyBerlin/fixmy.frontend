@@ -168,7 +168,7 @@
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.3",
     "react-hot-loader": "^4.12.20",
-    "react-intersection-observer": "^8.30.1",
+    "react-intersection-observer": "^8.30.3",
     "react-intl": "^5.4.7",
     "react-markdown": "^4.3.1",
     "react-piwik": "^1.8.0",
