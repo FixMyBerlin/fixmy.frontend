@@ -50,32 +50,20 @@ class WebglMap extends PureComponent {
 
     const {
       center,
-      zoomIn,
       disabled,
       fitExtentOnPopupClose,
       isCTAButtonShifted
     } = this.props;
 
-    const zoomTarget = config.reports.overviewMap.zoomDeepLinkedMarkers || 16;
-
     if (center) {
-      const newCameraOptions = { center };
-      if (isCTAButtonShifted) newCameraOptions.padding = { right: 400 };
-      if (zoomIn && this.map.getZoom() < zoomTarget) {
-        newCameraOptions.zoom = zoomTarget;
-        logger(`Ease map and zoom camera:`, newCameraOptions);
-      } else {
-        logger(`Ease map to camera:`, newCameraOptions);
-      }
-      this.map.easeTo(newCameraOptions);
+      this.pointMapAt(center);
     } else if (fitExtentOnPopupClose) {
-      this.map.fitBounds(config.reportsMap.bounds);
-      logger('Fit maps to new bounds');
-    } else {
-      logger('Updated but no camera change', this.map.showPadding);
-      if (!isCTAButtonShifted && this.map.getPadding().right > 0)
-        this.map.easeTo({ padding: { right: 0 } });
+      this.fitMapToBounds();
     }
+
+    // Reset camera offset when the details panel is not open
+    if (!isCTAButtonShifted && this.map.getPadding().right > 0)
+      this.map.easeTo({ padding: { right: 0 } });
 
     this.toggleMapInteractivity(disabled);
   }
@@ -91,6 +79,34 @@ class WebglMap extends PureComponent {
     // notify containers that map has been initialized
     this.props.onLoad(map);
   }
+
+  /**
+   * Reset the map to fit bounds configured for this instance
+   */
+  fitMapToBounds = () => {
+    this.map.fitBounds(config.reportsMap.bounds);
+    logger('Fit map to new bounds');
+  };
+
+  /**
+   * Ease map to new location, adjusting zoom level and offset for details panel
+   *
+   * @param {Object} center coordinates for camera target
+   */
+  pointMapAt = (center) => {
+    const newCameraOptions = { center };
+    const { isCTAButtonShifted, zoomIn } = this.props;
+    const zoomTarget = config.reports.overviewMap.zoomDeepLinkedMarkers || 16;
+
+    if (isCTAButtonShifted) newCameraOptions.padding = { right: 400 };
+    if (zoomIn && this.map.getZoom() < zoomTarget) {
+      newCameraOptions.zoom = zoomTarget;
+      logger(`Ease map and zoom camera:`, newCameraOptions);
+    } else {
+      logger(`Ease map to camera:`, newCameraOptions);
+    }
+    this.map.easeTo(newCameraOptions);
+  };
 
   toggleZoomControl = (isActive = false) => {
     if (isActive) {
