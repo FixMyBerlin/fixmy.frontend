@@ -14,8 +14,8 @@ const ButtonWrapper = styled.div`
   justify-content: center;
   align-items: flex-end;
   padding-bottom: 50px;
-  padding-right: ${(props) => (props.shiftLeft ? '400px' : '0')};
-  transition: padding 0.3s;
+  transform: translate(${(props) => (props.shiftLeft ? '-200px' : '0')});
+  transition: transform 0.5s;
   pointer-events: none;
 `;
 
