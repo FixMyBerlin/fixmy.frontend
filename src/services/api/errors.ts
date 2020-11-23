@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 //  TODO: use functions instead of classes to respect eslint, see  https://dev.to/damxipo/custom-exceptions-with-js-3aoc
 
 /**
