@@ -74,13 +74,13 @@ const initialNewsletterConfig = [
     id: 'tsp-newsletter',
     label: `Ich möchte kostenlos den Tagesspiegel Checkpoint abonnieren. Dort \
 wird auch über die Ergebnisse der Umfrage berichtet.`,
-    checked: false
+    checked: false,
   },
   {
     id: 'fixmy-newsletter',
     label: 'Ich möchte außerdem den FixMyBerlin-Newsletter erhalten.',
-    checked: false
-  }
+    checked: false,
+  },
 ];
 
 /**
@@ -117,7 +117,7 @@ const Email = (props) => {
       email,
       username: email,
       password: uuidv4(),
-      newsletter: shouldSignupFMCNewsletter
+      newsletter: shouldSignupFMCNewsletter,
     });
 
     const shouldSignupTSP = newsletterOptions.find(
@@ -224,7 +224,7 @@ const Email = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  isTosAccepted: state.KatasterKIState.isTosAccepted
+  isTosAccepted: state.KatasterKIState.isTosAccepted,
 });
 
 export default connect(mapStateToProps)(Email);

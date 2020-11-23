@@ -27,7 +27,7 @@ import MapView from '~/apps/Map';
 const apps = {
   gastro: Gastro,
   spielstrassen: Spielstrassen,
-  map: MapView
+  map: MapView,
 };
 
 /**
@@ -168,5 +168,5 @@ const Routes = ({ token }) => (
 );
 
 export default connect((state: RootState) => ({
-  token: state.UserState.token
+  token: state.UserState.token,
 }))(Routes);

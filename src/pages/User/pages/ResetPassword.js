@@ -13,8 +13,8 @@ const formConfig = [
     type: 'password',
     label: 'Passwort',
     placeholder: 'Neues Passwort eigeben...',
-    validateError: 'Bitte geben Sie ein neues Passwort an.'
-  }
+    validateError: 'Bitte geben Sie ein neues Passwort an.',
+  },
 ];
 
 class ResetPassword extends PureComponent {

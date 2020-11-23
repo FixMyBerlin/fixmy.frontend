@@ -46,8 +46,6 @@ Wir erheben, verarbeiten und speichern Ihre personenbezogenen Daten ausschließl
 Wir geben personenbezogene Daten nur an Dritte weiter, soweit dies dem mitgeteilten Zweck der Verarbeitung Ihrer Daten folgt, gesetzliche Auskunftspflichten vorliegen oder wir durch eine gerichtliche Entscheidung zur Auskunft verpflichtet werden. Eine Weitergabe von personenbezogenen Daten an Dritte jenseits der genannten Zwecke findet nicht statt.<br />
 An der Gestaltung und Darstellung von Inhalten unseres Internetauftritts und an der Speicherung und Verarbeitung von Daten sind Auftragnehmer beteiligt. Die datenschutzkonforme Verarbeitung Ihrer Daten ist durch eine qualitätssichernde Auswahl dieser Auftragnehmer und durch Vereinbarungen zur Auftragsverarbeitung nach Art. 28 DS-GVO gewährleistet.
 
-
-
 ## Datensicherheit und Kommunikation per Mail
 
 Ihre personenbezogenen Daten werden durch technische und organisatorische Maßnahmen bei der Erhebung, Speicherung und Verarbeitung so geschützt, dass sie für Dritte nicht zugänglich sind. Bei der Kommunikation per Mail, die nicht durch Verschlüsselungszertifikate (De-Mail, qualifizierte digitale Signatur) abgesichert ist, kann die vollständige Datensicherheit von uns jedoch nicht gewährleistet werden Bitte bedenken Sie, dass Mail-Inhalte nicht verschlüsselt übertragen werden. Wir übernehmen demnach keinerlei Haftung für evtl. unberechtigte Einsichtnahme durch Dritte, die während der Übermittlung unverschlüsselter Mails erfolgt. Auch kann bei unverschlüsselten Mails nicht sichergestellt werden, dass diese ihren Adressaten tatsächlich erreichen.
@@ -57,8 +55,6 @@ Ihre personenbezogenen Daten werden durch technische und organisatorische Maßna
 Als Nutzer unseres Internetangebotes sind Sie gemäß Art. 15 DS-GVO jederzeit ohne Angabe von Gründen berechtigt, kostenfrei von uns Auskunft über die zu Ihrer Person gespeicherten Daten zu verlangen. <br />
 Findet Datenverarbeitung auf Grund einer persönlichen Einwilligung statt, dann haben Sie nach Art. 7 (3) DS-GVO das Recht, diese Einwilligung ohne Angabe von Gründen zu widerrufen. Dies gilt nicht für die bereits vorgenommene Verwendung Ihrer Daten in der Vergangenheit, sondern nur für die Zukunft. <br />
 Gemäß Artt. 16, 17, 18 DS-GVO können Sie Ihre bei uns erhobenen Daten jederzeit berichtigen, löschen oder sperren lassen, wenn Ihre Daten nach Ihrer Einschätzung nicht korrekt sind oder kein Grund mehr zur Verarbeitung besteht. Außerdem steht Ihnen nach Art. 20 DS-GVO das Recht zu, Ihre personenbezogenen Daten in einem maschinenlesbaren Format zu erhalten, sofern die Daten von Ihnen im Wege der Einwilligung oder auf Basis eines Vertrages bereitgestellt wurden und die Verarbeitung dieser Daten bisher in einem automatisierten Verfahren erfolgte. Darüber hinaus können Sie gegen eine Datenverarbeitung, die gem. Art. 6 Abs. 1 lit. e) DS-GVO zur Wahrnehmung einer Aufgabe im öffentlichen Interesse oder in Ausübung öffentlicher Gewalt erfolgt ist, gem. Art. 21 DS-GVO Widerspruch einlegen. Das Einfordern dieser Rechte können Sie entweder postalisch oder per Mail an den Verantwortlichen übermitteln. Schließlich möchten wir Sie auf Ihr Recht auf Beschwerde bei der zuständigen Aufsichtsbehörde nach Art. 77 DS-GVO hinweisen.
-
-
 
 ## Ansprechpartner
 

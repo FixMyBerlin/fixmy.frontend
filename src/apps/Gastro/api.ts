@@ -41,7 +41,7 @@ const get = async (
   const url = `${getApiBase(district)}${generatePath(URL_GET_SIGNUP, {
     id,
     accessKey,
-    campaign: district.apps.gastro.currentCampaign
+    campaign: district.apps.gastro.currentCampaign,
   })}`;
   logger('api get', url);
   return ky.get(url).json();
@@ -55,7 +55,7 @@ const signup = async (
   district: DistrictConfig
 ): Promise<GastroRegistration> => {
   const endpoint = `${getApiBase(district)}${generatePath(URL_POST_SIGNUP, {
-    campaign: district.apps.gastro.currentCampaign
+    campaign: district.apps.gastro.currentCampaign,
   })}`;
   logger('api signup', endpoint);
   return ky.post(endpoint, { json: signupData }).json();
@@ -71,7 +71,7 @@ const register = async (
   const endpoint = `${getApiBase(district)}${generatePath(URL_PUT_SIGNUP, {
     id: signupData.id,
     accessKey: signupData.access_key,
-    campaign: district.apps.gastro.currentCampaign
+    campaign: district.apps.gastro.currentCampaign,
   })}`;
   logger('api register', endpoint);
   return ky.put(endpoint, { json: signupData }).json();
@@ -85,7 +85,7 @@ const registerDirect = async (
   district: DistrictConfig
 ) => {
   const endpoint = `${getApiBase(district)}${generatePath(URL_POST_SIGNUP, {
-    campaign: district.apps.gastro.currentCampaign
+    campaign: district.apps.gastro.currentCampaign,
   })}`;
   logger('api register direct', endpoint);
   return ky.post(endpoint, { json: signupData }).json();
@@ -110,13 +110,13 @@ const uploadCertificate = async (
     endpoint = `${getApiBase(district)}${generatePath(URL_PUT_CERTIFICATE, {
       id: registrationData.id,
       accessKey: registrationData.access_key,
-      campaign: district.name
+      campaign: district.name,
     })}`;
   } else {
     method = 'POST';
     endpoint = `${getApiBase(district)}${generatePath(URL_POST_CERTIFICATE, {
       fileName,
-      campaign: district.name
+      campaign: district.name,
     })}`;
   }
 
@@ -126,9 +126,9 @@ const uploadCertificate = async (
     method,
     body: formData,
     headers: {
-      'Content-Disposition': `attachment; filename="${fileName}"`
+      'Content-Disposition': `attachment; filename="${fileName}"`,
     },
-    timeout: 60000
+    timeout: 60000,
   }).json();
 };
 
@@ -147,7 +147,7 @@ const getRenewal = async (
   const endpoint = `${getApiBase(district)}${generatePath(URL_RENEWAL, {
     id,
     accessKey,
-    campaign: district.apps.gastro.currentCampaign
+    campaign: district.apps.gastro.currentCampaign,
   })}`;
   logger('api get renewal info', endpoint);
   return ky.get(endpoint).json();
@@ -168,7 +168,7 @@ const postRenewal = async (
   const endpoint = `${getApiBase(district)}${generatePath(URL_RENEWAL, {
     id,
     accessKey,
-    campaign: district.apps.gastro.currentCampaign
+    campaign: district.apps.gastro.currentCampaign,
   })}`;
   logger('api post renewal request', endpoint);
   return ky.post(endpoint).json();
@@ -181,5 +181,5 @@ export default {
   registerDirect,
   uploadCertificate,
   getRenewal,
-  postRenewal
+  postRenewal,
 };

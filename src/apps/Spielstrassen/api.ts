@@ -22,7 +22,7 @@ const getApiBase = (district: DistrictConfig) => {
 
 const getData: (arg0: DistrictConfig) => Promise<Counts> = async (district) => {
   const url = `${getApiBase(district)}${generatePath(API_URL, {
-    campaign: district.name
+    campaign: district.name,
   })}`;
   logger('load signups');
   return ky.get(url).json();
@@ -33,7 +33,7 @@ const signup: (
   arg1: DistrictConfig
 ) => Promise<Counts> = async (signupData, district) => {
   const url = `${getApiBase(district)}${generatePath(API_URL, {
-    campaign: district.name
+    campaign: district.name,
   })}`;
   logger('api signup', signupData);
   return ky.put(url, { json: signupData }).json();
@@ -41,5 +41,5 @@ const signup: (
 
 export default {
   getData,
-  signup
+  signup,
 };

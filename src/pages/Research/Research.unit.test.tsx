@@ -32,12 +32,12 @@ describe('<ArticleHeader>', () => {
     expect(
       getByRole('img', {
         name:
-          'Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)'
+          'Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)',
       })
     ).toBeInTheDocument();
     expect(
       getByRole('img', {
-        name: 'Logo der Senatskanzlei Berlin'
+        name: 'Logo der Senatskanzlei Berlin',
       })
     ).toBeInTheDocument();
   });

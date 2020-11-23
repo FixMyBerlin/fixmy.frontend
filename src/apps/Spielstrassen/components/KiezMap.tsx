@@ -46,7 +46,7 @@ const dimMap = (street: Spielstrasse, map: MapboxGL.Map) => {
     ['get', 'PLR_NAME'],
     street.kiez,
     'hsla(325, 0%, 100%, 0)',
-    'hsla(325, 0%, 0%, 0.85)'
+    'hsla(325, 0%, 0%, 0.85)',
   ]);
 };
 
@@ -56,7 +56,7 @@ const handleLoad = (street: Spielstrasse, map: MapboxGL.Map) => {
 };
 
 const connector = connect(({ AppState }: RootState) => ({
-  district: AppState.district
+  district: AppState.district,
 }));
 
 type Props = {
@@ -65,7 +65,7 @@ type Props = {
 
 const KiezMap = ({
   street,
-  district
+  district,
 }: ConnectedProps<typeof connector> & Props) => (
   <MapWrapper
     style={district.apps.spielstrassen.mapboxStyle}

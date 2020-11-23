@@ -9,7 +9,7 @@ import {
   loadProjectData,
   setDistrictFilter,
   setPhaseFilter,
-  setSort
+  setSort,
 } from '~/pages/Analysis/AnalysisState';
 import PieChart from '~/pages/Analysis/components/PieChart';
 import Title from '~/components/Title';
@@ -57,16 +57,16 @@ const districtOptions = [
   { label: 'Alle Bezirke anzeigen', value: 'all' },
   ...districts.map((districtName) => ({
     label: districtName,
-    value: districtName.toLowerCase()
-  }))
+    value: districtName.toLowerCase(),
+  })),
 ];
 
 const phaseOptions = [
   { label: 'Alle Phasen anzeigen', value: 'all' },
   ...PLANNING_PHASES.map((phase) => ({
     label: phase.name,
-    value: phase.id
-  }))
+    value: phase.id,
+  })),
 ];
 
 const sortOptions = [
@@ -75,8 +75,8 @@ const sortOptions = [
   {
     value: 'construction_completed_date',
     label: 'Fertigstellung',
-    sortDirection: 'ASC'
-  }
+    sortDirection: 'ASC',
+  },
 ];
 
 function filterDistrict(districtName) {
@@ -125,7 +125,7 @@ class Analysis extends PureComponent {
       isLoading,
       selectedDistrict,
       selectedPhase,
-      selectedSort
+      selectedSort,
     } = this.props;
 
     // for the pie chart we only filter by district
@@ -200,6 +200,6 @@ export default connect(
     setDistrictFilter: (districtName) =>
       dispatch(setDistrictFilter(districtName)),
     setPhaseFilter: (districtName) => dispatch(setPhaseFilter(districtName)),
-    setSort: (sort) => dispatch(setSort(sort))
+    setSort: (sort) => dispatch(setSort(sort)),
   })
 )(Analysis);

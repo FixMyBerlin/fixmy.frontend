@@ -155,7 +155,7 @@ export default (props) => {
   const Icon = props.icon;
   const marks = showMarks
     ? {
-        [props.value]: props.ratingLabels[props.value]
+        [props.value]: props.ratingLabels[props.value],
       }
     : {};
 

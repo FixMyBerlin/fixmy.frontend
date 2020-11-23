@@ -5,7 +5,7 @@ import {
   ProfileResponse,
   PerspectiveRequest,
   PerspectiveResponse,
-  AnswerRequest
+  AnswerRequest,
 } from '../types';
 import handleSubmitProfile, { marshallProfile } from './profile';
 import handleSubmitPerspective from './perspective';
@@ -24,7 +24,7 @@ async function submitAnswer(answerRequest: AnswerRequest): Promise<void> {
   return handleSubmitAnswer({
     json: answerRequest,
     sessionID: answerRequest.sessionID,
-    sceneID: answerRequest.sceneID
+    sceneID: answerRequest.sceneID,
   });
 }
 
@@ -35,7 +35,7 @@ async function submitNewsletter(
     return {
       email: 'test-fmc@abgeordnetenwatch.de',
       username: 'test8589340-5@abgeordnetenwatch.de',
-      id: 277
+      id: 277,
     };
   }
   return handleSubmitNewsletter({ json: newsletterRequest });
@@ -47,12 +47,12 @@ async function submitProfile(
   if (MOCK_RESPONSES) {
     return {
       ratings_total: 54,
-      scenes: ['01_MS_C_139', '01_MS_C_27']
+      scenes: ['01_MS_C_139', '01_MS_C_27'],
     };
   }
   return handleSubmitProfile({
     json: profileRequest,
-    sessionID: profileRequest.sessionID
+    sessionID: profileRequest.sessionID,
   });
 }
 
@@ -62,12 +62,12 @@ async function submitPerspective(
   if (MOCK_RESPONSES) {
     return {
       ratings_total: 115,
-      scenes: ['01_MS_C_73']
+      scenes: ['01_MS_C_73'],
     };
   }
   return handleSubmitPerspective({
     json: perspectiveRequest,
-    sessionID: perspectiveRequest.sessionID
+    sessionID: perspectiveRequest.sessionID,
   });
 }
 
@@ -77,5 +77,5 @@ export default {
   marshallProfile,
   submitPerspective,
   submitNewsletter,
-  getEndpointURL
+  getEndpointURL,
 };

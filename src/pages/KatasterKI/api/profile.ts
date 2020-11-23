@@ -19,7 +19,7 @@ type marshallProfileStateParam = { KatasterKIState: State };
 async function handleSubmitProfile({
   json = {},
   token = false,
-  sessionID
+  sessionID,
 }): Promise<ProfileResponse> {
   const authHeader = token ? { Authorization: `JWT ${token}` } : {};
   const endpoint = getEndpointURL('profile', sessionID, null);
@@ -29,8 +29,8 @@ async function handleSubmitProfile({
     body: JSON.stringify(json),
     headers: {
       ...authHeader,
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   });
 
   if (!fetchResponse.ok) {
@@ -83,7 +83,7 @@ export const marshallProfile = (
     isTosAccepted,
     currentPerspective,
     sessionID,
-    introSelection
+    introSelection,
   } = state.KatasterKIState;
 
   if (!isTosAccepted === true)
@@ -125,7 +125,7 @@ export const marshallProfile = (
     isTosAccepted,
     sessionID,
     transportRatings,
-    introSelection: []
+    introSelection: [],
   };
 
   // Insert intro questions

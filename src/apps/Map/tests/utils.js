@@ -13,7 +13,7 @@ const goToProjects = () => {
 
 const clickRandomMarker = () => {
   cy.fmbClickRandomElement('.marker-image', false, {
-    force: true // otherwise the click fails because the image "is being covered by another element..."
+    force: true, // otherwise the click fails because the image "is being covered by another element..."
   });
 };
 

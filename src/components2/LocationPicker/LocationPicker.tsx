@@ -6,7 +6,7 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
-  Paper
+  Paper,
 } from '@material-ui/core';
 import LocationIcon from '@material-ui/icons/LocationOn';
 import ErrorIcon from '@material-ui/icons/Error';
@@ -59,7 +59,7 @@ const LocationPicker: React.FC<Props> = ({
   onSelect,
   mapboxStyle,
   bounds,
-  initialValue = ''
+  initialValue = '',
 }) => {
   // Mapbox-GL.js map instance
   const [map, setMap] = useState(null);

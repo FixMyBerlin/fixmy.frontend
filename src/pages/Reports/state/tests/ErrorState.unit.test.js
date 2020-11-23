@@ -15,7 +15,7 @@ describe('ErrorState reducer and actions', () => {
       expect(reducer(undefined, actions.addError())).toEqual({
         message: 'Ein Fehler ist aufgetreten',
         proceedMessage: null,
-        proceedFunc: null
+        proceedFunc: null,
       });
     }
   );
@@ -26,13 +26,13 @@ describe('ErrorState reducer and actions', () => {
       reducer(
         undefined,
         actions.addError({
-          message: MESSAGE
+          message: MESSAGE,
         })
       )
     ).toEqual({
       message: MESSAGE,
       proceedMessage: null,
-      proceedFunc: null
+      proceedFunc: null,
     });
   });
 
@@ -46,13 +46,13 @@ describe('ErrorState reducer and actions', () => {
         actions.addError({
           message: MESSAGE,
           proceedMessage: LABEL,
-          proceedFunc: FUNC
+          proceedFunc: FUNC,
         })
       )
     ).toEqual({
       message: MESSAGE,
       proceedMessage: LABEL,
-      proceedFunc: FUNC
+      proceedFunc: FUNC,
     });
   });
 

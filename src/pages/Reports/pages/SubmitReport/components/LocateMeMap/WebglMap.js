@@ -88,7 +88,7 @@ class WebglMap extends PureComponent {
 
   getViewFromProps = () => ({
     zoom: this.props.newLocationZoomLevel,
-    center: this.props.center
+    center: this.props.center,
   });
 
   handleMoveEnd = (eventData) => {
@@ -113,7 +113,7 @@ WebglMap.propTypes = {
   allowDrag: PropTypes.bool,
   onLoad: PropTypes.func,
   zoomedOut: PropTypes.bool,
-  zoomControlPosition: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
+  zoomControlPosition: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
 };
 
 WebglMap.defaultProps = {
@@ -124,7 +124,7 @@ WebglMap.defaultProps = {
   allowDrag: true,
   onLoad: () => {},
   zoomedOut: false,
-  zoomControlPosition: false
+  zoomControlPosition: false,
 };
 
 export default withRouter(WebglMap);

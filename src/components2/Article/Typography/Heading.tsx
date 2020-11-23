@@ -65,7 +65,7 @@ const AnchorStyle = styled.a`
 const headings = {
   h1: Heading1,
   h2: Heading2,
-  h3: Heading3
+  h3: Heading3,
 };
 
 /**

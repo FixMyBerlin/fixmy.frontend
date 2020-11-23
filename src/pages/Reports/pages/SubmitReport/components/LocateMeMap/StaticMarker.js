@@ -70,11 +70,11 @@ const StaticMarker = ({ pinned }) => (
 );
 
 StaticMarker.propTypes = {
-  pinned: PropTypes.bool
+  pinned: PropTypes.bool,
 };
 
 StaticMarker.defaultProps = {
-  pinned: false
+  pinned: false,
 };
 
 export default StaticMarker;

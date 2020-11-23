@@ -23,7 +23,7 @@ export enum RequestState {
   pending = 'pending',
   delayed = 'delayed',
   success = 'success',
-  error = 'error'
+  error = 'error',
 }
 
 interface Action {
@@ -35,8 +35,8 @@ interface Action {
 const initialState = {
   streets: [],
   streetRequest: {
-    state: RequestState.waiting
-  }
+    state: RequestState.waiting,
+  },
 };
 
 export default function reducer(state: State = initialState, action: Action) {
@@ -44,24 +44,24 @@ export default function reducer(state: State = initialState, action: Action) {
     case SET_KIEZE:
       return {
         ...state,
-        streets: action.streets
+        streets: action.streets,
       };
 
     case LOAD_KIEZE_PENDING:
       return {
         ...state,
-        streetRequest: { state: RequestState.pending }
+        streetRequest: { state: RequestState.pending },
       };
 
     case LOAD_KIEZE_ERROR:
       return {
         ...state,
-        streetRequest: { state: RequestState.error, message: action.error }
+        streetRequest: { state: RequestState.error, message: action.error },
       };
     case LOAD_KIEZE_COMPLETE:
       return {
         ...state,
-        streetRequest: { state: RequestState.success }
+        streetRequest: { state: RequestState.success },
       };
     default:
       return state;
@@ -103,7 +103,7 @@ export const loadKieze = async (
     .filter(isActive)
     .map((streetInfo) => ({
       ...streetInfo,
-      supporters: counts[streetInfo.street] || 0
+      supporters: counts[streetInfo.street] || 0,
     }));
 
   dispatch(setStreets(streets));

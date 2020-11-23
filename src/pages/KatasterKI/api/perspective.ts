@@ -8,7 +8,7 @@ import { getEndpointURL } from './utils';
 async function handleSubmitPerspective({
   json = {},
   token = false,
-  sessionID
+  sessionID,
 }): Promise<PerspectiveResponse> {
   const authHeader = token ? { Authorization: `JWT ${token}` } : {};
   const endpoint = getEndpointURL('perspective', sessionID, null);
@@ -18,8 +18,8 @@ async function handleSubmitPerspective({
     body: JSON.stringify(json),
     headers: {
       ...authHeader,
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   });
 
   if (!fetchResponse.ok) {

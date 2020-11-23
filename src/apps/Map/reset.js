@@ -12,7 +12,7 @@ function resetMap({ zoom = null } = {}) {
     pitch: 0,
     bearing: 0,
     animate: true,
-    center: null
+    center: null,
   };
 
   if (zoom) {

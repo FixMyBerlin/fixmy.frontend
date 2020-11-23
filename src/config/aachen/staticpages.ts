@@ -1,18 +1,18 @@
 export default [
   {
     key: 'aachen-privacy',
-    route: '/datenschutz'
+    route: '/datenschutz',
   },
   {
     key: 'aachen-imprint',
-    route: '/impressum'
+    route: '/impressum',
   },
   {
     key: 'aachen-contact',
-    route: '/kontakt'
+    route: '/kontakt',
   },
   {
     key: 'newsletter-thank-you',
-    route: '/newsletter-danke'
-  }
+    route: '/newsletter-danke',
+  },
 ];

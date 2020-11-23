@@ -16,8 +16,8 @@ const addAreaToMap = (map, area) => {
     type: 'geojson',
     data: {
       type: 'Feature',
-      geometry: area
-    }
+      geometry: area,
+    },
   });
   map.addLayer({
     id: 'usageArea',
@@ -26,8 +26,8 @@ const addAreaToMap = (map, area) => {
     layout: {},
     paint: {
       'fill-color': config.colors.change_4,
-      'fill-opacity': 0.8
-    }
+      'fill-opacity': 0.8,
+    },
   });
 
   // Fit map to area bounds by iteratively expanding a boundary using each of
@@ -67,7 +67,7 @@ const AreaMap = ({ application, district, printable = false }) => {
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(AreaMap);

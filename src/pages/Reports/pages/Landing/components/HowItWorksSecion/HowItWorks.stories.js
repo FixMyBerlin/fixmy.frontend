@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
 export default {
   title: 'Meldungen / Landing / How it works',
-  decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>]
+  decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
 export const Full = () => <HowItWorksSection />;
@@ -27,18 +27,18 @@ const stepsConfig = [
   {
     step: 1,
     text: 'Du meldest, wo neue Bügel benötigt werden.',
-    color: config.colors.interaction
+    color: config.colors.interaction,
   },
   {
     step: 2,
     text: '???',
-    color: '#ff99d5' // TODO: add to colors config
+    color: '#ff99d5', // TODO: add to colors config
   },
   {
     step: 3,
     text: 'Profit!',
-    color: config.colors.black
-  }
+    color: config.colors.black,
+  },
 ];
 
 export const onlySteps = () => <Steps steps={stepsConfig} />;

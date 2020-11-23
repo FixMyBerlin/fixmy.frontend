@@ -24,7 +24,7 @@ const sectionTypes = {
   scene: Scene,
   perspective_change: PerspectiveChange,
   feedback: Feedback,
-  email: EmailCheckboxes
+  email: EmailCheckboxes,
 };
 
 const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
@@ -54,7 +54,7 @@ const Scenes = ({
   dispatch,
   profileRequest,
   perspectiveRequest,
-  sceneGroupCounter
+  sceneGroupCounter,
 }) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
   if (
@@ -147,7 +147,7 @@ const mapStateToProps = (state) => ({
   perspective: state.KatasterKIState.currentPerspective,
   profileRequest: state.KatasterKIState.profileRequest,
   perspectiveRequest: state.KatasterKIState.perspectiveRequest,
-  sceneGroupCounter: state.KatasterKIState.sceneGroupCounter
+  sceneGroupCounter: state.KatasterKIState.sceneGroupCounter,
 });
 
 export default connect(mapStateToProps)(Scenes);

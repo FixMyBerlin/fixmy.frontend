@@ -14,7 +14,7 @@ const REPORT_STATUSES = [
   'planning',
   'execution',
   'invalid',
-  'done'
+  'done',
 ];
 
 describe('report utilities', () => {

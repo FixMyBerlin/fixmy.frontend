@@ -31,7 +31,7 @@ export const marshallMultiChoice = (
     .filter((val) => val != null);
   return {
     choices,
-    other
+    other,
   };
 };
 

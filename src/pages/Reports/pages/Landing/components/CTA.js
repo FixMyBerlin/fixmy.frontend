@@ -54,13 +54,13 @@ const JoinButton = ({ toUrl }) => (
 );
 
 JoinButton.propTypes = {
-  toUrl: PropTypes.string
+  toUrl: PropTypes.string,
 };
 
 JoinButton.defaultProps = {
   toUrl: config.reports?.enabled
     ? config.routes.reports?.new
-    : config.routes.reports?.map
+    : config.routes.reports?.map,
 };
 
 export default JoinButton;

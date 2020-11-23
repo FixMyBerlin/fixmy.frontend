@@ -65,7 +65,7 @@ const initialState: MapState = {
   planningData: false,
   popupData: null,
   popupLocation: null,
-  show3dBuildings: true
+  show3dBuildings: true,
 };
 
 type UpdateHistory = {
@@ -81,7 +81,7 @@ export const updateHistory = (props: Location) => (dispatch: Dispatch) => {
   const pathMatch: match<MapPath> = matchPath(props.pathname, {
     path: '/:activeView?/:activeSection?',
     exact: false,
-    strict: false
+    strict: false,
   });
 
   const { activeSection, activeView } = pathMatch.params;
@@ -92,8 +92,8 @@ export const updateHistory = (props: Location) => (dispatch: Dispatch) => {
       activeSection: Number.isNaN(parseInt(activeSection, 10))
         ? null
         : activeSection,
-      activeView
-    }
+      activeView,
+    },
   });
 };
 
@@ -105,8 +105,8 @@ export const detectEmbedMode = (location: Location) => (dispatch: Dispatch) => {
   const action: UpdateHistory = {
     type: UPDATE_HISTORY,
     payload: {
-      isEmbedMode
-    }
+      isEmbedMode,
+    },
   };
 
   dispatch(action);
@@ -120,7 +120,7 @@ type SetActiveSection = {
 export function setActiveSection(activeSection: number | null) {
   return {
     type: SET_ACTIVE_SECTION,
-    payload: { activeSection }
+    payload: { activeSection },
   };
 }
 
@@ -284,20 +284,20 @@ export function geocodeAddress(searchtext) {
       if (!geocodeResult) {
         return dispatch({
           type: GEOCODE_FAIL,
-          payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' }
+          payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' },
         });
       }
 
       // we do + (Math.random() / 1000) in order to always get a slightly different center
       const center = [
         geocodeResult.Longitude,
-        geocodeResult.Latitude + Math.random() / 1000
+        geocodeResult.Latitude + Math.random() / 1000,
       ];
       return dispatch({ type: GEOCODE_DONE, payload: { center, zoom: 17 } });
     } catch (error) {
       return dispatch({
         type: GEOCODE_FAIL,
-        payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' }
+        payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' },
       });
     }
   };
@@ -345,14 +345,14 @@ export default function MapStateReducer(
         ...state,
         filterHbi: state.filterHbi.map((filter, i) =>
           i === (action as ToggleHbiFilter).filterIndex ? !filter : filter
-        ) as [boolean, boolean, boolean, boolean]
+        ) as [boolean, boolean, boolean, boolean],
       };
     case SET_PLANNING_FILTER:
       return {
         ...state,
         filterPlannings: state.filterPlannings.map((filter, i) =>
           i === (action as TogglePlanningFilter).filterIndex ? !filter : filter
-        ) as [boolean, boolean, boolean, boolean]
+        ) as [boolean, boolean, boolean, boolean],
       };
     default:
       return state;

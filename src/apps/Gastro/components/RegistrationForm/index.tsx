@@ -59,7 +59,7 @@ const initialValues: FormData = {
   certificate: null,
   agreement_accepted: '',
   tos_accepted: '',
-  area: null
+  area: null,
 };
 
 const FormError = styled(FormHelperText)`
@@ -92,7 +92,7 @@ const RegistrationForm = ({
   onSuccess,
   signupData,
   regulation,
-  district
+  district,
 }) => (
   <Formik
     initialValues={{ ...initialValues, ...signupData }}
@@ -106,7 +106,7 @@ const RegistrationForm = ({
         access_key,
         shopfront_length: parseLength(values.shopfront_length),
         opening_hours: 'weekend',
-        campaign: district.apps.gastro.currentCampaign
+        campaign: district.apps.gastro.currentCampaign,
       };
 
       let uploadFailed = true;
@@ -187,7 +187,7 @@ const RegistrationForm = ({
                   gelesen und willige in die Speicherung meiner Daten zur
                   Kommunikation im Zuge der Nutzung der Sonderflächen ein.
                 </span>
-              )
+              ),
             }}
           />
           <ErrorMessage
@@ -229,7 +229,7 @@ const RegistrationForm = ({
 );
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(RegistrationForm);

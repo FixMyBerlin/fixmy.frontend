@@ -20,11 +20,11 @@ const initMap = ({
   onInit,
   center,
   zoom,
-  mapboxProps
+  mapboxProps,
 }) => {
   const map = new MapboxGL.Map({
     container: mapContainer.current,
-    ...mapboxProps
+    ...mapboxProps,
   });
 
   logger('Init map with', mapboxProps);

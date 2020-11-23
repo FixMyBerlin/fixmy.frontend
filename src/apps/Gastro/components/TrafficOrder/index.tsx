@@ -9,7 +9,7 @@ import {
   getCategoryDescription,
   dateReceived,
   REGULATION,
-  permitEnd
+  permitEnd,
 } from '../../utils';
 
 // eslint-disable-next-line camelcase
@@ -24,7 +24,7 @@ const isParking = ({ regulation }) =>
     REGULATION.Parkplatz,
     REGULATION.ParkenDiagonal,
     REGULATION.ParkenLängs,
-    REGULATION.ParkenDiagonal
+    REGULATION.ParkenDiagonal,
   ].includes(regulation);
 
 const TrafficOrder = ({ application }) => {

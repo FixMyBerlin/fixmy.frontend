@@ -31,7 +31,7 @@ function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
 
       map.easeTo({
         center: lngLat,
-        zoom: zoom + 0.1
+        zoom: zoom + 0.1,
       });
     });
   });
@@ -69,7 +69,7 @@ function setupClusters(name, map, data, radius, handleUpdate) {
     data,
     cluster: true,
     clusterRadius: radius,
-    clusterMaxZoom: 16
+    clusterMaxZoom: 16,
   });
 
   map.addLayer({
@@ -78,8 +78,8 @@ function setupClusters(name, map, data, radius, handleUpdate) {
     source: name,
     filter: ['!=', 'cluster', true],
     paint: {
-      'circle-opacity': 0
-    }
+      'circle-opacity': 0,
+    },
   });
 }
 

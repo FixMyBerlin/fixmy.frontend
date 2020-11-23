@@ -30,11 +30,11 @@ types.RESET_MAP_STATE = 'Reports/OverviewMapState/RESET_MAP_STATE';
 
 actions.setSelectedReportPosition = ({ x = 0, y = 0 }) => ({
   type: types.SET_SELECTED_REPORT_POS,
-  payload: { x, y }
+  payload: { x, y },
 });
 
 actions.resetMapState = () => ({
-  type: types.RESET_MAP_STATE
+  type: types.RESET_MAP_STATE,
 });
 
 // thunks
@@ -53,7 +53,7 @@ async function loadReportsThunk(dispatch) {
     logger(`${message}: \n%O`, e);
     dispatch(
       errorStateActions.addError({
-        message
+        message,
       })
     );
   }
@@ -98,8 +98,8 @@ actions.setSelectedReport = (selectedReportId, zoomIn = false) => async (
     type: types.SET_SELECTED_REPORT,
     payload: {
       selectedReport,
-      zoomIn
-    }
+      zoomIn,
+    },
   });
 };
 
@@ -121,17 +121,17 @@ function reducer(
       return {
         ...state,
         reports: payload,
-        reportFetchState: FETCH_STATE_SUCCESS
+        reportFetchState: FETCH_STATE_SUCCESS,
       };
     case types.SET_SELECTED_REPORT:
       return {
         ...state,
-        ...payload
+        ...payload,
       };
     case types.SET_SELECTED_REPORT_POS:
       return {
         ...state,
-        selectedReportPosition: payload
+        selectedReportPosition: payload,
       };
     default:
       return state;
