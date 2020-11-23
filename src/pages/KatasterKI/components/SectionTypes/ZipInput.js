@@ -69,7 +69,7 @@ const ZipInput = (props) => {
 
     props.handleChange({
       zipcode: zipCode.current,
-      district: selectedDistrict
+      district: selectedDistrict,
     });
   };
 
@@ -137,7 +137,7 @@ const ZipInput = (props) => {
 
 const mapStateToProps = (state) => ({
   districtOptions: state.KatasterKIState.districtOptions,
-  district: state.KatasterKIState.profile.district
+  district: state.KatasterKIState.profile.district,
 });
 
 export default connect(mapStateToProps)(ZipInput);

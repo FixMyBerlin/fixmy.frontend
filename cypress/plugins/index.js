@@ -86,7 +86,7 @@ const DynamicCypressConfig = (on, config) => {
   return {
     ...config,
     testFiles,
-    env: process.env
+    env: process.env,
   };
 };
 

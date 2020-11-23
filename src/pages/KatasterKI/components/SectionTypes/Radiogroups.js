@@ -73,7 +73,7 @@ export default ({
   currentValue,
   page,
   handleChange,
-  next
+  next,
 }) => {
   const [isLoading, onClick] = useHandlerTimeout(next);
 
@@ -113,7 +113,7 @@ export default ({
                       onChange={() =>
                         handleChange({
                           ...currentValue,
-                          [radiogroup.name]: option.value
+                          [radiogroup.name]: option.value,
                         })
                       }
                       css={{ display: 'block' }}

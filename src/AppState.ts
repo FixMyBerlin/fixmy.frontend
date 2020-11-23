@@ -34,7 +34,7 @@ export interface AppState {
 const initialState = {
   isMenuOpen: false,
   district: null,
-  locale: getDefaultLocale()
+  locale: getDefaultLocale(),
 };
 
 export function open() {

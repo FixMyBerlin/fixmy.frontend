@@ -21,7 +21,7 @@ import {
   ErrorLabel,
   FormWrapper,
   LoginExpand,
-  SubmitButton
+  SubmitButton,
 } from './styledComponents';
 
 const loginFormConfig = [
@@ -31,7 +31,7 @@ const loginFormConfig = [
     type: 'email',
     label: 'E-Mail',
     placeholder: 'E-Mail eingeben...',
-    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.'
+    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.',
   },
   {
     id: 'password',
@@ -39,8 +39,8 @@ const loginFormConfig = [
     type: 'password',
     label: 'Passwort',
     placeholder: 'Passwort eingeben...',
-    validateError: 'Bitte geben Sie Ihr Passwort an.'
-  }
+    validateError: 'Bitte geben Sie Ihr Passwort an.',
+  },
 ];
 
 export const signupFormConfig = [
@@ -50,7 +50,7 @@ export const signupFormConfig = [
     type: 'email',
     label: '',
     placeholder: 'Deine E-Mailadresse',
-    validateError: 'Bitte geben Sie eine E-Mail an.'
+    validateError: 'Bitte geben Sie eine E-Mail an.',
   },
   {
     id: 'password',
@@ -58,7 +58,7 @@ export const signupFormConfig = [
     type: 'password',
     label: '',
     placeholder: 'Wähle ein Passwort',
-    validateError: 'Bitte geben Sie ein Passwort an.'
+    validateError: 'Bitte geben Sie ein Passwort an.',
   },
   {
     id: 'login',
@@ -79,15 +79,15 @@ export const signupFormConfig = [
       </span>
     ),
     validateError:
-      'Bitte bestätigen Sie, dass Sie einen Account erstellen wollen.'
+      'Bitte bestätigen Sie, dass Sie einen Account erstellen wollen.',
   },
   {
     id: 'newsletter',
     enabled: config.reports.form.newsletter,
     value: false,
     type: 'checkbox',
-    label: `Ich möchte den ${config.siteTitle}-Newsletter mit Updates zu Planungen erhalten`
-  }
+    label: `Ich möchte den ${config.siteTitle}-Newsletter mit Updates zu Planungen erhalten`,
+  },
 ];
 
 export const initialValues = signupFormConfig.reduce((res, item) => {
@@ -99,7 +99,7 @@ class AuthForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showLoginForm: false
+      showLoginForm: false,
     };
   }
 
@@ -130,7 +130,7 @@ class AuthForm extends Component {
       email: values.email,
       username: values.email,
       password: values.password,
-      newsletter: values.newsletter
+      newsletter: values.newsletter,
     };
 
     let errorMessage = false;
@@ -143,7 +143,7 @@ class AuthForm extends Component {
     } catch (err) {
       errorMessage = {
         server:
-          'Es gab ein Problem mit dem Server. Bitte versuchen Sie es noch einmal.'
+          'Es gab ein Problem mit dem Server. Bitte versuchen Sie es noch einmal.',
       };
 
       if (err.response && err.response.json) {
@@ -240,7 +240,7 @@ class AuthForm extends Component {
 AuthForm.propTypes = {
   reportId: PropTypes.number.isRequired,
   goToMap: PropTypes.func.isRequired,
-  nextStep: PropTypes.func.isRequired
+  nextStep: PropTypes.func.isRequired,
 };
 
 export default AuthForm;

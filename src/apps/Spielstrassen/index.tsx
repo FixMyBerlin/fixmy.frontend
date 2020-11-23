@@ -128,7 +128,7 @@ const Spielstrassen = ({ districtName, district, dispatch }) => {
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(Spielstrassen);

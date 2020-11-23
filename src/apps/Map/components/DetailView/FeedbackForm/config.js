@@ -5,7 +5,7 @@ const config = [
     type: 'text',
     label: 'Name',
     placeholder: 'Name angeben...',
-    validateError: 'Bitte geben Sie einen Namen an.'
+    validateError: 'Bitte geben Sie einen Namen an.',
   },
   {
     id: 'email',
@@ -13,7 +13,7 @@ const config = [
     type: 'email',
     label: 'E-Mail',
     placeholder: 'E-Mail angeben...',
-    validateError: 'Bitte geben Sie eine E-Mail Adresse an.'
+    validateError: 'Bitte geben Sie eine E-Mail Adresse an.',
   },
   {
     id: 'feedback',
@@ -21,8 +21,8 @@ const config = [
     type: 'textarea',
     label: 'Text',
     placeholder: 'Feedback angeben...',
-    validateError: 'Bitte geben Sie Feedback an.'
-  }
+    validateError: 'Bitte geben Sie Feedback an.',
+  },
 ];
 
 export const initialValues = config.reduce((res, item) => {

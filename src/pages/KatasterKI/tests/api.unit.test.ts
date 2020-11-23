@@ -18,11 +18,11 @@ describe('API bindings', () => {
       ageGroup: 'BBB',
       isTosAccepted: {},
       transportRatings: {
-        '': 1
+        '': 1,
       },
       userGroup: [1, 2, 3],
       vehiclesOwned: ['car'],
-      zipcode: 345
+      zipcode: 345,
     };
 
     expect(

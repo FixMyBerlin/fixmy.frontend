@@ -9,7 +9,7 @@ import {
   Image,
   Quote,
   ImageFull,
-  Heading
+  Heading,
 } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import Link from '~/components2/Link';

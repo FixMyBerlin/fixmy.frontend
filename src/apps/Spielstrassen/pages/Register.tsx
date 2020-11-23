@@ -39,7 +39,7 @@ const Schedule = styled.p`
 
 const connector = connect(({ AppState, SpielstrassenState }: RootState) => ({
   ...SpielstrassenState,
-  district: AppState.district
+  district: AppState.district,
 }));
 
 type Props = ConnectedProps<typeof connector> &

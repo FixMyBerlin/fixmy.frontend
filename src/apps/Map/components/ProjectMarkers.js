@@ -15,7 +15,7 @@ const Markers = {
   planning: PlanningMarker,
   execution: ExecutionMarker,
   ready: ReadyMarker,
-  inactive: TempMarker
+  inactive: TempMarker,
 };
 
 const phasesOrder = Object.keys(Markers);

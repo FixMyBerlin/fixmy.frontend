@@ -9,5 +9,5 @@ export default {
   patch,
   ApiError,
   TimeoutError,
-  NetworkError
+  NetworkError,
 };

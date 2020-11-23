@@ -61,7 +61,7 @@ class ProjectLike extends PureComponent {
     this.state = {
       count: 0,
       bouncy: false,
-      userLike: false
+      userLike: false,
     };
   }
 
@@ -93,7 +93,7 @@ class ProjectLike extends PureComponent {
     ) {
       this.setState({
         count: res.likes,
-        userLike: res.user_has_liked
+        userLike: res.user_has_liked,
       });
     }
   };

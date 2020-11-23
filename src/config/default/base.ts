@@ -6,7 +6,7 @@ const log = debug('fmc:config');
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
   staging: 'https://fixmyberlin-staging.netlify.app/api/next',
-  production: 'https://fixmyberlin.de/api/v1'
+  production: 'https://fixmyberlin.de/api/v1',
 };
 
 // Default config without all fields thar are defined through sibling modules
@@ -26,10 +26,10 @@ const baseConfig: Omit<
     accessToken:
       'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
     reverseGeocoderUrl:
-      'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json'
+      'https://api.mapbox.com/geocoding/v5/mapbox.places/{long},{lat}.json',
   },
   newsletter: {
-    embedUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EGM'
+    embedUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EGM',
   },
   piwik: {
     url: 's.fixmycity.de',
@@ -37,12 +37,12 @@ const baseConfig: Omit<
     options: {
       enableLinkTracking: true,
       trackErrors: true,
-      disableCookies: true
-    }
+      disableCookies: true,
+    },
   },
   intl: {
-    logMissingTranslations: true
-  }
+    logMissingTranslations: true,
+  },
 };
 
 if (!process.env.BACKEND && process.env.API_URL == null) {

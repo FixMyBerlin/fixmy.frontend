@@ -78,7 +78,7 @@ class SearchBar extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: ''
+      inputValue: '',
     };
   }
 
@@ -123,5 +123,5 @@ class SearchBar extends PureComponent {
 }
 
 export default connect((state) => ({
-  isEmbedMode: state.MapState.isEmbedMode
+  isEmbedMode: state.MapState.isEmbedMode,
 }))(SearchBar);

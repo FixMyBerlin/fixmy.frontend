@@ -33,7 +33,7 @@ Bildmaterial zur freien Verwendung durch die Presse: <br>
 ### Pressespiegel
 
 - 20.05.2020 - Tagesspiegel - [300 Gastrobetriebe melden auf fixmyberlin.de Interesse an Flächen im Straßenraum](https://leute.tagesspiegel.de/friedrichshain-kreuzberg/macher/2020/05/20/123623/300-gastrobetriebe-melden-auf-fixmyberlin-de-interesse-an-flaechen-im-strassenraum/)
-- 14.05.2020 -  RBB - [Debatte über Restaurant-Tische auf Gehwegen und Straßen](https://www.rbb24.de/panorama/thema/2020/coronavirus/beitraege_neu/2020/05/berlin-friedrichshain-kreuzberg-mitte-aussengastronomie-bestuhlu.html)
+- 14.05.2020 - RBB - [Debatte über Restaurant-Tische auf Gehwegen und Straßen](https://www.rbb24.de/panorama/thema/2020/coronavirus/beitraege_neu/2020/05/berlin-friedrichshain-kreuzberg-mitte-aussengastronomie-bestuhlu.html)
 - 14.05.2020 - BZ Berlin - [Mehr Restaurant-Tische auf Berliner Gehwegen – Fußgängerverband dagegen](https://www.bz-berlin.de/berlin/friedrichshain-kreuzberg/bezirk-will-strassen-und-parkplaetze-fuer-mehr-restaurant-tische-sperren)
 - 14.05.2020 - Berliner Woche - [Bezirksamt bietet temporäre Nutzung des öffentlichen Raums an](https://www.berliner-woche.de/friedrichshain-kreuzberg/c-wirtschaft/bezirksamt-bietet-temporaere-nutzung-des-oeffentlichen-raums-an_a268003)
 - 30.04.2020 - Tagesspiegel - [Ab 3. Mai auf der Straße spielen](https://leute.tagesspiegel.de/friedrichshain-kreuzberg/macher/2020/04/30/121258/ab-3-mai-auf-der-strasse-spielen/)

@@ -105,9 +105,7 @@ describe('katasterKi profiles', () => {
     });
 
     it('contains radio button ', () => {
-      cy.get('[type="radio"]')
-        .last()
-        .check();
+      cy.get('[type="radio"]').last().check();
     });
 
     it('links to profile 12', () => {
@@ -128,30 +126,22 @@ describe('katasterKi profiles', () => {
     });
 
     it('disables the proceed button missing zip input', () => {
-      cy.get('@zipInput')
-        .type('{selectall}')
-        .type('{del}');
+      cy.get('@zipInput').type('{selectall}').type('{del}');
       cy.get('@zipProceedBtn').should('have.prop', 'disabled', true);
     });
 
     it('enables the proceed button when 5 numbers have been entered', () => {
-      cy.get('@zipInput')
-        .type('{selectall}')
-        .type('01234');
+      cy.get('@zipInput').type('{selectall}').type('01234');
       cy.get('@zipProceedBtn').should('have.prop', 'disabled', false);
     });
 
     it('disables the proceed button when more than 5 numbers have been entered', () => {
-      cy.get('@zipInput')
-        .type('{selectall}')
-        .type('012345678');
+      cy.get('@zipInput').type('{selectall}').type('012345678');
       cy.get('@zipProceedBtn').should('have.prop', 'disabled', true);
     });
 
     it(`links to the intro screen for scene rating`, () => {
-      cy.get('@zipInput')
-        .type('{selectall}')
-        .type('01234');
+      cy.get('@zipInput').type('{selectall}').type('01234');
       cy.get('@zipProceedBtn').click();
       cy.location('pathname').should(
         'eq',
@@ -172,9 +162,7 @@ function testSingleChoice(profile) {
     });
 
     it('has a single choice buttons which links to the next step', () => {
-      cy.get('[data-cy=kat-singlechoice-btn]')
-        .first()
-        .click();
+      cy.get('[data-cy=kat-singlechoice-btn]').first().click();
       cy.location('pathname').should(
         'eq',
         `${config.routes.katasterKI.profileBase}/${profile + 1}`

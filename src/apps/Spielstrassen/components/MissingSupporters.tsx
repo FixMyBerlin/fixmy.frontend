@@ -22,7 +22,7 @@ const interSperse = (elems, sep = ', ', lastSep = ' und ') => {
 
 const MissingSupportersNotice = ({
   streets,
-  supporterGoal
+  supporterGoal,
 }: {
   streets: Spielstrasse[];
   supporterGoal: number;
@@ -31,7 +31,7 @@ const MissingSupportersNotice = ({
     .filter((street) => street.supporters < supporterGoal)
     .map(({ street }) => {
       const signupUrl = generatePath(config.routes.spielstrassen.register, {
-        slug: slugify(street, { lower: true })
+        slug: slugify(street, { lower: true }),
       });
       return (
         <Link internal href={signupUrl} key={signupUrl}>

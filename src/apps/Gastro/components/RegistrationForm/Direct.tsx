@@ -36,10 +36,10 @@ const testValues: FormData = {
         [13.440556387732016, 52.501931997251006],
         [13.440387408564675, 52.50201690035837],
         [13.440302918980336, 52.50195893767781],
-        [13.440466533730415, 52.50187566721448]
-      ]
+        [13.440466533730415, 52.50187566721448],
+      ],
     ],
-    type: 'Polygon'
+    type: 'Polygon',
   },
   certificateS3: 'unit_test_data/test.txt',
   category: 'retail',
@@ -51,7 +51,7 @@ const testValues: FormData = {
   shop_name: 'Test Shoppe',
   shopfront_length: '4,8',
   tos_accepted: true,
-  usage: 'Normal'
+  usage: 'Normal',
 };
 
 const initialValues: FormData = {
@@ -68,7 +68,7 @@ const initialValues: FormData = {
   certificate: null,
   agreement_accepted: '',
   tos_accepted: '',
-  area: null
+  area: null,
 };
 
 const CTA = styled(Button)`
@@ -110,7 +110,7 @@ const StyledForm = styled(Form)`
 const DirectRegistrationForm = ({
   // eslint-disable-next-line camelcase
   onSuccess,
-  district
+  district,
 }) => (
   <Formik
     initialValues={
@@ -124,7 +124,7 @@ const DirectRegistrationForm = ({
         campaign: district.apps.gastro.currentCampaign,
         geometry: {
           type: 'Point',
-          coordinates: values.location
+          coordinates: values.location,
         },
         shopfront_length: parseLength(values.shopfront_length),
         opening_hours: district.apps.gastro.model.opening_hours
@@ -132,7 +132,7 @@ const DirectRegistrationForm = ({
           : 'weekend',
         category: district.apps.gastro.model.category
           ? values.category
-          : 'other'
+          : 'other',
       };
 
       delete registrationData.certificate;
@@ -211,7 +211,7 @@ const DirectRegistrationForm = ({
                   gelesen und willige in die Speicherung meiner Daten zur
                   Kommunikation im Zuge der Nutzung der Sonderflächen ein.
                 </span>
-              )
+              ),
             }}
           />
           <ErrorMessage
@@ -255,7 +255,7 @@ const DirectRegistrationForm = ({
 );
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(DirectRegistrationForm);

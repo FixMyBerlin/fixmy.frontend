@@ -17,7 +17,7 @@ const ProjectList = ({
   showLoadingIndicator = true,
   data,
   isLoading,
-  history
+  history,
 }: Props) => {
   const isProjects = itemType === 'projects';
 

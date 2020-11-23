@@ -38,7 +38,7 @@ const SectionArea = ({
   handleChange,
   signupData = null,
   values,
-  district
+  district,
 }) => {
   const center = signupData?.geometry?.coordinates || values?.location;
   return (
@@ -98,8 +98,8 @@ const SectionArea = ({
               handleChange({
                 target: {
                   name: 'area',
-                  value
-                }
+                  value,
+                },
               });
             }}
           />
@@ -166,7 +166,7 @@ const SectionArea = ({
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(SectionArea);

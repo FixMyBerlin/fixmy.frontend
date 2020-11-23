@@ -18,13 +18,13 @@ const labelsBerlin = {
   headline: 'Der Berliner Straßencheck',
   teaser:
     'Wie können die Berliner Straßen sicher für alle werden? Sagen Sie es uns!',
-  calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de'
+  calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de',
 };
 
 const labelsNational = {
   headline: 'Der große Straßencheck',
   teaser: 'Wie können die Straßen sicher für alle werden? Sagen Sie es uns!',
-  calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de'
+  calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de',
 };
 
 const Wrapper = styled.div`
@@ -235,7 +235,7 @@ const Landing = ({ location }) => {
 
   const isNationalVersion = matchPath(window.location.pathname, {
     path: config.routes.katasterKI?.landingNational,
-    exact: true
+    exact: true,
   });
 
   const labels = isNationalVersion ? labelsNational : labelsBerlin;

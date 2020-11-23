@@ -1,1 +1,56 @@
-{"url":"https://api.fixmyberlin.de/api/planning-sections/1894","name":"Hauptstraße","description":"","details":[{"side":1,"orientation":"N","length":"320.91","crossings":1,"speed_limit":50,"daily_traffic":"11700.00","daily_traffic_heavy":"598.00","daily_traffic_cargo":"1193.00","daily_traffic_bus":"387.00","rva1":"0.000000000000","rva2":"0.000000000000","rva3":"0.000000000000","rva4":"0.000000000000","rva5":"0.000000000000","rva6":"0.000000000000","rva7":"0.000000000000","rva8":"0.000000000000","rva9":"0.000000000000","rva10":"0.000000000000","rva11":"0.000000000000","rva12":"0.000000000000","rva13":"0.000000000000"},{"side":0,"orientation":"S","length":"320.91","crossings":1,"speed_limit":50,"daily_traffic":"11700.00","daily_traffic_heavy":"598.00","daily_traffic_cargo":"1193.00","daily_traffic_bus":"387.00","rva1":"109.500000000000","rva2":"153.400000000000","rva3":"152.900000000000","rva4":"0.000000000000","rva5":"0.000000000000","rva6":"0.000000000000","rva7":"0.000000000000","rva8":"0.000000000000","rva9":"0.000000000000","rva10":"73.600000000000","rva11":"0.000000000000","rva12":"0.000000000000","rva13":"0.000000000000"}],"plannings":[]}
+{
+  "url": "https://api.fixmyberlin.de/api/planning-sections/1894",
+  "name": "Hauptstraße",
+  "description": "",
+  "details": [
+    {
+      "side": 1,
+      "orientation": "N",
+      "length": "320.91",
+      "crossings": 1,
+      "speed_limit": 50,
+      "daily_traffic": "11700.00",
+      "daily_traffic_heavy": "598.00",
+      "daily_traffic_cargo": "1193.00",
+      "daily_traffic_bus": "387.00",
+      "rva1": "0.000000000000",
+      "rva2": "0.000000000000",
+      "rva3": "0.000000000000",
+      "rva4": "0.000000000000",
+      "rva5": "0.000000000000",
+      "rva6": "0.000000000000",
+      "rva7": "0.000000000000",
+      "rva8": "0.000000000000",
+      "rva9": "0.000000000000",
+      "rva10": "0.000000000000",
+      "rva11": "0.000000000000",
+      "rva12": "0.000000000000",
+      "rva13": "0.000000000000"
+    },
+    {
+      "side": 0,
+      "orientation": "S",
+      "length": "320.91",
+      "crossings": 1,
+      "speed_limit": 50,
+      "daily_traffic": "11700.00",
+      "daily_traffic_heavy": "598.00",
+      "daily_traffic_cargo": "1193.00",
+      "daily_traffic_bus": "387.00",
+      "rva1": "109.500000000000",
+      "rva2": "153.400000000000",
+      "rva3": "152.900000000000",
+      "rva4": "0.000000000000",
+      "rva5": "0.000000000000",
+      "rva6": "0.000000000000",
+      "rva7": "0.000000000000",
+      "rva8": "0.000000000000",
+      "rva9": "0.000000000000",
+      "rva10": "73.600000000000",
+      "rva11": "0.000000000000",
+      "rva12": "0.000000000000",
+      "rva13": "0.000000000000"
+    }
+  ],
+  "plannings": []
+}

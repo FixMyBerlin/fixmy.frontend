@@ -3,7 +3,7 @@ import {
   FormattedMessage,
   defineMessages,
   injectIntl,
-  IntlShape
+  IntlShape,
 } from 'react-intl';
 
 import { ArticleWrapper, ArticleHeader, Intro } from '~/components2/Article';
@@ -19,40 +19,40 @@ import SectionTeam from './sections/07_team';
 const messages = defineMessages({
   tocHeader: {
     id: 'research.toc.Header',
-    defaultMessage: 'Einleitung'
+    defaultMessage: 'Einleitung',
   },
   tocIntroduction: {
     id: 'research.toc.introduction',
-    defaultMessage: 'Über das Projekt'
+    defaultMessage: 'Über das Projekt',
   },
   tocAbout: {
     id: 'research.toc.About',
-    defaultMessage: 'Umfragekonzept'
+    defaultMessage: 'Umfragekonzept',
   },
   tocDataset: {
     id: 'research.toc.Dataset',
-    defaultMessage: 'Datensatz der Ergebnisse'
+    defaultMessage: 'Datensatz der Ergebnisse',
   },
   tocResults: {
     id: 'research.toc.Results',
-    defaultMessage: 'Statistische Auswertung'
+    defaultMessage: 'Statistische Auswertung',
   },
   tocSummary: {
     id: 'research.toc.Summary',
-    defaultMessage: 'Zusammenfassung'
+    defaultMessage: 'Zusammenfassung',
   },
   tocTeam: {
     id: 'research.toc.Team',
-    defaultMessage: 'Wer steht hinter der Umfrage'
+    defaultMessage: 'Wer steht hinter der Umfrage',
   },
   kicker: {
     id: 'research.kicker',
-    defaultMessage: 'Forschungsergebnis - Strassencheck'
+    defaultMessage: 'Forschungsergebnis - Strassencheck',
   },
   authors: {
     id: 'research.authors',
-    defaultMessage: 'FixMyCity Team'
-  }
+    defaultMessage: 'FixMyCity Team',
+  },
 });
 
 const LOCALES: LocaleCode[] = ['de', 'en', 'es'];

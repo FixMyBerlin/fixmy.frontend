@@ -9,9 +9,9 @@ const defaultConfig = {
     imageResizeOptions: {
       maxWidth: 800,
       maxHeight: 800,
-      quality: 0.9
-    }
-  }
+      quality: 0.9,
+    },
+  },
 };
 
 const instanceConfig = globalConfig.region === 'aachen' ? aachen : berlin;
@@ -20,8 +20,8 @@ const reportsConfig = {
   ...globalConfig,
   reports: {
     ...defaultConfig,
-    ...instanceConfig
-  }
+    ...instanceConfig,
+  },
 };
 
 export default reportsConfig;

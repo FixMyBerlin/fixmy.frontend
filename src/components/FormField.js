@@ -28,7 +28,7 @@ export default ({
   handleChange,
   errors = {},
   className = '',
-  disabled = false
+  disabled = false,
 }) => {
   let Result = null;
   const formFieldClasses = classnames('formfield', { disabled }, className);
