@@ -1,4 +1,3 @@
-const Autoprefixer = require('autoprefixer');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
@@ -57,7 +56,7 @@ module.exports = merge(common, {
             options: {
               sourceMap: true,
               postcssOptions: {
-                plugins: (loader) => [Autoprefixer]
+                plugins: ['autoprefixer']
               }
             }
           }
