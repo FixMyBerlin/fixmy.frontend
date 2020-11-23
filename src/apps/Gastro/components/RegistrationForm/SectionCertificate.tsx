@@ -50,7 +50,7 @@ const SectionCertificate = ({
   isSubmitting,
   values,
   district,
-  handleChange
+  handleChange,
 }) => {
   const [isSubmittingCertificate, setSubmittingCertificate] = useState(
     isSubmitting
@@ -115,7 +115,7 @@ const SectionCertificate = ({
           type="file"
           inputProps={{
             accept: 'image/*,application/pdf,application/vnd.ms-excel',
-            capture: 'environment'
+            capture: 'environment',
           }}
         />
       </FileInputLabel>
@@ -124,7 +124,7 @@ const SectionCertificate = ({
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(SectionCertificate);

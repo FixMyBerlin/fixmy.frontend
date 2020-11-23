@@ -12,8 +12,8 @@ const formConfig = [
     type: 'email',
     label: 'E-Mail',
     placeholder: 'E-Mail eingeben...',
-    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.'
-  }
+    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.',
+  },
 ];
 
 class ForgotPassword extends PureComponent {

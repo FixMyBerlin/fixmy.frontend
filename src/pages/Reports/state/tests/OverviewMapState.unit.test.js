@@ -7,7 +7,7 @@ import reducer, {
   actions,
   types,
   FETCH_STATE_PENDING,
-  FETCH_STATE_SUCCESS
+  FETCH_STATE_SUCCESS,
 } from '../OverviewMapState';
 import reportsInitialState from '../initialState';
 import { types as errorStateTypes } from '../ErrorState';
@@ -41,7 +41,7 @@ describe('OverviewMapState reducer and actions', () => {
   it('sets the popup display position of a selected report', () => {
     const stateBefore = {
       reports: mockedReportsList,
-      selectedReport: mockedReportsList[0]
+      selectedReport: mockedReportsList[0],
     };
     const pixelPositxion = { x: 50, y: 100 };
 
@@ -52,7 +52,7 @@ describe('OverviewMapState reducer and actions', () => {
 
     expect(newState).toEqual({
       ...stateBefore,
-      selectedReportPosition: pixelPositxion
+      selectedReportPosition: pixelPositxion,
     });
   });
 
@@ -62,8 +62,8 @@ describe('OverviewMapState reducer and actions', () => {
       selectedReport: mockedReportsList[1],
       selectedReportPosition: {
         x: 180.01016568411143,
-        y: 319.9945452428112
-      }
+        y: 319.9945452428112,
+      },
     };
     const newState = reducer(stateBefore, actions.resetMapState());
 
@@ -88,18 +88,18 @@ describe('OverviewMapState reducer and actions', () => {
         { type: types.REPORTS_FETCH_PENDING },
         {
           type: types.REPORTS_FETCH_COMPLETE,
-          payload: mockedReportsList
-        }
+          payload: mockedReportsList,
+        },
       ];
       const expectedNewState = {
         ...initialState,
         reportFetchState: 'success',
-        reports: mockedReportsList
+        reports: mockedReportsList,
       };
 
       const actualState = reducer(initialState, {
         type: types.REPORTS_FETCH_COMPLETE,
-        payload: mockedReportsList
+        payload: mockedReportsList,
       });
 
       const actualActions = store.getActions();
@@ -120,7 +120,7 @@ describe('OverviewMapState reducer and actions', () => {
         // do not mind the action payloads here
         types.REPORTS_FETCH_PENDING,
         types.REPORTS_FETCH_ERROR,
-        errorStateTypes.ADD_ERROR
+        errorStateTypes.ADD_ERROR,
       ];
 
       /* ACT: dispatch thunk */
@@ -140,9 +140,9 @@ describe('OverviewMapState reducer and actions', () => {
           OverviewMapState: {
             reports: mockedReportsList,
             reportFetchState: FETCH_STATE_SUCCESS,
-            zoomIn: false
-          }
-        }
+            zoomIn: false,
+          },
+        },
       };
       const overviewMapStateBefore = stateBefore.ReportsState.OverviewMapState;
       const store = mockStore(stateBefore);
@@ -159,14 +159,14 @@ describe('OverviewMapState reducer and actions', () => {
           type: types.SET_SELECTED_REPORT,
           payload: {
             selectedReport: reportItem,
-            zoomIn: false
-          }
-        }
+            zoomIn: false,
+          },
+        },
       ];
       const expectedState = {
         ...overviewMapStateBefore,
         selectedReport: reportItem,
-        zoomIn: false
+        zoomIn: false,
       };
 
       const actualActions = store.getActions();
@@ -183,9 +183,9 @@ describe('OverviewMapState reducer and actions', () => {
           OverviewMapState: {
             reports: mockedReportsList,
             reportFetchState: FETCH_STATE_SUCCESS,
-            zoomIn: false
-          }
-        }
+            zoomIn: false,
+          },
+        },
       };
       const overviewMapStateBefore = stateBefore.ReportsState.OverviewMapState;
       const store = mockStore(stateBefore);
@@ -205,14 +205,14 @@ describe('OverviewMapState reducer and actions', () => {
           type: types.SET_SELECTED_REPORT,
           payload: {
             selectedReport: reportItem,
-            zoomIn: true
-          }
-        }
+            zoomIn: true,
+          },
+        },
       ];
       const expectedState = {
         ...overviewMapStateBefore,
         selectedReport: reportItem,
-        zoomIn: true
+        zoomIn: true,
       };
 
       const actualActions = store.getActions();
@@ -231,9 +231,9 @@ describe('OverviewMapState reducer and actions', () => {
           ReportsState: {
             OverviewMapState: {
               reports: [],
-              reportFetchState: FETCH_STATE_PENDING
-            }
-          }
+              reportFetchState: FETCH_STATE_PENDING,
+            },
+          },
         });
         interceptFetchReports();
 
@@ -246,7 +246,7 @@ describe('OverviewMapState reducer and actions', () => {
         const expectedActionTypes = [
           types.REPORTS_FETCH_PENDING,
           types.REPORTS_FETCH_COMPLETE,
-          types.SET_SELECTED_REPORT
+          types.SET_SELECTED_REPORT,
         ];
 
         // only test action sequence (reducer is already covered in other tests)

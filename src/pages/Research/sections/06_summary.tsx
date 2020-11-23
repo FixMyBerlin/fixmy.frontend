@@ -2,7 +2,7 @@ import React from 'react';
 import {
   FormattedMessage,
   WrappedComponentProps,
-  injectIntl
+  injectIntl,
 } from 'react-intl';
 
 import { Paragraph, Heading, List, SectionProps } from '~/components2/Article';
@@ -10,7 +10,7 @@ import { Paragraph, Heading, List, SectionProps } from '~/components2/Article';
 const SectionSummary = ({
   toc,
   tocAnchor,
-  intl
+  intl,
 }: SectionProps & WrappedComponentProps) => (
   <>
     <Heading as="h2" toc={toc} tocAnchor={tocAnchor}>

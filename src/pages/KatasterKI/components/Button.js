@@ -34,11 +34,11 @@ const StyledButton = styled.button`
   }
 
   ${!isTouch &&
-    css`
-      &:hover {
-        box-shadow: ${(props) => (props.disabled ? 'none' : boxShadowHover)};
-      }
-    `}
+  css`
+    &:hover {
+      box-shadow: ${(props) => (props.disabled ? 'none' : boxShadowHover)};
+    }
+  `}
 `;
 
 export default ({ children, isLoading, ...rest }) => (

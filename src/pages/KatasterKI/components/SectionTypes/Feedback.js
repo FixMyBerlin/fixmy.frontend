@@ -45,7 +45,7 @@ const Feedback = ({
   isTosAccepted,
   statisticsCounter,
   ratingsCounter,
-  next
+  next,
 }) => {
   if (!isTosAccepted) {
     return <Redirect to={config.routes.katasterKI.landing} />;
@@ -81,7 +81,7 @@ const Feedback = ({
             maxWidth: 500,
             width: '100%',
             margin: '0 auto',
-            paddingBottom: 10
+            paddingBottom: 10,
           }}
           alignItems="center"
           flexDirection="column"
@@ -102,7 +102,7 @@ const Feedback = ({
 const mapStateToProps = (state) => ({
   isTosAccepted: state.KatasterKIState.isTosAccepted,
   statisticsCounter: state.KatasterKIState.statisticsCounter,
-  ratingsCounter: state.KatasterKIState.ratingsCounter
+  ratingsCounter: state.KatasterKIState.ratingsCounter,
 });
 
 export default connect(mapStateToProps)(Feedback);

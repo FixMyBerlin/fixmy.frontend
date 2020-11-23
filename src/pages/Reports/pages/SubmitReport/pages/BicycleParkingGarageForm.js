@@ -8,7 +8,7 @@ import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import {
   RadioButton,
-  RadioButtonLabel
+  RadioButtonLabel,
 } from '~/pages/Reports/pages/SubmitReport/components/RadioButton';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import BrBoxImg from '~/images/reports/b_r_box.jpg';
@@ -110,7 +110,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
 };
 
 BicycleParkingGarageForm.propTypes = {
-  onConfirm: PropTypes.func.isRequired
+  onConfirm: PropTypes.func.isRequired,
 };
 
 export default BicycleParkingGarageForm;

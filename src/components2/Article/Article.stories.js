@@ -4,7 +4,7 @@ import ImageSrc from '~/images/amsterdam-1203305_1280.jpg';
 import * as Article from '.';
 
 export default {
-  title: 'Article'
+  title: 'Article',
 };
 
 const LOCALES = ['de', 'en'];

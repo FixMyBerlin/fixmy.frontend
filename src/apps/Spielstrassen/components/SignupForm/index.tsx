@@ -21,7 +21,7 @@ const initialValues = {
   email: '',
   tos_accepted: false,
   captain: null,
-  message: ''
+  message: '',
 };
 
 const FormError = styled(FormHelperText)`
@@ -51,14 +51,14 @@ const SignupForm = ({ street, history, district }) => (
         ...values,
         captain: values.captain === 'yes',
         campaign: district.name,
-        street
+        street,
       };
       logger(JSON.stringify(signupData, null, 2));
       try {
         await api.signup(signupData, district);
         history.push(
           generatePath(config.routes.spielstrassen.thanks, {
-            slug: slugify(street, { lower: true })
+            slug: slugify(street, { lower: true }),
           })
         );
       } catch (e) {
@@ -104,7 +104,7 @@ const SignupForm = ({ street, history, district }) => (
             type="checkbox"
             Label={{
               label:
-                'Ich willige ein, dass meine Daten an das Bezirksamt zum Zwecke einer Terminabspache und der Vernetzung mit anderen Bürger:innen übermittelt werden.'
+                'Ich willige ein, dass meine Daten an das Bezirksamt zum Zwecke einer Terminabspache und der Vernetzung mit anderen Bürger:innen übermittelt werden.',
             }}
           />
         </div>
@@ -160,7 +160,7 @@ const SignupForm = ({ street, history, district }) => (
 );
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 // Typescript insists that using withRouter means that

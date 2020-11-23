@@ -29,14 +29,14 @@ module.exports = merge(common, {
   bail: true,
   output: {
     filename: 'js/[name].[chunkhash:8].js',
-    chunkFilename: 'js/[name].[chunkhash:8].chunk.js'
+    chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
   },
   optimization: {
     splitChunks: {
       chunks: 'all',
-      name: false
+      name: false,
     },
-    minimizer: [new TerserPlugin()]
+    minimizer: [new TerserPlugin()],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -44,13 +44,13 @@ module.exports = merge(common, {
       siteUrl,
       title,
       template: Path.resolve(__dirname, '../src/index.html'),
-      minify: false
+      minify: false,
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
     new Webpack.optimize.MinChunkSizePlugin({
-      minChunkSize: 10000
-    })
+      minChunkSize: 10000,
+    }),
   ],
   module: {
     rules: [

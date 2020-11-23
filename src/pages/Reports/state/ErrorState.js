@@ -13,15 +13,15 @@ types.REMOVE_ERROR = 'Reports/ReportsDialogState/ErrorState/REMOVE_ERROR';
 actions.addError = ({
   message = 'Ein Fehler ist aufgetreten',
   proceedMessage = null,
-  proceedFunc = null
+  proceedFunc = null,
 } = {}) => ({
   type: types.ADD_ERROR,
   error: true,
-  payload: { message, proceedMessage, proceedFunc }
+  payload: { message, proceedMessage, proceedFunc },
 });
 
 actions.removeError = () => ({
-  type: types.REMOVE_ERROR
+  type: types.REMOVE_ERROR,
 });
 
 // reducer
@@ -33,11 +33,11 @@ function reducer(state = initialState.ErrorState, { type, payload } = {}) {
         ...state,
         message: payload.message,
         proceedMessage: payload.proceedMessage,
-        proceedFunc: payload.proceedFunc
+        proceedFunc: payload.proceedFunc,
       };
     case types.REMOVE_ERROR:
       return {
-        ...initialState.ErrorState
+        ...initialState.ErrorState,
       };
     default:
       return state;

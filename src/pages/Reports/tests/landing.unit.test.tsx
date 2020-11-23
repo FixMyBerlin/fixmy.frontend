@@ -19,7 +19,7 @@ describe('Landing page', () => {
     config.reports.enabled = false;
     expect(
       getAllByRole('button', {
-        name: 'Sagen Sie uns, wo Fahrradbügel benötigt werden'
+        name: 'Sagen Sie uns, wo Fahrradbügel benötigt werden',
       })
     ).toHaveLength(2);
   });

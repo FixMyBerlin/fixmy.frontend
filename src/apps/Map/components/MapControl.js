@@ -23,28 +23,28 @@ const getMargins = (props) => {
         top: margin,
         right: margin,
         bottom: 'auto',
-        left: 'auto'
+        left: 'auto',
       };
     case 'bottom-right':
       return {
         top: 'auto',
         right: margin,
         bottom: margin,
-        left: 'auto'
+        left: 'auto',
       };
     case 'bottom-left':
       return {
         top: 'auto',
         right: 'auto',
         bottom: margin,
-        left: margin
+        left: margin,
       };
     default:
       return {
         top: margin,
         right: 'auto',
         bottom: 'auto',
-        left: margin
+        left: margin,
       };
   }
 };

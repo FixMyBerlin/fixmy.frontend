@@ -6,7 +6,7 @@ import reducer, {
   actions,
   types,
   selectors,
-  LOCATION_MODE_GEOCODING
+  LOCATION_MODE_GEOCODING,
 } from '../SubmitReportState';
 import reportsInitialState from '../initialState';
 import { worldWidePolygon, nullIslandPolygonFeature } from './mocks/geometries';
@@ -23,8 +23,8 @@ const mockStore = configureMockStore(middlewares);
 // This is necessary in thunks, where the reducer is tested indirectly.
 const getGlobalState = (submitReportState) => ({
   ReportsState: {
-    SubmitReportState: submitReportState
-  }
+    SubmitReportState: submitReportState,
+  },
 });
 
 const initialState = reportsInitialState.SubmitReportState;
@@ -39,13 +39,13 @@ describe('SubmitReportState reducer and actions', () => {
       expect(
         reducer(
           {
-            locationMode: LOCATION_MODE_GEOCODING
+            locationMode: LOCATION_MODE_GEOCODING,
           },
           actions.resetDialogState()
         )
       ).toEqual({
         ...initialState,
-        locationMode: LOCATION_MODE_GEOCODING
+        locationMode: LOCATION_MODE_GEOCODING,
       });
     });
 
@@ -53,7 +53,7 @@ describe('SubmitReportState reducer and actions', () => {
       expect(
         reducer({}, actions.setLocationMode(LOCATION_MODE_GEOCODING))
       ).toEqual({
-        locationMode: LOCATION_MODE_GEOCODING
+        locationMode: LOCATION_MODE_GEOCODING,
       });
     });
 
@@ -61,8 +61,8 @@ describe('SubmitReportState reducer and actions', () => {
       const address = 'Teststreet 1, 1337 Testplace';
       expect(reducer({}, actions.setTempLocationAddress(address))).toEqual({
         tempLocation: {
-          address
-        }
+          address,
+        },
       });
     });
 
@@ -70,8 +70,8 @@ describe('SubmitReportState reducer and actions', () => {
       const lngLat = { lng: 1, lat: 2 };
       expect(reducer({}, actions.setTempLocationCoords(lngLat))).toEqual({
         tempLocation: {
-          lngLat
-        }
+          lngLat,
+        },
       });
     });
 
@@ -83,9 +83,9 @@ describe('SubmitReportState reducer and actions', () => {
           tempLocation: {
             deviceLocation: { lng: 1, lat: 2 },
             lngLat: { lng: 1, lat: 2 },
-            address: 'Teststreet 1, 1337 Testplace'
+            address: 'Teststreet 1, 1337 Testplace',
           },
-          newReport: initialState.newReport
+          newReport: initialState.newReport,
         };
         expect(reducer(stateBefore, actions.confirmLocation())).toEqual({
           ...stateBefore,
@@ -98,10 +98,10 @@ describe('SubmitReportState reducer and actions', () => {
               type: 'Point',
               coordinates: [
                 stateBefore.tempLocation.lngLat.lng,
-                stateBefore.tempLocation.lngLat.lat
-              ]
-            }
-          }
+                stateBefore.tempLocation.lngLat.lat,
+              ],
+            },
+          },
         });
       }
     );
@@ -128,8 +128,8 @@ describe('SubmitReportState reducer and actions', () => {
         const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
         const stateBefore = getGlobalState({
           tempLocation: {
-            lngLat: berlinLatLng
-          }
+            lngLat: berlinLatLng,
+          },
         });
         const store = mockStore(stateBefore);
         const expectedAction = { type: types.VALIDATE_POSITION };
@@ -144,14 +144,14 @@ describe('SubmitReportState reducer and actions', () => {
               reducer(
                 {},
                 {
-                  type: types.VALIDATE_POSITION
+                  type: types.VALIDATE_POSITION,
                 }
               )
             ).toEqual({
               tempLocation: {
                 ...stateBefore.tempLocation,
-                valid: true
-              }
+                valid: true,
+              },
             });
           });
       });
@@ -162,8 +162,8 @@ describe('SubmitReportState reducer and actions', () => {
         const berlinLatLng = { lat: 52.520008, lng: 13.404954 };
         const stateBefore = getGlobalState({
           tempLocation: {
-            lngLat: berlinLatLng
-          }
+            lngLat: berlinLatLng,
+          },
         });
         const store = mockStore(stateBefore);
         const expectedAction = { type: types.INVALIDATE_POSITION };
@@ -180,14 +180,14 @@ describe('SubmitReportState reducer and actions', () => {
               reducer(
                 {},
                 {
-                  type: types.INVALIDATE_POSITION
+                  type: types.INVALIDATE_POSITION,
                 }
               )
             ).toEqual({
               tempLocation: {
                 ...stateBefore.tempLocation,
-                valid: false
-              }
+                valid: false,
+              },
             });
           });
       });
@@ -198,16 +198,16 @@ describe('SubmitReportState reducer and actions', () => {
     it("adds the bikestands count to the new report item's details", () => {
       const ammount = 5;
       const stateBefore = {
-        newReport: initialState.newReport
+        newReport: initialState.newReport,
       };
       expect(reducer(stateBefore, actions.setBikestandCount(ammount))).toEqual({
         newReport: {
           ...stateBefore.newReport,
           details: {
             ...stateBefore.newReport.details,
-            number: ammount
-          }
-        }
+            number: ammount,
+          },
+        },
       });
     });
     it("appends info about the conceivable fee to the new report item's details", () => {
@@ -217,9 +217,9 @@ describe('SubmitReportState reducer and actions', () => {
           details: {
             subject: 'BIKE_STANDS',
             number: 3,
-            fee_acceptable: null
-          }
-        }
+            fee_acceptable: null,
+          },
+        },
       };
       expect(
         reducer(stateBefore, actions.setFeeAcceptable(isFeeAcceptable))
@@ -228,9 +228,9 @@ describe('SubmitReportState reducer and actions', () => {
           ...stateBefore.newReport,
           details: {
             ...stateBefore.newReport.details,
-            fee_acceptable: isFeeAcceptable
-          }
-        }
+            fee_acceptable: isFeeAcceptable,
+          },
+        },
       });
     });
     it("appends additional data (photo, description) to the new report item's details", () => {
@@ -238,8 +238,8 @@ describe('SubmitReportState reducer and actions', () => {
       const description = 'someText';
       const stateBefore = {
         newReport: {
-          address: 'Teststreet 1'
-        }
+          address: 'Teststreet 1',
+        },
       };
       expect(
         reducer(stateBefore, actions.setAdditionalData({ photo, description }))
@@ -248,8 +248,8 @@ describe('SubmitReportState reducer and actions', () => {
         newReport: {
           ...stateBefore.newReport,
           photo,
-          description
-        }
+          description,
+        },
       });
     });
 
@@ -269,7 +269,7 @@ describe('SubmitReportState reducer and actions', () => {
         mockedReportsItemCopy.photo = `${base64prefix}${mockedReportItem.photo}`;
         const stateBefore = getGlobalState({
           reports: [],
-          newReport: mockedReportsItemCopy
+          newReport: mockedReportsItemCopy,
         });
         const store = mockStore(stateBefore);
 
@@ -285,7 +285,7 @@ describe('SubmitReportState reducer and actions', () => {
         // test if thunk dispatches expected action sequence
         const expectedActions = [
           types.SUBMIT_REPORT_PENDING,
-          types.SUBMIT_REPORT_COMPLETE
+          types.SUBMIT_REPORT_COMPLETE,
         ];
         return store.dispatch(actions.submitReport()).then(() => {
           expect(
@@ -297,14 +297,14 @@ describe('SubmitReportState reducer and actions', () => {
           // test reducer
           expect(
             reducer(stateBefore.ReportsState.SubmitReportState, {
-              type: types.SUBMIT_REPORT_PENDING
+              type: types.SUBMIT_REPORT_PENDING,
             })
           ).toEqual({
             ...stateBefore.ReportsState.SubmitReportState,
             apiRequestStatus: {
               ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
-              submitting: true
-            }
+              submitting: true,
+            },
           });
 
           const mockId = 999;
@@ -312,20 +312,20 @@ describe('SubmitReportState reducer and actions', () => {
             reducer(stateBefore.ReportsState.SubmitReportState, {
               type: types.SUBMIT_REPORT_COMPLETE,
               submittedReport: {
-                id: mockId
-              }
+                id: mockId,
+              },
             })
           ).toEqual({
             ...stateBefore.ReportsState.SubmitReportState,
             apiRequestStatus: {
               ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
               submitting: false,
-              submitted: true
+              submitted: true,
             },
             newReport: {
               ...stateBefore.ReportsState.SubmitReportState.newReport,
-              id: mockId
-            }
+              id: mockId,
+            },
           });
         });
       });
@@ -342,7 +342,7 @@ describe('SubmitReportState reducer and actions', () => {
         // compile valid state to submit
         delete mockedReportsItemCopy.photo;
         const stateBefore = getGlobalState({
-          newReport: mockedReportsItemCopy
+          newReport: mockedReportsItemCopy,
         });
         const store = mockStore(stateBefore);
 
@@ -355,7 +355,7 @@ describe('SubmitReportState reducer and actions', () => {
         const expectedActions = [
           types.SUBMIT_REPORT_PENDING,
           types.SUBMIT_REPORT_ERROR,
-          errorStateTypes.ADD_ERROR
+          errorStateTypes.ADD_ERROR,
         ];
 
         expect.assertions(3);
@@ -374,14 +374,14 @@ describe('SubmitReportState reducer and actions', () => {
         // test reducer (ErrorState reducer logic is not tested here)
         expect(
           reducer(stateBefore.ReportsState.SubmitReportState, {
-            type: types.SUBMIT_REPORT_ERROR
+            type: types.SUBMIT_REPORT_ERROR,
           })
         ).toEqual({
           ...stateBefore.ReportsState.SubmitReportState,
           apiRequestStatus: {
             ...stateBefore.ReportsState.SubmitReportState.apiRequestStatus,
-            submitting: false
-          }
+            submitting: false,
+          },
         });
       });
     });
@@ -390,7 +390,7 @@ describe('SubmitReportState reducer and actions', () => {
   describe('selectors', () => {
     it(`selects true if the locationMode is ${LOCATION_MODE_GEOCODING}`, () => {
       const stateBefore = {
-        locationMode: LOCATION_MODE_GEOCODING
+        locationMode: LOCATION_MODE_GEOCODING,
       };
       expect(selectors.getLocationIsModeGeocoding(stateBefore)).toBe(true);
     });
@@ -402,9 +402,9 @@ describe('SubmitReportState reducer and actions', () => {
           address: 'some address',
           geometry: {
             type: 'Point',
-            coordinates: coords
-          }
-        }
+            coordinates: coords,
+          },
+        },
       };
       expect(selectors.getAlreadyPicketLocation(stateBefore)).toBe(coords);
     });

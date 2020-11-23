@@ -5,7 +5,7 @@ const germanNumberFormat = formatDefaultLocale({
   decimal: ',',
   thousands: '.',
   grouping: [3],
-  currency: ['€', '']
+  currency: ['€', ''],
 });
 
 export function numberFormat(num, decimals = 0) {

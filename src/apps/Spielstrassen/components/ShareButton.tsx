@@ -15,7 +15,7 @@ const ShareButton = ({ style = {}, className = null, url, text, district }) => {
     navigator.share({
       title: district.apps.spielstrassen.shareTitle,
       text,
-      url
+      url,
     });
   };
 
@@ -23,7 +23,7 @@ const ShareButton = ({ style = {}, className = null, url, text, district }) => {
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(ShareButton);

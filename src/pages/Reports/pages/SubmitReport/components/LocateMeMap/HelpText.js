@@ -43,11 +43,11 @@ const HelpText = ({ text }) => (
 );
 
 HelpText.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string,
 };
 
 HelpText.defaultProps = {
-  text: 'Bewegen Sie die Karte oder tippen Sie eine Adresse ein.'
+  text: 'Bewegen Sie die Karte oder tippen Sie eine Adresse ein.',
 };
 
 export default HelpText;

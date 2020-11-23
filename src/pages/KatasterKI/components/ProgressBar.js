@@ -56,7 +56,7 @@ const ProgressBar = ({ total, current }) => {
 
 const mapStateToProps = (state) => ({
   current: state.KatasterKIState.progressBar.current,
-  total: state.KatasterKIState.progressBar.total
+  total: state.KatasterKIState.progressBar.total,
 });
 
 export default connect(mapStateToProps)(ProgressBar);

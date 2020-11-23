@@ -17,14 +17,14 @@ function toFeature(d) {
   return {
     type: 'Feature',
     geometry,
-    properties
+    properties,
   };
 }
 
 function toGeojson(data) {
   return {
     type: 'FeatureCollection',
-    features: data.map(toFeature)
+    features: data.map(toFeature),
   };
 }
 
@@ -147,7 +147,7 @@ WebglMap.propTypes = {
   reportsData: PropTypes.arrayOf(FMCPropTypes.report),
   selectedReport: FMCPropTypes.report,
   zoomControlPosition: PropTypes.string,
-  isCTAButtonShifted: PropTypes.bool
+  isCTAButtonShifted: PropTypes.bool,
 };
 
 WebglMap.defaultProps = {
@@ -161,7 +161,7 @@ WebglMap.defaultProps = {
   zoomControlPosition: 'bottom-left',
   selectedReport: null,
   error: null,
-  isCTAButtonShifted: false
+  isCTAButtonShifted: false,
 };
 
 export default withRouter(WebglMap);

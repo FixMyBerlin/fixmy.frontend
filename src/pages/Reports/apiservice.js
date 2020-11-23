@@ -44,7 +44,7 @@ async function handleFetchReports(
   const options = {
     method,
     timeout: 30 * 1000,
-    headers: token ? { Authorization: `JWT ${token}` } : {}
+    headers: token ? { Authorization: `JWT ${token}` } : {},
   };
   try {
     response = await ky(reportsEndpointUrl, options)[respType]();
@@ -75,7 +75,7 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
   if (photo) {
     const BASE64_PREFIXES = [
       'data:image/jpg;base64,',
-      'data:image/jpeg;base64,'
+      'data:image/jpeg;base64,',
     ];
     if (!BASE64_PREFIXES.some((prefix) => photo.includes(prefix))) {
       throw new Error(oneLine`Failed to remove base 64 prefix.
@@ -121,7 +121,7 @@ export function getReportStatusCaption(status) {
     tender: 'in Ausschreibung',
     invalid: 'nicht umsetzbar',
     execution: 'im Bau',
-    done: 'wurde umgesetzt'
+    done: 'wurde umgesetzt',
   };
 
   captions.report_new = captions.new;
@@ -150,7 +150,7 @@ export async function addUserToReport(reportId, userId) {
   try {
     reportPatch = await ky(`${config.apiUrl}/reports/${reportId}`, {
       method: 'PATCH',
-      json: { user: userId }
+      json: { user: userId },
     }).json();
   } catch (err) {
     throw new Error(`Can't connect reportId ${reportId} with user ${userId}`);

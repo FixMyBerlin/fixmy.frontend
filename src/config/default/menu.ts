@@ -50,101 +50,101 @@ const menuConfig: Menu = {
   items: [
     {
       type: 'separator',
-      label: 'Berlin'
+      label: 'Berlin',
     },
     {
       type: 'link',
       label: 'Planungskarte',
       link: '/planungen',
       icon: 'map',
-      border: true
+      border: true,
     },
     {
       type: 'link',
       label: 'Analyse',
       link: '/analyse/planungen',
       icon: 'analysis',
-      border: false
+      border: false,
     },
     {
       type: 'separator',
-      label: 'Friedrichshain-Kreuzberg'
+      label: 'Friedrichshain-Kreuzberg',
     },
     {
       type: 'link',
       label: 'Terrassen für Vieles',
       icon: 'icon-gastro',
       link: '/friedrichshain-kreuzberg/terrassen',
-      border: true
+      border: true,
     },
     {
       type: 'link',
       label: 'Temporäre Spielstraßen',
       icon: 'spielstrassen-icon',
       link: '/friedrichshain-kreuzberg/spielstrassen',
-      border: true
+      border: true,
     },
     {
       type: 'link',
       label: 'Karte der Radbügelmeldungen',
       icon: 'reports-icon',
       link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
-      border: false
+      border: false,
     },
     {
       type: 'separator',
-      label: 'Weiteres'
+      label: 'Weiteres',
     },
     {
       type: 'external',
       label: 'Angebote für Kommunen',
       href: 'https://fixmycity.de',
       icon: 'icon-kommunen',
-      border: true
+      border: true,
     },
     {
       type: 'link',
       label: 'Ergebnisse der Straßencheck-Umfrage',
       icon: 'icon-flask',
       link: '/research/subjektive-sicherheit',
-      border: true
+      border: true,
     },
     {
       type: 'link',
       label: 'Über FixMyBerlin',
       link: '/info',
       icon: 'info',
-      border: true
+      border: true,
     },
     {
       type: 'link',
       label: 'FAQ',
       link: '/faq',
       icon: 'question',
-      border: true
+      border: true,
     },
     {
       type: 'link',
       label: 'API',
       link: '/api',
       icon: 'api',
-      border: false
-    }
+      border: false,
+    },
   ],
   footeritems: [
     {
       label: 'Presse',
-      link: '/presse'
+      link: '/presse',
     },
     {
       label: 'Impressum',
-      link: '/impressum'
+      link: '/impressum',
     },
     {
       label: 'Datenschutz',
-      link: '/datenschutz'
-    }
-  ]
+      link: '/datenschutz',
+    },
+  ],
 };
 
 export default menuConfig;

@@ -80,7 +80,7 @@ const BarChart = ({
   title,
   data,
   feelsafe = null,
-  feelsafeIcon = 'bike'
+  feelsafeIcon = 'bike',
 }: BarChartProps) => {
   const [isWeightGraph, setWeightGraph] = useState(data.length === 1);
   useEffect(() => setWeightGraph(data.length === 1), [data.length]);

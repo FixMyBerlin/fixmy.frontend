@@ -6,7 +6,7 @@ import Button from '.';
 
 export default {
   title: 'Generic / Button',
-  component: Button
+  component: Button,
 };
 
 const Template = (args) => <Button {...args}>Click me</Button>;

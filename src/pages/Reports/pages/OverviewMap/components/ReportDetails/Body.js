@@ -50,7 +50,7 @@ const DetailsBody = ({
   description,
   details: { fee_acceptable: isFeeAcceptable },
   origin,
-  plannings
+  plannings,
   // created_date: createdDate
 }) => (
   <>

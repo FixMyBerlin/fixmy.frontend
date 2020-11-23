@@ -32,20 +32,20 @@ const IconLabel = styled.div`
 const icons = [
   {
     icon: PedelecIcon,
-    label: 'Fuß'
+    label: 'Fuß',
   },
   {
     icon: BikeIcon,
-    label: 'Fahrrad'
+    label: 'Fahrrad',
   },
   {
     icon: CarIcon,
-    label: 'Auto'
+    label: 'Auto',
   },
   {
     icon: PublicIcon,
-    label: 'Öffis'
-  }
+    label: 'Öffis',
+  },
 ];
 
 export default () => (

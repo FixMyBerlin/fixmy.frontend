@@ -22,7 +22,7 @@ const StaticMap: React.FC<Props> = ({
   location,
   mapboxStyle,
   bounds = null,
-  zoom = 17
+  zoom = 17,
 }) => {
   if (!location) return null;
 

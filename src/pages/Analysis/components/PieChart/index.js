@@ -45,9 +45,9 @@ const chartStyle = {
   labels: {
     fontSize: 14,
     fontWeight: 700,
-    fontFamily: '"Open Sans", sans-serif'
+    fontFamily: '"Open Sans", sans-serif',
   },
-  data: {}
+  data: {},
 };
 
 /**
@@ -150,7 +150,7 @@ class PieChart extends PureComponent {
       x: planningPhase.id,
       xName: planningPhase.name,
       y: lengthByPhase(data, planningPhase.id) / 1000.0,
-      color: planningPhase.color
+      color: planningPhase.color,
     })).filter((d) => d.y > 0);
 
     const hasData = data.length > 0;
@@ -170,9 +170,9 @@ class PieChart extends PureComponent {
             {
               target: 'data',
               eventHandlers: {
-                onClick: this.handleClick
-              }
-            }
+                onClick: this.handleClick,
+              },
+            },
           ]}
         />
         <ChartInnerLabel>
@@ -184,5 +184,5 @@ class PieChart extends PureComponent {
 }
 
 export default connect(null, (dispatch) => ({
-  setPhaseFilter: (filter) => dispatch(setPhaseFilter(filter))
+  setPhaseFilter: (filter) => dispatch(setPhaseFilter(filter)),
 }))(PieChart);

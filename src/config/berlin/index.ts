@@ -6,8 +6,8 @@ const berlinConfig: RegionConfig = {
   siteTitle: 'FixMyBerlin',
   districts: {
     xhain,
-    tempelberg
-  }
+    tempelberg,
+  },
 };
 
 export default berlinConfig;

@@ -1,1 +1,87 @@
-{"url":"https://api.fixmyberlin.de/api/plannings/1","title":"Hier entsteht ein geschützter Radweg","description":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\r\n\r\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.","short_description":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.","side":0,"costs":300000,"draft":"2019","start_of_construction":"2020","completion":"2021","phase":"execution of construction work","responsible":"Bezirksamt Friedrichshain-Kreuzberg","external_url":"https://www.berlin.de/ba-friedrichshain-kreuzberg/","cross_section_photo":"https://fmb-aws-bucket.s3.amazonaws.com/unnamed-st.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSGGCDDKPDHMM2AA%2F20180726%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20180726T143917Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=da1d695ab21d5eddaef34088a1feb4bc4e1649ae229489b99a7e3b7afadb8f16","faq":[{"text":"Warum dauert das so lange?","answer":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."},{"text":"Warum ist das so teuer?","answer":"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."}],"planning_sections":["https://api.fixmyberlin.de/api/planning-sections/35","https://api.fixmyberlin.de/api/planning-sections/36","https://api.fixmyberlin.de/api/planning-sections/37"],"planning_section_ids":[35,36,37],"geometry":{"type":"MultiLineString","coordinates":[[[13.3436042082487,52.52898476869447],[13.34375540636318,52.52905990333657],[13.34534785339055,52.52986338756271],[13.34699679174154,52.53069670880362],[13.3471556997163,52.53076948732901],[13.34736151655809,52.53087843607117],[13.34871665011191,52.53156463400593],[13.34930233273364,52.53186184107286],[13.35005672081128,52.53223752215867],[13.35021040281994,52.53231903831944]],[[13.35089860454533,52.53265661639912],[13.35169444730637,52.53306339700636],[13.35194670253364,52.53320250732755],[13.35328211017218,52.53387231964688],[13.35451973192584,52.53449638107806],[13.35543293575451,52.5349584576966],[13.35638001810245,52.53544331304059]],[[13.35706024332548,52.53578769427813],[13.35744429750106,52.53597997542684],[13.35759033784758,52.53603909572202],[13.35789509103176,52.5361836794354],[13.35918741238744,52.53678443271541],[13.35999600839419,52.53715612949126]]]},"photos":[{"height":1440,"width":1920,"src":"https://fmb-aws-bucket.s3.amazonaws.com/photos/doci6B07E5AE.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSGGCDDKPDHMM2AA%2F20180726%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20180726T143917Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=2972491e6379c20555bcf80eb69b176a49d77e29a4f7d370c121bced905bf59e"},{"height":1440,"width":1920,"src":"https://fmb-aws-bucket.s3.amazonaws.com/photos/doci27EA9C26.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSGGCDDKPDHMM2AA%2F20180726%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20180726T143917Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=2e7ac9975b08cba72463689254d717739d830cd4a79b690cfe3af2665e73af1b"},{"height":1440,"width":1920,"src":"https://fmb-aws-bucket.s3.amazonaws.com/photos/doci554CE6C0.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSGGCDDKPDHMM2AA%2F20180726%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20180726T143917Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=05de7f5e21738b60cb5b62787bbcb077f5f2505af0c3cfa6476be587d78799dc"},{"height":1440,"width":1920,"src":"https://fmb-aws-bucket.s3.amazonaws.com/photos/doci5311FA6D.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSGGCDDKPDHMM2AA%2F20180726%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20180726T143917Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c6c619a7a90bbf50416eb8bccbfb206accc527976ce1f04b469d394b142f3ed6"}]}
+{
+  "url": "https://api.fixmyberlin.de/api/plannings/1",
+  "title": "Hier entsteht ein geschützter Radweg",
+  "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\r\n\r\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+  "short_description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
+  "side": 0,
+  "costs": 300000,
+  "draft": "2019",
+  "start_of_construction": "2020",
+  "completion": "2021",
+  "phase": "execution of construction work",
+  "responsible": "Bezirksamt Friedrichshain-Kreuzberg",
+  "external_url": "https://www.berlin.de/ba-friedrichshain-kreuzberg/",
+  "cross_section_photo": "https://fmb-aws-bucket.s3.amazonaws.com/unnamed-st.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSGGCDDKPDHMM2AA%2F20180726%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20180726T143917Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=da1d695ab21d5eddaef34088a1feb4bc4e1649ae229489b99a7e3b7afadb8f16",
+  "faq": [
+    {
+      "text": "Warum dauert das so lange?",
+      "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    },
+    {
+      "text": "Warum ist das so teuer?",
+      "answer": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    }
+  ],
+  "planning_sections": [
+    "https://api.fixmyberlin.de/api/planning-sections/35",
+    "https://api.fixmyberlin.de/api/planning-sections/36",
+    "https://api.fixmyberlin.de/api/planning-sections/37"
+  ],
+  "planning_section_ids": [35, 36, 37],
+  "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+      [
+        [13.3436042082487, 52.52898476869447],
+        [13.34375540636318, 52.52905990333657],
+        [13.34534785339055, 52.52986338756271],
+        [13.34699679174154, 52.53069670880362],
+        [13.3471556997163, 52.53076948732901],
+        [13.34736151655809, 52.53087843607117],
+        [13.34871665011191, 52.53156463400593],
+        [13.34930233273364, 52.53186184107286],
+        [13.35005672081128, 52.53223752215867],
+        [13.35021040281994, 52.53231903831944]
+      ],
+      [
+        [13.35089860454533, 52.53265661639912],
+        [13.35169444730637, 52.53306339700636],
+        [13.35194670253364, 52.53320250732755],
+        [13.35328211017218, 52.53387231964688],
+        [13.35451973192584, 52.53449638107806],
+        [13.35543293575451, 52.5349584576966],
+        [13.35638001810245, 52.53544331304059]
+      ],
+      [
+        [13.35706024332548, 52.53578769427813],
+        [13.35744429750106, 52.53597997542684],
+        [13.35759033784758, 52.53603909572202],
+        [13.35789509103176, 52.5361836794354],
+        [13.35918741238744, 52.53678443271541],
+        [13.35999600839419, 52.53715612949126]
+      ]
+    ]
+  },
+  "photos": [
+    {
+      "height": 1440,
+      "width": 1920,
+      "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/doci6B07E5AE.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSGGCDDKPDHMM2AA%2F20180726%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20180726T143917Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=2972491e6379c20555bcf80eb69b176a49d77e29a4f7d370c121bced905bf59e"
+    },
+    {
+      "height": 1440,
+      "width": 1920,
+      "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/doci27EA9C26.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSGGCDDKPDHMM2AA%2F20180726%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20180726T143917Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=2e7ac9975b08cba72463689254d717739d830cd4a79b690cfe3af2665e73af1b"
+    },
+    {
+      "height": 1440,
+      "width": 1920,
+      "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/doci554CE6C0.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSGGCDDKPDHMM2AA%2F20180726%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20180726T143917Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=05de7f5e21738b60cb5b62787bbcb077f5f2505af0c3cfa6476be587d78799dc"
+    },
+    {
+      "height": 1440,
+      "width": 1920,
+      "src": "https://fmb-aws-bucket.s3.amazonaws.com/photos/doci5311FA6D.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJSGGCDDKPDHMM2AA%2F20180726%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20180726T143917Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=c6c619a7a90bbf50416eb8bccbfb206accc527976ce1f04b469d394b142f3ed6"
+    }
+  ]
+}

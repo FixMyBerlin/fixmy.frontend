@@ -8,7 +8,7 @@ import {
   dateReceived,
   isBoardwalk,
   permitStart,
-  permitEnd
+  permitEnd,
 } from '../utils';
 import AreaMap from '~/apps/Gastro/components/AreaMap';
 

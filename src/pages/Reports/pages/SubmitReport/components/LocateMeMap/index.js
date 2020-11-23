@@ -25,7 +25,7 @@ import FMBCredits from '~/apps/Map/components/FMBCredits';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import {
   actions as submitReportStateActions,
-  selectors as submitReportStateSelectors
+  selectors as submitReportStateSelectors,
 } from '~/pages/Reports/state/SubmitReportState';
 
 const MapView = styled.div`
@@ -106,7 +106,7 @@ class LocateMeMap extends Component {
       geocoderUsed: false,
       autocompleteHasFocus: false,
       locationPinned: false,
-      isLoading: true
+      isLoading: true,
     };
   }
 
@@ -119,7 +119,7 @@ class LocateMeMap extends Component {
   componentWillUnmount() {
     this.setState({
       mapHasBeenDragged: false,
-      locationPinned: false
+      locationPinned: false,
     });
   }
 
@@ -166,7 +166,7 @@ class LocateMeMap extends Component {
 
   ongeocodeUse = () =>
     this.setState({
-      geocoderUsed: true
+      geocoderUsed: true,
     });
 
   ongeocodeSuccess = ({ coords, address }) => {
@@ -178,7 +178,7 @@ class LocateMeMap extends Component {
   onDevicePosition = (coords) => {
     const coordsObj = {
       lng: coords[0],
-      lat: coords[1]
+      lat: coords[1],
     };
     this.props.setDeviceLocation(coordsObj);
     this.onMapMove(coordsObj);
@@ -195,7 +195,7 @@ class LocateMeMap extends Component {
 
   togglePinned = () => {
     this.setState((state) => ({
-      locationPinned: !state.locationPinned
+      locationPinned: !state.locationPinned,
     }));
   };
 
@@ -336,10 +336,10 @@ const mapStateToProps = (state) => ({
   ),
   alreadyPickedLocation: submitReportStateSelectors.getAlreadyPicketLocation(
     state.ReportsState.SubmitReportState
-  )
+  ),
 });
 const mapDispatchToProps = {
   ...errorStateActions,
-  ...submitReportStateActions
+  ...submitReportStateActions,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(LocateMeMap);

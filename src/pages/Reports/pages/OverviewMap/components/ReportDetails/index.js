@@ -48,12 +48,12 @@ const ReportDetails = ({ reportItem, token }) => {
 
 ReportDetails.propTypes = {
   token: PropTypes.string,
-  reportItem: FMCPropTypes.report
+  reportItem: FMCPropTypes.report,
 };
 
 ReportDetails.defaultProps = {
   token: null,
-  reportItem: null
+  reportItem: null,
 };
 
 export default detailWrapped(ReportDetails);

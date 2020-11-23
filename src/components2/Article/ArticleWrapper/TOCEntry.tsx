@@ -70,7 +70,7 @@ function TOCEntry({ index, entry, active = false }) {
   };
 
   const slug = slugify(entry.props.tocAnchor || entry.props.toc, {
-    lower: true
+    lower: true,
   });
 
   return (

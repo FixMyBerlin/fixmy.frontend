@@ -36,7 +36,7 @@ const ICONS_BY_STATUS = {
     planning: AachenMarkerPlanning,
     execution: AachenMarkerExecution,
     invalid: AachenMarkerInvalid,
-    done: AachenMarkerDone
+    done: AachenMarkerDone,
   },
   default: {
     report_new: DefaultMarkerNew,
@@ -52,8 +52,8 @@ const ICONS_BY_STATUS = {
     planning: DefaultMarkerPlanning,
     execution: DefaultMarkerExecution,
     invalid: DefaultMarkerInvalid,
-    done: DefaultMarkerDone
-  }
+    done: DefaultMarkerDone,
+  },
 };
 
 /**
@@ -80,5 +80,5 @@ const getLandingContent = () =>
 
 export default {
   getLandingContent,
-  getMarkerSrc
+  getMarkerSrc,
 };
