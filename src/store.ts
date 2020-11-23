@@ -16,7 +16,7 @@ const Reducer = combineReducers({
   AnalysisState,
   ReportsState,
   KatasterKIState,
-  SpielstrassenState
+  SpielstrassenState,
 });
 
 export type RootState = ReturnType<typeof Reducer>;

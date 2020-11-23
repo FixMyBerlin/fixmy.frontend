@@ -2,14 +2,14 @@ const defaultState = {
   ErrorState: {
     message: null,
     proceedMessage: null,
-    proceedFunc: null
+    proceedFunc: null,
   },
   OverviewMapState: {
     reports: [], // report items fetched from api
     reportFetchState: 'waiting', // not using constant to avoid dependency cycle
     selectedReport: null, // an item of the reports list
     selectedReportPosition: { x: 0, y: 0 }, // projected position of report popup,
-    zoomIn: false // wether or not the map zooms to a marker
+    zoomIn: false, // wether or not the map zooms to a marker
   },
   SubmitReportState: {
     locationMode: null, // either LOCATION_MODE_DEVICE or LOCATION_MODE_GEOCODING
@@ -21,11 +21,11 @@ const defaultState = {
       lngLat: null, // { lng, lat}
       address: '', // reverse-geocoding result
       pinned: false, // true when the user has confirmed the location he set using the map
-      valid: true // set to false when a location is outside the area of interest
+      valid: true, // set to false when a location is outside the area of interest
     },
     apiRequestStatus: {
       submitting: false, // set true during submission of the report item to the api
-      submitted: false // set true on submit success
+      submitted: false, // set true on submit success
     },
     newReport: {
       // instance of json schema agreed upon
@@ -34,12 +34,12 @@ const defaultState = {
       details: {
         subject: 'BIKE_STANDS',
         number: null, // number of bikestands
-        fee_acceptable: null // if the user would pay for managed parking
+        fee_acceptable: null, // if the user would pay for managed parking
       },
       photo: null, // jpeg in base64
-      description: null // textual description of the problem / potential site
-    }
-  }
+      description: null, // textual description of the problem / potential site
+    },
+  },
 };
 
 export default (window.Cypress && window.initialState?.ReportsState) ||

@@ -27,9 +27,9 @@ const configuredKy = ky.create({
         if (token) {
           req.headers.set('Authorization', `JWT ${token}`);
         }
-      }
-    ]
-  }
+      },
+    ],
+  },
 });
 
 // Generic Request Handler
@@ -38,7 +38,7 @@ const defaultOptions: RequestOptions = {
   accept: 'json',
   method: 'get',
   timeout: 30 * 1000,
-  slowResponseTimeout: 5 * 1000
+  slowResponseTimeout: 5 * 1000,
 };
 
 /**

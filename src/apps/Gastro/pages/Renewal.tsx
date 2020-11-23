@@ -40,8 +40,8 @@ const Section = styled.section`
 
 const Renewal = ({
   match: {
-    params: { id, accessKey }
-  }
+    params: { id, accessKey },
+  },
 }) => {
   const [isLoading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>(null);

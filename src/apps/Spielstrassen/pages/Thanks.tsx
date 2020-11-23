@@ -32,7 +32,7 @@ const LinkButton = styled(Button)`
 const Thanks = ({
   match,
   streets,
-  streetRequest
+  streetRequest,
 }: State & RouteComponentProps<{ slug: string }>) => {
   const [street, setStreet] = useState(
     getStreetInfo(streets, match.params?.slug)

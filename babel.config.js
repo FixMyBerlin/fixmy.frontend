@@ -7,9 +7,9 @@ module.exports = (api) => {
       '@babel/preset-env',
       {
         useBuiltIns: 'usage',
-        corejs: { version: '3.6', proposals: true }
-      }
-    ]
+        corejs: { version: '3.6', proposals: true },
+      },
+    ],
   ];
 
   const plugins = [
@@ -18,22 +18,22 @@ module.exports = (api) => {
     [
       'babel-plugin-styled-components',
       {
-        displayName: true
-      }
+        displayName: true,
+      },
     ],
     'babel-plugin-idx',
     '@babel/plugin-proposal-optional-chaining',
-    'react-hot-loader/babel'
+    'react-hot-loader/babel',
   ];
 
   const env = {
     development: {
-      plugins: ['@babel/plugin-transform-react-jsx-source']
+      plugins: ['@babel/plugin-transform-react-jsx-source'],
     },
     test: {
-      plugins: ['transform-es2015-modules-commonjs']
+      plugins: ['transform-es2015-modules-commonjs'],
     },
-    production: {}
+    production: {},
   };
 
   return {
@@ -44,13 +44,13 @@ module.exports = (api) => {
       {
         test: './node_modules/debug/**/*.js',
         sourceType: 'script',
-        presets: ['@babel/preset-env']
+        presets: ['@babel/preset-env'],
       },
       {
         test: './node_modules/@mapbox/mapbox-gl-draw/**/*.js',
         sourceType: 'script',
-        presets: ['@babel/preset-env']
-      }
-    ]
+        presets: ['@babel/preset-env'],
+      },
+    ],
   };
 };

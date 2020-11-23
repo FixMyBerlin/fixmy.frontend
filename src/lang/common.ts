@@ -5,16 +5,16 @@ import { defineMessages } from 'react-intl';
 const messages = defineMessages({
   'localeSwitcher-de': {
     id: 'common.localeSwitcher.labelDE',
-    defaultMessage: 'Deutsch'
+    defaultMessage: 'Deutsch',
   },
   'localeSwitcher-en': {
     id: 'common.localeSwitcher.labelEN',
-    defaultMessage: 'Englisch'
+    defaultMessage: 'Englisch',
   },
   'localeSwitcher-es': {
     id: 'common.localeSwitcher.labelES',
-    defaultMessage: 'Spanisch'
-  }
+    defaultMessage: 'Spanisch',
+  },
 });
 
 export default messages;

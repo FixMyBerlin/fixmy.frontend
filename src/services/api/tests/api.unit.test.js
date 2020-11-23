@@ -38,8 +38,8 @@ describe('API module', () => {
       const testToken = 'abc123';
       const mockState = {
         UserState: {
-          token: testToken
-        }
+          token: testToken,
+        },
       };
       jest.mock('~/store');
       store.getState = () => mockState;
@@ -60,7 +60,7 @@ describe('API module', () => {
         )
       );
       const response = await request(SAMPLE_ROUTE, {
-        accept: 'text'
+        accept: 'text',
       });
       expect(response).toEqual(testResponse);
     });
@@ -79,7 +79,7 @@ describe('API module', () => {
 
       await request(SAMPLE_ROUTE, {
         onSubmit: onSubmitSpy,
-        onFinish: onFinishSpy
+        onFinish: onFinishSpy,
       });
 
       expect(onSubmitSpy).toBeCalled();
@@ -95,7 +95,7 @@ describe('API module', () => {
         )
       );
       await request(SAMPLE_ROUTE, {
-        onSlowResponse: onSlowResponseSpy
+        onSlowResponse: onSlowResponseSpy,
       });
 
       mswServer.use(
@@ -106,7 +106,7 @@ describe('API module', () => {
 
       await request('slowRoute', {
         onSlowResponse: onSlowResponseSpy,
-        slowResponseTimeout: 1
+        slowResponseTimeout: 1,
       });
 
       expect(onSlowResponseSpy).toHaveBeenCalledTimes(1);
@@ -170,7 +170,7 @@ describe('API module', () => {
 
           await expect(
             request(SAMPLE_ROUTE, {
-              accept: 'text'
+              accept: 'text',
             })
           ).rejects.toThrowError(new ApiError(textResponse));
         });
@@ -230,7 +230,7 @@ describe('API module', () => {
           try {
             await request(SAMPLE_ROUTE, {
               onSubmit: onSubmitSpy,
-              onFinish: onFinishSpy
+              onFinish: onFinishSpy,
             });
           } catch (e) {
             // swallow the error, does not concern us here

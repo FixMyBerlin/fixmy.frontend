@@ -26,11 +26,11 @@ const Suggestionlist = ({ suggestions, onSuggestionPick }) => {
 
 Suggestionlist.propTypes = {
   suggestions: PropTypes.arrayOf(PropTypes.object),
-  onSuggestionPick: PropTypes.func.isRequired
+  onSuggestionPick: PropTypes.func.isRequired,
 };
 
 Suggestionlist.defaultProps = {
-  suggestions: []
+  suggestions: [],
 };
 
 export default Suggestionlist;

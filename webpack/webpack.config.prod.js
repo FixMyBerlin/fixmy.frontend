@@ -6,7 +6,6 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
 
@@ -30,14 +29,14 @@ module.exports = merge(common, {
   bail: true,
   output: {
     filename: 'js/[name].[chunkhash:8].js',
-    chunkFilename: 'js/[name].[chunkhash:8].chunk.js'
+    chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
   },
   optimization: {
     splitChunks: {
       chunks: 'all',
-      name: false
+      name: false,
     },
-    minimizer: [new TerserPlugin()]
+    minimizer: [new TerserPlugin()],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -45,13 +44,13 @@ module.exports = merge(common, {
       siteUrl,
       title,
       template: Path.resolve(__dirname, '../src/index.html'),
-      minify: false
+      minify: false,
     }),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
     new Webpack.optimize.MinChunkSizePlugin({
-      minChunkSize: 10000
-    })
+      minChunkSize: 10000,
+    }),
   ],
   module: {
     rules: [
@@ -65,8 +64,7 @@ module.exports = merge(common, {
             options: {
               sourceMap: true,
               postcssOptions: {
-                ident: 'postcss',
-                plugins: () => [Autoprefixer]
+                plugins: ['autoprefixer']
               }
             }
           }

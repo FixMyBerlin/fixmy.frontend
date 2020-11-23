@@ -26,7 +26,7 @@ const SingleChoiceInput = ({
   currentValue,
   handleChange,
   page,
-  next
+  next,
 }) => {
   const [clickedButton, setClickedButton] = useState(null);
   const onClick = (option) => {

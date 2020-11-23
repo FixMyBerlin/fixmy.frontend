@@ -19,7 +19,7 @@ class BaseMap extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: true
+      isLoading: true,
     };
   }
 
@@ -28,7 +28,7 @@ class BaseMap extends PureComponent {
       container: this.root,
       style: MB_STYLE_URL,
       bounds: config.reports.overviewMap.bounds,
-      maxBounds: this.props.maxBounds
+      maxBounds: this.props.maxBounds,
     });
 
     this.map.on('load', () => {
@@ -81,7 +81,7 @@ BaseMap.propTypes = {
   children: PropTypes.node,
   // purposely allowing didOverlayLoad to be undefined
   // eslint-disable-next-line react/require-default-props
-  didOverlayLoad: PropTypes.bool
+  didOverlayLoad: PropTypes.bool,
 };
 
 BaseMap.defaultProps = {
@@ -89,7 +89,7 @@ BaseMap.defaultProps = {
   onLoad: () => {},
   onMove: () => {},
   className: '',
-  children: null
+  children: null,
 };
 
 export default BaseMap;

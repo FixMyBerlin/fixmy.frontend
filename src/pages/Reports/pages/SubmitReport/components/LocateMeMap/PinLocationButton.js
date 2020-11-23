@@ -47,13 +47,13 @@ const PinLocationButton = ({ onConfirm, text, disabled }) => (
 PinLocationButton.propTypes = {
   onConfirm: PropTypes.func,
   text: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 
 PinLocationButton.defaultProps = {
   onConfirm: () => logger('onConfirm says implement me'),
   text: () => 'Diese Position bestätigen',
-  disabled: false
+  disabled: false,
 };
 
 export default PinLocationButton;

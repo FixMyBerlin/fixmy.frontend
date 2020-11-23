@@ -9,7 +9,7 @@ import MenuFooter from './MenuFooter';
 
 const label = defineMessage({
   id: 'components.menu.ariaRole',
-  defaultMessage: 'Hauptmenü'
+  defaultMessage: 'Hauptmenü',
 });
 
 const Menu = () => {

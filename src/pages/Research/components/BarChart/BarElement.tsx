@@ -46,20 +46,20 @@ const colorWeight = ['#45b834'];
 const labels = defineMessages({
   0: {
     id: 'research.components.barchart.labels.unsafe',
-    defaultMessage: 'unsicher'
+    defaultMessage: 'unsicher',
   },
   1: {
     id: 'research.components.barchart.labels.ratherUnsafe',
-    defaultMessage: 'eher unsicher'
+    defaultMessage: 'eher unsicher',
   },
   2: {
     id: 'research.components.barchart.labels.ratherSafe',
-    defaultMessage: 'eher sicher'
+    defaultMessage: 'eher sicher',
   },
   3: {
     id: 'research.components.barchart.labels.safe',
-    defaultMessage: 'sicher'
-  }
+    defaultMessage: 'sicher',
+  },
 });
 
 const getColor = (isWeightGraph: boolean, index: number) =>
@@ -70,7 +70,7 @@ const BarLabel = ({ value, isWeightGraph }) => {
   return isWeightGraph ? (
     <WeightBarLabelStyle>
       {(value / 100.0).toLocaleString(intl.locale, {
-        maximumFractionDigits: 2
+        maximumFractionDigits: 2,
       })}
     </WeightBarLabelStyle>
   ) : (
@@ -85,7 +85,7 @@ const BarLabel = ({ value, isWeightGraph }) => {
 const BarElement = ({ title, value, index, isWeightGraph = false }) => {
   const intl = useIntl();
   const pctValue = value.toLocaleString(intl.locale, {
-    maximumFractionDigits: 2
+    maximumFractionDigits: 2,
   });
   const tooltipId = `barchart-tooltip-${encodeURIComponent(
     title
@@ -96,7 +96,7 @@ const BarElement = ({ title, value, index, isWeightGraph = false }) => {
       key={`bar__${labels[index]}`}
       style={{
         width: `${value}%`,
-        backgroundColor: getColor(isWeightGraph, index)
+        backgroundColor: getColor(isWeightGraph, index),
       }}
       tabIndex={isWeightGraph ? null : 0}
       aria-describedby={isWeightGraph ? null : tooltipId}

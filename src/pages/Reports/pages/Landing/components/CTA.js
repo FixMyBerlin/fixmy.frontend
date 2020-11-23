@@ -16,9 +16,9 @@ const CenteredButton = styled(Button)`
   text-decoration: none;
   width: 17em;
   text-align: center;
-  box-shadow: ${
-    config.flatButtons ? 'initial' : '0 0 12px 0 rgba(0, 0, 0, 0.3)'
-  };
+  box-shadow: ${config.flatButtons
+    ? 'initial'
+    : '0 0 12px 0 rgba(0, 0, 0, 0.3)'};
 
   &:visited,
   &:hover {
@@ -54,13 +54,13 @@ const JoinButton = ({ toUrl }) => (
 );
 
 JoinButton.propTypes = {
-  toUrl: PropTypes.string
+  toUrl: PropTypes.string,
 };
 
 JoinButton.defaultProps = {
   toUrl: config.reports?.enabled
     ? config.routes.reports?.new
-    : config.routes.reports?.map
+    : config.routes.reports?.map,
 };
 
 export default JoinButton;

@@ -16,7 +16,7 @@ class UserLikes extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      itemType: 'projects'
+      itemType: 'projects',
     };
   }
 
@@ -46,12 +46,12 @@ class UserLikes extends PureComponent {
           options={[
             {
               value: 'projects',
-              label: 'Planungen'
+              label: 'Planungen',
             },
             {
               value: 'reports',
-              label: 'Meldungen'
-            }
+              label: 'Meldungen',
+            },
           ]}
           disabled={this.props.isLoading}
         />

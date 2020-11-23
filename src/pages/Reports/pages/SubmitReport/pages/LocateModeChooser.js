@@ -78,7 +78,7 @@ const LocateModeChooser = ({
   onUseGeocoding,
   onClose,
   error,
-  removeError
+  removeError,
 }) => (
   <Wrapper>
     <Heading data-cy="reports-locatemode-title">{heading}</Heading>
@@ -127,12 +127,12 @@ LocateModeChooser.propTypes = {
   onUseGeocoding: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   error: PropTypes.shape({ message: PropTypes.string }),
-  removeError: PropTypes.func.isRequired
+  removeError: PropTypes.func.isRequired,
 };
 
 LocateModeChooser.defaultProps = {
   heading: 'Wo benötigen Sie neue Fahrradbügel?',
-  error: {}
+  error: {},
 };
 
 export default LocateModeChooser;

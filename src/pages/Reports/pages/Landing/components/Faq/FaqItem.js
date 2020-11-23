@@ -68,13 +68,13 @@ const FaqItem = ({ heading, text, open }) => (
 FaqItem.propTypes = {
   heading: PropTypes.string,
   text: PropTypes.string,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };
 
 FaqItem.defaultProps = {
   heading: 'Dieser Abschnitt hat noch keine Überschrift',
   text: 'Der Text zu diesem Abschnitt in Arbeit...',
-  open: false
+  open: false,
 };
 
 export default FaqItem;

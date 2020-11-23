@@ -2,7 +2,7 @@ import React from 'react';
 import {
   FormattedMessage,
   WrappedComponentProps,
-  injectIntl
+  injectIntl,
 } from 'react-intl';
 
 import {
@@ -10,7 +10,7 @@ import {
   Heading,
   ImageMulti,
   List,
-  SectionProps
+  SectionProps,
 } from '~/components2/Article';
 import Link from '~/components2/Link';
 import BarChart from '../components/BarChart';
@@ -73,7 +73,7 @@ import MS_A_67 from '../images/01_MS_A_67_@x2.jpg';
 const SectionResults = ({
   toc,
   tocAnchor,
-  intl
+  intl,
 }: SectionProps & WrappedComponentProps) => (
   <>
     <Heading as="h2" toc={toc} tocAnchor={tocAnchor}>
@@ -105,7 +105,7 @@ const SectionResults = ({
             <Link href="https://github.com/FixMyBerlin/fixmy.survey-results">
               Jupyter Notebooks
             </Link>
-          )
+          ),
         }}
       />
     </Paragraph>
@@ -283,7 +283,7 @@ const SectionResults = ({
                 defaultMessage="Gerike et. al, Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020"
               />
             </Link>
-          )
+          ),
         }}
       />
     </Paragraph>
@@ -303,18 +303,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart1.title',
-        defaultMessage: 'Bewertungen nach Geschlecht'
+        defaultMessage: 'Bewertungen nach Geschlecht',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart1.label',
         defaultMessage:
-          'Anm: Durchschnitt aller Bewertungen nach Angaben zum Geschlecht der Teilnehmenden'
+          'Anm: Durchschnitt aller Bewertungen nach Angaben zum Geschlecht der Teilnehmenden',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart1.1',
-          defaultMessage: 'männlich'
+          defaultMessage: 'männlich',
         })}
         data={[8.18525, 21.410971, 34.95565, 35.448129]}
         feelsafe={70.4}
@@ -322,7 +322,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart1.2',
-          defaultMessage: 'weiblich'
+          defaultMessage: 'weiblich',
         })}
         data={[7.824049, 20.332307, 34.931507, 36.912137]}
         feelsafe={71.84}
@@ -330,7 +330,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart1.3',
-          defaultMessage: 'divers'
+          defaultMessage: 'divers',
         })}
         data={[9.831594, 21.240512, 33.906546, 35.021347]}
         feelsafe={68.93}
@@ -339,18 +339,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart2.title',
-        defaultMessage: 'Bewertungen nach Alter'
+        defaultMessage: 'Bewertungen nach Alter',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart2.label',
         defaultMessage:
-          'Anm: Durchschnitt aller Bewertungen nach Angaben zum Alter der Teilnehmenden'
+          'Anm: Durchschnitt aller Bewertungen nach Angaben zum Alter der Teilnehmenden',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart2.1',
-          defaultMessage: 'AG0 - unter 18 Jahre'
+          defaultMessage: 'AG0 - unter 18 Jahre',
         })}
         data={[8.922697, 19.490132, 29.481908, 42.105263]}
         feelsafe={71}
@@ -358,7 +358,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart2.2',
-          defaultMessage: 'AG1 - 18 bis 24 Jahre'
+          defaultMessage: 'AG1 - 18 bis 24 Jahre',
         })}
         data={[9.36742, 20.752886, 31.124479, 38.755215]}
         feelsafe={70}
@@ -366,7 +366,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart2.3',
-          defaultMessage: 'AG2 - 25 bis 29 Jahre'
+          defaultMessage: 'AG2 - 25 bis 29 Jahre',
         })}
         data={[9.452893, 20.825782, 32.878943, 36.842382]}
         feelsafe={70}
@@ -374,7 +374,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart2.4',
-          defaultMessage: 'AG3 - 30 bis 39 Jahre'
+          defaultMessage: 'AG3 - 30 bis 39 Jahre',
         })}
         data={[9.149358, 21.724335, 34.507092, 34.619215]}
         feelsafe={69}
@@ -382,7 +382,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart2.5',
-          defaultMessage: 'AG4 - 40 bis 49 Jahre'
+          defaultMessage: 'AG4 - 40 bis 49 Jahre',
         })}
         data={[8.353393, 21.826761, 35.510278, 34.309567]}
         feelsafe={70}
@@ -390,7 +390,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart2.6',
-          defaultMessage: 'AG5 - 50 bis 64 Jahre'
+          defaultMessage: 'AG5 - 50 bis 64 Jahre',
         })}
         data={[6.902527, 20.468174, 36.023561, 36.605738]}
         feelsafe={73}
@@ -398,7 +398,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart2.7',
-          defaultMessage: 'AG6 -  65 bis 74 Jahre'
+          defaultMessage: 'AG6 -  65 bis 74 Jahre',
         })}
         data={[6.061991, 19.217255, 35.969147, 38.751607]}
         feelsafe={75}
@@ -406,7 +406,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart2.8',
-          defaultMessage: 'AG7 - über 74 Jahre'
+          defaultMessage: 'AG7 - über 74 Jahre',
         })}
         data={[6.204244, 19.344832, 32.696364, 41.75456]}
         feelsafe={75}
@@ -415,18 +415,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart3.title',
-        defaultMessage: 'Bewertungen nach Nutzungshäufigkeit Fahrrad'
+        defaultMessage: 'Bewertungen nach Nutzungshäufigkeit Fahrrad',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart3.label',
         defaultMessage:
-          'Anm: Durchschnitt aller Bewertungen nach Angaben zur Nutzungshäufigkeit des Fahrrad unter den Teilnehmenden'
+          'Anm: Durchschnitt aller Bewertungen nach Angaben zur Nutzungshäufigkeit des Fahrrad unter den Teilnehmenden',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart3.1',
-          defaultMessage: '(fast) täglich'
+          defaultMessage: '(fast) täglich',
         })}
         data={[8.219178, 21.413216, 34.713547, 35.654059]}
         feelsafe={71}
@@ -434,7 +434,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart3.2',
-          defaultMessage: '4-5 mal pro Woche'
+          defaultMessage: '4-5 mal pro Woche',
         })}
         data={[7.542612, 21.50418, 35.653024, 35.300185]}
         feelsafe={71}
@@ -442,7 +442,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart3.3',
-          defaultMessage: '1-3 mal pro Woche'
+          defaultMessage: '1-3 mal pro Woche',
         })}
         data={[7.195407, 21.030776, 35.828827, 35.94499]}
         feelsafe={72}
@@ -450,7 +450,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart3.4',
-          defaultMessage: '1-3 mal pro Monat'
+          defaultMessage: '1-3 mal pro Monat',
         })}
         data={[7.983095, 19.878098, 34.502092, 37.636715]}
         feelsafe={72}
@@ -458,7 +458,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart3.5',
-          defaultMessage: 'seltener als monatlich'
+          defaultMessage: 'seltener als monatlich',
         })}
         data={[8.619391, 20.588077, 34.345744, 36.446788]}
         feelsafe={70}
@@ -466,7 +466,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart3.6',
-          defaultMessage: 'nie'
+          defaultMessage: 'nie',
         })}
         data={[9.122029, 20.652014, 34.344607, 35.88135]}
         feelsafe={70}
@@ -529,18 +529,18 @@ const SectionResults = ({
       title={intl.formatMessage({
         id: 'research.05_results.chart4.title',
         defaultMessage:
-          'Führung auf der Fahrbahn (HVS-F) mit und ohne Radverkehrsanlage (RVA)'
+          'Führung auf der Fahrbahn (HVS-F) mit und ohne Radverkehrsanlage (RVA)',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart4.label',
         defaultMessage:
-          "Anm: Durchschnitt der Bewertungen aller Situationen auf HVS-F aus Fahrradperspektive. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen."
+          "Anm: Durchschnitt der Bewertungen aller Situationen auf HVS-F aus Fahrradperspektive. Busspuren wurden hier in der Gruppe 'mit RVA' aufgenommen.",
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart4.1',
-          defaultMessage: 'mit RVA'
+          defaultMessage: 'mit RVA',
         })}
         data={[3, 18, 49, 30]}
         feelsafe={75.52}
@@ -548,7 +548,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart4.2',
-          defaultMessage: 'ohne RVA'
+          defaultMessage: 'ohne RVA',
         })}
         data={[52, 33, 12, 3]}
         feelsafe={14}
@@ -556,7 +556,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart4.3',
-          defaultMessage: 'ohne RVA (Vielfahrer)'
+          defaultMessage: 'ohne RVA (Vielfahrer)',
         })}
         data={[51, 35, 12, 2]}
         feelsafe={15}
@@ -600,18 +600,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart5.title',
-        defaultMessage: 'HVS-F: RVA mit und ohne rechtsseitiges Parken'
+        defaultMessage: 'HVS-F: RVA mit und ohne rechtsseitiges Parken',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart5.label',
         defaultMessage:
-          'Anm.: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens'
+          'Anm.: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart5.1',
-          defaultMessage: 'mit Parken rechts'
+          defaultMessage: 'mit Parken rechts',
         })}
         data={[8, 29, 43, 19]}
         feelsafe={59.62}
@@ -619,7 +619,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart5.2',
-          defaultMessage: 'ohne Parken (inkl. bauliche Trennung)'
+          defaultMessage: 'ohne Parken (inkl. bauliche Trennung)',
         })}
         data={[2, 11, 40, 47]}
         feelsafe={85.47}
@@ -627,7 +627,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart5.3',
-          defaultMessage: 'ohne Parken (exkl. bauliche Trennung)'
+          defaultMessage: 'ohne Parken (exkl. bauliche Trennung)',
         })}
         data={[4, 18, 46, 32]}
         feelsafe={76.9}
@@ -678,18 +678,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart6.title',
-        defaultMessage: 'RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel'
+        defaultMessage: 'RVA an HVS-F: Gewicht der Einflussfaktoren im Mittel',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart6.label',
         defaultMessage:
-          'Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Bei Baulicher Trennung, Markierung links, Tempolimit und Verkehrsaufkommen, werden nur solche Situationen ohne Tram, Bus und RVA rechts des Parkens einbezogen. Bei der Baulichen Trennung nur solche ohne Parken rechts.'
+          'Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Bei Baulicher Trennung, Markierung links, Tempolimit und Verkehrsaufkommen, werden nur solche Situationen ohne Tram, Bus und RVA rechts des Parkens einbezogen. Bei der Baulichen Trennung nur solche ohne Parken rechts.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart6.1',
-          defaultMessage: 'Gesamtbreite RVA (Breit - schmal)'
+          defaultMessage: 'Gesamtbreite RVA (Breit - schmal)',
         })}
         data={[21.51]}
       />
@@ -697,35 +697,35 @@ const SectionResults = ({
         title={intl.formatMessage({
           id: 'research.05_results.chart6.2',
           defaultMessage:
-            'Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)'
+            'Bauliche Trennung zu fließendem KFZ-Verkehr (ja - nein)',
         })}
         data={[22.17]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart6.3',
-          defaultMessage: 'Oberflächenfarbe (grün - asphalt)'
+          defaultMessage: 'Oberflächenfarbe (grün - asphalt)',
         })}
         data={[10.57]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart6.4',
-          defaultMessage: 'Markierung Links (gestrichelt - Sperrfläche)'
+          defaultMessage: 'Markierung Links (gestrichelt - Sperrfläche)',
         })}
         data={[8.12]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart6.5',
-          defaultMessage: 'Tempolimit (30 - 50)'
+          defaultMessage: 'Tempolimit (30 - 50)',
         })}
         data={[3.11]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart6.6',
-          defaultMessage: 'Verkehrsstärke (normal - hoch)'
+          defaultMessage: 'Verkehrsstärke (normal - hoch)',
         })}
         data={[2.6]}
       />
@@ -804,18 +804,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart7.title',
-        defaultMessage: 'HVS-F: RVA Gesamtbreite schmal und breit'
+        defaultMessage: 'HVS-F: RVA Gesamtbreite schmal und breit',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart7.label',
         defaultMessage:
-          'Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens sowie Situationen mit baulicher Trennung. '
+          'Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens sowie Situationen mit baulicher Trennung. ',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart7.1',
-          defaultMessage: 'RVA ohne Parken schmal'
+          defaultMessage: 'RVA ohne Parken schmal',
         })}
         data={[5.98653, 23.522075, 47.318533, 23.172861]}
         feelsafe={70.49}
@@ -823,7 +823,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart7.2',
-          defaultMessage: 'RVA ohne Parken breit'
+          defaultMessage: 'RVA ohne Parken breit',
         })}
         data={[3.001464, 12.591508, 44.558321, 39.848707]}
         feelsafe={84.41}
@@ -831,7 +831,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart7.3',
-          defaultMessage: 'RVA mit Parken schmal'
+          defaultMessage: 'RVA mit Parken schmal',
         })}
         data={[19.22069, 39.432608, 31.377464, 9.969238]}
         feelsafe={41.35}
@@ -839,7 +839,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart7.4',
-          defaultMessage: 'RVA mit Parken breit'
+          defaultMessage: 'RVA mit Parken breit',
         })}
         data={[4.514474, 20.134713, 48.199824, 27.15099]}
         feelsafe={75.35}
@@ -905,18 +905,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart8.title',
-        defaultMessage: 'HVS-F: RVA mit oder ohne Grüneinfärbung'
+        defaultMessage: 'HVS-F: RVA mit oder ohne Grüneinfärbung',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart8.label',
         defaultMessage:
-          'Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens, sowie Situationen mit baulicher Trennung.'
+          'Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens, sowie Situationen mit baulicher Trennung.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart8.1',
-          defaultMessage: 'ohne Parken, breit asphalt'
+          defaultMessage: 'ohne Parken, breit asphalt',
         })}
         data={[2, 10, 37, 51]}
         feelsafe={87.55}
@@ -924,7 +924,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart8.2',
-          defaultMessage: 'ohne Parken, breit grün'
+          defaultMessage: 'ohne Parken, breit grün',
         })}
         data={[2, 5, 31, 62]}
         feelsafe={93.5}
@@ -932,7 +932,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart8.3',
-          defaultMessage: 'ohne Parken, schmal asphalt'
+          defaultMessage: 'ohne Parken, schmal asphalt',
         })}
         data={[4, 19, 41, 36]}
         feelsafe={76.2}
@@ -940,7 +940,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart8.4',
-          defaultMessage: 'ohne Parken, schmal grün'
+          defaultMessage: 'ohne Parken, schmal grün',
         })}
         data={[2, 14, 43, 41]}
         feelsafe={83.07}
@@ -948,7 +948,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart8.5',
-          defaultMessage: 'mit Parken, breit asphalt'
+          defaultMessage: 'mit Parken, breit asphalt',
         })}
         data={[5, 23, 49, 22]}
         feelsafe={70.17}
@@ -956,7 +956,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart8.6',
-          defaultMessage: 'mit Parken, breit grün'
+          defaultMessage: 'mit Parken, breit grün',
         })}
         data={[3, 16, 47, 34]}
         feelsafe={80.42}
@@ -964,7 +964,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart8.7',
-          defaultMessage: 'mit Parken, schmal asphalt'
+          defaultMessage: 'mit Parken, schmal asphalt',
         })}
         data={[23, 42, 28, 7]}
         feelsafe={34.19}
@@ -972,7 +972,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart8.8',
-          defaultMessage: 'mit Parken, schmal grün'
+          defaultMessage: 'mit Parken, schmal grün',
         })}
         data={[13, 36, 37, 13]}
         feelsafe={49.82}
@@ -989,18 +989,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart9.title',
-        defaultMessage: 'HVS-F: RVA mit verschiedenen Arten der Grüneinfärbung'
+        defaultMessage: 'HVS-F: RVA mit verschiedenen Arten der Grüneinfärbung',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart9.label',
         defaultMessage:
-          'Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens.'
+          'Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart9.1',
-          defaultMessage: 'RVA asphalt'
+          defaultMessage: 'RVA asphalt',
         })}
         data={[8.542686, 22.612828, 38.589373, 30.255113]}
         feelsafe={68.84}
@@ -1008,7 +1008,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart9.2',
-          defaultMessage: 'RVA farbig'
+          defaultMessage: 'RVA farbig',
         })}
         data={[4.890647, 17.087043, 39.353226, 38.669085]}
         feelsafe={78.02}
@@ -1016,7 +1016,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart9.3',
-          defaultMessage: 'RVA farbig schraffur'
+          defaultMessage: 'RVA farbig schraffur',
         })}
         data={[8.903186, 23.970115, 39.140811, 27.985888]}
         feelsafe={67.13}
@@ -1061,18 +1061,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart10.title',
-        defaultMessage: 'HVS-F: RVA mit und ohne bauliche Trennung'
+        defaultMessage: 'HVS-F: RVA mit und ohne bauliche Trennung',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart10.label',
         defaultMessage:
-          'Anm: Durchschnitt der Bewertungen aller Situationen mit RVA, - ohne rechtsseitiges Parken, Tram, Busspur, oder RVA rechts des Parkens.'
+          'Anm: Durchschnitt der Bewertungen aller Situationen mit RVA, - ohne rechtsseitiges Parken, Tram, Busspur, oder RVA rechts des Parkens.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart10.1',
-          defaultMessage: 'ohne baul. Trennung, Markierung links schmal'
+          defaultMessage: 'ohne baul. Trennung, Markierung links schmal',
         })}
         data={[4.376283, 19.109343, 45.995893, 30.51848]}
         feelsafe={75.64}
@@ -1080,7 +1080,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart10.2',
-          defaultMessage: 'ohne baul. Trennung, Markierung links breit'
+          defaultMessage: 'ohne baul. Trennung, Markierung links breit',
         })}
         data={[3.933106, 16.64602, 46.097863, 33.32301]}
         feelsafe={78.91}
@@ -1088,7 +1088,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart10.3',
-          defaultMessage: 'mit baul. Trennung Sperrpfosten-hoch'
+          defaultMessage: 'mit baul. Trennung Sperrpfosten-hoch',
         })}
         data={[1.895462, 7.352096, 25.272832, 65.479609]}
         feelsafe={90.75}
@@ -1096,7 +1096,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart10.4',
-          defaultMessage: 'mit baul. Trennung Sperrpfosten-niedrig'
+          defaultMessage: 'mit baul. Trennung Sperrpfosten-niedrig',
         })}
         data={[1.396078, 7.32549, 33.662745, 57.615686]}
         feelsafe={91.28}
@@ -1104,7 +1104,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart10.5',
-          defaultMessage: 'mit baul. Trennung Blumenkasten'
+          defaultMessage: 'mit baul. Trennung Blumenkasten',
         })}
         data={[1.466594, 7.224335, 25.31233, 65.996741]}
         feelsafe={91.31}
@@ -1153,18 +1153,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart11.title',
-        defaultMessage: 'HVS-F: RVA Führung rechts und links vom Parken'
+        defaultMessage: 'HVS-F: RVA Führung rechts und links vom Parken',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart11.label',
         defaultMessage:
-          'Anm.: Durchschnitt der Bewertungen aller Situationen mit RVA breit, – ohne Tram, Busspur. Es werden nur Varianten mit breiter RVA verglichen, schmale RVA rechts des Parkens wurden in der Umfrage nicht dargestellt.'
+          'Anm.: Durchschnitt der Bewertungen aller Situationen mit RVA breit, – ohne Tram, Busspur. Es werden nur Varianten mit breiter RVA verglichen, schmale RVA rechts des Parkens wurden in der Umfrage nicht dargestellt.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart11.1',
-          defaultMessage: 'RVA breit, links des Parken'
+          defaultMessage: 'RVA breit, links des Parken',
         })}
         data={[3.812933, 19.951131, 48.818048, 27.417888]}
         feelsafe={74.54}
@@ -1173,7 +1173,7 @@ const SectionResults = ({
         title={intl.formatMessage({
           id: 'research.05_results.chart11.2',
           defaultMessage:
-            'RVA breit, rechts des Parken (exkl. baul. Trennungen)'
+            'RVA breit, rechts des Parken (exkl. baul. Trennungen)',
         })}
         data={[1.431025, 3.978248, 21.665713, 72.925014]}
         feelsafe={91.69}
@@ -1182,7 +1182,7 @@ const SectionResults = ({
         title={intl.formatMessage({
           id: 'research.05_results.chart11.3',
           defaultMessage:
-            'RVA breit, rechts des Parken (inkl. baul. Trennungen)'
+            'RVA breit, rechts des Parken (inkl. baul. Trennungen)',
         })}
         data={[1.060071, 7.022968, 34.584806, 57.332155]}
         feelsafe={94.22}
@@ -1221,18 +1221,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart12.title',
-        defaultMessage: 'HVS-F: mit und ohne RVA'
+        defaultMessage: 'HVS-F: mit und ohne RVA',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart12.label',
         defaultMessage:
-          'Anm: Durchschnitt der Bewertungen aller Situationen aus Perspektive der Autofahrenden oder der Radfahrenden'
+          'Anm: Durchschnitt der Bewertungen aller Situationen aus Perspektive der Autofahrenden oder der Radfahrenden',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart12.1',
-          defaultMessage: 'Radperspektive: ohne RVA'
+          defaultMessage: 'Radperspektive: ohne RVA',
         })}
         data={[52, 33, 12, 3]}
         feelsafe={14.24}
@@ -1240,7 +1240,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart12.2',
-          defaultMessage: 'Radperspektive: mit RVA'
+          defaultMessage: 'Radperspektive: mit RVA',
         })}
         data={[3, 18, 49, 30]}
         feelsafe={75.52}
@@ -1248,7 +1248,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart12.3',
-          defaultMessage: 'Autoperspektive: ohne RVA'
+          defaultMessage: 'Autoperspektive: ohne RVA',
         })}
         data={[31.877551, 42.095238, 16.938776, 9.088435]}
         feelsafe={25.41}
@@ -1257,7 +1257,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart12.4',
-          defaultMessage: 'Autoperspektive: mit RVA'
+          defaultMessage: 'Autoperspektive: mit RVA',
         })}
         data={[1.773559, 12.917629, 47.055517, 38.253294]}
         feelsafe={82.99}
@@ -1298,18 +1298,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart12b.title',
-        defaultMessage: 'HVS-F: RVA mit und ohne bauliche Trennung'
+        defaultMessage: 'HVS-F: RVA mit und ohne bauliche Trennung',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart12b.label',
         defaultMessage:
-          'Durchschnitt der Bewertungen aller Situationen mit RVA, - ohne rechtsseitiges Parken, Tram, Busspur, oder RVA rechts des Parkens.'
+          'Durchschnitt der Bewertungen aller Situationen mit RVA, - ohne rechtsseitiges Parken, Tram, Busspur, oder RVA rechts des Parkens.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart12b.1',
-          defaultMessage: 'Radperspektive: RVA ohne baul. Trennung'
+          defaultMessage: 'Radperspektive: RVA ohne baul. Trennung',
         })}
         data={[4.05788, 17.882982, 46.429695, 31.629443]}
         feelsafe={76.9}
@@ -1317,7 +1317,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart12b.2',
-          defaultMessage: 'Radperspektive: RVA mit baul. Trennung'
+          defaultMessage: 'Radperspektive: RVA mit baul. Trennung',
         })}
         data={[1.366559, 6.879689, 30.90836, 60.845391]}
         feelsafe={91.2}
@@ -1325,7 +1325,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart12b.3',
-          defaultMessage: 'Autoperspektive: RVA ohne baul. Trennung'
+          defaultMessage: 'Autoperspektive: RVA ohne baul. Trennung',
         })}
         data={[2.398382, 13.937584, 44.731266, 38.932768]}
         feelsafe={82.76}
@@ -1334,7 +1334,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart12b.4',
-          defaultMessage: 'Autoperspektive: RVA mit baul. Trennung'
+          defaultMessage: 'Autoperspektive: RVA mit baul. Trennung',
         })}
         data={[2.326551, 10.173449, 34.247832, 53.252168]}
         feelsafe={86.76}
@@ -1343,7 +1343,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart12b.5',
-          defaultMessage: 'Autoperspektive: Trennung Sperrpfosten-hoch'
+          defaultMessage: 'Autoperspektive: Trennung Sperrpfosten-hoch',
         })}
         data={[3.789474, 11.508772, 30.105263, 54.596491]}
         feelsafe={84.7}
@@ -1352,7 +1352,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart12b.6',
-          defaultMessage: 'Autoperspektive: Trennung Sperrpfosten-niedrig'
+          defaultMessage: 'Autoperspektive: Trennung Sperrpfosten-niedrig',
         })}
         data={[2.107482, 10.410959, 35.911486, 51.570074]}
         feelsafe={87.48}
@@ -1361,7 +1361,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart12b.7',
-          defaultMessage: 'Autoperspektive: Trennung Blumenkasten'
+          defaultMessage: 'Autoperspektive: Trennung Blumenkasten',
         })}
         data={[2.715547, 9.164969, 29.192125, 58.927359]}
         feelsafe={88.12}
@@ -1421,13 +1421,13 @@ const SectionResults = ({
       title={intl.formatMessage({
         id: 'research.05_results.chart13.title',
         defaultMessage:
-          'HVS mit RVA: Führungen im Seitenraum (HVS-S) und auf der Fahrbahn (HVS-F)'
+          'HVS mit RVA: Führungen im Seitenraum (HVS-S) und auf der Fahrbahn (HVS-F)',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart13.1',
-          defaultMessage: 'Fahrbahn, RVA ohne Parken schmal'
+          defaultMessage: 'Fahrbahn, RVA ohne Parken schmal',
         })}
         data={[5.98653, 23.522075, 47.318533, 23.172861]}
         feelsafe={70.49}
@@ -1435,7 +1435,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart13.2',
-          defaultMessage: 'Fahrbahn, RVA ohne Parken breit'
+          defaultMessage: 'Fahrbahn, RVA ohne Parken breit',
         })}
         data={[3.001464, 12.591508, 44.558321, 39.848707]}
         feelsafe={84.41}
@@ -1443,7 +1443,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart13.3',
-          defaultMessage: 'Fahrbahn, RVA mit Parken schmal'
+          defaultMessage: 'Fahrbahn, RVA mit Parken schmal',
         })}
         data={[19.22069, 39.432608, 31.377464, 9.969238]}
         feelsafe={41.35}
@@ -1451,7 +1451,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart13.4',
-          defaultMessage: 'Fahrbahn, RVA mit Parken breit'
+          defaultMessage: 'Fahrbahn, RVA mit Parken breit',
         })}
         data={[4.514474, 20.134713, 48.199824, 27.15099]}
         feelsafe={75.35}
@@ -1459,7 +1459,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart13.5',
-          defaultMessage: 'Seitenraum, RVA breit'
+          defaultMessage: 'Seitenraum, RVA breit',
         })}
         data={[0.677428, 3.889918, 29.751257, 65.681397]}
         feelsafe={94.61}
@@ -1467,7 +1467,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart13.6',
-          defaultMessage: 'Seitenraum, RVA schmal'
+          defaultMessage: 'Seitenraum, RVA schmal',
         })}
         data={[3.729178, 23.567974, 43.98173, 28.721118]}
         feelsafe={69.1}
@@ -1475,7 +1475,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart13.7',
-          defaultMessage: 'Fahrbahn, RVA rechts des Parken breit'
+          defaultMessage: 'Fahrbahn, RVA rechts des Parken breit',
         })}
         data={[1.055662, 5.143954, 26.81382, 66.986564]}
         feelsafe={92.4}
@@ -1557,46 +1557,46 @@ const SectionResults = ({
       title={intl.formatMessage({
         id: 'research.05_results.chart14.title',
         defaultMessage:
-          'RVA im Seitenraum: Gewicht der Einflussfaktoren im Mittel'
+          'RVA im Seitenraum: Gewicht der Einflussfaktoren im Mittel',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart14.label',
         defaultMessage:
-          'Anm: Unterschied der Mittelwerte der Bewertungen im Vergleich zweier Merkmalsausprägungen Es werden nur die für das Merkmal relevanten Situationen verglichen.'
+          'Anm: Unterschied der Mittelwerte der Bewertungen im Vergleich zweier Merkmalsausprägungen Es werden nur die für das Merkmal relevanten Situationen verglichen.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart14.1',
-          defaultMessage: 'Gesamtbreite RVA (breit - schmal)'
+          defaultMessage: 'Gesamtbreite RVA (breit - schmal)',
         })}
         data={[24.09]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart14.2',
-          defaultMessage: 'Gesamtbreite Gehweg (breit - schmal)'
+          defaultMessage: 'Gesamtbreite Gehweg (breit - schmal)',
         })}
         data={[1.33]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart14.3',
-          defaultMessage: 'Auslage (vorhanden - keine)'
+          defaultMessage: 'Auslage (vorhanden - keine)',
         })}
         data={[4.1]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart14.4',
-          defaultMessage: 'Auslage (vorhanden - keine) nur schmaler Gehweg'
+          defaultMessage: 'Auslage (vorhanden - keine) nur schmaler Gehweg',
         })}
         data={[11.41]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart14.5',
-          defaultMessage: 'Trennung rechts (Grünstreifen - keine Trennung)'
+          defaultMessage: 'Trennung rechts (Grünstreifen - keine Trennung)',
         })}
         data={[6.23]}
       />
@@ -1604,7 +1604,7 @@ const SectionResults = ({
         title={intl.formatMessage({
           id: 'research.05_results.chart14.6',
           defaultMessage:
-            'Faktor Verkehrsart links (Links RVA Fahrstreifen vs. Parken)'
+            'Faktor Verkehrsart links (Links RVA Fahrstreifen vs. Parken)',
         })}
         data={[1.1]}
       />
@@ -1636,18 +1636,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart15.title',
-        defaultMessage: 'HVS-S: RVA breit und schmal'
+        defaultMessage: 'HVS-S: RVA breit und schmal',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart15.label',
         defaultMessage:
-          'Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum'
+          'Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart15.1',
-          defaultMessage: 'RVA breit'
+          defaultMessage: 'RVA breit',
         })}
         data={[0.677428, 3.889918, 29.751257, 65.681397]}
         feelsafe={94.61}
@@ -1655,7 +1655,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart15.2',
-          defaultMessage: 'RVA schmal'
+          defaultMessage: 'RVA schmal',
         })}
         data={[3.729178, 23.567974, 43.98173, 28.721118]}
         feelsafe={69.1}
@@ -1707,18 +1707,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart16.title',
-        defaultMessage: 'HVS-S: Mit und ohne Auslage'
+        defaultMessage: 'HVS-S: Mit und ohne Auslage',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart16.label',
         defaultMessage:
-          'Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum'
+          'Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart16.1',
-          defaultMessage: 'Breiter Gehweg Auslage ja'
+          defaultMessage: 'Breiter Gehweg Auslage ja',
         })}
         data={[2.043688, 11.751203, 39.159571, 47.045539]}
         feelsafe={84.24}
@@ -1726,7 +1726,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart16.2',
-          defaultMessage: 'Breiter Gehweg Auslage nein'
+          defaultMessage: 'Breiter Gehweg Auslage nein',
         })}
         data={[2.039444, 11.687584, 37.483191, 48.78978]}
         feelsafe={84.16}
@@ -1734,7 +1734,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart16.3',
-          defaultMessage: 'Schmaler Gehweg Auslage ja'
+          defaultMessage: 'Schmaler Gehweg Auslage ja',
         })}
         data={[3.390943, 18.938234, 40.016772, 37.654051]}
         feelsafe={74.96}
@@ -1742,7 +1742,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart16.4',
-          defaultMessage: 'Schmaler Gehweg Auslage nein'
+          defaultMessage: 'Schmaler Gehweg Auslage nein',
         })}
         data={[1.710024, 9.920563, 35.795282, 52.574131]}
         feelsafe={86.4}
@@ -1791,32 +1791,32 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart17.title',
-        defaultMessage: 'Diagramm Gewicht'
+        defaultMessage: 'Diagramm Gewicht',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart17.label',
         defaultMessage:
-          'Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Die Fußperspektive wurde nur bei schmaler Gehweg-Gesamtbreite abgefragt.'
+          'Anm.: Unterschied der Mittelwerte der Bewertungen aller für das Merkmal relevanter Situationen. Die Fußperspektive wurde nur bei schmaler Gehweg-Gesamtbreite abgefragt.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart17.1',
-          defaultMessage: 'Breite RVA schmal vs. breit'
+          defaultMessage: 'Breite RVA schmal vs. breit',
         })}
         data={[5.76]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart17.2',
-          defaultMessage: 'Trennung rechts (grün - keine)'
+          defaultMessage: 'Trennung rechts (grün - keine)',
         })}
         data={[32.13]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart17.3',
-          defaultMessage: 'Auslage (ja - nein)'
+          defaultMessage: 'Auslage (ja - nein)',
         })}
         data={[25.39]}
       />
@@ -1839,18 +1839,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart18.title',
-        defaultMessage: 'HVS-S Fuß- und Radperspektive: Mit und ohne Auslage'
+        defaultMessage: 'HVS-S Fuß- und Radperspektive: Mit und ohne Auslage',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart18.label',
         defaultMessage:
-          'Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum. Die Auswertung vergleicht nur die Fälle mit schmaler Gehweggesamtbreite, da die Fußperspektive nur in dieser Variante abgefragt wurde.'
+          'Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum. Die Auswertung vergleicht nur die Fälle mit schmaler Gehweggesamtbreite, da die Fußperspektive nur in dieser Variante abgefragt wurde.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart18.1',
-          defaultMessage: 'Fußperspektive Auslage ja'
+          defaultMessage: 'Fußperspektive Auslage ja',
         })}
         data={[6.599897, 36.123951, 38.004337, 19.271814]}
         feelsafe={53.24}
@@ -1859,7 +1859,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart18.2',
-          defaultMessage: 'Fußperspektive Auslage nein'
+          defaultMessage: 'Fußperspektive Auslage nein',
         })}
         data={[1.740895, 12.454977, 42.070208, 43.73392]}
         feelsafe={83.36}
@@ -1868,7 +1868,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart18.3',
-          defaultMessage: 'Radperspektive Auslage ja'
+          defaultMessage: 'Radperspektive Auslage ja',
         })}
         data={[3.390943, 18.938234, 40.016772, 37.654051]}
         feelsafe={74.95}
@@ -1876,7 +1876,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart18.4',
-          defaultMessage: 'Radperspektive Auslage nein'
+          defaultMessage: 'Radperspektive Auslage nein',
         })}
         data={[1.710024, 9.920563, 35.795282, 52.574131]}
         feelsafe={86.4}
@@ -1921,18 +1921,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart19.title',
-        defaultMessage: 'HVS-S Fußperspektive: Mit und ohne Trennung'
+        defaultMessage: 'HVS-S Fußperspektive: Mit und ohne Trennung',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart19.label',
         defaultMessage:
-          'Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum. Die Fußperspektive wurde nur bei schmaler Gehweggesamtbreite abgefragt.'
+          'Anm.: Durchschnitt der Bewertungen aller Situationen im Seitenraum. Die Fußperspektive wurde nur bei schmaler Gehweggesamtbreite abgefragt.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart19.1',
-          defaultMessage: 'Trennung rechts grünstreifen schmal'
+          defaultMessage: 'Trennung rechts grünstreifen schmal',
         })}
         data={[2.90756, 16.603599, 39.771411, 40.71743]}
         feelsafe={78.18}
@@ -1941,7 +1941,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart19.2',
-          defaultMessage: 'Trennung rechts grünstreifen breit'
+          defaultMessage: 'Trennung rechts grünstreifen breit',
         })}
         data={[1.970729, 10.93387, 35.689949, 51.405451]}
         feelsafe={85.49}
@@ -1950,7 +1950,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart19.3',
-          defaultMessage: 'Trennung rechts keine'
+          defaultMessage: 'Trennung rechts keine',
         })}
         data={[8.617505, 35.028605, 35.731339, 20.622551]}
         feelsafe={56.35}
@@ -2004,39 +2004,39 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart20.title',
-        defaultMessage: 'NVS: Gewicht der Einflussfaktoren im Mittel'
+        defaultMessage: 'NVS: Gewicht der Einflussfaktoren im Mittel',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart20.label',
         defaultMessage:
-          'Anm: Unterschied der Mittelwerte der Bewertungen im Vergleich zweier Merkmalsausprägungen. Grundlage sind alle für das Merkmal relevante Situationen. Ausgenommen sind die Situationen mit durchgehender Grüneinfärbung des Asphalts. Unter Markierung werden Fahrradstraße, Fahrradstraße - Sondermarkierung Dooring und Spielstraße zusammengefasst.'
+          'Anm: Unterschied der Mittelwerte der Bewertungen im Vergleich zweier Merkmalsausprägungen. Grundlage sind alle für das Merkmal relevante Situationen. Ausgenommen sind die Situationen mit durchgehender Grüneinfärbung des Asphalts. Unter Markierung werden Fahrradstraße, Fahrradstraße - Sondermarkierung Dooring und Spielstraße zusammengefasst.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart20.1',
-          defaultMessage: 'Straßenbreite (schmal vs. breit)'
+          defaultMessage: 'Straßenbreite (schmal vs. breit)',
         })}
         data={[30.5]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart20.2',
-          defaultMessage: 'Parken (beidseitig – nein)'
+          defaultMessage: 'Parken (beidseitig – nein)',
         })}
         data={[19.4]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart20.3',
-          defaultMessage: 'Parken (einseitig – nein)'
+          defaultMessage: 'Parken (einseitig – nein)',
         })}
         data={[18.07]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart20.4',
-          defaultMessage: 'Markierung (vorhanden – keine)'
+          defaultMessage: 'Markierung (vorhanden – keine)',
         })}
         data={[26.14]}
       />
@@ -2044,7 +2044,7 @@ const SectionResults = ({
         title={intl.formatMessage({
           id: 'research.05_results.chart20.5',
           defaultMessage:
-            'Gegenläufige Einbahnstraße (gegenläufig vs. beidseitig)'
+            'Gegenläufige Einbahnstraße (gegenläufig vs. beidseitig)',
         })}
         data={[60.52]}
       />
@@ -2052,14 +2052,14 @@ const SectionResults = ({
         title={intl.formatMessage({
           id: 'research.05_results.chart20.6',
           defaultMessage:
-            'Einbahnstraße in Fahrtrichtung (einbahn vs. beidseitig)'
+            'Einbahnstraße in Fahrtrichtung (einbahn vs. beidseitig)',
         })}
         data={[1.13]}
       />
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart20.7',
-          defaultMessage: '“autofrei” (ja/nein)'
+          defaultMessage: '“autofrei” (ja/nein)',
         })}
         data={[76.66]}
       />
@@ -2119,18 +2119,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart21.title',
-        defaultMessage: 'NVS: Markierungsarten'
+        defaultMessage: 'NVS: Markierungsarten',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart21.label',
         defaultMessage:
-          'Anm: Durchschnitt der Bewertungen aller Situationen in Nebenverkehrsstraßen. Ausgenommen sind die Situationen mit durchgehender Grüneinfärbung des Asphalts.'
+          'Anm: Durchschnitt der Bewertungen aller Situationen in Nebenverkehrsstraßen. Ausgenommen sind die Situationen mit durchgehender Grüneinfärbung des Asphalts.',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart21.1',
-          defaultMessage: 'ohne Markierung'
+          defaultMessage: 'ohne Markierung',
         })}
         data={[35.902256, 36.172462, 20.911654, 7.013628]}
         feelsafe={27.93}
@@ -2138,7 +2138,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart21.2',
-          defaultMessage: 'Fahrradstraße'
+          defaultMessage: 'Fahrradstraße',
         })}
         data={[17.051071, 34.478701, 33.478466, 14.991763]}
         feelsafe={48.47}
@@ -2146,7 +2146,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart21.3',
-          defaultMessage: 'Fahrradstraße - Sondermarkierung Dooring'
+          defaultMessage: 'Fahrradstraße - Sondermarkierung Dooring',
         })}
         data={[30.787364, 36.338991, 22.477605, 10.39604]}
         feelsafe={32.87}
@@ -2154,7 +2154,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart21.4',
-          defaultMessage: 'Spielstraße'
+          defaultMessage: 'Spielstraße',
         })}
         data={[17.137386, 34.837243, 34.633796, 13.391575]}
         feelsafe={48.03}
@@ -2219,18 +2219,18 @@ const SectionResults = ({
     <BarChart.Wrapper
       title={intl.formatMessage({
         id: 'research.05_results.chart22.title',
-        defaultMessage: 'NVS “autofrei”: Markierungsarten'
+        defaultMessage: 'NVS “autofrei”: Markierungsarten',
       })}
       source={intl.formatMessage({
         id: 'research.05_results.chart22.label',
         defaultMessage:
-          'Anm: Durchschnitt der Bewertungen aller Situationen in Nebenverkehrsstraßen. Nur solche die ohne fließenden Kfz-Verkehrs dargestellt wurden'
+          'Anm: Durchschnitt der Bewertungen aller Situationen in Nebenverkehrsstraßen. Nur solche die ohne fließenden Kfz-Verkehrs dargestellt wurden',
       })}
     >
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart22.1',
-          defaultMessage: 'Ohne Markierung'
+          defaultMessage: 'Ohne Markierung',
         })}
         data={[15.428571, 33.142857, 33.0, 18.428571]}
         feelsafe={51.42}
@@ -2238,7 +2238,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart22.2',
-          defaultMessage: 'Holländische Markierung'
+          defaultMessage: 'Holländische Markierung',
         })}
         data={[2.039405, 6.394746, 22.571725, 68.994124]}
         feelsafe={91.56}
@@ -2246,7 +2246,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart22.3',
-          defaultMessage: 'Fahrradstraße'
+          defaultMessage: 'Fahrradstraße',
         })}
         data={[2.811245, 14.993307, 40.763052, 41.432396]}
         feelsafe={82.19}
@@ -2254,7 +2254,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart22.4',
-          defaultMessage: 'Fahrradstraße - Sondermarkierung'
+          defaultMessage: 'Fahrradstraße - Sondermarkierung',
         })}
         data={[9.591983, 20.042949, 33.786686, 36.578382]}
         feelsafe={70.35}
@@ -2262,7 +2262,7 @@ const SectionResults = ({
       <BarChart
         title={intl.formatMessage({
           id: 'research.05_results.chart22.5',
-          defaultMessage: 'Spielstraße'
+          defaultMessage: 'Spielstraße',
         })}
         data={[4.538799, 18.081991, 43.045388, 34.333821]}
         feelsafe={77.37}

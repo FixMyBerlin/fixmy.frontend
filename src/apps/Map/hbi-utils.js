@@ -35,12 +35,12 @@ function translateOrientationName(name) {
 export function getOrientationNames(side0, side1) {
   return {
     side0: translateOrientationName(side0),
-    side1: translateOrientationName(side1)
+    side1: translateOrientationName(side1),
   };
 }
 
 export default {
   getHBIbyProps,
   getHBIColorByIndex,
-  getOrientationNames
+  getOrientationNames,
 };

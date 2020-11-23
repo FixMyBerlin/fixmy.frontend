@@ -60,7 +60,7 @@ const Signup = ({ district }) => {
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(Signup);

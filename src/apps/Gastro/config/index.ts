@@ -10,8 +10,8 @@ const defaultConfig = {
     style: FMB_XHAIN_TERASSEN,
     bounds: [
       [13.3651, 52.4658],
-      [13.4945, 52.5479]
-    ]
+      [13.4945, 52.5479],
+    ],
   },
   routes: {
     landing: '/',
@@ -23,22 +23,22 @@ const defaultConfig = {
     directory: '/verzeichnis/',
     directoryEntry: '/verzeichnis/:id',
     permit: '/verzeichnis/:id/genehmigung',
-    trafficOrder: '/verzeichnis/:id/anordnung'
-  }
+    trafficOrder: '/verzeichnis/:id/anordnung',
+  },
 };
 
 const gastro = {
   xhain: {
     ...defaultConfig,
-    ...xhain
+    ...xhain,
   },
   tempelberg: {
     ...defaultConfig,
-    ...tempelberg
-  }
+    ...tempelberg,
+  },
 };
 
 export default {
   ...globalConfig,
-  gastro
+  gastro,
 };

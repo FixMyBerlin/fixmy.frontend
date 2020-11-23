@@ -35,7 +35,7 @@ const routes: RouteConfig = {
     index: '/meldungen/radbuegel/friedrichshain-kreuzberg',
     landing: '/meldungen/radbuegel/friedrichshain-kreuzberg/landing',
     map: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
-    new: '/meldungen/radbuegel/friedrichshain-kreuzberg/neu'
+    new: '/meldungen/radbuegel/friedrichshain-kreuzberg/neu',
   },
   katasterKI: {
     landing: '/strassencheck',
@@ -46,13 +46,13 @@ const routes: RouteConfig = {
     scenes: `/strassencheck/szenen/:page`,
     share: `/strassencheck/teilen`,
     feedback: `/strassencheck/auswertung`,
-    email: `/strassencheck/email`
+    email: `/strassencheck/email`,
   },
   spielstrassen: {
     landing: '/friedrichshain-kreuzberg/spielstrassen',
     streets: '/friedrichshain-kreuzberg/spielstrassen/kieze',
     register: '/friedrichshain-kreuzberg/spielstrassen/:slug',
-    thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke'
+    thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke',
   },
   popupbikelanes: '/popupbikelanes',
   signup: '/registrieren',
@@ -64,8 +64,8 @@ const routes: RouteConfig = {
   userVerify: '/bestaetigen',
   research: {
     landing: '/research',
-    survey: '/research/subjektive-sicherheit'
-  }
+    survey: '/research/subjektive-sicherheit',
+  },
 };
 
 export default routes;

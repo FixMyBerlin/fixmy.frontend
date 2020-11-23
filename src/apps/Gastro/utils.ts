@@ -18,7 +18,7 @@ export const requiresArea = (zone: string) =>
     'Parken längs',
     'Parken quer',
     'Parken diagonal',
-    'Sonstige'
+    'Sonstige',
   ].includes(zone);
 
 /** Return a description of the category given an application */
@@ -74,7 +74,7 @@ export enum REGULATION {
   'ParkenLängs' = 11,
   'ParkenQuer' = 12,
   'ParkenDiagonal' = 13,
-  'Sonstige' = 14
+  'Sonstige' = 14,
 }
 
 export const isBoardwalk = ({ regulation }) => regulation === REGULATION.Gehweg;

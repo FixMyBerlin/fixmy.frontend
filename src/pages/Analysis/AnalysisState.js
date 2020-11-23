@@ -17,13 +17,13 @@ const initialState = {
   sorting: null,
   selectedDistrict: false,
   selectedPhase: false,
-  selectedSort: 'likes'
+  selectedSort: 'likes',
 };
 
 export function setDistrictFilter(selectedDistrict) {
   return {
     type: SET_DISTRICT_FILTER,
-    payload: { selectedDistrict, selectedPhase: false }
+    payload: { selectedDistrict, selectedPhase: false },
   };
 }
 
@@ -49,7 +49,7 @@ export function loadProjectData(selectedDistrict = false) {
 
       return dispatch({
         type: LOAD_DATA_SUCCESS,
-        payload: { data: results, isLoading: false }
+        payload: { data: results, isLoading: false },
       });
     } catch (e) {
       logger('Error loading project data', e);

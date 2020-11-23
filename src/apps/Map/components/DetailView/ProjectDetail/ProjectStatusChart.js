@@ -13,7 +13,7 @@ const iconPaths = {
   'im Bau': ConstructionIcon,
   Fertig: DoneIcon,
   Konzept: ConceptIcon,
-  Planung: PlanningIcon
+  Planung: PlanningIcon,
 };
 
 const ChartWrapper = styled.div`
@@ -69,13 +69,13 @@ class ProjectStatusChart extends PureComponent {
     top: 0,
     right: 30,
     bottom: 0,
-    left: 30
+    left: 30,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      width: 0
+      width: 0,
     };
   }
 
@@ -118,7 +118,7 @@ class ProjectStatusChart extends PureComponent {
         y,
         nextX,
         lineStroke,
-        circleColor
+        circleColor,
       };
     });
   };

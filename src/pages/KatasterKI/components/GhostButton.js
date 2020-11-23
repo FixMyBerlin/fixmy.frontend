@@ -16,10 +16,10 @@ export default styled(Button)`
   }
 
   ${!isTouch &&
-    css`
-      &:hover {
-        box-shadow: none;
-        background: ${config.colors.katasterHighlight};
-      }
-    `}
+  css`
+    &:hover {
+      box-shadow: none;
+      background: ${config.colors.katasterHighlight};
+    }
+  `}
 `;

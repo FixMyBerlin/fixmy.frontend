@@ -118,11 +118,11 @@ const OverviewMapNavBar = ({ heading }) => (
 );
 
 OverviewMapNavBar.propTypes = {
-  heading: PropTypes.string
+  heading: PropTypes.string,
 };
 
 OverviewMapNavBar.defaultProps = {
-  heading: `Neue Fahrradbügel für ${config.reports.region}`
+  heading: `Neue Fahrradbügel für ${config.reports.region}`,
 };
 
 export default OverviewMapNavBar;

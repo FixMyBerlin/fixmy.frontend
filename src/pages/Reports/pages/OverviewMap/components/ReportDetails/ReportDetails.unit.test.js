@@ -8,20 +8,20 @@ import Body from './Body';
 const reportData = {
   description: 'Description',
   details: {
-    fee_acceptable: true
+    fee_acceptable: true,
   },
   origin: [
     {
       id: 1,
-      address: 'test'
-    }
+      address: 'test',
+    },
   ],
   plannings: [
     {
       id: 2,
-      address: 'test2'
-    }
-  ]
+      address: 'test2',
+    },
+  ],
 };
 
 describe('<Body />', () => {

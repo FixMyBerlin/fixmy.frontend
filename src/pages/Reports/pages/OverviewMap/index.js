@@ -47,7 +47,7 @@ class OverviewMap extends Component {
       // [lng, lat]
       mapCenter: null,
       isLoading: true,
-      selectedReportsPosition: []
+      selectedReportsPosition: [],
     };
   }
 
@@ -83,7 +83,7 @@ class OverviewMap extends Component {
       // from occuring in a loop
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
-        mapCenter: null
+        mapCenter: null,
       });
     }
   }
@@ -148,7 +148,7 @@ class OverviewMap extends Component {
       match,
       token,
       isMenuOpen,
-      errorMessage
+      errorMessage,
     } = this.props;
 
     const hasDetailId = match.params.id;
@@ -236,7 +236,7 @@ class OverviewMap extends Component {
 
 const mapDispatchToPros = {
   ...overviewMapStateActions,
-  ...errorStateActions
+  ...errorStateActions,
 };
 
 export default withRouter(
@@ -249,7 +249,7 @@ export default withRouter(
       zoomIn: state.ReportsState.OverviewMapState.reports.zoomIn,
       token: state.UserState.token,
       isMenuOpen: state.AppState.isMenuOpen,
-      errorMessage: state.ReportsState.ErrorState.message
+      errorMessage: state.ReportsState.ErrorState.message,
     }),
     mapDispatchToPros
   )(OverviewMap)

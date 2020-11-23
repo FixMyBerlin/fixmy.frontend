@@ -18,7 +18,7 @@ export const ImageFull = ({
   source,
   alt,
   role = null,
-  subtitle = null
+  subtitle = null,
 }: InnerImageProps) => (
   <ImageWrapperFull>
     <InnerImg

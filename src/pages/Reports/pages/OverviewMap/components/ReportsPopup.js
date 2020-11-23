@@ -60,7 +60,7 @@ class ReportsPopup extends PureComponent {
           <Link to={`${config.routes.reports.map}/${selectedReport.id}`}>
             <PreviewImage
               style={{
-                backgroundImage: `url(${photoSrc})`
+                backgroundImage: `url(${photoSrc})`,
               }}
             />
           </Link>
@@ -93,7 +93,7 @@ export default withRouter(
     (state) => ({
       selectedReport: state.ReportsState.OverviewMapState.selectedReport,
       reports: state.ReportsState.OverviewMapState.reports,
-      position: state.ReportsState.OverviewMapState.selectedReportPosition
+      position: state.ReportsState.OverviewMapState.selectedReportPosition,
     }),
     { setSelectedReport: actions.setSelectedReport }
   )(ReportsPopup)

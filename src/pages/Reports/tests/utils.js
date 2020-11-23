@@ -10,7 +10,7 @@ import bikeLockerForm from './fixtures/bikeLockerForm.json';
  */
 const clickRandomMarker = () => {
   cy.fmbClickRandomElement('reports-marker', true, {
-    force: true // otherwise the click fails because the image "is being covered by another element..."
+    force: true, // otherwise the click fails because the image "is being covered by another element..."
   });
 };
 
@@ -42,5 +42,5 @@ export default {
   goToConfirmedAddress,
   goToBikeStandForm,
   goToAdditionalDataForm,
-  goToParkingGarageForm
+  goToParkingGarageForm,
 };

@@ -9,5 +9,5 @@ export default [
     (req, res, ctx) => {
       return res(ctx.json(mockLocationSuggestions));
     }
-  )
+  ),
 ];

@@ -50,7 +50,7 @@ const HBISignComp = ({
   borderWeight,
   className,
   onClick,
-  isTooltip
+  isTooltip,
 }) => {
   const color = getHBIColorByIndex(hbi);
 
@@ -75,7 +75,7 @@ HBISignComp.defaultProps = {
   onClick: () => {},
   borderWeight: 5,
   size: 77,
-  isTooltip: false
+  isTooltip: false,
 };
 
 export default HBISignComp;

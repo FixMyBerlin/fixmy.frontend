@@ -90,7 +90,7 @@ const ArticleWrapper = ({
   tocHasActiveState = true,
   locales = null,
   className = null,
-  children
+  children,
 }) => {
   const [renderTocInsideArticle, setRenderTocInsideArticle] = useState(
     window.innerWidth < breakpoints.xl

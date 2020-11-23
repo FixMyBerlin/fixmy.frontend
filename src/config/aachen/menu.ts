@@ -12,21 +12,21 @@ export default {
       label: 'Radbügelmeldung',
       icon: 'fixhere',
       link: routes.reports.landing,
-      border: false
+      border: false,
     },
     {
       type: 'separator',
-      label: ''
-    }
+      label: '',
+    },
   ],
   footeritems: [
     {
       label: 'Impressum',
-      link: '/impressum'
+      link: '/impressum',
     },
     {
       label: 'Datenschutz',
-      link: '/datenschutz'
-    }
-  ]
+      link: '/datenschutz',
+    },
+  ],
 };
