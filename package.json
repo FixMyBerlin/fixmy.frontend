@@ -4,7 +4,7 @@
   "description": "A Mobility Platform for Berlin",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "start": "webpack-dev-server",
+    "start": "webpack serve",
     "lint": "eslint .",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu jest --verbose --config=jest/jest.config.js",
     "test:watch": "npm run test  -- --watch --verbose false",
