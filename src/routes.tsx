@@ -84,14 +84,16 @@ const Routes = ({ token }) => (
 
     <Route path="/redirect-to" component={RedirectHelper} />
 
-    {/* standard markdown pages */
-    config.staticpages.map((page) => (
-      <Route
-        key={page}
-        path={page.route}
-        render={() => <Markdown page={page.key} />}
-      />
-    ))}
+    {
+      /* standard markdown pages */
+      config.staticpages.map((page) => (
+        <Route
+          key={page}
+          path={page.route}
+          render={() => <Markdown page={page.key} />}
+        />
+      ))
+    }
 
     {/* user pages */}
     <Route path={config.routes.signup} component={Signup} />

@@ -68,9 +68,7 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
   const locate = () => {
     setIsLoading(true);
     onStart();
-    getGeoLocation()
-      .then(onLocateSuccess)
-      .catch(onLocateError);
+    getGeoLocation().then(onLocateSuccess).catch(onLocateError);
     setIsLoading(false);
   };
 

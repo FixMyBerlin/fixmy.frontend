@@ -55,7 +55,7 @@ const ItemSubTitle = styled.div`
   font-weight: 700;
   font-family: '${config.titleFont}', serif;
   color: ${config.colors.darkbg};
-  margin: .5em auto;
+  margin: 0.5em auto;
 `;
 
 const ItemFooter = styled.div`

@@ -18,9 +18,7 @@ Cypress.Commands.add(
       .its('length')
       .then((count) => {
         const randomZeroBasedIndex = Math.floor(Math.random() * count);
-        cy.get('@selection')
-          .eq(randomZeroBasedIndex)
-          .click(clickOptions);
+        cy.get('@selection').eq(randomZeroBasedIndex).click(clickOptions);
       });
   }
 );
@@ -96,9 +94,7 @@ Cypress.Commands.add('fmbLogin', () => {
     },
     setStatus: () => null
   };
-  cy.window()
-    .its('store')
-    .as('store');
+  cy.window().its('store').as('store');
   cy.get('@store').then((store) =>
     login(credentials, formFunctions)(store.dispatch)
   );

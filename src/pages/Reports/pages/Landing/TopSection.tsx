@@ -92,14 +92,14 @@ const StyledButton = styled.div`
   text-align: center;
   width: 200px;
   padding: 10px 18px;
-  box-shadow: ${
-    config.reports.flatButtons ? 'initial' : '0 0 2px 1px rgba(0, 0, 0, 0.25)'
-  };
+  box-shadow: ${config.reports.flatButtons
+    ? 'initial'
+    : '0 0 2px 1px rgba(0, 0, 0, 0.25)'};
 
   &:hover {
-    box-shadow: ${
-      config.reports.flatButtons ? 'initial' : '0 0 8px 1px rgba(0, 0, 0, 0.4)'
-    };
+    box-shadow: ${config.reports.flatButtons
+      ? 'initial'
+      : '0 0 8px 1px rgba(0, 0, 0, 0.4)'};
     opacity: 1;
   }
 `;
