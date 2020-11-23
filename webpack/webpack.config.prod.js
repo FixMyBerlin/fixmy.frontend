@@ -6,7 +6,6 @@ const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const Autoprefixer = require('autoprefixer');
 
 const common = require('./webpack.common.js');
 
@@ -65,13 +64,12 @@ module.exports = merge(common, {
             options: {
               sourceMap: true,
               postcssOptions: {
-                ident: 'postcss',
-                plugins: () => [Autoprefixer],
-              },
-            },
-          },
-        ],
-      },
-    ],
-  },
+                plugins: ['autoprefixer']
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
 });
