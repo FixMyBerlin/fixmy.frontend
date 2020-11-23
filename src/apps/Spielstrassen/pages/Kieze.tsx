@@ -56,14 +56,14 @@ const sortArray = (a: Spielstrasse, b: Spielstrasse) =>
 
 const connector = connect((state: RootState) => ({
   ...state.SpielstrassenState,
-  district: state.AppState.district
+  district: state.AppState.district,
 }));
 
 const Kieze = ({
   streets,
   streetRequest,
   district,
-  dispatch
+  dispatch,
 }: ConnectedProps<typeof connector>) => {
   const fhain = streets
     .filter((street) => street.region === 'Friedrichshain')

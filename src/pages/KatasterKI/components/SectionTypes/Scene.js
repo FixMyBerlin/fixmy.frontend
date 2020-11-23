@@ -165,7 +165,7 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
         {options.map((option, index) => {
           const Icon = option.icon;
           const buttonClasses = classnames({
-            active: currentValue.rating === index
+            active: currentValue.rating === index,
           });
 
           return (

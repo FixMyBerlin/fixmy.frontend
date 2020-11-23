@@ -77,12 +77,12 @@ const Gradient = styled.div`
 const isLandingPage = (path) => {
   const isLanding = matchPath(path, {
     path: config.routes.katasterKI.landing,
-    exact: true
+    exact: true,
   });
 
   const isLandingNational = matchPath(path, {
     path: config.routes.katasterKI?.landingNational,
-    exact: true
+    exact: true,
   });
 
   return isLanding || isLandingNational;

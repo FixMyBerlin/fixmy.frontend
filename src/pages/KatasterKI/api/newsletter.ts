@@ -7,7 +7,7 @@ import { NewsletterResponse } from '../types';
 // TODO: make sure we use a fetch polyfill
 async function handleSubmitAnswer({
   json = {},
-  token = false
+  token = false,
 }): Promise<NewsletterResponse> {
   const authHeader = token ? { Authorization: `JWT ${token}` } : {};
   const endpoint = getEndpointURL('newsletter', null, null);
@@ -17,8 +17,8 @@ async function handleSubmitAnswer({
     body: JSON.stringify(json),
     headers: {
       ...authHeader,
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   });
 
   if (!fetchResponse.ok) {

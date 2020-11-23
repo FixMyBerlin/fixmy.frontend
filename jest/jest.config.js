@@ -8,21 +8,21 @@ const esModules = ['common-tags', 'ky'];
 module.exports = {
   roots: [
     '<rootDir>/src',
-    '<rootDir>/jest' // allow putting the mocks folder lower down than root https://github.com/facebook/jest/issues/2726#issuecomment-390625860
+    '<rootDir>/jest', // allow putting the mocks folder lower down than root https://github.com/facebook/jest/issues/2726#issuecomment-390625860
   ],
   testMatch: [
     '**/__tests__/**/*.+(ts|tsx|js)',
-    '**/?(*.)+(unit|integration).+(spec|test).+(ts|tsx|js)'
+    '**/?(*.)+(unit|integration).+(spec|test).+(ts|tsx|js)',
   ],
   transform: {
     '^.+\\.(js|jsx)?$': 'babel-jest',
-    '^.+\\.(ts|tsx)?$': 'ts-jest'
+    '^.+\\.(ts|tsx)?$': 'ts-jest',
   },
   globals: {
     'ts-jest': {
       tsConfig: './jest/tsconfig.jest.json',
-      diagnostics: false // do not type check in unit tests. https://github.com/kulshekhar/ts-jest/issues/822#issue-372232259
-    }
+      diagnostics: false, // do not type check in unit tests. https://github.com/kulshekhar/ts-jest/issues/822#issue-372232259
+    },
   },
 
   // Automatically clear mock calls and instances between every test
@@ -45,7 +45,7 @@ module.exports = {
       '<rootDir>/jest/mocks/fileMock.js',
     'images/hbi-stop-icons': '<rootDir>/jest/mocks/fileMock.js',
     // handle webpack aliases
-    '^~/(.*)$': '<rootDir>/src/$1'
+    '^~/(.*)$': '<rootDir>/src/$1',
   },
 
   // The root directory that Jest should scan for tests and modules within
@@ -57,5 +57,7 @@ module.exports = {
 
   // An array of regexp pattern strings that are matched against all source
   // file paths, matched files will skip transformation
-  transformIgnorePatterns: [`<rootDir>/node_modules/(?!${esModules.join('|')})`]
+  transformIgnorePatterns: [
+    `<rootDir>/node_modules/(?!${esModules.join('|')})`,
+  ],
 };

@@ -61,7 +61,7 @@ class MapViewComponent extends PureComponent {
     this.updateView({
       center: userLocation,
       zoom: config.apps.map.zoomAfterGeocode,
-      animate: true
+      animate: true,
     });
   };
 
@@ -159,6 +159,6 @@ export default withRouter(
     filterHbi: state.MapState.filterHbi,
     isEmbedMode: state.MapState.isEmbedMode,
     error: state.MapState.error,
-    ...state.UserState
+    ...state.UserState,
   }))(MapViewComponent)
 );

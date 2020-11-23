@@ -56,10 +56,10 @@ export default () => (
     <Headline>{content.intro}</Headline>
     <StyledIcon alt="Icon Fahrradparkplätze" />
     {content.sections?.map((sec) => (
-      <>
-        <Headline key={`section-${sec.heading}`}>{sec.heading}</Headline>
-        <Text key={`section-${sec.text.slice(0, 100)}`}>{sec.text}</Text>
-      </>
+      <React.Fragment key={`section-${sec.heading}`}>
+        <Headline>{sec.heading}</Headline>
+        <Text>{sec.text}</Text>
+      </React.Fragment>
     ))}
     {content.steps && (
       <>

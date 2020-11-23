@@ -31,7 +31,7 @@ const Title = styled.h1`
   line-height: 2.5rem;
   font-weight: 700;
   font-family: '${config.titleFont}', serif;
-  color: ${config.colors.darkbg}
+  color: ${config.colors.darkbg};
 `;
 
 const SubTitle = styled.p`

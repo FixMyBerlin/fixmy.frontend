@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 
 export default {
   title: 'Meldungen / Landing / FAQs',
-  decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>]
+  decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
 export const Full = () => <Faq />;

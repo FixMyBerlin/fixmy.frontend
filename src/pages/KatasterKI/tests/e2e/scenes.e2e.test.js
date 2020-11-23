@@ -9,9 +9,7 @@ describe('katasterKi scene rating', () => {
       });
 
       it('has made the store object globally available for testing', () => {
-        cy.window()
-          .its('store')
-          .should('exist');
+        cy.window().its('store').should('exist');
       });
     });
 

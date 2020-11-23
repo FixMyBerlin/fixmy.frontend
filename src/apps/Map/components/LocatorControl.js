@@ -35,7 +35,7 @@ const locateErrors = {
   // https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError/code
   PERMISSION_DENIED: 1,
   POSITION_UNAVAILABLE: 2,
-  TIMEOUT: 3
+  TIMEOUT: 3,
 };
 
 const userFeedback = oneLine`Wenn Sie sich orten lassen wollen, müssen Sie einer Ortung zustimmen.
@@ -68,9 +68,7 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
   const locate = () => {
     setIsLoading(true);
     onStart();
-    getGeoLocation()
-      .then(onLocateSuccess)
-      .catch(onLocateError);
+    getGeoLocation().then(onLocateSuccess).catch(onLocateError);
     setIsLoading(false);
   };
 
@@ -102,17 +100,17 @@ LocatorControl.propTypes = {
     top: PropTypes.string,
     bottom: PropTypes.string,
     left: PropTypes.string,
-    right: PropTypes.string
+    right: PropTypes.string,
   }),
   onChange: PropTypes.func,
-  onStart: PropTypes.func
+  onStart: PropTypes.func,
 };
 
 LocatorControl.defaultProps = {
   position: 'top-left',
   onChange: () => {},
   onStart: () => {},
-  customPosition: undefined
+  customPosition: undefined,
 };
 
 export default LocatorControl;

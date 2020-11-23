@@ -76,20 +76,20 @@ export interface Section {
 export enum Experiment {
   MainStreet = 'MS',
   CyclePath = 'CP',
-  SideStreet = 'SE'
+  SideStreet = 'SE',
 }
 
 export enum Perspective {
   bicycle = 'C',
   car = 'A',
-  pedestrian = 'P'
+  pedestrian = 'P',
 }
 
 export enum Rating {
   unsafe,
   mostlyUnsafe,
   mostlySafe,
-  safe
+  safe,
 }
 
 export enum RequestState {
@@ -97,7 +97,7 @@ export enum RequestState {
   pending = 'pending',
   delayed = 'delayed',
   success = 'success',
-  error = 'error'
+  error = 'error',
 }
 
 export enum TransportMode {
@@ -105,7 +105,7 @@ export enum TransportMode {
   bicycle = 'bicycle',
   motorbike = 'motorbike',
   public = 'public',
-  car = 'car'
+  car = 'car',
 }
 
 export enum TransportRating {
@@ -114,14 +114,14 @@ export enum TransportRating {
   monthlyPlus,
   weekly,
   weeklyPlus,
-  daily
+  daily,
 }
 
 export enum UserGroup {
   bicycle = 'bicycle',
   potentialBicycle = 'potentialBicycle',
   car = 'car',
-  pedestrian = 'pedestrian'
+  pedestrian = 'pedestrian',
 }
 
 export enum VehicleKind {
@@ -129,5 +129,5 @@ export enum VehicleKind {
   car = 'car',
   public = 'public',
   motorbike = 'motorbike',
-  bicycle = 'bicycle'
+  bicycle = 'bicycle',
 }

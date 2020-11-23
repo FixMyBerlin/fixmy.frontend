@@ -90,14 +90,14 @@ ConfirmLocationDialog.propTypes = {
   heading: PropTypes.string,
   address: PropTypes.string,
   onConfirm: PropTypes.func,
-  onDecline: PropTypes.func
+  onDecline: PropTypes.func,
 };
 
 ConfirmLocationDialog.defaultProps = {
   heading: 'Der Ort wurde markiert!',
   address: 'Fehler beim Setzen der Adresse',
   onConfirm: () => logger('implement me'),
-  onDecline: () => logger('implement me')
+  onDecline: () => logger('implement me'),
 };
 
 export default ConfirmLocationDialog;

@@ -15,7 +15,7 @@ const Sliders = ({
   ratingLabels,
   handleChange,
   transportRatings,
-  next
+  next,
 }) => {
   const [usedSlider, setUsedSlider] = useState(false);
   const [isLoading, onClick] = useHandlerTimeout(next);
@@ -64,7 +64,7 @@ const Sliders = ({
 };
 
 const mapStateToProps = (state) => ({
-  transportRatings: state.KatasterKIState.transportRatings
+  transportRatings: state.KatasterKIState.transportRatings,
 });
 
 export default connect(mapStateToProps)(Sliders);

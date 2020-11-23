@@ -6,21 +6,21 @@ export default [
     options: [
       {
         label: 'Ja, häufig',
-        value: 0
+        value: 0,
       },
       {
         label: 'Ja, ab und zu',
-        value: 1
+        value: 1,
       },
       {
         label: 'Selten',
-        value: 2
+        value: 2,
       },
       {
         label: 'Nein, nie',
-        value: 3
-      }
-    ]
+        value: 3,
+      },
+    ],
   },
   {
     type: 'single_choice',
@@ -29,25 +29,25 @@ export default [
     options: [
       {
         label: 'Die Politik',
-        value: 0
+        value: 0,
       },
       {
         label: 'Die Polizei / das Ordnungsamt',
-        value: 1
+        value: 1,
       },
       {
         label: 'Die Autofahrer',
-        value: 2
+        value: 2,
       },
       {
         label: 'Die Radfahrer',
-        value: 3
+        value: 3,
       },
       {
         label: 'Die Fußgänger',
-        value: 4
-      }
-    ]
+        value: 4,
+      },
+    ],
   },
   {
     type: 'single_choice',
@@ -56,33 +56,33 @@ export default [
     options: [
       {
         label: 'Hohes Verkehrsaufkommen und Staus',
-        value: 0
+        value: 0,
       },
       {
         label: 'Der Zustand der Straßen/Radwege',
-        value: 1
+        value: 1,
       },
       {
         label: 'Missachtung der Verkehrsregeln',
-        value: 2
+        value: 2,
       },
       {
         label: 'Der Lärm',
-        value: 3
+        value: 3,
       },
       {
         label: 'Die Unfälle',
-        value: 4
+        value: 4,
       },
       {
         label: 'Aggressives Verhalten anderer',
-        value: 5
+        value: 5,
       },
       {
         label: 'Die Luftverschmutzung',
-        value: 6
-      }
-    ]
+        value: 6,
+      },
+    ],
   },
   {
     type: 'multi_choice',
@@ -95,8 +95,8 @@ export default [
       { label: 'Smartphone-Nutzung anderer im Verkehr', name: 'phones' },
       { label: 'Zu dichtes Überholen', name: 'overtake' },
       { label: 'Ignorieren der Vorfahrtsregeln', name: 'rightOfWay' },
-      { label: 'Ignorieren von Ampeln', name: 'trafficLights' }
-    ]
+      { label: 'Ignorieren von Ampeln', name: 'trafficLights' },
+    ],
   },
   {
     type: 'multi_choice',
@@ -112,8 +112,8 @@ export default [
       { label: 'Citymaut', name: 'tolls' },
       { label: 'Besteuerung großer Autos', name: 'bigCarTax' },
       { label: 'Mehr Sharing-Angebote in Außenbezirken', name: 'sharing' },
-      { label: 'Mehr Ladesäulen für Elektroautos', name: 'chargers' }
-    ]
+      { label: 'Mehr Ladesäulen für Elektroautos', name: 'chargers' },
+    ],
   },
   {
     type: 'multi_choice',
@@ -127,8 +127,8 @@ export default [
       { label: 'Weniger Autospuren', name: 'carlanes' },
       { label: 'Weniger Busspuren', name: 'buslanes' },
       { label: 'Weniger Grünflächen', name: 'green' },
-      { label: 'Nirgendwo. Es soll so bleiben wie es ist', name: 'nada' }
-    ]
+      { label: 'Nirgendwo. Es soll so bleiben wie es ist', name: 'nada' },
+    ],
   },
   {
     type: 'multi_choice',
@@ -142,8 +142,8 @@ export default [
       { label: 'Ridesharing, z.B. Berlkönig', name: 'ridesharing' },
       { label: 'Lastenräder', name: 'transportbikes' },
       { label: 'Kleintransporter', name: 'vans' },
-      { label: 'keine', name: 'nada' }
-    ]
+      { label: 'keine', name: 'nada' },
+    ],
   },
   {
     type: 'multi_choice',
@@ -153,26 +153,26 @@ export default [
       {
         label:
           'Spezielle Stellplätze sollten auf der Fahrbahn geschaffen werden',
-        name: 'parking'
+        name: 'parking',
       },
       {
         label:
           'Das Abstellen von Fahrrädern und Scootern sollte auf dem Bürgersteig erlaubt sein',
-        name: 'sidewalk'
+        name: 'sidewalk',
       },
       {
         label: 'Das Ausleihen sollte nur an festen Leihstationen möglich sein',
-        name: 'sharingstations'
+        name: 'sharingstations',
       },
       {
         label: 'Die Zahl der Sharing-Fahrzeuge soll beschränkt werden',
-        name: 'limits'
+        name: 'limits',
       },
       {
         label:
           'Die Angebote sollten von der Stadt gefördert werden, damit sie auch in den Außenbezirken angeboten werden können',
-        name: 'subsidy'
-      }
-    ]
-  }
+        name: 'subsidy',
+      },
+    ],
+  },
 ];

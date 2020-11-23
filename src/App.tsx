@@ -89,7 +89,7 @@ const App = ({ dispatch, isEmbedMode }) => {
 };
 
 const mapStateToProps = (state: RootState) => ({
-  isEmbedMode: state.MapState.isEmbedMode
+  isEmbedMode: state.MapState.isEmbedMode,
 });
 
 export default hot(connect(mapStateToProps)(App));

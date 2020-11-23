@@ -110,7 +110,7 @@ class ReportListItem extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isExpanded: false
+      isExpanded: false,
     };
   }
 
@@ -121,7 +121,7 @@ class ReportListItem extends PureComponent {
 
   toggleExpanded = () => {
     this.setState((prevState) => ({
-      isExpanded: !prevState.isExpanded
+      isExpanded: !prevState.isExpanded,
     }));
   };
 

@@ -3,7 +3,7 @@ import { createMuiTheme } from '@material-ui/core';
 import {
   deDE as muiDE,
   enUS as muiEN,
-  esES as muiES
+  esES as muiES,
 } from '@material-ui/core/locale';
 import { LocaleCode } from '~/types';
 import config from '~/config';
@@ -32,8 +32,8 @@ export const getTheme = (locale: LocaleCode) => {
         secondary: { main: config.colors.change_4 },
         error: { main: config.colors.error },
         info: { main: config.colors.interaction },
-        success: { main: config.colors.label_01 }
-      }
+        success: { main: config.colors.label_01 },
+      },
     },
     muiLocale
   );

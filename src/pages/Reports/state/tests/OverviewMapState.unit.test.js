@@ -1,14 +1,22 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { rest } from 'msw';
+import debug from 'debug';
 
-import reducer, { actions, types } from '../OverviewMapState';
+import reducer, {
+  actions,
+  types,
+  FETCH_STATE_PENDING,
+  FETCH_STATE_SUCCESS,
+} from '../OverviewMapState';
 import reportsInitialState from '../initialState';
 import { types as errorStateTypes } from '../ErrorState';
 import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import reportSample from './mocks/reportsSample';
 import { formatActionType as ft } from '~/utils/test-utils';
 import { mswServer } from '../../../../../jest/msw/mswServer';
+
+const mswLogger = debug('fmc:reports:msw');
 
 // mock redux store
 const mockStore = configureMockStore([thunk]);
@@ -17,6 +25,7 @@ const initialState = reportsInitialState.OverviewMapState;
 // intercept requests and mock responses
 const mockedReportsList = reportSample.slice(0, 5);
 const interceptFetchReports = () => {
+  mswLogger(`Intercepting ${reportsEndpointUrl}`);
   mswServer.use(
     rest.get(reportsEndpointUrl, (_, res, ctx) =>
       res(ctx.json(mockedReportsList))
@@ -32,7 +41,7 @@ describe('OverviewMapState reducer and actions', () => {
   it('sets the popup display position of a selected report', () => {
     const stateBefore = {
       reports: mockedReportsList,
-      selectedReport: mockedReportsList[0]
+      selectedReport: mockedReportsList[0],
     };
     const pixelPositxion = { x: 50, y: 100 };
 
@@ -43,7 +52,7 @@ describe('OverviewMapState reducer and actions', () => {
 
     expect(newState).toEqual({
       ...stateBefore,
-      selectedReportPosition: pixelPositxion
+      selectedReportPosition: pixelPositxion,
     });
   });
 
@@ -53,8 +62,8 @@ describe('OverviewMapState reducer and actions', () => {
       selectedReport: mockedReportsList[1],
       selectedReportPosition: {
         x: 180.01016568411143,
-        y: 319.9945452428112
-      }
+        y: 319.9945452428112,
+      },
     };
     const newState = reducer(stateBefore, actions.resetMapState());
 
@@ -79,18 +88,18 @@ describe('OverviewMapState reducer and actions', () => {
         { type: types.REPORTS_FETCH_PENDING },
         {
           type: types.REPORTS_FETCH_COMPLETE,
-          payload: mockedReportsList
-        }
+          payload: mockedReportsList,
+        },
       ];
       const expectedNewState = {
         ...initialState,
         reportFetchState: 'success',
-        reports: mockedReportsList
+        reports: mockedReportsList,
       };
 
       const actualState = reducer(initialState, {
         type: types.REPORTS_FETCH_COMPLETE,
-        payload: mockedReportsList
+        payload: mockedReportsList,
       });
 
       const actualActions = store.getActions();
@@ -111,7 +120,7 @@ describe('OverviewMapState reducer and actions', () => {
         // do not mind the action payloads here
         types.REPORTS_FETCH_PENDING,
         types.REPORTS_FETCH_ERROR,
-        errorStateTypes.ADD_ERROR
+        errorStateTypes.ADD_ERROR,
       ];
 
       /* ACT: dispatch thunk */
@@ -130,16 +139,17 @@ describe('OverviewMapState reducer and actions', () => {
         ReportsState: {
           OverviewMapState: {
             reports: mockedReportsList,
-            zoomIn: false
-          }
-        }
+            reportFetchState: FETCH_STATE_SUCCESS,
+            zoomIn: false,
+          },
+        },
       };
       const overviewMapStateBefore = stateBefore.ReportsState.OverviewMapState;
       const store = mockStore(stateBefore);
 
       /* ACT: dispatch thunk */
       const reportItem = mockedReportsList[0];
-      const loadReportsThunk = actions.setSelectedReport(reportItem);
+      const loadReportsThunk = actions.setSelectedReport(reportItem.id);
       await store.dispatch(loadReportsThunk);
 
       /* ASSERT: make sure thunk dispatched the right action sequence and
@@ -149,14 +159,14 @@ describe('OverviewMapState reducer and actions', () => {
           type: types.SET_SELECTED_REPORT,
           payload: {
             selectedReport: reportItem,
-            zoomIn: false
-          }
-        }
+            zoomIn: false,
+          },
+        },
       ];
       const expectedState = {
         ...overviewMapStateBefore,
         selectedReport: reportItem,
-        zoomIn: false
+        zoomIn: false,
       };
 
       const actualActions = store.getActions();
@@ -172,9 +182,10 @@ describe('OverviewMapState reducer and actions', () => {
         ReportsState: {
           OverviewMapState: {
             reports: mockedReportsList,
-            zoomIn: false
-          }
-        }
+            reportFetchState: FETCH_STATE_SUCCESS,
+            zoomIn: false,
+          },
+        },
       };
       const overviewMapStateBefore = stateBefore.ReportsState.OverviewMapState;
       const store = mockStore(stateBefore);
@@ -182,7 +193,7 @@ describe('OverviewMapState reducer and actions', () => {
       /* ACT: dispatch thunk */
       const reportItem = mockedReportsList[0];
       const setSelectedReportThunk = actions.setSelectedReport(
-        reportItem,
+        reportItem.id,
         true
       );
       await store.dispatch(setSelectedReportThunk);
@@ -194,14 +205,14 @@ describe('OverviewMapState reducer and actions', () => {
           type: types.SET_SELECTED_REPORT,
           payload: {
             selectedReport: reportItem,
-            zoomIn: true
-          }
-        }
+            zoomIn: true,
+          },
+        },
       ];
       const expectedState = {
         ...overviewMapStateBefore,
         selectedReport: reportItem,
-        zoomIn: true
+        zoomIn: true,
       };
 
       const actualActions = store.getActions();
@@ -219,22 +230,23 @@ describe('OverviewMapState reducer and actions', () => {
         const store = mockStore({
           ReportsState: {
             OverviewMapState: {
-              reports: []
-            }
-          }
+              reports: [],
+              reportFetchState: FETCH_STATE_PENDING,
+            },
+          },
         });
         interceptFetchReports();
 
         /* ACT: dispatch thunk */
-        const reportItem = { some: 'other content' };
-        await store.dispatch(actions.setSelectedReport(reportItem));
+        const reportItem = mockedReportsList[0];
+        await store.dispatch(actions.setSelectedReport(reportItem.id));
 
         /* ASSERT: make sure thunk dispatched the right action sequence and
                  the reducer produced the right state */
         const expectedActionTypes = [
           types.REPORTS_FETCH_PENDING,
           types.REPORTS_FETCH_COMPLETE,
-          types.SET_SELECTED_REPORT
+          types.SET_SELECTED_REPORT,
         ];
 
         // only test action sequence (reducer is already covered in other tests)

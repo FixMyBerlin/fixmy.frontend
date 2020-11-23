@@ -8,47 +8,50 @@ export default styled(Slider)`
     background-color: ${config.colors.interaction};
   }
 
-  .rc-slider-track, .rc-slider-rail, .rc-slider-step {
+  .rc-slider-track,
+  .rc-slider-rail,
+  .rc-slider-step {
     height: 6px;
   }
-  
+
   .rc-slider-handle {
-     width: 48px;
-     height: 48px;
-     background-color: ${config.colors.interaction};
-     border: none;
-     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
-     cursor: pointer;
-     user-select: none;
-     transform: translate(-50%, -18px) !important;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     z-index: 100;
-     
-     &:focus {
+    width: 48px;
+    height: 48px;
+    background-color: ${config.colors.interaction};
+    border: none;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    user-select: none;
+    transform: translate(-50%, -18px) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+
+    &:focus {
       outline: none;
       border: none;
       box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
-     }
-     
-     &:after {
-      content: "${(p) => p.value}";
+    }
+
+    &:after {
+      content: '${(p) => p.value}';
       display: block;
       user-select: none;
       color: white;
       font-size: 18px;
       font-weight: bold;
-     }
+    }
 
-     &:active, &:hover {
+    &:active,
+    &:hover {
       outline: none;
       border: none;
-     }
+    }
 
-     &:active {
+    &:active {
       box-shadow: none;
-     }
+    }
   }
 
   .rc-slider-dot {

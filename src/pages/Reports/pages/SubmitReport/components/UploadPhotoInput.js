@@ -68,7 +68,7 @@ class UploadPhotoInput extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      photo: null
+      photo: null,
     };
     this.fileReader = new FileReader();
     this.fileReader.onload = this.handleConvertedPhoto.bind(this);
@@ -195,8 +195,8 @@ UploadPhotoInput.propTypes = {
   resizeOptions: PropTypes.shape({
     maxWidth: PropTypes.number,
     maxHeight: PropTypes.number,
-    quality: PropTypes.number
-  })
+    quality: PropTypes.number,
+  }),
 };
 
 UploadPhotoInput.defaultProps = {
@@ -205,8 +205,8 @@ UploadPhotoInput.defaultProps = {
   resizeOptions: {
     maxWidth: 800,
     maxHeight: 800,
-    quality: 0.9
-  }
+    quality: 0.9,
+  },
 };
 
 export default UploadPhotoInput;

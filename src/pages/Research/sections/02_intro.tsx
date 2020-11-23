@@ -5,7 +5,7 @@ import {
   Paragraph,
   Heading,
   ImageMulti,
-  SectionProps
+  SectionProps,
 } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import ButtonWrapper from '../components/ButtonWrapper';
@@ -41,7 +41,7 @@ const SectionIntroduction = ({ toc, tocAnchor }: SectionProps) => (
                 defaultMessage="Umfragekonzept"
               />
             </a>
-          )
+          ),
         }}
       />
     </Paragraph>
@@ -98,7 +98,7 @@ const SectionIntroduction = ({ toc, tocAnchor }: SectionProps) => (
                 defaultMessage="Artikel"
               />
             </Link>
-          )
+          ),
         }}
       />
     </Paragraph>

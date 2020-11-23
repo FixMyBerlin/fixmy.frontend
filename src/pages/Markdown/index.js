@@ -8,7 +8,7 @@ class MarkdownPage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      content: false
+      content: false,
     };
   }
 

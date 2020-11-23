@@ -17,9 +17,7 @@ describe('Planings Section', () => {
       });
 
       it('contains an address heading', () => {
-        cyElem('section-title')
-          .invoke('text')
-          .should('match', adressRegex);
+        cyElem('section-title').invoke('text').should('match', adressRegex);
       });
 
       it('closes the popup on close button click', () => {

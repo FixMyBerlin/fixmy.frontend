@@ -32,8 +32,8 @@ function getArrowCSS({ size = 20, color = 'white', offset = 0 }) {
 const MapPopup = styled.div.attrs((props) => ({
   style: {
     top: `${props.y}px`,
-    left: `${props.x}px`
-  }
+    left: `${props.x}px`,
+  },
 }))`
   position: relative;
   width: 100%;
@@ -55,7 +55,7 @@ const MapPopup = styled.div.attrs((props) => ({
     &:after {
       ${getArrowCSS({
         size: arrowSize,
-        color: 'white'
+        color: 'white',
       })}
     }
 
@@ -63,7 +63,7 @@ const MapPopup = styled.div.attrs((props) => ({
       ${getArrowCSS({
         size: outerArrowSize,
         color: config.colors.midgrey,
-        offset: 1
+        offset: 1,
       })}
     }
   `}
@@ -168,11 +168,11 @@ MapPopupWrapper.propTypes = {
     name: PropTypes.string,
     address: PropTypes.string,
     isIntersection: PropTypes.bool,
-    borough: PropTypes.string
+    borough: PropTypes.string,
   }),
   // eslint-disable-next-line react/forbid-prop-types
   style: PropTypes.object,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 MapPopupWrapper.defaultProps = {
@@ -183,7 +183,7 @@ MapPopupWrapper.defaultProps = {
   onClick: () => {},
   showSubline: true,
   data: {},
-  children: null
+  children: null,
 };
 
 export default MapPopupWrapper;

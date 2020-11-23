@@ -8,7 +8,7 @@ async function handleSubmitAnswer({
   json = {},
   token = false,
   sessionID,
-  sceneID
+  sceneID,
 }): Promise<void> {
   const authHeader = token ? { Authorization: `JWT ${token}` } : {};
   const endpoint = getEndpointURL('answer', sessionID, sceneID);
@@ -18,8 +18,8 @@ async function handleSubmitAnswer({
     body: JSON.stringify(json),
     headers: {
       ...authHeader,
-      'Content-Type': 'application/json'
-    }
+      'Content-Type': 'application/json',
+    },
   });
 
   if (!fetchResponse.ok) {

@@ -3,10 +3,17 @@ import { apiFetchReports } from '../apiservice';
 import { actions as errorStateActions } from './ErrorState';
 import initialState from './initialState';
 
-const logger = debug('fmc:reports');
+const logger = debug('fmc:reports:OverviewMapState');
 
 const actions = {};
 const types = {};
+
+// constants
+
+export const FETCH_STATE_WAITING = 'waiting';
+export const FETCH_STATE_PENDING = 'pending';
+export const FETCH_STATE_SUCCESS = 'success';
+export const FETCH_STATE_ERROR = 'error';
 
 // action types
 
@@ -23,57 +30,76 @@ types.RESET_MAP_STATE = 'Reports/OverviewMapState/RESET_MAP_STATE';
 
 actions.setSelectedReportPosition = ({ x = 0, y = 0 }) => ({
   type: types.SET_SELECTED_REPORT_POS,
-  payload: { x, y }
+  payload: { x, y },
 });
 
 actions.resetMapState = () => ({
-  type: types.RESET_MAP_STATE
+  type: types.RESET_MAP_STATE,
 });
 
 // thunks
 
 async function loadReportsThunk(dispatch) {
   logger('Loading reports...');
+  let reportData = null;
   try {
     dispatch({ type: types.REPORTS_FETCH_PENDING });
-    const reportData = await apiFetchReports();
+    reportData = await apiFetchReports();
     dispatch({ type: types.REPORTS_FETCH_COMPLETE, payload: reportData });
+    logger(`${reportData.length} reports loaded`);
   } catch (e) {
     dispatch({ type: types.REPORTS_FETCH_ERROR });
     const message = 'Fehler beim Laden der Meldungen';
     logger(`${message}: \n%O`, e);
     dispatch(
       errorStateActions.addError({
-        message
+        message,
       })
     );
   }
+  return reportData;
 }
 
 actions.loadReportsData = () => async (dispatch) => {
   await loadReportsThunk(dispatch);
 };
 
-actions.setSelectedReport = (selectedReport, zoomIn) => async (
+actions.setSelectedReport = (selectedReportId, zoomIn = false) => async (
   dispatch,
   getState
 ) => {
-  const {
-    reports,
-    reportFetchState
-  } = getState().ReportsState.OverviewMapState;
+  let selectedReport = null;
+  let reports;
 
-  if (!reports.length && reportFetchState !== 'pending') {
-    logger(reportFetchState);
-    await loadReportsThunk(dispatch);
+  if (selectedReportId != null) {
+    logger(`setting selected report ${selectedReportId}`);
+
+    const mapState = getState().ReportsState.OverviewMapState;
+    // Load report list unless it has already been loaded
+    if (mapState.reportFetchState === FETCH_STATE_SUCCESS) {
+      reports = mapState.reports;
+    } else {
+      // fall back to empty list if loadReportsThunk fails
+      reports = (await loadReportsThunk(dispatch)) || [];
+    }
+
+    selectedReport = reports.find(
+      (report) => report.id === parseInt(selectedReportId, 10)
+    );
+    if (selectedReport == null) {
+      logger('selected report is not available');
+      return;
+    }
+  } else {
+    logger('reset selected report');
   }
 
   dispatch({
     type: types.SET_SELECTED_REPORT,
     payload: {
-      selectedReport: selectedReport || null,
-      zoomIn: zoomIn || false
-    }
+      selectedReport,
+      zoomIn,
+    },
   });
 };
 
@@ -88,20 +114,24 @@ function reducer(
       return initialState.OverviewMapState;
     }
     case types.REPORTS_FETCH_PENDING:
-      return { ...state, reportFetchState: 'pending' };
+      return { ...state, reportFetchState: FETCH_STATE_PENDING };
     case types.REPORTS_FETCH_ERROR:
-      return { ...state, reportFetchState: 'error' };
+      return { ...state, reportFetchState: FETCH_STATE_ERROR };
     case types.REPORTS_FETCH_COMPLETE:
-      return { ...state, reports: payload, reportFetchState: 'success' };
+      return {
+        ...state,
+        reports: payload,
+        reportFetchState: FETCH_STATE_SUCCESS,
+      };
     case types.SET_SELECTED_REPORT:
       return {
         ...state,
-        ...payload
+        ...payload,
       };
     case types.SET_SELECTED_REPORT_POS:
       return {
         ...state,
-        selectedReportPosition: payload
+        selectedReportPosition: payload,
       };
     default:
       return state;

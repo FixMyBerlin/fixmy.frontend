@@ -18,9 +18,7 @@ Cypress.Commands.add(
       .its('length')
       .then((count) => {
         const randomZeroBasedIndex = Math.floor(Math.random() * count);
-        cy.get('@selection')
-          .eq(randomZeroBasedIndex)
-          .click(clickOptions);
+        cy.get('@selection').eq(randomZeroBasedIndex).click(clickOptions);
       });
   }
 );
@@ -34,10 +32,10 @@ Cypress.Commands.add('fmbGoToProfile', (profile = 1) => {
       win.initialState = {
         KatasterKIState: {
           ...productionDefaultState,
-          introSelection: [0, 1, 2]
-        }
+          introSelection: [0, 1, 2],
+        },
       };
-    }
+    },
   });
 });
 
@@ -51,7 +49,7 @@ Cypress.Commands.add('visitWithState', (route, state = null) => {
         // eslint-disable-next-line no-param-reassign
         win.initialState = state;
       }
-    }
+    },
   });
 });
 
@@ -69,7 +67,7 @@ Cypress.Commands.add('fmbGoToScene', (scene = 1) => {
       onBeforeLoad(win) {
         // eslint-disable-next-line no-param-reassign
         win.initialState = stateSlice;
-      }
+      },
     });
   });
 });
@@ -80,7 +78,7 @@ Cypress.Commands.add('fmbGoToScene', (scene = 1) => {
 Cypress.Commands.add('fmbLogin', () => {
   const credentials = {
     username: Cypress.env('CYPRESS_USERNAME'),
-    password: Cypress.env('CYPRESS_PASSWORD')
+    password: Cypress.env('CYPRESS_PASSWORD'),
   };
   if (credentials.username == null || credentials.password == null) {
     throw new Error(
@@ -94,11 +92,9 @@ Cypress.Commands.add('fmbLogin', () => {
       cy.log('Error handling login:', err);
       throw new Error('Error handling login:', err.message);
     },
-    setStatus: () => null
+    setStatus: () => null,
   };
-  cy.window()
-    .its('store')
-    .as('store');
+  cy.window().its('store').as('store');
   cy.get('@store').then((store) =>
     login(credentials, formFunctions)(store.dispatch)
   );
@@ -117,7 +113,7 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
         return options.onBeforeLoad(window, ...args);
       }
       return null;
-    }
+    },
   };
   return originalFn(url, opts);
 });
@@ -131,7 +127,7 @@ Cypress.Commands.add('mockGeolocation', (coordinates) => {
       ? coordinates
       : {
           latitude: 52.490064,
-          longitude: 13.38694
+          longitude: 13.38694,
         };
   return cy.window().then(($window) => {
     return cy.stub(

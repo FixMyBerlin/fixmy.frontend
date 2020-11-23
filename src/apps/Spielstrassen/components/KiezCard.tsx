@@ -62,10 +62,10 @@ const Kiez = ({
   street,
   status,
   schedule = null,
-  supporters = 0
+  supporters = 0,
 }) => {
   const signupUrl = generatePath(config.routes.spielstrassen.register, {
-    slug: slugify(street, { lower: true })
+    slug: slugify(street, { lower: true }),
   });
 
   return (
@@ -117,7 +117,7 @@ const Kiez = ({
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(Kiez);

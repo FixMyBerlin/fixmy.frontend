@@ -43,7 +43,7 @@ const SectionDataset = ({ toc, tocAnchor }: SectionProps) => (
                 defaultMessage="diesem PDF zu den Spezifikationen"
               />
             </Link>
-          )
+          ),
         }}
       />
     </Paragraph>

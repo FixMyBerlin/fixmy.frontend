@@ -18,7 +18,7 @@ import {
   updateProgressBar,
   setZipcode,
   setTransportRating,
-  submitProfile
+  submitProfile,
 } from '../state';
 import { RequestState } from '../types';
 
@@ -28,7 +28,7 @@ const sectionTypes = {
   single_choice: SingleChoice,
   transportRatings: TransportRatings,
   zip: ZipInput,
-  radiogroups: Radiogroups
+  radiogroups: Radiogroups,
 };
 
 /**
@@ -67,7 +67,7 @@ const Profile = ({
   profile,
   profileRequest,
   userGroup,
-  dispatch
+  dispatch,
 }) => {
   if (shouldRedirectToLanding(match.params, isTosAccepted)) {
     return <Redirect to={config.routes.katasterKI.landing} />;
@@ -136,7 +136,7 @@ const mapStateToProps = (state) => ({
   profile: state.KatasterKIState.profile,
   introSelection: state.KatasterKIState.introSelection,
   userGroup: state.KatasterKIState.userGroup,
-  profileRequest: state.KatasterKIState.profileRequest
+  profileRequest: state.KatasterKIState.profileRequest,
 });
 
 export default connect(mapStateToProps)(Profile);

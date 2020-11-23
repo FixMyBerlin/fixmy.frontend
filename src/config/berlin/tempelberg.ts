@@ -16,20 +16,20 @@ const tempelberg: DistrictConfig = {
   path: 'tempelhof-schoeneberg',
   name: 'tempelberg',
   content: {
-    footerLine: 'Ein Angebot des Bezirksamts Tempelhof-Schöneberg von Berlin'
+    footerLine: 'Ein Angebot des Bezirksamts Tempelhof-Schöneberg von Berlin',
   },
   emblem: {
     small: TempelbergSmall,
-    large: TempelbergLarge
+    large: TempelbergLarge,
   },
   backend: {
     local: 'http://localhost:8000/api',
     staging: 'https://fixmyberlin-staging.netlify.app/api/tempelberg/next',
-    production: 'https://fixmyberlin.de/api/tempelberg/v1'
+    production: 'https://fixmyberlin.de/api/tempelberg/v1',
   },
   bounds: [
     [13.319982942, 52.376139915],
-    [13.427456693, 52.504941181]
+    [13.427456693, 52.504941181],
   ],
   apps: {
     gastro: {
@@ -37,11 +37,11 @@ const tempelberg: DistrictConfig = {
       path: 'terrassen',
       timeline: {
         openSignup: new Date(Date.UTC(2020, 5, 19, 16, 0)),
-        closeSignup: new Date(Date.UTC(2020, 5, 23, 8, 0))
+        closeSignup: new Date(Date.UTC(2020, 5, 23, 8, 0)),
       },
       model: {
         category: false,
-        opening_hours: true
+        opening_hours: true,
       },
       directSignup: false,
       signup: {
@@ -53,10 +53,10 @@ const tempelberg: DistrictConfig = {
           viele Sitzplätze unter Berücksichtigung der Abstandsgebote dort 
           eingerichtet werden können.`,
         thanksMessage: `Das Bezirksamt prüft alle Bedarfsmeldungen nach 
-          Ablauf der Frist und entscheidet dann über das weitere Vorgehen.`
-      }
-    }
-  }
+          Ablauf der Frist und entscheidet dann über das weitere Vorgehen.`,
+      },
+    },
+  },
 };
 
 export default tempelberg;

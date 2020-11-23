@@ -9,7 +9,7 @@ import {
   apiVerify,
   apiPasswordReset,
   apiPasswordForgot,
-  apiLikes
+  apiLikes,
 } from '~/pages/User/apiservice';
 import history from '~/history';
 import config from '~/config';
@@ -41,7 +41,7 @@ const initialState = {
   hbi_values: HBI.map((d) => d.value),
   token: get('token'),
   userData: false,
-  userLikes: false
+  userLikes: false,
 };
 
 // updates custome hbi config values
@@ -124,13 +124,13 @@ export function update(values, formFunctions) {
         formFunctions.setStatus('usernamesuccess');
         dispatch({
           type: UPDATE_USERNAME_SUCCESS,
-          payload: { userData: { ...userData, username: values.new_username } }
+          payload: { userData: { ...userData, username: values.new_username } },
         });
       } else if (values.new_password) {
         formFunctions.setStatus('passwordsuccess');
         dispatch({
           type: UPDATE_PASSWORD_SUCCESS,
-          payload: { userData: { ...userData, password: '' } }
+          payload: { userData: { ...userData, password: '' } },
         });
       }
     }
@@ -191,7 +191,7 @@ export function loadLikes(itemType) {
     if (!res.error) {
       dispatch({
         type: LOAD_LIKES_SUCCESS,
-        payload: { isLoading: false, userLikes: res.results }
+        payload: { isLoading: false, userLikes: res.results },
       });
     } else {
       dispatch({ type: LOAD_LIKES_FAIL, payload: { isLoading: false } });
@@ -237,5 +237,5 @@ export default function MapStateReducer(state = initialState, action = {}) {
 
 // selectors
 export const selectors = {
-  getToken: (state) => state.UserState.token
+  getToken: (state) => state.UserState.token,
 };

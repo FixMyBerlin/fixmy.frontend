@@ -31,7 +31,7 @@ function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
 
       map.easeTo({
         center: lngLat,
-        zoom: zoom + 0.1
+        zoom: zoom + 0.1,
       });
     });
   });
@@ -39,22 +39,15 @@ function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([-10, -10]);
 }
 
-function createPinMarker({ markerData, geometry, lngLat, onClick }) {
-  const details = JSON.parse(markerData.details || {});
+function createPinMarker({ markerData, lngLat, onClick }) {
   const el = document.createElement('div');
-
   el.dataset.id = markerData.id;
   el.className = 'reports-marker';
-
   el.dataset.cy = 'reports-marker';
-
-  const updatedMarkerData = { ...markerData, geometry, details };
-
   el.innerHTML = `<img class="marker-image marker-${
     markerData.status
   }" src="${utils.getMarkerSrc(markerData)}" />`;
-  el.addEventListener('click', (evt) => onClick(evt, updatedMarkerData));
-
+  el.addEventListener('click', (evt) => onClick(evt, markerData.id));
   return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -0]);
 }
 
@@ -76,7 +69,7 @@ function setupClusters(name, map, data, radius, handleUpdate) {
     data,
     cluster: true,
     clusterRadius: radius,
-    clusterMaxZoom: 16
+    clusterMaxZoom: 16,
   });
 
   map.addLayer({
@@ -85,8 +78,8 @@ function setupClusters(name, map, data, radius, handleUpdate) {
     source: name,
     filter: ['!=', 'cluster', true],
     paint: {
-      'circle-opacity': 0
-    }
+      'circle-opacity': 0,
+    },
   });
 }
 
