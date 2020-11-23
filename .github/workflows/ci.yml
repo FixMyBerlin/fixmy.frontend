@@ -27,9 +27,7 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          # Change the `BUILD_CACHE_OVERRIDE` repo secret to clear the cache
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-${{ secrets.BUILD_CACHE_OVERRIDE }}
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
