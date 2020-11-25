@@ -20,7 +20,7 @@ Der Export kann über das Django-Kommando `exportgastrosignups` ausgeführt werd
 python manage.py exportgastrosignups --format csv >> export.csv
 ```
 
-## Beschreibung des Ausgabeformats
+### Beschreibung der ausgegebenen Felder
 
 Die ausgegebenen Werte sind hier unterteilt in Nutzer:innen-Eingaben, Eingaben von Verwaltungsmitarbeiter:innen und Systemwerte.
 
@@ -57,3 +57,11 @@ Verwaltung
 - Bearbeitungsvermerk zur Sondernutzung
 - Verkehrsrechtliche Anordnung geprüft
 - Bearbeitungsvermerk zur verkehrsrechtlichen Anordnung
+
+## Ausgabe als GeoJSON-Datei
+
+Der Datensatz kann auch als GeoJSON-Datei ausgegeben werden. Hierbei werden allerdings nicht alle Datenfelder mit ausgegeben wie bei der CSV-Ausgabe.
+
+```bash
+python manage.py exportgastrosignups --format geojson export.geojson
+```
