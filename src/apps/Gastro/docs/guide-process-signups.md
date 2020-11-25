@@ -1,8 +1,8 @@
-# Bearbeitung von Interessensbekundungen und Versandt von Antragsformularen
+# Bearbeitung von Interessensbekundungen und Versand von Antragsformularen
 
 Die von Betreiber:innen gestellten Interessensbekundungen sind als CSV, GeoJSON und über das Django-Admin-Interface einsehbar (siehe auch [Anleitung zum Einsehen der Interessensbekundungen](./guide-view-signups.md)). Das Ziel ihrer Bearbeitung ist, die Interessensbekundungen Regelfällen zuzuordnen, so dass die Betreiber:innen in Bezug hierauf einen Antrag stellen können.
 
-## Zuordnung einer Regulation und Versandt des Zugangs zum Antragsformular
+## Zuordnung eines Regelfalls und Versandt des Zugangs zum Antragsformular
 
 Voraussetzung ist ein Zugang zum Django-Admin-Interface, welcher von Administrator:innen eingerichtet werden kann.
 

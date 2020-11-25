@@ -4,7 +4,13 @@ Nachdem Betreiber:innen Anträge eingereicht haben erhalten die entsprechenden E
 
 Über das Filtermenü am rechten Rand der Antragsliste lassen sich über die Filteroptionen im Abschnitt "Status" nur diejenigen Einträge anzeigen lassen für die ein Antrag bereits vorliegt.
 
+## Allgemeines zur Prüfung von Anträgen
+
 In der Detailansicht jedes Antrags, welche durch Klick auf den Eintrag in der Antragsliste geöffnet werden kann sind grundsätzlich die Eingaben der Antragsteller:innen einsehbar. Im folgenden werden einige Komponenten der Detailansicht gesondert beschrieben.
+
+**\*Wichtig**: Die Betreiber:innen können über den Link zum Antrag, welcher ihnen zugesandt wurde ihren Antrag auch im Nachhinein noch ändern, so lange dieser den Status "wartet auf Antrag" oder "Antrag in Bearbeitung" trägt. Aus diesem Grund ist es wichtig, dass zu Beginn der Prüfung eines Antrags der Status auf "Antrag in Bearbeitung" gesetzt wird, so dass keine änderungen mehr möglich sind.
+
+Diese Funktion kann genutzt werden, falls gewünscht wird, dass von den Antragsteller:innen Informationen ergänzt werden. In diesem Fall können diese per E-Mail kontaktiert werden und um die entsprechende Ergänzung gebeten werden. Der Link zum Antragsformular kann dem untersten Bereich der Detailansicht des Antrags entnommen werden um diesen erneut zuzuschicken.
 
 ## Korrektur der Aufstellfläche
 
@@ -20,9 +26,15 @@ Diese Karte wurde von den Betreiber:innen im Antragsformular eingezeichnet und i
 
 ## Interne Bearbeitungsvermerke
 
-Zur Koordinierung zwischen Mitarbeiter:innen, die an der Sondergenehmigung bzw. verkehrsrechtlichen Anordnung arbeiten sind Bearbeitungsvermerke möglich:
+Zur Koordination zwischen Mitarbeiter:innen, die an der Sondergenehmigung bzw. verkehrsrechtlichen Anordnung arbeiten, sind Bearbeitungsvermerke möglich:
 
 - Im Feld "Interne Anmerkung" kann Freitext eingetragen und gespeichert werden
 - Über die Häkchen-Felder "Sondernutzung geprüft" und "Verkehrsrechtliche Anordnung" geprüft kann eine Teilbearbeitung vermerkt werden
 - Anträge können in der Listenansicht nach diesen Attributen über das Filtermenü auf der rechten Seite selektiv angezeigt werden
 - Für diese beiden Attribute ist außerdem die Angabe eines Vermerks möglich, welcher nur intern sichtbar ist
+
+## Bewilligung nud Ablehnung von Anträgen
+
+Schließlich sollen Anträge entweder bewilligt oder abgelehnt werden. Hierzu wird im Rahmen der Prüfung das Feld "Status" eines Antrags auf "Antrag bewilligt" oder "Antrag abgelehnt" gesetzt und der Antrag abschließen gespeichert.
+
+Um sowohl Bewilligungen als auch Ablehnungen nun zu versenden werden die Einträge in der Listenansicht über die Häkchenboxen am linken Bildschirmrand ausgewählt. Nun oben die Aktion "Bescheide versenden" ausgelöst werden. Hierdurch wird zum einen das Attribut "Bescheid versandt" bei den jeweiligen Anträgen gesetzt, so dass diese Anträge in der Listenansicht gefiltert angezeigt werden können (bzw. im Umkehrschluss genau die Anträge angezeigt werden können, für die noch kein Bescheid versandt wurde). Zum anderen wird per E-Mail eine Benachrichtigung an die Antragsteller:innen geschickt, in der diese über die jeweilige Entscheidung informiert werden und Ihnen per Link Zugang zu den auszuhängenenden Sondernutzungsgenehmigungen, bzw. verkehrsrechtlichen Anordnungen gegeben wird.

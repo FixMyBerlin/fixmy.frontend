@@ -22,7 +22,9 @@ python manage.py exportgastrosignups --format csv >> export.csv
 
 ## Beschreibung des Ausgabeformats
 
-Die ausgegebenen Werte sind hier unterteilt in Nutzer:innen-Eingaben, Eingaben von Verwaltungsmitarbeiter:innen und Systemwerte
+Die ausgegebenen Werte sind hier unterteilt in Nutzer:innen-Eingaben, Eingaben von Verwaltungsmitarbeiter:innen und Systemwerte.
+
+Details, insbesondere zu den Eingaben aus der Verwaltung, werden in den Nutzungsanleitungen beschrieben.
 
 System
 
@@ -46,8 +48,8 @@ Nutzer
 
 Verwaltung
 
-- Regulation (dieser Anmeldung zugewiesene)
-- Öffnungszeiten
+- Regulation (dieser Anmeldung zugewiesener Regelfall)
+- Öffnungszeiten (bei Ausgabe von unterschiedlicher Nutzungszeit der Sondernutzungsfläche)
 - Anmerkung (wird auf der Anordnung ausgegeben)
 - Interne Anmerkung (nur der Verwaltung zugänglich)
 - Status

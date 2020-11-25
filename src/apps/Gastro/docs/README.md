@@ -33,6 +33,6 @@ Eine Auflistung der durch die App unterstützten Funktionen findet sich in den [
 Mit diesen Anleitungen soll für die wichtigsten Aufgaben Schritt-für-Schritt gezeigt werden, was zu beachten ist. Die Anleitungen richten sich insbesondere an die Nutzergruppe der Verwaltungsmitarbeiter:innen.
 
 - [Interessensbekundungen als Tabelle betrachten](guide-view-signups.md)
-- [Bearbeitung von Interessensbekundungen und Versandt von Antragsformularen](guide-process-signups.md)
+- [Bearbeitung von Interessensbekundungen und Versand von Antragsformularen](guide-process-signups.md)
 - [Prüfung und Bewilligung von Anträgen](guide-process-registrations.md)
 - [Angebot zur Verlängerung versenden](guide-renewal.md)
