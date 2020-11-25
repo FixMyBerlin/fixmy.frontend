@@ -11,6 +11,10 @@
 - Frontend: Konfiguriert über District-Config
 - Backend: Konfiguriert über Umgebungsvariablen `GASTRO_SIGNUPS_OPEN` und `GASTRO_SIGNUPS_CLOSE`
 
+### ✅ Als Adminstrator:in können je Backend-Deployment eigene Textvorlagen für die E-Mail-Benachrichtigungen konfiguriert werden
+
+- Umgebungsvariable `TEMPLATE_SET`
+
 ## Anmeldung von Interesse
 
 ### ✅ Als Betreiber:in kann ich mich auf der Webseite über die Rahmenbedingungen der Aktion erkundigen.
@@ -54,6 +58,7 @@
 Kriterien
 
 - Alle Datenfelder der Anträge werden im Django-Admin akkurat dargestellt
+- Interne Anmerkungen können gespeichert werden
 
 ### ✅ Als Verwaltungsmitarbeiter:in möchte ich Korrekturen an Anträgen vornehmen können, so dass diese allen Anforderungen entsprechen
 
