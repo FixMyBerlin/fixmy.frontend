@@ -17,7 +17,7 @@ Für den Export als CSV-Datei wird ein authorisierter Zugang zum Backend-System 
 Der Export kann über das Django-Kommando `exportgastrosignups` ausgeführt werden.
 
 ```bash
-python manage.py exportgastrosignups --format csv >> export.csv
+python manage.py exportgastrosignups --format csv export.csv
 ```
 
 ### Beschreibung der ausgegebenen Felder
