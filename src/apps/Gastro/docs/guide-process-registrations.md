@@ -8,7 +8,7 @@ Nachdem Betreiber:innen Anträge eingereicht haben erhalten die entsprechenden E
 
 In der Detailansicht jedes Antrags, welche durch Klick auf den Eintrag in der Antragsliste geöffnet werden kann sind grundsätzlich die Eingaben der Antragsteller:innen einsehbar. Im folgenden werden einige Komponenten der Detailansicht gesondert beschrieben.
 
-**\*Wichtig**: Die Betreiber:innen können über den Link zum Antrag, welcher ihnen zugesandt wurde ihren Antrag auch im Nachhinein noch ändern, so lange dieser den Status "wartet auf Antrag" oder "Antrag in Bearbeitung" trägt. Aus diesem Grund ist es wichtig, dass zu Beginn der Prüfung eines Antrags der Status auf "Antrag in Bearbeitung" gesetzt wird, so dass keine änderungen mehr möglich sind.
+**Wichtig**: Die Betreiber:innen können über den Link zum Antrag, welcher ihnen zugesandt wurde ihren Antrag auch im Nachhinein noch ändern, so lange dieser den Status "wartet auf Antrag" oder "Antrag in Bearbeitung" trägt. Aus diesem Grund ist es wichtig, dass zu Beginn der Prüfung eines Antrags der Status auf "Antrag in Bearbeitung" gesetzt wird, so dass keine änderungen mehr möglich sind.
 
 Diese Funktion kann genutzt werden, falls gewünscht wird, dass von den Antragsteller:innen Informationen ergänzt werden. In diesem Fall können diese per E-Mail kontaktiert werden und um die entsprechende Ergänzung gebeten werden. Der Link zum Antragsformular kann dem untersten Bereich der Detailansicht des Antrags entnommen werden um diesen erneut zuzuschicken.
 
