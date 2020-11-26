@@ -13,7 +13,6 @@ import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';
 import DetailSwitch, {
   ButtonGroup,
 } from '~/apps/Map/components/DetailView/DetailSwitch';
-import FeedbackForm from '~/apps/Map/components/DetailView/FeedbackForm';
 import ImageSlider from '~/apps/Map/components/DetailView/ImageSlider';
 import InfoSection from './InfoSection';
 import {
@@ -266,7 +265,6 @@ class SectionDetails extends PureComponent {
             <BetaOverlay />
           </BetaWrapper>
         </DetailInfoWrapper>
-        <FeedbackForm />
       </>
     );
   }
