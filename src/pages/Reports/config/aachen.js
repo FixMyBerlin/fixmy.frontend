@@ -18,7 +18,10 @@ const aachenConfig = {
       outer: 'rgba(133, 133, 133, 0.98)',
       inner: 'rgba(205, 205, 205, 0.91)'
     },
-    arcColor: [110, 155, 210] // rgb
+    //  Colors for visualization of linkages between reports and plannings
+    //  rgb values as array
+    arcSourceColor: [110, 155, 210],
+    arcTargetColor: [98, 75, 16]
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,

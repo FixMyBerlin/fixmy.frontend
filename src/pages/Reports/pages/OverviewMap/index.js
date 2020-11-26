@@ -6,7 +6,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import debug from 'debug';
 
 import config from '~/pages/Reports/config';
 import { breakpoints, matchMediaSize } from '~/styles/utils';
@@ -17,10 +16,11 @@ import ErrorMessage from '~/components/ErrorMessage';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/apps/Map/components/LocatorControl';
-import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
+import {
+  actions as overviewMapStateActions,
+  selectors as overviewMapStateSelectors
+} from '~/pages/Reports/state/OverviewMapState';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
-
-const log = debug('fmc:reports:overviewmap');
 
 const MapView = styled.div`
   height: 100%;
@@ -123,57 +123,9 @@ class OverviewMap extends Component {
     this.setState({ isLoading: false });
   };
 
-  onMapMove() {
+  onMapMove = () => {
     if (this.props.selectedReport) this.updateSelectedReportPosition();
-  }
-
-  getArcData() {
-    let arcList = [];
-    const { selectedReport } = this.props;
-    const linkages = this.getReportLinkages(selectedReport);
-    const getCoords = (item) => item.geometry.coordinates;
-    // for each relation, construct an Arc
-    const source = getCoords(selectedReport);
-    arcList = linkages.map((origin) => ({
-      source,
-      target: getCoords(origin)
-    }));
-
-    return arcList;
-  }
-
-  /**
-   * Extracts linkages between reports and plannings and vice versa from the currently selected Report.
-
-   */
-  getReportLinkages(selectedReport) {
-    // Plannings are linked to Reports by stating one ore more entries under "origin",
-    // Reports are linked to Plannings by stating one ore more entries under "plannings"
-    // The API states both fields, so we have to check if one of those keys contains an array
-    // with at least one value
-    let linkages = [];
-
-    const relationFieldNames = ['plannings', 'origin'];
-    try {
-      relationFieldNames.forEach((fieldName) => {
-        // Also check for strings and try to parse it as Array. // FIXME: fix this on the API side.
-        let relationsList = selectedReport[fieldName];
-        if (typeof relationsList === 'string') {
-          relationsList = JSON.parse(linkages);
-        }
-        if (relationsList.length) {
-          linkages = linkages.concat(relationsList);
-        }
-      });
-      // ceck for success and log about it
-      if (linkages.length) {
-        log('assembled arc Data');
-      }
-    } catch (e) {
-      log('failed to assemble arc Data, using an empty data set');
-    }
-    return linkages;
-  }
+  };
 
   handleDeepLinkLoad() {
     const linkedReportId = this.props.match.params.id;
@@ -199,7 +151,10 @@ class OverviewMap extends Component {
       match,
       token,
       isMenuOpen,
-      errorMessage
+      errorMessage,
+      setHoveredReport,
+      unSetHoveredReport,
+      arcLayerProps
     } = this.props;
 
     const hasDetailId = match.params.id;
@@ -238,13 +193,15 @@ class OverviewMap extends Component {
         <MapWrapper>
           <WebglMap
             reportsData={reports}
-            arcData={selectedReport && this.getArcData()}
+            arcLayerProps={arcLayerProps}
             center={this.state.mapCenter}
             zoomIn={this.state.zoomIn}
             onMarkerClick={this.onMarkerClick}
-            onLoad={(m) => this.onMapLoad(m)}
-            onMove={() => this.onMapMove()}
+            onLoad={this.onMapLoad}
+            onMove={this.onMapMove}
             selectedReport={selectedReport}
+            setHoveredReport={setHoveredReport}
+            unSetHoveredReport={unSetHoveredReport}
             detailId={match.params.id}
             zoomControlPosition="top-left"
             fitExtentOnPopupClose={false}
@@ -272,7 +229,7 @@ class OverviewMap extends Component {
                 <ReportDetails
                   apiEndpoint="reports"
                   onCloseRoute={match.url}
-                  onClose={() => this.onPopupClose()}
+                  onClose={this.onPopupClose}
                   token={token}
                   reportItem={reportItem}
                   subtitle={`Meldung ${reportItem.id}`}
@@ -296,7 +253,9 @@ export default withRouter(
     (state) => ({
       selectedReport: state.ReportsState.OverviewMapState.selectedReport,
       reports: state.ReportsState.OverviewMapState.reports,
-      arcData: 123,
+      arcLayerProps: overviewMapStateSelectors.selectArcLayerProps(
+        state.ReportsState.OverviewMapState
+      ),
       isReportsFetchPending:
         state.ReportsState.OverviewMapState.reportFetchState === 'pending',
       zoomIn: state.ReportsState.OverviewMapState.reports.zoomIn,

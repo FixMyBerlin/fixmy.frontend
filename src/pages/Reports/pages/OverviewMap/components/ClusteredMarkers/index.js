@@ -70,7 +70,14 @@ class ClusteredMarkers extends React.Component {
   }
 
   updateMarkers() {
-    const { data, detailId, map, selectedReport } = this.props;
+    const {
+      data,
+      detailId,
+      map,
+      selectedReport,
+      setHoveredReport,
+      unSetHoveredReport
+    } = this.props;
     const { clusters, clusterSource } = this.state;
     const newMarkers = {};
 
@@ -100,7 +107,9 @@ class ClusteredMarkers extends React.Component {
           lngLat,
           selectedReport,
           detailId,
-          onClick: this.props.onClick
+          onClick: this.props.onClick,
+          setHoveredReport,
+          unSetHoveredReport
         });
       }
 
@@ -131,6 +140,8 @@ ClusteredMarkers.propTypes = {
   radius: PropTypes.number,
   detailId: PropTypes.string,
   onClick: PropTypes.func.isRequired,
+  setHoveredReport: PropTypes.func.isRequired,
+  unSetHoveredReport: PropTypes.func.isRequired,
   selectedReport: FMCPropTypes.report
 };
 

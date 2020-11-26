@@ -1,10 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import MapboxGL from 'mapbox-gl';
 import DeckGL from '@deck.gl/react';
-
+import { ArcLayer } from '@deck.gl/layers';
 import config from '~/pages/Reports/config';
 import BigLoader from '~/components/BigLoader';
 import { MapContainer } from '~/pages/Reports/components/BaseMap/MapContainer';
+import {
+  Arc,
+  compileTooltip
+} from '../../pages/OverviewMap/service/arcService';
 
 const MB_STYLE_URL = `${config.reports.overviewMap.style}?fresh=true`;
 MapboxGL.accessToken = MapboxGL.accessToken || config.mapbox.accessToken;
@@ -12,6 +16,7 @@ const configuredBounds = config.reports.overviewMap
   .bounds as MapboxGL.LngLatBoundsLike;
 // The DeckGL component does not take bounds as prop, instead it takes longitude
 // and latitude. We calculate those from the given bounds.
+// TODO: factor out and test
 const { bounds } = config.reports.overviewMap;
 const [sw, ne] = bounds;
 const [minLng, minLat] = sw;
@@ -22,21 +27,36 @@ const centerLat = minLat + (maxLat - minLat) / 2;
 const INITIAL_DECK_VIEW_STATE = {
   longitude: centerLng,
   latitude: centerLat,
-  zoom: 13,
+  zoom: 17,
   pitch: 0,
   bearing: 0
 };
 
-type BaseMapProps = {
+type FIXME = any;
+// TODO: find a way to import this from @deck_gl/core
+interface PickInfo<D> {
+  layer: FIXME;
+  index: number;
+  object: D;
+  x: number;
+  y: number;
+  coordinate?: {};
+}
+
+export type BaseMapProps = {
   // If defined, this flag controls if a loading animation is rendered.
-  // Useful if a large geodata set is applied to the map over a notable time.
+  // Useful if a large Geodata set is applied to the map over a notable time.
   didOverlayLoad?: boolean;
   // Callback invoked after the map has initialized
-  onLoad: (map: MapboxGL.Map, deck: DeckGL['DeckGL']) => void;
+  onLoad: (map: MapboxGL.Map) => void;
   // callback invoked after every map mov
   onMove?: () => void;
   // map elements like layers and markers which
   children?: React.ReactNode | React.ReactNode[];
+  // Child elements od te DeckGL component,
+  // see https://deck.gl/docs/get-started/using-with-react
+  arcLayerProps?: ConstructorParameters<ArcLayer<Arc>>;
+
   // maximum map extent expressed in coordinate pairs (SouthWest and NorthEast corner),
   // see https://docs.mapbox.com/mapbox-gl-js/api/geography/#lnglatboundslike
   maxBounds?: MapboxGL.LngLatBoundsLike;
@@ -51,10 +71,14 @@ export const BaseMap = ({
   maxBounds,
   onLoad,
   onMove,
-  mapWrapperClassName
+  mapWrapperClassName,
+  arcLayerProps
 }: BaseMapProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [glContext, setGLContext] = useState();
+  // couple deck gl and mapbox gl views
+  const [mapViewState, setMapViewState] = useState(INITIAL_DECK_VIEW_STATE);
+
   const deckRef = useRef(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<MapboxGL.Map>(null);
@@ -64,6 +88,30 @@ export const BaseMap = ({
   const isLoaderShown = isOverlayLoadTogglePropUsed
     ? isMapInitializingOrOverlayLoading
     : isLoading;
+
+  // In order to couple couple the map view state of the deck.gl and the mapbox-gl-js map,
+  // we need to manually listen for map movements in the mapbox-gl-js map and apply
+  // the updated view state to the deck.gl map.
+
+  const innerOnMove = useCallback(
+    ({ target }) => {
+      synchronizeViewStates(target);
+      onMove();
+    },
+    [onMove]
+  );
+
+  const synchronizeViewStates = useCallback((mapboxMap) => {
+    const center = mapboxMap.getCenter();
+    setMapViewState({
+      ...mapViewState,
+      zoom: mapboxMap.getZoom(),
+      pitch: mapboxMap.getPitch(),
+      bearing: mapboxMap.getBearing(),
+      latitude: center.lat,
+      longitude: center.lng
+    });
+  }, []);
 
   // map initialization logic
   useEffect(() => {
@@ -75,19 +123,16 @@ export const BaseMap = ({
       maxBounds
     });
     mapRef.current = map;
-    map.on('move', onMove);
+
+    map.on('move', innerOnMove);
     map.on('load', () => {
-      debugger;
       setIsLoading(false);
       // @ts-ignore
       window.map = map; // TODO: find out if we actually need this
-      onLoad(map, deckRef.current.deck);
+      onLoad(map);
     });
-    // cleanup
-    return () => {
-      map.remove();
-      deckRef.current.deck.finalize();
-    };
+    map.on('resize', synchronizeViewStates);
+    // TODO: do we need any cleanup logic?
   }, [mapContainerRef.current]);
 
   return (
@@ -95,14 +140,15 @@ export const BaseMap = ({
       {isLoaderShown && <BigLoader useAbsolutePositioning />}
       <DeckGL
         initialViewState={INITIAL_DECK_VIEW_STATE}
+        viewState={mapViewState}
         ref={deckRef}
         controller
         onWebGLInitialized={setGLContext}
-        glOptions={{
-          /* To render vector tile polygons correctly */
-          stencil: true
-        }}
+        getTooltip={compileTooltip}
+        pickingRadius={8}
+        id="reports-deckgl-canvas"
       >
+        {arcLayerProps && <ArcLayer {...arcLayerProps} />}
         {glContext && (
           /* This is important: Mapbox must be instantiated after the WebGLContext is available */
           <MapContainer

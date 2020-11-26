@@ -1,5 +1,7 @@
 import debug from 'debug';
+import { createSelector } from 'reselect';
 import { apiFetchReports } from '../apiservice';
+import * as arcService from '../pages/OverviewMap/service/arcService';
 import { actions as errorStateActions } from './ErrorState';
 import initialState from './initialState';
 
@@ -15,6 +17,8 @@ types.REPORTS_FETCH_ERROR = 'Reports/OverviewMapState/REPORTS_FETCH_ERROR';
 types.REPORTS_FETCH_COMPLETE =
   'Reports/OverviewMapState/REPORTS_FETCH_COMPLETE';
 types.SET_SELECTED_REPORT = 'Reports/OverviewMapState/SET_SELECTED_REPORT';
+types.SET_HOVERED_REPORT = 'Reports/OverviewMapState/SET_HOVERED_REPORT';
+types.UNSET_HOVERED_REPORT = 'Reports/OverviewMapState/UNSET_HOVERED_REPORT';
 types.SET_SELECTED_REPORT_POS =
   'Reports/OverviewMapState/SET_SELECTED_REPORT_POS';
 types.RESET_MAP_STATE = 'Reports/OverviewMapState/RESET_MAP_STATE';
@@ -28,6 +32,15 @@ actions.setSelectedReportPosition = ({ x = 0, y = 0 }) => ({
 
 actions.resetMapState = () => ({
   type: types.RESET_MAP_STATE
+});
+
+actions.setHoveredReport = (report) => ({
+  type: types.SET_HOVERED_REPORT,
+  payload: report
+});
+
+actions.unSetHoveredReport = () => ({
+  type: types.UNSET_HOVERED_REPORT
 });
 
 // thunks
@@ -103,11 +116,63 @@ function reducer(
         ...state,
         selectedReportPosition: payload
       };
+    case types.SET_HOVERED_REPORT:
+      return {
+        ...state,
+        hoveredReport: payload
+      };
+    case types.UNSET_HOVERED_REPORT:
+      return {
+        ...state,
+        hoveredReport: null
+      };
+
     default:
       return state;
   }
 }
 
-export { actions, types, initialState };
+const selectors = {};
+
+const selectSelectedReport = (reportState) => reportState.selectedReport;
+const selectHoveredReport = (reportState) => reportState.hoveredReport;
+
+/**
+ * Gets selected and/or hovered reports.
+ */
+const selectReportsOfInterest = createSelector(
+  selectSelectedReport,
+  selectHoveredReport,
+  (selectedReport, hoveredReport) => {
+    const reportsToConstructDataFor = [];
+    if (selectedReport) {
+      reportsToConstructDataFor.push(selectedReport);
+    }
+    if (
+      hoveredReport &&
+      // do not generate duplicate arcs for a selectedReport being hovered
+      selectedReport !== hoveredReport
+    ) {
+      reportsToConstructDataFor.push(hoveredReport);
+    }
+    return reportsToConstructDataFor;
+  }
+);
+// TODO: add unit- and integration tests
+/**
+ * Derives properties for a deck.gl ArcLayer by
+ * 1. reading selected/hovered reports from store
+ * 2. delegating property compilation to a service
+ */
+selectors.selectArcLayerProps = createSelector(
+  selectReportsOfInterest,
+  (reports) => {
+    if (!reports.length) return null;
+    const arcData = arcService.compileArcItems(reports);
+    return arcService.compileArcLayerProps(arcData);
+  }
+);
+
+export { actions, types, initialState, selectors };
 
 export default reducer;

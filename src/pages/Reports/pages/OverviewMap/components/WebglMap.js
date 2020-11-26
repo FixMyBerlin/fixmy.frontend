@@ -8,7 +8,6 @@ import logger from '~/utils/logger';
 import { BaseMap } from '~/pages/Reports/components/BaseMap';
 import ClusteredMarkers from './ClusteredMarkers';
 import FMCPropTypes from '~/pages/Reports/propTypes';
-import ArcLayer from '~/utils/geo/arcLayer/ArcLayer';
 
 function toFeature(d) {
   const { geometry, ...properties } = d;
@@ -41,8 +40,6 @@ class WebglMap extends PureComponent {
   nav = new MapboxGL.NavigationControl({ showCompass: false });
 
   map = null;
-  // instance of https://deck.gl/docs/api-reference/core/deck
-  deck = null;
 
   componentDidUpdate() {
     if (!this.map) {
@@ -65,9 +62,8 @@ class WebglMap extends PureComponent {
     this.toggleMapInteractivity(disabled);
   }
 
-  onLoad(map, deck) {
+  onBaseMapLoad = (map) => {
     this.map = map;
-    this.deck = deck;
     this.toggleZoomControl(true);
 
     // in order to rerender Report Markers
@@ -75,7 +71,7 @@ class WebglMap extends PureComponent {
 
     // notify containers that map has been initialized
     this.props.onLoad(map);
-  }
+  };
 
   toggleZoomControl = (isActive = false) => {
     if (isActive) {
@@ -101,15 +97,19 @@ class WebglMap extends PureComponent {
       onMarkerClick,
       selectedReport,
       detailId,
-      arcData
+      setHoveredReport,
+      unSetHoveredReport,
+      arcLayerProps
     } = this.props;
 
     const isReportsDataLoaded = !!reportsData.length;
+
     return (
       <BaseMap
-        onLoad={(map) => this.onLoad(map)}
-        onMove={() => this.props.onMove()}
+        onLoad={this.onBaseMapLoad}
+        onMove={this.props.onMove}
         didOverlayLoad={isReportsDataLoaded}
+        arcLayerProps={arcLayerProps}
       >
         {isReportsDataLoaded > 0 && (
           <ClusteredMarkers
@@ -120,13 +120,10 @@ class WebglMap extends PureComponent {
             detailId={detailId}
             onClick={onMarkerClick}
             selectedReport={selectedReport}
+            setHoveredReport={setHoveredReport}
+            unSetHoveredReport={unSetHoveredReport}
           />
         )}
-        <ArcLayer
-          deck={this.deck}
-          arcData={arcData}
-          color={config.reports.overviewMap.arcColor}
-        />
       </BaseMap>
     );
   }
@@ -143,16 +140,16 @@ WebglMap.propTypes = {
   onMarkerClick: PropTypes.func.isRequired,
   onMove: PropTypes.func,
   reportsData: PropTypes.arrayOf(FMCPropTypes.report),
-  arcData: PropTypes.arrayOf(
-    PropTypes.objectOf(PropTypes.arrayOf(PropTypes.number))
-  ),
   selectedReport: FMCPropTypes.report,
-  zoomControlPosition: PropTypes.string
+  arcLayerProps: PropTypes.object,
+  zoomControlPosition: PropTypes.string,
+  setHoveredReport: PropTypes.func.isRequired,
+  unSetHoveredReport: PropTypes.func.isRequired
 };
 
 WebglMap.defaultProps = {
-  arcData: [],
   reportsData: [],
+  arcLayerProps: null,
   center: null,
   zoomIn: true,
   onLoad: () => {},

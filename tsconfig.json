@@ -4,6 +4,9 @@
     "noImplicitAny": false,
     "module": "es2020",
     "target": "es2015",
+    "lib": [
+      "es2019"
+    ],
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "react",

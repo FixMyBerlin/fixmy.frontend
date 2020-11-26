@@ -61,6 +61,18 @@ describe('OverviewMapState reducer and actions', () => {
     expect(newState).toEqual(initialState);
   });
 
+  it('sets the hovered report', () => {
+    expect(
+      reducer({}, actions.setHoveredReport(reportSample)).hoveredReport
+    ).toEqual(reportSample);
+  });
+
+  it('*un*sets the hovered report', () => {
+    expect(
+      reducer({}, actions.unSetHoveredReport(reportSample)).hoveredReport
+    ).toEqual(null);
+  });
+
   describe('async actions', () => {
     it(`fetches reports and creates ${ft(
       types.REPORTS_FETCH_COMPLETE
