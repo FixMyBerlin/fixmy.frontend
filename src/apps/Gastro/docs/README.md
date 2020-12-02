@@ -1,5 +1,4 @@
 # Dokumentation Gastro-App
-Test
 
 Die Dokumentation der Gastro-App besteht aus der Spezifikation des Funktionsumfangs in Form von User-Stories und einer Reihe an Anleitungen für die wichtigsten Arbeitsschritte. Für all diese Dokumente gelten die unten aufgeführten Definitionen für Nutzergruppen und verwendete Begriffe.
 
@@ -9,11 +8,11 @@ Die Dokumentation der Gastro-App besteht aus der Spezifikation des Funktionsumfa
 
 **Betreiber:innen** führen ein Ladengeschäft oder haben aus anderen Gründen ein Interesse an der Mitnutzung von öffentlichem Raum im Rahmen der Aktion
 
-**Verwaltungsmitarbeiter:innen** arbeiten Regelpläne aus und prüfen Interessensbekundungen und Anträge um Anordnugen zu erstellen
+**Verwaltungsmitarbeiter:innen** arbeiten Regelpläne aus und prüfen Interessensbekundungen und Anträge um Anordnungen zu erstellen
 
 **Administrator:innen** konfigurieren und betreuen die laufende Anwendung und ihre Datenflüsse
 
-**Anwohner:innen** besuchen die Ladengeschäfte im öffentlichen Raum als Kunden der Betreiber:innen
+**Anwohner:innen** besuchen die Ladengeschäfte im öffentlichen Raum als Kund:innen der Betreiber:innen
 
 ## Begriffe
 
