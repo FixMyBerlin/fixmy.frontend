@@ -1,4 +1,5 @@
 # Dokumentation Gastro-App
+Test
 
 Die Dokumentation der Gastro-App besteht aus der Spezifikation des Funktionsumfangs in Form von User-Stories und einer Reihe an Anleitungen für die wichtigsten Arbeitsschritte. Für all diese Dokumente gelten die unten aufgeführten Definitionen für Nutzergruppen und verwendete Begriffe.
 
