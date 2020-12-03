@@ -17,7 +17,7 @@ const Icons = {
   super: IconSuper,
   ok: IconOk,
   schlecht: IconBad,
-  'sehr schlecht': IconWorst
+  'sehr schlecht': IconWorst,
 };
 
 export default (props) => (

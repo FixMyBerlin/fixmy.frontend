@@ -12,9 +12,7 @@ describe('The reports landing page', () => {
   });
   it('has a title', () => {
     cyElem('reports-landing-header').should('be.visible');
-    cyElem('reports-landing-header')
-      .first()
-      .contains(config.reports.region);
+    cyElem('reports-landing-header').first().contains(config.reports.region);
   });
   // it('has a button that takes users to the report form', () => {
   //   cyElem('reports-landing-cta')

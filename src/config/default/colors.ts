@@ -13,5 +13,5 @@ export default {
   error: '#FF5050',
   likebg: '#FFF9EC',
   katasterHighlight: '#fabe28',
-  label_01: '#45b834'
+  label_01: '#45b834',
 };

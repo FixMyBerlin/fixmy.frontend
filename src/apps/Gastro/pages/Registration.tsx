@@ -38,7 +38,7 @@ const Section = styled.section`
 
 const process = (signupData) => ({
   ...signupData,
-  shopfront_length: (0.01 * signupData.shopfront_length).toString()
+  shopfront_length: (0.01 * signupData.shopfront_length).toString(),
 });
 
 // Return true if the application is locked because it has already been handled
@@ -46,14 +46,14 @@ const isLocked = ({ status }: { status: GastroStatus }) =>
   [
     'application_accepted',
     'application_rejected',
-    'application_verification'
+    'application_verification',
   ].includes(status);
 
 const Registration = ({
   match: {
-    params: { id, accessKey }
+    params: { id, accessKey },
   },
-  district
+  district,
 }) => {
   // Data from previous signup (Interessensbekundung)
   const [isLoading, setLoading] = useState<boolean>(true);
@@ -141,7 +141,7 @@ const Registration = ({
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(Registration);

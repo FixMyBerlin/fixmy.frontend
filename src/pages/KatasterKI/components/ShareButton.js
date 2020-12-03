@@ -6,7 +6,7 @@ import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 export default ({
   style = {},
   className = null,
-  text = 'Umfrage mit Freunden teilen'
+  text = 'Umfrage mit Freunden teilen',
 }) => {
   if (!navigator.share) {
     return null;
@@ -16,7 +16,7 @@ export default ({
     navigator.share({
       title: config.katasterKI.shareTitle,
       text: config.katasterKI.shareText,
-      url: config.katasterKI.shareUrl
+      url: config.katasterKI.shareUrl,
     });
   };
 

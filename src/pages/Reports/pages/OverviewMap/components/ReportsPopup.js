@@ -1,16 +1,16 @@
 import React, { PureComponent } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import idx from 'idx';
 import { connect } from 'react-redux';
 
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
+import { actions } from '~/pages/Reports/state/OverviewMapState';
 import MapPopupWrapper from '~/components/MapPopupWrapper';
 import Button from '~/components/Button';
 import Title from '~/components/Title';
 
-const PreviewImageContainer = styled(Link)`
+const PreviewImage = styled.div`
   height: 200px;
   width: 100%;
   background-size: contain;
@@ -36,7 +36,7 @@ class ReportsPopup extends PureComponent {
 
   render() {
     const { selectedReport, onClose, position } = this.props;
-    const photoSrc = idx(selectedReport, (_) => _.photo.src);
+    const photoSrc = selectedReport?.photo?.src;
     const isSmallScreen = window.innerWidth <= 768;
 
     if (!selectedReport) return null;
@@ -56,13 +56,14 @@ class ReportsPopup extends PureComponent {
         showSubline={false}
         style={{ padding: 16 }}
       >
-        {photoSrc && (
-          <PreviewImageContainer
-            to={`${config.routes.reports.map}/${selectedReport.id}`}
-            style={{
-              backgroundImage: `url(${photoSrc})`
-            }}
-          />
+        {photoSrc != null && (
+          <Link to={`${config.routes.reports.map}/${selectedReport.id}`}>
+            <PreviewImage
+              style={{
+                backgroundImage: `url(${photoSrc})`,
+              }}
+            />
+          </Link>
         )}
         <Title data-cy="reports-popup-title">
           {selectedReport.status !== 'done' && (
@@ -88,9 +89,12 @@ class ReportsPopup extends PureComponent {
 }
 
 export default withRouter(
-  connect((state) => ({
-    selectedReport: state.ReportsState.OverviewMapState.selectedReport,
-    reports: state.ReportsState.OverviewMapState.reports,
-    position: state.ReportsState.OverviewMapState.selectedReportPosition
-  }))(ReportsPopup)
+  connect(
+    (state) => ({
+      selectedReport: state.ReportsState.OverviewMapState.selectedReport,
+      reports: state.ReportsState.OverviewMapState.reports,
+      position: state.ReportsState.OverviewMapState.selectedReportPosition,
+    }),
+    { setSelectedReport: actions.setSelectedReport }
+  )(ReportsPopup)
 );

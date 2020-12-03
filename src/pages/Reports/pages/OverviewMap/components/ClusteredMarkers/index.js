@@ -7,7 +7,7 @@ import FMCPropTypes from '~/pages/Reports/propTypes';
 import {
   createPinMarker,
   createClusterMarker,
-  setupClusters
+  setupClusters,
 } from './marker-utils';
 
 /**
@@ -25,7 +25,7 @@ class ClusteredMarkers extends React.Component {
     this.state = {
       clusters: [],
       clusterSource: null,
-      clusterCreated: false
+      clusterCreated: false,
     };
   }
 
@@ -49,7 +49,7 @@ class ClusteredMarkers extends React.Component {
 
     this.setState({
       clusterSource: map.getSource(name),
-      clusterCreated: true
+      clusterCreated: true,
     });
   }
 
@@ -76,7 +76,7 @@ class ClusteredMarkers extends React.Component {
       map,
       selectedReport,
       setHoveredReport,
-      unSetHoveredReport
+      unSetHoveredReport,
     } = this.props;
     const { clusters, clusterSource } = this.state;
     const newMarkers = {};
@@ -97,7 +97,7 @@ class ClusteredMarkers extends React.Component {
           pointCount: markerData.properties.point_count,
           lngLat,
           clusterSource,
-          map
+          map,
         });
       } else if (!isCluster && !marker) {
         marker = createPinMarker({
@@ -109,7 +109,7 @@ class ClusteredMarkers extends React.Component {
           detailId,
           onClick: this.props.onClick,
           setHoveredReport,
-          unSetHoveredReport
+          unSetHoveredReport,
         });
       }
 
@@ -142,7 +142,7 @@ ClusteredMarkers.propTypes = {
   onClick: PropTypes.func.isRequired,
   setHoveredReport: PropTypes.func.isRequired,
   unSetHoveredReport: PropTypes.func.isRequired,
-  selectedReport: FMCPropTypes.report
+  selectedReport: FMCPropTypes.report,
 };
 
 ClusteredMarkers.defaultProps = {
@@ -151,7 +151,7 @@ ClusteredMarkers.defaultProps = {
   data: [],
   detailId: null,
   map: null,
-  selectedReport: null
+  selectedReport: null,
 };
 
 export default ClusteredMarkers;

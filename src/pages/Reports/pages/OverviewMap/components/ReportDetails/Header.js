@@ -40,7 +40,7 @@ const StatusIndicatorWrapper = styled.div`
 
 const ReportPin = styled.img.attrs((props) => ({
   src: utils.getMarkerSrc({ status: props.status }),
-  alt: 'A marker icon'
+  alt: 'A marker icon',
 }))`
   margin-left: auto;
   width: ${(props) => (props.small ? '20px' : '40px')};
@@ -60,7 +60,7 @@ const smallMarkers = [
   // deprecated
   'verification',
   'accepted',
-  'rejected'
+  'rejected',
 ];
 
 const DetailsHeader = ({ details: { number }, status }) => (

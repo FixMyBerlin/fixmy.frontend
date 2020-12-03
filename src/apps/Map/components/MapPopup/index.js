@@ -49,7 +49,7 @@ const closePopup = () => {
       pitch: 40,
       dim: true,
       animate: true,
-      zoom: 16
+      zoom: 16,
     })
   );
 };
@@ -122,6 +122,6 @@ export default withRouter(
     activeSection: state.MapState.activeSection,
     activeView: state.MapState.activeView,
     data: state.MapState.popupData,
-    displayPopup: state.MapState.displayPopup
+    displayPopup: state.MapState.displayPopup,
   }))(MapPopup)
 );

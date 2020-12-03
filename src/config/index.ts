@@ -16,7 +16,7 @@ if (window.Cypress) {
 const AVAILABLE_REGIONS = {
   berlin,
   aachen,
-  eichwalde
+  eichwalde,
 };
 
 const instanceConfig = AVAILABLE_REGIONS[region];
@@ -30,7 +30,7 @@ if (Object.keys(AVAILABLE_REGIONS).indexOf(region) === -1) {
 const rootConfig: RootConfig = {
   ...defaultConfig,
   ...instanceConfig,
-  region
+  region,
 };
 
 export default rootConfig;

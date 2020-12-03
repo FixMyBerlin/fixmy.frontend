@@ -13,7 +13,7 @@ const regulations = {
   11: { zone: 'Parken längs', street: null, from: null, to: null },
   12: { zone: 'Parken quer', street: null, from: null, to: null },
   13: { zone: 'Parken diagonal', street: null, from: null, to: null },
-  14: { zone: 'Sonstige', street: null, from: null, to: null }
+  14: { zone: 'Sonstige', street: null, from: null, to: null },
 };
 
 export default regulations;

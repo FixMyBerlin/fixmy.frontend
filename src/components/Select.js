@@ -32,7 +32,7 @@ class Select extends PureComponent {
       disabled,
       value,
       isVisible,
-      className
+      className,
     } = this.props;
 
     if (!isVisible) {
@@ -59,7 +59,7 @@ Select.defaultProps = {
   onChange: () => {},
   title: false,
   disabled: false,
-  isVisible: true
+  isVisible: true,
 };
 
 export default Select;

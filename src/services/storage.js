@@ -17,5 +17,5 @@ export function remove(key) {
 export default {
   set,
   get,
-  remove
+  remove,
 };

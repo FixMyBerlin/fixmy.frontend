@@ -4,10 +4,7 @@
     "address": "Skalitzer Straße 132, 10999 Berlin",
     "geometry": {
       "type": "Point",
-      "coordinates": [
-        13.406372256327131,
-        52.49914676495683
-      ]
+      "coordinates": [13.406372256327131, 52.49914676495683]
     },
     "details": {
       "subject": "BIKE_STANDS",
@@ -25,10 +22,7 @@
     "address": "Skalitzer Straße 132, 10999 Berlin",
     "geometry": {
       "type": "Point",
-      "coordinates": [
-        13.453297524572008,
-        52.51340052765693
-      ]
+      "coordinates": [13.453297524572008, 52.51340052765693]
     },
     "details": {
       "subject": "BIKE_STANDS",

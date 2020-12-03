@@ -33,7 +33,7 @@ const Suggestion = ({ address, onSuggestionPick }) => {
 
 Suggestion.propTypes = {
   address: PropTypes.string.isRequired, // e.g. Deutschland, <b>Berl</b>in, <b>Berl</b>in, 10117, <b>Berl</b>in, <b>Pariser</b> Platz <b>1</b>,
-  onSuggestionPick: PropTypes.func.isRequired
+  onSuggestionPick: PropTypes.func.isRequired,
 };
 
 export default Suggestion;

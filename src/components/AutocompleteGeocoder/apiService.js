@@ -41,13 +41,13 @@ export const parseSuggestion = ({
   place_name_de: address,
   id,
   relevance,
-  properties = {}
+  properties = {},
 }) => ({
   id,
   coords: { lng: center[0], lat: center[1] },
   address: address.split(', Deutschland')[0], // omit statement of country
   relevance,
-  accuracy: properties.accuracy
+  accuracy: properties.accuracy,
 });
 
 /**

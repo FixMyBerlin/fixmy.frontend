@@ -10,15 +10,15 @@ import { RegionConfig } from '~/types';
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
   staging: 'https://fixmyaachen-staging.netlify.app/api/aachen/next',
-  production: 'https://radbuegel-aachen.de/api/aachen/v1'
+  production: 'https://radbuegel-aachen.de/api/aachen/v1',
 };
 
 const aachenConfig: RegionConfig = {
   apps: {
     map: {
       ...defaultMapConfig,
-      geocoderBounds: '5.974,50.648,6.217,50.858'
-    }
+      geocoderBounds: '5.974,50.648,6.217,50.858',
+    },
   },
   menu,
   routes,
@@ -31,14 +31,14 @@ const aachenConfig: RegionConfig = {
   colors: {
     ...defaultColors,
     likebg: 'initial',
-    interaction: '#6E9BD2'
+    interaction: '#6E9BD2',
   },
   titleFont: 'The Mix',
   baseFont: 'Arial',
   piwik: {
     ...defaultBase.piwik,
-    siteId: 4
-  }
+    siteId: 4,
+  },
 };
 
 export default aachenConfig;

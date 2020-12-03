@@ -9,7 +9,7 @@ import {
   ProfileResponse,
   Perspective,
   PerspectiveRequest,
-  PerspectiveResponse
+  PerspectiveResponse,
 } from '../types';
 import { getEndpointURL } from '../api/utils';
 import { mswServer } from '~/../jest/msw/mswServer';
@@ -24,7 +24,7 @@ import reducer, {
   SUBMIT_PERSPECTIVE_PENDING,
   SUBMIT_PERSPECTIVE_COMPLETE,
   submitPerspective,
-  testingDefaultState
+  testingDefaultState,
 } from '../state';
 
 const profileRequestSample: ProfileRequest = require('../scheme/sample-instances/profile-request-sample-instance.json');
@@ -67,8 +67,8 @@ describe('Survey submits', () => {
         // mock store
         const stateBefore = {
           KatasterKIState: {
-            ...testingDefaultState
-          }
+            ...testingDefaultState,
+          },
         };
         const store = mockStore(stateBefore);
 
@@ -80,7 +80,7 @@ describe('Survey submits', () => {
         const expectedActions = [
           SUBMIT_PROFILE_PENDING,
           RECEIVED_SCENE_GROUP,
-          SUBMIT_PROFILE_COMPLETE
+          SUBMIT_PROFILE_COMPLETE,
         ];
         expect(dispatchedActionTypes).toEqual(expectedActions);
       }
@@ -103,17 +103,17 @@ describe('Survey submits', () => {
           ageGroup: 'BBB',
           isTosAccepted: {},
           transportRatings: {
-            '': 1
+            '': 1,
           },
           userGroup: [1, 2, 3],
           vehiclesOwned: ['car'],
-          zipcode: 345
+          zipcode: 345,
         };
         const stateBefore = {
           KatasterKIState: {
             ...testingDefaultState,
-            profile: invalidProfile
-          }
+            profile: invalidProfile,
+          },
         };
 
         // This is supposed to be a type mismatch
@@ -142,8 +142,8 @@ describe('Survey submits', () => {
 
       const stateBefore = {
         KatasterKIState: {
-          ...testingDefaultState
-        }
+          ...testingDefaultState,
+        },
       };
       const store = mockStore(stateBefore);
       await store.dispatch(submitPerspective(Perspective.bicycle));
@@ -154,7 +154,7 @@ describe('Survey submits', () => {
       const expectedActions = [
         SUBMIT_PERSPECTIVE_PENDING,
         RECEIVED_SCENE_GROUP,
-        SUBMIT_PERSPECTIVE_COMPLETE
+        SUBMIT_PERSPECTIVE_COMPLETE,
       ];
       expect(dispatchedActionTypes).toEqual(expectedActions);
     });

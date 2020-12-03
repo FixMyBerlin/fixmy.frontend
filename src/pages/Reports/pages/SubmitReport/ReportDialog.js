@@ -64,7 +64,7 @@ class ReportDialog extends PureComponent {
       newReport,
       isLocationPinned,
       error,
-      submitting
+      submitting,
     } = this.props;
 
     const proceed = () => {
@@ -195,7 +195,7 @@ class ReportDialog extends PureComponent {
 
 const mapDispatchToProps = {
   ...errorStateActions,
-  ...submitReportStateActions
+  ...submitReportStateActions,
 };
 
 export default connect(
@@ -208,7 +208,7 @@ export default connect(
       state.ReportsState.SubmitReportState.apiRequestStatus.submitting,
     error: state.ReportsState.ErrorState,
     token: state.UserState.token,
-    user: state.UserState.userData
+    user: state.UserState.userData,
   }),
   mapDispatchToProps
 )(ReportDialog);

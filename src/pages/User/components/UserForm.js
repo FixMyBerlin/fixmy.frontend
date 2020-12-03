@@ -148,7 +148,7 @@ class UserForm extends PureComponent {
 
 UserForm.defaultProps = {
   onSubmit: () => {},
-  buttonLabel: 'Abschicken'
+  buttonLabel: 'Abschicken',
 };
 
 export default UserForm;

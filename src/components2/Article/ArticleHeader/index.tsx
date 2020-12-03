@@ -38,7 +38,7 @@ const ArticleHeader = ({
   toc,
   children,
   locales = null,
-  className
+  className,
 }: ArticleHeaderProps) => {
   return (
     <ArticleHeaderWrapper className={className}>

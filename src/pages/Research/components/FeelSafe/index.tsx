@@ -79,35 +79,35 @@ interface FeelsafeProps {
 
 const sizes = {
   small: 80,
-  big: 120
+  big: 120,
 };
 
 const icons = {
   bike: BikeIcon,
   car: CarIcon,
-  walk: WalkIcon
+  walk: WalkIcon,
 };
 
 const modes = defineMessages({
   bike: {
     id: 'research.components.feelsafe.perspectives.bike',
-    defaultMessage: 'Fahrrad'
+    defaultMessage: 'Fahrrad',
   },
   car: {
     id: 'research.components.feelsafe.perspectives.car',
-    defaultMessage: 'Auto'
+    defaultMessage: 'Auto',
   },
   walk: {
     id: 'research.components.feelsafe.perspectives.walking',
-    defaultMessage: 'Fuß'
-  }
+    defaultMessage: 'Fuß',
+  },
 });
 
 const FeelSafe = ({
   className,
   value,
   size = 'small',
-  icon = 'bike'
+  icon = 'bike',
 }: FeelsafeProps) => {
   const color = getColorByValue(value);
   const pxSize = sizes[size];
@@ -116,17 +116,17 @@ const FeelSafe = ({
 
   const intl = useIntl();
   const valueDisplay = value.toLocaleString(intl.locale, {
-    maximumFractionDigits: 0
+    maximumFractionDigits: 0,
   });
   const label = intl.formatMessage(
     {
       id: 'research.components.feelsafe.label',
       defaultMessage:
-        '{pct}% der Nutzer:innen in der {mode}-Perspektive fühlen sich sicher'
+        '{pct}% der Nutzer:innen in der {mode}-Perspektive fühlen sich sicher',
     },
     {
       pct: value.toLocaleString(intl.locale),
-      mode: intl.formatMessage(modes[icon])
+      mode: intl.formatMessage(modes[icon]),
     }
   );
 

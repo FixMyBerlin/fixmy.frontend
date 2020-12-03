@@ -36,11 +36,11 @@ const BigLoader = ({ useAbsolutePositioning }) => {
 };
 
 BigLoader.propTypes = {
-  useAbsolutePositioning: PropTypes.bool
+  useAbsolutePositioning: PropTypes.bool,
 };
 
 BigLoader.defaultProps = {
-  useAbsolutePositioning: false
+  useAbsolutePositioning: false,
 };
 
 export default BigLoader;

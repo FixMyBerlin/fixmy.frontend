@@ -6,9 +6,7 @@ import utils from './utils';
 
 describe('The reports map', () => {
   before(() => {
-    cy.server()
-      .route('**/reports')
-      .as('getReports');
+    cy.server().route('**/reports').as('getReports');
     cy.visit(config.routes.reports.map)
       .wait('@getReports')
       .its('status')

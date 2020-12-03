@@ -37,14 +37,14 @@ ErrorMessage.propTypes = {
   title: PropTypes.string,
   message: PropTypes.string,
   onDismiss: PropTypes.func,
-  dismissMessage: PropTypes.string
+  dismissMessage: PropTypes.string,
 };
 
 ErrorMessage.defaultProps = {
   title: 'Fehler',
   message: 'Ein Fehler ist aufgetreten',
   onDismiss: () => logger('onDismiss says implement me'),
-  dismissMessage: 'OK'
+  dismissMessage: 'OK',
 };
 
 export default ErrorMessage;

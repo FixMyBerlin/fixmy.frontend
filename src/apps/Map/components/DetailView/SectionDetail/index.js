@@ -11,9 +11,8 @@ import Label from '~/components/Label';
 import Title from '~/components/Title';
 import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';
 import DetailSwitch, {
-  ButtonGroup
+  ButtonGroup,
 } from '~/apps/Map/components/DetailView/DetailSwitch';
-import FeedbackForm from '~/apps/Map/components/DetailView/FeedbackForm';
 import ImageSlider from '~/apps/Map/components/DetailView/ImageSlider';
 import InfoSection from './InfoSection';
 import {
@@ -22,7 +21,7 @@ import {
   getRoadTypeLabel,
   getStreetCategoryLabel,
   getInfrastructureLabel,
-  getInfrastructureDesc
+  getInfrastructureDesc,
 } from './status-utils';
 
 const HBISignWrapper = styled.div`
@@ -102,7 +101,7 @@ class SectionDetails extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      sideIndex: 0
+      sideIndex: 0,
     };
   }
 
@@ -266,7 +265,6 @@ class SectionDetails extends PureComponent {
             <BetaOverlay />
           </BetaWrapper>
         </DetailInfoWrapper>
-        <FeedbackForm />
       </>
     );
   }

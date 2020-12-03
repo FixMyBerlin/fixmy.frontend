@@ -27,7 +27,7 @@ import MapView from '~/apps/Map';
 const apps = {
   gastro: Gastro,
   spielstrassen: Spielstrassen,
-  map: MapView
+  map: MapView,
 };
 
 /**
@@ -84,14 +84,16 @@ const Routes = ({ token }) => (
 
     <Route path="/redirect-to" component={RedirectHelper} />
 
-    {/* standard markdown pages */
-    config.staticpages.map((page) => (
-      <Route
-        key={page}
-        path={page.route}
-        render={() => <Markdown page={page.key} />}
-      />
-    ))}
+    {
+      /* standard markdown pages */
+      config.staticpages.map((page) => (
+        <Route
+          key={page}
+          path={page.route}
+          render={() => <Markdown page={page.key} />}
+        />
+      ))
+    }
 
     {/* user pages */}
     <Route path={config.routes.signup} component={Signup} />
@@ -166,5 +168,5 @@ const Routes = ({ token }) => (
 );
 
 export default connect((state: RootState) => ({
-  token: state.UserState.token
+  token: state.UserState.token,
 }))(Routes);

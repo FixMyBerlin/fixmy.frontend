@@ -76,13 +76,13 @@ class ProjectDetail extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      descriptionExpanded: false
+      descriptionExpanded: false,
     };
   }
 
   toggleDescription = () => {
     this.setState((prevState) => ({
-      descriptionExpanded: !prevState.descriptionExpanded
+      descriptionExpanded: !prevState.descriptionExpanded,
     }));
   };
 
@@ -107,7 +107,7 @@ class ProjectDetail extends PureComponent {
       construction_started,
       draft_submitted,
       cross_section_photo,
-      category
+      category,
     } = data;
 
     const url = `${config.apiUrl}/projects/${id}`;

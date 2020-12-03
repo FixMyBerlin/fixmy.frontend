@@ -15,13 +15,13 @@ import introQuestions from './config/introQuestions';
 const perspectiveNames = {
   C: 'Fahrradperspektive',
   A: 'Autoperspektive',
-  P: 'Fußgängerperspektive'
+  P: 'Fußgängerperspektive',
 };
 
 const perspectiveIcons = {
   C: BikeIcon,
   A: CarIcon,
-  P: PedestrianIcon
+  P: PedestrianIcon,
 };
 
 const ratingNames = ['unsicher', 'eher unsicher', 'eher sicher', 'sicher'];
@@ -30,7 +30,7 @@ const ratingIcons = [
   ButtonIconUnsafe,
   ButtonIconMostyUnsafe,
   ButtonIconMostlySafe,
-  ButtonIconSafe
+  ButtonIconSafe,
 ];
 
 export const getSceneImageSrc = (id) => {
@@ -96,7 +96,7 @@ const scenesConfig = (
   const titleScreen = {
     type: 'info',
     title: `Wir zeigen Ihnen nun ${sceneCount} Bilder aus ${perspectiveName}. Bitte bewerten Sie, wie sicher Sie sich in den Situationen fühlen`,
-    name: 'info'
+    name: 'info',
   };
 
   const firstPerspectiveScreen = {
@@ -109,9 +109,9 @@ const scenesConfig = (
       .map((p) => ({
         label: perspectiveNames[p],
         icon: perspectiveIcons[p],
-        value: p
+        value: p,
       })),
-    showCloseButton: false
+    showCloseButton: false,
   };
 
   const followingPerspectiveScreen = {
@@ -122,16 +122,16 @@ const scenesConfig = (
     options: Object.keys(perspectiveNames).map((p) => ({
       label: perspectiveNames[p],
       icon: perspectiveIcons[p],
-      value: p
+      value: p,
     })),
-    showCloseButton: true
+    showCloseButton: true,
   };
 
   const feedbackScreen = {
     type: 'feedback',
     title:
       'Tragen Sie hier Ihre E-Mail-Adresse ein, wenn Sie möchten, dass der Tagesspiegel und FixMyBerlin Sie über die Ergebnisse der Umfrage informieren.',
-    name: 'feedback'
+    name: 'feedback',
   };
 
   const emailScreen = {
@@ -141,13 +141,13 @@ const scenesConfig = (
     placeholder: 'Ihre E-Mail-Adresse',
     thankyou:
       'Danke, wir haben Ihnen eine E-Mail geschickt. Klicken Sie dort auf den Link zur Bestätigung.',
-    name: 'email'
+    name: 'email',
   };
 
   const titleByPerspective = {
     C: 'Sie fahren Fahrrad: Fühlen Sie sich hier sicher?',
     A: 'Wie empfinden Sie diese Situation beim Autofahren?',
-    P: 'Sie gehen zu Fuß: Fühlen Sie sich hier sicher?'
+    P: 'Sie gehen zu Fuß: Fühlen Sie sich hier sicher?',
   };
 
   const sceneScreens = scenes.map((scene) => ({
@@ -157,8 +157,8 @@ const scenesConfig = (
     options: ratingNames.map((r, i) => ({
       label: r,
       value: i,
-      icon: ratingIcons[i]
-    }))
+      icon: ratingIcons[i],
+    })),
   }));
 
   const sectionConfig = [];
@@ -179,5 +179,5 @@ const scenesConfig = (
 
 export default {
   profileConfig,
-  scenesConfig
+  scenesConfig,
 };

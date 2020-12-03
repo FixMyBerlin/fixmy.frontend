@@ -7,7 +7,6 @@
 //  see https://deck.gl/docs/developer-guide/testing
 
 import debug from 'debug';
-import React from 'react';
 import config from '../../../config';
 
 const log = debug('fmc:reports:arcService');
@@ -16,7 +15,7 @@ const enum POI_TYPE {
   PLANNING = 'PLANNING',
   REPORT = 'REPORT',
   // some status we do not care about
-  UNHANDLED = 'UHANDLED'
+  UNHANDLED = 'UHANDLED',
 }
 type POI = {
   readonly coordinates: ReadonlyArray<[number, number]>;
@@ -57,7 +56,7 @@ function compileArcItemsForSingleReport(report?: REPORT_FIXME): ArcList {
   return linkages.map(
     (linkedReport): Arc => ({
       from: arcOrigin,
-      to: getPoiForReport(linkedReport)
+      to: getPoiForReport(linkedReport),
     })
   );
 }
@@ -80,13 +79,13 @@ export function compileArcLayerProps(arcData: ArcList) {
     getTargetColor: config.reports.overviewMap.arcTargetColor || [
       110,
       155,
-      210
+      210,
     ],
     getWidth: 7,
     opacity: 0.6,
     pickable: true,
     // style on hover
-    autoHighlight: true
+    autoHighlight: true,
   };
 }
 
@@ -122,7 +121,7 @@ export const compileTooltip = (pickInfo): TooltipConfig => {
     zIndex: 3001,
     fontFamily: '"The Mix", sans-serif',
     borderRadius: '6px',
-    opacity: 0.8
+    opacity: 0.8,
   };
   return { text, style };
 };
@@ -131,7 +130,7 @@ function getPoiForReport(report): POI {
   return {
     coordinates: report.geometry.coordinates,
     address: report.address,
-    type: mapReportStatusToPoiType(report.status)
+    type: mapReportStatusToPoiType(report.status),
   };
 }
 function mapReportStatusToPoiType(reportStatus: string): POI_TYPE {

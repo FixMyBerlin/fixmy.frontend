@@ -72,7 +72,7 @@ export default ({ title, options, currentValue, handleChange, page, next }) => {
                 onChange={(evt) =>
                   handleChange({
                     ...currentValue,
-                    [option.name]: evt.target.checked
+                    [option.name]: evt.target.checked,
                   })
                 }
               />
@@ -86,7 +86,7 @@ export default ({ title, options, currentValue, handleChange, page, next }) => {
             onChange={(evt) =>
               handleChange({
                 ...currentValue,
-                [`${option.name}-input`]: evt.target.value
+                [`${option.name}-input`]: evt.target.value,
               })
             }
           />

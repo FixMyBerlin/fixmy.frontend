@@ -18,12 +18,12 @@ const MAILJET_AUTH_FILE = '3e83a85511f70bef9fbe500647d70221.txt';
 
 module.exports = {
   entry: {
-    app: Path.resolve(__dirname, '../src/index.js')
+    app: Path.resolve(__dirname, '../src/index.js'),
   },
   output: {
     path: Path.join(__dirname, '../build'),
     filename: 'js/[name].js',
-    publicPath: '/'
+    publicPath: '/',
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -35,28 +35,28 @@ module.exports = {
       { from: Path.resolve(__dirname, '../public/data'), to: 'data' },
       { from: Path.resolve(__dirname, '../public/uploads'), to: 'uploads' },
       {
-        from: Path.resolve(__dirname, '..', 'public', MAILJET_AUTH_FILE)
-      }
+        from: Path.resolve(__dirname, '..', 'public', MAILJET_AUTH_FILE),
+      },
     ]),
-    new Dotenv({ defaults: true, systemvars: true })
+    new Dotenv({ defaults: true, systemvars: true }),
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
       '~': Path.resolve(__dirname, '../src'),
       'react-dom': '@hot-loader/react-dom',
-      cypress: Path.resolve(__dirname, '../cypress')
-    }
+      cypress: Path.resolve(__dirname, '../cypress'),
+    },
   },
   node: {
-    fs: 'empty'
+    fs: 'empty',
   },
   module: {
     rules: [
       {
         test: /\.mjs$/,
         include: /node_modules/,
-        type: 'javascript/auto'
+        type: 'javascript/auto',
       },
       {
         test: /\.js$/,
@@ -69,31 +69,31 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/tr46'),
           Path.resolve(__dirname, '../node_modules/webidl-conversions'),
           Path.resolve(__dirname, '../node_modules/whatwg-url'),
-          Path.resolve(__dirname, '../src')
+          Path.resolve(__dirname, '../src'),
         ],
-        use: [{ loader: 'babel-loader', query: { cacheDirectory: true } }]
+        use: [{ loader: 'babel-loader', query: { cacheDirectory: true } }],
       },
       {
         test: /\.tsx?$/,
         use: [
           {
             loader: 'babel-loader',
-            query: { cacheDirectory: true }
+            query: { cacheDirectory: true },
           },
           {
-            loader: 'ts-loader'
-          }
+            loader: 'ts-loader',
+          },
         ],
-        include: [Path.resolve(__dirname, '../src')]
+        include: [Path.resolve(__dirname, '../src')],
       },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2)(\?.*)?$/,
         use: {
           loader: 'file-loader',
           options: {
-            name: '[path][name].[ext]'
-          }
-        }
+            name: '[path][name].[ext]',
+          },
+        },
       },
       {
         test: /\.svg$/,
@@ -106,23 +106,23 @@ module.exports = {
                 loader: 'react-svg-loader',
                 options: {
                   svgo: {
-                    plugins: [{ cleanupIDs: false }, { removeViewBox: false }]
-                  }
-                }
-              }
-            ]
+                    plugins: [{ cleanupIDs: false }, { removeViewBox: false }],
+                  },
+                },
+              },
+            ],
           },
           {
             include: /node_modules/,
             use: {
               loader: 'file-loader',
               options: {
-                name: '[path][name].[ext]'
-              }
-            }
-          }
-        ]
-      }
-    ]
-  }
+                name: '[path][name].[ext]',
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
 };

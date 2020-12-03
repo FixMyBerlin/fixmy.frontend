@@ -2,7 +2,7 @@ import React, {
   useRef,
   useState,
   ImgHTMLAttributes,
-  useLayoutEffect
+  useLayoutEffect,
 } from 'react';
 import styled from 'styled-components';
 import debug from 'debug';

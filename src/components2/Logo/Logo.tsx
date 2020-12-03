@@ -31,7 +31,7 @@ type Props = {
 const FMBLogo = ({
   className = null,
   showBetaIcon = false,
-  width = 70
+  width = 70,
 }: Props) => (
   <FMBLogoWrapper className={className}>
     {showBetaIcon && <StyledBetaIcon />}

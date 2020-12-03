@@ -1,5 +1,9 @@
 name: integration tests
 
+on:
+  push:
+    branches: ['master', 'develop', 'hotfix/**', 'dependabot/**']
+
 jobs:
   e2e:
     runs-on: ubuntu-latest

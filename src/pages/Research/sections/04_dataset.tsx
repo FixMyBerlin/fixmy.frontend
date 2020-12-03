@@ -1,7 +1,19 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components';
+import config from '~/config';
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import Link from '~/components2/Link';
+import { AnchorButton } from '~/components2/Button';
+import ButtonWrapper from '../components/ButtonWrapper';
+
+const DownloadInfo = styled.div`
+  font-size: 14px;
+  color: ${config.colors.midgrey};
+  padding: 0 0 15px 0;
+  line-height: 1.4;
+  margin-top: 16px;
+`;
 
 const SectionDataset = ({ toc, tocAnchor }: SectionProps) => (
   <>
@@ -31,26 +43,37 @@ const SectionDataset = ({ toc, tocAnchor }: SectionProps) => (
                 defaultMessage="diesem PDF zu den Spezifikationen"
               />
             </Link>
-          )
+          ),
         }}
       />
     </Paragraph>
     <Paragraph>
       <FormattedMessage
         id="research.04_dataset.p2"
-        defaultMessage="Unter folgendem Link gelangen Sie zu den {linkResults}, die sie dort Einsehen und Herunterladen können."
-        values={{
-          linkResults: (
-            <Link href="https://raw.githubusercontent.com/FixMyBerlin/fixmy.data/master/SurveyResults_200414.json">
-              <FormattedMessage
-                id="research.04_dataset.p2.linkResults"
-                defaultMessage="Ergebnissen der Umfrage als JSON-Datensatz"
-              />
-            </Link>
-          )
-        }}
+        defaultMessage="Laden Sie sich die Ergebnisse der Umfrage über den folgenden Button als
+        JSON-Datensatz herunter:"
       />
     </Paragraph>
+
+    <ButtonWrapper>
+      <AnchorButton
+        flat
+        href="https://fmb-aws-bucket.s3.eu-central-1.amazonaws.com/KatasterKI/SurveyResults_200414.json.zip"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <FormattedMessage
+          id="research.04_dataset.downloadLabel"
+          defaultMessage="Datensatz herunterladen"
+        />
+      </AnchorButton>
+      <DownloadInfo>
+        <FormattedMessage
+          id="research.04_dataset.downloadCaption"
+          defaultMessage="(Format: JSON komprimiert (ZIP), Größe: 5,2 MB, Lizenz: ODbL)"
+        />
+      </DownloadInfo>
+    </ButtonWrapper>
   </>
 );
 

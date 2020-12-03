@@ -15,9 +15,9 @@ const NoPrint = styled.span`
 
 const TrafficOrderPage = ({
   match: {
-    params: { id }
+    params: { id },
   },
-  district
+  district,
 }) => {
   const [isLoading, setLoading] = useState(true);
   const [application, setApplication] = useState(null);
@@ -51,7 +51,7 @@ const TrafficOrderPage = ({
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(TrafficOrderPage);

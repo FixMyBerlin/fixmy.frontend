@@ -34,7 +34,7 @@ const AreaPicker: React.FC<Props> = ({
   onSelect,
   mapboxStyle,
   bounds,
-  initialGeometry
+  initialGeometry,
 }) => {
   // Mapbox-GL.js map instance
   const [map, setMap] = useState<MapboxGL.Map | null>(null);
@@ -51,8 +51,8 @@ const AreaPicker: React.FC<Props> = ({
       default_mode: 'draw_polygon',
       controls: {
         polygon: true,
-        trash: true
-      }
+        trash: true,
+      },
     });
     map.addControl(draw);
     map.addControl(new MapboxGL.NavigationControl(), 'bottom-right');

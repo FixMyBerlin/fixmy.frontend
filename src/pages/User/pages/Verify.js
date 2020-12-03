@@ -46,14 +46,14 @@ const UserVerify = ({ match, location }) => {
     const verifyUser = async () => {
       const { uid, token } = match.params;
       const { newsletter } = qs.parse(location.search, {
-        ignoreQueryPrefix: true
+        ignoreQueryPrefix: true,
       });
       const signupNewsletter = newsletter === 'yes';
 
       try {
         return ky(`${config.apiUrl}/users/activation/`, {
           method: 'POST',
-          json: { uid, token, newsletter: signupNewsletter }
+          json: { uid, token, newsletter: signupNewsletter },
         });
       } catch (e) {
         logger(e);

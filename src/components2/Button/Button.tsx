@@ -7,6 +7,8 @@ interface Props {
   flat?: boolean;
   disabled?: boolean;
   href?: string;
+  target?: string;
+  rel?: string;
 }
 
 const getBackgroundColor = ({ ghost, disabled }: Props) => {
@@ -17,9 +19,9 @@ const getBackgroundColor = ({ ghost, disabled }: Props) => {
   return config.colors.interaction;
 };
 
-const BaseButton = (containerElem: 'a' | 'button') => styled(containerElem)<
-  Props
->`
+const BaseButton = (containerElem: 'a' | 'button') => styled(
+  containerElem
+)<Props>`
   background: ${getBackgroundColor};
   border-radius: 24px;
   border: ${(props) =>

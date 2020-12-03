@@ -7,7 +7,7 @@ import { numberFormat } from '~/utils/utils';
 import {
   getHBIbyProps,
   getHBIColorByIndex,
-  getOrientationNames
+  getOrientationNames,
 } from '~/apps/Map/hbi-utils';
 
 import HBISign from '~/apps/Map/components/HBISign';

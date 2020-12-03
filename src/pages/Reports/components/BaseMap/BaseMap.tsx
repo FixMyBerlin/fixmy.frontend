@@ -5,10 +5,7 @@ import { ArcLayer } from '@deck.gl/layers';
 import config from '~/pages/Reports/config';
 import BigLoader from '~/components/BigLoader';
 import { MapContainer } from '~/pages/Reports/components/BaseMap/MapContainer';
-import {
-  Arc,
-  compileTooltip
-} from '../../pages/OverviewMap/service/arcService';
+import { compileTooltip } from '../../pages/OverviewMap/service/arcService';
 
 const MB_STYLE_URL = `${config.reports.overviewMap.style}?fresh=true`;
 MapboxGL.accessToken = MapboxGL.accessToken || config.mapbox.accessToken;
@@ -29,7 +26,7 @@ const INITIAL_DECK_VIEW_STATE = {
   latitude: centerLat,
   zoom: 17,
   pitch: 0,
-  bearing: 0
+  bearing: 0,
 };
 
 type FIXME = any;
@@ -55,8 +52,8 @@ export type BaseMapProps = {
   children?: React.ReactNode | React.ReactNode[];
   // Child elements od te DeckGL component,
   // see https://deck.gl/docs/get-started/using-with-react
-  arcLayerProps?: ConstructorParameters<ArcLayer<Arc>>;
-
+  // FIXME typings. I am not able to import ArcLayerProps from Deck.gl, tsc complains
+  arcLayerProps?: FIXME;
   // maximum map extent expressed in coordinate pairs (SouthWest and NorthEast corner),
   // see https://docs.mapbox.com/mapbox-gl-js/api/geography/#lnglatboundslike
   maxBounds?: MapboxGL.LngLatBoundsLike;
@@ -72,7 +69,7 @@ export const BaseMap = ({
   onLoad,
   onMove,
   mapWrapperClassName,
-  arcLayerProps
+  arcLayerProps,
 }: BaseMapProps) => {
   const [isLoading, setIsLoading] = useState(true);
   const [glContext, setGLContext] = useState();
@@ -109,7 +106,7 @@ export const BaseMap = ({
       pitch: mapboxMap.getPitch(),
       bearing: mapboxMap.getBearing(),
       latitude: center.lat,
-      longitude: center.lng
+      longitude: center.lng,
     });
   }, []);
 
@@ -120,7 +117,7 @@ export const BaseMap = ({
       container: mapContainerRef.current,
       style: MB_STYLE_URL,
       bounds: configuredBounds,
-      maxBounds
+      maxBounds,
     });
     mapRef.current = map;
 
@@ -135,6 +132,9 @@ export const BaseMap = ({
     // TODO: do we need any cleanup logic?
   }, [mapContainerRef.current]);
 
+  // @ts-ignore
+  const arcLayer = arcLayerProps && <ArcLayer {...arcLayerProps} />;
+
   return (
     <>
       {isLoaderShown && <BigLoader useAbsolutePositioning />}
@@ -148,7 +148,7 @@ export const BaseMap = ({
         pickingRadius={8}
         id="reports-deckgl-canvas"
       >
-        {arcLayerProps && <ArcLayer {...arcLayerProps} />}
+        {arcLayerProps && arcLayer}
         {glContext && (
           /* This is important: Mapbox must be instantiated after the WebGLContext is available */
           <MapContainer

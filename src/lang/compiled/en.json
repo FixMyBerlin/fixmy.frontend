@@ -429,6 +429,18 @@
       "value": "Questions about the individual"
     }
   ],
+  "research.04_dataset.downloadCaption": [
+    {
+      "type": 0,
+      "value": "(Format: JSON compressed (ZIP), Size: 5,2 MB, License: ODbL)"
+    }
+  ],
+  "research.04_dataset.downloadLabel": [
+    {
+      "type": 0,
+      "value": "Download dataset"
+    }
+  ],
   "research.04_dataset.heading": [
     {
       "type": 0,
@@ -472,17 +484,7 @@
   "research.04_dataset.p2": [
     {
       "type": 0,
-      "value": "Clicke "
-    },
-    {
-      "type": 1,
-      "value": "linkResults"
-    }
-  ],
-  "research.04_dataset.p2.linkResults": [
-    {
-      "type": 0,
-      "value": "here to download the results of the survey as a JSON dataset"
+      "value": "Download the results of the survey in a JSON-formatted data set:"
     }
   ],
   "research.05_results.chart1.1": [
@@ -1172,13 +1174,13 @@
   "research.05_results.chart4.1": [
     {
       "type": 0,
-      "value": "without cycle path"
+      "value": "with cycle path"
     }
   ],
   "research.05_results.chart4.2": [
     {
       "type": 0,
-      "value": "with cycle path"
+      "value": "without cycle path"
     }
   ],
   "research.05_results.chart4.3": [

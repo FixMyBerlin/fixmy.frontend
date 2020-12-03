@@ -31,7 +31,7 @@ function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
 
       map.easeTo({
         center: lngLat,
-        zoom: zoom + 0.1
+        zoom: zoom + 0.1,
       });
     });
   });
@@ -45,24 +45,25 @@ function createPinMarker({
   lngLat,
   onClick,
   setHoveredReport,
-  unSetHoveredReport
+  unSetHoveredReport,
 }) {
-  const details = JSON.parse(markerData.details || {});
   const el = document.createElement('div');
-
   el.dataset.id = markerData.id;
   el.className = 'reports-marker';
-
   el.dataset.cy = 'reports-marker';
-
-  const updatedMarkerData = { ...markerData, geometry, details };
-
   el.innerHTML = `<img class="marker-image marker-${
     markerData.status
   }" src="${utils.getMarkerSrc(markerData)}" />`;
-  el.addEventListener('click', (evt) => onClick(evt, updatedMarkerData));
+  el.addEventListener('click', (evt) => onClick(evt, markerData.id));
 
-  el.addEventListener('mouseenter', () => setHoveredReport(updatedMarkerData));
+  let details;
+  try {
+    details = JSON.parse(markerData.details);
+  } catch (e) {
+    details = {};
+  }
+  const enrichedMarkerData = { ...markerData, geometry, details };
+  el.addEventListener('mouseenter', () => setHoveredReport(enrichedMarkerData));
   el.addEventListener('mouseleave', unSetHoveredReport);
 
   return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -0]);
@@ -86,7 +87,7 @@ function setupClusters(name, map, data, radius, handleUpdate) {
     data,
     cluster: true,
     clusterRadius: radius,
-    clusterMaxZoom: 16
+    clusterMaxZoom: 16,
   });
 
   map.addLayer({
@@ -95,8 +96,8 @@ function setupClusters(name, map, data, radius, handleUpdate) {
     source: name,
     filter: ['!=', 'cluster', true],
     paint: {
-      'circle-opacity': 0
-    }
+      'circle-opacity': 0,
+    },
   });
 }
 

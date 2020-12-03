@@ -19,7 +19,7 @@ const Icons = {
   draft: ConceptIcon,
   planning: PlanningIcon,
   execution: ConstructionIcon,
-  ready: DoneIcon
+  ready: DoneIcon,
 };
 
 function handleClick(index) {
@@ -52,5 +52,5 @@ const PlanningLegendComp = ({ filterPlannings }) => (
 );
 
 export default connect((state) => ({
-  filterPlannings: state.MapState.filterPlannings
+  filterPlannings: state.MapState.filterPlannings,
 }))(PlanningLegendComp);

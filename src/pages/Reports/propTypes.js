@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
  */
 const geometry = PropTypes.shape({
   type: PropTypes.oneOf(['Point', 'Linestring']),
-  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
+  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
 });
 
 /**
@@ -17,6 +17,12 @@ const geometry = PropTypes.shape({
 const map = PropTypes.object;
 
 /**
+ * An object with properties defined at
+ * https://deck.gl/docs/get-started/using-with-react
+ */
+const arcLayerProps = PropTypes.object;
+
+/**
  * PropType for a single report as returned from the backend
  */
 const report = PropTypes.shape({
@@ -26,13 +32,16 @@ const report = PropTypes.shape({
   details: PropTypes.shape({
     number: PropTypes.number,
     subject: PropTypes.oneOf(['BIKE_STANDS']),
-    fee_acceptable: PropTypes.bool
+    fee_acceptable: PropTypes.bool,
   }),
   geometry,
   id: PropTypes.number.isRequired,
   likes: PropTypes.number.isRequired,
   modified_date: PropTypes.string.isRequired,
- 
+  photo: PropTypes.shape({
+    copyright: PropTypes.string,
+    src: PropTypes.string,
+  }),
   status: PropTypes.oneOf([
     'report_new',
     'report_verification',
@@ -48,14 +57,15 @@ const report = PropTypes.shape({
     'new',
     'verification',
     'accepted',
-    'rejected'
+    'rejected',
   ]),
   status_reason: PropTypes.string,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
 });
 
 export default {
   geometry,
   map,
-  report
+  report,
+  arcLayerProps,
 };

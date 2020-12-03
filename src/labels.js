@@ -10,14 +10,14 @@ export const districts = [
   'Spandau',
   'Steglitz-Zehlendorf',
   'Tempelhof-Schöneberg',
-  'Treptow-Köpenick'
+  'Treptow-Köpenick',
 ];
 
 export const errorLabels = {
-  'Unable to log in with provided credentials.': 'Ungültiges Passwort.'
+  'Unable to log in with provided credentials.': 'Ungültiges Passwort.',
 };
 
 export default {
   districts,
-  errorLabels
+  errorLabels,
 };

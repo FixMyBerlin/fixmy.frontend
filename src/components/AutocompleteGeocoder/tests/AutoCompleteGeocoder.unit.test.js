@@ -21,7 +21,7 @@ describe('<AutoCompleteGeocoder />', () => {
       onSearchStart: jest.fn(),
       onInputBlur: jest.fn(),
       searchStringMinLength: 4,
-      debounceTime: 1
+      debounceTime: 1,
     };
     const { container, baseElement, debug } = render(
       <AutocompleteGeocoder {...props} />
@@ -34,7 +34,7 @@ describe('<AutoCompleteGeocoder />', () => {
       debug,
       container,
       baseElement,
-      inputElement
+      inputElement,
     };
   };
 
@@ -112,7 +112,7 @@ describe('<AutoCompleteGeocoder />', () => {
       // match displayed content with mock data entries
       expect(initProps.onLocationPick).toHaveBeenCalledWith({
         coords,
-        address
+        address,
       });
     });
     it('buffers api calls (waits for the user to type, then fetches suggestions)', async () => {
@@ -131,7 +131,7 @@ describe('<AutoCompleteGeocoder />', () => {
 
       const slowInput = 'defg';
       await userEvent.type(inputElement, slowInput, {
-        delay: initProps.debounceTime + 10
+        delay: initProps.debounceTime + 10,
       });
 
       // each stroke should have triggered a request
@@ -172,7 +172,7 @@ describe('<AutoCompleteGeocoder />', () => {
         await waitFor(() =>
           expect(initProps.onLocationPick).toHaveBeenCalledWith({
             address,
-            coords
+            coords,
           })
         );
 
@@ -212,7 +212,7 @@ describe('<AutoCompleteGeocoder />', () => {
             return res(
               ctx.status(403),
               ctx.json({
-                errorMessage: 'Not Authorized'
+                errorMessage: 'Not Authorized',
               })
             );
           }
