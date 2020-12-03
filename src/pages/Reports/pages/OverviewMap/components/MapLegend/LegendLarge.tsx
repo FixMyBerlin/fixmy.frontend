@@ -8,7 +8,6 @@ import CloseIcon from './close.svg';
 const Wrapper = styled(BaseWrapper)`
   display: flex;
   flex-direction: column;
-  padding: 10px 20px;
 `;
 
 const LegendWrapper = styled.div`

@@ -3,7 +3,7 @@ import LegendLarge from './LegendLarge';
 import LegendSmall from './LegendSmall';
 
 const MapLegend = () => {
-  const [isExtended, setExtended] = useState(true);
+  const [isExtended, setExtended] = useState(false);
 
   return isExtended ? (
     <LegendLarge onToggle={() => setExtended(false)} />

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import LinkExternal from '~/images/icon-external-link@2x.png';
-import LinkInternal from '~/images/icon-internal-link@2x.png';
+import LinkExternal from './icon-external-link@2x.png';
+import LinkInternal from './icon-internal-link@2x.png';
 
 import config from '~/config';
 
@@ -76,12 +76,20 @@ export const AnchorLink = ({
 interface RouterLinkProps extends Partial<Link> {
   to: string;
   children: React.ReactNode;
+  className?: string;
 }
 
 const RouterContainer = styled(BaseContainer(Link))`
   background-image: url(${LinkInternal});
 `;
 
-export const RouterLink = ({ to, children, ...props }: RouterLinkProps) => (
-  <RouterContainer to={to}>{children}</RouterContainer>
+export const RouterLink = ({
+  to,
+  children,
+  className,
+  ...props
+}: RouterLinkProps) => (
+  <RouterContainer to={to} className={className} {...props}>
+    {children}
+  </RouterContainer>
 );
