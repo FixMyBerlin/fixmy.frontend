@@ -70,7 +70,7 @@ Kriterien
 
 Kriterien
 
-- Anträge können im Django-Admin mit einem Status "bewillig" versehen werden
+- Anträge können im Django-Admin mit einem Status "bewilligt" versehen werden
 
 ### ✅ Als Verwaltungsmitarbeiter:in möchte ich ungültige Anträge ablehnen können
 
@@ -84,7 +84,7 @@ Kriterien
 
 Kriterien
 
-- Es gibt ein Django-Kommando um Antragsteller:innen über die Bewilligung Ihres Antrags zu informieren
+- Es gibt ein Django-Kommando um Antragsteller:innen über die Bewilligung ihres Antrags zu informieren
 - Der Inhalt der E-Mail wird abhängig von Regulation und Bewilligungsstatus zusammengestellt
 - Die E-Mail-Benachrichtigung enthält einen Link zu einer öffentlich einsehbaren Karte der bewilligten Nutzungsfläche
 
@@ -92,18 +92,18 @@ Kriterien
 
 Jeder Antrag ist für einen begrenzten Zeitraum gültig. Um Betreiber:innen die Nutzung auch nach Ablauf des Zeitraums zu ermöglichen können Folgeanträge gestellt werden.
 
-### ✅ Als Verwaltungsmitarbeiter:in kann ich Betreiber:innen per E-Mail die Möglichkeit zur Beantragung einer Folgegenehmigung zusenden.
+### ✅ Als Verwaltungsmitarbeiter:in kann ich Betreiber:innen per E-Mail die Möglichkeit zur Beantragung einer Folgegenehmigung zusenden
 
 Kriterien
 
 - Es gibt eine Action im Django-Admin um Angebote zur Stellung eines Folgeantrags zu stellen
 - Anträge sind danach filterbar, ob bereits ein Angebot zum Folgeantrag verschickt wurde
 
-### ✅ Als Betreiber:in kann ich einen Folgeantrag stellen, wenn ich ein Angebot hierfür per E-Mail erhalten habe.
+### ✅ Als Betreiber:in kann ich einen Folgeantrag stellen, wenn ich ein Angebot hierfür per E-Mail erhalten habe
 
 Kriterien
 
 - Es gibt eine Bestätigungs-Seite für das Stellen von Folgeanträgen
 - Auf der Bestätigungsseite wird die vorige Genehmigung verlinkt
-- Durch Bestätigung des Angebots wird ein neuer Antrag mit den gleichen Daten wie der vorige gestellt.
+- Durch Bestätigung des Angebots wird ein neuer Antrag mit den gleichen Daten wie der vorige gestellt
 - Folgeanträge haben den Beginn der Folgekampagne als frühesten Geltungstag

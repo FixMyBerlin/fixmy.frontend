@@ -4,13 +4,9 @@ FixMyBerlin is an open source project and we would love to receive contributions
 If you want to contribute – welcome! Great that you are here!
 
 The project is mostly being developed by FixMyCity GmbH in Berlin. We
-are working on the platform continuously and see each other face-to-face every week in the [co-working area of the city of Berlin](https://www.citylab-berlin.org/).
-Nonetheless we want to make it easy to contribute to this project from outside this
-organisation. This document tries to answer some common questions that you might have
-if you would like to do so.
-You can always get in touch with us by sending a short, informal e-mail to [feedback@fixmycity.de](mailto:feedback@fixmycity.de).
-In the future we hope to make it even easier to quickly have a chat if you want
-to contribute to the project.
+are working on the platform continuously and see each other face-to-face every week in the [co-working area of the city of Berlin](https://www.citylab-berlin.org/), which contributes a lot to our collaboration during development. Nonetheless we want to make it easy to contribute to this project from outside the
+organisation as well. This document tries to answer some common questions that you might have
+if you would like to do so. If you have any questions or comments, feel free to open an issue at [Github](https://github.com/FixMyBerlin/fixmy.frontend/issues/new) or send a short email to [feedback@fixmycity.de](mailto:feedback@fixmycity.de).
 
 ## Table of Contents
 
@@ -45,21 +41,11 @@ Your contribution might affect both repositories.
 
 ### Issues
 
-We use issues to track both bugs and tasks.
-
-#### All in one place
-
-We decided to keep all issues in [/fixmy.platform](https://github.com/FixMyBerlin/fixmy.platform) so that we can use Github's projects feature with issues for both repositories.
-If you want to open up an an issue regarding either frontend or backend, please do it there.
+We use issues to track both bugs and tasks. Some of the issue's title and description might seem cryptic because the people working on it are already deep into the matter, however if you are curious - feel free to add your question as a comment or just ask for a general explanation and we will probably be happy to explain in more detail.
 
 #### Labeling
 
-We are using [GitHubs default labels](https://help.github.com/en/github/managing-your-work-on-github/about-labels#using-default-labels).
-
-So Issues explicitly suitable for external contributions are labeled as
-
-- [_good first issue_](https://github.com/FixMyBerlin/fixmy.platform/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) (only a couple of lines of code are needed) or as
-- [_help wanted_](https://github.com/FixMyBerlin/fixmy.platform/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
+We are using [GitHub's default labels](https://help.github.com/en/github/managing-your-work-on-github/about-labels#using-default-labels) so look out for issues labeled [_good first issue_](https://github.com/issues?q=is%3Aopen+is%3Aissue+archived%3Afalse+user%3AFixMyBerlin+label%3A%22good+first+issue%22) or [_help wanted_](https://github.com/issues?q=is%3Aopen+is%3Aissue+archived%3Afalse+user%3AFixMyBerlin+label%3A%22help+wanted%22) as these are good starting points for jumping into the code.
 
 ## How can I get start developing?
 
@@ -70,7 +56,7 @@ run the app locally by spawing a development server and how to run our test suit
 
 ### Reporting Bugs
 
-Spotted a bug? Please raise an issue using [the provided issue template](https://github.com/FixMyBerlin/fixmy.platform/issues/new/choose).
+Spotted a bug? Please raise an issue using [the provided issue template](https://github.com/FixMyBerlin/fixmy.frontend/issues/new/choose).
 Make sure to explain the problem with enough details to help maintainers to reproduce the problem.
 
 - **Use a clear and descriptive title** for the issue to identify the problem.
