@@ -36,8 +36,28 @@ const LegendItem = styled.div`
   }
 `;
 
+const StyledCloseIcon = styled(CloseIcon)`
+  color: ${config.colors.lightgrey};
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: -18px;
+  z-index: 900;
+  &:focus {
+    outline: none;
+    & .close-icon-background {
+      fill: ${config.colors.midgrey};
+    }
+  }
+`;
+
 const LegendLarge = ({ onToggle }) => (
-  <Wrapper>
+  <Wrapper role="complementary" aria-expanded="true" id="reports-map-legend">
+    <StyledCloseIcon
+      onClick={onToggle}
+      alt="Legende schließen"
+      aria-controls="reports-map-legend"
+    />
     <h2>Legende</h2>
     <LegendWrapper>
       <LegendCol>
