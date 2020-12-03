@@ -1,9 +1,7 @@
 name: Node.js CI
 
 on:
-  pull_request_target:
   push:
-    branches: ['master', 'develop']
 
 jobs:
   tests:
@@ -66,7 +64,7 @@ jobs:
             ${{ runner.os }}-
 
       - run: npm ci
-      - uses: wearerequired/lint-action@feature/pull_request_target
+      - uses: wearerequired/lint-action@v1
         with:
           github_token: ${{ secrets.github_token }}
           eslint: true
