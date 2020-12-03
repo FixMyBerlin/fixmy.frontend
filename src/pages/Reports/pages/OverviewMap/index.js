@@ -18,6 +18,7 @@ import ErrorMessage from '~/components/ErrorMessage';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/apps/Map/components/LocatorControl';
+import MapLegend from './components/MapLegend';
 import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 
@@ -39,16 +40,26 @@ const MapWrapper = styled.div`
   flex-direction: column;
 `;
 
-const MapControls = ({ onTab, onLocationChange, shiftLeft, isCTAHidden }) => (
-  <>
-    <LocatorControl
-      key="ReportsOverviewMap__LocatorControl"
-      onChange={onLocationChange}
-      customPosition={{ bottom: '105px', right: '7px' }}
-    />
-    {!isCTAHidden && <CTAButton onTab={onTab} shiftLeft={shiftLeft} />}
-  </>
-);
+const MapControls = ({
+  onTab,
+  onLocationChange,
+  shiftLeft,
+  isCTAHidden,
+  popupVisible,
+}) => {
+  return config.reports.enabled ? (
+    <>
+      <LocatorControl
+        key="ReportsOverviewMap__LocatorControl"
+        onChange={onLocationChange}
+        customPosition={{ bottom: '105px', right: '7px' }}
+      />
+      {!isCTAHidden && <CTAButton onTab={onTab} shiftLeft={shiftLeft} />}
+    </>
+  ) : (
+    <>{!popupVisible && <MapLegend />}</>
+  );
+};
 
 class OverviewMap extends Component {
   constructor(props) {
@@ -198,6 +209,7 @@ class OverviewMap extends Component {
               onLocationChange={this.onLocationChange}
               onTab={this.onCTAButtonTab}
               shiftLeft={isCTAButtonShifted}
+              popupVisible={selectedReport && !hasDetailId}
             />
           )}
           {selectedReport && !hasDetailId && (
