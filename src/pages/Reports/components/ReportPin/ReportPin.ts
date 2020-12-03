@@ -23,7 +23,7 @@ interface Props {
 
 const ReportPin = styled.img.attrs((props: Props) => ({
   src: utils.getMarkerSrc({ status: props.status }),
-  alt: 'A marker icon',
+  alt: `Pin für einen Eintrag mit dem Status ${props.status}`,
   small: smallMarkers.indexOf(props.status) > -1,
 }))<Props>`
   margin-left: auto;

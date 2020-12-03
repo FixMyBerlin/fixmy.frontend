@@ -66,7 +66,7 @@ const StyledLegendGrid = styled(LegendGrid)`
   `}
 `;
 
-const LegendSmall = ({ onToggle }) => (
+const LegendCollapsed = ({ onToggle }) => (
   <WrapperSmall role="complementary">
     <Header>Alle Meldungen und Planungen</Header>
     <p>
@@ -77,11 +77,9 @@ const LegendSmall = ({ onToggle }) => (
       </StyledLink>{' '}
       erfahren Sie mehr über die Hintergründe.
     </p>
-    <LinkButton onClick={onToggle} aria-expanded="false">
-      Legende anzeigen
-    </LinkButton>
+    <LinkButton onClick={onToggle}>Legende anzeigen</LinkButton>
     <StyledLegendGrid />
   </WrapperSmall>
 );
 
-export default LegendSmall;
+export default LegendCollapsed;

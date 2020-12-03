@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import LegendLarge from './LegendLarge';
-import LegendSmall from './LegendSmall';
+import LegendExpanded from './LegendExpanded';
+import LegendCollapsed from './LegendCollapsed';
 
 const MapLegend = () => {
-  const [isExtended, setExtended] = useState(false);
+  const [isExpanded, setExpanded] = useState(false);
 
-  return isExtended ? (
-    <LegendLarge onToggle={() => setExtended(false)} />
+  return isExpanded ? (
+    <LegendExpanded onToggle={() => setExpanded(false)} />
   ) : (
-    <LegendSmall onToggle={() => setExtended(true)} />
+    <LegendCollapsed onToggle={() => setExpanded(true)} />
   );
 };
 

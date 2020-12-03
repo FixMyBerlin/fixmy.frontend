@@ -1,5 +1,7 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
+import { Router } from 'react-router-dom';
+import { render, screen } from '@testing-library/react';
 import utils from '~/pages/Reports/utils';
 import MapLegend from '.';
 
@@ -18,10 +20,21 @@ const UNUSED_STATUSES = [
 
 describe('<MapLegend />', () => {
   it('renders in small state', () => {
-    const { getByRole, getAllByRole } = render(<MapLegend />);
-    expect(getByRole('heading')).toBeInTheDocument();
-    expect(getAllByRole('img')).toHaveLength(
-      utils.REPORT_STATUSES.length - UNUSED_STATUSES.length
+    const history = createMemoryHistory();
+    render(
+      <Router history={history}>
+        <MapLegend />
+      </Router>
     );
+    expect(
+      screen.getByText('Alle Meldungen und Planungen')
+    ).toBeInTheDocument();
+    expect(
+      screen.getAllByAltText(/Pin für einen Eintrag mit dem Status/)
+    ).toHaveLength(utils.REPORT_STATUSES.length - UNUSED_STATUSES.length);
+    screen.getByRole('button', { name: 'Legende anzeigen' }).click();
+    expect(
+      screen.getByRole('button', { name: 'Legende schließen' })
+    ).toBeInTheDocument();
   });
 });

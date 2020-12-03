@@ -44,31 +44,31 @@ const LegendGrid = (props) => (
     <Header>Legende</Header>
     <LegendCol>
       <LegendItem>
-        <ReportPin status="report_verification" role="presentation" />
+        <ReportPin status="report_verification" />
         Meldung in Prüfung
       </LegendItem>
       <LegendItem>
-        <ReportPin status="report_accepted" role="presentation" />
+        <ReportPin status="report_accepted" />
         Meldung wird nahebei umgesetzt
       </LegendItem>
       <LegendItem>
-        <ReportPin status="report_rejected" role="presentation" />
+        <ReportPin status="report_rejected" />
         Meldung abgelehnt
       </LegendItem>
       <LegendItem>
-        <ReportPin status="report_inactive" role="presentation" />
+        <ReportPin status="report_inactive" />
         Meldung inaktiv
       </LegendItem>
     </LegendCol>
     <LegendCol>
       <LegendItem>
-        <ReportPin status="planning" role="presentation" /> In Planung
+        <ReportPin status="planning" /> In Planung
       </LegendItem>
       <LegendItem>
-        <ReportPin status="execution" role="presentation" /> In Umsetzung
+        <ReportPin status="execution" /> In Umsetzung
       </LegendItem>
       <LegendItem>
-        <ReportPin status="done" role="presentation" /> Fertiggestellt
+        <ReportPin status="done" /> Fertiggestellt
       </LegendItem>
     </LegendCol>
   </LegendWrapper>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import config from '~/pages/Reports/config';
-import { BaseWrapper } from './LegendSmall';
+import { BaseWrapper } from './LegendCollapsed';
 import CloseIcon from './close.svg';
 import LegendGrid from './LegendGrid';
 
@@ -25,15 +25,16 @@ const StyledCloseIcon = styled(CloseIcon)`
   }
 `;
 
-const LegendLarge = ({ onToggle }) => (
-  <Wrapper role="complementary" aria-expanded="true" id="reports-map-legend">
+const LegendExpanded = ({ onToggle }) => (
+  <Wrapper role="complementary" id="reports-map-legend">
     <StyledCloseIcon
       onClick={onToggle}
       alt="Legende schließen"
       aria-controls="reports-map-legend"
+      role="button"
     />
     <LegendGrid />
   </Wrapper>
 );
 
-export default LegendLarge;
+export default LegendExpanded;
