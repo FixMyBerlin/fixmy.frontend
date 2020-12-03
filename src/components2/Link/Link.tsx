@@ -73,7 +73,7 @@ export const AnchorLink = ({
   );
 };
 
-interface RouterLinkProps extends Link {
+interface RouterLinkProps extends Partial<Link> {
   to: string;
   children: React.ReactNode;
 }
