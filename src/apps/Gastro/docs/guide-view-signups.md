@@ -7,12 +7,12 @@ der benötigten Anordnungen zu verwenden.
 **Hinweise**
 
 - Das verwendete Datenformat ist CSV. Dieses Format ist besonders kompatibel mit einer Vielzahl an Programmen. Beim Import in Microsoft Excel oder Google Docs ist
-  zu beachten dass Datenfelder nicht automatisch umgewandelt werden sollten (siehe [Anleitung für Microsoft Excel](https://support.microsoft.com/de-de/office/text-import-assistent-c5b02af6-fda1-4440-899f-f78bafe41857))
+  zu beachten, dass Datenfelder nicht automatisch umgewandelt werden sollten (siehe [Anleitung für Microsoft Excel](https://support.microsoft.com/de-de/office/text-import-assistent-c5b02af6-fda1-4440-899f-f78bafe41857))
 - Als Trennzeichen wird das Komma verwendet
 
 ## Export als CSV-Datei
 
-Für den Export als CSV-Datei wird ein authorisierter Zugang zum Backend-System benötigt.
+Für den Export als CSV-Datei wird ein autorisierter Zugang zum Backend-System benötigt.
 
 Der Export kann über das Django-Kommando `exportgastrosignups` ausgeführt werden.
 

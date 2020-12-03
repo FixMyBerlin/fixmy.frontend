@@ -4,7 +4,6 @@ about: Suggest an idea for this project
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 **What's the problem you want solved?**
