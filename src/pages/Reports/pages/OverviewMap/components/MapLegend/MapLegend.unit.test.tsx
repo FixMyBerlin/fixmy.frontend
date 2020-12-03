@@ -3,16 +3,25 @@ import { render } from '@testing-library/react';
 import utils from '~/pages/Reports/utils';
 import MapLegend from '.';
 
-// Number of report statuses that are currently not in use and not expected in
-// the legend
-const NUM_UNUSED = 6;
+// Statuses that are not expected in the leged
+const UNUSED_STATUSES = [
+  'report_new', // only when config.report.enabled is set
+  // deprecated
+  'new',
+  'verification',
+  'accepted',
+  'rejected',
+  'inactive',
+  // not used yet
+  'invalid',
+];
 
 describe('<MapLegend />', () => {
   it('renders in small state', () => {
     const { getByRole, getAllByRole } = render(<MapLegend />);
     expect(getByRole('heading')).toBeInTheDocument();
     expect(getAllByRole('img')).toHaveLength(
-      utils.REPORT_STATUSES.length - NUM_UNUSED
+      utils.REPORT_STATUSES.length - UNUSED_STATUSES.length
     );
   });
 });
