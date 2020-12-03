@@ -56,12 +56,7 @@ const PlusIcon = styled(Plus)`
 const CTAButton = ({ onTab, shiftLeft }) => (
   <ButtonWrapper shiftLeft={shiftLeft}>
     <Button onClick={onTab} className="wiggle">
-      {config.reports.enabled && (
-        <>
-          <PlusIcon /> Neue Meldung
-        </>
-      )}
-      {!config.reports.enabled && <>Mehr Infos</>}
+      <PlusIcon /> Neue Meldung
     </Button>
   </ButtonWrapper>
 );

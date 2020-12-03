@@ -39,6 +39,17 @@ const MapWrapper = styled.div`
   flex-direction: column;
 `;
 
+const MapControls = ({ onTab, onLocationChange, shiftLeft, isCTAHidden }) => (
+  <>
+    <LocatorControl
+      key="ReportsOverviewMap__LocatorControl"
+      onChange={onLocationChange}
+      customPosition={{ bottom: '105px', right: '7px' }}
+    />
+    {!isCTAHidden && <CTAButton onTab={onTab} shiftLeft={shiftLeft} />}
+  </>
+);
+
 class OverviewMap extends Component {
   constructor(props) {
     super(props);
@@ -158,22 +169,6 @@ class OverviewMap extends Component {
       (isDesktopView && hasDetailId && isMenuOpen) ||
       config.region === 'berlin';
 
-    const mapControls = (
-      <>
-        <LocatorControl
-          key="ReportsOverviewMap__LocatorControl"
-          onChange={this.onLocationChange}
-          customPosition={{ bottom: '105px', right: '7px' }}
-        />
-        {!isCTAHidden && (
-          <CTAButton
-            onTab={this.onCTAButtonTab}
-            shiftLeft={isCTAButtonShifted}
-          />
-        )}
-      </>
-    );
-
     return (
       <MapView>
         {errorMessage && (
@@ -197,7 +192,14 @@ class OverviewMap extends Component {
             zoomControlPosition="top-left"
             isCTAButtonShifted={isCTAButtonShifted}
           />
-          {this.state.isLoading ? null : mapControls}
+          {this.state.isLoading ? null : (
+            <MapControls
+              isCTAHidden={isCTAHidden}
+              onLocationChange={this.onLocationChange}
+              onTab={this.onCTAButtonTab}
+              shiftLeft={isCTAButtonShifted}
+            />
+          )}
           {selectedReport && !hasDetailId && (
             <ReportsPopup
               onClose={this.onPopupClose}
