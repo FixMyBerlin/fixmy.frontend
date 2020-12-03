@@ -15,11 +15,11 @@ Beispiel:
 
 In diesem Beispiel würde also im Lauf der Kampagne A geprüft werden, welchen Betreiber:innen ein Angebot zu machen ist, mit welchem sie auch im Zeitraum der Kampagne B eine Sondernutzung bewilligt bekommen könnten.
 
-## Prüfung und Versandt des Antrags
+## Prüfung und Versand des Antrags
 
-Voraussetzung ist ein authorisierter Zugang zur Django-Webanwendung, welcher von Administrator:innen ausgestellt werden kann.
+Voraussetzung ist ein autorisierter Zugang zur Django-Webanwendung, welcher von Administrator:innen ausgestellt werden kann.
 
-1. Öffnen Sie durch Klick auf "Anträge auf Ausnahmegenehmigung" und Auswahl eines Eintrags einen bereits bewilligten Antrag. Hier kann nun geprüft werden, ob den Betreibern ein Folgeantrag bewilligt werden kann, wenn dieser gestellt wird.
+1. Öffnen Sie durch Klick auf "Anträge auf Ausnahmegenehmigung" und Auswahl eines Eintrags einen bereits bewilligten Antrag. Hier kann nun geprüft werden, ob den Betreiber:innen ein Folgeantrag bewilligt werden kann, wenn dieser gestellt wird.
 2. Nach erfolgter Prüfung navigieren Sie über ihren Browser auf den vorigen Bildschirm, wo Sie eine Auflistung aller Anträge sehen. Wählen sie am linken Bildschirmrand durch Klick auf die Auswahlboxen diejenigen Anträge aus für die ein Angebot zur Verlängerung versandt werden soll.
 3. Klicken Sie über der Liste auf das Dropdown-Menü "Aktion", wählen Sie "Angebot für Folgeantrag senden" und klicken schließlich auf "Ausführen". Die Betreiber:innen erhalten nun per E-Mail einen Link über welchen sie den Folgeantrag stellen können.
 
@@ -27,7 +27,7 @@ Voraussetzung ist ein authorisierter Zugang zur Django-Webanwendung, welcher von
 
 Navigieren Sie zur Auflistung der Anträge. Im Filtermenü am rechten Bildschirmrand können Sie durch Aktivierung des Filters "Nach Angebot für Folgeantrag" mit der Option "Versandt" eine Liste der Anträge betrachten, für die bereits ein Angebot zum Folgeantrag versandt wurde.
 
-Klicken Sie auf einen einzelnen Antrag und scrollen Sie zum unteren Ende der Seite um die Metadaten des Antrags einzusehen. Hier finden Sie folgende Informationen
+Klicken Sie auf einen einzelnen Antrag und scrollen Sie zum unteren Ende der Seite um die Metadaten des Antrags einzusehen. Hier finden Sie folgende Informationen:
 
 - "Angebot für Folgeantrag versandt am": Zu diesem Zeitpunkt wurde das Angebot per E-Mail an die Betreiber:innen geschickt.
 - "Formular für Folgeantrag": Über diesen Link können Sie das Formular zum Folgeantrag betrachten. Vorsicht, dieses Formular ist aktiv, d.h. als Verwaltungsmitarbeiter:in haben Sie hier die Möglichkeit im Namen der Betreiber:innen den Antrag anzunehmen
