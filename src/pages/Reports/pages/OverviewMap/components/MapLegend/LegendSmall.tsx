@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { LinkStyle } from '~/components2/Link';
 import config from '~/pages/Reports/config';
 
-export const BaseWrapper = styled.div`
+export const BaseWrapper = styled.section`
   position: relative;
   width: 100%;
   bottom: 0;
@@ -21,8 +21,10 @@ const LinkButton = styled(LinkStyle('button'))`
 `;
 
 const LegendSmall = ({ onToggle }) => (
-  <WrapperSmall>
-    <LinkButton onClick={onToggle}>Weitere Details</LinkButton>
+  <WrapperSmall role="complementary">
+    <LinkButton onClick={onToggle} aria-expanded="false">
+      Weitere Details
+    </LinkButton>
   </WrapperSmall>
 );
 

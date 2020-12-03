@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import config from '~/pages/Reports/config';
 import { BaseWrapper } from './LegendSmall';
 import ReportPin from '~/pages/Reports/components/ReportPin';
+import CloseIcon from './close.svg';
 
 const Wrapper = styled(BaseWrapper)`
   display: flex;
@@ -20,17 +21,20 @@ const LegendCol = styled.div`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: space-between;
   margin-right: 10px;
 `;
 
 const LegendItem = styled.div`
+  align-items: center;
   color: ${config.colors.lightgrey};
   display: flex;
   flex-direction: row;
   font-size: 0.9em;
   line-height: 1.16;
-  margin-bottom: 10px;
+  & + & {
+    margin-top: 10px;
+  }
   & img {
     margin-right: 10px;
   }
@@ -62,34 +66,31 @@ const LegendLarge = ({ onToggle }) => (
     <LegendWrapper>
       <LegendCol>
         <LegendItem>
-          <ReportPin status="report_verification" />
+          <ReportPin status="report_verification" role="presentation" />
           Meldung in Prüfung
         </LegendItem>
         <LegendItem>
-          <ReportPin status="report_accepted" />
+          <ReportPin status="report_accepted" role="presentation" />
           Meldung wird nahebei umgesetzt
         </LegendItem>
         <LegendItem>
-          <ReportPin status="report_rejected" />
+          <ReportPin status="report_rejected" role="presentation" />
           Meldung abgelehnt
         </LegendItem>
         <LegendItem>
-          <ReportPin status="report_inactive" />
+          <ReportPin status="report_inactive" role="presentation" />
           Meldung inaktiv
         </LegendItem>
       </LegendCol>
       <LegendCol>
         <LegendItem>
-          <ReportPin status="report_new" /> Neue Meldung
+          <ReportPin status="planning" role="presentation" /> In Planung
         </LegendItem>
         <LegendItem>
-          <ReportPin status="planning" /> In Planung
+          <ReportPin status="execution" role="presentation" /> In Umsetzung
         </LegendItem>
         <LegendItem>
-          <ReportPin status="execution" /> In Umsetzung
-        </LegendItem>
-        <LegendItem>
-          <ReportPin status="done" /> Fertiggestellt
+          <ReportPin status="done" role="presentation" /> Fertiggestellt
         </LegendItem>
       </LegendCol>
     </LegendWrapper>
