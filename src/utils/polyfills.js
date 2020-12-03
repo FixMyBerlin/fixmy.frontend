@@ -2,6 +2,9 @@
  * All necessary polyfills should be required here
  * */
 
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
 // we need this because the ky package needs fetch and it does not get added automatically with @babel/preset-env
 import 'whatwg-fetch';
 
