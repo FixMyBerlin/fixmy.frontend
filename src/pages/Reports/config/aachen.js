@@ -31,6 +31,7 @@ const aachenConfig = {
   },
   landing: {
     title: 'Radbügel für Aachen',
+    CTA: 'Schauen Sie sich alle Meldungen an',
     logo: {
       source: AachenLogo,
     },
