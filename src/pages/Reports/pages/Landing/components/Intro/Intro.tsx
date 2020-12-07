@@ -55,7 +55,7 @@ const Intro = () => (
   <StyledSection>
     <Headline>{content.intro}</Headline>
     <StyledIcon alt="Icon Fahrradparkplätze" />
-    {content.sections?.map((sec) => (
+    {content.sections?.map((sec: { heading: string; text: string }) => (
       <React.Fragment key={`section-${sec.heading}`}>
         <Headline>{sec.heading}</Headline>
         <Text>{sec.text}</Text>

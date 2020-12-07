@@ -3,8 +3,9 @@ import FixMyLogo from '~/images/logofmb@3x.png';
 
 import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
 import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
+import { ReportsConfig } from '.';
 
-export default {
+const BerlinConfig: ReportsConfig = {
   enabled: false,
   overviewMap: {
     style: 'mapbox://styles/hejco/cjpnt0cc41ipy2rlpu19jgt7a',
@@ -145,7 +146,7 @@ export default {
       steps: null,
     },
   },
-  form: { placementNotice: true },
+  form: { placementNotice: true, newsletter: false },
   markerSet: 'default',
   tests: {
     addressInput: 'meh',
@@ -161,9 +162,18 @@ export default {
   thankYouNote: {
     base:
       'Deine Meldung ist nun online! Alle Meldungen werden gesammelt und dann dem Bezirksamt am 10. Oktober 2019 übergeben. Die Planer:innen im Straßen- und Grünflächenamt prüfen, welche Meldungen umgesetzt werden können. Die Ergebnisse siehst du anschließend hier auf der Karte',
-    endingLoggedIn:
+    loggedIn:
       'und wir benachrichtigen dich an deine im Login hinterlegte E-Mail-Adresse.',
-    endingLoggedOut:
+    loggedOut:
       'und wenn du deine E-Mail-Adresse eingibst, benachrichtigen wir dich auch per E-Mail.',
   },
+  dialog: {
+    imageResizeOptions: {
+      maxWidth: 800,
+      maxHeight: 800,
+      quality: 0.9,
+    },
+  },
 };
+
+export default BerlinConfig;
