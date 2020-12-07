@@ -45,7 +45,8 @@ const MapControls = ({
   onLocationChange,
   shiftLeft,
   isCTAHidden,
-  popupVisible,
+  isPopupVisible,
+  isDetailOpen,
 }) => {
   return config.reports.enabled ? (
     <>
@@ -57,7 +58,7 @@ const MapControls = ({
       {!isCTAHidden && <CTAButton onTab={onTab} shiftLeft={shiftLeft} />}
     </>
   ) : (
-    <>{!popupVisible && <MapLegend />}</>
+    <MapLegend isPopupVisible={isPopupVisible} isDetailOpen={isDetailOpen} />
   );
 };
 
@@ -209,7 +210,8 @@ class OverviewMap extends Component {
               onLocationChange={this.onLocationChange}
               onTab={this.onCTAButtonTab}
               shiftLeft={isCTAButtonShifted}
-              popupVisible={selectedReport && !hasDetailId}
+              isPopupVisible={selectedReport && !hasDetailId}
+              isDetailOpen={hasDetailId}
             />
           )}
           {selectedReport && !hasDetailId && (
