@@ -1,3 +1,5 @@
+import routes from './routes';
+
 interface Menu {
   size: number;
   profileLabel: string;
@@ -55,14 +57,14 @@ const menuConfig: Menu = {
     {
       type: 'link',
       label: 'Planungskarte',
-      link: '/planungen',
+      link: routes.projects,
       icon: 'map',
       border: true,
     },
     {
       type: 'link',
       label: 'Analyse',
-      link: '/analyse/planungen',
+      link: routes.analysis,
       icon: 'analysis',
       border: false,
     },
@@ -81,14 +83,14 @@ const menuConfig: Menu = {
       type: 'link',
       label: 'Temporäre Spielstraßen',
       icon: 'spielstrassen-icon',
-      link: '/friedrichshain-kreuzberg/spielstrassen',
+      link: routes.spielstrassen.landing,
       border: true,
     },
     {
       type: 'link',
-      label: 'Karte der Radbügelmeldungen',
+      label: 'Radbügel-Meldedialog',
       icon: 'reports-icon',
-      link: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
+      link: routes.reports.landing,
       border: false,
     },
     {
@@ -106,7 +108,7 @@ const menuConfig: Menu = {
       type: 'link',
       label: 'Ergebnisse der Straßencheck-Umfrage',
       icon: 'icon-flask',
-      link: '/research/subjektive-sicherheit',
+      link: routes.research.landing,
       border: true,
     },
     {
