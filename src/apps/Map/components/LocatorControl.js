@@ -43,7 +43,13 @@ const userFeedback = oneLine`Wenn Sie sich orten lassen wollen, müssen Sie eine
   des Browsers rückgängig machen.
 `;
 
-const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
+const LocatorControl = ({
+  position,
+  customPosition,
+  onChange,
+  onStart,
+  className,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -85,7 +91,11 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
         />
       )}
 
-      <MapControl position={position} customPosition={customPosition}>
+      <MapControl
+        position={position}
+        customPosition={customPosition}
+        className={className}
+      >
         <LocatorButton disabled={isLoading} onClick={locate}>
           {Icon}
         </LocatorButton>
@@ -104,6 +114,7 @@ LocatorControl.propTypes = {
   }),
   onChange: PropTypes.func,
   onStart: PropTypes.func,
+  className: PropTypes.string,
 };
 
 LocatorControl.defaultProps = {
@@ -111,6 +122,7 @@ LocatorControl.defaultProps = {
   onChange: () => {},
   onStart: () => {},
   customPosition: undefined,
+  className: null,
 };
 
 export default LocatorControl;

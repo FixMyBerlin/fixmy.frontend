@@ -11,8 +11,6 @@ import Link from '~/components/Link';
 import MenuButton from '~/pages/Reports/components/MenuButton';
 import ScrollLink from '~/pages/Reports/components/ScrollLink';
 import { media } from '~/styles/utils';
-import FahrRadLogo from '~/images/aachen/fahr-rad-logo@2x.png';
-import LogoAachen from '~/images/aachen/logo-stadt-aachen@2x.png';
 
 const Section = styled.section`
   height: 100vh;
@@ -61,23 +59,6 @@ const StyledMenuButton = styled(MenuButton)`
     : '0 2px 4px 0 rgba(0, 0, 0, 0.5)'};
 `;
 
-const StyledHeading = styled.h2`
-  font-family: '${config.titleFont}', sans-serif;
-  font-size: 3em;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.25;
-  letter-spacing: normal;
-  text-align: center;
-  color: white;
-  margin-bottom: 39px;
-
-  ${media.m`
-    font-size: 4em;
-  `}
-`;
-
 const StyledButton = styled.div`
   border-radius: ${config.reports.flatButtons ? '0' : '4px'};
   border: none;
@@ -111,30 +92,6 @@ const StyledLink = styled(Link)`
   &:hover {
     color: white;
   }
-`;
-
-const TopLogo = styled.img`
-  position: absolute;
-  top: 2em;
-  right: 2em;
-  width: 92px;
-
-  ${media.m`
-    top: 2em;
-    right: 2em;
-    width: 148px;
-  `}
-`;
-
-const CenterLogo = styled.img`
-  display: none;
-
-  ${media.m`
-    display: block;
-    width: 80px;
-    position: absolute;
-    top: 2em;
-  `};
 `;
 
 const OnlyDesktop = styled.span`
@@ -187,23 +144,17 @@ const MapButton = ({ onClick, children = null }) => (
 type Props = {
   dispatch: Dispatch;
   history: History;
+  children?: React.ReactNode;
 };
 
-const TopSection = ({ dispatch, history }: Props) => (
+const TopSection = ({ dispatch, history, children }: Props) => (
   <Section>
     <MenuButton whiteFill="true" />
     <FlexWrapper>
       <StyledMenuButton whiteFill="true" />
-      <CenterLogo src={FahrRadLogo} alt="Logo Fahr-Rad Aachen" />
-      <TopLogo
-        src={LogoAachen}
-        alt="Logo Stadt Aachen"
-        data-cy="reports-landing-logo"
-      />
 
-      <StyledHeading data-cy="reports-landing-header">
-        {config.reports.landing?.title}
-      </StyledHeading>
+      {children}
+
       {config.reports.enabled && (
         <>
           <OnlyMobile>
@@ -216,7 +167,7 @@ const TopSection = ({ dispatch, history }: Props) => (
       )}
       {!config.reports.enabled && (
         <MapButton onClick={() => navigateToOverview(dispatch, history)}>
-          Schauen Sie sich alle Meldungen an
+          {config.reports.landing.CTA}
         </MapButton>
       )}
     </FlexWrapper>

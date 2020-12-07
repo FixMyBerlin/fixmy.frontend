@@ -1,7 +1,8 @@
 import AachenLogo from '~/images/aachen/logo-stadt-aachen-bg.png';
 import LandingBackground from '~/images/aachen/landing_background.jpg';
+import { ReportsConfig } from '.';
 
-const aachenConfig = {
+const aachenConfig: ReportsConfig = {
   enabled: false,
   overviewMap: {
     style: 'mapbox://styles/hejco/ck7q440d50b6s1ip928c7zlbb',
@@ -31,6 +32,7 @@ const aachenConfig = {
   },
   landing: {
     title: 'Radbügel für Aachen',
+    CTA: 'Schauen Sie sich alle Meldungen an',
     logo: {
       source: AachenLogo,
     },
@@ -142,6 +144,13 @@ const aachenConfig = {
       'und wir benachrichtigen Sie an Ihre im Login hinterlegte E-Mail-Adresse.',
     loggedOut:
       'und wenn Sie Ihre E-Mail-Adresse eingeben, benachrichtigen wir Sie auch per E-Mail.',
+  },
+  dialog: {
+    imageResizeOptions: {
+      maxWidth: 800,
+      maxHeight: 800,
+      quality: 0.9,
+    },
   },
 };
 

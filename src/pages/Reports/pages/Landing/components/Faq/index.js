@@ -6,8 +6,7 @@ import FaqItem from './FaqItem';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 
 const FaqWrapper = styled.div`
-  padding-top: 48px;
-  margin-bottom: 62px;
+  margin: 2em 0;
 
   .feedbackmail {
     color: ${config.colors.interaction};
