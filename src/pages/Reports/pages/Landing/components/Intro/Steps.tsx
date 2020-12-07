@@ -51,9 +51,16 @@ const StepNumber = styled.span`
   font-weight: bold;
 `;
 
-export default ({ steps }) => (
+type Step = {
+  text: string;
+};
+interface Props {
+  steps: Step[];
+}
+
+const Steps = ({ steps }: Props) => (
   <Wrapper>
-    {steps.map(({ text }, step) => (
+    {steps.map(({ text }, step: number) => (
       // Array index may be used as index here because the array is static
       // eslint-disable-next-line react/no-array-index-key
       <Item key={`step__${step}`}>
@@ -65,3 +72,5 @@ export default ({ steps }) => (
     ))}
   </Wrapper>
 );
+
+export default Steps;

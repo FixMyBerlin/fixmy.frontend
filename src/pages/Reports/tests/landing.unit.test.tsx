@@ -11,7 +11,7 @@ describe('Landing page', () => {
     const { getAllByRole } = render(<Landing />);
     config.reports.enabled = true;
     expect(
-      getAllByRole('button', { name: 'Zur Karte mit allen Meldungen' })
+      getAllByRole('button', { name: config.reports.landing.CTA })
     ).toHaveLength(2);
   });
   it('renders when reports are disabled', () => {
@@ -19,7 +19,7 @@ describe('Landing page', () => {
     config.reports.enabled = false;
     expect(
       getAllByRole('button', {
-        name: 'Sagen Sie uns, wo Fahrradbügel benötigt werden',
+        name: config.reports.landing.CTA,
       })
     ).toHaveLength(2);
   });
