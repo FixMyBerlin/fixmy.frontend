@@ -4,8 +4,7 @@ import validateNewReport from './state/tests/schemaValidation/validateNewReport'
 import logger from '~/utils/logger';
 import config from '~/pages/Reports/config';
 
-export const reportsEndpointUrl =
-  config.apiUrl + config.reports.apiRoute || '/reports';
+export const reportsEndpointUrl = config.apiUrl + '/reports';
 
 // copied from User\apiservice TODO: factor out, de-dupe
 async function handleSubmitRequest(
