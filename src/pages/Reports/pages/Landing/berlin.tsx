@@ -7,7 +7,7 @@ import HowItWorksSection from './components/HowItWorksSection';
 import Quote from './components/QuoteWeisbrich';
 import Faq from './components/Faq';
 import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
-import AboveFold from './AboveFold';
+import AboveFold from './components/AboveFold';
 import BelowFold from './components/BelowFold';
 import { media } from '~/styles/utils';
 

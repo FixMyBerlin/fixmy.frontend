@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
-import AboveFold from './AboveFold';
+import AboveFold from './components/AboveFold';
 import BelowFold from './components/BelowFold';
 import config from '~/pages/Reports/config';
 import CTA from './components/CTA';
