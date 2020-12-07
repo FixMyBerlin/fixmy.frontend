@@ -10,9 +10,14 @@ export const BaseWrapper = styled.section`
   bottom: 0;
   color: ${config.colors.white};
   display: flex;
-  padding: 10px 20px;
+  padding: 5px 10px;
   position: relative;
   width: 100%;
+  line-height: 1.4;
+
+  ${media.s`
+    padding: 0.625rem 1.2rem;
+  `}
 
   ${media.m`
     bottom: initial;
