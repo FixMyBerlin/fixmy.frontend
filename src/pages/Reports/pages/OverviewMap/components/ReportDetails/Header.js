@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
-import utils from '~/pages/Reports/utils';
 
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 
 import config from '~/pages/Reports/config';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
+import ReportPin from '~/pages/Reports/components/ReportPin';
 
 const HeadlineSection = styled.div`
   display: flex;
@@ -38,30 +38,9 @@ const StatusIndicatorWrapper = styled.div`
   align-items: center;
 `;
 
-const ReportPin = styled.img.attrs((props) => ({
-  src: utils.getMarkerSrc({ status: props.status }),
-  alt: 'A marker icon',
-}))`
-  margin-left: auto;
-  width: ${(props) => (props.small ? '20px' : '40px')};
-  height: ${(props) => (props.small ? '20px' : '50px')};
-`;
-
 const DetailsHeading = styled(Heading)`
   font-size: 1.4em;
 `;
-
-// statuses for which marker images are small
-const smallMarkers = [
-  'report_verification',
-  'report_accepted',
-  'report_rejected',
-  'report_inactive',
-  // deprecated
-  'verification',
-  'accepted',
-  'rejected',
-];
 
 const DetailsHeader = ({ details: { number }, status }) => (
   <>
@@ -84,7 +63,7 @@ const DetailsHeader = ({ details: { number }, status }) => (
       <StatusIndicator data-cy="reports-detail-status">
         Status: {getReportStatusCaption(status)}
       </StatusIndicator>
-      <ReportPin small={smallMarkers.indexOf(status) > -1} status={status} />
+      <ReportPin status={status} />
     </StatusIndicatorWrapper>
   </>
 );
