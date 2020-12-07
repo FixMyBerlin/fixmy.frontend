@@ -10,7 +10,7 @@ import debug from 'debug';
 import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
-import { matchMediaSize, breakpoints } from '~/styles/utils';
+import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';
 import CTAButton from './components/CTAButton';
@@ -40,6 +40,19 @@ const MapWrapper = styled.div`
   flex-direction: column;
 `;
 
+const StyledLocatorControl = styled(LocatorControl)`
+  top: 16px;
+  right: 16px;
+  bottom: auto;
+  left: auto;
+
+  ${media.m`
+    right: 45px;
+    bottom: 45px;
+    top: auto;
+  `}
+`;
+
 const MapControls = ({
   onTab,
   onLocationChange,
@@ -48,17 +61,21 @@ const MapControls = ({
   isPopupVisible,
   isDetailOpen,
 }) => {
-  return config.reports.enabled ? (
+  return (
     <>
-      <LocatorControl
+      <StyledLocatorControl
         key="ReportsOverviewMap__LocatorControl"
         onChange={onLocationChange}
-        customPosition={{ bottom: '105px', right: '7px' }}
       />
-      {!isCTAHidden && <CTAButton onTab={onTab} shiftLeft={shiftLeft} />}
+      {config.reports.enabled ? (
+        <>{!isCTAHidden && <CTAButton onTab={onTab} shiftLeft={shiftLeft} />}</>
+      ) : (
+        <MapLegend
+          isPopupVisible={isPopupVisible}
+          isDetailOpen={isDetailOpen}
+        />
+      )}
     </>
-  ) : (
-    <MapLegend isPopupVisible={isPopupVisible} isDetailOpen={isDetailOpen} />
   );
 };
 

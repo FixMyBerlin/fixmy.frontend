@@ -53,6 +53,7 @@ export default (props) => (
   <MapControl
     data-cy="map-map-control"
     margins={getMargins(props)}
+    className={props.className}
     {...props}
   />
 );
