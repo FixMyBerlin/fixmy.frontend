@@ -5,7 +5,7 @@ import config from '~/pages/Reports/config';
 import BikeIcon from '~/images/reports/noun-bicycle.svg';
 import { media } from '~/styles/utils';
 import Steps from './Steps';
-import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
+import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
 
 const StyledSection = styled.section`
   display: flex;
