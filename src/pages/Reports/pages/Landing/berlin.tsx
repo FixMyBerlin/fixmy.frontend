@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
 import CTA from './components/CTA';
-import HowItWorksSection from './components/HowItWorksSection';
+import Intro from './components/Intro';
 import Quote from './components/QuoteWeisbrich';
 import Faq from './components/Faq';
 import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
@@ -51,7 +51,7 @@ const BerlinLanding = () => (
       </StyledHeading>
     </AboveFold>
     <BelowFold>
-      <HowItWorksSection />
+      <Intro />
       <CTA />
       <StyledHR className="light" />
       <Quote />

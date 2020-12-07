@@ -11,10 +11,10 @@ const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 0 0 0;
+  margin: 2.5rem auto;
 
   ${media.m`
-    padding: 80px 0 0 0;
+    margin: 5em auto 2em;
   `}
 `;
 
@@ -51,7 +51,7 @@ const content = config.reports.enabled
   ? config.reports.landing.reportsActive
   : config.reports.landing.reportsInactive;
 
-export default () => (
+const Intro = () => (
   <StyledSection>
     <Headline>{content.intro}</Headline>
     <StyledIcon alt="Icon Fahrradparkplätze" />
@@ -70,3 +70,5 @@ export default () => (
     )}
   </StyledSection>
 );
+
+export default Intro;

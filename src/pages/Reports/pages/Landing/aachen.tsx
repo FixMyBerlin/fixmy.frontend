@@ -9,7 +9,7 @@ import CTA from './components/CTA';
 import FahrRadLogo from '~/images/aachen/fahr-rad-logo@2x.png';
 import Faq from './components/Faq';
 import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
-import HowItWorksSection from './components/HowItWorksSection';
+import Intro from './components/Intro';
 import LogoAachen from '~/images/aachen/logo-stadt-aachen@2x.png';
 import MapLink from './components/MapLink';
 import Quote from './components/QuoteAachen';
@@ -87,7 +87,7 @@ const AachenLanding = () => (
       </StyledHeading>
     </AboveFold>
     <BelowFold>
-      <HowItWorksSection />
+      <Intro />
       <HR className="light" />
       <Quote />
       <CTA />
