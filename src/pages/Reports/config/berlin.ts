@@ -1,6 +1,8 @@
 import config from '~/config';
 import FixMyLogo from '~/images/logofmb@3x.png';
 
+import XHainSmall from '~/images/gastro/wappen.png';
+import XHainLarge from '~/images/gastro/wappen@2x.png';
 import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
 import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 import { ReportsConfig } from '.';
@@ -48,6 +50,13 @@ const BerlinConfig: ReportsConfig = {
       attribution: 'Photo by Christin Hume on Unsplash',
     },
     stepColors: [config.colors.interaction, '#ff99d5', config.colors.black],
+    logoFooter: {
+      large: XHainLarge,
+      small: XHainSmall,
+      alt: 'Wappen Friedrichshain-Kreuzberg',
+      footerLine:
+        'Ein Angebot des Bezirksamt Friedrichshain-Kreuzberg von Berlin',
+    },
     reportsActive: {
       intro:
         'Damit du dein Fahrrad überall sicher abschließen kannst, installiert das Bezirksamt Friedrichshain-Kreuzberg neue Fahrradbügel. Der Meldezeitraum für Bürger*innen ist abgeschlossen. Es wurden XXXX Meldungen mit XXXX Bügeln durch Bürger*innen gemeldet.',

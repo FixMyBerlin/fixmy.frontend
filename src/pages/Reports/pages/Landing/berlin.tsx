@@ -10,6 +10,7 @@ import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
 import AboveFold from './components/AboveFold';
 import BelowFold from './components/BelowFold';
 import { media } from '~/styles/utils';
+import LogoFooter from './components/LogoFooter';
 
 const CenterLogo = styled.img`
   display: block;
@@ -58,6 +59,7 @@ const BerlinLanding = () => (
       <StyledHR className="light" />
       <Faq />
       <CTA />
+      {config.reports.landing.logoFooter && <LogoFooter />}
     </BelowFold>
   </>
 );

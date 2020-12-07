@@ -24,6 +24,12 @@ interface LandingConfig {
   stepColors: string[];
   reportsActive: LandingContent;
   reportsInactive: LandingContent;
+  logoFooter?: {
+    large: string;
+    small: string;
+    alt: string;
+    footerLine: string;
+  };
 }
 
 interface LocateMeMapConfig {
@@ -50,7 +56,6 @@ interface OverviewMapConfig {
 
 export interface ReportsConfig {
   enabled: boolean;
-  apiRoute?: string;
   dialog: {
     imageResizeOptions: {
       maxWidth: number;
