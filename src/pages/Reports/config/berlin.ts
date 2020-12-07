@@ -130,7 +130,7 @@ const BerlinConfig: ReportsConfig = {
     },
     reportsInactive: {
       intro:
-        'Damit du dein Fahrrad überall sicher abschließen kannst, installiert das Bezirksamt Friedrichshain-Kreuzberg neue Fahrradbügel. Der Meldezeitraum für Bürger*innen ist abgeschlossen. Es wurden 1200 Meldungen mit 9000 Bügeln durch Bürger*innen gemeldet.',
+        'Damit du dein Fahrrad überall sicher abschließen kannst, installiert das Bezirksamt Friedrichshain-Kreuzberg neue Fahrradbügel. Der Meldezeitraum für Bürger*innen ist abgeschlossen. Es wurden über 1200 Meldungen mit fast 9000 Bügeln durch Bürger*innen gemeldet.',
       sections: [
         {
           heading: 'Wie sieht das weitere Vorgehen aus?',
