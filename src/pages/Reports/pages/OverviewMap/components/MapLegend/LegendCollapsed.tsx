@@ -10,16 +10,32 @@ export const BaseWrapper = styled.section`
   bottom: 0;
   color: ${config.colors.white};
   display: flex;
-  padding: 10px 20px;
+  padding: 5px 10px;
   position: relative;
   width: 100%;
+  line-height: 1.4;
+
+  ${media.s`
+    padding: 0.625rem 1.2rem;
+  `}
 
   ${media.m`
     bottom: initial;
     position: absolute;
+    right: 24px;
+    top: 24px;
+    width: 40vw;
+    max-width: 24em;
+    font-size: 1.5625vw;
+  `}
+
+  ${media.l`
+    font-size: 16px;
+  `}
+
+  ${media.xl`
     right: 45px;
     top: 45px;
-    width: 384px;
   `}
 `;
 
@@ -54,14 +70,14 @@ const LinkButton = styled(LinkStyle('button'))`
   color: ${config.colors.white};
   padding-left: 0;
 
-  ${media.m`
+  ${media.l`
     display: none;
   `}
 `;
 
 const StyledLegendGrid = styled(LegendGrid)`
   display: none;
-  ${media.m`
+  ${media.l`
     display: flex;
   `}
 `;
