@@ -10,7 +10,7 @@ import Store from '~/store';
 
 import { Example } from './Article.stories';
 
-describe('<ArticleHeader>', () => {
+describe('Article example', () => {
   it('renders', () => {
     const history = createMemoryHistory();
     const { getByRole, getAllByRole } = render(

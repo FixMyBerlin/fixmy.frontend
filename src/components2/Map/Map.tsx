@@ -12,6 +12,7 @@ const Wrapper = styled.div`
 interface Props extends Partial<MapboxGL.MapboxOptions> {
   onInit?: (arg0: MapboxGL.Map) => void;
   className?: string;
+  mapboxStyle?: string;
 }
 
 const initMap = ({
@@ -21,10 +22,16 @@ const initMap = ({
   center,
   zoom,
   mapboxProps,
+  mapboxStyle,
 }) => {
+  // Offer to pass mapbox style URL using `mapboxStyle` prop or `style` prop
+  // with the former taking precedence. `style` is very generic and may produce
+  // linter warnings in some IDEs.
+  const style = mapboxStyle || mapboxProps.style;
   const map = new MapboxGL.Map({
     container: mapContainer.current,
     ...mapboxProps,
+    style,
   });
 
   logger('Init map with', mapboxProps);
@@ -44,6 +51,7 @@ const initMap = ({
  * Can be styled with `styled-components`
  *
  * @param props - extends the props of MapboxGL.Map
+ * @param props.mapboxStyle - Mapbox style URL
  * @param props.center - update to move map center
  * @param props.zoom - update to zoom map view
  * @param props.onInit - callback to handle the map instance once loaded
@@ -52,12 +60,27 @@ const Map = (props: Props) => {
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
 
-  const { onInit, className, center, zoom, ...mapboxProps } = props;
+  const {
+    onInit,
+    className,
+    center,
+    zoom,
+    mapboxStyle,
+    ...mapboxProps
+  } = props;
 
   useEffect(() => {
     MapboxGL.accessToken = config.mapbox.accessToken;
     if (map == null)
-      initMap({ setMap, mapContainer, onInit, center, zoom, mapboxProps });
+      initMap({
+        setMap,
+        mapContainer,
+        onInit,
+        center,
+        zoom,
+        mapboxStyle,
+        mapboxProps,
+      });
   }, [map]);
 
   useEffect(() => {
