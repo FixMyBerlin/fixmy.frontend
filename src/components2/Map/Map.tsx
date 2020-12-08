@@ -38,6 +38,16 @@ const initMap = ({
   });
 };
 
+/**
+ * Map component based on MapboxGL.js
+ *
+ * Can be styled with `styled-components`
+ *
+ * @param props - extends the props of MapboxGL.Map
+ * @param props.center - update to move map center
+ * @param props.zoom - update to zoom map view
+ * @param props.onInit - callback to handle the map instance once loaded
+ */
 const Map = (props: Props) => {
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
@@ -58,6 +68,7 @@ const Map = (props: Props) => {
 
   return (
     <Wrapper
+      aria-label="Interactive WebGL map"
       className={className}
       ref={(el) => {
         if (mapContainer != null) mapContainer.current = el;
