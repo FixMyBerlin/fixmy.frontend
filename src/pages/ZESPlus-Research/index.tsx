@@ -15,7 +15,7 @@ import LogoZES from '~/images/eichwalde/logo-zes.png';
 import LogoZES2 from '~/images/eichwalde/logo-zes@2x.png';
 import LogoZES3 from '~/images/eichwalde/logo-zes@3x.png';
 
-import Logos from './Logos';
+import Logos from './components/Logos';
 import SectionCycling from './sections/02_cycling';
 import SectionSafety from './sections/03_safety';
 import SectionContribute from './sections/04_contribute';
