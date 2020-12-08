@@ -49,7 +49,7 @@ const fixMapboxBug = (config) => {
 };
 
 module.exports = {
-  stories: ['../src/**/*.stories.[tj]s'],
+  stories: ['../src/**/*.stories.@(ts|js)'],
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
