@@ -14,14 +14,14 @@ const MAP_STYLE_SAFETY = 'mapbox://styles/hejco/ckguzkrtq06em19l9477wwzc2';
 // const MAP_STYLE_TARGET = 'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';
 
 const Legend = styled.div`
+  background-color: ${config.colors.inactivegrey};
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-bottom: 20px;
-  margin: 1em -16px;
-  padding: 0.5em 1em;
-  background-color: ${config.colors.inactivegrey};
   justify-content: space-between;
+  margin: 1em -16px;
+  padding-bottom: 20px;
+  padding: 0.5em 1em;
 
   ${media.m`
     margin: 0 auto;
@@ -32,8 +32,12 @@ const Legend = styled.div`
 const LegendCol = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   font-size: 0.75em;
+  justify-content: space-between;
+
+  ${media.m`
+    font-size: 1em;
+  `}
 `;
 
 const LegendItems = styled.div`

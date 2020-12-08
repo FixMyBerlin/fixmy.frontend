@@ -23,7 +23,7 @@ const Heading1 = styled.h1<StyledHeadingProps>`
   font-weight: 700;
   margin: 0.5em auto;
   line-height: 1.25;
-  max-width: 520px;
+  max-width: 600px;
   color: ${config.colors.darkbg};
 
   ${media.m`
@@ -34,7 +34,7 @@ const Heading1 = styled.h1<StyledHeadingProps>`
 const Heading2 = styled.h2<StyledHeadingProps>`
   font-size: 1.5rem;
   margin: 1.5em auto 1em;
-  max-width: 520px;
+  max-width: 600px;
   color: ${config.colors.darkbg};
   text-transform: uppercase;
 
@@ -46,7 +46,7 @@ const Heading2 = styled.h2<StyledHeadingProps>`
 const Heading3 = styled.h2<StyledHeadingProps>`
   font-size: 1rem;
   margin: 0.67em auto;
-  max-width: 520px;
+  max-width: 600px;
   color: ${config.colors.darkbg};
 
   ${media.m`

@@ -24,8 +24,16 @@ const Page = styled.main<PageProps>`
 
 const ContentWrapperOuter = styled.div`
   position: relative;
-  max-width: ${breakpoints.m}px;
+  max-width: 664px;
   margin: 0 auto;
+
+  ${media.l`
+    margin: 20px auto;
+  `}
+
+  ${media.xl`
+    max-width: 900px;
+  `}
 
   a {
     text-decoration: none;
@@ -40,10 +48,6 @@ const ContentWrapperOuter = styled.div`
   a:visited {
     color: ${config.colors.black};
   }
-
-  ${media.l`
-    margin: 20px auto;
-  `}
 `;
 
 const ContentWrapper = styled.div`
@@ -173,7 +177,7 @@ const ArticleWrapper = ({
             title={tocTitle}
           />
         )}
-        <ContentWrapper>
+        <ContentWrapper className="contentWrapper">
           {React.Children.map(children, (child) => {
             const appendToc =
               child.type.displayName === 'Introduction' &&

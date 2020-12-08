@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledList = styled.ul`
-  max-width: 520px;
+  max-width: 600px;
   margin: 1em auto;
 `;
 

@@ -5,7 +5,7 @@ import InnerImg, { InnerImageProps } from './InnerImage';
 import { ImageWrapperFull } from './ImageFull';
 
 const ImageWrapperSimple = styled(ImageWrapperFull)`
-  max-width: 520px;
+  max-width: 600px;
 `;
 
 const Image = ({

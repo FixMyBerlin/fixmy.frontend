@@ -21,7 +21,7 @@ interface ArticleHeaderProps {
 
 const ArticleHeaderWrapper = styled.div`
   margin: 2em auto 1em auto;
-  max-width: 520px;
+  max-width: 600px;
 `;
 
 const LogoWrapper = styled.div`

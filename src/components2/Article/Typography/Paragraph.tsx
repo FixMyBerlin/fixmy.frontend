@@ -6,7 +6,7 @@ const Paragraph = styled.div`
   font-family: ${config.baseFont};
   margin: 1em auto;
   line-height: 1.5;
-  max-width: 520px;
+  max-width: 600px;
 `;
 
 export default Paragraph;

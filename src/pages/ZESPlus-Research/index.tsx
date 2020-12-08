@@ -23,8 +23,13 @@ import SectionAbout from './sections/05_about';
 import SectionNewsletter from './sections/06_newsletter';
 
 const Wrapper = styled(ArticleWrapper)`
+  background: none;
   h2 {
     text-transform: none;
+  }
+
+  .contentWrapper {
+    box-shadow: none;
   }
 `;
 
