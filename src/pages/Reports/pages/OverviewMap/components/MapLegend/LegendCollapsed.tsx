@@ -87,12 +87,12 @@ const LegendCollapsed = ({ onToggle }) => (
     <Header>Alle Meldungen und Planungen</Header>
     <p>
       Auf dieser Karte sehen Sie alle von Bürger:innen eingereichten Meldungen
-      für neue Radbügelstandorte.{' '}
+      und Planungen der Verwaltung für neue Radbügelstandorte.{' '}
       <StyledLink to={config.routes.reports.landing}>
-        Auf der Startseite
-      </StyledLink>{' '}
-      erfahren Sie mehr über die Hintergründe.
+        Mehr Informationen
+      </StyledLink>
     </p>
+
     <LinkButton onClick={onToggle}>Legende anzeigen</LinkButton>
     <StyledLegendGrid />
   </WrapperSmall>
