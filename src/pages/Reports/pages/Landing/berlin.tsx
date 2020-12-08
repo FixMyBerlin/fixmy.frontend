@@ -46,6 +46,7 @@ const BerlinLanding = () => (
       <CenterLogo
         src={config.reports.landing.logo.source}
         alt="Logo FixMyBerlin"
+        data-cy="reports-landing-logo"
       />
       <StyledHeading data-cy="reports-landing-header">
         {config.reports.landing?.title}
