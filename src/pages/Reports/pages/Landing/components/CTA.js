@@ -27,29 +27,25 @@ const CenteredButton = styled(Button)`
   }
 `;
 
-const Note = styled.p`
-  max-width: 272px;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 1.4;
-  text-align: center;
-  margin: 1em auto 2em auto;
-`;
+// const Note = styled.p`
+//   max-width: 272px;
+//   font-size: 14px;
+//   font-weight: bold;
+//   line-height: 1.4;
+//   text-align: center;
+//   margin: 1em auto 2em auto;
+// `;
 
 const JoinButton = ({ toUrl }) => (
   <>
     <Link to={toUrl}>
-      <CenteredButton>
-        {config.reports.enabled
-          ? 'Sagen Sie uns, wo Fahrradbügel benötigt werden'
-          : 'Zur Karte mit allen Meldungen'}
-      </CenteredButton>
+      <CenteredButton>{config.reports.landing.CTA}</CenteredButton>
     </Link>
-    {!config.reports.enabled && (
+    {/* {!config.reports.enabled && (
       <Note>
         Hinweis: Meldungen konnten bis zum 31. August 2020 eingereicht werden.
       </Note>
-    )}
+    )} */}
   </>
 );
 

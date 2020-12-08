@@ -5,16 +5,16 @@ import config from '~/pages/Reports/config';
 import BikeIcon from '~/images/reports/noun-bicycle.svg';
 import { media } from '~/styles/utils';
 import Steps from './Steps';
-import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
+import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
 
 const StyledSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 0 0 0;
+  margin: 2.5rem auto;
 
   ${media.m`
-    padding: 80px 0 0 0;
+    margin: 5em auto 2em;
   `}
 `;
 
@@ -51,11 +51,11 @@ const content = config.reports.enabled
   ? config.reports.landing.reportsActive
   : config.reports.landing.reportsInactive;
 
-export default () => (
+const Intro = () => (
   <StyledSection>
     <Headline>{content.intro}</Headline>
     <StyledIcon alt="Icon Fahrradparkplätze" />
-    {content.sections?.map((sec) => (
+    {content.sections?.map((sec: { heading: string; text: string }) => (
       <React.Fragment key={`section-${sec.heading}`}>
         <Headline>{sec.heading}</Headline>
         <Text>{sec.text}</Text>
@@ -70,3 +70,5 @@ export default () => (
     )}
   </StyledSection>
 );
+
+export default Intro;

@@ -10,7 +10,7 @@ import FormField from '~/components/FormField';
 import GhostButton from '~/components/GhostButton';
 import ExternalLink from '~/components/ExternalLink';
 import { login } from '~/pages/User/UserState';
-import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
+import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import UserForm from '~/pages/User/components/UserForm';
 import { addUserToReport } from '~/pages/Reports/apiservice';
