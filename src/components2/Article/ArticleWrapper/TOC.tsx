@@ -31,7 +31,7 @@ const TOCHeaderArticle = styled(Heading)`
   `}
 `;
 
-function TOC({ entries, activeIndex, hasActiveState = false }) {
+function TOC({ entries, activeIndex, hasActiveState = false, title = null }) {
   const tocChildren = React.Children.toArray(entries).filter(
     (child: ReactElement) => child.props.toc
   );
@@ -39,10 +39,12 @@ function TOC({ entries, activeIndex, hasActiveState = false }) {
   return (
     <TOCWrapper aria-labelledby="toc-header-article">
       <TOCHeaderArticle as="h2" id="toc-header-article">
-        <FormattedMessage
-          id="components.article.tocHeader"
-          defaultMessage="Gehe direkt zu einem Kapitel"
-        />
+        {title || (
+          <FormattedMessage
+            id="components.article.tocHeader"
+            defaultMessage="Gehe direkt zu einem Kapitel"
+          />
+        )}
       </TOCHeaderArticle>
       {tocChildren.map((entry: ReactElement, index) => (
         <Entry

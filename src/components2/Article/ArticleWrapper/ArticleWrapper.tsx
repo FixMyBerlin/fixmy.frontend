@@ -86,6 +86,7 @@ const OffsetMenuButton = styled(MenuButton)`
 const ArticleWrapper = ({
   bannerTitle,
   bgPattern = defaultBgPattern,
+  tocTitle = null,
   hasToc = false,
   tocHasActiveState = true,
   locales = null,
@@ -169,6 +170,7 @@ const ArticleWrapper = ({
             entries={children}
             activeIndex={activeTocIndex}
             hasActiveState={tocHasActiveState}
+            title={tocTitle}
           />
         )}
         <ContentWrapper>
@@ -187,6 +189,7 @@ const ArticleWrapper = ({
                       entries={children}
                       activeIndex={activeTocIndex}
                       hasActiveState={tocHasActiveState}
+                      title={tocTitle}
                     />
                   )}
                 </>

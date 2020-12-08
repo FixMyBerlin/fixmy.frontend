@@ -52,7 +52,11 @@ const Logo = styled.img`
 `;
 
 const Research = () => (
-  <Wrapper hasToc bannerTitle="Forschungs&shy;projekt - ZES-Plus">
+  <Wrapper
+    hasToc
+    tocTitle="Inhalt"
+    bannerTitle="Forschungs&shy;projekt - ZES-Plus"
+  >
     <ArticleHeader
       toc="Einleitung"
       kicker="Forschungs&shy;projekt - ZES-Plus"
@@ -106,6 +110,7 @@ const Research = () => (
       können Sie sich auf dieser Seite über den Projektverlauf informieren und
       sich mit Anregungen und Fragen an uns wenden.
     </Paragraph>
+
     <Heading as="h2" toc="Radverkehr für die Gemeinden ZES">
       Warum ist der Radverkehr wichtig für die Gemeinden?
     </Heading>
