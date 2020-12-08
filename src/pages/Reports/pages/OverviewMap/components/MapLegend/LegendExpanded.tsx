@@ -29,7 +29,7 @@ const LegendExpanded = ({ onToggle }) => (
   <Wrapper role="complementary" id="reports-map-legend">
     <StyledCloseIcon
       onClick={onToggle}
-      alt="Legende schließen"
+      aria-label="Legende schließen"
       aria-controls="reports-map-legend"
       role="button"
     />
