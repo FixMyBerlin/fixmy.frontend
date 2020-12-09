@@ -12,15 +12,23 @@ import { RootState } from '~/store';
 import ChatTranslate from './chat-translate.svg';
 import LocaleMenu from './LocaleMenu';
 import { LocaleCode } from '~/types';
+import { media } from '~/styles/utils';
 
-const StyledAppBar = styled(({ isOpen, ...props }) => <AppBar {...props} />)`
+const StyledAppBar = styled(AppBar)<
+  typeof AppBar & {
+    isOpen: boolean;
+    hideAppBar: boolean;
+  }
+>`
   && {
-    background-color: ${config.colors.white};
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    background: ${({ hideAppBar }) =>
+      hideAppBar ? 'none' : config.colors.white};
+    box-shadow: ${({ hideAppBar }) =>
+      hideAppBar ? 'none' : '0 0 10px 0 rgba(0, 0, 0, 0.2)'};
 
     .MuiToolbar-root {
       padding-left: 0;
-      opacity: ${({ isOpen }) => (isOpen ? 0.7 : 1)};
+      opacity: ${(props) => (props.isOpen ? 0.7 : 1)};
     }
   }
 `;
@@ -77,6 +85,8 @@ interface Props extends AppBarProps {
   showInfoLink?: boolean;
   logo?: React.ReactNode;
   locales?: LocaleCode[];
+  hideAppBar?: boolean;
+  className?: string;
 }
 
 const Header = ({
@@ -85,7 +95,9 @@ const Header = ({
   logo = null,
   position = 'static',
   locales = null,
+  hideAppBar = false,
   children,
+  className,
   ...props
 }: Props) => {
   const [isLocaleMenuOpen, setLocaleMenu] = useState(false);
@@ -95,21 +107,27 @@ const Header = ({
       position={position}
       role="banner"
       isOpen={isLocaleMenuOpen}
+      hideAppBar={hideAppBar}
+      className={className}
       {...props}
     >
       <Toolbar>
         <MenuButton />
-        <Separator />
-        <LinkWrapper to={to}>
-          {React.Children.count(children) > 0 && (
-            <>
-              <Title>{children}</Title>
-              {showInfoLink === true && (
-                <Subtitle>Alle Infos zur Aktion &gt;</Subtitle>
+        {!hideAppBar && (
+          <>
+            <Separator />
+            <LinkWrapper to={to}>
+              {React.Children.count(children) > 0 && (
+                <>
+                  <Title>{children}</Title>
+                  {showInfoLink === true && (
+                    <Subtitle>Alle Infos zur Aktion &gt;</Subtitle>
+                  )}
+                </>
               )}
-            </>
-          )}
-        </LinkWrapper>
+            </LinkWrapper>
+          </>
+        )}
         {locales && (
           <Button
             endIcon={<ChatTranslateIcon isOpen={isLocaleMenuOpen} />}

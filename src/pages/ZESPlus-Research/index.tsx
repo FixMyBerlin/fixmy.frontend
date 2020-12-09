@@ -9,6 +9,7 @@ import {
   ImageFull,
 } from '~/components2/Article';
 import Link from '~/components2/Link';
+import { media } from '~/styles/utils';
 
 import Image1 from '~/images/eichwalde/research-1.jpg';
 import LogoZES from '~/images/eichwalde/logo-zes.png';
@@ -44,17 +45,17 @@ const Research = () => (
     tocTitle="Inhalt"
     enumerateToc={false}
     bannerTitle="Forschungs&shy;projekt - ZES-Plus"
+    logo={
+      <Logo
+        src={LogoZES2}
+        srcSet={`${LogoZES} 1x, ${LogoZES2} 2x, ${LogoZES3} 3x`}
+        alt="Logo ZES+"
+      />
+    }
   >
     <ArticleHeader
       toc="Einleitung"
       kicker="Forschungs&shy;projekt - ZES-Plus"
-      logo={
-        <Logo
-          src={LogoZES2}
-          srcSet={`${LogoZES} 1x, ${LogoZES2} 2x, ${LogoZES3} 3x`}
-          alt="Logo ZES+"
-        />
-      }
       publishDate={new Date(2020, 6, 29, 10, 0)}
       author="Jörg Jenoch, Bürgermeister Eichwalde"
     >

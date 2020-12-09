@@ -26,7 +26,6 @@ const ContentWrapperOuter = styled.div`
   position: relative;
   max-width: 664px;
   margin: 0 auto;
-
   ${media.l`
     margin: 20px auto;
   `}
@@ -75,20 +74,33 @@ const MobileHeader = styled(Header)`
 const DesktopHeader = styled.div`
   display: none;
   ${media.m`
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
   `}
 `;
 
 const OffsetMenuButton = styled(MenuButton)`
   display: inline-flex;
   ${media.l`
-  top: 30px;
-  left: 40px;
+    && {
+      padding: 30px 40px;
+    }
+  `}
+`;
+
+const LogoWrapper = styled.div`
+  padding: 12px;
+  ${media.l`
+    padding: 30px 40px;
+
   `}
 `;
 
 const ArticleWrapper = ({
   bannerTitle,
+  logo = null,
   bgPattern = defaultBgPattern,
   tocTitle = null,
   hasToc = false,
@@ -163,11 +175,12 @@ const ArticleWrapper = ({
 
   return (
     <Page className={className} bgPattern={bgPattern}>
-      <MobileHeader position="sticky" locales={locales}>
+      <MobileHeader position="sticky" locales={locales} logo={logo}>
         {bannerTitle}
       </MobileHeader>
       <DesktopHeader>
         <OffsetMenuButton />
+        <LogoWrapper>{logo}</LogoWrapper>
       </DesktopHeader>
       <ContentWrapperOuter>
         {hasToc && !renderTocInsideArticle && (
