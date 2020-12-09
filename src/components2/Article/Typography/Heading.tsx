@@ -31,17 +31,31 @@ const Heading1 = styled.h1<StyledHeadingProps>`
   `}
 `;
 
-const Heading2 = styled.h2<StyledHeadingProps>`
+const Heading2style = styled.h2<StyledHeadingProps>`
   font-size: 1.5rem;
-  margin: 1.5em auto 1em;
+  margin: 1.5em auto 0.5em;
   max-width: 600px;
   color: ${config.colors.darkbg};
   text-transform: uppercase;
 
   ${media.m`
-    margin: 2em auto 1em;
+    margin: 2em auto 0.5rem 0;
   `}
 `;
+
+const DecoLine = styled.div`
+  font-size: 1.5rem;
+  width: 50%;
+  border-bottom: 2px solid ${config.colors.change_4};
+  margin-bottom: 1em;
+`;
+
+const Heading2 = ({ children, ...props }) => (
+  <>
+    <Heading2style {...props}>{children}</Heading2style>
+    <DecoLine />
+  </>
+);
 
 const Heading3 = styled.h2<StyledHeadingProps>`
   font-size: 1rem;
