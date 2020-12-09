@@ -138,7 +138,10 @@ const Routes = ({ token }) => (
     {/* analysis pages */}
     {config.routes.analysis != null && (
       <Route
-        path={`${config.routes.analysis}/planungen/:districtName?`}
+        path={[
+          config.routes.analysis,
+          `${config.routes.analysis}/planungen/:districtName?`,
+        ]}
         component={Analysis}
       />
     )}

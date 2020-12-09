@@ -8,7 +8,7 @@
   "whitelist": {
     "default": ["Map", "Reports", "KatasterKI"],
     "aachen": ["Reports"],
-    "berlin": ["Map", "Reports", "KatasterKI"],
+    "berlin": ["Map", "Reports", "KatasterKI", "Analysis"],
     "eichwalde": []
   }
 }
