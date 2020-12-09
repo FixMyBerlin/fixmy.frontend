@@ -5,7 +5,8 @@ import { media } from '~/styles/utils';
 
 const StyledMap = styled(BaseMap)`
   width: 100%;
-  height: 35em;
+  // 4:3 aspect ratio
+  padding-top: 66%;
 `;
 
 const Wrapper = styled.div`
