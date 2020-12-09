@@ -9,6 +9,11 @@ import {
 import { media } from '~/styles/utils';
 import config from '~/config';
 
+const BOUNDS = [
+  [13.4081, 52.2899],
+  [13.7158, 52.5453],
+];
+
 const MAP_STYLE_SAFETY = 'mapbox://styles/hejco/ckguzkrtq06em19l9477wwzc2';
 // const MAP_STYLE_QUALITY = 'mapbox://styles/hejco/ckhurerfv3wgv1aog7t7ek3gs';
 // const MAP_STYLE_TARGET = 'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';
@@ -75,7 +80,7 @@ const SectionSafety = (props: SectionProps) => (
     <Heading as="h2" {...props}>
       Auswertung der Sicherheit
     </Heading>
-    <ArticleMap mapboxStyle={MAP_STYLE_SAFETY} />
+    <ArticleMap mapboxStyle={MAP_STYLE_SAFETY} maxBounds={BOUNDS} />
     <Legend>
       <LegendCol>
         <LegendHeader>Schulwegsicherheit</LegendHeader>
