@@ -72,6 +72,18 @@ const Heading3 = styled.h2<StyledHeadingProps>`
 const AnchorStyle = styled.a`
   display: block;
   border-bottom: none !important;
+
+  &:before {
+    display: block;
+    content: '';
+    height: 4em;
+    margin: -4em 0 0;
+
+    ${media.m`
+    height: 1px;
+    margin: -1px 0 0;
+    `}
+  }
 `;
 
 const headings = {
