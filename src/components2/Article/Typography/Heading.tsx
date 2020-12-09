@@ -70,8 +70,6 @@ const Heading3 = styled.h2<StyledHeadingProps>`
 `;
 
 const AnchorStyle = styled.a`
-  margin-top: -1px;
-  padding-top: 1px;
   display: block;
   border-bottom: none !important;
 `;

@@ -42,6 +42,7 @@ const Research = () => (
   <Wrapper
     hasToc
     tocTitle="Inhalt"
+    enumerateToc={false}
     bannerTitle="Forschungs&shy;projekt - ZES-Plus"
   >
     <ArticleHeader

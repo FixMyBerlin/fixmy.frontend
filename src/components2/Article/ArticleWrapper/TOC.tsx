@@ -9,7 +9,7 @@ import config from '~/config';
 
 const TOCWrapper = styled.nav`
   max-width: 600px;
-  margin: 1.875em auto 0;
+  margin: 1.875em auto;
   font-size: 16px;
   color: ${config.colors.darkbg};
 
@@ -31,7 +31,13 @@ const TOCHeaderArticle = styled(Heading)`
   `}
 `;
 
-function TOC({ entries, activeIndex, hasActiveState = false, title = null }) {
+function TOC({
+  entries,
+  activeIndex,
+  hasActiveState = false,
+  title = null,
+  enumerate = true,
+}) {
   const tocChildren = React.Children.toArray(entries).filter(
     (child: ReactElement) => child.props.toc
   );
@@ -52,6 +58,7 @@ function TOC({ entries, activeIndex, hasActiveState = false, title = null }) {
           key={`tocentry__${entry.props.toc}`}
           active={hasActiveState && activeIndex === index}
           index={index}
+          enumerate={enumerate}
         />
       ))}
     </TOCWrapper>

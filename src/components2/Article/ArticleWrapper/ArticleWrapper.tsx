@@ -92,6 +92,7 @@ const ArticleWrapper = ({
   bgPattern = defaultBgPattern,
   tocTitle = null,
   hasToc = false,
+  enumerateToc = true,
   tocHasActiveState = true,
   locales = null,
   className = null,
@@ -194,6 +195,7 @@ const ArticleWrapper = ({
                       activeIndex={activeTocIndex}
                       hasActiveState={tocHasActiveState}
                       title={tocTitle}
+                      enumerate={enumerateToc}
                     />
                   )}
                 </>
@@ -213,7 +215,11 @@ const ArticleWrapper = ({
               >
                 {child}
                 {appendToc && (
-                  <TOC entries={children} activeIndex={activeTocIndex} />
+                  <TOC
+                    entries={children}
+                    activeIndex={activeTocIndex}
+                    enumerate={enumerateToc}
+                  />
                 )}
               </InView>
             );
