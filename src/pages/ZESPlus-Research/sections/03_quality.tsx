@@ -4,7 +4,7 @@ import { Heading, ImageMulti, SectionProps } from '~/components2/Article';
 import MapQuality from '../components/MapQuality';
 
 import ImageSpeed from './images/speed@2x.jpg';
-import ImageWaitingTimes from './images/waiting-times@2x.jpg';
+import ImageWaitingTimes from './images/wating-times@2x.jpg';
 
 const SectionQuality = (props: SectionProps) => (
   <>
