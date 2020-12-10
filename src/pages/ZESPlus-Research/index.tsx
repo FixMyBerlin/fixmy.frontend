@@ -22,6 +22,8 @@ import SectionSafety from './sections/03_safety';
 import SectionContribute from './sections/04_contribute';
 import SectionAbout from './sections/05_about';
 import SectionNewsletter from './sections/06_newsletter';
+import SectionQuality from './sections/03_quality';
+import SectionNetwork from './sections/03_network';
 
 const Wrapper = styled(ArticleWrapper)`
   background: none;
@@ -100,7 +102,9 @@ const Research = () => (
       sich mit Anregungen und Fragen an uns wenden.
     </Paragraph>
     <SectionCycling toc="Radverkehr für die Gemeinden ZES" />
+    <SectionQuality toc="Auswertung der Oberflächen und Radinfrastruktur" />
     <SectionSafety toc="Auswertung der Sicherheit" />
+    <SectionNetwork toc="Vorbereitung der Netzplanung" />
     <SectionContribute toc="Mitmachen" />
     <SectionAbout toc="Über das Projekt" />
     <SectionNewsletter toc="Newsletter und Feedback" />
