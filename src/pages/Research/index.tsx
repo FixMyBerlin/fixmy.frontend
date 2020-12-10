@@ -67,7 +67,6 @@ const Research = ({ intl }: { intl: IntlShape }) => (
       kicker={intl.formatMessage(messages.kicker)}
       publishDate={new Date(2020, 6, 6, 7, 0)}
       author={intl.formatMessage(messages.authors)}
-      locales={LOCALES}
     >
       <FormattedMessage
         id="research.title"

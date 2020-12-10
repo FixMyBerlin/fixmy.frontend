@@ -67,7 +67,7 @@ const LinkWrapper = styled(Link)`
 `;
 
 const LogoWrapper = styled.div`
-  margin: 1em 1em 1em auto;
+  margin: 1em 0 1em auto;
 `;
 
 const ChatTranslateIcon = styled(({ isOpen, ...props }) => (

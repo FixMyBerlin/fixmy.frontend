@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Kicker from './Kicker';
 import ArticleMeta from './ArticleMeta';
-import LocaleSwitcher from './LocaleSwitcher';
+import LocaleSwitcher from '~/components2/LocaleSwitcher/LocaleSwitcher';
 import Heading from '~/components2/Article/Typography/Heading';
 import { LocaleCode } from '~/types';
 

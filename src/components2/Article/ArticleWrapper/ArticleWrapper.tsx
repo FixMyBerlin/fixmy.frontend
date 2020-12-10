@@ -10,6 +10,7 @@ import MenuButton from '~/components2/MenuButton';
 import { media, breakpoints } from '~/styles/utils';
 import config from '~/config';
 import Header from '~/components2/Header';
+import LocaleSwitcher from '~/components2/LocaleSwitcher';
 
 const log = debug('fmc:Article:ArticleWrapper');
 
@@ -86,6 +87,14 @@ const OffsetMenuButton = styled(MenuButton)`
   ${media.l`
     && {
       padding: 30px 40px;
+    }
+  `}
+`;
+
+const StyledLocaleSwitcher = styled(LocaleSwitcher)`
+  ${media.l`
+    && {
+      right: 1em;
     }
   `}
 `;
@@ -180,7 +189,8 @@ const ArticleWrapper = ({
       </MobileHeader>
       <DesktopHeader>
         <OffsetMenuButton />
-        <LogoWrapper>{logo}</LogoWrapper>
+        {locales && <StyledLocaleSwitcher locales={locales} />}
+        {logo && <LogoWrapper>{logo}</LogoWrapper>}
       </DesktopHeader>
       <ContentWrapperOuter>
         {hasToc && !renderTocInsideArticle && (
