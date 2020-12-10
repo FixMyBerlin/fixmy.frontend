@@ -9,7 +9,6 @@ import {
   ImageFull,
 } from '~/components2/Article';
 import Link from '~/components2/Link';
-import { media } from '~/styles/utils';
 
 import Image1 from '~/images/eichwalde/research-1.jpg';
 import LogoZES from '~/images/eichwalde/logo-zes.png';
