@@ -16,6 +16,10 @@ const Img = styled.img`
   width: 100%;
 `;
 
+const Wrapper = styled.figure`
+  margin: 0;
+`;
+
 const InnerImg = ({
   source,
   alt,
@@ -25,11 +29,17 @@ const InnerImg = ({
   loading = 'lazy',
   ...props
 }: InnerImageProps) => (
-  <>
-    <Img src={source} alt={alt} role={role} loading={loading} {...props} />
-    {subtitle && <Subtitle>{subtitle}</Subtitle>}
+  <Wrapper>
+    <Img
+      src={source}
+      alt={alt || subtitle}
+      role={role}
+      loading={loading}
+      {...props}
+    />
+    {subtitle && <Subtitle className="inner-img-caption">{subtitle}</Subtitle>}
     {children}
-  </>
+  </Wrapper>
 );
 
 export default InnerImg;

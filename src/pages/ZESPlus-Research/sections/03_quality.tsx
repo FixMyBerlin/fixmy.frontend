@@ -13,19 +13,16 @@ const SectionQuality = (props: SectionProps) => (
     </Heading>
     <MapQuality />
     <ImageMulti>
-      <ImageMulti.Inner source={ImageSpeed}>
-        <ImageMulti.Subtitle>
-          Auswertung der durchschnittlichen Geschwindigkeiten an
-          Streckenabschnitten (Quelle: SimRa TU-Berlin)
-        </ImageMulti.Subtitle>
-      </ImageMulti.Inner>
+      <ImageMulti.Inner
+        source={ImageSpeed}
+        subtitle="Auswertung der durchschnittlichen Geschwindigkeiten an Streckenabschnitten (Quelle: SimRa TU-Berlin)"
+      />
 
-      <ImageMulti.Inner source={ImageWaitingTimes}>
-        <ImageMulti.Subtitle>
-          Auswertung der durchschnittlichen Wartezeiten an Knotenpunkten
-          (Quelle: SimRa TU-Berlin)
-        </ImageMulti.Subtitle>
-      </ImageMulti.Inner>
+      <ImageMulti.Inner
+        source={ImageWaitingTimes}
+        subtitle="Auswertung der durchschnittlichen Wartezeiten an Knotenpunkten
+          (Quelle: SimRa TU-Berlin)"
+      />
     </ImageMulti>
   </>
 );

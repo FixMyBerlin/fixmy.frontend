@@ -12,7 +12,6 @@ import { RootState } from '~/store';
 import ChatTranslate from './chat-translate.svg';
 import LocaleMenu from './LocaleMenu';
 import { LocaleCode } from '~/types';
-import { media } from '~/styles/utils';
 
 const StyledAppBar = styled(AppBar)<
   typeof AppBar & {

@@ -53,7 +53,8 @@ export const LegendItems = styled.div`
   justify-content: flex-start;
 `;
 
-export const LegendHeader = styled.h4`
+export const LegendHeader = styled.h3`
+  font-size: 1em;
   margin: 1.5em 0 1em;
 `;
 
@@ -71,7 +72,7 @@ export const LegendItem = styled.div`
 export const LegendSources = styled.div`
   font-size: 0.75em;
   flex: 1 0 100%;
-  color: ${config.colors.midgrey};
+  color: ${config.colors.darkgrey};
   margin: 2em 0 0;
 `;
 
