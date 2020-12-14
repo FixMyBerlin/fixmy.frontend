@@ -21,7 +21,7 @@ import IconV from './icons/varianten-rsv.svg';
 import IconHeatmap from './icons/heatmap.svg';
 import IconZES from './icons/zes.svg';
 
-const MAP_STYLE_QUALITY = 'mapbox://styles/hejco/ckhurerfv3wgv1aog7t7ek3gs';
+const MAP_STYLE_QUALITY = 'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';
 
 const MapNetworks = () => (
   <>
