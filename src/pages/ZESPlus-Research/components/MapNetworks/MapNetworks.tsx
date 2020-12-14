@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Map as ArticleMap } from '~/components2/Article';
-import { BOUNDS_ZES } from '../../constants';
+import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../constants';
 import {
   IconWrapper,
   Legend,
@@ -25,7 +25,12 @@ const MAP_STYLE_QUALITY = 'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';
 
 const MapNetworks = () => (
   <>
-    <ArticleMap mapboxStyle={MAP_STYLE_QUALITY} maxBounds={BOUNDS_ZES} />
+    <ArticleMap
+      mapboxStyle={MAP_STYLE_QUALITY}
+      maxBounds={BOUNDS_ZES}
+      center={ZES_CENTER}
+      zoom={ZES_ZOOM}
+    />
     <Legend>
       <LegendCol>
         <LegendHeader>Übergeordnete Netze</LegendHeader>

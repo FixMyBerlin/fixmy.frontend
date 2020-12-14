@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Map as ArticleMap } from '~/components2/Article';
-import { BOUNDS_ZES } from '../../constants';
+import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../constants';
 import {
   IconWrapper,
   Legend,
@@ -25,7 +25,12 @@ const MAP_STYLE_SAFETY = 'mapbox://styles/hejco/ckguzkrtq06em19l9477wwzc2';
 
 const MapSafety = () => (
   <>
-    <ArticleMap mapboxStyle={MAP_STYLE_SAFETY} maxBounds={BOUNDS_ZES} />
+    <ArticleMap
+      mapboxStyle={MAP_STYLE_SAFETY}
+      maxBounds={BOUNDS_ZES}
+      center={ZES_CENTER}
+      zoom={ZES_ZOOM}
+    />
     <Legend>
       <LegendCol>
         <LegendHeader>Schulwegsicherheit</LegendHeader>
