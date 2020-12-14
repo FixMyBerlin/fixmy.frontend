@@ -20,21 +20,21 @@ const TOCEntryWrapper = styled.a<TOCEntryWrapperProps>`
     opacity: 0.75;
   }
 
-  ${media.xl`
+  ${media.l`
     line-height: 1.2;
     display: block;
     text-align: right;
-    margin-bottom: 25px;
+    margin-bottom: 1em;
     padding-right: 25px;
     border-right: ${(props: StyledProps<TOCEntryWrapperProps>) =>
-      props.active ? `3px solid ${config.colors.interaction}` : 'none'};
+      props.active ? `3px solid ${config.colors.change_4}` : 'none'};
   `}
 `;
 
 const TOCEntryIndex = styled.div`
   font-weight: 700;
 
-  ${media.xl`
+  ${media.l`
     margin-right: 0;
   `}
 `;
@@ -45,13 +45,13 @@ const TOCEntrySeparator = styled.div`
   margin: 0 10px;
   background: #999;
 
-  ${media.xl`
+  ${media.l`
     display: none;
   `}
 `;
 
 const TOCEntryText = styled.div<TOCEntryWrapperProps>`
-  ${media.xl`
+  ${media.l`
     font-weight: ${(props: StyledProps<TOCEntryWrapperProps>) =>
       props.active ? 700 : 300};
   `}

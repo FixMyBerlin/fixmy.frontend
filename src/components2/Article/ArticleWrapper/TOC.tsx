@@ -13,10 +13,10 @@ const TOCWrapper = styled.nav`
   font-size: 16px;
   color: ${config.colors.darkbg};
 
-  ${media.xl`
+  ${media.l`
     position: sticky;
-    transform: translate(-170px, 25px);
-    top: 25px;
+    transform: translate(-170px, 3.5em);
+    top: 3.5em;
     height: 0;
     width: 170px;
     margin: 0;
@@ -26,7 +26,7 @@ const TOCWrapper = styled.nav`
 const TOCHeaderArticle = styled(Heading)`
   margin-bottom: 1em;
 
-  ${media.xl`
+  ${media.l`
     display: none;
   `}
 `;
@@ -37,13 +37,14 @@ function TOC({
   hasActiveState = false,
   title = null,
   enumerate = true,
+  className = null,
 }) {
   const tocChildren = React.Children.toArray(entries).filter(
     (child: ReactElement) => child.props.toc
   );
 
   return (
-    <TOCWrapper aria-labelledby="toc-header-article">
+    <TOCWrapper aria-labelledby="toc-header-article" className={className}>
       <TOCHeaderArticle as="h2" id="toc-header-article">
         {title || (
           <FormattedMessage

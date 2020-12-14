@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { InView } from 'react-intersection-observer';
 import debug from 'debug';
 
-import defaultBgPattern from './assets/bg-pattern.png';
-
 import TOC from './TOC';
 import MenuButton from '~/components2/MenuButton';
 import { media, breakpoints } from '~/styles/utils';
@@ -57,8 +55,6 @@ const ContentWrapper = styled.div`
   color: ${config.colors.darkbg};
 
   @media screen and (min-width: ${breakpoints.m}px) {
-    box-shadow: 0 2px 20px 2px rgba(0, 0, 0, 0.08);
-    border-radius: 4px;
     padding: 2rem 0;
   }
 `;
@@ -107,10 +103,23 @@ const LogoWrapper = styled.div`
   `}
 `;
 
+const MobileTOC = styled(TOC)`
+  ${media.l`
+      display: none;
+    `}
+`;
+
+const DesktopTOC = styled(TOC)`
+  display: none;
+  ${media.l`
+      display: block;
+    `}
+`;
+
 const ArticleWrapper = ({
   bannerTitle,
   logo = null,
-  bgPattern = defaultBgPattern,
+  bgPattern = null,
   tocTitle = null,
   hasToc = false,
   enumerateToc = true,
@@ -119,10 +128,6 @@ const ArticleWrapper = ({
   className = null,
   children,
 }) => {
-  const [renderTocInsideArticle, setRenderTocInsideArticle] = useState(
-    window.innerWidth < breakpoints.xl
-  );
-
   const [activeTocIndex, setActiveTocIndex] = useState(
     tocHasActiveState ? 0 : null
   );
@@ -130,13 +135,6 @@ const ArticleWrapper = ({
   const [visibleSections, setVisibleSections] = useState<number[]>(
     new Array(children.length).map(() => 0)
   );
-
-  useEffect(() => {
-    const onResize = () =>
-      setRenderTocInsideArticle(window.innerWidth < breakpoints.xl);
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
 
   const onViewChange = (
     inView: boolean,
@@ -193,32 +191,33 @@ const ArticleWrapper = ({
         {logo && <LogoWrapper>{logo}</LogoWrapper>}
       </DesktopHeader>
       <ContentWrapperOuter>
-        {hasToc && !renderTocInsideArticle && (
-          <TOC
-            entries={children}
-            activeIndex={activeTocIndex}
-            hasActiveState={tocHasActiveState}
-            title={tocTitle}
-          />
-        )}
         <ContentWrapper className="contentWrapper">
           {React.Children.map(children, (child) => {
             const appendToc =
-              child.type.displayName === 'Introduction' &&
-              hasToc &&
-              renderTocInsideArticle;
+              child.type.displayName === 'Introduction' && hasToc;
+
+            const tocProps = {
+              activeIndex: activeTocIndex,
+              entries: children,
+              enumerate: enumerateToc,
+            };
 
             if (!child.props.toc) {
               return (
                 <>
-                  {child}
                   {appendToc && (
-                    <TOC
-                      entries={children}
-                      activeIndex={activeTocIndex}
+                    <DesktopTOC
                       hasActiveState={tocHasActiveState}
                       title={tocTitle}
-                      enumerate={enumerateToc}
+                      {...tocProps}
+                    />
+                  )}
+                  {child}
+                  {appendToc && (
+                    <MobileTOC
+                      hasActiveState={tocHasActiveState}
+                      title={tocTitle}
+                      {...tocProps}
                     />
                   )}
                 </>
@@ -236,14 +235,9 @@ const ArticleWrapper = ({
                   onViewChange(inView, entry, tocIndex)
                 }
               >
+                {appendToc && <DesktopTOC {...tocProps} />}
                 {child}
-                {appendToc && (
-                  <TOC
-                    entries={children}
-                    activeIndex={activeTocIndex}
-                    enumerate={enumerateToc}
-                  />
-                )}
+                {appendToc && <MobileTOC {...tocProps} />}
               </InView>
             );
           })}
