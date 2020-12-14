@@ -6,6 +6,7 @@ import { AnchorButton } from '~/components2/Button';
 import Link from '~/components2/Link';
 import SimraSrc from '~/images/eichwalde/simra.jpg';
 import { media } from '~/styles/utils';
+import NewsletterWidget from '~/components2/NewsletterWidget';
 
 const DownloadWrapper = styled(Paragraph)`
   display: flex;
@@ -26,14 +27,15 @@ const DownloadWrapper = styled(Paragraph)`
 const SectionContribute = (props: SectionProps) => (
   <>
     <Heading as="h2" {...props}>
-      Mitmachen - jetzt SimRa-App nutzen!
+      Mitmachen - SimRa-App, Newsletter & Feedback
     </Heading>
     <Paragraph>
       Laden Sie die SimRa-App der TU Berlin auf Ihr Handy und zeichnen Sie Ihre
       Strecken beim Radfahren auf. Damit sammeln Sie wertvolle Daten, die die
-      Netzplanung in der Verwaltung unterstützen. Die Aufzeichnung erfolgt unter
-      strengen Datenschutzbestimmungen und Sie können die Daten selber nach
-      Ihren Wünschen anonymisieren.
+      Netzplanung in der Verwaltung und die Bewertung der Infrastruktur
+      unterstützen. Die Aufzeichnung erfolgt unter strengen
+      Datenschutzbestimmungen. Sie können die Daten selber nach Ihren Wünschen
+      anonymisieren.
     </Paragraph>
     <Paragraph>
       <Link href="https://www.digital-future.berlin/forschung/projekte/simra/">
@@ -62,6 +64,26 @@ const SectionContribute = (props: SectionProps) => (
         App für Android/LineageOS ohne Playstore laden
       </AnchorButton>
     </DownloadWrapper>
+
+    <Heading as="h3" {...props}>
+      Newsletter und Feedback
+    </Heading>
+    <Paragraph>
+      Abonnieren Sie unseren Newsletter um aktuelle Informationen zum Projekt zu
+      erhalten.
+    </Paragraph>
+    <Paragraph>
+      <NewsletterWidget height={203} />
+    </Paragraph>
+    {/* <Paragraph>
+      Wenn Sie Fragen zum Projekt oder Feedback haben senden Sie eine E-Mail an
+      den Projektleiter Christoph Kollert.
+    </Paragraph>
+    <Paragraph>
+      <AnchorButton flat href="mailto:Christoph.Kollert@eichwalde.de">
+        Feedback an das Projektteam
+      </AnchorButton>
+    </Paragraph> */}
   </>
 );
 

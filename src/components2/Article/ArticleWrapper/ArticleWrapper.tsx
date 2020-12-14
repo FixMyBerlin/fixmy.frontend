@@ -5,7 +5,7 @@ import debug from 'debug';
 
 import TOC from './TOC';
 import MenuButton from '~/components2/MenuButton';
-import { media, breakpoints } from '~/styles/utils';
+import { media } from '~/styles/utils';
 import config from '~/config';
 import Header from '~/components2/Header';
 import LocaleSwitcher from '~/components2/LocaleSwitcher';
