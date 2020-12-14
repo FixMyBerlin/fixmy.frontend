@@ -1,7 +1,7 @@
 // Maximum map bounds
 export const BOUNDS_ZES = [
-  [13.4081, 52.2899],
-  [13.7158, 52.5453],
+  [13.2081, 51.9899],
+  [13.9158, 52.5453],
 ];
 
 // Starting center
