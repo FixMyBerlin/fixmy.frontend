@@ -13,6 +13,11 @@ const LegendOuter = styled.div`
     margin: 0 auto;
     padding: 1em;
   `}
+
+  ${media.xl`
+    margin: 0 0 0 auto;
+    width: calc(100% - 151px);
+  `}
 `;
 
 const LegendInner = styled.div`

@@ -8,7 +8,7 @@ import Heading from '../Typography/Heading';
 import config from '~/config';
 
 const TOCWrapper = styled.nav`
-  max-width: 600px;
+  max-width: 518px;
   margin: 1.875em auto;
   font-size: 16px;
   color: ${config.colors.darkbg};

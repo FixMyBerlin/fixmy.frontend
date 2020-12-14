@@ -23,23 +23,31 @@ const Heading1 = styled.h1<StyledHeadingProps>`
   font-weight: 700;
   margin: 0.5em auto;
   line-height: 1.25;
-  max-width: 600px;
+  max-width: 518px;
   color: ${config.colors.darkbg};
 
   ${media.m`
     font-size: 2em;
+  `}
+
+  ${media.l`
+    max-width: 598px;
   `}
 `;
 
 const Heading2style = styled.h2<StyledHeadingProps>`
   font-size: 1.5rem;
   margin: 1.5em auto 0.5em;
-  max-width: 600px;
+  max-width: 518px;
   color: ${config.colors.darkbg};
   text-transform: uppercase;
 
   ${media.m`
     margin: 2em auto 0.5rem 0;
+  `}
+
+  ${media.l`
+    max-width: 598px;
   `}
 `;
 
@@ -60,12 +68,16 @@ const Heading2 = ({ children, ...props }) => (
 const Heading3 = styled.h2<StyledHeadingProps>`
   font-size: 1rem;
   margin: 0.67em auto;
-  max-width: 600px;
+  max-width: 518px;
   color: ${config.colors.darkbg};
 
   ${media.m`
     font-size: 1.25rem;
     margin: 2em auto;
+  `}
+
+  ${media.l`
+    max-width: 598px;
   `}
 `;
 

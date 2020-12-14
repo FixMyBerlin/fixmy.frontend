@@ -6,7 +6,7 @@ import {
   ArticleHeader,
   Intro,
   Paragraph,
-  ImageFull,
+  Image,
 } from '~/components2/Article';
 import Link from '~/components2/Link';
 
@@ -32,6 +32,10 @@ const Wrapper = styled(ArticleWrapper)`
 
   .contentWrapper {
     box-shadow: none;
+  }
+
+  .fmc-article-tocentry {
+    margin-bottom: 0.75em;
   }
 `;
 
@@ -80,7 +84,7 @@ const Research = () => (
       Radnetzes, aber auch für die Einbeziehung der lokalen Initiativen sowie
       des direkten Umfelds, in Form der Nachbargemeinden und des BER.
     </Paragraph>
-    <ImageFull source={Image1} alt="" role="presentation" />
+    <Image source={Image1} alt="" role="presentation" />
     <Paragraph>
       Finanziert wird diese Kooperation durch die{' '}
       <Link href="https://www.fona.de/de/massnahmen/foerdermassnahmen/mobilitaet-in-der-stadt.php">

@@ -7,6 +7,7 @@ import { media } from '~/styles/utils';
 
 interface TOCEntryWrapperProps {
   active: boolean;
+  className?: string;
 }
 
 const TOCEntryWrapper = styled.a<TOCEntryWrapperProps>`
@@ -74,7 +75,12 @@ function TOCEntry({ index, entry, active = false, enumerate = true }) {
   });
 
   return (
-    <TOCEntryWrapper active={active} onClick={goToEntry} href={`#${slug}`}>
+    <TOCEntryWrapper
+      active={active}
+      onClick={goToEntry}
+      href={`#${slug}`}
+      className="fmc-article-tocentry"
+    >
       {enumerate && (
         <>
           <TOCEntryIndex>{padIndex(index + 1)}</TOCEntryIndex>

@@ -23,7 +23,7 @@ const Page = styled.main<PageProps>`
 
 const ContentWrapperOuter = styled.div`
   position: relative;
-  max-width: 664px;
+  max-width: 646px;
   margin: 0 auto;
   ${media.l`
     margin: 20px auto;
@@ -54,9 +54,9 @@ const ContentWrapper = styled.div`
   background: white;
   color: ${config.colors.darkbg};
 
-  @media screen and (min-width: ${breakpoints.m}px) {
+  ${media.m`
     padding: 2rem 0;
-  }
+  `}
 `;
 
 const MobileHeader = styled(Header)`

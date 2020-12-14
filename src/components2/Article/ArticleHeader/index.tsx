@@ -6,6 +6,7 @@ import ArticleMeta from './ArticleMeta';
 import LocaleSwitcher from '~/components2/LocaleSwitcher/LocaleSwitcher';
 import Heading from '~/components2/Article/Typography/Heading';
 import { LocaleCode } from '~/types';
+import { media } from '~/styles/utils';
 
 interface ArticleHeaderProps {
   kicker?: string;
@@ -21,7 +22,11 @@ interface ArticleHeaderProps {
 
 const ArticleHeaderWrapper = styled.div`
   margin: 2em auto 1em auto;
-  max-width: 600px;
+  max-width: 518px;
+
+  ${media.l`
+    max-width: 598px;
+  `}
 `;
 
 const LogoWrapper = styled.div`

@@ -14,10 +14,10 @@ const StyledMap = styled(BaseMap)`
 const Wrapper = styled.div`
   margin: 0 -16px;
   position: relative;
-  width: 100%;
   padding-top: 66%;
 
   ${media.m`
+    width: 100%;
     margin: 3em auto;
   `}
 `;

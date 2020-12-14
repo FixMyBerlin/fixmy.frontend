@@ -24,17 +24,46 @@ import LogoFMB3 from '~/images/logofmb@3x.png';
 import { media } from '~/styles/utils';
 import config from '~/config';
 
+const Footer = styled.footer`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  ${media.l`
+    flex-direction: row;
+    flex-wrap: wrap;
+  `}
+
+  ${media.xl`
+    max-width: 900px;
+  `}
+`;
+
 const LogoGrid1 = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
-  max-width: 520px;
   margin: 1em auto;
+
+  ${media.m`
+    width: 518px;
+  `}
+
+  ${media.l`
+    width: 598px;
+  `}
+
+  ${media.xl`
+    width: auto;
+  `}
 `;
 
 const LogoGrid2 = styled(LogoGrid1)`
+  flex-wrap: wrap;
   img {
     margin-right: 1em;
+    margin-bottom: 1em;
     height: 45px;
     width: auto;
 
@@ -45,12 +74,13 @@ const LogoGrid2 = styled(LogoGrid1)`
 `;
 
 const LogoAnnotation = styled(Paragraph)`
+  flex: 1 0 100%;
   font-size: 0.8em;
   color: ${config.colors.darkgrey};
 `;
 
 const Logos = () => (
-  <footer>
+  <Footer>
     <LogoGrid1>
       <img
         src={LogoBMBF2}
@@ -59,8 +89,8 @@ const Logos = () => (
       />
       <LogoFONA />
     </LogoGrid1>
-    <LogoAnnotation>Projektpartner:</LogoAnnotation>
     <LogoGrid2>
+      <LogoAnnotation>Projektpartner:</LogoAnnotation>
       <img
         alt="Wappen Eichwalde"
         src={LogoEichwalde2}
@@ -87,7 +117,7 @@ const Logos = () => (
         srcSet={`${LogoTU} 1x, ${LogoTU2} 2x, ${LogoTU3} 3x`}
       />
     </LogoGrid2>
-  </footer>
+  </Footer>
 );
 
 export default Logos;
