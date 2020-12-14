@@ -5,6 +5,7 @@ import {
   Paragraph2Cols,
   SectionProps,
 } from '~/components2/Article';
+import MapNetworks from '../components/MapNetworks';
 
 const SectionConceptMaps = (props: SectionProps) => (
   <>
@@ -29,6 +30,7 @@ const SectionConceptMaps = (props: SectionProps) => (
       die ZES-Gemeinden konzipiert, auf dem es sich sicher und entspannt Rad
       fahren lässt.
     </Paragraph2Cols>
+    <MapNetworks />
     <Heading as="h3">
       &ldquo;Planungskarte&rdquo;: Geplanten und umgesetzte Maßnahmen (In
       Vorbereitung)
@@ -39,6 +41,7 @@ const SectionConceptMaps = (props: SectionProps) => (
       hier veröffentlicht. Demnächst finden Sie ein vorläufige Version der
       Maßnahmenübersicht hier:
     </Paragraph2Cols>
+    {/* Button https://docs.google.com/spreadsheets/d/1lVlhXL2B81R8hGq9qnAbYKdQESBLhf1WerRrDmhcM58/edit?usp=sharing */}
   </>
 );
 

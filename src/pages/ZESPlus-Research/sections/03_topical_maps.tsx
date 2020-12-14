@@ -4,14 +4,10 @@ import {
   Paragraph,
   Paragraph2Cols,
   SectionProps,
-  ImageMulti,
 } from '~/components2/Article';
 
-import MapNetworks from '../components/MapNetworks';
+import MapQuality from '../components/MapQuality';
 import MapSafety from '../components/MapSafety';
-
-import ImageSpeed from './images/speed@2x.jpg';
-import ImageWaitingTimes from './images/wating-times@2x.jpg';
 
 const SectionNetwork = (props: SectionProps) => (
   <>
@@ -44,20 +40,7 @@ const SectionNetwork = (props: SectionProps) => (
       Bürger:innen gesammelt bzw. aktualisiert und können auf diese Weise auch
       aktuell gehalten werden.
     </Paragraph2Cols>
-    <MapNetworks />
-
-    <ImageMulti>
-      <ImageMulti.Inner
-        source={ImageSpeed}
-        subtitle="Auswertung der durchschnittlichen Geschwindigkeiten an Streckenabschnitten (Quelle: SimRa TU-Berlin)"
-      />
-
-      <ImageMulti.Inner
-        source={ImageWaitingTimes}
-        subtitle="Auswertung der durchschnittlichen Wartezeiten an Knotenpunkten
-          (Quelle: SimRa TU-Berlin)"
-      />
-    </ImageMulti>
+    <MapQuality />
 
     <Heading as="h3" {...props}>
       Themenkarte &ldquo;Sicherheit&rdquo;: (Beinahe-)Unfälle &
@@ -95,7 +78,6 @@ const SectionNetwork = (props: SectionProps) => (
       in der Entwicklung. Sobald diese abgeschlossen wurden, werden sie hier
       veröffentlicht.
     </Paragraph2Cols>
-    <MapNetworks />
   </>
 );
 
