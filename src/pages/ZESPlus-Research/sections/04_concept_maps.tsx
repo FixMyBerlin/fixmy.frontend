@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Heading,
-  Paragraph,
-  Paragraph2Cols,
-  SectionProps,
-} from '~/components2/Article';
+import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import MapNetworks from '../components/MapNetworks';
 
 const SectionConceptMaps = (props: SectionProps) => (
@@ -20,7 +15,7 @@ const SectionConceptMaps = (props: SectionProps) => (
       aktiven Einbeziehung der beteiligten Kommunen und Bürger:innen.
     </Paragraph>
     <Heading as="h3">&ldquo;Netzkonzept&rdquo;: Entwurf des Zielnetzes</Heading>
-    <Paragraph2Cols>
+    <Paragraph>
       In dieser Karte sehen Sie verschiedene bereits bestehenden Netzkonzepte.
       Außerdem finden Sie hier eine grobe Analyse von Start-Zielpunkten, die den
       Bedarf für wichtige Radverbindungen zeigen. Auf Basis ihrer lokalen
@@ -29,18 +24,18 @@ const SectionConceptMaps = (props: SectionProps) => (
       aufbauend wird ein im Frühjahr 2021 in einem Workshop ein Routennetz für
       die ZES-Gemeinden konzipiert, auf dem es sich sicher und entspannt Rad
       fahren lässt.
-    </Paragraph2Cols>
+    </Paragraph>
     <MapNetworks />
     <Heading as="h3">
       &ldquo;Planungskarte&rdquo;: Geplanten und umgesetzte Maßnahmen (In
       Vorbereitung)
     </Heading>
-    <Paragraph2Cols>
+    <Paragraph>
       Die Planungskarte sowie die Übersicht der Maßnahmen befindet sich aktuell
       noch in der Entwicklung. Sobald diese abgeschlossen wurden, werden sie
       hier veröffentlicht. Demnächst finden Sie ein vorläufige Version der
       Maßnahmenübersicht hier:
-    </Paragraph2Cols>
+    </Paragraph>
     {/* Button https://docs.google.com/spreadsheets/d/1lVlhXL2B81R8hGq9qnAbYKdQESBLhf1WerRrDmhcM58/edit?usp=sharing */}
   </>
 );

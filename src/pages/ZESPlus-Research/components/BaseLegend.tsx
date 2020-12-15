@@ -8,10 +8,12 @@ const LegendOuter = styled.div`
   background-color: ${config.colors.lightbg};
   border: 1px solid ${config.colors.lightgrey};
   margin: 1em -16px;
+  border-top: none;
 
   ${media.m`
     margin: 0 auto;
     padding: 1em;
+    padding-bottom: .5em;
   `}
 
   ${media.xl`
@@ -22,7 +24,7 @@ const LegendOuter = styled.div`
 
 const LegendInner = styled.div`
   margin-top: -1.5em;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -69,9 +71,11 @@ export const LegendItem = styled.div`
   display: flex;
   flex-direction: row;
   line-height: 1.16;
-  & + & {
-    margin-top: 10px;
-  }
+  ${media.m`
+    & + & {
+      margin-top: .5em;
+    }
+  `}
 `;
 
 export const LegendSources = styled.div`

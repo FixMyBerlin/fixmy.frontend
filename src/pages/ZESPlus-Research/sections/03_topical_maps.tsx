@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Heading,
-  Paragraph,
-  Paragraph2Cols,
-  SectionProps,
-} from '~/components2/Article';
+import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 
 import MapQuality from '../components/MapQuality';
 import MapSafety from '../components/MapSafety';
@@ -30,7 +25,7 @@ const SectionNetwork = (props: SectionProps) => (
     <Heading as="h3">
       Themenkarte &ldquo;Radinfrastruktur&rdquo;: Komfort & Qualität
     </Heading>
-    <Paragraph2Cols>
+    <Paragraph>
       Die Themenkarte &ldquo;Radinfrastruktur&rdquo; bildet die vorhandene
       Radinfrastruktur und die Qualität der Wegstrecken ab. Informationen zum
       Vorhandensein der Infrastruktur und zu ihrer Art liefern die eingebundenen
@@ -39,14 +34,14 @@ const SectionNetwork = (props: SectionProps) => (
       02a]. Die Informationen beider Datenquellen wurden in Kooperation mit den
       Bürger:innen gesammelt bzw. aktualisiert und können auf diese Weise auch
       aktuell gehalten werden.
-    </Paragraph2Cols>
+    </Paragraph>
     <MapQuality />
 
     <Heading as="h3" {...props}>
       Themenkarte &ldquo;Sicherheit&rdquo;: (Beinahe-)Unfälle &
       Sicherheitsempfinden
     </Heading>
-    <Paragraph2Cols>
+    <Paragraph>
       Diese Themenkarte fasst mehrere Aspekte der objektiven wie auch der
       subjektiven Sicherheit der Radfahrenden zusammen. In der interaktiven
       Karte sind tatsächliche Unfälle verortet, aber Beinahe-Unfälle, die mit
@@ -54,14 +49,14 @@ const SectionNetwork = (props: SectionProps) => (
       Strecken, die von Schüler:innen des Humboldt-Gymnasiums Eichwalde mit dem
       Fahrrad als Schulweg genutzt werden. Auf den Blau [ROT?] hinterlegten
       Abschnitte fühlen sich Schüler:innen nach eigenen Angaben unsicher.
-    </Paragraph2Cols>
+    </Paragraph>
     <MapSafety />
 
     <Heading as="h3" {...props}>
       Themenkarte &ldquo;Führungsformen&rdquo;: Typische Straßenquerschnitte und
       Potenziale
     </Heading>
-    <Paragraph2Cols>
+    <Paragraph>
       Bei der Analyse des Ist-Zustandes wurde überprüft, inwieweit OSM-Daten
       nutzbar sind und welche Analyseschritte sich mit ihnen automatisieren
       lassen. So wurde eine Systematik entwickelt, mit der die in den Gemeinden
@@ -77,7 +72,7 @@ const SectionNetwork = (props: SectionProps) => (
       Die Karten sowie die Übersicht der Straßentypen befindet sich aktuell noch
       in der Entwicklung. Sobald diese abgeschlossen wurden, werden sie hier
       veröffentlicht.
-    </Paragraph2Cols>
+    </Paragraph>
   </>
 );
 
