@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Paragraph, Heading, SectionProps } from '~/components2/Article';
+import Link from '~/components2/Link';
 // import ZESMobil from './images/ZESMobil';
 
 const SectionNextSteps = (props: SectionProps) => (
@@ -9,38 +10,60 @@ const SectionNextSteps = (props: SectionProps) => (
       Wie geht es weiter?
     </Heading>
     <Paragraph>
-      *Als nächste Schritte* sind Abschluss der Netzplanung und die
-      Weiterentwicklung der Maßnahmenübersicht geplant. Parallel bewirbt sich
-      das NUDAFA-Projekt im Rahmen der MobilitätsWerkStadt 2025 auf weitere
-      Fördermittel des BMBF. Zukünftig sollen damit die agile Kommunikations-
-      und Planungsplattform für die interkommunale Radverkehrsförderung
-      weiterentwickelt werden und die Übertragbarkeit auf andere Kommunen
-      (insbesondere auch für Wildau, Königs Wusterhausen und Schönefeld) erprobt
-      werden. Geplant ist dabei bspw. Planungskarte, die Bewertung des
-      Umsetzungsgrad des Konzepts mit dem Happy-Bike-Index 2.0 und die
-      Entwicklung weiterer Themenkarten.
+      <strong>Als nächste Schritte</strong> sind der Abschluss der Netzplanung
+      und die <strong>Weiterentwicklung der Maßnahmenübersicht</strong> in Form
+      einer tabellarischen Übersicht und einer Karte geplant. Dafür werden
+      Maßnahmen mit den beteiligten Verwaltungen und mit allen relevanten
+      Akteuren abgestimmt und deren Umsetzungen soweit möglich initiiert.
+      Parallel bewirbt sich das NUDAFA-Projekt im Rahmen der MobilitätsWerkStadt
+      2025 auf weitere Fördermittel des BMBF. Zukünftig sollen damit die agile
+      Kommunikations- und Planungsplattform für die interkommunale
+      Radverkehrsförderung weiterentwickelt werden und die Übertragbarkeit auf
+      andere Kommunen (insbesondere auch für Wildau, Königs Wusterhausen und
+      Schönefeld) erprobt werden. Geplant ist dabei bspw. eine Planungskarte,
+      die Bewertung des Umsetzungsgrad des Konzepts mit dem Happy-Bike-Index 2.0
+      und die Entwicklung weiterer Themenkarten.
     </Paragraph>
     <Paragraph>
-      *Die Integration der Nachbargemeinden* in den Betrachtungsraum des
-      *ZESplus*-Konzepts bietet dabei die Möglichkeit, die entwickelte Methodik
-      anzupassen und weiter zu entwickeln. Im Vordergrund steht dabei jedoch die
-      Abstimmung mit den Nachbarkommunen zur Herstellung eines flächendeckenden,
-      attraktiven und sicheren Wegenetzes.
+      <strong>Die Integration der Nachbargemeinden</strong> in den
+      Betrachtungsraum des <strong>ZESplus</strong>-Konzepts bietet dabei die
+      Möglichkeit, die entwickelte Methodik anzupassen und weiter zu entwickeln.
+      Im Vordergrund steht dabei jedoch die Abstimmung mit den Nachbarkommunen
+      zur Herstellung eines flächendeckenden, attraktiven und sicheren
+      Wegenetzes.
     </Paragraph>
+    <a href="#reallabor" id="reallabor" className="internal">
+      <Heading as="h3">Reallabor</Heading>
+    </a>
     <Paragraph>
-      *Das geplante Reallabor für interkommunale Radverkehrsförderung* bietet
-      dabei die Möglichkeit verschiedene Kooperationspartner zusammen zu
+      <strong>
+        Das geplante Reallabor für interkommunale Radverkehrsförderung
+      </strong>{' '}
+      bietet dabei die Möglichkeit verschiedene Kooperationspartner zusammen zu
       bringen, um in konkreten Modellprojekten und *Realexperimenten* den
       Radverkehr stärker in der Region zu verankern. Ein besonders wichtiger
-      Partner ist dabei die *TH Wildau* mit der dort angesiedelten
-      *Stiftungsprofessur für Radverkehrsplanung*[LINK] und weiteren Professuren
-      mit umfangreichen Kompetenzen in der Verkehrsplanung. Neben der
-      Fortführung der Kooperation mit FixMyCity[LINK] und dem Fachgebiet Mobile
-      Cloud Computing[LINK] der TU Berlin ist auch die intensive Zusammenarbeit
-      mit dem FG Integrierte Verkehrsplanung an der TU Berlin[LINK] geplant.
+      Partner ist dabei die <strong>TH Wildau</strong> mit der dort
+      angesiedelten{' '}
+      <Link href="https://www.th-wildau.de/studieren-weiterbilden/studiengaenge/radverkehr-m-eng/projekt-stiftungsprofessur-radverkehr/">
+        <strong>Stiftungsprofessur für Radverkehrsplanung</strong>
+      </Link>{' '}
+      und weiteren Professuren mit umfangreichen Kompetenzen in der
+      Verkehrsplanung. Neben der Fortführung der Kooperation mit{' '}
+      <Link href="https://fixmyberlin.de">FixMyCity</Link> und dem{' '}
+      <Link href="https://www.mcc.tu-berlin.de/menue/mobile_cloud_computing/parameter/de/">
+        Fachgebiet Mobile Cloud Computing
+      </Link>{' '}
+      der TU Berlin ist auch die intensive Zusammenarbeit mit dem{' '}
+      <Link href="https://ivp.tu-berlin.de">
+        Fachgebiet Integrierte Verkehrsplanung - TU Berlin
+      </Link>{' '}
+      geplant.
     </Paragraph>
+    <a href="#realexperimente" id="realexperimente" className="internal">
+      <Heading as="h3">Realexperimente</Heading>
+    </a>
     <Paragraph>
-      *Realexperimente* beschreiben dabei die transformation und
+      <strong>Realexperimente</strong> beschreiben dabei die transformation und
       transdiszipiplinäre Erforschung innovativer Ansätze der
       Radverkehrsförderung. Die Entwicklung der oben vorgestellten Karten bildet
       so ein Realexperiment. Weitere Realexperimente werden aktuell vorbereitet
@@ -49,15 +72,17 @@ const SectionNextSteps = (props: SectionProps) => (
       Schleifmaschine zum Abschleifen von Fahrbahnflächen mit großem
       Kopfsteinpflaster. Am Humboldt-Gymnasium Eichwalde wurde mit der
       Partizipation Schulwegkartierung bereits erste Schritte zur Verbesserung
-      des Schulischen Mobilitätsmanagements eingeleitet. Sie hilft, die
+      des schulischen Mobilitätsmanagements eingeleitet. Sie hilft, die
       Bedürfnisse der Schüler:innen besser zu verstehen, ihre Schulwege sicherer
       zu machen und mehr Menschen frühzeitig fürs Radfahren zu begeistern. Mit
-      weiteren Schulen und in Kooperation mit dem Kinder und Jugend
-      Verband[https://www.kjv.de/kultur/] soll dies fortgeführt werden.
+      weiteren Schulen und in Kooperation mit dem{' '}
+      <Link href="https://www.kjv.de/kultur/">Kinder und Jugend Verband</Link>{' '}
+      soll dies fortgeführt werden.
     </Paragraph>
+    <Heading as="h3">Aufsuchende Bürgerbeteiligung</Heading>
     {/* <Image src={ZESMobil} alt="Das ZESmobil" /> */}
     <Paragraph>
-      *Das ZESmobil* soll zukünftig die Bürgerbeteiligung im Freien
+      <strong>Das ZESmobil</strong> soll zukünftig Beteiligungsformate im Freien
       (corona-konform) unterstützten. Mit umfangreicher Ausstattung (integrierte
       Tablets, weitere Präsentationstechnik, Moderationskoffer, Handbibliothek,
       Sonnenschirm, klappbarer Tisch und Stühlen) bildet es das Bindeglied

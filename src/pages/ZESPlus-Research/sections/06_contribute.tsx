@@ -66,7 +66,7 @@ const SectionContribute = (props: SectionProps) => (
     </DownloadWrapper>
 
     <Heading as="h3" {...props}>
-      Newsletter und Feedback
+      Newsletter + Feedback
     </Heading>
     <Paragraph>
       Abonnieren Sie unseren Newsletter um aktuelle Informationen zum Projekt zu

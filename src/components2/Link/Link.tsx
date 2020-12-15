@@ -31,6 +31,10 @@ export const BaseContainer = (elem: Parameters<typeof styled>[0]) => styled(
 
   /* make sure long anchors wrap */
   white-space: pre-wrap;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const InternalAnchorLink = styled(BaseContainer('a'))`

@@ -58,24 +58,25 @@ const Research = () => (
     }
   >
     <ArticleHeader
-      kicker="Forschungs&shy;projekt - ZES-Plus"
-      publishDate={new Date(2020, 6, 29, 10, 0)}
+      kicker="Modellprojekt der MobilitätsWerkStatt 2025"
+      publishDate={new Date(2020, 11, 15, 10, 0)}
       author="Jörg Jenoch, Bürgermeister Eichwalde"
     >
-      Eich&shy;walde, Zeu&shy;then und Schulzen&shy;dorf entwickeln
-      Radverkehrsnetz gemeinsam mit Bürger:innen, Wissenschaftlern und
-      Datenexpert:innen ein innovatives Radverkehrskonzept
+      Radverkehr neu denken: Innovative Ansätze der Radverkehrs&shy;planung in
+      Eichwalde, Zeuthen und Schulzendorf
     </ArticleHeader>
     <Intro>
       Der Radverkehr in Zeuthen, Eichwalde und Schulzendorf soll eine bessere
       Infrastruktur erhalten, auf der alle Menschen komfortabel vorankommen und
       sich sicher fühlen – auf dem Weg zur Arbeit, zur Schule, zur S-Bahn, zu
-      Freunden und Bekannten, zum Sport und zum Einkauf.
+      Freunden und Bekannten, zum Sport und zum Einkauf. Um dies zu erreichen,
+      wird aktuell ein innovatives, partizipatives und interkommunales
+      Radverkehrskonzept erstellt.
     </Intro>
     <SectionIntroduction toc="Einleitung" />
     <SectionData toc="Datengrundlagen" />
     <SectionTopicalMaps toc="Themenkarten" />
-    <SectionConceptMaps toc="Konzeptkarten" />
+    <SectionConceptMaps toc="Das ZESplus-Konzept" />
     <SectionNextSteps toc="Wie geht es weiter?" />
     <SectionContribute toc="Mitmachen" />
     <SectionAbout toc="Über das Projekt" />

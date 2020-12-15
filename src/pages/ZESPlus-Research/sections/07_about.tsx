@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import {
   Paragraph,
@@ -29,7 +28,7 @@ const SectionAbout = (props: SectionProps) => (
     </Quote>
     <Paragraph>
       Viele Wege innerhalb der drei eng verflochtenen Gemeinden sind kürzer als
-      5 km und könnten eigentlich leicht mit dem Fahrrad zurück gelegt werden.
+      5 km und könnten eigentlich leicht mit dem Fahrrad zurückgelegt werden.
       Verschiedene s.g. Radverkehrsanlagen – Schutzstreifen, Radwege oder für
       den Radverkehr freigegebene Bürgersteige - sind dafür bereits angelegt.
       Gleichzeitig gibt es in jeder der drei Gemeinden aktuell auch noch
@@ -65,20 +64,26 @@ const SectionAbout = (props: SectionProps) => (
       Konzepterstellung.
     </Paragraph>
     <Paragraph>
-      Finanziert wird diese Kooperation durch die „MobilitätsWerkStadt 2025“
-      [VERLINKEN] des Bundesministeriums für Forschung und Entwicklung. Eine
-      wichtige Grundlage für Projekt bildete auch die Vorarbeit der lokalen
-      Initiative Netzwerk fahrradfreundliches LDS (-Nord).
-      [https://www.radnetz-lds.de/].
+      Finanziert wird diese Kooperation durch die{' '}
+      <Link href="https://www.bmbf.de/foerderungen/bekanntmachung-2289.html">
+        „MobilitätsWerkStadt 2025“
+      </Link>{' '}
+      des Bundesministeriums für Forschung und Entwicklung. Eine wichtige
+      Grundlage für Projekt bildete auch die Vorarbeit der lokalen{' '}
+      <Link href="https://www.radnetz-lds.de/">
+        Initiative Netzwerk fahrradfreundliches LDS (-Nord)
+      </Link>
+      .
     </Paragraph>
-
-    <Heading as="h3">Über das Projekt NUDAFA</Heading>
+    <a href="#about-nudafa" id="about-nudafa" className="internal">
+      <Heading as="h3">Über das Projekt NUDAFA</Heading>
+    </a>
     <Paragraph>
       Ziel des BMBF-geförderten Forschungsprojektes zur “Nutzerdaten-gestützten
       Planung eines integrierten Fahrradverkehrsnetzes” (NUDAFA) ist es,
       gemeinsam mit den lokalen Akteuren den Radverkehr im Siedlungsraum der
       Gemeinden Eichwalde, Zeuthen und Schulzendorf gezielt zu fördern. Im Fokus
-      steht dabei,{' '}
+      steht dabei,
     </Paragraph>
     <List ordered>
       <List.Item>
@@ -90,7 +95,7 @@ const SectionAbout = (props: SectionProps) => (
         Maßnahmen, sowie
       </List.Item>
       <List.Item>
-        die Förderung interkommunale, transdisziplinäre Vernetzung bei der
+        die Förderung der interkommunalen, transdisziplinären Vernetzung bei der
         Umsetzung von Pilotprojekten.
       </List.Item>
     </List>
@@ -100,14 +105,14 @@ const SectionAbout = (props: SectionProps) => (
       Förderung des Radverkehrs entwickelt und erprobt. Dabei soll erforscht
       werden, inwieweit innovative, Open-Source-basierte Datenerhebungs-,
       Visualisierungsmethoden und Partizipationsinstrumente konsensfördernd sein
-      können.{' '}
+      können.
     </Paragraph>
     <Paragraph>
       Außerdem werden Grundlagendaten zur Entwicklung der Netzplanung
       aufbereitet. Dadurch wird die Konzepterstellung maßgeblich unterstützt und
       die Netzplanung kann besser an den tatsächlichen Bedarfen der Bürger:innen
-      angepasst werden. Neben der Bewertung von räumlichen Parametern, der
-      Verkehrsbedingungen sowie der vorhandenen Radverkehrsanlagen werden dabei
+      angepasst werden. Neben der Bewertung von räumlichen Parametern, den
+      Verkehrsbedingungen sowie den vorhandenen Radverkehrsanlagen werden dabei
       (mit SimRa) auch Aspekte der subjektiven Sicherheit und des Fahrkomforts
       integriert. Das Ergebnis der Klassifizierung wird in Form einer
       interaktiven Karte dargestellt und auf dieser Seite veröffentlicht.
@@ -119,12 +124,15 @@ const SectionAbout = (props: SectionProps) => (
       Computing, FG Integrierte Verkehrsplanung), FixMyCity, den Gemeinden
       Zeuthen, Eichwalde und Schulzendorf sowie den Partnerkommunen Wildau,
       Schönefeld und Königs Wusterhausen. Hinzu kommen weitere Akteure wie die
-      lokalen Initiativen Netzwerk fahrradfreundliches LDS (-Nord)
-      [https://www.radnetz-lds.de/] und Bike2BER, und weitere Projektpartner wie
-      der Kinder- und Jugendverbund, isicargo usw.{' '}
+      lokalen Initiativen{' '}
+      <Link href="https://www.radnetz-lds.de/">
+        Netzwerk fahrradfreundliches LDS (-Nord)
+      </Link>{' '}
+      und Bike2BER, und weitere Projektpartner wie der KJV e.V., isicargo usw.
     </Paragraph>
-
-    <Heading as="h3">Die Projektpartner / Kooperationspartner</Heading>
+    <a href="zesplus-netzwerk" id="zesplus-netzwerk" className="internal">
+      <Heading as="h3">Die Projektpartner / Kooperationspartner</Heading>
+    </a>
     <List>
       <List.Item>
         <Link href="https://www.th-wildau.de/studieren-weiterbilden/studiengaenge/radverkehr-m-eng/projekt-stiftungsprofessur-radverkehr/">

@@ -39,6 +39,7 @@ const BaseButton = (containerElem: 'a' | 'button') => styled(
   padding: 15px 25px;
   width: 100%;
   word-break: break-all;
+  text-decoration: none;
 
   &:hover {
     opacity: ${(props) => (props.disabled ? 1 : 0.9)};

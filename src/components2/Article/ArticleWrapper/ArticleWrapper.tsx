@@ -33,18 +33,18 @@ const ContentWrapperOuter = styled.div`
     max-width: 900px;
   `}
 
-  a {
+  a.internal, a.external {
     text-decoration: none;
     color: ${config.colors.black};
     border-bottom: 1px solid ${config.colors.interaction};
-  }
 
-  a:hover {
-    opacity: 0.8;
-  }
+    &:hover {
+      opacity: 0.8;
+    }
 
-  a:visited {
-    color: ${config.colors.black};
+    &:visited {
+      color: ${config.colors.black};
+    }
   }
 `;
 

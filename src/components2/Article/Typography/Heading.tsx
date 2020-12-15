@@ -78,7 +78,7 @@ const Heading2 = ({ children, ...props }) => (
   </>
 );
 
-const Heading3 = styled.h2<StyledHeadingProps>`
+const Heading3 = styled.h3<StyledHeadingProps>`
   font-size: 1.2em;
   line-height: 1.2;
   margin: 0 auto;
@@ -131,6 +131,7 @@ const AnchorWrapper = ({ toc, children, tocAnchor = null }) => {
     <AnchorStyle
       href={`#${slugify(tocAnchor || toc, { lower: true })}`}
       id={slugify(tocAnchor || toc, { lower: true })}
+      className="internal"
     >
       {children}
     </AnchorStyle>
