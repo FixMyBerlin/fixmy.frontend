@@ -26,7 +26,7 @@ const TOCEntryWrapper = styled.a<TOCEntryWrapperProps>`
     display: block;
     text-align: right;
     margin-bottom: 1em;
-    padding-right: 25px;
+    padding: 0 24px 0 1em;
     border-left: ${(props: StyledProps<TOCEntryWrapperProps>) =>
       props.active ? `3px solid ${config.colors.change_2}` : 'none'};
   `}
@@ -55,6 +55,7 @@ const TOCEntryText = styled.div<TOCEntryWrapperProps>`
   ${media.l`
     font-weight: ${(props: StyledProps<TOCEntryWrapperProps>) =>
       props.active ? 700 : 300};
+      hyphens: auto;
   `}
 `;
 
