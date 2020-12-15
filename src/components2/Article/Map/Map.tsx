@@ -38,7 +38,7 @@ const ActivateButton = styled(Button)<{ mapActive: boolean }>`
     left: calc(50% - 7.5625em);
     position: absolute;
     width: 15.125em;
-    height: 3em;
+    z-index: 100;
 
     // Move button outside of map wrapper when activated
     transition: transform 0.3s;
