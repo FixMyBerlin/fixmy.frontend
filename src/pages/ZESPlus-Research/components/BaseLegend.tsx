@@ -61,8 +61,13 @@ export const LegendItems = styled.div`
 `;
 
 export const LegendHeader = styled.h3`
-  font-size: 1em;
-  margin: 1.5em 0 1em;
+  font-size: 1.2em;
+  margin: 1em 0 0.5em;
+
+  ${media.s`
+    font-size: 1em;
+    margin: 1.5em 0 1em;
+  `}
 `;
 
 export const LegendItem = styled.div`
@@ -79,10 +84,16 @@ export const LegendItem = styled.div`
 `;
 
 export const LegendSources = styled.div`
-  font-size: 0.75em;
+  font-size: 1em;
   flex: 1 0 100%;
   color: ${config.colors.darkgrey};
-  margin: 2em 0 0;
+  margin: 1em 0 0;
+  line-height: 1.3;
+
+  ${media.s`
+    font-size: 0.75em;
+    margin: 2em 0 0;
+  `}
 `;
 
 export const IconWrapper = styled.div`

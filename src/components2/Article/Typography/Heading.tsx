@@ -18,13 +18,17 @@ interface StyledHeadingProps {
 }
 
 const Heading1 = styled.h1<StyledHeadingProps>`
-  font-size: 1.875em;
+  font-size: 1.5em;
   font-family: ${config.titleFont};
   font-weight: 700;
   margin: 0.5em auto;
   line-height: 1.25;
   max-width: 518px;
   color: ${config.colors.darkbg};
+
+  ${media.s`
+    font-size: 1.875em;
+  `}
 
   ${media.m`
     font-size: 2em;
@@ -36,11 +40,16 @@ const Heading1 = styled.h1<StyledHeadingProps>`
 `;
 
 const Heading2style = styled.h2<StyledHeadingProps>`
-  font-size: 2em;
-  margin: 1.5em auto 0.5em;
-  max-width: 518px;
   color: ${config.colors.darkbg};
+  font-size: 1.4em;
+  margin: 0.5em auto 0.25em;
+  max-width: 518px;
   text-transform: uppercase;
+
+  ${media.s`
+    font-size: 2em;
+    margin: 1.5em auto 0.5em;
+  `}
 
   ${media.m`
     margin: 2em auto 0.5rem 0;
@@ -55,7 +64,11 @@ const DecoLine = styled.div`
   font-size: 1.5rem;
   width: 50%;
   border-bottom: 2px solid ${config.colors.change_2};
-  margin-bottom: 2em;
+  margin-bottom: 0.5em;
+
+  ${media.s`
+    margin-bottom: 2em;
+  `}
 `;
 
 const Heading2 = ({ children, ...props }) => (
@@ -66,11 +79,16 @@ const Heading2 = ({ children, ...props }) => (
 );
 
 const Heading3 = styled.h2<StyledHeadingProps>`
-  font-size: 1.5em;
-  line-height: 1.3;
-  margin: 0.67em auto;
+  font-size: 1.2em;
+  line-height: 1.2;
+  margin: 0 auto;
   max-width: 518px;
   color: ${config.colors.darkbg};
+
+  ${media.s`
+    font-size: 1.5em;
+    line-height: 1.3;
+  `}
 
   ${media.m`
     margin: 2em auto;

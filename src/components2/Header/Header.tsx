@@ -12,6 +12,7 @@ import { RootState } from '~/store';
 import ChatTranslate from './chat-translate.svg';
 import LocaleMenu from './LocaleMenu';
 import { LocaleCode } from '~/types';
+import { media } from '~/styles/utils';
 
 const StyledAppBar = styled(AppBar)<
   typeof AppBar & {
@@ -41,7 +42,11 @@ const Title = styled.h1`
   color: ${config.colors.darkgrey};
   font-weight: bold;
   font-size: 1em;
-  line-height: 1.5em;
+  line-height: 1.2em;
+
+  ${media.s`
+    line-height: 1.5em;
+  `}
 `;
 
 const Subtitle = styled.span`

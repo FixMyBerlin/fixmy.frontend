@@ -5,9 +5,13 @@ import { media } from '~/styles/utils';
 export const Paragraph = styled.div`
   font-family: ${config.baseFont};
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.35;
   margin: 1em auto;
   max-width: 518px;
+
+  ${media.s`
+    line-height: 1.5;
+  `}
 
   ${media.l`
     max-width: 598px;

@@ -34,6 +34,7 @@ const ActivateButton = styled(Button)<{ mapActive: boolean }>`
     background-color: white;
     bottom: 1em;
     font-size: 16px;
+    height: 3em;
     left: calc(50% - 7.5625em);
     position: absolute;
     width: 15.125em;
