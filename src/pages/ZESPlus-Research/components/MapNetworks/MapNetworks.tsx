@@ -96,7 +96,8 @@ const MapNetworks = () => (
         </LegendItems>
       </LegendCol>
       <LegendSources>
-        Quellen: ¹ SimRa - TU Berlin 2020, ² OSM 2020
+        Quellen: ¹ OSM 2020, ² InfraVelo GmbH 2019, ³ ADFC 2019, ⁴IGS 2020, ⁵ ⁶
+        ⁷ Radgruppe ZES+ 2020, ⁸ OSM und Radgruppe ZES+ 2020
       </LegendSources>
     </Legend>
   </>
