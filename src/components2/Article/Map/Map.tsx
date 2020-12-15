@@ -40,6 +40,12 @@ const ActivateButton = styled(Button)<{ mapActive: boolean }>`
     width: 15.125em;
     z-index: 100;
 
+    &:focus {
+      outline-style: none;
+      box-shadow: none;
+      border-color: transparent;
+    }
+
     // Move button outside of map wrapper when activated
     transition: transform 0.3s;
     ${({ mapActive }) =>

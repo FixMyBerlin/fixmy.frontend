@@ -230,7 +230,7 @@ const SectionAbout = ({ toc, tocAnchor, intl }: Props) => {
           defaultMessage="Für die Umfrage entschieden wir uns, Straßenszenen als 3D-Renderings fotorealistisch darzustellen. Die verschiedenen Straßenszenen wurden in drei Experimente unterteilt."
         />
       </Paragraph>
-      <List as="ol">
+      <List ordered>
         <List.Item>
           <FormattedMessage
             id="research.03_concept.p14.list1"

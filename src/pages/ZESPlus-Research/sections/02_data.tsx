@@ -1,8 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Paragraph, List, Heading, SectionProps } from '~/components2/Article';
 import Link from '~/components2/Link';
 
-const SectionCycling = (props: SectionProps) => (
+const StyledList = styled(List)`
+  list-style-type: lower-alpha;
+`;
+
+const SectionData = (props: SectionProps) => (
   <>
     <Heading as="h2" {...props}>
       Datengrundlagen
@@ -30,30 +35,30 @@ const SectionCycling = (props: SectionProps) => (
       Beinahunfällen, zu Hauptverkehrsflüssen, zur Oberflächenqualität der
       befahrenen Wege und zur Geschwindigkeit der Radfahrenden:
     </Paragraph>
-    <List>
-      <li>
+    <StyledList ordered>
+      <List.Item>
         Erfassung von sogenannten Beinahe-Unfällen: Auswertung abrupter
         Richtungsänderungen sowie manuell eingegebener Vorfälle /
         Beinahe-Unfälle
-      </li>
-      <li>
+      </List.Item>
+      <List.Item>
         Sensorbasierte Oberflächenbewertung: systematische Auswertung der am Rad
         aufgezeichneten Erschütterungen.
-      </li>
-      <li>
+      </List.Item>
+      <List.Item>
         Box-Abfrage: interaktiver Abfragedialog von Quell-Ziel-Beziehungen,
         zeigt bspw. Umwege, Vermeiden problematischer Streckenabschnitte,
         Einzugsradien der S-Bahn und Schulen etc.
-      </li>
-      <li>
+      </List.Item>
+      <List.Item>
         Wartezeiten an Knotenpunkten: Auswertung der Durchfahrten und der
         Standzeit an Knotenpunkten,
-      </li>
-      <li>
+      </List.Item>
+      <List.Item>
         Fahrt-Kontinuität: Auswertung der relativen Geschwindigkeit bzw. der
         Häufigkeiten von Beschleunigungs- und Bremsvorgängen
-      </li>
-    </List>
+      </List.Item>
+    </StyledList>
     <Paragraph>
       Die Analyse der Nutzer:innendaten und die Zustandserfassung ermöglicht für
       ausgewählte Faktoren eine objektive Bewertung der Bedarfe, der
@@ -77,4 +82,4 @@ const SectionCycling = (props: SectionProps) => (
   </>
 );
 
-export default SectionCycling;
+export default SectionData;

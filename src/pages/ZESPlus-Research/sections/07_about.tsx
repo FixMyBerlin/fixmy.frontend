@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import {
   Paragraph,
@@ -7,6 +8,7 @@ import {
   Quote,
   List,
 } from '~/components2/Article';
+import Link from '~/components2/Link';
 
 const SectionAbout = (props: SectionProps) => (
   <>
@@ -78,17 +80,19 @@ const SectionAbout = (props: SectionProps) => (
       Gemeinden Eichwalde, Zeuthen und Schulzendorf gezielt zu fördern. Im Fokus
       steht dabei,{' '}
     </Paragraph>
-    <List>
-      <li>die Erstellung einer datenbasierten Arbeitsgrundlage,</li>
-      <li>
+    <List ordered>
+      <List.Item>
+        die Erstellung einer datenbasierten Arbeitsgrundlage,
+      </List.Item>
+      <List.Item>
         die partizipative Einbindung der zivilgesellschaftlichen Akteure in die
         Konzeption des interkommunalen Radwegenetzes und die Entwicklung von
         Maßnahmen, sowie
-      </li>
-      <li>
+      </List.Item>
+      <List.Item>
         die Förderung interkommunale, transdisziplinäre Vernetzung bei der
         Umsetzung von Pilotprojekten.
-      </li>
+      </List.Item>
     </List>
     <Paragraph>
       Im Sinne transformativer Wissenschaft werden dabei neue Mechanismen für
@@ -119,6 +123,34 @@ const SectionAbout = (props: SectionProps) => (
       [https://www.radnetz-lds.de/] und Bike2BER, und weitere Projektpartner wie
       der Kinder- und Jugendverbund, isicargo usw.{' '}
     </Paragraph>
+
+    <Heading as="h3">Die Projektpartner / Kooperationspartner</Heading>
+    <List>
+      <List.Item>
+        <Link href="https://www.th-wildau.de/studieren-weiterbilden/studiengaenge/radverkehr-m-eng/projekt-stiftungsprofessur-radverkehr/">
+          Stiftungsprofessur Radverkehr in intermodalen Verkehrsnetzen (TH
+          Wildau)
+        </Link>
+      </List.Item>
+      <List.Item>FG Mobile Cloud Computing (TU Berlin)</List.Item>
+      <List.Item>FG Integrierte Verkehrsplanung (TU Berlin)</List.Item>
+      <List.Item>
+        <Link href="https://fixmyberlin.de/">FixMyCity</Link>
+      </List.Item>
+      <List.Item>Die Gemeinden Zeuthen, Eichwalde und Schulzendorf </List.Item>
+      <List.Item>
+        Die Partnerkommunen Wildau, Schönefeld und Königs Wusterhausen
+      </List.Item>
+      <List.Item>
+        <Link href="https://www.radnetz-lds.de/">
+          Das Netzwerk fahrradfreundliches LDS (-Nord)
+        </Link>
+      </List.Item>
+      <List.Item>Bike2BER</List.Item>
+      <List.Item>Der Kinder- und Jugendverein e.V., </List.Item>
+      <List.Item>isicargo </List.Item>
+      <List.Item>usw. </List.Item>
+    </List>
   </>
 );
 

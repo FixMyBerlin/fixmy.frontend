@@ -1,9 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
+import { media } from '~/styles/utils';
 
-const StyledList = styled.ul`
+const StyledUl = styled.ul`
   max-width: 518px;
   margin: 1em auto;
+
+  ${media.l`
+    max-width: 598px;
+  `}
+`;
+
+const StyledOl = styled.ol`
+  max-width: 518px;
+  margin: 1em auto;
+
+  ${media.l`
+    max-width: 598px;
+  `}
 `;
 
 const ListItem = styled.li`
@@ -12,15 +26,14 @@ const ListItem = styled.li`
 
 interface ListProps {
   children: React.ReactNode;
-  as?: 'ul' | 'ol';
+  ordered?: boolean;
   className?: string;
 }
 
-const List = ({ as = 'ul', children, className }: ListProps) => (
-  <StyledList as={as} className={className}>
-    {children}
-  </StyledList>
-);
+const List = ({ children, className, ordered }: ListProps) => {
+  const Container = ordered ? StyledOl : StyledUl;
+  return <Container className={className}>{children}</Container>;
+};
 
 List.Item = ListItem;
 
