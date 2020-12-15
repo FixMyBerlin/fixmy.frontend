@@ -18,7 +18,7 @@ interface StyledHeadingProps {
 }
 
 const Heading1 = styled.h1<StyledHeadingProps>`
-  font-size: 1.875rem;
+  font-size: 1.875em;
   font-family: ${config.titleFont};
   font-weight: 700;
   margin: 0.5em auto;
@@ -47,7 +47,7 @@ const Heading2style = styled.h2<StyledHeadingProps>`
   `}
 
   ${media.l`
-    max-width: 598px;
+    max-width: calc(598px + 151px);
   `}
 `;
 
