@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 
   ${media.m`
     width: 100%;
-    margin: 3em auto;
+    margin: 3em auto 0;
   `}
 `;
 

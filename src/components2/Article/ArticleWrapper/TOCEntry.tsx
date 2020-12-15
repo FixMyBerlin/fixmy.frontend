@@ -27,8 +27,8 @@ const TOCEntryWrapper = styled.a<TOCEntryWrapperProps>`
     text-align: right;
     margin-bottom: 1em;
     padding-right: 25px;
-    border-right: ${(props: StyledProps<TOCEntryWrapperProps>) =>
-      props.active ? `3px solid ${config.colors.change_4}` : 'none'};
+    border-left: ${(props: StyledProps<TOCEntryWrapperProps>) =>
+      props.active ? `3px solid ${config.colors.change_2}` : 'none'};
   `}
 `;
 
