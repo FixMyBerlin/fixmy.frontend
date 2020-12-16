@@ -11,6 +11,8 @@ import openSans700woff2 from '../fonts/open-sans-v17-latin-700.woff2';
 
 import robotoSlabwoff from '../fonts/roboto-slab-v12-latin-regular.woff';
 import robotoSlabwoff2 from '../fonts/roboto-slab-v12-latin-regular.woff2';
+import robotoSlab100woff from '../fonts/roboto-slab-v12-latin-100.woff';
+import robotoSlab100woff2 from '../fonts/roboto-slab-v12-latin-100.woff2';
 import robotoSlab700woff from '../fonts/roboto-slab-v12-latin-700.woff';
 import robotoSlab700woff2 from '../fonts/roboto-slab-v12-latin-700.woff2';
 
@@ -84,6 +86,16 @@ export default `
     src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'),
         url(${robotoSlabwoff2}) format('woff2'),
         url(${robotoSlabwoff}) format('woff');
+  }
+  /* roboto-slab-100 - latin */
+  @font-face {
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: local('Roboto Slab Thin'), local('RobotoSlab-Thin'),
+        url(${robotoSlab100woff2}) format('woff2'),
+        url(${robotoSlab100woff}) format('woff');
   }
   /* roboto-slab-700 - latin */
   @font-face {

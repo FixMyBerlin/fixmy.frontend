@@ -35,6 +35,12 @@ const Wrapper = styled(ArticleWrapper)`
 
   .fmc-article-tocentry {
     margin-bottom: 0.75em;
+    font-family: 'Roboto Slab';
+    font-weight: 100;
+  }
+
+  .fmc-article-tocentry-active {
+    font-weight: 700;
   }
 `;
 
@@ -74,7 +80,7 @@ const Research = () => (
       Radverkehrskonzept erstellt.
     </Intro>
     <SectionIntroduction toc="Einleitung" />
-    <SectionData toc="Datengrundlagen" />
+    <SectionData toc="Daten&shy;grundlagen" />
     <SectionTopicalMaps toc="Themenkarten" />
     <SectionConceptMaps toc="Das ZESplus-Konzept" />
     <SectionNextSteps toc="Wie geht es weiter?" />

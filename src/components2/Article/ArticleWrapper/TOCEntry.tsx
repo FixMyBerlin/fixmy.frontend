@@ -80,7 +80,9 @@ function TOCEntry({ index, entry, active = false, enumerate = true }) {
       active={active}
       onClick={goToEntry}
       href={`#${slug}`}
-      className="fmc-article-tocentry internal"
+      className={`fmc-article-tocentry internal ${
+        active ? 'fmc-article-tocentry-active' : ''
+      }`}
     >
       {enumerate && (
         <>
