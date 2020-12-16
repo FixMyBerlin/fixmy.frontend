@@ -8,7 +8,7 @@ export { default as Map } from './Map';
 export { default as Heading } from './Typography/Heading';
 export { default as Intro } from './Typography/Intro';
 export { default as List } from './Typography/List';
-export { default as Paragraph } from './Typography/Paragraph';
+export { Paragraph, Paragraph2Cols } from './Typography/Paragraph';
 export { default as Quote } from './Typography/Quote';
 
 export interface SectionProps {

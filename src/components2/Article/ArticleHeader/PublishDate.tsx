@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedDate, FormattedTime } from 'react-intl';
+import { FormattedDate } from 'react-intl';
 
 interface PublishDateProps {
   date?: Date;
@@ -8,8 +8,7 @@ interface PublishDateProps {
 
 const PublishDate = ({ date, className }: PublishDateProps) => (
   <span className={className}>
-    <FormattedDate value={date} year="numeric" month="long" day="numeric" />{' '}
-    <FormattedTime value={date} hour="numeric" minute="numeric" />
+    <FormattedDate value={date} year="numeric" month="long" day="numeric" />
   </span>
 );
 

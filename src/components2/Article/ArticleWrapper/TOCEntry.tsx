@@ -7,6 +7,7 @@ import { media } from '~/styles/utils';
 
 interface TOCEntryWrapperProps {
   active: boolean;
+  className?: string;
 }
 
 const TOCEntryWrapper = styled.a<TOCEntryWrapperProps>`
@@ -20,21 +21,21 @@ const TOCEntryWrapper = styled.a<TOCEntryWrapperProps>`
     opacity: 0.75;
   }
 
-  ${media.xl`
+  ${media.l`
     line-height: 1.2;
     display: block;
     text-align: right;
-    margin-bottom: 25px;
-    padding-right: 25px;
-    border-right: ${(props: StyledProps<TOCEntryWrapperProps>) =>
-      props.active ? `3px solid ${config.colors.interaction}` : 'none'};
+    margin-bottom: 1em;
+    padding: 0 24px 0 1em;
+    border-left: ${(props: StyledProps<TOCEntryWrapperProps>) =>
+      props.active ? `3px solid ${config.colors.change_2}` : 'none'};
   `}
 `;
 
 const TOCEntryIndex = styled.div`
   font-weight: 700;
 
-  ${media.xl`
+  ${media.l`
     margin-right: 0;
   `}
 `;
@@ -45,15 +46,16 @@ const TOCEntrySeparator = styled.div`
   margin: 0 10px;
   background: #999;
 
-  ${media.xl`
+  ${media.l`
     display: none;
   `}
 `;
 
 const TOCEntryText = styled.div<TOCEntryWrapperProps>`
-  ${media.xl`
+  ${media.l`
     font-weight: ${(props: StyledProps<TOCEntryWrapperProps>) =>
       props.active ? 700 : 300};
+      hyphens: auto;
   `}
 `;
 
@@ -61,7 +63,7 @@ const padIndex = (index: number) => {
   return index < 10 ? `0${index}` : index;
 };
 
-function TOCEntry({ index, entry, active = false }) {
+function TOCEntry({ index, entry, active = false, enumerate = true }) {
   const goToEntry = () => {
     const headlineDomNode = document.querySelector(`.toc__anchor-${index}`);
     if (headlineDomNode) {
@@ -74,9 +76,20 @@ function TOCEntry({ index, entry, active = false }) {
   });
 
   return (
-    <TOCEntryWrapper active={active} onClick={goToEntry} href={`#${slug}`}>
-      <TOCEntryIndex>{padIndex(index + 1)}</TOCEntryIndex>
-      <TOCEntrySeparator />
+    <TOCEntryWrapper
+      active={active}
+      onClick={goToEntry}
+      href={`#${slug}`}
+      className={`fmc-article-tocentry internal ${
+        active ? 'fmc-article-tocentry-active' : ''
+      }`}
+    >
+      {enumerate && (
+        <>
+          <TOCEntryIndex>{padIndex(index + 1)}</TOCEntryIndex>
+          <TOCEntrySeparator />
+        </>
+      )}
       <TOCEntryText active={active}>{entry.props.toc}</TOCEntryText>
     </TOCEntryWrapper>
   );
