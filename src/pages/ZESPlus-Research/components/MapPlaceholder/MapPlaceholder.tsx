@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { ImageFull } from '~/components2/Article';
 import { media } from '~/styles/utils';
 
-import PlaceholderImage from './assets/default.jpg';
-import PlaceholderImageMobile from './assets/mobile.jpg';
+import PlaceholderImage from './images/default.jpg';
+import PlaceholderImageMobile from './images/mobile.jpg';
 
 const Mobile = styled(ImageFull)`
   margin: 1em 0;
