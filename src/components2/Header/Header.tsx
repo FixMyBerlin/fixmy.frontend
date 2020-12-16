@@ -14,7 +14,9 @@ import LocaleMenu from './LocaleMenu';
 import { LocaleCode } from '~/types';
 import { media } from '~/styles/utils';
 
-const StyledAppBar = styled(AppBar)<
+const StyledAppBar = styled(({ isOpen, hideAppBar, ...props }) => (
+  <AppBar {...props} />
+))<
   typeof AppBar & {
     isOpen: boolean;
     hideAppBar: boolean;
