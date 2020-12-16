@@ -5,9 +5,7 @@ import Button from '~/components2/Button';
 import BaseMap from '~/components2/Map';
 import { media } from '~/styles/utils';
 
-// import IconActivate1 from './icon-activate.png';
-// import IconActivate2 from './icon-activate@2x.png';
-// import IconActivate3 from './icon-activate@3x.png';
+import IconActivate from './smartphone-finger.svg';
 
 const StyledMap = styled(BaseMap)`
   position: absolute !important;
@@ -25,25 +23,30 @@ const Wrapper = styled.div`
 
   ${media.m`
     width: 100%;
-    margin: 3em auto 0;
+    margin: 3em auto 0; // no bottom margin to dock to legend in zesplus page
   `}
 `;
 
 const ActivateButton = styled(Button)<{ mapActive: boolean }>`
   & {
+    align-items: center;
     background-color: white;
-    bottom: 1em;
-    font-size: 16px;
-    height: 3em;
-    left: calc(50% - 7.5625em);
-    position: absolute;
-    width: 15.125em;
+    display: flex;
+    flex-direction: row;
+    height: 48px;
+    justify-content: center;
+    padding: 0 24px;
+    width: initial;
     z-index: 100;
 
     &:focus {
-      outline-style: none;
       box-shadow: none;
       border-color: transparent;
+      outline-style: none;
+    }
+
+    & > svg {
+      margin-right: 0.5em;
     }
 
     // Move button outside of map wrapper when activated
@@ -51,18 +54,27 @@ const ActivateButton = styled(Button)<{ mapActive: boolean }>`
     ${({ mapActive }) =>
       mapActive
         ? css`
-            transform: translateY(150%);
+            transform: translateY(200%);
           `
         : null}
   }
 `;
 
-// const IconActivate = styled.img`
-//   height: 32px;
-//   margin-right: 7px;
-//   object-fit: contain;
-//   width: 32px;
-// `;
+const ButtonArea = styled.div`
+  bottom: 1em;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+
+  ${media.l`
+    bottom: 1.5em;
+  `}
+
+  ${media.xl`
+    bottom: 2em;
+  `}
+`;
 
 const MAPBOX_INTERACTION_HANDLERS = [
   'boxZoom',
@@ -99,17 +111,16 @@ const Map = ({ defaultActive = false, ...mapProps }) => {
   return (
     <Wrapper>
       <StyledMap {...mapProps} interactive={isActive} onInit={setMap} />
-      <ActivateButton
-        ghost
-        onClick={() => setActive(true)}
-        mapActive={isActive}
-      >
-        {/* <IconActivate
-          src={IconActivate1}
-          srcSet={`${IconActivate2} 2x, ${IconActivate3} 3x`}
-        />{' '} */}
-        Karte aktivieren
-      </ActivateButton>
+      <ButtonArea>
+        <ActivateButton
+          ghost
+          onClick={() => setActive(true)}
+          mapActive={isActive}
+        >
+          <IconActivate />
+          Karte aktivieren
+        </ActivateButton>
+      </ButtonArea>
     </Wrapper>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Paragraph, Heading, SectionProps } from '~/components2/Article';
-import Link, { RouterLink } from '~/components2/Link';
+import Link from '~/components2/Link';
 
 const SectionIntroduction = (props: SectionProps) => (
   <>
