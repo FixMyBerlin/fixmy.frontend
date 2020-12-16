@@ -1,8 +1,13 @@
 import React from 'react';
 
-import { Paragraph, Heading, SectionProps } from '~/components2/Article';
+import {
+  Paragraph,
+  Heading,
+  SectionProps,
+  ImageFull,
+} from '~/components2/Article';
 import Link from '~/components2/Link';
-// import ZESMobil from './images/ZESMobil';
+import ZESMobil from './images/zesmobil.png';
 
 const SectionNextSteps = (props: SectionProps) => (
   <>
@@ -80,7 +85,12 @@ const SectionNextSteps = (props: SectionProps) => (
       soll dies fortgeführt werden.
     </Paragraph>
     <Heading as="h3">Aufsuchende Bürgerbeteiligung</Heading>
-    {/* <Image src={ZESMobil} alt="Das ZESmobil" /> */}
+    <a href={ZESMobil}>
+      <ImageFull
+        source={ZESMobil}
+        alt="Schematische Darstellung des ZESmobil"
+      />
+    </a>
     <Paragraph>
       <strong>Das ZESmobil</strong> soll zukünftig Beteiligungsformate im Freien
       (corona-konform) unterstützten. Mit umfangreicher Ausstattung (integrierte
