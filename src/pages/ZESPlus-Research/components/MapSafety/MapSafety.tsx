@@ -39,26 +39,24 @@ const MapSafety = () => (
             <IconWrapper>
               <IconToSchool />
             </IconWrapper>
-            <span>Schulwege ¹ </span>
+            <span>Schulwege¹ </span>
           </LegendItem>
           <LegendItem>
             <IconWrapper>
               <IconToSchoolUnsafe />
             </IconWrapper>
-            Unsichere Abschnitte auf Schulwegen ²
+            Unsichere Abschnitte auf Schulwegen²
           </LegendItem>
           <LegendItem>
             <IconWrapper>
               <IconSchool />
             </IconWrapper>
-            Bildungseinrichtungen ³
+            Bildungseinrichtungen³
           </LegendItem>
         </LegendItems>
       </LegendCol>
       <LegendCol>
-        <LegendHeader>
-          Unfälle mit Radfahrbeteiligung (2016-2020) ⁴
-        </LegendHeader>
+        <LegendHeader>Unfälle mit Radfahrbeteiligung (2016-2020)⁴</LegendHeader>
         <LegendItems>
           <LegendItem>
             <IconWrapper>
@@ -93,7 +91,7 @@ const MapSafety = () => (
             <IconWrapper>
               <Icons4 />
             </IconWrapper>{' '}
-            Beinäheunfälle ⁵
+            Beinaheunfälle⁵
           </LegendItem>
         </LegendItems>
       </LegendCol>

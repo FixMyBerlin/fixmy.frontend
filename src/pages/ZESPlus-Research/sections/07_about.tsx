@@ -15,9 +15,6 @@ const SectionAbout = (props: SectionProps) => (
       Hintergrundinformationen zum Projekt
     </Heading>
 
-    <Heading as="h3">
-      Warum ist der Radverkehr wichtig für die Gemeinden?
-    </Heading>
     <Quote long sourceText="Jörg Jenoch, Bürgermeister Eichwalde">
       „Oft sind wir noch auf unsere Autos angewiesen. Doch für Wege innerhalb
       der Gemeinden sollte das Fahrrad das Verkehrsmittel der Wahl werden. Auch
@@ -26,6 +23,10 @@ const SectionAbout = (props: SectionProps) => (
       brauchen wir gute Angebote für den Radverkehr, von denen wir letztendlich
       alle profitieren.“
     </Quote>
+
+    <Heading as="h3">
+      Warum ist der Radverkehr wichtig für die Gemeinden?
+    </Heading>
     <Paragraph>
       Viele Wege innerhalb der drei eng verflochtenen Gemeinden sind kürzer als
       5 km und könnten eigentlich leicht mit dem Fahrrad zurückgelegt werden.
@@ -178,7 +179,6 @@ const SectionAbout = (props: SectionProps) => (
       <List.Item>
         <Link href="https://isicargo.de/">isicargo</Link>
       </List.Item>
-      <List.Item>usw. </List.Item>
     </List>
   </>
 );

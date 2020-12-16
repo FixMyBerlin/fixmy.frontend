@@ -27,7 +27,7 @@ const DownloadWrapper = styled(Paragraph)`
 const SectionContribute = (props: SectionProps) => (
   <>
     <Heading as="h2" {...props}>
-      Mitmachen - SimRa-App, Newsletter & Feedback
+      Mitmachen — SimRa-App & Newsletter
     </Heading>
     <Paragraph>
       Laden Sie die SimRa-App der TU Berlin auf Ihr Handy und zeichnen Sie Ihre
@@ -66,7 +66,7 @@ const SectionContribute = (props: SectionProps) => (
     </DownloadWrapper>
 
     <Heading as="h3" {...props}>
-      Newsletter + Feedback
+      Newsletter
     </Heading>
     <Paragraph>
       Abonnieren Sie unseren Newsletter um aktuelle Informationen zum Projekt zu

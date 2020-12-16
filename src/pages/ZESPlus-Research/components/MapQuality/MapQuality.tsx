@@ -33,7 +33,7 @@ const MapQuality = () => (
     />
     <Legend>
       <LegendCol>
-        <LegendHeader>Oberflächenbewertung ¹</LegendHeader>
+        <LegendHeader>Oberflächenbewertung¹</LegendHeader>
         <LegendItems>
           <LegendItem>
             <IconWrapper>

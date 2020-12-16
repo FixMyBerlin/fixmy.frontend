@@ -15,6 +15,7 @@ interface HeadingProps {
 
 interface StyledHeadingProps {
   toc?: string;
+  className?: string;
 }
 
 const Heading1 = styled.h1<StyledHeadingProps>`
@@ -35,20 +36,19 @@ const Heading1 = styled.h1<StyledHeadingProps>`
   `}
 
   ${media.l`
-    max-width: 598px;
+    max-width: 646px;
   `}
 `;
 
 const Heading2style = styled.h2<StyledHeadingProps>`
   color: ${config.colors.darkbg};
-  font-size: 1.4em;
-  margin: 0.5em auto 0.25em;
+  font-size: 1.5em;
+  margin: 1.5em auto 0.25em;
   max-width: 518px;
   text-transform: uppercase;
 
   ${media.s`
     font-size: 2em;
-    margin: 1.5em auto 0.5em;
   `}
 
   ${media.m`
@@ -56,7 +56,7 @@ const Heading2style = styled.h2<StyledHeadingProps>`
   `}
 
   ${media.l`
-    max-width: calc(598px + 151px);
+    max-width: calc(646px + 151px);
   `}
 `;
 
@@ -67,7 +67,7 @@ const DecoLine = styled.div`
   margin-bottom: 0.5em;
 
   ${media.s`
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
   `}
 `;
 
@@ -79,19 +79,18 @@ const Heading2 = ({ children, ...props }) => (
 );
 
 const Heading3 = styled.h3<StyledHeadingProps>`
-  font-size: 1.2em;
+  font-size: 1.5em;
   line-height: 1.2;
-  margin: 0 auto;
+  margin: 2em auto 0;
   max-width: 518px;
   color: ${config.colors.darkbg};
 
   ${media.s`
-    font-size: 1.5em;
     line-height: 1.3;
   `}
 
   ${media.m`
-    margin: 2em auto;
+    margin: 2em auto 1em;
   `}
 
   ${media.l`

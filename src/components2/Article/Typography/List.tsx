@@ -5,6 +5,11 @@ import { media } from '~/styles/utils';
 const StyledUl = styled.ul`
   max-width: 518px;
   margin: 1em auto;
+  padding-left: 1em;
+
+  ${media.m`
+    padding-left: 2em;
+  `}
 
   ${media.l`
     max-width: 598px;
@@ -14,6 +19,11 @@ const StyledUl = styled.ul`
 const StyledOl = styled.ol`
   max-width: 518px;
   margin: 1em auto;
+  padding-left: 1em;
+
+  ${media.m`
+    padding-left: 2em;
+  `}
 
   ${media.l`
     max-width: 598px;
@@ -21,7 +31,13 @@ const StyledOl = styled.ol`
 `;
 
 const ListItem = styled.li`
-  margin-bottom: 0.5em;
+  margin-bottom: 0.8em;
+  line-height: 1.3;
+  padding-left: 1em;
+
+  ${media.m`
+    padding-left: .5em;
+  `}
 `;
 
 interface ListProps {

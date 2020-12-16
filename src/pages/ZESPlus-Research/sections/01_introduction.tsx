@@ -4,9 +4,8 @@ import Link from '~/components2/Link';
 
 const SectionIntroduction = (props: SectionProps) => (
   <>
-    <Heading as="h2" {...props}>
-      Innovative Instrumente der Radverkehrsförderung in Zeuthen, Eichwalde und
-      Schulzendorf
+    <Heading as="h3" {...props}>
+      Innovative Instrumente der Radverkehrsförderung
     </Heading>
     <Paragraph>
       Seit März 2020 arbeiten die Gemeinden zusammen mit{' '}

@@ -11,7 +11,7 @@ const Intro = styled(Paragraph)`
   `}
 
   ${media.m`
-    margin: 3em auto;
+    margin: 2em auto;
   `};
 `;
 

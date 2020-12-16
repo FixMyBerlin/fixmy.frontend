@@ -7,14 +7,22 @@ import MapPlaceholder from '../components/MapPlaceholder';
 import MapQuality from '../components/MapQuality';
 import MapSafety from '../components/MapSafety';
 
-const Wrapper = styled.section`
+const SectionHeadingWrapper = styled.div`
   & h3 {
     font-weight: normal;
   }
 `;
 
+// This component allows h3 elements in this section to use a mix of bold
+// and normal font-weight
+const SectionH3 = ({ children }) => (
+  <SectionHeadingWrapper>
+    <Heading as="h3">{children}</Heading>
+  </SectionHeadingWrapper>
+);
+
 const SectionNetwork = (props: SectionProps) => (
-  <Wrapper>
+  <>
     <Heading as="h2" {...props}>
       Die Themenkarten
     </Heading>
@@ -33,10 +41,10 @@ const SectionNetwork = (props: SectionProps) => (
       hinzukommen.
     </Paragraph>
 
-    <Heading as="h3">
+    <SectionH3>
       <strong>Themenkarte &ldquo;Radinfrastruktur&rdquo;:</strong> Komfort &
       Qualität
-    </Heading>
+    </SectionH3>
     <MapQuality />
     <Paragraph>
       Die Themenkarte &ldquo;Radinfrastruktur&rdquo; bildet die vorhandene
@@ -52,10 +60,10 @@ const SectionNetwork = (props: SectionProps) => (
       aktuell gehalten werden.
     </Paragraph>
 
-    <Heading as="h3" {...props}>
+    <SectionH3>
       <strong>Themenkarte &ldquo;Sicherheit&rdquo;:</strong> (Beinahe-)Unfälle &
       Sicherheitsempfinden
-    </Heading>
+    </SectionH3>
     <MapSafety />
     <Paragraph>
       Diese Themenkarte fasst mehrere Aspekte der objektiven wie auch der
@@ -67,10 +75,10 @@ const SectionNetwork = (props: SectionProps) => (
       Abschnitte fühlen sich Schüler:innen nach eigenen Angaben unsicher.
     </Paragraph>
 
-    <Heading as="h3" {...props}>
+    <SectionH3>
       <strong>Themenkarte &ldquo;Führungsformen&rdquo;:</strong> Typische
       Straßenquerschnitte und Potenziale
-    </Heading>
+    </SectionH3>
     <MapPlaceholder alt="Platzhalter für Karte der Führungsformen" />
     <Paragraph>
       Für die Themenkarte “Führungsformen” wurde eine Systematik entwickelt, mit
@@ -87,7 +95,7 @@ const SectionNetwork = (props: SectionProps) => (
       noch in der Entwicklung. Sobald diese abgeschlossen wurde, werden sie hier
       veröffentlicht.
     </Paragraph>
-  </Wrapper>
+  </>
 );
 
 export default SectionNetwork;

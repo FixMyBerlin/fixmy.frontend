@@ -16,9 +16,14 @@ const LegendOuter = styled.div`
     padding-bottom: .5em;
   `}
 
+  ${media.l`
+    margin: 0 -5em 0 auto;
+    width: calc(100% - 24px + 5em);
+  `}
+
   ${media.xl`
-    margin: 0 0 0 auto;
-    width: calc(100% - 151px);
+    margin: 0 -5em 0 auto;
+    width: calc(100% - 151px + 5em);
   `}
 `;
 
@@ -63,6 +68,7 @@ export const LegendItems = styled.div`
 export const LegendHeader = styled.h3`
   font-size: 1.2em;
   margin: 1em 0 0.5em;
+  font-weight: bold;
 
   ${media.s`
     font-size: 1em;
@@ -84,14 +90,13 @@ export const LegendItem = styled.div`
 `;
 
 export const LegendSources = styled.div`
-  font-size: 1em;
+  font-size: 12px;
   flex: 1 0 100%;
   color: ${config.colors.darkgrey};
   margin: 1em 0 0;
   line-height: 1.3;
 
   ${media.s`
-    font-size: 0.75em;
     margin: 2em 0 0;
   `}
 `;

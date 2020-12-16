@@ -18,6 +18,16 @@ const Desktop = styled(ImageFull)`
   ${media.m`
     display: block;
   `}
+
+  ${media.l`
+    margin: 2em -5em 0 auto;
+    width: calc(100% - 24px + 5em);
+  `}
+
+  ${media.xl`
+    margin: 2em -5em 2em auto;
+    width: calc(100% - 151px + 5em);
+  `}
 `;
 
 const defaultAlt = 'Platzhalter für ein fehlendes Bild';

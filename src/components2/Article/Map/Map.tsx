@@ -16,14 +16,30 @@ const StyledMap = styled(BaseMap)`
 `;
 
 const Wrapper = styled.div`
-  margin: 0 -16px;
+  // no bottom margin to dock to legend in zesplus page
+  margin: 1em -16px 0;
+
+  // Hack to force the aspect ratio of the contained map:
+  // padding-top 100% => 1:1 aspect
+  // padding-top  66% => 3:2 aspect
   position: relative;
-  padding-top: 66%;
+  padding-top: 100%;
   overflow: hidden;
 
   ${media.m`
+    padding-top: 66%;
     width: 100%;
-    margin: 3em auto 0; // no bottom margin to dock to legend in zesplus page
+    margin: 2em auto 0;
+  `}
+
+  ${media.l`
+    margin: 2em -5em 0 auto;
+    width: calc(100% - 24px + 5em);
+  `}
+
+  ${media.xl`
+    margin: 2em -5em 0 auto;
+    width: calc(100% - 151px + 5em);
   `}
 `;
 
@@ -67,8 +83,8 @@ const ButtonArea = styled.div`
   position: absolute;
   width: 100%;
 
-  ${media.l`
-    bottom: 1.5em;
+  ${media.m`
+    bottom: 2em;
   `}
 
   ${media.xl`
