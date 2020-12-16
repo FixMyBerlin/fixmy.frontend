@@ -1,12 +1,28 @@
 import styled from 'styled-components';
 import config from '~/config';
+import { media } from '~/styles/utils';
 
-const Paragraph = styled.div`
-  font-weight: 400;
+export const Paragraph = styled.div`
   font-family: ${config.baseFont};
+  font-weight: 400;
+  line-height: 1.35;
   margin: 1em auto;
-  line-height: 1.5;
-  max-width: 520px;
+  max-width: 518px;
+
+  ${media.s`
+    line-height: 1.5;
+  `}
+
+  ${media.l`
+    max-width: 598px;
+  `}
 `;
 
-export default Paragraph;
+export const Paragraph2Cols = styled(Paragraph)`
+  ${media.m`
+    column-count: 2;
+    margin: 1em 0;
+    max-width: none;
+    width: 100%;
+  `}
+`;

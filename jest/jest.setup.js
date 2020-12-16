@@ -9,6 +9,9 @@ import '@testing-library/jest-dom/extend-expect';
 // setup mock service worker (msw)
 import { mswServer } from './msw/mswServer';
 
+// Import MapboxGL mock
+import './mocks/mapbox-gl';
+
 // read env vars in our tests
 parseConfig();
 

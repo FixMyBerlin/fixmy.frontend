@@ -25,7 +25,7 @@ const BaseButton = (containerElem: 'a' | 'button') => styled(
   background: ${getBackgroundColor};
   border-radius: 24px;
   border: ${(props) =>
-    props.ghost ? `1.5px solid ${config.colors.interaction}` : 'none'};
+    props.ghost ? `2px solid ${config.colors.interaction}` : 'none'};
   display: inline-block;
   box-shadow: ${(props) =>
     props.flat ? 'none' : '0 10px 20px 0 rgba(0, 0, 0, 0.2)'};
@@ -39,6 +39,7 @@ const BaseButton = (containerElem: 'a' | 'button') => styled(
   padding: 15px 25px;
   width: 100%;
   word-break: break-all;
+  text-decoration: none;
 
   &:hover {
     opacity: ${(props) => (props.disabled ? 1 : 0.9)};

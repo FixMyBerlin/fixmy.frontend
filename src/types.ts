@@ -3,6 +3,7 @@ import MapboxGL from 'mapbox-gl';
 import { SpielstrassenConfig } from '~/apps/Spielstrassen/types';
 import { GastroConfig } from '~/apps/Gastro/types';
 import { MapConfig } from './apps/Map/types';
+import { ColorScheme } from './config/default/colors';
 
 export type LocaleCode = 'de' | 'en' | 'es';
 
@@ -21,9 +22,7 @@ export interface DefaultConfig {
     map?: MapConfig;
   };
   baseFont: string;
-  colors: {
-    [color: string]: string;
-  };
+  colors: ColorScheme;
   menu: any;
   apiUrl: string;
   piwik: PiwikService;

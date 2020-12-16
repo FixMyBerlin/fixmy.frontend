@@ -69,9 +69,10 @@ const ValueWrapper = styled.div`
 
 interface Props {
   locales: LocaleCode[];
+  className?: string;
 }
 
-const LocaleSwitcher = ({ locales }: Props) => {
+const LocaleSwitcher = ({ locales, className }: Props) => {
   const intl = useIntl();
   const [isLocaleMenuOpen, setLocaleMenu] = useState(false);
   const activeLocale = useSelector((state: RootState) => state.AppState.locale);
@@ -81,7 +82,7 @@ const LocaleSwitcher = ({ locales }: Props) => {
     if (ev.target.value !== activeLocale) dispatch(setLocale(ev.target.value));
   };
   return (
-    <FormWrapper>
+    <FormWrapper className={className}>
       <StyledSelect
         labelId="locale-switcher-label"
         value={activeLocale}
