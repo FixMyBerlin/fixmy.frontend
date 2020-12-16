@@ -21,8 +21,8 @@ const SectionIntroduction = (props: SectionProps) => (
       Bürger:innen, der lokalen Initiative{' '}
       <Link href="https://www.radnetz-lds.de/">
         Netzwerk fahrradfreundliches LDS (-Nord)
-      </Link>{' '}
-      sowie der umliegenden Nachbargemeinden und des Haupstadtflughafens BER.
+      </Link>
+      , sowie der umliegenden Nachbargemeinden und des Haupstadtflughafens BER.
     </Paragraph>
     <Paragraph>
       Die Grundidee des ZESplus-Konzepts ist simpel: In ihrem Alltag fahren die

@@ -55,7 +55,7 @@ const SectionNextSteps = (props: SectionProps) => (
       und weiteren Professuren mit umfangreichen Kompetenzen in der
       Verkehrsplanung. Neben der Fortführung der Kooperation mit{' '}
       <Link href="https://fixmyberlin.de">FixMyCity</Link> und dem{' '}
-      <Link href="https://www.mcc.tu-berlin.de/menue/mobile_cloud_computing/parameter/de/">
+      <Link href="https://www.mcc.tu-berlin.de/">
         Fachgebiet Mobile Cloud Computing
       </Link>{' '}
       der TU Berlin ist auch die intensive Zusammenarbeit mit dem{' '}
@@ -68,21 +68,21 @@ const SectionNextSteps = (props: SectionProps) => (
       <Heading as="h3">Realexperimente</Heading>
     </a>
     <Paragraph>
-      <strong>Realexperimente</strong> beschreiben dabei die transformation und
+      <strong>Realexperimente</strong> beschreiben die transformative und
       transdiszipiplinäre Erforschung innovativer Ansätze der
       Radverkehrsförderung. Die Entwicklung der oben vorgestellten Karten bildet
       so ein Realexperiment. Weitere Realexperimente werden aktuell vorbereitet
       bzw. durchgeführt: Zur Verbesserung des Fahrkomforts erprobt die Gemeinde
-      Eichwalde aktuell zusammen mit mehreren Firmen einer neuartigen
-      Schleifmaschine zum Abschleifen von Fahrbahnflächen mit großem
-      Kopfsteinpflaster. Am Humboldt-Gymnasium Eichwalde wurde mit der
-      Partizipation Schulwegkartierung bereits erste Schritte zur Verbesserung
-      des schulischen Mobilitätsmanagements eingeleitet. Sie hilft, die
-      Bedürfnisse der Schüler:innen besser zu verstehen, ihre Schulwege sicherer
-      zu machen und mehr Menschen frühzeitig fürs Radfahren zu begeistern. Mit
-      weiteren Schulen und in Kooperation mit dem{' '}
-      <Link href="https://www.kjv.de/kultur/">Kinder und Jugend Verband</Link>{' '}
-      soll dies fortgeführt werden.
+      Eichwalde zusammen mit mehreren Firmen einer neuartigen Schleifmaschine
+      zum Abschleifen von Fahrbahnflächen mit großem Kopfsteinpflaster. Am
+      Humboldt-Gymnasium Eichwalde wurde mit der Partizipation
+      Schulwegkartierung bereits erste Schritte zur Verbesserung des schulischen
+      Mobilitätsmanagements eingeleitet. Sie hilft, die Bedürfnisse der
+      Schüler:innen besser zu verstehen, ihre Schulwege sicherer zu machen und
+      mehr Menschen frühzeitig fürs Radfahren zu begeistern. Mit weiteren
+      Schulen und in Kooperation mit dem{' '}
+      <Link href="https://www.kjv.de/">Kinder und Jugend Verband</Link> soll
+      dies fortgeführt werden.
     </Paragraph>
     <Heading as="h3">Aufsuchende Bürgerbeteiligung</Heading>
     <a href={ZESMobil}>

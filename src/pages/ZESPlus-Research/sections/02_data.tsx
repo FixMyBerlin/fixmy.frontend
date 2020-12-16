@@ -26,7 +26,7 @@ const SectionData = (props: SectionProps) => (
       Abschnitt stellt dar, woher diese Daten stammen und wie sie verarbeitet
       wurden.
     </Paragraph>
-    <a href="simra-data" id="simra-data">
+    <a href="simra-data" id="simra-data" className="internal">
       <Heading as="h3">Auswertung der SimRa-Daten</Heading>
     </a>
     <Paragraph>

@@ -26,8 +26,8 @@ const SectionConceptMaps = (props: SectionProps) => (
       eine grobe Analyse von Start-Zielpunkten, die den Bedarf für wichtige
       Radverbindungen zeigen. Auf Basis ihrer lokalen Expertise erarbeiteten
       Mitglieder des{' '}
-      <Link internal href="#zesplus-netzwerk">
-        ZES+Netzwerks
+      <Link href="https://www.radnetz-lds.de/">
+        Netzwerks fahrradfreundliches LDS (-Nord)
       </Link>{' '}
       den ersten Entwurf für ein gemeindeübergreifendes Hauptroutennetz, das in
       gelb dargestellt ist. Darauf aufbauend wird im Frühjahr 2021 in einem

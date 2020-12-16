@@ -65,7 +65,7 @@ const SectionAbout = (props: SectionProps) => (
     </Paragraph>
     <Paragraph>
       Finanziert wird diese Kooperation durch die{' '}
-      <Link href="https://www.bmbf.de/foerderungen/bekanntmachung-2289.html">
+      <Link href="https://www.fona.de/de/massnahmen/foerdermassnahmen/mobilitaet-in-der-stadt.php">
         „MobilitätsWerkStadt 2025“
       </Link>{' '}
       des Bundesministeriums für Forschung und Entwicklung. Eine wichtige
@@ -124,11 +124,8 @@ const SectionAbout = (props: SectionProps) => (
       Computing, FG Integrierte Verkehrsplanung), FixMyCity, den Gemeinden
       Zeuthen, Eichwalde und Schulzendorf sowie den Partnerkommunen Wildau,
       Schönefeld und Königs Wusterhausen. Hinzu kommen weitere Akteure wie die
-      lokalen Initiativen{' '}
-      <Link href="https://www.radnetz-lds.de/">
-        Netzwerk fahrradfreundliches LDS (-Nord)
-      </Link>{' '}
-      und Bike2BER, und weitere Projektpartner wie der KJV e.V., isicargo usw.
+      lokalen Initiativen Netzwerk fahrradfreundliches LDS (-Nord)und Bike2BER,
+      und weitere Projektpartner wie der KJV e.V., isicargo usw.
     </Paragraph>
     <a href="zesplus-netzwerk" id="zesplus-netzwerk" className="internal">
       <Heading as="h3">Die Projektpartner / Kooperationspartner</Heading>
@@ -140,23 +137,47 @@ const SectionAbout = (props: SectionProps) => (
           Wildau)
         </Link>
       </List.Item>
-      <List.Item>FG Mobile Cloud Computing (TU Berlin)</List.Item>
-      <List.Item>FG Integrierte Verkehrsplanung (TU Berlin)</List.Item>
+      <List.Item>
+        <Link href="https://www.mcc.tu-berlin.de/">
+          FG Mobile Cloud Computing (TU Berlin)
+        </Link>
+      </List.Item>
+      <List.Item>
+        <Link href="https://ivp.tu-berlin.de">
+          FG Integrierte Verkehrsplanung (TU Berlin)
+        </Link>
+      </List.Item>
       <List.Item>
         <Link href="https://fixmyberlin.de/">FixMyCity</Link>
       </List.Item>
-      <List.Item>Die Gemeinden Zeuthen, Eichwalde und Schulzendorf </List.Item>
       <List.Item>
-        Die Partnerkommunen Wildau, Schönefeld und Königs Wusterhausen
+        Die Gemeinden <Link href="https://www.zeuthen.de/">Zeuthen</Link>,{' '}
+        <Link href="https://eichwalde.de">Eichwalde</Link> und{' '}
+        <Link href="https://www.schulzendorf.de/">Schulzendorf</Link>
+      </List.Item>
+      <List.Item>
+        Die Partnerkommunen <Link href="https://www.wildau.de/">Wildau</Link>,{' '}
+        <Link href="https://www.gemeinde-schoenefeld.de/">Schönefeld</Link> und{' '}
+        <Link href="https://www.koenigs-wusterhausen.de/">
+          Königs Wusterhausen
+        </Link>
       </List.Item>
       <List.Item>
         <Link href="https://www.radnetz-lds.de/">
           Das Netzwerk fahrradfreundliches LDS (-Nord)
         </Link>
       </List.Item>
-      <List.Item>Bike2BER</List.Item>
-      <List.Item>Der Kinder- und Jugendverein e.V., </List.Item>
-      <List.Item>isicargo </List.Item>
+      <List.Item>
+        <Link href="http://bike2ber.de/">Bike2BER</Link>
+      </List.Item>
+      <List.Item>
+        <Link href="https://www.kjv.de/">
+          Der Kinder- und Jugendverein e.V.,{' '}
+        </Link>
+      </List.Item>
+      <List.Item>
+        <Link href="https://isicargo.de/">isicargo</Link>
+      </List.Item>
       <List.Item>usw. </List.Item>
     </List>
   </>

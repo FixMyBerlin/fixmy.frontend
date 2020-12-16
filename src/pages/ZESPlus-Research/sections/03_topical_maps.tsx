@@ -58,7 +58,7 @@ const SectionNetwork = (props: SectionProps) => (
     </Heading>
     <MapSafety />
     <Paragraph>
-      Diese Themenkarte fass mehrere Aspekte der objektiven wie auch der
+      Diese Themenkarte fasst mehrere Aspekte der objektiven wie auch der
       subjektiven Sicherheit der Radfahrenden zusammen. In der interaktiven
       Karte sind tatsächliche Unfälle verortet sowie Beinahe-Unfälle, die mit
       der SimRa-App identifiziert wurden. Die dünnen blauen Linien zeigen
