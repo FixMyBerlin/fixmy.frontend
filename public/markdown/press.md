@@ -23,6 +23,8 @@ Bildmaterial zur freien Verwendung durch die Presse: <br>
 - [Screenshot_Happy-Bike-Level-sehrgut+ok](/uploads/press/Happy-Bike-Level_gut_fixmyberlin.jpg 'Screenshot-Happy-Bike-Level-gut')
 - [Screenshot_Happy-Bike-Level-schlecht+sehrschlecht](/uploads/press/Happy-Bike-Level_schlecht_fixmyberlin.jpg 'Screenshot-Happy-Bike-Level-gut')
 
+Alle Bilder stehen unter der Creative Commons Lizenz (c) FixMyCity, Lizenz CC BY 4.0 https://creativecommons.org/licenses/by/4.0/
+
 ### Pressemitteilungen
 
 - 02.12.2019 - [Start Umfrage Straßencheck mit Tagesspiegel Berlin](/uploads/press/2019_12_02_PM_Start_Strassencheck.pdf 'Start Umfrage Straßencheck mit Tagesspiegel Berlin') FixMyBerlin und Tagesspiegel Berlin starten die Umfrage Straßencheck zur Sicherheit von Berlins Straßen.
@@ -32,7 +34,6 @@ Bildmaterial zur freien Verwendung durch die Presse: <br>
 
 ### Pressespiegel
 
-- 
 - 19.11.2020 - Emmett - [Mehr Daten zum Radverkehr – dank Bürger:innenbeteiligung](https://www.emmett.io/article/nuetzliche-kleine-helfer-fuer-verkehrsplaner-innen)
 - 29.10.2020 - rbb - [Nominierungen für Innovationspreis Berlin Brandenburg](https://www.inforadio.de/programm/schema/sendungen/wirtschaft_aktuell/202010/29/innovationspreis-berlin-brandenburg-erfindung-nominierung.html)
 - 05.10.2020 - Aachener Zeitung - [Aktion „Radbügel“: Aachen will Fahrraddiebe dauerhaft ausbremsen](https://www.aachener-zeitung.de/lokales/aachen/aachen-will-fahrraddiebe-dauerhaft-ausbremsen_aid-53871601)
