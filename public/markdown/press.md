@@ -23,7 +23,7 @@ Bildmaterial zur freien Verwendung durch die Presse: <br>
 - [Screenshot_Happy-Bike-Level-sehrgut+ok](/uploads/press/Happy-Bike-Level_gut_fixmyberlin.jpg 'Screenshot-Happy-Bike-Level-gut')
 - [Screenshot_Happy-Bike-Level-schlecht+sehrschlecht](/uploads/press/Happy-Bike-Level_schlecht_fixmyberlin.jpg 'Screenshot-Happy-Bike-Level-gut')
 
-Alle Bilder stehen unter der Creative Commons Lizenz (c) FixMyCity, Lizenz CC BY 4.0 https://creativecommons.org/licenses/by/4.0/
+Alle Bilder stehen unter der [Creative Commons](https://creativecommons.org/licenses/by/4.0/) Lizenz (c) FixMyCity, Lizenz CC BY 4.0 
 
 ### Pressemitteilungen
 
