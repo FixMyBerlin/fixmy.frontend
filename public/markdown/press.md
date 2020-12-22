@@ -34,6 +34,7 @@ Alle Bilder stehen unter der [Creative Commons](https://creativecommons.org/lice
 
 ### Pressespiegel
 
+- 04.12.2020 - DW - [The future of city mobility](https://www.dw.com/en/the-future-of-city-mobility/av-55813801)
 - 19.11.2020 - Emmett - [Mehr Daten zum Radverkehr – dank Bürger:innenbeteiligung](https://www.emmett.io/article/nuetzliche-kleine-helfer-fuer-verkehrsplaner-innen)
 - 29.10.2020 - rbb - [Nominierungen für Innovationspreis Berlin Brandenburg](https://www.inforadio.de/programm/schema/sendungen/wirtschaft_aktuell/202010/29/innovationspreis-berlin-brandenburg-erfindung-nominierung.html)
 - 05.10.2020 - Aachener Zeitung - [Aktion „Radbügel“: Aachen will Fahrraddiebe dauerhaft ausbremsen](https://www.aachener-zeitung.de/lokales/aachen/aachen-will-fahrraddiebe-dauerhaft-ausbremsen_aid-53871601)
