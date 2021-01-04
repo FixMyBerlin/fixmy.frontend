@@ -23,6 +23,8 @@ Bildmaterial zur freien Verwendung durch die Presse: <br>
 - [Screenshot_Happy-Bike-Level-sehrgut+ok](/uploads/press/Happy-Bike-Level_gut_fixmyberlin.jpg 'Screenshot-Happy-Bike-Level-gut')
 - [Screenshot_Happy-Bike-Level-schlecht+sehrschlecht](/uploads/press/Happy-Bike-Level_schlecht_fixmyberlin.jpg 'Screenshot-Happy-Bike-Level-gut')
 
+Alle Bilder stehen unter der [Creative Commons](https://creativecommons.org/licenses/by/4.0/) Lizenz (c) FixMyCity, Lizenz CC BY 4.0 
+
 ### Pressemitteilungen
 
 - 02.12.2019 - [Start Umfrage Straßencheck mit Tagesspiegel Berlin](/uploads/press/2019_12_02_PM_Start_Strassencheck.pdf 'Start Umfrage Straßencheck mit Tagesspiegel Berlin') FixMyBerlin und Tagesspiegel Berlin starten die Umfrage Straßencheck zur Sicherheit von Berlins Straßen.
@@ -32,6 +34,22 @@ Bildmaterial zur freien Verwendung durch die Presse: <br>
 
 ### Pressespiegel
 
+- 04.12.2020 - DW - [The future of city mobility](https://www.dw.com/en/the-future-of-city-mobility/av-55813801)
+- 19.11.2020 - Emmett - [Mehr Daten zum Radverkehr – dank Bürger:innenbeteiligung](https://www.emmett.io/article/nuetzliche-kleine-helfer-fuer-verkehrsplaner-innen)
+- 29.10.2020 - rbb - [Nominierungen für Innovationspreis Berlin Brandenburg](https://www.inforadio.de/programm/schema/sendungen/wirtschaft_aktuell/202010/29/innovationspreis-berlin-brandenburg-erfindung-nominierung.html)
+- 05.10.2020 - Aachener Zeitung - [Aktion „Radbügel“: Aachen will Fahrraddiebe dauerhaft ausbremsen](https://www.aachener-zeitung.de/lokales/aachen/aachen-will-fahrraddiebe-dauerhaft-ausbremsen_aid-53871601)
+- 05.10.2020 - Technologiestiftung Berlin - [„Wir wollen den Menschen den öffentlichen Raum zurückgeben“](https://www.technologiestiftung-berlin.de/de/blog/wir-wollen-den-menschen-den-oeffentlichen-raum-zurueckgeben/)
+- 03.09.2020 - taz - [ Bürgerprojekte für mehr Nachhaltigkeit: Kreativer Freiraum](https://taz.de/Buergerprojekte-fuer-mehr-Nachhaltigkeit/!5706742/)
+- 22.08.2020 - Berliner Woche - [Friedrichshain-Kreuzberg stellte 600 Fahrradbügel](https://www.berliner-woche.de/friedrichshain-kreuzberg/c-verkehr/friedrichshain-kreuzberg-stellte-600-fahrradbuegel_a284293)
+- 16.07.2020 - GIJN - [Data Journalism Top 10: COVID-19 Racial Inequity, Cash for the Connected, Africa’s Silent Epidemic, Amazon Safety](https://gijn.org/2020/07/16/data-journalism-top-10-covid-19-racial-inequity-cash-for-the-connected-africas-silent-epidemic-amazon-safety/)
+- 15.07.2020 - Berliner Woche - [Bürger wollen sichere Radwege](https://www.berliner-woche.de/mitte/c-verkehr/buerger-wollen-sichere-radwege_a279766)
+- 09.07.2020 - taz - [Fahrrad-Boom in Corona-Pandemie: Schrei nach mehr](https://taz.de/Fahrrad-Boom-in-Corona-Pandemie/!5694408/)
+- 08.07.2020 - ADFC Landesverband Berlin - ["Straßencheck" zeigt: Menschen wünschen sich sichere Radwege - ADFC Berlin fordert: "Jetzt loslegen, Radverkehrsplan nachreichen!"](https://verbaende.com/news.php/Strassencheck-zeigt-Menschen-wuenschen-sich-sichere-Radwege--ADFC-Berlin-fordert-Jetzt-loslegen-Radverkehrsplan-nachreichen?m=135976)
+- 07.07.2020 - Tagesspiegel - [Mehr als 20.000 Teilnehmer bei Umfrage zur Gestaltung von Straßen](https://utf.rdir.de/form.do?agnCI=875&agnFN=fullview&agnUID=D.B.CZzK.mcW.BvMlh.A.09DYxyVZEmh6lAf-NipKTCbUjo97wms0lVL0kMA4veazLNsSL5cyuocqnvMSINGw6CPi7DACoCMS5WiQ9LYXhA)
+- 06.07.2020 - Tagesspiegel - [Solche Straßen will Berlin](https://interaktiv.tagesspiegel.de/lab/strassencheck-ergbnisse-diese-strassen-will-berlin/)
+- 03.07.2020 – Süddeutsche Zeitung - [Trinken statt Parken: Kneipentische auf Autoparkplätzen](https://www.sueddeutsche.de/leben/szene-berlin-trinken-statt-parken-kneipentische-auf-autoparkplaetzen-dpa.urn-newsml-dpa-com-20090101-200703-99-661173)
+- 19.06.2020 - rbb - [Ein Jahr City-Lab Berlin Was ein Digitalprojekt mit Zebrastreifen und Stadtbäumen zu tun hat](https://www.rbb24.de/panorama/beitrag/2020/06/digitalprojekt-city-lab-berlin-vernetzung-verwaltung.html)
+- 27.05.2020 taz - [Gastronomie in Berlin: Ausschank auf dem Parkplatz](https://taz.de/Gastronomie-in-Berlin/!5685035/)
 - 20.05.2020 - Tagesspiegel - [300 Gastrobetriebe melden auf fixmyberlin.de Interesse an Flächen im Straßenraum](https://leute.tagesspiegel.de/friedrichshain-kreuzberg/macher/2020/05/20/123623/300-gastrobetriebe-melden-auf-fixmyberlin-de-interesse-an-flaechen-im-strassenraum/)
 - 14.05.2020 - RBB - [Debatte über Restaurant-Tische auf Gehwegen und Straßen](https://www.rbb24.de/panorama/thema/2020/coronavirus/beitraege_neu/2020/05/berlin-friedrichshain-kreuzberg-mitte-aussengastronomie-bestuhlu.html)
 - 14.05.2020 - BZ Berlin - [Mehr Restaurant-Tische auf Berliner Gehwegen – Fußgängerverband dagegen](https://www.bz-berlin.de/berlin/friedrichshain-kreuzberg/bezirk-will-strassen-und-parkplaetze-fuer-mehr-restaurant-tische-sperren)
