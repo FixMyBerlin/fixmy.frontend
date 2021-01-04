@@ -21,7 +21,6 @@ module.exports = (api) => {
         displayName: true,
       },
     ],
-    'babel-plugin-idx',
     '@babel/plugin-proposal-optional-chaining',
   ];
 
