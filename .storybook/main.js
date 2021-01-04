@@ -50,7 +50,11 @@ const fixMapboxBug = (config) => {
 
 module.exports = {
   stories: ['../src/**/*.stories.@(ts|js)'],
-  addons: ['@storybook/addon-essentials'],
+  addons: [
+    '@storybook/addon-actions',
+    '@storybook/addon-links',
+    '@storybook/addon-docs',
+  ],
   webpackFinal: (config) => {
     config.resolve.alias['~'] = AppSourceDir;
     replaceSvgRule(config);
