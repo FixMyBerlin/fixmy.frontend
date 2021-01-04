@@ -1,3 +1,7 @@
+//
+// jest.setup.js runs before each test file, while test.config.js runs only once
+//
+
 import { config as parseConfig } from 'dotenv';
 
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
