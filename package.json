@@ -29,7 +29,6 @@
     "compile:es": "formatjs compile src/lang/translations/es.json --ast --out-file src/lang/compiled/es.json"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.8.7",
     "@formatjs/intl-datetimeformat": "^2.8.4",
     "@formatjs/intl-getcanonicallocales": "^1.5.1",
     "@formatjs/intl-numberformat": "^5.5.5",
