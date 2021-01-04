@@ -2,6 +2,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const Path = require('path');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const Webpack = require('webpack');
 
 const common = require('./webpack.common.js');
@@ -33,6 +34,7 @@ module.exports = merge(common, {
     new CopyWebpackPlugin([
       { from: Path.resolve(__dirname, '../public/lab'), to: 'lab' },
     ]),
+    new ReactRefreshWebpackPlugin(),
   ],
   module: {
     rules: [
@@ -56,12 +58,12 @@ module.exports = merge(common, {
             options: {
               sourceMap: true,
               postcssOptions: {
-                plugins: ['autoprefixer']
-              }
-            }
-          }
-        ]
-      }
-    ]
-  }
+                plugins: ['autoprefixer'],
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
 });

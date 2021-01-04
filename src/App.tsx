@@ -1,9 +1,6 @@
-import 'react-hot-loader'; // keep first
-
 import React, { useEffect, useState } from 'react';
 import { IntlProvider, IntlConfig } from 'react-intl';
 import { connect, useSelector } from 'react-redux';
-import { hot } from 'react-hot-loader/root';
 import ReactPiwik from 'react-piwik';
 import styled from 'styled-components';
 import { Router } from 'react-router-dom';
@@ -92,4 +89,4 @@ const mapStateToProps = (state: RootState) => ({
   isEmbedMode: state.MapState.isEmbedMode,
 });
 
-export default hot(connect(mapStateToProps)(App));
+export default connect(mapStateToProps)(App);

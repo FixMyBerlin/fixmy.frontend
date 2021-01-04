@@ -23,7 +23,6 @@ module.exports = (api) => {
     ],
     'babel-plugin-idx',
     '@babel/plugin-proposal-optional-chaining',
-    'react-hot-loader/babel',
   ];
 
   const env = {
