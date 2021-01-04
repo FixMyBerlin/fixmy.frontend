@@ -1,7 +1,13 @@
 {
-  "name": "fixmyberlin-frontend",
+  "name": "fixmy.frontend",
   "version": "1.0.0",
   "description": "A Mobility Platform for Berlin",
+  "author": "FixMyCity GmbH",
+  "repository": {
+    "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
+    "type": "git"
+  },
+  "license": "AGPL-3.0",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack serve",
@@ -23,12 +29,6 @@
     "compile:en": "formatjs compile src/lang/translations/en.json --ast --out-file src/lang/compiled/en.json",
     "compile:es": "formatjs compile src/lang/translations/es.json --ast --out-file src/lang/compiled/es.json"
   },
-  "repository": {
-    "url": "git@github.com:FixMyBerlin/fixmy.frontend.git",
-    "type": "git"
-  },
-  "author": "FixMyCity",
-  "license": "AGPL-3.0",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.12.9",
