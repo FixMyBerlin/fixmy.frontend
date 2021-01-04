@@ -1,5 +1,5 @@
 //
-// jest.setup.js runs before each test file, while test.config.js runs only once
+// jest.setup.js runs before each test file
 //
 
 import { config as parseConfig } from 'dotenv';

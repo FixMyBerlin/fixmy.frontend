@@ -50,6 +50,8 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.{js,ts,tsx}'],
   coveragePathIgnorePatterns: ['node_modules', 'stories.', '.test.'],
 
+  verbose: false,
+
   globals: {
     'ts-jest': {
       tsConfig: './jest/tsconfig.jest.json',
