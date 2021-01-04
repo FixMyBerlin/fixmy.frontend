@@ -42,7 +42,6 @@
     "@turf/helpers": "^6.1.4",
     "@turf/length": "^6.0.2",
     "abortcontroller-polyfill": "^1.4.0",
-    "classnames": "^2.2.6",
     "common-tags": "^1.8.0",
     "core-js": "^3.6.4",
     "d3-format": "^1.4.4",
