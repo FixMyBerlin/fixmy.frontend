@@ -25,7 +25,7 @@ export function percentageFormat(num: number, locale: string = 'de') {
   }).format(num);
 }
 
-export function isNumeric(val: unknown) {
+export function isNumeric(val: any) {
   return !Number.isNaN(val) && Number.isFinite(val);
 }
 
