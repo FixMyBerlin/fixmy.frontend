@@ -1,4 +1,4 @@
-import { sortByKey } from '../utils';
+import { sortByKey, numberFormat, percentageFormat } from '../utils';
 import projectList from './projectList.json';
 
 describe('sortByKey', () => {
@@ -22,5 +22,44 @@ describe('sortByKey', () => {
       sortByKey('construction_completed_date')
     );
     expect(JSON.stringify(sortOutput.map((obj) => obj.id))).toEqual('[7,6,4]');
+  });
+});
+
+describe('numberFormat', () => {
+  it('formats numbers for default locale', () => {
+    expect(numberFormat(7)).toEqual('7');
+    expect(numberFormat(7.3)).toEqual('7');
+  });
+
+  it('formats a number with decimals', () => {
+    expect(numberFormat(7, 1)).toEqual('7,0');
+    expect(numberFormat(7.3, 1)).toEqual('7,3');
+  });
+
+  it('formats a number using en locale', () => {
+    expect(numberFormat(7, 1, 'en')).toEqual('7.0');
+    expect(numberFormat(7.3, 1, 'en')).toEqual('7.3');
+  });
+
+  it("doesn't fail for invalid values", () => {
+    expect(numberFormat(null)).toEqual('');
+  });
+});
+
+describe('percentageFormat', () => {
+  it('formats a number as a percentage', () => {
+    // For the default German locale code, a non-breaking whitespace '\xa0' is
+    // inserted as a separator, which is different from the white-space char
+    // produced by writing ' '.
+    expect(percentageFormat(0.5)).toEqual('50,0\xa0%');
+    expect(percentageFormat(0.5012)).toEqual('50,1\xa0%');
+  });
+
+  it('formats numbers using provided locale', () => {
+    expect(percentageFormat(0.5, 'en')).toEqual('50.0%');
+  });
+
+  it("doesn't fail for invalid values", () => {
+    expect(percentageFormat(null)).toEqual('');
   });
 });

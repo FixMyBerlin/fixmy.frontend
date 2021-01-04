@@ -1,34 +1,35 @@
-import { formatDefaultLocale } from 'd3-format';
 import logger from '~/utils/logger';
 
-const germanNumberFormat = formatDefaultLocale({
-  decimal: ',',
-  thousands: '.',
-  grouping: [3],
-  currency: ['€', ''],
-});
+export function numberFormat(num: number, decimals = 0, locale: string = 'de') {
+  if (num == null) return '';
 
-export function numberFormat(num, decimals = 0) {
-  if (typeof num === 'undefined') {
-    return '';
-  }
-
-  return germanNumberFormat.format(`,.${decimals}f`)(num);
+  return Intl.NumberFormat(locale, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  }).format(num);
 }
 
-export function percentageFormat(num) {
-  if (typeof num === 'undefined') {
-    return '';
-  }
+/**
+ * Returns localized string from number, using one max fractional digit
+ *
+ * @param num value to format
+ * @param locale optional locale code
+ */
+export function percentageFormat(num: number, locale: string = 'de') {
+  if (num == null) return '';
 
-  return germanNumberFormat.format('~%')(num);
+  return Intl.NumberFormat(locale, {
+    style: 'percent',
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }).format(num);
 }
 
-export function isNumeric(val) {
+export function isNumeric(val: unknown) {
   return !Number.isNaN(val) && Number.isFinite(val);
 }
 
-export function sortByKey(key = 'id', sortDirection = 'ASC') {
+export function sortByKey(key = 'id', sortDirection: 'ASC' | 'DES' = 'ASC') {
   const isAsc = sortDirection === 'ASC';
   return (a, b) => {
     // Always sort undefined values to come last
