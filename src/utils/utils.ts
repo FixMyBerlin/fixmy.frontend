@@ -29,7 +29,7 @@ export function isNumeric(val: any) {
   return !Number.isNaN(val) && Number.isFinite(val);
 }
 
-export function sortByKey(key = 'id', sortDirection: 'ASC' | 'DES' = 'ASC') {
+export function sortByKey(key = 'id', sortDirection: 'ASC' | any = 'ASC') {
   const isAsc = sortDirection === 'ASC';
   return (a, b) => {
     // Always sort undefined values to come last

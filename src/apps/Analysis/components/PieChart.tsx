@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { VictoryPie, VictoryLabel, Slice } from 'victory';
+import { connect, ConnectedProps } from 'react-redux';
+import { VictoryPie, VictoryLabel, Slice, VictoryLabelProps } from 'victory';
 
 import config from '~/config';
 import { setPhaseFilter } from '~/apps/Analysis/AnalysisState';
@@ -56,7 +56,7 @@ const chartStyle = {
  * @param {Array<Object>} projects Project objects with `length` field
  * @param {String} phase Name of the phase to filter for or `null` for all
  */
-const lengthByPhase = (projects, phase) => {
+const lengthByPhase = (projects: any[], phase: string) => {
   let rvaLength;
   return projects.reduce((acc, cur) => {
     rvaLength = 0;
@@ -67,7 +67,7 @@ const lengthByPhase = (projects, phase) => {
   }, 0);
 };
 
-function getSvgOffsetY(orientation) {
+function getSvgOffsetY(orientation: string) {
   switch (orientation) {
     case 'top':
       return -40;
@@ -82,7 +82,7 @@ function getSvgOffsetY(orientation) {
   }
 }
 
-function getSvgOffsetX(textAnchor) {
+function getSvgOffsetX(textAnchor: string) {
   switch (textAnchor) {
     case 'start':
       return 10;
@@ -95,8 +95,15 @@ function getSvgOffsetX(textAnchor) {
   }
 }
 
-const Label = ({ x, y, dy, ...props }) => {
+const Label = ({
+  x,
+  y,
+  dy,
+  ...props
+}: VictoryLabelProps & { orientation?: string }) => {
   const phase = PLANNING_PHASES.find((p) => p.name === props.text);
+  // Victory type definitions declare that `textAnchor` can be a function
+  // @ts-ignore
   const offsetX = getSvgOffsetX(props.textAnchor);
   const offsetY = getSvgOffsetY(props.orientation);
 
@@ -115,8 +122,17 @@ const NoData = () => (
   </ChartTitle>
 );
 
-class PieChart extends PureComponent {
-  handleClick = (evt, data) => {
+const connector = connect(null, (dispatch) => ({
+  setPhaseFilter: (filter: string) => dispatch(setPhaseFilter(filter)),
+}));
+
+interface Props {
+  data: any[];
+  isLoading: boolean;
+}
+
+class PieChart extends PureComponent<Props & ConnectedProps<typeof connector>> {
+  handleClick = (_: any, data: { datum: { x: string } }) => {
     this.props.setPhaseFilter(data.datum.x);
   };
 
@@ -155,6 +171,14 @@ class PieChart extends PureComponent {
 
     const hasData = data.length > 0;
     const colorScale = chartData.map((d) => d.color);
+    const eventHandler = [
+      {
+        target: 'data',
+        eventHandlers: {
+          onClick: this.handleClick,
+        },
+      },
+    ];
 
     return (
       <PieChartWrapper>
@@ -165,15 +189,13 @@ class PieChart extends PureComponent {
           colorScale={colorScale}
           style={chartStyle}
           labelComponent={<Label />}
+          // Victory type definitions miss the `active` prop
+          // @ts-ignore
           dataComponent={<Slice active={Math.random() > 0.6} />}
-          events={[
-            {
-              target: 'data',
-              eventHandlers: {
-                onClick: this.handleClick,
-              },
-            },
-          ]}
+          // Victory types only specify the event itself and nothing else
+          // as a callback pro
+          // @ts-ignore
+          events={eventHandler}
         />
         <ChartInnerLabel>
           {hasData ? this.renderChartLabel() : <NoData />}
@@ -183,6 +205,4 @@ class PieChart extends PureComponent {
   }
 }
 
-export default connect(null, (dispatch) => ({
-  setPhaseFilter: (filter) => dispatch(setPhaseFilter(filter)),
-}))(PieChart);
+export default connector(PieChart);

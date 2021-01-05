@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 
 import config from '~/config';
 import { sortByKey } from '~/utils/utils';
@@ -20,6 +21,7 @@ import ProjectList from '~/components2/ProjectList';
 import Card from './components/Card';
 import logger from '~/utils/logger';
 import { PLANNING_PHASES } from '~/apps/Map/constants';
+import { RootState } from '~/store';
 
 const AnalysisWrapper = styled.div`
   background: ${config.colors.lightgrey};
@@ -43,9 +45,9 @@ const AnalysisHeader = styled.div`
   padding: 16px 0;
 `;
 
-const AnalysisControls = styled.div`
+const AnalysisControls = styled.div<{ isVisible: boolean }>`
   margin: 16px 0;
-  display: ${(props) => (props.isVisible ? 'flex' : 'none')};
+  display: ${({ isVisible }) => (isVisible ? 'flex' : 'none')};
   justify-content: space-between;
 `;
 
@@ -79,8 +81,13 @@ const sortOptions = [
   },
 ];
 
-function filterDistrict(districtName) {
-  return (d) => {
+interface District {
+  borough: string;
+  phase: string;
+}
+
+function filterDistrict(districtName: string) {
+  return (d: District) => {
     if (!districtName) return true;
     if (d.borough == null) logger('No borough defined', d);
     return d.borough?.toLowerCase() === districtName.toLowerCase();
@@ -88,10 +95,27 @@ function filterDistrict(districtName) {
 }
 
 function filterPhase(phaseName) {
-  return (d) => (!phaseName ? true : d.phase === phaseName.toLowerCase());
+  return (d: District) =>
+    !phaseName ? true : d.phase === phaseName.toLowerCase();
 }
 
-class Analysis extends PureComponent {
+const connector = connect(
+  (state: RootState) => state.AnalysisState,
+  (dispatch) => ({
+    loadProjectData: (districtName: string) =>
+      loadProjectData(districtName)(dispatch),
+    setDistrictFilter: (districtName: string) =>
+      dispatch(setDistrictFilter(districtName)),
+    setPhaseFilter: (districtName: string) =>
+      dispatch(setPhaseFilter(districtName)),
+    setSort: (sort: string) => dispatch(setSort(sort)),
+  })
+);
+
+type Props = ConnectedProps<typeof connector> &
+  RouteComponentProps<{ districtName?: string }>;
+
+class Analysis extends PureComponent<Props> {
   componentDidMount() {
     const selectedDistrict = this.props.match.params.districtName;
     this.props.loadProjectData(selectedDistrict);
@@ -139,7 +163,7 @@ class Analysis extends PureComponent {
     const hasData = filteredData.length > 0;
     const { sortDirection } = selectedSort
       ? sortOptions.find((s) => s.value === selectedSort)
-      : 'ASC';
+      : { sortDirection: 'ASC' };
     const sortedData = filteredData.sort(
       sortByKey(selectedSort, sortDirection)
     );
@@ -193,13 +217,4 @@ class Analysis extends PureComponent {
   }
 }
 
-export default connect(
-  (state) => state.AnalysisState,
-  (dispatch) => ({
-    loadProjectData: (districtName) => dispatch(loadProjectData(districtName)),
-    setDistrictFilter: (districtName) =>
-      dispatch(setDistrictFilter(districtName)),
-    setPhaseFilter: (districtName) => dispatch(setPhaseFilter(districtName)),
-    setSort: (sort) => dispatch(setSort(sort)),
-  })
-)(Analysis);
+export default connector(Analysis);
