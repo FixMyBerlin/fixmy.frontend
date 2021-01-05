@@ -3,9 +3,9 @@ import thunk from 'redux-thunk';
 
 import AppState from '~/AppState';
 import UserState from '~/pages/User/UserState';
-import AnalysisState from '~/pages/Analysis/AnalysisState';
 import ReportsState from '~/pages/Reports/state';
 import KatasterKIState from '~/pages/KatasterKI/state';
+import AnalysisState from '~/apps/Analysis/AnalysisState';
 import SpielstrassenState from '~/apps/Spielstrassen/state';
 import MapState from '~/apps/Map/MapState';
 

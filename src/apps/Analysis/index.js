@@ -10,8 +10,8 @@ import {
   setDistrictFilter,
   setPhaseFilter,
   setSort,
-} from '~/pages/Analysis/AnalysisState';
-import PieChart from '~/pages/Analysis/components/PieChart';
+} from '~/apps/Analysis/AnalysisState';
+import PieChart from '~/apps/Analysis/components/PieChart';
 import Title from '~/components/Title';
 import MenuButton from '~/components/MenuButton';
 import Flex from '~/components/Flex';
