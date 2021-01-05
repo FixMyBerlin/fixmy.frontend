@@ -18,7 +18,8 @@ const MAILJET_AUTH_FILE = '3e83a85511f70bef9fbe500647d70221.txt';
 
 // Babel plugins used both by TS and JS loader
 const BABEL_PLUGINS =
-  process.env.NODE_ENV === 'production'
+  process.env.NODE_ENV === 'production' ||
+  process.env.CYPRESS_INTERNAL_ENV === 'production'
     ? []
     : [require.resolve('react-refresh/babel')];
 
