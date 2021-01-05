@@ -103,7 +103,7 @@ const connector = connect(
   (state: RootState) => state.AnalysisState,
   (dispatch) => ({
     loadProjectData: (districtName: string) =>
-      loadProjectData(districtName)(dispatch),
+      dispatch<any>(loadProjectData(districtName)),
     setDistrictFilter: (districtName: string) =>
       dispatch(setDistrictFilter(districtName)),
     setPhaseFilter: (districtName: string) =>
