@@ -8,6 +8,11 @@ import { LocaleCode } from '~/types';
 
 const log = debug('fmc:polyfills');
 
+/**
+ * Load polyfills for internationalization from @formatjs if they are needed
+ *
+ * @param locale current locale code
+ */
 async function polyfill(locale: LocaleCode) {
   if (shouldPolyfill()) {
     log('Loading getcanonicallocales polyfill');
