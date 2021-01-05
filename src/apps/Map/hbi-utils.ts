@@ -1,6 +1,6 @@
 import { HBI_STOPS } from '~/apps/Map/constants';
 
-export function getHBIbyProps(props, sideKey) {
+export function getHBIbyProps(props: any, sideKey: 'side0' | 'side1'): number {
   // const hbiValues = Store.getState().UserState.hbi_values;
   // const rv = (hbiValues[0] - 5) / 10;
   // const rs = (hbiValues[1] - 5) / 10;
@@ -12,12 +12,12 @@ export function getHBIbyProps(props, sideKey) {
   return safety + velocity;
 }
 
-export function getHBIColorByIndex(index) {
+export function getHBIColorByIndex(index: number): string {
   const stop = HBI_STOPS.find((s) => index >= s.min && index <= s.max);
   return stop ? stop.color : '#555';
 }
 
-function translateOrientationName(name) {
+function translateOrientationName(name: string): string {
   switch (name) {
     case 'O':
       return 'Ostseite';
@@ -32,7 +32,15 @@ function translateOrientationName(name) {
   }
 }
 
-export function getOrientationNames(side0, side1) {
+interface OrientationInfo {
+  side0: string;
+  side1: string;
+}
+
+export function getOrientationNames(
+  side0: string,
+  side1: string
+): OrientationInfo {
   return {
     side0: translateOrientationName(side0),
     side1: translateOrientationName(side1),

@@ -16,6 +16,12 @@ const FAVICONS_PATH = Path.resolve(
 // Used to prove domain ownership for Mailjet
 const MAILJET_AUTH_FILE = '3e83a85511f70bef9fbe500647d70221.txt';
 
+// Babel plugins used both by TS and JS loader
+const BABEL_PLUGINS =
+  process.env.NODE_ENV === 'production'
+    ? []
+    : [require.resolve('react-refresh/babel')];
+
 module.exports = {
   entry: {
     app: Path.resolve(__dirname, '../src/index.js'),
@@ -44,7 +50,6 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
       '~': Path.resolve(__dirname, '../src'),
-      'react-dom': '@hot-loader/react-dom',
       cypress: Path.resolve(__dirname, '../cypress'),
     },
   },
@@ -71,14 +76,25 @@ module.exports = {
           Path.resolve(__dirname, '../node_modules/whatwg-url'),
           Path.resolve(__dirname, '../src'),
         ],
-        use: [{ loader: 'babel-loader', query: { cacheDirectory: true } }],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              plugins: BABEL_PLUGINS,
+            },
+          },
+        ],
       },
       {
         test: /\.tsx?$/,
         use: [
           {
             loader: 'babel-loader',
-            query: { cacheDirectory: true },
+            options: {
+              cacheDirectory: true,
+              plugins: BABEL_PLUGINS,
+            },
           },
           {
             loader: 'ts-loader',

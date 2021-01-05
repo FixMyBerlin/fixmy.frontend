@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import idx from 'idx';
 import styled from 'styled-components';
 
 import Title from '~/components/Title';
@@ -25,7 +24,7 @@ class UserLikes extends PureComponent {
   }
 
   onSelect(evt) {
-    const itemType = idx(evt, (_) => _.target.selectedOptions[0].value);
+    const itemType = evt.target?.selectedOptions[0]?.value;
 
     this.setState({ itemType });
     this.props.dispatch(loadLikes(itemType));
