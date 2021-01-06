@@ -9,7 +9,7 @@ import reducer, {
   setDistrictFilter,
   setPhaseFilter,
   setSort,
-} from './AnalysisState';
+} from './state';
 
 import { mswServer } from '~/../jest/msw/mswServer';
 import config from '~/config';

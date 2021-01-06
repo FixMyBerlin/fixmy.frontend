@@ -6,7 +6,7 @@ import AppState from '~/AppState';
 import UserState from '~/pages/User/UserState';
 import ReportsState from '~/pages/Reports/state';
 import KatasterKIState from '~/pages/KatasterKI/state';
-import AnalysisState from '~/apps/Analysis/AnalysisState';
+import AnalysisState from '~/apps/Analysis/state';
 import SpielstrassenState from '~/apps/Spielstrassen/state';
 import MapState from '~/apps/Map/MapState';
 

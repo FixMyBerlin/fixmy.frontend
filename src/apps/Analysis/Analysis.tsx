@@ -11,7 +11,7 @@ import {
   setDistrictFilter,
   setPhaseFilter,
   setSort,
-} from '~/apps/Analysis/AnalysisState';
+} from '~/apps/Analysis/state';
 import PieChart from '~/apps/Analysis/components/PieChart';
 import Title from '~/components/Title';
 import MenuButton from '~/components/MenuButton';

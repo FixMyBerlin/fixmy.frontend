@@ -4,7 +4,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import { VictoryPie, VictoryLabel, Slice, VictoryLabelProps } from 'victory';
 
 import config from '~/config';
-import { setPhaseFilter } from '~/apps/Analysis/AnalysisState';
+import { setPhaseFilter } from '~/apps/Analysis/state';
 
 import { numberFormat, getRVALength } from '~/utils/utils';
 import SvgIcon from '~/components/SvgIcon';
