@@ -6,12 +6,12 @@ import { VictoryPie, VictoryLabel, Slice, VictoryLabelProps } from 'victory';
 import config from '~/config';
 import { setPhaseFilter } from '~/apps/Analysis/state';
 
-import { numberFormat, getRVALength } from '~/utils/utils';
+import { numberFormat, getRVALength, percentageFormat } from '~/utils/utils';
 import SvgIcon from '~/components/SvgIcon';
 import DotLoader from '~/components/DotLoader';
 import { PLANNING_PHASES } from '~/apps/Map/constants';
 
-const PieChartWrapper = styled.div`
+const PieChartWrapper = styled.figure`
   width: 300px;
   margin: 0 auto;
   position: relative;
@@ -99,6 +99,7 @@ const Label = ({
   x,
   y,
   dy,
+  datum,
   ...props
 }: VictoryLabelProps & { orientation?: string }) => {
   const phase = PLANNING_PHASES.find((p) => p.name === props.text);
@@ -106,11 +107,19 @@ const Label = ({
   // @ts-ignore
   const offsetX = getSvgOffsetX(props.textAnchor);
   const offsetY = getSvgOffsetY(props.orientation);
-
+  // Victory type definitions are missing `datum`
+  // @ts-ignore
+  const share = percentageFormat(datum.y / 360.0);
   return (
     <g style={{ transform: `translate(${x}px,${y}px)` }}>
       <SvgIcon type={phase.icon.replace('.svg', '')} y={offsetY} x={offsetX} />
-      <VictoryLabel {...props} x={0} y={0} dy={0} />
+      <VictoryLabel
+        {...props}
+        x={0}
+        y={0}
+        dy={0}
+        desc={`Anteil ${phase.name}: ${share}`}
+      />
     </g>
   );
 };
@@ -142,12 +151,12 @@ class PieChart extends PureComponent<Props & ConnectedProps<typeof connector>> {
     const numProjects = data.length;
 
     return (
-      <>
+      <figcaption id="analysis-piechart-caption">
         <ChartTitle>{numProjects} Planungen</ChartTitle>
         <ChartSubtitle>
           gesamte Länge: {numberFormat(lengthSum, 0)} km
         </ChartSubtitle>
-      </>
+      </figcaption>
     );
   }
 
@@ -181,7 +190,7 @@ class PieChart extends PureComponent<Props & ConnectedProps<typeof connector>> {
     ];
 
     return (
-      <PieChartWrapper>
+      <PieChartWrapper aria-labelledby="analysis-piechart-caption">
         <VictoryPie
           innerRadius={100}
           radius={130}
@@ -193,7 +202,7 @@ class PieChart extends PureComponent<Props & ConnectedProps<typeof connector>> {
           // @ts-ignore
           dataComponent={<Slice active={Math.random() > 0.6} />}
           // Victory types only specify the event itself and nothing else
-          // as a callback pro
+          // as a callback prop
           // @ts-ignore
           events={eventHandler}
         />
