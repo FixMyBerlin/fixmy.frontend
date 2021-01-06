@@ -13,7 +13,7 @@ import ResetPassword from '~/pages/User/pages/ResetPassword';
 import UserVerify from '~/pages/User/pages/Verify';
 import ZESPlusResearch from '~/pages/ZESPlus-Research';
 
-import Analysis from '~/pages/Analysis';
+import Analysis from '~/apps/Analysis';
 import KatasterKI from '~/pages/KatasterKI';
 import Markdown from '~/pages/Markdown';
 import Reports from '~/pages/Reports';
