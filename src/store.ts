@@ -1,4 +1,5 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
+import { useSelector, TypedUseSelectorHook } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import AppState from '~/AppState';
@@ -20,6 +21,7 @@ const Reducer = combineReducers({
 });
 
 export type RootState = ReturnType<typeof Reducer>;
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 // Configure redux-devtools-extension
 // https://github.com/zalmoxisus/redux-devtools-extension#usage

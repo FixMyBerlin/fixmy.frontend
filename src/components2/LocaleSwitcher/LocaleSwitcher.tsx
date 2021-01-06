@@ -1,11 +1,11 @@
 import { FormControl, MenuItem, Select } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import config from '~/config';
-import { RootState } from '~/store';
+import { useTypedSelector } from '~/store';
 import { LocaleCode } from '~/types';
 import { setLocale } from '~/AppState';
 import { media } from '~/styles/utils';
@@ -75,7 +75,7 @@ interface Props {
 const LocaleSwitcher = ({ locales, className }: Props) => {
   const intl = useIntl();
   const [isLocaleMenuOpen, setLocaleMenu] = useState(false);
-  const activeLocale = useSelector((state: RootState) => state.AppState.locale);
+  const activeLocale = useTypedSelector((state) => state.AppState.locale);
 
   const dispatch = useDispatch();
   const handleChange = async (ev: React.ChangeEvent<{ value: LocaleCode }>) => {
