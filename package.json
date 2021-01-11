@@ -170,7 +170,7 @@
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.14.0",
     "react-feather": "^2.0.3",
-    "react-hot-loader": "^4.12.20",
+    "react-hot-loader": "^4.13.0",
     "react-intersection-observer": "^8.30.3",
     "react-intl": "^5.4.7",
     "react-markdown": "^4.3.1",
