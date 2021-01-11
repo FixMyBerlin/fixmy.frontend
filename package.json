@@ -158,7 +158,7 @@
     "ky-universal": "^0.8.2",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
-    "mapbox-gl": "^1.11.1",
+    "mapbox-gl": "^1.13.0",
     "promise": "^8.1.0",
     "prop-types": "^15.7.2",
     "qs": "^6.9.4",
