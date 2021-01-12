@@ -96,7 +96,7 @@ function detailWrapped(Component) {
       this.state = {
         data: null,
         isLoading: true,
-        isError: false
+        isError: false,
       };
     }
 
@@ -127,7 +127,7 @@ function detailWrapped(Component) {
             animate: true,
             pitch: 40,
             show3dBuildings: true,
-            dim: true
+            dim: true,
           })
         );
       }
@@ -135,14 +135,14 @@ function detailWrapped(Component) {
       this.setState({
         data,
         isLoading: false,
-        isError: false
+        isError: false,
       });
     };
 
     onDataError = () => {
       this.setState({
         isLoading: false,
-        isError: true
+        isError: true,
       });
     };
 
@@ -248,14 +248,14 @@ function detailWrapped(Component) {
     onClose: PropTypes.func,
     subtitle: PropTypes.string,
     history: ReactRouterPropTypes.history.isRequired,
-    match: ReactRouterPropTypes.match.isRequired
+    match: ReactRouterPropTypes.match.isRequired,
   };
 
   DetailWrapperComp.defaultProps = {
     activeView: 'planungen',
     onCloseRoute: '/',
     onClose: () => {},
-    subtitle: null
+    subtitle: null,
   };
 
   return withRouter(DetailWrapperComp);

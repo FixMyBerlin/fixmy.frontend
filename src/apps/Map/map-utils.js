@@ -12,7 +12,7 @@ export const intersectionLayers = [
   'intersections',
   'intersectionsSide0',
   'intersectionsSide1',
-  'intersectionsOverlay'
+  'intersectionsOverlay',
 ];
 
 export const standardLayers = ['center', 'side0', 'side1'];
@@ -32,7 +32,7 @@ export function animateView(map, view) {
     center: view.center,
     zoom: view.zoom,
     bearing: view.bearing,
-    pitch: view.pitch
+    pitch: view.pitch,
   });
 }
 
@@ -95,17 +95,17 @@ export function setPlanningLegendFilter(map, selected) {
   map.setFilter(config.apps.map.layers.projects.center, ['any', ...filters]);
   map.setFilter(config.apps.map.layers.projects.overlayLine, [
     'any',
-    ...filters
+    ...filters,
   ]);
   map.setFilter(config.apps.map.layers.projects.side0, [
     'all',
     sideFilter0,
-    ['any', ...filters]
+    ['any', ...filters],
   ]);
   map.setFilter(config.apps.map.layers.projects.side1, [
     'all',
     sideFilter1,
-    ['any', ...filters]
+    ['any', ...filters],
   ]);
 }
 
@@ -121,12 +121,12 @@ export function setPopupLanesFilter(map) {
   map.setFilter(config.apps.map.layers.projects.side0, [
     'all',
     sideFilter0,
-    filter
+    filter,
   ]);
   map.setFilter(config.apps.map.layers.projects.side1, [
     'all',
     sideFilter1,
-    filter
+    filter,
   ]);
 }
 
@@ -159,7 +159,7 @@ function getHbiFilterRules(sideKey, hbiFilters) {
   return activeHbiStops.map((hbiStop) => [
     'all',
     ['>', hbi, hbiStop.min],
-    ['<', hbi, hbiStop.max]
+    ['<', hbi, hbiStop.max],
   ]);
 }
 
@@ -219,7 +219,7 @@ export function parseUrlOptions() {
 
   return {
     center: [+lng, +lat] || config.apps.map.view.center,
-    zoom: validZoom ? +zoom : config.apps.map.view.zoom
+    zoom: validZoom ? +zoom : config.apps.map.view.zoom,
   };
 }
 
@@ -230,5 +230,5 @@ export default {
   toggleLayer,
   getCenterFromGeom,
   getGeoLocation,
-  parseUrlOptions
+  parseUrlOptions,
 };

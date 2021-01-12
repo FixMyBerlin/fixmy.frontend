@@ -79,7 +79,7 @@ class AdditionalDataForm extends PureComponent {
     this.state = {
       photo: null,
       photoDisclaimerTicked: false,
-      description: ''
+      description: '',
     };
   }
 
@@ -113,7 +113,7 @@ class AdditionalDataForm extends PureComponent {
 
   togglePhotoDisclaimerTicked = () => {
     this.setState((prevState) => ({
-      photoDisclaimerTicked: !prevState.photoDisclaimerTicked
+      photoDisclaimerTicked: !prevState.photoDisclaimerTicked,
     }));
   };
 
@@ -212,14 +212,14 @@ AdditionalDataForm.propTypes = {
   maxDescriptionLength: number,
   error: shape({ message: string }),
   addError: func.isRequired,
-  removeError: func.isRequired
+  removeError: func.isRequired,
 };
 
 AdditionalDataForm.defaultProps = {
   maxDescriptionLength: 400,
-  error: null
+  error: null,
 };
 
 export default connect((state) => ({ error: state.ReportsState.ErrorState }), {
-  ...errorStateActions
+  ...errorStateActions,
 })(AdditionalDataForm);

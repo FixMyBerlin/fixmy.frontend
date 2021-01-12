@@ -23,7 +23,7 @@ const CloseSurveyButton = ({ isEmbedded, style = {} }) => {
 };
 
 const mapStateToProps = (state) => ({
-  isEmbedded: state.KatasterKIState.isEmbedded
+  isEmbedded: state.KatasterKIState.isEmbedded,
 });
 
 export default connect(mapStateToProps)(CloseSurveyButton);

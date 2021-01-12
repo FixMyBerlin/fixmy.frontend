@@ -100,7 +100,7 @@ const SectionNotice = ({ values }) => (
               Ich habe die Bedingungen für die Nutzung der Sonderfläche gelesen
               und stimme ihnen zu.
             </span>
-          )
+          ),
         }}
       />
     </div>

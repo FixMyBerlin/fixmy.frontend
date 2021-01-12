@@ -13,7 +13,7 @@ import ResetPassword from '~/pages/User/pages/ResetPassword';
 import UserVerify from '~/pages/User/pages/Verify';
 import ZESPlusResearch from '~/pages/ZESPlus-Research';
 
-import Analysis from '~/pages/Analysis';
+import Analysis from '~/apps/Analysis';
 import KatasterKI from '~/pages/KatasterKI';
 import Markdown from '~/pages/Markdown';
 import Reports from '~/pages/Reports';
@@ -27,7 +27,7 @@ import MapView from '~/apps/Map';
 const apps = {
   gastro: Gastro,
   spielstrassen: Spielstrassen,
-  map: MapView
+  map: MapView,
 };
 
 /**
@@ -84,14 +84,16 @@ const Routes = ({ token }) => (
 
     <Route path="/redirect-to" component={RedirectHelper} />
 
-    {/* standard markdown pages */
-    config.staticpages.map((page) => (
-      <Route
-        key={page}
-        path={page.route}
-        render={() => <Markdown page={page.key} />}
-      />
-    ))}
+    {
+      /* standard markdown pages */
+      config.staticpages.map((page) => (
+        <Route
+          key={page}
+          path={page.route}
+          render={() => <Markdown page={page.key} />}
+        />
+      ))
+    }
 
     {/* user pages */}
     <Route path={config.routes.signup} component={Signup} />
@@ -136,7 +138,10 @@ const Routes = ({ token }) => (
     {/* analysis pages */}
     {config.routes.analysis != null && (
       <Route
-        path={`${config.routes.analysis}/planungen/:districtName?`}
+        path={[
+          config.routes.analysis,
+          `${config.routes.analysis}/planungen/:districtName?`,
+        ]}
         component={Analysis}
       />
     )}
@@ -166,5 +171,5 @@ const Routes = ({ token }) => (
 );
 
 export default connect((state: RootState) => ({
-  token: state.UserState.token
+  token: state.UserState.token,
 }))(Routes);

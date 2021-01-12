@@ -1,38 +1,38 @@
 export default [
   {
     key: 'about',
-    route: '/info'
+    route: '/info',
   },
   {
     key: 'contact',
-    route: '/kontakt'
+    route: '/kontakt',
   },
   {
     key: 'privacy',
-    route: '/datenschutz'
+    route: '/datenschutz',
   },
   {
     key: 'imprint',
-    route: '/impressum'
+    route: '/impressum',
   },
   {
     key: 'press',
-    route: '/presse'
+    route: '/presse',
   },
   {
     key: 'faq',
-    route: '/faq'
+    route: '/faq',
   },
   {
     key: 'api',
-    route: '/api'
+    route: '/api',
   },
   {
     key: 'jobs',
-    route: '/jobs'
+    route: '/jobs',
   },
   {
     key: 'newsletter-thank-you',
-    route: '/newsletter-danke'
-  }
+    route: '/newsletter-danke',
+  },
 ];

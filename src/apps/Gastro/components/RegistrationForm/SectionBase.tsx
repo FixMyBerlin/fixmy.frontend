@@ -18,7 +18,7 @@ const SectionBase = ({
   signupData = null,
   handleChange,
   district,
-  values
+  values,
 }) => {
   const [initialAddress] = useState(values.address);
   return (
@@ -49,7 +49,7 @@ const SectionBase = ({
             component={Select}
             name="category"
             inputProps={{
-              id: 'category'
+              id: 'category',
             }}
           >
             <MenuItem value="restaurant">Restaurant</MenuItem>
@@ -106,8 +106,8 @@ const SectionBase = ({
               handleChange({
                 target: {
                   name: 'location',
-                  value: [location.lng, location.lat]
-                }
+                  value: [location.lng, location.lat],
+                },
               });
             }}
           />
@@ -135,7 +135,7 @@ const SectionBase = ({
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(SectionBase);

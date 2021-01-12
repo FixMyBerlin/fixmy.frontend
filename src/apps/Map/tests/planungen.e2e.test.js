@@ -17,14 +17,12 @@ describe('Planings Section', () => {
       });
 
       it('contains an address heading', () => {
-        cyElem('section-title')
-          .invoke('text')
-          .should('match', adressRegex);
+        cyElem('section-title').invoke('text').should('match', adressRegex);
       });
 
       it('closes the popup on close button click', () => {
         cyElem('map-popup-close-button').click();
-        cyElem('map-popup-wrapper').should('not.be.visible');
+        cy.get('[data-cy=map-popup-wrapper]').should('not.exist');
       });
 
       it('opens the the detail fold-out on "Mehr Infos" click', () => {

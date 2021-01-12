@@ -100,11 +100,11 @@ class ImageSlider extends PureComponent {
 }
 
 ImageSlider.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object)
+  images: PropTypes.arrayOf(PropTypes.object),
 };
 
 ImageSlider.defaultProps = {
-  images: []
+  images: [],
 };
 
 export default ImageSlider;

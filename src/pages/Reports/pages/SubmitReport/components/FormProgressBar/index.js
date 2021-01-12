@@ -97,7 +97,7 @@ const FormProgressBar = ({
   stepCaption,
   onBackButtonTap,
   onAbortButtonTap,
-  isLastStep
+  isLastStep,
 }) => (
   <NavBar>
     {!isLastStep && (
@@ -161,7 +161,7 @@ FormProgressBar.propTypes = {
   stepCaption: PropTypes.string,
   onBackButtonTap: PropTypes.func,
   onAbortButtonTap: PropTypes.func,
-  isLastStep: PropTypes.bool
+  isLastStep: PropTypes.bool,
 };
 
 FormProgressBar.defaultProps = {
@@ -169,7 +169,7 @@ FormProgressBar.defaultProps = {
   stepCaption: 'Ort',
   onBackButtonTap: history.goBack,
   isLastStep: false,
-  onAbortButtonTap: () => history.push(config.routes.reports.map)
+  onAbortButtonTap: () => history.push(config.routes.reports.map),
 };
 
 export default FormProgressBar;

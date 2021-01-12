@@ -20,7 +20,7 @@ const formConfig = [
     type: 'email',
     label: 'E-Mail',
     placeholder: 'E-Mail eingeben...',
-    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.'
+    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.',
   },
   {
     id: 'password',
@@ -28,8 +28,8 @@ const formConfig = [
     type: 'password',
     label: 'Passwort',
     placeholder: 'Passwort eingeben...',
-    validateError: 'Bitte geben Sie Ihr Passwort an.'
-  }
+    validateError: 'Bitte geben Sie Ihr Passwort an.',
+  },
 ];
 
 class Login extends PureComponent {

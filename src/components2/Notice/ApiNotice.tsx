@@ -4,7 +4,7 @@ import {
   Card,
   CardHeader,
   CardContent,
-  CardActions
+  CardActions,
 } from '@material-ui/core';
 import ReplayIcon from '@material-ui/icons/Replay';
 import styled from 'styled-components';
@@ -33,7 +33,7 @@ const ApiNotice = ({
   children,
   title = 'Fehler',
   onRetry = null,
-  className = null
+  className = null,
 }: Props) => (
   <Card variant="outlined" className={className}>
     <StyledCardHeader title={title} />

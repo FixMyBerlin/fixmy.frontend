@@ -34,7 +34,7 @@ export interface AppState {
 const initialState = {
   isMenuOpen: false,
   district: null,
-  locale: getDefaultLocale()
+  locale: getDefaultLocale(),
 };
 
 export function open() {
@@ -71,7 +71,7 @@ export const setLocale = (locale: LocaleCode) => async (dispatch: Dispatch) => {
 
 const setLocaleThunk = async (locale: LocaleCode, dispatch: Dispatch) => {
   await polyfill(locale);
-  log('polyfills loaded');
+  log('I18n polyfills loaded');
   dispatch({ type: SET_LOCALE, locale });
 };
 

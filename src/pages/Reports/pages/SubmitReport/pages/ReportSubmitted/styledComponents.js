@@ -70,5 +70,5 @@ export {
   StyledHeading,
   SubmitButton,
   Text,
-  ThanksImg
+  ThanksImg,
 };

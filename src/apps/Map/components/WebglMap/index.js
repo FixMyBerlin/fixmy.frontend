@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import MapboxGL from 'mapbox-gl';
 import _isEqual from 'lodash.isequal';
 import styled from 'styled-components';
-import idx from 'idx';
 import { withRouter, matchPath } from 'react-router-dom';
 import slugify from 'slugify';
 
@@ -22,7 +21,7 @@ import {
   intersectionLayers,
   parseUrlOptions,
   setPlanningLegendFilter,
-  setPopupLanesFilter
+  setPopupLanesFilter,
 } from '~/apps/Map/map-utils';
 import resetMap from '~/apps/Map/reset';
 
@@ -46,7 +45,7 @@ class Map extends PureComponent {
     this.state = {
       loading: true,
       popupLngLat: false,
-      map: false
+      map: false,
     };
   }
 
@@ -54,7 +53,7 @@ class Map extends PureComponent {
     this.map = new MapboxGL.Map({
       container: this.root,
       style: MB_STYLE_URL,
-      bounds: config.apps.map.bounds
+      bounds: config.apps.map.bounds,
     });
     const nav = new MapboxGL.NavigationControl({ showCompass: false });
     this.map.addControl(nav, 'bottom-left');
@@ -114,7 +113,7 @@ class Map extends PureComponent {
     zoom: this.props.zoom,
     center: this.props.center,
     bearing: this.props.bearing,
-    pitch: this.props.pitch
+    pitch: this.props.pitch,
   });
 
   setView = (view, animate = false) => {
@@ -243,7 +242,7 @@ class Map extends PureComponent {
           animate: true,
           zoom: isSmallScreen()
             ? config.apps.map.zoomAfterGeocode
-            : this.map.getZoom()
+            : this.map.getZoom(),
         })
       );
 
@@ -263,7 +262,7 @@ class Map extends PureComponent {
         animate: true,
         zoom: isSmallScreen()
           ? config.apps.map.zoomAfterGeocode
-          : this.map.getZoom()
+          : this.map.getZoom(),
       })
     );
 
@@ -280,7 +279,7 @@ class Map extends PureComponent {
 
     const match = matchPath(this.props.location.pathname, {
       path: '/(zustand|planungen)/:id/:name?',
-      exact: true
+      exact: true,
     });
 
     // const properties = {
@@ -288,7 +287,7 @@ class Map extends PureComponent {
     //   name: name || '-'
     // };
 
-    const isDetailViewOpen = idx(match, (_) => _.params.id) != null;
+    const isDetailViewOpen = match?.params.id != null;
     if (isDetailViewOpen) {
       const slugifiedName = slugify(name || '').toLowerCase();
       const detailRoute = `/${this.props.activeView}/${id}/${slugifiedName}`;
@@ -303,7 +302,7 @@ class Map extends PureComponent {
           animate: true,
           zoom: isSmallScreen()
             ? config.apps.map.zoomAfterGeocode
-            : this.map.getZoom()
+            : this.map.getZoom(),
         })
       );
 
@@ -338,7 +337,7 @@ class Map extends PureComponent {
   }
 
   render() {
-    const markerData = idx(this.props.planningData, (_) => _.results);
+    const markerData = this.props.planningData?.results;
     const markersVisible =
       this.props.activeView === 'planungen' ||
       this.props.activeView === 'popupbikelanes';
@@ -380,6 +379,6 @@ export default withRouter(
     planningData: state.MapState.planningData,
     show3dBuildings: state.MapState.show3dBuildings,
     zoom: state.MapState.zoom,
-    ...state.UserState
+    ...state.UserState,
   }))(Map)
 );

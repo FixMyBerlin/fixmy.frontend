@@ -6,5 +6,5 @@ import SubmitReportState from './SubmitReportState';
 export default combineReducers({
   ErrorState,
   OverviewMapState,
-  SubmitReportState
+  SubmitReportState,
 });

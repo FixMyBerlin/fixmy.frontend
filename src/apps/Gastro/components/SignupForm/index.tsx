@@ -4,7 +4,7 @@ import {
   TextField,
   CheckboxWithLabel,
   Select,
-  RadioGroup
+  RadioGroup,
 } from 'formik-material-ui';
 import {
   FormHelperText,
@@ -13,7 +13,7 @@ import {
   MenuItem,
   FormControlLabel,
   Radio,
-  LinearProgress
+  LinearProgress,
 } from '@material-ui/core';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -54,7 +54,7 @@ const emptyForm: FormData = {
   location: null,
   opening_hours: null,
   shopfront_length: '',
-  tos_accepted: ''
+  tos_accepted: '',
 };
 
 const testValues: FormData = {
@@ -67,7 +67,7 @@ const testValues: FormData = {
   location: [13.40994, 52.37997],
   opening_hours: 'whole_week',
   shopfront_length: '5',
-  tos_accepted: true
+  tos_accepted: true,
 };
 
 const initialValues =
@@ -103,7 +103,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
         ...values,
         geometry: {
           type: 'Point',
-          coordinates: values.location
+          coordinates: values.location,
         },
         shopfront_length: parseLength(values.shopfront_length),
         campaign: district.name,
@@ -112,7 +112,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
           : 'weekend',
         category: district.apps.gastro.model.category
           ? values.category
-          : 'other'
+          : 'other',
       };
       try {
         const response = await api.signup(signupData, district);
@@ -152,7 +152,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
                   component={Select}
                   name="category"
                   inputProps={{
-                    id: 'category'
+                    id: 'category',
                   }}
                 >
                   <MenuItem value="restaurant">Restaurant</MenuItem>
@@ -192,8 +192,8 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
               handleChange({
                 target: {
                   name: 'location',
-                  value: [location.lng, location.lat]
-                }
+                  value: [location.lng, location.lat],
+                },
               });
             }}
           />
@@ -284,7 +284,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
                   gelesen und willige in die Speicherung meiner Daten zur
                   Kommunikation im Zuge der Nutzung der Sonderflächen ein.
                 </span>
-              )
+              ),
             }}
           />
         </div>
@@ -306,7 +306,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
 );
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(SignupForm);

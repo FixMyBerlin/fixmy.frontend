@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Field } from 'formik';
-import classnames from 'classnames';
 
 import FormFieldError from '~/components/FormFieldError';
 
@@ -28,10 +27,12 @@ export default ({
   handleChange,
   errors = {},
   className = '',
-  disabled = false
+  disabled = false,
 }) => {
   let Result = null;
-  const formFieldClasses = classnames('formfield', { disabled }, className);
+  const formFieldClasses = `formfield ${className} ${
+    disabled ? 'disabled' : ''
+  }`;
 
   if (['text', 'number', 'email', 'password'].includes(type)) {
     Result = (

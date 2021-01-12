@@ -34,7 +34,7 @@ const katasterConfig = {
     '13629': ['Charlottenburg-Wilmersdorf', 'Spandau', 'Reinickendorf'],
     '14193': ['Steglitz-Zehlendorf', 'Charlottenburg-Wilmersdorf'],
     '14195': ['Steglitz-Zehlendorf', 'Charlottenburg-Wilmersdorf'],
-    '14197': ['Tempelhof-Schöneberg', 'Charlottenburg-Wilmersdorf']
+    '14197': ['Tempelhof-Schöneberg', 'Charlottenburg-Wilmersdorf'],
   },
   buttonTimeout: 300,
   projectId: '01',
@@ -44,10 +44,10 @@ const katasterConfig = {
   shareUrl: 'https://interaktiv.tagesspiegel.de/strassencheck/',
   shareTitle: 'Umfrage Share Title',
   shareText:
-    'Wie können die Straßen sicher für alle werden? Tolle Umfrage von @FixMyBerlin und @tagesspiegel, bitte teilnehmen!'
+    'Wie können die Straßen sicher für alle werden? Tolle Umfrage von @FixMyBerlin und @tagesspiegel, bitte teilnehmen!',
 };
 
 export default {
   ...config,
-  katasterKI: katasterConfig
+  katasterKI: katasterConfig,
 };

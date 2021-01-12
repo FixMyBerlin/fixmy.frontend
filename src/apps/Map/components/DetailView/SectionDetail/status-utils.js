@@ -92,5 +92,5 @@ export default {
   getRoadTypeLabel,
   getStreetCategoryLabel,
   getInfrastructureLabel,
-  getInfrastructureDesc
+  getInfrastructureDesc,
 };

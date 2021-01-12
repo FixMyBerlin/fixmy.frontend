@@ -2,7 +2,7 @@ import debug from 'debug';
 import {
   MessageFormatError,
   ReactIntlErrorCode,
-  MissingTranslationError
+  MissingTranslationError,
 } from 'react-intl';
 
 import errorHandler from './errorHandler';

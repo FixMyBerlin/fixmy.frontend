@@ -8,13 +8,13 @@ import routes from './routes';
 
 const defaultConfig: DefaultConfig = {
   apps: {
-    map
+    map,
   },
   colors,
   menu,
   routes,
   staticpages,
-  ...baseConfig
+  ...baseConfig,
 };
 
 export default defaultConfig;

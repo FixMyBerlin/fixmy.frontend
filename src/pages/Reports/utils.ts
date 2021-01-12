@@ -20,6 +20,24 @@ import DefaultMarkerPlanning from '~/images/reports/marker/default/planning@2x.p
 import DefaultMarkerExecution from '~/images/reports/marker/default/execution@2x.png';
 import DefaultMarkerInvalid from '~/images/reports/marker/default/invalid@2x.png';
 import DefaultMarkerDone from '~/images/reports/marker/default/done@2x.png';
+import { ENTRY_STATUS } from './types';
+
+const REPORT_STATUSES: ENTRY_STATUS[] = [
+  'report_new',
+  'report_verification',
+  'report_accepted',
+  'report_rejected',
+  'report_inactive',
+  'new',
+  'verification',
+  'accepted',
+  'rejected',
+  'inactive',
+  'planning',
+  'execution',
+  'invalid',
+  'done',
+];
 
 const ICONS_BY_STATUS = {
   aachen: {
@@ -36,7 +54,7 @@ const ICONS_BY_STATUS = {
     planning: AachenMarkerPlanning,
     execution: AachenMarkerExecution,
     invalid: AachenMarkerInvalid,
-    done: AachenMarkerDone
+    done: AachenMarkerDone,
   },
   default: {
     report_new: DefaultMarkerNew,
@@ -52,8 +70,8 @@ const ICONS_BY_STATUS = {
     planning: DefaultMarkerPlanning,
     execution: DefaultMarkerExecution,
     invalid: DefaultMarkerInvalid,
-    done: DefaultMarkerDone
-  }
+    done: DefaultMarkerDone,
+  },
 };
 
 /**
@@ -80,5 +98,6 @@ const getLandingContent = () =>
 
 export default {
   getLandingContent,
-  getMarkerSrc
+  getMarkerSrc,
+  REPORT_STATUSES,
 };

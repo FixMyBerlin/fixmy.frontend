@@ -1,3 +1,7 @@
+//
+// jest.setup.js runs before each test file
+//
+
 import { config as parseConfig } from 'dotenv';
 
 // jest-dom adds custom jest matchers for asserting on DOM nodes.
@@ -8,6 +12,9 @@ import '@testing-library/jest-dom/extend-expect';
 
 // setup mock service worker (msw)
 import { mswServer } from './msw/mswServer';
+
+// Import MapboxGL mock
+import './mocks/mapbox-gl';
 
 // read env vars in our tests
 parseConfig();

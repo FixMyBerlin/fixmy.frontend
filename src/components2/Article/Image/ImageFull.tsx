@@ -17,15 +17,18 @@ export const ImageWrapperFull = styled.div`
 export const ImageFull = ({
   source,
   alt,
+  className,
   role = null,
-  subtitle = null
+  subtitle = null,
+  ...props
 }: InnerImageProps) => (
-  <ImageWrapperFull>
+  <ImageWrapperFull className={className}>
     <InnerImg
       source={source}
       alt={alt}
       role={role}
       subtitle={subtitle || null}
+      {...props}
     />
   </ImageWrapperFull>
 );

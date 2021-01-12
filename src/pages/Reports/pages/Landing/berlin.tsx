@@ -1,23 +1,67 @@
 import React from 'react';
+import styled from 'styled-components';
 
+import config from '~/pages/Reports/config';
 import CTA from './components/CTA';
-import HowItWorksSection from './components/HowItWorksSecion';
+import Intro from './components/Intro';
 import Quote from './components/QuoteWeisbrich';
-import MapLink from './components/MapLink';
 import Faq from './components/Faq';
-import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
+import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
+import AboveFold from './components/AboveFold';
+import BelowFold from './components/BelowFold';
+import { media } from '~/styles/utils';
+import LogoFooter from './components/LogoFooter';
+
+const CenterLogo = styled.img`
+  display: block;
+  width: 92px;
+
+  ${media.m`
+    position: absolute;
+    top: 2em;
+  `}
+`;
+
+const StyledHeading = styled.h2`
+  font-family: '${config.titleFont}', sans-serif;
+  font-size: 2.3rem;
+  font-weight: bold;
+  line-height: 1.25;
+  text-align: center;
+  color: white;
+  margin-bottom: 3rem;
+
+  ${media.m`
+    font-size: 3rem;
+  `}
+`;
+
+const StyledHR = styled(HorizontalRuler)`
+  margin: 4em 0;
+`;
 
 const BerlinLanding = () => (
   <>
-    <HowItWorksSection />
-    <HorizontalRuler className="light" />
-    <Quote />
-    <CTA />
-    <MapLink />
-    <HorizontalRuler className="light" />
-    <Faq />
-    <CTA />
-    <MapLink />
+    <AboveFold>
+      <CenterLogo
+        src={config.reports.landing.logo.source}
+        alt="Logo FixMyBerlin"
+        data-cy="reports-landing-logo"
+      />
+      <StyledHeading data-cy="reports-landing-header">
+        {config.reports.landing?.title}
+      </StyledHeading>
+    </AboveFold>
+    <BelowFold>
+      <Intro />
+      <CTA />
+      <StyledHR className="light" />
+      <Quote />
+      <StyledHR className="light" />
+      <Faq />
+      <CTA />
+      {config.reports.landing.logoFooter && <LogoFooter />}
+    </BelowFold>
   </>
 );
 

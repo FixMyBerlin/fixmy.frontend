@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import idx from 'idx';
 
 import config from '~/config';
 import DataProcessIcon from '~/images/data-process.svg';
@@ -11,9 +10,8 @@ import Label from '~/components/Label';
 import Title from '~/components/Title';
 import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';
 import DetailSwitch, {
-  ButtonGroup
+  ButtonGroup,
 } from '~/apps/Map/components/DetailView/DetailSwitch';
-import FeedbackForm from '~/apps/Map/components/DetailView/FeedbackForm';
 import ImageSlider from '~/apps/Map/components/DetailView/ImageSlider';
 import InfoSection from './InfoSection';
 import {
@@ -22,7 +20,7 @@ import {
   getRoadTypeLabel,
   getStreetCategoryLabel,
   getInfrastructureLabel,
-  getInfrastructureDesc
+  getInfrastructureDesc,
 } from './status-utils';
 
 const HBISignWrapper = styled.div`
@@ -102,7 +100,7 @@ class SectionDetails extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      sideIndex: 0
+      sideIndex: 0,
     };
   }
 
@@ -115,8 +113,7 @@ class SectionDetails extends PureComponent {
     const sideData = data.details[sideIndex];
     const hasSwitchButton = data.details && data.details.length > 1;
     const orientationNames = getOrientationNames(
-      idx(data, (_) => _.details[0].orientation),
-      idx(data, (_) => _.details[1].orientation)
+      ...data.details.map((detail) => detail.orientation)
     );
 
     if (!sideData) {
@@ -266,7 +263,6 @@ class SectionDetails extends PureComponent {
             <BetaOverlay />
           </BetaWrapper>
         </DetailInfoWrapper>
-        <FeedbackForm />
       </>
     );
   }

@@ -10,7 +10,7 @@ import debug from 'debug';
 import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
-import { matchMediaSize, breakpoints } from '~/styles/utils';
+import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';
 import CTAButton from './components/CTAButton';
@@ -18,6 +18,7 @@ import ErrorMessage from '~/components/ErrorMessage';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
 import LocatorControl from '~/apps/Map/components/LocatorControl';
+import MapLegend from './components/MapLegend';
 import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 
@@ -39,6 +40,45 @@ const MapWrapper = styled.div`
   flex-direction: column;
 `;
 
+const StyledLocatorControl = styled(LocatorControl)`
+  top: 16px;
+  right: 16px;
+  bottom: auto;
+  left: auto;
+
+  ${media.m`
+    right: 45px;
+    bottom: 45px;
+    top: auto;
+  `}
+`;
+
+const MapControls = ({
+  onTab,
+  onLocationChange,
+  shiftLeft,
+  isCTAHidden,
+  isPopupVisible,
+  isDetailOpen,
+}) => {
+  return (
+    <>
+      <StyledLocatorControl
+        key="ReportsOverviewMap__LocatorControl"
+        onChange={onLocationChange}
+      />
+      {config.reports.enabled ? (
+        <>{!isCTAHidden && <CTAButton onTab={onTab} shiftLeft={shiftLeft} />}</>
+      ) : (
+        <MapLegend
+          isPopupVisible={isPopupVisible}
+          isDetailOpen={isDetailOpen}
+        />
+      )}
+    </>
+  );
+};
+
 class OverviewMap extends Component {
   constructor(props) {
     super(props);
@@ -47,7 +87,7 @@ class OverviewMap extends Component {
       // [lng, lat]
       mapCenter: null,
       isLoading: true,
-      selectedReportsPosition: []
+      selectedReportsPosition: [],
     };
   }
 
@@ -83,7 +123,7 @@ class OverviewMap extends Component {
       // from occuring in a loop
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
-        mapCenter: null
+        mapCenter: null,
       });
     }
   }
@@ -148,7 +188,7 @@ class OverviewMap extends Component {
       match,
       token,
       isMenuOpen,
-      errorMessage
+      errorMessage,
     } = this.props;
 
     const hasDetailId = match.params.id;
@@ -157,22 +197,6 @@ class OverviewMap extends Component {
     const isCTAHidden =
       (isDesktopView && hasDetailId && isMenuOpen) ||
       config.region === 'berlin';
-
-    const mapControls = (
-      <>
-        <LocatorControl
-          key="ReportsOverviewMap__LocatorControl"
-          onChange={this.onLocationChange}
-          customPosition={{ bottom: '105px', right: '7px' }}
-        />
-        {!isCTAHidden && (
-          <CTAButton
-            onTab={this.onCTAButtonTab}
-            shiftLeft={isCTAButtonShifted}
-          />
-        )}
-      </>
-    );
 
     return (
       <MapView>
@@ -197,7 +221,16 @@ class OverviewMap extends Component {
             zoomControlPosition="top-left"
             isCTAButtonShifted={isCTAButtonShifted}
           />
-          {this.state.isLoading ? null : mapControls}
+          {this.state.isLoading ? null : (
+            <MapControls
+              isCTAHidden={isCTAHidden}
+              onLocationChange={this.onLocationChange}
+              onTab={this.onCTAButtonTab}
+              shiftLeft={isCTAButtonShifted}
+              isPopupVisible={selectedReport && !hasDetailId}
+              isDetailOpen={hasDetailId}
+            />
+          )}
           {selectedReport && !hasDetailId && (
             <ReportsPopup
               onClose={this.onPopupClose}
@@ -236,7 +269,7 @@ class OverviewMap extends Component {
 
 const mapDispatchToPros = {
   ...overviewMapStateActions,
-  ...errorStateActions
+  ...errorStateActions,
 };
 
 export default withRouter(
@@ -249,7 +282,7 @@ export default withRouter(
       zoomIn: state.ReportsState.OverviewMapState.reports.zoomIn,
       token: state.UserState.token,
       isMenuOpen: state.AppState.isMenuOpen,
-      errorMessage: state.ReportsState.ErrorState.message
+      errorMessage: state.ReportsState.ErrorState.message,
     }),
     mapDispatchToPros
   )(OverviewMap)

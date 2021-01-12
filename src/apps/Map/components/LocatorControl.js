@@ -35,7 +35,7 @@ const locateErrors = {
   // https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError/code
   PERMISSION_DENIED: 1,
   POSITION_UNAVAILABLE: 2,
-  TIMEOUT: 3
+  TIMEOUT: 3,
 };
 
 const userFeedback = oneLine`Wenn Sie sich orten lassen wollen, müssen Sie einer Ortung zustimmen.
@@ -43,7 +43,13 @@ const userFeedback = oneLine`Wenn Sie sich orten lassen wollen, müssen Sie eine
   des Browsers rückgängig machen.
 `;
 
-const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
+const LocatorControl = ({
+  position,
+  customPosition,
+  onChange,
+  onStart,
+  className,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -68,9 +74,7 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
   const locate = () => {
     setIsLoading(true);
     onStart();
-    getGeoLocation()
-      .then(onLocateSuccess)
-      .catch(onLocateError);
+    getGeoLocation().then(onLocateSuccess).catch(onLocateError);
     setIsLoading(false);
   };
 
@@ -87,7 +91,11 @@ const LocatorControl = ({ position, customPosition, onChange, onStart }) => {
         />
       )}
 
-      <MapControl position={position} customPosition={customPosition}>
+      <MapControl
+        position={position}
+        customPosition={customPosition}
+        className={className}
+      >
         <LocatorButton disabled={isLoading} onClick={locate}>
           {Icon}
         </LocatorButton>
@@ -102,17 +110,19 @@ LocatorControl.propTypes = {
     top: PropTypes.string,
     bottom: PropTypes.string,
     left: PropTypes.string,
-    right: PropTypes.string
+    right: PropTypes.string,
   }),
   onChange: PropTypes.func,
-  onStart: PropTypes.func
+  onStart: PropTypes.func,
+  className: PropTypes.string,
 };
 
 LocatorControl.defaultProps = {
   position: 'top-left',
   onChange: () => {},
   onStart: () => {},
-  customPosition: undefined
+  customPosition: undefined,
+  className: null,
 };
 
 export default LocatorControl;

@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 import debug from 'debug';
-import { useSelector } from 'react-redux';
 
-import { RootState } from '~/store';
+import { useTypedSelector } from '~/store';
 import { DistrictConfig } from '~/types';
 import { media } from '~/styles/utils';
 import Button from '~/components2/Button';
@@ -40,16 +39,16 @@ const Section = styled.section`
 
 const Renewal = ({
   match: {
-    params: { id, accessKey }
-  }
+    params: { id, accessKey },
+  },
 }) => {
   const [isLoading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>(null);
   const [application, setApplication] = useState<GastroRegistration>(null);
   const [isSubmitting, setSubmitting] = useState<boolean>(false);
 
-  const district: DistrictConfig = useSelector(
-    (state: RootState) => state.AppState.district
+  const district: DistrictConfig = useTypedSelector(
+    (state) => state.AppState.district
   );
 
   useEffect(() => {

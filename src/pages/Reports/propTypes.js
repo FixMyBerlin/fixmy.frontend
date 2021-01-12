@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
  */
 const geometry = PropTypes.shape({
   type: PropTypes.oneOf(['Point', 'Linestring']),
-  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired
+  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
 });
 
 /**
@@ -26,7 +26,7 @@ const report = PropTypes.shape({
   details: PropTypes.shape({
     number: PropTypes.number,
     subject: PropTypes.oneOf(['BIKE_STANDS']),
-    fee_acceptable: PropTypes.bool
+    fee_acceptable: PropTypes.bool,
   }),
   geometry,
   id: PropTypes.number.isRequired,
@@ -34,7 +34,7 @@ const report = PropTypes.shape({
   modified_date: PropTypes.string.isRequired,
   photo: PropTypes.shape({
     copyright: PropTypes.string,
-    src: PropTypes.string
+    src: PropTypes.string,
   }),
   status: PropTypes.oneOf([
     'report_new',
@@ -51,14 +51,14 @@ const report = PropTypes.shape({
     'new',
     'verification',
     'accepted',
-    'rejected'
+    'rejected',
   ]),
   status_reason: PropTypes.string,
-  url: PropTypes.string.isRequired
+  url: PropTypes.string.isRequired,
 });
 
 export default {
   geometry,
   map,
-  report
+  report,
 };
