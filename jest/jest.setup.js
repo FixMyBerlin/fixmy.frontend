@@ -1,3 +1,7 @@
+//
+// jest.setup.js runs before each test file
+//
+
 import { config as parseConfig } from 'dotenv';
 
 // jest-dom adds custom jest matchers for asserting on DOM nodes.

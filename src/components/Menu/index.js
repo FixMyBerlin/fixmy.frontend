@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIntl, defineMessage } from 'react-intl';
-import { useSelector } from 'react-redux';
+import { useTypedSelector } from '~/store';
 
 import MenuWrapper from './MenuWrapper';
 import MenuHeader from './MenuHeader';
@@ -14,8 +14,8 @@ const label = defineMessage({
 
 const Menu = () => {
   const intl = useIntl();
-  const isMenuOpen = useSelector(({ AppState }) => AppState.isMenuOpen);
-  const token = useSelector(({ UserState }) => UserState.token);
+  const isMenuOpen = useTypedSelector(({ AppState }) => AppState.isMenuOpen);
+  const token = useTypedSelector(({ UserState }) => UserState.token);
   return (
     <MenuWrapper isActive={isMenuOpen} aria-label={intl.formatMessage(label)}>
       <MenuHeader token={token} />

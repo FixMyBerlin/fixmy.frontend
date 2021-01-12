@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { AppBar, Toolbar, AppBarProps, Button } from '@material-ui/core';
 
 import MenuButton from '~/components2/MenuButton';
 import SeparatorImage from '~/images/header-separator.svg';
 import config from '~/config';
-import { RootState } from '~/store';
+import { useTypedSelector } from '~/store';
 
 import ChatTranslate from './chat-translate.svg';
 import LocaleMenu from './LocaleMenu';
@@ -107,7 +106,7 @@ const Header = ({
   ...props
 }: Props) => {
   const [isLocaleMenuOpen, setLocaleMenu] = useState(false);
-  const activeLocale = useSelector((state: RootState) => state.AppState.locale);
+  const activeLocale = useTypedSelector((state) => state.AppState.locale);
   return (
     <StyledAppBar
       position={position}

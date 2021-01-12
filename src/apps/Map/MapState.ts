@@ -275,10 +275,6 @@ export function geocodeAddress(searchtext) {
       const searchUrl = `${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;
       const data = await ky.get(searchUrl).json();
 
-      // const geocodeResult = idx(
-      //   data,
-      //   (_) => _.Response.View[0].Result[0].Location.DisplayPosition
-      // );
       const geocodeResult = (data as any)?.Response?.View[0]?.Result[0]
         ?.Location.DisplayPosition;
       if (!geocodeResult) {

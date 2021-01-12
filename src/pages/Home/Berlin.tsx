@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import FMBLogo from '~/components2/Logo';
 import Button from '~/components2/Button';
@@ -9,7 +9,7 @@ import NewsletterWidget from '~/components2/NewsletterWidget';
 import config from '~/config';
 import { media } from '~/styles/utils';
 import { toggle as toggleMenu } from '~/AppState';
-import { RootState } from '~/store';
+import { useTypedSelector } from '~/store';
 import FacebookIcon from '~/images/button-social-facebook.svg';
 import TwitterIcon from '~/images/button-social-twitter.svg';
 
@@ -100,9 +100,7 @@ const TwitterButton = styled(TwitterIcon)`
 
 const HomeBerlin = () => {
   const dispatch = useDispatch();
-  const isMenuOpen = useSelector(
-    (state: RootState) => state.AppState.isMenuOpen
-  );
+  const isMenuOpen = useTypedSelector((state) => state.AppState.isMenuOpen);
   return (
     <>
       <FMBLogo width={88} />
