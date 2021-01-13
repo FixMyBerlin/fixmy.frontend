@@ -1,25 +1,27 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import MapboxGL from 'mapbox-gl';
 import DeckGL from '@deck.gl/react';
-import { ArcLayer } from '@deck.gl/layers';
+import { ArcLayer, ArcLayerProps } from '@deck.gl/layers';
 import config from '~/pages/Reports/config';
 import BigLoader from '~/components/BigLoader';
 import { MapContainer } from '~/pages/Reports/components/BaseMap/MapContainer';
-import { compileTooltip } from '../../pages/OverviewMap/service/arcService';
+import {
+  Arc,
+  compileTooltip,
+} from '~/pages/Reports/pages/OverviewMap/service/arcService';
 
 const MB_STYLE_URL = `${config.reports.overviewMap.style}?fresh=true`;
 MapboxGL.accessToken = MapboxGL.accessToken || config.mapbox.accessToken;
 const configuredBounds = config.reports.overviewMap
   .bounds as MapboxGL.LngLatBoundsLike;
+
 // The DeckGL component does not take bounds as prop, instead it takes longitude
 // and latitude. We calculate those from the given bounds.
 // TODO: factor out and test
-const { bounds } = config.reports.overviewMap;
-const [sw, ne] = bounds;
-const [minLng, minLat] = sw;
-const [maxLng, maxLat] = ne;
+const [[minLng, minLat], [maxLng, maxLat]] = configuredBounds as number[][];
 const centerLng = minLng + (maxLng - minLng) / 2;
 const centerLat = minLat + (maxLat - minLat) / 2;
+
 // Viewport settings
 const INITIAL_DECK_VIEW_STATE = {
   longitude: centerLng,
@@ -29,18 +31,7 @@ const INITIAL_DECK_VIEW_STATE = {
   bearing: 0,
 };
 
-type FIXME = any;
-// TODO: find a way to import this from @deck_gl/core
-interface PickInfo<D> {
-  layer: FIXME;
-  index: number;
-  object: D;
-  x: number;
-  y: number;
-  coordinate?: {};
-}
-
-export type BaseMapProps = {
+type Props = {
   // If defined, this flag controls if a loading animation is rendered.
   // Useful if a large Geodata set is applied to the map over a notable time.
   didOverlayLoad?: boolean;
@@ -50,10 +41,9 @@ export type BaseMapProps = {
   onMove?: () => void;
   // map elements like layers and markers which
   children?: React.ReactNode | React.ReactNode[];
-  // Child elements od te DeckGL component,
+  // Child elements of the DeckGL component,
   // see https://deck.gl/docs/get-started/using-with-react
-  // FIXME typings. I am not able to import ArcLayerProps from Deck.gl, tsc complains
-  arcLayerProps?: FIXME;
+  arcLayerProps?: ArcLayerProps<Arc[]>;
   // maximum map extent expressed in coordinate pairs (SouthWest and NorthEast corner),
   // see https://docs.mapbox.com/mapbox-gl-js/api/geography/#lnglatboundslike
   maxBounds?: MapboxGL.LngLatBoundsLike;
@@ -69,7 +59,7 @@ export const BaseMap = ({
   onMove,
   mapWrapperClassName,
   arcLayerProps,
-}: BaseMapProps) => {
+}: Props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [glContext, setGLContext] = useState<WebGLRenderingContext>();
   // couple deck gl and mapbox gl views
@@ -131,9 +121,6 @@ export const BaseMap = ({
     // TODO: do we need any cleanup logic?
   }, [mapContainerRef.current]);
 
-  // @ts-ignore
-  const arcLayer = arcLayerProps && <ArcLayer {...arcLayerProps} />;
-
   return (
     <>
       {isLoaderShown && <BigLoader useAbsolutePositioning />}
@@ -147,7 +134,11 @@ export const BaseMap = ({
         pickingRadius={8}
         id="reports-deckgl-canvas"
       >
-        {arcLayerProps && arcLayer}
+        {/* ArcLayer can be used as a React component even though it actually
+        is none. May want to refactor this eventually because it's too much
+        magic for my taste https://deck.gl/docs/api-reference/react/deckgl#jsx-layers
+        // @ts-ignore */}
+        {arcLayerProps && <ArcLayer {...arcLayerProps} />}
         {glContext && (
           /* This is important: Mapbox must be instantiated after the WebGLContext is available */
           <MapContainer

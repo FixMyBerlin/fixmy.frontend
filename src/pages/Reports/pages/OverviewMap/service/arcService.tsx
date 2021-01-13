@@ -7,7 +7,7 @@
 //  see https://deck.gl/docs/developer-guide/testing
 
 import debug from 'debug';
-import config from '../../../config';
+import config from '~/pages/Reports/config';
 
 const log = debug('fmc:reports:arcService');
 
@@ -26,14 +26,13 @@ export type Arc = {
   from: POI;
   to: POI;
 };
-type ArcList = Arc[];
 
 // TODO: add types for report entity
 type REPORT_FIXME = unknown;
 
 export function compileArcItems(
   reportOrReportList: REPORT_FIXME | REPORT_FIXME[]
-): ArcList {
+): Arc[] {
   if (Array.isArray(reportOrReportList)) {
     return reportOrReportList.flatMap(compileArcItemsForSingleReport);
   }
@@ -45,7 +44,7 @@ export function compileArcItems(
  * Compiles data items (a list of objects) to be consumed by deck.gl,
  * see https://deck.gl/docs/api-reference/core/layer#data
  */
-function compileArcItemsForSingleReport(report?: REPORT_FIXME): ArcList {
+function compileArcItemsForSingleReport(report?: REPORT_FIXME): Arc[] {
   if (!report) {
     return [];
   }
@@ -67,7 +66,7 @@ const ARC_LAYER_ID = 'reports-arc-layer';
  * Compiles properties for a deck.gl ArcLayer instance,
  * see https://deck.gl/docs/api-reference/layers/arc-layer
  */
-export function compileArcLayerProps(arcData: ArcList) {
+export function compileArcLayerProps(arcData: Arc[]) {
   return {
     id: ARC_LAYER_ID,
     data: arcData,
