@@ -39,7 +39,7 @@
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
     "@cypress/webpack-preprocessor": "^5.4.11",
-    "@danmarshall/deckgl-typings": "^4.3.10",
+    "@danmarshall/deckgl-typings": "github:FixMyBerlin/deckgl-typings#master",
     "@formatjs/cli": "^2.6.0",
     "@storybook/addon-docs": "^6.0.21",
     "@storybook/addon-links": "^6.0.21",
