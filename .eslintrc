@@ -65,8 +65,7 @@
           }
         ],
         "no-useless-constructor": "off",
-        "@typescript-eslint/no-useless-constructor": "warn",
-        "react/prop-types": "off"
+        "@typescript-eslint/no-useless-constructor": "warn"
       }
     }
   ],
@@ -90,7 +89,12 @@
         "tsx": "never"
       }
     ],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+
+    // We don't prefer default exports because named exports enhance IDE
+    // auto completion for imports and prevent inconsistent naming conventions
+    // across modules.
+    "import/prefer-default-export": ["off"]
   },
 
   "env": {

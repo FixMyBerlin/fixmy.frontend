@@ -61,7 +61,6 @@ export type BaseMapProps = {
   mapWrapperClassName?: string;
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const BaseMap = ({
   children,
   didOverlayLoad,
@@ -72,7 +71,7 @@ export const BaseMap = ({
   arcLayerProps,
 }: BaseMapProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [glContext, setGLContext] = useState();
+  const [glContext, setGLContext] = useState<WebGLRenderingContext>();
   // couple deck gl and mapbox gl views
   const [mapViewState, setMapViewState] = useState(INITIAL_DECK_VIEW_STATE);
 

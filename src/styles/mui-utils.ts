@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { createMuiTheme } from '@material-ui/core';
 import {
   deDE as muiDE,
