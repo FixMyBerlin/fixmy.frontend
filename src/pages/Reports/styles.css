@@ -3,6 +3,8 @@
   cursor: pointer;
   opacity: 1;
   height: auto;
+  /* Position above reports app arc layer canvas (at z-index 2) */
+  z-index: 3;
 }
 
 .marker-new,
