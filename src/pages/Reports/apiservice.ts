@@ -47,22 +47,36 @@ export type Report = NewReport & {
   user: UserID | null;
 };
 
-export type Status =
-  | 'report_new'
-  | 'report_verification'
-  | 'report_accepted'
-  | 'report_rejected'
-  | 'report_inactive'
-  | 'new'
-  | 'verification'
-  | 'accepted'
-  | 'rejected'
-  | 'inactive'
-  | 'planning'
-  | 'tender'
-  | 'execution'
-  | 'invalid'
-  | 'done';
+export const STATUS_LEGACY = [
+  'new',
+  'verification',
+  'accepted',
+  'rejected',
+  'inactive',
+];
+
+export const STATUS_REPORT = [
+  'report_new',
+  'report_verification',
+  'report_accepted',
+  'report_rejected',
+  'report_inactive',
+];
+export const STATUS_PLANNING = [
+  'planning',
+  'tender',
+  'execution',
+  'invalid',
+  'done',
+];
+
+export const STATUS = STATUS_LEGACY.concat(STATUS_REPORT).concat(
+  STATUS_PLANNING
+);
+
+// The type of any array item can be accessed using an array index, by
+// generalizing over all possible array indices we get all possible item types
+export type Status = typeof STATUS[number];
 
 type SubmitReportResponse = any;
 

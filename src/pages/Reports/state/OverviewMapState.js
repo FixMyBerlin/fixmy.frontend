@@ -198,8 +198,8 @@ selectors.selectArcLayerProps = createSelector(
   selectReportsOfInterest,
   (reports) => {
     if (!reports.length) return null;
-    const arcData = arcService.compileArcItems(reports);
-    return arcService.compileArcLayerProps(arcData);
+    const arcData = reports.flatMap(arcService.getArcs);
+    return arcService.arcLayerProps(arcData);
   }
 );
 

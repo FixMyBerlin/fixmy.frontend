@@ -7,6 +7,16 @@
 //  see https://deck.gl/docs/developer-guide/testing
 
 import debug from 'debug';
+// ESlint complains because deck.gl doesn't provide this export but it's
+// available as a type export from @danmarshall/deckgl-typings
+// eslint-disable-next-line import/no-unresolved
+import type { PickInfo as PartialPickInfo } from '@deck.gl/core/lib/deck';
+import {
+  Report,
+  Status,
+  STATUS_PLANNING,
+  STATUS_REPORT,
+} from '~/pages/Reports/apiservice';
 import config from '~/pages/Reports/config';
 
 const log = debug('fmc:reports:arcService');
@@ -18,7 +28,7 @@ const enum POI_TYPE {
   UNHANDLED = 'UHANDLED',
 }
 type POI = {
-  readonly coordinates: ReadonlyArray<[number, number]>;
+  readonly coordinates: [number, number];
   readonly address: string;
   readonly type: POI_TYPE;
 };
@@ -27,37 +37,22 @@ export type Arc = {
   to: POI;
 };
 
-// TODO: add types for report entity
-type REPORT_FIXME = unknown;
-
-export function compileArcItems(
-  reportOrReportList: REPORT_FIXME | REPORT_FIXME[]
-): Arc[] {
-  if (Array.isArray(reportOrReportList)) {
-    return reportOrReportList.flatMap(compileArcItemsForSingleReport);
-  }
-  // we are dealing with a single report
-  return compileArcItemsForSingleReport(reportOrReportList);
-}
-
 /**
  * Compiles data items (a list of objects) to be consumed by deck.gl,
  * see https://deck.gl/docs/api-reference/core/layer#data
  */
-function compileArcItemsForSingleReport(report?: REPORT_FIXME): Arc[] {
+export function getArcs(report?: Report): Arc[] {
   if (!report) {
     return [];
   }
-  const arcOrigin: Arc['from'] = getPoiForReport(report);
+  const arcOrigin: Arc['from'] = getPoi(report);
   const linkages = getReportLinkages(report);
 
   // for each related report, construct an Arc
-  return linkages.map(
-    (linkedReport): Arc => ({
-      from: arcOrigin,
-      to: getPoiForReport(linkedReport),
-    })
-  );
+  return linkages.map((linkedReport) => ({
+    from: arcOrigin,
+    to: getPoi(linkedReport),
+  }));
 }
 
 const ARC_LAYER_ID = 'reports-arc-layer';
@@ -66,7 +61,7 @@ const ARC_LAYER_ID = 'reports-arc-layer';
  * Compiles properties for a deck.gl ArcLayer instance,
  * see https://deck.gl/docs/api-reference/layers/arc-layer
  */
-export function compileArcLayerProps(arcData: Arc[]) {
+export function arcLayerProps(arcData: Arc[]) {
   return {
     id: ARC_LAYER_ID,
     data: arcData,
@@ -88,71 +83,78 @@ export function compileArcLayerProps(arcData: Arc[]) {
   };
 }
 
-// copied from deck.gl source code TODO: find a way to import his
-type TooltipConfig = null | {
-  text?: string;
+// copied from deck.gl source code because it's missing in deck.gl types
+type TooltipConfig = {
+  text: string;
   html?: string;
   className?: string;
-  style?: {};
+  style: {};
 };
+
+// deck.gl pickInfo type is missing definitions for fields that we use
+type PickInfo = PartialPickInfo<any> &
+  (
+    | {
+        picked: true;
+        object: Arc;
+      }
+    | {
+        picked: false;
+        object: null;
+      }
+  );
 
 /**
  * Compiles a tooltip for a picked arc layer item OR NOT,
  * depending on if an arc is picked.
  * see https://deck.gl/docs/developer-guide/interactivity
  */
-export const compileTooltip = (pickInfo): TooltipConfig => {
-  if (!pickInfo.picked) {
-    // do not render a tooltip
-    return null;
-  }
-  const pickedArc: Arc = pickInfo.object;
-  if (pickedArc.from.type === POI_TYPE.UNHANDLED) {
-    return null;
-  }
+export const compileTooltip = (pickInfo: PickInfo): TooltipConfig | null => {
+  if (!pickInfo.picked) return null;
+  if (pickInfo.object?.from.type === POI_TYPE.UNHANDLED) return null;
 
   const text =
-    pickedArc.from.type === POI_TYPE.REPORT
-      ? 'Die zur Meldung gehörende Planung'
-      : 'Die zur Planung gehörende Meldung';
+    pickInfo.object.from.type === POI_TYPE.REPORT
+      ? 'Planung zu dieser Radbügelmeldung'
+      : 'Meldung zu diesem Radbügelstandort';
   const style = {
     /* display above foldout TODO: make this work */
     zIndex: 3001,
-    fontFamily: '"The Mix", sans-serif',
+    fontFamily: "'Open Sans', sans-serif",
+    color: config.colors.lightgrey,
     borderRadius: '6px',
-    opacity: 0.8,
+    opacity: 0.9,
   };
   return { text, style };
 };
 
-function getPoiForReport(report): POI {
+function getPoi(report: Omit<Report, 'origin' | 'plannings'>): POI {
   return {
-    coordinates: report.geometry.coordinates,
+    coordinates: report.geometry.coordinates as [number, number],
     address: report.address,
-    type: mapReportStatusToPoiType(report.status),
+    type: getPOIType(report.status),
   };
 }
-function mapReportStatusToPoiType(reportStatus: string): POI_TYPE {
-  if (reportStatus.startsWith('report')) {
+function getPOIType(reportStatus: Status): POI_TYPE {
+  if (STATUS_REPORT.includes(reportStatus)) {
     return POI_TYPE.REPORT;
   }
-  if (reportStatus === 'planning') {
+  if (STATUS_PLANNING.includes(reportStatus)) {
     return POI_TYPE.PLANNING;
   }
   return POI_TYPE.UNHANDLED;
 }
 
-function getReportLinkages(selectedReport) {
+function getReportLinkages(selectedReport: Report) {
   // Plannings are linked to Reports by stating one ore more entries under "origin",
   // Reports are linked to Plannings by stating one ore more entries under "plannings"
   // The API states both fields, so we have to check if one of those keys contains an array
   // with at least one value
-  let linkages = [];
-  const relationFieldNames = ['plannings', 'origin'];
+  let linkages: Report['origin'] | Report['plannings'] = [];
   try {
-    relationFieldNames.forEach((fieldName) => {
+    ['plannings', 'origin'].forEach((linkType) => {
       // Also check for strings and try to parse it as Array. // FIXME: fix this on the API side.
-      let relationsList = selectedReport[fieldName];
+      let relationsList = selectedReport[linkType];
       if (typeof relationsList === 'string') {
         relationsList = JSON.parse(relationsList);
       }
@@ -166,6 +168,7 @@ function getReportLinkages(selectedReport) {
     }
   } catch (e) {
     log('failed to assemble arc Data, using an empty data set');
+    throw e;
   }
   return linkages;
 }

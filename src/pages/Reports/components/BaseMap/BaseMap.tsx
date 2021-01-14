@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import MapboxGL from 'mapbox-gl';
 import DeckGL from '@deck.gl/react';
 import { ArcLayer, ArcLayerProps } from '@deck.gl/layers';
+
 import config from '~/pages/Reports/config';
 import BigLoader from '~/components/BigLoader';
 import { MapContainer } from '~/pages/Reports/components/BaseMap/MapContainer';
