@@ -1,1 +1,3 @@
-export { BaseMap } from './BaseMap';
+import BaseMap from './BaseMap';
+
+export default BaseMap;

@@ -115,9 +115,9 @@ const BaseMap = ({
         id="reports-deckgl-canvas"
       >
         {/* ArcLayer can be used as a React component even though it actually
-      is none. May want to refactor this eventually because it's too much
-      magic for my taste https://deck.gl/docs/api-reference/react/deckgl#jsx-layers
-      // @ts-ignore */}
+        is none. May want to refactor this eventually because it's too much
+        magic for my taste https://deck.gl/docs/api-reference/react/deckgl#jsx-layers
+        // @ts-ignore */}
         {arcLayerProps && <ArcLayer {...arcLayerProps} />}
         {children}
         {glContext && (

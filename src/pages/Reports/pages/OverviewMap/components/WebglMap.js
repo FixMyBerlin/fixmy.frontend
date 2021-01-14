@@ -6,7 +6,7 @@ import debug from 'debug';
 
 import FMCPropTypes from '~/pages/Reports/propTypes';
 import config from '~/pages/Reports/config';
-import { BaseMap } from '~/pages/Reports/components/BaseMap';
+import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusteredMarkers from './ClusteredMarkers';
 
 const logger = debug('fmc:reports:WebglMap.js');

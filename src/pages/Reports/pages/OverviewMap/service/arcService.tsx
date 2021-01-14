@@ -9,7 +9,8 @@
 import debug from 'debug';
 // ESlint complains because deck.gl doesn't provide this export but it's
 // available as a type export from @danmarshall/deckgl-typings
-// eslint-disable-next-line import/no-unresolved
+// eslint-disable import/no-unresolved
+// @ts-ignore
 import type { PickInfo as PartialPickInfo } from '@deck.gl/core/lib/deck';
 import {
   Report,

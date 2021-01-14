@@ -44,6 +44,8 @@ interface LocateMeMapConfig {
 }
 
 interface OverviewMapConfig {
+  arcSourceColor?: [number, number, number];
+  arcTargetColor?: [number, number, number];
   style: string;
   bounds: mapboxgl.LngLatBoundsLike;
   maxBounds: mapboxgl.LngLatBoundsLike;
