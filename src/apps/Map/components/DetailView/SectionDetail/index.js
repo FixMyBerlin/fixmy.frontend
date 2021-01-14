@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import idx from 'idx';
 
 import config from '~/config';
 import DataProcessIcon from '~/images/data-process.svg';
@@ -114,8 +113,7 @@ class SectionDetails extends PureComponent {
     const sideData = data.details[sideIndex];
     const hasSwitchButton = data.details && data.details.length > 1;
     const orientationNames = getOrientationNames(
-      idx(data, (_) => _.details[0].orientation),
-      idx(data, (_) => _.details[1].orientation)
+      ...data.details.map((detail) => detail.orientation)
     );
 
     if (!sideData) {

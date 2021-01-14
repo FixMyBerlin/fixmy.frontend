@@ -27,10 +27,13 @@ const ImageSpacer = styled.div`
 const ImageMulti = ({ children }) => <ImageWrapper>{children}</ImageWrapper>;
 
 interface ImageMultiInnerProps extends InnerImageProps {
-  children: React.ReactNode | React.ReactNode[];
+  children?: React.ReactNode | React.ReactNode[];
 }
 
-const ImageMultiInner = ({ children, ...props }: ImageMultiInnerProps) => (
+const ImageMultiInner = ({
+  children = null,
+  ...props
+}: ImageMultiInnerProps) => (
   <ImageSpacer>
     <InnerImg {...props}>{children}</InnerImg>
   </ImageSpacer>

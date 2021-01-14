@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import classnames from 'classnames';
 
 import config from '~/pages/KatasterKI/config';
 import { media, bounce } from '~/styles/utils';
@@ -65,15 +64,17 @@ const RatingButton = styled.button`
     }
   `}
 
-  &.active {
-    font-weight: 700;
+  ${({ isSelected }) =>
+    isSelected &&
+    `
+    & > div { font-weight: 700; }
 
     svg {
       use {
         fill: ${config.colors.katasterHighlight};
       }
     }
-  }
+  `}
 
   &:focus {
     outline: none;
@@ -164,16 +165,13 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
       <Flex>
         {options.map((option, index) => {
           const Icon = option.icon;
-          const buttonClasses = classnames({
-            active: currentValue.rating === index,
-          });
 
           return (
             <RatingButton
               key={`singlechoice__${option.value}`}
               onClick={() => onClick(option)}
-              className={buttonClasses}
               data-cy="kat-scene-rating-button"
+              isSelected={currentValue.rating === index}
             >
               <IconWrapper isEnqueued={enqueuedRating === option.label}>
                 <Icon />

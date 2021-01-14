@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import MapboxGL from 'mapbox-gl';
 import _isEqual from 'lodash.isequal';
 import styled from 'styled-components';
-import idx from 'idx';
 import { withRouter, matchPath } from 'react-router-dom';
 import slugify from 'slugify';
 
@@ -288,7 +287,7 @@ class Map extends PureComponent {
     //   name: name || '-'
     // };
 
-    const isDetailViewOpen = idx(match, (_) => _.params.id) != null;
+    const isDetailViewOpen = match?.params.id != null;
     if (isDetailViewOpen) {
       const slugifiedName = slugify(name || '').toLowerCase();
       const detailRoute = `/${this.props.activeView}/${id}/${slugifiedName}`;
@@ -338,7 +337,7 @@ class Map extends PureComponent {
   }
 
   render() {
-    const markerData = idx(this.props.planningData, (_) => _.results);
+    const markerData = this.props.planningData?.results;
     const markersVisible =
       this.props.activeView === 'planungen' ||
       this.props.activeView === 'popupbikelanes';

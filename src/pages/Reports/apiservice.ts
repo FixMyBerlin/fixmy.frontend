@@ -5,8 +5,7 @@ import validateNewReport from './state/tests/schemaValidation/validateNewReport'
 import logger from '~/utils/logger';
 import config from '~/pages/Reports/config';
 
-export const reportsEndpointUrl =
-  config.apiUrl + config.reports.apiRoute || '/reports';
+export const reportsEndpointUrl = `${config.apiUrl}/reports`;
 
 // camelcase allowed because this comes from Python world
 // eslint-disable camelcase
