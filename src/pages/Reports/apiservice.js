@@ -67,7 +67,7 @@ export async function apiFetchReports() {
  * @param newReportObject
  * @returns marshalledNewReportObject
  */
-export function marshallNewReportObjectFurSubmit(newReportObject) {
+export function marshallNewReportObjectForSubmit(newReportObject) {
   const reportItemCopy = JSON.parse(JSON.stringify(newReportObject));
 
   // omit base64 prefix in photo string
