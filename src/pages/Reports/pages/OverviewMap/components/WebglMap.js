@@ -8,6 +8,7 @@ import FMCPropTypes from '~/pages/Reports/propTypes';
 import config from '~/pages/Reports/config';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusteredMarkers from './ClusteredMarkers';
+import { LinkLayer } from '~/pages/Reports/components/LinkLayer';
 
 const logger = debug('fmc:reports:WebglMap.js');
 
@@ -117,32 +118,32 @@ class WebglMap extends PureComponent {
       detailId,
       setHoveredReport,
       unSetHoveredReport,
-      arcLayerProps,
     } = this.props;
 
     const isReportsDataLoaded = !!reportsData.length;
 
     return (
-      <BaseMap
-        onLoad={this.onBaseMapLoad}
-        onMove={this.props.onMove}
-        didOverlayLoad={isReportsDataLoaded}
-        arcLayerProps={arcLayerProps}
-      >
-        {isReportsDataLoaded > 0 && (
-          <ClusteredMarkers
-            data={toGeojson(reportsData)}
-            map={this.map}
-            name="reports-cluster"
-            radius={60}
-            detailId={detailId}
-            onClick={onMarkerClick}
-            selectedReport={selectedReport}
-            setHoveredReport={setHoveredReport}
-            unSetHoveredReport={unSetHoveredReport}
-          />
-        )}
-      </BaseMap>
+      <LinkLayer>
+        <BaseMap
+          onLoad={this.onBaseMapLoad}
+          onMove={this.props.onMove}
+          isReportsDataLoaded={isReportsDataLoaded}
+        >
+          {isReportsDataLoaded > 0 && (
+            <ClusteredMarkers
+              data={toGeojson(reportsData)}
+              map={this.map}
+              name="reports-cluster"
+              radius={60}
+              detailId={detailId}
+              onClick={onMarkerClick}
+              selectedReport={selectedReport}
+              setHoveredReport={setHoveredReport}
+              unSetHoveredReport={unSetHoveredReport}
+            />
+          )}
+        </BaseMap>
+      </LinkLayer>
     );
   }
 }
@@ -158,7 +159,6 @@ WebglMap.propTypes = {
   onMove: PropTypes.func,
   reportsData: PropTypes.arrayOf(FMCPropTypes.report),
   selectedReport: FMCPropTypes.report,
-  arcLayerProps: FMCPropTypes.arcLayerProps,
   zoomControlPosition: PropTypes.string,
   setHoveredReport: PropTypes.func.isRequired,
   unSetHoveredReport: PropTypes.func.isRequired,
@@ -167,7 +167,6 @@ WebglMap.propTypes = {
 
 WebglMap.defaultProps = {
   reportsData: [],
-  arcLayerProps: null,
   center: null,
   zoomIn: true,
   onLoad: () => {},
