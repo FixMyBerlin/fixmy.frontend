@@ -12,6 +12,7 @@ interface Props {
 const Wrapper = styled.div<Props>`
   display: ${({ isPopupVisible, isDetailOpen }) =>
     !isPopupVisible && !isDetailOpen ? 'block' : 'none'};
+  z-index: 3;
 
   @media (min-width: ${breakpoints.m}px) {
     display: ${({ isDetailOpen }) => (!isDetailOpen ? 'block' : 'none')};
