@@ -22,7 +22,7 @@ interface Props {
   isReportsDataLoaded?: boolean;
   maxBounds?: MapboxGL.LngLatBoundsLike;
   onLoad?: (map: MapboxGL.Map) => any;
-  onMove?: () => any;
+  onMove?: (ev: any) => void;
 }
 
 const BaseMap = ({

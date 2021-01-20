@@ -17,12 +17,6 @@ const geometry = PropTypes.shape({
 const map = PropTypes.object;
 
 /**
- * An object with properties defined at
- * https://deck.gl/docs/get-started/using-with-react
- */
-const arcLayerProps = PropTypes.object;
-
-/**
  * PropType for a single report as returned from the backend
  */
 const report = PropTypes.shape({
@@ -67,5 +61,4 @@ export default {
   geometry,
   map,
   report,
-  arcLayerProps,
 };

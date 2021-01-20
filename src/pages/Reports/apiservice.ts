@@ -1,14 +1,15 @@
+// camelcase allowed because API types come from Python world
+/* eslint-disable camelcase */
+
 import ky from 'ky-universal';
 import oneLine from 'common-tags/es/oneLine/oneLine';
+// eslint-disable-next-line import/no-unresolved
 import type { Point } from 'geojson';
 import validateNewReport from './state/tests/schemaValidation/validateNewReport';
 import logger from '~/utils/logger';
 import config from '~/pages/Reports/config';
 
 export const reportsEndpointUrl = `${config.apiUrl}/reports`;
-
-// camelcase allowed because this comes from Python world
-// eslint-disable camelcase
 
 type BikeStandsDetails = {
   subject: 'BIKE_STANDS';
