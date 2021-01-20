@@ -21,6 +21,7 @@ import {
 import config from '~/pages/Reports/config';
 
 const log = debug('fmc:reports:arcService');
+const linkLayerConfig = config.reports?.overviewMap.linkLayer;
 
 const enum POI_TYPE {
   PLANNING = 'PLANNING',
@@ -68,10 +69,9 @@ export function arcLayerProps(arcData: Arc[]) {
     data: arcData,
     getSourcePosition: (d) => d.from.coordinates,
     getTargetPosition: (d) => d.to.coordinates,
-    getSourceColor: () =>
-      config.reports.overviewMap.arcSourceColor || [250, 90, 140],
+    getSourceColor: () => linkLayerConfig.arcSourceColor || [250, 90, 140],
     getHeight: 0.5,
-    getTargetColor: config.reports.overviewMap.arcTargetColor || [250, 90, 140],
+    getTargetColor: linkLayerConfig.arcTargetColor || [250, 90, 140],
     getWidth: 7,
     opacity: 0.6,
     pickable: true,
