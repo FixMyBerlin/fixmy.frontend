@@ -107,6 +107,10 @@ class OverviewMap extends Component {
     const { selectedReport } = this.props;
     const hasReportBeenSelected = !!selectedReport?.id;
 
+    // Update redux state when selected report is changed through route params
+    if (prevProps.match.params.id !== this.props.match.params.id)
+      this.props.setSelectedReport(this.props.match.params.id, true);
+
     if (hasReportBeenSelected) {
       const hasSelectedReportChanged = prevReport?.id !== selectedReport.id;
       if (hasSelectedReportChanged) {
