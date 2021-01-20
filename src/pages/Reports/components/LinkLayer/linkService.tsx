@@ -11,7 +11,7 @@ import {
   STATUS_REPORT,
 } from '~/pages/Reports/apiservice';
 
-const log = debug('fmc:reports:arcService');
+const log = debug('fmc:reports:LinkLayer');
 
 const enum NODE_TYPE {
   PLANNING = 'PLANNING',
@@ -32,16 +32,13 @@ export type EntryLink = {
 };
 
 /**
- * Compiles data items (a list of objects) to be consumed by deck.gl,
- * see https://deck.gl/docs/api-reference/core/layer#data
+ * Compile all links for a given report
  */
 export function getLinks(report?: Report): EntryLink[] {
   if (!report) return [];
   const linkOrigin: EntryLink['from'] = getNode(report);
-  const links = getReportLinks(report);
 
-  // for each related report, construct an Arc
-  return links.map((linkedReport) => ({
+  return getReportLinks(report).map((linkedReport) => ({
     from: linkOrigin,
     to: getNode(linkedReport),
   }));
@@ -50,18 +47,18 @@ export function getLinks(report?: Report): EntryLink[] {
 /**
  * Compile link collections into GeoJSON FeatureCollection
  *
- * @param arcData collection of arcs
+ * @param linkData collection of links
  */
 export const getFeatureCollection = (
   linkData: EntryLink[]
 ): FeatureCollection<LineString> => ({
   type: 'FeatureCollection',
-  features: linkData.map((arc) => ({
+  features: linkData.map((link) => ({
     type: 'Feature',
     properties: {},
     geometry: {
       type: 'LineString',
-      coordinates: [arc.from.coordinates, arc.to.coordinates],
+      coordinates: [link.from.coordinates, link.to.coordinates],
     },
   })),
 });
@@ -102,10 +99,6 @@ function getReportLinks(selectedReport: Report) {
         links = links.concat(relationsList);
       }
     });
-    // check for success and log about it
-    if (links.length) {
-      log('assembled arc Data');
-    }
   } catch (e) {
     log('failed to assemble LinkLayer data, using an empty data set');
     throw e;

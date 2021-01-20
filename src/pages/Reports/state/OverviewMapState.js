@@ -180,7 +180,7 @@ const selectReportsOfInterest = createSelector(
     }
     if (
       hoveredReport &&
-      // do not generate duplicate arcs for a selectedReport being hovered
+      // do not generate duplicate links for a selectedReport being hovered
       selectedReport !== hoveredReport
     ) {
       reportsToConstructDataFor.push(hoveredReport);
