@@ -20,10 +20,7 @@ const aachenConfig: ReportsConfig = {
       inner: 'rgba(205, 205, 205, 0.91)',
     },
     linkLayer: {
-      //  Colors for visualization of linkages between reports and plannings
-      //  rgb values as array
-      arcSourceColor: [110, 155, 210],
-      arcTargetColor: [98, 75, 16],
+      color: '#fabe28',
     },
   },
   locateMeMap: {

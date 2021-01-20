@@ -50,8 +50,7 @@ interface OverviewMapConfig {
     inner: string;
   };
   linkLayer?: {
-    arcSourceColor: [number, number, number];
-    arcTargetColor: [number, number, number];
+    color: string;
   };
   maxBounds: mapboxgl.LngLatBoundsLike;
   style: string;

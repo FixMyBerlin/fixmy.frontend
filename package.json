@@ -29,10 +29,6 @@
     "compile:es": "formatjs compile src/lang/translations/es.json --ast --out-file src/lang/compiled/es.json"
   },
   "dependencies": {
-    "@deck.gl/core": "^8.2.8",
-    "@deck.gl/layers": "^8.2.8",
-    "@deck.gl/mapbox": "^8.2.8",
-    "@deck.gl/react": "^8.3.6",
     "@formatjs/intl-datetimeformat": "^2.8.4",
     "@formatjs/intl-getcanonicallocales": "^1.5.1",
     "@formatjs/intl-numberformat": "^5.5.5",
@@ -49,10 +45,6 @@
     "@turf/boolean-within": "^6.0.1",
     "@turf/helpers": "^6.1.4",
     "@turf/length": "^6.0.2",
-    "@types/debug": "^4.1.5",
-    "@types/geojson": "^7946.0.7",
-    "@types/mapbox-gl": "^1.11.1",
-    "@types/node": "^13.11.0",
     "abortcontroller-polyfill": "^1.4.0",
     "babel-plugin-react-hot-loader": "^3.0.0-beta.6",
     "classnames": "^2.2.6",

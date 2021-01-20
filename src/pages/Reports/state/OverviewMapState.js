@@ -1,7 +1,7 @@
 import debug from 'debug';
 import { createSelector } from 'reselect';
 import { apiFetchReports } from '../apiservice';
-import * as arcService from '../components/LinkLayer/arcService';
+import * as linkService from '../components/LinkLayer/linkService';
 import { actions as errorStateActions } from './ErrorState';
 import initialState from './initialState';
 
@@ -188,18 +188,15 @@ const selectReportsOfInterest = createSelector(
     return reportsToConstructDataFor;
   }
 );
-// TODO: add unit- and integration tests
+
 /**
- * Derives properties for a deck.gl ArcLayer by
- * 1. reading selected/hovered reports from store
- * 2. delegating property compilation to a service
+ * Select currently visible link layer geometries
  */
-selectors.selectArcLayerProps = createSelector(
+selectors.selectLinkLayerGeometries = createSelector(
   selectReportsOfInterest,
   (reports) => {
-    if (!reports.length) return null;
-    const arcData = reports.flatMap(arcService.getArcs);
-    return arcService.arcLayerProps(arcData);
+    const arcData = reports.flatMap(linkService.getLinks);
+    return linkService.getFeatureCollection(arcData);
   }
 );
 

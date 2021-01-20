@@ -23,6 +23,9 @@ const BerlinConfig: ReportsConfig = {
       outer: 'rgba(145, 0, 85, 0.5)',
       inner: 'rgba(207, 10, 125, 0.4)',
     },
+    linkLayer: {
+      color: '#fabe28',
+    },
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
