@@ -5,7 +5,7 @@ import React, { useCallback, useState } from 'react';
 
 import { selectors as mapStateSelectors } from '~/pages/Reports/state/OverviewMapState';
 
-import { compileTooltip } from '~/pages/Reports/pages/OverviewMap/service/arcService';
+import { compileTooltip } from '~/pages/Reports/components/LinkLayer/arcService';
 import { useTypedSelector } from '~/store';
 
 const LinkLayer = ({ children }) => {

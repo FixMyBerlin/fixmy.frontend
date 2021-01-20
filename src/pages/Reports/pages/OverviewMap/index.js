@@ -9,10 +9,7 @@ import debug from 'debug';
 import styled from 'styled-components';
 
 import LocatorControl from '~/apps/Map/components/LocatorControl';
-import {
-  actions as overviewMapStateActions,
-  selectors as overviewMapStateSelectors,
-} from '~/pages/Reports/state/OverviewMapState';
+import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import config from '~/pages/Reports/config';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
@@ -193,7 +190,6 @@ class OverviewMap extends Component {
       errorMessage,
       setHoveredReport,
       unSetHoveredReport,
-      arcLayerProps,
     } = this.props;
 
     const hasDetailId = match.params.id;
@@ -216,7 +212,6 @@ class OverviewMap extends Component {
         <MapWrapper>
           <WebglMap
             reportsData={reports}
-            arcLayerProps={arcLayerProps}
             center={this.state.mapCenter}
             zoomIn={this.state.zoomIn}
             onMarkerClick={this.onMarkerClick}
@@ -285,9 +280,6 @@ export default withRouter(
     (state) => ({
       selectedReport: state.ReportsState.OverviewMapState.selectedReport,
       reports: state.ReportsState.OverviewMapState.reports,
-      arcLayerProps: overviewMapStateSelectors.selectArcLayerProps(
-        state.ReportsState.OverviewMapState
-      ),
       isReportsFetchPending:
         state.ReportsState.OverviewMapState.reportFetchState === 'pending',
       zoomIn: state.ReportsState.OverviewMapState.reports.zoomIn,

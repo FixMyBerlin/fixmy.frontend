@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /**
  * Bundles types and logic to construct a deck.gl ArcLayer with data and configurations
  * in order to visualize relations between reports and plannings.
@@ -9,7 +10,6 @@
 import debug from 'debug';
 // ESlint complains because deck.gl doesn't provide this export but it's
 // available as a type export from @danmarshall/deckgl-typings
-// eslint-disable import/no-unresolved
 // @ts-ignore
 import type { PickInfo as PartialPickInfo } from '@deck.gl/core/lib/deck';
 import {
@@ -69,13 +69,9 @@ export function arcLayerProps(arcData: Arc[]) {
     getSourcePosition: (d) => d.from.coordinates,
     getTargetPosition: (d) => d.to.coordinates,
     getSourceColor: () =>
-      config.reports.overviewMap.arcSourceColor || [98, 75, 16],
+      config.reports.overviewMap.arcSourceColor || [250, 90, 140],
     getHeight: 0.5,
-    getTargetColor: config.reports.overviewMap.arcTargetColor || [
-      110,
-      155,
-      210,
-    ],
+    getTargetColor: config.reports.overviewMap.arcTargetColor || [250, 90, 140],
     getWidth: 7,
     opacity: 0.6,
     pickable: true,

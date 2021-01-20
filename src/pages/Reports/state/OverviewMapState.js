@@ -1,7 +1,7 @@
 import debug from 'debug';
 import { createSelector } from 'reselect';
 import { apiFetchReports } from '../apiservice';
-import * as arcService from '../pages/OverviewMap/service/arcService';
+import * as arcService from '../components/LinkLayer/arcService';
 import { actions as errorStateActions } from './ErrorState';
 import initialState from './initialState';
 
