@@ -57,8 +57,8 @@ const LinkLayer = ({
       },
       paint: {
         'line-color': config.reports.overviewMap.linkLayer.color,
-        'line-opacity': 0.75,
-        'line-width': 5,
+        'line-opacity': 0.9,
+        'line-width': 3,
       },
     });
     setMap(mapLoaded);
