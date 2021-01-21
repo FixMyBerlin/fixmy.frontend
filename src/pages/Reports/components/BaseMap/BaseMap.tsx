@@ -1,6 +1,6 @@
+import MapboxGL from 'mapbox-gl';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import MapboxGL from 'mapbox-gl';
 
 import config from '~/pages/Reports/config';
 import BigLoader from '~/components/BigLoader';
@@ -19,10 +19,10 @@ const StyledMap = styled(Map)`
 interface Props {
   children?: React.ReactNode;
   className?: string;
-  didOverlayLoad?: boolean;
+  isReportsDataLoaded?: boolean;
   maxBounds?: MapboxGL.LngLatBoundsLike;
   onLoad?: (map: MapboxGL.Map) => any;
-  onMove?: () => any;
+  onMove?: (ev: any) => void;
 }
 
 const BaseMap = ({
@@ -31,15 +31,15 @@ const BaseMap = ({
   maxBounds,
   onLoad,
   onMove,
-  didOverlayLoad = true,
+  isReportsDataLoaded = true,
 }: Props) => {
   const [isLoading, setLoading] = useState(true);
   const handleLoad = (map: MapboxGL.Map) => {
     if (onMove) map.on('move', onMove);
     if (onLoad) onLoad(map);
-    if (didOverlayLoad) setLoading(false);
+    if (isReportsDataLoaded) setLoading(false);
   };
-  useEffect(() => setLoading(!didOverlayLoad), [didOverlayLoad]);
+  useEffect(() => setLoading(!isReportsDataLoaded), [isReportsDataLoaded]);
   return (
     <>
       {isLoading && <BigLoader useAbsolutePositioning />}

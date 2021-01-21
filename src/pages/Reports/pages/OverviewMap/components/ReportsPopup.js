@@ -9,6 +9,7 @@ import { actions } from '~/pages/Reports/state/OverviewMapState';
 import MapPopupWrapper from '~/components/MapPopupWrapper';
 import Button from '~/components/Button';
 import Title from '~/components/Title';
+import { STATUS_PLANNING } from '~/pages/Reports/apiservice';
 
 const PreviewImage = styled.div`
   height: 200px;
@@ -46,6 +47,17 @@ class ReportsPopup extends PureComponent {
 
     const { number } = selectedReport.details;
 
+    let popupTitle;
+    if (selectedReport.status === 'done') {
+      popupTitle = `${number} Fahrradbügel gebaut`;
+    } else if (STATUS_PLANNING.includes(selectedReport.status)) {
+      popupTitle = `${number} Fahrradbügel in Planung`;
+    } else {
+      popupTitle = `${number} neue${
+        number === 1 ? 'r' : ''
+      } Fahrradbügel gewünscht`;
+    }
+
     return (
       <MapPopupWrapper
         x={x}
@@ -65,16 +77,7 @@ class ReportsPopup extends PureComponent {
             />
           </Link>
         )}
-        <Title data-cy="reports-popup-title">
-          {selectedReport.status !== 'done' && (
-            <>
-              {number} neue{number === 1 ? 'r' : null} Fahrradbügel gewünscht
-            </>
-          )}
-          {selectedReport.status === 'done' && (
-            <>{number} Fahrradbügel gebaut</>
-          )}
-        </Title>
+        <Title data-cy="reports-popup-title">{popupTitle}</Title>
         <ButtonWrapper>
           <Button
             data-cy="reports-popup-button"

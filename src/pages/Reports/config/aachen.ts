@@ -2,6 +2,8 @@ import AachenLogo from '~/images/aachen/logo-stadt-aachen-bg.png';
 import LandingBackground from '~/images/aachen/landing_background.jpg';
 import { ReportsConfig } from '.';
 
+const isProduction = process.env.BACKEND === 'production';
+
 const aachenConfig: ReportsConfig = {
   enabled: false,
   overviewMap: {
@@ -19,6 +21,11 @@ const aachenConfig: ReportsConfig = {
       outer: 'rgba(133, 133, 133, 0.98)',
       inner: 'rgba(205, 205, 205, 0.91)',
     },
+    linkLayer: isProduction
+      ? null
+      : {
+          color: '#ffffff',
+        },
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,

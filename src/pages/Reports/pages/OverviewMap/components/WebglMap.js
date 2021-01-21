@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import debug from 'debug';
 
+import FMCPropTypes from '~/pages/Reports/propTypes';
 import config from '~/pages/Reports/config';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import ClusteredMarkers from './ClusteredMarkers';
-import FMCPropTypes from '~/pages/Reports/propTypes';
+import { LinkLayer } from '~/pages/Reports/components/LinkLayer';
 
 const logger = debug('fmc:reports:WebglMap.js');
 
@@ -59,7 +60,7 @@ class WebglMap extends PureComponent {
     this.toggleMapInteractivity(disabled);
   }
 
-  onLoad(map) {
+  onBaseMapLoad = (map) => {
     logger('onLoad');
     this.map = map;
     this.toggleZoomControl(true);
@@ -69,7 +70,7 @@ class WebglMap extends PureComponent {
 
     // notify containers that map has been initialized
     this.props.onLoad(map);
-  }
+  };
 
   /**
    * Ease map to new location, adjusting zoom level and offset for details panel
@@ -110,27 +111,39 @@ class WebglMap extends PureComponent {
   }
 
   render() {
-    const { reportsData, onMarkerClick, selectedReport, detailId } = this.props;
+    const {
+      reportsData,
+      onMarkerClick,
+      selectedReport,
+      detailId,
+      setHoveredReport,
+      unSetHoveredReport,
+    } = this.props;
 
     const isReportsDataLoaded = !!reportsData.length;
+
     return (
-      <BaseMap
-        onLoad={(map) => this.onLoad(map)}
-        onMove={() => this.props.onMove()}
-        didOverlayLoad={isReportsDataLoaded}
-      >
-        {isReportsDataLoaded > 0 && (
-          <ClusteredMarkers
-            data={toGeojson(reportsData)}
-            map={this.map}
-            name="reports-cluster"
-            radius={60}
-            detailId={detailId}
-            onClick={onMarkerClick}
-            selectedReport={selectedReport}
-          />
-        )}
-      </BaseMap>
+      <LinkLayer>
+        <BaseMap
+          onLoad={this.onBaseMapLoad}
+          onMove={this.props.onMove}
+          isReportsDataLoaded={isReportsDataLoaded}
+        >
+          {isReportsDataLoaded > 0 && (
+            <ClusteredMarkers
+              data={toGeojson(reportsData)}
+              map={this.map}
+              name="reports-cluster"
+              radius={60}
+              detailId={detailId}
+              onClick={onMarkerClick}
+              selectedReport={selectedReport}
+              setHoveredReport={setHoveredReport}
+              unSetHoveredReport={unSetHoveredReport}
+            />
+          )}
+        </BaseMap>
+      </LinkLayer>
     );
   }
 }
@@ -147,6 +160,8 @@ WebglMap.propTypes = {
   reportsData: PropTypes.arrayOf(FMCPropTypes.report),
   selectedReport: FMCPropTypes.report,
   zoomControlPosition: PropTypes.string,
+  setHoveredReport: PropTypes.func.isRequired,
+  unSetHoveredReport: PropTypes.func.isRequired,
   isCTAButtonShifted: PropTypes.bool,
 };
 

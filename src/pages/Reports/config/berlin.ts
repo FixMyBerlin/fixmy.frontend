@@ -7,6 +7,8 @@ import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
 import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 import { ReportsConfig } from '.';
 
+const isProduction = process.env.BACKEND === 'production';
+
 const BerlinConfig: ReportsConfig = {
   enabled: false,
   overviewMap: {
@@ -23,6 +25,11 @@ const BerlinConfig: ReportsConfig = {
       outer: 'rgba(145, 0, 85, 0.5)',
       inner: 'rgba(207, 10, 125, 0.4)',
     },
+    linkLayer: isProduction
+      ? null
+      : {
+          color: '#ffffff',
+        },
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,

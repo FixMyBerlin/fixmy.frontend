@@ -5,7 +5,7 @@ import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/apps/Map/map-utils'; // TODO: handle eslint warning regarding dependency circle
 import {
   apiSubmitReport,
-  marshallNewReportObjectFurSubmit,
+  marshallNewReportObjectForSubmit,
 } from '~/pages/Reports/apiservice';
 import { actions as errorStateActions } from './ErrorState';
 import initialState from './initialState';
@@ -185,7 +185,7 @@ actions.submitReport = () => async (dispatch, getState) => {
   dispatch({ type: types.SUBMIT_REPORT_PENDING });
 
   try {
-    const reportPayload = marshallNewReportObjectFurSubmit(
+    const reportPayload = marshallNewReportObjectForSubmit(
       getState().ReportsState.SubmitReportState.newReport
     );
     const submittedReport = await apiSubmitReport(reportPayload);
