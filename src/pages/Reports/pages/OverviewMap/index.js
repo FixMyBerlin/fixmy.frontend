@@ -4,23 +4,22 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import debug from 'debug';
-
 import styled from 'styled-components';
 
+import LocatorControl from '~/apps/Map/components/LocatorControl';
+import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
+import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import config from '~/pages/Reports/config';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import WebglMap from './components/WebglMap';
 import OverviewMapNavBar from './components/OverviewMapNavBar';
 import CTAButton from './components/CTAButton';
+import MapLegend from './components/MapLegend';
 import ErrorMessage from '~/components/ErrorMessage';
 import ReportsPopup from './components/ReportsPopup';
 import ReportDetails from './components/ReportDetails';
-import LocatorControl from '~/apps/Map/components/LocatorControl';
-import MapLegend from './components/MapLegend';
-import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
-import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 
 const logger = debug('fmc:reports:OverviewMap');
 
@@ -108,6 +107,10 @@ class OverviewMap extends Component {
     const { selectedReport } = this.props;
     const hasReportBeenSelected = !!selectedReport?.id;
 
+    // Update redux state when selected report is changed through route params
+    if (prevProps.match.params.id !== this.props.match.params.id)
+      this.props.setSelectedReport(this.props.match.params.id, true);
+
     if (hasReportBeenSelected) {
       const hasSelectedReportChanged = prevReport?.id !== selectedReport.id;
       if (hasSelectedReportChanged) {
@@ -168,9 +171,9 @@ class OverviewMap extends Component {
     this.setState({ isLoading: false });
   };
 
-  onMapMove() {
+  onMapMove = () => {
     if (this.props.selectedReport) this.updateSelectedReportPosition();
-  }
+  };
 
   updateSelectedReportPosition() {
     if (this.map && this.props.selectedReport) {
@@ -189,6 +192,8 @@ class OverviewMap extends Component {
       token,
       isMenuOpen,
       errorMessage,
+      setHoveredReport,
+      unSetHoveredReport,
     } = this.props;
 
     const hasDetailId = match.params.id;
@@ -214,9 +219,11 @@ class OverviewMap extends Component {
             center={this.state.mapCenter}
             zoomIn={this.state.zoomIn}
             onMarkerClick={this.onMarkerClick}
-            onLoad={(m) => this.onMapLoad(m)}
-            onMove={() => this.onMapMove()}
+            onLoad={this.onMapLoad}
+            onMove={this.onMapMove}
             selectedReport={selectedReport}
+            setHoveredReport={setHoveredReport}
+            unSetHoveredReport={unSetHoveredReport}
             detailId={match.params.id}
             zoomControlPosition="top-left"
             isCTAButtonShifted={isCTAButtonShifted}
@@ -253,7 +260,7 @@ class OverviewMap extends Component {
                 <ReportDetails
                   apiEndpoint="reports"
                   onCloseRoute={match.url}
-                  onClose={() => this.onPopupClose()}
+                  onClose={this.onPopupClose}
                   token={token}
                   reportItem={reportItem}
                   subtitle={`Meldung ${reportItem.id}`}

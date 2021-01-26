@@ -1,27 +1,94 @@
+// camelcase allowed because API types come from Python world
+/* eslint-disable camelcase */
+
 import ky from 'ky-universal';
 import oneLine from 'common-tags/es/oneLine/oneLine';
+// eslint-disable-next-line import/no-unresolved
+import type { Point } from 'geojson';
 import validateNewReport from './state/tests/schemaValidation/validateNewReport';
 import logger from '~/utils/logger';
 import config from '~/pages/Reports/config';
 
 export const reportsEndpointUrl = `${config.apiUrl}/reports`;
 
+type BikeStandsDetails = {
+  subject: 'BIKE_STANDS';
+  number: number;
+  fee_acceptable: boolean;
+};
+
+export type NewReport = {
+  address: string;
+  description?: string;
+  details: BikeStandsDetails[];
+  geometry: Point;
+  photo?: string;
+};
+
+type Photo = {
+  copyright: string;
+  src: string;
+};
+
+type ReportID = number;
+type UserID = number;
+export type Report = NewReport & {
+  created_date: string;
+  id: ReportID;
+  liked_by_user: boolean;
+  likes: number;
+  modified_date: string;
+  origin: Omit<Report, 'plannings' | 'origin'>[];
+  photo: Photo;
+  plannings: Omit<Report, 'plannings' | 'origin'>[];
+  status_reason: string;
+  status: Status;
+  url: string;
+  user: UserID | null;
+};
+
+export const STATUS_LEGACY = [
+  'new',
+  'verification',
+  'accepted',
+  'rejected',
+  'inactive',
+];
+
+export const STATUS_REPORT = [
+  'report_new',
+  'report_verification',
+  'report_accepted',
+  'report_rejected',
+  'report_inactive',
+];
+export const STATUS_PLANNING = [
+  'planning',
+  'tender',
+  'execution',
+  'invalid',
+  'done',
+];
+
+export const STATUS = STATUS_LEGACY.concat(STATUS_REPORT).concat(
+  STATUS_PLANNING
+);
+
+// The type of any array item can be accessed using an array index, by
+// generalizing over all possible array indices we get all possible item types
+export type Status = typeof STATUS[number];
+
+type SubmitReportResponse = any;
+
+// eslint-enable camelcase
+
 // copied from User\apiservice TODO: factor out, de-dupe
 async function handleSubmitRequest(
-  { method = 'POST', json = {}, token = false },
-  respType = 'json'
-) {
+  json: NewReport
+): Promise<SubmitReportResponse> {
   let response = {};
-  const headers = token ? { Authorization: `JWT ${token}` } : {};
   try {
-    if (respType) {
-      response = await ky(reportsEndpointUrl, { method, json, headers })[
-        respType
-      ]();
-    } else {
-      // FIXME: we don't need this
-      await ky(reportsEndpointUrl, { method, json, headers });
-    }
+    response = await ky(reportsEndpointUrl, { method: 'POST', json }).json();
   } catch (e) {
     if (e.response != null) {
       const errorJson = await e.response.json();
@@ -35,30 +102,28 @@ async function handleSubmitRequest(
   return response;
 }
 
-async function handleFetchReports(
-  { method = 'GET', token = false },
-  respType = 'json'
-) {
-  let response = {};
+async function handleFetchReports(): Promise<Report[]> {
+  let response;
   const options = {
-    method,
+    method: 'GET',
     timeout: 30 * 1000,
-    headers: token ? { Authorization: `JWT ${token}` } : {},
   };
   try {
-    response = await ky(reportsEndpointUrl, options)[respType]();
+    response = await ky(reportsEndpointUrl, options).json();
   } catch (e) {
-    response.error = await e.response.json();
+    (response as any).error = await e.response.json();
   }
   return response;
 }
 
-export async function apiSubmitReport(json) {
-  return handleSubmitRequest({ json });
+export async function apiSubmitReport(
+  json: NewReport
+): Promise<SubmitReportResponse> {
+  return handleSubmitRequest(json);
 }
 
-export async function apiFetchReports() {
-  return handleFetchReports({});
+export async function apiFetchReports(): Promise<Report[]> {
+  return handleFetchReports();
 }
 
 /**
@@ -66,7 +131,9 @@ export async function apiFetchReports() {
  * @param newReportObject
  * @returns marshalledNewReportObject
  */
-export function marshallNewReportObjectFurSubmit(newReportObject) {
+export function marshallNewReportObjectForSubmit(
+  newReportObject: NewReport
+): NewReport {
   const reportItemCopy = JSON.parse(JSON.stringify(newReportObject));
 
   // omit base64 prefix in photo string
@@ -109,8 +176,8 @@ export function marshallNewReportObjectFurSubmit(newReportObject) {
  * Maps report status codes to meaningful descriptions.
  * @param {string} status
  */
-export function getReportStatusCaption(status) {
-  const captions = {
+export function getReportStatusCaption(status: Status) {
+  const captions: { [S in Status]?: string } = {
     new: 'neue Meldung',
     verification: 'wird geprüft',
     accepted: 'wird umgesetzt',
@@ -139,7 +206,10 @@ export function getReportStatusCaption(status) {
   return caption;
 }
 
-export async function addUserToReport(reportId, userId) {
+export async function addUserToReport(
+  reportId: number,
+  userId: string
+): Promise<Report> {
   let reportPatch = null;
 
   if (typeof reportId === 'undefined') {

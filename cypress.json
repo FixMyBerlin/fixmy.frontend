@@ -5,6 +5,10 @@
   "integrationFolder": "./src",
   "testFiles": "**/*.e2e.test.js",
   "requestTimeout": 10000,
+  "retries": {
+    "runMode": 2,
+    "openMode": 0
+  },
   "whitelist": {
     "default": ["Map", "Reports", "KatasterKI"],
     "aachen": ["Reports"],

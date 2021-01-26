@@ -70,6 +70,18 @@ describe('OverviewMapState reducer and actions', () => {
     expect(newState).toEqual(initialState);
   });
 
+  it('sets the hovered report', () => {
+    expect(
+      reducer({}, actions.setHoveredReport(reportSample)).hoveredReport
+    ).toEqual(reportSample);
+  });
+
+  it('*un*sets the hovered report', () => {
+    expect(
+      reducer({}, actions.unSetHoveredReport(reportSample)).hoveredReport
+    ).toEqual(null);
+  });
+
   describe('async actions', () => {
     it(`fetches reports and creates ${ft(
       types.REPORTS_FETCH_COMPLETE
@@ -256,5 +268,41 @@ describe('OverviewMapState reducer and actions', () => {
         expect(actualActionTypes).toEqual(expectedActionTypes);
       }
     );
+
+    it('handles selecting a report that does not exist', async () => {
+      const stateBefore = {
+        ReportsState: {
+          OverviewMapState: {
+            reports: mockedReportsList,
+            reportFetchState: FETCH_STATE_SUCCESS,
+          },
+        },
+      };
+      const overviewMapStateBefore = stateBefore.ReportsState.OverviewMapState;
+      const store = mockStore(stateBefore);
+
+      /* ACT: dispatch thunk */
+      const invalidReportId = 200;
+      expect(
+        mockedReportsList.map((r) => r.id).includes(invalidReportId)
+      ).toBeFalsy();
+
+      const setSelectedReportThunk = actions.setSelectedReport(
+        invalidReportId,
+        true
+      );
+      await store.dispatch(setSelectedReportThunk);
+
+      /* ASSERT: make sure thunk dispatched the right action sequence and
+                  the reducer produced the right state */
+      const expectedActions = [];
+      const expectedState = overviewMapStateBefore;
+
+      const actualActions = store.getActions();
+      const actualState = reducer(overviewMapStateBefore, expectedActions[0]);
+
+      expect(actualActions).toEqual(expectedActions);
+      expect(actualState).toEqual(expectedState);
+    });
   });
 });

@@ -39,7 +39,14 @@ function createClusterMarker({ pointCount, map, clusterSource, id, lngLat }) {
   return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([-10, -10]);
 }
 
-function createPinMarker({ markerData, lngLat, onClick }) {
+function createPinMarker({
+  markerData,
+  geometry,
+  lngLat,
+  onClick,
+  setHoveredReport,
+  unSetHoveredReport,
+}) {
   const el = document.createElement('div');
   el.dataset.id = markerData.id;
   el.className = 'reports-marker';
@@ -48,6 +55,17 @@ function createPinMarker({ markerData, lngLat, onClick }) {
     markerData.status
   }" src="${utils.getMarkerSrc(markerData)}" />`;
   el.addEventListener('click', (evt) => onClick(evt, markerData.id));
+
+  let details;
+  try {
+    details = JSON.parse(markerData.details);
+  } catch (e) {
+    details = {};
+  }
+  const enrichedMarkerData = { ...markerData, geometry, details };
+  el.addEventListener('mouseenter', () => setHoveredReport(enrichedMarkerData));
+  el.addEventListener('mouseleave', unSetHoveredReport);
+
   return new MapboxGL.Marker(el).setLngLat(lngLat).setOffset([0, -0]);
 }
 

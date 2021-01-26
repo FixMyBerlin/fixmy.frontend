@@ -44,13 +44,16 @@ interface LocateMeMapConfig {
 }
 
 interface OverviewMapConfig {
-  style: string;
   bounds: mapboxgl.LngLatBoundsLike;
-  maxBounds: mapboxgl.LngLatBoundsLike;
   clusterColor: {
     outer: string;
     inner: string;
   };
+  linkLayer?: {
+    color: string;
+  };
+  maxBounds: mapboxgl.LngLatBoundsLike;
+  style: string;
   zoomDeepLinkedMarkers?: number;
 }
 
