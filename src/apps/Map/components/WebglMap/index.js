@@ -152,8 +152,18 @@ class Map extends PureComponent {
     if (this.props.activeView === 'zustand') {
       this.map.off('click', projectsTarget, this.handleClick);
       this.map.on('click', hbiTarget, this.handleClick);
+      this.map.on(
+        'click',
+        config.apps.map.layers.hbi.intersectionsOverlay,
+        this.handleIntersectionClick
+      );
     } else {
       this.map.off('click', hbiTarget, this.handleClick);
+      this.map.off(
+        'click',
+        config.apps.map.layers.hbi.intersectionsOverlay,
+        this.handleIntersectionClick
+      );
       this.map.on('click', projectsTarget, this.handleClick);
     }
   };
