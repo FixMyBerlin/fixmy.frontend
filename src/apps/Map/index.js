@@ -17,7 +17,7 @@ import FMBLogo from '~/components2/Logo';
 import Store from '~/store';
 import history from '~/history';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
-import WebglMap from '~/apps/Map/components/WebglMap';
+import { WebglMap } from '~/apps/Map/components/WebglMap';
 import config from '~/config';
 
 const MapView = styled.div`
