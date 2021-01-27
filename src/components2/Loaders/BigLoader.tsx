@@ -45,10 +45,9 @@ const BigLoader = ({ useAbsolutePositioning = false, className }: Props) => {
       className={className}
       role="progressbar"
       aria-busy
-      aria-valuetext="loading"
+      aria-valuetext="Wird geladen"
       aria-live="assertive"
     >
-      <div aria-hidden>Wird geladen...</div>
       <PropagateLoader color={`${config.colors.interaction}`} />
     </Wrapper>
   );

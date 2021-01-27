@@ -15,10 +15,9 @@ const DotLoader = () => (
   <LoaderWrapper
     role="progressbar"
     aria-busy
-    aria-valuetext="loading"
+    aria-valuetext="Wird geladen"
     aria-live="assertive"
   >
-    <div aria-hidden>Wird geladen...</div>
     <PropagateLoader color={`${config.colors.interaction}`} />
   </LoaderWrapper>
 );
