@@ -24,6 +24,7 @@ import {
   setPopupLanesFilter,
 } from '~/apps/Map/map-utils';
 import resetMap from '~/apps/Map/reset';
+import { BigLoader } from '~/components2/Loaders';
 
 let MB_STYLE_URL;
 if (config.debug) {
@@ -346,6 +347,9 @@ class Map extends PureComponent {
       this.props.activeView === 'planungen' ||
       this.props.activeView === 'popupbikelanes';
 
+    const isLoading =
+      this.state.loading || this.props.planningDataFetchState === 'pending';
+
     return (
       <StyledMap
         className={this.props.className}
@@ -354,6 +358,7 @@ class Map extends PureComponent {
         }}
       >
         {this.props.children}
+        {isLoading && <BigLoader useAbsolutePositioning />}
         <ProjectMarkers
           map={this.state.map}
           data={markerData}
@@ -381,6 +386,7 @@ export default withRouter(
     hasMoved: state.MapState.hasMoved,
     pitch: state.MapState.pitch,
     planningData: state.MapState.planningData,
+    planningDataFetchState: state.MapState.planningDataFetchState,
     show3dBuildings: state.MapState.show3dBuildings,
     zoom: state.MapState.zoom,
     ...state.UserState,
