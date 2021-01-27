@@ -292,11 +292,6 @@ class Map extends PureComponent {
       exact: true,
     });
 
-    // const properties = {
-    //   title: data.title,
-    //   name: name || '-'
-    // };
-
     const isDetailViewOpen = match?.params.id != null;
     if (isDetailViewOpen) {
       const slugifiedName = slugify(name || '').toLowerCase();
