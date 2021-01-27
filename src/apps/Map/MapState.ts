@@ -23,6 +23,9 @@ export const SET_PLANNING_DATA = 'Map/MapState/SET_PLANNING_DATA';
 const SET_ERROR = 'Map/MapState/SET_ERROR';
 const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 
+const SET_PLANNING_DATA_FETCH_STATE =
+  'Map/MapState/SET_PLANNING_DATA_FETCH_STATE';
+
 type MapView = 'zustand' | 'planungen';
 
 // todo: define this based on fixmy.platform serializer & model
@@ -32,6 +35,8 @@ type MapPath = {
   activeView?: MapView;
   activeSection?: string;
 };
+
+type PlanningDataFetchState = 'waiting' | 'pending' | 'success' | 'error';
 
 export type MapState = MapConfig['view'] & {
   activeView?: MapView;
@@ -45,6 +50,7 @@ export type MapState = MapConfig['view'] & {
   filterPlannings: [boolean, boolean, boolean, boolean];
   hasMoved: boolean;
   planningData: boolean;
+  planningDataFetchState: PlanningDataFetchState;
   popupData: ProjectData;
   popupLocation: null | [number, number];
   show3dBuildings: boolean;
@@ -63,6 +69,7 @@ const initialState: MapState = {
   filterPlannings: [true, true, true, true],
   hasMoved: false,
   planningData: false,
+  planningDataFetchState: 'waiting',
   popupData: null,
   popupLocation: null,
   show3dBuildings: true,
@@ -232,6 +239,23 @@ export function setPopupVisible(isVisible: boolean): SetPopupVisible {
   return { type: SET_POPUP_VISIBLE, payload: { displayPopup: isVisible } };
 }
 
+type SetPlanningDataFetchState = {
+  type: typeof SET_PLANNING_DATA_FETCH_STATE;
+  state: PlanningDataFetchState;
+};
+
+export const setPlanningDataFetchState = (
+  state: PlanningDataFetchState
+): SetPlanningDataFetchState => ({
+  type: SET_PLANNING_DATA_FETCH_STATE,
+  state,
+});
+
+export const setPlanningData = (planningData) => ({
+  type: SET_PLANNING_DATA,
+  payload: { planningData },
+});
+
 export interface LoadPlanningData {
   type: typeof SET_PLANNING_DATA;
   payload: {
@@ -241,14 +265,28 @@ export interface LoadPlanningData {
 
 export function loadPlanningData() {
   return async (dispatch, getState) => {
-    if (getState().MapState.planningData) {
-      return false;
+    if (getState().MapState.planningDataFetchState !== 'waiting') return;
+    dispatch(setPlanningDataFetchState('pending'));
+
+    let planningData;
+    try {
+      const apiRoute = `projects?page_size=500`;
+      planningData = await api.get(apiRoute);
+    } catch (err) {
+      dispatch(setPlanningDataFetchState('error'));
+      if (err instanceof api.ApiError) dispatch(setError(err.message));
+      else {
+        dispatch(
+          setError(
+            'Die Planungsdaten konnten nicht geladen werden. Bitte versuchen Sie es später noch einmal.'
+          )
+        );
+        throw err;
+      }
     }
 
-    const apiRoute = `projects?page_size=500`;
-    const planningData = await api.get(apiRoute);
-
-    return dispatch({ type: SET_PLANNING_DATA, payload: { planningData } });
+    dispatch(setPlanningData(planningData));
+    dispatch(setPlanningDataFetchState('success'));
   };
 }
 
@@ -303,6 +341,7 @@ type MapStateAction =
   | GeocodeAddressFail
   | GeocodeAddressSuccess
   | LoadPlanningData
+  | SetPlanningDataFetchState
   | SetActiveSection
   | SetActiveView
   | SetError
@@ -336,6 +375,11 @@ export default function MapStateReducer(
     case UPDATE_HISTORY:
       // @ts-ignore
       return { ...state, ...action.payload };
+    case SET_PLANNING_DATA_FETCH_STATE:
+      return {
+        ...state,
+        planningDataFetchState: (action as SetPlanningDataFetchState).state,
+      };
     case SET_HBI_FILTER:
       return {
         ...state,
