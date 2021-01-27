@@ -13,12 +13,7 @@ import {
 
 const log = debug('fmc:reports:LinkLayer');
 
-const enum NODE_TYPE {
-  PLANNING = 'PLANNING',
-  REPORT = 'REPORT',
-  // some status we do not care about
-  UNHANDLED = 'UHANDLED',
-}
+type NODE_TYPE = 'PLANNING' | 'REPORT' | 'UNHANDLED';
 
 type Node = {
   readonly coordinates: [number, number];
@@ -73,12 +68,12 @@ function getNode(report: Omit<Report, 'origin' | 'plannings'>): Node {
 
 function getNodeType(reportStatus: Status): NODE_TYPE {
   if (STATUS_REPORT.includes(reportStatus)) {
-    return NODE_TYPE.REPORT;
+    return 'REPORT';
   }
   if (STATUS_PLANNING.includes(reportStatus)) {
-    return NODE_TYPE.PLANNING;
+    return 'PLANNING';
   }
-  return NODE_TYPE.UNHANDLED;
+  return 'UNHANDLED';
 }
 
 function getReportLinks(selectedReport: Report) {
