@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropagateLoader from 'react-spinners/PropagateLoader';
-import PropTypes from 'prop-types';
 import config from '~/config';
 
 const BaseWrapper = styled.div`
@@ -26,21 +25,33 @@ const WrapperAbsolute = styled(BaseWrapper)`
   pointer-events: none;
 `;
 
-const BigLoader = ({ useAbsolutePositioning }) => {
+interface Props {
+  useAbsolutePositioning?: boolean;
+  className?: string;
+}
+
+/**
+ * Render a loading animation
+ *
+ * Color is set by `config.colors.interaction`
+ *
+ * @param arg0.useAbsolutePositioning: Switch static vs. absolute css position
+ * @param arg0.className: styled-components compatibility
+ */
+const BigLoader = ({ useAbsolutePositioning = false, className }: Props) => {
   const Wrapper = useAbsolutePositioning ? WrapperAbsolute : WrapperStatic;
   return (
-    <Wrapper>
+    <Wrapper
+      className={className}
+      role="progressbar"
+      aria-busy
+      aria-valuetext="loading"
+      aria-live="assertive"
+    >
+      <div aria-hidden>Wird geladen...</div>
       <PropagateLoader color={`${config.colors.interaction}`} />
     </Wrapper>
   );
-};
-
-BigLoader.propTypes = {
-  useAbsolutePositioning: PropTypes.bool,
-};
-
-BigLoader.defaultProps = {
-  useAbsolutePositioning: false,
 };
 
 export default BigLoader;

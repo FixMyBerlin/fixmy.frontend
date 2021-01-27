@@ -9,7 +9,7 @@ import SignupForm from '~/apps/Spielstrassen/components/SignupForm';
 import SupporterIcon from '~/apps/Spielstrassen/components/SupporterIcon';
 import { RequestState } from '~/apps/Spielstrassen/state';
 import { getStreetInfo } from '~/apps/Spielstrassen/utils';
-import BigLoader from '~/components/BigLoader';
+import { BigLoader } from '~/components2/Loaders';
 import Header from '~/components2/Header';
 import config from '~/config';
 import { RootState } from '~/store';

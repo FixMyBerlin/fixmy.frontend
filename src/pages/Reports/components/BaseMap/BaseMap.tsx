@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
-import BigLoader from '~/components/BigLoader';
+import { BigLoader } from '~/components2/Loaders/';
 import Map from '~/components2/Map';
 
 const MB_STYLE_URL = `${config.reports.overviewMap.style}${
