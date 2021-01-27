@@ -21,7 +21,7 @@ describe('Plannings Map Unit tests', () => {
 
     it('does not dispatch any actions if plannings data has been fetched already', async () => {
       const store = mockStore({
-        // @ts-expect-error this is not a complete map state, but it should be enough
+        // @ts-ignore this is not a complete `MapState` but it should suffice
         MapState: {
           planningDataFetchState: 'success',
         },
@@ -32,7 +32,7 @@ describe('Plannings Map Unit tests', () => {
 
     it(`dispatches ${SET_PLANNING_DATA} once the plannings JSON has been fetched successfully`, async () => {
       const store = mockStore({
-        // @ts-expect-error this is not a complete map state
+        // @ts-ignore this is not a complete `MapState` but it should suffice
         MapState: {
           planningDataFetchState: 'waiting',
         },
