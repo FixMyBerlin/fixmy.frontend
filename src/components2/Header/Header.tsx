@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, AppBarProps, Button } from '@material-ui/core';
 
-import MenuButton from '~/components2/MenuButton';
+import { MenuButton } from '~/components2/MenuButton';
 import SeparatorImage from '~/images/header-separator.svg';
 import config from '~/config';
 import { useTypedSelector } from '~/store';

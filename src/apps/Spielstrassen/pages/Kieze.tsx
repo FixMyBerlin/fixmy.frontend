@@ -3,9 +3,9 @@ import { connect, ConnectedProps } from 'react-redux';
 import { Container, Grid, Paper, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
-import Button from '~/components2/Button';
-import Header from '~/components2/Header';
-import Map from '~/components2/Map';
+import { Button } from '~/components2/Button';
+import { Header } from '~/components2/Header';
+import { BaseMap } from '~/components2/BaseMap';
 import config from '~/config';
 import KiezCard from '../components/KiezCard';
 import { RequestState, loadKieze } from '~/apps/Spielstrassen/state';
@@ -28,7 +28,7 @@ const KiezListing = styled.div`
   margin: 1em 0 2em;
 `;
 
-const OverviewMap = styled(Map)`
+const OverviewMap = styled(BaseMap)`
   width: 100vw;
   height: 20em;
   margin-left: -1rem;

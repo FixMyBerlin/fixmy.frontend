@@ -5,7 +5,7 @@ import { generatePath } from 'react-router-dom';
 import slugify from 'slugify';
 import styled from 'styled-components';
 import Link from '~/components/Link';
-import Button from '~/components2/Button';
+import { Button } from '~/components2/Button';
 import config from '~/config';
 import SupporterIcon from './SupporterIcon';
 

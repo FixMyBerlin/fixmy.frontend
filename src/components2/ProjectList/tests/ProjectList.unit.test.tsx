@@ -9,7 +9,7 @@ import Store from '~/store';
 
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 
-import ProjectList from '..';
+import ProjectList from '../ProjectList';
 import projectListFixture from './projectlist.fixture.json';
 import reportListFixture from './reportList.fixture.json';
 

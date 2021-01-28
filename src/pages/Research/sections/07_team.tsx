@@ -4,7 +4,7 @@ import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import bmviLogi from '~/pages/Research/images/logo/BMVI_Fz_2017_Office_Farbe_de_clip_scale.png';
 import senKanzLogo from '~/pages/Research/images/logo/senatskanzlei-berlin.png';
 import LogoWrapper from '~/pages/Research/components/LogoWrapper';
-import Link from '~/components2/Link';
+import { Link } from '~/components2/Link';
 
 const SectionTeam = ({ toc, tocAnchor }: SectionProps) => (
   <>

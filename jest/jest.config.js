@@ -37,6 +37,7 @@ module.exports = {
     // mock static assets
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$':
       '<rootDir>/jest/mocks/fileMock.js',
+    '\\.(css|less)$': '<rootDir>/jest/mocks/styleMock.js',
 
     // handle webpack aliases
     '^~/(.*)$': '<rootDir>/src/$1',

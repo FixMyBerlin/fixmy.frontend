@@ -28,6 +28,8 @@ type Props = {
 /**
  * ApiNotice is used for displaying messages about failed interactions with APIs
  * to the user
+ *
+ * If `onRetry` is defined, a retry button is displayed that calls that callback.
  */
 const ApiNotice = ({
   children,

@@ -19,9 +19,9 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import debug from 'debug';
 
-import Button from '~/components2/Button';
+import { Button } from '~/components2/Button';
 import { Form } from '~/components2/Form';
-import LocationPicker from '~/components2/LocationPicker';
+import { LocationPicker } from '~/components2/LocationPicker';
 import { GastroSignup } from '~/apps/Gastro/types';
 import api from '~/apps/Gastro/api';
 import validate from './validate';

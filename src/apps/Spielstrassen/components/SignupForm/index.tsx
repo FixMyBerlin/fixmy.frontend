@@ -7,7 +7,7 @@ import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
 import styled from 'styled-components';
 import slugify from 'slugify';
 
-import Button from '~/components2/Button';
+import { Button } from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import config from '~/config';
 import { SignupData } from '../../types';

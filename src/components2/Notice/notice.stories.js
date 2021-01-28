@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
 import { action } from '@storybook/addon-actions';
-import Notice, { ApiNotice as ApiNoticeComponent } from '.';
+import { ApiNotice as ApiNoticeComponent, Notice } from '.';
 
 export default {
   title: 'Generic / Notice',

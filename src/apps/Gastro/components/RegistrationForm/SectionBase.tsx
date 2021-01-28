@@ -5,9 +5,9 @@ import { FormControl, InputLabel, MenuItem } from '@material-ui/core';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import StaticMap from '~/components2/StaticMap';
+import { StaticMap } from '~/components2/StaticMap';
 import FormError from './FormError';
-import LocationPicker from '~/components2/LocationPicker';
+import { LocationPicker } from '~/components2/LocationPicker';
 
 const InvisiLabel = styled.label`
   display: none;

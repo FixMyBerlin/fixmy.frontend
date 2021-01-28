@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import config from '~/config';
-import Button from '~/components2/Button';
+import { Button } from '~/components2/Button';
 
 const ShareButton = ({ style = {}, className = null, url, text, district }) => {
   // @ts-ignore

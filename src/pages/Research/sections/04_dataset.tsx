@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import config from '~/config';
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
-import Link from '~/components2/Link';
+import { Link } from '~/components2/Link';
 import { AnchorButton } from '~/components2/Button';
 import ButtonWrapper from '../components/ButtonWrapper';
 

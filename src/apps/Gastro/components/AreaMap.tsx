@@ -2,10 +2,10 @@ import React from 'react';
 import MapboxGL from 'mapbox-gl';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import Map from '~/components2/Map';
+import { BaseMap } from '~/components2/BaseMap';
 import config from '~/apps/Gastro/config';
 
-const StyledMap = styled(Map)`
+const StyledMap = styled(BaseMap)`
   width: 40em;
   height: 30em;
   margin: 1em 0;

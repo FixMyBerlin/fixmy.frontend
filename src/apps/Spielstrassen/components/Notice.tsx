@@ -1,5 +1,5 @@
 import React from 'react';
-import Notice from '~/components2/Notice';
+import { Notice } from '~/components2/Notice';
 
 const SpielstrassenNotice = () => (
   <Notice>

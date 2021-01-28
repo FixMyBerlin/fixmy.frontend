@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Title from '~/components/Title';
 import Text from '~/components/Text';
 import { loadLikes } from '~/pages/User/UserState';
-import ProjectList from '~/components2/ProjectList';
+import { ProjectList } from '~/components2/ProjectList';
 import Select from '~/components/Select';
 
 const StyledSelect = styled(Select)`
