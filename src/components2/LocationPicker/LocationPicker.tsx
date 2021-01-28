@@ -50,7 +50,7 @@ const AddressHint = styled.p`
 
 type Props = {
   onSelect: (result: { address: string; location: MapboxGL.LngLat }) => any;
-  mapboxStyle: MapboxGL.Style;
+  mapboxStyle: string;
   bounds: MapboxGL.LngLatBoundsLike;
   initialValue?: string;
 };
@@ -145,7 +145,6 @@ const LocationPicker: React.FC<Props> = ({
   return (
     <>
       <TextField
-        id="address"
         placeholder="Adresse suchen..."
         fullWidth
         value={inputValue}
