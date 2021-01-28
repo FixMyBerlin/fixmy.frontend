@@ -2,10 +2,10 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import { screen } from '@testing-library/dom';
 import { render } from '~/utils/test-utils';
-import StaticMap from '.';
+import { StaticMap } from '.';
 
 const TEST_STYLE_URL = 'mapbox://styles/hejco/ck85ospzd0cre1ioa8d6gfuv9';
-const TEST_LOCATION = [13.415669, 52.513219];
+const TEST_LOCATION: mapboxgl.LngLatLike = [13.415669, 52.513219];
 
 describe('<StaticMap />', () => {
   it('renders', () => {
@@ -13,7 +13,7 @@ describe('<StaticMap />', () => {
       <StaticMap
         className="testClassName"
         mapboxStyle={TEST_STYLE_URL}
-        location={TEST_LOCATION as mapboxgl.LngLatLike}
+        location={TEST_LOCATION}
       />
     );
     expect(mapboxgl.Map).toBeCalled();
