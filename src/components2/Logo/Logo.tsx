@@ -34,7 +34,7 @@ const FMBLogo = ({
   width = 70,
 }: Props) => (
   <FMBLogoWrapper className={className}>
-    {showBetaIcon && <StyledBetaIcon />}
+    {showBetaIcon && <StyledBetaIcon alt="beta!" role="img" />}
     <FadeIn
       width={width}
       height={width * 1.164556962}

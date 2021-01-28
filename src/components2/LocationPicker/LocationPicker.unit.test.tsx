@@ -1,6 +1,7 @@
 import React from 'react';
 import mapboxgl from 'mapbox-gl';
-// import { screen } from '@testing-library/dom';
+import { fireEvent, screen } from '@testing-library/dom';
+
 import { render } from '~/utils/test-utils';
 import { LocationPicker } from '.';
 
@@ -27,7 +28,7 @@ describe('<LocationPicker />', () => {
     // `TypeError: mapbox_gl_1.default.Marker is not a constructor`
 
     // const searchResults = await screen.findAllByRole('button');
-    // searchResults[0].click();
+    // fireEvent.click(searchResults[0]);
     // expect(mockSelect).toHaveBeenCalled();
   });
 });
