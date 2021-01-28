@@ -12,7 +12,7 @@ import {
   List,
   SectionProps,
 } from '~/components2/Article';
-import Link from '~/components2/Link';
+import { Link } from '~/components2/Link';
 import BarChart from '../components/BarChart';
 import FeelSafe from '../components/FeelSafe';
 

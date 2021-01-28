@@ -1,3 +1,1 @@
-import NewsletterWidget from './NewsletterWidget';
-
-export default NewsletterWidget;
+export { default as NewsletterWidget } from './NewsletterWidget';

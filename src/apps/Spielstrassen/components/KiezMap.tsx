@@ -4,7 +4,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
-import Map from '~/components2/Map';
+import { BaseMap } from '~/components2/BaseMap';
 import { Spielstrasse } from '../types';
 import { getBoundsFromPoly } from '~/utils/geo';
 
@@ -16,7 +16,7 @@ type LORData = GeoJSON.FeatureCollection<
   { PLR_NAME: string; SCHLUESSEL: string }
 >;
 
-const MapWrapper = styled(Map)`
+const MapWrapper = styled(BaseMap)`
   width: 100vw;
   height: 20em;
   margin-left: -1rem;

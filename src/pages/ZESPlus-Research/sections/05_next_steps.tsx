@@ -6,7 +6,7 @@ import {
   SectionProps,
   ImageFull,
 } from '~/components2/Article';
-import Link from '~/components2/Link';
+import { Link } from '~/components2/Link';
 import ZESMobil from './images/zesmobil.png';
 
 const SectionNextSteps = (props: SectionProps) => (

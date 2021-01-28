@@ -7,7 +7,7 @@ import {
   Quote,
   List,
 } from '~/components2/Article';
-import Link from '~/components2/Link';
+import { Link } from '~/components2/Link';
 
 const SectionAbout = (props: SectionProps) => (
   <>

@@ -25,7 +25,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Logo = ({ children, to = '/' }) => (
+const LogoFooter = ({ children, to = '/' }) => (
   <Wrapper>
     {children && <span>{children}</span>}
     <Link to={to}>
@@ -34,4 +34,4 @@ const Logo = ({ children, to = '/' }) => (
   </Wrapper>
 );
 
-export default Logo;
+export default LogoFooter;

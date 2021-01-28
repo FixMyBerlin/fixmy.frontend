@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
-import MenuButton from '~/components2/MenuButton';
+import { MenuButton } from '~/components2/MenuButton';
 import { media } from '~/styles/utils';
 
 import config from '~/config';

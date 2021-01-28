@@ -2,13 +2,13 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import { screen } from '@testing-library/dom';
 import { render } from '~/utils/test-utils';
-import Map from '.';
+import { BaseMap } from '.';
 
-describe('<Map />', () => {
+describe('<BaseMap />', () => {
   it('renders', () => {
     const mockHandleInit = jest.fn();
     const { container } = render(
-      <Map onInit={mockHandleInit} className="testClassName" />
+      <BaseMap onInit={mockHandleInit} className="testClassName" />
     );
     expect(mapboxgl.Map).toBeCalled();
     expect(screen.getByLabelText('Interactive WebGL map')).toBeInTheDocument();

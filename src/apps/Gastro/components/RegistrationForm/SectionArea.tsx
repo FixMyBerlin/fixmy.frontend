@@ -4,7 +4,7 @@ import { ErrorMessage } from 'formik';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import AreaPicker from '~/components2/AreaPicker';
+import { AreaPicker } from '~/components2/AreaPicker';
 import { requiresArea } from '../../utils';
 import FormError from './FormError';
 

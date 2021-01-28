@@ -6,13 +6,13 @@ import { generatePath, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { getStreetInfo } from '~/apps/Spielstrassen/utils';
-import Header from '~/components2/Header';
+import { Header } from '~/components2/Header';
 import KiezNotFound from '../components/NotFound';
 import KiezMap from '../components/KiezMap';
 // import ShareButton from '../components/ShareButton';
 // import ShareButtonDesktop from '../components/ShareButtonDesktop';
-import Button from '~/components2/Button';
-import Logo from '~/components2/LogoFooter';
+import { Button } from '~/components2/Button';
+import { LogoFooter } from '~/components2/LogoFooter';
 import config from '~/config';
 import { media } from '~/styles/utils';
 import { State } from '~/apps/Spielstrassen/state';

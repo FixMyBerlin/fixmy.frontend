@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import Link from '~/components/Link';
-import Button from '~/components2/Button';
+import { Button } from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';

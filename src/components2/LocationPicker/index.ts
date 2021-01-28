@@ -1,3 +1,1 @@
-import LocationPicker from './LocationPicker';
-
-export default LocationPicker;
+export { default as LocationPicker } from './LocationPicker';

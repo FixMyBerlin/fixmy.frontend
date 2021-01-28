@@ -56,7 +56,7 @@ const initMap = ({
  * @param props.zoom - update to zoom map view
  * @param props.onInit - callback to handle the map instance once loaded
  */
-const Map = (props: Props) => {
+const BaseMap = (props: Props) => {
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
 
@@ -100,4 +100,4 @@ const Map = (props: Props) => {
   );
 };
 
-export default Map;
+export default BaseMap;

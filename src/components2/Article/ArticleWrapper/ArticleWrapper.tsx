@@ -4,11 +4,11 @@ import { InView } from 'react-intersection-observer';
 import debug from 'debug';
 
 import TOC from './TOC';
-import MenuButton from '~/components2/MenuButton';
+import { MenuButton } from '~/components2/MenuButton';
 import { media } from '~/styles/utils';
 import config from '~/config';
-import Header from '~/components2/Header';
-import LocaleSwitcher from '~/components2/LocaleSwitcher';
+import { Header } from '~/components2/Header';
+import { LocaleSwitcher } from '~/components2/LocaleSwitcher';
 
 const log = debug('fmc:Article:ArticleWrapper');
 

@@ -1,3 +1,1 @@
-import StaticMap from './StaticMap';
-
-export default StaticMap;
+export { default as StaticMap } from './StaticMap';

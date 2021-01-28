@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 
 import config from '~/apps/Gastro/config';
-import Map from '~/components2/Map';
+import { BaseMap } from '~/components2/BaseMap';
 
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
 
 const DEFAULT_ZOOM_LEVEL = 19;
 
-const StyledMap = styled(Map)`
+const StyledMap = styled(BaseMap)`
   width: 100%;
   height: 30em;
   margin: 2em 0;

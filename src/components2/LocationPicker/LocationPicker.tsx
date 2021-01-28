@@ -15,7 +15,7 @@ import styled from 'styled-components';
 
 import { fetchSuggestions } from '~/components/AutocompleteGeocoder/apiService';
 import config from '~/config';
-import Map from '~/components2/Map';
+import { BaseMap } from '~/components2/BaseMap';
 import logger from '~/utils/logger';
 
 /**
@@ -28,7 +28,7 @@ import logger from '~/utils/logger';
  */
 const containsStreetNumber = (address: string) => address.match(/^[^,]+\d,/);
 
-const StyledMap = styled(Map)`
+const StyledMap = styled(BaseMap)`
   width: 100%;
   height: 30em;
   margin: 2em 0;
