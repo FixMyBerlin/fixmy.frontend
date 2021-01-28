@@ -14,7 +14,7 @@ import BackgroundImageB1 from '~/images/spielstrassen/landing-bg-2.jpg';
 import BackgroundImageB2 from '~/images/spielstrassen/landing-bg-2@2x.jpg';
 import BackgroundImageB3 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
 import { LogoFooter } from '~/components2/LogoFooter';
-import { Notice } from '../components/Notice';
+import Notice from '../components/Notice';
 
 const CTA = styled(Button)`
   margin: 2em auto;

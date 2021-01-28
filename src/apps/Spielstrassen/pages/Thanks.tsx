@@ -73,7 +73,7 @@ const Thanks = ({
         </CopyToClipboard>
         {/* <ShareButton text={shareText} url={sharingUrl} /> */}
         {/* <ShareButtonDesktop /> */}
-        <Logo>Bereitgestellt durch FixMyBerlin</Logo>
+        <LogoFooter>Bereitgestellt durch FixMyBerlin</LogoFooter>
       </Container>
     </>
   );
