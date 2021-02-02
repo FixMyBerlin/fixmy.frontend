@@ -180,7 +180,7 @@
     "request": "^2.88.2",
     "start-server-and-test": "^1.11.6",
     "style-loader": "^2.0.0",
-    "terser-webpack-plugin": "^2.3.5",
+    "terser-webpack-plugin": "^4.2.3",
     "ts-jest": "^26.3.0",
     "ts-loader": "^6.2.2",
     "type-fest": "^0.20.2",
