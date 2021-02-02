@@ -2,7 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
 import Link from '~/components/Link';
-import Button from '.';
+import { Button } from '.';
 
 export default {
   title: 'Generic / Button',

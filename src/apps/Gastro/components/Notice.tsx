@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Notice from '~/components2/Notice';
+import { Notice } from '~/components2/Notice';
 import { preSignup, openSignup, postSignup } from '~/apps/Gastro/utils';
 
 const GastroNotice = ({ district }) => {

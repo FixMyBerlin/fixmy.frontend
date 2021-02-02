@@ -5,11 +5,11 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import Link from '~/components/Link';
-import Link2 from '~/components2/Link';
+import { Link as Link2 } from '~/components2/Link';
 import config from '~/apps/Gastro/config';
-import Button from '~/components2/Button';
+import { Button } from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
-import Map from '~/components2/Map';
+import { BaseMap } from '~/components2/BaseMap';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
@@ -33,7 +33,7 @@ const Attribution = styled.div`
   }
 `;
 
-const StyledMap = styled(Map)`
+const StyledMap = styled(BaseMap)`
   height: 30em;
   margin: 2em 0;
 `;

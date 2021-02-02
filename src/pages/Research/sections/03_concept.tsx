@@ -13,7 +13,7 @@ import {
   List,
   SectionProps,
 } from '~/components2/Article';
-import Link from '~/components2/Link';
+import { Link } from '~/components2/Link';
 
 import diagramLabelledDe from '../images/diagram_labelled_de.jpg';
 import diagramLabelledEn from '../images/diagram_labelled_en.jpg';

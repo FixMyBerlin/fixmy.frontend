@@ -3,8 +3,8 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
-import Button from '~/components2/Button';
-import Logo from '~/components2/LogoFooter';
+import { Button } from '~/components2/Button';
+import { LogoFooter } from '~/components2/LogoFooter';
 import { media } from '~/styles/utils';
 import { getAppPath } from '~/utils/utils';
 
@@ -51,7 +51,7 @@ const Thanks = ({ submission, district }) => {
       <CopyToClipboard text={sharingUrl}>
         <LinkButton flat>Link kopieren</LinkButton>
       </CopyToClipboard>
-      <Logo>Bereitgestellt durch FixMyBerlin</Logo>
+      <LogoFooter>Bereitgestellt durch FixMyBerlin</LogoFooter>
     </>
   );
 };

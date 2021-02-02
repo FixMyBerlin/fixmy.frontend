@@ -3,7 +3,7 @@ import MapboxGL from 'mapbox-gl';
 import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
-import BaseMap from '~/components2/Map';
+import { BaseMap } from '~/components2/BaseMap';
 
 const StyledMap = styled(BaseMap)`
   width: 100%;

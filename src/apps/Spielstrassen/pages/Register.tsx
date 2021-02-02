@@ -3,17 +3,18 @@ import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
-import KiezMap from '~/apps/Spielstrassen/components/KiezMap';
+
 import KiezNotFound from '~/apps/Spielstrassen/components/NotFound';
+import KiezMap from '~/apps/Spielstrassen/components/KiezMap';
 import SignupForm from '~/apps/Spielstrassen/components/SignupForm';
 import SupporterIcon from '~/apps/Spielstrassen/components/SupporterIcon';
-import { RequestState } from '~/apps/Spielstrassen/state';
 import { getStreetInfo } from '~/apps/Spielstrassen/utils';
-import BigLoader from '~/components/BigLoader';
-import Header from '~/components2/Header';
+import { RequestState } from '~/apps/Spielstrassen/state';
+import { BigLoader } from '~/components2/Loaders';
+import { Header } from '~/components2/Header';
+import { Notice } from '~/components2/Notice';
 import config from '~/config';
 import { RootState } from '~/store';
-import Notice from '~/components2/Notice';
 
 const SupporterInfo = styled.div`
   display: flex;

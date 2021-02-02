@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import config from '~/config';
 import Store from '~/store';
 import { close } from '~/AppState';
-import FMBLogo from '~/components2/Logo';
+import { Logo as FMBLogo } from '~/components2/Logo';
 import SocialLinks from '~/components/Social/SocialLinks';
 
 const Footer = styled.div`

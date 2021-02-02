@@ -3,14 +3,14 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
-import BigLoader from '~/components/BigLoader';
-import Map from '~/components2/Map';
+import { BigLoader } from '~/components2/Loaders/';
+import { BaseMap } from '~/components2/BaseMap';
 
 const MB_STYLE_URL = `${config.reports.overviewMap.style}${
   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
 }`;
 
-const StyledMap = styled(Map)`
+const StyledMap = styled(BaseMap)`
   flex-grow: 1;
   height: 100%;
   width: 100%;
@@ -25,7 +25,7 @@ interface Props {
   onMove?: (ev: any) => void;
 }
 
-const BaseMap = ({
+const ReportsBaseMap = ({
   children,
   className,
   maxBounds,
@@ -56,4 +56,4 @@ const BaseMap = ({
   );
 };
 
-export default BaseMap;
+export default ReportsBaseMap;

@@ -6,12 +6,12 @@ import debug from 'debug';
 import { useTypedSelector } from '~/store';
 import { DistrictConfig } from '~/types';
 import { media } from '~/styles/utils';
-import Button from '~/components2/Button';
+import { Button } from '~/components2/Button';
 import { GastroRegistration } from '../types';
 import Header from '../components/Header';
 import config from '../config';
 import api from '../api';
-import BigLoader from '~/components/BigLoader';
+import { BigLoader } from '~/components2/Loaders';
 
 const log = debug('fmc:gastro:renewal');
 

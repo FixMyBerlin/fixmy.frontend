@@ -13,11 +13,11 @@ import FMBCredits from '~/apps/Map/components/FMBCredits';
 import SectionDetail from '~/apps/Map/components/DetailView/SectionDetail';
 import ProjectDetail from '~/apps/Map/components/DetailView/ProjectDetail';
 import ErrorMessage from '~/components/ErrorMessage';
-import FMBLogo from '~/components2/Logo';
+import { Logo as FMBLogo } from '~/components2/Logo';
 import Store from '~/store';
 import history from '~/history';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
-import WebglMap from '~/apps/Map/components/WebglMap';
+import { WebglMap } from '~/apps/Map/components/WebglMap';
 import config from '~/config';
 
 const MapView = styled.div`

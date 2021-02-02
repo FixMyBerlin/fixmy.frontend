@@ -8,7 +8,7 @@ import { setPhaseFilter } from '~/apps/Analysis/state';
 
 import { numberFormat, getRVALength, percentageFormat } from '~/utils/utils';
 import SvgIcon from '~/components/SvgIcon';
-import DotLoader from '~/components/DotLoader';
+import { DotLoader } from '~/components2/Loaders';
 import { PLANNING_PHASES } from '~/apps/Map/constants';
 
 const PieChartWrapper = styled.figure`
