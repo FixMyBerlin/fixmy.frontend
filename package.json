@@ -186,7 +186,7 @@
     "type-fest": "^0.20.2",
     "typescript": "^3.8.3",
     "typescript-json-schema": "^0.42.0",
-    "webpack": "^4.44.2",
+    "webpack": "^4.46.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2"
