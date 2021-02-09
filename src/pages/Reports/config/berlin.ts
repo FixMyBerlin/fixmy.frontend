@@ -10,7 +10,7 @@ import { ReportsConfig } from '.';
 const isProduction = process.env.BACKEND === 'production';
 
 const BerlinConfig: ReportsConfig = {
-  enabled: false,
+  enabled: true,
   overviewMap: {
     style: 'mapbox://styles/hejco/cjpnt0cc41ipy2rlpu19jgt7a',
     bounds: [
