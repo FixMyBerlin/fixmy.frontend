@@ -8,15 +8,16 @@ const MapboxStyles = {
 };
 
 const map: MapConfig = {
-  style: MapboxStyles['FMB-release-6'],
-  view: {
-    zoom: 12,
-    bearing: 0,
-    pitch: 0,
-    center: [13.415669, 52.513219],
-    show3dBuildings: false,
-    animate: false,
-    dim: false,
+  bounds: [
+    [13.2826, 52.4615],
+    [13.46391, 52.5544374],
+  ],
+  geocoder: {
+    url: 'https://geocoder.cit.api.here.com/6.2/geocode.json',
+    appId: 'WOhEXnd20kbhT8Lxx4n4',
+    appCode: 'uFkDYK0WKXBPZgG8mRb9Rg',
+    bounds: '13.3651,52.4658,13.4945,52.5479',
+    zoomAfterGeocode: 15,
   },
   layers: {
     projects: {
@@ -38,16 +39,16 @@ const map: MapConfig = {
     buildings3d: '3d-buildings',
     dimmingLayer: 'fmb-dimming',
   },
-  zoomAfterGeocode: 15,
-  geocoderUrl: 'https://geocoder.cit.api.here.com/6.2/geocode.json',
-  geocoderAppId: 'WOhEXnd20kbhT8Lxx4n4',
-  geocoderAppCode: 'uFkDYK0WKXBPZgG8mRb9Rg',
-  geocoderBounds: '13.3651,52.4658,13.4945,52.5479',
-  dimmingOpacity: 0.3,
-  bounds: [
-    [13.2826, 52.4615],
-    [13.46391, 52.5544374],
-  ],
+  style: MapboxStyles['FMB-release-6'],
+  view: {
+    zoom: 12,
+    bearing: 0,
+    pitch: 0,
+    center: [13.415669, 52.513219],
+    show3dBuildings: false,
+    animate: false,
+    dim: false,
+  },
 };
 
 export default map;

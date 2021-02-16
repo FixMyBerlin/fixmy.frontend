@@ -1,13 +1,11 @@
 export type MapConfig = {
-  style: string;
-  view: {
-    zoom: number;
-    bearing: number;
-    pitch: number;
-    center: mapboxgl.LngLatLike;
-    show3dBuildings: boolean;
-    animate: boolean;
-    dim: boolean;
+  bounds: mapboxgl.LngLatBoundsLike;
+  geocoder: {
+    zoomAfterGeocode: number;
+    url: string;
+    appId: string;
+    appCode: string;
+    bounds: string;
   };
   layers: {
     projects: {
@@ -29,11 +27,14 @@ export type MapConfig = {
     buildings3d: string;
     dimmingLayer: string;
   };
-  zoomAfterGeocode: number;
-  geocoderUrl: string;
-  geocoderAppId: string;
-  geocoderAppCode: string;
-  geocoderBounds: string;
-  dimmingOpacity: number;
-  bounds: mapboxgl.LngLatBoundsLike;
+  style: string;
+  view: {
+    zoom: number;
+    bearing: number;
+    pitch: number;
+    center: mapboxgl.LngLatLike;
+    show3dBuildings: boolean;
+    animate: boolean;
+    dim: boolean;
+  };
 };

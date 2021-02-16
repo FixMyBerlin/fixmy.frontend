@@ -307,10 +307,10 @@ interface GeocodeAddressFail {
 
 export function geocodeAddress(searchtext) {
   return async (dispatch) => {
-    const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.apps.map;
+    const { url, appId, appCode } = config.apps.map.geocoder;
 
     try {
-      const searchUrl = `${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;
+      const searchUrl = `${url}?app_id=${appId}&app_code=${appCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;
       const data = await ky.get(searchUrl).json();
 
       const geocodeResult = (data as any)?.Response?.View[0]?.Result[0]
