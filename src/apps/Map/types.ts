@@ -1,5 +1,8 @@
 export type MapConfig = {
   bounds: mapboxgl.LngLatBoundsLike;
+  features: {
+    accidents: boolean;
+  };
   geocoder: {
     zoomAfterGeocode: number;
     url: string;

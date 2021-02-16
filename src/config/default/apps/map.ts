@@ -12,6 +12,9 @@ const map: MapConfig = {
     [13.2826, 52.4615],
     [13.46391, 52.5544374],
   ],
+  features: {
+    accidents: true,
+  },
   geocoder: {
     url: 'https://geocoder.cit.api.here.com/6.2/geocode.json',
     appId: 'WOhEXnd20kbhT8Lxx4n4',
