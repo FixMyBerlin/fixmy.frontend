@@ -13,11 +13,8 @@ function resetMap({ zoom = null } = {}) {
     bearing: 0,
     animate: true,
     center: null,
+    zoom,
   };
-
-  if (zoom) {
-    nextMapView.zoom = zoom;
-  }
 
   Store.dispatch(MapActions.setView(nextMapView));
 }

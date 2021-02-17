@@ -1,12 +1,20 @@
-/* eslint no-param-reassign: 0 */
 import turfAlong from '@turf/along';
 import turfLength from '@turf/length';
 import { lineString as turfLineString } from '@turf/helpers';
+import debug from 'debug';
 
 import config from '~/config';
 import { isNumeric, getParameterByName } from '~/utils/utils';
 
 import { PLANNING_PHASES, HBI_STOPS } from './constants';
+
+// eslint-disable-next-line
+/// <reference lib="dom" />
+
+type mapboxFilter = any[];
+type sideKey = 'side0_' | 'side1_' | 'side2_';
+
+const logger = debug('fmc:Map:utils');
 
 export const intersectionLayers = [
   'intersections',
@@ -18,7 +26,8 @@ export const intersectionLayers = [
 export const standardLayers = ['center', 'side0', 'side1'];
 export const standardLayersWithOverlay = [...standardLayers, 'overlayLine'];
 
-export function setView(map, view) {
+export function setView(map: mapboxgl.Map, view: mapboxgl.MapboxOptions) {
+  logger('set view', view);
   // attach flag to enables listeners to differentiate between natural user interaction and programmatic map change
   const eventData = { programmaticMove: true };
   if (view.zoom) map.setZoom(view.zoom, eventData);
@@ -27,7 +36,8 @@ export function setView(map, view) {
   if (view.bearing) map.setBearing(view.bearing, eventData);
 }
 
-export function animateView(map, view) {
+export function animateView(map: mapboxgl.Map, view: mapboxgl.MapboxOptions) {
+  logger('set view animated', view);
   map.easeTo({
     center: view.center,
     zoom: view.zoom,
@@ -36,7 +46,12 @@ export function animateView(map, view) {
   });
 }
 
-export function toggleLayer(map, layer, isVisible) {
+export function toggleLayer(
+  map: mapboxgl.Map,
+  layer: string,
+  isVisible: boolean
+): void {
+  logger('toggle layer', layer);
   if (map.getLayer(layer)) {
     map.setLayoutProperty(layer, 'visibility', isVisible ? 'visible' : 'none');
   }
@@ -50,7 +65,11 @@ export function toggleLayer(map, layer, isVisible) {
  * @param {String} subMap either `projects` or `hbi`
  * @param {Number} id Identifier of the active section (null for reset)
  */
-export function filterLayersById(map, subMap, id) {
+export function filterLayersById(
+  map: mapboxgl.Map,
+  subMap: 'projects' | 'hbi',
+  id: string
+): void {
   let VisibilityFilter;
   if (id) {
     VisibilityFilter = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
@@ -76,7 +95,10 @@ const sideFilter1 = ['match', ['get', 'side'], [2, 1], true, false];
  * @param {Object} map Mapbox instance
  * @param {Array<boolean>} filters Four booleans describe which phases are visible
  */
-export function setPlanningLegendFilter(map, selected) {
+export function setPlanningLegendFilter(
+  map: mapboxgl.Map,
+  selected: boolean[]
+): void {
   const phases = PLANNING_PHASES.map((phase) => phase.id);
   const filters = selected
     .map((isSelected, phaseIndex) =>
@@ -114,7 +136,7 @@ export function setPlanningLegendFilter(map, selected) {
  *
  * @param {MapboxGL instance} map
  */
-export function setPopupLanesFilter(map) {
+export function setPopupLanesFilter(map: mapboxgl.Map) {
   const filter = ['==', 'inactive', ['get', 'phase']];
   map.setFilter(config.apps.map.layers.projects.center, filter);
   map.setFilter(config.apps.map.layers.projects.overlayLine, filter);
@@ -135,7 +157,7 @@ export function setPopupLanesFilter(map) {
  *
  * @param {*} sideKey which side's HBI value to retrieve (layer prefix)
  */
-function getHbiExpression(sideKey) {
+function getHbiExpression(sideKey: sideKey | '') {
   // formula:
   // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)
   // const securityExpr = ['*', ['-', ['to-number', ['get', `${sideKey}safety`], -1000], rs], 1.6];
@@ -153,7 +175,10 @@ function getHbiExpression(sideKey) {
  * @param {Object} map Mapbox instance
  * @param {Array<boolean>} filters Four booleans describe which hbi states are visible
  */
-function getHbiFilterRules(sideKey, hbiFilters) {
+function getHbiFilterRules(
+  sideKey: sideKey | '',
+  hbiFilters: boolean[]
+): mapboxFilter[] {
   const hbi = getHbiExpression(sideKey);
   const activeHbiStops = HBI_STOPS.filter((d, i) => hbiFilters[i]);
   return activeHbiStops.map((hbiStop) => [
@@ -163,7 +188,11 @@ function getHbiFilterRules(sideKey, hbiFilters) {
   ]);
 }
 
-export function toggleVisibleHbiLines(map, hbiValues, hbiFilter) {
+export function toggleVisibleHbiLines(
+  map: mapboxgl.Map,
+  hbiValues,
+  hbiFilter: mapboxFilter
+): void {
   const centerRules = getHbiFilterRules('', hbiFilter);
   const side0rules = getHbiFilterRules('side0_', hbiFilter);
   const side1rules = getHbiFilterRules('side1_', hbiFilter);
@@ -173,17 +202,18 @@ export function toggleVisibleHbiLines(map, hbiValues, hbiFilter) {
   map.setFilter(config.apps.map.layers.hbi.side1, ['any', ...side1rules]);
 }
 
-export function getCenterFromGeom(geometry, defaultCenter = null) {
+export function getCenterFromGeom(geometry: any, defaultCenter = null) {
+  let lineString = geometry;
   if (geometry && geometry.coordinates) {
     if (geometry.type === 'MultiLineString') {
-      geometry = turfLineString(
+      lineString = turfLineString(
         geometry.coordinates.reduce((res, coord) => res.concat(coord)),
         []
       );
     }
 
-    const length = turfLength(geometry);
-    return turfAlong(geometry, length * 0.5).geometry.coordinates;
+    const length = turfLength(lineString);
+    return turfAlong(lineString, length * 0.5).geometry.coordinates;
   }
 
   return defaultCenter;
@@ -207,7 +237,12 @@ export async function getGeoLocation() {
   });
 }
 
-export function parseUrlOptions() {
+export function parseUrlOptions():
+  | {
+      center: mapboxgl.LngLatLike;
+      zoom: number;
+    }
+  | false {
   const lat = getParameterByName('lat');
   const lng = getParameterByName('lng');
   const zoom = getParameterByName('zoom');

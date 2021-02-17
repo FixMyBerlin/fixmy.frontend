@@ -84,21 +84,18 @@ type UpdateHistory = {
   };
 };
 
-export const updateHistory = (props: Location) => (dispatch: Dispatch) => {
-  const pathMatch: match<MapPath> = matchPath(props.pathname, {
+export const updateHistory = (path: string) => (dispatch: Dispatch) => {
+  const pathMatch: match<MapPath> = matchPath(path, {
     path: '/:activeView?/:activeSection?',
     exact: false,
     strict: false,
   });
-
   const { activeSection, activeView } = pathMatch.params;
-
+  const parsedSection = parseInt(activeSection, 10);
   dispatch({
     type: UPDATE_HISTORY,
     payload: {
-      activeSection: Number.isNaN(parseInt(activeSection, 10))
-        ? null
-        : activeSection,
+      activeSection: Number.isNaN(parsedSection) ? null : parsedSection,
       activeView,
     },
   });
