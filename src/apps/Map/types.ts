@@ -18,14 +18,16 @@ export type MapConfig = {
       overlayLine: string;
     };
     hbi: {
+      // Section layers
       center: string;
       side0: string;
       side1: string;
       overlayLine: string;
-      intersections: string;
-      intersectionsSide0: string;
-      intersectionsSide1: string;
-      intersectionsOverlay: string;
+      // Intersection layers
+      xCenter: string;
+      xSide0: string;
+      xSide1: string;
+      xOverlay: string;
     };
     buildings3d: string;
     dimmingLayer: string;

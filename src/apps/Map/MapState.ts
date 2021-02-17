@@ -31,6 +31,9 @@ type MapView = 'zustand' | 'planungen';
 
 // todo: define this based on fixmy.platform serializer & model
 type ProjectData = any;
+type HBIData = any;
+
+type PopupData = ProjectData | HBIData;
 
 type MapPath = {
   activeView?: MapView;
@@ -52,7 +55,7 @@ export type MapState = MapConfig['view'] & {
   hasMoved: boolean;
   planningData: boolean;
   planningDataFetchState: PlanningDataFetchState;
-  popupData: ProjectData;
+  popupData: PopupData;
   popupLocation: null | { x: number; y: number };
   show3dBuildings: boolean;
 };
@@ -216,12 +219,12 @@ export function togglePlanningFilter(
 type SetPopupLocation = {
   type: typeof SET_POPUP_LOCATION;
   payload: {
-    popupLocation: [number, number];
+    popupLocation: mapboxgl.PointLike;
   };
 };
 
 export function setPopupLocation(
-  popupLocation: [number, number]
+  popupLocation: mapboxgl.PointLike
 ): SetPopupLocation {
   return { type: SET_POPUP_LOCATION, payload: { popupLocation } };
 }
