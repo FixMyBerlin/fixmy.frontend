@@ -27,7 +27,8 @@ const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 const SET_PLANNING_DATA_FETCH_STATE =
   'Map/MapState/SET_PLANNING_DATA_FETCH_STATE';
 
-type MapView = 'zustand' | 'planungen';
+// parsed from the first path segment of the url
+type MapView = 'zustand' | 'planungen' | 'popupbikelanes';
 
 // todo: define this based on fixmy.platform serializer & model
 type ProjectData = any;
@@ -53,9 +54,9 @@ export type MapState = MapConfig['view'] & {
   filterHbi: [boolean, boolean, boolean, boolean];
   filterPlannings: [boolean, boolean, boolean, boolean];
   hasMoved: boolean;
-  planningData: boolean;
+  planningData?: ProjectData;
   planningDataFetchState: PlanningDataFetchState;
-  popupData: PopupData;
+  popupData?: PopupData;
   popupLocation: null | { x: number; y: number };
   show3dBuildings: boolean;
 };

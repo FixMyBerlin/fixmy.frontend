@@ -5,7 +5,7 @@ import { WebglMap } from '.';
 
 describe('<WebglMap />', () => {
   it('renders', () => {
-    render(<WebglMap />);
+    render(<WebglMap calculatePopupPosition={true} />);
     expect(mapboxgl.Map).toHaveBeenCalled();
   });
 });

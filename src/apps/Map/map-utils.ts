@@ -16,13 +16,12 @@ type sideKey = 'side0_' | 'side1_' | 'side2_';
 
 const logger = debug('fmc:Map:utils');
 
-export const intersectionLayers = [
-  'intersections',
-  'intersectionsSide0',
-  'intersectionsSide1',
-  'intersectionsOverlay',
+// names of the keys that respond to sets of layers in `config`
+export const intersectionLayers = ['xCenter', 'xSide0', 'xSide1'];
+export const intersectionLayersWithOverlay = [
+  ...intersectionLayers,
+  'overlayLine',
 ];
-
 export const standardLayers = ['center', 'side0', 'side1'];
 export const standardLayersWithOverlay = [...standardLayers, 'overlayLine'];
 
@@ -51,7 +50,7 @@ export function toggleLayer(
   layer: string,
   isVisible: boolean
 ): void {
-  logger('toggle layer', layer);
+  logger('toggle layer', layer, isVisible);
   if (map.getLayer(layer)) {
     map.setLayoutProperty(layer, 'visibility', isVisible ? 'visible' : 'none');
   }
@@ -68,7 +67,7 @@ export function toggleLayer(
 export function filterLayersById(
   map: mapboxgl.Map,
   subMap: 'projects' | 'hbi',
-  id: string
+  id: number
 ): void {
   let VisibilityFilter;
   if (id) {
@@ -77,7 +76,12 @@ export function filterLayersById(
     VisibilityFilter = 1;
   }
 
-  standardLayers.forEach((layer) =>
+  const targets =
+    subMap === 'projects'
+      ? standardLayers
+      : standardLayers.concat(intersectionLayers);
+
+  targets.forEach((layer) =>
     map.setPaintProperty(
       config.apps.map.layers[subMap][layer],
       'line-opacity',
@@ -158,11 +162,6 @@ export function setPopupLanesFilter(map: mapboxgl.Map) {
  * @param {*} sideKey which side's HBI value to retrieve (layer prefix)
  */
 function getHbiExpression(sideKey: sideKey | '') {
-  // formula:
-  // HBI = ((s - rs) * 1.6) + ((v - rv) * 0.5)
-  // const securityExpr = ['*', ['-', ['to-number', ['get', `${sideKey}safety`], -1000], rs], 1.6];
-  // const speedExpr = ['*', ['-', ['to-number', ['get', `${sideKey}velocity`], -1000], rv], 0.5];
-  // return ['number', ['+', securityExpr, speedExpr]];
   const safety = ['to-number', ['get', `${sideKey}safety`], -1000];
   const velocity = ['to-number', ['get', `${sideKey}velocity`], -1000];
 
@@ -190,7 +189,6 @@ function getHbiFilterRules(
 
 export function toggleVisibleHbiLines(
   map: mapboxgl.Map,
-  hbiValues,
   hbiFilter: mapboxFilter
 ): void {
   const centerRules = getHbiFilterRules('', hbiFilter);

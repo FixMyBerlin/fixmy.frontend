@@ -27,6 +27,7 @@ import {
   parseUrlOptions,
   setPlanningLegendFilter,
   setPopupLanesFilter,
+  standardLayersWithOverlay,
 } from '~/apps/Map/map-utils';
 import resetMap from '~/apps/Map/reset';
 import { BigLoader } from '~/components2/Loaders';
@@ -61,11 +62,13 @@ const connector = connect(({ MapState, UserState }: RootState) => ({
   planningDataFetchState: MapState.planningDataFetchState,
   show3dBuildings: MapState.show3dBuildings,
   zoom: MapState.zoom,
-  ...UserState,
 }));
 
 type Props = ConnectedProps<typeof connector> &
-  RouteComponentProps<{ id: string }>;
+  RouteComponentProps<{ id: string }> & {
+    calculatePopupPosition: boolean;
+    className?: string; // for styled-components
+  };
 
 type State = {
   loading: boolean;
@@ -78,7 +81,7 @@ class Map extends PureComponent<Props, State> {
 
   root: HTMLElement;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       loading: true,
@@ -98,7 +101,7 @@ class Map extends PureComponent<Props, State> {
     this.map.on('load', this.handleLoad);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     if (this.state.loading) {
       return false;
     }
@@ -205,16 +208,8 @@ class Map extends PureComponent<Props, State> {
     const hbiLayers = config.apps.map.layers.hbi;
     const projectsLayers = config.apps.map.layers.projects;
 
-    intersectionLayers.forEach((layerName) =>
-      toggleLayer(this.map, hbiLayers[layerName], isZustand)
-    );
-
     if (isZustand) {
-      toggleVisibleHbiLines(
-        this.map,
-        this.props.hbi_values,
-        this.props.filterHbi
-      );
+      toggleVisibleHbiLines(this.map, this.props.filterHbi);
     }
 
     if (this.props.activeView === 'popupbikelanes') {
@@ -227,21 +222,18 @@ class Map extends PureComponent<Props, State> {
     }
 
     // project layers
-    toggleLayer(this.map, 'fmb-projects', false);
-    toggleLayer(this.map, projectsLayers.center, isPlanungen);
-    toggleLayer(this.map, projectsLayers.side0, isPlanungen);
-    toggleLayer(this.map, projectsLayers.side1, isPlanungen);
-    toggleLayer(this.map, projectsLayers.overlayLine, isPlanungen);
+    // toggleLayer(this.map, 'fmb-projects', false);
+    standardLayersWithOverlay.forEach((layer) =>
+      toggleLayer(this.map, projectsLayers[layer], isPlanungen)
+    );
 
     // hbi layers
-    toggleLayer(this.map, hbiLayers.center, isZustand);
-    toggleLayer(this.map, hbiLayers.side0, isZustand);
-    toggleLayer(this.map, hbiLayers.side1, isZustand);
-    toggleLayer(this.map, hbiLayers.overlayLine, isZustand);
-    toggleLayer(this.map, hbiLayers.xCenter, isZustand);
-    toggleLayer(this.map, hbiLayers.xSide0, isZustand);
-    toggleLayer(this.map, hbiLayers.xSide1, isZustand);
-    toggleLayer(this.map, hbiLayers.xOverlay, isZustand);
+    const combinedHbiLayers = standardLayersWithOverlay.concat(
+      intersectionLayers
+    );
+    combinedHbiLayers.forEach((layer) =>
+      toggleLayer(this.map, hbiLayers[layer], isZustand)
+    );
 
     // other layers
     toggleLayer(

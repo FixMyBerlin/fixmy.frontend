@@ -94,16 +94,13 @@ const MapView = ({
   const displayLegend = !activeSection || isDesktopView;
   const calculatePopupPosition = isDesktopView && displayPopup;
 
-  const updateView = (view: Partial<mapboxgl.MapboxOptions>) => {
-    Store.dispatch(MapActions.setView(view));
-  };
-
   const handleLocationChange = (userLocation: mapboxgl.LngLatLike) => {
-    updateView({
+    const view = {
       center: userLocation,
       zoom: config.apps.map.geocoder.zoomAfterGeocode,
       // animate: true,
-    });
+    };
+    Store.dispatch(MapActions.setView(view));
   };
 
   useURLParams();
@@ -118,9 +115,6 @@ const MapView = ({
         <SearchBar />
         <WebglMap
           key="MapComponent"
-          // @ts-ignore
-          updateView={updateView}
-          // @ts-ignore TS doesn't understand that this exists
           calculatePopupPosition={calculatePopupPosition}
         >
           {!displayPopup && (
