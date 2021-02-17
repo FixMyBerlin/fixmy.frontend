@@ -13,9 +13,7 @@ import {
 } from '~/pages/User/apiservice';
 import history from '~/history';
 import config from '~/config';
-import { HBI } from '~/apps/Map/constants';
 
-const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
 const SIGNUP = 'User/UserState/SIGNUP';
 const SIGNUP_SUCCESS = 'User/UserState/SIGNUP_SUCCESS';
 const LOGIN = 'User/UserState/LOGIN';
@@ -38,16 +36,10 @@ const LOAD_LIKES_FAIL = 'User/UserState/LOAD_LIKES_FAIL';
 
 const initialState = {
   userid: uuidv4(),
-  hbi_values: HBI.map((d) => d.value),
   token: get('token'),
   userData: false,
   userLikes: false,
 };
-
-// updates custome hbi config values
-export function updateHBI(index, value) {
-  return { type: UPDATE_HBI, payload: { index, value } };
-}
 
 export function signup(values, formFunctions) {
   return async (dispatch) => {
@@ -201,16 +193,6 @@ export function loadLikes(itemType) {
 
 export default function MapStateReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case UPDATE_HBI: {
-      const hbiValues = state.hbi_values.map((d, i) => {
-        if (i === action.payload.index) {
-          return action.payload.value;
-        }
-        return d;
-      });
-
-      return { ...state, hbi_values: hbiValues };
-    }
     case SIGNUP:
     case SIGNUP_SUCCESS:
     case LOGIN:
