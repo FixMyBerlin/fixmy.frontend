@@ -5,6 +5,7 @@ const MapboxStyles = {
   'FMB-release-4': 'mapbox://styles/hejco/ck0nzclbk0ey01ct9ilwefpzc',
   'FMB-release-5': 'mapbox://styles/hejco/ck37eiywp0un71cpd01dutt7r',
   'FMB-release-6': 'mapbox://styles/hejco/ck85ospzd0cre1ioa8d6gfuv9',
+  'FMB-release-8': 'mapbox://styles/hejco/ckdzvkywj0u3g1amidtrbnw5v',
 };
 
 const map: MapConfig = {
@@ -30,19 +31,19 @@ const map: MapConfig = {
       overlayLine: 'fmb-projects-overlay-line ',
     },
     hbi: {
-      center: 'fmb-HBI-center',
-      side0: 'fmb-HBI-side-0',
-      side1: 'fmb-HBI-side-1',
-      overlayLine: 'fmb-HBI-overlay-line',
-      intersections: 'fmb-HBI-intersections',
-      intersectionsSide0: 'fmb-HBI-intersections-side-0',
-      intersectionsSide1: 'fmb-HBI-intersections-side-1',
-      intersectionsOverlay: 'fmb-HBI-intersections-overlay-line',
+      center: 'HBI-track-center',
+      side0: 'HBI-track-side-0',
+      side1: 'HBI-track-side-1',
+      overlayLine: 'HBI-track-overlay',
+      xCenter: 'fmb-HBI-intersections',
+      xSide0: 'fmb-HBI-intersections-side-0',
+      xSide1: 'fmb-HBI-intersections-side-1',
+      xOverlay: 'fmb-HBI-intersections-overlay',
     },
     buildings3d: '3d-buildings',
     dimmingLayer: 'fmb-dimming',
   },
-  style: MapboxStyles['FMB-release-6'],
+  style: MapboxStyles['FMB-release-8'],
   view: {
     zoom: 12,
     bearing: 0,
