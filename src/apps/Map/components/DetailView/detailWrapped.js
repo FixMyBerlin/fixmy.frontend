@@ -12,7 +12,7 @@ import Store from '~/store';
 import { setView } from '~/apps/Map/MapState';
 import { getCenterFromGeom } from '~/apps/Map/map-utils';
 import PinIcon from '~/images/pin.svg';
-import Label from '~/components/Label';
+import Label from '~/components2/Label';
 import NewCloseButton from '~/components/NewCloseButton';
 import logger from '~/utils/logger';
 

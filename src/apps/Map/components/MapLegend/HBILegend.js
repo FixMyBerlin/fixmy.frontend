@@ -3,7 +3,7 @@ import React from 'react';
 
 import Store from '~/store';
 import { toggleHbiFilter } from '~/apps/Map/MapState';
-import Label from '~/components/Label';
+import Label from '~/components2/Label';
 import LegendWrapper from './LegendWrapper';
 import LegendImageWrapper from './LegendImageWrapper';
 import LegendItem from './LegendItem';

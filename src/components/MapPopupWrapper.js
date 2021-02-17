@@ -7,7 +7,7 @@ import PinIcon from '~/images/pin.svg';
 import { media } from '~/styles/utils';
 import CloseButton from '~/components/NewCloseButton';
 import BigLabel from '~/components/BigLabel';
-import Label from '~/components/Label';
+import Label from '~/components2/Label';
 
 const arrowSize = 19;
 const outerArrowSize = 21;
