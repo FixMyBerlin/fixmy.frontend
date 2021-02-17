@@ -7,7 +7,7 @@ const StyledTitle = styled(Title)`
   margin: 16px 0 24px 0;
 `;
 
-export default ({ section }) => {
+export const ProjectStatus = ({ section }) => {
   if (!section) {
     return null;
   }

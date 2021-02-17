@@ -10,8 +10,8 @@ import {
   getOrientationNames,
 } from '~/apps/Map/hbi-utils';
 
-import HBISign from '~/apps/Map/components/HBISign';
-import Label from '~/components/Label';
+import HBISign from '../HBISign';
+import Label from '~/components2/Label';
 
 const BikeLevelStatus = styled.div`
   margin-bottom: 15px;
@@ -51,7 +51,12 @@ const LevelLabel = styled.span`
   color: ${(props) => props.color || config.colors.darkbg};
 `;
 
-export default (props) => {
+type Props = {
+  section: any;
+  onClick: any;
+};
+
+export const HBIStatus = (props: Props) => {
   let level0 = getHBIbyProps(props.section, 'side0');
   let level1 = getHBIbyProps(props.section, 'side1');
   const isLevel0Valid = !Number.isNaN(level0);

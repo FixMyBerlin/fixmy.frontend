@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 import * as MapActions from './MapState';
 import LocatorControl from './components/LocatorControl';
-import MapPopup from './components/MapPopup';
+import { MapPopup } from './components/MapPopup';
 import MapControl from './components/MapControl';
 import MapContent from './components/MapContent';
 import SearchBar from './components/SearchBar';

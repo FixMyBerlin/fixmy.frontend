@@ -1,20 +1,24 @@
-/* eslint indent: 0 */
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { connect, ConnectedProps } from 'react-redux';
+import {
+  generatePath,
+  RouteComponentProps,
+  withRouter,
+} from 'react-router-dom';
 import slugify from 'slugify';
 
-import Store from '~/store';
+import { RootState } from '~/store';
 import * as MapActions from '~/apps/Map/MapState';
 import { media } from '~/styles/utils';
-import ProjectStatus from './ProjectStatus';
-import BikeLevelStatus from './BikeLevelStatus';
+import { ProjectStatus } from './ProjectStatus';
+import { HBIStatus } from './HBIStatus';
 import MapPopupWrapper from '~/components/MapPopupWrapper';
 import Button from '~/components/Button';
-import Label from '~/components/Label';
+import Label from '~/components2/Label';
 import Brace from '~/apps/Map/components/Brace';
 import resetMap from '~/apps/Map/reset';
+import config from '~/config';
 
 const arrowSize = 19;
 
@@ -40,26 +44,38 @@ const IntersectionContent = styled.div`
   min-height: 80px;
 `;
 
-const closePopup = () => {
-  Store.dispatch(MapActions.setPopupData(null));
-  Store.dispatch(MapActions.setPopupVisible(false));
-  Store.dispatch(
-    MapActions.setView({
-      show3dBuildings: true,
-      pitch: 40,
-      dim: true,
-      animate: true,
-      zoom: 16,
-    })
-  );
-};
+const connector = connect(
+  (state: RootState) => ({
+    popupLocation: state.MapState.popupLocation,
+    activeSection: state.MapState.activeSection,
+    activeView: state.MapState.activeView,
+    data: state.MapState.popupData,
+    displayPopup: state.MapState.displayPopup,
+  }),
+  (dispatch) => ({
+    setDetailsMapView: () => dispatch<any>(MapActions.setDetailsMapView()),
+  })
+);
 
-class MapPopup extends PureComponent {
-  onDetailClick = () => {
-    const name = slugify(this.props.data.street_name || '').toLowerCase();
-    const detailRoute = `/${this.props.activeView}/${this.props.activeSection}/${name}`;
-    this.props.history.push(detailRoute);
-    closePopup();
+class MapPopup extends PureComponent<
+  ConnectedProps<typeof connector> &
+    RouteComponentProps<{
+      activeView: string;
+      activeSection: string;
+      name?: string;
+    }>
+> {
+  openDetailView = () => {
+    const detailRoutes = {
+      zustand: config.routes.map.hbiDetail,
+      planungen: config.routes.map.projectsDetail,
+    };
+    const url = generatePath(detailRoutes[this.props.activeView], {
+      id: this.props.activeSection,
+      name: slugify(this.props.data.street_name || '').toLowerCase(),
+    });
+    this.props.history.push(url);
+    this.props.setDetailsMapView();
   };
 
   render() {
@@ -80,7 +96,7 @@ class MapPopup extends PureComponent {
         x={x}
         y={y}
         data={data}
-        onClick={() => this.onDetailClick()}
+        onClick={() => this.openDetailView()}
         onClose={() => resetMap()}
       >
         {data.isIntersection ? (
@@ -96,12 +112,12 @@ class MapPopup extends PureComponent {
           <>
             {isPlanningView && <ProjectStatus section={data} />}
             {isStatus && (
-              <BikeLevelStatus onClick={this.onDetailClick} section={data} />
+              <HBIStatus onClick={this.openDetailView} section={data} />
             )}
             <MoreButtonWrapper>
               <Button
                 data-cy="plannings-more-info-btn"
-                onClick={this.onDetailClick}
+                onClick={this.openDetailView}
               >
                 mehr Infos
               </Button>
@@ -116,12 +132,4 @@ class MapPopup extends PureComponent {
   }
 }
 
-export default withRouter(
-  connect((state) => ({
-    popupLocation: state.MapState.popupLocation,
-    activeSection: state.MapState.activeSection,
-    activeView: state.MapState.activeView,
-    data: state.MapState.popupData,
-    displayPopup: state.MapState.displayPopup,
-  }))(MapPopup)
-);
+export default withRouter(connector(MapPopup));

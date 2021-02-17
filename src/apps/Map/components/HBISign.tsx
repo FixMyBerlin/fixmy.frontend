@@ -7,7 +7,11 @@ import BetaIcon from '~/images/beta.svg';
 import { numberFormat } from '~/utils/utils';
 import { getHBIColorByIndex } from '~/apps/Map/hbi-utils';
 
-const HBISign = styled.div`
+const HBISign = styled.div<{
+  borderWeight: string;
+  color: string;
+  size: string;
+}>`
   border: ${({ borderWeight }) => borderWeight}px solid
     ${({ color }) => color || config.colors.index};
   width: ${({ size }) => size}px;
@@ -44,23 +48,32 @@ const StyledBikeIcon = styled(BikeIcon)`
   }
 `;
 
+type Props = {
+  borderWeight?: number;
+  className?: string;
+  hbi: number;
+  isTooltip?: boolean;
+  onClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  size?: number;
+};
+
 const HBISignComp = ({
+  borderWeight = 5,
+  className = null,
   hbi,
-  size,
-  borderWeight,
-  className,
+  isTooltip = false,
   onClick,
-  isTooltip,
-}) => {
+  size = 77,
+}: Props) => {
   const color = getHBIColorByIndex(hbi);
 
   return (
     <HBISign
-      size={size}
-      borderWeight={borderWeight}
+      borderWeight={borderWeight.toString()}
       className={className}
-      onClick={onClick}
       color={color}
+      onClick={onClick}
+      size={size.toString()}
     >
       <div>
         <StyledBikeIcon color={color} />
@@ -69,13 +82,6 @@ const HBISignComp = ({
       <StyledBetaIcon isTooltip={isTooltip} />
     </HBISign>
   );
-};
-
-HBISignComp.defaultProps = {
-  onClick: () => {},
-  borderWeight: 5,
-  size: 77,
-  isTooltip: false,
 };
 
 export default HBISignComp;

@@ -1,7 +1,8 @@
 import { match, matchPath } from 'react-router-dom';
 import qs from 'qs';
 import ky from 'ky';
-import { Dispatch } from 'redux';
+import { Action, Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 
 import config from '~/config';
 import { MapConfig } from './types';
@@ -52,7 +53,7 @@ export type MapState = MapConfig['view'] & {
   planningData: boolean;
   planningDataFetchState: PlanningDataFetchState;
   popupData: ProjectData;
-  popupLocation: null | [number, number];
+  popupLocation: null | { x: number; y: number };
   show3dBuildings: boolean;
 };
 
@@ -331,6 +332,30 @@ export function geocodeAddress(searchtext) {
         payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' },
       });
     }
+  };
+}
+
+/**
+ * Close popup and reset map view
+ */
+export function setDetailsMapView(): ThunkAction<
+  void,
+  typeof initialState,
+  unknown,
+  Action<any>
+> {
+  return async (dispatch) => {
+    dispatch(setPopupData(null));
+    dispatch(setPopupVisible(false));
+    dispatch(
+      setView({
+        show3dBuildings: true,
+        pitch: 40,
+        dim: true,
+        animate: true,
+        zoom: 16,
+      })
+    );
   };
 }
 
