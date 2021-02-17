@@ -1,4 +1,6 @@
 import { cyElem } from 'cypress/support/utils';
+import { generatePath } from 'react-router-dom';
+
 import { clickRandomMarker, goToProjects } from './utils';
 import config from '~/config';
 
@@ -39,18 +41,18 @@ describe('Planings Section', () => {
 
   describe('the project detail page', () => {
     before(() => {
+      const projectUrl = generatePath(config.routes.map.projectsDetail, {
+        id: SAMPLE_PROJECT_ID,
+      });
       cy.server().route(`**/projects/${SAMPLE_PROJECT_ID}`).as('getProject');
-      cy.visit(`${config.routes.projects}/${SAMPLE_PROJECT_ID}`)
-        .wait('@getProject')
-        .its('status')
-        .should('eq', 200);
+      cy.visit(projectUrl).wait('@getProject').its('status').should('eq', 200);
     });
     it('displays project detail foldout', () => {
       cy.get('h2').contains('Fertigstellung');
     });
     it('redirects to overview map when closing details panel', () => {
       cyElem('map-details-header-close-button').click();
-      cy.location('pathname').should('eq', config.routes.projects);
+      cy.location('pathname').should('eq', config.routes.map.projectsIndex);
     });
   });
 

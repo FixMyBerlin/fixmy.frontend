@@ -112,7 +112,7 @@ const HomeBerlin = () => {
         </SubTitle>
       </TitleWrapper>
       <CTAWrapper>
-        <StyledRouterLink to={config.routes.projects}>
+        <StyledRouterLink to={config.routes.map.projectsIndex}>
           <MainButton flat>Gehe zur Karte</MainButton>
         </StyledRouterLink>
         <StyledRouterLink to={config.routes.research.survey}>

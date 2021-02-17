@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import slugify from 'slugify';
+import { generatePath } from 'react-router-dom';
 
 import config from '~/config';
 import { numberFormat, getRVALength } from '~/utils/utils';
@@ -137,8 +138,10 @@ class ProjectListItem extends PureComponent {
 
   onClick = () => {
     const { id, street_name: name } = this.props;
-    const slug = name ? slugify(name) : '';
-    const url = `${config.routes.projects}/${id}/${slug.toLowerCase()}`;
+    const url = generatePath(config.routes.map.projectsDetail, {
+      id,
+      name: name ? slugify(name).toLowerCase() : '',
+    });
     this.props.history.push(url);
   };
 

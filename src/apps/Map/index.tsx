@@ -148,11 +148,11 @@ const MapView = ({
 
         <Route
           exact
-          path="/zustand/:id/:name?"
+          path={config.routes.map.hbiDetail}
           render={({ match }) => (
             <SectionDetail
               apiEndpoint="sections"
-              onCloseRoute="/zustand"
+              onCloseRoute={config.routes.map.hbiIndex}
               activeView={activeLayer}
               token={token}
               match={match}
@@ -161,11 +161,11 @@ const MapView = ({
         />
         <Route
           exact
-          path="/planungen/:id/:name?"
+          path={config.routes.map.projectsDetail}
           render={({ match }) => (
             <ProjectDetail
               apiEndpoint="projects"
-              onCloseRoute="/planungen"
+              onCloseRoute={config.routes.map.projectsIndex}
               activeView={activeLayer}
               token={token}
               match={match}
@@ -174,11 +174,11 @@ const MapView = ({
         />
         <Route
           exact
-          path="/popupbikelanes/:id/:name?"
+          path={config.routes.map.popupDetail}
           render={({ match }) => (
             <ProjectDetail
               apiEndpoint="projects"
-              onCloseRoute="/popupbikelanes"
+              onCloseRoute={config.routes.map.popupIndex}
               activeView={activeLayer}
               token={token}
               match={match}

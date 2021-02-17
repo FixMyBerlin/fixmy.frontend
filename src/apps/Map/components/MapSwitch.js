@@ -103,12 +103,15 @@ const VorlaeufigIcon = styled(SvgIcon)`
 
 class MapSwitch extends PureComponent {
   handleChange = (checked) => () => {
-    const to = checked ? '/zustand' : '/planungen';
+    const to = checked
+      ? config.routes.map.hbiIndex
+      : config.routes.map.projectsIndex;
     this.props.history.push(to);
   };
 
   render() {
-    const isPlanningView = this.props.match.url === '/planungen';
+    const isPlanningView =
+      this.props.match.url === config.routes.map.projectsIndex;
 
     return (
       <MapSwitchWrapper>
