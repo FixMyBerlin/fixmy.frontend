@@ -28,7 +28,7 @@ const map: MapConfig = {
       center: 'fmb-projects-center',
       side0: 'fmb-projects-side-0',
       side1: 'fmb-projects-side-1',
-      overlayLine: 'fmb-projects-overlay-line ',
+      overlayLine: 'fmb-projects-overlay-line',
     },
     hbi: {
       center: 'HBI-track-center',
