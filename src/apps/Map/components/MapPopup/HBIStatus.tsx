@@ -56,7 +56,7 @@ const LevelLabel = styled.span`
 
 export const HBIStatus = () => {
   const section: any = useSelector<RootState>(
-    (state) => state.MapState.popupData?.section
+    (state) => state.MapState.popupData
   );
   const dispatch = useDispatch();
 
@@ -104,7 +104,7 @@ export const HBIStatus = () => {
       <SectionCenter>
         <HBISign
           isTooltip
-          onClick={dispatch<any>(setDetailsMapView())}
+          onClick={() => dispatch<any>(setDetailsMapView())}
           hbi={bikeLevelTotal}
         />
       </SectionCenter>

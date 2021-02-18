@@ -5,8 +5,8 @@ import Label from '~/components2/Label';
 
 import {
   BigLabel,
+  CloseButton,
   Container,
-  CloseBtn,
   Header,
   StyledPinIcon,
 } from './MapPopupComponents';
@@ -22,11 +22,10 @@ function formatAddressString(address: string) {
 }
 
 function renderName(data: MapPopupData): string {
-  if (data.isIntersection) return 'Kreuzung';
   if (data.name) return data.name;
   if (data.address) return formatAddressString(data.address);
   if (data.street_name) return data.street_name;
-  return 'Abschnittsname';
+  return 'Abschnitt';
 }
 
 type MapPopupData = {
@@ -50,6 +49,9 @@ type Props = {
   icon?: React.ReactNode;
 };
 
+/**
+ * Map popup component with responsive variation
+ */
 const MapPopup = ({
   className,
   children,
@@ -60,30 +62,22 @@ const MapPopup = ({
   x = 0,
   y = 0,
   icon,
-}: Props) => {
-  const showSublineInternal =
-    !data.isIntersection && data?.borough && showSubline;
-
-  return (
-    <Container x={x} y={y} data-cy="map-popup-wrapper" className={className}>
-      <CloseBtn onClick={onClose} data-cy="map-popup-close-button" />
-      <Header onClick={onClick}>
-        {icon || <StyledPinIcon />}
-        <div>
-          {/* // eslint-disable-next-line */}
-          <BigLabel uppercase data-cy="map-popup-address">
-            {renderName(data)}
-          </BigLabel>
-          {showSublineInternal && (
-            <Label light data-cy="map-popup-borough">
-              {data.borough}
-            </Label>
-          )}
-        </div>
-      </Header>
-      {children}
-    </Container>
-  );
-};
+}: Props) => (
+  <Container x={x} y={y} data-cy="map-popup-wrapper" className={className}>
+    <CloseButton onClick={onClose} data-cy="map-popup-close-button" />
+    <Header onClick={onClick}>
+      {icon || <StyledPinIcon />}
+      <BigLabel uppercase data-cy="map-popup-address">
+        {renderName(data)}
+      </BigLabel>
+      {showSubline && data?.borough && (
+        <Label light data-cy="map-popup-borough">
+          {data.borough}
+        </Label>
+      )}
+    </Header>
+    {children}
+  </Container>
+);
 
 export default MapPopup;

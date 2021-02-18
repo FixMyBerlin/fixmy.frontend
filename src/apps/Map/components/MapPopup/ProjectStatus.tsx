@@ -11,7 +11,7 @@ const StyledTitle = styled(Title)`
 
 export const ProjectStatus = () => {
   const title = useSelector<RootState>(
-    ({ MapState }) => MapState.popupData?.section?.title
+    ({ MapState }) => MapState.popupData?.title
   );
 
   if (!title) {

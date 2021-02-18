@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import config from '~/config';
 import PinIcon from '~/images/pin.svg';
 import { media } from '~/styles/utils';
-import CloseButton from '~/components/NewCloseButton';
+import { IconButton } from '../Button';
 
 const ARROW_SIZE = 19;
 const ARROW_SIZE_OUTER = 21;
@@ -77,7 +77,7 @@ export const Container = styled.div<{ x: number; y: number }>`
     `}
 `;
 
-export const CloseBtn = styled(CloseButton)`
+export const CloseButton = styled(IconButton.Close)`
   position: absolute;
   top: -18px;
   right: 10px;
@@ -86,14 +86,15 @@ export const CloseBtn = styled(CloseButton)`
 `;
 
 export const Header = styled.div`
-  display: flex;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  font-weight: 600;
+  align-items: center;
   color: ${config.colors.darkgrey};
-  text-decoration: none;
   cursor: pointer;
+  display: flex;
+  font-weight: 600;
   line-height: 1.2;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
 `;
 
 export const StyledPinIcon = styled(PinIcon)`

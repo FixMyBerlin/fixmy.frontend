@@ -13,8 +13,8 @@ import { setView } from '~/apps/Map/MapState';
 import { getCenterFromGeom } from '~/apps/Map/map-utils';
 import PinIcon from '~/images/pin.svg';
 import Label from '~/components2/Label';
-import NewCloseButton from '~/components/NewCloseButton';
 import logger from '~/utils/logger';
+import { IconButton } from '~/components2/Button';
 
 const DetailWrapper = styled.div`
   position: absolute;
@@ -72,7 +72,7 @@ const DetailBody = styled.div`
   height: 100%;
 `;
 
-const Close = styled(NewCloseButton)`
+const Close = styled(IconButton.Close)`
   margin-left: auto;
 `;
 

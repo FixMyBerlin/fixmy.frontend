@@ -14,7 +14,7 @@ import { media } from '~/styles/utils';
 import { ProjectStatus } from './ProjectStatus';
 import { HBIStatus } from './HBIStatus';
 import { MapPopup as MapPopupOuter } from '~/components2/MapPopup';
-import Button from '~/components/Button';
+import { Button } from '~/components2/Button';
 import Brace from '~/apps/Map/components/Brace';
 import resetMap from '~/apps/Map/reset';
 import config from '~/config';
@@ -94,12 +94,14 @@ class MapPopup extends PureComponent<
         data={dataOuter}
         onClick={() => this.openDetailView()}
         onClose={() => resetMap()}
+        showSubline={false}
       >
         <>
           {isPlanningView && <ProjectStatus />}
           {isStatus && <HBIStatus />}
           <MoreButtonWrapper>
             <Button
+              flat
               data-cy="plannings-more-info-btn"
               onClick={this.openDetailView}
             >
