@@ -13,9 +13,8 @@ import * as MapActions from '~/apps/Map/MapState';
 import { media } from '~/styles/utils';
 import { ProjectStatus } from './ProjectStatus';
 import { HBIStatus } from './HBIStatus';
-import MapPopupWrapper from '~/components/MapPopupWrapper';
+import { MapPopup as MapPopupOuter } from '~/components2/MapPopup';
 import Button from '~/components/Button';
-import Label from '~/components2/Label';
 import Brace from '~/apps/Map/components/Brace';
 import resetMap from '~/apps/Map/reset';
 import config from '~/config';
@@ -37,13 +36,6 @@ const BraceWrapper = styled.div`
   `}
 `;
 
-const IntersectionContent = styled.div`
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: row;
-  min-height: 80px;
-`;
-
 const connector = connect(
   (state: RootState) => ({
     popupLocation: state.MapState.popupLocation,
@@ -58,12 +50,7 @@ const connector = connect(
 );
 
 class MapPopup extends PureComponent<
-  ConnectedProps<typeof connector> &
-    RouteComponentProps<{
-      activeView: string;
-      activeSection: string;
-      name?: string;
-    }>
+  ConnectedProps<typeof connector> & RouteComponentProps<{}>
 > {
   openDetailView = () => {
     const detailRoutes = {
@@ -72,16 +59,17 @@ class MapPopup extends PureComponent<
     };
     const url = generatePath(detailRoutes[this.props.activeView], {
       id: this.props.activeSection,
-      name: slugify(this.props.data.street_name || '').toLowerCase(),
+      // eslint-disable-next-line
+      name: slugify(this.props.data?.street_name || '').toLowerCase(),
     });
     this.props.history.push(url);
     this.props.setDetailsMapView();
   };
 
   render() {
-    const { data, displayPopup, activeView, popupLocation } = this.props;
+    const { displayPopup, data, activeView, popupLocation } = this.props;
 
-    if (!data || !displayPopup) {
+    if (data == null || !displayPopup) {
       return null;
     }
 
@@ -91,43 +79,39 @@ class MapPopup extends PureComponent<
     const x = popupLocation && !isSmallScreen ? popupLocation.x : 0;
     const y = popupLocation && !isSmallScreen ? popupLocation.y - arrowSize : 0;
 
+    // compile data for MapPopupOuter
+    const dataOuter = data
+      ? {
+          isIntersection: !data.is_road,
+          ...data,
+        }
+      : null;
+
     return (
-      <MapPopupWrapper
+      <MapPopupOuter
         x={x}
         y={y}
-        data={data}
+        data={dataOuter}
         onClick={() => this.openDetailView()}
         onClose={() => resetMap()}
       >
-        {data.isIntersection ? (
-          <>
-            <IntersectionContent>
-              <Label>Zu den Kreuzungen gibt es noch keine Informationen</Label>
-            </IntersectionContent>
-            <BraceWrapper>
-              <Brace type={this.props.activeView} />
-            </BraceWrapper>
-          </>
-        ) : (
-          <>
-            {isPlanningView && <ProjectStatus section={data} />}
-            {isStatus && (
-              <HBIStatus onClick={this.openDetailView} section={data} />
-            )}
-            <MoreButtonWrapper>
-              <Button
-                data-cy="plannings-more-info-btn"
-                onClick={this.openDetailView}
-              >
-                mehr Infos
-              </Button>
-            </MoreButtonWrapper>
-            <BraceWrapper>
-              <Brace type={activeView} />
-            </BraceWrapper>
-          </>
-        )}
-      </MapPopupWrapper>
+        <>
+          {isPlanningView && <ProjectStatus />}
+          {isStatus && <HBIStatus />}
+          <MoreButtonWrapper>
+            <Button
+              data-cy="plannings-more-info-btn"
+              onClick={this.openDetailView}
+            >
+              mehr Infos
+            </Button>
+          </MoreButtonWrapper>
+        </>
+
+        <BraceWrapper>
+          <Brace type={this.props.activeView} />
+        </BraceWrapper>
+      </MapPopupOuter>
     );
   }
 }

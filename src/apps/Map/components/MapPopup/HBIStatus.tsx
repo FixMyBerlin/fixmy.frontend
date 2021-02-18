@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import config from '~/config';
@@ -12,6 +13,8 @@ import {
 
 import HBISign from '../HBISign';
 import Label from '~/components2/Label';
+import { RootState } from '~/store';
+import { setDetailsMapView } from '../../MapState';
 
 const BikeLevelStatus = styled.div`
   margin-bottom: 15px;
@@ -51,14 +54,16 @@ const LevelLabel = styled.span`
   color: ${(props) => props.color || config.colors.darkbg};
 `;
 
-type Props = {
-  section: any;
-  onClick: any;
-};
+export const HBIStatus = () => {
+  const section: any = useSelector<RootState>(
+    (state) => state.MapState.popupData?.section
+  );
+  const dispatch = useDispatch();
 
-export const HBIStatus = (props: Props) => {
-  let level0 = getHBIbyProps(props.section, 'side0');
-  let level1 = getHBIbyProps(props.section, 'side1');
+  if (section == null) return null;
+
+  let level0 = getHBIbyProps(section, 'side0');
+  let level1 = getHBIbyProps(section, 'side1');
   const isLevel0Valid = !Number.isNaN(level0);
   const isLevel1Valid = !Number.isNaN(level1);
   level0 = isLevel0Valid ? level0 : 0;
@@ -69,12 +74,12 @@ export const HBIStatus = (props: Props) => {
   const level1Color = getHBIColorByIndex(level1);
 
   const orientationNames = getOrientationNames(
-    props.section.side0_orientation,
-    props.section.side1_orientation
+    section.side0_orientation,
+    section.side1_orientation
   );
 
   return (
-    <BikeLevelStatus {...props}>
+    <BikeLevelStatus>
       <SectionLeft>
         <SidesWrapper>
           {isLevel0Valid && (
@@ -97,7 +102,11 @@ export const HBIStatus = (props: Props) => {
         <StyledBraceVertical />
       </SectionLeft>
       <SectionCenter>
-        <HBISign isTooltip onClick={props.onClick} hbi={bikeLevelTotal} />
+        <HBISign
+          isTooltip
+          onClick={dispatch<any>(setDetailsMapView())}
+          hbi={bikeLevelTotal}
+        />
       </SectionCenter>
       <Section>
         <Label>Aktueller Happy-Bike-Index</Label>

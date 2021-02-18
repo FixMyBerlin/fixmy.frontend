@@ -12,21 +12,6 @@ export function getHBIColorByIndex(index: number): string {
   return stop ? stop.color : '#555';
 }
 
-function translateOrientationName(name: string): string {
-  switch (name) {
-    case 'O':
-      return 'Ostseite';
-    case 'W':
-      return 'Westseite';
-    case 'N':
-      return 'Nordseite';
-    case 'S':
-      return 'Südseite';
-    default:
-      return '';
-  }
-}
-
 interface OrientationInfo {
   side0: string;
   side1: string;
@@ -36,9 +21,15 @@ export function getOrientationNames(
   side0: string,
   side1: string
 ): OrientationInfo {
+  const mapping = {
+    O: 'Ostseite',
+    W: 'Westseite',
+    N: 'Nordseite',
+    S: 'Südseite',
+  };
   return {
-    side0: translateOrientationName(side0),
-    side1: translateOrientationName(side1),
+    side0: mapping[side0] || '',
+    side1: mapping[side1] || '',
   };
 }
 

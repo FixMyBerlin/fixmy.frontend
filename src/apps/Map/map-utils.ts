@@ -14,7 +14,7 @@ import { PLANNING_PHASES, HBI_STOPS } from './constants';
 type mapboxFilter = any[];
 type sideKey = 'side0_' | 'side1_' | 'side2_';
 
-const logger = debug('fmc:Map:utils');
+const logger = debug('fmc:map:utils');
 
 // names of the keys that respond to sets of layers in `config`
 export const intersectionLayers = ['xCenter', 'xSide0', 'xSide1'];
