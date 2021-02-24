@@ -2,33 +2,24 @@ export const RIGHT_SIDE = 0;
 export const LEFT_SIDE = 1;
 export const BOTH_SIDES = 2;
 
-export const HBI = [
-  { label: 'Geschwindgkeit', type: 'speed', value: 5, min: 0, max: 10 },
-  { label: 'Sicherheit', type: 'security', value: 5, min: 0, max: 10 },
-];
-
 export const HBI_STOPS = [
   {
-    min: 0,
-    max: 2.5,
+    value: 0,
     color: '#c01d1d',
     label: 'miserabel',
   },
   {
-    min: 2.5,
-    max: 5,
+    value: 1,
     color: '#f08141',
     label: 'schlecht',
   },
   {
-    min: 5,
-    max: 7.5,
+    value: 2,
     color: '#abc759',
     label: 'ok',
   },
   {
-    min: 7.5,
-    max: 100,
+    value: 3,
     color: '#45b834',
     label: 'super',
   },

@@ -162,10 +162,15 @@ export function setPopupLanesFilter(map: mapboxgl.Map) {
  * @param {*} sideKey which side's HBI value to retrieve (layer prefix)
  */
 function getHbiExpression(sideKey: sideKey | '') {
-  const safety = ['to-number', ['get', `${sideKey}safety`], -1000];
-  const velocity = ['to-number', ['get', `${sideKey}velocity`], -1000];
-
-  return ['number', ['+', safety, velocity]];
+  if (sideKey === '') {
+    return ['min', ...['side0_', 'side1_', 'side2_'].map(getHbiExpression)];
+  }
+  const hasValue = ['has', `${sideKey}risk_level`];
+  // risk level is subtracted from 3 because the risk level scale is the inverse
+  // of the hbi level scale
+  const getValue = ['-', 3, ['to-number', ['get', `${sideKey}risk_level`]]];
+  const fallback = 1000;
+  return ['case', hasValue, getValue, fallback];
 }
 
 /**
@@ -178,26 +183,20 @@ function getHbiFilterRules(
   sideKey: sideKey | '',
   hbiFilters: boolean[]
 ): mapboxFilter[] {
-  const hbi = getHbiExpression(sideKey);
-  const activeHbiStops = HBI_STOPS.filter((d, i) => hbiFilters[i]);
-  return activeHbiStops.map((hbiStop) => [
-    'all',
-    ['>', hbi, hbiStop.min],
-    ['<', hbi, hbiStop.max],
-  ]);
+  const expression = getHbiExpression(sideKey);
+  const activeHbiStops = HBI_STOPS.filter((_, i) => hbiFilters[i]);
+  return activeHbiStops.map((hbiStop) => ['==', expression, hbiStop.value]);
 }
 
 export function toggleVisibleHbiLines(
   map: mapboxgl.Map,
   hbiFilter: mapboxFilter
 ): void {
-  const centerRules = getHbiFilterRules('', hbiFilter);
-  const side0rules = getHbiFilterRules('side0_', hbiFilter);
-  const side1rules = getHbiFilterRules('side1_', hbiFilter);
+  const side2rules = getHbiFilterRules('side2_', hbiFilter);
 
-  map.setFilter(config.apps.map.layers.hbi.center, ['any', ...centerRules]);
-  map.setFilter(config.apps.map.layers.hbi.side0, ['any', ...side0rules]);
-  map.setFilter(config.apps.map.layers.hbi.side1, ['any', ...side1rules]);
+  map.setFilter(config.apps.map.layers.hbi.xCenter, ['any', ...side2rules]);
+  map.setFilter(config.apps.map.layers.hbi.xSide0, ['any', ...side2rules]);
+  map.setFilter(config.apps.map.layers.hbi.xSide1, ['any', ...side2rules]);
 }
 
 export function getCenterFromGeom(geometry: any, defaultCenter = null) {

@@ -9,7 +9,6 @@ import type { HBI, HBISide, MapConfig, Side } from './types';
 import api from '~/services/api/';
 import { RootState } from '~/store';
 import { HBI_STOPS, BOTH_SIDES, LEFT_SIDE, RIGHT_SIDE } from './constants';
-import debug from 'debug';
 
 const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
@@ -478,8 +477,6 @@ const visionZeroForSection = (
   return rv;
 };
 
-const logger = debug('fmc:map:mapState');
-
 /**
  * Selector for all HBI data derived from current popup data
  */
@@ -491,14 +488,12 @@ const getCurrentHBI = ({ MapState }: RootState): HBI => {
     visionZeroIndex: visionZeroForSection(MapState.popupData),
   };
 
-  const rv = {
+  return {
     [BOTH_SIDES]: getHBIFromComponents(components, BOTH_SIDES),
     [LEFT_SIDE]: getHBIFromComponents(components, LEFT_SIDE),
     [RIGHT_SIDE]: getHBIFromComponents(components, RIGHT_SIDE),
     components,
   };
-  logger(rv);
-  return rv;
 };
 
 export const selectors = {
