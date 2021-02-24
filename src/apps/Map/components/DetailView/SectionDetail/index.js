@@ -156,7 +156,7 @@ class SectionDetails extends PureComponent {
         <ImageSlider images={photos} />
 
         <HBISignWrapper>
-          <HBISign hbi={sideData.happy_bike_index} />
+          <HBISign color="red" />
           <Label margin="10px 0 3px 0">
             Happy-Bike-Level - {currentSideName}
           </Label>

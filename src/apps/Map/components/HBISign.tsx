@@ -50,9 +50,8 @@ const StyledBikeIcon = styled(BikeIcon)`
 
 type Props = {
   borderWeight?: number;
+  color: string;
   className?: string;
-  hbi: number;
-  isTooltip?: boolean;
   onClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   size?: number;
 };
@@ -60,28 +59,19 @@ type Props = {
 const HBISignComp = ({
   borderWeight = 5,
   className = null,
-  hbi,
-  isTooltip = false,
+  color,
   onClick,
   size = 77,
-}: Props) => {
-  const color = getHBIColorByIndex(hbi);
-
-  return (
-    <HBISign
-      borderWeight={borderWeight.toString()}
-      className={className}
-      color={color}
-      onClick={onClick}
-      size={size.toString()}
-    >
-      <div>
-        <StyledBikeIcon color={color} />
-        <div>{numberFormat(hbi, 1)}</div>
-      </div>
-      <StyledBetaIcon isTooltip={isTooltip} />
-    </HBISign>
-  );
-};
+}: Props) => (
+  <HBISign
+    borderWeight={borderWeight.toString()}
+    className={className}
+    color={color}
+    onClick={onClick}
+    size={size.toString()}
+  >
+    <StyledBikeIcon />
+  </HBISign>
+);
 
 export default HBISignComp;

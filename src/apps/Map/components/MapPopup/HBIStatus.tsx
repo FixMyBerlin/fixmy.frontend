@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import config from '~/config';
@@ -13,8 +13,9 @@ import {
 
 import HBISign from '../HBISign';
 import Label from '~/components2/Label';
-import { RootState } from '~/store';
-import { setDetailsMapView } from '../../MapState';
+import { RootState, useTypedSelector } from '~/store';
+import { selectors } from '../../MapState';
+import { BOTH_SIDES, LEFT_SIDE, RIGHT_SIDE } from '../../constants';
 
 const BikeLevelStatus = styled.div`
   margin-bottom: 15px;
@@ -54,24 +55,13 @@ const LevelLabel = styled.span`
   color: ${(props) => props.color || config.colors.darkbg};
 `;
 
-export const HBIStatus = () => {
+export const HBIStatus = ({ openDetail }) => {
   const section: any = useSelector<RootState>(
     (state) => state.MapState.popupData
   );
-  const dispatch = useDispatch();
-
   if (section == null) return null;
 
-  let level0 = getHBIbyProps(section, 'side0');
-  let level1 = getHBIbyProps(section, 'side1');
-  const isLevel0Valid = !Number.isNaN(level0);
-  const isLevel1Valid = !Number.isNaN(level1);
-  level0 = isLevel0Valid ? level0 : 0;
-  level1 = isLevel1Valid ? level1 : 0;
-
-  const bikeLevelTotal = (level0 + level1) / 2;
-  const level0Color = getHBIColorByIndex(level0);
-  const level1Color = getHBIColorByIndex(level1);
+  const hbi = useTypedSelector(selectors.getCurrentHBI);
 
   const orientationNames = getOrientationNames(
     section.side0_orientation,
@@ -82,34 +72,36 @@ export const HBIStatus = () => {
     <BikeLevelStatus>
       <SectionLeft>
         <SidesWrapper>
-          {isLevel0Valid && (
+          {hbi[LEFT_SIDE].level && (
             <Label margin="0 0 10px 0">
               {orientationNames.side0}:
-              <LevelLabel color={level0Color}>
-                {numberFormat(level0)}
+              <LevelLabel color={hbi[LEFT_SIDE].color}>
+                {hbi[LEFT_SIDE].label}
               </LevelLabel>
             </Label>
           )}
-          {isLevel1Valid && (
-            <Label>
+          {hbi[RIGHT_SIDE].level && (
+            <Label margin="0 0 10px 0">
               {orientationNames.side1}:
-              <LevelLabel color={level1Color}>
-                {numberFormat(level1)}
+              <LevelLabel color={hbi[RIGHT_SIDE].color}>
+                {hbi[RIGHT_SIDE].label}
               </LevelLabel>
             </Label>
           )}
         </SidesWrapper>
-        <StyledBraceVertical />
+        {(hbi[LEFT_SIDE].level || hbi[RIGHT_SIDE].level) && (
+          <StyledBraceVertical />
+        )}
       </SectionLeft>
+
       <SectionCenter>
-        <HBISign
-          isTooltip
-          onClick={() => dispatch<any>(setDetailsMapView())}
-          hbi={bikeLevelTotal}
-        />
+        <HBISign onClick={openDetail} color={hbi[BOTH_SIDES].color} />
       </SectionCenter>
+
       <Section>
-        <Label>Aktueller Happy-Bike-Index</Label>
+        <Label>
+          Happy-Bike-Index: <strong>{hbi[BOTH_SIDES].label}</strong>
+        </Label>
       </Section>
     </BikeLevelStatus>
   );

@@ -5,8 +5,11 @@ import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import config from '~/config';
-import { MapConfig } from './types';
+import type { HBI, HBISide, MapConfig, Side } from './types';
 import api from '~/services/api/';
+import { RootState } from '~/store';
+import { HBI_STOPS, BOTH_SIDES, LEFT_SIDE, RIGHT_SIDE } from './constants';
+import debug from 'debug';
 
 const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
@@ -58,6 +61,7 @@ export type MapState = MapConfig['view'] & {
   planningDataFetchState: PlanningDataFetchState;
   popupData?: PopupData;
   popupLocation: null | { x: number; y: number };
+  currentHBI?: HBI;
   show3dBuildings: boolean;
 };
 
@@ -77,6 +81,7 @@ const initialState: MapState = {
   planningDataFetchState: 'waiting',
   popupData: null,
   popupLocation: null,
+  currentHBI: null,
   show3dBuildings: true,
 };
 
@@ -424,3 +429,78 @@ export default function MapStateReducer(
       return state;
   }
 }
+
+/**
+ * Evaluate components to determine the overall HBI rating from them
+ *
+ * Eventually, this will select the component with the worst rating. Right now,
+ * only the Vision-Zero-Index is considered.
+ */
+const getHBIFromComponents = (
+  { visionZeroIndex }: HBI['components'],
+  side: Side
+): HBISide => {
+  const data = visionZeroIndex[side];
+  const level =
+    data == null || Number.isNaN(data.level)
+      ? null
+      : ((3 - data.level) as HBISide['level']);
+  const color = HBI_STOPS[level]?.color || config.colors.darkgrey;
+  const label = HBI_STOPS[level]?.label || 'Nicht genug Daten';
+  return {
+    label,
+    color,
+    level,
+  };
+};
+
+/**
+ * Returns vison zero data for a section or `null`.
+ */
+const visionZeroForSection = (
+  section: HBIData
+): HBI['components']['visionZeroIndex'] => {
+  const rv = {
+    [BOTH_SIDES]: null,
+    [LEFT_SIDE]: null,
+    [RIGHT_SIDE]: null,
+  };
+
+  if (section.side2_risk_level != null) {
+    rv[BOTH_SIDES] = {
+      level: section.side2_risk_level,
+      source: section.side2_source,
+      killed: section.side2_killed,
+      severelyInjured: section.side2_severely_injured,
+      slightlyInjured: section.side2_slightly_injured,
+    };
+  }
+  return rv;
+};
+
+const logger = debug('fmc:map:mapState');
+
+/**
+ * Selector for all HBI data derived from current popup data
+ */
+const getCurrentHBI = ({ MapState }: RootState): HBI => {
+  if (MapState.activeView !== 'zustand' || MapState.popupData == null)
+    return null;
+
+  const components: HBI['components'] = {
+    visionZeroIndex: visionZeroForSection(MapState.popupData),
+  };
+
+  const rv = {
+    [BOTH_SIDES]: getHBIFromComponents(components, BOTH_SIDES),
+    [LEFT_SIDE]: getHBIFromComponents(components, LEFT_SIDE),
+    [RIGHT_SIDE]: getHBIFromComponents(components, RIGHT_SIDE),
+    components,
+  };
+  logger(rv);
+  return rv;
+};
+
+export const selectors = {
+  getCurrentHBI,
+};

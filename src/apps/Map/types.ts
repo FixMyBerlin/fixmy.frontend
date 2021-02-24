@@ -1,3 +1,32 @@
+import { HBI_STOPS, LEFT_SIDE, RIGHT_SIDE, BOTH_SIDES } from './constants';
+
+// Shape of an object that contains all HBI data for a section
+
+export type Side = typeof LEFT_SIDE | typeof RIGHT_SIDE | typeof BOTH_SIDES;
+
+export type HBISide = {
+  label: typeof HBI_STOPS[number]['label'];
+  color: typeof HBI_STOPS[number]['color'];
+  level: null | 0 | 1 | 2 | 3;
+};
+
+export type HBI = {
+  [BOTH_SIDES]: HBISide;
+  [LEFT_SIDE]?: HBISide;
+  [RIGHT_SIDE]?: HBISide;
+  components: {
+    visionZeroIndex?: {
+      [S in Side]: {
+        level: null | 0 | 1 | 2 | 3;
+        source: string;
+        slightlyInjured: number;
+        severelyInjured: number;
+        killed: number;
+      };
+    };
+  };
+};
+
 export type MapConfig = {
   bounds: mapboxgl.LngLatBoundsLike;
   features: {

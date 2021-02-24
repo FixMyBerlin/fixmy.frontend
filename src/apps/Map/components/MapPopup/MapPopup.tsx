@@ -98,7 +98,7 @@ class MapPopup extends PureComponent<
       >
         <>
           {isPlanningView && <ProjectStatus />}
-          {isStatus && <HBIStatus />}
+          {isStatus && <HBIStatus openDetail={() => this.openDetailView()} />}
           <MoreButtonWrapper>
             <Button
               flat
