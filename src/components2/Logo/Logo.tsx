@@ -6,7 +6,7 @@ import { FadeIn } from '~/components2/Image';
 import FixMyLogo1 from '~/images/logofmb.png';
 import FixMyLogo2 from '~/images/logofmb@2x.png';
 import FixMyLogo3 from '~/images/logofmb@3x.png';
-import BetaIcon from '~/images/beta.svg';
+import BetaIcon from './images/beta.svg';
 
 const FMBLogoWrapper = styled.div`
   position: relative;

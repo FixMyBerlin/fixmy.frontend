@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import config from '~/config';
 import BikeIcon from '~/images/bike.svg';
-import BetaIcon from '~/images/beta.svg';
 
 const HBISign = styled.div<{
   borderWeight: string;
@@ -26,18 +25,6 @@ const HBISign = styled.div<{
   background: white;
   position: relative;
   cursor: pointer;
-`;
-
-// styled-components passes the isToolTip prop on to the svg component
-// which it shouldn't, so the props are made explicit here
-const StyledBetaIcon = styled(({ isTooltip, ...props }) => (
-  <BetaIcon {...props} />
-))`
-  position: absolute;
-  transform: ${({ isTooltip }) =>
-    isTooltip
-      ? 'rotate(-6deg) translate(65px, -33px)'
-      : 'rotate(-6deg) translate(65px, 15px)'};
 `;
 
 const StyledBikeIcon = styled(BikeIcon)`

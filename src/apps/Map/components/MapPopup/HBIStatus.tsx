@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import config from '~/config';
 import BraceVertical from '~/images/brace-vertical.svg';
-import { numberFormat } from '~/utils/utils';
 import { getOrientationNames } from '~/apps/Map/hbi-utils';
 
 import HBISign from '../HBISign';
