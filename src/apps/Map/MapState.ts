@@ -64,7 +64,7 @@ export type MapState = MapConfig['view'] & {
   show3dBuildings: boolean;
 };
 
-const initialState: MapState = {
+export const initialState: MapState = {
   ...config.apps.map.view,
   activeView: null,
   activeSection: null,
