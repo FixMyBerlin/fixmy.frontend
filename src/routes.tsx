@@ -114,13 +114,13 @@ const Routes = ({ token }) => (
     />
 
     {/* map pages */}
-    {config.routes.map.hbiIndex != null && (
+    {config.routes.map?.hbiIndex != null && (
       <Route path={config.routes.map.hbiIndex} component={MapView} />
     )}
-    {config.routes.map.projectsIndex != null && (
+    {config.routes.map?.projectsIndex != null && (
       <Route path={config.routes.map.projectsIndex} component={MapView} />
     )}
-    {config.routes.map.popupIndex != null && (
+    {config.routes.map?.popupIndex != null && (
       <Route path={config.routes.map.popupIndex} component={MapView} />
     )}
 
