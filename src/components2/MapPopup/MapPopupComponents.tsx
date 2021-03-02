@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import config from '~/config';
-import PinIcon from '~/images/pin.svg';
 import { media } from '~/styles/utils';
 import { IconButton } from '../Button';
 
@@ -95,8 +94,10 @@ export const Header = styled.div`
   margin-bottom: 1rem;
   text-decoration: none;
   text-transform: uppercase;
-`;
 
-export const StyledPinIcon = styled(PinIcon)`
-  margin-right: 10px;
+  // Second child is the header label, which should flex yield to the
+  // header icon
+  & > :nth-child(2) {
+    flex: 1;
+  }
 `;
