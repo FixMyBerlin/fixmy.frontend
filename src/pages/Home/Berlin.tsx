@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import { Logo as FMBLogo } from '~/components2/Logo';
-import { Button } from '~/components2/Button';
+import { PseudoButton } from '~/components2/Button';
 import { Link } from '~/components2/Link';
 import { NewsletterWidget } from '~/components2/NewsletterWidget';
 import config from '~/config';
@@ -45,7 +45,7 @@ const NewsletterWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const MainButton = styled(Button)`
+const MainButton = styled(PseudoButton)`
   width: 280px;
   word-break: break-word;
   hyphens: none;
@@ -58,8 +58,6 @@ const MainButton = styled(Button)`
 
 const SecondaryButton = styled(MainButton)`
   background-color: white;
-  // font-weight: 600;
-  // border: none;
 `;
 
 const StyledLink = styled(Link)`
@@ -68,6 +66,7 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledRouterLink = styled(RouterLink)`
+  text-decoration: none;
   & + & {
     margin-top: 1em;
   }
@@ -113,10 +112,12 @@ const HomeBerlin = () => {
       </TitleWrapper>
       <CTAWrapper>
         <StyledRouterLink to={config.routes.map.projectsIndex}>
-          <MainButton flat>Gehe zur Karte</MainButton>
+          <MainButton flat href={config.routes.map.projectsIndex}>
+            Gehe zur Karte
+          </MainButton>
         </StyledRouterLink>
         <StyledRouterLink to={config.routes.research.survey}>
-          <SecondaryButton ghost flat>
+          <SecondaryButton ghost flat href={config.routes.research.survey}>
             Ergebnisse der Straßencheck-Umfrage
           </SecondaryButton>
         </StyledRouterLink>
