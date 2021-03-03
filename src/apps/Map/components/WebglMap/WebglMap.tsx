@@ -1,12 +1,17 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import MapboxGL from 'mapbox-gl';
 import _isEqual from 'lodash.isequal';
 import styled from 'styled-components';
-import { withRouter, matchPath } from 'react-router-dom';
+import {
+  withRouter,
+  matchPath,
+  generatePath,
+  RouteComponentProps,
+} from 'react-router-dom';
 import slugify from 'slugify';
 
-import Store from '~/store';
+import Store, { RootState } from '~/store';
 import { isSmallScreen } from '~/styles/utils';
 import config from '~/config';
 import * as MapActions from '~/apps/Map/MapState';
@@ -22,6 +27,7 @@ import {
   parseUrlOptions,
   setPlanningLegendFilter,
   setPopupLanesFilter,
+  standardLayersWithOverlay,
 } from '~/apps/Map/map-utils';
 import resetMap from '~/apps/Map/reset';
 import { BigLoader } from '~/components2/Loaders';
@@ -40,13 +46,47 @@ const StyledMap = styled.div`
   flex: 1;
 `;
 
-class Map extends PureComponent {
-  constructor(props) {
+const connector = connect(({ MapState, UserState }: RootState) => ({
+  activeView: MapState.activeView,
+  activeSection: MapState.activeSection,
+  animate: MapState.animate,
+  bearing: MapState.bearing,
+  center: MapState.center,
+  dim: MapState.dim,
+  displayPopup: MapState.displayPopup,
+  filterHbi: MapState.filterHbi,
+  filterPlannings: MapState.filterPlannings,
+  hasMoved: MapState.hasMoved,
+  pitch: MapState.pitch,
+  planningData: MapState.planningData,
+  planningDataFetchState: MapState.planningDataFetchState,
+  show3dBuildings: MapState.show3dBuildings,
+  zoom: MapState.zoom,
+}));
+
+type Props = ConnectedProps<typeof connector> &
+  RouteComponentProps<{ id: string }> & {
+    calculatePopupPosition: boolean;
+    className?: string; // for styled-components
+  };
+
+type State = {
+  loading: boolean;
+  popupLngLat?: any;
+  map?: mapboxgl.Map;
+};
+
+class Map extends PureComponent<Props, State> {
+  map: mapboxgl.Map;
+
+  root: HTMLElement;
+
+  constructor(props: Props) {
     super(props);
     this.state = {
       loading: true,
-      popupLngLat: false,
-      map: false,
+      popupLngLat: null,
+      map: null,
     };
   }
 
@@ -61,7 +101,7 @@ class Map extends PureComponent {
     this.map.on('load', this.handleLoad);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     if (this.state.loading) {
       return false;
     }
@@ -103,7 +143,7 @@ class Map extends PureComponent {
       this.props.activeView === 'planungen' ||
       this.props.activeView === 'popupbikelanes'
     ) {
-      Store.dispatch(MapActions.loadPlanningData());
+      Store.dispatch<any>(MapActions.loadPlanningData());
     }
 
     return this.map.resize();
@@ -147,23 +187,16 @@ class Map extends PureComponent {
 
   registerClickHandler = () => {
     const projectsTarget = config.apps.map.layers.projects.overlayLine;
-    const hbiTarget = config.apps.map.layers.hbi.overlayLine;
+    const hbiSectionTarget = config.apps.map.layers.hbi.overlayLine;
+    const hbiIntersectionTarget = config.apps.map.layers.hbi.xOverlay;
 
     if (this.props.activeView === 'zustand') {
       this.map.off('click', projectsTarget, this.handleClick);
-      this.map.on('click', hbiTarget, this.handleClick);
-      this.map.on(
-        'click',
-        config.apps.map.layers.hbi.intersectionsOverlay,
-        this.handleIntersectionClick
-      );
+      this.map.on('click', hbiSectionTarget, this.handleClick);
+      this.map.on('click', hbiIntersectionTarget, this.handleClick);
     } else {
-      this.map.off('click', hbiTarget, this.handleClick);
-      this.map.off(
-        'click',
-        config.apps.map.layers.hbi.intersectionsOverlay,
-        this.handleIntersectionClick
-      );
+      this.map.off('click', hbiSectionTarget, this.handleClick);
+      this.map.off('click', hbiIntersectionTarget, this.handleClick);
       this.map.on('click', projectsTarget, this.handleClick);
     }
   };
@@ -175,16 +208,8 @@ class Map extends PureComponent {
     const hbiLayers = config.apps.map.layers.hbi;
     const projectsLayers = config.apps.map.layers.projects;
 
-    intersectionLayers.forEach((layerName) =>
-      toggleLayer(this.map, hbiLayers[layerName], isZustand)
-    );
-
     if (isZustand) {
-      toggleVisibleHbiLines(
-        this.map,
-        this.props.hbi_values,
-        this.props.filterHbi
-      );
+      toggleVisibleHbiLines(this.map, this.props.filterHbi);
     }
 
     if (this.props.activeView === 'popupbikelanes') {
@@ -197,21 +222,18 @@ class Map extends PureComponent {
     }
 
     // project layers
-    toggleLayer(this.map, 'fmb-projects', false);
-    toggleLayer(this.map, projectsLayers.center, isPlanungen);
-    toggleLayer(this.map, projectsLayers.side0, isPlanungen);
-    toggleLayer(this.map, projectsLayers.side1, isPlanungen);
-    toggleLayer(this.map, projectsLayers.overlayLine, isPlanungen);
+    // toggleLayer(this.map, 'fmb-projects', false);
+    standardLayersWithOverlay.forEach((layer) =>
+      toggleLayer(this.map, projectsLayers[layer], isPlanungen)
+    );
 
     // hbi layers
-    toggleLayer(this.map, hbiLayers.center, isZustand);
-    toggleLayer(this.map, hbiLayers.side0, isZustand);
-    toggleLayer(this.map, hbiLayers.side1, isZustand);
-    toggleLayer(this.map, hbiLayers.overlayLine, isZustand);
-    toggleLayer(this.map, hbiLayers.intersections, isZustand);
-    toggleLayer(this.map, hbiLayers.intersectionsSide0, isZustand);
-    toggleLayer(this.map, hbiLayers.intersectionsSide1, isZustand);
-    toggleLayer(this.map, hbiLayers.intersectionsOverlay, isZustand);
+    const combinedHbiLayers = standardLayersWithOverlay.concat(
+      intersectionLayers
+    );
+    combinedHbiLayers.forEach((layer) =>
+      toggleLayer(this.map, hbiLayers[layer], isZustand)
+    );
 
     // other layers
     toggleLayer(
@@ -238,8 +260,15 @@ class Map extends PureComponent {
       // when user is in detail mode, we don't want to show the tooltip again,
       // but directly switch to another detail view
       if (this.props.activeSection && !this.props.displayPopup) {
-        const detailRoute = `/${this.props.activeView}/${id}/${name}`;
-        this.props.history.push(detailRoute);
+        const detailRoutes = {
+          zustand: config.routes.map.hbiDetail,
+          planungen: config.routes.map.projectsDetail,
+        };
+        const url = generatePath(detailRoutes[this.props.activeView], {
+          id,
+          name,
+        });
+        this.props.history.push(url);
       } else {
         Store.dispatch(MapActions.setPopupData(properties));
         Store.dispatch(MapActions.setPopupVisible(true));
@@ -251,7 +280,7 @@ class Map extends PureComponent {
           center,
           animate: true,
           zoom: isSmallScreen()
-            ? config.apps.map.zoomAfterGeocode
+            ? config.apps.map.geocoder.zoomAfterGeocode
             : this.map.getZoom(),
         })
       );
@@ -262,24 +291,6 @@ class Map extends PureComponent {
     this.updatePopupPos(center);
   };
 
-  handleIntersectionClick = (evt) => {
-    Store.dispatch(MapActions.setPopupData({ isIntersection: true }));
-    Store.dispatch(MapActions.setPopupVisible(true));
-    Store.dispatch(MapActions.setActiveSection(1));
-    Store.dispatch(
-      MapActions.setView({
-        center: evt.lngLat,
-        animate: true,
-        zoom: isSmallScreen()
-          ? config.apps.map.zoomAfterGeocode
-          : this.map.getZoom(),
-      })
-    );
-
-    this.handleMove();
-    this.updatePopupPos(evt.lngLat);
-  };
-
   handleMarkerClick = (evt, data) => {
     evt.preventDefault();
     evt.stopPropagation();
@@ -287,10 +298,13 @@ class Map extends PureComponent {
     const { id, street_name: name } = data;
     const center = data.center.coordinates;
 
-    const match = matchPath(this.props.location.pathname, {
-      path: '/(zustand|planungen)/:id/:name?',
-      exact: true,
-    });
+    const match = matchPath<{ id: string; name?: string }>(
+      this.props.location.pathname,
+      {
+        path: '/(zustand|planungen)/:id/:name?',
+        exact: true,
+      }
+    );
 
     const isDetailViewOpen = match?.params.id != null;
     if (isDetailViewOpen) {
@@ -306,7 +320,7 @@ class Map extends PureComponent {
           center,
           animate: true,
           zoom: isSmallScreen()
-            ? config.apps.map.zoomAfterGeocode
+            ? config.apps.map.geocoder.zoomAfterGeocode
             : this.map.getZoom(),
         })
       );
@@ -372,23 +386,4 @@ class Map extends PureComponent {
   }
 }
 
-export default withRouter(
-  connect((state) => ({
-    activeView: state.MapState.activeView,
-    activeSection: parseInt(state.MapState.activeSection, 0),
-    animate: state.MapState.animate,
-    bearing: state.MapState.bearing,
-    center: state.MapState.center,
-    dim: state.MapState.dim,
-    displayPopup: state.MapState.displayPopup,
-    filterHbi: state.MapState.filterHbi,
-    filterPlannings: state.MapState.filterPlannings,
-    hasMoved: state.MapState.hasMoved,
-    pitch: state.MapState.pitch,
-    planningData: state.MapState.planningData,
-    planningDataFetchState: state.MapState.planningDataFetchState,
-    show3dBuildings: state.MapState.show3dBuildings,
-    zoom: state.MapState.zoom,
-    ...state.UserState,
-  }))(Map)
-);
+export default withRouter(connector(Map));

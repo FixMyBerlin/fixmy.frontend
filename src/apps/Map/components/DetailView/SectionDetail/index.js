@@ -6,7 +6,7 @@ import DataProcessIcon from '~/images/data-process.svg';
 import { numberFormat, percentageFormat } from '~/utils/utils';
 import { getOrientationNames } from '~/apps/Map/hbi-utils';
 import HBISign from '~/apps/Map/components/HBISign';
-import Label from '~/components/Label';
+import Label from '~/components2/Label';
 import Title from '~/components/Title';
 import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';
 import DetailSwitch, {
@@ -156,7 +156,7 @@ class SectionDetails extends PureComponent {
         <ImageSlider images={photos} />
 
         <HBISignWrapper>
-          <HBISign hbi={sideData.happy_bike_index} />
+          <HBISign color="red" />
           <Label margin="10px 0 3px 0">
             Happy-Bike-Level - {currentSideName}
           </Label>

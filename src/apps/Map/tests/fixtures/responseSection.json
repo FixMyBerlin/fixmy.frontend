@@ -1,0 +1,184 @@
+{
+  "accidents": [],
+  "borough": "Tempelhof-Schöneberg",
+  "details": [
+    {
+      "advisory_bike_lane_ratio": 0.089,
+      "bike_lane_ratio": 0.046,
+      "bike_path_ratio": 0.0,
+      "crossings": 4,
+      "cycling_infrastructure_ratio": 0.135,
+      "cycling_infrastructure_safety": 0.0,
+      "daily_traffic": 15210.0,
+      "daily_traffic_heavy": 664.49,
+      "daily_traffic_cargo": 1552.0,
+      "daily_traffic_bus": 240.49,
+      "happy_bike_index": 3.8,
+      "length": 622.54,
+      "orientation": "O",
+      "photos": [
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3F/doci18AF7B1C.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3F/doci26F3F56B.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3F/doci26169315.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3F/doci33CC198E.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3E/doci79AF7DF5.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3E/doci011B4DFD.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3E/doci40C64FFE.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3E/doci01148FD0.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3C/doci1B8D5C89.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3C/doci043401B4.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3C/doci05F7518A.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D3C/doci1DC5B4AF.jpg"
+        }
+      ],
+      "protected_bike_lane_ratio": 0.0,
+      "road_type": 1.7,
+      "rva1": 0.0,
+      "rva2": 0.0,
+      "rva3": 0.0,
+      "rva4": 0.0,
+      "rva5": 0.0,
+      "rva6": 0.0,
+      "rva7": 27.63180972,
+      "rva8": 0.0,
+      "rva9": 0.0,
+      "rva10": 0.0,
+      "rva11": 24.54840232,
+      "rva12": 28.75809195,
+      "rva13": 0.0,
+      "safety_index": 2.9,
+      "shared_use_path_ratio": 0.0,
+      "side": 1,
+      "speed_limit": 30,
+      "velocity_index": 1.0
+    },
+    {
+      "advisory_bike_lane_ratio": 0.0,
+      "bike_lane_ratio": 0.0,
+      "bike_path_ratio": 0.0,
+      "crossings": 4,
+      "cycling_infrastructure_ratio": 0.054,
+      "cycling_infrastructure_safety": 0.0,
+      "daily_traffic": 15210.0,
+      "daily_traffic_heavy": 664.49,
+      "daily_traffic_cargo": 1552.0,
+      "daily_traffic_bus": 240.49,
+      "happy_bike_index": 3.9,
+      "length": 622.54,
+      "orientation": "W",
+      "photos": [
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D75/doci2447B8AD.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D75/doci2DAB3EEF.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D75/doci762F3D62.jpg"
+        },
+        {
+          "copyright": "Geoportal Berlin / Radverkehrsanlagen",
+          "src": "https://fmb-aws-bucket.s3.amazonaws.com/rva_pics/fb_daten/fotos/radverkehrsanlagen/Dokumente/00002C00/0x002D75/doci14024BE0.jpg"
+        }
+      ],
+      "protected_bike_lane_ratio": 0.0,
+      "road_type": 1.7,
+      "rva1": 0.0,
+      "rva2": 0.0,
+      "rva3": 0.0,
+      "rva4": 0.0,
+      "rva5": 0.0,
+      "rva6": 0.0,
+      "rva7": 0.0,
+      "rva8": 0.0,
+      "rva9": 0.0,
+      "rva10": 0.0,
+      "rva11": 0.0,
+      "rva12": 32.17587612,
+      "rva13": 0.0,
+      "safety_index": 2.9,
+      "shared_use_path_ratio": 0.0,
+      "side": 0,
+      "speed_limit": 30,
+      "velocity_index": 1.0
+    }
+  ],
+  "geometry": {
+    "type": "MultiLineString",
+    "coordinates": [
+      [
+        [13.3765869877605, 52.4847723227136],
+        [13.3765933645057, 52.4844472154304],
+        [13.3766874333814, 52.4839560725589],
+        [13.376734958642, 52.4837765225112],
+        [13.376835294938, 52.4834967880871],
+        [13.3768796777237, 52.4834021020411],
+        [13.3773626274149, 52.4823224916416],
+        [13.3774485354299, 52.482103997585],
+        [13.3774866133246, 52.4819094279099],
+        [13.3775183381819, 52.4816529198132],
+        [13.3775569814594, 52.4813352173475],
+        [13.3775006894738, 52.480758888032],
+        [13.3770285664518, 52.4798251726176]
+      ],
+      [
+        [13.3765854271784, 52.4847714479934],
+        [13.3765918030905, 52.4844463403425],
+        [13.3766858702609, 52.4839551969728],
+        [13.3767333948295, 52.4837756467519],
+        [13.3768337299095, 52.4834959120758],
+        [13.3768781122291, 52.4834012259515],
+        [13.3773610567464, 52.4823216146442],
+        [13.3774469637806, 52.4821031203958],
+        [13.3774850410039, 52.4819085505239],
+        [13.3775167650736, 52.4816520421552],
+        [13.3775554073798, 52.4813343393522],
+        [13.377499114291, 52.4807580093391],
+        [13.3770269914453, 52.4798242925363]
+      ]
+    ]
+  },
+  "is_road": true,
+  "street_category": 3,
+  "street_name": "Boelckestraße",
+  "suffix": "2",
+  "url": "https://fixmyberlin-staging.netlify.app/api/sections/782"
+}

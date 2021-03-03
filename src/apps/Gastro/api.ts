@@ -101,6 +101,10 @@ const uploadCertificate = async (
   const formData = new FormData();
   const fileName = registrationData.certificate.name;
 
+  // For some reason this call sometimes, but not always throws an error:
+  //   TS2554: Expected 2 arguments, but got 3.
+  // even though `formData.append` takes 3 arguments, one of which is optional.
+  // @ts-ignore
   formData.append('file', registrationData.certificate, fileName);
 
   let endpoint;

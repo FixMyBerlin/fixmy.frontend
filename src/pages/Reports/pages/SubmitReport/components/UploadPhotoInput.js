@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import config from '~/pages/Reports/config';
 import PhotoControlFMB from '~/images/reports/photo-control.png';
 import PhotoControlAachen from '~/images/aachen/photo-control.png';
-import NewCloseButton from '~/components/NewCloseButton';
+import NewCloseButton from '~/pages/Reports/components/NewCloseButton';
 import Text from '~/components/Text';
 import { getLinkStyles } from '~/components/Link';
 

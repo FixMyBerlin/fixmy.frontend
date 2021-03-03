@@ -1,11 +1,14 @@
 import { match, matchPath } from 'react-router-dom';
 import qs from 'qs';
 import ky from 'ky';
-import { Dispatch } from 'redux';
+import { Action, Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 
 import config from '~/config';
-import { MapConfig } from './types';
+import type { HBI, HBISide, MapConfig, Side } from './types';
 import api from '~/services/api/';
+import { RootState } from '~/store';
+import { HBI_STOPS, BOTH_SIDES, LEFT_SIDE, RIGHT_SIDE } from './constants';
 
 const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
@@ -26,10 +29,14 @@ const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 const SET_PLANNING_DATA_FETCH_STATE =
   'Map/MapState/SET_PLANNING_DATA_FETCH_STATE';
 
-type MapView = 'zustand' | 'planungen';
+// parsed from the first path segment of the url
+type MapView = 'zustand' | 'planungen' | 'popupbikelanes';
 
 // todo: define this based on fixmy.platform serializer & model
 type ProjectData = any;
+type HBIData = any;
+
+type PopupData = ProjectData | HBIData;
 
 type MapPath = {
   activeView?: MapView;
@@ -49,14 +56,15 @@ export type MapState = MapConfig['view'] & {
   filterHbi: [boolean, boolean, boolean, boolean];
   filterPlannings: [boolean, boolean, boolean, boolean];
   hasMoved: boolean;
-  planningData: boolean;
+  planningData?: ProjectData;
   planningDataFetchState: PlanningDataFetchState;
-  popupData: ProjectData;
-  popupLocation: null | [number, number];
+  popupData?: PopupData;
+  popupLocation: null | { x: number; y: number };
+  currentHBI?: HBI;
   show3dBuildings: boolean;
 };
 
-const initialState: MapState = {
+export const initialState: MapState = {
   ...config.apps.map.view,
   activeView: null,
   activeSection: null,
@@ -72,6 +80,7 @@ const initialState: MapState = {
   planningDataFetchState: 'waiting',
   popupData: null,
   popupLocation: null,
+  currentHBI: null,
   show3dBuildings: true,
 };
 
@@ -84,21 +93,18 @@ type UpdateHistory = {
   };
 };
 
-export const updateHistory = (props: Location) => (dispatch: Dispatch) => {
-  const pathMatch: match<MapPath> = matchPath(props.pathname, {
+export const updateHistory = (path: string) => (dispatch: Dispatch) => {
+  const pathMatch: match<MapPath> = matchPath(path, {
     path: '/:activeView?/:activeSection?',
     exact: false,
     strict: false,
   });
-
   const { activeSection, activeView } = pathMatch.params;
-
+  const parsedSection = parseInt(activeSection, 10);
   dispatch({
     type: UPDATE_HISTORY,
     payload: {
-      activeSection: Number.isNaN(parseInt(activeSection, 10))
-        ? null
-        : activeSection,
+      activeSection: Number.isNaN(parsedSection) ? null : parsedSection,
       activeView,
     },
   });
@@ -218,12 +224,12 @@ export function togglePlanningFilter(
 type SetPopupLocation = {
   type: typeof SET_POPUP_LOCATION;
   payload: {
-    popupLocation: [number, number];
+    popupLocation: mapboxgl.PointLike;
   };
 };
 
 export function setPopupLocation(
-  popupLocation: [number, number]
+  popupLocation: mapboxgl.PointLike
 ): SetPopupLocation {
   return { type: SET_POPUP_LOCATION, payload: { popupLocation } };
 }
@@ -307,10 +313,10 @@ interface GeocodeAddressFail {
 
 export function geocodeAddress(searchtext) {
   return async (dispatch) => {
-    const { geocoderUrl, geocoderAppId, geocoderAppCode } = config.apps.map;
+    const { url, appId, appCode } = config.apps.map.geocoder;
 
     try {
-      const searchUrl = `${geocoderUrl}?app_id=${geocoderAppId}&app_code=${geocoderAppCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;
+      const searchUrl = `${url}?app_id=${appId}&app_code=${appCode}&searchtext=${searchtext}&country=DEU&city=Berlin`;
       const data = await ky.get(searchUrl).json();
 
       const geocodeResult = (data as any)?.Response?.View[0]?.Result[0]
@@ -334,6 +340,30 @@ export function geocodeAddress(searchtext) {
         payload: { geocodeError: 'Die Adresse konnte nicht gefunden werden' },
       });
     }
+  };
+}
+
+/**
+ * Close popup and reset map view
+ */
+export function setDetailsMapView(): ThunkAction<
+  void,
+  typeof initialState,
+  unknown,
+  Action<any>
+> {
+  return async (dispatch) => {
+    dispatch(setPopupData(null));
+    dispatch(setPopupVisible(false));
+    dispatch(
+      setView({
+        show3dBuildings: true,
+        pitch: 40,
+        dim: true,
+        animate: true,
+        zoom: 16,
+      })
+    );
   };
 }
 
@@ -398,3 +428,74 @@ export default function MapStateReducer(
       return state;
   }
 }
+
+/**
+ * Evaluate components to determine the overall HBI rating from them
+ *
+ * Eventually, this will select the component with the worst rating. Right now,
+ * only the Vision-Zero-Index is considered.
+ */
+const getHBIFromComponents = (
+  { visionZeroIndex }: HBI['components'],
+  side: Side
+): HBISide => {
+  const data = visionZeroIndex[side];
+  const level =
+    data == null || Number.isNaN(data.level)
+      ? null
+      : ((3 - data.level) as HBISide['level']);
+  const color = HBI_STOPS[level]?.color || config.colors.darkgrey;
+  const label = HBI_STOPS[level]?.label || 'Nicht genug Daten';
+  return {
+    label,
+    color,
+    level,
+  };
+};
+
+/**
+ * Returns vison zero data for a section or `null`.
+ */
+const visionZeroForSection = (
+  section: HBIData
+): HBI['components']['visionZeroIndex'] => {
+  const rv = {
+    [BOTH_SIDES]: null,
+    [LEFT_SIDE]: null,
+    [RIGHT_SIDE]: null,
+  };
+
+  if (section.side2_risk_level != null) {
+    rv[BOTH_SIDES] = {
+      level: section.side2_risk_level,
+      source: section.side2_source,
+      killed: section.side2_killed,
+      severelyInjured: section.side2_severely_injured,
+      slightlyInjured: section.side2_slightly_injured,
+    };
+  }
+  return rv;
+};
+
+/**
+ * Selector for all HBI data derived from current popup data
+ */
+const getCurrentHBI = ({ MapState }: RootState): HBI => {
+  if (MapState.activeView !== 'zustand' || MapState.popupData == null)
+    return null;
+
+  const components: HBI['components'] = {
+    visionZeroIndex: visionZeroForSection(MapState.popupData),
+  };
+
+  return {
+    [BOTH_SIDES]: getHBIFromComponents(components, BOTH_SIDES),
+    [LEFT_SIDE]: getHBIFromComponents(components, LEFT_SIDE),
+    [RIGHT_SIDE]: getHBIFromComponents(components, RIGHT_SIDE),
+    components,
+  };
+};
+
+export const selectors = {
+  getCurrentHBI,
+};

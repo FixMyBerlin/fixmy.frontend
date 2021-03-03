@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import config from '~/config';
 
-export default styled.div`
+export default styled.div<{
+  bold?: boolean;
+  margin?: string;
+  light?: boolean;
+  uppercase?: boolean;
+}>`
   font-size: 10px;
   font-weight: ${(props) => (props.bold ? 700 : 500)};
   line-height: 1.2;

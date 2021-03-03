@@ -82,6 +82,9 @@ describe('filterLayersById()', () => {
             center: 'center',
             side0: 'side0',
             side1: 'side1',
+            xCenter: 'xCenter',
+            xSide0: 'xSide0',
+            xSide1: 'xSide1',
           },
         },
       },
@@ -97,6 +100,13 @@ describe('filterLayersById()', () => {
       ['center', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
       ['side0', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
       ['side1', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
+      [
+        'xCenter',
+        'line-opacity',
+        ['case', ['!=', ['get', 'id'], myId], 0.2, 1],
+      ],
+      ['xSide0', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
+      ['xSide1', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
     ]);
   });
   it('resets layout properties', () => {
@@ -105,6 +115,9 @@ describe('filterLayersById()', () => {
       ['center', 'line-opacity', 1],
       ['side0', 'line-opacity', 1],
       ['side1', 'line-opacity', 1],
+      ['xCenter', 'line-opacity', 1],
+      ['xSide0', 'line-opacity', 1],
+      ['xSide1', 'line-opacity', 1],
     ]);
   });
 });
@@ -145,15 +158,15 @@ describe('toggleVisibleHbiLines', () => {
       map: {
         layers: {
           hbi: {
-            center: 'center',
-            side0: 'side0',
-            side1: 'side1',
+            xCenter: 'intersection-center',
+            xSide0: 'intersection-side0',
+            xSide1: 'intersection-side1',
           },
         },
       },
     };
 
-    utils.toggleVisibleHbiLines(map, null, [true, true, false, true]);
+    utils.toggleVisibleHbiLines(map, [true, true, false, true]);
     expect(map.setFilter.mock.calls).toEqual(mapboxHBIFilter);
   });
 });
