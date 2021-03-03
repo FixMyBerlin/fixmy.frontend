@@ -7,7 +7,7 @@ import BraceVertical from './images/brace-vertical.svg';
 import { getOrientationNames } from '~/apps/Map/hbi-utils';
 
 import HBISign from '../HBISign';
-import Label from '~/components2/Label';
+import DefaultLabel from '~/components2/Label';
 import { RootState, useTypedSelector } from '~/store';
 import { selectors } from '../../MapState';
 import { BOTH_SIDES, LEFT_SIDE, RIGHT_SIDE } from '../../constants';
@@ -44,6 +44,11 @@ const SectionLeft = styled(Section)`
   font-weight: 300;
   display: flex;
   flex-direction: row;
+`;
+
+const Label = styled(DefaultLabel)`
+  font-size: 12px;
+  line-height: 1.5;
 `;
 
 const LevelLabel = styled.span`

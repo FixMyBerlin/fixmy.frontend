@@ -31,7 +31,7 @@ export const BigLabel = styled.div<{
 }>`
   font-size: 17px;
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.2;
   margin: 0;
   color: ${(props) =>
     props.light ? config.colors.midgrey : config.colors.darkgrey};
