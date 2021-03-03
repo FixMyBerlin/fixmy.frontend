@@ -9,7 +9,14 @@ import api from '~/services/api/';
 import { RootState } from '~/store';
 
 import { HBI_STOPS, BOTH_SIDES, LEFT_SIDE, RIGHT_SIDE } from './constants';
-import type { HBI, HBISide, MapConfig, Side } from './types';
+import type {
+  HBI,
+  HBILevel,
+  HBISide,
+  MapConfig,
+  Side,
+  VisionZeroIndex,
+} from './types';
 
 const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
@@ -36,10 +43,59 @@ const SET_HBI_DATA_FETCH_STATE = 'Map/MapState/SET_HBI_DATA_FETCH_STATE';
 type MapView = 'zustand' | 'planungen' | 'popupbikelanes';
 
 // todo: define this based on fixmy.platform serializer & model
-type ProjectData = any;
-export type HBIData = any;
+type ProjectFromMapbox = any;
 
-type PopupData = ProjectData | HBIData;
+export type SectionAccidents = {
+  killed: number;
+  // eslint-disable-next-line camelcase
+  risk_level: HBILevel;
+  // eslint-disable-next-line camelcase
+  severely_injured: number;
+  side: Side;
+  // eslint-disable-next-line camelcase
+  slightly_injured: number;
+  source: string;
+};
+
+type SectionDetails = any;
+
+export type HBIData = {
+  accidents: SectionAccidents[];
+  borough: string;
+  details: SectionDetails[];
+  geometry: any;
+  // eslint-disable-next-line camelcase
+  is_road: boolean;
+  // eslint-disable-next-line camelcase
+  street_category?: any;
+  // eslint-disable-next-line camelcase
+  street_name: string;
+  suffix?: string;
+  url: string;
+};
+
+type ProjectData = any;
+
+type HBIFromMapbox = {
+  borough: string;
+  id: number;
+  // eslint-disable-next-line camelcase
+  is_road: boolean;
+  // eslint-disable-next-line camelcase
+  side2_killed: number;
+  // eslint-disable-next-line camelcase
+  side2_risk_level: VisionZeroIndex;
+  // eslint-disable-next-line camelcase
+  side2_severely_injured: number;
+  // eslint-disable-next-line camelcase
+  side2_slightly_injured: number;
+  // eslint-disable-next-line camelcase
+  side2_source: string;
+  // eslint-disable-next-line camelcase
+  street_name: string;
+};
+
+type PopupData = ProjectFromMapbox | HBIFromMapbox;
 
 type MapPath = {
   activeView?: MapView;

@@ -2,24 +2,29 @@ export const RIGHT_SIDE = 0;
 export const LEFT_SIDE = 1;
 export const BOTH_SIDES = 2;
 
+export const HBI_WORST = 0;
+export const HBI_BAD = 1;
+export const HBI_OK = 2;
+export const HBI_SUPER = 3;
+
 export const HBI_STOPS = [
   {
-    value: 0,
+    value: HBI_WORST,
     color: '#c01d1d',
     label: 'miserabel',
   },
   {
-    value: 1,
+    value: HBI_BAD,
     color: '#f08141',
     label: 'schlecht',
   },
   {
-    value: 2,
+    value: HBI_OK,
     color: '#abc759',
     label: 'ok',
   },
   {
-    value: 3,
+    value: HBI_SUPER,
     color: '#45b834',
     label: 'super',
   },
