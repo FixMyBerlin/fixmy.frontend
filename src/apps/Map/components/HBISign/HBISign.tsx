@@ -41,7 +41,7 @@ type Props = {
   level: 0 | 1 | 2 | 3;
   color: string;
   className?: string;
-  onClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  onClick?: (ev: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   size?: number;
 };
 

@@ -117,7 +117,7 @@ export type MapState = MapConfig['view'] & {
   hasMoved: boolean;
   planningData?: ProjectData;
   planningDataFetchState: FetchState;
-  hbiData?: PopupData;
+  hbiData?: HBIData;
   hbiDataFetchState: FetchState;
   popupData?: PopupData;
   popupLocation: null | { x: number; y: number };
@@ -244,13 +244,11 @@ export function setView(view: SetView['payload']): SetView {
 type SetPopupData = {
   type: typeof SET_POPUP_DATA;
   payload: {
-    popupData: ProjectData | null;
+    popupData: PopupData | null;
   };
 };
 
-export function setPopupData(
-  popupData: ProjectData | null = null
-): SetPopupData {
+export function setPopupData(popupData: PopupData | null = null): SetPopupData {
   return { type: SET_POPUP_DATA, payload: { popupData } };
 }
 
@@ -391,7 +389,7 @@ export function loadHBIData() {
 
     dispatch(setHBIDataFetchState('pending'));
 
-    let hbiData: HBIData;
+    let hbiData;
     try {
       const apiRoute = `sections/${activeSection}`;
       hbiData = await api.get(apiRoute);
@@ -408,7 +406,8 @@ export function loadHBIData() {
       }
     }
 
-    dispatch(setHbiData(hbiData));
+    // todo: make api.get generic
+    dispatch(setHbiData((hbiData as unknown) as HBIData));
     dispatch(setHBIDataFetchState('success'));
   };
 }
@@ -566,9 +565,9 @@ const getHBIFromComponents = (
 ): HBISide => {
   const data = visionZeroIndex[side];
   const level =
-    data == null || Number.isNaN(data.level)
+    data == null || Number.isNaN(data.risk_level)
       ? null
-      : ((3 - data.level) as HBISide['level']);
+      : ((3 - data.risk_level) as HBISide['level']);
   const color = HBI_STOPS[level]?.color || config.colors.darkgrey;
   const label = HBI_STOPS[level]?.label || 'Nicht genug Daten';
   return {
@@ -581,8 +580,8 @@ const getHBIFromComponents = (
 /**
  * Returns vison zero data for a section or `null`.
  */
-const visionZeroForSection = (
-  section: HBIData
+const visionZeroFromMapbox = (
+  section: HBIFromMapbox
 ): HBI['components']['visionZeroIndex'] => {
   const rv = {
     [BOTH_SIDES]: null,
@@ -595,22 +594,62 @@ const visionZeroForSection = (
       level: section.side2_risk_level,
       source: section.side2_source,
       killed: section.side2_killed,
-      severelyInjured: section.side2_severely_injured,
-      slightlyInjured: section.side2_slightly_injured,
+      severely_injured: section.side2_severely_injured,
+      slightly_injured: section.side2_slightly_injured,
     };
   }
   return rv;
 };
 
+const visionZeroFromAPI = (
+  data: HBIData
+): HBI['components']['visionZeroIndex'] => {
+  const visionZeroIndex = {
+    [BOTH_SIDES]: null,
+    [LEFT_SIDE]: null,
+    [RIGHT_SIDE]: null,
+  };
+  data.accidents.forEach((ds: SectionAccidents) => {
+    visionZeroIndex[ds.side] = ds;
+  });
+  return visionZeroIndex;
+};
+
 /**
- * Selector for all HBI data derived from current popup data
+ * Return HBI data for section defined by clicking on the map
+ *
+ * Returns null if active view is not HBI map or no map point has been clicked.
  */
-const getCurrentHBI = ({ MapState }: RootState): HBI => {
+const getPopupHBI = ({ MapState }: RootState): HBI => {
   if (MapState.activeView !== 'zustand' || MapState.popupData == null)
     return null;
 
   const components: HBI['components'] = {
-    visionZeroIndex: visionZeroForSection(MapState.popupData),
+    visionZeroIndex: visionZeroFromMapbox(MapState.popupData),
+  };
+
+  return {
+    [BOTH_SIDES]: getHBIFromComponents(components, BOTH_SIDES),
+    [LEFT_SIDE]: getHBIFromComponents(components, LEFT_SIDE),
+    [RIGHT_SIDE]: getHBIFromComponents(components, RIGHT_SIDE),
+    components,
+  };
+};
+
+/**
+ * Return HBI data for section defined through detail view URL param
+ *
+ * Returns null if active view is not HBI map or hbi fetch state is not success.
+ */
+const getDetailsHBI = ({ MapState }: RootState): HBI => {
+  if (
+    MapState.activeView !== 'zustand' ||
+    MapState.hbiDataFetchState !== 'success'
+  )
+    return null;
+
+  const components: HBI['components'] = {
+    visionZeroIndex: visionZeroFromAPI(MapState.hbiData),
   };
 
   return {
@@ -622,5 +661,6 @@ const getCurrentHBI = ({ MapState }: RootState): HBI => {
 };
 
 export const selectors = {
-  getCurrentHBI,
+  getDetailsHBI,
+  getPopupHBI,
 };

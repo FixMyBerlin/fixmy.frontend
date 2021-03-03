@@ -2,15 +2,15 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import config from '~/config';
-import BraceVertical from './images/brace-vertical.svg';
 import { getOrientationNames } from '~/apps/Map/hbi-utils';
-
-import HBISign from '../HBISign';
 import DefaultLabel from '~/components2/Label';
+import config from '~/config';
 import { RootState, useTypedSelector } from '~/store';
+
 import { selectors } from '../../MapState';
 import { BOTH_SIDES, LEFT_SIDE, RIGHT_SIDE } from '../../constants';
+import HBISign from '../HBISign';
+import BraceVertical from './images/brace-vertical.svg';
 
 const BikeLevelStatus = styled.div`
   margin-bottom: 15px;
@@ -61,7 +61,7 @@ export const HBIStatus = ({ openDetail }) => {
   );
   if (section == null) return null;
 
-  const hbi = useTypedSelector(selectors.getCurrentHBI);
+  const hbi = useTypedSelector(selectors.getPopupHBI);
 
   if (hbi == null) return null;
 
