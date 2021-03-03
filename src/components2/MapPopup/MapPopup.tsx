@@ -1,12 +1,10 @@
-import React from 'react';
 import debug from 'debug';
+import React from 'react';
 
 import Label from '~/components2/Label';
+import PinIcon from '~/images/pin.svg';
 
 import { BigLabel, CloseButton, Container, Header } from './MapPopupComponents';
-
-import PinSection from './images/pin-section.svg';
-import PinIntersection from './images/pin-intersection.svg';
 
 const logger = debug('fmc:components:MapPopup');
 
@@ -62,19 +60,11 @@ const MapPopup = ({
   y = 0,
   icon,
 }: Props) => {
-  let PinIcon;
-  if (icon) {
-    PinIcon = icon;
-  } else if (data.is_road === false) {
-    PinIcon = PinIntersection;
-  } else {
-    PinIcon = PinSection;
-  }
   return (
     <Container x={x} y={y} data-cy="map-popup-wrapper" className={className}>
       <CloseButton onClick={onClose} data-cy="map-popup-close-button" />
       <Header onClick={onClick}>
-        <PinIcon />
+        {icon || <PinIcon />}
         <BigLabel uppercase data-cy="map-popup-address">
           {renderName(data)}
         </BigLabel>
