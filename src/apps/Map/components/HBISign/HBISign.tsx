@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/config';
-import HBIBike3 from './images/hbi-bike-3.svg';
-import HBIBike2 from './images/hbi-bike-2.svg';
-import HBIBike1 from './images/hbi-bike-1.svg';
+
 import HBIBike0 from './images/hbi-bike-0.svg';
+import HBIBike1 from './images/hbi-bike-1.svg';
+import HBIBike2 from './images/hbi-bike-2.svg';
+import HBIBike3 from './images/hbi-bike-3.svg';
 
 const HBISign = styled.div<{
   borderWeight: string;
@@ -52,12 +53,13 @@ const HBISignComp = ({
   onClick,
   size = 77,
 }: Props) => {
-  const Icon = {
-    0: HBIBike3,
-    1: HBIBike2,
-    2: HBIBike1,
-    3: HBIBike0,
-  }[level];
+  const Icon =
+    {
+      0: HBIBike3,
+      1: HBIBike2,
+      2: HBIBike1,
+      3: HBIBike0,
+    }[level] || HBIBike0;
   return (
     <HBISign
       borderWeight={borderWeight.toString()}
