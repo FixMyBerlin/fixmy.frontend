@@ -1,18 +1,19 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import config from '~/config';
-import DataProcessIcon from '~/images/data-process.svg';
-import { numberFormat, percentageFormat } from '~/utils/utils';
-import { getOrientationNames } from '~/apps/Map/hbi-utils';
-import HBISign from '~/apps/Map/components/HBISign';
-import Label from '~/components2/Label';
-import Title from '~/components/Title';
-import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';
 import DetailSwitch, {
   ButtonGroup,
 } from '~/apps/Map/components/DetailView/DetailSwitch';
 import ImageSlider from '~/apps/Map/components/DetailView/ImageSlider';
+import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';
+import HBISign from '~/apps/Map/components/HBISign';
+import { getOrientationNames } from '~/apps/Map/hbi-utils';
+import Title from '~/components/Title';
+import Label from '~/components2/Label';
+import config from '~/config';
+import DataProcessIcon from '~/images/data-process.svg';
+import { numberFormat, percentageFormat } from '~/utils/utils';
+
 import InfoSection from './InfoSection';
 import {
   getSafetyLabel,

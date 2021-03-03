@@ -1,13 +1,13 @@
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-import config from '~/pages/Reports/config';
-import PhotoControlFMB from '~/images/reports/photo-control.png';
-import PhotoControlAachen from '~/images/aachen/photo-control.png';
-import NewCloseButton from '~/pages/Reports/components/NewCloseButton';
-import Text from '~/components/Text';
 import { getLinkStyles } from '~/components/Link';
+import Text from '~/components/Text';
+import PhotoControlAachen from '~/images/aachen/photo-control.png';
+import PhotoControlFMB from '~/images/reports/photo-control.png';
+import NewCloseButton from '~/pages/Reports/components/NewCloseButton';
+import config from '~/pages/Reports/config';
 
 const PhotoControlImage =
   config.region === 'aachen' ? PhotoControlAachen : PhotoControlFMB;

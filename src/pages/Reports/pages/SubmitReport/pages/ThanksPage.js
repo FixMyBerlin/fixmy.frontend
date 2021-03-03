@@ -1,17 +1,16 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 
+import Button from '~/components/Button';
+import history from '~/history';
+import letterImageAachen from '~/images/aachen/mail-illu-01@2x.png';
+import letterImageFMB from '~/images/reports/letter.png';
 import config from '~/pages/Reports/config';
-import logger from '~/utils/logger';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
-import Button from '~/components/Button';
-import history from '~/history';
-
-import letterImageFMB from '~/images/reports/letter.png';
-import letterImageAachen from '~/images/aachen/mail-illu-01@2x.png';
+import logger from '~/utils/logger';
 
 const letterImage =
   config.region === 'aachen' ? letterImageAachen : letterImageFMB;

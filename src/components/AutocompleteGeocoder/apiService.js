@@ -1,5 +1,6 @@
-import fetch from 'node-fetch';
 import debug from 'debug';
+import fetch from 'node-fetch';
+
 import config from '~/config';
 
 const logger = debug('fmc:AutocompleteGeocoder');

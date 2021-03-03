@@ -1,17 +1,17 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
+import BrBoxImg from '~/images/reports/b_r_box.jpg';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
-import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import {
   RadioButton,
   RadioButtonLabel,
 } from '~/pages/Reports/pages/SubmitReport/components/RadioButton';
+import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
 import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
-import BrBoxImg from '~/images/reports/b_r_box.jpg';
 
 const StyledHeading = styled(Heading)`
   margin-bottom: 29px;
