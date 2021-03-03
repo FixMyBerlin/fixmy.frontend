@@ -1,14 +1,15 @@
-import { match, matchPath } from 'react-router-dom';
-import qs from 'qs';
 import ky from 'ky';
+import qs from 'qs';
+import { match, matchPath } from 'react-router-dom';
 import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import config from '~/config';
-import type { HBI, HBISide, MapConfig, Side } from './types';
 import api from '~/services/api/';
 import { RootState } from '~/store';
+
 import { HBI_STOPS, BOTH_SIDES, LEFT_SIDE, RIGHT_SIDE } from './constants';
+import type { HBI, HBISide, MapConfig, Side } from './types';
 
 const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
@@ -22,19 +23,21 @@ const SET_PLANNING_FILTER = 'Map/MapState/SET_PLANNING_FILTER';
 const SET_POPUP_DATA = 'Map/MapState/SET_POPUP_DATA';
 const SET_POPUP_LOCATION = 'Map/MapState/SET_POPUP_LOCATION';
 const SET_POPUP_VISIBLE = 'Map/MapState/SET_POPUP_VISIBLE';
-export const SET_PLANNING_DATA = 'Map/MapState/SET_PLANNING_DATA';
 const SET_ERROR = 'Map/MapState/SET_ERROR';
 const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 
+export const SET_PLANNING_DATA = 'Map/MapState/SET_PLANNING_DATA';
 const SET_PLANNING_DATA_FETCH_STATE =
   'Map/MapState/SET_PLANNING_DATA_FETCH_STATE';
+export const SET_HBI_DATA = 'Map/MapState/SET_HBI_DATA';
+const SET_HBI_DATA_FETCH_STATE = 'Map/MapState/SET_HBI_DATA_FETCH_STATE';
 
 // parsed from the first path segment of the url
 type MapView = 'zustand' | 'planungen' | 'popupbikelanes';
 
 // todo: define this based on fixmy.platform serializer & model
 type ProjectData = any;
-type HBIData = any;
+export type HBIData = any;
 
 type PopupData = ProjectData | HBIData;
 
@@ -43,7 +46,7 @@ type MapPath = {
   activeSection?: string;
 };
 
-type PlanningDataFetchState = 'waiting' | 'pending' | 'success' | 'error';
+export type FetchState = 'waiting' | 'pending' | 'success' | 'error';
 
 export type MapState = MapConfig['view'] & {
   activeView?: MapView;
@@ -57,7 +60,9 @@ export type MapState = MapConfig['view'] & {
   filterPlannings: [boolean, boolean, boolean, boolean];
   hasMoved: boolean;
   planningData?: ProjectData;
-  planningDataFetchState: PlanningDataFetchState;
+  planningDataFetchState: FetchState;
+  hbiData?: PopupData;
+  hbiDataFetchState: FetchState;
   popupData?: PopupData;
   popupLocation: null | { x: number; y: number };
   currentHBI?: HBI;
@@ -78,6 +83,8 @@ export const initialState: MapState = {
   hasMoved: false,
   planningData: false,
   planningDataFetchState: 'waiting',
+  hbiData: null,
+  hbiDataFetchState: 'waiting',
   popupData: null,
   popupLocation: null,
   currentHBI: null,
@@ -101,6 +108,7 @@ export const updateHistory = (path: string) => (dispatch: Dispatch) => {
   });
   const { activeSection, activeView } = pathMatch.params;
   const parsedSection = parseInt(activeSection, 10);
+
   dispatch({
     type: UPDATE_HISTORY,
     payload: {
@@ -247,11 +255,11 @@ export function setPopupVisible(isVisible: boolean): SetPopupVisible {
 
 type SetPlanningDataFetchState = {
   type: typeof SET_PLANNING_DATA_FETCH_STATE;
-  state: PlanningDataFetchState;
+  state: FetchState;
 };
 
 export const setPlanningDataFetchState = (
-  state: PlanningDataFetchState
+  state: FetchState
 ): SetPlanningDataFetchState => ({
   type: SET_PLANNING_DATA_FETCH_STATE,
   state,
@@ -293,6 +301,59 @@ export function loadPlanningData() {
 
     dispatch(setPlanningData(planningData));
     dispatch(setPlanningDataFetchState('success'));
+  };
+}
+
+type SetHBIDataFetchState = {
+  type: typeof SET_HBI_DATA_FETCH_STATE;
+  state: FetchState;
+};
+
+export const setHBIDataFetchState = (
+  state: FetchState
+): SetHBIDataFetchState => ({
+  type: SET_HBI_DATA_FETCH_STATE,
+  state,
+});
+
+export const setHbiData = (hbiData: HBIData) => ({
+  type: SET_HBI_DATA,
+  payload: { hbiData },
+});
+
+export interface LoadHBIData {
+  type: typeof SET_HBI_DATA;
+  payload: {
+    hbiData: any;
+  };
+}
+
+export function loadHBIData() {
+  return async (dispatch, getState) => {
+    const { hbiDataFetchState, activeSection } = getState().MapState;
+    if (hbiDataFetchState !== 'waiting') return;
+
+    dispatch(setHBIDataFetchState('pending'));
+
+    let hbiData: HBIData;
+    try {
+      const apiRoute = `sections/${activeSection}`;
+      hbiData = await api.get(apiRoute);
+    } catch (err) {
+      dispatch(setHBIDataFetchState('error'));
+      if (err instanceof api.ApiError) dispatch(setError(err.message));
+      else {
+        dispatch(
+          setError(
+            'Die Daten für diesen Abschnitt konnten nicht geladen werden. Bitte versuchen Sie es später noch einmal.'
+          )
+        );
+        throw err;
+      }
+    }
+
+    dispatch(setHbiData(hbiData));
+    dispatch(setHBIDataFetchState('success'));
   };
 }
 
@@ -372,6 +433,8 @@ type MapStateAction =
   | GeocodeAddressSuccess
   | LoadPlanningData
   | SetPlanningDataFetchState
+  | LoadHBIData
+  | SetHBIDataFetchState
   | SetActiveSection
   | SetActiveView
   | SetError
@@ -395,6 +458,7 @@ export default function MapStateReducer(
     case SET_ACTIVE_SECTION:
     case SET_ERROR:
     case SET_HAS_MOVED:
+    case SET_HBI_DATA:
     case SET_PLANNING_DATA:
     case SET_POPUP_DATA:
     case SET_POPUP_LOCATION:
@@ -405,6 +469,11 @@ export default function MapStateReducer(
     case UPDATE_HISTORY:
       // @ts-ignore
       return { ...state, ...action.payload };
+    case SET_HBI_DATA_FETCH_STATE:
+      return {
+        ...state,
+        hbiDataFetchState: (action as SetHBIDataFetchState).state,
+      };
     case SET_PLANNING_DATA_FETCH_STATE:
       return {
         ...state,
