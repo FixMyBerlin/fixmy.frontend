@@ -63,6 +63,8 @@ export const HBIStatus = ({ openDetail }) => {
 
   const hbi = useTypedSelector(selectors.getCurrentHBI);
 
+  if (hbi == null) return null;
+
   const orientationNames = getOrientationNames(
     section.side0_orientation,
     section.side1_orientation

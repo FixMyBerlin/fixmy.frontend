@@ -24,6 +24,7 @@ const arrowSize = 19;
 const MoreButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+  padding-bottom: 10px;
 
   ${media.m`
     padding-bottom: 0;
