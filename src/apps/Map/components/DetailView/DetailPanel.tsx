@@ -87,8 +87,9 @@ const Name = (data: HBIData) => {
     return data.street_name;
   }
 
-  if (data.address) {
-    return formatAddressString(data.address);
+  // todo: is this ever accessed?
+  if ((data as any).address) {
+    return formatAddressString((data as any).address);
   }
 
   return 'Abschnittsname';
@@ -185,25 +186,5 @@ const DetailPanel = ({ children, subtitle = null, onClose = () => null }) => {
     </DetailWrapper>
   );
 };
-
-//   DetailWrapperComp.propTypes = {
-//     activeView: PropTypes.string,
-//     apiEndpoint: PropTypes.string.isRequired,
-//     onCloseRoute: PropTypes.string,
-//     onClose: PropTypes.func,
-//     subtitle: PropTypes.string,
-//     history: ReactRouterPropTypes.history.isRequired,
-//     match: ReactRouterPropTypes.match.isRequired,
-//   };
-
-//   DetailWrapperComp.defaultProps = {
-//     activeView: 'planungen',
-//     onCloseRoute: '/',
-//     onClose: () => {},
-//     subtitle: null,
-//   };
-
-//   return withRouter(DetailWrapperComp);
-// }
 
 export default DetailPanel;
