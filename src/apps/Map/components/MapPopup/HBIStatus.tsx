@@ -90,7 +90,11 @@ export const HBIStatus = ({ openDetail }) => {
       </SectionLeft>
 
       <SectionCenter>
-        <HBISign onClick={openDetail} color={hbi[BOTH_SIDES].color} />
+        <HBISign
+          onClick={openDetail}
+          level={hbi[BOTH_SIDES].level}
+          color={hbi[BOTH_SIDES].color}
+        />
       </SectionCenter>
 
       <Section>
