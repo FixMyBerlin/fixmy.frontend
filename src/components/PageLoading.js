@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropagateLoader from 'react-spinners/PropagateLoader';
-import logger from '~/utils/logger';
+import styled from 'styled-components';
+
 import config from '~/config';
+import logger from '~/utils/logger';
 
 const LoaderWrapper = styled.div`
   width: 100%;

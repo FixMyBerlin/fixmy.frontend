@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
-import ToggleSwitch from 'react-toggle-switch';
 import { withRouter } from 'react-router-dom';
+import ToggleSwitch from 'react-toggle-switch';
+import styled from 'styled-components';
 
+import Label from '~/components2/Label';
 import config from '~/config';
-import { media } from '~/styles/utils';
 import BikeIcon from '~/images/bike.svg';
 import PylonIcon from '~/images/poempel.svg';
-import Label from '~/components2/Label';
+import { media } from '~/styles/utils';
 
 const MapSwitchWrapper = styled.div`
   display: flex;

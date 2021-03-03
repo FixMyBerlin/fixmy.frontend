@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import { close } from '~/AppState';
+import AnchorItem from '~/components/Menu/AnchorItem';
+import NavItem from '~/components/Menu/NavItem';
+import SvgIcon from '~/components/SvgIcon';
+import config from '~/config';
 import Store from '~/store';
 
-import config from '~/config';
-import { close } from '~/AppState';
-import NavItem from '~/components/Menu/NavItem';
-import AnchorItem from '~/components/Menu/AnchorItem';
-import SvgIcon from '~/components/SvgIcon';
 import Separator from './Separator';
 
 const NavBody = styled.nav`

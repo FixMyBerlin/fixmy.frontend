@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import Markdown from 'react-markdown';
+import styled from 'styled-components';
 
-import config from '~/config';
-import { getTitleStyles } from '~/components/Title';
+import { getLinkStyles } from '~/components/Link';
 import { getSectionTitleStyles } from '~/components/SectionTitle';
 import { getTextStyles } from '~/components/Text';
-import { getLinkStyles } from '~/components/Link';
+import { getTitleStyles } from '~/components/Title';
+import config from '~/config';
 
 const ImageContext = require.context('~/images', true);
 

@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+
 import Button from '~/components/Button';
-import logger from '~/utils/logger';
 import config from '~/config';
+import logger from '~/utils/logger';
 
 const Div = styled.div`
   position: fixed;

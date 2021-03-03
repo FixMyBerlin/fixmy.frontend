@@ -1,5 +1,6 @@
-import { cyElem } from '~/../cypress/support/utils';
 import config from '~/pages/Reports/config';
+
+import { cyElem } from '~/../cypress/support/utils';
 
 describe('The reports landing page', () => {
   before(() => {

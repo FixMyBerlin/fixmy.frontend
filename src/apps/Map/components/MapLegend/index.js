@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import { orientation } from '~/styles/utils';
 import Brace from '~/apps/Map/components/Brace';
+import { orientation } from '~/styles/utils';
 
 import HBILegend from './HBILegend';
 import PlanningLegend from './PlanningLegend';

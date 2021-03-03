@@ -1,6 +1,6 @@
+import { Field } from 'formik';
 import React from 'react';
 import styled from 'styled-components';
-import { Field } from 'formik';
 
 import FormFieldError from '~/components/FormFieldError';
 

@@ -1,20 +1,20 @@
 /* eslint class-methods-use-this: 0 */
-import React, { PureComponent } from 'react';
+import ky from 'ky';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import ky from 'ky';
+import styled from 'styled-components';
 
-import config from '~/config';
-import { media } from '~/styles/utils';
-import Store from '~/store';
 import { setView } from '~/apps/Map/MapState';
 import { getCenterFromGeom } from '~/apps/Map/map-utils';
-import PinIcon from '~/images/pin.svg';
-import Label from '~/components2/Label';
-import logger from '~/utils/logger';
 import { IconButton } from '~/components2/Button';
+import Label from '~/components2/Label';
+import config from '~/config';
+import PinIcon from '~/images/pin.svg';
+import Store from '~/store';
+import { media } from '~/styles/utils';
+import logger from '~/utils/logger';
 
 const DetailWrapper = styled.div`
   position: absolute;

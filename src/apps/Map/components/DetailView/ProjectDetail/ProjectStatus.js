@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import config from '~/config';
-import ProjectStatusChart from './ProjectStatusChart';
+
 import ProjectChecklist from './ProjectChecklist';
+import ProjectStatusChart from './ProjectStatusChart';
 
 const DetailButton = styled.button`
   border: 1px solid ${config.colors.interaction};

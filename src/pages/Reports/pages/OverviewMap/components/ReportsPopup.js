@@ -1,15 +1,15 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
 
-import config from '~/pages/Reports/config';
-import { media } from '~/styles/utils';
-import { actions } from '~/pages/Reports/state/OverviewMapState';
-import { MapPopup } from '~/components2/MapPopup';
 import Button from '~/components/Button';
 import Title from '~/components/Title';
+import { MapPopup } from '~/components2/MapPopup';
 import { STATUS_PLANNING } from '~/pages/Reports/apiservice';
+import config from '~/pages/Reports/config';
+import { actions } from '~/pages/Reports/state/OverviewMapState';
+import { media } from '~/styles/utils';
 
 const PreviewImage = styled.div`
   height: 200px;

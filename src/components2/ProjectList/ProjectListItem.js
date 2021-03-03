@@ -1,17 +1,17 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
-import slugify from 'slugify';
 import { generatePath } from 'react-router-dom';
+import slugify from 'slugify';
+import styled from 'styled-components';
 
-import config from '~/config';
-import { numberFormat, getRVALength } from '~/utils/utils';
-import Label from '~/components2/Label';
 import Button from '~/components/Button';
+import Label from '~/components2/Label';
+import config from '~/config';
 import HeartIcon from '~/images/heart.svg';
-import DraftMarker from '~/images/planning-icons/konzept-marker.png';
-import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
+import DraftMarker from '~/images/planning-icons/konzept-marker.png';
+import PlanningMarker from '~/images/planning-icons/planung-marker.png';
+import { numberFormat, getRVALength } from '~/utils/utils';
 
 const icons = {
   draft: DraftMarker,

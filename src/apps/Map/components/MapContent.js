@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Route } from 'react-router-dom';
+import styled from 'styled-components';
 
-import config from '~/config';
-import { orientation } from '~/styles/utils';
 import MapLegend from '~/apps/Map/components/MapLegend';
 import MapSwitch from '~/apps/Map/components/MapSwitch';
+import config from '~/config';
+import { orientation } from '~/styles/utils';
 
 function getHeight(props) {
   if (props.isEmbedMode) {

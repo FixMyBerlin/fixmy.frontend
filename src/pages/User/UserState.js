@@ -1,6 +1,7 @@
 import uuidv4 from 'uuid/v4';
 
-import { set, remove, get } from '~/services/storage';
+import config from '~/config';
+import history from '~/history';
 import {
   apiSignup,
   apiLogin,
@@ -11,8 +12,7 @@ import {
   apiPasswordForgot,
   apiLikes,
 } from '~/pages/User/apiservice';
-import history from '~/history';
-import config from '~/config';
+import { set, remove, get } from '~/services/storage';
 
 const SIGNUP = 'User/UserState/SIGNUP';
 const SIGNUP_SUCCESS = 'User/UserState/SIGNUP_SUCCESS';

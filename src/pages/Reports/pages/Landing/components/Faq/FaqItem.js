@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import Collapsible from 'react-collapsible';
 import PropTypes from 'prop-types';
+import React from 'react';
+import Collapsible from 'react-collapsible';
+import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
 import Text from '~/components/Text';
+import config from '~/pages/Reports/config';
 
 const StyledText = styled(Text)`
   font-size: 16px;

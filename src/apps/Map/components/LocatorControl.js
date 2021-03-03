@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { oneLine } from 'common-tags';
 import debug from 'debug';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import config from '~/config';
-import { getGeoLocation } from '~/apps/Map/map-utils';
 import MapControl from '~/apps/Map/components/MapControl';
-import { isNumeric } from '~/utils/utils';
-import Loader from '~/components/Loader';
-import LocatorIcon from '~/images/location.svg';
+import { getGeoLocation } from '~/apps/Map/map-utils';
 import ErrorMessage from '~/components/ErrorMessage';
+import Loader from '~/components/Loader';
+import config from '~/config';
+import LocatorIcon from '~/images/location.svg';
+import { isNumeric } from '~/utils/utils';
 
 const logger = debug('fmc:map:locator');
 

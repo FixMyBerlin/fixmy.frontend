@@ -1,9 +1,9 @@
-import * as utils from '../map-utils';
 import config from '~/config';
 
+import * as utils from '../map-utils';
+import mapboxHBIFilter from './fixtures/mapboxHBIFilter.json';
 import mapBoxPlanningsFilter from './fixtures/mapboxPlanningsFilter.json';
 import mapboxPopupFilter from './fixtures/mapboxPopupFilter.json';
-import mapboxHBIFilter from './fixtures/mapboxHBIFilter.json';
 
 const view = {
   zoom: true,

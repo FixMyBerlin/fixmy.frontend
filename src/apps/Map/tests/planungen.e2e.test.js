@@ -1,8 +1,9 @@
-import { cyElem } from 'cypress/support/utils';
 import { generatePath } from 'react-router-dom';
 
-import { clickRandomMarker, goToProjects } from './utils';
 import config from '~/config';
+
+import { clickRandomMarker, goToProjects } from './utils';
+import { cyElem } from 'cypress/support/utils';
 
 const adressRegex = new RegExp("[A-Za-z0-9'\\.\\-\\s\\,]");
 
