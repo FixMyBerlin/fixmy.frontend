@@ -8,7 +8,7 @@ import ConstructionIcon from '~/images/planning-icons/bau.svg';
 import DoneIcon from '~/images/planning-icons/fertig.svg';
 
 import Store from '~/store';
-import Label from '~/components/Label';
+import Label from '~/components2/Label';
 import { togglePlanningFilter } from '~/apps/Map/MapState';
 import LegendWrapper from './LegendWrapper';
 import LegendImageWrapper from './LegendImageWrapper';

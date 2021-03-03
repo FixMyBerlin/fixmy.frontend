@@ -6,7 +6,7 @@ import config from '~/config';
 import Title from '~/components/Title';
 import SectionTitle from '~/components/SectionTitle';
 import Text from '~/components/Text';
-import Label from '~/components/Label';
+import Label from '~/components2/Label';
 import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';
 import ImageSlider from '~/apps/Map/components/DetailView/ImageSlider';
 

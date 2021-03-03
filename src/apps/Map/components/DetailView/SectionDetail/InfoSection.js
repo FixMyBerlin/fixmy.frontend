@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import config from '~/config';
 import { numberFormat } from '~/utils/utils';
 import SectionTitle from '~/components/SectionTitle';
-import Label from '~/components/Label';
+import Label from '~/components2/Label';
 
 const InfoSection = styled.div`
   margin: 32px 0 24px 0;

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
 import config from '~/config';
-import Label from '~/components/Label';
+import Label from '~/components2/Label';
 import Button from '~/components/Button';
 import HeartIcon from '~/images/heart.svg';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';

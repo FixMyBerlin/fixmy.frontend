@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
 import { actions } from '~/pages/Reports/state/OverviewMapState';
-import MapPopupWrapper from '~/components/MapPopupWrapper';
+import { MapPopup } from '~/components2/MapPopup';
 import Button from '~/components/Button';
 import Title from '~/components/Title';
 import { STATUS_PLANNING } from '~/pages/Reports/apiservice';
@@ -25,6 +25,10 @@ const ButtonWrapper = styled.div`
   ${media.m`
     padding-bottom: 0;
   `}
+`;
+
+const Wrapper = styled(MapPopup)`
+  padding: 16px;
 `;
 
 class ReportsPopup extends PureComponent {
@@ -59,14 +63,13 @@ class ReportsPopup extends PureComponent {
     }
 
     return (
-      <MapPopupWrapper
+      <Wrapper
         x={x}
         y={y}
         data={selectedReport}
         onClick={() => this.onDetailClick()}
         onClose={() => onClose()}
         showSubline={false}
-        style={{ padding: 16 }}
       >
         {photoSrc != null && (
           <Link to={`${config.routes.reports.map}/${selectedReport.id}`}>
@@ -86,7 +89,7 @@ class ReportsPopup extends PureComponent {
             mehr Infos
           </Button>
         </ButtonWrapper>
-      </MapPopupWrapper>
+      </Wrapper>
     );
   }
 }

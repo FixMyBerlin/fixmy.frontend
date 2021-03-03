@@ -114,15 +114,14 @@ const Routes = ({ token }) => (
     />
 
     {/* map pages */}
-    {config.routes.status != null && (
-      <Route path={config.routes.status} component={MapView} />
+    {config.routes.map?.hbiIndex != null && (
+      <Route path={config.routes.map.hbiIndex} component={MapView} />
     )}
-    {config.routes.projects != null && (
-      <Route path={config.routes.projects} component={MapView} />
+    {config.routes.map?.projectsIndex != null && (
+      <Route path={config.routes.map.projectsIndex} component={MapView} />
     )}
-
-    {config.routes.popupbikelanes != null && (
-      <Route path={config.routes.popupbikelanes} component={MapView} />
+    {config.routes.map?.popupIndex != null && (
+      <Route path={config.routes.map.popupIndex} component={MapView} />
     )}
 
     {/* reports page */}
