@@ -8,7 +8,6 @@ import { media } from '~/styles/utils';
 import BikeIcon from '~/images/bike.svg';
 import PylonIcon from '~/images/poempel.svg';
 import Label from '~/components2/Label';
-import SvgIcon from '~/components/SvgIcon';
 
 const MapSwitchWrapper = styled.div`
   display: flex;
@@ -34,6 +33,10 @@ const MapSwitchItem = styled.div`
   width: 33.3%;
   text-align: center;
   position: relative;
+
+  &:nth-child(2) {
+    padding: 0 10px;
+  }
 `;
 
 const MapSwitchItemRight = styled(MapSwitchItem)`
@@ -93,14 +96,6 @@ const SwitchDescription = styled.div`
   user-select: none;
 `;
 
-const VorlaeufigIcon = styled(SvgIcon)`
-  position: absolute;
-  top: -35px;
-  left: 25px;
-  transform: rotate(-5deg);
-  z-index: 999;
-`;
-
 class MapSwitch extends PureComponent {
   handleChange = (checked) => () => {
     const to = checked
@@ -116,11 +111,7 @@ class MapSwitch extends PureComponent {
     return (
       <MapSwitchWrapper>
         <MapSwitchItem>
-          {!isPlanningView && <VorlaeufigIcon type="vorlaeufig" />}
-          <SwitchLabel isActive={!isPlanningView}>Happy-Bike-Level</SwitchLabel>
-          <SwitchDescription isActive={!isPlanningView}>
-            <Label light>Wie radfreundlich sind Berlins Straßen?</Label>
-          </SwitchDescription>
+          <SwitchLabel isActive={!isPlanningView}>Happy-Bike-Index</SwitchLabel>
         </MapSwitchItem>
         <MapSwitchItem justify="center">
           <Switch
