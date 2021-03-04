@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/config';
-import HBIBike3 from './images/hbi-bike-3.svg';
-import HBIBike2 from './images/hbi-bike-2.svg';
-import HBIBike1 from './images/hbi-bike-1.svg';
+
+import { HBI_WORST, HBI_BAD, HBI_OK, HBI_SUPER } from '../../constants';
 import HBIBike0 from './images/hbi-bike-0.svg';
+import HBIBike1 from './images/hbi-bike-1.svg';
+import HBIBike2 from './images/hbi-bike-2.svg';
+import HBIBike3 from './images/hbi-bike-3.svg';
 
 const HBISign = styled.div<{
   borderWeight: string;
@@ -40,7 +42,7 @@ type Props = {
   level: 0 | 1 | 2 | 3;
   color: string;
   className?: string;
-  onClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  onClick?: (ev: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   size?: number;
 };
 
@@ -52,12 +54,13 @@ const HBISignComp = ({
   onClick,
   size = 77,
 }: Props) => {
-  const Icon = {
-    0: HBIBike3,
-    1: HBIBike2,
-    2: HBIBike1,
-    3: HBIBike0,
-  }[level];
+  const Icon =
+    {
+      [HBI_WORST]: HBIBike0,
+      [HBI_BAD]: HBIBike1,
+      [HBI_OK]: HBIBike2,
+      [HBI_SUPER]: HBIBike3,
+    }[level] || HBIBike0;
   return (
     <HBISign
       borderWeight={borderWeight.toString()}

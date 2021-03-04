@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import { connect, ConnectedProps } from 'react-redux';
 import {
   generatePath,
@@ -7,17 +6,20 @@ import {
   withRouter,
 } from 'react-router-dom';
 import slugify from 'slugify';
+import styled from 'styled-components';
 
-import { RootState } from '~/store';
 import * as MapActions from '~/apps/Map/MapState';
-import { media } from '~/styles/utils';
-import { ProjectStatus } from './ProjectStatus';
-import { HBIStatus } from './HBIStatus';
-import { MapPopup as MapPopupOuter } from '~/components2/MapPopup';
-import { Button } from '~/components2/Button';
 import Brace from '~/apps/Map/components/Brace';
 import resetMap from '~/apps/Map/reset';
+import { Button } from '~/components2/Button';
+import { MapPopup as MapPopupOuter } from '~/components2/MapPopup';
 import config from '~/config';
+import { RootState } from '~/store';
+import { media } from '~/styles/utils';
+
+import { SectionPin } from '../SectionPin';
+import { HBIStatus } from './HBIStatus';
+import { ProjectStatus } from './ProjectStatus';
 
 const arrowSize = 19;
 
@@ -96,6 +98,7 @@ class MapPopup extends PureComponent<
         onClick={() => this.openDetailView()}
         onClose={() => resetMap()}
         showSubline={false}
+        icon={<SectionPin isRoad={data.is_road} />}
       >
         <>
           {isPlanningView && <ProjectStatus />}

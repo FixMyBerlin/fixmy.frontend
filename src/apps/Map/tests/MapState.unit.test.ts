@@ -1,9 +1,8 @@
+import { rest } from 'msw';
 import { AnyAction } from 'redux';
 import configureMockStore from 'redux-mock-store';
 import thunk, { ThunkDispatch } from 'redux-thunk';
-import { rest } from 'msw';
 
-import { mswServer } from '~/../jest/msw/mswServer';
 import {
   loadPlanningData,
   setPlanningData,
@@ -14,10 +13,13 @@ import {
 } from '~/apps/Map/MapState';
 import config from '~/config';
 import { RootState } from '~/store';
-import planningsResponseFixture from './fixtures/planningsResponse.json';
+
+import { HBI_STOPS } from '../constants';
 import featureIntersection from './fixtures/featureIntersection.json';
 import featureSection from './fixtures/featureSection.json';
-import { HBI_STOPS } from '../constants';
+import planningsResponseFixture from './fixtures/planningsResponse.json';
+
+import { mswServer } from '~/../jest/msw/mswServer';
 
 type RootStateSlice = Pick<RootState, 'MapState'>;
 
@@ -63,8 +65,8 @@ describe('MapState.ts', () => {
   });
 
   describe('selectors', () => {
-    describe('getCurrentHBI', () => {
-      it('composes hbi as expected for intersections', () => {
+    describe('getPopupHBI', () => {
+      it('composes hbi as expected for intersections from mapbox', () => {
         const store = mockStore({
           MapState: {
             ...initialState,
@@ -94,9 +96,9 @@ describe('MapState.ts', () => {
               '1': null,
               '2': {
                 killed: 0,
-                level: 3,
-                severelyInjured: 3,
-                slightlyInjured: 10,
+                risk_level: 3,
+                severely_injured: 3,
+                slightly_injured: 10,
                 source: `Polizei Berlin: Unfälle mit Radfahrenden, Daten aus 2017-2018 und 
 Unfallatlas, Statistische Ämter des Bundes und der Länder, Daten aus 3096`,
               },
@@ -104,10 +106,10 @@ Unfallatlas, Statistische Ämter des Bundes und der Länder, Daten aus 3096`,
           },
         };
         // @ts-ignore
-        expect(selectors.getCurrentHBI(store.getState())).toEqual(expected);
+        expect(selectors.getPopupHBI(store.getState())).toEqual(expected);
       });
 
-      it('composes hbi as expected for sections', () => {
+      it('composes hbi as expected for sections from mapbox', () => {
         const store = mockStore({
           MapState: {
             ...initialState,
@@ -140,7 +142,7 @@ Unfallatlas, Statistische Ämter des Bundes und der Länder, Daten aus 3096`,
           },
         };
         // @ts-ignore
-        expect(selectors.getCurrentHBI(store.getState())).toEqual(expected);
+        expect(selectors.getPopupHBI(store.getState())).toEqual(expected);
       });
     });
   });

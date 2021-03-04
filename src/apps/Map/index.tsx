@@ -1,34 +1,36 @@
 import React, { useEffect } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import {
   Route,
   RouteComponentProps,
   useLocation,
   withRouter,
 } from 'react-router-dom';
-import { connect, ConnectedProps } from 'react-redux';
 import styled from 'styled-components';
 
-import * as MapActions from './MapState';
-import LocatorControl from './components/LocatorControl';
-import { MapPopup } from './components/MapPopup';
-import MapControl from './components/MapControl';
-import MapContent from './components/MapContent';
-import SearchBar from './components/SearchBar';
-import FMBCredits from './components/FMBCredits';
-import SectionDetail from './components/DetailView/SectionDetail';
-import ProjectDetail from './components/DetailView/ProjectDetail';
 import ErrorMessage from '~/components/ErrorMessage';
 import { Logo as FMBLogo } from '~/components2/Logo';
+import config from '~/config';
 import Store, { RootState } from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
+
+import * as MapActions from './MapState';
+import { DetailPanel } from './components/DetailView';
+import ProjectDetail from './components/DetailView/ProjectDetail';
+import { SectionDetail } from './components/DetailView/SectionDetail';
+import FMBCredits from './components/FMBCredits';
+import LocatorControl from './components/LocatorControl';
+import MapContent from './components/MapContent';
+import MapControl from './components/MapControl';
+import { MapPopup } from './components/MapPopup';
+import SearchBar from './components/SearchBar';
 import { WebglMap } from './components/WebglMap';
-import config from '~/config';
 
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: column;c
   position: relative;
   overflow: hidden;
 `;
@@ -140,19 +142,11 @@ const MapView = ({
           isEmbedMode={isEmbedMode}
         />
 
-        <Route
-          exact
-          path={config.routes.map.hbiDetail}
-          render={({ match }) => (
-            <SectionDetail
-              apiEndpoint="sections"
-              onCloseRoute={config.routes.map.hbiIndex}
-              activeView={activeLayer}
-              token={token}
-              match={match}
-            />
-          )}
-        />
+        <Route exact path={config.routes.map.hbiDetail}>
+          <DetailPanel>
+            <SectionDetail />
+          </DetailPanel>
+        </Route>
         <Route
           exact
           path={config.routes.map.projectsDetail}

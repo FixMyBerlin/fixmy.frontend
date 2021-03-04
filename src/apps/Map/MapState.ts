@@ -1,14 +1,22 @@
-import { match, matchPath } from 'react-router-dom';
-import qs from 'qs';
 import ky from 'ky';
+import qs from 'qs';
+import { match, matchPath } from 'react-router-dom';
 import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 
 import config from '~/config';
-import type { HBI, HBISide, MapConfig, Side } from './types';
 import api from '~/services/api/';
 import { RootState } from '~/store';
+
 import { HBI_STOPS, BOTH_SIDES, LEFT_SIDE, RIGHT_SIDE } from './constants';
+import type {
+  HBI,
+  HBILevel,
+  HBISide,
+  MapConfig,
+  Side,
+  VisionZeroIndex,
+} from './types';
 
 const UPDATE_HISTORY = 'Map/MapState/UPDATE_HISTORY';
 const SET_ACTIVE_SECTION = 'Map/MapState/SET_ACTIVE_SECTION';
@@ -22,28 +30,79 @@ const SET_PLANNING_FILTER = 'Map/MapState/SET_PLANNING_FILTER';
 const SET_POPUP_DATA = 'Map/MapState/SET_POPUP_DATA';
 const SET_POPUP_LOCATION = 'Map/MapState/SET_POPUP_LOCATION';
 const SET_POPUP_VISIBLE = 'Map/MapState/SET_POPUP_VISIBLE';
-export const SET_PLANNING_DATA = 'Map/MapState/SET_PLANNING_DATA';
 const SET_ERROR = 'Map/MapState/SET_ERROR';
 const UNSET_ERROR = 'Map/MapState/UNSET_ERROR';
 
+export const SET_PLANNING_DATA = 'Map/MapState/SET_PLANNING_DATA';
 const SET_PLANNING_DATA_FETCH_STATE =
   'Map/MapState/SET_PLANNING_DATA_FETCH_STATE';
+export const SET_HBI_DATA = 'Map/MapState/SET_HBI_DATA';
+const SET_HBI_DATA_FETCH_STATE = 'Map/MapState/SET_HBI_DATA_FETCH_STATE';
 
 // parsed from the first path segment of the url
 type MapView = 'zustand' | 'planungen' | 'popupbikelanes';
 
 // todo: define this based on fixmy.platform serializer & model
-type ProjectData = any;
-type HBIData = any;
+type ProjectFromMapbox = any;
 
-type PopupData = ProjectData | HBIData;
+export type SectionAccidents = {
+  killed: number;
+  // eslint-disable-next-line camelcase
+  risk_level: HBILevel;
+  // eslint-disable-next-line camelcase
+  severely_injured: number;
+  side: Side;
+  // eslint-disable-next-line camelcase
+  slightly_injured: number;
+  source: string;
+};
+
+type SectionDetails = any;
+
+export type HBIData = {
+  accidents: SectionAccidents[];
+  borough: string;
+  details: SectionDetails[];
+  geometry: any;
+  // eslint-disable-next-line camelcase
+  is_road: boolean;
+  // eslint-disable-next-line camelcase
+  street_category?: any;
+  // eslint-disable-next-line camelcase
+  street_name: string;
+  suffix?: string;
+  url: string;
+};
+
+type ProjectData = any;
+
+type HBIFromMapbox = {
+  borough: string;
+  id: number;
+  // eslint-disable-next-line camelcase
+  is_road: boolean;
+  // eslint-disable-next-line camelcase
+  side2_killed: number;
+  // eslint-disable-next-line camelcase
+  side2_risk_level: VisionZeroIndex;
+  // eslint-disable-next-line camelcase
+  side2_severely_injured: number;
+  // eslint-disable-next-line camelcase
+  side2_slightly_injured: number;
+  // eslint-disable-next-line camelcase
+  side2_source: string;
+  // eslint-disable-next-line camelcase
+  street_name: string;
+};
+
+type PopupData = ProjectFromMapbox | HBIFromMapbox;
 
 type MapPath = {
   activeView?: MapView;
   activeSection?: string;
 };
 
-type PlanningDataFetchState = 'waiting' | 'pending' | 'success' | 'error';
+export type FetchState = 'waiting' | 'pending' | 'success' | 'error';
 
 export type MapState = MapConfig['view'] & {
   activeView?: MapView;
@@ -57,7 +116,9 @@ export type MapState = MapConfig['view'] & {
   filterPlannings: [boolean, boolean, boolean, boolean];
   hasMoved: boolean;
   planningData?: ProjectData;
-  planningDataFetchState: PlanningDataFetchState;
+  planningDataFetchState: FetchState;
+  hbiData?: HBIData;
+  hbiDataFetchState: FetchState;
   popupData?: PopupData;
   popupLocation: null | { x: number; y: number };
   currentHBI?: HBI;
@@ -78,6 +139,8 @@ export const initialState: MapState = {
   hasMoved: false,
   planningData: false,
   planningDataFetchState: 'waiting',
+  hbiData: null,
+  hbiDataFetchState: 'waiting',
   popupData: null,
   popupLocation: null,
   currentHBI: null,
@@ -101,6 +164,7 @@ export const updateHistory = (path: string) => (dispatch: Dispatch) => {
   });
   const { activeSection, activeView } = pathMatch.params;
   const parsedSection = parseInt(activeSection, 10);
+
   dispatch({
     type: UPDATE_HISTORY,
     payload: {
@@ -180,13 +244,11 @@ export function setView(view: SetView['payload']): SetView {
 type SetPopupData = {
   type: typeof SET_POPUP_DATA;
   payload: {
-    popupData: ProjectData | null;
+    popupData: PopupData | null;
   };
 };
 
-export function setPopupData(
-  popupData: ProjectData | null = null
-): SetPopupData {
+export function setPopupData(popupData: PopupData | null = null): SetPopupData {
   return { type: SET_POPUP_DATA, payload: { popupData } };
 }
 
@@ -247,11 +309,11 @@ export function setPopupVisible(isVisible: boolean): SetPopupVisible {
 
 type SetPlanningDataFetchState = {
   type: typeof SET_PLANNING_DATA_FETCH_STATE;
-  state: PlanningDataFetchState;
+  state: FetchState;
 };
 
 export const setPlanningDataFetchState = (
-  state: PlanningDataFetchState
+  state: FetchState
 ): SetPlanningDataFetchState => ({
   type: SET_PLANNING_DATA_FETCH_STATE,
   state,
@@ -293,6 +355,60 @@ export function loadPlanningData() {
 
     dispatch(setPlanningData(planningData));
     dispatch(setPlanningDataFetchState('success'));
+  };
+}
+
+type SetHBIDataFetchState = {
+  type: typeof SET_HBI_DATA_FETCH_STATE;
+  state: FetchState;
+};
+
+export const setHBIDataFetchState = (
+  state: FetchState
+): SetHBIDataFetchState => ({
+  type: SET_HBI_DATA_FETCH_STATE,
+  state,
+});
+
+export const setHbiData = (hbiData: HBIData) => ({
+  type: SET_HBI_DATA,
+  payload: { hbiData },
+});
+
+export interface LoadHBIData {
+  type: typeof SET_HBI_DATA;
+  payload: {
+    hbiData: any;
+  };
+}
+
+export function loadHBIData() {
+  return async (dispatch, getState) => {
+    const { hbiDataFetchState, activeSection } = getState().MapState;
+    if (hbiDataFetchState === 'pending') return;
+
+    dispatch(setHBIDataFetchState('pending'));
+
+    let hbiData;
+    try {
+      const apiRoute = `sections/${activeSection}`;
+      hbiData = await api.get(apiRoute);
+    } catch (err) {
+      dispatch(setHBIDataFetchState('error'));
+      if (err instanceof api.ApiError) dispatch(setError(err.message));
+      else {
+        dispatch(
+          setError(
+            'Die Daten für diesen Abschnitt konnten nicht geladen werden. Bitte versuchen Sie es später noch einmal.'
+          )
+        );
+        throw err;
+      }
+    }
+
+    // todo: make api.get generic
+    dispatch(setHbiData((hbiData as unknown) as HBIData));
+    dispatch(setHBIDataFetchState('success'));
   };
 }
 
@@ -372,6 +488,8 @@ type MapStateAction =
   | GeocodeAddressSuccess
   | LoadPlanningData
   | SetPlanningDataFetchState
+  | LoadHBIData
+  | SetHBIDataFetchState
   | SetActiveSection
   | SetActiveView
   | SetError
@@ -395,6 +513,7 @@ export default function MapStateReducer(
     case SET_ACTIVE_SECTION:
     case SET_ERROR:
     case SET_HAS_MOVED:
+    case SET_HBI_DATA:
     case SET_PLANNING_DATA:
     case SET_POPUP_DATA:
     case SET_POPUP_LOCATION:
@@ -405,6 +524,11 @@ export default function MapStateReducer(
     case UPDATE_HISTORY:
       // @ts-ignore
       return { ...state, ...action.payload };
+    case SET_HBI_DATA_FETCH_STATE:
+      return {
+        ...state,
+        hbiDataFetchState: (action as SetHBIDataFetchState).state,
+      };
     case SET_PLANNING_DATA_FETCH_STATE:
       return {
         ...state,
@@ -441,9 +565,9 @@ const getHBIFromComponents = (
 ): HBISide => {
   const data = visionZeroIndex[side];
   const level =
-    data == null || Number.isNaN(data.level)
+    data == null || Number.isNaN(data.risk_level)
       ? null
-      : ((3 - data.level) as HBISide['level']);
+      : ((3 - data.risk_level) as HBISide['level']);
   const color = HBI_STOPS[level]?.color || config.colors.darkgrey;
   const label = HBI_STOPS[level]?.label || 'Nicht genug Daten';
   return {
@@ -456,8 +580,8 @@ const getHBIFromComponents = (
 /**
  * Returns vison zero data for a section or `null`.
  */
-const visionZeroForSection = (
-  section: HBIData
+const visionZeroFromMapbox = (
+  section: HBIFromMapbox
 ): HBI['components']['visionZeroIndex'] => {
   const rv = {
     [BOTH_SIDES]: null,
@@ -467,25 +591,65 @@ const visionZeroForSection = (
 
   if (section.side2_risk_level != null) {
     rv[BOTH_SIDES] = {
-      level: section.side2_risk_level,
+      risk_level: section.side2_risk_level,
       source: section.side2_source,
       killed: section.side2_killed,
-      severelyInjured: section.side2_severely_injured,
-      slightlyInjured: section.side2_slightly_injured,
+      severely_injured: section.side2_severely_injured,
+      slightly_injured: section.side2_slightly_injured,
     };
   }
   return rv;
 };
 
+const visionZeroFromAPI = (
+  data: HBIData
+): HBI['components']['visionZeroIndex'] => {
+  const visionZeroIndex = {
+    [BOTH_SIDES]: null,
+    [LEFT_SIDE]: null,
+    [RIGHT_SIDE]: null,
+  };
+  data.accidents.forEach((ds: SectionAccidents) => {
+    visionZeroIndex[ds.side] = ds;
+  });
+  return visionZeroIndex;
+};
+
 /**
- * Selector for all HBI data derived from current popup data
+ * Return HBI data for section defined by clicking on the map
+ *
+ * Returns null if active view is not HBI map or no map point has been clicked.
  */
-const getCurrentHBI = ({ MapState }: RootState): HBI => {
+const getPopupHBI = ({ MapState }: RootState): HBI => {
   if (MapState.activeView !== 'zustand' || MapState.popupData == null)
     return null;
 
   const components: HBI['components'] = {
-    visionZeroIndex: visionZeroForSection(MapState.popupData),
+    visionZeroIndex: visionZeroFromMapbox(MapState.popupData),
+  };
+
+  return {
+    [BOTH_SIDES]: getHBIFromComponents(components, BOTH_SIDES),
+    [LEFT_SIDE]: getHBIFromComponents(components, LEFT_SIDE),
+    [RIGHT_SIDE]: getHBIFromComponents(components, RIGHT_SIDE),
+    components,
+  };
+};
+
+/**
+ * Return HBI data for section defined through detail view URL param
+ *
+ * Returns null if active view is not HBI map or hbi fetch state is not success.
+ */
+const getDetailsHBI = ({ MapState }: RootState): HBI => {
+  if (
+    MapState.activeView !== 'zustand' ||
+    MapState.hbiDataFetchState !== 'success'
+  )
+    return null;
+
+  const components: HBI['components'] = {
+    visionZeroIndex: visionZeroFromAPI(MapState.hbiData),
   };
 
   return {
@@ -497,5 +661,6 @@ const getCurrentHBI = ({ MapState }: RootState): HBI => {
 };
 
 export const selectors = {
-  getCurrentHBI,
+  getDetailsHBI,
+  getPopupHBI,
 };
