@@ -66,7 +66,7 @@ describe('MapState.ts', () => {
 
   describe('selectors', () => {
     describe('getPopupHBI', () => {
-      it('composes hbi as expected for intersections', () => {
+      it('composes hbi as expected for intersections from mapbox', () => {
         const store = mockStore({
           MapState: {
             ...initialState,
@@ -96,9 +96,9 @@ describe('MapState.ts', () => {
               '1': null,
               '2': {
                 killed: 0,
-                level: 3,
-                severelyInjured: 3,
-                slightlyInjured: 10,
+                risk_level: 3,
+                severely_injured: 3,
+                slightly_injured: 10,
                 source: `Polizei Berlin: Unfälle mit Radfahrenden, Daten aus 2017-2018 und 
 Unfallatlas, Statistische Ämter des Bundes und der Länder, Daten aus 3096`,
               },
@@ -109,7 +109,7 @@ Unfallatlas, Statistische Ämter des Bundes und der Länder, Daten aus 3096`,
         expect(selectors.getPopupHBI(store.getState())).toEqual(expected);
       });
 
-      it('composes hbi as expected for sections', () => {
+      it('composes hbi as expected for sections from mapbox', () => {
         const store = mockStore({
           MapState: {
             ...initialState,

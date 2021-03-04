@@ -8,13 +8,12 @@ import { FetchState, HBIData, loadHBIData, setView } from '~/apps/Map/MapState';
 import { getCenterFromGeom } from '~/apps/Map/map-utils';
 import { IconButton } from '~/components2/Button';
 import Label from '~/components2/Label';
+import { DotLoader } from '~/components2/Loaders';
 import config from '~/config';
-import PinIcon from '~/images/pin.svg';
 import Store, { useTypedSelector } from '~/store';
 import { media } from '~/styles/utils';
+
 import { SectionPin } from '../SectionPin';
-import Loader from '~/components/Loader';
-import { DotLoader } from '~/components2/Loaders';
 
 const logger = debug('fmc:map:detailWrapped');
 
@@ -35,12 +34,6 @@ const DetailWrapper = styled.div`
     width: 400px;
     box-shadow: -1px 0 6px 1px rgba(0,0,0,.3);
   `}
-`;
-
-const InfoWrapper = styled.div`
-  font-weight: 700;
-  text-align: center;
-  margin-top: 1rem;
 `;
 
 const StyledPinIcon = styled(SectionPin)`

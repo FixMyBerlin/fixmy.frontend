@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { selectors } from '~/apps/Map/MapState';
-import { BOTH_SIDES, HBI_STOPS, VZI_STOPS } from '~/apps/Map/constants';
+import { BOTH_SIDES, VZI_STOPS } from '~/apps/Map/constants';
 import Label from '~/components2/Label';
 import config from '~/config';
 import { useTypedSelector } from '~/store';
