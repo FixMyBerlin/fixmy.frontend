@@ -385,7 +385,7 @@ export interface LoadHBIData {
 export function loadHBIData() {
   return async (dispatch, getState) => {
     const { hbiDataFetchState, activeSection } = getState().MapState;
-    if (hbiDataFetchState !== 'waiting') return;
+    if (hbiDataFetchState === 'pending') return;
 
     dispatch(setHBIDataFetchState('pending'));
 

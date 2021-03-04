@@ -126,8 +126,6 @@ const DetailPanel = ({ children, subtitle = null, onClose = () => null }) => {
   );
   const [prevId, setPrevId] = useState<number | null>(null);
 
-  // useEffect(() => {}, []);
-
   useEffect(() => {
     if (sectionId !== prevId) {
       Store.dispatch<any>(loadHBIData());

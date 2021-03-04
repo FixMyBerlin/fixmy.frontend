@@ -121,8 +121,6 @@ const SectionDetails = () => {
   const hbi = useTypedSelector(selectors.getDetailsHBI);
   if (hbi == null) return null;
 
-  debugger;
-
   if (!sideData) {
     return <div>Keine Daten vorhanden.</div>;
   }
