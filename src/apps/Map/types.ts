@@ -16,7 +16,7 @@ export type Side = typeof LEFT_SIDE | typeof RIGHT_SIDE | typeof BOTH_SIDES;
 export type HBISide = {
   label: typeof HBI_STOPS[number]['label'];
   color: typeof HBI_STOPS[number]['color'];
-  level: null | 0 | 1 | 2 | 3;
+  level?: HBILevel;
 };
 
 export type HBI = {
@@ -27,7 +27,7 @@ export type HBI = {
     visionZeroIndex?: {
       [S in Side]: {
         // eslint-disable-next-line camelcase
-        risk_level: null | 0 | 1 | 2 | 3;
+        risk_level?: VisionZeroIndex;
         source: string;
         // eslint-disable-next-line camelcase
         slightly_injured: number;

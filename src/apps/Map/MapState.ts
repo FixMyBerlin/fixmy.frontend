@@ -591,7 +591,7 @@ const visionZeroFromMapbox = (
 
   if (section.side2_risk_level != null) {
     rv[BOTH_SIDES] = {
-      level: section.side2_risk_level,
+      risk_level: section.side2_risk_level,
       source: section.side2_source,
       killed: section.side2_killed,
       severely_injured: section.side2_severely_injured,
