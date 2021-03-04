@@ -1,11 +1,13 @@
+import { LEFT_SIDE, RIGHT_SIDE } from './constants';
+
 interface OrientationInfo {
-  side0: string;
-  side1: string;
+  [RIGHT_SIDE]: string;
+  [LEFT_SIDE]: string;
 }
 
 export function getOrientationNames(
-  side0: string,
-  side1: string
+  orientationRight: string,
+  orientationLeft: string
 ): OrientationInfo {
   const mapping = {
     O: 'Ostseite',
@@ -14,8 +16,8 @@ export function getOrientationNames(
     S: 'Südseite',
   };
   return {
-    side0: mapping[side0] || '',
-    side1: mapping[side1] || '',
+    [RIGHT_SIDE]: mapping[orientationRight] || '',
+    [LEFT_SIDE]: mapping[orientationLeft] || '',
   };
 }
 

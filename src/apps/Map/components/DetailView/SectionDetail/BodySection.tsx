@@ -99,32 +99,15 @@ const InfoSectionTextRight = styled.div`
   margin-left: auto;
 `;
 
-const SectionDetails = () => {
+export const BodySection = ({ orientationName, sideIndex }) => {
   const data = useTypedSelector(({ MapState }) => MapState.hbiData);
-  const [sideIndex, setSideIndex] = useState(LEFT_SIDE);
-
-  if (data == null) return null;
-
-  useEffect(() => {
-    if (data.is_road === false && sideIndex !== BOTH_SIDES)
-      setSideIndex(BOTH_SIDES);
-  }, [data]);
-
-  const { street_name: streetName, details } = data;
   const sideData = data.details[sideIndex];
-  const hasSwitchButton = data.details && data.details.length > 1;
-  const orientationNames = getOrientationNames(
-    // @ts-ignore
-    ...data.details.map((detail) => detail.orientation)
-  );
-
-  const hbi = useTypedSelector(selectors.getDetailsHBI);
-  if (hbi == null) return null;
-
   if (!sideData) {
     return <div>Keine Daten vorhanden.</div>;
   }
+  const hbi = useTypedSelector(selectors.getDetailsHBI);
 
+  const { street_name: streetName, details } = data;
   const photos =
     details.length > 2
       ? details[sideIndex + 2].photos
@@ -135,35 +118,15 @@ const SectionDetails = () => {
   const streetCategoryLabel = getStreetCategoryLabel(data);
   const infrastructureLabel = getInfrastructureLabel(sideData);
   const infrastructureDesc = getInfrastructureDesc(sideData);
-  const currentSideName = orientationNames[`side${sideIndex}`];
 
   return (
     <>
-      {hasSwitchButton && (
-        <ButtonGroup>
-          <DetailSwitch
-            activeSideIndex={sideIndex}
-            sideIndex={0}
-            title={orientationNames.side0}
-            side="left"
-            onClick={() => setSideIndex((sideIndex + 1) % 1)}
-          />
-          <DetailSwitch
-            activeSideIndex={sideIndex}
-            sideIndex={1}
-            title={orientationNames.side1}
-            side="right"
-            onClick={() => setSideIndex((sideIndex + 1) % 1)}
-          />
-        </ButtonGroup>
-      )}
-
       <ImageSlider images={photos} />
 
       <HBISignWrapper>
         <HBISign color={hbi[sideIndex].color} level={hbi[sideIndex].value} />
         <Label margin="10px 0 3px 0">
-          Happy-Bike-Level - {currentSideName}
+          Happy-Bike-Level - {orientationName}
         </Label>
         <Label light>(max 10,0)</Label>
       </HBISignWrapper>
@@ -269,5 +232,3 @@ const SectionDetails = () => {
     </>
   );
 };
-
-export default SectionDetails;

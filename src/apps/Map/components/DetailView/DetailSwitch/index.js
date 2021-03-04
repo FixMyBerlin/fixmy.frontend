@@ -55,7 +55,7 @@ export default (props) => (
     className={props.className}
     side={props.side}
     isActive={props.sideIndex === props.activeSideIndex}
-    onClick={props.onClick(props.sideIndex)}
+    onClick={props.onClick}
   >
     {props.title}
   </SwitchButton>

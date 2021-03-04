@@ -76,7 +76,7 @@ export const HBIStatus = ({ openDetail }) => {
         <SidesWrapper>
           {hbi[LEFT_SIDE].level && (
             <Label margin="0 0 10px 0">
-              {orientationNames.side0}:
+              {orientationNames[LEFT_SIDE]}:
               <LevelLabel color={hbi[LEFT_SIDE].color}>
                 {hbi[LEFT_SIDE].label}
               </LevelLabel>
@@ -84,7 +84,7 @@ export const HBIStatus = ({ openDetail }) => {
           )}
           {hbi[RIGHT_SIDE].level && (
             <Label margin="0 0 10px 0">
-              {orientationNames.side1}:
+              {orientationNames[RIGHT_SIDE]}:
               <LevelLabel color={hbi[RIGHT_SIDE].color}>
                 {hbi[RIGHT_SIDE].label}
               </LevelLabel>

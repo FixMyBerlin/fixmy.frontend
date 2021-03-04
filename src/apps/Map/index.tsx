@@ -17,7 +17,7 @@ import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 import * as MapActions from './MapState';
 import { DetailPanel } from './components/DetailView';
 import ProjectDetail from './components/DetailView/ProjectDetail';
-import SectionDetail from './components/DetailView/SectionDetail';
+import { SectionDetail } from './components/DetailView/SectionDetail';
 import FMBCredits from './components/FMBCredits';
 import LocatorControl from './components/LocatorControl';
 import MapContent from './components/MapContent';
