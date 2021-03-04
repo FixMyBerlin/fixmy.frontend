@@ -30,6 +30,29 @@ export const HBI_STOPS = [
   },
 ];
 
+export const VZI_STOPS = [
+  {
+    value: 0,
+    color: HBI_STOPS[3].color,
+    label: 'Keine Unfälle',
+  },
+  {
+    value: 1,
+    color: HBI_STOPS[2].color,
+    label: 'Wenige Unfälle',
+  },
+  {
+    value: 2,
+    color: HBI_STOPS[1].color,
+    label: 'Vermehrte Unfälle',
+  },
+  {
+    value: 3,
+    color: HBI_STOPS[0].color,
+    label: 'Unfallschwerpunkt',
+  },
+];
+
 export const PLANNING_PHASES = [
   {
     id: 'draft',

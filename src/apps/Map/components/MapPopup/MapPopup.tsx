@@ -17,10 +17,9 @@ import config from '~/config';
 import { RootState } from '~/store';
 import { media } from '~/styles/utils';
 
+import { SectionPin } from '../SectionPin';
 import { HBIStatus } from './HBIStatus';
 import { ProjectStatus } from './ProjectStatus';
-import PinIntersection from './images/pin-intersection.svg';
-import PinSection from './images/pin-section.svg';
 
 const arrowSize = 19;
 
@@ -91,13 +90,6 @@ class MapPopup extends PureComponent<
         }
       : null;
 
-    let icon: React.ReactNode;
-    if (data.is_road === false) {
-      icon = PinIntersection;
-    } else {
-      icon = PinSection;
-    }
-
     return (
       <MapPopupOuter
         x={x}
@@ -106,7 +98,7 @@ class MapPopup extends PureComponent<
         onClick={() => this.openDetailView()}
         onClose={() => resetMap()}
         showSubline={false}
-        icon={icon}
+        icon={<SectionPin isRoad={data.is_road} />}
       >
         <>
           {isPlanningView && <ProjectStatus />}

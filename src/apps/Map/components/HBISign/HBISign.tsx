@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import config from '~/config';
 
+import { HBI_WORST, HBI_BAD, HBI_OK, HBI_SUPER } from '../../constants';
 import HBIBike0 from './images/hbi-bike-0.svg';
 import HBIBike1 from './images/hbi-bike-1.svg';
 import HBIBike2 from './images/hbi-bike-2.svg';
@@ -55,10 +56,10 @@ const HBISignComp = ({
 }: Props) => {
   const Icon =
     {
-      0: HBIBike3,
-      1: HBIBike2,
-      2: HBIBike1,
-      3: HBIBike0,
+      [HBI_WORST]: HBIBike0,
+      [HBI_BAD]: HBIBike1,
+      [HBI_OK]: HBIBike2,
+      [HBI_SUPER]: HBIBike3,
     }[level] || HBIBike0;
   return (
     <HBISign

@@ -12,6 +12,9 @@ import config from '~/config';
 import PinIcon from '~/images/pin.svg';
 import Store, { useTypedSelector } from '~/store';
 import { media } from '~/styles/utils';
+import { SectionPin } from '../SectionPin';
+import Loader from '~/components/Loader';
+import { DotLoader } from '~/components2/Loaders';
 
 const logger = debug('fmc:map:detailWrapped');
 
@@ -40,7 +43,7 @@ const InfoWrapper = styled.div`
   margin-top: 1rem;
 `;
 
-const StyledPinIcon = styled(PinIcon)`
+const StyledPinIcon = styled(SectionPin)`
   margin-right: 10px;
 `;
 
@@ -106,12 +109,6 @@ const Error = ({ onClose }) => (
   </DetailWrapper>
 );
 
-const LoadingScreen = () => (
-  <DetailWrapper>
-    <InfoWrapper>Daten werden geladen ...</InfoWrapper>
-  </DetailWrapper>
-);
-
 const DetailPanel = ({ children, subtitle = null, onClose = () => null }) => {
   const data = useTypedSelector<HBIData>(({ MapState }) => MapState.hbiData);
   const fetchState = useTypedSelector<FetchState>(
@@ -161,18 +158,18 @@ const DetailPanel = ({ children, subtitle = null, onClose = () => null }) => {
 
   if (error != null) return <Error onClose={handleClose} />;
 
-  if (fetchState === 'pending' || fetchState === 'waiting')
-    return <LoadingScreen />;
+  const isLoading = fetchState === 'pending' || fetchState === 'waiting';
+
   return (
     <DetailWrapper data-cy="map-details-wrapper">
       <DetailHeader>
-        <StyledPinIcon />
+        <StyledPinIcon isRoad={data && data.is_road} />
         <div>
           <DetailTitle data-cy="map-details-header-title">
-            <Name {...data} />
+            {isLoading ? 'Wird geladen...' : <Name {...data} />}
           </DetailTitle>
           <Label uppercase data-cy="map-details-header-subtitle">
-            {subtitle || data?.borough}
+            {isLoading ? '' : subtitle || data?.borough}
           </Label>
         </div>
         <Close
@@ -180,7 +177,7 @@ const DetailPanel = ({ children, subtitle = null, onClose = () => null }) => {
           data-cy="map-details-header-close-button"
         />
       </DetailHeader>
-      <DetailBody>{children}</DetailBody>
+      {isLoading ? <DotLoader /> : <DetailBody>{children}</DetailBody>}
     </DetailWrapper>
   );
 };

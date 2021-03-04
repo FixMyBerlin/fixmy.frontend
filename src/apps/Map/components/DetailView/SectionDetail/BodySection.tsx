@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { selectors } from '~/apps/Map/MapState';
-import DetailSwitch, {
-  ButtonGroup,
-} from '~/apps/Map/components/DetailView/DetailSwitch';
 import ImageSlider from '~/apps/Map/components/DetailView/ImageSlider';
 import HBISign from '~/apps/Map/components/HBISign';
-import { BOTH_SIDES, LEFT_SIDE } from '~/apps/Map/constants';
-import { getOrientationNames } from '~/apps/Map/hbi-utils';
 import Title from '~/components/Title';
 import Label from '~/components2/Label';
 import config from '~/config';
@@ -126,7 +121,7 @@ export const BodySection = ({ orientationName, sideIndex }) => {
       <HBISignWrapper>
         <HBISign color={hbi[sideIndex].color} level={hbi[sideIndex].value} />
         <Label margin="10px 0 3px 0">
-          Happy-Bike-Level - {orientationName}
+          Happy-Bike-Index - {orientationName}
         </Label>
         <Label light>(max 10,0)</Label>
       </HBISignWrapper>
