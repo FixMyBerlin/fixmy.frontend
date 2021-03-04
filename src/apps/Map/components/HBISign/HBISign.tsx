@@ -39,8 +39,8 @@ const HBISign = styled.div<{
 
 type Props = {
   borderWeight?: number;
-  level: 0 | 1 | 2 | 3;
-  color: string;
+  level?: 0 | 1 | 2 | 3;
+  color?: string;
   className?: string;
   onClick?: (ev: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   size?: number;
@@ -50,7 +50,7 @@ const HBISignComp = ({
   borderWeight = 5,
   className = null,
   level,
-  color,
+  color = config.colors.inactivegrey,
   onClick,
   size = 77,
 }: Props) => {
@@ -60,7 +60,7 @@ const HBISignComp = ({
       [HBI_BAD]: HBIBike1,
       [HBI_OK]: HBIBike2,
       [HBI_SUPER]: HBIBike3,
-    }[level] || HBIBike0;
+    }[level] || HBIBike2;
   return (
     <HBISign
       borderWeight={borderWeight.toString()}

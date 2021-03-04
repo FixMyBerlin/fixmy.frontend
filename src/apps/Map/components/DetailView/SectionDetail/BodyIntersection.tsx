@@ -9,7 +9,7 @@ import { useTypedSelector } from '~/store';
 
 import HBISign from '../../HBISign';
 import ImageSlider from '../ImageSlider';
-import { AccidentsFAQ } from './VisionZeroFAQ';
+import { AccidentsFAQ } from './FAQs';
 import { VisionZeroSection } from './VisionZeroSection';
 import BraceSprite from './images/brace-horizontal.svg';
 import CircleSprite from './images/circle.svg';
