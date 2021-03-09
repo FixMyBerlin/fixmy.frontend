@@ -73,6 +73,15 @@ const InfoSectionContent = styled.div`
   line-height: 1.4;
 `;
 
+/**
+ * Don't use fractions here to not suggest a higher precision than we have
+ */
+const HBIPercentageFormat = (value: number) =>
+  percentageFormat(value, 'de', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+
 export const BodySection = ({ orientationName, sideIndex }) => {
   const data = useTypedSelector(({ MapState }) => MapState.hbiData);
   const sideData = data.details[sideIndex];
@@ -87,7 +96,7 @@ export const BodySection = ({ orientationName, sideIndex }) => {
       : details[sideIndex].photos;
   const roadTypeLabel = getRoadTypeLabel(sideData);
   const streetCategoryLabel = getStreetCategoryLabel(data);
-  const infrastructureLabel = getInfrastructureLabel(sideData);
+  // const infrastructureLabel = getInfrastructureLabel(sideData);
   const infrastructureDesc = getInfrastructureDesc(sideData);
 
   return (
@@ -133,17 +142,14 @@ export const BodySection = ({ orientationName, sideIndex }) => {
             <InfoSectionTextWrapper>
               <InfoSectionText bold>
                 <InfoSectionTextLeft grow>
-                  Schutzfunktion der Radwege
+                  Vorhandene Radinfrastruktur
                 </InfoSectionTextLeft>
-                <InfoSectionTextRight>
-                  {infrastructureLabel}
-                </InfoSectionTextRight>
               </InfoSectionText>
 
               {sideData.bike_path_ratio > 0 && (
                 <InfoSectionText>
                   <InfoSectionTextLeft>Radweg:</InfoSectionTextLeft>
-                  {percentageFormat(sideData.bike_path_ratio)}
+                  {HBIPercentageFormat(sideData.bike_path_ratio)}
                 </InfoSectionText>
               )}
 
@@ -152,14 +158,14 @@ export const BodySection = ({ orientationName, sideIndex }) => {
                   <InfoSectionTextLeft>
                     Fahren auf Gehweg erlaubt:
                   </InfoSectionTextLeft>
-                  {percentageFormat(sideData.shared_use_path_ratio)}
+                  {HBIPercentageFormat(sideData.shared_use_path_ratio)}
                 </InfoSectionText>
               )}
 
               {sideData.bike_lane_ratio > 0 && (
                 <InfoSectionText>
                   <InfoSectionTextLeft>Radfahrstreifen:</InfoSectionTextLeft>
-                  {percentageFormat(sideData.bike_lane_ratio)}
+                  {HBIPercentageFormat(sideData.bike_lane_ratio)}
                 </InfoSectionText>
               )}
 
@@ -168,14 +174,14 @@ export const BodySection = ({ orientationName, sideIndex }) => {
                   <InfoSectionTextLeft>
                     geschützter Radfahrstreifen:
                   </InfoSectionTextLeft>
-                  {percentageFormat(sideData.protected_bike_lane_ratio)}
+                  {HBIPercentageFormat(sideData.protected_bike_lane_ratio)}
                 </InfoSectionText>
               )}
 
               {sideData.advisory_bike_lane_ratio > 0 && (
                 <InfoSectionText>
                   <InfoSectionTextLeft>Schutzstreifen:</InfoSectionTextLeft>
-                  {percentageFormat(sideData.advisory_bike_lane_ratio)}
+                  {HBIPercentageFormat(sideData.advisory_bike_lane_ratio)}
                 </InfoSectionText>
               )}
 
