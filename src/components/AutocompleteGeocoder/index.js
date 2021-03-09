@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import debug from 'debug';
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 
 import SearchBar from './SearchBar';
 import SuggestionList from './SuggestionList';

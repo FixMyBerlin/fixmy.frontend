@@ -17,7 +17,10 @@ const aachenConfig: RegionConfig = {
   apps: {
     map: {
       ...defaultMapConfig,
-      geocoderBounds: '5.974,50.648,6.217,50.858',
+      geocoder: {
+        bounds: '5.974,50.648,6.217,50.858',
+        ...defaultMapConfig.geocoder,
+      },
     },
   },
   menu,

@@ -1,262 +1,109 @@
 [
   [
-    "center",
+    "intersection-center",
     [
       "any",
       [
-        "all",
+        "==",
         [
-          ">",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "safety"], -1000],
-              ["to-number", ["get", "velocity"], -1000]
-            ]
-          ],
-          0
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
         ],
-        [
-          "<",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "safety"], -1000],
-              ["to-number", ["get", "velocity"], -1000]
-            ]
-          ],
-          2.5
-        ]
+        0
       ],
       [
-        "all",
+        "==",
         [
-          ">",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "safety"], -1000],
-              ["to-number", ["get", "velocity"], -1000]
-            ]
-          ],
-          2.5
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
         ],
-        [
-          "<",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "safety"], -1000],
-              ["to-number", ["get", "velocity"], -1000]
-            ]
-          ],
-          5
-        ]
+        1
       ],
       [
-        "all",
+        "==",
         [
-          ">",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "safety"], -1000],
-              ["to-number", ["get", "velocity"], -1000]
-            ]
-          ],
-          7.5
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
         ],
-        [
-          "<",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "safety"], -1000],
-              ["to-number", ["get", "velocity"], -1000]
-            ]
-          ],
-          100
-        ]
+        3
       ]
     ]
   ],
   [
-    "side0",
+    "intersection-side0",
     [
       "any",
       [
-        "all",
+        "==",
         [
-          ">",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side0_safety"], -1000],
-              ["to-number", ["get", "side0_velocity"], -1000]
-            ]
-          ],
-          0
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
         ],
-        [
-          "<",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side0_safety"], -1000],
-              ["to-number", ["get", "side0_velocity"], -1000]
-            ]
-          ],
-          2.5
-        ]
+        0
       ],
       [
-        "all",
+        "==",
         [
-          ">",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side0_safety"], -1000],
-              ["to-number", ["get", "side0_velocity"], -1000]
-            ]
-          ],
-          2.5
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
         ],
-        [
-          "<",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side0_safety"], -1000],
-              ["to-number", ["get", "side0_velocity"], -1000]
-            ]
-          ],
-          5
-        ]
+        1
       ],
       [
-        "all",
+        "==",
         [
-          ">",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side0_safety"], -1000],
-              ["to-number", ["get", "side0_velocity"], -1000]
-            ]
-          ],
-          7.5
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
         ],
-        [
-          "<",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side0_safety"], -1000],
-              ["to-number", ["get", "side0_velocity"], -1000]
-            ]
-          ],
-          100
-        ]
+        3
       ]
     ]
   ],
   [
-    "side1",
+    "intersection-side1",
     [
       "any",
       [
-        "all",
+        "==",
         [
-          ">",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side1_safety"], -1000],
-              ["to-number", ["get", "side1_velocity"], -1000]
-            ]
-          ],
-          0
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
         ],
-        [
-          "<",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side1_safety"], -1000],
-              ["to-number", ["get", "side1_velocity"], -1000]
-            ]
-          ],
-          2.5
-        ]
+        0
       ],
       [
-        "all",
+        "==",
         [
-          ">",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side1_safety"], -1000],
-              ["to-number", ["get", "side1_velocity"], -1000]
-            ]
-          ],
-          2.5
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
         ],
-        [
-          "<",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side1_safety"], -1000],
-              ["to-number", ["get", "side1_velocity"], -1000]
-            ]
-          ],
-          5
-        ]
+        1
       ],
       [
-        "all",
+        "==",
         [
-          ">",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side1_safety"], -1000],
-              ["to-number", ["get", "side1_velocity"], -1000]
-            ]
-          ],
-          7.5
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
         ],
-        [
-          "<",
-          [
-            "number",
-            [
-              "+",
-              ["to-number", ["get", "side1_safety"], -1000],
-              ["to-number", ["get", "side1_velocity"], -1000]
-            ]
-          ],
-          100
-        ]
+        3
       ]
     ]
   ]

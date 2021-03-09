@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
-import UserForm from '~/pages/User/components/UserForm';
 import { resetPassword } from '~/pages/User/UserState';
+import UserForm from '~/pages/User/components/UserForm';
 
 const formConfig = [
   {

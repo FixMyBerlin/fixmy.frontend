@@ -1,17 +1,16 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import config from '~/pages/Reports/config';
 import Button from '~/components/Button';
-import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import ErrorMessage from '~/components/ErrorMessage';
 import history from '~/history';
-import { addUserToReport } from '~/pages/Reports/apiservice';
-import { apiUser } from '~/pages/User/apiservice';
-
-import logger from '~/utils/logger';
-import thanksImageFMB from '~/images/reports/reports-thanks.png';
 import thanksImageAachen from '~/images/aachen/danke-aachen-02@2x.png';
+import thanksImageFMB from '~/images/reports/reports-thanks.png';
+import { addUserToReport } from '~/pages/Reports/apiservice';
+import config from '~/pages/Reports/config';
+import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
+import { apiUser } from '~/pages/User/apiservice';
+import logger from '~/utils/logger';
 
 import AuthForm from './AuthForm';
 import { StyledHeading, Text, ThanksImg } from './styledComponents';

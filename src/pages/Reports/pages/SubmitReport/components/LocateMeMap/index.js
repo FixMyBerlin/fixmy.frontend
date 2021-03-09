@@ -5,28 +5,29 @@
  *  This location mode is passed in as prop.
  *  The location can be adjusted by moving the map around.
  */
+import ky from 'ky';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import ky from 'ky';
 
-import config from '~/pages/Reports/config';
-import logger from '~/utils/logger';
-import { media, matchMediaSize, breakpoints } from '~/styles/utils';
-import WebglMap from './WebglMap';
-import StaticMarker from './StaticMarker';
-import PinLocationButton from './PinLocationButton';
+import FMBCredits from '~/apps/Map/components/FMBCredits';
+import LocatorControl from '~/apps/Map/components/LocatorControl';
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import ErrorMessage from '~/components/ErrorMessage';
-import HelpText from './HelpText';
-import ConfirmLocationDialog from './ConfirmLocationDialog';
-import LocatorControl from '~/apps/Map/components/LocatorControl';
-import FMBCredits from '~/apps/Map/components/FMBCredits';
+import config from '~/pages/Reports/config';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import {
   actions as submitReportStateActions,
   selectors as submitReportStateSelectors,
 } from '~/pages/Reports/state/SubmitReportState';
+import { media, matchMediaSize, breakpoints } from '~/styles/utils';
+import logger from '~/utils/logger';
+
+import ConfirmLocationDialog from './ConfirmLocationDialog';
+import HelpText from './HelpText';
+import PinLocationButton from './PinLocationButton';
+import StaticMarker from './StaticMarker';
+import WebglMap from './WebglMap';
 
 const MapView = styled.div`
   flex: 1;

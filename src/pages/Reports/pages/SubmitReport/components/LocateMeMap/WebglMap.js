@@ -1,12 +1,12 @@
-import React, { PureComponent } from 'react';
-import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import _isEqual from 'lodash.isequal';
 import MapboxGL from 'mapbox-gl';
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import { withRouter } from 'react-router-dom';
 
-import config from '~/pages/Reports/config';
 import { animateView, setView } from '~/apps/Map/map-utils';
 import BaseMap from '~/pages/Reports/components/BaseMap';
+import config from '~/pages/Reports/config';
 
 class WebglMap extends PureComponent {
   map = null;

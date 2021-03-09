@@ -5,11 +5,12 @@ import styled from 'styled-components';
 
 import 'react-tabs/style/react-tabs.css';
 
-import config from '~/config';
 import ContentPageWrapper from '~/components/ContentPageWrapper';
+import config from '~/config';
+
 import Profile from './tabs/Profile';
-import UserLikes from './tabs/UserLikes';
 import ReportLikes from './tabs/ReportLikes';
+import UserLikes from './tabs/UserLikes';
 
 const StyledTabs = styled(Tabs)`
   margin-top: 1em;

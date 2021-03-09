@@ -1,6 +1,6 @@
-import React from 'react';
 import { Container } from '@material-ui/core';
 import { action } from '@storybook/addon-actions';
+import React from 'react';
 
 import { LocationPicker } from '.';
 

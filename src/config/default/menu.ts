@@ -57,7 +57,7 @@ const menuConfig: Menu = {
     {
       type: 'link',
       label: 'Planungskarte',
-      link: routes.projects,
+      link: routes.map.projectsIndex,
       icon: 'map',
       border: true,
     },
