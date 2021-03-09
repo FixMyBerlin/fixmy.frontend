@@ -13,7 +13,6 @@ import { SectionsFAQ } from './FAQs';
 import {
   getRoadTypeLabel,
   getStreetCategoryLabel,
-  getInfrastructureLabel,
   getInfrastructureDesc,
 } from './status-utils';
 
@@ -96,7 +95,6 @@ export const BodySection = ({ orientationName, sideIndex }) => {
       : details[sideIndex].photos;
   const roadTypeLabel = getRoadTypeLabel(sideData);
   const streetCategoryLabel = getStreetCategoryLabel(data);
-  // const infrastructureLabel = getInfrastructureLabel(sideData);
   const infrastructureDesc = getInfrastructureDesc(sideData);
 
   return (
