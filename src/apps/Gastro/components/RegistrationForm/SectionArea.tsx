@@ -1,10 +1,11 @@
-import React from 'react';
 import { Card, CardContent } from '@material-ui/core';
 import { ErrorMessage } from 'formik';
+import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { AreaPicker } from '~/components2/AreaPicker';
+
 import { requiresArea } from '../../utils';
 import FormError from './FormError';
 
@@ -53,20 +54,6 @@ const SectionArea = ({
               Verfügung gestellt werden.
             </p>
           )}
-          <p>
-            Die späteren Anordnungen werden nach folgendem Regelplan getroffen:
-          </p>
-          <ul>
-            <li>
-              <a
-                href="/uploads/offene-terrassen/Regelplaene_Strassenraum.pdf"
-                className="internal"
-                target="_blank"
-              >
-                Regelplan temporäre Sondernutzung von Parkstreifen
-              </a>
-            </li>
-          </ul>
 
           <PickerIntro>
             <p>
@@ -78,7 +65,7 @@ const SectionArea = ({
             <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
             <ul>
               <li>
-                Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,
+                Es können keine Flächen auf Einfahrten,Behindertenparkplätzen,
                 Bushaltestellen, Schaltschränken, Baumscheiben oder Baustellen
                 beantragt werden.
               </li>
@@ -136,6 +123,21 @@ const SectionArea = ({
               </p>
             </CardContent>
           </Card>
+
+          <p>
+            Die späteren Anordnungen werden nach folgendem Regelplan getroffen:
+          </p>
+          <ul>
+            <li>
+              <a
+                href="/uploads/offene-terrassen/Regelplaene_Strassenraum.pdf"
+                className="internal"
+                target="_blank"
+              >
+                Regelplan temporäre Sondernutzung von Parkstreifen
+              </a>
+            </li>
+          </ul>
         </section>
       )}
 

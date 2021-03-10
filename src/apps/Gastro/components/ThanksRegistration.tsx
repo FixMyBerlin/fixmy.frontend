@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+
 import config from '~/apps/Gastro/config';
 import { media } from '~/styles/utils';
 
@@ -46,7 +47,7 @@ const Thanks = ({ submission, district }) => (
     <p>
       Das Bezirksamt bearbeitet die Anträge in der Regel innherhalb einiger
       Tage. Wenn Ihr Antrag bearbeitet wurde, erhalten Sie eine E-Mail mit einer
-      Zu- oder Absage. Bitte sehen Sie von individuellen Nachfragen ab.
+      Zu- oder Absage.
     </p>
   </Wrapper>
 );
