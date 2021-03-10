@@ -1,7 +1,6 @@
-import { DistrictConfig } from '~/types';
-
 import XHainSmall from '~/images/gastro/wappen.png';
 import XHainLarge from '~/images/gastro/wappen@2x.png';
+import { DistrictConfig } from '~/types';
 
 const XHAIN_TERRASSEN = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg${
   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
@@ -181,12 +180,12 @@ const xhain: DistrictConfig = {
       ],
     },
     gastro: {
-      currentCampaign: 'xhain2',
+      currentCampaign: 'xhain2021',
       path: 'terrassen',
       directSignup: true,
       timeline: {
-        openSignup: new Date(Date.UTC(2020, 6, 14)),
-        closeSignup: new Date(Date.UTC(2020, 9, 31)),
+        openSignup: new Date(Date.UTC(2021, 2, 1)),
+        closeSignup: new Date(Date.UTC(2021, 9, 15)),
       },
       model: {
         category: true,
