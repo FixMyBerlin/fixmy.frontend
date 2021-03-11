@@ -134,7 +134,7 @@ const SectionArea = ({
                 className="internal"
                 target="_blank"
               >
-                Regelplan temporäre Sondernutzung von Parkstreifen
+                Regelplan temporäre Sondernutzung von Parkstreifen (PDF)
               </a>
             </li>
           </ul>

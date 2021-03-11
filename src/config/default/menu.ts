@@ -74,7 +74,7 @@ const menuConfig: Menu = {
     },
     {
       type: 'link',
-      label: 'Terrassen für Vieles',
+      label: 'XHain-Terrassen',
       icon: 'icon-gastro',
       link: '/friedrichshain-kreuzberg/terrassen',
       border: true,

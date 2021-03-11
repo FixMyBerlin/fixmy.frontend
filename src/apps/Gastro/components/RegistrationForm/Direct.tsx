@@ -52,6 +52,7 @@ const testValues: FormData = {
   shop_name: 'Test Shoppe',
   shopfront_length: '4,8',
   tos_accepted: true,
+  followup_accepted: false,
   usage: 'Normal',
 };
 
@@ -69,6 +70,7 @@ const initialValues: FormData = {
   certificate: null,
   agreement_accepted: '',
   tos_accepted: '',
+  followup_accepted: false,
   area: null,
 };
 
@@ -117,9 +119,7 @@ type Props = ConnectedProps<typeof connector> & {
 
 const DirectRegistrationForm = ({ onSuccess, district }: Props) => (
   <Formik
-    initialValues={
-      process.env.NODE_ENV === 'production' ? initialValues : testValues
-    }
+    initialValues={true ? initialValues : testValues}
     validate={validateDirect}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       // The types of GastroRegistration and FormData don't match exactly
@@ -215,7 +215,7 @@ const DirectRegistrationForm = ({ onSuccess, district }: Props) => (
                     Datenschutzvereinbarung
                   </a>{' '}
                   gelesen und willige in die Speicherung meiner Daten zur
-                  Kommunikation im Zuge der Nutzung der Sonderflächen ein.
+                  Kommunikation im Zuge der Nutzung der XHain-Terrassen ein.
                 </span>
               ),
             }}

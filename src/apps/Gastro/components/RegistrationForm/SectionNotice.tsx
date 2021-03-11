@@ -26,8 +26,10 @@ const SectionNotice = ({ values }) => (
       <li>
         Eigenverantwortliche{' '}
         <strong>Durchführung der verkehrsrechtlichen Anordnung</strong>. Sie
-        müssen eine Beschilderungsfirma beauftragen, Schilder und Absperrungen
-        für die Fläche dem Regelplan entsprechend aufzustellen. <br />
+        müssen eigenverantwortlich eine Beschilderungsfirma beauftragen,
+        Schilder und Absperrungen für die Fläche dem Regelplan entsprechend
+        aufzustellen.
+        <br />
         <a
           href="/uploads/offene-terrassen/Beschilderungsfirmen_Berlin.pdf"
           className="internal"
@@ -56,9 +58,10 @@ const SectionNotice = ({ values }) => (
         zusätzlichen Müllmengen entstehen, erklären sich die beantragenden
         Betriebe grundsätzlich bereit, ein Pfandsystem einzuführen.
         <br />
-        Selbstverständlich dürfen vorhandene Mehrweggeschirre genutzt werden.
+        Selbstverständlich dürfen vorhandene Mehrweggeschire genutzt werden.
         Zeitpunkt und Gebiete, in denen das Pfandsystem eingeführt wird, stehen
-        noch nicht fest. <br />
+        noch nicht fest.
+        <br />
         Für die Herausgabe von Einweggebinden stellt das Bezirksamt
         entsprechende Pfandrollen zur Verfügung, die erst nach Herausgabe der
         Kartons / Becher samt Vereinnahmung des Pfandes erstattet werden müssen.
