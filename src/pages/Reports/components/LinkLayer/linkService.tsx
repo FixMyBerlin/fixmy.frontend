@@ -1,5 +1,4 @@
 import debug from 'debug';
-
 // eslint complains about not finding this even though it's just a type import
 // eslint-disable-next-line import/no-unresolved
 import type { FeatureCollection, LineString } from 'geojson';
