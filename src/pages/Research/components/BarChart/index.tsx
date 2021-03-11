@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import FeelSafe, { FeelsafeIcon } from '~/pages/Research/components/FeelSafe';
-import BarChartWrapper from './Wrapper';
 import { media } from '~/styles/utils';
+
 import BarElement from './BarElement';
+import BarChartWrapper from './Wrapper';
 
 const Wrapper = styled.div`
   display: flex;

@@ -1,20 +1,10 @@
-import { AnyAction } from 'redux';
-import thunk, { ThunkDispatch } from 'redux-thunk';
-import configureMockStore from 'redux-mock-store';
 import { rest } from 'msw';
-const nodeFetch = require('node-fetch');
+import { AnyAction } from 'redux';
+import configureMockStore from 'redux-mock-store';
+import thunk, { ThunkDispatch } from 'redux-thunk';
 
-import {
-  ProfileRequest,
-  ProfileResponse,
-  Perspective,
-  PerspectiveRequest,
-  PerspectiveResponse,
-} from '../types';
 import { getEndpointURL } from '../api/utils';
-import { mswServer } from '~/../jest/msw/mswServer';
-
-import reducer, {
+import {
   State,
   SUBMIT_PROFILE_COMPLETE,
   SUBMIT_PROFILE_PENDING,
@@ -26,11 +16,14 @@ import reducer, {
   submitPerspective,
   testingDefaultState,
 } from '../state';
+import { ProfileResponse, Perspective, PerspectiveResponse } from '../types';
 
-const profileRequestSample: ProfileRequest = require('../scheme/sample-instances/profile-request-sample-instance.json');
-const profileResponseSample: ProfileResponse = require('../scheme/sample-instances/profile-response-sample-instance.json');
-const perspetiveRequestSample: PerspectiveRequest = require('../scheme/sample-instances/perspective-request-sample-instance.json');
+import { mswServer } from '~/../jest/msw/mswServer';
+
+const nodeFetch = require('node-fetch');
+
 const perspectiveResponseSample: PerspectiveResponse = require('../scheme/sample-instances/perspective-response-sample-instance.json');
+const profileResponseSample: ProfileResponse = require('../scheme/sample-instances/profile-response-sample-instance.json');
 
 type mockState = {
   KatasterKIState: State;
@@ -40,15 +33,15 @@ type DispatchExts = ThunkDispatch<mockState, void, AnyAction>;
 const mockStore = configureMockStore<mockState, DispatchExts>(middlewares);
 
 // the tested thunk uses fetch, so we replace its imlementation with node-fetch
-const unmockedFetch = global['fetch'];
+const unmockedFetch = global.fetch;
 
 describe('Survey submits', () => {
   beforeAll(() => {
-    global['fetch'] = nodeFetch;
+    global.fetch = nodeFetch;
   });
 
   afterAll(() => {
-    global['fetch'] = unmockedFetch;
+    global.fetch = unmockedFetch;
   });
 
   describe('submitProfile', () => {

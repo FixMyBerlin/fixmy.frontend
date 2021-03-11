@@ -1,5 +1,7 @@
 import React from 'react';
+
 import config from '~/pages/Reports/config';
+
 import AachenLanding from './aachen';
 import BerlinLanding from './berlin';
 

@@ -1,7 +1,9 @@
-import React from 'react';
-import mapboxgl from 'mapbox-gl';
 import { screen } from '@testing-library/dom';
+import mapboxgl from 'mapbox-gl';
+import React from 'react';
+
 import { render } from '~/utils/test-utils';
+
 import { StaticMap } from '.';
 
 const TEST_STYLE_URL = 'mapbox://styles/hejco/ck85ospzd0cre1ioa8d6gfuv9';

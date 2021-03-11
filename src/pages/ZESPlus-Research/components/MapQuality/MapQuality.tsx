@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Map as ArticleMap } from '~/components2/Article';
+
 import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../constants';
 import {
   IconWrapper,
@@ -11,10 +12,9 @@ import {
   LegendItems,
   LegendSources,
 } from '../BaseLegend';
-
 import IconPathFB from './icons/f-fb.svg';
-import IconPathSR from './icons/f-sr.svg';
 import IconPathGW from './icons/f-gw.svg';
+import IconPathSR from './icons/f-sr.svg';
 import IconQ1 from './icons/q1.svg';
 import IconQ2 from './icons/q2.svg';
 import IconQ3 from './icons/q3.svg';

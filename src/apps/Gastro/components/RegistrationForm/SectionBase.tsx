@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import { FormControl, InputLabel, MenuItem } from '@material-ui/core';
 import { Field, ErrorMessage } from 'formik';
 import { TextField, Select } from 'formik-material-ui';
-import { FormControl, InputLabel, MenuItem } from '@material-ui/core';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import { StaticMap } from '~/components2/StaticMap';
-import FormError from './FormError';
 import { LocationPicker } from '~/components2/LocationPicker';
+import { StaticMap } from '~/components2/StaticMap';
+
+import FormError from './FormError';
 
 const InvisiLabel = styled.label`
   display: none;

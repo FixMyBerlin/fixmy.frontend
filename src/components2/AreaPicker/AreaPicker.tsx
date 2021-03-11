@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import MapboxGL from 'mapbox-gl';
-import styled from 'styled-components';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
+import MapboxGL from 'mapbox-gl';
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
 import { BaseMap } from '~/components2/BaseMap';

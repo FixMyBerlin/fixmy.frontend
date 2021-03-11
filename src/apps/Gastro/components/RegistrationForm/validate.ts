@@ -1,10 +1,12 @@
 /* eslint-disable camelcase */
 
 import debug from 'debug';
-import { FormData } from '.';
+
 import parseLength from '../../parseLength';
-import { requiresArea } from '../../utils';
 import regulations from '../../regulations';
+import { requiresArea } from '../../utils';
+
+import { FormData } from '.';
 
 const logger = debug('fmc:Gastro:Registration');
 

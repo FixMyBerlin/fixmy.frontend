@@ -1,30 +1,27 @@
+import theMixBlackwoff from '../fonts/TheMixC5-9_Black.woff';
+import theMixBlackwoff2 from '../fonts/TheMixC5-9_Black.woff2';
 import openSans300woff from '../fonts/open-sans-v17-latin-300.woff';
 import openSans300woff2 from '../fonts/open-sans-v17-latin-300.woff2';
-import openSansRegularwoff from '../fonts/open-sans-v17-latin-regular.woff';
-import openSansRegularwoff2 from '../fonts/open-sans-v17-latin-regular.woff2';
 import openSans600woff from '../fonts/open-sans-v17-latin-600.woff';
 import openSans600woff2 from '../fonts/open-sans-v17-latin-600.woff2';
 import openSans600woffItalic from '../fonts/open-sans-v17-latin-600italic.woff';
 import openSans600woff2Italic from '../fonts/open-sans-v17-latin-600italic.woff2';
 import openSans700woff from '../fonts/open-sans-v17-latin-700.woff';
 import openSans700woff2 from '../fonts/open-sans-v17-latin-700.woff2';
-
-import robotoSlabwoff from '../fonts/roboto-slab-v12-latin-regular.woff';
-import robotoSlabwoff2 from '../fonts/roboto-slab-v12-latin-regular.woff2';
+import openSansRegularwoff from '../fonts/open-sans-v17-latin-regular.woff';
+import openSansRegularwoff2 from '../fonts/open-sans-v17-latin-regular.woff2';
 import robotoSlab100woff from '../fonts/roboto-slab-v12-latin-100.woff';
 import robotoSlab100woff2 from '../fonts/roboto-slab-v12-latin-100.woff2';
 import robotoSlab700woff from '../fonts/roboto-slab-v12-latin-700.woff';
 import robotoSlab700woff2 from '../fonts/roboto-slab-v12-latin-700.woff2';
-
-import robotowoff from '../fonts/roboto-v20-latin-regular.woff';
-import robotowoff2 from '../fonts/roboto-v20-latin-regular.woff2';
-import robotoItalicwoff from '../fonts/roboto-v20-latin-italic.woff';
-import robotoItalicwoff2 from '../fonts/roboto-v20-latin-italic.woff2';
+import robotoSlabwoff from '../fonts/roboto-slab-v12-latin-regular.woff';
+import robotoSlabwoff2 from '../fonts/roboto-slab-v12-latin-regular.woff2';
 import roboto700woff from '../fonts/roboto-v20-latin-700.woff';
 import roboto700woff2 from '../fonts/roboto-v20-latin-700.woff2';
-
-import theMixBlackwoff from '../fonts/TheMixC5-9_Black.woff';
-import theMixBlackwoff2 from '../fonts/TheMixC5-9_Black.woff2';
+import robotoItalicwoff from '../fonts/roboto-v20-latin-italic.woff';
+import robotoItalicwoff2 from '../fonts/roboto-v20-latin-italic.woff2';
+import robotowoff from '../fonts/roboto-v20-latin-regular.woff';
+import robotowoff2 from '../fonts/roboto-v20-latin-regular.woff2';
 
 export default `
   /* open-sans-300 - latin */

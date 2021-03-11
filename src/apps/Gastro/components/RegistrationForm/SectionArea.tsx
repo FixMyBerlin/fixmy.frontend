@@ -1,10 +1,11 @@
-import React from 'react';
 import { Card, CardContent } from '@material-ui/core';
 import { ErrorMessage } from 'formik';
+import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { AreaPicker } from '~/components2/AreaPicker';
+
 import { requiresArea } from '../../utils';
 import FormError from './FormError';
 

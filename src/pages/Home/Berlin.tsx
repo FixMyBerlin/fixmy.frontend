@@ -1,17 +1,18 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
-import { Logo as FMBLogo } from '~/components2/Logo';
+import styled from 'styled-components';
+
+import { toggle as toggleMenu } from '~/AppState';
 import { PseudoButton } from '~/components2/Button';
 import { Link } from '~/components2/Link';
+import { Logo as FMBLogo } from '~/components2/Logo';
 import { NewsletterWidget } from '~/components2/NewsletterWidget';
 import config from '~/config';
-import { media } from '~/styles/utils';
-import { toggle as toggleMenu } from '~/AppState';
-import { useTypedSelector } from '~/store';
 import FacebookIcon from '~/images/button-social-facebook.svg';
 import TwitterIcon from '~/images/button-social-twitter.svg';
+import { useTypedSelector } from '~/store';
+import { media } from '~/styles/utils';
 
 const CTAWrapper = styled.div`
   margin-bottom: 5rem;

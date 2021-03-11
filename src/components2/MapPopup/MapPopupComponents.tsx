@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import config from '~/config';
 import { media } from '~/styles/utils';
+
 import { IconButton } from '../Button';
 
 const ARROW_SIZE = 19;

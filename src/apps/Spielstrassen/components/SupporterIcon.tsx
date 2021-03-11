@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
-import Supporter from '~/images/spielstrassen/supporter.svg';
+import styled from 'styled-components';
+
 import SupporterCheck from '~/images/spielstrassen/supporter-check.svg';
+import Supporter from '~/images/spielstrassen/supporter.svg';
 
 type IconProps = { visible: boolean };
 

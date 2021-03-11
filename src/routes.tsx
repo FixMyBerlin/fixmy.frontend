@@ -2,27 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import config from '~/config';
-import PrivateRoute from '~/components/PrivateRoute';
-import Home from '~/pages/Home';
-import Login from '~/pages/User/pages/Login';
-import Signup from '~/pages/User/pages/Signup';
-import Profile from '~/pages/User/pages/Profile';
-import ForgotPassword from '~/pages/User/pages/ForgotPassword';
-import ResetPassword from '~/pages/User/pages/ResetPassword';
-import UserVerify from '~/pages/User/pages/Verify';
-import ZESPlusResearch from '~/pages/ZESPlus-Research';
-
 import Analysis from '~/apps/Analysis';
+import Gastro from '~/apps/Gastro';
+import MapView from '~/apps/Map';
+import Spielstrassen from '~/apps/Spielstrassen';
+import PrivateRoute from '~/components/PrivateRoute';
+import config from '~/config';
+import Home from '~/pages/Home';
 import KatasterKI from '~/pages/KatasterKI';
 import Markdown from '~/pages/Markdown';
 import Reports from '~/pages/Reports';
 import Research from '~/pages/Research';
-import { RootState } from './store';
+import ForgotPassword from '~/pages/User/pages/ForgotPassword';
+import Login from '~/pages/User/pages/Login';
+import Profile from '~/pages/User/pages/Profile';
+import ResetPassword from '~/pages/User/pages/ResetPassword';
+import Signup from '~/pages/User/pages/Signup';
+import UserVerify from '~/pages/User/pages/Verify';
+import ZESPlusResearch from '~/pages/ZESPlus-Research';
 
-import Gastro from '~/apps/Gastro';
-import Spielstrassen from '~/apps/Spielstrassen';
-import MapView from '~/apps/Map';
+import { RootState } from './store';
 
 const apps = {
   gastro: Gastro,

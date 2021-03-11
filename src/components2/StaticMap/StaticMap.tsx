@@ -1,5 +1,5 @@
-import React from 'react';
 import MapboxGL from 'mapbox-gl';
+import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
