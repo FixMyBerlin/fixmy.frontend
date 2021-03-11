@@ -184,8 +184,9 @@ const xhain: DistrictConfig = {
       path: 'terrassen',
       directSignup: true,
       timeline: {
-        openSignup: new Date(Date.UTC(2021, 2, 1)),
-        closeSignup: new Date(Date.UTC(2021, 9, 15)),
+        // date constructor uses 0-based month number, i.e. january is 0
+        openSignup: new Date(Date.UTC(2021, 3 - 1, 1)),
+        closeSignup: new Date(Date.UTC(2021, 10 - 1, 1)),
       },
       model: {
         category: true,
