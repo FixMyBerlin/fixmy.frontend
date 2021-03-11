@@ -1,5 +1,6 @@
 import { shouldPolyfill as shouldPolyfillDateTimeFormat } from '@formatjs/intl-datetimeformat/should-polyfill';
 import { shouldPolyfill } from '@formatjs/intl-getcanonicallocales/should-polyfill';
+import { shouldPolyfill as shouldPolyfillLocale } from '@formatjs/intl-locale/should-polyfill';
 import { shouldPolyfill as shouldPolyfillNumberFormat } from '@formatjs/intl-numberformat/should-polyfill';
 import { shouldPolyfill as shouldPolyfillPluralRules } from '@formatjs/intl-pluralrules/should-polyfill';
 import debug from 'debug';
@@ -18,6 +19,12 @@ async function polyfill(locale: LocaleCode) {
     log('Loading getcanonicallocales polyfill');
     // Load the polyfill 1st BEFORE loading data
     await import('@formatjs/intl-getcanonicallocales/polyfill');
+  }
+
+  if (shouldPolyfillLocale()) {
+    log('Loading Intl.locale polyfill');
+    // Load the polyfill 1st BEFORE loading data
+    await import('@formatjs/intl-locale/polyfill');
   }
 
   if (shouldPolyfillPluralRules()) {
