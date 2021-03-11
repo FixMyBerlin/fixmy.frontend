@@ -42,7 +42,7 @@ const testValues: FormData = {
     ],
     type: 'Polygon',
   },
-  certificateS3: 'unit_test_data/test.txt',
+  certificateS3: null,
   category: 'retail',
   email: 'fixmy056@vincentahrend.com',
   first_name: 'Snackmaster',
@@ -150,11 +150,6 @@ const DirectRegistrationForm = ({ onSuccess, district }: Props) => (
       let response;
       try {
         response = await api.registerDirect(registrationData, district);
-        // Additional field that is not part of the response
-        //  this is to signal to the thanks page whether the upload
-        // of the certificate file failed
-        // @ts-ignore
-        response.uploadFailed = false;
         onSuccess(response);
       } catch (e) {
         logger(e);

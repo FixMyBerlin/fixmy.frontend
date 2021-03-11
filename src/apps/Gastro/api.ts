@@ -132,7 +132,7 @@ const uploadCertificate = async (
     headers: {
       'Content-Disposition': `attachment; filename="${fileName}"`,
     },
-    timeout: 60000,
+    timeout: 20_000,
   }).json();
 };
 

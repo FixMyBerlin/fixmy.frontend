@@ -110,24 +110,17 @@ const RegistrationForm = ({
         campaign: district.apps.gastro.currentCampaign,
       };
 
-      let uploadFailed = true;
       try {
         await api.uploadCertificate(registrationData, district);
-        uploadFailed = false;
       } catch (e) {
         logger(e);
         setStatus(
-          'Es gab leider einen Fehler beim Hochladen Ihrer Gewerbeanmeldung / Ihres Vereinsregisters. Bitte senden Sie dieses Dokument daher als Foto oder PDF per E-Mail an info@fixmyberlin.de'
+          'Das Hochladen Ihrer Gewerbeanmeldung / Ihres Vereinsregisters ist fehlgeschlagen. Bitte prüfen Sie Ihre Internetverbindung und versuchen es erneut.'
         );
       }
 
       try {
         const response = await api.register(registrationData, district);
-        // Additional field that is not part of the response
-        //  this is to signal to the thanks page whether the upload
-        // of the certificate file failed
-        // @ts-ignore
-        response.uploadFailed = uploadFailed;
         onSuccess(response);
       } catch (e) {
         logger(e);
