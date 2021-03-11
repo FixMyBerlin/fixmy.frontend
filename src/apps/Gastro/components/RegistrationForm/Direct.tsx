@@ -109,6 +109,9 @@ const StyledForm = styled(Form)`
     margin-bottom: 1em;
   }
 `;
+
+const isProduction = process.env.NODE_ENV === 'production';
+
 const connector = connect(({ AppState }: RootState) => ({
   district: AppState.district,
 }));
@@ -119,7 +122,7 @@ type Props = ConnectedProps<typeof connector> & {
 
 const DirectRegistrationForm = ({ onSuccess, district }: Props) => (
   <Formik
-    initialValues={true ? initialValues : testValues}
+    initialValues={isProduction ? initialValues : testValues}
     validate={validateDirect}
     onSubmit={async (values, { setSubmitting, setStatus }) => {
       // The types of GastroRegistration and FormData don't match exactly
