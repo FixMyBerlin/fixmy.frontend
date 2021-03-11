@@ -5,7 +5,7 @@ import ReactPiwik from 'react-piwik';
 import styled from 'styled-components';
 import { Router } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import debug from 'debug';
 import { Theme } from '@material-ui/core';
 
