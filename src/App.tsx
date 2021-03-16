@@ -1,5 +1,5 @@
-import { Theme, Theme } from '@material-ui/core';
-import { ThemeProvider, ThemeProvider } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core/styles';
 import debug from 'debug';
 import React, { useEffect, useState } from 'react';
 import { IntlProvider, IntlConfig } from 'react-intl';
@@ -7,6 +7,7 @@ import ReactPiwik from 'react-piwik';
 import { connect } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
+import styled from 'styled-components';
 
 import ErrorBoundary from '~/components/ErrorBoundary';
 import Menu from '~/components/Menu';
