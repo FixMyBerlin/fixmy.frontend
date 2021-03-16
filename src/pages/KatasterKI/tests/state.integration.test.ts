@@ -34,17 +34,17 @@ const mockStore = configureMockStore<mockState, DispatchExts>(middlewares);
 
 // the tested thunk uses fetch, so we replace its imlementation with node-fetch
 
-// @ts-expect-error Typescript doesn't understand that lib dom defines global.fetch
+// @ts-ignore Typescript doesn't understand that lib dom defines global.fetch
 const unmockedFetch = global.fetch;
 
 describe('Survey submits', () => {
   beforeAll(() => {
-    // @ts-expect-error Typescript doesn't understand that lib dom defines global.fetch
+    // @ts-ignore Typescript doesn't understand that lib dom defines global.fetch
     global.fetch = nodeFetch;
   });
 
   afterAll(() => {
-    // @ts-expect-error Typescript doesn't understand that lib dom defines global.fetch
+    // @ts-ignore Typescript doesn't understand that lib dom defines global.fetch
     global.fetch = unmockedFetch;
   });
 
