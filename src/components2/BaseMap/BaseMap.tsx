@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
 import MapboxGL from 'mapbox-gl';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+
 import config from '~/apps/Gastro/config';
 import logger from '~/utils/logger';
 

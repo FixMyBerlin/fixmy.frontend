@@ -4,8 +4,9 @@ import {
   enUS as muiEN,
   esES as muiES,
 } from '@material-ui/core/locale';
-import { LocaleCode } from '~/types';
+
 import config from '~/config';
+import { LocaleCode } from '~/types';
 
 /**
  * Create localized Material UI theme object

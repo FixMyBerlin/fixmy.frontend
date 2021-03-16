@@ -1,8 +1,7 @@
-import React from 'react';
 import { Container } from '@material-ui/core';
+import React from 'react';
 
 import './styles.css';
-import AreaMap from '../AreaMap';
 import {
   usageWeekday,
   usageWeekend,
@@ -11,6 +10,7 @@ import {
   REGULATION,
   permitEnd,
 } from '../../utils';
+import AreaMap from '../AreaMap';
 
 // eslint-disable-next-line camelcase
 const getSetupTimerangeEnd = ({ permit_start }) => {

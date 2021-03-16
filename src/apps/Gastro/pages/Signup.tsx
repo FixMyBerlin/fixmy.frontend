@@ -1,13 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
 import { Container } from '@material-ui/core';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
+
 import Header from '../components/Header';
-import Thanks from '../components/Thanks';
 import SignupForm from '../components/SignupForm';
+import Thanks from '../components/Thanks';
 
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};

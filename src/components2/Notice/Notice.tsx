@@ -1,7 +1,8 @@
-import React from 'react';
-import InfoIcon from '@material-ui/icons/Info';
-import styled from 'styled-components';
 import { Paper } from '@material-ui/core';
+import InfoIcon from '@material-ui/icons/Info';
+import React from 'react';
+import styled from 'styled-components';
+
 import { media } from '~/styles/utils';
 
 const Wrapper = styled(Paper)`

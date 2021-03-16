@@ -1,15 +1,14 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import { connect, ConnectedProps } from 'react-redux';
+import styled from 'styled-components';
 import { VictoryPie, VictoryLabel, Slice, VictoryLabelProps } from 'victory';
 
-import config from '~/config';
 import { setPhaseFilter } from '~/apps/Analysis/state';
-
-import { numberFormat, getRVALength, percentageFormat } from '~/utils/utils';
+import { PLANNING_PHASES } from '~/apps/Map/constants';
 import SvgIcon from '~/components/SvgIcon';
 import { DotLoader } from '~/components2/Loaders';
-import { PLANNING_PHASES } from '~/apps/Map/constants';
+import config from '~/config';
+import { numberFormat, getRVALength, percentageFormat } from '~/utils/utils';
 
 const PieChartWrapper = styled.figure`
   width: 300px;

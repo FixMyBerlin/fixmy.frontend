@@ -1,6 +1,7 @@
 import { IntlConfig } from 'react-intl';
-import { LocaleCode } from '~/types';
+
 import defaultMessages from '~/lang/compiled/de.json';
+import { LocaleCode } from '~/types';
 
 /**
  * Return locale messages for a given locale code

@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import config from '~/pages/Reports/config';
+import styled from 'styled-components';
+
 import FMBLogo from '~/images/FixMyCity_positiv_300px.png';
+import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
 
 const Wrapper = styled.div`

@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
 import { Container } from '@material-ui/core';
-import styled from 'styled-components';
 import debug from 'debug';
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
-import { useTypedSelector } from '~/store';
-import { DistrictConfig } from '~/types';
-import { media } from '~/styles/utils';
 import { Button } from '~/components2/Button';
-import { GastroRegistration } from '../types';
+import { BigLoader } from '~/components2/Loaders';
+import { useTypedSelector } from '~/store';
+import { media } from '~/styles/utils';
+import { DistrictConfig } from '~/types';
+
+import api from '../api';
 import Header from '../components/Header';
 import config from '../config';
-import api from '../api';
-import { BigLoader } from '~/components2/Loaders';
+import { GastroRegistration } from '../types';
 
 const log = debug('fmc:gastro:renewal');
 

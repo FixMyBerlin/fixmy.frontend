@@ -1,5 +1,5 @@
-import Store from '~/store';
 import * as MapActions from '~/apps/Map/MapState';
+import Store from '~/store';
 
 function resetMap({ zoom = null } = {}) {
   Store.dispatch(MapActions.setActiveSection(null));

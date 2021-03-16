@@ -1,5 +1,6 @@
-import React from 'react';
 import { Container } from '@material-ui/core';
+import React from 'react';
+
 import { Header } from '~/components2/Header';
 import config from '~/config';
 

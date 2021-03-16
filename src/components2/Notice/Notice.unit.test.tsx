@@ -1,7 +1,8 @@
-import React from 'react';
 import { fireEvent, screen } from '@testing-library/dom';
+import React from 'react';
 
 import { render } from '~/utils/test-utils';
+
 import { ApiNotice, Notice } from '.';
 
 describe('<Notice />', () => {

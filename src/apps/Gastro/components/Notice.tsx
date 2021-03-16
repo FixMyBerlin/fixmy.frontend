@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Notice } from '~/components2/Notice';
+
 import { preSignup, openSignup, postSignup } from '~/apps/Gastro/utils';
+import { Notice } from '~/components2/Notice';
 
 const GastroNotice = ({ district }) => {
   if (district?.name === 'xhain') {

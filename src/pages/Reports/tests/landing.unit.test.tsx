@@ -1,7 +1,8 @@
 import React from 'react';
-import { render } from '~/utils/test-utils';
-import Landing from '~/pages/Reports/pages/Landing';
+
 import config from '~/pages/Reports/config';
+import Landing from '~/pages/Reports/pages/Landing';
+import { render } from '~/utils/test-utils';
 
 describe('Landing page', () => {
   beforeAll(() => {

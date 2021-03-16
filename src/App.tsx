@@ -1,26 +1,25 @@
+import { Theme, Theme } from '@material-ui/core';
+import { ThemeProvider, ThemeProvider } from '@material-ui/core/styles';
+import debug from 'debug';
 import React, { useEffect, useState } from 'react';
 import { IntlProvider, IntlConfig } from 'react-intl';
-import { connect } from 'react-redux';
 import ReactPiwik from 'react-piwik';
-import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { LastLocationProvider } from 'react-router-last-location';
-import { ThemeProvider } from '@material-ui/core/styles';
-import debug from 'debug';
-import { Theme } from '@material-ui/core';
 
+import ErrorBoundary from '~/components/ErrorBoundary';
+import Menu from '~/components/Menu';
 import history from '~/history';
+import defaultMessages from '~/lang/compiled/de.json';
+import { verify } from '~/pages/User/UserState';
 import Routes from '~/routes';
 import { RootState, useTypedSelector } from '~/store';
 import GlobalStyles from '~/styles/Global';
-import ErrorBoundary from '~/components/ErrorBoundary';
-import Menu from '~/components/Menu';
-import { verify } from '~/pages/User/UserState';
 import { getTheme } from '~/styles/mui-utils';
 
-import defaultMessages from '~/lang/compiled/de.json';
-import loadLocaleMessages from './lang/loader';
 import intlErrorHandler from './lang/errorHandler';
+import loadLocaleMessages from './lang/loader';
 
 const log = debug('fmc');
 

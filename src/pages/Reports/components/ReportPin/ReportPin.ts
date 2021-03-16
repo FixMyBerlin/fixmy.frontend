@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import utils from '~/pages/Reports/utils';
+
 import { ENTRY_STATUS } from '~/pages/Reports/types';
+import utils from '~/pages/Reports/utils';
 
 // statuses for which marker images are small
 const smallMarkers = [

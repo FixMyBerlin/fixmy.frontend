@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import LegendExpanded from './LegendExpanded';
-import LegendCollapsed from './LegendCollapsed';
+
 import { breakpoints } from '~/styles/utils';
+
+import LegendCollapsed from './LegendCollapsed';
+import LegendExpanded from './LegendExpanded';
 
 interface Props {
   isPopupVisible: boolean;

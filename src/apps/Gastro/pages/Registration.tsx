@@ -1,18 +1,19 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState, useEffect } from 'react';
 import { Container } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import config from '~/apps/Gastro/config';
-import Header from '../components/Header';
-import Thanks from '../components/ThanksRegistration';
-import RegistrationForm from '../components/RegistrationForm';
 import Logo from '~/apps/Gastro/components/Logo';
+import config from '~/apps/Gastro/config';
+import { media } from '~/styles/utils';
+
 import api from '../api';
+import Header from '../components/Header';
+import RegistrationForm from '../components/RegistrationForm';
+import Thanks from '../components/ThanksRegistration';
 import regulations from '../regulations';
 import { GastroSignup, GastroRegistration, GastroStatus } from '../types';
-import { media } from '~/styles/utils';
 
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};

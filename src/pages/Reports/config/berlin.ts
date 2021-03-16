@@ -1,10 +1,10 @@
 import config from '~/config';
-import FixMyLogo from '~/images/logofmb@3x.png';
-
 import XHainSmall from '~/images/gastro/wappen.png';
 import XHainLarge from '~/images/gastro/wappen@2x.png';
+import FixMyLogo from '~/images/logofmb@3x.png';
 import BycicleParkingBgImg from '~/images/reports/bycicle-parking@3x.png';
 import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
+
 import { ReportsConfig } from '.';
 
 const isProduction = process.env.BACKEND === 'production';

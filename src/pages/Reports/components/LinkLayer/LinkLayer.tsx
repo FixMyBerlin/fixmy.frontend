@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import config from '~/pages/Reports/config';
 import { selectors as mapStateSelectors } from '~/pages/Reports/state/OverviewMapState';
 import { useTypedSelector } from '~/store';
+
 import BaseMap from '../BaseMap';
 
 const LINK_LAYER = '_reports_link_layer';

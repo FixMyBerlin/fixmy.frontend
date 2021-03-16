@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import uuidv4 from 'uuid/v4';
+
 import logger from '~/utils/logger';
 
 import { Perspective, TransportRating, UserGroup } from './types';

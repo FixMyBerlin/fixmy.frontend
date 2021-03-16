@@ -1,12 +1,13 @@
-import React from 'react';
 import { Container } from '@material-ui/core';
-import styled from 'styled-components';
+import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+
 import Header from '~/apps/Gastro/components/Header';
 import { media } from '~/styles/utils';
 
-import XHainLanding from './xhain';
 import TempelbergLanding from './tempelberg';
+import XHainLanding from './xhain';
 
 const StyledContainer = styled(Container)`
   h1 {
