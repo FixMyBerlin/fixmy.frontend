@@ -13,11 +13,10 @@ import {
   SectionProps,
 } from '~/components2/Article';
 import { Link } from '~/components2/Link';
+
 import BarChart from '../components/BarChart';
 import FeelSafe from '../components/FeelSafe';
-
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import image1 from '../images/image1_@x2.jpg';
 import CP_C_1093 from '../images/01_CP_C_1093_@x2.jpg';
 import CP_C_1100 from '../images/01_CP_C_1100_@x2.jpg';
 import CP_C_194 from '../images/01_CP_C_194_@x2.jpg';
@@ -35,6 +34,11 @@ import CP_P_185 from '../images/01_CP_P_185_@x2.jpg';
 import CP_P_194 from '../images/01_CP_P_194_@x2.jpg';
 import CP_P_203 from '../images/01_CP_P_203_@x2.jpg';
 import CP_P_778 from '../images/01_CP_P_778_@x2.jpg';
+import MS_A_1285 from '../images/01_MS_A_1285_@x2.jpg';
+import MS_A_343 from '../images/01_MS_A_343_@x2.jpg';
+import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
+import MS_A_586 from '../images/01_MS_A_586_@x2.jpg';
+import MS_A_67 from '../images/01_MS_A_67_@x2.jpg';
 import MS_C_1220 from '../images/01_MS_C_1220_@x2.jpg';
 import MS_C_17 from '../images/01_MS_C_17_@x2.jpg';
 import MS_C_2 from '../images/01_MS_C_2.jpg';
@@ -43,7 +47,6 @@ import MS_C_305 from '../images/01_MS_C_305_@x2.jpg';
 import MS_C_325 from '../images/01_MS_C_325_@x2.jpg';
 import MS_C_377 from '../images/01_MS_C_377_@x2.jpg';
 import MS_C_51 from '../images/01_MS_C_51_@x2.jpg';
-import MS_C_75 from '../images/01_MS_C_75_@x2.jpg';
 import MS_C_587 from '../images/01_MS_C_587_@x2.jpg';
 import MS_C_596 from '../images/01_MS_C_596_@x2.jpg';
 import MS_C_597 from '../images/01_MS_C_597_@x2.jpg';
@@ -51,6 +54,7 @@ import MS_C_606 from '../images/01_MS_C_606_@x2.jpg';
 import MS_C_611 from '../images/01_MS_C_611_@x2.jpg';
 import MS_C_619 from '../images/01_MS_C_619_@x2.jpg';
 import MS_C_620 from '../images/01_MS_C_620_@x2.jpg';
+import MS_C_75 from '../images/01_MS_C_75_@x2.jpg';
 import MS_C_860 from '../images/01_MS_C_860_@x2.jpg';
 import MS_C_980 from '../images/01_MS_C_980_@x2.jpg';
 import SE_C_10 from '../images/01_SE_C_10_@x2.jpg';
@@ -63,11 +67,7 @@ import SE_C_47 from '../images/01_SE_C_47_@x2.jpg';
 import SE_C_49 from '../images/01_SE_C_49_@x2.jpg';
 import SE_C_50 from '../images/01_SE_C_50_@x2.jpg';
 import SE_C_71 from '../images/01_SE_C_71_@x2.jpg';
-import MS_A_1285 from '../images/01_MS_A_1285_@x2.jpg';
-import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
-import MS_A_586 from '../images/01_MS_A_586_@x2.jpg';
-import MS_A_343 from '../images/01_MS_A_343_@x2.jpg';
-import MS_A_67 from '../images/01_MS_A_67_@x2.jpg';
+import image1 from '../images/image1_@x2.jpg';
 /* eslint-enable @typescript-eslint/no-unused-vars */
 
 const SectionResults = ({

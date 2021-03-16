@@ -1,16 +1,14 @@
-import { Answer, Perspective, Section, UserGroup } from './types';
-
 import ButtonIconUnsafe from '~/images/strassencheck/icons/button-background-1.svg';
 import ButtonIconMostyUnsafe from '~/images/strassencheck/icons/button-background-2.svg';
 import ButtonIconMostlySafe from '~/images/strassencheck/icons/button-background-3.svg';
 import ButtonIconSafe from '~/images/strassencheck/icons/button-background-4.svg';
-
-import BikeIcon from '~/images/strassencheck/icons/icon-transportation-2.svg';
 import PedestrianIcon from '~/images/strassencheck/icons/icon-transportation-1.svg';
+import BikeIcon from '~/images/strassencheck/icons/icon-transportation-2.svg';
 import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
 
-import defaultProfileConfig from './config/profile';
 import introQuestions from './config/introQuestions';
+import defaultProfileConfig from './config/profile';
+import { Answer, Perspective, Section, UserGroup } from './types';
 
 const perspectiveNames = {
   C: 'Fahrradperspektive',

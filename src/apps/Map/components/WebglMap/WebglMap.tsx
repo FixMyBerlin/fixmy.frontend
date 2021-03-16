@@ -1,8 +1,7 @@
+import _isEqual from 'lodash.isequal';
+import MapboxGL from 'mapbox-gl';
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import MapboxGL from 'mapbox-gl';
-import _isEqual from 'lodash.isequal';
-import styled from 'styled-components';
 import {
   withRouter,
   matchPath,
@@ -10,10 +9,8 @@ import {
   RouteComponentProps,
 } from 'react-router-dom';
 import slugify from 'slugify';
+import styled from 'styled-components';
 
-import Store, { RootState } from '~/store';
-import { isSmallScreen } from '~/styles/utils';
-import config from '~/config';
 import * as MapActions from '~/apps/Map/MapState';
 import ProjectMarkers from '~/apps/Map/components/ProjectMarkers';
 import {
@@ -31,6 +28,9 @@ import {
 } from '~/apps/Map/map-utils';
 import resetMap from '~/apps/Map/reset';
 import { BigLoader } from '~/components2/Loaders';
+import config from '~/config';
+import Store, { RootState } from '~/store';
+import { isSmallScreen } from '~/styles/utils';
 
 let MB_STYLE_URL;
 if (config.debug) {

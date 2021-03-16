@@ -1,7 +1,6 @@
-import { DistrictConfig } from '~/types';
-
 import XHainSmall from '~/images/gastro/wappen.png';
 import XHainLarge from '~/images/gastro/wappen@2x.png';
+import { DistrictConfig } from '~/types';
 
 const XHAIN_TERRASSEN = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg${
   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'

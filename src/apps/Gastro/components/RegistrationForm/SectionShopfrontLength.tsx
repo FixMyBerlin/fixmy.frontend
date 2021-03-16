@@ -1,6 +1,6 @@
-import React from 'react';
 import { Field } from 'formik';
 import { TextField } from 'formik-material-ui';
+import React from 'react';
 import styled from 'styled-components';
 
 const InvisiLabel = styled.label`

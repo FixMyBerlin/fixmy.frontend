@@ -1,6 +1,9 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import styled from 'styled-components';
+
+import AreaMap from '~/apps/Gastro/components/AreaMap';
+
 import {
   usageWeekday,
   usageWeekend,
@@ -10,7 +13,6 @@ import {
   permitStart,
   permitEnd,
 } from '../utils';
-import AreaMap from '~/apps/Gastro/components/AreaMap';
 
 const PermitContainer = styled.section`
   h1 {

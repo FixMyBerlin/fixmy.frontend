@@ -1,9 +1,9 @@
-import React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
 
+import { Image, ImageFull, ImageMulti } from '~/components2/Article/Image';
 import Logo from '~/images/logofmb.png';
 import Logo2 from '~/images/partner/bmvi.png';
-import { Image, ImageFull, ImageMulti } from '~/components2/Article/Image';
 
 describe('Article.Image', () => {
   it('renders', async () => {

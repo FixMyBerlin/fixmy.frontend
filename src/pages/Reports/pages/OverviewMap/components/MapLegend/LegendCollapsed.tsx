@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { LinkStyle, RouterLink } from '~/components2/Link';
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
+
 import LegendGrid from './LegendGrid';
 
 export const BaseWrapper = styled.section`

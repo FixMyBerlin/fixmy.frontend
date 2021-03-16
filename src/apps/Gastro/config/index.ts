@@ -1,6 +1,7 @@
 import globalConfig from '~/config';
-import xhain from './xhain';
+
 import tempelberg from './tempelberg';
+import xhain from './xhain';
 
 const FMB_XHAIN_TERASSEN = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg?fresh=true`;
 

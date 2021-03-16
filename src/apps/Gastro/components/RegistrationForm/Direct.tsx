@@ -1,28 +1,29 @@
-import React from 'react';
+import { FormHelperText, LinearProgress } from '@material-ui/core';
+import debug from 'debug';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { CheckboxWithLabel } from 'formik-material-ui';
-import { FormHelperText, LinearProgress } from '@material-ui/core';
+import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import debug from 'debug';
 
+import api from '~/apps/Gastro/api';
+import { GastroRegistration } from '~/apps/Gastro/types';
 import { Button } from '~/components2/Button';
 import { Form } from '~/components2/Form';
-import { GastroRegistration } from '~/apps/Gastro/types';
-import api from '~/apps/Gastro/api';
-import { validateDirect } from './validate';
-import parseLength from '../../parseLength';
-import { FormData } from '.';
+import { media } from '~/styles/utils';
 
+import parseLength from '../../parseLength';
+import regulations from '../../regulations';
 import SectionArea from './SectionArea';
+import SectionBase from './SectionBase';
 import SectionCertificate from './SectionCertificate';
 import SectionEmail from './SectionEmail';
 import SectionNotice from './SectionNotice';
 import SectionShopfrontLength from './SectionShopfrontLength';
 import SectionUsage from './SectionUsage';
-import SectionBase from './SectionBase';
-import { media } from '~/styles/utils';
-import regulations from '../../regulations';
+import { validateDirect } from './validate';
+
+import { FormData } from '.';
 
 const logger = debug('fmc:Gastro:Registration');
 

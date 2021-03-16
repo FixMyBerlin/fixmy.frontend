@@ -1,8 +1,9 @@
-import React from 'react';
+import { FormHelperText } from '@material-ui/core';
 import { ErrorMessage, Field } from 'formik';
 import { CheckboxWithLabel } from 'formik-material-ui';
-import { FormHelperText } from '@material-ui/core';
+import React from 'react';
 import styled from 'styled-components';
+
 import { usageWeekday, usageWeekend } from '../../utils';
 
 const FormError = styled(FormHelperText)`

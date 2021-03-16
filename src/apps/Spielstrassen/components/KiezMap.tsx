@@ -1,15 +1,15 @@
-import React from 'react';
 import MapboxGL from 'mapbox-gl';
+import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import styled from 'styled-components';
 
-import { media } from '~/styles/utils';
+import lors from '~/apps/Spielstrassen/data/lor-features.json';
 import { BaseMap } from '~/components2/BaseMap';
-import { Spielstrasse } from '../types';
+import { RootState } from '~/store';
+import { media } from '~/styles/utils';
 import { getBoundsFromPoly } from '~/utils/geo';
 
-import lors from '~/apps/Spielstrassen/data/lor-features.json';
-import { RootState } from '~/store';
+import { Spielstrasse } from '../types';
 
 type LORData = GeoJSON.FeatureCollection<
   GeoJSON.Polygon,

@@ -1,6 +1,6 @@
 import turfAlong from '@turf/along';
-import turfLength from '@turf/length';
 import { lineString as turfLineString } from '@turf/helpers';
+import turfLength from '@turf/length';
 import debug from 'debug';
 
 import config from '~/config';

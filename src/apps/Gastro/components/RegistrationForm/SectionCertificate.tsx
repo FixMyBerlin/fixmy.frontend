@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Field, ErrorMessage } from 'formik';
-import { SimpleFileUpload } from 'formik-material-ui';
-import styled from 'styled-components';
-import { connect } from 'react-redux';
 import { CircularProgress } from '@material-ui/core';
 import debug from 'debug';
+import { Field, ErrorMessage } from 'formik';
+import { SimpleFileUpload } from 'formik-material-ui';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import { AnchorButton } from '~/components2/Button';
 
-import FormError from './FormError';
-import config from '../../config';
 import api from '../../api';
+import config from '../../config';
+import FormError from './FormError';
 
 const logger = debug('fmc:Gastro:Registration');
 
