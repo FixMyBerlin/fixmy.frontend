@@ -87,7 +87,7 @@ const CTAWrapper = styled.div`
 
 const XhainLanding = ({ district }) => (
   <>
-    <h1>XHain geht raus – Terrassen für Vieles</h1>
+    <h1>Xhain geht raus – Terrassen für Vieles</h1>
     <ImageInsert
       src={BackgroundImageA2}
       srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
@@ -103,7 +103,7 @@ const XhainLanding = ({ district }) => (
       </a>
     </Attribution>
     <h2>
-      XHain-Terrassen 2021. Jetzt die ganze Woche nutzen und neu Anträge für
+      Xhain-Terrassen 2021. Jetzt die ganze Woche nutzen und neu Anträge für
       Veranstaltungen
     </h2>
     <Section>
@@ -161,7 +161,7 @@ const XhainLanding = ({ district }) => (
         <Img src={MayorImg} alt="Planner Icon" />
         <BlockQuote>
           „In den Zeiten der fortlaufenden Corona-Einschränkungen, wollen wir
-          den XHainer*innen wieder ein kleines Stück mehr Freiheit ermöglichen
+          den Xhainer*innen wieder ein kleines Stück mehr Freiheit ermöglichen
           und Gastronomen helfen ihren Betrieb durch das Jahr 2021 zu bringen. “
         </BlockQuote>
         <SourcePerson>Monika Herrmann</SourcePerson>
@@ -172,7 +172,7 @@ const XhainLanding = ({ district }) => (
     </Section>
 
     <Section>
-      <h2>Wo kann ich Angebote für XHain-Terrassen besuchen?</h2>
+      <h2>Wo kann ich Angebote für Xhain-Terrassen besuchen?</h2>
       <p>Karte</p>
       <p>Legende</p>
     </Section>

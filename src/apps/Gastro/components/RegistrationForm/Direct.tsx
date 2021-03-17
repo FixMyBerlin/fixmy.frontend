@@ -213,7 +213,7 @@ const DirectRegistrationForm = ({ onSuccess, district }: Props) => (
                     Datenschutzvereinbarung
                   </a>{' '}
                   gelesen und willige in die Speicherung meiner Daten zur
-                  Kommunikation im Zuge der Nutzung der XHain-Terrassen ein.
+                  Kommunikation im Zuge der Nutzung der Xhain-Terrassen ein.
                 </span>
               ),
             }}

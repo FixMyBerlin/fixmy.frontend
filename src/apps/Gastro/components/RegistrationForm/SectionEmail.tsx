@@ -12,7 +12,7 @@ const SectionEmail = () => (
     <h4>Ihre E-Mail-Adresse</h4>
     <p className="subline">
       Ihre Daten werden für die Durchführung des Verfahrens gespeichert, der
-      Name Ihres Betriebes kann im Zuge der Aktion <em>XHain-Terrassen</em>{' '}
+      Name Ihres Betriebes kann im Zuge der Aktion <em>Xhain-Terrassen</em>{' '}
       veröffentlicht werden.
     </p>
     <InvisiLabel htmlFor="email">Ihre E-Mail-Adresse</InvisiLabel>
