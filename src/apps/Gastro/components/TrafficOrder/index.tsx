@@ -3,8 +3,6 @@ import React from 'react';
 
 import './styles.css';
 import {
-  usageWeekday,
-  usageWeekend,
   getCategoryDescription,
   dateReceived,
   REGULATION,
@@ -1091,12 +1089,11 @@ const TrafficOrder = ({ application }) => {
               </p>
             </td>
             <td className="c210" colSpan={17} rowSpan={1}>
-              {usageWeekend(application) && (
-                <span>Freitag-Sonntag jeweils von 11-22 Uhr</span>
-              )}
-              {usageWeekday(application) && (
-                <span>Montag-Freitag jeweils von 10-20 Uhr</span>
-              )}
+              <span className="c14">
+                Die Vorschriften des Landes-Immissionsschutzgesetzes Berlin
+                (LimSchG Bln) in der jeweils geltenden aktuellen Fassung sind zu
+                beachten.
+              </span>
             </td>
             <td className="c87" colSpan={1} rowSpan={1}>
               <p className="c7">
@@ -1232,14 +1229,8 @@ const TrafficOrder = ({ application }) => {
                       Haltverbote: Z 283 nach VLB-Regelplan 630 mit
                       Zusatzzeichen 1042-33 StVO (zeitliche Beschr&auml;nkung)
                     </span>{' '}
-                    {setupTimerangeEnd} - {permitEnd(application)}{' '}
-                    {usageWeekend(application) && (
-                      <span>Freitag-Sonntag jeweils von 11-22 Uhr. </span>
-                    )}
-                    {usageWeekday(application) && (
-                      <span>Montag-Freitag jeweils von 10-20 Uhr. </span>
-                    )}
-                    Ausdehnung gemäß Lageplan.
+                    {setupTimerangeEnd} - {permitEnd(application)} Ausdehnung
+                    gemäß Lageplan.
                   </>
                 )}
                 {!isParking(application) && (

@@ -65,6 +65,11 @@ const SectionArea = ({
             <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
             <ul>
               <li>
+                Es können nur Flächen innerhalb der auf der Karte hellgrün
+                ausgewiesen Zonen im Bereich des ruhenden Verkehrs beantragt
+                werden.
+              </li>
+              <li>
                 Es können keine Flächen auf Einfahrten,Behindertenparkplätzen,
                 Bushaltestellen, Schaltschränken, Baumscheiben oder Baustellen
                 beantragt werden.
