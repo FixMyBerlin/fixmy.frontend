@@ -17,6 +17,7 @@ const defaultConfig = {
   routes: {
     landing: '/',
     signup: '/anmeldung',
+    signupEvents: '/anmeldung-veranstaltungen',
     thanks: '/danke',
     registration: '/registrierung/:id/:accessKey',
     registrationThanks: '/registrierung/danke',
