@@ -2,13 +2,13 @@ import XHainSmall from '~/images/gastro/wappen.png';
 import XHainLarge from '~/images/gastro/wappen@2x.png';
 import { DistrictConfig } from '~/types';
 
-const XHAIN_TERRASSEN = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg${
+const XHAIN_TERRASSEN_CONFIRMED_AREAS = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg${
   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
 }`;
 
-// const XHAIN_TERRASSEN_INTERN = `mapbox://styles/hejco/ckb92ue8b0m3h1iphwk9flh6e${
-//   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
-// }`;
+const XHAIN_TERRASSEN_AVAILABLE_AREAS = `mapbox://styles/hejco/ckm3lgekg9jky17rznm5kn8bd${
+  process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
+}`;
 
 const xhain: DistrictConfig = {
   title: 'Friedrichshain-Kreuzberg',
@@ -192,11 +192,14 @@ const xhain: DistrictConfig = {
         category: true,
         opening_hours: false,
       },
+      landing: {
+        mapboxStyle: XHAIN_TERRASSEN_CONFIRMED_AREAS,
+      },
       signup: {
-        mapboxStyle: XHAIN_TERRASSEN,
+        mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
       },
       registration: {
-        mapboxStyle: XHAIN_TERRASSEN,
+        mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
       },
     },
   },

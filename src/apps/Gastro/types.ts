@@ -25,6 +25,9 @@ export interface GastroConfig extends AppConfig {
     category: boolean;
     opening_hours: boolean;
   };
+  landing: {
+    mapboxStyle: string;
+  };
   signup: {
     mapboxStyle: string;
     intro?: string;
