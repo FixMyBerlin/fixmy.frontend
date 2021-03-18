@@ -19,6 +19,8 @@ import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import { media } from '~/styles/utils';
 
 import MayorImg from './assets/hermann.jpg';
+import MayorImg2 from './assets/hermann@2x.jpg';
+import MayorImg3 from './assets/hermann@3x.jpg';
 
 const Attribution = styled.div`
   font-size: 0.75em;
@@ -54,6 +56,13 @@ const Img = styled.img`
   margin: 0 auto;
 `;
 
+const ImgAttribution = styled.div`
+  color: ${config.colors.darkgrey};
+  font-size: 12px;
+  margin: 0.5em;
+  text-align: center;
+`;
+
 const BlockQuote = styled.blockquote`
   text-align: center;
   font-style: italic;
@@ -75,14 +84,18 @@ const SourceFunction = styled.p`
 const CTA = styled(Button)`
   ${media.m`
     width: 20rem;
-    margin: 2em auto;
+    margin: 0 auto;
   `}
 `;
 
 const CTAWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  ${media.m`
+    margin: 2em 0;
+  `}
 `;
 
 const XhainLanding = ({ district }) => (
@@ -121,18 +134,19 @@ const XhainLanding = ({ district }) => (
       </p>
 
       {openSignup(district) && (
-        <Link to={getPath(district, 'signup')}>
-          <CTAWrapper>
+        <CTAWrapper>
+          <Link to={getPath(district, 'signup')}>
             <CTA flat>Antrag stellen für Außenfläche</CTA>
-          </CTAWrapper>
-        </Link>
+          </Link>
+          <p>
+            <a href="#bedingungen" className="internal">
+              Bedingungen für Außenflächen
+            </a>
+          </p>
+        </CTAWrapper>
       )}
 
       <Notice />
-
-      <p>
-        <a href="#bedingungen">Bedingungen für Außenflächen</a>
-      </p>
 
       <p>
         Ab sofort gibt es außerdem die Möglichkeit für Vereine oder
@@ -142,23 +156,27 @@ const XhainLanding = ({ district }) => (
       </p>
 
       {openSignup(district) && (
-        <Link to={getPath(district, 'signupEvent')}>
-          <CTAWrapper>
+        <CTAWrapper>
+          <Link to={getPath(district, 'signupEvent')}>
             <CTA flat>Antrag stellen für Veranstaltung</CTA>
-          </CTAWrapper>
-        </Link>
+          </Link>
+          <p>
+            <a href="#bedingungen-veranstaltungen" className="internal">
+              Bedingungen für Veranstaltungen
+            </a>
+          </p>
+        </CTAWrapper>
       )}
-
-      <p>
-        <a href="#bedingungen-veranstaltungen">
-          Bedingungen für Veranstaltungen
-        </a>
-      </p>
     </Section>
 
     <Section>
       <QuoteSection>
-        <Img src={MayorImg} alt="Planner Icon" />
+        <Img
+          alt="Portrait Monika Hermann"
+          src={MayorImg}
+          srcSet={`${MayorImg2} 2x, ${MayorImg3} 3x`}
+        />
+        <ImgAttribution>Foto © Sedat Mehder</ImgAttribution>
         <BlockQuote>
           „In den Zeiten der fortlaufenden Corona-Einschränkungen, wollen wir
           den Xhainer*innen wieder ein kleines Stück mehr Freiheit ermöglichen
