@@ -98,6 +98,11 @@ const CTAWrapper = styled.div`
   `}
 `;
 
+const StyledMap = styled(BaseMap)`
+  height: 30em;
+  margin: 2em 0;
+`;
+
 const XhainLanding = ({ district }) => (
   <>
     <h1>Xhain geht raus – Terrassen für Vieles</h1>
@@ -191,8 +196,15 @@ const XhainLanding = ({ district }) => (
 
     <Section>
       <h2>Wo kann ich Angebote für Xhain-Terrassen besuchen?</h2>
-      <p>Karte</p>
-      <p>Legende</p>
+      <StyledMap
+        style={config.gastro[district?.name]?.map.style}
+        bounds={district?.bounds}
+        onInit={(map) => {
+          map.addControl(
+            new MapboxGL.NavigationControl({ showCompass: false })
+          );
+        }}
+      />
     </Section>
 
     <Section>
