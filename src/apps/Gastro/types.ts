@@ -27,6 +27,7 @@ export interface GastroConfig extends AppConfig {
   };
   landing: {
     mapboxStyle: string;
+    mapboxLayers?: string[];
   };
   signup: {
     mapboxStyle: string;
@@ -36,6 +37,7 @@ export interface GastroConfig extends AppConfig {
   };
   registration?: {
     mapboxStyle: string;
+    mapboxLayers?: string[];
   };
 }
 
