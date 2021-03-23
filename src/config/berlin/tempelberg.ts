@@ -1,7 +1,6 @@
-import { DistrictConfig } from '~/types';
-
 import TempelbergSmall from '~/images/gastro/wappen-tempelberg.png';
 import TempelbergLarge from '~/images/gastro/wappen-tempelberg@2x.png';
+import { DistrictConfig } from '~/types';
 
 const TS_TERRASSEN = `mapbox://styles/hejco/ckbkt650p0wve1ip71tdibx8u${
   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'

@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import config from '~/pages/Reports/config';
+
 import { BaseWrapper } from './LegendCollapsed';
-import CloseIcon from './close.svg';
 import LegendGrid from './LegendGrid';
+import CloseIcon from './close.svg';
 
 const Wrapper = styled(BaseWrapper)`
   display: flex;

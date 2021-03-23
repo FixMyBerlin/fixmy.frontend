@@ -1,14 +1,14 @@
-import React from 'react';
-
 import '~/utils/polyfills';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
-import { Provider } from 'react-redux';
+import React from 'react';
 import { IntlProvider } from 'react-intl';
+import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 
-import Store from '~/store';
 import messages from '~/lang/compiled/de.json';
+import Store from '~/store';
+
 import polyfill from './polyfill-intl';
 
 /**

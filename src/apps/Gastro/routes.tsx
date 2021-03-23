@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react';
-import { Router, Route, Switch, useLocation, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Router, Route, Switch, useLocation, Redirect } from 'react-router-dom';
+
+import history from '~/history';
+import Markdown from '~/pages/Markdown';
+import { getAppPath } from '~/utils/utils';
 
 import config from './config';
-import Registration from './pages/Registration';
 import DirectSignup from './pages/DirectSignup';
-import Permit from './pages/Permit';
-import TrafficOrder from './pages/TrafficOrder';
 import Landing from './pages/Landing';
-import Markdown from '~/pages/Markdown';
-import Signup from './pages/Signup';
+import Permit from './pages/Permit';
+import Registration from './pages/Registration';
 import Renewal from './pages/Renewal';
-import history from '~/history';
-import { getAppPath } from '~/utils/utils';
+import Signup from './pages/Signup';
+import TrafficOrder from './pages/TrafficOrder';
 import { openSignup } from './utils';
 
 const ScrollToTop = () => {

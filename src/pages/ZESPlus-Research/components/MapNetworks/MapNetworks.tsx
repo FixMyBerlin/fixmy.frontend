@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Map as ArticleMap } from '~/components2/Article';
+
 import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../constants';
 import {
   IconWrapper,
@@ -11,14 +12,13 @@ import {
   LegendItems,
   LegendSources,
 } from '../BaseLegend';
-
 import IconBV from './icons/berliner-verbaende.svg';
+import IconHeatmap from './icons/heatmap.svg';
 import IconKDS from './icons/konzept-dahme-spree.svg';
 import IconKS from './icons/konzept-schoenefeld.svg';
 import IconRSV from './icons/radschnellverbindungen.svg';
 import IconT from './icons/touristische.svg';
 import IconV from './icons/varianten-rsv.svg';
-import IconHeatmap from './icons/heatmap.svg';
 import IconZES from './icons/zes.svg';
 
 const MAP_STYLE_QUALITY = 'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';

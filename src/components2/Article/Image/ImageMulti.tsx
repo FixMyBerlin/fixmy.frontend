@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
 
-import Subtitle from './Subtitle';
 import InnerImg, { InnerImageProps } from './InnerImage';
+import Subtitle from './Subtitle';
 
 const ImageWrapper = styled.div`
   position: relative;

@@ -1,7 +1,9 @@
-import React from 'react';
-import mapboxgl from 'mapbox-gl';
 import { screen } from '@testing-library/dom';
+import mapboxgl from 'mapbox-gl';
+import React from 'react';
+
 import { render } from '~/utils/test-utils';
+
 import { BaseMap } from '.';
 
 describe('<BaseMap />', () => {

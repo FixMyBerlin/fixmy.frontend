@@ -1,13 +1,13 @@
 import '~/utils/polyfills';
 
-import React from 'react';
-import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
+import React from 'react';
+import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-import Store from '~/store';
 
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
+import Store from '~/store';
 
 import ProjectList from '../ProjectList';
 import projectListFixture from './projectlist.fixture.json';

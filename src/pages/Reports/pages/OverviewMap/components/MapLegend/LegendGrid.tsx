@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import config from '~/pages/Reports/config';
+
 import ReportPin from '~/pages/Reports/components/ReportPin';
+import config from '~/pages/Reports/config';
 
 const LegendWrapper = styled.div`
   display: flex;

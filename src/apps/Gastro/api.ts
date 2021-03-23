@@ -1,10 +1,11 @@
+import debug from 'debug';
 import ky from 'ky-universal';
 import { generatePath } from 'react-router-dom';
-import debug from 'debug';
 
-import { GastroSignup, GastroRegistration } from './types';
-import config from './config';
 import { DistrictConfig } from '~/types';
+
+import config from './config';
+import { GastroSignup, GastroRegistration } from './types';
 
 const URL_GET_SIGNUP = `/gastro/:campaign/:id/:accessKey?`;
 const URL_POST_SIGNUP = `/gastro/:campaign`;

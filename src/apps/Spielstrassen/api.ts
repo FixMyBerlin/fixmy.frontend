@@ -1,10 +1,11 @@
 import ky from 'ky-universal';
-
 import { generatePath } from 'react-router-dom';
-import { SignupData, Counts } from './types';
+
 import config from '~/config';
 import { DistrictConfig } from '~/types';
 import logger from '~/utils/logger';
+
+import { SignupData, Counts } from './types';
 
 const API_URL = `/playstreets/:campaign`;
 

@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
 import { Container } from '@material-ui/core';
-import styled from 'styled-components';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
+
+import api from '../api';
 import Header from '../components/Header';
 import Permit from '../components/Permit';
-import api from '../api';
 
 const PermitWrapper = styled.article`
   border-bottom: 2px dashed ${config.colors.lightgrey};

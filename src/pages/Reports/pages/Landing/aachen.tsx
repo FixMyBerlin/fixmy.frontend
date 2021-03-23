@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import FahrRadLogo from '~/images/aachen/fahr-rad-logo@2x.png';
+import LogoAachen from '~/images/aachen/logo-stadt-aachen@2x.png';
+import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
+import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
+
 import AboveFold from './components/AboveFold';
 import BelowFold from './components/BelowFold';
-import config from '~/pages/Reports/config';
 import CTA from './components/CTA';
-import FahrRadLogo from '~/images/aachen/fahr-rad-logo@2x.png';
 import Faq from './components/Faq';
-import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
 import Intro from './components/Intro';
-import LogoAachen from '~/images/aachen/logo-stadt-aachen@2x.png';
 import MapLink from './components/MapLink';
 import Quote from './components/QuoteAachen';
 

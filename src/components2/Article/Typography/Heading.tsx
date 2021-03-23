@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
-import styled from 'styled-components';
 import slugify from 'slugify';
+import styled from 'styled-components';
 
 import config from '~/config';
 import { media } from '~/styles/utils';
