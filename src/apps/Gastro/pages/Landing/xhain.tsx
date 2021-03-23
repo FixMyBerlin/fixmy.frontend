@@ -12,12 +12,25 @@ import Link from '~/components/Link';
 import { BaseMap } from '~/components2/BaseMap';
 import { Button } from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
-import { Link as Link2 } from '~/components2/Link';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import { media } from '~/styles/utils';
 
+import {
+  IconWrapper,
+  Legend,
+  LegendCol,
+  LegendHeader,
+  LegendItem,
+  LegendItems,
+  LegendSources,
+} from '../../components/Legend';
+import IconEvents from './assets/basics-icon-map-events.svg';
+import IconRepair from './assets/basics-icon-map-repair.svg';
+import IconRestaurant from './assets/basics-icon-map-restaurant.svg';
+import IconRetail from './assets/basics-icon-map-retail.svg';
+import IconSocial from './assets/basics-icon-map-social.svg';
 import MayorImg from './assets/hermann.jpg';
 import MayorImg2 from './assets/hermann@2x.jpg';
 import MayorImg3 from './assets/hermann@3x.jpg';
@@ -100,7 +113,10 @@ const CTAWrapper = styled.div`
 
 const StyledMap = styled(BaseMap)`
   height: 30em;
-  margin: 2em 0;
+`;
+
+const MapWrapper = styled.div`
+  margin: 0 -16px -16px;
 `;
 
 const XhainLanding = ({ district }) => (
@@ -196,15 +212,67 @@ const XhainLanding = ({ district }) => (
 
     <Section>
       <h2>Wo kann ich Angebote für Xhain-Terrassen besuchen?</h2>
-      <StyledMap
-        style={config.gastro[district?.name]?.map.style}
-        bounds={district?.bounds}
-        onInit={(map) => {
-          map.addControl(
-            new MapboxGL.NavigationControl({ showCompass: false })
-          );
-        }}
-      />
+      <MapWrapper>
+        <StyledMap
+          style={config.gastro[district?.name]?.map.style}
+          bounds={district?.bounds}
+          onInit={(map) => {
+            map.addControl(
+              new MapboxGL.NavigationControl({ showCompass: false })
+            );
+            district.apps.gastro.landing.mapboxLayers.forEach((layer: string) =>
+              map.setLayoutProperty(layer, 'visibility', 'visible')
+            );
+          }}
+        />
+      </MapWrapper>
+
+      <Legend>
+        <LegendHeader>Legende</LegendHeader>
+        <LegendCol>
+          <LegendItems>
+            <LegendItem>
+              <IconWrapper>
+                <IconRestaurant />
+              </IconWrapper>{' '}
+              Gastronomische Angebote
+            </LegendItem>
+            <LegendItem>
+              <IconWrapper>
+                <IconSocial />
+              </IconWrapper>{' '}
+              Soziale Angebote
+            </LegendItem>
+            <LegendItem>
+              <IconWrapper>
+                <IconEvents />
+              </IconWrapper>
+              Veranstaltungen der Xhain-Terrassen
+            </LegendItem>
+          </LegendItems>
+        </LegendCol>
+        <LegendCol>
+          <LegendItems>
+            <LegendItem>
+              <IconWrapper>
+                <IconRetail />
+              </IconWrapper>{' '}
+              Einzelhandel
+            </LegendItem>
+            <LegendItem>
+              <IconWrapper>
+                <IconRepair />
+              </IconWrapper>{' '}
+              Werkstatt
+            </LegendItem>
+          </LegendItems>
+        </LegendCol>
+        <LegendSources>
+          Die Karte zeigt genehmigte Anträge auf Sondernutzung im Rahmen der
+          Xhain Terrassen, die Angaben basieren auf den Angaben der
+          Antragsstellenden
+        </LegendSources>
+      </Legend>
     </Section>
 
     <Section>
