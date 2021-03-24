@@ -195,9 +195,9 @@ const xhain: DistrictConfig = {
       landing: {
         mapboxStyle: XHAIN_TERRASSEN_CONFIRMED_AREAS,
         mapboxLayers: [
-          'TER-Event-Terrassen-Xhain-name',
-          'TER-Event-Terrassen-Xhain-area',
-          'TER-Gastro-Terrassen-Xhain-name',
+          'TER-Event-Terrassen-XHain-name',
+          'TER-Event-Terrassen-XHain-area',
+          'TER-Gastro-Terrassen-XHain-name',
         ],
       },
       signup: {
