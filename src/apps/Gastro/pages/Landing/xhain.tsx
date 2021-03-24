@@ -132,6 +132,14 @@ const LandingMap = ({ district }) => (
           district.apps.gastro.landing.mapboxLayers.forEach((layer: string) =>
             map.setLayoutProperty(layer, 'visibility', 'visible')
           );
+          district.apps.gastro.registration.mapboxLayers.forEach(
+            (layer: string) =>
+              map.setLayoutProperty(layer, 'visibility', 'none')
+          );
+
+          district.apps.gastro.events.mapboxLayers.forEach((layer: string) =>
+            map.setLayoutProperty(layer, 'visibility', 'none')
+          );
         }}
       />
     </MapWrapper>

@@ -94,6 +94,17 @@ const SectionArea = ({
                 },
               });
             }}
+            onLoad={(map) => {
+              district.apps.gastro.registration.mapboxLayers.forEach((layer) =>
+                map.setLayoutProperty(layer, 'visibility', 'visible')
+              );
+              district.apps.gastro.landing.mapboxLayers.forEach((layer) =>
+                map.setLayoutProperty(layer, 'visibility', 'none')
+              );
+              district.apps.gastro.events.mapboxLayers.forEach((layer) =>
+                map.setLayoutProperty(layer, 'visibility', 'none')
+              );
+            }}
           />
 
           <ErrorMessage

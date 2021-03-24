@@ -39,6 +39,10 @@ export interface GastroConfig extends AppConfig {
     mapboxStyle: string;
     mapboxLayers?: string[];
   };
+  events?: {
+    mapboxStyle: string;
+    mapboxLayers: string[];
+  };
 }
 
 export interface GastroSignup {

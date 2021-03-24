@@ -102,6 +102,18 @@ const SectionBase = ({
             initialValue={initialAddress}
             mapboxStyle={district.apps.gastro.signup.mapboxStyle}
             bounds={district.bounds}
+            onLoad={(map) => {
+              // Toggle visibility of map layers
+              district.apps.gastro.registration.mapboxLayers.forEach((layer) =>
+                map.setLayoutProperty(layer, 'visibility', 'none')
+              );
+              district.apps.gastro.landing.mapboxLayers.forEach((layer) =>
+                map.setLayoutProperty(layer, 'visibility', 'none')
+              );
+              district.apps.gastro.events.mapboxLayers.forEach((layer) =>
+                map.setLayoutProperty(layer, 'visibility', 'none')
+              );
+            }}
             onSelect={({ address, location }) => {
               handleChange({ target: { name: 'address', value: address } });
               handleChange({

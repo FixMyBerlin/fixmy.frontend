@@ -23,6 +23,7 @@ const GoodJob = styled.p`
 
 type Props = {
   onSelect: (geometry: GeoJSON.Geometry | null) => any;
+  onLoad?: (map: MapboxGL.Map) => any;
   center?: MapboxGL.LngLatLike;
   mapboxStyle: string;
   bounds?: MapboxGL.LngLatBoundsLike;
@@ -32,6 +33,7 @@ type Props = {
 const AreaPicker: React.FC<Props> = ({
   center,
   onSelect,
+  onLoad,
   mapboxStyle,
   bounds,
   initialGeometry,
@@ -70,6 +72,8 @@ const AreaPicker: React.FC<Props> = ({
     if (initialValue) {
       draw.add(initialValue);
     }
+
+    if (onLoad) onLoad(map);
   }, [map]);
 
   // Only adjust map center as long as no geometry has been drawn
