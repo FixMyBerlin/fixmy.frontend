@@ -78,7 +78,7 @@ const SectionBase = ({
         fullWidth
       />
       <InvisiLabel htmlFor="phone">
-        Telefonnummer (tagsüber erreichbar)
+        Telefonnummer unter der Sie tagsüber gut erreichbar sind
       </InvisiLabel>
       <Field
         id="phone"
@@ -102,6 +102,18 @@ const SectionBase = ({
             initialValue={initialAddress}
             mapboxStyle={district.apps.gastro.signup.mapboxStyle}
             bounds={district.bounds}
+            onLoad={(map) => {
+              // Toggle visibility of map layers
+              district.apps.gastro.registration.mapboxLayers.forEach((layer) =>
+                map.setLayoutProperty(layer, 'visibility', 'none')
+              );
+              district.apps.gastro.landing.mapboxLayers.forEach((layer) =>
+                map.setLayoutProperty(layer, 'visibility', 'none')
+              );
+              district.apps.gastro.events.mapboxLayers.forEach((layer) =>
+                map.setLayoutProperty(layer, 'visibility', 'none')
+              );
+            }}
             onSelect={({ address, location }) => {
               handleChange({ target: { name: 'address', value: address } });
               handleChange({
@@ -131,6 +143,30 @@ const SectionBase = ({
           />
         </>
       )}
+
+      <p>
+        <strong>
+          Wie breit ist die Häuserfront ihres Ladenlokals (falls vorhanden)?
+        </strong>
+      </p>
+      <p>
+        Auf Grundlage der Straßenfront-Breite kann das Bezirksamt entscheiden
+        welcher Raum im Straßenland genutzt werden kann. Sofern sie kein
+        Ladenlokal haben bitte 0 angeben.
+      </p>
+      <InvisiLabel htmlFor="shopfront_length">
+        Angabe in Metern z.B. 4,8
+      </InvisiLabel>
+      <Field
+        id="shopfront_length"
+        name="shopfront_length"
+        type="text"
+        inputMode="numeric"
+        pattern="[0-9]+(,[0-9]+)?"
+        component={TextField}
+        label="Angabe in Metern z.B. 4,8"
+        fullWidth
+      />
     </section>
   );
 };

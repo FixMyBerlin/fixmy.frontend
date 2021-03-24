@@ -115,13 +115,13 @@ const uploadCertificate = async (
     endpoint = `${getApiBase(district)}${generatePath(URL_PUT_CERTIFICATE, {
       id: registrationData.id,
       accessKey: registrationData.access_key,
-      campaign: district.name,
+      campaign: district.apps.gastro.currentCampaign,
     })}`;
   } else {
     method = 'POST';
     endpoint = `${getApiBase(district)}${generatePath(URL_POST_CERTIFICATE, {
       fileName,
-      campaign: district.name,
+      campaign: district.apps.gastro.currentCampaign,
     })}`;
   }
 
@@ -133,7 +133,7 @@ const uploadCertificate = async (
     headers: {
       'Content-Disposition': `attachment; filename="${fileName}"`,
     },
-    timeout: 60000,
+    timeout: 20_000,
   }).json();
 };
 

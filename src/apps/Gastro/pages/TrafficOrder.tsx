@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import api from '../api';
 import Header from '../components/Header';
-import TrafficOrder from '../components/TrafficOrder';
+import { TrafficOrder } from '../components/TrafficOrder';
 
 const NoPrint = styled.span`
   @media print {

@@ -1,4 +1,4 @@
-import { CircularProgress } from '@material-ui/core';
+import { CircularProgress, FormHelperText } from '@material-ui/core';
 import debug from 'debug';
 import { Field, ErrorMessage } from 'formik';
 import { SimpleFileUpload } from 'formik-material-ui';
@@ -46,19 +46,29 @@ const ButtonWrapper = styled.div`
   }
 `;
 
+const UploadError = styled(FormHelperText)`
+  && {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-top: 1em;
+  }
+`;
+
 const SectionCertificate = ({
   isSubmitting,
   values,
   district,
   handleChange,
 }) => {
-  const [isSubmittingCertificate, setSubmittingCertificate] = useState(
+  const [isSubmittingCertificate, setSubmittingCertificate] = useState<boolean>(
     isSubmitting
   );
+  const [uploadError, setUploadError] = useState<string | null>(null);
 
   useEffect(() => {
     const doSubmit = async () => {
       setSubmittingCertificate(true);
+      setUploadError(null);
 
       let resp;
       try {
@@ -66,10 +76,13 @@ const SectionCertificate = ({
         handleChange({ target: { name: 'certificateS3', value: resp?.path } });
       } catch (e) {
         logger(e);
+        setUploadError(
+          'Das Hochladen Ihrer Gewerbeanmeldung / Ihres Vereinsregisters ist fehlgeschlagen. Bitte prüfen Sie Ihre Internetverbindung und versuchen es erneut.'
+        );
       }
       setSubmittingCertificate(false);
     };
-    doSubmit();
+    if (values.certificate != null) doSubmit();
   }, [values.certificate?.name]);
 
   return (
@@ -100,9 +113,11 @@ const SectionCertificate = ({
 
         {values.certificateS3 != null && (
           <SelectedFile>
-            Die gewählte Datei wurde Ihrem Antrag beigefügt{' '}
+            Die gewählte Datei wurde Ihrem Antrag beigefügt.
           </SelectedFile>
         )}
+
+        {uploadError && <UploadError error>{uploadError}</UploadError>}
 
         <ErrorMessage
           name="certificate"

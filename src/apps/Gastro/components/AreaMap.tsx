@@ -41,7 +41,7 @@ const addAreaToMap = (map, area) => {
   map.fitBounds(bounds, { padding: 20, maxZoom: 17.5, linear: true });
 };
 
-const handleMapInit = (map, geometry, area) => {
+const handleMapInit = (map, geometry, area, district) => {
   if (geometry != null) {
     map.setCenter(geometry.coordinates);
     new MapboxGL.Marker({ color: config.colors.interaction })
@@ -49,6 +49,14 @@ const handleMapInit = (map, geometry, area) => {
       .addTo(map);
   }
   if (area != null) addAreaToMap(map, area);
+
+  district.apps.gastro.landing.mapboxLayers.forEach((layer: string) =>
+    map.setLayoutProperty(layer, 'visibility', 'visible')
+  );
+
+  district.apps.gastro.registration.mapboxLayers.forEach((layer: string) =>
+    map.setLayoutProperty(layer, 'visibility', 'visible')
+  );
 };
 
 const AreaMap = ({ application, district, printable = false }) => {
@@ -56,7 +64,7 @@ const AreaMap = ({ application, district, printable = false }) => {
 
   return (
     <StyledMap
-      onInit={(map) => handleMapInit(map, geometry, area)}
+      onInit={(map) => handleMapInit(map, geometry, area, district)}
       style={config.gastro[district?.name]?.map.style}
       bounds={district?.bounds}
       interactive={false}

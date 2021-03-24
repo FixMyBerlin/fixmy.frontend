@@ -48,7 +48,9 @@ const Registration = () => {
               <p>
                 Bitte füllen Sie dieses Formular aus, um eine
                 Sondernutzungsfläche für Ihren Betrieb / Verein beim Bezirksamt
-                Friedrichshain-Kreuzberg zu beantragen.
+                Friedrichshain-Kreuzberg zu beantragen. Für das Einreichen des
+                Antrags benötigen Sie ein Foto / Scan der ersten Seite Ihrer
+                Gewerbeanmeldung / Vereinssatzung.
               </p>
               <p>
                 Bitte beachten Sie, dass die Sondernutzungsflächen{' '}
@@ -58,27 +60,10 @@ const Registration = () => {
                 genehmigt werden können.
               </p>
               <p>
-                Entsprechend der Art Ihres Betriebs können die Sonderflächen in
-                folgenden Zeiten genutzt werden:
-              </p>
-              <ul>
-                <li>
-                  <strong>Kategorie Restaurant:</strong> Die
-                  Sondernutzungsfläche kann im Falle einer Genehmigung ihres
-                  Antrags Freitags, Samstags und Sonntags, jeweils von 11 bis 22
-                  Uhr genutzt werden.
-                </li>
-
-                <li>
-                  <strong>Alle anderen Kategorien:</strong> Die
-                  Sondernutzungsfläche kann im Falle einer Genehmigung ihres
-                  Antrags Montags bis Freitags, jeweils von 10 bis 20 Uhr
-                  genutzt werden.
-                </li>
-              </ul>
-              <p>
-                Die Sondergenehmigung zur Nutzung der Flächen erfolgt kostenfrei
-                zunächst bis zum 31.10.2020.
+                Die Sondernutzungsfläche kann im Falle einer Genehmigung ihres
+                Antrags Montags bis Sonntags, jeweils von 6 bis 22 Uhr genutzt
+                werden. Die Sondergenehmigung zur Nutzung der Flächen erfolgt
+                kostenfrei zunächst bis zum 31.12.2021.
               </p>
             </Section>
             <Section>

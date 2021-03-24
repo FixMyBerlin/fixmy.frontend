@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import AreaMap from '~/apps/Gastro/components/AreaMap';
 
 import {
-  usageWeekday,
-  usageWeekend,
   getCategoryDescription,
   dateReceived,
   isBoardwalk,
@@ -163,18 +161,12 @@ const Permit = ({ application }) => {
               Von {permitStart(application)} bis {permitEnd(application)}{' '}
             </p>
             <p>
-              {usageWeekday(application) && (
-                <strong>
-                  Nur am Montag, Dienstag, Mittwoch, Donnerstag, Freitag,
-                  jeweils von 10:00 Uhr bis 20:00 Uhr
-                </strong>
-              )}
-              {usageWeekend(application) && (
-                <strong>
-                  Nur am Freitag, Samstag, Sonntag, jeweils von 11:00 Uhr bis
-                  22:00 Uhr
-                </strong>
-              )}
+              <strong>Alle Wochentage Montag bis Sonntag</strong>
+            </p>
+            <p>
+              <strong>
+                Betrieb nur während der Uhrzeit von 6:00 Uhr bis 22:00 Uhr
+              </strong>
             </p>
           </td>
         </tr>

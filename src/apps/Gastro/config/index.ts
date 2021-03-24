@@ -1,14 +1,13 @@
 import globalConfig from '~/config';
 
-import tempelberg from './tempelberg';
 import xhain from './xhain';
 
-const FMB_XHAIN_TERASSEN = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg?fresh=true`;
+const DEFAULT_MAP_STYLE_XHAIN = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg?fresh=true`;
 
 const defaultConfig = {
   email: 'info@fixmyberlin.de',
   map: {
-    style: FMB_XHAIN_TERASSEN,
+    style: DEFAULT_MAP_STYLE_XHAIN,
     bounds: [
       [13.3651, 52.4658],
       [13.4945, 52.5479],
@@ -17,6 +16,7 @@ const defaultConfig = {
   routes: {
     landing: '/',
     signup: '/anmeldung',
+    signupEvents: '/anmeldung-veranstaltungen',
     thanks: '/danke',
     registration: '/registrierung/:id/:accessKey',
     registrationThanks: '/registrierung/danke',
@@ -32,10 +32,6 @@ const gastro = {
   xhain: {
     ...defaultConfig,
     ...xhain,
-  },
-  tempelberg: {
-    ...defaultConfig,
-    ...tempelberg,
   },
 };
 
