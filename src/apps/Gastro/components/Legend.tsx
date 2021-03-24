@@ -11,7 +11,7 @@ const LegendOuter = styled.div`
   border-top: none;
 
   ${media.m`
-    margin: 0 auto;
+    margin: 0 -16px;
     padding: 1em;
     padding-bottom: .5em;
   `}
