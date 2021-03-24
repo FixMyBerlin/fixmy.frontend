@@ -119,6 +119,71 @@ const MapWrapper = styled.div`
   margin: 0 -16px -16px;
 `;
 
+const LandingMap = ({ district }) => (
+  <>
+    <MapWrapper>
+      <StyledMap
+        style={config.gastro[district?.name]?.map.style}
+        bounds={district?.bounds}
+        onInit={(map) => {
+          map.addControl(
+            new MapboxGL.NavigationControl({ showCompass: false })
+          );
+          district.apps.gastro.landing.mapboxLayers.forEach((layer: string) =>
+            map.setLayoutProperty(layer, 'visibility', 'visible')
+          );
+        }}
+      />
+    </MapWrapper>
+
+    <Legend>
+      <LegendHeader>Legende</LegendHeader>
+      <LegendCol>
+        <LegendItems>
+          <LegendItem>
+            <IconWrapper>
+              <IconRestaurant />
+            </IconWrapper>{' '}
+            Gastronomische Angebote
+          </LegendItem>
+          <LegendItem>
+            <IconWrapper>
+              <IconSocial />
+            </IconWrapper>{' '}
+            Soziale Angebote
+          </LegendItem>
+          <LegendItem>
+            <IconWrapper>
+              <IconEvents />
+            </IconWrapper>
+            Veranstaltungen der Xhain-Terrassen
+          </LegendItem>
+        </LegendItems>
+      </LegendCol>
+      <LegendCol>
+        <LegendItems>
+          <LegendItem>
+            <IconWrapper>
+              <IconRetail />
+            </IconWrapper>{' '}
+            Einzelhandel
+          </LegendItem>
+          <LegendItem>
+            <IconWrapper>
+              <IconRepair />
+            </IconWrapper>{' '}
+            Werkstatt
+          </LegendItem>
+        </LegendItems>
+      </LegendCol>
+      <LegendSources>
+        Die Karte zeigt genehmigte Anträge auf Sondernutzung im Rahmen der Xhain
+        Terrassen, die Angaben basieren auf den Angaben der Antragsstellenden
+      </LegendSources>
+    </Legend>
+  </>
+);
+
 const XhainLanding = ({ district }) => (
   <>
     <h1>Xhain geht raus – Terrassen für Vieles</h1>
@@ -212,67 +277,7 @@ const XhainLanding = ({ district }) => (
 
     <Section>
       <h2>Wo kann ich Angebote für Xhain-Terrassen besuchen?</h2>
-      <MapWrapper>
-        <StyledMap
-          style={config.gastro[district?.name]?.map.style}
-          bounds={district?.bounds}
-          onInit={(map) => {
-            map.addControl(
-              new MapboxGL.NavigationControl({ showCompass: false })
-            );
-            district.apps.gastro.landing.mapboxLayers.forEach((layer: string) =>
-              map.setLayoutProperty(layer, 'visibility', 'visible')
-            );
-          }}
-        />
-      </MapWrapper>
-
-      <Legend>
-        <LegendHeader>Legende</LegendHeader>
-        <LegendCol>
-          <LegendItems>
-            <LegendItem>
-              <IconWrapper>
-                <IconRestaurant />
-              </IconWrapper>{' '}
-              Gastronomische Angebote
-            </LegendItem>
-            <LegendItem>
-              <IconWrapper>
-                <IconSocial />
-              </IconWrapper>{' '}
-              Soziale Angebote
-            </LegendItem>
-            <LegendItem>
-              <IconWrapper>
-                <IconEvents />
-              </IconWrapper>
-              Veranstaltungen der Xhain-Terrassen
-            </LegendItem>
-          </LegendItems>
-        </LegendCol>
-        <LegendCol>
-          <LegendItems>
-            <LegendItem>
-              <IconWrapper>
-                <IconRetail />
-              </IconWrapper>{' '}
-              Einzelhandel
-            </LegendItem>
-            <LegendItem>
-              <IconWrapper>
-                <IconRepair />
-              </IconWrapper>{' '}
-              Werkstatt
-            </LegendItem>
-          </LegendItems>
-        </LegendCol>
-        <LegendSources>
-          Die Karte zeigt genehmigte Anträge auf Sondernutzung im Rahmen der
-          Xhain Terrassen, die Angaben basieren auf den Angaben der
-          Antragsstellenden
-        </LegendSources>
-      </Legend>
+      <LandingMap district={district} />
     </Section>
 
     <Section>
