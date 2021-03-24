@@ -51,6 +51,11 @@
 - GastroSignup-View
 - Gesteuert über Feature-Flag `TOGGLE_GASTRO_DIRECT_SIGNUP`
 
+### Als Betreiber:in möchte ich anzeigen können, dass ich mit einer Kontaktaufnahme bei zukünftigen Folgeaktionen einverstanden bin
+
+- Es gibt eine Checkbox auf der Antragsseite um diesem zuzustimmen
+- Der Zustand der Checkbox wird im Backend zusammen mit dem Antrag gesichert
+
 ## Prüfung von Anträgen
 
 ### Als Verwaltungsmitarbeiter:in möchte ich eingegangene Anträge einsehen können, so dass ich sie auf Vollständigkeit und Korrektheit prüfen kann
