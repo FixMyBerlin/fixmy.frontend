@@ -195,9 +195,9 @@ const xhain: DistrictConfig = {
       landing: {
         mapboxStyle: XHAIN_TERRASSEN_CONFIRMED_AREAS,
         mapboxLayers: [
-          'TER-Event-Terrassen-XHain-name',
-          'TER-Event-Terrassen-XHain-area',
-          'TER-Gastro-Terrassen-XHain-name',
+          'TER-Event-Terrassen-Xhain-name',
+          'TER-Event-Terrassen-Xhain-area',
+          'TER-Gastro-Terrassen-Xhain-name',
         ],
       },
       signup: {
@@ -205,7 +205,15 @@ const xhain: DistrictConfig = {
       },
       registration: {
         mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
-        mapboxLayers: ['TER-Parking-XHain', 'TER-Parking-XHain-line'],
+        mapboxLayers: ['TER-Parking-Xhain', 'TER-Parking-Xhain-line'],
+      },
+      events: {
+        mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
+        mapboxLayers: [
+          'TER-Eventareas-Xhain',
+          'TER-Eventareas-Xhain-name',
+          'TER-Eventareas-Xhain-line',
+        ],
       },
     },
   },
