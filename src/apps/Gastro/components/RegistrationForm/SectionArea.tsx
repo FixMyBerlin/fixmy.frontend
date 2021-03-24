@@ -70,7 +70,7 @@ const SectionArea = ({
                 werden.
               </li>
               <li>
-                Es können keine Flächen auf Einfahrten,Behindertenparkplätzen,
+                Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,
                 Bushaltestellen, Schaltschränken, Baumscheiben oder Baustellen
                 beantragt werden.
               </li>

@@ -139,7 +139,7 @@ const DirectRegistrationForm = ({ onSuccess, district }: Props) => (
         shopfront_length: parseLength(values.shopfront_length),
         opening_hours: district.apps.gastro.model.opening_hours
           ? values.opening_hours
-          : 'whole week',
+          : 'whole_week',
         category: district.apps.gastro.model.category
           ? values.category
           : 'other',
