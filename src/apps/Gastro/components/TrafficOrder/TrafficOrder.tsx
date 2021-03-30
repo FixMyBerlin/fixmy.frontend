@@ -143,7 +143,7 @@ const TrafficOrder = ({ application }) => {
         </span>
       </TwoUp>
       <p>
-        <strong>Weitere Detailangaben zum zeitlichen Verlauf</strong>
+        <strong>Weitere Detailangaben zu den Nutzungszeiten</strong>
         <br />
         Die Vorschriften des Landes-Immissionsschutzgesetzes Berlin (LimSchG
         Bln) in der jeweils geltenden aktuellen Fassung sind zu beachten.
