@@ -95,8 +95,13 @@ const SectionCertificate = ({
       </p>
       <FileInputLabel>
         <div>
-          Wählen Sie eine PDF- oder Bilddatei aus oder machen Sie ein Foto
-          (Schrift muss lesbar sein).
+          Bitte wählen Sie eine PDF-Datei aus. Wenn Ihnen das Dokument nicht als
+          PDF-Datei zur Verfügung steht schicken Sie bitte eine E-Mail mit einem
+          Foto des Dokuments an{' '}
+          <a href="mailto:terrassen.sga@ba-fk.berlin.de">
+            terrassen.sga@ba-fk.berlin.de
+          </a>
+          . Beachten Sie in diesem Fall, dass die Schrift lesbar sein muss.
         </div>
         <ButtonWrapper>
           <AnchorButton
@@ -105,8 +110,8 @@ const SectionCertificate = ({
             aria-hidden="true"
             ghost={values.certificateS3 != null}
           >
-            {values.certificateS3 == null && <>Foto oder PDF auswählen</>}
-            {values.certificateS3 != null && <>Neues Foto oder PDF auswählen</>}
+            {values.certificateS3 == null && <>PDF auswählen</>}
+            {values.certificateS3 != null && <>Neues PDF auswählen</>}
           </AnchorButton>
           {isSubmittingCertificate && <CircularProgress />}
         </ButtonWrapper>
@@ -129,7 +134,7 @@ const SectionCertificate = ({
           name="certificate"
           type="file"
           inputProps={{
-            accept: 'image/*,application/pdf,application/vnd.ms-excel',
+            accept: 'application/pdf,application/vnd.ms-excel',
             capture: 'environment',
           }}
         />
