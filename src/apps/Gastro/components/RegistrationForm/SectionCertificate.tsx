@@ -1,7 +1,6 @@
 import { CircularProgress, FormHelperText } from '@material-ui/core';
 import debug from 'debug';
-import { Field, ErrorMessage } from 'formik';
-import { SimpleFileUpload } from 'formik-material-ui';
+import { ErrorMessage } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -54,6 +53,10 @@ const UploadError = styled(FormHelperText)`
   }
 `;
 
+const HiddenInput = styled.input`
+  display: none;
+`;
+
 const SectionCertificate = ({
   isSubmitting,
   values,
@@ -95,8 +98,13 @@ const SectionCertificate = ({
       </p>
       <FileInputLabel>
         <div>
-          Wählen Sie eine PDF- oder Bilddatei aus oder machen Sie ein Foto
-          (Schrift muss lesbar sein).
+          Bitte wählen Sie eine PDF-Datei aus. Wenn Ihnen das Dokument nicht als
+          PDF-Datei zur Verfügung steht schicken Sie bitte eine E-Mail mit einem
+          Foto des Dokuments an{' '}
+          <a href="mailto:terrassen.sga@ba-fk.berlin.de">
+            terrassen.sga@ba-fk.berlin.de
+          </a>
+          . Beachten Sie in diesem Fall, dass die Schrift lesbar sein muss.
         </div>
         <ButtonWrapper>
           <AnchorButton
@@ -105,8 +113,8 @@ const SectionCertificate = ({
             aria-hidden="true"
             ghost={values.certificateS3 != null}
           >
-            {values.certificateS3 == null && <>Foto oder PDF auswählen</>}
-            {values.certificateS3 != null && <>Neues Foto oder PDF auswählen</>}
+            {values.certificateS3 == null && <>PDF auswählen</>}
+            {values.certificateS3 != null && <>Neues PDF auswählen</>}
           </AnchorButton>
           {isSubmittingCertificate && <CircularProgress />}
         </ButtonWrapper>
@@ -120,18 +128,17 @@ const SectionCertificate = ({
         {uploadError && <UploadError error>{uploadError}</UploadError>}
 
         <ErrorMessage
-          name="certificate"
+          name="certificateS3"
           render={(msg) => <FormError error>{msg}</FormError>}
         />
 
-        <Field
-          component={SimpleFileUpload}
-          name="certificate"
+        <HiddenInput
           type="file"
-          inputProps={{
-            accept: 'image/*,application/pdf,application/vnd.ms-excel',
-            capture: 'environment',
-          }}
+          name="certificate"
+          accept=".pdf"
+          onChange={({ currentTarget: { files } }) =>
+            handleChange({ target: { name: 'certificate', value: files[0] } })
+          }
         />
       </FileInputLabel>
     </section>
