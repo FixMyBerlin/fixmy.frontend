@@ -1,7 +1,6 @@
 import { CircularProgress, FormHelperText } from '@material-ui/core';
 import debug from 'debug';
-import { Field, ErrorMessage } from 'formik';
-import { SimpleFileUpload } from 'formik-material-ui';
+import { ErrorMessage } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -52,6 +51,10 @@ const UploadError = styled(FormHelperText)`
     line-height: 1.5;
     margin-top: 1em;
   }
+`;
+
+const HiddenInput = styled.input`
+  display: none;
 `;
 
 const SectionCertificate = ({
@@ -125,18 +128,17 @@ const SectionCertificate = ({
         {uploadError && <UploadError error>{uploadError}</UploadError>}
 
         <ErrorMessage
-          name="certificate"
+          name="certificateS3"
           render={(msg) => <FormError error>{msg}</FormError>}
         />
 
-        <Field
-          component={SimpleFileUpload}
-          name="certificate"
+        <HiddenInput
           type="file"
-          inputProps={{
-            accept: 'application/pdf,application/vnd.ms-excel',
-            capture: 'environment',
-          }}
+          name="certificate"
+          accept=".pdf"
+          onChange={({ currentTarget: { files } }) =>
+            handleChange({ target: { name: 'certificate', value: files[0] } })
+          }
         />
       </FileInputLabel>
     </section>

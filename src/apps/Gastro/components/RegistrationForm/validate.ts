@@ -18,7 +18,7 @@ interface ValidateErrors {
   email?: string;
   shopfront_length?: string;
   usage?: string;
-  certificate?: any;
+  certificateS3?: any;
   agreement_accepted?: string;
   tos_accepted?: string;
   area?: string;
@@ -66,8 +66,8 @@ const validate = (regulation) => {
       errors.usage = 'Bitte einen Nutzungszweck angeben';
     }
 
-    if (!values.certificate) {
-      errors.certificate = 'Bitte einen Nachweis einfügen';
+    if (!values.certificateS3) {
+      errors.certificateS3 = 'Bitte einen Nachweis einfügen';
     }
 
     if (!values.email) {
@@ -106,9 +106,9 @@ const validateDirect = (values: FormData) => {
   }
 
   if (!values.certificateS3) {
-    errors.certificate = 'Bitte einen Nachweis hochladen';
+    errors.certificateS3 = 'Bitte einen Nachweis hochladen';
   } else {
-    delete errors.certificate;
+    delete errors.certificateS3;
   }
 
   logger('Validation Direct', errors, values);
