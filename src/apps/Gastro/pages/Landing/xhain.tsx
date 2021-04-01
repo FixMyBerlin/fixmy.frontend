@@ -186,7 +186,7 @@ const LandingMap = ({ district }) => (
       </LegendCol>
       <LegendSources>
         Die Karte zeigt genehmigte Anträge auf Sondernutzung im Rahmen der Xhain
-        Terrassen, die Angaben basieren auf den Angaben der Antragsstellenden
+        Terrassen, die Angaben basieren auf den Angaben der Antragsstellenden.
       </LegendSources>
     </Legend>
   </>
@@ -251,7 +251,7 @@ const XhainLanding = ({ district }) => (
 
       {openSignup(district) && (
         <CTAWrapper>
-          <Link to={getPath(district, 'signupEvent')}>
+          <Link to={getPath(district, 'signupEvents')}>
             <CTA flat>Antrag stellen für Veranstaltung</CTA>
           </Link>
           <p>
@@ -450,7 +450,7 @@ const XhainLanding = ({ district }) => (
       </p>
 
       {openSignup(district) && (
-        <Link to={getPath(district, 'signupEvent')}>
+        <Link to={getPath(district, 'signupEvents')}>
           <CTAWrapper>
             <CTA flat>Antrag stellen für Veranstaltung</CTA>
           </CTAWrapper>

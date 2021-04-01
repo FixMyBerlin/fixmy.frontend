@@ -14,6 +14,7 @@ import Registration from './pages/Registration';
 import Renewal from './pages/Renewal';
 import Signup from './pages/Signup';
 import TrafficOrder from './pages/TrafficOrder';
+import { EventApplicationForm } from './pages/EventApplicationForm';
 import { openSignup } from './utils';
 
 const ScrollToTop = () => {
@@ -56,6 +57,18 @@ const Routes = ({ district }) => (
         exact
         path={getPath(district, 'registration')}
         component={Registration}
+      />
+
+      <Route
+        exact
+        path={getPath(district, 'signupEvents')}
+        render={(props) =>
+          openSignup(district) ? (
+            <EventApplicationForm {...props} />
+          ) : (
+            <Redirect to={getPath(district, 'landing')} />
+          )
+        }
       />
 
       <Route exact path={getPath(district, 'renewal')} component={Renewal} />
