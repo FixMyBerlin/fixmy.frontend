@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { AreaPicker } from '~/components2/AreaPicker';
 
 import { requiresArea } from '../../utils';
-import FormError from './FormError';
+import FormError from '../FormError';
 
 const InlineIcon = styled.i`
   width: 21px;
@@ -65,7 +65,7 @@ const SectionArea = ({
             <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
             <ul>
               <li>
-                Es können nur Flächen innerhalb der auf der Karte hellgrün
+                Es können nur Flächen innerhalb der auf der Karte blau
                 ausgewiesen Zonen im Bereich des ruhenden Verkehrs beantragt
                 werden.
               </li>

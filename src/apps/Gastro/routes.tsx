@@ -8,13 +8,13 @@ import { getAppPath } from '~/utils/utils';
 
 import config from './config';
 import DirectSignup from './pages/DirectSignup';
+import { EventApplication } from './pages/EventApplication';
 import Landing from './pages/Landing';
 import Permit from './pages/Permit';
 import Registration from './pages/Registration';
 import Renewal from './pages/Renewal';
 import Signup from './pages/Signup';
 import TrafficOrder from './pages/TrafficOrder';
-import { EventApplicationForm } from './pages/EventApplicationForm';
 import { openSignup } from './utils';
 
 const ScrollToTop = () => {
@@ -64,7 +64,7 @@ const Routes = ({ district }) => (
         path={getPath(district, 'signupEvents')}
         render={(props) =>
           openSignup(district) ? (
-            <EventApplicationForm {...props} />
+            <EventApplication {...props} />
           ) : (
             <Redirect to={getPath(district, 'landing')} />
           )
