@@ -122,7 +122,7 @@
     "@testing-library/user-event": "^12.0.11",
     "@types/debug": "^4.1.5",
     "@types/geojson": "^7946.0.7",
-    "@types/jest": "^24.9.1",
+    "@types/jest": "^26.0.22",
     "@types/mapbox-gl": "^1.11.1",
     "@types/node": "^13.11.0",
     "@types/node-fetch": "^2.5.5",
