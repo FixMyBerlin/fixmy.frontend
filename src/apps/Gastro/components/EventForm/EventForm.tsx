@@ -43,9 +43,23 @@ const StyledForm = styled(Form)`
 
 const log = debug('fmc:gastro:EventForm');
 
-export type FormData = {};
+/* eslint-disable camelcase */
+export type FormData = {
+  org_name: string;
+  first_name: string;
+  last_name: string;
+  phone: string;
+  address: string;
+};
+/* eslint-enable camelcase */
 
-const initialValues: FormData = {};
+const initialValues: FormData = {
+  org_name: '',
+  first_name: '',
+  last_name: '',
+  phone: '',
+  address: '',
+};
 
 const EventForm = ({ onSuccess }) => (
   <Formik
