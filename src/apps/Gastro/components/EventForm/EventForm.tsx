@@ -1,7 +1,10 @@
+import DateFnsUtils from '@date-io/date-fns';
 import { FormHelperText, LinearProgress } from '@material-ui/core';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import dateFnsLocaleDE from 'date-fns/locale/de';
 import debug from 'debug';
 import { Formik } from 'formik';
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 
 import { Button } from '~/components2/Button';
@@ -16,6 +19,7 @@ import SectionNotice from './SectionNotice';
 import SectionParticipants from './SectionParticipants';
 import SectionPrivacy from './SectionPrivacy';
 import SectionTime from './SectionTime';
+import { getMinDate } from './utils';
 import { validate } from './validate';
 
 const FormError = styled(FormHelperText)`
@@ -50,6 +54,11 @@ export type FormData = {
   last_name: string;
   phone: string;
   address: string;
+  date: Date;
+  setup_start: Date;
+  event_start: Date;
+  event_end: Date;
+  teardown_end: Date;
 };
 /* eslint-enable camelcase */
 
@@ -59,59 +68,74 @@ const initialValues: FormData = {
   last_name: '',
   phone: '',
   address: '',
+  date: null,
+  setup_start: null,
+  event_start: null,
+  event_end: null,
+  teardown_end: null,
 };
 
-const EventForm = ({ onSuccess }) => (
-  <Formik
-    initialValues={initialValues}
-    validate={validate}
-    onSubmit={async (values, { setSubmitting, setStatus }) => {
-      log('submitting', values);
-    }}
-  >
-    {({ isValid, values, handleChange, isSubmitting, status }) => (
-      <StyledForm>
-        <h3>Bitte machen Sie Angaben zum Anstragsteller</h3>
+const EventForm = ({ onSuccess }) => {
+  const minDate = useMemo<Date>(getMinDate, []);
+  return (
+    <Formik
+      initialValues={initialValues}
+      validate={validate}
+      onSubmit={async (values, { setSubmitting, setStatus }) => {
+        log('submitting', values);
+      }}
+    >
+      {({ isValid, values, handleChange, isSubmitting, status }) => (
+        <MuiPickersUtilsProvider utils={DateFnsUtils} locale={dateFnsLocaleDE}>
+          <StyledForm>
+            <h3>Bitte machen Sie Angaben zum Anstragsteller</h3>
 
-        <SectionBase />
-        {/* <SectionTime /> */}
-        {/* <SectionParticipants /> */}
-        {/* <SectionArea /> */}
-        {/* <SectionDescription /> */}
-        {/* <SectionNotice /> */}
-        {/* <SectionEmail /> */}
-        {/* <SectionPrivacy /> */}
+            <SectionBase />
+            <SectionTime
+              values={values}
+              handleChange={handleChange}
+              minDate={minDate}
+            />
+            {/* <SectionParticipants /> */}
+            {/* <SectionArea /> */}
+            {/* <SectionDescription /> */}
+            {/* <SectionNotice /> */}
+            {/* <SectionEmail /> */}
+            {/* <SectionPrivacy /> */}
 
-        {!isSubmitting && (
-          <p>
-            Klicken Sie auf &quot;Antrag absenden&quot; um Ihren Antrag formal
-            beim Bezirksamt einzureichen.
-          </p>
-        )}
+            {!isSubmitting && (
+              <p>
+                Klicken Sie auf &quot;Antrag absenden&quot; um Ihren Antrag
+                formal beim Bezirksamt einzureichen.
+              </p>
+            )}
 
-        {!isValid && (
-          <p>
-            <em>
-              Sie haben noch nicht alle benötigten Felder korrekt ausgefüllt.
-              Bitte beachten Sie die rot markierten Hinweise im Formular oben.
-            </em>
-          </p>
-        )}
+            {!isValid && (
+              <p>
+                <em>
+                  Sie haben noch nicht alle benötigten Felder korrekt
+                  ausgefüllt. Bitte beachten Sie die rot markierten Hinweise im
+                  Formular oben.
+                </em>
+              </p>
+            )}
 
-        {isSubmitting && <LinearProgress />}
+            {isSubmitting && <LinearProgress />}
 
-        {status && (
-          <p>
-            <strong>{status}</strong>
-          </p>
-        )}
+            {status && (
+              <p>
+                <strong>{status}</strong>
+              </p>
+            )}
 
-        <Button flat type="submit" disabled={isSubmitting}>
-          Antrag absenden
-        </Button>
-      </StyledForm>
-    )}
-  </Formik>
-);
+            <Button flat type="submit" disabled={isSubmitting}>
+              Antrag absenden
+            </Button>
+          </StyledForm>
+        </MuiPickersUtilsProvider>
+      )}
+    </Formik>
+  );
+};
 
 export default EventForm;
