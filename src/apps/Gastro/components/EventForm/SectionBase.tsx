@@ -46,12 +46,14 @@ const SectionBase = () => (
       label="Telefonnummer (tagsüber erreichbar)"
       fullWidth
     />
-    <InvisiLabel htmlFor="address">Adresseingabe</InvisiLabel>
+    <InvisiLabel htmlFor="address">
+      Meldeadresse der Antragsteller*in
+    </InvisiLabel>
     <Field
       id="address"
       name="address"
       component={TextField}
-      label="Adresseingabe"
+      label="Meldeadresse der Antragsteller*in"
       fullWidth
     />
   </section>
