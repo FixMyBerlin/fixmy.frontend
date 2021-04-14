@@ -59,6 +59,7 @@ export type FormData = {
   event_start: Date;
   event_end: Date;
   teardown_end: Date;
+  num_participants: number;
 };
 /* eslint-enable camelcase */
 
@@ -73,6 +74,7 @@ const initialValues: FormData = {
   event_start: null,
   event_end: null,
   teardown_end: null,
+  num_participants: null,
 };
 
 const EventForm = ({ onSuccess }) => {
@@ -96,8 +98,12 @@ const EventForm = ({ onSuccess }) => {
               handleChange={handleChange}
               minDate={minDate}
             />
-            {/* <SectionParticipants /> */}
-            {/* <SectionArea /> */}
+            <SectionParticipants isSubmitting={isSubmitting} />
+            <SectionArea
+              values={values}
+              handleChange={handleChange}
+              isSubmitting={isSubmitting}
+            />
             {/* <SectionDescription /> */}
             {/* <SectionNotice /> */}
             {/* <SectionEmail /> */}
