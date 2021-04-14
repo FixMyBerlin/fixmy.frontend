@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { AreaPicker } from '~/components2/AreaPicker';
 import { RootState } from '~/store';
 
+import { FileUpload } from '../FileUpload';
 import FormError from '../FormError';
 
 const InlineIcon = styled.i`
@@ -137,6 +138,23 @@ const SectionArea = ({ district, handleChange, values, isSubmitting }) => (
           </p>
         </CardContent>
       </Card>
+    </section>
+    <section>
+      <h4>Skizze der Aufbauten</h4>
+      <p>
+        Planen Sie Aufbauten wie z.B. Stände, Bühnen, etc.? In diesem Fall laden
+        Sie bitte einen Lageplan mit Skizze der genauen Position der Aufbauten
+        hoch.
+      </p>
+      <FileUpload
+        name="setup_sketch"
+        isSubmitting={isSubmitting}
+        values={values}
+        handleChange={handleChange}
+        district={district}
+      >
+        Bitte wählen Sie eine Bild- oder PDF-Datei aus
+      </FileUpload>
     </section>
   </>
 );
