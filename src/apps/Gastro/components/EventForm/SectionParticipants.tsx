@@ -1,7 +1,9 @@
 import { FormControlLabel, Radio } from '@material-ui/core';
-import { Field } from 'formik';
+import { ErrorMessage, Field } from 'formik';
 import { RadioGroup } from 'formik-material-ui';
 import React from 'react';
+
+import FormError from '../FormError';
 
 const SectionUsage = ({ isSubmitting }) => (
   <section>
@@ -27,6 +29,10 @@ const SectionUsage = ({ isSubmitting }) => (
         disabled={isSubmitting}
       />
     </Field>
+    <ErrorMessage
+      name="num_participants"
+      render={(msg) => <FormError error>{msg}</FormError>}
+    />
   </section>
 );
 

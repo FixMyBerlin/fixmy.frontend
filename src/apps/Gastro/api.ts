@@ -12,6 +12,7 @@ const URL_POST_SIGNUP = `/gastro/:campaign`;
 const URL_PUT_SIGNUP = `/gastro/:campaign/:id/:accessKey`;
 const URL_PUT_CERTIFICATE = `/gastro/:campaign/certificate/:id/:accessKey`;
 const URL_POST_CERTIFICATE = `/gastro/:campaign/certificate/direct/:fileName`;
+const URL_POST_FILE = `/gastro/:campaign/attachments/:name/:fileName`;
 const URL_RENEWAL = '/gastro/:campaign/renewal/:id/:accessKey';
 
 const logger = debug('fmc:Gastro:api');
@@ -138,6 +139,42 @@ const uploadCertificate = async (
 };
 
 /**
+ * File upload to S3
+ */
+const uploadFile = async (
+  name: string,
+  file: File,
+  district: DistrictConfig
+) => {
+  const formData = new FormData();
+  const fileName = file.name;
+
+  // For some reason this call sometimes, but not always throws an error:
+  //   TS2554: Expected 2 arguments, but got 3.
+  // even though `formData.append` takes 3 arguments, one of which is optional.
+  // @ts-ignore
+  formData.append('file', file, fileName);
+
+  const method = 'POST';
+  const endpoint = `${getApiBase(district)}${generatePath(URL_POST_FILE, {
+    name,
+    fileName,
+    campaign: district.apps.gastro.currentCampaign,
+  })}`;
+
+  logger('api uploadCertificate', endpoint);
+
+  return ky(endpoint, {
+    method,
+    body: formData,
+    headers: {
+      'Content-Disposition': `attachment; filename="${fileName}"`,
+    },
+    timeout: 20_000,
+  }).json();
+};
+
+/**
  * Get information about previous application in order to make a renewal
  *
  * @param id of the previous application
@@ -185,6 +222,7 @@ export default {
   register,
   registerDirect,
   uploadCertificate,
+  uploadFile,
   getRenewal,
   postRenewal,
 };

@@ -127,6 +127,10 @@ export type EventApplication = PermitApplication & {
     | NUM_PARTICIPANTS_M
     | NUM_PARTICIPANTS_L;
   area_category: EVENT_AREA_CATEGORY;
+  area: {
+    type: 'Polygon';
+    coordinates: Coordinate[];
+  };
   setup_sketch?: any;
   title: string;
   description: string;

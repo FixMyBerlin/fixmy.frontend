@@ -56,6 +56,10 @@ const SectionArea = ({ district, handleChange, values, isSubmitting }) => (
           disabled={isSubmitting}
         />
       </Field>
+      <ErrorMessage
+        name="area_category"
+        render={(msg) => <FormError error>{msg}</FormError>}
+      />
     </section>
     <section>
       <PickerIntro>
@@ -151,9 +155,8 @@ const SectionArea = ({ district, handleChange, values, isSubmitting }) => (
         isSubmitting={isSubmitting}
         values={values}
         handleChange={handleChange}
-        district={district}
       >
-        Bitte wählen Sie eine Bild- oder PDF-Datei aus
+        PDF-Datei mit Lageplan auswählen
       </FileUpload>
     </section>
   </>

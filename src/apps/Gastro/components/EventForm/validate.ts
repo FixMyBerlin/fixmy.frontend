@@ -1,14 +1,16 @@
 import { isAfter, isBefore, setHours } from 'date-fns';
 import debug from 'debug';
 
-import { EventApplication, PermitApplication } from '../../types';
+import type { EventApplication, PermitApplication } from '../../types';
 
 const logger = debug('fmc:Gastro:Registration');
 
-type ValidateErrors = Partial<EventApplication>;
+type ValidateErrors = Partial<Record<keyof EventApplication, string>>;
 
 const validate = (values: any) => {
   const errors: ValidateErrors = {};
+
+  // SectionBase
 
   if (!values.first_name) {
     errors.first_name = 'Bitte einen Vornamen angeben';
@@ -25,6 +27,8 @@ const validate = (values: any) => {
   if (!values.address) {
     errors.address = 'Bitte eine Adresse angeben';
   }
+
+  // SectionTime
 
   if (!values.date) {
     errors.date = 'Bitte ein Datum angeben';
@@ -56,6 +60,55 @@ const validate = (values: any) => {
   if (!values.teardown_end) {
     errors.teardown_end =
       'Bitte eine Uhrzeit für das Ende der Abbauarbeiten angeben';
+  }
+
+  // SectionParticipants
+
+  if (!values.num_participants) {
+    errors.num_participants =
+      'Bitte geben Sie die maximale Anzahl Teilnehmender an';
+  }
+
+  // SectionArea
+
+  if (!values.area_category) {
+    errors.area_category =
+      'Bitte wählen Sie aus, wo ihre Veranstaltung stattfinden soll';
+  }
+
+  if (!values.area) {
+    errors.area = 'Bitte zeichnen Sie eine Fläche ein';
+  }
+
+  // SectionDescription
+
+  if (!values.title) {
+    errors.title = 'Bitte geben Sie der Veranstaltung einen Titel';
+  } else if (values.title.length > 80) {
+    errors.title = 'Bitte kürzen Sie den Titel auf höchstens 80 Zeichen';
+  }
+
+  if (!values.description) {
+    errors.description =
+      'Bitte formulieren Sie eine Ankündigung für die Veranstaltung';
+  } else if (values.description.length > 200) {
+    errors.description =
+      'Bitte kürzen Sie die Ankündigung auf höchstens 200 Zeichen';
+  }
+
+  if (!values.detail) {
+    errors.details = 'Bitte formulieren Sie ein Veranstaltungskonzept';
+  } else if (values.detail.length > 2000) {
+    errors.details =
+      'Bitte kürzen Sie das Veranstaltungskonzept auf höchstens 2000 Zeichen';
+  }
+
+  if (!values.insuranceS3) {
+    errors.insurance = 'Bitte laden Sie die Versicherungsbestätigung hoch';
+  }
+
+  if (!values.agreementS3) {
+    errors.agreement = 'Bitte laden Sie die Veranstaltererklärung hoch';
   }
 
   logger('Validation', errors, values);

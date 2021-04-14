@@ -60,6 +60,15 @@ export type FormData = {
   event_end: Date;
   teardown_end: Date;
   num_participants: number;
+  area_category: 'park' | 'parking';
+  area: any;
+  setup_sketch: File;
+  title: string;
+  description: string;
+  details: string;
+  insurance: File;
+  agreement: File;
+  public_benefit: File | null;
 };
 /* eslint-enable camelcase */
 
@@ -75,6 +84,15 @@ const initialValues: FormData = {
   event_end: null,
   teardown_end: null,
   num_participants: null,
+  area_category: null,
+  area: null,
+  setup_sketch: null,
+  title: '',
+  description: '',
+  details: '',
+  insurance: null,
+  agreement: null,
+  public_benefit: null,
 };
 
 const EventForm = ({ onSuccess }) => {
@@ -104,7 +122,11 @@ const EventForm = ({ onSuccess }) => {
               handleChange={handleChange}
               isSubmitting={isSubmitting}
             />
-            {/* <SectionDescription /> */}
+            <SectionDescription
+              values={values}
+              isSubmitting={isSubmitting}
+              handleChange={handleChange}
+            />
             {/* <SectionNotice /> */}
             {/* <SectionEmail /> */}
             {/* <SectionPrivacy /> */}
