@@ -35,7 +35,7 @@ const SectionUsage: React.FC<Props> = ({
           type="text"
           component={TextField}
           label="Titel der Veranstaltung (wird veröffentlicht)"
-          placeholder="z.B. Baumtanzen im Görli"
+          placeholder="z.B. Sommerkonzert Xhain-Spatzen"
           fullWidth
         />
         <p>Noch {charRemaining.title} Zeichen.</p>
@@ -48,6 +48,7 @@ const SectionUsage: React.FC<Props> = ({
           type="text"
           component={TextField}
           label="Ankündigung der Veranstaltung (wird veröffentlicht)"
+          placeholder="z.B. Violinkonzert mit Kinderchor der Gesamtschule Xhain. Alle sind willkommen, Eintritt frei. Bringen Sie eine Sitzgelegenheit und Getränke mit."
           fullWidth
           multiline
           rows={4}

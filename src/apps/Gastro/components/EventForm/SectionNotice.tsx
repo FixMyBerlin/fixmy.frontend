@@ -33,6 +33,8 @@ const SectionNotice = () => (
         Nach aktuellem Stand der{' '}
         <a
           className="external"
+          target="_blank"
+          rel="noopener noreferrer"
           href="https://www.berlin.de/corona/massnahmen/verordnung/"
         >
           SARS-CoV-2-Infektionsschutzmaßnahmenverordnung
@@ -66,8 +68,10 @@ const SectionNotice = () => (
       <li>
         Einhalten der{' '}
         <a
+          target="_blank"
+          rel="noopener noreferrer"
           href="/uploads/event-terrassen/Richtlinien Berliner Feuerwehr 2007.pdf"
-          className="external"
+          className="internal"
         >
           Auflagen der Berliner Feuerwehr
         </a>{' '}
@@ -76,7 +80,12 @@ const SectionNotice = () => (
       <li>
         Im Fall einer beantragten Fläche im Bereich des ruhenden Verkehrs werden
         die späteren Anordnungen nach folgenden{' '}
-        <a href="/" className="external">
+        <a
+          href="/uploads/event-terrassen/Regelplan_BAFK_RP Sondernutzung Parkstreifen.pdf"
+          className="internal"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Regelplänen
         </a>{' '}
         getroffen: Das Stellen entsprechender Schilder muss von den

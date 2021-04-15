@@ -61,13 +61,13 @@ const SectionArea = ({
       <p>Die Veranstaltungsfläche liegt im Bereich</p>
       <Field component={RadioGroup} name="area_category">
         <FormControlLabel
-          value={0}
+          value="0"
           control={<Radio disabled={isSubmitting} />}
           label="einer Grünanlage"
           disabled={isSubmitting}
         />
         <FormControlLabel
-          value={1}
+          value="1"
           control={<Radio disabled={isSubmitting} />}
           label="des ruhenden Verkehrs"
           disabled={isSubmitting}
@@ -90,9 +90,8 @@ const SectionArea = ({
         <ul>
           <li>
             Bitte beachten Sie, dass die Sondernutzungsflächen nur auf den auf
-            der Karte ausgewiesene Flächen in Grünanlagen (dunkelgrün) und
-            Flächen im Bereich des ruhenden Verkehrs (hellgrün) beantragt werden
-            können.
+            der Karte ausgewiesene Flächen in Grünanlagen (blau) und Flächen im
+            Bereich des ruhenden Verkehrs (grün) beantragt werden können.
           </li>
           <li>
             Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,

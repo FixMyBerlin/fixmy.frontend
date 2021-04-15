@@ -11,19 +11,19 @@ const SectionUsage = ({ isSubmitting }) => (
     <p>Wieviele Personen werden die Veranstaltung höchstens besuchen?</p>
     <Field component={RadioGroup} name="num_participants">
       <FormControlLabel
-        value={0}
+        value="0"
         control={<Radio disabled={isSubmitting} />}
         label="unter 50"
         disabled={isSubmitting}
       />
       <FormControlLabel
-        value={1}
+        value="1"
         control={<Radio disabled={isSubmitting} />}
         label="50 - 200"
         disabled={isSubmitting}
       />
       <FormControlLabel
-        value={2}
+        value="2"
         control={<Radio disabled={isSubmitting} />}
         label="200 - 500"
         disabled={isSubmitting}

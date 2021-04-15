@@ -1,4 +1,4 @@
-import { isAfter, isBefore, setHours } from 'date-fns';
+import { isAfter, isBefore, setHours, setMinutes } from 'date-fns';
 import debug from 'debug';
 
 import type { EventApplication, PermitApplication } from '../../types';
@@ -48,7 +48,7 @@ const validate = (values: any) => {
       'Bitte wählen Sie hier einen Beginn für die Veranstaltung ab frühestens 6 Uhr';
   }
 
-  const latestEnd = setHours(values.event_end, 22);
+  const latestEnd = setMinutes(setHours(values.event_end, 22), 0);
   if (!values.event_end) {
     errors.event_end =
       'Bitte eine Uhrzeit für das Ende der Veranstaltung angeben';
@@ -96,9 +96,9 @@ const validate = (values: any) => {
       'Bitte kürzen Sie die Ankündigung auf höchstens 200 Zeichen';
   }
 
-  if (!values.detail) {
+  if (!values.details) {
     errors.details = 'Bitte formulieren Sie ein Veranstaltungskonzept';
-  } else if (values.detail.length > 2000) {
+  } else if (values.details.length > 2000) {
     errors.details =
       'Bitte kürzen Sie das Veranstaltungskonzept auf höchstens 2000 Zeichen';
   }
