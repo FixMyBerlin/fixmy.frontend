@@ -111,6 +111,26 @@ const validate = (values: any) => {
     errors.agreement = 'Bitte laden Sie die Veranstaltererklärung hoch';
   }
 
+  if (!values.agreementS3) {
+    errors.agreement = 'Bitte laden Sie die Veranstaltererklärung hoch';
+  }
+
+  if (!values.agreement_accepted) {
+    errors.agreement_accepted =
+      'Bitte stimmen Sie diesen Bedingungen zu, damit Sie die Sondernutzungsfläche nutzen können.';
+  }
+
+  if (!values.tos_accepted) {
+    errors.tos_accepted =
+      'Bitte stimmen Sie diesen Bedingungen zu, damit wir Ihre Anmeldung entgegennehmen können.';
+  }
+
+  if (!values.email) {
+    errors.email = 'Bitte eine E-Mail-Adresse angeben';
+  } else if (values.email.indexOf('@') < 0) {
+    errors.email = 'Das sieht nicht wie eine E-Mail-Adresse aus';
+  }
+
   logger('Validation', errors, values);
   return errors;
 };

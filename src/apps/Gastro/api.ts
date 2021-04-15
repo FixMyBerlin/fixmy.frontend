@@ -5,14 +5,15 @@ import { generatePath } from 'react-router-dom';
 import { DistrictConfig } from '~/types';
 
 import config from './config';
-import { GastroSignup, GastroRegistration } from './types';
+import { GastroSignup, GastroRegistration, EventApplication } from './types';
 
 const URL_GET_SIGNUP = `/gastro/:campaign/:id/:accessKey?`;
 const URL_POST_SIGNUP = `/gastro/:campaign`;
 const URL_PUT_SIGNUP = `/gastro/:campaign/:id/:accessKey`;
 const URL_PUT_CERTIFICATE = `/gastro/:campaign/certificate/:id/:accessKey`;
 const URL_POST_CERTIFICATE = `/gastro/:campaign/certificate/direct/:fileName`;
-const URL_POST_FILE = `/gastro/:campaign/attachments/:name/:fileName`;
+const URL_POST_FILE = `/permits/events/:campaign/:name/:fileName`;
+const URL_POST_EVENT_APPLICATION = `/permits/events/:campaign/`;
 const URL_RENEWAL = '/gastro/:campaign/renewal/:id/:accessKey';
 
 const logger = debug('fmc:Gastro:api');
@@ -91,6 +92,20 @@ const registerDirect = async (
   })}`;
   logger('api register direct', endpoint);
   return ky.post(endpoint, { json: signupData }).json();
+};
+
+const postEventApplication = async (
+  data: EventApplication,
+  district: DistrictConfig
+) => {
+  const endpoint = `${getApiBase(district)}${generatePath(
+    URL_POST_EVENT_APPLICATION,
+    {
+      campaign: district.apps.gastro.currentCampaign,
+    }
+  )}`;
+  logger('api event application', endpoint);
+  return ky.post(endpoint, { json: data }).json();
 };
 
 /**
@@ -225,4 +240,5 @@ export default {
   uploadFile,
   getRenewal,
   postRenewal,
+  postEventApplication,
 };
