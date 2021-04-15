@@ -1,5 +1,5 @@
 import DateFnsUtils from '@date-io/date-fns';
-import { FormHelperText, LinearProgress } from '@material-ui/core';
+import { LinearProgress } from '@material-ui/core';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import { format } from 'date-fns';
 import dateFnsLocaleDE from 'date-fns/locale/de';
@@ -13,8 +13,8 @@ import { Button } from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import { RootState } from '~/store';
 import { media } from '~/styles/utils';
-import api from '../../api';
 
+import api from '../../api';
 import { EventApplication } from '../../types';
 import SectionArea from './SectionArea';
 import SectionBase from './SectionBase';
@@ -28,14 +28,6 @@ import { getMinDate } from './utils';
 import { validate } from './validate';
 
 const logger = debug('fmc:Gastro:EventForm');
-
-const FormError = styled(FormHelperText)`
-  && {
-    font-size: 1em;
-    line-height: normal;
-    margin: 2em auto;
-  }
-`;
 
 const StyledForm = styled(Form)`
   section {
@@ -51,8 +43,6 @@ const StyledForm = styled(Form)`
     margin-bottom: 1em;
   }
 `;
-
-const log = debug('fmc:gastro:EventForm');
 
 /* eslint-disable camelcase */
 export type FormData = {
