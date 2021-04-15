@@ -112,7 +112,7 @@ const FileUploadRaw: React.FC<Props> = ({
   }, [values[name]?.name]);
 
   return (
-    <FileInputLabel>
+    <FileInputLabel tabIndex={0}>
       <p>{children}</p>
       <ButtonWrapper>
         <AnchorButton
