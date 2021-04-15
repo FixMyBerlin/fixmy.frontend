@@ -1,3 +1,8 @@
+import debug from 'debug';
+import mapboxgl from 'mapbox-gl';
+
+const logger = debug('fmc:Gastro:utils');
+
 /**
  * Return true if the given regulation requires applications to
  * draw a requested area for their application
@@ -80,3 +85,28 @@ export const postSignup = (district) =>
 
 export const openSignup = (district) =>
   !preSignup(district) && !postSignup(district);
+
+export const setLayerVisibility = (
+  map: mapboxgl.Map,
+  availableLayerSets: { [name: string]: string[] },
+  visibleLayerSets: string[]
+) => {
+  // All layer sets that are not visible are hidden
+  const hiddenLayerSets = Object.keys(availableLayerSets).filter(
+    (layerSet) => !visibleLayerSets.includes(layerSet)
+  );
+  // Hide all layers in hidden layer sets
+  hiddenLayerSets.forEach((layerSet) => {
+    logger(`Hiding layerset ${layerSet}:`, availableLayerSets[layerSet]);
+    availableLayerSets[layerSet].forEach((layerName: string) =>
+      map.setLayoutProperty(layerName, 'visibility', 'none')
+    );
+  });
+  // Show all layers in visible layer sets
+  visibleLayerSets.forEach((layerSet) => {
+    logger(`Showing layerset ${layerSet}:`, availableLayerSets[layerSet]);
+    availableLayerSets[layerSet].forEach((layerName: string) =>
+      map.setLayoutProperty(layerName, 'visibility', 'visible')
+    );
+  });
+};

@@ -25,23 +25,14 @@ export interface GastroConfig extends AppConfig {
     category: boolean;
     opening_hours: boolean;
   };
-  landing: {
-    mapboxStyle: string;
-    mapboxLayers?: string[];
+  layerSets: {
+    [name: string]: string[];
   };
-  signup: {
-    mapboxStyle: string;
-    intro?: string;
-    shopfrontLabel?: string;
-    thanksMessage?: string;
-  };
-  registration?: {
-    mapboxStyle: string;
-    mapboxLayers?: string[];
-  };
-  events?: {
-    mapboxStyle: string;
-    mapboxLayers: string[];
+  maps: {
+    [mapName: string]: {
+      mapboxStyle: string;
+      layerSets: string[];
+    };
   };
 }
 

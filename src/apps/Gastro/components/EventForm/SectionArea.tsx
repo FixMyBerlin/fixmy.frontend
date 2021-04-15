@@ -1,13 +1,15 @@
 import { Card, CardContent, FormControlLabel, Radio } from '@material-ui/core';
 import { ErrorMessage, Field } from 'formik';
 import { RadioGroup } from 'formik-material-ui';
+import mapboxgl from 'mapbox-gl';
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import styled from 'styled-components';
 
 import { AreaPicker } from '~/components2/AreaPicker';
 import { RootState } from '~/store';
 
+import { setLayerVisibility } from '../../utils';
 import { FileUpload } from '../FileUpload';
 import FormError from '../FormError';
 
@@ -36,7 +38,22 @@ const PickerIntro = styled.div`
   }
 `;
 
-const SectionArea = ({ district, handleChange, values, isSubmitting }) => (
+const connector = connect(({ AppState }: RootState) => ({
+  district: AppState.district,
+}));
+
+type Props = ConnectedProps<typeof connector> & {
+  handleChange: any;
+  values: any;
+  isSubmitting: boolean;
+};
+
+const SectionArea = ({
+  district,
+  handleChange,
+  values,
+  isSubmitting,
+}: Props) => (
   <>
     <section>
       <h3>Veranstaltungsfläche</h3>
@@ -87,7 +104,7 @@ const SectionArea = ({ district, handleChange, values, isSubmitting }) => (
 
       <AreaPicker
         initialGeometry={values.area}
-        mapboxStyle={district?.apps.gastro.events.mapboxStyle}
+        mapboxStyle={district?.apps.gastro.maps.eventForm.mapboxStyle}
         bounds={district?.bounds}
         onSelect={(value) => {
           handleChange({
@@ -97,15 +114,12 @@ const SectionArea = ({ district, handleChange, values, isSubmitting }) => (
             },
           });
         }}
-        onLoad={(map) => {
-          district.apps.gastro.registration.mapboxLayers.forEach((layer) =>
-            map.setLayoutProperty(layer, 'visibility', 'none')
-          );
-          district.apps.gastro.landing.mapboxLayers.forEach((layer) =>
-            map.setLayoutProperty(layer, 'visibility', 'none')
-          );
-          district.apps.gastro.events.mapboxLayers.forEach((layer) =>
-            map.setLayoutProperty(layer, 'visibility', 'visible')
+        onLoad={(map: mapboxgl.Map) => {
+          map.setZoom(11);
+          setLayerVisibility(
+            map,
+            district.apps.gastro.layerSets,
+            district.apps.gastro.maps.eventForm.layerSets
           );
         }}
       />
@@ -162,8 +176,4 @@ const SectionArea = ({ district, handleChange, values, isSubmitting }) => (
   </>
 );
 
-const mapStateToProps = ({ AppState }: RootState) => ({
-  district: AppState.district,
-});
-
-export default connect(mapStateToProps)(SectionArea);
+export default connector(SectionArea);

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { AreaPicker } from '~/components2/AreaPicker';
 
-import { requiresArea } from '../../utils';
+import { requiresArea, setLayerVisibility } from '../../utils';
 import FormError from '../FormError';
 
 const InlineIcon = styled.i`
@@ -84,7 +84,9 @@ const SectionArea = ({
           <AreaPicker
             initialGeometry={values.area}
             center={center}
-            mapboxStyle={district?.apps.gastro.registration.mapboxStyle}
+            mapboxStyle={
+              district?.apps.gastro.maps.gastroRegistration.mapboxStyle
+            }
             bounds={district?.bounds}
             onSelect={(value) => {
               handleChange({
@@ -95,14 +97,10 @@ const SectionArea = ({
               });
             }}
             onLoad={(map) => {
-              district.apps.gastro.registration.mapboxLayers.forEach((layer) =>
-                map.setLayoutProperty(layer, 'visibility', 'visible')
-              );
-              district.apps.gastro.landing.mapboxLayers.forEach((layer) =>
-                map.setLayoutProperty(layer, 'visibility', 'none')
-              );
-              district.apps.gastro.events.mapboxLayers.forEach((layer) =>
-                map.setLayoutProperty(layer, 'visibility', 'none')
+              setLayerVisibility(
+                map,
+                district.apps.gastro.layerSets,
+                district.apps.gastro.maps.gastroRegistration.layerSets
               );
             }}
           />

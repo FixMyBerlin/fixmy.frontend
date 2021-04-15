@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { LocationPicker } from '~/components2/LocationPicker';
 import { StaticMap } from '~/components2/StaticMap';
 
+import { setLayerVisibility } from '../../utils';
 import FormError from '../FormError';
 
 const InvisiLabel = styled.label`
@@ -100,20 +101,17 @@ const SectionBase = ({
           </InvisiLabel>
           <LocationPicker
             initialValue={initialAddress}
-            mapboxStyle={district.apps.gastro.signup.mapboxStyle}
+            mapboxStyle={
+              district.apps.gastro.maps.gastroRegistration.mapboxStyle
+            }
             bounds={district.bounds}
-            onLoad={(map) => {
-              // Toggle visibility of map layers
-              district.apps.gastro.registration.mapboxLayers.forEach((layer) =>
-                map.setLayoutProperty(layer, 'visibility', 'none')
-              );
-              district.apps.gastro.landing.mapboxLayers.forEach((layer) =>
-                map.setLayoutProperty(layer, 'visibility', 'none')
-              );
-              district.apps.gastro.events.mapboxLayers.forEach((layer) =>
-                map.setLayoutProperty(layer, 'visibility', 'none')
-              );
-            }}
+            onLoad={(map) =>
+              setLayerVisibility(
+                map,
+                district.apps.gastro.layerSets,
+                district.apps.gastro.maps.gastroRegistration.layerSets
+              )
+            }
             onSelect={({ address, location }) => {
               handleChange({ target: { name: 'address', value: address } });
               handleChange({
@@ -138,7 +136,7 @@ const SectionBase = ({
           />
           <StaticMap
             location={signupData?.geometry?.coordinates}
-            mapboxStyle={district?.apps.gastro.registration.mapboxStyle}
+            mapboxStyle={district?.apps.gastro.maps.gastroSignup.mapboxStyle}
             bounds={district?.bounds}
           />
         </>
