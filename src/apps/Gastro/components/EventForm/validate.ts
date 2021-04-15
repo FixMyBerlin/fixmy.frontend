@@ -1,7 +1,7 @@
 import { isAfter, isBefore, setHours, setMinutes } from 'date-fns';
 import debug from 'debug';
 
-import type { EventApplication, PermitApplication } from '../../types';
+import type { EventApplication } from '../../types';
 
 const logger = debug('fmc:Gastro:Registration');
 

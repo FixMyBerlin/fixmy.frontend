@@ -61,13 +61,13 @@ const SectionArea = ({
       <p>Die Veranstaltungsfläche liegt im Bereich</p>
       <Field component={RadioGroup} name="area_category">
         <FormControlLabel
-          value="0"
+          value="park"
           control={<Radio disabled={isSubmitting} />}
           label="einer Grünanlage"
           disabled={isSubmitting}
         />
         <FormControlLabel
-          value="1"
+          value="parking"
           control={<Radio disabled={isSubmitting} />}
           label="des ruhenden Verkehrs"
           disabled={isSubmitting}

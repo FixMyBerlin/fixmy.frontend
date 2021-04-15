@@ -191,6 +191,7 @@ const xhain: DistrictConfig = {
           ? new Date(Date.UTC(2021, 4 - 1, 1))
           : new Date(Date.UTC(2021, 3 - 1, 1)),
         closeSignup: new Date(Date.UTC(2021, 10 - 1, 1)),
+        permitEnd: new Date(Date.UTC(2021, 12 - 1, 31)),
       },
       model: {
         category: true,

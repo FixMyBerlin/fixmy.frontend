@@ -20,6 +20,7 @@ export interface GastroConfig extends AppConfig {
   timeline?: {
     openSignup: Date;
     closeSignup: Date;
+    permitEnd: Date;
   };
   model: {
     category: boolean;

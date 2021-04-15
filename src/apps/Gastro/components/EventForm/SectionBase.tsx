@@ -53,7 +53,7 @@ const SectionBase = () => (
       id="address"
       name="address"
       component={TextField}
-      label="Meldeadresse der Antragsteller*in"
+      label="Meldeadresse der Antragsteller*in (Straße, Hausnummer, PLZ)"
       fullWidth
     />
   </section>

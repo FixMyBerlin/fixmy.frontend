@@ -1,8 +1,11 @@
-import { isBefore } from 'date-fns';
+import { isAfter, isBefore } from 'date-fns';
 import { Field } from 'formik';
 import { DatePicker, TimePicker } from 'formik-material-ui-pickers';
 import React from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import styled from 'styled-components';
+
+import { RootState } from '~/store';
 
 const InvisiLabel = styled.label`
   display: none;
@@ -14,7 +17,15 @@ const timePickerOpts = {
   views: ['hours', 'minutes'],
 };
 
-const SectionUsage = ({ values, handleChange, minDate }) => (
+const connector = connect(({ AppState }: RootState) => ({
+  district: AppState.district,
+}));
+
+type Props = ConnectedProps<typeof connector> & {
+  minDate: Date;
+};
+
+const SectionUsage = ({ district, minDate }: Props) => (
   <section>
     <h3>Wann soll die Veranstaltung stattfinden</h3>
     <p>
@@ -32,7 +43,10 @@ const SectionUsage = ({ values, handleChange, minDate }) => (
       name="date"
       label="Datum"
       format="PP"
-      shouldDisableDate={(dt: Date) => isBefore(dt, minDate)}
+      shouldDisableDate={(dt: Date) =>
+        isBefore(dt, minDate) ||
+        isAfter(dt, district.apps.gastro.timeline.permitEnd)
+      }
     />
     <InvisiLabel htmlFor="setup_start">Beginn des Aufbaus</InvisiLabel>
     <Field
@@ -69,4 +83,4 @@ const SectionUsage = ({ values, handleChange, minDate }) => (
   </section>
 );
 
-export default SectionUsage;
+export default connector(SectionUsage);

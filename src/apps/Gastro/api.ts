@@ -13,7 +13,7 @@ const URL_PUT_SIGNUP = `/gastro/:campaign/:id/:accessKey`;
 const URL_PUT_CERTIFICATE = `/gastro/:campaign/certificate/:id/:accessKey`;
 const URL_POST_CERTIFICATE = `/gastro/:campaign/certificate/direct/:fileName`;
 const URL_POST_FILE = `/permits/events/:campaign/:name/:fileName`;
-const URL_POST_EVENT_APPLICATION = `/permits/events/:campaign/`;
+const URL_POST_EVENT_APPLICATION = `/permits/events/:campaign`;
 const URL_RENEWAL = '/gastro/:campaign/renewal/:id/:accessKey';
 
 const logger = debug('fmc:Gastro:api');

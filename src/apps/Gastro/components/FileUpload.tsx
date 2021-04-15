@@ -7,7 +7,6 @@ import styled from 'styled-components';
 
 import { AnchorButton } from '~/components2/Button';
 import { RootState } from '~/store';
-import { DistrictConfig } from '~/types';
 
 import api from '../api';
 import config from '../config';
@@ -98,7 +97,7 @@ const FileUploadRaw: React.FC<Props> = ({
 
       let resp;
       try {
-        resp = await api.uploadFile(name, values, district);
+        resp = await api.uploadFile(name, values[name], district);
         handleChange({ target: { name: uploadName, value: resp?.path } });
       } catch (e) {
         logger(e);
