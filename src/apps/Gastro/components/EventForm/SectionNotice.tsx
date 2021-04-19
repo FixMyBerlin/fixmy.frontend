@@ -38,7 +38,7 @@ const SectionNotice = () => (
           href="https://www.berlin.de/corona/massnahmen/verordnung/"
         >
           SARS-CoV-2-Infektionsschutzmaßnahmenverordnung
-        </a>
+        </a>{' '}
         müssten die Antragstellenden ein auf die konkrete Veranstaltung
         bezogenes Schutz- und Hygienekonzept erstellen und auf Verlangen den
         zuständigen Behörden vorlegen. In diesem Konzept ist darzulegen, wie die

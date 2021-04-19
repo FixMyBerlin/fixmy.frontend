@@ -170,7 +170,6 @@ const uploadFile = async (
   // @ts-ignore
   formData.append('file', file, fileName);
 
-  const method = 'POST';
   const endpoint = `${getApiBase(district)}${generatePath(URL_POST_FILE, {
     name,
     fileName,
@@ -180,7 +179,7 @@ const uploadFile = async (
   logger('api uploadCertificate', endpoint);
 
   return ky(endpoint, {
-    method,
+    method: 'POST',
     body: formData,
     headers: {
       'Content-Disposition': `attachment; filename="${fileName}"`,
