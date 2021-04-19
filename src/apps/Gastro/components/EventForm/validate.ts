@@ -46,6 +46,11 @@ const validate = (values: any) => {
   } else if (isBefore(values.event_start, earliestStart)) {
     errors.event_start =
       'Bitte wählen Sie hier einen Beginn für die Veranstaltung ab frühestens 6 Uhr';
+  } else if (
+    values.setup_start &&
+    isBefore(values.event_start, values.setup_start)
+  ) {
+    errors.event_start = 'Bitte wählen Sie eine Zeit nach Beginn des Aufbaus';
   }
 
   const latestEnd = setMinutes(setHours(values.event_end, 22), 0);
@@ -55,11 +60,23 @@ const validate = (values: any) => {
   } else if (isAfter(values.event_end, latestEnd)) {
     errors.event_end =
       'Bitte wählen Sie hier ein Ende für die Veranstaltung bis spätestens 22 Uhr';
+  } else if (
+    values.event_start &&
+    isBefore(values.event_end, values.event_start)
+  ) {
+    errors.event_end =
+      'Bitte wählen Sie eine Zeit nach Beginn der Veranstaltung';
   }
 
   if (!values.teardown_end) {
     errors.teardown_end =
       'Bitte eine Uhrzeit für das Ende der Abbauarbeiten angeben';
+  } else if (
+    values.event_end &&
+    isBefore(values.teardown_end, values.event_end)
+  ) {
+    errors.teardown_end =
+      'Bitte wählen Sie eine Zeit nach Ende der Veranstaltung';
   }
 
   // SectionParticipants
