@@ -51,6 +51,7 @@ const SectionUsage: React.FC<Props> = ({
           placeholder="z.B. Violinkonzert mit Kinderchor der Gesamtschule Xhain. Alle sind willkommen, Eintritt frei. Bringen Sie eine Sitzgelegenheit und Getränke mit."
           fullWidth
           multiline
+          variant="outlined"
           rows={4}
         />
         <p>Noch {charRemaining.description} Zeichen.</p>
@@ -84,6 +85,7 @@ const SectionUsage: React.FC<Props> = ({
           label="Veranstaltungskonzept"
           fullWidth
           multiline
+          variant="outlined"
           rows={8}
         />
         <p>Noch {charRemaining.details} Zeichen.</p>
