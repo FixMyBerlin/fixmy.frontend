@@ -9,7 +9,7 @@ import { AnchorButton } from '~/components2/Button';
 
 import api from '../../api';
 import config from '../../config';
-import FormError from './FormError';
+import FormError from '../FormError';
 
 const logger = debug('fmc:Gastro:Registration');
 

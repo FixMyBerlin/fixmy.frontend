@@ -191,33 +191,53 @@ const xhain: DistrictConfig = {
           ? new Date(Date.UTC(2021, 4 - 1, 1))
           : new Date(Date.UTC(2021, 3 - 1, 1)),
         closeSignup: new Date(Date.UTC(2021, 10 - 1, 1)),
+        permitEnd: new Date(Date.UTC(2021, 12 - 1, 31)),
       },
       model: {
         category: true,
         opening_hours: false,
       },
-      landing: {
-        mapboxStyle: XHAIN_TERRASSEN_CONFIRMED_AREAS,
-        mapboxLayers: [
+      layerSets: {
+        parks: [
           'TER-Event-Terrassen-Xhain-name',
           'TER-Event-Terrassen-Xhain-area',
           'TER-Gastro-Terrassen-Xhain-name',
         ],
-      },
-      signup: {
-        mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
-      },
-      registration: {
-        mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
-        mapboxLayers: ['TER-Parking-Xhain', 'TER-Parking-Xhain-line'],
-      },
-      events: {
-        mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
-        mapboxLayers: [
-          'TER-Eventareas-Xhain',
-          'TER-Eventareas-Xhain-name',
-          'TER-Eventareas-Xhain-line',
+        parking: ['TER-Parking-Xhain', 'TER-Parking-Xhain-line'],
+        acceptedApplications: [
+          'TER-Event-Terrassen-Xhain-name',
+          'TER-Event-Terrassen-Xhain-area',
+          'TER-Gastro-Terrassen-Xhain-name',
         ],
+        cadastre: [
+          'kat-bollards',
+          'kat-tactile_indicator',
+          'kat-lines',
+          'kat-curb-sidewalk-hatch',
+          'kat-curb-sidewalk',
+          'kat-curb-mainpolygons',
+          'kat-curb-extra-polygons',
+          'kat-roadway-hatch',
+          'kat-roadway',
+        ],
+      },
+      maps: {
+        landing: {
+          mapboxStyle: XHAIN_TERRASSEN_CONFIRMED_AREAS,
+          layerSets: ['acceptedApplications'],
+        },
+        gastroSignup: {
+          mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
+          layerSets: ['parking'],
+        },
+        gastroRegistration: {
+          mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
+          layerSets: ['parking'],
+        },
+        eventForm: {
+          mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
+          layerSets: ['parks', 'parking'],
+        },
       },
     },
   },

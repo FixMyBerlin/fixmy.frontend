@@ -7,7 +7,7 @@ import Logo from '~/apps/Gastro/components/Logo';
 import Notice from '~/apps/Gastro/components/Notice';
 import config from '~/apps/Gastro/config';
 import { getPath } from '~/apps/Gastro/routes';
-import { openSignup } from '~/apps/Gastro/utils';
+import { openSignup, setLayerVisibility } from '~/apps/Gastro/utils';
 import Link from '~/components/Link';
 import { BaseMap } from '~/components2/BaseMap';
 import { Button } from '~/components2/Button';
@@ -129,16 +129,10 @@ const LandingMap = ({ district }) => (
           map.addControl(
             new MapboxGL.NavigationControl({ showCompass: false })
           );
-          district.apps.gastro.landing.mapboxLayers.forEach((layer: string) =>
-            map.setLayoutProperty(layer, 'visibility', 'visible')
-          );
-          district.apps.gastro.registration.mapboxLayers.forEach(
-            (layer: string) =>
-              map.setLayoutProperty(layer, 'visibility', 'none')
-          );
-
-          district.apps.gastro.events.mapboxLayers.forEach((layer: string) =>
-            map.setLayoutProperty(layer, 'visibility', 'none')
+          setLayerVisibility(
+            map,
+            district.apps.gastro.layerSets,
+            district.apps.gastro.maps.landing.layerSets
           );
         }}
       />
@@ -186,7 +180,7 @@ const LandingMap = ({ district }) => (
       </LegendCol>
       <LegendSources>
         Die Karte zeigt genehmigte Anträge auf Sondernutzung im Rahmen der Xhain
-        Terrassen, die Angaben basieren auf den Angaben der Antragsstellenden
+        Terrassen, die Angaben basieren auf den Angaben der Antragsstellenden.
       </LegendSources>
     </Legend>
   </>
@@ -251,7 +245,7 @@ const XhainLanding = ({ district }) => (
 
       {openSignup(district) && (
         <CTAWrapper>
-          <Link to={getPath(district, 'signupEvent')}>
+          <Link to={getPath(district, 'signupEvents')}>
             <CTA flat>Antrag stellen für Veranstaltung</CTA>
           </Link>
           <p>
@@ -450,7 +444,7 @@ const XhainLanding = ({ district }) => (
       </p>
 
       {openSignup(district) && (
-        <Link to={getPath(district, 'signupEvent')}>
+        <Link to={getPath(district, 'signupEvents')}>
           <CTAWrapper>
             <CTA flat>Antrag stellen für Veranstaltung</CTA>
           </CTAWrapper>

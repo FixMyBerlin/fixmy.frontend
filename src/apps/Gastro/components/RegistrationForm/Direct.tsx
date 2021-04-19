@@ -110,6 +110,10 @@ const StyledForm = styled(Form)`
   }
 `;
 
+const InvalidFormNotice = styled.p`
+  margin: 3em 0;
+`;
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 const connector = connect(({ AppState }: RootState) => ({
@@ -254,12 +258,12 @@ const DirectRegistrationForm = ({ onSuccess, district }: Props) => (
         )}
 
         {!isValid && (
-          <p>
+          <InvalidFormNotice>
             <em>
               Sie haben noch nicht alle benötigten Felder korrekt ausgefüllt.
               Bitte beachten Sie die rot markierten Hinweise im Formular oben.
             </em>
-          </p>
+          </InvalidFormNotice>
         )}
 
         {isSubmitting && <LinearProgress />}

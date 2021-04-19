@@ -186,7 +186,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
             render={(msg) => <FormError error>{msg}</FormError>}
           />
           <LocationPicker
-            mapboxStyle={district.apps.gastro.signup.mapboxStyle}
+            mapboxStyle={district.apps.gastro.maps.gastroSignup.mapboxStyle}
             bounds={district.bounds}
             onSelect={({ address, location }) => {
               handleChange({ target: { name: 'address', value: address } });

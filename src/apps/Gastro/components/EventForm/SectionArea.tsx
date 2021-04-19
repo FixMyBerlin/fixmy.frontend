@@ -1,12 +1,16 @@
-import { Card, CardContent } from '@material-ui/core';
-import { ErrorMessage } from 'formik';
+import { Card, CardContent, FormControlLabel, Radio } from '@material-ui/core';
+import { ErrorMessage, Field } from 'formik';
+import { RadioGroup } from 'formik-material-ui';
+import mapboxgl from 'mapbox-gl';
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import styled from 'styled-components';
 
 import { AreaPicker } from '~/components2/AreaPicker';
+import { RootState } from '~/store';
 
-import { requiresArea, setLayerVisibility } from '../../utils';
+import { setLayerVisibility } from '../../utils';
+import { FileUpload } from '../FileUpload';
 import FormError from '../FormError';
 
 const InlineIcon = styled.i`
@@ -34,155 +38,141 @@ const PickerIntro = styled.div`
   }
 `;
 
-const SectionArea = ({
-  regulation,
-  handleChange,
-  signupData = null,
-  values,
-  district,
-}) => {
-  const center = signupData?.geometry?.coordinates || values?.location;
-  return (
-    <>
-      {requiresArea(regulation.zone) && (
-        <section>
-          {signupData && (
-            <p>
-              Für Ihren Betrieb / Verein kann grundsätzlich eine
-              Sondernutzungsfläche{' '}
-              <strong>im Bereich der derzeitigen Parkflächen</strong> zur
-              Verfügung gestellt werden.
-            </p>
-          )}
+const connector = connect(({ AppState }: RootState) => ({
+  district: AppState.district,
+}));
 
-          <PickerIntro>
-            <p>
-              <strong>
-                Bitte zeichnen Sie auf der untenstehenden Karte ein, wo genau
-                Sie die Sonderfläche nutzen möchten:
-              </strong>
-            </p>
-            <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
-            <ul>
-              <li>
-                Es können nur Flächen innerhalb der auf der Karte blau
-                ausgewiesen Zonen im Bereich des ruhenden Verkehrs beantragt
-                werden.
-              </li>
-              <li>
-                Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,
-                Bushaltestellen, Schaltschränken, Baumscheiben oder Baustellen
-                beantragt werden.
-              </li>
-              <li>
-                Die eingezeichnete Fläche muss sich im Bereich der Straßenfront
-                Ihres Ladenlokals befinden.
-              </li>
-            </ul>
-          </PickerIntro>
-
-          <AreaPicker
-            initialGeometry={values.area}
-            center={center}
-            mapboxStyle={
-              district?.apps.gastro.maps.gastroRegistration.mapboxStyle
-            }
-            bounds={district?.bounds}
-            onSelect={(value) => {
-              handleChange({
-                target: {
-                  name: 'area',
-                  value,
-                },
-              });
-            }}
-            onLoad={(map) => {
-              setLayerVisibility(
-                map,
-                district.apps.gastro.layerSets,
-                district.apps.gastro.maps.gastroRegistration.layerSets
-              );
-            }}
-          />
-
-          <ErrorMessage
-            name="area"
-            render={(msg) => <FormError error>{msg}</FormError>}
-          />
-
-          <Card>
-            <CardContent>
-              <p>
-                <strong>Anleitung zum Zeichnen der Fläche</strong>
-              </p>
-              <ol>
-                <li>
-                  Die Karte durch klicken und ziehen bewegen, so dass Sie den
-                  gewünschten Bereich als ganzes sehen können.
-                </li>
-                <li>
-                  Das Werkzeug <EditIcon aria-label="Bearbeiten-Icon" /> oben
-                  rechts auswählen.
-                </li>
-                <li>
-                  Fläche zeichnen, durch anklicken mehrerer Punkte auf der Karte
-                </li>
-                <li>
-                  Fläche schließen, indem der erste Punkt erneut geklickt wird.
-                </li>
-              </ol>
-              <p>
-                Über <TrashIcon aria-label="Mülltone-Icon" /> können sie die
-                Fläche löschen und neu zeichnen.
-              </p>
-            </CardContent>
-          </Card>
-
-          <p>
-            Die späteren Anordnungen werden nach folgendem Regelplan getroffen:
-          </p>
-          <ul>
-            <li>
-              <a
-                href="/uploads/offene-terrassen/Regelplaene_Strassenraum.pdf"
-                className="internal"
-                target="_blank"
-              >
-                Regelplan temporäre Sondernutzung von Parkstreifen (PDF)
-              </a>
-            </li>
-          </ul>
-        </section>
-      )}
-
-      {!requiresArea(regulation.zone) && (
-        <section>
-          <p>
-            <strong>
-              Ihr Betrieb liegt im Bereich der {regulation?.street}, hier wird
-              es eine Gesamt-Anordnung für den rot markierten Bereich{' '}
-              {regulation?.street} {regulation?.from} bis {regulation?.to}{' '}
-              geben. Wenn Sie sich registrieren, können Sie in diesem Bereich
-              teilnehmen.
-            </strong>
-          </p>
-          <p>
-            <a href="/" className="internal">
-              Karte der anzuordnenden Fläche
-            </a>
-          </p>
-          <p>
-            Die Sondernutzungsfläche kann nach Einrichtung Freitags, Samstags
-            und Sonntags, jeweils von 11 bis 22 Uhr genutzt werden.
-          </p>
-        </section>
-      )}
-    </>
-  );
+type Props = ConnectedProps<typeof connector> & {
+  handleChange: any;
+  values: any;
+  isSubmitting: boolean;
 };
 
-const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district,
-});
+const SectionArea = ({
+  district,
+  handleChange,
+  values,
+  isSubmitting,
+}: Props) => (
+  <>
+    <section>
+      <h3>Veranstaltungsfläche</h3>
 
-export default connect(mapStateToProps)(SectionArea);
+      <p>Die Veranstaltungsfläche liegt im Bereich</p>
+      <Field component={RadioGroup} name="area_category">
+        <FormControlLabel
+          value="park"
+          control={<Radio disabled={isSubmitting} />}
+          label="einer Grünanlage"
+          disabled={isSubmitting}
+        />
+        <FormControlLabel
+          value="parking"
+          control={<Radio disabled={isSubmitting} />}
+          label="des ruhenden Verkehrs"
+          disabled={isSubmitting}
+        />
+      </Field>
+      <ErrorMessage
+        name="area_category"
+        render={(msg) => <FormError error>{msg}</FormError>}
+      />
+    </section>
+    <section>
+      <PickerIntro>
+        <p>
+          <strong>
+            Bitte zeichnen Sie auf der untenstehenden Karte ein, wo genau Sie
+            die Sonderfläche nutzen möchten:
+          </strong>
+        </p>
+        <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
+        <ul>
+          <li>
+            Bitte beachten Sie, dass die Sondernutzungsflächen nur auf den auf
+            der Karte ausgewiesene Flächen in Grünanlagen (blau) und Flächen im
+            Bereich des ruhenden Verkehrs (grün) beantragt werden können.
+          </li>
+          <li>
+            Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,
+            Bushaltestellen, Schaltschränken, Baumscheiben oder Baustellen
+            beantragt werden.
+          </li>
+        </ul>
+      </PickerIntro>
+
+      <AreaPicker
+        initialGeometry={values.area}
+        mapboxStyle={district?.apps.gastro.maps.eventForm.mapboxStyle}
+        bounds={district?.bounds}
+        onSelect={(value) => {
+          handleChange({
+            target: {
+              name: 'area',
+              value,
+            },
+          });
+        }}
+        onLoad={(map: mapboxgl.Map) => {
+          map.setZoom(11);
+          setLayerVisibility(
+            map,
+            district.apps.gastro.layerSets,
+            district.apps.gastro.maps.eventForm.layerSets
+          );
+        }}
+      />
+
+      <ErrorMessage
+        name="area"
+        render={(msg) => <FormError error>{msg}</FormError>}
+      />
+
+      <Card>
+        <CardContent>
+          <p>
+            <strong>Anleitung zum Zeichnen der Fläche</strong>
+          </p>
+          <ol>
+            <li>
+              Die Karte durch klicken und ziehen bewegen, so dass Sie den
+              gewünschten Bereich als ganzes sehen können.
+            </li>
+            <li>
+              Das Werkzeug <EditIcon aria-label="Bearbeiten-Icon" /> oben rechts
+              auswählen.
+            </li>
+            <li>
+              Fläche zeichnen, durch anklicken mehrerer Punkte auf der Karte
+            </li>
+            <li>
+              Fläche schließen, indem der erste Punkt erneut geklickt wird.
+            </li>
+          </ol>
+          <p>
+            Über <TrashIcon aria-label="Mülltone-Icon" /> können sie die Fläche
+            löschen und neu zeichnen.
+          </p>
+        </CardContent>
+      </Card>
+    </section>
+    <section>
+      <h4>Skizze der Aufbauten</h4>
+      <p>
+        Planen Sie Aufbauten wie z.B. Stände, Bühnen, etc.? In diesem Fall laden
+        Sie bitte einen Lageplan mit Skizze der genauen Position der Aufbauten
+        hoch.
+      </p>
+      <FileUpload
+        name="setup_sketch"
+        isSubmitting={isSubmitting}
+        values={values}
+        handleChange={handleChange}
+      >
+        PDF-Datei mit Lageplan auswählen
+      </FileUpload>
+    </section>
+  </>
+);
+
+export default connector(SectionArea);

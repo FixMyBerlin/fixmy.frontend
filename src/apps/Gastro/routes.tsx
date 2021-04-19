@@ -8,6 +8,7 @@ import { getAppPath } from '~/utils/utils';
 
 import config from './config';
 import DirectSignup from './pages/DirectSignup';
+import { EventApplication } from './pages/EventApplication';
 import Landing from './pages/Landing';
 import Permit from './pages/Permit';
 import Registration from './pages/Registration';
@@ -56,6 +57,18 @@ const Routes = ({ district }) => (
         exact
         path={getPath(district, 'registration')}
         component={Registration}
+      />
+
+      <Route
+        exact
+        path={getPath(district, 'signupEvents')}
+        render={(props) =>
+          openSignup(district) ? (
+            <EventApplication {...props} />
+          ) : (
+            <Redirect to={getPath(district, 'landing')} />
+          )
+        }
       />
 
       <Route exact path={getPath(district, 'renewal')} component={Renewal} />
