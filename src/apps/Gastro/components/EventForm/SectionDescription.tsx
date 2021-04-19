@@ -10,6 +10,10 @@ const InvisiLabel = styled.label`
   display: none;
 `;
 
+const CharCount = styled.div`
+  margin-bottom: 3em;
+`;
+
 type Props = { values: FormData; isSubmitting: boolean; handleChange: any };
 
 const SectionUsage: React.FC<Props> = ({
@@ -38,7 +42,7 @@ const SectionUsage: React.FC<Props> = ({
           placeholder="z.B. Sommerkonzert Xhain-Spatzen"
           fullWidth
         />
-        <p>Noch {charRemaining.title} Zeichen.</p>
+        <CharCount>Noch {charRemaining.title} Zeichen.</CharCount>
         <InvisiLabel htmlFor="description">
           Ankündigung der Veranstaltung (wird veröffentlicht)
         </InvisiLabel>
@@ -54,7 +58,7 @@ const SectionUsage: React.FC<Props> = ({
           variant="outlined"
           rows={4}
         />
-        <p>Noch {charRemaining.description} Zeichen.</p>
+        <CharCount>Noch {charRemaining.description} Zeichen.</CharCount>
 
         <h4>Angaben zum Veranstaltungskonzept</h4>
         <p>
@@ -88,54 +92,46 @@ const SectionUsage: React.FC<Props> = ({
           variant="outlined"
           rows={8}
         />
-        <p>Noch {charRemaining.details} Zeichen.</p>
+        <CharCount>Noch {charRemaining.details} Zeichen.</CharCount>
       </section>
 
       <section>
         <h4>Versicherungsbestätigung</h4>
-        <p>
-          Bitte laden Sie das ausgefüllte und unterschriebene Formblatt zur
-          Versicherungsbestätigung hoch.
-        </p>
         <FileUpload
           name="insurance"
           isSubmitting={isSubmitting}
           values={values}
           handleChange={handleChange}
         >
-          PDF-Datei mit Versicherungsbestätigung auswählen
+          Bitte laden Sie das ausgefüllte und unterschriebene Formblatt zur
+          Versicherungsbestätigung als PDF-Datei hoch.
         </FileUpload>
       </section>
 
       <section>
         <h4>Veranstaltererklärung</h4>
-        <p>
-          Bitte laden Sie das ausgefüllte und unterschriebene Formblatt zur
-          Veranstaltererklärung hoch.
-        </p>
         <FileUpload
           name="agreement"
           isSubmitting={isSubmitting}
           values={values}
           handleChange={handleChange}
         >
-          PDF-Datei mit Veranstaltererklärung auswählen
+          Bitte laden Sie das ausgefüllte und unterschriebene Formblatt zur
+          Veranstaltererklärung als PDF-Datei hoch.
         </FileUpload>
       </section>
 
       <section>
         <h4>Nachweis der Gemeinnützigkeit</h4>
-        <p>
-          Nur für gemeinnützige Antragssteller*innen: Bitte laden Sie einen
-          Nachweis der Gemeinnützigkeit hoch.
-        </p>
+        <p>Nur für gemeinnützige Antragssteller*innen:</p>
         <FileUpload
           name="public_benefit"
           isSubmitting={isSubmitting}
           values={values}
           handleChange={handleChange}
         >
-          PDF-Datei mit Nachweis der Gemeinnützigkeit auswählen
+          Bitte laden Sie einen Nachweis der Gemeinnützigkeit als PDF-Datei
+          hoch.
         </FileUpload>
       </section>
     </>

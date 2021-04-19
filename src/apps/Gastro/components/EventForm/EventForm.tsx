@@ -162,7 +162,7 @@ const EventForm: React.FC<Props> = ({ district, onSuccess }) => {
   const minDate = useMemo<Date>(getMinDate, []);
   return (
     <Formik
-      initialValues={isProduction ? initialValues : testValues}
+      initialValues={isProduction ? initialValues : initialValues}
       validate={validate}
       onSubmit={async (values, { setSubmitting, setStatus }) => {
         const applicationData: EventApplication = {
