@@ -9,10 +9,10 @@ import { useTypedSelector } from '~/store';
 import { media } from '~/styles/utils';
 import { DistrictConfig } from '~/types';
 
-import api from '../api';
-import Header from '../components/Header';
-import config from '../config';
-import { GastroRegistration } from '../types';
+import api from '../../api';
+import Header from '../../components/Header';
+import config from '../../config';
+import { GastroRegistration } from '../../types';
 
 const log = debug('fmc:gastro:renewal');
 

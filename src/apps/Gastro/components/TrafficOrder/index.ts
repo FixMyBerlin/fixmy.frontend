@@ -1,1 +1,1 @@
-export { default as TrafficOrder } from './TrafficOrder';
+export { default as TrafficOrderGastro } from './TrafficOrder';

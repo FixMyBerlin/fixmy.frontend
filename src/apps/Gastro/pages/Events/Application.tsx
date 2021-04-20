@@ -7,9 +7,9 @@ import Logo from '~/apps/Gastro/components/Logo';
 import config from '~/config';
 import { media } from '~/styles/utils';
 
-import { EventForm } from '../components/EventForm';
-import Header from '../components/Header';
-import Thanks from '../components/ThanksRegistration';
+import { EventForm } from '../../components/EventForm';
+import Header from '../../components/Header';
+import Thanks from '../../components/ThanksRegistration';
 
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};

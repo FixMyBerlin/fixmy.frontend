@@ -25,6 +25,8 @@ const defaultConfig = {
     directoryEntry: '/verzeichnis/:id',
     permit: '/verzeichnis/:id/genehmigung',
     trafficOrder: '/verzeichnis/:id/anordnung',
+    permitEvents: '/veranstaltungen/:id/genehmigung',
+    trafficOrderEvents: '/veranstaltungen/:id/anordnung',
   },
 };
 

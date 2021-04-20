@@ -70,7 +70,7 @@ const SectionNotice = () => (
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href="/uploads/event-terrassen/Richtlinien Berliner Feuerwehr 2007.pdf"
+          href="/uploads/event-terrassen/Richtlinien_Berliner_Feuerwehr.pdf"
           className="internal"
         >
           Auflagen der Berliner Feuerwehr
@@ -81,7 +81,7 @@ const SectionNotice = () => (
         Im Fall einer beantragten Fläche im Bereich des ruhenden Verkehrs werden
         die späteren Anordnungen nach folgenden{' '}
         <a
-          href="/uploads/event-terrassen/Regelplan_BAFK_RP Sondernutzung Parkstreifen.pdf"
+          href="/uploads/event-terrassen/Regelplan_BAFK_RP_Sondernutzung_Parkstreifen.pdf"
           className="internal"
           target="_blank"
           rel="noopener noreferrer"

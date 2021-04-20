@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
 import { BaseMap } from '~/components2/BaseMap';
+import { DistrictConfig } from '~/types';
+import { setLayerVisibility } from '../utils';
 
 const StyledMap = styled(BaseMap)`
   width: 40em;
@@ -41,7 +43,12 @@ const addAreaToMap = (map, area) => {
   map.fitBounds(bounds, { padding: 20, maxZoom: 17.5, linear: true });
 };
 
-const handleMapInit = (map, geometry, area, district) => {
+const handleMapInit = (
+  map: MapboxGL.Map,
+  geometry,
+  area,
+  district: DistrictConfig
+) => {
   if (geometry != null) {
     map.setCenter(geometry.coordinates);
     new MapboxGL.Marker({ color: config.colors.interaction })
@@ -49,14 +56,6 @@ const handleMapInit = (map, geometry, area, district) => {
       .addTo(map);
   }
   if (area != null) addAreaToMap(map, area);
-
-  district.apps.gastro.landing.mapboxLayers.forEach((layer: string) =>
-    map.setLayoutProperty(layer, 'visibility', 'visible')
-  );
-
-  district.apps.gastro.registration.mapboxLayers.forEach((layer: string) =>
-    map.setLayoutProperty(layer, 'visibility', 'visible')
-  );
 };
 
 const AreaMap = ({ application, district, printable = false }) => {

@@ -6,9 +6,9 @@ import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
 
-import Header from '../components/Header';
-import SignupForm from '../components/SignupForm';
-import Thanks from '../components/Thanks';
+import Header from '../../components/Header';
+import SignupForm from '../../components/SignupForm';
+import Thanks from '../../components/Thanks';
 
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};
