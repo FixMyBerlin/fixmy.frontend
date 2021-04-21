@@ -42,7 +42,7 @@ const xhain: DistrictConfig = {
           kiez: 'Samariterviertel',
           region: 'Friedrichshain',
           schedule: 'Sonntags 13-19 Uhr',
-          status: 'paused',
+          status: 'open',
         },
         {
           street: 'Richard-Sorge-Straße',

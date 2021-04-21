@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import api from '~/apps/Gastro/api';
-import Permit from '~/apps/Gastro/components/EventPermit';
+import PermitPark from '~/apps/Gastro/components/EventPermitPark';
+import PermitParking from '~/apps/Gastro/components/EventPermitParking';
 import Header from '~/apps/Gastro/components/Header';
 import config from '~/apps/Gastro/config';
 
@@ -55,6 +56,19 @@ const PermitPage = ({
     doLoad();
   }, []);
 
+  let permit = null;
+  if (!isLoading && !error) {
+    if (application.area_category === 'parking') {
+      permit = <PermitParking application={application} id={id} />;
+    } else if (application.area_category === 'park') {
+      permit = <PermitPark application={application} />;
+    } else {
+      setError(
+        `Unbekannte Art von Sondererlaubnis: "${application.area_category}"`
+      );
+    }
+  }
+
   return (
     <PermitWrapper>
       <NoPrint>
@@ -63,7 +77,7 @@ const PermitPage = ({
       <Container maxWidth="md">
         {error && <p>Fehler: {error}</p>}
         {isLoading && <p>Loading...</p>}
-        {!isLoading && !error && <Permit application={application} />}
+        {permit}
       </Container>
     </PermitWrapper>
   );

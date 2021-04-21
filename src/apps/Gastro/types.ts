@@ -2,6 +2,11 @@
 /* eslint-disable camelcase */
 
 import { AppConfig } from '~/types';
+import {
+  NUM_PARTICIPANTS_L,
+  NUM_PARTICIPANTS_M,
+  NUM_PARTICIPANTS_S,
+} from './constants';
 
 type Coordinate = [number, number];
 
@@ -96,9 +101,9 @@ export type EventPermitCategory =
   | 'workshop'
   | 'social'
   | 'other';
-export type NUM_PARTICIPANTS_S = 0;
-export type NUM_PARTICIPANTS_M = 1;
-export type NUM_PARTICIPANTS_L = 2;
+export type NUM_PARTICIPANTS_S = typeof NUM_PARTICIPANTS_S;
+export type NUM_PARTICIPANTS_M = typeof NUM_PARTICIPANTS_M;
+export type NUM_PARTICIPANTS_L = typeof NUM_PARTICIPANTS_L;
 export type EVENT_AREA_CATEGORY = 'park' | 'parking';
 
 export type EventApplication = PermitApplication & {
@@ -130,4 +135,20 @@ export type EventApplication = PermitApplication & {
   insurance?: any;
   agreement?: any;
   public_benefit?: any;
+};
+
+export type EventPermit = EventApplication & {
+  status: string;
+  application_received: string;
+  application_decided: string;
+  permit_start: string;
+  permit_end: string;
+  note: string;
+  area_park_name: string;
+  setup_sketch?: string;
+  insurance?: string;
+  agreement?: string;
+  public_benefit?: string;
+  // True if a public benefit file attachment is set on the permit
+  is_public_benefit?: boolean;
 };

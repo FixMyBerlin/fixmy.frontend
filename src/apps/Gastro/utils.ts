@@ -1,5 +1,16 @@
+import { parse } from 'date-fns';
 import debug from 'debug';
 import mapboxgl from 'mapbox-gl';
+import {
+  NUM_PARTICIPANTS_L,
+  NUM_PARTICIPANTS_M,
+  NUM_PARTICIPANTS_S,
+  PRICE_PARTICIPANTS_L,
+  PRICE_PARTICIPANTS_M,
+  PRICE_PARTICIPANTS_S,
+} from './constants';
+
+import { EventPermit } from './types';
 
 const logger = debug('fmc:Gastro:utils');
 
@@ -55,6 +66,49 @@ export const permitEnd = ({ permit_end }) =>
   permit_end == null
     ? '<Ende der Genehmigung unbestimmt>'
     : new Date(permit_end).toLocaleDateString('de-DE');
+
+export const eventDate = ({ date }: EventPermit): string =>
+  date == null
+    ? '<Datum der Veranstaltung nicht angegeben>'
+    : new Date(date).toLocaleDateString('de-DE');
+
+/**
+ * Return the string-formatted amount due for an event permit
+ *
+ * @param EventPermit retrieved from api
+ * @returns null if no payment due, otherwise string
+ */
+export const getPermitFee = ({
+  num_participants,
+  is_public_benefit,
+}: EventPermit): string | null => {
+  let amountCents: number;
+  if (is_public_benefit === true) {
+    amountCents = 0;
+  } else {
+    switch (num_participants) {
+      case NUM_PARTICIPANTS_S:
+        amountCents = PRICE_PARTICIPANTS_S;
+        break;
+      case NUM_PARTICIPANTS_M:
+        amountCents = PRICE_PARTICIPANTS_M;
+        break;
+      case NUM_PARTICIPANTS_L:
+        amountCents = PRICE_PARTICIPANTS_L;
+        break;
+      default:
+        throw new Error(`Invalid num_participants: ${num_participants}`);
+    }
+  }
+
+  if (amountCents === 0) {
+    return null;
+  }
+  return new Intl.NumberFormat('de-DE', {
+    style: 'currency',
+    currency: 'EUR',
+  }).format(amountCents / 100.0);
+};
 /* eslint-enable camelcase */
 
 export enum REGULATION {
