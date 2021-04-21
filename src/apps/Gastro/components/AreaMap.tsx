@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import config from '~/apps/Gastro/config';
 import { BaseMap } from '~/components2/BaseMap';
 import { DistrictConfig } from '~/types';
-import { setLayerVisibility } from '../utils';
 
 const StyledMap = styled(BaseMap)`
   width: 40em;
@@ -58,11 +57,17 @@ const handleMapInit = (
   if (area != null) addAreaToMap(map, area);
 };
 
-const AreaMap = ({ application, district, printable = false }) => {
+const AreaMap = ({
+  application,
+  district,
+  printable = false,
+  className = null,
+}) => {
   const { geometry, area } = application;
 
   return (
     <StyledMap
+      className={className}
       onInit={(map) => handleMapInit(map, geometry, area, district)}
       style={config.gastro[district?.name]?.map.style}
       bounds={district?.bounds}

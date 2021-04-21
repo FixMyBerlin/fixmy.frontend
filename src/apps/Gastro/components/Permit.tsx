@@ -93,6 +93,10 @@ const Headline = styled.div`
   }
 `;
 
+const StyledAreaMap = styled(AreaMap)`
+  width: 100%;
+`;
+
 const Permit = ({ application }) => {
   const categoryDescription = getCategoryDescription(application);
 
@@ -135,47 +139,49 @@ const Permit = ({ application }) => {
       <h4>Gegenstand der Genehmigung</h4>
 
       <table>
-        <tr>
-          <td>Art der Genehmigung</td>
-          <td>{categoryDescription}</td>
-        </tr>
-        <tr>
-          <td>Ort:</td>
-          <td>{application.address}</td>
-        </tr>
-        <tr>
-          <td>Ausmaß (maximal):</td>
-          <td>
-            Innerhalb der auf der untenstehenden Karte verzeichneten Fläche{' '}
-            {!isBoardwalk(application) && (
-              <strong>nur im Bereich der Parkflächen</strong>
-            )}{' '}
-            und nicht über die Breite der Ladenfront hinausgehend.
-            <AreaMap application={application} printable />
-          </td>
-        </tr>
-        <tr>
-          <td>Gültigkeit:</td>
-          <td>
-            <p>
-              Von {permitStart(application)} bis {permitEnd(application)}{' '}
-            </p>
-            <p>
-              <strong>Alle Wochentage Montag bis Sonntag</strong>
-            </p>
-            <p>
-              <strong>
-                Betrieb nur während der Uhrzeit von 6:00 Uhr bis 22:00 Uhr
-              </strong>
-            </p>
-          </td>
-        </tr>
-        {application.note != null && application.note.length > 0 && (
+        <tbody>
           <tr>
-            <td>Besondere Hinweise:</td>
-            <td>{application.note}</td>
+            <td>Art der Genehmigung</td>
+            <td>{categoryDescription}</td>
           </tr>
-        )}
+          <tr>
+            <td>Ort:</td>
+            <td>{application.address}</td>
+          </tr>
+          <tr>
+            <td>Ausmaß (maximal):</td>
+            <td>
+              Innerhalb der auf der untenstehenden Karte verzeichneten Fläche{' '}
+              {!isBoardwalk(application) && (
+                <strong>nur im Bereich der Parkflächen</strong>
+              )}{' '}
+              und nicht über die Breite der Ladenfront hinausgehend.
+              <StyledAreaMap application={application} printable />
+            </td>
+          </tr>
+          <tr>
+            <td>Gültigkeit:</td>
+            <td>
+              <p>
+                Von {permitStart(application)} bis {permitEnd(application)}{' '}
+              </p>
+              <p>
+                <strong>Alle Wochentage Montag bis Sonntag</strong>
+              </p>
+              <p>
+                <strong>
+                  Betrieb nur während der Uhrzeit von 6:00 Uhr bis 22:00 Uhr
+                </strong>
+              </p>
+            </td>
+          </tr>
+          {application.note != null && application.note.length > 0 && (
+            <tr>
+              <td>Besondere Hinweise:</td>
+              <td>{application.note}</td>
+            </tr>
+          )}
+        </tbody>
       </table>
       <p>Der Bescheid ergeht gebührenfrei.</p>
     </PermitContainer>

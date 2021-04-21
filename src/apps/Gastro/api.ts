@@ -34,7 +34,7 @@ const getApiBase = (district: DistrictConfig) => {
 };
 
 /**
- * Request previously submitted data
+ * Request application data for a gastro application
  *
  * @param id of the signup
  * @param accessKey that registrants received via email
