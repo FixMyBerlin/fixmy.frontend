@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import api from '../../api';
 import Header from '../../components/Header';
-import { TrafficOrderGastro } from '../../components/TrafficOrder';
+import { TrafficOrderEvents } from '../../components/TrafficOrder';
 
 const NoPrint = styled.span`
   @media print {
@@ -40,11 +40,11 @@ const TrafficOrderPage = ({
       <NoPrint>
         <Header showInfoLink />
       </NoPrint>
-      <Container maxWidth="lg">
+      <Container maxWidth="md">
         {error && <p>Fehler: {error}</p>}
         {isLoading && <p>Anordnung wird geladen...</p>}
         {!isLoading && !error && (
-          <TrafficOrderGastro application={application} />
+          <TrafficOrderEvents application={application} />
         )}
       </Container>
     </>

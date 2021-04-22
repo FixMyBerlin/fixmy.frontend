@@ -43,18 +43,8 @@ const PermitContainer = styled.section`
   }
 
   @media print {
-    h1 {
-      font-size: 16px !important;
-    }
-
-    h2,
-    h3,
-    h4 {
-      font-size: 14px !important;
-    }
-
     font-size: 12px !important;
-    line-height: 14px !important;
+    line-height: 1.2 !important;
   }
 
   table {
@@ -109,8 +99,6 @@ const Permit = ({ application, id }: Props) => {
 
   return (
     <PermitContainer>
-      <h1>Erlaubnis</h1>
-
       <h2>Bezirksamt Friedrichshain-Kreuzberg von Berlin</h2>
       <h3>Abt. Familie, Personal, Diversity, Straßen- und Grünflächen</h3>
       <h3>Straßen- und Grünflächenamt</h3>
@@ -145,6 +133,8 @@ const Permit = ({ application, id }: Props) => {
         Fassung, wird unter dem Vorbehalt des jederzeit zulässigen Widerrufs
         folgende Erlaubnis erteilt:
       </p>
+
+      <h1>Erlaubnis</h1>
 
       <table>
         <tbody>
