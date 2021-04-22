@@ -151,8 +151,6 @@ const Permit = ({ application, id }: Props) => {
         dieser Genehmigung.
       </p>
 
-      <h4>Gegenstand der Genehmigung</h4>
-
       <table>
         <tbody>
           <tr>
