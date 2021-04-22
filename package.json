@@ -45,6 +45,7 @@
     "@storybook/addons": "^6.1.10",
     "@turf/along": "6.0.1",
     "@turf/boolean-within": "^6.0.1",
+    "@turf/center": "^6.3.0",
     "@turf/helpers": "^6.1.4",
     "@turf/length": "^6.3.0",
     "abortcontroller-polyfill": "^1.4.0",

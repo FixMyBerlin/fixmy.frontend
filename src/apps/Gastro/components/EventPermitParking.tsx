@@ -190,7 +190,7 @@ const Permit = ({ application, id }: Props) => {
               Berlin, Friedrichshain-Kreuzberg, innerhalb der auf der
               untenstehenden Karte verzeichneten Fläche{' '}
               <strong>nur im Bereich der Parkflächen.</strong>
-              <StyledAreaMap application={application} printable />
+              <StyledAreaMap application={application} printable showAreaPin />
             </td>
           </tr>
           <tr>
