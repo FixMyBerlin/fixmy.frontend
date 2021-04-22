@@ -1,6 +1,7 @@
-import { parse } from 'date-fns';
+import { addDays } from 'date-fns';
 import debug from 'debug';
 import mapboxgl from 'mapbox-gl';
+
 import {
   NUM_PARTICIPANTS_L,
   NUM_PARTICIPANTS_M,
@@ -9,7 +10,6 @@ import {
   PRICE_PARTICIPANTS_M,
   PRICE_PARTICIPANTS_S,
 } from './constants';
-
 import { EventPermit } from './types';
 
 const logger = debug('fmc:Gastro:utils');
@@ -57,6 +57,11 @@ export const dateReceived = ({ application_received }) =>
     ? '<Datum Eingang>'
     : new Date(application_received).toLocaleDateString('de-DE');
 
+export const dateDecided = ({ application_decided }) =>
+  application_decided == null
+    ? '<Bescheid wurde noch nicht versandt>'
+    : new Date(application_decided).toLocaleDateString('de-DE');
+
 export const permitStart = ({ permit_start }) =>
   permit_start == null
     ? '<Beginn der Genehmigung unbestimmt>'
@@ -71,6 +76,11 @@ export const eventDate = ({ date }: EventPermit): string =>
   date == null
     ? '<Datum der Veranstaltung nicht angegeben>'
     : new Date(date).toLocaleDateString('de-DE');
+
+export const photosDue = ({ date }: EventPermit): string =>
+  date == null
+    ? '<Datum der Veranstaltung nicht angegeben>'
+    : addDays(new Date(date), 8).toLocaleDateString('de-DE');
 
 /**
  * Return the string-formatted amount due for an event permit

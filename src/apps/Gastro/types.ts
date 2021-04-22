@@ -151,4 +151,5 @@ export type EventPermit = EventApplication & {
   public_benefit?: string;
   // True if a public benefit file attachment is set on the permit
   is_public_benefit?: boolean;
+  area_park_name_long?: string;
 };

@@ -77,7 +77,6 @@ const TrafficOrder = ({ application }: Props) => {
       </Container>
     );
 
-  const categoryDescription = getCategoryDescription(application);
   const setupTimerangeEnd = getSetupTimerangeEnd(application);
 
   return (

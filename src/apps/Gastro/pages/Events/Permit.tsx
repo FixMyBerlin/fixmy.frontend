@@ -61,7 +61,7 @@ const PermitPage = ({
     if (application.area_category === 'parking') {
       permit = <PermitParking application={application} id={id} />;
     } else if (application.area_category === 'park') {
-      permit = <PermitPark application={application} />;
+      permit = <PermitPark application={application} id={id} />;
     } else {
       setError(
         `Unbekannte Art von Sondererlaubnis: "${application.area_category}"`

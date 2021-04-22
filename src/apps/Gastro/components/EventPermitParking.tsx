@@ -5,14 +5,7 @@ import styled from 'styled-components';
 import AreaMap from '~/apps/Gastro/components/AreaMap';
 
 import { EventPermit } from '../types';
-import {
-  getCategoryDescription,
-  dateReceived,
-  permitStart,
-  permitEnd,
-  getPermitFee,
-  eventDate,
-} from '../utils';
+import { dateReceived, getPermitFee, eventDate, dateDecided } from '../utils';
 
 const PermitContainer = styled.section`
   h1 {
@@ -110,6 +103,7 @@ const Permit = ({ application, id }: Props) => {
         </span>
         <span>
           <p>
+            <p>{dateDecided(application)}</p>
             <strong>Geschäftszeichen (bitte immer angeben): </strong>
             <br />
             Event-Terrassen-{id}
@@ -134,7 +128,7 @@ const Permit = ({ application, id }: Props) => {
         folgende Erlaubnis erteilt:
       </p>
 
-      <h1>Erlaubnis</h1>
+      <h1 style={{ color: 'red' }}>Sondergenehmigung.</h1>
 
       <table>
         <tbody>
