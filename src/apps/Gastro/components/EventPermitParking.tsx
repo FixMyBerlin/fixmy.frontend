@@ -146,11 +146,6 @@ const Permit = ({ application, id }: Props) => {
         folgende Erlaubnis erteilt:
       </p>
 
-      <p>
-        Die in der/den Anlage/n genannten Nebenbestimmungen sind Bestandteil
-        dieser Genehmigung.
-      </p>
-
       <table>
         <tbody>
           <tr>
@@ -161,7 +156,7 @@ const Permit = ({ application, id }: Props) => {
             </td>
           </tr>
           <tr>
-            <td>Bezeichnung der Veranstaltung:</td>
+            <td>Bezeichnung der Veranstaltung</td>
             <td>{application.title}</td>
           </tr>
           <tr>
@@ -215,10 +210,25 @@ const Permit = ({ application, id }: Props) => {
             </tr>
           )}
           <tr>
-            <td>&nbsp;</td>
+            <td>Hinweise</td>
             <td>
-              Die Fortsetzung der Nebenbestimmungen und die Anlagen sind
-              Bestandteil dieses Bescheides.
+              <p>
+                Diese Erlaubnis und die straßenrechtliche Zustimmung werden
+                vorbehaltlich der Rechte Dritter erteilt. Zuwiderhandlungen
+                gegen die Nebenbestimmungen dieser Ausnahmegenehmigung und
+                Erlaubnis stellen eine Ordnungswidrigkeit dar, die mit einer
+                Geldbuße bis zu 10.000,00 € geahndet werden kann. Außerdem
+                behalte ich mir bei Zuwiderhandlungen den Widerruf und die
+                Einziehung dieses Bescheides vor. Die beigefügten Anlagen,{' '}
+                <strong>
+                  insbesondere der ggf. beigefügte Verkehrszeichenplan
+                </strong>{' '}
+                bilden einen wesentlichen Bestandteil des Bescheides.
+              </p>
+              <p>
+                Die Fortsetzung der Nebenbestimmungen und die Anlagen sind
+                Bestandteil dieses Bescheides.
+              </p>
             </td>
           </tr>
           <tr>
