@@ -1,8 +1,8 @@
+import turfCenter from '@turf/center';
 import MapboxGL, { LngLatLike } from 'mapbox-gl';
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import turfCenter from '@turf/center';
 
 import config from '~/apps/Gastro/config';
 import { BaseMap } from '~/components2/BaseMap';

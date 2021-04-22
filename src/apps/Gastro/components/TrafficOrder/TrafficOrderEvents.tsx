@@ -1,13 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { EventPermit } from '../../types';
 
-import {
-  dateReceived,
-  eventDate,
-  getCategoryDescription,
-  permitEnd,
-} from '../../utils';
+import { EventPermit } from '../../types';
+import { dateReceived, eventDate, permitEnd } from '../../utils';
 
 const Container = styled.section`
   padding: 1em;
