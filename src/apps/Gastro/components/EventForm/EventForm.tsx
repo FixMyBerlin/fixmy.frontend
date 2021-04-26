@@ -102,8 +102,8 @@ const initialValues: FormData = {
   agreement: null,
   public_benefit: null,
   email: '',
-  tos_accepted: null,
-  agreement_accepted: null,
+  tos_accepted: false,
+  agreement_accepted: false,
 };
 
 const testValues: FormData = {
