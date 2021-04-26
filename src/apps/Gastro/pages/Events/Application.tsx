@@ -59,7 +59,7 @@ const EventApplication = (props: Props) => {
               <ul>
                 <li>
                   <a
-                    href="/uploads/event-terrassen/Veranstaltererklärung _VkBl.19-2012_.pdf"
+                    href="/uploads/event-terrassen/Veranstaltererklärung_VkBl.19-2012_.pdf"
                     className="internal"
                     target="_blank"
                   >
@@ -68,7 +68,7 @@ const EventApplication = (props: Props) => {
                 </li>
                 <li>
                   <a
-                    href="/uploads/event-terrassen/Versicherungsbestätigung _VkBl.19-2012_.pdf"
+                    href="/uploads/event-terrassen/Versicherungsbestaetigung_VkBl.19-2012_.pdf"
                     className="internal"
                     target="_blank"
                   >
