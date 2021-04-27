@@ -53,10 +53,10 @@ const Nebenbestimmungen = styled.section`
 `;
 
 // eslint-disable-next-line camelcase
-const getSetupTimerangeEnd = ({ permit_start }) => {
-  const date = new Date(permit_start);
-  date.setDate(date.getDate() + 4);
-  return date.toLocaleDateString('de-DE');
+const getSetupTimerangeEnd = ({ date }) => {
+  const eventDate = new Date(date);
+  eventDate.setDate(eventDate.getDate() + 4);
+  return eventDate.toLocaleDateString('de-DE');
 };
 
 type Props = {
