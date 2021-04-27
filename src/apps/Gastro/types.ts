@@ -153,3 +153,8 @@ export type EventPermit = EventApplication & {
   is_public_benefit?: boolean;
   area_park_name_long?: string;
 };
+
+export type EventListing = Pick<
+  EventPermit,
+  'title' | 'description' | 'event_start' | 'event_end' | 'date' | 'area'
+> & { id: string };

@@ -72,12 +72,12 @@ export const permitEnd = ({ permit_end }) =>
     ? '<Ende der Genehmigung unbestimmt>'
     : new Date(permit_end).toLocaleDateString('de-DE');
 
-export const eventDate = ({ date }: EventPermit): string =>
+export const eventDate = ({ date }): string =>
   date == null
     ? '<Datum der Veranstaltung nicht angegeben>'
     : new Date(date).toLocaleDateString('de-DE');
 
-export const photosDue = ({ date }: EventPermit): string =>
+export const photosDue = ({ date }): string =>
   date == null
     ? '<Datum der Veranstaltung nicht angegeben>'
     : addDays(new Date(date), 8).toLocaleDateString('de-DE');

@@ -5,7 +5,12 @@ import { generatePath } from 'react-router-dom';
 import { DistrictConfig } from '~/types';
 
 import config from './config';
-import { GastroSignup, GastroRegistration, EventApplication } from './types';
+import {
+  GastroSignup,
+  GastroRegistration,
+  EventApplication,
+  EventListing,
+} from './types';
 
 const URL_GET_SIGNUP = `/gastro/:campaign/:id/:accessKey?`;
 const URL_POST_SIGNUP = `/gastro/:campaign`;
@@ -17,6 +22,7 @@ const URL_RENEWAL = '/gastro/:campaign/renewal/:id/:accessKey';
 
 // Events
 const URL_GET_EVENT = `/permits/events/:campaign/:id`;
+const URL_GET_EVENTS = `/permits/events/:campaign/listing`;
 const URL_POST_EVENT_APPLICATION = `/permits/events/:campaign`;
 
 const logger = debug('fmc:Gastro:api');
@@ -68,6 +74,14 @@ const getEvent = async (
     campaign: district.apps.gastro.currentCampaign,
   })}`;
   logger('api get event', url);
+  return ky.get(url).json();
+};
+
+const getEvents = async (district: DistrictConfig): Promise<EventListing[]> => {
+  const url = `${getApiBase(district)}${generatePath(URL_GET_EVENTS, {
+    campaign: district.apps.gastro.currentCampaign,
+  })}`;
+  logger('api get events', url);
   return ky.get(url).json();
 };
 
@@ -254,6 +268,7 @@ const postRenewal = async (
 export default {
   getGastro,
   getEvent,
+  getEvents,
   signup,
   register,
   registerDirect,
