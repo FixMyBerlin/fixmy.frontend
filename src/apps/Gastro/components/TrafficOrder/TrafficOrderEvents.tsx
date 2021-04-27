@@ -54,9 +54,9 @@ const Nebenbestimmungen = styled.section`
 
 // eslint-disable-next-line camelcase
 const getSetupTimerangeEnd = ({ date }) => {
-  const eventDate = new Date(date);
-  eventDate.setDate(eventDate.getDate() + 4);
-  return eventDate.toLocaleDateString('de-DE');
+  const dateParsed = new Date(date);
+  dateParsed.setDate(dateParsed.getDate() + 4);
+  return dateParsed.toLocaleDateString('de-DE');
 };
 
 type Props = {

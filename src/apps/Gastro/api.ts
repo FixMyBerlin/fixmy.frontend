@@ -198,7 +198,7 @@ const uploadFile = async (
   district: DistrictConfig
 ) => {
   const formData = new FormData();
-  const fileName = file.name;
+  const fileName = encodeURI(file.name);
 
   // For some reason this call sometimes, but not always throws an error:
   //   TS2554: Expected 2 arguments, but got 3.
