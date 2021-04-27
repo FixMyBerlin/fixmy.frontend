@@ -26,7 +26,14 @@ const TrafficOrderPage = ({
   useEffect(() => {
     const doLoad = async () => {
       try {
-        setApplication(await api.getEvent(id, district));
+        const data = await api.getEvent(id, district);
+        if (data.area_category === 'park') {
+          setApplication(data);
+        } else {
+          setError(
+            'Für diese Veranstaltung ist keine verkehrsrechtliche Anordnung vorhanden, da sie nicht in Flächen des ruhenden Verkehrs stattfindet.'
+          );
+        }
       } catch (e) {
         setError(e.message);
       }

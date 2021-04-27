@@ -10,6 +10,7 @@ import {
   GastroRegistration,
   EventApplication,
   EventListing,
+  EventPermit,
 } from './types';
 
 const URL_GET_SIGNUP = `/gastro/:campaign/:id/:accessKey?`;
@@ -68,7 +69,7 @@ const getGastro = async (
 const getEvent = async (
   id: number,
   district: DistrictConfig
-): Promise<GastroRegistration> => {
+): Promise<EventPermit> => {
   const url = `${getApiBase(district)}${generatePath(URL_GET_EVENT, {
     id,
     campaign: district.apps.gastro.currentCampaign,
