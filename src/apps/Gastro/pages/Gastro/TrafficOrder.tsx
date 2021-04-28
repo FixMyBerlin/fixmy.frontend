@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import api from '../api';
-import Header from '../components/Header';
-import TrafficOrder from '../components/TrafficOrder';
+import api from '../../api';
+import Header from '../../components/Header';
+import { TrafficOrderGastro } from '../../components/TrafficOrder';
 
 const NoPrint = styled.span`
   @media print {
@@ -26,7 +26,7 @@ const TrafficOrderPage = ({
   useEffect(() => {
     const doLoad = async () => {
       try {
-        const resp = await api.get(id, null, district);
+        const resp = await api.getGastro(id, null, district);
         setApplication(resp);
       } catch (e) {
         setError(e.message);
@@ -44,7 +44,9 @@ const TrafficOrderPage = ({
       <Container maxWidth="lg">
         {error && <p>Fehler: {error}</p>}
         {isLoading && <p>Anordnung wird geladen...</p>}
-        {!isLoading && !error && <TrafficOrder application={application} />}
+        {!isLoading && !error && (
+          <TrafficOrderGastro application={application} />
+        )}
       </Container>
     </>
   );

@@ -31,23 +31,10 @@ const Thanks = ({ submission, district }) => (
       Sie haben eine E-Mail zur Bestätigung erhalten.
     </p>
 
-    {submission.uploadFailed && (
-      <p>
-        <strong>
-          Leider konnte ihre Gewerbeanmeldung / Vereinsregister nicht übertragen
-          werden. Wir bitten Sie daher, diese Datei per E-Mail an
-          <a href={`mailto:${config.gastro[district?.name]?.email}`}>
-            {config.gastro[district?.name]?.email}
-          </a>{' '}
-          zu schicken.
-        </strong>
-      </p>
-    )}
-
     <p>
       Das Bezirksamt bearbeitet die Anträge in der Regel innherhalb einiger
       Tage. Wenn Ihr Antrag bearbeitet wurde, erhalten Sie eine E-Mail mit einer
-      Zu- oder Absage. Bitte sehen Sie von individuellen Nachfragen ab.
+      Zu- oder Absage.
     </p>
   </Wrapper>
 );

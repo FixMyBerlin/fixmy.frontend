@@ -34,6 +34,9 @@ export const getTheme = (locale: LocaleCode) => {
         info: { main: config.colors.interaction },
         success: { main: config.colors.label_01 },
       },
+      typography: {
+        fontFamily: "'Open Sans', 'Helvetica', 'Arial', sans-serif",
+      },
     },
     muiLocale
   );

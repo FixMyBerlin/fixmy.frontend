@@ -4,8 +4,6 @@ import { CheckboxWithLabel } from 'formik-material-ui';
 import React from 'react';
 import styled from 'styled-components';
 
-import { usageWeekday, usageWeekend } from '../../utils';
-
 const FormError = styled(FormHelperText)`
   && {
     font-size: 1em;
@@ -28,9 +26,10 @@ const SectionNotice = ({ values }) => (
       <li>
         Eigenverantwortliche{' '}
         <strong>Durchführung der verkehrsrechtlichen Anordnung</strong>. Sie
-        müssen eigenverantwortlich dazu eine Beschilderungsfirma beauftragen für
-        die Fläche die dem Regelplan entsprechenden Schilder und Absperrungen
-        aufzustellen. <br />
+        müssen eigenverantwortlich eine Beschilderungsfirma beauftragen,
+        Schilder und Absperrungen für die Fläche dem Regelplan entsprechend
+        aufzustellen.
+        <br />
         <a
           href="/uploads/offene-terrassen/Beschilderungsfirmen_Berlin.pdf"
           className="internal"
@@ -40,24 +39,17 @@ const SectionNotice = ({ values }) => (
         </a>
       </li>
       <li>
-        <strong>Freihaltung von ausreichend breiten Gehwegen</strong> muss
-        sichergestellt werden (mindestens 2 Meter). Dies wird durch das
-        Ordnungsamt stichprobenartig überprüft, bei Nichteinhaltung kann die
-        Genehmigung entzogen werden.
+        Sie müssen die{' '}
+        <strong>Freihaltung von ausreichend breiten Gehwegen</strong>{' '}
+        sicherstellen (mindestens 2 Meter). Dies wird durch das Ordnungsamt
+        stichprobenartig überprüft und bei Nichteinhaltung kann die Genehmigung
+        entzogen werden.
       </li>
       <li>
-        Die Nutzung der Flächen des ruhenden Verkehrs ist{' '}
-        {values.category === '' && <>je nach Art des Betriebs</>}
-        {usageWeekend(values) && (
-          <strong>
-            auf Freitag, Samstag und Sonntag jeweils von 11 Uhr bis 22 Uhr
-          </strong>
-        )}
-        {usageWeekday(values) && (
-          <strong>auf Montag bis Freitag jeweils von 10 bis 20 Uhr</strong>
-        )}{' '}
-        begrenzt. Die Flächen sind außerhalb der Nutzungszeiten zu beräumen und
-        dem ruhenden Verkehr wieder zur Verfügung zu stellen.
+        Die Sondernutzung der Flächen des ruhenden Verkehrs darf während der
+        Zeiten <strong>Montag bis Sonntag jeweils von 6 bis 22 Uhr</strong>{' '}
+        erfolgen. In den Zeiten zwischen 6 und 22 Uhr ist die Fläche gegen
+        widerrechtliche Nutzung in geeigneter Weise zu sichern.
       </li>
       <li>
         Verpflichtung zur Einführung eines{' '}
@@ -66,9 +58,10 @@ const SectionNotice = ({ values }) => (
         zusätzlichen Müllmengen entstehen, erklären sich die beantragenden
         Betriebe grundsätzlich bereit, ein Pfandsystem einzuführen.
         <br />
-        Selbstverständlich dürfen vorhandene Mehrweggeschirre genutzt werden.
+        Selbstverständlich dürfen vorhandene Mehrweggeschire genutzt werden.
         Zeitpunkt und Gebiete, in denen das Pfandsystem eingeführt wird, stehen
-        noch nicht fest. <br />
+        noch nicht fest.
+        <br />
         Für die Herausgabe von Einweggebinden stellt das Bezirksamt
         entsprechende Pfandrollen zur Verfügung, die erst nach Herausgabe der
         Kartons / Becher samt Vereinnahmung des Pfandes erstattet werden müssen.

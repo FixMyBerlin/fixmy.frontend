@@ -4,16 +4,20 @@ import { Router, Route, Switch, useLocation, Redirect } from 'react-router-dom';
 
 import history from '~/history';
 import Markdown from '~/pages/Markdown';
+import { DistrictConfig } from '~/types';
 import { getAppPath } from '~/utils/utils';
 
 import config from './config';
-import DirectSignup from './pages/DirectSignup';
+import { EventApplication } from './pages/Events/Application';
+import PermitEvent from './pages/Events/Permit';
+import TrafficOrderEvent from './pages/Events/TrafficOrder';
+import DirectSignup from './pages/Gastro/DirectSignup';
+import Permit from './pages/Gastro/Permit';
+import Registration from './pages/Gastro/Registration';
+import Renewal from './pages/Gastro/Renewal';
+import Signup from './pages/Gastro/Signup';
+import TrafficOrderGastro from './pages/Gastro/TrafficOrder';
 import Landing from './pages/Landing';
-import Permit from './pages/Permit';
-import Registration from './pages/Registration';
-import Renewal from './pages/Renewal';
-import Signup from './pages/Signup';
-import TrafficOrder from './pages/TrafficOrder';
 import { openSignup } from './utils';
 
 const ScrollToTop = () => {
@@ -26,7 +30,14 @@ const ScrollToTop = () => {
   return null;
 };
 
-export const getPath = (district, name: string) =>
+/**
+ * Resolve path specific to a district configuration
+ *
+ * @param district district configuration containing route paths
+ * @param name name of the route to return a path for
+ * @returns string relative URL
+ */
+export const getPath = (district: DistrictConfig, name: string): string =>
   getAppPath(district, 'gastro') + config.gastro[district.name].routes[name];
 
 const renderSignup = (props) => {
@@ -58,6 +69,18 @@ const Routes = ({ district }) => (
         component={Registration}
       />
 
+      <Route
+        exact
+        path={getPath(district, 'signupEvents')}
+        render={(props) =>
+          openSignup(district) ? (
+            <EventApplication {...props} />
+          ) : (
+            <Redirect to={getPath(district, 'landing')} />
+          )
+        }
+      />
+
       <Route exact path={getPath(district, 'renewal')} component={Renewal} />
 
       <Route exact path={getPath(district, 'directory')}>
@@ -67,11 +90,26 @@ const Routes = ({ district }) => (
         <Redirect to={getPath(district, 'landing')} />
       </Route>
 
+      {/* Permits for Terrassen */}
+
       <Route exact path={getPath(district, 'permit')} component={Permit} />
       <Route
         exact
         path={getPath(district, 'trafficOrder')}
-        component={TrafficOrder}
+        component={TrafficOrderGastro}
+      />
+
+      {/* Permits for events */}
+
+      <Route
+        exact
+        path={getPath(district, 'permitEvents')}
+        component={PermitEvent}
+      />
+      <Route
+        exact
+        path={getPath(district, 'trafficOrderEvents')}
+        component={TrafficOrderEvent}
       />
 
       <Route render={() => <Markdown page="nomatch" />} />
