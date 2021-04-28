@@ -1,4 +1,5 @@
 import { Card, CardContent, makeStyles } from '@material-ui/core';
+import debug from 'debug';
 import React, { useEffect, useState } from 'react';
 
 import { useTypedSelector } from '~/store';
@@ -7,6 +8,8 @@ import { DistrictConfig } from '~/types';
 import api from '../api';
 import { EventListing } from '../types';
 import { eventDate } from '../utils';
+
+const logger = debug('fmc:Gastro:EventCalendar');
 
 const useStyles = makeStyles({
   root: {
@@ -46,7 +49,7 @@ export const EventCalendar = () => {
       try {
         setEventList(await api.getEvents(districtConfig));
       } catch (err) {
-        console.error(err);
+        logger(err);
         setEventList([]);
       }
     };
