@@ -13,3 +13,10 @@ export type ENTRY_STATUS =
   | 'execution'
   | 'invalid'
   | 'done';
+
+export type Stats = {
+  reports: number;
+  standsReports: number;
+  plannings: number;
+  planningsReports: number;
+};

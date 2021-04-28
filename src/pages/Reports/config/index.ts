@@ -92,6 +92,9 @@ export interface ReportsConfig {
     loggedIn: string;
     loggedOut: string;
   };
+  stats: {
+    enabled: boolean;
+  };
 }
 
 const instanceConfig = globalConfig.region === 'aachen' ? aachen : berlin;

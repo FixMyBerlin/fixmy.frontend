@@ -190,6 +190,9 @@ const BerlinConfig: ReportsConfig = {
       quality: 0.9,
     },
   },
+  stats: {
+    enabled: false,
+  },
 };
 
 export default BerlinConfig;

@@ -160,6 +160,9 @@ const aachenConfig: ReportsConfig = {
       quality: 0.9,
     },
   },
+  stats: {
+    enabled: true,
+  },
 };
 
 export default aachenConfig;
