@@ -1,7 +1,7 @@
+import { scaleLinear } from 'd3-scale';
 import React from 'react';
 import { useIntl, defineMessages } from 'react-intl';
 import styled from 'styled-components';
-import { scaleLinear } from 'd3-scale';
 
 import { media } from '~/styles/utils';
 

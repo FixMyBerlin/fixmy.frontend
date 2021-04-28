@@ -1,18 +1,17 @@
 // used for signup and login
+import { Formik } from 'formik';
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import { Formik } from 'formik';
 
-import config from '~/config';
-import Text from '~/components/Text';
-import Title from '~/components/Title';
-import Link from '~/components/Link';
-import SectionTitle from '~/components/SectionTitle';
-import Form from '~/components/Form';
 import Button from '~/components/Button';
+import Form from '~/components/Form';
 import FormField from '~/components/FormField';
 import FormFieldError from '~/components/FormFieldError';
-
+import Link from '~/components/Link';
+import SectionTitle from '~/components/SectionTitle';
+import Text from '~/components/Text';
+import Title from '~/components/Title';
+import config from '~/config';
 import { translateError } from '~/utils/error-utils';
 
 const UserFormWrapper = styled.div`

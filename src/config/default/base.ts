@@ -1,4 +1,5 @@
 import debug from 'debug';
+
 import { DefaultConfig } from '~/types';
 
 const log = debug('fmc:config');

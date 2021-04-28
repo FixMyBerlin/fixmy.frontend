@@ -1,14 +1,15 @@
-import React, { PureComponent } from 'react';
+import debug from 'debug';
 import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-import debug from 'debug';
 
-import FMCPropTypes from '~/pages/Reports/propTypes';
-import config from '~/pages/Reports/config';
 import BaseMap from '~/pages/Reports/components/BaseMap';
-import ClusteredMarkers from './ClusteredMarkers';
 import { LinkLayer } from '~/pages/Reports/components/LinkLayer';
+import config from '~/pages/Reports/config';
+import FMCPropTypes from '~/pages/Reports/propTypes';
+
+import ClusteredMarkers from './ClusteredMarkers';
 
 const logger = debug('fmc:reports:WebglMap.js');
 

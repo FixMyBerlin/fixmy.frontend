@@ -1,5 +1,6 @@
-import { IntlConfig, ReactIntlErrorCode } from 'react-intl';
 import debug from 'debug';
+import { IntlConfig, ReactIntlErrorCode } from 'react-intl';
+
 import config from '~/config';
 
 const log = debug('fmc:intl');

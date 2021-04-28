@@ -1,5 +1,5 @@
-import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { toggle } from '~/AppState';

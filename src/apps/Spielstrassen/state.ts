@@ -1,9 +1,10 @@
 import { Dispatch } from 'redux';
+
+import { DistrictConfig } from '~/types';
 import logger from '~/utils/logger';
 
 import api from './api';
 import { Spielstrasse } from './types';
-import { DistrictConfig } from '~/types';
 
 const SET_KIEZE = 'Spielstrassen/SET_KIEZE';
 const LOAD_KIEZE_PENDING = 'Spielstrassen/LOAD_KIEZE_PENDING';

@@ -2,27 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Paragraph } from '~/components2/Article';
+import config from '~/config';
 import LogoBMBF from '~/images/eichwalde/logo-bmbf.png';
 import LogoBMBF2 from '~/images/eichwalde/logo-bmbf@2x.png';
 import LogoBMBF3 from '~/images/eichwalde/logo-bmbf@3x.png';
-import LogoFONA from '~/images/eichwalde/logo-fona.svg';
 import LogoEichwalde from '~/images/eichwalde/logo-eichwalde.png';
 import LogoEichwalde2 from '~/images/eichwalde/logo-eichwalde@2x.png';
 import LogoEichwalde3 from '~/images/eichwalde/logo-eichwalde@3x.png';
-import LogoZeuthen from '~/images/eichwalde/logo-zeuthen.png';
-import LogoZeuthen2 from '~/images/eichwalde/logo-zeuthen@2x.png';
-import LogoZeuthen3 from '~/images/eichwalde/logo-zeuthen@3x.png';
+import LogoFONA from '~/images/eichwalde/logo-fona.svg';
 import LogoSchulzendorf from '~/images/eichwalde/logo-schulzendorf.png';
 import LogoSchulzendorf2 from '~/images/eichwalde/logo-schulzendorf@2x.png';
 import LogoSchulzendorf3 from '~/images/eichwalde/logo-schulzendorf@3x.png';
 import LogoTU from '~/images/eichwalde/logo-tu.png';
 import LogoTU2 from '~/images/eichwalde/logo-tu@2x.png';
 import LogoTU3 from '~/images/eichwalde/logo-tu@3x.png';
+import LogoZeuthen from '~/images/eichwalde/logo-zeuthen.png';
+import LogoZeuthen2 from '~/images/eichwalde/logo-zeuthen@2x.png';
+import LogoZeuthen3 from '~/images/eichwalde/logo-zeuthen@3x.png';
 import LogoFMB from '~/images/logofmb.png';
 import LogoFMB2 from '~/images/logofmb@2x.png';
 import LogoFMB3 from '~/images/logofmb@3x.png';
 import { media } from '~/styles/utils';
-import config from '~/config';
 
 const Footer = styled.footer`
   display: flex;

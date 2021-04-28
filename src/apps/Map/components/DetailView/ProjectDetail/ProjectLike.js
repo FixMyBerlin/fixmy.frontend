@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import styled, { css } from 'styled-components';
 
+import { likeDetail, getLikes } from '~/apps/Map/apiservice';
+import Link from '~/components/Link';
+import Label from '~/components2/Label';
 import config from '~/config';
 import HeartIcon from '~/images/heart.svg';
 import { bounce } from '~/styles/utils';
-import Label from '~/components/Label';
-import Link from '~/components/Link';
-import { likeDetail, getLikes } from '~/apps/Map/apiservice';
 
 const LikeButtonWrapper = styled.div`
   display: flex;

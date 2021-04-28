@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
+import Label from '~/components2/Label';
 import config from '~/config';
-import Label from '~/components/Label';
 
 const SelectWrapper = styled.div``;
 

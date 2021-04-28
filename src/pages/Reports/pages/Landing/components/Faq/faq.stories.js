@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { media } from '~/styles/utils';
 
-import Faq from '.';
 import FaqItem from './FaqItem';
+
+import Faq from '.';
 
 const Wrapper = styled.div`
   max-width: 568px;

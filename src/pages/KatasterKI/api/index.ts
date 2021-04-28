@@ -1,3 +1,5 @@
+import logger from '~/utils/logger';
+
 import {
   NewsletterRequest,
   NewsletterResponse,
@@ -7,12 +9,11 @@ import {
   PerspectiveResponse,
   AnswerRequest,
 } from '../types';
-import handleSubmitProfile, { marshallProfile } from './profile';
-import handleSubmitPerspective from './perspective';
 import handleSubmitAnswer from './answer';
 import handleSubmitNewsletter from './newsletter';
+import handleSubmitPerspective from './perspective';
+import handleSubmitProfile, { marshallProfile } from './profile';
 import { getEndpointURL } from './utils';
-import logger from '~/utils/logger';
 
 const MOCK_RESPONSES = false;
 

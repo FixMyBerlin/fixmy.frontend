@@ -1,5 +1,5 @@
-import { getEndpointURL } from './utils';
 import { NewsletterResponse } from '../types';
+import { getEndpointURL } from './utils';
 
 // Using plain fetch api here because ky makes problems in unit tests,
 // see https://github.com/FixMyBerlin/fixmy.platform/issues/116

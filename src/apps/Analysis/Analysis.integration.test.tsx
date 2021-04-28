@@ -1,7 +1,9 @@
-import React from 'react';
 import { screen } from '@testing-library/dom';
+import React from 'react';
 import { Route } from 'react-router-dom';
+
 import { render } from '~/utils/test-utils';
+
 import Analysis from '.';
 
 describe('Analysis app', () => {

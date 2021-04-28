@@ -1,11 +1,11 @@
-import { PureComponent } from 'react';
-import MapboxGL from 'mapbox-gl';
 import debug from 'debug';
+import MapboxGL from 'mapbox-gl';
+import { PureComponent } from 'react';
 
-import DraftMarker from '~/images/planning-icons/konzept-marker.png';
-import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
+import DraftMarker from '~/images/planning-icons/konzept-marker.png';
+import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import TempMarker from '~/images/planning-icons/temp-marker.png';
 
 const logger = debug('fmc:map:markers');

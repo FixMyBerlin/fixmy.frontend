@@ -1,6 +1,8 @@
-import React from 'react';
 import { screen } from '@testing-library/dom';
+import React from 'react';
+
 import { render } from '~/utils/test-utils';
+
 import ZESplus from '.';
 
 describe('ZESplus research page', () => {
