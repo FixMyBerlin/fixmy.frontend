@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import GeoPropTypes from 'geojson-prop-types';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import FMCPropTypes from '~/pages/Reports/propTypes';
 

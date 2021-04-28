@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, { StyledProps } from 'styled-components';
 import slugify from 'slugify';
+import styled, { StyledProps } from 'styled-components';
 
 import config from '~/config';
 import { media } from '~/styles/utils';

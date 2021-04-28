@@ -1,5 +1,6 @@
-import ky from 'ky';
 import debug from 'debug';
+import ky from 'ky';
+
 import config from '~/pages/Reports/config';
 
 const log = debug('fmc:mapbox:reverseGeocoding');

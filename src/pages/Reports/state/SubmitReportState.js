@@ -1,15 +1,16 @@
 /* eslint-disable  no-multi-spaces */
 import booleanWithin from '@turf/boolean-within';
 
-import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/apps/Map/map-utils'; // TODO: handle eslint warning regarding dependency circle
 import {
   apiSubmitReport,
   marshallNewReportObjectForSubmit,
 } from '~/pages/Reports/apiservice';
+import reverseGeocode from '~/services/reverseGeocode';
+import logger from '~/utils/logger';
+
 import { actions as errorStateActions } from './ErrorState';
 import initialState from './initialState';
-import logger from '~/utils/logger';
 
 // action constants
 

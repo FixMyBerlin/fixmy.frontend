@@ -1,0 +1,16 @@
+{
+  "borough": "Friedrichshain-Kreuzberg",
+  "id": 704,
+  "is_road": true,
+  "safety": 2.696,
+  "side0_orientation": "S",
+  "side0_safety": 2.968,
+  "side0_velocity": 0.851,
+  "side1_orientation": "N",
+  "side1_safety": 2.424,
+  "side1_velocity": 0.865,
+  "street_category": 2,
+  "street_name": "Dudenstraße",
+  "suffix": "2",
+  "velocity": 0.858
+}

@@ -1,23 +1,40 @@
-import React from 'react';
-
 import MapboxGL from 'mapbox-gl';
-import styled from 'styled-components';
+import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-import Link from '~/components/Link';
-import { Link as Link2 } from '~/components2/Link';
+import { EventCalendar } from '~/apps/Gastro/components/EventCalendar';
+import {
+  IconWrapper,
+  Legend,
+  LegendCol,
+  LegendHeader,
+  LegendItem,
+  LegendItems,
+  LegendSources,
+} from '~/apps/Gastro/components/Legend';
+import Logo from '~/apps/Gastro/components/Logo';
+import Notice from '~/apps/Gastro/components/Notice';
 import config from '~/apps/Gastro/config';
+import { getPath } from '~/apps/Gastro/routes';
+import { openSignup, setLayerVisibility } from '~/apps/Gastro/utils';
+import Link from '~/components/Link';
+import { BaseMap } from '~/components2/BaseMap';
 import { Button } from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
-import { BaseMap } from '~/components2/BaseMap';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
-import Logo from '~/apps/Gastro/components/Logo';
-import Notice from '~/apps/Gastro/components/Notice';
-import { getPath } from '~/apps/Gastro/routes';
-import { openSignup } from '~/apps/Gastro/utils';
 import { media } from '~/styles/utils';
+
+import IconEvents from './assets/basics-icon-map-events.svg';
+import IconRepair from './assets/basics-icon-map-repair.svg';
+import IconRestaurant from './assets/basics-icon-map-restaurant.svg';
+import IconRetail from './assets/basics-icon-map-retail.svg';
+import IconSocial from './assets/basics-icon-map-social.svg';
+import MayorImg from './assets/hermann.jpg';
+import MayorImg2 from './assets/hermann@2x.jpg';
+import MayorImg3 from './assets/hermann@3x.jpg';
 
 const Attribution = styled.div`
   font-size: 0.75em;
@@ -33,27 +50,146 @@ const Attribution = styled.div`
   }
 `;
 
-const StyledMap = styled(BaseMap)`
-  height: 30em;
-  margin: 2em 0;
+const Section = styled.section`
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 1px dashed ${config.colors.inactivegrey};
+`;
+
+const QuoteSection = styled.div`
+  line-height: 1.37;
+  color: ${config.colors.darkgrey};
+  max-width: 320px;
+  padding: 8px;
+  margin: 0 auto;
+`;
+
+const Img = styled.img`
+  width: 144px;
+  display: block;
+  margin: 0 auto;
+`;
+
+const ImgAttribution = styled.div`
+  color: ${config.colors.darkgrey};
+  font-size: 12px;
+  margin: 0.5em;
+  text-align: center;
+`;
+
+const BlockQuote = styled.blockquote`
+  text-align: center;
+  font-style: italic;
+  margin: 20px 0 28px 0;
+`;
+
+const SourcePerson = styled.p`
+  text-align: center;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 16px;
+`;
+
+const SourceFunction = styled.p`
+  margin-top: 0;
+  font-size: 12px;
 `;
 
 const CTA = styled(Button)`
   ${media.m`
     width: 20rem;
-    margin: 2em auto;
+    margin: 0 auto;
   `}
 `;
 
 const CTAWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  ${media.m`
+    margin: 2em 0;
+  `}
 `;
+
+const StyledMap = styled(BaseMap)`
+  height: 30em;
+`;
+
+const MapWrapper = styled.div`
+  margin: 0 -16px -16px;
+`;
+
+const LandingMap = ({ district }) => (
+  <>
+    <MapWrapper>
+      <StyledMap
+        style={config.gastro[district?.name]?.map.style}
+        bounds={district?.bounds}
+        onInit={(map) => {
+          map.addControl(
+            new MapboxGL.NavigationControl({ showCompass: false })
+          );
+          setLayerVisibility(
+            map,
+            district.apps.gastro.layerSets,
+            district.apps.gastro.maps.landing.layerSets
+          );
+        }}
+      />
+    </MapWrapper>
+
+    <Legend>
+      <LegendHeader>Legende</LegendHeader>
+      <LegendCol>
+        <LegendItems>
+          <LegendItem>
+            <IconWrapper>
+              <IconRestaurant />
+            </IconWrapper>{' '}
+            Gastronomische Angebote
+          </LegendItem>
+          <LegendItem>
+            <IconWrapper>
+              <IconSocial />
+            </IconWrapper>{' '}
+            Soziale Angebote
+          </LegendItem>
+          <LegendItem>
+            <IconWrapper>
+              <IconEvents />
+            </IconWrapper>
+            Veranstaltungen der Xhain-Terrassen
+          </LegendItem>
+        </LegendItems>
+      </LegendCol>
+      <LegendCol>
+        <LegendItems>
+          <LegendItem>
+            <IconWrapper>
+              <IconRetail />
+            </IconWrapper>{' '}
+            Einzelhandel
+          </LegendItem>
+          <LegendItem>
+            <IconWrapper>
+              <IconRepair />
+            </IconWrapper>{' '}
+            Werkstatt
+          </LegendItem>
+        </LegendItems>
+      </LegendCol>
+      <LegendSources>
+        Die Karte zeigt genehmigte Anträge auf Sondernutzung im Rahmen der Xhain
+        Terrassen, die Angaben basieren auf den Angaben der Antragsstellenden.
+      </LegendSources>
+    </Legend>
+  </>
+);
 
 const XhainLanding = ({ district }) => (
   <>
-    <h1>XHain is(s)t draußen – Terrassen für Vieles</h1>
+    <h1>Xhain geht raus – Terrassen für Vieles</h1>
     <ImageInsert
       src={BackgroundImageA2}
       srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
@@ -68,117 +204,255 @@ const XhainLanding = ({ district }) => (
         Photo by Freddy Do on Unsplash
       </a>
     </Attribution>
-    <h2>Sonderflächen für Schankbetrieb, Einzelhandel und soziale Projekte</h2>
-    <p>
-      Das Bezirksamt Friedrichshain-Kreuzberg bietet Gastronomiebetrieben,
-      Einzelhandel und sozialen Projekte die Möglichkeit, zusätzliche Flächen im
-      ruhenden Verkehr temporär (Freitags bis Sonntags von 11 bis 22 Uhr oder
-      Montags bis Freitags von 10 bis 20 Uhr) zum Aufstellen von Tischen oder
-      zum Ausstellen von Waren zu nutzen. So können diese die Vorgaben der
-      Corona-Eindämmungsverordnung umsetzen und dennoch Ihren Betrieb wieder
-      aufnehmen.
-    </p>
-    <p>
-      In der Karte sehen Sie alle bis zum 3. Juli 2020 genehmigten Anträge. Die
-      jeweiligen Betriebe können die Flächen nach Beauftragung der Schilder und
-      Absperrungen nutzen.
-    </p>
+    <h2>
+      Xhain-Terrassen 2021. Jetzt die ganze Woche nutzen. Neu: Anträge für
+      Veranstaltungen
+    </h2>
+    <Section>
+      <p>
+        Das Bezirksamt Friedrichshain-Kreuzberg bietet Gastronomen, dem
+        Einzelhandel und sozialen Projekten die Möglichkeit, Flächen im ruhenden
+        Verkehr bis Ende des Jahres 2021 ab sofort an allen Wochentagen zum
+        Aufstellen von Tischen oder Ausstellen von Waren zu nutzen. Damit möchte
+        das Bezirksamt die Betriebe und Projekte unterstützen ihren Betrieb
+        unter den schwierigen Bedingungen der
+        Corona-Infektionsschutzmaßnahmenverordnung wieder aufnehmen zu können.
+        Den Bürger*innen des Bezirks soll ermöglicht werden am sozialen Leben
+        teilzunehmen und sich dennoch angesichts des Infektionsgeschehens sicher
+        im öffentlichen Raum aufzuhalten.
+      </p>
 
-    <StyledMap
-      style={config.gastro[district?.name]?.map.style}
-      bounds={district?.bounds}
-      onInit={(map) => {
-        map.addControl(new MapboxGL.NavigationControl({ showCompass: false }));
-      }}
-    />
-
-    {openSignup(district) && (
-      <Link to={getPath(district, 'signup')}>
+      {openSignup(district) && (
         <CTAWrapper>
-          <CTA flat>Jetzt Antrag stellen</CTA>
+          <Link to={getPath(district, 'signup')}>
+            <CTA flat>Antrag stellen für Außenfläche</CTA>
+          </Link>
+          <p>
+            <a href="#bedingungen" className="internal">
+              Bedingungen für Außenflächen
+            </a>
+          </p>
         </CTAWrapper>
-      </Link>
-    )}
+      )}
 
-    <Notice />
+      <Notice />
 
-    <h2>Zum Hintergrund</h2>
-    <p>
-      Im Zuge der Lockerungen der Covid-19 Eindämmungsverordnung können
-      Restaurants seit dem 15. Mai 2020 wieder Tischbedienung durchführen,
-      müssen dabei aber einen Mindestabstand von 1,50 m zwischen den Gästen
-      gewährleisten.
-    </p>
-    <p>
-      Das Bezirksamt Friedrichshain-Kreuzberg bietet in dieser Situation
-      Gewerbetrieben, Einzelhandel und sozialen Projekten an, Tische, Stühle und
-      Auslagen temporär auf das Straßenland zu verlagern. Nach Auswertung von
-      über 300 Bedarfsmeldungen und 130 Anträgen, wurden bisher 100 Genehmigung
-      zur Nutzung von Sonderflächen erteilt.
-    </p>
-    <h2>Welche Flächen können wann genutzt werden?</h2>
-    <p>
-      Nach Prüfung der Anträge hat das Bezirksamt entsprechende
-      verkehrsrechtliche Anordnungen getroffen. Die Genehmigungen werden mit
-      Blick auf die Eindämmungsmaßnahmen befristet und bis auf weiteres
-      gebührenfrei ausgesprochen. Zeitlich werden dabei zunächst Freitag,
-      Samstag, Sonntag, jeweils von 11:00 Uhr bis 22:00 Uhr für die Gastronomie
-      und Mo-Fr jeweils von 10 bis 20 Uhr für den Einzelhandel oder soziale
-      Projekte Flächen als zusätzliche Außenflächen temporär angeboten. Die
-      Nutzung der Sonderflächen erfolgt zunächst kostenfrei bis zum 31.10.2020,
-      über eine Verlängerung der Maßnahme entscheidet das Bezirksamt vor Ablauf
-      dieser Frist.
-    </p>
-    <h2>Bedingungen für die Genehmigung</h2>
-    <p>
-      Die Bedingung für die Genehmigung von Schank- und Auslagenbereichen im
-      Straßenland sind folgende:
-    </p>
-    <ol>
-      <li>
-        Eigenverantwortliche Durchführung der verkehrsrechtlichen Anordnung,
-        inkl. Stellung von Sperren, Schildern und ggf. Personal
-      </li>
-      <li>
-        Verpflichtung zur Einführung eines Pfandsystems für Einweggebinde bei
-        der Herausgabe von Speisen nach Maßgabe des Bezirksamtes
-      </li>
-      <li>Freihaltung von ausreichend breiten Gehwegen (Mindestens 2 Meter)</li>
-    </ol>
-    <h2>Grund für die Maßnahme</h2>
-    <p>
-      Grund für die Maßnahme ist die notwendige Aufrechterhaltung des
-      1,50m-Abstandsgebotes. Dieses führt zu einem erhöhten Bedarf an Flächen im
-      Innen- und Außenbereich gegenüber den Verhältnissen vor der Pandemie.
-      Insbesondere für die unter den Beschränkungen der Pandemie existenziell
-      bedrohten Betriebe, aber auch für andere Organisationen mit Laufkundschaft
-      steigt der Druck, entsprechend große Außenflächen zur Sicherung der
-      ökonomischen Existenz anzubieten. Im Gehwegbereich ist dies mit Blick auf
-      die dort auch jetzt häufig schon sehr engen Platzverhältnisse für zu Fuß
-      Gehende nicht möglich und wird seitens des Bezirksamtes strikt
-      unterbunden. Für solche Fälle, in denen eine nutzbare Gehwegbreite nicht
-      gewährleistet werden kann, sind alle bestehenden Schankvorgärten und
-      Auslagen in ihrer Breite entsprechend zu reduzieren.
-    </p>
-    <p>
-      Die Erfahrung bzw. Genehmigungspraxis für Wochenmärkte haben gezeigt, dass
-      die Erweiterung von Gewerbeflächen auf das Straßenland im Grundsatz gut
-      geeignet ist, Abstandsgebote besser einzuhalten; Anders als in anderen
-      Bezirken konnte mit der Beauflagung von 10-Meter-Abstandsflächen zwischen
-      den Marktständen und der Erweiterung des Marktgeschehens in den
-      Straßenraum verhindert werden, dass Märkte aufgrund immanenter Verstöße
-      gegen die Eindämmungsverordnung geschlossen werden mussten. Weiterhin
-      wurde mit insgesamt 18{' '}
-      <Link2
-        internal
-        href="https://fixmyberlin.de/friedrichshain-kreuzberg/spielstrassen/"
-      >
-        temporären Spielstraßen
-      </Link2>{' '}
-      das Element der zeitweiligen Ausdehnung von Bewegungsräumen auf das
-      Straßenland auch und gerade für nicht kommerzielle Bedarfe der
-      Daseinsvorsorge erfolgreich im Bezirk implementiert.
-    </p>
+      <p>
+        Ab sofort gibt es außerdem die Möglichkeit für Vereine oder
+        Privatpersonen kulturelle, sportliche, oder bildungsbezogene
+        Veranstaltungen auf geeigneten Flächen in Grünanlagen oder im Bereich
+        des ruhenden Verkehrs zu beantragen.
+      </p>
+
+      {openSignup(district) && (
+        <CTAWrapper>
+          <Link to={getPath(district, 'signupEvents')}>
+            <CTA flat>Antrag stellen für Veranstaltung</CTA>
+          </Link>
+          <p>
+            <a href="#bedingungen-veranstaltungen" className="internal">
+              Bedingungen für Veranstaltungen
+            </a>
+          </p>
+        </CTAWrapper>
+      )}
+    </Section>
+
+    <Section>
+      <QuoteSection>
+        <Img
+          alt="Portrait Monika Hermann"
+          src={MayorImg}
+          srcSet={`${MayorImg2} 2x, ${MayorImg3} 3x`}
+        />
+        <ImgAttribution>Foto © Sedat Mehder</ImgAttribution>
+        <BlockQuote>
+          „In den Zeiten der fortlaufenden Corona-Einschränkungen, wollen wir
+          den Xhainer*innen wieder ein kleines Stück mehr Freiheit ermöglichen
+          und Gastronomen helfen ihren Betrieb durch das Jahr 2021 zu bringen. “
+        </BlockQuote>
+        <SourcePerson>Monika Herrmann</SourcePerson>
+        <SourceFunction>
+          Bezirksbürgermeisterin von Friedrichshain-Kreuzberg
+        </SourceFunction>
+      </QuoteSection>
+    </Section>
+
+    <Section>
+      <h2>Wo kann ich Angebote für Xhain-Terrassen besuchen?</h2>
+      <LandingMap district={district} />
+    </Section>
+
+    <Section>
+      <EventCalendar />
+    </Section>
+
+    <Section>
+      <h2>Zum Hintergrund</h2>
+      <p>
+        Im Zuge der Lockerungen der Covid-19 Eindämmungsverordnung können
+        Restaurants seit dem XX.XX. 2021 wieder öffnen und Tischbedienung
+        durchführen, müssen dabei aber einen Mindestabstand von 1,50 m zwischen
+        den Gästen gewährleisten.
+      </p>
+      <p>
+        Das Bezirksamt Friedrichshain-Kreuzberg bietet in dieser Situation
+        Gewerbetrieben, Einzelhandel und sozialen Projekten wie bereits im
+        letzten Jahr an, Tische, Stühle und Auslagen temporär auf das
+        Straßenland zu verlagern. Neu ist dabei, dass die Sondergenehmigungen
+        für die ganze Woche von Montag bis Sonntag in der Zeit von 6 bis 22 Uhr
+        erteilt werden.
+      </p>
+      <p>
+        Grund für die Maßnahme ist die notwendige Aufrechterhaltung des
+        1,50m-Abstandsgebotes. Dieses führt zu einem erhöhten Bedarf an Flächen
+        im Innen- und Außenbereich gegenüber den Verhältnissen vor der Pandemie.
+        Insbesondere für die unter den Beschränkungen der Pandemie existenziell
+        bedrohten Betriebe, aber auch für andere Organisationen mit
+        Laufkundschaft steigt der Druck, entsprechend große Außenflächen zur
+        Sicherung der ökonomischen Existenz anzubieten. Das Angebot kann von
+        Gastronomen, vom Einzelhandel, sowie von Vereinen genutzt werden.
+      </p>
+      <p>
+        Um Veranstaltungen aus Kultur, Sport und Bildung im Freien zu
+        unterstützen und das soziale Leben im Bezirk unter sicheren Bedingungen
+        weiterhin zu ermöglichen bietet der Bezirk außerdem ab sofort zusätzlich
+        die Möglichkeit Anträge für maximal eintägige Veranstaltungen in
+        Grünflächen oder im Bereich des ruhenden Verkehrs zu beantragen. Solche
+        Veranstaltungen können von Vereinen, Trägern der Kultur und von
+        Privatpersonen gestellt werden.{' '}
+      </p>
+    </Section>
+
+    <Section>
+      <h2 id="bedingungen">
+        Was sind die Bedingungen um eine Sonderfläche für meinen Betrieb /
+        Verein zu beantragen?
+      </h2>
+      <p>
+        Die Bedingung für die Genehmigung von Schank- und Auslagenbereichen im
+        Straßenland sind folgende:
+      </p>
+      <ul>
+        <li>
+          Lage des Ladenlokals in verkehrslichen Nebenstraßen mit
+          Parkplatzflächen direkt vor der Ladenfront.
+        </li>
+        <li>
+          Eigenverantwortliche Durchführung der verkehrsrechtlichen Anordnung,
+          inkl. Stellung von Sperren, Schildern und ggf. Personal.
+        </li>
+        <li>
+          Sicherstellen, dass die Fläche während des Genehmigungszeitraum durch
+          den Antragstellenden betreut ist, so dass eine korrekte Nutzung
+          überprüft werden kann und bei möglichen Konflikten mit anderen
+          Nutzungsansprüchen im Straßenland (z.B. Konflikte mit Fußgehenden oder
+          dem fließenden Kfz-Verkehr) eingeschritten werden kann.
+        </li>
+        <li>Tägliche Reinigung der Sondernutzungsfläche.</li>
+        <li>
+          Zusammenstellen der Tische und Stühle / Verschluss zwischen 22:00h und
+          6:00h, Einwirken auf die Gäste zur Einhaltung des Berliner
+          Imissionsschutzgesetzes hinsichtlich etwaiger Lärmbelästigungen.
+        </li>
+        <li>
+          Verpflichtung zur Einführung eines Pfandsystems für Einweggebinde bei
+          der Herausgabe von Speisen nach Maßgabe des Bezirksamtes.
+        </li>
+        <li>
+          Freihaltung von ausreichend breiten Gehwegen (Mindestens 2 Meter).
+        </li>
+        <li>
+          Weiter gelten die allgemeinen und besonderen Nebenbestimmungen für
+          Sondernutzungen
+        </li>
+      </ul>
+      <p>
+        Nach Prüfung der Anträge trifft das Bezirksamt entsprechende
+        verkehrsrechtliche Anordnungen und erteilt, sofern keine Einwände
+        vorliegen eine Sondergenehmigung. Die Genehmigungen werden bis zum
+        31.12.2021 befristet und bis auf weiteres gebührenfrei ausgesprochen.{' '}
+      </p>
+
+      {openSignup(district) && (
+        <Link to={getPath(district, 'signup')}>
+          <CTAWrapper>
+            <CTA flat>Antrag stellen für Außenfläche</CTA>
+          </CTAWrapper>
+        </Link>
+      )}
+
+      <Notice />
+    </Section>
+
+    <Section>
+      <h2 id="bedingungen-veranstaltungen">
+        Was sind die Bedingungen um eine Veranstaltung zu beantragen?
+      </h2>
+      <ul>
+        <li>
+          Die Veranstaltung muss einen der folgenden Zwecke
+          gemeinwohlorientierter bzw. nichtkommerzieller Art dienen:
+          <ul>
+            <li>Kulturelle Veranstaltung</li>
+            <li>Sportveranstaltung</li>
+            <li>Bildungsveranstaltung</li>
+            <li>Veranstaltungen mit Kiezcharakter (z.B. Nachbarschaftsfest)</li>
+          </ul>
+        </li>
+        <li>
+          Nachweis einer Haftpflichtversicherung für Veranstaltung des
+          Antragstellenden
+        </li>
+        <li>Eigenverantwortliche Durchführung der Veranstaltung,</li>
+        <li>Reinigung der Flächen im Anschluss an die Veranstaltung</li>
+        <li>
+          Sicherstellen, dass die Veranstaltung während gesamten Zeitraums durch
+          den Antragstellenden betreut ist, und bei möglichen Konflikten mit
+          Dritten eingeschritten werden kann.
+        </li>
+        <li>
+          Beachtung des Anwohnerschutzes (nur zumutbare Lärmimmissionen;
+          Maßgeblichkeit der Häufigkeit von Veranstaltungen, die Lärmstörungen
+          verursachen; ein angemessener zeitlicher Abstand zu anderen Festen –
+          mindestens 3 Wochen Abstand zu vorangegangenen und zu künftigen
+          Veranstaltungen in demselben Quartier).{' '}
+        </li>
+        <li>
+          Freihaltung von ausreichend breiten Gehwegen (Mindestens 2 Meter).
+        </li>
+        <li>
+          Weiter gelten die allgemeinen und besonderen Nebenbestimmungen für
+          Sondernutzungen
+        </li>
+        <li>
+          Einhalten der Auflagen der Berliner Feuerwehr (sofern dies die
+          Veranstaltung betrifft)
+        </li>
+      </ul>
+      <p>
+        Nach Prüfung der Anträge erstellt das Bezirksamt eine Sondergenehmigung
+        die für eine einmalige Veranstaltung im bezeichneten Zeitraum genutzt
+        werden darf. Die Genehmigungen werden bei nachgewiesener
+        Gemeinnützigkeit gebührenfrei ausgesprochen, in anderen Fällen fallen
+        gegebenenfalls. Genehmigungskosten im Rahmen der üblichen
+        Gebührenordnung an. Anträge sind in den Zeiten von 6 bis 22 Uhr, Montag
+        bis Samstag (Sonntag und Feiertags nur in Ausnahmefällen) möglich.
+        Genehmigungsfähig sind ausgewiesene Flächen in Grünanlagen und Flächen
+        im Bereich des ruhenden Verkehrs (Im Antragsformular auf der Karte
+        ausgewiesen).
+      </p>
+
+      {openSignup(district) && (
+        <Link to={getPath(district, 'signupEvents')}>
+          <CTAWrapper>
+            <CTA flat>Antrag stellen für Veranstaltung</CTA>
+          </CTAWrapper>
+        </Link>
+      )}
+
+      <Notice />
+    </Section>
 
     <Logo />
   </>

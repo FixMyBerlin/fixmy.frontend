@@ -1,4 +1,4 @@
-const FMB_XHAIN_TERASSEN = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg?fresh=true`;
+const FMB_XHAIN_TERASSEN = `mapbox://styles/hejco/ckm3lgekg9jky17rznm5kn8bd`;
 
 const config = {
   email: 'info@fixmyberlin.de',

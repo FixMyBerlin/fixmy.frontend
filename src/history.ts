@@ -1,5 +1,5 @@
-import ReactPiwik from 'react-piwik';
 import { createBrowserHistory } from 'history';
+import ReactPiwik from 'react-piwik';
 
 import config from '~/config';
 

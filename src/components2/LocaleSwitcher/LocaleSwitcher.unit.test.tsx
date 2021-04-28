@@ -1,7 +1,9 @@
 import React from 'react';
-import { render } from '~/utils/test-utils';
-import { LocaleSwitcher } from '.';
+
 import { LocaleCode } from '~/types';
+import { render } from '~/utils/test-utils';
+
+import { LocaleSwitcher } from '.';
 
 describe('<LocaleSwitcher />', () => {
   it('renders', () => {

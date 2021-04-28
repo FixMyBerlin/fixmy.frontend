@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ArticleWrapper } from '~/components2/Article/';
+
 import BarChartComponent from './components/BarChart';
 
 export default {

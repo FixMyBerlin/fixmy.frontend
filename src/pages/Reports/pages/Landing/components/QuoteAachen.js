@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
-
 import Portrait from '~/images/reports/marcel-philipp@2x.jpg';
-import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
+import config from '~/pages/Reports/config';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
+import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
 
 const QuoteSection = styled.div`
   line-height: 1.37;

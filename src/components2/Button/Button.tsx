@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import config from '~/config';
 import { media } from '~/styles/utils';
 
@@ -19,14 +20,16 @@ const getBackgroundColor = ({ ghost, disabled }: Props) => {
   return config.colors.interaction;
 };
 
-const BaseButton = (containerElem: 'a' | 'button') => styled(
-  containerElem
-)<Props>`
+const BaseButton = (containerElem) => styled(containerElem)<Props>`
   background: ${getBackgroundColor};
   border-radius: 24px;
   border: ${(props) =>
     props.ghost ? `2px solid ${config.colors.interaction}` : 'none'};
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  height: 48px;
   box-shadow: ${(props) =>
     props.flat ? 'none' : '0 10px 20px 0 rgba(0, 0, 0, 0.2)'};
   color: ${({ disabled }) =>
@@ -36,7 +39,7 @@ const BaseButton = (containerElem: 'a' | 'button') => styled(
   hyphens: auto;
   line-height: 1.15;
   outline: none;
-  padding: 15px 25px;
+  padding: 0 25px;
   width: 100%;
   word-break: break-all;
   text-decoration: none;
