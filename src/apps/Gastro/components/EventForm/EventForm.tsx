@@ -102,8 +102,8 @@ const initialValues: FormData = {
   agreement: null,
   public_benefit: null,
   email: '',
-  tos_accepted: null,
-  agreement_accepted: null,
+  tos_accepted: false,
+  agreement_accepted: false,
 };
 
 const testValues: FormData = {
@@ -162,13 +162,17 @@ const EventForm: React.FC<Props> = ({ district, onSuccess }) => {
   const minDate = useMemo<Date>(getMinDate, []);
   return (
     <Formik
-      initialValues={isProduction ? initialValues : initialValues}
+      initialValues={isProduction ? initialValues : testValues}
       validate={validate}
       onSubmit={async (values, { setSubmitting, setStatus }) => {
         const applicationData: EventApplication = {
           ...values,
           campaign: district.apps.gastro.currentCampaign,
           date: format(values.date, 'yyyy-MM-dd'),
+          setup_start: format(values.setup_start, 'HH:mm'),
+          event_start: format(values.event_start, 'HH:mm'),
+          event_end: format(values.event_end, 'HH:mm'),
+          teardown_end: format(values.teardown_end, 'HH:mm'),
         };
 
         delete applicationData.agreement;

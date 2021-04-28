@@ -42,7 +42,7 @@ const xhain: DistrictConfig = {
           kiez: 'Samariterviertel',
           region: 'Friedrichshain',
           schedule: 'Sonntags 13-19 Uhr',
-          status: 'paused',
+          status: 'open',
         },
         {
           street: 'Richard-Sorge-Straße',
@@ -188,7 +188,7 @@ const xhain: DistrictConfig = {
       timeline: {
         // date constructor uses 0-based month number, i.e. january is 0
         openSignup: isNetlifyProduction
-          ? new Date(Date.UTC(2021, 4 - 1, 1))
+          ? new Date(Date.UTC(2021, 10 - 1, 1))
           : new Date(Date.UTC(2021, 3 - 1, 1)),
         closeSignup: new Date(Date.UTC(2021, 10 - 1, 1)),
         permitEnd: new Date(Date.UTC(2021, 12 - 1, 31)),

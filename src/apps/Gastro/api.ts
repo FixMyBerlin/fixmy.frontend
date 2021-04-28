@@ -5,7 +5,13 @@ import { generatePath } from 'react-router-dom';
 import { DistrictConfig } from '~/types';
 
 import config from './config';
-import { GastroSignup, GastroRegistration, EventApplication } from './types';
+import {
+  GastroSignup,
+  GastroRegistration,
+  EventApplication,
+  EventListing,
+  EventPermit,
+} from './types';
 
 const URL_GET_SIGNUP = `/gastro/:campaign/:id/:accessKey?`;
 const URL_POST_SIGNUP = `/gastro/:campaign`;
@@ -13,8 +19,12 @@ const URL_PUT_SIGNUP = `/gastro/:campaign/:id/:accessKey`;
 const URL_PUT_CERTIFICATE = `/gastro/:campaign/certificate/:id/:accessKey`;
 const URL_POST_CERTIFICATE = `/gastro/:campaign/certificate/direct/:fileName`;
 const URL_POST_FILE = `/permits/events/:campaign/:name/:fileName`;
-const URL_POST_EVENT_APPLICATION = `/permits/events/:campaign`;
 const URL_RENEWAL = '/gastro/:campaign/renewal/:id/:accessKey';
+
+// Events
+const URL_GET_EVENT = `/permits/events/:campaign/:id`;
+const URL_GET_EVENTS = `/permits/events/:campaign/listing`;
+const URL_POST_EVENT_APPLICATION = `/permits/events/:campaign`;
 
 const logger = debug('fmc:Gastro:api');
 
@@ -31,12 +41,12 @@ const getApiBase = (district: DistrictConfig) => {
 };
 
 /**
- * Request previously submitted data
+ * Request application data for a gastro application
  *
  * @param id of the signup
  * @param accessKey that registrants received via email
  */
-const get = async (
+const getGastro = async (
   id: number,
   accessKey: string,
   district: DistrictConfig
@@ -47,6 +57,32 @@ const get = async (
     campaign: district.apps.gastro.currentCampaign,
   })}`;
   logger('api get', url);
+  return ky.get(url).json();
+};
+
+/**
+ * Request application data for an event
+ *
+ * @param id of the signup
+ * @param accessKey that registrants received via email
+ */
+const getEvent = async (
+  id: number,
+  district: DistrictConfig
+): Promise<EventPermit> => {
+  const url = `${getApiBase(district)}${generatePath(URL_GET_EVENT, {
+    id,
+    campaign: district.apps.gastro.currentCampaign,
+  })}`;
+  logger('api get event', url);
+  return ky.get(url).json();
+};
+
+const getEvents = async (district: DistrictConfig): Promise<EventListing[]> => {
+  const url = `${getApiBase(district)}${generatePath(URL_GET_EVENTS, {
+    campaign: district.apps.gastro.currentCampaign,
+  })}`;
+  logger('api get events', url);
   return ky.get(url).json();
 };
 
@@ -162,7 +198,7 @@ const uploadFile = async (
   district: DistrictConfig
 ) => {
   const formData = new FormData();
-  const fileName = file.name;
+  const fileName = encodeURI(file.name);
 
   // For some reason this call sometimes, but not always throws an error:
   //   TS2554: Expected 2 arguments, but got 3.
@@ -231,7 +267,9 @@ const postRenewal = async (
 };
 
 export default {
-  get,
+  getGastro,
+  getEvent,
+  getEvents,
   signup,
   register,
   registerDirect,

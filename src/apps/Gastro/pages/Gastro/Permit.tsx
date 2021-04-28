@@ -3,11 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
+import api from '~/apps/Gastro/api';
+import Permit from '~/apps/Gastro/components/GastroPermit';
+import Header from '~/apps/Gastro/components/Header';
 import config from '~/apps/Gastro/config';
-
-import api from '../api';
-import Header from '../components/Header';
-import Permit from '../components/Permit';
 
 const PermitWrapper = styled.article`
   border-bottom: 2px dashed ${config.colors.lightgrey};
@@ -41,7 +40,7 @@ const PermitPage = ({
   useEffect(() => {
     const doLoad = async () => {
       try {
-        setApplication(await api.get(id, null, district));
+        setApplication(await api.getGastro(id, null, district));
       } catch (e) {
         if (e.message === 'Failed to fetch') {
           setError(

@@ -8,12 +8,12 @@ import Logo from '~/apps/Gastro/components/Logo';
 import config from '~/apps/Gastro/config';
 import { media } from '~/styles/utils';
 
-import api from '../api';
-import Header from '../components/Header';
-import RegistrationForm from '../components/RegistrationForm';
-import Thanks from '../components/ThanksRegistration';
-import regulations from '../regulations';
-import { GastroSignup, GastroRegistration, GastroStatus } from '../types';
+import api from '../../api';
+import Header from '../../components/Header';
+import RegistrationForm from '../../components/RegistrationForm';
+import Thanks from '../../components/ThanksRegistration';
+import regulations from '../../regulations';
+import { GastroSignup, GastroRegistration, GastroStatus } from '../../types';
 
 const Section = styled.section`
   border-bottom: 2px dashed ${config.colors.lightgrey};
@@ -69,7 +69,7 @@ const Registration = ({
     const doLoad = async () => {
       let result: GastroRegistration;
       try {
-        result = await api.get(id, accessKey, district);
+        result = await api.getGastro(id, accessKey, district);
         result = process(result);
 
         if (isLocked(result)) {

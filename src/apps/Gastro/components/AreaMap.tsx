@@ -1,10 +1,12 @@
-import MapboxGL from 'mapbox-gl';
+import turfCenter from '@turf/center';
+import MapboxGL, { LngLatLike } from 'mapbox-gl';
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
 import { BaseMap } from '~/components2/BaseMap';
+import { DistrictConfig } from '~/types';
 
 const StyledMap = styled(BaseMap)`
   width: 40em;
@@ -12,7 +14,7 @@ const StyledMap = styled(BaseMap)`
   margin: 1em 0;
 `;
 
-const addAreaToMap = (map, area) => {
+const addAreaToMap = (map, area, showAreaPin) => {
   map.addSource('usageArea', {
     type: 'geojson',
     data: {
@@ -38,33 +40,47 @@ const addAreaToMap = (map, area) => {
     new MapboxGL.LngLatBounds(area.coordinates[0][0], area.coordinates[0][0])
   );
 
+  if (showAreaPin) {
+    const center = turfCenter(area);
+    new MapboxGL.Marker({ color: config.colors.interaction })
+      .setLngLat(center.geometry.coordinates as LngLatLike)
+      .addTo(map);
+  }
+
   map.fitBounds(bounds, { padding: 20, maxZoom: 17.5, linear: true });
 };
 
-const handleMapInit = (map, geometry, area, district) => {
+const handleMapInit = (
+  map: MapboxGL.Map,
+  geometry,
+  area,
+  district: DistrictConfig,
+  showAreaPin: boolean
+) => {
   if (geometry != null) {
     map.setCenter(geometry.coordinates);
     new MapboxGL.Marker({ color: config.colors.interaction })
       .setLngLat(geometry.coordinates)
       .addTo(map);
   }
-  if (area != null) addAreaToMap(map, area);
-
-  district.apps.gastro.landing.mapboxLayers.forEach((layer: string) =>
-    map.setLayoutProperty(layer, 'visibility', 'visible')
-  );
-
-  district.apps.gastro.registration.mapboxLayers.forEach((layer: string) =>
-    map.setLayoutProperty(layer, 'visibility', 'visible')
-  );
+  if (area != null) addAreaToMap(map, area, showAreaPin);
 };
 
-const AreaMap = ({ application, district, printable = false }) => {
+const AreaMap = ({
+  application,
+  district,
+  printable = false,
+  className = null,
+  showAreaPin = false,
+}) => {
   const { geometry, area } = application;
 
   return (
     <StyledMap
-      onInit={(map) => handleMapInit(map, geometry, area, district)}
+      className={className}
+      onInit={(map) =>
+        handleMapInit(map, geometry, area, district, showAreaPin)
+      }
       style={config.gastro[district?.name]?.map.style}
       bounds={district?.bounds}
       interactive={false}

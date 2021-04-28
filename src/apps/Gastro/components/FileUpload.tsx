@@ -99,10 +99,10 @@ const FileUploadRaw: React.FC<Props> = ({
       try {
         resp = await api.uploadFile(name, values[name], district);
         handleChange({ target: { name: uploadName, value: resp?.path } });
-      } catch (e) {
-        logger(e);
+      } catch (err) {
+        logger(err);
         setError(
-          'Das Hochladen Ihrer Gewerbeanmeldung / Ihres Vereinsregisters ist fehlgeschlagen. Bitte prüfen Sie Ihre Internetverbindung und versuchen es erneut.'
+          'Das Hochladen des Dokuments ist fehlgeschlagen. Bitte prüfen Sie Ihre Internetverbindung und versuchen es erneut.'
         );
       }
       setUploadingFile(false);

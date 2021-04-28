@@ -3,6 +3,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
+import { EventCalendar } from '~/apps/Gastro/components/EventCalendar';
+import {
+  IconWrapper,
+  Legend,
+  LegendCol,
+  LegendHeader,
+  LegendItem,
+  LegendItems,
+  LegendSources,
+} from '~/apps/Gastro/components/Legend';
 import Logo from '~/apps/Gastro/components/Logo';
 import Notice from '~/apps/Gastro/components/Notice';
 import config from '~/apps/Gastro/config';
@@ -17,15 +27,6 @@ import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import { media } from '~/styles/utils';
 
-import {
-  IconWrapper,
-  Legend,
-  LegendCol,
-  LegendHeader,
-  LegendItem,
-  LegendItems,
-  LegendSources,
-} from '../../components/Legend';
 import IconEvents from './assets/basics-icon-map-events.svg';
 import IconRepair from './assets/basics-icon-map-repair.svg';
 import IconRestaurant from './assets/basics-icon-map-restaurant.svg';
@@ -204,7 +205,7 @@ const XhainLanding = ({ district }) => (
       </a>
     </Attribution>
     <h2>
-      Xhain-Terrassen 2021. Jetzt die ganze Woche nutzen und neu Anträge für
+      Xhain-Terrassen 2021. Jetzt die ganze Woche nutzen. Neu: Anträge für
       Veranstaltungen
     </h2>
     <Section>
@@ -283,8 +284,7 @@ const XhainLanding = ({ district }) => (
     </Section>
 
     <Section>
-      <h2>Nächste Veranstaltungen</h2>
-      <p>[Cards mit genehmigten Veranstaltungen]</p>
+      <EventCalendar />
     </Section>
 
     <Section>
