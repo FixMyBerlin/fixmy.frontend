@@ -31,6 +31,11 @@ const BerlinConfig: ReportsConfig = {
           color: '#ffffff',
         },
   },
+  colors: {
+    planning: 'red',
+    execution: 'yellow',
+    done: 'green',
+  },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
     boundaryGeodataUrl: '/data/Fhain-Xberg-trimmed.json',

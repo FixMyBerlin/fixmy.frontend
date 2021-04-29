@@ -2,10 +2,10 @@ import React from 'react';
 
 import { render } from '~/utils/test-utils';
 
-import { Stats } from '.';
+import { StatsCounter } from '.';
 
-describe('Stats component', () => {
+describe('StatsCounter component', () => {
   it('renders', () => {
-    render(<Stats />);
+    render(<StatsCounter />);
   });
 });

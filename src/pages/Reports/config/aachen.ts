@@ -28,6 +28,11 @@ const aachenConfig: ReportsConfig = {
           color: '#ffffff',
         },
   },
+  colors: {
+    planning: '#ECCD2D',
+    execution: '#ABC759',
+    done: '#45B834',
+  },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
     boundaryGeodataUrl: '/data/aachen.geojson',

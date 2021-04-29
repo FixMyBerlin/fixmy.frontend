@@ -1,16 +1,29 @@
+import debug from 'debug';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import TickIcon from '~/images/aachen/tick-icon.svg';
-import { getReportStatusCaption } from '~/pages/Reports/apiservice';
+import { loadStats } from '~/pages/Reports/apiservice';
 import ReportPin from '~/pages/Reports/components/ReportPin';
 import config from '~/pages/Reports/config';
-import { ENTRY_STATUS } from '~/pages/Reports/types';
+import { ENTRY_STATUS, Stats } from '~/pages/Reports/types';
 
-import Brace from './assets/brace-horizontal.svg';
+import Brace from './assets/brace.svg';
+import DoneIcon from './assets/icon-done.svg';
+import ExecutionIcon from './assets/icon-execution.svg';
+import PlanningIcon from './assets/icon-planning.svg';
+
+const logger = debug('fmc:Gastro:Stats');
 
 const ICONS = {
-  planning: TickIcon,
+  planning: PlanningIcon,
+  execution: ExecutionIcon,
+  done: DoneIcon,
+};
+
+const LABELS = {
+  planning: 'in Planung',
+  execution: 'im Bau',
+  done: 'wurde umgesetzt',
 };
 
 const Container = styled.div`
@@ -19,6 +32,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding: 1em 0;
+  align-items: center;
 `;
 
 const StatsRow = styled.div`
@@ -26,15 +41,18 @@ const StatsRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0.5em 3em;
+  padding: 0.5em 2em;
   width: 100%;
-  flex-wrap: wrap;
+  height: 100px;
+  max-width: 400px;
 `;
 
 const Count = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   span {
     display: block;
     font-size: 1.8em;
@@ -44,9 +62,11 @@ const Count = styled.div`
 `;
 
 const CountStrong = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   span {
     display: block;
     font-family: ${config.titleFont};
@@ -66,24 +86,71 @@ const StyledBrace = styled(Brace)`
 `;
 
 const ProgressBar = styled.div`
-  margin: 0.5em 1em;
-  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  margin: 0.5em 0;
   height: 40px;
+  margin-bottom: 3em;
+  width: 100%;
+  padding: 0 1.5em;
 `;
 
-const ProgressSection = styled.div<{ pct: number }>`
+const ProgressSection = styled.div<{
+  pct: number;
+  status: ENTRY_STATUS;
+  isLeftEdge: boolean;
+  isRightEdge: boolean;
+}>`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   height: 100%;
+  position: relative;
   width: ${(props) => props.pct || 0}%;
+  background-color: ${(props) => config.reports.colors[props.status]};
+  border-radius: ${(props) => (props.isLeftEdge ? '20px' : '0')}
+    ${(props) => (props.isRightEdge ? '20px' : '0')}
+    ${(props) => (props.isRightEdge ? '20px' : '0')}
+    ${(props) => (props.isLeftEdge ? '20px' : '0')};
+
+  span {
+    position: absolute;
+    top: 120%;
+    font-size: 12px;
+    text-align: center;
+    color: ${config.colors.inactivegrey};
+  }
 `;
 
-const Stats = () => {
+const StatsCounter = () => {
   const [stats, setStats] = useState<Stats>(null);
+  const [isLoading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     const asyncEffect = async () => {
-      setStats(await api.loadStats());
+      try {
+        setStats(await loadStats());
+      } catch (err) {
+        logger(err);
+        setStats(null);
+      }
+      setLoading(false);
     };
     asyncEffect();
   }, []);
+
+  if (isLoading == null) return <p>Wird geladen...</p>;
+  if (stats == null)
+    return (
+      <p>
+        Leider kann der Zähler bisheriger Meldungen und Planungen derzeit nicht
+        angezeigt werden.
+      </p>
+    );
+
+  const getBarRatio = (status: string): number =>
+    (100.0 * stats.planningsByStatus[status]) / stats.plannings;
 
   return (
     <Container>
@@ -92,10 +159,10 @@ const Stats = () => {
           <ReportPin status="report_verification" />
         </PinWrapper>
         <Count>
-          <span>1671</span>Meldungen
+          <span>{stats.reports}</span>Meldungen
         </Count>
         <CountStrong>
-          <span>8726</span> gemeldete Bügel
+          <span>{stats.reportsBikeStands}</span> gemeldete Bügel
         </CountStrong>
       </StatsRow>
       <StatsRow>
@@ -103,20 +170,36 @@ const Stats = () => {
           <ReportPin status="planning" />
         </PinWrapper>
         <Count>
-          <span>743</span> Planungen
+          <span>{stats.plannings}</span> Planungen
         </Count>
         <CountStrong>
-          <span>4650</span> geplante Bügel
+          <span>{stats.planningsBikeStands}</span> geplante Bügel
         </CountStrong>
-        <StyledBrace />
       </StatsRow>
+      <StyledBrace />
       <ProgressBar>
-        <ProgressSection pct={20}>
-          <img src={ICONS.planning} alt={getReportStatusCaption('planning')} />
-        </ProgressSection>
+        {['planning', 'execution', 'done'].map(
+          (status: ENTRY_STATUS, i: number, arr: string[]) => {
+            const Icon = ICONS[status];
+            return (
+              <ProgressSection
+                pct={getBarRatio(status)}
+                status={status}
+                isLeftEdge={i === 0}
+                isRightEdge={i === arr.length - 1}
+              >
+                <Icon alt={LABELS[status]} />
+                <span>
+                  {LABELS[status]} <br />
+                  {stats.planningsByStatus[status]}
+                </span>
+              </ProgressSection>
+            );
+          }
+        )}
       </ProgressBar>
     </Container>
   );
 };
 
-export default Stats;
+export default StatsCounter;

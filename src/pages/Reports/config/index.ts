@@ -95,6 +95,11 @@ export interface ReportsConfig {
   stats: {
     enabled: boolean;
   };
+  colors: {
+    planning: string;
+    execution: string;
+    done: string;
+  };
 }
 
 const instanceConfig = globalConfig.region === 'aachen' ? aachen : berlin;
