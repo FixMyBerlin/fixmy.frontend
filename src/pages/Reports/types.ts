@@ -16,7 +16,13 @@ export type ENTRY_STATUS =
 
 export type Stats = {
   reports: number;
-  standsReports: number;
+  reportsBikeStands: number;
   plannings: number;
-  planningsReports: number;
+  planningsBikeStands: number;
+  planningsByStatus: {
+    planning: number;
+    tender: number;
+    execution: number;
+    done: number;
+  };
 };
