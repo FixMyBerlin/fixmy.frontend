@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { LinkStyle, RouterLink } from '~/components2/Link';
+import { StatsCompact } from '~/pages/Reports/components/Stats';
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
 
@@ -58,6 +59,12 @@ const Header = styled.h1`
   }
 `;
 
+const Header2 = styled.h1`
+  font-size: 1em;
+  margin: 0.5em 0 0;
+  display: block;
+`;
+
 const StyledLink = styled(RouterLink)`
   background: none;
   border-color: ${config.colors.lightgrey};
@@ -71,7 +78,9 @@ const LinkButton = styled(LinkStyle('button'))`
   border-color: ${config.colors.lightgrey};
   color: ${config.colors.white};
   padding-left: 0;
+`;
 
+const MobileLinkButton = styled(LinkButton)`
   ${media.l`
     display: none;
   `}
@@ -84,20 +93,32 @@ const StyledLegendGrid = styled(LegendGrid)`
   `}
 `;
 
-const LegendCollapsed = ({ onToggle }) => (
-  <WrapperSmall role="complementary">
-    <Header>Alle Meldungen und Planungen</Header>
-    <p>
-      Auf dieser Karte sehen Sie alle von Bürger:innen eingereichten Meldungen
-      und Planungen der Verwaltung für neue Radbügelstandorte.{' '}
-      <StyledLink to={config.routes.reports.landing}>
-        Mehr Informationen
-      </StyledLink>
-    </p>
+const LegendCollapsed = ({ onToggle }) => {
+  if (config.reports.stats.enabled) {
+    return (
+      <WrapperSmall role="complementary">
+        <Header2>Was passiert mit den Meldungen?</Header2>
+        <StatsCompact />
+        <LinkButton onClick={onToggle}>weitere Details</LinkButton>
+      </WrapperSmall>
+    );
+  }
 
-    <LinkButton onClick={onToggle}>Legende anzeigen</LinkButton>
-    <StyledLegendGrid />
-  </WrapperSmall>
-);
+  return (
+    <WrapperSmall role="complementary">
+      <Header>Alle Meldungen und Planungen</Header>
+      <p>
+        Auf dieser Karte sehen Sie alle von Bürger:innen eingereichten Meldungen
+        und Planungen der Verwaltung für neue Radbügelstandorte.{' '}
+        <StyledLink to={config.routes.reports.landing}>
+          Mehr Informationen
+        </StyledLink>
+      </p>
+
+      <MobileLinkButton onClick={onToggle}>Legende anzeigen</MobileLinkButton>
+      <StyledLegendGrid />
+    </WrapperSmall>
+  );
+};
 
 export default LegendCollapsed;

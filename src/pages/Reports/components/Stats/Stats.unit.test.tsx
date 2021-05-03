@@ -2,10 +2,13 @@ import React from 'react';
 
 import { render } from '~/utils/test-utils';
 
-import { StatsCounter } from '.';
+import { StatsCompact, StatsExpanded } from '.';
 
 describe('StatsCounter component', () => {
-  it('renders', () => {
-    render(<StatsCounter />);
+  it('renders compact variation', () => {
+    render(<StatsCompact />);
+  });
+  it('renders expanded variation', () => {
+    render(<StatsExpanded />);
   });
 });

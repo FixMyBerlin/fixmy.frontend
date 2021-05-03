@@ -73,6 +73,7 @@ const MapControls = ({
         <MapLegend
           isPopupVisible={isPopupVisible}
           isDetailOpen={isDetailOpen}
+          compact
         />
       )}
     </>

@@ -26,33 +26,36 @@ const LABELS = {
   done: 'wurde umgesetzt',
 };
 
-const Container = styled.div`
+const Container = styled.div<{ compact: boolean }>`
+  align-items: center;
   background-color: ${config.colors.darkbg};
   color: ${config.colors.lightgrey};
   display: flex;
   flex-direction: column;
+  padding: ${({ compact }) => (compact ? '5px 0' : '1em 0')};
   width: 100%;
-  padding: 1em 0;
-  align-items: center;
+  z-index: 1000;
+  font-size: ${({ compact }) => (compact ? '12px' : 'initial')};
 `;
 
-const StatsRow = styled.div`
+const StatsRow = styled.div<{ compact: boolean }>`
   align-items: center;
   display: flex;
   flex-direction: row;
+  height: ${({ compact }) => (compact ? 'initial' : '100px')};
   justify-content: space-between;
-  padding: 0.5em 2em;
-  width: 100%;
-  height: 100px;
-  max-width: 400px;
+  max-width: 350px;
+  padding: ${({ compact }) => (compact ? '5px' : '0.5em 0')};
+  width: 85%;
 `;
 
 const Count = styled.div`
-  height: 100%;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100%;
   justify-content: flex-end;
+
   span {
     display: block;
     font-size: 1.8em;
@@ -62,11 +65,12 @@ const Count = styled.div`
 `;
 
 const CountStrong = styled.div`
-  height: 100%;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100%;
   justify-content: flex-end;
+
   span {
     display: block;
     font-family: ${config.titleFont};
@@ -85,14 +89,13 @@ const StyledBrace = styled(Brace)`
   margin: 1em auto;
 `;
 
-const ProgressBar = styled.div`
+const ProgressBar = styled.div<{ compact: boolean }>`
   display: flex;
   flex-direction: row;
-  margin: 0.5em 0;
   height: 40px;
-  margin-bottom: 3em;
-  width: 100%;
+  margin: ${({ compact }) => (compact ? '0.5em 0' : '0.5em 0 3em')};
   padding: 0 1.5em;
+  width: 100%;
 `;
 
 const ProgressSection = styled.div<{
@@ -101,29 +104,30 @@ const ProgressSection = styled.div<{
   isLeftEdge: boolean;
   isRightEdge: boolean;
 }>`
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  height: 100%;
-  position: relative;
-  width: ${(props) => props.pct || 0}%;
   background-color: ${(props) => config.reports.colors[props.status]};
   border-radius: ${(props) => (props.isLeftEdge ? '20px' : '0')}
     ${(props) => (props.isRightEdge ? '20px' : '0')}
     ${(props) => (props.isRightEdge ? '20px' : '0')}
     ${(props) => (props.isLeftEdge ? '20px' : '0')};
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+  position: relative;
+  width: ${(props) => props.pct || 0}%;
 
   span {
-    position: absolute;
-    top: 120%;
-    font-size: 12px;
-    text-align: center;
     color: ${config.colors.inactivegrey};
+    font-size: 12px;
+    min-width: 5em;
+    position: absolute;
+    text-align: center;
+    top: 120%;
   }
 `;
 
-const StatsCounter = () => {
+const StatsCounter = ({ className = null, compact = false }) => {
   const [stats, setStats] = useState<Stats>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
 
@@ -153,8 +157,8 @@ const StatsCounter = () => {
     (100.0 * stats.planningsByStatus[status]) / stats.plannings;
 
   return (
-    <Container>
-      <StatsRow>
+    <Container className={className} compact={compact}>
+      <StatsRow compact={compact}>
         <PinWrapper>
           <ReportPin status="report_verification" />
         </PinWrapper>
@@ -165,7 +169,7 @@ const StatsCounter = () => {
           <span>{stats.reportsBikeStands}</span> gemeldete Bügel
         </CountStrong>
       </StatsRow>
-      <StatsRow>
+      <StatsRow compact={compact}>
         <PinWrapper>
           <ReportPin status="planning" />
         </PinWrapper>
@@ -177,7 +181,7 @@ const StatsCounter = () => {
         </CountStrong>
       </StatsRow>
       <StyledBrace />
-      <ProgressBar>
+      <ProgressBar compact={compact}>
         {['planning', 'execution', 'done'].map(
           (status: ENTRY_STATUS, i: number, arr: string[]) => {
             const Icon = ICONS[status];
