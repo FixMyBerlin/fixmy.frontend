@@ -48,11 +48,11 @@ Du entwickelst in einem kleinen dynamischen Team die nächsten Komponenten und A
 - Flexible Arbeitszeiten, Home-Office in Teilen möglich, konzentriertes, störungsfreies Arbeiten.
 
 **Konkretes:**
-Arbeitsort: CityLAB Berlin (Tempelhof-Schöneberg), Homeoffice in Teilen möglich
-Beginn: 1.7.2021 (späterer Beginn möglich)
-Arbeitszeit: 32 Stunden (80%)
-Vergütung: Verhandlungsbasis, branchenüblich (angelehnt TVÖD E12)
-Bewerbungen bitte unter: https://forms.gle/VSDQ8L1oyNYDCxM96
+- Arbeitsort: CityLAB Berlin (Tempelhof-Schöneberg), Homeoffice in Teilen möglich
+- Beginn: 1.7.2021 (späterer Beginn möglich)
+- Arbeitszeit: 32 Stunden (80%)
+- Vergütung: Verhandlungsbasis, branchenüblich
+- Bewerbungen bitte unter: https://forms.gle/VSDQ8L1oyNYDCxM96
 oder per mail an jobs@fixmycity.de 
 
 # <a name="junior-dev"></a>Junior Entwickler:in (Full Stack)
