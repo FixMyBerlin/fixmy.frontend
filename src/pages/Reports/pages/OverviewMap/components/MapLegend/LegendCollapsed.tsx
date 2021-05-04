@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { LinkStyle, RouterLink } from '~/components2/Link';
-import { StatsCompact } from '~/pages/Reports/components/Stats';
+import { StatsCompact, StatsCounter } from '~/pages/Reports/components/Stats';
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
 
@@ -98,7 +98,7 @@ const LegendCollapsed = ({ onToggle }) => {
     return (
       <WrapperSmall role="complementary">
         <Header2>Was passiert mit den Meldungen?</Header2>
-        <StatsCompact />
+        <StatsCounter component={StatsCompact} />
         <LinkButton onClick={onToggle}>weitere Details</LinkButton>
       </WrapperSmall>
     );

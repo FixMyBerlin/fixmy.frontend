@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { StatsExpanded } from '~/pages/Reports/components/Stats';
+import { StatsCounter, StatsExpanded } from '~/pages/Reports/components/Stats';
 import config from '~/pages/Reports/config';
 
 import { BaseWrapper } from './LegendCollapsed';
@@ -34,7 +34,7 @@ const Header = styled.h2`
   margin-bottom: 0;
 `;
 
-const StyledStatsExpanded = styled(StatsExpanded)`
+const StyledStatsCounter = styled(StatsCounter)`
   margin-bottom: 2em;
 `;
 
@@ -55,7 +55,7 @@ const LegendExpanded = ({ onToggle, compact = false }) => (
     {config.reports.stats.enabled && (
       <>
         <Header>Was passiert mit den Meldungen?</Header>
-        <StyledStatsExpanded compact={compact} />
+        <StyledStatsCounter component={StatsExpanded} compact={compact} />
       </>
     )}
     <StyledLegendGrid compact={compact} />

@@ -127,31 +127,14 @@ const ProgressSection = styled.div<{
   }
 `;
 
-const StatsCounter = ({ className = null, compact = false }) => {
-  const [stats, setStats] = useState<Stats>(null);
-  const [isLoading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const asyncEffect = async () => {
-      try {
-        setStats(await loadStats());
-      } catch (err) {
-        logger(err);
-        setStats(null);
-      }
-      setLoading(false);
-    };
-    asyncEffect();
-  }, []);
-
+const StatsCounter = ({
+  className = null,
+  compact = false,
+  stats,
+  isLoading,
+}) => {
   if (isLoading == null) return <p>Wird geladen...</p>;
-  if (stats == null)
-    return (
-      <p>
-        Leider kann der Zähler bisheriger Meldungen und Planungen derzeit nicht
-        angezeigt werden.
-      </p>
-    );
+  if (stats == null) return null;
 
   const getBarRatio = (status: string): number =>
     (100.0 * stats.planningsByStatus[status]) / stats.plannings;
@@ -191,6 +174,7 @@ const StatsCounter = ({ className = null, compact = false }) => {
                 status={status}
                 isLeftEdge={i === 0}
                 isRightEdge={i === arr.length - 1}
+                key={`progress-section-${status}`}
               >
                 <Icon alt={LABELS[status]} />
                 <span>

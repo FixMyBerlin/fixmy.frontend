@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import FahrRadLogo from '~/images/aachen/fahr-rad-logo@2x.png';
 import LogoAachen from '~/images/aachen/logo-stadt-aachen@2x.png';
 import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
-import { StatsExpanded } from '~/pages/Reports/components/Stats';
+import { StatsCounter, StatsExpanded } from '~/pages/Reports/components/Stats';
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
 
@@ -90,7 +90,7 @@ const AachenLanding = () => (
     </AboveFold>
     <BelowFold>
       <Intro />
-      <StatsExpanded />
+      <StatsCounter component={StatsExpanded} />
       <HR className="light" />
       <Quote />
       <CTA />
