@@ -52,7 +52,7 @@ Du entwickelst in einem kleinen dynamischen Team die nächsten Komponenten und A
 - Beginn: 1.7.2021 (späterer Beginn möglich)
 - Arbeitszeit: 32 Stunden (80%)
 - Vergütung: Verhandlungsbasis, branchenüblich
-- Bewerbungen bitte unter: https://forms.gle/VSDQ8L1oyNYDCxM96
+- Bewerbungen bitte unter: https://fixmycity.typeform.com/to/erWlFnHX
 oder per mail an jobs@fixmycity.de 
 
 # <a name="junior-dev"></a>Junior Entwickler:in (Full Stack)
