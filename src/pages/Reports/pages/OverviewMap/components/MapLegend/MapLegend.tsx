@@ -22,7 +22,7 @@ const Wrapper = styled.div<Props>`
 `;
 
 const MapLegend = (props: Props) => {
-  const [isExpanded, setExpanded] = useState(true);
+  const [isExpanded, setExpanded] = useState(false);
 
   return (
     <Wrapper {...props}>
