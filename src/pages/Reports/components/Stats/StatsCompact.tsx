@@ -3,12 +3,10 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { loadStats } from '~/pages/Reports/apiservice';
-import ReportPin from '~/pages/Reports/components/ReportPin';
-import config from '~/pages/Reports/config';
-import { ENTRY_STATUS, Stats } from '~/pages/Reports/types';
+import { Stats } from '~/pages/Reports/types';
 
-import PinSmall from './assets/pin-small-neutral.svg';
 import PinLarge from './assets/pin-large-neutral.svg';
+import PinSmall from './assets/pin-small-neutral.svg';
 
 const logger = debug('fmc:Gastro:Stats');
 
@@ -49,9 +47,31 @@ const StyledPinLarge = styled(PinLarge)`
   margin-right: 0.5em;
 `;
 
+const COUNTUP_ACCELERATION = 0.1;
+
 const StatsCounter = () => {
   const [stats, setStats] = useState<Stats>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
+  const [countup, setCountup] = useState<number>(10);
+
+  // Animated counter increases continuously until the actual numbers are loaded
+  // and the animated counter has reached a value that is larger than the
+  // actual number.
+  useEffect(() => {
+    let timeout: number;
+    const increaseCountup = () => {
+      setCountup(
+        (oldCountup) => oldCountup + COUNTUP_ACCELERATION * oldCountup
+      );
+      if (isLoading || stats.plannings < countup || stats.reports < countup) {
+        timeout = setTimeout(increaseCountup, 40);
+      }
+    };
+
+    increaseCountup();
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   useEffect(() => {
     const asyncEffect = async () => {
@@ -71,13 +91,22 @@ const StatsCounter = () => {
       <Category>
         <Count>
           <StyledPinSmall />
-          <span>{isLoading ? '...' : stats.reports}</span>
+          <span>
+            {isLoading || stats.reports > countup
+              ? Math.floor(countup)
+              : stats.reports}
+          </span>
         </Count>
         Meldungen wurden von Bürger*innen abgegeben
       </Category>
       <Category>
         <Count>
-          <StyledPinLarge /> <span>{isLoading ? '...' : stats.plannings}</span>
+          <StyledPinLarge />{' '}
+          <span>
+            {isLoading || stats.plannings > countup
+              ? Math.floor(countup)
+              : stats.plannings}
+          </span>
         </Count>
         Planungen bisher, weitere folgen
       </Category>
