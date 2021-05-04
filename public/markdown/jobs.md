@@ -13,7 +13,7 @@ class="img-lg"> </img></div>
 
 # <a name="datenredaktion"></a>Leitung Datenredaktion / Verkehrsplanung
 
-**Zur Verstärkung unseres Teams suchen wir eine Verkehrsplaner:in mit Berufserfahrung.**
+**Zur Verstärkung unseres Teams suchen wir ab Juli 2021 eine Verkehrsplaner:in mit Berufserfahrung.**
 
 **Was Dich erwartet:**
 
@@ -52,7 +52,7 @@ Arbeitsort: CityLAB Berlin (Tempelhof-Schöneberg), Homeoffice in Teilen möglic
 Beginn: 1.7.2021 (späterer Beginn möglich)
 Arbeitszeit: 32 Stunden (80%)
 Vergütung: Verhandlungsbasis, branchenüblich (angelehnt TVÖD E12)
-Bewerbungen bitte unter:  
+Bewerbungen bitte unter: https://forms.gle/VSDQ8L1oyNYDCxM96
 oder per mail an jobs@fixmycity.de 
 
 # <a name="junior-dev"></a>Junior Entwickler:in (Full Stack)
