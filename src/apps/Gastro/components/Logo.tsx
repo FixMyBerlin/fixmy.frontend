@@ -63,7 +63,11 @@ const Logo = ({ district }) => (
           alt={`Wappen ${district.title}`}
         />
       </LogoWrapper>
-      <span>{district.content.footerLine}</span>
+      <span>
+        <a className="external" href={district.content.footerLink}>
+          {district.content.footerLine}
+        </a>
+      </span>
     </section>
     <Link to="/" className="fmb">
       <LogoWrapper>

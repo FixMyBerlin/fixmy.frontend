@@ -17,6 +17,8 @@ const xhain: DistrictConfig = {
   path: 'friedrichshain-kreuzberg',
   name: 'xhain',
   content: {
+    footerLink:
+      'https://www.berlin.de/ba-friedrichshain-kreuzberg/politik-und-verwaltung/aemter/strassen-und-gruenflaechenamt/',
     footerLine:
       'Ein Angebot des Bezirksamts Friedrichshain-Kreuzberg von Berlin',
   },
