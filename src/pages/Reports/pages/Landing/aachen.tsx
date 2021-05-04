@@ -90,7 +90,7 @@ const AachenLanding = () => (
     </AboveFold>
     <BelowFold>
       <Intro />
-      <StatsCounter component={StatsExpanded} />
+      <StatsCounter animate component={StatsExpanded} />
       <HR className="light" />
       <Quote />
       <CTA />

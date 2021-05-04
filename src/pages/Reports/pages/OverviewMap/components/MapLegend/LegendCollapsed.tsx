@@ -98,7 +98,7 @@ const LegendCollapsed = ({ onToggle }) => {
     return (
       <WrapperSmall role="complementary">
         <Header2>Was passiert mit den Meldungen?</Header2>
-        <StatsCounter component={StatsCompact} />
+        <StatsCounter animate component={StatsCompact} />
         <LinkButton onClick={onToggle}>weitere Details</LinkButton>
       </WrapperSmall>
     );

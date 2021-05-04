@@ -1,18 +1,14 @@
-import debug from 'debug';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import { loadStats } from '~/pages/Reports/apiservice';
 import ReportPin from '~/pages/Reports/components/ReportPin';
 import config from '~/pages/Reports/config';
-import { ENTRY_STATUS, Stats } from '~/pages/Reports/types';
+import { ENTRY_STATUS } from '~/pages/Reports/types';
 
 import Brace from './assets/brace.svg';
 import DoneIcon from './assets/icon-done.svg';
 import ExecutionIcon from './assets/icon-execution.svg';
 import PlanningIcon from './assets/icon-planning.svg';
-
-const logger = debug('fmc:Gastro:Stats');
 
 const ICONS = {
   planning: PlanningIcon,
@@ -131,11 +127,8 @@ const StatsCounter = ({
   className = null,
   compact = false,
   stats,
-  isLoading,
+  getDisplayValue,
 }) => {
-  if (isLoading == null) return <p>Wird geladen...</p>;
-  if (stats == null) return null;
-
   const getBarRatio = (status: string): number =>
     (100.0 * stats.planningsByStatus[status]) / stats.plannings;
 
@@ -146,10 +139,10 @@ const StatsCounter = ({
           <ReportPin status="report_verification" />
         </PinWrapper>
         <Count>
-          <span>{stats.reports}</span>Meldungen
+          <span>{getDisplayValue('reports')}</span>Meldungen
         </Count>
         <CountStrong>
-          <span>{stats.reportsBikeStands}</span> gemeldete Bügel
+          <span>{getDisplayValue('reportsBikeStands')}</span> gemeldete Bügel
         </CountStrong>
       </StatsRow>
       <StatsRow compact={compact}>
@@ -157,33 +150,44 @@ const StatsCounter = ({
           <ReportPin status="planning" />
         </PinWrapper>
         <Count>
-          <span>{stats.plannings}</span> Planungen
+          <span>{getDisplayValue('plannings')}</span> Planungen
         </Count>
         <CountStrong>
-          <span>{stats.planningsBikeStands}</span> geplante Bügel
+          <span>{getDisplayValue('planningsBikeStands')}</span> geplante Bügel
         </CountStrong>
       </StatsRow>
       <StyledBrace />
       <ProgressBar compact={compact}>
-        {['planning', 'execution', 'done'].map(
-          (status: ENTRY_STATUS, i: number, arr: string[]) => {
-            const Icon = ICONS[status];
-            return (
-              <ProgressSection
-                pct={getBarRatio(status)}
-                status={status}
-                isLeftEdge={i === 0}
-                isRightEdge={i === arr.length - 1}
-                key={`progress-section-${status}`}
-              >
-                <Icon alt={LABELS[status]} />
-                <span>
-                  {LABELS[status]} <br />
-                  {stats.planningsByStatus[status]}
-                </span>
-              </ProgressSection>
-            );
-          }
+        {!stats?.planningsByStatus ? (
+          <ProgressSection
+            pct={Math.min(100.0, getDisplayValue('reports') / 3.0)}
+            status="execution"
+            isLeftEdge
+            isRightEdge
+          >
+            Lade...
+          </ProgressSection>
+        ) : (
+          ['planning', 'execution', 'done'].map(
+            (status: ENTRY_STATUS, i: number, arr: string[]) => {
+              const Icon = ICONS[status];
+              return (
+                <ProgressSection
+                  pct={getBarRatio(status)}
+                  status={status}
+                  isLeftEdge={i === 0}
+                  isRightEdge={i === arr.length - 1}
+                  key={`progress-section-${status}`}
+                >
+                  <Icon alt={LABELS[status]} />
+                  <span>
+                    {LABELS[status]} <br />
+                    {stats.planningsByStatus[status]}
+                  </span>
+                </ProgressSection>
+              );
+            }
+          )
         )}
       </ProgressBar>
     </Container>

@@ -41,28 +41,19 @@ const StyledPinLarge = styled(PinLarge)`
   margin-right: 0.5em;
 `;
 
-const StatsCompact = ({ isLoading, countup, stats }) => {
+const StatsCompact = ({ isLoading, getDisplayValue, stats }) => {
   return (
     <Container>
       <Category>
         <Count>
           <StyledPinSmall />
-          <span>
-            {isLoading || stats.reports > countup
-              ? Math.floor(countup)
-              : stats.reports}
-          </span>
+          <span>{getDisplayValue('reports')}</span>
         </Count>
         Meldungen wurden von Bürger*innen abgegeben
       </Category>
       <Category>
         <Count>
-          <StyledPinLarge />{' '}
-          <span>
-            {isLoading || stats.plannings > countup
-              ? Math.floor(countup)
-              : stats.plannings}
-          </span>
+          <StyledPinLarge /> <span>{getDisplayValue('plannings')}</span>
         </Count>
         Planungen bisher, weitere folgen
       </Category>
