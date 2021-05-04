@@ -9,7 +9,6 @@ import LegendExpanded from './LegendExpanded';
 interface Props {
   isPopupVisible: boolean;
   isDetailOpen: boolean;
-  compact?: boolean;
 }
 
 const Wrapper = styled.div<Props>`
@@ -27,10 +26,7 @@ const MapLegend = (props: Props) => {
   return (
     <Wrapper {...props}>
       {isExpanded ? (
-        <LegendExpanded
-          onToggle={() => setExpanded(false)}
-          compact={props.compact}
-        />
+        <LegendExpanded onToggle={() => setExpanded(false)} compact />
       ) : (
         <LegendCollapsed onToggle={() => setExpanded(true)} />
       )}

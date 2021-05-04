@@ -55,7 +55,11 @@ const LegendExpanded = ({ onToggle, compact = false }) => (
     {config.reports.stats.enabled && (
       <>
         <Header>Was passiert mit den Meldungen?</Header>
-        <StyledStatsCounter component={StatsExpanded} compact={compact} />
+        <StyledStatsCounter
+          animate
+          component={StatsExpanded}
+          compact={compact}
+        />
       </>
     )}
     <StyledLegendGrid compact={compact} />

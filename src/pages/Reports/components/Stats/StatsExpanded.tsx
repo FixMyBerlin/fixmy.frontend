@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ReportPin from '~/pages/Reports/components/ReportPin';
 import config from '~/pages/Reports/config';
 import { ENTRY_STATUS } from '~/pages/Reports/types';
 
-import Brace from './assets/brace.svg';
+import Brace from './assets/brace-horizontal.svg';
 import DoneIcon from './assets/icon-done.svg';
 import ExecutionIcon from './assets/icon-execution.svg';
 import PlanningIcon from './assets/icon-planning.svg';
@@ -19,7 +18,7 @@ const ICONS = {
 const LABELS = {
   planning: 'in Planung',
   execution: 'im Bau',
-  done: 'wurde umgesetzt',
+  done: 'wurden umgesetzt',
 };
 
 const Container = styled.div<{ compact: boolean }>`
@@ -37,46 +36,21 @@ const Container = styled.div<{ compact: boolean }>`
 const StatsRow = styled.div<{ compact: boolean }>`
   align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: ${({ compact }) => (compact ? 'initial' : '100px')};
-  justify-content: space-between;
-  max-width: 350px;
+  justify-content: center;
   padding: ${({ compact }) => (compact ? '5px' : '0.5em 0')};
-  width: 85%;
 `;
 
 const Count = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: flex-end;
-
-  span {
-    display: block;
-    font-size: 1.8em;
-    font-weight: light;
-    line-height: 1.5;
-  }
+  display: block;
+  font-family: ${config.titleFont};
+  font-size: 3em;
+  line-height: 1.5;
 `;
 
-const CountStrong = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: flex-end;
-
-  span {
-    display: block;
-    font-family: ${config.titleFont};
-    font-size: 2.5em;
-    line-height: 1.5;
-  }
-`;
-
-const PinWrapper = styled.div`
-  width: 40px;
+const CountCaption = styled.div`
+  text-align: center;
 `;
 
 const StyledBrace = styled(Brace)`
@@ -135,26 +109,11 @@ const StatsCounter = ({
   return (
     <Container className={className} compact={compact}>
       <StatsRow compact={compact}>
-        <PinWrapper>
-          <ReportPin status="report_verification" />
-        </PinWrapper>
-        <Count>
-          <span>{getDisplayValue('reports')}</span>Meldungen
-        </Count>
-        <CountStrong>
-          <span>{getDisplayValue('reportsBikeStands')}</span> gemeldete Bügel
-        </CountStrong>
-      </StatsRow>
-      <StatsRow compact={compact}>
-        <PinWrapper>
-          <ReportPin status="planning" />
-        </PinWrapper>
-        <Count>
-          <span>{getDisplayValue('plannings')}</span> Planungen
-        </Count>
-        <CountStrong>
-          <span>{getDisplayValue('planningsBikeStands')}</span> geplante Bügel
-        </CountStrong>
+        <Count>{getDisplayValue('reportsBikeStands')}</Count>{' '}
+        <CountCaption>
+          von Bürger*innen gemeldete <br />
+          Fahrradbügelwünsche
+        </CountCaption>
       </StatsRow>
       <StyledBrace />
       <ProgressBar compact={compact}>

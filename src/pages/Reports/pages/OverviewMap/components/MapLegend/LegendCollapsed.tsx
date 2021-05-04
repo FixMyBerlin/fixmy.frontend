@@ -77,10 +77,8 @@ const LinkButton = styled(LinkStyle('button'))`
   background: none;
   border-color: ${config.colors.lightgrey};
   color: ${config.colors.white};
-  padding-left: 0;
-`;
-
-const MobileLinkButton = styled(LinkButton)`
+  padding: 0;
+  cursor: pointer;
   ${media.l`
     display: none;
   `}
@@ -97,9 +95,10 @@ const LegendCollapsed = ({ onToggle }) => {
   if (config.reports.stats.enabled) {
     return (
       <WrapperSmall role="complementary">
-        <Header2>Was passiert mit den Meldungen?</Header2>
+        <Header2>Was passiert mit den gemeldeten Radbügelwünschen?</Header2>
         <StatsCounter animate component={StatsCompact} />
         <LinkButton onClick={onToggle}>weitere Details</LinkButton>
+        <StyledLegendGrid />
       </WrapperSmall>
     );
   }
@@ -115,7 +114,7 @@ const LegendCollapsed = ({ onToggle }) => {
         </StyledLink>
       </p>
 
-      <MobileLinkButton onClick={onToggle}>Legende anzeigen</MobileLinkButton>
+      <LinkButton onClick={onToggle}>Legende anzeigen</LinkButton>
       <StyledLegendGrid />
     </WrapperSmall>
   );

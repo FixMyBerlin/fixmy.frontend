@@ -47,13 +47,14 @@ const StatsCompact = ({ isLoading, getDisplayValue, stats }) => {
       <Category>
         <Count>
           <StyledPinSmall />
-          <span>{getDisplayValue('reports')}</span>
+          <span>{getDisplayValue('reportsBikeStands')}</span>
         </Count>
-        Meldungen wurden von Bürger*innen abgegeben
+        Fahrradbügelwünsche wurden von Bürger*innen gemeldet
       </Category>
       <Category>
         <Count>
-          <StyledPinLarge /> <span>{getDisplayValue('plannings')}</span>
+          <StyledPinLarge />{' '}
+          <span>{getDisplayValue('planningsBikeStands')}</span>
         </Count>
         Planungen bisher, weitere folgen
       </Category>
