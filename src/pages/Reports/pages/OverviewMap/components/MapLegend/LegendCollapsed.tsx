@@ -2,7 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { LinkStyle, RouterLink } from '~/components2/Link';
-import { StatsCompact, StatsCounter } from '~/pages/Reports/components/Stats';
+import {
+  StatsCompact,
+  StatsCounter,
+  StatsExpanded,
+} from '~/pages/Reports/components/Stats';
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
 
@@ -91,12 +95,45 @@ const StyledLegendGrid = styled(LegendGrid)`
   `}
 `;
 
+const ResponsiveSwitch = styled.div`
+  & > div:nth-child(1) {
+    ${media.l`
+      display: none;
+    `}
+  }
+
+  & > div:nth-child(2) {
+    display: none;
+    ${media.l`
+      display: flex;
+    `}
+    margin-bottom: 2em;
+  }
+`;
+
+/**
+ * Statscounter that switches between compact and expanded variation based
+ * on responsive screen size
+ */
+const StyledStatsCounter = () => (
+  <StatsCounter
+    animate
+    component={(props) => (
+      <ResponsiveSwitch>
+        <StatsCompact {...props} />
+        <StatsExpanded {...props} compact />
+      </ResponsiveSwitch>
+    )}
+  />
+);
+
 const LegendCollapsed = ({ onToggle }) => {
   if (config.reports.stats.enabled) {
     return (
       <WrapperSmall role="complementary">
         <Header2>Was passiert mit den gemeldeten Radbügelwünschen?</Header2>
-        <StatsCounter animate component={StatsCompact} />
+
+        <StyledStatsCounter />
         <LinkButton onClick={onToggle}>weitere Details</LinkButton>
         <StyledLegendGrid />
       </WrapperSmall>

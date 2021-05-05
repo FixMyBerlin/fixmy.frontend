@@ -54,7 +54,7 @@ const LegendExpanded = ({ onToggle, compact = false }) => (
     />
     {config.reports.stats.enabled && (
       <>
-        <Header>Was passiert mit den Meldungen?</Header>
+        <Header>Was passiert mit den gemeldeten Radbügelwünschen?</Header>
         <StyledStatsCounter
           animate
           component={StatsExpanded}

@@ -56,7 +56,7 @@ const StatsCompact = ({ isLoading, getDisplayValue, stats }) => {
           <StyledPinLarge />{' '}
           <span>{getDisplayValue('planningsBikeStands')}</span>
         </Count>
-        Planungen bisher, weitere folgen
+        Planungen und umgesetzte Radbügel bisher
       </Category>
     </Container>
   );
