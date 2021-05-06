@@ -26,7 +26,7 @@ const MapLegend = (props: Props) => {
   return (
     <Wrapper {...props}>
       {isExpanded ? (
-        <LegendExpanded onToggle={() => setExpanded(false)} />
+        <LegendExpanded onToggle={() => setExpanded(false)} compact />
       ) : (
         <LegendCollapsed onToggle={() => setExpanded(true)} />
       )}
