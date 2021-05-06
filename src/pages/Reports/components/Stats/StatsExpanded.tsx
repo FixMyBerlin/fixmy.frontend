@@ -70,12 +70,15 @@ const ProgressBar = styled.div<{ compact: boolean }>`
 
 const ProgressSection = styled.div<{
   pct: number;
-  status: ENTRY_STATUS;
+  status: ENTRY_STATUS | 'loading';
   isLeftEdge: boolean;
   isRightEdge: boolean;
 }>`
   align-items: center;
-  background-color: ${(props) => config.reports.colors[props.status]};
+  background-color: ${(props) =>
+    props.status === 'loading'
+      ? config.colors.darkgrey
+      : config.reports.colors[props.status]};
   border-radius: ${(props) => (props.isLeftEdge ? '20px' : '0')}
     ${(props) => (props.isRightEdge ? '20px' : '0')}
     ${(props) => (props.isRightEdge ? '20px' : '0')}
@@ -118,13 +121,8 @@ const StatsCounter = ({
       <StyledBrace />
       <ProgressBar compact={compact}>
         {!stats?.planningsByStatus ? (
-          <ProgressSection
-            pct={Math.min(100.0, getDisplayValue('reports') / 3.0)}
-            status="execution"
-            isLeftEdge
-            isRightEdge
-          >
-            Lade...
+          <ProgressSection pct={100} status="loading" isLeftEdge isRightEdge>
+            Planungen werden gezählt...
           </ProgressSection>
         ) : (
           ['planning', 'execution', 'done'].map(
