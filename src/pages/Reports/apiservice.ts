@@ -10,6 +10,7 @@ import config from '~/pages/Reports/config';
 import logger from '~/utils/logger';
 
 import validateNewReport from './state/tests/schemaValidation/validateNewReport';
+import { Stats } from './types';
 
 export const reportsEndpointUrl = `${config.apiUrl}/reports`;
 
@@ -228,4 +229,14 @@ export async function addUserToReport(
   }
 
   return reportPatch;
+}
+
+export async function loadStats(): Promise<Stats> {
+  const url = `${config.apiUrl}/reports/stats`;
+  try {
+    return await ky.get(url).json();
+  } catch (err) {
+    logger(err);
+    throw new Error('Problem loading stats');
+  }
 }

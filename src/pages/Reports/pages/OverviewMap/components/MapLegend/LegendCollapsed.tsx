@@ -2,6 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { LinkStyle, RouterLink } from '~/components2/Link';
+import {
+  StatsCompact,
+  StatsCounter,
+  StatsExpanded,
+} from '~/pages/Reports/components/Stats';
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
 
@@ -58,6 +63,12 @@ const Header = styled.h1`
   }
 `;
 
+const Header2 = styled.h1`
+  font-size: 1em;
+  margin: 0.5em 0 0;
+  display: block;
+`;
+
 const StyledLink = styled(RouterLink)`
   background: none;
   border-color: ${config.colors.lightgrey};
@@ -70,8 +81,8 @@ const LinkButton = styled(LinkStyle('button'))`
   background: none;
   border-color: ${config.colors.lightgrey};
   color: ${config.colors.white};
-  padding-left: 0;
-
+  padding: 0;
+  cursor: pointer;
   ${media.l`
     display: none;
   `}
@@ -84,20 +95,66 @@ const StyledLegendGrid = styled(LegendGrid)`
   `}
 `;
 
-const LegendCollapsed = ({ onToggle }) => (
-  <WrapperSmall role="complementary">
-    <Header>Alle Meldungen und Planungen</Header>
-    <p>
-      Auf dieser Karte sehen Sie alle von Bürger:innen eingereichten Meldungen
-      und Planungen der Verwaltung für neue Radbügelstandorte.{' '}
-      <StyledLink to={config.routes.reports.landing}>
-        Mehr Informationen
-      </StyledLink>
-    </p>
+const ResponsiveSwitch = styled.div`
+  & > div:nth-child(1) {
+    ${media.l`
+      display: none;
+    `}
+  }
 
-    <LinkButton onClick={onToggle}>Legende anzeigen</LinkButton>
-    <StyledLegendGrid />
-  </WrapperSmall>
+  & > div:nth-child(2) {
+    display: none;
+    ${media.l`
+      display: flex;
+    `}
+    margin-bottom: 2em;
+  }
+`;
+
+/**
+ * Statscounter that switches between compact and expanded variation based
+ * on responsive screen size
+ */
+const StyledStatsCounter = () => (
+  <StatsCounter
+    animate
+    component={(props) => (
+      <ResponsiveSwitch>
+        <StatsCompact {...props} />
+        <StatsExpanded {...props} compact />
+      </ResponsiveSwitch>
+    )}
+  />
 );
+
+const LegendCollapsed = ({ onToggle }) => {
+  if (config.reports.stats.enabled) {
+    return (
+      <WrapperSmall role="complementary">
+        <Header2>Was passiert mit den gemeldeten Radbügelwünschen?</Header2>
+
+        <StyledStatsCounter />
+        <LinkButton onClick={onToggle}>weitere Details</LinkButton>
+        <StyledLegendGrid />
+      </WrapperSmall>
+    );
+  }
+
+  return (
+    <WrapperSmall role="complementary">
+      <Header>Alle Meldungen und Planungen</Header>
+      <p>
+        Auf dieser Karte sehen Sie alle von Bürger:innen eingereichten Meldungen
+        und Planungen der Verwaltung für neue Radbügelstandorte.{' '}
+        <StyledLink to={config.routes.reports.landing}>
+          Mehr Informationen
+        </StyledLink>
+      </p>
+
+      <LinkButton onClick={onToggle}>Legende anzeigen</LinkButton>
+      <StyledLegendGrid />
+    </WrapperSmall>
+  );
+};
 
 export default LegendCollapsed;
