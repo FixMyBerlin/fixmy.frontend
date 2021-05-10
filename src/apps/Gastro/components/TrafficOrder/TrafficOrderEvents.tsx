@@ -52,13 +52,6 @@ const Nebenbestimmungen = styled.section`
   }
 `;
 
-// eslint-disable-next-line camelcase
-const getSetupTimerangeEnd = ({ date }) => {
-  const dateParsed = new Date(date);
-  dateParsed.setDate(dateParsed.getDate() + 4);
-  return dateParsed.toLocaleDateString('de-DE');
-};
-
 type Props = {
   application: EventPermit;
 };
