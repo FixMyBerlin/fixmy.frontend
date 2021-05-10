@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import config from '~/config';
 
 function getBorderRadius(props) {
@@ -54,7 +55,7 @@ export default (props) => (
     className={props.className}
     side={props.side}
     isActive={props.sideIndex === props.activeSideIndex}
-    onClick={props.onClick(props.sideIndex)}
+    onClick={props.onClick}
   >
     {props.title}
   </SwitchButton>

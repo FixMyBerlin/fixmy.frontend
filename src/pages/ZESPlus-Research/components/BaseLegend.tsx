@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { media } from '~/styles/utils';
 
 import config from '~/config';
+import { media } from '~/styles/utils';
 
 const LegendOuter = styled.div`
   background-color: ${config.colors.lightbg};

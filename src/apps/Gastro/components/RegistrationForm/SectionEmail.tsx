@@ -1,6 +1,6 @@
-import React from 'react';
 import { Field } from 'formik';
 import { TextField } from 'formik-material-ui';
+import React from 'react';
 import styled from 'styled-components';
 
 const InvisiLabel = styled.label`
@@ -12,8 +12,8 @@ const SectionEmail = () => (
     <h4>Ihre E-Mail-Adresse</h4>
     <p className="subline">
       Ihre Daten werden für die Durchführung des Verfahrens gespeichert, der
-      Name Ihres Betriebes kann im Zuge der Aktion{' '}
-      <em>Terrassen für Friedrichshain-Kreuzberg</em> veröffentlicht werden.
+      Name Ihres Betriebes kann im Zuge der Aktion <em>Xhain-Terrassen</em>{' '}
+      veröffentlicht werden.
     </p>
     <InvisiLabel htmlFor="email">Ihre E-Mail-Adresse</InvisiLabel>
     <Field

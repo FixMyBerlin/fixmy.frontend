@@ -1,11 +1,12 @@
 import React from 'react';
 import { useIntl, defineMessage } from 'react-intl';
+
 import { useTypedSelector } from '~/store';
 
-import MenuWrapper from './MenuWrapper';
-import MenuHeader from './MenuHeader';
-import Navigation from './Navigation';
 import MenuFooter from './MenuFooter';
+import MenuHeader from './MenuHeader';
+import MenuWrapper from './MenuWrapper';
+import Navigation from './Navigation';
 
 const label = defineMessage({
   id: 'components.menu.ariaRole',

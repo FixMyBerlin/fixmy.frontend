@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="319" height="9" viewBox="0 0 319 9">
+    <g fill="none" fill-rule="evenodd">
+        <g stroke="#999">
+            <g>
+                <g>
+                    <path stroke-linejoin="bevel" d="M145 0c10.016 0 10.534 7 14.975 7 4.441 0 5.024-7 14.975-7" transform="translate(-21 -444) translate(0 350) translate(21 95) matrix(1 0 0 -1 0 7)"/>
+                    <path stroke-linecap="square" d="M174.5 7L318.5 7M.5 7L144.5 7" transform="translate(-21 -444) translate(0 350) translate(21 95)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

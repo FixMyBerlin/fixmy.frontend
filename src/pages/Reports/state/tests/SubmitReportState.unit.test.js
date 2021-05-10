@@ -1,7 +1,12 @@
+import { rest } from 'msw';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import { rest } from 'msw';
+import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
+import { formatActionType as ft } from '~/utils/test-utils';
+
+import { mswServer } from '../../../../../jest/msw/mswServer';
+import { types as errorStateTypes } from '../ErrorState';
 import reducer, {
   actions,
   types,
@@ -11,10 +16,6 @@ import reducer, {
 import reportsInitialState from '../initialState';
 import { worldWidePolygon, nullIslandPolygonFeature } from './mocks/geometries';
 import mockedReportItem from './schemaValidation/newReport-jsonSchema-testObject.json';
-import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
-import { types as errorStateTypes } from '../ErrorState';
-import { formatActionType as ft } from '~/utils/test-utils';
-import { mswServer } from '../../../../../jest/msw/mswServer';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);

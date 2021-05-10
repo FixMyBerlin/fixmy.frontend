@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { Paragraph, Image, Heading, SectionProps } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import { Link } from '~/components2/Link';
+import { NewsletterWidget } from '~/components2/NewsletterWidget';
 import SimraSrc from '~/images/eichwalde/simra.jpg';
 import { media } from '~/styles/utils';
-import { NewsletterWidget } from '~/components2/NewsletterWidget';
 
 const DownloadWrapper = styled(Paragraph)`
   display: flex;

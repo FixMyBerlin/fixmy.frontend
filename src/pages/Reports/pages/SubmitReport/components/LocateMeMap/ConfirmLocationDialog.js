@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-import config from '~/pages/Reports/config';
-import logger from '~/utils/logger';
 import Button from '~/components/Button';
+import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
+import logger from '~/utils/logger';
 
 const Wrapper = styled.div`
   z-index: 9999999999;

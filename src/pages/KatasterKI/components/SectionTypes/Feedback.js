@@ -3,17 +3,18 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
+import Flex from '~/components/Flex';
+import Button from '~/pages/KatasterKI/components/Button';
+import CloseSurveyButton from '~/pages/KatasterKI/components/CloseSurveyButton';
+import Paragraph from '~/pages/KatasterKI/components/Paragraph';
+import ProgressVis from '~/pages/KatasterKI/components/ProgressVis';
+import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import ShareButton from '~/pages/KatasterKI/components/ShareButton';
 import config from '~/pages/KatasterKI/config';
+import { getFeedbackThreshold } from '~/pages/KatasterKI/utils';
 import { media } from '~/styles/utils';
 import { numberFormat } from '~/utils/utils';
-import Flex from '~/components/Flex';
-import { getFeedbackThreshold } from '~/pages/KatasterKI/utils';
-import Paragraph from '~/pages/KatasterKI/components/Paragraph';
-import Button from '~/pages/KatasterKI/components/Button';
-import ShareButton from '~/pages/KatasterKI/components/ShareButton';
-import CloseSurveyButton from '~/pages/KatasterKI/components/CloseSurveyButton';
-import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
-import ProgressVis from '~/pages/KatasterKI/components/ProgressVis';
+
 import ShareButtonDesktop from '../ShareButtonDesktop';
 
 const getTitle = (count, max) => {

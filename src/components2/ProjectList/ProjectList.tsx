@@ -1,9 +1,10 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
+import { DotLoader } from '~/components2/Loaders';
+
 import ProjectListItem from './ProjectListItem';
 import ReportListItem from './ReportListItem';
-import { DotLoader } from '~/components2/Loaders';
 
 interface Props extends RouteComponentProps {
   showLoadingIndicator?: boolean;

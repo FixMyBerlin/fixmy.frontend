@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import config from '~/pages/Reports/config';
 
 export default styled.h4`

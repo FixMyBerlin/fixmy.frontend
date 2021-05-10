@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-import config from '~/pages/Reports/config';
 import history from '~/history';
-import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import TickIconAachen from '~/images/aachen/tick-icon.svg';
+import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import TickIconFMB from '~/images/reports/tick-icon.svg';
+import config from '~/pages/Reports/config';
+
 import AbortButton from './AbortButton';
 
 const TickIcon = config.region === 'aachen' ? TickIconAachen : TickIconFMB;

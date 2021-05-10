@@ -1,14 +1,15 @@
-import React, { useState, useEffect, ReactElement } from 'react';
-import styled from 'styled-components';
-import { InView } from 'react-intersection-observer';
 import debug from 'debug';
+import React, { useState, useEffect, ReactElement } from 'react';
+import { InView } from 'react-intersection-observer';
+import styled from 'styled-components';
 
-import TOC from './TOC';
-import { MenuButton } from '~/components2/MenuButton';
-import { media } from '~/styles/utils';
-import config from '~/config';
 import { Header } from '~/components2/Header';
 import { LocaleSwitcher } from '~/components2/LocaleSwitcher';
+import { MenuButton } from '~/components2/MenuButton';
+import config from '~/config';
+import { media } from '~/styles/utils';
+
+import TOC from './TOC';
 
 const log = debug('fmc:Article:ArticleWrapper');
 

@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import LinkExternal from './icon-external-link@2x.png';
-import LinkInternal from './icon-internal-link@2x.png';
+import styled from 'styled-components';
 
 import config from '~/config';
+
+import LinkExternal from './icon-external-link@2x.png';
+import LinkInternal from './icon-internal-link@2x.png';
 
 /**
  * Base style for creating elements that look like links
