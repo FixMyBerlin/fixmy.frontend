@@ -128,7 +128,7 @@ const Permit = ({ application, id }: Props) => {
         folgende Erlaubnis erteilt:
       </p>
 
-      <h1 style={{ color: 'red' }}>Sondergenehmigung.</h1>
+      <h1 style={{ color: 'red' }}>Sondererlaubnis.</h1>
 
       <table>
         <tbody>
