@@ -208,6 +208,7 @@ const EventForm: React.FC<Props> = ({ district, onSuccess }) => {
       {({ isValid, values, handleChange, isSubmitting, status }) => (
         <MuiPickersUtilsProvider utils={DateFnsUtils} locale={dateFnsLocaleDE}>
           <StyledForm>
+            <h2 style={{ display: 'none' }}>Antragsformular</h2>
             <h3>Bitte machen Sie Angaben zum Anstragsteller</h3>
 
             <SectionBase />
