@@ -34,6 +34,14 @@ const PickerIntro = styled.div`
   }
 `;
 
+const ParkingColorSample = styled.span`
+  width: 1em;
+  height: 1em;
+  background-color: #294794;
+  display: inline-block;
+  margin-left: 5px;
+`;
+
 const SectionArea = ({
   regulation,
   handleChange,
@@ -65,9 +73,9 @@ const SectionArea = ({
             <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
             <ul>
               <li>
-                Es können nur Flächen innerhalb der auf der Karte blau
-                ausgewiesen Zonen im Bereich des ruhenden Verkehrs beantragt
-                werden.
+                Es können nur Flächen innerhalb der auf der Karte{' '}
+                <ParkingColorSample /> dunkelblau ausgewiesen Zonen im Bereich
+                des ruhenden Verkehrs beantragt werden.
               </li>
               <li>
                 Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,
