@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, AppBarProps, Button } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { MenuButton } from '~/components2/MenuButton';
-import SeparatorImage from '~/images/header-separator.svg';
 import config from '~/config';
+import SeparatorImage from '~/images/header-separator.svg';
 import { useTypedSelector } from '~/store';
-
-import ChatTranslate from './chat-translate.svg';
-import LocaleMenu from './LocaleMenu';
-import { LocaleCode } from '~/types';
 import { media } from '~/styles/utils';
+import { LocaleCode } from '~/types';
+
+import LocaleMenu from './LocaleMenu';
+import ChatTranslate from './chat-translate.svg';
 
 const StyledAppBar = styled(({ isOpen, hideAppBar, ...props }) => (
   <AppBar {...props} />

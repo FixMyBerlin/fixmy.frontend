@@ -1,5 +1,6 @@
-import { cyElem } from '~/../cypress/support/utils';
 import config from '~/config';
+
+import { cyElem } from '~/../cypress/support/utils';
 
 describe('katasterKi scene rating', () => {
   describe('a new session with gathered profile information at hand', () => {

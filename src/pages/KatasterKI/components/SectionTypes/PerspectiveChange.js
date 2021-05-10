@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { media } from '~/styles/utils';
 import Button from '~/pages/KatasterKI/components/Button';
 import CloseSurveyButton from '~/pages/KatasterKI/components/CloseSurveyButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import { media } from '~/styles/utils';
 
 const SingleChoiceWrapper = styled.div`
   flex-grow: 1;

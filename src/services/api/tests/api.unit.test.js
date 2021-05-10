@@ -1,10 +1,12 @@
 import { rest } from 'msw';
-import request from '../request';
+
+import { compileAbsoluteRoute } from '~/services/api/tests/apiTestUtils';
 import store from '~/store';
 
 import { ApiError, TimeoutError } from '../errors';
+import request from '../request';
 import { get, patch, post } from '../shorthands';
-import { compileAbsoluteRoute } from '~/services/api/tests/apiTestUtils';
+
 import { mswServer } from '~/../jest/msw/mswServer';
 
 const SAMPLE_ROUTE = 'fakeEndpoint';

@@ -42,11 +42,6 @@ Du willst uns unterstützen? [Melde Dich gerne](/jobs)
   Controlling, Open Data, Community
 </div>
 <div class="teamportrait">
-  <img src="/src/images/team/Felix_350x400.jpg" alt="Felix Sistenich" title="Felix Sistenich" style="width: 160px" /><br />
-  <strong>Felix Sistenich</strong><br />
-  Datenredaktion, Literaturrecherche, Umfragedesign
-</div>
-<div class="teamportrait">
   <img src="/src/images/team/VincentAhrend.png" alt="Vincent Ahrend" title="Vincent Ahrend" style="width: 160px" /><br />
   <strong>Vincent Ahrend</strong><br />
   Technische Leitung

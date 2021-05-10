@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
 import config from '~/pages/KatasterKI/config';
 import { isSmallScreen, media } from '~/styles/utils';

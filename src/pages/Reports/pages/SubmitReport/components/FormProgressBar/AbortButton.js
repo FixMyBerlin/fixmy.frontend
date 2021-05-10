@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-no-bind */
 
 import React from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
-import CloseIcon from '~/images/close.svg';
 import history from '~/history';
+import CloseIcon from '~/images/close.svg';
+import config from '~/pages/Reports/config';
 import { actions } from '~/pages/Reports/state/SubmitReportState';
 
 const Button = styled(CloseIcon)`

@@ -1,18 +1,19 @@
+import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
+import { Formik, Field, ErrorMessage } from 'formik';
+import { TextField, CheckboxWithLabel, RadioGroup } from 'formik-material-ui';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, generatePath } from 'react-router-dom';
-import { Formik, Field, ErrorMessage } from 'formik';
-import { TextField, CheckboxWithLabel, RadioGroup } from 'formik-material-ui';
-import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
-import styled from 'styled-components';
 import slugify from 'slugify';
+import styled from 'styled-components';
 
 import { Button } from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import config from '~/config';
-import { SignupData } from '../../types';
-import api from '../../api';
 import logger from '~/utils/logger';
+
+import api from '../../api';
+import { SignupData } from '../../types';
 import validate from './validate';
 
 const initialValues = {

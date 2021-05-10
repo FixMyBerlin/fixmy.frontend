@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/config';
 import resetMap from '~/apps/Map/reset';
+import config from '~/config';
 
 const ResetMapButton = styled.button`
   display: flex;

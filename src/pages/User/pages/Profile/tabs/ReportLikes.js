@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import Title from '~/components/Title';
 import Text from '~/components/Text';
-import { loadLikes } from '~/pages/User/UserState';
+import Title from '~/components/Title';
 import { ProjectList } from '~/components2/ProjectList';
+import { loadLikes } from '~/pages/User/UserState';
 
 const StyledProjectList = styled(ProjectList)`
   margin-top: 1em;

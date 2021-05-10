@@ -1,0 +1,11 @@
+{
+  "borough": "Friedrichshain-Kreuzberg",
+  "id": 45520013,
+  "is_road": false,
+  "side2_killed": 0,
+  "side2_risk_level": 3,
+  "side2_severely_injured": 3,
+  "side2_slightly_injured": 10,
+  "side2_source": "Polizei Berlin: Unfälle mit Radfahrenden, Daten aus 2017-2018 und \nUnfallatlas, Statistische Ämter des Bundes und der Länder, Daten aus 3096",
+  "street_name": "Gneisenaustraße /  Yorckstraße /  Mehringdamm"
+}

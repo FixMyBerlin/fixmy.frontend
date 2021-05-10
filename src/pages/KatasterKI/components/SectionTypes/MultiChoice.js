@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/pages/KatasterKI/config';
-import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
-import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Checkbox from '~/pages/KatasterKI/components/Checkbox';
+import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import config from '~/pages/KatasterKI/config';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
+import { media } from '~/styles/utils';
 
 const CheckboxWrapper = styled.div`
   margin-bottom: 1em;

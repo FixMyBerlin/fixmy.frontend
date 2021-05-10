@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
-
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
-
+import ReportPin from '~/pages/Reports/components/ReportPin';
 import config from '~/pages/Reports/config';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
-import ReportPin from '~/pages/Reports/components/ReportPin';
 
 const HeadlineSection = styled.div`
   display: flex;

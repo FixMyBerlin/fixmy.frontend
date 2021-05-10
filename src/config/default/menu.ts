@@ -57,7 +57,7 @@ const menuConfig: Menu = {
     {
       type: 'link',
       label: 'Planungskarte',
-      link: routes.projects,
+      link: routes.map.projectsIndex,
       icon: 'map',
       border: true,
     },
@@ -74,7 +74,7 @@ const menuConfig: Menu = {
     },
     {
       type: 'link',
-      label: 'Terrassen für Vieles',
+      label: 'Xhain-Terrassen',
       icon: 'icon-gastro',
       link: '/friedrichshain-kreuzberg/terrassen',
       border: true,

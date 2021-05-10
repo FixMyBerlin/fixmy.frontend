@@ -1,7 +1,13 @@
 interface RouteConfig {
   // optional routes
-  projects?: string;
-  status?: string;
+  map?: {
+    projectsIndex: string;
+    projectsDetail: string;
+    hbiIndex: string;
+    hbiDetail: string;
+    popupIndex: string;
+    popupDetail: string;
+  };
   analysis?: string;
   reports?: {
     [page: string]: string;
@@ -27,9 +33,15 @@ interface RouteConfig {
 }
 
 const routes: RouteConfig = {
-  projects: '/planungen',
-  status: '/zustand',
   analysis: '/analyse',
+  map: {
+    hbiIndex: '/zustand',
+    hbiDetail: '/zustand/:id/:name?',
+    projectsIndex: '/planungen',
+    projectsDetail: '/planungen/:id/:name?',
+    popupIndex: '/popupbikelanes',
+    popupDetail: '/popupbikelanes/:id/:name?',
+  },
   reports: {
     temporarily_forward_from_this_to_index: '/meldungen',
     index: '/meldungen/radbuegel/friedrichshain-kreuzberg',

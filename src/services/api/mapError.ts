@@ -1,5 +1,6 @@
-import ky from 'ky-universal';
 import debug from 'debug';
+import ky from 'ky-universal';
+
 import { ApiError, NetworkError, TimeoutError } from './errors';
 import { FMCError, JSONValue, JSONObject } from './types';
 

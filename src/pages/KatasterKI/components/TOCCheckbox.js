@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import config from '~/config';
-import { media, isSmallScreen } from '~/styles/utils';
-import Checkbox from '~/pages/KatasterKI/components/Checkbox';
 import Button from '~/pages/KatasterKI/components/Button';
+import Checkbox from '~/pages/KatasterKI/components/Checkbox';
 import ExternalLink from '~/pages/KatasterKI/components/ExternalLink';
+import { media, isSmallScreen } from '~/styles/utils';
 
 const ButtonWrapper = styled.div`
   margin: 15px 0 0 0;

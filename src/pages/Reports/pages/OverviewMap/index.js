@@ -2,24 +2,25 @@
  *  Displays report items fetched from backend.
  */
 
+import debug from 'debug';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
-import debug from 'debug';
 import styled from 'styled-components';
 
 import LocatorControl from '~/apps/Map/components/LocatorControl';
-import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
-import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
+import ErrorMessage from '~/components/ErrorMessage';
 import config from '~/pages/Reports/config';
+import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
+import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
-import WebglMap from './components/WebglMap';
-import OverviewMapNavBar from './components/OverviewMapNavBar';
+
 import CTAButton from './components/CTAButton';
 import MapLegend from './components/MapLegend';
-import ErrorMessage from '~/components/ErrorMessage';
-import ReportsPopup from './components/ReportsPopup';
+import OverviewMapNavBar from './components/OverviewMapNavBar';
 import ReportDetails from './components/ReportDetails';
+import ReportsPopup from './components/ReportsPopup';
+import WebglMap from './components/WebglMap';
 
 const logger = debug('fmc:reports:OverviewMap');
 

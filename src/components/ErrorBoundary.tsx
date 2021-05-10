@@ -2,10 +2,10 @@ import React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
 
-import logger from '~/utils/logger';
 import Button from '~/components/Button';
-import Title from '~/components/Title';
 import Text from '~/components/Text';
+import Title from '~/components/Title';
+import logger from '~/utils/logger';
 
 type State = {
   hasError: boolean;

@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/config';
+import AuthorSvg from '~/images/author-icon.svg';
 import { media } from '~/styles/utils';
 
-import PublishDate from './PublishDate';
 import Author from './Author';
-import AuthorSvg from '~/images/author-icon.svg';
+import PublishDate from './PublishDate';
 
 interface ArticleMetaProps {
   publishDate?: Date;

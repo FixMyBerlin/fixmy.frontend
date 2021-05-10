@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { media } from '~/styles/utils';
+
 import config from '~/pages/Reports/config';
+import { media } from '~/styles/utils';
+
+import Steps from './Steps';
 
 import HowItWorksSection from '.';
-import Steps from './Steps';
 
 const Wrapper = styled.div`
   max-width: 568px;
