@@ -1,14 +1,16 @@
-import React from 'react';
+import { waitFor } from '@testing-library/dom';
 import { render, act, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { waitFor } from '@testing-library/dom';
-
 import { rest } from 'msw';
-import { mswServer } from '~/../jest/msw/mswServer';
+import React from 'react';
+
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import * as apiService from '~/components/AutocompleteGeocoder/apiService';
-import mockedSuggestions from '../../../../jest/msw/mockData/mockLocationSuggestions.json';
 import { parseSuggestion } from '~/components/AutocompleteGeocoder/apiService';
+
+import mockedSuggestions from '../../../../jest/msw/mockData/mockLocationSuggestions.json';
+
+import { mswServer } from '~/../jest/msw/mswServer';
 
 describe('<AutoCompleteGeocoder />', () => {
   // use setup method described as best practice in

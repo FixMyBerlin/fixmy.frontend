@@ -1,13 +1,13 @@
+import debug from 'debug';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import debug from 'debug';
 
-import config from './config';
+import { setDistrict } from '~/AppState';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
 import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
-import { setDistrict } from '~/AppState';
 
+import config from './config';
 import Routes from './routes';
 
 const log = debug('fmc:gastro');

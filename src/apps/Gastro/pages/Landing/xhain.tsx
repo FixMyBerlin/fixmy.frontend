@@ -1,22 +1,21 @@
-import React from 'react';
-
 import MapboxGL from 'mapbox-gl';
-import styled from 'styled-components';
+import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-import Link from '~/components/Link';
-import { Link as Link2 } from '~/components2/Link';
+import Logo from '~/apps/Gastro/components/Logo';
+import Notice from '~/apps/Gastro/components/Notice';
 import config from '~/apps/Gastro/config';
+import { getPath } from '~/apps/Gastro/routes';
+import { openSignup } from '~/apps/Gastro/utils';
+import Link from '~/components/Link';
+import { BaseMap } from '~/components2/BaseMap';
 import { Button } from '~/components2/Button';
 import { Insert as ImageInsert } from '~/components2/Image';
-import { BaseMap } from '~/components2/BaseMap';
+import { Link as Link2 } from '~/components2/Link';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
-import Logo from '~/apps/Gastro/components/Logo';
-import Notice from '~/apps/Gastro/components/Notice';
-import { getPath } from '~/apps/Gastro/routes';
-import { openSignup } from '~/apps/Gastro/utils';
 import { media } from '~/styles/utils';
 
 const Attribution = styled.div`

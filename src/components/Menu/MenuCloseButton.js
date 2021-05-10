@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Store from '~/store';
-import CloseIcon from '~/images/dark-close.svg';
 import { toggle } from '~/AppState';
+import CloseIcon from '~/images/dark-close.svg';
+import Store from '~/store';
 
 const MenuCloseButton = styled.button`
   position: absolute;

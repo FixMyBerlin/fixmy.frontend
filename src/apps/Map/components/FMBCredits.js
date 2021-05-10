@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import ExternalLink from '~/components/ExternalLink';
 
 const FMBCredits = styled.div`

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
 import Link from '~/components/Link';
+import config from '~/pages/Reports/config';
 
 const Anchor = styled(Link)`
   font-size: 14px;

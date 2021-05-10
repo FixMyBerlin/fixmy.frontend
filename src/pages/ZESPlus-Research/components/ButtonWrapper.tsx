@@ -1,10 +1,13 @@
 import styled from 'styled-components';
+
 import { media } from '~/styles/utils';
 
 const ButtonWrapper = styled.div`
   margin: 1em auto;
   width: 100%;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   ${media.s`
     margin: 1em auto 2em;

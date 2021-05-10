@@ -1,19 +1,20 @@
+import { Container } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '@material-ui/core';
 
-import config from '~/config';
-import { Button } from '~/components2/Button';
 import Link from '~/components/Link';
-import { Insert as ImageInsert } from '~/components2/Image';
+import { Button } from '~/components2/Button';
 import { Header } from '~/components2/Header';
-import BackgroundImageA1 from '~/images/spielstrassen/landing-bg.jpg';
-import BackgroundImageA2 from '~/images/spielstrassen/landing-bg@2x.jpg';
-import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
+import { Insert as ImageInsert } from '~/components2/Image';
+import { LogoFooter } from '~/components2/LogoFooter';
+import config from '~/config';
 import BackgroundImageB1 from '~/images/spielstrassen/landing-bg-2.jpg';
 import BackgroundImageB2 from '~/images/spielstrassen/landing-bg-2@2x.jpg';
 import BackgroundImageB3 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
-import { LogoFooter } from '~/components2/LogoFooter';
+import BackgroundImageA1 from '~/images/spielstrassen/landing-bg.jpg';
+import BackgroundImageA2 from '~/images/spielstrassen/landing-bg@2x.jpg';
+import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
+
 import Notice from '../components/Notice';
 
 const CTA = styled(Button)`

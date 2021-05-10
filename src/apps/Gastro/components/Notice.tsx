@@ -1,25 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Notice } from '~/components2/Notice';
+
 import { preSignup, openSignup, postSignup } from '~/apps/Gastro/utils';
+import { Notice } from '~/components2/Notice';
 
 const GastroNotice = ({ district }) => {
   if (district?.name === 'xhain') {
     if (preSignup(district))
       return (
         <Notice>
-          Bisher wurden 100 Anträge genehmigt, das Formular zur Antragsstellung
-          wird demnächst wieder für neue Anträge freigeschaltet.
+          Die Anmeldung ist ab{' '}
+          {district.apps.gastro.timeline.openSignup.toLocaleString()} möglich.
         </Notice>
       );
-    if (openSignup(district))
-      return (
-        <Notice>
-          Anträge können durch gastronomische Betriebe, Soziale Projekte oder
-          den Einzelhandel gestellt werden, sofern diese in einer Nebenstraße
-          liegen.
-        </Notice>
-      );
+    if (openSignup(district)) return null;
     if (postSignup(district))
       return (
         <Notice>

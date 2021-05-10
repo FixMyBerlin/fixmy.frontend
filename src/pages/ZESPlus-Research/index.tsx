@@ -7,7 +7,6 @@ import {
   Intro,
   ImageFull,
 } from '~/components2/Article';
-
 // import Image1 from '~/images/eichwalde/research-1.jpg';
 import LogoZES from '~/images/eichwalde/logo-zes.png';
 import LogoZES2 from '~/images/eichwalde/logo-zes@2x.png';
@@ -15,13 +14,13 @@ import LogoZES3 from '~/images/eichwalde/logo-zes@3x.png';
 import Image2 from '~/images/eichwalde/research-2.jpg';
 
 import Logos from './components/Logos';
-import SectionAbout from './sections/07_about';
-import SectionConceptMaps from './sections/04_concept_maps';
-import SectionContribute from './sections/06_contribute';
-import SectionData from './sections/02_data';
 import SectionIntroduction from './sections/01_introduction';
-import SectionNextSteps from './sections/05_next_steps';
+import SectionData from './sections/02_data';
 import SectionTopicalMaps from './sections/03_topical_maps';
+import SectionConceptMaps from './sections/04_concept_maps';
+import SectionNextSteps from './sections/05_next_steps';
+import SectionContribute from './sections/06_contribute';
+import SectionAbout from './sections/07_about';
 
 const Wrapper = styled(ArticleWrapper)`
   background: none;

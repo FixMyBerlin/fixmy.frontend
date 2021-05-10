@@ -1,8 +1,13 @@
+import debug from 'debug';
+import { rest } from 'msw';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { rest } from 'msw';
-import debug from 'debug';
 
+import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
+import { formatActionType as ft } from '~/utils/test-utils';
+
+import { mswServer } from '../../../../../jest/msw/mswServer';
+import { types as errorStateTypes } from '../ErrorState';
 import reducer, {
   actions,
   types,
@@ -10,11 +15,7 @@ import reducer, {
   FETCH_STATE_SUCCESS,
 } from '../OverviewMapState';
 import reportsInitialState from '../initialState';
-import { types as errorStateTypes } from '../ErrorState';
-import { reportsEndpointUrl } from '~/pages/Reports/apiservice';
 import reportSample from './mocks/reportsSample';
-import { formatActionType as ft } from '~/utils/test-utils';
-import { mswServer } from '../../../../../jest/msw/mswServer';
 
 const mswLogger = debug('fmc:reports:msw');
 

@@ -1,9 +1,11 @@
 import React from 'react';
-import slugify from 'slugify';
 import { generatePath } from 'react-router-dom';
+import slugify from 'slugify';
+
 import { Link } from '~/components2/Link';
 import { Notice } from '~/components2/Notice';
 import config from '~/config';
+
 import { Spielstrasse } from '../types';
 
 const interSperse = (elems, sep = ', ', lastSep = ' und ') => {

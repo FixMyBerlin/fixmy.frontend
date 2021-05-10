@@ -1,4 +1,3 @@
-import React, { ReactNode } from 'react';
 import {
   Button,
   Card,
@@ -7,7 +6,9 @@ import {
   CardActions,
 } from '@material-ui/core';
 import ReplayIcon from '@material-ui/icons/Replay';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
+
 import config from '~/config';
 
 const StyledCardHeader = styled(CardHeader)`

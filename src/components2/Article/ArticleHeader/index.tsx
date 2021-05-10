@@ -1,12 +1,13 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-import Kicker from './Kicker';
-import ArticleMeta from './ArticleMeta';
-import { LocaleSwitcher } from '~/components2/LocaleSwitcher';
 import Heading from '~/components2/Article/Typography/Heading';
-import { LocaleCode } from '~/types';
+import { LocaleSwitcher } from '~/components2/LocaleSwitcher';
 import { media } from '~/styles/utils';
+import { LocaleCode } from '~/types';
+
+import ArticleMeta from './ArticleMeta';
+import Kicker from './Kicker';
 
 interface ArticleHeaderProps {
   kicker?: string;

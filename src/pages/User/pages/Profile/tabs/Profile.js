@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import config from '~/config';
-import Title from '~/components/Title';
-import Text from '~/components/Text';
 import Button from '~/components/Button';
-import UserForm from '~/pages/User/components/UserForm';
+import Text from '~/components/Text';
+import Title from '~/components/Title';
+import config from '~/config';
 import { update, logout, profile } from '~/pages/User/UserState';
+import UserForm from '~/pages/User/components/UserForm';
 
 const formConfigUserName = [
   {

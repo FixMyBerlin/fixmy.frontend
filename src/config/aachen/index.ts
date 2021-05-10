@@ -1,11 +1,11 @@
+import { map as defaultMapConfig } from '~/config/default/apps';
+import defaultBase from '~/config/default/base';
+import defaultColors from '~/config/default/colors';
+import { RegionConfig } from '~/types';
+
 import menu from './menu';
 import routes from './routes';
 import staticpages from './staticpages';
-
-import defaultColors from '~/config/default/colors';
-import defaultBase from '~/config/default/base';
-import { map as defaultMapConfig } from '~/config/default/apps';
-import { RegionConfig } from '~/types';
 
 const apiEndpoints = {
   local: 'http://localhost:8000/api',
@@ -17,7 +17,10 @@ const aachenConfig: RegionConfig = {
   apps: {
     map: {
       ...defaultMapConfig,
-      geocoderBounds: '5.974,50.648,6.217,50.858',
+      geocoder: {
+        bounds: '5.974,50.648,6.217,50.858',
+        ...defaultMapConfig.geocoder,
+      },
     },
   },
   menu,

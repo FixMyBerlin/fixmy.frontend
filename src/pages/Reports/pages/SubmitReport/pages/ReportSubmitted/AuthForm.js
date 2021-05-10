@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
 import { Formik } from 'formik';
 import ky from 'ky';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
-import config from '~/pages/Reports/config';
-import Store from '~/store';
+import ExternalLink from '~/components/ExternalLink';
 import Form from '~/components/Form';
 import FormField from '~/components/FormField';
 import GhostButton from '~/components/GhostButton';
-import ExternalLink from '~/components/ExternalLink';
-import { login } from '~/pages/User/UserState';
-import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
-import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
-import UserForm from '~/pages/User/components/UserForm';
 import { addUserToReport } from '~/pages/Reports/apiservice';
+import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
+import config from '~/pages/Reports/config';
+import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
+import { login } from '~/pages/User/UserState';
 import { apiUser } from '~/pages/User/apiservice';
+import UserForm from '~/pages/User/components/UserForm';
+import Store from '~/store';
 
 import {
   ButtonWrapper,
