@@ -55,6 +55,7 @@ const SignupButton = styled(Button)`
 const Schedule = styled.dd`
   margin-left: 0 !important;
   font-size: 12px;
+  line-height: 1.2;
   color: ${config.colors.darkgrey};
 `;
 
