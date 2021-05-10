@@ -291,9 +291,9 @@ const XhainLanding = ({ district }) => (
       <h2>Zum Hintergrund</h2>
       <p>
         Im Zuge der Lockerungen der Covid-19 Eindämmungsverordnung können
-        Restaurants seit dem XX.XX. 2021 wieder öffnen und Tischbedienung
-        durchführen, müssen dabei aber einen Mindestabstand von 1,50 m zwischen
-        den Gästen gewährleisten.
+        Restaurants seit dem <span style={{ color: 'red' }}>XX.XX. 2021</span>{' '}
+        wieder öffnen und Tischbedienung durchführen, müssen dabei aber einen
+        Mindestabstand von 1,50 m zwischen den Gästen gewährleisten.
       </p>
       <p>
         Das Bezirksamt Friedrichshain-Kreuzberg bietet in dieser Situation
