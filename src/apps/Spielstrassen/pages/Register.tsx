@@ -4,14 +4,14 @@ import { connect, ConnectedProps } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
 
-import KiezNotFound from '~/apps/Spielstrassen/components/NotFound';
 import KiezMap from '~/apps/Spielstrassen/components/KiezMap';
+import KiezNotFound from '~/apps/Spielstrassen/components/NotFound';
 import SignupForm from '~/apps/Spielstrassen/components/SignupForm';
 import SupporterIcon from '~/apps/Spielstrassen/components/SupporterIcon';
-import { getStreetInfo } from '~/apps/Spielstrassen/utils';
 import { RequestState } from '~/apps/Spielstrassen/state';
-import { BigLoader } from '~/components2/Loaders';
+import { getStreetInfo } from '~/apps/Spielstrassen/utils';
 import { Header } from '~/components2/Header';
+import { BigLoader } from '~/components2/Loaders';
 import { Notice } from '~/components2/Notice';
 import config from '~/config';
 import { RootState } from '~/store';

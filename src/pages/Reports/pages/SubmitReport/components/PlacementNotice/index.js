@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
 import config from '~/pages/Reports/config';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
-import StreetBgImage from '~/images/reports/bikestand-placement-street.jpg';
 
 const Image = styled.img`
   width: 100%;

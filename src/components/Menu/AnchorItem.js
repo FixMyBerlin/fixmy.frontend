@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import config from '~/config';
 
 const NavItem = styled('a').attrs((props) => ({ href: props.href }))`

@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
+import { PLANNING_PHASES } from '~/apps/Map/constants';
 import config from '~/config';
-import ConceptIcon from '~/images/planning-icons/konzept.svg';
-import PlanningIcon from '~/images/planning-icons/planung.svg';
 import ConstructionIcon from '~/images/planning-icons/bau.svg';
 import DoneIcon from '~/images/planning-icons/fertig.svg';
-
-import { PLANNING_PHASES } from '~/apps/Map/constants';
+import ConceptIcon from '~/images/planning-icons/konzept.svg';
+import PlanningIcon from '~/images/planning-icons/planung.svg';
 
 const iconPaths = {
   'im Bau': ConstructionIcon,

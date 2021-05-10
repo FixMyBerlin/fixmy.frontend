@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import config from '~/pages/KatasterKI/config';
 
 export default styled.input`

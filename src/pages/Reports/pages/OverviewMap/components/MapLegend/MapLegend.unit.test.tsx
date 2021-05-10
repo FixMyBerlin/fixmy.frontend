@@ -1,8 +1,10 @@
-import React from 'react';
-import { createMemoryHistory } from 'history';
-import { Router } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
+import { createMemoryHistory } from 'history';
+import React from 'react';
+import { Router } from 'react-router-dom';
+
 import utils from '~/pages/Reports/utils';
+
 import MapLegend from '.';
 
 // Statuses that are not expected in the legend

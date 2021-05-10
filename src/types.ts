@@ -1,7 +1,8 @@
 import MapboxGL from 'mapbox-gl';
 
-import { SpielstrassenConfig } from '~/apps/Spielstrassen/types';
 import { GastroConfig } from '~/apps/Gastro/types';
+import { SpielstrassenConfig } from '~/apps/Spielstrassen/types';
+
 import { MapConfig } from './apps/Map/types';
 import { ColorScheme } from './config/default/colors';
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import MenuButton from '~/components/MenuButton';
 import config from '~/pages/Reports/config';
 
