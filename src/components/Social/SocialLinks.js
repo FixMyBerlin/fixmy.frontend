@@ -1,8 +1,9 @@
 import React from 'react';
-import SocialWrapper from './SocialWrapper';
-import SocialTitle from './SocialTitle';
-import SocialButtonWrapper from './SocialButtonWrapper';
+
 import SocialButton from './SocialButton';
+import SocialButtonWrapper from './SocialButtonWrapper';
+import SocialTitle from './SocialTitle';
+import SocialWrapper from './SocialWrapper';
 
 export default (props) => (
   <SocialWrapper>

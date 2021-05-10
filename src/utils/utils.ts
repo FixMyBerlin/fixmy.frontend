@@ -15,13 +15,18 @@ export function numberFormat(num: number, decimals = 0, locale: string = 'de') {
  * @param num value to format
  * @param locale optional locale code
  */
-export function percentageFormat(num: number, locale: string = 'de') {
+export function percentageFormat(
+  num: number,
+  locale: string = 'de',
+  options: Intl.NumberFormatOptions = {}
+) {
   if (num == null) return '';
 
   return Intl.NumberFormat(locale, {
     style: 'percent',
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
+    ...options,
   }).format(num);
 }
 

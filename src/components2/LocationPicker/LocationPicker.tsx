@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import {
   TextField,
   Snackbar,
@@ -8,14 +7,15 @@ import {
   ListItemIcon,
   Paper,
 } from '@material-ui/core';
-import LocationIcon from '@material-ui/icons/LocationOn';
 import ErrorIcon from '@material-ui/icons/Error';
+import LocationIcon from '@material-ui/icons/LocationOn';
 import MapboxGL from 'mapbox-gl';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { fetchSuggestions } from '~/components/AutocompleteGeocoder/apiService';
-import config from '~/config';
 import { BaseMap } from '~/components2/BaseMap';
+import config from '~/config';
 import logger from '~/utils/logger';
 
 /**
@@ -50,6 +50,7 @@ const AddressHint = styled.p`
 
 type Props = {
   onSelect: (result: { address: string; location: MapboxGL.LngLat }) => any;
+  onLoad?: (map: MapboxGL.Map) => any;
   mapboxStyle: string;
   bounds: MapboxGL.LngLatBoundsLike;
   initialValue?: string;
@@ -57,6 +58,7 @@ type Props = {
 
 const LocationPicker: React.FC<Props> = ({
   onSelect,
+  onLoad,
   mapboxStyle,
   bounds,
   initialValue = '',
@@ -84,6 +86,14 @@ const LocationPicker: React.FC<Props> = ({
 
   // Current map marker
   const [marker, setMarker] = useState(null);
+
+  /**
+   * React to map initialization
+   */
+  useEffect(() => {
+    if (map == null) return;
+    if (onLoad) onLoad(map);
+  }, [map]);
 
   /**
    * React when a user selects a suggestion from the suggestion list

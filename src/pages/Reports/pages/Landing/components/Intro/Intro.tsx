@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
 import BikeIcon from '~/images/reports/noun-bicycle.svg';
-import { media } from '~/styles/utils';
-import Steps from './Steps';
 import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
+import config from '~/pages/Reports/config';
+import { media } from '~/styles/utils';
+
+import Steps from './Steps';
 
 const StyledSection = styled.section`
   display: flex;

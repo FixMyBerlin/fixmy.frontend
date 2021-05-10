@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import MapboxGL from 'mapbox-gl';
-import styled from 'styled-components';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
+import MapboxGL from 'mapbox-gl';
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
 import { BaseMap } from '~/components2/BaseMap';
@@ -23,6 +23,7 @@ const GoodJob = styled.p`
 
 type Props = {
   onSelect: (geometry: GeoJSON.Geometry | null) => any;
+  onLoad?: (map: MapboxGL.Map) => any;
   center?: MapboxGL.LngLatLike;
   mapboxStyle: string;
   bounds?: MapboxGL.LngLatBoundsLike;
@@ -32,6 +33,7 @@ type Props = {
 const AreaPicker: React.FC<Props> = ({
   center,
   onSelect,
+  onLoad,
   mapboxStyle,
   bounds,
   initialGeometry,
@@ -70,6 +72,8 @@ const AreaPicker: React.FC<Props> = ({
     if (initialValue) {
       draw.add(initialValue);
     }
+
+    if (onLoad) onLoad(map);
   }, [map]);
 
   // Only adjust map center as long as no geometry has been drawn

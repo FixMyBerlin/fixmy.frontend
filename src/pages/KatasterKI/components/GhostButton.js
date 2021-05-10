@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import config from '~/pages/KatasterKI/config';
 import { isTouch } from '~/utils/utils';
+
 import Button from './Button';
 
 export default styled(Button)`

@@ -1,19 +1,19 @@
+import { oneLine } from 'common-tags';
+import { number, func, shape, string } from 'prop-types';
 import React, { PureComponent } from 'react';
+import TextareaAutosize from 'react-autosize-textarea';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { oneLine } from 'common-tags';
-import TextareaAutosize from 'react-autosize-textarea';
 
-import { number, func, shape, string } from 'prop-types';
+import ErrorMessage from '~/components/ErrorMessage';
 import config from '~/pages/Reports/config';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
-import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
-import UploadPhotoInput from '~/pages/Reports/pages/SubmitReport/components/UploadPhotoInput';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
-import ErrorMessage from '~/components/ErrorMessage';
-import { matchMediaSize, breakpoints } from '~/styles/utils';
+import UploadPhotoInput from '~/pages/Reports/pages/SubmitReport/components/UploadPhotoInput';
+import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
+import { matchMediaSize, breakpoints } from '~/styles/utils';
 
 const StyledHeading = styled(Heading)`
   margin: 0;

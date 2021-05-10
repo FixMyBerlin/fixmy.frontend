@@ -1,27 +1,28 @@
 import React, { PureComponent } from 'react';
+import { connect, ConnectedProps } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
-import { connect, ConnectedProps } from 'react-redux';
 
-import config from '~/config';
-import { sortByKey } from '~/utils/utils';
-import { districts } from '~/labels';
+import PieChart from '~/apps/Analysis/components/PieChart';
 import {
   loadProjectData,
   setDistrictFilter,
   setPhaseFilter,
   setSort,
 } from '~/apps/Analysis/state';
-import PieChart from '~/apps/Analysis/components/PieChart';
-import Title from '~/components/Title';
-import MenuButton from '~/components/MenuButton';
-import Flex from '~/components/Flex';
-import Select from '~/components/Select';
-import { ProjectList } from '~/components2/ProjectList';
-import Card from './components/Card';
-import logger from '~/utils/logger';
 import { PLANNING_PHASES } from '~/apps/Map/constants';
+import Flex from '~/components/Flex';
+import MenuButton from '~/components/MenuButton';
+import Select from '~/components/Select';
+import Title from '~/components/Title';
+import { ProjectList } from '~/components2/ProjectList';
+import config from '~/config';
+import { districts } from '~/labels';
 import { RootState } from '~/store';
+import logger from '~/utils/logger';
+import { sortByKey } from '~/utils/utils';
+
+import Card from './components/Card';
 
 const AnalysisWrapper = styled.div`
   background: ${config.colors.lightgrey};

@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { Container } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { connect } from 'react-redux';
 import { generatePath, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { State } from '~/apps/Spielstrassen/state';
 import { getStreetInfo } from '~/apps/Spielstrassen/utils';
-import { Header } from '~/components2/Header';
-import KiezNotFound from '../components/NotFound';
-import KiezMap from '../components/KiezMap';
-// import ShareButton from '../components/ShareButton';
-// import ShareButtonDesktop from '../components/ShareButtonDesktop';
 import { Button } from '~/components2/Button';
+import { Header } from '~/components2/Header';
 import { LogoFooter } from '~/components2/LogoFooter';
 import config from '~/config';
 import { media } from '~/styles/utils';
-import { State } from '~/apps/Spielstrassen/state';
+
+import KiezMap from '../components/KiezMap';
+import KiezNotFound from '../components/NotFound';
 
 const LinkButton = styled(Button)`
   width: 100%;
@@ -71,8 +70,6 @@ const Thanks = ({
         <CopyToClipboard text={sharingUrl}>
           <LinkButton flat>Link kopieren</LinkButton>
         </CopyToClipboard>
-        {/* <ShareButton text={shareText} url={sharingUrl} /> */}
-        {/* <ShareButtonDesktop /> */}
         <LogoFooter>Bereitgestellt durch FixMyBerlin</LogoFooter>
       </Container>
     </>

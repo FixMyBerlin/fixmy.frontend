@@ -1,8 +1,9 @@
-import styledNormalize from 'styled-normalize';
 import { createGlobalStyle } from 'styled-components';
+import styledNormalize from 'styled-normalize';
+
+import config from '~/config';
 
 import fontFaces from './fontfaces';
-import config from '~/config';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 

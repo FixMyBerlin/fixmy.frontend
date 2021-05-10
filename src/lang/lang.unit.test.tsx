@@ -5,8 +5,9 @@ import {
   MissingTranslationError,
 } from 'react-intl';
 
-import errorHandler from './errorHandler';
 import config from '~/config';
+
+import errorHandler from './errorHandler';
 
 jest.mock('~/config');
 jest.mock('debug', () => {

@@ -1,7 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Plus } from 'react-feather';
+import styled from 'styled-components';
+
 import config from '~/pages/Reports/config';
 
 const ButtonWrapper = styled.div`

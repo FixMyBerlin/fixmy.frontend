@@ -1,7 +1,9 @@
-import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import ReportPin from '.';
+import React from 'react';
+
 import utils from '../../utils';
+
+import ReportPin from '.';
 
 describe('<ReportPin />', () => {
   utils.REPORT_STATUSES.forEach((status) => {

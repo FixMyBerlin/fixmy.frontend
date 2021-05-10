@@ -1,11 +1,3 @@
-import React from 'react';
-import { Formik, Field, ErrorMessage } from 'formik';
-import {
-  TextField,
-  CheckboxWithLabel,
-  Select,
-  RadioGroup,
-} from 'formik-material-ui';
 import {
   FormHelperText,
   FormControl,
@@ -15,17 +7,26 @@ import {
   Radio,
   LinearProgress,
 } from '@material-ui/core';
+import debug from 'debug';
+import { Formik, Field, ErrorMessage } from 'formik';
+import {
+  TextField,
+  CheckboxWithLabel,
+  Select,
+  RadioGroup,
+} from 'formik-material-ui';
+import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import debug from 'debug';
 
+import api from '~/apps/Gastro/api';
+import { GastroSignup } from '~/apps/Gastro/types';
 import { Button } from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import { LocationPicker } from '~/components2/LocationPicker';
-import { GastroSignup } from '~/apps/Gastro/types';
-import api from '~/apps/Gastro/api';
-import validate from './validate';
+
 import parseLength from '../../parseLength';
+import validate from './validate';
 
 const logger = debug('fmc:Gastro:Signup');
 
@@ -185,7 +186,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
             render={(msg) => <FormError error>{msg}</FormError>}
           />
           <LocationPicker
-            mapboxStyle={district.apps.gastro.signup.mapboxStyle}
+            mapboxStyle={district.apps.gastro.maps.gastroSignup.mapboxStyle}
             bounds={district.bounds}
             onSelect={({ address, location }) => {
               handleChange({ target: { name: 'address', value: address } });

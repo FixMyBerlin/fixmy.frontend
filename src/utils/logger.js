@@ -1,4 +1,5 @@
 import debug from 'debug';
+
 import config from '~/config';
 
 // Setup namespaces to log when in development environment

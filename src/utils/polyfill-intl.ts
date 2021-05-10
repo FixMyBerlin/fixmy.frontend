@@ -1,8 +1,8 @@
-import { shouldPolyfill } from '@formatjs/intl-getcanonicallocales/should-polyfill';
-import { shouldPolyfill as shouldPolyfillPluralRules } from '@formatjs/intl-pluralrules/should-polyfill';
-import { shouldPolyfill as shouldPolyfillNumberFormat } from '@formatjs/intl-numberformat/should-polyfill';
 import { shouldPolyfill as shouldPolyfillDateTimeFormat } from '@formatjs/intl-datetimeformat/should-polyfill';
+import { shouldPolyfill } from '@formatjs/intl-getcanonicallocales/should-polyfill';
 import { shouldPolyfill as shouldPolyfillLocale } from '@formatjs/intl-locale/should-polyfill';
+import { shouldPolyfill as shouldPolyfillNumberFormat } from '@formatjs/intl-numberformat/should-polyfill';
+import { shouldPolyfill as shouldPolyfillPluralRules } from '@formatjs/intl-pluralrules/should-polyfill';
 import debug from 'debug';
 
 import { LocaleCode } from '~/types';

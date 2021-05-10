@@ -1,10 +1,12 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
-import config from '~/config';
+
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
-import { Link } from '~/components2/Link';
 import { AnchorButton } from '~/components2/Button';
+import { Link } from '~/components2/Link';
+import config from '~/config';
+
 import ButtonWrapper from '../components/ButtonWrapper';
 
 const DownloadInfo = styled.div`
