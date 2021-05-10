@@ -53,6 +53,12 @@ const LogoWrapper = styled.div`
   }
 `;
 
+const FooterLink = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+  color: ${config.colors.black};
+`;
+
 const Logo = ({ district }) => (
   <Wrapper>
     <section className="bezirksamt">
@@ -64,9 +70,9 @@ const Logo = ({ district }) => (
         />
       </LogoWrapper>
       <span>
-        <a className="external" href={district.content.footerLink}>
+        <FooterLink href={district.content.footerLink}>
           {district.content.footerLine}
-        </a>
+        </FooterLink>
       </span>
     </section>
     <Link to="/" className="fmb">
