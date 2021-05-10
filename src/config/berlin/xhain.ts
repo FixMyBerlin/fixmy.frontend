@@ -41,14 +41,15 @@ const xhain: DistrictConfig = {
           street: 'Bänschstraße',
           kiez: 'Samariterviertel',
           region: 'Friedrichshain',
-          schedule: 'Sonntags 13-19 Uhr',
-          status: 'open',
+          schedule:
+            '1.Juni - 31.August, Sonntags 15-18 Uhr (außer Sommerferien)',
+          status: 'paused',
         },
         {
           street: 'Richard-Sorge-Straße',
           kiez: 'Richard-Sorge-Viertel',
           region: 'Friedrichshain',
-          schedule: 'Sonntags 13-19 Uhr',
+          schedule: '1.Mai - 30.September, Sonntags 14-18 Uhr',
           status: 'paused',
         },
         {
@@ -61,14 +62,14 @@ const xhain: DistrictConfig = {
           street: 'Krossener Straße / Gabriel-Max-Straße',
           kiez: 'Boxhagener Platz',
           region: 'Friedrichshain',
-          status: 'paused',
+          status: 'closed',
           schedule: 'Freitags 16-20 Uhr',
         },
         {
           street: 'Lausitzer Platz',
           kiez: 'Lausitzer Platz',
           region: 'Kreuzberg',
-          status: 'paused',
+          status: 'closed',
           schedule: 'Sonntags 13-19 Uhr',
         },
         {
@@ -76,13 +77,13 @@ const xhain: DistrictConfig = {
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
           status: 'paused',
-          schedule: 'Sonntags 15 – 19 (Ferienzeit)',
+          schedule: '1.Mai - 30.September, Sonntags 15–19 Uhr',
         },
         {
           street: 'Wassertorstraße',
           kiez: 'Moritzplatz',
           region: 'Kreuzberg',
-          status: 'paused',
+          status: 'closed',
           schedule: 'Sonntags 13 – 19',
         },
         {
@@ -104,8 +105,9 @@ const xhain: DistrictConfig = {
           street: 'Böckstraße',
           kiez: 'Graefekiez',
           region: 'Kreuzberg',
-          status: 'paused',
-          schedule: 'Mittwochs 14-18 Uhr',
+          status: 'open',
+          schedule:
+            '1.April - 30.September, Freitags 15-18 Uhr (außer Sommerferien)',
         },
         {
           street: 'Lachmannstraße',
@@ -117,7 +119,7 @@ const xhain: DistrictConfig = {
           street: 'Lübbener Straße',
           kiez: 'Wrangelkiez',
           region: 'Kreuzberg',
-          status: 'paused',
+          status: 'closed',
           schedule: 'Ab 9.August Sonntags 13-19 Uhr',
         },
         {
@@ -125,6 +127,14 @@ const xhain: DistrictConfig = {
           kiez: 'Wrangelkiez',
           region: 'Kreuzberg',
           status: 'closed',
+        },
+        {
+          street: 'Wrangelstraße',
+          kiez: 'Wrangelkiez',
+          region: 'Kreuzberg',
+          status: 'paused',
+          schedule:
+            '1.Mai - 30.September, Sonntags 14:30-19:30 Uhr (außer Sommerferien)',
         },
         {
           street: 'Helmerdingstraße',
@@ -137,14 +147,16 @@ const xhain: DistrictConfig = {
           kiez: 'Boxhagener Platz',
           region: 'Friedrichshain',
           status: 'paused',
-          schedule: 'Sonntags 15-19 Uhr (Ferienzeit)',
+          schedule:
+            '1.Mai - 30.September, Mittwochs 15:30-18:30 Uhr (außer Sommerferien)',
         },
         {
           street: 'Paul-Lincke-Ufer / Forsterstraße',
           kiez: 'Reichenberger Straße',
           region: 'Kreuzberg',
           status: 'paused',
-          schedule: 'Sonntags 15 – 19 Uhr (Ferienzeit)',
+          schedule:
+            '1.Juni - 30.September, Sonntags 14 – 18 Uhr (außer Sommerferien)',
         },
         {
           street: 'Lilienthalstraße',
@@ -157,7 +169,8 @@ const xhain: DistrictConfig = {
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
           status: 'paused',
-          schedule: 'Sonntags 15-18 Uhr (Ferienzeit)',
+          schedule:
+            '1.Mai - 30.September, Freitags 15-18 Uhr (außer Sommerferien)',
         },
         {
           street: 'Rudolfstraße',
@@ -176,7 +189,7 @@ const xhain: DistrictConfig = {
           street: 'Dieffenbachstraße',
           kiez: 'Graefekiez',
           region: 'Kreuzberg',
-          status: 'paused',
+          status: 'closed',
           schedule: 'Ab 2.August Sonntags 13-19 Uhr',
         },
       ],
