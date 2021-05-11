@@ -2,16 +2,16 @@
  User can pick between a) using the current device location and b) geocoding the location.
  Receives URLS for re-routing when an options has been chosen.
  * */
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-import config from '~/pages/Reports/config';
+import ErrorMessage from '~/components/ErrorMessage';
+import CloseIcon from '~/images/close.svg';
 import LocateIcon from '~/images/reports/location-button.svg';
 import MapIcon from '~/images/reports/noun-map-1909219.svg';
-import ErrorMessage from '~/components/ErrorMessage';
+import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
-import CloseIcon from '~/images/close.svg';
 
 const Wrapper = styled.div`
   z-index: 999999;

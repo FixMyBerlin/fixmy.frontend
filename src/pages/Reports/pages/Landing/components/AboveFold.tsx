@@ -1,15 +1,15 @@
+import { History } from 'history';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import styled from 'styled-components';
 import { Dispatch } from 'redux';
-import { History } from 'history';
+import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
-import { actions } from '~/pages/Reports/state/SubmitReportState';
 import Link from '~/components/Link';
 import MenuButton from '~/pages/Reports/components/MenuButton';
 import ScrollLink from '~/pages/Reports/components/ScrollLink';
+import config from '~/pages/Reports/config';
+import { actions } from '~/pages/Reports/state/SubmitReportState';
 import { media } from '~/styles/utils';
 
 const Section = styled.section`

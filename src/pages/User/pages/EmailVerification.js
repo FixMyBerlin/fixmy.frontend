@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
-import Title from '~/components/Title';
-import Text from '~/components/Text';
 import Link from '~/components/Link';
+import Text from '~/components/Text';
+import Title from '~/components/Title';
 
 const StyledLink = styled(Link)`
   margin-top: 16px;

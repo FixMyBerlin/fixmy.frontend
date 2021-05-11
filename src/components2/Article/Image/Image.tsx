@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import InnerImg, { InnerImageProps } from './InnerImage';
-import { ImageWrapperFull } from './ImageFull';
 import { media } from '~/styles/utils';
+
+import { ImageWrapperFull } from './ImageFull';
+import InnerImg, { InnerImageProps } from './InnerImage';
 
 const ImageWrapperSimple = styled(ImageWrapperFull)`
   max-width: 518px;

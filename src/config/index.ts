@@ -1,8 +1,10 @@
 import debug from 'debug';
+
 import { RootConfig, Region } from '~/types';
-import defaultConfig from './default';
-import berlin from './berlin';
+
 import aachen from './aachen';
+import berlin from './berlin';
+import defaultConfig from './default';
 import eichwalde from './eichwalde';
 
 const log = debug('fmc:config');

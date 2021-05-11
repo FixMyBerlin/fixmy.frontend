@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
-import config from '~/pages/KatasterKI/config';
-import { media, bounce } from '~/styles/utils';
 import Flex from '~/components/Flex';
-import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
-import { getSceneImageSrc } from '~/pages/KatasterKI/survey';
 import loadingImage from '~/images/strassencheck/scene-loading.jpg';
+import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import config from '~/pages/KatasterKI/config';
+import { getSceneImageSrc } from '~/pages/KatasterKI/survey';
+import { media, bounce } from '~/styles/utils';
 import logger from '~/utils/logger';
 
 const SceneWrapper = styled.div`

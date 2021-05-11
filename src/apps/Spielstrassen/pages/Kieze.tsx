@@ -1,20 +1,21 @@
+import { Container, Grid, Paper, Box } from '@material-ui/core';
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { Container, Grid, Paper, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
-import { Button } from '~/components2/Button';
-import { Header } from '~/components2/Header';
-import { BaseMap } from '~/components2/BaseMap';
-import config from '~/config';
-import KiezCard from '../components/KiezCard';
 import { RequestState, loadKieze } from '~/apps/Spielstrassen/state';
 import Loader from '~/components/Loader';
-import { Spielstrasse } from '../types';
-import { media } from '~/styles/utils';
+import { BaseMap } from '~/components2/BaseMap';
+import { Button } from '~/components2/Button';
+import { Header } from '~/components2/Header';
 import { ApiNotice } from '~/components2/Notice';
+import config from '~/config';
 import { RootState } from '~/store';
+import { media } from '~/styles/utils';
+
+import KiezCard from '../components/KiezCard';
 import MissingSupportersNotice from '../components/MissingSupporters';
+import { Spielstrasse } from '../types';
 
 const ContactButton = styled(Button)`
   margin-bottom: 2em;

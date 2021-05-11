@@ -1,7 +1,8 @@
 import globalConfig from '~/config';
-import berlin from './berlin';
-import aachen from './aachen';
 import { RootConfig } from '~/types';
+
+import aachen from './aachen';
+import berlin from './berlin';
 
 type ImageSrc = {
   source: string;
@@ -90,6 +91,14 @@ export interface ReportsConfig {
     base: string;
     loggedIn: string;
     loggedOut: string;
+  };
+  stats: {
+    enabled: boolean;
+  };
+  colors: {
+    planning: string;
+    execution: string;
+    done: string;
   };
 }
 

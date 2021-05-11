@@ -1,12 +1,13 @@
+import { MenuList, MenuItem, Collapse } from '@material-ui/core';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import styled from 'styled-components';
-import { MenuList, MenuItem, Collapse } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
-import { useTypedSelector } from '~/store';
+import styled from 'styled-components';
+
 import { setLocale } from '~/AppState';
-import { LocaleCode } from '~/types';
 import messages from '~/lang/common';
+import { useTypedSelector } from '~/store';
+import { LocaleCode } from '~/types';
 
 type Props = {
   locales: LocaleCode[];

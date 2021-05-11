@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import Slider from '~/components/Slider';
 import config from '~/pages/Reports/config';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
-import Slider from '~/components/Slider';
-import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 import PlacementNotice from '~/pages/Reports/pages/SubmitReport/components/PlacementNotice';
-
+import WeiterButton from '~/pages/Reports/pages/SubmitReport/components/WeiterButton';
 import { breakpoints, media } from '~/styles/utils';
 
 const Question = styled(Heading)`

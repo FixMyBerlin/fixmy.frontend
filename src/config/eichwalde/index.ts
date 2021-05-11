@@ -1,5 +1,6 @@
-import defaultRoutes from '../default/routes';
 import { RegionConfig } from '~/types';
+
+import defaultRoutes from '../default/routes';
 
 const eichwaldeConfig: RegionConfig = {
   siteTitle: 'ZESplus',

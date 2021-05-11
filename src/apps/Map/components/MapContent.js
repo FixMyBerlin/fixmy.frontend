@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Route } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { orientation } from '~/styles/utils';
 import MapLegend from '~/apps/Map/components/MapLegend';
 import MapSwitch from '~/apps/Map/components/MapSwitch';
+import config from '~/config';
+import { orientation } from '~/styles/utils';
 
 function getHeight(props) {
   if (props.isEmbedMode) {
@@ -27,7 +28,7 @@ const MapContent = styled.div`
 
 export default (props) => (
   <Route
-    path="(/zustand|/planungen)"
+    path={`(${config.routes.map.hbiIndex}|${config.routes.map.projectsIndex})`}
     exact
     render={() => (
       <MapContent
@@ -36,7 +37,7 @@ export default (props) => (
       >
         <Route
           exact
-          path="/zustand"
+          path={config.routes.map.hbiIndex}
           render={() =>
             props.displayLegend && (
               <MapLegend
@@ -49,7 +50,7 @@ export default (props) => (
         />
         <Route
           exact
-          path="/planungen"
+          path={config.routes.map.projectsIndex}
           render={() =>
             props.displayLegend && (
               <MapLegend type="plannings" isEmbedMode={props.isEmbedMode} />

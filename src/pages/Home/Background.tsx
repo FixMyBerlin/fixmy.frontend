@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+
 import bgImage from '~/images/home-bg.jpg';
 import bgImage2 from '~/images/home-bg@2x.jpg';
 import bgImage3 from '~/images/home-bg@3x.jpg';

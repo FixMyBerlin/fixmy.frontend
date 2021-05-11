@@ -1,26 +1,25 @@
-import React from 'react';
+import { FormHelperText, LinearProgress } from '@material-ui/core';
+import debug from 'debug';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { CheckboxWithLabel } from 'formik-material-ui';
-import { FormHelperText, LinearProgress } from '@material-ui/core';
+import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import debug from 'debug';
 
+import api from '~/apps/Gastro/api';
+import { GastroRegistration } from '~/apps/Gastro/types';
 import { Button } from '~/components2/Button';
 import { Form } from '~/components2/Form';
-import { GastroRegistration } from '~/apps/Gastro/types';
-import api from '~/apps/Gastro/api';
-import { validate } from './validate';
-import parseLength from '../../parseLength';
+import { media } from '~/styles/utils';
 
+import parseLength from '../../parseLength';
 import SectionArea from './SectionArea';
+import SectionBase from './SectionBase';
 import SectionCertificate from './SectionCertificate';
 import SectionEmail from './SectionEmail';
 import SectionNotice from './SectionNotice';
-import SectionShopfrontLength from './SectionShopfrontLength';
 import SectionUsage from './SectionUsage';
-import SectionBase from './SectionBase';
-import { media } from '~/styles/utils';
+import { validate } from './validate';
 
 const logger = debug('fmc:Gastro:Registration');
 
@@ -41,6 +40,7 @@ export interface FormData {
   opening_hours?: string;
   agreement_accepted?: boolean | '';
   tos_accepted?: boolean | '';
+  followup_accepted?: boolean | '';
   area?: any;
 }
 /* eslint-enable camelcase */
@@ -59,6 +59,7 @@ const initialValues: FormData = {
   certificate: null,
   agreement_accepted: '',
   tos_accepted: '',
+  followup_accepted: '',
   area: null,
 };
 
@@ -109,24 +110,17 @@ const RegistrationForm = ({
         campaign: district.apps.gastro.currentCampaign,
       };
 
-      let uploadFailed = true;
       try {
         await api.uploadCertificate(registrationData, district);
-        uploadFailed = false;
       } catch (e) {
         logger(e);
         setStatus(
-          'Es gab leider einen Fehler beim Hochladen Ihrer Gewerbeanmeldung / Ihres Vereinsregisters. Bitte senden Sie dieses Dokument daher als Foto oder PDF per E-Mail an info@fixmyberlin.de'
+          'Das Hochladen Ihrer Gewerbeanmeldung / Ihres Vereinsregisters ist fehlgeschlagen. Bitte prüfen Sie Ihre Internetverbindung und versuchen es erneut.'
         );
       }
 
       try {
         const response = await api.register(registrationData, district);
-        // Additional field that is not part of the response
-        //  this is to signal to the thanks page whether the upload
-        // of the certificate file failed
-        // @ts-ignore
-        response.uploadFailed = uploadFailed;
         onSuccess(response);
       } catch (e) {
         logger(e);
@@ -156,7 +150,6 @@ const RegistrationForm = ({
           values={values}
         />
 
-        <SectionShopfrontLength />
         <SectionUsage />
         <SectionCertificate
           isSubmitting={isSubmitting}

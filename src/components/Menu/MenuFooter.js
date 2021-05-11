@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
+import { close } from '~/AppState';
+import SocialLinks from '~/components/Social/SocialLinks';
+import { Logo as FMBLogo } from '~/components2/Logo';
 import config from '~/config';
 import Store from '~/store';
-import { close } from '~/AppState';
-import { Logo as FMBLogo } from '~/components2/Logo';
-import SocialLinks from '~/components/Social/SocialLinks';
 
 const Footer = styled.div`
   background: ${config.colors.lightgrey};
