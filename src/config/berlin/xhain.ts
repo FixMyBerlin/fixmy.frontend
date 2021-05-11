@@ -31,7 +31,7 @@ const xhain: DistrictConfig = {
   apps: {
     spielstrassen: {
       path: 'spielstrassen',
-      supporterGoal: 10,
+      supporterGoal: 0,
       shareTitle: 'Melde dich an für temporäre Spielstraßen',
       shareText:
         'Friedrichshain-Kreuzberg richtet temporäre Spielstraßen ein, hier kann man sich melden um eine Spielstraße zu unterstützen. Bitte unterstütze diese Spielstraße, damit das möglich wird:',
@@ -43,14 +43,14 @@ const xhain: DistrictConfig = {
           region: 'Friedrichshain',
           schedule:
             '1.Juni - 31.August, Sonntags 15-18 Uhr (außer Sommerferien)',
-          status: 'paused',
+          status: 'open',
         },
         {
           street: 'Richard-Sorge-Straße',
           kiez: 'Richard-Sorge-Viertel',
           region: 'Friedrichshain',
           schedule: '1.Mai - 30.September, Sonntags 14-18 Uhr',
-          status: 'paused',
+          status: 'open',
         },
         {
           street: 'Gärtnerstraße',
@@ -76,7 +76,7 @@ const xhain: DistrictConfig = {
           street: 'Waldemarstraße',
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
-          status: 'paused',
+          status: 'open',
           schedule: '1.Mai - 30.September, Sonntags 15–19 Uhr',
         },
         {
@@ -132,7 +132,7 @@ const xhain: DistrictConfig = {
           street: 'Wrangelstraße',
           kiez: 'Wrangelkiez',
           region: 'Kreuzberg',
-          status: 'paused',
+          status: 'open',
           schedule:
             '1.Mai - 30.September, Sonntags 14:30-19:30 Uhr (außer Sommerferien)',
         },
@@ -146,7 +146,7 @@ const xhain: DistrictConfig = {
           street: 'Simplonstraße',
           kiez: 'Boxhagener Platz',
           region: 'Friedrichshain',
-          status: 'paused',
+          status: 'open',
           schedule:
             '1.Mai - 30.September, Mittwochs 15:30-18:30 Uhr (außer Sommerferien)',
         },
@@ -154,7 +154,7 @@ const xhain: DistrictConfig = {
           street: 'Paul-Lincke-Ufer / Forsterstraße',
           kiez: 'Reichenberger Straße',
           region: 'Kreuzberg',
-          status: 'paused',
+          status: 'open',
           schedule:
             '1.Juni - 30.September, Sonntags 14 – 18 Uhr (außer Sommerferien)',
         },
@@ -168,7 +168,7 @@ const xhain: DistrictConfig = {
           street: 'Dresdener Straße',
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
-          status: 'paused',
+          status: 'open',
           schedule:
             '1.Mai - 30.September, Freitags 15-18 Uhr (außer Sommerferien)',
         },
