@@ -11,7 +11,7 @@ import CloseIcon from './close.svg';
 const Wrapper = styled(BaseWrapper)`
   display: flex;
   flex-direction: column;
-  z-index: 1000;
+  z-index: 1100;
 `;
 
 const StyledCloseIcon = styled(CloseIcon)`
@@ -20,7 +20,7 @@ const StyledCloseIcon = styled(CloseIcon)`
   position: absolute;
   right: 10px;
   top: -18px;
-  z-index: 1100;
+  z-index: 1200;
   &:focus {
     outline: none;
     & .close-icon-background {
