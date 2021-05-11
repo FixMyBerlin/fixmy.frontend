@@ -1,8 +1,6 @@
 /* eslint-disable camelcase */
 
-import { SignupData } from '../../types';
-
-const validate = (values: SignupData) => {
+const validate = (values) => {
   const errors: {
     first_name?: string;
     last_name?: string;

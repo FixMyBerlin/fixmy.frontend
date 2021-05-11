@@ -29,6 +29,7 @@ const MissingSupportersNotice = ({
   streets: Spielstrasse[];
   supporterGoal: number;
 }) => {
+  if (supporterGoal === 0) return null;
   const highlightedStreets = streets
     .filter((street) => street.supporters < supporterGoal)
     .map(({ street }) => {
