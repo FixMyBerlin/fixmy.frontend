@@ -42,14 +42,14 @@ const xhain: DistrictConfig = {
           kiez: 'Samariterviertel',
           region: 'Friedrichshain',
           schedule:
-            '1.Juni - 31.August, Sonntags 15-18 Uhr (außer Sommerferien)',
+            '6.Juni - 31.August, Sonntags 15-18 Uhr (außer Sommerferien)',
           status: 'open',
         },
         {
           street: 'Richard-Sorge-Straße',
           kiez: 'Richard-Sorge-Viertel',
           region: 'Friedrichshain',
-          schedule: '1.Mai - 30.September, Sonntags 14-18 Uhr',
+          schedule: '23.Mai - 30.September, Sonntags 14-18 Uhr',
           status: 'open',
         },
         {
@@ -77,7 +77,7 @@ const xhain: DistrictConfig = {
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
           status: 'open',
-          schedule: '1.Mai - 30.September, Sonntags 15–19 Uhr',
+          schedule: '23.Mai - 30.September, Sonntags 15–19 Uhr',
         },
         {
           street: 'Wassertorstraße',
@@ -134,7 +134,7 @@ const xhain: DistrictConfig = {
           region: 'Kreuzberg',
           status: 'open',
           schedule:
-            '1.Mai - 30.September, Sonntags 14:30-19:30 Uhr (außer Sommerferien)',
+            '16.Mai - 30.September, Sonntags 14:30-19:30 Uhr (außer Sommerferien)',
         },
         {
           street: 'Helmerdingstraße',
@@ -148,7 +148,7 @@ const xhain: DistrictConfig = {
           region: 'Friedrichshain',
           status: 'open',
           schedule:
-            '1.Mai - 30.September, Mittwochs 15:30-18:30 Uhr (außer Sommerferien)',
+            '19.Mai - 30.September, Mittwochs 15:30-18:30 Uhr (außer Sommerferien)',
         },
         {
           street: 'Paul-Lincke-Ufer / Forsterstraße',
@@ -156,7 +156,7 @@ const xhain: DistrictConfig = {
           region: 'Kreuzberg',
           status: 'open',
           schedule:
-            '1.Juni - 30.September, Sonntags 14 – 18 Uhr (außer Sommerferien)',
+            '6.Juni - 30.September, Sonntags 14 – 18 Uhr (außer Sommerferien)',
         },
         {
           street: 'Lilienthalstraße',
@@ -170,7 +170,7 @@ const xhain: DistrictConfig = {
           region: 'Kreuzberg',
           status: 'open',
           schedule:
-            '1.Mai - 30.September, Freitags 15-18 Uhr (außer Sommerferien)',
+            '21.Mai - 30.September, Freitags 15-18 Uhr (außer Sommerferien)',
         },
         {
           street: 'Rudolfstraße',
