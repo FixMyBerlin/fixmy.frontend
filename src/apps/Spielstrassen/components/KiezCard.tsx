@@ -106,13 +106,13 @@ const Kiez = ({
           )}
           {supporters > district.apps.spielstrassen.supporterGoal && (
             <>
-              Diese Spielstraße findet bereits statt, benötigt aber weiter ihre
-              Unterstützung.
+              Diese Spielstraße findet regelmäßig statt, und freut sich über
+              weitere Unterstützung.
             </>
           )}
         </span>
         <Link to={signupUrl}>
-          <SignupButton flat>Unterstützen</SignupButton>
+          <SignupButton flat>Mehr Details</SignupButton>
         </Link>
       </footer>
     </KiezCard>
