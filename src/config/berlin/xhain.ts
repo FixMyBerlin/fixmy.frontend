@@ -106,8 +106,7 @@ const xhain: DistrictConfig = {
           kiez: 'Graefekiez',
           region: 'Kreuzberg',
           status: 'open',
-          schedule:
-            '1.April - 30.September, Freitags 15-18 Uhr (außer Sommerferien)',
+          schedule: '1.April - 30.September, Mittwochs 14-18 Uhr',
         },
         {
           street: 'Lachmannstraße',
