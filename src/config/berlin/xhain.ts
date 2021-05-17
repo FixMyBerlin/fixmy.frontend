@@ -17,6 +17,8 @@ const xhain: DistrictConfig = {
   path: 'friedrichshain-kreuzberg',
   name: 'xhain',
   content: {
+    footerLink:
+      'https://www.berlin.de/ba-friedrichshain-kreuzberg/politik-und-verwaltung/aemter/strassen-und-gruenflaechenamt/',
     footerLine:
       'Ein Angebot des Bezirksamts Friedrichshain-Kreuzberg von Berlin',
   },
@@ -200,7 +202,7 @@ const xhain: DistrictConfig = {
       timeline: {
         // date constructor uses 0-based month number, i.e. january is 0
         openSignup: isNetlifyProduction
-          ? new Date(Date.UTC(2020, 13 - 1, 1))
+          ? new Date(Date.UTC(2021, 5 - 1, 1))
           : new Date(Date.UTC(2021, 3 - 1, 1)),
         closeSignup: isNetlifyProduction
           ? new Date(Date.UTC(2020, 10 - 1, 1))

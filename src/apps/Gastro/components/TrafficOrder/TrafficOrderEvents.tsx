@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { EventPermit } from '../../types';
-import { dateReceived, eventDate, permitEnd } from '../../utils';
+import { dateReceived, eventDate } from '../../utils';
 
 const Container = styled.section`
   padding: 1em;
@@ -52,13 +52,6 @@ const Nebenbestimmungen = styled.section`
   }
 `;
 
-// eslint-disable-next-line camelcase
-const getSetupTimerangeEnd = ({ date }) => {
-  const dateParsed = new Date(date);
-  dateParsed.setDate(dateParsed.getDate() + 4);
-  return dateParsed.toLocaleDateString('de-DE');
-};
-
 type Props = {
   application: EventPermit;
 };
@@ -71,8 +64,6 @@ const TrafficOrder = ({ application }: Props) => {
         <p>Dieser Antrag ist derzeit nicht bewilligt.</p>
       </Container>
     );
-
-  const setupTimerangeEnd = getSetupTimerangeEnd(application);
 
   return (
     <Container>
@@ -166,8 +157,9 @@ const TrafficOrder = ({ application }: Props) => {
       </ul>
       <p>
         Haltverbote: Z 283 nach VLB-Regelplan 630 mit Zusatzzeichen 1042-33 StVO
-        (zeitliche Beschränkung) {setupTimerangeEnd} - {permitEnd(application)},
-        Ausdehnung gemäß Lageplan
+        (zeitliche Beschränkung) {eventDate(application)}{' '}
+        {application.setup_start.slice(0, -3)} Uhr bis{' '}
+        {application.teardown_end.slice(0, -3)} Uhr, Ausdehnung gemäß Lageplan
       </p>
       <p>
         <strong>Abweichend / ergänzend wird festgelegt:</strong>

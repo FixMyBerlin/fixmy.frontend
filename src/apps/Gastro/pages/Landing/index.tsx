@@ -7,7 +7,7 @@ import Header from '~/apps/Gastro/components/Header';
 import { media } from '~/styles/utils';
 
 import TempelbergLanding from './tempelberg';
-import XhainLanding from './xhain';
+import XhainLanding from './xhain2021';
 
 const StyledContainer = styled(Container)`
   h1 {
