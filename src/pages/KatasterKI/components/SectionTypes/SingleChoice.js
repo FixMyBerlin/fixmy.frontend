@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import config from '~/pages/KatasterKI/config';
-import { media } from '~/styles/utils';
 import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import config from '~/pages/KatasterKI/config';
+import { media } from '~/styles/utils';
 
 const SingleChoiceWrapper = styled.div`
   button {

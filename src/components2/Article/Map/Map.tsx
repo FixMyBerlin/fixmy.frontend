@@ -1,8 +1,9 @@
 import mapboxgl from 'mapbox-gl';
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { Button } from '~/components2/Button';
+
 import { BaseMap } from '~/components2/BaseMap';
+import { Button } from '~/components2/Button';
 import { media } from '~/styles/utils';
 
 import IconActivate from './smartphone-finger.svg';

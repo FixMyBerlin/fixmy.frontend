@@ -2,9 +2,9 @@ import MapboxGL from 'mapbox-gl';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
-import { BigLoader } from '~/components2/Loaders/';
 import { BaseMap } from '~/components2/BaseMap';
+import { BigLoader } from '~/components2/Loaders/';
+import config from '~/pages/Reports/config';
 
 const MB_STYLE_URL = `${config.reports.overviewMap.style}${
   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'

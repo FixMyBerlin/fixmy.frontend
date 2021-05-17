@@ -4,12 +4,12 @@ import { useIntl } from 'react-intl';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
-import config from '~/config';
-import { useTypedSelector } from '~/store';
-import { LocaleCode } from '~/types';
 import { setLocale } from '~/AppState';
-import { media } from '~/styles/utils';
+import config from '~/config';
 import messages from '~/lang/common';
+import { useTypedSelector } from '~/store';
+import { media } from '~/styles/utils';
+import { LocaleCode } from '~/types';
 
 import ChatTranslate from './icons/chat-translate.svg';
 import ChevronDown from './icons/chevron-down.svg';

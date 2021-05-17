@@ -2,10 +2,11 @@ import React, { ReactElement } from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
-import { media } from '~/styles/utils';
-import Entry from './TOCEntry';
-import Heading from '../Typography/Heading';
 import config from '~/config';
+import { media } from '~/styles/utils';
+
+import Heading from '../Typography/Heading';
+import Entry from './TOCEntry';
 
 const TOCWrapper = styled.nav`
   max-width: 518px;

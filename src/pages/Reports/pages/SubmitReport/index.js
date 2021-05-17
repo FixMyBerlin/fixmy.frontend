@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import { Redirect, Route, Router, Switch } from 'react-router-dom';
+import styled from 'styled-components';
 
 import history from '~/history';
+
 import SubmitReportDialog from './ReportDialog';
 
 const Markdown = React.lazy(() => import('~/pages/Markdown'));

@@ -1,5 +1,5 @@
-import { JSONValue, RequestOptions } from './types';
 import request from './request';
+import { JSONValue, RequestOptions } from './types';
 
 /**
  * Make a GET request

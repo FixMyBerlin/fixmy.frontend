@@ -4,8 +4,8 @@ import styled from 'styled-components';
 // import BraceHorizontalZustand from '~/images/brace-horizontal-zustand.svg';
 // import BraceHorizontalPlanung from '~/images/brace-horizontal-planung.svg';
 
-import BraceHorizontalZustand from '~/images/zustand-brace.svg';
 import BraceHorizontalPlanung from '~/images/planung-brace.svg';
+import BraceHorizontalZustand from '~/images/zustand-brace.svg';
 
 const StyledBraceHorizontalZustand = styled(BraceHorizontalZustand)`
   display: block;

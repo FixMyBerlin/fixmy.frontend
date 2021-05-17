@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import config from '~/config';
-import Label from '~/components/Label';
 import Button from '~/components/Button';
+import Label from '~/components2/Label';
+import config from '~/config';
 import HeartIcon from '~/images/heart.svg';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
 import DefaultPhotoSrc from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
-
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 
 const ItemWrapper = styled.div`

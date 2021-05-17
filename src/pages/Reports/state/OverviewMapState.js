@@ -1,5 +1,6 @@
 import debug from 'debug';
 import { createSelector } from 'reselect';
+
 import { apiFetchReports } from '../apiservice';
 import * as linkService from '../components/LinkLayer/linkService';
 import { actions as errorStateActions } from './ErrorState';

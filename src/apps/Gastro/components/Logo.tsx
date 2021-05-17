@@ -1,7 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
 import config from '~/apps/Gastro/config';
 import FMBLogo from '~/images/FixMyCity_positiv_300px.png';
 import { media } from '~/styles/utils';
@@ -52,6 +53,12 @@ const LogoWrapper = styled.div`
   }
 `;
 
+const FooterLink = styled.a`
+  text-decoration: none;
+  cursor: pointer;
+  color: ${config.colors.black};
+`;
+
 const Logo = ({ district }) => (
   <Wrapper>
     <section className="bezirksamt">
@@ -62,7 +69,11 @@ const Logo = ({ district }) => (
           alt={`Wappen ${district.title}`}
         />
       </LogoWrapper>
-      <span>{district.content.footerLine}</span>
+      <span>
+        <FooterLink href={district.content.footerLink}>
+          {district.content.footerLine}
+        </FooterLink>
+      </span>
     </section>
     <Link to="/" className="fmb">
       <LogoWrapper>

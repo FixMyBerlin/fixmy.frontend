@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import Title from '~/components/Title';
-import Text from '~/components/Text';
-import { loadLikes } from '~/pages/User/UserState';
-import { ProjectList } from '~/components2/ProjectList';
 import Select from '~/components/Select';
+import Text from '~/components/Text';
+import Title from '~/components/Title';
+import { ProjectList } from '~/components2/ProjectList';
+import { loadLikes } from '~/pages/User/UserState';
 
 const StyledSelect = styled(Select)`
   margin-bottom: 1.5em;

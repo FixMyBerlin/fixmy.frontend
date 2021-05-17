@@ -1,3 +1,4 @@
+import debug from 'debug';
 import React, {
   useRef,
   useState,
@@ -5,7 +6,6 @@ import React, {
   useLayoutEffect,
 } from 'react';
 import styled from 'styled-components';
-import debug from 'debug';
 
 const log = debug('fmc:components:Image.FadeIn');
 

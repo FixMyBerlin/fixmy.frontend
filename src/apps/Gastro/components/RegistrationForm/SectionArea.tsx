@@ -1,12 +1,13 @@
-import React from 'react';
 import { Card, CardContent } from '@material-ui/core';
 import { ErrorMessage } from 'formik';
+import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import { AreaPicker } from '~/components2/AreaPicker';
-import { requiresArea } from '../../utils';
-import FormError from './FormError';
+
+import { requiresArea, setLayerVisibility } from '../../utils';
+import FormError from '../FormError';
 
 const InlineIcon = styled.i`
   width: 21px;
@@ -33,6 +34,14 @@ const PickerIntro = styled.div`
   }
 `;
 
+const ParkingColorSample = styled.span`
+  width: 1em;
+  height: 1em;
+  background-color: #294794;
+  display: inline-block;
+  margin-left: 5px;
+`;
+
 const SectionArea = ({
   regulation,
   handleChange,
@@ -53,20 +62,6 @@ const SectionArea = ({
               Verfügung gestellt werden.
             </p>
           )}
-          <p>
-            Die späteren Anordnungen werden nach folgendem Regelplan getroffen:
-          </p>
-          <ul>
-            <li>
-              <a
-                href="/uploads/offene-terrassen/Regelplaene_Strassenraum.pdf"
-                className="internal"
-                target="_blank"
-              >
-                Regelplan temporäre Sondernutzung von Parkstreifen
-              </a>
-            </li>
-          </ul>
 
           <PickerIntro>
             <p>
@@ -77,6 +72,11 @@ const SectionArea = ({
             </p>
             <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
             <ul>
+              <li>
+                Es können nur Flächen innerhalb der auf der Karte{' '}
+                <ParkingColorSample /> dunkelblau ausgewiesen Zonen im Bereich
+                des ruhenden Verkehrs beantragt werden.
+              </li>
               <li>
                 Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,
                 Bushaltestellen, Schaltschränken, Baumscheiben oder Baustellen
@@ -92,7 +92,9 @@ const SectionArea = ({
           <AreaPicker
             initialGeometry={values.area}
             center={center}
-            mapboxStyle={district?.apps.gastro.registration.mapboxStyle}
+            mapboxStyle={
+              district?.apps.gastro.maps.gastroRegistration.mapboxStyle
+            }
             bounds={district?.bounds}
             onSelect={(value) => {
               handleChange({
@@ -101,6 +103,13 @@ const SectionArea = ({
                   value,
                 },
               });
+            }}
+            onLoad={(map) => {
+              setLayerVisibility(
+                map,
+                district.apps.gastro.layerSets,
+                district.apps.gastro.maps.gastroRegistration.layerSets
+              );
             }}
           />
 
@@ -136,6 +145,21 @@ const SectionArea = ({
               </p>
             </CardContent>
           </Card>
+
+          <p>
+            Die späteren Anordnungen werden nach folgendem Regelplan getroffen:
+          </p>
+          <ul>
+            <li>
+              <a
+                href="/uploads/offene-terrassen/Regelplaene_Strassenraum.pdf"
+                className="internal"
+                target="_blank"
+              >
+                Regelplan temporäre Sondernutzung von Parkstreifen (PDF)
+              </a>
+            </li>
+          </ul>
         </section>
       )}
 

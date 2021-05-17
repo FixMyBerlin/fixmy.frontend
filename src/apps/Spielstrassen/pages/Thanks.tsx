@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { Container } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { connect } from 'react-redux';
 import { generatePath, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
 
+import { State } from '~/apps/Spielstrassen/state';
 import { getStreetInfo } from '~/apps/Spielstrassen/utils';
-import { Header } from '~/components2/Header';
-import KiezNotFound from '../components/NotFound';
-import KiezMap from '../components/KiezMap';
-// import ShareButton from '../components/ShareButton';
-// import ShareButtonDesktop from '../components/ShareButtonDesktop';
 import { Button } from '~/components2/Button';
+import { Header } from '~/components2/Header';
 import { LogoFooter } from '~/components2/LogoFooter';
 import config from '~/config';
 import { media } from '~/styles/utils';
-import { State } from '~/apps/Spielstrassen/state';
+
+import KiezMap from '../components/KiezMap';
+import KiezNotFound from '../components/NotFound';
 
 const LinkButton = styled(Button)`
   width: 100%;
@@ -60,19 +59,16 @@ const Thanks = ({
         <h1>{street.street}</h1>
         <p className="subline">Temporäre Spielstraße im Kiez {street.kiez}:</p>
         <KiezMap street={street} />
-        <h2>
-          Vielen Dank, Sie sind Unterstützer:in Nr. {+street.supporters + 1}
-        </h2>
+        <h2>Vielen Dank für Ihre Unterstützung</h2>
         <p>
-          Das Bezirksamt meldet sich bei Ihnen, sobald sich zehn Personen
-          registriert haben. Teilen Sie diese Seite mit anderen Personen, die
-          bei der Spielstraße in der {street.street} helfen können.
+          Das Bezirksamt meldet sich bei Ihnen, oder gibt ihren Kontakt an die
+          Teamkapitän*in aus der {street.street} weiter. Teilen Sie diese Seite
+          mit anderen Personen, die Sie zur Spielstraße in der {street.street}{' '}
+          einladen möchten.
         </p>
         <CopyToClipboard text={sharingUrl}>
           <LinkButton flat>Link kopieren</LinkButton>
         </CopyToClipboard>
-        {/* <ShareButton text={shareText} url={sharingUrl} /> */}
-        {/* <ShareButtonDesktop /> */}
         <LogoFooter>Bereitgestellt durch FixMyBerlin</LogoFooter>
       </Container>
     </>

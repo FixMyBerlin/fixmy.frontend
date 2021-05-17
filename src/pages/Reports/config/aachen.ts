@@ -1,5 +1,6 @@
-import AachenLogo from '~/images/aachen/logo-stadt-aachen-bg.png';
 import LandingBackground from '~/images/aachen/landing_background.jpg';
+import AachenLogo from '~/images/aachen/logo-stadt-aachen-bg.png';
+
 import { ReportsConfig } from '.';
 
 const isProduction = process.env.BACKEND === 'production';
@@ -26,6 +27,11 @@ const aachenConfig: ReportsConfig = {
       : {
           color: '#ffffff',
         },
+  },
+  colors: {
+    planning: '#ECCD2D',
+    execution: '#ABC759',
+    done: '#45B834',
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
@@ -158,6 +164,9 @@ const aachenConfig: ReportsConfig = {
       maxHeight: 800,
       quality: 0.9,
     },
+  },
+  stats: {
+    enabled: true,
   },
 };
 

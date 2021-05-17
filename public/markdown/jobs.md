@@ -2,7 +2,7 @@
 
 # Jobs bei FixMyCity
 
-Wir glauben, dass Menschen im Dialog am besten Antworten auf die aktuellen Herausforderungen unserer Gesellschaft finden. Eine offene und agile Verwaltung, die Bürger:innen aktiv einbezieht, ist für uns der effektivste Weg, unsere Städte wieder menschengerecht und lebenswert zu gestalten. Um Städte und Kommunen auf diesem Weg zu unterstützen, entwickeln wir Open Government-Werkzeuge, die es Verwaltungen ermöglichen, die Verkehrswende gemeinsam mit den Bürger:innen umzusetzen.
+Du hast Lust, dass die Radverkehrswende schneller voran geht und digitale Beteiligung dabei wirksam eingesetzt wird? Wir glauben, dass Menschen im Dialog am besten Antworten auf die aktuellen Herausforderungen unserer Gesellschaft finden. Eine offene und agile Verwaltung, die Bürger:innen aktiv einbezieht, ist für uns der effektivste Weg, unsere Städte wieder menschengerecht und lebenswert zu gestalten. Um Städte und Kommunen auf diesem Weg zu unterstützen, entwickeln wir Prozesse und datengestützte Planungswerkzeuge, die Verwaltungen helfen, die Verkehrswende schneller und gemeinsam mit den Bürger:innen umzusetzen.
 
 Eine Übersicht über unsere Softwarelösungen findest du unter https://fixmycity.de unsere Pilotplattform unter https://fixmyberlin.de.
 
@@ -11,9 +11,53 @@ alt="Fahrradfahren"
 src="/src/images/amsterdam-1203305_1280.jpg"
 class="img-lg"> </img></div>
 
+# <a name="datenredaktion"></a>Leitung Datenredaktion / Verkehrsplanung
+
+**Zur Verstärkung unseres Teams suchen wir ab Juli 2021 eine Verkehrsplaner:in mit Berufserfahrung.**
+
+**Was Dich erwartet:**
+
+- Du arbeitest in einem bundesweiten Projekt zu neuen Verfahren digitaler Bürgerbeteiligung bei Radschnellverbindungen mit: 
+https://nationaler-radverkehrsplan.de/de/praxis/modulares-system-fuer-radschnellverbindungen  
+- Du leitest ein im Sommer beginnendes Projekt zur datenbasierten Entwicklung kommunaler Radnetze und dazugehöriger Reallabore.
+- Du bringst dein Wissen über Planugnsprozesse ein und entwickelst die bestehenden Angebote von FixMyCity wie Planungskarte, Happy-Bike-Index oder Radbügeldialog weiter und arbeitest mit uns an neuen Produkten für die digitale Verwaltung zur Beschleunigung der Verkehrswende.
+- Du arbeitest eigenständig mit Verkehrsdaten, recherchierst diese, und bereitest sie auf.
+- Du kommunizierst mit Planer:innen und Geodatenexpert:innen in Kommunen, Landkreisen auf Landes- und Bundesebene.
+- Du arbeitest mit Verbänden und Stadtgesellschaft, sowie mit der Forschung und dem Bundesverkehrsministerium zusammen.
+
+**Was wir uns von dir wünschen:**
+- Du denkst, dass die Themen Verkehrswende und modernes Verwaltungshandeln wichtig für eine nachhaltige und faire Gesellschaft sind. Du hast eine Affinität zu den Themen Radfahren, nachhaltige Mobilität, Beteiligung und/oder Open Data.
+- Du hast Verkehrsplanung oder Stadtplanung studiert oder ein inhaltlich ähnliches Studium abgeschlossen. 
+- Du hast ein tiefes Verständnis für Planungsprozesse und weißt wo am besten konstruktive Beteiligung stattfinden kann.
+- Du hast Erfahrung mit der Verarbeitung und Visualisierung von Geodaten und kennst entsprechende Tools (GIS).
+- Du kommunizierst gerne und klar - sowohl am Telefon, wie auch an den Tasten.
+- Du arbeitest selbständig, hast eigene Ideen und magst die dynamische Arbeitsweise in einem Start-Up.
+- Du beteiligst dich an einer offenen und wertschätzenden Teamkultur.
+
+**Ergänzend passt du perfekt zu uns, wenn:**
+- Du Erfahrungen mit (digitalen) Bürgerbeteiligungsverfahren hast.
+- Du Erfahrungen in der Zusammenarbeit mit der Verwaltung / Institutionen hast.
+- Du bereits Erfahrung mit einer Scriptsprache wie Python, PHP oder R hast.
+
+**Was Dich erwartet:**
+Du entwickelst in einem kleinen dynamischen Team die nächsten Komponenten und Angebote von FixMyCity für die Verkehrswende
+
+- Du arbeitest in engem Austausch mit erfahrenen Projektleiter:innen, Entwickler:innen, GIS-Expert:innen und UX-Designer:innen.
+- Agile, selbstverantwortliche Arbeitsprozesse im kleinen Team. 
+- Ein menschliches Miteinander und eine offene Organisationskultur die Ideen der kollektiven Führung, der wertschätzenden Kommunikation und nachhaltigen Arbeitsweise verfolgt.
+- Flexible Arbeitszeiten, Home-Office in Teilen möglich, konzentriertes, störungsfreies Arbeiten.
+
+**Konkretes:**
+- Arbeitsort: CityLAB Berlin (Tempelhof-Schöneberg), Homeoffice in Teilen möglich
+- Beginn: 1.7.2021 (späterer Beginn möglich)
+- Arbeitszeit: 32 Stunden (80%)
+- Vergütung: Verhandlungsbasis, branchenüblich
+- Bewerbungen bitte unter: https://fixmycity.typeform.com/to/erWlFnHX
+oder per mail an jobs@fixmycity.de 
+
 # <a name="junior-dev"></a>Junior Entwickler:in (Full Stack)
 
-**Zur Verstärkung unseres Teams bei FixMyCity suchen wir ab November (späterer Beginn möglich) eine:n Entwickler:in in Teilzeit für 20-32 Stunden / Woche.**
+**Zur Verstärkung unseres Teams bei FixMyCity suchen wir eine:n Entwickler:in in Teilzeit für 20-32 Stunden / Woche.**
 
 **Was wir uns von dir wünschen:**
 

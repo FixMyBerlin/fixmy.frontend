@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import config from '~/config';
-import Link from '~/components/Link';
 import ContentPageWrapper from '~/components/ContentPageWrapper';
-import UserForm from '~/pages/User/components/UserForm';
+import Link from '~/components/Link';
+import config from '~/config';
 import { login } from '~/pages/User/UserState';
+import UserForm from '~/pages/User/components/UserForm';
 
 const StyledLink = styled(Link)`
   margin-top: 16px;

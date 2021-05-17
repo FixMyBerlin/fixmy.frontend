@@ -1,11 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
-import config from '~/config';
-import Store from '~/store';
 import { toggle } from '~/AppState';
+import config from '~/config';
 import AccountIcon from '~/images/account.svg';
+import Store from '~/store';
+
 import MenuCloseButton from './MenuCloseButton';
 
 const MenuHeader = styled.div`
