@@ -27,7 +27,7 @@ const TrafficOrderPage = ({
     const doLoad = async () => {
       try {
         const data = await api.getEvent(id, district);
-        if (data.area_category === 'park') {
+        if (data.area_category === 'parking') {
           setApplication(data);
         } else {
           setError(

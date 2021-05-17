@@ -121,7 +121,7 @@ const TrafficOrder = ({ application }: Props) => {
 
         <span>
           <h3>Lage der Arbeitsstelle</h3>
-          <p style={{ color: 'red' }}>TBC</p>
+          <p>{application.event_address}</p>
         </span>
       </TwoUp>
 
