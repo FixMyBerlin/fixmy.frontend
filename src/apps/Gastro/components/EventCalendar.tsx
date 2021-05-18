@@ -6,6 +6,7 @@ import { useTypedSelector } from '~/store';
 import { DistrictConfig } from '~/types';
 
 import api from '../api';
+import config from '../config';
 import { EventListing } from '../types';
 import { eventDate } from '../utils';
 
@@ -13,9 +14,13 @@ const logger = debug('fmc:Gastro:EventCalendar');
 
 const useStyles = makeStyles({
   root: {
-    '&:nth-of-type(2)': {
-      'margin-top': '1em',
+    'margin-top': '1em',
+    '&:nth-of-type(1)': {
+      'margin-top': '0',
     },
+  },
+  infoline: {
+    color: config.colors.darkgrey,
   },
 });
 
@@ -26,10 +31,14 @@ const Listing = (data: EventListing) => {
       <CardContent>
         <h3>{data.title}</h3>
         <p>{data.description}</p>
-        <p>
+        <p className={classes.infoline}>
           {/* // @ts-ignore */}
           Am {eventDate(data)} von {data.event_start.slice(0, -3)} Uhr bis{' '}
-          {data.event_end.slice(0, -3)} Uhr.
+          {data.event_end.slice(0, -3)} Uhr. <br />
+          {data.area_category === 'park'
+            ? 'Veranstaltung im Park: '
+            : 'Veranstaltung auf Parkflächen: '}
+          {data.location}
         </p>
       </CardContent>
     </Card>

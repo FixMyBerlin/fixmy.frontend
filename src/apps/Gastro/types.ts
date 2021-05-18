@@ -157,5 +157,11 @@ export type EventPermit = EventApplication & {
 
 export type EventListing = Pick<
   EventPermit,
-  'title' | 'description' | 'event_start' | 'event_end' | 'date' | 'area'
-> & { id: string };
+  | 'title'
+  | 'description'
+  | 'event_start'
+  | 'event_end'
+  | 'date'
+  | 'area'
+  | 'area_category'
+> & { id: string; location: string };
