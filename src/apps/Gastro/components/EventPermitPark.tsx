@@ -178,9 +178,14 @@ const Permit = ({ application, id }: Props) => {
             <td>
               <p>
                 Öffentliche geschützte Grün- und Erholungsanlage{' '}
-                {application.area_park_name_long}. Aufbauten analog dem
-                beigefügten Lageplan.
+                {application.area_park_name_long}.
               </p>
+
+              {application.setup_sketch != null &&
+                application.setup_sketch.length > 0 && (
+                  <p>Aufbauten analog dem beigefügten Lageplan.</p>
+                )}
+
               <StyledAreaMap application={application} printable showAreaPin />
             </td>
           </tr>
@@ -225,11 +230,13 @@ const Permit = ({ application, id }: Props) => {
                 kann mit Auflagen verbunden werden.
               </p>
               <p>
-                Die Veranstaltung &ldquo;{application.title}&rdquo; ist nicht
-                kommerziell motiviert, sondern dient{' '}
-                <span style={{ color: 'red' }}>XXXXXXXXXXXXXXXXXXX</span>. Die
-                Veranstaltung liegt im besonderen öffentlichen Interesse des
-                Landes Berlin.
+                Die Veranstaltung liegt im besonderen öffentlichen Interesse des
+                Landes Berlin. Neben der Pandemievorsorge durch die Ausweisung
+                von zusätzlichen Flächen steht ein Angebot von vorbestimmten
+                Sondernutzungsflächen in Grünanlagen im Zentrum dieses
+                Interesses, um in einem geordneten Verfahren geeignete Flächen
+                für eine über den Gemeingebrauch hinausgehende, nicht
+                kommerzielle Nutzung auszuweisen.
               </p>
               {application.is_public_benefit && (
                 <p>

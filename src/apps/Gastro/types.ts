@@ -152,9 +152,16 @@ export type EventPermit = EventApplication & {
   // True if a public benefit file attachment is set on the permit
   is_public_benefit?: boolean;
   area_park_name_long?: string;
+  event_address?: string;
 };
 
 export type EventListing = Pick<
   EventPermit,
-  'title' | 'description' | 'event_start' | 'event_end' | 'date' | 'area'
-> & { id: string };
+  | 'title'
+  | 'description'
+  | 'event_start'
+  | 'event_end'
+  | 'date'
+  | 'area'
+  | 'area_category'
+> & { id: string; location: string };

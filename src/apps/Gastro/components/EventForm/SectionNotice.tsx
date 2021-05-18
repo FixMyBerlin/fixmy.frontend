@@ -14,9 +14,7 @@ const FormError = styled(FormHelperText)`
 
 const SectionNotice = () => (
   <section>
-    <p>
-      <strong>Bedingungen für die Nutzung der Sonderflächen</strong>
-    </p>
+    <h3>Bedingungen für die Nutzung der Sonderflächen</h3>
     <ul>
       <li>
         Die Veranstaltung dient einem der folgenden Zwecke
