@@ -7,8 +7,8 @@ import config from '~/config';
 import { media } from '~/styles/utils';
 import BikeIcon from '~/images/bike.svg';
 import PylonIcon from '~/images/poempel.svg';
-import Label from '~/components/Label';
 import SvgIcon from '~/components/SvgIcon';
+import Label from '~/components/Label';
 
 const MapSwitchWrapper = styled.div`
   display: flex;
