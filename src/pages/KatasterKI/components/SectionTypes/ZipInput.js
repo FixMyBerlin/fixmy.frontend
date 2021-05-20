@@ -1,13 +1,13 @@
 import React, { useRef, useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-import config from '~/pages/KatasterKI/config';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components/Button';
+import Input from '~/pages/KatasterKI/components/Input';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Radio from '~/pages/KatasterKI/components/Radio';
-import Input from '~/pages/KatasterKI/components/Input';
+import config from '~/pages/KatasterKI/config';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
 
 const DistrictChooser = styled.div`
@@ -69,7 +69,7 @@ const ZipInput = (props) => {
 
     props.handleChange({
       zipcode: zipCode.current,
-      district: selectedDistrict
+      district: selectedDistrict,
     });
   };
 
@@ -137,7 +137,7 @@ const ZipInput = (props) => {
 
 const mapStateToProps = (state) => ({
   districtOptions: state.KatasterKIState.districtOptions,
-  district: state.KatasterKIState.profile.district
+  district: state.KatasterKIState.profile.district,
 });
 
 export default connect(mapStateToProps)(ZipInput);

@@ -1,4 +1,10 @@
 import { Dispatch } from 'redux';
+
+import logger from '~/utils/logger';
+
+import api from './api';
+import config from './config';
+import introQuestions from './config/introQuestions';
 import {
   Answer,
   Perspective,
@@ -8,19 +14,15 @@ import {
   TransportRating,
   UserGroup,
   ProfileRequest,
-  ProfileResponse
+  ProfileResponse,
 } from './types';
 import {
   getUserGroup,
   makeSessionID,
   toggleNavigationWarning,
   getInitialPerspective,
-  makeIntroSelection
+  makeIntroSelection,
 } from './utils';
-import api from './api';
-import config from './config';
-import introQuestions from './config/introQuestions';
-import logger from '~/utils/logger';
 
 export const SET_TOS_ACCEPTED = 'KatasterKI/SET_TOS_ACCEPTED';
 export const SET_ANSWER = 'KatasterKI/SET_ANSWER';
@@ -133,24 +135,24 @@ export const productionDefaultState: State = {
     bicycle: 0,
     motorbike: 0,
     car: 0,
-    public: 0
+    public: 0,
   },
   profile: {
     bikeReasons: {},
     motivationalFactors: {},
     vehiclesOwned: {},
     whyBiking: {},
-    zipcode: ''
+    zipcode: '',
   },
   progressBar: {
     current: 0,
-    total: 0
+    total: 0,
   },
   profileRequest: {
-    state: RequestState.waiting
+    state: RequestState.waiting,
   },
   perspectiveRequest: {
-    state: RequestState.waiting
+    state: RequestState.waiting,
   },
   userGroup: UserGroup.bicycle,
   scenes: [],
@@ -162,7 +164,7 @@ export const productionDefaultState: State = {
   introSelection: makeIntroSelection(
     introQuestions.length,
     config.katasterKI.numIntroQuestions
-  )
+  ),
 };
 
 // This state is used in the dev environment and for integration tests
@@ -175,7 +177,7 @@ export const testingDefaultState: State = {
     bicycle: 5,
     motorbike: 3,
     car: 0,
-    public: 3
+    public: 3,
   },
   profile: {
     ageGroup: 1,
@@ -187,20 +189,20 @@ export const testingDefaultState: State = {
       bikeFun: 4,
       faster: 4,
       weather: 4,
-      safe: 4
+      safe: 4,
     },
     hasChildren: true,
     vehiclesOwned: {
-      car: true
+      car: true,
     },
     whyBiking: {
-      fun: true
+      fun: true,
     },
-    zipcode: '22000'
+    zipcode: '22000',
   },
   statisticsCounter: 1234,
   userGroup: UserGroup.bicycle,
-  currentPerspective: Perspective.bicycle
+  currentPerspective: Perspective.bicycle,
 };
 
 // Either use a) a test state defined by cypress when this code runs in an e2e test
@@ -240,7 +242,7 @@ export default function reducer(state: State = defaultState, action: Action) {
         ...state,
         scenes,
         ratingsCounter: state.ratingsCounter + 1,
-        statisticsCounter: state.statisticsCounter + 1
+        statisticsCounter: state.statisticsCounter + 1,
       };
     }
 
@@ -253,15 +255,15 @@ export default function reducer(state: State = defaultState, action: Action) {
         ...state,
         profile: {
           ...state.profile,
-          [question]: value
-        }
+          [question]: value,
+        },
       };
     }
 
     case SUBMIT_PERSPECTIVE_PENDING:
       return {
         ...state,
-        perspectiveRequest: { state: RequestState.pending }
+        perspectiveRequest: { state: RequestState.pending },
       };
 
     case SUBMIT_PERSPECTIVE_ERROR:
@@ -269,32 +271,32 @@ export default function reducer(state: State = defaultState, action: Action) {
         ...state,
         perspectiveRequest: {
           state: RequestState.error,
-          message: action.error
-        }
+          message: action.error,
+        },
       };
 
     case SUBMIT_PERSPECTIVE_COMPLETE:
       return {
         ...state,
         currentPerspective: action.value,
-        perspectiveRequest: { state: RequestState.success }
+        perspectiveRequest: { state: RequestState.success },
       };
 
     case SUBMIT_PROFILE_PENDING:
       return {
         ...state,
-        profileRequest: { state: RequestState.pending }
+        profileRequest: { state: RequestState.pending },
       };
 
     case SUBMIT_PROFILE_ERROR:
       return {
         ...state,
-        profileRequest: { state: RequestState.error, message: action.error }
+        profileRequest: { state: RequestState.error, message: action.error },
       };
     case SUBMIT_PROFILE_COMPLETE:
       return {
         ...state,
-        profileRequest: { state: RequestState.success }
+        profileRequest: { state: RequestState.success },
       };
 
     case RECEIVED_SCENE_GROUP:
@@ -304,17 +306,17 @@ export default function reducer(state: State = defaultState, action: Action) {
           (sceneID: string): Answer => ({
             sceneID,
             rating: null,
-            duration: null
+            duration: null,
           })
         ),
         statisticsCounter: action.value.ratings_total,
-        sceneGroupCounter: state.sceneGroupCounter + 1
+        sceneGroupCounter: state.sceneGroupCounter + 1,
       };
 
     case SET_TRANSPORT_RATING: {
       const transportRatings = {
         ...state.transportRatings,
-        [action.transportRating.type]: action.transportRating.rating
+        [action.transportRating.type]: action.transportRating.rating,
       };
       const userGroup = getUserGroup(transportRatings);
       const currentPerspective = getInitialPerspective(userGroup);
@@ -333,8 +335,8 @@ export default function reducer(state: State = defaultState, action: Action) {
         profile: {
           ...state.profile,
           zipcode,
-          district
-        }
+          district,
+        },
       };
     }
 
@@ -345,8 +347,8 @@ export default function reducer(state: State = defaultState, action: Action) {
         ...state,
         progressBar: {
           current,
-          total: newTotal
-        }
+          total: newTotal,
+        },
       };
     }
 
@@ -373,7 +375,7 @@ export function setAnswer(
 ): Action {
   return {
     type: SET_ANSWER,
-    answer: { sceneID, rating, duration }
+    answer: { sceneID, rating, duration },
   };
 }
 
@@ -451,7 +453,7 @@ export function submitPerspectiveError(errorMessage: string): Action {
 export function submitPerspectiveComplete(perspective: Perspective): Action {
   return {
     type: SUBMIT_PERSPECTIVE_COMPLETE,
-    value: perspective
+    value: perspective,
   };
 }
 
@@ -466,7 +468,7 @@ export function receivedSceneGroup(
 ) {
   return {
     type: RECEIVED_SCENE_GROUP,
-    value: { scenes, ratings_total: ratingsTotal }
+    value: { scenes, ratings_total: ratingsTotal },
   };
 }
 
@@ -499,13 +501,13 @@ export const submitPerspective = (perspective: Perspective) => async (
 ) => {
   dispatch(submitPerspectivePending());
   const {
-    KatasterKIState: { sessionID }
+    KatasterKIState: { sessionID },
   } = getState();
   try {
     const { scenes, ratings_total: ratingsTotal } = await api.submitPerspective(
       {
         perspective,
-        sessionID
+        sessionID,
       }
     );
     dispatch(receivedSceneGroup(scenes, ratingsTotal));
@@ -528,14 +530,14 @@ export const submitAnswer = (
   dispatch(setAnswer(sceneID, rating, duration));
 
   const {
-    KatasterKIState: { sessionID }
+    KatasterKIState: { sessionID },
   } = getState();
   try {
     await api.submitAnswer({
       sceneID,
       rating,
       duration,
-      sessionID
+      sessionID,
     });
   } catch (e) {
     dispatch(

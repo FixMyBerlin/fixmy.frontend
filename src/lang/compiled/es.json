@@ -429,6 +429,18 @@
       "value": "Datos personales referidos al perfil del usuario"
     }
   ],
+  "research.04_dataset.downloadCaption": [
+    {
+      "type": 0,
+      "value": "(Formato: JSON comprimido (ZIP), tamaño: 5.2 MB, licencia: ODbL)"
+    }
+  ],
+  "research.04_dataset.downloadLabel": [
+    {
+      "type": 0,
+      "value": "Descargar conjunto de datos"
+    }
+  ],
   "research.04_dataset.heading": [
     {
       "type": 0,
@@ -472,21 +484,7 @@
   "research.04_dataset.p2": [
     {
       "type": 0,
-      "value": "El siguiente enlace lo lleva a "
-    },
-    {
-      "type": 1,
-      "value": "linkResults"
-    },
-    {
-      "type": 0,
-      "value": ", que puede ver y descargar allí."
-    }
-  ],
-  "research.04_dataset.p2.linkResults": [
-    {
-      "type": 0,
-      "value": "los resultados de la encuesta como un conjunto de datos en formato JSON"
+      "value": "Descargue los resultados de la encuesta como archivos JSON pulsando el siguiente botón:"
     }
   ],
   "research.05_results.chart1.1": [

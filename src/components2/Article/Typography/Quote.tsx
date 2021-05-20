@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { media } from '~/styles/utils';
 
 interface QuoteProps {
@@ -12,11 +13,15 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  max-width: 620px;
+  max-width: 518px;
   margin: 1em auto 1.8em auto;
 
   ${media.m`
     margin: 3em auto 3.8em auto;
+  `}
+
+  ${media.l`
+    max-width: 598px;
   `}
 `;
 
@@ -33,16 +38,16 @@ const QuoteStyle = styled.div`
 `;
 
 const Attribution = styled.div`
-  display: inline;
+  align-self: center;
   background: #cf0a7d;
-  font-weight: 700;
-  font-size: 0.875em;
-  font-style: normal;
-  line-height: 1.25;
-  padding: 11px 22px;
   border-radius: 3px;
   color: white;
-  align-self: center;
+  display: inline;
+  font-size: 0.875em;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.25;
+  padding: 11px 22px;
   transform: translateY(-50%);
 `;
 

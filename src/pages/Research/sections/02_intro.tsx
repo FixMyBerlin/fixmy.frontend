@@ -5,15 +5,15 @@ import {
   Paragraph,
   Heading,
   ImageMulti,
-  SectionProps
+  SectionProps,
 } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
+import { Link } from '~/components2/Link';
+
 import ButtonWrapper from '../components/ButtonWrapper';
 import FeelSafe from '../components/FeelSafe';
-import Link from '~/components2/Link';
-
-import MS_C_573 from '../images/01_MS_C_573_@x2.jpg';
 import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
+import MS_C_573 from '../images/01_MS_C_573_@x2.jpg';
 
 const SectionIntroduction = ({ toc, tocAnchor }: SectionProps) => (
   <>
@@ -41,7 +41,7 @@ const SectionIntroduction = ({ toc, tocAnchor }: SectionProps) => (
                 defaultMessage="Umfragekonzept"
               />
             </a>
-          )
+          ),
         }}
       />
     </Paragraph>
@@ -98,7 +98,7 @@ const SectionIntroduction = ({ toc, tocAnchor }: SectionProps) => (
                 defaultMessage="Artikel"
               />
             </Link>
-          )
+          ),
         }}
       />
     </Paragraph>

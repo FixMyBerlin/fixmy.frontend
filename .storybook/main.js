@@ -23,11 +23,11 @@ const replaceSvgRule = (config) => {
         loader: 'react-svg-loader',
         options: {
           svgo: {
-            plugins: [{ cleanupIDs: false }, { removeViewBox: false }]
-          }
-        }
-      }
-    ]
+            plugins: [{ cleanupIDs: false }, { removeViewBox: false }],
+          },
+        },
+      },
+    ],
   });
 };
 
@@ -37,9 +37,9 @@ const configureFileLoader = (config) => {
     use: {
       loader: 'file-loader',
       options: {
-        name: '[path][name].[ext]'
-      }
-    }
+        name: '[path][name].[ext]',
+      },
+    },
   });
 };
 
@@ -49,11 +49,11 @@ const fixMapboxBug = (config) => {
 };
 
 module.exports = {
-  stories: ['../src/**/*.stories.[tj]s'],
+  stories: ['../src/**/*.stories.@(ts|js)'],
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
-    '@storybook/addon-docs'
+    '@storybook/addon-docs',
   ],
   webpackFinal: (config) => {
     config.resolve.alias['~'] = AppSourceDir;
@@ -61,5 +61,5 @@ module.exports = {
     configureFileLoader(config);
     fixMapboxBug(config);
     return config;
-  }
+  },
 };

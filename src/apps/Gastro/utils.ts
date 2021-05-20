@@ -1,9 +1,18 @@
-// Return true if usage for the signup's category is allowed on week days
-export const usageWeekday = ({ category }) =>
-  ['retail', 'workshop', 'social', 'other'].includes(category);
+import { addDays } from 'date-fns';
+import debug from 'debug';
+import mapboxgl from 'mapbox-gl';
 
-// Return true if usage for the signup's category is allowed on weekends
-export const usageWeekend = ({ category }) => ['restaurant'].includes(category);
+import {
+  NUM_PARTICIPANTS_L,
+  NUM_PARTICIPANTS_M,
+  NUM_PARTICIPANTS_S,
+  PRICE_PARTICIPANTS_L,
+  PRICE_PARTICIPANTS_M,
+  PRICE_PARTICIPANTS_S,
+} from './constants';
+import { EventPermit } from './types';
+
+const logger = debug('fmc:Gastro:utils');
 
 /**
  * Return true if the given regulation requires applications to
@@ -18,7 +27,7 @@ export const requiresArea = (zone: string) =>
     'Parken längs',
     'Parken quer',
     'Parken diagonal',
-    'Sonstige'
+    'Sonstige',
   ].includes(zone);
 
 /** Return a description of the category given an application */
@@ -48,6 +57,11 @@ export const dateReceived = ({ application_received }) =>
     ? '<Datum Eingang>'
     : new Date(application_received).toLocaleDateString('de-DE');
 
+export const dateDecided = ({ application_decided }) =>
+  application_decided == null
+    ? '<Bescheid wurde noch nicht versandt>'
+    : new Date(application_decided).toLocaleDateString('de-DE');
+
 export const permitStart = ({ permit_start }) =>
   permit_start == null
     ? '<Beginn der Genehmigung unbestimmt>'
@@ -57,6 +71,54 @@ export const permitEnd = ({ permit_end }) =>
   permit_end == null
     ? '<Ende der Genehmigung unbestimmt>'
     : new Date(permit_end).toLocaleDateString('de-DE');
+
+export const eventDate = ({ date }): string =>
+  date == null
+    ? '<Datum der Veranstaltung nicht angegeben>'
+    : new Date(date).toLocaleDateString('de-DE');
+
+export const photosDue = ({ date }): string =>
+  date == null
+    ? '<Datum der Veranstaltung nicht angegeben>'
+    : addDays(new Date(date), 8).toLocaleDateString('de-DE');
+
+/**
+ * Return the string-formatted amount due for an event permit
+ *
+ * @param EventPermit retrieved from api
+ * @returns null if no payment due, otherwise string
+ */
+export const getPermitFee = ({
+  num_participants,
+  is_public_benefit,
+}: EventPermit): string | null => {
+  let amountCents: number;
+  if (is_public_benefit === true) {
+    amountCents = 0;
+  } else {
+    switch (num_participants) {
+      case NUM_PARTICIPANTS_S:
+        amountCents = PRICE_PARTICIPANTS_S;
+        break;
+      case NUM_PARTICIPANTS_M:
+        amountCents = PRICE_PARTICIPANTS_M;
+        break;
+      case NUM_PARTICIPANTS_L:
+        amountCents = PRICE_PARTICIPANTS_L;
+        break;
+      default:
+        throw new Error(`Invalid num_participants: ${num_participants}`);
+    }
+  }
+
+  if (amountCents === 0) {
+    return null;
+  }
+  return new Intl.NumberFormat('de-DE', {
+    style: 'currency',
+    currency: 'EUR',
+  }).format(amountCents / 100.0);
+};
 /* eslint-enable camelcase */
 
 export enum REGULATION {
@@ -74,7 +136,7 @@ export enum REGULATION {
   'ParkenLängs' = 11,
   'ParkenQuer' = 12,
   'ParkenDiagonal' = 13,
-  'Sonstige' = 14
+  'Sonstige' = 14,
 }
 
 export const isBoardwalk = ({ regulation }) => regulation === REGULATION.Gehweg;
@@ -87,3 +149,28 @@ export const postSignup = (district) =>
 
 export const openSignup = (district) =>
   !preSignup(district) && !postSignup(district);
+
+export const setLayerVisibility = (
+  map: mapboxgl.Map,
+  availableLayerSets: { [name: string]: string[] },
+  visibleLayerSets: string[]
+) => {
+  // All layer sets that are not visible are hidden
+  const hiddenLayerSets = Object.keys(availableLayerSets).filter(
+    (layerSet) => !visibleLayerSets.includes(layerSet)
+  );
+  // Hide all layers in hidden layer sets
+  hiddenLayerSets.forEach((layerSet) => {
+    logger(`Hiding layerset ${layerSet}:`, availableLayerSets[layerSet]);
+    availableLayerSets[layerSet].forEach((layerName: string) =>
+      map.setLayoutProperty(layerName, 'visibility', 'none')
+    );
+  });
+  // Show all layers in visible layer sets
+  visibleLayerSets.forEach((layerSet) => {
+    logger(`Showing layerset ${layerSet}:`, availableLayerSets[layerSet]);
+    availableLayerSets[layerSet].forEach((layerName: string) =>
+      map.setLayoutProperty(layerName, 'visibility', 'visible')
+    );
+  });
+};

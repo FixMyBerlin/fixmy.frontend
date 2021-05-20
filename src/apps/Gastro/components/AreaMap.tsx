@@ -1,23 +1,26 @@
+import turfCenter from '@turf/center';
+import MapboxGL, { LngLatLike } from 'mapbox-gl';
 import React from 'react';
-import MapboxGL from 'mapbox-gl';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import Map from '~/components2/Map';
-import config from '~/apps/Gastro/config';
 
-const StyledMap = styled(Map)`
+import config from '~/apps/Gastro/config';
+import { BaseMap } from '~/components2/BaseMap';
+import { DistrictConfig } from '~/types';
+
+const StyledMap = styled(BaseMap)`
   width: 40em;
   height: 30em;
   margin: 1em 0;
 `;
 
-const addAreaToMap = (map, area) => {
+const addAreaToMap = (map, area, showAreaPin) => {
   map.addSource('usageArea', {
     type: 'geojson',
     data: {
       type: 'Feature',
-      geometry: area
-    }
+      geometry: area,
+    },
   });
   map.addLayer({
     id: 'usageArea',
@@ -26,8 +29,8 @@ const addAreaToMap = (map, area) => {
     layout: {},
     paint: {
       'fill-color': config.colors.change_4,
-      'fill-opacity': 0.8
-    }
+      'fill-opacity': 0.8,
+    },
   });
 
   // Fit map to area bounds by iteratively expanding a boundary using each of
@@ -37,25 +40,47 @@ const addAreaToMap = (map, area) => {
     new MapboxGL.LngLatBounds(area.coordinates[0][0], area.coordinates[0][0])
   );
 
+  if (showAreaPin) {
+    const center = turfCenter(area);
+    new MapboxGL.Marker({ color: config.colors.interaction })
+      .setLngLat(center.geometry.coordinates as LngLatLike)
+      .addTo(map);
+  }
+
   map.fitBounds(bounds, { padding: 20, maxZoom: 17.5, linear: true });
 };
 
-const handleMapInit = (map, geometry, area) => {
+const handleMapInit = (
+  map: MapboxGL.Map,
+  geometry,
+  area,
+  district: DistrictConfig,
+  showAreaPin: boolean
+) => {
   if (geometry != null) {
     map.setCenter(geometry.coordinates);
     new MapboxGL.Marker({ color: config.colors.interaction })
       .setLngLat(geometry.coordinates)
       .addTo(map);
   }
-  if (area != null) addAreaToMap(map, area);
+  if (area != null) addAreaToMap(map, area, showAreaPin);
 };
 
-const AreaMap = ({ application, district, printable = false }) => {
+const AreaMap = ({
+  application,
+  district,
+  printable = false,
+  className = null,
+  showAreaPin = false,
+}) => {
   const { geometry, area } = application;
 
   return (
     <StyledMap
-      onInit={(map) => handleMapInit(map, geometry, area)}
+      className={className}
+      onInit={(map) =>
+        handleMapInit(map, geometry, area, district, showAreaPin)
+      }
       style={config.gastro[district?.name]?.map.style}
       bounds={district?.bounds}
       interactive={false}
@@ -67,7 +92,7 @@ const AreaMap = ({ application, district, printable = false }) => {
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(AreaMap);

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
+import { media } from '~/styles/utils';
 
 const Headline = styled.h1`
   font-size: 28px;

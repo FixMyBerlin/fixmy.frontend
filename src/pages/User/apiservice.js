@@ -19,7 +19,7 @@ async function handleRequest(
       response = await ky(`${config.apiUrl}/${route}`, {
         method,
         json,
-        headers
+        headers,
       })[respType]();
     } else {
       await ky(`${config.apiUrl}/${route}`, { method, json, headers });
@@ -140,5 +140,5 @@ export default {
   apiUser,
   apiVerify,
   apiPasswordReset,
-  apiLikes
+  apiLikes,
 };

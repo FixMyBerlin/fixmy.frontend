@@ -3,15 +3,16 @@ import { Router, Route, Switch, Redirect, matchPath } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import history from '~/history';
-import config from '~/pages/KatasterKI/config';
-import { media } from '~/styles/utils';
-import Landing from './pages/Landing';
-import Scenes from './pages/Scenes';
-import Profile from './pages/Profile';
-import AppGlobalStyle from '~/styles/Global';
-import { ScrollToTop } from './utils';
-import mapBgSrc from '~/images/strassencheck/map-bg.jpg';
 import landingBgSrc from '~/images/strassencheck/landing-bg.jpg';
+import mapBgSrc from '~/images/strassencheck/map-bg.jpg';
+import config from '~/pages/KatasterKI/config';
+import AppGlobalStyle from '~/styles/Global';
+import { media } from '~/styles/utils';
+
+import Landing from './pages/Landing';
+import Profile from './pages/Profile';
+import Scenes from './pages/Scenes';
+import { ScrollToTop } from './utils';
 
 const BgWrapper = styled.div`
   min-height: 100%;
@@ -77,12 +78,12 @@ const Gradient = styled.div`
 const isLandingPage = (path) => {
   const isLanding = matchPath(path, {
     path: config.routes.katasterKI.landing,
-    exact: true
+    exact: true,
   });
 
   const isLandingNational = matchPath(path, {
     path: config.routes.katasterKI?.landingNational,
-    exact: true
+    exact: true,
   });
 
   return isLanding || isLandingNational;

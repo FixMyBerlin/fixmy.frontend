@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
 
-import Subtitle from './Subtitle';
 import InnerImg, { InnerImageProps } from './InnerImage';
+import Subtitle from './Subtitle';
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -27,10 +27,13 @@ const ImageSpacer = styled.div`
 const ImageMulti = ({ children }) => <ImageWrapper>{children}</ImageWrapper>;
 
 interface ImageMultiInnerProps extends InnerImageProps {
-  children: React.ReactNode | React.ReactNode[];
+  children?: React.ReactNode | React.ReactNode[];
 }
 
-const ImageMultiInner = ({ children, ...props }: ImageMultiInnerProps) => (
+const ImageMultiInner = ({
+  children = null,
+  ...props
+}: ImageMultiInnerProps) => (
   <ImageSpacer>
     <InnerImg {...props}>{children}</InnerImg>
   </ImageSpacer>

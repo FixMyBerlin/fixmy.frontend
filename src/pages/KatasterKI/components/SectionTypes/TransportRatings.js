@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import Flex from '~/components/Flex';
-import RatingSlider from '../RatingSlider';
-import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Button from '~/pages/KatasterKI/components//Button';
+import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
+
+import RatingSlider from '../RatingSlider';
 
 const Sliders = ({
   title,
@@ -15,7 +16,7 @@ const Sliders = ({
   ratingLabels,
   handleChange,
   transportRatings,
-  next
+  next,
 }) => {
   const [usedSlider, setUsedSlider] = useState(false);
   const [isLoading, onClick] = useHandlerTimeout(next);
@@ -64,7 +65,7 @@ const Sliders = ({
 };
 
 const mapStateToProps = (state) => ({
-  transportRatings: state.KatasterKIState.transportRatings
+  transportRatings: state.KatasterKIState.transportRatings,
 });
 
 export default connect(mapStateToProps)(Sliders);

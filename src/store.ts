@@ -1,13 +1,14 @@
+import { useSelector, TypedUseSelectorHook } from 'react-redux';
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
 import AppState from '~/AppState';
-import UserState from '~/pages/User/UserState';
-import AnalysisState from '~/pages/Analysis/AnalysisState';
-import ReportsState from '~/pages/Reports/state';
-import KatasterKIState from '~/pages/KatasterKI/state';
-import SpielstrassenState from '~/apps/Spielstrassen/state';
+import AnalysisState from '~/apps/Analysis/state';
 import MapState from '~/apps/Map/MapState';
+import SpielstrassenState from '~/apps/Spielstrassen/state';
+import KatasterKIState from '~/pages/KatasterKI/state';
+import ReportsState from '~/pages/Reports/state';
+import UserState from '~/pages/User/UserState';
 
 const Reducer = combineReducers({
   AppState,
@@ -16,10 +17,11 @@ const Reducer = combineReducers({
   AnalysisState,
   ReportsState,
   KatasterKIState,
-  SpielstrassenState
+  SpielstrassenState,
 });
 
 export type RootState = ReturnType<typeof Reducer>;
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 // Configure redux-devtools-extension
 // https://github.com/zalmoxisus/redux-devtools-extension#usage

@@ -1,10 +1,9 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import idx from 'idx';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
-import UserForm from '~/pages/User/components/UserForm';
 import { resetPassword } from '~/pages/User/UserState';
+import UserForm from '~/pages/User/components/UserForm';
 
 const formConfig = [
   {
@@ -13,13 +12,13 @@ const formConfig = [
     type: 'password',
     label: 'Passwort',
     placeholder: 'Neues Passwort eigeben...',
-    validateError: 'Bitte geben Sie ein neues Passwort an.'
-  }
+    validateError: 'Bitte geben Sie ein neues Passwort an.',
+  },
 ];
 
 class ResetPassword extends PureComponent {
   onSubmit = (values, params) => {
-    const matchParams = idx(this.props, (_) => _.match.params);
+    const matchParams = this.props?.match?.params;
 
     if (
       !matchParams ||

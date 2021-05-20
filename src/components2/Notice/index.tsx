@@ -1,5 +1,2 @@
-import Notice from './Notice';
-import ApiNotice from './ApiNotice';
-
-export { ApiNotice };
-export default Notice;
+export { default as Notice } from './Notice';
+export { default as ApiNotice } from './ApiNotice';

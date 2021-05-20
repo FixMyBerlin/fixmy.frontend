@@ -1,15 +1,16 @@
 /* eslint-disable  no-multi-spaces */
 import booleanWithin from '@turf/boolean-within';
 
-import reverseGeocode from '~/services/reverseGeocode';
 import { getGeoLocation } from '~/apps/Map/map-utils'; // TODO: handle eslint warning regarding dependency circle
 import {
   apiSubmitReport,
-  marshallNewReportObjectFurSubmit
+  marshallNewReportObjectForSubmit,
 } from '~/pages/Reports/apiservice';
+import reverseGeocode from '~/services/reverseGeocode';
+import logger from '~/utils/logger';
+
 import { actions as errorStateActions } from './ErrorState';
 import initialState from './initialState';
-import logger from '~/utils/logger';
 
 // action constants
 
@@ -46,65 +47,65 @@ export const LOCATION_MODE_GEOCODING = 'GEOCODING';
 const actions = {};
 
 actions.resetDialogState = () => ({
-  type: types.RESET_DIALOG_STATE
+  type: types.RESET_DIALOG_STATE,
 });
 
 actions.setLocationMode = (mode) => ({
   type: types.SET_LOCATION_MODE,
-  mode
+  mode,
 });
 
 actions.setLocationModeGeocoding = () => ({
   type: types.SET_LOCATION_MODE,
-  mode: LOCATION_MODE_GEOCODING
+  mode: LOCATION_MODE_GEOCODING,
 });
 
 actions.setLocationModeDevice = () => ({
   type: types.SET_LOCATION_MODE,
-  mode: LOCATION_MODE_DEVICE
+  mode: LOCATION_MODE_DEVICE,
 });
 
 actions.setTempLocationCoords = ({ lng, lat }) => ({
   type: types.SET_TEMP_LOCATION_COORDS,
-  payload: { lng, lat }
+  payload: { lng, lat },
 });
 
 actions.setTempLocationAddress = (address) => ({
   type: types.SET_TEMP_LOCATION_ADDRESS,
-  address
+  address,
 });
 
 actions.confirmLocation = () => ({
-  type: types.CONFIRM_LOCATION
+  type: types.CONFIRM_LOCATION,
 });
 
 actions.setDeviceLocation = ({ lng, lat }) => ({
   type: types.SET_DEVICE_LOCATION,
-  payload: { lng, lat }
+  payload: { lng, lat },
 });
 
 actions.handleGeocodeSuccess = ({ coords, address }) => ({
   type: types.GEOCODE_COMPLETE,
-  payload: { coords, address }
+  payload: { coords, address },
 });
 
 actions.unsetAutomatedPositioning = () => ({
-  type: types.UNSET_AUTOMATED_POSITIONING
+  type: types.UNSET_AUTOMATED_POSITIONING,
 });
 
 actions.setBikestandCount = (amount) => ({
   type: types.SET_BIKESTAND_COUNT,
-  payload: amount
+  payload: amount,
 });
 
 actions.setAdditionalData = ({ photo, description }) => ({
   type: types.SET_ADDITIONAL_DATA,
-  payload: { photo, description }
+  payload: { photo, description },
 });
 
 actions.setFeeAcceptable = (isFeeAcceptable) => ({
   type: types.SET_FEE_ACCEPTABLE,
-  isFeeAcceptable
+  isFeeAcceptable,
 });
 
 // thunks
@@ -116,18 +117,18 @@ actions.validateCoordinates = (polygonGeoJson, { lng, lat }) => async (
     type: 'Feature',
     geometry: {
       type: 'Point',
-      coordinates: [lng, lat]
-    }
+      coordinates: [lng, lat],
+    },
   };
 
   if (booleanWithin(pointFeature, polygonGeoJson)) {
     dispatch({
-      type: types.VALIDATE_POSITION
+      type: types.VALIDATE_POSITION,
     });
     return true;
   }
   dispatch({
-    type: types.INVALIDATE_POSITION
+    type: types.INVALIDATE_POSITION,
   });
   return false;
 };
@@ -148,7 +149,7 @@ actions.reverseGeocodeCoordinates = ({ lat, lng }) => async (dispatch) => {
   if (errorMsg) {
     dispatch(
       errorStateActions.addError({
-        message: errorMsg
+        message: errorMsg,
       })
     );
   } else {
@@ -174,7 +175,7 @@ actions.useDevicePosition = () => async (dispatch) => {
       'Geben Sie die Adresse bitte ein oder verschieben Sie die Karte zu Ihrem Standort.';
     dispatch(
       errorStateActions.addError({
-        message: errMsg
+        message: errMsg,
       })
     );
     throw err;
@@ -185,7 +186,7 @@ actions.submitReport = () => async (dispatch, getState) => {
   dispatch({ type: types.SUBMIT_REPORT_PENDING });
 
   try {
-    const reportPayload = marshallNewReportObjectFurSubmit(
+    const reportPayload = marshallNewReportObjectForSubmit(
       getState().ReportsState.SubmitReportState.newReport
     );
     const submittedReport = await apiSubmitReport(reportPayload);
@@ -196,7 +197,7 @@ actions.submitReport = () => async (dispatch, getState) => {
     dispatch(
       errorStateActions.addError({
         // show ErrorMessage using the generic component
-        message: errMsg
+        message: errMsg,
       })
     );
     throw e;
@@ -211,13 +212,13 @@ function reducer(state = initialState.SubmitReportState, action = {}) {
       //  keep locationMode in order to display the map after user clicked "Ort ändern"
       return {
         ...initialState.SubmitReportState,
-        locationMode: state.locationMode
+        locationMode: state.locationMode,
       };
     case types.SET_DEVICE_LOCATION:
       return {
         ...state,
         deviceLocation: action.payload,
-        geocodeResult: null
+        geocodeResult: null,
       };
     case types.GEOCODE_COMPLETE:
       return {
@@ -226,31 +227,31 @@ function reducer(state = initialState.SubmitReportState, action = {}) {
         tempLocation: {
           ...state.tempLocation,
           address: action.payload.address,
-          lngLat: action.payload.coords
+          lngLat: action.payload.coords,
         },
-        deviceLocation: null
+        deviceLocation: null,
       };
     case types.UNSET_AUTOMATED_POSITIONING:
       return {
         ...state,
         geocodeResult: null,
-        deviceLocation: null
+        deviceLocation: null,
       };
     case types.INVALIDATE_POSITION:
       return {
         ...state,
         tempLocation: {
           ...state.tempLocation,
-          valid: false
-        }
+          valid: false,
+        },
       };
     case types.VALIDATE_POSITION:
       return {
         ...state,
         tempLocation: {
           ...state.tempLocation,
-          valid: true
-        }
+          valid: true,
+        },
       };
     case types.REVERSE_GEOCODE_COMPLETE:
       return { ...state, reverseGeocodeResult: action.payload };
@@ -259,16 +260,16 @@ function reducer(state = initialState.SubmitReportState, action = {}) {
         ...state,
         tempLocation: {
           ...state.tempLocation,
-          lngLat: action.payload
-        }
+          lngLat: action.payload,
+        },
       };
     case types.SET_TEMP_LOCATION_ADDRESS:
       return {
         ...state,
         tempLocation: {
           ...state.tempLocation,
-          address: action.address
-        }
+          address: action.address,
+        },
       };
     case types.CONFIRM_LOCATION:
       return {
@@ -282,10 +283,10 @@ function reducer(state = initialState.SubmitReportState, action = {}) {
             type: 'Point',
             coordinates: [
               state.tempLocation.lngLat.lng,
-              state.tempLocation.lngLat.lat
-            ]
-          }
-        }
+              state.tempLocation.lngLat.lat,
+            ],
+          },
+        },
       };
     case types.SET_LOCATION_MODE:
       return { ...state, locationMode: action.mode };
@@ -296,9 +297,9 @@ function reducer(state = initialState.SubmitReportState, action = {}) {
           ...state.newReport,
           details: {
             ...state.newReport.details,
-            number: action.payload
-          }
-        }
+            number: action.payload,
+          },
+        },
       };
     case types.SET_FEE_ACCEPTABLE:
       return {
@@ -307,44 +308,44 @@ function reducer(state = initialState.SubmitReportState, action = {}) {
           ...state.newReport,
           details: {
             ...state.newReport.details,
-            fee_acceptable: action.isFeeAcceptable
-          }
-        }
+            fee_acceptable: action.isFeeAcceptable,
+          },
+        },
       };
     case types.SET_ADDITIONAL_DATA:
       return {
         ...state,
         newReport: {
           ...state.newReport,
-          ...action.payload
-        }
+          ...action.payload,
+        },
       };
     case types.SUBMIT_REPORT_PENDING:
       return {
         ...state,
         apiRequestStatus: {
           ...state.apiRequestStatus,
-          submitting: true
-        }
+          submitting: true,
+        },
       };
     case types.SUBMIT_REPORT_COMPLETE:
       return {
         ...state,
         apiRequestStatus: {
           submitting: false,
-          submitted: true
+          submitted: true,
         },
         newReport: {
           ...state.newReport,
-          id: action.submittedReport.id
-        }
+          id: action.submittedReport.id,
+        },
       };
     case types.SUBMIT_REPORT_ERROR:
       return {
         ...state,
         apiRequestStatus: {
-          submitting: false
-        }
+          submitting: false,
+        },
       };
     default:
       return state;

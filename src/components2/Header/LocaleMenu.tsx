@@ -1,12 +1,13 @@
+import { MenuList, MenuItem, Collapse } from '@material-ui/core';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { MenuList, MenuItem, Collapse } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '~/store';
+
 import { setLocale } from '~/AppState';
-import { LocaleCode } from '~/types';
 import messages from '~/lang/common';
+import { useTypedSelector } from '~/store';
+import { LocaleCode } from '~/types';
 
 type Props = {
   locales: LocaleCode[];
@@ -35,7 +36,7 @@ const LocaleMenuOption = styled(({ isActive, ...props }) => (
 const LocaleMenu = (props: Props) => {
   const intl = useIntl();
   const dispatch = useDispatch();
-  const activeLocale = useSelector((state: RootState) => state.AppState.locale);
+  const activeLocale = useTypedSelector((state) => state.AppState.locale);
   const handleClick = (locale: LocaleCode) => {
     props.onSelection();
     if (locale !== activeLocale) dispatch(setLocale(locale));

@@ -2,15 +2,15 @@ import React from 'react';
 
 import PedestrianIcon from '~/images/strassencheck/icons/icon-transportation-1.svg';
 import BikeIcon from '~/images/strassencheck/icons/icon-transportation-2.svg';
-import MotorbikeIcon from '~/images/strassencheck/icons/icon-transportation-5.svg';
 import PublicIcon from '~/images/strassencheck/icons/icon-transportation-3.svg';
 import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg';
+import MotorbikeIcon from '~/images/strassencheck/icons/icon-transportation-5.svg';
 
 export default [
   {
     type: 'info',
     title:
-      'Erzählen Sie uns nun etwas zu Ihrer Verkehrsnutzung. Die Angaben sind anonym.'
+      'Erzählen Sie uns nun etwas zu Ihrer Verkehrsnutzung. Die Angaben sind anonym.',
   },
   {
     type: 'transportRatings',
@@ -19,7 +19,7 @@ export default [
     sliderOptions: {
       min: 0,
       max: 5,
-      step: 1
+      step: 1,
     },
     ratingLabels: [
       'Nie',
@@ -27,7 +27,7 @@ export default [
       '1-3 mal pro Monat',
       '1-3 mal pro Woche',
       '4-5 mal pro Woche',
-      '(fast) täglich'
+      '(fast) täglich',
     ],
     ratings: [
       {
@@ -37,29 +37,29 @@ export default [
           <>
             Zu Fuß <span className="light">(länger als 15 min pro Weg)</span>
           </>
-        )
+        ),
       },
       {
         icon: BikeIcon,
         name: 'bicycle',
-        label: 'Fahrrad / E-Bike'
+        label: 'Fahrrad / E-Bike',
       },
       {
         icon: MotorbikeIcon,
         name: 'motorbike',
-        label: 'Roller / Motorrad'
+        label: 'Roller / Motorrad',
       },
       {
         icon: PublicIcon,
         name: 'public',
-        label: 'Bus & Bahn'
+        label: 'Bus & Bahn',
       },
       {
         icon: CarIcon,
         name: 'car',
-        label: 'Auto'
-      }
-    ]
+        label: 'Auto',
+      },
+    ],
   },
   {
     type: 'single_choice',
@@ -68,37 +68,37 @@ export default [
     options: [
       {
         label: 'unter 18 Jahre',
-        value: 0
+        value: 0,
       },
       {
         label: '18 bis 24 Jahre',
-        value: 1
+        value: 1,
       },
       {
         label: '25 bis 29 Jahre',
-        value: 2
+        value: 2,
       },
       {
         label: '30 bis 39 Jahre',
-        value: 3
+        value: 3,
       },
       {
         label: '40 bis 49 Jahre',
-        value: 4
+        value: 4,
       },
       {
         label: '50 bis 64 Jahre',
-        value: 5
+        value: 5,
       },
       {
         label: '65 bis 74 Jahre',
-        value: 6
+        value: 6,
       },
       {
         label: 'über 74',
-        value: 7
-      }
-    ]
+        value: 7,
+      },
+    ],
   },
   {
     type: 'single_choice',
@@ -107,13 +107,13 @@ export default [
     options: [
       {
         label: 'Ja',
-        value: true
+        value: true,
       },
       {
         label: 'Nein',
-        value: false
-      }
-    ]
+        value: false,
+      },
+    ],
   },
   {
     type: 'single_choice',
@@ -122,17 +122,17 @@ export default [
     options: [
       {
         label: 'Weiblich',
-        value: 'w'
+        value: 'w',
       },
       {
         label: 'Männlich',
-        value: 'm'
+        value: 'm',
       },
       {
         label: 'Divers',
-        value: 'd'
-      }
-    ]
+        value: 'd',
+      },
+    ],
   },
   {
     type: 'multi_choice',
@@ -141,29 +141,29 @@ export default [
     options: [
       {
         label: 'Pedelec / E-Bike',
-        name: 'pedelec'
+        name: 'pedelec',
       },
       {
         label: 'Eigenes Auto',
-        name: 'car'
+        name: 'car',
       },
       {
         label: 'Monatsticket Nahverkehr',
-        name: 'public'
+        name: 'public',
       },
       {
         label: 'Motorrad / Moped',
-        name: 'motorbike'
+        name: 'motorbike',
       },
       {
         label: 'Fahrrad (ohne Motor)',
-        name: 'bicycle'
+        name: 'bicycle',
       },
       {
         label: 'Carsharing',
-        name: 'carsharing'
-      }
-    ]
+        name: 'carsharing',
+      },
+    ],
   },
   {
     type: 'single_choice',
@@ -173,25 +173,25 @@ export default [
     options: [
       {
         label: '10 Minuten',
-        value: 0
+        value: 0,
       },
       {
         label: '20 Minuten',
-        value: 1
+        value: 1,
       },
       {
         label: '30 Minuten',
-        value: 2
+        value: 2,
       },
       {
         label: 'Mehr als 30 Minuten',
-        value: 3
+        value: 3,
       },
       {
         label: 'Weiß ich nicht',
-        value: 4
-      }
-    ]
+        value: 4,
+      },
+    ],
   },
   {
     type: 'radiogroups',
@@ -208,8 +208,8 @@ export default [
           { label: 'trifft eher nicht zu', value: 1 },
           { label: 'teils-teils', value: 2 },
           { label: 'trifft eher zu', value: 3 },
-          { label: 'trifft zu', value: 4 }
-        ]
+          { label: 'trifft zu', value: 4 },
+        ],
       },
       {
         label: '„Mit dem Fahrrad bin ich schneller und flexibler.“',
@@ -219,8 +219,8 @@ export default [
           { label: 'trifft eher nicht zu', value: 1 },
           { label: 'teils-teils', value: 2 },
           { label: 'trifft eher zu', value: 3 },
-          { label: 'trifft zu', value: 4 }
-        ]
+          { label: 'trifft zu', value: 4 },
+        ],
       },
       {
         label: '„Bei schlechtem Wetter fahre ich kein Fahrrad.“',
@@ -230,8 +230,8 @@ export default [
           { label: 'trifft eher nicht zu', value: 1 },
           { label: 'teils-teils', value: 2 },
           { label: 'trifft eher zu', value: 3 },
-          { label: 'trifft zu', value: 4 }
-        ]
+          { label: 'trifft zu', value: 4 },
+        ],
       },
       {
         label: '„Ich fühle mich sicher auf dem Fahrrad im Verkehr.“',
@@ -241,10 +241,10 @@ export default [
           { label: 'trifft eher nicht zu', value: 1 },
           { label: 'teils-teils', value: 2 },
           { label: 'trifft eher zu', value: 3 },
-          { label: 'trifft zu', value: 4 }
-        ]
-      }
-    ]
+          { label: 'trifft zu', value: 4 },
+        ],
+      },
+    ],
   },
   {
     type: 'multi_choice',
@@ -254,44 +254,44 @@ export default [
     options: [
       {
         label: 'Ich kann nicht Fahrrad fahren (fehlende Fertigkeit)',
-        name: 'skills'
+        name: 'skills',
       },
       {
         label: 'Es gibt keine sichere Infrastruktur',
-        name: 'infrastructure'
+        name: 'infrastructure',
       },
       {
         label: 'Meine Strecken sind zu lang',
-        name: 'distance'
+        name: 'distance',
       },
       {
         label: 'In meinem Umfeld fahren wenige Personen Fahrrad',
-        name: 'social'
+        name: 'social',
       },
       {
         label: 'Radfahren ist mir zu anstrengend',
-        name: 'physicalStrain'
+        name: 'physicalStrain',
       },
       {
         label: 'Ich habe kein (gutes) Fahrrad',
-        name: 'equipment'
+        name: 'equipment',
       },
       {
         label: 'Ich kann meine Kinder nicht mitnehmen',
-        name: 'children'
+        name: 'children',
       },
       {
         label: 'Andere Gründe',
         input: true,
         placeholder: 'Geben Sie hier Ihre Antwort ein ...',
-        name: 8
-      }
-    ]
+        name: 8,
+      },
+    ],
   },
   {
     type: 'zip',
     name: 'zipcode',
     title:
-      'Geben Sie Ihre Postleitzahl an, damit wir mögliche regionale Unterschiede ermitteln können.'
-  }
+      'Geben Sie Ihre Postleitzahl an, damit wir mögliche regionale Unterschiede ermitteln können.',
+  },
 ];

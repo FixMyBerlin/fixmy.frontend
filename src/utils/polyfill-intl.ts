@@ -1,18 +1,30 @@
-import { shouldPolyfill } from '@formatjs/intl-getcanonicallocales/should-polyfill';
-import { shouldPolyfill as shouldPolyfillPluralRules } from '@formatjs/intl-pluralrules/should-polyfill';
-import { shouldPolyfill as shouldPolyfillNumberFormat } from '@formatjs/intl-numberformat/should-polyfill';
 import { shouldPolyfill as shouldPolyfillDateTimeFormat } from '@formatjs/intl-datetimeformat/should-polyfill';
+import { shouldPolyfill } from '@formatjs/intl-getcanonicallocales/should-polyfill';
+import { shouldPolyfill as shouldPolyfillLocale } from '@formatjs/intl-locale/should-polyfill';
+import { shouldPolyfill as shouldPolyfillNumberFormat } from '@formatjs/intl-numberformat/should-polyfill';
+import { shouldPolyfill as shouldPolyfillPluralRules } from '@formatjs/intl-pluralrules/should-polyfill';
 import debug from 'debug';
 
 import { LocaleCode } from '~/types';
 
 const log = debug('fmc:polyfills');
 
+/**
+ * Load polyfills for internationalization from @formatjs if they are needed
+ *
+ * @param locale current locale code
+ */
 async function polyfill(locale: LocaleCode) {
   if (shouldPolyfill()) {
     log('Loading getcanonicallocales polyfill');
     // Load the polyfill 1st BEFORE loading data
     await import('@formatjs/intl-getcanonicallocales/polyfill');
+  }
+
+  if (shouldPolyfillLocale()) {
+    log('Loading Intl.locale polyfill');
+    // Load the polyfill 1st BEFORE loading data
+    await import('@formatjs/intl-locale/polyfill');
   }
 
   if (shouldPolyfillPluralRules()) {

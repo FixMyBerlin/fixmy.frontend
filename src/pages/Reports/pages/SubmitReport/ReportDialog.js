@@ -7,18 +7,19 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 import styled from 'styled-components';
-import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
-import { actions as submitReportStateActions } from '~/pages/Reports/state/SubmitReportState';
 
 import config from '~/pages/Reports/config';
 import OverviewMapNavBar from '~/pages/Reports/pages/OverviewMap/components/OverviewMapNavBar';
-import LocateModeChooser from './pages/LocateModeChooser';
-import LocateMeMap from './components/LocateMeMap';
-import BikestandsForm from './pages/BikestandsForm';
-import AdditionalDataForm from './pages/AdditionalDataForm';
 import FormProgressBar from '~/pages/Reports/pages/SubmitReport/components/FormProgressBar';
-import ReportSubmitted from './pages/ReportSubmitted';
+import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
+import { actions as submitReportStateActions } from '~/pages/Reports/state/SubmitReportState';
+
+import LocateMeMap from './components/LocateMeMap';
+import AdditionalDataForm from './pages/AdditionalDataForm';
 import BicycleParkingGarageForm from './pages/BicycleParkingGarageForm';
+import BikestandsForm from './pages/BikestandsForm';
+import LocateModeChooser from './pages/LocateModeChooser';
+import ReportSubmitted from './pages/ReportSubmitted';
 import ThanksPage from './pages/ThanksPage';
 
 const Markdown = React.lazy(() => import('~/pages/Markdown'));
@@ -64,7 +65,7 @@ class ReportDialog extends PureComponent {
       newReport,
       isLocationPinned,
       error,
-      submitting
+      submitting,
     } = this.props;
 
     const proceed = () => {
@@ -195,7 +196,7 @@ class ReportDialog extends PureComponent {
 
 const mapDispatchToProps = {
   ...errorStateActions,
-  ...submitReportStateActions
+  ...submitReportStateActions,
 };
 
 export default connect(
@@ -208,7 +209,7 @@ export default connect(
       state.ReportsState.SubmitReportState.apiRequestStatus.submitting,
     error: state.ReportsState.ErrorState,
     token: state.UserState.token,
-    user: state.UserState.userData
+    user: state.UserState.userData,
   }),
   mapDispatchToProps
 )(ReportDialog);

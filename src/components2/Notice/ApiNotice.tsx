@@ -1,13 +1,14 @@
-import React, { ReactNode } from 'react';
 import {
   Button,
   Card,
   CardHeader,
   CardContent,
-  CardActions
+  CardActions,
 } from '@material-ui/core';
 import ReplayIcon from '@material-ui/icons/Replay';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
+
 import config from '~/config';
 
 const StyledCardHeader = styled(CardHeader)`
@@ -28,12 +29,14 @@ type Props = {
 /**
  * ApiNotice is used for displaying messages about failed interactions with APIs
  * to the user
+ *
+ * If `onRetry` is defined, a retry button is displayed that calls that callback.
  */
 const ApiNotice = ({
   children,
   title = 'Fehler',
   onRetry = null,
-  className = null
+  className = null,
 }: Props) => (
   <Card variant="outlined" className={className}>
     <StyledCardHeader title={title} />

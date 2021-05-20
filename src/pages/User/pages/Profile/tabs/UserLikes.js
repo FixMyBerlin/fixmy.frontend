@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
-import idx from 'idx';
 import styled from 'styled-components';
 
-import Title from '~/components/Title';
-import Text from '~/components/Text';
-import { loadLikes } from '~/pages/User/UserState';
-import ProjectList from '~/components2/ProjectList';
 import Select from '~/components/Select';
+import Text from '~/components/Text';
+import Title from '~/components/Title';
+import { ProjectList } from '~/components2/ProjectList';
+import { loadLikes } from '~/pages/User/UserState';
 
 const StyledSelect = styled(Select)`
   margin-bottom: 1.5em;
@@ -16,7 +15,7 @@ class UserLikes extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      itemType: 'projects'
+      itemType: 'projects',
     };
   }
 
@@ -25,7 +24,7 @@ class UserLikes extends PureComponent {
   }
 
   onSelect(evt) {
-    const itemType = idx(evt, (_) => _.target.selectedOptions[0].value);
+    const itemType = evt.target?.selectedOptions[0]?.value;
 
     this.setState({ itemType });
     this.props.dispatch(loadLikes(itemType));
@@ -46,12 +45,12 @@ class UserLikes extends PureComponent {
           options={[
             {
               value: 'projects',
-              label: 'Planungen'
+              label: 'Planungen',
             },
             {
               value: 'reports',
-              label: 'Meldungen'
-            }
+              label: 'Meldungen',
+            },
           ]}
           disabled={this.props.isLoading}
         />

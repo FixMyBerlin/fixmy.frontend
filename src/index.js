@@ -1,10 +1,11 @@
+import '~/utils/polyfills';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import '~/utils/polyfills';
-import Store from '~/store';
 import App from '~/App';
+import Store from '~/store';
 
 ReactDOM.render(
   <Provider store={Store}>

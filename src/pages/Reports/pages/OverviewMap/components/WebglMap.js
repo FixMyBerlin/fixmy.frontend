@@ -1,13 +1,17 @@
-import React, { PureComponent } from 'react';
+import debug from 'debug';
 import MapboxGL from 'mapbox-gl';
 import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import config from '~/pages/Reports/config';
-import logger from '~/utils/logger';
 import BaseMap from '~/pages/Reports/components/BaseMap';
-import ClusteredMarkers from './ClusteredMarkers';
+import { LinkLayer } from '~/pages/Reports/components/LinkLayer';
+import config from '~/pages/Reports/config';
 import FMCPropTypes from '~/pages/Reports/propTypes';
+
+import ClusteredMarkers from './ClusteredMarkers';
+
+const logger = debug('fmc:reports:WebglMap.js');
 
 function toFeature(d) {
   const { geometry, ...properties } = d;
@@ -15,14 +19,14 @@ function toFeature(d) {
   return {
     type: 'Feature',
     geometry,
-    properties
+    properties,
   };
 }
 
 function toGeojson(data) {
   return {
     type: 'FeatureCollection',
-    features: data.map(toFeature)
+    features: data.map(toFeature),
   };
 }
 
@@ -46,23 +50,19 @@ class WebglMap extends PureComponent {
       return;
     }
 
-    const { center, zoomIn, disabled, fitExtentOnPopupClose } = this.props;
+    const { center, disabled, isCTAButtonShifted } = this.props;
 
-    if (center) {
-      const newCameraOptions = { center };
-      if (zoomIn) {
-        newCameraOptions.zoom =
-          config.reports.overviewMap.zoomDeepLinkedMarkers || 16;
-      }
-      this.map.easeTo(newCameraOptions);
-    } else if (fitExtentOnPopupClose) {
-      this.map.fitBounds(config.reportsMap.bounds);
-    }
+    if (center) this.pointMapAt(center);
+
+    // Reset camera offset when the details panel is not open
+    if (!isCTAButtonShifted && this.map.getPadding().right > 0)
+      this.map.easeTo({ padding: { right: 0 } });
 
     this.toggleMapInteractivity(disabled);
   }
 
-  onLoad(map) {
+  onBaseMapLoad = (map) => {
+    logger('onLoad');
     this.map = map;
     this.toggleZoomControl(true);
 
@@ -71,7 +71,27 @@ class WebglMap extends PureComponent {
 
     // notify containers that map has been initialized
     this.props.onLoad(map);
-  }
+  };
+
+  /**
+   * Ease map to new location, adjusting zoom level and offset for details panel
+   *
+   * @param {Object} center coordinates for camera target
+   */
+  pointMapAt = (center) => {
+    const newCameraOptions = { center };
+    const { isCTAButtonShifted, zoomIn } = this.props;
+    const zoomTarget = config.reports.overviewMap.zoomDeepLinkedMarkers || 16;
+
+    if (isCTAButtonShifted) newCameraOptions.padding = { right: 400 };
+    if (zoomIn && this.map.getZoom() < zoomTarget) {
+      newCameraOptions.zoom = zoomTarget;
+      logger(`Ease map and zoom camera:`, newCameraOptions);
+    } else {
+      logger(`Ease map to camera:`, newCameraOptions);
+    }
+    this.map.easeTo(newCameraOptions);
+  };
 
   toggleZoomControl = (isActive = false) => {
     if (isActive) {
@@ -92,27 +112,39 @@ class WebglMap extends PureComponent {
   }
 
   render() {
-    const { reportsData, onMarkerClick, selectedReport, detailId } = this.props;
+    const {
+      reportsData,
+      onMarkerClick,
+      selectedReport,
+      detailId,
+      setHoveredReport,
+      unSetHoveredReport,
+    } = this.props;
 
     const isReportsDataLoaded = !!reportsData.length;
+
     return (
-      <BaseMap
-        onLoad={(map) => this.onLoad(map)}
-        onMove={() => this.props.onMove()}
-        didOverlayLoad={isReportsDataLoaded}
-      >
-        {isReportsDataLoaded > 0 && (
-          <ClusteredMarkers
-            data={toGeojson(reportsData)}
-            map={this.map}
-            name="reports-cluster"
-            radius={60}
-            detailId={detailId}
-            onClick={onMarkerClick}
-            selectedReport={selectedReport}
-          />
-        )}
-      </BaseMap>
+      <LinkLayer>
+        <BaseMap
+          onLoad={this.onBaseMapLoad}
+          onMove={this.props.onMove}
+          isReportsDataLoaded={isReportsDataLoaded}
+        >
+          {isReportsDataLoaded > 0 && (
+            <ClusteredMarkers
+              data={toGeojson(reportsData)}
+              map={this.map}
+              name="reports-cluster"
+              radius={60}
+              detailId={detailId}
+              onClick={onMarkerClick}
+              selectedReport={selectedReport}
+              setHoveredReport={setHoveredReport}
+              unSetHoveredReport={unSetHoveredReport}
+            />
+          )}
+        </BaseMap>
+      </LinkLayer>
     );
   }
 }
@@ -123,13 +155,15 @@ WebglMap.propTypes = {
   detailId: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.shape({ message: PropTypes.string }),
-  fitExtentOnPopupClose: PropTypes.bool,
   onLoad: PropTypes.func,
   onMarkerClick: PropTypes.func.isRequired,
   onMove: PropTypes.func,
   reportsData: PropTypes.arrayOf(FMCPropTypes.report),
   selectedReport: FMCPropTypes.report,
-  zoomControlPosition: PropTypes.string
+  zoomControlPosition: PropTypes.string,
+  setHoveredReport: PropTypes.func.isRequired,
+  unSetHoveredReport: PropTypes.func.isRequired,
+  isCTAButtonShifted: PropTypes.bool,
 };
 
 WebglMap.defaultProps = {
@@ -141,9 +175,9 @@ WebglMap.defaultProps = {
   detailId: null,
   disabled: false,
   zoomControlPosition: 'bottom-left',
-  fitExtentOnPopupClose: true,
   selectedReport: null,
-  error: null
+  error: null,
+  isCTAButtonShifted: false,
 };
 
 export default withRouter(WebglMap);

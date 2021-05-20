@@ -2,16 +2,16 @@
  User can pick between a) using the current device location and b) geocoding the location.
  Receives URLS for re-routing when an options has been chosen.
  * */
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-import config from '~/pages/Reports/config';
+import ErrorMessage from '~/components/ErrorMessage';
+import CloseIcon from '~/images/close.svg';
 import LocateIcon from '~/images/reports/location-button.svg';
 import MapIcon from '~/images/reports/noun-map-1909219.svg';
-import ErrorMessage from '~/components/ErrorMessage';
+import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
-import CloseIcon from '~/images/close.svg';
 
 const Wrapper = styled.div`
   z-index: 999999;
@@ -78,7 +78,7 @@ const LocateModeChooser = ({
   onUseGeocoding,
   onClose,
   error,
-  removeError
+  removeError,
 }) => (
   <Wrapper>
     <Heading data-cy="reports-locatemode-title">{heading}</Heading>
@@ -127,12 +127,12 @@ LocateModeChooser.propTypes = {
   onUseGeocoding: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   error: PropTypes.shape({ message: PropTypes.string }),
-  removeError: PropTypes.func.isRequired
+  removeError: PropTypes.func.isRequired,
 };
 
 LocateModeChooser.defaultProps = {
   heading: 'Wo benötigen Sie neue Fahrradbügel?',
-  error: {}
+  error: {},
 };
 
 export default LocateModeChooser;

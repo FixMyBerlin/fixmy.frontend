@@ -1,30 +1,30 @@
+import queryString from 'query-string';
 import React from 'react';
 import { Redirect, Link, matchPath } from 'react-router-dom';
 import styled from 'styled-components';
-import queryString from 'query-string';
 
-import config from '~/pages/KatasterKI/config';
-import { media, isSmallScreen } from '~/styles/utils';
-import Store from '~/store';
-import { setEmbedded } from '../state';
 import Flex from '~/components/Flex';
-import Button from '~/pages/KatasterKI/components/Button';
-
-import TspLogo from '~/images/strassencheck/tsp-logo.svg';
 import fixMyLogoSrc from '~/images/logofmb@2x.png';
+import TspLogo from '~/images/strassencheck/tsp-logo.svg';
+import Button from '~/pages/KatasterKI/components/Button';
 import ExternalLink from '~/pages/KatasterKI/components/ExternalLink';
+import config from '~/pages/KatasterKI/config';
+import Store from '~/store';
+import { media, isSmallScreen } from '~/styles/utils';
+
+import { setEmbedded } from '../state';
 
 const labelsBerlin = {
   headline: 'Der Berliner Straßencheck',
   teaser:
     'Wie können die Berliner Straßen sicher für alle werden? Sagen Sie es uns!',
-  calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de'
+  calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de',
 };
 
 const labelsNational = {
   headline: 'Der große Straßencheck',
   teaser: 'Wie können die Straßen sicher für alle werden? Sagen Sie es uns!',
-  calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de'
+  calltoaction: 'Infos und Hintergründe zum Projekt auf tagesspiegel.de',
 };
 
 const Wrapper = styled.div`
@@ -235,7 +235,7 @@ const Landing = ({ location }) => {
 
   const isNationalVersion = matchPath(window.location.pathname, {
     path: config.routes.katasterKI?.landingNational,
-    exact: true
+    exact: true,
   });
 
   const labels = isNationalVersion ? labelsNational : labelsBerlin;

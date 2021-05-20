@@ -1,14 +1,14 @@
-import { cyElem } from '~/../cypress/support/utils';
 import config from '~/pages/Reports/config';
+
 import utils from './utils';
+
+import { cyElem } from '~/../cypress/support/utils';
 
 // let singleReportId = null;
 
 describe('The reports map', () => {
   before(() => {
-    cy.server()
-      .route('**/reports')
-      .as('getReports');
+    cy.server().route('**/reports').as('getReports');
     cy.visit(config.routes.reports.map)
       .wait('@getReports')
       .its('status')

@@ -1,17 +1,17 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import idx from 'idx';
-import { connect } from 'react-redux';
 
-import config from '~/pages/Reports/config';
-import { media } from '~/styles/utils';
-import { actions } from '~/pages/Reports/state/OverviewMapState';
-import MapPopupWrapper from '~/components/MapPopupWrapper';
 import Button from '~/components/Button';
 import Title from '~/components/Title';
+import { MapPopup } from '~/components2/MapPopup';
+import { STATUS_PLANNING } from '~/pages/Reports/apiservice';
+import config from '~/pages/Reports/config';
+import { actions } from '~/pages/Reports/state/OverviewMapState';
+import { media } from '~/styles/utils';
 
-const PreviewImageContainer = styled(Link)`
+const PreviewImage = styled.div`
   height: 200px;
   width: 100%;
   background-size: contain;
@@ -27,6 +27,10 @@ const ButtonWrapper = styled.div`
   `}
 `;
 
+const Wrapper = styled(MapPopup)`
+  padding: 16px;
+`;
+
 class ReportsPopup extends PureComponent {
   onDetailClick() {
     const { selectedReport } = this.props;
@@ -37,7 +41,7 @@ class ReportsPopup extends PureComponent {
 
   render() {
     const { selectedReport, onClose, position } = this.props;
-    const photoSrc = idx(selectedReport, (_) => _.photo.src);
+    const photoSrc = selectedReport?.photo?.src;
     const isSmallScreen = window.innerWidth <= 768;
 
     if (!selectedReport) return null;
@@ -47,34 +51,36 @@ class ReportsPopup extends PureComponent {
 
     const { number } = selectedReport.details;
 
+    let popupTitle;
+    if (selectedReport.status === 'done') {
+      popupTitle = `${number} Fahrradbügel gebaut`;
+    } else if (STATUS_PLANNING.includes(selectedReport.status)) {
+      popupTitle = `${number} Fahrradbügel in Planung`;
+    } else {
+      popupTitle = `${number} neue${
+        number === 1 ? 'r' : ''
+      } Fahrradbügel gewünscht`;
+    }
+
     return (
-      <MapPopupWrapper
+      <Wrapper
         x={x}
         y={y}
         data={selectedReport}
         onClick={() => this.onDetailClick()}
         onClose={() => onClose()}
         showSubline={false}
-        style={{ padding: 16 }}
       >
-        {photoSrc && (
-          <PreviewImageContainer
-            to={`${config.routes.reports.map}/${selectedReport.id}`}
-            style={{
-              backgroundImage: `url(${photoSrc})`
-            }}
-          />
+        {photoSrc != null && (
+          <Link to={`${config.routes.reports.map}/${selectedReport.id}`}>
+            <PreviewImage
+              style={{
+                backgroundImage: `url(${photoSrc})`,
+              }}
+            />
+          </Link>
         )}
-        <Title data-cy="reports-popup-title">
-          {selectedReport.status !== 'done' && (
-            <>
-              {number} neue{number === 1 ? 'r' : null} Fahrradbügel gewünscht
-            </>
-          )}
-          {selectedReport.status === 'done' && (
-            <>{number} Fahrradbügel gebaut</>
-          )}
-        </Title>
+        <Title data-cy="reports-popup-title">{popupTitle}</Title>
         <ButtonWrapper>
           <Button
             data-cy="reports-popup-button"
@@ -83,7 +89,7 @@ class ReportsPopup extends PureComponent {
             mehr Infos
           </Button>
         </ButtonWrapper>
-      </MapPopupWrapper>
+      </Wrapper>
     );
   }
 }
@@ -93,7 +99,7 @@ export default withRouter(
     (state) => ({
       selectedReport: state.ReportsState.OverviewMapState.selectedReport,
       reports: state.ReportsState.OverviewMapState.reports,
-      position: state.ReportsState.OverviewMapState.selectedReportPosition
+      position: state.ReportsState.OverviewMapState.selectedReportPosition,
     }),
     { setSelectedReport: actions.setSelectedReport }
   )(ReportsPopup)

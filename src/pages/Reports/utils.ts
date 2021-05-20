@@ -1,25 +1,42 @@
-import logger from '~/utils/logger';
-import config from '~/pages/Reports/config';
-
-import AachenMarkerNew from '~/images/reports/marker/aachen/new@2x.png';
-import AachenMarkerVerification from '~/images/reports/marker/aachen/verification@2x.png';
 import AachenMarkerAccepted from '~/images/reports/marker/aachen/accepted@2x.png';
-import AachenMarkerRejected from '~/images/reports/marker/aachen/rejected@2x.png';
-import AachenMarkerInactive from '~/images/reports/marker/aachen/inactive@2x.png';
-import AachenMarkerPlanning from '~/images/reports/marker/aachen/planning@2x.png';
-import AachenMarkerExecution from '~/images/reports/marker/aachen/execution@2x.png';
-import AachenMarkerInvalid from '~/images/reports/marker/aachen/invalid@2x.png';
 import AachenMarkerDone from '~/images/reports/marker/aachen/done@2x.png';
-
-import DefaultMarkerNew from '~/images/reports/marker/default/new@2x.png';
-import DefaultMarkerVerification from '~/images/reports/marker/default/verification@2x.png';
+import AachenMarkerExecution from '~/images/reports/marker/aachen/execution@2x.png';
+import AachenMarkerInactive from '~/images/reports/marker/aachen/inactive@2x.png';
+import AachenMarkerInvalid from '~/images/reports/marker/aachen/invalid@2x.png';
+import AachenMarkerNew from '~/images/reports/marker/aachen/new@2x.png';
+import AachenMarkerPlanning from '~/images/reports/marker/aachen/planning@2x.png';
+import AachenMarkerRejected from '~/images/reports/marker/aachen/rejected@2x.png';
+import AachenMarkerVerification from '~/images/reports/marker/aachen/verification@2x.png';
 import DefaultMarkerAccepted from '~/images/reports/marker/default/accepted@2x.png';
-import DefaultMarkerRejected from '~/images/reports/marker/default/rejected@2x.png';
-import DefaultMarkerInactive from '~/images/reports/marker/default/inactive@2x.png';
-import DefaultMarkerPlanning from '~/images/reports/marker/default/planning@2x.png';
-import DefaultMarkerExecution from '~/images/reports/marker/default/execution@2x.png';
-import DefaultMarkerInvalid from '~/images/reports/marker/default/invalid@2x.png';
 import DefaultMarkerDone from '~/images/reports/marker/default/done@2x.png';
+import DefaultMarkerExecution from '~/images/reports/marker/default/execution@2x.png';
+import DefaultMarkerInactive from '~/images/reports/marker/default/inactive@2x.png';
+import DefaultMarkerInvalid from '~/images/reports/marker/default/invalid@2x.png';
+import DefaultMarkerNew from '~/images/reports/marker/default/new@2x.png';
+import DefaultMarkerPlanning from '~/images/reports/marker/default/planning@2x.png';
+import DefaultMarkerRejected from '~/images/reports/marker/default/rejected@2x.png';
+import DefaultMarkerVerification from '~/images/reports/marker/default/verification@2x.png';
+import config from '~/pages/Reports/config';
+import logger from '~/utils/logger';
+
+import { ENTRY_STATUS } from './types';
+
+const REPORT_STATUSES: ENTRY_STATUS[] = [
+  'report_new',
+  'report_verification',
+  'report_accepted',
+  'report_rejected',
+  'report_inactive',
+  'new',
+  'verification',
+  'accepted',
+  'rejected',
+  'inactive',
+  'planning',
+  'execution',
+  'invalid',
+  'done',
+];
 
 const ICONS_BY_STATUS = {
   aachen: {
@@ -36,7 +53,7 @@ const ICONS_BY_STATUS = {
     planning: AachenMarkerPlanning,
     execution: AachenMarkerExecution,
     invalid: AachenMarkerInvalid,
-    done: AachenMarkerDone
+    done: AachenMarkerDone,
   },
   default: {
     report_new: DefaultMarkerNew,
@@ -52,8 +69,8 @@ const ICONS_BY_STATUS = {
     planning: DefaultMarkerPlanning,
     execution: DefaultMarkerExecution,
     invalid: DefaultMarkerInvalid,
-    done: DefaultMarkerDone
-  }
+    done: DefaultMarkerDone,
+  },
 };
 
 /**
@@ -80,5 +97,6 @@ const getLandingContent = () =>
 
 export default {
   getLandingContent,
-  getMarkerSrc
+  getMarkerSrc,
+  REPORT_STATUSES,
 };

@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
-import UserForm from '~/pages/User/components/UserForm';
 import { forgotPassword } from '~/pages/User/UserState';
+import UserForm from '~/pages/User/components/UserForm';
 
 const formConfig = [
   {
@@ -12,8 +12,8 @@ const formConfig = [
     type: 'email',
     label: 'E-Mail',
     placeholder: 'E-Mail eingeben...',
-    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.'
-  }
+    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.',
+  },
 ];
 
 class ForgotPassword extends PureComponent {

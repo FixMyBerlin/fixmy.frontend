@@ -15,14 +15,14 @@ export const breakpoints = {
   s: 460,
   m: 768,
   l: 1024,
-  xl: 1280
+  xl: 1280,
 };
 
 export const media = {
   s: getMediaQuery(breakpoints.s),
   m: getMediaQuery(breakpoints.m),
   l: getMediaQuery(breakpoints.l),
-  xl: getMediaQuery(breakpoints.xl)
+  xl: getMediaQuery(breakpoints.xl),
 };
 
 function getOrientationQuery(orientation) {
@@ -35,7 +35,7 @@ function getOrientationQuery(orientation) {
 
 export const orientation = {
   landscape: getOrientationQuery('landscape'),
-  portrait: getOrientationQuery('portrait')
+  portrait: getOrientationQuery('portrait'),
 };
 
 export function matchMediaSize(size: number) {
@@ -82,5 +82,5 @@ export default {
   getMediaQuery,
   matchMediaSize,
   isSmallScreen,
-  bounce
+  bounce,
 };

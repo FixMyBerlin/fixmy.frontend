@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
@@ -43,11 +43,11 @@ const HelpText = ({ text }) => (
 );
 
 HelpText.propTypes = {
-  text: PropTypes.string
+  text: PropTypes.string,
 };
 
 HelpText.defaultProps = {
-  text: 'Bewegen Sie die Karte oder tippen Sie eine Adresse ein.'
+  text: 'Bewegen Sie die Karte oder tippen Sie eine Adresse ein.',
 };
 
 export default HelpText;

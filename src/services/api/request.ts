@@ -4,13 +4,15 @@
  * - allowing to hook into before/after a request is made or if an error occurs
  * - doing  preparatory work for network error request handling
  */
-import ky from 'ky-universal';
 import debug from 'debug';
+import ky from 'ky-universal';
+
 import config from '~/config';
-import store from '~/store';
-import { RequestOptions } from './types';
 import { selectors as UserStateSelectors } from '~/pages/User/UserState';
+import store from '~/store';
+
 import mapError from './mapError';
+import { RequestOptions } from './types';
 
 const log = debug('fmc:api:request()');
 
@@ -27,9 +29,9 @@ const configuredKy = ky.create({
         if (token) {
           req.headers.set('Authorization', `JWT ${token}`);
         }
-      }
-    ]
-  }
+      },
+    ],
+  },
 });
 
 // Generic Request Handler
@@ -38,7 +40,7 @@ const defaultOptions: RequestOptions = {
   accept: 'json',
   method: 'get',
   timeout: 30 * 1000,
-  slowResponseTimeout: 5 * 1000
+  slowResponseTimeout: 5 * 1000,
 };
 
 /**

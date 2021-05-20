@@ -1,4 +1,5 @@
 import { rest } from 'msw';
+
 import mockLocationSuggestions from './mockData/mockLocationSuggestions.json';
 
 // msw route handlers designated to be used in various places,
@@ -9,5 +10,5 @@ export default [
     (req, res, ctx) => {
       return res(ctx.json(mockLocationSuggestions));
     }
-  )
+  ),
 ];

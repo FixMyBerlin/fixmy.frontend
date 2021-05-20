@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import config from '~/config';
-import Link from '~/components/Link';
-import ExternalLink from '~/components/ExternalLink';
 import ContentPageWrapper from '~/components/ContentPageWrapper';
-import UserForm from '~/pages/User/components/UserForm';
+import ExternalLink from '~/components/ExternalLink';
+import Link from '~/components/Link';
+import config from '~/config';
 import { signup } from '~/pages/User/UserState';
+import UserForm from '~/pages/User/components/UserForm';
 
 const StyledLink = styled(Link)`
   margin-top: 16px;
@@ -21,7 +21,7 @@ const formConfig = [
     type: 'email',
     label: 'E-Mail',
     placeholder: 'E-Mail eingeben...',
-    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.'
+    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.',
   },
   {
     id: 'password',
@@ -29,7 +29,7 @@ const formConfig = [
     type: 'password',
     label: 'Passwort',
     placeholder: 'Passwort eingeben...',
-    validateError: 'Bitte geben Sie Ihr Passwort an.'
+    validateError: 'Bitte geben Sie Ihr Passwort an.',
   },
   // { id: 'newsletter', value: false, type: 'checkbox', label: 'Newsletter bestellen' }
   {
@@ -51,15 +51,15 @@ const formConfig = [
       </span>
     ),
     validateError:
-      'Sie müssen die Datenschutzbedingungen akzeptieren um sich zu registrieren.'
-  }
+      'Sie müssen die Datenschutzbedingungen akzeptieren um sich zu registrieren.',
+  },
 ];
 
 class Signup extends PureComponent {
   onSubmit = (values, params) => {
     const post = {
       ...values,
-      email: values.username
+      email: values.username,
     };
 
     this.props.dispatch(signup(post, params));

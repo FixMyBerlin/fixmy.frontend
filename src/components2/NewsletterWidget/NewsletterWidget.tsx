@@ -1,7 +1,15 @@
 import React from 'react';
+
 import config from '~/config';
 
-const SubscriptionWidget = ({ height = 120 }) => (
+/**
+ * An iFrame that shows the subscription form for the newsletter
+ *
+ * The iFrame source can be configured through `config.newsletter.embedUrl`
+ *
+ * @param param0.height `height` attribute of the iFrame
+ */
+const NewsletterWidget = ({ height = 120 }) => (
   <iframe
     title="Newsletter-Anmeldung"
     frameBorder="0"
@@ -14,4 +22,4 @@ const SubscriptionWidget = ({ height = 120 }) => (
   />
 );
 
-export default SubscriptionWidget;
+export default NewsletterWidget;

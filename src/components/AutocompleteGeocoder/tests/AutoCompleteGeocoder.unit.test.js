@@ -1,14 +1,16 @@
-import React from 'react';
+import { waitFor } from '@testing-library/dom';
 import { render, act, screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { waitFor } from '@testing-library/dom';
-
 import { rest } from 'msw';
-import { mswServer } from '~/../jest/msw/mswServer';
+import React from 'react';
+
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import * as apiService from '~/components/AutocompleteGeocoder/apiService';
-import mockedSuggestions from '../../../../jest/msw/mockData/mockLocationSuggestions.json';
 import { parseSuggestion } from '~/components/AutocompleteGeocoder/apiService';
+
+import mockedSuggestions from '../../../../jest/msw/mockData/mockLocationSuggestions.json';
+
+import { mswServer } from '~/../jest/msw/mswServer';
 
 describe('<AutoCompleteGeocoder />', () => {
   // use setup method described as best practice in
@@ -21,7 +23,7 @@ describe('<AutoCompleteGeocoder />', () => {
       onSearchStart: jest.fn(),
       onInputBlur: jest.fn(),
       searchStringMinLength: 4,
-      debounceTime: 1
+      debounceTime: 1,
     };
     const { container, baseElement, debug } = render(
       <AutocompleteGeocoder {...props} />
@@ -34,7 +36,7 @@ describe('<AutoCompleteGeocoder />', () => {
       debug,
       container,
       baseElement,
-      inputElement
+      inputElement,
     };
   };
 
@@ -112,7 +114,7 @@ describe('<AutoCompleteGeocoder />', () => {
       // match displayed content with mock data entries
       expect(initProps.onLocationPick).toHaveBeenCalledWith({
         coords,
-        address
+        address,
       });
     });
     it('buffers api calls (waits for the user to type, then fetches suggestions)', async () => {
@@ -131,7 +133,7 @@ describe('<AutoCompleteGeocoder />', () => {
 
       const slowInput = 'defg';
       await userEvent.type(inputElement, slowInput, {
-        delay: initProps.debounceTime + 10
+        delay: initProps.debounceTime + 10,
       });
 
       // each stroke should have triggered a request
@@ -172,7 +174,7 @@ describe('<AutoCompleteGeocoder />', () => {
         await waitFor(() =>
           expect(initProps.onLocationPick).toHaveBeenCalledWith({
             address,
-            coords
+            coords,
           })
         );
 
@@ -212,7 +214,7 @@ describe('<AutoCompleteGeocoder />', () => {
             return res(
               ctx.status(403),
               ctx.json({
-                errorMessage: 'Not Authorized'
+                errorMessage: 'Not Authorized',
               })
             );
           }

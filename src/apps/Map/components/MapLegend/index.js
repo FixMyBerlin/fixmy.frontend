@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import { orientation } from '~/styles/utils';
 import Brace from '~/apps/Map/components/Brace';
+import { orientation } from '~/styles/utils';
 
 import HBILegend from './HBILegend';
 import PlanningLegend from './PlanningLegend';
@@ -55,12 +55,12 @@ class MapLegend extends PureComponent {
 
 MapLegend.propTypes = {
   type: PropTypes.oneOf(['hbi', 'plannings']),
-  isEmbedMode: PropTypes.bool
+  isEmbedMode: PropTypes.bool,
 };
 
 MapLegend.defaultProps = {
   type: 'hbi',
-  isEmbedMode: false
+  isEmbedMode: false,
 };
 
 export default MapLegend;

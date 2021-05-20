@@ -1,12 +1,13 @@
-import React from 'react';
 import { Container } from '@material-ui/core';
 import { action } from '@storybook/addon-actions';
-import Notice, { ApiNotice as ApiNoticeComponent } from '.';
+import React from 'react';
+
+import { ApiNotice as ApiNoticeComponent, Notice } from '.';
 
 export default {
   title: 'Generic / Notice',
   decorators: [(fn) => <Container maxWidth="md">{fn()}</Container>],
-  component: Notice
+  component: Notice,
 };
 
 export const Plain = () => <Notice>Dies ist ein Hinweis</Notice>;

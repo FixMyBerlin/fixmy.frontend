@@ -5,5 +5,5 @@ export function translateError(errorMsg) {
 }
 
 export default {
-  translateError
+  translateError,
 };

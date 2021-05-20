@@ -1,5 +1,5 @@
-import ReactPiwik from 'react-piwik';
 import { createBrowserHistory } from 'history';
+import ReactPiwik from 'react-piwik';
 
 import config from '~/config';
 
@@ -15,7 +15,7 @@ try {
   const piwik = new ReactPiwik({
     url: config.piwik.url,
     siteId: config.piwik?.siteId || 1,
-    ...config.piwik.options
+    ...config.piwik.options,
   });
 
   history = piwik.connectToHistory(browserHistory);

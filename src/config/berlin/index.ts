@@ -1,13 +1,12 @@
-import xhain from './xhain';
-import tempelberg from './tempelberg';
 import { RegionConfig } from '~/types';
+
+import xhain from './xhain';
 
 const berlinConfig: RegionConfig = {
   siteTitle: 'FixMyBerlin',
   districts: {
     xhain,
-    tempelberg
-  }
+  },
 };
 
 export default berlinConfig;

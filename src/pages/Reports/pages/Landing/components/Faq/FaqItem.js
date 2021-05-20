@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import Collapsible from 'react-collapsible';
 import PropTypes from 'prop-types';
+import React from 'react';
+import Collapsible from 'react-collapsible';
+import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
 import Text from '~/components/Text';
+import config from '~/pages/Reports/config';
 
 const StyledText = styled(Text)`
   font-size: 16px;
@@ -68,13 +68,13 @@ const FaqItem = ({ heading, text, open }) => (
 FaqItem.propTypes = {
   heading: PropTypes.string,
   text: PropTypes.string,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };
 
 FaqItem.defaultProps = {
   heading: 'Dieser Abschnitt hat noch keine Überschrift',
   text: 'Der Text zu diesem Abschnitt in Arbeit...',
-  open: false
+  open: false,
 };
 
 export default FaqItem;

@@ -1,7 +1,13 @@
 interface RouteConfig {
   // optional routes
-  projects?: string;
-  status?: string;
+  map?: {
+    projectsIndex: string;
+    projectsDetail: string;
+    hbiIndex: string;
+    hbiDetail: string;
+    popupIndex: string;
+    popupDetail: string;
+  };
   analysis?: string;
   reports?: {
     [page: string]: string;
@@ -27,15 +33,21 @@ interface RouteConfig {
 }
 
 const routes: RouteConfig = {
-  projects: '/planungen',
-  status: '/zustand',
   analysis: '/analyse',
+  map: {
+    hbiIndex: '/zustand',
+    hbiDetail: '/zustand/:id/:name?',
+    projectsIndex: '/planungen',
+    projectsDetail: '/planungen/:id/:name?',
+    popupIndex: '/popupbikelanes',
+    popupDetail: '/popupbikelanes/:id/:name?',
+  },
   reports: {
     temporarily_forward_from_this_to_index: '/meldungen',
     index: '/meldungen/radbuegel/friedrichshain-kreuzberg',
     landing: '/meldungen/radbuegel/friedrichshain-kreuzberg/landing',
     map: '/meldungen/radbuegel/friedrichshain-kreuzberg/karte',
-    new: '/meldungen/radbuegel/friedrichshain-kreuzberg/neu'
+    new: '/meldungen/radbuegel/friedrichshain-kreuzberg/neu',
   },
   katasterKI: {
     landing: '/strassencheck',
@@ -46,13 +58,13 @@ const routes: RouteConfig = {
     scenes: `/strassencheck/szenen/:page`,
     share: `/strassencheck/teilen`,
     feedback: `/strassencheck/auswertung`,
-    email: `/strassencheck/email`
+    email: `/strassencheck/email`,
   },
   spielstrassen: {
     landing: '/friedrichshain-kreuzberg/spielstrassen',
     streets: '/friedrichshain-kreuzberg/spielstrassen/kieze',
     register: '/friedrichshain-kreuzberg/spielstrassen/:slug',
-    thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke'
+    thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke',
   },
   popupbikelanes: '/popupbikelanes',
   signup: '/registrieren',
@@ -64,8 +76,8 @@ const routes: RouteConfig = {
   userVerify: '/bestaetigen',
   research: {
     landing: '/research',
-    survey: '/research/subjektive-sicherheit'
-  }
+    survey: '/research/subjektive-sicherheit',
+  },
 };
 
 export default routes;

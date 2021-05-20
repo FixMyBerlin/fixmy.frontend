@@ -1,17 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
 import PlannerImg from '~/images/reports/planner.jpg';
-import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
+import config from '~/pages/Reports/config';
 import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
+import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
 
 const QuoteSection = styled.div`
   line-height: 1.37;
   color: ${config.colors.darkgrey};
-  margin: 50px 0;
   max-width: 320px;
-  padding: 28px 8px 58px 8px;
+  padding: 8px;
   margin: 0 auto;
 `;
 

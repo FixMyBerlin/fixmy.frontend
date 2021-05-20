@@ -1,13 +1,13 @@
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-import config from '~/pages/Reports/config';
-import PhotoControlFMB from '~/images/reports/photo-control.png';
-import PhotoControlAachen from '~/images/aachen/photo-control.png';
-import NewCloseButton from '~/components/NewCloseButton';
-import Text from '~/components/Text';
 import { getLinkStyles } from '~/components/Link';
+import Text from '~/components/Text';
+import PhotoControlAachen from '~/images/aachen/photo-control.png';
+import PhotoControlFMB from '~/images/reports/photo-control.png';
+import NewCloseButton from '~/pages/Reports/components/NewCloseButton';
+import config from '~/pages/Reports/config';
 
 const PhotoControlImage =
   config.region === 'aachen' ? PhotoControlAachen : PhotoControlFMB;
@@ -68,7 +68,7 @@ class UploadPhotoInput extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      photo: null
+      photo: null,
     };
     this.fileReader = new FileReader();
     this.fileReader.onload = this.handleConvertedPhoto.bind(this);
@@ -195,8 +195,8 @@ UploadPhotoInput.propTypes = {
   resizeOptions: PropTypes.shape({
     maxWidth: PropTypes.number,
     maxHeight: PropTypes.number,
-    quality: PropTypes.number
-  })
+    quality: PropTypes.number,
+  }),
 };
 
 UploadPhotoInput.defaultProps = {
@@ -205,8 +205,8 @@ UploadPhotoInput.defaultProps = {
   resizeOptions: {
     maxWidth: 800,
     maxHeight: 800,
-    quality: 0.9
-  }
+    quality: 0.9,
+  },
 };
 
 export default UploadPhotoInput;

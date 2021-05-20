@@ -1,20 +1,10 @@
-import { AnyAction } from 'redux';
-import thunk, { ThunkDispatch } from 'redux-thunk';
-import configureMockStore from 'redux-mock-store';
 import { rest } from 'msw';
-const nodeFetch = require('node-fetch');
+import { AnyAction } from 'redux';
+import configureMockStore from 'redux-mock-store';
+import thunk, { ThunkDispatch } from 'redux-thunk';
 
-import {
-  ProfileRequest,
-  ProfileResponse,
-  Perspective,
-  PerspectiveRequest,
-  PerspectiveResponse
-} from '../types';
 import { getEndpointURL } from '../api/utils';
-import { mswServer } from '~/../jest/msw/mswServer';
-
-import reducer, {
+import {
   State,
   SUBMIT_PROFILE_COMPLETE,
   SUBMIT_PROFILE_PENDING,
@@ -24,13 +14,16 @@ import reducer, {
   SUBMIT_PERSPECTIVE_PENDING,
   SUBMIT_PERSPECTIVE_COMPLETE,
   submitPerspective,
-  testingDefaultState
+  testingDefaultState,
 } from '../state';
+import { ProfileResponse, Perspective, PerspectiveResponse } from '../types';
 
-const profileRequestSample: ProfileRequest = require('../scheme/sample-instances/profile-request-sample-instance.json');
-const profileResponseSample: ProfileResponse = require('../scheme/sample-instances/profile-response-sample-instance.json');
-const perspetiveRequestSample: PerspectiveRequest = require('../scheme/sample-instances/perspective-request-sample-instance.json');
+import { mswServer } from '~/../jest/msw/mswServer';
+
+const nodeFetch = require('node-fetch');
+
 const perspectiveResponseSample: PerspectiveResponse = require('../scheme/sample-instances/perspective-response-sample-instance.json');
+const profileResponseSample: ProfileResponse = require('../scheme/sample-instances/profile-response-sample-instance.json');
 
 type mockState = {
   KatasterKIState: State;
@@ -40,15 +33,19 @@ type DispatchExts = ThunkDispatch<mockState, void, AnyAction>;
 const mockStore = configureMockStore<mockState, DispatchExts>(middlewares);
 
 // the tested thunk uses fetch, so we replace its imlementation with node-fetch
-const unmockedFetch = global['fetch'];
+
+// @ts-ignore Typescript doesn't understand that lib dom defines global.fetch
+const unmockedFetch = global.fetch;
 
 describe('Survey submits', () => {
   beforeAll(() => {
-    global['fetch'] = nodeFetch;
+    // @ts-ignore Typescript doesn't understand that lib dom defines global.fetch
+    global.fetch = nodeFetch;
   });
 
   afterAll(() => {
-    global['fetch'] = unmockedFetch;
+    // @ts-ignore Typescript doesn't understand that lib dom defines global.fetch
+    global.fetch = unmockedFetch;
   });
 
   describe('submitProfile', () => {
@@ -67,8 +64,8 @@ describe('Survey submits', () => {
         // mock store
         const stateBefore = {
           KatasterKIState: {
-            ...testingDefaultState
-          }
+            ...testingDefaultState,
+          },
         };
         const store = mockStore(stateBefore);
 
@@ -80,7 +77,7 @@ describe('Survey submits', () => {
         const expectedActions = [
           SUBMIT_PROFILE_PENDING,
           RECEIVED_SCENE_GROUP,
-          SUBMIT_PROFILE_COMPLETE
+          SUBMIT_PROFILE_COMPLETE,
         ];
         expect(dispatchedActionTypes).toEqual(expectedActions);
       }
@@ -103,17 +100,17 @@ describe('Survey submits', () => {
           ageGroup: 'BBB',
           isTosAccepted: {},
           transportRatings: {
-            '': 1
+            '': 1,
           },
           userGroup: [1, 2, 3],
           vehiclesOwned: ['car'],
-          zipcode: 345
+          zipcode: 345,
         };
         const stateBefore = {
           KatasterKIState: {
             ...testingDefaultState,
-            profile: invalidProfile
-          }
+            profile: invalidProfile,
+          },
         };
 
         // This is supposed to be a type mismatch
@@ -142,8 +139,8 @@ describe('Survey submits', () => {
 
       const stateBefore = {
         KatasterKIState: {
-          ...testingDefaultState
-        }
+          ...testingDefaultState,
+        },
       };
       const store = mockStore(stateBefore);
       await store.dispatch(submitPerspective(Perspective.bicycle));
@@ -154,7 +151,7 @@ describe('Survey submits', () => {
       const expectedActions = [
         SUBMIT_PERSPECTIVE_PENDING,
         RECEIVED_SCENE_GROUP,
-        SUBMIT_PERSPECTIVE_COMPLETE
+        SUBMIT_PERSPECTIVE_COMPLETE,
       ];
       expect(dispatchedActionTypes).toEqual(expectedActions);
     });

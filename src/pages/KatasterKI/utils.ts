@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import uuidv4 from 'uuid/v4';
+
 import logger from '~/utils/logger';
 
 import { Perspective, TransportRating, UserGroup } from './types';
@@ -38,7 +39,7 @@ const userGroupToPerspective = {
   [UserGroup.bicycle]: Perspective.bicycle,
   [UserGroup.potentialBicycle]: Perspective.bicycle,
   [UserGroup.car]: Perspective.car,
-  [UserGroup.pedestrian]: Perspective.pedestrian
+  [UserGroup.pedestrian]: Perspective.pedestrian,
 };
 
 /**
@@ -145,7 +146,7 @@ export const signupTSPNewsletter = async (email: string) => {
     agnSUBSCRIBE: '1',
     sonderkampagne: 'lab',
     submit: 'true',
-    email
+    email,
   };
 
   const params = new URLSearchParams(data);
@@ -154,6 +155,6 @@ export const signupTSPNewsletter = async (email: string) => {
     method: 'POST',
     body: params,
     mode: 'cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   });
 };

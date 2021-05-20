@@ -2,7 +2,7 @@ import React from 'react';
 import {
   FormattedMessage,
   injectIntl,
-  WrappedComponentProps
+  WrappedComponentProps,
 } from 'react-intl';
 
 import {
@@ -11,9 +11,9 @@ import {
   Quote,
   Image,
   List,
-  SectionProps
+  SectionProps,
 } from '~/components2/Article';
-import Link from '~/components2/Link';
+import { Link } from '~/components2/Link';
 
 import diagramLabelledDe from '../images/diagram_labelled_de.jpg';
 import diagramLabelledEn from '../images/diagram_labelled_en.jpg';
@@ -50,7 +50,7 @@ const SectionAbout = ({ toc, tocAnchor, intl }: Props) => {
       <Quote
         sourceText={intl.formatMessage({
           id: 'research.03_concept.p1.quoteSource',
-          defaultMessage: 'Herausforderung'
+          defaultMessage: 'Herausforderung',
         })}
       >
         <FormattedMessage
@@ -145,7 +145,7 @@ const SectionAbout = ({ toc, tocAnchor, intl }: Props) => {
                   defaultMessage="Auswertung"
                 />
               </a>
-            )
+            ),
           }}
         />
       </Paragraph>
@@ -230,7 +230,7 @@ const SectionAbout = ({ toc, tocAnchor, intl }: Props) => {
           defaultMessage="Für die Umfrage entschieden wir uns, Straßenszenen als 3D-Renderings fotorealistisch darzustellen. Die verschiedenen Straßenszenen wurden in drei Experimente unterteilt."
         />
       </Paragraph>
-      <List as="ol">
+      <List ordered>
         <List.Item>
           <FormattedMessage
             id="research.03_concept.p14.list1"
@@ -260,7 +260,7 @@ const SectionAbout = ({ toc, tocAnchor, intl }: Props) => {
         source={diagramLabelled}
         alt={intl.formatMessage({
           id: 'research.03_concept.p15.imageLabel',
-          defaultMessage: 'Zuvor beschriebene Basis-Straßenszene'
+          defaultMessage: 'Zuvor beschriebene Basis-Straßenszene',
         })}
       />
       <Paragraph>
@@ -336,7 +336,7 @@ const SectionAbout = ({ toc, tocAnchor, intl }: Props) => {
                   defaultMessage="hier (PDF-Download)"
                 />
               </Link>
-            )
+            ),
           }}
         />
       </Paragraph>
@@ -355,7 +355,7 @@ const SectionAbout = ({ toc, tocAnchor, intl }: Props) => {
                   defaultMessage="dieser Tabelle (ODS-Download)"
                 />
               </Link>
-            )
+            ),
           }}
         />
       </Paragraph>

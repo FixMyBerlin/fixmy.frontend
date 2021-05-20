@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Router, Route, Switch, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
 
+import { setDistrict } from '~/AppState';
 import config from '~/config';
-import Landing from './pages/Landing';
-import Kieze from './pages/Kieze';
-import Register from './pages/Register';
-import Thanks from './pages/Thanks';
-import Markdown from '~/pages/Markdown';
 import history from '~/history';
 import LinkExternal from '~/images/spielstrassen/icon-external-link@2x.png';
 import LinkInternal from '~/images/spielstrassen/icon-internal-link@2x.png';
+import Markdown from '~/pages/Markdown';
+
+import Kieze from './pages/Kieze';
+import Landing from './pages/Landing';
+import Register from './pages/Register';
+import Thanks from './pages/Thanks';
 import { loadKieze } from './state';
-import { setDistrict } from '~/AppState';
 
 const AppStyles = styled.div`
   font-size: 16px;
@@ -128,7 +129,7 @@ const Spielstrassen = ({ districtName, district, dispatch }) => {
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(Spielstrassen);

@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import debug from 'debug';
+import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
 
 import SearchBar from './SearchBar';
 import SuggestionList from './SuggestionList';
@@ -17,7 +17,7 @@ class AutocompleteGeocoder extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      suggestions: []
+      suggestions: [],
     };
   }
 
@@ -120,7 +120,7 @@ AutocompleteGeocoder.propTypes = {
    */
   debounceTime: PropTypes.number,
 
-  label: PropTypes.string
+  label: PropTypes.string,
 };
 
 AutocompleteGeocoder.defaultProps = {
@@ -129,7 +129,7 @@ AutocompleteGeocoder.defaultProps = {
   onSearchStart: () => {},
   searchStringMinLength: 3,
   debounceTime: 1000,
-  label: null
+  label: null,
 };
 
 export default AutocompleteGeocoder;

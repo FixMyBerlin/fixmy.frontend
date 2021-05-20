@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 import Suggestion from './Suggestion';
 
@@ -26,11 +26,11 @@ const Suggestionlist = ({ suggestions, onSuggestionPick }) => {
 
 Suggestionlist.propTypes = {
   suggestions: PropTypes.arrayOf(PropTypes.object),
-  onSuggestionPick: PropTypes.func.isRequired
+  onSuggestionPick: PropTypes.func.isRequired,
 };
 
 Suggestionlist.defaultProps = {
-  suggestions: []
+  suggestions: [],
 };
 
 export default Suggestionlist;

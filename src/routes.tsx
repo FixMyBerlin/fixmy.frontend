@@ -2,32 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-import config from '~/config';
+import Analysis from '~/apps/Analysis';
+import Gastro from '~/apps/Gastro';
+import MapView from '~/apps/Map';
+import Spielstrassen from '~/apps/Spielstrassen';
 import PrivateRoute from '~/components/PrivateRoute';
+import config from '~/config';
 import Home from '~/pages/Home';
-import Login from '~/pages/User/pages/Login';
-import Signup from '~/pages/User/pages/Signup';
-import Profile from '~/pages/User/pages/Profile';
-import ForgotPassword from '~/pages/User/pages/ForgotPassword';
-import ResetPassword from '~/pages/User/pages/ResetPassword';
-import UserVerify from '~/pages/User/pages/Verify';
-import ZESPlusResearch from '~/pages/ZESPlus-Research';
-
-import Analysis from '~/pages/Analysis';
 import KatasterKI from '~/pages/KatasterKI';
 import Markdown from '~/pages/Markdown';
 import Reports from '~/pages/Reports';
 import Research from '~/pages/Research';
-import { RootState } from './store';
+import ForgotPassword from '~/pages/User/pages/ForgotPassword';
+import Login from '~/pages/User/pages/Login';
+import Profile from '~/pages/User/pages/Profile';
+import ResetPassword from '~/pages/User/pages/ResetPassword';
+import Signup from '~/pages/User/pages/Signup';
+import UserVerify from '~/pages/User/pages/Verify';
+import ZESPlusResearch from '~/pages/ZESPlus-Research';
 
-import Gastro from '~/apps/Gastro';
-import Spielstrassen from '~/apps/Spielstrassen';
-import MapView from '~/apps/Map';
+import { RootState } from './store';
 
 const apps = {
   gastro: Gastro,
   spielstrassen: Spielstrassen,
-  map: MapView
+  map: MapView,
 };
 
 /**
@@ -84,14 +83,16 @@ const Routes = ({ token }) => (
 
     <Route path="/redirect-to" component={RedirectHelper} />
 
-    {/* standard markdown pages */
-    config.staticpages.map((page) => (
-      <Route
-        key={page}
-        path={page.route}
-        render={() => <Markdown page={page.key} />}
-      />
-    ))}
+    {
+      /* standard markdown pages */
+      config.staticpages.map((page) => (
+        <Route
+          key={page}
+          path={page.route}
+          render={() => <Markdown page={page.key} />}
+        />
+      ))
+    }
 
     {/* user pages */}
     <Route path={config.routes.signup} component={Signup} />
@@ -112,15 +113,14 @@ const Routes = ({ token }) => (
     />
 
     {/* map pages */}
-    {config.routes.status != null && (
-      <Route path={config.routes.status} component={MapView} />
+    {config.routes.map?.hbiIndex != null && (
+      <Route path={config.routes.map.hbiIndex} component={MapView} />
     )}
-    {config.routes.projects != null && (
-      <Route path={config.routes.projects} component={MapView} />
+    {config.routes.map?.projectsIndex != null && (
+      <Route path={config.routes.map.projectsIndex} component={MapView} />
     )}
-
-    {config.routes.popupbikelanes != null && (
-      <Route path={config.routes.popupbikelanes} component={MapView} />
+    {config.routes.map?.popupIndex != null && (
+      <Route path={config.routes.map.popupIndex} component={MapView} />
     )}
 
     {/* reports page */}
@@ -136,7 +136,10 @@ const Routes = ({ token }) => (
     {/* analysis pages */}
     {config.routes.analysis != null && (
       <Route
-        path={`${config.routes.analysis}/planungen/:districtName?`}
+        path={[
+          config.routes.analysis,
+          `${config.routes.analysis}/planungen/:districtName?`,
+        ]}
         component={Analysis}
       />
     )}
@@ -166,5 +169,5 @@ const Routes = ({ token }) => (
 );
 
 export default connect((state: RootState) => ({
-  token: state.UserState.token
+  token: state.UserState.token,
 }))(Routes);

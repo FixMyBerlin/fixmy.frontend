@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { Link, withRouter } from 'react-router-dom';
 import ky from 'ky';
 import qs from 'qs';
+import React, { useEffect, useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 
-import config from '~/config';
-import logger from '~/utils/logger';
-import ContentPageWrapper from '~/components/ContentPageWrapper';
-import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Button from '~/components/Button';
-
-import verifyImageFMB from '~/images/user-verify.png';
+import ContentPageWrapper from '~/components/ContentPageWrapper';
+import config from '~/config';
 import verifyImageAachen from '~/images/aachen/user@2x.png';
+import verifyImageFMB from '~/images/user-verify.png';
+import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
+import logger from '~/utils/logger';
 
 const verifyImage =
   config.region === 'aachen' ? verifyImageAachen : verifyImageFMB;
@@ -46,14 +45,14 @@ const UserVerify = ({ match, location }) => {
     const verifyUser = async () => {
       const { uid, token } = match.params;
       const { newsletter } = qs.parse(location.search, {
-        ignoreQueryPrefix: true
+        ignoreQueryPrefix: true,
       });
       const signupNewsletter = newsletter === 'yes';
 
       try {
         return ky(`${config.apiUrl}/users/activation/`, {
           method: 'POST',
-          json: { uid, token, newsletter: signupNewsletter }
+          json: { uid, token, newsletter: signupNewsletter },
         });
       } catch (e) {
         logger(e);

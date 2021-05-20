@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
 import ky from 'ky';
+import React, { PureComponent } from 'react';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import MarkdownContent from '~/pages/Markdown/components/MarkdownContent';
@@ -8,7 +8,7 @@ class MarkdownPage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      content: false
+      content: false,
     };
   }
 

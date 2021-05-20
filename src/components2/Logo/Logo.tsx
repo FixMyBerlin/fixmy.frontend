@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/config';
 import { FadeIn } from '~/components2/Image';
+import config from '~/config';
 import FixMyLogo1 from '~/images/logofmb.png';
 import FixMyLogo2 from '~/images/logofmb@2x.png';
 import FixMyLogo3 from '~/images/logofmb@3x.png';
-import BetaIcon from '~/images/beta.svg';
+
+import BetaIcon from './images/beta.svg';
 
 const FMBLogoWrapper = styled.div`
   position: relative;
@@ -31,10 +32,10 @@ type Props = {
 const FMBLogo = ({
   className = null,
   showBetaIcon = false,
-  width = 70
+  width = 70,
 }: Props) => (
   <FMBLogoWrapper className={className}>
-    {showBetaIcon && <StyledBetaIcon />}
+    {showBetaIcon && <StyledBetaIcon alt="beta!" role="img" />}
     <FadeIn
       width={width}
       height={width * 1.164556962}

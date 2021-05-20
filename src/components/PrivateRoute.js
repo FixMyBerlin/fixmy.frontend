@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+
 import config from '~/config';
 
 // Disable prop spreading rule because this is a usable component
@@ -17,7 +18,7 @@ const PrivateRoute = ({ component: Component, token = false, ...rest }) => (
         <Redirect
           to={{
             pathname: config.routes.signup,
-            state: { from: props.location }
+            state: { from: props.location },
           }}
         />
       )

@@ -2,8 +2,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import config from '~/pages/KatasterKI/config';
 import Loader from '~/components/Loader';
+import config from '~/pages/KatasterKI/config';
 import { isTouch } from '~/utils/utils';
 
 const boxShadow = '0 0 10px 0 rgba(0, 0, 0, 0.2)';
@@ -34,11 +34,11 @@ const StyledButton = styled.button`
   }
 
   ${!isTouch &&
-    css`
-      &:hover {
-        box-shadow: ${(props) => (props.disabled ? 'none' : boxShadowHover)};
-      }
-    `}
+  css`
+    &:hover {
+      box-shadow: ${(props) => (props.disabled ? 'none' : boxShadowHover)};
+    }
+  `}
 `;
 
 export default ({ children, isLoading, ...rest }) => (

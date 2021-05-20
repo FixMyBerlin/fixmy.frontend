@@ -2,15 +2,15 @@
  * Marker image to indicate current center of mapView.
  */
 
-import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { X } from 'react-feather';
+import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
-import LocateMeMarkerIcon from '~/images/reports/locate-me-marker.svg';
 import LocateMeMarkerIconAachen from '~/images/aachen/locate-me-marker.svg';
 import TickIcon from '~/images/reports/locate-me-marker-tick.svg';
+import LocateMeMarkerIcon from '~/images/reports/locate-me-marker.svg';
+import config from '~/pages/Reports/config';
 
 const LocateMeMarker =
   config.region === 'aachen' ? LocateMeMarkerIconAachen : LocateMeMarkerIcon;
@@ -70,11 +70,11 @@ const StaticMarker = ({ pinned }) => (
 );
 
 StaticMarker.propTypes = {
-  pinned: PropTypes.bool
+  pinned: PropTypes.bool,
 };
 
 StaticMarker.defaultProps = {
-  pinned: false
+  pinned: false,
 };
 
 export default StaticMarker;

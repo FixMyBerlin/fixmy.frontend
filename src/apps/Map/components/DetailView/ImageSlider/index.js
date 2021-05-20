@@ -1,8 +1,8 @@
 /* eslint react/no-array-index-key: 0 */
-import React, { PureComponent } from 'react';
-import styled from 'styled-components';
-import Slider from 'react-slick';
 import PropTypes from 'prop-types';
+import React, { PureComponent } from 'react';
+import Slider from 'react-slick';
+import styled from 'styled-components';
 
 import config from '~/config';
 import 'slick-carousel/slick/slick.css';
@@ -100,11 +100,11 @@ class ImageSlider extends PureComponent {
 }
 
 ImageSlider.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object)
+  images: PropTypes.arrayOf(PropTypes.object),
 };
 
 ImageSlider.defaultProps = {
-  images: []
+  images: [],
 };
 
 export default ImageSlider;

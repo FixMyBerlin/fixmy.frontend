@@ -54,22 +54,6 @@ export function getStreetCategoryLabel(data) {
   return 'Hauptstraße';
 }
 
-export function getInfrastructureLabel(sideData) {
-  if (sideData.cycling_infrastructure_safety >= 3) {
-    return 'sehr gut';
-  }
-
-  if (sideData.cycling_infrastructure_safety >= 2) {
-    return 'gut';
-  }
-
-  if (sideData.cycling_infrastructure_safety >= 1) {
-    return 'schwach';
-  }
-
-  return 'keine';
-}
-
 export function getInfrastructureDesc(sideData) {
   if (sideData.cycling_infrastructure_ratio >= 1) {
     return '';
@@ -91,6 +75,5 @@ export default {
   getSafetyColor,
   getRoadTypeLabel,
   getStreetCategoryLabel,
-  getInfrastructureLabel,
-  getInfrastructureDesc
+  getInfrastructureDesc,
 };

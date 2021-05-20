@@ -1,8 +1,10 @@
 import debug from 'debug';
+
 import { RootConfig, Region } from '~/types';
-import defaultConfig from './default';
-import berlin from './berlin';
+
 import aachen from './aachen';
+import berlin from './berlin';
+import defaultConfig from './default';
 import eichwalde from './eichwalde';
 
 const log = debug('fmc:config');
@@ -16,7 +18,7 @@ if (window.Cypress) {
 const AVAILABLE_REGIONS = {
   berlin,
   aachen,
-  eichwalde
+  eichwalde,
 };
 
 const instanceConfig = AVAILABLE_REGIONS[region];
@@ -30,7 +32,7 @@ if (Object.keys(AVAILABLE_REGIONS).indexOf(region) === -1) {
 const rootConfig: RootConfig = {
   ...defaultConfig,
   ...instanceConfig,
-  region
+  region,
 };
 
 export default rootConfig;

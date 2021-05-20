@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react';
-import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
-import MenuButton from '~/components2/MenuButton';
+import styled from 'styled-components';
+
+import { MenuButton } from '~/components2/MenuButton';
+import config from '~/config';
 import { media } from '~/styles/utils';
 
-import config from '~/config';
-
-import Berlin from './Berlin';
 import Background from './Background';
+import Berlin from './Berlin';
 
 const ContentOverlay = styled.div`
   position: absolute;

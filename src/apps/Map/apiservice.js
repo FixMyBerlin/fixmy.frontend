@@ -31,5 +31,5 @@ export async function getLikes(apiUrl, token) {
 }
 
 export default {
-  likeDetail
+  likeDetail,
 };

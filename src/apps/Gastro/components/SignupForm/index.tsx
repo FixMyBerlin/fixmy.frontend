@@ -1,11 +1,3 @@
-import React from 'react';
-import { Formik, Field, ErrorMessage } from 'formik';
-import {
-  TextField,
-  CheckboxWithLabel,
-  Select,
-  RadioGroup
-} from 'formik-material-ui';
 import {
   FormHelperText,
   FormControl,
@@ -13,19 +5,28 @@ import {
   MenuItem,
   FormControlLabel,
   Radio,
-  LinearProgress
+  LinearProgress,
 } from '@material-ui/core';
+import debug from 'debug';
+import { Formik, Field, ErrorMessage } from 'formik';
+import {
+  TextField,
+  CheckboxWithLabel,
+  Select,
+  RadioGroup,
+} from 'formik-material-ui';
+import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import debug from 'debug';
 
-import Button from '~/components2/Button';
-import { Form } from '~/components2/Form';
-import LocationPicker from '~/components2/LocationPicker';
-import { GastroSignup } from '~/apps/Gastro/types';
 import api from '~/apps/Gastro/api';
-import validate from './validate';
+import { GastroSignup } from '~/apps/Gastro/types';
+import { Button } from '~/components2/Button';
+import { Form } from '~/components2/Form';
+import { LocationPicker } from '~/components2/LocationPicker';
+
 import parseLength from '../../parseLength';
+import validate from './validate';
 
 const logger = debug('fmc:Gastro:Signup');
 
@@ -54,7 +55,7 @@ const emptyForm: FormData = {
   location: null,
   opening_hours: null,
   shopfront_length: '',
-  tos_accepted: ''
+  tos_accepted: '',
 };
 
 const testValues: FormData = {
@@ -67,7 +68,7 @@ const testValues: FormData = {
   location: [13.40994, 52.37997],
   opening_hours: 'whole_week',
   shopfront_length: '5',
-  tos_accepted: true
+  tos_accepted: true,
 };
 
 const initialValues =
@@ -103,7 +104,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
         ...values,
         geometry: {
           type: 'Point',
-          coordinates: values.location
+          coordinates: values.location,
         },
         shopfront_length: parseLength(values.shopfront_length),
         campaign: district.name,
@@ -112,7 +113,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
           : 'weekend',
         category: district.apps.gastro.model.category
           ? values.category
-          : 'other'
+          : 'other',
       };
       try {
         const response = await api.signup(signupData, district);
@@ -152,7 +153,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
                   component={Select}
                   name="category"
                   inputProps={{
-                    id: 'category'
+                    id: 'category',
                   }}
                 >
                   <MenuItem value="restaurant">Restaurant</MenuItem>
@@ -185,15 +186,15 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
             render={(msg) => <FormError error>{msg}</FormError>}
           />
           <LocationPicker
-            mapboxStyle={district.apps.gastro.signup.mapboxStyle}
+            mapboxStyle={district.apps.gastro.maps.gastroSignup.mapboxStyle}
             bounds={district.bounds}
             onSelect={({ address, location }) => {
               handleChange({ target: { name: 'address', value: address } });
               handleChange({
                 target: {
                   name: 'location',
-                  value: [location.lng, location.lat]
-                }
+                  value: [location.lng, location.lat],
+                },
               });
             }}
           />
@@ -284,7 +285,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
                   gelesen und willige in die Speicherung meiner Daten zur
                   Kommunikation im Zuge der Nutzung der Sonderflächen ein.
                 </span>
-              )
+              ),
             }}
           />
         </div>
@@ -306,7 +307,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
 );
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(SignupForm);

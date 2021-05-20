@@ -1,6 +1,7 @@
 import uuidv4 from 'uuid/v4';
 
-import { set, remove, get } from '~/services/storage';
+import config from '~/config';
+import history from '~/history';
 import {
   apiSignup,
   apiLogin,
@@ -9,13 +10,10 @@ import {
   apiVerify,
   apiPasswordReset,
   apiPasswordForgot,
-  apiLikes
+  apiLikes,
 } from '~/pages/User/apiservice';
-import history from '~/history';
-import config from '~/config';
-import { HBI } from '~/apps/Map/constants';
+import { set, remove, get } from '~/services/storage';
 
-const UPDATE_HBI = 'User/UserState/UPDATE_HBI';
 const SIGNUP = 'User/UserState/SIGNUP';
 const SIGNUP_SUCCESS = 'User/UserState/SIGNUP_SUCCESS';
 const LOGIN = 'User/UserState/LOGIN';
@@ -38,16 +36,10 @@ const LOAD_LIKES_FAIL = 'User/UserState/LOAD_LIKES_FAIL';
 
 const initialState = {
   userid: uuidv4(),
-  hbi_values: HBI.map((d) => d.value),
   token: get('token'),
   userData: false,
-  userLikes: false
+  userLikes: false,
 };
-
-// updates custome hbi config values
-export function updateHBI(index, value) {
-  return { type: UPDATE_HBI, payload: { index, value } };
-}
 
 export function signup(values, formFunctions) {
   return async (dispatch) => {
@@ -57,7 +49,7 @@ export function signup(values, formFunctions) {
 
     if (!data.error) {
       formFunctions.setStatus('signupsuccess');
-      setTimeout(() => history.push(config.routes.projects), 3000);
+      setTimeout(() => history.push(config.routes.map.projectsIndex), 3000);
     }
   };
 }
@@ -124,13 +116,13 @@ export function update(values, formFunctions) {
         formFunctions.setStatus('usernamesuccess');
         dispatch({
           type: UPDATE_USERNAME_SUCCESS,
-          payload: { userData: { ...userData, username: values.new_username } }
+          payload: { userData: { ...userData, username: values.new_username } },
         });
       } else if (values.new_password) {
         formFunctions.setStatus('passwordsuccess');
         dispatch({
           type: UPDATE_PASSWORD_SUCCESS,
-          payload: { userData: { ...userData, password: '' } }
+          payload: { userData: { ...userData, password: '' } },
         });
       }
     }
@@ -191,7 +183,7 @@ export function loadLikes(itemType) {
     if (!res.error) {
       dispatch({
         type: LOAD_LIKES_SUCCESS,
-        payload: { isLoading: false, userLikes: res.results }
+        payload: { isLoading: false, userLikes: res.results },
       });
     } else {
       dispatch({ type: LOAD_LIKES_FAIL, payload: { isLoading: false } });
@@ -201,16 +193,6 @@ export function loadLikes(itemType) {
 
 export default function MapStateReducer(state = initialState, action = {}) {
   switch (action.type) {
-    case UPDATE_HBI: {
-      const hbiValues = state.hbi_values.map((d, i) => {
-        if (i === action.payload.index) {
-          return action.payload.value;
-        }
-        return d;
-      });
-
-      return { ...state, hbi_values: hbiValues };
-    }
     case SIGNUP:
     case SIGNUP_SUCCESS:
     case LOGIN:
@@ -237,5 +219,5 @@ export default function MapStateReducer(state = initialState, action = {}) {
 
 // selectors
 export const selectors = {
-  getToken: (state) => state.UserState.token
+  getToken: (state) => state.UserState.token,
 };

@@ -1,3 +1,1 @@
-import AreaPicker from './AreaPicker';
-
-export default AreaPicker;
+export { default as AreaPicker } from './AreaPicker';

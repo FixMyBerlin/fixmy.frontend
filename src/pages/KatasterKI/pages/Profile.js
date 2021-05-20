@@ -3,22 +3,23 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import config from '~/pages/KatasterKI/config';
 import history from '~/history';
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
 import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
 import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
+import Radiogroups from '~/pages/KatasterKI/components/SectionTypes/Radiogroups';
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import TransportRatings from '~/pages/KatasterKI/components/SectionTypes/TransportRatings';
 import ZipInput from '~/pages/KatasterKI/components/SectionTypes/ZipInput';
-import Radiogroups from '~/pages/KatasterKI/components/SectionTypes/Radiogroups';
+import config from '~/pages/KatasterKI/config';
 import Survey from '~/pages/KatasterKI/survey';
+
 import {
   setProfileAnswer,
   updateProgressBar,
   setZipcode,
   setTransportRating,
-  submitProfile
+  submitProfile,
 } from '../state';
 import { RequestState } from '../types';
 
@@ -28,7 +29,7 @@ const sectionTypes = {
   single_choice: SingleChoice,
   transportRatings: TransportRatings,
   zip: ZipInput,
-  radiogroups: Radiogroups
+  radiogroups: Radiogroups,
 };
 
 /**
@@ -67,7 +68,7 @@ const Profile = ({
   profile,
   profileRequest,
   userGroup,
-  dispatch
+  dispatch,
 }) => {
   if (shouldRedirectToLanding(match.params, isTosAccepted)) {
     return <Redirect to={config.routes.katasterKI.landing} />;
@@ -136,7 +137,7 @@ const mapStateToProps = (state) => ({
   profile: state.KatasterKIState.profile,
   introSelection: state.KatasterKIState.introSelection,
   userGroup: state.KatasterKIState.userGroup,
-  profileRequest: state.KatasterKIState.profileRequest
+  profileRequest: state.KatasterKIState.profileRequest,
 });
 
 export default connect(mapStateToProps)(Profile);

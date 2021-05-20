@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import MapboxGL from 'mapbox-gl';
-import styled from 'styled-components';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
+import MapboxGL from 'mapbox-gl';
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
-import Map from '~/components2/Map';
+import { BaseMap } from '~/components2/BaseMap';
 
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
 
 const DEFAULT_ZOOM_LEVEL = 19;
 
-const StyledMap = styled(Map)`
+const StyledMap = styled(BaseMap)`
   width: 100%;
   height: 30em;
   margin: 2em 0;
@@ -23,6 +23,7 @@ const GoodJob = styled.p`
 
 type Props = {
   onSelect: (geometry: GeoJSON.Geometry | null) => any;
+  onLoad?: (map: MapboxGL.Map) => any;
   center?: MapboxGL.LngLatLike;
   mapboxStyle: string;
   bounds?: MapboxGL.LngLatBoundsLike;
@@ -32,9 +33,10 @@ type Props = {
 const AreaPicker: React.FC<Props> = ({
   center,
   onSelect,
+  onLoad,
   mapboxStyle,
   bounds,
-  initialGeometry
+  initialGeometry,
 }) => {
   // Mapbox-GL.js map instance
   const [map, setMap] = useState<MapboxGL.Map | null>(null);
@@ -51,8 +53,8 @@ const AreaPicker: React.FC<Props> = ({
       default_mode: 'draw_polygon',
       controls: {
         polygon: true,
-        trash: true
-      }
+        trash: true,
+      },
     });
     map.addControl(draw);
     map.addControl(new MapboxGL.NavigationControl(), 'bottom-right');
@@ -70,6 +72,8 @@ const AreaPicker: React.FC<Props> = ({
     if (initialValue) {
       draw.add(initialValue);
     }
+
+    if (onLoad) onLoad(map);
   }, [map]);
 
   // Only adjust map center as long as no geometry has been drawn

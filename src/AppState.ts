@@ -1,8 +1,10 @@
 import debug from 'debug';
 import { Dispatch } from 'redux';
+
+import { LocaleCode, DistrictConfig, Region } from '~/types';
+
 import config from './apps/Gastro/config';
 import getDefaultLocale from './utils/defaultLocale';
-import { LocaleCode, DistrictConfig, Region } from '~/types';
 import polyfill from './utils/polyfill-intl';
 
 const OPEN_MENU = 'App/AppState/OPEN_MENU';
@@ -34,7 +36,7 @@ export interface AppState {
 const initialState = {
   isMenuOpen: false,
   district: null,
-  locale: getDefaultLocale()
+  locale: getDefaultLocale(),
 };
 
 export function open() {
@@ -71,7 +73,7 @@ export const setLocale = (locale: LocaleCode) => async (dispatch: Dispatch) => {
 
 const setLocaleThunk = async (locale: LocaleCode, dispatch: Dispatch) => {
   await polyfill(locale);
-  log('polyfills loaded');
+  log('I18n polyfills loaded');
   dispatch({ type: SET_LOCALE, locale });
 };
 

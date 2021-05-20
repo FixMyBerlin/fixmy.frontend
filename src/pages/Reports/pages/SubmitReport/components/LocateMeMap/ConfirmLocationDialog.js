@@ -1,11 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-import config from '~/pages/Reports/config';
-import logger from '~/utils/logger';
 import Button from '~/components/Button';
+import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
+import logger from '~/utils/logger';
 
 const Wrapper = styled.div`
   z-index: 9999999999;
@@ -90,14 +90,14 @@ ConfirmLocationDialog.propTypes = {
   heading: PropTypes.string,
   address: PropTypes.string,
   onConfirm: PropTypes.func,
-  onDecline: PropTypes.func
+  onDecline: PropTypes.func,
 };
 
 ConfirmLocationDialog.defaultProps = {
   heading: 'Der Ort wurde markiert!',
   address: 'Fehler beim Setzen der Adresse',
   onConfirm: () => logger('implement me'),
-  onDecline: () => logger('implement me')
+  onDecline: () => logger('implement me'),
 };
 
 export default ConfirmLocationDialog;

@@ -1,14 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-import FMCPropTypes from '~/pages/Reports/propTypes';
 import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';
-import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
+import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
+import FMCPropTypes from '~/pages/Reports/propTypes';
 
-import Header from './Header';
 import Body from './Body';
 import DetailsFooter from './Footer';
+import Header from './Header';
 
 const Wrapper = styled.div`
   display: flex;
@@ -48,12 +48,12 @@ const ReportDetails = ({ reportItem, token }) => {
 
 ReportDetails.propTypes = {
   token: PropTypes.string,
-  reportItem: FMCPropTypes.report
+  reportItem: FMCPropTypes.report,
 };
 
 ReportDetails.defaultProps = {
   token: null,
-  reportItem: null
+  reportItem: null,
 };
 
 export default detailWrapped(ReportDetails);

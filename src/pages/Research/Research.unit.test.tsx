@@ -1,11 +1,12 @@
 import '~/utils/polyfills';
 
-import React from 'react';
-import { Provider } from 'react-redux';
-import { IntlProvider } from 'react-intl';
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
+import React from 'react';
+import { IntlProvider } from 'react-intl';
+import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
+
 import Store from '~/store';
 
 import ResearchPage from '.';
@@ -32,12 +33,12 @@ describe('<ArticleHeader>', () => {
     expect(
       getByRole('img', {
         name:
-          'Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)'
+          'Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)',
       })
     ).toBeInTheDocument();
     expect(
       getByRole('img', {
-        name: 'Logo der Senatskanzlei Berlin'
+        name: 'Logo der Senatskanzlei Berlin',
       })
     ).toBeInTheDocument();
   });

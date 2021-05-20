@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/pages/KatasterKI/config';
-import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
 import Button from '~/pages/KatasterKI/components//Button';
-import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import QuestionInfo from '~/pages/KatasterKI/components/QuestionInfo';
+import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Radio from '~/pages/KatasterKI/components/Radio';
+import config from '~/pages/KatasterKI/config';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
+import { media } from '~/styles/utils';
 
 const RadioGroupWrapper = styled.div`
   margin-bottom: 1em;
@@ -73,7 +73,7 @@ export default ({
   currentValue,
   page,
   handleChange,
-  next
+  next,
 }) => {
   const [isLoading, onClick] = useHandlerTimeout(next);
 
@@ -113,7 +113,7 @@ export default ({
                       onChange={() =>
                         handleChange({
                           ...currentValue,
-                          [radiogroup.name]: option.value
+                          [radiogroup.name]: option.value,
                         })
                       }
                       css={{ display: 'block' }}

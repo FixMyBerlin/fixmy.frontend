@@ -1,11 +1,11 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import Slider from 'rc-slider';
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-import config from '~/pages/KatasterKI/config';
 import Flex from '~/components/Flex';
+import config from '~/pages/KatasterKI/config';
 import { media } from '~/styles/utils';
 
 const SLIDER_HEIGHT = 40;
@@ -51,7 +51,9 @@ const StyledSlider = styled(Slider)`
     background-color: ${config.colors.interaction};
   }
 
-  .rc-slider-track, .rc-slider-rail, .rc-slider-step {
+  .rc-slider-track,
+  .rc-slider-rail,
+  .rc-slider-step {
     height: 40px;
     border-radius: 40px;
   }
@@ -84,12 +86,13 @@ const StyledSlider = styled(Slider)`
       box-shadow: none;
     }
 
-    &:active, &:hover {
+    &:active,
+    &:hover {
       outline: none;
       border: 3px solid ${config.colors.katasterHighlight};
 
       &:after {
-        content: "${(props) => props.ratingLabels[props.value || 0]}";
+        content: '${(props) => props.ratingLabels[props.value || 0]}';
         display: block;
         user-select: none;
         color: ${config.colors.darkbg};
@@ -152,7 +155,7 @@ export default (props) => {
   const Icon = props.icon;
   const marks = showMarks
     ? {
-        [props.value]: props.ratingLabels[props.value]
+        [props.value]: props.ratingLabels[props.value],
       }
     : {};
 

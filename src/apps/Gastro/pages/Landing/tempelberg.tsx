@@ -1,18 +1,17 @@
 import React from 'react';
-
-import styled from 'styled-components';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-import Link from '~/components/Link';
-import Button from '~/components2/Button';
-import { Insert as ImageInsert } from '~/components2/Image';
-import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
-import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
-import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import Logo from '~/apps/Gastro/components/Logo';
 import Notice from '~/apps/Gastro/components/Notice';
 import { getPath } from '~/apps/Gastro/routes';
 import { openSignup } from '~/apps/Gastro/utils';
+import Link from '~/components/Link';
+import { Button } from '~/components2/Button';
+import { Insert as ImageInsert } from '~/components2/Image';
+import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
+import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
+import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 
 const Attribution = styled.div`
   font-size: 0.75em;
@@ -134,7 +133,7 @@ const XhainLanding = ({ district }) => (
 );
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(XhainLanding);

@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
-import FaqItem from './FaqItem';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 
+import FaqItem from './FaqItem';
+
 const FaqWrapper = styled.div`
-  padding-top: 48px;
-  margin-bottom: 62px;
+  margin: 2em 0;
 
   .feedbackmail {
     color: ${config.colors.interaction};

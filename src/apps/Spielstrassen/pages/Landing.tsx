@@ -1,20 +1,21 @@
+import { Container } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from '@material-ui/core';
 
-import config from '~/config';
-import Button from '~/components2/Button';
 import Link from '~/components/Link';
+import { Button } from '~/components2/Button';
+import { Header } from '~/components2/Header';
 import { Insert as ImageInsert } from '~/components2/Image';
-import Header from '~/components2/Header';
-import BackgroundImageA1 from '~/images/spielstrassen/landing-bg.jpg';
-import BackgroundImageA2 from '~/images/spielstrassen/landing-bg@2x.jpg';
-import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
+import { LogoFooter } from '~/components2/LogoFooter';
+import config from '~/config';
 import BackgroundImageB1 from '~/images/spielstrassen/landing-bg-2.jpg';
 import BackgroundImageB2 from '~/images/spielstrassen/landing-bg-2@2x.jpg';
 import BackgroundImageB3 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
-import LogoFooter from '~/components2/LogoFooter';
-import Notice from '../components/Notice';
+import BackgroundImageA1 from '~/images/spielstrassen/landing-bg.jpg';
+import BackgroundImageA2 from '~/images/spielstrassen/landing-bg@2x.jpg';
+import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
+
+// import Notice from '../components/Notice';
 
 const CTA = styled(Button)`
   margin: 2em auto;
@@ -42,10 +43,10 @@ const Landing = () => {
   return (
     <>
       <Header to={config.routes.spielstrassen.landing}>
-        Temporäre Spielstraßen für Friedrichshain-Kreuzberg
+        Temporäre Spielstraßen jetzt dauerhaft in Xhain!
       </Header>
       <Container maxWidth="md">
-        <h1>Unterstützen Sie temporäre Spielstraßen als Kiezlots:in</h1>
+        <h1>Temporäre Spielstraßen jetzt dauerhaft in Xhain!</h1>
         <ImageInsert
           width="938"
           height="603"
@@ -55,41 +56,38 @@ const Landing = () => {
         <Intro>
           <p>
             Kinder brauchen viel Raum zum Spielen im Freien, gerade jetzt
-            während der Corona-Pandemie. Deshalb richtet das Bezirksamt
-            Friedrichshain-Kreuzberg begleitend zur Spielplatzöffnung bis zu 30
-            temporäre Spielstraßen ein. Damit das möglich wird, benötigt das
-            Bezirksamt an Sonntagen jeweils von 13-19 Uhr Ihre Unterstützung.
+            während der Corona-Pandemie. Deshalb hat das Bezirksamt
+            Friedrichshain-Kreuzberg 2020 in vielen Kiezen temporäre Spieltraßen
+            eingerichtet, die von ehrenamtlichen Kiezlots:innen betreut werden.
+            Acht dieser Straßen werden nun verstetigt und regelmäßig zu
+            lebendigen Straßen. Besuchen Sie eine Spielstraße in Ihrer Nähe oder
+            melden Sie sich als Kiezlots*in um diese nachbarschaftliche
+            Institution zu unterstützen. Die Öffnungszeiten finden Sie in der
+            Übersicht.
           </p>
           <Link to={config.routes.spielstrassen.streets}>
-            <CTA flat>Jetzt eine Spielstraße unterstützen</CTA>
+            <CTA flat>Zur Spielstraßen-Übersicht</CTA>
           </Link>
-          <Notice />
+          {/* <Notice /> */}
         </Intro>
-        <h2>Wie funktioniert das genau?</h2>
+        <h2>Wie melde ich mich als Kiezlots*in?</h2>
         <ol>
           <li>
-            Registrieren Sie sich hier für die Spielstraße, die Sie als
-            Kiezlots:in unterstützen wollen.
+            Wählen Sie in der Übersicht eine Spielstraße, die Sie als
+            Kiezlots*in unterstützen wollen.
           </li>
+          <li>Geben Sie Ihren Namen und eine E-Mail-Aadresse an.</li>
           <li>
             Das Bezirksamt kontaktiert Sie, und stellt den Kontakt zu den Teams
             der Spielstraßen her.
           </li>
-          <li>
-            Wenn Sie sich als Teamkapitän*in für eine neue Straße angemeldet
-            haben schickt Ihnen das Bezirksamt einen Terminvorschlag. Dort
-            unterschreiben Sie eine Kooperationsvereinbarung und erhalten eine
-            Einweisung zum Verfahren.
-          </li>
-          <li>
-            Bei neuen Spielstraßen: Sobald sich sieben Kiezlots:innen und ein/e
-            Teamkapitän:in für eine Spielstraße gefunden haben, wird diese vom
-            Bezirksamt angeordnet und eingerichtet. Bei der Umsetzung vor Ort
-            ist das Bezirksamt jenseits der rechtlichen und materiellen
-            Vorbereitung auf die selbständige Mitwirkung und Organisation unter
-            den registrierten Anwohner*innen angewiesen.
-          </li>
         </ol>
+        <p>
+          Eine Spielstraße in Ihrer Nähe fehlt? Über die Funktion Mail senden
+          unten auf der Übersichtsseite können Sie neue Spielstraßen
+          vorschlagen. Wenn sich ausreichend Nachbar*innen für eine Straße
+          finden, kann diese voom Bezirksamt eingerichtet werden.
+        </p>
         <h2>Was müssen Sie vor Ort tun?</h2>
         <p>
           Notwendig für die Umsetzung ist die Bereitschaft der Bürger:innen,
@@ -147,22 +145,27 @@ const Landing = () => {
         </Attribution>
         <h2>Zum Hintergrund</h2>
         <p>
-          Die Spielplätze im Bezirk Friedrichshain-Kreuzberg wurden nach einem
-          Beschluss des Rates der Bürgermeister:innen zum 01.05.2020 wieder
-          geöffnet. Die Abstandsgebote der Covid-19-Eindämmungsverordnung
-          behalten aber unverändert ihre Gültigkeit. Der Bezirk ist eines der
-          europaweit am stärksten besiedelten urbanen Gebiete. Mit nur 6,4 m2
-          Grünraum pro Einwohner:in füllen sich die öffentlichen Räume – und
-          hier besonders die Spielplätze und Parks – sehr schnell.
+          Der Bezirk Friedrichshain-Kreuzberg ist eines der europaweit am
+          stärksten besiedelten urbanen Gebiete. Mit nur 6,4 m2 Grünraum pro
+          Einwohner*in füllen sich die öffentlichen Räume – und hier besonders
+          die Spielplätze und Parks – sehr schnell. Die temporären Spielstraßen
+          wurden 2020 während der Coronapandemie eingerichtet. Durch das große
+          Engagement vieler Bürger*innen konnte den Kindern ein zusätzlicher
+          Raum zu spielen bereitgestellt werden. In 2021 werden nun zunächst
+          acht der Spielstraßen, die regelmäßig genutzt und gut betreut werden
+          können bis zum Saisonende eingerichtet. Die Spielstraßen können nicht
+          nur zum Spielen von Kindern genutzt werden sondern sind bereits
+          vielmals für offene Versammlungen oder andere
+          Nachbarschaftsaktivitäten genutzt worden. Sie sind damit auch ein Raum
+          für die Gemeinschaft und demokratische Willensbildung.
         </p>
         <p>
-          An einigen der betreffenden Straßen wird das Straßen- und
-          Grünflächenamt Wasserzapfstationen einrichten, damit auch dem
-          leidenden Baumbestand durch gemeinsame nachbarschaftliche Gießaktionen
-          geholfen werden kann.
+          Die Spielstraßen können beim Straßen- und Grünflächenamt
+          Wasserstandrohre ausleihen, damit auch dem leidenden Baumbestand durch
+          gemeinsame nachbarschaftliche Gießaktionen geholfen werden kann.
         </p>
         <Link to={config.routes.spielstrassen.streets}>
-          <CTA flat>Jetzt eine Spielstraße unterstützen</CTA>
+          <CTA flat>Zur Spielstraßen-Übersicht</CTA>
         </Link>
         <LogoFooter>Bereitgestellt durch FixMyBerlin</LogoFooter>
       </Container>

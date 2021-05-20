@@ -1,5 +1,6 @@
-import defaultRoutes from '../default/routes';
 import { RegionConfig } from '~/types';
+
+import defaultRoutes from '../default/routes';
 
 const eichwaldeConfig: RegionConfig = {
   siteTitle: 'ZESplus',
@@ -13,7 +14,7 @@ const eichwaldeConfig: RegionConfig = {
     emailVerification: defaultRoutes.emailVerification,
     profile: defaultRoutes.profile,
     userVerify: defaultRoutes.userVerify,
-    zesplusResearch: '/forschungsprojekt'
+    zesplusResearch: '/forschungsprojekt',
   },
   menu: {
     profileLabel: 'Zum Profil',
@@ -25,17 +26,17 @@ const eichwaldeConfig: RegionConfig = {
     footeritems: [
       {
         label: 'Impressum',
-        link: '/impressum'
+        link: '/impressum',
       },
       {
         label: 'Datenschutz',
-        link: '/datenschutz'
-      }
-    ]
+        link: '/datenschutz',
+      },
+    ],
   },
   newsletter: {
-    embedUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EuZ'
-  }
+    embedUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EuZ',
+  },
 };
 
 export default eichwaldeConfig;

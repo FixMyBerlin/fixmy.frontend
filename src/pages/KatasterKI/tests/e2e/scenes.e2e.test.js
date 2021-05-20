@@ -1,5 +1,6 @@
-import { cyElem } from '~/../cypress/support/utils';
 import config from '~/config';
+
+import { cyElem } from '~/../cypress/support/utils';
 
 describe('katasterKi scene rating', () => {
   describe('a new session with gathered profile information at hand', () => {
@@ -9,9 +10,7 @@ describe('katasterKi scene rating', () => {
       });
 
       it('has made the store object globally available for testing', () => {
-        cy.window()
-          .its('store')
-          .should('exist');
+        cy.window().its('store').should('exist');
       });
     });
 
@@ -59,7 +58,7 @@ describe('katasterKi scene rating', () => {
     });
   });
 
-  describe('when the session is continued', () => {
+  describe.skip('when the session is continued', () => {
     describe('the feedback screen', () => {
       before(() => {
         cy.fmbReturnToScene(1);

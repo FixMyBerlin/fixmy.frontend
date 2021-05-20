@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 import config from '~/pages/KatasterKI/config';
 import { handleQuit } from '~/pages/KatasterKI/utils';
-import GhostButton from '~/pages/KatasterKI/components/GhostButton';
 
 const CloseSurveyButton = ({ isEmbedded, style = {} }) => {
   return isEmbedded ? (
@@ -23,7 +23,7 @@ const CloseSurveyButton = ({ isEmbedded, style = {} }) => {
 };
 
 const mapStateToProps = (state) => ({
-  isEmbedded: state.KatasterKIState.isEmbedded
+  isEmbedded: state.KatasterKIState.isEmbedded,
 });
 
 export default connect(mapStateToProps)(CloseSurveyButton);

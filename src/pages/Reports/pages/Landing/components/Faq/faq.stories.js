@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { media } from '~/styles/utils';
 
-import Faq from '.';
 import FaqItem from './FaqItem';
+
+import Faq from '.';
 
 const Wrapper = styled.div`
   max-width: 568px;
@@ -17,7 +19,7 @@ const Wrapper = styled.div`
 
 export default {
   title: 'Meldungen / Landing / FAQs',
-  decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>]
+  decorators: [(storyFn) => <Wrapper>{storyFn()}</Wrapper>],
 };
 
 export const Full = () => <Faq />;

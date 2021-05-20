@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+
 import MenuButton from '~/components/MenuButton';
 import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
 import config from '~/pages/Reports/config';
@@ -118,11 +119,11 @@ const OverviewMapNavBar = ({ heading }) => (
 );
 
 OverviewMapNavBar.propTypes = {
-  heading: PropTypes.string
+  heading: PropTypes.string,
 };
 
 OverviewMapNavBar.defaultProps = {
-  heading: `Neue Fahrradbügel für ${config.reports.region}`
+  heading: `Neue Fahrradbügel für ${config.reports.region}`,
 };
 
 export default OverviewMapNavBar;

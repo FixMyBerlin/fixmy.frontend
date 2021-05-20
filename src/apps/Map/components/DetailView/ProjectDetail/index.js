@@ -2,18 +2,18 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import config from '~/config';
-import Title from '~/components/Title';
+import DetailFooter from '~/apps/Map/components/DetailView/DetailFooter';
+import ImageSlider from '~/apps/Map/components/DetailView/ImageSlider';
+import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';
 import SectionTitle from '~/components/SectionTitle';
 import Text from '~/components/Text';
-import Label from '~/components/Label';
-import detailWrapped from '~/apps/Map/components/DetailView/detailWrapped';
-import ImageSlider from '~/apps/Map/components/DetailView/ImageSlider';
+import Title from '~/components/Title';
+import Label from '~/components2/Label';
+import config from '~/config';
 
-import ProjectStatusChart from './ProjectStatusChart';
 import ProjectLike from './ProjectLike';
+import ProjectStatusChart from './ProjectStatusChart';
 import categoryMapping from './categoryMapping';
-import DetailFooter from '~/apps/Map/components/DetailView/DetailFooter';
 
 const DetailHead = styled.div`
   padding: 14px 24px;
@@ -76,13 +76,13 @@ class ProjectDetail extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      descriptionExpanded: false
+      descriptionExpanded: false,
     };
   }
 
   toggleDescription = () => {
     this.setState((prevState) => ({
-      descriptionExpanded: !prevState.descriptionExpanded
+      descriptionExpanded: !prevState.descriptionExpanded,
     }));
   };
 
@@ -107,7 +107,7 @@ class ProjectDetail extends PureComponent {
       construction_started,
       draft_submitted,
       cross_section_photo,
-      category
+      category,
     } = data;
 
     const url = `${config.apiUrl}/projects/${id}`;

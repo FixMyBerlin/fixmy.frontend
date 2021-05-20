@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import config from '~/config';
-import Title from '~/components/Title';
-import Text from '~/components/Text';
 import Button from '~/components/Button';
-import UserForm from '~/pages/User/components/UserForm';
+import Text from '~/components/Text';
+import Title from '~/components/Title';
+import config from '~/config';
 import { update, logout, profile } from '~/pages/User/UserState';
+import UserForm from '~/pages/User/components/UserForm';
 
 const formConfigUserName = [
   {
@@ -15,7 +15,7 @@ const formConfigUserName = [
     type: 'email',
     label: 'E-Mail',
     placeholder: 'E-Mail eingeben...',
-    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.'
+    validateError: 'Bitte geben Sie Ihre E-Mail Adresse an.',
   },
   {
     id: 'current_password',
@@ -23,8 +23,8 @@ const formConfigUserName = [
     type: 'password',
     label: 'Aktuelles Passwort',
     placeholder: 'Passwort eingeben...',
-    validateError: 'Bitte geben Sie Ihr aktuelles Passwort an.'
-  }
+    validateError: 'Bitte geben Sie Ihr aktuelles Passwort an.',
+  },
 ];
 
 const formConfigPassword = [
@@ -34,7 +34,7 @@ const formConfigPassword = [
     type: 'password',
     label: 'Neues Passwort',
     placeholder: 'Neues Passwort eingeben...',
-    validateError: 'Bitte geben Sie ein neues Passwort an.'
+    validateError: 'Bitte geben Sie ein neues Passwort an.',
   },
   {
     id: 'current_password',
@@ -42,8 +42,8 @@ const formConfigPassword = [
     type: 'password',
     label: 'Aktuelles Passwort',
     placeholder: 'Passwort eingeben...',
-    validateError: 'Bitte geben Sie ihr aktuelles Passwort an.'
-  }
+    validateError: 'Bitte geben Sie ihr aktuelles Passwort an.',
+  },
 ];
 
 const StyledButton = styled(Button)`
@@ -55,7 +55,7 @@ class Profil extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      logoutstatus: false
+      logoutstatus: false,
     };
   }
 
@@ -90,7 +90,7 @@ class Profil extends PureComponent {
 
     const formConfigPasswordCleared = formConfigPassword.map((d) => ({
       ...d,
-      value: ''
+      value: '',
     }));
 
     return (

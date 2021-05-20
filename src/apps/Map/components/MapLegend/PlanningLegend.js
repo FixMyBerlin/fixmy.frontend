@@ -2,24 +2,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ConceptIcon from '~/images/planning-icons/konzept.svg';
-import PlanningIcon from '~/images/planning-icons/planung.svg';
+import { togglePlanningFilter } from '~/apps/Map/MapState';
+import { PLANNING_PHASES } from '~/apps/Map/constants';
+import Label from '~/components2/Label';
 import ConstructionIcon from '~/images/planning-icons/bau.svg';
 import DoneIcon from '~/images/planning-icons/fertig.svg';
-
+import ConceptIcon from '~/images/planning-icons/konzept.svg';
+import PlanningIcon from '~/images/planning-icons/planung.svg';
 import Store from '~/store';
-import Label from '~/components/Label';
-import { togglePlanningFilter } from '~/apps/Map/MapState';
-import LegendWrapper from './LegendWrapper';
+
 import LegendImageWrapper from './LegendImageWrapper';
 import LegendItem from './LegendItem';
-import { PLANNING_PHASES } from '~/apps/Map/constants';
+import LegendWrapper from './LegendWrapper';
 
 const Icons = {
   draft: ConceptIcon,
   planning: PlanningIcon,
   execution: ConstructionIcon,
-  ready: DoneIcon
+  ready: DoneIcon,
 };
 
 function handleClick(index) {
@@ -52,5 +52,5 @@ const PlanningLegendComp = ({ filterPlannings }) => (
 );
 
 export default connect((state) => ({
-  filterPlannings: state.MapState.filterPlannings
+  filterPlannings: state.MapState.filterPlannings,
 }))(PlanningLegendComp);

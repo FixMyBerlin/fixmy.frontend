@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import { FormControl, InputLabel, MenuItem } from '@material-ui/core';
 import { Field, ErrorMessage } from 'formik';
 import { TextField, Select } from 'formik-material-ui';
-import { FormControl, InputLabel, MenuItem } from '@material-ui/core';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import StaticMap from '~/components2/StaticMap';
-import FormError from './FormError';
-import LocationPicker from '~/components2/LocationPicker';
+import { LocationPicker } from '~/components2/LocationPicker';
+import { StaticMap } from '~/components2/StaticMap';
+
+import { setLayerVisibility } from '../../utils';
+import FormError from '../FormError';
 
 const InvisiLabel = styled.label`
   display: none;
@@ -18,7 +20,7 @@ const SectionBase = ({
   signupData = null,
   handleChange,
   district,
-  values
+  values,
 }) => {
   const [initialAddress] = useState(values.address);
   return (
@@ -49,7 +51,7 @@ const SectionBase = ({
             component={Select}
             name="category"
             inputProps={{
-              id: 'category'
+              id: 'category',
             }}
           >
             <MenuItem value="restaurant">Restaurant</MenuItem>
@@ -77,7 +79,7 @@ const SectionBase = ({
         fullWidth
       />
       <InvisiLabel htmlFor="phone">
-        Telefonnummer (tagsüber erreichbar)
+        Telefonnummer unter der Sie tagsüber gut erreichbar sind
       </InvisiLabel>
       <Field
         id="phone"
@@ -99,15 +101,24 @@ const SectionBase = ({
           </InvisiLabel>
           <LocationPicker
             initialValue={initialAddress}
-            mapboxStyle={district.apps.gastro.signup.mapboxStyle}
+            mapboxStyle={
+              district.apps.gastro.maps.gastroRegistration.mapboxStyle
+            }
             bounds={district.bounds}
+            onLoad={(map) =>
+              setLayerVisibility(
+                map,
+                district.apps.gastro.layerSets,
+                district.apps.gastro.maps.gastroRegistration.layerSets
+              )
+            }
             onSelect={({ address, location }) => {
               handleChange({ target: { name: 'address', value: address } });
               handleChange({
                 target: {
                   name: 'location',
-                  value: [location.lng, location.lat]
-                }
+                  value: [location.lng, location.lat],
+                },
               });
             }}
           />
@@ -125,17 +136,41 @@ const SectionBase = ({
           />
           <StaticMap
             location={signupData?.geometry?.coordinates}
-            mapboxStyle={district?.apps.gastro.registration.mapboxStyle}
+            mapboxStyle={district?.apps.gastro.maps.gastroSignup.mapboxStyle}
             bounds={district?.bounds}
           />
         </>
       )}
+
+      <p>
+        <strong>
+          Wie breit ist die Häuserfront ihres Ladenlokals (falls vorhanden)?
+        </strong>
+      </p>
+      <p>
+        Auf Grundlage der Straßenfront-Breite kann das Bezirksamt entscheiden
+        welcher Raum im Straßenland genutzt werden kann. Sofern sie kein
+        Ladenlokal haben bitte 0 angeben.
+      </p>
+      <InvisiLabel htmlFor="shopfront_length">
+        Angabe in Metern z.B. 4,8
+      </InvisiLabel>
+      <Field
+        id="shopfront_length"
+        name="shopfront_length"
+        type="text"
+        inputMode="numeric"
+        pattern="[0-9]+(,[0-9]+)?"
+        component={TextField}
+        label="Angabe in Metern z.B. 4,8"
+        fullWidth
+      />
     </section>
   );
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(SectionBase);

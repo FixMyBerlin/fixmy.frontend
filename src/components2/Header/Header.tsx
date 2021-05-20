@@ -1,26 +1,35 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { AppBar, Toolbar, AppBarProps, Button } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-import MenuButton from '~/components2/MenuButton';
-import SeparatorImage from '~/images/header-separator.svg';
+import { MenuButton } from '~/components2/MenuButton';
 import config from '~/config';
-import { RootState } from '~/store';
-
-import ChatTranslate from './chat-translate.svg';
-import LocaleMenu from './LocaleMenu';
+import SeparatorImage from '~/images/header-separator.svg';
+import { useTypedSelector } from '~/store';
+import { media } from '~/styles/utils';
 import { LocaleCode } from '~/types';
 
-const StyledAppBar = styled(({ isOpen, ...props }) => <AppBar {...props} />)`
+import LocaleMenu from './LocaleMenu';
+import ChatTranslate from './chat-translate.svg';
+
+const StyledAppBar = styled(({ isOpen, hideAppBar, ...props }) => (
+  <AppBar {...props} />
+))<
+  typeof AppBar & {
+    isOpen: boolean;
+    hideAppBar: boolean;
+  }
+>`
   && {
-    background-color: ${config.colors.white};
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    background: ${({ hideAppBar }) =>
+      hideAppBar ? 'none' : config.colors.white};
+    box-shadow: ${({ hideAppBar }) =>
+      hideAppBar ? 'none' : '0 0 10px 0 rgba(0, 0, 0, 0.2)'};
 
     .MuiToolbar-root {
       padding-left: 0;
-      opacity: ${({ isOpen }) => (isOpen ? 0.7 : 1)};
+      opacity: ${(props) => (props.isOpen ? 0.7 : 1)};
     }
   }
 `;
@@ -34,7 +43,11 @@ const Title = styled.h1`
   color: ${config.colors.darkgrey};
   font-weight: bold;
   font-size: 1em;
-  line-height: 1.5em;
+  line-height: 1.2em;
+
+  ${media.s`
+    line-height: 1.5em;
+  `}
 `;
 
 const Subtitle = styled.span`
@@ -59,7 +72,7 @@ const LinkWrapper = styled(Link)`
 `;
 
 const LogoWrapper = styled.div`
-  margin: 1em 1em 1em auto;
+  margin: 1em 0 1em auto;
 `;
 
 const ChatTranslateIcon = styled(({ isOpen, ...props }) => (
@@ -77,6 +90,8 @@ interface Props extends AppBarProps {
   showInfoLink?: boolean;
   logo?: React.ReactNode;
   locales?: LocaleCode[];
+  hideAppBar?: boolean;
+  className?: string;
 }
 
 const Header = ({
@@ -85,31 +100,39 @@ const Header = ({
   logo = null,
   position = 'static',
   locales = null,
+  hideAppBar = false,
   children,
+  className,
   ...props
 }: Props) => {
   const [isLocaleMenuOpen, setLocaleMenu] = useState(false);
-  const activeLocale = useSelector((state: RootState) => state.AppState.locale);
+  const activeLocale = useTypedSelector((state) => state.AppState.locale);
   return (
     <StyledAppBar
       position={position}
       role="banner"
       isOpen={isLocaleMenuOpen}
+      hideAppBar={hideAppBar}
+      className={className}
       {...props}
     >
       <Toolbar>
         <MenuButton />
-        <Separator />
-        <LinkWrapper to={to}>
-          {React.Children.count(children) > 0 && (
-            <>
-              <Title>{children}</Title>
-              {showInfoLink === true && (
-                <Subtitle>Alle Infos zur Aktion &gt;</Subtitle>
+        {!hideAppBar && (
+          <>
+            <Separator />
+            <LinkWrapper to={to}>
+              {React.Children.count(children) > 0 && (
+                <>
+                  <Title>{children}</Title>
+                  {showInfoLink === true && (
+                    <Subtitle>Alle Infos zur Aktion &gt;</Subtitle>
+                  )}
+                </>
               )}
-            </>
-          )}
-        </LinkWrapper>
+            </LinkWrapper>
+          </>
+        )}
         {locales && (
           <Button
             endIcon={<ChatTranslateIcon isOpen={isLocaleMenuOpen} />}

@@ -1,22 +1,22 @@
-import React from 'react';
 import MapboxGL from 'mapbox-gl';
+import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import styled from 'styled-components';
 
+import lors from '~/apps/Spielstrassen/data/lor-features.json';
+import { BaseMap } from '~/components2/BaseMap';
+import { RootState } from '~/store';
 import { media } from '~/styles/utils';
-import Map from '~/components2/Map';
-import { Spielstrasse } from '../types';
 import { getBoundsFromPoly } from '~/utils/geo';
 
-import lors from '~/apps/Spielstrassen/data/lor-features.json';
-import { RootState } from '~/store';
+import { Spielstrasse } from '../types';
 
 type LORData = GeoJSON.FeatureCollection<
   GeoJSON.Polygon,
   { PLR_NAME: string; SCHLUESSEL: string }
 >;
 
-const MapWrapper = styled(Map)`
+const MapWrapper = styled(BaseMap)`
   width: 100vw;
   height: 20em;
   margin-left: -1rem;
@@ -46,7 +46,7 @@ const dimMap = (street: Spielstrasse, map: MapboxGL.Map) => {
     ['get', 'PLR_NAME'],
     street.kiez,
     'hsla(325, 0%, 100%, 0)',
-    'hsla(325, 0%, 0%, 0.85)'
+    'hsla(325, 0%, 0%, 0.85)',
   ]);
 };
 
@@ -56,7 +56,7 @@ const handleLoad = (street: Spielstrasse, map: MapboxGL.Map) => {
 };
 
 const connector = connect(({ AppState }: RootState) => ({
-  district: AppState.district
+  district: AppState.district,
 }));
 
 type Props = {
@@ -65,7 +65,7 @@ type Props = {
 
 const KiezMap = ({
   street,
-  district
+  district,
 }: ConnectedProps<typeof connector> & Props) => (
   <MapWrapper
     style={district.apps.spielstrassen.mapboxStyle}

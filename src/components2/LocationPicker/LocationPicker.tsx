@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import {
   TextField,
   Snackbar,
@@ -6,16 +5,17 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
-  Paper
+  Paper,
 } from '@material-ui/core';
-import LocationIcon from '@material-ui/icons/LocationOn';
 import ErrorIcon from '@material-ui/icons/Error';
+import LocationIcon from '@material-ui/icons/LocationOn';
 import MapboxGL from 'mapbox-gl';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import { fetchSuggestions } from '~/components/AutocompleteGeocoder/apiService';
+import { BaseMap } from '~/components2/BaseMap';
 import config from '~/config';
-import Map from '~/components2/Map';
 import logger from '~/utils/logger';
 
 /**
@@ -28,7 +28,7 @@ import logger from '~/utils/logger';
  */
 const containsStreetNumber = (address: string) => address.match(/^[^,]+\d,/);
 
-const StyledMap = styled(Map)`
+const StyledMap = styled(BaseMap)`
   width: 100%;
   height: 30em;
   margin: 2em 0;
@@ -50,16 +50,18 @@ const AddressHint = styled.p`
 
 type Props = {
   onSelect: (result: { address: string; location: MapboxGL.LngLat }) => any;
-  mapboxStyle: MapboxGL.Style;
+  onLoad?: (map: MapboxGL.Map) => any;
+  mapboxStyle: string;
   bounds: MapboxGL.LngLatBoundsLike;
   initialValue?: string;
 };
 
 const LocationPicker: React.FC<Props> = ({
   onSelect,
+  onLoad,
   mapboxStyle,
   bounds,
-  initialValue = ''
+  initialValue = '',
 }) => {
   // Mapbox-GL.js map instance
   const [map, setMap] = useState(null);
@@ -84,6 +86,14 @@ const LocationPicker: React.FC<Props> = ({
 
   // Current map marker
   const [marker, setMarker] = useState(null);
+
+  /**
+   * React to map initialization
+   */
+  useEffect(() => {
+    if (map == null) return;
+    if (onLoad) onLoad(map);
+  }, [map]);
 
   /**
    * React when a user selects a suggestion from the suggestion list
@@ -145,7 +155,6 @@ const LocationPicker: React.FC<Props> = ({
   return (
     <>
       <TextField
-        id="address"
         placeholder="Adresse suchen..."
         fullWidth
         value={inputValue}

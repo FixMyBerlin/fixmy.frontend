@@ -1,5 +1,5 @@
-import { JSONValue, RequestOptions } from './types';
 import request from './request';
+import { JSONValue, RequestOptions } from './types';
 
 /**
  * Make a GET request
@@ -41,7 +41,7 @@ export const post = (
   request(route, {
     ...requestOptions,
     method: 'post',
-    json: payload
+    json: payload,
   });
 
 /**
@@ -66,5 +66,5 @@ export const patch = (
   request(route, {
     ...requestOptions,
     method: 'patch',
-    json: payload
+    json: payload,
   });

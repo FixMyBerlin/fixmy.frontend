@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
-import classnames from 'classnames';
 
-import config from '~/pages/KatasterKI/config';
-import { media, bounce } from '~/styles/utils';
 import Flex from '~/components/Flex';
-import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
-import { getSceneImageSrc } from '~/pages/KatasterKI/survey';
 import loadingImage from '~/images/strassencheck/scene-loading.jpg';
+import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import config from '~/pages/KatasterKI/config';
+import { getSceneImageSrc } from '~/pages/KatasterKI/survey';
+import { media, bounce } from '~/styles/utils';
 import logger from '~/utils/logger';
 
 const SceneWrapper = styled.div`
@@ -65,15 +64,17 @@ const RatingButton = styled.button`
     }
   `}
 
-  &.active {
-    font-weight: 700;
+  ${({ isSelected }) =>
+    isSelected &&
+    `
+    & > div { font-weight: 700; }
 
     svg {
       use {
         fill: ${config.colors.katasterHighlight};
       }
     }
-  }
+  `}
 
   &:focus {
     outline: none;
@@ -164,16 +165,13 @@ const Scene = ({ title, name, options, currentValue, handleChange, next }) => {
       <Flex>
         {options.map((option, index) => {
           const Icon = option.icon;
-          const buttonClasses = classnames({
-            active: currentValue.rating === index
-          });
 
           return (
             <RatingButton
               key={`singlechoice__${option.value}`}
               onClick={() => onClick(option)}
-              className={buttonClasses}
               data-cy="kat-scene-rating-button"
+              isSelected={currentValue.rating === index}
             >
               <IconWrapper isEnqueued={enqueuedRating === option.label}>
                 <Icon />

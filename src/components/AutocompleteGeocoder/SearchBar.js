@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+
 import config from '~/config';
 import SearchIcon from '~/images/reports/search.svg';
 
@@ -62,7 +63,7 @@ class SearchBar extends PureComponent {
     super(props);
     this.state = {
       searchStarted: false,
-      inputValue: ''
+      inputValue: '',
     };
   }
 
@@ -74,7 +75,7 @@ class SearchBar extends PureComponent {
     if (!this.state.searchStarted) {
       this.props.onSearchStart();
       this.setState({
-        searchStarted: true
+        searchStarted: true,
       });
     }
 
@@ -168,7 +169,7 @@ SearchBar.propTypes = {
    */
   debounceTime: PropTypes.number,
 
-  label: PropTypes.string
+  label: PropTypes.string,
 };
 
 SearchBar.defaultProps = {
@@ -179,7 +180,7 @@ SearchBar.defaultProps = {
   onEnterKeyPress: () => {},
   searchStringMinLength: 3,
   debounceTime: 1000,
-  label: null
+  label: null,
 };
 
 export default SearchBar;

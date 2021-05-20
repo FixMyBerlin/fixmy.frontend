@@ -3,17 +3,18 @@ import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import styled from 'styled-components';
+
 import KiezMap from '~/apps/Spielstrassen/components/KiezMap';
 import KiezNotFound from '~/apps/Spielstrassen/components/NotFound';
 import SignupForm from '~/apps/Spielstrassen/components/SignupForm';
 import SupporterIcon from '~/apps/Spielstrassen/components/SupporterIcon';
 import { RequestState } from '~/apps/Spielstrassen/state';
 import { getStreetInfo } from '~/apps/Spielstrassen/utils';
-import BigLoader from '~/components/BigLoader';
-import Header from '~/components2/Header';
+import { Header } from '~/components2/Header';
+import { BigLoader } from '~/components2/Loaders';
+import { Notice } from '~/components2/Notice';
 import config from '~/config';
 import { RootState } from '~/store';
-import Notice from '~/components2/Notice';
 
 const SupporterInfo = styled.div`
   display: flex;
@@ -39,7 +40,7 @@ const Schedule = styled.p`
 
 const connector = connect(({ AppState, SpielstrassenState }: RootState) => ({
   ...SpielstrassenState,
-  district: AppState.district
+  district: AppState.district,
 }));
 
 type Props = ConnectedProps<typeof connector> &
@@ -110,10 +111,10 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
           <h2>Diese Spielstrasse benötigt Ihre Unterstützung!</h2>
           <p>
             Damit die Spielstraßen dauerhaft stattfinden können, brauchen sie
-            Kiezlots:innen, die an Sonntagen 1-2 mal im Monat für drei Stunden
-            vor Ort sind. Registrieren Sie sich hier, um Ihre Nachbarn zu
-            unterstützen und Kindern das Spielen im öffentlichen Raum zu
-            ermöglichen.
+            Kiezlots:innen die an dem angezeigten Wochentag 1-2 mal im Monat für
+            drei Stunden vor Ort sind. Registrieren Sie sich hier, um Ihre
+            Nachbarn zu unterstützen und Kindern das Spielen im öffentlichen
+            Raum zu ermöglichen.
           </p>
           <p>
             Hier finden Sie{' '}

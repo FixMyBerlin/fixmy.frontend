@@ -8,5 +8,5 @@ export default {
   'shared space': 'Errichtung Begegnungszone',
   'modification of cross section': 'Sanierung / Umbau Straßenquerschnitt',
   miscellaneous: 'Sonstiges',
-  'new street': 'Straßenneubau'
+  'new street': 'Straßenneubau',
 };

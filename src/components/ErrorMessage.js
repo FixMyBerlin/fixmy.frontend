@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+
 import Button from '~/components/Button';
-import logger from '~/utils/logger';
 import config from '~/config';
+import logger from '~/utils/logger';
 
 const Div = styled.div`
   position: fixed;
@@ -37,14 +38,14 @@ ErrorMessage.propTypes = {
   title: PropTypes.string,
   message: PropTypes.string,
   onDismiss: PropTypes.func,
-  dismissMessage: PropTypes.string
+  dismissMessage: PropTypes.string,
 };
 
 ErrorMessage.defaultProps = {
   title: 'Fehler',
   message: 'Ein Fehler ist aufgetreten',
   onDismiss: () => logger('onDismiss says implement me'),
-  dismissMessage: 'OK'
+  dismissMessage: 'OK',
 };
 
 export default ErrorMessage;

@@ -194,6 +194,12 @@
   "research.03_concept.p9.heading": {
     "defaultMessage": "Datos personales referidos al perfil del usuario"
   },
+  "research.04_dataset.downloadCaption": {
+    "defaultMessage": "(Formato: JSON comprimido (ZIP), tamaño: 5.2 MB, licencia: ODbL)"
+  },
+  "research.04_dataset.downloadLabel": {
+    "defaultMessage": "Descargar conjunto de datos"
+  },
   "research.04_dataset.heading": {
     "defaultMessage": "Conjunto de datos de los resultados (para descargar)"
   },
@@ -207,10 +213,7 @@
     "defaultMessage": "este PDF"
   },
   "research.04_dataset.p2": {
-    "defaultMessage": "El siguiente enlace lo lleva a {linkResults}, que puede ver y descargar allí."
-  },
-  "research.04_dataset.p2.linkResults": {
-    "defaultMessage": "los resultados de la encuesta como un conjunto de datos en formato JSON"
+    "defaultMessage": "Descargue los resultados de la encuesta como archivos JSON pulsando el siguiente botón:"
   },
   "research.05_results.chart1.1": {
     "defaultMessage": "masculino"

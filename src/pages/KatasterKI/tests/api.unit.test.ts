@@ -1,5 +1,5 @@
-import { ProfileRequest } from '../types';
 import { validateProfileRequest } from '../api/profile';
+import { ProfileRequest } from '../types';
 
 const profileRequestSample: ProfileRequest = require('../scheme/sample-instances/profile-request-sample-instance.json');
 
@@ -18,11 +18,11 @@ describe('API bindings', () => {
       ageGroup: 'BBB',
       isTosAccepted: {},
       transportRatings: {
-        '': 1
+        '': 1,
       },
       userGroup: [1, 2, 3],
       vehiclesOwned: ['car'],
-      zipcode: 345
+      zipcode: 345,
     };
 
     expect(

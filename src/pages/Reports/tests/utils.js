@@ -1,16 +1,16 @@
 import config from '~/pages/Reports/config';
 
-import foundAddress from './fixtures/foundAddress.json';
-import bikeStands from './fixtures/bikeStands.json';
 import additionalDataForm from './fixtures/additionalDataForm.json';
 import bikeLockerForm from './fixtures/bikeLockerForm.json';
+import bikeStands from './fixtures/bikeStands.json';
+import foundAddress from './fixtures/foundAddress.json';
 
 /**
  * Click a random element that has the dom attr data-cy=reports-marker
  */
 const clickRandomMarker = () => {
   cy.fmbClickRandomElement('reports-marker', true, {
-    force: true // otherwise the click fails because the image "is being covered by another element..."
+    force: true, // otherwise the click fails because the image "is being covered by another element..."
   });
 };
 
@@ -42,5 +42,5 @@ export default {
   goToConfirmedAddress,
   goToBikeStandForm,
   goToAdditionalDataForm,
-  goToParkingGarageForm
+  goToParkingGarageForm,
 };

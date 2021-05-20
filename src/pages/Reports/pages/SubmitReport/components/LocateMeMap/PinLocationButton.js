@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import logger from '~/utils/logger';
+
 import config from '~/pages/Reports/config';
+import logger from '~/utils/logger';
 
 const Button = styled.button`
   height: 48px;
@@ -47,13 +48,13 @@ const PinLocationButton = ({ onConfirm, text, disabled }) => (
 PinLocationButton.propTypes = {
   onConfirm: PropTypes.func,
   text: PropTypes.string,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
 };
 
 PinLocationButton.defaultProps = {
   onConfirm: () => logger('onConfirm says implement me'),
   text: () => 'Diese Position bestätigen',
-  disabled: false
+  disabled: false,
 };
 
 export default PinLocationButton;

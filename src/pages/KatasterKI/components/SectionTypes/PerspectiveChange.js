@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { media } from '~/styles/utils';
 import Button from '~/pages/KatasterKI/components/Button';
 import CloseSurveyButton from '~/pages/KatasterKI/components/CloseSurveyButton';
 import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import { media } from '~/styles/utils';
 
 const SingleChoiceWrapper = styled.div`
   flex-grow: 1;
@@ -38,7 +38,7 @@ const PerspectiveChange = ({
   helper,
   handleChange,
   showCloseButton,
-  next
+  next,
 }) => {
   const onClick = (option) => {
     handleChange({ nextPerspective: option.value });
@@ -61,7 +61,7 @@ const PerspectiveChange = ({
               display: 'flex',
               alignItems: 'center',
               padding: '0 10px',
-              height: 48
+              height: 48,
             }}
           >
             <ButtonIcon /> {option.label}
@@ -73,7 +73,7 @@ const PerspectiveChange = ({
       {showCloseButton === true && (
         <CloseSurveyButton
           style={{
-            marginTop: 'auto'
+            marginTop: 'auto',
           }}
         />
       )}

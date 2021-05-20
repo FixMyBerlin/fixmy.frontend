@@ -1,27 +1,27 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
+import React from 'react';
+import { Router } from 'react-router-dom';
 
 import Body from './Body';
 
 const reportData = {
   description: 'Description',
   details: {
-    fee_acceptable: true
+    fee_acceptable: true,
   },
   origin: [
     {
       id: 1,
-      address: 'test'
-    }
+      address: 'test',
+    },
   ],
   plannings: [
     {
       id: 2,
-      address: 'test2'
-    }
-  ]
+      address: 'test2',
+    },
+  ],
 };
 
 describe('<Body />', () => {

@@ -1,12 +1,13 @@
-import React from 'react';
 import { Container } from '@material-ui/core';
-import styled from 'styled-components';
+import React from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+
 import Header from '~/apps/Gastro/components/Header';
 import { media } from '~/styles/utils';
 
-import XHainLanding from './xhain';
 import TempelbergLanding from './tempelberg';
+import XhainLanding from './xhain';
 
 const StyledContainer = styled(Container)`
   h1 {
@@ -27,7 +28,7 @@ const Landing = ({ district }) => {
     <>
       <Header showInfoLink={false} />
       <StyledContainer maxWidth="sm">
-        {district?.name === 'xhain' && <XHainLanding />}
+        {district?.name === 'xhain' && <XhainLanding />}
         {district?.name === 'tempelberg' && <TempelbergLanding />}
       </StyledContainer>
     </>
@@ -35,7 +36,7 @@ const Landing = ({ district }) => {
 };
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 export default connect(mapStateToProps)(Landing);

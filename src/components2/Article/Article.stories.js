@@ -1,10 +1,11 @@
 import React from 'react';
 
 import ImageSrc from '~/images/amsterdam-1203305_1280.jpg';
+
 import * as Article from '.';
 
 export default {
-  title: 'Article'
+  title: 'Article',
 };
 
 const LOCALES = ['de', 'en'];
@@ -43,6 +44,7 @@ export const Example = () => (
       <Article.Quote sourceText="Was sie alle sagen">
         Ein Hammerding, dieser Artikel
       </Article.Quote>
+      {/* <Article.Map /> */}
     </div>
     <Article.Heading as="h2">Abschnitt ohne TOC-Eintrag</Article.Heading>
     <Article.Paragraph>
@@ -96,6 +98,19 @@ export const Example = () => (
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </Article.Quote>
+    </div>
+  </Article.ArticleWrapper>
+);
+
+const MAPBOX_STYLE = 'mapbox://styles/hejco/ckguzkrtq06em19l9477wwzc2';
+
+export const WithMap = () => (
+  <Article.ArticleWrapper hasToc>
+    <div toc="Einleitung">
+      <Article.Heading toc="Einleitung" as="h1">
+        Artikel mit Karte
+      </Article.Heading>
+      <Article.Map mapboxStyle={MAPBOX_STYLE} />
     </div>
   </Article.ArticleWrapper>
 );

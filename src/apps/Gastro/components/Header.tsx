@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import Header from '~/components2/Header';
+
+import { Header } from '~/components2/Header';
 import { getAppPath } from '~/utils/utils';
 
 const Wappen = styled.img`

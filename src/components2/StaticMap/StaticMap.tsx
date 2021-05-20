@@ -1,50 +1,60 @@
-import React from 'react';
 import MapboxGL from 'mapbox-gl';
+import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
-import Map from '~/components2/Map';
+import { BaseMap } from '~/components2/BaseMap';
 
-const StyledMap = styled(Map)`
+const StyledMap = styled(BaseMap)`
   width: 100%;
   height: 30em;
   margin: 2em 0;
 `;
 
-type Props = {
+interface Props extends React.ComponentProps<typeof BaseMap> {
+  bounds?: MapboxGL.LngLatBoundsLike;
   location: MapboxGL.LngLatLike;
   mapboxStyle: string;
-  bounds?: MapboxGL.LngLatBoundsLike;
   zoom?: number;
-};
+  className?: string;
+}
 
-const StaticMap: React.FC<Props> = ({
+/**
+ * Non-interactive MapboxGL-based map with location marker pin
+ *
+ * @param props - extends MapboxGL.Map props
+ * @param props.mapboxStyle - Mapbox style URL
+ * @param props.location - coordinates for marker pin
+ * @param props.bounds - map bounds
+ * @param props.zoom - map zoom level
+ * @param.props.className - allows styling with styled-components
+ */
+const StaticMap = ({
+  bounds = null,
+  className,
   location,
   mapboxStyle,
-  bounds = null,
-  zoom = 17
-}) => {
+  zoom = 17,
+  ...mapboxProps
+}: Props) => {
   if (!location) return null;
 
   const handleInit = (map: MapboxGL.Map) => {
-    if (location) {
-      new MapboxGL.Marker({ color: config.colors.interaction })
-        .setLngLat(location)
-        .addTo(map);
-      map.setCenter(location);
-    }
+    new MapboxGL.Marker({ color: config.colors.interaction })
+      .setLngLat(location)
+      .addTo(map);
+    map.setCenter(location);
     map.setZoom(zoom);
   };
 
   return (
     <StyledMap
+      bounds={bounds}
       onInit={handleInit}
       style={mapboxStyle}
-      bounds={bounds}
-      dragPan={false}
-      scrollZoom={false}
-      doubleClickZoom={false}
-      touchZoomRotate={false}
+      className={className}
+      interactive={false}
+      {...mapboxProps}
     />
   );
 };

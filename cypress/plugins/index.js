@@ -1,7 +1,7 @@
 require('dotenv').config();
 const wp = require('@cypress/webpack-preprocessor');
-
 const log = require('debug')('cypress:plugins');
+
 const baseConfig = require('../../cypress.json');
 const webpackOptions = require('../../webpack/webpack.config.cypress.js');
 
@@ -86,7 +86,7 @@ const DynamicCypressConfig = (on, config) => {
   return {
     ...config,
     testFiles,
-    env: process.env
+    env: process.env,
   };
 };
 

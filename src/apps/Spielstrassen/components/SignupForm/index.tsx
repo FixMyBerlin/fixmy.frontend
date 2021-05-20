@@ -1,18 +1,19 @@
+import { FormHelperText } from '@material-ui/core';
+import { Formik, Field, ErrorMessage } from 'formik';
+import { TextField, CheckboxWithLabel } from 'formik-material-ui';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, generatePath } from 'react-router-dom';
-import { Formik, Field, ErrorMessage } from 'formik';
-import { TextField, CheckboxWithLabel, RadioGroup } from 'formik-material-ui';
-import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
-import styled from 'styled-components';
 import slugify from 'slugify';
+import styled from 'styled-components';
 
-import Button from '~/components2/Button';
+import { Button } from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import config from '~/config';
-import { SignupData } from '../../types';
-import api from '../../api';
 import logger from '~/utils/logger';
+
+import api from '../../api';
+import { SignupData } from '../../types';
 import validate from './validate';
 
 const initialValues = {
@@ -20,8 +21,8 @@ const initialValues = {
   last_name: '',
   email: '',
   tos_accepted: false,
-  captain: null,
-  message: ''
+  captain: 'no',
+  message: '',
 };
 
 const FormError = styled(FormHelperText)`
@@ -51,14 +52,14 @@ const SignupForm = ({ street, history, district }) => (
         ...values,
         captain: values.captain === 'yes',
         campaign: district.name,
-        street
+        street,
       };
       logger(JSON.stringify(signupData, null, 2));
       try {
         await api.signup(signupData, district);
         history.push(
           generatePath(config.routes.spielstrassen.thanks, {
-            slug: slugify(street, { lower: true })
+            slug: slugify(street, { lower: true }),
           })
         );
       } catch (e) {
@@ -104,40 +105,10 @@ const SignupForm = ({ street, history, district }) => (
             type="checkbox"
             Label={{
               label:
-                'Ich willige ein, dass meine Daten an das Bezirksamt zum Zwecke einer Terminabspache und der Vernetzung mit anderen Bürger:innen übermittelt werden.'
+                'Ich willige ein, dass meine Daten an das Bezirksamt zum Zwecke einer Terminabspache und der Vernetzung mit anderen Bürger:innen übermittelt werden.',
             }}
           />
         </div>
-        <h4>Teamkapitän:in</h4>
-        <p>
-          Wären Sie auch bereit, die Hauptverantwortung für die Betreuung der
-          Spielstraße zu übernehmen und dafür eine{' '}
-          <a
-            className="external"
-            href="/uploads/spielstrassen/2020_Vereinbarung_tempSpielstraße.pdf"
-          >
-            Kooperationsvereinbarung (PDF)
-          </a>{' '}
-          mit dem Bezirksamt zu unterzeichnen?
-        </p>
-        <ErrorMessage
-          name="captain"
-          render={(msg) => <FormError error>{msg}</FormError>}
-        />
-        <Field component={RadioGroup} name="captain">
-          <FormControlLabel
-            value="yes"
-            control={<Radio disabled={isSubmitting} />}
-            label="Ja, das mache ich gerne"
-            disabled={isSubmitting}
-          />
-          <FormControlLabel
-            value="no"
-            control={<Radio disabled={isSubmitting} />}
-            label="Nein, das ist mir zu viel Verantworung"
-            disabled={isSubmitting}
-          />
-        </Field>
         <h4 className="lastsectionheading">
           Ihre Nachricht an das Bezirksamt (optional):
         </h4>
@@ -160,7 +131,7 @@ const SignupForm = ({ street, history, district }) => (
 );
 
 const mapStateToProps = ({ AppState }) => ({
-  district: AppState.district
+  district: AppState.district,
 });
 
 // Typescript insists that using withRouter means that

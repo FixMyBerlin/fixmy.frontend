@@ -1,22 +1,23 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
+import { generatePath } from 'react-router-dom';
 import slugify from 'slugify';
+import styled from 'styled-components';
 
-import config from '~/config';
-import { numberFormat, getRVALength } from '~/utils/utils';
-import Label from '~/components/Label';
 import Button from '~/components/Button';
+import Label from '~/components2/Label';
+import config from '~/config';
 import HeartIcon from '~/images/heart.svg';
-import DraftMarker from '~/images/planning-icons/konzept-marker.png';
-import PlanningMarker from '~/images/planning-icons/planung-marker.png';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
+import DraftMarker from '~/images/planning-icons/konzept-marker.png';
+import PlanningMarker from '~/images/planning-icons/planung-marker.png';
+import { numberFormat, getRVALength } from '~/utils/utils';
 
 const icons = {
   draft: DraftMarker,
   planning: PlanningMarker,
   execution: ExecutionMarker,
-  ready: ReadyMarker
+  ready: ReadyMarker,
 };
 
 const ItemWrapper = styled.div`
@@ -55,7 +56,7 @@ const ItemSubTitle = styled.div`
   font-weight: 700;
   font-family: '${config.titleFont}', serif;
   color: ${config.colors.darkbg};
-  margin: .5em auto;
+  margin: 0.5em auto;
 `;
 
 const ItemFooter = styled.div`
@@ -131,20 +132,22 @@ class ProjectListItem extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      isExpanded: false
+      isExpanded: false,
     };
   }
 
   onClick = () => {
     const { id, street_name: name } = this.props;
-    const slug = name ? slugify(name) : '';
-    const url = `${config.routes.projects}/${id}/${slug.toLowerCase()}`;
+    const url = generatePath(config.routes.map.projectsDetail, {
+      id,
+      name: name ? slugify(name).toLowerCase() : '',
+    });
     this.props.history.push(url);
   };
 
   toggleExpanded = () => {
     this.setState((prevState) => ({
-      isExpanded: !prevState.isExpanded
+      isExpanded: !prevState.isExpanded,
     }));
   };
 
@@ -157,7 +160,7 @@ class ProjectListItem extends PureComponent {
       street_name: streetName,
       title,
       borough,
-      phase
+      phase,
     } = this.props;
 
     const iconSrc = icons[phase];

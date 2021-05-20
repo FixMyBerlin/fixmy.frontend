@@ -1,5 +1,6 @@
-import { MultiChoice } from '../state';
 import config from '~/pages/KatasterKI/config';
+
+import { MultiChoice } from '../state';
 
 /**
  * Marshall state of a multi_choice component for sending in a request
@@ -31,7 +32,7 @@ export const marshallMultiChoice = (
     .filter((val) => val != null);
   return {
     choices,
-    other
+    other,
   };
 };
 

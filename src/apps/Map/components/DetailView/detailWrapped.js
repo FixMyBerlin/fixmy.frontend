@@ -1,19 +1,19 @@
 /* eslint class-methods-use-this: 0 */
-import React, { PureComponent } from 'react';
+import ky from 'ky';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import ky from 'ky';
+import styled from 'styled-components';
 
-import config from '~/config';
-import { media } from '~/styles/utils';
-import Store from '~/store';
 import { setView } from '~/apps/Map/MapState';
 import { getCenterFromGeom } from '~/apps/Map/map-utils';
+import { IconButton } from '~/components2/Button';
+import Label from '~/components2/Label';
+import config from '~/config';
 import PinIcon from '~/images/pin.svg';
-import Label from '~/components/Label';
-import NewCloseButton from '~/components/NewCloseButton';
+import Store from '~/store';
+import { media } from '~/styles/utils';
 import logger from '~/utils/logger';
 
 const DetailWrapper = styled.div`
@@ -72,7 +72,7 @@ const DetailBody = styled.div`
   height: 100%;
 `;
 
-const Close = styled(NewCloseButton)`
+const Close = styled(IconButton.Close)`
   margin-left: auto;
 `;
 
@@ -96,7 +96,7 @@ function detailWrapped(Component) {
       this.state = {
         data: null,
         isLoading: true,
-        isError: false
+        isError: false,
       };
     }
 
@@ -127,7 +127,7 @@ function detailWrapped(Component) {
             animate: true,
             pitch: 40,
             show3dBuildings: true,
-            dim: true
+            dim: true,
           })
         );
       }
@@ -135,14 +135,14 @@ function detailWrapped(Component) {
       this.setState({
         data,
         isLoading: false,
-        isError: false
+        isError: false,
       });
     };
 
     onDataError = () => {
       this.setState({
         isLoading: false,
-        isError: true
+        isError: true,
       });
     };
 
@@ -248,14 +248,14 @@ function detailWrapped(Component) {
     onClose: PropTypes.func,
     subtitle: PropTypes.string,
     history: ReactRouterPropTypes.history.isRequired,
-    match: ReactRouterPropTypes.match.isRequired
+    match: ReactRouterPropTypes.match.isRequired,
   };
 
   DetailWrapperComp.defaultProps = {
     activeView: 'planungen',
     onCloseRoute: '/',
     onClose: () => {},
-    subtitle: null
+    subtitle: null,
   };
 
   return withRouter(DetailWrapperComp);

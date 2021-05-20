@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import config from '~/pages/KatasterKI/config';
 import { isTouch } from '~/utils/utils';
+
 import Button from './Button';
 
 export default styled(Button)`
@@ -16,10 +17,10 @@ export default styled(Button)`
   }
 
   ${!isTouch &&
-    css`
-      &:hover {
-        box-shadow: none;
-        background: ${config.colors.katasterHighlight};
-      }
-    `}
+  css`
+    &:hover {
+      box-shadow: none;
+      background: ${config.colors.katasterHighlight};
+    }
+  `}
 `;

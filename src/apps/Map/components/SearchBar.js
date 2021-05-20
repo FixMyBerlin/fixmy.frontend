@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-import config from '~/config';
 import { geocodeAddress } from '~/apps/Map/MapState';
-import Store from '~/store';
-
 import MenuButton from '~/components/MenuButton';
+import config from '~/config';
+import Store from '~/store';
 import { media } from '~/styles/utils';
 
 const Form = styled.form`
@@ -78,7 +77,7 @@ class SearchBar extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: ''
+      inputValue: '',
     };
   }
 
@@ -123,5 +122,5 @@ class SearchBar extends PureComponent {
 }
 
 export default connect((state) => ({
-  isEmbedMode: state.MapState.isEmbedMode
+  isEmbedMode: state.MapState.isEmbedMode,
 }))(SearchBar);

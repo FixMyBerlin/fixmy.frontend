@@ -2,20 +2,21 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import config from '~/pages/KatasterKI/config';
-import history from '~/history';
 import Loader from '~/components/PageLoading';
+import history from '~/history';
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
 import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
 import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
-import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import Scene from '~/pages/KatasterKI/components/SectionTypes/Scene';
+import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
+import config from '~/pages/KatasterKI/config';
+import Survey from '~/pages/KatasterKI/survey';
+
+import EmailCheckboxes from '../components/SectionTypes/EmailCheckboxes';
 import Feedback from '../components/SectionTypes/Feedback';
+import PerspectiveChange from '../components/SectionTypes/PerspectiveChange';
 import { updateProgressBar, submitPerspective, submitAnswer } from '../state';
 import { Answer, Section, RequestState } from '../types';
-import Survey from '~/pages/KatasterKI/survey';
-import PerspectiveChange from '../components/SectionTypes/PerspectiveChange';
-import EmailCheckboxes from '../components/SectionTypes/EmailCheckboxes';
 
 const sectionTypes = {
   info: Info,
@@ -24,7 +25,7 @@ const sectionTypes = {
   scene: Scene,
   perspective_change: PerspectiveChange,
   feedback: Feedback,
-  email: EmailCheckboxes
+  email: EmailCheckboxes,
 };
 
 const getCurrentValue = (section: Section, scenes: Array<Answer>) =>
@@ -54,7 +55,7 @@ const Scenes = ({
   dispatch,
   profileRequest,
   perspectiveRequest,
-  sceneGroupCounter
+  sceneGroupCounter,
 }) => {
   // we dont redirect when developing. We do so if agbs not accepted or no question param passed
   if (
@@ -147,7 +148,7 @@ const mapStateToProps = (state) => ({
   perspective: state.KatasterKIState.currentPerspective,
   profileRequest: state.KatasterKIState.profileRequest,
   perspectiveRequest: state.KatasterKIState.perspectiveRequest,
-  sceneGroupCounter: state.KatasterKIState.sceneGroupCounter
+  sceneGroupCounter: state.KatasterKIState.sceneGroupCounter,
 });
 
 export default connect(mapStateToProps)(Scenes);
