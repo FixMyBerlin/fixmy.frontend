@@ -2,7 +2,7 @@ name: integration tests
 
 on:
   push:
-    branches: ['master', 'develop', 'hotfix/**', 'dependabot/**']
+    branches: ['master', 'develop', 'hotfix/**', 'dependabot/**', 'integration-test-api-cache']
 
 jobs:
   e2e:
