@@ -3,7 +3,7 @@ updates:
 - package-ecosystem: npm
   directory: "/"
   schedule:
-    weekday: 'monday'
+    day: "monday"
     interval: weekly
     time: "04:00"
   target-branch: dependabot/merge
