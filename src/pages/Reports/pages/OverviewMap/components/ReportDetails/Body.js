@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Link from '~/components/Link';
+import { getReportStatusCaption } from '~/pages/Reports/apiservice';
+import config from '~/pages/Reports/config';
 import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
 // import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
-import config from '~/pages/Reports/config';
-import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 
 const IndicatorSection = styled.div`
   display: flex;

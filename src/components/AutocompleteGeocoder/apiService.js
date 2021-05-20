@@ -1,5 +1,6 @@
-import fetch from 'node-fetch';
 import debug from 'debug';
+import fetch from 'node-fetch';
+
 import config from '~/config';
 
 const logger = debug('fmc:AutocompleteGeocoder');
@@ -8,11 +9,11 @@ let abortController = new window.AbortController();
 
 function compileSearchUrl(searchString, customBounds) {
   const { accessToken } = config.mapbox;
-  const { geocoderBounds } = config.apps.map;
+  const { bounds } = config.apps.map.geocoder;
   return (
     `https://api.mapbox.com/geocoding/v5/mapbox.places/${searchString}.json?` +
     `access_token=${accessToken}&autocomplete=true&language=de&` +
-    `bbox=${customBounds || geocoderBounds}&` +
+    `bbox=${customBounds || bounds}&` +
     'limit=3&' +
     'types=address'
   ); // maybe using "poi" would also be a good idea

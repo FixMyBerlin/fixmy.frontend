@@ -3,16 +3,17 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import config from '~/pages/KatasterKI/config';
 import history from '~/history';
 import ProgressBar from '~/pages/KatasterKI/components/ProgressBar';
 import Info from '~/pages/KatasterKI/components/SectionTypes/Info';
 import MultiChoice from '~/pages/KatasterKI/components/SectionTypes/MultiChoice';
+import Radiogroups from '~/pages/KatasterKI/components/SectionTypes/Radiogroups';
 import SingleChoice from '~/pages/KatasterKI/components/SectionTypes/SingleChoice';
 import TransportRatings from '~/pages/KatasterKI/components/SectionTypes/TransportRatings';
 import ZipInput from '~/pages/KatasterKI/components/SectionTypes/ZipInput';
-import Radiogroups from '~/pages/KatasterKI/components/SectionTypes/Radiogroups';
+import config from '~/pages/KatasterKI/config';
 import Survey from '~/pages/KatasterKI/survey';
+
 import {
   setProfileAnswer,
   updateProgressBar,

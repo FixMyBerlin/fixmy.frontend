@@ -1,7 +1,9 @@
+import { rest } from 'msw';
 import reduxMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import { rest } from 'msw';
+import config from '~/config';
+
 import reducer, {
   AnalysisState,
   initialState,
@@ -12,7 +14,6 @@ import reducer, {
 } from './state';
 
 import { mswServer } from '~/../jest/msw/mswServer';
-import config from '~/config';
 
 const mockStore = reduxMockStore<AnalysisState>([thunk]);
 const PROJECTS_API_URL = `${config.apiUrl}/projects?page_size=500`;

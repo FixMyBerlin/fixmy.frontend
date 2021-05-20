@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import Flex from '~/components/Flex';
-import RatingSlider from '../RatingSlider';
-import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Button from '~/pages/KatasterKI/components//Button';
+import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
+
+import RatingSlider from '../RatingSlider';
 
 const Sliders = ({
   title,

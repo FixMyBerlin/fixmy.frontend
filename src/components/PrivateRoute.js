@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+
 import config from '~/config';
 
 // Disable prop spreading rule because this is a usable component

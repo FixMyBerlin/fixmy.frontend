@@ -13,6 +13,9 @@ jobs:
         region: [berlin, aachen]
 
     steps:
+      - name: Preload reports endpoints
+        run: curl https://fixmyberlin-staging.netlify.app/api/aachen/next/reports https://fixmyaachen-staging.netlify.app/api/next/reports --retry 3 > /dev/null &
+
       - uses: actions/checkout@v2
 
       - name: Read node version from .nvmrc

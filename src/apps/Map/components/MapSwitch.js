@@ -1,14 +1,13 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
-import ToggleSwitch from 'react-toggle-switch';
 import { withRouter } from 'react-router-dom';
+import ToggleSwitch from 'react-toggle-switch';
+import styled from 'styled-components';
 
+import Label from '~/components2/Label';
 import config from '~/config';
-import { media } from '~/styles/utils';
 import BikeIcon from '~/images/bike.svg';
 import PylonIcon from '~/images/poempel.svg';
-import SvgIcon from '~/components/SvgIcon';
-import Label from '~/components/Label';
+import { media } from '~/styles/utils';
 
 const MapSwitchWrapper = styled.div`
   display: flex;
@@ -34,6 +33,10 @@ const MapSwitchItem = styled.div`
   width: 33.3%;
   text-align: center;
   position: relative;
+
+  &:nth-child(2) {
+    padding: 0 10px;
+  }
 `;
 
 const MapSwitchItemRight = styled(MapSwitchItem)`
@@ -93,31 +96,22 @@ const SwitchDescription = styled.div`
   user-select: none;
 `;
 
-const VorlaeufigIcon = styled(SvgIcon)`
-  position: absolute;
-  top: -35px;
-  left: 25px;
-  transform: rotate(-5deg);
-  z-index: 999;
-`;
-
 class MapSwitch extends PureComponent {
   handleChange = (checked) => () => {
-    const to = checked ? '/zustand' : '/planungen';
+    const to = checked
+      ? config.routes.map.hbiIndex
+      : config.routes.map.projectsIndex;
     this.props.history.push(to);
   };
 
   render() {
-    const isPlanningView = this.props.match.url === '/planungen';
+    const isPlanningView =
+      this.props.match.url === config.routes.map.projectsIndex;
 
     return (
       <MapSwitchWrapper>
         <MapSwitchItem>
-          {!isPlanningView && <VorlaeufigIcon type="vorlaeufig" />}
-          <SwitchLabel isActive={!isPlanningView}>Happy-Bike-Level</SwitchLabel>
-          <SwitchDescription isActive={!isPlanningView}>
-            <Label light>Wie radfreundlich sind Berlins Straßen?</Label>
-          </SwitchDescription>
+          <SwitchLabel isActive={!isPlanningView}>Happy-Bike-Index</SwitchLabel>
         </MapSwitchItem>
         <MapSwitchItem justify="center">
           <Switch

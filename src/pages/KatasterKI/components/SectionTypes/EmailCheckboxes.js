@@ -4,21 +4,19 @@ import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import uuidv4 from 'uuid/v4';
 
-import config from '~/pages/KatasterKI/config';
-import { media } from '~/styles/utils';
 import Flex from '~/components/Flex';
+import emailImageSrc from '~/images/reports/letter.png';
+import api from '~/pages/KatasterKI/api';
 import Button from '~/pages/KatasterKI/components/Button';
+import Checkbox from '~/pages/KatasterKI/components/Checkbox';
 import GhostButton from '~/pages/KatasterKI/components/GhostButton';
-import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
 import Input from '~/pages/KatasterKI/components/Input';
 import Paragraph from '~/pages/KatasterKI/components/Paragraph';
+import QuestionTitle from '~/pages/KatasterKI/components/QuestionTitle';
+import config from '~/pages/KatasterKI/config';
 import useHandlerTimeout from '~/pages/KatasterKI/hooks/useHandlerTimeout';
-import Checkbox from '~/pages/KatasterKI/components/Checkbox';
-
-import api from '~/pages/KatasterKI/api';
 import { signupTSPNewsletter } from '~/pages/KatasterKI/utils';
-
-import emailImageSrc from '~/images/reports/letter.png';
+import { media } from '~/styles/utils';
 
 const EmailImg = styled.img.attrs({ src: emailImageSrc })`
   &&& {

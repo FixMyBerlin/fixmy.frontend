@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
-import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
-import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 import Button from '~/components/Button';
+import config from '~/pages/Reports/config';
+import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
+import Paragraph from '~/pages/Reports/pages/SubmitReport/components/Paragraph';
 
 const StyledHeading = styled(Heading)`
   margin: 6px 0 8px 0;

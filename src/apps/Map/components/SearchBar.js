@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 
-import config from '~/config';
 import { geocodeAddress } from '~/apps/Map/MapState';
-import Store from '~/store';
-
 import MenuButton from '~/components/MenuButton';
+import config from '~/config';
+import Store from '~/store';
 import { media } from '~/styles/utils';
 
 const Form = styled.form`

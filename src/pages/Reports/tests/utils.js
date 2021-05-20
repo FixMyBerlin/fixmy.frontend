@@ -1,9 +1,9 @@
 import config from '~/pages/Reports/config';
 
-import foundAddress from './fixtures/foundAddress.json';
-import bikeStands from './fixtures/bikeStands.json';
 import additionalDataForm from './fixtures/additionalDataForm.json';
 import bikeLockerForm from './fixtures/bikeLockerForm.json';
+import bikeStands from './fixtures/bikeStands.json';
+import foundAddress from './fixtures/foundAddress.json';
 
 /**
  * Click a random element that has the dom attr data-cy=reports-marker

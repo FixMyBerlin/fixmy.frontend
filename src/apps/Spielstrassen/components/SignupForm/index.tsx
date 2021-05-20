@@ -1,28 +1,29 @@
+import { FormHelperText } from '@material-ui/core';
+import { Formik, Field, ErrorMessage } from 'formik';
+import { TextField, CheckboxWithLabel } from 'formik-material-ui';
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import { generatePath, useHistory } from 'react-router-dom';
-import { Formik, Field, ErrorMessage } from 'formik';
-import { TextField, CheckboxWithLabel, RadioGroup } from 'formik-material-ui';
-import { FormControlLabel, Radio, FormHelperText } from '@material-ui/core';
-import styled from 'styled-components';
 import slugify from 'slugify';
+import styled from 'styled-components';
 
 import { Button } from '~/components2/Button';
 import { Form } from '~/components2/Form';
 import config from '~/config';
-import { SignupData } from '../../types';
-import api from '../../api';
-import logger from '~/utils/logger';
-import validate from './validate';
-import { DistrictConfig } from '~/types';
 import { RootState } from '~/store';
+import { DistrictConfig } from '~/types';
+import logger from '~/utils/logger';
+
+import api from '../../api';
+import { SignupData } from '../../types';
+import validate from './validate';
 
 const initialValues = {
   first_name: '',
   last_name: '',
   email: '',
   tos_accepted: false,
-  captain: null,
+  captain: 'no',
   message: '',
 };
 
@@ -59,7 +60,7 @@ const SignupForm = ({ street, district }: Props) => {
   const handleSubmit = async (values, { setSubmitting, setStatus }) => {
     const signupData: SignupData = {
       ...values,
-      captain: values.captain === 'yes',
+      captain: false,
       campaign: district.name,
       street,
     };
@@ -124,36 +125,6 @@ const SignupForm = ({ street, district }: Props) => {
               }}
             />
           </div>
-          <h4>Teamkapitän:in</h4>
-          <p>
-            Wären Sie auch bereit, die Hauptverantwortung für die Betreuung der
-            Spielstraße zu übernehmen und dafür eine{' '}
-            <a
-              className="external"
-              href="/uploads/spielstrassen/2020_Vereinbarung_tempSpielstraße.pdf"
-            >
-              Kooperationsvereinbarung (PDF)
-            </a>{' '}
-            mit dem Bezirksamt zu unterzeichnen?
-          </p>
-          <ErrorMessage
-            name="captain"
-            render={(msg) => <FormError error>{msg}</FormError>}
-          />
-          <Field component={RadioGroup} name="captain">
-            <FormControlLabel
-              value="yes"
-              control={<Radio disabled={isSubmitting} />}
-              label="Ja, das mache ich gerne"
-              disabled={isSubmitting}
-            />
-            <FormControlLabel
-              value="no"
-              control={<Radio disabled={isSubmitting} />}
-              label="Nein, das ist mir zu viel Verantworung"
-              disabled={isSubmitting}
-            />
-          </Field>
           <h4 className="lastsectionheading">
             Ihre Nachricht an das Bezirksamt (optional):
           </h4>
@@ -164,6 +135,7 @@ const SignupForm = ({ street, district }: Props) => {
             multiline
             rows={4}
             fullWidth
+            InputProps={{ notched: true }}
           />
           {status && <FormError error>{status}</FormError>}
           <Button flat type="submit">

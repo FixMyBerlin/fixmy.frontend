@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Map as ArticleMap } from '~/components2/Article';
+
 import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../constants';
 import {
   IconWrapper,
@@ -11,15 +12,14 @@ import {
   LegendItems,
   LegendSources,
 } from '../BaseLegend';
-
-import IconToSchool from './icons/schulwege.svg';
-import IconToSchoolUnsafe from './icons/schulwege-unsicher.svg';
-import IconSchool from './icons/school.svg';
 import Icons0 from './icons/s0.svg';
 import Icons1 from './icons/s1.svg';
 import Icons2 from './icons/s2.svg';
 import Icons3 from './icons/s3.svg';
 import Icons4 from './icons/s4.svg';
+import IconSchool from './icons/school.svg';
+import IconToSchoolUnsafe from './icons/schulwege-unsicher.svg';
+import IconToSchool from './icons/schulwege.svg';
 
 const MAP_STYLE_SAFETY = 'mapbox://styles/hejco/ckguzkrtq06em19l9477wwzc2';
 
