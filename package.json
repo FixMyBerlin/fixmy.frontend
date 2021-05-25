@@ -52,7 +52,7 @@
     "babel-plugin-react-hot-loader": "^3.0.0-beta.6",
     "classnames": "^2.2.6",
     "common-tags": "^1.8.0",
-    "core-js": "^3.6.4",
+    "core-js": "^3.12.1",
     "d3-format": "^1.4.4",
     "d3-scale": "^3.2.3",
     "date-fns": "^2.20.2",
