@@ -101,8 +101,8 @@ const SectionCertificate = ({
           Bitte wählen Sie eine PDF-Datei aus. Wenn Ihnen das Dokument nicht als
           PDF-Datei zur Verfügung steht schicken Sie bitte eine E-Mail mit einem
           Foto des Dokuments an{' '}
-          <a href="mailto:terrassen.sga@ba-fk.berlin.de">
-            terrassen.sga@ba-fk.berlin.de
+          <a href="mailto:aufsicht.sga@ba-fk.berlin.de">
+            aufsicht.sga@ba-fk.berlin.de
           </a>
           . Beachten Sie in diesem Fall, dass die Schrift lesbar sein muss.
         </div>
