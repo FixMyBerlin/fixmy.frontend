@@ -244,15 +244,15 @@ const xhain: DistrictConfig = {
         },
         gastroSignup: {
           mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
-          layerSets: ['parking'],
+          layerSets: [],
         },
         gastroRegistration: {
           mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
-          layerSets: ['parking'],
+          layerSets: [],
         },
         eventForm: {
           mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
-          layerSets: ['parks', 'parking'],
+          layerSets: ['parks'],
         },
       },
     },
