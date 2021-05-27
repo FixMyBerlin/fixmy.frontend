@@ -101,10 +101,10 @@ const SectionArea = ({
         <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
         <ul>
           <li>
-            Bitte beachten Sie, dass die Sondernutzungsflächen nur auf den auf
-            der Karte ausgewiesene Flächen in Grünanlagen (<ParkColorSample />{' '}
-            türkis) und Flächen im Bereich des ruhenden Verkehrs (
-            <ParkingColorSample /> dunkelblau) beantragt werden können.
+            Bitte beachten Sie, dass Sondernutzungsflächen nur auf den auf der
+            Karte in <ParkColorSample /> türkis ausgewiesenen Flächen in
+            Grünanlagen, sowie auf Flächen im Bereich des ruhenden Verkehrs
+            beantragt werden können.
           </li>
           <li>
             Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,
