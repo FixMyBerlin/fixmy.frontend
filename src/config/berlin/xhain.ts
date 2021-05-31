@@ -6,7 +6,7 @@ const XHAIN_TERRASSEN_CONFIRMED_AREAS = `mapbox://styles/hejco/cka5ko81y16yk1iql
   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
 }`;
 
-const XHAIN_TERRASSEN_AVAILABLE_AREAS = `mapbox://styles/hejco/ckm3lgekg9jky17rznm5kn8bd${
+const XHAIN_TERRASSEN_AVAILABLE_AREAS = `mapbox://styles/hejco/ckp6v8xyi2fks18lr8ot50fm2${
   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
 }`;
 
@@ -244,15 +244,15 @@ const xhain: DistrictConfig = {
         },
         gastroSignup: {
           mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
-          layerSets: ['parking'],
+          layerSets: [],
         },
         gastroRegistration: {
           mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
-          layerSets: ['parking'],
+          layerSets: [],
         },
         eventForm: {
           mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
-          layerSets: ['parks', 'parking'],
+          layerSets: ['parks'],
         },
       },
     },
