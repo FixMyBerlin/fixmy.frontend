@@ -152,7 +152,7 @@ const uploadCertificate = async (
   district: DistrictConfig
 ) => {
   const formData = new FormData();
-  const fileName = registrationData.certificate.name;
+  const fileName = encodeURI(registrationData.certificate.name);
 
   // For some reason this call sometimes, but not always throws an error:
   //   TS2554: Expected 2 arguments, but got 3.
