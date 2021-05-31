@@ -27,7 +27,7 @@ type Props = ConnectedProps<typeof connector> & {
 
 const SectionUsage = ({ district, minDate }: Props) => (
   <section>
-    <h3>Wann soll die Veranstaltung stattfinden</h3>
+    <h3>Wann soll die Veranstaltung stattfinden?</h3>
     <p>
       Hinweis: Sondergenehmigungen sind von Montag bis Samstag in den Zeiten 6
       bis 22 Uhr möglich (Sonntag und Feiertags nur in Ausnahmefällen). Bitte

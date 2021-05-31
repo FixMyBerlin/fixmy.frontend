@@ -9,6 +9,9 @@ const InvisiLabel = styled.label`
 
 const SectionBase = () => (
   <section>
+    <InvisiLabel htmlFor="org_name">
+      Name des Vereins, der Organisation (optional)
+    </InvisiLabel>
     <Field
       name="org_name"
       component={TextField}

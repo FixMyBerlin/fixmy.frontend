@@ -9,8 +9,9 @@ const GastroNotice = ({ district }) => {
     if (preSignup(district))
       return (
         <Notice>
-          Die Anmeldung ist ab{' '}
-          {district.apps.gastro.timeline.openSignup.toLocaleString()} möglich.
+          Die Antragstellung ist ab{' '}
+          {district.apps.gastro.timeline.openSignup.toLocaleDateString('de-DE')}{' '}
+          möglich.
         </Notice>
       );
     if (openSignup(district)) return null;
@@ -28,7 +29,10 @@ const GastroNotice = ({ district }) => {
       return (
         <Notice>
           Die Anmeldung ist ab{' '}
-          {district.apps.gastro.timeline.openSignup.toLocaleString()} möglich.
+          {district.apps.gastro.timeline.openSignup
+            .date()
+            .toLocaleString('de-DE')}{' '}
+          möglich.
         </Notice>
       );
     if (openSignup(district))

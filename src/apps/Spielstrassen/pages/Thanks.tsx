@@ -59,13 +59,12 @@ const Thanks = ({
         <h1>{street.street}</h1>
         <p className="subline">Temporäre Spielstraße im Kiez {street.kiez}:</p>
         <KiezMap street={street} />
-        <h2>
-          Vielen Dank, Sie sind Unterstützer:in Nr. {+street.supporters + 1}
-        </h2>
+        <h2>Vielen Dank für Ihre Unterstützung</h2>
         <p>
-          Das Bezirksamt meldet sich bei Ihnen, sobald sich zehn Personen
-          registriert haben. Teilen Sie diese Seite mit anderen Personen, die
-          bei der Spielstraße in der {street.street} helfen können.
+          Das Bezirksamt meldet sich bei Ihnen, oder gibt ihren Kontakt an die
+          Teamkapitän*in aus der {street.street} weiter. Teilen Sie diese Seite
+          mit anderen Personen, die Sie zur Spielstraße in der {street.street}{' '}
+          einladen möchten.
         </p>
         <CopyToClipboard text={sharingUrl}>
           <LinkButton flat>Link kopieren</LinkButton>

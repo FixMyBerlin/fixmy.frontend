@@ -38,6 +38,18 @@ const PickerIntro = styled.div`
   }
 `;
 
+const ParkColorSample = styled.span`
+  width: 1em;
+  height: 1em;
+  background-color: #49c0d0;
+  display: inline-block;
+  margin-left: 5px;
+`;
+
+const ParkingColorSample = styled(ParkColorSample)`
+  background-color: #294794;
+`;
+
 const connector = connect(({ AppState }: RootState) => ({
   district: AppState.district,
 }));
@@ -89,9 +101,10 @@ const SectionArea = ({
         <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
         <ul>
           <li>
-            Bitte beachten Sie, dass die Sondernutzungsflächen nur auf den auf
-            der Karte ausgewiesene Flächen in Grünanlagen (blau) und Flächen im
-            Bereich des ruhenden Verkehrs (grün) beantragt werden können.
+            Bitte beachten Sie, dass Sondernutzungsflächen nur auf den auf der
+            Karte in <ParkColorSample /> türkis ausgewiesenen Flächen in
+            Grünanlagen, sowie auf Flächen im Bereich des ruhenden Verkehrs
+            beantragt werden können.
           </li>
           <li>
             Es können keine Flächen auf Einfahrten, Behindertenparkplätzen,

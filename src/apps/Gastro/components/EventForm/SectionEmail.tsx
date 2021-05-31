@@ -9,7 +9,7 @@ const InvisiLabel = styled.label`
 
 const SectionUsage = () => (
   <section>
-    <h4>Ihre E-Mail-Adresse</h4>
+    <h3>Ihre E-Mail-Adresse</h3>
     <p className="subline">
       Ihre Daten werden für die Durchführung des Verfahrens gespeichert, die
       Beschreibung Ihrer Veranstaltung und die angegebenen Zeiten können im Zuge
