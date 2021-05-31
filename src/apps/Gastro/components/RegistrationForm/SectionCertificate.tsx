@@ -82,6 +82,7 @@ const SectionCertificate = ({
         setUploadError(
           'Das Hochladen Ihrer Gewerbeanmeldung / Ihres Vereinsregisters ist fehlgeschlagen. Bitte prüfen Sie Ihre Internetverbindung und versuchen es erneut.'
         );
+        throw e;
       }
       setSubmittingCertificate(false);
     };
