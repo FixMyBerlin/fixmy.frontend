@@ -46,10 +46,6 @@ const ParkColorSample = styled.span`
   margin-left: 5px;
 `;
 
-const ParkingColorSample = styled(ParkColorSample)`
-  background-color: #294794;
-`;
-
 const connector = connect(({ AppState }: RootState) => ({
   district: AppState.district,
 }));

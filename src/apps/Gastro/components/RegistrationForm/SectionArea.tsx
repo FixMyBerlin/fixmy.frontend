@@ -34,14 +34,6 @@ const PickerIntro = styled.div`
   }
 `;
 
-const ParkingColorSample = styled.span`
-  width: 1em;
-  height: 1em;
-  background-color: #294794;
-  display: inline-block;
-  margin-left: 5px;
-`;
-
 const SectionArea = ({
   regulation,
   handleChange,
@@ -73,7 +65,7 @@ const SectionArea = ({
             <p>Bitte beachten Sie beim Einzeichnen folgende Punkte:</p>
             <ul>
               <li>
-                Es kann nur eine Nutzung von Flächen des ruhenden Verkehrs
+                Es kann nur die Nutzung von Flächen des ruhenden Verkehrs
                 beantragt werden.
               </li>
               <li>

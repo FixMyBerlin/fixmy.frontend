@@ -1,7 +1,11 @@
-import { addDays, isWeekend } from 'date-fns';
+import { addDays, isSunday } from 'date-fns';
 import debug from 'debug';
+import { isHoliday } from 'feiertagejs';
 
 const log = debug('fmc:gastro:EventForm');
+
+// Region is Berlin.
+const HOLIDAY_REGION = 'BE';
 
 /**
  * Return the earliest possible date for a new event, which is 20 working days
@@ -12,10 +16,10 @@ export const getMinDate = (): Date => {
   let c = 0;
   while (c < 20) {
     day = addDays(day, 1);
-    if (!isWeekend(day)) {
+    if (!isSunday(day) && !isHoliday(day, HOLIDAY_REGION)) {
       c += 1;
     }
   }
-  log(day);
+  log('min date', day);
   return day;
 };
