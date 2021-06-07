@@ -77,7 +77,7 @@
     "rc-slider": "^9.6.2",
     "react": "^16.14.0",
     "react-autosize-textarea": "^7.1.0",
-    "react-collapsible": "^2.7.0",
+    "react-collapsible": "^2.8.3",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.14.0",
     "react-feather": "^2.0.3",
