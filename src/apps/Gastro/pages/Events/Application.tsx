@@ -9,6 +9,7 @@ import { media } from '~/styles/utils';
 
 import { EventForm } from '../../components/EventForm';
 import Header from '../../components/Header';
+import HotlineNotice from '../../components/HotlineNotice';
 import Thanks from '../../components/ThanksRegistration';
 
 const Section = styled.section`
@@ -23,8 +24,13 @@ const Section = styled.section`
   &:last-child {
     border-bottom: none;
   }
+`;
 
-  h1 {
+const Heading = styled.h2`
+  && {
+    font-family: Roboto Slab;
+    font-size: 2em;
+    line-height: 1.25;
     overflow-wrap: break-word;
 
     ${media.m`
@@ -46,9 +52,9 @@ const EventApplication = (props: Props) => {
         {submission == null && (
           <>
             <Section>
-              <h1>
+              <Heading>
                 Antrag auf Sondergenehmigung für eine einmalige Veranstaltung
-              </h1>
+              </Heading>
               <p>
                 Bitte füllen Sie dieses Formular aus, um eine Veranstaltung in
                 einer Grünfläche oder im Bereich des ruhenden Verkehrs zu
@@ -97,6 +103,7 @@ const EventApplication = (props: Props) => {
                 <li>Veranstaltungen mit 51-200 Personen: 50,- Euro</li>
                 <li>Veranstaltungen mit 201-500 Personen: 200,- Euro</li>
               </ul>
+              <HotlineNotice />
             </Section>
             <Section>
               <EventForm onSuccess={setSubmission} />
