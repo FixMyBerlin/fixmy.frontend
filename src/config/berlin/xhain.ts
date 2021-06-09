@@ -210,10 +210,15 @@ const xhain: DistrictConfig = {
         opening_hours: false,
       },
       layerSets: {
-        parks: ['TER-Event-Terrassen-Xhain-area'],
+        parks: [
+          'TER-Eventareas-Xhain',
+          'TER-Eventareas-Xhain-name',
+          'TER-Eventareas-Xhain-line',
+        ],
         parking: ['TER-Parking-Xhain', 'TER-Parking-Xhain-line'],
         acceptedApplications: [
           'TER-Event-Terrassen-Xhain-name',
+          'TER-Event-Terrassen-Xhain-area',
           'TER-Gastro-Terrassen-Xhain-name',
         ],
         cadastre: [
