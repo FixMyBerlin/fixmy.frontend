@@ -25,9 +25,6 @@ module.exports = (api) => {
   ];
 
   const env = {
-    development: {
-      plugins: ['@babel/plugin-transform-react-jsx-source'],
-    },
     test: {
       plugins: ['transform-es2015-modules-commonjs'],
     },
