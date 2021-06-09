@@ -2,11 +2,7 @@ import XHainSmall from '~/images/gastro/wappen.png';
 import XHainLarge from '~/images/gastro/wappen@2x.png';
 import { DistrictConfig } from '~/types';
 
-const XHAIN_TERRASSEN_CONFIRMED_AREAS = `mapbox://styles/hejco/cka5ko81y16yk1iqllts8uieg${
-  process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
-}`;
-
-const XHAIN_TERRASSEN_AVAILABLE_AREAS = `mapbox://styles/hejco/ckp6v8xyi2fks18lr8ot50fm2${
+const XHAIN_TERRASSEN_MAPBOX_STYLE = `mapbox://styles/hejco/ckm3lgekg9jky17rznm5kn8bd${
   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
 }`;
 
@@ -214,15 +210,10 @@ const xhain: DistrictConfig = {
         opening_hours: false,
       },
       layerSets: {
-        parks: [
-          'TER-Event-Terrassen-Xhain-name',
-          'TER-Event-Terrassen-Xhain-area',
-          'TER-Gastro-Terrassen-Xhain-name',
-        ],
+        parks: ['TER-Event-Terrassen-Xhain-area'],
         parking: ['TER-Parking-Xhain', 'TER-Parking-Xhain-line'],
         acceptedApplications: [
           'TER-Event-Terrassen-Xhain-name',
-          'TER-Event-Terrassen-Xhain-area',
           'TER-Gastro-Terrassen-Xhain-name',
         ],
         cadastre: [
@@ -239,19 +230,19 @@ const xhain: DistrictConfig = {
       },
       maps: {
         landing: {
-          mapboxStyle: XHAIN_TERRASSEN_CONFIRMED_AREAS,
+          mapboxStyle: XHAIN_TERRASSEN_MAPBOX_STYLE,
           layerSets: ['acceptedApplications'],
         },
         gastroSignup: {
-          mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
+          mapboxStyle: XHAIN_TERRASSEN_MAPBOX_STYLE,
           layerSets: [],
         },
         gastroRegistration: {
-          mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
+          mapboxStyle: XHAIN_TERRASSEN_MAPBOX_STYLE,
           layerSets: [],
         },
         eventForm: {
-          mapboxStyle: XHAIN_TERRASSEN_AVAILABLE_AREAS,
+          mapboxStyle: XHAIN_TERRASSEN_MAPBOX_STYLE,
           layerSets: ['parks'],
         },
       },
