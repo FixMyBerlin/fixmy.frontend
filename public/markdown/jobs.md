@@ -8,7 +8,7 @@ Eine Übersicht über unsere Softwarelösungen findest du unter https://fixmycit
 
 <div><img
 alt="Fahrradfahren"
-src="/src/images/amsterdam-1203305_1280.jpg"
+src="/src/images/cat-mapper-max-ogden-EcsCeS6haJ8-unsplash.jpg"
 class="img-lg"> </img></div>
 
 # <a name="datenredaktion"></a>Leitung Datenredaktion / Verkehrsplanung
