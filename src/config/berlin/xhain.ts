@@ -100,7 +100,7 @@ const xhain: DistrictConfig = {
           status: 'closed',
         },
         {
-          street: 'Böckstraße',
+          street: 'Böckhstraße',
           kiez: 'Graefekiez',
           region: 'Kreuzberg',
           status: 'open',
