@@ -8,19 +8,21 @@ Eine Übersicht über unsere Softwarelösungen findest du unter https://fixmycit
 
 <div><img
 alt="Fahrradfahren"
-src="/src/images/amsterdam-1203305_1280.jpg"
+src="/src/images/cat-mapper-max-ogden-EcsCeS6haJ8-unsplash.jpg"
 class="img-lg"> </img></div>
+Photo by <a href="https://unsplash.com/@catmapper?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Cat Mapper (Max Ogden)</a> on <a href="https://unsplash.com/@heikorin/likes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 
 # <a name="datenredaktion"></a>Leitung Datenredaktion / Verkehrsplanung
 
-**Zur Verstärkung unseres Teams suchen wir ab Juli 2021 eine Verkehrsplaner:in mit Berufserfahrung.**
+**Zur Verstärkung unseres Teams suchen wir ab nächstmöglichem Zeitpunkt eine:n Verkehrsplaner:in oder Stadtplaner:in**
 
 **Was Dich erwartet:**
 
+- Du leitest die Produktentwicklung aus verkehrsplanerischer Sicht. 
+- Du entwickelst die bestehenden Angebote von FixMyCity wie Planungskarte, Happy-Bike-Index oder Radbügeldialog weiter und arbeitest mit uns an neuen Produkten für die digitale Verwaltung zur Beschleunigung der Verkehrswende.
 - Du arbeitest in einem bundesweiten Projekt zu neuen Verfahren digitaler Bürgerbeteiligung bei Radschnellverbindungen mit: 
 https://nationaler-radverkehrsplan.de/de/praxis/modulares-system-fuer-radschnellverbindungen  
 - Du leitest ein im Sommer beginnendes Projekt zur datenbasierten Entwicklung kommunaler Radnetze und dazugehöriger Reallabore.
-- Du bringst dein Wissen über Planugnsprozesse ein und entwickelst die bestehenden Angebote von FixMyCity wie Planungskarte, Happy-Bike-Index oder Radbügeldialog weiter und arbeitest mit uns an neuen Produkten für die digitale Verwaltung zur Beschleunigung der Verkehrswende.
 - Du arbeitest eigenständig mit Verkehrsdaten, recherchierst diese, und bereitest sie auf.
 - Du kommunizierst mit Planer:innen und Geodatenexpert:innen in Kommunen, Landkreisen auf Landes- und Bundesebene.
 - Du arbeitest mit Verbänden und Stadtgesellschaft, sowie mit der Forschung und dem Bundesverkehrsministerium zusammen.
@@ -40,8 +42,7 @@ https://nationaler-radverkehrsplan.de/de/praxis/modulares-system-fuer-radschnell
 - Du bereits Erfahrung mit einer Scriptsprache wie Python, PHP oder R hast.
 
 **Was Dich erwartet:**
-Du entwickelst in einem kleinen dynamischen Team die nächsten Komponenten und Angebote von FixMyCity für die Verkehrswende
-
+- Du entwickelst in einem kleinen dynamischen Team die nächsten Komponenten und Angebote von FixMyCity für die Verkehrswende
 - Du arbeitest in engem Austausch mit erfahrenen Projektleiter:innen, Entwickler:innen, GIS-Expert:innen und UX-Designer:innen.
 - Agile, selbstverantwortliche Arbeitsprozesse im kleinen Team. 
 - Ein menschliches Miteinander und eine offene Organisationskultur die Ideen der kollektiven Führung, der wertschätzenden Kommunikation und nachhaltigen Arbeitsweise verfolgt.
@@ -50,7 +51,7 @@ Du entwickelst in einem kleinen dynamischen Team die nächsten Komponenten und A
 **Konkretes:**
 - Arbeitsort: CityLAB Berlin (Tempelhof-Schöneberg), Homeoffice in Teilen möglich
 - Beginn: 1.7.2021 (späterer Beginn möglich)
-- Arbeitszeit: 32 Stunden (80%)
+- Arbeitszeit: 20-32 Stunden / Woche
 - Vergütung: Verhandlungsbasis, branchenüblich
 - Bewerbungen bitte unter: https://fixmycity.typeform.com/to/erWlFnHX
 oder per mail an jobs@fixmycity.de 

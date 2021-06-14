@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ImageSrc from '~/images/amsterdam-1203305_1280.jpg';
+import ImageSrc from '~/images/cat-mapper-max-ogden-EcsCeS6haJ8-unsplash.jpg';
 
 import * as Article from '.';
 
