@@ -56,6 +56,41 @@ https://nationaler-radverkehrsplan.de/de/praxis/modulares-system-fuer-radschnell
 - Bewerbungen bitte unter: https://fixmycity.typeform.com/to/erWlFnHX
 oder per mail an jobs@fixmycity.de 
 
+
+# <a name="senior-dev"></a>Senior Entwickler:in (Full Stack)
+
+**Zur Verstärkung unseres Teams bei FixMyCity suchen wir ab September eine:n Entwickler:in für 32 Stunden / Woche.**
+
+**Was wir uns von dir wünschen:**
+
+- Du hast Lust auf die Themen Verkehrswende und digitale Partizipationsformate.
+- Du hast Erfahrung und Spaß an Webentwicklung mit Javascript und einem Framework für Single Page Applications wie React oder Vue.js. Idealerweise hast du Erfahrungen mit Typescript, Python/Django, React/Redux und Geodaten.
+- Dir liegt es, dich in Nutzer:innen von Software einzufühlen und Lösungsansätze aus deren Perspektive zu entwickeln.
+- Du hast Erfahrung in der Zusammenarbeit mit anderen Entwickler:innen, und kannst Arbeitsprozesse strukturieren.
+- Du beteiligst dich an einer offenen und wertschätzenden Teamkultur.
+- Du organisierst Deine Arbeit eigenverantwortlich, strukturiert und hast Freude an hochwertigem Code.
+- Du legst Wert auf einen häufigen schriftlichen und mündlichen Austausch mit deinem Team, du schreibst gerne technische Dokumentation und diskutierst Lösungsansätze. Du vertraut mit digitalen Arbeitstools, wie Git, Netlify, Heroku, Amazon Web Services, Slack, Miro, Google Drive o.Ä.
+
+**Was Dich erwartet:**
+
+Du entwickelst in einem kleinen dynamischen Team die nächsten Komponenten und Angebote von FixMyCity. Du arbeitest in engem Austausch mit erfahrenen Projektleiter:innen, Frontend- und Backend-Entwickler:innen, sowie UX-Designer:innen.
+
+- Agile, selbstverantwortliche Arbeitsprozesse im kleinen Team. Continuous Integration und Deployment mit automatisiertem Testing und Linting.
+- Ein menschliches Miteinander und eine offene Organisationskultur die Ideen der kollektiven Führung, der wertschätzenden Kommunikation und nachhaltigen Arbeitsweise verfolgt.
+- Flexible Arbeitszeiten, Open Source und Open Data, konzentriertes, störungsfreies Arbeiten.
+- Software-Stack Frontend: Javascript/Typescript, React, Mapbox, Testing mit Jest, react-testing-library und Cypress, Backend: Python, Django, GeoDjango. Hosting über Netlify, Heroku und AWS. Repositories: https://github.com/FixMyBerlin/
+
+
+**Konkretes:**
+
+Arbeitsort: CityLAB Berlin (Tempelhof-Schöneberg), Homeoffice in Teilen möglich  
+Beginn: 1.09.2021 (flexibel)  
+Arbeitszeit: 32 Stunden / Woche (weniger Stunden möglich)  
+Vergütung: Verhandlungsbasis, branchenüblich
+
+Bewerbungen bitte [über dieses Formular](https://fixmycity.typeform.com/to/w7a530Nj) oder per E-Mail an [jobs@fixmycity.de](mailto:jobs@fixmycity.de)
+
+
 # <a name="junior-dev"></a>Junior Entwickler:in (Full Stack)
 
 **Zur Verstärkung unseres Teams bei FixMyCity suchen wir eine:n Entwickler:in in Teilzeit für 20-32 Stunden / Woche.**
@@ -82,8 +117,8 @@ Du entwickelst in einem kleinen dynamischen Team die nächsten Komponenten und A
 **Konkretes:**
 
 Arbeitsort: CityLAB Berlin (Tempelhof-Schöneberg), Homeoffice in Teilen möglich  
-Beginn: 1.11.2020 (späterer Beginn möglich)  
-Arbeitszeit: 20 Stunden+  
+Beginn: 1.10.2021 (flexibel)  
+Arbeitszeit: 20-32 Stunden
 Vergütung: Verhandlungsbasis, branchenüblich
 
 Bewerbungen bitte [über dieses Formular](https://fixmycity.typeform.com/to/GdDDgtle) oder per E-Mail an [jobs@fixmycity.de](mailto:jobs@fixmycity.de)
@@ -114,12 +149,11 @@ Was du mit­bringst
 
 Infos / Kon­di­tio­nen
 
-- Das Prak­ti­kum geht über 3 Monate (ggf. län­ger möglich)
+- Das Prak­ti­kum geht in der Regel über 3 Monate (län­gere Praktika möglich)
 - Beginn jederzeit möglich
 - Arbeits­zeit: 32 Stun­den / Woche, Ent­loh­nung 360,- / Monat
 - Arbeits­ort: City­LAB Ber­lin (Flug­ha­fen Tem­pel­hof)
 
-## Kontakt
+## Bewerbung
 
-- E-Mail: [jobs@fixmycity.de](mailto:jobs@fixmycity.de)
-- Bewer­bung jederzeit möglich über fol­gen­des For­mu­lar: https://forms.gle/16D1ysuLsBGaCEwB6
+- Bewer­bung mit Lebenslauf per Mail an [jobs@fixmycity.de](mailto:jobs@fixmycity.de)
