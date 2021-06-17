@@ -8,6 +8,7 @@ import config from '~/apps/Gastro/config';
 import { media } from '~/styles/utils';
 
 import Header from '../../components/Header';
+import HotlineNotice from '../../components/HotlineNotice';
 import DirectForm from '../../components/RegistrationForm/Direct';
 import Thanks from '../../components/ThanksRegistration';
 
@@ -23,8 +24,13 @@ const Section = styled.section`
   &:last-child {
     border-bottom: none;
   }
+`;
 
-  h1 {
+const Heading = styled.h2`
+  && {
+    font-family: Roboto Slab;
+    font-size: 2em;
+    line-height: 1.25;
     overflow-wrap: break-word;
 
     ${media.m`
@@ -44,7 +50,9 @@ const Registration = () => {
         {submission == null && (
           <>
             <Section>
-              <h1>Antrag auf Einrichtung einer Sondernutzungs&shy;fläche</h1>
+              <Heading>
+                Antrag auf Einrichtung einer Sondernutzungs&shy;fläche
+              </Heading>
               <p>
                 Bitte füllen Sie dieses Formular aus, um eine
                 Sondernutzungsfläche für Ihren Betrieb / Verein beim Bezirksamt
@@ -65,6 +73,7 @@ const Registration = () => {
                 werden. Die Sondergenehmigung zur Nutzung der Flächen erfolgt
                 kostenfrei zunächst bis zum 31.12.2021.
               </p>
+              <HotlineNotice />
             </Section>
             <Section>
               <DirectForm onSuccess={setSubmission} />

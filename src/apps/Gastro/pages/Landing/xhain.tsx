@@ -26,6 +26,7 @@ import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import { media } from '~/styles/utils';
+import HotlineNotice from '../../components/HotlineNotice';
 
 import IconEvents from './assets/basics-icon-map-events.svg';
 import IconRepair from './assets/basics-icon-map-repair.svg';
@@ -245,16 +246,19 @@ const XhainLanding = ({ district }) => (
       </p>
 
       {openSignup(district) && (
-        <CTAWrapper>
-          <Link to={getPath(district, 'signupEvents')}>
-            <CTA flat>Antrag stellen für Veranstaltung</CTA>
-          </Link>
-          <p>
-            <a href="#bedingungen-veranstaltungen" className="internal">
-              Bedingungen für Veranstaltungen
-            </a>
-          </p>
-        </CTAWrapper>
+        <>
+          <CTAWrapper>
+            <Link to={getPath(district, 'signupEvents')}>
+              <CTA flat>Antrag stellen für Veranstaltung</CTA>
+            </Link>
+            <p>
+              <a href="#bedingungen-veranstaltungen" className="internal">
+                Bedingungen für Veranstaltungen
+              </a>
+            </p>
+          </CTAWrapper>
+          <HotlineNotice />
+        </>
       )}
     </Section>
 
@@ -444,11 +448,14 @@ const XhainLanding = ({ district }) => (
       </p>
 
       {openSignup(district) && (
-        <Link to={getPath(district, 'signupEvents')}>
-          <CTAWrapper>
-            <CTA flat>Antrag stellen für Veranstaltung</CTA>
-          </CTAWrapper>
-        </Link>
+        <>
+          <Link to={getPath(district, 'signupEvents')}>
+            <CTAWrapper>
+              <CTA flat>Antrag stellen für Veranstaltung</CTA>
+            </CTAWrapper>
+          </Link>
+          <HotlineNotice />
+        </>
       )}
 
       <Notice />
