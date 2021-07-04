@@ -31,9 +31,9 @@ Falls Sie Interesse haben, etwas beizutragen, melden Sie sich gerne. Ein englisc
 
 ## Dienstleister
 
-Frontend & UX Beratung: Webkid GmbH, https://webkid.io/
-UX-Konzeption: Philipp Schiedel
-Backend & Beratung: Agaric e.K. Stefan Freudenberg
+Frontend & UX Beratung: Webkid GmbH, https://webkid.io/<br />
+UX-Konzeption: Philipp Schiedel<br />
+Backend & Beratung: Agaric e.K. Stefan Freudenberg<br />
 3D-Visualisierungen: David Wegner
 
 ## Quellenvermerk
@@ -44,15 +44,19 @@ Die von FixMyCity entwickelten Karten basieren auf Daten des Geoportal Berlin / 
 
 Wenn nicht anders angegeben stehen die auf fixmyberlin.de verwendeten Fotos unter [Creative Commons-Lizenz BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.de 'Infos zu CC-Lizenz BY-NC 4.0').
 
-## Förderungen
+## Aktuelle Förderungen
+FixMyCity wird aktuell als forschungsbezogenes Start-Up durch Bundesmittel aus dem NRVP gefördert (Förderkennzeichen VB2025). [Projektsteckbrief Baukasten-RSV - Modulares System für Radschnellverbindungen](https://nationaler-radverkehrsplan.de/de/praxis/modulares-system-fuer-radschnellverbindungen)
 
-FixMyCity wird als forschungsbezogenes Start-Up durch Bundesmittel gefördert (Förderkennzeichen VB1907). [Projektsteckbrief](https://nationaler-radverkehrsplan.de/de/praxis/radinfrastrukturdaten-erfassen-und 'Projektsteckbrief beim BMVI')
+## Zurückliegende Förderungen
 
-FixMyCity wird im Rahmen der CityLAB-Förderlinie der Senatskanzlei Berlin durch Landesmittel gefördert.
+FixMyCity wurde 2019 / 2020 vom BMVI im Rahmen des NRVP gefördert (Förderkennzeichen VB1907). [Projektsteckbrief Kataster KI - Studie zur Subjektiven Sicherheit](https://nationaler-radverkehrsplan.de/de/aktuell/nachrichten/studie-zur-subjektiven-sicherheit-im-radverkehr)
 
-FixMyBerlin wird im Rahmen des Berlin Startup Stipendiums gefördert. [Projektsteckbrief](https://entrepreneurship.htw-berlin.de/unsere-startups/stipendiat-innen/fixmyberlin/ 'Projektsteckbrief bei der HTW')
+FixMyCity wurde im Rahmen der CityLAB-Förderlinie der Senatskanzlei Berlin durch Landesmittel gefördert.
 
-FixMyBerlin wurde als forschungsbezogenes Start-Up durch Bundesmittel gefördert (Förderkennzeichen 19F1039A). [Projektsteckbrief](http://www.bmvi.de/SharedDocs/DE/Artikel/DG/mfund-projekte/fixmyberlin.html 'Projektsteckbrief beim BMVI')
+Die FixMyBerlin GbR wurde im Rahmen des Berlin Startup Stipendiums gefördert. [Projektsteckbrief](https://entrepreneurship.htw-berlin.de/unsere-startups/stipendiat-innen/fixmyberlin/)
+
+Die FixMyBerlin GbR wurde 2018 im Rahmen des mFunds gefördert (Förderkennzeichen 19F1039A). [Projektsteckbrief](http://www.bmvi.de/SharedDocs/DE/Artikel/DG/mfund-projekte/fixmyberlin.html)
+
 
 <style type="text/css">
   .partner {
