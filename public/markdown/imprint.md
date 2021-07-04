@@ -8,10 +8,6 @@ Telefon: 030 / 549 08 665<br />
 
 Gesellschafter: Boris Hekele und Heiko Rintelen
 
-Büroadresse: c/o CityLAB Berlin<br />
-Platz der Luftbrücke 4<br />
-12101 Berlin<br />
-
 Registergericht: Amtsgericht Berlin-Charlottenburg<br />
 Registernummer: HRB 205031 B
 
