@@ -220,7 +220,10 @@ const XhainLanding = ({ district }) => (
         Corona-Infektionsschutzmaßnahmenverordnung wieder aufnehmen zu können.
         Den Bürger*innen des Bezirks soll ermöglicht werden am sozialen Leben
         teilzunehmen und sich dennoch angesichts des Infektionsgeschehens sicher
-        im öffentlichen Raum aufzuhalten.
+        im öffentlichen Raum aufzuhalten. 
+       </p>
+       <p>
+        Eine Antragsstellung ist bis zum 7.7.2021 möglich.
       </p>
 
       {openSignup(district) && (
