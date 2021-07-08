@@ -247,9 +247,6 @@ const XhainLanding = ({ district }) => (
         Veranstaltungen auf geeigneten Flächen in Grünanlagen oder im Bereich
         des ruhenden Verkehrs zu beantragen.
       </p>
-       <p>
-        Eine Antragsstellung ist bis zum 15.7.2021 möglich.
-      </p>
 
       {openSignup(district) && (
         <>
