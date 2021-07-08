@@ -223,7 +223,7 @@ const XhainLanding = ({ district }) => (
         im öffentlichen Raum aufzuhalten. 
        </p>
        <p>
-        Eine Antragsstellung ist bis zum 7.7.2021 möglich.
+        Eine Antragsstellung ist bis zum 15.7.2021 möglich.
       </p>
 
       {openSignup(district) && (
@@ -246,6 +246,9 @@ const XhainLanding = ({ district }) => (
         Privatpersonen kulturelle, sportliche, oder bildungsbezogene
         Veranstaltungen auf geeigneten Flächen in Grünanlagen oder im Bereich
         des ruhenden Verkehrs zu beantragen.
+      </p>
+       <p>
+        Eine Antragsstellung ist bis zum 15.7.2021 möglich.
       </p>
 
       {openSignup(district) && (
