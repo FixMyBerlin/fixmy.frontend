@@ -26,8 +26,8 @@ import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import { media } from '~/styles/utils';
-import HotlineNotice from '../../components/HotlineNotice';
 
+import HotlineNotice from '../../components/HotlineNotice';
 import IconEvents from './assets/basics-icon-map-events.svg';
 import IconRepair from './assets/basics-icon-map-repair.svg';
 import IconRestaurant from './assets/basics-icon-map-restaurant.svg';
@@ -220,11 +220,9 @@ const XhainLanding = ({ district }) => (
         Corona-Infektionsschutzmaßnahmenverordnung wieder aufnehmen zu können.
         Den Bürger*innen des Bezirks soll ermöglicht werden am sozialen Leben
         teilzunehmen und sich dennoch angesichts des Infektionsgeschehens sicher
-        im öffentlichen Raum aufzuhalten. 
-       </p>
-       <p>
-        Eine Antragsstellung ist bis zum 15.7.2021 möglich.
+        im öffentlichen Raum aufzuhalten.
       </p>
+      <p>Eine Antragsstellung ist bis zum 15.7.2021 möglich.</p>
 
       {openSignup(district) && (
         <CTAWrapper>
