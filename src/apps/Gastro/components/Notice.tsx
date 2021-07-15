@@ -18,8 +18,7 @@ const GastroNotice = ({ district }) => {
     if (postSignup(district))
       return (
         <Notice>
-          Vielen Dank für Ihr Interesse. Das Formular zur Antragsstellung wird
-          demnächst wieder für neue Anträge freigeschaltet.
+          Vielen Dank für Ihr Interesse. Eine Antragsstellung ist derzeit nicht möglich.
         </Notice>
       );
   }
