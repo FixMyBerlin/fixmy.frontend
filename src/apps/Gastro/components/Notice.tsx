@@ -18,7 +18,8 @@ const GastroNotice = ({ district }) => {
     if (postSignup(district))
       return (
         <Notice>
-          Vielen Dank für Ihr Interesse. Eine Antragsstellung ist derzeit nicht möglich.
+          Vielen Dank für Ihr Interesse. Eine Antragsstellung ist derzeit nicht
+          möglich.
         </Notice>
       );
   }
