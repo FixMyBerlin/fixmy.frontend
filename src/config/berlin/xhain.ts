@@ -201,8 +201,8 @@ const xhain: DistrictConfig = {
           ? new Date(Date.UTC(2021, 5 - 1, 19))
           : new Date(Date.UTC(2021, 3 - 1, 1)),
         closeSignup: isNetlifyProduction
-          ? new Date(Date.UTC(2021, 10 - 1, 1))
-          : new Date(Date.UTC(2021, 10 - 1, 1)),
+          ? new Date(Date.UTC(2021, 7 - 1, 14))
+          : new Date(Date.UTC(2021, 7 - 1, 14)),
         permitEnd: new Date(Date.UTC(2021, 12 - 1, 31)),
       },
       model: {
