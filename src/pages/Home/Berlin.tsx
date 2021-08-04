@@ -108,7 +108,7 @@ const HomeBerlin = () => {
         <Title>Hi, das ist {config.siteTitle}</Title>
         <SubTitle>
           Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Auf der
-          Karte mit den Planungen sieht du, was Berlin dafür plant.
+          Karte mit den Planungen siehst du, was Berlin dafür plant.
         </SubTitle>
       </TitleWrapper>
       <CTAWrapper>
