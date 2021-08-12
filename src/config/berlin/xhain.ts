@@ -74,7 +74,7 @@ const xhain: DistrictConfig = {
           street: 'Waldemarstraße',
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'closed',
           schedule: '23.Mai - 30.September, Sonntags 15–19 Uhr',
         },
         {
