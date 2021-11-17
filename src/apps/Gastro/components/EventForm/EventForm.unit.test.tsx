@@ -1,4 +1,4 @@
-import { screen, waitFor } from '@testing-library/dom';
+import { screen } from '@testing-library/dom';
 import { isFuture, subDays } from 'date-fns';
 import React from 'react';
 

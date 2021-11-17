@@ -12,7 +12,6 @@ import Kicker from './Kicker';
 interface ArticleHeaderProps {
   kicker?: string;
   logo?: ReactNode;
-  title?: string;
   publishDate?: Date;
   author?: string;
   toc?: string;
