@@ -33,7 +33,7 @@ const baseConfig: Omit<
     embedUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EGM',
   },
   piwik: {
-    url: 's.fixmycity.de',
+    url: 'https://s.fixmycity.de',
     siteId: 1,
     options: {
       enableLinkTracking: true,
