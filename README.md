@@ -15,6 +15,8 @@ to add to this project yourself? Go ahead and check the
 
 ## Installation
 
+We recommend using [nvm](https://github.com/nvm-sh/nvm) to run this project with the Node version specified in `.nvmrc`.
+
 ```sh
 $ npm install
 ```
