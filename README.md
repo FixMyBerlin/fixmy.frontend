@@ -37,7 +37,7 @@ Builds the application and starts a webserver with hot loading.
 Runs on [localhost:8080](http://localhost:8080/)
 
 ```sh
-$ npm start
+npm start
 ```
 
 ## Testing
@@ -45,7 +45,7 @@ $ npm start
 Runs unit tests.
 
 ```sh
-$ npm run test
+npm run test
 ```
 
 ## Build
@@ -53,7 +53,7 @@ $ npm run test
 Builds a minified version of the application in the build folder.
 
 ```sh
-$ npm run build
+npm run build
 ```
 
 ## Deployment
@@ -114,7 +114,7 @@ Each locale has a language code. This app currently supports:
 Extract text content for translation from the source code by running the command
 
 ```
-$ npm run extract
+npm run extract
 ```
 
 This will update the file containing the German language default text contents
@@ -131,7 +131,7 @@ with the new entries.
 Run the command
 
 ```
-$ npm run compile
+npm run compile
 ```
 
 to make available all new translations in an optimized format.
