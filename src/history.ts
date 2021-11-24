@@ -5,10 +5,11 @@ import config from '~/config';
 
 const browserHistory = createBrowserHistory();
 
-// piwik-react-router has an open issue where it will try and attach a
-// script tag in the dom, which doesn't work in a Jest environment.
+// piwik-react has an open issue script tag in the dom,
+// which doesn't work in a Jest environment.
 // As a workaround, the resulting error is caught here.
-// See https://github.com/joernroeder/piwik-react-router/issues/48
+// The error is described well in this similar package https://github.com/joernroeder/piwik-react-router/issues/48
+// There was an unsucessfull attempt to solve this at https://github.com/guillaumeparis2000/react-piwik/pull/24
 
 let history: ReturnType<typeof createBrowserHistory>;
 try {
