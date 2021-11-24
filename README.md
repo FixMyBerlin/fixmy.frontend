@@ -3,7 +3,7 @@
 
 ![Node.js CI](https://github.com/FixMyBerlin/fixmy.frontend/workflows/Node.js%20CI/badge.svg?branch=develop)
 
-You can check out the live version [here](https://fixmyberlin.de/).
+You can check out the live version [at fixmyberlin.de](https://fixmyberlin.de/).
 
 ![fixmy screenshot](/fixmy-screenshot.png)
 
