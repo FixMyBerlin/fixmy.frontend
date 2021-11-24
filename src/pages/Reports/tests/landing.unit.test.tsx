@@ -8,6 +8,7 @@ describe('Landing page', () => {
   beforeAll(() => {
     jest.mock('~/pages/Reports/config');
   });
+
   it('renders when reports are enabled', () => {
     const { getAllByRole } = render(<Landing />);
     config.reports.enabled = true;
@@ -15,6 +16,7 @@ describe('Landing page', () => {
       getAllByRole('button', { name: config.reports.landing.CTA })
     ).toHaveLength(2);
   });
+
   it('renders when reports are disabled', () => {
     const { getAllByRole } = render(<Landing />);
     config.reports.enabled = false;
