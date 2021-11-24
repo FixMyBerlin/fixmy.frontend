@@ -25,5 +25,5 @@ Bildmaterial zur freien Verwendung durch die Presse: <br>
 
 Alle Bilder stehen unter der [Creative Commons](https://creativecommons.org/licenses/by/4.0/) Lizenz (c) FixMyCity, Lizenz CC BY 4.0 
 
-## Aktuelle Presseberichte und Pressemitteilungen finden Sie ab sofort unter: https://www.fixmycity.de/-presse-
+## Aktuelle Presseberichte und Pressemitteilungen finden Sie ab sofort unter: [https://www.fixmycity.de/presse](https://www.fixmycity.de/presse)
 
