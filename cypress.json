@@ -10,9 +10,18 @@
     "openMode": 0
   },
   "whitelist": {
-    "default": ["Map", "Reports", "KatasterKI"],
-    "aachen": ["Reports"],
-    "berlin": ["Map", "Reports", "KatasterKI", "Analysis"],
+    "default": [
+      "Map",
+      "Reports"
+    ],
+    "aachen": [
+      "Reports"
+    ],
+    "berlin": [
+      "Map",
+      "Reports",
+      "Analysis"
+    ],
     "eichwalde": []
   }
 }
