@@ -3,7 +3,7 @@
 
 ![Node.js CI](https://github.com/FixMyBerlin/fixmy.frontend/workflows/Node.js%20CI/badge.svg?branch=develop)
 
-You can check out the live version [here](https://fixmyberlin.de/).
+You can check out the live version [at fixmyberlin.de](https://fixmyberlin.de/).
 
 ![fixmy screenshot](/fixmy-screenshot.png)
 
@@ -15,8 +15,10 @@ to add to this project yourself? Go ahead and check the
 
 ## Installation
 
+We recommend using [nvm](https://github.com/nvm-sh/nvm) or [asdf](https://asdf-vm.com/) to run this project with the Node version specified in `.nvmrc` and [`.tool-versions`](.tool-versions).
+
 ```sh
-$ npm install
+npm install
 ```
 
 ## Configuration
@@ -34,16 +36,30 @@ configure the correct API endpoint.**
 Builds the application and starts a webserver with hot loading.
 Runs on [localhost:8080](http://localhost:8080/)
 
-```sh
-$ npm start
-```
+- [FixMyBerlin](https://fixmyberlin.de/):
+
+  ```sh
+  npm start
+  ```
+
+- [Radbügel für Aachen](https://radbuegel-aachen.de/):
+
+  ```sh
+  REGION=aachen npm start
+  ```
+
+- [ZES+](https://www.zesplus.de/):
+
+  ```sh
+  REGION=eichwalde npm start
+  ```
 
 ## Testing
 
 Runs unit tests.
 
 ```sh
-$ npm run test
+npm run test
 ```
 
 ## Build
@@ -51,7 +67,7 @@ $ npm run test
 Builds a minified version of the application in the build folder.
 
 ```sh
-$ npm run build
+npm run build
 ```
 
 ## Deployment
@@ -112,7 +128,7 @@ Each locale has a language code. This app currently supports:
 Extract text content for translation from the source code by running the command
 
 ```
-$ npm run extract
+npm run extract
 ```
 
 This will update the file containing the German language default text contents
@@ -129,7 +145,7 @@ with the new entries.
 Run the command
 
 ```
-$ npm run compile
+npm run compile
 ```
 
 to make available all new translations in an optimized format.

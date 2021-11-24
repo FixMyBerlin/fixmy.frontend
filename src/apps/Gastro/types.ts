@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 
 import { AppConfig } from '~/types';
+
 import {
   NUM_PARTICIPANTS_L,
   NUM_PARTICIPANTS_M,

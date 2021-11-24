@@ -1,3 +1,8 @@
+import ConstructionIcon from '~/images/planning-icons/bau.svg';
+import DoneIcon from '~/images/planning-icons/fertig.svg';
+import ConceptIcon from '~/images/planning-icons/konzept.svg';
+import PlanningIcon from '~/images/planning-icons/planung.svg';
+
 export const RIGHT_SIDE = 0;
 export const LEFT_SIDE = 1;
 export const BOTH_SIDES = 2;
@@ -57,25 +62,25 @@ export const PLANNING_PHASES = [
   {
     id: 'draft',
     color: '#fa96d0',
-    icon: 'konzept.svg',
+    icon: ConceptIcon,
     name: 'Konzept',
   },
   {
     id: 'planning',
     color: '#cf0a7d',
-    icon: 'planung.svg',
+    icon: PlanningIcon,
     name: 'Planung',
   },
   {
     id: 'execution',
     color: '#910055',
-    icon: 'bau.svg',
+    icon: ConstructionIcon,
     name: 'im Bau',
   },
   {
     id: 'ready',
     color: '#0f0f0f',
-    icon: 'fertig.svg',
+    icon: DoneIcon,
     name: 'Fertig',
   },
 ];

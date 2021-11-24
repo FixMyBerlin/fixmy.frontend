@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { close } from '~/AppState';
 import AnchorItem from '~/components/Menu/AnchorItem';
 import NavItem from '~/components/Menu/NavItem';
-import SvgIcon from '~/components/SvgIcon';
 import config from '~/config';
 import Store from '~/store';
 
@@ -37,9 +36,11 @@ const PlusChildren = styled.div`
   }
 `;
 
-const StyledSvgIcon = styled(SvgIcon)`
-  max-width: 26px;
-  max-height: 26px;
+const IconWrapper = styled.span`
+  & svg {
+    max-width: 26px;
+    max-height: 26px;
+  }
 `;
 
 function renderItem(item) {
@@ -52,7 +53,11 @@ function renderItem(item) {
           onClick={() => Store.dispatch(close())}
           border={item.border ? item.border.toString() : null}
         >
-          {item.icon ? <StyledSvgIcon type={item.icon} width={26} /> : null}
+          {item.icon ? (
+            <IconWrapper>
+              <item.icon width={26} />
+            </IconWrapper>
+          ) : null}
           <NavItem.Label>{item.label}</NavItem.Label>
         </NavItem>
       );
@@ -65,7 +70,11 @@ function renderItem(item) {
           rel="noreferrer noopener"
           border={item.border ? item.border.toString() : null}
         >
-          {item.icon ? <StyledSvgIcon type={item.icon} /> : null}
+          {item.icon ? (
+            <IconWrapper>
+              <item.icon width={26} />
+            </IconWrapper>
+          ) : null}
           {item.label}
         </AnchorItem>
       );
@@ -73,7 +82,11 @@ function renderItem(item) {
       return (
         <PlusItemWrapper key={item.label}>
           <PlusItemLabelWrapper>
-            {item.icon ? <StyledSvgIcon type={item.icon} /> : null}
+            {item.icon ? (
+              <IconWrapper>
+                <item.icon width={26} />
+              </IconWrapper>
+            ) : null}
             <div>{item.label}</div>
           </PlusItemLabelWrapper>
           <PlusChildren>
@@ -84,7 +97,7 @@ function renderItem(item) {
                 onClick={() => Store.dispatch(close())}
                 border={c.border ? c.border.toString() : null}
               >
-                {c.icon ? <SvgIcon type={c.icon} /> : null}
+                {c.icon ? <c.icon /> : null}
                 <NavItem.Label>{c.label}</NavItem.Label>
               </NavItem>
             ))}
