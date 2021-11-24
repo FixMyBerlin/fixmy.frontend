@@ -1,3 +1,14 @@
+import AnalysisIcon from '~/images/analysis.svg';
+import ApiIcon from '~/images/api.svg';
+import ResearchIcon from '~/images/icon-flask.svg';
+import GastroIcon from '~/images/icon-gastro.svg';
+import KommunenIcon from '~/images/icon-kommunen.svg';
+import AboutIcon from '~/images/info.svg';
+import MapIcon from '~/images/map.svg';
+import QuestionIcon from '~/images/question.svg';
+import ReportsIcon from '~/images/reports-icon.svg';
+import SpielstrassenIcon from '~/images/spielstrassen-icon.svg';
+
 import routes from './routes';
 
 interface Menu {
@@ -12,11 +23,13 @@ interface Menu {
 
 type MenuItem = Link | ExternalLink | Separator | Plus;
 
+type SVGIcon = JSX.Element;
+
 type Link = {
   type: 'link';
   label: string;
   link: string;
-  icon: string;
+  icon: SVGIcon;
   border: boolean;
 };
 
@@ -24,7 +37,7 @@ type ExternalLink = {
   type: 'external';
   label: string;
   href: string;
-  icon: string;
+  icon: SVGIcon;
   border: boolean;
 };
 
@@ -36,7 +49,7 @@ type Separator = {
 type Plus = {
   type: 'plus';
   label: string;
-  icon?: string;
+  icon?: SVGIcon;
   children: Link[];
 };
 
@@ -58,14 +71,14 @@ const menuConfig: Menu = {
       type: 'link',
       label: 'Planungskarte',
       link: routes.map.projectsIndex,
-      icon: 'map',
+      icon: MapIcon,
       border: true,
     },
     {
       type: 'link',
       label: 'Analyse',
       link: routes.analysis,
-      icon: 'analysis',
+      icon: AnalysisIcon,
       border: false,
     },
     {
@@ -75,21 +88,21 @@ const menuConfig: Menu = {
     {
       type: 'link',
       label: 'Xhain-Terrassen',
-      icon: 'icon-gastro',
+      icon: GastroIcon,
       link: '/friedrichshain-kreuzberg/terrassen',
       border: true,
     },
     {
       type: 'link',
       label: 'Temporäre Spielstraßen',
-      icon: 'spielstrassen-icon',
+      icon: SpielstrassenIcon,
       link: routes.spielstrassen.landing,
       border: true,
     },
     {
       type: 'link',
       label: 'Radbügel-Meldedialog',
-      icon: 'reports-icon',
+      icon: ReportsIcon,
       link: routes.reports.landing,
       border: false,
     },
@@ -101,13 +114,13 @@ const menuConfig: Menu = {
       type: 'external',
       label: 'Angebote für Kommunen',
       href: 'https://fixmycity.de',
-      icon: 'icon-kommunen',
+      icon: KommunenIcon,
       border: true,
     },
     {
       type: 'link',
       label: 'Ergebnisse der Straßencheck-Umfrage',
-      icon: 'icon-flask',
+      icon: ResearchIcon,
       link: routes.research.landing,
       border: true,
     },
@@ -115,21 +128,21 @@ const menuConfig: Menu = {
       type: 'link',
       label: 'Über FixMyBerlin',
       link: '/info',
-      icon: 'info',
+      icon: AboutIcon,
       border: true,
     },
     {
       type: 'link',
       label: 'FAQ',
       link: '/faq',
-      icon: 'question',
+      icon: QuestionIcon,
       border: true,
     },
     {
       type: 'link',
       label: 'API',
       link: '/api',
-      icon: 'api',
+      icon: ApiIcon,
       border: false,
     },
   ],

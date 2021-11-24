@@ -41,6 +41,11 @@ jobs:
   linter:
     runs-on: ubuntu-latest
 
+    # Linters are not run on PRs created by dependabot because these runs lack
+    # the secret required to create Github Status Checks and will not have new
+    # linter issues anyway.
+    if: ${{ github.actor != 'dependabot[bot]' }}
+
     steps:
       - uses: actions/checkout@v2
 
