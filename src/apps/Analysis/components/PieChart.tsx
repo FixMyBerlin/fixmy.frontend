@@ -5,7 +5,6 @@ import { VictoryPie, VictoryLabel, Slice, VictoryLabelProps } from 'victory';
 
 import { setPhaseFilter } from '~/apps/Analysis/state';
 import { PLANNING_PHASES } from '~/apps/Map/constants';
-import SvgIcon from '~/components/SvgIcon';
 import { DotLoader } from '~/components2/Loaders';
 import config from '~/config';
 import { numberFormat, getRVALength, percentageFormat } from '~/utils/utils';
@@ -101,7 +100,11 @@ const Label = ({
   datum,
   ...props
 }: VictoryLabelProps & { orientation?: string }) => {
-  const phase = PLANNING_PHASES.find((p) => p.name === props.text);
+  let phase = PLANNING_PHASES.find((p) => p.name === props.text);
+
+  // The destructuring syntax is less clear about what's happening here
+  // eslint-disable-next-line prefer-destructuring
+  if (phase == null) phase = PLANNING_PHASES[0];
   // Victory type definitions declare that `textAnchor` can be a function
   // @ts-ignore
   const offsetX = getSvgOffsetX(props.textAnchor);
@@ -111,7 +114,7 @@ const Label = ({
   const share = percentageFormat(datum.y / 360.0);
   return (
     <g style={{ transform: `translate(${x}px,${y}px)` }}>
-      <SvgIcon type={phase.icon.replace('.svg', '')} y={offsetY} x={offsetX} />
+      <phase.icon y={offsetY} x={offsetX} />
       <VictoryLabel
         {...props}
         x={0}

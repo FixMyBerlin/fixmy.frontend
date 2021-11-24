@@ -20,7 +20,10 @@ try {
 
   history = piwik.connectToHistory(browserHistory);
 } catch (e) {
-  if (e.message === "Cannot read property 'parentNode' of undefined") {
+  // Fix Piwik loading in Jest environment
+  if (
+    e.message === "Cannot read properties of undefined (reading 'parentNode')"
+  ) {
     history = browserHistory;
   } else {
     throw e;
