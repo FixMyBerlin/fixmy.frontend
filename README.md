@@ -18,7 +18,7 @@ to add to this project yourself? Go ahead and check the
 We recommend using [nvm](https://github.com/nvm-sh/nvm) or [asdf](https://asdf-vm.com/) to run this project with the Node version specified in `.nvmrc` and [`.tool-versions`](.tool-versions).
 
 ```sh
-$ npm install
+npm install
 ```
 
 ## Configuration
@@ -36,9 +36,23 @@ configure the correct API endpoint.**
 Builds the application and starts a webserver with hot loading.
 Runs on [localhost:8080](http://localhost:8080/)
 
-```sh
-npm start
-```
+- [FixMyBerlin](https://fixmyberlin.de/):
+
+  ```sh
+  npm start
+  ```
+
+- [Radbügel für Aachen](https://radbuegel-aachen.de/):
+
+  ```sh
+  REGION=aachen npm start
+  ```
+
+- [ZES+](https://www.zesplus.de/):
+
+  ```sh
+  REGION=eichwalde npm start
+  ```
 
 ## Testing
 
