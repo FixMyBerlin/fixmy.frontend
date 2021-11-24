@@ -80,6 +80,15 @@ const LogoAnnotation = styled(Paragraph)`
   color: ${config.colors.darkgrey};
 `;
 
+const StyledLogoFONA = styled(LogoFONA)`
+  width: 120px;
+  margin: 0 1em;
+
+  ${media.m`
+    margin: 0 2em;
+  `}
+`;
+
 const Logos = () => (
   <Footer>
     <LogoGrid1>
@@ -88,7 +97,7 @@ const Logos = () => (
         srcSet={`${LogoBMBF} 1x, ${LogoBMBF2} 2x, ${LogoBMBF3} 3x`}
         alt="Logo Bundesministerium für Bildung und Forschung"
       />
-      <LogoFONA />
+      <StyledLogoFONA />
     </LogoGrid1>
     <LogoGrid2>
       <LogoAnnotation>Projektpartner:</LogoAnnotation>
