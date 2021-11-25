@@ -1,4 +1,3 @@
-import debug from 'debug';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -8,8 +7,6 @@ import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 import ReportPin from '~/pages/Reports/components/ReportPin';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
-
-const log = debug('fmc:reports:overviewmap:details:header');
 
 const HeadlineSection = styled.div`
   display: flex;
@@ -78,7 +75,7 @@ const DetailsHeader = ({ details: { number }, status, id }) => (
       <ReportPin status={status} />
     </StatusIndicatorWrapper>
 
-    {process.env.NODE_ENV !== 'production' && (
+    {config.debug === true && (
       <StatusIndicatorWrapper>
         <EditButton flat target="_blank" href={getEditURL(id)}>
           Edit
