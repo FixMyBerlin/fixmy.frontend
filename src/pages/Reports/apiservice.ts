@@ -1,7 +1,6 @@
 // camelcase allowed because API types come from Python world
 /* eslint-disable camelcase */
 
-import oneLine from 'common-tags/es/oneLine/oneLine';
 // eslint-disable-next-line import/no-unresolved
 import type { Point } from 'geojson';
 import ky from 'ky-universal';
@@ -146,12 +145,12 @@ export function marshallNewReportObjectForSubmit(
       'data:image/jpeg;base64,',
     ];
     if (!BASE64_PREFIXES.some((prefix) => photo.includes(prefix))) {
-      throw new Error(oneLine`Failed to remove base 64 prefix.
-      Expected prefix to be '${BASE64_PREFIXES.join(' or ')}',
-      found photo string starts with ${photo.slice(
-        0,
-        photo.indexOf(',') || 25
-      )}`);
+      const strStart = photo.slice(0, photo.indexOf(',') || 25);
+      throw new Error(
+        'Failed to remove base 64 prefix.' +
+          `Expected prefix to be ${BASE64_PREFIXES.join(' or ')}` +
+          `found photo string starts with ${strStart}`
+      );
     }
     BASE64_PREFIXES.forEach((prefix) => {
       reportItemCopy.photo = photo.replace(prefix, '');
