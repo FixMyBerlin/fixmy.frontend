@@ -54,7 +54,6 @@
             "typedefs": false
           }
         ],
-        "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": [
           "warn",
           {
@@ -70,6 +69,8 @@
 
   "rules": {
     "prettier/prettier": ["warn"],
+
+    "no-unused-vars": "warn",
 
     // Set to warn so build is not broken when using camelcase
     // camelcase is acceptable for attributes of api return values

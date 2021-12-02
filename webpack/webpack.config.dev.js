@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { merge } = require('webpack-merge');
 const Path = require('path');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const Webpack = require('webpack');
+const ProgressPlugin = require('webpack').ProgressPlugin;
 
 const common = require('./webpack.common.js');
 
@@ -17,7 +17,7 @@ module.exports = merge(common, {
     hot: true,
     client: {
       logging: 'none',
-      overlay: true,
+      overlay: false,
       progress: true,
     },
     devMiddleware: {
@@ -36,11 +36,14 @@ module.exports = merge(common, {
       title: 'FixMyBerlin DevServer',
       template: Path.resolve(__dirname, '../src/index.html'),
     }),
-    new CopyWebpackPlugin([
-      { from: Path.resolve(__dirname, '../public/lab'), to: 'lab' },
-    ]),
-    new ReactRefreshWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [{ from: Path.resolve(__dirname, '../public/lab'), to: 'lab' }],
+    }),
+    new ReactRefreshWebpackPlugin({
+      overlay: false,
+    }),
     new ESLintPlugin(),
+    new ProgressPlugin(),
   ],
   module: {
     rules: [

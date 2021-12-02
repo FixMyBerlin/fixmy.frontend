@@ -3,6 +3,8 @@
  * */
 
 import 'core-js/stable';
+import 'core-js/proposals/iterator-helpers';
+
 import 'regenerator-runtime/runtime';
 
 // we need this because the ky package needs fetch and it does not get added automatically with @babel/preset-env

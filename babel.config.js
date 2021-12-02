@@ -29,10 +29,11 @@ module.exports = (api) => {
   ];
 
   const env = {
+    development: { plugins: ['react-refresh/babel'] },
+    production: {},
     test: {
       plugins: ['transform-es2015-modules-commonjs'],
     },
-    production: {},
   };
 
   return {
