@@ -1,5 +1,9 @@
 {
   "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    // Allow running eslint on files that don't have specific configurations
+    "requireConfigFile": false
+  },
 
   "extends": [
     "airbnb",
