@@ -6,7 +6,8 @@ import { LocaleCode } from '~/types';
  */
 const getDefaultLocale = (): LocaleCode => {
   let candidate = window?.navigator.language?.slice(0, 2) as LocaleCode;
-  if (window?.navigator['userLanguage']) {
+  // @ts-expect-error `userLanguage` exists only in Internet Explorer
+  if (window?.navigator.userLanguage) {
     // eslint-disable-next-line dot-notation
     candidate = window.navigator['userLanguage'].slice(0, 2);
   }
