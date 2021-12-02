@@ -74,11 +74,9 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
           {street.schedule && (
             <Schedule>
               {street.status === 'paused' && (
-                <>
-                  <Notice>
-                    <strong>Diese Spielstraße ist derzeit pausiert.</strong>
-                  </Notice>
-                </>
+                <Notice>
+                  <strong>Diese Spielstraße ist derzeit pausiert.</strong>
+                </Notice>
               )}
               Öffnungszeiten: {street.schedule}
             </Schedule>

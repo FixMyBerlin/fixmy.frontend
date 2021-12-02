@@ -495,56 +495,55 @@ export const submitProfile = () => async (dispatch: Dispatch, getState) => {
   }
 };
 
-export const submitPerspective = (perspective: Perspective) => async (
-  dispatch: Dispatch,
-  getState
-) => {
-  dispatch(submitPerspectivePending());
-  const {
-    KatasterKIState: { sessionID },
-  } = getState();
-  try {
-    const { scenes, ratings_total: ratingsTotal } = await api.submitPerspective(
-      {
-        perspective,
+export const submitPerspective =
+  (perspective: Perspective) => async (dispatch: Dispatch, getState) => {
+    dispatch(submitPerspectivePending());
+    const {
+      KatasterKIState: { sessionID },
+    } = getState();
+    try {
+      const { scenes, ratings_total: ratingsTotal } =
+        await api.submitPerspective({
+          perspective,
+          sessionID,
+        });
+      dispatch(receivedSceneGroup(scenes, ratingsTotal));
+      dispatch(submitPerspectiveComplete(perspective));
+    } catch (e) {
+      dispatch(
+        submitProfileError(
+          'Die nächste Szenengruppe konnte nicht angefragt werden.'
+        )
+      );
+      if (process.env.NODE_ENV !== 'test') throw e;
+    }
+  };
+
+export const submitAnswer =
+  (
+    sceneID: Answer['sceneID'],
+    rating: Answer['rating'],
+    duration: Answer['duration']
+  ) =>
+  async (dispatch: Dispatch, getState) => {
+    dispatch(setAnswer(sceneID, rating, duration));
+
+    const {
+      KatasterKIState: { sessionID },
+    } = getState();
+    try {
+      await api.submitAnswer({
+        sceneID,
+        rating,
+        duration,
         sessionID,
-      }
-    );
-    dispatch(receivedSceneGroup(scenes, ratingsTotal));
-    dispatch(submitPerspectiveComplete(perspective));
-  } catch (e) {
-    dispatch(
-      submitProfileError(
-        'Die nächste Szenengruppe konnte nicht angefragt werden.'
-      )
-    );
-    if (process.env.NODE_ENV !== 'test') throw e;
-  }
-};
-
-export const submitAnswer = (
-  sceneID: Answer['sceneID'],
-  rating: Answer['rating'],
-  duration: Answer['duration']
-) => async (dispatch: Dispatch, getState) => {
-  dispatch(setAnswer(sceneID, rating, duration));
-
-  const {
-    KatasterKIState: { sessionID },
-  } = getState();
-  try {
-    await api.submitAnswer({
-      sceneID,
-      rating,
-      duration,
-      sessionID,
-    });
-  } catch (e) {
-    dispatch(
-      submitAnswerError(
-        'Beim Übermitteln der Bewertung ist etwas schiefgelaufen'
-      )
-    );
-    if (process.env.NODE_ENV !== 'test') throw e;
-  }
-};
+      });
+    } catch (e) {
+      dispatch(
+        submitAnswerError(
+          'Beim Übermitteln der Bewertung ist etwas schiefgelaufen'
+        )
+      );
+      if (process.env.NODE_ENV !== 'test') throw e;
+    }
+  };

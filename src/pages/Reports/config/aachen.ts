@@ -64,8 +64,7 @@ const aachenConfig: ReportsConfig = {
       sections: [
         {
           heading: 'Wie sieht das weitere Vorgehen aus?',
-          text:
-            'Aktuell sehen sich Mitarbeiter*innen der Stadt die vorgeschlagenen Orte an und entscheiden, ob dort oder in der Nähe Radbügel aufgestellt werden können. Dies kann bei der hohen Anzahl an Meldungen einige Zeit in Anspruch nehmen. Sofern Sie Ihre Email - Adresse hinterlassen haben, erhalten Sie bei jeder Statusänderung eine Nachricht. Zudem werden auf der Karte unter den jeweiligen Symbolen Neuigkeiten zu den Standorten dargestellt. ',
+          text: 'Aktuell sehen sich Mitarbeiter*innen der Stadt die vorgeschlagenen Orte an und entscheiden, ob dort oder in der Nähe Radbügel aufgestellt werden können. Dies kann bei der hohen Anzahl an Meldungen einige Zeit in Anspruch nehmen. Sofern Sie Ihre Email - Adresse hinterlassen haben, erhalten Sie bei jeder Statusänderung eine Nachricht. Zudem werden auf der Karte unter den jeweiligen Symbolen Neuigkeiten zu den Standorten dargestellt. ',
         },
       ],
       steps: null,
@@ -94,13 +93,11 @@ const aachenConfig: ReportsConfig = {
         },
         {
           step: 2,
-          text:
-            'Alle Meldungen, die bis zum 31. August 2020 eingegangen sind, werden von der Stadt Aachen geprüft.',
+          text: 'Alle Meldungen, die bis zum 31. August 2020 eingegangen sind, werden von der Stadt Aachen geprüft.',
         },
         {
           step: 3,
-          text:
-            'Sofern sie umsetzbar sind, werden die Bügel so schnell wie möglich installiert.',
+          text: 'Sofern sie umsetzbar sind, werden die Bügel so schnell wie möglich installiert.',
         },
       ],
       faq: [
@@ -151,8 +148,7 @@ const aachenConfig: ReportsConfig = {
   feedbackMail: 'verkehrsmanagement@mail.aachen.de',
   flatButtons: true,
   thankYouNote: {
-    base:
-      'Ihre Meldung ist nun online! Alle Meldungen werden gesammelt und dann der Stadt übergeben. Die Planer:innen werden dann prüfen, welche Meldungen umgesetzt werden können. Die Ergebnisse sehen Sie anschließend hier auf der Karte',
+    base: 'Ihre Meldung ist nun online! Alle Meldungen werden gesammelt und dann der Stadt übergeben. Die Planer:innen werden dann prüfen, welche Meldungen umgesetzt werden können. Die Ergebnisse sehen Sie anschließend hier auf der Karte',
     loggedIn:
       'und wir benachrichtigen Sie an Ihre im Login hinterlegte E-Mail-Adresse.',
     loggedOut:

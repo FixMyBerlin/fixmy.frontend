@@ -110,7 +110,8 @@ actions.setFeeAcceptable = (isFeeAcceptable) => ({
 
 // thunks
 
-actions.validateCoordinates = (polygonGeoJson, { lng, lat }) =>
+actions.validateCoordinates =
+  (polygonGeoJson, { lng, lat }) =>
   async (dispatch) => {
     const pointFeature = {
       type: 'Feature',

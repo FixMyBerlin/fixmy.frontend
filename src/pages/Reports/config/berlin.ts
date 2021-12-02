@@ -130,13 +130,11 @@ const BerlinConfig: ReportsConfig = {
         },
         {
           step: 2,
-          text:
-            'Alle Meldungen, die bis zum 10. Oktober eingegangen sind, werden vom Bezirksamt geprüft.',
+          text: 'Alle Meldungen, die bis zum 10. Oktober eingegangen sind, werden vom Bezirksamt geprüft.',
         },
         {
           step: 3,
-          text:
-            'Sofern sie umsetzbar sind, werden die Bügel noch in diesem Jahr installiert.',
+          text: 'Sofern sie umsetzbar sind, werden die Bügel noch in diesem Jahr installiert.',
         },
       ],
     },
@@ -146,8 +144,7 @@ const BerlinConfig: ReportsConfig = {
       sections: [
         {
           heading: 'Wie sieht das weitere Vorgehen aus?',
-          text:
-            'Alle Meldungen werden von den Mitarbeiter*innnen des Bezirksamtes digital und vor Ort geprüft. Dort wo es möglich ist werden Planungen zu neuen Bügeln gemacht. Die geplanten und bereits umgesetzten Bügel sehen Sie auf der Karte, die fortlaufend aktualisiert wird. Sofern Sie Ihre Email - Adresse hinterlassen haben, erhalten Sie bei jeder Statusänderung eine Nachricht. Zudem werden auf der Karte unter den jeweiligen Symbolen Neuigkeiten zu den Standorten dargestellt. ',
+          text: 'Alle Meldungen werden von den Mitarbeiter*innnen des Bezirksamtes digital und vor Ort geprüft. Dort wo es möglich ist werden Planungen zu neuen Bügeln gemacht. Die geplanten und bereits umgesetzten Bügel sehen Sie auf der Karte, die fortlaufend aktualisiert wird. Sofern Sie Ihre Email - Adresse hinterlassen haben, erhalten Sie bei jeder Statusänderung eine Nachricht. Zudem werden auf der Karte unter den jeweiligen Symbolen Neuigkeiten zu den Standorten dargestellt. ',
         },
       ],
       faq: [
@@ -181,8 +178,7 @@ const BerlinConfig: ReportsConfig = {
   region: 'Friedrichshain-Kreuzberg',
   flatButtons: false,
   thankYouNote: {
-    base:
-      'Deine Meldung ist nun online! Alle Meldungen werden gesammelt und dann dem Bezirksamt am 10. Oktober 2019 übergeben. Die Planer:innen im Straßen- und Grünflächenamt prüfen, welche Meldungen umgesetzt werden können. Die Ergebnisse siehst du anschließend hier auf der Karte',
+    base: 'Deine Meldung ist nun online! Alle Meldungen werden gesammelt und dann dem Bezirksamt am 10. Oktober 2019 übergeben. Die Planer:innen im Straßen- und Grünflächenamt prüfen, welche Meldungen umgesetzt werden können. Die Ergebnisse siehst du anschließend hier auf der Karte',
     loggedIn:
       'und wir benachrichtigen dich an deine im Login hinterlegte E-Mail-Adresse.',
     loggedOut:

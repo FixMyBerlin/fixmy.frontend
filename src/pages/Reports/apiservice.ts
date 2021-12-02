@@ -73,9 +73,8 @@ export const STATUS_PLANNING = [
   'done',
 ];
 
-export const STATUS = STATUS_LEGACY.concat(STATUS_REPORT).concat(
-  STATUS_PLANNING
-);
+export const STATUS =
+  STATUS_LEGACY.concat(STATUS_REPORT).concat(STATUS_PLANNING);
 
 // The type of any array item can be accessed using an array index, by
 // generalizing over all possible array indices we get all possible item types

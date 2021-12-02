@@ -36,9 +36,8 @@ const AppWrapper = styled.div`
 
 const App = ({ dispatch, isEmbedMode }) => {
   const locale = useTypedSelector((state) => state.AppState.locale);
-  const [messages, setMessages] = useState<IntlConfig['messages']>(
-    defaultMessages
-  );
+  const [messages, setMessages] =
+    useState<IntlConfig['messages']>(defaultMessages);
   const [theme, setTheme] = useState<Theme>(getTheme(locale));
 
   useEffect(() => {

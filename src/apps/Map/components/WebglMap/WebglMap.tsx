@@ -228,9 +228,8 @@ class Map extends PureComponent<Props, State> {
     );
 
     // hbi layers
-    const combinedHbiLayers = standardLayersWithOverlay.concat(
-      intersectionLayers
-    );
+    const combinedHbiLayers =
+      standardLayersWithOverlay.concat(intersectionLayers);
     combinedHbiLayers.forEach((layer) =>
       toggleLayer(this.map, hbiLayers[layer], isZustand)
     );

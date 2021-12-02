@@ -145,13 +145,8 @@ class Analysis extends PureComponent<Props> {
   };
 
   render() {
-    const {
-      data,
-      isLoading,
-      selectedDistrict,
-      selectedPhase,
-      selectedSort,
-    } = this.props;
+    const { data, isLoading, selectedDistrict, selectedPhase, selectedSort } =
+      this.props;
 
     // for the pie chart we only filter by district
     const filteredDataDistrict = data.filter(filterDistrict(selectedDistrict));

@@ -407,7 +407,7 @@ export function loadHBIData() {
     }
 
     // todo: make api.get generic
-    dispatch(setHbiData((hbiData as unknown) as HBIData));
+    dispatch(setHbiData(hbiData as unknown as HBIData));
     dispatch(setHBIDataFetchState('success'));
   };
 }
