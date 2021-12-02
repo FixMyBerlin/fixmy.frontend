@@ -32,7 +32,7 @@ const ThanksImg = styled.img`
 `;
 
 class ThanksPage extends PureComponent {
-  componentDidMount = () => {
+  componentDidMount() {
     this.unlistenToHistory = history.listen((location, action) => {
       if (action === 'POP') {
         // if this is an attempt to navigate backwards ..
@@ -40,7 +40,7 @@ class ThanksPage extends PureComponent {
         this.props.history.push(`${config.routes.reports.map}`);
       }
     });
-  };
+  }
 
   componentWillUnmount() {
     this.unlistenToHistory();

@@ -18,7 +18,7 @@ class ClusteredMarkers extends React.Component {
   constructor(props) {
     super(props);
 
-    this.markers = [];
+    // this.markers = [];
     this.markerCache = {};
     this.renderedMarkers = {};
 
@@ -53,14 +53,14 @@ class ClusteredMarkers extends React.Component {
     });
   }
 
-  removeMarkers() {
-    this.markers.forEach((marker) => {
-      if (marker) {
-        marker.remove();
-      }
-    });
-    this.markers = [];
-  }
+  // removeMarkers() {
+  //   this.markers.forEach((marker) => {
+  //     if (marker) {
+  //       marker.remove();
+  //     }
+  //   });
+  //   this.markers = [];
+  // }
 
   updateCluster() {
     const clusters = this.props.map.querySourceFeatures(this.props.name);

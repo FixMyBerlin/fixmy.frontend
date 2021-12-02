@@ -68,7 +68,7 @@ const MapControls = ({
         onChange={onLocationChange}
       />
       {config.reports.enabled ? (
-        <>{!isCTAHidden && <CTAButton onTab={onTab} shiftLeft={shiftLeft} />}</>
+        !isCTAHidden && <CTAButton onTab={onTab} shiftLeft={shiftLeft} />
       ) : (
         <MapLegend
           isPopupVisible={isPopupVisible}

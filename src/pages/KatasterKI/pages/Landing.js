@@ -265,20 +265,18 @@ const Landing = ({ location }) => {
   );
 
   return (
-    <>
-      <Wrapper>
-        <Header>
-          <TspLogo />
-        </Header>
+    <Wrapper>
+      <Header>
+        <TspLogo />
+      </Header>
 
-        <FixMyLogoWrapper>
-          <FixMyImage />
-          <FixMyLabel>FixMyBerlin</FixMyLabel>
-        </FixMyLogoWrapper>
+      <FixMyLogoWrapper>
+        <FixMyImage />
+        <FixMyLabel>FixMyBerlin</FixMyLabel>
+      </FixMyLogoWrapper>
 
-        {isMobile ? renderMobileMarkup() : renderDesktopMarkup()}
-      </Wrapper>
-    </>
+      {isMobile ? renderMobileMarkup() : renderDesktopMarkup()}
+    </Wrapper>
   );
 };
 
