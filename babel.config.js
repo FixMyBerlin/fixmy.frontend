@@ -13,15 +13,19 @@ module.exports = (api) => {
   ];
 
   const plugins = [
+    // remove once we use ES2022
     '@babel/plugin-syntax-dynamic-import',
+
+    // remove once we use ES2022
     '@babel/plugin-proposal-class-properties',
+
+    // better debugging of styled components
     [
       'babel-plugin-styled-components',
       {
         displayName: true,
       },
     ],
-    '@babel/plugin-proposal-optional-chaining',
   ];
 
   const env = {
