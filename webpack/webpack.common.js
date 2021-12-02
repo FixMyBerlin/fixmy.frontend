@@ -53,9 +53,9 @@ module.exports = {
       '~': Path.resolve(__dirname, '../src'),
       cypress: Path.resolve(__dirname, '../cypress'),
     },
-  },
-  node: {
-    fs: 'empty',
+    fallback: {
+      path: require.resolve('path-browserify'),
+    },
   },
   module: {
     rules: [

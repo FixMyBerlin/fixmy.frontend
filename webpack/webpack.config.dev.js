@@ -1,6 +1,7 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const Path = require('path');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const Webpack = require('webpack');
@@ -11,14 +12,18 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'eval-source-map',
   devServer: {
-    clientLogLevel: 'silent',
     historyApiFallback: true,
     host: '0.0.0.0',
     hot: true,
-    overlay: true,
-    publicPath: '/',
-    progress: true,
-    stats: 'minimal',
+    client: {
+      logging: 'none',
+      overlay: true,
+      progress: true,
+    },
+    devMiddleware: {
+      publicPath: '/',
+      stats: 'minimal',
+    },
   },
   cache: true,
   output: {
@@ -35,19 +40,10 @@ module.exports = merge(common, {
       { from: Path.resolve(__dirname, '../public/lab'), to: 'lab' },
     ]),
     new ReactRefreshWebpackPlugin(),
+    new ESLintPlugin(),
   ],
   module: {
     rules: [
-      {
-        test: /\.[j|t]sx?$/,
-        include: Path.resolve(__dirname, '../src'),
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        options: {
-          emitWarning: true,
-          cache: true,
-        },
-      },
       {
         test: /\.css$/,
         use: [
