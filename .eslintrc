@@ -62,7 +62,10 @@
           }
         ],
         "no-useless-constructor": "off",
-        "@typescript-eslint/no-useless-constructor": "warn"
+        "@typescript-eslint/no-useless-constructor": "warn",
+
+        // Typescript React components should prefer TS syntax over default props
+        "react/require-default-props": "off"
       }
     }
   ],
@@ -83,6 +86,13 @@
     "react/prop-types": [1, { "skipUndeclared": true }],
     "react/destructuring-assignment": 0,
     "react/jsx-props-no-spreading": 0,
+
+    // TODO: Turn this on and decide on a rule
+    "react/function-component-definition": 0,
+    // "react/function-component-definition": [
+    //   1,
+    //   { "namedComponents": "arrow-function" }
+    // ],
 
     "import/extensions": [
       "error",
