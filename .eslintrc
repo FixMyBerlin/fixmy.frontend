@@ -1,14 +1,12 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
 
   "extends": [
     "airbnb",
     "plugin:cypress/recommended",
     "plugin:chai-friendly/recommended",
     // keep these prettier rules last
-    "plugin:prettier/recommended",
-    "prettier",
-    "prettier/react"
+    "plugin:prettier/recommended"
   ],
 
   "plugins": [
