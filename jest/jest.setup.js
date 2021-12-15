@@ -10,6 +10,9 @@ import { config as parseConfig } from 'dotenv';
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
 
+// mock window.IntersectionObserver
+import './mocks/intersectionObserver';
+
 // setup mock service worker (msw)
 import { mswServer } from './msw/mswServer';
 
