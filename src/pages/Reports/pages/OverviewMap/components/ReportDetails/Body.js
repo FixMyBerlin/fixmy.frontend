@@ -5,7 +5,7 @@ import Link from '~/components/Link';
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 import config from '~/pages/Reports/config';
 import SubHeading from '~/pages/Reports/pages/SubmitReport/components/SubHeading';
-// import HorizontalRuler from '~/pages/Reports/pages/SubmitReport/components/HorizontalRuler';
+import reportUtils from '~/pages/Reports/utils';
 
 const IndicatorSection = styled.div`
   display: flex;
@@ -30,14 +30,6 @@ const IndicatorValue = styled(Text)`
   white-space: pre-wrap;
 `;
 
-// function formatDate(dateString) {
-//   return new Date(dateString).toLocaleDateString('de-DE', {
-//     month: '2-digit',
-//     day: '2-digit',
-//     year: 'numeric'
-//   });
-// }
-
 const EntryLink = styled(Link)`
   && {
     color: ${config.colors.black};
@@ -51,7 +43,8 @@ const DetailsBody = ({
   details: { fee_acceptable: isFeeAcceptable },
   origin,
   plannings,
-  // created_date: createdDate
+  status,
+  status_reason: statusReason,
 }) => (
   <>
     {description && (
@@ -60,10 +53,19 @@ const DetailsBody = ({
         <Text data-cy="reports-detail-description">{description}</Text>
       </>
     )}
-    <IndicatorSection>
-      <IndicatorTitle>Bedarf Fahrradparkhaus:</IndicatorTitle>
-      <IndicatorValue>{isFeeAcceptable ? 'ja' : 'nein'}</IndicatorValue>
-    </IndicatorSection>
+    {statusReason && (
+      <>
+        <SubHeading alignLeft>Begründung:</SubHeading>
+        <Text data-cy="reports-detail-status-reason">{statusReason}</Text>
+      </>
+    )}
+
+    {!reportUtils.isPlanning({ status }) && (
+      <IndicatorSection>
+        <IndicatorTitle>Bedarf Fahrradparkhaus:</IndicatorTitle>
+        <IndicatorValue>{isFeeAcceptable ? 'ja' : 'nein'}</IndicatorValue>
+      </IndicatorSection>
+    )}
 
     {origin.length > 0 && (
       <>
@@ -99,14 +101,6 @@ const DetailsBody = ({
         </ul>
       </>
     )}
-    {/*
-    <HorizontalRuler className="light" />
-
-     {createdDate && (
-      <Text data-cy="reports-detail-datetime">
-        Meldung vom: {formatDate(createdDate)}
-      </Text>
-    )} */}
   </>
 );
 
