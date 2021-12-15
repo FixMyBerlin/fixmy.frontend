@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import DetailFooter from '~/apps/Map/components/DetailView/DetailFooter';
 import ProjectLike from '~/apps/Map/components/DetailView/ProjectDetail/ProjectLike';
 import config from '~/pages/Reports/config';
+import utils from '~/pages/Reports/utils';
 
 const Footer = styled(DetailFooter)`
   width: 100%;
@@ -12,13 +13,13 @@ const Footer = styled(DetailFooter)`
   background: white;
 `;
 
-const DetailsFooter = ({ token, reportId }) => (
+const DetailsFooter = ({ token, reportId, status }) => (
   <Footer>
     <ProjectLike
       token={token}
       url={`${config.apiUrl}/reports/${reportId}`}
       id={reportId}
-      itemType="Meldung"
+      itemType={utils.isPlanning({ status }) ? 'Planung' : 'Meldung'}
       data-cy="reports-detail-likes"
     />
   </Footer>
