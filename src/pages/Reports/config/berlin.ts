@@ -32,9 +32,9 @@ const BerlinConfig: ReportsConfig = {
         },
   },
   colors: {
-    planning: 'red',
-    execution: 'yellow',
-    done: 'green',
+    planning: '#910055',
+    execution: '#CF0A7D',
+    done: '#0ECDBA',
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
@@ -196,7 +196,7 @@ const BerlinConfig: ReportsConfig = {
     },
   },
   stats: {
-    enabled: false,
+    enabled: true,
   },
 };
 
