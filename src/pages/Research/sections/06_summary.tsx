@@ -10,7 +10,6 @@ import { Paragraph, Heading, List, SectionProps } from '~/components2/Article';
 const SectionSummary = ({
   toc,
   tocAnchor,
-  intl,
 }: SectionProps & WrappedComponentProps) => (
   <>
     <Heading as="h2" toc={toc} tocAnchor={tocAnchor}>

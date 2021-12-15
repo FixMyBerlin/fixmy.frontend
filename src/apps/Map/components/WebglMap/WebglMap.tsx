@@ -46,7 +46,7 @@ const StyledMap = styled.div`
   flex: 1;
 `;
 
-const connector = connect(({ MapState, UserState }: RootState) => ({
+const connector = connect(({ MapState }: RootState) => ({
   activeView: MapState.activeView,
   activeSection: MapState.activeSection,
   animate: MapState.animate,

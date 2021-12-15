@@ -39,9 +39,7 @@ const Heading = styled.h2`
   }
 `;
 
-type Props = any;
-
-const EventApplication = (props: Props) => {
+const EventApplication = () => {
   // State for this registration
   const [submission, setSubmission] = useState(null);
 

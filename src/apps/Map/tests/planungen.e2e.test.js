@@ -5,7 +5,7 @@ import config from '~/config';
 import { clickRandomMarker, goToProjects } from './utils';
 import { cyElem } from 'cypress/support/utils';
 
-const adressRegex = new RegExp("[A-Za-z0-9'\\.\\-\\s\\,]");
+const adressRegex = /[A-Za-z0-9'\\.\\-\\s\\,]/;
 
 // This should be a valid project id
 const SAMPLE_PROJECT_ID = 130;

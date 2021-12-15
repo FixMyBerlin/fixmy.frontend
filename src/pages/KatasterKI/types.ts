@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 export interface Answer {
   sceneID: string;
   rating?: Rating;

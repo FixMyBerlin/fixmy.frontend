@@ -102,8 +102,14 @@ export type EventPermitCategory =
   | 'workshop'
   | 'social'
   | 'other';
+
+// eslint disabled: no redeclaration because these are types
+
+// eslint-disable-next-line no-redeclare
 export type NUM_PARTICIPANTS_S = typeof NUM_PARTICIPANTS_S;
+// eslint-disable-next-line no-redeclare
 export type NUM_PARTICIPANTS_M = typeof NUM_PARTICIPANTS_M;
+// eslint-disable-next-line no-redeclare
 export type NUM_PARTICIPANTS_L = typeof NUM_PARTICIPANTS_L;
 export type EVENT_AREA_CATEGORY = 'park' | 'parking';
 

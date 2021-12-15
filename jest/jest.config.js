@@ -2,7 +2,7 @@
 // https://jestjs.io/docs/en/configuration.html
 
 // Packages from `node_modules` that explicitly need to be transpiled
-const esModules = [];
+// const esModules = [];
 
 module.exports = {
   // Jest root dir is parent of this config file's dir

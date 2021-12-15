@@ -41,7 +41,7 @@ const StyledPinLarge = styled(PinLarge)`
   margin-right: 0.5em;
 `;
 
-const StatsCompact = ({ isLoading, getDisplayValue, stats }) => {
+const StatsCompact = ({ getDisplayValue }) => {
   return (
     <Container>
       <Category>

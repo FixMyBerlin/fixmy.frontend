@@ -221,7 +221,10 @@ const defaultState =
   (window.Cypress && window.initialState?.KatasterKIState) ||
   (config.debug ? testingDefaultState : productionDefaultState);
 
-export default function reducer(state: State = defaultState, action: Action) {
+export default function reducer(
+  state: State = defaultState,
+  action: Action = { type: null }
+) {
   switch (action.type) {
     case SET_TOS_ACCEPTED:
       return { ...state, isTosAccepted: action.value };

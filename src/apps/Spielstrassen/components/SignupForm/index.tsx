@@ -71,7 +71,7 @@ const SignupForm = ({ street, history, district }) => (
       setSubmitting(false);
     }}
   >
-    {({ status, isSubmitting }) => (
+    {({ status }) => (
       <StyledForm>
         <Field
           name="first_name"

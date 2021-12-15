@@ -620,12 +620,12 @@ const visionZeroFromAPI = (
  *
  * Returns null if active view is not HBI map or no map point has been clicked.
  */
-const getPopupHBI = ({ MapState }: RootState): HBI => {
-  if (MapState.activeView !== 'zustand' || MapState.popupData == null)
+const getPopupHBI = ({ MapState: mapState }: RootState): HBI => {
+  if (mapState.activeView !== 'zustand' || mapState.popupData == null)
     return null;
 
   const components: HBI['components'] = {
-    visionZeroIndex: visionZeroFromMapbox(MapState.popupData),
+    visionZeroIndex: visionZeroFromMapbox(mapState.popupData),
   };
 
   return {
@@ -641,15 +641,15 @@ const getPopupHBI = ({ MapState }: RootState): HBI => {
  *
  * Returns null if active view is not HBI map or hbi fetch state is not success.
  */
-const getDetailsHBI = ({ MapState }: RootState): HBI => {
+const getDetailsHBI = ({ MapState: mapState }: RootState): HBI => {
   if (
-    MapState.activeView !== 'zustand' ||
-    MapState.hbiDataFetchState !== 'success'
+    mapState.activeView !== 'zustand' ||
+    mapState.hbiDataFetchState !== 'success'
   )
     return null;
 
   const components: HBI['components'] = {
-    visionZeroIndex: visionZeroFromAPI(MapState.hbiData),
+    visionZeroIndex: visionZeroFromAPI(mapState.hbiData),
   };
 
   return {
