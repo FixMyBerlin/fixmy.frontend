@@ -34,7 +34,7 @@ const BerlinConfig: ReportsConfig = {
   colors: {
     planning: '#910055',
     execution: '#CF0A7D',
-    done: '#0F0F0F',
+    done: '#0ECDBA',
   },
   locateMeMap: {
     zoomOnGeocodedLocation: 15.5,
