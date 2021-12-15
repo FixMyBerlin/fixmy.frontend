@@ -74,5 +74,6 @@ jobs:
           github_token: ${{ secrets.github_token }}
           eslint: true
           eslint_dir: 'src'
+          eslint_extensions: js,jsx,ts,tsx
           prettier: true
           prettier_dir: 'src'
