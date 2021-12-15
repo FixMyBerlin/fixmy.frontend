@@ -27,9 +27,9 @@ module.exports = {
   // Import path patterns to ignore during transformation
   // exceptions are added using negative-lookahead by concatenating entries
   // from `esModules`
-  transformIgnorePatterns: [
-    `<rootDir>/node_modules/(?!${esModules.join('|')})`,
-  ],
+  // transformIgnorePatterns: [
+  //   `<rootDir>/node_modules/(?!${esModules.join('|')})`,
+  // ],
 
   // A map from regular expressions to module names that allow to stub out
   // resources with a single module
