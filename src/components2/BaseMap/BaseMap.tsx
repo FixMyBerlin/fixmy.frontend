@@ -51,32 +51,37 @@ const initMap = ({
  *
  * Can be styled with `styled-components`
  *
- * @param props - extends the props of MapboxGL.Map
- * @param props.mapboxStyle - Mapbox style URL
+ * @param props.onInit - callback to handle the map instance once loaded
  * @param props.center - update to move map center
  * @param props.zoom - update to zoom map view
- * @param props.onInit - callback to handle the map instance once loaded
+ * @param props.mapboxStyle - Mapbox style URL
+ * @param props - extends the props of MapboxGL.Map
  */
-const BaseMap = (props: Props) => {
+const BaseMap: React.FC<Props> = ({
+  onInit,
+  className,
+  center,
+  zoom,
+  mapboxStyle,
+  ...mapboxProps
+}) => {
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
 
-  const { onInit, className, center, zoom, mapboxStyle, ...mapboxProps } =
-    props;
-
   useEffect(() => {
+    if (map != null) return;
+
     MapboxGL.accessToken = config.mapbox.accessToken;
-    if (map == null)
-      initMap({
-        setMap,
-        mapContainer,
-        onInit,
-        center,
-        zoom,
-        mapboxStyle,
-        mapboxProps,
-      });
-  }, [map]);
+    initMap({
+      setMap,
+      mapContainer,
+      onInit,
+      center,
+      zoom,
+      mapboxStyle,
+      mapboxProps,
+    });
+  }, []);
 
   useEffect(() => {
     if (map == null || center == null) return;
