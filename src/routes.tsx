@@ -94,15 +94,6 @@ const Routes = ({ token }) => (
       ))
     }
 
-    <Route
-      path="/info"
-      component={() => {
-        // Redirect removed route
-        window.location.href = 'https://www.fixmycity.de/wer-wir-sind';
-        return null;
-      }}
-    />
-
     {/* user pages */}
     <Route path={config.routes.signup} component={Signup} />
     <Route path={config.routes.login} component={Login} />
