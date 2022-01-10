@@ -74,7 +74,6 @@
     "mapbox-gl": "^1.11.1",
     "prop-types": "^15.7.2",
     "qs": "^6.9.4",
-    "query-string": "^6.13.8",
     "rc-slider": "^9.6.2",
     "react": "^16.14.0",
     "react-autosize-textarea": "^7.1.0",
