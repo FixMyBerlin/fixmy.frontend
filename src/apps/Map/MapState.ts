@@ -1,5 +1,4 @@
 import ky from 'ky';
-import qs from 'qs';
 import { match, matchPath } from 'react-router-dom';
 import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
@@ -176,7 +175,7 @@ export const updateHistory = (path: string) => (dispatch: Dispatch) => {
 
 export const detectEmbedMode = (location: Location) => (dispatch: Dispatch) => {
   const isEmbedMode =
-    !!qs.parse(location.search, { ignoreQueryPrefix: true }).embed ||
+    !!new URLSearchParams(location.search).has('embed') ||
     window.location.host === 'embed.fixmyberlin.de';
 
   const action: UpdateHistory = {
