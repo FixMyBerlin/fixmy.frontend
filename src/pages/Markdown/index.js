@@ -7,7 +7,13 @@ import MarkdownContent from '~/pages/Markdown/components/MarkdownContent';
 
 class MarkdownPage extends PureComponent {
   // Hardcode page names which should include noindex meta tag
-  noindexPages = ['imprint', 'privacy'];
+  noindexPages = [
+    'imprint',
+    'privacy',
+    'aachen-imprint',
+    'aachen-privacy',
+    'nomatch',
+  ];
 
   constructor(props) {
     super(props);
