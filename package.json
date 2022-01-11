@@ -93,7 +93,7 @@
     "react-router-prop-types": "^1.0.4",
     "react-slick": "^0.27.13",
     "react-spinners": "^0.10.6",
-    "react-tabs": "^3.2.0",
+    "react-tabs": "^3.2.3",
     "react-toggle-switch": "^3.0.4",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
