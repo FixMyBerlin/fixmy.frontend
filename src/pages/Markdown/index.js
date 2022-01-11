@@ -6,14 +6,6 @@ import ContentPageWrapper from '~/components/ContentPageWrapper';
 import MarkdownContent from '~/pages/Markdown/components/MarkdownContent';
 
 class MarkdownPage extends PureComponent {
-  static addNoindexMeta() {
-    return (
-      <Helmet>
-        <meta name="robots" content="noindex" />
-      </Helmet>
-    );
-  }
-
   // Hardcode page names which should include noindex meta tag
   noindexPages = ['imprint', 'privacy'];
 
@@ -41,14 +33,13 @@ class MarkdownPage extends PureComponent {
   }
 
   render() {
-    let helmet;
-    if (this.noindexPages.includes(this.props.page)) {
-      helmet = MarkdownPage.addNoindexMeta();
-    }
-
     return (
       <ContentPageWrapper>
-        {helmet}
+        {this.noindexPages.includes(this.props.page) && (
+          <Helmet>
+            <meta name="robots" content="noindex" />
+          </Helmet>
+        )}
         <MarkdownContent content={this.state.content} />
       </ContentPageWrapper>
     );
