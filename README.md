@@ -56,6 +56,13 @@ Runs on [localhost:8080](http://localhost:8080/)
   REGION=eichwalde npm start
   ```
 
+  You can also set multiple environment variables when using an `.env` file. This then overwrites only the `.env.defaults` settings you enter. It could look like this:
+  ```
+  REGION=aachen
+  BACKEND=local
+  ```
+  It is then used by [`dotenv`](https://www.npmjs.com/package/dotenv) to setup configuration.
+
 ## Testing
 
 Runs unit tests.
