@@ -13,6 +13,8 @@ Did you encounter an issue that you would like to tell us about? Would you like
 to add to this project yourself? Go ahead and check the
 [contribution guide](CONTRIBUTING.md).
 
+We use [VSCode](https://code.visualstudio.com/) for as an IDE. It is recommended to do so.
+
 ## Installation
 
 We recommend using [nvm](https://github.com/nvm-sh/nvm) or [asdf](https://asdf-vm.com/) to run this project with the Node version specified in `.nvmrc` and [`.tool-versions`](.tool-versions).
@@ -54,6 +56,13 @@ Runs on [localhost:8080](http://localhost:8080/)
   REGION=eichwalde npm start
   ```
 
+  You can also set multiple environment variables when using an `.env` file. This then overwrites only the `.env.defaults` settings you enter. It could look like this:
+  ```
+  REGION=aachen
+  BACKEND=local
+  ```
+  It is then used by [`dotenv`](https://www.npmjs.com/package/dotenv) to setup configuration.
+
 ## Testing
 
 Runs unit tests.
@@ -76,6 +85,10 @@ Each branch gets automatically deployed on netlify:
 
 - https://fixmyberlin-app.netlify.app/ [master]
 - https://develop--fixmyberlin-app.netlify.app/ [develop]
+
+## Debugging
+
+In VSCode you can use the integrated debugging profiles for Chrome & Firefox to easily debug your code directly in `Run and Debug` section.
 
 ### Embed Mode
 
