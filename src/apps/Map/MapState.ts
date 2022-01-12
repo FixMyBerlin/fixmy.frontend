@@ -175,7 +175,7 @@ export const updateHistory = (path: string) => (dispatch: Dispatch) => {
 
 export const detectEmbedMode = (location: Location) => (dispatch: Dispatch) => {
   const isEmbedMode =
-    !!new URLSearchParams(location.search).has('embed') ||
+    new URLSearchParams(location.search).has('embed') ||
     window.location.host === 'embed.fixmyberlin.de';
 
   const action: UpdateHistory = {
