@@ -125,9 +125,9 @@ const menuConfig: Menu = {
       border: true,
     },
     {
-      type: 'link',
-      label: 'Über FixMyBerlin',
-      link: '/info',
+      type: 'external',
+      label: 'Über FixMyCity',
+      href: 'https://www.fixmycity.de/wer-wir-sind',
       icon: AboutIcon,
       border: true,
     },

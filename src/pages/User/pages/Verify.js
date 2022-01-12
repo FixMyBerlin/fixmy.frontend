@@ -39,7 +39,7 @@ const ErrorMessage = styled.div`
 `;
 
 const UserVerify = ({ match, location }) => {
-  const [serverError, serServerError] = useState(null);
+  const [serverError, setServerError] = useState(null);
 
   useEffect(() => {
     const verifyUser = async () => {
@@ -50,13 +50,13 @@ const UserVerify = ({ match, location }) => {
       const signupNewsletter = newsletter === 'yes';
 
       try {
-        return ky(`${config.apiUrl}/users/activation/`, {
+        await ky(`${config.apiUrl}/users/activation/`, {
           method: 'POST',
           json: { uid, token, newsletter: signupNewsletter },
         });
       } catch (e) {
         logger(e);
-        return serServerError(
+        setServerError(
           'Ein Fehler ist aufgetreten. Ihre E-Mail konnte nicht verifiziert werden. Evtl. wurde Ihr Konto auch schon aktiviert.'
         );
       }

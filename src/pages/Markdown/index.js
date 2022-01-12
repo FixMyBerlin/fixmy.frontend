@@ -1,10 +1,20 @@
 import ky from 'ky';
 import React, { PureComponent } from 'react';
+import { Helmet } from 'react-helmet';
 
 import ContentPageWrapper from '~/components/ContentPageWrapper';
 import MarkdownContent from '~/pages/Markdown/components/MarkdownContent';
 
 class MarkdownPage extends PureComponent {
+  // Hardcode page names which should include noindex meta tag
+  noindexPages = [
+    'imprint',
+    'privacy',
+    'aachen-imprint',
+    'aachen-privacy',
+    'nomatch',
+  ];
+
   constructor(props) {
     super(props);
     this.state = {
@@ -31,6 +41,11 @@ class MarkdownPage extends PureComponent {
   render() {
     return (
       <ContentPageWrapper>
+        {this.noindexPages.includes(this.props.page) && (
+          <Helmet>
+            <meta name="robots" content="noindex" />
+          </Helmet>
+        )}
         <MarkdownContent content={this.state.content} />
       </ContentPageWrapper>
     );
