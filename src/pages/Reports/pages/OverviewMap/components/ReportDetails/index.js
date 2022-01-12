@@ -29,7 +29,7 @@ const ReportDetails = ({ reportItem, token }) => {
     return null;
   }
 
-  const { id, photo } = reportItem;
+  const { id, photo, status } = reportItem;
 
   return (
     <Wrapper data-cy="reports-detail-panel">
@@ -41,7 +41,7 @@ const ReportDetails = ({ reportItem, token }) => {
         <Body {...reportItem} />
       </Main>
 
-      <DetailsFooter reportId={id} token={token} />
+      <DetailsFooter reportId={id} token={token} status={status} />
     </Wrapper>
   );
 };
