@@ -50,7 +50,7 @@ const UserVerify = ({ match, location }) => {
       const signupNewsletter = newsletter === 'yes';
 
       try {
-        return ky(`${config.apiUrl}/users/activation/`, {
+        await ky(`${config.apiUrl}/users/activation/`, {
           method: 'POST',
           json: { uid, token, newsletter: signupNewsletter },
         });
