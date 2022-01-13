@@ -51,7 +51,7 @@ FixMyCity wird aktuell als forschungsbezogenes Start-Up durch Bundesmittel aus d
 
 ## Zurückliegende Förderungen
 
-FixMyCity wurde 2019 / 2020 vom BMVI im Rahmen des NRVP gefördert (Förderkennzeichen VB1907). [Projektsteckbrief Kataster KI - Studie zur Subjektiven Sicherheit](https://nationaler-radverkehrsplan.de/de/aktuell/nachrichten/studie-zur-subjektiven-sicherheit-im-radverkehr)
+FixMyCity wurde 2019 / 2020 vom BMDV im Rahmen des NRVP gefördert (Förderkennzeichen VB1907). [Projektsteckbrief Kataster KI - Studie zur Subjektiven Sicherheit](https://nationaler-radverkehrsplan.de/de/aktuell/nachrichten/studie-zur-subjektiven-sicherheit-im-radverkehr)
 
 FixMyCity wurde im Rahmen der CityLAB-Förderlinie der Senatskanzlei Berlin durch Landesmittel gefördert.
 
@@ -68,8 +68,10 @@ Die FixMyBerlin GbR wurde 2018 im Rahmen des mFunds gefördert (Förderkennzeich
   }
 </style>
 <div class="partner">
-  <a href="http://www.bmvi.de/" target="_blank"><img src="/src/images/partner/bmvi-gefoerdert.png" alt="Gefördert durch das BMVI" title="Gefördert durch das BMVI" /></a>
+  <a href="http://www.bmvi.de/" target="_blank">
+  <img src="/src/images/partner/bmdv-gefoerdert.svg" alt="Gefördert durch das BMDV" title="Gefördert durch das BMDV" style="width: 150px;"/></a>
 </div>
 <div class="partner">
-  <a href="https://www.berlin.de/rbmskzl/" target="_blank"><img src="/src/images/partner/senatskanzlei-berlin.png" alt="Gefördert durch die Senatskanzlei Berlin" title="Gefördert durch die Senatskanzlei Berlin" style="width: 180px" /></a>
+  <a href="https://www.berlin.de/rbmskzl/" target="_blank">
+  <img src="/src/images/partner/senatskanzlei-berlin.png" alt="Gefördert durch die Senatskanzlei Berlin" title="Gefördert durch die Senatskanzlei Berlin" style="width: 180px" /></a>
 </div>
