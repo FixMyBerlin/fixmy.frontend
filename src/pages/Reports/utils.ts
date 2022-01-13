@@ -19,6 +19,7 @@ import DefaultMarkerVerification from '~/images/reports/marker/default/verificat
 import config from '~/pages/Reports/config';
 import logger from '~/utils/logger';
 
+import { STATUS_PLANNING } from './apiservice';
 import { ENTRY_STATUS } from './types';
 
 const REPORT_STATUSES: ENTRY_STATUS[] = [
@@ -95,8 +96,15 @@ const getLandingContent = () =>
     ? config.reports.landing.reportsActive
     : config.reports.landing.reportsInactive;
 
+/**
+ * Return true if this entry is a planning and not a report
+ */
+const isPlanning = (entry: { status: string }): boolean =>
+  STATUS_PLANNING.includes(entry.status);
+
 export default {
   getLandingContent,
   getMarkerSrc,
   REPORT_STATUSES,
+  isPlanning,
 };

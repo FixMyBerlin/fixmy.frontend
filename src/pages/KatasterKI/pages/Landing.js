@@ -1,4 +1,3 @@
-import queryString from 'query-string';
 import React from 'react';
 import { Redirect, Link, matchPath } from 'react-router-dom';
 import styled from 'styled-components';
@@ -218,8 +217,7 @@ const TOC = () => (
  * agreed to and the user is routed directly into the survey.
  */
 const checkEmbeddedParam = (value) => {
-  const params = queryString.parse(value);
-  if (Object.keys(params).indexOf('embedded') > -1) {
+  if (new URLSearchParams(value).has('embedded')) {
     Store.dispatch(setEmbedded(true));
     return true;
   }

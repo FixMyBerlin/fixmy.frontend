@@ -13,6 +13,7 @@ import ErrorMessage from '~/components/ErrorMessage';
 import config from '~/pages/Reports/config';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
+import utils from '~/pages/Reports/utils';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 
 import CTAButton from './components/CTAButton';
@@ -257,6 +258,10 @@ class OverviewMap extends Component {
                 (r) => r.id === +props.match.params.id
               );
 
+              const subtitle = `${
+                utils.isPlanning(reportItem) ? 'Planung' : 'Meldung'
+              } ${reportItem.id}`;
+
               return (
                 <ReportDetails
                   apiEndpoint="reports"
@@ -264,7 +269,7 @@ class OverviewMap extends Component {
                   onClose={this.onPopupClose}
                   token={token}
                   reportItem={reportItem}
-                  subtitle={`Meldung ${reportItem.id}`}
+                  subtitle={subtitle}
                 />
               );
             }}
