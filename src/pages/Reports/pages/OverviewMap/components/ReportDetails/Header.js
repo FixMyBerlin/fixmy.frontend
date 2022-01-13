@@ -46,11 +46,6 @@ const EditButton = styled(AnchorButton)`
   height: 2em;
 `;
 
-const getEditURL = (id) => {
-  const adminBaseURL = config.apiUrl.replace('/api', '/admin');
-  return `${adminBaseURL}/reports/bikestands/${id}/change/`;
-};
-
 const DetailsHeader = ({ details: { number }, status, id }) => (
   <>
     <HeadlineSection data-cy="reports-detail-title">
@@ -74,14 +69,6 @@ const DetailsHeader = ({ details: { number }, status, id }) => (
       </StatusIndicator>
       <ReportPin status={status} />
     </StatusIndicatorWrapper>
-
-    {config.debug === true && (
-      <StatusIndicatorWrapper>
-        <EditButton flat target="_blank" href={getEditURL(id)}>
-          Edit
-        </EditButton>
-      </StatusIndicatorWrapper>
-    )}
   </>
 );
 
