@@ -43,7 +43,7 @@ module.exports = merge(common, {
     new ReactRefreshWebpackPlugin({
       overlay: false,
     }),
-    new ESLintPlugin(),
+    new ESLintPlugin({ cache: true }),
     new ProgressPlugin(),
   ],
   module: {
