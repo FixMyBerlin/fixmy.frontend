@@ -3,28 +3,27 @@ import MapboxGL from 'mapbox-gl';
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import {
-  withRouter,
-  matchPath,
   generatePath,
+  matchPath,
   RouteComponentProps,
+  withRouter,
 } from 'react-router-dom';
 import slugify from 'slugify';
 import styled from 'styled-components';
-
-import * as MapActions from '~/apps/Map/MapState';
 import ProjectMarkers from '~/apps/Map/components/ProjectMarkers';
 import {
-  toggleVisibleHbiLines,
   animateView,
-  setView,
-  toggleLayer,
   filterLayersById,
   getCenterFromGeom,
   intersectionLayers,
   parseUrlOptions,
   setPlanningLegendFilter,
+  setView,
   standardLayersWithOverlay,
+  toggleLayer,
+  toggleVisibleHbiLines,
 } from '~/apps/Map/map-utils';
+import * as MapActions from '~/apps/Map/MapState';
 import resetMap from '~/apps/Map/reset';
 import { BigLoader } from '~/components2/Loaders';
 import config from '~/config';
@@ -204,7 +203,7 @@ class Map extends PureComponent<Props, State> {
       config.apps.map.layers.hbi.overlayLine,
       config.apps.map.layers.hbi.xOverlay,
     ];
-    const projectsTarget = config.apps.map.layers.projects.overlayLine;
+    const projectsClickableLayer = config.apps.map.layers.projects.overlayLine;
 
     const setCursorPointer = () => {
       this.map.getCanvas().style.cursor = 'pointer';
@@ -218,14 +217,11 @@ class Map extends PureComponent<Props, State> {
     this.map.on('mousemove', (e) => {
       const features = this.map.queryRenderedFeatures(e.point);
       // If there are any features under mouse pointer
-      if (features.length > 0 && this.props.activeView === 'zustand') {
-        if (hbiClickableLayers.includes(features[0].layer.id)) {
-          setCursorPointer();
-        } else {
-          setCursorNone();
-        }
-      } else if (features.length > 0 && this.props.activeView === 'planungen') {
-        if (projectsTarget === features[0].layer.id) {
+      if (features.length > 0) {
+        if (
+          hbiClickableLayers.includes(features[0].layer.id) ||
+          projectsClickableLayer === features[0].layer.id
+        ) {
           setCursorPointer();
         } else {
           setCursorNone();
