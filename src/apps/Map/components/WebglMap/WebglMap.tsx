@@ -128,6 +128,7 @@ class Map extends PureComponent<Props, State> {
 
     if (prevProps.activeView !== this.props.activeView) {
       this.registerClickHandler();
+      this.registerMouseHoverHandler();
     }
 
     if (!this.props.activeSection && this.state.popupLngLat) {
@@ -166,6 +167,7 @@ class Map extends PureComponent<Props, State> {
 
   handleLoad = () => {
     this.registerClickHandler();
+    this.registerMouseHoverHandler();
     this.map.on('dragend', this.handleMoveEnd);
     this.map.on('move', this.handleMove);
 
@@ -199,6 +201,45 @@ class Map extends PureComponent<Props, State> {
       this.map.off('click', hbiIntersectionTarget, this.handleClick);
       this.map.on('click', projectsTarget, this.handleClick);
     }
+  };
+
+  registerMouseHoverHandler = () => {
+    const hbiClickableLayers = [
+      config.apps.map.layers.hbi.overlayLine,
+      config.apps.map.layers.hbi.xOverlay,
+    ];
+    const projectsTarget = config.apps.map.layers.projects.overlayLine;
+
+    const setCursorPointer = () => {
+      this.map.getCanvas().style.cursor = 'pointer';
+    };
+    const setCursorNone = () => {
+      this.map.getCanvas().style.cursor = '';
+    };
+
+    // Events 'mouseenter' & 'mouseleave' didn't worked
+    // when hovering from clickable layer to another clickable layer
+    this.map.on('mousemove', (e) => {
+      const features = this.map.queryRenderedFeatures(e.point);
+      // If there are any features under mouse pointer
+      if (features.length > 0 && this.props.activeView === 'zustand') {
+        if (hbiClickableLayers.includes(features[0].layer.id)) {
+          setCursorPointer();
+        } else {
+          setCursorNone();
+        }
+      } else if (
+        features.length > 0 &&
+        (this.props.activeView === 'planungen' ||
+          this.props.activeView === 'popupbikelanes')
+      ) {
+        if (projectsTarget === features[0].layer.id) {
+          setCursorPointer();
+        } else {
+          setCursorNone();
+        }
+      }
+    });
   };
 
   updateLayers = () => {
