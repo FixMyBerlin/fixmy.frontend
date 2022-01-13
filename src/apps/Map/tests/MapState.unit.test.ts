@@ -18,7 +18,6 @@ import { HBI_STOPS } from '../constants';
 import featureIntersection from './fixtures/featureIntersection.json';
 import featureSection from './fixtures/featureSection.json';
 import planningsResponseFixture from './fixtures/planningsResponse.json';
-
 import { mswServer } from '~/../jest/msw/mswServer';
 
 type RootStateSlice = Pick<RootState, 'MapState'>;

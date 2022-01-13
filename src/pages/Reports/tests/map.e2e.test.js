@@ -1,7 +1,6 @@
 import config from '~/pages/Reports/config';
 
 import utils from './utils';
-
 import { cyElem } from '~/../cypress/support/utils';
 
 // let singleReportId = null;
