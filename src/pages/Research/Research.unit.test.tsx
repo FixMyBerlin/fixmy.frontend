@@ -32,7 +32,7 @@ describe('<ArticleHeader>', () => {
     // Förderlogos
     expect(
       getByRole('img', {
-        name: 'Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)',
+        name: 'Förderlogo Bundesministerium für Digitales und Verkehr (BMDV)',
       })
     ).toBeInTheDocument();
     expect(

@@ -3,7 +3,7 @@ import React from 'react';
 
 import { Image, ImageFull, ImageMulti } from '~/components2/Article/Image';
 import Logo from '~/images/logofmb.png';
-import Logo2 from '~/images/partner/bmvi.png';
+import Logo2 from '~/images/partner/bmdv-gefoerdert.png';
 
 describe('Article.Image', () => {
   it('renders', async () => {
