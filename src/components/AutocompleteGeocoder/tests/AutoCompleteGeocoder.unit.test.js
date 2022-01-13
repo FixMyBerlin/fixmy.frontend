@@ -9,7 +9,6 @@ import * as apiService from '~/components/AutocompleteGeocoder/apiService';
 import { parseSuggestion } from '~/components/AutocompleteGeocoder/apiService';
 
 import mockedSuggestions from '../../../../jest/msw/mockData/mockLocationSuggestions.json';
-
 import { mswServer } from '~/../jest/msw/mswServer';
 
 describe('<AutoCompleteGeocoder />', () => {

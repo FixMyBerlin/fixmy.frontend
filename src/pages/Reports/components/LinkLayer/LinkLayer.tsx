@@ -1,4 +1,4 @@
-import { FeatureCollection, LineString } from 'geojson';
+import type { FeatureCollection, LineString } from 'geojson';
 import MapboxGL, { GeoJSONSource } from 'mapbox-gl';
 import React, { useState, useEffect } from 'react';
 
@@ -32,16 +32,16 @@ const LinkLayer = ({
 
   // reselect's type definitions seem not to work so this type is set explicitly
   // here to the expected value
-  type selectLinkLayerGeometriesType = (
-    state: any
-  ) => FeatureCollection<
+  type selectLinkLayerGeometriesType = (state: any) => FeatureCollection<
     LineString,
     {
       [name: string]: any;
     }
-  >
+  >;
   const linkGeometries = useTypedSelector((state) =>
-    (mapStateSelectors.selectLinkLayerGeometries as selectLinkLayerGeometriesType)(state.ReportsState.OverviewMapState)
+    (
+      mapStateSelectors.selectLinkLayerGeometries as selectLinkLayerGeometriesType
+    )(state.ReportsState.OverviewMapState)
   );
 
   useEffect(() => {
