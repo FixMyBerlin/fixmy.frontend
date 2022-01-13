@@ -100,6 +100,9 @@ module.exports = {
           },
           {
             loader: 'ts-loader',
+            options: {
+              transpileOnly: process.env.NODE_ENV !== 'production',
+            },
           },
         ],
         include: [Path.resolve(__dirname, '../src')],
