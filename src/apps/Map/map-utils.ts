@@ -199,9 +199,16 @@ export function toggleVisibleHbiLines(
   map.setFilter(config.apps.map.layers.hbi.xSide1, ['any', ...side2rules]);
 }
 
+/**
+ * Takes a Point or MultilineString feature and returns its center
+ * coordinates. Returns `defaultCenter` if `geometry` is either null or not a
+ * Point/MultiLineString geometry.
+ */
 export function getCenterFromGeom(geometry: any, defaultCenter = null) {
   let lineString = geometry;
   if (geometry && geometry.coordinates) {
+    if (geometry.type === 'Point') return geometry.coordinates;
+
     if (geometry.type === 'MultiLineString') {
       lineString = turfLineString(
         geometry.coordinates.reduce((res, coord) => res.concat(coord)),
