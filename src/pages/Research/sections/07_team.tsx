@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import { Link } from '~/components2/Link';
 import LogoWrapper from '~/pages/Research/components/LogoWrapper';
-import bmviLogi from '~/pages/Research/images/logo/BMVI_Fz_2017_Office_Farbe_de_clip_scale.png';
+import bmdvLogo from '~/pages/Research/images/logo/BMDV_Fz_2021_Office_Farbe_de.png';
 import senKanzLogo from '~/pages/Research/images/logo/senatskanzlei-berlin.png';
 
 const SectionTeam = ({ toc, tocAnchor }: SectionProps) => (
@@ -52,7 +52,7 @@ const SectionTeam = ({ toc, tocAnchor }: SectionProps) => (
       <br />
       <FormattedMessage
         id="research.07_team.p04.funding"
-        defaultMessage="FixMyCity wird gefördert durch das BMVI und die Senatskanzlei Berlin."
+        defaultMessage="FixMyCity wird gefördert durch das BMDV und die Senatskanzlei Berlin."
       />
     </Paragraph>
     <Paragraph>
@@ -65,8 +65,8 @@ const SectionTeam = ({ toc, tocAnchor }: SectionProps) => (
         >
           <img
             style={{ width: '188px', height: '197px', margin: '2em 0' }}
-            src={bmviLogi}
-            alt="Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)"
+            src={bmdvLogo}
+            alt="Förderlogo Bundesministerium für Digitales und Verkehr (BMDV)"
           />
         </a>
         <a
