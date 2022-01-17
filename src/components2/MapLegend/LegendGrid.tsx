@@ -11,11 +11,6 @@ const LegendWrapper = styled.div`
   padding-bottom: 20px;
 `;
 
-const Header = styled.h2`
-  flex-basis: 100%;
-  margin: 1em 0;
-`;
-
 const LegendCol = styled.div`
   align-items: flex-start;
   display: flex;

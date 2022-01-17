@@ -5,9 +5,9 @@ import { HBI_STOPS } from '~/apps/Map/constants';
 import Label from '~/components2/Label';
 import Store from '~/store';
 
-import LegendImageWrapper from './LegendImageWrapper';
-import LegendItem from './LegendItem';
-import LegendWrapper from './LegendWrapper';
+import LegendImageWrapper from './SelectorBarImageWrapper';
+import LegendItem from './SelectorBarItem';
+import LegendWrapper from './SelectorBarWrapper';
 import IconBad from './images/hbi-bad@2x.png';
 import IconOk from './images/hbi-ok@2x.png';
 import IconSuper from './images/hbi-super@2x.png';

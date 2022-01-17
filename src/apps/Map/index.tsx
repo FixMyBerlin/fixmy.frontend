@@ -14,6 +14,7 @@ import config from '~/config';
 import Store, { RootState } from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 
+import MapLegend from '../../components2/MapLegend';
 import * as MapActions from './MapState';
 import { DetailPanel } from './components/DetailView';
 import ProjectDetail from './components/DetailView/ProjectDetail';
@@ -25,7 +26,6 @@ import MapControl from './components/MapControl';
 import { MapPopup } from './components/MapPopup';
 import SearchBar from './components/SearchBar';
 import { WebglMap } from './components/WebglMap';
-import MapLegend from '../../components2/MapLegend';
 
 const Wrapper = styled.div`
   height: 100%;

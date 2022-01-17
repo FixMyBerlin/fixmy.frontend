@@ -2,29 +2,48 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
-import Brace from '~/apps/Map/components/Brace';
-import { orientation } from '~/styles/utils';
+import { orientation, media } from '~/styles/utils';
 
 import HBILegend from './HBILegend';
 import PlanningLegend from './PlanningLegend';
+// import Brace from '~/apps/Map/components/Brace';
+
+let embedModeActive;
+
+function getEmbedStatus() {
+  if (embedModeActive) {
+    return 'red 5px solid';
+  }
+
+  return 'blue 5px solid';
+}
 
 const MapLegendWrapper = styled.div`
   max-width: 300px;
-  margin: 0 auto;
   height: 70px;
+  margin: 0 auto;
+  border: ${getEmbedStatus};
 
+  ${media.s`
+    order: 1;
+  `}
+
+  ${media.m`
+    min-width: 300px;
+  `}
+  
   ${orientation.landscape`
     display: none;
-    `}
+    `};
 `;
 
-const BraceWrapper = styled.div`
+/* const BraceWrapper = styled.div`
   ${orientation.landscape`
     display: none;
   `}
-`;
+`; */
 
-class MapLegend extends PureComponent {
+class MapSelectorBar extends PureComponent {
   getLegendComponent = () => {
     switch (this.props.type) {
       case 'hbi':
@@ -37,30 +56,26 @@ class MapLegend extends PureComponent {
   };
 
   render() {
+    embedModeActive = this.props.isEmbedMode;
     const LegendComponent = this.getLegendComponent();
     return (
       <>
         <MapLegendWrapper>
           <LegendComponent {...this.props} />
         </MapLegendWrapper>
-        {!this.props.isEmbedMode && (
-          <BraceWrapper>
-            <Brace type={this.props.type === 'hbi' ? 'zustand' : 'planung'} />
-          </BraceWrapper>
-        )}
       </>
     );
   }
 }
 
-MapLegend.propTypes = {
+MapSelectorBar.propTypes = {
   type: PropTypes.oneOf(['hbi', 'plannings']),
   isEmbedMode: PropTypes.bool,
 };
 
-MapLegend.defaultProps = {
+MapSelectorBar.defaultProps = {
   type: 'hbi',
   isEmbedMode: false,
 };
 
-export default MapLegend;
+export default MapSelectorBar;

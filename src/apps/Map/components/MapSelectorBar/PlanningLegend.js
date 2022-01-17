@@ -11,9 +11,9 @@ import ConceptIcon from '~/images/planning-icons/konzept.svg';
 import PlanningIcon from '~/images/planning-icons/planung.svg';
 import Store from '~/store';
 
-import LegendImageWrapper from './LegendImageWrapper';
-import LegendItem from './LegendItem';
-import LegendWrapper from './LegendWrapper';
+import LegendImageWrapper from './SelectorBarImageWrapper';
+import LegendItem from './SelectorBarItem';
+import LegendWrapper from './SelectorBarWrapper';
 
 const Icons = {
   draft: ConceptIcon,
