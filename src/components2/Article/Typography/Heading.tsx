@@ -125,7 +125,7 @@ const headings = {
  * Provide an anchor for accessibility if toc prop is provided
  */
 const AnchorWrapper = ({ toc, children, tocAnchor = null }) => {
-  if (toc == null) return <>{children}</>;
+  if (toc == null) return children;
   return (
     <AnchorStyle
       href={`#${slugify(tocAnchor || toc, { lower: true })}`}

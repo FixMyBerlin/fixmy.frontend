@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Thanks = ({ submission, district }) => (
+const Thanks = ({ submission }) => (
   <Wrapper>
     <h2>Vielen Dank für Ihren Antrag auf Nutzung einer Sonderfläche</h2>
 

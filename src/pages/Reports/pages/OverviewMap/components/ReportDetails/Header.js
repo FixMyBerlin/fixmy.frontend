@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { AnchorButton } from '~/components2/Button';
 import config from '~/config';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
@@ -42,16 +41,7 @@ const DetailsHeading = styled(Heading)`
   font-size: 1.4em;
 `;
 
-const EditButton = styled(AnchorButton)`
-  height: 2em;
-`;
-
-const getEditURL = (id) => {
-  const adminBaseURL = config.apiUrl.replace('/api', '/admin');
-  return `${adminBaseURL}/reports/bikestands/${id}/change/`;
-};
-
-const DetailsHeader = ({ details: { number }, status, id }) => (
+const DetailsHeader = ({ details: { number }, status }) => (
   <>
     <HeadlineSection data-cy="reports-detail-title">
       <DetailsHeading alignLeft>
@@ -74,14 +64,6 @@ const DetailsHeader = ({ details: { number }, status, id }) => (
       </StatusIndicator>
       <ReportPin status={status} />
     </StatusIndicatorWrapper>
-
-    {config.debug === true && (
-      <StatusIndicatorWrapper>
-        <EditButton flat target="_blank" href={getEditURL(id)}>
-          Edit
-        </EditButton>
-      </StatusIndicatorWrapper>
-    )}
   </>
 );
 

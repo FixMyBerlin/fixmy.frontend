@@ -68,8 +68,6 @@ type Props = ConnectedProps<typeof connector> & {
   isSubmitting: boolean;
   name: string;
   values: any;
-  labelChooseFile?: string;
-  labelChangeFile?: string;
   children: React.ReactNode; // shouldn't be necessary but it is
 };
 
@@ -78,8 +76,6 @@ const FileUploadRaw: React.FC<Props> = ({
   children,
   handleChange,
   isSubmitting,
-  labelChooseFile = 'PDF auswählen',
-  labelChangeFile = 'Neues PDF auswählen',
   name,
   values,
   district,

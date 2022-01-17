@@ -12,7 +12,7 @@ const FormError = styled(FormHelperText)`
   }
 `;
 
-const SectionNotice = ({ values }) => (
+const SectionNotice = () => (
   <section>
     <p>
       <strong>Bedingungen für die Nutzung der Sonderflächen</strong>

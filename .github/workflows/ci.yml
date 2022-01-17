@@ -69,10 +69,4 @@ jobs:
             ${{ runner.os }}-
 
       - run: npm ci
-      - uses: wearerequired/lint-action@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          eslint: true
-          eslint_dir: 'src'
-          prettier: true
-          prettier_dir: 'src'
+      - run: npm run lint

@@ -1,14 +1,19 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    // Allow running eslint on files that don't have specific configurations
+    "requireConfigFile": false,
+    "babelOptions": {
+      "configFile": "./babel.config.js"
+    }
+  },
 
   "extends": [
     "airbnb",
     "plugin:cypress/recommended",
     "plugin:chai-friendly/recommended",
     // keep these prettier rules last
-    "plugin:prettier/recommended",
-    "prettier",
-    "prettier/react"
+    "plugin:prettier/recommended"
   ],
 
   "plugins": [
@@ -56,7 +61,6 @@
             "typedefs": false
           }
         ],
-        "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": [
           "warn",
           {
@@ -66,13 +70,17 @@
         ],
         "no-useless-constructor": "off",
         "@typescript-eslint/no-useless-constructor": "warn",
-        "react/require-default-props": 0
+
+        // Typescript React components should prefer TS syntax over default props
+        "react/require-default-props": "off"
       }
     }
   ],
 
   "rules": {
     "prettier/prettier": ["warn"],
+
+    "no-unused-vars": "warn",
 
     // Set to warn so build is not broken when using camelcase
     // camelcase is acceptable for attributes of api return values
@@ -85,6 +93,13 @@
     "react/prop-types": [1, { "skipUndeclared": true }],
     "react/destructuring-assignment": 0,
     "react/jsx-props-no-spreading": 0,
+
+    "react/function-component-definition": [
+      1,
+      { "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
 
     "import/extensions": [
       "error",

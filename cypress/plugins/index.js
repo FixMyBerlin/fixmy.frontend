@@ -3,7 +3,7 @@ const wp = require('@cypress/webpack-preprocessor');
 const log = require('debug')('cypress:plugins');
 
 const baseConfig = require('../../cypress.json');
-const webpackOptions = require('../../webpack/webpack.config.cypress.js');
+const webpackOptions = require('../../webpack/webpack.config.cypress');
 
 /**
  * Extend browser arguments to immediately open dev tools so we can inspect breakpoint halts
@@ -70,8 +70,8 @@ const DynamicCypressConfig = (on, config) => {
 
   // modify the way browsers are launched,
   // see https://docs.cypress.io/api/plugins/browser-launch-api.html#Usage
-  on('before:browser:launch', (browser = {}, launchOptions) => {
-    if (browser.name === 'chrome') {
+  on('before:browser:launch', (browser, launchOptions) => {
+    if (browser != null && browser.name === 'chrome') {
       const { args } = launchOptions;
       setAutoDevTools(args);
       setWindowPos(args);

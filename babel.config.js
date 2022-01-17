@@ -7,28 +7,33 @@ module.exports = (api) => {
       '@babel/preset-env',
       {
         useBuiltIns: 'usage',
-        corejs: { version: '3.6', proposals: true },
+        corejs: { version: '3.19', proposals: true },
       },
     ],
   ];
 
   const plugins = [
+    // remove once we use ES2022
     '@babel/plugin-syntax-dynamic-import',
+
+    // remove once we use ES2022
     '@babel/plugin-proposal-class-properties',
+
+    // better debugging of styled components
     [
       'babel-plugin-styled-components',
       {
         displayName: true,
       },
     ],
-    '@babel/plugin-proposal-optional-chaining',
   ];
 
   const env = {
+    development: { plugins: ['react-refresh/babel'] },
+    production: {},
     test: {
       plugins: ['transform-es2015-modules-commonjs'],
     },
-    production: {},
   };
 
   return {

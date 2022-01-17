@@ -74,11 +74,9 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
           {street.schedule && (
             <Schedule>
               {street.status === 'paused' && (
-                <>
-                  <Notice>
-                    <strong>Diese Spielstraße ist derzeit pausiert.</strong>
-                  </Notice>
-                </>
+                <Notice>
+                  <strong>Diese Spielstraße ist derzeit pausiert.</strong>
+                </Notice>
               )}
               Öffnungszeiten: {street.schedule}
             </Schedule>
@@ -129,6 +127,7 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
               Spielstraße {street.street} zu unterstützen:
             </strong>
           </p>
+          {/* @ts-expect-error see comment on SignupForm component export */}
           <SignupForm street={street.street} />
         </Section>
       </Container>

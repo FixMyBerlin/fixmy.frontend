@@ -18,7 +18,7 @@ class ClusteredMarkers extends React.Component {
   constructor(props) {
     super(props);
 
-    this.markers = [];
+    // this.markers = [];
     this.markerCache = {};
     this.renderedMarkers = {};
 
@@ -51,15 +51,6 @@ class ClusteredMarkers extends React.Component {
       clusterSource: map.getSource(name),
       clusterCreated: true,
     });
-  }
-
-  removeMarkers() {
-    this.markers.forEach((marker) => {
-      if (marker) {
-        marker.remove();
-      }
-    });
-    this.markers = [];
   }
 
   updateCluster() {

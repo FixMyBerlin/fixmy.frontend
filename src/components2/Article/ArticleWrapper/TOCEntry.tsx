@@ -63,7 +63,7 @@ const padIndex = (index: number) => {
   return index < 10 ? `0${index}` : index;
 };
 
-function TOCEntry({ index, entry, active = false, enumerate = true }) {
+const TOCEntry = ({ index, entry, active = false, enumerate = true }) => {
   const goToEntry = () => {
     const headlineDomNode = document.querySelector(`.toc__anchor-${index}`);
     if (headlineDomNode) {
@@ -93,6 +93,6 @@ function TOCEntry({ index, entry, active = false, enumerate = true }) {
       <TOCEntryText active={active}>{entry.props.toc}</TOCEntryText>
     </TOCEntryWrapper>
   );
-}
+};
 
 export default TOCEntry;

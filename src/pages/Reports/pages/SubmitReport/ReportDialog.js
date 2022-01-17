@@ -52,7 +52,7 @@ class ReportDialog extends PureComponent {
     this.props.history.push(config.routes.reports.map);
   };
 
-  render = () => {
+  render() {
     let content;
 
     const { match } = this.props;
@@ -191,7 +191,7 @@ class ReportDialog extends PureComponent {
     } // end of switch statement
 
     return content;
-  };
+  }
 }
 
 const mapDispatchToProps = {

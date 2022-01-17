@@ -121,6 +121,8 @@ export const getPermitFee = ({
 };
 /* eslint-enable camelcase */
 
+// I don't understand this linter error
+// eslint-disable-next-line no-shadow
 export enum REGULATION {
   'Parkplatz' = 0,
   'Zone1' = 1,

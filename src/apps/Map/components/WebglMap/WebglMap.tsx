@@ -46,7 +46,7 @@ const StyledMap = styled.div`
   flex: 1;
 `;
 
-const connector = connect(({ MapState, UserState }: RootState) => ({
+const connector = connect(({ MapState }: RootState) => ({
   activeView: MapState.activeView,
   activeSection: MapState.activeSection,
   animate: MapState.animate,
@@ -269,9 +269,8 @@ class Map extends PureComponent<Props, State> {
     );
 
     // hbi layers
-    const combinedHbiLayers = standardLayersWithOverlay.concat(
-      intersectionLayers
-    );
+    const combinedHbiLayers =
+      standardLayersWithOverlay.concat(intersectionLayers);
     combinedHbiLayers.forEach((layer) =>
       toggleLayer(this.map, hbiLayers[layer], isZustand)
     );

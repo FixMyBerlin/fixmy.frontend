@@ -14,6 +14,7 @@ yarn-error.log
 yarn.lock
 .yarnclean
 localtest
+.eslintcache
 
 # IDEs
 .idea/
