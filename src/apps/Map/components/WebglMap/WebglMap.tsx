@@ -95,6 +95,7 @@ class Map extends PureComponent<Props, State> {
       container: this.root,
       style: MB_STYLE_URL,
       bounds: config.apps.map.bounds,
+      hash: true,
     });
     const nav = new MapboxGL.NavigationControl({ showCompass: false });
     this.map.addControl(nav, 'bottom-left');
