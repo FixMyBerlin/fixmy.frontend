@@ -18,7 +18,6 @@ interface RouteConfig {
   spielstrassen?: {
     [page: string]: string;
   };
-  popupbikelanes?: string;
   research?: {
     [page: string]: string;
   };
@@ -39,8 +38,6 @@ const routes: RouteConfig = {
     hbiDetail: '/zustand/:id/:name?',
     projectsIndex: '/planungen',
     projectsDetail: '/planungen/:id/:name?',
-    popupIndex: '/popupbikelanes',
-    popupDetail: '/popupbikelanes/:id/:name?',
   },
   reports: {
     temporarily_forward_from_this_to_index: '/meldungen',
@@ -66,7 +63,6 @@ const routes: RouteConfig = {
     register: '/friedrichshain-kreuzberg/spielstrassen/:slug',
     thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke',
   },
-  popupbikelanes: '/popupbikelanes',
   signup: '/registrieren',
   login: '/anmelden',
   forgotPassword: '/passwort-vergessen',

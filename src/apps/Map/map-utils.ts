@@ -136,27 +136,6 @@ export function setPlanningLegendFilter(
 }
 
 /**
- * Show all popup bike lanes from the projects layer
- *
- * @param {MapboxGL instance} map
- */
-export function setPopupLanesFilter(map: mapboxgl.Map) {
-  const filter = ['==', 'inactive', ['get', 'phase']];
-  map.setFilter(config.apps.map.layers.projects.center, filter);
-  map.setFilter(config.apps.map.layers.projects.overlayLine, filter);
-  map.setFilter(config.apps.map.layers.projects.side0, [
-    'all',
-    sideFilter0,
-    filter,
-  ]);
-  map.setFilter(config.apps.map.layers.projects.side1, [
-    'all',
-    sideFilter1,
-    filter,
-  ]);
-}
-
-/**
  * Return a Mapbox expression to access the HBI values embedded in Mapbox
  *
  * @param {*} sideKey which side's HBI value to retrieve (layer prefix)

@@ -39,7 +39,7 @@ export const SET_HBI_DATA = 'Map/MapState/SET_HBI_DATA';
 const SET_HBI_DATA_FETCH_STATE = 'Map/MapState/SET_HBI_DATA_FETCH_STATE';
 
 // parsed from the first path segment of the url
-type MapView = 'zustand' | 'planungen' | 'popupbikelanes';
+type MapView = 'zustand' | 'planungen';
 
 // todo: define this based on fixmy.platform serializer & model
 type ProjectFromMapbox = any;
