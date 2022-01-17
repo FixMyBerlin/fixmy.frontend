@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { AnchorLink } from '~/components2/Link';
 
 const Container = styled.section`
   padding: 0 1em;
@@ -53,13 +54,9 @@ export const AccidentsFAQ = () => (
 
     <p>
       Die Bewertung ist angelehnt an die{' '}
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.berlin.de/sen/uvk/verkehr/verkehrspolitik/verkehrssicherheit/unfallkommission/verkehrsunfaelle-mit-todesfolge-21-mobg/"
-      >
+      <AnchorLink href="https://www.berlin.de/sen/uvk/verkehr/verkehrspolitik/verkehrssicherheit/unfallkommission/verkehrsunfaelle-mit-todesfolge-21-mobg/">
         Systematik der Unfallkommision des Landes Berlin
-      </a>
+      </AnchorLink>
       . Die dortige Definition beruht auf dem „Merkblatt zur örtlichen
       Unfalluntersuchung in Unfallkommissionen“ der FGSV
     </p>
@@ -91,13 +88,9 @@ export const AccidentsFAQ = () => (
       Schwerverletzen häufen unverzüglich geprüft werden muss, welche Maßnahmen
       zur Verhinderung weiterer Unfälle kurz- mittel- und langfristig getroffen
       werden können. Die{' '}
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.berlin.de/sen/uvk/verkehr/verkehrspolitik/verkehrssicherheit/unfallkommission/verkehrsunfaelle-mit-todesfolge-21-mobg/jahr-2020/"
-      >
+      <AnchorLink href="https://www.berlin.de/sen/uvk/verkehr/verkehrspolitik/verkehrssicherheit/unfallkommission/verkehrsunfaelle-mit-todesfolge-21-mobg/jahr-2020/">
         Ergebnisse dieser Prüfung
-      </a>{' '}
+      </AnchorLink>{' '}
       werden von der Unfallkommision hier für die Jahre 2018, 2019, 2020, 2021
       veröffentlicht.
     </p>
@@ -131,7 +124,7 @@ export const SectionsFAQ = () => (
       für die Streckenabschnitte an der Verbesserung der Datenlage arbeiten.
       Dafür entwickeln wir ein Tool mit dem Bürger:innen fehlende Daten eingeben
       können, melde dich für den Newsletter an um informiert zu werden, sobald
-      das Tool bereit steht.{' '}
+      das Tool bereit steht.
     </p>
 
     <h3>Was ist der Happy-Bike-Index?</h3>
