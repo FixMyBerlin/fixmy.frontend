@@ -1,7 +1,8 @@
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
 
-// Packages from `node_modules` that explicitly need to be transpiled
+// Use `esModules` for npm Packages from `node_modules` that explicitly need to be transpiled
+// (Packages that can't be read by Jest without Babel translation)
 // const esModules = [];
 
 module.exports = {
