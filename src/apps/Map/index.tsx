@@ -160,19 +160,6 @@ const MapView = ({
             />
           )}
         />
-        <Route
-          exact
-          path={config.routes.map.popupDetail}
-          render={({ match }) => (
-            <ProjectDetail
-              apiEndpoint="projects"
-              onCloseRoute={config.routes.map.popupIndex}
-              activeView={activeLayer}
-              token={token}
-              match={match}
-            />
-          )}
-        />
       </MapWrapper>
     </Wrapper>
   );

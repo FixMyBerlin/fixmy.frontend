@@ -5,8 +5,6 @@ interface RouteConfig {
     projectsDetail: string;
     hbiIndex: string;
     hbiDetail: string;
-    popupIndex: string;
-    popupDetail: string;
   };
   analysis?: string;
   reports?: {
