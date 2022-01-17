@@ -14,13 +14,20 @@ const MapSwitchWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  max-width: 550px;
-  margin: 0 auto;
+  max-width: 7650px;
   height: 75px;
   opacity: 1;
+  background-color: ${config.colors.lightbg};
+  margin: 0 auto;
+
+  ${media.s`
+    order: 1;
+  `}
 
   ${media.m`
-    padding: 25px 15px;
+    order: 0;
+    padding: 50px 15px;
+    margin: 0;
   `}
 `;
 

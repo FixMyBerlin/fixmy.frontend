@@ -13,7 +13,9 @@ import Legend from '~/components2/MapLegend/Legend';
 import config from '~/config';
 import MapLegendButtonIcon from '~/images/map-legend.svg';
 import Store, { RootState } from '~/store';
-import { breakpoints, matchMediaSize, media } from '~/styles/utils';
+import { matchMediaSize, breakpoints, media } from '~/styles/utils';
+
+import * as MapActions from './MapState';
 import { DetailPanel } from './components/DetailView';
 import ProjectDetail from './components/DetailView/ProjectDetail';
 import { SectionDetail } from './components/DetailView/SectionDetail';
@@ -24,7 +26,6 @@ import MapControl from './components/MapControl';
 import { MapPopup } from './components/MapPopup';
 import SearchBar from './components/SearchBar';
 import { WebglMap } from './components/WebglMap';
-import * as MapActions from './MapState';
 
 const Wrapper = styled.div`
   height: 100%;
