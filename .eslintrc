@@ -94,12 +94,12 @@
     "react/destructuring-assignment": 0,
     "react/jsx-props-no-spreading": 0,
 
-    // TODO: Turn this on and decide on a rule
-    "react/function-component-definition": 0,
-    // "react/function-component-definition": [
-    //   1,
-    //   { "namedComponents": "arrow-function" }
-    // ],
+    "react/function-component-definition": [
+      1,
+      { "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
 
     "import/extensions": [
       "error",
