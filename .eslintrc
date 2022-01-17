@@ -101,29 +101,7 @@
     // We don't prefer default exports because named exports enhance IDE
     // auto completion for imports and prevent inconsistent naming conventions
     // across modules.
-    "import/prefer-default-export": ["off"],
-
-    // Import order is fixed for easier scanning of imports and to prevent
-    // file changes from changed import order.
-    //
-    // This configuration separates sources specified in `groups` with newlines
-    // and sorts moves imports from `~` into the `internal` group.
-    "import/order": [
-      "warn",
-      {
-        "alphabetize": { "order": "asc" },
-        "groups": [
-          "builtin",
-          "external",
-          ["sibling", "parent", "internal"],
-          "index"
-        ],
-        "newlines-between": "always",
-        "pathGroups": [
-          { "pattern": "~/**", "group": "internal", "position": "before" }
-        ]
-      }
-    ]
+    "import/prefer-default-export": ["off"]
   },
 
   "env": {
