@@ -25,12 +25,13 @@ import MapControl from './components/MapControl';
 import { MapPopup } from './components/MapPopup';
 import SearchBar from './components/SearchBar';
 import { WebglMap } from './components/WebglMap';
+import MapLegend from '../../components2/MapLegend';
 
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: column;c
+  flex-direction: column;
   position: relative;
   overflow: hidden;
 `;
@@ -115,6 +116,7 @@ const MapView = ({
 
       <MapWrapper>
         <SearchBar />
+        <MapLegend isPopupVisible={false} isDetailOpen={false} />
         <WebglMap
           key="MapComponent"
           calculatePopupPosition={calculatePopupPosition}
@@ -128,7 +130,7 @@ const MapView = ({
           )}
           {!isEmbedMode && (
             <MapControl position="top-right">
-              <StyledFMBLogo showBetaIcon width={67} />
+              <StyledFMBLogo width={67} />
             </MapControl>
           )}
           {isEmbedMode && <FMBCredits />}
