@@ -12,23 +12,23 @@ let embedModeActive;
 
 function getEmbedStatus() {
   if (embedModeActive) {
-    return 'red 5px solid';
+    return '0';
   }
 
-  return 'blue 5px solid';
+  return '0 auto';
 }
 
 const MapLegendWrapper = styled.div`
   max-width: 300px;
   height: 70px;
-  margin: 0 auto;
-  border: ${getEmbedStatus};
+  margin: ${getEmbedStatus};
 
   ${media.s`
     order: 1;
-  `}
+    `}
 
   ${media.m`
+    margin: 0;
     min-width: 300px;
   `}
 
