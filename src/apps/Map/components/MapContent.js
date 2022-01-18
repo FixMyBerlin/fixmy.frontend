@@ -48,7 +48,10 @@ export default (props) => (
           path={config.routes.map.projectsIndex}
           render={() =>
             props.displayLegend && (
-              <MapSelectorBar type="plannings" isEmbedMode={props.isEmbedMode} />
+              <MapSelectorBar
+                type="plannings"
+                isEmbedMode={props.isEmbedMode}
+              />
             )
           }
         />
