@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { StatsCounter, StatsExpanded } from '~/pages/Reports/components/Stats';
 import config from '~/pages/Reports/config';
-
 import { ModalCloseIcon } from '../ModalCloseIcon/ModalCloseIcon';
 import { BaseWrapper } from './LegendCollapsed';
 import LegendGrid from './LegendGrid';
@@ -34,7 +32,7 @@ const LegendExpanded = ({ onToggle, compact = false }) => (
     <ModalCloseIcon
       onClick={onToggle}
       label="Legende schließen"
-      controls="reports-map-legend"
+      controlsId="reports-map-legend"
     />
     {config.reports.stats.enabled && (
       <>

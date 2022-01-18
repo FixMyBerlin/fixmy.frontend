@@ -155,13 +155,18 @@ export const WelcomeModal = ({ visible }) => {
   if (!open) return null;
 
   return (
-    <Wrapper>
+    <Wrapper id="WelcomeModal">
       <WrapperCenter>
         <Background onClick={closeModal} />
-        <Modal>
-          <ModalCloseIcon onClick={closeModal} controls="todo" />
-          {/* ariaLabelledby="modal-title" role="dialog" ariaModal="true" */}
-          <Headline>Neuigkeiten zum Happy-Bike-Index</Headline>
+        <Modal
+          role="dialog"
+          aria-labelledby="WelcomeModalTitle"
+          aria-modal="true"
+        >
+          <ModalCloseIcon onClick={closeModal} controlsId="WelcomeModal" />
+          <Headline id="WelcomeModalTitle">
+            Neuigkeiten zum Happy-Bike-Index
+          </Headline>
           <GridWrapper>
             <GridChild>
               <Img src={ImgVisionZero} alt="" />
