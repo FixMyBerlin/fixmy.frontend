@@ -44,6 +44,7 @@ module.exports = {
         },
       ],
     }),
+    // Imports `.env.defaults` and updates them with the values from here.
     new Dotenv({ defaults: true, systemvars: true }),
   ],
   resolve: {
