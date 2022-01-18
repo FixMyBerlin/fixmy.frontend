@@ -1,0 +1,8 @@
+// https://code.visualstudio.com/updates/v1_6#_workspace-extension-recommendations
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}
