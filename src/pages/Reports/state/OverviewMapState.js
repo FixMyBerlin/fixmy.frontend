@@ -78,44 +78,43 @@ actions.loadReportsData = () => async (dispatch) => {
   await loadReportsThunk(dispatch);
 };
 
-actions.setSelectedReport = (selectedReportId, zoomIn = false) => async (
-  dispatch,
-  getState
-) => {
-  let selectedReport = null;
-  let reports;
+actions.setSelectedReport =
+  (selectedReportId, zoomIn = false) =>
+  async (dispatch, getState) => {
+    let selectedReport = null;
+    let reports;
 
-  if (selectedReportId != null) {
-    logger(`setting selected report ${selectedReportId}`);
+    if (selectedReportId != null) {
+      logger(`setting selected report ${selectedReportId}`);
 
-    const mapState = getState().ReportsState.OverviewMapState;
-    // Load report list unless it has already been loaded
-    if (mapState.reportFetchState === FETCH_STATE_SUCCESS) {
-      reports = mapState.reports;
+      const mapState = getState().ReportsState.OverviewMapState;
+      // Load report list unless it has already been loaded
+      if (mapState.reportFetchState === FETCH_STATE_SUCCESS) {
+        reports = mapState.reports;
+      } else {
+        // fall back to empty list if loadReportsThunk fails
+        reports = (await loadReportsThunk(dispatch)) || [];
+      }
+
+      selectedReport = reports.find(
+        (report) => report.id === parseInt(selectedReportId, 10)
+      );
+      if (selectedReport == null) {
+        logger('selected report is not available');
+        return;
+      }
     } else {
-      // fall back to empty list if loadReportsThunk fails
-      reports = (await loadReportsThunk(dispatch)) || [];
+      logger('reset selected report');
     }
 
-    selectedReport = reports.find(
-      (report) => report.id === parseInt(selectedReportId, 10)
-    );
-    if (selectedReport == null) {
-      logger('selected report is not available');
-      return;
-    }
-  } else {
-    logger('reset selected report');
-  }
-
-  dispatch({
-    type: types.SET_SELECTED_REPORT,
-    payload: {
-      selectedReport,
-      zoomIn,
-    },
-  });
-};
+    dispatch({
+      type: types.SET_SELECTED_REPORT,
+      payload: {
+        selectedReport,
+        zoomIn,
+      },
+    });
+  };
 
 // reducer
 

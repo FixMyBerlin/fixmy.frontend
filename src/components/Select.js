@@ -25,15 +25,8 @@ const StyledSelect = styled.select`
 
 class Select extends PureComponent {
   render() {
-    const {
-      title,
-      options,
-      onChange,
-      disabled,
-      value,
-      isVisible,
-      className,
-    } = this.props;
+    const { title, options, onChange, disabled, value, isVisible, className } =
+      this.props;
 
     if (!isVisible) {
       return null;

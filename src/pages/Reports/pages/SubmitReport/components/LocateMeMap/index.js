@@ -204,14 +204,11 @@ class LocateMeMap extends Component {
     this.setState({ isLoading: false });
   };
 
-  getLocatorControlPosition = ({ isDesktopView }) =>
-    isDesktopView
+  render() {
+    const isDesktopView = matchMediaSize(breakpoints.m);
+    const locatorControlPosition = isDesktopView
       ? { bottom: '128px', right: '15px' }
       : { bottom: '128px', right: '8px' };
-
-  render() {
-    // TODO: simplify usage by keeping getIsDesktopView() within styles util
-    const isDesktopView = matchMediaSize(breakpoints.m);
 
     return (
       <MapView>
@@ -295,7 +292,7 @@ class LocateMeMap extends Component {
             <LocatorControl
               key="ReportsLocateMap__LocatorControl"
               onChange={this.onDevicePosition}
-              customPosition={this.getLocatorControlPosition(isDesktopView)}
+              customPosition={locatorControlPosition}
             />
           )}
 
@@ -332,9 +329,10 @@ const mapStateToProps = (state) => ({
   ...state.ReportsState.SubmitReportState,
   error: state.ReportsState.ErrorState,
   // selectors
-  isLocationModeGeocoding: submitReportStateSelectors.getLocationIsModeGeocoding(
-    state.ReportsState.SubmitReportState
-  ),
+  isLocationModeGeocoding:
+    submitReportStateSelectors.getLocationIsModeGeocoding(
+      state.ReportsState.SubmitReportState
+    ),
   alreadyPickedLocation: submitReportStateSelectors.getAlreadyPicketLocation(
     state.ReportsState.SubmitReportState
   ),

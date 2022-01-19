@@ -32,14 +32,14 @@ const TOCHeaderArticle = styled(Heading)`
   `}
 `;
 
-function TOC({
+const TOC = ({
   entries,
   activeIndex,
   hasActiveState = false,
   title = null,
   enumerate = true,
   className = null,
-}) {
+}) => {
   const tocChildren = React.Children.toArray(entries).filter(
     (child: ReactElement) => child.props.toc
   );
@@ -65,6 +65,6 @@ function TOC({
       ))}
     </TOCWrapper>
   );
-}
+};
 
 export default TOC;

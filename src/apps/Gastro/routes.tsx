@@ -72,9 +72,9 @@ const Routes = ({ district }) => (
       <Route
         exact
         path={getPath(district, 'signupEvents')}
-        render={(props) =>
+        render={() =>
           openSignup(district) ? (
-            <EventApplication {...props} />
+            <EventApplication />
           ) : (
             <Redirect to={getPath(district, 'landing')} />
           )

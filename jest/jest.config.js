@@ -1,8 +1,9 @@
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
 
-// Packages from `node_modules` that explicitly need to be transpiled
-const esModules = ['common-tags'];
+// Use `esModules` for npm Packages from `node_modules` that explicitly need to be transpiled
+// (Packages that can't be read by Jest without Babel translation)
+// const esModules = [];
 
 module.exports = {
   // Jest root dir is parent of this config file's dir
@@ -27,9 +28,9 @@ module.exports = {
   // Import path patterns to ignore during transformation
   // exceptions are added using negative-lookahead by concatenating entries
   // from `esModules`
-  transformIgnorePatterns: [
-    `<rootDir>/node_modules/(?!${esModules.join('|')})`,
-  ],
+  // transformIgnorePatterns: [
+  //   `<rootDir>/node_modules/(?!${esModules.join('|')})`,
+  // ],
 
   // A map from regular expressions to module names that allow to stub out
   // resources with a single module
@@ -55,7 +56,6 @@ module.exports = {
 
   globals: {
     'ts-jest': {
-      tsConfig: './jest/tsconfig.jest.json',
       // do not type check in unit tests.
       diagnostics: false,
     },

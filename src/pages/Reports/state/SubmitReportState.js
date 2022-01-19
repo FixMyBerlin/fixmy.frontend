@@ -110,53 +110,55 @@ actions.setFeeAcceptable = (isFeeAcceptable) => ({
 
 // thunks
 
-actions.validateCoordinates = (polygonGeoJson, { lng, lat }) => async (
-  dispatch
-) => {
-  const pointFeature = {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [lng, lat],
-    },
+actions.validateCoordinates =
+  (polygonGeoJson, { lng, lat }) =>
+  async (dispatch) => {
+    const pointFeature = {
+      type: 'Feature',
+      geometry: {
+        type: 'Point',
+        coordinates: [lng, lat],
+      },
+    };
+
+    if (booleanWithin(pointFeature, polygonGeoJson)) {
+      dispatch({
+        type: types.VALIDATE_POSITION,
+      });
+      return true;
+    }
+    dispatch({
+      type: types.INVALIDATE_POSITION,
+    });
+    return false;
   };
 
-  if (booleanWithin(pointFeature, polygonGeoJson)) {
-    dispatch({
-      type: types.VALIDATE_POSITION,
-    });
-    return true;
-  }
-  dispatch({
-    type: types.INVALIDATE_POSITION,
-  });
-  return false;
-};
+actions.reverseGeocodeCoordinates =
+  ({ lat, lng }) =>
+  async (dispatch) => {
+    let result;
+    let errorMsg;
+    try {
+      result = await reverseGeocode({ lat, lng });
+    } catch (e) {
+      errorMsg = 'Fehler beim Auflösen der Koordinaten in eine Adresse';
+      logger(e);
+    }
+    if (!result) {
+      errorMsg = 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden';
+    }
 
-actions.reverseGeocodeCoordinates = ({ lat, lng }) => async (dispatch) => {
-  let result;
-  let errorMsg;
-  try {
-    result = await reverseGeocode({ lat, lng });
-  } catch (e) {
-    errorMsg = 'Fehler beim Auflösen der Koordinaten in eine Adresse';
-    logger(e);
-  }
-  if (!result) {
-    errorMsg = 'Die Geokoordinaten konnten in keine Adresse aufgelöst werden';
-  }
-
-  if (errorMsg) {
-    dispatch(
-      errorStateActions.addError({
-        message: errorMsg,
-      })
-    );
-  } else {
-    dispatch({ type: types.REVERSE_GEOCODE_COMPLETE, payload: { result } });
-    dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
-  }
-};
+    if (errorMsg) {
+      dispatch(
+        errorStateActions.addError({
+          message: errorMsg,
+        })
+      );
+    } else {
+      dispatch({ type: types.REVERSE_GEOCODE_COMPLETE, payload: { result } });
+      dispatch({ type: types.SET_TEMP_LOCATION_ADDRESS, address: result });
+    }
+  };
 
 actions.useDevicePosition = () => async (dispatch) => {
   let coords;

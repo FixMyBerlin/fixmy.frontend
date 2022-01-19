@@ -1,3 +1,4 @@
+/* eslint-disable no-loss-of-precision */
 export const worldWidePolygon = {
   type: 'Feature',
   properties: {},

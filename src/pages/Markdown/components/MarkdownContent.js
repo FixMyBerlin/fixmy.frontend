@@ -1,5 +1,6 @@
 import React from 'react';
 import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import styled from 'styled-components';
 
 import { getLinkStyles } from '~/components/Link';
@@ -55,11 +56,11 @@ function loadImage(mdSrc) {
   return ImageContext(mdSrc);
 }
 
-export default (props) =>
-  typeof props.content === 'string' ? (
-    <StyledMarkdown
-      escapeHtml={false}
-      transformImageUri={loadImage}
-      source={props.content}
-    />
+const MarkdownContent = ({ content }) =>
+  content && typeof content === 'string' ? (
+    <StyledMarkdown rehypePlugins={[rehypeRaw]} transformImageUri={loadImage}>
+      {content}
+    </StyledMarkdown>
   ) : null;
+
+export default MarkdownContent;

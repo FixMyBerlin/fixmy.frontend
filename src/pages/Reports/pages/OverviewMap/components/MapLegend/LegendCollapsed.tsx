@@ -115,17 +115,15 @@ const ResponsiveSwitch = styled.div`
  * Statscounter that switches between compact and expanded variation based
  * on responsive screen size
  */
-const StyledStatsCounter = () => (
-  <StatsCounter
-    animate
-    component={(props) => (
-      <ResponsiveSwitch>
-        <StatsCompact {...props} />
-        <StatsExpanded {...props} compact />
-      </ResponsiveSwitch>
-    )}
-  />
-);
+const StyledStatsCounter = () => {
+  const component = React.memo((props: any) => (
+    <ResponsiveSwitch>
+      <StatsCompact {...props} />
+      <StatsExpanded {...props} compact />
+    </ResponsiveSwitch>
+  ));
+  return <StatsCounter animate component={component} />;
+};
 
 const LegendCollapsed = ({ onToggle }) => {
   if (config.reports.stats.enabled) {

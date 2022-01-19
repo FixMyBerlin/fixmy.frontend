@@ -103,15 +103,6 @@ class AuthForm extends Component {
     };
   }
 
-  validate = (values) =>
-    signupFormConfig.reduce((res, item) => {
-      if (item.validateError && !values[item.id]) {
-        res[item.id] = item.validateError;
-      }
-
-      return res;
-    }, {});
-
   onLoginExpand = () => {
     this.setState((prevState) => ({ showLoginForm: !prevState.showLoginForm }));
   };
@@ -165,6 +156,15 @@ class AuthForm extends Component {
   };
 
   render() {
+    const validate = (values) =>
+      signupFormConfig.reduce((res, item) => {
+        if (item.validateError && !values[item.id]) {
+          res[item.id] = item.validateError;
+        }
+
+        return res;
+      }, {});
+
     return (
       <>
         <HorizontalRuler />
@@ -177,7 +177,7 @@ class AuthForm extends Component {
           <Formik
             initialValues={initialValues}
             onSubmit={this.onSubmit}
-            validate={this.validate}
+            validate={validate}
             validateOnChange={false}
             validateOnBlur={false}
           >

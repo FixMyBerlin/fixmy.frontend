@@ -194,6 +194,16 @@ describe('getCenterFromGeom', () => {
     expect(typeof center[0]).toEqual('number');
     expect(typeof center[1]).toEqual('number');
   });
+
+  it('returns the original geometry if given a point', () => {
+    const geometry = {
+      type: 'Point',
+      coordinates: [-122.48369693756104, 37.83381888486939],
+    };
+    const center = utils.getCenterFromGeom(geometry);
+    expect(center[0]).toEqual(geometry.coordinates[0]);
+    expect(center[1]).toEqual(geometry.coordinates[1]);
+  });
 });
 
 describe('getGeoLocation', () => {

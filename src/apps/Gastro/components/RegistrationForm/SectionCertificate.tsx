@@ -63,9 +63,8 @@ const SectionCertificate = ({
   district,
   handleChange,
 }) => {
-  const [isSubmittingCertificate, setSubmittingCertificate] = useState<boolean>(
-    isSubmitting
-  );
+  const [isSubmittingCertificate, setSubmittingCertificate] =
+    useState<boolean>(isSubmitting);
   const [uploadError, setUploadError] = useState<string | null>(null);
 
   useEffect(() => {
