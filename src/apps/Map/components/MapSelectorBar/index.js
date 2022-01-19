@@ -14,8 +14,14 @@ function getEmbedStatus() {
   if (embedModeActive) {
     return '0';
   }
-
   return '0 auto';
+}
+
+function getEmbedStatusForM() {
+  if (embedModeActive) {
+    return 'auto';
+  }
+  return 'auto 0';
 }
 
 const MapLegendWrapper = styled.div`
@@ -25,10 +31,10 @@ const MapLegendWrapper = styled.div`
 
   ${media.s`
     order: 2;
-    `}
+  `}
 
   ${media.m`
-    margin: auto 0;
+    margin: ${getEmbedStatusForM};
     min-width: 300px;
   `}
   
