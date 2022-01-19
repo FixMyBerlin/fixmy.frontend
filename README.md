@@ -25,8 +25,9 @@ npm install
 
 ## Configuration
 
-Configuration options for the app are set through environment variables. You can
-set these by creating a file `/.env` in this directory. Look at the file
+Configuration options for the app are set through environment variables
+(Using [`dotenv`](https://github.com/motdotla/dotenv)).
+You can set these by creating a file `/.env` in this directory. Look at the file
 `.env.defaults` to see how `.env` needs to be formatted. Default configuration
 options are also loaded from `.env.defaults`.
 
