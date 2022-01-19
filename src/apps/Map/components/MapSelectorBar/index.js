@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
+import Brace from '~/apps/Map/components/Brace';
 import { orientation, media } from '~/styles/utils';
 
 import HBILegend from './HBILegend';
 import PlanningLegend from './PlanningLegend';
-// import Brace from '~/apps/Map/components/Brace';
 
 let embedModeActive;
 
@@ -24,11 +24,11 @@ const MapLegendWrapper = styled.div`
   margin: ${getEmbedStatus};
 
   ${media.s`
-    order: 1;
+    order: 2;
     `}
 
   ${media.m`
-    margin: 0;
+    margin: auto 0;
     min-width: 300px;
   `}
   
@@ -37,11 +37,15 @@ const MapLegendWrapper = styled.div`
     `};
 `;
 
-/* const BraceWrapper = styled.div`
+const BraceWrapper = styled.div`
+  ${media.m`
+    order: 1
+  `}
+
   ${orientation.landscape`
     display: none;
   `}
-`; */
+`;
 
 class MapSelectorBar extends PureComponent {
   getLegendComponent = () => {
@@ -63,6 +67,11 @@ class MapSelectorBar extends PureComponent {
         <MapLegendWrapper>
           <LegendComponent {...this.props} />
         </MapLegendWrapper>
+        {!this.props.isEmbedMode && (
+          <BraceWrapper>
+            <Brace type={this.props.type === 'hbi' ? 'zustand' : 'planung'} />
+          </BraceWrapper>
+        )}
       </>
     );
   }
