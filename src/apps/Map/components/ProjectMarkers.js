@@ -52,23 +52,20 @@ class ProjectMarkers extends PureComponent {
     const TEMPORARY_PLANNINGS_PHASE_INDEX = 4;
     const phaseIndex = phasesOrder.indexOf(marker.phase);
 
-    if (this.props.onlyPopupbikelanes) {
-      if (marker.phase !== 'inactive') return false;
-    } else {
-      // Don't show markers whose phase is not active in filterPlannings
-      if (
-        !this.props.filterPlannings[phaseIndex] &&
-        phaseIndex !== TEMPORARY_PLANNINGS_PHASE_INDEX
-      ) {
-        return false;
-      }
+    // Don't show markers whose phase is not active in filterPlannings
+    if (
+      !this.props.filterPlannings[phaseIndex] &&
+      phaseIndex !== TEMPORARY_PLANNINGS_PHASE_INDEX
+    ) {
+      return false;
+    }
 
-      // Don't show temporary plannings if ready phase is disabled
-      if (
-        !this.props.filterPlannings[3] &&
-        phaseIndex === TEMPORARY_PLANNINGS_PHASE_INDEX
-      )
-        return false;
+    // Don't show temporary plannings if ready phase is disabled
+    if (
+      !this.props.filterPlannings[3] &&
+      phaseIndex === TEMPORARY_PLANNINGS_PHASE_INDEX
+    ) {
+      return false;
     }
 
     if (marker.center == null) {

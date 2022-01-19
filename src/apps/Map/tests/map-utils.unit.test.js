@@ -3,7 +3,6 @@ import config from '~/config';
 import * as utils from '../map-utils';
 import mapboxHBIFilter from './fixtures/mapboxHBIFilter.json';
 import mapBoxPlanningsFilter from './fixtures/mapboxPlanningsFilter.json';
-import mapboxPopupFilter from './fixtures/mapboxPopupFilter.json';
 
 const view = {
   zoom: true,
@@ -140,14 +139,6 @@ describe('setPlanningLegendFilter()', () => {
     };
     utils.setPlanningLegendFilter(map, [true, true, false, true]);
     expect(map.setFilter.mock.calls).toEqual(mapBoxPlanningsFilter);
-  });
-});
-
-describe('setPopupLanesFilter()', () => {
-  it('assembles correct rules for showing only popup bike lanes', () => {
-    const map = { setFilter: jest.fn() };
-    utils.setPopupLanesFilter(map);
-    expect(map.setFilter.mock.calls).toEqual(mapboxPopupFilter);
   });
 });
 

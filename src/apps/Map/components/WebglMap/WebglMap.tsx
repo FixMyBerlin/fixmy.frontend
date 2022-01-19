@@ -23,7 +23,6 @@ import {
   intersectionLayers,
   parseUrlOptions,
   setPlanningLegendFilter,
-  setPopupLanesFilter,
   standardLayersWithOverlay,
 } from '~/apps/Map/map-utils';
 import resetMap from '~/apps/Map/reset';
@@ -140,10 +139,7 @@ class Map extends PureComponent<Props, State> {
       resetMap({ zoom: this.map.getZoom() });
     }
 
-    if (
-      this.props.activeView === 'planungen' ||
-      this.props.activeView === 'popupbikelanes'
-    ) {
+    if (this.props.activeView === 'planungen') {
       Store.dispatch<any>(MapActions.loadPlanningData());
     }
 
@@ -228,11 +224,7 @@ class Map extends PureComponent<Props, State> {
         } else {
           setCursorNone();
         }
-      } else if (
-        features.length > 0 &&
-        (this.props.activeView === 'planungen' ||
-          this.props.activeView === 'popupbikelanes')
-      ) {
+      } else if (features.length > 0 && this.props.activeView === 'planungen') {
         if (projectsTarget === features[0].layer.id) {
           setCursorPointer();
         } else {
@@ -244,7 +236,7 @@ class Map extends PureComponent<Props, State> {
 
   updateLayers = () => {
     const isZustand = this.props.activeView === 'zustand';
-    let isPlanungen = this.props.activeView === 'planungen';
+    const isPlanungen = this.props.activeView === 'planungen';
 
     const hbiLayers = config.apps.map.layers.hbi;
     const projectsLayers = config.apps.map.layers.projects;
@@ -253,14 +245,7 @@ class Map extends PureComponent<Props, State> {
       toggleVisibleHbiLines(this.map, this.props.filterHbi);
     }
 
-    if (this.props.activeView === 'popupbikelanes') {
-      // Make sure that planning layers are set visible in Mapbox to be
-      // able to see popup bike lane geometries
-      isPlanungen = true;
-      setPopupLanesFilter(this.map);
-    } else {
-      setPlanningLegendFilter(this.map, this.props.filterPlannings);
-    }
+    setPlanningLegendFilter(this.map, this.props.filterPlannings);
 
     // project layers
     // toggleLayer(this.map, 'fmb-projects', false);
@@ -397,9 +382,7 @@ class Map extends PureComponent<Props, State> {
 
   render() {
     const markerData = this.props.planningData?.results;
-    const markersVisible =
-      this.props.activeView === 'planungen' ||
-      this.props.activeView === 'popupbikelanes';
+    const markersVisible = this.props.activeView === 'planungen';
 
     const isLoading =
       this.state.loading || this.props.planningDataFetchState === 'pending';
@@ -419,7 +402,6 @@ class Map extends PureComponent<Props, State> {
           active={markersVisible}
           onClick={this.handleMarkerClick}
           filterPlannings={this.props.filterPlannings}
-          onlyPopupbikelanes={this.props.activeView === 'popupbikelanes'}
         />
       </StyledMap>
     );
