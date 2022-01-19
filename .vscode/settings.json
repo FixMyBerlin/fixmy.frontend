@@ -3,21 +3,12 @@
 {
   "editor.formatOnSave": true,
   "[typescriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": true
-    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
