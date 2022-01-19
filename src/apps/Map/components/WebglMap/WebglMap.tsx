@@ -396,6 +396,7 @@ class Map extends PureComponent<Props, State> {
           visible={
             this.props.activeView === 'zustand' && this.state.indexView === true
           }
+          setView={this.setView}
         />
         <ProjectMarkers
           map={this.state.map}
