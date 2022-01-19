@@ -26,7 +26,6 @@ const StyledBraceHorizontalPlanung = styled(BraceHorizontal)`
 `;
 
 const StyledBraceWrapper = styled.div`
-  display: block;
   // This is the width of the SVG file
   width: 950px;
   position: absolute;
