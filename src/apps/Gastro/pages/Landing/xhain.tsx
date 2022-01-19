@@ -266,7 +266,7 @@ const XhainLanding = ({ district }) => (
     <Section>
       <QuoteSection>
         <Img
-          alt="Portrait Monika Hermann"
+          alt="Portrait Monika Herrmann"
           src={MayorImg}
           srcSet={`${MayorImg2} 2x, ${MayorImg3} 3x`}
         />
