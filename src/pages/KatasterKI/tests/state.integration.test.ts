@@ -17,7 +17,6 @@ import {
   testingDefaultState,
 } from '../state';
 import { ProfileResponse, Perspective, PerspectiveResponse } from '../types';
-
 import { mswServer } from '~/../jest/msw/mswServer';
 
 const nodeFetch = require('node-fetch');

@@ -1,4 +1,3 @@
-import { oneLine } from 'common-tags';
 import { number, func, shape, string } from 'prop-types';
 import React, { PureComponent } from 'react';
 import TextareaAutosize from 'react-autosize-textarea';
@@ -171,10 +170,11 @@ class AdditionalDataForm extends PureComponent {
           value={this.state.description}
           onChange={this.updateDescription}
           data-cy="reports-additional-comment"
-          placeholder={oneLine`
-          Beschreiben Sie hier die Situation an dem Ort Ihrer
-          Meldung oder nennen besondere Anforderungen,
-          z.B. Stellplätze für Lastenräder, die Nähe einer Kita oder ähnliches.`}
+          placeholder={
+            'Beschreiben Sie hier die Situation an dem Ort Ihrer ' +
+            'Meldung oder nennen besondere Anforderungen, ' +
+            'z.B. Stellplätze für Lastenräder, die Nähe einer Kita oder ähnliches.'
+          }
         />
         <Hint
           emphasize={this.state.description.length === maxDescriptionLength}

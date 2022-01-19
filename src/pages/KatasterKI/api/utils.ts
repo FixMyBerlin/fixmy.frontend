@@ -36,7 +36,7 @@ export const marshallMultiChoice = (
   };
 };
 
-interface getEndpointURL {
+interface GetEndpointURL {
   (
     endpoint: 'profile' | 'perspective',
     sessionId: string,
@@ -50,7 +50,7 @@ interface getEndpointURL {
  *
  * @param endpoint name of the endpoint from config.katasterKI.api
  */
-export const getEndpointURL: getEndpointURL = (
+export const getEndpointURL: GetEndpointURL = (
   endpoint,
   sessionId,
   sceneID

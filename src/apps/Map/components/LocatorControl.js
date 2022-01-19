@@ -1,4 +1,3 @@
-import { oneLine } from 'common-tags';
 import debug from 'debug';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
@@ -38,10 +37,10 @@ const locateErrors = {
   TIMEOUT: 3,
 };
 
-const userFeedback = oneLine`Wenn Sie sich orten lassen wollen, müssen Sie einer Ortung zustimmen.
-  Sie können die Entscheidung, Ihren Standort zu teilen, in den Einstellungen
-  des Browsers rückgängig machen.
-`;
+const userFeedback =
+  'Wenn Sie sich orten lassen wollen, müssen Sie einer Ortung zustimmen.' +
+  'Sie können die Entscheidung, Ihren Standort zu teilen, in den Einstellungen' +
+  'des Browsers rückgängig machen.';
 
 const LocatorControl = ({
   position,

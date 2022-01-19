@@ -6,7 +6,6 @@ import store from '~/store';
 import { ApiError, TimeoutError } from '../errors';
 import request from '../request';
 import { get, patch, post } from '../shorthands';
-
 import { mswServer } from '~/../jest/msw/mswServer';
 
 const SAMPLE_ROUTE = 'fakeEndpoint';

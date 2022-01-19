@@ -19,6 +19,7 @@ export interface State {
   };
 }
 
+// eslint-disable-next-line no-shadow
 export enum RequestState {
   waiting = 'waiting',
   pending = 'pending',
@@ -40,7 +41,10 @@ const initialState = {
   },
 };
 
-export default function reducer(state: State = initialState, action: Action) {
+export default function reducer(
+  state: State = initialState,
+  action: Action = { type: null }
+) {
   switch (action.type) {
     case SET_KIEZE:
       return {

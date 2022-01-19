@@ -11,8 +11,8 @@ import { PLANNING_PHASES, HBI_STOPS } from './constants';
 // eslint-disable-next-line
 /// <reference lib="dom" />
 
-type mapboxFilter = any[];
-type sideKey = 'side0_' | 'side1_' | 'side2_';
+type MapboxFilter = any[];
+type SideKey = 'side0_' | 'side1_' | 'side2_';
 
 const logger = debug('fmc:map:utils');
 
@@ -161,7 +161,7 @@ export function setPopupLanesFilter(map: mapboxgl.Map) {
  *
  * @param {*} sideKey which side's HBI value to retrieve (layer prefix)
  */
-function getHbiExpression(sideKey: sideKey | '') {
+function getHbiExpression(sideKey: SideKey | '') {
   if (sideKey === '') {
     return ['min', ...['side0_', 'side1_', 'side2_'].map(getHbiExpression)];
   }
@@ -180,9 +180,9 @@ function getHbiExpression(sideKey: sideKey | '') {
  * @param {Array<boolean>} filters Four booleans describe which hbi states are visible
  */
 function getHbiFilterRules(
-  sideKey: sideKey | '',
+  sideKey: SideKey | '',
   hbiFilters: boolean[]
-): mapboxFilter[] {
+): MapboxFilter[] {
   const expression = getHbiExpression(sideKey);
   const activeHbiStops = HBI_STOPS.filter((_, i) => hbiFilters[i]);
   return activeHbiStops.map((hbiStop) => ['==', expression, hbiStop.value]);
@@ -190,7 +190,7 @@ function getHbiFilterRules(
 
 export function toggleVisibleHbiLines(
   map: mapboxgl.Map,
-  hbiFilter: mapboxFilter
+  hbiFilter: MapboxFilter
 ): void {
   const side2rules = getHbiFilterRules('side2_', hbiFilter);
 
@@ -199,9 +199,16 @@ export function toggleVisibleHbiLines(
   map.setFilter(config.apps.map.layers.hbi.xSide1, ['any', ...side2rules]);
 }
 
+/**
+ * Takes a Point or MultilineString feature and returns its center
+ * coordinates. Returns `defaultCenter` if `geometry` is either null or not a
+ * Point/MultiLineString geometry.
+ */
 export function getCenterFromGeom(geometry: any, defaultCenter = null) {
   let lineString = geometry;
   if (geometry && geometry.coordinates) {
+    if (geometry.type === 'Point') return geometry.coordinates;
+
     if (geometry.type === 'MultiLineString') {
       lineString = turfLineString(
         geometry.coordinates.reduce((res, coord) => res.concat(coord)),

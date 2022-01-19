@@ -1,9 +1,10 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const Path = require('path');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const Webpack = require('webpack');
+const ProgressPlugin = require('webpack').ProgressPlugin;
 
 const common = require('./webpack.common.js');
 
@@ -11,14 +12,19 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'eval-source-map',
   devServer: {
-    clientLogLevel: 'silent',
     historyApiFallback: true,
     host: '0.0.0.0',
+    port: '8080',
     hot: true,
-    overlay: true,
-    publicPath: '/',
-    progress: true,
-    stats: 'minimal',
+    client: {
+      logging: 'none',
+      overlay: false,
+      progress: true,
+    },
+    devMiddleware: {
+      publicPath: '/',
+      stats: 'minimal',
+    },
   },
   cache: true,
   output: {
@@ -31,23 +37,17 @@ module.exports = merge(common, {
       title: 'FixMyBerlin DevServer',
       template: Path.resolve(__dirname, '../src/index.html'),
     }),
-    new CopyWebpackPlugin([
-      { from: Path.resolve(__dirname, '../public/lab'), to: 'lab' },
-    ]),
-    new ReactRefreshWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [{ from: Path.resolve(__dirname, '../public/lab'), to: 'lab' }],
+    }),
+    new ReactRefreshWebpackPlugin({
+      overlay: false,
+    }),
+    new ESLintPlugin({ cache: true }),
+    new ProgressPlugin(),
   ],
   module: {
     rules: [
-      {
-        test: /\.[j|t]sx?$/,
-        include: Path.resolve(__dirname, '../src'),
-        enforce: 'pre',
-        loader: 'eslint-loader',
-        options: {
-          emitWarning: true,
-          cache: false,
-        },
-      },
       {
         test: /\.css$/,
         use: [

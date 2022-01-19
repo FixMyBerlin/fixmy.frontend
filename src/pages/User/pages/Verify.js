@@ -72,15 +72,13 @@ const UserVerify = ({ match, location }) => {
       <VerifyImage src={verifyImage} />
 
       {!serverError && (
-        <>
-          <ButtonWrapper>
-            <Link to="/">
-              <Button style={{ marginTop: 25, marginBottom: 10 }}>
-                Zur Startseite
-              </Button>
-            </Link>
-          </ButtonWrapper>
-        </>
+        <ButtonWrapper>
+          <Link to="/">
+            <Button style={{ marginTop: 25, marginBottom: 10 }}>
+              Zur Startseite
+            </Button>
+          </Link>
+        </ButtonWrapper>
       )}
 
       {serverError && <ErrorMessage>{serverError}</ErrorMessage>}

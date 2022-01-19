@@ -28,7 +28,7 @@ const StatsLoader = ({ component: Component, animate = false, ...props }) => {
       return () => {};
     }
 
-    let timeout: number;
+    let timeout: NodeJS.Timeout;
     const increaseCountup = () => {
       setCountup(
         (oldCountup) => oldCountup + COUNTUP_ACCELERATION * oldCountup

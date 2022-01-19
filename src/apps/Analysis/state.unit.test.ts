@@ -12,7 +12,6 @@ import reducer, {
   setPhaseFilter,
   setSort,
 } from './state';
-
 import { mswServer } from '~/../jest/msw/mswServer';
 
 const mockStore = reduxMockStore<AnalysisState>([thunk]);

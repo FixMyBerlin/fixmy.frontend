@@ -19,7 +19,7 @@ const thanksImage =
   config.region === 'aachen' ? thanksImageAachen : thanksImageFMB;
 
 class ReportSubmitted extends PureComponent {
-  componentDidMount = async () => {
+  componentDidMount() {
     this.unlistenToHistory = history.listen((location, action) => {
       if (action === 'POP') {
         // if this is an attempt to navigate backwards ..
@@ -29,10 +29,17 @@ class ReportSubmitted extends PureComponent {
     });
 
     if (this.props.token) {
-      const userData = await apiUser(this.props.token);
-      await addUserToReport(this.props.reportId, userData.id);
+      const handleReportSubmitted = async () => {
+        try {
+          const user = await apiUser.getUser(this.props.token);
+          await addUserToReport(this.props.reportId, user.id);
+        } catch (err) {
+          logger.error(err);
+        }
+      };
+      handleReportSubmitted();
     }
-  };
+  }
 
   componentWillUnmount() {
     this.unlistenToHistory();
