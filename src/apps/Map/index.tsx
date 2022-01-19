@@ -7,14 +7,11 @@ import {
   withRouter,
 } from 'react-router-dom';
 import styled from 'styled-components';
-
 import ErrorMessage from '~/components/ErrorMessage';
 import { Logo as FMBLogo } from '~/components2/Logo';
 import config from '~/config';
 import Store, { RootState } from '~/store';
-import { matchMediaSize, breakpoints, media } from '~/styles/utils';
-
-import * as MapActions from './MapState';
+import { breakpoints, matchMediaSize, media } from '~/styles/utils';
 import { DetailPanel } from './components/DetailView';
 import ProjectDetail from './components/DetailView/ProjectDetail';
 import { SectionDetail } from './components/DetailView/SectionDetail';
@@ -25,6 +22,7 @@ import MapControl from './components/MapControl';
 import { MapPopup } from './components/MapPopup';
 import SearchBar from './components/SearchBar';
 import { WebglMap } from './components/WebglMap';
+import * as MapActions from './MapState';
 
 const Wrapper = styled.div`
   height: 100%;
@@ -128,7 +126,7 @@ const MapView = ({
           )}
           {!isEmbedMode && (
             <MapControl position="top-right">
-              <StyledFMBLogo showBetaIcon width={67} />
+              <StyledFMBLogo width={67} />
             </MapControl>
           )}
           {isEmbedMode && <FMBCredits />}
