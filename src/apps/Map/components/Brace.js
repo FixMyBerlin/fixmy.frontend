@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import BraceHorizontal from '~/images/selector-brace.svg';
 import BraceVertical from '~/images/selector-brace_vertical.svg';
-
 import { media } from '~/styles/utils';
 
 const StyledBraceHorizontalZustand = styled(BraceHorizontal)`
@@ -48,7 +47,6 @@ const StyledBraceVertical = styled(BraceVertical)`
   height: 100%;
 `;
 
-
 export default (props) => {
   return (
     <StyledBraceWrapper>
@@ -57,7 +55,7 @@ export default (props) => {
       ) : (
         <StyledBraceHorizontalPlanung />
       )}
-      <StyledBraceVertical/>
+      <StyledBraceVertical />
     </StyledBraceWrapper>
   );
 };
