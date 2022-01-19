@@ -116,7 +116,7 @@ const MapView = ({
 
       <MapWrapper>
         <SearchBar />
-        <MapLegend isPopupVisible={false} isDetailOpen={false} />
+        {/* <MapLegend isPopupVisible={false} isDetailOpen={false} /> */}
         <WebglMap
           key="MapComponent"
           calculatePopupPosition={calculatePopupPosition}
