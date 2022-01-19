@@ -15,7 +15,7 @@ import {
   animateView,
   filterLayersById,
   getCenterFromGeom,
-  intersectionLayers,
+  intersectionLayersWithOverlay,
   parseUrlOptions,
   setPlanningLegendFilter,
   setView,
@@ -258,11 +258,9 @@ class Map extends PureComponent<Props, State> {
     );
 
     // hbi layers
-    const combinedHbiLayers =
-      standardLayersWithOverlay.concat(intersectionLayers);
-    combinedHbiLayers.forEach((layer) =>
-      toggleLayer(this.map, hbiLayers[layer], isZustand)
-    );
+    standardLayersWithOverlay
+      .concat(intersectionLayersWithOverlay)
+      .forEach((layer) => toggleLayer(this.map, hbiLayers[layer], isZustand));
 
     // other layers
     toggleLayer(
