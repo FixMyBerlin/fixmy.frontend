@@ -1,27 +1,63 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import BraceHorizontalZustand from '~/images/brace-horizontal-zustand.svg';
-// import BraceHorizontalPlanung from '~/images/brace-horizontal-planung.svg';
+import BraceHorizontal from '~/images/selector-brace.svg';
+import BraceVertical from '~/images/selector-brace_vertical.svg';
 
-import BraceHorizontalPlanung from '~/images/planung-brace.svg';
-import BraceHorizontalZustand from '~/images/zustand-brace.svg';
+import { media } from '~/styles/utils';
 
-const StyledBraceHorizontalZustand = styled(BraceHorizontalZustand)`
+const StyledBraceHorizontalZustand = styled(BraceHorizontal)`
   display: block;
   width: 100%;
-  margin: 0.5em 0;
+  margin-left: -30px;
+
+  ${media.m`
+    display: none;
+  `}
 `;
 
-const StyledBraceHorizontalPlanung = styled(BraceHorizontalPlanung)`
+const StyledBraceHorizontalPlanung = styled(BraceHorizontal)`
   display: block;
   width: 100%;
-  margin: 0.5em 0;
+  margin-left: 30px;
+
+  ${media.m`
+    display: none;
+  `}
 `;
 
-export default (props) =>
-  props.type === 'zustand' ? (
-    <StyledBraceHorizontalZustand />
-  ) : (
-    <StyledBraceHorizontalPlanung />
+const StyledBraceWrapper = styled.div`
+  display: block;
+  // This is the width of the SVG file
+  width: 950px;
+  position: absolute;
+  left: 50%;
+  margin-left: -475px;
+  overflow: hidden;
+
+  ${media.m`
+    width: 100%;
+    height: 200px;
+    position: static;
+    margin: -50px 0;
+  `}
+`;
+
+const StyledBraceVertical = styled(BraceVertical)`
+  display: block;
+  height: 100%;
+`;
+
+
+export default (props) => {
+  return (
+    <StyledBraceWrapper>
+      {props.type === 'zustand' ? (
+        <StyledBraceHorizontalZustand />
+      ) : (
+        <StyledBraceHorizontalPlanung />
+      )}
+      <StyledBraceVertical/>
+    </StyledBraceWrapper>
   );
+};
