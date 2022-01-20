@@ -121,7 +121,7 @@ const menuConfig: Menu = {
       type: 'link',
       label: 'Ergebnisse der Straßencheck-Umfrage',
       icon: ResearchIcon,
-      link: routes.research.landing,
+      link: routes.research.survey,
       border: true,
     },
     {
