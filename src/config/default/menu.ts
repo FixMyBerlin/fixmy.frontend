@@ -113,7 +113,7 @@ const menuConfig: Menu = {
     {
       type: 'external',
       label: 'Angebote für Kommunen',
-      href: 'https://fixmycity.de',
+      href: 'https://www.fixmycity.de/',
       icon: KommunenIcon,
       border: true,
     },
