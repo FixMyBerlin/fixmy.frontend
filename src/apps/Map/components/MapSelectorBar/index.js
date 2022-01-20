@@ -8,33 +8,17 @@ import { orientation, media } from '~/styles/utils';
 import HBILegend from './HBILegend';
 import PlanningLegend from './PlanningLegend';
 
-let embedModeActive;
-
-function getEmbedStatus() {
-  if (embedModeActive) {
-    return '0';
-  }
-  return '0 auto';
-}
-
-function getEmbedStatusForM() {
-  if (embedModeActive) {
-    return 'auto';
-  }
-  return 'auto 0';
-}
-
 const MapLegendWrapper = styled.div`
   max-width: 300px;
   height: 70px;
-  margin: ${getEmbedStatus};
+  margin: ${(props) => (props.embedMode ? 'auto' : '0 auto')};
 
   ${media.s`
     order: 2;
   `}
 
   ${media.m`
-    margin: ${getEmbedStatusForM};
+  margin: ${(props) => (props.embedMode ? 'auto' : 'auto 0')};
     min-width: 300px;
   `}
 
@@ -66,11 +50,10 @@ class MapSelectorBar extends PureComponent {
   };
 
   render() {
-    embedModeActive = this.props.isEmbedMode;
     const LegendComponent = this.getLegendComponent();
     return (
       <>
-        <MapLegendWrapper>
+        <MapLegendWrapper embedMode={this.props.isEmbedMode}>
           <LegendComponent {...this.props} />
         </MapLegendWrapper>
         {!this.props.isEmbedMode && (
