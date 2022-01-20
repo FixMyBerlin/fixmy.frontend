@@ -6,7 +6,6 @@ import {
   ImageFull,
   Intro,
 } from '~/components2/Article';
-// import Image1 from './images/research-1.jpg';
 import LogoZES from './components/Logos/assets/logo-zes.png';
 import LogoZES2 from './components/Logos/assets/logo-zes@2x.png';
 import LogoZES3 from './components/Logos/assets/logo-zes@3x.png';
