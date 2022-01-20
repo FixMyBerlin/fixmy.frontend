@@ -7,6 +7,7 @@ import MenuButton from '~/components/MenuButton';
 import config from '~/config';
 import Store from '~/store';
 import { media } from '~/styles/utils';
+import SearchIconImage from '~/images/search.png';
 
 const Form = styled.form`
   width: 100%;
@@ -40,6 +41,17 @@ const SearchInput = styled.input`
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   text-align: center;
+  position: absolute;
+`;
+
+const SearchIcon = styled.span`
+  background-image: url('${SearchIconImage}');
+  background-repeat: no-repeat;
+  width: 53px;
+  height: 53px;
+  position: absolute;
+  right: 0;
+  background-position: center center;
 `;
 
 const SearchMenuBtn = styled(MenuButton)`
@@ -53,7 +65,7 @@ const closeSize = 20;
 const SearchReset = styled.div`
   position: absolute;
   right: 10px;
-  top: 12px;
+  top: 15px;
   border-radius: 50%;
   width: ${closeSize}px;
   height: ${closeSize}px;
@@ -111,6 +123,7 @@ class SearchBar extends PureComponent {
               placeholder="Suche einen Ort"
               onChange={this.onChange}
             />
+            {!this.state.inputValue ? <SearchIcon /> : null}
           </Form>
           {this.state.inputValue ? (
             <SearchReset onClick={this.onInputReset}>×</SearchReset>
