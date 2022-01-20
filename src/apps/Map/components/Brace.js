@@ -5,20 +5,10 @@ import BraceHorizontal from '~/images/selector-brace.svg';
 import BraceVertical from '~/images/selector-brace_vertical.svg';
 import { media } from '~/styles/utils';
 
-const StyledBraceHorizontalZustand = styled(BraceHorizontal)`
+const StyledBraceHorizontal = styled(BraceHorizontal)`
   display: block;
   width: 100%;
-  margin-left: -30px;
-
-  ${media.m`
-    display: none;
-  `}
-`;
-
-const StyledBraceHorizontalPlanung = styled(BraceHorizontal)`
-  display: block;
-  width: 100%;
-  margin-left: 30px;
+  margin-left: ${(props) => props.pixel};
 
   ${media.m`
     display: none;
@@ -50,9 +40,9 @@ export default (props) => {
   return (
     <StyledBraceWrapper>
       {props.type === 'zustand' ? (
-        <StyledBraceHorizontalZustand />
+        <StyledBraceHorizontal pixel="-30px" />
       ) : (
-        <StyledBraceHorizontalPlanung />
+        <StyledBraceHorizontal pixel="30px" />
       )}
       <StyledBraceVertical />
     </StyledBraceWrapper>
