@@ -152,6 +152,7 @@ describe('toggleVisibleHbiLines', () => {
             xCenter: 'intersection-center',
             xSide0: 'intersection-side0',
             xSide1: 'intersection-side1',
+            xOverlay: 'intersection-overlayLine',
           },
         },
       },

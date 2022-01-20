@@ -20,7 +20,7 @@ const logger = debug('fmc:map:utils');
 export const intersectionLayers = ['xCenter', 'xSide0', 'xSide1'];
 export const intersectionLayersWithOverlay = [
   ...intersectionLayers,
-  'overlayLine',
+  'xOverlay',
 ];
 export const standardLayers = ['center', 'side0', 'side1'];
 export const standardLayersWithOverlay = [...standardLayers, 'overlayLine'];
@@ -176,6 +176,7 @@ export function toggleVisibleHbiLines(
   map.setFilter(config.apps.map.layers.hbi.xCenter, ['any', ...side2rules]);
   map.setFilter(config.apps.map.layers.hbi.xSide0, ['any', ...side2rules]);
   map.setFilter(config.apps.map.layers.hbi.xSide1, ['any', ...side2rules]);
+  map.setFilter(config.apps.map.layers.hbi.xOverlay, ['any', ...side2rules]);
 }
 
 /**
