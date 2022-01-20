@@ -176,15 +176,15 @@ describe('getCenterFromGeom', () => {
     const geometry = {
       type: 'LineString',
       coordinates: [
-        [-122.48369693756104, 37.83381888486939],
-        [-122.48348236083984, 37.83317489144141],
-        [-122.48339653015138, 37.83270036637107],
-        [-122.48356819152832, 37.832056363179625],
+        [0,0],
+        [0,5],
+        [5,5],
+        [10,5],
+        [10,10]
       ],
     };
     const center = utils.getCenterFromGeom(geometry);
-    expect(typeof center[0]).toEqual('number');
-    expect(typeof center[1]).toEqual('number');
+    expect(center).toEqual([5,5])
   });
 
   it('returns the original geometry if given a point', () => {
