@@ -104,6 +104,13 @@ const menuConfig: Menu = {
       label: 'Radbügel-Meldedialog',
       icon: ReportsIcon,
       link: routes.reports.landing,
+      border: true,
+    },
+    {
+      type: 'link',
+      label: 'Schulwegsicherheit',
+      icon: ResearchIcon,
+      link: routes.wayToSchool.xhain,
       border: false,
     },
     {

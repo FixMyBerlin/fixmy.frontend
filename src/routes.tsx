@@ -20,6 +20,7 @@ import ResetPassword from '~/pages/User/pages/ResetPassword';
 import Signup from '~/pages/User/pages/Signup';
 import UserVerify from '~/pages/User/pages/Verify';
 import ZESPlusResearch from '~/pages/ZESPlus-Research';
+import XhainWayToSchool from './pages/XhainWayToSchool';
 
 import { RootState } from './store';
 
@@ -142,6 +143,22 @@ const Routes = ({ token }) => (
     )}
 
     {config.districts && Object.keys(config.districts).map(District)}
+
+    {/* XHain Report Schulwegsicherheit */}
+    {/* Note: Second separate Guard is required, will not work with `<><!-- two routes --></>` */}
+    {config.routes.wayToSchool && (
+      <Route
+        exact
+        path={config.routes.wayToSchool.landing}
+        render={() => <Redirect to={config.routes.wayToSchool.xhain} />}
+      />
+    )}
+    {config.routes.wayToSchool && (
+      <Route
+        path={config.routes.wayToSchool.xhain}
+        component={XhainWayToSchool}
+      />
+    )}
 
     {/* Research pages */}
     {config.routes.research && (

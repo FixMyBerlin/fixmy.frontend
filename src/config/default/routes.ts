@@ -19,6 +19,9 @@ interface RouteConfig {
   research?: {
     [page: string]: string;
   };
+  wayToSchool?: {
+    [page: string]: string;
+  };
   // mandatory routes
   signup: string;
   login: string;
@@ -60,6 +63,11 @@ const routes: RouteConfig = {
     streets: '/friedrichshain-kreuzberg/spielstrassen/kieze',
     register: '/friedrichshain-kreuzberg/spielstrassen/:slug',
     thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke',
+  },
+  // Note: React router does not like it if I use /friedrichshain-kreuzberg/schulwegsicherheit here, so we turn it around.
+  wayToSchool: {
+    landing: '/schulwegsicherheit',
+    xhain: '/schulwegsicherheit/friedrichshain-kreuzberg',
   },
   signup: '/registrieren',
   login: '/anmelden',
