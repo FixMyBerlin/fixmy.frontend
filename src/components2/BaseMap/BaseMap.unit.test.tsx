@@ -1,10 +1,8 @@
 import { screen } from '@testing-library/dom';
 import mapboxgl from 'mapbox-gl';
 import React from 'react';
-
 import { render } from '~/utils/test-utils';
-
-import { BaseMap } from '.';
+import { BaseMap } from './BaseMap';
 
 describe('<BaseMap />', () => {
   it('renders', () => {

@@ -1,7 +1,6 @@
 import MapboxGL from 'mapbox-gl';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-
 import config from '~/apps/Gastro/config';
 import logger from '~/utils/logger';
 
@@ -10,11 +9,11 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-interface Props extends Partial<MapboxGL.MapboxOptions> {
+type BaseMapProps = Partial<MapboxGL.MapboxOptions> & {
   onInit?: (arg0: MapboxGL.Map) => void;
   className?: string;
   mapboxStyle?: string;
-}
+};
 
 const initMap = ({
   setMap,
@@ -57,7 +56,7 @@ const initMap = ({
  * @param props.mapboxStyle - Mapbox style URL
  * @param props - extends the props of MapboxGL.Map
  */
-const BaseMap: React.FC<Props> = ({
+export const BaseMap: React.FC<BaseMapProps> = ({
   onInit,
   className,
   center,
@@ -87,6 +86,14 @@ const BaseMap: React.FC<Props> = ({
     if (map == null || center == null) return;
 
     map.setCenter(center);
+
+    // TODO Tobias, remove
+    console.log(
+      'Map',
+      mapContainer.current,
+      mapboxStyle,
+      map.getStyle().layers
+    );
   }, [map, center]);
 
   return (
@@ -99,5 +106,3 @@ const BaseMap: React.FC<Props> = ({
     />
   );
 };
-
-export default BaseMap;

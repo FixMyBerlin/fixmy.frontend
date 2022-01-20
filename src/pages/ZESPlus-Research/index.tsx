@@ -1,18 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import {
-  ArticleWrapper,
   ArticleHeader,
-  Intro,
+  ArticleWrapper,
   ImageFull,
+  Intro,
 } from '~/components2/Article';
-
 // import Image1 from './images/research-1.jpg';
-import Logos from './components/Logos/Logos';
 import LogoZES from './components/Logos/assets/logo-zes.png';
 import LogoZES2 from './components/Logos/assets/logo-zes@2x.png';
 import LogoZES3 from './components/Logos/assets/logo-zes@3x.png';
+import Logos from './components/Logos/Logos';
 import SectionIntroduction from './sections/01_introduction';
 import SectionData from './sections/02_data';
 import SectionTopicalMaps from './sections/03_topical_maps';
@@ -48,7 +46,7 @@ const Logo = styled.img`
   height: 42px;
 `;
 
-const Research = () => (
+const ZESPlusResearch = () => (
   <Wrapper
     hasToc
     tocTitle="Inhalt"
@@ -90,4 +88,4 @@ const Research = () => (
   </Wrapper>
 );
 
-export default Research;
+export default ZESPlusResearch;

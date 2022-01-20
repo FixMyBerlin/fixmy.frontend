@@ -1,20 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { media } from '~/styles/utils';
+import { InnerImageProps, InnerImg } from './InnerImage';
 
-import { ImageWrapperFull } from './ImageFull';
-import InnerImg, { InnerImageProps } from './InnerImage';
-
-const ImageWrapperSimple = styled(ImageWrapperFull)`
+const ImageWrapperSimple = styled.div`
+  margin: 0 auto;
+  position: relative;
   max-width: 518px;
-
+  ${media.m`
+    margin: 3em auto;
+  `}
   ${media.l`
     max-width: 598px;
   `}
 `;
 
-const Image = ({
+export const Image = ({
   source,
   alt,
   role = null,
@@ -31,5 +32,3 @@ const Image = ({
     />
   </ImageWrapperSimple>
 );
-
-export default Image;

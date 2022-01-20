@@ -1,18 +1,17 @@
 import {
-  TextField,
-  Snackbar,
   List,
   ListItem,
-  ListItemText,
   ListItemIcon,
+  ListItemText,
   Paper,
+  Snackbar,
+  TextField,
 } from '@material-ui/core';
 import ErrorIcon from '@material-ui/icons/Error';
 import LocationIcon from '@material-ui/icons/LocationOn';
 import MapboxGL from 'mapbox-gl';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
 import { fetchSuggestions } from '~/components/AutocompleteGeocoder/apiService';
 import { BaseMap } from '~/components2/BaseMap';
 import config from '~/config';

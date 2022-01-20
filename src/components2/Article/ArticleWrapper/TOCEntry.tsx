@@ -5,10 +5,10 @@ import styled, { StyledProps } from 'styled-components';
 import config from '~/config';
 import { media } from '~/styles/utils';
 
-interface TOCEntryWrapperProps {
+type TOCEntryWrapperProps = {
   active: boolean;
   className?: string;
-}
+};
 
 const TOCEntryWrapper = styled.a<TOCEntryWrapperProps>`
   margin-bottom: 10px;
@@ -63,7 +63,19 @@ const padIndex = (index: number) => {
   return index < 10 ? `0${index}` : index;
 };
 
-const TOCEntry = ({ index, entry, active = false, enumerate = true }) => {
+type Props = {
+  index: number;
+  entry: any; // TODO
+  active: boolean;
+  enumerate: boolean;
+};
+
+export const TOCEntry: React.FC<Props> = ({
+  index,
+  entry,
+  active = false,
+  enumerate = true,
+}) => {
   const goToEntry = () => {
     const headlineDomNode = document.querySelector(`.toc__anchor-${index}`);
     if (headlineDomNode) {
@@ -94,5 +106,3 @@ const TOCEntry = ({ index, entry, active = false, enumerate = true }) => {
     </TOCEntryWrapper>
   );
 };
-
-export default TOCEntry;

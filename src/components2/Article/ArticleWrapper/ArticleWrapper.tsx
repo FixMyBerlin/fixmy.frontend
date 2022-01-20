@@ -1,23 +1,21 @@
 import debug from 'debug';
-import React, { useState, useEffect, ReactElement } from 'react';
+import React, { useEffect, useState } from 'react';
 import { InView } from 'react-intersection-observer';
 import styled from 'styled-components';
-
 import { Header } from '~/components2/Header';
 import { LocaleSwitcher } from '~/components2/LocaleSwitcher';
 import { MenuButton } from '~/components2/MenuButton';
 import config from '~/config';
 import { media } from '~/styles/utils';
-
-import TOC from './TOC';
+import { TOC } from './TOC';
 
 const log = debug('fmc:Article:ArticleWrapper');
 
-interface PageProps {
+type Props = {
   bgPattern?: string;
-}
+};
 
-const Page = styled.main<PageProps>`
+const Page = styled.main<Props>`
   background: url(${(props) => props.bgPattern});
   min-height: 100%;
 `;
@@ -117,7 +115,7 @@ const DesktopTOC = styled(TOC)`
     `}
 `;
 
-const ArticleWrapper = ({
+export const ArticleWrapper = ({
   bannerTitle,
   logo = null,
   bgPattern = null,
@@ -178,7 +176,7 @@ const ArticleWrapper = ({
   }, [visibleSections]);
 
   const tocChildren = React.Children.toArray(children).filter(
-    (child: ReactElement) => child.props.toc
+    (child: React.ReactElement) => child.props.toc
   );
 
   return (
@@ -197,12 +195,6 @@ const ArticleWrapper = ({
             const appendToc =
               child.type.displayName === 'Introduction' && hasToc;
 
-            const tocProps = {
-              activeIndex: activeTocIndex,
-              entries: children,
-              enumerate: enumerateToc,
-            };
-
             if (!child.props.toc) {
               return (
                 <>
@@ -210,7 +202,9 @@ const ArticleWrapper = ({
                     <DesktopTOC
                       hasActiveState={tocHasActiveState}
                       title={tocTitle}
-                      {...tocProps}
+                      activeIndex={activeTocIndex}
+                      entries={children}
+                      enumerate={enumerateToc}
                     />
                   )}
                   {child}
@@ -218,7 +212,9 @@ const ArticleWrapper = ({
                     <MobileTOC
                       hasActiveState={tocHasActiveState}
                       title={tocTitle}
-                      {...tocProps}
+                      activeIndex={activeTocIndex}
+                      entries={children}
+                      enumerate={enumerateToc}
                     />
                   )}
                 </>
@@ -226,7 +222,7 @@ const ArticleWrapper = ({
             }
 
             const tocIndex = tocChildren.findIndex(
-              (c: ReactElement) => c.props.toc === child.props.toc
+              (c: React.ReactElement) => c.props.toc === child.props.toc
             );
 
             return (
@@ -236,9 +232,21 @@ const ArticleWrapper = ({
                   onViewChange(inView, entry, tocIndex)
                 }
               >
-                {appendToc && <DesktopTOC {...tocProps} />}
+                {appendToc && (
+                  <DesktopTOC
+                    activeIndex={activeTocIndex}
+                    entries={children}
+                    enumerate={enumerateToc}
+                  />
+                )}
                 {child}
-                {appendToc && <MobileTOC {...tocProps} />}
+                {appendToc && (
+                  <MobileTOC
+                    activeIndex={activeTocIndex}
+                    entries={children}
+                    enumerate={enumerateToc}
+                  />
+                )}
               </InView>
             );
           })}
@@ -247,5 +255,3 @@ const ArticleWrapper = ({
     </Page>
   );
 };
-
-export default ArticleWrapper;

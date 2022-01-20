@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-
 import { media } from '~/styles/utils';
-
 import { Paragraph } from './Paragraph';
 
-const Intro = styled(Paragraph)`
+type Props = React.FC & { displayName?: string };
+
+export const Intro: Props = styled(Paragraph)`
   font-weight: 700;
   line-height: 1.3;
 
@@ -18,5 +18,3 @@ const Intro = styled(Paragraph)`
 `;
 
 Intro.displayName = 'Introduction';
-
-export default Intro;

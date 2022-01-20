@@ -1,9 +1,6 @@
-import '~/utils/polyfills';
-
 import React from 'react';
-
+import '~/utils/polyfills';
 import { render } from '~/utils/test-utils';
-
 import { Example } from './Article.stories';
 
 describe('Article example', () => {

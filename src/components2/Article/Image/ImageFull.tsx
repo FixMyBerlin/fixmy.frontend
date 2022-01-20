@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
 
-import InnerImg, { InnerImageProps } from './InnerImage';
+import { InnerImg, InnerImageProps } from './InnerImage';
 
-export const ImageWrapperFull = styled.div`
+const ImageWrapperFull = styled.div`
   margin: 0 auto;
   position: relative;
 
@@ -32,5 +32,3 @@ export const ImageFull = ({
     />
   </ImageWrapperFull>
 );
-
-export default ImageFull;

@@ -1,24 +1,25 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import Heading from '~/components2/Article/Typography/Heading';
+import { Heading } from '~/components2/Article/Typography/Heading';
 import { LocaleSwitcher } from '~/components2/LocaleSwitcher';
 import { media } from '~/styles/utils';
 import { LocaleCode } from '~/types';
 
-import ArticleMeta from './ArticleMeta';
-import Kicker from './Kicker';
+import { ArticleMeta } from './ArticleMeta';
 
-interface ArticleHeaderProps {
+type Props = React.FC<{
   kicker?: string;
-  logo?: ReactNode;
+  logo?: React.ReactNode;
   publishDate?: Date;
   author?: string;
   toc?: string;
-  children?: ReactNode;
+  children?: React.ReactNode;
   className?: string;
   locales?: LocaleCode[];
-}
+}> & {
+  displayName?: string;
+};
 
 const ArticleHeaderWrapper = styled.div`
   margin: 2em auto 1em auto;
@@ -35,7 +36,18 @@ const LogoWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
-const ArticleHeader = ({
+const Kicker = styled.div`
+  text-transform: uppercase;
+  font-size: 0.75em;
+  letter-spacing: 0.25em;
+  font-weight: 300;
+
+  ${media.s`
+    font-size: 0.88em;
+  `}
+`;
+
+export const ArticleHeader: Props = ({
   kicker,
   logo,
   publishDate,
@@ -44,7 +56,7 @@ const ArticleHeader = ({
   children,
   locales = null,
   className,
-}: ArticleHeaderProps) => {
+}) => {
   return (
     <ArticleHeaderWrapper className={className}>
       {locales && <LocaleSwitcher locales={locales} />}
@@ -57,5 +69,3 @@ const ArticleHeader = ({
 };
 
 ArticleHeader.displayName = 'ArticleHeader';
-
-export default ArticleHeader;

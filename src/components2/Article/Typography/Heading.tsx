@@ -1,22 +1,13 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import slugify from 'slugify';
 import styled from 'styled-components';
-
 import config from '~/config';
 import { media } from '~/styles/utils';
 
-interface HeadingProps {
-  as?: 'h1' | 'h2' | 'h3';
-  toc?: string;
-  tocAnchor?: string;
-  children?: ReactNode;
-  className?: string;
-}
-
-interface StyledHeadingProps {
+type StyledHeadingProps = {
   toc?: string;
   className?: string;
-}
+};
 
 const Heading1 = styled.h1<StyledHeadingProps>`
   font-size: 1.5em;
@@ -121,11 +112,22 @@ const headings = {
   h3: Heading3,
 };
 
+type AnchorWrapperProps = {
+  toc?: string | null;
+  tocAnchor?: string | null;
+  children?: React.ReactElement;
+};
+
 /**
  * Provide an anchor for accessibility if toc prop is provided
  */
-const AnchorWrapper = ({ toc, children, tocAnchor = null }) => {
-  if (toc == null) return children;
+const AnchorWrapper: React.FunctionComponent<AnchorWrapperProps> = ({
+  toc,
+  tocAnchor = null,
+  children,
+}) => {
+  if (!toc) return children;
+
   return (
     <AnchorStyle
       href={`#${slugify(tocAnchor || toc, { lower: true })}`}
@@ -137,7 +139,20 @@ const AnchorWrapper = ({ toc, children, tocAnchor = null }) => {
   );
 };
 
-const Heading = ({ as, toc, tocAnchor, children, className }: HeadingProps) => {
+type HeadingProps = {
+  as?: keyof typeof headings;
+  toc?: string | null;
+  tocAnchor?: string | null;
+  className?: string | null;
+};
+
+export const Heading: React.FC<HeadingProps> = ({
+  as,
+  toc,
+  tocAnchor,
+  children,
+  className,
+}) => {
   const HeadingComponent = headings[as] ? headings[as] : Heading1;
 
   return (
@@ -146,5 +161,3 @@ const Heading = ({ as, toc, tocAnchor, children, className }: HeadingProps) => {
     </AnchorWrapper>
   );
 };
-
-export default Heading;
