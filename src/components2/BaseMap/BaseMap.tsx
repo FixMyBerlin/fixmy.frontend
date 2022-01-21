@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 type BaseMapProps = Partial<MapboxGL.MapboxOptions> & {
   onInit?: (arg0: MapboxGL.Map) => void;
   className?: string;
-  mapboxStyle?: string;
+  mapboxStyle?: mapboxgl.MapboxOptions['style'];
 };
 
 const initMap = ({

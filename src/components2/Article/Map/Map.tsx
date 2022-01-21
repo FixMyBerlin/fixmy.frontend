@@ -5,8 +5,9 @@ import IconActivate from './smartphone-finger.svg';
 import { ActivateButton, ButtonArea, StyledMap, Wrapper } from './styles';
 
 type Props = {
-  defaultActive: boolean;
-} & MapboxGL.MapboxOptions;
+  defaultActive?: boolean;
+  mapboxStyle: mapboxgl.MapboxOptions['style'];
+} & Partial<mapboxgl.MapboxOptions>;
 
 /**
  * Map component for use in an article.

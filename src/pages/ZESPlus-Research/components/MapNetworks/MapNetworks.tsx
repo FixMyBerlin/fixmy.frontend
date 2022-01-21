@@ -21,7 +21,8 @@ import IconT from './icons/touristische.svg';
 import IconV from './icons/varianten-rsv.svg';
 import IconZES from './icons/zes.svg';
 
-const MAP_STYLE_QUALITY = 'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';
+const MAP_STYLE_QUALITY: mapboxgl.MapboxOptions['style'] =
+  'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';
 
 const MapNetworks = () => (
   <>
