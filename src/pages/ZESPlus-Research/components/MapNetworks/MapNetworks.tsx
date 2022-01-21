@@ -1,7 +1,5 @@
 import React from 'react';
-
-import { Map as ArticleMap } from '~/components2/Article';
-
+import { Map } from '~/components2/Article';
 import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../constants';
 import {
   IconWrapper,
@@ -26,7 +24,7 @@ const MAP_STYLE_QUALITY: mapboxgl.MapboxOptions['style'] =
 
 const MapNetworks = () => (
   <>
-    <ArticleMap
+    <Map
       mapboxStyle={MAP_STYLE_QUALITY}
       maxBounds={BOUNDS_ZES}
       center={ZES_CENTER}
