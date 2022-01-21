@@ -12,6 +12,7 @@
     "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack serve",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "format": "eslint . --fix --ext .ts,.tsx && prettier --write .",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu jest --config=jest/jest.config.js",
