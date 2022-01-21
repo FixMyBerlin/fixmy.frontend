@@ -12,6 +12,8 @@
     "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack serve",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
     "test": "cross-env NODE_ICU_DATA=node_modules/full-icu jest --config=jest/jest.config.js",
     "test:watch": "npm run test  -- --watch",
     "test:coverage": "npm run test -- --coverage",
