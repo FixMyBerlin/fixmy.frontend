@@ -2,7 +2,7 @@ import React from 'react';
 
 import {
   CadastreLegendItemPoint,
-  Header,
+  HeaderCol,
   LegendCol,
   LegendItem,
   LegendWrapper,
@@ -11,7 +11,7 @@ import {
 const CadastreLegendGrid = (props) => (
   <LegendWrapper {...props}>
     <LegendCol>
-      <Header>Unfallkategorie</Header>
+      <HeaderCol>Unfallkategorie</HeaderCol>
       <LegendItem>
         <CadastreLegendItemPoint innerColor="#ffffff" borderColor="#cf0a7d" />
         Unfälle mit Getöteten
@@ -26,7 +26,7 @@ const CadastreLegendGrid = (props) => (
       </LegendItem>
     </LegendCol>
     <LegendCol>
-      <Header>Unfalltyp</Header>
+      <HeaderCol>Unfalltyp</HeaderCol>
       <LegendItem>
         <CadastreLegendItemPoint innerColor="#108a51" borderColor="#ffffff" />
         Fahrunfall

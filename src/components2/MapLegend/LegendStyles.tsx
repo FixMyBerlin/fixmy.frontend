@@ -19,6 +19,10 @@ export const Header = styled.h2`
   flex-basis: 100%;
 `;
 
+export const HeaderCol = styled(Header)`
+  flex-basis: max-content;
+`;
+
 export const LegendCol = styled.div`
   align-items: flex-start;
   display: flex;
