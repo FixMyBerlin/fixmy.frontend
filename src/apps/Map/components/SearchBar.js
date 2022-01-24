@@ -5,9 +5,9 @@ import styled from 'styled-components';
 import { geocodeAddress } from '~/apps/Map/MapState';
 import MenuButton from '~/components/MenuButton';
 import config from '~/config';
+import SearchIconImage from '~/images/search.png';
 import Store from '~/store';
 import { media } from '~/styles/utils';
-import SearchIconImage from '~/images/search.png';
 
 const Form = styled.form`
   width: 100%;
@@ -41,17 +41,18 @@ const SearchInput = styled.input`
   border-radius: 2px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   text-align: center;
-  position: absolute;
 `;
 
 const SearchIcon = styled.span`
   background-image: url('${SearchIconImage}');
   background-repeat: no-repeat;
   width: 53px;
-  height: 53px;
+  height: 100%;
   position: absolute;
   right: 0;
   background-position: center center;
+  background-size: 25px 25px;
+  pointer-events: none;
 `;
 
 const SearchMenuBtn = styled(MenuButton)`
