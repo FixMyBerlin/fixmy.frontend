@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 
 import config from '~/config';
@@ -57,7 +58,7 @@ export const CadastreLegendItemColor = styled(CadastreLegendItem)<{
   background: ${(props) => props.legendColor};
 `;
 
-export const CadastreLegendItemPoint = styled(CadastreLegendItem)<{
+const CadastreLegendItemPointInner = styled.div<{
   borderColor: string;
   innerColor: string;
 }>`
@@ -65,10 +66,17 @@ export const CadastreLegendItemPoint = styled(CadastreLegendItem)<{
   background-color: ${(props) => props.innerColor};
   width: 8px;
   height: 8px;
-  margin: 3px 17px 3px 0;
+  border-radius: 50%;
+  margin: auto;
 `;
 
-export const CadastreLegendItemPointSmall = styled(CadastreLegendItem)<{
+export const CadastreLegendItemPoint = (props) => (
+  <CadastreLegendItem>
+    <CadastreLegendItemPointInner {...props} />
+  </CadastreLegendItem>
+);
+
+const CadastreLegendItemPointSmallInner = styled.div<{
   color: string;
 }>`
   background-color: ${(props) => props.color};
@@ -76,7 +84,14 @@ export const CadastreLegendItemPointSmall = styled(CadastreLegendItem)<{
   height: 2px;
   margin: 3px 17px 3px 0;
   border-radius: 50%;
+  margin: auto;
 `;
+
+export const CadastreLegendItemPointSmall = (props) => (
+  <CadastreLegendItem>
+    <CadastreLegendItemPointSmallInner {...props} />
+  </CadastreLegendItem>
+);
 
 export const CadastreLegendItemLine = styled(CadastreLegendItem)<{
   color: string;
@@ -86,7 +101,6 @@ export const CadastreLegendItemLine = styled(CadastreLegendItem)<{
   height: 2px;
   margin: 3px 17px 3px 0;
 `;
-
 
 export const CadastreLegendItemImage = styled(CadastreLegendItem)<{
   imageUrl: string;
