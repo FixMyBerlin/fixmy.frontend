@@ -77,6 +77,10 @@ const Header = styled.h1`
   margin: 0;
   padding-bottom: 0.5em;
   border-bottom: solid 1px #e0e0e0;
+  
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
 `;
 
 const LegendListWrapper = styled.div`
@@ -107,6 +111,7 @@ const Legend = (props) => (
     <LegendListWrapper>
       <Header>Legende Katasterdaten</Header>
       <CadastreLegendGrid />
+      <MutedText>Quellen: Fis-Broker Berlin 2014</MutedText>
 
       <Header>Legende Unfälle</Header>
       <IncidentLegendGrid />

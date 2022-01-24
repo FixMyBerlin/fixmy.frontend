@@ -8,7 +8,6 @@ export const LegendWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  padding-bottom: 20px;
 
   ${media.s`
     flex-direction: row;

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { MutedText } from './Legend';
 import {
   CadastreLegendItemColor,
   CadastreLegendItemImage,
@@ -101,7 +100,6 @@ const CadastreLegendGrid = (props) => (
         Leitmarkierung Sehbehinderte
       </LegendItem>
     </LegendCol>
-    <MutedText>Quellen: Fis-Broker Berlin 2014</MutedText>
   </LegendWrapper>
 );
 

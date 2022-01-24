@@ -1,16 +1,12 @@
 import React from 'react';
 
 import {
-  CadastreLegendItemColor,
-  CadastreLegendItemImage,
   CadastreLegendItemPoint,
-  CadastreLegendItemPointSmall,
   Header,
   LegendCol,
   LegendItem,
   LegendWrapper,
 } from './LegendStyles';
-import FootwaysLegendImage from './footways.png';
 
 const CadastreLegendGrid = (props) => (
   <LegendWrapper {...props}>
@@ -57,7 +53,7 @@ const CadastreLegendGrid = (props) => (
       </LegendItem>
       <LegendItem>
         <CadastreLegendItemPoint innerColor="#3f4948" borderColor="#ffffff" />
-        Sonsiger Unfall
+        Sonstiger Unfall
       </LegendItem>
     </LegendCol>
   </LegendWrapper>
