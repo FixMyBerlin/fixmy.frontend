@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
 import config from '~/config';
+import { media } from '~/styles/utils';
 
 export const LegendWrapper = styled.div`
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  flex-direction: column;
   padding-bottom: 20px;
+  
+  ${media.s`
+    flex-direction: row;
+  `}
+
 `;
 
 export const Header = styled.h2`
@@ -39,7 +45,11 @@ export const LegendItem = styled.div`
 export const CadastreLegendItem = styled.span`
   min-width: 27px;
   height: 18px;
-  margin: 7px 20px 6px 0;
+  margin: 5px 10px 5px 0;
+
+  ${media.s`
+    margin: 7px 20px 6px 0;
+  `}
 `;
 
 export const CadastreLegendItemColor = styled(CadastreLegendItem)<{

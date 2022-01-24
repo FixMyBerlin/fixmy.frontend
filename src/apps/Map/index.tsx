@@ -10,7 +10,9 @@ import styled from 'styled-components';
 
 import ErrorMessage from '~/components/ErrorMessage';
 import { Logo as FMBLogo } from '~/components2/Logo';
+import Legend from '~/components2/MapLegend/Legend';
 import config from '~/config';
+import MapLegendButtonIcon from '~/images/map-legend.svg';
 import Store, { RootState } from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 
@@ -25,7 +27,6 @@ import MapControl from './components/MapControl';
 import { MapPopup } from './components/MapPopup';
 import SearchBar from './components/SearchBar';
 import { WebglMap } from './components/WebglMap';
-import MapLegend from '../../components2/MapLegend';
 
 const Wrapper = styled.div`
   height: 100%;
@@ -49,6 +50,14 @@ const StyledFMBLogo = styled(FMBLogo)`
   ${media.m`
     display: block;
   `}
+`;
+
+const StyledMapLegendButton = styled(MapLegendButtonIcon)`
+  cursor: pointer;
+`;
+
+const StyledMapControl = styled(MapControl)`
+  margin-bottom: 45px;
 `;
 
 const connector = connect(
@@ -106,6 +115,8 @@ const MapView = ({
     Store.dispatch(MapActions.setView(view));
   };
 
+  const [showLegend, setShowLegend] = React.useState(false);
+
   useURLParams();
 
   return (
@@ -116,7 +127,7 @@ const MapView = ({
 
       <MapWrapper>
         <SearchBar />
-        <MapLegend isPopupVisible={false} isDetailOpen={false} />
+        {showLegend && <Legend closeLegend={() => setShowLegend(false)} />}
         <WebglMap
           key="MapComponent"
           calculatePopupPosition={calculatePopupPosition}
@@ -127,6 +138,11 @@ const MapView = ({
               onChange={handleLocationChange}
               position="bottom-right"
             />
+          )}
+          {!showLegend && (
+            <StyledMapControl position="bottom-right">
+              <StyledMapLegendButton onClick={() => setShowLegend(true)} />
+            </StyledMapControl>
           )}
           {!isEmbedMode && (
             <MapControl position="top-right">

@@ -10,16 +10,20 @@ import CloseIcon from './close.svg';
 
 const BaseWrapper = styled.section`
   background-color: ${config.colors.lightbg};
-  bottom: 0;
   color: ${config.colors.darkbg};
   display: flex;
-  position: relative;
   width: 100%;
   line-height: 1.4;
   min-width: 400px;
   border: solid 1px #cccccc;
   border-radius: 1px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+  bottom: 0;
+  position: absolute;
+
+  ${media.m`
+    position: static;
+  `}
 
   ${media.s`
     padding: 0;
@@ -77,13 +81,20 @@ const Header = styled.h1`
 const LegendListWrapper = styled.div`
   overflow-y: auto;
   padding: 0.625rem 1.2rem;
-  max-height: 70vh;
+  max-height: 100%;
+  height: calc(100vh - 100px);
+  min-width: 100vw;
+
+  ${media.m`
+    max-height: 70vh;
+    min-width: 100%;
+  `}
 `;
 
-const Legend = ({ onToggle }) => (
-  <Wrapper role="complementary">
+const Legend = (props) => (
+  <Wrapper>
     <StyledCloseIcon
-      onClick={onToggle}
+      onClick={props.closeLegend}
       aria-label="Legende schließen"
       aria-controls="reports-map-legend"
       role="button"
