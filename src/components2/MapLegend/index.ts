@@ -1,3 +1,3 @@
-import MapLegend from './MapLegend';
+import Legend from './Legend';
 
-export default MapLegend;
+export default Legend;

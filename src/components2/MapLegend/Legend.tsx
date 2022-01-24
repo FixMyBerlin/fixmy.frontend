@@ -77,7 +77,7 @@ const Header = styled.h1`
   margin: 0;
   padding-bottom: 0.5em;
   border-bottom: solid 1px #e0e0e0;
-  
+
   &:not(:first-child) {
     margin-top: 1rem;
   }
