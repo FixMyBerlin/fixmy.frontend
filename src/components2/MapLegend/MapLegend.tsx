@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { breakpoints } from '~/styles/utils';
 
-import LegendExpanded from './LegendExpanded';
+import Legend from './Legend';
 
 interface Props {
   isPopupVisible: boolean;
@@ -25,7 +25,7 @@ const MapLegend = (props: Props) => {
   // on toggle
   return (
     <Wrapper {...props}>
-      <LegendExpanded compact onToggle={null} />
+      <Legend compact onToggle={null} />
     </Wrapper>
   );
 };

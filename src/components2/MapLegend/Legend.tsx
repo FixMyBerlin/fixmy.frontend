@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
 
-import LegendGrid from './LegendGrid';
+import CadastreLegendGrid from './CadastreLegendGrid';
+import IncidentLegendGrid from './IncidentLegendGrid';
 import CloseIcon from './close.svg';
 
 const BaseWrapper = styled.section`
@@ -16,6 +17,9 @@ const BaseWrapper = styled.section`
   width: 100%;
   line-height: 1.4;
   min-width: 400px;
+  border: solid 1px #cccccc;
+  border-radius: 1px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
 
   ${media.s`
     padding: 0;
@@ -62,23 +66,21 @@ const StyledCloseIcon = styled(CloseIcon)`
   }
 `;
 
-const Header = styled.h2`
-  font-size: 1em;
-  margin-bottom: 0;
-`;
-
-const StyledLegendGrid = styled(LegendGrid)<{ compact: boolean }>`
-  h2 {
-    font-size: ${({ compact }) => (compact ? '1em' : 'initial')};
-  }
+const Header = styled.h1`
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 0.5em;
+  border-bottom: solid 1px #e0e0e0;
 `;
 
 const LegendListWrapper = styled.div`
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 0.625rem 1.2rem;
+  max-height: 70vh;
 `;
 
-const LegendExpanded = ({ onToggle, compact = false }) => (
+const Legend = ({ onToggle }) => (
   <Wrapper role="complementary">
     <StyledCloseIcon
       onClick={onToggle}
@@ -87,13 +89,13 @@ const LegendExpanded = ({ onToggle, compact = false }) => (
       role="button"
     />
     <LegendListWrapper>
-      <Header>Legende Unfälle</Header>
-      <StyledLegendGrid compact={compact} />
+      <Header>Legende Katasterdaten</Header>
+      <CadastreLegendGrid />
 
-      <Header>Legende Kataster</Header>
-      <StyledLegendGrid compact={compact} />
+      <Header>Legende Unfälle</Header>
+      <IncidentLegendGrid />
     </LegendListWrapper>
   </Wrapper>
 );
 
-export default LegendExpanded;
+export default Legend;
