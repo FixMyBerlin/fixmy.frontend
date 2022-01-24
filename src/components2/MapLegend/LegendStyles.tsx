@@ -8,11 +8,10 @@ export const LegendWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: column;
   padding-bottom: 20px;
-  
+
   ${media.s`
     flex-direction: row;
   `}
-
 `;
 
 export const Header = styled.h2`
@@ -58,7 +57,7 @@ export const CadastreLegendItemColor = styled(CadastreLegendItem)<{
   background: ${(props) => props.legendColor};
 `;
 
-export const CadastreLegendItemPoint= styled(CadastreLegendItem)<{
+export const CadastreLegendItemPoint = styled(CadastreLegendItem)<{
   borderColor: string;
   innerColor: string;
 }>`
@@ -68,6 +67,26 @@ export const CadastreLegendItemPoint= styled(CadastreLegendItem)<{
   height: 8px;
   margin: 3px 17px 3px 0;
 `;
+
+export const CadastreLegendItemPointSmall = styled(CadastreLegendItem)<{
+  color: string;
+}>`
+  background-color: ${(props) => props.color};
+  width: 2px;
+  height: 2px;
+  margin: 3px 17px 3px 0;
+  border-radius: 50%;
+`;
+
+export const CadastreLegendItemLine = styled(CadastreLegendItem)<{
+  color: string;
+}>`
+  background-color: ${(props) => props.color};
+  width: 2px;
+  height: 2px;
+  margin: 3px 17px 3px 0;
+`;
+
 
 export const CadastreLegendItemImage = styled(CadastreLegendItem)<{
   imageUrl: string;

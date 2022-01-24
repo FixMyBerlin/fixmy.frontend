@@ -1,8 +1,12 @@
 import React from 'react';
 
+import { MutedText } from './Legend';
 import {
   CadastreLegendItemColor,
   CadastreLegendItemImage,
+  CadastreLegendItemPoint,
+  CadastreLegendItemPointSmall,
+  CadastreLegendItemLine,
   Header,
   LegendCol,
   LegendItem,
@@ -11,6 +15,7 @@ import {
 import ConstructionLegendImage from './construction.png';
 import DividersLegendImage from './dividers.png';
 import FootwaysLegendImage from './footways.png';
+import GuardrailLegendImage from './guardrail-legend.png';
 
 const CadastreLegendGrid = (props) => (
   <LegendWrapper {...props}>
@@ -74,28 +79,29 @@ const CadastreLegendGrid = (props) => (
     <Header>Objekte / Markierungen</Header>
     <LegendCol>
       <LegendItem>
-        <CadastreLegendItemColor legendColor="#b8d09f" />
+        <CadastreLegendItemPointSmall color="red" />
         Poller
       </LegendItem>
       <LegendItem>
-        <CadastreLegendItemImage imageUrl={FootwaysLegendImage} />
+        <CadastreLegendItemPoint innerColor="#777777" borderColor="white" />
         Lichtsignalanlage
       </LegendItem>
       <LegendItem>
-        <CadastreLegendItemImage imageUrl={DividersLegendImage} />
+        <CadastreLegendItemColor legendColor="#f6be6a" />
         Treppe
       </LegendItem>
     </LegendCol>
     <LegendCol>
       <LegendItem>
-        <CadastreLegendItemColor legendColor="#e4e2cd" />
+        <CadastreLegendItemLine color="red" />
         Sicherheitsgitter / Leitplanke
       </LegendItem>
       <LegendItem>
-        <CadastreLegendItemImage imageUrl="" />
+        <CadastreLegendItemImage imageUrl={GuardrailLegendImage} />
         Leitmarkierung Sehbehinderte
       </LegendItem>
     </LegendCol>
+    <MutedText>Quellen: Fis-Broker Berlin 2014</MutedText>
   </LegendWrapper>
 );
 

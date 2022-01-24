@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '~/pages/Reports/config';
+import { Link } from '~/components2/Link';
+import config from '~/config';
 import { media } from '~/styles/utils';
 
 import CadastreLegendGrid from './CadastreLegendGrid';
@@ -91,12 +92,16 @@ const LegendListWrapper = styled.div`
   `}
 `;
 
+export const MutedText = styled.div`
+  color: ${config.colors.midgrey};
+  font-size: 0.9rem;
+`;
+
 const Legend = (props) => (
   <Wrapper>
     <StyledCloseIcon
       onClick={props.closeLegend}
       aria-label="Legende schließen"
-      aria-controls="reports-map-legend"
       role="button"
     />
     <LegendListWrapper>
@@ -105,6 +110,9 @@ const Legend = (props) => (
 
       <Header>Legende Unfälle</Header>
       <IncidentLegendGrid />
+      <Link href="https://de.wikipedia.org/wiki/Unfalltyp">
+        Erläuterungen der Unfallkategorien
+      </Link>
     </LegendListWrapper>
   </Wrapper>
 );
