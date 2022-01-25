@@ -119,9 +119,6 @@ const Routes = ({ token }) => (
     {config.routes.map?.projectsIndex != null && (
       <Route path={config.routes.map.projectsIndex} component={MapView} />
     )}
-    {config.routes.map?.popupIndex != null && (
-      <Route path={config.routes.map.popupIndex} component={MapView} />
-    )}
 
     {/* reports page */}
     {config.routes.reports != null && (

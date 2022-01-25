@@ -7,16 +7,13 @@ import {
   withRouter,
 } from 'react-router-dom';
 import styled from 'styled-components';
-
 import ErrorMessage from '~/components/ErrorMessage';
 import { Logo as FMBLogo } from '~/components2/Logo';
 import Legend from '~/components2/MapLegend/Legend';
 import config from '~/config';
 import MapLegendButtonIcon from '~/images/map-legend.svg';
 import Store, { RootState } from '~/store';
-import { matchMediaSize, breakpoints, media } from '~/styles/utils';
-
-import * as MapActions from './MapState';
+import { breakpoints, matchMediaSize, media } from '~/styles/utils';
 import { DetailPanel } from './components/DetailView';
 import ProjectDetail from './components/DetailView/ProjectDetail';
 import { SectionDetail } from './components/DetailView/SectionDetail';
@@ -27,6 +24,7 @@ import MapControl from './components/MapControl';
 import { MapPopup } from './components/MapPopup';
 import SearchBar from './components/SearchBar';
 import { WebglMap } from './components/WebglMap';
+import * as MapActions from './MapState';
 
 const Wrapper = styled.div`
   height: 100%;
@@ -172,19 +170,6 @@ const MapView = ({
             <ProjectDetail
               apiEndpoint="projects"
               onCloseRoute={config.routes.map.projectsIndex}
-              activeView={activeLayer}
-              token={token}
-              match={match}
-            />
-          )}
-        />
-        <Route
-          exact
-          path={config.routes.map.popupDetail}
-          render={({ match }) => (
-            <ProjectDetail
-              apiEndpoint="projects"
-              onCloseRoute={config.routes.map.popupIndex}
               activeView={activeLayer}
               token={token}
               match={match}

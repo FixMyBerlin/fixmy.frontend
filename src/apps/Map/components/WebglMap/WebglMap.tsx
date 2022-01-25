@@ -3,32 +3,31 @@ import MapboxGL from 'mapbox-gl';
 import React, { PureComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import {
-  withRouter,
-  matchPath,
   generatePath,
+  matchPath,
   RouteComponentProps,
+  withRouter,
 } from 'react-router-dom';
 import slugify from 'slugify';
 import styled from 'styled-components';
-
-import * as MapActions from '~/apps/Map/MapState';
 import ProjectMarkers from '~/apps/Map/components/ProjectMarkers';
 import {
-  toggleVisibleHbiLines,
   animateView,
-  setView,
-  toggleLayer,
   filterLayersById,
   getCenterFromGeom,
-  intersectionLayers,
+  intersectionLayersWithOverlay,
   parseUrlOptions,
   setPlanningLegendFilter,
-  setPopupLanesFilter,
+  setView,
   standardLayersWithOverlay,
+  toggleLayer,
+  toggleVisibleHbiLines,
 } from '~/apps/Map/map-utils';
+import * as MapActions from '~/apps/Map/MapState';
 import resetMap from '~/apps/Map/reset';
 import { BigLoader } from '~/components2/Loaders';
 import config from '~/config';
+import WelcomeModal from '~/pages/Reports/pages/OverviewMap/components/WelcomeModal';
 import Store, { RootState } from '~/store';
 import { isSmallScreen } from '~/styles/utils';
 
@@ -74,6 +73,7 @@ type State = {
   loading: boolean;
   popupLngLat?: any;
   map?: mapboxgl.Map;
+  indexView: boolean | null;
 };
 
 class Map extends PureComponent<Props, State> {
@@ -87,6 +87,7 @@ class Map extends PureComponent<Props, State> {
       loading: true,
       popupLngLat: null,
       map: null,
+      indexView: null,
     };
   }
 
@@ -105,6 +106,8 @@ class Map extends PureComponent<Props, State> {
     if (this.state.loading) {
       return false;
     }
+
+    this.setIndexView(prevProps);
 
     const viewChanged =
       prevProps.zoom !== this.props.zoom ||
@@ -140,15 +143,25 @@ class Map extends PureComponent<Props, State> {
       resetMap({ zoom: this.map.getZoom() });
     }
 
-    if (
-      this.props.activeView === 'planungen' ||
-      this.props.activeView === 'popupbikelanes'
-    ) {
+    if (this.props.activeView === 'planungen') {
       Store.dispatch<any>(MapActions.loadPlanningData());
     }
 
     return this.map.resize();
   }
+
+  setIndexView = (props) => {
+    const indexMatch = matchPath<{ id: string; name?: string }>(
+      props.location.pathname,
+      {
+        path: '/(zustand|planungen)?',
+        exact: true,
+      }
+    );
+    this.setState({
+      indexView: !!indexMatch,
+    });
+  };
 
   getViewFromProps = () => ({
     zoom: this.props.zoom,
@@ -204,47 +217,30 @@ class Map extends PureComponent<Props, State> {
   };
 
   registerMouseHoverHandler = () => {
-    const hbiClickableLayers = [
+    const clickableLayers = [
       config.apps.map.layers.hbi.overlayLine,
       config.apps.map.layers.hbi.xOverlay,
+      config.apps.map.layers.projects.overlayLine,
     ];
-    const projectsTarget = config.apps.map.layers.projects.overlayLine;
-
-    const setCursorPointer = () => {
-      this.map.getCanvas().style.cursor = 'pointer';
-    };
-    const setCursorNone = () => {
-      this.map.getCanvas().style.cursor = '';
-    };
 
     // Events 'mouseenter' & 'mouseleave' didn't worked
     // when hovering from clickable layer to another clickable layer
     this.map.on('mousemove', (e) => {
       const features = this.map.queryRenderedFeatures(e.point);
       // If there are any features under mouse pointer
-      if (features.length > 0 && this.props.activeView === 'zustand') {
-        if (hbiClickableLayers.includes(features[0].layer.id)) {
-          setCursorPointer();
-        } else {
-          setCursorNone();
-        }
-      } else if (
-        features.length > 0 &&
-        (this.props.activeView === 'planungen' ||
-          this.props.activeView === 'popupbikelanes')
-      ) {
-        if (projectsTarget === features[0].layer.id) {
-          setCursorPointer();
-        } else {
-          setCursorNone();
-        }
+      if (!features.length) return;
+
+      if (clickableLayers.includes(features[0].layer.id)) {
+        this.map.getCanvas().style.cursor = 'pointer';
+      } else {
+        this.map.getCanvas().style.cursor = '';
       }
     });
   };
 
   updateLayers = () => {
     const isZustand = this.props.activeView === 'zustand';
-    let isPlanungen = this.props.activeView === 'planungen';
+    const isPlanungen = this.props.activeView === 'planungen';
 
     const hbiLayers = config.apps.map.layers.hbi;
     const projectsLayers = config.apps.map.layers.projects;
@@ -253,14 +249,7 @@ class Map extends PureComponent<Props, State> {
       toggleVisibleHbiLines(this.map, this.props.filterHbi);
     }
 
-    if (this.props.activeView === 'popupbikelanes') {
-      // Make sure that planning layers are set visible in Mapbox to be
-      // able to see popup bike lane geometries
-      isPlanungen = true;
-      setPopupLanesFilter(this.map);
-    } else {
-      setPlanningLegendFilter(this.map, this.props.filterPlannings);
-    }
+    setPlanningLegendFilter(this.map, this.props.filterPlannings);
 
     // project layers
     // toggleLayer(this.map, 'fmb-projects', false);
@@ -269,11 +258,9 @@ class Map extends PureComponent<Props, State> {
     );
 
     // hbi layers
-    const combinedHbiLayers =
-      standardLayersWithOverlay.concat(intersectionLayers);
-    combinedHbiLayers.forEach((layer) =>
-      toggleLayer(this.map, hbiLayers[layer], isZustand)
-    );
+    standardLayersWithOverlay
+      .concat(intersectionLayersWithOverlay)
+      .forEach((layer) => toggleLayer(this.map, hbiLayers[layer], isZustand));
 
     // other layers
     toggleLayer(
@@ -337,17 +324,9 @@ class Map extends PureComponent<Props, State> {
 
     const { id, street_name: name } = data;
     const center = data.center.coordinates;
+    const detailsView = this.state.indexView === false;
 
-    const match = matchPath<{ id: string; name?: string }>(
-      this.props.location.pathname,
-      {
-        path: '/(zustand|planungen)/:id/:name?',
-        exact: true,
-      }
-    );
-
-    const isDetailViewOpen = match?.params.id != null;
-    if (isDetailViewOpen) {
+    if (detailsView) {
       const slugifiedName = slugify(name || '').toLowerCase();
       const detailRoute = `/${this.props.activeView}/${id}/${slugifiedName}`;
       this.props.history.push(detailRoute);
@@ -397,9 +376,7 @@ class Map extends PureComponent<Props, State> {
 
   render() {
     const markerData = this.props.planningData?.results;
-    const markersVisible =
-      this.props.activeView === 'planungen' ||
-      this.props.activeView === 'popupbikelanes';
+    const markersVisible = this.props.activeView === 'planungen';
 
     const isLoading =
       this.state.loading || this.props.planningDataFetchState === 'pending';
@@ -413,13 +390,18 @@ class Map extends PureComponent<Props, State> {
       >
         {this.props.children}
         {isLoading && <BigLoader useAbsolutePositioning />}
+        <WelcomeModal
+          visible={
+            this.props.activeView === 'zustand' && this.state.indexView === true
+          }
+          setView={this.setView}
+        />
         <ProjectMarkers
           map={this.state.map}
           data={markerData}
           active={markersVisible}
           onClick={this.handleMarkerClick}
           filterPlannings={this.props.filterPlannings}
-          onlyPopupbikelanes={this.props.activeView === 'popupbikelanes'}
         />
       </StyledMap>
     );

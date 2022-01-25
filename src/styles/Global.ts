@@ -80,6 +80,7 @@ export default createGlobalStyle`
 
     .marker-image {
       width: 100%;
+      cursor: pointer;
     }
   }
 
