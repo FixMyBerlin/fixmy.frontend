@@ -7,9 +7,13 @@ const StyledCloseIcon = styled(CloseIcon)`
   color: ${config.colors.lightgrey};
   cursor: pointer;
   position: absolute;
-  right: 10px;
+  right: ${(props) => (props.positionRight ? props.positionRight : '10px')};
   top: -18px;
   z-index: 1200;
+  overflow: visible;
+  width: 41px;
+  height: 41px;
+
   &:focus {
     outline: none;
     & .close-icon-background {
@@ -22,6 +26,7 @@ type Props = {
   onClick: () => void;
   controlsId?: string;
   label?: string;
+  positionRight?: string;
 };
 
 /**
@@ -32,6 +37,7 @@ export const ModalCloseIcon: React.FC<Props> = ({
   onClick,
   controlsId = undefined,
   label = 'Schließen',
+  positionRight = undefined,
 }) => {
   return (
     <StyledCloseIcon
@@ -39,7 +45,7 @@ export const ModalCloseIcon: React.FC<Props> = ({
       aria-label={label}
       aria-controls={controlsId}
       role="button"
-      style={{ overflow: 'visible', width: '41px', height: '41px' }}
+      positionRight={positionRight}
     />
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '~/components2/Button';
-import { ModalCloseIcon } from '../ModalCloseIcon/ModalCloseIcon';
+import { ModalCloseIcon } from '~/components2/ModalCloseIcon';
 import { Column1, Column2, Column3 } from './GridChilds';
 import {
   Background,

@@ -8,6 +8,7 @@ import { media } from '~/styles/utils';
 import CadastreLegendGrid from './CadastreLegendGrid';
 import IncidentLegendGrid from './IncidentLegendGrid';
 import CloseIcon from './close.svg';
+import { ModalCloseIcon } from '../ModalCloseIcon';
 
 const BaseWrapper = styled.section`
   background-color: ${config.colors.lightbg};
@@ -101,12 +102,13 @@ export const MutedText = styled.div`
   font-size: 0.9rem;
 `;
 
-const Legend = (props) => (
-  <Wrapper>
-    <StyledCloseIcon
-      onClick={props.closeLegend}
-      aria-label="Legende schließen"
-      role="button"
+const Legend = ({ closeLegend }) => (
+  <Wrapper id="Legend">
+    <ModalCloseIcon
+      onClick={() => closeLegend()}
+      controlsId="Legend"
+      label="Legende schließen"
+      positionRight="25px"
     />
     <LegendListWrapper>
       <Header>Legende Katasterdaten</Header>

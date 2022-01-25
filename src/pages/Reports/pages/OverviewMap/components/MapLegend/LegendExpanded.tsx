@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ModalCloseIcon } from '~/components2/ModalCloseIcon';
 import { StatsCounter, StatsExpanded } from '~/pages/Reports/components/Stats';
 import config from '~/pages/Reports/config';
-import { ModalCloseIcon } from '../ModalCloseIcon/ModalCloseIcon';
 import { BaseWrapper } from './LegendCollapsed';
 import LegendGrid from './LegendGrid';
 
