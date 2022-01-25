@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import {
   Route,
@@ -113,7 +113,7 @@ const MapView = ({
     Store.dispatch(MapActions.setView(view));
   };
 
-  const [showLegend, setShowLegend] = React.useState(false);
+  const [showLegend, setShowLegend] = useState(false);
 
   useURLParams();
 
