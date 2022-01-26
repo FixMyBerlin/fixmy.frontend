@@ -49,7 +49,7 @@ const XhainWayToSchool = () => (
       hasToc
       tocTitle="Inhalt"
       enumerateToc={false}
-      bannerTitle="Schulwegsicherheit in XHain"
+      bannerTitle="Schulwegsicherheit in Xhain"
       logo={
         <Logo
           src={LogoFile2}
@@ -59,7 +59,7 @@ const XhainWayToSchool = () => (
       }
     >
       <ArticleHeader
-        kicker="Schulwegsicherheit in XHain"
+        kicker="Schulwegsicherheit in Xhain"
         publishDate={new Date(2022, 1, 1, 10, 0)}
       >
         Sichere Schulwege für alle Schüler*innen im Bezirk

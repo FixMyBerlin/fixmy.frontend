@@ -144,7 +144,7 @@ const Routes = ({ token }) => (
 
     {config.districts && Object.keys(config.districts).map(District)}
 
-    {/* XHain Report Schulwegsicherheit */}
+    {/* Xhain Report Schulwegsicherheit */}
     {/* Note: Second separate Guard is required, will not work with `<><!-- two routes --></>` */}
     {config.routes.wayToSchool && (
       <Route

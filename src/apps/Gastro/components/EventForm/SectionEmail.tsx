@@ -13,7 +13,7 @@ const SectionUsage = () => (
     <p className="subline">
       Ihre Daten werden für die Durchführung des Verfahrens gespeichert, die
       Beschreibung Ihrer Veranstaltung und die angegebenen Zeiten können im Zuge
-      der Aktion <em>XHain-Terrassen</em> veröffentlicht werden.
+      der Aktion <em>Xhain-Terrassen</em> veröffentlicht werden.
     </p>
     <InvisiLabel htmlFor="email">Ihre E-Mail-Adresse</InvisiLabel>
     <Field
