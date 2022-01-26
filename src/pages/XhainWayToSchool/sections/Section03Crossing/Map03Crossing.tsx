@@ -15,7 +15,7 @@ import {
   CENTER,
   MAP_STYLE,
   ZOOM,
-} from '../mapboxOptions.constants';
+} from '../mapboxOptions.const';
 import { LegendItemsNetworkSchoolways } from '../Section01Network/LegendItemsNetworkSchoolways';
 
 export const Map03Crossing = () => {

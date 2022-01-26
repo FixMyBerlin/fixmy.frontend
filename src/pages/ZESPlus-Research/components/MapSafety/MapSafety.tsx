@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Map as ArticleMap } from '~/components2/Article';
 
-import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../constants';
+import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../mapboxOptions.const';
 import {
   IconWrapper,
   Legend,

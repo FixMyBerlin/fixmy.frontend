@@ -15,7 +15,7 @@ import {
   CENTER,
   MAP_STYLE,
   ZOOM,
-} from '../mapboxOptions.constants';
+} from '../mapboxOptions.const';
 
 export const Map02Surroundings = () => {
   const allVisibleLayers = [
