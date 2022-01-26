@@ -1,23 +1,7 @@
 # TODO
 
-- [ ] Warum funktioniert https://deploy-preview-957--fixmyberlin-staging.netlify.app/404 das Bild nicht mehr?
-
-  - Ist auf Staging auch defekt https://fixmyberlin-staging.netlify.app/404
-  - Webpack Update?
-
-- [ ] Legend Styles sauber teilen
-
-  ```
-  import {
-    IconWrapper,
-    Legend,
-    LegendCol,
-    LegendHeader,
-    LegendItem,
-    LegendItems,
-    LegendSources,
-  } from '~/pages/ZESPlus-Research/components/BaseLegend';
-  ```
+- source
+- legend images
 
 # PR
 

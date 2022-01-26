@@ -9,7 +9,7 @@ import {
   LegendItem,
   LegendItems,
   LegendSources,
-} from '../BaseLegend';
+} from '~/components2/Article/Map/MapLegendStyledComponents';
 import IconBV from './icons/berliner-verbaende.svg';
 import IconHeatmap from './icons/heatmap.svg';
 import IconKDS from './icons/konzept-dahme-spree.svg';

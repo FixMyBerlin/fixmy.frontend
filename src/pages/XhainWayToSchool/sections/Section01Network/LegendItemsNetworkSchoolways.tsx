@@ -4,7 +4,7 @@ import {
   LegendHeader,
   LegendItem,
   LegendItems,
-} from '~/pages/ZESPlus-Research/components/BaseLegend';
+} from '~/components2/Article/Map/MapLegendStyledComponents';
 
 type Props = { onClick?: () => void };
 

@@ -11,7 +11,7 @@ import {
   LegendItem,
   LegendItems,
   LegendSources,
-} from '../BaseLegend';
+} from '~/components2/Article/Map/MapLegendStyledComponents';
 import IconPathFB from './icons/f-fb.svg';
 import IconPathGW from './icons/f-gw.svg';
 import IconPathSR from './icons/f-sr.svg';

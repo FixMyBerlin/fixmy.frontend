@@ -8,7 +8,7 @@ import {
   LegendItem,
   LegendItems,
   LegendSources,
-} from '~/pages/ZESPlus-Research/components/BaseLegend';
+} from '~/components2/Article/Map/MapLegendStyledComponents';
 import {
   ALL_LAYERS,
   BOUNDS,

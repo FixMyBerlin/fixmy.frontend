@@ -11,7 +11,7 @@ import {
   LegendItem,
   LegendItems,
   LegendSources,
-} from '../BaseLegend';
+} from '~/components2/Article/Map/MapLegendStyledComponents';
 import Icons0 from './icons/s0.svg';
 import Icons1 from './icons/s1.svg';
 import Icons2 from './icons/s2.svg';
