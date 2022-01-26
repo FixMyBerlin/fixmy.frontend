@@ -15,6 +15,7 @@ import MapLegendButtonIcon from '~/images/map-legend.svg';
 import Store, { RootState } from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 
+import MapLegend from '../../components2/MapLegend';
 import * as MapActions from './MapState';
 import { DetailPanel } from './components/DetailView';
 import ProjectDetail from './components/DetailView/ProjectDetail';
