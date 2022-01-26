@@ -65,8 +65,12 @@ export const ArticleMeta = ({
       </AuthorIcon>
       <MetaInnerWrap>
         <PublishDate date={publishDate} />
-        <Divider />
-        <Author name={author} />
+        {author && (
+          <>
+            <Divider />
+            <Author name={author} />
+          </>
+        )}
       </MetaInnerWrap>
     </MetaWrap>
   );
