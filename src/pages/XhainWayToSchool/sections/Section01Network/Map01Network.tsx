@@ -9,6 +9,9 @@ import {
   LegendItems,
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
+import IconPlayground from '../assets/playground.svg';
+import IconSchoolAreas from '../assets/school-areas.svg';
+import IconSchoolPinBlue from '../assets/school-pin-blue.svg';
 import {
   ALL_LAYERS,
   BOUNDS,
@@ -60,13 +63,22 @@ export const Map01Network = () => {
               }
               style={{ cursor: 'pointer' }}
             >
-              <IconWrapper>{/* <IconQ4 /> */}</IconWrapper> Grundschulen
+              <IconWrapper>
+                <IconSchoolPinBlue />
+              </IconWrapper>{' '}
+              Grundschulen
             </LegendItem>
             <LegendItem>
-              <IconWrapper>{/* <IconPathSR /> */}</IconWrapper> Spielplätze
+              <IconWrapper>
+                <IconPlayground />
+              </IconWrapper>{' '}
+              Spielplätze
             </LegendItem>
             <LegendItem>
-              <IconWrapper>{/* <IconPathSR /> */}</IconWrapper> Einzugsbereiche
+              <IconWrapper>
+                <IconSchoolAreas />
+              </IconWrapper>{' '}
+              Einzugsbereiche
             </LegendItem>
           </LegendItems>
         </LegendCol>

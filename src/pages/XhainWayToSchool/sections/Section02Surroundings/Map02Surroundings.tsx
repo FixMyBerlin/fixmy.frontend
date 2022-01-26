@@ -9,6 +9,8 @@ import {
   LegendItems,
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
+import IconSchoolPinBlue from '../assets/school-pin-blue.svg';
+import IconSchoolPinPink from '../assets/school-pin-pink.svg';
 import {
   ALL_LAYERS,
   BOUNDS,
@@ -16,6 +18,8 @@ import {
   MAP_STYLE,
   ZOOM,
 } from '../mapboxOptions.const';
+import { IconKmh } from './components/IconKmh';
+import { IconStreetClass } from './components/IconStreetClass';
 
 export const Map02Surroundings = () => {
   const allVisibleLayers = [
@@ -41,24 +45,31 @@ export const Map02Surroundings = () => {
           <LegendHeader>Tempolimits</LegendHeader>
           <LegendItems>
             <LegendItem>
-              <IconWrapper>{/* <IconQ1 /> */}</IconWrapper> 30 km/h
+              <IconWrapper>
+                <IconKmh fill="#56a02c" />
+              </IconWrapper>
+              30 km/h
             </LegendItem>
             <LegendItem>
-              <IconWrapper>{/* <IconQ2 /> */}</IconWrapper> 5-20 km/h
-            </LegendItem>
-            <LegendItem>
-              <IconWrapper>{/* <IconQ3 /> */}</IconWrapper> mehr als 100
-              Schulwege
+              <IconWrapper>
+                <IconKmh fill="#2f5922" />
+              </IconWrapper>
+              5-20 km/h
             </LegendItem>
           </LegendItems>
           <LegendHeader>Schulen</LegendHeader>
           <LegendItems>
             <LegendItem>
-              <IconWrapper>{/* <IconQ4 /> */}</IconWrapper> Grundschulen
+              <IconWrapper>
+                <IconSchoolPinBlue />
+              </IconWrapper>
+              Grundschulen
             </LegendItem>
             <LegendItem>
-              <IconWrapper>{/* <IconPathSR /> */}</IconWrapper> Grundschulen an
-              Hauptstraßen
+              <IconWrapper>
+                <IconSchoolPinPink />
+              </IconWrapper>
+              Grundschulen an Hauptstraßen
             </LegendItem>
           </LegendItems>
         </LegendCol>
@@ -66,13 +77,22 @@ export const Map02Surroundings = () => {
           <LegendHeader>Hauptstraßen nach Klassen</LegendHeader>
           <LegendItems>
             <LegendItem>
-              <IconWrapper>{/* <IconQ1 /> */}</IconWrapper> Klasse I
+              <IconWrapper>
+                <IconStreetClass fill="#e2961d" />
+              </IconWrapper>
+              Klasse I
             </LegendItem>
             <LegendItem>
-              <IconWrapper>{/* <IconQ2 /> */}</IconWrapper> Klasse II
+              <IconWrapper>
+                <IconStreetClass fill="#ebc55c" />
+              </IconWrapper>
+              Klasse II
             </LegendItem>
             <LegendItem>
-              <IconWrapper>{/* <IconQ3 /> */}</IconWrapper> Klasse III und IV
+              <IconWrapper>
+                <IconStreetClass fill="#f3eca5" />
+              </IconWrapper>
+              Klasse III und IV
             </LegendItem>
           </LegendItems>
         </LegendCol>

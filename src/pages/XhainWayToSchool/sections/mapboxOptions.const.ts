@@ -5,9 +5,9 @@ export const BOUNDS: mapboxgl.MapboxOptions['maxBounds'] = [
   [13.4945, 52.5479],
 ];
 
-export const CENTER: mapboxgl.MapboxOptions['center'] = [13.634, 52.342];
+export const CENTER: mapboxgl.MapboxOptions['center'] = [13.423, 52.506];
 
-export const ZOOM: mapboxgl.MapboxOptions['zoom'] = 11.5;
+export const ZOOM: mapboxgl.MapboxOptions['zoom'] = 12.5;
 
 export const ALL_LAYERS = [
   'accidents-fuss',

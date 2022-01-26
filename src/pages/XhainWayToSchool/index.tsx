@@ -36,9 +36,7 @@ const Logo = styled.img`
 const XhainWayToSchool = () => (
   <>
     <Helmet>
-      <title>
-        Schulwegsicherheit in XHain – Mit Unterstützung von FixMyCity
-      </title>
+      <title>Schulwegsicherheit in Friedrichshain-Kreuzberg</title>
       <meta
         name="description"
         content="Das Bezirksamt Friedrichshain-Kreuzberg möchte sichere Schulwege für

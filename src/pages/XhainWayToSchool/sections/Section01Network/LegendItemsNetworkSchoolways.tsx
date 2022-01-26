@@ -5,6 +5,9 @@ import {
   LegendItem,
   LegendItems,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
+import SchoolWays100 from '../assets/school-ways-100.svg';
+import SchoolWays200 from '../assets/school-ways-200.svg';
+import SchoolWays300 from '../assets/school-ways-300.svg';
 
 type Props = { onClick?: () => void };
 
@@ -16,13 +19,22 @@ export const LegendItemsNetworkSchoolways: React.FC<Props> = ({ onClick }) => {
       </LegendHeader>
       <LegendItems>
         <LegendItem>
-          <IconWrapper>{/* <IconQ1 /> */}</IconWrapper> mehr als 300 Schulwege
+          <IconWrapper>
+            <SchoolWays300 />
+          </IconWrapper>
+          mehr als 300 Schulwege
         </LegendItem>
         <LegendItem>
-          <IconWrapper>{/* <IconQ2 /> */}</IconWrapper> mehr als 200 Schulwege
+          <IconWrapper>
+            <SchoolWays200 />
+          </IconWrapper>
+          mehr als 200 Schulwege
         </LegendItem>
         <LegendItem>
-          <IconWrapper>{/* <IconQ3 /> */}</IconWrapper> mehr als 100 Schulwege
+          <IconWrapper>
+            <SchoolWays100 />
+          </IconWrapper>
+          mehr als 100 Schulwege
         </LegendItem>
       </LegendItems>
     </>
