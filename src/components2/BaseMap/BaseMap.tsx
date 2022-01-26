@@ -86,14 +86,6 @@ export const BaseMap: React.FC<BaseMapProps> = ({
     if (map == null || center == null) return;
 
     map.setCenter(center);
-
-    // TODO Tobias, remove
-    console.log(
-      'Map',
-      mapContainer.current,
-      mapboxStyle,
-      map.getStyle().layers
-    );
   }, [map, center]);
 
   return (

@@ -7,6 +7,8 @@ import { ActivateButton, ButtonArea, StyledMap, Wrapper } from './styles';
 type Props = {
   defaultActive?: boolean;
   mapboxStyle: mapboxgl.MapboxOptions['style'];
+  allLayers?: string[];
+  visibleLayers?: string[];
 } & Partial<mapboxgl.MapboxOptions>;
 
 /**
@@ -17,9 +19,13 @@ type Props = {
  * Extends mapboxgl.Map component props
  *
  * @param defaultActive set true to hide `activate` button
+ * @param allLayers an array of all map custom map layers; use together with `visibleLayers`
+ * @param visibleLayers an array of map layers to show; only those are visible for this map
  */
 export const Map: React.FC<Props> = ({
   defaultActive = false,
+  allLayers = [],
+  visibleLayers = [],
   ...mapProps
 }) => {
   const [map, setMap] = useState<MapboxGL.Map | null>(null);
@@ -28,10 +34,24 @@ export const Map: React.FC<Props> = ({
   // Activate interaction handlers when activate button is clicked
   useEffect(() => {
     if (map === null) return;
+
     MAPBOX_INTERACTION_HANDLERS.forEach((handler) =>
       isActive ? map[handler].enable() : map[handler].disable()
     );
   }, [map, isActive]);
+
+  // Layer visibility
+  useEffect(() => {
+    if (map === null) return;
+
+    // Hide all custom layers so we can show those we want
+    allLayers.forEach((layer) => {
+      map.setLayoutProperty(layer, 'visibility', 'none');
+    });
+    visibleLayers.forEach((layer) => {
+      map.setLayoutProperty(layer, 'visibility', 'visible');
+    });
+  }, [map, allLayers, visibleLayers]);
 
   return (
     <Wrapper>
