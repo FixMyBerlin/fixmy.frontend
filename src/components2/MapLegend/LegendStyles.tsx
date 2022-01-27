@@ -4,6 +4,11 @@ import styled from 'styled-components';
 import config from '~/config';
 import { media } from '~/styles/utils';
 
+type LegendItemPointInner = {
+  borderColor: string;
+  innerColor: string;
+};
+
 export const LegendWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -61,10 +66,7 @@ export const CadastreLegendItemColor = styled(CadastreLegendItem)<{
   background: ${(props) => props.legendColor};
 `;
 
-const CadastreLegendItemPointInner = styled.div<{
-  borderColor: string;
-  innerColor: string;
-}>`
+const CadastreLegendItemPointInner = styled.div<LegendItemPointInner>`
   border: solid 2px ${(props) => props.borderColor};
   background-color: ${(props) => props.innerColor};
   width: 8px;
@@ -73,7 +75,9 @@ const CadastreLegendItemPointInner = styled.div<{
   margin: auto;
 `;
 
-export const CadastreLegendItemPoint = (props) => (
+export const CadastreLegendItemPoint = (
+  props: LegendItemPointInner
+): JSX.Element => (
   <CadastreLegendItem>
     <CadastreLegendItemPointInner {...props} />
   </CadastreLegendItem>

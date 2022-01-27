@@ -16,8 +16,8 @@ import {
   GuardrailLegendImage,
 } from './index';
 
-export const CadastreLegendGrid = (props) => (
-  <LegendWrapper {...props}>
+export const CadastreLegendGrid = () => (
+  <LegendWrapper>
     <Header>Flächennutzung</Header>
     <LegendCol>
       <LegendItem>

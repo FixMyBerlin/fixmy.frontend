@@ -8,8 +8,8 @@ import {
   LegendWrapper,
 } from './index';
 
-export const IncidentLegendGrid = (props) => (
-  <LegendWrapper {...props}>
+export const IncidentLegendGrid = () => (
+  <LegendWrapper>
     <LegendCol>
       <HeaderCol>Unfallkategorie</HeaderCol>
       <LegendItem>
