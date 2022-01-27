@@ -144,7 +144,7 @@ export const ArticleWrapper = ({
         <ContentWrapper className="contentWrapper">
           {React.Children.map(children, (child) => {
             const appendToc =
-              child.type.displayName === 'Introduction' && hasToc;
+              child.type.displayName === 'Article/Typography/Intro' && hasToc;
 
             if (!child.props.toc) {
               return (

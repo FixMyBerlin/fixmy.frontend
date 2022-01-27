@@ -17,4 +17,4 @@ export const Intro: Props = styled(Paragraph)`
   `};
 `;
 
-Intro.displayName = 'Introduction';
+Intro.displayName = 'Article/Typography/Intro';
