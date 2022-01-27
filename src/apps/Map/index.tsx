@@ -15,7 +15,6 @@ import MapLegendButtonIcon from '~/images/map-legend.svg';
 import Store, { RootState } from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 
-import MapLegend from '../../components2/MapLegend';
 import * as MapActions from './MapState';
 import { DetailPanel } from './components/DetailView';
 import ProjectDetail from './components/DetailView/ProjectDetail';
@@ -115,6 +114,7 @@ const MapView = ({
     Store.dispatch(MapActions.setView(view));
   };
 
+  // Do not show legend on startup
   const [showLegend, setShowLegend] = useState(false);
 
   useURLParams();
@@ -139,11 +139,9 @@ const MapView = ({
               position="bottom-right"
             />
           )}
-          {!showLegend && (
-            <StyledMapControl position="bottom-right">
-              <StyledMapLegendButton onClick={() => setShowLegend(true)} />
-            </StyledMapControl>
-          )}
+          <StyledMapControl position="bottom-right" role="button">
+            <StyledMapLegendButton onClick={() => setShowLegend(!showLegend)} />
+          </StyledMapControl>
           {!isEmbedMode && (
             <MapControl position="top-right">
               <StyledFMBLogo width={67} />
