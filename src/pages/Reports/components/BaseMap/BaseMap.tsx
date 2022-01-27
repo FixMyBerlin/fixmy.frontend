@@ -45,7 +45,7 @@ const ReportsBaseMap = ({
       {isLoading && <BigLoader useAbsolutePositioning />}
       {children}
       <StyledMap
-        bounds={config.reports.overviewMap.bounds as MapboxGL.LngLatBoundsLike}
+        bounds={config.reports.overviewMap.bounds}
         className={className}
         data-cy="reports-basemap"
         maxBounds={maxBounds}

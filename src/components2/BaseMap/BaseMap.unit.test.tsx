@@ -11,7 +11,7 @@ describe('<BaseMap />', () => {
       <BaseMap onInit={mockHandleInit} className="testClassName" />
     );
     expect(mapboxgl.Map).toBeCalled();
-    expect(screen.getByLabelText('Interactive WebGL map')).toBeInTheDocument();
+    expect(screen.getByLabelText('Interaktive Karte')).toBeInTheDocument();
     expect(container.getElementsByClassName('testClassName').length).toBe(1);
   });
 });
