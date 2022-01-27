@@ -33,7 +33,6 @@ const TOCHeaderArticle = styled(Heading)`
 type Props = {
   entries: any; // TODO TJO
   activeIndex: number;
-  hasActiveState?: boolean;
   enumerate?: boolean;
   title?: string | null;
   className?: string | null;
@@ -42,7 +41,6 @@ type Props = {
 export const TOC: React.FC<Props> = ({
   entries,
   activeIndex,
-  hasActiveState = false,
   enumerate = true,
   title = null,
   className = null,
@@ -65,7 +63,7 @@ export const TOC: React.FC<Props> = ({
         <TOCEntry
           entry={entry}
           key={`tocentry__${entry.props.toc}`}
-          active={hasActiveState && activeIndex === index}
+          active={activeIndex === index}
           index={index}
           enumerate={enumerate}
         />

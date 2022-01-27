@@ -71,14 +71,11 @@ export const ArticleWrapper = ({
   bgPattern = null,
   tocTitle = null,
   enumerateToc = true,
-  tocHasActiveState = true,
   locales = null,
   className = null,
   children,
 }) => {
-  const [activeTocIndex, setActiveTocIndex] = useState(
-    tocHasActiveState ? 0 : null
-  );
+  const [activeTocIndex, setActiveTocIndex] = useState(0);
 
   const [visibleSections, setVisibleSections] = useState<number[]>(
     new Array(children.length).map(() => 0)
@@ -146,7 +143,6 @@ export const ArticleWrapper = ({
                 <>
                   {appendToc && (
                     <DesktopTOC
-                      hasActiveState={tocHasActiveState}
                       title={tocTitle}
                       activeIndex={activeTocIndex}
                       entries={children}
@@ -156,7 +152,6 @@ export const ArticleWrapper = ({
                   {child}
                   {appendToc && (
                     <MobileTOC
-                      hasActiveState={tocHasActiveState}
                       title={tocTitle}
                       activeIndex={activeTocIndex}
                       entries={children}
