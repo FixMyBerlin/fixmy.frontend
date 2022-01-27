@@ -4,8 +4,9 @@ import { InView } from 'react-intersection-observer';
 import styled from 'styled-components';
 import config from '~/config';
 import { media } from '~/styles/utils';
-import { TOC } from '../../../pages/KatasterKI/components/TOC';
+import { LocaleCode } from '~/types';
 import { ArticleWrapperHeader } from './ArticleWrapperHeader';
+import { TOC } from './TOC';
 
 const log = debug('fmc:Article:ArticleWrapper');
 
@@ -65,7 +66,18 @@ const DesktopTOC = styled(TOC)`
     `}
 `;
 
-export const ArticleWrapper = ({
+type Props = {
+  bannerTitle: string;
+  logo?: React.ReactNode;
+  bgPattern?: string;
+  tocTitle?: string;
+  enumerateToc?: boolean;
+  locales?: LocaleCode[];
+  className?: string;
+  children: any; // Really hard to type
+};
+
+export const ArticleWrapper: React.VFC<Props> = ({
   bannerTitle,
   logo = null,
   bgPattern = null,
@@ -82,7 +94,7 @@ export const ArticleWrapper = ({
   );
 
   const onViewChange = (
-    inView: boolean,
+    _inView: boolean,
     entry: IntersectionObserverEntry,
     index: number
   ) => {
@@ -138,26 +150,26 @@ export const ArticleWrapper = ({
             const appendToc =
               child.type.displayName === 'Article/Typography/Intro';
 
+            // TOC is attached only to the <Intro> Component
+            // All other components witout props.toc are just returned.
             if (!child.props.toc) {
+              if (!appendToc) return child;
+
               return (
                 <>
-                  {appendToc && (
-                    <DesktopTOC
-                      title={tocTitle}
-                      activeIndex={activeTocIndex}
-                      entries={children}
-                      enumerate={enumerateToc}
-                    />
-                  )}
+                  <DesktopTOC
+                    title={tocTitle}
+                    activeIndex={activeTocIndex}
+                    entries={children}
+                    enumerate={enumerateToc}
+                  />
                   {child}
-                  {appendToc && (
-                    <MobileTOC
-                      title={tocTitle}
-                      activeIndex={activeTocIndex}
-                      entries={children}
-                      enumerate={enumerateToc}
-                    />
-                  )}
+                  <MobileTOC
+                    title={tocTitle}
+                    activeIndex={activeTocIndex}
+                    entries={children}
+                    enumerate={enumerateToc}
+                  />
                 </>
               );
             }

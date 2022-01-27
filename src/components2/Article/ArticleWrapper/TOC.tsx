@@ -31,7 +31,7 @@ const TOCHeaderArticle = styled(Heading)`
 `;
 
 type Props = {
-  entries: any; // TODO TJO
+  entries: any; // Really hard to type
   activeIndex: number;
   enumerate?: boolean;
   title?: string | null;

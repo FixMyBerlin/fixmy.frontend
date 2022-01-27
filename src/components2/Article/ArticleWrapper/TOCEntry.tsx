@@ -1,7 +1,6 @@
 import React from 'react';
 import slugify from 'slugify';
 import styled, { StyledProps } from 'styled-components';
-
 import config from '~/config';
 import { media } from '~/styles/utils';
 
@@ -65,12 +64,12 @@ const padIndex = (index: number) => {
 
 type Props = {
   index: number;
-  entry: any; // TODO
+  entry: React.ReactElement;
   active: boolean;
   enumerate: boolean;
 };
 
-export const TOCEntry: React.FC<Props> = ({
+export const TOCEntry: React.VFC<Props> = ({
   index,
   entry,
   active = false,

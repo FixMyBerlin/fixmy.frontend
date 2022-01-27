@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import { media } from '~/styles/utils';
 import { Paragraph } from './Paragraph';
 
-type Props = React.FC & { displayName?: string };
-
-export const Intro: Props = styled(Paragraph)`
+export const Intro: React.FC = styled(Paragraph)`
   font-weight: 700;
   line-height: 1.3;
 
