@@ -2,12 +2,10 @@ import debug from 'debug';
 import React, { useEffect, useState } from 'react';
 import { InView } from 'react-intersection-observer';
 import styled from 'styled-components';
-import { Header } from '~/components2/Header';
-import { LocaleSwitcher } from '~/components2/LocaleSwitcher';
-import { MenuButton } from '~/components2/MenuButton';
 import config from '~/config';
 import { media } from '~/styles/utils';
-import { TOC } from './TOC';
+import { TOC } from '../../../pages/KatasterKI/components/TOC';
+import { ArticleWrapperHeader } from './ArticleWrapperHeader';
 
 const log = debug('fmc:Article:ArticleWrapper');
 
@@ -55,50 +53,6 @@ const ContentWrapper = styled.div`
 
   ${media.m`
     padding: 2rem 0;
-  `}
-`;
-
-const MobileHeader = styled(Header)`
-  && {
-    display: block;
-    ${media.m`
-    display: none;
-  `}
-  }
-`;
-
-const DesktopHeader = styled.div`
-  display: none;
-  ${media.m`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  `}
-`;
-
-const OffsetMenuButton = styled(MenuButton)`
-  display: inline-flex;
-  ${media.l`
-    && {
-      padding: 30px 40px;
-    }
-  `}
-`;
-
-const StyledLocaleSwitcher = styled(LocaleSwitcher)`
-  ${media.l`
-    && {
-      right: 1em;
-    }
-  `}
-`;
-
-const LogoWrapper = styled.div`
-  padding: 12px;
-  ${media.l`
-    padding: 30px 40px;
-
   `}
 `;
 
@@ -181,14 +135,11 @@ export const ArticleWrapper = ({
 
   return (
     <Page className={className} bgPattern={bgPattern}>
-      <MobileHeader position="sticky" locales={locales} logo={logo}>
-        {bannerTitle}
-      </MobileHeader>
-      <DesktopHeader>
-        <OffsetMenuButton />
-        {locales && <StyledLocaleSwitcher locales={locales} />}
-        {logo && <LogoWrapper>{logo}</LogoWrapper>}
-      </DesktopHeader>
+      <ArticleWrapperHeader
+        locales={locales}
+        logo={logo}
+        bannerTitle={bannerTitle}
+      />
       <ContentWrapperOuter>
         <ContentWrapper className="contentWrapper">
           {React.Children.map(children, (child) => {
