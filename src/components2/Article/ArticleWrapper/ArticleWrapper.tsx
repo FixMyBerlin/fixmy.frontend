@@ -70,7 +70,6 @@ export const ArticleWrapper = ({
   logo = null,
   bgPattern = null,
   tocTitle = null,
-  hasToc = false,
   enumerateToc = true,
   tocHasActiveState = true,
   locales = null,
@@ -140,7 +139,7 @@ export const ArticleWrapper = ({
         <ContentWrapper className="contentWrapper">
           {React.Children.map(children, (child) => {
             const appendToc =
-              child.type.displayName === 'Article/Typography/Intro' && hasToc;
+              child.type.displayName === 'Article/Typography/Intro';
 
             if (!child.props.toc) {
               return (

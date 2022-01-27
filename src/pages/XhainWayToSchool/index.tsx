@@ -44,7 +44,6 @@ const XhainWayToSchool = () => (
       />
     </Helmet>
     <Wrapper
-      hasToc
       tocTitle="Inhalt"
       enumerateToc={false}
       bannerTitle="Schulwegsicherheit in Xhain"

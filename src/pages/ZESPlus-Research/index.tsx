@@ -47,7 +47,6 @@ const Logo = styled.img`
 
 const ZESPlusResearch = () => (
   <Wrapper
-    hasToc
     tocTitle="Inhalt"
     enumerateToc={false}
     bannerTitle="Forschungs&shy;projekt - ZES-Plus"
