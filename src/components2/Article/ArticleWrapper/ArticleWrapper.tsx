@@ -9,11 +9,7 @@ import { ArticleWrapperHeader } from './ArticleWrapperHeader';
 
 const log = debug('fmc:Article:ArticleWrapper');
 
-type Props = {
-  bgPattern?: string;
-};
-
-const Page = styled.main<Props>`
+const Page = styled.main<{ bgPattern?: string }>`
   background: url(${(props) => props.bgPattern});
   min-height: 100%;
 `;
