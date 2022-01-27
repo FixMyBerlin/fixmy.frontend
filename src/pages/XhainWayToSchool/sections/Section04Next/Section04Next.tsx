@@ -1,5 +1,4 @@
 import React from 'react';
-import ExternalLink from '~/components/ExternalLink';
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import { AnchorLink } from '~/components2/Link';
 
