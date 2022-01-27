@@ -6,9 +6,9 @@ import {
   LegendCol,
   LegendItem,
   LegendWrapper,
-} from './LegendStyles';
+} from './index';
 
-const CadastreLegendGrid = (props) => (
+export const IncidentLegendGrid = (props) => (
   <LegendWrapper {...props}>
     <LegendCol>
       <HeaderCol>Unfallkategorie</HeaderCol>
@@ -58,5 +58,3 @@ const CadastreLegendGrid = (props) => (
     </LegendCol>
   </LegendWrapper>
 );
-
-export default CadastreLegendGrid;

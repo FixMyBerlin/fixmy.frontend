@@ -10,13 +10,13 @@ import {
   LegendCol,
   LegendItem,
   LegendWrapper,
-} from './LegendStyles';
-import ConstructionLegendImage from './construction.png';
-import DividersLegendImage from './dividers.png';
-import FootwaysLegendImage from './footways.png';
-import GuardrailLegendImage from './guardrail-legend.png';
+  ConstructionLegendImage,
+  DividersLegendImage,
+  FootwaysLegendImage,
+  GuardrailLegendImage,
+} from './index';
 
-const CadastreLegendGrid = (props) => (
+export const CadastreLegendGrid = (props) => (
   <LegendWrapper {...props}>
     <Header>Flächennutzung</Header>
     <LegendCol>
@@ -102,5 +102,3 @@ const CadastreLegendGrid = (props) => (
     </LegendCol>
   </LegendWrapper>
 );
-
-export default CadastreLegendGrid;

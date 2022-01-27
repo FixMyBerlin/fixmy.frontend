@@ -5,8 +5,7 @@ import { Link } from '~/components2/Link';
 import config from '~/config';
 import { media } from '~/styles/utils';
 
-import CadastreLegendGrid from './CadastreLegendGrid';
-import IncidentLegendGrid from './IncidentLegendGrid';
+import { CadastreLegendGrid, IncidentLegendGrid } from './index';
 import CloseIcon from './close.svg';
 import { ModalCloseIcon } from '../ModalCloseIcon';
 
