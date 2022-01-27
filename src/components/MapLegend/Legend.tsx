@@ -77,10 +77,7 @@ const Header = styled.h1`
   margin: 0;
   padding-bottom: 0.5em;
   border-bottom: solid 1px #e0e0e0;
-
-  &:not(:first-child) {
-    margin-top: 1rem;
-  }
+  margin-top: 1rem;
 `;
 
 const LegendListWrapper = styled.div`
@@ -99,6 +96,7 @@ const LegendListWrapper = styled.div`
 export const MutedText = styled.div`
   color: ${config.colors.midgrey};
   font-size: 0.9rem;
+  margin: 0.5rem 0 1.5rem 0;
 `;
 
 const Legend = ({ closeLegend }) => (
