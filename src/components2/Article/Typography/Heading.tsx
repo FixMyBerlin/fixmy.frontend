@@ -121,7 +121,7 @@ type AnchorWrapperProps = {
 /**
  * Provide an anchor for accessibility if toc prop is provided
  */
-const AnchorWrapper: React.FunctionComponent<AnchorWrapperProps> = ({
+const AnchorWrapper: React.FC<AnchorWrapperProps> = ({
   toc,
   tocAnchor = null,
   children,

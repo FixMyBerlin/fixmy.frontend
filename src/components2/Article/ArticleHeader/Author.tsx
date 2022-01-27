@@ -6,7 +6,7 @@ type AuthorProps = {
   className?: string;
 };
 
-export const Author = ({ name = '', className }: AuthorProps) => (
+export const Author: React.VFC<AuthorProps> = ({ name = '', className }) => (
   <span className={className}>
     <FormattedMessage
       id="components.article.attribution"

@@ -6,7 +6,10 @@ type PublishDateProps = {
   className?: string;
 };
 
-export const PublishDate = ({ date, className }: PublishDateProps) => (
+export const PublishDate: React.VFC<PublishDateProps> = ({
+  date,
+  className,
+}) => (
   <span className={className}>
     <FormattedDate value={date} year="numeric" month="long" day="numeric" />
   </span>

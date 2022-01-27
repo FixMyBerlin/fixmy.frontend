@@ -8,7 +8,7 @@ import { LocaleCode } from '~/types';
 
 import { ArticleMeta } from './ArticleMeta';
 
-type Props = React.FC<{
+type Props = {
   kicker?: string;
   logo?: React.ReactNode;
   publishDate?: Date;
@@ -17,8 +17,6 @@ type Props = React.FC<{
   children?: React.ReactNode;
   className?: string;
   locales?: LocaleCode[];
-}> & {
-  displayName?: string;
 };
 
 const ArticleHeaderWrapper = styled.div`
@@ -47,7 +45,7 @@ const Kicker = styled.div`
   `}
 `;
 
-export const ArticleHeader: Props = ({
+export const ArticleHeader: React.VFC<Props> = ({
   kicker,
   logo,
   publishDate,
@@ -68,4 +66,4 @@ export const ArticleHeader: Props = ({
   );
 };
 
-ArticleHeader.displayName = 'ArticleHeader';
+ArticleHeader.displayName = 'Article/ArticleHeader/ArticleHeader';

@@ -14,14 +14,14 @@ const ImageWrapperFull = styled.div`
   `}
 `;
 
-export const ImageFull = ({
+export const ImageFull: React.VFC<InnerImageProps> = ({
   source,
   alt,
   className,
   role = null,
   subtitle = null,
   ...props
-}: InnerImageProps) => (
+}) => (
   <ImageWrapperFull className={className}>
     <InnerImg
       source={source}

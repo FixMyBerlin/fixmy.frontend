@@ -41,7 +41,7 @@ const LegendInner = styled.div`
   `}
 `;
 
-export const Legend = ({ children, ...props }) => (
+export const Legend: React.FC = ({ children, ...props }) => (
   <LegendOuter {...props}>
     <LegendInner>{children}</LegendInner>
   </LegendOuter>

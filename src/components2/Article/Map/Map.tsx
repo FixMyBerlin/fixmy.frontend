@@ -22,7 +22,7 @@ type Props = {
  * @param allLayers an array of all map custom map layers; use together with `visibleLayers`
  * @param visibleLayers an array of map layers to show; only those are visible for this map
  */
-export const Map: React.FC<Props> = ({
+export const Map: React.VFC<Props> = ({
   defaultActive = false,
   allLayers = [],
   visibleLayers = [],
