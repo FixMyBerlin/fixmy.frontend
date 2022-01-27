@@ -9,7 +9,7 @@ import {
 import styled from 'styled-components';
 import ErrorMessage from '~/components/ErrorMessage';
 import { Logo as FMBLogo } from '~/components2/Logo';
-import Legend from '~/components2/MapLegend/Legend';
+import Legend from '~/components/MapLegend/Legend';
 import config from '~/config';
 import MapLegendButtonIcon from '~/images/map-legend.svg';
 import Store, { RootState } from '~/store';

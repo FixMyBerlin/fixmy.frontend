@@ -6,8 +6,8 @@ import config from '~/config';
 import { media } from '~/styles/utils';
 
 import { CadastreLegendGrid, IncidentLegendGrid } from './index';
-import CloseIcon from './close.svg';
-import { ModalCloseIcon } from '../ModalCloseIcon';
+import CloseIcon from './assets/close.svg';
+import { ModalCloseIcon } from '../../components2/ModalCloseIcon';
 
 const BaseWrapper = styled.section`
   background-color: ${config.colors.lightbg};
