@@ -67,11 +67,12 @@ const Header = styled.h1`
 const LegendListWrapper = styled.div`
   overflow-y: auto;
   padding: 0.625rem 1.2rem;
-  height: calc(100vh - 230px);
+  height: calc(100vh - 100px);
   min-width: 100vw;
 
   ${media.m`
     min-width: 100%;
+    height: calc(100vh - 230px);
   `}
 `;
 
