@@ -54,6 +54,7 @@ export const CadastreLegendItem = styled.span`
   min-width: 27px;
   height: 18px;
   margin: 5px 10px 5px 0;
+  display: flex;
 
   ${media.s`
     margin: 7px 20px 6px 0;
