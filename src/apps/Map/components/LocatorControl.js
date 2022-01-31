@@ -7,26 +7,19 @@ import MapControl from '~/apps/Map/components/MapControl';
 import { getGeoLocation } from '~/apps/Map/map-utils';
 import ErrorMessage from '~/components/ErrorMessage';
 import Loader from '~/components/Loader';
-import config from '~/config';
 import LocatorIcon from '~/images/location.svg';
 import { isNumeric } from '~/utils/utils';
 
 const logger = debug('fmc:map:locator');
 
 const LocatorButton = styled.button`
-  background-color: ${config.colors.white};
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
+  background-color: transparent;
   border: none;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  padding: 0;
 
   &[disabled] {
     pointer-events: none;
-    background-color: ${config.colors.lightgrey};
   }
 `;
 
