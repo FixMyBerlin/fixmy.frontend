@@ -6,7 +6,6 @@ import config from '~/config';
 import { media } from '~/styles/utils';
 
 import { CadastreLegendGrid, IncidentLegendGrid } from './index';
-import CloseIcon from './assets/close.svg';
 import { ModalCloseIcon } from '../../components2/ModalCloseIcon';
 
 const BaseWrapper = styled.section`
@@ -53,22 +52,7 @@ const BaseWrapper = styled.section`
 const Wrapper = styled(BaseWrapper)`
   display: flex;
   flex-direction: column;
-  z-index: 1100;
-`;
-
-const StyledCloseIcon = styled(CloseIcon)`
-  color: ${config.colors.lightgrey};
-  cursor: pointer;
-  position: absolute;
-  right: 10px;
-  top: -18px;
-  z-index: 1200;
-  &:focus {
-    outline: none;
-    & .close-icon-background {
-      fill: ${config.colors.midgrey};
-    }
-  }
+  z-index: 100;
 `;
 
 const Header = styled.h1`
