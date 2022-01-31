@@ -58,3 +58,24 @@
   pointer-events: none;
   z-index: 2;
 }
+
+/* Mapbox zoom control styling */
+.mapboxgl-ctrl-group {
+  background-color: transparent;
+  display: flex;
+}
+
+.mapboxgl-ctrl-group:not(:empty) {
+  box-shadow: none;
+}
+
+.mapboxgl-ctrl-group button,
+.mapboxgl-ctrl-group button + button {
+  border-radius: 50%;
+  border: #5b5b5b 1px solid;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  margin-top: 0;
+  margin-right: 0.5rem;
+}

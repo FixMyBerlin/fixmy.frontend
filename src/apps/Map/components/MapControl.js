@@ -25,6 +25,13 @@ const getMargins = (props) => {
         bottom: 'auto',
         left: 'auto',
       };
+    case 'top-center':
+      return {
+        top: margin,
+        right: 'auto',
+        bottom: 'auto',
+        left: '50%',
+      };
     case 'bottom-right':
       return {
         top: 'auto',

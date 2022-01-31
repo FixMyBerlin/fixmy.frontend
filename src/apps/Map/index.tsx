@@ -143,7 +143,7 @@ const MapView = ({
             <StyledMapLegendButton onClick={() => setShowLegend(!showLegend)} />
           </StyledMapControl>
           {!isEmbedMode && (
-            <MapControl position="top-right">
+            <MapControl position="top-center">
               <StyledFMBLogo width={67} />
             </MapControl>
           )}
