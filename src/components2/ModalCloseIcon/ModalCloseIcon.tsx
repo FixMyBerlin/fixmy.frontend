@@ -9,7 +9,7 @@ const StyledCloseIcon = styled(CloseIcon)`
   position: absolute;
   right: ${(props) => (props.positionRight ? props.positionRight : '10px')};
   top: -18px;
-  z-index: 1200;
+  z-index: 500;
   overflow: visible;
   width: 41px;
   height: 41px;

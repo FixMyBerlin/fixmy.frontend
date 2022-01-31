@@ -14,19 +14,19 @@ const BaseWrapper = styled.section`
   display: flex;
   width: 100%;
   line-height: 1.4;
-  min-width: 400px;
   border: solid 1px #cccccc;
   border-radius: 1px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   bottom: 0;
   position: absolute;
 
-  ${media.m`
-    position: static;
-  `}
-
   ${media.s`
     padding: 0;
+  `}
+
+  ${media.m`
+    position: static;
+    min-width: 400px;
   `}
 
   ${media.m`
@@ -52,7 +52,7 @@ const BaseWrapper = styled.section`
 const Wrapper = styled(BaseWrapper)`
   display: flex;
   flex-direction: column;
-  z-index: 100;
+  z-index: 400;
 `;
 
 const Header = styled.h1`

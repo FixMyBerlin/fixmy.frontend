@@ -4,7 +4,7 @@ import { media } from '~/styles/utils';
 // Styles based on https://tailwindui.com/components/application-ui/overlays/modals
 export const Wrapper = styled.div`
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 2000;
   inset: 0;
   position: fixed;
 `;
