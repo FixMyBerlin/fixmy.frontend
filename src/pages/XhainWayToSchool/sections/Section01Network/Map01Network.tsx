@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { Map } from '~/components2/Article';
 import {
   IconWrapper,
@@ -9,6 +10,7 @@ import {
   LegendItems,
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
+import { AnchorLink } from '~/components2/Link';
 import IconPlayground from '../assets/playground.svg';
 import IconSchoolAreas from '../assets/school-areas.svg';
 import IconSchoolPinBlue from '../assets/school-pin-blue.svg';
@@ -65,25 +67,37 @@ export const Map01Network = () => {
             >
               <IconWrapper>
                 <IconSchoolPinBlue />
-              </IconWrapper>{' '}
+              </IconWrapper>
               Grundschulen
             </LegendItem>
             <LegendItem>
               <IconWrapper>
                 <IconPlayground />
-              </IconWrapper>{' '}
+              </IconWrapper>
               Spielplätze
             </LegendItem>
             <LegendItem>
               <IconWrapper>
                 <IconSchoolAreas />
-              </IconWrapper>{' '}
+              </IconWrapper>
               Einzugsbereiche
             </LegendItem>
           </LegendItems>
         </LegendCol>
         <LegendSources>
-          Quellen: <span style={{ color: 'red' }}>TODO</span>
+          Quellen:{' '}
+          <AnchorLink href="https://fbinter.stadt-berlin.de/fb/berlin/service_intern.jsp?id=s_spielplatzbestand@senstadt&type=WFS">
+            Geoportal Berlin / Grünanlagenbestand Berlin (einschl. der
+            öffentlichen Spielplätze) - Spielplätze
+          </AnchorLink>
+          ,{' '}
+          <AnchorLink href="https://fbinter.stadt-berlin.de/fb/berlin/service_intern.jsp?id=s_schulen_ezb@senstadt&type=WFS">
+            Geoportal Berlin / Schulen - Einschulbereiche
+          </AnchorLink>
+          ,{' '}
+          <AnchorLink href="https://fbinter.stadt-berlin.de/fb/berlin/service_intern.jsp?id=s_schulen@senstadt&type=WFS">
+            Geoportal Berlin / Schulen
+          </AnchorLink>
         </LegendSources>
       </Legend>
     </>

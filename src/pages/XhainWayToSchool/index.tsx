@@ -57,7 +57,7 @@ const XhainWayToSchool = () => (
     >
       <ArticleHeader
         kicker="Schulwegsicherheit in Xhain"
-        publishDate={new Date(2022, 1, 1, 10, 0)}
+        publishDate={new Date(2022, 2, 17, 10, 0)}
       >
         Sichere Schulwege für alle Schüler*innen im Bezirk
       </ArticleHeader>
@@ -68,12 +68,12 @@ const XhainWayToSchool = () => (
         werden. Diese sollen es allen Kindern ermöglichen, sicher und
         selbständig zur Schule zu kommen. <br />
         Als Grundlage für diese Maßnahmen wurde eine Analyse zum Schulwegenetz
-        in Fridrichshain-Kreuzberg erstellt. Die Ergebnisse dieser Analyse
+        in Friedrichshain-Kreuzberg erstellt. Die Ergebnisse dieser Analyse
         werden hier erläutert.
       </Intro>
       <Section01Network toc="Schulwegenetz" />
-      <Section02Surroundings toc="Situation" />
-      <Section03Crossing toc="Querungsmöglichkeiten" />
+      <Section02Surroundings toc="Schulstandorte" />
+      <Section03Crossing toc="Sicher über die Straße" />
       <Section04Next toc="Maßnahmen" />
 
       {/* <ImageFull source={Image2} alt="" role="presentation" />

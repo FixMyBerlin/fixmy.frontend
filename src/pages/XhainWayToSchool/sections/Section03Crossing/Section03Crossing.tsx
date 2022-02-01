@@ -9,29 +9,32 @@ export const Section03Crossing: React.FC<SectionProps> = ({ toc }) => (
     </Heading>
     <Paragraph>
       Die dritte Karte analysiert die Kreuzungen des Schulwegenetzes. Hier zeigt
-      sich, wo viele Schüler*innen entlang gehen, es jedoch keine
+      sich, wo viele Schüler*innen entlang gehen, es jedoch keine gesicherte
       Querungsmöglichkeit (z.B. Zebrastreifen oder Fußampel) gibt. Auf der Karte
-      zeigen orange Punkte zudem, wo häufig Unfälle mit Fußgänger*innen
+      zeigen orange Punkte zudem, wo relativ häufig Unfälle mit Fußgänger*innen
       stattfinden.
       <br />
       Wo eine Querungsmöglichkeit fehlt, ist in der Karte ein Ausrufezeichen zu
       sehen. Die großen Ausrufezeichen zeigen, dass hier über 300 tägliche
-      Schulwege entlang gehen, kleine Icons beschreiben 150-300 Schulwege
+      Schulwege entlang gehen. Die kleinen Icons beschreiben 150-300 Schulwege
       täglich.
       <br />
       Um auch hier die Verkehrssicherheit zu erhöhen, prüft das Bezirksamt
-      mögliche Maßnahmen. Das kann die Einrichtung von Zebrastreifen oder
-      Lichtsignalanlagen (Ampeln) sein, um ein sicheres Queren von Kindern zu
-      ermöglichen.
+      mögliche Maßnahmen. Das kann die Einrichtung von Zebrastreifen,
+      Gehwegvorstreckungen oder Lichtsignalanlagen (Ampeln) sein, um ein
+      sicheres Queren von Kindern zu ermöglichen.
     </Paragraph>
 
     <Heading as="h3">
-      Karte 2: Schulstandorte an Haupt- und Nebenstraßen, Tempolimits,
-      Hauptstraßenklassen und Schulwege
+      Karte 2: Querungs&shy;möglichkeiten und Unfälle mit
+      Fußgänger*&shy;Innenbeteiligung
     </Heading>
     <Paragraph>
-      Hinweis: Um in der Karte Details anzusehen, klicken Sie auf “Karte
-      aktivieren”. Dann können Sie die Karte bewegen sowie rein- und rauszoomen.
+      <i>
+        Hinweis: Um in der Karte Details anzusehen, klicken Sie auf “Karte
+        aktivieren”. Dann können Sie die Karte bewegen sowie rein- und
+        rauszoomen.
+      </i>
     </Paragraph>
     <Map03Crossing />
   </>

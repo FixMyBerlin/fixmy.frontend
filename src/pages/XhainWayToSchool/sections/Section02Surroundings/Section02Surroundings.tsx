@@ -5,7 +5,7 @@ import { Map02Surroundings } from './Map02Surroundings';
 export const Section02Surroundings: React.FC<SectionProps> = ({ toc }) => (
   <>
     <Heading as="h2" toc={toc}>
-      Die Situation vor den Schulen
+      Die Verkehrssicherheit um die Schulstandorte
     </Heading>
     <Paragraph>
       Direkt vor den Grundschulen treten besonders häufig gefährliche
@@ -14,22 +14,24 @@ export const Section02Surroundings: React.FC<SectionProps> = ({ toc }) => (
     </Paragraph>
     <Paragraph>
       Von den 42 Grundschulen im Bezirk liegen sieben an Hauptstraßen. An den
-      meisten dieser Standorte gibt es bereits Tempo 30 Zonen vor der Schule, um
-      die Verkehrssicherheit zu erhöhen. Das Straßen- und Grünflächenamt prüft
-      an diesen Standorten, wo weitere Tempo-30-Zonen notwendig sind oder die
-      vorhandenen ausgeweitet werden müssen.
+      meisten dieser Standorte gibt es bereits Tempo-30-Zonen vor der Schule, um
+      die Verkehrssicherheit zu erhöhen. Das Straßen- und Grünflächenamt prüft,
+      wo weitere Tempo-30-Zonen notwendig sind oder die vorhandenen ausgeweitet
+      werden müssen.
     </Paragraph>
     <Paragraph>
-      Bei Schulstandorten in Nebenstraßen gilt überall vor der Schule höchstens
-      Tempo 30. In einigen Wohngebieten sind zudem niedrigere
-      Höchstgeschwindigkeiten von 10 oder 20 km/h festgelegt. Wo dies der Fall
-      ist, lässt sich in der Karte erkennen.
+      Bei Schulstandorten in Nebenstraßen gilt überall vor der Schule eine
+      maximal zulässige Geschwindigkeit von 30 km/h. In einigen Wohngebieten
+      sind zudem niedrigere Höchstgeschwindigkeiten von 5, 10 oder 20 km/h
+      festgelegt, da diese als verkehrsberuhigte Bereiche ausgewiesen sind. Wo
+      dies der Fall ist, lässt sich in der Karte erkennen.
     </Paragraph>
     <Paragraph>
       Um die Sicherheit vor den Schulen zu erhöhen, sollen weitere Maßnahmen
       umgesetzt werden. Möglichkeiten wären z.B. Temporeduzierungen,
-      verkehrsberuhigende Maßnahmen oder Schulstraßen (Freigabe der Straße nur
-      für Fuß- und Radverkehr zu bestimmten Uhrzeiten. Je nach Straßenkategorie
+      verkehrsberuhigende Maßnahmen (z.B. Fahrbahnverengung, Aufpflasterung)
+      oder die Einrichtung von Schulstraßen (Freigabe der Straße nur für Fuß-
+      und Radverkehr zu bestimmten Uhrzeiten). Je nach Straßenkategorie
       (Hauptstraße/ Nebenstraße) sind die rechtlichen und planerischen
       Möglichkeiten für Maßnahmen sehr unterschiedlich. In weiteren
       Untersuchungen sollen daher zudem Kfz-Verkehrsmengen und die Einhaltung
@@ -37,23 +39,16 @@ export const Section02Surroundings: React.FC<SectionProps> = ({ toc }) => (
       Maßnahmen prüfen zu können.
     </Paragraph>
     <Heading as="h3">
-      Karte 2: Schulstandorte an Haupt- und Nebenstraßen, Tempolimits,
-      Hauptstraßenklassen und Schulwege
+      Karte 2: Schulstandorte an Haupt- und Nebenstraßen mit zulässigen
+      Höchst&shy;geschwindigkeiten
     </Heading>
     <Paragraph>
-      Hinweis: Um in der Karte Details anzusehen, klicken Sie auf “Karte
-      aktivieren”. Dann können Sie die Karte bewegen sowie rein- und rauszoomen.
+      <i>
+        Hinweis: Um in der Karte Details anzusehen, klicken Sie auf “Karte
+        aktivieren”. Dann können Sie die Karte bewegen sowie rein- und
+        rauszoomen.
+      </i>
     </Paragraph>
     <Map02Surroundings />
-
-    <Paragraph>
-      <em>Kurz erklärt:</em> Hauptstraßen-Klassen Je nachdem, welche
-      Verbindungsfunktion eine Hauptstraße im Berliner Straßennetz einnimmt,
-      wird sie einer Klasse zugeteilt. Kategorie I umfasst großräumige
-      Straßenverbindungen (Bundesstraßen), Kategorie II übergeordnete
-      Straßenverbindungen (Landesstraßen) und Kategorie III und IV haben vor
-      allem eine lokale Erschließungsfunktion. Diese Kategorien bestimmen u.a.,
-      welche verkehrsberuhigenden Maßnahmen an diesen Straßen möglich sind.
-    </Paragraph>
   </>
 );

@@ -9,8 +9,10 @@ import {
   LegendItems,
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
+import { AnchorLink } from '~/components2/Link';
 import IconSchoolPinBlue from '../assets/school-pin-blue.svg';
 import IconSchoolPinPink from '../assets/school-pin-pink.svg';
+import IconStreetClass from '../assets/street-class.svg';
 import {
   ALL_LAYERS,
   BOUNDS,
@@ -19,7 +21,6 @@ import {
   ZOOM,
 } from '../mapboxOptions.const';
 import { IconKmh } from './components/IconKmh';
-import { IconStreetClass } from './components/IconStreetClass';
 
 export const Map02Surroundings = () => {
   const allVisibleLayers = [
@@ -74,30 +75,25 @@ export const Map02Surroundings = () => {
           </LegendItems>
         </LegendCol>
         <LegendCol>
-          <LegendHeader>Hauptstraßen nach Klassen</LegendHeader>
+          <LegendHeader>Straßenklassen</LegendHeader>
           <LegendItems>
             <LegendItem>
               <IconWrapper>
-                <IconStreetClass fill="#e2961d" />
+                <IconStreetClass />
               </IconWrapper>
-              Klasse I
-            </LegendItem>
-            <LegendItem>
-              <IconWrapper>
-                <IconStreetClass fill="#ebc55c" />
-              </IconWrapper>
-              Klasse II
-            </LegendItem>
-            <LegendItem>
-              <IconWrapper>
-                <IconStreetClass fill="#f3eca5" />
-              </IconWrapper>
-              Klasse III und IV
+              Hauptstraßen (Klasse I-IV)
             </LegendItem>
           </LegendItems>
         </LegendCol>
         <LegendSources>
-          Quellen: <span style={{ color: 'red' }}>TODO</span>
+          Quellen:{' '}
+          <AnchorLink href="https://fbinter.stadt-berlin.de/fb/berlin/service_intern.jsp?id=s_vms_tempolimits_spatial@senstadt&type=WFS">
+            Geoportal Berlin / Tempolimits
+          </AnchorLink>
+          ,{' '}
+          <AnchorLink href="https://fbinter.stadt-berlin.de/fb/berlin/service_intern.jsp?id=s_vms_detailnetz_spatial_gesamt@senstadt&type=WFS">
+            Geoportal Berlin / Detailnetz Straßenabschnitte
+          </AnchorLink>
         </LegendSources>
       </Legend>
     </>

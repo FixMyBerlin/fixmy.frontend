@@ -9,6 +9,7 @@ import {
   LegendItems,
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
+import { AnchorLink } from '~/components2/Link';
 import IconAccidentsHeatap from '../assets/accidents-heatmap.svg';
 import IconCrosswalk from '../assets/crosswalk.svg';
 import IconDangerPin from '../assets/danger-pin.svg';
@@ -59,7 +60,7 @@ export const Map03Crossing = () => {
             <LegendItem>
               <IconWrapper>
                 <IconSchoolPinPink />
-              </IconWrapper>{' '}
+              </IconWrapper>
               Grundschulen an Hauptstraßen
             </LegendItem>
           </LegendItems>
@@ -71,7 +72,7 @@ export const Map03Crossing = () => {
               <IconWrapper>
                 <IconTrafficSignal />
               </IconWrapper>
-              Lichtanlagen
+              Lichtsignalanlagen
             </LegendItem>
             <LegendItem>
               <IconWrapper>
@@ -83,22 +84,30 @@ export const Map03Crossing = () => {
               <IconWrapper>
                 <IconDangerPin />
               </IconWrapper>
-              Fehlende
-              <br />
-              Querungsmöglichkeiten
+              Fehlende Querungsmöglichkeiten
             </LegendItem>
             <LegendItem>
               <IconWrapper>
                 <IconAccidentsHeatap />
               </IconWrapper>
-              Häufungen Unfälle
-              <br />
-              mit Fußgängerbeteiligung
+              Häufungen Unfälle mit Fußgänger*&shy;Innen-Beteiligung
             </LegendItem>
           </LegendItems>
         </LegendCol>
         <LegendSources>
-          Quellen: <span style={{ color: 'red' }}>TODO</span>
+          Quellen:{' '}
+          <AnchorLink href="https://fbinter.stadt-berlin.de/fb/berlin/service_intern.jsp?id=s_lsa@senstadt&type=WFS">
+            Geoportal Berlin / Lichtsignalanlagen
+          </AnchorLink>
+          ,{' '}
+          <AnchorLink href="https://fbinter.stadt-berlin.de/fb/berlin/service_intern.jsp?id=s_zebra@senstadt&type=WFS">
+            Geoportal Berlin / Fußgängerüberwege
+          </AnchorLink>
+          ,{' '}
+          <AnchorLink href="https://unfallatlas.statistikportal.de/">
+            Unfallatlas, Statistische Ämter des Bundes und der Länder (2018 bis
+            2020)
+          </AnchorLink>
         </LegendSources>
       </Legend>
     </>
