@@ -17,6 +17,7 @@ const Heading1 = styled.h1<StyledHeadingProps>`
   line-height: 1.25;
   max-width: 518px;
   color: ${config.colors.darkbg};
+  hyphens: auto;
 
   ${media.s`
     font-size: 1.875em;
@@ -37,6 +38,7 @@ const Heading2style = styled.h2<StyledHeadingProps>`
   margin: 1.5em auto 0.25em;
   max-width: 518px;
   text-transform: uppercase;
+  hyphens: auto;
 
   ${media.s`
     font-size: 2em;
@@ -56,6 +58,7 @@ const DecoLine = styled.div`
   width: 50%;
   border-bottom: 2px solid ${config.colors.change_2};
   margin-bottom: 0.5em;
+  hyphens: auto;
 
   ${media.s`
     margin-bottom: 1.5em;
