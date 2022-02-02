@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import config from '~/config';
 import { media } from '~/styles/utils';
 
@@ -8,22 +7,29 @@ import { media } from '~/styles/utils';
 const LegendContainer = styled.div`
   background-color: ${config.colors.lightbg};
   border: 1px solid ${config.colors.lightgrey};
-  margin: 0 -16px 1em -16px;
+  margin-top: 0;
+  margin-right: -16px;
+  margin-bottom: 1em;
+  margin-left: -16px;
   border-top: none;
   overflow: auto;
 
-  ${media.m`
-    margin: 0 auto;
+  ${media.s`
     padding: 0 1em 1em 1em;
   `}
 
+  ${media.m`
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+  `}
+
   ${media.l`
-    margin: 0 -5em 0 auto;
+    margin-right: -5em;
     width: calc(100% - 24px + 5em);
   `}
 
   ${media.xl`
-    margin: 0 -5em 0 auto;
     width: calc(100% - 151px + 5em);
   `}
 `;
@@ -55,6 +61,7 @@ export const LegendItems = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   gap: 0.5em;
+  hyphens: auto;
 
   ${media.m`
     gap: 0;

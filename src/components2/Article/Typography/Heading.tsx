@@ -35,7 +35,10 @@ const Heading1 = styled.h1<StyledHeadingProps>`
 const Heading2style = styled.h2<StyledHeadingProps>`
   color: ${config.colors.darkbg};
   font-size: 1.5em;
-  margin: 1.5em auto 0.25em;
+  margin-top: 1.5em;
+  margin-right: auto;
+  margin-bottom: 1.5em;
+  margin-left: 0;
   max-width: 518px;
   text-transform: uppercase;
   hyphens: auto;
@@ -45,37 +48,44 @@ const Heading2style = styled.h2<StyledHeadingProps>`
   `}
 
   ${media.m`
-    margin: 2em auto 0.5rem 0;
-  `}
+    margin-top: 2em;
+    `}
 
   ${media.l`
+    max-width: 598px;
+    margin-bottom: 2em;
+  `}
+
+  ${media.xl`
+    margin-left: 1em;
     max-width: calc(646px + 151px);
   `}
 `;
 
-const DecoLine = styled.div`
-  font-size: 1.5rem;
+const Heading2Line = styled.div`
   width: 50%;
   border-bottom: 2px solid ${config.colors.change_2};
-  margin-bottom: 0.5em;
-  hyphens: auto;
+  margin-top: 0.25em;
 
-  ${media.s`
-    margin-bottom: 1.5em;
+  ${media.m`
+    margin-top: 0.5em;
   `}
 `;
 
 const Heading2 = ({ children, ...props }) => (
-  <>
-    <Heading2style {...props}>{children}</Heading2style>
-    <DecoLine />
-  </>
+  <Heading2style {...props}>
+    {children}
+    <Heading2Line />
+  </Heading2style>
 );
 
 const Heading3 = styled.h3<StyledHeadingProps>`
   font-size: 1.5em;
   line-height: 1.2;
-  margin: 2em auto 0;
+  margin-top: 2em;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
   max-width: 518px;
   color: ${config.colors.darkbg};
 
@@ -84,7 +94,7 @@ const Heading3 = styled.h3<StyledHeadingProps>`
   `}
 
   ${media.m`
-    margin: 2em auto 1em;
+    margin-bottom: 1em;
   `}
 
   ${media.l`
@@ -103,8 +113,8 @@ const AnchorStyle = styled.a`
     margin: -4em 0 0;
 
     ${media.m`
-    height: 1px;
-    margin: -1px 0 0;
+      height: 1px;
+      margin: -1px 0 0;
     `}
   }
 `;
