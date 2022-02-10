@@ -50,7 +50,7 @@ const ReportsBaseMap = ({
         data-cy="reports-basemap"
         maxBounds={maxBounds}
         onInit={handleLoad}
-        style={MB_STYLE_URL}
+        mapboxStyle={MB_STYLE_URL}
       />
     </>
   );

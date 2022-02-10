@@ -195,7 +195,7 @@ const LocationPicker: React.FC<Props> = ({
           <ErrorIcon /> {addressHint}
         </AddressHint>
       )}
-      <StyledMap onInit={setMap} style={mapboxStyle} bounds={bounds} />
+      <StyledMap onInit={setMap} mapboxStyle={mapboxStyle} bounds={bounds} />
       <Snackbar open={errorMessage != null} message={errorMessage} />
     </>
   );

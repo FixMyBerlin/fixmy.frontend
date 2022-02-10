@@ -125,7 +125,7 @@ const LandingMap = ({ district }) => (
   <>
     <MapWrapper>
       <StyledMap
-        style={config.gastro[district?.name]?.map.style}
+        mapboxStyle={config.gastro[district?.name]?.map.style}
         bounds={district?.bounds}
         onInit={(map) => {
           map.addControl(

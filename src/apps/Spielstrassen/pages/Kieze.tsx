@@ -81,7 +81,7 @@ const Kieze = ({
       <Container maxWidth="md">
         <h2>Welche Spielstraße wollen Sie unterstützen?</h2>
         <OverviewMap
-          style={district.apps.spielstrassen.mapboxStyle}
+          mapboxStyle={district.apps.spielstrassen.mapboxStyle}
           bounds={district.bounds}
         />
         {streetRequest.state === RequestState.pending && <Loader />}{' '}
