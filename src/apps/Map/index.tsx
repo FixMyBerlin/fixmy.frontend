@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import {
   Route,
@@ -7,10 +7,12 @@ import {
   withRouter,
 } from 'react-router-dom';
 import styled from 'styled-components';
-
 import ErrorMessage from '~/components/ErrorMessage';
 import { Logo as FMBLogo } from '~/components2/Logo';
+import Legend from '~/components/MapLegend/Legend';
 import config from '~/config';
+import MapLegendButtonIcon from '~/images/map-legend-icon.svg';
+import MapLegendButtonActivatedIcon from '~/images/map-legend-icon-activated.svg';
 import Store, { RootState } from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 
@@ -30,7 +32,7 @@ const Wrapper = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: column;c
+  flex-direction: column;
   position: relative;
   overflow: hidden;
 `;
@@ -48,6 +50,18 @@ const StyledFMBLogo = styled(FMBLogo)`
   ${media.m`
     display: block;
   `}
+`;
+
+const StyledMapLegendButton = styled(MapLegendButtonIcon)`
+  cursor: pointer;
+`;
+
+const StyledMapLegendButtonActivated = styled(MapLegendButtonActivatedIcon)`
+  cursor: pointer;
+`;
+
+const StyledMapControl = styled(MapControl)`
+  margin-bottom: 45px;
 `;
 
 const connector = connect(
@@ -105,6 +119,9 @@ const MapView = ({
     Store.dispatch(MapActions.setView(view));
   };
 
+  // Do not show legend on startup
+  const [showLegend, setShowLegend] = useState(false);
+
   useURLParams();
 
   return (
@@ -115,6 +132,7 @@ const MapView = ({
 
       <MapWrapper>
         <SearchBar />
+        {showLegend && <Legend closeLegend={() => setShowLegend(false)} />}
         <WebglMap
           key="MapComponent"
           calculatePopupPosition={calculatePopupPosition}
@@ -126,9 +144,21 @@ const MapView = ({
               position="bottom-right"
             />
           )}
+          <StyledMapControl position="bottom-right" role="button">
+            {!showLegend && (
+              <StyledMapLegendButton
+                onClick={() => setShowLegend(!showLegend)}
+              />
+            )}
+            {showLegend && (
+              <StyledMapLegendButtonActivated
+                onClick={() => setShowLegend(!showLegend)}
+              />
+            )}
+          </StyledMapControl>
           {!isEmbedMode && (
             <MapControl position="top-right">
-              <StyledFMBLogo showBetaIcon width={67} />
+              <StyledFMBLogo width={67} />
             </MapControl>
           )}
           {isEmbedMode && <FMBCredits />}
@@ -154,19 +184,6 @@ const MapView = ({
             <ProjectDetail
               apiEndpoint="projects"
               onCloseRoute={config.routes.map.projectsIndex}
-              activeView={activeLayer}
-              token={token}
-              match={match}
-            />
-          )}
-        />
-        <Route
-          exact
-          path={config.routes.map.popupDetail}
-          render={({ match }) => (
-            <ProjectDetail
-              apiEndpoint="projects"
-              onCloseRoute={config.routes.map.popupIndex}
               activeView={activeLayer}
               token={token}
               match={match}

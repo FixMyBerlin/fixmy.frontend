@@ -1,5 +1,4 @@
 import ky from 'ky';
-import qs from 'qs';
 import React, { useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
@@ -44,9 +43,7 @@ const UserVerify = ({ match, location }) => {
   useEffect(() => {
     const verifyUser = async () => {
       const { uid, token } = match.params;
-      const { newsletter } = qs.parse(location.search, {
-        ignoreQueryPrefix: true,
-      });
+      const newsletter = new URLSearchParams(location.search).get('newsletter');
       const signupNewsletter = newsletter === 'yes';
 
       try {
@@ -75,15 +72,13 @@ const UserVerify = ({ match, location }) => {
       <VerifyImage src={verifyImage} />
 
       {!serverError && (
-        <>
-          <ButtonWrapper>
-            <Link to="/">
-              <Button style={{ marginTop: 25, marginBottom: 10 }}>
-                Zur Startseite
-              </Button>
-            </Link>
-          </ButtonWrapper>
-        </>
+        <ButtonWrapper>
+          <Link to="/">
+            <Button style={{ marginTop: 25, marginBottom: 10 }}>
+              Zur Startseite
+            </Button>
+          </Link>
+        </ButtonWrapper>
       )}
 
       {serverError && <ErrorMessage>{serverError}</ErrorMessage>}

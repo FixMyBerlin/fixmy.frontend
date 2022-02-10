@@ -9,7 +9,6 @@ import * as apiService from '~/components/AutocompleteGeocoder/apiService';
 import { parseSuggestion } from '~/components/AutocompleteGeocoder/apiService';
 
 import mockedSuggestions from '../../../../jest/msw/mockData/mockLocationSuggestions.json';
-
 import { mswServer } from '~/../jest/msw/mswServer';
 
 describe('<AutoCompleteGeocoder />', () => {
@@ -103,6 +102,8 @@ describe('<AutoCompleteGeocoder />', () => {
       const [mockedFirstSuggestion] = mockedSuggestions.features;
       // eslint-disable-next-line camelcase
       const { place_name_de, center } = mockedFirstSuggestion;
+      // api values may be camel case
+      // eslint-disable-next-line camelcase
       const { address, coords } = parseSuggestion({ place_name_de, center });
 
       // get search results, then click first item
@@ -149,6 +150,8 @@ describe('<AutoCompleteGeocoder />', () => {
         const [mockedFirstSuggestion] = mockedSuggestions.features;
         // eslint-disable-next-line camelcase
         const { place_name_de, center } = mockedFirstSuggestion;
+        // api values may be camel case
+        // eslint-disable-next-line camelcase
         const { address, coords } = parseSuggestion({ place_name_de, center });
 
         // set up msw response to only return one feature
@@ -156,6 +159,7 @@ describe('<AutoCompleteGeocoder />', () => {
         mockedResponse.features = mockedResponse.features.slice(0, 1);
         mswServer.use(
           rest.get(
+            // eslint-disable-next-line prefer-regex-literals
             new RegExp('^https://api.mapbox.com/geocoding/v5/mapbox.places'),
             (req, res, ctx) => {
               return res(ctx.json(mockedResponse));
@@ -209,6 +213,7 @@ describe('<AutoCompleteGeocoder />', () => {
     beforeAll(() => {
       mswServer.use(
         rest.get(
+          // eslint-disable-next-line prefer-regex-literals
           new RegExp('^https://api.mapbox.com/geocoding/v5/mapbox.places'),
           (req, res, ctx) => {
             return res(

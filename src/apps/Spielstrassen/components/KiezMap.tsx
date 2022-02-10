@@ -68,7 +68,7 @@ const KiezMap = ({
   district,
 }: ConnectedProps<typeof connector> & Props) => (
   <MapWrapper
-    style={district.apps.spielstrassen.mapboxStyle}
+    mapboxStyle={district.apps.spielstrassen.mapboxStyle}
     onInit={(map) => handleLoad(street, map)}
     bounds={district.bounds}
     dragPan={false}

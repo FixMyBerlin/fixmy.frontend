@@ -1,4 +1,5 @@
 /* eslint class-methods-use-this: 0 */
+import debug from 'debug';
 import ky from 'ky';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
@@ -14,7 +15,8 @@ import config from '~/config';
 import PinIcon from '~/images/pin.svg';
 import Store from '~/store';
 import { media } from '~/styles/utils';
-import logger from '~/utils/logger';
+
+const logger = debug('fmc:Reports:detailWrapped');
 
 const DetailWrapper = styled.div`
   position: absolute;
@@ -117,8 +119,6 @@ function detailWrapped(Component) {
       const { geometry = null } = data;
       const center = getCenterFromGeom(geometry);
 
-      logger('Loaded project for detail view', data);
-
       if (center) {
         Store.dispatch(
           setView({
@@ -139,13 +139,6 @@ function detailWrapped(Component) {
       });
     };
 
-    onDataError = () => {
-      this.setState({
-        isLoading: false,
-        isError: true,
-      });
-    };
-
     onClose = () => {
       this.props.history.push(this.props.onCloseRoute);
       this.props.onClose();
@@ -162,8 +155,11 @@ function detailWrapped(Component) {
         const data = await ky.get(dataUrl).json();
         this.onDataLoaded(data);
       } catch (error) {
-        logger(error);
-        this.onDataError();
+        logger('error loading report details', error);
+        this.setState({
+          isLoading: false,
+          isError: true,
+        });
       }
     };
 

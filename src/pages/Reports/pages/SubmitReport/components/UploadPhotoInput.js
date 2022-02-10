@@ -74,25 +74,26 @@ class UploadPhotoInput extends PureComponent {
     this.fileReader.onload = this.handleConvertedPhoto.bind(this);
   }
 
+  handleConvertedPhoto(evt) {
+    const photoInBase64 = evt.target.result;
+    this.resizeImage(photoInBase64).then((photo) => {
+      // update state for UI update
+      this.setState({ photo });
+      // pass photo to container
+      this.props.onPhotoResized(photo);
+    });
+  }
+
   handleFilePickAction = (fileList) => {
     const photo = fileList[0];
     if (!photo) {
-      this.handleFilePickAbort();
+      // do nothing
     } else {
       this.handleFilePickSuccess(photo);
     }
   };
 
-  handleFilePickAbort = () => {
-    // do nothing
-  };
-
-  resetState = () => {
-    this.setState({ photo: null });
-    this.props.onReset();
-  };
-
-  handleFilePickSuccess = (photo) => {
+  handleFilePickSuccess(photo) {
     if (!['image/jpg', 'image/jpeg'].includes(photo.type)) {
       this.props.onError('Sorry! Nur Fotos im Format JPG werden unterstützt.');
       this.resetState();
@@ -100,7 +101,7 @@ class UploadPhotoInput extends PureComponent {
     }
     // trigger handleConvertedPhoto()
     this.fileReader.readAsDataURL(photo);
-  };
+  }
 
   resizeImage = (dataUrl) =>
     new Promise((resolve) => {
@@ -142,14 +143,9 @@ class UploadPhotoInput extends PureComponent {
     resolve(canvas.toDataURL('image/jpeg', quality));
   };
 
-  handleConvertedPhoto(evt) {
-    const photoInBase64 = evt.target.result;
-    this.resizeImage(photoInBase64).then((photo) => {
-      // update state for UI update
-      this.setState({ photo });
-      // pass photo to container
-      this.props.onPhotoResized(photo);
-    });
+  resetState() {
+    this.setState({ photo: null });
+    this.props.onReset();
   }
 
   render() {
@@ -176,12 +172,10 @@ class UploadPhotoInput extends PureComponent {
         </PhotoInputImageLabel>
 
         {photo && (
-          <>
-            <AbortText onClick={this.resetState}>
-              Foto entfernen
-              <AbortButton onClick={this.resetState} />
-            </AbortText>
-          </>
+          <AbortText onClick={this.resetState}>
+            Foto entfernen
+            <AbortButton onClick={this.resetState} />
+          </AbortText>
         )}
       </>
     );

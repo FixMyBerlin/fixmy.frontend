@@ -15,7 +15,6 @@ import LinkInternal from './icon-internal-link@2x.png';
 export const BaseContainer = (elem: Parameters<typeof styled>[0]) => styled(
   elem
 )`
-  white-space: nowrap;
   color: ${config.colors.darkbg};
 
   text-decoration: none;
@@ -27,7 +26,7 @@ export const BaseContainer = (elem: Parameters<typeof styled>[0]) => styled(
   background-repeat: no-repeat;
   background-position: center left;
 
-  padding: none;
+  padding: 0;
   padding-left: 15px;
 
   /* make sure long anchors wrap */

@@ -104,6 +104,7 @@ const RegistrationForm = ({
         ...signupData,
         ...values,
         id,
+        // eslint-disable-next-line camelcase
         access_key,
         shopfront_length: parseLength(values.shopfront_length),
         opening_hours: 'weekend',
@@ -157,7 +158,7 @@ const RegistrationForm = ({
           handleChange={handleChange}
         />
 
-        <SectionNotice values={values} />
+        <SectionNotice />
         <SectionEmail />
 
         <div className="checkboxFieldGroup">

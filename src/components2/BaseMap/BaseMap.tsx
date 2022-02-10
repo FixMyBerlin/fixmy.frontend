@@ -61,14 +61,8 @@ const BaseMap = (props: Props) => {
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
 
-  const {
-    onInit,
-    className,
-    center,
-    zoom,
-    mapboxStyle,
-    ...mapboxProps
-  } = props;
+  const { onInit, className, center, zoom, mapboxStyle, ...mapboxProps } =
+    props;
 
   useEffect(() => {
     MapboxGL.accessToken = config.mapbox.accessToken;

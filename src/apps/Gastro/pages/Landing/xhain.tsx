@@ -125,7 +125,7 @@ const LandingMap = ({ district }) => (
   <>
     <MapWrapper>
       <StyledMap
-        style={config.gastro[district?.name]?.map.style}
+        mapboxStyle={config.gastro[district?.name]?.map.style}
         bounds={district?.bounds}
         onInit={(map) => {
           map.addControl(
@@ -266,7 +266,7 @@ const XhainLanding = ({ district }) => (
     <Section>
       <QuoteSection>
         <Img
-          alt="Portrait Monika Hermann"
+          alt="Portrait Monika Herrmann"
           src={MayorImg}
           srcSet={`${MayorImg2} 2x, ${MayorImg3} 3x`}
         />
@@ -278,7 +278,7 @@ const XhainLanding = ({ district }) => (
         </BlockQuote>
         <SourcePerson>Monika Herrmann</SourcePerson>
         <SourceFunction>
-          Bezirksbürgermeisterin von Friedrichshain-Kreuzberg
+          Ex-Bezirksbürgermeisterin von Friedrichshain-Kreuzberg
         </SourceFunction>
       </QuoteSection>
     </Section>

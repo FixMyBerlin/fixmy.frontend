@@ -51,7 +51,7 @@ const StaticMap = ({
     <StyledMap
       bounds={bounds}
       onInit={handleInit}
-      style={mapboxStyle}
+      mapboxStyle={mapboxStyle}
       className={className}
       interactive={false}
       {...mapboxProps}

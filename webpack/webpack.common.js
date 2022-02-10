@@ -24,9 +24,6 @@ const BABEL_PLUGINS =
     : [require.resolve('react-refresh/babel')];
 
 module.exports = {
-  entry: {
-    app: Path.resolve(__dirname, '../src/index.js'),
-  },
   output: {
     path: Path.join(__dirname, '../build'),
     filename: 'js/[name].js',
@@ -35,27 +32,32 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     // copy data folder to make it available in redux loadData action
-    new CopyWebpackPlugin([
-      { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' },
-      { from: Path.resolve(__dirname, '../_redirects') },
-      { from: Path.resolve(__dirname, FAVICONS_PATH) },
-      { from: Path.resolve(__dirname, '../public/data'), to: 'data' },
-      { from: Path.resolve(__dirname, '../public/uploads'), to: 'uploads' },
-      {
-        from: Path.resolve(__dirname, '..', 'public', MAILJET_AUTH_FILE),
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: Path.resolve(__dirname, '../public/markdown'), to: 'markdown' },
+        { from: Path.resolve(__dirname, '../_redirects') },
+        { from: Path.resolve(__dirname, FAVICONS_PATH) },
+        { from: Path.resolve(__dirname, '../public/data'), to: 'data' },
+        { from: Path.resolve(__dirname, '../public/uploads'), to: 'uploads' },
+        {
+          from: Path.resolve(__dirname, '..', 'public', MAILJET_AUTH_FILE),
+        },
+      ],
+    }),
+    // Imports `.env.defaults` and updates them with the values from here.
     new Dotenv({ defaults: true, systemvars: true }),
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
-      '~': Path.resolve(__dirname, '../src'),
+      '~': Path.resolve(__dirname, Path.join('..', 'src')),
       cypress: Path.resolve(__dirname, '../cypress'),
+      process: 'process/browser',
     },
-  },
-  node: {
-    fs: 'empty',
+    fallback: {
+      path: require.resolve('path-browserify'),
+      fs: false,
+    },
   },
   module: {
     rules: [
@@ -99,6 +101,9 @@ module.exports = {
           },
           {
             loader: 'ts-loader',
+            options: {
+              transpileOnly: process.env.NODE_ENV !== 'production',
+            },
           },
         ],
         include: [Path.resolve(__dirname, '../src')],

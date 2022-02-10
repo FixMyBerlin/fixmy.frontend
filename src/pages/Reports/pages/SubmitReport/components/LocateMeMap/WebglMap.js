@@ -8,6 +8,15 @@ import { animateView, setView } from '~/apps/Map/map-utils';
 import BaseMap from '~/pages/Reports/components/BaseMap';
 import config from '~/pages/Reports/config';
 
+const addPaddingToBounds = (bounds) => {
+  const PADDING_IN_DEG = config.reports.locateMeMap.paddingInDegree || 0.2;
+  const [sw, ne] = bounds;
+  const moreSw = sw.map((coord) => coord - PADDING_IN_DEG);
+  const moreNe = ne.map((coord) => coord + PADDING_IN_DEG);
+
+  return [moreSw, moreNe];
+};
+
 class WebglMap extends PureComponent {
   map = null;
 
@@ -17,9 +26,7 @@ class WebglMap extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.maxExtent = this.addPaddingToBounds(
-      config.reports.overviewMap.maxBounds
-    );
+    this.maxExtent = addPaddingToBounds(config.reports.overviewMap.maxBounds);
   }
 
   componentDidUpdate(prevProps) {
@@ -45,16 +52,14 @@ class WebglMap extends PureComponent {
     }
   }
 
-  addPaddingToBounds = (bounds) => {
-    const PADDING_IN_DEG = config.reports.locateMeMap.paddingInDegree || 0.2;
-    const [sw, ne] = bounds;
-    const moreSw = sw.map((coord) => coord - PADDING_IN_DEG);
-    const moreNe = ne.map((coord) => coord + PADDING_IN_DEG);
+  handleMoveEnd(eventData) {
+    if (eventData?.programmaticMove) return;
+    const mapCenter = this.map.getCenter();
+    const { lat, lng } = mapCenter;
+    this.props.onMapMove({ lat, lng });
+  }
 
-    return [moreSw, moreNe];
-  };
-
-  onLoad = (map) => {
+  onLoad(map) {
     this.map = map;
 
     // center prop might have been set by getting the device´s geolocation before the component sets up.
@@ -76,27 +81,22 @@ class WebglMap extends PureComponent {
 
     // notify containers that map has been initialized
     this.props.onLoad();
-  };
+  }
 
-  setView = (view, animate = false) => {
+  setView(view, animate = false) {
     if (animate) {
       animateView(this.map, view);
     } else {
       setView(this.map, view);
     }
-  };
+  }
 
-  getViewFromProps = () => ({
-    zoom: this.props.newLocationZoomLevel,
-    center: this.props.center,
-  });
-
-  handleMoveEnd = (eventData) => {
-    if (eventData?.programmaticMove) return;
-    const mapCenter = this.map.getCenter();
-    const { lat, lng } = mapCenter;
-    this.props.onMapMove({ lat, lng });
-  };
+  getViewFromProps() {
+    return {
+      zoom: this.props.newLocationZoomLevel,
+      center: this.props.center,
+    };
+  }
 
   render() {
     return (

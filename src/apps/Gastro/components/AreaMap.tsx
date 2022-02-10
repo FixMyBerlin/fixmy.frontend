@@ -81,7 +81,7 @@ const AreaMap = ({
       onInit={(map) =>
         handleMapInit(map, geometry, area, district, showAreaPin)
       }
-      style={config.gastro[district?.name]?.map.style}
+      mapboxStyle={config.gastro[district?.name]?.map.style}
       bounds={district?.bounds}
       interactive={false}
       preserveDrawingBuffer={printable === true}

@@ -25,8 +25,9 @@ npm install
 
 ## Configuration
 
-Configuration options for the app are set through environment variables. You can
-set these by creating a file `/.env` in this directory. Look at the file
+Configuration options for the app are set through environment variables
+(Using [`dotenv`](https://github.com/motdotla/dotenv)).
+You can set these by creating a file `/.env` in this directory. Look at the file
 `.env.defaults` to see how `.env` needs to be formatted. Default configuration
 options are also loaded from `.env.defaults`.
 
@@ -68,7 +69,10 @@ Runs on [localhost:8080](http://localhost:8080/)
 Runs unit tests.
 
 ```sh
-npm run test
+npm test
+
+# Run single test
+npm test -- -t "filename.unit.test.js"
 ```
 
 ## Build
@@ -93,7 +97,7 @@ In VSCode you can use the integrated debugging profiles for Chrome & Firefox to 
 ### Embed Mode
 
 The embed mode is for integration in other websites. This hides the main menu and changes other minor things in the UI.
- 
+
 You can test the embed mode by adding a query parameter to the url: `http://localhost:8080/planungen?embed=1`.
 There is also a deployed production version: https://embed.fixmyberlin.de/.
 

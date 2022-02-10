@@ -106,5 +106,41 @@
         3
       ]
     ]
+  ],
+  [
+    "intersection-overlayLine",
+    [
+      "any",
+      [
+        "==",
+        [
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
+        ],
+        0
+      ],
+      [
+        "==",
+        [
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
+        ],
+        1
+      ],
+      [
+        "==",
+        [
+          "case",
+          ["has", "side2_risk_level"],
+          ["-", 3, ["to-number", ["get", "side2_risk_level"]]],
+          1000
+        ],
+        3
+      ]
+    ]
   ]
 ]

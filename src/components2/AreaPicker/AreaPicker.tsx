@@ -86,7 +86,7 @@ const AreaPicker: React.FC<Props> = ({
     <>
       <StyledMap
         onInit={setMap}
-        style={mapboxStyle}
+        mapboxStyle={mapboxStyle}
         bounds={bounds}
         center={localCenter}
         zoom={DEFAULT_ZOOM_LEVEL}

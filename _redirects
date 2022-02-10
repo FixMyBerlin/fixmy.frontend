@@ -1,4 +1,3 @@
-
 # Radbuegel XHain
 /radbuegel /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
 /meldungen/radbuegel/friedrichshain-kreuzberg/neu/1 /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
@@ -6,7 +5,10 @@
 
 # Spielstraßen
 /friedrichshain-kreuzberg/spielstra%C3%9Fen /friedrichshain-kreuzberg/spielstrassen 301
- 
+
+# Removed content
+/popupbikelanes /planungen:splat 302
+
 # Legacy Plannings Redirects
 /planungen/2725/* /planungen/4/:splat 301
 /planungen/2866/* /planungen/6/:splat 301

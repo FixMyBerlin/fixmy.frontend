@@ -11,11 +11,13 @@ const getMediaQuery = (size: number) => {
   `;
 };
 
+// MediaQueries are min-width
 export const breakpoints = {
-  s: 460,
-  m: 768,
-  l: 1024,
-  xl: 1280,
+  // Mobile 0-459px
+  s: 460, // 460px-up
+  m: 768, // 768px-up
+  l: 1024, // 1024px-up
+  xl: 1280, // 1280px-up
 };
 
 export const media = {

@@ -9,15 +9,12 @@ import config from '~/config';
 import { Spielstrasse } from '../types';
 
 const interSperse = (elems, sep = ', ', lastSep = ' und ') => {
-  const sepElem = <>{sep}</>;
-  const lastSepElem = <>{lastSep}</>;
   const lastSepAt = elems.length - 2;
 
   return elems
     .slice(1)
     .reduce(
-      (prev, cur, i) =>
-        prev.concat([i === lastSepAt ? lastSepElem : sepElem, cur]),
+      (prev, cur, i) => prev.concat([i === lastSepAt ? lastSep : sep, cur]),
       [elems[0]]
     );
 };

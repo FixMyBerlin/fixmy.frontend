@@ -1,3 +1,4 @@
+import type { FeatureCollection, LineString } from 'geojson';
 import MapboxGL, { GeoJSONSource } from 'mapbox-gl';
 import React, { useState, useEffect } from 'react';
 
@@ -29,10 +30,18 @@ const LinkLayer = ({
   // Fallback to rendering children if no linklayer config is found
   if (config.reports?.overviewMap.linkLayer == null) return children;
 
+  // reselect's type definitions seem not to work so this type is set explicitly
+  // here to the expected value
+  type selectLinkLayerGeometriesType = (state: any) => FeatureCollection<
+    LineString,
+    {
+      [name: string]: any;
+    }
+  >;
   const linkGeometries = useTypedSelector((state) =>
-    mapStateSelectors.selectLinkLayerGeometries(
-      state.ReportsState.OverviewMapState
-    )
+    (
+      mapStateSelectors.selectLinkLayerGeometries as selectLinkLayerGeometriesType
+    )(state.ReportsState.OverviewMapState)
   );
 
   useEffect(() => {

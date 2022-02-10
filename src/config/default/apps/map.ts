@@ -1,5 +1,6 @@
 import { MapConfig } from '~/apps/Map/types';
 
+// Every major change in https://studio.mapbox.com/ is a copy of the previous style with a new name.
 const MapboxStyles = {
   'FMB-release-3': 'mapbox://styles/hejco/cjiolwa78299h2sq8age91h2h',
   'FMB-release-4': 'mapbox://styles/hejco/ck0nzclbk0ey01ct9ilwefpzc',

@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const Path = require('path');
 const Webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -25,7 +25,7 @@ if (process.env.REGION === 'aachen') {
 module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
-  stats: 'errors-only',
+  stats: 'normal',
   bail: true,
   output: {
     filename: 'js/[name].[chunkhash:8].js',
@@ -46,11 +46,7 @@ module.exports = merge(common, {
       template: Path.resolve(__dirname, '../src/index.html'),
       minify: false,
     }),
-    new MiniCssExtractPlugin({ filename: 'bundle.css' }),
-    new Webpack.optimize.ModuleConcatenationPlugin(),
-    new Webpack.optimize.MinChunkSizePlugin({
-      minChunkSize: 10000,
-    }),
+    new MiniCssExtractPlugin({ filename: '[name].[chunkhash:8].css' }),
   ],
   module: {
     rules: [
@@ -64,12 +60,12 @@ module.exports = merge(common, {
             options: {
               sourceMap: true,
               postcssOptions: {
-                plugins: ['autoprefixer']
-              }
-            }
-          }
-        ]
-      }
-    ]
-  }
+                plugins: ['autoprefixer'],
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
 });

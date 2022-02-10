@@ -3,7 +3,6 @@ import config from '~/config';
 import * as utils from '../map-utils';
 import mapboxHBIFilter from './fixtures/mapboxHBIFilter.json';
 import mapBoxPlanningsFilter from './fixtures/mapboxPlanningsFilter.json';
-import mapboxPopupFilter from './fixtures/mapboxPopupFilter.json';
 
 const view = {
   zoom: true,
@@ -96,28 +95,46 @@ describe('filterLayersById()', () => {
   it('sets correct layout properties', () => {
     const myId = 'myId';
     utils.filterLayersById(map, 'subMap', myId);
+    const zoomInterpolationId = [
+      'interpolate',
+      ['linear'],
+      ['zoom'],
+      17,
+      ['case', ['!=', ['get', 'id'], myId], 0.2, 1],
+      17.5,
+      0,
+      19,
+      0,
+    ];
     expect(map.setPaintProperty.mock.calls).toEqual([
-      ['center', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
-      ['side0', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
-      ['side1', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
-      [
-        'xCenter',
-        'line-opacity',
-        ['case', ['!=', ['get', 'id'], myId], 0.2, 1],
-      ],
-      ['xSide0', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
-      ['xSide1', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
+      ['center', 'line-opacity', zoomInterpolationId],
+      ['side0', 'line-opacity', zoomInterpolationId],
+      ['side1', 'line-opacity', zoomInterpolationId],
+      ['xCenter', 'line-opacity', zoomInterpolationId],
+      ['xSide0', 'line-opacity', zoomInterpolationId],
+      ['xSide1', 'line-opacity', zoomInterpolationId],
     ]);
   });
   it('resets layout properties', () => {
     utils.filterLayersById(map, 'subMap', null);
+    const zoomInterpolationStatic = [
+      'interpolate',
+      ['linear'],
+      ['zoom'],
+      17,
+      1,
+      17.5,
+      0,
+      19,
+      0,
+    ];
     expect(map.setPaintProperty.mock.calls).toEqual([
-      ['center', 'line-opacity', 1],
-      ['side0', 'line-opacity', 1],
-      ['side1', 'line-opacity', 1],
-      ['xCenter', 'line-opacity', 1],
-      ['xSide0', 'line-opacity', 1],
-      ['xSide1', 'line-opacity', 1],
+      ['center', 'line-opacity', zoomInterpolationStatic],
+      ['side0', 'line-opacity', zoomInterpolationStatic],
+      ['side1', 'line-opacity', zoomInterpolationStatic],
+      ['xCenter', 'line-opacity', zoomInterpolationStatic],
+      ['xSide0', 'line-opacity', zoomInterpolationStatic],
+      ['xSide1', 'line-opacity', zoomInterpolationStatic],
     ]);
   });
 });
@@ -143,15 +160,7 @@ describe('setPlanningLegendFilter()', () => {
   });
 });
 
-describe('setPopupLanesFilter()', () => {
-  it('assembles correct rules for showing only popup bike lanes', () => {
-    const map = { setFilter: jest.fn() };
-    utils.setPopupLanesFilter(map);
-    expect(map.setFilter.mock.calls).toEqual(mapboxPopupFilter);
-  });
-});
-
-describe('toggleVisibleHbiLines', () => {
+describe('setHbiLegendFilter', () => {
   it('sets filters to toggle visibility of hbi segments', () => {
     const map = { setFilter: jest.fn() };
     config.apps = {
@@ -161,12 +170,13 @@ describe('toggleVisibleHbiLines', () => {
             xCenter: 'intersection-center',
             xSide0: 'intersection-side0',
             xSide1: 'intersection-side1',
+            xOverlay: 'intersection-overlayLine',
           },
         },
       },
     };
 
-    utils.toggleVisibleHbiLines(map, [true, true, false, true]);
+    utils.setHbiLegendFilter(map, [true, true, false, true]);
     expect(map.setFilter.mock.calls).toEqual(mapboxHBIFilter);
   });
 });
@@ -193,6 +203,16 @@ describe('getCenterFromGeom', () => {
     const center = utils.getCenterFromGeom(geometry);
     expect(typeof center[0]).toEqual('number');
     expect(typeof center[1]).toEqual('number');
+  });
+
+  it('returns the original geometry if given a point', () => {
+    const geometry = {
+      type: 'Point',
+      coordinates: [-122.48369693756104, 37.83381888486939],
+    };
+    const center = utils.getCenterFromGeom(geometry);
+    expect(center[0]).toEqual(geometry.coordinates[0]);
+    expect(center[1]).toEqual(geometry.coordinates[1]);
   });
 });
 
