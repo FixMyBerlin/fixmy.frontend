@@ -33,7 +33,7 @@ const BaseWrapper = styled.section`
     bottom: initial;
     position: absolute;
     left: 15px;
-    top: 95px;
+    top: 85px;
     width: 40vw;
     max-width: 24em;
     font-size: 1.5625vw;
@@ -45,7 +45,6 @@ const BaseWrapper = styled.section`
 
   ${media.xl`
     left: 15px;
-    top: 95px;
   `}
 `;
 
@@ -82,14 +81,22 @@ export const MutedText = styled.div`
   margin: 0.5rem 0 1.5rem 0;
 `;
 
+const IconWrapper = styled.div`
+  ${media.m`
+    display: none;
+  `}
+`;
+
 const Legend = ({ closeLegend }) => (
   <Wrapper id="Legend">
-    <ModalCloseIcon
-      onClick={() => closeLegend()}
-      controlsId="Legend"
-      label="Legende schließen"
-      positionRight="25px"
-    />
+    <IconWrapper>
+      <ModalCloseIcon
+        onClick={() => closeLegend()}
+        controlsId="Legend"
+        label="Legende schließen"
+        positionRight="25px"
+      />
+    </IconWrapper>
     <LegendListWrapper>
       <Header>Legende Katasterdaten</Header>
       <CadastreLegendGrid />

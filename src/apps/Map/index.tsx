@@ -11,7 +11,8 @@ import ErrorMessage from '~/components/ErrorMessage';
 import { Logo as FMBLogo } from '~/components2/Logo';
 import Legend from '~/components/MapLegend/Legend';
 import config from '~/config';
-import MapLegendButtonIcon from '~/images/map-legend.svg';
+import MapLegendButtonIcon from '~/images/map-legend-icon.svg';
+import MapLegendButtonActivatedIcon from '~/images/map-legend-icon-activated.svg';
 import Store, { RootState } from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 
@@ -52,6 +53,10 @@ const StyledFMBLogo = styled(FMBLogo)`
 `;
 
 const StyledMapLegendButton = styled(MapLegendButtonIcon)`
+  cursor: pointer;
+`;
+
+const StyledMapLegendButtonActivated = styled(MapLegendButtonActivatedIcon)`
   cursor: pointer;
 `;
 
@@ -140,7 +145,16 @@ const MapView = ({
             />
           )}
           <StyledMapControl position="bottom-right" role="button">
-            <StyledMapLegendButton onClick={() => setShowLegend(!showLegend)} />
+            {!showLegend && (
+              <StyledMapLegendButton
+                onClick={() => setShowLegend(!showLegend)}
+              />
+            )}
+            {showLegend && (
+              <StyledMapLegendButtonActivated
+                onClick={() => setShowLegend(!showLegend)}
+              />
+            )}
           </StyledMapControl>
           {!isEmbedMode && (
             <MapControl position="top-right">

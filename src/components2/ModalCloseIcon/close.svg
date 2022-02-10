@@ -1,9 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 41 41">
-    <defs>
-        <circle id="a" cx="20.093" cy="20.093" r="20.093" stroke="#595959" stroke-width="1"/>
-    </defs>
-    <g fill="none" fill-rule="evenodd">
-        <use fill="#ffffff" xlink:href="#a" class="close-icon-background" />
-        <path stroke="#595959" stroke-width="2.7" d="M27.015 13.752L13.819 26.947M27.015 26.947L13.819 13.752"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g fill="none" fill-rule="evenodd">
+    <g>
+      <a>
+        <circle cx="20" cy="20" r="19.5" fill="#FFF" stroke="#545454" class="close-icon-background" />
+        <g fill="#0F0F0F">
+          <path
+            d="M24.243 15.757c.189.19.21.484.063.696l-.063.076-3.472 3.47 3.472 3.472c.213.213.213.559 0 .772-.19.189-.484.21-.696.063l-.076-.063L20 20.77l-3.471 3.472c-.213.213-.559.213-.772 0-.189-.19-.21-.484-.063-.696l.063-.076L19.23 20l-3.472-3.47c-.213-.213-.213-.559 0-.772.19-.189.484-.21.696-.063l.076.063L20 19.227l3.471-3.47c.213-.213.559-.213.772 0z" />
+        </g>
+      </a>
     </g>
+  </g>
 </svg>

@@ -21,7 +21,7 @@ import {
   setView,
   standardLayersWithOverlay,
   toggleLayer,
-  toggleVisibleHbiLines,
+  setHbiLegendFilter,
 } from '~/apps/Map/map-utils';
 import * as MapActions from '~/apps/Map/MapState';
 import resetMap from '~/apps/Map/reset';
@@ -123,7 +123,8 @@ class Map extends PureComponent<Props, State> {
       prevProps.activeView !== this.props.activeView ||
       prevProps.activeSection !== this.props.activeSection ||
       prevProps.show3dBuildings !== this.props.show3dBuildings ||
-      !_isEqual(prevProps.filterHbi, this.props.filterHbi);
+      !_isEqual(prevProps.filterHbi, this.props.filterHbi) ||
+      !_isEqual(prevProps.filterPlannings, this.props.filterPlannings);
 
     if (layerChanged) {
       this.updateLayers();
@@ -238,6 +239,9 @@ class Map extends PureComponent<Props, State> {
     });
   };
 
+  /**
+   * Handle update of map (visible layers) when view changed or initial load is happening
+   */
   updateLayers = () => {
     const isZustand = this.props.activeView === 'zustand';
     const isPlanungen = this.props.activeView === 'planungen';
@@ -246,13 +250,12 @@ class Map extends PureComponent<Props, State> {
     const projectsLayers = config.apps.map.layers.projects;
 
     if (isZustand) {
-      toggleVisibleHbiLines(this.map, this.props.filterHbi);
+      setHbiLegendFilter(this.map, this.props.filterHbi);
+    } else if (isPlanungen) {
+      setPlanningLegendFilter(this.map, this.props.filterPlannings);
     }
 
-    setPlanningLegendFilter(this.map, this.props.filterPlannings);
-
     // project layers
-    // toggleLayer(this.map, 'fmb-projects', false);
     standardLayersWithOverlay.forEach((layer) =>
       toggleLayer(this.map, projectsLayers[layer], isPlanungen)
     );
@@ -270,6 +273,7 @@ class Map extends PureComponent<Props, State> {
     );
     toggleLayer(this.map, config.apps.map.layers.dimmingLayer, this.props.dim);
 
+    // Change visbility of layers through opacity
     const subMap = isZustand ? 'hbi' : 'projects';
     filterLayersById(this.map, subMap, this.props.activeSection);
   };
