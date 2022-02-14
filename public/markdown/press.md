@@ -29,7 +29,9 @@ Alle Bilder stehen unter der [Creative Commons](https://creativecommons.org/lice
 
 Folgende Daten können Sie zur eigenen Verwendung herunterladen: <br>
 
-- [Happy Bike Index Kreuzungsdaten (Feb 2022)](/uploads/press/intersections_visionzero_220214.csv)
+- [Happy Bike Index Kreuzungsdaten (Feb 2022)](/uploads/press/intersections_visionzero_220214.csv) (Quellen: Polizei Berlin: Unfälle mit Radfahrenden, Daten aus 2017-2018 und Unfallatlas, Statistische Ämter des Bundes und der Länder, Daten aus 2019)
+
+Falls nicht anders angegeben stehen die Datenexporte unter der [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/).
 
 ## Aktuelle Presseberichte und Pressemitteilungen finden Sie ab sofort unter: [https://www.fixmycity.de/presse](https://www.fixmycity.de/presse)
 
