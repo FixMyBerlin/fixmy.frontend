@@ -19,6 +19,7 @@ import config from '~/apps/Gastro/config';
 import { getPath } from '~/apps/Gastro/routes';
 import { openSignup, setLayerVisibility } from '~/apps/Gastro/utils';
 import Link from '~/components/Link';
+import { FaceQuote } from '~/components2/Article/Quote';
 import { BaseMap } from '~/components2/BaseMap';
 import { Button } from '~/components2/Button';
 import { InsertImage } from '~/components2/Image';
@@ -41,45 +42,6 @@ const Section = styled.section`
   padding-bottom: 1em;
   margin-bottom: 1em;
   border-bottom: 1px dashed ${config.colors.inactivegrey};
-`;
-
-const QuoteSection = styled.div`
-  line-height: 1.37;
-  color: ${config.colors.darkgrey};
-  max-width: 320px;
-  padding: 8px;
-  margin: 0 auto;
-`;
-
-const Img = styled.img`
-  width: 144px;
-  display: block;
-  margin: 0 auto;
-`;
-
-const ImgAttribution = styled.div`
-  color: ${config.colors.darkgrey};
-  font-size: 12px;
-  margin: 0.5em;
-  text-align: center;
-`;
-
-const BlockQuote = styled.blockquote`
-  text-align: center;
-  font-style: italic;
-  margin: 20px 0 28px 0;
-`;
-
-const SourcePerson = styled.p`
-  text-align: center;
-  margin-bottom: 0;
-  font-weight: bold;
-  font-size: 16px;
-`;
-
-const SourceFunction = styled.p`
-  margin-top: 0;
-  font-size: 12px;
 `;
 
 const CTA = styled(Button)`
@@ -240,23 +202,22 @@ const XhainLanding = ({ district }) => (
     </Section>
 
     <Section>
-      <QuoteSection>
-        <Img
-          alt="Portrait Monika Herrmann"
-          src={MayorImg}
-          srcSet={`${MayorImg2} 2x, ${MayorImg3} 3x`}
-        />
-        <ImgAttribution>Foto © Sedat Mehder</ImgAttribution>
-        <BlockQuote>
-          „In den Zeiten der fortlaufenden Corona-Einschränkungen, wollen wir
-          den Xhainer*innen wieder ein kleines Stück mehr Freiheit ermöglichen
-          und Gastronomen helfen ihren Betrieb durch das Jahr 2021 zu bringen. “
-        </BlockQuote>
-        <SourcePerson>Monika Herrmann</SourcePerson>
-        <SourceFunction>
-          Ex-Bezirksbürgermeisterin von Friedrichshain-Kreuzberg
-        </SourceFunction>
-      </QuoteSection>
+      <FaceQuote
+        image={
+          <img
+            alt="Portrait Monika Herrmann"
+            src={MayorImg}
+            srcSet={`${MayorImg2} 2x, ${MayorImg3} 3x`}
+          />
+        }
+        imageAttributionText="Foto © Sedat Mehder"
+        sourceName="Monika Herrmann"
+        sourceFunction="Ex-Bezirksbürgermeisterin von Friedrichshain-Kreuzberg"
+      >
+        In den Zeiten der fortlaufenden Corona-Einschränkungen, wollen wir den
+        Xhainer*innen wieder ein kleines Stück mehr Freiheit ermöglichen und
+        Gastronomen helfen ihren Betrieb durch das Jahr 2021 zu bringen.
+      </FaceQuote>
     </Section>
 
     <Section>

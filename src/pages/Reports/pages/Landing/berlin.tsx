@@ -11,7 +11,7 @@ import CTA from './components/CTA';
 import Faq from './components/Faq';
 import Intro from './components/Intro';
 import LogoFooter from './components/LogoFooter';
-import Quote from './components/QuoteWeisbrich';
+import { QuoteWeisbrich } from './components/QuoteWeisbrich';
 
 const CenterLogo = styled.img`
   display: block;
@@ -57,7 +57,7 @@ const BerlinLanding = () => (
       <Intro />
       <CTA />
       <StyledHR className="light" />
-      <Quote />
+      <QuoteWeisbrich />
       <StyledHR className="light" />
       <Faq />
       <CTA />
