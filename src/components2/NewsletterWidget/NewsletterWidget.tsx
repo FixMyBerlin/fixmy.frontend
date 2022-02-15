@@ -2,24 +2,31 @@ import React from 'react';
 
 import config from '~/config';
 
+type Props = {
+  height?: number;
+  embedUrl?: `https://app.mailjet.com/widget/iframe/${string}`;
+};
+
 /**
  * An iFrame that shows the subscription form for the newsletter
  *
- * The iFrame source can be configured through `config.newsletter.embedUrl`
+ * The iFrame source can be configured through `config.newsletter.embedUrl` or `props.embedUrl`
+ * In Mailjet: https://app.mailjet.com/widget
  *
- * @param param0.height `height` attribute of the iFrame
+ * @param height `height` attribute of the iFrame
+ * @param embedUrl optional `src` for the iframe
  */
-const NewsletterWidget = ({ height = 120 }) => (
-  <iframe
-    title="Newsletter-Anmeldung"
-    frameBorder="0"
-    scrolling="no"
-    marginHeight={0}
-    marginWidth={0}
-    src={`${config.newsletter.embedUrl}?v=4`}
-    width="100%"
-    height={height}
-  />
-);
+export const NewsletterWidget: React.VFC<Props> = ({ height, embedUrl }) => {
+  const src = embedUrl || `${config.newsletter.embedUrl}?v=4`;
 
-export default NewsletterWidget;
+  return (
+    <iframe
+      title="Newsletter-Anmeldung"
+      scrolling="no"
+      marginHeight={0}
+      marginWidth={0}
+      src={src}
+      style={{ height: height || 120, width: '100%', border: 0 }}
+    />
+  );
+};
