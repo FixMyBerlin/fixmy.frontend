@@ -1,8 +1,9 @@
 import MapboxGL from 'mapbox-gl';
 import React, { useEffect, useState } from 'react';
+import { BaseMap } from '~/components2/BaseMap';
 import { MAPBOX_INTERACTION_HANDLERS } from './MapInteractionHandler.const';
 import IconActivate from './smartphone-finger.svg';
-import { ActivateButton, ButtonArea, StyledMap, Wrapper } from './styles';
+import { ActivateButton, ButtonArea, MapWrapper, Wrapper } from './styles';
 
 type Props = {
   defaultActive?: boolean;
@@ -55,7 +56,9 @@ export const Map: React.VFC<Props> = ({
 
   return (
     <Wrapper>
-      <StyledMap {...mapProps} interactive={isActive} onInit={setMap} />
+      <MapWrapper>
+        <BaseMap {...mapProps} interactive={isActive} onInit={setMap} />
+      </MapWrapper>
       <ButtonArea>
         <ActivateButton
           ghost

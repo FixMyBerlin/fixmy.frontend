@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
-import { BaseMap } from '~/components2/BaseMap';
 import { Button } from '~/components2/Button';
 import { media } from '~/styles/utils';
 
-export const StyledMap = styled(BaseMap)`
+export const MapWrapper = styled.div`
   position: absolute !important;
   top: 0;
   right: 0;

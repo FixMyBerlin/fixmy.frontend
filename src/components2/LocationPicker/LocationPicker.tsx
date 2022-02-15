@@ -27,7 +27,7 @@ import logger from '~/utils/logger';
  */
 const containsStreetNumber = (address: string) => address.match(/^[^,]+\d,/);
 
-const StyledMap = styled(BaseMap)`
+const MapWrapper = styled.div`
   width: 100%;
   height: 30em;
   margin: 2em 0;
@@ -194,7 +194,9 @@ const LocationPicker: React.FC<Props> = ({
           <ErrorIcon /> {addressHint}
         </AddressHint>
       )}
-      <StyledMap onInit={setMap} mapboxStyle={mapboxStyle} bounds={bounds} />
+      <MapWrapper>
+        <BaseMap onInit={setMap} mapboxStyle={mapboxStyle} bounds={bounds} />
+      </MapWrapper>
       <Snackbar open={errorMessage != null} message={errorMessage} />
     </>
   );
