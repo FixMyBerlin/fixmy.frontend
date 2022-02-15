@@ -6,5 +6,5 @@ export * from './Typography/Heading';
 export * from './Typography/Intro';
 export * from './Typography/List';
 export * from './Typography/Paragraph';
-export * from './Typography/Quote';
+export * from './Quote/Quote';
 export * from './types';
