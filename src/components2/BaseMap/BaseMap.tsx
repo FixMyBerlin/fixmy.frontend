@@ -9,9 +9,10 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-type BaseMapProps = Partial<MapboxGL.MapboxOptions> & {
-  onInit?: (arg0: MapboxGL.Map) => void;
+type BaseMapProps = Partial<mapboxgl.MapboxOptions> & {
+  onInit?: (arg0: mapboxgl.Map) => void;
   className?: string;
+  maxBounds?: mapboxgl.MapboxOptions['maxBounds'];
   mapboxStyle?: mapboxgl.MapboxOptions['style'];
 };
 
@@ -20,14 +21,12 @@ type BaseMapProps = Partial<MapboxGL.MapboxOptions> & {
  *
  * Can be styled with `styled-components`.
  *
- * @param props.onInit - callback to handle the map instance once loaded
- * @param props.className - css classes for the wrapper DIV
- * @param props.center - update to move map center
- * @param props.zoom - update to zoom map view
- * @param props.mapboxStyle - Mapbox style URL (takes precedence over `style` prop)
- * @param props.style - Mapbox style URL (alternative to `mapboxStyle`)
- * @param props.maxBounds - use `maxBounds` or `center` + `zoom` to intialize the map position
- * @param props - extends the props of MapboxGL.Map
+ * @param onInit - callback to handle the map instance once loaded
+ * @param className - css classes for the wrapper DIV
+ * @param center - Mapbox center, update to move the map
+ * @param zoom - Mapbox zoom, update to move the map
+ * @param mapboxStyle - Mapbox style URL
+ * @param maxBounds - Use Mapbox `maxBounds` or `center` + `zoom` to intialize the map position
  */
 export const BaseMap: React.VFC<BaseMapProps> = ({
   onInit,
@@ -35,6 +34,7 @@ export const BaseMap: React.VFC<BaseMapProps> = ({
   center,
   zoom,
   mapboxStyle,
+  maxBounds,
   ...mapboxProps
 }) => {
   const [map, setMap] = useState(null);
@@ -44,17 +44,17 @@ export const BaseMap: React.VFC<BaseMapProps> = ({
   useEffect(() => {
     MapboxGL.accessToken = config.mapbox.accessToken;
 
-    const container = mapContainer.current;
-    const style = mapboxStyle || mapboxProps.style;
-    // This should not be needed. But there is a bug which breaks if bbox is given and zoom/center is undefined.
+    // The following 'null' declaration should not be needed.
+    // But there is a bug which breaks if bbox is given and zoom / center is undefined.
     const zoomFixed = zoom || null;
     const centerFixed = center || [null, null];
 
     const baseMapConfig = {
-      container,
-      style,
+      container: mapContainer.current,
       zoom: zoomFixed,
       center: centerFixed,
+      style: mapboxStyle,
+      maxBounds,
       ...mapboxProps,
     };
 
