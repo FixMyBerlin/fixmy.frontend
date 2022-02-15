@@ -21,7 +21,7 @@ import { openSignup, setLayerVisibility } from '~/apps/Gastro/utils';
 import Link from '~/components/Link';
 import { BaseMap } from '~/components2/BaseMap';
 import { Button } from '~/components2/Button';
-import { Insert as ImageInsert } from '~/components2/Image';
+import { InsertImage } from '~/components2/Image';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
@@ -36,20 +36,6 @@ import IconSocial from './assets/basics-icon-map-social.svg';
 import MayorImg from './assets/hermann.jpg';
 import MayorImg2 from './assets/hermann@2x.jpg';
 import MayorImg3 from './assets/hermann@3x.jpg';
-
-const Attribution = styled.div`
-  font-size: 0.75em;
-  margin-top: -2.5em;
-  position: relative;
-  float: right;
-  right: 1em;
-  z-index: 9999;
-
-  && a {
-    color: white;
-    text-decoration: none;
-  }
-`;
 
 const Section = styled.section`
   padding-bottom: 1em;
@@ -188,20 +174,13 @@ const LandingMap = ({ district }) => (
 const XhainLanding = ({ district }) => (
   <>
     <h1>Xhain geht raus – Terrassen für Vieles</h1>
-    <ImageInsert
+    <InsertImage
       src={BackgroundImageA2}
       srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
       alt="Bild von Menschen, die an Tischen auf der Straße essen"
+      attributionLink="https://unsplash.com/@freddydo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+      attributionText="Photo by Freddy Do on Unsplash"
     />
-    <Attribution>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://unsplash.com/@freddydo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-      >
-        Photo by Freddy Do on Unsplash
-      </a>
-    </Attribution>
     <h2>
       Xhain-Terrassen 2021. Jetzt die ganze Woche nutzen. Neu: Anträge für
       Veranstaltungen
