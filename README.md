@@ -144,7 +144,7 @@ Each locale has a language code. This app currently supports:
 - English (`en` language code)
 - Spanish (`es` language code)
 
-### Extracting
+### (1/3) Extracting
 
 Extract text content for translation from the source code by running the command
 
@@ -155,18 +155,18 @@ npm run extract
 This will update the file containing the German language default text contents
 in the file [`src/lang/translations/de.json`](https://github.com/FixMyBerlin/fixmy.frontend/blob/develop/src/lang/translations/de.json).
 
-### Translating
+### (2/3) Translating
 
-In order to create translations for the entries generated in the previous step,
-the relevant file at `/src/lang/translations/[language code].json` needs to be updated
-with the new entries (manually).
+To create translations for the entries generated in the previous step,
+the relevant file need to be updated with the new translation keys manually.
 
-### Compiling
+- `src/lang/translations/en.json`
+- `src/lang/translations/es.json`
 
-Run the command
+### (3/3) Compiling
+
+Files in `lang/translations` need to be compiled into an optimized format stored in `lang/compiled`.
 
 ```
 npm run compile
 ```
-
-to make available all new translations in an optimized format.
