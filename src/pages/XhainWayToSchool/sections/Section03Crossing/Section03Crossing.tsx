@@ -26,7 +26,7 @@ export const Section03Crossing: React.FC<SectionProps> = ({ toc }) => (
     </Paragraph>
 
     <Heading as="h3">
-      Karte 2: Querungs&shy;möglichkeiten und Unfälle mit
+      Karte 3: Querungs&shy;möglichkeiten und Unfälle mit
       Fußgänger*&shy;Innenbeteiligung
     </Heading>
     <Paragraph>

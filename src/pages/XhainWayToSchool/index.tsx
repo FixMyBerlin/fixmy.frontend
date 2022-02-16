@@ -57,7 +57,7 @@ const XhainWayToSchool = () => (
     >
       <ArticleHeader
         kicker="Schulwegsicherheit in Xhain"
-        publishDate={new Date(2022, 2, 17, 10, 0)}
+        publishDate={new Date('2022-02-17 10:00')}
       >
         Sichere Schulwege für alle Schüler*innen im Bezirk
       </ArticleHeader>
