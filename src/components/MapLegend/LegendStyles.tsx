@@ -22,6 +22,8 @@ export const LegendWrapper = styled.div`
 export const Header = styled.h2`
   font-size: 0.9rem;
   flex-basis: 100%;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
 `;
 
 export const HeaderCol = styled(Header)`

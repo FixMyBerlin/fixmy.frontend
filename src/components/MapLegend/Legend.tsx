@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import { Link } from '~/components2/Link';
+import { AnchorLink } from '~/components2/Link';
 import config from '~/config';
 import { media } from '~/styles/utils';
-
+import { ModalCloseIcon } from '~/components2/ModalCloseIcon';
 import { CadastreLegendGrid, IncidentLegendGrid } from './index';
-import { ModalCloseIcon } from '../../components2/ModalCloseIcon';
 
 const BaseWrapper = styled.section`
   background-color: ${config.colors.lightbg};
@@ -57,15 +55,17 @@ const Wrapper = styled(BaseWrapper)`
 const Header = styled.h1`
   font-size: 1.2em;
   font-weight: 400;
-  margin: 0;
+  margin-top: 1rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
   padding-bottom: 0.5em;
   border-bottom: solid 1px #e0e0e0;
-  margin-top: 1rem;
 `;
 
 const LegendListWrapper = styled.div`
   overflow-y: auto;
-  padding: 0.625rem 1.2rem;
+  padding: 0.625rem 1.2rem 1.2rem 1.2rem;
   height: calc(100vh - 100px);
   min-width: 100vw;
 
@@ -87,6 +87,10 @@ const IconWrapper = styled.div`
   `}
 `;
 
+const FooterWrapper = styled.div`
+  margin-top: 1rem;
+`;
+
 const Legend = ({ closeLegend }) => (
   <Wrapper id="Legend">
     <IconWrapper>
@@ -104,9 +108,12 @@ const Legend = ({ closeLegend }) => (
 
       <Header>Legende Unfälle</Header>
       <IncidentLegendGrid />
-      <Link href="https://de.wikipedia.org/wiki/Unfalltyp">
-        Erläuterungen der Unfallkategorien
-      </Link>
+
+      <FooterWrapper>
+        <AnchorLink href="https://de.wikipedia.org/wiki/Unfalltyp">
+          Erläuterungen der Unfallkategorien
+        </AnchorLink>
+      </FooterWrapper>
     </LegendListWrapper>
   </Wrapper>
 );
