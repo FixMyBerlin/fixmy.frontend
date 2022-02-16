@@ -58,10 +58,12 @@ Runs on [localhost:8080](http://localhost:8080/)
   ```
 
   You can also set multiple environment variables when using an `.env` file. This then overwrites only the `.env.defaults` settings you enter. It could look like this:
+
   ```
   REGION=aachen
   BACKEND=local
   ```
+
   It is then used by [`dotenv`](https://www.npmjs.com/package/dotenv) to setup configuration.
 
 ## Testing
@@ -156,8 +158,8 @@ in the file [`src/lang/translations/de.json`](https://github.com/FixMyBerlin/fix
 ### Translating
 
 In order to create translations for the entries generated in the previous step,
-the relevant file at `/src/lang/translations/[language code].json` is updated
-with the new entries.
+the relevant file at `/src/lang/translations/[language code].json` needs to be updated
+with the new entries (manually).
 
 ### Compiling
 
