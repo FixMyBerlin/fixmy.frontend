@@ -121,7 +121,7 @@ class SearchBar extends PureComponent {
               placeholder="Suche einen Ort"
               onChange={this.onChange}
             />
-            {this.state.inputValue && <SearchIcon />}
+            {!this.state.inputValue && <SearchIcon />}
           </Form>
           {this.state.inputValue ? (
             <SearchReset onClick={this.onInputReset}>×</SearchReset>

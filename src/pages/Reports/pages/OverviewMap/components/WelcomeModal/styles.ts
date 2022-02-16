@@ -110,6 +110,8 @@ export const Img = styled.img`
 export const ButtonWrapper = styled.div`
   text-align: center;
   margin-bottom: 1rem;
+  padding: 0 1rem;
+
   ${media.m`
     display: none;
   `}
