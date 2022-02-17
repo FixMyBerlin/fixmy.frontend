@@ -16,7 +16,7 @@ type LORData = GeoJSON.FeatureCollection<
   { PLR_NAME: string; SCHLUESSEL: string }
 >;
 
-const MapWrapper = styled(BaseMap)`
+const MapWrapper = styled.div`
   width: 100vw;
   height: 20em;
   margin-left: -1rem;
@@ -67,15 +67,17 @@ const KiezMap = ({
   street,
   district,
 }: ConnectedProps<typeof connector> & Props) => (
-  <MapWrapper
-    mapboxStyle={district.apps.spielstrassen.mapboxStyle}
-    onInit={(map) => handleLoad(street, map)}
-    bounds={district.bounds}
-    dragPan={false}
-    scrollZoom={false}
-    doubleClickZoom={false}
-    touchZoomRotate={false}
-  />
+  <MapWrapper>
+    <BaseMap
+      mapboxStyle={district.apps.spielstrassen.mapboxStyle}
+      onInit={(map) => handleLoad(street, map)}
+      bounds={district.bounds}
+      dragPan={false}
+      scrollZoom={false}
+      doubleClickZoom={false}
+      touchZoomRotate={false}
+    />
+  </MapWrapper>
 );
 
 export default connector(KiezMap);

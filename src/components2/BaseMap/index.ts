@@ -1,1 +1,1 @@
-export { default as BaseMap } from './BaseMap';
+export * from './BaseMap';

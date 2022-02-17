@@ -1,7 +1,6 @@
 import MapboxGL from 'mapbox-gl';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-
 import config from '~/apps/Gastro/config';
 import logger from '~/utils/logger';
 
@@ -10,83 +9,77 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-interface Props extends Partial<MapboxGL.MapboxOptions> {
-  onInit?: (arg0: MapboxGL.Map) => void;
+type BaseMapProps = Partial<mapboxgl.MapboxOptions> & {
+  onInit?: (arg0: mapboxgl.Map) => void;
   className?: string;
-  mapboxStyle?: string;
-}
-
-const initMap = ({
-  setMap,
-  mapContainer,
-  onInit,
-  center,
-  zoom,
-  mapboxProps,
-  mapboxStyle,
-}) => {
-  // Offer to pass mapbox style URL using `mapboxStyle` prop or `style` prop
-  // with the former taking precedence. `style` is very generic and may produce
-  // linter warnings in some IDEs.
-  const style = mapboxStyle || mapboxProps.style;
-  const map = new MapboxGL.Map({
-    container: mapContainer.current,
-    ...mapboxProps,
-    style,
-  });
-
-  logger('Init map with', mapboxProps);
-
-  map.on('load', () => {
-    setMap(map);
-    map.resize();
-    if (center) map.setCenter(center);
-    if (zoom) map.setZoom(zoom);
-    if (onInit) onInit(map);
-  });
+  maxBounds?: mapboxgl.MapboxOptions['maxBounds'];
+  mapboxStyle?: mapboxgl.MapboxOptions['style'];
 };
 
 /**
  * Map component based on MapboxGL.js
  *
- * Can be styled with `styled-components`
+ * Can be styled with `styled-components`.
  *
- * @param props - extends the props of MapboxGL.Map
- * @param props.mapboxStyle - Mapbox style URL
- * @param props.center - update to move map center
- * @param props.zoom - update to zoom map view
- * @param props.onInit - callback to handle the map instance once loaded
+ * @param onInit - callback to handle the map instance once loaded
+ * @param className - css classes for the wrapper DIV
+ * @param center - Mapbox center, update to move the map
+ * @param zoom - Mapbox zoom, update to move the map
+ * @param mapboxStyle - Mapbox style URL
+ * @param maxBounds - Use Mapbox `maxBounds` or `center` + `zoom` to intialize the map position
  */
-const BaseMap = (props: Props) => {
+export const BaseMap: React.VFC<BaseMapProps> = ({
+  onInit,
+  className,
+  center,
+  zoom,
+  mapboxStyle,
+  maxBounds,
+  ...mapboxProps
+}) => {
   const [map, setMap] = useState(null);
   const mapContainer = useRef(null);
 
-  const { onInit, className, center, zoom, mapboxStyle, ...mapboxProps } =
-    props;
-
+  // Init map
   useEffect(() => {
     MapboxGL.accessToken = config.mapbox.accessToken;
-    if (map == null)
-      initMap({
-        setMap,
-        mapContainer,
-        onInit,
-        center,
-        zoom,
-        mapboxStyle,
-        mapboxProps,
-      });
-  }, [map]);
 
+    // The following 'null' declaration should not be needed.
+    // But there is a bug which breaks if bbox is given and zoom / center is undefined.
+    const zoomFixed = zoom || null;
+    const centerFixed = center || [null, null];
+
+    const baseMapConfig = {
+      container: mapContainer.current,
+      zoom: zoomFixed,
+      center: centerFixed,
+      style: mapboxStyle,
+      maxBounds,
+      ...mapboxProps,
+    };
+
+    const baseMap = new MapboxGL.Map(baseMapConfig);
+
+    logger('Init map with', baseMapConfig);
+
+    baseMap.on('load', () => {
+      setMap(baseMap);
+      baseMap.resize();
+      if (onInit) onInit(baseMap);
+    });
+  }, []);
+
+  // Update map center + zoom
   useEffect(() => {
-    if (map == null || center == null) return;
+    if (!map) return;
 
-    map.setCenter(center);
-  }, [map, center]);
+    if (center) map.setCenter(center);
+    if (zoom) map.setZoom(zoom);
+  }, [map, center, zoom]);
 
   return (
     <Wrapper
-      aria-label="Interactive WebGL map"
+      aria-label="Interaktive Karte"
       className={className}
       ref={(el) => {
         if (mapContainer != null) mapContainer.current = el;
@@ -94,5 +87,3 @@ const BaseMap = (props: Props) => {
     />
   );
 };
-
-export default BaseMap;

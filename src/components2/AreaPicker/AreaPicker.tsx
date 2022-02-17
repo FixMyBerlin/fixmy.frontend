@@ -1,16 +1,14 @@
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
+import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
 import MapboxGL from 'mapbox-gl';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
 import config from '~/apps/Gastro/config';
 import { BaseMap } from '~/components2/BaseMap';
 
-import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
-
 const DEFAULT_ZOOM_LEVEL = 19;
 
-const StyledMap = styled(BaseMap)`
+const MapWrapper = styled.div`
   width: 100%;
   height: 30em;
   margin: 2em 0;
@@ -84,14 +82,16 @@ const AreaPicker: React.FC<Props> = ({
 
   return (
     <>
-      <StyledMap
-        onInit={setMap}
-        mapboxStyle={mapboxStyle}
-        bounds={bounds}
-        center={localCenter}
-        zoom={DEFAULT_ZOOM_LEVEL}
-        attributionControl={false}
-      />
+      <MapWrapper>
+        <BaseMap
+          onInit={setMap}
+          mapboxStyle={mapboxStyle}
+          bounds={bounds}
+          center={localCenter}
+          zoom={DEFAULT_ZOOM_LEVEL}
+          attributionControl={false}
+        />
+      </MapWrapper>
       {hasGeometry && <GoodJob>Sie haben einen Bereich eingezeichnet!</GoodJob>}
     </>
   );
