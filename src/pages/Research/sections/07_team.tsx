@@ -1,8 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
-import { Link } from '~/components2/Link';
+import { AnchorLink } from '~/components2/Link';
 import LogoWrapper from '~/pages/Research/components/LogoWrapper';
 import bmdvLogo from '~/pages/Research/images/logo/BMDV_Fz_2021_Office_Farbe_de.png';
 import senKanzLogo from '~/pages/Research/images/logo/senatskanzlei-berlin.png';
@@ -25,7 +24,11 @@ const SectionTeam = ({ toc, tocAnchor }: SectionProps) => (
       <FormattedMessage
         id="research.07_team.p03"
         defaultMessage="Das Team von FixMyCity arbeitet im CityLAB Berlin, wo auch die auf dieser Seite beschriebene Umfrage entstanden ist. Wenn Sie mehr über uns erfahren wollen, besuchen Sie uns unter {link} oder nehmen Sie direkt Kontakt mit uns auf."
-        values={{ link: <Link href="https://fixmycity.de">fixmycity.de</Link> }}
+        values={{
+          link: (
+            <AnchorLink href="https://fixmycity.de">fixmycity.de</AnchorLink>
+          ),
+        }}
       />
     </Paragraph>
     <Paragraph>
@@ -36,7 +39,9 @@ const SectionTeam = ({ toc, tocAnchor }: SectionProps) => (
         defaultMessage="Tel: 030 - 54 90 86 65"
       />
       <br />
-      <a href="mailto:hello@fixmycity.de">hello@fixmycity.de</a>
+      <AnchorLink href="mailto:hello@fixmycity.de">
+        hello@fixmycity.de
+      </AnchorLink>
       <br />
       <br />
       <FormattedMessage
