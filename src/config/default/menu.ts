@@ -111,6 +111,13 @@ const menuConfig: Menu = {
       label: 'Schulwegsicherheit',
       icon: ResearchIcon,
       link: routes.wayToSchool.xhain,
+      border: true,
+    },
+    {
+      type: 'link',
+      label: 'Parkraum',
+      icon: MapIcon,
+      link: routes.parkingLane.xhain,
       border: false,
     },
     {
