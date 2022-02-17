@@ -152,7 +152,7 @@ const Email = (props) => {
             flexDirection="column"
           >
             <EmailImg />
-            <Paragraph>
+            <Paragraph as="div">
               Sobald Sie den Link aktiviert haben, bekommen Sie eine E-Mail,
               wenn Auswertungen der Umfrage online sind.
             </Paragraph>

@@ -1,12 +1,12 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-interface AuthorProps {
+type AuthorProps = {
   name?: string;
   className?: string;
-}
+};
 
-export default ({ name = '', className }: AuthorProps) => (
+export const Author: React.VFC<AuthorProps> = ({ name = '', className }) => (
   <span className={className}>
     <FormattedMessage
       id="components.article.attribution"

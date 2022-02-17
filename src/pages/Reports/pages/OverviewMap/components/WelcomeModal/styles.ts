@@ -46,6 +46,7 @@ export const Modal = styled.section`
 
 export const GridWrapper = styled.div`
   margin-bottom: 2.5rem;
+  padding: 0 1rem;
   ${media.s`
     padding: 0 1.75rem;
   `}

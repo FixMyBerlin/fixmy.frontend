@@ -10,7 +10,7 @@ const MB_STYLE_URL = `${config.reports.overviewMap.style}${
   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
 }`;
 
-const StyledMap = styled(BaseMap)`
+const MapWrapper = styled.div`
   flex-grow: 1;
   height: 100%;
   width: 100%;
@@ -44,14 +44,16 @@ const ReportsBaseMap = ({
     <>
       {isLoading && <BigLoader useAbsolutePositioning />}
       {children}
-      <StyledMap
-        bounds={config.reports.overviewMap.bounds as MapboxGL.LngLatBoundsLike}
-        className={className}
-        data-cy="reports-basemap"
-        maxBounds={maxBounds}
-        onInit={handleLoad}
-        mapboxStyle={MB_STYLE_URL}
-      />
+      <MapWrapper>
+        <BaseMap
+          bounds={config.reports.overviewMap.bounds}
+          className={className}
+          data-cy="reports-basemap"
+          maxBounds={maxBounds}
+          onInit={handleLoad}
+          mapboxStyle={MB_STYLE_URL}
+        />
+      </MapWrapper>
     </>
   );
 };

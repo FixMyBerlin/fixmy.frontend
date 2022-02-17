@@ -8,7 +8,7 @@ import config from '~/apps/Gastro/config';
 import { BaseMap } from '~/components2/BaseMap';
 import { DistrictConfig } from '~/types';
 
-const StyledMap = styled(BaseMap)`
+const MapWrapper = styled.div`
   width: 40em;
   height: 30em;
   margin: 1em 0;
@@ -54,7 +54,6 @@ const handleMapInit = (
   map: MapboxGL.Map,
   geometry,
   area,
-  district: DistrictConfig,
   showAreaPin: boolean
 ) => {
   if (geometry != null) {
@@ -76,18 +75,18 @@ const AreaMap = ({
   const { geometry, area } = application;
 
   return (
-    <StyledMap
-      className={className}
-      onInit={(map) =>
-        handleMapInit(map, geometry, area, district, showAreaPin)
-      }
-      mapboxStyle={config.gastro[district?.name]?.map.style}
-      bounds={district?.bounds}
-      interactive={false}
-      preserveDrawingBuffer={printable === true}
-      center={geometry?.coordinates}
-      zoom={17}
-    />
+    <MapWrapper>
+      <BaseMap
+        className={className}
+        onInit={(map) => handleMapInit(map, geometry, area, showAreaPin)}
+        mapboxStyle={config.gastro[district?.name]?.map.style}
+        bounds={district?.bounds}
+        interactive={false}
+        preserveDrawingBuffer={printable === true}
+        center={geometry?.coordinates}
+        zoom={17}
+      />
+    </MapWrapper>
   );
 };
 

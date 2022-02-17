@@ -59,7 +59,6 @@ const LOCALES: LocaleCode[] = ['de', 'en', 'es'];
 
 const Research = ({ intl }: { intl: IntlShape }) => (
   <ArticleWrapper
-    hasToc
     bannerTitle={intl.formatMessage(messages.kicker)}
     locales={LOCALES}
   >

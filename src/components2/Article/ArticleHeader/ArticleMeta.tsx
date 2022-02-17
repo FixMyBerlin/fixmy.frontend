@@ -1,18 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import config from '~/config';
 import AuthorSvg from '~/images/author-icon.svg';
 import { media } from '~/styles/utils';
+import { Author } from './Author';
+import { PublishDate } from './PublishDate';
 
-import Author from './Author';
-import PublishDate from './PublishDate';
-
-interface ArticleMetaProps {
+type ArticleMetaProps = {
   publishDate?: Date;
   author?: string;
   className?: string;
-}
+};
 
 const MetaWrap = styled.div`
   display: flex;
@@ -51,7 +49,11 @@ const MetaInnerWrap = styled.div`
   flex-wrap: wrap;
 `;
 
-const ArticleMeta = ({ publishDate, author, className }: ArticleMetaProps) => {
+export const ArticleMeta: React.VFC<ArticleMetaProps> = ({
+  publishDate,
+  author,
+  className,
+}) => {
   if (!publishDate && !author) {
     return null;
   }
@@ -63,11 +65,13 @@ const ArticleMeta = ({ publishDate, author, className }: ArticleMetaProps) => {
       </AuthorIcon>
       <MetaInnerWrap>
         <PublishDate date={publishDate} />
-        <Divider />
-        <Author name={author} />
+        {author && (
+          <>
+            <Divider />
+            <Author name={author} />
+          </>
+        )}
       </MetaInnerWrap>
     </MetaWrap>
   );
 };
-
-export default ArticleMeta;

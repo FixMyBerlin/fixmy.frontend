@@ -104,6 +104,13 @@ const menuConfig: Menu = {
       label: 'Radbügel-Meldedialog',
       icon: ReportsIcon,
       link: routes.reports.landing,
+      border: true,
+    },
+    {
+      type: 'link',
+      label: 'Schulwegsicherheit',
+      icon: ResearchIcon,
+      link: routes.wayToSchool.xhain,
       border: false,
     },
     {
@@ -113,7 +120,7 @@ const menuConfig: Menu = {
     {
       type: 'external',
       label: 'Angebote für Kommunen',
-      href: 'https://fixmycity.de',
+      href: 'https://www.fixmycity.de/',
       icon: KommunenIcon,
       border: true,
     },
@@ -121,7 +128,7 @@ const menuConfig: Menu = {
       type: 'link',
       label: 'Ergebnisse der Straßencheck-Umfrage',
       icon: ResearchIcon,
-      link: routes.research.landing,
+      link: routes.research.survey,
       border: true,
     },
     {
