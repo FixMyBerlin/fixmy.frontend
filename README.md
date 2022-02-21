@@ -170,3 +170,7 @@ Files in `lang/translations` need to be compiled into an optimized format stored
 ```
 npm run compile
 ```
+
+## See also
+
+There also Docs in the [Gastro/](src/apps/Gastro/docs/README.md) folder.
