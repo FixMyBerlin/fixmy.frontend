@@ -33,9 +33,9 @@ import IconRepair from './assets/basics-icon-map-repair.svg';
 import IconRestaurant from './assets/basics-icon-map-restaurant.svg';
 import IconRetail from './assets/basics-icon-map-retail.svg';
 import IconSocial from './assets/basics-icon-map-social.svg';
-import MayorImg from './assets/hermann.jpg';
-import MayorImg2 from './assets/hermann@2x.jpg';
-import MayorImg3 from './assets/hermann@3x.jpg';
+import MayorImg from './assets/gerold.jpg';
+import MayorImg2 from './assets/gerold@2x.jpg';
+import MayorImg3 from './assets/gerold@3x.jpg';
 
 const Attribution = styled.div`
   font-size: 0.75em;
@@ -69,6 +69,8 @@ const Img = styled.img`
   width: 144px;
   display: block;
   margin: 0 auto;
+  border-radius: 100%;
+  border: 2px solid #989898;
 `;
 
 const ImgAttribution = styled.div`
@@ -275,16 +277,17 @@ const XhainLanding = ({ district }) => {
             src={MayorImg}
             srcSet={`${MayorImg2} 2x, ${MayorImg3} 3x`}
           />
-          <ImgAttribution>Foto © Sedat Mehder</ImgAttribution>
+          <ImgAttribution>Foto © Kilian Vitt</ImgAttribution>
           <BlockQuote>
-            „In den Zeiten der fortlaufenden Corona-Einschränkungen, wollen wir
-            den Xhainer*innen wieder ein kleines Stück mehr Freiheit ermöglichen
-            und Gastronomen helfen ihren Betrieb durch das Jahr 2021 zu bringen.
-            “
+            „In der anhaltenden Corona-Zeit, die mit vielen Einschränkungen
+            einher geht, wollen wir den Xhainer*innen weiterhin durch die
+            Angebote der Xhain-Terrassen mehr Freiheit ermöglichen und damit
+            gleichzeitig Gastronom*innen helfen, ihren Betrieb auch in 2022
+            erfolgreich zu betreiben.“
           </BlockQuote>
-          <SourcePerson>Monika Herrmann</SourcePerson>
+          <SourcePerson>Annika Gerold</SourcePerson>
           <SourceFunction>
-            Ex-Bezirksbürgermeisterin von Friedrichshain-Kreuzberg
+            Bezirksstadträtin von Friedrichshain-Kreuzberg
           </SourceFunction>
         </QuoteSection>
       </Section>
