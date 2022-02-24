@@ -195,6 +195,10 @@ const XhainLanding = ({ district }) => {
     config.districts.xhain.apps.gastro.timeline.closeSignup.toLocaleDateString(
       'DE-DE'
     );
+  const signupOpenDate =
+    config.districts.xhain.apps.gastro.timeline.openSignup.toLocaleDateString(
+      'DE-DE'
+    );
   return (
     <>
       <h1>Xhain geht raus – Terrassen für Vieles</h1>
@@ -212,15 +216,12 @@ const XhainLanding = ({ district }) => {
           Photo by Freddy Do on Unsplash
         </a>
       </Attribution>
-      <h2>
-        Xhain-Terrassen 2021. Jetzt die ganze Woche nutzen. Neu: Anträge für
-        Veranstaltungen
-      </h2>
+      <h2>Xhain-Terrassen 2022</h2>
       <Section>
         <p>
           Das Bezirksamt Friedrichshain-Kreuzberg bietet Gastronomen, dem
           Einzelhandel und sozialen Projekten die Möglichkeit, Flächen im
-          ruhenden Verkehr bis Ende des Jahres 2021 ab sofort an allen
+          ruhenden Verkehr bis Ende Oktober 2022 ab 14.03.2022 an allen
           Wochentagen zum Aufstellen von Tischen oder Ausstellen von Waren zu
           nutzen. Damit möchte das Bezirksamt die Betriebe und Projekte
           unterstützen ihren Betrieb unter den schwierigen Bedingungen der
@@ -229,7 +230,10 @@ const XhainLanding = ({ district }) => {
           teilzunehmen und sich dennoch angesichts des Infektionsgeschehens
           sicher im öffentlichen Raum aufzuhalten.
         </p>
-        <p>Eine Antragsstellung ist bis zum {signupCloseDate} möglich.</p>
+        <p>
+          Eine Antragsstellung ist vom {signupOpenDate} bis zum{' '}
+          {signupCloseDate} möglich.
+        </p>
 
         {openSignup(district) && (
           <CTAWrapper>

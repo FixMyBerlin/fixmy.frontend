@@ -200,12 +200,12 @@ const xhain: DistrictConfig = {
       timeline: {
         // date constructor uses 0-based month number, i.e. january is 0
         openSignup: isNetlifyProduction
-          ? new Date(Date.UTC(2022, 5 - 1, 19))
+          ? new Date(Date.UTC(2022, 3 - 1, 14))
           : new Date(Date.UTC(2022, 1 - 1, 1)),
         closeSignup: isNetlifyProduction
-          ? new Date(Date.UTC(2022, 7 - 1, 16))
+          ? new Date(Date.UTC(2022, 5 - 1, 15))
           : new Date(Date.UTC(2022, 12 - 1, 31)),
-        permitEnd: new Date(Date.UTC(2022, 12 - 1, 31)),
+        permitEnd: new Date(Date.UTC(2022, 10 - 1, 31)),
       },
       model: {
         category: true,
