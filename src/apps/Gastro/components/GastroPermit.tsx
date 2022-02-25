@@ -106,8 +106,8 @@ const Permit = ({ application }) => {
   return (
     <PermitContainer>
       <h1>Bezirksamt Friedrichshain-Kreuzberg von Berlin</h1>
-      <h2>Abt. Familie, Personal, Diversity, Straßen- und Grünflächenamt</h2>
-      <h2>Straßenverkehrsbehörde</h2>
+      <h2>Abteilung für Verkehr, Grünflächen, Ordnung und Umwelt</h2>
+      <h2>Straßen- und Grünflächenamt - FB Öffentlicher Raum</h2>
 
       <h3>Ausnahmegenehmigung nach der Straßenverkehrs-Ordnung</h3>
 

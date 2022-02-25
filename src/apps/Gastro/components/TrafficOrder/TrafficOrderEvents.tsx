@@ -68,7 +68,6 @@ const TrafficOrder = ({ application }: Props) => {
   return (
     <Container>
       <Author>Bezirksamt Friedrichshain-Kreuzberg von Berlin</Author>
-      {/* <h2>Abt. Familie, Personal, Diversity, Straßen- und Grünflächenamt</h2> */}
       <Author>Straßenverkehrsbehörde</Author>
 
       <h1>

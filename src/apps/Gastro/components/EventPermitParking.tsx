@@ -93,8 +93,8 @@ const Permit = ({ application, id }: Props) => {
   return (
     <PermitContainer>
       <h2>Bezirksamt Friedrichshain-Kreuzberg von Berlin</h2>
-      <h3>Abt. Familie, Personal, Diversity, Straßen- und Grünflächen</h3>
-      <h3>Straßen- und Grünflächenamt</h3>
+      <h3>Abteilung für Verkehr, Grünflächen, Ordnung und Umwelt</h3>
+      <h3>Straßen- und Grünflächenamt - FB Öffentlicher Raum</h3>
 
       <Headline>
         <span className="address">
