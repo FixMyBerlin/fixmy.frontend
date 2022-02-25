@@ -2,6 +2,7 @@ import MapboxGL from 'mapbox-gl';
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { Card, CardContent, Typography } from '@material-ui/core';
 
 import {
   IconWrapper,
@@ -219,7 +220,7 @@ const XhainLanding = ({ district }) => {
         <p>
           Das Bezirksamt Friedrichshain-Kreuzberg bietet Gastronomen, dem
           Einzelhandel und sozialen Projekten die Möglichkeit, Flächen im
-          ruhenden Verkehr bis Ende Oktober 2022 ab 14.03.2022 an allen
+          ruhenden Verkehr bis Ende Oktober 2022 ab {signupOpenDate} an allen
           Wochentagen zum Aufstellen von Tischen oder Ausstellen von Waren zu
           nutzen. Damit möchte das Bezirksamt die Betriebe und Projekte
           unterstützen ihren Betrieb unter den schwierigen Bedingungen der
@@ -232,6 +233,14 @@ const XhainLanding = ({ district }) => {
           Eine Antragsstellung ist vom {signupOpenDate} bis zum{' '}
           {signupCloseDate} möglich.
         </p>
+        <Card>
+          <CardContent>
+            <Typography>
+              Bitte beachten Sie, dass dieses Jahr Verwaltungsgebühren in Höhe{' '}
+              <strong>51,20 EUR</strong> hierfür fällig werden.
+            </Typography>
+          </CardContent>
+        </Card>
 
         {openSignup(district) && (
           <CTAWrapper>
@@ -374,11 +383,15 @@ const XhainLanding = ({ district }) => {
           vorliegen eine Sondergenehmigung. Die Genehmigungen werden bis zum
           31.12.2021 befristet und bis auf weiteres gebührenfrei ausgesprochen.{' '}
         </p>
-        {/* TODO: improve visibility */}
-        <p>
-          Bitte beachten Sie, dass dieses Jahr Verwaltungsgebühren in Höhe 51,20
-          EUR hierfür fällig werden.
-        </p>
+
+        <Card>
+          <CardContent>
+            <Typography>
+              Bitte beachten Sie, dass dieses Jahr Verwaltungsgebühren in Höhe{' '}
+              <strong>51,20 EUR</strong> hierfür fällig werden.
+            </Typography>
+          </CardContent>
+        </Card>
 
         {openSignup(district) && (
           <Link to={getPath(district, 'signup')}>
