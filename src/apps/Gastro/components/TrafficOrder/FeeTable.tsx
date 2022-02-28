@@ -6,9 +6,11 @@ const FeeTable = ({ application }) => {
       <>
         <h3>Kosten</h3>
         <p style={{ marginBottom: '1rem' }}>
-          Anordnungen nach § 45 Abs. 6 StVO sind nach § 6a StVG i. V. m. der
-          Gebührenordnung für Maßnahmen im Straßenverkehr (GebOSt)
-          gebührenpflichtig.
+          <strong>
+            Anordnungen nach § 45 Abs. 6 StVO sind nach § 6a StVG i. V. m. der
+            Gebührenordnung für Maßnahmen im Straßenverkehr (GebOSt)
+            gebührenpflichtig.
+          </strong>
         </p>
         <table cellSpacing="0" cellPadding="0">
           <colgroup>
@@ -27,19 +29,19 @@ const FeeTable = ({ application }) => {
           </colgroup>
           <tr>
             <td style={{ textAlign: 'left' }}>
-              <span>Geb.-Nr.</span>
+              <strong>Geb.-Nr.</strong>
             </td>
             <td colSpan={5} style={{ textAlign: 'left' }}>
-              <span>Bezeichnung</span>
+              <strong>Bezeichnung</strong>
             </td>
             <td style={{ textAlign: 'left' }}>
-              <span>Anzahl</span>
+              <strong>Anzahl</strong>
             </td>
             <td colSpan={3} style={{ textAlign: 'left' }}>
-              <span>Gebühr</span>
+              <strong>Gebühr</strong>
             </td>
             <td style={{ textAlign: 'left' }}>
-              <span>Gesamt</span>
+              <strong>Gesamt</strong>
             </td>
             <td style={{ textAlign: 'left' }} />
             <td style={{ textAlign: 'left' }} />
@@ -65,25 +67,25 @@ const FeeTable = ({ application }) => {
           </tr>
           <tr>
             <td />
-            <td colSpan={9} style={{ textAlign: 'left' }}>
-              <span>Die ausstehenden Gebühren und Auslagen betragen:</span>
+            <td colSpan={9} style={{ textAlign: 'right', paddingRight: 10 }}>
+              <strong>Die ausstehenden Gebühren und Auslagen betragen:</strong>
             </td>
             <td colSpan={2} style={{ textAlign: 'left' }}>
-              <span>51,20 EUR</span>
+              <strong>51,20 EUR</strong>
             </td>
           </tr>
           <tr>
             <td>&nbsp;</td>
           </tr>
-          <tr style={{ marginBottom: '1rem' }}>
+          <tr style={{ marginBottom: '1rem', border: '1px solid black' }}>
             <td colSpan={11} style={{ textAlign: 'left' }}>
-              <span>Zahlen Sie bitte unter Angabe des Kassenzeichens </span>
+              <strong>Zahlen Sie bitte unter Angabe des Kassenzeichens </strong>
               <strong>{application.invoice_number} </strong>
-              <span>
+              <strong>
                 innerhalb von 14 Tagen nach Erhalt dieser Anordnung auf eines
                 der nachstehenden Konten der Bezirkskasse
                 Friedrichshain-Kreuzberg.
-              </span>
+              </strong>
             </td>
           </tr>
           <tr>
@@ -91,13 +93,13 @@ const FeeTable = ({ application }) => {
           </tr>
           <tr>
             <td colSpan={3} style={{ textAlign: 'left' }}>
-              <span>Bank</span>
+              <strong>Bank</strong>
             </td>
             <td colSpan={5} style={{ textAlign: 'left' }}>
-              <span>IBAN</span>
+              <strong>IBAN</strong>
             </td>
             <td colSpan={3} style={{ textAlign: 'left' }}>
-              <span>BIC</span>
+              <strong>BIC</strong>
             </td>
           </tr>
           <tr>
