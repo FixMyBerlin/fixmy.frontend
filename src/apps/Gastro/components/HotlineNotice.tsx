@@ -59,7 +59,7 @@ const HotlineNotice = () => {
           <Link href="mailto:gastro@ba-fk.berlin.de">
             gastro@ba-fk.berlin.de
           </Link>{' '}
-          für Rückfragen und Fragen.
+          für Rückfragen.
         </Typography>
       </CardContent>
     </Card>
