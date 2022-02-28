@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { dateReceived, getCategoryDescription, permitEnd } from '../../utils';
+import { FeeTable } from '.';
 
 const Container = styled.section`
   padding: 1em;
@@ -705,6 +706,8 @@ const TrafficOrder = ({ application }) => {
           zuständigen Straßenbaubehörde (Straßen- und Grünflächenamt) zu
           beantragen/ erlangen.
         </p>
+
+        <FeeTable application={application} />
 
         <h2>Rechtshelfsbelehrung</h2>
         <p>
