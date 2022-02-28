@@ -201,7 +201,7 @@ const xhain: DistrictConfig = {
         // date constructor uses 0-based month number, i.e. january is 0
         openSignup: isNetlifyProduction
           ? new Date(Date.UTC(2022, 3 - 1, 14))
-          : new Date(Date.UTC(2022, 3 - 1, 1)),
+          : new Date(Date.UTC(2022, 2 - 20, 1)),
         closeSignup: isNetlifyProduction
           ? new Date(Date.UTC(2022, 5 - 1, 15))
           : new Date(Date.UTC(2022, 12 - 1, 31)),
