@@ -60,9 +60,7 @@ const FeeTable = ({ application }) => {
               <span>51,20 EUR</span>
             </td>
             <td style={{ textAlign: 'left' }}>
-              <p>
-                <span>51,20 EUR</span>
-              </p>
+              <span>51,20 EUR</span>
             </td>
           </tr>
           <tr>
@@ -70,15 +68,29 @@ const FeeTable = ({ application }) => {
             <td colSpan={9} style={{ textAlign: 'right', paddingRight: 10 }}>
               <strong>Die ausstehenden Gebühren und Auslagen betragen:</strong>
             </td>
-            <td colSpan={2} style={{ textAlign: 'left' }}>
+            <td
+              colSpan={2}
+              style={{
+                textAlign: 'left',
+                border: '2px solid black',
+                padding: 10,
+              }}
+            >
               <strong>51,20 EUR</strong>
             </td>
           </tr>
           <tr>
             <td>&nbsp;</td>
           </tr>
-          <tr style={{ marginBottom: '1rem', border: '1px solid black' }}>
-            <td colSpan={11} style={{ textAlign: 'left' }}>
+          <tr style={{ marginBottom: '1rem' }}>
+            <td
+              colSpan={11}
+              style={{
+                textAlign: 'left',
+                border: '2px solid black',
+                padding: 5,
+              }}
+            >
               <strong>Zahlen Sie bitte unter Angabe des Kassenzeichens </strong>
               <strong>{application.invoice_number} </strong>
               <strong>
