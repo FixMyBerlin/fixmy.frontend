@@ -157,12 +157,6 @@ const LandingMap = ({ district }) => (
             </IconWrapper>{' '}
             Soziale Angebote
           </LegendItem>
-          <LegendItem>
-            <IconWrapper>
-              <IconEvents />
-            </IconWrapper>
-            Veranstaltungen der Xhain-Terrassen
-          </LegendItem>
         </LegendItems>
       </LegendCol>
       <LegendCol>
