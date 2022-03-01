@@ -27,7 +27,6 @@ import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import { media } from '~/styles/utils';
 
-import IconEvents from './assets/basics-icon-map-events.svg';
 import IconRepair from './assets/basics-icon-map-repair.svg';
 import IconRestaurant from './assets/basics-icon-map-restaurant.svg';
 import IconRetail from './assets/basics-icon-map-retail.svg';
