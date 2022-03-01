@@ -30,23 +30,21 @@ const FeeTable = ({ status, invoiceNumber }) => {
           <col width="32" />
         </colgroup>
         <tr>
-          <td style={{ textAlign: 'left' }}>
+          <th style={{ textAlign: 'left' }}>
             <strong>Geb.-Nr.</strong>
-          </td>
-          <td colSpan={5} style={{ textAlign: 'left' }}>
+          </th>
+          <th colSpan={5} style={{ textAlign: 'left' }}>
             <strong>Bezeichnung</strong>
-          </td>
-          <td style={{ textAlign: 'left' }}>
+          </th>
+          <th style={{ textAlign: 'left' }}>
             <strong>Anzahl</strong>
-          </td>
-          <td colSpan={3} style={{ textAlign: 'left' }}>
+          </th>
+          <th colSpan={3} style={{ textAlign: 'left' }}>
             <strong>Gebühr</strong>
-          </td>
-          <td style={{ textAlign: 'left' }}>
+          </th>
+          <th style={{ textAlign: 'left' }}>
             <strong>Gesamt</strong>
-          </td>
-          <td style={{ textAlign: 'left' }} />
-          <td style={{ textAlign: 'left' }} />
+          </th>
         </tr>
         <tr>
           <td style={{ textAlign: 'left' }}>
