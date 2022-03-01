@@ -20,6 +20,7 @@ import ResetPassword from '~/pages/User/pages/ResetPassword';
 import Signup from '~/pages/User/pages/Signup';
 import UserVerify from '~/pages/User/pages/Verify';
 import ZESPlusResearch from '~/pages/ZESPlus-Research';
+import ParkingLane from './pages/ParkingLane';
 import XhainWayToSchool from './pages/XhainWayToSchool';
 
 import { RootState } from './store';
@@ -145,32 +146,38 @@ const Routes = ({ token }) => (
     {config.districts && Object.keys(config.districts).map(District)}
 
     {/* Xhain Report Schulwegsicherheit */}
-    {/* Note: Second separate Guard is required, will not work with `<><!-- two routes --></>` */}
     {config.routes.wayToSchool && (
-      <Route
-        exact
-        path={config.routes.wayToSchool.landing}
-        render={() => <Redirect to={config.routes.wayToSchool.xhain} />}
-      />
-    )}
-    {config.routes.wayToSchool && (
-      <Route
-        path={config.routes.wayToSchool.xhain}
-        component={XhainWayToSchool}
-      />
-    )}
+        <Route
+          exact
+          path={config.routes.wayToSchool.landing}
+          render={() => <Redirect to={config.routes.wayToSchool.xhain} />}
+        />
+      ) && (
+        <Route
+          path={config.routes.wayToSchool.xhain}
+          component={XhainWayToSchool}
+        />
+      )}
+
+    {/* Xhain ParkingLane Community Call For Help */}
+    {config.routes.parkingLane && (
+        <Route
+          exact
+          path={config.routes.parkingLane.landing}
+          render={() => <Redirect to={config.routes.parkingLane.xhain} />}
+        />
+      ) && (
+        <Route path={config.routes.parkingLane.xhain} component={ParkingLane} />
+      )}
 
     {/* Research pages */}
     {config.routes.research && (
-      <Route
-        exact
-        path={config.routes.research.landing}
-        render={() => <Redirect to={config.routes.research.survey} />}
-      />
-    )}
-    {config.routes.research && (
-      <Route path={config.routes.research.survey} component={Research} />
-    )}
+        <Route
+          exact
+          path={config.routes.research.landing}
+          render={() => <Redirect to={config.routes.research.survey} />}
+        />
+      ) && <Route path={config.routes.research.survey} component={Research} />}
 
     {/* ZES-Plus research page */}
     {config.routes.zesplusResearch && (

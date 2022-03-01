@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Link from '~/components/Link';
 import { Button } from '~/components2/Button';
 import { Header } from '~/components2/Header';
-import { Insert as ImageInsert } from '~/components2/Image';
+import { InsertImage } from '~/components2/Image';
 import { LogoFooter } from '~/components2/LogoFooter';
 import config from '~/config';
 import BackgroundImageB1 from '~/images/spielstrassen/landing-bg-2.jpg';
@@ -21,20 +21,6 @@ const CTA = styled(Button)`
   margin: 2em auto;
 `;
 
-const Attribution = styled.div`
-  font-size: 0.75em;
-  margin-top: -2.5em;
-  position: relative;
-  float: right;
-  right: 1em;
-  z-index: 9999;
-
-  && a {
-    color: white;
-    text-decoration: none;
-  }
-`;
-
 const Intro = styled.div`
   margin-bottom: 3em;
 `;
@@ -47,7 +33,7 @@ const Landing = () => {
       </Header>
       <Container maxWidth="md">
         <h1>Temporäre Spielstraßen jetzt dauerhaft in Xhain!</h1>
-        <ImageInsert
+        <InsertImage
           width="938"
           height="603"
           src={BackgroundImageA2}
@@ -134,15 +120,12 @@ const Landing = () => {
             Informationen für die Anwohner:innen
           </a>
         </p>
-        <ImageInsert
+        <InsertImage
           src={BackgroundImageB2}
           srcSet={`${BackgroundImageB1} 450w, ${BackgroundImageB2} 750w, ${BackgroundImageB3} 1125w`}
+          attributionLink="https://panphotos.org/"
+          attributionText="Fotograf: Peter Steudtner / panphotos.org"
         />
-        <Attribution>
-          <a href="https://panphotos.org/">
-            Fotograf: Peter Steudtner / panphotos.org
-          </a>
-        </Attribution>
         <h2>Zum Hintergrund</h2>
         <p>
           Der Bezirk Friedrichshain-Kreuzberg ist eines der europaweit am

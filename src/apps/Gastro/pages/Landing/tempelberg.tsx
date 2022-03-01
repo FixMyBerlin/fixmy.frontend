@@ -8,24 +8,10 @@ import { getPath } from '~/apps/Gastro/routes';
 import { openSignup } from '~/apps/Gastro/utils';
 import Link from '~/components/Link';
 import { Button } from '~/components2/Button';
-import { Insert as ImageInsert } from '~/components2/Image';
+import { InsertImage } from '~/components2/Image';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
-
-const Attribution = styled.div`
-  font-size: 0.75em;
-  margin-top: -2.5em;
-  position: relative;
-  float: right;
-  right: 1em;
-  z-index: 9999;
-
-  && a {
-    color: white;
-    text-decoration: none;
-  }
-`;
 
 const CTA = styled(Button)`
   margin: 2em auto;
@@ -34,20 +20,13 @@ const CTA = styled(Button)`
 const XhainLanding = ({ district }) => (
   <>
     <h1>Terrassen für Tempelhof-Schöneberg</h1>
-    <ImageInsert
+    <InsertImage
       src={BackgroundImageA2}
       srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
       alt="Bild von Menschen, die an Tischen auf der Straße essen"
+      attributionText="Photo by Freddy Do on Unsplash"
+      attributionLink="https://unsplash.com/@freddydo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
     />
-    <Attribution>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://unsplash.com/@freddydo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-      >
-        Photo by Freddy Do on Unsplash
-      </a>
-    </Attribution>
     <h2>Tempelhof-Schöneberg is(s)t draußen - Terrassen für die Gastronomie</h2>
     <p>
       Das Bezirksamt Tempelhof-Schöneberg möchte Gastronomiebetrieben die

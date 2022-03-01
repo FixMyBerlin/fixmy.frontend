@@ -19,9 +19,10 @@ import config from '~/apps/Gastro/config';
 import { getPath } from '~/apps/Gastro/routes';
 import { openSignup, setLayerVisibility } from '~/apps/Gastro/utils';
 import Link from '~/components/Link';
+import { FaceQuote } from '~/components2/Article/Quote';
 import { BaseMap } from '~/components2/BaseMap';
 import { Button } from '~/components2/Button';
-import { Insert as ImageInsert } from '~/components2/Image';
+import { InsertImage } from '~/components2/Image';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
@@ -37,63 +38,10 @@ import MayorImg from './assets/hermann.jpg';
 import MayorImg2 from './assets/hermann@2x.jpg';
 import MayorImg3 from './assets/hermann@3x.jpg';
 
-const Attribution = styled.div`
-  font-size: 0.75em;
-  margin-top: -2.5em;
-  position: relative;
-  float: right;
-  right: 1em;
-  z-index: 9999;
-
-  && a {
-    color: white;
-    text-decoration: none;
-  }
-`;
-
 const Section = styled.section`
   padding-bottom: 1em;
   margin-bottom: 1em;
   border-bottom: 1px dashed ${config.colors.inactivegrey};
-`;
-
-const QuoteSection = styled.div`
-  line-height: 1.37;
-  color: ${config.colors.darkgrey};
-  max-width: 320px;
-  padding: 8px;
-  margin: 0 auto;
-`;
-
-const Img = styled.img`
-  width: 144px;
-  display: block;
-  margin: 0 auto;
-`;
-
-const ImgAttribution = styled.div`
-  color: ${config.colors.darkgrey};
-  font-size: 12px;
-  margin: 0.5em;
-  text-align: center;
-`;
-
-const BlockQuote = styled.blockquote`
-  text-align: center;
-  font-style: italic;
-  margin: 20px 0 28px 0;
-`;
-
-const SourcePerson = styled.p`
-  text-align: center;
-  margin-bottom: 0;
-  font-weight: bold;
-  font-size: 16px;
-`;
-
-const SourceFunction = styled.p`
-  margin-top: 0;
-  font-size: 12px;
 `;
 
 const CTA = styled(Button)`
@@ -188,20 +136,13 @@ const LandingMap = ({ district }) => (
 const XhainLanding = ({ district }) => (
   <>
     <h1>Xhain geht raus – Terrassen für Vieles</h1>
-    <ImageInsert
+    <InsertImage
       src={BackgroundImageA2}
       srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
       alt="Bild von Menschen, die an Tischen auf der Straße essen"
+      attributionLink="https://unsplash.com/@freddydo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+      attributionText="Photo by Freddy Do on Unsplash"
     />
-    <Attribution>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://unsplash.com/@freddydo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-      >
-        Photo by Freddy Do on Unsplash
-      </a>
-    </Attribution>
     <h2>
       Xhain-Terrassen 2021. Jetzt die ganze Woche nutzen. Neu: Anträge für
       Veranstaltungen
@@ -261,23 +202,22 @@ const XhainLanding = ({ district }) => (
     </Section>
 
     <Section>
-      <QuoteSection>
-        <Img
-          alt="Portrait Monika Herrmann"
-          src={MayorImg}
-          srcSet={`${MayorImg2} 2x, ${MayorImg3} 3x`}
-        />
-        <ImgAttribution>Foto © Sedat Mehder</ImgAttribution>
-        <BlockQuote>
-          „In den Zeiten der fortlaufenden Corona-Einschränkungen, wollen wir
-          den Xhainer*innen wieder ein kleines Stück mehr Freiheit ermöglichen
-          und Gastronomen helfen ihren Betrieb durch das Jahr 2021 zu bringen. “
-        </BlockQuote>
-        <SourcePerson>Monika Herrmann</SourcePerson>
-        <SourceFunction>
-          Ex-Bezirksbürgermeisterin von Friedrichshain-Kreuzberg
-        </SourceFunction>
-      </QuoteSection>
+      <FaceQuote
+        image={
+          <img
+            alt="Portrait Monika Herrmann"
+            src={MayorImg}
+            srcSet={`${MayorImg2} 2x, ${MayorImg3} 3x`}
+          />
+        }
+        imageAttributionText="Foto © Sedat Mehder"
+        sourceName="Monika Herrmann"
+        sourceFunction="Ex-Bezirksbürgermeisterin von Friedrichshain-Kreuzberg"
+      >
+        In den Zeiten der fortlaufenden Corona-Einschränkungen, wollen wir den
+        Xhainer*innen wieder ein kleines Stück mehr Freiheit ermöglichen und
+        Gastronomen helfen ihren Betrieb durch das Jahr 2021 zu bringen.
+      </FaceQuote>
     </Section>
 
     <Section>
