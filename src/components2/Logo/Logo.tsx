@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FadeIn } from '~/components2/Image';
+import { FadeInImage } from '~/components2/Image';
 import FixMyLogo1 from '~/images/logofmb.png';
 import FixMyLogo2 from '~/images/logofmb@2x.png';
 import FixMyLogo3 from '~/images/logofmb@3x.png';
@@ -16,7 +16,7 @@ type Props = {
 
 const FMBLogo: React.FC<Props> = ({ className = null, width = 70 }) => (
   <FMBLogoWrapper className={className}>
-    <FadeIn
+    <FadeInImage
       width={width}
       height={width * 1.164556962}
       src={FixMyLogo1}
