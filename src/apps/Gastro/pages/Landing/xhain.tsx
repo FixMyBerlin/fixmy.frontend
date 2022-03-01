@@ -19,7 +19,6 @@ import config from '~/apps/Gastro/config';
 import { getPath } from '~/apps/Gastro/routes';
 import { openSignup, setLayerVisibility } from '~/apps/Gastro/utils';
 import Link from '~/components/Link';
-import { FaceQuote } from '~/components2/Article/Quote';
 import { BaseMap } from '~/components2/BaseMap';
 import { Button } from '~/components2/Button';
 import { InsertImage } from '~/components2/Image';
@@ -35,6 +34,20 @@ import IconSocial from './assets/basics-icon-map-social.svg';
 import MayorImg from './assets/gerold.jpg';
 import MayorImg2 from './assets/gerold@2x.jpg';
 import MayorImg3 from './assets/gerold@3x.jpg';
+
+const Attribution = styled.div`
+  font-size: 0.75em;
+  margin-top: -2.5em;
+  position: relative;
+  float: right;
+  right: 1em;
+  z-index: 9999;
+
+  && a {
+    color: white;
+    text-decoration: none;
+  }
+`;
 
 const Section = styled.section`
   padding-bottom: 1em;
@@ -178,7 +191,7 @@ const XhainLanding = ({ district }) => {
   return (
     <>
       <h1>Xhain geht raus – Terrassen für Vieles</h1>
-      <ImageInsert
+      <InsertImage
         src={BackgroundImageA2}
         srcSet={`${BackgroundImageA1} 450w, ${BackgroundImageA2} 750w, ${BackgroundImageA3} 1125w`}
         alt="Bild von Menschen, die an Tischen auf der Straße essen"
