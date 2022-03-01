@@ -707,7 +707,10 @@ const TrafficOrder = ({ application }) => {
           beantragen/ erlangen.
         </p>
 
-        <FeeTable application={application} />
+        <FeeTable
+          status={application.status}
+          invoiceNumber={application.invoice_number}
+        />
 
         <h2>Rechtshelfsbelehrung</h2>
         <p>
