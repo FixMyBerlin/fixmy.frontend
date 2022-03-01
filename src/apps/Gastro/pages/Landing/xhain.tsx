@@ -19,9 +19,10 @@ import config from '~/apps/Gastro/config';
 import { getPath } from '~/apps/Gastro/routes';
 import { openSignup, setLayerVisibility } from '~/apps/Gastro/utils';
 import Link from '~/components/Link';
+import { FaceQuote } from '~/components2/Article/Quote';
 import { BaseMap } from '~/components2/BaseMap';
 import { Button } from '~/components2/Button';
-import { Insert as ImageInsert } from '~/components2/Image';
+import { InsertImage } from '~/components2/Image';
 import BackgroundImageA1 from '~/images/gastro/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
@@ -34,20 +35,6 @@ import IconSocial from './assets/basics-icon-map-social.svg';
 import MayorImg from './assets/gerold.jpg';
 import MayorImg2 from './assets/gerold@2x.jpg';
 import MayorImg3 from './assets/gerold@3x.jpg';
-
-const Attribution = styled.div`
-  font-size: 0.75em;
-  margin-top: -2.5em;
-  position: relative;
-  float: right;
-  right: 1em;
-  z-index: 9999;
-
-  && a {
-    color: white;
-    text-decoration: none;
-  }
-`;
 
 const Section = styled.section`
   padding-bottom: 1em;
@@ -251,7 +238,7 @@ const XhainLanding = ({ district }) => {
       <Section>
         <QuoteSection>
           <Img
-            alt="Portrait Monika Herrmann"
+            alt="Portrait Annika Gerold"
             src={MayorImg}
             srcSet={`${MayorImg2} 2x, ${MayorImg3} 3x`}
           />

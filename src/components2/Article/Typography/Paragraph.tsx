@@ -4,6 +4,7 @@ import config from '~/config';
 import { media } from '~/styles/utils';
 
 export const Paragraph = styled.p`
+  // font-size: 16px; // implicit
   font-family: ${config.baseFont};
   font-weight: 400;
   line-height: 1.35;
