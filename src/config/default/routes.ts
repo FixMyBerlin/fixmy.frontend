@@ -22,6 +22,9 @@ interface RouteConfig {
   wayToSchool?: {
     [page: string]: string;
   };
+  parkingLane?: {
+    [page: string]: string;
+  };
   // mandatory routes
   signup: string;
   login: string;
@@ -68,6 +71,10 @@ const routes: RouteConfig = {
   wayToSchool: {
     landing: '/schulwegsicherheit',
     xhain: '/schulwegsicherheit/friedrichshain-kreuzberg',
+  },
+  parkingLane: {
+    landing: '/parkraum',
+    xhain: '/parkraum/friedrichshain-kreuzberg',
   },
   signup: '/registrieren',
   login: '/anmelden',
