@@ -20,6 +20,7 @@ import ResetPassword from '~/pages/User/pages/ResetPassword';
 import Signup from '~/pages/User/pages/Signup';
 import UserVerify from '~/pages/User/pages/Verify';
 import ZESPlusResearch from '~/pages/ZESPlus-Research';
+import XhainWayToSchool from './pages/XhainWayToSchool';
 
 import { RootState } from './store';
 
@@ -113,25 +114,25 @@ const Routes = ({ token }) => (
     />
 
     {/* map pages */}
-    {config.routes.map?.hbiIndex != null && (
+    {config.routes.map?.hbiIndex && (
       <Route path={config.routes.map.hbiIndex} component={MapView} />
     )}
-    {config.routes.map?.projectsIndex != null && (
+    {config.routes.map?.projectsIndex && (
       <Route path={config.routes.map.projectsIndex} component={MapView} />
     )}
 
     {/* reports page */}
-    {config.routes.reports != null && (
+    {config.routes.reports && (
       <Route path={`${config.routes.reports.index}`} component={Reports} />
     )}
 
     {/* kataster survey page */}
-    {config.routes.katasterKI != null && (
+    {config.routes.katasterKI && (
       <Route path={config.routes.katasterKI.landing} component={KatasterKI} />
     )}
 
     {/* analysis pages */}
-    {config.routes.analysis != null && (
+    {config.routes.analysis && (
       <Route
         path={[
           config.routes.analysis,
@@ -143,16 +144,31 @@ const Routes = ({ token }) => (
 
     {config.districts && Object.keys(config.districts).map(District)}
 
+    {/* Xhain Report Schulwegsicherheit */}
+    {/* Note: Second separate Guard is required, will not work with `<><!-- two routes --></>` */}
+    {config.routes.wayToSchool && (
+      <Route
+        exact
+        path={config.routes.wayToSchool.landing}
+        render={() => <Redirect to={config.routes.wayToSchool.xhain} />}
+      />
+    )}
+    {config.routes.wayToSchool && (
+      <Route
+        path={config.routes.wayToSchool.xhain}
+        component={XhainWayToSchool}
+      />
+    )}
+
     {/* Research pages */}
-    {config.routes.research != null && (
+    {config.routes.research && (
       <Route
         exact
         path={config.routes.research.landing}
         render={() => <Redirect to={config.routes.research.survey} />}
       />
     )}
-
-    {config.routes.research != null && (
+    {config.routes.research && (
       <Route path={config.routes.research.survey} component={Research} />
     )}
 

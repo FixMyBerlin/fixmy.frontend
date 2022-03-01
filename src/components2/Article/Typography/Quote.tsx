@@ -3,11 +3,10 @@ import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
 
-interface QuoteProps {
+type Props = {
   sourceText?: string;
   long?: boolean;
-  children: React.ReactNode;
-}
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,9 +27,9 @@ const Wrapper = styled.div`
 const QuoteStyle = styled.div`
   background: white;
   box-shadow: 2px 6px 60px 0 rgba(0, 0, 0, 0.09);
-  padding: ${(props: QuoteProps) =>
+  padding: ${(props: Props) =>
     props.long && props.sourceText ? '2.5em' : '1.5em'};
-  font-size: ${(props: QuoteProps) => (props.long ? '1em' : '1.5em')};
+  font-size: ${(props: Props) => (props.long ? '1em' : '1.5em')};
   font-style: italic;
   font-weight: 600;
   line-height: 1.5em;
@@ -51,13 +50,9 @@ const Attribution = styled.div`
   transform: translateY(-50%);
 `;
 
-const Quote = (props: QuoteProps) => (
+export const Quote: React.FC<Props> = ({ sourceText, children }, ...props) => (
   <Wrapper>
-    <QuoteStyle {...props}>{props.children}</QuoteStyle>
-    {props.sourceText && (
-      <Attribution {...props}>{props.sourceText}</Attribution>
-    )}
+    <QuoteStyle {...props}>{children}</QuoteStyle>
+    {sourceText && <Attribution {...props}>{sourceText}</Attribution>}
   </Wrapper>
 );
-
-export default Quote;

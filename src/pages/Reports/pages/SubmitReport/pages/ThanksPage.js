@@ -81,7 +81,7 @@ class ThanksPage extends PureComponent {
           <br />
         </Button>
 
-        <Paragraph>
+        <Paragraph as="div">
           Schauen Sie sich Ihre Meldung an und erzählen anderen davon.
         </Paragraph>
       </DialogStepWrapper>

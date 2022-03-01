@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import config from '~/config';
 import { media } from '~/styles/utils';
 
-export const Paragraph = styled.div`
+export const Paragraph = styled.p`
   font-family: ${config.baseFont};
   font-weight: 400;
   line-height: 1.35;

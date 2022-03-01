@@ -484,7 +484,7 @@
   "research.04_dataset.p2": [
     {
       "type": 0,
-      "value": "Laden Sie sich die Ergebnisse der Umfrage über den folgenden Button als\n        JSON-Datensatz herunter:"
+      "value": "Laden Sie sich die Ergebnisse der Umfrage über den folgenden Button als JSON-Datensatz herunter:"
     }
   ],
   "research.05_results.chart1.1": [
@@ -970,7 +970,7 @@
   "research.05_results.chart2.7": [
     {
       "type": 0,
-      "value": "AG6 -  65 bis 74 Jahre"
+      "value": "AG6 - 65 bis 74 Jahre"
     }
   ],
   "research.05_results.chart2.8": [
@@ -1306,7 +1306,7 @@
   "research.05_results.chart7.label": [
     {
       "type": 0,
-      "value": "Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens sowie Situationen mit baulicher Trennung. "
+      "value": "Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens sowie Situationen mit baulicher Trennung."
     }
   ],
   "research.05_results.chart7.title": [
@@ -2216,7 +2216,41 @@
   "research.06_summary.p11": [
     {
       "type": 0,
-      "value": "Die Daten sind weiter zu analysieren. Der Ergebnisdatensatz ist frei verfügbar und wird bereits jetzt für weitere Auswertungen genutzt. Wir freuen uns bei Interesse über eine Kontaktaufnahme und verlinken hier gerne auf die Ergebnisse! In den nächsten Schritten ist ein Abgleich der Ergebnisse zur subjektiven Sicherheit mit dem tatsächlichen Unfallgeschehen durchzuführen, um Empfehlungen abzuleiten."
+      "value": "Die Daten sind weiter zu analysieren. Ein Schritt wäre der Abgleich der Ergebnisse zur subjektiven Sicherheit mit dem tatsächlichen Unfallgeschehen, um Empfehlungen abzuleiten."
+    }
+  ],
+  "research.06_summary.p12": [
+    {
+      "type": 0,
+      "value": "Der Ergebnisdatensatz ist frei verfügbar und wird bereits jetzt für weitere Auswertungen genutzt. Wir freuen uns bei Interesse über eine Kontaktaufnahme und verlinken hier gerne auf die Ergebnisse!"
+    }
+  ],
+  "research.06_summary.p13": [
+    {
+      "type": 0,
+      "value": "In der Untersuchung "
+    },
+    {
+      "type": 1,
+      "value": "linkPaper"
+    },
+    {
+      "type": 0,
+      "value": " wurden weitere Fragen zum Einfluß von Infrastruktur-Merkmalen auf das subjektive Sicherheitsempfinden ausgewertet. "
+    },
+    {
+      "type": 1,
+      "value": "linkVideo"
+    },
+    {
+      "type": 0,
+      "value": " werden zentrale Ergebnisse der Studie vorgestellt."
+    }
+  ],
+  "research.06_summary.p13.linkVideoText": [
+    {
+      "type": 0,
+      "value": "In diesem Vortrag von Rul von Stülpnagel"
     }
   ],
   "research.07_team.p01.heading": [

@@ -1,18 +1,17 @@
 import {
-  TextField,
-  Snackbar,
   List,
   ListItem,
-  ListItemText,
   ListItemIcon,
+  ListItemText,
   Paper,
+  Snackbar,
+  TextField,
 } from '@material-ui/core';
 import ErrorIcon from '@material-ui/icons/Error';
 import LocationIcon from '@material-ui/icons/LocationOn';
 import MapboxGL from 'mapbox-gl';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
 import { fetchSuggestions } from '~/components/AutocompleteGeocoder/apiService';
 import { BaseMap } from '~/components2/BaseMap';
 import config from '~/config';
@@ -28,7 +27,7 @@ import logger from '~/utils/logger';
  */
 const containsStreetNumber = (address: string) => address.match(/^[^,]+\d,/);
 
-const StyledMap = styled(BaseMap)`
+const MapWrapper = styled.div`
   width: 100%;
   height: 30em;
   margin: 2em 0;
@@ -195,7 +194,9 @@ const LocationPicker: React.FC<Props> = ({
           <ErrorIcon /> {addressHint}
         </AddressHint>
       )}
-      <StyledMap onInit={setMap} mapboxStyle={mapboxStyle} bounds={bounds} />
+      <MapWrapper>
+        <BaseMap onInit={setMap} mapboxStyle={mapboxStyle} bounds={bounds} />
+      </MapWrapper>
       <Snackbar open={errorMessage != null} message={errorMessage} />
     </>
   );

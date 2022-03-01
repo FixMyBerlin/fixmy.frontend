@@ -1,11 +1,11 @@
 import React from 'react';
 import {
   FormattedMessage,
-  WrappedComponentProps,
   injectIntl,
+  WrappedComponentProps,
 } from 'react-intl';
-
-import { Paragraph, Heading, List, SectionProps } from '~/components2/Article';
+import { Heading, List, Paragraph, SectionProps } from '~/components2/Article';
+import { AnchorLink } from '~/components2/Link';
 
 const SectionSummary = ({
   toc,
@@ -77,7 +77,35 @@ const SectionSummary = ({
     <Paragraph>
       <FormattedMessage
         id="research.06_summary.p11"
-        defaultMessage="Die Daten sind weiter zu analysieren. Der Ergebnisdatensatz ist frei verfügbar und wird bereits jetzt für weitere Auswertungen genutzt. Wir freuen uns bei Interesse über eine Kontaktaufnahme und verlinken hier gerne auf die Ergebnisse! In den nächsten Schritten ist ein Abgleich der Ergebnisse zur subjektiven Sicherheit mit dem tatsächlichen Unfallgeschehen durchzuführen, um Empfehlungen abzuleiten."
+        defaultMessage="Die Daten sind weiter zu analysieren. Ein Schritt wäre der Abgleich der Ergebnisse zur subjektiven Sicherheit mit dem tatsächlichen Unfallgeschehen, um Empfehlungen abzuleiten."
+      />
+    </Paragraph>
+    <Paragraph>
+      <FormattedMessage
+        id="research.06_summary.p12"
+        defaultMessage="Der Ergebnisdatensatz ist frei verfügbar und wird bereits jetzt für weitere Auswertungen genutzt. Wir freuen uns bei Interesse über eine Kontaktaufnahme und verlinken hier gerne auf die Ergebnisse!"
+      />
+    </Paragraph>
+    <Paragraph>
+      <FormattedMessage
+        id="research.06_summary.p13"
+        defaultMessage="In der Untersuchung {linkPaper} wurden weitere Fragen zum Einfluß von Infrastruktur-Merkmalen  auf das subjektive Sicherheitsempfinden ausgewertet. {linkVideo} werden zentrale Ergebnisse der Studie vorgestellt."
+        values={{
+          linkPaper: (
+            <AnchorLink href="https://www.sciencedirect.com/science/article/pii/S0001457522000136?dgcid=author">
+              How Safe do you feel? – A large-scale survey concerning the
+              subjective safety associated with different kinds of cycling lanes
+            </AnchorLink>
+          ),
+          linkVideo: (
+            <AnchorLink href="https://www.youtube.com/watch?v=PDV10OPbaC8">
+              <FormattedMessage
+                id="research.06_summary.p13.linkVideoText"
+                defaultMessage="In diesem Vortrag von Rul von Stülpnagel"
+              />
+            </AnchorLink>
+          ),
+        }}
       />
     </Paragraph>
   </>

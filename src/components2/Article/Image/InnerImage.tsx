@@ -1,16 +1,15 @@
 import React, { ImgHTMLAttributes } from 'react';
 import styled from 'styled-components';
+import { Subtitle } from './Subtitle';
 
-import Subtitle from './Subtitle';
-
-export interface InnerImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+export type InnerImageProps = ImgHTMLAttributes<HTMLImageElement> & {
   source: string;
   children?: React.ReactNode;
   subtitle?: string;
   alt?: string;
   role?: string;
   loadingStrategy?: ImgHTMLAttributes<HTMLImageElement>['loading'];
-}
+};
 
 const Img = styled.img`
   width: 100%;
@@ -20,7 +19,7 @@ const Wrapper = styled.figure`
   margin: 0;
 `;
 
-const InnerImg = ({
+export const InnerImg: React.FC<InnerImageProps> = ({
   source,
   alt,
   role = null,
@@ -28,7 +27,7 @@ const InnerImg = ({
   children = null,
   loading = 'lazy',
   ...props
-}: InnerImageProps) => (
+}) => (
   <Wrapper>
     <Img
       src={source}
@@ -41,5 +40,3 @@ const InnerImg = ({
     {children}
   </Wrapper>
 );
-
-export default InnerImg;

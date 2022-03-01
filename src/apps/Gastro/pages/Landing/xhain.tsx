@@ -113,18 +113,15 @@ const CTAWrapper = styled.div`
   `}
 `;
 
-const StyledMap = styled(BaseMap)`
-  height: 30em;
-`;
-
 const MapWrapper = styled.div`
   margin: 0 -16px -16px;
+  height: 30em;
 `;
 
 const LandingMap = ({ district }) => (
   <>
     <MapWrapper>
-      <StyledMap
+      <BaseMap
         mapboxStyle={config.gastro[district?.name]?.map.style}
         bounds={district?.bounds}
         onInit={(map) => {

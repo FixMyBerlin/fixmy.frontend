@@ -12,7 +12,7 @@ import {
   List,
   SectionProps,
 } from '~/components2/Article';
-import { Link } from '~/components2/Link';
+import { AnchorLink } from '~/components2/Link';
 
 import BarChart from '../components/BarChart';
 import FeelSafe from '../components/FeelSafe';
@@ -102,9 +102,9 @@ const SectionResults = ({
         defaultMessage="Für unsere eigene Auswertung nutzen wir Python, welche in {link} betrachtet werden kann. Dort sind Visualisierungen der Likert Skala Daten als auch Hypothesentests mit Bootstrap Konfidenzintervallen und Likelihood Ratio Tests mit Proportional Odds Regressions Modellen zu finden."
         values={{
           link: (
-            <Link href="https://github.com/FixMyBerlin/fixmy.survey-results">
+            <AnchorLink href="https://github.com/FixMyBerlin/fixmy.survey-results">
               Jupyter Notebooks
-            </Link>
+            </AnchorLink>
           ),
         }}
       />
@@ -277,12 +277,12 @@ const SectionResults = ({
         defaultMessage="Zusätzlich wurden die Teilnehmenden gefragt wie oft sie zu Fuß, mit Bus und Bahn, dem Auto, dem Fahrrad und dem Motorrad unterwegs sind. Im Vergleich mit den Werten für Berlin aus der SrV 2018 gibt es einige Abweichungen. Die Werte für die Nutzung des öffentlichen Verkehrs (Bus und Bahn) mindestens 1x in der Woche in der Umfrage (64%) stimmen annähernd mit den Werten der SrV 2018 (62%) überein. Hingegen sind in dieser Umfrage die Nutzung des Pkws (35%) im Vergleich zur SrV 2018 (56%) unterrepräsentiert und die Nutzung des Fahrrads (64%) in der Umfrage (47% SrV) überrepräsentiert. ({link}. S.127ff)"
         values={{
           link: (
-            <Link href="https://tu-dresden.de/bu/verkehr/ivs/srv/ressourcen/dateien/SrV2018_Staedtevergleich.pdf?lang=de">
+            <AnchorLink href="https://tu-dresden.de/bu/verkehr/ivs/srv/ressourcen/dateien/SrV2018_Staedtevergleich.pdf?lang=de">
               <FormattedMessage
                 id="research.05_results.p9.link"
                 defaultMessage="Gerike et. al, Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020"
               />
-            </Link>
+            </AnchorLink>
           ),
         }}
       />
