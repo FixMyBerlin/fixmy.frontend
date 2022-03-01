@@ -4,9 +4,11 @@ import {
   CardContent,
   Button,
   makeStyles,
+  Typography,
 } from '@material-ui/core';
 import PhoneIcon from '@material-ui/icons/Phone';
 import React from 'react';
+import { Link } from '~/components2/Link';
 
 const useStyles = makeStyles({
   content: {
@@ -51,6 +53,15 @@ const HotlineNotice = () => {
           030 - 90 298 4216
         </Button>
       </CardActions>
+      <CardContent>
+        <Typography>
+          Alternativ kontaktieren Sie{' '}
+          <Link href="mailto:gastro@ba-fk.berlin.de">
+            gastro@ba-fk.berlin.de
+          </Link>{' '}
+          für Rückfragen.
+        </Typography>
+      </CardContent>
     </Card>
   );
 };
