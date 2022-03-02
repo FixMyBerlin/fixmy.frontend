@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Plus } from 'react-feather';
+import Plus from './plus.svg';
 import styled from 'styled-components';
 
 import config from '~/pages/Reports/config';
