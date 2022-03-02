@@ -119,8 +119,8 @@ const MapView = ({
     Store.dispatch(MapActions.setView(view));
   };
 
-  // Do not show legend on startup
-  const [showLegend, setShowLegend] = useState(false);
+  // only show legend on startup for desktop clients
+  const [showLegend, setShowLegend] = useState(isDesktopView);
 
   useURLParams();
 
