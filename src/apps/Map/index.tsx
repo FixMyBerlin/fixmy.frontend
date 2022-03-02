@@ -119,7 +119,7 @@ const MapView = ({
     Store.dispatch(MapActions.setView(view));
   };
 
-  // only show legend on startup when on desktop
+  // only show legend on startup for desktop clients
   const [showLegend, setShowLegend] = useState(isDesktopView);
 
   useURLParams();
