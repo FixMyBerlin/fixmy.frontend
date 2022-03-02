@@ -4,7 +4,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import { X } from 'react-feather';
+import X from '~/images/x.svg';
 import styled from 'styled-components';
 
 import LocateMeMarkerIconAachen from '~/images/aachen/locate-me-marker.svg';
