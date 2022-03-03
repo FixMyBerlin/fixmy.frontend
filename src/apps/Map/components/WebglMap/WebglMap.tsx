@@ -108,13 +108,14 @@ class Map extends PureComponent<Props, State> {
     }
 
     this.setIndexView(prevProps);
-
+    const zoomChanged = prevProps.zoom !== this.props.zoom;
+    if (zoomChanged) {
+      this.map.zoomTo(this.props.zoom);
+    }
     const viewChanged =
-      prevProps.zoom !== this.props.zoom ||
       !_isEqual(prevProps.center, this.props.center) ||
       prevProps.pitch !== this.props.pitch ||
       prevProps.bearing !== this.props.bearing;
-
     if (viewChanged) {
       this.setView(this.getViewFromProps(), this.props.animate);
     }

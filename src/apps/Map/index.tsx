@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import {
   Route,
@@ -13,6 +13,8 @@ import Legend from '~/components/MapLegend/Legend';
 import config from '~/config';
 import MapLegendButtonIcon from '~/images/map-legend-icon.svg';
 import MapLegendButtonActivatedIcon from '~/images/map-legend-icon-activated.svg';
+import ZoomInButtonIcon from '~/images/plus-circle.svg';
+import ZoomOutButtonIcon from '~/images/minus-circle.svg';
 import Store, { RootState } from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 
@@ -57,6 +59,14 @@ const StyledMapLegendButton = styled(MapLegendButtonIcon)`
 `;
 
 const StyledMapLegendButtonActivated = styled(MapLegendButtonActivatedIcon)`
+  cursor: pointer;
+`;
+
+const StyledZoomInButton = styled(ZoomInButtonIcon)`
+  cursor: pointer;
+`;
+
+const StyledZoomOutButton = styled(ZoomOutButtonIcon)`
   cursor: pointer;
 `;
 
@@ -119,6 +129,14 @@ const MapView = ({
     Store.dispatch(MapActions.setView(view));
   };
 
+  const changeZoom = (amount) => {
+    const view = {
+      zoom: Store.getState().MapState.zoom + amount,
+      animate: true,
+    };
+    Store.dispatch(MapActions.setView(view));
+  };
+
   // only show legend on startup for desktop clients
   const [showLegend, setShowLegend] = useState(isDesktopView);
 
@@ -145,16 +163,32 @@ const MapView = ({
             />
           )}
           <StyledMapControl position="bottom-right" role="button">
-            {!showLegend && (
-              <StyledMapLegendButton
-                onClick={() => setShowLegend(!showLegend)}
-              />
-            )}
-            {showLegend && (
-              <StyledMapLegendButtonActivated
-                onClick={() => setShowLegend(!showLegend)}
-              />
-            )}
+            <table>
+              <tr>
+                <td>
+                  <StyledZoomInButton onClick={() => changeZoom(1)} />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <StyledZoomOutButton onClick={() => changeZoom(-1)} />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  {!showLegend && (
+                    <StyledMapLegendButton
+                      onClick={() => setShowLegend(!showLegend)}
+                    />
+                  )}
+                  {showLegend && (
+                    <StyledMapLegendButtonActivated
+                      onClick={() => setShowLegend(!showLegend)}
+                    />
+                  )}
+                </td>
+              </tr>
+            </table>
           </StyledMapControl>
           {!isEmbedMode && (
             <MapControl position="top-right">

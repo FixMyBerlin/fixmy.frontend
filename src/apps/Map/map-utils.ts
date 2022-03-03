@@ -2,6 +2,7 @@ import turfAlong from '@turf/along';
 import { lineString as turfLineString } from '@turf/helpers';
 import turfLength from '@turf/length';
 import debug from 'debug';
+import mapboxgl from 'mapbox-gl';
 
 import config from '~/config';
 import { isNumeric, getParameterByName } from '~/utils/utils';
@@ -44,6 +45,7 @@ export function animateView(map: mapboxgl.Map, view: mapboxgl.MapboxOptions) {
     pitch: view.pitch,
   });
 }
+
 /**
  * Change binary visibility of layers
  * @param map Map object
