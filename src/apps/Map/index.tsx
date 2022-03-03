@@ -165,17 +165,12 @@ const MapView = ({
           <StyledMapControl position="bottom-right" role="button">
             <table>
               <tr>
-                <td>
                   <StyledZoomInButton onClick={() => changeZoom(1)} />
-                </td>
               </tr>
               <tr>
-                <td>
                   <StyledZoomOutButton onClick={() => changeZoom(-1)} />
-                </td>
               </tr>
               <tr>
-                <td>
                   {!showLegend && (
                     <StyledMapLegendButton
                       onClick={() => setShowLegend(!showLegend)}
@@ -186,7 +181,6 @@ const MapView = ({
                       onClick={() => setShowLegend(!showLegend)}
                     />
                   )}
-                </td>
               </tr>
             </table>
           </StyledMapControl>
