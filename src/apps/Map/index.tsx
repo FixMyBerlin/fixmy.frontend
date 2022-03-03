@@ -13,8 +13,8 @@ import Legend from '~/components/MapLegend/Legend';
 import config from '~/config';
 import MapLegendButtonIcon from '~/images/map-legend-icon.svg';
 import MapLegendButtonActivatedIcon from '~/images/map-legend-icon-activated.svg';
-import ZoomInButtonIcon from '~/images/plus-circle.svg';
-import ZoomOutButtonIcon from '~/images/minus-circle.svg';
+import ZoomInButtonIcon from '~/images/plus-circle-icon.svg';
+import ZoomOutButtonIcon from '~/images/minus-circle-icon.svg';
 import Store, { RootState } from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 
