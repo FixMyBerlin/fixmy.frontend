@@ -107,6 +107,7 @@ class Map extends PureComponent<Props, State> {
 
     this.setIndexView(prevProps);
     const zoomChanged = prevProps.zoom !== this.props.zoom;
+    // add delta to current zoom level
     if (zoomChanged) {
       const zoomDelta = this.props.zoom - prevProps.zoom;
       this.map.zoomTo(this.map.getZoom() + zoomDelta);
