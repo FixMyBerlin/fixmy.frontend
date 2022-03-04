@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import {
   Route,
@@ -163,26 +163,26 @@ const MapView = ({
             />
           )}
           <StyledMapControl position="bottom-right" role="button">
-            <table>
-              <tr>
-                  <StyledZoomInButton onClick={() => changeZoom(1)} />
-              </tr>
-              <tr>
-                  <StyledZoomOutButton onClick={() => changeZoom(-1)} />
-              </tr>
-              <tr>
-                  {!showLegend && (
-                    <StyledMapLegendButton
-                      onClick={() => setShowLegend(!showLegend)}
-                    />
-                  )}
-                  {showLegend && (
-                    <StyledMapLegendButtonActivated
-                      onClick={() => setShowLegend(!showLegend)}
-                    />
-                  )}
-              </tr>
-            </table>
+            <div className="flex-container">
+              <div>
+                <StyledZoomInButton onClick={() => changeZoom(1)} />
+              </div>
+              <div>
+                <StyledZoomOutButton onClick={() => changeZoom(-1)} />
+              </div>
+              <div>
+                {!showLegend && (
+                  <StyledMapLegendButton
+                    onClick={() => setShowLegend(!showLegend)}
+                  />
+                )}
+                {showLegend && (
+                  <StyledMapLegendButtonActivated
+                    onClick={() => setShowLegend(!showLegend)}
+                  />
+                )}
+              </div>
+            </div>
           </StyledMapControl>
           {!isEmbedMode && (
             <MapControl position="top-right">
