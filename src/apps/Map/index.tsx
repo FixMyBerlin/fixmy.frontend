@@ -163,7 +163,7 @@ const MapView = ({
             />
           )}
           <StyledMapControl position="bottom-right" role="button">
-            <div className="flex-container">
+            <div>
               <div>
                 <StyledZoomInButton onClick={() => changeZoom(1)} />
               </div>
