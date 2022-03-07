@@ -188,6 +188,10 @@ const XhainLanding = ({ district }) => {
     config.districts.xhain.apps.gastro.timeline.openSignup.toLocaleDateString(
       'DE-DE'
     );
+  const permitEnd =
+    config.districts.xhain.apps.gastro.timeline.permitEnd.toLocaleDateString(
+      'DE-DE'
+    );
   return (
     <>
       <h1>Xhain geht raus – Terrassen für Vieles</h1>
@@ -349,10 +353,6 @@ const XhainLanding = ({ district }) => {
             Imissionsschutzgesetzes hinsichtlich etwaiger Lärmbelästigungen.
           </li>
           <li>
-            Verpflichtung zur Einführung eines Pfandsystems für Einweggebinde
-            bei der Herausgabe von Speisen nach Maßgabe des Bezirksamtes.
-          </li>
-          <li>
             Im Sinne der Abfallvermeidung und der Zero Waste Strategie des
             Bezirkes ist bei einem Außer-Haus Verkauf von Speisen und Getränken
             die Herausgabe in gastronomischen Einwegverpackungen untersagt. Die
@@ -370,8 +370,8 @@ const XhainLanding = ({ district }) => {
         <p>
           Nach Prüfung der Anträge trifft das Bezirksamt entsprechende
           verkehrsrechtliche Anordnungen und erteilt, sofern keine Einwände
-          vorliegen eine Sondergenehmigung. Die Genehmigungen werden bis zum
-          31.12.2021 befristet und bis auf weiteres gebührenfrei ausgesprochen.{' '}
+          vorliegen eine Sondergenehmigung. Die Genehmigungen werden bis zum{' '}
+          {permitEnd} befristet.
         </p>
 
         <Card>

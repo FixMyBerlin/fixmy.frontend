@@ -153,9 +153,9 @@ const TrafficOrder = ({ application }) => {
       <h3>Sicherung und Kennzeichnung der Arbeitsstellen</h3>
       <p>Sicherung nach Regelplan</p>
       <ul>
-        <li>vorhandene Parkanordnung L&auml;ngsaufstellung</li>
-        <li>vorhandene Parkanordnung Schr&auml;gaufstellung</li>
-        <li>vorhandene Parkanordnung Senkrechtaufstellung</li>
+        <li>vorhandene Parkordnung L&auml;ngsaufstellung</li>
+        <li>vorhandene Parkordnung Schr&auml;gaufstellung</li>
+        <li>vorhandene Parkordnung Senkrechtaufstellung</li>
       </ul>
       <p>
         Haltverbote: Z 283 nach VLB-Regelplan 630 mit Zusatzzeichen 1042-33 StVO
