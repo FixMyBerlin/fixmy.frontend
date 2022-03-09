@@ -13,6 +13,8 @@ import Legend from '~/components/MapLegend/Legend';
 import config from '~/config';
 import MapLegendButtonIcon from '~/images/map-legend-icon.svg';
 import MapLegendButtonActivatedIcon from '~/images/map-legend-icon-activated.svg';
+import ZoomInButtonIcon from '~/images/plus-circle-icon.svg';
+import ZoomOutButtonIcon from '~/images/minus-circle-icon.svg';
 import Store, { RootState } from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 
@@ -57,6 +59,14 @@ const StyledMapLegendButton = styled(MapLegendButtonIcon)`
 `;
 
 const StyledMapLegendButtonActivated = styled(MapLegendButtonActivatedIcon)`
+  cursor: pointer;
+`;
+
+const StyledZoomInButton = styled(ZoomInButtonIcon)`
+  cursor: pointer;
+`;
+
+const StyledZoomOutButton = styled(ZoomOutButtonIcon)`
   cursor: pointer;
 `;
 
@@ -119,6 +129,14 @@ const MapView = ({
     Store.dispatch(MapActions.setView(view));
   };
 
+  const changeZoom = (amount) => {
+    const view = {
+      zoom: Store.getState().MapState.zoom + amount,
+      animate: true,
+    };
+    Store.dispatch(MapActions.setView(view));
+  };
+
   // only show legend on startup for desktop clients
   const [showLegend, setShowLegend] = useState(isDesktopView);
 
@@ -145,16 +163,26 @@ const MapView = ({
             />
           )}
           <StyledMapControl position="bottom-right" role="button">
-            {!showLegend && (
-              <StyledMapLegendButton
-                onClick={() => setShowLegend(!showLegend)}
-              />
-            )}
-            {showLegend && (
-              <StyledMapLegendButtonActivated
-                onClick={() => setShowLegend(!showLegend)}
-              />
-            )}
+            <div>
+              <div>
+                <StyledZoomInButton onClick={() => changeZoom(1)} />
+              </div>
+              <div>
+                <StyledZoomOutButton onClick={() => changeZoom(-1)} />
+              </div>
+              <div>
+                {!showLegend && (
+                  <StyledMapLegendButton
+                    onClick={() => setShowLegend(!showLegend)}
+                  />
+                )}
+                {showLegend && (
+                  <StyledMapLegendButtonActivated
+                    onClick={() => setShowLegend(!showLegend)}
+                  />
+                )}
+              </div>
+            </div>
           </StyledMapControl>
           {!isEmbedMode && (
             <MapControl position="top-right">

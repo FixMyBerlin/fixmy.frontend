@@ -97,8 +97,6 @@ class Map extends PureComponent<Props, State> {
       style: MB_STYLE_URL,
       bounds: config.apps.map.bounds,
     });
-    const nav = new MapboxGL.NavigationControl({ showCompass: false });
-    this.map.addControl(nav, 'bottom-left');
     this.map.on('load', this.handleLoad);
   }
 
@@ -108,13 +106,16 @@ class Map extends PureComponent<Props, State> {
     }
 
     this.setIndexView(prevProps);
-
+    const zoomChanged = prevProps.zoom !== this.props.zoom;
+    // add delta to current zoom level
+    if (zoomChanged) {
+      const zoomDelta = this.props.zoom - prevProps.zoom;
+      this.map.zoomTo(this.map.getZoom() + zoomDelta);
+    }
     const viewChanged =
-      prevProps.zoom !== this.props.zoom ||
       !_isEqual(prevProps.center, this.props.center) ||
       prevProps.pitch !== this.props.pitch ||
       prevProps.bearing !== this.props.bearing;
-
     if (viewChanged) {
       this.setView(this.getViewFromProps(), this.props.animate);
     }
