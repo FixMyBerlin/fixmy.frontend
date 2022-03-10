@@ -6,7 +6,6 @@ import styled from 'styled-components';
 
 import config from '~/apps/Gastro/config';
 import { BaseMap } from '~/components2/BaseMap';
-import { DistrictConfig } from '~/types';
 
 const MapWrapper = styled.div`
   width: 40em;
