@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { dateReceived, getCategoryDescription, permitEnd } from '../../utils';
+import { FeeTable } from '.';
 
 const Container = styled.section`
   padding: 1em;
@@ -72,7 +73,6 @@ const TrafficOrder = ({ application }) => {
   return (
     <Container>
       <Author>Bezirksamt Friedrichshain-Kreuzberg von Berlin</Author>
-      {/* <h2>Abt. Familie, Personal, Diversity, Straßen- und Grünflächenamt</h2> */}
       <Author>Straßenverkehrsbehörde</Author>
 
       <h1>
@@ -153,9 +153,9 @@ const TrafficOrder = ({ application }) => {
       <h3>Sicherung und Kennzeichnung der Arbeitsstellen</h3>
       <p>Sicherung nach Regelplan</p>
       <ul>
-        <li>vorhandene Parkanordnung L&auml;ngsaufstellung</li>
-        <li>vorhandene Parkanordnung Schr&auml;gaufstellung</li>
-        <li>vorhandene Parkanordnung Senkrechtaufstellung</li>
+        <li>vorhandene Parkordnung L&auml;ngsaufstellung</li>
+        <li>vorhandene Parkordnung Schr&auml;gaufstellung</li>
+        <li>vorhandene Parkordnung Senkrechtaufstellung</li>
       </ul>
       <p>
         Haltverbote: Z 283 nach VLB-Regelplan 630 mit Zusatzzeichen 1042-33 StVO
@@ -706,6 +706,11 @@ const TrafficOrder = ({ application }) => {
           zuständigen Straßenbaubehörde (Straßen- und Grünflächenamt) zu
           beantragen/ erlangen.
         </p>
+
+        <FeeTable
+          status={application.status}
+          invoiceNumber={application.invoice_number}
+        />
 
         <h2>Rechtshelfsbelehrung</h2>
         <p>

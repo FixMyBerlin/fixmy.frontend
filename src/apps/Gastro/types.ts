@@ -59,6 +59,7 @@ export interface GastroSignup {
   opening_hours: string;
   tos_accepted: boolean;
   followup_accepted: boolean;
+  invoice_number: number;
   regulation?: number;
 }
 
