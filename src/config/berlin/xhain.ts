@@ -8,9 +8,7 @@ const XHAIN_TERRASSEN_MAPBOX_STYLE = `mapbox://styles/hejco/ckm3lgekg9jky17rznm5
 
 // Ensure, that only on Live system it's true
 // On staging it should be false
-const isNetlifyProduction =
-  process.env.CONTEXT === 'production' &&
-  process.env.SITE_NAME === 'fixmyberlin.de';
+const isNetlifyProduction = process.env.CONTEXT === 'production';
 
 const xhain: DistrictConfig = {
   title: 'Friedrichshain-Kreuzberg',
