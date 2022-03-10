@@ -75,8 +75,8 @@ const Registration = () => {
               <p>
                 Die Sondernutzungsfläche kann im Falle einer Genehmigung ihres
                 Antrags Montags bis Sonntags, jeweils von 6 bis 22 Uhr genutzt
-                werden. Die Sondergenehmigung zur Nutzung der Flächen erfolgt
-                kostenfrei zunächst bis zum {signupCloseDate}.
+                werden. Die Sondergenehmigung zur Nutzung der Flächen gilt im
+                Falle der Erteilung bis zum {signupCloseDate}.
               </p>
               <HotlineNotice />
             </Section>
