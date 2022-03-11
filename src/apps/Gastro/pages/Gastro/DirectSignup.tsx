@@ -43,8 +43,8 @@ const Registration = () => {
   // State for this registration
   const [submission, setSubmission] = useState(null);
 
-  const signupCloseDate =
-    config.districts.xhain.apps.gastro.timeline.closeSignup.toLocaleDateString(
+  const permitEnd =
+    config.districts.xhain.apps.gastro.timeline.permitEnd.toLocaleDateString(
       'DE-DE'
     );
 
@@ -76,7 +76,7 @@ const Registration = () => {
                 Die Sondernutzungsfläche kann im Falle einer Genehmigung ihres
                 Antrags Montags bis Sonntags, jeweils von 6 bis 22 Uhr genutzt
                 werden. Die Sondergenehmigung zur Nutzung der Flächen gilt im
-                Falle der Erteilung bis zum {signupCloseDate}.
+                Falle der Erteilung bis zum {permitEnd}
               </p>
               <HotlineNotice />
             </Section>
