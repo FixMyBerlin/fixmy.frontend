@@ -302,7 +302,7 @@ const XhainLanding = ({ district }) => {
         </p>
         <p>
           Das Bezirksamt Friedrichshain-Kreuzberg bietet in dieser Situation
-          Gewerbetrieben, Einzelhandel und sozialen Projekten wie bereits im
+          Gewerbebetrieben, Einzelhandel und sozialen Projekten wie bereits im
           letzten Jahr an, Tische, Stühle und Auslagen temporär auf das
           Straßenland zu verlagern. Es bleibt dabei, dass die
           Sondergenehmigungen für die ganze Woche von Montag bis Sonntag in der
@@ -316,7 +316,8 @@ const XhainLanding = ({ district }) => {
           existenziell bedrohten Betriebe, aber auch für andere Organisationen
           mit Laufkundschaft steigt der Druck, entsprechend große Außenflächen
           zur Sicherung der ökonomischen Existenz anzubieten. Das Angebot kann
-          von Gastronomen, vom Einzelhandel, sowie von Vereinen genutzt werden.
+          von Gastronomiebetrieben, vom Einzelhandel, sowie von Vereinen genutzt
+          werden.
         </p>
       </Section>
 
@@ -339,38 +340,39 @@ const XhainLanding = ({ district }) => {
             inkl. Stellung von Sperren, Schildern und ggf. Personal.
           </li>
           <li>
-            Sicherstellen, dass die Fläche während des Genehmigungszeitraum
-            durch den Antragstellenden betreut ist, so dass eine korrekte
-            Nutzung überprüft werden kann und bei möglichen Konflikten mit
-            anderen Nutzungsansprüchen im Straßenland (z.B. Konflikte mit
-            Fußgehenden oder dem fließenden Kfz-Verkehr) eingeschritten werden
-            kann.
+            Es ist sicherzustellen, dass die Fläche während des
+            Genehmigungszeitraum durch den Antragstellenden betreut ist, so dass
+            eine korrekte Nutzung überprüft werden kann und bei möglichen
+            Konflikten mit anderen Nutzungsansprüchen im Straßenland (z.B.
+            Konflikte mit Fußgehenden oder dem fließenden Kfz-Verkehr)
+            eingeschritten werden kann.
           </li>
           <li>Tägliche Reinigung der Sondernutzungsfläche.</li>
           <li>
-            Zusammenstellen der Tische und Stühle / Verschluss zwischen 22:00h
-            und 6:00h, Einwirken auf die Gäste zur Einhaltung des Berliner
-            Imissionsschutzgesetzes hinsichtlich etwaiger Lärmbelästigungen.
+            Zusammenstellen der Tische und Stühle / Verschluss zwischen 22:00
+            Uhr und 6:00 Uhr, Einwirken auf die Gäste zur Einhaltung des
+            Berliner Imissionsschutzgesetzes hinsichtlich etwaiger
+            Lärmbelästigungen.
           </li>
           <li>
             Im Sinne der Abfallvermeidung und der Zero Waste Strategie des
             Bezirkes ist bei einem Außer-Haus Verkauf von Speisen und Getränken
             die Herausgabe in gastronomischen Einwegverpackungen untersagt. Die
             Ausgabe von Speisen und Getränken zum Mitnehmen hat ausschließlich
-            in Mehrwegbehältnissen zu erfolgen
+            in Mehrwegbehältnissen zu erfolgen.
           </li>
           <li>
             Freihaltung von ausreichend breiten Gehwegen (Mindestens 2 Meter).
           </li>
           <li>
             Weiter gelten die allgemeinen und besonderen Nebenbestimmungen für
-            Sondernutzungen
+            Sondernutzungen.
           </li>
         </ul>
         <p>
           Nach Prüfung der Anträge trifft das Bezirksamt entsprechende
           verkehrsrechtliche Anordnungen und erteilt, sofern keine Einwände
-          vorliegen eine Sondergenehmigung. Die Genehmigungen werden bis zum{' '}
+          vorliegen, eine Sondergenehmigung. Die Genehmigungen werden bis zum{' '}
           {permitEnd} befristet.
         </p>
 
