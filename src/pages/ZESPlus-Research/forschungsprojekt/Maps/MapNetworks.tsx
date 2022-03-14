@@ -22,7 +22,7 @@ import IconZES from './icons/zes.svg';
 const MAP_STYLE_QUALITY: mapboxgl.MapboxOptions['style'] =
   'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';
 
-const MapNetworks = () => (
+export const MapNetworks = () => (
   <>
     <Map
       mapboxStyle={MAP_STYLE_QUALITY}
@@ -101,5 +101,3 @@ const MapNetworks = () => (
     </Legend>
   </>
 );
-
-export default MapNetworks;

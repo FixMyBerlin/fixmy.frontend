@@ -6,7 +6,7 @@ import {
   SectionProps,
   Image,
 } from '~/components2/Article';
-import MapPlaceholder from '../components/MapPlaceholder';
+import { MapPlaceholder } from '../components/MapPlaceholder/MapPlaceholder';
 import ImagePlaceholder from '../forschungsprojekt/images/research-2.jpg';
 
 export const SectionCurrent = (props: SectionProps) => (

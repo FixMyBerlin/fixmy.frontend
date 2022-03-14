@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-
 import { media } from '~/styles/utils';
 
-const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div`
   margin: 1em auto;
   width: 100%;
   display: flex;
@@ -17,5 +16,3 @@ const ButtonWrapper = styled.div`
     margin: 2em auto 4em;
   `}
 `;
-
-export default ButtonWrapper;

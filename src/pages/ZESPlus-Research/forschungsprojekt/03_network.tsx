@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import { Link } from '~/components2/Link';
-import MapPlaceholder from '../components/MapPlaceholder';
-import MapQuality from '../components/MapQuality';
-import MapSafety from '../components/MapSafety';
+import { MapPlaceholder } from '../components/MapPlaceholder/MapPlaceholder';
+import { MapQuality, MapSafety } from './Maps';
 
 const SectionHeadingWrapper = styled.div`
   & h3 {

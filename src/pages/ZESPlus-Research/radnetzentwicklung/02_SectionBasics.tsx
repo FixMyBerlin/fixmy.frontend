@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading, List, Paragraph, SectionProps } from '~/components2/Article';
-import MapPlaceholder from '../components/MapPlaceholder';
+import { MapPlaceholder } from '../components/MapPlaceholder/MapPlaceholder';
 import { MapNetworks } from './maps';
 
 export const SectionBasics = (props: SectionProps) => (

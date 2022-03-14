@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { ImageFull } from '~/components2/Article';
 import { media } from '~/styles/utils';
-
 import PlaceholderImage from './images/default.jpg';
 import PlaceholderImageMobile from './images/mobile.jpg';
 
@@ -31,26 +29,26 @@ const Desktop = styled(ImageFull)`
   `}
 `;
 
-const defaultAlt = 'Platzhalter für ein fehlendes Bild';
-
-interface Props {
+type Props = {
   alt?: string;
   className?: string;
-}
+};
 
-const MapPlaceholder = ({ alt, className }: Props) => (
-  <>
-    <Mobile
-      source={PlaceholderImageMobile}
-      alt={alt || defaultAlt}
-      className={className}
-    />
-    <Desktop
-      source={PlaceholderImage}
-      alt={alt || defaultAlt}
-      className={className}
-    />
-  </>
-);
+export const MapPlaceholder: React.VFC<Props> = ({ alt, className }) => {
+  const defaultAlt = 'Platzhalter für ein fehlendes Bild';
 
-export default MapPlaceholder;
+  return (
+    <>
+      <Mobile
+        source={PlaceholderImageMobile}
+        alt={alt || defaultAlt}
+        className={className}
+      />
+      <Desktop
+        source={PlaceholderImage}
+        alt={alt || defaultAlt}
+        className={className}
+      />
+    </>
+  );
+};

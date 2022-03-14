@@ -5,7 +5,7 @@ import {
   Paragraph,
   SectionProps,
 } from '~/components2/Article';
-import MapPlaceholder from '../components/MapPlaceholder';
+import { MapPlaceholder } from '../components/MapPlaceholder/MapPlaceholder';
 
 export const SectionUsageRequirements = (props: SectionProps) => (
   <>
