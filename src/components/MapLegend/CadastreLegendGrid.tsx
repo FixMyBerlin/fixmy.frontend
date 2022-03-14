@@ -1,19 +1,18 @@
 import React from 'react';
-
+import ConstructionLegendImage from './assets/construction.png';
+import DividersLegendImage from './assets/dividers.png';
+import FootwaysLegendImage from './assets/footways.png';
+import GuardrailLegendImage from './assets/guardrail-legend.png';
 import {
   CadastreLegendItemColor,
   CadastreLegendItemImage,
+  CadastreLegendItemLine,
   CadastreLegendItemPoint,
   CadastreLegendItemPointSmall,
-  CadastreLegendItemLine,
   Header,
   LegendCol,
   LegendItem,
   LegendWrapper,
-  ConstructionLegendImage,
-  DividersLegendImage,
-  FootwaysLegendImage,
-  GuardrailLegendImage,
 } from './index';
 
 export const CadastreLegendGrid = () => (
