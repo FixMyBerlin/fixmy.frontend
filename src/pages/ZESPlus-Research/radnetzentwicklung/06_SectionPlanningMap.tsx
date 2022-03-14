@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
-import MapPlaceholder from '../components/MapPlaceholder';
+import { MapPlaceholder } from '../components/MapPlaceholder/MapPlaceholder';
 
 export const SectionPlanningMap = (props: SectionProps) => (
   <>

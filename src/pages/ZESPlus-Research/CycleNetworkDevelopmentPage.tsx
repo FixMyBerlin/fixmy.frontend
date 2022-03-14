@@ -3,7 +3,7 @@ import { ArticleHeader, Intro, Paragraph } from '~/components2/Article';
 import LogoZES from './components/Logos/assets/logo-zes.png';
 import LogoZES2 from './components/Logos/assets/logo-zes@2x.png';
 import LogoZES3 from './components/Logos/assets/logo-zes@3x.png';
-import Logos from './components/Logos/Logos';
+import { Logos } from './components/Logos/Logos';
 import {
   SectionAreaOfInteres,
   SectionBasics,

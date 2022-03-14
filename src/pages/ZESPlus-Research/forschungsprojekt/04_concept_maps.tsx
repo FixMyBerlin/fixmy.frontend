@@ -2,8 +2,8 @@ import React from 'react';
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import { Link } from '~/components2/Link';
-import ButtonWrapper from '../components/ButtonWrapper';
-import MapNetworks from '../components/MapNetworks';
+import { ButtonWrapper } from '../components/ButtonWrapper';
+import { MapNetworks } from './Maps';
 
 export const SectionConceptMaps = (props: SectionProps) => (
   <>

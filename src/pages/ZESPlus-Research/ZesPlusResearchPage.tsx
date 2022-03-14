@@ -9,7 +9,7 @@ import {
   SectionNetwork,
   SectionNextSteps,
 } from './forschungsprojekt';
-import Logos from './components/Logos/Logos';
+import { Logos } from './components/Logos/Logos';
 import LogoZES from './components/Logos/assets/logo-zes.png';
 import LogoZES2 from './components/Logos/assets/logo-zes@2x.png';
 import LogoZES3 from './components/Logos/assets/logo-zes@3x.png';
