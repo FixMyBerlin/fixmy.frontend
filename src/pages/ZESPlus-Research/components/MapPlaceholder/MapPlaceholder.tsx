@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ImageFull } from '~/components2/Article';
 import { media } from '~/styles/utils';
-import PlaceholderImage from './images/default.jpg';
+import PlaceholderImageDesktop from './images/default.jpg';
 import PlaceholderImageMobile from './images/mobile.jpg';
 
 const Mobile = styled(ImageFull)`
@@ -45,7 +45,7 @@ export const MapPlaceholder: React.VFC<Props> = ({ alt, className }) => {
         className={className}
       />
       <Desktop
-        source={PlaceholderImage}
+        source={PlaceholderImageDesktop}
         alt={alt || defaultAlt}
         className={className}
       />
