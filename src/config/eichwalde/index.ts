@@ -1,39 +1,13 @@
 import { RegionConfig } from '~/types';
-
-import defaultRoutes from '../default/routes';
+import { menu } from './menu';
+import { routes } from './routes';
 
 const eichwaldeConfig: RegionConfig = {
   siteTitle: 'ZESplus',
   titleFont: 'Roboto Slab',
   baseFont: 'Roboto',
-  routes: {
-    signup: defaultRoutes.signup,
-    login: defaultRoutes.login,
-    forgotPassword: defaultRoutes.forgotPassword,
-    resetPassword: defaultRoutes.resetPassword,
-    emailVerification: defaultRoutes.emailVerification,
-    profile: defaultRoutes.profile,
-    userVerify: defaultRoutes.userVerify,
-    zesplusResearch: '/forschungsprojekt',
-  },
-  menu: {
-    profileLabel: 'Zum Profil',
-    loginLabel: 'Login',
-    logo: false,
-    twitter: false,
-    items: [],
-    size: 325,
-    footeritems: [
-      {
-        label: 'Impressum',
-        link: '/impressum',
-      },
-      {
-        label: 'Datenschutz',
-        link: '/datenschutz',
-      },
-    ],
-  },
+  routes,
+  menu,
   newsletter: {
     embedUrl: 'https://app.mailjet.com/widget/iframe/2YIa/EuZ',
   },
