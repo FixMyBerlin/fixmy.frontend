@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, Redirect } from 'react-router-dom';
-
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Analysis from '~/apps/Analysis';
 import Gastro from '~/apps/Gastro';
 import MapView from '~/apps/Map';
@@ -19,10 +18,12 @@ import Profile from '~/pages/User/pages/Profile';
 import ResetPassword from '~/pages/User/pages/ResetPassword';
 import Signup from '~/pages/User/pages/Signup';
 import UserVerify from '~/pages/User/pages/Verify';
-import ZESPlusResearch from '~/pages/ZESPlus-Research';
+import {
+  CycleNetworkDevelopmentPage,
+  ZesPlusResearchPage,
+} from '~/pages/ZESPlus-Research';
 import ParkingLane from './pages/ParkingLane';
 import XhainWayToSchool from './pages/XhainWayToSchool';
-
 import { RootState } from './store';
 
 const apps = {
@@ -181,7 +182,13 @@ const Routes = ({ token }) => (
 
     {/* ZES-Plus research page */}
     {config.routes.landing && (
-      <Route path={config.routes.landing} component={ZESPlusResearch} />
+      <Route path={config.routes.landing} component={ZesPlusResearchPage} />
+    )}
+    {config.routes.cycleNetworkDevelopment && (
+      <Route
+        path={config.routes.cycleNetworkDevelopment}
+        component={CycleNetworkDevelopmentPage}
+      />
     )}
 
     <Route render={() => <Markdown page="nomatch" />} />

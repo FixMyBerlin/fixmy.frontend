@@ -1,15 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import {
-  ArticleHeader,
-  ArticleWrapper,
-  ImageFull,
-  Intro,
-} from '~/components2/Article';
-import LogoZES from './components/Logos/assets/logo-zes.png';
-import LogoZES2 from './components/Logos/assets/logo-zes@2x.png';
-import LogoZES3 from './components/Logos/assets/logo-zes@3x.png';
-import Logos from './components/Logos/Logos';
+import { ArticleHeader, ImageFull, Intro } from '~/components2/Article';
 import {
   SectionAbout,
   SectionConceptMaps,
@@ -19,35 +9,14 @@ import {
   SectionNetwork,
   SectionNextSteps,
 } from './forschungsprojekt';
+import Logos from './components/Logos/Logos';
+import LogoZES from './components/Logos/assets/logo-zes.png';
+import LogoZES2 from './components/Logos/assets/logo-zes@2x.png';
+import LogoZES3 from './components/Logos/assets/logo-zes@3x.png';
 import Image2 from './forschungsprojekt/images/research-2.jpg';
+import { Wrapper, Logo } from './styles';
 
-const Wrapper = styled(ArticleWrapper)`
-  background: none;
-  h2 {
-    text-transform: none;
-  }
-
-  .contentWrapper {
-    box-shadow: none;
-  }
-
-  .fmc-article-tocentry {
-    margin-bottom: 0.75em;
-    font-family: 'Roboto Slab';
-    font-weight: 100;
-  }
-
-  .fmc-article-tocentry-active {
-    font-weight: 700;
-  }
-`;
-
-const Logo = styled.img`
-  width: 105px;
-  height: 42px;
-`;
-
-const ZESPlusResearch = () => (
+export const ZesPlusResearchPage = () => (
   <Wrapper
     tocTitle="Inhalt"
     enumerateToc={false}
@@ -87,5 +56,3 @@ const ZESPlusResearch = () => (
     <Logos />
   </Wrapper>
 );
-
-export default ZESPlusResearch;
