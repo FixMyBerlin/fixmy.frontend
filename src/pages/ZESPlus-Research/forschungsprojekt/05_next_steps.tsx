@@ -1,16 +1,14 @@
 import React from 'react';
-
 import {
-  Paragraph,
   Heading,
-  SectionProps,
   ImageFull,
+  Paragraph,
+  SectionProps,
 } from '~/components2/Article';
 import { Link } from '~/components2/Link';
-
 import ZESMobil from './images/zesmobil.png';
 
-const SectionNextSteps = (props: SectionProps) => (
+export const SectionNextSteps = (props: SectionProps) => (
   <>
     <Heading as="h2" {...props}>
       Wie geht es weiter?
@@ -102,5 +100,3 @@ const SectionNextSteps = (props: SectionProps) => (
     </Paragraph>
   </>
 );
-
-export default SectionNextSteps;

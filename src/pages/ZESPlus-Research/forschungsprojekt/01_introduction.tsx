@@ -1,9 +1,8 @@
 import React from 'react';
-
-import { Paragraph, Heading, SectionProps } from '~/components2/Article';
+import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import { Link } from '~/components2/Link';
 
-const SectionIntroduction = (props: SectionProps) => (
+export const SectionIntroduction = (props: SectionProps) => (
   <>
     <Heading as="h3" {...props}>
       Innovative Instrumente der Radverkehrsförderung
@@ -72,5 +71,3 @@ const SectionIntroduction = (props: SectionProps) => (
     </Paragraph>
   </>
 );
-
-export default SectionIntroduction;

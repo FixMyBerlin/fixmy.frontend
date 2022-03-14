@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import { Paragraph, Image, Heading, SectionProps } from '~/components2/Article';
+import { Heading, Image, Paragraph, SectionProps } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import { Link } from '~/components2/Link';
 import { NewsletterWidget } from '~/components2/NewsletterWidget';
 import { media } from '~/styles/utils';
-
 import SimraSrc from './images/simra.jpg';
 
 const DownloadWrapper = styled(Paragraph)`
@@ -25,7 +23,7 @@ const DownloadWrapper = styled(Paragraph)`
   }
 `;
 
-const SectionContribute = (props: SectionProps) => (
+export const SectionContribute = (props: SectionProps) => (
   <>
     <Heading as="h2" {...props}>
       Mitmachen — SimRa-App & Newsletter
@@ -87,5 +85,3 @@ const SectionContribute = (props: SectionProps) => (
     </Paragraph> */}
   </>
 );
-
-export default SectionContribute;

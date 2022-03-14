@@ -1,13 +1,11 @@
 import React from 'react';
-
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import { Link } from '~/components2/Link';
-
 import ButtonWrapper from '../components/ButtonWrapper';
 import MapNetworks from '../components/MapNetworks';
 
-const SectionConceptMaps = (props: SectionProps) => (
+export const SectionConceptMaps = (props: SectionProps) => (
   <>
     <Heading as="h2" {...props}>
       Das ZESplus-Konzept
@@ -56,5 +54,3 @@ const SectionConceptMaps = (props: SectionProps) => (
     </ButtonWrapper>
   </>
 );
-
-export default SectionConceptMaps;
