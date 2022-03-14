@@ -180,8 +180,8 @@ const Routes = ({ token }) => (
       ) && <Route path={config.routes.research.survey} component={Research} />}
 
     {/* ZES-Plus research page */}
-    {config.routes.zesplusResearch && (
-      <Route path={config.routes.zesplusResearch} component={ZESPlusResearch} />
+    {config.routes.landing && (
+      <Route path={config.routes.landing} component={ZESPlusResearch} />
     )}
 
     <Route render={() => <Markdown page="nomatch" />} />
