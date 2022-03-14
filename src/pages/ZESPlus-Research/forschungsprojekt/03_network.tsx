@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import { Link } from '~/components2/Link';
-
 import MapPlaceholder from '../components/MapPlaceholder';
 import MapQuality from '../components/MapQuality';
 import MapSafety from '../components/MapSafety';
@@ -22,7 +20,7 @@ const SectionH3 = ({ children }) => (
   </SectionHeadingWrapper>
 );
 
-const SectionNetwork = (props: SectionProps) => (
+export const SectionNetwork = (props: SectionProps) => (
   <>
     <Heading as="h2" {...props}>
       Die Themenkarten
@@ -98,5 +96,3 @@ const SectionNetwork = (props: SectionProps) => (
     </Paragraph>
   </>
 );
-
-export default SectionNetwork;

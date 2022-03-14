@@ -1,15 +1,14 @@
 import React from 'react';
-
 import {
-  Paragraph,
   Heading,
-  SectionProps,
-  Quote,
   List,
+  Paragraph,
+  Quote,
+  SectionProps,
 } from '~/components2/Article';
 import { Link } from '~/components2/Link';
 
-const SectionAbout = (props: SectionProps) => (
+export const SectionAbout = (props: SectionProps) => (
   <>
     <Heading as="h2" {...props}>
       Hintergrundinformationen zum Projekt
@@ -182,5 +181,3 @@ const SectionAbout = (props: SectionProps) => (
     </List>
   </>
 );
-
-export default SectionAbout;

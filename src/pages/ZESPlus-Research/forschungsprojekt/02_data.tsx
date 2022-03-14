@@ -1,17 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import { Paragraph, List, Heading, SectionProps } from '~/components2/Article';
+import { Heading, List, Paragraph, SectionProps } from '~/components2/Article';
 import { AnchorButton } from '~/components2/Button';
 import { Link } from '~/components2/Link';
-
 import ButtonWrapper from '../components/ButtonWrapper';
 
 const StyledList = styled(List)`
   list-style-type: lower-alpha;
 `;
 
-const SectionData = (props: SectionProps) => (
+export const SectionData = (props: SectionProps) => (
   <>
     <Heading as="h2" {...props}>
       Datengrundlagen
@@ -113,5 +111,3 @@ const SectionData = (props: SectionProps) => (
     </Paragraph>
   </>
 );
-
-export default SectionData;

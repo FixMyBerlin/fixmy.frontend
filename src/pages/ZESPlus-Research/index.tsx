@@ -10,14 +10,16 @@ import LogoZES from './components/Logos/assets/logo-zes.png';
 import LogoZES2 from './components/Logos/assets/logo-zes@2x.png';
 import LogoZES3 from './components/Logos/assets/logo-zes@3x.png';
 import Logos from './components/Logos/Logos';
-import SectionIntroduction from './sections/01_introduction';
-import SectionData from './sections/02_data';
-import SectionTopicalMaps from './sections/03_topical_maps';
-import SectionConceptMaps from './sections/04_concept_maps';
-import SectionNextSteps from './sections/05_next_steps';
-import SectionContribute from './sections/06_contribute';
-import SectionAbout from './sections/07_about';
-import Image2 from './sections/images/research-2.jpg';
+import {
+  SectionAbout,
+  SectionConceptMaps,
+  SectionContribute,
+  SectionData,
+  SectionIntroduction,
+  SectionNetwork,
+  SectionNextSteps,
+} from './forschungsprojekt';
+import Image2 from './forschungsprojekt/images/research-2.jpg';
 
 const Wrapper = styled(ArticleWrapper)`
   background: none;
@@ -76,7 +78,7 @@ const ZESPlusResearch = () => (
     </Intro>
     <SectionIntroduction toc="Einleitung" />
     <SectionData toc="Daten&shy;grundlagen" />
-    <SectionTopicalMaps toc="Themenkarten" />
+    <SectionNetwork toc="Themenkarten" />
     <SectionConceptMaps toc="Das ZESplus-Konzept" />
     <SectionNextSteps toc="Wie geht es weiter?" />
     <SectionContribute toc="Mitmachen" />
