@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import Button from '~/components/Button';
-import ErrorMessage from '~/components/ErrorMessage';
+import { ErrorMessage } from '~/components2/ErrorMessage';
 import history from '~/history';
 import thanksImageAachen from '~/images/aachen/danke-aachen-02@2x.png';
 import thanksImageFMB from '~/images/reports/reports-thanks.png';
@@ -66,7 +66,9 @@ class ReportSubmitted extends PureComponent {
 
     if (error.message) {
       return (
-        <ErrorMessage message={error.message} onDismiss={this.onErrorClick} />
+        <ErrorMessage onDismiss={this.onErrorClick}>
+          {error.message}
+        </ErrorMessage>
       );
     }
 

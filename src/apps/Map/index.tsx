@@ -7,7 +7,7 @@ import {
   withRouter,
 } from 'react-router-dom';
 import styled from 'styled-components';
-import ErrorMessage from '~/components/ErrorMessage';
+import { ErrorMessage } from '~/components2/ErrorMessage';
 import { Logo as FMBLogo } from '~/components2/Logo';
 import Legend from '~/components/MapLegend/Legend';
 import config from '~/config';
@@ -145,7 +145,7 @@ const MapView = ({
   return (
     <Wrapper>
       {error != null && (
-        <ErrorMessage message={error} onDismiss={dismissErrorMessage} />
+        <ErrorMessage onDismiss={dismissErrorMessage}>{error}</ErrorMessage>
       )}
 
       <MapWrapper>
