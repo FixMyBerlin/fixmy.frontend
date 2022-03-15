@@ -9,7 +9,7 @@ import { Route, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 import LocatorControl from '~/apps/Map/components/LocatorControl';
-import ErrorMessage from '~/components/ErrorMessage';
+import { ErrorMessage } from '~/components2/ErrorMessage';
 import config from '~/pages/Reports/config';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
 import { actions as overviewMapStateActions } from '~/pages/Reports/state/OverviewMapState';
@@ -208,10 +208,9 @@ class OverviewMap extends Component {
     return (
       <MapView>
         {errorMessage && (
-          <ErrorMessage
-            message={this.props.errorMessage}
-            onDismiss={this.props.removeError}
-          />
+          <ErrorMessage onDismiss={this.props.removeError}>
+            {this.props.errorMessage}
+          </ErrorMessage>
         )}
 
         <OverviewMapNavBar heading={config.reports.title} />

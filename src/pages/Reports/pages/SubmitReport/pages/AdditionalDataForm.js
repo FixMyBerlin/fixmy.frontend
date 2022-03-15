@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import ErrorMessage from '~/components/ErrorMessage';
+import { ErrorMessage } from '~/components2/ErrorMessage';
 import config from '~/pages/Reports/config';
 import DialogStepWrapper from '~/pages/Reports/pages/SubmitReport/components/DialogStepWrapper';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
@@ -196,10 +196,9 @@ class AdditionalDataForm extends PureComponent {
         )}
 
         {this.props.error.message && (
-          <ErrorMessage
-            message={this.props.error.message}
-            onDismiss={this.props.removeError}
-          />
+          <ErrorMessage onDismiss={this.props.removeError}>
+            {this.props.error.message}
+          </ErrorMessage>
         )}
       </DialogStepWrapper>
     );
