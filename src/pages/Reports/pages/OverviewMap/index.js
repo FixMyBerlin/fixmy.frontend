@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
-import LocatorControl from '~/apps/Map/components/LocatorControl';
+import { LocatorMapControl } from '~/components2/MapsControls';
 import { ErrorMessage } from '~/components2/ErrorMessage';
 import config from '~/pages/Reports/config';
 import { actions as errorStateActions } from '~/pages/Reports/state/ErrorState';
@@ -41,7 +41,7 @@ const MapWrapper = styled.div`
   flex-direction: column;
 `;
 
-const StyledLocatorControl = styled(LocatorControl)`
+const StyledLocatorMapControl = styled(LocatorMapControl)`
   top: 16px;
   right: 16px;
   bottom: auto;
@@ -64,7 +64,7 @@ const MapControls = ({
 }) => {
   return (
     <>
-      <StyledLocatorControl
+      <StyledLocatorMapControl
         key="ReportsOverviewMap__LocatorControl"
         onChange={onLocationChange}
       />

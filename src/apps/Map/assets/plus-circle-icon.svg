@@ -1,0 +1,9 @@
+<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <use fill="#000" xlink:href="#b"/>
+            <circle stroke="#545454" stroke-linejoin="square" fill="#FFF" cx="20" cy="20" r="19.5"/>
+        </g>
+        <path d="M20 14c.268 0 .49.193.537.447l.008.098v4.909h4.91a.545.545 0 0 1 .098 1.083l-.098.008h-4.91v4.91a.545.545 0 0 1-1.082.098l-.008-.098-.001-4.91h-4.909a.545.545 0 0 1-.098-1.082l.098-.008 4.909-.001v-4.909c0-.3.245-.545.546-.545Z" fill="#545454"/>
+    </g>
+</svg>

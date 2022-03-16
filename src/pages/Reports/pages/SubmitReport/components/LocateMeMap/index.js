@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import FMBCredits from '~/apps/Map/components/FMBCredits';
-import LocatorControl from '~/apps/Map/components/LocatorControl';
+import { LocatorMapControl } from '~/components2/MapsControls';
 import AutocompleteGeocoder from '~/components/AutocompleteGeocoder';
 import { ErrorMessage } from '~/components2/ErrorMessage';
 import config from '~/pages/Reports/config';
@@ -288,7 +288,7 @@ class LocateMeMap extends Component {
           !this.state.autocompleteHasFocus &&
           this.props.isLocationModeGeocoding &&
           !this.state.locationPinned && (
-            <LocatorControl
+            <LocatorMapControl
               key="ReportsLocateMap__LocatorControl"
               onChange={this.onDevicePosition}
               customPosition={locatorControlPosition}

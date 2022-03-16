@@ -1,0 +1,16 @@
+<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g fill="none" fill-rule="evenodd">
+        <use fill="#000" xlink:href="#a"/>
+        <circle stroke="#545454" stroke-linejoin="square" fill="#FFF" cx="20" cy="20" r="19.5"/>
+        <g stroke-linecap="round" stroke-linejoin="round">
+            <g stroke="#545454" stroke-width=".889">
+                <path d="M20.584 25.14a5.333 5.333 0 1 0 10.667 0 5.333 5.333 0 0 0-10.667 0Z"/>
+                <path d="M25.917 27.806v-3.11a.444.444 0 0 0-.444-.445h-.889m.666-2.222a.222.222 0 1 1 0 .444.222.222 0 0 1 0-.444m-.666 5.778h2.666"/>
+            </g>
+            <g stroke="#445454">
+                <path d="m18.856 27.944-3.288 2.22a.51.51 0 0 1-.593 0l-6.63-4.734a.51.51 0 0 1-.214-.415V9.948a.51.51 0 0 1 .807-.415l6.333 4.523 6.844-4.888a.51.51 0 0 1 .593 0l6.63 4.735a.51.51 0 0 1 .214.416v4.041m-14.281-4.304v16.205m7.141-12.372V9.073" stroke-width="1.02"/>
+                <path stroke-width=".889" d="M9.917 15.362h.445m-.445 2.667h.889m-.889 2.666h1.334m-1.334 2.667h.889"/>
+            </g>
+        </g>
+    </g>
+</svg>

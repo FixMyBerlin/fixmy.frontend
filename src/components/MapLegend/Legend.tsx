@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { AnchorLink } from '~/components2/Link';
-import { FlyingLegend } from '~/components2/MapLegend';
+import {
+  FloatingLegend,
+  FloatingLegendProps,
+} from '~/components2/FloatingLegend';
 import config from '~/config';
 import { CadastreLegendGrid, IncidentLegendGrid } from './index';
 
@@ -26,21 +29,23 @@ const FooterWrapper = styled.div`
   margin-top: 1rem;
 `;
 
-const Legend = ({ closeLegend }) => (
-  <FlyingLegend closeLegend={closeLegend}>
-    <Header>Legende Katasterdaten</Header>
-    <CadastreLegendGrid />
-    <MutedText>Quellen: Fis-Broker Berlin 2014</MutedText>
+type Props = Pick<FloatingLegendProps, 'visible' | 'closeLegend'>;
 
-    <Header>Legende Unfälle</Header>
-    <IncidentLegendGrid />
+export const Legend: React.VFC<Props> = ({ visible, closeLegend }) => {
+  return (
+    <FloatingLegend visible={visible} closeLegend={closeLegend}>
+      <Header>Legende Katasterdaten</Header>
+      <CadastreLegendGrid />
+      <MutedText>Quellen: Fis-Broker Berlin 2014</MutedText>
 
-    <FooterWrapper>
-      <AnchorLink href="https://de.wikipedia.org/wiki/Unfalltyp">
-        Erläuterungen der Unfallkategorien
-      </AnchorLink>
-    </FooterWrapper>
-  </FlyingLegend>
-);
+      <Header>Legende Unfälle</Header>
+      <IncidentLegendGrid />
 
-export default Legend;
+      <FooterWrapper>
+        <AnchorLink href="https://de.wikipedia.org/wiki/Unfalltyp">
+          Erläuterungen der Unfallkategorien
+        </AnchorLink>
+      </FooterWrapper>
+    </FloatingLegend>
+  );
+};
