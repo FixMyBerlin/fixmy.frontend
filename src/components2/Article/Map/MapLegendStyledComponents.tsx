@@ -73,6 +73,8 @@ export const LegendHeader = styled.h3`
   margin: 1em 0 0.5em;
   font-weight: bold;
 
+  ${({ onClick }) => onClick && `cursor: pointer;`}
+
   ${media.s`
     font-size: 1em;
     margin: 1.5em 0 1em;
@@ -85,6 +87,8 @@ export const LegendItem = styled.div`
   display: flex;
   flex-direction: row;
   line-height: 1.16;
+
+  ${({ onClick }) => onClick && `cursor: pointer;`}
 
   ${media.m`
     & + & {

@@ -14,9 +14,7 @@ type Props = { onClick?: () => void };
 export const LegendItemsNetworkSchoolways: React.FC<Props> = ({ onClick }) => {
   return (
     <>
-      <LegendHeader onClick={onClick} style={onClick && { cursor: 'pointer' }}>
-        Schulwege-Häufigkeit
-      </LegendHeader>
+      <LegendHeader onClick={onClick}>Schulwege-Häufigkeit</LegendHeader>
       <LegendItems>
         <LegendItem>
           <IconWrapper>

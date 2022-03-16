@@ -1,55 +1,59 @@
-import React from 'react';
-import { Map } from '~/components2/Article';
-import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../mapboxOptions.const';
+import React, { useState } from 'react';
+import { FullscreenMap } from '~/components2/Article';
 import {
   IconWrapper,
-  Legend,
   LegendCol,
   LegendHeader,
   LegendItem,
   LegendItems,
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
+import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../mapboxOptions.const';
 import IconBV from './icons/berliner-verbaende.svg';
 import IconHeatmap from './icons/heatmap.svg';
 import IconKDS from './icons/konzept-dahme-spree.svg';
 import IconKS from './icons/konzept-schoenefeld.svg';
 import IconRSV from './icons/radschnellverbindungen.svg';
 import IconT from './icons/touristische.svg';
-import IconV from './icons/varianten-rsv.svg';
-import IconZES from './icons/zes.svg';
 
-const MAP_STYLE_QUALITY: mapboxgl.MapboxOptions['style'] =
-  'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';
+const MAP_STYLE: mapboxgl.MapboxOptions['style'] =
+  'mapbox://styles/hejco/cl0rzb1ff000615rz609xmppp';
 
-export const MapNetworks = () => (
-  <>
-    <Map
-      mapboxStyle={MAP_STYLE_QUALITY}
+export const MapNetworks = () => {
+  const [toggleLayers, setToggleLayers] = useState([]);
+
+  return (
+    <FullscreenMap
+      mapboxStyle={MAP_STYLE}
       maxBounds={BOUNDS_ZES}
       center={ZES_CENTER}
       zoom={ZES_ZOOM}
-    />
-    <Legend>
+      toggleLayers={toggleLayers}
+      setToggleLayers={setToggleLayers}
+    >
       <LegendCol>
         <LegendHeader>TEST MAP</LegendHeader>
         <LegendItems>
-          <LegendItem>
+          <LegendItem
+            onClick={() =>
+              setToggleLayers(['settlement-major-label', 'stations'])
+            }
+          >
             <IconWrapper>
               <IconT />
-            </IconWrapper>{' '}
-            Touristische Radrouten¹
+            </IconWrapper>
+            CLICK
           </LegendItem>
           <LegendItem>
             <IconWrapper>
               <IconRSV />
-            </IconWrapper>{' '}
+            </IconWrapper>
             Radschnellverbindung Berlin Y-Trasse²
           </LegendItem>
           <LegendItem>
             <IconWrapper>
               <IconBV />
-            </IconWrapper>{' '}
+            </IconWrapper>
             Berliner Verbände Radnetz³
           </LegendItem>
         </LegendItems>
@@ -60,26 +64,14 @@ export const MapNetworks = () => (
           <LegendItem>
             <IconWrapper>
               <IconKDS />
-            </IconWrapper>{' '}
+            </IconWrapper>
             Konzept LK Dahme-Spree⁴
           </LegendItem>
           <LegendItem>
             <IconWrapper>
               <IconKS />
-            </IconWrapper>{' '}
+            </IconWrapper>
             Radkonzept Schönefeld⁵
-          </LegendItem>
-          <LegendItem>
-            <IconWrapper>
-              <IconV />
-            </IconWrapper>{' '}
-            Varianten Radschnellverb. BER-KW⁶
-          </LegendItem>
-          <LegendItem>
-            <IconWrapper>
-              <IconZES />
-            </IconWrapper>{' '}
-            Konzept ZES⁷
           </LegendItem>
         </LegendItems>
       </LegendCol>
@@ -89,7 +81,7 @@ export const MapNetworks = () => (
           <LegendItem>
             <IconWrapper>
               <IconHeatmap />
-            </IconWrapper>{' '}
+            </IconWrapper>
             Quellen und Ziele (Heatmap)⁸
           </LegendItem>
         </LegendItems>
@@ -98,6 +90,6 @@ export const MapNetworks = () => (
         Quellen: ¹ OSM 2020, ² InfraVelo GmbH 2019, ³ ADFC 2019, ⁴IGS 2020, ⁵ ⁶
         ⁷ Radgruppe ZES+ 2020, ⁸ OSM und Radgruppe ZES+ 2020
       </LegendSources>
-    </Legend>
-  </>
-);
+    </FullscreenMap>
+  );
+};
