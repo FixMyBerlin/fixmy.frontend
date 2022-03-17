@@ -21,8 +21,7 @@ export const LayerToggleTester: React.VFC<Props> = ({
     setLayerlist(layers);
   }, [mapLayer]);
 
-  // useEffect(() => console.table(layerList), [layerList]);
-
+  // Env.CONTEXT ist a Netlify variable. More: https://docs.netlify.com/site-deploys/overview/#deploy-contexts
   if (
     process.env.NODE_ENV === 'production' &&
     process.env.CONTEXT === 'production'
