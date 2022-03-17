@@ -9,12 +9,10 @@ import SchoolWays100 from '../assets/school-ways-100.svg';
 import SchoolWays200 from '../assets/school-ways-200.svg';
 import SchoolWays300 from '../assets/school-ways-300.svg';
 
-type Props = { onClick?: () => void };
-
-export const LegendItemsNetworkSchoolways: React.FC<Props> = ({ onClick }) => {
+export const LegendItemsNetworkSchoolways: React.FC = () => {
   return (
     <>
-      <LegendHeader onClick={onClick}>Schulwege-Häufigkeit</LegendHeader>
+      <LegendHeader>Schulwege-Häufigkeit</LegendHeader>
       <LegendItems>
         <LegendItem>
           <IconWrapper>

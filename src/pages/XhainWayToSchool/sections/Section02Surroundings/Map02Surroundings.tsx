@@ -23,14 +23,6 @@ import {
 import { IconKmh } from './components/IconKmh';
 
 export const Map02Surroundings = () => {
-  const allVisibleLayers = [
-    'network-schoolways',
-    'network-schoolways-labels',
-    'speedlimits',
-    'streetclass',
-    'elementary-schools-HVS',
-  ];
-
   return (
     <>
       <Map
@@ -38,8 +30,6 @@ export const Map02Surroundings = () => {
         maxBounds={BOUNDS}
         center={CENTER}
         zoom={ZOOM}
-        allLayers={ALL_LAYERS}
-        visibleLayers={allVisibleLayers}
       />
       <Legend>
         <LegendCol>
