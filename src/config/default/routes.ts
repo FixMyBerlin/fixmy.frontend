@@ -1,41 +1,19 @@
-interface RouteConfig {
-  // optional routes
-  map?: {
-    projectsIndex: string;
-    projectsDetail: string;
-    hbiIndex: string;
-    hbiDetail: string;
-  };
-  analysis?: string;
-  reports?: {
-    [page: string]: string;
-  };
-  katasterKI?: {
-    [page: string]: string;
-  };
-  spielstrassen?: {
-    [page: string]: string;
-  };
-  research?: {
-    [page: string]: string;
-  };
-  wayToSchool?: {
-    [page: string]: string;
-  };
-  parkingLane?: {
-    [page: string]: string;
-  };
-  // mandatory routes
-  signup: string;
-  login: string;
-  forgotPassword: string;
-  resetPassword: string;
-  emailVerification: string;
-  profile: string;
-  userVerify: string;
-}
+import { ConfigRoutePage, ConfigRoutePath } from '../types/ConfigRoute';
+import { ConfigMandatoryRoutes, mandatoryRoutes } from './mandatoryRoutes';
 
-const routes: RouteConfig = {
+type Props = ConfigMandatoryRoutes & {
+  analysis: ConfigRoutePath;
+  map: ConfigRoutePage;
+  reports: ConfigRoutePage;
+  katasterKI: ConfigRoutePage;
+  spielstrassen: ConfigRoutePage;
+  wayToSchool: ConfigRoutePage;
+  parkingLane: ConfigRoutePage;
+  research: ConfigRoutePage;
+};
+
+export const routes: Props = {
+  ...mandatoryRoutes,
   analysis: '/analyse',
   map: {
     hbiIndex: '/zustand',
@@ -76,17 +54,8 @@ const routes: RouteConfig = {
     landing: '/parkraum',
     xhain: '/parkraum/friedrichshain-kreuzberg',
   },
-  signup: '/registrieren',
-  login: '/anmelden',
-  forgotPassword: '/passwort-vergessen',
-  resetPassword: '/reset',
-  emailVerification: '/email-verification',
-  profile: '/profil',
-  userVerify: '/bestaetigen',
   research: {
     landing: '/research',
     survey: '/research/subjektive-sicherheit',
   },
 };
-
-export default routes;

@@ -1,4 +1,6 @@
-export default [
+import { ConfigStaticpages } from '../types/ConfigStaticPages';
+
+export const staticpages: ConfigStaticpages[] = [
   {
     key: 'aachen-privacy',
     route: '/datenschutz',
