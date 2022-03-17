@@ -1,17 +1,19 @@
-import defaultRoutes from '../default/routes';
+import {
+  ConfigMandatoryRoutes,
+  mandatoryRoutes,
+} from '../default/mandatoryRoutes';
+import { ConfigRoutePage } from '../types/ConfigRoute';
 
-export default {
+type Props = ConfigMandatoryRoutes & {
+  reports: ConfigRoutePage;
+};
+
+export const routes: Props = {
+  ...mandatoryRoutes,
   reports: {
     index: '/',
     landing: '/meldungen',
     map: '/meldungen/karte',
     new: '/meldungen/neu',
   },
-  signup: defaultRoutes.signup,
-  login: defaultRoutes.login,
-  forgotPassword: defaultRoutes.forgotPassword,
-  resetPassword: defaultRoutes.resetPassword,
-  emailVerification: defaultRoutes.emailVerification,
-  profile: defaultRoutes.profile,
-  userVerify: defaultRoutes.userVerify,
 };
