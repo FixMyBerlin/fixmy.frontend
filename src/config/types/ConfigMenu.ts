@@ -40,7 +40,7 @@ type MenuItem = Link | ExternalLink | Separator | Plus;
 export type ConfigMenu = {
   size: number;
   profileLabel: string;
-  login?: boolean;
+  login?: false | undefined;
   loginLabel: string;
   logo?: boolean;
   twitter?: boolean;

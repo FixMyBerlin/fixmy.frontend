@@ -48,10 +48,15 @@ export default (props) => {
   return (
     <MenuHeader>
       <MenuHeaderContainer>
-        <AccountLink to={profileLink} onClick={() => Store.dispatch(toggle())}>
-          <AccountIcon />
-          {profileLabel}
-        </AccountLink>
+        {config.menu?.login !== false && (
+          <AccountLink
+            to={profileLink}
+            onClick={() => Store.dispatch(toggle())}
+          >
+            <AccountIcon />
+            {profileLabel}
+          </AccountLink>
+        )}
         <MenuCloseButton />
       </MenuHeaderContainer>
     </MenuHeader>
