@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { Button } from '~/components2/Button';
+import styled from 'styled-components';
 import { media } from '~/styles/utils';
 
 export const MapWrapper = styled.div`
@@ -35,54 +34,5 @@ export const Wrapper = styled.div`
   ${media.xl`
     margin: 2em -5em 0 auto;
     width: calc(100% - 151px + 5em);
-  `}
-`;
-
-export const ActivateButton = styled(Button)<{ mapActive: boolean }>`
-  & {
-    align-items: center;
-    background-color: white;
-    display: flex;
-    flex-direction: row;
-    height: 48px;
-    justify-content: center;
-    padding: 0 24px;
-    width: initial;
-    z-index: 100;
-
-    &:focus {
-      box-shadow: none;
-      border-color: transparent;
-      outline-style: none;
-    }
-
-    & > svg {
-      margin-right: 0.5em;
-    }
-
-    // Move button outside of map wrapper when activated
-    transition: transform 0.3s;
-    ${({ mapActive }) =>
-      mapActive
-        ? css`
-            transform: translateY(200%);
-          `
-        : null}
-  }
-`;
-
-export const ButtonArea = styled.div`
-  bottom: 1em;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  width: 100%;
-
-  ${media.m`
-    bottom: 2em;
-  `}
-
-  ${media.xl`
-    bottom: 2em;
   `}
 `;
