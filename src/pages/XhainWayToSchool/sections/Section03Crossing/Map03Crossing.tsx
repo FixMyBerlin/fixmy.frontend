@@ -26,16 +26,6 @@ import {
 import { LegendItemsNetworkSchoolways } from '../Section01Network/LegendItemsNetworkSchoolways';
 
 export const Map03Crossing = () => {
-  const allVisibleLayers = [
-    'network-schoolways',
-    'network-schoolways-labels',
-    'accidents-fuss',
-    'elementary-schools-HVS',
-    'knotenpunkte-withnocrossing',
-    'traffic-light-system-xhain',
-    'crosswalk-xhain',
-  ];
-
   return (
     <>
       <Map
@@ -43,8 +33,6 @@ export const Map03Crossing = () => {
         maxBounds={BOUNDS}
         center={CENTER}
         zoom={ZOOM}
-        allLayers={ALL_LAYERS}
-        visibleLayers={allVisibleLayers}
       />
       <Legend>
         <LegendCol>
