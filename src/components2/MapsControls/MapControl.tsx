@@ -1,38 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export type MapControlPositionProp =
-  | 'top-left'
-  | 'top-right'
-  | 'bottom-right'
-  | 'bottom-left';
-
 const StyledMapControl = styled.div`
   position: absolute;
   z-index: 600;
-  top: ${(props: CustonPosition) => props?.top};
-  right: ${(props: CustonPosition) => props?.right};
-  bottom: ${(props: CustonPosition) => props?.bottom};
-  left: ${(props: CustonPosition) => props?.left};
 `;
 
-type CustonPosition = {
-  top?: string;
-  bottom?: string;
-  left?: string;
-  right?: string;
-};
-
 export type MapcControlProps = {
-  position?: MapControlPositionProp;
+  position?: 'top-left' | 'top-right' | 'bottom-right' | 'bottom-left';
   className?: string;
-  customPosition?: CustonPosition;
+  style?: React.CSSProperties;
+  visible?: boolean;
 };
 
 export const MapControl: React.FC<MapcControlProps> = ({
   position = 'top-left',
   className,
-  customPosition,
+  style,
+  visible = true,
   children,
 }) => {
   const positionCss = (pos) => {
@@ -62,11 +47,13 @@ export const MapControl: React.FC<MapcControlProps> = ({
     }
   };
 
+  if (!visible) return null;
+
   return (
     <StyledMapControl
       data-cy="map-map-control"
       className={className}
-      {...(customPosition || positionCss(position))}
+      style={style || positionCss(position)}
     >
       {children}
     </StyledMapControl>

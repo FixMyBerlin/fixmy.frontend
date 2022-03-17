@@ -1,1 +1,0 @@
-export { ModalCloseIcon } from './ModalCloseIcon';

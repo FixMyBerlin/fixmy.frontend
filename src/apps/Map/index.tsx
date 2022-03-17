@@ -142,7 +142,10 @@ const MapView = ({
             </MapControl>
           )}
 
-          <MapControl customPosition={{ right: '16px', bottom: '25px' }}>
+          <MapControl
+            visible={!isDesktopView && !showLegend}
+            style={{ right: '16px', bottom: '25px' }}
+          >
             <StyledMapButton
               as={ZoomInButtonIcon}
               onClick={() => changeZoom(1)}
