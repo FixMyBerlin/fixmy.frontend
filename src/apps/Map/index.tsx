@@ -137,7 +137,7 @@ const MapView = ({
           calculatePopupPosition={calculatePopupPosition}
         >
           {!isEmbedMode && (
-            <MapControl position="top-right">
+            <MapControl top right>
               <StyledFMBLogo width={67} />
             </MapControl>
           )}

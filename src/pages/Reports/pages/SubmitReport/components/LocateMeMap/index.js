@@ -291,7 +291,7 @@ class LocateMeMap extends Component {
             <LocatorMapControl
               key="ReportsLocateMap__LocatorControl"
               onChange={this.onDevicePosition}
-              customPosition={locatorControlPosition}
+              style={locatorControlPosition}
             />
           )}
 
