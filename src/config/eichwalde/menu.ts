@@ -6,6 +6,7 @@ import { routes } from './routes';
 export const menu: ConfigMenu = {
   size: 325,
   profileLabel: 'Zum Profil',
+  login: false,
   loginLabel: 'Login',
   logo: false,
   twitter: false,
