@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import config from '~/config';
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 // Use `$active` to invert the button and disable the hover/… styles.
 // `$active` needs to be prefixed with a `$` which makes it a special styled component prop
 // that does not get passed down to the underlying DOM element.
-// Learn more at https://styled-components.com/docs/api#typescript and https://styled-components.com/docs/api#transient-props
+// Learn more at https://styled-components.com/docs/api#typescript, https://styled-components.com/docs/api#transient-props
 export const StyledMapButton = styled.svg<Props>`
   cursor: pointer;
   display: block;
@@ -20,23 +20,24 @@ export const StyledMapButton = styled.svg<Props>`
   }
   ${({ $active }) =>
     $active &&
-    `
-    circle {
-      fill: ${config.colors.darkgrey};
-      stroke: #EEE;
-    }
-    g {
-      stroke: #EEE;
-    }
-  `}
+    css`
+      circle {
+        fill: ${config.colors.darkgrey};
+        stroke: #eee;
+      }
+      g {
+        stroke: #eee;
+      }
+    `}
   ${({ $active }) =>
     !$active &&
-    `
-    &:hover circle {
-      fill: ${config.colors.lightbg};
-    }
-    &:active circle,
-    &:focus circle {
-      fill: ${config.colors.lightgrey};
-    }`}
+    css`
+      &:hover circle {
+        fill: ${config.colors.lightbg};
+      }
+      &:active circle,
+      &:focus circle {
+        fill: ${config.colors.lightgrey};
+      }
+    `}
 `;
