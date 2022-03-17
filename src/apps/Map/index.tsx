@@ -7,7 +7,7 @@ import {
   withRouter,
 } from 'react-router-dom';
 import styled from 'styled-components';
-import { Legend } from '~/components/MapLegend/Legend';
+import { Legend } from './components/MapLegend';
 import { ErrorMessage } from '~/components2/ErrorMessage';
 import { FloatingLegendIcon } from '~/components2/FloatingLegend';
 import { Logo as FMBLogo } from '~/components2/Logo';
