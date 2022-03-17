@@ -76,7 +76,7 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
   if (isFullscreen) {
     return (
       <FullscreenWrapper id="FullscreenMap">
-        <MapControl position="top-right" visible={!showLegend}>
+        <MapControl top right visible={isDesktopView || !showLegend}>
           <ClosePanelButton
             onClick={() => setFullscreen(false)}
             controlsId="FullscreenMap"
@@ -90,7 +90,7 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
         <MapWrapper>
           <BaseMap {...mapProps} onInit={setMap} />
         </MapWrapper>
-        <MapControl position="top-left">
+        <MapControl top left>
           <FloatingLegendIcon
             showLegend={showLegend}
             setShowLegend={setShowLegend}

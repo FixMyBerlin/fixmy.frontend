@@ -7,44 +7,30 @@ const StyledMapControl = styled.div`
 `;
 
 export type MapcControlProps = {
-  position?: 'top-left' | 'top-right' | 'bottom-right' | 'bottom-left';
+  top?: boolean;
+  right?: boolean;
+  bottom?: boolean;
+  left?: boolean;
   className?: string;
   style?: React.CSSProperties;
   visible?: boolean;
 };
 
 export const MapControl: React.FC<MapcControlProps> = ({
-  position = 'top-left',
+  top = false,
+  right = false,
+  bottom = false,
+  left = false,
   className,
   style,
   visible = true,
   children,
 }) => {
-  const positionCss = (pos) => {
-    switch (pos) {
-      case 'top-left':
-        return {
-          top: '16px',
-          left: '16px',
-        };
-      case 'top-right':
-        return {
-          top: '16px',
-          right: '16px',
-        };
-      case 'bottom-right':
-        return {
-          right: '16px',
-          bottom: '16px',
-        };
-      case 'bottom-left':
-        return {
-          bottom: '16px',
-          left: '16px',
-        };
-      default:
-        return {};
-    }
+  const position: React.CSSProperties = {
+    top: top && '16px',
+    right: right && '16px',
+    bottom: bottom && '16px',
+    left: left && '16px',
   };
 
   if (!visible) return null;
@@ -53,7 +39,7 @@ export const MapControl: React.FC<MapcControlProps> = ({
     <StyledMapControl
       data-cy="map-map-control"
       className={className}
-      style={style || positionCss(position)}
+      style={style || position}
     >
       {children}
     </StyledMapControl>
