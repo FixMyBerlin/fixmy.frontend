@@ -2,49 +2,53 @@ import MapboxGL from 'mapbox-gl';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { BaseMap } from '~/components2/BaseMap';
+import { ClosePanelButton } from '~/components2/ClosePanelButton';
 import {
   FloatingLegend,
   FloatingLegendIcon,
 } from '~/components2/FloatingLegend';
 import { MapControl } from '~/components2/MapsControls';
+import { breakpoints, matchMediaSize, media } from '~/styles/utils';
 import { MAPBOX_INTERACTION_HANDLERS } from '../Map/MapInteractionHandler.const';
 import { ActivateButton, ButtonArea, MapWrapper, Wrapper } from '../Map/styles';
-import { CloseMapIcon } from './CloseMapIcon';
 import { LayerToggleTester } from './LayerToggleTester';
 
 const FullscreenWrapper = styled.div`
   position: fixed;
-  inset: 0;
   z-index: 10;
+  inset: 78px 0 0 0; // To respect the sticky header on mobile
+
+  ${media.m`
+    inset: 0;
+  `}
 `;
 
 export type FullscreenMapProps = {
-  defaultActive?: boolean;
   mapboxStyle: mapboxgl.MapboxOptions['style'];
   toggleLayers?: string[];
   setToggleLayers?: (toggleLayers: string[]) => void;
 } & Partial<mapboxgl.MapboxOptions>;
 
 /**
- * Map component for use in an article.
+ * Map component with fullscreen capabilities for use in an article.
  *
- * Let's users enable interactivity with an animated button overlay.
+ * Shows a preview of the map (non interactive).
+ * The button to activate the map shows the map full screen with a floating legend panel.
  *
  * Extends mapboxgl.Map component props
  *
- * @param defaultActive set true to hide `activate` button
  * @param toggleLayers an array of map layers to show / hide
  */
 export const FullscreenMap: React.FC<FullscreenMapProps> = ({
-  defaultActive = false,
   toggleLayers,
   setToggleLayers,
   children,
   ...mapProps
 }) => {
+  const isDesktopView = matchMediaSize(breakpoints.m);
   const [map, setMap] = useState<MapboxGL.Map | null>(null);
-  const [isFullscreen, setFullscreen] = useState(defaultActive);
-  const [showLegend, setShowLegend] = useState(true);
+  const [isFullscreen, setFullscreen] = useState(false);
+  const [showLegend, setShowLegend] = useState(isDesktopView);
 
   // Activate interaction handlers when activate button is clicked
   useEffect(() => {
@@ -71,10 +75,17 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
   if (isFullscreen) {
     return (
       <FullscreenWrapper id="FullscreenMap">
-        <CloseMapIcon
-          onClick={() => setFullscreen(false)}
-          controlsId="FullscreenMap"
-        />
+        <MapControl position="top-right" visible={!showLegend}>
+          <ClosePanelButton
+            onClick={() => setFullscreen(false)}
+            controlsId="FullscreenMap"
+            style={{
+              position: 'relative',
+              right: 'auto',
+              top: 'auto',
+            }}
+          />
+        </MapControl>
         <MapWrapper>
           <BaseMap {...mapProps} onInit={setMap} />
         </MapWrapper>
@@ -86,8 +97,9 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
         </MapControl>
         <FloatingLegend
           visible={showLegend}
-          closeLegend={() => setFullscreen(false)}
-          positionTop="70px"
+          closeLegend={() => setShowLegend(false)}
+          closeLegendStyle={{ left: '16px', right: 'auto' }}
+          style={isDesktopView ? { right: '70px' } : { top: '36px' }}
         >
           <>
             {children}

@@ -7,8 +7,8 @@ const StyledCloseIcon = styled(CloseIcon)`
   color: ${config.colors.lightgrey};
   cursor: pointer;
   position: absolute;
-  right: ${({ styles: { right } }) => right || '10px'};
-  top: -18px;
+  right: 10px;
+  top: -21px;
   z-index: 500;
   overflow: visible;
   width: 41px;
@@ -26,18 +26,18 @@ type Props = {
   onClick: () => void;
   controlsId?: string;
   label?: string;
-  positionRight?: string;
+  style?: React.CSSProperties;
 };
 
 /**
  * @param {controlsId} string Space seperated list of one or more ID values referencing the elements being controlled by the current element
  *   https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls
  */
-export const ModalCloseIcon: React.FC<Props> = ({
+export const ClosePanelButton: React.FC<Props> = ({
   onClick,
   controlsId = undefined,
   label = 'Schließen',
-  positionRight = undefined,
+  style,
 }) => {
   return (
     <StyledCloseIcon
@@ -45,7 +45,7 @@ export const ModalCloseIcon: React.FC<Props> = ({
       aria-label={label}
       aria-controls={controlsId}
       role="button"
-      styles={{ right: positionRight }}
+      style={style}
     />
   );
 };

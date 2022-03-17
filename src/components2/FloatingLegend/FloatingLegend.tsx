@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ModalCloseIcon } from '~/components2/ModalCloseIcon';
+import { ClosePanelButton } from '~/components2/ClosePanelButton';
 import config from '~/config';
 import { media } from '~/styles/utils';
 
@@ -16,7 +16,7 @@ const FloatingWrapper = styled.section`
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
   bottom: 0;
   position: absolute;
-  z-index: 400;
+  z-index: 700;
 
   ${media.s`
     padding: 0;
@@ -31,10 +31,7 @@ const FloatingWrapper = styled.section`
     bottom: initial;
     position: absolute;
     left: 15px;
-    top: ${
-      ({ style: { top } }: any) =>
-        top || '85px' /* did not find the proper TS types… */
-    };
+    top: 85px;
     width: 40vw;
     max-width: 24em;
     font-size: 1.5625vw;
@@ -70,25 +67,27 @@ const IconWrapper = styled.div`
 export type FloatingLegendProps = {
   visible: boolean;
   closeLegend: () => void;
-  positionTop?: string;
+  closeLegendStyle?: React.CSSProperties;
+  style?: React.CSSProperties;
 };
 
 export const FloatingLegend: React.FC<FloatingLegendProps> = ({
   visible,
   closeLegend,
-  positionTop,
+  closeLegendStyle,
+  style,
   children,
 }) => {
   if (!visible) return null;
 
   return (
-    <FloatingWrapper id="Legend" style={{ top: positionTop }}>
+    <FloatingWrapper id="Legend" style={style}>
       <IconWrapper>
-        <ModalCloseIcon
+        <ClosePanelButton
           onClick={() => closeLegend()}
           controlsId="Legend"
           label="Legende schließen"
-          positionRight="25px"
+          style={closeLegendStyle}
         />
       </IconWrapper>
       <LegendListWrapper>{children}</LegendListWrapper>

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ModalCloseIcon } from '~/components2/ModalCloseIcon';
+import { ClosePanelButton } from '~/components2/ClosePanelButton';
 import { StatsCounter, StatsExpanded } from '~/pages/Reports/components/Stats';
 import config from '~/pages/Reports/config';
 import { BaseWrapper } from './LegendCollapsed';
@@ -29,7 +29,7 @@ const StyledLegendGrid = styled(LegendGrid)<{ compact: boolean }>`
 
 const LegendExpanded = ({ onToggle, compact = false }) => (
   <Wrapper role="complementary" id="reports-map-legend">
-    <ModalCloseIcon
+    <ClosePanelButton
       onClick={onToggle}
       label="Legende schließen"
       controlsId="reports-map-legend"
