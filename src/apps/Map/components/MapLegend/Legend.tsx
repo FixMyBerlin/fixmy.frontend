@@ -6,7 +6,7 @@ import {
   FloatingLegendProps,
 } from '~/components2/FloatingLegend';
 import config from '~/config';
-import { CadastreLegendGrid, IncidentLegendGrid } from './index';
+import { CadastreLegendGrid, IncidentLegendGrid } from '.';
 
 const Header = styled.h1`
   font-size: 1.2em;

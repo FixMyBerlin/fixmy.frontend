@@ -5,7 +5,7 @@ import {
   LegendCol,
   LegendItem,
   LegendWrapper,
-} from './index';
+} from './Styles';
 
 export const IncidentLegendGrid = () => (
   <LegendWrapper>
