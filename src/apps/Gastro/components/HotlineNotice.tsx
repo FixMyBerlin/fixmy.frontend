@@ -58,8 +58,8 @@ const HotlineNotice = () => {
       <CardContent>
         <Typography>
           Alternativ kontaktieren Sie{' '}
-          <Link href="mailto:Aufsicht.SGA@ba-fk.berlin.de">
-            Aufsicht.SGA@ba-fk.berlin.de
+          <Link href="mailto:gastro@ba-fk.berlin.de">
+            gastro@ba-fk.berlin.de
           </Link>{' '}
           für Rückfragen.
         </Typography>
