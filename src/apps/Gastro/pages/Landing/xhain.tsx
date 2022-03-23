@@ -230,8 +230,8 @@ const XhainLanding = ({ district }) => {
         <Card>
           <CardContent>
             <Typography>
-              Bitte beachten Sie, dass dieses Jahr Verwaltungsgebühren in Höhe{' '}
-              <strong>51,20 EUR</strong> hierfür fällig werden.
+              Bitte beachten Sie, dass dieses Jahr Verwaltungsgebühren in Höhe
+              von <strong>51,20 EUR</strong> hierfür fällig werden.
             </Typography>
           </CardContent>
         </Card>
@@ -379,8 +379,8 @@ const XhainLanding = ({ district }) => {
         <Card>
           <CardContent>
             <Typography>
-              Bitte beachten Sie, dass dieses Jahr Verwaltungsgebühren in Höhe{' '}
-              <strong>51,20 EUR</strong> hierfür fällig werden.
+              Bitte beachten Sie, dass dieses Jahr Verwaltungsgebühren in Höhe
+              von <strong>51,20 EUR</strong> hierfür fällig werden.
             </Typography>
           </CardContent>
         </Card>
