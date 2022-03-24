@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import Header from '~/apps/Gastro/components/Header';
 import { media } from '~/styles/utils';
 
-import TempelbergLanding from './tempelberg';
 import XhainLanding from './xhain';
 
 const StyledContainer = styled(Container)`
@@ -29,7 +28,6 @@ const Landing = ({ district }) => {
       <Header showInfoLink={false} />
       <StyledContainer maxWidth="sm">
         {district?.name === 'xhain' && <XhainLanding />}
-        {district?.name === 'tempelberg' && <TempelbergLanding />}
       </StyledContainer>
     </>
   );
