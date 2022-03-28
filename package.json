@@ -50,7 +50,7 @@
     "@turf/length": "^6.3.0",
     "abortcontroller-polyfill": "^1.7.3",
     "core-js": "^3.19.3",
-    "d3-scale": "^3.2.3",
+    "d3-scale": "^4.0.2",
     "date-fns": "^2.20.2",
     "debug": "^4.3.3",
     "dotenv": "^8.2.0",
