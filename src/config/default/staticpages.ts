@@ -1,9 +1,5 @@
 export default [
   {
-    key: 'about',
-    route: '/info',
-  },
-  {
     key: 'contact',
     route: '/kontakt',
   },

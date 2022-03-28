@@ -5,8 +5,6 @@ interface RouteConfig {
     projectsDetail: string;
     hbiIndex: string;
     hbiDetail: string;
-    popupIndex: string;
-    popupDetail: string;
   };
   analysis?: string;
   reports?: {
@@ -18,8 +16,13 @@ interface RouteConfig {
   spielstrassen?: {
     [page: string]: string;
   };
-  popupbikelanes?: string;
   research?: {
+    [page: string]: string;
+  };
+  wayToSchool?: {
+    [page: string]: string;
+  };
+  parkingLane?: {
     [page: string]: string;
   };
   // mandatory routes
@@ -39,8 +42,6 @@ const routes: RouteConfig = {
     hbiDetail: '/zustand/:id/:name?',
     projectsIndex: '/planungen',
     projectsDetail: '/planungen/:id/:name?',
-    popupIndex: '/popupbikelanes',
-    popupDetail: '/popupbikelanes/:id/:name?',
   },
   reports: {
     temporarily_forward_from_this_to_index: '/meldungen',
@@ -66,7 +67,15 @@ const routes: RouteConfig = {
     register: '/friedrichshain-kreuzberg/spielstrassen/:slug',
     thanks: '/friedrichshain-kreuzberg/spielstrassen/:slug/danke',
   },
-  popupbikelanes: '/popupbikelanes',
+  // Note: React router does not like it if I use /friedrichshain-kreuzberg/schulwegsicherheit here, so we turn it around.
+  wayToSchool: {
+    landing: '/schulwegsicherheit',
+    xhain: '/schulwegsicherheit/friedrichshain-kreuzberg',
+  },
+  parkingLane: {
+    landing: '/parkraum',
+    xhain: '/parkraum/friedrichshain-kreuzberg',
+  },
   signup: '/registrieren',
   login: '/anmelden',
   forgotPassword: '/passwort-vergessen',

@@ -196,7 +196,7 @@ const DirectRegistrationForm = ({ onSuccess, district }: Props) => (
           handleChange={handleChange}
         />
 
-        <SectionNotice values={values} />
+        <SectionNotice />
         <SectionEmail />
 
         <div className="checkboxFieldGroup">

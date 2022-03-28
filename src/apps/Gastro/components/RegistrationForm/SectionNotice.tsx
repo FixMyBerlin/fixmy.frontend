@@ -12,7 +12,7 @@ const FormError = styled(FormHelperText)`
   }
 `;
 
-const SectionNotice = ({ values }) => (
+const SectionNotice = () => (
   <section>
     <p>
       <strong>Bedingungen für die Nutzung der Sonderflächen</strong>
@@ -52,23 +52,11 @@ const SectionNotice = ({ values }) => (
         widerrechtliche Nutzung in geeigneter Weise zu sichern.
       </li>
       <li>
-        Verpflichtung zur Einführung eines{' '}
-        <strong>Pfandsystems für Einweggebinde</strong> bei der Herausgabe von
-        Speisen. Damit durch die zusätzlichen Gastronomieflächen keine
-        zusätzlichen Müllmengen entstehen, erklären sich die beantragenden
-        Betriebe grundsätzlich bereit, ein Pfandsystem einzuführen.
-        <br />
-        Selbstverständlich dürfen vorhandene Mehrweggeschire genutzt werden.
-        Zeitpunkt und Gebiete, in denen das Pfandsystem eingeführt wird, stehen
-        noch nicht fest.
-        <br />
-        Für die Herausgabe von Einweggebinden stellt das Bezirksamt
-        entsprechende Pfandrollen zur Verfügung, die erst nach Herausgabe der
-        Kartons / Becher samt Vereinnahmung des Pfandes erstattet werden müssen.
-        Darüber hinaus entstehen den Gastronomiebetrieben keine Aufwendungen.
-        Das Pfand wird 2 € für Pizza- und Essenskartons / Schalen, sowie 1 € für
-        Kaffeebecher betragen. Die Rückholung erfolgt unabhängig von den
-        Gastronomiebetrieben durch einen Sozialhilfeträger.
+        Im Sinne der Abfallvermeidung und der Zero Waste Strategie des Bezirkes
+        ist bei einem Außer-Haus Verkauf von Speisen und Getränken die
+        Herausgabe in gastronomischen Einwegverpackungen untersagt. Die Ausgabe
+        von Speisen und Getränken zum Mitnehmen hat ausschließlich in
+        Mehrwegbehältnissen zu erfolgen
         <br />
         <a
           href="/uploads/offene-terrassen/Nebenbestimmungen.pdf"

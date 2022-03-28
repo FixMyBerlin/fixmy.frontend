@@ -128,7 +128,7 @@ const SignupForm = ({ onSuccess, onSubmit, district }) => (
       setSubmitting(false);
     }}
   >
-    {({ status, values, handleChange, isValid, isSubmitting }) => (
+    {({ status, handleChange, isSubmitting }) => (
       <StyledForm>
         <section>
           <h4>Bitte machen Sie Angaben zu Ihrem Betrieb:</h4>

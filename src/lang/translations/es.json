@@ -1068,7 +1068,16 @@
     "defaultMessage": "Las escenas en las calles secundarias generalmente recibieron peores calificaciones que las de las carreteras principales. Sin embargo, esta comparación es sólo parcialmente significativa, ya que el volumen de tráfico no se pudo mostrar con suficiente claridad en las imágenes estáticas de la encuesta. Las escenas en las que no había un tráfico fluido de vehículos motorizados y en las que había una señalización clara como una ciclocalle recibieron las mejores calificaciones."
   },
   "research.06_summary.p11": {
-    "defaultMessage": "Los datos deben analizarse más a fondo. El conjunto de datos de resultados está disponible gratuitamente y ya se está utilizando para evaluaciones posteriores. ¡Esperamos tener noticias suyas si está interesado y desea vincular sus resultados aquí! Para los siguientes pasos, se debe realizar una comparación de los resultados sobre seguridad subjetiva con la situación real de accidentes para formular recomendaciones."
+    "defaultMessage": "Los datos deben ser analizados más a fondo. Un avance sería comparar los resultados de este estudio con la ocurrencia real de accidentes para poder derivar recomendaciones."
+  },
+  "research.06_summary.p12": {
+    "defaultMessage": "El conjunto de datos con los resultados obtenidos está disponible gratuitamente y ya se está utilizando para evaluaciones posteriores.  ¡Esperamos tener noticias suyas si está interesado y desea vincular sus resultados aquí!"
+  },
+  "research.06_summary.p13": {
+    "defaultMessage": "En el estudio {linkPaper} (Stülpnagel & Binnig 2022), se evaluaron más interrogantes sobre la influencia de las características de la infraestructura en la percepción subjetiva de la seguridad. {linkVideo}, se presentan los resultados clave del estudio."
+  },
+  "research.06_summary.p13.linkVideoText": {
+    "defaultMessage": "En esta conferencia"
   },
   "research.07_team.p01.heading": {
     "defaultMessage": "QUIENES SE ENCUENTRAN ATRÁS DE LA ENCUESTA "
@@ -1086,7 +1095,7 @@
     "defaultMessage": "Dirección de la oficina:"
   },
   "research.07_team.p04.funding": {
-    "defaultMessage": "FixMyCity está auspiciado por BMVI (Ministerio Federal de Transporte e Infraestructura Digital) y la Secretaría del Senado de Berlín."
+    "defaultMessage": "FixMyCity está auspiciado por BMDV (Ministerio Federal de Transporte e Infraestructura Digital) y la Secretaría del Senado de Berlín."
   },
   "research.07_team.p04.phone": {
     "defaultMessage": "Tel: 030 - 54 90 86 65"

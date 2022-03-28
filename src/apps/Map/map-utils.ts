@@ -2,6 +2,7 @@ import turfAlong from '@turf/along';
 import { lineString as turfLineString } from '@turf/helpers';
 import turfLength from '@turf/length';
 import debug from 'debug';
+import mapboxgl from 'mapbox-gl';
 
 import config from '~/config';
 import { isNumeric, getParameterByName } from '~/utils/utils';
@@ -11,8 +12,8 @@ import { PLANNING_PHASES, HBI_STOPS } from './constants';
 // eslint-disable-next-line
 /// <reference lib="dom" />
 
-type mapboxFilter = any[];
-type sideKey = 'side0_' | 'side1_' | 'side2_';
+type MapboxFilter = any[];
+type SideKey = 'side0_' | 'side1_' | 'side2_';
 
 const logger = debug('fmc:map:utils');
 
@@ -20,7 +21,7 @@ const logger = debug('fmc:map:utils');
 export const intersectionLayers = ['xCenter', 'xSide0', 'xSide1'];
 export const intersectionLayersWithOverlay = [
   ...intersectionLayers,
-  'overlayLine',
+  'xOverlay',
 ];
 export const standardLayers = ['center', 'side0', 'side1'];
 export const standardLayersWithOverlay = [...standardLayers, 'overlayLine'];
@@ -45,6 +46,12 @@ export function animateView(map: mapboxgl.Map, view: mapboxgl.MapboxOptions) {
   });
 }
 
+/**
+ * Change binary visibility of layers
+ * @param map Map object
+ * @param layer id of the layer
+ * @param isVisible boolean wether to display layer
+ */
 export function toggleLayer(
   map: mapboxgl.Map,
   layer: string,
@@ -69,12 +76,26 @@ export function filterLayersById(
   subMap: 'projects' | 'hbi',
   id: number
 ): void {
-  let VisibilityFilter;
+  const opacityHighZoom = subMap === 'projects' ? 0.2 : 0;
+  let currentOpacity;
   if (id) {
-    VisibilityFilter = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
+    // Highlight feature with id, decrease opacity for all others
+    currentOpacity = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
   } else {
-    VisibilityFilter = 1;
+    currentOpacity = 1;
   }
+
+  const VisibilityFilter = [
+    'interpolate',
+    ['linear'],
+    ['zoom'],
+    17,
+    currentOpacity,
+    17.5,
+    opacityHighZoom,
+    19,
+    0,
+  ];
 
   const targets =
     subMap === 'projects'
@@ -90,6 +111,7 @@ export function filterLayersById(
   );
 }
 
+// Select the side if it's specific or both sides (2)
 const sideFilter0 = ['match', ['get', 'side'], [2, 0], true, false];
 const sideFilter1 = ['match', ['get', 'side'], [2, 1], true, false];
 
@@ -136,32 +158,11 @@ export function setPlanningLegendFilter(
 }
 
 /**
- * Show all popup bike lanes from the projects layer
- *
- * @param {MapboxGL instance} map
- */
-export function setPopupLanesFilter(map: mapboxgl.Map) {
-  const filter = ['==', 'inactive', ['get', 'phase']];
-  map.setFilter(config.apps.map.layers.projects.center, filter);
-  map.setFilter(config.apps.map.layers.projects.overlayLine, filter);
-  map.setFilter(config.apps.map.layers.projects.side0, [
-    'all',
-    sideFilter0,
-    filter,
-  ]);
-  map.setFilter(config.apps.map.layers.projects.side1, [
-    'all',
-    sideFilter1,
-    filter,
-  ]);
-}
-
-/**
  * Return a Mapbox expression to access the HBI values embedded in Mapbox
  *
  * @param {*} sideKey which side's HBI value to retrieve (layer prefix)
  */
-function getHbiExpression(sideKey: sideKey | '') {
+function getHbiExpression(sideKey: SideKey | '') {
   if (sideKey === '') {
     return ['min', ...['side0_', 'side1_', 'side2_'].map(getHbiExpression)];
   }
@@ -180,28 +181,36 @@ function getHbiExpression(sideKey: sideKey | '') {
  * @param {Array<boolean>} filters Four booleans describe which hbi states are visible
  */
 function getHbiFilterRules(
-  sideKey: sideKey | '',
+  sideKey: SideKey | '',
   hbiFilters: boolean[]
-): mapboxFilter[] {
+): MapboxFilter[] {
   const expression = getHbiExpression(sideKey);
   const activeHbiStops = HBI_STOPS.filter((_, i) => hbiFilters[i]);
   return activeHbiStops.map((hbiStop) => ['==', expression, hbiStop.value]);
 }
 
-export function toggleVisibleHbiLines(
+export function setHbiLegendFilter(
   map: mapboxgl.Map,
-  hbiFilter: mapboxFilter
+  hbiFilter: MapboxFilter
 ): void {
   const side2rules = getHbiFilterRules('side2_', hbiFilter);
 
   map.setFilter(config.apps.map.layers.hbi.xCenter, ['any', ...side2rules]);
   map.setFilter(config.apps.map.layers.hbi.xSide0, ['any', ...side2rules]);
   map.setFilter(config.apps.map.layers.hbi.xSide1, ['any', ...side2rules]);
+  map.setFilter(config.apps.map.layers.hbi.xOverlay, ['any', ...side2rules]);
 }
 
+/**
+ * Takes a Point or MultilineString feature and returns its center
+ * coordinates. Returns `defaultCenter` if `geometry` is either null or not a
+ * Point/MultiLineString geometry.
+ */
 export function getCenterFromGeom(geometry: any, defaultCenter = null) {
   let lineString = geometry;
   if (geometry && geometry.coordinates) {
+    if (geometry.type === 'Point') return geometry.coordinates;
+
     if (geometry.type === 'MultiLineString') {
       lineString = turfLineString(
         geometry.coordinates.reduce((res, coord) => res.concat(coord)),

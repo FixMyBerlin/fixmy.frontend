@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '~/config';
 import BikestandsIcon from '~/images/reports/bikestands-icon.svg';
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
 import ReportPin from '~/pages/Reports/components/ReportPin';
-import config from '~/pages/Reports/config';
 import Heading from '~/pages/Reports/pages/SubmitReport/components/Heading';
 
 const HeadlineSection = styled.div`

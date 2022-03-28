@@ -2208,7 +2208,41 @@
   "research.06_summary.p11": [
     {
       "type": 0,
-      "value": "The data still have great potential to be analysed even further. The data set is freely available to the public and is already being used for further investigations. We would be delighted to hear from anyone interested in continuing this research and will gladly publish the links to any new results on our website!The next steps will be to compare the results about subjective safety with the concrete data about road accidents in order to make productive recommendations."
+      "value": "The data still have great potential to be analysed even further."
+    }
+  ],
+  "research.06_summary.p12": [
+    {
+      "type": 0,
+      "value": "The data set is freely available to the public and is already being used for further investigations. We would be delighted to hear from anyone interested in continuing this research and will gladly publish the links to any new results on our website! The next steps will be to compare the results about subjective safety with the concrete data about road accidents in order to make productive recommendations."
+    }
+  ],
+  "research.06_summary.p13": [
+    {
+      "type": 0,
+      "value": "The study "
+    },
+    {
+      "type": 1,
+      "value": "linkPaper"
+    },
+    {
+      "type": 0,
+      "value": " (Stülpnagel & Binnig 2022), examines further questions on the influence of different infrastructure characteristics on the subjective perception of safety. "
+    },
+    {
+      "type": 1,
+      "value": "linkVideo"
+    },
+    {
+      "type": 0,
+      "value": ", central results of the study are presented."
+    }
+  ],
+  "research.06_summary.p13.linkVideoText": [
+    {
+      "type": 0,
+      "value": "In this lecture by Rul von Stülpnagel"
     }
   ],
   "research.07_team.p01.heading": [
@@ -2244,7 +2278,7 @@
   "research.07_team.p04.funding": [
     {
       "type": 0,
-      "value": "FixMyCity is supported by BMVI and the Berlin Senate."
+      "value": "FixMyCity is supported by BMDV and the Berlin Senate."
     }
   ],
   "research.07_team.p04.phone": [

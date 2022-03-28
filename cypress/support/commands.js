@@ -11,7 +11,7 @@ import { login } from '~/pages/User/UserState';
 
 Cypress.Commands.add(
   'fmbClickRandomElement',
-  (selector, isDataAttribute = true, clickOptions) => {
+  (selector, isDataAttribute = true, clickOptions = null) => {
     const fullSelector = isDataAttribute ? `[data-cy=${selector}]` : selector;
     cy.get(fullSelector)
       .as('selection')

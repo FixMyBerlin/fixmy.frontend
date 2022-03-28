@@ -1,4 +1,3 @@
-
 # Radbuegel XHain
 /radbuegel /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
 /meldungen/radbuegel/friedrichshain-kreuzberg/neu/1 /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
@@ -6,7 +5,10 @@
 
 # Spielstraßen
 /friedrichshain-kreuzberg/spielstra%C3%9Fen /friedrichshain-kreuzberg/spielstrassen 301
- 
+
+# Removed content
+/popupbikelanes /planungen:splat 302
+
 # Legacy Plannings Redirects
 /planungen/2725/* /planungen/4/:splat 301
 /planungen/2866/* /planungen/6/:splat 301
@@ -162,7 +164,7 @@
 /planungen/9070/* /planungen/223/:splat 301
 
 /stats/* https://s.fixmycity.de/:splat 200
+/info https://www.fixmycity.de/wer-wir-sind
 
-
- /apple https://apps.apple.com/de/app/simra/id1459516968 301
- /android https://play.google.com/store/apps/details?id=de.tuberlin.mcc.simra.app&hl=de 301
+/apple https://apps.apple.com/de/app/simra/id1459516968 301
+/android https://play.google.com/store/apps/details?id=de.tuberlin.mcc.simra.app&hl=de 301

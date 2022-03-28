@@ -1,23 +1,16 @@
 import debug from 'debug';
-import React, { useState, useEffect, ReactElement } from 'react';
+import React, { useEffect, useState } from 'react';
 import { InView } from 'react-intersection-observer';
 import styled from 'styled-components';
-
-import { Header } from '~/components2/Header';
-import { LocaleSwitcher } from '~/components2/LocaleSwitcher';
-import { MenuButton } from '~/components2/MenuButton';
 import config from '~/config';
 import { media } from '~/styles/utils';
-
-import TOC from './TOC';
+import { LocaleCode } from '~/types';
+import { ArticleWrapperHeader } from './ArticleWrapperHeader';
+import { TOC } from './TOC';
 
 const log = debug('fmc:Article:ArticleWrapper');
 
-interface PageProps {
-  bgPattern?: string;
-}
-
-const Page = styled.main<PageProps>`
+const Page = styled.main<{ bgPattern?: string }>`
   background: url(${(props) => props.bgPattern});
   min-height: 100%;
 `;
@@ -60,50 +53,6 @@ const ContentWrapper = styled.div`
   `}
 `;
 
-const MobileHeader = styled(Header)`
-  && {
-    display: block;
-    ${media.m`
-    display: none;
-  `}
-  }
-`;
-
-const DesktopHeader = styled.div`
-  display: none;
-  ${media.m`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  `}
-`;
-
-const OffsetMenuButton = styled(MenuButton)`
-  display: inline-flex;
-  ${media.l`
-    && {
-      padding: 30px 40px;
-    }
-  `}
-`;
-
-const StyledLocaleSwitcher = styled(LocaleSwitcher)`
-  ${media.l`
-    && {
-      right: 1em;
-    }
-  `}
-`;
-
-const LogoWrapper = styled.div`
-  padding: 12px;
-  ${media.l`
-    padding: 30px 40px;
-
-  `}
-`;
-
 const MobileTOC = styled(TOC)`
   ${media.l`
       display: none;
@@ -117,28 +66,35 @@ const DesktopTOC = styled(TOC)`
     `}
 `;
 
-const ArticleWrapper = ({
+type Props = {
+  bannerTitle: string;
+  logo?: React.ReactNode;
+  bgPattern?: string;
+  tocTitle?: string;
+  enumerateToc?: boolean;
+  locales?: LocaleCode[];
+  className?: string;
+  children: any; // Really hard to type
+};
+
+export const ArticleWrapper: React.VFC<Props> = ({
   bannerTitle,
   logo = null,
   bgPattern = null,
   tocTitle = null,
-  hasToc = false,
   enumerateToc = true,
-  tocHasActiveState = true,
   locales = null,
   className = null,
   children,
 }) => {
-  const [activeTocIndex, setActiveTocIndex] = useState(
-    tocHasActiveState ? 0 : null
-  );
+  const [activeTocIndex, setActiveTocIndex] = useState(0);
 
   const [visibleSections, setVisibleSections] = useState<number[]>(
     new Array(children.length).map(() => 0)
   );
 
   const onViewChange = (
-    inView: boolean,
+    _inView: boolean,
     entry: IntersectionObserverEntry,
     index: number
   ) => {
@@ -178,55 +134,48 @@ const ArticleWrapper = ({
   }, [visibleSections]);
 
   const tocChildren = React.Children.toArray(children).filter(
-    (child: ReactElement) => child.props.toc
+    (child: React.ReactElement) => child.props.toc
   );
 
   return (
     <Page className={className} bgPattern={bgPattern}>
-      <MobileHeader position="sticky" locales={locales} logo={logo}>
-        {bannerTitle}
-      </MobileHeader>
-      <DesktopHeader>
-        <OffsetMenuButton />
-        {locales && <StyledLocaleSwitcher locales={locales} />}
-        {logo && <LogoWrapper>{logo}</LogoWrapper>}
-      </DesktopHeader>
+      <ArticleWrapperHeader
+        locales={locales}
+        logo={logo}
+        bannerTitle={bannerTitle}
+      />
       <ContentWrapperOuter>
         <ContentWrapper className="contentWrapper">
           {React.Children.map(children, (child) => {
             const appendToc =
-              child.type.displayName === 'Introduction' && hasToc;
+              child.type.displayName === 'Article/Typography/Intro';
 
-            const tocProps = {
-              activeIndex: activeTocIndex,
-              entries: children,
-              enumerate: enumerateToc,
-            };
-
+            // TOC is attached only to the <Intro> Component
+            // All other components witout props.toc are just returned.
             if (!child.props.toc) {
+              if (!appendToc) return child;
+
               return (
                 <>
-                  {appendToc && (
-                    <DesktopTOC
-                      hasActiveState={tocHasActiveState}
-                      title={tocTitle}
-                      {...tocProps}
-                    />
-                  )}
+                  <DesktopTOC
+                    title={tocTitle}
+                    activeIndex={activeTocIndex}
+                    entries={children}
+                    enumerate={enumerateToc}
+                  />
                   {child}
-                  {appendToc && (
-                    <MobileTOC
-                      hasActiveState={tocHasActiveState}
-                      title={tocTitle}
-                      {...tocProps}
-                    />
-                  )}
+                  <MobileTOC
+                    title={tocTitle}
+                    activeIndex={activeTocIndex}
+                    entries={children}
+                    enumerate={enumerateToc}
+                  />
                 </>
               );
             }
 
             const tocIndex = tocChildren.findIndex(
-              (c: ReactElement) => c.props.toc === child.props.toc
+              (c: React.ReactElement) => c.props.toc === child.props.toc
             );
 
             return (
@@ -236,9 +185,21 @@ const ArticleWrapper = ({
                   onViewChange(inView, entry, tocIndex)
                 }
               >
-                {appendToc && <DesktopTOC {...tocProps} />}
+                {appendToc && (
+                  <DesktopTOC
+                    activeIndex={activeTocIndex}
+                    entries={children}
+                    enumerate={enumerateToc}
+                  />
+                )}
                 {child}
-                {appendToc && <MobileTOC {...tocProps} />}
+                {appendToc && (
+                  <MobileTOC
+                    activeIndex={activeTocIndex}
+                    entries={children}
+                    enumerate={enumerateToc}
+                  />
+                )}
               </InView>
             );
           })}
@@ -247,5 +208,3 @@ const ArticleWrapper = ({
     </Page>
   );
 };
-
-export default ArticleWrapper;

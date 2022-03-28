@@ -1,22 +1,13 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import slugify from 'slugify';
 import styled from 'styled-components';
-
 import config from '~/config';
 import { media } from '~/styles/utils';
 
-interface HeadingProps {
-  as?: 'h1' | 'h2' | 'h3';
-  toc?: string;
-  tocAnchor?: string;
-  children?: ReactNode;
-  className?: string;
-}
-
-interface StyledHeadingProps {
+type StyledHeadingProps = {
   toc?: string;
   className?: string;
-}
+};
 
 const Heading1 = styled.h1<StyledHeadingProps>`
   font-size: 1.5em;
@@ -26,6 +17,7 @@ const Heading1 = styled.h1<StyledHeadingProps>`
   line-height: 1.25;
   max-width: 518px;
   color: ${config.colors.darkbg};
+  hyphens: auto;
 
   ${media.s`
     font-size: 1.875em;
@@ -43,45 +35,57 @@ const Heading1 = styled.h1<StyledHeadingProps>`
 const Heading2style = styled.h2<StyledHeadingProps>`
   color: ${config.colors.darkbg};
   font-size: 1.5em;
-  margin: 1.5em auto 0.25em;
+  margin-top: 1.5em;
+  margin-right: auto;
+  margin-bottom: 1.5em;
+  margin-left: 0;
   max-width: 518px;
   text-transform: uppercase;
+  hyphens: auto;
 
   ${media.s`
     font-size: 2em;
   `}
 
   ${media.m`
-    margin: 2em auto 0.5rem 0;
-  `}
+    margin-top: 2em;
+    `}
 
   ${media.l`
+    max-width: 598px;
+    margin-bottom: 2em;
+  `}
+
+  ${media.xl`
+    margin-left: 1em;
     max-width: calc(646px + 151px);
   `}
 `;
 
-const DecoLine = styled.div`
-  font-size: 1.5rem;
+const Heading2Line = styled.div`
   width: 50%;
   border-bottom: 2px solid ${config.colors.change_2};
-  margin-bottom: 0.5em;
+  margin-top: 0.25em;
 
-  ${media.s`
-    margin-bottom: 1.5em;
+  ${media.m`
+    margin-top: 0.5em;
   `}
 `;
 
 const Heading2 = ({ children, ...props }) => (
-  <>
-    <Heading2style {...props}>{children}</Heading2style>
-    <DecoLine />
-  </>
+  <Heading2style {...props}>
+    {children}
+    <Heading2Line />
+  </Heading2style>
 );
 
 const Heading3 = styled.h3<StyledHeadingProps>`
   font-size: 1.5em;
   line-height: 1.2;
-  margin: 2em auto 0;
+  margin-top: 2em;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
   max-width: 518px;
   color: ${config.colors.darkbg};
 
@@ -90,7 +94,7 @@ const Heading3 = styled.h3<StyledHeadingProps>`
   `}
 
   ${media.m`
-    margin: 2em auto 1em;
+    margin-bottom: 1em;
   `}
 
   ${media.l`
@@ -109,8 +113,8 @@ const AnchorStyle = styled.a`
     margin: -4em 0 0;
 
     ${media.m`
-    height: 1px;
-    margin: -1px 0 0;
+      height: 1px;
+      margin: -1px 0 0;
     `}
   }
 `;
@@ -121,11 +125,22 @@ const headings = {
   h3: Heading3,
 };
 
+type AnchorWrapperProps = {
+  toc?: string | null;
+  tocAnchor?: string | null;
+  children?: React.ReactElement;
+};
+
 /**
  * Provide an anchor for accessibility if toc prop is provided
  */
-const AnchorWrapper = ({ toc, children, tocAnchor = null }) => {
-  if (toc == null) return <>{children}</>;
+const AnchorWrapper: React.FC<AnchorWrapperProps> = ({
+  toc,
+  tocAnchor = null,
+  children,
+}) => {
+  if (!toc) return children;
+
   return (
     <AnchorStyle
       href={`#${slugify(tocAnchor || toc, { lower: true })}`}
@@ -137,7 +152,20 @@ const AnchorWrapper = ({ toc, children, tocAnchor = null }) => {
   );
 };
 
-const Heading = ({ as, toc, tocAnchor, children, className }: HeadingProps) => {
+type HeadingProps = {
+  as?: keyof typeof headings;
+  toc?: string | null;
+  tocAnchor?: string | null;
+  className?: string | null;
+};
+
+export const Heading: React.FC<HeadingProps> = ({
+  as,
+  toc,
+  tocAnchor,
+  children,
+  className,
+}) => {
   const HeadingComponent = headings[as] ? headings[as] : Heading1;
 
   return (
@@ -146,5 +174,3 @@ const Heading = ({ as, toc, tocAnchor, children, className }: HeadingProps) => {
     </AnchorWrapper>
   );
 };
-
-export default Heading;

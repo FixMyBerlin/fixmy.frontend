@@ -1,5 +1,4 @@
 import ky from 'ky';
-import qs from 'qs';
 import { match, matchPath } from 'react-router-dom';
 import { Action, Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
@@ -40,7 +39,7 @@ export const SET_HBI_DATA = 'Map/MapState/SET_HBI_DATA';
 const SET_HBI_DATA_FETCH_STATE = 'Map/MapState/SET_HBI_DATA_FETCH_STATE';
 
 // parsed from the first path segment of the url
-type MapView = 'zustand' | 'planungen' | 'popupbikelanes';
+type MapView = 'zustand' | 'planungen';
 
 // todo: define this based on fixmy.platform serializer & model
 type ProjectFromMapbox = any;
@@ -176,7 +175,7 @@ export const updateHistory = (path: string) => (dispatch: Dispatch) => {
 
 export const detectEmbedMode = (location: Location) => (dispatch: Dispatch) => {
   const isEmbedMode =
-    !!qs.parse(location.search, { ignoreQueryPrefix: true }).embed ||
+    new URLSearchParams(location.search).has('embed') ||
     window.location.host === 'embed.fixmyberlin.de';
 
   const action: UpdateHistory = {
@@ -407,7 +406,7 @@ export function loadHBIData() {
     }
 
     // todo: make api.get generic
-    dispatch(setHbiData((hbiData as unknown) as HBIData));
+    dispatch(setHbiData(hbiData as unknown as HBIData));
     dispatch(setHBIDataFetchState('success'));
   };
 }
@@ -620,12 +619,12 @@ const visionZeroFromAPI = (
  *
  * Returns null if active view is not HBI map or no map point has been clicked.
  */
-const getPopupHBI = ({ MapState }: RootState): HBI => {
-  if (MapState.activeView !== 'zustand' || MapState.popupData == null)
+const getPopupHBI = ({ MapState: mapState }: RootState): HBI => {
+  if (mapState.activeView !== 'zustand' || mapState.popupData == null)
     return null;
 
   const components: HBI['components'] = {
-    visionZeroIndex: visionZeroFromMapbox(MapState.popupData),
+    visionZeroIndex: visionZeroFromMapbox(mapState.popupData),
   };
 
   return {
@@ -641,15 +640,15 @@ const getPopupHBI = ({ MapState }: RootState): HBI => {
  *
  * Returns null if active view is not HBI map or hbi fetch state is not success.
  */
-const getDetailsHBI = ({ MapState }: RootState): HBI => {
+const getDetailsHBI = ({ MapState: mapState }: RootState): HBI => {
   if (
-    MapState.activeView !== 'zustand' ||
-    MapState.hbiDataFetchState !== 'success'
+    mapState.activeView !== 'zustand' ||
+    mapState.hbiDataFetchState !== 'success'
   )
     return null;
 
   const components: HBI['components'] = {
-    visionZeroIndex: visionZeroFromAPI(MapState.hbiData),
+    visionZeroIndex: visionZeroFromAPI(mapState.hbiData),
   };
 
   return {

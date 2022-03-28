@@ -9,7 +9,7 @@ const MapControl = styled.div`
   right: ${(props) => props.margins.right};
   bottom: ${(props) => props.margins.bottom};
   left: ${(props) => props.margins.left};
-  z-index: 1000;
+  z-index: 200;
 `;
 
 const getMargins = (props) => {

@@ -1,3 +1,3 @@
-import ArticleWrapper from './ArticleWrapper';
-
-export default ArticleWrapper;
+export * from './ArticleWrapper';
+export * from './TOC';
+export * from './TOCEntry';

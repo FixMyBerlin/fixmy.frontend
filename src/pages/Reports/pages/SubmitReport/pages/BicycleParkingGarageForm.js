@@ -100,7 +100,7 @@ const BicycleParkingGarageForm = ({ onConfirm }) => {
       </StyledWeiterButton>
 
       <StyledSubHeading>Was sind Fahrradparkhäuser?</StyledSubHeading>
-      <Paragraph>
+      <Paragraph as="div">
         Fahrradparkhäuser sind abschließbare Stationen, in denen Fahrräder gegen
         Gebühr besonders sicher untergebracht werden können. Teilweise sind sie
         auch mit Ladestationen für E-Bikes ausgerüstet.

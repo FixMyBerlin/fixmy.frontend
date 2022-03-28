@@ -213,7 +213,7 @@
     "defaultMessage": "diesem PDF zu den Spezifikationen"
   },
   "research.04_dataset.p2": {
-    "defaultMessage": "Laden Sie sich die Ergebnisse der Umfrage über den folgenden Button als\n        JSON-Datensatz herunter:"
+    "defaultMessage": "Laden Sie sich die Ergebnisse der Umfrage über den folgenden Button als JSON-Datensatz herunter:"
   },
   "research.05_results.chart1.1": {
     "defaultMessage": "männlich"
@@ -456,7 +456,7 @@
     "defaultMessage": "AG5 - 50 bis 64 Jahre"
   },
   "research.05_results.chart2.7": {
-    "defaultMessage": "AG6 -  65 bis 74 Jahre"
+    "defaultMessage": "AG6 - 65 bis 74 Jahre"
   },
   "research.05_results.chart2.8": {
     "defaultMessage": "AG7 - über 74 Jahre"
@@ -624,7 +624,7 @@
     "defaultMessage": "RVA mit Parken breit"
   },
   "research.05_results.chart7.label": {
-    "defaultMessage": "Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens sowie Situationen mit baulicher Trennung. "
+    "defaultMessage": "Anm: Durchschnitt der Bewertungen aller Situationen mit RVA - ohne Tram, Busspur, oder RVA rechts des Parkens sowie Situationen mit baulicher Trennung."
   },
   "research.05_results.chart7.title": {
     "defaultMessage": "HVS-F: RVA Gesamtbreite schmal und breit"
@@ -1071,7 +1071,16 @@
     "defaultMessage": "Szenen in Nebenstraßen erhielten generell schlechtere Bewertungen als solche an Hauptverkehrsstraßen. Dieser Vergleich ist allerdings nur bedingt aussagekräftig, da in den statischen Bildern der Umfrage die Verkehrsmenge nicht ausreichend deutlich dargestellt werden konnte. Szenen, bei denen kein Fließender Kfz-Verkehr dargestellt wurde und eine deutliche Straßenmarkierung als Fahrradstraße vorhanden war erhielten die besten Bewertungen."
   },
   "research.06_summary.p11": {
-    "defaultMessage": "Die Daten sind weiter zu analysieren. Der Ergebnisdatensatz ist frei verfügbar und wird bereits jetzt für weitere Auswertungen genutzt. Wir freuen uns bei Interesse über eine Kontaktaufnahme und verlinken hier gerne auf die Ergebnisse! In den nächsten Schritten ist ein Abgleich der Ergebnisse zur subjektiven Sicherheit mit dem tatsächlichen Unfallgeschehen durchzuführen, um Empfehlungen abzuleiten."
+    "defaultMessage": "Die Daten sind weiter zu analysieren. Ein Schritt wäre der Abgleich der Ergebnisse zur subjektiven Sicherheit mit dem tatsächlichen Unfallgeschehen, um Empfehlungen abzuleiten."
+  },
+  "research.06_summary.p12": {
+    "defaultMessage": "Der Ergebnisdatensatz ist frei verfügbar und wird bereits jetzt für weitere Auswertungen genutzt. Wir freuen uns bei Interesse über eine Kontaktaufnahme und verlinken hier gerne auf die Ergebnisse!"
+  },
+  "research.06_summary.p13": {
+    "defaultMessage": "In der Untersuchung {linkPaper} wurden weitere Fragen zum Einfluß von Infrastruktur-Merkmalen auf das subjektive Sicherheitsempfinden ausgewertet. {linkVideo} werden zentrale Ergebnisse der Studie vorgestellt."
+  },
+  "research.06_summary.p13.linkVideoText": {
+    "defaultMessage": "In diesem Vortrag von Rul von Stülpnagel"
   },
   "research.07_team.p01.heading": {
     "defaultMessage": "Wer steht hinter der Umfrage"
@@ -1089,7 +1098,7 @@
     "defaultMessage": "Büroadresse:"
   },
   "research.07_team.p04.funding": {
-    "defaultMessage": "FixMyCity wird gefördert durch das BMVI und die Senatskanzlei Berlin."
+    "defaultMessage": "FixMyCity wird gefördert durch das BMDV und die Senatskanzlei Berlin."
   },
   "research.07_team.p04.phone": {
     "defaultMessage": "Tel: 030 - 54 90 86 65"

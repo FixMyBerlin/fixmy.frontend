@@ -1,8 +1,10 @@
 name: integration tests
 
-on:
-  push:
-    branches: ['master', 'develop', 'hotfix/**', 'dependabot/**']
+# Reenable after Cypress is working again with Webpack 5
+# See also https://github.com/cypress-io/cypress/issues/18435 
+# on:
+#    push:
+#      branches:  ['master', 'develop', 'hotfix/**', 'dependabot/**']
 
 jobs:
   e2e:

@@ -1,10 +1,9 @@
-import { createMuiTheme } from '@material-ui/core';
+import { createTheme } from '@material-ui/core';
 import {
   deDE as muiDE,
   enUS as muiEN,
   esES as muiES,
 } from '@material-ui/core/locale';
-
 import config from '~/config';
 import { LocaleCode } from '~/types';
 
@@ -25,7 +24,7 @@ export const getTheme = (locale: LocaleCode) => {
     default:
       muiLocale = muiDE;
   }
-  return createMuiTheme(
+  return createTheme(
     {
       palette: {
         primary: { main: config.colors.interaction },

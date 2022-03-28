@@ -1,14 +1,19 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    // Allow running eslint on files that don't have specific configurations
+    "requireConfigFile": false,
+    "babelOptions": {
+      "configFile": "./babel.config.js"
+    }
+  },
 
   "extends": [
     "airbnb",
     "plugin:cypress/recommended",
     "plugin:chai-friendly/recommended",
     // keep these prettier rules last
-    "plugin:prettier/recommended",
-    "prettier",
-    "prettier/react"
+    "plugin:prettier/recommended"
   ],
 
   "plugins": [
@@ -56,7 +61,6 @@
             "typedefs": false
           }
         ],
-        "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": [
           "warn",
           {
@@ -65,13 +69,18 @@
           }
         ],
         "no-useless-constructor": "off",
-        "@typescript-eslint/no-useless-constructor": "warn"
+        "@typescript-eslint/no-useless-constructor": "warn",
+
+        // Typescript React components should prefer TS syntax over default props
+        "react/require-default-props": "off"
       }
     }
   ],
 
   "rules": {
     "prettier/prettier": ["warn"],
+
+    "no-unused-vars": "warn",
 
     // Set to warn so build is not broken when using camelcase
     // camelcase is acceptable for attributes of api return values
@@ -84,6 +93,14 @@
     "react/prop-types": [1, { "skipUndeclared": true }],
     "react/destructuring-assignment": 0,
     "react/jsx-props-no-spreading": 0,
+
+    "react/function-component-definition": [
+      1,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
 
     "import/extensions": [
       "error",
@@ -101,28 +118,7 @@
     // auto completion for imports and prevent inconsistent naming conventions
     // across modules.
     "import/prefer-default-export": ["off"],
-
-    // Import order is fixed for easier scanning of imports and to prevent
-    // file changes from changed import order.
-    //
-    // This configuration separates sources specified in `groups` with newlines
-    // and sorts moves imports from `~` into the `internal` group.
-    "import/order": [
-      "warn",
-      {
-        "alphabetize": { "order": "asc" },
-        "groups": [
-          "builtin",
-          "external",
-          ["sibling", "parent", "internal"],
-          "index"
-        ],
-        "newlines-between": "always",
-        "pathGroups": [
-          { "pattern": "~/**", "group": "internal", "position": "before" }
-        ]
-      }
-    ]
+    "import/order": "off" // Turned off; we use VSCode's sort "Organize Imports" instead
   },
 
   "env": {

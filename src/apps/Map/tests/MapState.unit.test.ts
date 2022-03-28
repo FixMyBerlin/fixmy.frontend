@@ -2,24 +2,21 @@ import { rest } from 'msw';
 import { AnyAction } from 'redux';
 import configureMockStore from 'redux-mock-store';
 import thunk, { ThunkDispatch } from 'redux-thunk';
-
+import { mswServer } from '~/../jest/msw/mswServer';
 import {
+  initialState,
   loadPlanningData,
+  selectors,
   setPlanningData,
   setPlanningDataFetchState,
   SET_PLANNING_DATA,
-  selectors,
-  initialState,
 } from '~/apps/Map/MapState';
 import config from '~/config';
 import { RootState } from '~/store';
-
 import { HBI_STOPS } from '../constants';
 import featureIntersection from './fixtures/featureIntersection.json';
 import featureSection from './fixtures/featureSection.json';
 import planningsResponseFixture from './fixtures/planningsResponse.json';
-
-import { mswServer } from '~/../jest/msw/mswServer';
 
 type RootStateSlice = Pick<RootState, 'MapState'>;
 
@@ -99,8 +96,7 @@ describe('MapState.ts', () => {
                 risk_level: 3,
                 severely_injured: 3,
                 slightly_injured: 10,
-                source: `Polizei Berlin: Unfälle mit Radfahrenden, Daten aus 2017-2018 und 
-Unfallatlas, Statistische Ämter des Bundes und der Länder, Daten aus 3096`,
+                source: `Polizei Berlin: Unfälle mit Radfahrenden, Daten aus 2017-2018 und Unfallatlas, Statistische Ämter des Bundes und der Länder, Daten aus 3096`,
               },
             },
           },

@@ -12,7 +12,7 @@ import {
   List,
   SectionProps,
 } from '~/components2/Article';
-import { Link } from '~/components2/Link';
+import { AnchorLink } from '~/components2/Link';
 
 import BarChart from '../components/BarChart';
 import FeelSafe from '../components/FeelSafe';
@@ -26,17 +26,17 @@ import CP_C_509 from '../images/01_CP_C_509_@x2.jpg';
 import CP_C_516 from '../images/01_CP_C_516_@x2.jpg';
 import CP_C_553 from '../images/01_CP_C_553_@x2.jpg';
 import CP_C_58 from '../images/01_CP_C_58_@x2.jpg';
-import CP_C_688 from '../images/01_CP_C_688.jpg';
+// import CP_C_688 from '../images/01_CP_C_688.jpg';
 import CP_C_725 from '../images/01_CP_C_725_@x2.jpg';
 import CP_C_823 from '../images/01_CP_C_823_@x2.jpg';
 import CP_P_149 from '../images/01_CP_P_149_@x2.jpg';
-import CP_P_185 from '../images/01_CP_P_185_@x2.jpg';
+// import CP_P_185 from '../images/01_CP_P_185_@x2.jpg';
 import CP_P_194 from '../images/01_CP_P_194_@x2.jpg';
-import CP_P_203 from '../images/01_CP_P_203_@x2.jpg';
+// import CP_P_203 from '../images/01_CP_P_203_@x2.jpg';
 import CP_P_778 from '../images/01_CP_P_778_@x2.jpg';
 import MS_A_1285 from '../images/01_MS_A_1285_@x2.jpg';
 import MS_A_343 from '../images/01_MS_A_343_@x2.jpg';
-import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
+// import MS_A_570 from '../images/01_MS_A_570_@x2.jpg';
 import MS_A_586 from '../images/01_MS_A_586_@x2.jpg';
 import MS_A_67 from '../images/01_MS_A_67_@x2.jpg';
 import MS_C_1220 from '../images/01_MS_C_1220_@x2.jpg';
@@ -46,11 +46,11 @@ import MS_C_21 from '../images/01_MS_C_21_@x2.jpg';
 import MS_C_305 from '../images/01_MS_C_305_@x2.jpg';
 import MS_C_325 from '../images/01_MS_C_325_@x2.jpg';
 import MS_C_377 from '../images/01_MS_C_377_@x2.jpg';
-import MS_C_51 from '../images/01_MS_C_51_@x2.jpg';
+// import MS_C_51 from '../images/01_MS_C_51_@x2.jpg';
 import MS_C_587 from '../images/01_MS_C_587_@x2.jpg';
 import MS_C_596 from '../images/01_MS_C_596_@x2.jpg';
 import MS_C_597 from '../images/01_MS_C_597_@x2.jpg';
-import MS_C_606 from '../images/01_MS_C_606_@x2.jpg';
+// import MS_C_606 from '../images/01_MS_C_606_@x2.jpg';
 import MS_C_611 from '../images/01_MS_C_611_@x2.jpg';
 import MS_C_619 from '../images/01_MS_C_619_@x2.jpg';
 import MS_C_620 from '../images/01_MS_C_620_@x2.jpg';
@@ -67,7 +67,7 @@ import SE_C_47 from '../images/01_SE_C_47_@x2.jpg';
 import SE_C_49 from '../images/01_SE_C_49_@x2.jpg';
 import SE_C_50 from '../images/01_SE_C_50_@x2.jpg';
 import SE_C_71 from '../images/01_SE_C_71_@x2.jpg';
-import image1 from '../images/image1_@x2.jpg';
+// import image1 from '../images/image1_@x2.jpg';
 /* eslint-enable @typescript-eslint/no-unused-vars */
 
 const SectionResults = ({
@@ -102,9 +102,9 @@ const SectionResults = ({
         defaultMessage="Für unsere eigene Auswertung nutzen wir Python, welche in {link} betrachtet werden kann. Dort sind Visualisierungen der Likert Skala Daten als auch Hypothesentests mit Bootstrap Konfidenzintervallen und Likelihood Ratio Tests mit Proportional Odds Regressions Modellen zu finden."
         values={{
           link: (
-            <Link href="https://github.com/FixMyBerlin/fixmy.survey-results">
+            <AnchorLink href="https://github.com/FixMyBerlin/fixmy.survey-results">
               Jupyter Notebooks
-            </Link>
+            </AnchorLink>
           ),
         }}
       />
@@ -277,12 +277,12 @@ const SectionResults = ({
         defaultMessage="Zusätzlich wurden die Teilnehmenden gefragt wie oft sie zu Fuß, mit Bus und Bahn, dem Auto, dem Fahrrad und dem Motorrad unterwegs sind. Im Vergleich mit den Werten für Berlin aus der SrV 2018 gibt es einige Abweichungen. Die Werte für die Nutzung des öffentlichen Verkehrs (Bus und Bahn) mindestens 1x in der Woche in der Umfrage (64%) stimmen annähernd mit den Werten der SrV 2018 (62%) überein. Hingegen sind in dieser Umfrage die Nutzung des Pkws (35%) im Vergleich zur SrV 2018 (56%) unterrepräsentiert und die Nutzung des Fahrrads (64%) in der Umfrage (47% SrV) überrepräsentiert. ({link}. S.127ff)"
         values={{
           link: (
-            <Link href="https://tu-dresden.de/bu/verkehr/ivs/srv/ressourcen/dateien/SrV2018_Staedtevergleich.pdf?lang=de">
+            <AnchorLink href="https://tu-dresden.de/bu/verkehr/ivs/srv/ressourcen/dateien/SrV2018_Staedtevergleich.pdf?lang=de">
               <FormattedMessage
                 id="research.05_results.p9.link"
                 defaultMessage="Gerike et. al, Sonderauswertung zum Forschungsprojekt „Mobilität in Städten – SrV 2018“ Städtevergleich, Dresden 2020"
               />
-            </Link>
+            </AnchorLink>
           ),
         }}
       />

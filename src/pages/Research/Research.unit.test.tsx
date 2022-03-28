@@ -1,14 +1,11 @@
-import '~/utils/polyfills';
-
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-
 import Store from '~/store';
-
+import '~/utils/polyfills';
 import ResearchPage from '.';
 
 describe('<ArticleHeader>', () => {
@@ -32,8 +29,7 @@ describe('<ArticleHeader>', () => {
     // Förderlogos
     expect(
       getByRole('img', {
-        name:
-          'Förderlogo Bundesministerium für Verkehr und digitale Infrastruktur (BMVI)',
+        name: 'Förderlogo Bundesministerium für Digitales und Verkehr (BMDV)',
       })
     ).toBeInTheDocument();
     expect(

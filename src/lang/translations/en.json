@@ -1071,7 +1071,16 @@
     "defaultMessage": "Scenarios in minor/side roads generally received worse ratings than those on main roads. This comparison is admittedly only partially meaningful, because the static visualisations could not fully give a sense of how busy the road is in a particular scene. Scenarios in which there was no active flow of traffic and where the street was clearly marked as a cycle street received the best ratings."
   },
   "research.06_summary.p11": {
-    "defaultMessage": "The data still have great potential to be analysed even further. The data set is freely available to the public and is already being used for further investigations. We would be delighted to hear from anyone interested in continuing this research and will gladly publish the links to any new results on our website!The next steps will be to compare the results about subjective safety with the concrete data about road accidents in order to make productive recommendations."
+    "defaultMessage": "The data still have great potential to be analysed even further."
+  },
+  "research.06_summary.p12": {
+    "defaultMessage": "The data set is freely available to the public and is already being used for further investigations. We would be delighted to hear from anyone interested in continuing this research and will gladly publish the links to any new results on our website! The next steps will be to compare the results about subjective safety with the concrete data about road accidents in order to make productive recommendations."
+  },
+  "research.06_summary.p13": {
+    "defaultMessage": "The study {linkPaper} (Stülpnagel & Binnig 2022), examines further questions on the influence of different infrastructure characteristics on the subjective perception of safety. {linkVideo}, central results of the study are presented."
+  },
+  "research.06_summary.p13.linkVideoText": {
+    "defaultMessage": "In this lecture by Rul von Stülpnagel"
   },
   "research.07_team.p01.heading": {
     "defaultMessage": "The people behind the survey"
@@ -1089,7 +1098,7 @@
     "defaultMessage": "Office address:"
   },
   "research.07_team.p04.funding": {
-    "defaultMessage": "FixMyCity is supported by BMVI and the Berlin Senate."
+    "defaultMessage": "FixMyCity is supported by BMDV and the Berlin Senate."
   },
   "research.07_team.p04.phone": {
     "defaultMessage": "Tel: 030 - 54 90 86 65"

@@ -13,6 +13,8 @@ Did you encounter an issue that you would like to tell us about? Would you like
 to add to this project yourself? Go ahead and check the
 [contribution guide](CONTRIBUTING.md).
 
+We use [VSCode](https://code.visualstudio.com/) for as an IDE. It is recommended to do so.
+
 ## Installation
 
 We recommend using [nvm](https://github.com/nvm-sh/nvm) or [asdf](https://asdf-vm.com/) to run this project with the Node version specified in `.nvmrc` and [`.tool-versions`](.tool-versions).
@@ -23,8 +25,9 @@ npm install
 
 ## Configuration
 
-Configuration options for the app are set through environment variables. You can
-set these by creating a file `/.env` in this directory. Look at the file
+Configuration options for the app are set through environment variables
+(Using [`dotenv`](https://github.com/motdotla/dotenv)).
+You can set these by creating a file `/.env` in this directory. Look at the file
 `.env.defaults` to see how `.env` needs to be formatted. Default configuration
 options are also loaded from `.env.defaults`.
 
@@ -54,12 +57,24 @@ Runs on [localhost:8080](http://localhost:8080/)
   REGION=eichwalde npm start
   ```
 
+  You can also set multiple environment variables when using an `.env` file. This then overwrites only the `.env.defaults` settings you enter. It could look like this:
+
+  ```
+  REGION=aachen
+  BACKEND=local
+  ```
+
+  It is then used by [`dotenv`](https://www.npmjs.com/package/dotenv) to setup configuration.
+
 ## Testing
 
 Runs unit tests.
 
 ```sh
-npm run test
+npm test
+
+# Run single test
+npm test -- -t "filename.unit.test.js"
 ```
 
 ## Build
@@ -77,7 +92,13 @@ Each branch gets automatically deployed on netlify:
 - https://fixmyberlin-app.netlify.app/ [master]
 - https://develop--fixmyberlin-app.netlify.app/ [develop]
 
+## Debugging
+
+In VSCode you can use the integrated debugging profiles for Chrome & Firefox to easily debug your code directly in `Run and Debug` section.
+
 ### Embed Mode
+
+The embed mode is for integration in other websites. This hides the main menu and changes other minor things in the UI.
 
 You can test the embed mode by adding a query parameter to the url: `http://localhost:8080/planungen?embed=1`.
 There is also a deployed production version: https://embed.fixmyberlin.de/.
@@ -123,7 +144,7 @@ Each locale has a language code. This app currently supports:
 - English (`en` language code)
 - Spanish (`es` language code)
 
-### Extracting
+### (1/3) Extracting
 
 Extract text content for translation from the source code by running the command
 
@@ -134,18 +155,22 @@ npm run extract
 This will update the file containing the German language default text contents
 in the file [`src/lang/translations/de.json`](https://github.com/FixMyBerlin/fixmy.frontend/blob/develop/src/lang/translations/de.json).
 
-### Translating
+### (2/3) Translating
 
-In order to create translations for the entries generated in the previous step,
-the relevant file at `/src/lang/translations/[language code].json` is updated
-with the new entries.
+To create translations for the entries generated in the previous step,
+the relevant file need to be updated with the new translation keys manually.
 
-### Compiling
+- `src/lang/translations/en.json`
+- `src/lang/translations/es.json`
 
-Run the command
+### (3/3) Compiling
+
+Files in `lang/translations` need to be compiled into an optimized format stored in `lang/compiled`.
 
 ```
 npm run compile
 ```
 
-to make available all new translations in an optimized format.
+## See also
+
+There also Docs in the [Gastro/](src/apps/Gastro/docs/README.md) folder.

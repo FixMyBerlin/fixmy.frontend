@@ -1,5 +1,6 @@
 import React from 'react';
 import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import styled from 'styled-components';
 
 import { getLinkStyles } from '~/components/Link';
@@ -7,8 +8,6 @@ import { getSectionTitleStyles } from '~/components/SectionTitle';
 import { getTextStyles } from '~/components/Text';
 import { getTitleStyles } from '~/components/Title';
 import config from '~/config';
-
-const ImageContext = require.context('~/images', true);
 
 const StyledMarkdown = styled(Markdown)`
   padding-bottom: 100px;
@@ -51,15 +50,12 @@ const StyledMarkdown = styled(Markdown)`
   }
 `;
 
-function loadImage(mdSrc) {
-  return ImageContext(mdSrc);
-}
+const MarkdownContent = ({ content }) => {
+  require.context('~/images', true);
 
-export default (props) =>
-  typeof props.content === 'string' ? (
-    <StyledMarkdown
-      escapeHtml={false}
-      transformImageUri={loadImage}
-      source={props.content}
-    />
+  return content && typeof content === 'string' ? (
+    <StyledMarkdown rehypePlugins={[rehypeRaw]}>{content}</StyledMarkdown>
   ) : null;
+};
+
+export default MarkdownContent;

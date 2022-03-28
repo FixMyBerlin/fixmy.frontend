@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { media } from '~/styles/utils';
 
 const StyledUl = styled.ul`
@@ -41,17 +40,14 @@ const ListItem = styled.li`
   `}
 `;
 
-interface ListProps {
-  children: React.ReactNode;
+type Props = React.FC<{
   ordered?: boolean;
   className?: string;
-}
+}> & { Item: React.FC };
 
-const List = ({ children, className, ordered }: ListProps) => {
+export const List: Props = ({ children, className, ordered }) => {
   const Container = ordered ? StyledOl : StyledUl;
   return <Container className={className}>{children}</Container>;
 };
 
 List.Item = ListItem;
-
-export default List;

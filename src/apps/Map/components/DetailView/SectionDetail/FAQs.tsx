@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { AnchorLink } from '~/components2/Link';
 
 const Container = styled.section`
   padding: 0 1em;
@@ -53,13 +54,9 @@ export const AccidentsFAQ = () => (
 
     <p>
       Die Bewertung ist angelehnt an die{' '}
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.berlin.de/sen/uvk/verkehr/verkehrspolitik/verkehrssicherheit/unfallkommission/verkehrsunfaelle-mit-todesfolge-21-mobg/"
-      >
+      <AnchorLink href="https://www.berlin.de/sen/uvk/verkehr/verkehrspolitik/verkehrssicherheit/unfallkommission/verkehrsunfaelle-mit-todesfolge-21-mobg/">
         Systematik der Unfallkommision des Landes Berlin
-      </a>
+      </AnchorLink>
       . Die dortige Definition beruht auf dem „Merkblatt zur örtlichen
       Unfalluntersuchung in Unfallkommissionen“ der FGSV
     </p>
@@ -91,13 +88,9 @@ export const AccidentsFAQ = () => (
       Schwerverletzen häufen unverzüglich geprüft werden muss, welche Maßnahmen
       zur Verhinderung weiterer Unfälle kurz- mittel- und langfristig getroffen
       werden können. Die{' '}
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.berlin.de/sen/uvk/verkehr/verkehrspolitik/verkehrssicherheit/unfallkommission/verkehrsunfaelle-mit-todesfolge-21-mobg/jahr-2020/"
-      >
+      <AnchorLink href="https://www.berlin.de/sen/uvk/verkehr/verkehrspolitik/verkehrssicherheit/unfallkommission/verkehrsunfaelle-mit-todesfolge-21-mobg/jahr-2020/">
         Ergebnisse dieser Prüfung
-      </a>{' '}
+      </AnchorLink>{' '}
       werden von der Unfallkommision hier für die Jahre 2018, 2019, 2020, 2021
       veröffentlicht.
     </p>
@@ -131,7 +124,7 @@ export const SectionsFAQ = () => (
       für die Streckenabschnitte an der Verbesserung der Datenlage arbeiten.
       Dafür entwickeln wir ein Tool mit dem Bürger:innen fehlende Daten eingeben
       können, melde dich für den Newsletter an um informiert zu werden, sobald
-      das Tool bereit steht.{' '}
+      das Tool bereit steht.
     </p>
 
     <h3>Was ist der Happy-Bike-Index?</h3>
@@ -139,37 +132,59 @@ export const SectionsFAQ = () => (
       Der Happy-Bike-Index (HBI) hat zum Ziel, Städten eine einfache,
       datenbasierte Analyse Ihres Straßennetzes zur Qualität der vorhandenen
       Radinfrastruktur zur Verfügung zu stellen, damit diese möglichst schnell
-      und effizient die Situation für den Radverkehr verbessern können. Der
-      Ansatz ist neu und die komplexe Aufgabenstellung muss viele Faktoren
+      und effizient die Situation für den Radverkehr verbessern können. Er
+      unterstützt damit die konzeptuelle Planung und hilft bei der
+      Identifikation der größten Optimierungspotentiale. Der Index bezieht dabei
+      Daten zur objektiven Sicherheit von Radinfrastruktur (Unfalldaten), sowie
+      solche zum subjektiven Sicherheitsempfinden mit ein. Die Bewertung
+      orientiert sich dabei an den Vorgaben der ERA 2012 - Empfehlungen für die
+      Anlage von Radverkehrsanlagen und den jeweiligen städtischen Zielvorgaben
+      für das Radnetz.
+    </p>
+    <p>
+      Der Ansatz ist neu und die komplexe Aufgabenstellung muss viele Faktoren
       berücksichtigen. So stoßen wir immer wieder auf fehlende oder
       unvollständige Daten und Herausforderungen bei der standardisierten
-      Bewertung von Infrastruktur. So haben wir z.B. in 2019 / 2020 die Umfrage
-      Straßencheck entwickelt und durchgeführt um eine Datengrundlage zur
-      Bewertung der subjektiven Sicherheit von Radinfrastruktur zu bekommen. Ein
-      Faktor, der für die Nutzung des Fahrrads durch neue Nutzergruppen
-      besonders wichtig ist, zu dem es aber bisher kaum Daten gibt. Im Sinne
-      eines langfristigen Forschungsprojektes entwickeln wir den HBI fortlaufend
-      weiter und veröffentlichen neue Iterationen. Der Index wird immer
-      übertragbar entwickelt, so dass er auch für weitere Städte erstellt werden
-      kann.
+      Bewertung von Infrastruktur. Im Sinne eines langfristigen
+      Forschungsprojektes entwickeln wir den HBI fortlaufend weiter und
+      veröffentlichen neue Versionen sobald neue Daten oder Erkenntnisse
+      vorliegen. Der Index wird immer möglichst übertragbar entwickelt, so dass
+      er auch für weitere Städte erstellt werden kann.
+    </p>
+    <p>
+      Ein Faktor, der für die Nutzung des Fahrrads durch neue Nutzergruppen
+      besonders wichtig ist – zu dem es aber bisher kaum Daten gibt – ist die
+      subjektive Sicherheit Das subjektive Sicherheitsempfinden ist ein
+      zentraler Faktor dafür, dass mehr Menschen sich für das Fahrrad als
+      Verkehrsmittel entscheiden. Um das subjektiven Sicherheitsempfinden auf
+      eine gute Datengrundlage zu stellen haben wir in 2019 / 2020 die{' '}
+      <AnchorLink href="/research/subjektive-sicherheit" internal>
+        Umfrage Straßencheck entwickelt und durchgeführt
+      </AnchorLink>
+      .
+    </p>
+    <p>
+      Wenn Du Feedback zum Happy-Bike-Index hast, oder bei der Weiterentwicklung
+      unterstützen möchtest schreib uns gerne unter{' '}
+      <a href="mailto:feedback@fixmycity.de">feedback@fixmycity.de</a>{' '}
     </p>
 
-    <h4>Versionsschritte des HBI für Berlin</h4>
+    <h4>Versionsschritte des HBI für Berlin:</h4>
     <ul>
       <li>
-        Februar 2021: Veröffentlichung des Straßenkatasters als Hintergrundkarte
+        Januar 2022: Veröffentlichung des Straßenkatasters als Hintergrundkarte
       </li>
       <li>
-        Februar 2021 Veröffentlichung des HBI für Knotenpunkte basierend auf dem
-        Vision Zero Check, einer Auswertung von Unfalldaten.
+        Februar 2021: Veröffentlichung des HBI für Knotenpunkte basierend auf
+        dem Vision Zero Check, einer Auswertung von Unfalldaten.
       </li>
       <li>
-        Mai 2020 Auswertung des Straßenchecks. Veröffentlichung eines
+        Mai 2020: Auswertung des Straßenchecks. Veröffentlichung eines
         Datensatzes zur Bewertung der subjektiven Sicherheit an 1.900
         unterschiedlichen Straßensituationen
       </li>
-      <li>Dezember 2019 Veröffentlichung der Umfrage Straßencheck</li>
-      <li>September 2018 Veröffentlichung erster Happy-Bike-Index (beta)</li>
+      <li>Dezember 2019: Veröffentlichung der Umfrage Straßencheck</li>
+      <li>September 2018: Veröffentlichung erster Happy-Bike-Index (beta)</li>
     </ul>
   </Container>
 );
