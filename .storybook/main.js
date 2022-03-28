@@ -20,12 +20,7 @@ const replaceSvgRule = (config) => {
     use: [
       'babel-loader',
       {
-        loader: 'react-svg-loader',
-        options: {
-          svgo: {
-            plugins: [{ cleanupIDs: false }, { removeViewBox: false }],
-          },
-        },
+        loader: '@svgr/webpack',
       },
     ],
   });
