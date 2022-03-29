@@ -1,6 +1,7 @@
 import { useSelector, TypedUseSelectorHook } from 'react-redux';
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+import * as Sentry from '@sentry/react';
 
 import AppState from '~/AppState';
 import AnalysisState from '~/apps/Analysis/state';
@@ -41,7 +42,12 @@ const enhancers = (window as ExtendedWindow).__REDUX_DEVTOOLS_EXTENSION__
   : applyMiddleware(thunk);
 /* eslint-enable */
 
-const store = createStore(Reducer, enhancers);
+// reenable if we need redux specific error logging in sentry:
+// const sentryReduxEnhancer = Sentry.createReduxEnhancer({
+//   // Optionally pass options listed below
+// });
+
+// const store = createStore(Reducer, compose(enhancers, sentryReduxEnhancer));
 
 // expose store when run in Cypress Test
 if (window.Cypress) {
