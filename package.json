@@ -44,7 +44,6 @@
     "@material-ui/pickers": "^3.3.10",
     "@material-ui/styles": "^4.11.4",
     "@sentry/react": "^6.19.2",
-    "@sentry/tracing": "^6.19.2",
     "@turf/along": "6.0.1",
     "@turf/boolean-within": "^6.0.1",
     "@turf/center": "^6.3.0",
