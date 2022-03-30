@@ -78,7 +78,8 @@ const RedirectHelper = () => (
     <Route render={() => <Markdown page="nomatch" />} />
   </Switch>
 );
-const comp = null;
+let comp = null;
+comp = process.env.SENTRY_DSN;
 const Routes = ({ token }) => (
   <Switch>
     <Route exact path="/sentry-debug" component={comp()} />
