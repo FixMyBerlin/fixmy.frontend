@@ -83,6 +83,7 @@ const Routes = ({ token }) => (
   <Switch>
     <Route exact path="/" component={Home} />
 
+    <Route path="/sentry-debug" component={unknown}>
     <Route path="/redirect-to" component={RedirectHelper} />
 
     {
