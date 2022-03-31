@@ -78,10 +78,8 @@ const RedirectHelper = () => (
     <Route render={() => <Markdown page="nomatch" />} />
   </Switch>
 );
-let comp = null;
 const Routes = ({ token }) => (
   <Switch>
-    <Route exact path="/sentry-debug" component={comp()} />
     <Route exact path="/" component={Home} />
     <Route path="/redirect-to" component={RedirectHelper} />
 
