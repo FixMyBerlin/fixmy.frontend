@@ -10,7 +10,7 @@ import Store from '~/store';
 import * as Sentry from '@sentry/react';
 
 Sentry.init({
-  dsn: process.env.SENTRY_DSN,
+  dsn: 'https://b02fc2d532694a8c956365811b70b13a@o1174824.ingest.sentry.io/6294496',
   tracesSampleRate: 0.0,
 });
 
