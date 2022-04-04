@@ -24,7 +24,7 @@ const Sliders = ({
   return (
     <Flex
       flexDirection="column"
-      css={{ flexGrow: 1 }}
+      sx={{ flexGrow: 1 }}
       data-cy="kat-transport-rating-wrapper"
     >
       <QuestionTitle>{title}</QuestionTitle>
@@ -49,10 +49,10 @@ const Sliders = ({
         );
       })}
 
-      <Flex css={{ flexGrow: 1 }} justifyContent="center">
+      <Flex sx={{ flexGrow: 1 }} justifyContent="center">
         <Button
           onClick={onClick}
-          css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
+          sx={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           disabled={!usedSlider}
           isLoading={isLoading}
           data-cy="kat-transport-rating-proceed-btn"

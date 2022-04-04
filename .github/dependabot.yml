@@ -1,13 +1,13 @@
 version: 2
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    day: "monday"
-    interval: weekly
-    time: "04:00"
-  target-branch: dependabot/merge
-  reviewers:
-  - ohrie
-  labels:
-  - dependencies
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      day: 'monday'
+      interval: weekly
+      time: '04:00'
+    target-branch: dependabot/merge
+    reviewers:
+      - ohrie
+    labels:
+      - dependencies

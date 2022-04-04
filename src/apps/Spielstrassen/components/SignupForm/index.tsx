@@ -117,7 +117,7 @@ const SignupForm = ({ street, history, district }) => (
           className="messageField"
           name="message"
           multiline
-          rows={4}
+          minRows={4}
           fullWidth
           InputProps={{ notched: true }}
         />

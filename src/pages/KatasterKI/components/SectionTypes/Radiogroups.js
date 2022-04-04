@@ -78,7 +78,7 @@ export default ({
   const [isLoading, onClick] = useHandlerTimeout(next);
 
   return (
-    <Flex flexDirection="column" css={{ flexGrow: 1 }}>
+    <Flex flexDirection="column" sx={{ flexGrow: 1 }}>
       {info && <QuestionInfo>{info}</QuestionInfo>}
       <QuestionTitle>{title}</QuestionTitle>
       {radiogroups.map((radiogroup, index) => (
@@ -116,7 +116,7 @@ export default ({
                           [radiogroup.name]: option.value,
                         })
                       }
-                      css={{ display: 'block' }}
+                      sx={{ display: 'block' }}
                     />
                     {isLabelVisible && option.label}
                   </RadioLabel>
@@ -126,10 +126,10 @@ export default ({
           </RadioGroup>
         </RadioGroupWrapper>
       ))}
-      <Flex css={{ flexGrow: 1 }} justifyContent="center">
+      <Flex sx={{ flexGrow: 1 }} justifyContent="center">
         <Button
           onClick={onClick}
-          css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
+          sx={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           isLoading={isLoading}
           data-cy="kat-radiogroups-proceed-btn"
         >
