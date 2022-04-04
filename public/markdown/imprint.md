@@ -47,6 +47,7 @@ Die von FixMyCity entwickelten Karten basieren auf Daten des Geoportal Berlin / 
 Wenn nicht anders angegeben stehen die auf fixmyberlin.de verwendeten Fotos unter [Creative Commons-Lizenz BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/deed.de 'Infos zu CC-Lizenz BY-NC 4.0').
 
 ## Aktuelle Förderungen
+
 FixMyCity wird aktuell als forschungsbezogenes Start-Up durch Bundesmittel aus dem NRVP gefördert (Förderkennzeichen VB2025). [Projektsteckbrief Baukasten-RSV - Modulares System für Radschnellverbindungen](https://nationaler-radverkehrsplan.de/de/praxis/modulares-system-fuer-radschnellverbindungen)
 
 ## Zurückliegende Förderungen
@@ -58,7 +59,6 @@ FixMyCity wurde im Rahmen der CityLAB-Förderlinie der Senatskanzlei Berlin durc
 Die FixMyBerlin GbR wurde im Rahmen des Berlin Startup Stipendiums gefördert. [Projektsteckbrief](https://entrepreneurship.htw-berlin.de/unsere-startups/stipendiat-innen/fixmyberlin/)
 
 Die FixMyBerlin GbR wurde 2018 im Rahmen des mFunds gefördert (Förderkennzeichen 19F1039A). [Projektsteckbrief](http://www.bmvi.de/SharedDocs/DE/Artikel/DG/mfund-projekte/fixmyberlin.html)
-
 
 <style type="text/css">
   .partner {
