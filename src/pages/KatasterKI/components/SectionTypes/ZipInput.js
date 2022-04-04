@@ -84,7 +84,7 @@ const ZipInput = (props) => {
   };
 
   return (
-    <Flex flexDirection="column" css={{ flexGrow: 1 }}>
+    <Flex flexDirection="column" sx={{ flexGrow: 1 }}>
       <QuestionTitle>{props.title}</QuestionTitle>
 
       <Input
@@ -111,7 +111,7 @@ const ZipInput = (props) => {
                   id={option}
                   onChange={onDistrictChange}
                   checked={option === props.district}
-                  css={{ marginRight: 10 }}
+                  sx={{ marginRight: 10 }}
                 />
                 {option}
               </DistrictLabel>
@@ -120,10 +120,10 @@ const ZipInput = (props) => {
         </DistrictChooser>
       )}
 
-      <Flex css={{ flexGrow: 1, marginTop: 20 }} justifyContent="center">
+      <Flex sx={{ flexGrow: 1, marginTop: 20 }} justifyContent="center">
         <Button
           onClick={onClick}
-          css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
+          sx={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           disabled={isButtonDisabled}
           isLoading={isLoading}
           data-cy="kat-zip-proceed-btn"

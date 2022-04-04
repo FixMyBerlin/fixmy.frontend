@@ -43,6 +43,6 @@ const StyledButton = styled.button`
 
 export default ({ children, isLoading, ...rest }) => (
   <StyledButton {...rest}>
-    {isLoading ? <Loader css={{ display: 'inline-block' }} /> : children}
+    {isLoading ? <Loader sx={{ display: 'inline-block' }} /> : children}
   </StyledButton>
 );
