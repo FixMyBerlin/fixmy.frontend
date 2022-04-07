@@ -39,26 +39,6 @@
         X-Forwarded-Proto = "https"
 
 [[redirects]]
-    from = "/api/tempelberg/v1/*"
-    to = "https://fixmytempelberg.herokuapp.com/api/:splat"
-    status = 200
-    force = true
-    [redirects.headers]
-        X-From = "Netlify"
-        X-Forwarded-Host = "fixmytempelberg.netlify.app"
-        X-Forwarded-Proto = "https"
-
-[[redirects]]
-    from = "/api/tempelberg/next/*"
-    to = "https://fixmytempelberg-staging.herokuapp.com/api/:splat"
-    status = 200
-    force = true
-    [redirects.headers]
-        X-From = "Netlify"
-        X-Forwarded-Host = "fixmytempelberg-staging.netlify.app"
-        X-Forwarded-Proto = "https"
-
-[[redirects]]
     from = "/*"
     to = "/index.html"
     status = 200

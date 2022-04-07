@@ -7,12 +7,12 @@ import { handleQuit } from '~/pages/KatasterKI/utils';
 
 const CloseSurveyButton = ({ isEmbedded, style = {} }) => {
   return isEmbedded ? (
-    <GhostButton css={style} onClick={handleQuit}>
+    <GhostButton sx={style} onClick={handleQuit}>
       Umfrage beenden
     </GhostButton>
   ) : (
     <GhostButton
-      css={style}
+      sx={style}
       onClick={() => {
         window.open(config.tspKatasterURL);
       }}

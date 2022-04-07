@@ -55,7 +55,7 @@ const PerspectiveChange = ({
             key={`singlechoice__${option.value}`}
             onClick={() => onClick(option)}
             data-cy="kat-perspective-change-single-choice-button"
-            css={{
+            sx={{
               textAlign: 'left',
               marginBottom: 20,
               display: 'flex',

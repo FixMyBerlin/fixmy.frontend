@@ -10,7 +10,7 @@
     "moduleResolution": "node",
     "noImplicitAny": false,
     "outDir": "./dist/",
-    "paths": {"~/*": ["./src/*"]},
+    "paths": { "~/*": ["./src/*"] },
     "resolveJsonModule": true,
     "sourceMap": true,
     "target": "es2015"

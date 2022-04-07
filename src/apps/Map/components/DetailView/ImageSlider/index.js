@@ -100,6 +100,7 @@ class ImageSlider extends PureComponent {
 }
 
 ImageSlider.propTypes = {
+  /* eslint-disable react/forbid-prop-types */
   images: PropTypes.arrayOf(PropTypes.object),
 };
 
