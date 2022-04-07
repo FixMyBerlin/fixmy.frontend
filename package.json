@@ -196,6 +196,10 @@
   "optionalDependencies": {
     "fsevents": "^2.2.1"
   },
+  "browserslist": [
+    "defaults",
+    "no IE"
+  ],
   "engines": {
     "node": ">=16.0.0",
     "npm": ">=8.0.0"
