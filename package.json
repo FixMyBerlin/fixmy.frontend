@@ -198,7 +198,7 @@
   },
   "browserslist": [
     "defaults",
-    "no IE"
+    "no IE 11"
   ],
   "engines": {
     "node": ">=16.0.0",
