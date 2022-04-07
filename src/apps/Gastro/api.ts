@@ -152,13 +152,13 @@ const uploadCertificate = async (
   district: DistrictConfig
 ) => {
   const formData = new FormData();
-  const fileName = encodeURI(registrationData.certificate.name);
+  const fileName = encodeURI(registrationData.certificateS3.name);
 
   // For some reason this call sometimes, but not always throws an error:
   //   TS2554: Expected 2 arguments, but got 3.
   // even though `formData.append` takes 3 arguments, one of which is optional.
   // @ts-ignore
-  formData.append('file', registrationData.certificate, fileName);
+  formData.append('file', registrationData.certificateS3, fileName);
 
   let endpoint;
   let method;
