@@ -66,7 +66,7 @@ const validate = (regulation) => {
       errors.usage = 'Bitte einen Nutzungszweck angeben';
     }
 
-    if (!values.certificateS3) {
+    if (!values.certificate) {
       errors.certificateS3 = 'Bitte einen Nachweis einfügen';
     }
 
