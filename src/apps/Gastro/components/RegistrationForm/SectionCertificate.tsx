@@ -85,8 +85,8 @@ const SectionCertificate = ({
       }
       setSubmittingCertificate(false);
     };
-    if (values.certificate != null) doSubmit();
-  }, [values.certificate?.name]);
+    if (values.certificateS3 != null) doSubmit();
+  }, [values.certificateS3?.name]);
 
   return (
     <section>

@@ -72,7 +72,7 @@ export interface GastroRegistration extends GastroSignup {
     type: 'Polygon';
     coordinates: Coordinate[];
   };
-  certificate?: any;
+  certificateS3?: any;
   agreement_accepted: boolean;
   permit_start: string;
   permit_end: string;

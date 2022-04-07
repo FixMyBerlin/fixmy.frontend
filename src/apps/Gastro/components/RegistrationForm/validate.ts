@@ -66,7 +66,7 @@ const validate = (regulation) => {
       errors.usage = 'Bitte einen Nutzungszweck angeben';
     }
 
-    if (!values.certificate) {
+    if (!values.certificateS3) {
       errors.certificateS3 = 'Bitte einen Nachweis einfügen';
     }
 
@@ -105,7 +105,7 @@ const validateDirect = (values: FormData) => {
     errors.address = 'Bitte eine Adresse (mit Hausnummer) angeben';
   }
 
-  if (!values.certificate) {
+  if (!values.certificateS3) {
     errors.certificateS3 = 'Bitte einen Nachweis hochladen';
   } else {
     delete errors.certificateS3;

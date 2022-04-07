@@ -35,7 +35,6 @@ export interface FormData {
   location?: [number, number];
   shopfront_length?: string;
   usage?: string;
-  certificate?: string;
   certificateS3?: string;
   opening_hours?: string;
   agreement_accepted?: boolean | '';
@@ -56,7 +55,7 @@ const initialValues: FormData = {
   location: null,
   shopfront_length: '',
   usage: '',
-  certificate: null,
+  certificateS3: null,
   agreement_accepted: '',
   tos_accepted: '',
   followup_accepted: '',
