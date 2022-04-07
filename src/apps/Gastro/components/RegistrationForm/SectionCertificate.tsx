@@ -137,7 +137,7 @@ const SectionCertificate = ({
           name="certificateS3"
           accept=".pdf"
           onChange={({ currentTarget: { files } }) =>
-            handleChange({ target: { name: 'certificate', value: files[0] } })
+            handleChange({ target: { name: 'certificateS3', value: files[0] } })
           }
         />
       </FileInputLabel>
