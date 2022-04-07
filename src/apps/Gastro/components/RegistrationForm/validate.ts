@@ -105,7 +105,7 @@ const validateDirect = (values: FormData) => {
     errors.address = 'Bitte eine Adresse (mit Hausnummer) angeben';
   }
 
-  if (!values.certificateS3) {
+  if (!values.certificate) {
     errors.certificateS3 = 'Bitte einen Nachweis hochladen';
   } else {
     delete errors.certificateS3;
