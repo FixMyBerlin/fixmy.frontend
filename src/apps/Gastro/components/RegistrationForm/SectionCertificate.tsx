@@ -134,7 +134,7 @@ const SectionCertificate = ({
 
         <HiddenInput
           type="file"
-          name="certificate"
+          name="certificateS3"
           accept=".pdf"
           onChange={({ currentTarget: { files } }) =>
             handleChange({ target: { name: 'certificate', value: files[0] } })
