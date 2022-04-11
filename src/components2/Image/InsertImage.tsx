@@ -43,7 +43,7 @@ type Props =
           }
       );
 
-export const InsertImage: React.VFC<Props> = ({
+export const InsertImage: React.FC<Props> = ({
   attributionText,
   attributionLink,
   ...imageProps

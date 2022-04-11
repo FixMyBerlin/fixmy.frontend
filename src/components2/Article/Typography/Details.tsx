@@ -2,7 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { Paragraph } from './Paragraph';
 
-type Props = { summary: string; style?: React.CSSProperties };
+type Props = {
+  summary: string;
+  style?: React.CSSProperties;
+  children: React.ReactNode;
+};
 
 const StyledSummary = styled.summary`
   cursor: pointer;

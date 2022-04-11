@@ -49,7 +49,7 @@ const MetaInnerWrap = styled.div`
   flex-wrap: wrap;
 `;
 
-export const ArticleMeta: React.VFC<ArticleMetaProps> = ({
+export const ArticleMeta: React.FC<ArticleMetaProps> = ({
   publishDate,
   author,
   className,

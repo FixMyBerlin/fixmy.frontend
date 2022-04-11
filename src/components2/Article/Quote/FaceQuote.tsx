@@ -47,6 +47,7 @@ const SourceFunction = styled.p`
 type Props = {
   sourceName?: string;
   sourceFunction?: string;
+  children: React.ReactNode;
 } & (
   | { imageAttributionText?: string; image?: React.ReactElement }
   | { imageAttributionText: string; image: React.ReactElement }

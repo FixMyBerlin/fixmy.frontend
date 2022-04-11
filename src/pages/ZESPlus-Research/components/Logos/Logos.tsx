@@ -87,7 +87,7 @@ const StyledLogoFONA = styled(LogoFONA)`
   `}
 `;
 
-export const Logos: React.VFC = () => (
+export const Logos: React.FC = () => (
   <Footer>
     <LogoGrid1>
       <img

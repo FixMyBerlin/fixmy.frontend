@@ -14,7 +14,7 @@ const ImageWrapperFull = styled.div`
   `}
 `;
 
-export const ImageFull: React.VFC<InnerImageProps> = ({
+export const ImageFull: React.FC<InnerImageProps> = ({
   source,
   alt,
   className,

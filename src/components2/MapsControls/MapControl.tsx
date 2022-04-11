@@ -14,6 +14,7 @@ export type MapcControlProps = {
   className?: string;
   style?: React.CSSProperties;
   visible?: boolean;
+  children: React.ReactNode;
 };
 
 export const MapControl: React.FC<MapcControlProps> = ({

@@ -69,7 +69,7 @@ type Props = {
   enumerate: boolean;
 };
 
-export const TOCEntry: React.VFC<Props> = ({
+export const TOCEntry: React.FC<Props> = ({
   index,
   entry,
   active = false,

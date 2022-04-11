@@ -6,6 +6,7 @@ import { media } from '~/styles/utils';
 type Props = {
   sourceText?: string;
   long?: boolean;
+  children: React.ReactNode;
 };
 
 const Wrapper = styled.div`

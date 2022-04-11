@@ -43,9 +43,10 @@ const ListItem = styled.li`
 type Props = React.FC<{
   ordered?: boolean;
   className?: string;
+  children: React.ReactNode;
 }> & { Item: React.FC };
 
-export const List: Props = ({ children, className, ordered }) => {
+export const List: Props = ({ className, ordered, children }) => {
   const Container = ordered ? StyledOl : StyledUl;
   return <Container className={className}>{children}</Container>;
 };

@@ -48,7 +48,7 @@ export type LocatorButtonProps = {
   // showError: () => void;
 };
 
-export const LocatorButton: React.VFC<LocatorButtonProps> = ({ onChange }) => {
+export const LocatorButton: React.FC<LocatorButtonProps> = ({ onChange }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 

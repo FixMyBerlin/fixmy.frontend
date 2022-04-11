@@ -7,7 +7,7 @@ type Props = {
   setShowLegend: (showLegend: boolean) => void;
 };
 
-export const FloatingLegendIcon: React.VFC<Props> = ({
+export const FloatingLegendIcon: React.FC<Props> = ({
   showLegend,
   setShowLegend,
 }) => {

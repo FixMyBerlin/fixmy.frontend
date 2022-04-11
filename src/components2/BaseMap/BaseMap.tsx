@@ -28,7 +28,7 @@ type BaseMapProps = Partial<mapboxgl.MapboxOptions> & {
  * @param mapboxStyle - Mapbox style URL
  * @param maxBounds - Use Mapbox `maxBounds` or `center` + `zoom` to intialize the map position
  */
-export const BaseMap: React.VFC<BaseMapProps> = ({
+export const BaseMap: React.FC<BaseMapProps> = ({
   onInit,
   className,
   center,

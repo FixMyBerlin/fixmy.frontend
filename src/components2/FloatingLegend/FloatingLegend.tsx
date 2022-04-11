@@ -69,6 +69,7 @@ export type FloatingLegendProps = {
   closeLegend: () => void;
   closeLegendStyle?: React.CSSProperties;
   style?: React.CSSProperties;
+  children: React.ReactNode;
 };
 
 export const FloatingLegend: React.FC<FloatingLegendProps> = ({

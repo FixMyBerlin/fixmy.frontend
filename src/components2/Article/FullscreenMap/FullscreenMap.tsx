@@ -28,6 +28,7 @@ export type FullscreenMapProps = {
   mapboxStyle: mapboxgl.MapboxOptions['style'];
   toggleLayers?: string[];
   setToggleLayers?: (toggleLayers: string[]) => void;
+  children: React.ReactNode;
 } & Partial<mapboxgl.MapboxOptions>;
 
 /**

@@ -31,7 +31,7 @@ const FooterWrapper = styled.div`
 
 type Props = Pick<FloatingLegendProps, 'visible' | 'closeLegend'>;
 
-export const Legend: React.VFC<Props> = ({ visible, closeLegend }) => {
+export const Legend: React.FC<Props> = ({ visible, closeLegend }) => {
   return (
     <FloatingLegend visible={visible} closeLegend={closeLegend}>
       <Header>Legende Katasterdaten</Header>

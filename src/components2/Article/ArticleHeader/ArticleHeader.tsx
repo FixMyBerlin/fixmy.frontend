@@ -45,7 +45,7 @@ const Kicker = styled.div`
   `}
 `;
 
-export const ArticleHeader: React.VFC<Props> = ({
+export const ArticleHeader: React.FC<Props> = ({
   kicker,
   logo,
   publishDate,
