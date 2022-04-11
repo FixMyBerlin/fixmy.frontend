@@ -26,6 +26,7 @@ type Props = {
   title?: string;
   dismissMessage?: string;
   onDismiss?: () => void;
+  children: React.ReactNode;
 };
 
 export const ErrorMessage: React.FC<Props> = ({

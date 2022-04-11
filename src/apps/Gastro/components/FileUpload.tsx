@@ -68,7 +68,7 @@ type Props = ConnectedProps<typeof connector> & {
   isSubmitting: boolean;
   name: string;
   values: any;
-  children: React.ReactNode; // shouldn't be necessary but it is
+  children: React.ReactNode;
 };
 
 const FileUploadRaw: React.FC<Props> = ({

@@ -4,7 +4,7 @@ import { MapcControlProps, MapControl } from './MapControl';
 
 type Props = Pick<MapcControlProps, 'className' | 'style'> & LocatorButtonProps;
 
-export const LocatorMapControl: React.VFC<Props> = ({
+export const LocatorMapControl: React.FC<Props> = ({
   className,
   style,
   onChange,

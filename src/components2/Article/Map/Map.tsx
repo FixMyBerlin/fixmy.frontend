@@ -20,7 +20,7 @@ type Props = {
  *
  * @param defaultActive set true to hide `activate` button
  */
-export const Map: React.VFC<Props> = ({
+export const Map: React.FC<Props> = ({
   defaultActive = false,
   ...mapProps
 }) => {

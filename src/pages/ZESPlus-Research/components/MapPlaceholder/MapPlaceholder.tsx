@@ -34,7 +34,7 @@ type Props = {
   className?: string;
 };
 
-export const MapPlaceholder: React.VFC<Props> = ({ alt, className }) => {
+export const MapPlaceholder: React.FC<Props> = ({ alt, className }) => {
   const defaultAlt = 'Platzhalter für ein fehlendes Bild';
 
   return (

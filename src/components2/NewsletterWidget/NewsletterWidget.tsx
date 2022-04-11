@@ -16,7 +16,7 @@ type Props = {
  * @param height `height` attribute of the iFrame
  * @param embedUrl optional `src` for the iframe
  */
-export const NewsletterWidget: React.VFC<Props> = ({ height, embedUrl }) => {
+export const NewsletterWidget: React.FC<Props> = ({ height, embedUrl }) => {
   const src = embedUrl || `${config.newsletter.embedUrl}?v=4`;
 
   return (

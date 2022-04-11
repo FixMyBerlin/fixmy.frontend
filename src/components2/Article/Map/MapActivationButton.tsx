@@ -55,6 +55,7 @@ const ButtonArea = styled.div`
 type Props = {
   isActive: boolean;
   setActive: (isActive: boolean) => void;
+  children: React.ReactNode;
 };
 
 export const MapActivationButton: React.FC<Props> = ({

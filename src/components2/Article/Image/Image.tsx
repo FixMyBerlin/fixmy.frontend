@@ -15,7 +15,7 @@ const ImageWrapperSimple = styled.div`
   `}
 `;
 
-export const Image: React.VFC<InnerImageProps> = ({
+export const Image: React.FC<InnerImageProps> = ({
   source,
   alt,
   role = null,

@@ -25,6 +25,7 @@ const ImageSpacer = styled.div`
 type ImageMultiProps = React.FC & {
   Inner: React.FC<InnerImageProps>;
   Subtitle: React.FC;
+  children?: React.ReactNode;
 };
 
 export const ImageMulti: ImageMultiProps = ({ children }) => (

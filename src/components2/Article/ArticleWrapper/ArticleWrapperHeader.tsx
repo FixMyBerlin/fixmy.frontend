@@ -56,7 +56,7 @@ type Props = {
   logo?: React.ReactNode;
 };
 
-export const ArticleWrapperHeader: React.VFC<Props> = ({
+export const ArticleWrapperHeader: React.FC<Props> = ({
   locales,
   logo,
   bannerTitle,

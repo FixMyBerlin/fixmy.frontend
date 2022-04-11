@@ -47,7 +47,9 @@ const LegendGrid = styled.div`
   `}
 `;
 
-export const Legend: React.FC = ({ children }) => (
+type LegendProps = { children: React.ReactNode };
+
+export const Legend: React.FC<LegendProps> = ({ children }) => (
   <LegendContainer>
     <LegendGrid>{children}</LegendGrid>
   </LegendContainer>

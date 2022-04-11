@@ -77,7 +77,7 @@ type Props = {
   children: any; // Really hard to type
 };
 
-export const ArticleWrapper: React.VFC<Props> = ({
+export const ArticleWrapper: React.FC<Props> = ({
   bannerTitle,
   logo = null,
   bgPattern = null,

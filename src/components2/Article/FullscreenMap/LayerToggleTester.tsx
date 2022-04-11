@@ -7,7 +7,7 @@ type Props = {
   setToggleLayers: FullscreenMapProps['setToggleLayers'];
 };
 
-export const LayerToggleTester: React.VFC<Props> = ({
+export const LayerToggleTester: React.FC<Props> = ({
   mapLayer,
   setToggleLayers,
 }) => {

@@ -6,7 +6,7 @@ type PublishDateProps = {
   className?: string;
 };
 
-export const PublishDate: React.VFC<PublishDateProps> = ({
+export const PublishDate: React.FC<PublishDateProps> = ({
   date,
   className,
 }) => (
