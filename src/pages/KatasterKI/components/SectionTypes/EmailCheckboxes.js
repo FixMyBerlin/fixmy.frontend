@@ -146,17 +146,13 @@ const Email = (props) => {
         <QuestionTitle>{props.thankyou}</QuestionTitle>
 
         <EmailWrapper>
-          <Flex
-            css={{ flexGrow: 1 }}
-            alignItems="center"
-            flexDirection="column"
-          >
+          <Flex sx={{ flexGrow: 1 }} alignItems="center" flexDirection="column">
             <EmailImg />
-            <Paragraph>
+            <Paragraph as="div">
               Sobald Sie den Link aktiviert haben, bekommen Sie eine E-Mail,
               wenn Auswertungen der Umfrage online sind.
             </Paragraph>
-            <Button css={{ marginTop: 'auto' }} onClick={props.next}>
+            <Button sx={{ marginTop: 'auto' }} onClick={props.next}>
               Weiter in der Umfrage
             </Button>
           </Flex>
@@ -170,13 +166,13 @@ const Email = (props) => {
       <QuestionTitle>{props.title}</QuestionTitle>
 
       <EmailWrapper>
-        <Flex css={{ flexGrow: 1 }} alignItems="center" flexDirection="column">
+        <Flex sx={{ flexGrow: 1 }} alignItems="center" flexDirection="column">
           <Input
             type="email"
             placeholder={props.placeholder}
             onChange={(evt) => handleUpdate(evt.target.value)}
             value={email}
-            css={{ marginBottom: '2em' }}
+            sx={{ marginBottom: '2em' }}
             data-cy="kat-emailcheckboxes-input"
           />
 
@@ -199,7 +195,7 @@ const Email = (props) => {
           ))}
 
           <Button
-            css={{ marginTop: 20 }}
+            sx={{ marginTop: 20 }}
             disabled={!isEmailValid}
             onClick={onClick}
             isLoading={isLoading}
@@ -209,7 +205,7 @@ const Email = (props) => {
           </Button>
 
           <GhostButton
-            css={{ marginTop: 'auto' }}
+            sx={{ marginTop: 'auto' }}
             onClick={props.next}
             data-cy="kat-emailcheckboxes-proceed-btn"
           >

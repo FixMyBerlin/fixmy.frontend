@@ -1,27 +1,50 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import BraceHorizontalZustand from '~/images/brace-horizontal-zustand.svg';
-// import BraceHorizontalPlanung from '~/images/brace-horizontal-planung.svg';
+import BraceHorizontal from '~/images/selector-brace.svg';
+import BraceVertical from '~/images/selector-brace_vertical.svg';
+import { media } from '~/styles/utils';
 
-import BraceHorizontalPlanung from '~/images/planung-brace.svg';
-import BraceHorizontalZustand from '~/images/zustand-brace.svg';
-
-const StyledBraceHorizontalZustand = styled(BraceHorizontalZustand)`
+const StyledBraceHorizontal = styled(BraceHorizontal)`
   display: block;
   width: 100%;
-  margin: 0.5em 0;
+  margin-left: ${(props) => props.pixel};
+
+  ${media.m`
+    display: none;
+  `}
 `;
 
-const StyledBraceHorizontalPlanung = styled(BraceHorizontalPlanung)`
+const StyledBraceWrapper = styled.div`
+  // This is the width of the SVG file
+  width: 950px;
+  position: absolute;
+  left: 50%;
+  margin-left: -475px;
+  overflow: hidden;
+
+  ${media.m`
+    width: 100%;
+    height: 200px;
+    position: static;
+    margin: -50px 0;
+  `}
+`;
+
+const StyledBraceVertical = styled(BraceVertical)`
   display: block;
-  width: 100%;
-  margin: 0.5em 0;
+  height: 100%;
 `;
 
-export default (props) =>
-  props.type === 'zustand' ? (
-    <StyledBraceHorizontalZustand />
-  ) : (
-    <StyledBraceHorizontalPlanung />
+export default (props) => {
+  return (
+    <StyledBraceWrapper>
+      {props.type === 'zustand' ? (
+        <StyledBraceHorizontal pixel="-30px" />
+      ) : (
+        <StyledBraceHorizontal pixel="30px" />
+      )}
+      <StyledBraceVertical />
+    </StyledBraceWrapper>
   );
+};

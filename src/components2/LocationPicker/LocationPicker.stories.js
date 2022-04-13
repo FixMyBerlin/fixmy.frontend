@@ -1,4 +1,6 @@
 import { Container } from '@material-ui/core';
+// Disabled storybook for now
+// eslint-disable-next-line import/no-unresolved
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 
@@ -16,7 +18,7 @@ export default {
   component: LocationPicker,
 };
 
-export const XHain = () => (
+export const Xhain = () => (
   <LocationPicker
     mapboxStyle={TEST_STYLE_URL}
     bounds={TEST_BOUNDS}

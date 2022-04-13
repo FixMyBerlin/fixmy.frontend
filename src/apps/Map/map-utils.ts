@@ -2,6 +2,7 @@ import turfAlong from '@turf/along';
 import { lineString as turfLineString } from '@turf/helpers';
 import turfLength from '@turf/length';
 import debug from 'debug';
+import mapboxgl from 'mapbox-gl';
 
 import config from '~/config';
 import { isNumeric, getParameterByName } from '~/utils/utils';
@@ -45,6 +46,12 @@ export function animateView(map: mapboxgl.Map, view: mapboxgl.MapboxOptions) {
   });
 }
 
+/**
+ * Change binary visibility of layers
+ * @param map Map object
+ * @param layer id of the layer
+ * @param isVisible boolean wether to display layer
+ */
 export function toggleLayer(
   map: mapboxgl.Map,
   layer: string,
@@ -69,12 +76,26 @@ export function filterLayersById(
   subMap: 'projects' | 'hbi',
   id: number
 ): void {
-  let VisibilityFilter;
+  const opacityHighZoom = subMap === 'projects' ? 0.2 : 0;
+  let currentOpacity;
   if (id) {
-    VisibilityFilter = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
+    // Highlight feature with id, decrease opacity for all others
+    currentOpacity = ['case', ['!=', ['get', 'id'], id], 0.2, 1];
   } else {
-    VisibilityFilter = 1;
+    currentOpacity = 1;
   }
+
+  const VisibilityFilter = [
+    'interpolate',
+    ['linear'],
+    ['zoom'],
+    17,
+    currentOpacity,
+    17.5,
+    opacityHighZoom,
+    19,
+    0,
+  ];
 
   const targets =
     subMap === 'projects'
@@ -90,6 +111,7 @@ export function filterLayersById(
   );
 }
 
+// Select the side if it's specific or both sides (2)
 const sideFilter0 = ['match', ['get', 'side'], [2, 0], true, false];
 const sideFilter1 = ['match', ['get', 'side'], [2, 1], true, false];
 
@@ -167,7 +189,7 @@ function getHbiFilterRules(
   return activeHbiStops.map((hbiStop) => ['==', expression, hbiStop.value]);
 }
 
-export function toggleVisibleHbiLines(
+export function setHbiLegendFilter(
   map: mapboxgl.Map,
   hbiFilter: MapboxFilter
 ): void {

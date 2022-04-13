@@ -25,6 +25,7 @@ const Suggestionlist = ({ suggestions, onSuggestionPick }) => {
 };
 
 Suggestionlist.propTypes = {
+  /* eslint-disable react/forbid-prop-types */
   suggestions: PropTypes.arrayOf(PropTypes.object),
   onSuggestionPick: PropTypes.func.isRequired,
 };

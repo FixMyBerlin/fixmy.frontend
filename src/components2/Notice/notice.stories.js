@@ -1,4 +1,6 @@
 import { Container } from '@material-ui/core';
+// Disabled storybook for now
+// eslint-disable-next-line import/no-unresolved
 import { action } from '@storybook/addon-actions';
 import React from 'react';
 

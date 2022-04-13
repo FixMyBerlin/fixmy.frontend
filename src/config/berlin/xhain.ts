@@ -6,6 +6,8 @@ const XHAIN_TERRASSEN_MAPBOX_STYLE = `mapbox://styles/hejco/ckm3lgekg9jky17rznm5
   process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
 }`;
 
+// Ensure, that only on Live system it's true
+// On staging it should be false
 const isNetlifyProduction = process.env.CONTEXT === 'production';
 
 const xhain: DistrictConfig = {
@@ -192,18 +194,20 @@ const xhain: DistrictConfig = {
       ],
     },
     gastro: {
-      currentCampaign: 'xhain2021',
+      currentCampaign: 'xhain2022',
       path: 'terrassen',
+      // Allow making applications without having signed up for
+      // 'expression of interest'
       directSignup: true,
       timeline: {
         // date constructor uses 0-based month number, i.e. january is 0
         openSignup: isNetlifyProduction
-          ? new Date(Date.UTC(2021, 5 - 1, 19))
-          : new Date(Date.UTC(2022, 1 - 1, 1)),
+          ? new Date(Date.UTC(2022, 3 - 1, 14))
+          : new Date(Date.UTC(2022, 2 - 1, 1)),
         closeSignup: isNetlifyProduction
-          ? new Date(Date.UTC(2021, 7 - 1, 16))
+          ? new Date(Date.UTC(2022, 5 - 1, 15))
           : new Date(Date.UTC(2022, 12 - 1, 31)),
-        permitEnd: new Date(Date.UTC(2021, 12 - 1, 31)),
+        permitEnd: new Date(Date.UTC(2022, 10 - 1, 31)),
       },
       model: {
         category: true,

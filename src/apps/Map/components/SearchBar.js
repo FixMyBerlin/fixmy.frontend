@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { geocodeAddress } from '~/apps/Map/MapState';
 import MenuButton from '~/components/MenuButton';
 import config from '~/config';
+import SearchIconImage from '~/images/reports/search.svg';
 import Store from '~/store';
 import { media } from '~/styles/utils';
 
@@ -42,6 +43,15 @@ const SearchInput = styled.input`
   text-align: center;
 `;
 
+const SearchIcon = styled(SearchIconImage)`
+  width: 25px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  margin-right: 10px;
+  pointer-events: none;
+`;
+
 const SearchMenuBtn = styled(MenuButton)`
   position: absolute;
   top: 15px;
@@ -53,7 +63,7 @@ const closeSize = 20;
 const SearchReset = styled.div`
   position: absolute;
   right: 10px;
-  top: 12px;
+  top: 15px;
   border-radius: 50%;
   width: ${closeSize}px;
   height: ${closeSize}px;
@@ -111,6 +121,7 @@ class SearchBar extends PureComponent {
               placeholder="Suche einen Ort"
               onChange={this.onChange}
             />
+            {!this.state.inputValue && <SearchIcon />}
           </Form>
           {this.state.inputValue ? (
             <SearchReset onClick={this.onInputReset}>×</SearchReset>

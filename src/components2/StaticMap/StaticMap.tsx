@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import config from '~/apps/Gastro/config';
 import { BaseMap } from '~/components2/BaseMap';
 
-const StyledMap = styled(BaseMap)`
+const MapWrapper = styled.div`
   width: 100%;
   height: 30em;
   margin: 2em 0;
@@ -48,14 +48,16 @@ const StaticMap = ({
   };
 
   return (
-    <StyledMap
-      bounds={bounds}
-      onInit={handleInit}
-      style={mapboxStyle}
-      className={className}
-      interactive={false}
-      {...mapboxProps}
-    />
+    <MapWrapper>
+      <BaseMap
+        bounds={bounds}
+        onInit={handleInit}
+        mapboxStyle={mapboxStyle}
+        className={className}
+        interactive={false}
+        {...mapboxProps}
+      />
+    </MapWrapper>
   );
 };
 

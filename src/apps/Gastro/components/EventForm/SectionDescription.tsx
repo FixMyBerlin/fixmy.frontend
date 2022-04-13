@@ -56,7 +56,7 @@ const SectionUsage: React.FC<Props> = ({
           fullWidth
           multiline
           variant="outlined"
-          rows={4}
+          minRows={4}
         />
         <CharCount>Noch {charRemaining.description} Zeichen.</CharCount>
 
@@ -90,7 +90,7 @@ const SectionUsage: React.FC<Props> = ({
           fullWidth
           multiline
           variant="outlined"
-          rows={8}
+          minRows={8}
         />
         <CharCount>Noch {charRemaining.details} Zeichen.</CharCount>
       </section>

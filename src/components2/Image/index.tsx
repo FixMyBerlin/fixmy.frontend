@@ -1,2 +1,2 @@
-export { default as FadeIn } from './FadeIn';
-export { default as Insert } from './Insert';
+export * from './FadeInImage';
+export * from './InsertImage';

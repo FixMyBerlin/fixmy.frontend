@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 41 41">
-    <defs>
-        <circle id="a" cx="20.093" cy="20.093" r="20.093" stroke="#595959" stroke-width="1"/>
-    </defs>
-    <g fill="none" fill-rule="evenodd">
-        <use fill="#ffffff" xlink:href="#a" class="close-icon-background" />
-        <path stroke="#595959" stroke-width="2.7" d="M27.015 13.752L13.819 26.947M27.015 26.947L13.819 13.752"/>
-    </g>
-</svg>

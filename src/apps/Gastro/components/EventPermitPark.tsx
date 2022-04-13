@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react';
 import styled from 'styled-components';
+import { SenderDepartment } from './SenderDepartment';
 
 import AreaMap from '~/apps/Gastro/components/AreaMap';
 
@@ -98,9 +99,7 @@ const Permit = ({ application, id }: Props) => {
 
   return (
     <PermitContainer>
-      <h2>Bezirksamt Friedrichshain-Kreuzberg von Berlin</h2>
-      <h3>Abt. Familie, Personal, Diversity, Straßen- und Grünflächen</h3>
-      <h3>Straßen- und Grünflächenamt</h3>
+      <SenderDepartment />
 
       <Headline>
         <span className="address">

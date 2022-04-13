@@ -29,7 +29,7 @@ const KiezListing = styled.div`
   margin: 1em 0 2em;
 `;
 
-const OverviewMap = styled(BaseMap)`
+const MapWrapper = styled.div`
   width: 100vw;
   height: 20em;
   margin-left: -1rem;
@@ -80,10 +80,12 @@ const Kieze = ({
       </Header>
       <Container maxWidth="md">
         <h2>Welche Spielstraße wollen Sie unterstützen?</h2>
-        <OverviewMap
-          style={district.apps.spielstrassen.mapboxStyle}
-          bounds={district.bounds}
-        />
+        <MapWrapper>
+          <BaseMap
+            mapboxStyle={district.apps.spielstrassen.mapboxStyle}
+            bounds={district.bounds}
+          />
+        </MapWrapper>
         {streetRequest.state === RequestState.pending && <Loader />}{' '}
         {streetRequest.state === RequestState.error && (
           <StyledApiNotice

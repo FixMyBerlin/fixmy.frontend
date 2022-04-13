@@ -1,12 +1,10 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
-
 import config from '~/config';
 import { media } from '~/styles/utils';
-
-import Heading from '../Typography/Heading';
-import Entry from './TOCEntry';
+import { Heading } from '../Typography/Heading';
+import { TOCEntry } from './TOCEntry';
 
 const TOCWrapper = styled.nav`
   max-width: 518px;
@@ -32,16 +30,23 @@ const TOCHeaderArticle = styled(Heading)`
   `}
 `;
 
-const TOC = ({
+type Props = {
+  entries: any; // Really hard to type
+  activeIndex: number;
+  enumerate?: boolean;
+  title?: string | null;
+  className?: string | null;
+};
+
+export const TOC: React.FC<Props> = ({
   entries,
   activeIndex,
-  hasActiveState = false,
-  title = null,
   enumerate = true,
+  title = null,
   className = null,
 }) => {
   const tocChildren = React.Children.toArray(entries).filter(
-    (child: ReactElement) => child.props.toc
+    (child: React.ReactElement) => child.props.toc
   );
 
   return (
@@ -54,11 +59,11 @@ const TOC = ({
           />
         )}
       </TOCHeaderArticle>
-      {tocChildren.map((entry: ReactElement, index) => (
-        <Entry
+      {tocChildren.map((entry: React.ReactElement, index) => (
+        <TOCEntry
           entry={entry}
           key={`tocentry__${entry.props.toc}`}
-          active={hasActiveState && activeIndex === index}
+          active={activeIndex === index}
           index={index}
           enumerate={enumerate}
         />
@@ -66,5 +71,3 @@ const TOC = ({
     </TOCWrapper>
   );
 };
-
-export default TOC;

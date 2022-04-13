@@ -13,7 +13,7 @@ const Image = styled.img`
 
 const PlacementNotice = () => (
   <>
-    <Paragraph>
+    <Paragraph as="div">
       Hinweis: Neue Fahrradbügel werden in {config.reports.region} in der Regel
       auf der Straße installiert, damit der Platz für Fußgänger:innen auf dem
       Gehweg nicht eingeschränkt wird.

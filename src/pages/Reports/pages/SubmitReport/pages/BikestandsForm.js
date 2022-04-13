@@ -42,7 +42,7 @@ export default ({ onConfirm }) => {
       <Question>
         Wie viele Bügel werden aus Ihrer Sicht an diesem Ort benötigt?
       </Question>
-      <Paragraph>
+      <Paragraph as="div">
         An einen Bügel können zwei Fahrräder angeschlossen werden.
       </Paragraph>
 

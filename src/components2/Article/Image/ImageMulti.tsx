@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { media } from '~/styles/utils';
-
-import InnerImg, { InnerImageProps } from './InnerImage';
-import Subtitle from './Subtitle';
+import { InnerImageProps, InnerImg } from './InnerImage';
+import { Subtitle } from './Subtitle';
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -24,22 +22,21 @@ const ImageSpacer = styled.div`
   flex: 1 1 100%;
 `;
 
-const ImageMulti = ({ children }) => <ImageWrapper>{children}</ImageWrapper>;
+type ImageMultiProps = React.FC & {
+  Inner: React.FC<InnerImageProps>;
+  Subtitle: React.FC;
+};
 
-interface ImageMultiInnerProps extends InnerImageProps {
-  children?: React.ReactNode | React.ReactNode[];
-}
+export const ImageMulti: ImageMultiProps = ({ children }) => (
+  <ImageWrapper>{children}</ImageWrapper>
+);
 
-const ImageMultiInner = ({
-  children = null,
-  ...props
-}: ImageMultiInnerProps) => (
+const Inner: React.FC<InnerImageProps> = ({ children, ...props }) => (
   <ImageSpacer>
     <InnerImg {...props}>{children}</InnerImg>
   </ImageSpacer>
 );
 
-ImageMulti.Inner = ImageMultiInner;
+// <ImageMulti.Inner {...props}>{children}</ImageMulti.Inner>
+ImageMulti.Inner = Inner;
 ImageMulti.Subtitle = Subtitle;
-
-export default ImageMulti;

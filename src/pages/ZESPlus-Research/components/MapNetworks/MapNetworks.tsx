@@ -1,8 +1,6 @@
 import React from 'react';
-
-import { Map as ArticleMap } from '~/components2/Article';
-
-import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../constants';
+import { Map } from '~/components2/Article';
+import { BOUNDS_ZES, ZES_CENTER, ZES_ZOOM } from '../../mapboxOptions.const';
 import {
   IconWrapper,
   Legend,
@@ -11,7 +9,7 @@ import {
   LegendItem,
   LegendItems,
   LegendSources,
-} from '../BaseLegend';
+} from '~/components2/Article/Map/MapLegendStyledComponents';
 import IconBV from './icons/berliner-verbaende.svg';
 import IconHeatmap from './icons/heatmap.svg';
 import IconKDS from './icons/konzept-dahme-spree.svg';
@@ -21,11 +19,12 @@ import IconT from './icons/touristische.svg';
 import IconV from './icons/varianten-rsv.svg';
 import IconZES from './icons/zes.svg';
 
-const MAP_STYLE_QUALITY = 'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';
+const MAP_STYLE_QUALITY: mapboxgl.MapboxOptions['style'] =
+  'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';
 
 const MapNetworks = () => (
   <>
-    <ArticleMap
+    <Map
       mapboxStyle={MAP_STYLE_QUALITY}
       maxBounds={BOUNDS_ZES}
       center={ZES_CENTER}

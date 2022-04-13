@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnchorLink } from '~/components2/Link';
 import { GridChild, Img } from '../styles';
 import ImgHbiWip from './assets/illu-hbi-wip.jpg';
 
@@ -9,10 +10,11 @@ export const Column3: React.FC<Props> = () => {
     <GridChild>
       <Img src={ImgHbiWip} alt="" />
       <div>
-        <h2>Upcoming: Besserer Happy-Bike-Index für Strecken</h2>
+        <h2>Happy-Bike-Index wird überarbeitet</h2>
         <p>
-          Wir arbeiten an einem Tool, mit dem du dabei mithelfen kannst die
-          fehlenden für den Happy-Bike-Index einzutragen.
+          Wir arbeiten an der nächsten Version mit besseren Daten, wenn du bei
+          der Datenerhebung in OpenStreetMap helfen möchtest schreib uns eine{' '}
+          <AnchorLink href="mailto:info@fixmycity.de">Email</AnchorLink>
         </p>
       </div>
     </GridChild>

@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { render } from '~/utils/test-utils';
-
-import { AreaPicker } from '.';
+import AreaPicker from './AreaPicker';
 
 const TEST_STYLE_URL = 'mapbox://styles/hejco/ck85ospzd0cre1ioa8d6gfuv9';
 

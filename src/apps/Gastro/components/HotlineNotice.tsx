@@ -4,9 +4,11 @@ import {
   CardContent,
   Button,
   makeStyles,
+  Typography,
 } from '@material-ui/core';
 import PhoneIcon from '@material-ui/icons/Phone';
 import React from 'react';
+import { Link } from '~/components2/Link';
 
 const useStyles = makeStyles({
   content: {
@@ -38,7 +40,9 @@ const HotlineNotice = () => {
         <p>
           Bitte nutzen Sie auch unsere telefonische Beratung:
           <br />
-          Dienstag - Freitag, 9:30 Uhr - 11:30 Uhr
+          Mittwoch von 11:00 - 15:00 Uhr
+          <br />
+          Freitag von 13:00 - 17:00 Uhr
         </p>
       </CardContent>
       <CardActions>
@@ -51,6 +55,15 @@ const HotlineNotice = () => {
           030 - 90 298 4216
         </Button>
       </CardActions>
+      <CardContent>
+        <Typography>
+          Alternativ kontaktieren Sie{' '}
+          <Link href="mailto:gastro@ba-fk.berlin.de">
+            gastro@ba-fk.berlin.de
+          </Link>{' '}
+          für Rückfragen.
+        </Typography>
+      </CardContent>
     </Card>
   );
 };

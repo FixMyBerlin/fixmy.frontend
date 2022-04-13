@@ -4,7 +4,7 @@ import { media } from '~/styles/utils';
 // Styles based on https://tailwindui.com/components/application-ui/overlays/modals
 export const Wrapper = styled.div`
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 2000;
   inset: 0;
   position: fixed;
 `;
@@ -46,6 +46,7 @@ export const Modal = styled.section`
 
 export const GridWrapper = styled.div`
   margin-bottom: 2.5rem;
+  padding: 0 1rem;
   ${media.s`
     padding: 0 1.75rem;
   `}
@@ -110,6 +111,8 @@ export const Img = styled.img`
 export const ButtonWrapper = styled.div`
   text-align: center;
   margin-bottom: 1rem;
+  padding: 0 1rem;
+
   ${media.m`
     display: none;
   `}

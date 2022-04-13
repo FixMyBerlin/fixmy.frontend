@@ -95,28 +95,46 @@ describe('filterLayersById()', () => {
   it('sets correct layout properties', () => {
     const myId = 'myId';
     utils.filterLayersById(map, 'subMap', myId);
+    const zoomInterpolationId = [
+      'interpolate',
+      ['linear'],
+      ['zoom'],
+      17,
+      ['case', ['!=', ['get', 'id'], myId], 0.2, 1],
+      17.5,
+      0,
+      19,
+      0,
+    ];
     expect(map.setPaintProperty.mock.calls).toEqual([
-      ['center', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
-      ['side0', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
-      ['side1', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
-      [
-        'xCenter',
-        'line-opacity',
-        ['case', ['!=', ['get', 'id'], myId], 0.2, 1],
-      ],
-      ['xSide0', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
-      ['xSide1', 'line-opacity', ['case', ['!=', ['get', 'id'], myId], 0.2, 1]],
+      ['center', 'line-opacity', zoomInterpolationId],
+      ['side0', 'line-opacity', zoomInterpolationId],
+      ['side1', 'line-opacity', zoomInterpolationId],
+      ['xCenter', 'line-opacity', zoomInterpolationId],
+      ['xSide0', 'line-opacity', zoomInterpolationId],
+      ['xSide1', 'line-opacity', zoomInterpolationId],
     ]);
   });
   it('resets layout properties', () => {
     utils.filterLayersById(map, 'subMap', null);
+    const zoomInterpolationStatic = [
+      'interpolate',
+      ['linear'],
+      ['zoom'],
+      17,
+      1,
+      17.5,
+      0,
+      19,
+      0,
+    ];
     expect(map.setPaintProperty.mock.calls).toEqual([
-      ['center', 'line-opacity', 1],
-      ['side0', 'line-opacity', 1],
-      ['side1', 'line-opacity', 1],
-      ['xCenter', 'line-opacity', 1],
-      ['xSide0', 'line-opacity', 1],
-      ['xSide1', 'line-opacity', 1],
+      ['center', 'line-opacity', zoomInterpolationStatic],
+      ['side0', 'line-opacity', zoomInterpolationStatic],
+      ['side1', 'line-opacity', zoomInterpolationStatic],
+      ['xCenter', 'line-opacity', zoomInterpolationStatic],
+      ['xSide0', 'line-opacity', zoomInterpolationStatic],
+      ['xSide1', 'line-opacity', zoomInterpolationStatic],
     ]);
   });
 });
@@ -142,7 +160,7 @@ describe('setPlanningLegendFilter()', () => {
   });
 });
 
-describe('toggleVisibleHbiLines', () => {
+describe('setHbiLegendFilter', () => {
   it('sets filters to toggle visibility of hbi segments', () => {
     const map = { setFilter: jest.fn() };
     config.apps = {
@@ -158,7 +176,7 @@ describe('toggleVisibleHbiLines', () => {
       },
     };
 
-    utils.toggleVisibleHbiLines(map, [true, true, false, true]);
+    utils.setHbiLegendFilter(map, [true, true, false, true]);
     expect(map.setFilter.mock.calls).toEqual(mapboxHBIFilter);
   });
 });

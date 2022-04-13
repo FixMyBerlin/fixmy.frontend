@@ -9,8 +9,6 @@ import { getTextStyles } from '~/components/Text';
 import { getTitleStyles } from '~/components/Title';
 import config from '~/config';
 
-const ImageContext = require.context('~/images', true);
-
 const StyledMarkdown = styled(Markdown)`
   padding-bottom: 100px;
 
@@ -52,15 +50,12 @@ const StyledMarkdown = styled(Markdown)`
   }
 `;
 
-function loadImage(mdSrc) {
-  return ImageContext(mdSrc);
-}
+const MarkdownContent = ({ content }) => {
+  require.context('~/images', true);
 
-const MarkdownContent = ({ content }) =>
-  content && typeof content === 'string' ? (
-    <StyledMarkdown rehypePlugins={[rehypeRaw]} transformImageUri={loadImage}>
-      {content}
-    </StyledMarkdown>
+  return content && typeof content === 'string' ? (
+    <StyledMarkdown rehypePlugins={[rehypeRaw]}>{content}</StyledMarkdown>
   ) : null;
+};
 
 export default MarkdownContent;

@@ -1,10 +1,9 @@
 import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-
 import Button from '~/components/Button';
-import Text from '~/components/Text';
 import Title from '~/components/Title';
+import Text from '~/components/Text';
 import logger from '~/utils/logger';
 
 type State = {
