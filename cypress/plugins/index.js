@@ -5,6 +5,19 @@ const log = require('debug')('cypress:plugins');
 const baseConfig = require('../../cypress.json');
 const webpackOptions = require('../../webpack/webpack.config.cypress');
 
+// From https://github.com/cypress-io/cypress/issues/18435
+// for fixing publicPath issue
+const publicPath = ' ';
+let outputOptions;
+Object.defineProperty(webpackOptions, 'output', {
+  get: () => {
+    return { ...outputOptions, publicPath };
+  },
+  set(x) {
+    outputOptions = x;
+  },
+});
+
 /**
  * Extend browser arguments to immediately open dev tools so we can inspect breakpoint halts
  * (when we added a "debugger" statement in our code
