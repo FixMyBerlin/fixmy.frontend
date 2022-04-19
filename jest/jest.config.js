@@ -54,6 +54,8 @@ module.exports = {
 
   verbose: false,
 
+  testEnvironment: 'jsdom',
+
   globals: {
     'ts-jest': {
       // do not type check in unit tests.

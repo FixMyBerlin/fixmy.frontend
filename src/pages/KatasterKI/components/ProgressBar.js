@@ -43,7 +43,7 @@ const ProgressBar = ({ total, current }) => {
       <ProgressWrapper data-cy="kat-progress-bar">
         {stepRange.map((index) => (
           <ProgressStep
-            css={{ width }}
+            sx={{ width }}
             done={index <= current}
             current={index === current}
             key={`progress-step__${index}`}

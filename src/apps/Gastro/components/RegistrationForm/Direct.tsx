@@ -1,4 +1,10 @@
-import { FormHelperText, LinearProgress } from '@material-ui/core';
+import {
+  FormHelperText,
+  LinearProgress,
+  Card,
+  CardContent,
+  Typography,
+} from '@material-ui/core';
 import debug from 'debug';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { CheckboxWithLabel } from 'formik-material-ui';
@@ -169,7 +175,7 @@ const DirectRegistrationForm = ({ onSuccess, district }: Props) => (
           logger(e1);
         }
         if (!errMsg)
-          errMsg = `Es gab leider einen Fehler bei Ihrer Anmeldung. Bitte versuchen 
+          errMsg = `Es gab leider einen Fehler bei Ihrer Anmeldung. Bitte versuchen
             Sie es später noch einmal.`;
         setStatus(errMsg);
       }
@@ -258,12 +264,17 @@ const DirectRegistrationForm = ({ onSuccess, district }: Props) => (
         )}
 
         {!isValid && (
-          <InvalidFormNotice>
-            <em>
-              Sie haben noch nicht alle benötigten Felder korrekt ausgefüllt.
-              Bitte beachten Sie die rot markierten Hinweise im Formular oben.
-            </em>
-          </InvalidFormNotice>
+          <Card>
+            <CardContent>
+              <Typography style={{ color: '#FF5050' }}>
+                <strong>
+                  Sie haben noch nicht alle benötigten Felder korrekt
+                  ausgefüllt.{' '}
+                </strong>
+                Bitte beachten Sie die rot markierten Hinweise im Formular oben.
+              </Typography>
+            </CardContent>
+          </Card>
         )}
 
         {isSubmitting && <LinearProgress />}

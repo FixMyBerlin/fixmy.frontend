@@ -58,7 +58,7 @@ export default ({ title, options, currentValue, handleChange, page, next }) => {
   const [isLoading, onClick] = useHandlerTimeout(next);
 
   return (
-    <Flex flexDirection="column" css={{ flexGrow: 1 }}>
+    <Flex flexDirection="column" sx={{ flexGrow: 1 }}>
       <QuestionTitle>{title}</QuestionTitle>
       {options.map((option) => (
         <MultiChoice key={`multichoice_${page}_${option.name}`}>
@@ -92,10 +92,10 @@ export default ({ title, options, currentValue, handleChange, page, next }) => {
           />
         </MultiChoice>
       ))}
-      <Flex css={{ flexGrow: 1 }} justifyContent="center">
+      <Flex sx={{ flexGrow: 1 }} justifyContent="center">
         <Button
           onClick={onClick}
-          css={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
+          sx={{ alignSelf: 'flex-end', width: '100%', maxWidth: 500 }}
           isLoading={isLoading}
           data-cy="kat-multichoice-proceed-btn"
         >

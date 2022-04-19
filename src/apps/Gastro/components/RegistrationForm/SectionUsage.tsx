@@ -24,7 +24,7 @@ const SectionUsage = () => (
       label="Nutzungszweck"
       placeholder="z.B. Schankvorgarten, Warenauslagen, Werkstatt, oder anderer Zweck"
       multiline
-      rows={4}
+      minRows={4}
       fullWidth
     />
   </section>

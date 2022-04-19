@@ -21,7 +21,7 @@ export default ({
   };
 
   return (
-    <GhostButton css={style} className={className} onClick={onShare}>
+    <GhostButton sx={style} className={className} onClick={onShare}>
       {text}
     </GhostButton>
   );

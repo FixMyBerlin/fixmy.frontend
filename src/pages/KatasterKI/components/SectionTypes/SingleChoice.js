@@ -49,7 +49,7 @@ const SingleChoiceInput = ({
         <GhostButton
           key={`singlechoice__${page}_${option.value}`}
           onClick={() => onClick(option)}
-          css={{ textAlign: 'left' }}
+          sx={{ textAlign: 'left' }}
           isActive={
             option.value === currentValue || option.value === clickedButton
           }
