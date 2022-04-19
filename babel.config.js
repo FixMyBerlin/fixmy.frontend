@@ -7,15 +7,12 @@ module.exports = (api) => {
       '@babel/preset-env',
       {
         useBuiltIns: 'usage',
-        corejs: { version: '3.19', proposals: true },
+        corejs: { version: '3.22', proposals: true },
       },
     ],
   ];
 
   const plugins = [
-    // remove once we use ES2022
-    '@babel/plugin-syntax-dynamic-import',
-
     // remove once we use ES2022
     '@babel/plugin-proposal-class-properties',
 
