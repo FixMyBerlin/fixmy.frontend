@@ -58,10 +58,7 @@ export const Section04Next: React.FC<SectionProps> = ({ toc }) => (
     </Paragraph>
     <Heading as="h3">Schreiben Sie uns</Heading>
     <Paragraph>
-      Haben Sie Fragen oder Anregungen zu sicheren Schulwegen oder zum
-      Fußverkehr im Bezirksamt Friedrichshain-Kreuzberg? Brauchen Sie im Umfeld
-      Ihrer Schule eine verbesserte Verkehrssicherheit? Dann schreiben Sie uns
-      eine Mail:{' '}
+      Ausgehend von der Schulwegeanalyse erstellt das Straßen- und Grünflächenamt derzeit in enger Abstimmung mit dem Schul- und Sportamt eine Strategie für sichere Schulwege. Wenn Sie Vorschläge oder Hinweise zu besonderen Gefahrensituationen im Umfeld Ihrer Schule haben, können Sie uns dies per Mail mitteilen. Wir sammeln und prüfen Ihre Vorschläge und lassen diese in die Strategieentwicklung einfließen. Sie erreichen das Straßen- und Grünflächenamt unter:{' '}
       <AnchorLink href="mailto:'Straßen- und Grünflächenamt FH' <tiefgruen@ba-fk.berlin.de>?subject=Hinweis zur Schulwegesicherheit">
         tiefgruen@ba-fk.berlin.de
       </AnchorLink>

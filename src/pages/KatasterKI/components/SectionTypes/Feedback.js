@@ -77,7 +77,7 @@ const Feedback = ({
         </FeedbackParagraph>
 
         <Flex
-          css={{
+          sx={{
             flexGrow: 1,
             maxWidth: 500,
             width: '100%',
