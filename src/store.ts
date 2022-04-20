@@ -43,13 +43,6 @@ const enhancers = (window as ExtendedWindow).__REDUX_DEVTOOLS_EXTENSION__
 
 const store = createStore(Reducer, enhancers);
 
-// reenable if we need redux specific error logging in sentry:
-// const sentryReduxEnhancer = Sentry.createReduxEnhancer({
-//   // Optionally pass options listed below
-// });
-
-// const store = createStore(Reducer, compose(enhancers, sentryReduxEnhancer));
-
 // expose store when run in Cypress Test
 if (window.Cypress) {
   (window as ExtendedWindow).store = store;

@@ -8,9 +8,10 @@ import App from '~/App';
 import Store from '~/store';
 
 import * as Sentry from '@sentry/react';
+import config from '~/config';
 
 Sentry.init({
-  dsn: 'https://b02fc2d532694a8c956365811b70b13a@o1174824.ingest.sentry.io/6294496',
+  dsn: config.sentryDsn,
   tracesSampleRate: 0.0,
 });
 
