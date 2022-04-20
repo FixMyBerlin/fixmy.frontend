@@ -97,7 +97,6 @@ const TwitterButton = styled(TwitterIcon)`
     opacity: 0.8;
   }
 `;
-const comp = null;
 const HomeBerlin = () => {
   const dispatch = useDispatch();
   const isMenuOpen = useTypedSelector((state) => state.AppState.isMenuOpen);
@@ -105,7 +104,7 @@ const HomeBerlin = () => {
     <>
       <FMBLogo width={88} />
       <TitleWrapper>
-        <Title onClick={comp()}>Hi, das ist {config.siteTitle}</Title>
+        <Title>Hi, das ist {config.siteTitle}</Title>
         <SubTitle>
           Wir wollen, dass Berlin eine richtig gute Fahrradstadt wird. Auf der
           Karte mit den Planungen siehst du, was Berlin dafür plant.
