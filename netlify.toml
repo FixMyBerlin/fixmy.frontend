@@ -10,7 +10,7 @@
 
 [[redirects]]
     from = "/api/next/*"
-    to = "https://fixmyplatform-develop.herokuapp.com/api/:splat"
+    to = "https://api-staging.fixmyberlin.de/api/:splat"
     status = 200
     force = true
     [redirects.headers]
