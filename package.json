@@ -89,7 +89,7 @@
     "react-spinners": "^0.10.6",
     "react-tabs": "^4.2.0",
     "react-toggle-switch": "^3.0.4",
-    "redux": "^4.1.0",
+    "redux": "^4.2.0",
     "redux-thunk": "^2.3.0",
     "rehype-raw": "^6.1.0",
     "reselect": "^4.0.0",
