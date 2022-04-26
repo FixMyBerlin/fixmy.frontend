@@ -30,7 +30,7 @@
 
 [[redirects]]
     from = "/api/aachen/next/*"
-    to = "https://fixmyaachen-staging.herokuapp.com/api/:splat"
+    to = "https://radbuegel-aachen-staging.tiummk647p9vk.eu-central-1.cs.amazonlightsail.com/api/:splat"
     status = 200
     force = true
     [redirects.headers]
