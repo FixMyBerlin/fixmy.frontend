@@ -2,19 +2,21 @@ name: Node.js CI
 
 on:
   push:
+    paths-ignore:
+      - '**.md'
 
 jobs:
   tests:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Read node version from .nvmrc
         id: nvmrc
         uses: browniebroke/read-nvmrc-action@v1
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
           node-version: '${{ steps.nvmrc.outputs.node_version }}'
 
@@ -32,7 +34,7 @@ jobs:
 
       - run: npm ci
       - run: npm run test:coverage
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
           directory: coverage
@@ -47,17 +49,17 @@ jobs:
     if: ${{ github.actor != 'dependabot[bot]' }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Read node version from .nvmrc
         id: nvmrc
         uses: browniebroke/read-nvmrc-action@v1
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
         with:
           node-version: '${{ steps.nvmrc.outputs.node_version }}'
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         env:
           cache-name: cache-node-modules
         with:
