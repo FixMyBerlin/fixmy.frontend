@@ -163,7 +163,7 @@
     "http-server": "^14.1.0",
     "jest": "^27.5.1",
     "mini-css-extract-plugin": "^2.6.0",
-    "msw": "^0.39.2",
+    "msw": "^0.41.0",
     "node-fetch": "~2.6.7",
     "postcss": "^8.4.4",
     "postcss-loader": "^6.2.1",
