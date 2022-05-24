@@ -35,6 +35,7 @@ export interface DefaultConfig {
   staticpages: any;
   titleFont: string;
   intl: I18NConfig;
+  sentryDsn?: string;
 }
 
 export interface RegionConfig extends Partial<DefaultConfig> {
