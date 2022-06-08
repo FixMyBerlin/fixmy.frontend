@@ -29,7 +29,7 @@ const OffsetMenuButton = styled(MenuButton)`
   display: inline-flex;
   ${media.l`
     && {
-      padding: 30px 40px;
+      margin: 30px 40px;
     }
   `}
 `;
