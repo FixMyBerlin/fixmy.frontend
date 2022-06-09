@@ -4,10 +4,13 @@ import styled from 'styled-components';
 
 import { toggle } from '~/AppState';
 import config from '~/config';
-import AccountIcon from '~/images/account.svg?component';
+
 import Store from '~/store';
 
 import MenuCloseButton from './MenuCloseButton';
+
+/* eslint-disable import/no-unresolved */
+import AccountIcon from '~/images/account.svg?component';
 
 const MenuHeader = styled.div`
   background: ${config.colors.interaction};

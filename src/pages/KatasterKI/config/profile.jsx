@@ -1,10 +1,12 @@
 import React from 'react';
 
+/* eslint-disable import/no-unresolved */
 import PedestrianIcon from '~/images/strassencheck/icons/icon-transportation-1.svg?component';
 import BikeIcon from '~/images/strassencheck/icons/icon-transportation-2.svg?component';
 import PublicIcon from '~/images/strassencheck/icons/icon-transportation-3.svg?component';
 import CarIcon from '~/images/strassencheck/icons/icon-transportation-4.svg?component';
 import MotorbikeIcon from '~/images/strassencheck/icons/icon-transportation-5.svg?component';
+/* eslint-enable import/no-unresolved */
 
 export default [
   {

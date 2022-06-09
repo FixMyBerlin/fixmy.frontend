@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import Button from '~/components/Button';
 import Label from '~/components2/Label';
 import config from '~/config';
-import HeartIcon from '~/images/heart.svg?component';
-import BikestandsIcon from '~/images/reports/bikestands-icon.svg?component';
 import DefaultPhotoSrc from '~/images/reports/landing-christin-hume-595752-unsplash.jpg';
 import { getReportStatusCaption } from '~/pages/Reports/apiservice';
+
+/* eslint-disable import/no-unresolved */
+import HeartIcon from '~/images/heart.svg?component';
+import BikestandsIcon from '~/images/reports/bikestands-icon.svg?component';
 
 const ItemWrapper = styled.div`
   margin: 8px 0;

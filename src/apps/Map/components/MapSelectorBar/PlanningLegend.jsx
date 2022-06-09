@@ -5,15 +5,18 @@ import { connect } from 'react-redux';
 import { togglePlanningFilter } from '~/apps/Map/MapState';
 import { PLANNING_PHASES } from '~/apps/Map/constants';
 import Label from '~/components2/Label';
-import ConstructionIcon from '~/images/planning-icons/bau.svg?component';
-import DoneIcon from '~/images/planning-icons/fertig.svg?component';
-import ConceptIcon from '~/images/planning-icons/konzept.svg?component';
-import PlanningIcon from '~/images/planning-icons/planung.svg?component';
 import Store from '~/store';
 
 import LegendImageWrapper from './SelectorBarImageWrapper';
 import LegendItem from './SelectorBarItem';
 import LegendWrapper from './SelectorBarWrapper';
+
+/* eslint-disable import/no-unresolved */
+import ConstructionIcon from '~/images/planning-icons/bau.svg?component';
+import DoneIcon from '~/images/planning-icons/fertig.svg?component';
+import ConceptIcon from '~/images/planning-icons/konzept.svg?component';
+import PlanningIcon from '~/images/planning-icons/planung.svg?component';
+/* eslint-enable import/no-unresolved */
 
 const Icons = {
   draft: ConceptIcon,

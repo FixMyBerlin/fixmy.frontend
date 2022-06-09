@@ -5,9 +5,13 @@ import styled from 'styled-components';
 
 import Label from '~/components2/Label';
 import config from '~/config';
+
+import { media } from '~/styles/utils';
+
+/* eslint-disable import/no-unresolved */
 import BikeIcon from '~/images/bike.svg?component';
 import PylonIcon from '~/images/poempel.svg?component';
-import { media } from '~/styles/utils';
+/* eslint-enable import/no-unresolved */
 
 const MapSwitchWrapper = styled.div`
   display: flex;

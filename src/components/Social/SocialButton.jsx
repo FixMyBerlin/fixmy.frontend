@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+/* eslint-disable import/no-unresolved */
 import FbIcon from '~/images/facebook.svg?component';
 import TwIcon from '~/images/twitter.svg?component';
+/* eslint-enable import/no-unresolved */
 
 const SocialButton = styled.div`
   margin: 0 10px;

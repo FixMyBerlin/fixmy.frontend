@@ -11,10 +11,7 @@ import ErrorMessage from '~/components/ErrorMessage';
 import { Logo as FMBLogo } from '~/components2/Logo';
 import Legend from '~/components/MapLegend/Legend';
 import config from '~/config';
-import MapLegendButtonIcon from '~/images/map-legend-icon.svg?component';
-import MapLegendButtonActivatedIcon from '~/images/map-legend-icon-activated.svg?component';
-import ZoomInButtonIcon from '~/images/plus-circle-icon.svg?component';
-import ZoomOutButtonIcon from '~/images/minus-circle-icon.svg?component';
+
 import Store, { RootState } from '~/store';
 import { matchMediaSize, breakpoints, media } from '~/styles/utils';
 
@@ -29,6 +26,13 @@ import MapControl from './components/MapControl';
 import { MapPopup } from './components/MapPopup';
 import SearchBar from './components/SearchBar';
 import { WebglMap } from './components/WebglMap';
+
+/* eslint-disable import/no-unresolved */
+import MapLegendButtonIcon from '~/images/map-legend-icon.svg?component';
+import MapLegendButtonActivatedIcon from '~/images/map-legend-icon-activated.svg?component';
+import ZoomInButtonIcon from '~/images/plus-circle-icon.svg?component';
+import ZoomOutButtonIcon from '~/images/minus-circle-icon.svg?component';
+/* eslint-enable import/no-unresolved */
 
 const Wrapper = styled.div`
   height: 100%;

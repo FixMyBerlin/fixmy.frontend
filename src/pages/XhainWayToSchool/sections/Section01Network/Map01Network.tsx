@@ -11,9 +11,6 @@ import {
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
 import { AnchorLink } from '~/components2/Link';
-import IconPlayground from '../assets/playground.svg?component';
-import IconSchoolAreas from '../assets/school-areas.svg?component';
-import IconSchoolPinBlue from '../assets/school-pin-blue.svg?component';
 import {
   ALL_LAYERS,
   BOUNDS,
@@ -22,6 +19,11 @@ import {
   ZOOM,
 } from '../mapboxOptions.const';
 import { LegendItemsNetworkSchoolways } from './LegendItemsNetworkSchoolways';
+
+/* eslint-disable import/no-unresolved */
+import IconPlayground from '../assets/playground.svg?component';
+import IconSchoolAreas from '../assets/school-areas.svg?component';
+import IconSchoolPinBlue from '../assets/school-pin-blue.svg?component';
 
 export const Map01Network = () => {
   const allVisibleLayers = [

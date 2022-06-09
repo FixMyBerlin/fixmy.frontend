@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import AnalysisIcon from '~/images/analysis.svg?component';
 import ApiIcon from '~/images/api.svg?component';
 import ResearchIcon from '~/images/icon-flask.svg?component';
@@ -8,6 +9,7 @@ import MapIcon from '~/images/map.svg?component';
 import QuestionIcon from '~/images/question.svg?component';
 import ReportsIcon from '~/images/reports-icon.svg?component';
 import SpielstrassenIcon from '~/images/spielstrassen-icon.svg?component';
+/* eslint-enable import/no-unresolved */
 
 import routes from './routes';
 

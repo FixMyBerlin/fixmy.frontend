@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+/* eslint-disable-next-line import/no-unresolved */
 import CloseIcon from './images/close.svg?component';
 
 const Close = styled(CloseIcon)`

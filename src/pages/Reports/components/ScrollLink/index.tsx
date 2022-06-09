@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+/* eslint-disable-next-line import/no-unresolved */
 import ArrowIcon from '~/images/arrow-down.svg?component';
 
 const ClickableArea = styled.div`

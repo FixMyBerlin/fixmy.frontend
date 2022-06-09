@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import config from '~/pages/Reports/config';
 import { ENTRY_STATUS } from '~/pages/Reports/types';
 
+/* eslint-disable import/no-unresolved */
 import Brace from './assets/brace-horizontal.svg?component';
 import DoneIcon from './assets/icon-done.svg?component';
 import ExecutionIcon from './assets/icon-execution.svg?component';
 import PlanningIcon from './assets/icon-planning.svg?component';
+/* eslint-enable import/no-unresolved */
 
 const ICONS = {
   planning: PlanningIcon,

@@ -3,10 +3,13 @@ import styled from 'styled-components';
 
 import { PLANNING_PHASES } from '~/apps/Map/constants';
 import config from '~/config';
+
+/* eslint-disable import/no-unresolved */
 import ConstructionIcon from '~/images/planning-icons/bau.svg?component';
 import DoneIcon from '~/images/planning-icons/fertig.svg?component';
 import ConceptIcon from '~/images/planning-icons/konzept.svg?component';
 import PlanningIcon from '~/images/planning-icons/planung.svg?component';
+/* eslint-enable import/no-unresolved */
 
 const iconPaths = {
   'im Bau': ConstructionIcon,

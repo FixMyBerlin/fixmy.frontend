@@ -72,7 +72,8 @@
         "@typescript-eslint/no-useless-constructor": "warn",
 
         // Typescript React components should prefer TS syntax over default props
-        "react/require-default-props": "off"
+        "react/require-default-props": "off",
+        "import/no-resolved": "off"
       }
     }
   ],
@@ -90,7 +91,7 @@
       1,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
-    "react/prop-types": [1, { "skipUndeclared": true }],
+    "react/prop-types": [0, { "skipUndeclared": true }],
     "react/destructuring-assignment": 0,
     "react/jsx-props-no-spreading": 0,
 
@@ -104,7 +105,6 @@
 
     "import/extensions": [
       "error",
-      "ignorePackages",
       {
         "js": "never",
         "jsx": "never",
@@ -118,7 +118,9 @@
     // auto completion for imports and prevent inconsistent naming conventions
     // across modules.
     "import/prefer-default-export": ["off"],
-    "import/order": "off" // Turned off; we use VSCode's sort "Organize Imports" instead
+    "import/order": "off", // Turned off; we use VSCode's sort "Organize Imports" instead
+
+    "import/no-resolved": "off"
   },
 
   "env": {
@@ -128,8 +130,11 @@
 
   "settings": {
     "import/resolver": {
-      "webpack": {
-        "config": "./webpack/webpack.config.dev.js"
+      "alias": {
+        "map": [
+          ["~", "./src"]
+        ],
+        "extensions": [".js",".jsx", ".ts",".tsx"]
       }
     },
     "react": {

@@ -9,10 +9,13 @@ import { Link } from '~/components2/Link';
 import { Logo as FMBLogo } from '~/components2/Logo';
 import { NewsletterWidget } from '~/components2/NewsletterWidget';
 import config from '~/config';
-import FacebookIcon from '~/images/button-social-facebook.svg?component';
-import TwitterIcon from '~/images/button-social-twitter.svg?component';
 import { useTypedSelector } from '~/store';
 import { media } from '~/styles/utils';
+
+/* eslint-disable import/no-unresolved */
+import FacebookIcon from '~/images/button-social-facebook.svg?component';
+import TwitterIcon from '~/images/button-social-twitter.svg?component';
+/* eslint-enable import/no-unresolved */
 
 const CTAWrapper = styled.div`
   margin-bottom: 5rem;

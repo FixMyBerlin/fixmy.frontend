@@ -5,8 +5,10 @@ import { likeDetail, getLikes } from '~/apps/Map/apiservice';
 import Link from '~/components/Link';
 import Label from '~/components2/Label';
 import config from '~/config';
-import HeartIcon from '~/images/heart.svg?component';
 import { bounce } from '~/styles/utils';
+
+/* eslint-disable import/no-unresolved */
+import HeartIcon from '~/images/heart.svg?component';
 
 const LikeButtonWrapper = styled.div`
   display: flex;

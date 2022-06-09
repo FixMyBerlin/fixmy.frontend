@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+/* eslint-disable import/no-unresolved */
 import PinLarge from './assets/pin-large-neutral.svg?component';
 import PinSmall from './assets/pin-small-neutral.svg?component';
+/* eslint-enable import/no-unresolved */
 
 const Container = styled.div`
   display: flex;

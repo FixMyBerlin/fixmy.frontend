@@ -2,16 +2,18 @@ import React, { PureComponent } from 'react';
 import { generatePath } from 'react-router-dom';
 import slugify from 'slugify';
 import styled from 'styled-components';
+import config from '~/config';
+import { numberFormat, getRVALength } from '~/utils/utils';
 
 import Button from '~/components/Button';
 import Label from '~/components2/Label';
-import config from '~/config';
-import HeartIcon from '~/images/heart.svg?component';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
 import DraftMarker from '~/images/planning-icons/konzept-marker.png';
 import PlanningMarker from '~/images/planning-icons/planung-marker.png';
-import { numberFormat, getRVALength } from '~/utils/utils';
+
+/* eslint-disable-next-line import/no-unresolved */
+import HeartIcon from '~/images/heart.svg?component';
 
 const icons = {
   draft: DraftMarker,

@@ -11,8 +11,10 @@ import { useTypedSelector } from '~/store';
 import { media } from '~/styles/utils';
 import { LocaleCode } from '~/types';
 
+/* eslint-disable import/no-unresolved */
 import ChatTranslate from './icons/chat-translate.svg?component';
 import ChevronDown from './icons/chevron-down.svg?component';
+/* eslint-enable import/no-unresolved */
 
 const ChatTranslateIcon = styled(({ isOpen, ...props }) => (
   <ChatTranslate {...props} />

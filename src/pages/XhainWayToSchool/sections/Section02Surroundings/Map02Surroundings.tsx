@@ -10,9 +10,7 @@ import {
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
 import { AnchorLink } from '~/components2/Link';
-import IconSchoolPinBlue from '../assets/school-pin-blue.svg?component';
-import IconSchoolPinPink from '../assets/school-pin-pink.svg?component';
-import IconStreetClass from '../assets/street-class.svg?component';
+
 import {
   ALL_LAYERS,
   BOUNDS,
@@ -21,6 +19,12 @@ import {
   ZOOM,
 } from '../mapboxOptions.const';
 import { IconKmh } from './components/IconKmh';
+
+/* eslint-disable import/no-unresolved */
+import IconSchoolPinBlue from '../assets/school-pin-blue.svg?component';
+import IconSchoolPinPink from '../assets/school-pin-pink.svg?component';
+import IconStreetClass from '../assets/street-class.svg?component';
+/* eslint-enable import/no-unresolved */
 
 export const Map02Surroundings = () => {
   const allVisibleLayers = [

@@ -2,6 +2,8 @@ import debug from 'debug';
 import React from 'react';
 
 import Label from '~/components2/Label';
+
+/* eslint-disable-next-line import/no-unresolved */
 import PinIcon from '~/images/pin.svg?component';
 
 import { BigLabel, CloseButton, Container, Header } from './MapPopupComponents';

@@ -7,8 +7,11 @@ import MapControl from '~/apps/Map/components/MapControl';
 import { getGeoLocation } from '~/apps/Map/map-utils';
 import ErrorMessage from '~/components/ErrorMessage';
 import Loader from '~/components/Loader';
-import LocatorIcon from '~/images/location.svg?component';
+
 import { isNumeric } from '~/utils/utils';
+
+/* eslint-disable-next-line import/no-unresolved */
+import LocatorIcon from '~/images/location.svg?component';
 
 const logger = debug('fmc:map:locator');
 

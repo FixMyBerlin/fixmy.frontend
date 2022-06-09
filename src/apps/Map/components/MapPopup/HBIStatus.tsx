@@ -10,6 +10,8 @@ import { RootState, useTypedSelector } from '~/store';
 import { selectors } from '../../MapState';
 import { BOTH_SIDES, LEFT_SIDE, RIGHT_SIDE } from '../../constants';
 import HBISign from '../HBISign';
+
+/* eslint-disable import/no-unresolved */
 import BraceVertical from './images/brace-vertical.svg?component';
 
 const BikeLevelStatus = styled.div`

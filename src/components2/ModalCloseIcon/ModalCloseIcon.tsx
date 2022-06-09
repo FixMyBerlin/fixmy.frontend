@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import config from '~/config';
+
+/* eslint-disable-next-line import/no-unresolved */
 import CloseIcon from './close.svg?component';
 
 const StyledCloseIcon = styled(CloseIcon)`

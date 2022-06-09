@@ -5,6 +5,8 @@ import {
   LegendItem,
   LegendItems,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
+
+/* eslint-disable import/no-unresolved */
 import SchoolWays100 from '../assets/school-ways-100.svg?component';
 import SchoolWays200 from '../assets/school-ways-200.svg?component';
 import SchoolWays300 from '../assets/school-ways-300.svg?component';

@@ -51,7 +51,6 @@ const StyledMarkdown = styled(Markdown)`
 `;
 
 const MarkdownContent = ({ content }) => {
-
   return content && typeof content === 'string' ? (
     <StyledMarkdown rehypePlugins={[rehypeRaw]}>{content}</StyledMarkdown>
   ) : null;

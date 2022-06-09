@@ -5,9 +5,11 @@ import styled from 'styled-components';
 import { geocodeAddress } from '~/apps/Map/MapState';
 import MenuButton from '~/components/MenuButton';
 import config from '~/config';
-import SearchIconImage from '~/images/reports/search.svg?component';
 import Store from '~/store';
 import { media } from '~/styles/utils';
+
+/* eslint-disable-next-line import/no-unresolved */
+import SearchIconImage from '~/images/reports/search.svg?component';
 
 const Form = styled.form`
   width: 100%;

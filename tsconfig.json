@@ -13,7 +13,8 @@
     "paths": { "~/*": ["./src/*"] },
     "resolveJsonModule": true,
     "sourceMap": true,
-    "target": "es2015"
+    "target": "es2015",
+    "types": [ "@honkhonk/vite-plugin-svgr/client" ]
   },
   "files": ["typescript/custom.d.ts"],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],

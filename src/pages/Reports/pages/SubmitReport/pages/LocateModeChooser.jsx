@@ -7,11 +7,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 import ErrorMessage from '~/components/ErrorMessage';
+
+import config from '~/pages/Reports/config';
+import { media } from '~/styles/utils';
+
+/* eslint-disable import/no-unresolved */
 import CloseIcon from '~/images/close.svg?component';
 import LocateIcon from '~/images/reports/location-button.svg?component';
 import MapIcon from '~/images/reports/noun-map-1909219.svg?component';
-import config from '~/pages/Reports/config';
-import { media } from '~/styles/utils';
+/* eslint-enable import/no-unresolved */
 
 const Wrapper = styled.div`
   z-index: 999999;

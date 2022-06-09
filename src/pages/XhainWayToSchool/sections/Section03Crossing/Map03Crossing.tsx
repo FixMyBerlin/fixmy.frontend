@@ -10,12 +10,16 @@ import {
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
 import { AnchorLink } from '~/components2/Link';
+
+/* eslint-disable import/no-unresolved */
 import IconAccidentsHeatap from '../assets/accidents-heatmap.svg?component';
 import IconCrosswalk from '../assets/crosswalk.svg?component';
 import IconDangerPin from '../assets/danger-pin.svg?component';
 import IconSchoolPinBlue from '../assets/school-pin-blue.svg?component';
 import IconSchoolPinPink from '../assets/school-pin-pink.svg?component';
 import IconTrafficSignal from '../assets/traffic-signal.svg?component';
+/* eslint-enable import/no-unresolved */
+
 import {
   ALL_LAYERS,
   BOUNDS,

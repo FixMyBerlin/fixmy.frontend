@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
+/* eslint-disable import/no-unresolved */
 import SupporterCheck from '~/images/spielstrassen/supporter-check.svg?component';
 import Supporter from '~/images/spielstrassen/supporter.svg?component';
+/* eslint-enable import/no-unresolved */
 
 type IconProps = { visible: boolean };
 

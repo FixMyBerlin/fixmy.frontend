@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import history from '~/history';
-import CloseIcon from '~/images/close.svg?component';
 import config from '~/pages/Reports/config';
 import { actions } from '~/pages/Reports/state/SubmitReportState';
+
+/* eslint-disable import/no-unresolved */
+import CloseIcon from '~/images/close.svg?component';
 
 const Button = styled(CloseIcon)`
   position: absolute;

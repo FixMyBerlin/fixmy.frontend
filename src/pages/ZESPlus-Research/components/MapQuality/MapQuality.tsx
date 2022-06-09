@@ -12,6 +12,8 @@ import {
   LegendItems,
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
+
+/* eslint-disable import/no-unresolved */
 import IconPathFB from './icons/f-fb.svg?component';
 import IconPathGW from './icons/f-gw.svg?component';
 import IconPathSR from './icons/f-sr.svg?component';
@@ -20,6 +22,7 @@ import IconQ2 from './icons/q2.svg?component';
 import IconQ3 from './icons/q3.svg?component';
 import IconQ4 from './icons/q4.svg?component';
 import IconQ5 from './icons/q5.svg?component';
+/* eslint-enable import/no-unresolved */
 
 const MAP_STYLE_QUALITY = 'mapbox://styles/hejco/ckhurerfv3wgv1aog7t7ek3gs';
 

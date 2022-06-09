@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Plus from './plus.svg?component';
 import styled from 'styled-components';
-
 import config from '~/pages/Reports/config';
+
+/* eslint-disable-next-line import/no-unresolved */
+import Plus from './plus.svg?component';
 
 const ButtonWrapper = styled.div`
   position: absolute;

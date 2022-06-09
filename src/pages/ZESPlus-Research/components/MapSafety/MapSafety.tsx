@@ -12,6 +12,8 @@ import {
   LegendItems,
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
+
+/* eslint-disable import/no-unresolved */
 import Icons0 from './icons/s0.svg?component';
 import Icons1 from './icons/s1.svg?component';
 import Icons2 from './icons/s2.svg?component';
@@ -20,6 +22,7 @@ import Icons4 from './icons/s4.svg?component';
 import IconSchool from './icons/school.svg?component';
 import IconToSchoolUnsafe from './icons/schulwege-unsicher.svg?component';
 import IconToSchool from './icons/schulwege.svg?component';
+/* eslint-enable import/no-unresolved */
 
 const MAP_STYLE_SAFETY = 'mapbox://styles/hejco/ckguzkrtq06em19l9477wwzc2';
 

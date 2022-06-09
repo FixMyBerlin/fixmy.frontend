@@ -5,9 +5,11 @@ import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
 
+/* eslint-disable import/no-unresolved */
 import BikeIcon from './feelsafe-bike-icon.svg?component';
 import CarIcon from './feelsafe-car-icon.svg?component';
 import WalkIcon from './feelsafe-walk-icon.svg?component';
+/* eslint-enable import/no-unresolved */
 
 const Wrapper = styled.div`
   border-radius: 50%;

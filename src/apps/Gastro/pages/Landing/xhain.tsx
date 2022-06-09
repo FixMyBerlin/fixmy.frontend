@@ -27,10 +27,13 @@ import BackgroundImageA2 from '~/images/gastro/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/gastro/landing-bg@3x.jpg';
 import { media } from '~/styles/utils';
 
+/* eslint-disable import/no-unresolved */
 import IconRepair from './assets/basics-icon-map-repair.svg?component';
 import IconRestaurant from './assets/basics-icon-map-restaurant.svg?component';
 import IconRetail from './assets/basics-icon-map-retail.svg?component';
 import IconSocial from './assets/basics-icon-map-social.svg?component';
+/* eslint-enable import/no-unresolved */
+
 import MayorImg from './assets/gerold.jpg';
 import MayorImg2 from './assets/gerold@2x.jpg';
 import MayorImg3 from './assets/gerold@3x.jpg';

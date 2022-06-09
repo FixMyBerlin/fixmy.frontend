@@ -11,6 +11,8 @@ import HBISign from '../../HBISign';
 import ImageSlider from '../ImageSlider';
 import { AccidentsFAQ } from './FAQs';
 import { VisionZeroSection } from './VisionZeroSection';
+
+/* eslint-disable import/no-unresolved */
 import BraceSprite from './images/brace-horizontal.svg?component';
 import CircleSprite from './images/circle.svg?component';
 
