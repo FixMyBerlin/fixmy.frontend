@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ArrowIcon from '~/images/arrow-down.svg';
+import ArrowIcon from '~/images/arrow-down.svg?component';
 
 const ClickableArea = styled.div`
   background-color: rgba(0, 0, 0, 0.5);

@@ -3,10 +3,10 @@ import styled from 'styled-components';
 
 import { PLANNING_PHASES } from '~/apps/Map/constants';
 import config from '~/config';
-import ConstructionIcon from '~/images/planning-icons/bau.svg';
-import DoneIcon from '~/images/planning-icons/fertig.svg';
-import ConceptIcon from '~/images/planning-icons/konzept.svg';
-import PlanningIcon from '~/images/planning-icons/planung.svg';
+import ConstructionIcon from '~/images/planning-icons/bau.svg?component';
+import DoneIcon from '~/images/planning-icons/fertig.svg?component';
+import ConceptIcon from '~/images/planning-icons/konzept.svg?component';
+import PlanningIcon from '~/images/planning-icons/planung.svg?component';
 
 const iconPaths = {
   'im Bau': ConstructionIcon,

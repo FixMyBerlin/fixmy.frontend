@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import config from '~/pages/Reports/config';
 import { ENTRY_STATUS } from '~/pages/Reports/types';
 
-import Brace from './assets/brace-horizontal.svg';
-import DoneIcon from './assets/icon-done.svg';
-import ExecutionIcon from './assets/icon-execution.svg';
-import PlanningIcon from './assets/icon-planning.svg';
+import Brace from './assets/brace-horizontal.svg?component';
+import DoneIcon from './assets/icon-done.svg?component';
+import ExecutionIcon from './assets/icon-execution.svg?component';
+import PlanningIcon from './assets/icon-planning.svg?component';
 
 const ICONS = {
   planning: PlanningIcon,

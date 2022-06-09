@@ -518,7 +518,7 @@ export const submitPerspective =
           'Die nächste Szenengruppe konnte nicht angefragt werden.'
         )
       );
-      if (process.env.NODE_ENV !== 'test') throw e;
+      if (import.meta.env.NODE_ENV !== 'test') throw e;
     }
   };
 
@@ -547,6 +547,6 @@ export const submitAnswer =
           'Beim Übermitteln der Bewertung ist etwas schiefgelaufen'
         )
       );
-      if (process.env.NODE_ENV !== 'test') throw e;
+      if (import.meta.env.NODE_ENV !== 'test') throw e;
     }
   };

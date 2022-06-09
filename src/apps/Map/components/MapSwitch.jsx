@@ -5,8 +5,8 @@ import styled from 'styled-components';
 
 import Label from '~/components2/Label';
 import config from '~/config';
-import BikeIcon from '~/images/bike.svg';
-import PylonIcon from '~/images/poempel.svg';
+import BikeIcon from '~/images/bike.svg?component';
+import PylonIcon from '~/images/poempel.svg?component';
 import { media } from '~/styles/utils';
 
 const MapSwitchWrapper = styled.div`

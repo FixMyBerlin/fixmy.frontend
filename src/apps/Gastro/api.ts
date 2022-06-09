@@ -34,8 +34,8 @@ const getApiBase = (district: DistrictConfig) => {
   }
 
   return (
-    process.env.API_URL ||
-    district.backend[process.env.BACKEND] ||
+    import.meta.env.API_URL ||
+    district.backend[import.meta.env.BACKEND] ||
     district.backend.production
   );
 };

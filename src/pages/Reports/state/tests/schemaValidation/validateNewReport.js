@@ -1,6 +1,6 @@
 import { Validator } from 'jsonschema';
 
-const schema = require('./newReport-jsonSchema.json');
+const schema = import('./newReport-jsonSchema.json');
 
 const v = new Validator();
 

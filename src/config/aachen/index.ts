@@ -28,8 +28,8 @@ const aachenConfig: RegionConfig = {
   staticpages,
   siteTitle: 'Radbügel für Aachen',
   apiUrl:
-    process.env.API_URL ||
-    apiEndpoints[process.env.BACKEND] ||
+    import.meta.env.API_URL ||
+    apiEndpoints[import.meta.env.BACKEND] ||
     apiEndpoints.staging,
   colors: {
     ...defaultColors,

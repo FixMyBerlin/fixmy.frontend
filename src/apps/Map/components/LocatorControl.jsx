@@ -7,7 +7,7 @@ import MapControl from '~/apps/Map/components/MapControl';
 import { getGeoLocation } from '~/apps/Map/map-utils';
 import ErrorMessage from '~/components/ErrorMessage';
 import Loader from '~/components/Loader';
-import LocatorIcon from '~/images/location.svg';
+import LocatorIcon from '~/images/location.svg?component';
 import { isNumeric } from '~/utils/utils';
 
 const logger = debug('fmc:map:locator');

@@ -3,9 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import history from '~/history';
-import TickIconAachen from '~/images/aachen/tick-icon.svg';
-import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
-import TickIconFMB from '~/images/reports/tick-icon.svg';
+import TickIconAachen from '~/images/aachen/tick-icon.svg?component';
+import BikeParkIcon from '~/images/reports/bikeparkdark.svg?component';
+import TickIconFMB from '~/images/reports/tick-icon.svg?component';
 import config from '~/pages/Reports/config';
 
 import AbortButton from './AbortButton';

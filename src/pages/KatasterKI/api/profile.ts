@@ -9,7 +9,7 @@ import { ProfileResponse, ProfileRequest } from '../types';
 import { getEndpointURL, marshallMultiChoice } from './utils';
 
 // JSON import apparently only works in ts when using `require`
-const profileRequestSchema = require('../scheme/profile-request.schema.json');
+const profileRequestSchema = import('../scheme/profile-request.schema.json');
 
 type marshallProfileStateParam = { KatasterKIState: State };
 

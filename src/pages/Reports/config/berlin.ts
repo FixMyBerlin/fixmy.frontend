@@ -7,7 +7,7 @@ import BycicleParkingBgImgLargeScreen from '~/images/reports/landing-christin-hu
 
 import { ReportsConfig } from '.';
 
-const isProduction = process.env.BACKEND === 'production';
+const isProduction = import.meta.env.BACKEND === 'production';
 
 const BerlinConfig: ReportsConfig = {
   enabled: false,
@@ -94,20 +94,20 @@ const BerlinConfig: ReportsConfig = {
         {
           heading: 'Was passiert mit den Meldungen?',
           text: `
-              Nach Abschluss des Meldezeitraums werden die Mitarbeiter und Mitarbeiterinnen des Straßen- und Grünflächenamtes 
-              in Friedrichshain-Kreuzberg alle Meldungen anschauen und auswerten, welche umsetzbar sind. 
-              Wenn du deine Mailadresse hinterlegt hast, bekommst du auf jeden Fall eine Rückmeldung, 
-              ob dein Wunsch realisiert werden kann. Wenn es Rückfragen gibt, wird sich das Bezirksamt ebenfalls bei dir melden. 
+              Nach Abschluss des Meldezeitraums werden die Mitarbeiter und Mitarbeiterinnen des Straßen- und Grünflächenamtes
+              in Friedrichshain-Kreuzberg alle Meldungen anschauen und auswerten, welche umsetzbar sind.
+              Wenn du deine Mailadresse hinterlegt hast, bekommst du auf jeden Fall eine Rückmeldung,
+              ob dein Wunsch realisiert werden kann. Wenn es Rückfragen gibt, wird sich das Bezirksamt ebenfalls bei dir melden.
               Zusätzlich wird auf FixMyBerlin veröffentlicht, an welchen Orten neue Fahrradbügel installiert werden.
             `,
         },
         {
           heading: 'Werden alle Meldungen umgesetzt?',
           text: `
-              Zunächst muss geprüft werden, ob an der gemeldeten Stelle Bügel aufgestellt werden können oder ob andere Aspekte dagegen sprechen. 
-              Ggf. wird der Ort besichtigt, oder eine Rückfrage gestellt. Außerdem gibt es natürlich eine Grenze, 
-              wie viele Bügel finanzierbar sind und von den beauftragten Fachfirmen pro Jahr aufgestellt werden können. 
-              Mehrere Meldungen an einem Ort werden zusammengefasst und gemeinsam betrachtet. 
+              Zunächst muss geprüft werden, ob an der gemeldeten Stelle Bügel aufgestellt werden können oder ob andere Aspekte dagegen sprechen.
+              Ggf. wird der Ort besichtigt, oder eine Rückfrage gestellt. Außerdem gibt es natürlich eine Grenze,
+              wie viele Bügel finanzierbar sind und von den beauftragten Fachfirmen pro Jahr aufgestellt werden können.
+              Mehrere Meldungen an einem Ort werden zusammengefasst und gemeinsam betrachtet.
             `,
         },
         {

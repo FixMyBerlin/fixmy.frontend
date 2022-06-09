@@ -11,7 +11,7 @@ import LogoBMBF3 from './assets/logo-bmbf@3x.png';
 import LogoEichwalde from './assets/logo-eichwalde.png';
 import LogoEichwalde2 from './assets/logo-eichwalde@2x.png';
 import LogoEichwalde3 from './assets/logo-eichwalde@3x.png';
-import LogoFONA from './assets/logo-fona.svg';
+import LogoFONA from './assets/logo-fona.svg?component';
 import LogoSchulzendorf from './assets/logo-schulzendorf.png';
 import LogoSchulzendorf2 from './assets/logo-schulzendorf@2x.png';
 import LogoSchulzendorf3 from './assets/logo-schulzendorf@3x.png';

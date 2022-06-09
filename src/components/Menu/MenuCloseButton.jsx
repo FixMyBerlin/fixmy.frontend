@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { toggle } from '~/AppState';
-import CloseIcon from '~/images/dark-close.svg';
+import CloseIcon from '~/images/dark-close.svg?component';
 import Store from '~/store';
 
 const MenuCloseButton = styled.button`

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import Flex from '~/components/Flex';
 import fixMyLogoSrc from '~/images/logofmb@2x.png';
-import TspLogo from '~/images/strassencheck/tsp-logo.svg';
+import TspLogo from '~/images/strassencheck/tsp-logo.svg?component';
 import Button from '~/pages/KatasterKI/components/Button';
 import ExternalLink from '~/pages/KatasterKI/components/ExternalLink';
 import config from '~/pages/KatasterKI/config';

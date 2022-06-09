@@ -2,7 +2,7 @@ import MapboxGL from 'mapbox-gl';
 import React, { useEffect, useState } from 'react';
 import { BaseMap } from '~/components2/BaseMap';
 import { MAPBOX_INTERACTION_HANDLERS } from './MapInteractionHandler.const';
-import IconActivate from './smartphone-finger.svg';
+import IconActivate from './smartphone-finger.svg?component';
 import { ActivateButton, ButtonArea, MapWrapper, Wrapper } from './styles';
 
 type Props = {

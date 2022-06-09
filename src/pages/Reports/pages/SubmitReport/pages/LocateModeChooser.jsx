@@ -7,9 +7,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import ErrorMessage from '~/components/ErrorMessage';
-import CloseIcon from '~/images/close.svg';
-import LocateIcon from '~/images/reports/location-button.svg';
-import MapIcon from '~/images/reports/noun-map-1909219.svg';
+import CloseIcon from '~/images/close.svg?component';
+import LocateIcon from '~/images/reports/location-button.svg?component';
+import MapIcon from '~/images/reports/noun-map-1909219.svg?component';
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
 

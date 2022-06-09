@@ -7,7 +7,7 @@ Hier haben wir leider keinen Inhalt für Dich, der Weg ist zu Ende. [Probiere es
 <h1>
     <img
         alt="Weg zu Ende"
-        src="/src/images/404-weg-zu-ende.jpg"
+        src="/images/404-weg-zu-ende.jpg"
         class="img-lg"
     >
 </h1>

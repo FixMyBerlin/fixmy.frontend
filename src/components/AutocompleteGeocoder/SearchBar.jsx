@@ -3,9 +3,9 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 
 import config from '~/config';
-import SearchIcon from '~/images/reports/search.svg';
+import SearchIcon from '~/images/reports/search.svg?component';
 
-const debounce = require('lodash.debounce');
+const debounce = import('lodash.debounce');
 
 const SearchBarWrapper = styled.div`
   position: relative;

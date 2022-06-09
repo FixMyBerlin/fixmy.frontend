@@ -11,9 +11,9 @@ import {
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
 import { AnchorLink } from '~/components2/Link';
-import IconPlayground from '../assets/playground.svg';
-import IconSchoolAreas from '../assets/school-areas.svg';
-import IconSchoolPinBlue from '../assets/school-pin-blue.svg';
+import IconPlayground from '../assets/playground.svg?component';
+import IconSchoolAreas from '../assets/school-areas.svg?component';
+import IconSchoolPinBlue from '../assets/school-pin-blue.svg?component';
 import {
   ALL_LAYERS,
   BOUNDS,

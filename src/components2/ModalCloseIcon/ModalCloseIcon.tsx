@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import config from '~/config';
-import CloseIcon from './close.svg';
+import CloseIcon from './close.svg?component';
 
 const StyledCloseIcon = styled(CloseIcon)`
   color: ${config.colors.lightgrey};

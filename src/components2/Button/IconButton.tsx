@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import CloseIcon from './images/close.svg';
+import CloseIcon from './images/close.svg?component';
 
 const Close = styled(CloseIcon)`
   cursor: pointer;

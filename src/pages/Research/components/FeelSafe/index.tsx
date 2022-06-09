@@ -5,9 +5,9 @@ import styled from 'styled-components';
 
 import { media } from '~/styles/utils';
 
-import BikeIcon from './feelsafe-bike-icon.svg';
-import CarIcon from './feelsafe-car-icon.svg';
-import WalkIcon from './feelsafe-walk-icon.svg';
+import BikeIcon from './feelsafe-bike-icon.svg?component';
+import CarIcon from './feelsafe-car-icon.svg?component';
+import WalkIcon from './feelsafe-walk-icon.svg?component';
 
 const Wrapper = styled.div`
   border-radius: 50%;

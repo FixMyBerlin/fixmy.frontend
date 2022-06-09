@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import config from '~/config';
 
 import { HBI_WORST, HBI_BAD, HBI_OK, HBI_SUPER } from '../../constants';
-import HBIBike0 from './images/hbi-bike-0.svg';
-import HBIBike1 from './images/hbi-bike-1.svg';
-import HBIBike2 from './images/hbi-bike-2.svg';
-import HBIBike3 from './images/hbi-bike-3.svg';
+import HBIBike0 from './images/hbi-bike-0.svg?component';
+import HBIBike1 from './images/hbi-bike-1.svg?component';
+import HBIBike2 from './images/hbi-bike-2.svg?component';
+import HBIBike3 from './images/hbi-bike-3.svg?component';
 
 const HBISign = styled.div<{
   borderWeight: string;

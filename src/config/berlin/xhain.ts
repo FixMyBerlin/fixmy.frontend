@@ -3,12 +3,12 @@ import XHainLarge from '~/images/gastro/wappen@2x.png';
 import { DistrictConfig } from '~/types';
 
 const XHAIN_TERRASSEN_MAPBOX_STYLE = `mapbox://styles/hejco/ckm3lgekg9jky17rznm5kn8bd${
-  process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
+  import.meta.env.NODE_ENV === 'production' ? '' : '?fresh=true'
 }`;
 
 // Ensure, that only on Live system it's true
 // On staging it should be false
-const isNetlifyProduction = process.env.CONTEXT === 'production';
+const isNetlifyProduction = import.meta.env.CONTEXT === 'production';
 
 const xhain: DistrictConfig = {
   title: 'Friedrichshain-Kreuzberg',

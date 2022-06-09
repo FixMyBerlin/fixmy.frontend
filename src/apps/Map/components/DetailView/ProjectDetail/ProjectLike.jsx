@@ -5,7 +5,7 @@ import { likeDetail, getLikes } from '~/apps/Map/apiservice';
 import Link from '~/components/Link';
 import Label from '~/components2/Label';
 import config from '~/config';
-import HeartIcon from '~/images/heart.svg';
+import HeartIcon from '~/images/heart.svg?component';
 import { bounce } from '~/styles/utils';
 
 const LikeButtonWrapper = styled.div`

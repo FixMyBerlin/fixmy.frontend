@@ -4,12 +4,12 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import X from './x.svg';
+import X from './x.svg?component';
 import styled from 'styled-components';
 
-import LocateMeMarkerIconAachen from '~/images/aachen/locate-me-marker.svg';
-import TickIcon from '~/images/reports/locate-me-marker-tick.svg';
-import LocateMeMarkerIcon from '~/images/reports/locate-me-marker.svg';
+import LocateMeMarkerIconAachen from '~/images/aachen/locate-me-marker.svg?component';
+import TickIcon from '~/images/reports/locate-me-marker-tick.svg?component';
+import LocateMeMarkerIcon from '~/images/reports/locate-me-marker.svg?component';
 import config from '~/pages/Reports/config';
 
 const LocateMeMarker =

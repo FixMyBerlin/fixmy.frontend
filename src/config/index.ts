@@ -9,7 +9,7 @@ import eichwalde from './eichwalde';
 
 const log = debug('fmc:config');
 
-let region = (process.env.REGION as Region) || 'berlin';
+let region = (import.meta.env.REGION as Region) || 'berlin';
 
 if (window.Cypress) {
   region = window.Cypress.env('REGION');

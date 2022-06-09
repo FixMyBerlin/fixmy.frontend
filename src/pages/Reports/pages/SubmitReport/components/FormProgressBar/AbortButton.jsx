@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 import history from '~/history';
-import CloseIcon from '~/images/close.svg';
+import CloseIcon from '~/images/close.svg?component';
 import config from '~/pages/Reports/config';
 import { actions } from '~/pages/Reports/state/SubmitReportState';
 

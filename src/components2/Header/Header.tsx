@@ -5,13 +5,13 @@ import styled from 'styled-components';
 
 import { MenuButton } from '~/components2/MenuButton';
 import config from '~/config';
-import SeparatorImage from '~/images/header-separator.svg';
+import SeparatorImage from '~/images/header-separator.svg?component';
 import { useTypedSelector } from '~/store';
 import { media } from '~/styles/utils';
 import { LocaleCode } from '~/types';
 
 import LocaleMenu from './LocaleMenu';
-import ChatTranslate from './chat-translate.svg';
+import ChatTranslate from './chat-translate.svg?component';
 
 const StyledAppBar = styled(({ isOpen, hideAppBar, ...props }) => (
   <AppBar {...props} />

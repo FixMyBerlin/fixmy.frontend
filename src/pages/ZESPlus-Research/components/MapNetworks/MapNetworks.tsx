@@ -10,14 +10,14 @@ import {
   LegendItems,
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
-import IconBV from './icons/berliner-verbaende.svg';
-import IconHeatmap from './icons/heatmap.svg';
-import IconKDS from './icons/konzept-dahme-spree.svg';
-import IconKS from './icons/konzept-schoenefeld.svg';
-import IconRSV from './icons/radschnellverbindungen.svg';
-import IconT from './icons/touristische.svg';
-import IconV from './icons/varianten-rsv.svg';
-import IconZES from './icons/zes.svg';
+import IconBV from './icons/berliner-verbaende.svg?component';
+import IconHeatmap from './icons/heatmap.svg?component';
+import IconKDS from './icons/konzept-dahme-spree.svg?component';
+import IconKS from './icons/konzept-schoenefeld.svg?component';
+import IconRSV from './icons/radschnellverbindungen.svg?component';
+import IconT from './icons/touristische.svg?component';
+import IconV from './icons/varianten-rsv.svg?component';
+import IconZES from './icons/zes.svg?component';
 
 const MAP_STYLE_QUALITY: mapboxgl.MapboxOptions['style'] =
   'mapbox://styles/hejco/ckhufbloj0gmz19pk0m6bd4d2';

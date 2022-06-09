@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { toggle } from '~/AppState';
-import MenuButtonSVG from '~/images/menubutton.svg';
+import MenuButtonSVG from '~/images/menubutton.svg?component';
 import { useTypedSelector } from '~/store';
 
 const MenuButton = ({ className = null }) => {

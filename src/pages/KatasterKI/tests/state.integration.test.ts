@@ -19,10 +19,14 @@ import {
 import { ProfileResponse, Perspective, PerspectiveResponse } from '../types';
 import { mswServer } from '~/../jest/msw/mswServer';
 
-const nodeFetch = require('node-fetch');
+const nodeFetch = import('node-fetch');
 
-const perspectiveResponseSample: PerspectiveResponse = require('../scheme/sample-instances/perspective-response-sample-instance.json');
-const profileResponseSample: ProfileResponse = require('../scheme/sample-instances/profile-response-sample-instance.json');
+const perspectiveResponseSample: PerspectiveResponse = import(
+  '../scheme/sample-instances/perspective-response-sample-instance.json'
+);
+const profileResponseSample: ProfileResponse = import(
+  '../scheme/sample-instances/profile-response-sample-instance.json'
+);
 
 type mockState = {
   KatasterKIState: State;

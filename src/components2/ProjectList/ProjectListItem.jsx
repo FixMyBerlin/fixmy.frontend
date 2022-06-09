@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Button from '~/components/Button';
 import Label from '~/components2/Label';
 import config from '~/config';
-import HeartIcon from '~/images/heart.svg';
+import HeartIcon from '~/images/heart.svg?component';
 import ExecutionMarker from '~/images/planning-icons/bau-marker.png';
 import ReadyMarker from '~/images/planning-icons/fertig-marker.png';
 import DraftMarker from '~/images/planning-icons/konzept-marker.png';

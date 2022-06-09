@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import FbIcon from '~/images/facebook.svg';
-import TwIcon from '~/images/twitter.svg';
+import FbIcon from '~/images/facebook.svg?component';
+import TwIcon from '~/images/twitter.svg?component';
 
 const SocialButton = styled.div`
   margin: 0 10px;

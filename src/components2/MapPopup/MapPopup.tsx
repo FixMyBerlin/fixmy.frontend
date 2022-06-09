@@ -2,7 +2,7 @@ import debug from 'debug';
 import React from 'react';
 
 import Label from '~/components2/Label';
-import PinIcon from '~/images/pin.svg';
+import PinIcon from '~/images/pin.svg?component';
 
 import { BigLabel, CloseButton, Container, Header } from './MapPopupComponents';
 

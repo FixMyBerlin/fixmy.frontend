@@ -16,13 +16,13 @@ const baseConfig: Omit<
   'apps' | 'map' | 'colors' | 'menu' | 'routes' | 'staticpages'
 > = {
   apiUrl:
-    process.env.API_URL ||
-    apiEndpoints[process.env.BACKEND] ||
+    import.meta.env.API_URL ||
+    apiEndpoints[import.meta.env.BACKEND] ||
     apiEndpoints.staging,
   titleFont: 'Roboto Slab',
   baseFont: 'Open Sans',
   logger: 'fmc*', // selects logging namespaces to display when not in production
-  debug: process.env.NODE_ENV !== 'production',
+  debug: import.meta.env.NODE_ENV !== 'production',
   mapbox: {
     accessToken:
       'pk.eyJ1IjoiaGVqY28iLCJhIjoiY2piZjd2bzk2MnVsMjJybGxwOWhkbWxpNCJ9.L1UNUPutVJHWjSmqoN4h7Q',
@@ -46,7 +46,7 @@ const baseConfig: Omit<
   },
 };
 
-if (!process.env.BACKEND && process.env.API_URL == null) {
+if (!import.meta.env.BACKEND && import.meta.env.API_URL == null) {
   // need to use console here to avoid circular import when
   // logging helper imports this file
   // eslint-disable-next-line no-console

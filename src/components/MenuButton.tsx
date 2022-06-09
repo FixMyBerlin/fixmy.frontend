@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import { toggle } from '~/AppState';
-import MenuIcon from '~/images/hamburger.svg';
-import MenuIconWhite from '~/images/hamburgerWhite.svg';
+import MenuIcon from '~/images/hamburger.svg?component';
+import MenuIconWhite from '~/images/hamburgerWhite.svg?component';
 
 const Wrapper = styled.div`
   position: fixed;

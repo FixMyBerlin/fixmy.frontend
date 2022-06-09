@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import config from '~/config';
-import AuthorSvg from '~/images/author-icon.svg';
+import AuthorSvg from '~/images/author-icon.svg?component';
 import { media } from '~/styles/utils';
 import { Author } from './Author';
 import { PublishDate } from './PublishDate';

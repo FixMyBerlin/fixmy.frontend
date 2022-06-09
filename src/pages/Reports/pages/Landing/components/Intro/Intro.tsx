@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import BikeIcon from '~/images/reports/noun-bicycle.svg';
+import BikeIcon from '~/images/reports/noun-bicycle.svg?component';
 import HorizontalRuler from '~/pages/Reports/components/HorizontalRuler';
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';

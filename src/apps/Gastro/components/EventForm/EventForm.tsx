@@ -156,7 +156,7 @@ type Props = ConnectedProps<typeof connector> & {
   onSuccess: (registrationData: EventApplication) => any;
 };
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = import.meta.env.NODE_ENV === 'production';
 
 const EventForm: React.FC<Props> = ({ district, onSuccess }) => {
   const minDate = useMemo<Date>(getMinDate, []);
@@ -198,7 +198,7 @@ const EventForm: React.FC<Props> = ({ district, onSuccess }) => {
             logger(e1);
           }
           if (!errMsg)
-            errMsg = `Es gab leider einen Fehler bei Ihrer Anmeldung. Bitte versuchen 
+            errMsg = `Es gab leider einen Fehler bei Ihrer Anmeldung. Bitte versuchen
               Sie es später noch einmal.`;
           setStatus(errMsg);
         }

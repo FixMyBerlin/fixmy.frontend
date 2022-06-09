@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import MenuButton from '~/components/MenuButton';
-import BikeParkIcon from '~/images/reports/bikeparkdark.svg';
+import BikeParkIcon from '~/images/reports/bikeparkdark.svg?component';
 import config from '~/pages/Reports/config';
 import { media } from '~/styles/utils';
 

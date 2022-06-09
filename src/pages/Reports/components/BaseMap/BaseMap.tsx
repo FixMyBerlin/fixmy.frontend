@@ -7,7 +7,7 @@ import { BigLoader } from '~/components2/Loaders/';
 import config from '~/pages/Reports/config';
 
 const MB_STYLE_URL = `${config.reports.overviewMap.style}${
-  process.env.NODE_ENV === 'production' ? '' : '?fresh=true'
+  import.meta.env.NODE_ENV === 'production' ? '' : '?fresh=true'
 }`;
 
 const MapWrapper = styled.div`

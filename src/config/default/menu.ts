@@ -1,13 +1,13 @@
-import AnalysisIcon from '~/images/analysis.svg';
-import ApiIcon from '~/images/api.svg';
-import ResearchIcon from '~/images/icon-flask.svg';
-import GastroIcon from '~/images/icon-gastro.svg';
-import KommunenIcon from '~/images/icon-kommunen.svg';
-import AboutIcon from '~/images/info.svg';
-import MapIcon from '~/images/map.svg';
-import QuestionIcon from '~/images/question.svg';
-import ReportsIcon from '~/images/reports-icon.svg';
-import SpielstrassenIcon from '~/images/spielstrassen-icon.svg';
+import AnalysisIcon from '~/images/analysis.svg?component';
+import ApiIcon from '~/images/api.svg?component';
+import ResearchIcon from '~/images/icon-flask.svg?component';
+import GastroIcon from '~/images/icon-gastro.svg?component';
+import KommunenIcon from '~/images/icon-kommunen.svg?component';
+import AboutIcon from '~/images/info.svg?component';
+import MapIcon from '~/images/map.svg?component';
+import QuestionIcon from '~/images/question.svg?component';
+import ReportsIcon from '~/images/reports-icon.svg?component';
+import SpielstrassenIcon from '~/images/spielstrassen-icon.svg?component';
 
 import routes from './routes';
 

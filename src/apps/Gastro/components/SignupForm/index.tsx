@@ -72,7 +72,7 @@ const testValues: FormData = {
 };
 
 const initialValues =
-  process.env.NODE_ENV === 'development' ? testValues : emptyForm;
+  import.meta.env.NODE_ENV === 'development' ? testValues : emptyForm;
 
 const FormError = styled(FormHelperText)`
   && {

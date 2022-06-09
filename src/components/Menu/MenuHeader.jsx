@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { toggle } from '~/AppState';
 import config from '~/config';
-import AccountIcon from '~/images/account.svg';
+import AccountIcon from '~/images/account.svg?component';
 import Store from '~/store';
 
 import MenuCloseButton from './MenuCloseButton';

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import BraceHorizontal from '~/images/selector-brace.svg';
-import BraceVertical from '~/images/selector-brace_vertical.svg';
+import BraceHorizontal from '~/images/selector-brace.svg?component';
+import BraceVertical from '~/images/selector-brace_vertical.svg?component';
 import { media } from '~/styles/utils';
 
 const StyledBraceHorizontal = styled(BraceHorizontal)`

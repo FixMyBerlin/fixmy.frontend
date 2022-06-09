@@ -69,9 +69,9 @@ Die FixMyBerlin GbR wurde 2018 im Rahmen des mFunds gefördert (Förderkennzeich
 </style>
 <div class="partner">
   <a href="http://www.bmvi.de/" target="_blank">
-  <img src="/src/images/partner/bmdv-gefoerdert.png" alt="Gefördert durch das BMDV" title="Gefördert durch das BMDV" style="width: 150px;"/></a>
+  <img src="/images/partner/bmdv-gefoerdert.png" alt="Gefördert durch das BMDV" title="Gefördert durch das BMDV" style="width: 150px;"/></a>
 </div>
 <div class="partner">
   <a href="https://www.berlin.de/rbmskzl/" target="_blank">
-  <img src="/src/images/partner/senatskanzlei-berlin.png" alt="Gefördert durch die Senatskanzlei Berlin" title="Gefördert durch die Senatskanzlei Berlin" style="width: 180px" /></a>
+  <img src="/images/partner/senatskanzlei-berlin.png" alt="Gefördert durch die Senatskanzlei Berlin" title="Gefördert durch die Senatskanzlei Berlin" style="width: 180px" /></a>
 </div>

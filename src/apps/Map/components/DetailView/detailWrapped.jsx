@@ -12,7 +12,7 @@ import { getCenterFromGeom } from '~/apps/Map/map-utils';
 import { IconButton } from '~/components2/Button';
 import Label from '~/components2/Label';
 import config from '~/config';
-import PinIcon from '~/images/pin.svg';
+import PinIcon from '~/images/pin.svg?component';
 import Store from '~/store';
 import { media } from '~/styles/utils';
 

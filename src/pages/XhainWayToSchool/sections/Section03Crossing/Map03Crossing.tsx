@@ -10,12 +10,12 @@ import {
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
 import { AnchorLink } from '~/components2/Link';
-import IconAccidentsHeatap from '../assets/accidents-heatmap.svg';
-import IconCrosswalk from '../assets/crosswalk.svg';
-import IconDangerPin from '../assets/danger-pin.svg';
-import IconSchoolPinBlue from '../assets/school-pin-blue.svg';
-import IconSchoolPinPink from '../assets/school-pin-pink.svg';
-import IconTrafficSignal from '../assets/traffic-signal.svg';
+import IconAccidentsHeatap from '../assets/accidents-heatmap.svg?component';
+import IconCrosswalk from '../assets/crosswalk.svg?component';
+import IconDangerPin from '../assets/danger-pin.svg?component';
+import IconSchoolPinBlue from '../assets/school-pin-blue.svg?component';
+import IconSchoolPinPink from '../assets/school-pin-pink.svg?component';
+import IconTrafficSignal from '../assets/traffic-signal.svg?component';
 import {
   ALL_LAYERS,
   BOUNDS,

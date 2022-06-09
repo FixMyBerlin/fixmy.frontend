@@ -9,8 +9,8 @@ import { Link } from '~/components2/Link';
 import { Logo as FMBLogo } from '~/components2/Logo';
 import { NewsletterWidget } from '~/components2/NewsletterWidget';
 import config from '~/config';
-import FacebookIcon from '~/images/button-social-facebook.svg';
-import TwitterIcon from '~/images/button-social-twitter.svg';
+import FacebookIcon from '~/images/button-social-facebook.svg?component';
+import TwitterIcon from '~/images/button-social-twitter.svg?component';
 import { useTypedSelector } from '~/store';
 import { media } from '~/styles/utils';
 

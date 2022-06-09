@@ -12,14 +12,14 @@ import {
   LegendItems,
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
-import IconPathFB from './icons/f-fb.svg';
-import IconPathGW from './icons/f-gw.svg';
-import IconPathSR from './icons/f-sr.svg';
-import IconQ1 from './icons/q1.svg';
-import IconQ2 from './icons/q2.svg';
-import IconQ3 from './icons/q3.svg';
-import IconQ4 from './icons/q4.svg';
-import IconQ5 from './icons/q5.svg';
+import IconPathFB from './icons/f-fb.svg?component';
+import IconPathGW from './icons/f-gw.svg?component';
+import IconPathSR from './icons/f-sr.svg?component';
+import IconQ1 from './icons/q1.svg?component';
+import IconQ2 from './icons/q2.svg?component';
+import IconQ3 from './icons/q3.svg?component';
+import IconQ4 from './icons/q4.svg?component';
+import IconQ5 from './icons/q5.svg?component';
 
 const MAP_STYLE_QUALITY = 'mapbox://styles/hejco/ckhurerfv3wgv1aog7t7ek3gs';
 

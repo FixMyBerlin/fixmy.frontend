@@ -10,9 +10,9 @@ import {
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
 import { AnchorLink } from '~/components2/Link';
-import IconSchoolPinBlue from '../assets/school-pin-blue.svg';
-import IconSchoolPinPink from '../assets/school-pin-pink.svg';
-import IconStreetClass from '../assets/street-class.svg';
+import IconSchoolPinBlue from '../assets/school-pin-blue.svg?component';
+import IconSchoolPinPink from '../assets/school-pin-pink.svg?component';
+import IconStreetClass from '../assets/street-class.svg?component';
 import {
   ALL_LAYERS,
   BOUNDS,

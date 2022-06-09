@@ -3,7 +3,7 @@ import AachenLogo from '~/images/aachen/logo-stadt-aachen-bg.png';
 
 import { ReportsConfig } from '.';
 
-const isProduction = process.env.BACKEND === 'production';
+const isProduction = import.meta.env.BACKEND === 'production';
 
 const aachenConfig: ReportsConfig = {
   enabled: false,
@@ -72,13 +72,13 @@ const aachenConfig: ReportsConfig = {
         {
           heading: 'Werden alle Vorschläge umgesetzt?',
           text: `
-            Leider können nicht an allen gewünschten Standorten Fahrradbügel aufgestellt werden. Dies kann unterschiedliche Gründe haben. In manchen Fällen können die Radbügel nicht an dem exakt gewünschten Ort installiert werden, dafür aber im nahen Umfeld. Auch darüber werden die Bürger*innen informiert, sofern sie ihre E-Mail-Adresse angegeben haben. Grundsätzlich gibt es natürlich eine Grenze, wie viele Fahrradbügel finanzierbar sind und von den beauftragten Fachfirmen pro Jahr aufgestellt werden können. 
+            Leider können nicht an allen gewünschten Standorten Fahrradbügel aufgestellt werden. Dies kann unterschiedliche Gründe haben. In manchen Fällen können die Radbügel nicht an dem exakt gewünschten Ort installiert werden, dafür aber im nahen Umfeld. Auch darüber werden die Bürger*innen informiert, sofern sie ihre E-Mail-Adresse angegeben haben. Grundsätzlich gibt es natürlich eine Grenze, wie viele Fahrradbügel finanzierbar sind und von den beauftragten Fachfirmen pro Jahr aufgestellt werden können.
           `,
         },
         {
           heading: 'Wie erfahre ich, dass Bügel gebaut werden?',
           text: `
-            Die Karte mit allen Meldungen und Planungen wird regelmäßig aktualisiert, dort wird auch angezeigt, ob eine Meldung nach der Prüfung umgesetzt werden kann. Wenn Sie Ihre E-Mail Adresse angegeben haben, erhalten Sie eine Benachrichtigung, sobald die von Ihnen erstellte Meldung bearbeitet wurde.    
+            Die Karte mit allen Meldungen und Planungen wird regelmäßig aktualisiert, dort wird auch angezeigt, ob eine Meldung nach der Prüfung umgesetzt werden kann. Wenn Sie Ihre E-Mail Adresse angegeben haben, erhalten Sie eine Benachrichtigung, sobald die von Ihnen erstellte Meldung bearbeitet wurde.
           `,
         },
       ],
@@ -128,7 +128,7 @@ const aachenConfig: ReportsConfig = {
         {
           heading: 'Kann im gesamten Stadtgebiet gemeldet werden?',
           text: `
-            Generell können Sie für das gesamte Stadtgebiet einen Bedarf an Radbügeln anmelden. Im Umfeld von Dom und Rathaus sind zusätzliche Fahrradbügel nur unter größeren Schwierigkeiten zu realisieren. Das hat mit den vielen Veranstaltungen dort zu tun, aber auch mit Fragen des Brand- und Denkmalschutzes. Dies wird in einem separaten Prozess geprüft. Wenn Sie Vorschläge unterbreiten möchten, bitten wir Sie, alternative Standorte anzugeben.    
+            Generell können Sie für das gesamte Stadtgebiet einen Bedarf an Radbügeln anmelden. Im Umfeld von Dom und Rathaus sind zusätzliche Fahrradbügel nur unter größeren Schwierigkeiten zu realisieren. Das hat mit den vielen Veranstaltungen dort zu tun, aber auch mit Fragen des Brand- und Denkmalschutzes. Dies wird in einem separaten Prozess geprüft. Wenn Sie Vorschläge unterbreiten möchten, bitten wir Sie, alternative Standorte anzugeben.
           `,
         },
       ],

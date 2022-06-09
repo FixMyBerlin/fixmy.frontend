@@ -11,8 +11,8 @@ import HBISign from '../../HBISign';
 import ImageSlider from '../ImageSlider';
 import { AccidentsFAQ } from './FAQs';
 import { VisionZeroSection } from './VisionZeroSection';
-import BraceSprite from './images/brace-horizontal.svg';
-import CircleSprite from './images/circle.svg';
+import BraceSprite from './images/brace-horizontal.svg?component';
+import CircleSprite from './images/circle.svg?component';
 
 const ComponentWrapper = styled.div`
   display: flex;

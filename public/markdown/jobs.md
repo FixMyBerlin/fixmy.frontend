@@ -1,4 +1,4 @@
-<div style="display: flex;"><img style="margin: 0 auto; width: 75px; height: 75px;" src="/src/images/FixMyCity_positiv_300px.png" alt="Logo FixMyCity" /></div>
+<div style="display: flex;"><img style="margin: 0 auto; width: 75px; height: 75px;" src="/images/FixMyCity_positiv_300px.png" alt="Logo FixMyCity" /></div>
 
 # Jobs bei FixMyCity
 
