@@ -6,7 +6,6 @@ import { IntlProvider, IntlConfig } from 'react-intl';
 import ReactPiwik from 'react-piwik';
 import { connect } from 'react-redux';
 import { Router } from 'react-router-dom';
-import { LastLocationProvider } from 'react-router-last-location';
 import styled from 'styled-components';
 
 import ErrorBoundary from '~/components/ErrorBoundary';
@@ -68,16 +67,14 @@ const App = ({ dispatch, isEmbedMode }) => {
       >
         <GlobalStyles />
         <Router history={history}>
-          <LastLocationProvider>
-            <AppWrapper>
-              {!isEmbedMode && <Menu />}
-              <AppContent>
-                <ErrorBoundary>
-                  <Routes />
-                </ErrorBoundary>
-              </AppContent>
-            </AppWrapper>
-          </LastLocationProvider>
+          <AppWrapper>
+            {!isEmbedMode && <Menu />}
+            <AppContent>
+              <ErrorBoundary>
+                <Routes />
+              </ErrorBoundary>
+            </AppContent>
+          </AppWrapper>
         </Router>
       </IntlProvider>
     </ThemeProvider>
