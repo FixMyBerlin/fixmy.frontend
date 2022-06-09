@@ -65,7 +65,7 @@ function setWindowPos(args) {
 function getPatternsForRegion() {
   const makePattern = (page) => `**/${page}/**/*.e2e.test.js`;
 
-  const region = process.env.REGION;
+  const region = import.meta.env.REGION;
   const whitelist =
     baseConfig.whitelist[region] || baseConfig.whitelist.default;
   const patterns = whitelist.map(makePattern);
