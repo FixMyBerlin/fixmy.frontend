@@ -37,13 +37,6 @@ const HotlineNotice = () => {
           </a>{' '}
           werden die häufigsten Fragen beantwortet.
         </p>
-        <p>
-          Bitte nutzen Sie auch unsere telefonische Beratung:
-          <br />
-          Mittwoch von 11:00 - 15:00 Uhr
-          <br />
-          Freitag von 13:00 - 17:00 Uhr
-        </p>
       </CardContent>
       <CardActions>
         <Button
@@ -57,7 +50,7 @@ const HotlineNotice = () => {
       </CardActions>
       <CardContent>
         <Typography>
-          Alternativ kontaktieren Sie{' '}
+          Kontaktieren Sie{' '}
           <Link href="mailto:gastro@ba-fk.berlin.de">
             gastro@ba-fk.berlin.de
           </Link>{' '}

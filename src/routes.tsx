@@ -78,11 +78,9 @@ const RedirectHelper = () => (
     <Route render={() => <Markdown page="nomatch" />} />
   </Switch>
 );
-
 const Routes = ({ token }) => (
   <Switch>
     <Route exact path="/" component={Home} />
-
     <Route path="/redirect-to" component={RedirectHelper} />
 
     {

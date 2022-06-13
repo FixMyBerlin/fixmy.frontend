@@ -116,6 +116,7 @@ const ResponsiveSwitch = styled.div`
  * on responsive screen size
  */
 const StyledStatsCounter = () => {
+  // eslint-disable-next-line react/no-unstable-nested-components
   const component = React.memo((props: any) => (
     <ResponsiveSwitch>
       <StatsCompact {...props} />

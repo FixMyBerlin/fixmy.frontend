@@ -1,6 +1,5 @@
 import { number, func, shape, string } from 'prop-types';
 import React, { PureComponent } from 'react';
-import TextareaAutosize from 'react-autosize-textarea';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
@@ -56,7 +55,7 @@ const StyledCheckboxLabel = styled.label`
 
 const PLACEHOLDER_COLOR = config.colors.midgrey;
 
-const DescriptionTextArea = styled(TextareaAutosize)`
+const DescriptionTextArea = styled.textarea`
   margin-top: 26px;
   width: 90%;
   max-width: ${breakpoints.s}px;

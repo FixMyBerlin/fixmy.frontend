@@ -10,7 +10,7 @@
 
 [[redirects]]
     from = "/api/next/*"
-    to = "https://fixmyplatform-develop.herokuapp.com/api/:splat"
+    to = "https://api-staging.fixmyberlin.de/api/:splat"
     status = 200
     force = true
     [redirects.headers]
@@ -20,7 +20,7 @@
 
 [[redirects]]
     from = "/api/aachen/v1/*"
-    to = "https://fixmyaachen.herokuapp.com/api/:splat"
+    to = "https://api.radbuegel-aachen.de/api/:splat"
     status = 200
     force = true
     [redirects.headers]
@@ -30,7 +30,7 @@
 
 [[redirects]]
     from = "/api/aachen/next/*"
-    to = "https://fixmyaachen-staging.herokuapp.com/api/:splat"
+    to = "https://api-staging.radbuegel-aachen.de/api/:splat"
     status = 200
     force = true
     [redirects.headers]
