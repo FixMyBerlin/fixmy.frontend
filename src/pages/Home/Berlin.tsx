@@ -97,7 +97,6 @@ const TwitterButton = styled(TwitterIcon)`
     opacity: 0.8;
   }
 `;
-
 const HomeBerlin = () => {
   const dispatch = useDispatch();
   const isMenuOpen = useTypedSelector((state) => state.AppState.isMenuOpen);

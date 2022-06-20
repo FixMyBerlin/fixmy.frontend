@@ -106,7 +106,7 @@ const OverviewMapNavBar = ({ heading }) => (
       <LinkSection>
         <TinyLink
           as="a"
-          href={`mailto:${config.feedbackMail}?subject=Feedback zum Meldedialog ${config.reports.region}`}
+          href={`mailto:${config.reports.feedbackMail}?subject=Feedback zum Meldedialog ${config.reports.region}`}
         >
           Feedback zum Meldedialog?
         </TinyLink>
