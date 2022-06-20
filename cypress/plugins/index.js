@@ -1,5 +1,6 @@
 require('dotenv').config();
-const wp = require('@cypress/webpack-preprocessor');
+// TODO Enable with vite cypress
+// const wp = require('@cypress/webpack-preprocessor');
 const log = require('debug')('cypress:plugins');
 
 const baseConfig = require('../../cypress.json');
@@ -65,7 +66,7 @@ function setWindowPos(args) {
 function getPatternsForRegion() {
   const makePattern = (page) => `**/${page}/**/*.e2e.test.js`;
 
-  const region = import.meta.env.REGION;
+  const region = process.env.REGION;
   const whitelist =
     baseConfig.whitelist[region] || baseConfig.whitelist.default;
   const patterns = whitelist.map(makePattern);
@@ -92,7 +93,7 @@ const DynamicCypressConfig = (on, config) => {
     return launchOptions;
   });
 
-  on('file:preprocessor', wp({ webpackOptions }));
+  // on('file:preprocessor', wp({ webpackOptions }));
 
   // store process env in cypress env,
   // see https://docs.cypress.io/guides/guides/environment-variables.html#Option-2-cypress-env-json

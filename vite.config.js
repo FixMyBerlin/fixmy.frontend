@@ -3,7 +3,8 @@ import { createHtmlPlugin } from 'vite-plugin-html';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import svgr from '@honkhonk/vite-plugin-svgr';
-import eslint from 'vite-plugin-eslint';
+// TODO: Enable Vite Eslint plugin
+// import eslint from 'vite-plugin-eslint';
 
 export default defineConfig({
   root: './src',
@@ -21,7 +22,7 @@ export default defineConfig({
   },
   plugins: [
     svgr(),
-    eslint(),
+    // eslint(),
     createHtmlPlugin({
       inject: {
         data: {

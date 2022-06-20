@@ -21,7 +21,9 @@
     "chai-friendly",
     "jest-dom",
     "formatjs",
-    "testing-library"
+    "testing-library",
+    "@typescript-eslint",
+    "import"
   ],
 
   "overrides": [
@@ -109,7 +111,8 @@
         "js": "never",
         "jsx": "never",
         "ts": "never",
-        "tsx": "never"
+        "tsx": "never",
+        "json": "always"
       }
     ],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
@@ -130,12 +133,7 @@
 
   "settings": {
     "import/resolver": {
-      "alias": {
-        "map": [
-          ["~", "./src"]
-        ],
-        "extensions": [".js",".jsx", ".ts",".tsx"]
-      }
+      "typescript": {}
     },
     "react": {
       "version": "detect"

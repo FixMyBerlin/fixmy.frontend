@@ -3,6 +3,8 @@ import { generatePath } from 'react-router-dom';
 import config from '~/config';
 
 import { clickRandomMarker, goToProjects } from './utils';
+
+// eslint-disable-next-line import/no-unresolved
 import { cyElem } from 'cypress/support/utils';
 
 const adressRegex = /[A-Za-z0-9'\\.\\-\\s\\,]/;

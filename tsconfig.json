@@ -2,7 +2,6 @@
   "compilerOptions": {
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
     "esModuleInterop": true,
     "jsx": "react",
     "lib": ["DOM", "ES2020"],
@@ -10,13 +9,17 @@
     "moduleResolution": "node",
     "noImplicitAny": false,
     "outDir": "./dist/",
-    "paths": { "~/*": ["./src/*"] },
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["./*"]
+    },
     "resolveJsonModule": true,
     "sourceMap": true,
     "target": "es2015",
-    "types": [ "@honkhonk/vite-plugin-svgr/client" ]
+    "types": [ "@honkhonk/vite-plugin-svgr/client" , "jest",  "@testing-library/jest-dom"],
+    "typeRoots": ["./types", "./node_modules/@types"]
   },
   "files": ["typescript/custom.d.ts"],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules/*"]
 }

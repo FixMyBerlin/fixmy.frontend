@@ -1,7 +1,9 @@
 import DateFnsUtils from '@date-io/date-fns';
 import { LinearProgress } from '@material-ui/core';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+// eslint-disable-next-line import/no-duplicates
 import { format } from 'date-fns';
+// eslint-disable-next-line import/no-duplicates
 import dateFnsLocaleDE from 'date-fns/locale/de';
 import debug from 'debug';
 import { Formik } from 'formik';
