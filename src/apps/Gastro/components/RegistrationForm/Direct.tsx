@@ -116,11 +116,7 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const InvalidFormNotice = styled.p`
-  margin: 3em 0;
-`;
-
-const isProduction = import.meta.env.NODE_ENV === 'production';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const connector = connect(({ AppState }: RootState) => ({
   district: AppState.district,

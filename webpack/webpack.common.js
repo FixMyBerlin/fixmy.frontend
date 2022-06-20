@@ -48,7 +48,7 @@ module.exports = {
     new Dotenv({ defaults: true, systemvars: true }),
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
     alias: {
       '~': Path.resolve(__dirname, Path.join('..', 'src')),
       cypress: Path.resolve(__dirname, '../cypress'),
@@ -103,6 +103,19 @@ module.exports = {
             loader: 'ts-loader',
             options: {
               transpileOnly: process.env.NODE_ENV !== 'production',
+            },
+          },
+        ],
+        include: [Path.resolve(__dirname, '../src')],
+      },
+      {
+        test: /\.jsx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              plugins: BABEL_PLUGINS,
             },
           },
         ],
