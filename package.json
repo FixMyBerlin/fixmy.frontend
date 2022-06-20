@@ -50,7 +50,7 @@
     "@turf/helpers": "^6.5.0",
     "@turf/length": "^6.5.0",
     "abortcontroller-polyfill": "^1.7.3",
-    "core-js": "^3.22.0",
+    "core-js": "^3.23.1",
     "d3-scale": "~3.3.0",
     "date-fns": "^2.20.2",
     "debug": "^4.3.4",
@@ -103,7 +103,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.12.10",
+    "@babel/core": "^7.18.5",
     "@babel/eslint-parser": "^7.16.3",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.16.11",
