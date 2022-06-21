@@ -43,7 +43,7 @@
     "@material-ui/icons": "^4.11.3",
     "@material-ui/pickers": "^3.3.10",
     "@material-ui/styles": "^4.11.5",
-    "@sentry/react": "^6.19.6",
+    "@sentry/react": "^7.2.0",
     "@turf/along": "^6.5.0",
     "@turf/boolean-within": "^6.5.0",
     "@turf/center": "^6.5.0",
