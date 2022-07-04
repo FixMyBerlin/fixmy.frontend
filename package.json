@@ -141,7 +141,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^6.7.1",
     "cypress": "^9.5.2",
-    "dotenv-webpack": "^7.0.3",
+    "dotenv-webpack": "^7.1.1",
     "eslint": "^8.17.0",
     "eslint-config-airbnb": "^19.0.1",
     "eslint-config-prettier": "^8.5.0",
