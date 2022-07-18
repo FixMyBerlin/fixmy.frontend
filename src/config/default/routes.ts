@@ -83,10 +83,6 @@ const routes: RouteConfig = {
   emailVerification: '/email-verification',
   profile: '/profil',
   userVerify: '/bestaetigen',
-  research: {
-    landing: '/research',
-    survey: '/research/subjektive-sicherheit',
-  },
 };
 
 export default routes;
