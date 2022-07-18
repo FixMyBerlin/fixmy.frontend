@@ -11,7 +11,6 @@ import Home from '~/pages/Home';
 import KatasterKI from '~/pages/KatasterKI';
 import Markdown from '~/pages/Markdown';
 import Reports from '~/pages/Reports';
-import Research from '~/pages/Research';
 import ForgotPassword from '~/pages/User/pages/ForgotPassword';
 import Login from '~/pages/User/pages/Login';
 import Profile from '~/pages/User/pages/Profile';
