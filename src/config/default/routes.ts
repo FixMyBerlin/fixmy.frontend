@@ -16,9 +16,6 @@ interface RouteConfig {
   spielstrassen?: {
     [page: string]: string;
   };
-  research?: {
-    [page: string]: string;
-  };
   wayToSchool?: {
     [page: string]: string;
   };
