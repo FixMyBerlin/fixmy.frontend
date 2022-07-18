@@ -1,3 +1,10 @@
+# radwege-check.de
+# Note: The #-part of the URL cannot be redirected with this
+/research/subjektive-sicherheit/* https://radwege-check.de/auswertung/:splat 301
+/uploads/kataster-ki/Spezifikation_Ausgabeformat_des_Strassenchecks.pdf https://radwege-check.de/open-data/Spezifikation-Ausgabeformat-des-Strassenchecks.pdf 301
+/uploads/kataster-ki/Umfragekonzept_KatasterKI_Feb2020.pdf https://radwege-check.de/open-data/Umfragekonzept-KatasterKI-Feb2020.pdf 301
+/uploads/kataster-ki/Szenarienuebersicht_fuer_Abgabe_KatasterKi_Feb20.ods https://radwege-check.de/open-data/Szenarienuebersicht-fuer-Abgabe-KatasterKi-Feb2020.ods
+
 # Radbuegel XHain
 /radbuegel /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
 /meldungen/radbuegel/friedrichshain-kreuzberg/neu/1 /meldungen/radbuegel/friedrichshain-kreuzberg/karte 302
