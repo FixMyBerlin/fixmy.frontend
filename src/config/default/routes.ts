@@ -9,7 +9,6 @@ type Props = ConfigMandatoryRoutes & {
   spielstrassen: ConfigRoutePage;
   wayToSchool: ConfigRoutePage;
   parkingLane: ConfigRoutePage;
-  research: ConfigRoutePage;
 };
 
 export const routes: Props = {
@@ -53,9 +52,5 @@ export const routes: Props = {
   parkingLane: {
     landing: '/parkraum',
     xhain: '/parkraum/friedrichshain-kreuzberg',
-  },
-  research: {
-    landing: '/research',
-    survey: '/research/subjektive-sicherheit',
   },
 };
