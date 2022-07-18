@@ -168,15 +168,6 @@ const Routes = ({ token }) => (
         <Route path={config.routes.parkingLane.xhain} component={ParkingLane} />
       )}
 
-    {/* Research pages */}
-    {config.routes.research && (
-        <Route
-          exact
-          path={config.routes.research.landing}
-          render={() => <Redirect to={config.routes.research.survey} />}
-        />
-      ) && <Route path={config.routes.research.survey} component={Research} />}
-
     {/* ZES-Plus research page */}
     {config.routes.zesplusResearch && (
       <Route path={config.routes.zesplusResearch} component={ZESPlusResearch} />
