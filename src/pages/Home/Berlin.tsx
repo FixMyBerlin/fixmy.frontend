@@ -4,7 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { toggle as toggleMenu } from '~/AppState';
-import { PseudoButton } from '~/components2/Button';
+import { AnchorButton } from '~/components2/Button';
 import { Link } from '~/components2/Link';
 import { Logo as FMBLogo } from '~/components2/Logo';
 import { NewsletterWidget } from '~/components2/NewsletterWidget';
@@ -46,7 +46,7 @@ const NewsletterWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const MainButton = styled(PseudoButton)`
+const MainButton = styled(AnchorButton)`
   width: 280px;
   word-break: break-word;
   hyphens: none;
@@ -64,13 +64,6 @@ const SecondaryButton = styled(MainButton)`
 const StyledLink = styled(Link)`
   cursor: pointer;
   margin-top: 1em;
-`;
-
-const StyledRouterLink = styled(RouterLink)`
-  text-decoration: none;
-  & + & {
-    margin-top: 1em;
-  }
 `;
 
 const SocialWrapper = styled.div`
@@ -111,16 +104,16 @@ const HomeBerlin = () => {
         </SubTitle>
       </TitleWrapper>
       <CTAWrapper>
-        <StyledRouterLink to={config.routes.map.projectsIndex}>
-          <MainButton flat href={config.routes.map.projectsIndex}>
-            Gehe zur Karte
-          </MainButton>
-        </StyledRouterLink>
-        <StyledRouterLink to={config.routes.research.survey}>
-          <SecondaryButton ghost flat href={config.routes.research.survey}>
-            Ergebnisse der Straßencheck-Umfrage
-          </SecondaryButton>
-        </StyledRouterLink>
+        <MainButton
+          flat
+          href={config.routes.map.projectsIndex}
+          style={{ marginBottom: '16px' }}
+        >
+          Gehe zur Karte
+        </MainButton>
+        <SecondaryButton ghost flat href="https://www.radwege-check.de">
+          Ergebnisse der Straßencheck-Umfrage
+        </SecondaryButton>
         <StyledLink
           internal
           onClick={(ev) => {
