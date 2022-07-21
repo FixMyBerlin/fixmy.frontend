@@ -11,10 +11,7 @@ import { CadastreLegendGrid, IncidentLegendGrid } from '.';
 const Header = styled.h1`
   font-size: 1.2em;
   font-weight: 400;
-  margin-top: 1rem;
-  margin-right: 0;
-  margin-bottom: 0;
-  margin-left: 0;
+  margin: 1rem 0 0 0;
   padding-bottom: 0.5em;
   border-bottom: solid 1px #e0e0e0;
 `;

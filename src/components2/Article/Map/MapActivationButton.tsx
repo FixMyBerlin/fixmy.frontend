@@ -46,10 +46,6 @@ const ButtonArea = styled.div`
   ${media.m`
     bottom: 2em;
   `}
-
-  ${media.xl`
-    bottom: 2em;
-  `}
 `;
 
 type Props = {

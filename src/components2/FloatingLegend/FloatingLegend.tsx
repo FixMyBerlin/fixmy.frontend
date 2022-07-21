@@ -25,9 +25,6 @@ const FloatingWrapper = styled.section`
   ${media.m`
     position: static;
     min-width: 400px;
-  `}
-
-  ${media.m`
     bottom: initial;
     position: absolute;
     left: 15px;
