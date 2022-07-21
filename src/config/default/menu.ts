@@ -85,10 +85,10 @@ export const menu: ConfigMenu = {
       border: true,
     },
     {
-      type: 'link',
+      type: 'external',
       label: 'Ergebnisse der Straßencheck-Umfrage',
+      href: 'https://radwege-check.de/auswertung',
       icon: ResearchIcon,
-      link: routes.research.survey,
       border: true,
     },
     {

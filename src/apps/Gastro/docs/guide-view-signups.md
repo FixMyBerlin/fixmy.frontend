@@ -65,3 +65,8 @@ Der Datensatz kann auch als GeoJSON-Datei ausgegeben werden. Hierbei werden alle
 ```bash
 python manage.py exportgastrosignups --format geojson export.geojson
 ```
+
+On Lightsail run
+```
+ssh djangoLightsail "./run-command.wip fixmyberlin ' manage.py exportgastrosignups --format geojson /dev/stdout'" >  ./gastrosignups.geojson
+```

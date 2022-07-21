@@ -54,8 +54,4 @@ export const routes: Props = {
     landing: '/parkraum',
     xhain: '/parkraum/friedrichshain-kreuzberg',
   },
-  research: {
-    landing: '/research',
-    survey: '/research/subjektive-sicherheit',
-  },
 };
