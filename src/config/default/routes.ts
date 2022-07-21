@@ -9,7 +9,6 @@ type Props = ConfigMandatoryRoutes & {
   spielstrassen: ConfigRoutePage;
   wayToSchool: ConfigRoutePage;
   parkingLane: ConfigRoutePage;
-  research: ConfigRoutePage;
 };
 
 export const routes: Props = {

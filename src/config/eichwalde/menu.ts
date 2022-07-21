@@ -1,5 +1,5 @@
 import AboutIcon from '~/images/info.svg';
-import PlanningIcon from '~/images/planning-icons/planung.svg';
+import PlanningIcon from '~/images/bike-network-development.svg';
 import { ConfigMenu } from '../types/ConfigMenu';
 import { routes } from './routes';
 

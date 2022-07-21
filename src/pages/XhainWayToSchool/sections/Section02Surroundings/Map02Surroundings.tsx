@@ -13,13 +13,7 @@ import { AnchorLink } from '~/components2/Link';
 import IconSchoolPinBlue from '../assets/school-pin-blue.svg';
 import IconSchoolPinPink from '../assets/school-pin-pink.svg';
 import IconStreetClass from '../assets/street-class.svg';
-import {
-  ALL_LAYERS,
-  BOUNDS,
-  CENTER,
-  MAP_STYLE,
-  ZOOM,
-} from '../mapboxOptions.const';
+import { BOUNDS, CENTER, MAP_STYLE, ZOOM } from '../mapboxOptions.const';
 import { IconKmh } from './components/IconKmh';
 
 export const Map02Surroundings = () => {

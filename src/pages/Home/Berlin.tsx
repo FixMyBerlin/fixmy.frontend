@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { toggle as toggleMenu } from '~/AppState';
