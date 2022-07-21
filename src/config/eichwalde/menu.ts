@@ -1,5 +1,5 @@
 import AboutIcon from '~/images/info.svg';
-import PlanningIcon from '~/images/bike-network-development.svg';
+// import PlanningIcon from '~/images/bike-network-development.svg';
 import { ConfigMenu } from '../types/ConfigMenu';
 import { routes } from './routes';
 
@@ -18,13 +18,13 @@ export const menu: ConfigMenu = {
       link: routes.landing,
       border: true,
     },
-    {
-      type: 'link',
-      label: 'Radnetzentwicklung',
-      icon: PlanningIcon,
-      link: routes.cycleNetworkDevelopment,
-      border: true,
-    },
+    // {
+    //   type: 'link',
+    //   label: 'Radnetzentwicklung',
+    //   icon: PlanningIcon,
+    //   link: routes.cycleNetworkDevelopment,
+    //   border: true,
+    // },
   ],
   footeritems: [
     {
