@@ -1,6 +1,8 @@
-import routes from './routes';
+import { ConfigMenu } from '../types/ConfigMenu';
+import { routes } from './routes';
+import FixHere from '~/images/fixhere.svg';
 
-export default {
+export const menu: ConfigMenu = {
   size: 325,
   profileLabel: 'Zum Profil',
   loginLabel: 'Login',
@@ -10,7 +12,7 @@ export default {
     {
       type: 'link',
       label: 'Radbügelmeldung',
-      icon: 'fixhere',
+      icon: FixHere,
       link: routes.reports.landing,
       border: false,
     },

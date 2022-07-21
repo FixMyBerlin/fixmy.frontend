@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { Paragraph } from '~/components2/Article';
 import config from '~/config';
 import { media } from '~/styles/utils';
-
 import LogoBMBF from './assets/logo-bmbf.png';
 import LogoBMBF2 from './assets/logo-bmbf@2x.png';
 import LogoBMBF3 from './assets/logo-bmbf@3x.png';
@@ -89,7 +87,7 @@ const StyledLogoFONA = styled(LogoFONA)`
   `}
 `;
 
-const Logos = () => (
+export const Logos: React.VFC = () => (
   <Footer>
     <LogoGrid1>
       <img
@@ -129,5 +127,3 @@ const Logos = () => (
     </LogoGrid2>
   </Footer>
 );
-
-export default Logos;

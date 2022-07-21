@@ -8,57 +8,10 @@ import MapIcon from '~/images/map.svg';
 import QuestionIcon from '~/images/question.svg';
 import ReportsIcon from '~/images/reports-icon.svg';
 import SpielstrassenIcon from '~/images/spielstrassen-icon.svg';
+import { ConfigMenu } from '../types/ConfigMenu';
+import { routes } from './routes';
 
-import routes from './routes';
-
-interface Menu {
-  size: number;
-  profileLabel: string;
-  loginLabel: string;
-  logo?: boolean;
-  twitter?: boolean;
-  items: MenuItem[];
-  footeritems: FooterItem[];
-}
-
-type MenuItem = Link | ExternalLink | Separator | Plus;
-
-type SVGIcon = JSX.Element;
-
-type Link = {
-  type: 'link';
-  label: string;
-  link: string;
-  icon: SVGIcon;
-  border: boolean;
-};
-
-type ExternalLink = {
-  type: 'external';
-  label: string;
-  href: string;
-  icon: SVGIcon;
-  border: boolean;
-};
-
-type Separator = {
-  type: 'separator';
-  label: string;
-};
-
-type Plus = {
-  type: 'plus';
-  label: string;
-  icon?: SVGIcon;
-  children: Link[];
-};
-
-type FooterItem = {
-  label: string;
-  link: string;
-};
-
-const menuConfig: Menu = {
+export const menu: ConfigMenu = {
   size: 325,
   profileLabel: 'Zum Profil',
   loginLabel: 'Login',
@@ -132,10 +85,10 @@ const menuConfig: Menu = {
       border: true,
     },
     {
-      type: 'link',
+      type: 'external',
       label: 'Ergebnisse der Straßencheck-Umfrage',
+      href: 'https://radwege-check.de/auswertung',
       icon: ResearchIcon,
-      link: routes.research.survey,
       border: true,
     },
     {
@@ -175,5 +128,3 @@ const menuConfig: Menu = {
     },
   ],
 };
-
-export default menuConfig;

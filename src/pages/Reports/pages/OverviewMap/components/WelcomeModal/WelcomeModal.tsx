@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '~/components2/Button';
-import { ModalCloseIcon } from '~/components2/ModalCloseIcon';
+import { ClosePanelButton } from '~/components2/ClosePanelButton';
 import { Column1, Column2, Column3 } from './GridChilds';
 import {
   Background,
@@ -55,7 +55,7 @@ export const WelcomeModal: React.FC<Props> = ({ visible, setView }) => {
           aria-labelledby="WelcomeModalTitle"
           aria-modal="true"
         >
-          <ModalCloseIcon onClick={closeModal} controlsId="WelcomeModal" />
+          <ClosePanelButton onClick={closeModal} controlsId="WelcomeModal" />
           <Headline id="WelcomeModalTitle">
             Neuigkeiten zum Happy-Bike-Index
           </Headline>

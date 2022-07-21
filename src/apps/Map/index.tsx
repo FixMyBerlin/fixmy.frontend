@@ -7,28 +7,29 @@ import {
   withRouter,
 } from 'react-router-dom';
 import styled from 'styled-components';
-import ErrorMessage from '~/components/ErrorMessage';
+import { Legend } from './components/MapLegend';
+import { ErrorMessage } from '~/components2/ErrorMessage';
+import { FloatingLegendIcon } from '~/components2/FloatingLegend';
 import { Logo as FMBLogo } from '~/components2/Logo';
-import Legend from '~/components/MapLegend/Legend';
+import {
+  LocatorButton,
+  MapControl,
+  StyledMapButton,
+} from '~/components2/MapsControls';
 import config from '~/config';
-import MapLegendButtonIcon from '~/images/map-legend-icon.svg';
-import MapLegendButtonActivatedIcon from '~/images/map-legend-icon-activated.svg';
-import ZoomInButtonIcon from '~/images/plus-circle-icon.svg';
-import ZoomOutButtonIcon from '~/images/minus-circle-icon.svg';
 import Store, { RootState } from '~/store';
-import { matchMediaSize, breakpoints, media } from '~/styles/utils';
-
-import * as MapActions from './MapState';
+import { breakpoints, matchMediaSize, media } from '~/styles/utils';
+import ZoomOutButtonIcon from './assets/minus-circle-icon.svg';
+import ZoomInButtonIcon from './assets/plus-circle-icon.svg';
 import { DetailPanel } from './components/DetailView';
 import ProjectDetail from './components/DetailView/ProjectDetail';
 import { SectionDetail } from './components/DetailView/SectionDetail';
 import FMBCredits from './components/FMBCredits';
-import LocatorControl from './components/LocatorControl';
 import MapContent from './components/MapContent';
-import MapControl from './components/MapControl';
 import { MapPopup } from './components/MapPopup';
 import SearchBar from './components/SearchBar';
 import { WebglMap } from './components/WebglMap';
+import * as MapActions from './MapState';
 
 const Wrapper = styled.div`
   height: 100%;
@@ -52,26 +53,6 @@ const StyledFMBLogo = styled(FMBLogo)`
   ${media.m`
     display: block;
   `}
-`;
-
-const StyledMapLegendButton = styled(MapLegendButtonIcon)`
-  cursor: pointer;
-`;
-
-const StyledMapLegendButtonActivated = styled(MapLegendButtonActivatedIcon)`
-  cursor: pointer;
-`;
-
-const StyledZoomInButton = styled(ZoomInButtonIcon)`
-  cursor: pointer;
-`;
-
-const StyledZoomOutButton = styled(ZoomOutButtonIcon)`
-  cursor: pointer;
-`;
-
-const StyledMapControl = styled(MapControl)`
-  margin-bottom: 45px;
 `;
 
 const connector = connect(
@@ -145,50 +126,41 @@ const MapView = ({
   return (
     <Wrapper>
       {error != null && (
-        <ErrorMessage message={error} onDismiss={dismissErrorMessage} />
+        <ErrorMessage onDismiss={dismissErrorMessage}>{error}</ErrorMessage>
       )}
 
       <MapWrapper>
         <SearchBar />
-        {showLegend && <Legend closeLegend={() => setShowLegend(false)} />}
+        <Legend visible={showLegend} closeLegend={() => setShowLegend(false)} />
         <WebglMap
           key="MapComponent"
           calculatePopupPosition={calculatePopupPosition}
         >
-          {!displayPopup && (
-            <LocatorControl
-              key="Map__LocatorControl"
-              onChange={handleLocationChange}
-              position="bottom-right"
-            />
-          )}
-          <StyledMapControl position="bottom-right" role="button">
-            <div>
-              <div>
-                <StyledZoomInButton onClick={() => changeZoom(1)} />
-              </div>
-              <div>
-                <StyledZoomOutButton onClick={() => changeZoom(-1)} />
-              </div>
-              <div>
-                {!showLegend && (
-                  <StyledMapLegendButton
-                    onClick={() => setShowLegend(!showLegend)}
-                  />
-                )}
-                {showLegend && (
-                  <StyledMapLegendButtonActivated
-                    onClick={() => setShowLegend(!showLegend)}
-                  />
-                )}
-              </div>
-            </div>
-          </StyledMapControl>
           {!isEmbedMode && (
-            <MapControl position="top-right">
+            <MapControl top right>
               <StyledFMBLogo width={67} />
             </MapControl>
           )}
+
+          <MapControl
+            visible={!isDesktopView && !showLegend}
+            style={{ right: '16px', bottom: '25px' }}
+          >
+            <StyledMapButton
+              as={ZoomInButtonIcon}
+              onClick={() => changeZoom(1)}
+            />
+            <StyledMapButton
+              as={ZoomOutButtonIcon}
+              onClick={() => changeZoom(-1)}
+            />
+            <FloatingLegendIcon
+              showLegend={showLegend}
+              setShowLegend={setShowLegend}
+            />
+            {!displayPopup && <LocatorButton onChange={handleLocationChange} />}
+          </MapControl>
+
           {isEmbedMode && <FMBCredits />}
         </WebglMap>
 

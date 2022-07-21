@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, Redirect } from 'react-router-dom';
-
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Analysis from '~/apps/Analysis';
 import Gastro from '~/apps/Gastro';
 import MapView from '~/apps/Map';
@@ -12,17 +11,18 @@ import Home from '~/pages/Home';
 import KatasterKI from '~/pages/KatasterKI';
 import Markdown from '~/pages/Markdown';
 import Reports from '~/pages/Reports';
-import Research from '~/pages/Research';
 import ForgotPassword from '~/pages/User/pages/ForgotPassword';
 import Login from '~/pages/User/pages/Login';
 import Profile from '~/pages/User/pages/Profile';
 import ResetPassword from '~/pages/User/pages/ResetPassword';
 import Signup from '~/pages/User/pages/Signup';
 import UserVerify from '~/pages/User/pages/Verify';
-import ZESPlusResearch from '~/pages/ZESPlus-Research';
+import {
+  CycleNetworkDevelopmentPage,
+  ZesPlusResearchPage,
+} from '~/pages/ZESPlus-Research';
 import ParkingLane from './pages/ParkingLane';
 import XhainWayToSchool from './pages/XhainWayToSchool';
-
 import { RootState } from './store';
 
 const apps = {
@@ -168,18 +168,15 @@ const Routes = ({ token }) => (
         <Route path={config.routes.parkingLane.xhain} component={ParkingLane} />
       )}
 
-    {/* Research pages */}
-    {config.routes.research && (
-        <Route
-          exact
-          path={config.routes.research.landing}
-          render={() => <Redirect to={config.routes.research.survey} />}
-        />
-      ) && <Route path={config.routes.research.survey} component={Research} />}
-
     {/* ZES-Plus research page */}
-    {config.routes.zesplusResearch && (
-      <Route path={config.routes.zesplusResearch} component={ZESPlusResearch} />
+    {config.routes.landing && (
+      <Route path={config.routes.landing} component={ZesPlusResearchPage} />
+    )}
+    {config.routes.cycleNetworkDevelopment && (
+      <Route
+        path={config.routes.cycleNetworkDevelopment}
+        component={CycleNetworkDevelopmentPage}
+      />
     )}
 
     <Route render={() => <Markdown page="nomatch" />} />

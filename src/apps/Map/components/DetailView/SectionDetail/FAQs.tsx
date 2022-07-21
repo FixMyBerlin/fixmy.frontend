@@ -158,7 +158,7 @@ export const SectionsFAQ = () => (
       zentraler Faktor dafür, dass mehr Menschen sich für das Fahrrad als
       Verkehrsmittel entscheiden. Um das subjektiven Sicherheitsempfinden auf
       eine gute Datengrundlage zu stellen haben wir in 2019 / 2020 die{' '}
-      <AnchorLink href="/research/subjektive-sicherheit" internal>
+      <AnchorLink href="https://radwege-check.de">
         Umfrage Straßencheck entwickelt und durchgeführt
       </AnchorLink>
       .

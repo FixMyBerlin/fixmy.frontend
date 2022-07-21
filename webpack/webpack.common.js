@@ -70,8 +70,6 @@ module.exports = {
         test: /\.js$/,
         include: [
           Path.resolve(__dirname, '../node_modules/@mapbox/mapbox-gl-draw'),
-          Path.resolve(__dirname, '../node_modules/d3-array'),
-          Path.resolve(__dirname, '../node_modules/d3-scale'),
           Path.resolve(__dirname, '../node_modules/debug'),
           Path.resolve(__dirname, '../node_modules/ky'),
           Path.resolve(__dirname, '../node_modules/tr46'),

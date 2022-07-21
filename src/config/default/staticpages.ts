@@ -1,4 +1,6 @@
-export default [
+import { ConfigStaticpages } from '../types/ConfigStaticPages';
+
+export const staticpages: ConfigStaticpages[] = [
   {
     key: 'contact',
     route: '/kontakt',
