@@ -33,7 +33,7 @@ export const Legend: React.VFC<Props> = ({ visible, closeLegend }) => {
     <FloatingLegend visible={visible} closeLegend={closeLegend}>
       <Header>Legende Katasterdaten</Header>
       <CadastreLegendGrid />
-      <MutedText>Quellen: Fis-Broker Berlin 2014</MutedText>
+      <MutedText>Quellen: Geoportal Berlin / Straßenbefahrung 2014</MutedText>
 
       <Header>Legende Unfälle</Header>
       <IncidentLegendGrid />
