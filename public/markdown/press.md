@@ -13,6 +13,7 @@ https://embed.fixmyberlin.de
 
 Bildmaterial zur freien Verwendung durch die Presse: <br>
 
+- [Screenshots Radwege-Check (Zip-Datei mit 5 Bildern)](/uploads/press/Screenshots-Radwege-Check_©FixMyCity.zip 'Screenshots-Radwege-Check')
 - [Screenshots Umfrage Straßencheck (Zip-Datei mit 6 Bildern)](/uploads/press/Strassencheck_Screenshots_©FixMyBerlin.zip 'Screenshots-Umfrage Straßencheck')
 - [Renderings Szenarien Umfrage Straßencheck (Zip-Datei mit 11 Bildern)](/uploads/press/Strassencheck-Szenarien-©FixMyBerlin.zip 'Renderings Szenarien Umfrage Straßencheck')
 - [Mock-Up Meldedialog Xhain Handheld](/uploads/press/Meldedialog_MockUp_FixMyBerlin.png 'MockUp-Meldedialog Xhain Handheld')
