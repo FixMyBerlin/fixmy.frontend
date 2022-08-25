@@ -147,7 +147,7 @@ const xhain: DistrictConfig = {
           region: 'Friedrichshain',
           status: 'open',
           schedule:
-            '19.Mai - 30.September, Mittwochs 15:30-18:30 Uhr (außer Sommerferien)',
+            'Mittwochs 15.30 – 18.30 Uhr, Mai – September (Pause in den Sommerferien)',
         },
         {
           street: 'Paul-Lincke-Ufer / Forsterstraße',
