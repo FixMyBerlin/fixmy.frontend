@@ -42,14 +42,15 @@ const xhain: DistrictConfig = {
           kiez: 'Samariterviertel',
           region: 'Friedrichshain',
           schedule:
-            '6.Juni - 31.August, Sonntags 15-18 Uhr (außer Sommerferien)',
+            'Sonntags 15 - 18h, Juni - August (Pause in den Sommerferien)',
           status: 'open',
         },
         {
           street: 'Richard-Sorge-Straße',
           kiez: 'Richard-Sorge-Viertel',
           region: 'Friedrichshain',
-          schedule: '23.Mai - 30.September, Sonntags 14-18 Uhr',
+          schedule:
+            'Sonntags 14 – 18 Uhr, Mai - September (Pause in den Sommerferien)',
           status: 'open',
         },
         {
@@ -77,21 +78,21 @@ const xhain: DistrictConfig = {
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
           status: 'closed',
-          schedule: '23.Mai - 30.September, Sonntags 15–19 Uhr',
+          schedule: 'Sonntags 15 – 19 Uhr',
         },
         {
           street: 'Wassertorstraße',
           kiez: 'Moritzplatz',
           region: 'Kreuzberg',
           status: 'closed',
-          schedule: 'Sonntags 13 – 19',
+          schedule: 'Sonntags 13 – 19 Uhr',
         },
         {
           street: 'Friedrichstraße',
           kiez: 'Mehringplatz',
           region: 'Kreuzberg',
           status: 'closed',
-          schedule: 'Sonntags 14 – 17 Uhr (Ferienzeit)',
+          schedule: 'einmalig am Samstag den 30.4.2022 (Sonntags 9 – 19 Uhr)',
         },
         {
           street: 'Chamissoplatz',
@@ -106,7 +107,7 @@ const xhain: DistrictConfig = {
           kiez: 'Graefekiez',
           region: 'Kreuzberg',
           status: 'open',
-          schedule: '1.April - 30.September, Mittwochs 14-18 Uhr',
+          schedule: 'Mittwochs 14 - 18 Uhr, April - September',
         },
         {
           street: 'Lachmannstraße',
@@ -133,7 +134,7 @@ const xhain: DistrictConfig = {
           region: 'Kreuzberg',
           status: 'open',
           schedule:
-            '16.Mai - 30.September, Sonntags 14:30-19:30 Uhr (außer Sommerferien)',
+            'Freitags, 15:30 - 18:30 Uhr, Mai – September (Pause in den Sommerferien)',
         },
         {
           street: 'Helmerdingstraße',
@@ -150,12 +151,11 @@ const xhain: DistrictConfig = {
             'Mittwochs 15.30 – 18.30 Uhr, Mai – September (Pause in den Sommerferien)',
         },
         {
-          street: 'Paul-Lincke-Ufer / Forsterstraße',
+          street: 'Forsterstraße',
           kiez: 'Reichenberger Straße',
           region: 'Kreuzberg',
           status: 'open',
-          schedule:
-            '6.Juni - 30.September, Sonntags 14 – 18 Uhr (außer Sommerferien)',
+          schedule: 'Sonntags 14 – 18 Uhr, Juni-September (außer Sommerferien)',
         },
         {
           street: 'Lilienthalstraße',
@@ -169,14 +169,14 @@ const xhain: DistrictConfig = {
           region: 'Kreuzberg',
           status: 'open',
           schedule:
-            '21.Mai - 30.September, Freitags 15-18 Uhr (außer Sommerferien)',
+            'Freitags 15 – 18 Uhr, Mai - September (Pause in den Sommerferien)',
         },
         {
           street: 'Rudolfstraße',
           kiez: 'Stralauer Kiez',
           region: 'Friedrichshain',
           status: 'closed',
-          schedule: 'Sonntags 15 – 19 Uhr (Ferienzeit)',
+          schedule: 'Sonntags 15 – 19 Uhr',
         },
         {
           street: 'Liebigstraße',
@@ -190,6 +190,13 @@ const xhain: DistrictConfig = {
           region: 'Kreuzberg',
           status: 'closed',
           schedule: 'Ab 2.August Sonntags 13-19 Uhr',
+        },
+        {
+          street: 'Jessnerstraße',
+          kiez: 'Traveplatz',
+          region: 'Kreuzberg',
+          status: 'open',
+          schedule: 'Dienstags, 15-19 Uhr, Mai - Sommerferienbeginn',
         },
       ],
     },
