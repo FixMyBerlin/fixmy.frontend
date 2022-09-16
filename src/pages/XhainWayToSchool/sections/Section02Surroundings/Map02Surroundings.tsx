@@ -34,7 +34,6 @@ export const Map02Surroundings = () => {
         visibleLayers={[
           'elementary-schools-allblue',
           'elementary-schools-HVS',
-          'schools-einzugsbereich',
           'speedlimits',
           'streetclass',
         ]}
