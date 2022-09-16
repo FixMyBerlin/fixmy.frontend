@@ -17,6 +17,7 @@ export const ALL_LAYERS = [
   'knotenpunkte-withnocrossing',
   'network-schoolways-labels',
   'network-schoolways',
+  'playgrounds-xhain',
   'schools-einzugsbereich',
   'speedlimits',
   'streetclass',

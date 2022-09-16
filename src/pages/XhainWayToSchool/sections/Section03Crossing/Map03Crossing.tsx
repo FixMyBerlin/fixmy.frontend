@@ -16,7 +16,13 @@ import IconDangerPin from '../assets/danger-pin.svg';
 import IconSchoolPinBlue from '../assets/school-pin-blue.svg';
 import IconSchoolPinPink from '../assets/school-pin-pink.svg';
 import IconTrafficSignal from '../assets/traffic-signal.svg';
-import { BOUNDS, CENTER, MAP_STYLE, ZOOM } from '../mapboxOptions.const';
+import {
+  ALL_LAYERS,
+  BOUNDS,
+  CENTER,
+  MAP_STYLE,
+  ZOOM,
+} from '../mapboxOptions.const';
 import { LegendItemsNetworkSchoolways } from '../Section01Network/LegendItemsNetworkSchoolways';
 
 export const Map03Crossing = () => {
@@ -27,6 +33,17 @@ export const Map03Crossing = () => {
         maxBounds={BOUNDS}
         center={CENTER}
         zoom={ZOOM}
+        allLayers={ALL_LAYERS}
+        visibleLayers={[
+          'accidents-fuss',
+          'crosswalk-xhain',
+          'elementary-schools-allblue',
+          'elementary-schools-HVS',
+          'knotenpunkte-withnocrossing',
+          'network-schoolways-labels',
+          'network-schoolways',
+          'traffic-light-system-xhain',
+        ]}
       />
       <Legend>
         <LegendCol>
