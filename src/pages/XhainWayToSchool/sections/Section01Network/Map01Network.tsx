@@ -13,7 +13,13 @@ import { AnchorLink } from '~/components2/Link';
 import IconPlayground from '../assets/playground.svg';
 import IconSchoolAreas from '../assets/school-areas.svg';
 import IconSchoolPinBlue from '../assets/school-pin-blue.svg';
-import { BOUNDS, CENTER, MAP_STYLE, ZOOM } from '../mapboxOptions.const';
+import {
+  ALL_LAYERS,
+  BOUNDS,
+  CENTER,
+  MAP_STYLE,
+  ZOOM,
+} from '../mapboxOptions.const';
 import { LegendItemsNetworkSchoolways } from './LegendItemsNetworkSchoolways';
 
 export const Map01Network = () => {
@@ -24,6 +30,15 @@ export const Map01Network = () => {
         maxBounds={BOUNDS}
         center={CENTER}
         zoom={ZOOM}
+        allLayers={ALL_LAYERS}
+        visibleLayers={[
+          'elementary-schools-allblue',
+          'network-schoolways-labels',
+          'network-schoolways',
+          'playgrounds-xhain',
+          'schools-einzugsbereich',
+          'traffic-light-system-xhain',
+        ]}
       />
       <Legend>
         <LegendCol>
