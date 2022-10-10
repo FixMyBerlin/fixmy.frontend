@@ -17,7 +17,7 @@ We use [VSCode](https://code.visualstudio.com/) for as an IDE. It is recommended
 
 ## Installation
 
-We recommend using [nvm](https://github.com/nvm-sh/nvm) or [asdf](https://asdf-vm.com/) to run this project with the Node version specified in `.nvmrc` and [`.tool-versions`](.tool-versions).
+We recommend using [nvm](https://github.com/nvm-sh/nvm) to run this project with the Node version specified in [`.nvmrc`](.nvmrc).
 
 ```sh
 npm install
