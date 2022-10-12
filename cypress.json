@@ -13,6 +13,6 @@
     "default": ["Map", "Reports"],
     "aachen": ["Reports"],
     "berlin": ["Map", "Reports", "Analysis"],
-    "eichwalde": []
+    "zesplus": []
   }
 }

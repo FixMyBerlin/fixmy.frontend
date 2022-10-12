@@ -5,7 +5,7 @@ import { RootConfig, Region } from '~/types';
 import aachen from './aachen';
 import berlin from './berlin';
 import defaultConfig from './default';
-import eichwalde from './eichwalde';
+import zesplus from './zesplus';
 
 const log = debug('fmc:config');
 
@@ -18,7 +18,7 @@ if (window.Cypress) {
 const AVAILABLE_REGIONS = {
   berlin,
   aachen,
-  eichwalde,
+  zesplus,
 };
 
 const instanceConfig = AVAILABLE_REGIONS[region];
