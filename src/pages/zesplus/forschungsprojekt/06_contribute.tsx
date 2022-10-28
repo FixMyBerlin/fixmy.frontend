@@ -64,7 +64,8 @@ export const SectionContribute = (props: SectionProps) => (
       </AnchorButton>
     </DownloadWrapper>
 
-    <Heading as="h3" {...props}>
+    {/* TODO: Reenable after resolving Google Fonts issue */}
+    {/* <Heading as="h3" {...props}>
       Newsletter
     </Heading>
     <Paragraph>
@@ -73,7 +74,7 @@ export const SectionContribute = (props: SectionProps) => (
     </Paragraph>
     <Paragraph>
       <NewsletterWidget height={203} />
-    </Paragraph>
+    </Paragraph> */}
     {/* <Paragraph>
       Wenn Sie Fragen zum Projekt oder Feedback haben senden Sie eine E-Mail an
       den Projektleiter Christoph Kollert.

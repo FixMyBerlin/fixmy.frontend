@@ -128,9 +128,10 @@ const HomeBerlin = () => {
           Weitere Projekte
         </StyledLink>
       </CTAWrapper>
-      <NewsletterWrapper>
+      {/* TODO: Reenable after resolving Google Fonts issue */}
+      {/* <NewsletterWrapper>
         <NewsletterWidget height={120} />
-      </NewsletterWrapper>
+      </NewsletterWrapper> */}
       <SocialWrapper>
         <a
           href="https://www.facebook.com/FixMyCityApp"
