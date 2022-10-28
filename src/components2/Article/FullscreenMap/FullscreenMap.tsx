@@ -13,7 +13,6 @@ import { MapActivationButton } from '../Map/MapActivationButton';
 import { MAPBOX_INTERACTION_HANDLERS } from '../Map/MapInteractionHandler.const';
 import { MapWrapper, Wrapper } from '../Map/styles';
 import FullscreenIcon from './icons/fullscreen-icon.svg';
-import { LayerToggleTester } from './LayerToggleTester';
 
 const FullscreenWrapper = styled.div`
   position: fixed;
@@ -28,7 +27,8 @@ const FullscreenWrapper = styled.div`
 export type FullscreenMapProps = {
   mapboxStyle: mapboxgl.MapboxOptions['style'];
   toggleLayers?: string[];
-  setToggleLayers?: (toggleLayers: string[]) => void;
+  allLayers?: string[];
+  visibleLayers?: string[];
 } & Partial<mapboxgl.MapboxOptions>;
 
 /**
@@ -39,11 +39,12 @@ export type FullscreenMapProps = {
  *
  * Extends mapboxgl.Map component props
  *
- * @param toggleLayers an array of map layers to show / hide
+ * @param allLayers an array of all map custom map layers; use together with `visibleLayers`
+ * @param visibleLayers an array of map layers to show; only those are visible for this map
  */
 export const FullscreenMap: React.FC<FullscreenMapProps> = ({
-  toggleLayers,
-  setToggleLayers,
+  allLayers = [],
+  visibleLayers = [],
   children,
   ...mapProps
 }) => {
@@ -61,18 +62,18 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
     );
   }, [map, isFullscreen]);
 
-  // Toggle layer visibility
+  // Layer visibility
   useEffect(() => {
     if (map === null) return;
 
-    toggleLayers.forEach((layer) => {
-      const visibility =
-        map.getLayoutProperty(layer, 'visibility') === 'visible'
-          ? 'none'
-          : 'visible';
-      map.setLayoutProperty(layer, 'visibility', visibility);
+    // Hide all custom layers so we can show those we want
+    allLayers.forEach((layer) => {
+      map.setLayoutProperty(layer, 'visibility', 'none');
     });
-  }, [map, toggleLayers]);
+    visibleLayers.forEach((layer) => {
+      map.setLayoutProperty(layer, 'visibility', 'visible');
+    });
+  }, [map, allLayers, visibleLayers]);
 
   if (isFullscreen) {
     return (
@@ -103,13 +104,7 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
           closeLegendStyle={{ left: '16px', right: 'auto' }}
           style={isDesktopView ? { right: '70px' } : { top: '36px' }}
         >
-          <>
-            {children}
-            <LayerToggleTester
-              setToggleLayers={setToggleLayers}
-              mapLayer={map.getStyle().layers}
-            />
-          </>
+          {children}
         </FloatingLegend>
       </FullscreenWrapper>
     );

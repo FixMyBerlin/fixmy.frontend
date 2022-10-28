@@ -17,7 +17,7 @@ We use [VSCode](https://code.visualstudio.com/) for as an IDE. It is recommended
 
 ## Installation
 
-We recommend using [nvm](https://github.com/nvm-sh/nvm) or [asdf](https://asdf-vm.com/) to run this project with the Node version specified in `.nvmrc` and [`.tool-versions`](.tool-versions).
+We recommend using [nvm](https://github.com/nvm-sh/nvm) to run this project with the Node version specified in [`.nvmrc`](.nvmrc).
 
 ```sh
 npm install
@@ -54,7 +54,7 @@ Runs on [localhost:8080](http://localhost:8080/)
 - [ZES+](https://www.zesplus.de/):
 
   ```sh
-  REGION=eichwalde npm start
+  REGION=zesplus npm start
   ```
 
   You can also set multiple environment variables when using an `.env` file. This then overwrites only the `.env.defaults` settings you enter. It could look like this:

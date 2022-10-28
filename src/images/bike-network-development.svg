@@ -1,4 +1,4 @@
-<svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" fill-rule="evenodd" stroke="#000">
         <g stroke-linecap="round" stroke-linejoin="round" stroke-width="1.14">
             <path d="M12.668 12.002c-.628.136-1.142.6-1.355 1.225l-4.208 13.25c-.337.986.164 2.067 1.12 2.415.196.072.402.108.61.108h22.33C32.18 29 33 28.152 33 27.107c0-.215-.035-.428-.105-.631l-4.208-13.25A1.853 1.853 0 0 0 27.32 12M15 29l1-9"/>

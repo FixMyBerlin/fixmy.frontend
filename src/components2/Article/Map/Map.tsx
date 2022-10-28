@@ -1,3 +1,4 @@
+import debug from 'debug';
 import MapboxGL from 'mapbox-gl';
 import React, { useEffect, useState } from 'react';
 import { BaseMap } from '~/components2/BaseMap';
@@ -5,6 +6,8 @@ import IconActivate from './assets/smartphone-finger-icon.svg';
 import { MapActivationButton } from './MapActivationButton';
 import { MAPBOX_INTERACTION_HANDLERS } from './MapInteractionHandler.const';
 import { MapWrapper, Wrapper } from './styles';
+
+const log = debug('fmc:Article:Map:Map');
 
 type Props = {
   defaultActive?: boolean;
@@ -41,6 +44,22 @@ export const Map: React.VFC<Props> = ({
       isActive ? map[handler].enable() : map[handler].disable()
     );
   }, [map, isActive]);
+
+  // Helper for setting up the map
+  const isNetlifyProduction = process.env.CONTEXT === 'production';
+  if (!isNetlifyProduction && map) {
+    log(
+      'all non-mapbox-layers',
+      map
+        .getStyle()
+        .layers.filter(
+          // Mapbox layers have this metadata prop, our own do not.
+          // @ts-ignore
+          (l) => l?.metadata?.['mapbox:featureComponent'] === undefined
+        )
+        .map((l) => [l.id, l['source-layer']])
+    );
+  }
 
   // Layer visibility
   useEffect(() => {

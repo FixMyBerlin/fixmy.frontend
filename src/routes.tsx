@@ -17,10 +17,7 @@ import Profile from '~/pages/User/pages/Profile';
 import ResetPassword from '~/pages/User/pages/ResetPassword';
 import Signup from '~/pages/User/pages/Signup';
 import UserVerify from '~/pages/User/pages/Verify';
-import {
-  CycleNetworkDevelopmentPage,
-  ZesPlusResearchPage,
-} from '~/pages/ZESPlus-Research';
+import { RadnetzplanungPage, ForschungsprojektPage } from '~/pages/zesplus';
 import ParkingLane from './pages/ParkingLane';
 import XhainWayToSchool from './pages/XhainWayToSchool';
 import { RootState } from './store';
@@ -170,12 +167,12 @@ const Routes = ({ token }) => (
 
     {/* ZES-Plus research page */}
     {config.routes.landing && (
-      <Route path={config.routes.landing} component={ZesPlusResearchPage} />
+      <Route path={config.routes.landing} component={ForschungsprojektPage} />
     )}
-    {config.routes.cycleNetworkDevelopment && (
+    {config.routes.radnetzplanung && (
       <Route
-        path={config.routes.cycleNetworkDevelopment}
-        component={CycleNetworkDevelopmentPage}
+        path={config.routes.radnetzplanung}
+        component={RadnetzplanungPage}
       />
     )}
 

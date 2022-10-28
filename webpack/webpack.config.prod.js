@@ -14,7 +14,7 @@ let title;
 if (process.env.REGION === 'aachen') {
   siteUrl = 'https://radbuegel-aachen.de';
   title = 'Radbügel für Aachen';
-} else if (process.env.REGION === 'eichwalde') {
+} else if (process.env.REGION === 'zesplus') {
   siteUrl = 'https://zesplus.de';
   title = 'ZESplus';
 } else {
