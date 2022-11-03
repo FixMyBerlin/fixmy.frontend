@@ -78,7 +78,7 @@ export const LegendItem = styled.div`
     & + & {
       margin-top: .5em;
     }
-  `}
+  `};
 `;
 
 export const LegendSources = styled.div`

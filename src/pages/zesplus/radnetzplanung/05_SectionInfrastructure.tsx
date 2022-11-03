@@ -1,6 +1,5 @@
 import React from 'react';
 import { Heading, List, Paragraph, SectionProps } from '~/components2/Article';
-import { StyledList } from '../components';
 import { MapInfrastructure } from './components/Maps';
 
 export const SectionInfrastructure = (props: SectionProps) => (
@@ -12,7 +11,7 @@ export const SectionInfrastructure = (props: SectionProps) => (
       Die “Themenkarte <strong>Radinfrastruktur</strong>” stellt die vorhandene
       Radinfrastruktur dar. Unterschieden wird dabei zwischen:
     </Paragraph>
-    <StyledList>
+    <List>
       <List.Item>
         <strong>“Separate Radinfrastruktur”</strong>: Ausschließlich durch
         Radfahrende zu nutzende Wege, z.B. getrennter Radweg im Seitenraum,
@@ -26,7 +25,7 @@ export const SectionInfrastructure = (props: SectionProps) => (
         <strong>“Verkehrsberuhigte Bereiche”</strong>: Beispielsweise
         Spielstraßen oder verkehrsberuhigte Geschäftsbereiche.
       </List.Item>
-    </StyledList>
+    </List>
     <Paragraph>
       Diese Themenkarte bildet eine wichtige Grundlage für die Netzplanung,
       welche von der bereits vorhandenen Infrastruktur ausgeht. Im Abgleich mit
