@@ -1,1 +1,1 @@
-export * from './MapInteractive';
+export * from './MapInteractive/MapInteractive';

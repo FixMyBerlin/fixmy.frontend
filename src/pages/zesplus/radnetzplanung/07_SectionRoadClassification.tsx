@@ -1,6 +1,5 @@
 import React from 'react';
-import { Heading, List, Paragraph, SectionProps } from '~/components2/Article';
-import { StyledList } from '../components';
+import { Heading, Paragraph, SectionProps } from '~/components2/Article';
 import { MapRoadClassification } from './components/Maps';
 
 export const SectionRoadClassification = (props: SectionProps) => (
@@ -9,41 +8,27 @@ export const SectionRoadClassification = (props: SectionProps) => (
       Themenkarte Straßentypen
     </Heading>
     <Paragraph>
-      <strong>Funktion:</strong>
-    </Paragraph>
-    <StyledList>
-      <List.Item>
-        Identifizierung und Zuordnung von für Radnetzplanung relevanter
-        Straßenquerschnittstypen. Enthält Hinweise zur Straßenklasse und
-        Nutzungsbedürfnissen.
-      </List.Item>
-    </StyledList>
-    <Paragraph>
-      <strong>Datenquellen:</strong>
-    </Paragraph>
-    <StyledList>
-      <List.Item>OSM-Daten</List.Item>
-    </StyledList>
-    <Paragraph>
-      <strong>Beschreibung:</strong>
-    </Paragraph>
-    <Paragraph>
-      Beschreibung: Für die Themenkarte “Straßentypen” wurde eine Systematik
+      Für die “Themenkarte <strong>Straßentypen”</strong> wurde eine Systematik
       entwickelt, mit der die in den Gemeinden typischerweise vorhandenen
       Straßentypen bzw. Straßenquerschnitte anhand der OSM-Daten verortet werden
-      können. Auf Basis der Straßentypen können im Folgeschritt die jeweils
-      geeigneten Führungsformen für den Radverkehr identifiziert und zugeordnet
-      werden. In einer Übersichtstabelle werden dann für die einzelnen
-      Führungsformen Empfehlungen für Mindestbreiten und Rahmenbedingungen
-      festgelegt, die den örtlichen Gegebenheiten entsprechen.
+      können. Im Folgeschritt helfen die Straßentypen, den Straßenabschnitten
+      die jeweils in Frage kommende Führungsformen zuzuordnen.
     </Paragraph>
     <Paragraph>
       So kann z.B. in einer reinen Wohnstraße eine Führung auf der Fahrbahn
       geeignet sein, auf einer Haupt- oder Sammelstraße innerorts kann eine
-      Führung im Seitenraum geeignet sein, auf einer Hauptstreße außerorts wird
-      in der regel eine separate Radinfrastruktur notwendig sein.
+      Führung im Seitenraum geeignet sein, auf einer Hauptstraße außerorts wird
+      in der Regel eine separate Radinfrastruktur notwendig sein.
       Geschäftsstraßen mit besonderen Anforderungen des Fußverkehrs und
       Lieferverkehrs können über die Einblendung der POIs identifiziert werden.
+    </Paragraph>
+    <Paragraph>
+      In einer Übersichtstabelle werden dann für die einzelnen Führungsformen
+      Empfehlungen für Mindestbreiten und Rahmenbedingungen festgelegt, die den
+      örtlichen Gegebenheiten entsprechen. Gleichzeitig lassen sich anhand der
+      Straßentypen auch weitere Maßnahmen zur Förderung des Radverkehrs
+      identifizieren, die über die Schaffung klassischer Infrastruktur
+      hinausgehen (bspw. Maßnahmen zur Verkehrsberuhigung usw.).
     </Paragraph>
 
     <MapRoadClassification />

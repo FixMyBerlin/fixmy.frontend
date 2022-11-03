@@ -116,7 +116,7 @@ export const FullscreenMap: React.FC<FullscreenMapProps> = ({
         <BaseMap {...mapProps} interactive={false} onInit={setMap} />
       </MapWrapper>
       <MapActivationButton isActive={isFullscreen} setActive={setFullscreen}>
-        <FullscreenIcon />
+        <FullscreenIcon /> Vollbild
       </MapActivationButton>
     </Wrapper>
   );

@@ -9,43 +9,22 @@ export const SectionInfrastructure = (props: SectionProps) => (
       Themenkarte Radinfrastruktur
     </Heading>
     <Paragraph>
-      <strong>Funktion:</strong>
+      Die “Themenkarte <strong>Radinfrastruktur</strong>” stellt die vorhandene
+      Radinfrastruktur dar. Unterschieden wird dabei zwischen:
     </Paragraph>
     <StyledList>
       <List.Item>
-        Darstellung der vorhandenen Radinfrastruktur inkl. Typologisierung
+        <strong>“Separate Radinfrastruktur”</strong>: Ausschließlich durch
+        Radfahrende zu nutzende Wege, z.B. getrennter Radweg im Seitenraum,
+        Radfahrstreifen usw.
       </List.Item>
       <List.Item>
-        Straßenabschnitte ohne vernünftig zu befahrende Fahrbahnöberfläche als
-        nicht geeignete Strecke bzw. Handlungsbedarf
-      </List.Item>
-    </StyledList>
-    <Paragraph>
-      <strong>Datenquellen:</strong>
-    </Paragraph>
-    <StyledList>
-      <List.Item>OSM-Daten</List.Item>
-    </StyledList>
-    <Paragraph>
-      <strong>Beschreibung:</strong>
-    </Paragraph>
-    <Paragraph>
-      Die <strong>“Themenkarte Radinfrastruktur”</strong> stellt die vorhandene
-      Radinfrastruktur dar. Als Radverkehrsinfrastruktur gilt dabei:
-    </Paragraph>
-    <StyledList>
-      <List.Item>
-        “Separate Radinfrastruktur”, also ausschließlich durch Radfahrende zu
-        nutzende Wege, z.B. getrennter Radweg im Seitenraum, Radfahrstreifen
-        usw.
+        <strong>“Gemeinsame Führung mit dem Fußverkehr”</strong>: Gehwege, die
+        für die Nutzung des Radverkehrs freigegeben sind
       </List.Item>
       <List.Item>
-        “Gemeinsame Führung mit dem Fußverkehr”, also Gehwege, die für die
-        Nutzung des Radverkehrs freigegeben sind
-      </List.Item>
-      <List.Item>
-        “Verkehrsberuhigte Bereiche” wie Spielstraßen oder verkehrsberuhigte
-        Geschäftsbereiche.
+        <strong>“Verkehrsberuhigte Bereiche”</strong>: Beispielsweise
+        Spielstraßen oder verkehrsberuhigte Geschäftsbereiche.
       </List.Item>
     </StyledList>
     <Paragraph>

@@ -17,12 +17,14 @@ import {
   ZES_MAX_BOUNDS,
 } from '../../../mapboxOptions.const';
 import { IconLegendArea, IconLegendCircle } from './IconLegend';
-import IconHeatmap from './icons/poi-heatmap.svg';
+import { LegendItemPoiShop } from './LegendItems';
+import IconTrain from './icons/train.svg';
+import IconLine from './icons/line.svg';
+import IconAirport from './icons/airport.svg';
 
 export const mapFromToVisLayers = [
   'siedlungszentren-center',
   'siedlungszentren-name',
-  'poibarriers_water_aerodrome copy',
   'poibarriers_water_aerodrome',
   'poibarriers_motorway',
   'poibarriers_train',
@@ -54,16 +56,22 @@ export const MapFromTo = () => {
           <LegendHeader>Hindernisse und natürliche Barrieren</LegendHeader>
           <LegendItems>
             <LegendItem>
+              <IconWrapper>
+                <IconTrain />
+              </IconWrapper>
               Eisenbahnstrecken
-              {/* (S/W pattern) */}
             </LegendItem>
             <LegendItem>
+              <IconWrapper>
+                <IconLine />
+              </IconWrapper>
               Autobahnen
-              {/* (dunkel-grau) */}
             </LegendItem>
             <LegendItem>
+              <IconWrapper>
+                <IconAirport />
+              </IconWrapper>
               Gewässer, Flughafen
-              {/* (schraffiert) */}
             </LegendItem>
           </LegendItems>
         </LegendCol>
@@ -103,7 +111,7 @@ export const MapFromTo = () => {
           </LegendItems>
         </LegendCol>
         <LegendCol>
-          <LegendHeader>Ziel-Orte</LegendHeader>
+          <LegendHeader>Zielorte</LegendHeader>
           <LegendItems>
             <LegendItem>
               <IconWrapper>
@@ -127,12 +135,7 @@ export const MapFromTo = () => {
               </IconWrapper>
               S-Bahnhöfe
             </LegendItem>
-            <LegendItem>
-              <IconWrapper>
-                <IconHeatmap />
-              </IconWrapper>
-              Wichtige Ziel-Orte
-            </LegendItem>
+            <LegendItemPoiShop />
           </LegendItems>
         </LegendCol>
 

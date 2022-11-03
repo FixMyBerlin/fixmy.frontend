@@ -20,7 +20,7 @@ export const ForschungsprojektPage = () => (
   <Wrapper
     tocTitle="Inhalt"
     enumerateToc={false}
-    bannerTitle="Forschungs&shy;projekt - ZES-Plus"
+    bannerTitle="Forschungs&shy;projekt"
     logo={
       <Logo
         src={LogoZES2}

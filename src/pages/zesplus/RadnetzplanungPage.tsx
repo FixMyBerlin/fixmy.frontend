@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArticleHeader } from '~/components2/Article';
+import { ArticleHeader, Intro } from '~/components2/Article';
 import LogoZES from './components/Logos/assets/logo-zes.png';
 import LogoZES2 from './components/Logos/assets/logo-zes@2x.png';
 import LogoZES3 from './components/Logos/assets/logo-zes@3x.png';
@@ -21,7 +21,7 @@ export const RadnetzplanungPage = () => (
   <Wrapper
     tocTitle="Inhalt"
     enumerateToc={false}
-    bannerTitle="Forschungs&shy;projekt - ZES-Plus"
+    bannerTitle="Digitale Planungstools"
     logo={
       <Logo
         src={LogoZES2}
@@ -31,22 +31,25 @@ export const RadnetzplanungPage = () => (
     }
   >
     <ArticleHeader
-      kicker="Modellprojekt der MobilitätsWerkStatt 2025"
+      kicker="NUDAFA-Realexperiment “Digitale Planungstools”"
       publishDate={new Date('2022-10-01 10:00')}
-      author="Christoph Koller, Projektleitung Nudafa"
+      author="Christoph Kollert, Projektleitung Nudafa"
     >
       Entwicklung Radverkehrsatlas &amp; digitale Radnetzplanung
     </ArticleHeader>
+    <Intro>
+      {/* Required to display the TOC which is magically included only if the <Intro> is added here. */}
+    </Intro>
 
     <SectionIntro toc="Einleitung" />
-    <SectionCurrent toc="Ist-Zustand" />
+    <SectionFromTo toc="Quellen &amp; Ziele" />
+    <SectionCurrent toc="Vorhandenes" />
     <SectionSafety toc="Sicherheit" />
-    <SectionFromTo toc="Quellen/Ziele" />
     <SectionInfrastructure toc="Radinfrastruktur" />
     <SectionSurfacequality toc="Kompfort" />
     <SectionRoadClassification toc="Straßentypen" />
+    <SectionNetwork toc="Zielnetz" />
     <SectionInteractive toc="Atlas" />
-    <SectionNetwork toc="Maßnahmen" />
 
     <Logos />
   </Wrapper>
