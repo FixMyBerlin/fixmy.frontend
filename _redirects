@@ -1,3 +1,9 @@
+# Domain redirect for Nudafa
+http://zesplus.de/* https://www.nudafa.de/:splat 301!
+https://zesplus.de/* https://www.nudafa.de/:splat 301!
+http://www.zesplus.de/* https://www.nudafa.de/:splat 301!
+https://www.zesplus.de/* https://www.nudafa.de/:splat 301!
+
 # radwege-check.de
 # Note: The #-part of the URL cannot be redirected with this
 /research/subjektive-sicherheit/* https://radwege-check.de/auswertung/:splat 301
