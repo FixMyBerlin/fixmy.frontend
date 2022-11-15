@@ -20,11 +20,6 @@ import { IconLegendLine } from './IconLegend';
 
 export const mapSurfacequalityVisLayers = [
   'siedlungszentren-name-only',
-  'poibarriers_water_aerodrome copy',
-  'poibarriers_water_aerodrome',
-  'poibarriers_motorway',
-  'poibarriers_train',
-  'poibarriers_train2',
   'landuse_residential-commercial',
   'dimmlayer-ZES-Betrachtungsraum',
   'dimmlayer-ZESplus',

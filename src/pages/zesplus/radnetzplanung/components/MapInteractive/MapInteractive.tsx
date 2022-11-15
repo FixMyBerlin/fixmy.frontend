@@ -13,32 +13,28 @@ import {
   ZES_INITIAL_ZOOM,
   ZES_MAP_STYLE,
   ZES_MAX_BOUNDS,
-} from '../../mapboxOptions.const';
+} from '../../../mapboxOptions.const';
 import {
   mapCurrentVisLayers,
   mapFromToVisLayers,
   mapInfrastructureVisLayers,
   mapRoadClassificationVisLayers,
   mapSurfacequalityVisLayers,
-} from './Maps';
+} from '../Maps';
+import ActiveIcon from './icons/eye-icon.svg';
+import DisabledIcon from './icons/eye-slash-icon.svg';
 
 export const MapInteractive = () => {
-  const [activeLegendItems, setActiveLegendItem] = useState([]);
-  const [visibleLayers, setVisibleLayers] = useState([]);
-
   // We always want those…
   const defaultLayer = [
     'siedlungszentren-name-only',
-    'poibarriers_water_aerodrome copy',
-    'poibarriers_water_aerodrome',
-    'poibarriers_motorway',
-    'poibarriers_train',
-    'poibarriers_train2',
-    'landuse_residential-commercial',
     'dimmlayer-ZES-Betrachtungsraum',
     'dimmlayer-ZESplus',
     'Border-ZES-Betrachtungsraum',
   ];
+
+  const [activeLegendItems, setActiveLegendItem] = useState([]);
+  const [visibleLayers, setVisibleLayers] = useState(defaultLayer);
 
   const toggleLayerAndLegend = (item: string, layerToToggle: string[]) => {
     if (activeLegendItems.includes(item)) {
@@ -63,6 +59,14 @@ export const MapInteractive = () => {
     }
   };
 
+  const activeInactiveIcon = (checkFor) => {
+    return activeLegendItems.includes(checkFor) ? (
+      <ActiveIcon style={{ color: 'green' }} />
+    ) : (
+      <DisabledIcon />
+    );
+  };
+
   return (
     <FullscreenMap
       mapboxStyle={ZES_MAP_STYLE}
@@ -77,23 +81,19 @@ export const MapInteractive = () => {
         <LegendItems>
           <LegendItem
             onClick={() => {
-              toggleLayerAndLegend('Current', mapCurrentVisLayers);
-            }}
-          >
-            <IconWrapper>
-              {activeLegendItems.includes('Current') ? 'an' : 'aus'}
-            </IconWrapper>
-            Vorhandene Netze und Planungen
-          </LegendItem>
-          <LegendItem
-            onClick={() => {
               toggleLayerAndLegend('FromTo', mapFromToVisLayers);
             }}
           >
-            <IconWrapper>
-              {activeLegendItems.includes('FromTo') ? 'an' : 'aus'}
-            </IconWrapper>
+            <IconWrapper>{activeInactiveIcon('FromTo')}</IconWrapper>
             Quellen und Ziele
+          </LegendItem>
+          <LegendItem
+            onClick={() => {
+              toggleLayerAndLegend('Current', mapCurrentVisLayers);
+            }}
+          >
+            <IconWrapper>{activeInactiveIcon('Current')}</IconWrapper>
+            Vorhandene Netze und Planungen
           </LegendItem>
           <LegendItem
             onClick={() => {
@@ -103,9 +103,7 @@ export const MapInteractive = () => {
               );
             }}
           >
-            <IconWrapper>
-              {activeLegendItems.includes('Infrastructure') ? 'an' : 'aus'}
-            </IconWrapper>
+            <IconWrapper>{activeInactiveIcon('Infrastructure')}</IconWrapper>
             Radinfrastruktur
           </LegendItem>
           <LegendItem
@@ -116,9 +114,7 @@ export const MapInteractive = () => {
               );
             }}
           >
-            <IconWrapper>
-              {activeLegendItems.includes('Surfacequality') ? 'an' : 'aus'}
-            </IconWrapper>
+            <IconWrapper>{activeInactiveIcon('Surfacequality')}</IconWrapper>
             Komfort &amp; Qualität
           </LegendItem>
           <LegendItem
@@ -130,7 +126,7 @@ export const MapInteractive = () => {
             }}
           >
             <IconWrapper>
-              {activeLegendItems.includes('RoadClassification') ? 'an' : 'aus'}
+              {activeInactiveIcon('RoadClassification')}
             </IconWrapper>
             Straßentypen
           </LegendItem>

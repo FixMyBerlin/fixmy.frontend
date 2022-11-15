@@ -121,4 +121,9 @@ export const IconWrapper = styled.div`
   width: 24px;
   height: 24px;
   margin-right: 10px;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
 `;
