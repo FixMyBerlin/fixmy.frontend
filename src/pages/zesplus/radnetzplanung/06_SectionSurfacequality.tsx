@@ -5,10 +5,10 @@ import { MapSurfacequality } from './components/Maps';
 export const SectionSurfacequality = (props: SectionProps) => (
   <>
     <Heading as="h2" {...props}>
-      Themenkarte Komfort &amp; Qualität
+      Themenkarte Komfort und Qualität
     </Heading>
     <Paragraph>
-      Die “Themenkarte <strong>Komfort & Qualität</strong>” bildet ab, wie gut
+      Die “Themenkarte <strong>Komfort und Qualität</strong>” bildet ab, wie gut
       sich die vorhandenen Straßen und Wege mit dem Rad befahren lassen. Dies
       ist für die Entwicklung des Netzes und die daran anschließende Entwicklung
       von Maßnahmen entscheidend. Daher werden in dieser Karte die Oberflächen

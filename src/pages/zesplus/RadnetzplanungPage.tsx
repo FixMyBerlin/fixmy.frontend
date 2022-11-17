@@ -35,21 +35,21 @@ export const RadnetzplanungPage = () => (
       publishDate={new Date('2022/11/22 10:00')}
       author="Christoph Kollert, Projektleitung Nudafa"
     >
-      Entwicklung Radverkehrsatlas &amp; digitale Radnetzplanung
+      Entwicklung Radverkehrsatlas und digitale Radnetzplanung
     </ArticleHeader>
     <Intro>
       {/* Required to display the TOC which is magically included only if the <Intro> is added here. */}
     </Intro>
 
     <SectionIntro toc="Einleitung" />
-    <SectionFromTo toc="Quellen &amp; Ziele" />
-    <SectionCurrent toc="Vorhandenes" />
+    <SectionFromTo toc="Quellen und Ziele" />
+    <SectionCurrent toc="Netze und Planungen" />
     <SectionSafety toc="Sicherheit" />
-    <SectionInfrastructure toc="Radinfrastruktur" />
-    <SectionSurfacequality toc="Kompfort" />
+    <SectionInfrastructure toc="Radinfra&shy;struktur" />
+    <SectionSurfacequality toc="Komfort" />
     <SectionRoadClassification toc="Straßentypen" />
     <SectionNetwork toc="Zielnetz" />
-    <SectionInteractive toc="Atlas" />
+    <SectionInteractive toc="Radverkehrsatlas" />
 
     <Logos />
   </Wrapper>

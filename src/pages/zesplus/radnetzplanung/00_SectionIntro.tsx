@@ -18,14 +18,14 @@ export const SectionIntro = (props: SectionProps) => (
       >
         OpenStreetMap-Daten
       </ExternalLink>{' '}
-      die im Rahmen des Projektes von Bürger:innen vervollständigt und überprüft
-      wurden. Punktuell wurden zusätzliche Daten, wie beispielsweise aus
-      crowd-sensing-Kampagnen per{' '}
+      (OSM-Daten), die im Rahmen des Projektes von Bürger:innen vervollständigt
+      und überprüft wurden. Punktuell wurden zusätzliche Daten, wie
+      beispielsweise aus crowd-sensing-Kampagnen per{' '}
       <ExternalLink
         href="https://simra-project.github.io/dashboard/"
         target="_bl ank"
       >
-        SimRa App
+        SimRa-App
       </ExternalLink>
       , oder in der Kommune vorhandenen Daten ergänzend eingebunden.
     </Intro>
@@ -41,11 +41,11 @@ export const SectionIntro = (props: SectionProps) => (
     <Paragraph>
       Der Radverkehrsatlas soll es Kommunen ermöglichen, eigenständig ein
       Radverkehrskonzept zu erstellen und Maßnahmen zur Verbesserung der
-      Infrastruktur zu entwickeln. Potenzielle Nutzer sind dabei nicht nur
-      Fachexperten und die Verwaltung, sondern auch alle anderen aktiv den
+      Infrastruktur zu entwickeln. Potenzielle Nutzer:innen sind dabei nicht nur
+      Fachexpert:innen und die Verwaltung, sondern auch alle anderen aktiv den
       Radverkehr fördernde Akteure. Die Menschen vor Ort können dazu mit ihrem
       lokalen Wissen, die Daten in OpenStreetMap als wichtige Arbeitsgrundlage
-      selbst zu erheben und vervollständigen.
+      selbst erheben und vervollständigen.
     </Paragraph>
     <Paragraph>
       In Rahmen des NUDAFA-Reallabors wird derzeit der erste Prototyp des
@@ -67,7 +67,7 @@ export const SectionIntro = (props: SectionProps) => (
     <Heading as="h3">Entwicklung des Radnetzes und der Maßnahmen</Heading>
     <Paragraph>
       Auf Basis der Themenkarten wird in einem Workshop gemeinsam mit Akteueren
-      der Kommunalen Verwaltungen, der Zivilgesellschaft und unter fachlicher
+      der kommunalen Verwaltungen, der Zivilgesellschaft und unter fachlicher
       Leitung zunächst ein Zielnetz, in der Folge ein Entwurf der Radnetzplanung
       und in späteren Schritten eine Maßnahmenliste erarbeitet. Das Radnetz wird
       in einer Karte veröffentlicht. Die Maßnahmenliste wird später ebenfalls in
@@ -75,8 +75,8 @@ export const SectionIntro = (props: SectionProps) => (
       öffentliche Kommunikation und Beteiligung genutzt werden kann.
     </Paragraph>
     <Paragraph>
-      Das so erstellte und fortlaufend angepasste Netzkonzept sowie die
-      Übersicht der Maßnahmen bilden den Kern des so erstellten interkommunalen
+      Das so erstellte und fortlaufend angepasste Netzkonzept, sowie die
+      Übersicht der Maßnahmen, bilden den Kern des so erstellten interkommunalen
       Radverkehrskonzeptes. Entscheidend für dessen Umsetzung ist die aktive
       Einbeziehung der beteiligten Kommunen, Politiker:innen,
       Verwaltungsmitarbeiter:innen und Bürger:innen. Mit dem Zusammenfassen und
