@@ -32,7 +32,7 @@ export const RadnetzplanungPage = () => (
   >
     <ArticleHeader
       kicker="NUDAFA-Realexperiment “Digitale Planungstools”"
-      publishDate={new Date('2022-10-01 10:00')}
+      publishDate={new Date('2022/11/22 10:00')}
       author="Christoph Kollert, Projektleitung Nudafa"
     >
       Entwicklung Radverkehrsatlas &amp; digitale Radnetzplanung
