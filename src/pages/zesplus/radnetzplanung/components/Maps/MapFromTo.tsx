@@ -21,6 +21,7 @@ import { LegendItemPoiShop } from './LegendItems';
 import IconTrain from './icons/train.svg';
 import IconLine from './icons/line.svg';
 import IconAirport from './icons/airport.svg';
+import SbahnIcon from './icons/s-bahn.svg';
 
 export const mapFromToVisLayers = [
   'siedlungszentren-center',
@@ -126,12 +127,7 @@ export const MapFromTo = () => {
             </LegendItem>
             <LegendItem>
               <IconWrapper>
-                <IconLegendCircle
-                  color="red"
-                  borderColor="red"
-                  borderWidth={0.5}
-                  size={5}
-                />
+                <SbahnIcon />
               </IconWrapper>
               S-Bahnhöfe
             </LegendItem>
