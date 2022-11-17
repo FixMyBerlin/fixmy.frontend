@@ -1,8 +1,5 @@
 import React from 'react';
 import { ArticleHeader, Intro } from '~/components2/Article';
-import LogoZES from './components/Logos/assets/logo-zes.png';
-import LogoZES2 from './components/Logos/assets/logo-zes@2x.png';
-import LogoZES3 from './components/Logos/assets/logo-zes@3x.png';
 import { Logos } from './components/Logos/Logos';
 import {
   SectionCurrent,
@@ -15,20 +12,13 @@ import {
   SectionSurfacequality,
 } from './radnetzplanung';
 import { SectionIntro } from './radnetzplanung/00_SectionIntro';
-import { Logo, Wrapper } from './styles';
+import { Wrapper } from './styles';
 
 export const RadnetzplanungPage = () => (
   <Wrapper
     tocTitle="Inhalt"
     enumerateToc={false}
     bannerTitle="Digitale Planungstools"
-    logo={
-      <Logo
-        src={LogoZES2}
-        srcSet={`${LogoZES} 1x, ${LogoZES2} 2x, ${LogoZES3} 3x`}
-        alt="Logo ZES+"
-      />
-    }
   >
     <ArticleHeader
       kicker="NUDAFA-Realexperiment “Digitale Planungstools”"

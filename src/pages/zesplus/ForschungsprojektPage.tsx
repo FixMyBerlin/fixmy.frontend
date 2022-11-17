@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArticleHeader, ImageFull, Intro } from '~/components2/Article';
+import { Logos } from './components/Logos/Logos';
 import {
   SectionAbout,
   SectionConceptMaps,
@@ -9,25 +10,14 @@ import {
   SectionNetwork,
   SectionNextSteps,
 } from './forschungsprojekt';
-import { Logos } from './components/Logos/Logos';
-import LogoZES from './components/Logos/assets/logo-zes.png';
-import LogoZES2 from './components/Logos/assets/logo-zes@2x.png';
-import LogoZES3 from './components/Logos/assets/logo-zes@3x.png';
 import Image2 from './forschungsprojekt/images/research-2.jpg';
-import { Wrapper, Logo } from './styles';
+import { Wrapper } from './styles';
 
 export const ForschungsprojektPage = () => (
   <Wrapper
     tocTitle="Inhalt"
     enumerateToc={false}
     bannerTitle="Forschungs&shy;projekt"
-    logo={
-      <Logo
-        src={LogoZES2}
-        srcSet={`${LogoZES} 1x, ${LogoZES2} 2x, ${LogoZES3} 3x`}
-        alt="Logo ZES+"
-      />
-    }
   >
     <ArticleHeader
       kicker="Modellprojekt der MobilitätsWerkStatt 2025"
