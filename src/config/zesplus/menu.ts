@@ -20,7 +20,7 @@ export const menu: ConfigMenu = {
     },
     {
       type: 'link',
-      label: 'Radnetzentwicklung',
+      label: 'Radnetzplanung',
       icon: PlanningIcon,
       link: routes.radnetzplanung,
       border: true,

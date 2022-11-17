@@ -11,7 +11,7 @@ import {
   SectionSafety,
   SectionSurfacequality,
 } from './radnetzplanung';
-import { SectionIntro } from './radnetzplanung/00_SectionIntro';
+import { SectionIntro } from './radnetzplanung/01_SectionIntro';
 import { Wrapper } from './styles';
 
 export const RadnetzplanungPage = () => (

@@ -2,15 +2,14 @@ import React from 'react';
 import { ArticleHeader, ImageFull, Intro } from '~/components2/Article';
 import { Logos } from './components/Logos/Logos';
 import {
-  SectionAbout,
-  SectionConceptMaps,
-  SectionContribute,
-  SectionData,
   SectionIntroduction,
-  SectionNetwork,
-  SectionNextSteps,
+  SectionModellprojekt,
+  SectionPartner,
+  SectionRadverkehrskonzept,
+  SectionReallabor,
+  SectionTeam,
 } from './forschungsprojekt';
-import Image2 from './forschungsprojekt/images/research-2.jpg';
+import IntroImage from './forschungsprojekt/images/intro-stadtradeln.jpg';
 import { Wrapper } from './styles';
 
 export const ForschungsprojektPage = () => (
@@ -20,29 +19,32 @@ export const ForschungsprojektPage = () => (
     bannerTitle="Forschungs&shy;projekt"
   >
     <ArticleHeader
-      kicker="Modellprojekt der MobilitätsWerkStatt 2025"
-      publishDate={new Date(2020, 11, 15, 10, 0)}
-      author="Jörg Jenoch, Bürgermeister Eichwalde"
+      kicker="Ein BMBF-gefördertes Modellprojekt der #MobilitätsWerkStadt 2025"
+      publishDate={new Date('2022/11/22 10:00')}
+      author="Christoph Kollert"
     >
-      Radverkehr neu denken: Innovative Ansätze der Radverkehrs&shy;planung in
-      Eichwalde, Zeuthen und Schulzendorf
+      Das NUDAFA-Reallabor für interkommunale Radverkehrsförderung
     </ArticleHeader>
+    <ImageFull
+      source={IntroImage}
+      alt="Die Bürgermeisterinnen und Bürgermeister der sechs Partnergemeinden und Städte bei einer Rundfahrt durch die Region, hier vor dem Rathaus in Eichwalde"
+      role="presentation"
+    />
     <Intro>
-      Der Radverkehr in Zeuthen, Eichwalde und Schulzendorf soll eine bessere
-      Infrastruktur erhalten, auf der alle Menschen komfortabel vorankommen und
-      sich sicher fühlen – auf dem Weg zur Arbeit, zur Schule, zur S-Bahn, zu
-      Freunden und Bekannten, zum Sport und zum Einkauf. Um dies zu erreichen,
-      wird aktuell ein innovatives, partizipatives und interkommunales
-      Radverkehrskonzept erstellt.
+      Anfangs stand NUDAFA nur für “Nutzer-Datengestütztes Fahrradverkehrsnetz”
+      – heute stehen NUDAFA für die Erprobung praxisnaher Ansätze zur
+      Radverkehrsförderung in kleinen und mittleren Kommunen. <br />
+      <span style={{ fontWeight: 'normal' }}>
+        Jörg Jenoch, Bürgermeister Gemeinde Eichwalde
+      </span>
     </Intro>
     <SectionIntroduction toc="Einleitung" />
-    <SectionData toc="Daten&shy;grundlagen" />
-    <SectionNetwork toc="Themenkarten" />
-    <SectionConceptMaps toc="Das ZESplus-Konzept" />
-    <SectionNextSteps toc="Wie geht es weiter?" />
-    <SectionContribute toc="Mitmachen" />
-    <SectionAbout toc="Über das Projekt" />
-    <ImageFull source={Image2} alt="" role="presentation" />
+    <SectionReallabor toc="Reallabor" />
+    <SectionModellprojekt toc={null} />
+    <SectionRadverkehrskonzept toc={null} />
+    <SectionTeam toc="Über uns" />
+    <SectionPartner toc="Kooperationspartner" />
+
     <Logos />
   </Wrapper>
 );
