@@ -10,7 +10,7 @@ export const SectionCurrent = (props: SectionProps) => (
     <Paragraph>
       Die “Themenkarte <strong>Vorhandene Netze und Planungen</strong>” stellt
       die im Betrachtungsraum vorhandenen Radrouten und Netzkonzepte dar. Dazu
-      gehören Routen auf Landkreisebene, Touristische Routen, und Netze der
+      gehören Routen auf Landkreisebene, touristische Routen, und Netze der
       Nachbargemeinden. Sobald Radrouten über Kommunen-, Landkreis- und
       Landesgrenzen führen, ergibt sich daraus oft ein zusätzlicher
       Abstimmungsbedarf zur Planung, Umsetzung und später auch beim Unterhalt

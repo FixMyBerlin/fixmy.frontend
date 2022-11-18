@@ -30,3 +30,6 @@ cypress/screenshots/*
 
 # storybook
 storybook-static
+
+# Husky
+dist

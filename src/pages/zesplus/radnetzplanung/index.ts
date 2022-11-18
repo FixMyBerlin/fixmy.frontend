@@ -1,5 +1,4 @@
-export * from './00_SectionIntro';
-export * from './01_SectionAreaOfInteres';
+export * from './01_SectionIntro';
 export * from './02_SectionFromTo';
 export * from './03_SectionCurrent';
 export * from './04_SectionSafety';

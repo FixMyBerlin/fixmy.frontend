@@ -21,7 +21,7 @@ export const SectionInteractive = (props: SectionProps) => (
       Durch den Einbezug der sechs, in ihrer Art durchaus unterschiedlichen,
       Partnerkommunen des NUDAFA-Reallabors lässt sich bereits eine gewisser
       Grad der Übertragbarkeit feststellen. Welche Anpassungen für die Anwendung
-      auf andere Kommunen notwendig sind soll nun in weiteren Projekten in
+      auf andere Kommunen notwendig sind, soll nun in weiteren Projekten in
       weiteren Städte und Regionen erprobt werden.
     </Paragraph>
 

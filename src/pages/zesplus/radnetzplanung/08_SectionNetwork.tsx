@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
-import { MapPlaceholder } from '../components/MapPlaceholder/MapPlaceholder';
+import { MapPlaceholder } from './components/MapPlaceholder';
 
 export const SectionNetwork = (props: SectionProps) => (
   <>
@@ -20,7 +20,7 @@ export const SectionNetwork = (props: SectionProps) => (
       einem gemeinsamen Workshop mit allen relevanten Akteuren erstellt.
       Ausgehend von den Themenkarten wird dabei zunächst ein
       kommunenübergreifendes Zielnetz erstellt. Im Abgleich mit den in den
-      Themenkarten dargestellten Informationen zu Situation vor Ort (vgl.
+      Themenkarten dargestellten Informationen zur Situation vor Ort (vgl.
       Straßentypen) wird dieses dann zu einem interkommunalen Radnetz
       weiterentwickelt. Anschließend werden die zur Realisierung des Radnetzes
       notwendigen Maßnahmen in einer Liste zusammengetragen und in der Karte

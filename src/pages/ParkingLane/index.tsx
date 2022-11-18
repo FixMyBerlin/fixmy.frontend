@@ -59,7 +59,7 @@ const ParkingLane = () => (
     >
       <ArticleHeader
         kicker="Daten erheben"
-        publishDate={new Date('2022-03-01 10:00')}
+        publishDate={new Date('2022/03/01 10:00')}
       >
         Gemeinsam Daten für die Verkehrswende erheben
       </ArticleHeader>

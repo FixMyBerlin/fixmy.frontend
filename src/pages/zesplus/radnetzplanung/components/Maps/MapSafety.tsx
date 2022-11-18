@@ -9,14 +9,14 @@ import {
   LegendItems,
   LegendSources,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
-import Icons0 from '../../../forschungsprojekt/Maps/icons/s0.svg';
-import Icons1 from '../../../forschungsprojekt/Maps/icons/s1.svg';
-import Icons2 from '../../../forschungsprojekt/Maps/icons/s2.svg';
-import Icons3 from '../../../forschungsprojekt/Maps/icons/s3.svg';
-import Icons4 from '../../../forschungsprojekt/Maps/icons/s4.svg';
-import IconSchool from '../../../forschungsprojekt/Maps/icons/school.svg';
-import IconToSchoolUnsafe from '../../../forschungsprojekt/Maps/icons/schulwege-unsicher.svg';
-import IconToSchool from '../../../forschungsprojekt/Maps/icons/schulwege.svg';
+import Icons0 from './icons/s0.svg';
+import Icons1 from './icons/s1.svg';
+import Icons2 from './icons/s2.svg';
+import Icons3 from './icons/s3.svg';
+import Icons4 from './icons/s4.svg';
+import IconSchool from './icons/school.svg';
+import IconToSchoolUnsafe from './icons/schulwege-unsicher.svg';
+import IconToSchool from './icons/schulwege.svg';
 import {
   ZES_INITAL_CENTER,
   ZES_INITIAL_ZOOM,

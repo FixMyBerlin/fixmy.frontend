@@ -19,7 +19,7 @@ export const SectionInfrastructure = (props: SectionProps) => (
       </List.Item>
       <List.Item>
         <strong>“Gemeinsame Führung mit dem Fußverkehr”</strong>: Gehwege, die
-        für die Nutzung des Radverkehrs freigegeben sind
+        für die Nutzung des Radverkehrs freigegeben sind.
       </List.Item>
       <List.Item>
         <strong>“Verkehrsberuhigte Bereiche”</strong>: Beispielsweise
@@ -29,10 +29,10 @@ export const SectionInfrastructure = (props: SectionProps) => (
     <Paragraph>
       Diese Themenkarte bildet eine wichtige Grundlage für die Netzplanung,
       welche von der bereits vorhandenen Infrastruktur ausgeht. Im Abgleich mit
-      dem Zielnetz können dann Lücken und Ergänzende Haupt- und Nebenrouten
-      definiert werden um das Netz sukzessive zu schließen. Abschnitte mit
-      schlechter Oberfläche (in der Regel Kopfsteinpflaster) die für den
-      Radverkehr nicht geeignet sind sind zusätzlich ausgewertet, da sie
+      dem Zielnetz können dann Lücken und ergänzende Haupt- und Nebenrouten
+      definiert werden, um das Netz sukzessive zu schließen. Abschnitte mit
+      schlechter Oberfläche (in der Regel Kopfsteinpflaster), die für den
+      Radverkehr nicht geeignet sind, werden zusätzlich ausgewertet, da sie
       aufwendigere Maßnahmen erfordern und in der Netzplanung wenn möglich zu
       vermeiden sind.
     </Paragraph>

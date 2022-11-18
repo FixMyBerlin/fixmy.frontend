@@ -1,8 +1,5 @@
 import React from 'react';
 import { ArticleHeader, Intro } from '~/components2/Article';
-import LogoZES from './components/Logos/assets/logo-zes.png';
-import LogoZES2 from './components/Logos/assets/logo-zes@2x.png';
-import LogoZES3 from './components/Logos/assets/logo-zes@3x.png';
 import { Logos } from './components/Logos/Logos';
 import {
   SectionCurrent,
@@ -14,42 +11,35 @@ import {
   SectionSafety,
   SectionSurfacequality,
 } from './radnetzplanung';
-import { SectionIntro } from './radnetzplanung/00_SectionIntro';
-import { Logo, Wrapper } from './styles';
+import { SectionIntro } from './radnetzplanung/01_SectionIntro';
+import { Wrapper } from './styles';
 
 export const RadnetzplanungPage = () => (
   <Wrapper
     tocTitle="Inhalt"
     enumerateToc={false}
     bannerTitle="Digitale Planungstools"
-    logo={
-      <Logo
-        src={LogoZES2}
-        srcSet={`${LogoZES} 1x, ${LogoZES2} 2x, ${LogoZES3} 3x`}
-        alt="Logo ZES+"
-      />
-    }
   >
     <ArticleHeader
       kicker="NUDAFA-Realexperiment “Digitale Planungstools”"
-      publishDate={new Date('2022-10-01 10:00')}
+      publishDate={new Date('2022/11/22 10:00')}
       author="Christoph Kollert, Projektleitung Nudafa"
     >
-      Entwicklung Radverkehrsatlas &amp; digitale Radnetzplanung
+      Entwicklung Radverkehrsatlas und digitale Radnetzplanung
     </ArticleHeader>
     <Intro>
       {/* Required to display the TOC which is magically included only if the <Intro> is added here. */}
     </Intro>
 
     <SectionIntro toc="Einleitung" />
-    <SectionFromTo toc="Quellen &amp; Ziele" />
-    <SectionCurrent toc="Vorhandenes" />
+    <SectionFromTo toc="Quellen und Ziele" />
+    <SectionCurrent toc="Netze und Planungen" />
     <SectionSafety toc="Sicherheit" />
-    <SectionInfrastructure toc="Radinfrastruktur" />
-    <SectionSurfacequality toc="Kompfort" />
+    <SectionInfrastructure toc="Radinfra&shy;struktur" />
+    <SectionSurfacequality toc="Komfort" />
     <SectionRoadClassification toc="Straßentypen" />
     <SectionNetwork toc="Zielnetz" />
-    <SectionInteractive toc="Atlas" />
+    <SectionInteractive toc="Radverkehrsatlas" />
 
     <Logos />
   </Wrapper>
