@@ -43,6 +43,11 @@ export const SectionPartner = (props: SectionProps) => (
       <List.Item>
         <Link href="https://isicargo.de/">isicargo</Link>
       </List.Item>
+      <List.Item>
+        <Link href="https://wiki.openstreetmap.org/wiki/Berlin">
+          OSM Community Berlin-Brandenburg
+        </Link>
+      </List.Item>
     </List>
   </>
 );

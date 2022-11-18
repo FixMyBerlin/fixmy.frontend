@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArticleHeader, ImageFull, Intro } from '~/components2/Article';
+import { ArticleHeader, ImageFull, Intro, Quote } from '~/components2/Article';
 import { Logos } from './components/Logos/Logos';
 import {
   SectionIntroduction,
@@ -31,13 +31,13 @@ export const ForschungsprojektPage = () => (
       role="presentation"
     />
     <Intro>
-      Anfangs stand NUDAFA nur für “Nutzer-Datengestütztes Fahrradverkehrsnetz”
-      – heute stehen NUDAFA für die Erprobung praxisnaher Ansätze zur
-      Radverkehrsförderung in kleinen und mittleren Kommunen. <br />
-      <span style={{ fontWeight: 'normal' }}>
-        Jörg Jenoch, Bürgermeister Gemeinde Eichwalde
-      </span>
+      <Quote long sourceText="Jörg Jenoch, Bürgermeister Gemeinde Eichwalde">
+        „Anfangs stand NUDAFA nur für ‚Nutzer-Datengestütztes
+        Fahrradverkehrsnetz‘ – heute stehen NUDAFA für die Erprobung praxisnaher
+        Ansätze zur Radverkehrsförderung in kleinen und mittleren Kommunen.“
+      </Quote>
     </Intro>
+
     <SectionIntroduction toc="Einleitung" />
     <SectionReallabor toc="Reallabor" />
     <SectionModellprojekt toc={null} />

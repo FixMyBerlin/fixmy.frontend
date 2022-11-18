@@ -41,10 +41,11 @@ export const SectionRadverkehrskonzept = (props: SectionProps) => (
       role="presentation"
     />
     <Paragraph>
-      Im Fokus steht dabei die von FixMyCity federführend umgesetzte,
-      automatisierte Auswertung von OSM-Daten sowie deren grafische Aufbereitung
-      in sogenannten Themenkarten (s. nachfolgende Abbildung). Diese
-      verdeutlichen die Handlungsbedarfe im gemeinsamen Siedlungsraum und
+      Im Fokus steht dabei die von{' '}
+      <Link href="https://www.fixmycity.de">FixMyCity</Link> federführend
+      umgesetzte, automatisierte Auswertung von OSM-Daten sowie deren grafische
+      Aufbereitung in sogenannten Themenkarten (s. nachfolgende Abbildung).
+      Diese verdeutlichen die Handlungsbedarfe im gemeinsamen Siedlungsraum und
       unterstützen als niederschwellig verfügbare, gemeinsame Datengrundlage
       interkommunale Abstimmungsprozesse sowie die Erarbeitung und Kommunikation
       konkreter Maßnahmen.

@@ -14,7 +14,7 @@ export const SectionIntroduction = (props: SectionProps) => (
     </Heading>
     <Paragraph>
       Hinter NUDAFA stecken viele unterschiedliche{' '}
-      <AnchorLink internal href="team">
+      <AnchorLink internal href="#uber-uns">
         Köpfe
       </AnchorLink>
       , die ein gemeinsames Ziel vereint: die Förderung des Radverkehrs in
