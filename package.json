@@ -11,6 +11,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack serve",
+    "check": "npm run type-check && npm run format && npm run test",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "eslint . --fix --ext .ts,.tsx && prettier --write .",
     "type-check": "tsc --noEmit",
