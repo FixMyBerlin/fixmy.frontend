@@ -6,7 +6,6 @@ import { toggle as toggleMenu } from '~/AppState';
 import { AnchorButton } from '~/components2/Button';
 import { Link } from '~/components2/Link';
 import { Logo as FMBLogo } from '~/components2/Logo';
-import { NewsletterWidget } from '~/components2/NewsletterWidget';
 import config from '~/config';
 import FacebookIcon from '~/images/button-social-facebook.svg';
 import TwitterIcon from '~/images/button-social-twitter.svg';
@@ -40,10 +39,10 @@ const SubTitle = styled.p`
   color: ${config.colors.darkgrey};
 `;
 
-const NewsletterWrapper = styled.div`
-  max-width: 280px;
-  margin: 0 auto;
-`;
+// const NewsletterWrapper = styled.div`
+//   max-width: 280px;
+//   margin: 0 auto;
+// `;
 
 const MainButton = styled(AnchorButton)`
   width: 280px;

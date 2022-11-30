@@ -1,14 +1,22 @@
 /* eslint-disable jsx-a11y/aria-role */
 import React from 'react';
 import styled from 'styled-components';
-import { Heading, Paragraph, SectionProps } from '~/components2/Article';
+import { Heading, SectionProps } from '~/components2/Article';
 import { InnerImg } from '~/components2/Article/Image/InnerImage';
+import { Link } from '~/components2/Link';
 import config from '~/config';
 import { media } from '~/styles/utils';
+import Kommuneeichwalde from './images/logos-kommunen/eichwalde.png';
+import Kommunekw from './images/logos-kommunen/kw.png';
+import Kommuneschoenefeld from './images/logos-kommunen/schoenefeld.png';
+import Kommuneschulzendorf from './images/logos-kommunen/schulzendorf.png';
+import Kommunewildau from './images/logos-kommunen/wildau.png';
+import Kommunezeuthen from './images/logos-kommunen/zeuthen.png';
 import Teamalf from './images/team/alf.jpg';
 import Teamcami from './images/team/cami.jpg';
 import Teamchristoph from './images/team/christoph.jpg';
 import Teamdenise from './images/team/denise.jpg';
+import Teamheiko from './images/team/heiko.jpg';
 import Teamjenoch from './images/team/jenoch.jpg';
 import Teamkatharina from './images/team/katharina.jpg';
 import Teamrudolph from './images/team/rudolph.jpg';
@@ -16,14 +24,6 @@ import Teamschwedes from './images/team/schwedes.jpg';
 import Teamtim from './images/team/tim.jpg';
 import Teamtobias from './images/team/tobias.jpg';
 import Teamute from './images/team/ute.jpg';
-import Teamheiko from './images/team/heiko.jpg';
-import Kommuneeichwalde from './images/logos-kommunen/eichwalde.png';
-import Kommunekw from './images/logos-kommunen/kw.png';
-import Kommuneschoenefeld from './images/logos-kommunen/schoenefeld.png';
-import Kommuneschulzendorf from './images/logos-kommunen/schulzendorf.png';
-import Kommunewildau from './images/logos-kommunen/wildau.png';
-import Kommunezeuthen from './images/logos-kommunen/zeuthen.png';
-import { Link } from '~/components2/Link';
 
 const MaxWidthSection = styled.div`
   margin: 1em auto;
