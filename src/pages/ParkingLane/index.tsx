@@ -11,6 +11,7 @@ import {
   Section03Participate,
   Section04Mapping,
   Section05Potential,
+  SectionCalloutUpdate,
 } from './sections';
 
 const Wrapper = styled(ArticleWrapper)`
@@ -67,6 +68,7 @@ const ParkingLane = () => (
         Die Verkehrswende braucht gute Daten – hilf dem Bezirksamt diese zu
         erfassen.
       </Intro>
+      <SectionCalloutUpdate />
       <Section01Intro toc="Gute Daten" />
       <Section02Process toc="Vorgehen" />
       <Section03Participate toc="Mitmachen" />

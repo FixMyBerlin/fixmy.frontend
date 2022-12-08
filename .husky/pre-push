@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# This is `npm run check`
+npm run type-check
+npm run format
+npm run test
