@@ -65,6 +65,6 @@ export const Section01Intro: React.FC<SectionProps> = ({ toc }) => (
       Daten zu erfassen. Dadurch können wir unsere Arbeit besser und schneller
       erledigen.
     </FaceQuote>
-    {/* <NewsletterBox /> */}
+    <NewsletterBox />
   </>
 );
