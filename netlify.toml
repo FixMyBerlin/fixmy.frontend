@@ -47,3 +47,8 @@
     for = "/api/*"
     [headers.values]
         Access-Control-Allow-Origin = "*"
+
+[[headers]]
+    for = "/src/fonts/*"
+    [headers.values]
+        Access-Control-Allow-Origin = "*"
