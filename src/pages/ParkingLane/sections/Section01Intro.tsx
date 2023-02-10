@@ -7,6 +7,7 @@ import ImgFelixWeisbrich from '../assets/felix-weisbrich-circle.jpg';
 import MapParkingLanes from '../assets/map-parking-lanes.jpg';
 import MapParkingLanes2x from '../assets/map-parking-lanes@2x.jpg';
 import MapParkingLanes3x from '../assets/map-parking-lanes@3x.jpg';
+import { NewsletterBox } from '../components/NewsletterBox';
 
 export const Section01Intro: React.FC<SectionProps> = ({ toc }) => (
   <>
@@ -65,6 +66,6 @@ export const Section01Intro: React.FC<SectionProps> = ({ toc }) => (
       Daten zu erfassen. Dadurch können wir unsere Arbeit besser und schneller
       erledigen.
     </FaceQuote>
-    {/* <NewsletterBox /> */}
+    <NewsletterBox />
   </>
 );

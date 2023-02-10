@@ -143,7 +143,7 @@ const MapView = ({
           )}
 
           <MapControl
-            visible={!isDesktopView && !showLegend}
+            visible={isDesktopView}
             style={{ right: '16px', bottom: '25px' }}
           >
             <StyledMapButton
