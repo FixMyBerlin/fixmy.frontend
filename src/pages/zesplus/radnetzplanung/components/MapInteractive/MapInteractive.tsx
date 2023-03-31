@@ -89,11 +89,16 @@ export const MapInteractive = () => {
           </LegendItem>
           <LegendItem
             onClick={() => {
-              toggleLayerAndLegend('Current', mapCurrentVisLayers);
+              toggleLayerAndLegend(
+                'RoadClassification',
+                mapRoadClassificationVisLayers
+              );
             }}
           >
-            <IconWrapper>{activeInactiveIcon('Current')}</IconWrapper>
-            Vorhandene Netze und Planungen
+            <IconWrapper>
+              {activeInactiveIcon('RoadClassification')}
+            </IconWrapper>
+            Straßentypen
           </LegendItem>
           <LegendItem
             onClick={() => {
@@ -104,7 +109,7 @@ export const MapInteractive = () => {
             }}
           >
             <IconWrapper>{activeInactiveIcon('Infrastructure')}</IconWrapper>
-            Radinfrastruktur
+            Radinfrastruktur & Oberfläche schlecht
           </LegendItem>
           <LegendItem
             onClick={() => {
@@ -119,16 +124,78 @@ export const MapInteractive = () => {
           </LegendItem>
           <LegendItem
             onClick={() => {
-              toggleLayerAndLegend(
-                'RoadClassification',
-                mapRoadClassificationVisLayers
-              );
+              toggleLayerAndLegend('Current', mapCurrentVisLayers);
+            }}
+          >
+            <IconWrapper>{activeInactiveIcon('Current')}</IconWrapper>
+            Vorhandene Netze und Planungen
+          </LegendItem>
+          <LegendItem
+            onClick={() => {
+              toggleLayerAndLegend('Netzentwurf', [
+                'nudafa-ramboll-netzentwurf',
+              ]);
+            }}
+          >
+            <IconWrapper>{activeInactiveIcon('Netzentwurf')}</IconWrapper>
+            Netzentwurf
+          </LegendItem>
+          <LegendItem
+            onClick={() => {
+              toggleLayerAndLegend('HighwayResidential', [
+                'strassentyp-wohnstrassenonly',
+                'surf_fahrbahn-bad',
+              ]);
             }}
           >
             <IconWrapper>
-              {activeInactiveIcon('RoadClassification')}
+              {activeInactiveIcon('HighwayResidential')}
             </IconWrapper>
-            Straßentypen
+            Fahrradgeeignete Nebenstraßen
+          </LegendItem>
+          <LegendItem
+            onClick={() => {
+              toggleLayerAndLegend('Wunschlininien', [
+                'nudafa-ramboll-wunschlininien',
+              ]);
+            }}
+          >
+            <IconWrapper>{activeInactiveIcon('Wunschlininien')}</IconWrapper>
+            Wunschlininien
+          </LegendItem>
+          <LegendItem
+            onClick={() => {
+              toggleLayerAndLegend('Zwangspunkte', [
+                'nudafa-ramboll-zwangspunkte',
+                'nudafa-ramboll-zielpunkte',
+              ]);
+            }}
+          >
+            <IconWrapper>{activeInactiveIcon('Zwangspunkte')}</IconWrapper>
+            Ziel und Zwangspunkte
+          </LegendItem>
+          <LegendItem
+            onClick={() => {
+              toggleLayerAndLegend('Buildings', ['buildings-black']);
+            }}
+          >
+            <IconWrapper>{activeInactiveIcon('Buildings')}</IconWrapper>
+            Gebäude
+          </LegendItem>
+          <LegendItem
+            onClick={() => {
+              toggleLayerAndLegend('Schulwegsicherheit', [
+                'poiEducation-schoolsafety',
+                'unfaelle-210727',
+                'schulwege-real-761p90',
+                'unsichererstellen-8n5geh',
+              ]);
+            }}
+          >
+            <IconWrapper>
+              {activeInactiveIcon('Schulwegsicherheit')}
+            </IconWrapper>
+            Schulwegsicherheit
           </LegendItem>
         </LegendItems>
       </LegendCol>

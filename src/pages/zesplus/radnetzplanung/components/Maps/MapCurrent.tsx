@@ -23,7 +23,6 @@ export const mapCurrentVisLayers = [
   'dimmlayer-ZESplus',
   'landuse_residential-commercial',
   'siedlungszentren-name-only',
-  'Vorhandene-netze-und-planungen-neu',
   'Vorhandene-netze-und-planungen',
 ];
 

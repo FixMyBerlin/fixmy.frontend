@@ -30,8 +30,6 @@ export const mapRoadClassificationVisLayers = [
   'dimmlayer-ZESplus',
   'Border-ZES-Betrachtungsraum',
   'strassentyp',
-  'poiShopCategory',
-  'poiShopping-heatmap',
   'publicTransport',
 ];
 
@@ -60,13 +58,13 @@ export const MapRoadClassification = () => {
               <IconWrapper>
                 <IconLegendLine color="hsl(50, 90%, 47%)" width={3} />
               </IconWrapper>
-              Haupt und Sammelstraßen innerorts
+              Sammelstraßen
             </LegendItem>
             <LegendItem>
               <IconWrapper>
                 <IconLegendLine color="hsl(18, 97%, 47%)" width={3} />
               </IconWrapper>
-              Hauptstraßen Außerorts
+              Hauptstraßen
             </LegendItem>
             <LegendItem>
               <IconWrapper>

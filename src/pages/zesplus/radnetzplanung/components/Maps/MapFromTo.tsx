@@ -80,9 +80,14 @@ export const MapFromTo = () => {
           <LegendHeader>Quell-Orte</LegendHeader>
           <LegendItems>
             <LegendItem>
-              <IconWrapper>
+              <IconWrapper
+                style={{
+                  backgroundColor: 'white',
+                  border: '1px solid rgb(94, 94, 94)',
+                }}
+              >
                 <IconLegendArea
-                  color="hsl(17, 93%, 81%)"
+                  color="hsla(17, 93%, 81%, 20%)"
                   borderColor="transparent"
                   borderWidth={0}
                 />
@@ -90,9 +95,14 @@ export const MapFromTo = () => {
               Wohngebiete
             </LegendItem>
             <LegendItem>
-              <IconWrapper>
+              <IconWrapper
+                style={{
+                  backgroundColor: 'white',
+                  border: '1px solid rgb(94, 94, 94)',
+                }}
+              >
                 <IconLegendArea
-                  color="hsl(215, 87%, 78%)"
+                  color="hsla(215, 87%, 78%, 20%)"
                   borderColor="transparent"
                   borderWidth={0}
                 />
@@ -102,8 +112,8 @@ export const MapFromTo = () => {
             <LegendItem>
               <IconWrapper>
                 <IconLegendCircle
-                  color="rgba(0, 0, 0, 70%)"
-                  borderColor="rgba(216, 205, 3, 70%)"
+                  color="rgba(33, 134, 196, 40%)"
+                  borderColor="rgb(26, 104, 153)"
                   borderWidth={2}
                 />
               </IconWrapper>

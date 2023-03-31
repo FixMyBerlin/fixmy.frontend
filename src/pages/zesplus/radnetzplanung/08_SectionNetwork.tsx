@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading, Paragraph, SectionProps } from '~/components2/Article';
-import { MapPlaceholder } from './components/MapPlaceholder';
+import { MapNetwork } from './components/Maps/MapNetwork';
 
 export const SectionNetwork = (props: SectionProps) => (
   <>
@@ -37,6 +37,6 @@ export const SectionNetwork = (props: SectionProps) => (
       dieser Website in einer weiteren Unterseite veröffentlicht.
     </Paragraph>
 
-    <MapPlaceholder alt="TODO Platzhalter Karte Prüfkonzept" />
+    <MapNetwork />
   </>
 );
