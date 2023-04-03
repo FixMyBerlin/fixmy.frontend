@@ -1,6 +1,7 @@
 import { Container } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
+import ExternalLink from '~/components/ExternalLink';
 
 import Link from '~/components/Link';
 import { Button } from '~/components2/Button';
@@ -14,6 +15,8 @@ import BackgroundImageB3 from '~/images/spielstrassen/landing-bg-2@3x.jpg';
 import BackgroundImageA1 from '~/images/spielstrassen/landing-bg.jpg';
 import BackgroundImageA2 from '~/images/spielstrassen/landing-bg@2x.jpg';
 import BackgroundImageA3 from '~/images/spielstrassen/landing-bg@3x.jpg';
+import YouTubeVideoPreviewImage from '~/images/spielstrassen/spielstraßen_youtube_preview.jpg';
+import YouTubeVideoPreviewImageMobile from '~/images/spielstrassen/spielstraßen_youtube_preview_mobile.jpg';
 
 // import Notice from '../components/Notice';
 
@@ -62,6 +65,7 @@ const Landing = () => {
             Besuchen Sie eine Spielstraße in Ihrer Nähe und lassen sich
             inspirieren. Die Öffnungszeiten finden Sie in der Übersicht.
           </p>
+
           <Link to={config.routes.spielstrassen.streets}>
             <CTA flat>Zur Spielstraßen-Übersicht</CTA>
           </Link>
@@ -93,6 +97,16 @@ const Landing = () => {
             sichergestellt sind,
           </li>
         </ul>
+        <ExternalLink
+          href="https://www.youtube.com/watch?v=NIAvrLk4yq8"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <InsertImage
+            src={YouTubeVideoPreviewImage}
+            srcSet={`${YouTubeVideoPreviewImageMobile} 450w, ${YouTubeVideoPreviewImageMobile} 750w, ${YouTubeVideoPreviewImage} 1125w`}
+          />
+        </ExternalLink>
 
         <InsertImage
           src={BackgroundImageB2}

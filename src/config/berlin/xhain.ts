@@ -91,8 +91,8 @@ const xhain: DistrictConfig = {
           street: 'Friedrichstraße',
           kiez: 'Mehringplatz',
           region: 'Kreuzberg',
-          status: 'closed',
-          schedule: 'einmalig am Samstag den 30.4.2022 (Sonntags 9 – 19 Uhr)',
+          status: 'open',
+          schedule: 'einmalig am Samstag, 22.4.2023, 9-19 Uhr',
         },
         {
           street: 'Chamissoplatz',
@@ -192,25 +192,11 @@ const xhain: DistrictConfig = {
           schedule: 'Ab 2.August Sonntags 13-19 Uhr',
         },
         {
-          street: 'Friedrichstraße',
-          kiez: '',
-          region: 'Kreuzberg',
-          status: 'open',
-          schedule: 'einmalig am Samstag, 22.4.2023, 9-19 Uhr',
-        },
-        {
           street: 'Jessnerstraße',
           kiez: 'Traveplatz',
           region: 'Friedrichshain',
           status: 'open',
           schedule: 'Dienstags, 15.30-18.30 Uhr, 6. - 27. Juni 2023',
-        },
-        {
-          street: 'Jessnerstraße',
-          kiez: 'Traveplatz',
-          region: 'Friedrichshain',
-          status: 'open',
-          schedule: 'Dienstags, 15-19 Uhr, Mai - Sommerferienbeginn',
         },
         {
           street: 'Niederbarnimstraße',
