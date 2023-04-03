@@ -133,8 +133,7 @@ const xhain: DistrictConfig = {
           kiez: 'Wrangelkiez',
           region: 'Kreuzberg',
           status: 'open',
-          schedule:
-            'Freitags, 15:30 - 18:30 Uhr, Mai – September (Pause in den Sommerferien)',
+          schedule: '26.5. – 14.7.2023 und 1.9. – 22.9.2023',
         },
         {
           street: 'Helmerdingstraße',
