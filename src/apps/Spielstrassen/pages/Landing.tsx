@@ -32,10 +32,14 @@ const Landing = () => {
   return (
     <>
       <Header to={config.routes.spielstrassen.landing}>
-        Unterstützen Sie die temporären Spiel- und Nachbarschaftsstraßen in
-        Friedrichshain-Kreuzberg!
+        {' '}
+        Temporäre Spielstraßen jetzt dauerhaft in Xhain!
       </Header>
       <Container maxWidth="md">
+        <h1>
+          Unterstützen Sie die temporären Spiel- und Nachbarschaftsstraßen in
+          Friedrichshain-Kreuzberg!
+        </h1>
         <InsertImage
           width="938"
           height="603"
