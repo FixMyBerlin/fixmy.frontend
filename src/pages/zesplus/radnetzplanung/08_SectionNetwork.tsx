@@ -5,36 +5,46 @@ import { MapNetwork } from './components/Maps/MapNetwork';
 export const SectionNetwork = (props: SectionProps) => (
   <>
     <Heading as="h2" {...props}>
-      Themenkarte Zielnetz, Radnetz und Maßnahmen
+      Themenkarte Zielnetz
     </Heading>
     <Paragraph>
-      Die “Themenkarte <strong>Zielnetz, Radnetz und Maßnahmen”</strong> zeigt,
-      worauf sich die lokalen Akteure als Radnetz und als Maßnahmen verständigt
-      haben. Sie fasst den angestrebten Ausbauzustand sowie den Fortschritt der
-      laufenden und angestrebten Maßnahmen zusammen. Sie stellt damit ein
-      wichtiges Kommunikationsmittel zwischen der Kommunen untereinander, aber
-      auch zwischen der Verwaltung, der Politik und der Zivilgesellschaft dar.
+      Die “Themenkarte <strong>Zielnetz, Radnetz und Maßnahmen”</strong>{' '}
+      unterstützt die lokalen Akteure bei der Entwicklung des Radnetzes und von
+      konkreten Maßnahmen.
     </Paragraph>
     <Paragraph>
-      Die Inhalte der Karte werden, idealerweise mit Hilfe der Themenkarten, in
-      einem gemeinsamen Workshop mit allen relevanten Akteuren erstellt.
-      Ausgehend von den Themenkarten wird dabei zunächst ein
-      kommunenübergreifendes Zielnetz erstellt. Im Abgleich mit den in den
-      Themenkarten dargestellten Informationen zur Situation vor Ort (vgl.
-      Straßentypen) wird dieses dann zu einem interkommunalen Radnetz
-      weiterentwickelt. Anschließend werden die zur Realisierung des Radnetzes
-      notwendigen Maßnahmen in einer Liste zusammengetragen und in der Karte
-      dargestellt.
+      Mit den blauen Kreisen werden dabei die miteinander zu verbindenden Orte
+      bzw. Quartiere definiert. Die dazwischen notwendigen Verbindungen werden
+      mit blauen Strichen dargestellt. Diese markieren Wegebeziehungen, welche
+      zur Überprüfung der Funktionsfähigkeit und Vollständigkeit des Zielnetzes
+      benötigt werden.
     </Paragraph>
     <Paragraph>
-      Aktuell wird dieser Prozess unter Einbezug der unterschiedlichen
-      Akteursgruppen gemeinsam für die Kommunen Eichwalde, Zeuthen, Schulzendorf
-      und Wildau durchgeführt. Dabei wird aktuell noch erprobt, welche
-      Vorgehensweisen bzw. welche Formate sich für die interkommunale
-      Zusammenarbeit für ein gemeinsames Radverkehrsnetz am besten eignen.
-      Sobald dieser Prozess abgeschlossen ist, wird er ausgewertet und die
-      resultierenden Erkenntnisse, Handlungsempfehlungen und Hinweise hier auf
-      dieser Website in einer weiteren Unterseite veröffentlicht.
+      Mit roten Strichen wird das Zielnetz dargestellt. Während der Abstimmung
+      mit den lokalen Akteuren bzw. bis zum Beschluss durch die jeweils
+      zuständigen Gremien wird dieses oft noch als „Prüfnetz“ bzw.
+      „Zielnetz-Entwurf“ bezeichnet. In die Erstellung des Zielnetz-Entwurfes
+      fließt auch die Vorarbeit der lokalen Radverkehrs-Initiativen mit ein,
+      welche mit umfassender Kenntnis der Begebenheiten einen wichtigen Beitrag
+      zur Zielnetzentwicklung leisten. Als wichtige Grundlage wird dieses daher
+      im Hintergrund gelb dargestellt. Auch die in den anderen Themenkarten
+      dargestellten Informationen fließen in die Entwicklung des Zielnetzes mit
+      ein.
+    </Paragraph>
+    <Paragraph>
+      Das Zielnetz stellt dabei dar, welche Routen für den Radverkehr prioritär
+      auszubauen sind. Gerade diese Karte bildet deshalb ein wichtiges
+      Kommunikationsmittel für die Abstimmung der Kommunen untereinander, aber
+      der zwischen der Verwaltung, der Politik und der Zivilgesellschaft.
+      Aufbauend auf dem Zielnetz können konkrete Maßnahmen entwickelt werden,
+      die zur Realisierung des Radnetzes beitragen. Zukünftig können auch diese
+      in einer Karte dargestellt werden.
+    </Paragraph>
+    <Paragraph>
+      Anders als bei den meisten anderen Themenkarten basiert diese Karte nicht
+      auf Open-Street-Map-Daten, sondern auf Informationen und Karten, die von
+      den Akteuren vor Ort erstellt und dann in den Radverkehrsatlas eingelesen
+      werden.
     </Paragraph>
 
     <MapNetwork />
