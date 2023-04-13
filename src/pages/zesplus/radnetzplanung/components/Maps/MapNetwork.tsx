@@ -39,13 +39,17 @@ export const MapNetwork = () => {
           <LegendItems>
             <LegendItem>
               <IconWrapper>
-                <IconLegendLine color="#dd0303" width={4} />
+                <IconLegendLine
+                  strokeDasharray="6 2"
+                  color="#dd0303"
+                  width={3}
+                />
               </IconWrapper>
               Netzentwurf
             </LegendItem>
             <LegendItem>
               <IconWrapper>
-                <IconLegendLine color="hsla(313, 18%, 69%, 0.37)" width={4} />
+                <IconLegendLine color="#dd0303" width={1} />
               </IconWrapper>
               Wohnstraßen ohne Oberfläche=schlecht
             </LegendItem>

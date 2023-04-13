@@ -8,9 +8,8 @@ export const SectionNetwork = (props: SectionProps) => (
       Themenkarte Zielnetz
     </Heading>
     <Paragraph>
-      Die “Themenkarte <strong>Zielnetz, Radnetz und Maßnahmen”</strong>{' '}
-      unterstützt die lokalen Akteure bei der Entwicklung des Radnetzes und von
-      konkreten Maßnahmen.
+      Die “Themenkarte <strong>Zielnetz”</strong> unterstützt die lokalen
+      Akteure bei der Entwicklung des Radnetzes und von konkreten Maßnahmen.
     </Paragraph>
     <Paragraph>
       Mit den blauen Kreisen werden dabei die miteinander zu verbindenden Orte
