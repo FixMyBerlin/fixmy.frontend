@@ -3,7 +3,7 @@ import { menu } from './menu';
 import { routes } from './routes';
 
 const zesplusConfig: RegionConfig = {
-  siteTitle: 'ZESplus',
+  siteTitle: 'NUDAFA',
   titleFont: 'Roboto Slab',
   baseFont: 'Roboto',
   routes,
