@@ -88,7 +88,7 @@ const Landing = () => {
           </li>
         </ol>
 
-        <h2>Als Kiezlots*in sorgen Sie dafür</h2>
+        <h2>Als Kiezlots*in sorgen Sie dafür...,</h2>
         <ul>
           <li>dass die Absperrungen auf- und abgebaut werden,</li>
           <li>

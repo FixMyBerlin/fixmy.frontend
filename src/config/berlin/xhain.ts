@@ -92,7 +92,8 @@ const xhain: DistrictConfig = {
           kiez: 'Mehringplatz',
           region: 'Kreuzberg',
           status: 'open',
-          schedule: 'einmalig am Samstag, 22.4.2023, 9-19 Uhr',
+          schedule:
+            'einmalig am Samstag, 22.4.2023, 9-19 Uhr (regelmäßig wenn sich ausreichend Kiezlots:innen finden)',
           scheduleType: 'once',
         },
         {

@@ -83,7 +83,7 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
           )}
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />
-            {street.supporters <= district.apps.spielstrassen.supporterGoal && (
+            {/* {street.supporters <= district.apps.spielstrassen.supporterGoal && (
               <>
                 {street.supporters === 0 ? '' : 'Bereits '}
                 {street.supporters} Unter&shy;stützer:in
@@ -91,13 +91,21 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
                 {district.apps.spielstrassen.supporterGoal} Kiezlots:innen kann
                 die Spielstraße eingerichtet werden.
               </>
-            )}
-            {street.supporters > district.apps.spielstrassen.supporterGoal && (
+            )} */}
+            {street.status === 'paused' && (
               <>
-                Diese Spielstraße findet bereits statt, benötigt aber weiter
-                ihre Unterstützung.
+                Diese Spielstraße findet erst wieder statt, wenn sich genügend
+                neue Unterstützer*innen gefunden haben.
               </>
             )}
+            {street.status === 'open' &&
+              street.supporters >=
+                district.apps.spielstrassen.supporterGoal && (
+                <>
+                  Diese Spielstraße findet bereits statt, benötigt aber weiter
+                  ihre Unterstützung.
+                </>
+              )}
           </SupporterInfo>
           <p>
             <Link to={config.routes.spielstrassen.streets} className="internal">
