@@ -91,8 +91,10 @@ const xhain: DistrictConfig = {
           street: 'Friedrichstraße',
           kiez: 'Mehringplatz',
           region: 'Kreuzberg',
-          status: 'closed',
-          schedule: 'einmalig am Samstag den 30.4.2022 (Sonntags 9 – 19 Uhr)',
+          status: 'open',
+          schedule:
+            'einmalig am Samstag, 22.4.2023, 9-19 Uhr (regelmäßig wenn sich ausreichend Kiezlots:innen finden)',
+          scheduleType: 'once',
         },
         {
           street: 'Chamissoplatz',
@@ -133,8 +135,7 @@ const xhain: DistrictConfig = {
           kiez: 'Wrangelkiez',
           region: 'Kreuzberg',
           status: 'open',
-          schedule:
-            'Freitags, 15:30 - 18:30 Uhr, Mai – September (Pause in den Sommerferien)',
+          schedule: '26.5. – 14.7.2023 und 1.9. – 22.9.2023',
         },
         {
           street: 'Helmerdingstraße',
@@ -167,7 +168,7 @@ const xhain: DistrictConfig = {
           street: 'Dresdener Straße',
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'paused',
           schedule:
             'Freitags 15 – 18 Uhr, Mai - September (Pause in den Sommerferien)',
         },
@@ -194,9 +195,17 @@ const xhain: DistrictConfig = {
         {
           street: 'Jessnerstraße',
           kiez: 'Traveplatz',
-          region: 'Kreuzberg',
+          region: 'Friedrichshain',
           status: 'open',
-          schedule: 'Dienstags, 15-19 Uhr, Mai - Sommerferienbeginn',
+          schedule: 'Dienstags, 15.30-18.30 Uhr, 6. - 27. Juni 2023',
+        },
+        {
+          street: 'Niederbarnimstraße',
+          kiez: 'Traveplatz',
+          region: 'Friedrichshain',
+          status: 'open',
+          schedule:
+            'Freitags, 15-19 Uhr, 16.6. - 28.7.2023 und 1.9. - 22.9.2023',
         },
       ],
     },

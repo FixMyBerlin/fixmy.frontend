@@ -83,7 +83,7 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
           )}
           <SupporterInfo>
             <SupporterIcon count={street.supporters} />
-            {street.supporters <= district.apps.spielstrassen.supporterGoal && (
+            {/* {street.supporters <= district.apps.spielstrassen.supporterGoal && (
               <>
                 {street.supporters === 0 ? '' : 'Bereits '}
                 {street.supporters} Unter&shy;stützer:in
@@ -91,13 +91,21 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
                 {district.apps.spielstrassen.supporterGoal} Kiezlots:innen kann
                 die Spielstraße eingerichtet werden.
               </>
-            )}
-            {street.supporters > district.apps.spielstrassen.supporterGoal && (
+            )} */}
+            {street.status === 'paused' && (
               <>
-                Diese Spielstraße findet bereits statt, benötigt aber weiter
-                ihre Unterstützung.
+                Diese Spielstraße findet erst wieder statt, wenn sich genügend
+                neue Unterstützer*innen gefunden haben.
               </>
             )}
+            {street.status === 'open' &&
+              street.supporters >=
+                district.apps.spielstrassen.supporterGoal && (
+                <>
+                  Diese Spielstraße findet bereits statt, benötigt aber weiter
+                  ihre Unterstützung.
+                </>
+              )}
           </SupporterInfo>
           <p>
             <Link to={config.routes.spielstrassen.streets} className="internal">
@@ -106,13 +114,10 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
           </p>
         </Section>
         <Section>
-          <h2>Diese Spielstrasse benötigt Ihre Unterstützung!</h2>
+          <h2>Diese Spielstraße benötigt Ihre Unterstützung!</h2>
           <p>
-            Damit die Spielstraßen dauerhaft stattfinden können, brauchen sie
-            Kiezlots:innen die an dem angezeigten Wochentag 1-2 mal im Monat für
-            drei Stunden vor Ort sind. Registrieren Sie sich hier, um Ihre
-            Nachbarn zu unterstützen und Kindern das Spielen im öffentlichen
-            Raum zu ermöglichen.
+            Registrieren Sie sich hier, um Ihre Nachbarn zu unterstützen und
+            Kindern das Spielen im öffentlichen Raum zu ermöglichen.
           </p>
           <p>
             Hier finden Sie{' '}
