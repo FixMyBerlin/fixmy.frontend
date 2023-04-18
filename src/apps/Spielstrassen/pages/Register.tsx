@@ -106,13 +106,10 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
           </p>
         </Section>
         <Section>
-          <h2>Diese Spielstrasse benötigt Ihre Unterstützung!</h2>
+          <h2>Diese Spielstraße benötigt Ihre Unterstützung!</h2>
           <p>
-            Damit die Spielstraßen dauerhaft stattfinden können, brauchen sie
-            Kiezlots:innen die an dem angezeigten Wochentag 1-2 mal im Monat für
-            drei Stunden vor Ort sind. Registrieren Sie sich hier, um Ihre
-            Nachbarn zu unterstützen und Kindern das Spielen im öffentlichen
-            Raum zu ermöglichen.
+            Registrieren Sie sich hier, um Ihre Nachbarn zu unterstützen und
+            Kindern das Spielen im öffentlichen Raum zu ermöglichen.
           </p>
           <p>
             Hier finden Sie{' '}

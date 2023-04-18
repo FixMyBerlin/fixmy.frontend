@@ -93,6 +93,7 @@ const xhain: DistrictConfig = {
           region: 'Kreuzberg',
           status: 'open',
           schedule: 'einmalig am Samstag, 22.4.2023, 9-19 Uhr',
+          scheduleType: 'once',
         },
         {
           street: 'Chamissoplatz',
@@ -166,7 +167,7 @@ const xhain: DistrictConfig = {
           street: 'Dresdener Straße',
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
-          status: 'open',
+          status: 'paused',
           schedule:
             'Freitags 15 – 18 Uhr, Mai - September (Pause in den Sommerferien)',
         },
