@@ -65,6 +65,7 @@ const Kiez = ({
   street,
   status,
   schedule = null,
+  scheduleType = null,
   supporters = 0,
 }) => {
   const signupUrl = generatePath(config.routes.spielstrassen.register, {
@@ -108,12 +109,26 @@ const Kiez = ({
               Kiezlots:innen kann die Spielstraße eingerichtet werden.
             </>
           )}
-          {!showSupporterGoal && (
+          {!showSupporterGoal && scheduleType === 'once' && (
             <>
-              Diese Spielstraße findet regelmäßig statt, und freut sich über
+              Diese Spielstraße findet einmalig statt, und freut sich über
               weitere Unterstützung.
             </>
           )}
+          {!showSupporterGoal && status === 'paused' && (
+            <>
+              Diese Spielstraße findet erst wieder statt, wenn sich genügend
+              neue Unterstützer*innen gefunden haben.
+            </>
+          )}
+          {!showSupporterGoal &&
+            scheduleType !== 'once' &&
+            status !== 'paused' && (
+              <>
+                Diese Spielstraße findet regelmäßig statt, und freut sich über
+                weitere Unterstützung.
+              </>
+            )}
         </span>
         <Link to={signupUrl}>
           <SignupButton flat>Mehr Details</SignupButton>
