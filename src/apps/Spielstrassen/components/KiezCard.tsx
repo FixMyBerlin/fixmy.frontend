@@ -109,10 +109,10 @@ const Kiez = ({
               Kiezlots:innen kann die Spielstraße eingerichtet werden.
             </>
           )}
-          {!showSupporterGoal && scheduleType === 'once' && (
+          {!showSupporterGoal && scheduleType === 'once_plus' && (
             <>
-              Diese Spielstraße findet einmalig statt, und freut sich über
-              weitere Unterstützung.
+              Diese Spielstraße findet regelmäßig statt, wenn sich ausreichend
+              Kiezlots:innen finden
             </>
           )}
           {!showSupporterGoal && status === 'paused' && (
@@ -122,7 +122,7 @@ const Kiez = ({
             </>
           )}
           {!showSupporterGoal &&
-            scheduleType !== 'once' &&
+            scheduleType !== 'once_plus' &&
             status !== 'paused' && (
               <>
                 Diese Spielstraße findet regelmäßig statt, und freut sich über
