@@ -99,11 +99,18 @@ const Register = ({ match, streets, streetRequest, district }: Props) => {
               </>
             )}
             {street.status === 'open' &&
-              street.supporters >=
-                district.apps.spielstrassen.supporterGoal && (
+              street.supporters >= district.apps.spielstrassen.supporterGoal &&
+              street.scheduleType !== 'once_plus' && (
                 <>
                   Diese Spielstraße findet bereits statt, benötigt aber weiter
                   ihre Unterstützung.
+                </>
+              )}
+            {street.status === 'open' &&
+              street.scheduleType === 'once_plus' && (
+                <>
+                  Diese Spielstraße findet regelmäßig statt, wenn sich
+                  ausreichend Kiezlots:innen finden
                 </>
               )}
           </SupporterInfo>

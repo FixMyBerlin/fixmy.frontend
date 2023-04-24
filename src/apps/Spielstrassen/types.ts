@@ -27,7 +27,7 @@ export interface Spielstrasse {
   region: string;
   supporters?: number;
   schedule?: string;
-  scheduleType?: 'once' | 'regular';
+  scheduleType?: 'once' | 'once_plus' | 'regular';
   status: 'open' | 'closed' | 'preparation' | 'paused' | 'needsSupporters';
 }
 

@@ -92,9 +92,8 @@ const xhain: DistrictConfig = {
           kiez: 'Mehringplatz',
           region: 'Kreuzberg',
           status: 'open',
-          schedule:
-            'einmalig am Samstag, 22.4.2023, 9-19 Uhr (regelmäßig wenn sich ausreichend Kiezlots:innen finden)',
-          scheduleType: 'once',
+          schedule: 'einmalig am Samstag, 22.4.2023, 9-19 Uhr',
+          scheduleType: 'once_plus',
         },
         {
           street: 'Chamissoplatz',
@@ -152,7 +151,7 @@ const xhain: DistrictConfig = {
             'Mittwochs 15.30 – 18.30 Uhr, Mai – September (Pause in den Sommerferien)',
         },
         {
-          street: 'Forsterstraße',
+          street: 'Forster Straße',
           kiez: 'Reichenberger Straße',
           region: 'Kreuzberg',
           status: 'open',
