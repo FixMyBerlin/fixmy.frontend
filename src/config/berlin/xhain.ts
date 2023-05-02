@@ -167,7 +167,7 @@ const xhain: DistrictConfig = {
           street: 'Dresdener Straße',
           kiez: 'Oranienplatz',
           region: 'Kreuzberg',
-          status: 'paused',
+          status: 'open',
           schedule:
             'Freitags 15 – 18 Uhr, Mai - September (Pause in den Sommerferien)',
         },
