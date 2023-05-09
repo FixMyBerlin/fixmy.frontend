@@ -6,7 +6,6 @@ import { toggle as toggleMenu } from '~/AppState';
 import { AnchorButton } from '~/components2/Button';
 import { Link } from '~/components2/Link';
 import { Logo as FMBLogo } from '~/components2/Logo';
-import { NewsletterWidget } from '~/components2/NewsletterWidget';
 import config from '~/config';
 import FacebookIcon from '~/images/button-social-facebook.svg';
 import TwitterIcon from '~/images/button-social-twitter.svg';
@@ -129,7 +128,11 @@ const HomeBerlin = () => {
         </StyledLink>
       </CTAWrapper>
       <NewsletterWrapper>
-        <NewsletterWidget height={240} />
+        <SubTitle>
+          Angebote für die digitale Radverkehrsplanung und den Newsletter von
+          FixMyCity finden Sie auf{' '}
+          <a href="https://www.fixmycity.de/">www.fixmycity.de</a>
+        </SubTitle>
       </NewsletterWrapper>
       <SocialWrapper>
         <a
