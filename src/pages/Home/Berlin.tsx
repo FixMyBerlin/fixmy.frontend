@@ -131,9 +131,7 @@ const HomeBerlin = () => {
         <SubTitle>
           Angebote für die digitale Radverkehrsplanung und den Newsletter von
           FixMyCity finden Sie auf{' '}
-          <a href="https://www.fixmycity.de/#footer-sections">
-            www.fixmycity.de
-          </a>
+          <a href="https://www.fixmycity.de/">www.fixmycity.de</a>
         </SubTitle>
       </NewsletterWrapper>
       <SocialWrapper>
