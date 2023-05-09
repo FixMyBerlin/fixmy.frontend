@@ -2,8 +2,10 @@
 
 Alle API Inhalte stehen unter der [ODbL Lizenz](https://opendatacommons.org/licenses/odbl/) zur Verfügung.
 
-Zur [API für Planungen](https://fixmyberlin.de/api/v1/projects)<br />
-Zur [API für Planungsabschnitte inkl. Happy-Bike-Index](https://fixmyberlin.de/api/v1/sections) ([Happy... was?](/faq))
+Datenstand: Mai 2023
+
+[Download der Planungen](https://fmc-files.s3.eu-central-1.amazonaws.com/exports/FixMyBerlin-Export-Projects-Mai-2023.json)<br />
+[Download der Planungsabschnitte inkl. Happy-Bike-Index](https://fmc-files.s3.eu-central-1.amazonaws.com/exports/FixMyBerlin-Export-Sections-Mai-2023.json) ([Happy... was?](/faq))
 
 - "cycling_infrastructure_ratio": 1 // Gesamt
 - "bike_path_ratio": 0 // Radweg
@@ -22,6 +24,6 @@ Zur [API für Planungsabschnitte inkl. Happy-Bike-Index](https://fixmyberlin.de/
 - "daily_traffic_cargo": 2250.0 // Transport
 - "daily_traffic_bus": 32.0 // Bus
 
-Zur [API der Meldungen für Radbügel für XHain](https://fixmyberlin.de/api/v1/reports)
+[Download der Meldungen für Radbügel für XHain](https://fmc-files.s3.eu-central-1.amazonaws.com/exports/FixMyBerlin-Export-Reports-Mai-2023.json)
 
 Bei gesonderter Lizenzierung schreib bitte an [hello@fixmycity.de](mailto:hello@fixmycity.de)
