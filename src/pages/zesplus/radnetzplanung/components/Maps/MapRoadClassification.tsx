@@ -31,6 +31,8 @@ export const mapRoadClassificationVisLayers = [
   'Border-ZES-Betrachtungsraum',
   'strassentyp',
   'publicTransport',
+  'poiShopCategory',
+  'poiShopping-heatmap',
 ];
 
 export const MapRoadClassification = () => {

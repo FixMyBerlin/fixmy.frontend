@@ -28,6 +28,7 @@ export const mapInfrastructureVisLayers = [
   'Fuhrung getrennnt',
   'Verkehrsberuhigt',
   'surf_fahrbahn-bad',
+  'surf_fahrbahn-bad-rot',
 ];
 
 export const MapInfrastructure = () => {

@@ -30,6 +30,12 @@ export const MapNetwork = () => {
           <LegendItems>
             <LegendItem>
               <IconWrapper>
+                <IconLegendLine color="rgb(16, 94, 249)" width={3} />
+              </IconWrapper>
+              Wunschlinien
+            </LegendItem>
+            <LegendItem>
+              <IconWrapper>
                 <IconLegendLine
                   strokeDasharray="6 2"
                   color="#dd0303"

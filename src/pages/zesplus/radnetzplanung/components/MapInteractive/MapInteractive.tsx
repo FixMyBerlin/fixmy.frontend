@@ -15,7 +15,6 @@ import {
   ZES_MAX_BOUNDS,
 } from '../../../mapboxOptions.const';
 import {
-  mapCurrentVisLayers,
   mapFromToVisLayers,
   mapInfrastructureVisLayers,
   mapRoadClassificationVisLayers,
@@ -124,11 +123,23 @@ export const MapInteractive = () => {
           </LegendItem>
           <LegendItem
             onClick={() => {
-              toggleLayerAndLegend('Current', mapCurrentVisLayers);
+              toggleLayerAndLegend('Current1', [
+                'Vorhandene-netze_uebergeordnet',
+              ]);
             }}
           >
-            <IconWrapper>{activeInactiveIcon('Current')}</IconWrapper>
-            Vorhandene Netze und Planungen
+            <IconWrapper>{activeInactiveIcon('Current1')}</IconWrapper>
+            Vorhandene Netze (Übergeordnet)
+          </LegendItem>
+          <LegendItem
+            onClick={() => {
+              toggleLayerAndLegend('Current2', [
+                'Netzvorschlaege_buergerInnen',
+              ]);
+            }}
+          >
+            <IconWrapper>{activeInactiveIcon('Current2')}</IconWrapper>
+            Netzvorschläge Bürger:innen
           </LegendItem>
           <LegendItem
             onClick={() => {
