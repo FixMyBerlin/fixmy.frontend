@@ -48,16 +48,36 @@ export const Map: React.VFC<Props> = ({
   // Helper for setting up the map
   const isNetlifyProduction = process.env.CONTEXT === 'production';
   if (!isNetlifyProduction && map) {
+    const layer = map
+      .getStyle()
+      .layers.filter(
+        (l) =>
+          ![
+            'landuse_overlay',
+            'landuse',
+            'waterway',
+            'water',
+            'structure',
+            'aeroway',
+            'road',
+            'building',
+            'admin',
+            'natural_label',
+            'poi_label',
+            'airport_label',
+            'place_label',
+          ].includes(l['source-layer']) &&
+          l['source-layer'] !== undefined &&
+          !['satellite', 'mapbox-satellite'].includes(l.id)
+      );
+    console.log('xxx', map.getStyle().layers, layer);
     log(
       'all non-mapbox-layers',
-      map
-        .getStyle()
-        .layers.filter(
-          // Mapbox layers have this metadata prop, our own do not.
-          // @ts-ignore
-          (l) => l?.metadata?.['mapbox:featureComponent'] === undefined
-        )
-        .map((l) => [l.id, l['source-layer']])
+      layer.map((l) => l.id)
+    );
+    log(
+      'all [non-mapbox-layers, source-layer]',
+      layer.map((l) => [l.id, l['source-layer']])
     );
   }
 
