@@ -9,25 +9,44 @@ import {
   LegendItems,
 } from '~/components2/Article/Map/MapLegendStyledComponents';
 import {
+  ZES_ALL_LAYERS,
   ZES_INITAL_CENTER,
   ZES_INITIAL_ZOOM,
+  ZES_MAP_STYLE,
   ZES_MAX_BOUNDS,
 } from '../../../mapboxOptions.const';
 import { IconLegendLine } from './IconLegend';
+
+export const mapCurrentVisLayers = [
+  'dimmlayer-ZES-Betrachtungsraum',
+  'dimmlayer-ZESplus',
+  'landuse_residential-commercial',
+  'siedlungszentren-name-only',
+  'Netzvorschlaege_buergerInnen',
+  'nudafa-ramboll-wunschlininien',
+];
 
 export const MapNetwork = () => {
   return (
     <>
       <ArticleMap
-        mapboxStyle="mapbox://styles/hejco/cleinrgsu005k01kgxybe81eh"
+        mapboxStyle={ZES_MAP_STYLE}
         maxBounds={ZES_MAX_BOUNDS}
         center={ZES_INITAL_CENTER}
         zoom={ZES_INITIAL_ZOOM}
+        allLayers={ZES_ALL_LAYERS}
+        visibleLayers={mapCurrentVisLayers}
       />
       <Legend>
         <LegendCol>
           <LegendHeader>Netzentwurfskarte</LegendHeader>
           <LegendItems>
+            <LegendItem>
+              <IconWrapper>
+                <IconLegendLine color="rgb(16, 94, 249)" width={3} />
+              </IconWrapper>
+              Wunschlinien
+            </LegendItem>
             <LegendItem>
               <IconWrapper>
                 <IconLegendLine
