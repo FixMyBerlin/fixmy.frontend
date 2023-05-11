@@ -37,6 +37,7 @@ export const ZES_ALL_LAYERS = [
   'strassentyp-wohnstrassenonly',
   'maxSpeed',
   'surf_fahrbahn-bad',
+  'surf_fahrbahn-bad-rot',
   'Netzvorschlaege_buergerInnen',
   'Vorhandene-netze_uebergeordnet',
   'poibarriers_water_aerodrome',

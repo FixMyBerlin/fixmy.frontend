@@ -24,6 +24,7 @@ export const mapCurrentVisLayers = [
   'siedlungszentren-name-only',
   'Netzvorschlaege_buergerInnen',
   'nudafa-ramboll-wunschlininien',
+  'strassentyp-wohnstrassenonly',
 ];
 
 export const MapNetwork = () => {

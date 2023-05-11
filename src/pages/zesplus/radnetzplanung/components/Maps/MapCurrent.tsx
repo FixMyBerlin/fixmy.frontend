@@ -24,6 +24,7 @@ export const mapCurrentVisLayers = [
   'landuse_residential-commercial',
   'siedlungszentren-name-only',
   'Vorhandene-netze_uebergeordnet',
+  'Netzvorschlaege_buergerInnen',
 ];
 
 export const MapCurrent = () => {
