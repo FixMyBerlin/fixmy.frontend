@@ -93,7 +93,7 @@ const xhain: DistrictConfig = {
           region: 'Kreuzberg',
           status: 'open',
           schedule:
-            'dienstags, 13.30 - 18.30 Uhr, 27. Juni bis 10. Oktober (außer Sommerferien)',
+            'Dienstags, 13.30 - 18.30 Uhr, 27. Juni bis 10. Oktober (außer Sommerferien)',
         },
         {
           street: 'Chamissoplatz',
