@@ -92,8 +92,8 @@ const xhain: DistrictConfig = {
           kiez: 'Mehringplatz',
           region: 'Kreuzberg',
           status: 'open',
-          schedule: 'einmalig am Samstag, 22.4.2023, 9-19 Uhr',
-          scheduleType: 'once_plus',
+          schedule:
+            'dienstags, 13.30 - 18.30 Uhr, 27. Juni bis 10. Oktober (außer Sommerferien)',
         },
         {
           street: 'Chamissoplatz',
