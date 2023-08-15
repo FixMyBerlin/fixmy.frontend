@@ -3,9 +3,9 @@ import { Heading, List, Paragraph, SectionProps } from '~/components2/Article';
 import { InnerImg } from '~/components2/Article/Image/InnerImage';
 import { AnchorLink, Link } from '~/components2/Link';
 import { Heading4 } from '../components/Heading4';
-import CtaRadverkehrsatlas from './images/cta-radverkehrsatlas.jpg';
-import CtaSimra from './images/cta-simra.jpg';
-import { radnetzplanungPath, simraUrl } from './links.const';
+import PngCtaRadverkehrsatlas from './images/cta-radverkehrsatlas.png';
+import PngCtaNotion from './images/cta-teilprojekte.png';
+import { notionUrl, radnetzplanungPath, simraUrl } from './links.const';
 
 export const SectionIntroduction = (props: SectionProps) => (
   <>
@@ -48,19 +48,24 @@ export const SectionIntroduction = (props: SectionProps) => (
       Wichtigste Projektergebnisse
     </Heading>
     <div style={{ display: 'flex', gap: '2rem' }}>
-      <div>
-        <a href={radnetzplanungPath}>
-          <InnerImg source={CtaRadverkehrsatlas} alt="" />
+      <div style={{ textAlign: 'center' }}>
+        <a href={radnetzplanungPath} aria-hidden="true">
+          <InnerImg source={PngCtaRadverkehrsatlas} alt="" />
         </a>
         <Link internal href={radnetzplanungPath}>
           Zum Radverkehrsatlas
         </Link>
       </div>
-      <div>
-        <a target="_blank" rel="noopener noreferrer" href={simraUrl}>
-          <InnerImg source={CtaSimra} alt="" />
+      <div style={{ textAlign: 'center' }}>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={notionUrl}
+          aria-hidden="true"
+        >
+          <InnerImg source={PngCtaNotion} alt="" />
         </a>
-        <Link href={simraUrl}>Zur SimRa-Datenauswertung</Link>
+        <Link href={simraUrl}>Zur den Teilprojekten</Link>
       </div>
     </div>
   </>
