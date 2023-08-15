@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArticleHeader, Intro } from '~/components2/Article';
 import { Logos } from './components/Logos/Logos';
+import SvgLogoNudafa from './components/nudafa-logo.svg';
 import {
   SectionCurrent,
   SectionFromTo,
@@ -19,6 +20,7 @@ export const RadnetzplanungPage = () => (
     tocTitle="Inhalt"
     enumerateToc={false}
     bannerTitle="Digitale Planungstools"
+    logo={<SvgLogoNudafa style={{ height: '45px' }} />}
   >
     <ArticleHeader
       kicker="NUDAFA-Realexperiment “Digitale Planungstools”"
