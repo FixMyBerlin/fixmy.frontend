@@ -182,7 +182,7 @@ export const SectionTeam = (props: SectionProps) => (
             alt="Wappen der Gemeinde Schönefeld"
           />
           <br />
-          <Link href="https://www.gemeinde-schoenefeld.de/">Schoenefeld</Link>
+          <Link href="https://www.gemeinde-schoenefeld.de/">Schönefeld</Link>
         </p>
       </KommunenGrid>
     </MaxWidthSection>
