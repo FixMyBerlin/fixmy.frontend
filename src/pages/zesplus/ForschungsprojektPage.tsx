@@ -8,6 +8,7 @@ import {
   SectionPartner,
   SectionRadverkehrskonzept,
   SectionReallabor,
+  SectionResults,
   SectionTeam,
 } from './forschungsprojekt';
 import IntroImage from './forschungsprojekt/images/intro-stadtradeln.jpg';
@@ -41,6 +42,7 @@ export const ForschungsprojektPage = () => (
     </Intro>
 
     <SectionIntroduction toc="Einleitung" />
+    <SectionResults toc="Projekt&shy;ergebnisse" />
     <SectionReallabor toc="Reallabor" />
     <SectionModellprojekt toc={null} />
     <SectionRadverkehrskonzept toc={null} />

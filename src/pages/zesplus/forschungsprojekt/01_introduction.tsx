@@ -43,30 +43,5 @@ export const SectionIntroduction = (props: SectionProps) => (
         Interventionen”).
       </List.Item>
     </List>
-
-    <Heading as="h3" {...props}>
-      Wichtigste Projektergebnisse
-    </Heading>
-    <div style={{ display: 'flex', gap: '2rem' }}>
-      <div style={{ textAlign: 'center' }}>
-        <a href={radnetzplanungPath} aria-hidden="true">
-          <InnerImg source={PngCtaRadverkehrsatlas} alt="" />
-        </a>
-        <Link internal href={radnetzplanungPath}>
-          Zum Radverkehrsatlas
-        </Link>
-      </div>
-      <div style={{ textAlign: 'center' }}>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={notionUrl}
-          aria-hidden="true"
-        >
-          <InnerImg source={PngCtaNotion} alt="" />
-        </a>
-        <Link href={simraUrl}>Zur den Teilprojekten</Link>
-      </div>
-    </div>
   </>
 );
