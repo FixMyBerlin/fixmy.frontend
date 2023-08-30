@@ -105,6 +105,8 @@ const Heading3 = styled.h3<StyledHeadingProps>`
 const AnchorStyle = styled.a`
   display: block;
   border-bottom: none !important;
+  /* Required for the ToC feature to highlight the right menu entry */
+  scroll-margin: -1em;
 
   &:before {
     display: block;

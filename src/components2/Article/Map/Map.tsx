@@ -70,7 +70,7 @@ export const Map: React.VFC<Props> = ({
           l['source-layer'] !== undefined &&
           !['satellite', 'mapbox-satellite'].includes(l.id)
       );
-    console.log('xxx', map.getStyle().layers, layer);
+
     log(
       'all non-mapbox-layers',
       layer.map((l) => l.id)

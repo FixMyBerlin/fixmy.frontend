@@ -21,8 +21,3 @@ export const Wrapper = styled(ArticleWrapper)`
     font-weight: 700;
   }
 `;
-
-export const Logo = styled.img`
-  width: 105px;
-  height: 42px;
-`;

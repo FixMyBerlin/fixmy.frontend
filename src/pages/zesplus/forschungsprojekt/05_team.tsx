@@ -15,12 +15,12 @@ import Kommunezeuthen from './images/logos-kommunen/zeuthen.png';
 import Teamalf from './images/team/alf.jpg';
 import Teamcami from './images/team/cami.jpg';
 import Teamchristoph from './images/team/christoph.jpg';
-import Teamdenise from './images/team/denise.jpg';
+import Teamchristianw from './images/team/christian-w.png';
 import Teamheiko from './images/team/heiko.jpg';
 import Teamjenoch from './images/team/jenoch.jpg';
 import Teamkatharina from './images/team/katharina.jpg';
 import Teamrudolph from './images/team/rudolph.jpg';
-import Teamschwedes from './images/team/schwedes.jpg';
+import Teamchrstinea from './images/team/christine-a.png';
 import Teamtim from './images/team/tim.jpg';
 import Teamtobias from './images/team/tobias.jpg';
 import Teamute from './images/team/ute.jpg';
@@ -80,8 +80,8 @@ export const SectionTeam = (props: SectionProps) => (
           role="Wiss. Mitarbeiterin, TU Berlin"
         />
         <TeamMember
-          img={Teamdenise}
-          name="Denise Kramer"
+          img={Teamchristianw}
+          name="Christian Wessel"
           role="Wiss. Mitarbeiterin, TH Wildau"
         />
         <TeamMember
@@ -96,8 +96,8 @@ export const SectionTeam = (props: SectionProps) => (
         />
 
         <TeamMember
-          img={Teamschwedes}
-          name="Prof. Dr. Oliver Schwedes"
+          img={Teamchrstinea}
+          name="Prof. Dr.-Ing. Christine Ahrend"
           role="TU Berlin"
         />
         <TeamMember
@@ -182,7 +182,7 @@ export const SectionTeam = (props: SectionProps) => (
             alt="Wappen der Gemeinde Schönefeld"
           />
           <br />
-          <Link href="https://www.gemeinde-schoenefeld.de/">Schoenefeld</Link>
+          <Link href="https://www.gemeinde-schoenefeld.de/">Schönefeld</Link>
         </p>
       </KommunenGrid>
     </MaxWidthSection>

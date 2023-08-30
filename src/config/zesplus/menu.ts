@@ -2,6 +2,8 @@ import AboutIcon from '~/images/info.svg';
 import PlanningIcon from '~/images/bike-network-development.svg';
 import { ConfigMenu } from '../types/ConfigMenu';
 import { routes } from './routes';
+import AboutFolder from '~/images/icon-folder.svg';
+import { notionUrl } from '~/pages/zesplus/forschungsprojekt/links.const';
 
 export const menu: ConfigMenu = {
   size: 325,
@@ -23,6 +25,17 @@ export const menu: ConfigMenu = {
       label: 'Radnetzplanung',
       icon: PlanningIcon,
       link: routes.radnetzplanung,
+      border: false,
+    },
+    {
+      type: 'separator',
+      label: 'Externe Inhalte',
+    },
+    {
+      type: 'external',
+      label: 'Teilprojekte',
+      href: notionUrl,
+      icon: AboutFolder,
       border: true,
     },
   ],

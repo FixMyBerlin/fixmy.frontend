@@ -1,12 +1,14 @@
 import React from 'react';
 import { ArticleHeader, ImageFull, Intro, Quote } from '~/components2/Article';
 import { Logos } from './components/Logos/Logos';
+import SvgLogoNudafa from './components/nudafa-logo.svg';
 import {
   SectionIntroduction,
   SectionModellprojekt,
   SectionPartner,
   SectionRadverkehrskonzept,
   SectionReallabor,
+  SectionResults,
   SectionTeam,
 } from './forschungsprojekt';
 import IntroImage from './forschungsprojekt/images/intro-stadtradeln.jpg';
@@ -17,6 +19,7 @@ export const ForschungsprojektPage = () => (
     tocTitle="Inhalt"
     enumerateToc={false}
     bannerTitle="Forschungs&shy;projekt"
+    logo={<SvgLogoNudafa style={{ height: '45px' }} />}
   >
     <ArticleHeader
       kicker="Ein BMBF-gefördertes Modellprojekt der #MobilitätsWerkStadt 2025"
@@ -39,6 +42,7 @@ export const ForschungsprojektPage = () => (
     </Intro>
 
     <SectionIntroduction toc="Einleitung" />
+    <SectionResults toc="Projekt&shy;ergebnisse" />
     <SectionReallabor toc="Reallabor" />
     <SectionModellprojekt toc={null} />
     <SectionRadverkehrskonzept toc={null} />

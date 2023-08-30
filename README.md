@@ -51,7 +51,7 @@ Runs on [localhost:8080](http://localhost:8080/)
   REGION=aachen npm start
   ```
 
-- [ZES+](https://www.zesplus.de/):
+- [NUDAFA (ehemals ZES+)](https://www.nudafa.de/):
 
   ```sh
   REGION=zesplus npm start
