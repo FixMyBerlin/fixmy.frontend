@@ -11,10 +11,9 @@ Stand: 17. November 2019
 ## Verantwortlicher
 
 FixMyCity GmbH<br />
-c/o CityLAB<br />
-Platz der Luftbrücke 4<br />
-12021 Berlin<br />
-E-Mail-Adresse: [hello@fixmycity.de](mailto:hello@fixmycity.de)
+Oberlandstraße 26-35<br />
+12099 Berlin<br />
+[hello@fixmycity.de](mailto:hello@fixmycity.de)
 
 Zum [Impressum](/impressum)
 
