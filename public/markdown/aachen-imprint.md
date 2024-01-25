@@ -20,11 +20,10 @@ Tel.: +49 241 432-6130
 [verkehrsmanagement@mail.aachen.de](mailto:verkehrsmanagement@mail.aachen.de)
 
 **Konzept, Design, Umsetzung, Technik**  
-FixMyCity GmbH - Gemeinsam schneller zur Fahrradstadt  
-c/o CityLAB Berlin  
-Platz der Luftbrücke 4  
-12101 Berlin  
-Tel.: +49 30 549 08 665  
+FixMyCity GmbH
+Oberlandstraße 26-35
+12099 Berlin
+Tel.: +49 30 549 086 65
 [hello@fixmycity.de](mailto:hello@fixmycity.de)
 
 # Elektronischer Zugang
