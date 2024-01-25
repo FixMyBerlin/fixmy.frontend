@@ -2,9 +2,9 @@
 
 # Impressum
 
-FixMyCity GmbH<br />
-Karlsgartenstraße 12<br />
-12049 Berlin<br/>
+FixMyCity GmbH<br/>
+Oberlandstraße 26-35<br/>
+12099 Berlin<br/>
 E-Mail-Adresse: [hello@fixmycity.de](mailto:hello@fixmycity.de)<br />
 Telefon: 030 / 549 08 665<br />
 
