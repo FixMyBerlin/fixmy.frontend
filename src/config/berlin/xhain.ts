@@ -84,8 +84,8 @@ const xhain: DistrictConfig = {
           street: 'Wassertorstraße',
           kiez: 'Moritzplatz',
           region: 'Kreuzberg',
-          status: 'closed',
-          schedule: 'Sonntags 13 – 19 Uhr',
+          status: 'open',
+          schedule: 'Donnerstags 15-19 Uhr, Juli 2024',
         },
         {
           street: 'Friedrichstraße',
@@ -93,7 +93,7 @@ const xhain: DistrictConfig = {
           region: 'Kreuzberg',
           status: 'open',
           schedule:
-            'Dienstags, 13.30 - 18.30 Uhr, 27. Juni bis 10. Oktober (außer Sommerferien)',
+            'Dienstags 13.30 – 18.30 Uhr, 16. April bis 15. Oktober (außer Sommerferien)',
         },
         {
           street: 'Chamissoplatz',
@@ -134,7 +134,8 @@ const xhain: DistrictConfig = {
           kiez: 'Wrangelkiez',
           region: 'Kreuzberg',
           status: 'open',
-          schedule: '26.5. – 14.7.2023 und 1.9. – 22.9.2023',
+          schedule:
+            'Freitags 15.30 – 18.30 Uhr, 24. Mai – Ende September (außer Sommerferien)',
         },
         {
           street: 'Helmerdingstraße',
@@ -196,15 +197,14 @@ const xhain: DistrictConfig = {
           kiez: 'Traveplatz',
           region: 'Friedrichshain',
           status: 'open',
-          schedule: 'Dienstags, 15.30-18.30 Uhr, 6. - 27. Juni 2023',
+          schedule: 'Dienstags, 15.30 – 18.30 Uhr, Juni 2024',
         },
         {
           street: 'Niederbarnimstraße',
           kiez: 'Traveplatz',
           region: 'Friedrichshain',
           status: 'open',
-          schedule:
-            'Freitags, 15-19 Uhr, 16.6. - 28.7.2023 und 1.9. - 22.9.2023',
+          schedule: 'Freitag 15-19 Uhr, 28. Juni – 19. Juli 2024',
         },
       ],
     },
