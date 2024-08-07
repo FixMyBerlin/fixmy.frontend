@@ -29,7 +29,7 @@ export const Section01Intro: React.FC<SectionProps> = ({ toc }) => (
       alt="Beispiel für eine Parkraumkarte aus OpenStreetMap für Neukölln."
     />
     <Paragraph>
-      <AnchorLink href="https://supaplexosm.github.io/strassenraumkarte-neukoelln/?map=parkingmap#17/52.47935/13.44725">
+      <AnchorLink href="https://parkraum.osm-verkehrswende.org/project-prototype-neukoelln/?map=parkingmap#17/52.47919/13.44891">
         Beispiel für eine Parkraumkarte
       </AnchorLink>
       : Wenn gute Parkraumdaten vorliegen, können planerische Entscheidung

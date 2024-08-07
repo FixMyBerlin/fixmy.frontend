@@ -22,7 +22,7 @@ export const Section04Mapping: React.FC<SectionProps> = ({ toc }) => (
       und an den Bezirksgrenzen “ausgeschnitten” um eine präzise Abbildung des
       verfügbaren Parkraum zu erreichen. Dieses Verfahren wurde von OSM-Mapper
       Alex im Ortsteil Neukölln entwickelt und erprobt. In seinem{' '}
-      <AnchorLink href="https://supaplex osm.github.io/strassenraumkarte-neukoelln/posts/2021-06-08-vortrag-fossgis">
+      <AnchorLink href="https://parkraum.osm-verkehrswende.org/posts/2021-06-08-vortrag-fossgis/">
         Vortrag auf der FOSSGIS 2021 Konferenz beschreibt er Details dazu
       </AnchorLink>
       .
