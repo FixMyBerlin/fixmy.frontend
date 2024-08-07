@@ -11,7 +11,7 @@ export type LocaleCode = 'de' | 'en' | 'es';
 //
 // Config
 //
-export type Region = 'berlin' | 'aachen' | 'zesplus';
+export type Region = 'berlin' | 'aachen';
 
 export interface AppConfig {
   path: string;

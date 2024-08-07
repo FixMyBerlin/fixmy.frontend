@@ -16,9 +16,5 @@
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "exportall.config.folderListener": [
-    "/src/pages/zesplus/radnetzplanung/Maps",
-    "/src/pages/zesplus/radnetzplanung/components/Maps/IconLegend"
-  ]
+  }
 }

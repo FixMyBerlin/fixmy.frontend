@@ -46,8 +46,6 @@ if (config.region === 'berlin') {
   content = <Berlin />;
 } else if (config.region === 'aachen') {
   content = <Redirect to={config.routes.reports.landing} />;
-} else if (config.region === 'zesplus') {
-  content = <Redirect to={config.routes.landing} />;
 } else {
   content = (
     <>

@@ -12,7 +12,6 @@
   "whitelist": {
     "default": ["Map", "Reports"],
     "aachen": ["Reports"],
-    "berlin": ["Map", "Reports", "Analysis"],
-    "zesplus": []
+    "berlin": ["Map", "Reports", "Analysis"]
   }
 }
