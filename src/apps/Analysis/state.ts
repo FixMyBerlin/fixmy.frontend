@@ -107,6 +107,7 @@ export function loadProjectData(
 
     try {
       const endPoint = `${config.apiUrl}/projects?page_size=500`;
+      // @ts-expect-error this was fine before, new TS seems to be more strict
       const { results } = await ky.get(endPoint, { timeout: 200000 }).json();
 
       dispatch({
