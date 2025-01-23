@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -8,7 +9,6 @@ import { Link } from '~/components2/Link';
 import { Logo as FMBLogo } from '~/components2/Logo';
 import config from '~/config';
 import FacebookIcon from '~/images/button-social-facebook.svg';
-import TwitterIcon from '~/images/button-social-twitter.svg';
 import { useTypedSelector } from '~/store';
 import { media } from '~/styles/utils';
 
@@ -78,16 +78,7 @@ const FacebookButton = styled(FacebookIcon)`
     opacity: 0.8;
   }
 `;
-const TwitterButton = styled(TwitterIcon)`
-  width: 40px;
-  height: 40px;
-  margin: 0 5px;
-  cursor: pointer;
 
-  &:hover {
-    opacity: 0.8;
-  }
-`;
 const HomeBerlin = () => {
   const dispatch = useDispatch();
   const isMenuOpen = useTypedSelector((state) => state.AppState.isMenuOpen);
@@ -141,13 +132,6 @@ const HomeBerlin = () => {
           target="_blank"
         >
           <FacebookButton />
-        </a>
-        <a
-          href="https://twitter.com/fixmyberlin"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <TwitterButton />
         </a>
       </SocialWrapper>
     </>

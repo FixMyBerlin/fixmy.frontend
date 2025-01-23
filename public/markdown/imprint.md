@@ -21,9 +21,9 @@ Verantwortlicher i.S.v. § 55 Rundfunkstaatsvertrag (RStV): Heiko Rintelen
 
 Wir freuen uns über Kommentare Anregungen und Unterstützung an [feedback@fixmycity.de](mailto:feedback@fixmycity.de)
 
-Du findest uns auch auf [twitter](https://twitter.com/fixmyberlin) | [instagram](https://www.instagram.com/fixmycity/) | [facebook](https://www.facebook.com/FixMyCityApp/) und [linkedIn](https://www.linkedin.com/company/fixmycity)
+Sie finden uns auch auf [linkedIn](https://www.linkedin.com/company/fixmycity)
 
-Sofern du Bugs oder Verbesserungsvorschläge hast, gib uns gerne [auf github.com Feedback](https://github.com/FixMyBerlin/fixmy.platform/issues/new/choose).
+Sofern Sie Bugs oder Verbesserungsvorschläge haben, geben Sie uns gerne [auf github.com Feedback](https://github.com/FixMyBerlin/fixmy.platform/issues/new/choose).
 
 ## Open Source
 

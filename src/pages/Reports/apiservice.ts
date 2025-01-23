@@ -77,7 +77,7 @@ export const STATUS =
 
 // The type of any array item can be accessed using an array index, by
 // generalizing over all possible array indices we get all possible item types
-export type Status = typeof STATUS[number];
+export type Status = (typeof STATUS)[number];
 
 type SubmitReportResponse = any;
 

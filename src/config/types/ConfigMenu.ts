@@ -43,7 +43,6 @@ export type ConfigMenu = {
   login?: false | undefined;
   loginLabel: string;
   logo?: boolean;
-  twitter?: boolean;
   items: MenuItem[];
   footeritems: FooterItem[];
 };

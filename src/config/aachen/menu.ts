@@ -7,7 +7,6 @@ export const menu: ConfigMenu = {
   profileLabel: 'Zum Profil',
   loginLabel: 'Login',
   logo: false,
-  twitter: false,
   items: [
     {
       type: 'link',

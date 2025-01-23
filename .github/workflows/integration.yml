@@ -18,9 +18,9 @@ jobs:
       - name: Preload reports endpoints
         run: curl https://fixmyberlin-staging.netlify.app/api/aachen/next/reports https://fixmyaachen-staging.netlify.app/api/next/reports --retry 3 > /dev/null &
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: '${{ steps.nvmrc.outputs.node_version }}'
 
