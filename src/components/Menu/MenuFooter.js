@@ -76,7 +76,6 @@ class MenuFooter extends PureComponent {
         <FooterLinks>
           {config.menu.footeritems.map((item, i) => renderItem(item, i))}
         </FooterLinks>
-        {config.menu.twitter !== false && <SocialLinks title="Folge uns" />}
       </Footer>
     );
   }
