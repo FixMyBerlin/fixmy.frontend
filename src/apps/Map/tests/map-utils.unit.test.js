@@ -191,18 +191,26 @@ describe('getCenterFromGeom', () => {
   });
 
   it('calculates a center for linestring geometries', () => {
-    const geometry = {
+    const lineGeometry1 = {
       type: 'LineString',
       coordinates: [
-        [-122.48369693756104, 37.83381888486939],
-        [-122.48348236083984, 37.83317489144141],
-        [-122.48339653015138, 37.83270036637107],
-        [-122.48356819152832, 37.832056363179625],
+        [10.2, 50.7],
+        [10.2, 51.7],
+        [13.2, 51.7],
+        [13.2, 52.7],
       ],
     };
-    const center = utils.getCenterFromGeom(geometry);
-    expect(typeof center[0]).toEqual('number');
-    expect(typeof center[1]).toEqual('number');
+    const lineGeometry2 = {
+      type: 'LineString',
+      coordinates: [
+        [10.2, 52.7],
+        [13.2, 50.7],
+      ],
+    };
+    const expectedCenter = [11.7,51.7];
+    
+    expect(utils.getCenterFromGeom(lineGeometry1)).toEqual(expectedCenter);
+    expect(utils.getCenterFromGeom(lineGeometry1)).toEqual(expectedCenter);
   });
 
   it('returns the original geometry if given a point', () => {
