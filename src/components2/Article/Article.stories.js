@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property -- `toc` is a custom prop read by Article */
 import React from 'react';
 
 import ImageSrc from '~/images/cat-mapper-max-ogden-EcsCeS6haJ8-unsplash.jpg';

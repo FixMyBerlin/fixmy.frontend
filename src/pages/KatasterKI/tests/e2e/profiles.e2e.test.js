@@ -50,10 +50,9 @@ describe('katasterKi profiles', () => {
       // Cypress describes testing an input of type range [here](https://docs.cypress.io/api/commands/trigger.html#Change-Event).
       // But the lib used to implement the slider uses divs.
       // Thus moving the slider programmatically is done a bit hacky:
-      cy.get('@sliderHandle')
-        .trigger('mousedown')
-        .type('{leftarrow}')
-        .type('{rightarrow}');
+      cy.get('@sliderHandle').trigger('mousedown');
+      cy.get('@sliderHandle').type('{leftarrow}');
+      cy.get('@sliderHandle').type('{rightarrow}');
 
       cy.get('@trProceedBtn').should('have.prop', 'disabled', false);
 
@@ -126,22 +125,22 @@ describe('katasterKi profiles', () => {
     });
 
     it('disables the proceed button missing zip input', () => {
-      cy.get('@zipInput').type('{selectall}').type('{del}');
+      cy.get('@zipInput').type('{selectall}{del}');
       cy.get('@zipProceedBtn').should('have.prop', 'disabled', true);
     });
 
     it('enables the proceed button when 5 numbers have been entered', () => {
-      cy.get('@zipInput').type('{selectall}').type('01234');
+      cy.get('@zipInput').type('{selectall}01234');
       cy.get('@zipProceedBtn').should('have.prop', 'disabled', false);
     });
 
     it('disables the proceed button when more than 5 numbers have been entered', () => {
-      cy.get('@zipInput').type('{selectall}').type('012345678');
+      cy.get('@zipInput').type('{selectall}012345678');
       cy.get('@zipProceedBtn').should('have.prop', 'disabled', true);
     });
 
     it(`links to the intro screen for scene rating`, () => {
-      cy.get('@zipInput').type('{selectall}').type('01234');
+      cy.get('@zipInput').type('{selectall}01234');
       cy.get('@zipProceedBtn').click();
       cy.location('pathname').should(
         'eq',
