@@ -14,8 +14,8 @@ import {
 export type Side = typeof LEFT_SIDE | typeof RIGHT_SIDE | typeof BOTH_SIDES;
 
 export type HBISide = {
-  label: typeof HBI_STOPS[number]['label'];
-  color: typeof HBI_STOPS[number]['color'];
+  label: (typeof HBI_STOPS)[number]['label'];
+  color: (typeof HBI_STOPS)[number]['color'];
   level?: HBILevel;
 };
 
